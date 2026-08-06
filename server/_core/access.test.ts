@@ -49,7 +49,8 @@ const FUTURE = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
 // The resolver makes exactly 3 sequential DB calls:
 //   Call 1: purchases  — .select().from().where()  → returns PurchaseRow[]
 //   Call 2: subscriptions — .select().from().where() → returns SubRow[]
-//   Call 3: organizations — .select().from().where().limit(1) → returns OrgRow[]
+//   Call 3: org seat check — .select().from().innerJoin().where() → returns OrgSeatRow[]
+//   Call 4: manager check — .select().from().where().limit(1) → returns OrgRow[]
 //
 // We track call order with a counter and return the right rows for each call.
 
@@ -60,18 +61,27 @@ function mockDb(
 ) {
   let call = 0;
 
-  const makeWhere = () => ({
-    where: () => {
+  const makeWhere = (hasInnerJoin = false) => ({
+    where: (..._args: any[]) => {
       call++;
       if (call === 1) return Promise.resolve(purchaseRows);
       if (call === 2) return Promise.resolve(subRows);
-      // call 3 — organizations — has an extra .limit(1) chained
+      if (call === 3) {
+        // org seat check — innerJoin path returns empty array (no org seats in unit tests)
+        return Promise.resolve([]);
+      }
+      // call 4 — manager check — has an extra .limit(1) chained
       return { limit: () => Promise.resolve(orgRows) };
     },
   });
 
   const db = {
-    select: () => ({ from: () => makeWhere() }),
+    select: () => ({
+      from: () => ({
+        ...makeWhere(),
+        innerJoin: () => makeWhere(true),
+      }),
+    }),
   };
 
   vi.mocked(getDb).mockResolvedValue(db as any);

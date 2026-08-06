@@ -618,7 +618,7 @@ export const adminRouter = router({
       });
       const orgId = (insertResult as any).insertId;
 
-      const org = { id: orgId, name: input.name, province: input.province, termEnd: input.termEnd };
+      const org = { id: orgId, name: input.name, province: input.province, termEnd: input.termEnd, tier: "all-access" };
 
       // Grant manager seat
       await grantSeat(db, org, managerEmail, "manager");

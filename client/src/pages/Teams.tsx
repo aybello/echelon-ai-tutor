@@ -4,6 +4,7 @@
  */
 
 import { useState, useMemo } from "react";
+import type { TeamStreamTier } from "../../../server/stripe/subscriptionProducts";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,34 +23,38 @@ import SiteNav from "@/components/SiteNav";
 import { Building2, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } from "lucide-react";
 
 // ── Pricing ───────────────────────────────────────────────────────────────────
-
-const ALL_ACCESS_BASE: Record<string, number> = {
-  ontario: 34900,
-  western: 44900,
+// Mirrors TEAM_BASE_PRICE in server/stripe/subscriptionProducts.ts — keep in sync
+const TEAM_BASE_PRICE_CLIENT: Record<string, Record<TeamStreamTier, number>> = {
+  ontario: {
+    "stream-water":           27900,
+    "stream-wastewater":      27900,
+    "stream-water-dist":      27900,
+    "stream-wastewater-coll": 27900,
+    "all-access":             34900,
+  },
+  western: {
+    "stream-water":           34900,
+    "stream-wastewater":      34900,
+    "stream-water-dist":      34900,
+    "stream-wastewater-coll": 34900,
+    "all-access":             44900,
+  },
 };
 
-// Per-tier base prices (cents CAD) — mirrors stripeRouter.ts BASE_PRICE
-const TIER_BASE_PRICE: Record<string, Record<string, number>> = {
-  ontario: { class1: 9900, class2: 14900, class3: 19900, class4: 24900, "all-access": 34900 },
-  western: { class1: 14900, class2: 19900, class3: 24900, class4: 29900, "all-access": 44900 },
+const STREAM_TIER_LABELS: Record<TeamStreamTier, string> = {
+  "stream-water":           "Water Treatment",
+  "stream-wastewater":      "Wastewater Treatment",
+  "stream-water-dist":      "Water Distribution",
+  "stream-wastewater-coll": "Wastewater Collection",
+  "all-access":             "All Streams",
 };
 
-type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
-
-const TIER_LABELS: Record<SubscriptionTier, string> = {
-  "class1":     "Class 1",
-  "class2":     "Class 2",
-  "class3":     "Class 3",
-  "class4":     "Class 4",
-  "all-access": "All-Access",
-};
-
-const TIER_DESCRIPTIONS: Record<SubscriptionTier, string> = {
-  "class1":     "OIT + Class 1 — Water Treatment, Wastewater Treatment, Distribution & Collection",
-  "class2":     "Class 2 — Water Treatment, Wastewater Treatment, Distribution & Collection",
-  "class3":     "Class 3 — Water Treatment, Wastewater Treatment, Distribution & Collection",
-  "class4":     "Class 4 — Water Treatment, Wastewater Treatment, Distribution & Collection",
-  "all-access": "Every certification level — Class 1 through 4, all tracks included",
+const STREAM_TIER_DESCRIPTIONS: Record<TeamStreamTier, string> = {
+  "stream-water":           "Water treatment — entry level through Class 4",
+  "stream-wastewater":      "Wastewater treatment — entry level through Class 4",
+  "stream-water-dist":      "Water distribution — entry level through Class 4",
+  "stream-wastewater-coll": "Wastewater collection — entry level through Class 4",
+  "all-access":             "All four streams, every level",
 };
 
 interface VolumeTier {
@@ -60,10 +65,10 @@ interface VolumeTier {
 }
 
 const VOLUME_TIERS: VolumeTier[] = [
-  { min: 1,  max: 4,    discountPct: 0,  label: "1-4 seats" },
-  { min: 5,  max: 9,    discountPct: 10, label: "5-9 seats" },
-  { min: 10, max: 24,   discountPct: 15, label: "10-24 seats" },
-  { min: 25, max: null, discountPct: 20, label: "25+ seats" },
+  { min: 1,  max: 9,    discountPct: 0,  label: "1-9 seats" },
+  { min: 10, max: 24,   discountPct: 10, label: "10-24 seats" },
+  { min: 25, max: 49,   discountPct: 15, label: "25-49 seats" },
+  { min: 50, max: null, discountPct: 20, label: "50+ seats" },
 ];
 
 function getVolumeTier(seats: number): VolumeTier {
@@ -73,8 +78,8 @@ function getVolumeTier(seats: number): VolumeTier {
   );
 }
 
-function getSeatPriceCents(province: string, tier: string, seats: number): number {
-  const base = TIER_BASE_PRICE[province]?.[tier] ?? ALL_ACCESS_BASE[province] ?? 34900;
+function getSeatPriceCents(province: string, tier: TeamStreamTier, seats: number): number {
+  const base = TEAM_BASE_PRICE_CLIENT[province]?.[tier] ?? 34900;
   const vt = getVolumeTier(seats);
   return Math.round(base * (1 - vt.discountPct / 100));
 }
@@ -102,7 +107,7 @@ export default function Teams() {
   const [location] = useLocation();
   const [seats, setSeats] = useState(10);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
-  const [tier, setTier] = useState<SubscriptionTier>("all-access");
+  const [tier, setTier] = useState<TeamStreamTier>("all-access");
   const [orgName, setOrgName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -110,7 +115,7 @@ export default function Teams() {
   const volumeTier = useMemo(() => getVolumeTier(seats), [seats]);
   const seatPriceCents = useMemo(() => getSeatPriceCents(province, tier, seats), [province, tier, seats]);
   const totalCents = seatPriceCents * seats;
-  const individualPriceCents = TIER_BASE_PRICE[province]?.[tier] ?? ALL_ACCESS_BASE[province] ?? 34900;
+  const individualPriceCents = TEAM_BASE_PRICE_CLIENT[province]?.[tier] ?? 34900;
   const isLarge = seats >= 50;
 
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
@@ -201,7 +206,7 @@ export default function Teams() {
           <div className="space-y-2">
             <Label className="text-gray-700">Certification level</Label>
             <div className="grid grid-cols-5 gap-1.5">
-              {(["class1","class2","class3","class4","all-access"] as SubscriptionTier[]).map(t => (
+              {(["stream-water","stream-wastewater","stream-water-dist","stream-wastewater-coll","all-access"] as TeamStreamTier[]).map(t => (
                 <button
                   key={t}
                   onClick={() => setTier(t)}
@@ -211,11 +216,11 @@ export default function Teams() {
                       : "border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-700 bg-white"
                   }`}
                 >
-                  {t === "all-access" ? "All" : TIER_LABELS[t]}
+                  {t === "all-access" ? "All" : STREAM_TIER_LABELS[t].split(" ")[0]}
                 </button>
               ))}
             </div>
-            <p className="text-xs text-gray-500 pt-1">{TIER_DESCRIPTIONS[tier]}</p>
+            <p className="text-xs text-gray-500 pt-1">{STREAM_TIER_DESCRIPTIONS[tier]}</p>
           </div>
 
           {/* Seats */}
@@ -319,7 +324,7 @@ export default function Teams() {
           {isLarge ? (
             <div className="space-y-3">
               <a
-                href={`mailto:abello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat ${TIER_LABELS[tier]} team plan for ${province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
+                href={`mailto:abello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat ${STREAM_TIER_LABELS[tier]} team plan for ${province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
                 className="block"
               >
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold">

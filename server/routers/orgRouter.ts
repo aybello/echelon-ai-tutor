@@ -28,11 +28,13 @@ import {
   examDates,
   commandRunHistory,
   users,
+  examOutcomes,
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
+import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -112,7 +114,7 @@ async function resolveOrgManager(ctx: {
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
-  org: { id: number; province: string; termEnd: Date; name: string },
+  org: { id: number; province: string; termEnd: Date; name: string; tier: string },
   email: string,
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
@@ -134,6 +136,17 @@ async function grantSeat(
         `Invalid course key '${ck}' for province '${org.province}'. ` +
         `Only courses available in this province may be assigned.`
       );
+    }
+  }
+
+  // Entitlement check: verify each course key is allowed by the org's stream tier
+  const allowed = allowedCourseKeysForOrg(org.tier, org.province);
+  for (const ck of resolvedKeys) {
+    if (allowed.length > 0 && !allowed.includes(ck)) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: `Your plan does not include '${courseKeyToLabel(ck)}'. Upgrade to All Streams or purchase a matching stream plan to assign this course.`,
+      });
     }
   }
 
@@ -307,11 +320,26 @@ export const orgRouter = router({
     const memberEmails = activeMembers.map(m => m.email);
     const seatsAssigned = memberEmails.length;
 
+    // Count distinct operators used this term (for per-term seat cap display)
+    const orgTermStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+    const [{ termCnt }] = await db
+      .select({ termCnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
+      .from(organizationMembers)
+      .where(
+        and(
+          eq(organizationMembers.orgId, orgId),
+          eq(organizationMembers.role, "operator"),
+          gte(organizationMembers.assignedAt, orgTermStart),
+        ),
+      );
+    const seatsUsedThisTerm = Number(termCnt);
+
     if (seatsAssigned === 0) {
       return {
         orgName: org.name,
         seatsTotal: org.seatsTotal,
         seatsAssigned: 0,
+        seatsUsedThisTerm,
         activeThisWeek: 0,
         avgReadiness: 0,
         onTrackCount: 0,
@@ -379,6 +407,7 @@ export const orgRouter = router({
       orgName: org.name,
       seatsTotal: org.seatsTotal,
       seatsAssigned,
+      seatsUsedThisTerm,
       activeThisWeek,
       avgReadiness,
       onTrackCount,
@@ -702,22 +731,24 @@ export const orgRouter = router({
           .limit(1);
 
         if (!existingActive) {
-          // New seat — enforce cap atomically inside the transaction
+          // New seat — enforce cap: count distinct operators assigned since termStart (per-term counting)
+          // Re-assigning a previously revoked operator in the same term does NOT consume a new seat.
+          const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
           const [{ cnt }] = await tx
-            .select({ cnt: count() })
+            .select({ cnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
             .from(organizationMembers)
             .where(
               and(
                 eq(organizationMembers.orgId, orgId),
                 eq(organizationMembers.role, "operator"),
-                eq(organizationMembers.status, "assigned"),
+                gte(organizationMembers.assignedAt, termStart),
               ),
             );
 
           if (Number(cnt) >= org.seatsTotal) {
             throw new TRPCError({
               code: "BAD_REQUEST",
-              message: `Seat limit reached (${org.seatsTotal} seats). Add more seats to assign additional operators.`,
+              message: `Seat limit reached (${org.seatsTotal} seats used this term). All ${org.seatsTotal} operator slots have been used this term. Add more seats to enroll additional operators.`,
             });
           }
         }
@@ -879,39 +910,40 @@ export const orgRouter = router({
       // transaction so a concurrent single-assign cannot sneak past the cap.
       const results: Array<{ email: string; success: boolean; error?: string }> = [];
       await db.transaction(async (tx) => {
-        // Re-read count inside the transaction
+        // Count distinct operators assigned since termStart (per-term counting)
+        const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
         const [{ cnt }] = await tx
-          .select({ cnt: count() })
+          .select({ cnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
           .from(organizationMembers)
           .where(
             and(
               eq(organizationMembers.orgId, orgId),
               eq(organizationMembers.role, "operator"),
-              eq(organizationMembers.status, "assigned"),
+              gte(organizationMembers.assignedAt, termStart),
             ),
           );
 
-        const currentActive = Number(cnt);
-        // Bug fix: replaced sql.raw(emailListSql) with inArray() to prevent SQL injection
-        const alreadyActive = await tx
+        const seatsUsedThisTerm = Number(cnt);
+        // Operators already counted this term do not consume additional seats on re-assign
+        const alreadyCountedThisTerm = await tx
           .select({ email: organizationMembers.email })
           .from(organizationMembers)
           .where(
             and(
               eq(organizationMembers.orgId, orgId),
               eq(organizationMembers.role, "operator"),
-              eq(organizationMembers.status, "assigned"),
+              gte(organizationMembers.assignedAt, termStart),
               inArray(organizationMembers.email, uniqueEmails),
             ),
           );
-        const alreadyActiveSet = new Set(alreadyActive.map(r => r.email));
-        const newSeatsNeeded = uniqueEmails.filter(e => !alreadyActiveSet.has(e)).length;
+        const alreadyCountedSet = new Set(alreadyCountedThisTerm.map(r => r.email));
+        const newSeatsNeeded = uniqueEmails.filter(e => !alreadyCountedSet.has(e)).length;
 
-        if (currentActive + newSeatsNeeded > org.seatsTotal) {
-          const available = org.seatsTotal - currentActive;
+        if (seatsUsedThisTerm + newSeatsNeeded > org.seatsTotal) {
+          const available = org.seatsTotal - seatsUsedThisTerm;
           throw new TRPCError({
             code: "BAD_REQUEST",
-            message: `Not enough seats. You have ${available} seat${available === 1 ? "" : "s"} available but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
+            message: `Not enough seats. You have ${available} seat${available === 1 ? "" : "s"} remaining this term but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
           });
         }
 
@@ -942,6 +974,86 @@ export const orgRouter = router({
       const email = normalizeEmail(input.email);
       await revokeSeat(db, orgId, email);
       return { success: true, email };
+    }),
+  /**
+   * recordExamOutcome — manager records a pass/fail/no_show for an operator.
+   */
+  recordExamOutcome: publicProcedure
+    .input(z.object({
+      memberEmail: z.string().email(),
+      courseKey: z.string().min(1).max(64),
+      result: z.enum(["passed", "failed", "no_show"]),
+      examDate: z.string().optional(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const { orgId, managerEmail } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const memberEmail = normalizeEmail(input.memberEmail);
+      await db.insert(examOutcomes).values({
+        orgId,
+        memberEmail,
+        courseKey: input.courseKey,
+        result: input.result,
+        examDate: input.examDate ? new Date(input.examDate) : null,
+        recordedBy: managerEmail,
+      });
+      return { success: true };
+    }),
+
+  /**
+   * getExamOutcomes — return all recorded outcomes for this org.
+   */
+  getExamOutcomes: publicProcedure
+    .query(async ({ ctx }) => {
+      const { orgId } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const rows = await db
+        .select()
+        .from(examOutcomes)
+        .where(eq(examOutcomes.orgId, orgId))
+        .orderBy(desc(examOutcomes.recordedAt));
+      return { outcomes: rows };
+    }),
+
+  /**
+   * getPassRateSummary — first-time pass rate for the current term.
+   */
+  getPassRateSummary: publicProcedure
+    .query(async ({ ctx }) => {
+      const { orgId } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const org = await db
+        .select({ termEnd: organizations.termEnd, termStart: organizations.termStart })
+        .from(organizations)
+        .where(eq(organizations.id, orgId))
+        .limit(1)
+        .then(r => r[0]);
+      if (!org) return { total: 0, passed: 0, passRate: 0 };
+      const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+      const rows = await db
+        .select({
+          memberEmail: examOutcomes.memberEmail,
+          courseKey: examOutcomes.courseKey,
+          result: examOutcomes.result,
+          recordedAt: examOutcomes.recordedAt,
+        })
+        .from(examOutcomes)
+        .where(and(eq(examOutcomes.orgId, orgId), gte(examOutcomes.recordedAt, termStart)))
+        .orderBy(examOutcomes.recordedAt);
+      const seen = new Set<string>();
+      let total = 0;
+      let passed = 0;
+      for (const row of rows) {
+        const key = `${row.memberEmail}::${row.courseKey}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        total++;
+        if (row.result === "passed") passed++;
+      }
+      return { total, passed, passRate: total > 0 ? Math.round((passed / total) * 100) : 0 };
     }),
 });
 

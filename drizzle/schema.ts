@@ -403,6 +403,7 @@ export const organizations = mysqlTable("organizations", {
   stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
   termEnd: timestamp("termEnd").notNull(), // current period end from Stripe
+  termStart: timestamp("termStart"), // current period start — null = backfill as termEnd minus 1 year
   billingType: varchar("billingType", { length: 16 }).notNull().default("stripe"), // 'stripe' | 'invoice'
   status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'past_due' | 'cancelled'
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -449,6 +450,26 @@ export const organizationMembers = mysqlTable("organization_members", {
 
 export type OrganizationMember = typeof organizationMembers.$inferSelect;
 export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
+
+/**
+ * Exam outcomes — manager-recorded pass/fail results for operators.
+ * Used to compute first-time pass rates for renewal justification.
+ */
+export const examOutcomes = mysqlTable("exam_outcomes", {
+  id: int("id").autoincrement().primaryKey(),
+  orgId: int("orgId").notNull(),
+  memberEmail: varchar("memberEmail", { length: 320 }).notNull(),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  result: mysqlEnum("result", ["passed", "failed", "no_show"]).notNull(),
+  examDate: timestamp("examDate"),
+  recordedBy: varchar("recordedBy", { length: 320 }).notNull(), // manager email
+  recordedAt: timestamp("recordedAt").defaultNow().notNull(),
+}, (t) => [
+  index("exam_outcomes_orgid_idx").on(t.orgId),
+  index("exam_outcomes_email_idx").on(t.memberEmail),
+]);
+export type ExamOutcome = typeof examOutcomes.$inferSelect;
+export type InsertExamOutcome = typeof examOutcomes.$inferInsert;
 
 /**
  * FIX 5 (P3): Bookmarks — per-user+question table so bookmark state persists across
