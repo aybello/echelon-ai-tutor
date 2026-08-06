@@ -26,17 +26,17 @@ import { Building2, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } from "l
 // Mirrors TEAM_BASE_PRICE in server/stripe/subscriptionProducts.ts — keep in sync
 const TEAM_BASE_PRICE_CLIENT: Record<string, Record<TeamStreamTier, number>> = {
   ontario: {
-    "stream-water":           27900,
-    "stream-wastewater":      27900,
-    "stream-water-dist":      27900,
-    "stream-wastewater-coll": 27900,
+    "stream-water":           19900,
+    "stream-wastewater":      19900,
+    "stream-water-dist":      19900,
+    "stream-wastewater-coll": 19900,
     "all-access":             34900,
   },
   western: {
-    "stream-water":           34900,
-    "stream-wastewater":      34900,
-    "stream-water-dist":      34900,
-    "stream-wastewater-coll": 34900,
+    "stream-water":           24900,
+    "stream-wastewater":      24900,
+    "stream-water-dist":      24900,
+    "stream-wastewater-coll": 24900,
     "all-access":             44900,
   },
 };
