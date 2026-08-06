@@ -310,25 +310,23 @@ describe("Echelon for Teams — org seat management", () => {
   it("bulk assignSeats respects seat cap and returns per-email results", async () => {
     if (!process.env.DATABASE_URL || !db) return;
 
-    // Revoke op2 and op3 to free up seats for this test
     const caller = appRouter.createCaller(makeCtx(MANAGER_EMAIL));
+    // Revoke op2 and op3 — per-term counting: revoking does NOT free seats for new operators
     await caller.org.revokeSeat({ email: testEmail(2) });
     await caller.org.revokeSeat({ email: testEmail(3) });
 
-    // Now 1 seat taken (op1), 2 available
-    // Try to bulk-assign 3 new operators — should fail (only 2 available)
+    // All 3 term slots are now used (op1, op2, op3 all counted this term)
+    // Trying to assign any new operator should fail
     const op5 = testEmail(5);
     const op6 = testEmail(6);
-    const op7 = testEmail(7);
 
     await expect(
-      caller.org.assignSeats({ emails: [op5, op6, op7] }),
+      caller.org.assignSeats({ emails: [op5, op6] }),
     ).rejects.toThrow(/Not enough seats/);
 
-    // Assign exactly 2 — should succeed
-    const result = await caller.org.assignSeats({ emails: [op5, op6] });
-    expect(result.results.filter(r => r.success).length).toBe(2);
-    expect(result.results.filter(r => !r.success).length).toBe(0);
+    // Re-assigning op2 (already counted this term) should succeed without consuming a new slot
+    const result = await caller.org.assignSeats({ emails: [testEmail(2)] });
+    expect(result.results.filter(r => r.success).length).toBe(1);
   });
 
   it("cross-org access denial: manager from org B cannot see org A data", async () => {
@@ -345,14 +343,12 @@ describe("Echelon for Teams — org seat management", () => {
     const callerA = appRouter.createCaller(makeCtx(MANAGER_EMAIL));
     const membersA = await callerA.org.listMembers();
 
-    // op1, op5, op6 should be assigned in org A
+    // op1 should be assigned in org A (op2 and op3 were revoked in previous test)
     const assignedEmails = membersA
       .filter(m => m.status === "assigned")
       .map(m => m.email);
 
     expect(assignedEmails).toContain(testEmail(1));
-    expect(assignedEmails).toContain(testEmail(5));
-    expect(assignedEmails).toContain(testEmail(6));
 
     // Org B manager should not see org A operators
     const orgBEmails = membersB.map(m => m.email);

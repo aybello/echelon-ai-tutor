@@ -141,6 +141,9 @@ export default function OrgDashboard() {
   const [bulkEmails, setBulkEmails] = useState("");
   const [bulkMode, setBulkMode] = useState(false);
   const [revokeTarget, setRevokeTarget] = useState<string | null>(null);
+  const [outcomeTarget, setOutcomeTarget] = useState<{ email: string; courseKey: string } | null>(null);
+  const [outcomeResult, setOutcomeResult] = useState<"passed" | "failed" | "no_show">("passed");
+  const [outcomeDate, setOutcomeDate] = useState("");
   const [manageSeatsOpen, setManageSeatsOpen] = useState(false);
   const [newSeatCount, setNewSeatCount] = useState<number>(0);
   const [showWelcomeBanner, setShowWelcomeBanner] = useState(false);
@@ -165,6 +168,7 @@ export default function OrgDashboard() {
   });
   const membersQuery = trpc.org.listMembers.useQuery(undefined, { retry: false });
   const attentionQuery = trpc.org.getAttention.useQuery(undefined, { retry: false });
+  const passRateQuery = trpc.org.getPassRateSummary.useQuery(undefined, { retry: false });
 
   // Handle ?session_id= param — show welcome banner after Stripe checkout
   useEffect(() => {
@@ -213,6 +217,15 @@ export default function OrgDashboard() {
       utils.org.getAttention.invalidate();
       setAssignOpen(false);
       setBulkEmails("");
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const recordExamOutcome = trpc.org.recordExamOutcome.useMutation({
+    onSuccess: () => {
+      toast.success("Exam result recorded");
+      setOutcomeTarget(null);
+      passRateQuery.refetch();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -596,6 +609,17 @@ export default function OrgDashboard() {
           />
         </div>
 
+        {/* Pass rate summary */}
+        {passRateQuery.data && passRateQuery.data.total > 0 && (
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
+            <div>
+              <p className="text-sm font-semibold text-green-800">First-time pass rate this term</p>
+              <p className="text-xs text-green-600 mt-0.5">{passRateQuery.data.passed} of {passRateQuery.data.total} operators passed on first attempt</p>
+            </div>
+            <span className="text-3xl font-bold text-green-700">{passRateQuery.data.passRate}%</span>
+          </div>
+        )}
+
         {/* Needs Focus panel — operators below 75% who have started studying */}
         {needsFocusMembers.length > 0 && (
           <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
@@ -868,15 +892,30 @@ export default function OrgDashboard() {
                           )}
                         </td>
                         <td className="px-4 py-3 text-right">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="text-slate-400 hover:text-red-600 hover:bg-red-50 h-7 px-2.5 text-xs gap-1"
-                            onClick={() => setRevokeTarget(m.email)}
-                          >
-                            <UserMinus className="w-3.5 h-3.5" />
-                            <span className="hidden sm:inline">Remove</span>
-                          </Button>
+                          <div className="flex items-center justify-end gap-1">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-slate-400 hover:text-blue-600 hover:bg-blue-50 h-7 px-2.5 text-xs gap-1"
+                              onClick={() => {
+                                setOutcomeTarget({ email: m.email, courseKey: m.courseKey ?? "" });
+                                setOutcomeResult("passed");
+                                setOutcomeDate("");
+                              }}
+                            >
+                              <Target className="w-3.5 h-3.5" />
+                              <span className="hidden sm:inline">Result</span>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-slate-400 hover:text-red-600 hover:bg-red-50 h-7 px-2.5 text-xs gap-1"
+                              onClick={() => setRevokeTarget(m.email)}
+                            >
+                              <UserMinus className="w-3.5 h-3.5" />
+                              <span className="hidden sm:inline">Remove</span>
+                            </Button>
+                          </div>
                         </td>
                       </tr>
                     );
@@ -1480,6 +1519,65 @@ export default function OrgDashboard() {
               className="bg-red-600 hover:bg-red-700 text-white"
             >
               {revokeSeat.isPending ? "Revoking..." : "Revoke Access"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      {/* Record Exam Result modal */}
+      <Dialog open={!!outcomeTarget} onOpenChange={() => setOutcomeTarget(null)}>
+        <DialogContent className="bg-white border-slate-200 max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="text-slate-900">Record Exam Result</DialogTitle>
+            <DialogDescription className="text-slate-500 text-sm">
+              Record the actual exam outcome for {outcomeTarget?.email}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-2 space-y-4">
+            <div className="space-y-2">
+              <Label className="text-slate-700 text-sm">Result</Label>
+              <div className="flex gap-2">
+                {(["passed", "failed", "no_show"] as const).map(r => (
+                  <button
+                    key={r}
+                    onClick={() => setOutcomeResult(r)}
+                    className={`flex-1 py-2 rounded-lg text-xs font-semibold border transition-colors ${
+                      outcomeResult === r
+                        ? r === "passed" ? "bg-green-600 border-green-600 text-white"
+                          : r === "failed" ? "bg-red-600 border-red-600 text-white"
+                          : "bg-slate-600 border-slate-600 text-white"
+                        : "border-slate-300 text-slate-600 hover:border-slate-400 bg-white"
+                    }`}
+                  >
+                    {r === "no_show" ? "No Show" : r.charAt(0).toUpperCase() + r.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label className="text-slate-700 text-sm">Exam date (optional)</Label>
+              <Input
+                type="date"
+                value={outcomeDate}
+                onChange={e => setOutcomeDate(e.target.value)}
+                className="border-slate-200"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setOutcomeTarget(null)} className="text-slate-500">
+              Cancel
+            </Button>
+            <Button
+              onClick={() => outcomeTarget && recordExamOutcome.mutate({
+                memberEmail: outcomeTarget.email,
+                courseKey: outcomeTarget.courseKey,
+                result: outcomeResult,
+                examDate: outcomeDate || undefined,
+              })}
+              disabled={recordExamOutcome.isPending}
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              {recordExamOutcome.isPending ? "Saving..." : "Save Result"}
             </Button>
           </DialogFooter>
         </DialogContent>

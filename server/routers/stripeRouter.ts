@@ -10,8 +10,12 @@ import {
   getSubscriptionExamTypes,
   TIER_LABELS,
   PROVINCE_LABELS,
+  TEAM_BASE_PRICE,
+  TEAM_VOLUME_TIERS,
+  TEAM_STREAM_TIER_LABELS,
   type SubscriptionTier,
   type SubscriptionProvince,
+  type TeamStreamTier,
 } from "../stripe/subscriptionProducts";
 import { getDb } from "../db";
 import { purchases, subscriptions } from "../../drizzle/schema";
@@ -535,27 +539,18 @@ export const stripeRouter = router({
     .input(z.object({
       orgName: z.string().min(2).max(200),
       province: z.enum(["ontario", "western"]),
-      tier: z.enum(["class1", "class2", "class3", "class4", "all-access"]).default("all-access"),
+      tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
       seats: z.number().int().min(1).max(500),
       managerEmail: z.string().email(),
       origin: z.string().url(),
     }))
     .mutation(async ({ input }) => {
-      // Per-tier annual base prices (cents CAD) — mirrors subscriptionProducts.ts
-      const BASE_PRICE: Record<string, Record<string, number>> = {
-        ontario: { class1: 9900, class2: 14900, class3: 19900, class4: 24900, "all-access": 34900 },
-        western: { class1: 14900, class2: 19900, class3: 24900, class4: 29900, "all-access": 44900 },
-      };
-      const baseCents = BASE_PRICE[input.province]?.[input.tier] ?? 34900;
-
-      // Volume discount: 1-4 = 0%, 5-9 = 10%, 10-24 = 15%, 25+ = 20%
-      const discountPct = input.seats >= 25 ? 20
-        : input.seats >= 10 ? 15
-        : input.seats >= 5 ? 10
-        : 0;
+      const baseCents = TEAM_BASE_PRICE[input.province]?.[input.tier as TeamStreamTier] ?? 34900;
+      const volumeTier = [...TEAM_VOLUME_TIERS].find(t => input.seats >= t.min && (t.max === null || input.seats <= t.max)) ?? TEAM_VOLUME_TIERS[0];
+      const discountPct = volumeTier.discountPct;
       const unitAmount = Math.round(baseCents * (1 - discountPct / 100));
 
-      const tierLabel = TIER_LABELS[input.tier as SubscriptionTier] ?? input.tier;
+      const tierLabel = TEAM_STREAM_TIER_LABELS[input.tier as TeamStreamTier] ?? input.tier;
       const provinceLabel = input.province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)";
 
       const lineItem = {

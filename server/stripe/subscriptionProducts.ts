@@ -12,6 +12,114 @@
  */
 
 export type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
+
+/**
+ * Team-plan stream tiers — sold by certification stream (career path), all levels included.
+ * These are only used for org/team checkout, NOT for individual subscriptions.
+ */
+export type TeamStreamTier =
+  | "stream-water"
+  | "stream-wastewater"
+  | "stream-water-dist"
+  | "stream-wastewater-coll"
+  | "all-access";
+
+export const TEAM_STREAM_TIER_LABELS: Record<TeamStreamTier, string> = {
+  "stream-water":           "Water Treatment",
+  "stream-wastewater":      "Wastewater Treatment",
+  "stream-water-dist":      "Water Distribution",
+  "stream-wastewater-coll": "Wastewater Collection",
+  "all-access":             "All Streams",
+};
+
+export const TEAM_STREAM_TIER_DESCRIPTIONS: Record<TeamStreamTier, string> = {
+  "stream-water":           "Water treatment — entry level through Class 4",
+  "stream-wastewater":      "Wastewater treatment — entry level through Class 4",
+  "stream-water-dist":      "Water distribution — entry level through Class 4",
+  "stream-wastewater-coll": "Wastewater collection — entry level through Class 4",
+  "all-access":             "All four streams, every level",
+};
+
+/**
+ * Course keys allowed per stream tier per province.
+ * Used for entitlement enforcement in grantSeat and OrgDashboard course picker.
+ */
+export const STREAM_COURSE_KEYS: Record<string, Record<TeamStreamTier, string[]>> = {
+  ontario: {
+    "stream-water":           ["oit", "class1-water", "class2-water", "class3-water", "class4-water"],
+    "stream-wastewater":      ["oit-ww", "class1-ww", "class2-ww", "class3-ww", "class4-ww"],
+    "stream-water-dist":      ["oit", "class1-water-dist", "class2-water-dist", "class3-water-dist", "class4-water-dist"],
+    "stream-wastewater-coll": ["oit-ww", "class1-wastewater-coll", "class2-wastewater-coll", "class3-wastewater-coll", "class4-wastewater-coll"],
+    "all-access":             [
+      "oit","oit-ww",
+      "class1-water","class1-ww","class1-water-dist","class1-wastewater-coll",
+      "class2-water","class2-ww","class2-water-dist","class2-wastewater-coll",
+      "class3-water","class3-ww","class3-water-dist","class3-wastewater-coll",
+      "class4-water","class4-ww","wqa","class4-water-dist","class4-wastewater-coll",
+    ],
+  },
+  western: {
+    "stream-water":           ["wpi-class1-water","wpi-class2-water","wpi-class3-water","wpi-class4-water"],
+    "stream-wastewater":      ["wpi-class1-wastewater","wpi-class2-wastewater","wpi-class3-wastewater","wpi-class4-wastewater"],
+    "stream-water-dist":      ["wpi-class1-water-dist","wpi-class2-water-dist","wpi-class3-water-dist","wpi-class4-water-dist"],
+    "stream-wastewater-coll": ["wpi-class1-water-coll","wpi-class2-water-coll","wpi-class3-water-coll","wpi-class4-water-coll"],
+    "all-access":             [
+      "wpi-class1-water","wpi-class1-wastewater","wpi-class1-water-dist","wpi-class1-water-coll",
+      "wpi-class2-water","wpi-class2-wastewater","wpi-class2-water-dist","wpi-class2-water-coll",
+      "wpi-class3-water","wpi-class3-wastewater","wpi-class3-water-dist","wpi-class3-water-coll",
+      "wpi-class4-water","wpi-class4-wastewater","wpi-class4-water-dist","wpi-class4-water-coll",
+    ],
+  },
+};
+
+/**
+ * Returns the allowed course keys for an org based on its tier and province.
+ * Works for both legacy class-level tiers (treated as all-access for backwards compat)
+ * and new stream tiers.
+ */
+export function allowedCourseKeysForOrg(tier: string, province: string): string[] {
+  const streamKeys = STREAM_COURSE_KEYS[province];
+  if (!streamKeys) return [];
+  // New stream tiers
+  if (tier in streamKeys) return streamKeys[tier as TeamStreamTier];
+  // Legacy class-level tiers: treat as all-access (backwards compatible)
+  if (["class1","class2","class3","class4","all-access"].includes(tier)) {
+    return streamKeys["all-access"];
+  }
+  return [];
+}
+
+/**
+ * Shared team pricing constants — used by both stripeRouter.ts and Teams.tsx.
+ * Values in cents CAD. Single stream = same price regardless of which stream.
+ */
+export const TEAM_BASE_PRICE: Record<string, Record<TeamStreamTier, number>> = {
+  ontario: {
+    "stream-water":           27900,
+    "stream-wastewater":      27900,
+    "stream-water-dist":      27900,
+    "stream-wastewater-coll": 27900,
+    "all-access":             34900,
+  },
+  western: {
+    "stream-water":           34900,
+    "stream-wastewater":      34900,
+    "stream-water-dist":      34900,
+    "stream-wastewater-coll": 34900,
+    "all-access":             44900,
+  },
+};
+
+/**
+ * New volume discount tiers for team plans.
+ * Discounts start at 10 seats (department-level), not 25 (city-wide).
+ */
+export const TEAM_VOLUME_TIERS = [
+  { min: 1,  max: 9,    discountPct: 0,  label: "1-9 seats" },
+  { min: 10, max: 24,   discountPct: 10, label: "10-24 seats" },
+  { min: 25, max: 49,   discountPct: 15, label: "25-49 seats" },
+  { min: 50, max: null, discountPct: 20, label: "50+ seats" },
+] as const;
 export type SubscriptionProvince = "ontario" | "western";
 
 export interface SubscriptionProduct {
