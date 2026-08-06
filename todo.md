@@ -1186,3 +1186,20 @@
 - [x] Update Instagram post colors from light blue to deep electric blue (#0047AB)
 - [ ] Create 30-second video ad: exam struggles → Echelon Institute as solution (9:16 vertical reel)
 - [ ] Publish 5 Instagram posts (sharper color palette) to @echelon.institute
+
+## Teams Self-Serve Spec (August 2026)
+- [x] Remove createOrganizationManual, updateOrganization, adminAssignSeat, adminRevokeSeat from admin.ts
+- [x] Remove ManagerLogin.tsx and dead import from App.tsx
+- [x] Remove 50+ quote branch (isLarge) from Teams.tsx; allow 1-500 licences through Stripe
+- [x] Fix volume discount copy: "Volume discounts begin at 10 licences and are calculated automatically."
+- [x] Add safe next-param redirect in Account.tsx (reads ?next= and forwards to OtpLogin)
+- [x] Add safe next-param handling in OtpLogin.tsx (validates and uses ?next= after OTP success)
+- [x] Add sendManagerOnboardingEmail to email.ts
+- [x] Add sendOrgPaymentConfirmationEmail to email.ts
+- [x] Wire manager onboarding email into webhook new org creation (non-blocking, idempotent)
+- [x] Add org invoice payment handler in invoice.payment_succeeded (org branch before individual branch)
+- [x] Update webhook failure messages to remove manual creation instructions
+- [x] Add teams.selfserve.test.ts with 66 tests covering all spec requirements
+- [x] Remove createOrganizationManual test block from teams.test.ts
+- [x] Update ARCHITECTURE.md Teams section per spec
+- [x] TypeScript clean, 612/612 tests passing

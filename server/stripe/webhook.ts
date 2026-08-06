@@ -5,7 +5,7 @@ import { getDb } from "../db";
 import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { grantSeat } from "../routers/orgRouter";
 import { notifyOwner } from "../_core/notification";
-import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
+import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail, sendManagerOnboardingEmail, sendOrgPaymentConfirmationEmail } from "../email";
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and, sql } from "drizzle-orm";
@@ -265,7 +265,7 @@ export function registerStripeWebhook(app: Express) {
               // could get nothing and nobody would know.
               notifyOwner({
                 title: '⚠️ Team Provision Failed: Missing Metadata',
-                content: `Org subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) could NOT be provisioned because required fields are missing: ${missingOrgFields}.\n\nThis means the team buyer has paid but NO org was created and NO manager seat was granted.\n\nAction required:\n1. Look up subscription ${stripeSubscriptionId} in Stripe Dashboard\n2. Identify the manager email and org name\n3. Manually create the org in Admin or re-trigger the webhook\n4. Confirm the manager has dashboard access`,
+                content: `Org subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) could NOT be provisioned because required fields are missing: ${missingOrgFields}.\n\nThis means the team buyer has paid but NO org was created and NO manager seat was granted.\n\nRecovery: correct the missing metadata on the Stripe subscription (manager_email, org_name) and replay the webhook event from the Stripe Dashboard. Stripe is the only provisioning authority — do not create the org manually.`,
               }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
               return res.json({ received: true });
             }
@@ -300,6 +300,18 @@ export function registerStripeWebhook(app: Express) {
               await notifyOwner({
                 title: `New Team Plan: ${orgName}`,
                 content: `${managerEmail} purchased a ${seats}-seat ${tier} team plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}`,
+              });
+              // Send manager onboarding email (non-blocking — idempotency is guaranteed by
+              // the existingOrg check above: this block only runs for brand-new orgs)
+              const siteOrigin = "https://echeloninstitute.manus.space";
+              sendManagerOnboardingEmail({
+                managerEmail,
+                orgName,
+                seats,
+                tierLabel: TIER_LABELS[tier as ST] ?? tier,
+                dashboardUrl: `${siteOrigin}/account?next=/team`,
+              }).catch(err => {
+                console.error("[Stripe Webhook] Failed to send manager onboarding email:", err.message);
               });
             } else {
               // Existing org — sync seats, termEnd, status
@@ -483,6 +495,54 @@ export function registerStripeWebhook(app: Express) {
           try {
             const db = await getDb();
             if (!db) throw new Error("Database unavailable");
+
+            // ── Org (team) invoice branch ─────────────────────────────────────
+            // Check if this subscription belongs to an org before treating it as
+            // an individual learner subscription.
+            const orgRow = await db
+              .select({ id: organizations.id, name: organizations.name, managerEmail: organizations.managerEmail, tier: organizations.tier, seatsTotal: organizations.seatsTotal, status: organizations.status })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+
+            if (orgRow.length > 0) {
+              const org = orgRow[0];
+              // Idempotency: use Stripe invoice ID to avoid duplicate emails
+              const stripeInvoiceId: string = invoice.id ?? "";
+              const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(
+                await stripe.subscriptions.retrieve(stripeSubscriptionId) as any
+              );
+              if (currentPeriodEnd) {
+                await db
+                  .update(organizations)
+                  .set({ status: "active", termEnd: currentPeriodEnd, ...(currentPeriodStart ? { termStart: currentPeriodStart } : {}) })
+                  .where(eq(organizations.id, org.id));
+                // Extend active operator subscriptions
+                await db
+                  .update(subscriptions)
+                  .set({ status: "active", currentPeriodEnd })
+                  .where(and(eq(subscriptions.orgId, org.id), eq(subscriptions.status, "active")));
+                console.log(`[Stripe Webhook] Org invoice paid: ${org.name} (${org.id}) new end=${currentPeriodEnd.toISOString()} invoice=${stripeInvoiceId}`);
+              }
+              // Send org payment confirmation email (non-blocking)
+              const amountPaid: number = invoice.amount_paid ?? 0;
+              const amountFormatted = `CA$${(amountPaid / 100).toFixed(2)}`;
+              sendOrgPaymentConfirmationEmail({
+                managerEmail: org.managerEmail,
+                orgName: org.name,
+                seats: org.seatsTotal,
+                tierLabel: TIER_LABELS[org.tier as ST] ?? org.tier,
+                amountFormatted,
+                periodEnd: currentPeriodEnd ?? new Date(),
+                hostedInvoiceUrl: invoice.hosted_invoice_url ?? null,
+                invoicePdfUrl: invoice.invoice_pdf ?? null,
+              }).catch(err => {
+                console.error("[Stripe Webhook] Failed to send org payment confirmation email:", err.message);
+              });
+              return res.json({ received: true });
+            }
+            // ── End org invoice branch ────────────────────────────────────────
+
             // Fetch the latest subscription period from Stripe to update our record
             const stripeSub = await stripe.subscriptions.retrieve(stripeSubscriptionId) as any;
             const { currentPeriodEnd } = getSubscriptionPeriod(stripeSub);

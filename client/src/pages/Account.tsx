@@ -217,8 +217,11 @@ export default function Account() {
       return;
     }
     // Redirect to OTP login with email pre-filled
+    // Forward the ?next= param if it is a safe same-application relative path
+    const rawNext = new URLSearchParams(window.location.search).get("next") ?? "";
+    const safeNext = /^\/[^/]/.test(rawNext) && !/^\/\//.test(rawNext) && !rawNext.includes(":") ? rawNext : "";
     setOtpRedirecting(true);
-    window.location.href = `/login/otp?email=${encodeURIComponent(trimmed)}`;
+    window.location.href = `/login/otp?email=${encodeURIComponent(trimmed)}${safeNext ? `&next=${encodeURIComponent(safeNext)}` : ""}`;
   };
 
   // FIX 4: Prefer live entitlements as primary source; fall back to legacy purchase queries for OAuth users

@@ -116,8 +116,6 @@ export default function Teams() {
   const seatPriceCents = useMemo(() => getSeatPriceCents(province, tier, seats), [province, tier, seats]);
   const totalCents = seatPriceCents * seats;
   const individualPriceCents = TEAM_BASE_PRICE_CLIENT[province]?.[tier] ?? 34900;
-  const isLarge = seats >= 50;
-
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
 
   const handleSeatsChange = (val: string) => {
@@ -273,7 +271,7 @@ export default function Teams() {
             ) : (
               <div className="flex items-center gap-2 text-xs text-gray-400">
                 <span className="inline-block w-2 h-2 rounded-full bg-gray-300" />
-                Add 5+ seats to unlock volume discounts
+                Volume discounts begin at 10 licences and are calculated automatically.
               </div>
             )}
           </div>
@@ -322,28 +320,14 @@ export default function Teams() {
           </div>
 
           {/* CTA */}
-          {isLarge ? (
-            <div className="space-y-3">
-              <a
-                href={`mailto:abello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat ${STREAM_TIER_LABELS[tier]} team plan for ${province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
-                className="block"
-              >
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold">
-                  Get a Quote <ChevronRight className="w-4 h-4 ml-1" />
-                </Button>
-              </a>
-              <p className="text-xs text-center text-gray-400">For 50+ seats we offer custom invoicing and onboarding support.</p>
-            </div>
-          ) : (
-            <Button
-              onClick={handleCheckout}
-              disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold"
-            >
-              {loading ? "Redirecting to checkout..." : `Start ${seats}-seat plan - ${formatCAD(totalCents)}/yr`}
-              {!loading && <ChevronRight className="w-4 h-4 ml-1" />}
-            </Button>
-          )}
+          <Button
+            onClick={handleCheckout}
+            disabled={loading}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold"
+          >
+            {loading ? "Redirecting to checkout..." : `Start ${seats}-seat plan - ${formatCAD(totalCents)}/yr`}
+            {!loading && <ChevronRight className="w-4 h-4 ml-1" />}
+          </Button>
         </div>
 
         {/* Right: Features + social proof */}
@@ -393,7 +377,7 @@ export default function Teams() {
             <Shield className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
             <span>
               Secure checkout via Stripe. Annual billing. Cancel or adjust seats at any time
-              through the manager dashboard. Invoice billing available for 50+ seats.
+              through the manager dashboard.
             </span>
           </div>
 
