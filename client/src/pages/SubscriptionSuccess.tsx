@@ -205,8 +205,8 @@ export default function SubscriptionSuccess() {
       </div>
       <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>
         Questions? Email us at{" "}
-        <a href="mailto:support@echeloninstitute.ca" style={{ color: "rgba(255,255,255,0.6)" }}>
-          support@echeloninstitute.ca
+        <a href="mailto:abello@echeloninstitute.ca" style={{ color: "rgba(255,255,255,0.6)" }}>
+          abello@echeloninstitute.ca
         </a>
       </p>
       </div>

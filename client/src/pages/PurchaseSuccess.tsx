@@ -355,8 +355,8 @@ export default function PurchaseSuccess() {
             <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6 }}>
               A receipt has been sent to your email by Stripe.
               Questions? Email{" "}
-              <a href="mailto:support@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>
-                support@echeloninstitute.ca
+              <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>
+                abello@echeloninstitute.ca
               </a>
             </div>
 

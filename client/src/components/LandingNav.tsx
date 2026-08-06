@@ -23,6 +23,7 @@ const RESOURCES_LINKS = [
   { label: "🗺️ Career Map", href: "/career" },
   { label: "🏭 Study Tools", href: "/#tools" },
   { label: "✉️ Contact", href: "/#contact" },
+  { label: "🤝 Partnerships", href: "/partnerships" },
 ];
 
 export default function LandingNav({ isAuthenticated = false, currentPath }: LandingNavProps) {

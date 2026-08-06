@@ -11,7 +11,30 @@ Usage:
 import sys
 import time
 import argparse
+import subprocess
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+
+# ── Ensure Playwright Chromium binary is installed ────────────────────────────
+def _ensure_playwright_browser() -> None:
+    """Install Playwright Chromium if the binary is missing (sandbox resets wipe it)."""
+    import os, glob
+    # Check if any chromium headless shell binary exists in the playwright cache
+    home = os.path.expanduser("~")
+    pattern = os.path.join(home, ".cache", "ms-playwright", "chromium*", "**", "chrome")
+    matches = glob.glob(pattern, recursive=True)
+    if not matches:
+        print("[journey-checks] Playwright Chromium binary missing — installing now…", flush=True)
+        result = subprocess.run(
+            [sys.executable, "-m", "playwright", "install", "chromium"],
+            capture_output=True, text=True, timeout=180
+        )
+        if result.returncode != 0:
+            print(f"[journey-checks] playwright install failed:\n{result.stderr}", flush=True)
+            raise RuntimeError("Could not install Playwright Chromium browser.")
+        print("[journey-checks] Playwright Chromium installed successfully.", flush=True)
+
+_ensure_playwright_browser()
+
 
 # ── Config ────────────────────────────────────────────────────────────────────
 DEFAULT_BASE = "https://echeloninstitute.ca"

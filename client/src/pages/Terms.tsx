@@ -62,7 +62,7 @@ export default function Terms() {
 
         <LegalSection title="6. Payments and Refunds">
           <p>All payments are processed by Stripe. Prices are in Canadian dollars (CAD) and include applicable taxes where required.</p>
-          <p><strong>Refund policy:</strong> We offer a 7-day refund for first-time purchases if you have not completed more than 50 questions. To request a refund, email <a href="mailto:support@echeloninstitute.ca" style={{ color: "#3B82F6" }}>support@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</p>
+          <p><strong>Refund policy:</strong> We offer a 7-day refund for first-time purchases if you have not completed more than 50 questions. To request a refund, email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</p>
           <p>Subscriptions auto-renew annually unless cancelled before the renewal date. You can cancel at any time from your Account page.</p>
         </LegalSection>
 
@@ -83,7 +83,7 @@ export default function Terms() {
         </LegalSection>
 
         <LegalSection title="11. Contact">
-          <p>Questions about these Terms? Email <a href="mailto:support@echeloninstitute.ca" style={{ color: "#3B82F6" }}>support@echeloninstitute.ca</a>.</p>
+          <p>Questions about these Terms? Email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>.</p>
         </LegalSection>
       </div>
     </div>

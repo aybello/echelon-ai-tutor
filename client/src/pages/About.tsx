@@ -247,8 +247,8 @@ export default function About() {
             borderRadius: 20,
             letterSpacing: "0.06em",
             textTransform: "uppercase",
-          }}>27 Courses Live</span>
-          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: May 2026</span>
+          }}>36 Courses Live</span>
+          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: August 2026</span>
         </div>
         <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 36px", lineHeight: 1.7 }}>
           A running record of every course and feature added to the platform.

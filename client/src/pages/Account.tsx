@@ -682,8 +682,8 @@ export default function Account() {
                   <Link href="/pricing">
                     <span style={{ fontSize: 12, color: "#3B82F6", fontWeight: 600, cursor: "pointer" }}>Browse Practice Passes →</span>
                   </Link>
-                  <a href="mailto:support@echeloninstitute.ca?subject=Restore%20Access%20Help&body=Hi%2C%20I%20need%20help%20restoring%20access.%20My%20purchase%20email%20was%3A%20" style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>
-                    Still stuck? Email support@echeloninstitute.ca
+                  <a href="mailto:abello@echeloninstitute.ca?subject=Restore%20Access%20Help&body=Hi%2C%20I%20need%20help%20restoring%20access.%20My%20purchase%20email%20was%3A%20" style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>
+                    Still stuck? Email abello@echeloninstitute.ca
                   </a>
                 </div>
               </div>
@@ -765,10 +765,10 @@ export default function Account() {
             )}
           </div>
           <a
-            href="mailto:support@echeloninstitute.ca?subject=Account%20Help"
+            href="mailto:abello@echeloninstitute.ca?subject=Account%20Help"
             style={{ fontSize: 11, color: "#94A3B8", fontWeight: 500 }}
           >
-            Need help? Contact support@echeloninstitute.ca
+            Need help? Contact abello@echeloninstitute.ca
           </a>
         </div>
       </div>

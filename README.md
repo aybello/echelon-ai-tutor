@@ -18,7 +18,7 @@ Echelon Command teaches that missing layer: operational judgment.
 
 ## What the simulator demonstrates
 
-The simulator includes four complete scenarios: Cedar Ridge storm response, Millbrook chemical dosing failure, Riverside water-main break and Lakeview boil-water advisory. Every scenario includes an adaptive AI judgment turn. The learner must:
+The simulator includes four complete scenarios: Cedar Ridge storm response, Millbrook chemical dosing failure, Riverside water-main break and Lakeview boil-water advisory. Cedar Ridge includes the competition's adaptive AI judgment turn. The learner must:
 
 1. Respond to a rapid source-water change.
 2. Contain a filter breakthrough.
@@ -26,9 +26,7 @@ The simulator includes four complete scenarios: Cedar Ridge storm response, Mill
 4. Write the escalation and evidence plan in their own words.
 5. Respond to a branch-specific recovery complication caused by that judgment.
 
-At a scenario's critical command point, GPT-5.6 maps the learner's written judgment to one of three authored safety branches. The next plant development changes around that judgment. Cedar Ridge branches on escalation and evidence, Millbrook on maintenance redundancy, Riverside on contamination verification and Lakeview on residual recovery. At the end, GPT-5.6 evaluates the complete decision chain and a second model pass checks every factual claim against the canonical record before the review is displayed.
-
-Learners who are unsure what to write can open a four-question response framework and sentence starter, or switch to guided mode to choose from the three canonical actions. AI evaluates operational judgment, not writing confidence.
+At Cedar Ridge's confirmed barrier deviation, GPT-5.6 maps the learner's written judgment to one of three authored safety branches. The next plant development then changes to a controlled recovery, an incomplete incident record or a broken evidence chain. At the end, GPT-5.6 evaluates the complete decision chain and a second model pass checks every factual claim against the canonical record before the review is displayed.
 
 ## Why GPT-5.6
 
@@ -79,8 +77,6 @@ OPENAI_MODEL=gpt-5.6
 No API key is exposed to the browser. The browser submits only canonical step and choice identifiers. The server rejects impossible paths and reconstructs the authoritative score, labels and consequences before saving a run or constructing model input. The written judgment can select a branch, but it cannot create points, consequences or safety rules.
 
 Both OAuth and verified email-OTP operators receive server-owned run history, leaderboard persistence and queued follow-up drills. Anonymous visitors can complete a scenario and receive a review, but their score is not persisted.
-
-The `/command` competition demo is public and requires no account. Global authentication-error handling explicitly leaves visitors on the simulator; sign-in is optional and is used only to persist scores and follow-up drills.
 
 ## Safety boundary
 

@@ -30,6 +30,7 @@ const Lab = lazy(() => import("./pages/Lab"));
 const IncidentCommand = lazy(() => import("./pages/IncidentCommand"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const About = lazy(() => import("./pages/About"));
+const Partnerships = lazy(() => import("./pages/Partnerships"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PreviewMode = lazy(() => import("./pages/PreviewMode"));
 const WaterDistributionGuide = lazy(() => import("./pages/WaterDistribution"));
@@ -242,6 +243,7 @@ function Router() {
         <Route path={"/command"} component={IncidentCommand} />
         <Route path={"/formulas"} component={Formulas} />
         <Route path={"/about"} component={About} />
+        <Route path={"/partnerships"} component={Partnerships} />
         <Route path={"/class1"}>{() => <Redirect to="/class1-water" />}</Route>
         <Route path={"/class1-mock"} component={Class1MockExam} />
         <Route path={"/wqa"} component={WQAQuiz} />

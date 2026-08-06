@@ -181,7 +181,7 @@ const faqs = [
   {
     question: "Can I get a refund?",
     answer:
-      "We offer a 7-day money-back guarantee if you're not satisfied. Email support@echeloninstitute.ca and we'll make it right.",
+      "We offer a 7-day money-back guarantee if you're not satisfied. Email abello@echeloninstitute.ca and we'll make it right.",
   },
   {
     question: "Which certification levels are available right now?",
