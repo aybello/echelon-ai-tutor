@@ -90,22 +90,79 @@ export function allowedCourseKeysForOrg(tier: string, province: string): string[
 }
 
 /**
+ * Shared entitlement validator for all operator course-assignment paths.
+ *
+ * Rules enforced:
+ * 1. At least one course key must be supplied for operator assignments.
+ * 2. Every key must be a valid canonical key for the org's province.
+ * 3. Every key must be included in the org's purchased stream tier.
+ * 4. Fails closed for unknown, missing, cross-region or unauthorized keys.
+ *
+ * @param courseKeys  Array of course keys to validate (must be non-empty for operators)
+ * @param tier        Organization's purchased tier (e.g. "stream-wastewater-coll")
+ * @param province    Organization's province ("ontario" | "western")
+ * @param role        "operator" (requires course) | "manager" (may skip course check)
+ * @returns           The validated course keys (normalized, same order)
+ * @throws            TRPCError BAD_REQUEST or FORBIDDEN with a clear message
+ */
+export function validateOrgCourseKeys(
+  courseKeys: string[],
+  tier: string,
+  province: string,
+  role: "operator" | "manager" = "operator",
+): string[] {
+  // Rule 1: operators must have at least one course
+  if (role === "operator" && courseKeys.length === 0) {
+    throw new Error(
+      "Select at least one course included in your team plan. " +
+      "Every operator must be assigned a specific certification course.",
+    );
+  }
+  // Managers may have no course keys (they get dashboard access, not exam access)
+  if (courseKeys.length === 0) return [];
+
+  const allowed = allowedCourseKeysForOrg(tier, province);
+  const allRegionalKeys = STREAM_COURSE_KEYS[province]
+    ? Object.values(STREAM_COURSE_KEYS[province]).flat()
+    : [];
+
+  for (const ck of courseKeys) {
+    const normalized = ck.trim().toLowerCase();
+    // Rule 2: must be a valid key for this province
+    if (!allRegionalKeys.includes(normalized)) {
+      throw new Error(
+        `'${ck}' is not a valid course for ${province === "western" ? "Western Canada (WPI)" : "Ontario"}. ` +
+        `Check the course key and try again.`,
+      );
+    }
+    // Rule 3: must be within the org's purchased stream tier
+    if (allowed.length > 0 && !allowed.includes(normalized)) {
+      throw new Error(
+        `Your plan does not include '${ck}'. ` +
+        `Upgrade to All Streams or purchase a matching stream plan to assign this course.`,
+      );
+    }
+  }
+  return courseKeys.map(ck => ck.trim().toLowerCase());
+}
+
+/**
  * Shared team pricing constants — used by both stripeRouter.ts and Teams.tsx.
  * Values in cents CAD. Single stream = same price regardless of which stream.
  */
 export const TEAM_BASE_PRICE: Record<string, Record<TeamStreamTier, number>> = {
   ontario: {
-    "stream-water":           27900,
-    "stream-wastewater":      27900,
-    "stream-water-dist":      27900,
-    "stream-wastewater-coll": 27900,
+    "stream-water":           19900,
+    "stream-wastewater":      19900,
+    "stream-water-dist":      19900,
+    "stream-wastewater-coll": 19900,
     "all-access":             34900,
   },
   western: {
-    "stream-water":           34900,
-    "stream-wastewater":      34900,
-    "stream-water-dist":      34900,
-    "stream-wastewater-coll": 34900,
+    "stream-water":           24900,
+    "stream-wastewater":      24900,
+    "stream-water-dist":      24900,
+    "stream-wastewater-coll": 24900,
     "all-access":             44900,
   },
 };

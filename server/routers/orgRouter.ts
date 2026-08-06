@@ -30,11 +30,12 @@ import {
   users,
   examOutcomes,
 } from "../../drizzle/schema";
+import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
-import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
+import { allowedCourseKeysForOrg, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -114,7 +115,7 @@ async function resolveOrgManager(ctx: {
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
-  org: { id: number; province: string; termEnd: Date; name: string; tier: string },
+  org: { id: number; province: string; termEnd: Date; termStart?: Date | null; name: string; tier: string },
   email: string,
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
@@ -129,29 +130,11 @@ async function grantSeat(
     ? courseKeys
     : courseKey ? [courseKey] : [];
 
-  // Ticket 6: Validate all course keys against the org's province — reject unknown or cross-province keys
-  for (const ck of resolvedKeys) {
-    if (!isValidCourseKey(ck, org.province)) {
-      throw new Error(
-        `Invalid course key '${ck}' for province '${org.province}'. ` +
-        `Only courses available in this province may be assigned.`
-      );
-    }
-  }
-
-  // Entitlement check: verify each course key is allowed by the org's stream tier
-  const allowed = allowedCourseKeysForOrg(org.tier, org.province);
-  for (const ck of resolvedKeys) {
-    if (allowed.length > 0 && !allowed.includes(ck)) {
-      throw new TRPCError({
-        code: "FORBIDDEN",
-        message: `Your plan does not include '${courseKeyToLabel(ck)}'. Upgrade to All Streams or purchase a matching stream plan to assign this course.`,
-      });
-    }
-  }
+  // Shared entitlement validator — enforces: non-empty for operators, province validity, stream tier
+  const validatedKeys = validateOrgCourseKeys(resolvedKeys, org.tier, org.province, role);
 
   // Primary course key for backward-compat fields
-  const primaryCourseKey = resolvedKeys[0] ?? null;
+  const primaryCourseKey = validatedKeys[0] ?? null;
 
   // Upsert member row — if previously revoked, re-activate
   const existingMember = await db
@@ -163,7 +146,7 @@ async function grantSeat(
   const isNewMember = existingMember.length === 0;
   const wasRevoked = existingMember.length > 0 && existingMember[0].status === "revoked";
 
-  const courseKeysJson = resolvedKeys.length > 0 ? JSON.stringify(resolvedKeys) : null;
+  const courseKeysJson = validatedKeys.length > 0 ? JSON.stringify(validatedKeys) : null;
 
   if (existingMember.length > 0) {
     await db
@@ -189,8 +172,11 @@ async function grantSeat(
   }
 
   // Upsert one subscription row per course key.
-  // If no course keys, upsert a single all-access row (legacy behaviour).
-  const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
+  // No empty-course fallback: operators must have at least one validated course key.
+  const coursesToUpsert = validatedKeys.length > 0 ? validatedKeys : [];
+  if (coursesToUpsert.length === 0 && role === "operator") {
+    throw new Error("Select at least one course included in your team plan.");
+  }
 
   for (const ck of coursesToUpsert) {
     const tier = ck ? (courseKeyToTierStrict(ck, org.province) ?? "all-access") : "all-access";
@@ -234,6 +220,27 @@ async function grantSeat(
     }
   }
 
+  // Record usage in the annual licence ledger (operators only).
+  // INSERT IGNORE: unique constraint (orgId, memberEmail, termStart) prevents double-counting.
+  if (role === "operator") {
+    const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+    try {
+      await db.insert(organizationTermUsage).values({
+        orgId: org.id,
+        memberEmail: email,
+        termStart,
+        termEnd: org.termEnd,
+      });
+    } catch (err: any) {
+      // Duplicate entry = operator already counted this term (reactivation). Safe to ignore.
+      const msg = err.message ?? "";
+      const causeMsg = err.cause?.message ?? "";
+      if (!msg.includes("Duplicate entry") && !causeMsg.includes("Duplicate entry") && !msg.includes("term_usage_unique_idx") && !causeMsg.includes("term_usage_unique_idx")) {
+        throw err;
+      }
+    }
+  }
+
   // Send enrollment email to new operators (or re-activated ones)
   // Fire-and-forget — don't block the seat assignment if email fails
   if (role === "operator" && (isNewMember || wasRevoked)) {
@@ -241,8 +248,8 @@ async function grantSeat(
     const loginUrl = `${origin}/login`;
     const supportEmail = process.env.SUPPORT_EMAIL ?? "abello@echeloninstitute.ca";
     // Build course label: list all assigned courses, not just the primary one
-    const courseName = resolvedKeys.length > 1
-      ? resolvedKeys.map(k => courseKeyToLabel(k, org.province)).join(" & ")
+    const courseName = validatedKeys.length > 1
+      ? validatedKeys.map(k => courseKeyToLabel(k, org.province)).join(" & ")
       : primaryCourseKey ? courseKeyToLabel(primaryCourseKey, org.province) : undefined;
     sendTeamEnrollmentEmail({
       email,
@@ -320,16 +327,15 @@ export const orgRouter = router({
     const memberEmails = activeMembers.map(m => m.email);
     const seatsAssigned = memberEmails.length;
 
-    // Count distinct operators used this term (for per-term seat cap display)
+    // Count licences used this term from the annual usage ledger
     const orgTermStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
     const [{ termCnt }] = await db
-      .select({ termCnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
-      .from(organizationMembers)
+      .select({ termCnt: sql<number>`COUNT(*)` })
+      .from(organizationTermUsage)
       .where(
         and(
-          eq(organizationMembers.orgId, orgId),
-          eq(organizationMembers.role, "operator"),
-          gte(organizationMembers.assignedAt, orgTermStart),
+          eq(organizationTermUsage.orgId, orgId),
+          eq(organizationTermUsage.termStart, orgTermStart),
         ),
       );
     const seatsUsedThisTerm = Number(termCnt);
@@ -344,7 +350,9 @@ export const orgRouter = router({
         avgReadiness: 0,
         onTrackCount: 0,
         province: org.province,
-        termStart: org.createdAt,
+        tier: org.tier,
+        allowedCourseKeys: allowedCourseKeysForOrg(org.tier, org.province),
+        termStart: org.termStart ?? org.createdAt,
         termEnd: org.termEnd,
         status: org.status,
         billingType: org.billingType,
@@ -412,7 +420,9 @@ export const orgRouter = router({
       avgReadiness,
       onTrackCount,
       province: org.province,
-      termStart: org.createdAt,
+      tier: org.tier,
+      allowedCourseKeys: allowedCourseKeysForOrg(org.tier, org.province),
+      termStart: org.termStart ?? org.createdAt,
       termEnd: org.termEnd,
       status: org.status,
       billingType: org.billingType,
@@ -731,24 +741,23 @@ export const orgRouter = router({
           .limit(1);
 
         if (!existingActive) {
-          // New seat — enforce cap: count distinct operators assigned since termStart (per-term counting)
-          // Re-assigning a previously revoked operator in the same term does NOT consume a new seat.
+          // New seat — enforce cap using the annual licence ledger.
+          // Count usage records for this term. Reactivations are handled by the unique constraint in grantSeat.
           const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
           const [{ cnt }] = await tx
-            .select({ cnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
-            .from(organizationMembers)
+            .select({ cnt: sql<number>`COUNT(*)` })
+            .from(organizationTermUsage)
             .where(
               and(
-                eq(organizationMembers.orgId, orgId),
-                eq(organizationMembers.role, "operator"),
-                gte(organizationMembers.assignedAt, termStart),
+                eq(organizationTermUsage.orgId, orgId),
+                eq(organizationTermUsage.termStart, termStart),
               ),
             );
 
           if (Number(cnt) >= org.seatsTotal) {
             throw new TRPCError({
               code: "BAD_REQUEST",
-              message: `Seat limit reached (${org.seatsTotal} seats used this term). All ${org.seatsTotal} operator slots have been used this term. Add more seats to enroll additional operators.`,
+              message: `Seat limit reached (${org.seatsTotal} licences used this term). All ${org.seatsTotal} operator slots have been used this term. Add more seats to enroll additional operators.`,
             });
           }
         }
@@ -804,22 +813,24 @@ export const orgRouter = router({
       const resolvedKeys: string[] = input.courseKeys && input.courseKeys.length > 0
         ? input.courseKeys
         : input.courseKey ? [input.courseKey] : [];
-      const primaryCourseKey = resolvedKeys[0] ?? null;
-      const courseKeysJson = resolvedKeys.length > 0 ? JSON.stringify(resolvedKeys) : null;
 
-      // PATCH 2: Validate ALL course keys BEFORE any writes (fail fast, no partial state)
-      const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
-      const resolvedTiers = new Map<string | null, string>();
+      // Shared validator: enforces non-empty, province validity, and stream tier entitlement
+      let validatedKeys: string[];
+      try {
+        validatedKeys = validateOrgCourseKeys(resolvedKeys, org.tier, org.province, "operator");
+      } catch (err: any) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: err.message });
+      }
+
+      const primaryCourseKey = validatedKeys[0] ?? null;
+      const courseKeysJson = validatedKeys.length > 0 ? JSON.stringify(validatedKeys) : null;
+
+      // Build tier map for subscription upserts (all keys validated above)
+      const coursesToUpsert = validatedKeys;
+      const resolvedTiers = new Map<string, string>();
       for (const ck of coursesToUpsert) {
-        if (!ck) {
-          resolvedTiers.set(null, "all-access");
-        } else {
-          const resolvedTier = courseKeyToTierStrict(ck, org.province);
-          if (!resolvedTier) {
-            throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown course key: ${ck}. Please use a valid course key for province ${org.province ?? "unknown"}.` });
-          }
-          resolvedTiers.set(ck, resolvedTier);
-        }
+        const resolvedTier = courseKeyToTierStrict(ck, org.province) ?? "all-access";
+        resolvedTiers.set(ck, resolvedTier);
       }
 
       // PATCH 2: Wrap all writes in a transaction — member update + subscription expire + upserts are atomic
@@ -847,7 +858,7 @@ export const orgRouter = router({
         // Upsert one active subscription per new course key
         for (const ck of coursesToUpsert) {
           const tier = resolvedTiers.get(ck)!;
-          const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
+          const orgSubId = `org-${org.id}-${email}-${ck}`;
           const existingSub = await tx
             .select({ id: subscriptions.id })
             .from(subscriptions)
@@ -888,7 +899,10 @@ export const orgRouter = router({
    * Enforces seat cap across the entire batch before assigning any.
    */
   assignSeats: publicProcedure
-    .input(z.object({ emails: z.array(z.string().email()).min(1).max(100) }))
+    .input(z.object({
+      emails: z.array(z.string().email()).min(1).max(100),
+      courseKeys: z.array(z.string().max(64)).min(1).max(10),
+    }))
     .mutation(async ({ input, ctx }) => {
       const { orgId, managerEmail } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -902,6 +916,14 @@ export const orgRouter = router({
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
 
+      // Validate the course keys against the org's entitlement BEFORE processing any emails
+      let validatedCourseKeys: string[];
+      try {
+        validatedCourseKeys = validateOrgCourseKeys(input.courseKeys, org.tier, org.province, "operator");
+      } catch (err: any) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: err.message });
+      }
+
       const emails = input.emails.map(normalizeEmail);
       const uniqueEmails = Array.from(new Set(emails));
 
@@ -910,46 +932,44 @@ export const orgRouter = router({
       // transaction so a concurrent single-assign cannot sneak past the cap.
       const results: Array<{ email: string; success: boolean; error?: string }> = [];
       await db.transaction(async (tx) => {
-        // Count distinct operators assigned since termStart (per-term counting)
+        // Count usage records for this term from the annual licence ledger
         const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
         const [{ cnt }] = await tx
-          .select({ cnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
-          .from(organizationMembers)
+          .select({ cnt: sql<number>`COUNT(*)` })
+          .from(organizationTermUsage)
           .where(
             and(
-              eq(organizationMembers.orgId, orgId),
-              eq(organizationMembers.role, "operator"),
-              gte(organizationMembers.assignedAt, termStart),
+              eq(organizationTermUsage.orgId, orgId),
+              eq(organizationTermUsage.termStart, termStart),
             ),
           );
 
         const seatsUsedThisTerm = Number(cnt);
-        // Operators already counted this term do not consume additional seats on re-assign
+        // Operators already in the usage ledger this term do not consume additional licences
         const alreadyCountedThisTerm = await tx
-          .select({ email: organizationMembers.email })
-          .from(organizationMembers)
+          .select({ memberEmail: organizationTermUsage.memberEmail })
+          .from(organizationTermUsage)
           .where(
             and(
-              eq(organizationMembers.orgId, orgId),
-              eq(organizationMembers.role, "operator"),
-              gte(organizationMembers.assignedAt, termStart),
-              inArray(organizationMembers.email, uniqueEmails),
+              eq(organizationTermUsage.orgId, orgId),
+              eq(organizationTermUsage.termStart, termStart),
+              inArray(organizationTermUsage.memberEmail, uniqueEmails),
             ),
           );
-        const alreadyCountedSet = new Set(alreadyCountedThisTerm.map(r => r.email));
+        const alreadyCountedSet = new Set(alreadyCountedThisTerm.map(r => r.memberEmail));
         const newSeatsNeeded = uniqueEmails.filter(e => !alreadyCountedSet.has(e)).length;
 
         if (seatsUsedThisTerm + newSeatsNeeded > org.seatsTotal) {
           const available = org.seatsTotal - seatsUsedThisTerm;
           throw new TRPCError({
             code: "BAD_REQUEST",
-            message: `Not enough seats. You have ${available} seat${available === 1 ? "" : "s"} remaining this term but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
+            message: `Not enough seats. You have ${available} licence${available === 1 ? "" : "s"} remaining this term but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
           });
         }
 
         for (const email of uniqueEmails) {
           try {
-            await grantSeat(tx as any, org, email, "operator", managerEmail);
+            await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
             results.push({ email, success: true });
           } catch (err: any) {
             results.push({ email, success: false, error: err.message });
@@ -990,6 +1010,36 @@ export const orgRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const memberEmail = normalizeEmail(input.memberEmail);
+
+      // Validate: email must belong to this org
+      const [member] = await db
+        .select({ id: organizationMembers.id, courseKeys: organizationMembers.courseKeys })
+        .from(organizationMembers)
+        .where(
+          and(
+            eq(organizationMembers.orgId, orgId),
+            eq(organizationMembers.email, memberEmail),
+          ),
+        )
+        .limit(1);
+      if (!member) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "This operator is not a member of your organization." });
+      }
+
+      // Validate: course must be in the org's entitlement
+      const org = await db
+        .select({ tier: organizations.tier, province: organizations.province })
+        .from(organizations)
+        .where(eq(organizations.id, orgId))
+        .limit(1)
+        .then(r => r[0]);
+      if (org) {
+        const allowed = allowedCourseKeysForOrg(org.tier, org.province);
+        if (allowed.length > 0 && !allowed.includes(input.courseKey)) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "This course is not included in your team plan." });
+        }
+      }
+
       await db.insert(examOutcomes).values({
         orgId,
         memberEmail,

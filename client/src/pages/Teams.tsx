@@ -26,17 +26,17 @@ import { Building2, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } from "l
 // Mirrors TEAM_BASE_PRICE in server/stripe/subscriptionProducts.ts — keep in sync
 const TEAM_BASE_PRICE_CLIENT: Record<string, Record<TeamStreamTier, number>> = {
   ontario: {
-    "stream-water":           27900,
-    "stream-wastewater":      27900,
-    "stream-water-dist":      27900,
-    "stream-wastewater-coll": 27900,
+    "stream-water":           19900,
+    "stream-wastewater":      19900,
+    "stream-water-dist":      19900,
+    "stream-wastewater-coll": 19900,
     "all-access":             34900,
   },
   western: {
-    "stream-water":           34900,
-    "stream-wastewater":      34900,
-    "stream-water-dist":      34900,
-    "stream-wastewater-coll": 34900,
+    "stream-water":           24900,
+    "stream-wastewater":      24900,
+    "stream-water-dist":      24900,
+    "stream-wastewater-coll": 24900,
     "all-access":             44900,
   },
 };
@@ -93,7 +93,7 @@ function formatCAD(cents: number): string {
 }
 
 const FEATURES = [
-  "Full All-Access question bank (all exam levels)",
+  "Complete question bank for your selected stream",
   "AI Tutor with personalized coaching",
   "Progress dashboard per operator",
   "Manager dashboard with readiness metrics",
@@ -172,7 +172,7 @@ export default function Teams() {
           <span className="text-blue-600">Track every operator.</span>
         </h1>
         <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-          One team plan gives every operator at your utility full All-Access to Echelon's
+          One team plan gives every operator at your utility access to Echelon's
           question banks, AI Tutor, and progress tracking. You get a manager dashboard
           to see who is ready and who needs attention.
         </p>
@@ -216,7 +216,7 @@ export default function Teams() {
                       : "border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-700 bg-white"
                   }`}
                 >
-                  {t === "all-access" ? "All" : STREAM_TIER_LABELS[t].split(" ")[0]}
+                  {t === "all-access" ? "All Streams" : STREAM_TIER_LABELS[t]}
                 </button>
               ))}
             </div>

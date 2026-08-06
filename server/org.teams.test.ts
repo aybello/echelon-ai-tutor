@@ -204,7 +204,7 @@ describe("Echelon for Teams — org seat management", () => {
     const op1 = testEmail(1);
     const caller = appRouter.createCaller(makeCtx(MANAGER_EMAIL));
 
-    const result = await caller.org.assignSeat({ email: op1 });
+    const result = await caller.org.assignSeat({ email: op1, courseKeys: ["class1-water"] });
     expect(result.success).toBe(true);
     expect(result.email).toBe(op1);
 
@@ -215,7 +215,7 @@ describe("Echelon for Teams — org seat management", () => {
       .where(and(eq(subscriptions.email, op1), eq(subscriptions.orgId, orgId)));
     expect(subs.length).toBe(1);
     expect(subs[0].status).toBe("active");
-    expect(subs[0].tier).toBe("all-access");
+    expect(subs[0].tier).toBe("class1"); // class1-water maps to class1 tier
 
     // Verify member row was created
     const members = await db
@@ -268,7 +268,7 @@ describe("Echelon for Teams — org seat management", () => {
     const caller = appRouter.createCaller(makeCtx(MANAGER_EMAIL));
 
     // Re-assign op1 (was revoked in previous test)
-    const result = await caller.org.assignSeat({ email: op1 });
+    const result = await caller.org.assignSeat({ email: op1, courseKeys: ["class1-water"] });
     expect(result.success).toBe(true);
 
     // Verify subscription is active again
@@ -296,15 +296,15 @@ describe("Echelon for Teams — org seat management", () => {
     const caller = appRouter.createCaller(makeCtx(MANAGER_EMAIL));
 
     // Assign op2 and op3 (should succeed — 2 seats remaining)
-    await caller.org.assignSeat({ email: op2 });
-    await caller.org.assignSeat({ email: op3 });
+    await caller.org.assignSeat({ email: op2, courseKeys: ["class1-water"] });
+    await caller.org.assignSeat({ email: op3, courseKeys: ["class1-water"] });
 
     // Now all 3 seats are taken (op1, op2, op3)
     const overview = await caller.org.getOrgOverview();
     expect(overview.seatsAssigned).toBe(3);
 
     // Attempt to assign op4 — should throw BAD_REQUEST
-    await expect(caller.org.assignSeat({ email: op4 })).rejects.toThrow(/Seat limit reached/);
+    await expect(caller.org.assignSeat({ email: op4, courseKeys: ["class1-water"] })).rejects.toThrow(/Seat limit reached/);
   });
 
   it("bulk assignSeats respects seat cap and returns per-email results", async () => {
@@ -321,11 +321,11 @@ describe("Echelon for Teams — org seat management", () => {
     const op6 = testEmail(6);
 
     await expect(
-      caller.org.assignSeats({ emails: [op5, op6] }),
+      caller.org.assignSeats({ emails: [op5, op6], courseKeys: ["class1-water"] }),
     ).rejects.toThrow(/Not enough seats/);
 
     // Re-assigning op2 (already counted this term) should succeed without consuming a new slot
-    const result = await caller.org.assignSeats({ emails: [testEmail(2)] });
+    const result = await caller.org.assignSeats({ emails: [testEmail(2)], courseKeys: ["class1-water"] });
     expect(result.results.filter(r => r.success).length).toBe(1);
   });
 

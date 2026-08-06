@@ -645,23 +645,25 @@ export const stripeRouter = router({
         throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });
       }
 
-      // Ticket 7: Prevent seat downsizing below active operator count
-      const activeOperatorCount = await db
+      // Prevent seat downsizing below annual licence usage (not just active count).
+      // An org that used 20 licences but only has 5 active cannot downsize to 5.
+      const { organizationTermUsage } = await import("../../drizzle/schema");
+      const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+      const licencesUsedThisTerm = await db
         .select({ cnt: count() })
-        .from(membersTable)
+        .from(organizationTermUsage)
         .where(
           and(
-            eq(membersTable.orgId, org.id),
-            eq(membersTable.role, "operator"),
-            eq(membersTable.status, "assigned"),
+            eq(organizationTermUsage.orgId, org.id),
+            eq(organizationTermUsage.termStart, termStart),
           ),
         )
         .then(r => Number(r[0]?.cnt ?? 0));
 
-      if (input.seats < activeOperatorCount) {
+      if (input.seats < licencesUsedThisTerm) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: `Cannot reduce seats to ${input.seats} — ${activeOperatorCount} operator${activeOperatorCount === 1 ? " is" : "s are"} currently active. Revoke seats first, then reduce.`,
+          message: `Cannot reduce seats to ${input.seats} — ${licencesUsedThisTerm} licence${licencesUsedThisTerm === 1 ? " has" : "s have"} already been used this term. Each licence is consumed for the full contract year.`,
         });
       }
 

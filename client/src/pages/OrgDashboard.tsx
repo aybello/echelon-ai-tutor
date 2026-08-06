@@ -394,7 +394,11 @@ export default function OrgDashboard() {
         toast.error("No valid emails found.");
         return;
       }
-      assignSeats.mutate({ emails });
+      if (assignCourseKeys.length === 0) {
+        toast.error("Select at least one course before bulk-assigning operators.");
+        return;
+      }
+      assignSeats.mutate({ emails, courseKeys: assignCourseKeys });
     } else {
       if (!assignEmail.trim() || !assignEmail.includes("@")) {
         toast.error("Please enter a valid email address.");
@@ -771,7 +775,7 @@ export default function OrgDashboard() {
                           {editCourseTarget === m.email ? (
                             <div className="space-y-1.5">
                               <div className="border border-slate-200 rounded-lg p-2 space-y-1 max-h-40 overflow-y-auto w-52">
-                                {getTeamCourseOptions(overview.province).map(opt => (
+                                {getTeamCourseOptions(overview.province).filter(opt => !overview.allowedCourseKeys || overview.allowedCourseKeys.length === 0 || overview.allowedCourseKeys.includes(opt.key)).map(opt => (
                                   <label key={opt.key} className="flex items-center gap-2 cursor-pointer hover:bg-slate-50 rounded px-1 py-0.5">
                                     <Checkbox
                                       checked={editCourseKeys.includes(opt.key)}
@@ -1389,7 +1393,7 @@ export default function OrgDashboard() {
                 <div className="space-y-1.5">
                   <Label className="text-slate-700">Courses <span className="text-slate-400 font-normal">(optional — can set later)</span></Label>
                   <div className="border border-slate-200 rounded-lg p-3 space-y-2 max-h-48 overflow-y-auto">
-                    {getTeamCourseOptions(overview.province).map(opt => (
+                    {getTeamCourseOptions(overview.province).filter(opt => !overview.allowedCourseKeys || overview.allowedCourseKeys.length === 0 || overview.allowedCourseKeys.includes(opt.key)).map(opt => (
                       <label key={opt.key} className="flex items-center gap-2.5 cursor-pointer hover:bg-slate-50 rounded px-1 py-0.5">
                         <Checkbox
                           id={`assign-course-${opt.key}`}
