@@ -92,8 +92,8 @@ class ErrorBoundary extends Component<Props, State> {
             >
               An unexpected error occurred. Try refreshing the page or go back to
               the homepage. If the problem persists, contact{" "}
-              <a href="mailto:support@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>
-                support@echeloninstitute.ca
+              <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>
+                abello@echeloninstitute.ca
               </a>
               .
             </p>

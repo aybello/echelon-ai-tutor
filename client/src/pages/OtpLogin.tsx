@@ -232,7 +232,7 @@ export default function OtpLogin() {
             </form>
             <p style={{ marginTop: 20, fontSize: 13, color: "#94A3B8" }}>
               Need help?{" "}
-              <a href="mailto:support@echeloninstitute.ca" style={{ color: "#1D4ED8", textDecoration: "none", fontWeight: 600 }}>
+              <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#1D4ED8", textDecoration: "none", fontWeight: 600 }}>
                 Contact support
               </a>
             </p>

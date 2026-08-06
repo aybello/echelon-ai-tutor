@@ -29,7 +29,7 @@ export default function Privacy() {
 
         <LegalSection title="1. Who We Are">
           <p>Echelon Institute is an independent exam preparation platform for Canadian water and wastewater operators. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program (including EOCP or WPI).</p>
-          <p>Contact: <a href="mailto:support@echeloninstitute.ca" style={{ color: "#3B82F6" }}>support@echeloninstitute.ca</a></p>
+          <p>Contact: <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a></p>
         </LegalSection>
 
         <LegalSection title="2. Information We Collect">
@@ -79,7 +79,7 @@ export default function Privacy() {
             <li><strong>Deletion:</strong> Request deletion of your account and associated data.</li>
             <li><strong>Portability:</strong> Request an export of your practice history.</li>
           </ul>
-          <p>To exercise any of these rights, email <a href="mailto:support@echeloninstitute.ca" style={{ color: "#3B82F6" }}>support@echeloninstitute.ca</a>.</p>
+          <p>To exercise any of these rights, email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>.</p>
         </LegalSection>
 
         <LegalSection title="8. Cookies">
@@ -92,7 +92,7 @@ export default function Privacy() {
 
         <div style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Questions about privacy or data handling?</p>
-          <a href="mailto:support@echeloninstitute.ca?subject=Privacy%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email support@echeloninstitute.ca →</a>
+          <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
         </div>
       </div>
     </div>

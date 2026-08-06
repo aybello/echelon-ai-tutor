@@ -2858,7 +2858,7 @@ export default function Landing() {
               },
               {
                 q: "Can I get a refund?",
-                a: "We offer a 7-day money-back guarantee if you are not satisfied. Email support@echeloninstitute.ca and we will make it right.",
+                a: "We offer a 7-day money-back guarantee if you are not satisfied. Email abello@echeloninstitute.ca and we will make it right.",
               },
             ].map((faq, i, arr) => (
               <FaqItem key={faq.q} q={faq.q} a={faq.a} isLast={i === arr.length - 1} />
@@ -2968,7 +2968,7 @@ export default function Landing() {
               ]},
               { label: "Support", links: [
                 { label: "Restore Access", href: "/account" },
-                { label: "Email Support", href: "mailto:support@echeloninstitute.ca" },
+                { label: "Email Support", href: "mailto:abello@echeloninstitute.ca" },
               ]},
             ].map(col => (
               <div key={col.label}>
@@ -3037,7 +3037,7 @@ export default function Landing() {
               <Link href="/privacy"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Privacy</span></Link>
               <Link href="/terms"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Terms</span></Link>
               <Link href="/refund"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Refunds</span></Link>
-              <a href="mailto:support@echeloninstitute.ca" style={{ fontSize: 11, color: "rgba(255,255,255,0.3)" }}>Support</a>
+              <a href="mailto:abello@echeloninstitute.ca" style={{ fontSize: 11, color: "rgba(255,255,255,0.3)" }}>Support</a>
             </div>
           </div>
 

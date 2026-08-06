@@ -226,7 +226,7 @@ async function grantSeat(
   if (role === "operator" && (isNewMember || wasRevoked)) {
     const origin = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
     const loginUrl = `${origin}/login`;
-    const supportEmail = process.env.SUPPORT_EMAIL ?? "support@echeloninstitute.ca";
+    const supportEmail = process.env.SUPPORT_EMAIL ?? "abello@echeloninstitute.ca";
     // Build course label: list all assigned courses, not just the primary one
     const courseName = resolvedKeys.length > 1
       ? resolvedKeys.map(k => courseKeyToLabel(k, org.province)).join(" & ")

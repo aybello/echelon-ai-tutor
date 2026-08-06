@@ -35,7 +35,7 @@ export default function Refund() {
             <li><strong>One-time passes:</strong> 7-day refund window, up to 50 questions completed.</li>
             <li><strong>Subscriptions:</strong> Cancel anytime; access continues until end of billing period. No prorated refunds.</li>
             <li><strong>Teams plans:</strong> Contact us within 7 days of purchase for a refund if no seats have been activated.</li>
-            <li><strong>How to request:</strong> Email <a href="mailto:support@echeloninstitute.ca" style={{ color: "#3B82F6" }}>support@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</li>
+            <li><strong>How to request:</strong> Email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</li>
           </ul>
         </div>
 
@@ -74,7 +74,7 @@ export default function Refund() {
         </LegalSection>
 
         <LegalSection title="How to Request a Refund">
-          <p>Email <a href="mailto:support@echeloninstitute.ca?subject=Refund%20Request" style={{ color: "#3B82F6" }}>support@echeloninstitute.ca</a> with:</p>
+          <p>Email <a href="mailto:abello@echeloninstitute.ca?subject=Refund%20Request" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a> with:</p>
           <ul>
             <li>Your purchase email address.</li>
             <li>Your Stripe receipt or order number.</li>
@@ -85,7 +85,7 @@ export default function Refund() {
 
         <div style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Questions about refunds?</p>
-          <a href="mailto:support@echeloninstitute.ca?subject=Refund%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email support@echeloninstitute.ca →</a>
+          <a href="mailto:abello@echeloninstitute.ca?subject=Refund%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
         </div>
       </div>
     </div>

@@ -387,7 +387,7 @@ export const stripeRouter = router({
 
       const stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
       if (!stripeCustomerId) {
-        throw new Error("No Stripe customer found for this email. Please contact support@echeloninstitute.ca");
+        throw new Error("No Stripe customer found for this email. Please contact abello@echeloninstitute.ca");
       }
 
       const portalSession = await stripe.billingPortal.sessions.create({

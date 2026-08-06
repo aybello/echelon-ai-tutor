@@ -1620,7 +1620,7 @@ export default function Pricing() {
             },
             {
               q: "What is your refund policy?",
-              a: "We offer a 7-day refund for first-time purchases if you haven't completed more than 50 questions. Contact support@echeloninstitute.ca with your purchase email and we'll process the refund promptly."
+              a: "We offer a 7-day refund for first-time purchases if you haven't completed more than 50 questions. Contact abello@echeloninstitute.ca with your purchase email and we'll process the refund promptly."
             },
             {
               q: "How do Teams / utility plans work?",
@@ -1640,7 +1640,7 @@ export default function Pricing() {
         </div>
         <div style={{ textAlign: "center", marginTop: 32, padding: "20px", background: "#F8FAFC", borderRadius: 12, border: "1px solid #E2E8F0" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Still have questions?</p>
-          <a href="mailto:support@echeloninstitute.ca?subject=Pricing%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email support@echeloninstitute.ca →</a>
+          <a href="mailto:abello@echeloninstitute.ca?subject=Pricing%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
         </div>
       </div>
 
@@ -1655,7 +1655,7 @@ export default function Pricing() {
           marginTop: 48,
         }}
       >
-        © 2026 Echelon Institute. All rights reserved. · Payments secured by Stripe. · <a href="/account" style={{ color: "#94A3B8" }}>My Account</a> · <a href="mailto:support@echeloninstitute.ca" style={{ color: "#94A3B8" }}>Support</a>
+        © 2026 Echelon Institute. All rights reserved. · Payments secured by Stripe. · <a href="/account" style={{ color: "#94A3B8" }}>My Account</a> · <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#94A3B8" }}>Support</a>
       </div>
     </div>
   );
