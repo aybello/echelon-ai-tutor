@@ -394,7 +394,11 @@ export default function OrgDashboard() {
         toast.error("No valid emails found.");
         return;
       }
-      assignSeats.mutate({ emails });
+      if (assignCourseKeys.length === 0) {
+        toast.error("Select at least one course before bulk-assigning operators.");
+        return;
+      }
+      assignSeats.mutate({ emails, courseKeys: assignCourseKeys });
     } else {
       if (!assignEmail.trim() || !assignEmail.includes("@")) {
         toast.error("Please enter a valid email address.");
