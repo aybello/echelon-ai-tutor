@@ -93,7 +93,7 @@ function formatCAD(cents: number): string {
 }
 
 const FEATURES = [
-  "Full All-Access question bank (all exam levels)",
+  "Complete question bank for your selected stream",
   "AI Tutor with personalized coaching",
   "Progress dashboard per operator",
   "Manager dashboard with readiness metrics",
@@ -172,7 +172,7 @@ export default function Teams() {
           <span className="text-blue-600">Track every operator.</span>
         </h1>
         <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-          One team plan gives every operator at your utility full All-Access to Echelon's
+          One team plan gives every operator at your utility access to Echelon's
           question banks, AI Tutor, and progress tracking. You get a manager dashboard
           to see who is ready and who needs attention.
         </p>
@@ -216,7 +216,7 @@ export default function Teams() {
                       : "border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-700 bg-white"
                   }`}
                 >
-                  {t === "all-access" ? "All" : STREAM_TIER_LABELS[t].split(" ")[0]}
+                  {t === "all-access" ? "All Streams" : STREAM_TIER_LABELS[t]}
                 </button>
               ))}
             </div>

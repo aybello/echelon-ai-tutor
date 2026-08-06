@@ -350,7 +350,9 @@ export const orgRouter = router({
         avgReadiness: 0,
         onTrackCount: 0,
         province: org.province,
-        termStart: org.createdAt,
+        tier: org.tier,
+        allowedCourseKeys: allowedCourseKeysForOrg(org.tier, org.province),
+        termStart: org.termStart ?? org.createdAt,
         termEnd: org.termEnd,
         status: org.status,
         billingType: org.billingType,
@@ -418,7 +420,9 @@ export const orgRouter = router({
       avgReadiness,
       onTrackCount,
       province: org.province,
-      termStart: org.createdAt,
+      tier: org.tier,
+      allowedCourseKeys: allowedCourseKeysForOrg(org.tier, org.province),
+      termStart: org.termStart ?? org.createdAt,
       termEnd: org.termEnd,
       status: org.status,
       billingType: org.billingType,
@@ -1006,6 +1010,36 @@ export const orgRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const memberEmail = normalizeEmail(input.memberEmail);
+
+      // Validate: email must belong to this org
+      const [member] = await db
+        .select({ id: organizationMembers.id, courseKeys: organizationMembers.courseKeys })
+        .from(organizationMembers)
+        .where(
+          and(
+            eq(organizationMembers.orgId, orgId),
+            eq(organizationMembers.email, memberEmail),
+          ),
+        )
+        .limit(1);
+      if (!member) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "This operator is not a member of your organization." });
+      }
+
+      // Validate: course must be in the org's entitlement
+      const org = await db
+        .select({ tier: organizations.tier, province: organizations.province })
+        .from(organizations)
+        .where(eq(organizations.id, orgId))
+        .limit(1)
+        .then(r => r[0]);
+      if (org) {
+        const allowed = allowedCourseKeysForOrg(org.tier, org.province);
+        if (allowed.length > 0 && !allowed.includes(input.courseKey)) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "This course is not included in your team plan." });
+        }
+      }
+
       await db.insert(examOutcomes).values({
         orgId,
         memberEmail,
