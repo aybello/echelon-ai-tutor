@@ -243,6 +243,14 @@ export default function StudentDashboard() {
     };
   }, [difficultyBreakdown.data]);
 
+  /* ── Auth gate — MUST be before any early return to respect Rules of Hooks ── */
+  const authResolved = !authLoading && !dashboardMe.isLoading;
+  useEffect(() => {
+    if (authResolved && !hasAccess) {
+      window.location.replace("/account?next=/dashboard");
+    }
+  }, [authResolved, hasAccess]);
+
   /* ── Loading state ── */
   if (authLoading || dashboardMe.isLoading) {
     return (
@@ -254,15 +262,6 @@ export default function StudentDashboard() {
       </div>
     );
   }
-
-  /* ── Auth gate — redirect to /account?next=/dashboard ── */
-  // Wait for both auth checks to finish before redirecting — prevents flash on page load
-  const authResolved = !authLoading && !dashboardMe.isLoading;
-  useEffect(() => {
-    if (authResolved && !hasAccess) {
-      window.location.replace("/account?next=/dashboard");
-    }
-  }, [authResolved, hasAccess]);
 
   if (!authResolved || !hasAccess) {
     return (

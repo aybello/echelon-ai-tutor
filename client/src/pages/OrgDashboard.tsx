@@ -166,9 +166,10 @@ export default function OrgDashboard() {
     },
     retryDelay: 3000,
   });
-  const membersQuery = trpc.org.listMembers.useQuery(undefined, { retry: false });
-  const attentionQuery = trpc.org.getAttention.useQuery(undefined, { retry: false });
-  const passRateQuery = trpc.org.getPassRateSummary.useQuery(undefined, { retry: false });
+  const isManager = !!overviewQuery.data;
+  const membersQuery = trpc.org.listMembers.useQuery(undefined, { retry: false, enabled: isManager });
+  const attentionQuery = trpc.org.getAttention.useQuery(undefined, { retry: false, enabled: isManager });
+  const passRateQuery = trpc.org.getPassRateSummary.useQuery(undefined, { retry: false, enabled: isManager });
 
   // Handle ?session_id= param — show welcome banner after Stripe checkout
   useEffect(() => {
@@ -262,11 +263,11 @@ export default function OrgDashboard() {
   });
 
   // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
-  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(undefined, { retry: false });
-  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(undefined, { retry: false });
-  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(undefined, { retry: false });
+  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(undefined, { retry: false, enabled: isManager });
+  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(undefined, { retry: false, enabled: isManager });
+  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(undefined, { retry: false, enabled: isManager });
   const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(undefined, { enabled: false });
-  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(undefined, { retry: false });
+  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(undefined, { retry: false, enabled: isManager });
 
   const [intelSortKey, setIntelSortKey] = useState<"readinessScore" | "accuracy" | "totalAttempts" | "lastActive">("readinessScore");
   const [intelSortDir, setIntelSortDir] = useState<"asc" | "desc">("desc");
