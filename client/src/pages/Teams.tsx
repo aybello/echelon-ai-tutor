@@ -187,10 +187,10 @@ export default function Teams() {
           </p>
           <div className="flex flex-wrap justify-center gap-10 mt-10">
             {[
-              { icon: <Users className="w-4 h-4" />, value: "500+", label: "Operators trained" },
-              { icon: <TrendingUp className="w-4 h-4" />, value: "84%", label: "First-attempt pass rate" },
-              { icon: <Award className="w-4 h-4" />, value: "36", label: "Courses available" },
-            ].map(stat => (
+            { icon: <Award className="w-4 h-4" />, value: "36", label: "Courses available" },
+            { icon: <Users className="w-4 h-4" />, value: "18,000+", label: "Practice questions" },
+            { icon: <TrendingUp className="w-4 h-4" />, value: "5", label: "Provinces supported" },
+            ].map((stat: { icon: React.ReactNode; value: string; label: string }) => (
               <div key={stat.label} className="flex items-center gap-2 text-white/80">
                 <span className="text-cyan-200">{stat.icon}</span>
                 <span className="font-bold text-white text-lg">{stat.value}</span>
