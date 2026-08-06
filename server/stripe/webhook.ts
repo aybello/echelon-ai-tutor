@@ -2,7 +2,7 @@ import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
-import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
+import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage, stripeEventLog } from "../../drizzle/schema";
 import { grantSeat } from "../routers/orgRouter";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail, sendManagerOnboardingEmail, sendOrgPaymentConfirmationEmail } from "../email";
@@ -12,6 +12,7 @@ import { eq, and, sql } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "./subscriptionPeriod";
 import { trackEvent } from "../analytics";
+import { ENV } from "../_core/env";
 
 
 /**
@@ -232,121 +233,131 @@ export function registerStripeWebhook(app: Express) {
 
       if (event.type === "customer.subscription.created" || event.type === "customer.subscription.updated") {
         const sub = event.data.object as any;
-        try {
+
+        // ── Org (team) subscription branch ────────────────────────────────
+        if (sub.metadata?.type === "org") {
+          const orgName = sub.metadata?.org_name ?? "Unknown Organization";
+          const managerEmail = normalizeEmail(sub.metadata?.manager_email ?? "");
+          const province = (sub.metadata?.subscription_province ?? "ontario") as SP;
+          const tier = (sub.metadata?.subscription_tier ?? "all-access") as ST;
+          const liveQuantity = sub.items?.data?.[0]?.quantity ?? null;
+          const metadataSeats = parseInt(sub.metadata?.seats ?? "1", 10);
+          const seats = liveQuantity ?? metadataSeats;
+          const stripeSubscriptionId = sub.id;
+          const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
+          const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
+          const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
+
+          if (!managerEmail || !currentPeriodEnd) {
+            const missingOrgFields = [!managerEmail && 'manager_email', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
+            console.warn(`[Stripe Webhook] Org subscription ${stripeSubscriptionId} missing required fields: ${missingOrgFields}`);
+            notifyOwner({
+              title: '⚠️ Team Provision Failed: Missing Metadata',
+              content: `Org subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) could NOT be provisioned: ${missingOrgFields} missing.\n\nRecovery: correct the metadata and replay the webhook from the Stripe Dashboard.`,
+            }).catch((e: any) => { console.error('[webhook] notifyOwner failed:', e); });
+            // 400 = structurally invalid, Stripe will not retry
+            return res.status(400).json({ error: `Missing required org metadata: ${missingOrgFields}` });
+          }
+
           const db = await getDb();
-          if (!db) throw new Error("Database unavailable");
+          if (!db) return res.status(503).json({ error: "Database unavailable" });
 
-          // ── Org (team) subscription branch ────────────────────────────────
-          if (sub.metadata?.type === "org") {
-            const orgName = sub.metadata?.org_name ?? "Unknown Organization";
-            const managerEmail = normalizeEmail(sub.metadata?.manager_email ?? "");
-            const province = (sub.metadata?.subscription_province ?? "ontario") as SP;
-            // P2a fix: honor the tier from subscription metadata instead of hardcoding all-access.
-            // The Teams UI always sends all-access, but direct API calls could send a class tier.
-            // Provisioning the wrong tier would give buyers access they didn't pay for.
-            const tier = (sub.metadata?.subscription_tier ?? "all-access") as ST;
-            // P0B fix: derive seats from the live Stripe subscription quantity, not metadata.seats.
-            // metadata.seats is set at checkout time and is never updated when updateTeamSeats runs,
-            // so reading it here would reset seatsTotal back to the original purchase quantity
-            // after every renewal or seat-change event.
-            const liveQuantity = sub.items?.data?.[0]?.quantity ?? null;
-            const metadataSeats = parseInt(sub.metadata?.seats ?? "1", 10);
-            const seats = liveQuantity ?? metadataSeats;
-            const stripeSubscriptionId = sub.id;
-            const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
-            const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
-            const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
-
-            if (!managerEmail || !currentPeriodEnd) {
-              const missingOrgFields = [!managerEmail && 'manager_email', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
-              console.warn(`[Stripe Webhook] Org subscription ${stripeSubscriptionId} missing required fields: ${missingOrgFields}`);
-              // P1 fix: alert owner so a failed B2B provision is never silent.
-              // Previously this returned quietly with no notification — a paying team buyer
-              // could get nothing and nobody would know.
-              notifyOwner({
-                title: '⚠️ Team Provision Failed: Missing Metadata',
-                content: `Org subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) could NOT be provisioned because required fields are missing: ${missingOrgFields}.\n\nThis means the team buyer has paid but NO org was created and NO manager seat was granted.\n\nRecovery: correct the missing metadata on the Stripe subscription (manager_email, org_name) and replay the webhook event from the Stripe Dashboard. Stripe is the only provisioning authority — do not create the org manually.`,
-              }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
+          // ── Event ledger: register or resume this event ──────────────────
+          try {
+            await db.insert(stripeEventLog).values({
+              stripeEventId: event.id,
+              eventType: event.type,
+              stripeObjectId: stripeSubscriptionId,
+              status: "pending",
+              dbProcessed: false,
+              emailDelivered: false,
+              attemptCount: 1,
+            });
+          } catch (_dupErr: any) {
+            // Unique constraint violation = already registered; check if already completed
+            const existing = await db.select().from(stripeEventLog).where(eq(stripeEventLog.stripeEventId, event.id)).limit(1);
+            if (existing.length > 0 && existing[0].status === "completed") {
+              console.log(`[Stripe Webhook] Event ${event.id} already completed — skipping`);
               return res.json({ received: true });
             }
+            // Incomplete — increment attempt count and continue
+            await db.update(stripeEventLog).set({ attemptCount: sql`${stripeEventLog.attemptCount} + 1` }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+          }
 
-            // Upsert organizations row
+          // ── Upsert organizations row ─────────────────────────────────────
+          let orgId: number;
+          try {
             const existingOrg = await db
-              .select({ id: organizations.id })
+              .select({ id: organizations.id, onboardingEmailSentAt: organizations.onboardingEmailSentAt })
               .from(organizations)
               .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
               .limit(1);
 
-            let orgId: number;
             if (existingOrg.length === 0) {
-              // New org — create it and grant manager seat
               const [insertResult] = await db.insert(organizations).values({
-                name: orgName,
-                province,
-                tier,
-                seatsTotal: seats,
-                managerEmail,
-                stripeSubscriptionId,
-                stripeCustomerId,
-                termStart: currentPeriodStart,
-                termEnd: currentPeriodEnd,
-                billingType: "stripe",
-                status,
+                name: orgName, province, tier, seatsTotal: seats, managerEmail,
+                stripeSubscriptionId, stripeCustomerId,
+                termStart: currentPeriodStart, termEnd: currentPeriodEnd,
+                billingType: "stripe", status,
               });
               orgId = (insertResult as any).insertId;
-              // Grant manager seat (member row + subscription row)
               await grantSeat(db, { id: orgId, name: orgName, province, termStart: currentPeriodStart, termEnd: currentPeriodEnd, tier }, managerEmail, "manager");
               console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail.replace(/(^.{3}).+@/, '$1***@')} seats=${seats}`);
-              await notifyOwner({
-                title: `New Team Plan: ${orgName}`,
-                content: `${managerEmail} purchased a ${seats}-seat ${tier} team plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}`,
-              });
-              // Send manager onboarding email (non-blocking — idempotency is guaranteed by
-              // the existingOrg check above: this block only runs for brand-new orgs)
-              const siteOrigin = "https://echeloninstitute.manus.space";
-              sendManagerOnboardingEmail({
-                managerEmail,
-                orgName,
-                seats,
-                tierLabel: TIER_LABELS[tier as ST] ?? tier,
-                dashboardUrl: `${siteOrigin}/account?next=/team`,
-              }).catch(err => {
-                console.error("[Stripe Webhook] Failed to send manager onboarding email:", err.message);
-              });
+              notifyOwner({ title: `New Team Plan: ${orgName}`, content: `${managerEmail} purchased a ${seats}-seat ${tier} plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}` }).catch((e: any) => { console.error('[webhook] notifyOwner failed:', e); });
             } else {
-              // Existing org — sync seats, termEnd, status
               orgId = existingOrg[0].id;
-              await db
-                .update(organizations)
-                .set({ seatsTotal: seats, termStart: currentPeriodStart, termEnd: currentPeriodEnd, status })
-                .where(eq(organizations.id, orgId));
-              // Sync termEnd on org-managed subscriptions.
-              // IMPORTANT: when org is active, only extend rows that are already 'active'.
-              // Do NOT touch 'expired' rows — those are deliberately revoked operators.
-              // Only blanket-expire everything when the org itself goes inactive.
+              await db.update(organizations).set({ seatsTotal: seats, termStart: currentPeriodStart, termEnd: currentPeriodEnd, status }).where(eq(organizations.id, orgId));
               if (status === "active" || status === "past_due") {
-                // Org is still live (active or grace period) — only extend already-active rows.
-                // Never touch 'expired' rows: those are deliberately revoked operators.
-                await db
-                  .update(subscriptions)
-                  .set({ currentPeriodEnd })
-                  .where(and(eq(subscriptions.orgId, orgId), eq(subscriptions.status, "active")));
+                await db.update(subscriptions).set({ currentPeriodEnd }).where(and(eq(subscriptions.orgId, orgId), eq(subscriptions.status, "active")));
               } else {
-                // Org cancelled — expire all managed operator rows
-                await db
-                  .update(subscriptions)
-                  .set({ currentPeriodEnd, status: "expired" })
-                  .where(eq(subscriptions.orgId, orgId));
+                await db.update(subscriptions).set({ currentPeriodEnd, status: "expired" }).where(eq(subscriptions.orgId, orgId));
               }
-              // Seed active operators into the new term's usage ledger on renewal
               if (status === "active" && currentPeriodStart) {
                 await initializeOrganizationRenewalTerm(db, orgId, currentPeriodStart, currentPeriodEnd);
               }
               console.log(`[Stripe Webhook] Org updated: ${orgId} seats=${seats} status=${status}`);
             }
-            return res.json({ received: true });
+
+            await db.update(stripeEventLog).set({ dbProcessed: true, orgId }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+
+          } catch (provisionErr: any) {
+            console.error("[Stripe Webhook] Org provisioning failed:", provisionErr.message);
+            await db.update(stripeEventLog).set({ status: "failed", lastError: provisionErr.message }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+            // 500 = transient failure, Stripe will retry
+            return res.status(500).json({ error: "Org provisioning failed" });
           }
-          // ── End org branch ─────────────────────────────────────────────────
+
+          // ── Onboarding email: send if not yet delivered ──────────────────
+          // Check the DB flag, not existingOrg — so SMTP retries work on replay
+          try {
+            const orgForEmail = await db.select({ onboardingEmailSentAt: organizations.onboardingEmailSentAt }).from(organizations).where(eq(organizations.id, orgId)).limit(1);
+            if (!orgForEmail[0]?.onboardingEmailSentAt) {
+              await sendManagerOnboardingEmail({
+                managerEmail, orgName, seats,
+                tierLabel: TIER_LABELS[tier as ST] ?? tier,
+                dashboardUrl: `${ENV.appBaseUrl}/account?next=/team`,
+              });
+              await db.update(organizations).set({ onboardingEmailSentAt: new Date() }).where(eq(organizations.id, orgId));
+              await db.update(stripeEventLog).set({ emailDelivered: true }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+            } else {
+              await db.update(stripeEventLog).set({ emailDelivered: true }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+            }
+          } catch (emailErr: any) {
+            // SMTP failure: log and continue. DB provisioning succeeded.
+            // Replay the webhook once SMTP is restored to retry the email.
+            console.error("[Stripe Webhook] Onboarding email failed — replay to retry:", emailErr.message);
+            await db.update(stripeEventLog).set({ lastError: emailErr.message }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+          }
+
+          await db.update(stripeEventLog).set({ status: "completed", completedAt: new Date() }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+          return res.json({ received: true });
+        }
+        // ── End org branch ─────────────────────────────────────────────────
+
+        // Individual subscription branch
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database unavailable");
 
           const tier = sub.metadata?.subscription_tier as ST | undefined;
           const province = sub.metadata?.subscription_province as SP | undefined;
@@ -507,39 +518,76 @@ export function registerStripeWebhook(app: Express) {
 
             if (orgRow.length > 0) {
               const org = orgRow[0];
-              // Idempotency: use Stripe invoice ID to avoid duplicate emails
               const stripeInvoiceId: string = invoice.id ?? "";
-              const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(
-                await stripe.subscriptions.retrieve(stripeSubscriptionId) as any
-              );
-              if (currentPeriodEnd) {
-                await db
-                  .update(organizations)
+              const billingReason: string = invoice.billing_reason ?? "";
+
+              // ── Event ledger: register or check this invoice event ─────────
+              try {
+                await db.insert(stripeEventLog).values({
+                  stripeEventId: event.id,
+                  eventType: event.type,
+                  stripeObjectId: stripeInvoiceId,
+                  orgId: org.id,
+                  status: "pending",
+                  dbProcessed: false,
+                  emailDelivered: false,
+                  attemptCount: 1,
+                });
+              } catch (_dupErr: any) {
+                const existing = await db.select().from(stripeEventLog).where(eq(stripeEventLog.stripeEventId, event.id)).limit(1);
+                if (existing.length > 0 && existing[0].status === "completed") {
+                  console.log(`[Stripe Webhook] Invoice event ${event.id} already completed — skipping`);
+                  return res.json({ received: true });
+                }
+                await db.update(stripeEventLog).set({ attemptCount: sql`${stripeEventLog.attemptCount} + 1` }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+              }
+
+              // ── DB updates ────────────────────────────────────────────────
+              try {
+                const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(
+                  await stripe.subscriptions.retrieve(stripeSubscriptionId) as any
+                );
+                if (!currentPeriodEnd) throw new Error(`Could not resolve currentPeriodEnd for org invoice ${stripeInvoiceId}`);
+
+                await db.update(organizations)
                   .set({ status: "active", termEnd: currentPeriodEnd, ...(currentPeriodStart ? { termStart: currentPeriodStart } : {}) })
                   .where(eq(organizations.id, org.id));
-                // Extend active operator subscriptions
-                await db
-                  .update(subscriptions)
+                await db.update(subscriptions)
                   .set({ status: "active", currentPeriodEnd })
                   .where(and(eq(subscriptions.orgId, org.id), eq(subscriptions.status, "active")));
-                console.log(`[Stripe Webhook] Org invoice paid: ${org.name} (${org.id}) new end=${currentPeriodEnd.toISOString()} invoice=${stripeInvoiceId}`);
+                console.log(`[Stripe Webhook] Org invoice paid: ${org.name} (${org.id}) new end=${currentPeriodEnd.toISOString()} reason=${billingReason}`);
+
+                await db.update(stripeEventLog).set({ dbProcessed: true }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+
+                // ── Payment confirmation email ─────────────────────────────
+                const amountPaid: number = invoice.amount_paid ?? 0;
+                const amountFormatted = `CA$${(amountPaid / 100).toFixed(2)}`;
+                try {
+                  await sendOrgPaymentConfirmationEmail({
+                    managerEmail: org.managerEmail,
+                    orgName: org.name,
+                    seats: org.seatsTotal,
+                    tierLabel: TIER_LABELS[org.tier as ST] ?? org.tier,
+                    amountFormatted,
+                    periodEnd: currentPeriodEnd,
+                    hostedInvoiceUrl: invoice.hosted_invoice_url ?? null,
+                    invoicePdfUrl: invoice.invoice_pdf ?? null,
+                    billingReason,
+                  });
+                  await db.update(stripeEventLog).set({ emailDelivered: true }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+                } catch (emailErr: any) {
+                  console.error("[Stripe Webhook] Org payment email failed:", emailErr.message);
+                  await db.update(stripeEventLog).set({ lastError: emailErr.message }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+                }
+
+                await db.update(stripeEventLog).set({ status: "completed", completedAt: new Date() }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+                return res.json({ received: true });
+
+              } catch (invoiceDbErr: any) {
+                console.error("[Stripe Webhook] Org invoice DB update failed:", invoiceDbErr.message);
+                await db.update(stripeEventLog).set({ status: "failed", lastError: invoiceDbErr.message }).where(eq(stripeEventLog.stripeEventId, event.id)).catch(() => {});
+                return res.status(500).json({ error: "Org invoice processing failed" });
               }
-              // Send org payment confirmation email (non-blocking)
-              const amountPaid: number = invoice.amount_paid ?? 0;
-              const amountFormatted = `CA$${(amountPaid / 100).toFixed(2)}`;
-              sendOrgPaymentConfirmationEmail({
-                managerEmail: org.managerEmail,
-                orgName: org.name,
-                seats: org.seatsTotal,
-                tierLabel: TIER_LABELS[org.tier as ST] ?? org.tier,
-                amountFormatted,
-                periodEnd: currentPeriodEnd ?? new Date(),
-                hostedInvoiceUrl: invoice.hosted_invoice_url ?? null,
-                invoicePdfUrl: invoice.invoice_pdf ?? null,
-              }).catch(err => {
-                console.error("[Stripe Webhook] Failed to send org payment confirmation email:", err.message);
-              });
-              return res.json({ received: true });
             }
             // ── End org invoice branch ────────────────────────────────────────
 

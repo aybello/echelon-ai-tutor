@@ -1293,21 +1293,31 @@ export interface OrgPaymentConfirmationEmailPayload {
   periodEnd: Date;
   hostedInvoiceUrl?: string | null;
   invoicePdfUrl?: string | null;
+  /** Stripe billing_reason: 'subscription_create' | 'subscription_cycle' | other */
+  billingReason?: string | null;
 }
 
 export async function sendOrgPaymentConfirmationEmail(payload: OrgPaymentConfirmationEmailPayload): Promise<void> {
-  const { managerEmail, orgName, seats, tierLabel, amountFormatted, periodEnd, hostedInvoiceUrl, invoicePdfUrl } = payload;
+  const { managerEmail, orgName, seats, tierLabel, amountFormatted, periodEnd, hostedInvoiceUrl, invoicePdfUrl, billingReason } = payload;
   const transporter = await getTransporter();
   const periodEndStr = periodEnd.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
   const invoiceLink = hostedInvoiceUrl ?? invoicePdfUrl ?? null;
+  const isInitial = billingReason === "subscription_create";
+  const subjectLine = isInitial
+    ? `Payment confirmed - ${orgName} team plan is active`
+    : `Payment confirmed - ${orgName} team plan renewed`;
+  const headlineText = isInitial ? "Your team plan is active" : "Team plan renewed";
+  const bodyText = isInitial
+    ? `Your ${orgName} team plan is now active.`
+    : `Your ${orgName} team plan has been renewed.`;
   await transporter.sendMail({
     from: `"Echelon Institute" <${ENV.smtpUser ?? "noreply@echeloninstitute.ca"}>`,
     to: managerEmail,
-    subject: `Payment confirmed - ${orgName} team plan renewed`,
+    subject: subjectLine,
     text: [
       `Hi,`,
       ``,
-      `Your ${orgName} team plan has been renewed.`,
+      bodyText,
       ``,
       `Plan: ${tierLabel} | ${seats} operator licence${seats === 1 ? "" : "s"}`,
       `Amount charged: ${amountFormatted}`,
@@ -1319,7 +1329,7 @@ export async function sendOrgPaymentConfirmationEmail(payload: OrgPaymentConfirm
       ``,
       `-- The Echelon Institute Team`,
     ].join("\n"),
-    html: `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,sans-serif;"><table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;"><tr><td align="center"><table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;"><tr><td style="background:linear-gradient(135deg,#059669 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px;text-align:center;"><h1 style="color:#fff;margin:0 0 8px;font-size:26px;font-weight:800;">Payment confirmed</h1><p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">${orgName} team plan renewed</p></td></tr><tr><td style="background:#fff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;"><div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:24px;"><p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;">Renewal Summary</p><p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${orgName}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">${tierLabel} &middot; ${seats} operator licence${seats === 1 ? "" : "s"}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">Amount: <strong>${amountFormatted}</strong></p><p style="margin:0;font-size:13px;color:#64748B;">Next renewal: ${periodEndStr}</p></div>${invoiceLink ? `<div style="text-align:center;margin-bottom:24px;"><a href="${invoiceLink}" style="display:inline-block;background:linear-gradient(135deg,#059669,#0E7490);color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;">View Invoice</a></div>` : `<p style="font-size:13px;color:#64748B;text-align:center;margin-bottom:24px;">Your Stripe receipt has been sent to ${managerEmail}.</p>`}<p style="margin:0;font-size:12px;color:#94A3B8;text-align:center;">Questions? <a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;">abello@echeloninstitute.ca</a></p></td></tr></table></td></tr></table></body></html>`,
+    html: `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,sans-serif;"><table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;"><tr><td align="center"><table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;"><tr><td style="background:linear-gradient(135deg,#059669 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px;text-align:center;"><h1 style="color:#fff;margin:0 0 8px;font-size:26px;font-weight:800;">Payment confirmed</h1><p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">${headlineText} &#8212; ${orgName}</p></td></tr><tr><td style="background:#fff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;"><div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:24px;"><p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;">${isInitial ? "Activation Summary" : "Renewal Summary"}</p><p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${orgName}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">${tierLabel} &middot; ${seats} operator licence${seats === 1 ? "" : "s"}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">Amount: <strong>${amountFormatted}</strong></p><p style="margin:0;font-size:13px;color:#64748B;">Next renewal: ${periodEndStr}</p></div>${invoiceLink ? `<div style="text-align:center;margin-bottom:24px;"><a href="${invoiceLink}" style="display:inline-block;background:linear-gradient(135deg,#059669,#0E7490);color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;">View Invoice</a></div>` : `<p style="font-size:13px;color:#64748B;text-align:center;margin-bottom:24px;">Your Stripe receipt has been sent to ${managerEmail}.</p>`}<p style="margin:0;font-size:12px;color:#94A3B8;text-align:center;">Questions? <a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;">abello@echeloninstitute.ca</a></p></td></tr></table></td></tr></table></body></html>`,
   });
   console.log(`[Org Payment Confirmation Email] Sent to ${managerEmail.replace(/(^.{3}).+@/, "$1***@")}`);
 }

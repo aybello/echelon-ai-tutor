@@ -407,6 +407,8 @@ export const organizations = mysqlTable("organizations", {
   billingType: varchar("billingType", { length: 16 }).notNull().default("stripe"), // 'stripe' | 'invoice'
   status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'past_due' | 'cancelled'
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** Timestamp when the manager onboarding email was successfully delivered. Null = not yet sent. */
+  onboardingEmailSentAt: timestamp("onboardingEmailSentAt"),
 });
 
 export type Organization = typeof organizations.$inferSelect;
@@ -663,3 +665,28 @@ export const commandEmailCapture = mysqlTable("command_email_capture", {
 
 export type CommandEmailCapture = typeof commandEmailCapture.$inferSelect;
 export type InsertCommandEmailCapture = typeof commandEmailCapture.$inferInsert;
+
+/**
+ * Stripe event ledger — one row per processed Stripe webhook event.
+ * The unique constraint on stripeEventId prevents duplicate processing on replay.
+ */
+export const stripeEventLog = mysqlTable("stripe_event_log", {
+  id: int("id").autoincrement().primaryKey(),
+  stripeEventId: varchar("stripeEventId", { length: 128 }).notNull().unique(),
+  eventType: varchar("eventType", { length: 128 }).notNull(),
+  stripeObjectId: varchar("stripeObjectId", { length: 128 }),
+  orgId: int("orgId"),
+  status: varchar("status", { length: 32 }).notNull().default("pending"),
+  dbProcessed: boolean("dbProcessed").notNull().default(false),
+  emailDelivered: boolean("emailDelivered").notNull().default(false),
+  attemptCount: int("attemptCount").notNull().default(0),
+  lastError: text("lastError"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  completedAt: timestamp("completedAt"),
+}, (table) => ({
+  eventTypeIdx: index("stripe_event_log_event_type_idx").on(table.eventType),
+  orgIdIdx: index("stripe_event_log_org_id_idx").on(table.orgId),
+}));
+
+export type StripeEventLog = typeof stripeEventLog.$inferSelect;
+export type InsertStripeEventLog = typeof stripeEventLog.$inferInsert;

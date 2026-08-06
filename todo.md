@@ -1203,3 +1203,15 @@
 - [x] Remove createOrganizationManual test block from teams.test.ts
 - [x] Update ARCHITECTURE.md Teams section per spec
 - [x] TypeScript clean, 612/612 tests passing
+
+## Webhook Audit Fixes (August 2026)
+- [x] Add stripe_event_log table to schema.ts and migrate to live DB
+- [x] Add onboardingEmailSentAt column to organizations table
+- [x] Replace fake invoice ID idempotency with real DB-backed event ledger (unique constraint on stripeEventId)
+- [x] Make manager onboarding email retryable via onboardingEmailSentAt DB flag
+- [x] Provisioning failures return 500 (Stripe retries); structural errors return 400 (no retry)
+- [x] Remove hardcoded echeloninstitute.manus.space; use ENV.appBaseUrl (production: echeloninstitute.ca)
+- [x] Distinguish initial payment (billing_reason=subscription_create) from renewal (subscription_cycle) in email
+- [x] Extract provisionOrgFromWebhook() into server/stripe/provisionOrg.ts for testability
+- [x] Add webhook.integration.test.ts with 13 real integration tests against live DB
+- [x] 36 test files, 625/625 tests passing, TypeScript clean
