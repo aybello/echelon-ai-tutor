@@ -22,6 +22,7 @@ import { orgRouter, orgIntelRouter } from "./routers/orgRouter";
 import { blogRouter } from "./routers/blogRouter";
 import { jobsRouter } from "./routers/jobsRouter";
 import { emailOtpRouter } from "./routers/emailOtpRouter";
+import { incidentCommandRouter } from "./routers/incidentCommandRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -106,6 +107,7 @@ export const appRouter = router({
   blog: blogRouter,
   jobs: jobsRouter,
   emailOtp: emailOtpRouter,
+  incidentCommand: incidentCommandRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
@@ -440,7 +442,7 @@ export const appRouter = router({
           rating: z.number().int().min(1).max(5),
           comment: z.string().max(1000).optional(),
           email: z.string().email().optional(), // for guest users
-          feedbackType: z.enum(["quiz_gate", "session_complete"]),
+          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score"]),
           province: z.string().max(32).optional(),
         })
       )

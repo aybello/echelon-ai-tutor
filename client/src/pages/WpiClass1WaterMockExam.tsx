@@ -38,7 +38,7 @@ export default function WpiClass1WaterMockExam() {
       title="WPI Class I Water Treatment Mock Exam"
       badge="WPI CLASS I · WATER TREATMENT"
       metaDescription="100-question timed mock exam for the WPI Class I Water Treatment certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 1 water treatment mock exam, BC EOCP Level I, Alberta AWWOA Class I"
+      metaKeywords="WPI Class I water treatment mock exam, ABC WPI exam prep, BC EOCP Level I, Alberta AWWOA Class I, US water operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -53,7 +53,7 @@ export default function WpiClass1WaterMockExam() {
       practiceLabel="Class I Water Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class1-water-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class I`}
       stream="water"
       accentColor="#0F766E"
     />

@@ -37,7 +37,7 @@ export default function WpiClass3WaterDistMockExam() {
       title="WPI Class III Water Distribution Mock Exam"
       badge="WPI CLASS III · WATER DISTRIBUTION"
       metaDescription="100-question timed mock exam for the WPI Class III Water Distribution certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 3 water distribution mock exam, BC EOCP Level III, Alberta AWWOA Class III distribution"
+      metaKeywords="WPI Class III water distribution mock exam, ABC WPI exam prep, BC EOCP Level III, Alberta AWWOA Class III, US water distribution operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -52,7 +52,7 @@ export default function WpiClass3WaterDistMockExam() {
       practiceLabel="Class III Distribution Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class3-water-dist-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class III`}
       stream="water"
       accentColor="#0369A1"
     />

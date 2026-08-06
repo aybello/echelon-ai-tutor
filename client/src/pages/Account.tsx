@@ -703,6 +703,38 @@ export default function Account() {
           </div>
         )}
 
+        {/* Rate us on Google */}
+        <div style={{ marginTop: 32, textAlign: "center" }}>
+          <a
+            href="https://g.page/r/CWsjBbkUlS8rEBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "12px 24px",
+              borderRadius: 12,
+              background: "#FFFBEB",
+              border: "1.5px solid #FDE68A",
+              color: "#92400E",
+              fontSize: 14,
+              fontWeight: 700,
+              textDecoration: "none",
+              fontFamily: "inherit",
+              transition: "transform 0.15s ease, box-shadow 0.15s ease",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.02)"; e.currentTarget.style.boxShadow = "0 4px 12px rgba(251,191,36,0.3)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
+          >
+            <span style={{ fontSize: 18 }}>⭐</span>
+            Rate Echelon on Google
+          </a>
+          <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 6 }}>
+            Your review helps other operators find quality training.
+          </p>
+        </div>
+
         {/* Clear device state / sign out */}
         <div style={{ marginTop: 40, borderTop: "1px solid #E2E8F0", paddingTop: 24, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
           <p style={{ fontSize: 12, color: "#94A3B8", margin: 0, textAlign: "center" }}>

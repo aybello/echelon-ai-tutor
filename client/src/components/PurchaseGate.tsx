@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
+import { useGeoRegion } from "@/hooks/useGeoRegion";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -132,6 +133,7 @@ export default function PurchaseGate({
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
+  const { isUS } = useGeoRegion();
 
   // Determine back navigation: use explicit backPath, or browser history if available, else "/"
   const handleBack = () => {
@@ -316,7 +318,7 @@ export default function PurchaseGate({
           Unlock {productName}
         </h2>
         <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-          Subscribe for full access — plans from CA$99/yr
+          Subscribe for full access — plans from {isUS ? "US$69/yr" : "CA$99/yr"}
         </p>
 
         {/* Feature bullets */}
@@ -365,7 +367,7 @@ export default function PurchaseGate({
             Annual subscription · Cancel anytime · Instant access
           </p>
 
-          <Link href="/quiz">
+          <Link href={isUS ? "/us/courses" : "/quiz"}>
             <button
               style={{
                 width: "100%",
@@ -380,7 +382,7 @@ export default function PurchaseGate({
                 fontFamily: "inherit",
               }}
             >
-              Try Free OIT Practice Instead
+              {isUS ? "Try Free Practice Instead" : "Try Free OIT Practice Instead"}
             </button>
           </Link>
         </div>

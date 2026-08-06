@@ -1,0 +1,88 @@
+import { ENV } from "./env";
+
+type OpenAIOutputPart = {
+  type?: string;
+  text?: string;
+};
+
+type OpenAIOutputItem = {
+  type?: string;
+  content?: OpenAIOutputPart[];
+};
+
+type OpenAIResponse = {
+  output_text?: string;
+  output?: OpenAIOutputItem[];
+};
+
+export type GPT56Options = {
+  reasoningEffort?: "low" | "medium";
+  verbosity?: "low" | "medium";
+  maxOutputTokens?: number;
+  jsonSchema?: {
+    name: string;
+    schema: Record<string, unknown>;
+  };
+};
+
+function extractOutputText(response: OpenAIResponse): string {
+  if (typeof response.output_text === "string" && response.output_text.trim()) {
+    return response.output_text.trim();
+  }
+
+  return (response.output ?? [])
+    .flatMap(item => item.content ?? [])
+    .filter(part => part.type === "output_text" && typeof part.text === "string")
+    .map(part => part.text!.trim())
+    .filter(Boolean)
+    .join("\n\n");
+}
+
+/**
+ * Small Responses API wrapper used by the Build Week incident simulator.
+ * Kept separate from the legacy Forge chat-completions client so the feature
+ * has an explicit, auditable AI integration.
+ */
+export async function invokeGPT56(input: string, options: GPT56Options = {}): Promise<string> {
+  if (!ENV.openAiApiKey) {
+    throw new Error("OPENAI_API_KEY is not configured");
+  }
+
+  const textConfig = options.jsonSchema
+    ? {
+        verbosity: options.verbosity ?? "medium",
+        format: {
+          type: "json_schema",
+          name: options.jsonSchema.name,
+          strict: true,
+          schema: options.jsonSchema.schema,
+        },
+      }
+    : { verbosity: options.verbosity ?? "medium" };
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${ENV.openAiApiKey}`,
+    },
+    body: JSON.stringify({
+      model: ENV.openAiModel,
+      reasoning: { effort: options.reasoningEffort ?? "medium" },
+      text: textConfig,
+      store: false,
+      max_output_tokens: options.maxOutputTokens ?? 1200,
+      input,
+    }),
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`OpenAI Responses API failed: ${response.status} ${detail}`);
+  }
+
+  const result = (await response.json()) as OpenAIResponse;
+  const outputText = extractOutputText(result);
+  if (!outputText) throw new Error("OpenAI returned an empty response");
+  return outputText;
+}

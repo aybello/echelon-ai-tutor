@@ -35,7 +35,7 @@ export default function WpiClass2WaterCollMockExam() {
       title="WPI Class II Wastewater Collection Mock Exam"
       badge="WPI CLASS II · WASTEWATER COLLECTION"
       metaDescription="100-question timed mock exam for the WPI Class II Wastewater Collection certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 2 wastewater collection mock exam, BC EOCP, Alberta AWWOA Class II collection"
+      metaKeywords="WPI Class II wastewater collection mock exam, ABC WPI exam prep, BC EOCP Level II, Alberta AWWOA Class II, US wastewater collection operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -50,7 +50,7 @@ export default function WpiClass2WaterCollMockExam() {
       practiceLabel="Class II Collection Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class2-water-coll-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class II`}
       stream="wastewater"
       accentColor="#1E3A5F"
     />

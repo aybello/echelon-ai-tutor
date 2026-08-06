@@ -547,3 +547,76 @@ export const emailOtpCodes = mysqlTable("email_otp_codes", {
 ]);
 export type EmailOtpCode = typeof emailOtpCodes.$inferSelect;
 export type InsertEmailOtpCode = typeof emailOtpCodes.$inferInsert;
+
+/**
+ * Command drill queue — stores the next recommended drill for a user
+ * after completing an Echelon Command scenario.
+ * One active row per user; upserted on each "Queue simulation" click.
+ */
+export const commandDrillQueue = mysqlTable("command_drill_queue", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  drillName: varchar("drillName", { length: 255 }).notNull(),
+  queuedAt: timestamp("queuedAt").defaultNow().notNull(),
+  completedAt: timestamp("completedAt"),
+}, (t) => [
+  index("cdq_user_idx").on(t.userId),
+  index("cdq_guest_idx").on(t.guestId),
+]);
+export type CommandDrillQueue = typeof commandDrillQueue.$inferSelect;
+export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;
+
+/**
+ * Command run history — one row per completed scenario run.
+ * Powers personal score timeline and the operator leaderboard.
+ */
+export const commandRunHistory = mysqlTable("command_run_history", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  displayName: varchar("displayName", { length: 80 }),
+  scenarioId: varchar("scenarioId", { length: 60 }).notNull(),
+  scenarioTitle: varchar("scenarioTitle", { length: 120 }).notNull(),
+  commandScore: int("commandScore").notNull(),
+  optimalCalls: int("optimalCalls").notNull(),
+  totalSteps: int("totalSteps").notNull(),
+  elapsedSeconds: int("elapsedSeconds").notNull().default(0),
+  decisionsJson: text("decisionsJson"), // JSON array of { stepId, choiceId, points } — nullable for historical rows
+  completedAt: timestamp("completedAt").defaultNow().notNull(),
+}, (t) => [
+  index("crh_user_idx").on(t.userId),
+  index("crh_guest_idx").on(t.guestId),
+  index("crh_scenario_idx").on(t.scenarioId),
+  index("crh_score_idx").on(t.commandScore),
+]);
+export type CommandRunHistory = typeof commandRunHistory.$inferSelect;
+export type InsertCommandRunHistory = typeof commandRunHistory.$inferInsert;
+
+// --- Command Centre: Feedback & Email Capture ---
+
+export const commandFeedback = mysqlTable("command_feedback", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  scenarioId: varchar("scenarioId", { length: 64 }).notNull(),
+  runId: int("runId"), // references command_run_history.id
+  rating: int("rating").notNull(), // 1-5 stars
+  comment: text("comment"), // optional text feedback
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type CommandFeedback = typeof commandFeedback.$inferSelect;
+export type InsertCommandFeedback = typeof commandFeedback.$inferInsert;
+
+export const commandEmailCapture = mysqlTable("command_email_capture", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  source: varchar("source", { length: 64 }).default("command_debrief").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type CommandEmailCapture = typeof commandEmailCapture.$inferSelect;
+export type InsertCommandEmailCapture = typeof commandEmailCapture.$inferInsert;

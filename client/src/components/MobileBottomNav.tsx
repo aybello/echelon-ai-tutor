@@ -2,10 +2,10 @@ import { Link, useLocation } from "wouter";
 
 const ITEMS = [
   { label: "Home", href: "/", icon: "🏠" },
+  { label: "Command", href: "/command", icon: "🚨" },
   { label: "Courses", href: "/pricing", icon: "📚" },
   { label: "Dashboard", href: "/dashboard", icon: "📊" },
   { label: "Formulas", href: "/formulas", icon: "📐" },
-  { label: "My Passes", href: "/account", icon: "🎫" },
 ];
 
 export default function MobileBottomNav() {

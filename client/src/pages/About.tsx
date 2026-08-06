@@ -25,9 +25,9 @@ const TIMELINE = [
 
 const VALUES = [
   {
-    icon: "🍁",
-    title: "Canada-First",
-    body: "Every question, regulation reference, and process description is specific to each province's framework. Starting with Ontario (OWWCO/MECP), expanding to BC (EOCP) and Alberta (EPA). No American content repurposed for Canadian exams.",
+    icon: "🎯",
+    title: "Operator-First",
+    body: "Every question, regulation reference, and process description is built on the actual exam framework operators face — whether that's Ontario (OWWCO/MECP), BC (EOCP), Alberta (AWWOA), or the WPI system used across Canada and the United States. No generic content, no shortcuts.",
   },
   {
     icon: "🧠",
@@ -44,7 +44,7 @@ const VALUES = [
 export default function About() {
   usePageMeta({
     title: "About — Echelon Institute",
-    description: "Echelon Institute was built to give Canadian water and wastewater operators the modern, interactive study tools they deserve — built on each province's actual regulatory framework.",
+    description: "Echelon Institute was built to give water and wastewater operators the modern, interactive study tools they deserve — built on the actual regulatory frameworks they are tested on.",
   });
 
   const { isAuthenticated } = useAuth({ lazy: true });
@@ -103,7 +103,7 @@ export default function About() {
             margin: "0 auto",
             maxWidth: 580,
           }}>
-            Canada's water sector deserved better study tools. We built them.
+            Water and wastewater operators deserved better study tools. We built them.
           </p>
         </div>
       </section>
@@ -116,9 +116,9 @@ export default function About() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           {[
-            "Canada's water and wastewater sector is one of the most regulated and technically demanding in the country. Operators must pass provincial exams to earn each certification level — from the Operator-in-Training (OIT) through Class 4. These exams cover province-specific regulations, process chemistry, hydraulics, and complex dosing calculations. Ontario uses OWWCO and MECP-administered exams; BC uses EOCP; Alberta uses the provincial EPA framework.",
-            "Yet the only study resources available were a dense government study manual, expensive in-person courses built on decade-old PowerPoint slides, and American exam prep apps that referenced the wrong regulations entirely. There was nothing interactive. Nothing visual. Nothing that actually showed operators how a clarifier works before asking them to answer questions about it.",
-            "Echelon Institute was built to fix that. Every question is mapped to each province's regulatory framework. Every visual module lets you see and interact with real treatment processes — not just read about them. The AI Tutor is trained on Canadian regulatory content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what provincial regulations require for turbidity monitoring.",
+            "Water and wastewater operators work in one of the most regulated and technically demanding fields in the trades. Whether you are sitting the Ontario OIT, a WPI Class II Water Treatment exam in Iowa, or the FDEP exam in Florida, the path to certification requires mastering process chemistry, hydraulics, complex dosing calculations, and a dense body of regulatory knowledge specific to your jurisdiction.",
+            "Yet the only study resources available were dense government study manuals, expensive in-person courses built on decade-old PowerPoint slides, and generic prep apps that referenced the wrong regulations entirely. There was nothing interactive. Nothing visual. Nothing that actually showed operators how a clarifier works before asking them to answer questions about it.",
+            "Echelon Institute was built to fix that. Every question is mapped to the actual exam framework — provincial for Canadian operators, WPI/ABC for US operators. Every visual module lets you see and interact with real treatment processes. The AI Tutor can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what regulations require for turbidity monitoring — in plain language, with worked examples.",
           ].map((para, i) => (
             <p key={i} style={{
               fontSize: 16,
@@ -485,7 +485,7 @@ export default function About() {
         background: "#fff",
       }}>
         <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>
-          © 2026 Echelon Institute · Built for Canadian water and wastewater operators
+          © 2026 Echelon Institute · Built for water and wastewater operators across North America
         </p>
       </footer>
 

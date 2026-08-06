@@ -37,7 +37,7 @@ export default function WpiClass3WastewaterMockExam() {
       title="WPI Class III Wastewater Treatment Mock Exam"
       badge="WPI CLASS III · WASTEWATER TREATMENT"
       metaDescription="100-question timed mock exam for the WPI Class III Wastewater Treatment certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 3 wastewater mock exam, BC EOCP Level III wastewater, Alberta AWWOA Class III"
+      metaKeywords="WPI Class III wastewater treatment mock exam, ABC WPI exam prep, BC EOCP Level III, Alberta AWWOA Class III, US wastewater operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -52,7 +52,7 @@ export default function WpiClass3WastewaterMockExam() {
       practiceLabel="Class III Wastewater Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class3-wastewater-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class III`}
       stream="wastewater"
       accentColor="#0F766E"
     />

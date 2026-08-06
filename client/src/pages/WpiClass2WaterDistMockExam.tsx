@@ -38,7 +38,7 @@ export default function WpiClass2WaterDistMockExam() {
       title="WPI Class II Water Distribution Mock Exam"
       badge="WPI CLASS II · WATER DISTRIBUTION"
       metaDescription="100-question timed mock exam for the WPI Class II Water Distribution certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 2 water distribution mock exam, BC EOCP Level II, Alberta AWWOA Class II distribution"
+      metaKeywords="WPI Class II water distribution mock exam, ABC WPI exam prep, BC EOCP Level II, Alberta AWWOA Class II, US water distribution operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -53,7 +53,7 @@ export default function WpiClass2WaterDistMockExam() {
       practiceLabel="Class II Distribution Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class2-water-dist-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class II`}
       stream="water"
       accentColor="#0369A1"
     />

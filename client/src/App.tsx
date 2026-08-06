@@ -27,6 +27,7 @@ const ProcessControl = lazy(() => import("./pages/ProcessControl"));
 const ChemCalc = lazy(() => import("./pages/ChemCalc"));
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Lab = lazy(() => import("./pages/Lab"));
+const IncidentCommand = lazy(() => import("./pages/IncidentCommand"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const About = lazy(() => import("./pages/About"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -54,6 +55,12 @@ const Careers = lazy(() => import("./pages/Careers"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Refund = lazy(() => import("./pages/Refund"));
+
+// US Expansion pages
+const USLanding = lazy(() => import("./pages/USLanding"));
+const USStates = lazy(() => import("./pages/USStates"));
+const USStatePage = lazy(() => import("./pages/USStatePage"));
+const USCourses = lazy(() => import("./pages/USCourses"));
 
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
@@ -232,6 +239,7 @@ function Router() {
         <Route path={"/chem-calc"} component={ChemCalc} />
         <Route path={"/math-practice"} component={MathPractice} />
         <Route path={"/lab"} component={Lab} />
+        <Route path={"/command"} component={IncidentCommand} />
         <Route path={"/formulas"} component={Formulas} />
         <Route path={"/about"} component={About} />
         <Route path={"/class1"}>{() => <Redirect to="/class1-water" />}</Route>
@@ -393,6 +401,11 @@ function Router() {
         <Route path={"/privacy"} component={Privacy} />
         <Route path={"/terms"} component={Terms} />
         <Route path={"/refund"} component={Refund} />
+        {/* US Expansion routes */}
+        <Route path={"/us"} component={USLanding} />
+        <Route path={"/us/states"} component={USStates} />
+        <Route path={"/us/states/:slug"} component={USStatePage} />
+        <Route path={"/us/courses"} component={USCourses} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

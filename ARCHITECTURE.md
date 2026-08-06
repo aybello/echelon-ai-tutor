@@ -183,6 +183,21 @@ All procedures are accessed via `trpc.<router>.<procedure>`.
 | `dashboard` | `trpc.dashboard.*` | Student stats, score history, exam countdown |
 | `magicLink` | `trpc.magicLink.*` | `sendMagicLink`, `consumeMagicLink` |
 | `dashboardAuth` | `trpc.dashboardAuth.*` | `sendOtp`, `verifyOtp`, `me`, `logout` |
+| `incidentCommand` | `trpc.incidentCommand.*` | GPT-5.6 after-action review for the incident simulator |
+
+---
+
+## Echelon Command
+
+Build Week incident-simulation feature:
+
+- Route: `/command`
+- UI and deterministic scenario engine: `client/src/pages/IncidentCommand.tsx`
+- Debrief router: `server/routers/incidentCommandRouter.ts`
+- OpenAI Responses API wrapper: `server/_core/openaiResponses.ts`
+- Server-only environment variables: `OPENAI_API_KEY`, optional `OPENAI_MODEL` (defaults to `gpt-5.6`)
+
+The scored decision path is deterministic. The client submits only step and choice IDs; the server reconstructs the canonical score and consequence so neither can be forged or injected from the browser. GPT-5.6 receives only that bounded record and generates the personalized after-action review. The endpoint uses the AI rate limiter. When the API is unavailable, the router returns a rules-engine fallback so the demo remains runnable.
 
 ---
 

@@ -57,7 +57,7 @@ export default function WpiClass3WastewaterQuiz() {
       currentPath="/wpi-class3-wastewater"
       courseLabel="WPI Class 3 · Wastewater Treatment"
       courseTitle="WPI Class 3 Wastewater Practice Quiz"
-      courseSubtitle="500 questions · BC (EOCP Level III) · Alberta (AWWOA Class 3)"
+      courseSubtitle="Canada & US · ABC/WPI Standard · Class III"
       headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)"
       headerIcon="🏭"
       headerActions={[

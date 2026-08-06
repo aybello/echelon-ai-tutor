@@ -49,6 +49,19 @@ export const contactLimiter = rateLimit({
 });
 
 /**
+ * Command debrief rate limiter — tighter because each debrief fans out to 2-4 LLM calls.
+ * 5 requests per minute per IP.
+ */
+export const commandDebriefLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: keyGen,
+  message: { error: "Command debrief rate limit reached — please wait before running another scenario." },
+});
+
+/**
  * Auth/login rate limiter — prevent brute force.
  * 10 requests per minute per IP.
  */

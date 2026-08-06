@@ -94,6 +94,9 @@ export const NAV_LINKS = [
   { label: "📋 WPI C4 Coll Mock",       href: "/wpi-class4-water-coll-mock" },
   { label: "📐 WPI C4 Coll Formulas",   href: "/formulas-wpi-class4-coll" },
   { label: "🌊 WPI Overview",         href: "/wpi" },
+  { label: "🇺🇸 US Operator Prep",     href: "/us" },
+  { label: "🇺🇸 US All Courses",        href: "/us/courses" },
+  { label: "🇺🇸 US Find My State",      href: "/us/states" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide",      href: "/process" },
   { label: "♻️ Wastewater Guide",   href: "/wastewater" },
@@ -104,6 +107,7 @@ export const NAV_LINKS = [
   { label: "🧮 Math Practice", href: "/math-practice" },
   { label: "🧪 Chem Calc",     href: "/chem-calc" },
   { label: "🔬 Lab",           href: "/lab" },
+  { label: "🚨 Echelon Command", href: "/command" },
   { label: "🗺️ Career Map",    href: "/career" },
   { label: "ℹ️ About",         href: "/about" },
   { label: "📊 Dashboard",      href: "/dashboard" },
@@ -178,6 +182,20 @@ const DRAWER_SECTIONS = [
     ],
   },
   {
+    key: "us",
+    label: "🇺🇸 US — ABC/WPI Exam Prep",
+    color: "#60A5FA",
+    links: [
+      { label: "US Overview", href: "/us" },
+      { label: "All Courses", href: "/us/courses" },
+      { label: "Find My State", href: "/us/states" },
+      { label: "C1 Water Practice", href: "/wpi-class1-water" },
+      { label: "C1 WW Practice", href: "/wpi-class1-wastewater" },
+      { label: "C1 Distribution", href: "/wpi-class1-water-dist" },
+      { label: "C1 Collection", href: "/wpi-class1-water-coll" },
+    ],
+  },
+  {
     key: "wqa",
     label: "WQA — Water Quality Analyst",
     color: "#FCD34D",
@@ -197,6 +215,7 @@ const DRAWER_SECTIONS = [
       { label: "🚰 Distribution Guide", href: "/distribution-guide" },
       { label: "🔩 Collection Guide", href: "/collection-guide" },
       { label: "📐 Formulas", href: "/formulas" },
+      { label: "🚨 Echelon Command", href: "/command" },
       { label: "🗺️ Career Map", href: "/career" },
       { label: "📊 Dashboard", href: "/dashboard" },
       { label: "🔑 Sign In", href: "/account" },
@@ -218,7 +237,7 @@ interface SiteNavProps {
  * Study tool pages (/quiz, /oit-mock, etc.) are NOT marketing pages.
  */
 function isMarketingPage(path: string): boolean {
-  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams" || path === "/blog" || path.startsWith("/blog/") || path === "/privacy" || path === "/terms" || path === "/refund" || path === "/jobs";
+  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams" || path === "/blog" || path.startsWith("/blog/") || path === "/privacy" || path === "/terms" || path === "/refund" || path === "/jobs" || path === "/us" || path.startsWith("/us/");
 }
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
@@ -245,6 +264,8 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath.startsWith("/wpi-class4-wastewater")) return ["/wpi-class4-wastewater", "/wpi-class4-wastewater-mock", "/formulas-wpi-class4-ww", "/dashboard", "/account", "/wpi"];
   // WPI landing
   if (currentPath === "/wpi") return ["/wpi-class1-water", "/wpi-class1-wastewater", "/wpi", "/dashboard", "/pricing", "/account"];
+  // US pages
+  if (currentPath === "/us" || currentPath.startsWith("/us/")) return ["/us", "/us/courses", "/us/states", "/pricing", "/account", "/wpi"];
   // Ontario Water pages
   if (currentPath.startsWith("/class1-water")) return ["/class1-water", "/class1-water-mock", "/formulas-water1", "/dashboard", "/pricing", "/account"];
   if (currentPath.startsWith("/class2-water")) return ["/class2-water", "/class2-water-mock", "/formulas-water2", "/dashboard", "/pricing", "/account"];
@@ -263,6 +284,7 @@ function getContextualPrimary(currentPath: string): string[] {
   // Formula / tool pages
   if (currentPath.startsWith("/formulas")) return ["/formulas", "/quiz", "/career", "/pricing", "/about", "/account"];
   if (currentPath === "/instrumentation") return ["/instrumentation", "/quiz", "/formulas", "/career", "/pricing", "/account"];
+  if (currentPath === "/command") return ["/command", "/instrumentation", "/process", "/quiz", "/about", "/account"];
   if (currentPath === "/process") return ["/process", "/wastewater", "/quiz", "/formulas", "/career", "/account"];
   if (currentPath === "/wastewater") return ["/wastewater", "/process", "/quiz", "/formulas", "/career", "/account"];
   if (currentPath === "/career") return ["/career", "/quiz", "/formulas", "/pricing", "/about", "/account"];
@@ -276,7 +298,7 @@ function getContextualPrimary(currentPath: string): string[] {
 function ResourcesDropdown({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const resourcePaths = ["/formulas", "/career", "/process", "/wastewater", "/about", "/contact"];
+  const resourcePaths = ["/formulas", "/career", "/process", "/wastewater", "/command", "/about", "/contact"];
   const isActive = resourcePaths.some(p => currentPath.startsWith(p));
 
   useEffect(() => {
@@ -292,6 +314,7 @@ function ResourcesDropdown({ currentPath }: { currentPath: string }) {
     { label: "📐 Formulas", href: "/formulas" },
     { label: "🗺️ Career Map", href: "/career" },
     { label: "🏭 Study Tools", href: "/process" },
+    { label: "🚨 Echelon Command", href: "/command" },
     { label: "ℹ️ Contact", href: "/about" },
   ];
 
@@ -645,6 +668,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             { label: "♻️ Wastewater", href: "/wastewater", accent: null },
             { label: "🚰 Distribution", href: "/distribution-guide", accent: null },
             { label: "🔩 Collection", href: "/collection-guide", accent: null },
+            { label: "🚨 Command", href: "/command", accent: "linear-gradient(135deg, #BE123C, #7C3AED)" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
