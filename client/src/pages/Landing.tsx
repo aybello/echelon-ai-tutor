@@ -2575,7 +2575,7 @@ export default function Landing() {
                 lineHeight: 1.15,
               }}>
                 Train Your Entire Team<br />
-                <span style={{ color: "#10B981" }}>Under One Plan</span>
+                <span style={{ color: "#7DD3FC" }}>Under One Plan</span>
               </h2>
 
               <p style={{

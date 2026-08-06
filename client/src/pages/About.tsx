@@ -408,12 +408,23 @@ export default function About() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "72px 24px", textAlign: "center" }}>
-        <div style={{ maxWidth: 560, margin: "0 auto" }}>
-          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: "0 0 14px" }}>
+      <section style={{
+        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
+        padding: "80px 24px",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }} />
+        <div style={{ maxWidth: 560, margin: "0 auto", position: "relative" }}>
+          <h2 style={{ fontSize: 30, fontWeight: 900, color: "#fff", margin: "0 0 14px", letterSpacing: "-0.02em" }}>
             Ready to Start Studying?
           </h2>
-          <p style={{ fontSize: 15, color: "#64748B", marginBottom: 32, lineHeight: 1.7 }}>
+          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", marginBottom: 36, lineHeight: 1.7 }}>
             500+ OIT practice questions, an AI Tutor that knows Canadian provincial regulations, and a formula sheet — all free.
           </p>
           {/* Google Review CTA */}
@@ -462,9 +473,9 @@ export default function About() {
               <button style={{
                 padding: "14px 28px",
                 borderRadius: 10,
-                border: "1px solid #E2E8F0",
-                background: "#fff",
-                color: "#0F172A",
+                border: "1.5px solid rgba(255,255,255,0.3)",
+                background: "rgba(255,255,255,0.1)",
+                color: "#fff",
                 fontSize: 14,
                 fontWeight: 600,
                 cursor: "pointer",

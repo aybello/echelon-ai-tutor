@@ -145,7 +145,17 @@ export default function Teams() {
       <SiteNav
         currentPath={location}
         rightSlot={
-          <a href="/account" className="text-sm font-semibold text-gray-700 hover:text-gray-900 border border-gray-300 hover:border-gray-400 bg-white px-4 py-1.5 rounded-lg transition-colors">
+          <a
+            href="/account"
+            style={{
+              padding: "8px 16px", borderRadius: 10,
+              background: "transparent",
+              color: "#1D4ED8", border: "1.5px solid #1D4ED8",
+              fontSize: 13, fontWeight: 700,
+              cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+              textDecoration: "none", display: "inline-block",
+            }}
+          >
             Sign In
           </a>
         }
