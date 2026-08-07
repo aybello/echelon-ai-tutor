@@ -5,7 +5,7 @@ import { getDb } from "../db";
 import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
-import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct } from "./subscriptionProducts";
+import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct, type OrganizationSubscriptionTier } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
@@ -14,7 +14,7 @@ import { trackEvent } from "../analytics";
 import { ENV } from "../_core/env";
 import { provisionOrgFromWebhook } from "./provisionOrg";
 import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
-import type { SubscriptionProvince, SubscriptionTier } from "./subscriptionProducts";
+import type { SubscriptionProvince } from "./subscriptionProducts";
 
 
 
@@ -204,7 +204,7 @@ export function registerStripeWebhook(app: Express) {
           const managerEmail = normalizeEmail(liveSubscription.metadata?.manager_email ?? "");
           const orgName = liveSubscription.metadata?.org_name?.trim() ?? "";
           const province = liveSubscription.metadata?.subscription_province as SubscriptionProvince;
-          const tier = liveSubscription.metadata?.subscription_tier as SubscriptionTier;
+          const tier = liveSubscription.metadata?.subscription_tier as OrganizationSubscriptionTier;
           const seats = liveSubscription.items.data[0]?.quantity ?? 0;
           const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(liveSubscription);
 

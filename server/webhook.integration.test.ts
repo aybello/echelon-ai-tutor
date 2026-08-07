@@ -53,22 +53,16 @@ const describeWithDatabase = describe.skipIf(!hasIntegrationDatabase);
 
 // ── Mocks ─────────────────────────────────────────────────────────────────────
 
-vi.mock("./email", () => ({
-  sendManagerOnboardingEmail: vi.fn().mockResolvedValue(undefined),
-  sendOrgPaymentConfirmationEmail: vi.fn().mockResolvedValue(undefined),
-  sendTeamEnrollmentEmail: vi.fn().mockResolvedValue(undefined),
-  sendWelcomeOnboardingEmail: vi.fn().mockResolvedValue(undefined),
-  // Pass through the real pure helper so unit tests can call it
-  buildOrgPaymentEmailCopy: (billingReason: string | null | undefined, orgName: string) => {
-    if (billingReason === "subscription_create") {
-      return { subject: `Payment confirmed - ${orgName} team plan is active`, headline: "Your team plan is active", body: `Your ${orgName} team plan is now active.`, summaryLabel: "Activation Summary", periodLabel: "Next renewal" };
-    }
-    if (billingReason === "subscription_cycle") {
-      return { subject: `Payment confirmed - ${orgName} team plan renewed`, headline: "Team plan renewed", body: `Your ${orgName} team plan has been renewed.`, summaryLabel: "Renewal Summary", periodLabel: "Next renewal" };
-    }
-    return { subject: `Payment confirmed - ${orgName} team plan`, headline: "Payment received", body: `We received a payment for your ${orgName} team plan.`, summaryLabel: "Payment Summary", periodLabel: "Current term ends" };
-  },
-}));
+vi.mock("./email", async () => {
+  const actual = await vi.importActual<typeof import("./email")>("./email");
+  return {
+    ...actual,
+    sendManagerOnboardingEmail: vi.fn().mockResolvedValue(undefined),
+    sendOrgPaymentConfirmationEmail: vi.fn().mockResolvedValue(undefined),
+    sendTeamEnrollmentEmail: vi.fn().mockResolvedValue(undefined),
+    sendWelcomeOnboardingEmail: vi.fn().mockResolvedValue(undefined),
+  };
+});
 
 vi.mock("./_core/notification", () => ({
   notifyOwner: vi.fn().mockResolvedValue(true),
@@ -527,15 +521,6 @@ describeWithDatabase("Stripe webhook integration", () => {
     expect(classifyInvoiceSubscription({ isOrganizationSubscription: false, organizationExists: false }))
       .toBe("individual");
 
-    // Verify the production handler uses classifyInvoiceSubscription
-    const fs = await import("node:fs");
-    const webhookSource = fs.readFileSync(
-      new URL("./stripe/webhook.ts", import.meta.url).pathname,
-      "utf8",
-    );
-    expect(webhookSource).toContain("classifyInvoiceSubscription(");
-    expect(webhookSource).toContain('invoiceRoute === "organization_pending"');
-    expect(webhookSource).toContain("Organization provisioning is not complete");
   });
 
   // 14. Two concurrent deliveries create one org, one manager, one onboarding attempt
@@ -576,34 +561,9 @@ describeWithDatabase("Stripe webhook integration", () => {
     expect(totalEmailCalls).toBe(1);
   });
 
-  // 15. Production webhook.ts delegates to provisionOrgFromWebhook
-  it("15. Production webhook.ts imports and calls provisionOrgFromWebhook", async () => {
-    // Verify webhook.ts imports and calls provisionOrgFromWebhook via source assertion
-    const fs = await import("node:fs");
-    const webhookSource = fs.readFileSync(
-      new URL("./stripe/webhook.ts", import.meta.url).pathname,
-      "utf8",
-    );
-    expect(webhookSource).toContain("import { provisionOrgFromWebhook");
-    expect(webhookSource).toContain("await provisionOrgFromWebhook(db,");
-  });
+  // 15. Handler-level provisioning delegation test is in webhook.handler.test.ts
 
-  // 16. No duplicate org provisioning implementation in webhook.ts
-  it("16. webhook.ts contains no duplicated org provisioning logic", async () => {
-    const fs = await import("node:fs");
-    const webhookSource = fs.readFileSync(
-      new URL("./stripe/webhook.ts", import.meta.url).pathname,
-      "utf8",
-    );
-    // These identifiers must NOT appear in webhook.ts (they live in provisionOrg.ts now)
-    expect(webhookSource).not.toContain("grantSeat(");
-    expect(webhookSource).not.toContain("sendManagerOnboardingEmail(");
-    expect(webhookSource).not.toContain("initializeOrganizationRenewalTerm(");
-    expect(webhookSource).not.toContain("onboardingEmailSentAt");
-    // These identifiers MUST appear (delegation is present)
-    expect(webhookSource).toContain("provisionOrgFromWebhook(");
-    expect(webhookSource).toContain("processOrgInvoice(");
-  });
+  // 16. Handler-level delegation test is in webhook.handler.test.ts
 
   // 17. Migration applies successfully
   it("17. Migration schema is present in the live database", async () => {

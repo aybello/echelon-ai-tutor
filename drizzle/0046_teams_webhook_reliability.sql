@@ -1,16 +1,29 @@
--- Migration: 0046_teams_webhook_reliability
--- Adds onboardingEmailSentAt to organizations and creates stripe_event_log table
--- with processingToken/processingStartedAt for atomic event claiming.
---
--- Safe to run on both empty and existing production databases.
--- onboardingEmailSentAt and stripe_event_log may already exist from a prior
--- partial deployment; the IF NOT EXISTS / IF NOT COLUMN guards handle that.
+-- Migration 0046: Teams webhook reliability reconciliation
+-- This migration is safe for the existing Echelon database and a database
+-- where the prior partial Teams webhook schema has already been applied.
 
--- 1. Add onboardingEmailSentAt to organizations (idempotent)
-ALTER TABLE `organizations`
-  ADD COLUMN IF NOT EXISTS `onboardingEmailSentAt` timestamp NULL;
+SET @echelon_schema_name = DATABASE();
+--> statement-breakpoint
 
--- 2. Create stripe_event_log (idempotent)
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `organizations` ADD COLUMN `onboardingEmailSentAt` timestamp NULL',
+    'SELECT 1'
+  )
+  FROM information_schema.COLUMNS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'organizations'
+    AND COLUMN_NAME = 'onboardingEmailSentAt'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;
+--> statement-breakpoint
+
 CREATE TABLE IF NOT EXISTS `stripe_event_log` (
   `id` int AUTO_INCREMENT NOT NULL,
   `stripeEventId` varchar(128) NOT NULL,
@@ -27,22 +40,126 @@ CREATE TABLE IF NOT EXISTS `stripe_event_log` (
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `completedAt` timestamp NULL,
   CONSTRAINT `stripe_event_log_id` PRIMARY KEY (`id`),
-  CONSTRAINT `stripe_event_log_stripeEventId_unique` UNIQUE (`stripeEventId`)
+  CONSTRAINT `stripe_event_log_stripeEventId_unique` UNIQUE (`stripeEventId`),
+  INDEX `stripe_event_log_event_type_idx` (`eventType`),
+  INDEX `stripe_event_log_org_id_idx` (`orgId`),
+  INDEX `stripe_event_log_status_idx` (`status`)
 );
+--> statement-breakpoint
 
--- 3. Add indexes (idempotent via CREATE INDEX IF NOT EXISTS)
-CREATE INDEX IF NOT EXISTS `stripe_event_log_event_type_idx`
-  ON `stripe_event_log` (`eventType`);
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `stripe_event_log` ADD COLUMN `processingToken` varchar(64) NULL',
+    'SELECT 1'
+  )
+  FROM information_schema.COLUMNS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'stripe_event_log'
+    AND COLUMN_NAME = 'processingToken'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;
+--> statement-breakpoint
 
-CREATE INDEX IF NOT EXISTS `stripe_event_log_org_id_idx`
-  ON `stripe_event_log` (`orgId`);
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `stripe_event_log` ADD COLUMN `processingStartedAt` timestamp NULL',
+    'SELECT 1'
+  )
+  FROM information_schema.COLUMNS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'stripe_event_log'
+    AND COLUMN_NAME = 'processingStartedAt'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;
+--> statement-breakpoint
 
-CREATE INDEX IF NOT EXISTS `stripe_event_log_status_idx`
-  ON `stripe_event_log` (`status`);
-
--- 4. Add processingToken and processingStartedAt if table already existed
---    without them (handles partial prior deployment)
 ALTER TABLE `stripe_event_log`
-  ADD COLUMN IF NOT EXISTS `processingToken` varchar(64) NULL,
-  ADD COLUMN IF NOT EXISTS `processingStartedAt` timestamp NULL,
   MODIFY COLUMN `status` varchar(40) NOT NULL DEFAULT 'pending';
+--> statement-breakpoint
+
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `stripe_event_log` ADD UNIQUE INDEX `stripe_event_log_stripeEventId_unique` (`stripeEventId`)',
+    'SELECT 1'
+  )
+  FROM information_schema.STATISTICS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'stripe_event_log'
+    AND INDEX_NAME = 'stripe_event_log_stripeEventId_unique'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;
+--> statement-breakpoint
+
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `stripe_event_log` ADD INDEX `stripe_event_log_event_type_idx` (`eventType`)',
+    'SELECT 1'
+  )
+  FROM information_schema.STATISTICS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'stripe_event_log'
+    AND INDEX_NAME = 'stripe_event_log_event_type_idx'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;
+--> statement-breakpoint
+
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `stripe_event_log` ADD INDEX `stripe_event_log_org_id_idx` (`orgId`)',
+    'SELECT 1'
+  )
+  FROM information_schema.STATISTICS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'stripe_event_log'
+    AND INDEX_NAME = 'stripe_event_log_org_id_idx'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;
+--> statement-breakpoint
+
+SET @echelon_sql = (
+  SELECT IF(
+    COUNT(*) = 0,
+    'ALTER TABLE `stripe_event_log` ADD INDEX `stripe_event_log_status_idx` (`status`)',
+    'SELECT 1'
+  )
+  FROM information_schema.STATISTICS
+  WHERE TABLE_SCHEMA = @echelon_schema_name
+    AND TABLE_NAME = 'stripe_event_log'
+    AND INDEX_NAME = 'stripe_event_log_status_idx'
+);
+--> statement-breakpoint
+PREPARE echelon_stmt FROM @echelon_sql;
+--> statement-breakpoint
+EXECUTE echelon_stmt;
+--> statement-breakpoint
+DEALLOCATE PREPARE echelon_stmt;

@@ -2,7 +2,7 @@
   "version": "5",
   "dialect": "mysql",
   "id": "a01c8f86-1b64-4c4c-b752-5f021fc2512a",
-  "prevId": "46f982f5-973e-4e17-81f9-5adec4215d39",
+  "prevId": "f99dafb7-9b5d-4242-a8ff-8005d55645ef",
   "tables": {
     "ai_chat_sessions": {
       "name": "ai_chat_sessions",

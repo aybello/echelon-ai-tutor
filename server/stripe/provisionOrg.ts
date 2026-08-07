@@ -12,9 +12,9 @@ import {
 } from "./eventLedger";
 import { initializeOrganizationRenewalTerm } from "./renewalTerm";
 import {
-  TIER_LABELS,
+  getOrganizationTierLabel,
+  type OrganizationSubscriptionTier,
   type SubscriptionProvince,
-  type SubscriptionTier,
 } from "./subscriptionProducts";
 
 export interface ProvisionOrgInput {
@@ -25,7 +25,7 @@ export interface ProvisionOrgInput {
   orgName: string;
   managerEmail: string;
   province: SubscriptionProvince;
-  tier: SubscriptionTier;
+  tier: OrganizationSubscriptionTier;
   seats: number;
   currentPeriodStart: Date | null;
   currentPeriodEnd: Date;
@@ -221,7 +221,7 @@ export async function provisionOrgFromWebhook(
         managerEmail: organization.managerEmail,
         orgName: organization.name,
         seats: organization.seatsTotal,
-        tierLabel: TIER_LABELS[organization.tier as SubscriptionTier] ?? organization.tier,
+        tierLabel: getOrganizationTierLabel(organization.tier),
         dashboardUrl: `${ENV.appBaseUrl}/account?next=/team`,
       });
 

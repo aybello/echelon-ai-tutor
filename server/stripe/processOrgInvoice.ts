@@ -1,7 +1,7 @@
 import { and, eq, sql } from "drizzle-orm";
 import { organizations, subscriptions } from "../../drizzle/schema";
 import { sendOrgPaymentConfirmationEmail } from "../email";
-import { TIER_LABELS, type SubscriptionTier } from "./subscriptionProducts";
+import { getOrganizationTierLabel } from "./subscriptionProducts";
 import {
   claimStripeEvent,
   markStripeEventCompleted,
@@ -146,7 +146,7 @@ export async function processOrgInvoice(
       managerEmail: input.organization.managerEmail,
       orgName: input.organization.name,
       seats: input.organization.seatsTotal,
-      tierLabel: TIER_LABELS[input.organization.tier as SubscriptionTier] ?? input.organization.tier,
+      tierLabel: getOrganizationTierLabel(input.organization.tier),
       amountFormatted,
       periodEnd: currentPeriodEnd,
       hostedInvoiceUrl: input.hostedInvoiceUrl,

@@ -452,3 +452,25 @@ describe("No manual org creation references", () => {
     expect(src).not.toContain("createOrganizationManual");
   });
 });
+
+// ── Organization tier labels ──────────────────────────────────────────────────
+
+import { getOrganizationTierLabel, TIER_LABELS } from "./stripe/subscriptionProducts";
+
+describe("organization tier labels", () => {
+  it("uses the customer-facing Wastewater Collection label", () => {
+    expect(getOrganizationTierLabel("stream-wastewater-coll")).toBe("Wastewater Collection");
+  });
+
+  it("uses the customer-facing Water Treatment label", () => {
+    expect(getOrganizationTierLabel("stream-water")).toBe("Water Treatment");
+  });
+
+  it("preserves legacy class-tier labels", () => {
+    expect(getOrganizationTierLabel("class4")).toBe(TIER_LABELS.class4);
+  });
+
+  it("falls back to the raw tier string for unknown values", () => {
+    expect(getOrganizationTierLabel("unknown-tier")).toBe("unknown-tier");
+  });
+});

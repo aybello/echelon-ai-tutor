@@ -335,6 +335,8 @@ export function getAllSubscriptionExamTypes(
   return Array.from(types);
 }
 
+export type OrganizationSubscriptionTier = TeamStreamTier | SubscriptionTier;
+
 export const TIER_LABELS: Record<SubscriptionTier, string> = {
   "class1":     "Class 1 All-Access",
   "class2":     "Class 2 All-Access",
@@ -342,6 +344,14 @@ export const TIER_LABELS: Record<SubscriptionTier, string> = {
   "class4":     "Class 4 All-Access",
   "all-access": "All-Access Pass",
 };
+
+export function getOrganizationTierLabel(tier: string): string {
+  return (
+    TEAM_STREAM_TIER_LABELS[tier as TeamStreamTier] ??
+    TIER_LABELS[tier as SubscriptionTier] ??
+    tier
+  );
+}
 
 export const PROVINCE_LABELS: Record<SubscriptionProvince, string> = {
   "ontario": "Ontario (MOECP / OWWCO)",
