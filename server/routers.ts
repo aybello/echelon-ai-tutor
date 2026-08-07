@@ -7,7 +7,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
 import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates, userFeedback, aiChatSessions, studentProfiles } from "../drizzle/schema";
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
 import { resolveEntitlementsByEmail } from "./_core/access";
@@ -272,12 +272,24 @@ export const appRouter = router({
           calcOnly: z.boolean().optional(), // true if this was a Math Practice (calc-only) session
         })
       )
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
 
+        // Resolve user identity so results persist to the account (not just the session)
+        const userId = ctx.user?.id ?? null;
+        const studentEmail: string | null = (() => {
+          const otpEmail = (ctx as Record<string, unknown>).otpEmail as string | undefined;
+          if (otpEmail) return otpEmail;
+          const purchaseEmail = (ctx as Record<string, unknown>).purchaseEmail as string | undefined;
+          if (purchaseEmail) return purchaseEmail;
+          return ctx.user?.email ?? null;
+        })();
+
         await db.insert(examResults).values({
           sessionId: input.sessionId,
+          userId,
+          studentEmail,
           examType: input.examType,
           stream: input.stream ?? null,
           score: input.score,
@@ -298,12 +310,28 @@ export const appRouter = router({
         stream: z.enum(["water", "wastewater"]).optional(),
         calcOnly: z.boolean().optional(), // filter to only Math Practice sessions
       }))
-      .query(async ({ input }) => {
+      .query(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) return [];
 
+        // Prefer user identity (persistent) over sessionId (ephemeral)
+        const userId = ctx.user?.id ?? null;
+        const studentEmail: string | null = (() => {
+          const otpEmail = (ctx as Record<string, unknown>).otpEmail as string | undefined;
+          if (otpEmail) return otpEmail;
+          const purchaseEmail = (ctx as Record<string, unknown>).purchaseEmail as string | undefined;
+          if (purchaseEmail) return purchaseEmail;
+          return ctx.user?.email ?? null;
+        })();
+        // Build identity condition: match by userId OR email OR sessionId (fallback for anonymous)
+        const identityCondition = userId
+          ? eq(examResults.userId, userId)
+          : studentEmail
+            ? eq(examResults.studentEmail, studentEmail)
+            : eq(examResults.sessionId, input.sessionId);
+
         const conditions = [
-          eq(examResults.sessionId, input.sessionId),
+          identityCondition,
           eq(examResults.examType, input.examType),
         ];
         if (input.stream) {

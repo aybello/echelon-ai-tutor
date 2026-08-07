@@ -71,6 +71,8 @@ export type InsertTrialEmail = typeof trialEmails.$inferInsert;
 export const examResults = mysqlTable("exam_results", {
   id: int("id").autoincrement().primaryKey(),
   sessionId: varchar("sessionId", { length: 64 }).notNull(), // anonymous session ID from localStorage
+  userId: int("userId"), // linked user account (null for anonymous)
+  studentEmail: varchar("studentEmail", { length: 255 }), // linked email (null for anonymous)
   examType: varchar("examType", { length: 32 }).notNull(), // 'class1' | 'wqa'
   stream: varchar("stream", { length: 32 }), // 'water' | 'wastewater' | null for WQA
   province: varchar("province", { length: 32 }), // province context for this exam

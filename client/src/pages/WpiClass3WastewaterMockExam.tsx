@@ -36,10 +36,10 @@ export default function WpiClass3WastewaterMockExam() {
     <MockExamShell
       title="WPI Class III Wastewater Treatment Mock Exam"
       badge="WPI CLASS III · WASTEWATER TREATMENT"
-      metaDescription="100-question timed mock exam for the WPI Class III Wastewater Treatment certification. 2-hour timer, 70% pass threshold."
+      metaDescription="100-question timed mock exam for the WPI Class III Wastewater Treatment certification. 3-hour timer, 70% pass threshold."
       metaKeywords="WPI Class III wastewater treatment mock exam, ABC WPI exam prep, BC EOCP Level III, Alberta AWWOA Class III, US wastewater operator exam"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}

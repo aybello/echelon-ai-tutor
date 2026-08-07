@@ -34,10 +34,10 @@ export default function WpiClass4WaterCollMockExam() {
     <MockExamShell
       title="WPI Class IV Wastewater Collection Mock Exam"
       badge="WPI CLASS IV · WASTEWATER COLLECTION"
-      metaDescription="100-question timed mock exam for the WPI Class IV Wastewater Collection certification. 2-hour timer, 70% pass threshold."
+      metaDescription="100-question timed mock exam for the WPI Class IV Wastewater Collection certification. 3-hour timer, 70% pass threshold."
       metaKeywords="WPI Class IV wastewater collection mock exam, ABC WPI exam prep, BC EOCP Level IV, Alberta AWWOA Class IV, US wastewater collection operator exam"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}

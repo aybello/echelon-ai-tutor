@@ -33,10 +33,10 @@ export default function WpiClass4WaterDistMockExam() {
     <MockExamShell
       title="WPI Class IV Water Distribution Mock Exam"
       badge="WPI CLASS IV · WATER DISTRIBUTION"
-      metaDescription="100-question timed mock exam for the WPI Class IV Water Distribution certification. 2-hour timer, 70% pass threshold."
+      metaDescription="100-question timed mock exam for the WPI Class IV Water Distribution certification. 3-hour timer, 70% pass threshold."
       metaKeywords="WPI Class IV water distribution mock exam, ABC WPI exam prep, BC EOCP Level IV, Alberta AWWOA Class IV, US water distribution operator exam"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
