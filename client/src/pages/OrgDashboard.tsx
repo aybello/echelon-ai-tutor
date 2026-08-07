@@ -1076,6 +1076,7 @@ export default function OrgDashboard() {
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Readiness</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Questions</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Weak Topic</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Mock Scores</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Exam Date</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Days Left</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Risk</th>
@@ -1135,6 +1136,22 @@ export default function OrgDashboard() {
                           </td>
                           <td className="px-4 py-3 text-xs text-slate-600">{op.totalAttempts.toLocaleString()}</td>
                           <td className="px-4 py-3 text-xs text-slate-500">{op.weakestTopic ?? "—"}</td>
+                          <td className="px-4 py-3">
+                            {op.recentMockScores && op.recentMockScores.length > 0 ? (
+                              <div className="flex flex-col gap-0.5">
+                                {op.recentMockScores.map((s, i) => {
+                                  const pct = s.total > 0 ? Math.round((s.score / s.total) * 100) : 0;
+                                  return (
+                                    <span key={i} className={`text-xs font-medium px-1.5 py-0.5 rounded ${pct >= 70 ? "bg-green-50 text-green-700" : "bg-red-50 text-red-600"}`}>
+                                      {pct}% {pct >= 70 ? "✓" : "✗"}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              <span className="text-xs text-slate-300">No mocks</span>
+                            )}
+                          </td>
                           <td className="px-4 py-3 text-xs text-slate-500">
                             {op.examDate ? new Date(op.examDate).toLocaleDateString("en-CA") : "—"}
                           </td>

@@ -268,6 +268,8 @@ export const questions = mysqlTable("questions", {
   tip: text("tip"),
   isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
   topic: varchar("topic", { length: 128 }),
+  /** Cognitive level per WPI NTK: 'recall' = knowledge/comprehension, 'application' = analysis/synthesis */
+  cognitiveLevel: mysqlEnum("cognitiveLevel", ["recall", "application"]),
 }, (table) => [uniqueIndex("bank_question_idx").on(table.bankKey, table.questionNum)]);
 
 export type QuestionRow = typeof questions.$inferSelect;
@@ -287,6 +289,12 @@ export const questionBankMeta = mysqlTable("question_bank_meta", {
   /** Monotonically increasing counter. Incremented by admin whenever a question in this bank
    *  is edited. Clients compare this against their cached value and invalidate on mismatch. */
   contentVersion: int("contentVersion").notNull().default(1),
+  /** Blueprint version — incremented when moduleTargets or NTK weights change */
+  blueprintVersion: int("blueprintVersion").notNull().default(1),
+  /** Minimum calc questions required per mock exam for this bank (per NTK spec) */
+  minCalcPerMock: int("minCalcPerMock"),
+  /** Cognitive level split target: percentage of recall questions (remainder = application) */
+  recallTargetPct: int("recallTargetPct"),
 });
 
 export type QuestionBankMetaRow = typeof questionBankMeta.$inferSelect;

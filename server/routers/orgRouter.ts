@@ -29,6 +29,7 @@ import {
   commandRunHistory,
   users,
   examOutcomes,
+  examResults,
 } from "../../drizzle/schema";
 import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
@@ -1236,7 +1237,7 @@ export const orgIntelRouter = router({
     if (members.length === 0) return { operators: [] };
     const allEmails = members.map(m => m.email);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, topicRows, mockRows, lastActiveRows, examDateRows] = await Promise.all([
+    const [accuracyRows, topicRows, mockRows, lastActiveRows, examDateRows, mockScoreRows] = await Promise.all([
       db.select({
         email: questionAttempts.studentEmail,
         total: sql<number>`COUNT(*)`,
@@ -1263,11 +1264,33 @@ export const orgIntelRouter = router({
       }).from(examDates)
         .where(and(inArray(examDates.email, allEmails), sql`${examDates.examDate} >= NOW()`))
         .groupBy(examDates.email),
+      // Last 3 mock exam scores per operator from exam_results (persistent, linked to account)
+      db.select({
+        email: examResults.studentEmail,
+        score: examResults.score,
+        total: examResults.total,
+        passed: examResults.passed,
+        createdAt: examResults.createdAt,
+        examType: examResults.examType,
+      }).from(examResults)
+        .where(and(
+          inArray(examResults.studentEmail, allEmails),
+          eq(examResults.calcOnly, "no"),
+        ))
+        .orderBy(desc(examResults.createdAt)),
     ]);
     const accuracyByEmail = new Map(accuracyRows.map(r => [r.email, { total: Number(r.total), correct: Number(r.correct) }]));
     const mockByEmail = new Map(mockRows.map(r => [r.email, Number(r.mockCount)]));
     const lastActiveByEmail = new Map(lastActiveRows.map(r => [r.email, r.lastActive]));
     const examDateByEmail = new Map(examDateRows.map(r => [r.email, r.examDate]));
+    // Build last 3 mock scores per operator email
+    const mockScoresByEmail = new Map<string, Array<{ score: number; total: number; passed: string; createdAt: Date; examType: string }>>();
+    for (const r of mockScoreRows) {
+      if (!r.email) continue;
+      if (!mockScoresByEmail.has(r.email)) mockScoresByEmail.set(r.email, []);
+      const scores = mockScoresByEmail.get(r.email)!;
+      if (scores.length < 3) scores.push({ score: r.score, total: r.total, passed: r.passed ?? "no", createdAt: r.createdAt, examType: r.examType });
+    }
     const topicsByEmail = new Map<string, Array<{ topic: string; accuracy: number; total: number }>>();
     for (const r of topicRows) {
       if (!r.email) continue;
@@ -1306,7 +1329,8 @@ export const orgIntelRouter = router({
         else if (daysUntilExam <= 30) examRisk = readinessScore < 50 ? "medium" : "low";
         else examRisk = "low";
       }
-      return { id: m.id, email: m.email, name: m.name ?? null, memberStatus: m.status as "assigned" | "revoked", courseKey: m.courseKey ?? null, assignedAt: m.assignedAt, lastActive, totalAttempts: total, accuracy, readinessScore, weakestTopic, mockExamsCompleted, operatorStatus, examDate, daysUntilExam, examRisk };
+      const recentMockScores = mockScoresByEmail.get(m.email) ?? [];
+      return { id: m.id, email: m.email, name: m.name ?? null, memberStatus: m.status as "assigned" | "revoked", courseKey: m.courseKey ?? null, assignedAt: m.assignedAt, lastActive, totalAttempts: total, accuracy, readinessScore, weakestTopic, mockExamsCompleted, operatorStatus, examDate, daysUntilExam, examRisk, recentMockScores };
     });
     return { operators };
   }),
