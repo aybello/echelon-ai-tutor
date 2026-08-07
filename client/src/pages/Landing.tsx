@@ -2585,15 +2585,15 @@ export default function Landing() {
                 margin: "0 0 32px 0",
                 maxWidth: 480,
               }}>
-                Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Bulk pricing starts at 5 seats.
+                Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Self-serve plans are available for any team size. Volume discounts begin at 10 annual operator licences.
               </p>
 
               {/* Benefit bullets */}
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 12, marginBottom: 36 }}>
                 {[
                   { icon: "📊", text: "Manager dashboard — track every operator's readiness score" },
-                  { icon: "🪑", text: "Assign and remove seats instantly by email" },
-                  { icon: "💰", text: "Volume discounts from 5% to 15% off" },
+                  { icon: "🪑", text: "Assign operators by email and track annual licence usage" },
+                  { icon: "💰", text: "Volume discounts from 10% to 20% off" },
                   { icon: "🇨🇦", text: "Ontario, BC, Alberta, Saskatchewan & more" },
                 ].map(b => (
                   <div key={b.text} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>

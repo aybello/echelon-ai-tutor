@@ -4,7 +4,17 @@
  */
 
 import { useState, useMemo } from "react";
-import type { TeamStreamTier } from "../../../server/stripe/subscriptionProducts";
+import {
+  type TeamStreamTier,
+  TEAM_BASE_PRICE,
+  TEAM_STREAM_TIER_LABELS,
+  TEAM_STREAM_TIER_DESCRIPTIONS,
+  TEAM_VOLUME_TIERS,
+  getTeamVolumeTier,
+  getTeamSeatPriceCents,
+  getTeamTotalPriceCents,
+  formatTeamPriceCAD,
+} from "@shared/teamPricing";
 import { trpc } from "@/lib/trpc";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,75 +29,6 @@ import {
 import { useLocation, Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { Building2, CheckCircle2, Zap, Shield, BarChart3, Users, TrendingUp, Award } from "lucide-react";
-
-// ── Pricing ───────────────────────────────────────────────────────────────────
-const TEAM_BASE_PRICE_CLIENT: Record<string, Record<TeamStreamTier, number>> = {
-  ontario: {
-    "stream-water":           27900,
-    "stream-wastewater":      27900,
-    "stream-water-dist":      27900,
-    "stream-wastewater-coll": 27900,
-    "all-access":             34900,
-  },
-  western: {
-    "stream-water":           34900,
-    "stream-wastewater":      34900,
-    "stream-water-dist":      34900,
-    "stream-wastewater-coll": 34900,
-    "all-access":             44900,
-  },
-};
-
-const STREAM_TIER_LABELS: Record<TeamStreamTier, string> = {
-  "stream-water":           "Water Treatment",
-  "stream-wastewater":      "Wastewater Treatment",
-  "stream-water-dist":      "Water Distribution",
-  "stream-wastewater-coll": "Wastewater Collection",
-  "all-access":             "All Streams",
-};
-
-const STREAM_TIER_DESCRIPTIONS: Record<TeamStreamTier, string> = {
-  "stream-water":           "Water treatment — entry level through Class 4",
-  "stream-wastewater":      "Wastewater treatment — entry level through Class 4",
-  "stream-water-dist":      "Water distribution — entry level through Class 4",
-  "stream-wastewater-coll": "Wastewater collection — entry level through Class 4",
-  "all-access":             "All four streams, every level",
-};
-
-interface VolumeTier {
-  min: number;
-  max: number | null;
-  discountPct: number;
-  label: string;
-}
-
-const VOLUME_TIERS: VolumeTier[] = [
-  { min: 1,  max: 9,    discountPct: 0,  label: "1-9 seats" },
-  { min: 10, max: 24,   discountPct: 10, label: "10-24 seats" },
-  { min: 25, max: 49,   discountPct: 15, label: "25-49 seats" },
-  { min: 50, max: null, discountPct: 20, label: "50+ seats" },
-];
-
-function getVolumeTier(seats: number): VolumeTier {
-  return (
-    VOLUME_TIERS.find(t => seats >= t.min && (t.max === null || seats <= t.max)) ??
-    VOLUME_TIERS[0]
-  );
-}
-
-function getSeatPriceCents(province: string, tier: TeamStreamTier, seats: number): number {
-  const base = TEAM_BASE_PRICE_CLIENT[province]?.[tier] ?? 34900;
-  const vt = getVolumeTier(seats);
-  return Math.round(base * (1 - vt.discountPct / 100));
-}
-
-function formatCAD(cents: number): string {
-  return new Intl.NumberFormat("en-CA", {
-    style: "currency",
-    currency: "CAD",
-    maximumFractionDigits: 0,
-  }).format(cents / 100);
-}
 
 const FEATURES = [
   "Complete question bank for your selected stream",
@@ -109,10 +50,10 @@ export default function Teams() {
   const [managerEmail, setManagerEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const volumeTier = useMemo(() => getVolumeTier(seats), [seats]);
-  const seatPriceCents = useMemo(() => getSeatPriceCents(province, tier, seats), [province, tier, seats]);
-  const totalCents = seatPriceCents * seats;
-  const individualPriceCents = TEAM_BASE_PRICE_CLIENT[province]?.[tier] ?? 34900;
+  const volumeTier = useMemo(() => getTeamVolumeTier(seats), [seats]);
+  const seatPriceCents = useMemo(() => getTeamSeatPriceCents(province, tier, seats), [province, tier, seats]);
+  const totalCents = useMemo(() => getTeamTotalPriceCents(province, tier, seats), [province, tier, seats]);
+  const basePriceCents = TEAM_BASE_PRICE[province as "ontario" | "western"]?.[tier] ?? 34900;
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
 
   const handleSeatsChange = (val: string) => {
@@ -247,11 +188,11 @@ export default function Teams() {
                   }`}
                   style={tier === t ? { background: "linear-gradient(135deg, #1D4ED8, #0E7490)" } : {}}
                 >
-                  {t === "all-access" ? "All Streams" : STREAM_TIER_LABELS[t]}
+                  {t === "all-access" ? "All Streams" : TEAM_STREAM_TIER_LABELS[t]}
                 </button>
               ))}
             </div>
-            <p className="text-xs text-gray-500 pt-1">{STREAM_TIER_DESCRIPTIONS[tier]}</p>
+            <p className="text-xs text-gray-500 pt-1">{TEAM_STREAM_TIER_DESCRIPTIONS[tier]}</p>
           </div>
 
           {/* Seats */}
@@ -291,11 +232,11 @@ export default function Teams() {
           <div className="rounded-xl p-5 space-y-3" style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #ECFDF5 100%)", border: "1px solid #BFDBFE" }}>
             <div className="flex items-center justify-between">
               <span className="text-gray-600 text-sm">Per operator licence / year</span>
-              <span className="text-2xl font-bold" style={{ color: "#0E7490" }}>{formatCAD(seatPriceCents)}</span>
+              <span className="text-2xl font-bold" style={{ color: "#0E7490" }}>{formatTeamPriceCAD(seatPriceCents)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-blue-100 pt-3">
               <span className="text-gray-600 text-sm">Total / year ({seats} annual licences)</span>
-              <span className="text-2xl font-bold text-gray-900">{formatCAD(totalCents)}</span>
+              <span className="text-2xl font-bold text-gray-900">{formatTeamPriceCAD(totalCents)}</span>
             </div>
             {volumeTier.discountPct > 0 ? (
               <div className="flex items-center gap-2 text-xs font-semibold text-teal-700">
@@ -313,8 +254,8 @@ export default function Teams() {
           {/* Volume pricing table */}
           <div className="space-y-1">
             <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-2">Volume discounts</p>
-            {VOLUME_TIERS.map(t => {
-              const discountedCents = Math.round(individualPriceCents * (1 - t.discountPct / 100));
+            {TEAM_VOLUME_TIERS.map(t => {
+              const discountedCents = Math.round(basePriceCents * (1 - t.discountPct / 100));
               return (
                 <div
                   key={t.label}
@@ -324,7 +265,7 @@ export default function Teams() {
                   style={t === volumeTier ? { background: "linear-gradient(135deg, #EFF6FF, #ECFDF5)", color: "#1D4ED8" } : {}}
                 >
                   <span>{t.label}{t.discountPct > 0 ? ` (${t.discountPct}% off)` : ""}</span>
-                  <span>{formatCAD(discountedCents)} / seat / yr</span>
+                  <span>{formatTeamPriceCAD(discountedCents)} / seat / yr</span>
                 </div>
               );
             })}
@@ -361,7 +302,7 @@ export default function Teams() {
             className="w-full py-4 text-base font-bold text-white rounded-xl transition-all active:scale-[0.98] disabled:opacity-60 shadow-lg hover:shadow-xl hover:opacity-95"
             style={{ background: loading ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)" }}
           >
-            {loading ? "Redirecting to checkout..." : `Start ${seats}-seat plan — ${formatCAD(totalCents)}/yr`}
+            {loading ? "Redirecting to checkout..." : `Start ${seats}-seat plan — ${formatTeamPriceCAD(totalCents)}/yr`}
           </button>
         </div>
 

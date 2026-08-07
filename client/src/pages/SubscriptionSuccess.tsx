@@ -77,7 +77,7 @@ export default function SubscriptionSuccess() {
   const quizPath = province === "western"
     ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
     : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");
-  const provinceLabel = province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)";
+  const provinceLabel = province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)";
 
   // ── Verify session server-side and write localStorage access ──────────────
   const verifyMutation = trpc.stripe.verifySubscriptionSession.useMutation({

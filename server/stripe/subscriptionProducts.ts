@@ -1,9 +1,33 @@
+// ── Shared Teams pricing (single source of truth) ─────────────────────────────
+// TeamStreamTier, TEAM_STREAM_TIER_LABELS, TEAM_STREAM_TIER_DESCRIPTIONS,
+// TEAM_BASE_PRICE, TEAM_VOLUME_TIERS — all imported from shared/teamPricing
+export {
+  type TeamRegion,
+  type TeamStreamTier,
+  type TeamVolumeTier,
+  TEAM_STREAM_TIER_LABELS,
+  TEAM_STREAM_TIER_DESCRIPTIONS,
+  TEAM_BASE_PRICE,
+  TEAM_VOLUME_TIERS,
+  getTeamVolumeTier,
+  getTeamBasePriceCents,
+  getTeamSeatPriceCents,
+  getTeamTotalPriceCents,
+  formatTeamPriceCAD,
+} from "../../shared/teamPricing";
+import {
+  type TeamStreamTier,
+  TEAM_STREAM_TIER_LABELS,
+  TEAM_BASE_PRICE,
+  TEAM_VOLUME_TIERS,
+} from "../../shared/teamPricing";
+
 /**
  * Echelon Institute -- Subscription Product Definitions
  * Annual subscriptions, province-scoped, class-level access.
  *
  * Pricing:
- *   Ontario (EOCP) — 2 tracks per class (Water Treatment + Wastewater Treatment)
+ *   Ontario (MOECP / OWWCO) — 2 tracks per class (Water Treatment + Wastewater Treatment)
  *     Class 1: $99 | Class 2: $149 | Class 3: $199 | Class 4: $249 | All-Access: $349
  *
  *   Western Canada (WPI) — 4 tracks per class (Water Treatment + Wastewater Treatment
@@ -13,32 +37,8 @@
 
 export type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
 
-/**
- * Team-plan stream tiers — sold by certification stream (career path), all levels included.
- * These are only used for org/team checkout, NOT for individual subscriptions.
- */
-export type TeamStreamTier =
-  | "stream-water"
-  | "stream-wastewater"
-  | "stream-water-dist"
-  | "stream-wastewater-coll"
-  | "all-access";
+// TeamStreamTier, TEAM_STREAM_TIER_LABELS, TEAM_STREAM_TIER_DESCRIPTIONS — re-exported from shared/teamPricing above
 
-export const TEAM_STREAM_TIER_LABELS: Record<TeamStreamTier, string> = {
-  "stream-water":           "Water Treatment",
-  "stream-wastewater":      "Wastewater Treatment",
-  "stream-water-dist":      "Water Distribution",
-  "stream-wastewater-coll": "Wastewater Collection",
-  "all-access":             "All Streams",
-};
-
-export const TEAM_STREAM_TIER_DESCRIPTIONS: Record<TeamStreamTier, string> = {
-  "stream-water":           "Water treatment — entry level through Class 4",
-  "stream-wastewater":      "Wastewater treatment — entry level through Class 4",
-  "stream-water-dist":      "Water distribution — entry level through Class 4",
-  "stream-wastewater-coll": "Wastewater collection — entry level through Class 4",
-  "all-access":             "All four streams, every level",
-};
 
 /**
  * Course keys allowed per stream tier per province.
@@ -146,37 +146,7 @@ export function validateOrgCourseKeys(
   return courseKeys.map(ck => ck.trim().toLowerCase());
 }
 
-/**
- * Shared team pricing constants — used by both stripeRouter.ts and Teams.tsx.
- * Values in cents CAD. Single stream = same price regardless of which stream.
- */
-export const TEAM_BASE_PRICE: Record<string, Record<TeamStreamTier, number>> = {
-  ontario: {
-    "stream-water":           27900,
-    "stream-wastewater":      27900,
-    "stream-water-dist":      27900,
-    "stream-wastewater-coll": 27900,
-    "all-access":             34900,
-  },
-  western: {
-    "stream-water":           34900,
-    "stream-wastewater":      34900,
-    "stream-water-dist":      34900,
-    "stream-wastewater-coll": 34900,
-    "all-access":             44900,
-  },
-};
-
-/**
- * New volume discount tiers for team plans.
- * Discounts start at 10 seats (department-level), not 25 (city-wide).
- */
-export const TEAM_VOLUME_TIERS = [
-  { min: 1,  max: 9,    discountPct: 0,  label: "1-9 seats" },
-  { min: 10, max: 24,   discountPct: 10, label: "10-24 seats" },
-  { min: 25, max: 49,   discountPct: 15, label: "25-49 seats" },
-  { min: 50, max: null, discountPct: 20, label: "50+ seats" },
-] as const;
+// TEAM_BASE_PRICE, TEAM_VOLUME_TIERS — re-exported from shared/teamPricing above
 export type SubscriptionProvince = "ontario" | "western";
 
 export interface SubscriptionProduct {
@@ -190,7 +160,7 @@ export interface SubscriptionProduct {
   priceUSD: number;
 }
 
-/** Ontario (EOCP) subscription products — 2 tracks per class */
+/** Ontario (MOECP / OWWCO) subscription products — 2 tracks per class */
 const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
   {
     tier: "class1",

@@ -25,6 +25,8 @@ import { describe, it, expect } from "vitest";
 import {
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
+  getTeamSeatPriceCents,
+  getTeamTotalPriceCents,
   allowedCourseKeysForOrg,
 } from "./stripe/subscriptionProducts";
 import {
@@ -33,18 +35,12 @@ import {
 } from "../shared/courseRegistry";
 import { bankKeyToExamType } from "./_core/access";
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
-function getSeatPriceCents(province: string, tier: string, seats: number): number {
-  const base = TEAM_BASE_PRICE[province]?.[tier as any] ?? 34900;
-  const vt = [...TEAM_VOLUME_TIERS].find(t => seats >= t.min && (t.max === null || seats <= t.max)) ?? TEAM_VOLUME_TIERS[0];
-  return Math.round(base * (1 - vt.discountPct / 100));
-}
-
-function getTotalCents(province: string, tier: string, seats: number): number {
-  return getSeatPriceCents(province, tier, seats) * seats;
-}
-
+// ── Helpers (use production shared functions) ─────────────────────────────────
+// getSeatPriceCents and getTotalCents delegate to the production shared functions
+const getSeatPriceCents = (province: string, tier: string, seats: number) =>
+  getTeamSeatPriceCents(province as any, tier as any, seats);
+const getTotalCents = (province: string, tier: string, seats: number) =>
+  getTeamTotalPriceCents(province as any, tier as any, seats);
 // ── 1. Self-serve checkout for 1, 10, 25, 50, 500 licences ───────────────────
 
 describe("Self-serve checkout — seat counts", () => {
@@ -71,24 +67,24 @@ describe("Self-serve checkout — seat counts", () => {
 
 describe("Volume discount boundaries", () => {
   it("1-9 seats: 0% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 1)).toBe(34900);
-    expect(getSeatPriceCents("ontario", "all-access", 9)).toBe(34900);
+    expect(getSeatPriceCents("ontario", "all-access", 1)).toBe(44900);
+    expect(getSeatPriceCents("ontario", "all-access", 9)).toBe(44900);
   });
   it("10-24 seats: 10% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 10)).toBe(Math.round(34900 * 0.9));
-    expect(getSeatPriceCents("ontario", "all-access", 24)).toBe(Math.round(34900 * 0.9));
+    expect(getSeatPriceCents("ontario", "all-access", 10)).toBe(Math.round(44900 * 0.9));
+    expect(getSeatPriceCents("ontario", "all-access", 24)).toBe(Math.round(44900 * 0.9));
   });
   it("25-49 seats: 15% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 25)).toBe(Math.round(34900 * 0.85));
-    expect(getSeatPriceCents("ontario", "all-access", 49)).toBe(Math.round(34900 * 0.85));
+    expect(getSeatPriceCents("ontario", "all-access", 25)).toBe(Math.round(44900 * 0.85));
+    expect(getSeatPriceCents("ontario", "all-access", 49)).toBe(Math.round(44900 * 0.85));
   });
   it("50+ seats: 20% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 50)).toBe(Math.round(34900 * 0.8));
-    expect(getSeatPriceCents("ontario", "all-access", 500)).toBe(Math.round(34900 * 0.8));
+    expect(getSeatPriceCents("ontario", "all-access", 50)).toBe(Math.round(44900 * 0.8));
+    expect(getSeatPriceCents("ontario", "all-access", 500)).toBe(Math.round(44900 * 0.8));
   });
   it("first discount tier starts at 10, not 5", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 5)).toBe(34900);
-    expect(getSeatPriceCents("ontario", "all-access", 10)).toBeLessThan(34900);
+    expect(getSeatPriceCents("ontario", "all-access", 5)).toBe(44900);
+    expect(getSeatPriceCents("ontario", "all-access", 10)).toBeLessThan(44900);
   });
 });
 

@@ -17,6 +17,11 @@ import {
   type SubscriptionProvince,
   type TeamStreamTier,
 } from "../stripe/subscriptionProducts";
+import {
+  getTeamVolumeTier,
+  getTeamSeatPriceCents,
+  TEAM_STREAM_TIER_LABELS as SHARED_TIER_LABELS,
+} from "../../shared/teamPricing";
 import { getDb } from "../db";
 import { purchases, subscriptions } from "../../drizzle/schema";
 import { eq, and, gt, count } from "drizzle-orm";
@@ -545,13 +550,12 @@ export const stripeRouter = router({
       origin: z.string().url(),
     }))
     .mutation(async ({ input }) => {
-      const baseCents = TEAM_BASE_PRICE[input.province]?.[input.tier as TeamStreamTier] ?? 34900;
-      const volumeTier = [...TEAM_VOLUME_TIERS].find(t => input.seats >= t.min && (t.max === null || input.seats <= t.max)) ?? TEAM_VOLUME_TIERS[0];
+      const volumeTier = getTeamVolumeTier(input.seats);
+      const unitAmount = getTeamSeatPriceCents(input.province, input.tier as TeamStreamTier, input.seats);
       const discountPct = volumeTier.discountPct;
-      const unitAmount = Math.round(baseCents * (1 - discountPct / 100));
 
-      const tierLabel = TEAM_STREAM_TIER_LABELS[input.tier as TeamStreamTier] ?? input.tier;
-      const provinceLabel = input.province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)";
+      const tierLabel = SHARED_TIER_LABELS[input.tier as TeamStreamTier];
+      const provinceLabel = input.province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)";
 
       const lineItem = {
         price_data: {

@@ -99,16 +99,12 @@ describe("Teams Audit — Annual Licence Tests (9-14)", () => {
     expect(STREAM_COURSE_KEYS["ontario"]["stream-wastewater-coll"].length).toBeGreaterThanOrEqual(4);
   });
 
- // Test 11: TEAM_BASE_PRICE has correct pricing ladder
-  it("11. pricing ladder: Ontario single < WPI single <= Ontario all < WPI all", () => {
-    const ontarioSingle = TEAM_BASE_PRICE.ontario["stream-water"];
-    const wpiSingle = TEAM_BASE_PRICE.western["stream-water"];
-    const ontarioAll = TEAM_BASE_PRICE.ontario["all-access"];
-    const wpiAll = TEAM_BASE_PRICE.western["all-access"];
-    expect(ontarioSingle).toBeLessThan(wpiSingle);
-    // Ontario All-Access ($349) equals WPI single stream ($349) by design
-    expect(wpiSingle).toBeLessThanOrEqual(ontarioAll);
-    expect(ontarioAll).toBeLessThan(wpiAll);
+ // Test 11: TEAM_BASE_PRICE has exact national prices (Ontario = Western)
+  it("11. exact national prices: single stream $349, all streams $449, Ontario = Western", () => {
+    expect(TEAM_BASE_PRICE.ontario["stream-water"]).toBe(34900);
+    expect(TEAM_BASE_PRICE.western["stream-water"]).toBe(34900);
+    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(44900);
   });
 
   // Test 12: Volume discount tiers are correctly ordered

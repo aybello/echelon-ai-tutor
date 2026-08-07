@@ -1563,13 +1563,13 @@ export default function Pricing() {
         <p style={{ color: "#94A3B8", fontSize: 14, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
           Utilities, municipalities, and training departments can purchase seats for their whole team.
           Each operator gets their own account — individual progress tracking, AI tutor access, and exam readiness scores.
-          Volume discounts start at 5 seats.
+          Volume discounts begin at 10 annual operator licences.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 4 }}>
           {[
-            { label: "5–9 seats", discount: "10% off" },
-            { label: "10–24 seats", discount: "15% off" },
-            { label: "25+ seats", discount: "20% off" },
+            { label: "10–24 licences", discount: "10% off" },
+            { label: "25–49 licences", discount: "15% off" },
+            { label: "50+ licences", discount: "20% off" },
           ].map(t => (
             <div key={t.label} style={{
               background: "rgba(255,255,255,0.07)",
