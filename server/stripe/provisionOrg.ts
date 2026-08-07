@@ -37,16 +37,18 @@ export type ProvisionOrgResult =
   | { state: "busy" }
   | { state: "retryable_failure"; error: string };
 
-export interface ProvisionOrgDependencies {
+  export interface ProvisionOrgDependencies {
   sendOnboardingEmail: typeof sendManagerOnboardingEmail;
   sendOwnerNotification: typeof notifyOwner;
   ensureManager: typeof grantSeat;
+  initializeRenewalTerm: typeof initializeOrganizationRenewalTerm;
 }
 
 export const productionProvisionOrgDependencies: ProvisionOrgDependencies = {
   sendOnboardingEmail: sendManagerOnboardingEmail,
   sendOwnerNotification: notifyOwner,
   ensureManager: grantSeat,
+  initializeRenewalTerm: initializeOrganizationRenewalTerm,
 };
 
 export async function provisionOrgFromWebhook(
@@ -168,7 +170,7 @@ export async function provisionOrgFromWebhook(
 
         // Seed renewal term ledger for existing orgs on renewal events
         if (existing.length > 0 && input.status === "active" && input.currentPeriodStart) {
-          await initializeOrganizationRenewalTerm(
+          await dependencies.initializeRenewalTerm(
             tx as any,
             organization.id,
             input.currentPeriodStart,

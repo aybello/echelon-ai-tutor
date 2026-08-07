@@ -13,7 +13,7 @@ import { getSubscriptionPeriod } from "./subscriptionPeriod";
 import { trackEvent } from "../analytics";
 import { ENV } from "../_core/env";
 import { provisionOrgFromWebhook } from "./provisionOrg";
-import { processOrgInvoice } from "./processOrgInvoice";
+import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
 import type { SubscriptionProvince, SubscriptionTier } from "./subscriptionProducts";
 
 
@@ -187,24 +187,31 @@ export function registerStripeWebhook(app: Express) {
       // ── Subscription lifecycle events ──────────────────────────────────────
 
       if (event.type === "customer.subscription.created" || event.type === "customer.subscription.updated") {
-        const sub = event.data.object as any;
+        const eventSubscription = event.data.object as any;
+
+        // Retrieve live Stripe data BEFORE classifying the subscription.
+        // This ensures corrected metadata is used when replaying an older event.
+        let liveSubscription: any;
+        try {
+          liveSubscription = await stripe.subscriptions.retrieve(eventSubscription.id);
+        } catch (error: any) {
+          console.error("[Stripe Webhook] Could not retrieve live subscription:", error.message);
+          return res.status(503).json({ error: "Could not retrieve live Stripe subscription" });
+        }
 
         // ── Org (team) subscription branch ────────────────────────────────
-        // Retrieve live Stripe data so corrected metadata is used on retry.
-        if (sub.metadata?.type === "org") {
-          const liveSub = await stripe.subscriptions.retrieve(sub.id);
-
-          const managerEmail = normalizeEmail(liveSub.metadata?.manager_email ?? "");
-          const orgName = liveSub.metadata?.org_name?.trim() ?? "";
-          const province = liveSub.metadata?.subscription_province as SubscriptionProvince;
-          const tier = liveSub.metadata?.subscription_tier as SubscriptionTier;
-          const seats = liveSub.items.data[0]?.quantity ?? 0;
-          const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(liveSub as any);
+        if (liveSubscription.metadata?.type === "org") {
+          const managerEmail = normalizeEmail(liveSubscription.metadata?.manager_email ?? "");
+          const orgName = liveSubscription.metadata?.org_name?.trim() ?? "";
+          const province = liveSubscription.metadata?.subscription_province as SubscriptionProvince;
+          const tier = liveSubscription.metadata?.subscription_tier as SubscriptionTier;
+          const seats = liveSubscription.items.data[0]?.quantity ?? 0;
+          const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(liveSubscription);
 
           if (!managerEmail || !orgName || !province || !tier || seats < 1 || !currentPeriodEnd) {
             await notifyOwner({
               title: "Team provisioning metadata is incomplete",
-              content: `Subscription ${liveSub.id} cannot be provisioned. Correct the live Stripe metadata and replay event ${event.id}.`,
+              content: `Subscription ${liveSubscription.id} cannot be provisioned. Correct its live Stripe metadata and replay event ${event.id}.`,
             }).catch(() => {});
             return res.status(503).json({ error: "Organization subscription metadata is incomplete" });
           }
@@ -215,8 +222,8 @@ export function registerStripeWebhook(app: Express) {
           const result = await provisionOrgFromWebhook(db, {
             stripeEventId: event.id,
             eventType: event.type,
-            stripeSubscriptionId: liveSub.id,
-            stripeCustomerId: typeof liveSub.customer === "string" ? liveSub.customer : (liveSub.customer as any).id,
+            stripeSubscriptionId: liveSubscription.id,
+            stripeCustomerId: typeof liveSubscription.customer === "string" ? liveSubscription.customer : (liveSubscription.customer as any).id,
             orgName,
             managerEmail,
             province,
@@ -224,7 +231,7 @@ export function registerStripeWebhook(app: Express) {
             seats,
             currentPeriodStart,
             currentPeriodEnd,
-            status: liveSub.status === "active" ? "active" : liveSub.status === "past_due" ? "past_due" : "cancelled",
+            status: liveSubscription.status === "active" ? "active" : liveSubscription.status === "past_due" ? "past_due" : "cancelled",
           });
 
           if (result.state === "completed" || result.state === "already_completed") {
@@ -243,6 +250,8 @@ export function registerStripeWebhook(app: Express) {
           const db = await getDb();
           if (!db) throw new Error("Database unavailable");
 
+          // Use liveSubscription (already retrieved above) throughout the individual branch
+          const sub = liveSubscription;
           const tier = sub.metadata?.subscription_tier as ST | undefined;
           const province = sub.metadata?.subscription_province as SP | undefined;
           const stripeSubscriptionId = sub.id;
@@ -380,6 +389,7 @@ export function registerStripeWebhook(app: Express) {
           console.log(`[Stripe Webhook] Subscription cancelled: ${sub.id}`);
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing subscription.deleted:", err.message);
+          return res.status(503).json({ error: "Subscription cancellation processing failed" });
         }
       }
 
@@ -402,13 +412,18 @@ export function registerStripeWebhook(app: Express) {
               .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
               .limit(1);
 
-            if (isOrgSubscription && orgRow.length === 0) {
+            const invoiceRoute = classifyInvoiceSubscription({
+              isOrganizationSubscription: isOrgSubscription,
+              organizationExists: orgRow.length > 0,
+            });
+
+            if (invoiceRoute === "organization_pending") {
               // Invoice arrived before the subscription provisioning event.
               // Return 503 so Stripe retries after the org is created.
               return res.status(503).json({ error: "Organization provisioning is not complete" });
             }
 
-            if (isOrgSubscription && orgRow.length > 0) {
+            if (invoiceRoute === "organization") {
               const org = orgRow[0];
               const result = await processOrgInvoice(db, {
                 stripeEventId: event.id,
@@ -465,25 +480,53 @@ export function registerStripeWebhook(app: Express) {
             }
           } catch (err: any) {
             console.error("[Stripe Webhook] Error processing invoice.payment_succeeded:", err.message);
+            return res.status(503).json({ error: "Invoice processing failed" });
           }
         }
       }
 
       if (event.type === "invoice.payment_failed") {
         const invoice = event.data.object as any;
-        const stripeSubscriptionId = invoice.subscription;
+        const stripeSubscriptionId =
+          typeof invoice.subscription === "string"
+            ? invoice.subscription
+            : invoice.subscription?.id;
+
         if (stripeSubscriptionId) {
           try {
             const db = await getDb();
             if (!db) throw new Error("Database unavailable");
+
+            // ── Org (team) payment failure branch ─────────────────────────
+            const orgRows = await db
+              .select({ id: organizations.id, name: organizations.name, managerEmail: organizations.managerEmail })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+
+            if (orgRows.length > 0) {
+              const organization = orgRows[0];
+              await db
+                .update(organizations)
+                .set({ status: "past_due" })
+                .where(eq(organizations.id, organization.id));
+              // Keep operator access active during Stripe's retry window.
+              // Do not revoke members or expire their managed subscriptions here.
+              await notifyOwner({
+                title: "Team plan payment failed",
+                content: `Payment failed for ${organization.name}, ${organization.managerEmail}, subscription ${stripeSubscriptionId}. Stripe will retry automatically.`,
+              }).catch(() => {});
+              return res.json({ received: true });
+            }
+            // ── End org payment failure branch ─────────────────────────────
+
+            // Individual subscription payment failure
             await db
               .update(subscriptions)
               .set({ status: "past_due" })
               .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
             console.log(`[Stripe Webhook] Subscription payment failed: ${stripeSubscriptionId}`);
 
-            // Notify owner — mirrors the refund/dispute pattern
-            // Fetch the customer email from our DB so the notification is actionable
             const failedSubRows = await db
               .select({ email: subscriptions.email, tier: subscriptions.tier })
               .from(subscriptions)
@@ -492,13 +535,15 @@ export function registerStripeWebhook(app: Express) {
             const failedEmail = failedSubRows[0]?.email ?? "(unknown)";
             const failedTier = failedSubRows[0]?.tier ?? "(unknown)";
             await notifyOwner({
-              title: "⚠️ Subscription payment failed",
-              content: `Payment failed for ${failedEmail} (${failedTier} plan, sub ${stripeSubscriptionId}). Stripe will retry automatically. Customer has been moved to past_due and retains access during the retry window.`,
+              title: "Subscription payment failed",
+              content: `Payment failed for ${failedEmail} (${failedTier} plan, sub ${stripeSubscriptionId}). Stripe will retry automatically.`,
             }).catch((notifyErr) => {
               console.error("[Stripe Webhook] notifyOwner failed for payment_failed:", notifyErr.message);
             });
+            return res.json({ received: true });
           } catch (err: any) {
             console.error("[Stripe Webhook] Error processing invoice.payment_failed:", err.message);
+            return res.status(503).json({ error: "Payment failure processing failed" });
           }
         }
       }

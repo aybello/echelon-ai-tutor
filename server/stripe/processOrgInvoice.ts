@@ -1,4 +1,4 @@
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { organizations, subscriptions } from "../../drizzle/schema";
 import { sendOrgPaymentConfirmationEmail } from "../email";
 import { TIER_LABELS, type SubscriptionTier } from "./subscriptionProducts";
@@ -10,6 +10,24 @@ import {
 } from "./eventLedger";
 import { getSubscriptionPeriod } from "./subscriptionPeriod";
 import { stripe } from "./stripe";
+
+export type InvoiceSubscriptionRoute =
+  | "organization"
+  | "organization_pending"
+  | "individual";
+
+export function classifyInvoiceSubscription(input: {
+  isOrganizationSubscription: boolean;
+  organizationExists: boolean;
+}): InvoiceSubscriptionRoute {
+  if (input.isOrganizationSubscription && !input.organizationExists) {
+    return "organization_pending";
+  }
+  if (input.isOrganizationSubscription) {
+    return "organization";
+  }
+  return "individual";
+}
 
 export interface ProcessOrgInvoiceInput {
   stripeEventId: string;
@@ -101,16 +119,15 @@ export async function processOrgInvoice(
 
       // Mark DB work done but email still pending
       // Use raw SQL to update within the same token guard
-      await db.execute(
-        require("drizzle-orm").sql`
-          UPDATE stripe_event_log
-          SET dbProcessed = true,
-              status = 'db_completed_email_pending',
-              lastError = NULL
-          WHERE stripeEventId = ${input.stripeEventId}
-            AND processingToken = ${token}
-        `
-      );
+      await db.execute(sql`
+        UPDATE stripe_event_log
+        SET
+          dbProcessed = true,
+          status = 'db_completed_email_pending',
+          lastError = NULL
+        WHERE stripeEventId = ${input.stripeEventId}
+          AND processingToken = ${token}
+      `);
     } else {
       // DB already done on prior attempt — re-fetch period end from org row
       const orgRow = await db.select({ termEnd: organizations.termEnd }).from(organizations).where(eq(organizations.id, input.organization.id)).limit(1);
