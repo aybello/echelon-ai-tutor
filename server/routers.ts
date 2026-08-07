@@ -6,9 +6,11 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates, userFeedback, aiChatSessions, studentProfiles } from "../drizzle/schema";
-import { and, desc, eq, or, sql } from "drizzle-orm";
+import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates, userFeedback, aiChatSessions, studentProfiles, questions, questionAttempts } from "../drizzle/schema";
+import { and, desc, eq, inArray, or, sql } from "drizzle-orm";
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
+import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { adminRouter } from "./routers/admin";
 import { resolveEntitlementsByEmail } from "./_core/access";
 import { getAccessibleCoursesForIdentity, resolveVerifiedIdentity, resolveAccessForRequest } from "./_core/accessService";
@@ -352,6 +354,87 @@ export const appRouter = router({
           ...r,
           moduleBreakdown: r.moduleBreakdown ? JSON.parse(r.moduleBreakdown) : null,
         }));
+      }),
+
+    submitMock: publicProcedure
+      .input(z.object({
+        sessionId: z.string().min(1).max(64),
+        examType: z.string().min(1).max(64),
+        bankKey: z.string().min(1).max(64),
+        timeTakenSeconds: z.number().int().nonnegative().optional(),
+        stream: z.enum(["water", "wastewater"]).optional(),
+        calcOnly: z.boolean().optional(),
+        answers: z.array(z.object({
+          questionId: z.number().int().positive(),
+          selectedIndex: z.number().int().min(0).max(3),
+        })).min(1).max(200),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+        const questionIds = input.answers.map(a => a.questionId);
+        const questionRows = await db
+          .select({ id: questions.id, correctIndex: questions.correctIndex, module: questions.module, difficulty: questions.difficulty })
+          .from(questions)
+          .where(inArray(questions.id, questionIds));
+
+        const questionMap = new Map(questionRows.map(q => [q.id, q]));
+        const identity = await resolveLearningIdentity(ctx);
+
+        let correct = 0;
+        const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
+
+        for (const answer of input.answers) {
+          const q = questionMap.get(answer.questionId);
+          if (!q) continue;
+          const isCorrect = answer.selectedIndex === q.correctIndex;
+          if (isCorrect) correct++;
+          const mod = q.module ?? input.examType;
+          if (!moduleBreakdown[mod]) moduleBreakdown[mod] = { correct: 0, total: 0 };
+          moduleBreakdown[mod].total++;
+          if (isCorrect) moduleBreakdown[mod].correct++;
+          try {
+            await db.insert(questionAttempts).values({
+              userId: identity.userId,
+              studentEmail: identity.studentEmail,
+              examType: input.examType,
+              topic: mod,
+              questionId: answer.questionId,
+              correct: isCorrect ? "yes" : "no",
+              difficulty: q.difficulty ?? null,
+              quizMode: "mock",
+              sessionId: input.sessionId,
+              selectedIndex: answer.selectedIndex,
+              bankKey: input.bankKey,
+              courseKey: input.bankKey,
+              orgId: identity.orgId,
+              organizationMemberId: identity.organizationMemberId,
+            });
+          } catch (err) {
+            console.warn("[exam.submitMock] Failed to log attempt:", err);
+          }
+        }
+
+        const total = input.answers.length;
+        const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+        const passed = pct >= 70;
+
+        await db.insert(examResults).values({
+          sessionId: input.sessionId,
+          userId: identity.userId,
+          studentEmail: identity.studentEmail,
+          examType: input.examType,
+          stream: input.stream ?? null,
+          score: correct,
+          total,
+          passed: passed ? "yes" : "no",
+          timeTakenSeconds: input.timeTakenSeconds ?? null,
+          moduleBreakdown: JSON.stringify(moduleBreakdown),
+          calcOnly: input.calcOnly ? "yes" : "no",
+        });
+
+        return { success: true, score: correct, total, pct, passed, moduleBreakdown };
       }),
   }),
 

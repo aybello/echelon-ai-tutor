@@ -188,35 +188,22 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
   const [sessionId] = useState(() => crypto.randomUUID());
 
   return function log(params: {
-    topic: string;
     questionId: number;
-    correct: boolean;
-    difficulty?: string;
+    selectedIndex: number;
+    bankKey?: string;
     /** Confidence self-rating (1=low, 2=medium, 3=high) mapped to enum */
     confidenceLevel?: number | null;
     bookmarked?: boolean;
   }) {
-    // Pass the student's purchase/trial email so attempts are linked to their account
-    // even when they haven't signed in with OAuth
-    let studentEmail: string | undefined;
-    try {
-      studentEmail =
-        localStorage.getItem("echelon_subscription_email") ??
-        localStorage.getItem("echelon_trial_email") ??
-        undefined;
-    } catch { /* ignore */ }
-
     const confidenceMap: Record<number, "low" | "medium" | "high"> = { 1: "low", 2: "medium", 3: "high" };
     const confidence = params.confidenceLevel != null ? (confidenceMap[params.confidenceLevel] ?? null) : null;
 
     logAttempt.mutate({
       examType,
-      topic: params.topic,
       questionId: params.questionId,
-      correct: params.correct,
-      difficulty: params.difficulty ?? undefined,
+      selectedIndex: params.selectedIndex,
+      bankKey: params.bankKey ?? examType,
       quizMode,
-      studentEmail,
       sessionId,
       confidence,
       bookmarked: params.bookmarked ?? false,

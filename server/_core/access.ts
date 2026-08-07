@@ -242,11 +242,9 @@ export async function resolveEntitlementsByEmail(
       if (seat.courseKey) {
         orgSeatExamTypes = orgSeatExamTypes.concat(getAllUnlockedExamTypes([seat.courseKey]));
       } else {
-        // No specific course — org default: all-access for the org's province
-        const province = seat.orgProvince === "western" ? "western" : "ontario";
-        orgSeatExamTypes = orgSeatExamTypes.concat(
-          getAllSubscriptionExamTypes([{ tier: "all-access" as SubscriptionTier, province: province as SubscriptionProvince }])
-        );
+        // No specific course assigned — skip this seat (do not grant all-access)
+        // Managers must always assign a specific course key to an operator seat.
+        console.warn("[resolveEntitlements] Org seat has no courseKey — skipping (orgId implied)");
       }
     }
     if (orgSeatExamTypes.length > 0) sources.push("org_seat");

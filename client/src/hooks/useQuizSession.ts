@@ -33,8 +33,8 @@ const DEFAULT_SESSION_SIZE = 15;
 export interface HistoryEntry {
   questionId: number;
   module: string;
-  difficulty: string;
-  correct: boolean;
+  difficulty?: string;
+  correct?: boolean;
   confidence: number | null;
   selectedOption: number;
   questionObj: DBQuestion;
@@ -135,7 +135,7 @@ function getAdaptiveNext(
       if (!moduleCounts[h.module])
         moduleCounts[h.module] = { wrong: 0, total: 0 };
       moduleCounts[h.module].total++;
-      if (!h.correct) moduleCounts[h.module].wrong++;
+      if (h.correct === false) moduleCounts[h.module].wrong++;
     });
     const weakModules = Object.entries(moduleCounts)
       .filter(([, v]) => v.wrong / v.total >= 0.5)
@@ -279,7 +279,7 @@ export function useQuizSession({
   }, [attemptStats, allQuestions.length]);
 
   // ── Derived ────────────────────────────────────────────────────────────────
-  const correctCount = history.filter((h) => h.correct).length;
+  const correctCount = history.filter((h) => h.correct === true).length;
   const wrongCount = history.length - correctCount;
   // sessionSize: quick10 is always 10; the free preview is always fixed at
   // DEFAULT_SESSION_SIZE (so the counter/limit shown to a locked user can never
@@ -366,8 +366,6 @@ export function useQuizSession({
     const entry: HistoryEntry = {
       questionId: current.id,
       module: current.module,
-      difficulty: current.difficulty ?? "medium",
-      correct: isCorrect,
       confidence,
       selectedOption: selected,
       questionObj: current,
@@ -385,10 +383,9 @@ export function useQuizSession({
       : null;
     // Log attempt to backend
     logAttemptFn({
-      topic: current.module,
       questionId: current.id,
-      correct: isCorrect,
-      difficulty: current.difficulty ?? undefined,
+      selectedIndex: selected ?? 0,
+      bankKey: examType,
       confidenceLevel: confLevel,
     });
 
@@ -642,8 +639,6 @@ export function useQuizSession({
     const entry: HistoryEntry = {
       questionId: current.id,
       module: current.module,
-      difficulty: current.difficulty ?? "medium",
-      correct: isCorrect,
       confidence: effectiveConfidence,
       selectedOption: effectiveSelected,
       questionObj: current,
@@ -656,10 +651,9 @@ export function useQuizSession({
       ? (latestConfidence <= 33 ? 1 : latestConfidence <= 66 ? 2 : 3)
       : null;
     logAttemptFn({
-      topic: current.module,
       questionId: current.id,
-      correct: isCorrect,
-      difficulty: current.difficulty ?? undefined,
+      selectedIndex: selected ?? 0,
+      bankKey: examType,
       confidenceLevel: confLevel,
     });
     setSelectedState(effectiveSelected);

@@ -83,6 +83,11 @@ export const examResults = mysqlTable("exam_results", {
   moduleBreakdown: text("moduleBreakdown"), // JSON string: { moduleName: { correct, total } }
   calcOnly: mysqlEnum("calcOnly", ["yes", "no"]).default("no"), // whether this was a Math Practice (calc-only) session
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /** Phase 1: Org-scoped mock results */
+  orgId: int("orgId"),
+  organizationMemberId: int("organizationMemberId"),
+  courseKey: varchar("courseKey", { length: 64 }),
+  bankKey: varchar("bankKey", { length: 64 }),
 });
 
 export type ExamResult = typeof examResults.$inferSelect;
@@ -177,6 +182,10 @@ export const examDates = mysqlTable("exam_dates", {
   remindersSent: text("remindersSent").notNull(), // JSON array of intervals already sent e.g. [30, 14]
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  /** Phase 1: Org-scoped exam dates */
+  orgId: int("orgId"),
+  organizationMemberId: int("organizationMemberId"),
+  courseKey: varchar("courseKey", { length: 64 }),
 });
 export type ExamDate = typeof examDates.$inferSelect;
 export type InsertExamDate = typeof examDates.$inferInsert;
@@ -200,6 +209,16 @@ export const questionAttempts = mysqlTable("question_attempts", {
   /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
    *  Nullable for historic rows; new rows always include it. */
   sessionId: varchar("sessionId", { length: 36 }),
+  /** Server-scored: the option index the student selected (0-3). */
+  selectedIndex: int("selectedIndex"),
+  /** The bank key for this attempt — used for org analytics scoping. */
+  bankKey: varchar("bankKey", { length: 64 }),
+  /** The course key for this attempt — used for org entitlement scoping. */
+  courseKey: varchar("courseKey", { length: 64 }),
+  /** Org ID for team plan operators — null for individual learners. */
+  orgId: int("orgId"),
+  /** Organization member ID for team plan operators — null for individual learners. */
+  organizationMemberId: int("organizationMemberId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (t) => [
   // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern

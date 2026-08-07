@@ -176,7 +176,7 @@ export default function PurchaseSuccess() {
 
   useEffect(() => {
     if (sessionId) {
-      verifySession.mutate({ sessionId, productKey });
+      verifySession.mutate({ sessionId });
     } else {
       setVerifying(false);
     }

@@ -725,7 +725,6 @@ function CheckoutButton({
         email: contact.email,
         name: contact.name,
         phone: contact.phone,
-        origin: window.location.origin,
         currency,
       });
   }
@@ -813,7 +812,6 @@ function SubscriptionCheckoutButton({
         email: contact.email,
         name: contact.name,
         phone: contact.phone,
-        origin: window.location.origin,
         utmSource,
         utmMedium,
         utmCampaign,

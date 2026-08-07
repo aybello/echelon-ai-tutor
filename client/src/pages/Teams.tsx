@@ -72,7 +72,6 @@ export default function Teams() {
         tier,
         seats,
         managerEmail: managerEmail.trim().toLowerCase(),
-        origin: window.location.origin,
       });
       if (result.url) window.location.href = result.url;
     } catch (err: any) {

@@ -8,6 +8,7 @@
  */
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
+import { computeReadiness } from "../_core/readiness";
 import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
@@ -697,13 +698,18 @@ export const dashboardRouter = router({
       const recentBonus = Number(recentActiveRows[0]?.count ?? 0) > 0 ? 1 : 0;
 
       const rawScore =
-        recentAccuracy * 0.30 +
-        mockAccuracy   * 0.25 +
-        topicCoverage  * 0.20 +
-        studyFrequency * 0.15 +
-        recentBonus    * 0.10;
+        0; // unused - replaced by computeReadiness below
 
-      const score = Math.round(rawScore * 100);
+      const readinessResult = computeReadiness({
+        accuracy: recentAccuracy,
+        totalAttempts: recentTotal,
+        mockAccuracy,
+        topicsAttempted: distinctTopics,
+        totalTopics: totalTopicsInBank,
+        activeDaysLast30: activeDays,
+        activeRecently: recentBonus > 0,
+      });
+      const score = readinessResult.score;
 
       let level: "not_ready" | "building" | "getting_close" | "likely_ready" | "exam_ready";
       let label: string;

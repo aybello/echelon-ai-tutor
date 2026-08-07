@@ -31,6 +31,7 @@ import { notifyOwner } from "../_core/notification";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -51,7 +52,6 @@ export const stripeRouter = router({
       email: z.string().email().optional(),
       name: z.string().max(128).optional(),
       phone: z.string().max(32).optional(),
-      origin: z.string().url(),
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
@@ -60,6 +60,7 @@ export const stripeRouter = router({
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
       if (!product) throw new Error("Product not found");
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const userEmail = ctx.user?.email ?? input.email;
       // Phone and name collected via pre-checkout modal; stored in metadata
@@ -101,8 +102,8 @@ export const stripeRouter = router({
         },
         allow_promotion_codes: true,
         phone_number_collection: { enabled: true },
-        success_url: `${input.origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}&product=${product.key}`,
-        cancel_url: `${input.origin}/pricing`,
+        success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${appBaseUrl}/pricing`,
       });
 
       return { url: session.url };
@@ -112,96 +113,67 @@ export const stripeRouter = router({
   verifySession: publicProcedure
     .input(z.object({
       sessionId: z.string(),
-      productKey: z.string(),
     }))
     .mutation(async ({ input, ctx }) => {
       try {
         const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
           expand: ["customer_details"],
         });
-        // Stripe populates customer_details.email after checkout completes;
-        // customer_email is only set when pre-filled before checkout.
-        const email = normalizeEmail(
-          (session as any).customer_details?.email ??
-          session.customer_email ??
-          session.metadata?.customer_email
-        );
-        // Phone: prefer Stripe's customer_details (filled by Stripe Checkout phone field),
-        // fall back to the pre-checkout modal value stored in metadata
-        const phone: string | null =
-          (session as any).customer_details?.phone ??
-          (session.metadata?.customer_phone || null);
-        const customerName: string | null =
-          (session as any).customer_details?.name ??
-          (session.metadata?.customer_name || null);
-        const productKey = session.metadata?.product_key ?? input.productKey;
-        const productName = session.metadata?.product_name ?? productKey;
-        const amountCAD = session.amount_total ?? 0;
-        const stripePaymentIntentId =
-          typeof session.payment_intent === "string" ? session.payment_intent : null;
+        // Use canonical validator — never trust client-supplied productKey
+        const checkout = validateOneTimeCheckout(session);
+        const { email, productKey, productName, amountPaidCents: amountCAD, paymentIntentId: stripePaymentIntentId, phone, customerName } = checkout;
 
-        if (session.payment_status === "paid" && email && productKey) {
-          // FIX 4: Issue verified Echelon session cookie so dashboard opens without OTP
-          try {
-            await issueVerifiedEmailSessionCookie(ctx.res, email);
-          } catch (e) {
-            console.error("[verifySession] Failed to issue session cookie:", e);
-          }
+        try {
+          await issueVerifiedEmailSessionCookie(ctx.res, email);
+        } catch (e) {
+          console.error("[verifySession] Failed to issue session cookie:", e);
+        }
 
-          const db = await getDb();
-          if (db) {
-            // Upsert — avoid duplicate on page refresh
-            const existing = await db
-              .select({ id: purchases.id })
-              .from(purchases)
-              .where(eq(purchases.stripeSessionId, input.sessionId))
-              .limit(1);
-            if (existing.length === 0) {
-              await db.insert(purchases).values({
-                email,
-                phone,
-                customerName,
-                productKey,
-                productName,
-                amountCAD,
-                stripeSessionId: input.sessionId,
-                stripePaymentIntentId,
-              });
-              // Send confirmation email (non-blocking — webhook is the primary trigger;
-              // this is a fallback for cases where the webhook fires after the user
-              // has already landed on the success page)
-              const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
-              sendPurchaseConfirmationEmail({
-                email,
-                productName: productName ?? productKey,
-                productKey,
-                amountCAD,
-                quizPath: studyPaths.quizPath,
-                mockPath: studyPaths.mockPath,
-              }).catch(err => {
-                console.error("[verifySession] Failed to send confirmation email:", err.message);
-              });
-            }
+        const db = await getDb();
+        if (db) {
+          const existing = await db
+            .select({ id: purchases.id })
+            .from(purchases)
+            .where(eq(purchases.stripeSessionId, input.sessionId))
+            .limit(1);
+          if (existing.length === 0) {
+            await db.insert(purchases).values({
+              email,
+              phone,
+              customerName,
+              productKey,
+              productName,
+              amountCAD,
+              stripeSessionId: input.sessionId,
+              stripePaymentIntentId,
+            });
+            const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
+            sendPurchaseConfirmationEmail({
+              email,
+              productName,
+              productKey,
+              amountCAD,
+              quizPath: studyPaths.quizPath,
+              mockPath: studyPaths.mockPath,
+            }).catch(err => {
+              console.error("[verifySession] Failed to send confirmation email:", err.message);
+            });
           }
         }
 
-        // Also return unlockedExamTypes and accessToken for immediate localStorage convenience
-        const unlockedExamTypes = session.payment_status === "paid" && productKey
-          ? getAllUnlockedExamTypes([productKey])
-          : [];
-        const accessToken = unlockedExamTypes.length > 0 && email
+        const unlockedExamTypes = getAllUnlockedExamTypes([productKey]);
+        const accessToken = unlockedExamTypes.length > 0
           ? await issueSubscriptionToken({ email, examTypes: unlockedExamTypes })
           : null;
 
-        return { email, productKey, paid: session.payment_status === "paid", unlockedExamTypes, accessToken };
+        return { email, productKey, paid: true, unlockedExamTypes, accessToken };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
-        // Notify owner so they can manually restore access if needed
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
-          content: `verifySession failed for session ${input.sessionId} (product: ${input.productKey}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
+          content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
         }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
-        return { email: "", productKey: input.productKey, paid: false };
+        return { email: "", productKey: "", paid: false, unlockedExamTypes: [], accessToken: null };
       }
     }),
 
@@ -248,7 +220,6 @@ export const stripeRouter = router({
       email: z.string().email(),
       name: z.string().max(128).optional(),
       phone: z.string().min(7, "Phone number is required").max(30),
-      origin: z.string().url(),
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
@@ -258,6 +229,7 @@ export const stripeRouter = router({
     .mutation(async ({ input, ctx }) => {
       const product = getSubscriptionProduct(input.tier as SubscriptionTier, input.province as SubscriptionProvince);
       if (!product) throw new Error("Subscription tier not found");
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const userEmail = ctx.user?.email ?? input.email;
       const tierLabel = TIER_LABELS[input.tier as SubscriptionTier];
@@ -315,8 +287,8 @@ export const stripeRouter = router({
         },
         phone_number_collection: { enabled: true },
         allow_promotion_codes: true,
-        success_url: `${input.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}&tier=${input.tier}&province=${input.province}`,
-        cancel_url: `${input.origin}/pricing`,
+        success_url: `${appBaseUrl}/subscription-success?session_id={CHECKOUT_SESSION_ID}&tier=${input.tier}&province=${input.province}`,
+        cancel_url: `${appBaseUrl}/pricing`,
       });
 
       return { url: session.url };
@@ -384,31 +356,66 @@ export const stripeRouter = router({
    * needing to contact support.
    */
   createBillingPortalSession: protectedProcedure
-    .input(z.object({
-      origin: z.string().url(),
-    }))
-    .mutation(async ({ input, ctx }) => {
-      const email = ctx.user.email;
+    .input(z.object({}))
+    .mutation(async ({ ctx }) => {
+      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
       if (!email) throw new Error("Email required to access billing portal");
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
 
-      // Find the Stripe customer ID from the most recent active subscription
-      const rows = await db
-        .select({ stripeCustomerId: subscriptions.stripeCustomerId })
-        .from(subscriptions)
-        .where(eq(subscriptions.email, email))
-        .limit(10);
+      const { normalizeEmail: normEmail } = await import("../_core/access");
+      const { organizationMembers: membersTable, organizations: orgsTable } = await import("../../drizzle/schema");
+      const { isNull, desc, inArray } = await import("drizzle-orm");
+      const normalisedEmail = normEmail(email);
+      const now = new Date();
 
-      const stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
+      // Lookup order per spec:
+      // 1. Active manager membership joined to an active organization → use org.stripeCustomerId
+      // 2. Otherwise, most recent direct subscription row where orgId IS NULL
+      let stripeCustomerId: string | null | undefined;
+
+      const managerOrgRow = await db
+        .select({ stripeCustomerId: orgsTable.stripeCustomerId })
+        .from(membersTable)
+        .innerJoin(orgsTable, eq(membersTable.orgId, orgsTable.id))
+        .where(
+          and(
+            eq(membersTable.email, normalisedEmail),
+            eq(membersTable.role, "manager"),
+            eq(membersTable.status, "assigned"),
+            inArray(orgsTable.status, ["active", "past_due"]),
+            gt(orgsTable.termEnd, now),
+          ),
+        )
+        .limit(1)
+        .then(r => r[0]);
+
+      if (managerOrgRow?.stripeCustomerId) {
+        stripeCustomerId = managerOrgRow.stripeCustomerId;
+      } else {
+        // Individual subscriber — find direct subscription
+        const rows = await db
+          .select({ stripeCustomerId: subscriptions.stripeCustomerId })
+          .from(subscriptions)
+          .where(
+            and(
+              eq(subscriptions.email, normalisedEmail),
+              isNull(subscriptions.orgId),
+            ),
+          )
+          .orderBy(desc(subscriptions.createdAt))
+          .limit(5);
+        stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
+      }
       if (!stripeCustomerId) {
         throw new Error("No Stripe customer found for this email. Please contact abello@echeloninstitute.ca");
       }
 
       const portalSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerId,
-        return_url: `${input.origin}/account`,
+        return_url: `${appBaseUrl}/account`,
       });
 
       return { url: portalSession.url };
@@ -547,9 +554,9 @@ export const stripeRouter = router({
       tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
       seats: z.number().int().min(1).max(500),
       managerEmail: z.string().email(),
-      origin: z.string().url(),
     }))
     .mutation(async ({ input }) => {
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
       const volumeTier = getTeamVolumeTier(input.seats);
       const unitAmount = getTeamSeatPriceCents(input.province, input.tier as TeamStreamTier, input.seats);
       const discountPct = volumeTier.discountPct;
@@ -595,8 +602,8 @@ export const stripeRouter = router({
         },
         phone_number_collection: { enabled: true },
         allow_promotion_codes: true,
-        success_url: `${input.origin}/team?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${input.origin}/teams`,
+        success_url: `${appBaseUrl}/team?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${appBaseUrl}/teams`,
       });
 
       return { url: session.url };
@@ -610,7 +617,6 @@ export const stripeRouter = router({
   updateTeamSeats: publicProcedure
     .input(z.object({
       seats: z.number().int().min(1).max(500),
-      origin: z.string().url(),
     }))
     .mutation(async ({ input, ctx }) => {
       const email = ctx.studentEmail ?? ctx.user?.email ?? null;
@@ -671,6 +677,17 @@ export const stripeRouter = router({
         });
       }
 
+      // Per spec: reject ANY current-term seat reduction (reductions take effect at renewal)
+      if (input.seats < org.seatsTotal) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Seat reductions take effect at renewal. Contact support if the renewal quantity needs to change.",
+        });
+      }
+      if (input.seats === org.seatsTotal) {
+        return { success: true, seats: org.seatsTotal, unchanged: true };
+      }
+      // Only increases reach Stripe
       await stripe.subscriptions.update(org.stripeSubscriptionId, {
         items: [
           {

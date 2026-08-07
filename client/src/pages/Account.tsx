@@ -184,7 +184,7 @@ export default function Account() {
   const handleManageSubscription = () => {
     setPortalLoading(true);
     createBillingPortal.mutate(
-      { origin: window.location.origin },
+      {},
       { onSettled: () => setPortalLoading(false) }
     );
   };

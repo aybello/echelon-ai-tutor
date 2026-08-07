@@ -7,6 +7,7 @@ import { TRPCError } from "@trpc/server";
 import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
+import { resolveLearningIdentity } from "../_core/learningIdentity";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users } from "../../drizzle/schema";
 import { and, eq, desc, sql, gte } from "drizzle-orm";
 import { z } from "zod";
@@ -254,84 +255,85 @@ export const quizRouter = router({
     .input(
       z.object({
         examType: z.string().min(1).max(64),
-        topic: z.string().min(1).max(128),
         questionId: z.number().int().positive(),
-        correct: z.boolean(),
-        difficulty: z.string().max(16).optional().nullable(),
+        selectedIndex: z.number().int().min(0).max(3), // client sends selected option index; server scores
         quizMode: z.enum(["standard", "quick10", "missed", "qotd", "mock", "bookmarked", "low-confidence"]).default("standard"),
         guestToken: z.string().max(64).optional(),
-        studentEmail: z.string().email().optional(), // purchase/trial email for non-OAuth users
         /** Issue Q: client-generated UUID for the quiz session. Nullable for legacy clients. */
         sessionId: z.string().uuid().optional().nullable(),
         /** Confidence self-rating — set by the student after answering. */
         confidence: z.enum(["low", "medium", "high"]).optional().nullable(),
         /** Bookmarked — student can flag a question for later review. */
         bookmarked: z.boolean().optional(),
+        /** bankKey — needed to look up the question for server scoring */
+        bankKey: z.string().min(1).max(64),
       })
     )
     .mutation(async ({ input, ctx }) => {
       try {
         const db = await getDb();
         if (!db) return { success: false };
-        const userId = ctx.user?.id ?? null;
-        // Attribution priority:
-        //   1. OAuth user email (most trusted)
-        //   2. Server-verified OTP session email (trusted cookie)
-        //   3. Client-supplied email ONLY when a guestToken is also present
-        //      (genuine guest session, not an arbitrary unauthenticated caller)
-        // This prevents unauthenticated callers from writing attempts under any email.
-        const clientEmailForGuest = input.guestToken && input.studentEmail
-          ? input.studentEmail.trim().toLowerCase()
-          : null;
-        const studentEmail = userId
-          ? (ctx.user?.email ?? null)
-          : (ctx.studentEmail ?? clientEmailForGuest ?? null);
 
-        // Log the attempt
+        // Server-score the attempt
+        const [questionRow] = await db
+          .select({ correctIndex: questions.correctIndex, topic: questions.topic, difficulty: questions.difficulty, module: questions.module })
+          .from(questions)
+          .where(eq(questions.id, input.questionId))
+          .limit(1);
+
+        if (!questionRow) {
+          console.warn("[quizRouter.logAttempt] Question not found:", input.questionId);
+          return { success: false };
+        }
+
+        const correct = input.selectedIndex === questionRow.correctIndex;
+        const topic = questionRow.topic ?? questionRow.module ?? input.examType;
+        const difficulty = questionRow.difficulty ?? null;
+
+        const identity = await resolveLearningIdentity(ctx);
+        const { userId, studentEmail, orgId, organizationMemberId } = identity;
+
         await db.insert(questionAttempts).values({
           userId,
           guestToken: input.guestToken ?? null,
           studentEmail,
           examType: input.examType,
-          topic: input.topic,
+          topic,
           questionId: input.questionId,
-          correct: input.correct ? "yes" : "no",
-          difficulty: input.difficulty ?? null,
+          correct: correct ? "yes" : "no",
+          difficulty,
           quizMode: input.quizMode,
           sessionId: input.sessionId ?? null,
           confidence: input.confidence ?? null,
           bookmarked: input.bookmarked ? "yes" : "no",
+          selectedIndex: input.selectedIndex,
+          bankKey: input.bankKey,
+          courseKey: input.bankKey,
+          orgId,
+          organizationMemberId,
         });
 
-        // Update student profile if authenticated (OAuth user) or email-verified (OTP session).
-        // KI-001 root-cause fix: for OTP sessions, resolve email → userId if a users row exists
-        // so the profile is always keyed by userId (not email) for known accounts.
         if (userId) {
-          await upsertStudentProfile(db, userId, null, input.examType, input.topic, input.correct);
-        } else if (ctx.studentEmail) {
-          const normalizedEmail = ctx.studentEmail.trim().toLowerCase();
+          await upsertStudentProfile(db, userId, null, input.examType, topic, correct);
+        } else if (studentEmail) {
           const [existingUser] = await db
             .select({ id: users.id })
             .from(users)
-            .where(eq(users.email, normalizedEmail))
+            .where(eq(users.email, studentEmail))
             .limit(1);
           if (existingUser) {
-            // Known account: key by userId to prevent profile re-splitting
-            await upsertStudentProfile(db, existingUser.id, null, input.examType, input.topic, input.correct);
+            await upsertStudentProfile(db, existingUser.id, null, input.examType, topic, correct);
           } else {
-            // Unknown email: fall back to email-keyed profile (guest/trial flow)
-            await upsertStudentProfile(db, null, normalizedEmail, input.examType, input.topic, input.correct);
+            await upsertStudentProfile(db, null, studentEmail, input.examType, topic, correct);
           }
         }
 
-        return { success: true };
+        return { success: true, correct };
       } catch (err) {
-        // Silent failure — never block the quiz experience
         console.error("[quizRouter.logAttempt] Error:", err);
         return { success: false };
       }
     }),
-
   /**
    * getMissedQuestions — returns question IDs the user has gotten wrong.
    * Used to build the Missed Question Quiz session.

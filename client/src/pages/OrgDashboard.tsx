@@ -558,7 +558,7 @@ export default function OrgDashboard() {
                 variant="outline"
                 size="sm"
                 className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
-                onClick={() => billingPortal.mutate({ origin: window.location.origin })}
+                onClick={() => billingPortal.mutate({})}
                 disabled={billingPortal.isPending}
               >
                 <CreditCard className="w-4 h-4 mr-1.5" />
@@ -1525,7 +1525,7 @@ export default function OrgDashboard() {
               Cancel
             </Button>
             <Button
-              onClick={() => updateSeats.mutate({ seats: newSeatCount, origin: window.location.origin })}
+              onClick={() => updateSeats.mutate({ seats: newSeatCount})}
               disabled={updateSeats.isPending || newSeatCount === overview.seatsTotal || newSeatCount < licencesUsedThisTerm}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >

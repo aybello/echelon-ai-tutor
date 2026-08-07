@@ -415,7 +415,7 @@ export default function MockExamShell({
   );
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
-  const saveResult = trpc.exam.saveResult.useMutation();
+  const submitMock = trpc.exam.submitMock.useMutation();
 
   const startExam = useCallback((overridePool?: ExamQuestion[], overrideTargets?: Record<string, number>) => {
     if (showProvinceSelector) {
@@ -484,15 +484,23 @@ export default function MockExamShell({
   useEffect(() => {
     if (examState !== "results" || !results || resultSavedRef.current) return;
     resultSavedRef.current = true;
-    saveResult.mutate({
+    const calcOnlyProp = false; // Mock exams are not calc-only sessions
+    // Submit answer indices to server for server-side scoring
+    const answerPayload = answers
+      .filter(a => a.selected !== null)
+      .map(a => ({
+        questionId: questions[a.questionIndex]?.id ?? 0,
+        selectedIndex: a.selected as number,
+      }))
+      .filter(a => a.questionId > 0);
+    submitMock.mutate({
       sessionId,
       examType: scoreExamType ?? productKey,
-      score: results.correct,
-      total: questions.length,
-      passed: results.passed,
+      bankKey: productKey,
       timeTakenSeconds: EXAM_DURATION - timeLeft,
-      moduleBreakdown: results.moduleBreakdown,
       ...(stream ? { stream } : {}),
+      ...(calcOnlyProp ? { calcOnly: true } : {}),
+      answers: answerPayload,
     });
   }, [examState, results]); // eslint-disable-line react-hooks/exhaustive-deps
 

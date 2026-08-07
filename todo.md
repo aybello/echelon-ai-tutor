@@ -1215,3 +1215,15 @@
 - [x] Extract provisionOrgFromWebhook() into server/stripe/provisionOrg.ts for testability
 - [x] Add webhook.integration.test.ts with 13 real integration tests against live DB
 - [x] 36 test files, 625/625 tests passing, TypeScript clean
+
+## Client Readiness Fix (Aug 2026)
+- [x] Phase 1: Schema migrations — orgId/memberId/courseKey/bankKey/selectedIndex on question_attempts, exam_dates, exam_results; unique constraint on org_members
+- [x] Phase 2: Stripe hardening — validateOneTimeCheckout.ts, redirects locked to ENV.appBaseUrl, origin/productKey removed from inputs
+- [x] Phase 3: Manager entitlement fixes — operators-only in resolveEntitlementsByEmail, lifecycle-aware resolveOrgManager, null-course all-access prevented
+- [x] Phase 4: Server-scored attempts — learningIdentity.ts, quiz.logAttempt server-scores (selectedIndex → correctIndex lookup), QuizModeBar updated
+- [x] Phase 5: Server-scored mock exams — exam.submitMock procedure, MockExamShell submits answer indices
+- [x] Phase 6: Unified readiness formula — server/_core/readiness.ts, computeReadiness() and computeManagerReadiness(), dashboardRouter and orgRouter updated
+- [x] Phase 7: Billing corrections — seat floor validation, billing portal uses server-derived email
+- [x] Phase 8: Scope manager analytics to orgId/organizationMemberId instead of email
+- [x] Phase 9: 42 tests written across 6 test files — 722/722 passing
+- [x] Phase 10: TypeScript clean (0 errors), build clean, checkpoint, deploy, GitHub push

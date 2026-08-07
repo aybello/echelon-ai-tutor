@@ -23,32 +23,38 @@ import type { TrpcContext } from "./_core/context";
 
 const currentSession: Record<string, unknown> = {
   id: "cs_test_abc123",
+  mode: "payment",
   payment_status: "paid",
+  currency: "cad",
   customer_email: null,
-  customer_details: { email: "buyer@example.com", phone: "+16135550100" },
+  customer_details: { email: "buyer@example.com", phone: "+16135550100", name: "Test Buyer", address: null, tax_exempt: "none", tax_ids: [] },
   metadata: {
     product_key: "oit",
     product_name: "OIT Practice Pass",
     user_id: "",
     customer_email: "buyer@example.com",
   },
-  amount_total: 14900,
+  amount_subtotal: 4900,
+  amount_total: 4900,
   payment_intent: "pi_test_xyz",
 };
 
 function setSession(overrides: Record<string, unknown>) {
   Object.assign(currentSession, {
     id: "cs_test_abc123",
+    mode: "payment",
     payment_status: "paid",
+    currency: "cad",
     customer_email: null,
-    customer_details: { email: "buyer@example.com", phone: "+16135550100" },
+    customer_details: { email: "buyer@example.com", phone: "+16135550100", name: "Test Buyer", address: null, tax_exempt: "none", tax_ids: [] },
     metadata: {
       product_key: "oit",
       product_name: "OIT Practice Pass",
       user_id: "",
       customer_email: "buyer@example.com",
     },
-    amount_total: 14900,
+    amount_subtotal: 4900,
+    amount_total: 4900,
     payment_intent: "pi_test_xyz",
     ...overrides,
   });
@@ -161,7 +167,7 @@ beforeEach(() => {
 describe("stripe.verifySession", () => {
   it("saves a new purchase when session is paid", async () => {
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123", productKey: "oit" });
+    const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
 
     expect(result.paid).toBe(true);
     expect(result.email).toBe("buyer@example.com");
@@ -169,7 +175,7 @@ describe("stripe.verifySession", () => {
     expect(mockPurchases).toHaveLength(1);
     expect(mockPurchases[0]?.email).toBe("buyer@example.com");
     expect(mockPurchases[0]?.productKey).toBe("oit");
-    expect(mockPurchases[0]?.amountCAD).toBe(14900);
+    expect(mockPurchases[0]?.amountCAD).toBe(4900);
   });
 
   it("does not insert a duplicate if the session is already in DB", async () => {
@@ -182,7 +188,7 @@ describe("stripe.verifySession", () => {
     });
 
     const caller = appRouter.createCaller(makeCtx());
-    await caller.stripe.verifySession({ sessionId: "cs_test_abc123", productKey: "oit" });
+    await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
 
     // Should still only have 1 row (no duplicate)
     expect(mockPurchases).toHaveLength(1);
@@ -201,7 +207,7 @@ describe("stripe.verifySession", () => {
     });
 
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123", productKey: "oit" });
+    const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
 
     expect(result.email).toBe("details@example.com");
   });
@@ -210,7 +216,7 @@ describe("stripe.verifySession", () => {
     setSession({ payment_status: "unpaid" });
 
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.verifySession({ sessionId: "cs_test_unpaid", productKey: "oit" });
+    const result = await caller.stripe.verifySession({ sessionId: "cs_test_unpaid" });
 
     expect(result.paid).toBe(false);
     expect(mockPurchases).toHaveLength(0);
@@ -224,7 +230,7 @@ describe("stripe.verifySession", () => {
     });
 
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.verifySession({ sessionId: "cs_test_noemail", productKey: "oit" });
+    const result = await caller.stripe.verifySession({ sessionId: "cs_test_noemail" });
 
     expect(result).toBeDefined();
     expect(mockPurchases).toHaveLength(0);
@@ -276,7 +282,7 @@ describe("purchase flow — confirmation email", () => {
     const { sendPurchaseConfirmationEmail } = await import("./email");
 
     const caller = appRouter.createCaller(makeCtx());
-    await caller.stripe.verifySession({ sessionId: "cs_test_email", productKey: "oit" });
+    await caller.stripe.verifySession({ sessionId: "cs_test_email" });
 
     // Allow the non-blocking email to be triggered
     await new Promise(r => setTimeout(r, 10));
@@ -295,7 +301,7 @@ describe("purchase flow — confirmation email", () => {
     });
 
     const caller = appRouter.createCaller(makeCtx());
-    await caller.stripe.verifySession({ sessionId: "cs_test_abc123", productKey: "oit" });
+    await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
 
     expect(sendPurchaseConfirmationEmail).not.toHaveBeenCalled();
   });
