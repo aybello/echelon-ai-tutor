@@ -1198,6 +1198,38 @@ export default function Pricing() {
       {/* ── Content ── */}
       <div className="pricing-content">
 
+        {/* ── Fix 13: Annual vs One-Time Comparison Table ── */}
+        <div style={{ maxWidth: 760, margin: "0 auto 48px", padding: "0 4px" }}>
+          <p style={{ textAlign: "center", fontSize: 15, color: "#475569", marginBottom: 20, lineHeight: 1.6 }}>
+            Choose annual all-access for multiple courses, or buy one course with a one-time payment.
+          </p>
+          <div style={{ overflowX: "auto", borderRadius: 12, border: "1px solid #E2E8F0", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, background: "#fff" }}>
+              <thead>
+                <tr style={{ background: "#F8FAFC" }}>
+                  <th style={{ padding: "12px 16px", textAlign: "left", fontWeight: 700, color: "#0F172A", borderBottom: "1px solid #E2E8F0", width: "28%" }}></th>
+                  <th style={{ padding: "12px 16px", textAlign: "left", fontWeight: 700, color: "#7C3AED", borderBottom: "1px solid #E2E8F0" }}>Annual All-Access</th>
+                  <th style={{ padding: "12px 16px", textAlign: "left", fontWeight: 700, color: "#0047AB", borderBottom: "1px solid #E2E8F0" }}>One-Time Course Pass</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Best for", "Operators studying several streams or levels", "One specific exam"],
+                  ["Access", "All included courses for 12 months", "One course, no expiry"],
+                  ["Billing", "Renews annually until cancelled", "Single payment"],
+                  ["Cancellation", "Stop renewal anytime; access continues through paid term", "Not applicable"],
+                  ["Features", "Practice, mocks, flashcards, formulas, AI Tutor", "Same features for that course"],
+                ].map(([label, annual, oneTime], i) => (
+                  <tr key={label} style={{ background: i % 2 === 0 ? "#fff" : "#F8FAFC" }}>
+                    <td style={{ padding: "11px 16px", fontWeight: 600, color: "#334155", borderBottom: "1px solid #F1F5F9" }}>{label}</td>
+                    <td style={{ padding: "11px 16px", color: "#475569", borderBottom: "1px solid #F1F5F9" }}>{annual}</td>
+                    <td style={{ padding: "11px 16px", color: "#475569", borderBottom: "1px solid #F1F5F9" }}>{oneTime}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
         {/* ── Annual Subscription Section ── */}
         <div style={{ marginBottom: 56 }}>
           <div className="section-header">

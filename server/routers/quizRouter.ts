@@ -11,6 +11,7 @@ import { resolveLearningIdentity } from "../_core/learningIdentity";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users } from "../../drizzle/schema";
 import { and, eq, desc, sql, gte } from "drizzle-orm";
 import { z } from "zod";
+import { resolveCourseKey } from "../../shared/courseRegistry";
 
 export const quizRouter = router({
   /**
@@ -245,6 +246,39 @@ export const quizRouter = router({
         console.error(`[getModuleOverviews] malformed overviewsJson for ${input.bankKey}:`, err);
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Module overviews data is corrupted" });
       }
+    }),
+
+  /**
+   * getCourseInventory — returns live question counts for a given courseKey.
+   * Used by course landing pages and quiz shells to show accurate counts.
+   */
+  getCourseInventory: publicProcedure
+    .input(z.object({ courseKey: z.string().min(1).max(64) }))
+    .query(async ({ input }) => {
+      const course = resolveCourseKey(input.courseKey);
+      if (!course) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Course not found." });
+      }
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable." });
+      }
+      const [row] = await db
+        .select({
+          totalQuestions: sql<number>`COUNT(*)`,
+          calculationQuestions: sql<number>`SUM(CASE WHEN ${questions.isCalc} = 'yes' THEN 1 ELSE 0 END)`,
+        })
+        .from(questions)
+        .where(eq(questions.bankKey, course.questionBankKey));
+      const total = Number(row?.totalQuestions ?? 0);
+      const calculations = Number(row?.calculationQuestions ?? 0);
+      return {
+        courseKey: course.courseKey,
+        totalQuestions: total,
+        conceptualCards: total - calculations,
+        calculationQuestions: calculations,
+        mockQuestions: 100, // WPI/Ontario standard: 100 questions per mock
+      };
     }),
 
   /**

@@ -1099,7 +1099,7 @@ const FEATURES = [
   {
     icon: "🚨",
     title: "Echelon Command",
-    description: "Step into a live control room. Respond to treatment-barrier failures, make real-time decisions, and defend every call in an AI-powered after-action review.",
+    description: "Build incident judgment after mastering the exam fundamentals. Step into a live control room, respond to treatment-barrier failures, and defend every call in an AI-powered after-action review.",
     color: "#BE123C",
     href: "/command",
   },
@@ -1957,7 +1957,8 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
             className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/quiz" style={{ width: "100%" }}>
+            {/* Primary CTA: Find My Course */}
+            <Link href="#course-finder" style={{ width: "100%" }}>
               <button className="btn-pulse" style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
@@ -1966,10 +1967,11 @@ export default function Landing() {
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
                 width: "100%",
               }}>
-                {isUS ? "Try Free Practice →" : "Try Free OIT Practice →"}
+                Find My Course →
               </button>
             </Link>
-            <Link href="/pricing" style={{ width: "100%" }}>
+            {/* Secondary CTA: Free Practice */}
+            <Link href="/quiz" style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
@@ -1977,19 +1979,7 @@ export default function Landing() {
                 fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
                 width: "100%",
               }}>
-                View Pricing
-              </button>
-            </Link>
-            <Link href="/command" style={{ width: "100%" }}>
-              <button style={{
-                padding: "14px 32px", borderRadius: 12,
-                background: "linear-gradient(135deg, #BE123C, #7C3AED)",
-                color: "#fff", border: "none",
-                fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                boxShadow: "0 4px 24px rgba(190,18,60,0.4)",
-                width: "100%",
-              }}>
-                🚨 Try Echelon Command →
+                {isUS ? "Try Free Practice" : "Try Free OIT Practice"}
               </button>
             </Link>
           </motion.div>

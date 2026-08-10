@@ -73,6 +73,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
+import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -253,9 +254,19 @@ export default function OrgDashboard() {
 
   const billingPortal = trpc.stripe.createBillingPortalSession.useMutation({
     onSuccess: (data) => {
-      if (data?.url) window.open(data.url, "_blank");
+      if (data?.url) {
+        // Open in same tab to avoid popup blockers
+        window.location.href = data.url;
+      } else {
+        toast.error("Billing portal is not available for your account type. Contact support@echeloninstitute.ca.");
+      }
     },
-    onError: (err) => toast.error("Could not open billing portal: " + err.message),
+    onError: (err) => {
+      const msg = err.message?.includes("invoice") || err.message?.includes("billing")
+        ? "Your organization uses invoice billing. Contact support@echeloninstitute.ca to manage your subscription."
+        : "Could not open billing portal. Please try again or contact support@echeloninstitute.ca.";
+      toast.error(msg, { duration: 6000 });
+    },
   });
 
   const logoutMutation = trpc.dashboardAuth.logout.useMutation({

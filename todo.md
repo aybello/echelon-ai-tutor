@@ -1242,3 +1242,8 @@
 - [x] Fix 11 (P1): Accessibility — flashcard flip card changed from div to button with aria-pressed/aria-label
 - [x] Fix 12 (P1): WPI identity — FAQ corrected to Water Professionals International
 - [x] Fix 16 (P2): Command language — GPT-5.6 → AI-reviewed after-action report; Elapsed time label; generatedBy: "ai"
+- [x] Fix 13 (P1): Pricing page — annual vs one-time comparison table added above plan cards
+- [x] Fix 14 (P1): Homepage — Find My Course (primary) + Try Free Practice (secondary); Command removed from hero
+- [x] Fix 15 (P1): getCourseInventory procedure added to quizRouter for live question counts
+- [x] Fix 17 (P2): ProductState components created (ProductErrorState, ProductEmptyState, ProductLoadingState); billing portal error handling improved
+- [x] Fix 18 (P2): Product acceptance journey tests (10 tests across 4 journeys in product.acceptance.test.ts)
