@@ -59,6 +59,28 @@ export function registerStripeWebhook(app: Express) {
           const db = await getDb();
           if (!db) throw new Error("Database unavailable");
 
+          // --- Teams Flex fulfilment branch ---
+          if (session.metadata?.type === "team_flex") {
+            const { fulfilFlexOrder } = await import("../teams/fulfilFlexOrder");
+            const teamFlexOrderId = parseInt(session.metadata.teamFlexOrderId);
+            if (!teamFlexOrderId || isNaN(teamFlexOrderId)) {
+              console.error("[Stripe Webhook] team_flex session missing teamFlexOrderId");
+              return res.json({ received: true });
+            }
+            const result = await fulfilFlexOrder({
+              id: session.id,
+              payment_intent: session.payment_intent ?? null,
+              amount_total: session.amount_total ?? 0,
+              currency: session.currency ?? "cad",
+              customer: session.customer ?? null,
+              payment_status: session.payment_status ?? "unpaid",
+            }, teamFlexOrderId);
+            if (!result.success) {
+              console.error(`[Stripe Webhook] Flex fulfilment failed for order #${teamFlexOrderId}: ${result.error}`);
+            }
+            return res.json({ received: true });
+          }
+
           const productKey = session.metadata?.product_key;
           const productName = session.metadata?.product_name;
           const email = normalizeEmail(
