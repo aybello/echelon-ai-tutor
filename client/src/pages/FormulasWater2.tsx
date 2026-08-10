@@ -61,7 +61,7 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Coagulant Dose — Alum",
-        formula: "Alum dose (mg/L) = [Alum feed rate (kg/d)] ÷ [Flow (ML/d) × 1,000]",
+        formula: "Alum dose (mg/L) = Alum feed rate (kg/d) ÷ Flow (ML/d)",
         units: "mg/L",
         variables: [
           { sym: "Feed rate", desc: "Alum fed per day (kg/d)" },
@@ -69,7 +69,7 @@ const CATEGORIES: FormulaCategory[] = [
         ],
         example: {
           problem: "Plant flow = 15 ML/d. Alum feed rate = 120 kg/d. What is the dose?",
-          solution: "Dose = 120 ÷ (15 × 1,000) = 120 ÷ 15,000",
+          solution: "Dose = 120 kg/d ÷ 15 ML/d. Since 1 kg/ML = 1 mg/L, dose = 120 ÷ 15",
           answer: "8 mg/L",
         },
         tip: "Alum reacts with alkalinity: Al₂(SO₄)₃ + 6 HCO₃⁻ → 2 Al(OH)₃ + 3 SO₄²⁻ + 6 CO₂. Each 1 mg/L alum consumes ~0.5 mg/L alkalinity as CaCO₃.",

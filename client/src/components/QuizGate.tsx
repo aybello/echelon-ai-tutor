@@ -259,7 +259,7 @@ export default function QuizGate({
                   </button>
                 </Link>
                 <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
-                  Annual subscription · Cancel anytime · Instant access
+                  Annual subscription · Cancel renewal anytime · Access through paid term
                 </p>
               </div>
 

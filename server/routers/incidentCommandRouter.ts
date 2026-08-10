@@ -393,7 +393,7 @@ export const incidentCommandRouter = router({
         if (!verification.grounded) throw new Error("The generated review remained ungrounded after correction.");
         return {
           ...review,
-          generatedBy: "gpt-5.6" as const,
+          generatedBy: "ai" as const,
           verification: { verified: true as const, label: "Verified against incident record", attempts },
           commandScore: evaluation.commandScore,
           optimalCalls: evaluation.optimalCalls,

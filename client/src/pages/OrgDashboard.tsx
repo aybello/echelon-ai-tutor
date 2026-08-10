@@ -96,7 +96,7 @@ const STATUS_CONFIG: Record<OperatorStatus, { label: string; color: string; bg: 
   not_started: { label: "Not Started", color: "text-slate-500",  bg: "bg-slate-100" },
   behind:      { label: "Behind",      color: "text-red-700",    bg: "bg-red-50" },
   needs_focus: { label: "Needs Focus", color: "text-amber-700",  bg: "bg-amber-50" },
-  on_track:    { label: "On Track",    color: "text-green-700",  bg: "bg-green-50" },
+  on_track:    { label: "Approaching Ready", color: "text-green-700",  bg: "bg-green-50" },
 };
 
 // ── Metric card ───────────────────────────────────────────────────────────────
@@ -611,9 +611,9 @@ export default function OrgDashboard() {
           />
           <MetricCard
             icon={TrendingUp}
-            label="On Track to Pass"
+            label="Approaching Ready"
             value={overview.onTrackCount}
-            sub="≥75% accuracy"
+            sub="≥75% Echelon readiness"
             accent="text-green-600"
           />
         </div>
@@ -998,7 +998,7 @@ export default function OrgDashboard() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldCheck className="w-3.5 h-3.5 text-green-500" />Exam Ready</div>
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldCheck className="w-3.5 h-3.5 text-green-500" />Study Ready</div>
                 <div className="text-2xl font-bold text-green-600">{readinessSummaryQuery.data.examReadyCount}</div>
                 <div className="text-xs text-slate-400 mt-0.5">≥ 80% accuracy</div>
               </div>
@@ -1425,28 +1425,6 @@ export default function OrgDashboard() {
                     onKeyDown={e => e.key === "Enter" && handleAssign()}
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <Label className="text-slate-700">Courses <span className="text-slate-400 font-normal">(optional — can set later)</span></Label>
-                  <div className="border border-slate-200 rounded-lg p-3 space-y-2 max-h-48 overflow-y-auto">
-                    {getTeamCourseOptions(overview.province).filter(opt => !overview.allowedCourseKeys || overview.allowedCourseKeys.length === 0 || overview.allowedCourseKeys.includes(opt.key)).map(opt => (
-                      <label key={opt.key} className="flex items-center gap-2.5 cursor-pointer hover:bg-slate-50 rounded px-1 py-0.5">
-                        <Checkbox
-                          id={`assign-course-${opt.key}`}
-                          checked={assignCourseKeys.includes(opt.key)}
-                          onCheckedChange={(checked) => {
-                            setAssignCourseKeys(prev =>
-                              checked ? [...prev, opt.key] : prev.filter(k => k !== opt.key)
-                            );
-                          }}
-                        />
-                        <span className="text-sm text-slate-700">{opt.label}</span>
-                      </label>
-                    ))}
-                  </div>
-                  {assignCourseKeys.length > 0 && (
-                    <p className="text-xs text-blue-600">{assignCourseKeys.length} course{assignCourseKeys.length > 1 ? "s" : ""} selected</p>
-                  )}
-                </div>
               </div>
             ) : (
               <div className="space-y-2">
@@ -1466,6 +1444,29 @@ export default function OrgDashboard() {
               </div>
             )}
 
+            {/* Shared course picker — required for both single and bulk mode */}
+            <div className="space-y-1.5">
+              <Label className="text-slate-700">Courses <span className="text-red-400 font-normal">*</span></Label>
+              <div className="border border-slate-200 rounded-lg p-3 space-y-2 max-h-48 overflow-y-auto">
+                {getTeamCourseOptions(overview.province).filter(opt => !overview.allowedCourseKeys || overview.allowedCourseKeys.length === 0 || overview.allowedCourseKeys.includes(opt.key)).map(opt => (
+                  <label key={opt.key} className="flex items-center gap-2.5 cursor-pointer hover:bg-slate-50 rounded px-1 py-0.5">
+                    <Checkbox
+                      id={`assign-course-${opt.key}`}
+                      checked={assignCourseKeys.includes(opt.key)}
+                      onCheckedChange={(checked) => {
+                        setAssignCourseKeys(prev =>
+                          checked ? [...prev, opt.key] : prev.filter(k => k !== opt.key)
+                        );
+                      }}
+                    />
+                    <span className="text-sm text-slate-700">{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+              {assignCourseKeys.length > 0 && (
+                <p className="text-xs text-blue-600">{assignCourseKeys.length} course{assignCourseKeys.length > 1 ? "s" : ""} selected</p>
+              )}
+            </div>
             <p className="text-xs text-slate-400">
               {licencesAvailableThisTerm} annual licence{licencesAvailableThisTerm === 1 ? "" : "s"} remaining this term.
               Previously revoked operators can be reactivated without using a new licence.
@@ -1493,7 +1494,7 @@ export default function OrgDashboard() {
           <DialogHeader>
             <DialogTitle className="text-slate-900">Manage Seats</DialogTitle>
             <DialogDescription className="text-slate-500 text-sm">
-              Update your team's seat count. Stripe will prorate the charge for the remaining term.
+              Update your team's annual licence count.
             </DialogDescription>
           </DialogHeader>
           <div className="py-2 space-y-4">
@@ -1515,8 +1516,8 @@ export default function OrgDashboard() {
             {newSeatCount !== overview.seatsTotal && (
               <div className="bg-blue-50 border border-blue-100 rounded-lg px-4 py-3 text-xs text-blue-700">
                 {newSeatCount > overview.seatsTotal
-                  ? `Adding ${newSeatCount - overview.seatsTotal} seat${newSeatCount - overview.seatsTotal === 1 ? "" : "s"}. Stripe will charge a prorated amount for the remaining term.`
-                  : `Removing ${overview.seatsTotal - newSeatCount} seat${overview.seatsTotal - newSeatCount === 1 ? "" : "s"}. Stripe will credit the prorated amount.`}
+                  ? `Adding ${newSeatCount - overview.seatsTotal} seat${newSeatCount - overview.seatsTotal === 1 ? "" : "s"}. Additional licences take effect now. Stripe may prorate the added licences for the remainder of the current term.`
+                  : `Removing ${overview.seatsTotal - newSeatCount} seat${overview.seatsTotal - newSeatCount === 1 ? "" : "s"}. This reduction will take effect at renewal. Current-term access and used-licence history will not change.`}
               </div>
             )}
           </div>

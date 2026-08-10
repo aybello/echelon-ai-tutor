@@ -36,7 +36,7 @@ const FEATURES = [
   "Progress dashboard per operator",
   "Manager dashboard with readiness metrics",
   "Exam date tracking and reminders",
-  "Flashcard spaced-repetition system",
+  "Progress-tracked flashcards",
   "Proactive email nudges for inactive operators",
   "Annual renewal — operator access can be deactivated and restored without losing progress",
 ];

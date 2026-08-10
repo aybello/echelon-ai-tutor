@@ -47,7 +47,7 @@ type Debrief = {
   strengths: string[];
   improvements: string[];
   nextDrill: string;
-  generatedBy: "gpt-5.6" | "rules-engine";
+  generatedBy: "ai" | "rules-engine";
   verification: {
     verified: true;
     label: string;
@@ -392,7 +392,7 @@ export default function IncidentCommand() {
                   You cannot learn incident command from a question bank.
                 </h1>
                 <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                  Step into a live control room. Read the plant, contain a treatment-barrier failure and defend every decision in a GPT-5.6 after-action review.
+                  Step into a live control room. Read the plant, contain a treatment-barrier failure and defend every decision in an AI-reviewed after-action report.
                 </p>
                 {queuedDrillData && (
                   <div className="mt-7 inline-flex max-w-xl items-start gap-3 rounded-xl border border-teal-400/30 bg-teal-400/[.08] px-5 py-4">
@@ -455,7 +455,7 @@ export default function IncidentCommand() {
             </div>
             <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-slate-300">
               <Sparkles className="h-4 w-4 text-violet-300" />
-              {debrief.generatedBy === "gpt-5.6" ? `${debrief.verification.label} · GPT-5.6` : debrief.verification.label}
+              {debrief.verification.label}
             </div>
           </div>
 
@@ -539,7 +539,7 @@ export default function IncidentCommand() {
             <div><div className="flex items-center gap-2"><h1 className="font-black">{selectedScenario.facilityName}</h1><span className="rounded-full bg-rose-500/15 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-rose-300">Incident active</span></div><p className="mt-1 text-xs text-slate-300">{selectedScenario.incidentLabel}</p></div>
           </div>
           <div className="flex flex-wrap items-center gap-4 text-xs">
-            <div><span className="text-slate-300">Scenario time</span><div className="mt-1 font-mono font-black text-white tabular-nums">{clockDisplay}</div></div>
+            <div><span className="text-slate-300">Elapsed time</span><div className="mt-1 font-mono font-black text-white tabular-nums" aria-live="off" aria-label={`Elapsed time ${clockDisplay}`}>{clockDisplay}</div></div>
             <div><span className="text-slate-300">Decision</span><div className="mt-1 font-black text-white">{stepIndex + 1} of {selectedScenario.steps.length}</div></div>
             <div className="min-w-28"><span className="text-slate-300">Command score</span><div className="mt-1 flex items-center gap-2"><div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-800"><div className="h-full rounded-full bg-teal-400 transition-all" style={{ width: `${commandScore}%` }} /></div><span className="font-black text-teal-300">{commandScore}</span></div></div>
           </div>
@@ -579,7 +579,7 @@ export default function IncidentCommand() {
               <div className="mb-4 rounded-xl border border-rose-400/20 bg-rose-400/[.06] px-4 py-3 text-xs font-black tracking-wide text-rose-200"><AlertTriangle className="mr-2 inline h-4 w-4" /> {step.alarm}</div>
               {step.judgment && !selectedChoice && !judgmentDegraded && (
                 <div className="rounded-2xl border border-violet-400/30 bg-violet-400/[.06] p-5">
-                  <div className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-violet-200"><Sparkles className="h-4 w-4" /> GPT-5.6 judgment turn</div>
+                  <div className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-violet-200"><Sparkles className="h-4 w-4" /> Open judgment response</div>
                   <p className="mb-4 text-sm leading-6 text-slate-200">{step.judgment.prompt}</p>
                   <textarea
                     value={judgmentResponse}
@@ -620,7 +620,7 @@ export default function IncidentCommand() {
                 <div className="flex items-start justify-between gap-4"><div><div className="text-[10px] font-black uppercase tracking-[.16em] text-slate-300">Plant consequence</div><p className="mt-2 text-sm leading-6 text-slate-200">{selectedChoice.consequence}</p></div><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-black ${selectedChoice.points === 20 ? "bg-teal-400/15 text-teal-200" : selectedChoice.points > 0 ? "bg-amber-400/15 text-amber-200" : "bg-rose-400/15 text-rose-200"}`}>+{selectedChoice.points}</span></div>
                 {decisions[decisions.length - 1]?.judgmentRubric && (
                   <div className="mt-4 rounded-xl border border-violet-400/20 bg-violet-400/[.06] p-4">
-                    <div className="text-[10px] font-black uppercase tracking-[.16em] text-violet-200">GPT-5.6 interpretation</div>
+                    <div className="text-[10px] font-black uppercase tracking-[.16em] text-violet-200">AI interpretation</div>
                     <div className="mt-3 grid grid-cols-2 gap-2 text-[10px]">
                       {Object.entries(decisions[decisions.length - 1].judgmentRubric!).map(([key, met]) => <div key={key} className={`rounded-lg px-3 py-2 font-bold ${met ? "bg-teal-400/10 text-teal-200" : "bg-slate-900/50 text-slate-400"}`}>{met ? "✓" : "○"} {key.replace(/([A-Z])/g, " $1").toLowerCase()}</div>)}
                     </div>
@@ -654,7 +654,7 @@ export default function IncidentCommand() {
             </section>
             <section className="rounded-2xl border border-blue-400/20 bg-blue-400/[.05] p-5">
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-blue-300"><Sparkles className="h-4 w-4" /> Adaptive review</div>
-              <p className="mt-3 text-xs leading-6 text-slate-300">GPT-5.6 will evaluate the complete chain of decisions, including what you prioritized, what you verified and how your choices changed the plant.</p>
+              <p className="mt-3 text-xs leading-6 text-slate-300">AI will evaluate the complete chain of decisions, including what you prioritized, what you verified and how your choices changed the plant.</p>
             </section>
             <section className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
               <div className="flex items-center gap-2 text-xs font-black text-slate-300"><ShieldCheck className="h-4 w-4 text-teal-300" /> Training boundary</div>

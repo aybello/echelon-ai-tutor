@@ -371,9 +371,13 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                 Tap card to reveal answer
               </div>
             )}
-            <div
+            <button
+              type="button"
               className={"fc-inner" + (flipped ? " flipped" : "")}
               onClick={handleFlip}
+              aria-pressed={flipped}
+              aria-label={flipped ? "Hide answer" : "Reveal answer"}
+              style={{ background: "none", border: "none", padding: 0, width: "100%", textAlign: "left" }}
             >
               {/* Front */}
               <div className="fc-face fc-front">
@@ -409,7 +413,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   Tap to flip back
                 </div>
               </div>
-            </div>
+            </button>
           </div>
         ) : (
           <div style={{ textAlign: "center", color: "#64748b", padding: "48px" }}>No cards in this filter.</div>
@@ -445,7 +449,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <div style={{ fontSize: "48px", marginBottom: "12px" }}>🃏</div>
             <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", margin: "0 0 10px" }}>You've previewed {limit} free cards!</h2>
             <p style={{ color: "#475569", fontSize: "14px", lineHeight: 1.6, marginBottom: "24px" }}>
-              Unlock the full <strong>{examName}</strong> flashcard deck — {questions.length}+ cards with spaced repetition, module filters, and progress tracking.
+              Unlock the full <strong>{examName}</strong> flashcard deck — {questions.length}+ concept flashcards with module filters and saved progress.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <Link href={productKey ? `/pricing#${productKey}` : "/pricing"}>

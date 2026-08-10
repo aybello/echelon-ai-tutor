@@ -44,6 +44,14 @@ const EXAM_META: Record<
   "wpi-class2-wastewater": { label: "WPI Class II Wastewater Treatment Pass", quizPath: "/wpi-class2-wastewater", mockPath: "/wpi-class2-wastewater-mock", formulaPath: "/formulas-wpi-class2-ww", flashcardPath: "/wpi-class2-wastewater-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌿", track: "WPI" },
   "wpi-class3-wastewater": { label: "WPI Class III Wastewater Treatment Pass", quizPath: "/wpi-class3-wastewater", mockPath: "/wpi-class3-wastewater-mock", formulaPath: "/formulas-wpi-class3-ww", flashcardPath: "/wpi-class3-wastewater-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🌿", track: "WPI" },
   "wpi-class4-wastewater": { label: "WPI Class IV Wastewater Treatment Pass", quizPath: "/wpi-class4-wastewater", mockPath: "/wpi-class4-wastewater-mock", formulaPath: "/formulas-wpi-class4-ww", flashcardPath: "/wpi-class4-wastewater-flashcards", color: "#6D28D9", bg: "#F5F3FF", icon: "🌿", track: "WPI" },
+  "wpi-class1-water-dist": { label: "WPI Class I Water Distribution Pass", quizPath: "/wpi-class1-water-dist", mockPath: "/wpi-class1-water-dist-mock", formulaPath: "/formulas-wpi-class1", flashcardPath: "/wpi-class1-water-dist-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🔧", track: "WPI" },
+  "wpi-class2-water-dist": { label: "WPI Class II Water Distribution Pass", quizPath: "/wpi-class2-water-dist", mockPath: "/wpi-class2-water-dist-mock", formulaPath: "/formulas-wpi-class2", flashcardPath: "/wpi-class2-water-dist-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🔧", track: "WPI" },
+  "wpi-class3-water-dist": { label: "WPI Class III Water Distribution Pass", quizPath: "/wpi-class3-water-dist", mockPath: "/wpi-class3-water-dist-mock", formulaPath: "/formulas-wpi-class3", flashcardPath: "/wpi-class3-water-dist-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🔧", track: "WPI" },
+  "wpi-class4-water-dist": { label: "WPI Class IV Water Distribution Pass", quizPath: "/wpi-class4-water-dist", mockPath: "/wpi-class4-water-dist-mock", formulaPath: "/formulas-wpi-class4", flashcardPath: "/wpi-class4-water-dist-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🔧", track: "WPI" },
+  "wpi-class1-water-coll": { label: "WPI Class I Wastewater Collection Pass", quizPath: "/wpi-class1-water-coll", mockPath: "/wpi-class1-water-coll-mock", formulaPath: "/formulas-wpi-class1-ww", flashcardPath: "/wpi-class1-water-coll-flashcards", color: "#065F46", bg: "#ECFDF5", icon: "🏗️", track: "WPI" },
+  "wpi-class2-water-coll": { label: "WPI Class II Wastewater Collection Pass", quizPath: "/wpi-class2-water-coll", mockPath: "/wpi-class2-water-coll-mock", formulaPath: "/formulas-wpi-class2-ww", flashcardPath: "/wpi-class2-water-coll-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🏗️", track: "WPI" },
+  "wpi-class3-water-coll": { label: "WPI Class III Wastewater Collection Pass", quizPath: "/wpi-class3-water-coll", mockPath: "/wpi-class3-water-coll-mock", formulaPath: "/formulas-wpi-class3-ww", flashcardPath: "/wpi-class3-water-coll-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🏗️", track: "WPI" },
+  "wpi-class4-water-coll": { label: "WPI Class IV Wastewater Collection Pass", quizPath: "/wpi-class4-water-coll", mockPath: "/wpi-class4-water-coll-mock", formulaPath: "/formulas-wpi-class4-ww", flashcardPath: "/wpi-class4-water-coll-flashcards", color: "#6D28D9", bg: "#F5F3FF", icon: "🏗️", track: "WPI" },
 };
 
 /** Small inline mastery progress badge for flashcard stats */
@@ -301,7 +309,8 @@ export default function Account() {
           </div>
         )}
 
-        {/* Email form */}
+        {/* Email form — only shown when not signed in */}
+        {!isAnyAuthenticated && (
         <div className="account-card" style={{ padding: 28, marginBottom: 24 }}>
           <form onSubmit={handleSubmit}>
             <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8, letterSpacing: "0.02em" }}>
@@ -361,11 +370,10 @@ export default function Account() {
             ))}
           </div>
         </div>
-
-
+        )}
 
         {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
-        {isAnyAuthenticated && submittedEmail && !(getPurchases.isFetching || entitlementsQuery.isFetching) && (
+        {isAnyAuthenticated && !(getPurchases.isFetching || entitlementsQuery.isFetching) && (
           <>
             {hasPurchases ? (
               <>
@@ -382,7 +390,7 @@ export default function Account() {
                       <span style={{ color: "#166534" }}>{submittedEmail}</span>
                     </p>
                     <p style={{ color: "#4ADE80", fontSize: 12, margin: 0, opacity: 0.9 }}>
-                      Your passes are now active on this device. Bookmark this page to restore access again anytime.
+                      Your access is linked to your email, so you can sign in on any device. This browser keeps you signed in until the session expires or you sign out.
                     </p>
                   </div>
                   <button

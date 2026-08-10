@@ -355,11 +355,18 @@ export const stripeRouter = router({
    * subscription (cancel, update payment method, view invoices) without
    * needing to contact support.
    */
-  createBillingPortalSession: protectedProcedure
+  createBillingPortalSession: publicProcedure
     .input(z.object({}))
     .mutation(async ({ ctx }) => {
       const email = ctx.studentEmail ?? ctx.user?.email ?? null;
-      if (!email) throw new Error("Email required to access billing portal");
+      if (!email) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "Sign in to access billing.",
+        });
+      }
+      // Managers (email-code session) return to /team; individual subscribers return to /account
+      const isManagerSession = Boolean(ctx.studentEmail && !ctx.user);
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const db = await getDb();
@@ -415,7 +422,7 @@ export const stripeRouter = router({
 
       const portalSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerId,
-        return_url: `${appBaseUrl}/account`,
+        return_url: isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
       });
 
       return { url: portalSession.url };

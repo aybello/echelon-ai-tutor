@@ -386,12 +386,13 @@ export default function StudentDashboard() {
                     />
                     <text x="32" y="37" textAnchor="middle" fontSize="15" fontWeight="900" fontFamily="Sora,sans-serif"
                       fill={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : readinessScore.data.score >= 40 ? "#F59E0B" : "#EF4444"}>
-                      {readinessScore.data.score}
+                      {readinessScore.data.score}%
                     </text>
                   </svg>
                   <div>
                     <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>{readinessScore.data.label}</div>
                     <div style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, lineHeight: 1.4 }}>{readinessScore.data.nextAction}</div>
+                    <div style={{ color: "#CBD5E1", fontSize: 10, marginTop: 4, lineHeight: 1.4 }}>Echelon study readiness based on recent accuracy, coverage, consistency, and mock performance.</div>
                   </div>
                 </div>
               </>
@@ -518,7 +519,7 @@ export default function StudentDashboard() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 24 }}>
 
           {/* Continue Practicing */}
-          <a href="/" style={{ textDecoration: "none" }}>
+          <a href={studyFocus.data?.quizPath ?? "/quiz"} style={{ textDecoration: "none" }}>
             <div style={{ background: "linear-gradient(135deg, #3B82F6, #2563EB)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
               <div style={{ fontSize: 28, marginBottom: 10 }}>📝</div>
               <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Continue Practicing</div>
@@ -528,7 +529,7 @@ export default function StudentDashboard() {
 
           {/* Review Weak Topics */}
           {(topicAccuracy.data?.topics?.filter((t: any) => t.status === "weak")?.length ?? 0) > 0 ? (
-            <a href={`/?topic=${encodeURIComponent(topicAccuracy.data!.topics.filter((t: any) => t.status === "weak")[0].name)}`} style={{ textDecoration: "none" }}>
+            <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?topic=${encodeURIComponent(topicAccuracy.data!.topics.filter((t: any) => t.status === "weak")[0].name)}`} style={{ textDecoration: "none" }}>
               <div style={{ background: "linear-gradient(135deg, #EF4444, #DC2626)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
                 <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
                 <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
@@ -538,7 +539,7 @@ export default function StudentDashboard() {
               </div>
             </a>
           ) : (
-            <a href="/?mode=standard" style={{ textDecoration: "none" }}>
+            <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=standard`} style={{ textDecoration: "none" }}>
               <div style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
                 <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
                 <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
@@ -557,7 +558,7 @@ export default function StudentDashboard() {
           </a>
 
           {/* Review Missed Questions */}
-          <a href="/?mode=missed" style={{ textDecoration: "none" }}>
+          <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ textDecoration: "none" }}>
             <div style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
               <div style={{ fontSize: 28, marginBottom: 10 }}>❌</div>
               <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Missed</div>
@@ -759,13 +760,13 @@ export default function StudentDashboard() {
                 {/* Review mode quick-links */}
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
                   {(studyPlan.data.totalMissed ?? 0) > 0 && (
-                    <a href="/quiz?mode=missed" style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>❌ Missed ({studyPlan.data.totalMissed})</a>
+                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>❌ Missed ({studyPlan.data.totalMissed})</a>
                   )}
                   {(studyPlan.data.totalBookmarked ?? 0) > 0 && (
-                    <a href="/quiz?mode=bookmarked" style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>🔖 Bookmarks ({studyPlan.data.totalBookmarked})</a>
+                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=bookmarked`} style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>🔖 Bookmarks ({studyPlan.data.totalBookmarked})</a>
                   )}
                   {(studyPlan.data.totalLowConf ?? 0) > 0 && (
-                    <a href="/quiz?mode=low-confidence" style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>😰 Low Confidence ({studyPlan.data.totalLowConf})</a>
+                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=low-confidence`} style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>😰 Low Confidence ({studyPlan.data.totalLowConf})</a>
                   )}
                 </div>
               </div>

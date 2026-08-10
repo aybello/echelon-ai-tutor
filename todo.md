@@ -1227,3 +1227,18 @@
 - [x] Phase 8: Scope manager analytics to orgId/organizationMemberId instead of email
 - [x] Phase 9: 42 tests written across 6 test files — 722/722 passing
 - [x] Phase 10: TypeScript clean (0 errors), build clean, checkpoint, deploy, GitHub push
+
+## Product Experience Fix (18-item spec)
+- [x] Fix 1 (P0): Manager billing — createBillingPortalSession changed from protectedProcedure to publicProcedure; return_url /team for managers
+- [x] Fix 2 (P0): Course registry — all flashcardPath/formulaPath populated; 8 missing WPI dist/coll entries added to Account.tsx EXAM_META
+- [x] Fix 3 (P0): Signed-in Account — email form hidden when authenticated; persistence copy updated; results shown without submittedEmail requirement
+- [x] Fix 4 (P0): Student Dashboard — Continue Practicing/Weak Topics/Missed all link to studyFocus.data?.quizPath; readiness shows % with explanation
+- [x] Fix 5 (P0): Readiness language — On Track to Pass → Approaching Ready; Exam Ready → Study Ready; consistent across OrgDashboard and orgRouter
+- [x] Fix 6 (P0): WPI mock timers — already 3 hours across all 16 WPI pages (confirmed, no change needed)
+- [x] Fix 7 (P1): Alum dose formula — corrected from ÷(flow×1000) to ÷flow; example solution fixed
+- [x] Fix 8 (P1): Bulk onboarding — course picker moved outside single/bulk conditional; now shared for both modes
+- [x] Fix 9 (P1): Seat change language — prorate → takes effect at renewal; cancel anytime → cancel renewal anytime
+- [x] Fix 10 (P1): Flashcard copy — spaced repetition → progress-tracked flashcards (FlashcardShell + Teams)
+- [x] Fix 11 (P1): Accessibility — flashcard flip card changed from div to button with aria-pressed/aria-label
+- [x] Fix 12 (P1): WPI identity — FAQ corrected to Water Professionals International
+- [x] Fix 16 (P2): Command language — GPT-5.6 → AI-reviewed after-action report; Elapsed time label; generatedBy: "ai"

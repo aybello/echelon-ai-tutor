@@ -150,7 +150,7 @@ const TRACKS: Track[] = [
 const FAQS = [
   {
     q: "What is the WPI certification program?",
-    a: "The Water & Wastewater Professionals Institute (WPI) administers operator certification exams recognized across BC, AB, SK, and MB. Certification levels range from Class I (entry-level) to Class IV (chief operator).",
+    a: "WPI stands for Water Professionals International. Through ABC Testing, WPI develops standardized operator examinations and Need-to-Know Criteria. Your provincial or regional certifying authority determines which exam applies to you. Certification levels range from Class I (entry-level) to Class IV (chief operator).",
   },
   {
     q: "How is WPI different from Ontario's OWWCO?",

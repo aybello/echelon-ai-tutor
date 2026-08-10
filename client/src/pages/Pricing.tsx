@@ -1149,7 +1149,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Annual subscription — cancel anytime. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your pass costs less than one day's pay.</p>
+        <p>Annual subscription — cancel renewal anytime. Access continues through paid term. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your pass costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1502,7 +1502,7 @@ export default function Pricing() {
             Everything you need to pass — included in every subscription
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
-            Annual subscription — cancel anytime. Everything unlocked for your province.
+            Annual subscription — cancel renewal anytime. Access continues through paid term. Everything unlocked for your province.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             18,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
@@ -1637,7 +1637,7 @@ export default function Pricing() {
             },
             {
               q: "Can I cancel my subscription?",
-              a: "Yes. You can cancel anytime from your account page using the Manage Subscription link. Your access continues until the end of your current billing period."
+              a: "Yes. You can cancel renewal anytime from your account page using the Manage Subscription link. Your access continues through the end of your current billing period."
             },
           ].map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} />
