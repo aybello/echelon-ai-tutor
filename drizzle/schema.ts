@@ -1,4 +1,4 @@
-import { boolean, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, decimal, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -729,3 +729,91 @@ export type StripeEventStatus =
   | "db_completed_email_pending"
   | "completed"
   | "failed";
+
+// ==================== Teams Flex Tables ====================
+
+/** Teams Flex orders - one order can contain multiple course licences at different terms */
+export const teamFlexOrders = mysqlTable("team_flex_orders", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationId: int("organizationId").notNull(),
+  purchaserUserId: int("purchaserUserId").notNull(),
+  managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
+  totalLicences: int("totalLicences").notNull(),
+  subtotalCents: int("subtotalCents").notNull(),
+  discountRate: decimal("discountRate", { precision: 5, scale: 4 }).notNull().default("0"),
+  discountCents: int("discountCents").notNull().default(0),
+  totalBeforeTaxCents: int("totalBeforeTaxCents").notNull(),
+  taxCents: int("taxCents").notNull().default(0),
+  totalPaidCents: int("totalPaidCents").notNull().default(0),
+  currency: varchar("currency", { length: 3 }).notNull().default("cad"),
+  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+  status: varchar("status", { length: 32 }).notNull().default("pending"),
+  overlapAcknowledged: boolean("overlapAcknowledged").notNull().default(false),
+  paidAt: timestamp("paidAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type TeamFlexOrder = typeof teamFlexOrders.$inferSelect;
+
+/** Teams Flex order items - line items with pricing per course per term */
+export const teamFlexOrderItems = mysqlTable("team_flex_order_items", {
+  id: int("id").autoincrement().primaryKey(),
+  orderId: int("orderId").notNull(),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  examFamily: varchar("examFamily", { length: 32 }).notNull(),
+  pricingBand: varchar("pricingBand", { length: 32 }).notNull(),
+  courseLevel: int("courseLevel"),
+  termMonths: int("termMonths").notNull(),
+  quantity: int("quantity").notNull(),
+  listUnitPriceCents: int("listUnitPriceCents").notNull(),
+  discountRate: decimal("discountRate", { precision: 5, scale: 4 }).notNull().default("0"),
+  discountedUnitPriceCents: int("discountedUnitPriceCents").notNull(),
+  lineTotalCents: int("lineTotalCents").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type TeamFlexOrderItem = typeof teamFlexOrderItems.$inferSelect;
+
+/** Teams Flex licences - individual operator access grants */
+export const teamFlexLicences = mysqlTable("team_flex_licences", {
+  id: int("id").autoincrement().primaryKey(),
+  orderItemId: int("orderItemId").notNull(),
+  organizationId: int("organizationId").notNull(),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  termMonths: int("termMonths").notNull(),
+  status: varchar("status", { length: 32 }).notNull().default("unused"),
+  invitedEmail: varchar("invitedEmail", { length: 320 }),
+  operatorUserId: int("operatorUserId"),
+  activatedAt: timestamp("activatedAt"),
+  accessEndsAt: timestamp("accessEndsAt"),
+  originalAccessEndsAt: timestamp("originalAccessEndsAt"),
+  activationDeadline: timestamp("activationDeadline").notNull(),
+  revokedAt: timestamp("revokedAt"),
+  revokeReason: varchar("revokeReason", { length: 64 }),
+  previousStatus: varchar("previousStatus", { length: 32 }),
+  replacedByLicenceId: int("replacedByLicenceId"),
+  replacesLicenceId: int("replacesLicenceId"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => [
+  index("flex_lic_org_status_idx").on(table.organizationId, table.status),
+  index("flex_lic_operator_idx").on(table.operatorUserId, table.status, table.courseKey),
+  index("flex_lic_deadline_idx").on(table.status, table.activationDeadline),
+]);
+export type TeamFlexLicence = typeof teamFlexLicences.$inferSelect;
+
+/** Teams Flex extensions - 90-day retake extensions */
+export const teamFlexExtensions = mysqlTable("team_flex_extensions", {
+  id: int("id").autoincrement().primaryKey(),
+  licenceId: int("licenceId").notNull(),
+  organizationId: int("organizationId").notNull(),
+  purchaserUserId: int("purchaserUserId").notNull(),
+  extensionDays: int("extensionDays").notNull().default(90),
+  priceCents: int("priceCents").notNull(),
+  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+  status: varchar("status", { length: 32 }).notNull().default("pending"),
+  appliedAt: timestamp("appliedAt"),
+  newAccessEndsAt: timestamp("newAccessEndsAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type TeamFlexExtension = typeof teamFlexExtensions.$inferSelect;

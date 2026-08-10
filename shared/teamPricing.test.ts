@@ -19,41 +19,41 @@ import {
 
 describe("National pricing parity — Ontario and Western Canada are identical", () => {
   it("stream-water base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-water"]).toBe(34900);
-    expect(TEAM_BASE_PRICE.western["stream-water"]).toBe(34900);
+    expect(TEAM_BASE_PRICE.ontario["stream-water"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.western["stream-water"]).toBe(44900);
   });
 
   it("stream-wastewater base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-wastewater"]).toBe(34900);
-    expect(TEAM_BASE_PRICE.western["stream-wastewater"]).toBe(34900);
+    expect(TEAM_BASE_PRICE.ontario["stream-wastewater"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.western["stream-wastewater"]).toBe(44900);
   });
 
   it("stream-water-dist base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-water-dist"]).toBe(34900);
-    expect(TEAM_BASE_PRICE.western["stream-water-dist"]).toBe(34900);
+    expect(TEAM_BASE_PRICE.ontario["stream-water-dist"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.western["stream-water-dist"]).toBe(44900);
   });
 
   it("stream-wastewater-coll base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-wastewater-coll"]).toBe(34900);
-    expect(TEAM_BASE_PRICE.western["stream-wastewater-coll"]).toBe(34900);
+    expect(TEAM_BASE_PRICE.ontario["stream-wastewater-coll"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.western["stream-wastewater-coll"]).toBe(44900);
   });
 
   it("all-access base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(44900);
-    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(54900);
+    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(54900);
   });
 
   it("every single-stream tier costs 34900 cents", () => {
     const singleStreamTiers = ["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll"] as const;
     for (const tier of singleStreamTiers) {
-      expect(TEAM_BASE_PRICE.ontario[tier]).toBe(34900);
-      expect(TEAM_BASE_PRICE.western[tier]).toBe(34900);
+      expect(TEAM_BASE_PRICE.ontario[tier]).toBe(44900);
+      expect(TEAM_BASE_PRICE.western[tier]).toBe(44900);
     }
   });
 
   it("All Streams costs 44900 cents", () => {
-    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(44900);
-    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(54900);
+    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(54900);
   });
 });
 
@@ -113,82 +113,82 @@ describe("Input validation", () => {
 
 describe("Single Stream exact pricing results", () => {
   it("1 licence → $349.00 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 1)).toBe(34900);
+    expect(getTeamSeatPriceCents("ontario", "stream-water", 1)).toBe(44900);
   });
 
   it("10 licences → $314.10 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 10)).toBe(31410);
+    expect(getTeamSeatPriceCents("ontario", "stream-water", 10)).toBe(40410);
   });
 
   it("10 licences → $3,141.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 10)).toBe(314100);
+    expect(getTeamTotalPriceCents("ontario", "stream-water", 10)).toBe(404100);
   });
 
-  it("25 licences → $296.65 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 25)).toBe(29665);
+  it("25 licences → $381.65 per licence", () => {
+    expect(getTeamSeatPriceCents("ontario", "stream-water", 25)).toBe(38165);
   });
 
   it("25 licences → $7,416.25 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 25)).toBe(741625);
+    expect(getTeamTotalPriceCents("ontario", "stream-water", 25)).toBe(954125);
   });
 
   it("50 licences → $279.20 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 50)).toBe(27920);
+    expect(getTeamSeatPriceCents("ontario", "stream-water", 50)).toBe(35920);
   });
 
   it("50 licences → $13,960.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 50)).toBe(1396000);
+    expect(getTeamTotalPriceCents("ontario", "stream-water", 50)).toBe(1796000);
   });
 });
 
 describe("All Streams exact pricing results", () => {
   it("1 licence → $449.00 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 1)).toBe(44900);
+    expect(getTeamSeatPriceCents("ontario", "all-access", 1)).toBe(54900);
   });
 
   it("10 licences → $404.10 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 10)).toBe(40410);
+    expect(getTeamSeatPriceCents("ontario", "all-access", 10)).toBe(49410);
   });
 
   it("10 licences → $4,041.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 10)).toBe(404100);
+    expect(getTeamTotalPriceCents("ontario", "all-access", 10)).toBe(494100);
   });
 
   it("25 licences → $381.65 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 25)).toBe(38165);
+    expect(getTeamSeatPriceCents("ontario", "all-access", 25)).toBe(46665);
   });
 
   it("25 licences → $9,541.25 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 25)).toBe(954125);
+    expect(getTeamTotalPriceCents("ontario", "all-access", 25)).toBe(1166625);
   });
 
   it("50 licences → $359.20 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 50)).toBe(35920);
+    expect(getTeamSeatPriceCents("ontario", "all-access", 50)).toBe(43920);
   });
 
   it("50 licences → $17,960.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 50)).toBe(1796000);
+    expect(getTeamTotalPriceCents("ontario", "all-access", 50)).toBe(2196000);
   });
 });
 
 describe("Western Canada pricing matches Ontario exactly", () => {
-  it("Western 25 Single Stream → $296.65 per licence", () => {
-    expect(getTeamSeatPriceCents("western", "stream-water", 25)).toBe(29665);
+  it("Western 25 Single Stream → $381.65 per licence", () => {
+    expect(getTeamSeatPriceCents("western", "stream-water", 25)).toBe(38165);
   });
 
   it("Western 25 All Streams → $381.65 per licence", () => {
-    expect(getTeamSeatPriceCents("western", "all-access", 25)).toBe(38165);
+    expect(getTeamSeatPriceCents("western", "all-access", 25)).toBe(46665);
   });
 });
 
 // ── formatTeamPriceCAD ────────────────────────────────────────────────────────
 
 describe("formatTeamPriceCAD", () => {
-  it("formats 29665 cents to contain '296.65'", () => {
-    expect(formatTeamPriceCAD(29665)).toContain("296.65");
+  it("formats 38165 cents to contain '381.65'", () => {
+    expect(formatTeamPriceCAD(38165)).toContain("381.65");
   });
 
-  it("formats 741625 cents to contain '7,416.25'", () => {
+  it("formats 741625 cents to contain '11,666.25'", () => {
     expect(formatTeamPriceCAD(741625)).toContain("7,416.25");
   });
 

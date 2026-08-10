@@ -67,24 +67,24 @@ describe("Self-serve checkout — seat counts", () => {
 
 describe("Volume discount boundaries", () => {
   it("1-9 seats: 0% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 1)).toBe(44900);
-    expect(getSeatPriceCents("ontario", "all-access", 9)).toBe(44900);
+    expect(getSeatPriceCents("ontario", "all-access", 1)).toBe(54900);
+    expect(getSeatPriceCents("ontario", "all-access", 9)).toBe(54900);
   });
   it("10-24 seats: 10% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 10)).toBe(Math.round(44900 * 0.9));
-    expect(getSeatPriceCents("ontario", "all-access", 24)).toBe(Math.round(44900 * 0.9));
+    expect(getSeatPriceCents("ontario", "all-access", 10)).toBe(Math.round(54900 * 0.9));
+    expect(getSeatPriceCents("ontario", "all-access", 24)).toBe(Math.round(54900 * 0.9));
   });
   it("25-49 seats: 15% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 25)).toBe(Math.round(44900 * 0.85));
-    expect(getSeatPriceCents("ontario", "all-access", 49)).toBe(Math.round(44900 * 0.85));
+    expect(getSeatPriceCents("ontario", "all-access", 25)).toBe(Math.round(54900 * 0.85));
+    expect(getSeatPriceCents("ontario", "all-access", 49)).toBe(Math.round(54900 * 0.85));
   });
   it("50+ seats: 20% discount", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 50)).toBe(Math.round(44900 * 0.8));
-    expect(getSeatPriceCents("ontario", "all-access", 500)).toBe(Math.round(44900 * 0.8));
+    expect(getSeatPriceCents("ontario", "all-access", 50)).toBe(Math.round(54900 * 0.8));
+    expect(getSeatPriceCents("ontario", "all-access", 500)).toBe(Math.round(54900 * 0.8));
   });
   it("first discount tier starts at 10, not 5", () => {
-    expect(getSeatPriceCents("ontario", "all-access", 5)).toBe(44900);
-    expect(getSeatPriceCents("ontario", "all-access", 10)).toBeLessThan(44900);
+    expect(getSeatPriceCents("ontario", "all-access", 5)).toBe(54900);
+    expect(getSeatPriceCents("ontario", "all-access", 10)).toBeLessThan(54900);
   });
 });
 
