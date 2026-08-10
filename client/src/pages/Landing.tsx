@@ -511,7 +511,7 @@ const WQA_COURSES = [
     subtitle: "Ontario WQA Certification Prep",
     duration: "6–8 weeks",
     questions: 500,
-    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 500 questions across 10 modules.",
+    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 500+ questions across 10 modules.",
     topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
     badge: "Single Certification",
     badgeColor: "#7C3AED",
@@ -531,7 +531,7 @@ const WPI_WATER_COURSES = [
     title: "WPI Class I Water",
     subtitle: "WPI Water Treatment — Class I",
     duration: "4–6 weeks",
-    questions: 503,
+    questions: 500,
     description: "Comprehensive WPI Class I Water Treatment prep aligned with WPI Need-to-Know Criteria. Covers coagulation, filtration, disinfection, distribution, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
     topics: ["Coagulation & Flocculation", "Filtration & Sedimentation", "Disinfection & CT Values", "Distribution Systems", "Regulations & Safety"],
     badge: "WPI",
@@ -553,7 +553,7 @@ const WPI_WATER_COURSES = [
     subtitle: "WPI Water Treatment — Class II",
     duration: "6–8 weeks",
     questions: 501,
-    description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 500 questions across 5 modules.",
+    description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 500+ questions across 5 modules.",
     topics: ["Advanced Treatment Processes", "System Design & Hydraulics", "Lab Monitoring & QC", "Source Water Management", "Regulatory Compliance"],
     badge: "WPI",
     badgeColor: "#0E7490",
@@ -573,7 +573,7 @@ const WPI_WATER_COURSES = [
     title: "WPI Class III Water",
     subtitle: "WPI Water Treatment — Class III",
     duration: "8–10 weeks",
-    questions: 502,
+    questions: 500,
     description: "Senior-level WPI Class III Water Treatment prep. Covers advanced process optimization, membrane systems, chemical handling, emergency response, and senior operator responsibilities.",
     topics: ["Advanced Process Optimization", "Membrane & Advanced Treatment", "Chemical Handling & Safety", "Emergency Response", "Senior Operator Responsibilities"],
     badge: "WPI",
@@ -980,7 +980,7 @@ const WPI_WASTEWATER_COURSES = [
     subtitle: "WPI Wastewater Treatment — Class II",
     duration: "6–8 weeks",
     questions: 501,
-    description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 500 questions across 8 modules.",
+    description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 500+ questions across 8 modules.",
     topics: ["Biological Nutrient Removal", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
     badge: "WPI",
     badgeColor: "#0F766E",
@@ -1000,8 +1000,8 @@ const WPI_WASTEWATER_COURSES = [
     title: "WPI Class III Wastewater",
     subtitle: "WPI Wastewater Treatment — Class III",
     duration: "8–10 weeks",
-    questions: 502,
-    description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 500 questions across 8 modules.",
+    questions: 500,
+    description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 500+ questions across 8 modules.",
     topics: ["Advanced BNR & MBR", "Industrial Pretreatment", "Advanced Biosolids Management", "Regulatory Compliance", "Emergency Response"],
     badge: "WPI",
     badgeColor: "#1D4ED8",
@@ -1021,8 +1021,8 @@ const WPI_WASTEWATER_COURSES = [
     title: "WPI Class IV Wastewater",
     subtitle: "WPI Wastewater Treatment — Class IV",
     duration: "10–12 weeks",
-    questions: 502,
-    description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 500 questions across 7 modules.",
+    questions: 500,
+    description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 500+ questions across 7 modules.",
     topics: ["Advanced Process Control", "BNR & Resource Recovery", "Plant Management & Leadership", "Regulatory Compliance", "Emergency Response"],
     badge: "WPI",
     badgeColor: "#6D28D9",
@@ -1948,7 +1948,7 @@ export default function Landing() {
             }}
           >
             Canada's AI-powered exam prep platform for water and wastewater operators.
-            Adaptive practice questions, module study notes, 500+ flashcards per course, interactive process guides, and an AI tutor available 24/7.
+            Adaptive practice questions, module study notes, flashcards per course, interactive process guides, and an AI tutor available 24/7.
           </motion.p>
 
           {/* Hero CTAs — always Ontario-first */}
@@ -2655,7 +2655,7 @@ export default function Landing() {
                   { label: "Seats Assigned", value: "8 / 10", sub: "2 available" },
                   { label: "Active This Week", value: "6", sub: "of 8 operators" },
                   { label: "Avg Readiness", value: "71%", sub: "across all operators", highlight: true },
-                  { label: "On Track to Pass", value: "5", sub: "≥75% accuracy" },
+                  { label: "Approaching Ready", value: "5", sub: "≥75% accuracy" },
                 ].map(s => (
                   <div key={s.label} style={{
                     background: "rgba(255,255,255,0.05)",
@@ -2672,7 +2672,7 @@ export default function Landing() {
               {/* Mock operator rows */}
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: 10 }}>Operator Roster</div>
               {[
-                { name: "Alex Thompson", acc: "81%", status: "On Track", color: "#10B981" },
+                { name: "Alex Thompson", acc: "81%", status: "Approaching Ready", color: "#10B981" },
                 { name: "Jamie Lee", acc: "68%", status: "Needs Focus", color: "#F59E0B" },
                 { name: "Sam Rivera", acc: "—", status: "Not Started", color: "rgba(255,255,255,0.3)" },
               ].map(op => (
@@ -2832,7 +2832,7 @@ export default function Landing() {
               },
               {
                 q: "What is included with each course?",
-                a: "Every course includes 500+ practice questions, a timed mock exam that simulates the real test, an AI Tutor that explains every answer in plain language, a formula sheet, 400+ flashcards, and a score history so you can track your progress over time.",
+                a: "Every course includes 500+ practice questions, a timed mock exam that simulates the real test, an AI Tutor that explains every answer in plain language, a formula sheet, flashcards, and a score history so you can track your progress over time.",
               },
               {
                 q: "How is Echelon different from free study materials?",

@@ -65,7 +65,9 @@ export const dashboardRouter = router({
   /**
    * Overview stats — hero numbers for the dashboard
    */
-  overview: publicProcedure.query(async ({ ctx }) => {
+  overview: publicProcedure
+    .input(z.object({ courseKey: z.string().optional() }).optional())
+    .query(async ({ ctx, input }) => {
     const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return null;
@@ -88,7 +90,7 @@ export const dashboardRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(attemptsWhere(userId, email));
+      .where(input?.courseKey ? and(attemptsWhere(userId, email), eq(questionAttempts.bankKey, input.courseKey)) : attemptsWhere(userId, email));
 
     const total = Number(accuracyRow?.total ?? 0);
     const correct = Number(accuracyRow?.correct ?? 0);

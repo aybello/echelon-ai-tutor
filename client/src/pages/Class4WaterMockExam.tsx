@@ -40,7 +40,7 @@ export default function Class4WaterMockExam() {
       metaDescription="100-question timed mock exam for the Ontario Class 4 Water Treatment operator certification. 2-hour timer, 70% pass threshold."
       metaKeywords="Class 4 water treatment mock exam, Ontario operator exam, OWWCO Class 4"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}

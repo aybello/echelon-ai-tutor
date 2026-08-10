@@ -340,7 +340,7 @@ export default function Teams() {
               {[
                 { label: "Avg Readiness", value: "78%", color: "text-cyan-300" },
                 { label: "Active This Week", value: "12 / 15", color: "text-sky-300" },
-                { label: "On Track to Pass", value: "9", color: "text-emerald-300" },
+                { label: "Approaching Ready", value: "9", color: "text-emerald-300" },
                 { label: "Needs Attention", value: "3", color: "text-amber-300" },
               ].map(card => (
                 <div key={card.label} className="rounded-xl p-3 bg-white/10 border border-white/10">

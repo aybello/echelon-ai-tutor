@@ -1393,7 +1393,7 @@ export const orgIntelRouter = router({
       let status = "Not Started";
       if (m.status === "revoked") status = "Revoked";
       else if (total === 0) status = "Not Started";
-      else if (readinessScore >= 80) status = "Study Ready";
+      else if (readinessScore >= 80) status = "Exam Ready";
       else if (readinessScore >= 60) status = "Active";
       else if (readinessScore < 40 && total > 10) status = "At Risk";
       else status = "Improving";

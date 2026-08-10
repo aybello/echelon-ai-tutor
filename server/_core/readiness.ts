@@ -138,3 +138,15 @@ export function computeManagerReadiness(opts: {
 
   return Math.min(100, Math.round(raw * 100));
 }
+
+/** Convert a numeric readiness score to the unified tier label.
+ * Same thresholds as computeReadiness: 85+ Exam Ready, 75+ Proficient, 60+ Developing, 30+ Building, <30 Getting Started.
+ */
+export function readinessScoreToLabel(score: number): string {
+  if (score >= 85) return "Exam Ready";
+  if (score >= 75) return "Proficient";
+  if (score >= 60) return "Developing";
+  if (score >= 30) return "Building";
+  if (score > 0) return "Getting Started";
+  return "Not Started";
+}

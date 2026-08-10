@@ -53,7 +53,7 @@ export default function WQAMockExam() {
       metaDescription="100-question timed mock exam for the Water Quality Analyst (WQA) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results."
       metaKeywords="WQA mock exam, water quality analyst exam, AWWA water quality, timed exam prep, water certification"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={MODULE_TARGETS}
       moduleColors={MODULE_COLORS}

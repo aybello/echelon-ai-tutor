@@ -34,7 +34,7 @@ export default function Class3WastewaterCollMockExam() {
       metaDescription="100-question timed mock exam for Ontario Class 3 Wastewater Collection certification. 2-hour timer, 70% pass threshold."
       metaKeywords="Ontario Class 3 Wastewater Collection mock exam, Ontario operator certification"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}

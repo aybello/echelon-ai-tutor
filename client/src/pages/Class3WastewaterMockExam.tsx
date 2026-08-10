@@ -39,7 +39,7 @@ export default function Class3WastewaterMockExam() {
       metaDescription="100-question timed mock exam for the Ontario Class 3 Wastewater Treatment operator certification."
       metaKeywords="Class 3 wastewater mock exam, Ontario operator exam, OWWCO Class 3 wastewater"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}

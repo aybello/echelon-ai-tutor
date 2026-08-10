@@ -76,6 +76,7 @@ export default function StudentDashboard() {
   const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation();
   const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
   const utils = trpc.useUtils();
+  const [selectedCourseKey, setSelectedCourseKey] = useState<string | undefined>(undefined);
 
   const [otpEmail, setOtpEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
@@ -149,7 +150,7 @@ export default function StudentDashboard() {
     window.location.href = "/";
   };
 
-  const overview = trpc.dashboard.overview.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const overview = trpc.dashboard.overview.useQuery(selectedCourseKey ? { courseKey: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const dailyActivity = trpc.dashboard.dailyActivity.useQuery(undefined, { enabled: hasAccess, retry: false });
   const topicAccuracy = trpc.dashboard.topicAccuracy.useQuery(undefined, { enabled: hasAccess, retry: false });
   const courseBreakdown = trpc.dashboard.courseBreakdown.useQuery(undefined, { enabled: hasAccess, retry: false });

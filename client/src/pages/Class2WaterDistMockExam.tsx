@@ -33,7 +33,7 @@ export default function Class2WaterDistMockExam() {
       metaDescription="100-question timed mock exam for Ontario Class 2 Water Distribution certification. 2-hour timer, 70% pass threshold."
       metaKeywords="Ontario Class 2 Water Distribution mock exam, Ontario operator certification"
       examQuestions={100}
-      examDuration={2 * 60 * 60}
+      examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}

@@ -88,7 +88,7 @@ function formatDate(ts: Date | string | number) {
   return new Date(ts).toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" });
 }
 
-/** Magic Link section */
+/** Access on another device section — only shown to OAuth users who may need OTP on mobile */
 function OtpAccessSection({ email }: { email: string }) {
   return (
     <div style={{
@@ -97,10 +97,10 @@ function OtpAccessSection({ email }: { email: string }) {
       display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <span style={{ fontSize: 18 }}>🔑</span>
+        <span style={{ fontSize: 18 }}>📱</span>
         <div>
-          <p style={{ color: "#1E293B", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
-          <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Sign in with a 6-digit code sent to <strong>{email}</strong>.</p>
+          <p style={{ color: "#1E293B", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Access on another device</p>
+          <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Use a 6-digit code sent to <strong>{email}</strong> to access your courses on mobile or another browser.</p>
         </div>
       </div>
       <a
@@ -112,7 +112,7 @@ function OtpAccessSection({ email }: { email: string }) {
           fontFamily: "inherit", whiteSpace: "nowrap", textDecoration: "none", display: "inline-block",
         }}
       >
-        Sign In with Code →
+        Get Code →
       </a>
     </div>
   );

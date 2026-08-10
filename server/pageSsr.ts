@@ -227,7 +227,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Team plans include a shared admin dashboard and volume discounts. Contact us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit <a href="${SITE_URL}/pricing">our pricing page</a> to learn more.</p>
 
       <h2>Study Resources</h2>
-      <p>The <a href="${SITE_URL}/wpi">WPI (Water Process Intelligence)</a> interactive guide covers water treatment processes, distribution systems, wastewater treatment, and collection systems with diagrams and province-specific regulatory context. The <a href="${SITE_URL}/blog">Echelon blog</a> publishes in-depth certification guides for every province.</p>
+      <p>The <a href="${SITE_URL}/wpi">WPI (Water Professionals International)</a> interactive guide covers water treatment processes, distribution systems, wastewater treatment, and collection systems with diagrams and province-specific regulatory context. The <a href="${SITE_URL}/blog">Echelon blog</a> publishes in-depth certification guides for every province.</p>
     `,
   },
   {
@@ -370,20 +370,20 @@ export const STATIC_PAGE_META: PageMeta[] = [
   },
   {
     path: "/wpi",
-    title: "WPI Water Process Intelligence | Echelon Institute",
+    title: "WPI Water Professionals International | Echelon Institute",
     description:
-      "WPI (Water Process Intelligence) is Echelon Institute's interactive process guide for Canadian water and wastewater operators. Explore treatment processes, equipment, and regulations by province.",
-    h1: "WPI — Water Process Intelligence",
+      "WPI (Water Professionals International) is Echelon Institute's interactive process guide for Canadian water and wastewater operators. Explore treatment processes, equipment, and regulations by province.",
+    h1: "WPI — Water Professionals International",
     jsonLd: buildWebPageJsonLd({
       path: "/wpi",
-      title: "WPI Water Process Intelligence | Echelon Institute",
+      title: "WPI Water Professionals International | Echelon Institute",
       description:
         "Interactive process guide for Canadian water and wastewater operators.",
-      h1: "WPI — Water Process Intelligence",
+      h1: "WPI — Water Professionals International",
     }),
     bodyHtml: `
       <h2>Interactive Process Guides for Water Operators</h2>
-      <p>WPI (Water Process Intelligence) is Echelon Institute's interactive reference guide for Canadian water and wastewater operators. It covers the full treatment process from source water intake to distribution, as well as wastewater collection and treatment systems.</p>
+      <p>WPI (Water Professionals International) is Echelon Institute's interactive reference guide for Canadian water and wastewater operators. It covers the full treatment process from source water intake to distribution, as well as wastewater collection and treatment systems.</p>
 
       <h2>What WPI Covers</h2>
       <p>WPI includes detailed explanations of coagulation and flocculation, sedimentation, filtration, disinfection (chlorination, UV, ozone), chemical feed and dosing, iron and manganese removal, water quality regulations, pump operation, and more. Wastewater content covers primary and secondary treatment, biological processes, sludge handling, and collection system maintenance.</p>
