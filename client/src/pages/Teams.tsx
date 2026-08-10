@@ -152,23 +152,45 @@ export default function Teams() {
       </section>
 
       {/* Main grid — white/slate body */}
-      {/* ── Plan Type Switcher ─── */}
-      <div className="max-w-6xl mx-auto px-6 pt-16 pb-4">
-        <div className="flex justify-center">
-          <div className="inline-flex bg-gray-100 rounded-lg p-1">
-            <button
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${planType === "annual" ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700"}`}
-              onClick={() => setPlanType("annual")}
-            >
-              Annual Plan
-            </button>
-            <button
-              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${planType === "flex" ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700"}`}
-              onClick={() => setPlanType("flex")}
-            >
-              Flex Licences
-            </button>
-          </div>
+      {/* ── Plan Type Chooser ─── */}
+      <div className="max-w-4xl mx-auto px-6 pt-16 pb-8">
+        <h2 className="text-center text-2xl font-bold text-gray-900 mb-2">Choose Your Plan Type</h2>
+        <p className="text-center text-gray-500 mb-8">Select the option that fits your team's certification needs.</p>
+        <div className="grid md:grid-cols-2 gap-5">
+          <button
+            onClick={() => setPlanType("annual")}
+            className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
+              planType === "annual"
+                ? "border-blue-600 bg-blue-50 shadow-lg shadow-blue-100"
+                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
+            }`}
+          >
+            {planType === "annual" && (
+              <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+              </div>
+            )}
+            <div className="text-lg font-bold text-gray-900 mb-1">Annual Plan</div>
+            <p className="text-sm text-gray-500 leading-relaxed">All-access for your team. One price per operator per year. Best for ongoing training programs.</p>
+            <div className="mt-3 text-xs font-semibold text-blue-700 bg-blue-100 inline-block px-2.5 py-1 rounded-full">From $449/operator/year</div>
+          </button>
+          <button
+            onClick={() => setPlanType("flex")}
+            className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
+              planType === "flex"
+                ? "border-teal-600 bg-teal-50 shadow-lg shadow-teal-100"
+                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
+            }`}
+          >
+            {planType === "flex" && (
+              <div className="absolute top-4 right-4 w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center">
+                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+              </div>
+            )}
+            <div className="text-lg font-bold text-gray-900 mb-1">Course Passes</div>
+            <p className="text-sm text-gray-500 leading-relaxed">Buy specific courses for specific operators. 3 or 6 month terms. Best for targeted exam prep cohorts.</p>
+            <div className="mt-3 text-xs font-semibold text-teal-700 bg-teal-100 inline-block px-2.5 py-1 rounded-full">From $39/operator/course</div>
+          </button>
         </div>
       </div>
 

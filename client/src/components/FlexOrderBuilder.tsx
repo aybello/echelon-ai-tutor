@@ -109,8 +109,8 @@ export function FlexOrderBuilder() {
   return (
     <Card className="bg-white shadow-lg border-0">
       <CardHeader>
-        <CardTitle className="text-xl text-gray-900">Build Your Flex Order</CardTitle>
-        <p className="text-sm text-gray-500">Course-specific licences — 3 or 6 month terms. Mix and match courses and terms in one order.</p>
+        <CardTitle className="text-xl text-gray-900">Build Your Course Pass Order</CardTitle>
+        <p className="text-sm text-gray-500">Pick the courses your operators need, choose 3 or 6 month access, and check out in one order.</p>
       </CardHeader>
       <CardContent className="space-y-5">
         {/* Province */}
