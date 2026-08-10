@@ -41,7 +41,10 @@ const FEATURES = [
   "Annual renewal — operator access can be deactivated and restored without losing progress",
 ];
 
+import { FlexOrderBuilder } from "@/components/FlexOrderBuilder";
+
 export default function Teams() {
+  const [planType, setPlanType] = useState<"annual" | "flex">("annual");
   const [location] = useLocation();
   const [seats, setSeats] = useState(10);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
@@ -149,6 +152,32 @@ export default function Teams() {
       </section>
 
       {/* Main grid — white/slate body */}
+      {/* ── Plan Type Switcher ─── */}
+      <div className="max-w-6xl mx-auto px-6 pt-16 pb-4">
+        <div className="flex justify-center">
+          <div className="inline-flex bg-gray-100 rounded-lg p-1">
+            <button
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${planType === "annual" ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700"}`}
+              onClick={() => setPlanType("annual")}
+            >
+              Annual Plan
+            </button>
+            <button
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${planType === "flex" ? "bg-white shadow text-gray-900" : "text-gray-500 hover:text-gray-700"}`}
+              onClick={() => setPlanType("flex")}
+            >
+              Flex Licences
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {planType === "flex" ? (
+        <div className="max-w-xl mx-auto px-6 pb-16">
+          <FlexOrderBuilder />
+        </div>
+      ) : (
+
       <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-start">
 
         {/* Left: Pricing calculator */}
@@ -367,6 +396,7 @@ export default function Teams() {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 }

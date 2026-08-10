@@ -401,6 +401,7 @@ export const orgRouter = router({
 
     if (seatsAssigned === 0) {
       return {
+      orgId: org.id,
         orgName: org.name,
         seatsTotal: org.seatsTotal,
         seatsAssigned: 0,
@@ -468,6 +469,7 @@ export const orgRouter = router({
       seatsAssigned > 0 ? Math.round(totalAccuracy / seatsAssigned) : 0;
 
     return {
+      orgId: org.id,
       orgName: org.name,
       seatsTotal: org.seatsTotal,
       seatsAssigned,

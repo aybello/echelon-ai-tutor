@@ -17,11 +17,18 @@ export interface PricingBandConfig {
 
 export const TEAM_PRICES_CAD: Record<string, Record<string, PricingBandConfig>> = {
   ontario: {
-    oit: { threeMonthCents: 3900, sixMonthCents: 4900 },
-    standard: { threeMonthCents: 7900, sixMonthCents: 9900 },
+    oit:    { threeMonthCents: 3900, sixMonthCents: 4900 },
+    class1: { threeMonthCents: 7900, sixMonthCents: 9900 },
+    class2: { threeMonthCents: 11900, sixMonthCents: 14900 },
+    class3: { threeMonthCents: 19900, sixMonthCents: 24900 },
+    class4: { threeMonthCents: 23900, sixMonthCents: 29900 },
+    wqa:    { threeMonthCents: 11900, sixMonthCents: 14900 },
   },
   western: {
-    standard: { threeMonthCents: 9900, sixMonthCents: 12900 },
+    class1: { threeMonthCents: 11900, sixMonthCents: 14900 },
+    class2: { threeMonthCents: 15900, sixMonthCents: 19900 },
+    class3: { threeMonthCents: 19900, sixMonthCents: 24900 },
+    class4: { threeMonthCents: 23900, sixMonthCents: 29900 },
   },
 };
 
@@ -47,15 +54,20 @@ export function getCourseKeyPricingBand(courseKey: string): {
   if (courseKey === "oit" || courseKey === "oit-ww") {
     return { examFamily: "ontario", pricingBand: "oit", courseLevel: null };
   }
+  if (courseKey === "wqa") {
+    return { examFamily: "ontario", pricingBand: "wqa", courseLevel: null };
+  }
   if (courseKey.startsWith("class") && !courseKey.startsWith("wpi-")) {
     const levelMatch = courseKey.match(/class(\d)/);
-    return { examFamily: "ontario", pricingBand: "standard", courseLevel: levelMatch ? parseInt(levelMatch[1]) : null };
+    const level = levelMatch ? parseInt(levelMatch[1]) : 1;
+    return { examFamily: "ontario", pricingBand: `class${level}`, courseLevel: level };
   }
   if (courseKey.startsWith("wpi-")) {
     const levelMatch = courseKey.match(/class(\d)/);
-    return { examFamily: "western", pricingBand: "standard", courseLevel: levelMatch ? parseInt(levelMatch[1]) : null };
+    const level = levelMatch ? parseInt(levelMatch[1]) : 1;
+    return { examFamily: "western", pricingBand: `class${level}`, courseLevel: level };
   }
-  return { examFamily: "ontario", pricingBand: "standard", courseLevel: null };
+  return { examFamily: "ontario", pricingBand: "class1", courseLevel: null };
 }
 
 export function getFlexListPrice(

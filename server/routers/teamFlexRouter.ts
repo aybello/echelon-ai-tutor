@@ -7,8 +7,8 @@ import { TRPCError } from "@trpc/server";
 import { protectedProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
 import { getDb } from "../db";
-import { teamFlexOrders, teamFlexOrderItems, organizations } from "../../drizzle/schema";
-import { eq } from "drizzle-orm";
+import { teamFlexOrders, teamFlexOrderItems, teamFlexLicences, organizations } from "../../drizzle/schema";
+import { eq, and } from "drizzle-orm";
 import {
   TEAM_PRICES_CAD,
   getCourseKeyPricingBand,
@@ -18,6 +18,13 @@ import {
   type TeamFlexTermMonths,
 } from "../teams/teamFlexPricing";
 import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
+import {
+  inviteOperatorToLicence,
+  cancelFlexInvitation,
+  assignFlexLicence,
+  activateFlexLicence,
+  changeFlexLicenceCourse,
+} from "../teams/flexLicenceService";
 
 function isFlexEnabled(): boolean {
   return process.env.FEATURE_TEAMS_FLEX === "true";
@@ -30,6 +37,89 @@ function requireFlex() {
 }
 
 export const teamFlexRouter = router({
+  // ─── Pricing info (public) ─────────────────────────────────────────────────
+  getFlexPricing: protectedProcedure
+    .input(z.object({ province: z.enum(["ontario", "western"]) }))
+    .query(({ input }) => {
+      requireFlex();
+      const prices = TEAM_PRICES_CAD[input.province];
+      return { prices, volumeTiers: [
+        { min: 1, max: 9, rate: 0 },
+        { min: 10, max: 24, rate: 0.10 },
+        { min: 25, max: 49, rate: 0.15 },
+        { min: 50, max: null, rate: 0.20 },
+      ]};
+    }),
+
+  // ─── List licences for an org ──────────────────────────────────────────────
+  listLicences: protectedProcedure
+    .input(z.object({ organizationId: z.number().int() }))
+    .query(async ({ ctx, input }) => {
+      requireFlex();
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const licences = await db
+        .select()
+        .from(teamFlexLicences)
+        .where(eq(teamFlexLicences.organizationId, input.organizationId));
+      return licences;
+    }),
+
+  // ─── Invite operator to a licence ──────────────────────────────────────────
+  inviteLicence: protectedProcedure
+    .input(z.object({
+      licenceId: z.number().int(),
+      operatorEmail: z.string().email(),
+      organizationId: z.number().int(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      requireFlex();
+      return inviteOperatorToLicence(input.licenceId, input.operatorEmail, ctx.user.id, input.organizationId);
+    }),
+
+  // ─── Cancel invitation ─────────────────────────────────────────────────────
+  cancelInvitation: protectedProcedure
+    .input(z.object({
+      licenceId: z.number().int(),
+      organizationId: z.number().int(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      requireFlex();
+      return cancelFlexInvitation(input.licenceId, input.organizationId);
+    }),
+
+  // ─── Assign licence directly ───────────────────────────────────────────────
+  assignLicence: protectedProcedure
+    .input(z.object({
+      licenceId: z.number().int(),
+      operatorUserId: z.number().int(),
+      organizationId: z.number().int(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      requireFlex();
+      return assignFlexLicence(input.licenceId, input.operatorUserId, input.organizationId);
+    }),
+
+  // ─── Activate licence (operator) ──────────────────────────────────────────
+  activateLicence: protectedProcedure
+    .input(z.object({ licenceId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      requireFlex();
+      return activateFlexLicence(input.licenceId, ctx.user.id);
+    }),
+
+  // ─── Change course (same-band, pre-activation) ────────────────────────────
+  changeCourse: protectedProcedure
+    .input(z.object({
+      licenceId: z.number().int(),
+      newCourseKey: z.string().min(1),
+      organizationId: z.number().int(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      requireFlex();
+      return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.organizationId);
+    }),
+
   createOrder: protectedProcedure
     .input(z.object({
       organizationId: z.number().int().optional(),

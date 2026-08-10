@@ -14,16 +14,16 @@ describe("Teams Flex pricing", () => {
     expect(getFlexListPrice("ontario", "oit", 6)).toBe(4900);
   });
 
-  it("Ontario standard: 3-month = $79, 6-month = $99", async () => {
+  it("Ontario Class 1: 3-month = $79, 6-month = $99", async () => {
     const { getFlexListPrice } = await import("./teamFlexPricing");
-    expect(getFlexListPrice("ontario", "standard", 3)).toBe(7900);
-    expect(getFlexListPrice("ontario", "standard", 6)).toBe(9900);
+    expect(getFlexListPrice("ontario", "class1", 3)).toBe(7900);
+    expect(getFlexListPrice("ontario", "class1", 6)).toBe(9900);
   });
 
-  it("Western standard: 3-month = $99, 6-month = $129", async () => {
+  it("Western Class 1: 3-month = $119, 6-month = $149", async () => {
     const { getFlexListPrice } = await import("./teamFlexPricing");
-    expect(getFlexListPrice("western", "standard", 3)).toBe(9900);
-    expect(getFlexListPrice("western", "standard", 6)).toBe(12900);
+    expect(getFlexListPrice("western", "class1", 3)).toBe(11900);
+    expect(getFlexListPrice("western", "class1", 6)).toBe(14900);
   });
 
   it("rejects 12-month term", async () => {
@@ -48,17 +48,17 @@ describe("Teams Flex pricing", () => {
     const { getRetakeExtensionPrice } = await import("./teamFlexPricing");
     // Ontario OIT: 25% of $39 = $9.75
     expect(getRetakeExtensionPrice("ontario", "oit")).toBe(975);
-    // Ontario standard: 25% of $79 = $19.75
-    expect(getRetakeExtensionPrice("ontario", "standard")).toBe(1975);
-    // Western standard: 25% of $99 = $24.75
-    expect(getRetakeExtensionPrice("western", "standard")).toBe(2475);
+    // Ontario class1: 25% of $79 = $19.75
+    expect(getRetakeExtensionPrice("ontario", "class1")).toBe(1975);
+    // Western class1: 25% of $119 = $29.75
+    expect(getRetakeExtensionPrice("western", "class1")).toBe(2975);
   });
 
   it("getCourseKeyPricingBand correctly maps course keys", async () => {
     const { getCourseKeyPricingBand } = await import("./teamFlexPricing");
     expect(getCourseKeyPricingBand("oit")).toEqual({ examFamily: "ontario", pricingBand: "oit", courseLevel: null });
-    expect(getCourseKeyPricingBand("class2-water")).toEqual({ examFamily: "ontario", pricingBand: "standard", courseLevel: 2 });
-    expect(getCourseKeyPricingBand("wpi-class3-water")).toEqual({ examFamily: "western", pricingBand: "standard", courseLevel: 3 });
+    expect(getCourseKeyPricingBand("class2-water")).toEqual({ examFamily: "ontario", pricingBand: "class2", courseLevel: 2 });
+    expect(getCourseKeyPricingBand("wpi-class3-water")).toEqual({ examFamily: "western", pricingBand: "class3", courseLevel: 3 });
   });
 
   it("mixed-term order prices correctly with volume discount", async () => {
@@ -69,10 +69,10 @@ describe("Teams Flex pricing", () => {
     const discount = getTeamFlexVolumeDiscount(totalLicences);
     expect(discount).toBe(0.15);
 
-    const item1 = getFlexListPrice("western", "standard", 3) * 10; // Class I 3mo
-    const item2 = getFlexListPrice("western", "standard", 6) * 7;  // Class II 6mo
-    const item3 = getFlexListPrice("western", "standard", 3) * 6;  // Class III 3mo
-    const item4 = getFlexListPrice("western", "standard", 6) * 2;  // Class IV 6mo
+    const item1 = getFlexListPrice("western", "class1", 3) * 10; // Class I 3mo
+    const item2 = getFlexListPrice("western", "class2", 6) * 7;  // Class II 6mo
+    const item3 = getFlexListPrice("western", "class3", 3) * 6;  // Class III 3mo
+    const item4 = getFlexListPrice("western", "class4", 6) * 2;  // Class IV 6mo
     const subtotal = item1 + item2 + item3 + item4;
     const discounted = Math.round(subtotal * (1 - discount));
     expect(discounted).toBeGreaterThan(0);
@@ -149,7 +149,7 @@ describe("Teams Flex retake extension", () => {
 describe("Teams Flex course change", () => {
   it("same-band detection works correctly", async () => {
     const { getCourseKeyPricingBand } = await import("./teamFlexPricing");
-    // Same band: class1-water and class1-wastewater are both Ontario standard
+    // Same band: class1-water and class1-wastewater are both Ontario class1
     const a = getCourseKeyPricingBand("class1-water");
     const b = getCourseKeyPricingBand("class1-wastewater");
     expect(a.examFamily).toBe(b.examFamily);
@@ -158,7 +158,7 @@ describe("Teams Flex course change", () => {
 
   it("cross-band detection works correctly", async () => {
     const { getCourseKeyPricingBand } = await import("./teamFlexPricing");
-    // Cross-band: oit vs class1-water
+    // Cross-band: oit vs class1-water (oit band vs class1 band)
     const oit = getCourseKeyPricingBand("oit");
     const c1 = getCourseKeyPricingBand("class1-water");
     expect(oit.pricingBand).not.toBe(c1.pricingBand);

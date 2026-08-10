@@ -74,6 +74,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
 import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
+import { FlexLicencePanel } from "@/components/FlexLicencePanel";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -975,6 +976,9 @@ export default function OrgDashboard() {
             </details>
           )}
         </div>
+
+        {/* ── Flex Licences ─────────────────────────────────────────── */}
+        {overview.orgId && <FlexLicencePanel organizationId={overview.orgId} />}
 
         {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
 
