@@ -4,7 +4,7 @@
  */
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { protectedProcedure, router } from "../_core/trpc";
+import { protectedProcedure, publicProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
 import { getDb } from "../db";
 import { teamFlexOrders, teamFlexOrderItems, teamFlexLicences, organizations } from "../../drizzle/schema";
@@ -38,7 +38,7 @@ function requireFlex() {
 
 export const teamFlexRouter = router({
   // ─── Pricing info (public) ─────────────────────────────────────────────────
-  getFlexPricing: protectedProcedure
+  getFlexPricing: publicProcedure
     .input(z.object({ province: z.enum(["ontario", "western"]) }))
     .query(({ input }) => {
       requireFlex();
@@ -120,11 +120,12 @@ export const teamFlexRouter = router({
       return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.organizationId);
     }),
 
-  createOrder: protectedProcedure
+  createOrder: publicProcedure
     .input(z.object({
       organizationId: z.number().int().optional(),
       orgName: z.string().min(2).max(200),
       province: z.enum(["ontario", "western"]),
+      managerEmail: z.string().email(),
       items: z.array(z.object({
         courseKey: z.string().min(1),
         termMonths: z.union([z.literal(3), z.literal(6)]),
@@ -138,11 +139,11 @@ export const teamFlexRouter = router({
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-      const purchaserUserId = ctx.user.id;
-      const managerEmail = ctx.user.email ?? "";
+      const purchaserUserId = ctx.user?.id ?? 0;
+      const managerEmail = input.managerEmail.toLowerCase().trim();
 
       if (!managerEmail) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Your account must have an email address to purchase a team plan." });
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your email address." });
       }
 
       // Resolve or create organization

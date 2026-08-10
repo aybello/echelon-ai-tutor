@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { useAuth } from "@/_core/hooks/useAuth";
 
 interface FlexItem {
   courseKey: string;
@@ -54,9 +53,9 @@ const WESTERN_COURSES = [
 ];
 
 export function FlexOrderBuilder() {
-  const { user } = useAuth();
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
   const [orgName, setOrgName] = useState("");
+  const [managerEmail, setManagerEmail] = useState("");
   const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
 
   const courses = province === "ontario" ? ONTARIO_COURSES : WESTERN_COURSES;
@@ -84,12 +83,12 @@ export function FlexOrderBuilder() {
   };
 
   const handleSubmit = () => {
-    if (!user) {
-      window.location.href = `${import.meta.env.VITE_OAUTH_PORTAL_URL}?app_id=${import.meta.env.VITE_APP_ID}&redirect_uri=${encodeURIComponent(window.location.href)}`;
-      return;
-    }
     if (!orgName.trim()) {
       toast.error("Please enter your organization name");
+      return;
+    }
+    if (!managerEmail.trim() || !managerEmail.includes("@")) {
+      toast.error("Please enter a valid email address");
       return;
     }
     const validItems = items.filter(i => i.courseKey && i.quantity > 0);
@@ -100,6 +99,7 @@ export function FlexOrderBuilder() {
     createOrder.mutate({
       orgName: orgName.trim(),
       province,
+      managerEmail: managerEmail.trim(),
       items: validItems,
       overlapAcknowledged: false,
       origin: window.location.origin,
@@ -133,6 +133,18 @@ export function FlexOrderBuilder() {
             onChange={(e) => setOrgName(e.target.value)}
             placeholder="e.g. City of Toronto Water Services"
           />
+        </div>
+
+        {/* Manager Email */}
+        <div className="space-y-1.5">
+          <Label className="text-gray-700 font-medium">Your Email</Label>
+          <Input
+            type="email"
+            value={managerEmail}
+            onChange={(e) => setManagerEmail(e.target.value)}
+            placeholder="manager@yourorg.ca"
+          />
+          <p className="text-xs text-gray-400">We'll send the receipt and licence management link to this address.</p>
         </div>
 
         {/* Line Items */}
@@ -197,7 +209,7 @@ export function FlexOrderBuilder() {
           onClick={handleSubmit}
           disabled={createOrder.isPending}
         >
-          {createOrder.isPending ? "Creating order..." : user ? "Proceed to Checkout" : "Sign In to Purchase"}
+          {createOrder.isPending ? "Creating order..." : "Proceed to Checkout"}
         </Button>
 
         <p className="text-xs text-gray-400 text-center">
