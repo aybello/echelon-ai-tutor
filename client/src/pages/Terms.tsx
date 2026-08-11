@@ -24,7 +24,7 @@ export default function Terms() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Terms of Use
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: June 30, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 11, 2026</p>
         </div>
 
         <LegalSection title="1. Acceptance of Terms">
@@ -32,8 +32,8 @@ export default function Terms() {
         </LegalSection>
 
         <LegalSection title="2. Description of Service">
-          <p>Echelon Institute is an independent exam preparation platform for Canadian water and wastewater operators. We provide practice questions, mock exams, AI-powered tutoring, flashcards, and study resources.</p>
-          <p><strong>Echelon is not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program, including EOCP (Ontario) or WPI (Western Canada).</strong> Official exams are administered by your provincial authority.</p>
+          <p>Echelon Institute is an independent exam preparation platform for water and wastewater operators in Canada and the United States. We provide practice questions, mock exams, AI-assisted tutoring, flashcards, and study resources.</p>
+          <p><strong>Echelon is not affiliated with or endorsed by MOECP, OWWCO, WPI, EOCP, or a US state certifying authority.</strong> Ontario certification is administered through the Ontario operator-certification framework; EOCP serves British Columbia and Yukon. Candidates are responsible for confirming current requirements with their own authority.</p>
         </LegalSection>
 
         <LegalSection title="3. Accounts and Access">
@@ -41,7 +41,7 @@ export default function Terms() {
             <li>Access is tied to the email address used at checkout. You are responsible for keeping your email address accurate.</li>
             <li>You may restore access on any device by entering your purchase email on the Account page.</li>
             <li>You may not share, sell, or transfer your access to another person.</li>
-            <li>One-time passes grant lifetime access to a single exam type. Subscriptions grant access for the duration of the active billing period.</li>
+            <li>Access lasts for the term shown at checkout. Individual products may have a different term from Team annual licences and three- or six-month Course Passes.</li>
           </ul>
         </LegalSection>
 
@@ -61,7 +61,7 @@ export default function Terms() {
         </LegalSection>
 
         <LegalSection title="6. Payments and Refunds">
-          <p>All payments are processed by Stripe. Prices are in Canadian dollars (CAD) and include applicable taxes where required.</p>
+          <p>All payments are processed by Stripe. The checkout page identifies the currency before payment. Taxes may be added where required.</p>
           <p><strong>Refund policy:</strong> We offer a 7-day refund for first-time purchases if you have not completed more than 50 questions. To request a refund, email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</p>
           <p>Subscriptions auto-renew annually unless cancelled before the renewal date. You can cancel at any time from your Account page.</p>
         </LegalSection>

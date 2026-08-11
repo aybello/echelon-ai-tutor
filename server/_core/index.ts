@@ -46,8 +46,24 @@ async function startServer() {
   // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
   app.set("trust proxy", 1);
 
-  // Security headers — CSP off initially to avoid breaking Vite/inline scripts; tune later
-  app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "data:", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "blob:", "https:"],
+        connectSrc: ["'self'", "https://api.stripe.com", "https://*.oaiusercontent.com"],
+        frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
+        objectSrc: ["'none'"],
+        baseUri: ["'self'"],
+        formAction: ["'self'", "https://checkout.stripe.com"],
+        frameAncestors: ["'none'"],
+        upgradeInsecureRequests: process.env.NODE_ENV === "production" ? [] : null,
+      },
+    },
+  }));
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
@@ -92,6 +108,11 @@ async function startServer() {
     const callerSecret = req.headers["x-health-secret"];
     const isInternal = internalSecret && callerSecret === internalSecret;
 
+    if (!isInternal) {
+      res.set("Cache-Control", "no-store");
+      return res.status(200).json({ status: "ok", ts: new Date().toISOString() });
+    }
+
     let overallOk = true;
     const checks: Record<string, boolean | string> = {};
 
@@ -129,7 +150,6 @@ async function startServer() {
       return res.status(httpStatus).json({ status, checks, ts: new Date().toISOString() });
     }
 
-    // Public callers only see the aggregate status
     return res.status(httpStatus).json({ status, ts: new Date().toISOString() });
   });
 
@@ -164,7 +184,7 @@ async function startServer() {
   // Ticket 10: In production, require x-cron-secret header to match ENV.cronSecret.
   // If ENV.cronSecret is empty (local dev), the check is skipped.
   app.use("/api/scheduled", (req, res, next) => {
-    if (ENV.cronSecret && req.headers["x-cron-secret"] !== ENV.cronSecret) {
+    if (!ENV.cronSecret || req.headers["x-cron-secret"] !== ENV.cronSecret) {
       return res.status(401).json({ error: "Unauthorized: missing or invalid x-cron-secret" });
     }
     return next();

@@ -65,7 +65,7 @@ function StateCard({ state }: { state: USStateConfig }) {
 export default function USStates() {
   usePageMeta({
     title: "US Water Operator Certification by State | ABC/WPI Exam Prep — Echelon Institute",
-    description: "Find water and wastewater operator certification exam prep for your state. Echelon covers all 45 states that use the ABC/WPI standardized exam system.",
+    description: "Find water and wastewater operator certification exam prep for your state. Coverage is labelled full, partial, or limited against each state's exam system.",
   });
 
   const [search, setSearch] = useState("");

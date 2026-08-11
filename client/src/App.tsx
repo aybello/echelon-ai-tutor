@@ -57,6 +57,7 @@ const Careers = lazy(() => import("./pages/Careers"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Refund = lazy(() => import("./pages/Refund"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 
 // US Expansion pages
 const USLanding = lazy(() => import("./pages/USLanding"));
@@ -406,6 +407,7 @@ function Router() {
         <Route path={"/privacy"} component={Privacy} />
         <Route path={"/terms"} component={Terms} />
         <Route path={"/refund"} component={Refund} />
+        <Route path={"/faq"} component={FAQ} />
         {/* US Expansion routes */}
         <Route path={"/us"} component={USLanding} />
         <Route path={"/us/states"} component={USStates} />

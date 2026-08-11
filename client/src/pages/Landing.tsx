@@ -2704,6 +2704,8 @@ export default function Landing() {
       </section>
       </FadeUp>
 
+      {/* Testimonials remain disabled until each quote has documented provenance and consent. */}
+      {false && <>
       {/* ── Testimonials Section ── */}
       <section style={{ background: "#FFFFFF", padding: "80px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -2806,6 +2808,7 @@ export default function Landing() {
         @media (max-width: 900px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; } }
         @media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr !important; } }
       `}</style>
+      </>}
 
       {/* ── FAQ Section ── */}
       <FadeUp>
@@ -2824,7 +2827,7 @@ export default function Landing() {
               },
               {
                 q: "Do the practice questions match the real exam?",
-                a: "Yes. All questions are written by certified water and wastewater operators and aligned with OWWCO, MOECP, and provincial exam syllabi. Every calculation question includes a full step-by-step AI-explained solution.",
+                a: "The question banks are designed around the relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent exam-preparation provider; candidates should confirm the current exam requirements with their certifying authority.",
               },
               {
                 q: "Which provinces are supported?",
@@ -2832,7 +2835,7 @@ export default function Landing() {
               },
               {
                 q: "What is included with each course?",
-                a: "Every course includes 500+ practice questions, a timed mock exam that simulates the real test, an AI Tutor that explains every answer in plain language, a formula sheet, flashcards, and a score history so you can track your progress over time.",
+                a: "Course inclusions and question totals vary. The pricing page lists the exact course term, current question count, and included learning tools before checkout.",
               },
               {
                 q: "How is Echelon different from free study materials?",
@@ -2840,7 +2843,7 @@ export default function Landing() {
               },
               {
                 q: "Can I try it before I buy?",
-                a: "Yes. The OIT Water course is available to try for free — no account required. You get access to the full question bank and AI Tutor so you can see exactly what you are getting before you purchase any paid course.",
+                a: "Yes. Free practice is available from the homepage so you can evaluate the question experience before purchasing.",
               },
               {
                 q: "What payment methods do you accept?",
