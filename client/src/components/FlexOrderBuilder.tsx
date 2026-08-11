@@ -54,6 +54,7 @@ const WESTERN_COURSES = [
 
 export function FlexOrderBuilder() {
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
+  const [managerEmail, setManagerEmail] = useState("");
   const [ setOrgName] = useState("");
     const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
 

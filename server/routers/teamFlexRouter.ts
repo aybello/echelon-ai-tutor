@@ -242,6 +242,7 @@ export const teamFlexRouter = router({
   // ─── Create order (AUTHENTICATED MANAGER ONLY) ─────────────────────────────
   createOrder: publicProcedure
     .input(z.object({
+      managerEmail: z.string().email().optional(),
       province: z.enum(["ontario", "western"]),
       items: z.array(z.object({
         courseKey: z.string().min(1),
