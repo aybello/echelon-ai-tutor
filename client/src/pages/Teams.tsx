@@ -106,7 +106,7 @@ export default function Teams() {
 
       {/* Hero — bold gradient band */}
       <section
-        className="px-6 pt-16 pb-24 text-center relative overflow-hidden"
+        className="px-6 pt-10 pb-14 text-center relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)" }}
       >
         <div style={{
@@ -115,20 +115,20 @@ export default function Teams() {
           backgroundSize: "32px 32px",
         }} />
         <div className="relative max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full text-sm font-semibold bg-white/15 text-white border border-white/25">
+          <div className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full text-sm font-semibold bg-white/15 text-white border border-white/25">
             <Building2 className="w-3.5 h-3.5" />
             Echelon for Teams
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-5 text-white">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-white">
             Train your entire crew.<br />
             <span className="text-cyan-200">Track every operator.</span>
           </h1>
-          <p className="text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base text-blue-100 max-w-2xl mx-auto leading-relaxed">
             One team plan gives every operator at your utility access to Echelon's
             question banks, AI Tutor, and progress tracking. You get a manager dashboard
             to see who is ready and who needs attention.
           </p>
-          <div className="flex flex-wrap justify-center gap-10 mt-10">
+          <div className="flex flex-wrap justify-center gap-6 mt-6">
             {[
             { icon: <Users className="w-4 h-4" />, value: "25", label: "Operators at Utilities Kingston" },
             { icon: <Award className="w-4 h-4" />, value: "105", label: "Five-star ratings" },
@@ -142,7 +142,7 @@ export default function Teams() {
             ))}
           </div>
           {/* Trust badge */}
-          <div className="mt-8 flex justify-center">
+          <div className="mt-4 flex justify-center">
             <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2.5 backdrop-blur-sm">
               <span className="text-yellow-300 text-sm">★★★★★</span>
               <span className="text-white/90 text-sm font-medium">Trusted by <span className="font-bold text-white">Utilities Kingston</span></span>
