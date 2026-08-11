@@ -24,12 +24,12 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: June 30, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 11, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
-          <p>Echelon Institute is an independent exam preparation platform for Canadian water and wastewater operators. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program (including EOCP or WPI).</p>
-          <p>Contact: <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a></p>
+          <p>Echelon Institute is an independent exam preparation platform serving water and wastewater operators in Canada and the United States. We are not a certifying authority.</p>
+          <p>Privacy contact: <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Request" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>. We respond to access, correction, and complaint requests within a reasonable period.</p>
         </LegalSection>
 
         <LegalSection title="2. Information We Collect">
@@ -39,7 +39,7 @@ export default function Privacy() {
             <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
             <li><strong>Practice activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, and session history. Used to power your study plan and readiness score.</li>
             <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
-            <li><strong>Device and browser information</strong> — used for security and to restore access across devices.</li>
+            <li><strong>Device, browser, IP, and security-event information</strong> — used to secure accounts, prevent abuse, and diagnose service problems.</li>
           </ul>
         </LegalSection>
 
@@ -56,7 +56,7 @@ export default function Privacy() {
 
         <LegalSection title="4. Data Storage and Security">
           <ul>
-            <li>All data is stored on encrypted databases hosted in Canada/North America.</li>
+            <li>Information may be processed or stored in Canada, the United States, or another country where a service provider operates. It may therefore be subject to the laws of that jurisdiction.</li>
             <li>Passwords are never stored — we use magic links and OTP codes for authentication.</li>
             <li>All connections are encrypted via HTTPS/TLS.</li>
             <li>Payment processing is handled by Stripe, which is PCI DSS Level 1 certified.</li>
@@ -69,7 +69,7 @@ export default function Privacy() {
         </LegalSection>
 
         <LegalSection title="6. Teams and Organizational Data">
-          <p>If your employer purchases a Teams plan, your manager can see your practice activity, readiness score, and exam date. This is disclosed at the time of seat assignment. You retain the right to request deletion of your data at any time.</p>
+          <p>If an employer or utility provides your access, authorized managers can see course activation, practice activity, readiness indicators, weak-topic summaries, exam dates you enter, and exam outcomes recorded in the platform. Managers do not receive the text of private AI Tutor conversations or individual answer content. Some records may need to be retained for contractual, security, legal, or aggregate reporting purposes after a deletion request.</p>
         </LegalSection>
 
         <LegalSection title="7. Your Rights">
@@ -79,14 +79,23 @@ export default function Privacy() {
             <li><strong>Deletion:</strong> Request deletion of your account and associated data.</li>
             <li><strong>Portability:</strong> Request an export of your practice history.</li>
           </ul>
-          <p>To exercise any of these rights, email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>.</p>
+          <p>To exercise a right or make a privacy complaint, email <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Request" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>. We may need to verify your identity. If you are not satisfied with our response, you may contact the Office of the Privacy Commissioner of Canada or the applicable provincial/state regulator.</p>
         </LegalSection>
 
         <LegalSection title="8. Cookies">
           <p>Echelon uses cookies to maintain your session after signing in. We do not use advertising or tracking cookies. You can clear cookies at any time from your browser settings or from the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a>.</p>
         </LegalSection>
 
-        <LegalSection title="9. Changes to This Policy">
+        <LegalSection title="9. Service Providers, Retention, and Transfers">
+          <p>We use service providers for payment processing, hosting and database infrastructure, email delivery, analytics, error monitoring, and AI functionality. They may process only the information needed to provide their service under their own contractual and legal obligations.</p>
+          <p>Account, purchase, and learning records are retained while an account or institutional relationship is active and afterward only as reasonably needed for access restoration, contractual reporting, security, tax, dispute, and legal obligations. Authentication codes are short-lived. We periodically review records that no longer have a business or legal purpose for deletion or de-identification.</p>
+        </LegalSection>
+
+        <LegalSection title="10. Marketing Communications">
+          <p>Transactional messages such as receipts, access links, security notices, and service communications are necessary to provide the platform. Promotional messages are sent only where permitted by law and include an unsubscribe method. You can opt out of promotional or study-reminder emails without losing course access.</p>
+        </LegalSection>
+
+        <LegalSection title="11. Changes to This Policy">
           <p>We may update this policy from time to time. Material changes will be communicated by email to active subscribers. The "last updated" date at the top of this page reflects the most recent revision.</p>
         </LegalSection>
 

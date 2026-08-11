@@ -290,6 +290,10 @@ export const appRouter = router({
           return ctx.user?.email ?? null;
         })();
 
+        if (!userId && !studentEmail) {
+          return { success: false, persisted: false };
+        }
+
         await db.insert(examResults).values({
           sessionId: input.sessionId,
           userId,
@@ -304,7 +308,7 @@ export const appRouter = router({
           calcOnly: input.calcOnly ? "yes" : "no",
         });
 
-        return { success: true };
+        return { success: true, persisted: true };
       }),
 
     getHistory: publicProcedure
@@ -383,6 +387,7 @@ export const appRouter = router({
 
         const questionMap = new Map(questionRows.map(q => [q.id, q]));
         const identity = await resolveLearningIdentity(ctx);
+        const hasVerifiedIdentity = Boolean(identity.userId || identity.studentEmail);
 
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
@@ -396,7 +401,7 @@ export const appRouter = router({
           if (!moduleBreakdown[mod]) moduleBreakdown[mod] = { correct: 0, total: 0 };
           moduleBreakdown[mod].total++;
           if (isCorrect) moduleBreakdown[mod].correct++;
-          try {
+          if (hasVerifiedIdentity) try {
             await db.insert(questionAttempts).values({
               userId: identity.userId,
               studentEmail: identity.studentEmail,
@@ -422,7 +427,7 @@ export const appRouter = router({
         const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
         const passed = pct >= 70;
 
-        await db.insert(examResults).values({
+        if (hasVerifiedIdentity) await db.insert(examResults).values({
           sessionId: input.sessionId,
           userId: identity.userId,
           studentEmail: identity.studentEmail,
@@ -436,7 +441,7 @@ export const appRouter = router({
           calcOnly: input.calcOnly ? "yes" : "no",
         });
 
-        return { success: true, score: correct, total, pct, passed, moduleBreakdown };
+        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, moduleBreakdown };
       }),
   }),
 
@@ -767,14 +772,14 @@ BEHAVIOUR RULES:
     saveSession: publicProcedure
       .input(
         z.object({
-          examType: z.string(),
+          examType: z.string().min(1).max(64),
           messages: z.array(
             z.object({
               role: z.enum(["user", "assistant"]),
-              content: z.string(),
+              content: z.string().min(1).max(4000),
             })
-          ),
-          sessionStartMs: z.number(), // unix ms when panel was opened
+          ).min(1).max(40),
+          sessionStartMs: z.number().int().positive(), // unix ms when panel was opened
         })
       )
       .mutation(async ({ input, ctx }) => {

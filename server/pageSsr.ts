@@ -587,12 +587,12 @@ export const STATIC_PAGE_META: PageMeta[] = [
     path: "/us/states",
     title: "US Water Operator Certification by State | ABC/WPI Exam Prep — Echelon Institute",
     description:
-      "Find water and wastewater operator certification exam prep for your state. Echelon covers all 45 states that use the ABC/WPI standardized exam — Iowa, Colorado, Oregon, Ohio, Michigan, and more.",
+      "Find water and wastewater operator certification exam prep for your state. Echelon labels each state as full, partial, or limited coverage so candidates can confirm fit before purchasing.",
     h1: "US Water Operator Certification by State",
     jsonLd: buildWebPageJsonLd({
       path: "/us/states",
       title: "US Water Operator Certification by State | Echelon Institute",
-      description: "ABC/WPI exam prep for all 45 US states that use the standardized exam.",
+      description: "State-by-state WPI-aligned exam preparation with full, partial, or limited coverage labels.",
       h1: "US Water Operator Certification by State",
     }),
     bodyHtml: `
@@ -674,7 +674,7 @@ function buildSsrBody(meta: PageMeta): string {
   const h1Esc = escapeHtml(meta.h1);
   const bodyContent = meta.bodyHtml ?? "";
   return `
-<div id="ssr-page-shell" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true">
+<div id="ssr-page-shell" data-ssr-fallback="true">
   <h1>${h1Esc}</h1>
   ${bodyContent}
   <nav aria-label="Site navigation">
@@ -713,7 +713,7 @@ function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
     // Inject all SEO tags before </head>
     .replace("</head>", `${seoHead}\n</head>`)
     // Inject SSR body shell right after <div id="root">
-    .replace('<div id="root"></div>', `<div id="root"></div>${ssrBody}`);
+    .replace('<div id="root"></div>', `<div id="root">${ssrBody}</div>`);
 
   return html;
 }
@@ -741,7 +741,7 @@ Echelon Institute helps water and wastewater operators in Canada and the US pass
 - Wastewater Treatment — Class I, II, III, IV
 - Water Distribution — Class I, II, III, IV
 - Wastewater Collection — Class I, II, III, IV
-- Covers all 45 states using the ABC/WPI exam (Iowa, Colorado, Oregon, Ohio, Michigan, Wisconsin, Minnesota, Indiana, Virginia, North Carolina, Georgia, Maryland, Massachusetts, Washington, Pennsylvania, and more)
+- US coverage varies by state and is labelled full, partial, or limited; candidates should confirm requirements with their certifying authority
 - Content aligned to 2025 WPI Need-to-Know Criteria published by Water Professionals International (WPI) and the Association of Boards of Certification (ABC)
 
 ## Key Pages

@@ -1,0 +1,44 @@
+name: Quality Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - name: Deterministic unit and acceptance tests
+        run: >-
+          pnpm exec vitest run
+          server/product.acceptance.test.ts
+          server/products.audit.test.ts
+          server/courseRegistry.test.ts
+          server/access.bankkey.test.ts
+          server/mockExamScore.test.ts
+          server/guideRegistry.test.ts
+          server/readiness.test.ts
+          server/teams/flexBulkOnboarding.test.ts
+          shared/teamPricing.test.ts
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+      - run: pnpm build
+        env:
+          NODE_ENV: development
+          JWT_SECRET: test-only-not-for-production

@@ -172,7 +172,7 @@ export default function Teams() {
             )}
             <div className="text-lg font-bold text-gray-900 mb-1">Annual Plan</div>
             <p className="text-sm text-gray-500 leading-relaxed">All-access for your team. One price per operator per year. Best for ongoing training programs.</p>
-            <div className="mt-3 text-xs font-semibold text-blue-700 bg-blue-100 inline-block px-2.5 py-1 rounded-full">From $449/operator/year</div>
+            <div className="mt-3 text-xs font-semibold text-blue-700 bg-blue-100 inline-block px-2.5 py-1 rounded-full">From CA$449/operator/year</div>
           </button>
           <button
             onClick={() => setPlanType("flex")}
@@ -189,7 +189,7 @@ export default function Teams() {
             )}
             <div className="text-lg font-bold text-gray-900 mb-1">Course Passes</div>
             <p className="text-sm text-gray-500 leading-relaxed">Buy specific courses for specific operators. 3 or 6 month terms. Best for targeted exam prep cohorts.</p>
-            <div className="mt-3 text-xs font-semibold text-teal-700 bg-teal-100 inline-block px-2.5 py-1 rounded-full">From $39/operator/course</div>
+            <div className="mt-3 text-xs font-semibold text-teal-700 bg-teal-100 inline-block px-2.5 py-1 rounded-full">Price shown by course and term</div>
           </button>
         </div>
       </div>

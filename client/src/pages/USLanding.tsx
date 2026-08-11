@@ -187,7 +187,7 @@ export default function USLanding() {
             <div style={{ textAlign: "center", marginBottom: 40 }}>
               <div style={{ display: "inline-block", background: "rgba(29,78,216,0.15)", color: "#60A5FA", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16, border: "1px solid rgba(96,165,250,0.2)" }}>FIND YOUR STATE</div>
               <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>
-                Echelon covers operators in all 45 states that use the ABC/WPI standardized exam. Select your state to see your specific certifying authority and exam requirements.
+                Echelon provides full, partial, or limited WPI-aligned coverage depending on the state. Select your state to review the certifying authority, coverage level, and exam requirements before purchasing.
               </h2>
             </div>
           </FadeUp>
@@ -227,7 +227,7 @@ export default function USLanding() {
               <div style={{ textAlign: "center" }}>
                 <Link href="/us/states">
                   <button style={{ padding: "10px 24px", borderRadius: 8, background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
-                    View all 45 states →
+                    Check your state coverage →
                   </button>
                 </Link>
               </div>

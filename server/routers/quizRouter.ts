@@ -228,8 +228,11 @@ export const quizRouter = router({
    * getModuleOverviews — fetch module overview study content for a bank.
    */
   getModuleOverviews: publicProcedure
-    .input(z.object({ bankKey: z.string().min(1).max(64) }))
-    .query(async ({ input }) => {
+    .input(z.object({ bankKey: z.string().min(1).max(64), accessToken: z.string().optional() }))
+    .query(async ({ input, ctx }) => {
+      const examType = bankKeyToExamType(input.bankKey);
+      const hasAccess = await resolveAccessForRequest(ctx, examType, { accessToken: input.accessToken });
+      if (!hasAccess) throw new TRPCError({ code: "FORBIDDEN", message: "Purchase access to view module study overviews." });
       const db = await getDb();
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
