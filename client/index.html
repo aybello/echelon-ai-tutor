@@ -44,6 +44,12 @@
     <meta name="twitter:description" content="Canada's AI-powered exam prep for water and wastewater operators. Free OIT access — no account required." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/og-image-new-NPyJfV6kq45KpTXHZ5UW8N.png" />
 
+    <!-- Page-specific SSR text remains available in the HTML for metadata/crawling,
+         but React owns the visual interface after the application starts. -->
+    <style>
+      [data-ssr-fallback="true"] { display: none !important; }
+    </style>
+
     <!-- Structured Data: injected dynamically by useStructuredData hook on each page -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1269,3 +1269,8 @@
 - [x] Remove nonessential hero elements and reduce vertical space before course selection
 - [x] Preserve one clear primary course-finding CTA with concise supporting copy
 - [x] Validate desktop/mobile layout, deploy, push, and record the updated design decision
+
+## Pre-Hydration Text Flash
+- [x] Identify the visible server-rendered fallback that appears before the client application loads
+- [x] Prevent the fallback from flashing to visual users without removing SEO metadata
+- [ ] Verify, deploy, push, and record the loading-state fix
