@@ -1948,41 +1948,6 @@ export default function Landing() {
         </div>
       </section>
 
-
-      {/* ── Stats Bar ── */}
-      <section style={{
-        background: "#F1F5F9",
-        borderBottom: "1px solid #E2E8F0",
-        padding: "16px 24px",
-      }}>
-        <div
-          className="landing-stats-grid"
-          style={{
-            maxWidth: 900, margin: "0 auto",
-            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 24, textAlign: "center",
-          }}
-        >
-          <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
-          <StaggerItem>
-            <AnimatedStat value={18000} suffix="+" label="Practice Questions" />
-          </StaggerItem>
-          <StaggerItem>
-            <AnimatedStat value={36} label="Certification Courses" />
-          </StaggerItem>
-          <StaggerItem>
-            <AnimatedStat value={6} label="Specialization Tracks" />
-          </StaggerItem>
-          <StaggerItem>
-            <div>
-              <div style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif" }}>Free</div>
-              <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>OIT Access</div>
-            </div>
-          </StaggerItem>
-          </StaggerContainer>
-        </div>
-      </section>
-
       {/* ── Teams Promo Banner ── */}
       <SlideLeft delay={0.1}>
       <div style={{ padding: "12px 24px 0", maxWidth: 1200, margin: "0 auto" }}>

@@ -1274,3 +1274,8 @@
 - [x] Identify the visible server-rendered fallback that appears before the client application loads
 - [x] Prevent the fallback from flashing to visual users without removing SEO metadata
 - [x] Verify, deploy, push, and record the loading-state fix
+
+## Homepage Hero-to-Banner Spacing
+- [x] Locate and remove the unintended blank band below the hero
+- [x] Preserve a compact, legible Teams banner transition
+- [ ] Validate, deploy, push, and record the spacing correction
