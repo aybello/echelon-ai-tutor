@@ -1278,4 +1278,4 @@
 ## Homepage Hero-to-Banner Spacing
 - [x] Locate and remove the unintended blank band below the hero
 - [x] Preserve a compact, legible Teams banner transition
-- [ ] Validate, deploy, push, and record the spacing correction
+- [x] Validate, deploy, push, and record the spacing correction
