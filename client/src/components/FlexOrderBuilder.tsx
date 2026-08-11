@@ -55,8 +55,7 @@ const WESTERN_COURSES = [
 export function FlexOrderBuilder() {
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
   const [managerEmail, setManagerEmail] = useState("");
-  const [ setOrgName] = useState("");
-    const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
+  const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
 
   const courses = province === "ontario" ? ONTARIO_COURSES : WESTERN_COURSES;
   const totalLicences = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -83,13 +82,17 @@ export function FlexOrderBuilder() {
   };
 
   const handleSubmit = () => {
-
+    if (!managerEmail.trim() || !managerEmail.includes("@")) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
     const validItems = items.filter(i => i.courseKey && i.quantity > 0);
     if (validItems.length === 0) {
       toast.error("Please add at least one course");
       return;
     }
     createOrder.mutate({
+      managerEmail: managerEmail.trim().toLowerCase(),
       province,
       items: validItems,
       overlapAcknowledged: false,
@@ -114,11 +117,17 @@ export function FlexOrderBuilder() {
             </SelectContent>
           </Select>
         </div>
-
-
-
         {/* Manager Email */}
-
+        <div className="space-y-1.5">
+          <Label className="text-gray-700 font-medium">Your email</Label>
+          <Input
+            type="email"
+            placeholder="manager@yourorg.com"
+            value={managerEmail}
+            onChange={e => setManagerEmail(e.target.value)}
+          />
+          <p className="text-xs text-gray-400">Receipt and management link will be sent here.</p>
+        </div>
         {/* Line Items */}
         <div className="space-y-3">
           <Label className="text-gray-700 font-medium">Licences</Label>
