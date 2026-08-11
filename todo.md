@@ -1249,7 +1249,7 @@
 - [x] Fix 18 (P2): Product acceptance journey tests (10 tests across 4 journeys in product.acceptance.test.ts)
 
 ## Blog Authority Release (Aug 2026)
-- [ ] Merge the verified 2026 blog authority cluster into main
-- [ ] Run the idempotent 2026 blog content seed and verify all nine articles
-- [ ] Validate, deploy, and verify blog routing, sitemap coverage, filters, official-source links, and the 2025-to-2026 salary redirect
+- [x] Merge the verified 2026 blog authority cluster into main
+- [x] Run the idempotent 2026 blog content seed and verify all nine articles
+- [x] Validate, deploy, and verify blog routing, sitemap coverage, filters, official-source links, and the 2025-to-2026 salary redirect
 - [ ] Record the blog release in the AI Context Hub
