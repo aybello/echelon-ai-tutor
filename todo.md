@@ -1268,4 +1268,4 @@
 ## Homepage Hero Compression
 - [x] Remove nonessential hero elements and reduce vertical space before course selection
 - [x] Preserve one clear primary course-finding CTA with concise supporting copy
-- [ ] Validate desktop/mobile layout, deploy, push, and record the updated design decision
+- [x] Validate desktop/mobile layout, deploy, push, and record the updated design decision
