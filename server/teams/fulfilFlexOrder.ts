@@ -1,21 +1,22 @@
 /**
- * Teams Flex Order Fulfilment — Production-hardened
- * Called by the Stripe webhook when checkout.session.completed fires for a team_flex order.
- * 
+ * Teams Flex Order Fulfilment — production-hardened.
+ * Called by Stripe after a team_flex Checkout Session is paid.
+ *
  * Security guarantees:
- * - Idempotent: duplicate events return already-completed result without creating extra licences
- * - Atomic claim: uses affected-rows to prevent concurrent fulfilment
- * - Amount reconciliation: Stripe's pre-tax subtotal must match internal expected total
- * - Collected amounts stored separately from expected amounts
+ * - Idempotent: duplicate events do not create extra licences.
+ * - Atomic: licence creation and the paid-state update share one transaction.
+ * - Reconciled: Stripe's currency and pre-tax subtotal must match the order.
+ * - Auditable: collected tax and total are stored separately from expected amounts.
  */
-import { eq, and } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { getDb } from "../db";
 import {
-  teamFlexOrders,
-  teamFlexOrderItems,
   teamFlexLicences,
+  teamFlexOrderItems,
+  teamFlexOrders,
 } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
+import { addUtcCalendarMonths } from "./flexLicenceService";
 
 const ACTIVATION_DEADLINE_MONTHS = 12;
 
@@ -32,8 +33,8 @@ export async function fulfilFlexOrder(
     id: string;
     payment_intent: string | null;
     amount_total: number;
-    amount_subtotal?: number;
-    total_details?: { amount_tax?: number };
+    amount_subtotal: number;
+    amount_tax: number;
     currency: string;
     customer: string | null;
     payment_status: string;
@@ -43,39 +44,15 @@ export async function fulfilFlexOrder(
   const db = await getDb();
   if (!db) throw new Error("Database unavailable");
 
-  // ── 1. Atomic claim: only one webhook event can fulfil this order ──────────
-  const claimResult = await db.update(teamFlexOrders)
-    .set({ status: "fulfilling" })
-    .where(and(
-      eq(teamFlexOrders.id, teamFlexOrderId),
-      eq(teamFlexOrders.status, "pending"),
-    ));
-
-  const affectedRows = (claimResult as any)[0]?.affectedRows ?? (claimResult as any).affectedRows ?? 0;
-
-  if (affectedRows === 0) {
-    // Either already fulfilled or doesn't exist
-    const [existing] = await db
-      .select({ id: teamFlexOrders.id, status: teamFlexOrders.status })
-      .from(teamFlexOrders)
-      .where(eq(teamFlexOrders.id, teamFlexOrderId))
-      .limit(1);
-
-    if (existing?.status === "paid" || existing?.status === "fulfilling") {
-      return { success: true, orderId: teamFlexOrderId, licencesCreated: 0, alreadyFulfilled: true };
-    }
-    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: "Order not found or not pending" };
+  if (stripeSession.payment_status !== "paid" && stripeSession.payment_status !== "no_payment_required") {
+    return {
+      success: false,
+      orderId: teamFlexOrderId,
+      licencesCreated: 0,
+      error: "Checkout Session is not paid",
+    };
   }
 
-  // ── 2. Verify payment status ───────────────────────────────────────────────
-  if (stripeSession.payment_status !== "paid") {
-    await db.update(teamFlexOrders)
-      .set({ status: "pending" })
-      .where(eq(teamFlexOrders.id, teamFlexOrderId));
-    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: `Payment not complete: ${stripeSession.payment_status}` };
-  }
-
-  // ── 3. Load the order for reconciliation ───────────────────────────────────
   const [order] = await db
     .select()
     .from(teamFlexOrders)
@@ -83,96 +60,113 @@ export async function fulfilFlexOrder(
     .limit(1);
 
   if (!order) {
-    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: "Order disappeared after claim" };
+    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: "Order not found" };
+  }
+  if (order.status === "paid") {
+    return { success: true, orderId: teamFlexOrderId, licencesCreated: 0, alreadyFulfilled: true };
+  }
+  if (order.status !== "pending") {
+    return {
+      success: false,
+      orderId: teamFlexOrderId,
+      licencesCreated: 0,
+      error: `Order is ${order.status}`,
+    };
   }
 
-  // ── 4. Reconcile amount and currency ───────────────────────────────────────
   const sessionCurrency = (stripeSession.currency || "").toLowerCase();
   if (sessionCurrency !== order.currency) {
     await db.update(teamFlexOrders)
       .set({ status: "reconciliation_needed" })
-      .where(eq(teamFlexOrders.id, teamFlexOrderId));
+      .where(and(eq(teamFlexOrders.id, teamFlexOrderId), eq(teamFlexOrders.status, "pending")));
     await notifyOwner({
       title: "⚠️ Flex Order Currency Mismatch",
       content: `Order #${teamFlexOrderId}: expected ${order.currency}, got ${sessionCurrency}.`,
     }).catch(() => {});
-    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: `Currency mismatch` };
+    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: "Currency mismatch" };
   }
 
-  // Reconcile pre-tax subtotal against our expected totalBeforeTaxCents
-  const stripeSubtotal = stripeSession.amount_subtotal ?? stripeSession.amount_total;
-  const stripeTax = stripeSession.total_details?.amount_tax ?? 0;
-  const expectedPreTax = order.totalBeforeTaxCents;
-
-  if (stripeSubtotal !== expectedPreTax) {
+  if (stripeSession.amount_subtotal !== order.totalBeforeTaxCents) {
     await db.update(teamFlexOrders)
       .set({ status: "reconciliation_needed" })
-      .where(eq(teamFlexOrders.id, teamFlexOrderId));
+      .where(and(eq(teamFlexOrders.id, teamFlexOrderId), eq(teamFlexOrders.status, "pending")));
     await notifyOwner({
       title: "⚠️ Flex Order Amount Mismatch",
-      content: `Order #${teamFlexOrderId}: expected pre-tax ${expectedPreTax}¢, Stripe subtotal ${stripeSubtotal}¢.`,
+      content: `Order #${teamFlexOrderId}: expected pre-tax subtotal ${order.totalBeforeTaxCents} cents, got ${stripeSession.amount_subtotal} cents. Marked reconciliation_needed.`,
     }).catch(() => {});
-    return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: `Amount mismatch` };
+    return {
+      success: false,
+      orderId: teamFlexOrderId,
+      licencesCreated: 0,
+      error: `Subtotal mismatch: expected ${order.totalBeforeTaxCents}, got ${stripeSession.amount_subtotal}`,
+    };
   }
 
-  // ── 5. Store collected payment details ─────────────────────────────────────
   const now = new Date();
-  await db.update(teamFlexOrders)
-    .set({
-      taxCents: stripeTax,
-      totalPaidCents: stripeSession.amount_total,
-      paidAt: now,
-      stripePaymentIntentId: stripeSession.payment_intent,
-      stripeCustomerId: stripeSession.customer,
-    })
-    .where(eq(teamFlexOrders.id, teamFlexOrderId));
+  const licencesCreated = await db.transaction(async (tx) => {
+    await tx.execute(sql`SELECT id FROM team_flex_orders WHERE id = ${teamFlexOrderId} FOR UPDATE`);
 
-  // ── 6. Load order items ────────────────────────────────────────────────────
-  const items = await db
-    .select()
-    .from(teamFlexOrderItems)
-    .where(eq(teamFlexOrderItems.orderId, teamFlexOrderId));
+    const [lockedOrder] = await tx
+      .select()
+      .from(teamFlexOrders)
+      .where(eq(teamFlexOrders.id, teamFlexOrderId))
+      .limit(1);
 
-  // ── 7. Create licences ─────────────────────────────────────────────────────
-  const activationDeadline = new Date(now);
-  activationDeadline.setMonth(activationDeadline.getMonth() + ACTIVATION_DEADLINE_MONTHS);
+    if (!lockedOrder) throw new Error(`Flex order #${teamFlexOrderId} not found`);
+    if (lockedOrder.status === "paid") return 0;
+    if (lockedOrder.status !== "pending") {
+      throw new Error(`Flex order #${teamFlexOrderId} is ${lockedOrder.status}`);
+    }
 
-  let licencesCreated = 0;
-  try {
+    const items = await tx
+      .select()
+      .from(teamFlexOrderItems)
+      .where(eq(teamFlexOrderItems.orderId, teamFlexOrderId));
+    const expectedQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+    if (items.length === 0 || expectedQuantity !== lockedOrder.totalLicences) {
+      throw new Error(`Flex order #${teamFlexOrderId} item quantity does not reconcile`);
+    }
+
+    const activationDeadline = addUtcCalendarMonths(now, ACTIVATION_DEADLINE_MONTHS);
+    let created = 0;
     for (const item of items) {
       for (let i = 0; i < item.quantity; i++) {
-        await db.insert(teamFlexLicences).values({
+        await tx.insert(teamFlexLicences).values({
           orderItemId: item.id,
-          organizationId: order.organizationId,
+          organizationId: lockedOrder.organizationId,
           courseKey: item.courseKey,
           termMonths: item.termMonths,
           status: "unused",
           activationDeadline,
         });
-        licencesCreated++;
+        created++;
       }
     }
-  } catch (err) {
-    await db.update(teamFlexOrders)
-      .set({ status: "fulfilment_error" })
-      .where(eq(teamFlexOrders.id, teamFlexOrderId));
-    await notifyOwner({
-      title: "🚨 Flex Fulfilment Error",
-      content: `Order #${teamFlexOrderId}: licence creation failed after ${licencesCreated}. Error: ${(err as Error).message}`,
-    }).catch(() => {});
-    return { success: false, orderId: teamFlexOrderId, licencesCreated, error: `Licence creation failed` };
-  }
 
-  // ── 8. Mark order as paid ──────────────────────────────────────────────────
-  await db.update(teamFlexOrders)
-    .set({ status: "paid" })
-    .where(eq(teamFlexOrders.id, teamFlexOrderId));
+    await tx.update(teamFlexOrders)
+      .set({
+        status: "paid",
+        paidAt: now,
+        stripePaymentIntentId: stripeSession.payment_intent,
+        stripeCustomerId: stripeSession.customer,
+        taxCents: stripeSession.amount_tax,
+        totalPaidCents: stripeSession.amount_total,
+      })
+      .where(and(eq(teamFlexOrders.id, teamFlexOrderId), eq(teamFlexOrders.status, "pending")));
+
+    return created;
+  });
 
   console.log(`[Flex Fulfilment] Order #${teamFlexOrderId}: ${licencesCreated} licences created`);
-  return { success: true, orderId: teamFlexOrderId, licencesCreated };
+  return {
+    success: true,
+    orderId: teamFlexOrderId,
+    licencesCreated,
+    alreadyFulfilled: licencesCreated === 0,
+  };
 }
 
-/** Handle checkout session expiration — mark order as expired. */
+/** Handle Checkout Session expiration without overwriting a completed order. */
 export async function handleFlexCheckoutExpired(teamFlexOrderId: number): Promise<void> {
   const db = await getDb();
   if (!db) return;
@@ -184,7 +178,7 @@ export async function handleFlexCheckoutExpired(teamFlexOrderId: number): Promis
     ));
 }
 
-/** Handle async payment failure — mark order as payment_failed. */
+/** Handle an asynchronous payment failure without overwriting a completed order. */
 export async function handleFlexPaymentFailed(teamFlexOrderId: number): Promise<void> {
   const db = await getDb();
   if (!db) return;

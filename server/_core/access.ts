@@ -1,5 +1,5 @@
 import { getDb } from "../db";
-import { purchases, subscriptions, organizations, organizationMembers } from "../../drizzle/schema";
+import { purchases, subscriptions, organizations, organizationMembers, teamFlexLicences } from "../../drizzle/schema";
 import type { User } from "../../drizzle/schema";
 import { eq, and, gt } from "drizzle-orm";
 import { getAllUnlockedExamTypes } from "../stripe/products";
@@ -67,6 +67,7 @@ export type EntitlementSource =
   | "purchase"
   | "subscription"
   | "org_seat"
+  | "team_flex"
   | "owner"
   | "admin"
   | "org_manager";
@@ -94,6 +95,37 @@ export type ResolvedEntitlements = {
 const PURCHASE_ACCESS_STATUSES = new Set(["active"]);
 const SUBSCRIPTION_ACCESS_STATUSES = new Set(["active", "past_due"]);
 const ORG_ACCESS_STATUSES = new Set(["active", "past_due"]);
+
+export function resolveFlexEmailState(
+  rows: Array<{
+    courseKey: string;
+    status: string;
+    activationDeadline: Date;
+    startsAt: Date | null;
+    accessEndsAt: Date | null;
+  }>,
+  now: Date,
+): { identityEligible: boolean; activeCourseKeys: string[] } {
+  const identityEligible = rows.some((row) => {
+    if (row.status === "invited" || row.status === "assigned") {
+      return row.activationDeadline >= now;
+    }
+    if (row.status === "active") {
+      return !!row.startsAt && row.startsAt <= now && !!row.accessEndsAt && row.accessEndsAt >= now;
+    }
+    return false;
+  });
+
+  const activeCourseKeys = rows
+    .filter((row) =>
+      row.status === "active" &&
+      !!row.startsAt && row.startsAt <= now &&
+      !!row.accessEndsAt && row.accessEndsAt >= now,
+    )
+    .map((row) => row.courseKey);
+
+  return { identityEligible, activeCourseKeys };
+}
 
 /**
  * Full entitlement resolver — single source of truth for who has access to what.
@@ -255,7 +287,35 @@ export async function resolveEntitlementsByEmail(
   }
 
   // -------------------------------------------------------------------------
-  // 4. Manager check — does NOT grant course access by itself
+  // 4. Teams Flex / Course Pass entitlements
+  // -------------------------------------------------------------------------
+  // invitedEmail remains the verified operator identity for OTP-based users.
+  // A pending invitation or assigned pass may receive a login code, but only an
+  // explicitly activated, unexpired pass unlocks its purchased course.
+  let flexExamTypes: string[] = [];
+  let hasFlexIdentity = false;
+  try {
+    const flexRows = await db
+      .select({
+        courseKey: teamFlexLicences.courseKey,
+        status: teamFlexLicences.status,
+        activationDeadline: teamFlexLicences.activationDeadline,
+        startsAt: teamFlexLicences.startsAt,
+        accessEndsAt: teamFlexLicences.accessEndsAt,
+      })
+      .from(teamFlexLicences)
+      .where(eq(teamFlexLicences.invitedEmail, normalised));
+
+    const flexState = resolveFlexEmailState(Array.isArray(flexRows) ? flexRows : [], now);
+    hasFlexIdentity = flexState.identityEligible;
+    flexExamTypes = getAllUnlockedExamTypes(flexState.activeCourseKeys);
+    if (flexExamTypes.length > 0) sources.push("team_flex");
+  } catch (err) {
+    console.warn("[resolveEntitlements] Team Flex check error:", err);
+  }
+
+  // -------------------------------------------------------------------------
+  // 5. Manager check — does NOT grant course access by itself
   // -------------------------------------------------------------------------
   let isManager = false;
   try {
@@ -275,15 +335,15 @@ export async function resolveEntitlementsByEmail(
   }
 
   // -------------------------------------------------------------------------
-  // 4. Combine and deduplicate
+  // 6. Combine and deduplicate
   // -------------------------------------------------------------------------
   const allExamTypes = Array.from(
-    new Set([...purchaseExamTypes, ...subscriptionExamTypes, ...orgSeatExamTypes]),
+    new Set([...purchaseExamTypes, ...subscriptionExamTypes, ...orgSeatExamTypes, ...flexExamTypes]),
   );
 
   return {
     email: normalised,
-    hasAnyAccess: allExamTypes.length > 0 || isManager,
+    hasAnyAccess: allExamTypes.length > 0 || isManager || hasFlexIdentity,
     unlockedExamTypes: allExamTypes,
     purchasedProductKeys: activePurchaseKeys,
     activeSubscriptionRows,

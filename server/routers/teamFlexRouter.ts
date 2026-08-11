@@ -1,12 +1,11 @@
 /**
  * Teams Flex Router — Production-hardened
  * All manager procedures require authenticated session + verified org membership.
- * All manager procedures require authenticated session + verified org membership.
  * All pricing is server-side only. No client-controlled redirects or prices.
  */
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { protectedProcedure, publicProcedure, router } from "../_core/trpc";
+import { publicProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
 import { ENV } from "../_core/env";
 import { getDb } from "../db";
@@ -30,9 +29,12 @@ import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
 import {
   inviteOperatorToLicence,
   cancelFlexInvitation,
+  claimFlexLicence,
   assignFlexLicence,
   activateFlexLicence,
   changeFlexLicenceCourse,
+  getFlexInvitation,
+  listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
 
 // ── Manager authorization helper ─────────────────────────────────────────────
@@ -41,7 +43,7 @@ async function requireManagerOfOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
   orgId: number,
 ): Promise<{ managerEmail: string }> {
-  const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+  const email = ctx.user?.email ?? ctx.studentEmail ?? null;
   if (!email) {
     throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
   }
@@ -72,7 +74,7 @@ async function requireManagerOfOrg(
 async function resolveManagerOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
 ): Promise<{ orgId: number; managerEmail: string }> {
-  const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+  const email = ctx.user?.email ?? ctx.studentEmail ?? null;
   if (!email) {
     throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
   }
@@ -98,6 +100,16 @@ async function resolveManagerOrg(
   return { orgId: rows[0].orgId, managerEmail: normalised };
 }
 
+function requireVerifiedOperator(
+  ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
+): { email: string; userId: number | null } {
+  const email = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
+  if (!email) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Verify your email to continue." });
+  }
+  return { email, userId: ctx.user?.id ?? null };
+}
+
 // ── Router ───────────────────────────────────────────────────────────────────
 export const teamFlexRouter = router({
   // ─── Pricing info (public, no auth needed) ─────────────────────────────────
@@ -117,7 +129,7 @@ export const teamFlexRouter = router({
     }),
 
   // ─── List licences for manager's org ───────────────────────────────────────
-  listLicences: protectedProcedure
+  listLicences: publicProcedure
     .input(z.object({ orgId: z.number().int() }))
     .query(async ({ ctx, input }) => {
       await requireManagerOfOrg(ctx, input.orgId);
@@ -131,15 +143,15 @@ export const teamFlexRouter = router({
     }),
 
   // ─── Invite operator to a licence ──────────────────────────────────────────
-  inviteLicence: protectedProcedure
+  inviteLicence: publicProcedure
     .input(z.object({ licenceId: z.number().int(), operatorEmail: z.string().email(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       await requireManagerOfOrg(ctx, input.orgId);
-      return inviteOperatorToLicence(input.licenceId, input.operatorEmail, ctx.user.id, input.orgId);
+      return inviteOperatorToLicence(input.licenceId, input.operatorEmail, input.orgId);
     }),
 
   // ─── Cancel invitation ─────────────────────────────────────────────────────
-  cancelInvitation: protectedProcedure
+  cancelInvitation: publicProcedure
     .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       await requireManagerOfOrg(ctx, input.orgId);
@@ -147,7 +159,7 @@ export const teamFlexRouter = router({
     }),
 
   // ─── Assign licence directly ───────────────────────────────────────────────
-  assignLicence: protectedProcedure
+  assignLicence: publicProcedure
     .input(z.object({ licenceId: z.number().int(), operatorUserId: z.number().int(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       await requireManagerOfOrg(ctx, input.orgId);
@@ -155,15 +167,36 @@ export const teamFlexRouter = router({
     }),
 
   // ─── Activate licence (operator action) ────────────────────────────────────
-  activateLicence: protectedProcedure
+  activateLicence: publicProcedure
     .input(z.object({ licenceId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
-      if (!ctx.user) throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
-      return activateFlexLicence(input.licenceId, ctx.user.id);
+      const identity = requireVerifiedOperator(ctx);
+      return activateFlexLicence(input.licenceId, identity.email, identity.userId);
     }),
 
+  // ─── Inspect an invitation before sign-in ──────────────────────────────────
+  getInvitation: publicProcedure
+    .input(z.object({ token: z.string().length(64).regex(/^[a-f0-9]+$/i) }))
+    .query(async ({ input }) => {
+      return getFlexInvitation(input.token);
+    }),
+
+  // ─── Claim invitation using a verified email session ───────────────────────
+  claimInvitation: publicProcedure
+    .input(z.object({ token: z.string().length(64).regex(/^[a-f0-9]+$/i) }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return claimFlexLicence(input.token, identity.email, identity.userId);
+    }),
+
+  // ─── Operator Course Pass inventory ────────────────────────────────────────
+  myLicences: publicProcedure.query(async ({ ctx }) => {
+    const identity = requireVerifiedOperator(ctx);
+    return listOperatorFlexLicences(identity.email, identity.userId);
+  }),
+
   // ─── Change course (pre-activation, same band) ─────────────────────────────
-  changeCourse: protectedProcedure
+  changeCourse: publicProcedure
     .input(z.object({ licenceId: z.number().int(), newCourseKey: z.string().min(1), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       await requireManagerOfOrg(ctx, input.orgId);
@@ -171,7 +204,7 @@ export const teamFlexRouter = router({
     }),
 
   // ─── Create order (AUTHENTICATED MANAGER ONLY) ─────────────────────────────
-  createOrder: protectedProcedure
+  createOrder: publicProcedure
     .input(z.object({
       province: z.enum(["ontario", "western"]),
       items: z.array(z.object({
@@ -183,11 +216,9 @@ export const teamFlexRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
 
-      // ── Auth: derive identity from session ──────────────────────────────────
-      if (!ctx.user) {
-        throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in required to purchase Course Passes." });
-      }
-      const purchaserUserId = ctx.user.id;
+      // ── Auth: accept either OAuth or Echelon's verified email-code session ──
+      const purchaserIdentity = requireVerifiedOperator(ctx);
+      const purchaserUserId = purchaserIdentity.userId;
 
       // ── Resolve manager's org ───────────────────────────────────────────────
       const { orgId, managerEmail } = await resolveManagerOrg(ctx);
@@ -330,6 +361,7 @@ export const teamFlexRouter = router({
           teamFlexOrderId: String(orderId),
         },
         phone_number_collection: { enabled: true },
+        automatic_tax: { enabled: true },
         // No allow_promotion_codes — removed per security directive
         success_url: `${baseUrl}/team?flex_order_id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/teams`,
