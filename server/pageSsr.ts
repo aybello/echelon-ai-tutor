@@ -227,7 +227,37 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Team plans include a shared admin dashboard and volume discounts. Contact us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit <a href="${SITE_URL}/pricing">our pricing page</a> to learn more.</p>
 
       <h2>Study Resources</h2>
-      <p>The <a href="${SITE_URL}/wpi">WPI (Water Professionals International)</a> interactive guide covers water treatment processes, distribution systems, wastewater treatment, and collection systems with diagrams and province-specific regulatory context. The <a href="${SITE_URL}/blog">Echelon blog</a> publishes in-depth certification guides for every province.</p>
+      <p>The <a href="${SITE_URL}/guides">Echelon Process Guides</a> cover water treatment, distribution systems, wastewater treatment, collection, pumping, instrumentation and chemical feed through interactive diagrams and topic-linked practice. The <a href="${SITE_URL}/blog">Echelon blog</a> publishes in-depth certification guides for every province.</p>
+    `,
+  },
+  {
+    path: "/guides",
+    title: "Interactive Process Guides for Water Operators | Echelon Institute",
+    description:
+      "Explore interactive drinking water, wastewater, distribution, collection, pumping, instrumentation and chemical feed guides. Save progress and practise each topic for your operator exam.",
+    h1: "Interactive Process Guides for Water and Wastewater Operators",
+    changefreq: "monthly",
+    jsonLd: buildWebPageJsonLd({
+      path: "/guides",
+      title: "Interactive Process Guides for Water Operators | Echelon Institute",
+      description: "Interactive technical learning guides for water and wastewater operator certification.",
+      h1: "Interactive Process Guides for Water and Wastewater Operators",
+    }),
+    bodyHtml: `
+      <h2>Understand the System, Then Practise the Exam</h2>
+      <p>Echelon Process Guides connect treatment flow, equipment behaviour and operator decisions to certification practice. Each guide follows one repeatable learning loop: see the system, understand the process, operate the equipment, remember the exam points and prove the topic through practice questions.</p>
+
+      <h2>Seven Interactive Technical Guides</h2>
+      <p>Explore <a href="${SITE_URL}/process">Drinking Water Treatment</a>, <a href="${SITE_URL}/wastewater">Wastewater Treatment</a>, <a href="${SITE_URL}/distribution-guide">Water Distribution</a>, <a href="${SITE_URL}/collection-guide">Wastewater Collection</a>, <a href="${SITE_URL}/pumping">Pumping Systems</a>, <a href="${SITE_URL}/instrumentation">Process Control and Instrumentation</a>, and the <a href="${SITE_URL}/chem-calc">Chemical Feed Calculator</a>.</p>
+
+      <h2>Built Around Operator Decisions</h2>
+      <p>The guides visualize the variables operators manage in the field: turbidity, disinfectant residual, BOD, TSS, dissolved oxygen, system pressure, flow, head, efficiency, NPSH, process variable, setpoint and controller output.</p>
+
+      <h2>Connected to Certification Practice</h2>
+      <p>Select Ontario or WPI/ABC and your certification level inside any guide. Echelon links the current process topic to the matching practice course so learning and exam preparation stay connected.</p>
+
+      <h2>Progress and Bookmarks</h2>
+      <p>Guide progress, the last topic visited and bookmarks are saved automatically on the learner's device. Utilities can use Echelon Teams to connect operator learning activity with readiness and topic-level performance.</p>
     `,
   },
   {
@@ -649,6 +679,7 @@ function buildSsrBody(meta: PageMeta): string {
   ${bodyContent}
   <nav aria-label="Site navigation">
     <a href="${SITE_URL}/">Home</a>
+    <a href="${SITE_URL}/guides">Process Guides</a>
     <a href="${SITE_URL}/pricing">Pricing</a>
     <a href="${SITE_URL}/about">About</a>
     <a href="${SITE_URL}/blog">Blog</a>
@@ -718,6 +749,7 @@ Echelon Institute helps water and wastewater operators in Canada and the US pass
 - US Operator Exam Prep: ${SITE_URL}/us
 - US Courses: ${SITE_URL}/us/courses
 - US States: ${SITE_URL}/us/states
+- Process Guides: ${SITE_URL}/guides
 - Pricing: ${SITE_URL}/pricing
 - About: ${SITE_URL}/about
 - FAQ: ${SITE_URL}/faq

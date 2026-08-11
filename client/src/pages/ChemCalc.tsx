@@ -2,8 +2,9 @@
 // Live dosing calculators for chlorine, alum, lime, fluoride, and polymer
 
 import { useState } from "react";
-import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import GuideNav from "@/components/GuideNav";
+import { getGuideResumeStep } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 type Tab = "chlorine" | "alum" | "lime" | "fluoride" | "polymer";
@@ -424,7 +425,10 @@ export default function ChemCalc() {
     noindex: true
   });
 
-  const [activeTab, setActiveTab] = useState<Tab>("chlorine");
+  const [activeTab, setActiveTab] = useState<Tab>(() => {
+    const resumeId = getGuideResumeStep("chemical-feed", TABS.map((tab) => tab.id));
+    return (resumeId as Tab | null) ?? "chlorine";
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -441,6 +445,12 @@ export default function ChemCalc() {
       `}</style>
 
       <SiteNav currentPath="/chem-calc" />
+      <GuideNav
+        guideId="chemical-feed"
+        currentStepId={activeTab}
+        currentStepLabel={TABS.find((tab) => tab.id === activeTab)?.label ?? "Chlorine"}
+        totalSteps={TABS.length}
+      />
 
       <div className="chemcalc-main" style={{ maxWidth: 800, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 

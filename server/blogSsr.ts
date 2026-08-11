@@ -257,6 +257,7 @@ export function registerBlogSsrRoutes(app: Express, isDev: boolean) {
 export async function buildDynamicSitemap(): Promise<string> {
   const staticRoutes = [
     { url: `${SITE_URL}/`, priority: "1.0", changefreq: "weekly" },
+    { url: `${SITE_URL}/guides`, priority: "0.9", changefreq: "monthly" },
     { url: `${SITE_URL}/pricing`, priority: "0.9", changefreq: "monthly" },
     { url: `${SITE_URL}/about`, priority: "0.7", changefreq: "monthly" },
     { url: `${SITE_URL}/jobs`, priority: "0.7", changefreq: "daily" },

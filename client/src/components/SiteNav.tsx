@@ -98,6 +98,7 @@ export const NAV_LINKS = [
   { label: "🇺🇸 US All Courses",        href: "/us/courses" },
   { label: "🇺🇸 US Find My State",      href: "/us/states" },
   { label: "📐 Formulas",      href: "/formulas" },
+  { label: "Process Guides",  href: "/guides" },
   { label: "🏭 Process Guide",      href: "/process" },
   { label: "♻️ Wastewater Guide",   href: "/wastewater" },
   { label: "🚰 Distribution Guide", href: "/distribution-guide" },
@@ -207,9 +208,10 @@ const DRAWER_SECTIONS = [
   },
   {
     key: "guides",
-    label: "Study Guides & Tools",
+    label: "Process Guides & Tools",
     color: "#FB923C",
     links: [
+      { label: "All Process Guides", href: "/guides" },
       { label: "💧 Process Guide", href: "/process" },
       { label: "♻️ Wastewater Guide", href: "/wastewater" },
       { label: "🚰 Distribution Guide", href: "/distribution-guide" },
@@ -237,7 +239,7 @@ interface SiteNavProps {
  * Study tool pages (/quiz, /oit-mock, etc.) are NOT marketing pages.
  */
 function isMarketingPage(path: string): boolean {
-  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams" || path === "/blog" || path.startsWith("/blog/") || path === "/privacy" || path === "/terms" || path === "/refund" || path === "/jobs" || path === "/us" || path.startsWith("/us/");
+  return path === "/" || path === "/guides" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams" || path === "/blog" || path.startsWith("/blog/") || path === "/privacy" || path === "/terms" || path === "/refund" || path === "/jobs" || path === "/us" || path.startsWith("/us/");
 }
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
@@ -264,6 +266,7 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath.startsWith("/wpi-class4-wastewater")) return ["/wpi-class4-wastewater", "/wpi-class4-wastewater-mock", "/formulas-wpi-class4-ww", "/dashboard", "/account", "/wpi"];
   // WPI landing
   if (currentPath === "/wpi") return ["/wpi-class1-water", "/wpi-class1-wastewater", "/wpi", "/dashboard", "/pricing", "/account"];
+  if (currentPath === "/guides") return ["/guides", "/process", "/wastewater", "/pumping", "/dashboard", "/account"];
   // US pages
   if (currentPath === "/us" || currentPath.startsWith("/us/")) return ["/us", "/us/courses", "/us/states", "/pricing", "/account", "/wpi"];
   // Ontario Water pages
@@ -298,7 +301,7 @@ function getContextualPrimary(currentPath: string): string[] {
 function ResourcesDropdown({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const resourcePaths = ["/formulas", "/career", "/process", "/wastewater", "/command", "/about", "/contact"];
+  const resourcePaths = ["/guides", "/formulas", "/career", "/process", "/wastewater", "/command", "/about", "/contact"];
   const isActive = resourcePaths.some(p => currentPath.startsWith(p));
 
   useEffect(() => {
@@ -311,9 +314,10 @@ function ResourcesDropdown({ currentPath }: { currentPath: string }) {
 
   const items = [
     { label: "📝 Blog", href: "/blog" },
+    { label: "Process Guides", href: "/guides" },
     { label: "📐 Formulas", href: "/formulas" },
     { label: "🗺️ Career Map", href: "/career" },
-    { label: "🏭 Study Tools", href: "/process" },
+    { label: "Drinking Water Guide", href: "/process" },
     { label: "🚨 Echelon Command", href: "/command" },
     { label: "ℹ️ Contact", href: "/about" },
   ];
