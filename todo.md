@@ -1251,5 +1251,6 @@
 ## Blog Authority Release (Aug 2026)
 - [x] Merge the verified 2026 blog authority cluster into main
 - [x] Run the idempotent 2026 blog content seed and verify all nine articles
+- [x] Fix and verify the live 2025-to-2026 salary redirect; production now returns HTTP 301 to the 2026 article
 - [x] Validate, deploy, and verify blog routing, sitemap coverage, filters, official-source links, and the 2025-to-2026 salary redirect
-- [ ] Record the blog release in the AI Context Hub
+- [x] Record the blog release in the AI Context Hub
