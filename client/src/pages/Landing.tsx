@@ -2529,14 +2529,14 @@ export default function Landing() {
       <FadeUp>
       <section id="teams" style={{
         background: "#0F172A",
-        padding: "80px 24px",
+        padding: "48px 24px",
         borderTop: "1px solid rgba(255,255,255,0.06)",
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 60,
+            gap: 40,
             alignItems: "center",
           }} className="landing-teams-grid">
 
@@ -2572,14 +2572,14 @@ export default function Landing() {
                 fontSize: 16,
                 color: "rgba(255,255,255,0.65)",
                 lineHeight: 1.75,
-                margin: "0 0 32px 0",
+                margin: "0 0 20px 0",
                 maxWidth: 480,
               }}>
                 Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Self-serve plans are available for any team size. Volume discounts begin at 10 annual operator licences.
               </p>
 
               {/* Benefit bullets */}
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 12, marginBottom: 36 }}>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, marginBottom: 24 }}>
                 {[
                   { icon: "📊", text: "Manager dashboard — track every operator's readiness score" },
                   { icon: "🪑", text: "Assign operators by email and track annual licence usage" },
