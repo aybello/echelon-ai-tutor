@@ -27,7 +27,11 @@ const PUBLISHER_LOGO =
 function getIndexHtml(isDev: boolean): string {
   const templatePath = isDev
     ? path.resolve(process.cwd(), "client", "index.html")
-    : path.resolve(path.dirname(new URL(import.meta.url).pathname), "public", "index.html");
+    : path.resolve(
+        path.dirname(new URL(import.meta.url).pathname),
+        "public",
+        "index.html"
+      );
 
   if (!fs.existsSync(templatePath)) {
     // Fallback for dev when dist doesn't exist yet
@@ -124,7 +128,9 @@ function injectBlogPostMeta(
 
   // Replace the default <title> and inject all meta before </head>
   // Avoid "Echelon Institute | Echelon Institute" if metaTitle already contains the brand name
-  const titleSuffix = pageTitle.toLowerCase().includes("echelon") ? "" : " | Echelon Institute";
+  const titleSuffix = pageTitle.toLowerCase().includes("echelon")
+    ? ""
+    : " | Echelon Institute";
   let html = template
     .replace(
       /<title>[^<]*<\/title>/,
@@ -138,12 +144,30 @@ function injectBlogPostMeta(
       /<link rel="canonical"[^>]*>/,
       `<link rel="canonical" href="${postUrl}" />`
     )
-    .replace(/<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${pageTitle}" />`)
-    .replace(/<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${pageDesc}" />`)
-    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${postUrl}" />`)
-    .replace(/<meta property="og:type"[^>]*>/, `<meta property="og:type" content="article" />`)
-    .replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${pageTitle}" />`)
-    .replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${pageDesc}" />`);
+    .replace(
+      /<meta property="og:title"[^>]*>/,
+      `<meta property="og:title" content="${pageTitle}" />`
+    )
+    .replace(
+      /<meta property="og:description"[^>]*>/,
+      `<meta property="og:description" content="${pageDesc}" />`
+    )
+    .replace(
+      /<meta property="og:url"[^>]*>/,
+      `<meta property="og:url" content="${postUrl}" />`
+    )
+    .replace(
+      /<meta property="og:type"[^>]*>/,
+      `<meta property="og:type" content="article" />`
+    )
+    .replace(
+      /<meta name="twitter:title"[^>]*>/,
+      `<meta name="twitter:title" content="${pageTitle}" />`
+    )
+    .replace(
+      /<meta name="twitter:description"[^>]*>/,
+      `<meta name="twitter:description" content="${pageDesc}" />`
+    );
 
   // Inject JSON-LD before </head>
   html = html.replace(
@@ -182,12 +206,30 @@ function injectBlogIndexMeta(template: string): string {
   const pageUrl = `${SITE_URL}/blog`;
 
   return template
-    .replace(/<title>[^<]*<\/title>/, `<title>${pageTitle} | Echelon Institute</title>`)
-    .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${pageDesc}" />`)
-    .replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${pageUrl}" />`)
-    .replace(/<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${pageTitle}" />`)
-    .replace(/<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${pageDesc}" />`)
-    .replace(/<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${pageUrl}" />`);
+    .replace(
+      /<title>[^<]*<\/title>/,
+      `<title>${pageTitle} | Echelon Institute</title>`
+    )
+    .replace(
+      /<meta name="description"[^>]*>/,
+      `<meta name="description" content="${pageDesc}" />`
+    )
+    .replace(
+      /<link rel="canonical"[^>]*>/,
+      `<link rel="canonical" href="${pageUrl}" />`
+    )
+    .replace(
+      /<meta property="og:title"[^>]*>/,
+      `<meta property="og:title" content="${pageTitle}" />`
+    )
+    .replace(
+      /<meta property="og:description"[^>]*>/,
+      `<meta property="og:description" content="${pageDesc}" />`
+    )
+    .replace(
+      /<meta property="og:url"[^>]*>/,
+      `<meta property="og:url" content="${pageUrl}" />`
+    );
 }
 
 export function registerBlogSsrRoutes(app: Express, isDev: boolean) {
@@ -207,6 +249,13 @@ export function registerBlogSsrRoutes(app: Express, isDev: boolean) {
   app.get("/blog/:slug", async (req: Request, res: Response) => {
     const { slug } = req.params;
 
+    if (slug === "water-operator-salary-canada-by-province-2025") {
+      return res.redirect(
+        301,
+        "/blog/water-operator-salary-canada-by-province-2026"
+      );
+    }
+
     // Basic slug validation — no path traversal, reasonable length
     if (!slug || !/^[a-z0-9-]{1,250}$/.test(slug)) {
       return res.status(404).send("Not found");
@@ -217,7 +266,10 @@ export function registerBlogSsrRoutes(app: Express, isDev: boolean) {
       if (!db) {
         // DB unavailable — fall through to SPA (graceful degradation)
         const template = getIndexHtml(isDev);
-        return res.status(200).set({ "Content-Type": "text/html" }).end(template);
+        return res
+          .status(200)
+          .set({ "Content-Type": "text/html" })
+          .end(template);
       }
 
       const [post] = await db
@@ -268,10 +320,22 @@ export async function buildDynamicSitemap(): Promise<string> {
     { url: `${SITE_URL}/guides`, priority: "0.8", changefreq: "monthly" },
     { url: `${SITE_URL}/process`, priority: "0.7", changefreq: "monthly" },
     { url: `${SITE_URL}/wastewater`, priority: "0.7", changefreq: "monthly" },
-    { url: `${SITE_URL}/distribution-guide`, priority: "0.7", changefreq: "monthly" },
-    { url: `${SITE_URL}/collection-guide`, priority: "0.7", changefreq: "monthly" },
+    {
+      url: `${SITE_URL}/distribution-guide`,
+      priority: "0.7",
+      changefreq: "monthly",
+    },
+    {
+      url: `${SITE_URL}/collection-guide`,
+      priority: "0.7",
+      changefreq: "monthly",
+    },
     { url: `${SITE_URL}/pumping`, priority: "0.7", changefreq: "monthly" },
-    { url: `${SITE_URL}/instrumentation`, priority: "0.7", changefreq: "monthly" },
+    {
+      url: `${SITE_URL}/instrumentation`,
+      priority: "0.7",
+      changefreq: "monthly",
+    },
     { url: `${SITE_URL}/us`, priority: "0.9", changefreq: "weekly" },
     { url: `${SITE_URL}/us/states`, priority: "0.8", changefreq: "monthly" },
     { url: `${SITE_URL}/us/courses`, priority: "0.8", changefreq: "monthly" },
@@ -296,7 +360,7 @@ export async function buildDynamicSitemap(): Promise<string> {
 
       postEntries = posts
         .map(
-          (p) => `
+          p => `
   <url>
     <loc>${SITE_URL}/blog/${p.slug}</loc>
     <lastmod>${(p.updatedAt || p.publishedAt).toISOString().split("T")[0]}</lastmod>
@@ -312,7 +376,7 @@ export async function buildDynamicSitemap(): Promise<string> {
 
   const staticEntries = staticRoutes
     .map(
-      (r) => `
+      r => `
   <url>
     <loc>${r.url}</loc>
     <changefreq>${r.changefreq}</changefreq>

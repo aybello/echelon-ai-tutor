@@ -1247,3 +1247,9 @@
 - [x] Fix 15 (P1): getCourseInventory procedure added to quizRouter for live question counts
 - [x] Fix 17 (P2): ProductState components created (ProductErrorState, ProductEmptyState, ProductLoadingState); billing portal error handling improved
 - [x] Fix 18 (P2): Product acceptance journey tests (10 tests across 4 journeys in product.acceptance.test.ts)
+
+## Blog Authority Release (Aug 2026)
+- [ ] Merge the verified 2026 blog authority cluster into main
+- [ ] Run the idempotent 2026 blog content seed and verify all nine articles
+- [ ] Validate, deploy, and verify blog routing, sitemap coverage, filters, official-source links, and the 2025-to-2026 salary redirect
+- [ ] Record the blog release in the AI Context Hub

@@ -22,7 +22,11 @@ function renderContent(content: string): string {
 }
 
 function formatDate(d: Date | string) {
-  return new Date(d).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+  return new Date(d).toLocaleDateString("en-CA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 function TagBadge({ tag }: { tag: string }) {
@@ -47,9 +51,16 @@ export default function BlogPost() {
   );
 
   usePageMeta({
-    title: post?.metaTitle ?? (post ? `${post.title} | Echelon Institute` : "Blog | Echelon Institute"),
-    description: post?.metaDescription ?? post?.excerpt ?? "Ontario water and wastewater operator certification study guides.",
-    keywords: post?.tags ?? "Ontario water operator exam, OIT certification, wastewater operator",
+    title:
+      post?.metaTitle ??
+      (post ? `${post.title} | Echelon Institute` : "Blog | Echelon Institute"),
+    description:
+      post?.metaDescription ??
+      post?.excerpt ??
+      "Ontario water and wastewater operator certification study guides.",
+    keywords:
+      post?.tags ??
+      "Ontario water operator exam, OIT certification, wastewater operator",
   });
 
   if (isLoading) {
@@ -62,7 +73,9 @@ export default function BlogPost() {
           <div className="h-4 bg-slate-200 rounded w-full mb-2" />
           <div className="h-4 bg-slate-200 rounded w-2/3 mb-8" />
           <div className="space-y-3">
-            {[1,2,3,4,5].map(i => <div key={i} className="h-4 bg-slate-200 rounded w-full" />)}
+            {[1, 2, 3, 4, 5].map(i => (
+              <div key={i} className="h-4 bg-slate-200 rounded w-full" />
+            ))}
           </div>
         </div>
       </div>
@@ -75,8 +88,12 @@ export default function BlogPost() {
         <SiteNav currentPath={`/blog/${slug}`} />
         <div className="max-w-3xl mx-auto px-4 py-20 text-center">
           <div className="text-4xl mb-4">📄</div>
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Post not found</h1>
-          <p className="text-slate-500 mb-6">This article may have been moved or removed.</p>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">
+            Post not found
+          </h1>
+          <p className="text-slate-500 mb-6">
+            This article may have been moved or removed.
+          </p>
           <Link href="/blog">
             <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg text-sm transition-colors">
               Back to Blog
@@ -102,7 +119,9 @@ export default function BlogPost() {
 
           {post.tags && (
             <div className="flex flex-wrap gap-1.5 mb-4">
-              {post.tags.split(",").map(tag => <TagBadge key={tag} tag={tag} />)}
+              {post.tags.split(",").map(tag => (
+                <TagBadge key={tag} tag={tag} />
+              ))}
             </div>
           )}
 
@@ -138,22 +157,59 @@ export default function BlogPost() {
             prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
             prose-blockquote:border-l-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1
             prose-table:text-sm prose-th:bg-slate-100 prose-th:text-slate-800
-            prose-code:bg-slate-100 prose-code:text-slate-800 prose-code:rounded prose-code:px-1"
+            prose-code:bg-slate-100 prose-code:text-slate-800 prose-code:rounded prose-code:px-1
+            [&_.content-governance]:mt-12 [&_.content-governance]:rounded-xl [&_.content-governance]:border [&_.content-governance]:border-slate-200
+            [&_.content-governance]:bg-white [&_.content-governance]:p-6 [&_.content-governance_h2]:mt-0 [&_.content-governance_h2]:text-lg
+            [&_.content-governance_p]:text-sm [&_.content-governance_li]:text-sm"
           dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
         />
 
+        <div className="mt-10 rounded-xl border border-blue-100 bg-blue-50 p-6 text-center">
+          <h2 className="text-lg font-bold text-slate-900">
+            {(post.tags ?? "").includes("Employer Resources")
+              ? "Build a certification-ready team"
+              : "Turn the guide into practice"}
+          </h2>
+          <p className="mt-2 text-sm text-slate-600">
+            {(post.tags ?? "").includes("Employer Resources")
+              ? "Onboard operators, assign paid licences, and monitor readiness without exposing individual answers."
+              : "Try free questions first, then choose the course and access term that match your certification goal."}
+          </p>
+          <Link
+            href={
+              (post.tags ?? "").includes("Employer Resources")
+                ? "/teams"
+                : "/quiz"
+            }
+          >
+            <button className="mt-4 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700">
+              {(post.tags ?? "").includes("Employer Resources")
+                ? "Explore Echelon for Teams"
+                : "Start Free Practice"}
+            </button>
+          </Link>
+        </div>
 
         {/* Related posts */}
         {related && related.length > 0 && (
           <div className="mt-10">
-            <h2 className="text-xl font-bold text-slate-900 mb-5">More Articles</h2>
+            <h2 className="text-xl font-bold text-slate-900 mb-5">
+              More Articles
+            </h2>
             <div className="space-y-4">
               {related.map(r => (
                 <Link key={r.slug} href={`/blog/${r.slug}`}>
                   <div className="bg-white rounded-xl border border-slate-200 p-5 hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer group">
-                    <div className="text-xs text-slate-500 mb-1">{formatDate(r.publishedAt)} · {r.readingTimeMinutes} min read</div>
-                    <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">{r.title}</h3>
-                    <p className="text-slate-600 text-sm mt-1 line-clamp-2">{r.excerpt}</p>
+                    <div className="text-xs text-slate-500 mb-1">
+                      {formatDate(r.publishedAt)} · {r.readingTimeMinutes} min
+                      read
+                    </div>
+                    <h3 className="font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">
+                      {r.title}
+                    </h3>
+                    <p className="text-slate-600 text-sm mt-1 line-clamp-2">
+                      {r.excerpt}
+                    </p>
                   </div>
                 </Link>
               ))}
@@ -167,9 +223,19 @@ export default function BlogPost() {
         <div className="max-w-3xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500">
           <span>© {new Date().getFullYear()} Echelon Institute</span>
           <div className="flex gap-4">
-            <Link href="/blog"><span className="hover:text-slate-700 cursor-pointer">Blog</span></Link>
-            <Link href="/pricing"><span className="hover:text-slate-700 cursor-pointer">Pricing</span></Link>
-            <Link href="/quiz"><span className="hover:text-slate-700 cursor-pointer">Practice</span></Link>
+            <Link href="/blog">
+              <span className="hover:text-slate-700 cursor-pointer">Blog</span>
+            </Link>
+            <Link href="/pricing">
+              <span className="hover:text-slate-700 cursor-pointer">
+                Pricing
+              </span>
+            </Link>
+            <Link href="/quiz">
+              <span className="hover:text-slate-700 cursor-pointer">
+                Practice
+              </span>
+            </Link>
           </div>
         </div>
       </footer>
