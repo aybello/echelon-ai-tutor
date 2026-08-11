@@ -1273,4 +1273,4 @@
 ## Pre-Hydration Text Flash
 - [x] Identify the visible server-rendered fallback that appears before the client application loads
 - [x] Prevent the fallback from flashing to visual users without removing SEO metadata
-- [ ] Verify, deploy, push, and record the loading-state fix
+- [x] Verify, deploy, push, and record the loading-state fix
