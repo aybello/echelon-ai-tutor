@@ -736,15 +736,15 @@ export type StripeEventStatus =
 export const teamFlexOrders = mysqlTable("team_flex_orders", {
   id: int("id").autoincrement().primaryKey(),
   organizationId: int("organizationId").notNull(),
-  purchaserUserId: int("purchaserUserId").notNull(),
+  purchaserUserId: int("purchaserUserId"),
   managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
   totalLicences: int("totalLicences").notNull(),
   subtotalCents: int("subtotalCents").notNull(),
   discountRate: decimal("discountRate", { precision: 5, scale: 4 }).notNull().default("0"),
   discountCents: int("discountCents").notNull().default(0),
   totalBeforeTaxCents: int("totalBeforeTaxCents").notNull(),
-  taxCents: int("taxCents").default(0),
-  totalPaidCents: int("totalPaidCents").default(0),
+  taxCents: int("taxCents"),
+  totalPaidCents: int("totalPaidCents"),
   currency: varchar("currency", { length: 3 }).notNull().default("cad"),
   stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
   stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
@@ -753,7 +753,10 @@ export const teamFlexOrders = mysqlTable("team_flex_orders", {
   overlapAcknowledged: boolean("overlapAcknowledged").notNull().default(false),
   paidAt: timestamp("paidAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, (table) => [
+  uniqueIndex("team_flex_orders_checkout_unique").on(table.stripeCheckoutSessionId),
+  index("team_flex_orders_org_status_idx").on(table.organizationId, table.status),
+]);
 export type TeamFlexOrder = typeof teamFlexOrders.$inferSelect;
 
 /** Teams Flex order items - line items with pricing per course per term */
@@ -806,7 +809,9 @@ export const teamFlexLicences = mysqlTable("team_flex_licences", {
 }, (table) => [
   index("flex_lic_org_status_idx").on(table.organizationId, table.status),
   index("flex_lic_operator_idx").on(table.operatorUserId, table.status, table.courseKey),
+  index("flex_lic_email_idx").on(table.invitedEmail, table.status, table.courseKey),
   index("flex_lic_deadline_idx").on(table.status, table.activationDeadline),
+  index("flex_lic_invitation_idx").on(table.invitationToken, table.status),
 ]);
 export type TeamFlexLicence = typeof teamFlexLicences.$inferSelect;
 
@@ -824,5 +829,7 @@ export const teamFlexExtensions = mysqlTable("team_flex_extensions", {
   appliedAt: timestamp("appliedAt"),
   newAccessEndsAt: timestamp("newAccessEndsAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, (table) => [
+  uniqueIndex("team_flex_extensions_licence_unique").on(table.licenceId),
+]);
 export type TeamFlexExtension = typeof teamFlexExtensions.$inferSelect;

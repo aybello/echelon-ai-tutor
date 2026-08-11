@@ -1026,6 +1026,60 @@ export async function sendTeamEnrollmentEmail(
   }
 }
 
+export interface CoursePassInvitationEmailPayload {
+  email: string;
+  orgName: string;
+  courseName: string;
+  termMonths: number;
+  claimUrl: string;
+  activationDeadline: Date;
+}
+
+export async function sendCoursePassInvitationEmail(
+  payload: CoursePassInvitationEmailPayload,
+): Promise<void> {
+  const { email, orgName, courseName, termMonths, claimUrl, activationDeadline } = payload;
+  const transporter = await getTransporter();
+  const deadline = activationDeadline.toLocaleDateString("en-CA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+
+  const info = await transporter.sendMail({
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `${orgName} invited you to ${courseName} on Echelon`,
+    text: [
+      `${orgName} has assigned you a ${termMonths}-month Echelon Course Pass for ${courseName}.`,
+      "",
+      "Claim the pass using your work email, then choose Activate Course when you are ready to begin studying.",
+      `Claim your Course Pass: ${claimUrl}`,
+      "",
+      `Activate by ${deadline}. Your ${termMonths}-month access period begins only when you activate.`,
+      "",
+      "Questions? Reply to this email or contact abello@echeloninstitute.ca.",
+    ].join("\n"),
+    html: `
+      <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:32px">
+        <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:32px">
+          <p style="margin:0 0 8px;color:#0e7490;font-weight:700">ECHELON INSTITUTE</p>
+          <h1 style="margin:0 0 12px;color:#0f172a;font-size:26px">Your Course Pass is ready</h1>
+          <p style="color:#475569;line-height:1.6"><strong>${orgName}</strong> assigned you a <strong>${termMonths}-month</strong> Course Pass for <strong>${courseName}</strong>.</p>
+          <p style="color:#475569;line-height:1.6">Claim it with this work email, then activate only when you are ready to start. Your access period begins at activation.</p>
+          <p style="margin:28px 0"><a href="${claimUrl}" style="display:inline-block;background:#0e7490;color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:10px">Claim Course Pass</a></p>
+          <p style="color:#64748b;font-size:13px">Activate by ${deadline}. If the button does not work, paste this URL into your browser:<br><a href="${claimUrl}" style="color:#1d4ed8">${claimUrl}</a></p>
+        </div>
+      </div>
+    `,
+  });
+
+  if (!ENV.smtpHost) {
+    console.log("[Course Pass Invitation] Preview URL:", nodemailer.getTestMessageUrl(info));
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // FIX 13: Dedicated study reminder email — separate from enrollment email
 // ─────────────────────────────────────────────────────────────────────────────

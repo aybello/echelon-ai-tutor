@@ -100,6 +100,53 @@ describe("Teams Flex licence lifecycle", () => {
     expect(typeof mod.activateFlexLicence).toBe("function");
     expect(typeof mod.changeFlexLicenceCourse).toBe("function");
   });
+
+  it("uses calendar-month activation dates at month end and leap year", async () => {
+    const { addUtcCalendarMonths } = await import("./flexLicenceService");
+    expect(addUtcCalendarMonths(new Date("2028-01-31T15:30:00Z"), 1).toISOString())
+      .toBe("2028-02-29T15:30:00.000Z");
+    expect(addUtcCalendarMonths(new Date("2027-01-31T15:30:00Z"), 1).toISOString())
+      .toBe("2027-02-28T15:30:00.000Z");
+    expect(addUtcCalendarMonths(new Date("2026-08-31T15:30:00Z"), 6).toISOString())
+      .toBe("2027-02-28T15:30:00.000Z");
+  });
+
+  it("allows invited operators to receive OTP without unlocking content", async () => {
+    const { resolveFlexEmailState } = await import("../_core/access");
+    const now = new Date("2026-08-10T12:00:00Z");
+    const result = resolveFlexEmailState([{
+      courseKey: "wpi-class1-water-coll",
+      status: "invited",
+      activationDeadline: new Date("2027-08-10T12:00:00Z"),
+      startsAt: null,
+      accessEndsAt: null,
+    }], now);
+    expect(result.identityEligible).toBe(true);
+    expect(result.activeCourseKeys).toEqual([]);
+  });
+
+  it("unlocks only active, started and unexpired Flex courses", async () => {
+    const { resolveFlexEmailState } = await import("../_core/access");
+    const now = new Date("2026-08-10T12:00:00Z");
+    const result = resolveFlexEmailState([
+      {
+        courseKey: "wpi-class1-water-coll",
+        status: "active",
+        activationDeadline: new Date("2027-08-10T12:00:00Z"),
+        startsAt: new Date("2026-08-10T11:59:00Z"),
+        accessEndsAt: new Date("2026-11-10T12:00:00Z"),
+      },
+      {
+        courseKey: "wpi-class2-water-coll",
+        status: "active",
+        activationDeadline: new Date("2027-01-01T00:00:00Z"),
+        startsAt: new Date("2026-01-01T00:00:00Z"),
+        accessEndsAt: new Date("2026-08-09T00:00:00Z"),
+      },
+    ], now);
+    expect(result.identityEligible).toBe(true);
+    expect(result.activeCourseKeys).toEqual(["wpi-class1-water-coll"]);
+  });
 });
 
 // ─── Extension Tests ──────────────────────────────────────────────────────────

@@ -52,7 +52,7 @@ export function registerStripeWebhook(app: Express) {
 
       console.log(`[Stripe Webhook] Event: ${event.type} | ID: ${event.id}`);
 
-      if (event.type === "checkout.session.completed") {
+      if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
         const session = event.data.object as any;
 
         try {
@@ -71,6 +71,8 @@ export function registerStripeWebhook(app: Express) {
               id: session.id,
               payment_intent: session.payment_intent ?? null,
               amount_total: session.amount_total ?? 0,
+              amount_subtotal: session.amount_subtotal ?? 0,
+              amount_tax: session.total_details?.amount_tax ?? 0,
               currency: session.currency ?? "cad",
               customer: session.customer ?? null,
               payment_status: session.payment_status ?? "unpaid",
