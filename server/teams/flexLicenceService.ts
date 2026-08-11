@@ -25,6 +25,11 @@ export function addUtcCalendarMonths(date: Date, months: number): Date {
   return result;
 }
 
+function affectedRows(result: unknown): number {
+  const candidate = result as { affectedRows?: number } | [{ affectedRows?: number }];
+  return Array.isArray(candidate) ? candidate[0]?.affectedRows ?? 0 : candidate?.affectedRows ?? 0;
+}
+
 // ─── Invite ───────────────────────────────────────────────────────────────────
 
 export async function inviteOperatorToLicence(
@@ -54,14 +59,22 @@ export async function inviteOperatorToLicence(
   const now = new Date();
   const normalizedEmail = operatorEmail.toLowerCase().trim();
 
-  await db.update(teamFlexLicences)
+  const reserveResult = await db.update(teamFlexLicences)
     .set({
       status: "invited",
       invitedEmail: normalizedEmail,
       invitationToken: invitationTokenHash,
       invitedAt: now,
     })
-    .where(eq(teamFlexLicences.id, licenceId));
+    .where(and(
+      eq(teamFlexLicences.id, licenceId),
+      eq(teamFlexLicences.organizationId, orgId),
+      eq(teamFlexLicences.status, "unused"),
+    ));
+
+  if (affectedRows(reserveResult) !== 1) {
+    throw new TRPCError({ code: "CONFLICT", message: "This licence was assigned by another request. Refresh and try again." });
+  }
 
   const [org] = await db
     .select({ name: organizations.name })
@@ -103,6 +116,69 @@ export async function inviteOperatorToLicence(
   return { invitationSent: true };
 }
 
+export async function resendFlexInvitation(
+  licenceId: number,
+  orgId: number,
+): Promise<{ invitationSent: true }> {
+  const db = await getDb();
+  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+  const [licence] = await db
+    .select()
+    .from(teamFlexLicences)
+    .where(and(
+      eq(teamFlexLicences.id, licenceId),
+      eq(teamFlexLicences.organizationId, orgId),
+      eq(teamFlexLicences.status, "invited"),
+    ))
+    .limit(1);
+  if (!licence?.invitedEmail) {
+    throw new TRPCError({ code: "NOT_FOUND", message: "Invitation not found or no longer pending." });
+  }
+  if (!licence.invitationToken) {
+    throw new TRPCError({ code: "CONFLICT", message: "This invitation cannot be resent. Cancel it and create a new invitation." });
+  }
+
+  const rawToken = crypto.randomBytes(32).toString("hex");
+  const tokenHash = hashInvitationToken(rawToken);
+  const previousTokenHash = licence.invitationToken;
+  const previousInvitedAt = licence.invitedAt;
+  const invitedAt = new Date();
+  const replaceResult = await db.update(teamFlexLicences)
+    .set({ invitationToken: tokenHash, invitedAt })
+    .where(and(
+      eq(teamFlexLicences.id, licenceId),
+      eq(teamFlexLicences.organizationId, orgId),
+      eq(teamFlexLicences.status, "invited"),
+      eq(teamFlexLicences.invitationToken, previousTokenHash),
+    ));
+  if (affectedRows(replaceResult) !== 1) {
+    throw new TRPCError({ code: "CONFLICT", message: "This invitation changed in another request. Refresh and try again." });
+  }
+
+  const [org] = await db.select({ name: organizations.name }).from(organizations).where(eq(organizations.id, orgId)).limit(1);
+  const course = resolveCourseKey(licence.courseKey);
+  try {
+    await sendCoursePassInvitationEmail({
+      email: licence.invitedEmail,
+      orgName: org?.name ?? "Your organization",
+      courseName: course?.displayName ?? licence.courseKey,
+      termMonths: licence.termMonths,
+      claimUrl: `${ENV.appBaseUrl}/course-pass/claim?token=${encodeURIComponent(rawToken)}`,
+      activationDeadline: licence.activationDeadline,
+    });
+  } catch (error) {
+    await db.update(teamFlexLicences)
+      .set({ invitationToken: previousTokenHash, invitedAt: previousInvitedAt })
+      .where(and(
+        eq(teamFlexLicences.id, licenceId),
+        eq(teamFlexLicences.status, "invited"),
+        eq(teamFlexLicences.invitationToken, tokenHash),
+      ));
+    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The invitation email could not be resent.", cause: error });
+  }
+  return { invitationSent: true };
+}
+
 // ─── Cancel Invitation ────────────────────────────────────────────────────────
 
 export async function cancelFlexInvitation(
@@ -127,14 +203,21 @@ export async function cancelFlexInvitation(
   }
 
   // Return to unused — NOT revocation
-  await db.update(teamFlexLicences)
+  const cancelResult = await db.update(teamFlexLicences)
     .set({
       status: "unused",
       invitedEmail: null,
       invitationToken: null,
       invitedAt: null,
     })
-    .where(eq(teamFlexLicences.id, licenceId));
+    .where(and(
+      eq(teamFlexLicences.id, licenceId),
+      eq(teamFlexLicences.organizationId, orgId),
+      eq(teamFlexLicences.status, "invited"),
+    ));
+  if (affectedRows(cancelResult) !== 1) {
+    throw new TRPCError({ code: "CONFLICT", message: "This invitation was already claimed or changed. Refresh and try again." });
+  }
 }
 
 // ─── Claim (operator signs in and claims invitation) ──────────────────────────
@@ -260,9 +343,14 @@ export async function changeFlexLicenceCourse(
   }
 
   // Same-band validation: import pricing helper
+  const canonicalCurrentCourse = resolveCourseKey(licence.courseKey)?.courseKey;
+  const canonicalNewCourse = resolveCourseKey(newCourseKey)?.courseKey;
+  if (!canonicalCurrentCourse || !canonicalNewCourse) {
+    throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown course selection." });
+  }
   const { getCourseKeyPricingBand } = await import("./teamFlexPricing");
-  const currentBand = getCourseKeyPricingBand(licence.courseKey);
-  const newBand = getCourseKeyPricingBand(newCourseKey);
+  const currentBand = getCourseKeyPricingBand(canonicalCurrentCourse);
+  const newBand = getCourseKeyPricingBand(canonicalNewCourse);
 
   if (currentBand.examFamily !== newBand.examFamily || currentBand.pricingBand !== newBand.pricingBand) {
     throw new TRPCError({
@@ -272,7 +360,7 @@ export async function changeFlexLicenceCourse(
   }
 
   await db.update(teamFlexLicences)
-    .set({ courseKey: newCourseKey })
+    .set({ courseKey: canonicalNewCourse })
     .where(eq(teamFlexLicences.id, licenceId));
 }
 

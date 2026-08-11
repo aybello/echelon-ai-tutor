@@ -29,6 +29,7 @@ import {
 import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
 import {
   inviteOperatorToLicence,
+  resendFlexInvitation,
   cancelFlexInvitation,
   claimFlexLicence,
   assignFlexLicence,
@@ -38,6 +39,18 @@ import {
   listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
 import { computeReadiness } from "../_core/readiness";
+import { resolveCourseKey } from "../../shared/courseRegistry";
+import {
+  bulkInviteFlexOperators,
+  MAX_BULK_ONBOARDING_ROWS,
+  previewFlexBulkOnboarding,
+} from "../teams/flexBulkOnboardingService";
+
+const flexBulkRowsSchema = z.array(z.object({
+  clientRowId: z.string().min(1).max(64),
+  operatorEmail: z.string().min(1).max(320),
+  courseKey: z.string().min(1).max(64),
+})).min(1).max(MAX_BULK_ONBOARDING_ROWS);
 
 // ── Manager authorization helper ─────────────────────────────────────────────
 /** Verify the authenticated user is a manager of the specified org. */
@@ -152,6 +165,27 @@ export const teamFlexRouter = router({
       return inviteOperatorToLicence(input.licenceId, input.operatorEmail, input.orgId);
     }),
 
+  resendInvitation: publicProcedure
+    .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return resendFlexInvitation(input.licenceId, input.orgId);
+    }),
+
+  previewBulkOnboarding: publicProcedure
+    .input(z.object({ orgId: z.number().int(), rows: flexBulkRowsSchema }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return previewFlexBulkOnboarding(input.orgId, input.rows);
+    }),
+
+  bulkInviteLicences: publicProcedure
+    .input(z.object({ orgId: z.number().int(), rows: flexBulkRowsSchema }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return bulkInviteFlexOperators(input.orgId, input.rows);
+    }),
+
   // ─── Cancel invitation ─────────────────────────────────────────────────────
   cancelInvitation: publicProcedure
     .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
@@ -228,11 +262,19 @@ export const teamFlexRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
+      const normalizedItems = input.items.map((item) => {
+        const course = resolveCourseKey(item.courseKey);
+        if (!course?.isActive || !course.teamAssignable) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown or unavailable course: ${item.courseKey}` });
+        }
+        return { ...item, courseKey: course.courseKey };
+      });
+
       // ── Check Annual overlap ────────────────────────────────────────────────
       const [org] = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1);
       if (org?.tier && org?.province) {
         const annualCourses = allowedCourseKeysForOrg(org.tier, org.province);
-        const overlapping = input.items.filter(item => annualCourses.includes(item.courseKey));
+        const overlapping = normalizedItems.filter(item => annualCourses.includes(item.courseKey));
         if (overlapping.length > 0 && !input.overlapAcknowledged) {
           throw new TRPCError({
             code: "BAD_REQUEST",
@@ -242,7 +284,7 @@ export const teamFlexRouter = router({
       }
 
       // ── Validate items and calculate pricing (server-side only) ─────────────
-      const totalLicences = input.items.reduce((sum, item) => sum + item.quantity, 0);
+      const totalLicences = normalizedItems.reduce((sum, item) => sum + item.quantity, 0);
       const discountRate = getTeamFlexVolumeDiscount(totalLicences);
 
       const orderItems: Array<{
@@ -257,7 +299,7 @@ export const teamFlexRouter = router({
         lineTotalCents: number;
       }> = [];
 
-      for (const item of input.items) {
+      for (const item of normalizedItems) {
         if (!isValidFlexTerm(item.termMonths)) {
           throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Only 3 or 6 months.` });
         }
@@ -402,10 +444,13 @@ export const teamFlexRouter = router({
 
       const results = await Promise.all(
         licences.map(async (lic) => {
+          const canonicalCourse = resolveCourseKey(lic.courseKey);
+          const progressExamType = canonicalCourse?.questionBankKey ?? lic.courseKey;
+          const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
           if (!lic.operatorUserId || lic.status === "invited") {
             return {
               licenceId: lic.id,
-              courseKey: lic.courseKey,
+              courseKey: displayCourseKey,
               termMonths: lic.termMonths,
               status: lic.status,
               operatorEmail: lic.invitedEmail,
@@ -431,7 +476,7 @@ export const teamFlexRouter = router({
             .from(questionAttempts)
             .where(and(
               eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, lic.courseKey),
+              eq(questionAttempts.examType, progressExamType),
             ));
 
           const [recentStats] = await db
@@ -441,7 +486,7 @@ export const teamFlexRouter = router({
             .from(questionAttempts)
             .where(and(
               eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, lic.courseKey),
+              eq(questionAttempts.examType, progressExamType),
               gte(questionAttempts.createdAt, thirtyDaysAgo),
             ));
 
@@ -452,7 +497,7 @@ export const teamFlexRouter = router({
             .from(questionAttempts)
             .where(and(
               eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, lic.courseKey),
+              eq(questionAttempts.examType, progressExamType),
               gte(questionAttempts.createdAt, fourteenDaysAgo),
             ));
 
@@ -474,7 +519,7 @@ export const teamFlexRouter = router({
 
           return {
             licenceId: lic.id,
-            courseKey: lic.courseKey,
+            courseKey: displayCourseKey,
             termMonths: lic.termMonths,
             status: lic.status,
             operatorEmail: lic.invitedEmail,
