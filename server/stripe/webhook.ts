@@ -600,6 +600,29 @@ export function registerStripeWebhook(app: Express) {
         }
       }
 
+      // ── Checkout session expired ─────────────────────────────────────────────
+      if (event.type === "checkout.session.expired") {
+        const session = event.data.object as any;
+        const flexOrderId = session.metadata?.teamFlexOrderId;
+        if (flexOrderId) {
+          const { handleFlexCheckoutExpired } = await import("../teams/fulfilFlexOrder");
+          await handleFlexCheckoutExpired(Number(flexOrderId));
+          console.log(`[Stripe Webhook] Flex checkout expired: order #${flexOrderId}`);
+        }
+      }
+
+      // ── Async payment failed ─────────────────────────────────────────────────
+      if (event.type === "checkout.session.async_payment_failed") {
+        const session = event.data.object as any;
+        const flexOrderId = session.metadata?.teamFlexOrderId;
+        if (flexOrderId) {
+          const { handleFlexPaymentFailed } = await import("../teams/fulfilFlexOrder");
+          await handleFlexPaymentFailed(Number(flexOrderId));
+          console.log(`[Stripe Webhook] Flex async payment failed: order #${flexOrderId}`);
+        }
+      }
+
+
       res.json({ received: true });
     }
   );

@@ -9,6 +9,7 @@ import {
   type SubscriptionProvince,
 } from "../stripe/subscriptionProducts";
 import { ENV } from "./env";
+import { resolveTeamAccess } from "../teams/resolveTeamAccess";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -326,5 +327,15 @@ export async function resolveAccess(
   if (user.role === "admin") return { hasAccess: true, isOwner: false };
 
   const entitlements = await resolveEntitlementsByEmail(user.email);
-  return { hasAccess: entitlements.unlockedExamTypes.includes(examType), isOwner: false };
+  if (entitlements.unlockedExamTypes.includes(examType)) {
+    return { hasAccess: true, isOwner: false };
+  }
+  // Check Flex licence grants (by userId)
+  try {
+    const flexGrant = await resolveTeamAccess(user.id, user.email ?? "", examType);
+    if (flexGrant.hasAccess) return { hasAccess: true, isOwner: false };
+  } catch (e) {
+    // Flex check failure should not block Annual/individual access
+  }
+  return { hasAccess: false, isOwner: false };
 }

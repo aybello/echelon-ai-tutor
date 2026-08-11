@@ -244,6 +244,7 @@ export async function activateFlexLicence(
     .set({
       status: "active",
       activatedAt: now,
+        startsAt: now,
       accessEndsAt,
       originalAccessEndsAt: accessEndsAt,
     })
