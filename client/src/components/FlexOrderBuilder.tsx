@@ -59,13 +59,13 @@ const PRICES: Record<string, Record<string, { three: number; six: number }>> = {
     class1: { three: 7900, six: 9900 },
     class2: { three: 11900, six: 14900 },
     class3: { three: 19900, six: 24900 },
-    class4: { three: 29900, six: 34900 },
+    class4: { three: 23900, six: 29900 },
   },
   western: {
     class1: { three: 11900, six: 14900 },
-    class2: { three: 14900, six: 19900 },
+    class2: { three: 15900, six: 19900 },
     class3: { three: 19900, six: 24900 },
-    class4: { three: 29900, six: 34900 },
+    class4: { three: 23900, six: 29900 },
   },
 };
 
