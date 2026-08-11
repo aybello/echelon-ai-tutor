@@ -225,14 +225,13 @@ export const quizRouter = router({
     }),
 
   /**
-   * getModuleOverviews — fetch module overview study content for a bank.
+   * getModuleOverviews — fetch public module overview content for a bank.
+   * Prospective learners use this curriculum-level content to evaluate a course;
+   * questions, explanations, exams, progress, and tutoring remain access-gated.
    */
   getModuleOverviews: publicProcedure
-    .input(z.object({ bankKey: z.string().min(1).max(64), accessToken: z.string().optional() }))
-    .query(async ({ input, ctx }) => {
-      const examType = bankKeyToExamType(input.bankKey);
-      const hasAccess = await resolveAccessForRequest(ctx, examType, { accessToken: input.accessToken });
-      if (!hasAccess) throw new TRPCError({ code: "FORBIDDEN", message: "Purchase access to view module study overviews." });
+    .input(z.object({ bankKey: z.string().min(1).max(64) }))
+    .query(async ({ input }) => {
       const db = await getDb();
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
