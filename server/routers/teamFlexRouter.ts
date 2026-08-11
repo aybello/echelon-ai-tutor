@@ -243,6 +243,7 @@ export const teamFlexRouter = router({
   createOrder: publicProcedure
     .input(z.object({
       managerEmail: z.string().email().optional(),
+      billingEmail: z.string().email().optional(),
       province: z.enum(["ontario", "western"]),
       items: z.array(z.object({
         courseKey: z.string().min(1),
@@ -411,7 +412,7 @@ export const teamFlexRouter = router({
         payment_method_types: ["card"],
         mode: "payment",
         line_items: stripeLineItems as any,
-        customer_email: managerEmail,
+        customer_email: input.billingEmail || managerEmail,
         metadata: {
           type: "team_flex",
           teamFlexOrderId: String(orderId),
