@@ -1463,7 +1463,7 @@ export default function Landing() {
           .landing-teams-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .landing-course-section { padding: 48px 16px !important; }
           .landing-nav-subtitle { display: none !important; }
-          .landing-hero-section { padding: 40px 16px 32px !important; }
+          .landing-hero-section { padding: 28px 16px 30px !important; }
           .landing-hero-section h1 { font-size: clamp(24px, 7vw, 40px) !important; }
           .landing-hero-section p { font-size: 14px !important; }
           .landing-province-banner { padding: 10px 12px !important; }
@@ -1870,7 +1870,7 @@ export default function Landing() {
       {/* ── Hero ── */}
       <section className="landing-hero-section" style={{
         background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
-        padding: "80px 24px 100px",
+        padding: "40px 24px 46px",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -1884,49 +1884,17 @@ export default function Landing() {
         }} />
 
         <div style={{ position: "relative", maxWidth: 800, margin: "0 auto" }}>
-          {/* Hero logo mark — floats down */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}
-          >
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
-              alt="Echelon Institute"
-              width={126}
-              height={120}
-              style={{ height: 120, width: 126, filter: "brightness(0) invert(1)" }}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
-              borderRadius: 20, padding: "6px 16px", marginBottom: 24,
-              border: "1px solid rgba(255,255,255,0.15)",
-            }}
-          >
-            <span style={{ fontSize: 12 }}>🇨🇦</span>
-            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
-              Built for Canadian Water & Wastewater Operators
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             style={{
-              fontSize: "clamp(28px, 5vw, 56px)",
+              fontSize: "clamp(28px, 4.4vw, 50px)",
               fontWeight: 800,
               color: "#FFFFFF",
               lineHeight: 1.15,
               letterSpacing: "-0.03em",
-              margin: "0 0 20px 0",
+              margin: "0 0 12px 0",
             }}
           >
             Pass Your Operator Exam.<br />
@@ -1938,56 +1906,42 @@ export default function Landing() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.55 }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.2 }}
             style={{
-              fontSize: "clamp(14px, 2vw, 18px)",
+              fontSize: "clamp(14px, 1.6vw, 17px)",
               color: "rgba(255,255,255,0.75)",
-              lineHeight: 1.7,
-              maxWidth: 600,
-              margin: "0 auto 36px",
+              lineHeight: 1.55,
+              maxWidth: 620,
+              margin: "0 auto 22px",
             }}
           >
-            Canada's AI-powered exam prep platform for water and wastewater operators.
-            Adaptive practice questions, module study notes, flashcards per course, interactive process guides, and an AI tutor available 24/7.
+            Practice questions, timed mocks, study notes, and AI-powered explanations for Canadian water and wastewater certification.
           </motion.p>
 
           {/* Hero CTAs — always Ontario-first */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
             className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             {/* Primary CTA: Find My Course */}
-            <Link href="#course-finder" style={{ width: "100%" }}>
+            <Link href="#course-finder">
               <button className="btn-pulse" style={{
-                padding: "14px 32px", borderRadius: 12,
+                padding: "13px 30px", borderRadius: 10,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
                 color: "#fff", border: "none", fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
-                width: "100%",
               }}>
                 Find My Course →
-              </button>
-            </Link>
-            {/* Secondary CTA: Free Practice */}
-            <Link href="/quiz" style={{ width: "100%" }}>
-              <button style={{
-                padding: "14px 32px", borderRadius: 12,
-                background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
-                color: "#fff", border: "1px solid rgba(255,255,255,0.2)",
-                fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                width: "100%",
-              }}>
-                {isUS ? "Try Free Practice" : "Try Free OIT Practice"}
               </button>
             </Link>
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.9 }}
-            style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
+            transition={{ duration: 0.4, delay: 0.45 }}
+            style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
           >
             🎁 First 15 questions free on every course — no account or credit card needed
           </motion.p>

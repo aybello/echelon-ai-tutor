@@ -1264,3 +1264,8 @@
 - [x] Audit and simplify the pricing page into individual and employer buying paths
 - [x] Use progressive disclosure so a buyer sees only the pricing relevant to their situation
 - [x] Verify pricing accuracy, responsive layout, deployment, GitHub sync, and context record
+
+## Homepage Hero Compression
+- [x] Remove nonessential hero elements and reduce vertical space before course selection
+- [x] Preserve one clear primary course-finding CTA with concise supporting copy
+- [ ] Validate desktop/mobile layout, deploy, push, and record the updated design decision
