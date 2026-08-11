@@ -1119,7 +1119,11 @@ export default function Pricing() {
   // Do NOT sync selectedProvince from globalProvince on mount or change.
   // /pricing defaults to Ontario; only ?tab=western or explicit user action changes it.
 
-  const [showIndividual, setShowIndividual] = useState(false);
+  const [showIndividual, setShowIndividual] = useState(true);
+  const [buyerType, setBuyerType] = useState<"individual" | "team">("individual");
+  const [individualModel, setIndividualModel] = useState<"course" | "allAccess" | null>(null);
+  const [selectedIndividualKey, setSelectedIndividualKey] = useState("");
+  const [selectedAnnualTier, setSelectedAnnualTier] = useState<SubscriptionTier | "">("");
 
   // Active subscriptions — used to show "Your Current Plan" badge
   // Works for both OAuth users (isAuthenticated) and verified email-session users (OTP login)
@@ -1137,6 +1141,12 @@ export default function Pricing() {
   const activePlanKeys = new Set(
     activeSubs.map(s => `${s.tier}:${s.province}`)
   );
+  const relevantIndividualProducts = INDIVIDUAL.filter(product =>
+    product.available && (isWpi ? product.key.startsWith("wpi-") : !product.key.startsWith("wpi-"))
+  );
+  const selectedIndividualProduct = relevantIndividualProducts.find(product => product.key === selectedIndividualKey);
+  const currentAnnualTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
+  const selectedAnnualSubscription = currentAnnualTiers.find(tier => tier.tier === selectedAnnualTier);
 
   return (
     <div className="pricing-page">
@@ -1149,7 +1159,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Annual subscription — cancel renewal anytime. Access continues through paid term. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your pass costs less than one day's pay.</p>
+        <p>Choose a focused Course Pass for one known exam or annual all-access for broader study. Every pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1198,8 +1208,75 @@ export default function Pricing() {
       {/* ── Content ── */}
       <div className="pricing-content">
 
+        {/* ── Buyer-led pricing decision ── */}
+        <section style={{ maxWidth: 860, margin: "0 auto 40px" }} aria-labelledby="pricing-path-heading">
+          <div style={{ textAlign: "center", marginBottom: 18 }}>
+            <p style={{ margin: 0, fontSize: 12, color: "#64748B", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" }}>Step 1</p>
+            <h2 id="pricing-path-heading" style={{ margin: "6px 0 0", color: "#0F172A", fontSize: 26, fontWeight: 900 }}>Who is buying access?</h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
+            <button
+              type="button"
+              onClick={() => setBuyerType("individual")}
+              style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "individual" ? "linear-gradient(135deg, #EFF6FF, #ECFEFF)" : "#fff", border: buyerType === "individual" ? "2px solid #2563EB" : "1.5px solid #E2E8F0", boxShadow: buyerType === "individual" ? "0 10px 24px rgba(37,99,235,0.12)" : "none" }}
+            >
+              <div style={{ fontSize: 25, marginBottom: 10 }}>👤</div>
+              <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For myself</div>
+              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Choose a focused Course Pass for one exam or broader all-access study.</p>
+              <div style={{ marginTop: 12, color: "#2563EB", fontSize: 13, fontWeight: 800 }}>Choose individual access →</div>
+            </button>
+            <button
+              type="button"
+              onClick={() => setBuyerType("team")}
+              style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "team" ? "linear-gradient(135deg, #F0FDFA, #ECFEFF)" : "#fff", border: buyerType === "team" ? "2px solid #0D9488" : "1.5px solid #E2E8F0", boxShadow: buyerType === "team" ? "0 10px 24px rgba(13,148,136,0.12)" : "none" }}
+            >
+              <div style={{ fontSize: 25, marginBottom: 10 }}>🏢</div>
+              <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For my team</div>
+              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Buy targeted Course Passes or an annual training plan for operators.</p>
+              <div style={{ marginTop: 12, color: "#0D9488", fontSize: 13, fontWeight: 800 }}>Choose team access →</div>
+            </button>
+          </div>
+
+          {buyerType === "individual" && (
+            <div style={{ marginTop: 20, padding: "22px", background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 16 }}>
+              <p style={{ margin: 0, fontSize: 12, color: "#64748B", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" }}>Step 2</p>
+              <h3 style={{ margin: "6px 0 14px", color: "#0F172A", fontSize: 20, fontWeight: 850 }}>What do you need to prepare for?</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12 }}>
+                <button type="button" onClick={() => setIndividualModel("course")} style={{ cursor: "pointer", fontFamily: "inherit", textAlign: "left", padding: 18, borderRadius: 12, background: individualModel === "course" ? "#EFF6FF" : "#fff", border: individualModel === "course" ? "2px solid #2563EB" : "1px solid #E2E8F0" }}>
+                  <div style={{ fontWeight: 800, color: "#0F172A" }}>One known exam</div>
+                  <div style={{ marginTop: 5, color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Start with a Course Pass for one selected certification course.</div>
+                  <div style={{ marginTop: 10, color: "#2563EB", fontSize: 13, fontWeight: 800 }}>View Course Passes →</div>
+                </button>
+                <button type="button" onClick={() => setIndividualModel("allAccess")} style={{ cursor: "pointer", fontFamily: "inherit", textAlign: "left", padding: 18, borderRadius: 12, background: individualModel === "allAccess" ? "#F5F3FF" : "#fff", border: individualModel === "allAccess" ? "2px solid #7C3AED" : "1px solid #E2E8F0" }}>
+                  <div style={{ fontWeight: 800, color: "#0F172A" }}>Several classes or streams</div>
+                  <div style={{ marginTop: 5, color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Compare annual all-access subscriptions and unlock broader study.</div>
+                  <div style={{ marginTop: 10, color: "#7C3AED", fontSize: 13, fontWeight: 800 }}>View all-access options →</div>
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {buyerType === "individual" && individualModel === null && (
+          <p style={{ margin: "-16px auto 40px", maxWidth: 620, textAlign: "center", color: "#64748B", fontSize: 14 }}>
+            Select one study path above to see the pricing and checkout options that apply to you.
+          </p>
+        )}
+
+        {buyerType === "team" && (
+          <section style={{ maxWidth: 860, margin: "0 auto 52px", padding: 28, borderRadius: 18, background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", color: "#fff", textAlign: "center" }}>
+            <div style={{ fontSize: 30, marginBottom: 10 }}>🏢</div>
+            <h2 style={{ fontSize: 25, margin: 0, fontWeight: 900 }}>Training a team of operators?</h2>
+            <p style={{ maxWidth: 620, margin: "12px auto 20px", color: "#CBD5E1", fontSize: 14, lineHeight: 1.6 }}>Choose targeted Course Passes from CA$39 per operator/course, or annual access from CA$449 per operator. Manager access, reporting, and automatic volume discounts are included.</p>
+            <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
+              {["1–9: standard pricing", "10–24: 10% off", "25–49: 15% off", "50+: 20% off"].map((text) => <span key={text} style={{ padding: "7px 10px", borderRadius: 20, background: "rgba(255,255,255,0.10)", color: "#E2E8F0", fontSize: 12, fontWeight: 700 }}>{text}</span>)}
+            </div>
+            <Link href="/teams"><button style={{ cursor: "pointer", fontFamily: "inherit", border: "none", borderRadius: 10, padding: "13px 20px", background: "linear-gradient(135deg, #2563EB, #14B8A6)", color: "#fff", fontSize: 14, fontWeight: 800 }}>Build a Team Plan →</button></Link>
+          </section>
+        )}
+
         {/* ── Fix 13: Annual vs One-Time Comparison Table ── */}
-        <div style={{ maxWidth: 760, margin: "0 auto 48px", padding: "0 4px" }}>
+        <div style={{ display: buyerType === "individual" && individualModel === "allAccess" ? "block" : "none", maxWidth: 760, margin: "0 auto 48px", padding: "0 4px" }}>
           <p style={{ textAlign: "center", fontSize: 15, color: "#475569", marginBottom: 20, lineHeight: 1.6 }}>
             Choose annual all-access for multiple courses, or buy one course with a one-time payment.
           </p>
@@ -1231,7 +1308,7 @@ export default function Pricing() {
           </div>
         </div>
         {/* ── Annual Subscription Section ── */}
-        <div style={{ marginBottom: 56 }}>
+        <div style={{ display: buyerType === "individual" && individualModel === "allAccess" ? "block" : "none", marginBottom: 56 }}>
           <div className="section-header">
             <div className="section-bar" style={{ background: "linear-gradient(180deg, #7C3AED, #4F46E5)" }} />
             <h2>Annual All-Access Subscriptions</h2>
@@ -1269,10 +1346,40 @@ export default function Pricing() {
             </button>
           </div>
 
+          <div style={{ marginBottom: 24 }}>
+            <label htmlFor="annual-tier-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>Choose the level of all-access you need</label>
+            <select
+              id="annual-tier-picker"
+              value={selectedAnnualTier}
+              onChange={event => setSelectedAnnualTier(event.target.value as SubscriptionTier)}
+              style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #C4B5FD", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
+            >
+              <option value="">Choose an annual option…</option>
+              {currentAnnualTiers.map(tier => <option key={tier.tier} value={tier.tier}>{tier.label} All-Access — {tier.price}/year</option>)}
+            </select>
+          </div>
+
+          {selectedAnnualSubscription ? (
+            <div style={{ maxWidth: 520, margin: "0 auto 12px", background: selectedAnnualSubscription.highlight ? "linear-gradient(135deg, #F5F3FF, #EDE9FE)" : "#fff", border: selectedAnnualSubscription.highlight ? "2px solid #A78BFA" : "1.5px solid #E2E8F0", borderRadius: 16, padding: 24, textAlign: "left" }}>
+              {selectedAnnualSubscription.badge && <div style={{ display: "inline-block", marginBottom: 10, padding: "4px 10px", borderRadius: 20, color: "#fff", background: "#7C3AED", fontSize: 10, fontWeight: 800, letterSpacing: "0.05em" }}>{selectedAnnualSubscription.badge}</div>}
+              <div style={{ fontSize: 12, color: "#7C3AED", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>{selectedAnnualSubscription.label} All-Access</div>
+              <div style={{ marginTop: 5, fontSize: 30, color: "#0F172A", fontWeight: 900 }}>{selectedAnnualSubscription.price}<span style={{ color: "#64748B", fontSize: 14, fontWeight: 600 }}>/year</span></div>
+              <p style={{ margin: "8px 0 14px", color: "#475569", fontSize: 14 }}>{selectedAnnualSubscription.tagline}</p>
+              <ul style={{ margin: "0 0 18px", paddingLeft: 18, color: "#334155", fontSize: 13, lineHeight: 1.8 }}>
+                <li>All included certification tracks for this level</li>
+                <li>Mock exams, flashcards, formulas, and AI Tutor</li>
+                <li>12 months of access; cancel renewal anytime</li>
+              </ul>
+              <SubscriptionCheckoutButton tier={selectedAnnualSubscription.tier} province={subProvince} label={`Subscribe — ${selectedAnnualSubscription.price}/year`} priceLabel={`${selectedAnnualSubscription.price}/year`} currency={isUS ? "usd" : "cad"} />
+            </div>
+          ) : (
+            <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>Choose an annual option above to see one clear price and checkout option.</div>
+          )}
+
           {(() => {
             const activeTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
             return (
-              <div className="pricing-sub-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
+              <div className="pricing-sub-grid" style={{ display: "none", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
                 {activeTiers.map(tier => {
                   const isActivePlan = activePlanKeys.has(`${tier.tier}:${subProvince}`);
                   return (
@@ -1356,26 +1463,45 @@ export default function Pricing() {
         </div>
 
         {/* ── Individual Practice Passes — collapsible ── */}
-        <div style={{ marginTop: 48, marginBottom: 24 }}>
-          <button
-            onClick={() => setShowIndividual(v => !v)}
-            style={{
-              display: "flex", alignItems: "center", gap: 10, background: "none",
-              border: "1.5px solid #E2E8F0", borderRadius: 10, padding: "12px 20px",
-              cursor: "pointer", fontFamily: "inherit", width: "100%", textAlign: "left",
-            }}
-          >
-            <span style={{ fontSize: 14, fontWeight: 700, color: "#334155", flex: 1 }}>
-              Prefer to buy just one course? View individual practice passes
-            </span>
-            <span style={{ fontSize: 18, color: "#64748B", transform: showIndividual ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
-          </button>
+        <div style={{ display: buyerType === "individual" && individualModel === "course" ? "block" : "none", marginTop: 24, marginBottom: 24 }}>
+          <div style={{ padding: "18px 20px", background: "#EFF6FF", border: "1.5px solid #BFDBFE", borderRadius: 12 }}>
+            <div style={{ fontSize: 17, fontWeight: 850, color: "#0F172A" }}>Choose your individual Course Pass</div>
+            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select only the course that matches your upcoming exam. One-time payment; access does not expire.</p>
+          </div>
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
-              <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 24px", lineHeight: 1.5 }}>
-                One-time payment — access never expires. No recurring charges.
-              </p>
+              <div style={{ margin: "20px 0 24px" }}>
+                <label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>Select your jurisdiction, stream, and certification level</label>
+                <select
+                  id="individual-course-picker"
+                  value={selectedIndividualKey}
+                  onChange={e => setSelectedIndividualKey(e.target.value)}
+                  style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
+                >
+                  <option value="">Choose your Course Pass…</option>
+                  {relevantIndividualProducts.map(product => (
+                    <option key={product.key} value={product.key}>{product.shortName} — CA${(product.priceCAD / 100).toFixed(0)}</option>
+                  ))}
+                </select>
+                <p style={{ fontSize: 12, color: "#64748B", margin: "8px 0 0" }}>Your selected pass includes practice questions, mock exams, flashcards, study resources, and the AI Tutor for that course.</p>
+              </div>
 
+              {selectedIndividualProduct ? (
+                <div className="product-grid-1" style={{ marginBottom: 24 }}>
+                  <ProductCard
+                    product={selectedIndividualProduct}
+                    isWpi={isWpi}
+                    wpiLabel={isWpi ? WPI_WATER_LABELS[selectedIndividualProduct.key] : undefined}
+                    isUS={isUS}
+                  />
+                </div>
+              ) : (
+                <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>
+                  Pick your course above to see one clear price and your checkout option.
+                </div>
+              )}
+
+              <div style={{ display: "none" }} aria-hidden="true">
         {/* Ontario header */}
         {!isWpi && (
           <div style={{ marginBottom: 32 }}>
@@ -1515,6 +1641,8 @@ export default function Pricing() {
           </div>
         )}
 
+              </div>
+
             </div>
           )}
         </div>
@@ -1522,6 +1650,7 @@ export default function Pricing() {
         {/* Trust section */}
         <div
           style={{
+            display: buyerType === "individual" ? "block" : "none",
             marginTop: 64,
             padding: "32px 20px",
             background: "#fff",
@@ -1534,7 +1663,7 @@ export default function Pricing() {
             Everything you need to pass — included in every subscription
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
-            Annual subscription — cancel renewal anytime. Access continues through paid term. Everything unlocked for your province.
+            Every Echelon pass includes the study tools you need. Annual access continues through its paid term if you cancel renewal.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             18,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
@@ -1574,11 +1703,11 @@ export default function Pricing() {
       {/* Teams / Utilities CTA */}
       <div
         style={{
+          display: buyerType === "individual" ? "flex" : "none",
           marginTop: 48,
           background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)",
           borderRadius: 20,
           padding: "40px 28px",
-          display: "flex",
           flexDirection: "column",
           alignItems: "center",
           textAlign: "center",

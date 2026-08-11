@@ -1254,3 +1254,13 @@
 - [x] Fix and verify the live 2025-to-2026 salary redirect; production now returns HTTP 301 to the 2026 article
 - [x] Validate, deploy, and verify blog routing, sitemap coverage, filters, official-source links, and the 2025-to-2026 salary redirect
 - [x] Record the blog release in the AI Context Hub
+
+## Pricing Guide 2026 Reconciliation
+- [ ] Review the approved 2026 pricing guide against deployed annual and Course Passes pricing
+- [ ] Correct any client/server pricing discrepancies and checkout metadata
+- [ ] Verify, deploy, push, and record the approved pricing reconciliation
+
+## Pricing Page Simplification
+- [x] Audit and simplify the pricing page into individual and employer buying paths
+- [x] Use progressive disclosure so a buyer sees only the pricing relevant to their situation
+- [x] Verify pricing accuracy and responsive layout; deployment, GitHub sync, and context record pending
