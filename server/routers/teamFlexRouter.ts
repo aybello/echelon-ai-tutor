@@ -15,8 +15,9 @@ import {
   teamFlexLicences,
   organizations,
   organizationMembers,
+  questionAttempts,
 } from "../../drizzle/schema";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql, gte } from "drizzle-orm";
 import {
   TEAM_PRICES_CAD,
   getCourseKeyPricingBand,
@@ -36,6 +37,7 @@ import {
   getFlexInvitation,
   listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
+import { computeReadiness } from "../_core/readiness";
 
 // ── Manager authorization helper ─────────────────────────────────────────────
 /** Verify the authenticated user is a manager of the specified org. */
@@ -374,4 +376,121 @@ export const teamFlexRouter = router({
 
       return { url: session.url, orderId };
     }),
+
+  // ─── Flex operator progress (manager view) ────────────────────────────────
+  getFlexProgress: publicProcedure
+    .input(z.object({ orgId: z.number().int() }))
+    .query(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      // Get all active/assigned licences for this org
+      const licences = await db
+        .select()
+        .from(teamFlexLicences)
+        .where(and(
+          eq(teamFlexLicences.organizationId, input.orgId),
+          sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited')`,
+        ));
+
+      if (licences.length === 0) return [];
+
+      // For each licence with an operatorUserId, fetch their study progress
+      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+      const fourteenDaysAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+
+      const results = await Promise.all(
+        licences.map(async (lic) => {
+          if (!lic.operatorUserId || lic.status === "invited") {
+            return {
+              licenceId: lic.id,
+              courseKey: lic.courseKey,
+              termMonths: lic.termMonths,
+              status: lic.status,
+              operatorEmail: lic.invitedEmail,
+              activatedAt: lic.activatedAt,
+              accessEndsAt: lic.accessEndsAt,
+              totalAttempts: 0,
+              correctAttempts: 0,
+              accuracy: 0,
+              readinessScore: 0,
+              lastActiveAt: null,
+              daysActive30: 0,
+            };
+          }
+
+          // Fetch attempts for this operator on this course
+          const [stats] = await db
+            .select({
+              total: sql<number>`COUNT(*)`,
+              correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+              distinctTopics: sql<number>`COUNT(DISTINCT ${questionAttempts.topic})`,
+              lastActive: sql<string>`MAX(${questionAttempts.createdAt})`,
+            })
+            .from(questionAttempts)
+            .where(and(
+              eq(questionAttempts.userId, lic.operatorUserId),
+              eq(questionAttempts.examType, lic.courseKey),
+            ));
+
+          const [recentStats] = await db
+            .select({
+              daysActive: sql<number>`COUNT(DISTINCT DATE(${questionAttempts.createdAt}))`,
+            })
+            .from(questionAttempts)
+            .where(and(
+              eq(questionAttempts.userId, lic.operatorUserId),
+              eq(questionAttempts.examType, lic.courseKey),
+              gte(questionAttempts.createdAt, thirtyDaysAgo),
+            ));
+
+          const [recentActivity] = await db
+            .select({
+              hasRecent: sql<number>`COUNT(*)`,
+            })
+            .from(questionAttempts)
+            .where(and(
+              eq(questionAttempts.userId, lic.operatorUserId),
+              eq(questionAttempts.examType, lic.courseKey),
+              gte(questionAttempts.createdAt, fourteenDaysAgo),
+            ));
+
+          const total = Number(stats?.total ?? 0);
+          const correct = Number(stats?.correct ?? 0);
+          const accuracy = total > 0 ? correct / total : 0;
+          const daysActive30 = Number(recentStats?.daysActive ?? 0);
+          const activeRecently = Number(recentActivity?.hasRecent ?? 0) > 0;
+
+          const readinessResult = computeReadiness({
+            accuracy,
+            totalAttempts: total,
+            mockAccuracy: 0, // Would need mock exam data — simplified for now
+            topicsAttempted: Number(stats?.distinctTopics ?? 0),
+            totalTopics: 15, // Approximate topics per course
+            activeDaysLast30: daysActive30,
+            activeRecently,
+          });
+
+          return {
+            licenceId: lic.id,
+            courseKey: lic.courseKey,
+            termMonths: lic.termMonths,
+            status: lic.status,
+            operatorEmail: lic.invitedEmail,
+            activatedAt: lic.activatedAt,
+            accessEndsAt: lic.accessEndsAt,
+            totalAttempts: total,
+            correctAttempts: correct,
+            accuracy: Math.round(accuracy * 100),
+            readinessScore: readinessResult.score,
+            lastActiveAt: stats?.lastActive ?? null,
+            daysActive30,
+          };
+        }),
+      );
+
+      return results;
+    }),
+
 });

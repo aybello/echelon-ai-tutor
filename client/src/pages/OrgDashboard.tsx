@@ -75,6 +75,7 @@ import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
 import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
 import { FlexLicencePanel } from "@/components/FlexLicencePanel";
+import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -979,6 +980,7 @@ export default function OrgDashboard() {
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
         {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
+        {overview.orgId && <FlexProgressDashboard orgId={overview.orgId} />}
 
         {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
 
