@@ -1263,4 +1263,4 @@
 ## Pricing Page Simplification
 - [x] Audit and simplify the pricing page into individual and employer buying paths
 - [x] Use progressive disclosure so a buyer sees only the pricing relevant to their situation
-- [x] Verify pricing accuracy and responsive layout; deployment, GitHub sync, and context record pending
+- [x] Verify pricing accuracy, responsive layout, deployment, GitHub sync, and context record
