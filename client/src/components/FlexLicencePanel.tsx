@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 
 interface FlexLicencePanelProps {
-  organizationId: number;
+  orgId: number;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -20,11 +20,11 @@ const STATUS_COLORS: Record<string, string> = {
   suspended: "bg-orange-100 text-orange-700",
 };
 
-export function FlexLicencePanel({ organizationId }: FlexLicencePanelProps) {
+export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
   const [inviteEmail, setInviteEmail] = useState<Record<number, string>>({});
   const [invitingId, setInvitingId] = useState<number | null>(null);
 
-  const licencesQuery = trpc.teamFlex.listLicences.useQuery({ organizationId });
+  const licencesQuery = trpc.teamFlex.listLicences.useQuery({ orgId });
   const inviteMutation = trpc.teamFlex.inviteLicence.useMutation({
     onSuccess: () => {
       toast.success("Invitation sent");
@@ -114,7 +114,7 @@ export function FlexLicencePanel({ organizationId }: FlexLicencePanelProps) {
                               onClick={() => inviteMutation.mutate({
                                 licenceId: lic.id,
                                 operatorEmail: inviteEmail[lic.id] ?? "",
-                                organizationId,
+                                orgId,
                               })}
                             >
                               Send
@@ -135,7 +135,7 @@ export function FlexLicencePanel({ organizationId }: FlexLicencePanelProps) {
                         size="sm"
                         variant="ghost"
                         className="h-7 text-xs text-red-600"
-                        onClick={() => cancelMutation.mutate({ licenceId: lic.id, organizationId })}
+                        onClick={() => cancelMutation.mutate({ licenceId: lic.id, orgId })}
                       >
                         Cancel Invite
                       </Button>

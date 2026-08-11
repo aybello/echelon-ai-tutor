@@ -54,9 +54,8 @@ const WESTERN_COURSES = [
 
 export function FlexOrderBuilder() {
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
-  const [orgName, setOrgName] = useState("");
-  const [managerEmail, setManagerEmail] = useState("");
-  const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
+  const [ setOrgName] = useState("");
+    const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
 
   const courses = province === "ontario" ? ONTARIO_COURSES : WESTERN_COURSES;
   const totalLicences = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -83,26 +82,16 @@ export function FlexOrderBuilder() {
   };
 
   const handleSubmit = () => {
-    if (!orgName.trim()) {
-      toast.error("Please enter your organization name");
-      return;
-    }
-    if (!managerEmail.trim() || !managerEmail.includes("@")) {
-      toast.error("Please enter a valid email address");
-      return;
-    }
+
     const validItems = items.filter(i => i.courseKey && i.quantity > 0);
     if (validItems.length === 0) {
       toast.error("Please add at least one course");
       return;
     }
     createOrder.mutate({
-      orgName: orgName.trim(),
       province,
-      managerEmail: managerEmail.trim(),
       items: validItems,
       overlapAcknowledged: false,
-      origin: window.location.origin,
     });
   };
 
@@ -125,27 +114,9 @@ export function FlexOrderBuilder() {
           </Select>
         </div>
 
-        {/* Org Name */}
-        <div className="space-y-1.5">
-          <Label className="text-gray-700 font-medium">Organization Name</Label>
-          <Input
-            value={orgName}
-            onChange={(e) => setOrgName(e.target.value)}
-            placeholder="e.g. City of Toronto Water Services"
-          />
-        </div>
+
 
         {/* Manager Email */}
-        <div className="space-y-1.5">
-          <Label className="text-gray-700 font-medium">Your Email</Label>
-          <Input
-            type="email"
-            value={managerEmail}
-            onChange={(e) => setManagerEmail(e.target.value)}
-            placeholder="manager@yourorg.ca"
-          />
-          <p className="text-xs text-gray-400">We'll send the receipt and licence management link to this address.</p>
-        </div>
 
         {/* Line Items */}
         <div className="space-y-3">

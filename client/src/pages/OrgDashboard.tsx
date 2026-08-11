@@ -978,7 +978,7 @@ export default function OrgDashboard() {
         </div>
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
-        {overview.orgId && <FlexLicencePanel organizationId={overview.orgId} />}
+        {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
 
         {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
 

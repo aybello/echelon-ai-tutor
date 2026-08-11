@@ -67,7 +67,7 @@ export function getCourseKeyPricingBand(courseKey: string): {
     const level = levelMatch ? parseInt(levelMatch[1]) : 1;
     return { examFamily: "western", pricingBand: `class${level}`, courseLevel: level };
   }
-  return { examFamily: "ontario", pricingBand: "class1", courseLevel: null };
+  throw new Error(`Unknown course key: ${courseKey}. Cannot determine pricing band.`);
 }
 
 export function getFlexListPrice(

@@ -1,13 +1,22 @@
 /**
- * Teams Flex Router
+ * Teams Flex Router — Production-hardened
  * All procedures gated behind FEATURE_TEAMS_FLEX env var.
+ * All manager procedures require authenticated session + verified org membership.
+ * All pricing is server-side only. No client-controlled redirects or prices.
  */
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { protectedProcedure, publicProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
+import { ENV } from "../_core/env";
 import { getDb } from "../db";
-import { teamFlexOrders, teamFlexOrderItems, teamFlexLicences, organizations } from "../../drizzle/schema";
+import {
+  teamFlexOrders,
+  teamFlexOrderItems,
+  teamFlexLicences,
+  organizations,
+  organizationMembers,
+} from "../../drizzle/schema";
 import { eq, and } from "drizzle-orm";
 import {
   TEAM_PRICES_CAD,
@@ -26,162 +35,198 @@ import {
   changeFlexLicenceCourse,
 } from "../teams/flexLicenceService";
 
+// ── Feature flag ─────────────────────────────────────────────────────────────
 function isFlexEnabled(): boolean {
   return process.env.FEATURE_TEAMS_FLEX === "true";
 }
-
 function requireFlex() {
   if (!isFlexEnabled()) {
     throw new TRPCError({ code: "NOT_FOUND", message: "Teams Flex is not available yet." });
   }
 }
 
+// ── Manager authorization helper ─────────────────────────────────────────────
+/** Verify the authenticated user is a manager of the specified org. */
+async function requireManagerOfOrg(
+  ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
+  orgId: number,
+): Promise<{ managerEmail: string }> {
+  const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+  if (!email) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
+  }
+  const db = await getDb();
+  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+  const normalised = email.toLowerCase().trim();
+  const rows = await db
+    .select({ orgId: organizationMembers.orgId })
+    .from(organizationMembers)
+    .where(
+      and(
+        eq(organizationMembers.orgId, orgId),
+        eq(organizationMembers.email, normalised),
+        eq(organizationMembers.role, "manager"),
+        eq(organizationMembers.status, "assigned"),
+      ),
+    )
+    .limit(1);
+
+  if (rows.length === 0) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." });
+  }
+  return { managerEmail: normalised };
+}
+
+/** Resolve the authenticated user's managed org. */
+async function resolveManagerOrg(
+  ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
+): Promise<{ orgId: number; managerEmail: string }> {
+  const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+  if (!email) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
+  }
+  const db = await getDb();
+  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+  const normalised = email.toLowerCase().trim();
+  const rows = await db
+    .select({ orgId: organizationMembers.orgId })
+    .from(organizationMembers)
+    .where(
+      and(
+        eq(organizationMembers.email, normalised),
+        eq(organizationMembers.role, "manager"),
+        eq(organizationMembers.status, "assigned"),
+      ),
+    )
+    .limit(1);
+
+  if (rows.length === 0) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "No manager account found for this email." });
+  }
+  return { orgId: rows[0].orgId, managerEmail: normalised };
+}
+
+// ── Router ───────────────────────────────────────────────────────────────────
 export const teamFlexRouter = router({
-  // ─── Pricing info (public) ─────────────────────────────────────────────────
+  // ─── Pricing info (public, no auth needed) ─────────────────────────────────
   getFlexPricing: publicProcedure
     .input(z.object({ province: z.enum(["ontario", "western"]) }))
     .query(({ input }) => {
       requireFlex();
       const prices = TEAM_PRICES_CAD[input.province];
-      return { prices, volumeTiers: [
-        { min: 1, max: 9, rate: 0 },
-        { min: 10, max: 24, rate: 0.10 },
-        { min: 25, max: 49, rate: 0.15 },
-        { min: 50, max: null, rate: 0.20 },
-      ]};
+      return {
+        prices,
+        volumeTiers: [
+          { min: 1, max: 9, rate: 0 },
+          { min: 10, max: 24, rate: 0.10 },
+          { min: 25, max: 49, rate: 0.15 },
+          { min: 50, max: null, rate: 0.20 },
+        ],
+      };
     }),
 
-  // ─── List licences for an org ──────────────────────────────────────────────
+  // ─── List licences for manager's org ───────────────────────────────────────
   listLicences: protectedProcedure
-    .input(z.object({ organizationId: z.number().int() }))
+    .input(z.object({ orgId: z.number().int() }))
     .query(async ({ ctx, input }) => {
       requireFlex();
+      await requireManagerOfOrg(ctx, input.orgId);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const licences = await db
         .select()
         .from(teamFlexLicences)
-        .where(eq(teamFlexLicences.organizationId, input.organizationId));
+        .where(eq(teamFlexLicences.organizationId, input.orgId));
       return licences;
     }),
 
   // ─── Invite operator to a licence ──────────────────────────────────────────
   inviteLicence: protectedProcedure
-    .input(z.object({
-      licenceId: z.number().int(),
-      operatorEmail: z.string().email(),
-      organizationId: z.number().int(),
-    }))
+    .input(z.object({ licenceId: z.number().int(), operatorEmail: z.string().email(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       requireFlex();
-      return inviteOperatorToLicence(input.licenceId, input.operatorEmail, ctx.user.id, input.organizationId);
+      await requireManagerOfOrg(ctx, input.orgId);
+      return inviteOperatorToLicence(input.licenceId, input.operatorEmail, ctx.user.id, input.orgId);
     }),
 
   // ─── Cancel invitation ─────────────────────────────────────────────────────
   cancelInvitation: protectedProcedure
-    .input(z.object({
-      licenceId: z.number().int(),
-      organizationId: z.number().int(),
-    }))
+    .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       requireFlex();
-      return cancelFlexInvitation(input.licenceId, input.organizationId);
+      await requireManagerOfOrg(ctx, input.orgId);
+      return cancelFlexInvitation(input.licenceId, input.orgId);
     }),
 
   // ─── Assign licence directly ───────────────────────────────────────────────
   assignLicence: protectedProcedure
-    .input(z.object({
-      licenceId: z.number().int(),
-      operatorUserId: z.number().int(),
-      organizationId: z.number().int(),
-    }))
+    .input(z.object({ licenceId: z.number().int(), operatorUserId: z.number().int(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       requireFlex();
-      return assignFlexLicence(input.licenceId, input.operatorUserId, input.organizationId);
+      await requireManagerOfOrg(ctx, input.orgId);
+      return assignFlexLicence(input.licenceId, input.operatorUserId, input.orgId);
     }),
 
-  // ─── Activate licence (operator) ──────────────────────────────────────────
+  // ─── Activate licence (operator action) ────────────────────────────────────
   activateLicence: protectedProcedure
     .input(z.object({ licenceId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       requireFlex();
+      if (!ctx.user) throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
       return activateFlexLicence(input.licenceId, ctx.user.id);
     }),
 
-  // ─── Change course (same-band, pre-activation) ────────────────────────────
+  // ─── Change course (pre-activation, same band) ─────────────────────────────
   changeCourse: protectedProcedure
-    .input(z.object({
-      licenceId: z.number().int(),
-      newCourseKey: z.string().min(1),
-      organizationId: z.number().int(),
-    }))
+    .input(z.object({ licenceId: z.number().int(), newCourseKey: z.string().min(1), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
       requireFlex();
-      return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.organizationId);
+      await requireManagerOfOrg(ctx, input.orgId);
+      return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.orgId);
     }),
 
-  createOrder: publicProcedure
+  // ─── Create order (AUTHENTICATED MANAGER ONLY) ─────────────────────────────
+  createOrder: protectedProcedure
     .input(z.object({
-      organizationId: z.number().int().optional(),
-      orgName: z.string().min(2).max(200),
       province: z.enum(["ontario", "western"]),
-      managerEmail: z.string().email(),
       items: z.array(z.object({
         courseKey: z.string().min(1),
         termMonths: z.union([z.literal(3), z.literal(6)]),
         quantity: z.number().int().min(1).max(100),
       })).min(1).max(20),
       overlapAcknowledged: z.boolean().default(false),
-      origin: z.string().url(),
     }))
     .mutation(async ({ ctx, input }) => {
       requireFlex();
 
+      // ── Auth: derive identity from session ──────────────────────────────────
+      if (!ctx.user) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in required to purchase Course Passes." });
+      }
+      const purchaserUserId = ctx.user.id;
+
+      // ── Resolve manager's org ───────────────────────────────────────────────
+      const { orgId, managerEmail } = await resolveManagerOrg(ctx);
+
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-      const purchaserUserId = ctx.user?.id ?? 0;
-      const managerEmail = input.managerEmail.toLowerCase().trim();
 
-      if (!managerEmail) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your email address." });
+      // ── Check Annual overlap ────────────────────────────────────────────────
+      const [org] = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1);
+      if (org?.tier && org?.province) {
+        const annualCourses = allowedCourseKeysForOrg(org.tier, org.province);
+        const overlapping = input.items.filter(item => annualCourses.includes(item.courseKey));
+        if (overlapping.length > 0 && !input.overlapAcknowledged) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: `Overlap detected: ${overlapping.map(i => i.courseKey).join(", ")} are already covered by your Annual plan. Acknowledge to proceed.`,
+          });
+        }
       }
 
-      // Resolve or create organization
-      let orgId: number;
-      if (input.organizationId) {
-        const [org] = await db.select().from(organizations).where(eq(organizations.id, input.organizationId)).limit(1);
-        if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found." });
-        if (org.managerEmail !== managerEmail) {
-          throw new TRPCError({ code: "FORBIDDEN", message: "You are not the manager of this organization." });
-        }
-        orgId = org.id;
-
-        // Check for overlap with Annual entitlement
-        if (org.tier && org.province) {
-          const annualCourses = allowedCourseKeysForOrg(org.tier, org.province);
-          const overlapping = input.items.filter(item => annualCourses.includes(item.courseKey));
-          if (overlapping.length > 0 && !input.overlapAcknowledged) {
-            throw new TRPCError({
-              code: "BAD_REQUEST",
-              message: `Overlap detected: ${overlapping.map(i => i.courseKey).join(", ")} are already covered by your Annual plan. Set overlapAcknowledged to proceed.`,
-            });
-          }
-        }
-      } else {
-        const result = await db.insert(organizations).values({
-          name: input.orgName,
-          province: input.province,
-          tier: "all-access",
-          seatsTotal: 0,
-          managerEmail,
-          termEnd: new Date(),
-          billingType: "stripe",
-          status: "active",
-        });
-        orgId = result[0].insertId;
-      }
-
-      // Validate items and calculate pricing
+      // ── Validate items and calculate pricing (server-side only) ─────────────
       const totalLicences = input.items.reduce((sum, item) => sum + item.quantity, 0);
       const discountRate = getTeamFlexVolumeDiscount(totalLicences);
 
@@ -199,11 +244,22 @@ export const teamFlexRouter = router({
 
       for (const item of input.items) {
         if (!isValidFlexTerm(item.termMonths)) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Only 3 or 6 months available.` });
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Only 3 or 6 months.` });
         }
 
-        const { examFamily, pricingBand, courseLevel } = getCourseKeyPricingBand(item.courseKey);
+        const bandResult = getCourseKeyPricingBand(item.courseKey);
+        // Reject unknown courses — do NOT silently default to Ontario Class 1
+        if (bandResult.pricingBand === "class1" && bandResult.courseLevel === null && item.courseKey !== "oit" && item.courseKey !== "oit-ww" && item.courseKey !== "wqa") {
+          // The fallback case in getCourseKeyPricingBand returns class1/null for unknown keys
+          // Verify the course actually exists in the pricing table
+          const familyPrices = TEAM_PRICES_CAD[bandResult.examFamily];
+          if (!familyPrices || !familyPrices[bandResult.pricingBand]) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown course: ${item.courseKey}` });
+          }
+        }
+        const { examFamily, pricingBand, courseLevel } = bandResult;
 
+        // Validate province/family match
         if (input.province === "ontario" && examFamily !== "ontario") {
           throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Ontario.` });
         }
@@ -233,7 +289,7 @@ export const teamFlexRouter = router({
         return sum + (item.listUnitPriceCents * item.quantity - item.lineTotalCents);
       }, 0);
 
-      // Insert pending order
+      // ── Insert pending order ────────────────────────────────────────────────
       const [orderResult] = await db.insert(teamFlexOrders).values({
         organizationId: orgId,
         purchaserUserId,
@@ -243,15 +299,15 @@ export const teamFlexRouter = router({
         discountRate: String(discountRate),
         discountCents,
         totalBeforeTaxCents: subtotalCents,
-        taxCents: 0,
-        totalPaidCents: subtotalCents,
+        taxCents: null, // Updated from Stripe after payment
+        totalPaidCents: null, // Updated from Stripe after payment
         currency: "cad",
         status: "pending",
         overlapAcknowledged: input.overlapAcknowledged,
       });
       const orderId = orderResult.insertId;
 
-      // Insert order items
+      // ── Insert order items ──────────────────────────────────────────────────
       for (const item of orderItems) {
         await db.insert(teamFlexOrderItems).values({
           orderId,
@@ -268,7 +324,7 @@ export const teamFlexRouter = router({
         });
       }
 
-      // Build Stripe line items
+      // ── Build Stripe Checkout (server-owned URLs, no promotion codes) ───────
       const stripeLineItems = orderItems.map(item => ({
         price_data: {
           currency: "cad",
@@ -281,7 +337,7 @@ export const teamFlexRouter = router({
         quantity: item.quantity,
       }));
 
-      // Create Stripe Checkout session (payment mode, not subscription)
+      const baseUrl = ENV.appBaseUrl;
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         mode: "payment",
@@ -292,12 +348,12 @@ export const teamFlexRouter = router({
           teamFlexOrderId: String(orderId),
         },
         phone_number_collection: { enabled: true },
-        allow_promotion_codes: true,
-        success_url: `${input.origin}/team?flex_order_id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${input.origin}/teams`,
+        // No allow_promotion_codes — removed per security directive
+        success_url: `${baseUrl}/team?flex_order_id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${baseUrl}/teams`,
       });
 
-      // Update order with Stripe session ID
+      // ── Store Stripe session ID on order ────────────────────────────────────
       await db.update(teamFlexOrders)
         .set({ stripeCheckoutSessionId: session.id })
         .where(eq(teamFlexOrders.id, orderId));
