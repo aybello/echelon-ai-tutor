@@ -11,6 +11,7 @@ interface LandingNavProps {
 
 const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
+  { label: "Process Guides", href: "/guides" },
   { label: "WPI 🌊", href: "/wpi" },
   { label: "🇺🇸 US", href: "/us" },
   { label: "Pricing", href: "/pricing" },
@@ -19,9 +20,10 @@ const NAV_LINKS = [
 ];
 
 const RESOURCES_LINKS = [
+  { label: "Process Guides", href: "/guides" },
   { label: "📐 Formulas", href: "/formulas" },
   { label: "🗺️ Career Map", href: "/career" },
-  { label: "🏭 Study Tools", href: "/#tools" },
+  { label: "Study Tools", href: "/#tools" },
   { label: "✉️ Contact", href: "/#contact" },
   { label: "🤝 Partnerships", href: "/partnerships" },
 ];
@@ -43,12 +45,12 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
   return (
     <>
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 1180px) {
           .lnav-links { display: none !important; }
           .lnav-cta { display: none !important; }
           .lnav-hamburger { display: flex !important; }
         }
-        @media (min-width: 641px) {
+        @media (min-width: 1181px) {
           .lnav-hamburger { display: none !important; }
           .lnav-mobile-drawer { display: none !important; }
         }

@@ -17,6 +17,7 @@ import { lazy, Suspense } from "react";
 // Core pages — lazy loaded like all others to keep the initial bundle small
 const Landing = lazy(() => import("./pages/Landing"));
 const Home = lazy(() => import("./pages/Home"));
+const Guides = lazy(() => import("./pages/Guides"));
 
 // Tool pages
 const Process = lazy(() => import("./pages/Process"));
@@ -231,6 +232,7 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Landing} />
         <Route path={"/quiz"} component={Home} />
+        <Route path={"/guides"} component={Guides} />
         <Route path={"/process"} component={Process} />
         <Route path={"/wastewater"} component={Wastewater} />
         <Route path={"/career"} component={CareerMap} />

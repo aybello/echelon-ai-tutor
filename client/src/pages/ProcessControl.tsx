@@ -9,9 +9,9 @@
  * - Exam tips organised by topic with Ontario regulation callouts
  */
 import { useState } from "react";
-import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
-import { useLocation } from "wouter";
+import GuideNav from "@/components/GuideNav";
+import { getGuideResumeStep } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const TABS = [
@@ -339,8 +339,9 @@ export default function ProcessControl() {
     noindex: true
   });
 
-  const [location] = useLocation();
-  const [activeTab, setActiveTab]           = useState("instruments");
+  const [activeTab, setActiveTab]           = useState(() => (
+    getGuideResumeStep("instrumentation", TABS.map((tab) => tab.id)) ?? "instruments"
+  ));
   const [activeCat, setActiveCat]           = useState("flow");
   const [activeInstrument, setActiveInstrument] = useState<number>(0);
   const [activePID, setActivePID]           = useState("P");
@@ -356,30 +357,13 @@ export default function ProcessControl() {
 
   return (
     <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-      <SiteNav currentPath={location} />
-
-      {/* ── Header ── */}
-      <header style={{ background: "#fff", borderBottom: "1px solid #E5E7EB" }} className="sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">Echelon</Link>
-            <span className="text-slate-400 text-lg">/</span>
-            <span className="text-slate-700 font-semibold text-sm">Process Control & Instrumentation</span>
-          </div>
-          <div className="hidden md:flex items-center gap-1">
-            {[
-              { label: "Pumping",  href: "/pumping" },
-              { label: "Process",  href: "/process" },
-              { label: "Formulas", href: "/formulas" },
-              { label: "Career",   href: "/career" },
-            ].map(l => (
-              <Link key={l.href} href={l.href}>
-                <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">{l.label}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
+      <SiteNav currentPath="/instrumentation" />
+      <GuideNav
+        guideId="instrumentation"
+        currentStepId={activeTab}
+        currentStepLabel={TABS.find((tab) => tab.id === activeTab)?.label ?? "Instruments"}
+        totalSteps={TABS.length}
+      />
 
       <main className="max-w-6xl mx-auto px-4 py-8">
 
@@ -531,8 +515,9 @@ export default function ProcessControl() {
 
                 {currentInstrument.regulation && (
                   <div className="rounded-xl p-3" style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderLeft: "4px solid #7C3AED" }}>
-                    <p className="text-purple-700 text-xs font-semibold uppercase tracking-wider mb-1">📋 Regulation</p>
+                    <p className="text-purple-700 text-xs font-semibold uppercase tracking-wider mb-1">Exam guidance · Ontario context</p>
                     <p className="text-purple-800 text-xs">{currentInstrument.regulation}</p>
+                    <p className="text-slate-400 text-xs mt-2">Confirm current requirements against official legislation and facility procedures.</p>
                   </div>
                 )}
               </div>

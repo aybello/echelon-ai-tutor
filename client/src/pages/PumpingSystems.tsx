@@ -10,9 +10,11 @@
  */
 
 import { useState } from "react";
-import { Link } from "wouter";
 import PumpCutaway from "@/components/PumpCutaway";
 import PumpCurveChart, { PumpMode } from "@/components/PumpCurveChart";
+import SiteNav from "@/components/SiteNav";
+import GuideNav from "@/components/GuideNav";
+import { getGuideResumeStep } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const TABS = [
@@ -85,7 +87,9 @@ export default function PumpingSystems() {
     noindex: true
   });
 
-  const [activeTab, setActiveTab] = useState("cutaway");
+  const [activeTab, setActiveTab] = useState(() => (
+    getGuideResumeStep("pumping-systems", TABS.map((tab) => tab.id)) ?? "cutaway"
+  ));
   const [isRunning, setIsRunning] = useState(false);
   const [cavitationMode, setCavitationMode] = useState(false);
   const [pumpMode, setPumpMode] = useState<PumpMode>("single");
@@ -103,60 +107,13 @@ export default function PumpingSystems() {
 
   return (
     <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-      {/* ── Header ── */}
-      <header style={{ background: "#fff", borderBottom: "1px solid #E5E7EB" }} className="sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-3">
-            <Link href="/">
-              <span className="text-blue-400 font-black text-xl tracking-tight cursor-pointer hover:text-blue-300 transition-colors">
-                ECHELON
-              </span>
-            </Link>
-            <span className="text-slate-400 text-lg">/</span>
-            <span className="text-slate-700 font-semibold text-sm">Pumping Systems</span>
-          </div>
-          <nav className="flex items-center gap-1 flex-wrap">
-            <Link href="/">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                AI Tutor
-              </span>
-            </Link>
-            <Link href="/process">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                Drinking Water
-              </span>
-            </Link>
-            <Link href="/wastewater">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                Wastewater
-              </span>
-            </Link>
-            <Link href="/career">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                Career Map
-              </span>
-            </Link>
-            <span className="px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold">
-              Pumping
-            </span>
-            <Link href="/oit-mock">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                📝 Mock Exam
-              </span>
-            </Link>
-            <Link href="/chem-calc">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                🧪 Chem Calc
-              </span>
-            </Link>
-            <Link href="/lab">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                🔬 Lab
-              </span>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <SiteNav currentPath="/pumping" />
+      <GuideNav
+        guideId="pumping-systems"
+        currentStepId={activeTab}
+        currentStepLabel={TABS.find((tab) => tab.id === activeTab)?.label ?? "Pump Anatomy"}
+        totalSteps={TABS.length}
+      />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* ── Hero ── */}
@@ -171,11 +128,11 @@ export default function PumpingSystems() {
                 Interactive centrifugal pump module — explore anatomy, performance curves, cavitation behaviour, and series/parallel configurations used in Ontario water and wastewater facilities.
               </p>
             </div>
-            {/* Regulation badge */}
+            {/* Content authority */}
             <div className="rounded-xl px-4 py-3 text-sm flex-shrink-0" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}>
-              <p className="text-blue-600 text-xs font-semibold uppercase tracking-wide mb-1">Ontario Regulation</p>
-              <p className="text-blue-800 font-medium">O. Reg. 170/03 — Schedule 8</p>
-              <p className="text-blue-500 text-xs mt-0.5">Pumping station requirements</p>
+              <p className="text-blue-600 text-xs font-semibold uppercase tracking-wide mb-1">Exam guidance</p>
+              <p className="text-blue-800 font-medium">Pumping systems</p>
+              <p className="text-blue-500 text-xs mt-0.5">Confirm local design and operating requirements</p>
             </div>
           </div>
 
@@ -490,15 +447,16 @@ export default function PumpingSystems() {
               );
             })}
 
-            {/* Ontario Regulation box */}
+            {/* Ontario context box */}
             <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-              <h3 className="text-slate-900 font-bold text-lg mb-4">Ontario Regulatory Requirements</h3>
+              <div className="text-blue-600 text-xs font-semibold uppercase tracking-wide mb-1">Exam guidance · Ontario context</div>
+              <h3 className="text-slate-900 font-bold text-lg mb-4">Common pumping-system references</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { reg: "O. Reg. 170/03 — Sch. 8", desc: "Pumping stations must have standby power and emergency pumping capacity for water systems." },
-                  { reg: "O. Reg. 129/04 — Sch. 8", desc: "Wastewater pumping stations require wet well level alarms, overflow protection, and backup power." },
-                  { reg: "MECP Design Guidelines", desc: "Pumping stations must be designed for peak hourly flow with one pump out of service." },
-                  { reg: "CSA B214", desc: "Installation of hydronic heating systems — relevant for booster pump applications." },
+                  { reg: "Standby power", desc: "Review the applicable requirements and the facility's redundancy design basis." },
+                  { reg: "Alarms and overflow response", desc: "Know the local wet-well alarm, escalation and emergency-response procedures." },
+                  { reg: "Peak-flow capacity", desc: "Compare duty-point capacity with the current approved design and operating criteria." },
+                  { reg: "Installation standards", desc: "Use the standards named in the current design documents and equipment manuals." },
                 ].map(r => (
                   <div key={r.reg} className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
                     <p className="text-blue-600 text-xs font-semibold mb-1">{r.reg}</p>
@@ -506,6 +464,7 @@ export default function PumpingSystems() {
                   </div>
                 ))}
               </div>
+              <p className="text-slate-400 text-xs mt-4">Confirm current requirements against official legislation, design standards and your facility procedures.</p>
             </div>
           </div>
         )}

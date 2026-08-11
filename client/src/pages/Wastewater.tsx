@@ -3,11 +3,12 @@
 // Mirrors the drinking water Process page structure exactly
 
 import { useState } from "react";
-import { Link } from "wouter";
 import { WW_STEPS, WW_LABEL_INFO, type WastewaterStep } from "@/lib/wastewaterData";
 import { WWDiagramFor } from "@/components/WastewaterDiagrams";
 import WastewaterMap from "@/components/WastewaterMap";
 import SiteNav from "@/components/SiteNav";
+import GuideNav from "@/components/GuideNav";
+import { getGuideResumeStep, shouldResumeGuide } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
@@ -83,9 +84,12 @@ export default function Wastewater() {
     noindex: true
   });
 
-  const [activeStep, setActiveStep] = useState<WastewaterStep>(WW_STEPS[0]);
+  const [activeStep, setActiveStep] = useState<WastewaterStep>(() => {
+    const resumeId = getGuideResumeStep("wastewater-treatment", WW_STEPS.map((step) => step.id));
+    return WW_STEPS.find((step) => step.id === resumeId) ?? WW_STEPS[0];
+  });
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
-  const [view, setView] = useState<"learn" | "overview" | "map">("map");
+  const [view, setView] = useState<"learn" | "overview" | "map">(() => shouldResumeGuide() ? "learn" : "map");
 
   const labelDesc = activeLabel ? (WW_LABEL_INFO[activeLabel] || null) : null;
 
@@ -121,17 +125,15 @@ export default function Wastewater() {
       `}</style>
 
       <SiteNav currentPath="/wastewater" />
+      <GuideNav
+        guideId="wastewater-treatment"
+        currentStepId={activeStep.id}
+        currentStepLabel={activeStep.label}
+        totalSteps={WW_STEPS.length}
+      />
 
       {/* ── VIEW TOGGLES ── */}
-      <div className="ww-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-        {/* Stream switcher */}
-        <div className="stream-switcher" style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
-          <Link href="/process" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>💧 Drinking Water</Link>
-          <span style={{ padding: "6px 14px", borderRadius: 8, background: "#7C3AED", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>♻️ Wastewater</span>
-          <Link href="/distribution-guide" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>🚰 Distribution</Link>
-          <Link href="/collection-guide" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>🔩 Collection</Link>
-        </div>
-        <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
+      <div className="ww-view-toggles" style={{ background: "#F8FAFC", borderBottom: "1px solid #E5E7EB", padding: "9px 28px", display: "flex", justifyContent: "center", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
         {([['map', '🗺️ Process Map'], ['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
           <button key={v} className="view-btn" onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
@@ -338,15 +340,18 @@ export default function Wastewater() {
                   </div>
                 </div>
 
-                {/* Ontario Regulation */}
+                {/* Content authority */}
                 <div style={{
                   background: "#F5F3FF", borderRadius: 14, padding: "16px 18px",
                   border: "1px solid #DDD6FE", borderLeft: "4px solid #7C3AED",
                 }}>
                   <div style={{ fontSize: 10, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.1em", marginBottom: 6 }}>
-                    📋 ONTARIO REGULATION
+                    EXAM GUIDANCE · ONTARIO CONTEXT
                   </div>
                   <div style={{ fontSize: 11, color: "#3B0764", lineHeight: 1.65 }}>{activeStep.regulation}</div>
+                  <div style={{ fontSize: 9, color: "#64748B", lineHeight: 1.55, marginTop: 8 }}>
+                    Confirm current requirements against the official legislation and your facility procedures.
+                  </div>
                 </div>
 
                 {/* Prev / Next */}
