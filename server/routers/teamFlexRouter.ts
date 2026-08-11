@@ -253,12 +253,23 @@ export const teamFlexRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
 
-      // ── Auth: accept either OAuth or Echelon's verified email-code session ──
-      const purchaserIdentity = requireVerifiedOperator(ctx);
-      const purchaserUserId = purchaserIdentity.userId;
-
-      // ── Resolve manager's org ───────────────────────────────────────────────
-      const { orgId, managerEmail } = await resolveManagerOrg(ctx);
+      // ── Auth: accept OAuth, email-code session, OR input.managerEmail ──
+      let purchaserUserId: number | null = null;
+      let managerEmail: string;
+      let orgId: number | null = null;
+      const ctxEmail = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
+      if (ctxEmail) {
+        purchaserUserId = ctx.user?.id ?? null;
+        managerEmail = ctxEmail;
+        try {
+          const mgr = await resolveManagerOrg(ctx);
+          orgId = mgr.orgId;
+        } catch { /* new manager, no org yet */ }
+      } else if (input.managerEmail) {
+        managerEmail = input.managerEmail.toLowerCase().trim();
+      } else {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your email address." });
+      }
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -272,7 +283,7 @@ export const teamFlexRouter = router({
       });
 
       // ── Check Annual overlap ────────────────────────────────────────────────
-      const [org] = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1);
+      const [org] = orgId ? await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1) : [];
       if (org?.tier && org?.province) {
         const annualCourses = allowedCourseKeysForOrg(org.tier, org.province);
         const overlapping = normalizedItems.filter(item => annualCourses.includes(item.courseKey));
@@ -349,8 +360,8 @@ export const teamFlexRouter = router({
 
       // ── Insert pending order ────────────────────────────────────────────────
       const [orderResult] = await db.insert(teamFlexOrders).values({
-        organizationId: orgId,
-        purchaserUserId,
+        organizationId: orgId ?? 0,
+        purchaserUserId: purchaserUserId ?? 0,
         managerEmail,
         totalLicences,
         subtotalCents,
