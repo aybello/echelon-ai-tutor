@@ -184,7 +184,7 @@ async function startServer() {
   // Ticket 10: In production, require x-cron-secret header to match ENV.cronSecret.
   // If ENV.cronSecret is empty (local dev), the check is skipped.
   app.use("/api/scheduled", (req, res, next) => {
-    if (!ENV.cronSecret || req.headers["x-cron-secret"] !== ENV.cronSecret) {
+    if (ENV.cronSecret && req.headers["x-cron-secret"] !== ENV.cronSecret) {
       return res.status(401).json({ error: "Unauthorized: missing or invalid x-cron-secret" });
     }
     return next();

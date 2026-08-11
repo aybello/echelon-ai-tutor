@@ -41,7 +41,6 @@ export const ENV = {
 
   if (!process.env.JWT_SECRET) missing.push("JWT_SECRET");
   if (!process.env.DATABASE_URL) missing.push("DATABASE_URL");
-  if (isProduction && !process.env.CRON_SECRET) missing.push("CRON_SECRET");
   if (isProduction && !process.env.STRIPE_SECRET_KEY) missing.push("STRIPE_SECRET_KEY");
   if (isProduction && !process.env.STRIPE_WEBHOOK_SECRET) missing.push("STRIPE_WEBHOOK_SECRET");
   if (isProduction && !process.env.SMTP_HOST) missing.push("SMTP_HOST");
