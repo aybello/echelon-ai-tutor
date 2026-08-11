@@ -30,6 +30,8 @@ jobs:
           server/access.bankkey.test.ts
           server/mockExamScore.test.ts
           server/guideRegistry.test.ts
+          server/blog.router.test.ts
+          server/blog.content-2026.test.ts
           server/readiness.test.ts
           server/teams/flexBulkOnboarding.test.ts
           shared/teamPricing.test.ts

@@ -3,6 +3,7 @@ import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import { blogPosts } from "../../drizzle/schema";
 import { eq, and, desc, ne } from "drizzle-orm";
+import { rankRelatedPosts } from "../relatedPosts";
 
 export const blogRouter = router({
   /** List all published posts, newest first */
@@ -42,10 +43,17 @@ export const blogRouter = router({
 
   /** Get 3 related posts (same tag or just latest, excluding current slug) */
   getRelatedPosts: publicProcedure
-    .input(z.object({ slug: z.string(), limit: z.number().min(1).max(6).default(3) }))
+    .input(
+      z.object({ slug: z.string(), limit: z.number().min(1).max(6).default(3) })
+    )
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) return [];
+      const [current] = await db
+        .select({ tags: blogPosts.tags })
+        .from(blogPosts)
+        .where(and(eq(blogPosts.slug, input.slug), eq(blogPosts.published, 1)))
+        .limit(1);
       const posts = await db
         .select({
           id: blogPosts.id,
@@ -60,7 +68,7 @@ export const blogRouter = router({
         .from(blogPosts)
         .where(and(eq(blogPosts.published, 1), ne(blogPosts.slug, input.slug)))
         .orderBy(desc(blogPosts.publishedAt))
-        .limit(input.limit);
-      return posts;
+        .limit(30);
+      return rankRelatedPosts(posts, current?.tags ?? null, input.limit);
     }),
 });

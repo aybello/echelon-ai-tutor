@@ -239,8 +239,10 @@ export const STATIC_PAGE_META: PageMeta[] = [
     changefreq: "monthly",
     jsonLd: buildWebPageJsonLd({
       path: "/guides",
-      title: "Interactive Process Guides for Water Operators | Echelon Institute",
-      description: "Interactive technical learning guides for water and wastewater operator certification.",
+      title:
+        "Interactive Process Guides for Water Operators | Echelon Institute",
+      description:
+        "Interactive technical learning guides for water and wastewater operator certification.",
       h1: "Interactive Process Guides for Water and Wastewater Operators",
     }),
     bodyHtml: `
@@ -350,21 +352,21 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Preparing for a promotion or a new role? Echelon's exam prep platform helps you earn higher-class certifications faster. Visit <a href="${SITE_URL}/pricing">our pricing page</a> to see subscription options, or start with the <a href="${SITE_URL}/">free practice questions</a> available on every course.</p>
 
       <h2>Water Operator Career Resources</h2>
-      <p>Read the <a href="${SITE_URL}/blog/water-operator-salary-canada-by-province-2025">Water Operator Salary Guide</a> for province-by-province compensation data, and the <a href="${SITE_URL}/blog/canadian-water-operator-certification-by-province">Canadian Certification Guide</a> for a full breakdown of requirements in every province.</p>
+      <p>Read the <a href="${SITE_URL}/blog/water-operator-salary-canada-by-province-2026">2026 Water Operator Salary Guide</a> for current compensation context, and the <a href="${SITE_URL}/blog/canadian-water-operator-certification-by-province">Canadian Certification Guide</a> for a province-by-province overview.</p>
     `,
   },
   {
     path: "/blog",
-    title: "Water Operator Certification Blog | Echelon Institute",
+    title: "Water Operator Certification & Workforce Blog | Echelon Institute",
     description:
-      "Expert guides on water and wastewater operator certification across Canada. Province-by-province exam prep tips, study strategies, and career advice for OIT, EOCP, AWWOA, SLWA, and WQAM.",
-    h1: "Water Operator Certification Guides & Exam Prep Tips",
+      "Official-source-backed water and wastewater certification guides, exam preparation, career advice, and municipal workforce resources for Canada and WPI-aligned US jurisdictions.",
+    h1: "Operator Certification, Careers & Workforce Readiness",
     jsonLd: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Blog",
       name: "Echelon Institute Blog",
       description:
-        "Expert guides on water and wastewater operator certification across Canada.",
+        "Official-source-backed certification, exam preparation, career, and utility workforce guides for water and wastewater operators and managers.",
       url: `${SITE_URL}/blog`,
       publisher: {
         "@type": "Organization",
@@ -374,13 +376,24 @@ export const STATIC_PAGE_META: PageMeta[] = [
       },
     }),
     bodyHtml: `
-      <h2>Certification Guides by Province</h2>
-      <p>Echelon publishes in-depth certification guides for every province in Canada. Each guide covers the exam format, registration process, study tips, and the specific topics you need to master.</p>
+      <h2>Guides for Operators</h2>
+      <p>Echelon publishes source-backed certification, exam preparation, and career guides for Canadian operators and candidates in WPI-aligned US jurisdictions. Local coverage varies, so every regulatory article identifies its jurisdiction, sources, review date, and technical-review status.</p>
+
+      <h2>Resources for Utilities and Municipalities</h2>
+      <p>Training managers can use Echelon's workforce-readiness articles to evaluate operator programs, launch certification cohorts, support learners, and measure outcomes responsibly. Visit <a href="${SITE_URL}/teams">Echelon for Teams</a> for institutional onboarding and manager reporting.</p>
 
       <h2>Featured Articles</h2>
       <ul>
         <li><a href="${SITE_URL}/blog/how-to-pass-ontario-oit-water-exam">How to Pass the Ontario OIT Water Exam</a></li>
-        <li><a href="${SITE_URL}/blog/water-operator-salary-canada-by-province-2025">Water Operator Salary in Canada by Province (2025)</a></li>
+        <li><a href="${SITE_URL}/blog/how-to-become-water-wastewater-operator-ontario">How to Become a Water or Wastewater Operator in Ontario</a></li>
+        <li><a href="${SITE_URL}/blog/ontario-oit-exam-eligibility-format-fees-study-plan">Ontario OIT Exam: Eligibility, Format, Fees and Study Plan</a></li>
+        <li><a href="${SITE_URL}/blog/class-1-water-treatment-practice-questions-study-guide">Class 1 Water Treatment Practice Questions and Study Guide</a></li>
+        <li><a href="${SITE_URL}/blog/class-1-wastewater-treatment-practice-questions-study-guide">Class 1 Wastewater Treatment Practice Questions and Study Guide</a></li>
+        <li><a href="${SITE_URL}/blog/how-long-study-water-operator-certification-exam">How Long Should You Study for an Operator Exam?</a></li>
+        <li><a href="${SITE_URL}/blog/water-operator-certification-reciprocity-canada">Water Operator Certification Reciprocity Across Canada</a></li>
+        <li><a href="${SITE_URL}/blog/utilities-build-certification-ready-operator-workforce">How Utilities Can Build a Certification-Ready Workforce</a></li>
+        <li><a href="${SITE_URL}/blog/water-operator-training-programs-municipal-manager-checklist">Water Operator Training Programs: Manager Checklist</a></li>
+        <li><a href="${SITE_URL}/blog/water-operator-salary-canada-by-province-2026">Water Operator Salary in Canada by Province (2026)</a></li>
         <li><a href="${SITE_URL}/blog/ontario-water-operator-exam-math-formulas-cheat-sheet">Ontario Water Operator Exam Math Formulas Cheat Sheet</a></li>
         <li><a href="${SITE_URL}/blog/water-treatment-chlorination-guide-ontario-operators">Water Treatment Chlorination Guide for Ontario Operators</a></li>
         <li><a href="${SITE_URL}/blog/ontario-class-1-vs-class-2-water-operator-differences">Ontario Class 1 vs Class 2 Water Operator: Key Differences</a></li>
@@ -464,7 +477,8 @@ export const STATIC_PAGE_META: PageMeta[] = [
     jsonLd: buildWebPageJsonLd({
       path: "/privacy",
       title: "Privacy Policy | Echelon Institute",
-      description: "Echelon Institute's privacy policy under Canadian law (PIPEDA).",
+      description:
+        "Echelon Institute's privacy policy under Canadian law (PIPEDA).",
       h1: "Privacy Policy",
     }),
     bodyHtml: `
@@ -483,7 +497,8 @@ export const STATIC_PAGE_META: PageMeta[] = [
     jsonLd: buildWebPageJsonLd({
       path: "/terms",
       title: "Terms of Service | Echelon Institute",
-      description: "Terms governing your use of the Echelon Institute platform.",
+      description:
+        "Terms governing your use of the Echelon Institute platform.",
       h1: "Terms of Service",
     }),
     bodyHtml: `
@@ -515,7 +530,8 @@ export const STATIC_PAGE_META: PageMeta[] = [
   // ── US Expansion Pages ────────────────────────────────────────────────────
   {
     path: "/us",
-    title: "US Water Operator Exam Prep | ABC/WPI Certification Study — Echelon Institute",
+    title:
+      "US Water Operator Exam Prep | ABC/WPI Certification Study — Echelon Institute",
     description:
       "AI-powered exam prep for US water and wastewater operators. Aligned to the 2025 ABC/WPI Need-to-Know Criteria for all 4 streams (water treatment, wastewater treatment, distribution, collection) and all 4 class levels.",
     h1: "US Water Operator Exam Prep — Pass Your ABC/WPI Certification",
@@ -523,10 +539,15 @@ export const STATIC_PAGE_META: PageMeta[] = [
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: "US Water Operator Exam Prep | Echelon Institute",
-      description: "AI-powered ABC/WPI exam prep for US water and wastewater operators.",
+      description:
+        "AI-powered ABC/WPI exam prep for US water and wastewater operators.",
       url: `${SITE_URL}/us`,
       inLanguage: "en-US",
-      isPartOf: { "@type": "WebSite", name: "Echelon Institute", url: SITE_URL },
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Echelon Institute",
+        url: SITE_URL,
+      },
     }),
     bodyHtml: `
       <h2>ABC/WPI Exam Prep for US Water Operators</h2>
@@ -553,7 +574,8 @@ export const STATIC_PAGE_META: PageMeta[] = [
   },
   {
     path: "/us/courses",
-    title: "US Water Operator Courses | All 4 Streams & 4 Levels — Echelon Institute",
+    title:
+      "US Water Operator Courses | All 4 Streams & 4 Levels — Echelon Institute",
     description:
       "Browse all 16 ABC/WPI water operator certification prep courses. Water treatment, wastewater treatment, distribution, and collection — Class I through Class IV. AI-powered practice questions, mock exams, and flashcards.",
     h1: "US Water Operator Certification Courses — All Streams & Levels",
@@ -585,14 +607,16 @@ export const STATIC_PAGE_META: PageMeta[] = [
   },
   {
     path: "/us/states",
-    title: "US Water Operator Certification by State | ABC/WPI Exam Prep — Echelon Institute",
+    title:
+      "US Water Operator Certification by State | ABC/WPI Exam Prep — Echelon Institute",
     description:
       "Find water and wastewater operator certification exam prep for your state. Echelon labels each state as full, partial, or limited coverage so candidates can confirm fit before purchasing.",
     h1: "US Water Operator Certification by State",
     jsonLd: buildWebPageJsonLd({
       path: "/us/states",
       title: "US Water Operator Certification by State | Echelon Institute",
-      description: "State-by-state WPI-aligned exam preparation with full, partial, or limited coverage labels.",
+      description:
+        "State-by-state WPI-aligned exam preparation with full, partial, or limited coverage labels.",
       h1: "US Water Operator Certification by State",
     }),
     bodyHtml: `
@@ -622,14 +646,18 @@ export const STATIC_PAGE_META: PageMeta[] = [
 
 /** Build a map for O(1) lookup */
 const META_MAP = new Map<string, PageMeta>(
-  STATIC_PAGE_META.map((m) => [m.path, m])
+  STATIC_PAGE_META.map(m => [m.path, m])
 );
 
 /** Read the index.html shell (works in both dev and prod) */
 function getIndexHtml(isDev: boolean): string {
   const templatePath = isDev
     ? path.resolve(process.cwd(), "client", "index.html")
-    : path.resolve(path.dirname(new URL(import.meta.url).pathname), "public", "index.html");
+    : path.resolve(
+        path.dirname(new URL(import.meta.url).pathname),
+        "public",
+        "index.html"
+      );
   if (!fs.existsSync(templatePath)) {
     const devPath = path.resolve(process.cwd(), "client", "index.html");
     return fs.readFileSync(devPath, "utf-8");
@@ -759,7 +787,15 @@ Echelon Institute helps water and wastewater operators in Canada and the US pass
 
 ## Blog Articles (for detailed certification information)
 - ${SITE_URL}/blog/how-to-pass-ontario-oit-water-exam
-- ${SITE_URL}/blog/water-operator-salary-canada-by-province-2025
+- ${SITE_URL}/blog/how-to-become-water-wastewater-operator-ontario
+- ${SITE_URL}/blog/ontario-oit-exam-eligibility-format-fees-study-plan
+- ${SITE_URL}/blog/class-1-water-treatment-practice-questions-study-guide
+- ${SITE_URL}/blog/class-1-wastewater-treatment-practice-questions-study-guide
+- ${SITE_URL}/blog/how-long-study-water-operator-certification-exam
+- ${SITE_URL}/blog/water-operator-certification-reciprocity-canada
+- ${SITE_URL}/blog/utilities-build-certification-ready-operator-workforce
+- ${SITE_URL}/blog/water-operator-training-programs-municipal-manager-checklist
+- ${SITE_URL}/blog/water-operator-salary-canada-by-province-2026
 - ${SITE_URL}/blog/ontario-water-operator-exam-math-formulas-cheat-sheet
 - ${SITE_URL}/blog/water-treatment-chlorination-guide-ontario-operators
 - ${SITE_URL}/blog/ontario-class-1-vs-class-2-water-operator-differences
@@ -779,12 +815,19 @@ Echelon Institute helps water and wastewater operators in Canada and the US pass
 }
 
 /** Register SSR routes for all static public pages */
-export function registerPageSsrRoutes(app: Express, isDev: boolean, vite?: { transformIndexHtml: (url: string, html: string) => Promise<string> }): void {
+export function registerPageSsrRoutes(
+  app: Express,
+  isDev: boolean,
+  vite?: { transformIndexHtml: (url: string, html: string) => Promise<string> }
+): void {
   // Serve llms.txt for AI model discoverability
   app.get("/llms.txt", (_req: Request, res: Response) => {
     res
       .status(200)
-      .set({ "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=86400" })
+      .set({
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=86400",
+      })
       .end(buildLlmsTxt());
   });
 
@@ -792,34 +835,44 @@ export function registerPageSsrRoutes(app: Express, isDev: boolean, vite?: { tra
   app.get("/llms-full.txt", (_req: Request, res: Response) => {
     res
       .status(200)
-      .set({ "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=86400" })
+      .set({
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "public, max-age=86400",
+      })
       .end(buildLlmsTxt());
   });
 
   // Exact-path routes only — /blog/:slug is handled by blogSsr.ts
-  const staticPaths = STATIC_PAGE_META.map((m) => m.path);
+  const staticPaths = STATIC_PAGE_META.map(m => m.path);
 
   for (const pagePath of staticPaths) {
-    app.get(pagePath === "/" ? "/" : pagePath, async (req: Request, res: Response) => {
-      // Only handle exact path match (no query string confusion)
-      const meta = META_MAP.get(pagePath);
-      if (!meta) return res.status(404).send("Not found");
+    app.get(
+      pagePath === "/" ? "/" : pagePath,
+      async (req: Request, res: Response) => {
+        // Only handle exact path match (no query string confusion)
+        const meta = META_MAP.get(pagePath);
+        if (!meta) return res.status(404).send("Not found");
 
-      try {
-        const template = getIndexHtml(isDev);
-        const seoHtml = injectSeoIntoTemplate(template, meta);
-        // In dev mode, run Vite's transformIndexHtml so it injects @vite/client
-        // and HMR scripts — without this, React never mounts on SSR-served pages.
-        const html = (isDev && vite)
-          ? await vite.transformIndexHtml(req.originalUrl, seoHtml)
-          : seoHtml;
-        res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).end(html);
-      } catch (err) {
-        console.error(`[pageSsr] Error rendering ${pagePath}:`, err);
-        // Fall through to SPA catch-all on error
-        res.status(500).send("Internal server error");
+        try {
+          const template = getIndexHtml(isDev);
+          const seoHtml = injectSeoIntoTemplate(template, meta);
+          // In dev mode, run Vite's transformIndexHtml so it injects @vite/client
+          // and HMR scripts — without this, React never mounts on SSR-served pages.
+          const html =
+            isDev && vite
+              ? await vite.transformIndexHtml(req.originalUrl, seoHtml)
+              : seoHtml;
+          res
+            .status(200)
+            .set({ "Content-Type": "text/html; charset=utf-8" })
+            .end(html);
+        } catch (err) {
+          console.error(`[pageSsr] Error rendering ${pagePath}:`, err);
+          // Fall through to SPA catch-all on error
+          res.status(500).send("Internal server error");
+        }
       }
-    });
+    );
   }
 }
 

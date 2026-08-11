@@ -2,9 +2,14 @@ import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useMemo, useState } from "react";
 
 function formatDate(d: Date | string) {
-  return new Date(d).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+  return new Date(d).toLocaleDateString("en-CA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 function TagBadge({ tag }: { tag: string }) {
@@ -17,12 +22,35 @@ function TagBadge({ tag }: { tag: string }) {
 
 export default function Blog() {
   usePageMeta({
-    title: "Blog | Echelon Institute — Canadian Water & Wastewater Operator Certification Guides",
-    description: "Study guides, exam tips, and certification advice for Canadian water and wastewater operators. Covers OIT, Class 1–4, EOCP (BC), AWWOA (Alberta), OCB (Saskatchewan), ABC (Manitoba), and WQA.",
-    keywords: "water operator certification Canada, OIT exam, EOCP BC, AWWOA Alberta, OCB Saskatchewan, Manitoba water operator, wastewater certification, water treatment study guide",
+    title: "Water Operator Certification & Workforce Blog | Echelon Institute",
+    description:
+      "Official-source-backed certification guides, exam preparation, career advice, and municipal workforce resources for water and wastewater operators across Canada and the United States.",
+    keywords:
+      "water operator certification, wastewater operator exam, OIT exam, WPI exam prep, municipal operator training, utility workforce readiness",
   });
 
   const { data: posts, isLoading } = trpc.blog.listPosts.useQuery();
+  const [category, setCategory] = useState("All");
+  const [query, setQuery] = useState("");
+  const categories = [
+    "All",
+    "Operator Guides",
+    "Study Strategy",
+    "Employer Resources",
+  ];
+  const visiblePosts = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    return (posts ?? []).filter(post => {
+      const tags = (post.tags ?? "").split(",").map(tag => tag.trim());
+      const matchesCategory = category === "All" || tags.includes(category);
+      const matchesQuery =
+        !normalizedQuery ||
+        `${post.title} ${post.excerpt} ${post.tags ?? ""}`
+          .toLowerCase()
+          .includes(normalizedQuery);
+      return matchesCategory && matchesQuery;
+    });
+  }, [posts, category, query]);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -36,20 +64,50 @@ export default function Blog() {
             <span>Echelon Institute Blog</span>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-3">
-            Canadian Operator Certification — Study Guides & Exam Tips
+            Operator Certification, Careers & Workforce Readiness
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl">
-            Practical guides for water and wastewater operators preparing for certification exams across Canada — Ontario (OIT, Class 1–4, WQA), BC (EOCP), Alberta (AWWOA), Saskatchewan (OCB), and Manitoba (ABC).
+            Official-source-backed guides for operators preparing across Canada
+            and WPI-aligned US jurisdictions, plus practical resources for
+            utilities building certification-ready teams.
           </p>
         </div>
       </div>
 
       {/* Posts */}
       <div className="max-w-4xl mx-auto px-4 py-10">
+        <div className="mb-8 space-y-4" aria-label="Filter blog articles">
+          <div className="flex flex-wrap gap-2">
+            {categories.map(item => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setCategory(item)}
+                aria-pressed={category === item}
+                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${category === item ? "border-blue-600 bg-blue-600 text-white" : "border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:text-blue-700"}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <label className="block">
+            <span className="sr-only">Search articles</span>
+            <input
+              type="search"
+              value={query}
+              onChange={event => setQuery(event.target.value)}
+              placeholder="Search certification, exam, career, or manager guides"
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+            />
+          </label>
+        </div>
         {isLoading && (
           <div className="space-y-6">
             {[1, 2, 3].map(i => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-6 animate-pulse">
+              <div
+                key={i}
+                className="bg-white rounded-xl border border-slate-200 p-6 animate-pulse"
+              >
                 <div className="h-4 bg-slate-200 rounded w-1/4 mb-3" />
                 <div className="h-6 bg-slate-200 rounded w-3/4 mb-3" />
                 <div className="h-4 bg-slate-200 rounded w-full mb-2" />
@@ -59,17 +117,17 @@ export default function Blog() {
           </div>
         )}
 
-        {!isLoading && (!posts || posts.length === 0) && (
+        {!isLoading && visiblePosts.length === 0 && (
           <div className="text-center py-20 text-slate-500">
             <div className="text-4xl mb-4">📝</div>
-            <p className="text-lg font-medium">No posts yet</p>
-            <p className="text-sm mt-1">Check back soon for study guides and exam tips.</p>
+            <p className="text-lg font-medium">No matching articles</p>
+            <p className="text-sm mt-1">Try another category or search term.</p>
           </div>
         )}
 
-        {!isLoading && posts && posts.length > 0 && (
+        {!isLoading && visiblePosts.length > 0 && (
           <div className="space-y-6">
-            {posts.map(post => (
+            {visiblePosts.map(post => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <article className="bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer group">
                   <div className="flex items-center gap-3 text-sm text-slate-500 mb-3">
@@ -94,9 +152,12 @@ export default function Blog() {
 
                   {post.tags && (
                     <div className="flex flex-wrap gap-1.5">
-                      {post.tags.split(",").slice(0, 4).map(tag => (
-                        <TagBadge key={tag} tag={tag} />
-                      ))}
+                      {post.tags
+                        .split(",")
+                        .slice(0, 4)
+                        .map(tag => (
+                          <TagBadge key={tag} tag={tag} />
+                        ))}
                     </div>
                   )}
                 </article>
@@ -107,8 +168,12 @@ export default function Blog() {
 
         {/* CTA */}
         <div className="mt-12 bg-blue-50 border border-blue-100 rounded-xl p-6 text-center">
-          <p className="text-slate-700 font-medium mb-1">Ready to start practising?</p>
-          <p className="text-slate-500 text-sm mb-4">15 free questions on every course — no account required.</p>
+          <p className="text-slate-700 font-medium mb-1">
+            Ready to start practising?
+          </p>
+          <p className="text-slate-500 text-sm mb-4">
+            15 free questions on every course — no account required.
+          </p>
           <Link href="/quiz">
             <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors">
               Start Free Practice
@@ -122,9 +187,19 @@ export default function Blog() {
         <div className="max-w-4xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500">
           <span>© {new Date().getFullYear()} Echelon Institute</span>
           <div className="flex gap-4">
-            <Link href="/pricing"><span className="hover:text-slate-700 cursor-pointer">Pricing</span></Link>
-            <Link href="/about"><span className="hover:text-slate-700 cursor-pointer">About</span></Link>
-            <Link href="/quiz"><span className="hover:text-slate-700 cursor-pointer">Practice</span></Link>
+            <Link href="/pricing">
+              <span className="hover:text-slate-700 cursor-pointer">
+                Pricing
+              </span>
+            </Link>
+            <Link href="/about">
+              <span className="hover:text-slate-700 cursor-pointer">About</span>
+            </Link>
+            <Link href="/quiz">
+              <span className="hover:text-slate-700 cursor-pointer">
+                Practice
+              </span>
+            </Link>
           </div>
         </div>
       </footer>
