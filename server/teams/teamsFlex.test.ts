@@ -99,6 +99,7 @@ describe("Teams Flex licence lifecycle", () => {
     expect(typeof mod.assignFlexLicence).toBe("function");
     expect(typeof mod.activateFlexLicence).toBe("function");
     expect(typeof mod.changeFlexLicenceCourse).toBe("function");
+    expect(typeof mod.resendFlexInvitation).toBe("function");
   });
 
   it("uses calendar-month activation dates at month end and leap year", async () => {

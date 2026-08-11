@@ -10,6 +10,7 @@ import {
 } from "../stripe/subscriptionProducts";
 import { ENV } from "./env";
 import { resolveTeamAccess } from "../teams/resolveTeamAccess";
+import { resolveCourseKey } from "../../shared/courseRegistry";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -122,7 +123,7 @@ export function resolveFlexEmailState(
       !!row.startsAt && row.startsAt <= now &&
       !!row.accessEndsAt && row.accessEndsAt >= now,
     )
-    .map((row) => row.courseKey);
+    .map((row) => resolveCourseKey(row.courseKey)?.courseKey ?? row.courseKey);
 
   return { identityEligible, activeCourseKeys };
 }

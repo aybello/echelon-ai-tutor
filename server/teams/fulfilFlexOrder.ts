@@ -17,6 +17,7 @@ import {
 } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
 import { addUtcCalendarMonths } from "./flexLicenceService";
+import { resolveCourseKey } from "../../shared/courseRegistry";
 
 const ACTIVATION_DEADLINE_MONTHS = 12;
 
@@ -131,10 +132,12 @@ export async function fulfilFlexOrder(
     let created = 0;
     for (const item of items) {
       for (let i = 0; i < item.quantity; i++) {
+        const canonicalCourseKey = resolveCourseKey(item.courseKey)?.courseKey;
+        if (!canonicalCourseKey) throw new Error(`Unknown course key on Flex order item #${item.id}: ${item.courseKey}`);
         await tx.insert(teamFlexLicences).values({
           orderItemId: item.id,
           organizationId: lockedOrder.organizationId,
-          courseKey: item.courseKey,
+          courseKey: canonicalCourseKey,
           termMonths: item.termMonths,
           status: "unused",
           activationDeadline,

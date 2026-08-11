@@ -6,6 +6,7 @@
 import { eq, and, sql, lte, gte } from "drizzle-orm";
 import { getDb } from "../db";
 import { teamFlexLicences, organizationMembers, organizations } from "../../drizzle/schema";
+import { resolveCourseKey } from "../../shared/courseRegistry";
 
 export interface FlexAccessGrant {
   source: "flex";
@@ -43,6 +44,7 @@ export async function resolveTeamAccess(
 
   const grants: TeamAccessGrant[] = [];
   const now = new Date();
+  const requestedCourseKey = resolveCourseKey(courseKey)?.courseKey ?? courseKey;
 
   // 1. Check Flex licences (by userId only for claimed licences)
   if (operatorUserId) {
@@ -57,13 +59,14 @@ export async function resolveTeamAccess(
       .from(teamFlexLicences)
       .where(and(
         eq(teamFlexLicences.operatorUserId, operatorUserId),
-        eq(teamFlexLicences.courseKey, courseKey),
         eq(teamFlexLicences.status, "active"),
         lte(teamFlexLicences.startsAt, now),
         gte(teamFlexLicences.accessEndsAt, now),
       ));
 
     for (const lic of flexLicences) {
+      const licenceCourseKey = resolveCourseKey(lic.courseKey)?.courseKey ?? lic.courseKey;
+      if (licenceCourseKey !== requestedCourseKey) continue;
       // Look up org name
       const [org] = await db
         .select({ name: organizations.name })
@@ -75,7 +78,7 @@ export async function resolveTeamAccess(
         source: "flex",
         orgId: lic.organizationId,
         orgName: org?.name ?? "Unknown",
-        courseKey: lic.courseKey,
+        courseKey: licenceCourseKey,
         licenceId: lic.id,
         accessEndsAt: lic.accessEndsAt!,
         reportingEndsAt: lic.reportingEndsAt ?? null,
@@ -100,7 +103,8 @@ export async function resolveTeamAccess(
 
   for (const member of annualMembers) {
     // Check if the org is active and the member's courseKey matches (or is null = all-access)
-    if (member.courseKey === courseKey || member.courseKey === null) {
+    const memberCourseKey = member.courseKey ? (resolveCourseKey(member.courseKey)?.courseKey ?? member.courseKey) : null;
+    if (memberCourseKey === requestedCourseKey || memberCourseKey === null) {
       const [org] = await db
         .select({ name: organizations.name, termEnd: organizations.termEnd, status: organizations.status })
         .from(organizations)
@@ -115,7 +119,7 @@ export async function resolveTeamAccess(
           source: "annual",
           orgId: member.orgId,
           orgName: org.name,
-          courseKey,
+          courseKey: requestedCourseKey,
           accessEndsAt: org.termEnd ?? null, // null if auto-renewing
         });
       }
