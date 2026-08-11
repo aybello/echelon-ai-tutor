@@ -1,6 +1,6 @@
 /**
  * Teams Flex Router — Production-hardened
- * All procedures gated behind FEATURE_TEAMS_FLEX env var.
+ * All manager procedures require authenticated session + verified org membership.
  * All manager procedures require authenticated session + verified org membership.
  * All pricing is server-side only. No client-controlled redirects or prices.
  */
@@ -34,16 +34,6 @@ import {
   activateFlexLicence,
   changeFlexLicenceCourse,
 } from "../teams/flexLicenceService";
-
-// ── Feature flag ─────────────────────────────────────────────────────────────
-function isFlexEnabled(): boolean {
-  return process.env.FEATURE_TEAMS_FLEX === "true";
-}
-function requireFlex() {
-  if (!isFlexEnabled()) {
-    throw new TRPCError({ code: "NOT_FOUND", message: "Teams Flex is not available yet." });
-  }
-}
 
 // ── Manager authorization helper ─────────────────────────────────────────────
 /** Verify the authenticated user is a manager of the specified org. */
@@ -114,7 +104,6 @@ export const teamFlexRouter = router({
   getFlexPricing: publicProcedure
     .input(z.object({ province: z.enum(["ontario", "western"]) }))
     .query(({ input }) => {
-      requireFlex();
       const prices = TEAM_PRICES_CAD[input.province];
       return {
         prices,
@@ -131,7 +120,6 @@ export const teamFlexRouter = router({
   listLicences: protectedProcedure
     .input(z.object({ orgId: z.number().int() }))
     .query(async ({ ctx, input }) => {
-      requireFlex();
       await requireManagerOfOrg(ctx, input.orgId);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -146,7 +134,6 @@ export const teamFlexRouter = router({
   inviteLicence: protectedProcedure
     .input(z.object({ licenceId: z.number().int(), operatorEmail: z.string().email(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
-      requireFlex();
       await requireManagerOfOrg(ctx, input.orgId);
       return inviteOperatorToLicence(input.licenceId, input.operatorEmail, ctx.user.id, input.orgId);
     }),
@@ -155,7 +142,6 @@ export const teamFlexRouter = router({
   cancelInvitation: protectedProcedure
     .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
-      requireFlex();
       await requireManagerOfOrg(ctx, input.orgId);
       return cancelFlexInvitation(input.licenceId, input.orgId);
     }),
@@ -164,7 +150,6 @@ export const teamFlexRouter = router({
   assignLicence: protectedProcedure
     .input(z.object({ licenceId: z.number().int(), operatorUserId: z.number().int(), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
-      requireFlex();
       await requireManagerOfOrg(ctx, input.orgId);
       return assignFlexLicence(input.licenceId, input.operatorUserId, input.orgId);
     }),
@@ -173,7 +158,6 @@ export const teamFlexRouter = router({
   activateLicence: protectedProcedure
     .input(z.object({ licenceId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
-      requireFlex();
       if (!ctx.user) throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
       return activateFlexLicence(input.licenceId, ctx.user.id);
     }),
@@ -182,7 +166,6 @@ export const teamFlexRouter = router({
   changeCourse: protectedProcedure
     .input(z.object({ licenceId: z.number().int(), newCourseKey: z.string().min(1), orgId: z.number().int() }))
     .mutation(async ({ ctx, input }) => {
-      requireFlex();
       await requireManagerOfOrg(ctx, input.orgId);
       return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.orgId);
     }),
@@ -199,7 +182,6 @@ export const teamFlexRouter = router({
       overlapAcknowledged: z.boolean().default(false),
     }))
     .mutation(async ({ ctx, input }) => {
-      requireFlex();
 
       // ── Auth: derive identity from session ──────────────────────────────────
       if (!ctx.user) {
