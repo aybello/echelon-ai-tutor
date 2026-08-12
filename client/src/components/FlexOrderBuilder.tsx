@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 interface FlexItem {
   courseKey: string;
-  termMonths: 3 | 6;
+  termMonths: 3 | 6 | 12;
   quantity: number;
 }
 
@@ -52,27 +52,29 @@ const WESTERN_COURSES = [
   { key: "wpi-class4-wastewater-coll", label: "WPI Class 4 Collection", band: "class4" },
 ];
 
-// Client-side pricing lookup (mirrors server TEAM_PRICES_CAD)
-const PRICES: Record<string, Record<string, { three: number; six: number }>> = {
+// Client-side pricing lookup (mirrors server TEAM_PRICES_CAD — updated 2026-08-12)
+const PRICES: Record<string, Record<string, { three: number; six: number; twelve: number }>> = {
   ontario: {
-    oit: { three: 3900, six: 4900 },
-    class1: { three: 7900, six: 9900 },
-    class2: { three: 11900, six: 14900 },
-    class3: { three: 19900, six: 24900 },
-    class4: { three: 23900, six: 29900 },
+    oit: { three: 2900, six: 3900, twelve: 4900 },
+    class1: { three: 5900, six: 7900, twelve: 9900 },
+    class2: { three: 8900, six: 11900, twelve: 14900 },
+    class3: { three: 14900, six: 19900, twelve: 24900 },
+    class4: { three: 17900, six: 23900, twelve: 29900 },
   },
   western: {
-    class1: { three: 11900, six: 14900 },
-    class2: { three: 15900, six: 19900 },
-    class3: { three: 19900, six: 24900 },
-    class4: { three: 23900, six: 29900 },
+    class1: { three: 8900, six: 11900, twelve: 14900 },
+    class2: { three: 11900, six: 15900, twelve: 19900 },
+    class3: { three: 14900, six: 19900, twelve: 24900 },
+    class4: { three: 17900, six: 23900, twelve: 29900 },
   },
 };
 
 function getItemPrice(province: string, band: string, termMonths: number): number {
   const p = PRICES[province]?.[band];
   if (!p) return 0;
-  return termMonths === 3 ? p.three : p.six;
+  if (termMonths === 3) return p.three;
+  if (termMonths === 6) return p.six;
+  return p.twelve;
 }
 
 function getDiscount(totalLicences: number): number {
@@ -148,7 +150,7 @@ export function FlexOrderBuilder() {
     <Card className="bg-white shadow-lg border-0">
       <CardHeader>
         <CardTitle className="text-xl text-gray-900">Build Your Course Pass Order</CardTitle>
-        <p className="text-sm text-gray-500">Pick the courses your operators need, choose 3 or 6 month access, and check out in one order.</p>
+        <p className="text-sm text-gray-500">Pick the courses your operators need, choose 3, 6, or 12 month access, and check out in one order.</p>
       </CardHeader>
       <CardContent className="space-y-5">
         {/* Province */}
@@ -223,6 +225,7 @@ export function FlexOrderBuilder() {
                     <SelectContent>
                       <SelectItem value="3">3 months</SelectItem>
                       <SelectItem value="6">6 months</SelectItem>
+                      <SelectItem value="12">12 months</SelectItem>
                     </SelectContent>
                   </Select>
                   <Input

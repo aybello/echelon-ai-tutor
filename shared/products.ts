@@ -367,6 +367,12 @@ export interface EchelonBundle {
   highlight?: boolean;
 }
 
+/**
+ * RETIRED BUNDLES — kept for historical purchase lookups and entitlement resolution.
+ * Do NOT show these in new checkout flows or public pricing pages.
+ * Existing customers retain their access per the grandfathering policy.
+ * @deprecated Use Individual Exam Pass or Teams products instead.
+ */
 export const BUNDLES: EchelonBundle[] = [
   {
     key: "bundle-water",

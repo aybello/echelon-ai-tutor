@@ -1,34 +1,35 @@
 /**
  * Teams Flex Pricing Configuration
- * Course-specific licences: 3-month or 6-month terms only.
+ * Course-specific licences: 3-month, 6-month, or 12-month terms.
  * Volume discount calculated from total licences in the complete order.
  */
 
-export type TeamFlexTermMonths = 3 | 6;
+export type TeamFlexTermMonths = 3 | 6 | 12;
 
 export function isValidFlexTerm(months: number): months is TeamFlexTermMonths {
-  return months === 3 || months === 6;
+  return months === 3 || months === 6 || months === 12;
 }
 
 export interface PricingBandConfig {
   threeMonthCents: number;
   sixMonthCents: number;
+  twelveMonthCents: number;
 }
 
 export const TEAM_PRICES_CAD: Record<string, Record<string, PricingBandConfig>> = {
   ontario: {
-    oit:    { threeMonthCents: 3900, sixMonthCents: 4900 },
-    class1: { threeMonthCents: 7900, sixMonthCents: 9900 },
-    class2: { threeMonthCents: 11900, sixMonthCents: 14900 },
-    class3: { threeMonthCents: 19900, sixMonthCents: 24900 },
-    class4: { threeMonthCents: 23900, sixMonthCents: 29900 },
-    wqa:    { threeMonthCents: 11900, sixMonthCents: 14900 },
+    oit:    { threeMonthCents: 2900, sixMonthCents: 3900, twelveMonthCents: 4900 },
+    class1: { threeMonthCents: 5900, sixMonthCents: 7900, twelveMonthCents: 9900 },
+    class2: { threeMonthCents: 8900, sixMonthCents: 11900, twelveMonthCents: 14900 },
+    class3: { threeMonthCents: 14900, sixMonthCents: 19900, twelveMonthCents: 24900 },
+    class4: { threeMonthCents: 17900, sixMonthCents: 23900, twelveMonthCents: 29900 },
+    wqa:    { threeMonthCents: 8900, sixMonthCents: 11900, twelveMonthCents: 14900 },
   },
   western: {
-    class1: { threeMonthCents: 11900, sixMonthCents: 14900 },
-    class2: { threeMonthCents: 15900, sixMonthCents: 19900 },
-    class3: { threeMonthCents: 19900, sixMonthCents: 24900 },
-    class4: { threeMonthCents: 23900, sixMonthCents: 29900 },
+    class1: { threeMonthCents: 8900, sixMonthCents: 11900, twelveMonthCents: 14900 },
+    class2: { threeMonthCents: 11900, sixMonthCents: 15900, twelveMonthCents: 19900 },
+    class3: { threeMonthCents: 14900, sixMonthCents: 19900, twelveMonthCents: 24900 },
+    class4: { threeMonthCents: 17900, sixMonthCents: 23900, twelveMonthCents: 29900 },
   },
 };
 
@@ -79,7 +80,9 @@ export function getFlexListPrice(
   if (!familyPrices) throw new Error(`Unknown exam family: ${examFamily}`);
   const bandPrices = familyPrices[pricingBand];
   if (!bandPrices) throw new Error(`Unknown pricing band: ${pricingBand} for ${examFamily}`);
-  return termMonths === 3 ? bandPrices.threeMonthCents : bandPrices.sixMonthCents;
+  if (termMonths === 3) return bandPrices.threeMonthCents;
+  if (termMonths === 6) return bandPrices.sixMonthCents;
+  return bandPrices.twelveMonthCents;
 }
 
 export function getRetakeExtensionPrice(examFamily: string, pricingBand: string): number {

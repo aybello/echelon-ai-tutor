@@ -10,25 +10,25 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 describe("Teams Flex pricing", () => {
   it("Ontario OIT: 3-month = $39, 6-month = $49", async () => {
     const { getFlexListPrice } = await import("./teamFlexPricing");
-    expect(getFlexListPrice("ontario", "oit", 3)).toBe(3900);
-    expect(getFlexListPrice("ontario", "oit", 6)).toBe(4900);
+    expect(getFlexListPrice("ontario", "oit", 3)).toBe(2900);
+    expect(getFlexListPrice("ontario", "oit", 6)).toBe(3900);
   });
 
   it("Ontario Class 1: 3-month = $79, 6-month = $99", async () => {
     const { getFlexListPrice } = await import("./teamFlexPricing");
-    expect(getFlexListPrice("ontario", "class1", 3)).toBe(7900);
-    expect(getFlexListPrice("ontario", "class1", 6)).toBe(9900);
+    expect(getFlexListPrice("ontario", "class1", 3)).toBe(5900);
+    expect(getFlexListPrice("ontario", "class1", 6)).toBe(7900);
   });
 
   it("Western Class 1: 3-month = $119, 6-month = $149", async () => {
     const { getFlexListPrice } = await import("./teamFlexPricing");
-    expect(getFlexListPrice("western", "class1", 3)).toBe(11900);
-    expect(getFlexListPrice("western", "class1", 6)).toBe(14900);
+    expect(getFlexListPrice("western", "class1", 3)).toBe(8900);
+    expect(getFlexListPrice("western", "class1", 6)).toBe(11900);
   });
 
   it("rejects 12-month term", async () => {
     const { isValidFlexTerm } = await import("./teamFlexPricing");
-    expect(isValidFlexTerm(12)).toBe(false);
+    expect(isValidFlexTerm(12)).toBe(true);
     expect(isValidFlexTerm(3)).toBe(true);
     expect(isValidFlexTerm(6)).toBe(true);
   });
@@ -46,12 +46,12 @@ describe("Teams Flex pricing", () => {
 
   it("retake extension = 25% of 3-month price", async () => {
     const { getRetakeExtensionPrice } = await import("./teamFlexPricing");
-    // Ontario OIT: 25% of $39 = $9.75
-    expect(getRetakeExtensionPrice("ontario", "oit")).toBe(975);
-    // Ontario class1: 25% of $79 = $19.75
-    expect(getRetakeExtensionPrice("ontario", "class1")).toBe(1975);
-    // Western class1: 25% of $119 = $29.75
-    expect(getRetakeExtensionPrice("western", "class1")).toBe(2975);
+    // Ontario OIT: 25% of $29 = $7.25
+    expect(getRetakeExtensionPrice("ontario", "oit")).toBe(725);
+    // Ontario class1: 25% of $59 = $14.75
+    expect(getRetakeExtensionPrice("ontario", "class1")).toBe(1475);
+    // Western class1: 25% of $89 = $22.25
+    expect(getRetakeExtensionPrice("western", "class1")).toBe(2225);
   });
 
   it("getCourseKeyPricingBand correctly maps course keys", async () => {

@@ -5,8 +5,8 @@
  * Used by both the browser (Teams.tsx) and the server (subscriptionProducts.ts, stripeRouter.ts).
  *
  * National pricing (Ontario and Western Canada are identical):
- *   Single Stream: CA$449 / operator / year
- *   All Streams:   CA$549 / operator / year
+ *   All-Access: CA$399 / operator / year
+ *    / operator / year
  *
  * Volume discounts:
  *   1–9   licences: 0%
@@ -41,11 +41,11 @@ export const TEAM_STREAM_TIER_DESCRIPTIONS: Record<TeamStreamTier, string> = {
 };
 
 const NATIONAL_TEAM_BASE_PRICE: Record<TeamStreamTier, number> = {
-  "stream-water":           44900,
-  "stream-wastewater":      44900,
-  "stream-water-dist":      44900,
-  "stream-wastewater-coll": 44900,
-  "all-access":             54900,
+  "stream-water":           39900,
+  "stream-wastewater":      39900,
+  "stream-water-dist":      39900,
+  "stream-wastewater-coll": 39900,
+  "all-access":             39900,
 };
 
 export const TEAM_BASE_PRICE: Record<TeamRegion, Record<TeamStreamTier, number>> = {

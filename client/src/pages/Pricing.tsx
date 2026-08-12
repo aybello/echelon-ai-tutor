@@ -51,7 +51,7 @@ const SUB_TIERS_WPI: SubTier[] = [
   { tier: "class2",     label: "Class II",   price: "$199", priceNum: 19900, tagline: "Class II — all 4 WPI tracks",         features: ["Class II Water Treatment", "Class II Wastewater Treatment", "Class II Water Distribution", "Class II Wastewater Collection", "AI Tutor & Flashcards"] },
   { tier: "class3",     label: "Class III",  price: "$249", priceNum: 24900, tagline: "Class III — all 4 WPI tracks",        features: ["Class III Water Treatment", "Class III Wastewater Treatment", "Class III Water Distribution", "Class III Wastewater Collection", "AI Tutor & Flashcards"] },
   { tier: "class4",     label: "Class IV",   price: "$299", priceNum: 29900, tagline: "Class IV — all 4 WPI tracks",         features: ["Class IV Water Treatment", "Class IV Wastewater Treatment", "Class IV Water Distribution", "Class IV Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "all-access", label: "All-Access", price: "$449", priceNum: 44900, tagline: "Every WPI exam type — all classes",   features: ["All classes (I through IV)", "Water Treatment + Wastewater Treatment", "Water Distribution + Wastewater Collection", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
+  { tier: "all-access", label: "All-Access", price: "$399", priceNum: 39900, tagline: "Every WPI exam type — all classes",   features: ["All classes (I through IV)", "Water Treatment + Wastewater Treatment", "Water Distribution + Wastewater Collection", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
 ];
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -1267,7 +1267,7 @@ export default function Pricing() {
           <section style={{ maxWidth: 860, margin: "0 auto 52px", padding: 28, borderRadius: 18, background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", color: "#fff", textAlign: "center" }}>
             <div style={{ fontSize: 30, marginBottom: 10 }}>🏢</div>
             <h2 style={{ fontSize: 25, margin: 0, fontWeight: 900 }}>Training a team of operators?</h2>
-            <p style={{ maxWidth: 620, margin: "12px auto 20px", color: "#CBD5E1", fontSize: 14, lineHeight: 1.6 }}>Choose targeted Course Passes from CA$39 per operator/course, or annual access from CA$449 per operator. Manager access, reporting, and automatic volume discounts are included.</p>
+            <p style={{ maxWidth: 620, margin: "12px auto 20px", color: "#CBD5E1", fontSize: 14, lineHeight: 1.6 }}>Choose targeted Course Passes from CA$29 per operator/course, or annual all-access from CA$399 per operator (5-seat minimum). Manager dashboard, reporting, and graduated volume discounts included.</p>
             <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
               {["1–9: standard pricing", "10–24: 10% off", "25–49: 15% off", "50+: 20% off"].map((text) => <span key={text} style={{ padding: "7px 10px", borderRadius: 20, background: "rgba(255,255,255,0.10)", color: "#E2E8F0", fontSize: 12, fontWeight: 700 }}>{text}</span>)}
             </div>

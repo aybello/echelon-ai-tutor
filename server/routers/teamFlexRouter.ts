@@ -247,12 +247,21 @@ export const teamFlexRouter = router({
       province: z.enum(["ontario", "western"]),
       items: z.array(z.object({
         courseKey: z.string().min(1),
-        termMonths: z.union([z.literal(3), z.literal(6)]),
+        termMonths: z.union([z.literal(3), z.literal(6), z.literal(12)]),
         quantity: z.number().int().min(1).max(100),
       })).min(1).max(20),
       overlapAcknowledged: z.boolean().default(false),
     }))
     .mutation(async ({ ctx, input }) => {
+
+      // ── Checkout rule: all items must use the same duration ──────────────
+      const termSet = new Set(input.items.map(i => i.termMonths));
+      if (termSet.size > 1) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "All Course Pass licences in one order must use the same duration.",
+        });
+      }
 
       // ── Auth: accept OAuth, email-code session, OR input.managerEmail ──
       let purchaserUserId: number | null = null;

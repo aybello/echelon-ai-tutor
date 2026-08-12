@@ -1292,3 +1292,19 @@
 - [x] Add activation rate (unactivated seats %) to manager dashboard
 - [x] Fix 2 persistent TS errors in teamFlexRouter.ts (organizationId null)
 - [x] Write automated test for backfill safety
+
+## Final Pricing Implementation Plan
+- [x] Build canonical server-side pricing catalogue (3 products, all courses/durations)
+- [x] Implement graduated volume pricing (bands 1-9, 10-24, 25-49, 50+)
+- [x] Add Individual Exam Pass pricing (12-month, per-course)
+- [x] Add Teams All-Access pricing (CA$399/operator/year, 5-seat minimum)
+- [x] Add 12-month option to Teams Course Pass
+- [x] Add comprehensive pricing tests (15+ automated tests)
+- [x] Implement checkout: separate sessions for Course Pass vs All-Access
+- [x] Implement checkout: same-duration enforcement per order
+- [x] Implement checkout: 5-seat minimum rejection for All-Access
+- [x] Add entitlement types (individual_exam_pass, teams_course_pass, teams_all_access, legacy)
+- [ ] Redesign pricing page with 3 clear paths + seat calculator
+- [x] Retire obsolete products from checkout (CA$349 all-access, subscriptions, bundles)
+- [ ] Verify Stripe checkout totals match server calculations
+- [ ] Deploy and validate all pricing paths
