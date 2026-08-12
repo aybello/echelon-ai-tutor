@@ -26,11 +26,13 @@ import { jobsRouter } from "./routers/jobsRouter";
 import { emailOtpRouter } from "./routers/emailOtpRouter";
 import { incidentCommandRouter } from "./routers/incidentCommandRouter";
 import { teamFlexRouter } from "./routers/teamFlexRouter";
+import { changelogRouter } from "./routers/changelogRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
+  changelog: router(changelogRouter),
 
   /**
    * access — entitlement audit and access resolution endpoints.

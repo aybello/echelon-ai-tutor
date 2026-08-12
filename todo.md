@@ -1308,3 +1308,8 @@
 - [x] Retire obsolete products from checkout (CA$349 all-access, subscriptions, bundles)
 - [ ] Verify Stripe checkout totals match server calculations
 - [ ] Deploy and validate all pricing paths
+- [x] DB-driven changelog: create changelog table in schema
+- [x] DB-driven changelog: seed existing entries into DB
+- [x] DB-driven changelog: create tRPC procedures (list public, create/edit/delete admin)
+- [x] DB-driven changelog: update About page to read from DB
+- [ ] DB-driven changelog: add admin UI to manage entries

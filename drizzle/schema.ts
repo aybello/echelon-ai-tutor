@@ -833,3 +833,19 @@ export const teamFlexExtensions = mysqlTable("team_flex_extensions", {
   uniqueIndex("team_flex_extensions_licence_unique").on(table.licenceId),
 ]);
 export type TeamFlexExtension = typeof teamFlexExtensions.$inferSelect;
+
+// ─── Platform Changelog ────────────────────────────────────────────────────────
+export const changelog = mysqlTable("changelog", {
+  id: int("id").autoincrement().primaryKey(),
+  date: varchar("date", { length: 32 }).notNull(), // e.g. "August 2026"
+  badge: varchar("badge", { length: 32 }).default(""), // e.g. "New", "Improvement", ""
+  badgeColor: varchar("badgeColor", { length: 16 }).default("#0F766E").notNull(),
+  title: varchar("title", { length: 256 }).notNull(),
+  body: text("body").notNull(),
+  sortOrder: int("sortOrder").notNull().default(0), // lower = newer (top)
+  visible: boolean("visible").notNull().default(true),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type ChangelogEntry = typeof changelog.$inferSelect;
+export type InsertChangelogEntry = typeof changelog.$inferInsert;

@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import LandingNav from "@/components/LandingNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { trpc } from "@/lib/trpc";
 
 const TIMELINE = [
   {
@@ -40,6 +41,59 @@ const VALUES = [
     body: "Certification is not a destination — it's a career ladder. Echelon Institute is designed to support operators from their first OIT exam through Class 4, with content that grows with your career.",
   },
 ];
+
+function ChangelogList() {
+  const { data: entries, isLoading } = trpc.changelog.list.useQuery();
+  if (isLoading) return <div style={{ textAlign: "center", padding: 40, color: "#94A3B8" }}>Loading changelog...</div>;
+  if (!entries || entries.length === 0) return null;
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      {entries.map((item) => (
+        <div key={item.id} className="about-changelog-row" style={{
+          display: "flex",
+          gap: 16,
+          padding: "18px 22px",
+          background: "#fff",
+          borderRadius: 14,
+          border: "1px solid #E2E8F0",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+          alignItems: "flex-start",
+        }}>
+          <div style={{ flexShrink: 0, paddingTop: 2 }}>
+            <div style={{
+              width: 10,
+              height: 10,
+              borderRadius: "50%",
+              background: item.badgeColor,
+              marginTop: 4,
+            }} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                {item.date}
+              </span>
+              {item.badge && (
+                <span style={{
+                  background: item.badgeColor,
+                  color: "#fff",
+                  fontSize: 10,
+                  fontWeight: 800,
+                  padding: "2px 8px",
+                  borderRadius: 20,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}>{item.badge}</span>
+              )}
+            </div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{item.title}</div>
+            <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function About() {
   usePageMeta({
@@ -248,163 +302,13 @@ export default function About() {
             letterSpacing: "0.06em",
             textTransform: "uppercase",
           }}>36 Courses Live</span>
-          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: August 2026</span>
+          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: Aug 12, 2026</span>
         </div>
         <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 36px", lineHeight: 1.7 }}>
           A running record of every course and feature added to the platform.
         </p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {[
-            {
-              date: "May 2026",
-              badge: "New",
-              badgeColor: "#0F766E",
-              title: "FAQ Section & Shared Navigation",
-              body: "Added a dedicated FAQ section to the main landing page covering 8 common questions including time limits, provincial support, and refund policy. The WPI landing page now shares the same navigation as the main site for a consistent experience across all public pages.",
-            },
-            {
-              date: "May 2026",
-              badge: "",
-              badgeColor: "#1D4ED8",
-              title: "National Scope — 5 Provinces Live",
-              body: "Echelon now explicitly supports Ontario (OWWCO/MECP), British Columbia (EOCP), Alberta (AWWOA/EPA), Saskatchewan (SAHO), and Manitoba (MWWA). The platform serves both water and wastewater operators at all certification levels from OIT through Class 4 across all five provinces.",
-            },
-            {
-              date: "April 2026",
-              badge: "New",
-              badgeColor: "#0F766E",
-              title: "Student Performance Dashboard",
-              body: "Track your study progress in one place. The new dashboard shows total questions answered, overall accuracy, current and longest streaks, a 30-day activity chart, topic-by-topic accuracy breakdown, difficulty distribution, per-course progress, and recent session history. Access it from the top nav after logging in.",
-            },
-            {
-              date: "April 2026",
-              badge: "New",
-              badgeColor: "#6D28D9",
-              title: "WPI Class III & IV Wastewater Treatment",
-              body: "1,000+ new questions across 15 modules for senior and chief operator-level WPI Wastewater certification. Class III covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance (~500 questions). Class IV covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance (~500 questions). Both include timed mock exam, formula sheet, and AI Tutor.",
-            },
-            {
-              date: "April 2026",
-              badge: "New",
-              badgeColor: "#0369A1",
-              title: "WPI Water & WPI Wastewater Full Ladder Bundles",
-              body: "WPI Class I–IV Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection are all now live. 9,500+ questions total across all four tracks, aligned with WPI Need-to-Know Criteria, recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-            },
-            {
-              date: "April 2026",
-              badge: "",
-              badgeColor: "#7C3AED",
-              title: "OIT Wastewater Treatment — Standalone Free Course",
-              body: "OIT Wastewater is now available as its own dedicated free course. Covers primary and secondary treatment, biological processes, activated sludge, disinfection, biosolids basics, and regulatory fundamentals. Includes 500+ practice questions, adaptive quiz engine, AI Tutor, confidence scoring, process diagrams, and formula sheet.",
-            },
-            {
-              date: "April 2026",
-              badge: "",
-              badgeColor: "#0F766E",
-              title: "Class 4 Wastewater Treatment",
-              body: "500 questions across 5 modules: Advanced Treatment, Equipment O&M, Lab Analysis, Biosolids Management, and Plant Management. Includes timed mock exam, formula sheet, and AI Tutor.",
-            },
-            {
-              date: "March 2026",
-              badge: "New",
-              badgeColor: "#1D4ED8",
-              title: "Class 4 Water Treatment",
-              body: "500 questions covering full system management, regulatory leadership, advanced treatment, and strategic operations. Includes timed mock exam, formula sheet with 37 formulas, and AI Tutor.",
-            },
-            {
-              date: "March 2026",
-              badge: "",
-              badgeColor: "#0F766E",
-              title: "Class 3 Wastewater Treatment",
-              body: "Advanced biological treatment, BNR, biosolids management, and process optimization. 500 questions, mock exam, formula sheet.",
-            },
-            {
-              date: "February 2026",
-              badge: "",
-              badgeColor: "#1D4ED8",
-              title: "Class 3 Water Treatment",
-              body: "LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control. 500 questions, mock exam, formula sheet.",
-            },
-            {
-              date: "February 2026",
-              badge: "",
-              badgeColor: "#0F766E",
-              title: "Class 2 Wastewater Treatment",
-              body: "Activated sludge, nutrient removal, advanced secondary treatment, and process control. 500 questions, mock exam, formula sheet.",
-            },
-            {
-              date: "January 2026",
-              badge: "",
-              badgeColor: "#1D4ED8",
-              title: "Class 2 Water Treatment",
-              body: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting. 500 questions, mock exam, formula sheet.",
-            },
-            {
-              date: "January 2026",
-              badge: "",
-              badgeColor: "#0F766E",
-              title: "Class 1 Wastewater Treatment",
-              body: "Foundational wastewater treatment, biological processes, primary and secondary treatment, and basic operations. 500 questions, mock exam, formula sheet.",
-            },
-            {
-              date: "January 2026",
-              badge: "",
-              badgeColor: "#1D4ED8",
-              title: "Class 1 Water Treatment",
-              body: "Core water treatment processes, coagulation, filtration, disinfection, and basic regulations. 500 questions, mock exam, formula sheet.",
-            },
-            {
-              date: "Late 2025",
-              badge: "",
-              badgeColor: "#64748B",
-              title: "OIT Water & OIT Wastewater — Free Practice",
-              body: "Platform launched with free OIT practice for both streams. Includes adaptive quiz engine, AI Tutor, confidence scoring, pattern detection, interactive process diagrams, and formula sheets.",
-            },
-          ].map((item, i) => (
-            <div key={i} className="about-changelog-row" style={{
-              display: "flex",
-              gap: 16,
-              padding: "18px 22px",
-              background: "#fff",
-              borderRadius: 14,
-              border: "1px solid #E2E8F0",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-              alignItems: "flex-start",
-            }}>
-              <div style={{ flexShrink: 0, paddingTop: 2 }}>
-                <div style={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: "50%",
-                  background: item.badgeColor,
-                  marginTop: 4,
-                }} />
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.07em" }}>
-                    {item.date}
-                  </span>
-                  {item.badge && (
-                    <span style={{
-                      background: item.badgeColor,
-                      color: "#fff",
-                      fontSize: 10,
-                      fontWeight: 800,
-                      padding: "2px 8px",
-                      borderRadius: 20,
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                    }}>{item.badge}</span>
-                  )}
-                </div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{item.title}</div>
-                <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ChangelogList />
       </section>
 
       {/* ── CTA ── */}
