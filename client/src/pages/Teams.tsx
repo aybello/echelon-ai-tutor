@@ -92,7 +92,7 @@ export default function Teams() {
             style={{
               padding: "8px 16px", borderRadius: 10,
               background: "transparent",
-              color: "#1D4ED8", border: "1.5px solid #1D4ED8",
+              color: "#1E3A5F", border: "1.5px solid #1E3A5F",
               fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
               textDecoration: "none", display: "inline-block",
@@ -106,7 +106,7 @@ export default function Teams() {
       {/* Hero — bold gradient band */}
       <section
         className="px-6 pt-10 pb-14 text-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)" }}
+        style={{ background: "linear-gradient(135deg, #1E3A5F 0%, #0E7490 100%)" }}
       >
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
@@ -160,18 +160,18 @@ export default function Teams() {
             onClick={() => setPlanType("annual")}
             className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
               planType === "annual"
-                ? "border-blue-600 bg-blue-50 shadow-lg shadow-blue-100"
+                ? "border-[#1E3A5F] bg-[#EFF6FF] shadow-lg shadow-[#1E3A5F20]"
                 : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
             }`}
           >
             {planType === "annual" && (
-              <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+              <div className="absolute top-4 right-4 w-6 h-6 bg-[#1E3A5F] rounded-full flex items-center justify-center">
                 <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
               </div>
             )}
             <div className="text-lg font-bold text-gray-900 mb-1">Annual Plan</div>
             <p className="text-sm text-gray-500 leading-relaxed">Every course, every stream. One price per operator per year. Best for ongoing training programs.</p>
-            <div className="mt-3 text-xs font-semibold text-blue-700 bg-blue-100 inline-block px-2.5 py-1 rounded-full">CA$399/operator/year · 5-seat minimum</div>
+            <div className="mt-3 text-xs font-semibold text-[#1E3A5F] bg-blue-100 inline-block px-2.5 py-1 rounded-full">CA$399/operator/year · 5-seat minimum</div>
           </button>
           <button
             onClick={() => setPlanType("flex")}
@@ -251,9 +251,9 @@ export default function Teams() {
                   className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
                     seats === n
                       ? "text-white border-transparent"
-                      : "border-gray-200 text-gray-500 hover:border-blue-400 hover:text-blue-700"
+                      : "border-gray-200 text-gray-500 hover:border-blue-400 hover:text-[#1E3A5F]"
                   }`}
-                  style={seats === n ? { background: "linear-gradient(135deg, #1D4ED8, #0E7490)" } : {}}
+                  style={seats === n ? { background: "linear-gradient(135deg, #1E3A5F, #0E7490)" } : {}}
                 >
                   {n}
                 </button>
@@ -295,7 +295,7 @@ export default function Teams() {
                   className={`flex justify-between text-sm px-3 py-2 rounded-lg transition-colors ${
                     t === volumeTier ? "font-semibold" : "text-gray-500"
                   }`}
-                  style={t === volumeTier ? { background: "linear-gradient(135deg, #EFF6FF, #ECFDF5)", color: "#1D4ED8" } : {}}
+                  style={t === volumeTier ? { background: "linear-gradient(135deg, #EFF6FF, #ECFDF5)", color: "#1E3A5F" } : {}}
                 >
                   <span>{t.label}{t.discountPct > 0 ? ` (${t.discountPct}% off)` : ""}</span>
                   <span>{formatTeamPriceCAD(discountedCents)} / seat / yr</span>
@@ -333,7 +333,7 @@ export default function Teams() {
             onClick={handleCheckout}
             disabled={loading}
             className="w-full py-4 text-base font-bold text-white rounded-xl transition-all active:scale-[0.98] disabled:opacity-60 shadow-lg hover:shadow-xl hover:opacity-95"
-            style={{ background: loading ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)" }}
+            style={{ background: loading ? "#94A3B8" : "linear-gradient(135deg, #1E3A5F, #0E7490)" }}
           >
             {loading ? "Redirecting to checkout..." : `Start ${seats}-seat plan — ${formatTeamPriceCAD(totalCents)}/yr`}
           </button>
