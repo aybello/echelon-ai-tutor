@@ -372,10 +372,10 @@ export default function Teams() {
             </p>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: "Avg Readiness", value: "78%", color: "text-cyan-300" },
-                { label: "Active This Week", value: "12 / 15", color: "text-sky-300" },
-                { label: "Approaching Ready", value: "9", color: "text-emerald-300" },
-                { label: "Needs Attention", value: "3", color: "text-amber-300" },
+                { label: "Active Last Month", value: "15 / 19", color: "text-cyan-300" },
+                { label: "Questions Answered", value: "2,771", color: "text-sky-300" },
+                { label: "Courses Studied", value: "10", color: "text-emerald-300" },
+                { label: "Operators", value: "19", color: "text-amber-300" },
               ].map(card => (
                 <div key={card.label} className="rounded-xl p-3 bg-white/10 border border-white/10">
                   <div className={`text-xl font-bold ${card.color}`}>{card.value}</div>

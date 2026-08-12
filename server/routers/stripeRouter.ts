@@ -559,7 +559,7 @@ export const stripeRouter = router({
       orgName: z.string().min(2).max(200),
       province: z.enum(["ontario", "western"]),
       tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
-      seats: z.number().int().min(1).max(500),
+      seats: z.number().int().min(5).max(500),
       managerEmail: z.string().email(),
     }))
     .mutation(async ({ input }) => {
