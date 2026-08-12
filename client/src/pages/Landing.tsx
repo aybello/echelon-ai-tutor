@@ -1954,7 +1954,7 @@ export default function Landing() {
         <div
           className="landing-whats-new"
           style={{
-            background: "linear-gradient(135deg, #92400E 0%, #D97706 45%, #F59E0B 100%)",
+            background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
             borderRadius: 16,
             padding: "16px 24px",
             display: "flex",
@@ -1962,7 +1962,7 @@ export default function Landing() {
             justifyContent: "space-between",
             gap: 16,
             flexWrap: "wrap" as const,
-            boxShadow: "0 4px 24px rgba(217,119,6,0.4)",
+            boxShadow: "0 4px 24px rgba(14,116,144,0.3)",
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

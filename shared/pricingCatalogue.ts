@@ -122,6 +122,36 @@ export const VOLUME_BANDS = [
   { min: 50, max: Infinity, rate: 0.20 },
 ] as const;
 
+type VolumeBand = (typeof VOLUME_BANDS)[number];
+
+/** Number of seats a band can hold. The final band is unbounded. */
+function bandCapacity(band: VolumeBand, seatsRemaining: number): number {
+  return band.max === Infinity ? seatsRemaining : band.max - band.min + 1;
+}
+
+/**
+ * The marginal (band) unit price for the Nth seat — i.e. what the next seat
+ * added to an order of `quantity - 1` seats costs.
+ */
+export function getMarginalUnitPrice(unitPriceCents: number, seatIndex: number): number {
+  const band = VOLUME_BANDS.find(b => seatIndex >= b.min && seatIndex <= b.max) ?? VOLUME_BANDS[0];
+  return Math.round(unitPriceCents * (1 - band.rate));
+}
+
+/**
+ * Stripe graduated-tier definition for a given list price.
+ * Stripe's `billing_scheme: "tiered"` + `tiers_mode: "graduated"` applies
+ * exactly the same arithmetic as `calculateGraduatedTotal`.
+ */
+export function getGraduatedStripeTiers(
+  unitPriceCents: number,
+): Array<{ up_to: number | "inf"; unit_amount: number }> {
+  return VOLUME_BANDS.map(band => ({
+    up_to: band.max === Infinity ? ("inf" as const) : band.max,
+    unit_amount: Math.round(unitPriceCents * (1 - band.rate)),
+  }));
+}
+
 /**
  * Calculate the total price for a given quantity using graduated band pricing.
  * Each seat is priced at the rate for its band — NOT retroactive.
@@ -137,10 +167,7 @@ export function calculateGraduatedTotal(unitPriceCents: number, quantity: number
 
   for (const band of VOLUME_BANDS) {
     if (seatsRemaining <= 0) break;
-    const bandCapacity = band.max === Infinity ? seatsRemaining : Math.min(seatsRemaining, band.max - band.min + 1);
-    // For the first band, take min(seatsRemaining, band.max)
-    // For subsequent bands, take min(seatsRemaining, band size)
-    const seatsInBand = Math.min(seatsRemaining, band.max === Infinity ? seatsRemaining : band.max - band.min + 1);
+    const seatsInBand = Math.min(seatsRemaining, bandCapacity(band, seatsRemaining));
     const discountedUnit = Math.round(unitPriceCents * (1 - band.rate));
     const bandSubtotal = discountedUnit * seatsInBand;
 

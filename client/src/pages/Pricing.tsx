@@ -14,6 +14,12 @@ import CheckoutContactModal from "@/components/CheckoutContactModal";
 import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS } from "@shared/products";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
+import {
+  getTeamTotalPriceCents,
+  getTeamEffectiveSeatPriceCents,
+  getTeamSavingsCents,
+} from "@shared/teamPricing";
+import { TEAMS_ALL_ACCESS_PRICE_CENTS } from "@shared/pricingCatalogue";
 
 /** Helper: get the canonical CAD price from shared/products.ts by product key */
 function sharedPrice(key: string): number {
@@ -1062,25 +1068,13 @@ const PRICING_STYLES = `
 /** Seat calculator for Teams All-Access — shows graduated pricing */
 function TeamSeatCalculator() {
   const [seats, setSeats] = useState(10);
-  const BASE = 39900; // CA$399
+  const BASE = TEAMS_ALL_ACCESS_PRICE_CENTS;
 
-  // Graduated band calculation (matches server-side calculateGraduatedTotal)
-  const bands = [
-    { min: 1, max: 9, rate: 0 },
-    { min: 10, max: 24, rate: 0.10 },
-    { min: 25, max: 49, rate: 0.15 },
-    { min: 50, max: Infinity, rate: 0.20 },
-  ];
-  let totalCents = 0;
-  let remaining = seats;
-  for (const band of bands) {
-    if (remaining <= 0) break;
-    const inBand = Math.min(remaining, band.max === Infinity ? remaining : band.max - band.min + 1);
-    totalCents += Math.round(BASE * (1 - band.rate)) * inBand;
-    remaining -= inBand;
-  }
-  const perSeatAvg = seats > 0 ? Math.round(totalCents / seats) : BASE;
-  const savings = (BASE * seats) - totalCents;
+  // Delegated to the shared catalogue so this page, the Teams page and the
+  // Stripe checkout can never quote three different numbers again.
+  const totalCents = getTeamTotalPriceCents("ontario", "all-access", seats);
+  const perSeatAvg = getTeamEffectiveSeatPriceCents("ontario", "all-access", seats);
+  const savings = getTeamSavingsCents("ontario", "all-access", seats);
   const fmt = (c: number) => `CA$${(c / 100).toLocaleString("en-CA", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
 
   return (

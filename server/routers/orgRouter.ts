@@ -92,6 +92,7 @@ async function resolveOrgManager(ctx: {
         eq(organizationMembers.status, "assigned"),
       ),
     )
+    .orderBy(organizationMembers.orgId)
     .limit(1);
 
   if (rows.length === 0) {

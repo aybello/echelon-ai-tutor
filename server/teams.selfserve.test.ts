@@ -25,7 +25,7 @@ import { describe, it, expect } from "vitest";
 import {
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
-  getTeamSeatPriceCents,
+  getTeamMarginalSeatPriceCents,
   getTeamTotalPriceCents,
   allowedCourseKeysForOrg,
 } from "./stripe/subscriptionProducts";
@@ -38,7 +38,7 @@ import { bankKeyToExamType } from "./_core/access";
 // ── Helpers (use production shared functions) ─────────────────────────────────
 // getSeatPriceCents and getTotalCents delegate to the production shared functions
 const getSeatPriceCents = (province: string, tier: string, seats: number) =>
-  getTeamSeatPriceCents(province as any, tier as any, seats);
+  getTeamMarginalSeatPriceCents(province as any, tier as any, seats);
 const getTotalCents = (province: string, tier: string, seats: number) =>
   getTeamTotalPriceCents(province as any, tier as any, seats);
 // ── 1. Self-serve checkout for 1, 10, 25, 50, 500 licences ───────────────────

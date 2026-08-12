@@ -19,9 +19,12 @@ import {
 } from "../stripe/subscriptionProducts";
 import {
   getTeamVolumeTier,
-  getTeamSeatPriceCents,
+  getTeamBasePriceCents,
+  getTeamTotalPriceCents,
   TEAM_STREAM_TIER_LABELS as SHARED_TIER_LABELS,
 } from "../../shared/teamPricing";
+import { CATALOGUE_VERSION } from "../../shared/pricingCatalogue";
+import { getOrCreateTeamAllAccessPrice } from "../stripe/teamGraduatedPrice";
 import { getDb } from "../db";
 import { purchases, subscriptions } from "../../drizzle/schema";
 import { eq, and, gt, count } from "drizzle-orm";
@@ -564,30 +567,22 @@ export const stripeRouter = router({
     }))
     .mutation(async ({ input }) => {
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
-      const volumeTier = getTeamVolumeTier(input.seats);
-      const unitAmount = getTeamSeatPriceCents(input.province, input.tier as TeamStreamTier, input.seats);
-      const discountPct = volumeTier.discountPct;
 
-      const tierLabel = SHARED_TIER_LABELS[input.tier as TeamStreamTier];
-      const provinceLabel = input.province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)";
+      // Graduated volume pricing: Stripe applies the band arithmetic itself
+      const priceId = await getOrCreateTeamAllAccessPrice(
+        getTeamBasePriceCents(input.province, input.tier as TeamStreamTier),
+      );
 
-      const lineItem = {
-        price_data: {
-          currency: "cad",
-          unit_amount: unitAmount,
-          recurring: { interval: "year" as const },
-          product_data: {
-            name: `Echelon for Teams — ${tierLabel} — ${provinceLabel}`,
-            description: `${tierLabel} annual team plan for ${input.seats} operator${input.seats === 1 ? "" : "s"} in ${provinceLabel}${discountPct > 0 ? ` (${discountPct}% volume discount)` : ""}`,
-          },
-        },
-        quantity: input.seats,
-      };
+      const expectedTotalCents = getTeamTotalPriceCents(
+        input.province,
+        input.tier as TeamStreamTier,
+        input.seats,
+      );
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         mode: "subscription",
-        line_items: [lineItem as any],
+        line_items: [{ price: priceId, quantity: input.seats }],
         customer_email: input.managerEmail,
         metadata: {
           type: "org",
@@ -596,6 +591,9 @@ export const stripeRouter = router({
           subscription_tier: input.tier,
           subscription_province: input.province,
           seats: String(input.seats),
+          pricing_model: "graduated",
+          catalogue_version: CATALOGUE_VERSION,
+          expected_total_cents: String(expectedTotalCents),
         },
         subscription_data: {
           metadata: {
@@ -605,6 +603,8 @@ export const stripeRouter = router({
             subscription_tier: input.tier,
             subscription_province: input.province,
             seats: String(input.seats),
+            pricing_model: "graduated",
+            catalogue_version: CATALOGUE_VERSION,
           },
         },
         phone_number_collection: { enabled: true },

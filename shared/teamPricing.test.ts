@@ -120,24 +120,24 @@ describe("Single Stream exact pricing results", () => {
     expect(getTeamSeatPriceCents("ontario", "stream-water", 10)).toBe(35910);
   });
 
-  it("10 licences → $3,141.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 10)).toBe(359100);
+  it("10 licences → graduated 10-seat total", () => {
+    expect(getTeamTotalPriceCents("ontario", "stream-water", 10)).toBe(395010);
   });
 
   it("25 licences → $381.65 per licence", () => {
     expect(getTeamSeatPriceCents("ontario", "stream-water", 25)).toBe(33915);
   });
 
-  it("25 licences → $7,416.25 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 25)).toBe(847875);
+  it("25 licences → graduated 25-seat total", () => {
+    expect(getTeamTotalPriceCents("ontario", "stream-water", 25)).toBe(931665);
   });
 
   it("50 licences → $279.20 per licence", () => {
     expect(getTeamSeatPriceCents("ontario", "stream-water", 50)).toBe(31920);
   });
 
-  it("50 licences → $13,960.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 50)).toBe(1596000);
+  it("50 licences → graduated 50-seat total", () => {
+    expect(getTeamTotalPriceCents("ontario", "stream-water", 50)).toBe(1777545);
   });
 });
 
@@ -150,24 +150,24 @@ describe("All Streams exact pricing results", () => {
     expect(getTeamSeatPriceCents("ontario", "all-access", 10)).toBe(35910);
   });
 
-  it("10 licences → $4,041.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 10)).toBe(359100);
+  it("10 licences → graduated 10-seat total", () => {
+    expect(getTeamTotalPriceCents("ontario", "all-access", 10)).toBe(395010);
   });
 
   it("25 licences → $381.65 per licence", () => {
     expect(getTeamSeatPriceCents("ontario", "all-access", 25)).toBe(33915);
   });
 
-  it("25 licences → $9,541.25 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 25)).toBe(847875);
+  it("25 licences → graduated 25-seat total", () => {
+    expect(getTeamTotalPriceCents("ontario", "all-access", 25)).toBe(931665);
   });
 
   it("50 licences → $359.20 per licence", () => {
     expect(getTeamSeatPriceCents("ontario", "all-access", 50)).toBe(31920);
   });
 
-  it("50 licences → $17,960.00 total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 50)).toBe(1596000);
+  it("50 licences → graduated 50-seat total", () => {
+    expect(getTeamTotalPriceCents("ontario", "all-access", 50)).toBe(1777545);
   });
 });
 
@@ -188,8 +188,8 @@ describe("formatTeamPriceCAD", () => {
     expect(formatTeamPriceCAD(33915)).toContain("339.15");
   });
 
-  it("formats 847875 cents to contain '11,666.25'", () => {
-    expect(formatTeamPriceCAD(847875)).toContain("8,478.75");
+  it("formats 931665 cents correctly", () => {
+    expect(formatTeamPriceCAD(931665)).toContain("9,316.65");
   });
 
   it("formats whole-dollar amounts without cents", () => {

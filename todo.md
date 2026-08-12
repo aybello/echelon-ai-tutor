@@ -1313,3 +1313,11 @@
 - [x] DB-driven changelog: create tRPC procedures (list public, create/edit/delete admin)
 - [x] DB-driven changelog: update About page to read from DB
 - [ ] DB-driven changelog: add admin UI to manage entries
+- [x] Graduated pricing: fix Stripe checkout to use tiers_mode graduated (not retroactive unit_amount)
+- [x] Graduated pricing: make pricingCatalogue genuinely canonical (used by teamPricing and stripeRouter)
+- [x] Graduated pricing: add getTeamEffectiveSeatPriceCents, getTeamMarginalSeatPriceCents, getTeamSavingsCents
+- [x] Graduated pricing: fix orgRouter resolveOrgManager deterministic sort
+- [x] Graduated pricing: update Pricing.tsx to use shared functions (no inline band loop)
+- [x] Graduated pricing: update Teams.tsx to show average per-seat price
+- [x] Graduated pricing: add teamGraduatedPrice.ts (Stripe tiered Price creation)
+- [x] Graduated pricing: update all tests to expect graduated totals

@@ -9,7 +9,9 @@ import {
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
   getTeamVolumeTier,
-  getTeamSeatPriceCents,
+  getTeamEffectiveSeatPriceCents,
+  getTeamEffectiveDiscountPct,
+  getTeamSavingsCents,
   getTeamTotalPriceCents,
   formatTeamPriceCAD,
 } from "@shared/teamPricing";
@@ -52,7 +54,7 @@ export default function Teams() {
   const [loading, setLoading] = useState(false);
 
   const volumeTier = useMemo(() => getTeamVolumeTier(seats), [seats]);
-  const seatPriceCents = useMemo(() => getTeamSeatPriceCents(province, tier, seats), [province, seats]);
+  const seatPriceCents = useMemo(() => getTeamEffectiveSeatPriceCents(province, tier, seats), [province, seats]);
   const totalCents = useMemo(() => getTeamTotalPriceCents(province, tier, seats), [province, seats]);
   const basePriceCents = 39900; // CA$399 unified price
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();

@@ -11,7 +11,10 @@ export {
   TEAM_VOLUME_TIERS,
   getTeamVolumeTier,
   getTeamBasePriceCents,
-  getTeamSeatPriceCents,
+  getTeamEffectiveSeatPriceCents,
+  getTeamMarginalSeatPriceCents,
+  getTeamEffectiveDiscountPct,
+  getTeamSavingsCents,
   getTeamTotalPriceCents,
   formatTeamPriceCAD,
 } from "../../shared/teamPricing";
