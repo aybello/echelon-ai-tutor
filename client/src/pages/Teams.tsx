@@ -7,8 +7,6 @@ import { useState, useMemo } from "react";
 import {
   type TeamStreamTier,
   TEAM_BASE_PRICE,
-  TEAM_STREAM_TIER_LABELS,
-  TEAM_STREAM_TIER_DESCRIPTIONS,
   TEAM_VOLUME_TIERS,
   getTeamVolumeTier,
   getTeamSeatPriceCents,
@@ -46,27 +44,28 @@ import { FlexOrderBuilder } from "@/components/FlexOrderBuilder";
 export default function Teams() {
   const [planType, setPlanType] = useState<"annual" | "flex">("annual");
   const [location] = useLocation();
-  const [seats, setSeats] = useState(10);
+  const [seats, setSeats] = useState(5);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
-  const [tier, setTier] = useState<TeamStreamTier>("all-access");
+  const tier: TeamStreamTier = "all-access"; // Annual Plan is always all-access at CA$399
   const [orgName, setOrgName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
   const volumeTier = useMemo(() => getTeamVolumeTier(seats), [seats]);
-  const seatPriceCents = useMemo(() => getTeamSeatPriceCents(province, tier, seats), [province, tier, seats]);
-  const totalCents = useMemo(() => getTeamTotalPriceCents(province, tier, seats), [province, tier, seats]);
-  const basePriceCents = TEAM_BASE_PRICE[province as "ontario" | "western"]?.[tier] ?? 34900;
+  const seatPriceCents = useMemo(() => getTeamSeatPriceCents(province, tier, seats), [province, seats]);
+  const totalCents = useMemo(() => getTeamTotalPriceCents(province, tier, seats), [province, seats]);
+  const basePriceCents = 39900; // CA$399 unified price
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
 
   const handleSeatsChange = (val: string) => {
     const n = parseInt(val, 10);
-    if (!isNaN(n) && n >= 1 && n <= 500) setSeats(n);
+    if (!isNaN(n) && n >= 5 && n <= 500) setSeats(n);
   };
 
   const handleCheckout = async () => {
     if (!orgName.trim()) { toast.error("Please enter your organization name."); return; }
     if (!managerEmail.trim() || !managerEmail.includes("@")) { toast.error("Please enter a valid manager email."); return; }
+    if (seats < 5) { toast.error("Annual All-Access requires a minimum of 5 operators."); return; }
     setLoading(true);
     try {
       const result = await createCheckout.mutateAsync({
@@ -171,8 +170,8 @@ export default function Teams() {
               </div>
             )}
             <div className="text-lg font-bold text-gray-900 mb-1">Annual Plan</div>
-            <p className="text-sm text-gray-500 leading-relaxed">All-access for your team. One price per operator per year. Best for ongoing training programs.</p>
-            <div className="mt-3 text-xs font-semibold text-blue-700 bg-blue-100 inline-block px-2.5 py-1 rounded-full">From CA$449/operator/year</div>
+            <p className="text-sm text-gray-500 leading-relaxed">Every course, every stream. One price per operator per year. Best for ongoing training programs.</p>
+            <div className="mt-3 text-xs font-semibold text-blue-700 bg-blue-100 inline-block px-2.5 py-1 rounded-full">CA$399/operator/year · 5-seat minimum</div>
           </button>
           <button
             onClick={() => setPlanType("flex")}
@@ -188,7 +187,7 @@ export default function Teams() {
               </div>
             )}
             <div className="text-lg font-bold text-gray-900 mb-1">Course Passes</div>
-            <p className="text-sm text-gray-500 leading-relaxed">Buy specific courses for specific operators. 3 or 6 month terms. Best for targeted exam prep cohorts.</p>
+            <p className="text-sm text-gray-500 leading-relaxed">Buy specific courses for specific operators. 3, 6, or 12 month terms. Best for targeted exam prep cohorts.</p>
             <div className="mt-3 text-xs font-semibold text-teal-700 bg-teal-100 inline-block px-2.5 py-1 rounded-full">Price shown by course and term</div>
           </button>
         </div>
@@ -223,36 +222,20 @@ export default function Teams() {
             </Select>
           </div>
 
-          {/* Tier selector */}
-          <div className="space-y-2">
-            <Label className="text-gray-700 font-medium">Certification stream</Label>
-            <div className="grid grid-cols-5 gap-1.5">
-              {(["stream-water","stream-wastewater","stream-water-dist","stream-wastewater-coll","all-access"] as TeamStreamTier[]).map(t => (
-                <button
-                  key={t}
-                  onClick={() => setTier(t)}
-                  className={`px-2 py-2 rounded-lg text-xs font-semibold border transition-all ${
-                    tier === t
-                      ? "text-white border-transparent shadow-md"
-                      : "border-gray-200 text-gray-600 hover:border-blue-400 hover:text-blue-700 bg-white"
-                  }`}
-                  style={tier === t ? { background: "linear-gradient(135deg, #1D4ED8, #0E7490)" } : {}}
-                >
-                  {t === "all-access" ? "All Streams" : TEAM_STREAM_TIER_LABELS[t]}
-                </button>
-              ))}
-            </div>
-            <p className="text-xs text-gray-500 pt-1">{TEAM_STREAM_TIER_DESCRIPTIONS[tier]}</p>
+          {/* All-Access badge */}
+          <div className="rounded-xl px-4 py-3 bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-100">
+            <p className="text-sm font-semibold text-blue-800">All-Access — Every stream, every level</p>
+            <p className="text-xs text-gray-500 mt-0.5">Water Treatment, Wastewater Treatment, Water Distribution, Wastewater Collection — all 4 streams, Class 1–4.</p>
           </div>
 
           {/* Seats */}
           <div className="space-y-2">
             <Label className="text-gray-700 font-medium">Number of annual operator licences</Label>
-            <p className="text-xs text-gray-500 -mt-1">Each annual licence covers one operator during the contract year. Operator access can be deactivated and restored without losing progress, but assigning a different employee uses another annual licence.</p>
+            <p className="text-xs text-gray-500 -mt-1">Each annual licence covers one operator during the contract year. Minimum 5 operators. Operator access can be deactivated and restored without losing progress.</p>
             <div className="flex items-center gap-3">
               <Input
                 type="number"
-                min={1}
+                min={5}
                 max={500}
                 value={seats}
                 onChange={e => handleSeatsChange(e.target.value)}
