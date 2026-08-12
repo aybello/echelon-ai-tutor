@@ -257,14 +257,14 @@ export const teamFlexRouter = router({
       // ── Auth: accept OAuth, email-code session, OR input.managerEmail ──
       let purchaserUserId: number | null = null;
       let managerEmail: string;
-      let orgId: number | null = null;
+      let orgId: number = 0;
       const ctxEmail = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
       if (ctxEmail) {
         purchaserUserId = ctx.user?.id ?? null;
         managerEmail = ctxEmail;
         try {
           const mgr = await resolveManagerOrg(ctx);
-          orgId = mgr.orgId;
+          orgId = mgr.orgId ?? 0;
         } catch { /* new manager, no org yet */ }
       } else if (input.managerEmail) {
         managerEmail = input.managerEmail.toLowerCase().trim();

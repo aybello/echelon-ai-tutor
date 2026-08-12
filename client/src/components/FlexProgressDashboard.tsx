@@ -1,8 +1,8 @@
-import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Activity, Clock, Target, TrendingUp, UserCheck, Mail } from "lucide-react";
+import { Activity, Clock, Target, TrendingUp, UserCheck, Mail, AlertCircle } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof Activity }> = {
   active: { label: "Studying", color: "bg-emerald-100 text-emerald-800", icon: Activity },
@@ -51,8 +51,13 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     retry: false,
     refetchInterval: 60_000, // Refresh every minute
   });
+  const licencesQuery = trpc.teamFlex.listLicences.useQuery({ orgId }, {
+    retry: false,
+    refetchInterval: 60_000,
+  });
 
   const data = progressQuery.data ?? [];
+  const allLicences = licencesQuery.data ?? [];
 
   if (data.length === 0) {
     return null; // No Flex licences to show progress for
@@ -67,6 +72,13 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     ? Math.round(activeOperators.reduce((sum, d) => sum + d.readinessScore, 0) / activeOperators.length)
     : 0;
 
+  // Activation rate metrics
+  const totalPurchased = allLicences.length;
+  const activatedCount = allLicences.filter(l => l.status === "active").length;
+  const invitedCount = allLicences.filter(l => l.status === "invited").length;
+  const unactivatedCount = allLicences.filter(l => ["unused", "invited", "assigned"].includes(l.status)).length;
+  const activationRate = totalPurchased > 0 ? Math.round((activatedCount / totalPurchased) * 100) : 0;
+
   return (
     <Card className="mt-6">
       <CardHeader>
@@ -79,8 +91,28 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
         </CardTitle>
       </CardHeader>
       <CardContent>
+        {/* Activation rate banner */}
+        {unactivatedCount > 0 && (
+          <div className="flex items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 mb-5">
+            <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-amber-800">
+                {unactivatedCount} licence{unactivatedCount === 1 ? "" : "s"} not yet activated
+              </p>
+              <p className="text-xs text-amber-600 mt-0.5">
+                {invitedCount > 0 && `${invitedCount} invited · `}
+                Activation rate: {activationRate}% ({activatedCount}/{totalPurchased})
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Summary stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
+          <div className="rounded-lg border border-slate-200 p-3 text-center">
+            <p className="text-2xl font-bold text-slate-900">{totalPurchased}</p>
+            <p className="text-xs text-slate-500">Purchased</p>
+          </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
             <p className="text-2xl font-bold text-slate-900">{totalAttempts.toLocaleString()}</p>
             <p className="text-xs text-slate-500">Questions Answered</p>

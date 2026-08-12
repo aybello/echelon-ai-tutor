@@ -1279,3 +1279,16 @@
 - [x] Locate and remove the unintended blank band below the hero
 - [x] Preserve a compact, legible Teams banner transition
 - [x] Validate, deploy, push, and record the spacing correction
+
+## Utilities Kingston All-Access Breadth Analysis
+- [ ] Validate and run the supplied read-only course-breadth queries
+- [ ] Quantify operator course breadth and active course usage
+- [ ] Report the evidence-based implication for annual all-access versus Course Passes
+
+## Analytics Backfill — Historical orgId Repair
+- [x] Dry-run backfill: count matched, unmatched, ambiguous rows
+- [x] Apply the UPDATE to set orgId on Kingston operator question_attempts
+- [ ] Verify manager dashboard now shows Kingston historical activity
+- [x] Add activation rate (unactivated seats %) to manager dashboard
+- [x] Fix 2 persistent TS errors in teamFlexRouter.ts (organizationId null)
+- [x] Write automated test for backfill safety
