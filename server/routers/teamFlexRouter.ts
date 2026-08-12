@@ -323,7 +323,7 @@ export const teamFlexRouter = router({
 
       for (const item of normalizedItems) {
         if (!isValidFlexTerm(item.termMonths)) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Only 3 or 6 months.` });
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Must be 3, 6, or 12 months.` });
         }
 
         const bandResult = getCourseKeyPricingBand(item.courseKey);

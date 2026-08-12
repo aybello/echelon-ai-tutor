@@ -1059,6 +1059,98 @@ const PRICING_STYLES = `
 `;
 
 // ─── Main Pricing Page ────────────────────────────────────────────────────────
+/** Seat calculator for Teams All-Access — shows graduated pricing */
+function TeamSeatCalculator() {
+  const [seats, setSeats] = useState(10);
+  const BASE = 39900; // CA$399
+
+  // Graduated band calculation (matches server-side calculateGraduatedTotal)
+  const bands = [
+    { min: 1, max: 9, rate: 0 },
+    { min: 10, max: 24, rate: 0.10 },
+    { min: 25, max: 49, rate: 0.15 },
+    { min: 50, max: Infinity, rate: 0.20 },
+  ];
+  let totalCents = 0;
+  let remaining = seats;
+  for (const band of bands) {
+    if (remaining <= 0) break;
+    const inBand = Math.min(remaining, band.max === Infinity ? remaining : band.max - band.min + 1);
+    totalCents += Math.round(BASE * (1 - band.rate)) * inBand;
+    remaining -= inBand;
+  }
+  const perSeatAvg = seats > 0 ? Math.round(totalCents / seats) : BASE;
+  const savings = (BASE * seats) - totalCents;
+  const fmt = (c: number) => `CA$${(c / 100).toLocaleString("en-CA", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+
+  return (
+    <section style={{ maxWidth: 860, margin: "0 auto 52px", padding: 28, borderRadius: 18, background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", color: "#fff" }}>
+      <div style={{ textAlign: "center" }}>
+        <h2 style={{ fontSize: 25, margin: "0 0 6px", fontWeight: 900 }}>Teams All-Access</h2>
+        <p style={{ maxWidth: 560, margin: "0 auto 20px", color: "#CBD5E1", fontSize: 14, lineHeight: 1.6 }}>
+          Every course, every stream. One price per operator per year. Volume discounts applied automatically.
+        </p>
+      </div>
+
+      {/* Seat slider */}
+      <div style={{ maxWidth: 480, margin: "0 auto 24px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+          <label style={{ fontSize: 13, color: "#94A3B8", fontWeight: 700 }}>Operators</label>
+          <span style={{ fontSize: 28, fontWeight: 900, color: "#fff" }}>{seats}</span>
+        </div>
+        <input
+          type="range"
+          min={5}
+          max={100}
+          value={seats}
+          onChange={(e) => setSeats(Number(e.target.value))}
+          style={{ width: "100%", accentColor: "#2563EB", cursor: "pointer" }}
+        />
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#64748B", marginTop: 4 }}>
+          <span>5 (minimum)</span>
+          <span>100</span>
+        </div>
+      </div>
+
+      {/* Pricing result */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, maxWidth: 520, margin: "0 auto 20px" }}>
+        <div style={{ padding: "14px 16px", borderRadius: 12, background: "rgba(255,255,255,0.06)", textAlign: "center" }}>
+          <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, marginBottom: 4 }}>Per Operator</div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: "#fff" }}>{fmt(perSeatAvg)}</div>
+          <div style={{ fontSize: 11, color: "#64748B" }}>/year</div>
+        </div>
+        <div style={{ padding: "14px 16px", borderRadius: 12, background: "rgba(255,255,255,0.06)", textAlign: "center" }}>
+          <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, marginBottom: 4 }}>Total</div>
+          <div style={{ fontSize: 22, fontWeight: 900, color: "#fff" }}>{fmt(totalCents)}</div>
+          <div style={{ fontSize: 11, color: "#64748B" }}>/year</div>
+        </div>
+        {savings > 0 && (
+          <div style={{ padding: "14px 16px", borderRadius: 12, background: "rgba(34,197,94,0.12)", textAlign: "center" }}>
+            <div style={{ fontSize: 11, color: "#4ADE80", fontWeight: 700, marginBottom: 4 }}>You Save</div>
+            <div style={{ fontSize: 22, fontWeight: 900, color: "#4ADE80" }}>{fmt(savings)}</div>
+            <div style={{ fontSize: 11, color: "#64748B" }}>vs. list price</div>
+          </div>
+        )}
+      </div>
+
+      {/* Volume bands */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
+        {["1–9: list price", "10–24: 10% off", "25–49: 15% off", "50+: 20% off"].map((text) => (
+          <span key={text} style={{ padding: "6px 10px", borderRadius: 20, background: "rgba(255,255,255,0.08)", color: "#E2E8F0", fontSize: 11, fontWeight: 700 }}>{text}</span>
+        ))}
+      </div>
+
+      {/* Course Passes note + CTA */}
+      <div style={{ textAlign: "center" }}>
+        <p style={{ margin: "0 0 16px", color: "#94A3B8", fontSize: 13 }}>
+          Need targeted exam prep instead? <strong style={{ color: "#E2E8F0" }}>Course Passes</strong> start at CA$29/operator for 3 months.
+        </p>
+        <Link href="/teams"><button style={{ cursor: "pointer", fontFamily: "inherit", border: "none", borderRadius: 10, padding: "13px 22px", background: "linear-gradient(135deg, #2563EB, #14B8A6)", color: "#fff", fontSize: 14, fontWeight: 800 }}>Build a Team Plan →</button></Link>
+      </div>
+    </section>
+  );
+}
+
 export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
   usePageMeta({
@@ -1264,15 +1356,7 @@ export default function Pricing() {
         )}
 
         {buyerType === "team" && (
-          <section style={{ maxWidth: 860, margin: "0 auto 52px", padding: 28, borderRadius: 18, background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", color: "#fff", textAlign: "center" }}>
-            <div style={{ fontSize: 30, marginBottom: 10 }}>🏢</div>
-            <h2 style={{ fontSize: 25, margin: 0, fontWeight: 900 }}>Training a team of operators?</h2>
-            <p style={{ maxWidth: 620, margin: "12px auto 20px", color: "#CBD5E1", fontSize: 14, lineHeight: 1.6 }}>Choose targeted Course Passes from CA$29 per operator/course, or annual all-access from CA$399 per operator (5-seat minimum). Manager dashboard, reporting, and graduated volume discounts included.</p>
-            <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
-              {["1–9: standard pricing", "10–24: 10% off", "25–49: 15% off", "50+: 20% off"].map((text) => <span key={text} style={{ padding: "7px 10px", borderRadius: 20, background: "rgba(255,255,255,0.10)", color: "#E2E8F0", fontSize: 12, fontWeight: 700 }}>{text}</span>)}
-            </div>
-            <Link href="/teams"><button style={{ cursor: "pointer", fontFamily: "inherit", border: "none", borderRadius: 10, padding: "13px 20px", background: "linear-gradient(135deg, #2563EB, #14B8A6)", color: "#fff", fontSize: 14, fontWeight: 800 }}>Build a Team Plan →</button></Link>
-          </section>
+          <TeamSeatCalculator />
         )}
 
         {/* ── Fix 13: Annual vs One-Time Comparison Table ── */}
