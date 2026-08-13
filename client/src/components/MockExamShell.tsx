@@ -241,7 +241,10 @@ export interface MockExamConfig {
   price: number;
   /** Optional feature bullets for paywall */
   features?: string[];
-  /** Path to navigate back to on paywall close */
+  /**
+   * @deprecated Mock-exam paywalls always return to practicePath so the close,
+   * back, intro, active-exam exit, and results actions share one destination.
+   */
   backPath?: string;
   /** Path to the practice quiz page (shown in results) */
   practicePath: string;
@@ -356,7 +359,6 @@ export default function MockExamShell({
   productName: productNameProp,
   price: priceProp,
   features,
-  backPath = "/",
   practicePath,
   practiceLabel,
   formulaPath,
@@ -537,7 +539,7 @@ export default function MockExamShell({
         productName={productNameProp}
         price={priceProp}
         features={features}
-        backPath={backPath}
+        backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
           <SiteNav currentPath={currentPath} />
@@ -645,7 +647,7 @@ export default function MockExamShell({
         productName={productName}
         price={price}
         features={features}
-        backPath={backPath}
+        backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
           <SiteNav currentPath={currentPath} />

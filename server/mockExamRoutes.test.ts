@@ -1,37 +1,43 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
-const mockExamReturnRoutes = [
-  ["Class1WastewaterMockExam.tsx", "/class1-ww"],
-  ["Class2WaterMockExam.tsx", "/class2-water"],
-  ["Class2WastewaterMockExam.tsx", "/class2-ww"],
-  ["Class3WaterMockExam.tsx", "/class3-water"],
-  ["Class3WastewaterMockExam.tsx", "/class3-ww"],
-  ["Class4WaterMockExam.tsx", "/class4-water"],
-  ["Class4WastewaterMockExam.tsx", "/class4-ww"],
-] as const;
+const pagesDir = resolve(process.cwd(), "client/src/pages");
+const shellSource = readFileSync(
+  resolve(process.cwd(), "client/src/components/MockExamShell.tsx"),
+  "utf8",
+);
+const appSource = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
+const registeredRoutes = new Set(
+  Array.from(appSource.matchAll(/path=\{?"([^"]+)"/g), match => match[1]),
+);
+const mockExamFiles = readdirSync(pagesDir)
+  .filter(filename => filename.endsWith("MockExam.tsx"))
+  .sort();
 
-const registeredCourseRoutes = new Set([
-  "/class1-ww",
-  "/class2-water",
-  "/class2-ww",
-  "/class3-water",
-  "/class3-ww",
-  "/class4-water",
-  "/class4-ww",
-]);
-
-describe("Ontario mock-exam purchase-gate return routes", () => {
-  it("uses a registered course route for every repaired gate", () => {
-    expect(mockExamReturnRoutes.every(([, route]) => registeredCourseRoutes.has(route))).toBe(true);
+describe("mock-exam navigation", () => {
+  it("uses practicePath for both purchase-gate exit surfaces", () => {
+    expect(shellSource.match(/backPath=\{practicePath\}/g)).toHaveLength(2);
+    expect(shellSource).not.toContain("backPath={backPath}");
   });
 
-  it("configures each affected page to return to its valid practice course", () => {
-    for (const [filename, route] of mockExamReturnRoutes) {
-      const source = readFileSync(resolve(process.cwd(), "client/src/pages", filename), "utf8");
-      expect(source).toContain(`backPath="${route}"`);
-      expect(source).not.toContain('backPath="/ontario"');
+  it("gives every mock exam a registered practice return route", () => {
+    expect(mockExamFiles.length).toBeGreaterThan(30);
+
+    for (const filename of mockExamFiles) {
+      const source = readFileSync(resolve(pagesDir, filename), "utf8");
+      const practicePath = source.match(/practicePath="([^"]+)"/)?.[1];
+
+      expect(practicePath, `${filename} must declare practicePath`).toBeTruthy();
+      expect(
+        registeredRoutes.has(practicePath!),
+        `${filename} practicePath ${practicePath} must be registered in App.tsx`,
+      ).toBe(true);
     }
+  });
+
+  it("uses the same practice route for intro, active-exam exit, and results", () => {
+    expect(shellSource).toContain('<Link href={practicePath}');
+    expect(shellSource).toContain("window.location.href = practicePath");
   });
 });
