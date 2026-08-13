@@ -246,17 +246,17 @@ describe("stripe.getMyPurchases", () => {
 
 describe("stripe.checkAccess", () => {
   // OIT and OIT-WW are free exam types — always returns hasAccess:true regardless of login or purchase
-  it("returns hasAccess:true for a guest checking OIT (free exam type)", async () => {
+  it("returns hasAccess:false for a guest checking OIT (now paid)", async () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.checkAccess({ examType: "oit" });
-    expect(result.hasAccess).toBe(true);
+    expect(result.hasAccess).toBe(false);
   });
 
-  it("returns hasAccess:true for OIT even when user has no purchase (free exam type)", async () => {
+  it("returns hasAccess:false for OIT when user has no purchase (now paid)", async () => {
     // OIT is free — no purchase required
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.checkAccess({ examType: "oit" });
-    expect(result.hasAccess).toBe(true);
+    expect(result.hasAccess).toBe(false);
   });
 
   it("returns hasAccess:false for a paid exam type when user has no purchase", async () => {
