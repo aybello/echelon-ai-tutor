@@ -119,7 +119,7 @@ export default function LearnerActivation() {
     });
   };
 
-  if (auth.isLoading || oauth.loading || step === "loading" || status.isLoading) {
+  if (auth.isLoading || oauth.loading || status.isLoading) {
     return <ActivationLoading />;
   }
 
@@ -136,6 +136,10 @@ export default function LearnerActivation() {
         </main>
       </div>
     );
+  }
+
+  if (step === "loading") {
+    return <ActivationLoading />;
   }
 
   return (

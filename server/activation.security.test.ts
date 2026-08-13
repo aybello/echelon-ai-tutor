@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 const activationSource = readFileSync(resolve(__dirname, "routers/activationRouter.ts"), "utf8");
 const funnelSource = readFileSync(resolve(__dirname, "routers/funnelAnalyticsRouter.ts"), "utf8");
+const activationPageSource = readFileSync(resolve(__dirname, "../client/src/pages/LearnerActivation.tsx"), "utf8");
 
 describe("activation journey security invariants", () => {
   it("checks entitlement before every activation operation", () => {
@@ -29,5 +30,13 @@ describe("activation journey security invariants", () => {
     expect(funnelSource).toContain('z.discriminatedUnion("event"');
     expect(funnelSource).not.toContain("email:");
     expect(funnelSource).not.toContain("metadata:");
+  });
+
+  it("renders an entitlement recovery state before retaining the activation loading screen", () => {
+    const errorState = activationPageSource.indexOf("if (status.error)");
+    const loadingFallback = activationPageSource.indexOf('if (step === "loading")');
+    expect(errorState).toBeGreaterThan(-1);
+    expect(loadingFallback).toBeGreaterThan(errorState);
+    expect(activationPageSource).toContain("We could not open this study plan");
   });
 });
