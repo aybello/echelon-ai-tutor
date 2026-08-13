@@ -38,6 +38,7 @@ import {
   getIndividualExamPassExpiry,
 } from "../stripe/individualExamPass";
 import { trackEvent } from "../analytics";
+import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -551,6 +552,7 @@ export const stripeRouter = router({
         mode: "subscription",
         line_items: [{ price: priceId, quantity: input.seats }],
         customer_email: input.managerEmail,
+        ...buildTeamSubscriptionBillingDocumentOptions(),
         metadata: {
           type: "org",
           org_name: input.orgName,

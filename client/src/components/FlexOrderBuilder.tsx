@@ -198,7 +198,7 @@ export function FlexOrderBuilder() {
             value={billingEmail}
             onChange={e => setBillingEmail(e.target.value)}
           />
-          <p className="text-xs text-gray-400">Payment receipt will be sent here.</p>
+          <p className="text-xs text-gray-400">Your Stripe receipt and paid invoice will be sent here automatically.</p>
         </div>
 
         {/* Manager Email */}
