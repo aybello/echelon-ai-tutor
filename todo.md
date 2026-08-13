@@ -1358,4 +1358,4 @@
 - [x] Apply and verify migration 0052 for onboarding and diagnostic records
 - [x] Fix the activation page so entitlement errors render a clear recovery state instead of an indefinite loading screen
 - [x] Run regression coverage and verify learner activation and manager outcomes views
-- [ ] Deploy the approved outcomes build and synchronize GitHub
+- [x] Deploy the approved outcomes build and synchronize GitHub
