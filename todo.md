@@ -1340,4 +1340,4 @@
 ## Architectural Mock-Exam Navigation Safeguard
 - [x] Merge the shared-shell navigation fix that uses each mock exam's registered practice route
 - [x] Verify the dynamic all-mock-exam route regression checks
-- [ ] Deploy the architectural safeguard and synchronize GitHub
+- [x] Deploy the architectural safeguard and synchronize GitHub
