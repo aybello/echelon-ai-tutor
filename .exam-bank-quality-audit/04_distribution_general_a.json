@@ -1,0 +1,1125 @@
+[
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 568,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the first atmospheric condition normally checked before entering a confined space?",
+    "options": [
+      "Water hardness",
+      "Pipe pressure",
+      "Oxygen concentration",
+      "Motor speed"
+    ],
+    "correctIndex": 2,
+    "explanation": "Oxygen is tested first because low or enriched oxygen affects both life safety and the performance of some combustible-gas readings. Toxic and combustible hazards are then tested as required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 569,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the purpose of lockout/tagout?",
+    "options": [
+      "Increase system pressure",
+      "Identify water samples",
+      "Record customer complaints",
+      "Prevent unexpected energization or release of hazardous energy during work"
+    ],
+    "correctIndex": 3,
+    "explanation": "Lockout/tagout isolates and controls electrical, hydraulic, pneumatic, mechanical, and other hazardous energy.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 570,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Why is a trench protective system used?",
+    "options": [
+      "Protect workers from cave-ins",
+      "Increase pipe flow",
+      "Prevent chlorine decay",
+      "Locate buried valves"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cave-ins can occur suddenly and are often fatal. Sloping, shoring, or shielding is selected under the applicable excavation procedure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 571,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the main purpose of traffic-control signs and devices at a watermain repair?",
+    "options": [
+      "Increase hydrant flow",
+      "Guide road users safely around the work zone and protect workers",
+      "Measure trench depth",
+      "Disinfect repair fittings"
+    ],
+    "correctIndex": 1,
+    "explanation": "A planned work zone provides advance warning, channelization, and safe separation for workers, motorists, cyclists, and pedestrians.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 572,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Before using a portable electrical tool in a wet location, what should be confirmed?",
+    "options": [
+      "The watermain is PVC",
+      "The nearest hydrant is red",
+      "The tool, supply, grounding or double insulation, and GFCI protection are suitable",
+      "The sample bottle is sterile"
+    ],
+    "correctIndex": 2,
+    "explanation": "Wet conditions increase shock risk. Equipment and protective devices must be rated, inspected, and used according to procedure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 573,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Why should suspended loads never pass over workers?",
+    "options": [
+      "The load changes water pH",
+      "It causes pipe corrosion",
+      "It reduces chlorine residual",
+      "A dropped or shifted load can cause crushing or fatal injury"
+    ],
+    "correctIndex": 3,
+    "explanation": "Workers must stay clear of suspended loads and the fall zone because rigging or lifting equipment can fail.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 574,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does an SDS provide?",
+    "options": [
+      "Hazard, handling, storage, exposure-control, and emergency information for a product",
+      "Watermain invert elevations",
+      "Pump performance curves only",
+      "Customer billing records"
+    ],
+    "correctIndex": 0,
+    "explanation": "A safety data sheet communicates chemical hazards and controls. Site procedures and labels must also be followed.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 575,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the purpose of a tailboard or pre-job safety meeting?",
+    "options": [
+      "Replace the written procedure",
+      "Review the work, hazards, controls, roles, and emergency plan before starting",
+      "Approve unplanned scope changes automatically",
+      "Set chlorine dose without testing"
+    ],
+    "correctIndex": 1,
+    "explanation": "A pre-job review ensures the crew shares the same plan and understands changing conditions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 576,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Why must an excavation be inspected after heavy rain?",
+    "options": [
+      "Rain always compacts the trench safely",
+      "Inspection is required only for concrete pipe",
+      "Rain can weaken soil and change water, access, and protective-system conditions",
+      "Water eliminates cave-in risk"
+    ],
+    "correctIndex": 2,
+    "explanation": "Rainfall and water accumulation can reduce stability. A competent inspection is needed before work resumes.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 577,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the safest lifting principle for a heavy valve box cover?",
+    "options": [
+      "Lift quickly with a twisted back",
+      "Stand over the opening while pulling",
+      "Use damaged hooks if the cover is stuck",
+      "Use a suitable tool or mechanical aid and avoid awkward manual lifting"
+    ],
+    "correctIndex": 3,
+    "explanation": "Mechanical assistance and neutral posture reduce strain and pinch injuries. The opening must also be controlled.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 578,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A trench is 1.8 m deep and soil begins sloughing from one wall. What should the crew do?",
+    "options": [
+      "Exit the trench and have the protective system and soil conditions reassessed",
+      "Continue while one person watches",
+      "Work faster before more soil falls",
+      "Remove the access ladder"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sloughing signals instability. Workers leave the hazard area until a competent person establishes safe conditions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 579,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A valve chamber has a permit-space label, but its cover has been open all morning. Can a worker enter without the confined-space procedure?",
+    "options": [
+      "Yes, because natural ventilation guarantees safety",
+      "No; opening the cover does not remove the classification or documented hazards",
+      "Yes, if entry lasts under five minutes",
+      "Yes, if no odour is present"
+    ],
+    "correctIndex": 1,
+    "explanation": "Atmospheres can change and odour is unreliable. Required assessment, testing, ventilation, attendant, rescue, and permit controls still apply.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 580,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "During a main repair, a backhoe must swing near overhead power lines. What is the correct control?",
+    "options": [
+      "Rely on the operator's depth perception alone",
+      "Touch the line with the bucket to confirm height",
+      "Establish required clearance and use the approved electrical-hazard and spotter plan",
+      "Ground the watermain instead of controlling clearance"
+    ],
+    "correctIndex": 2,
+    "explanation": "Equipment contact or arcing can be fatal. Minimum approach distances and utility-specific controls are required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 581,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A crew finds an unmarked utility crossing the excavation. What should happen?",
+    "options": [
+      "Move it with the excavator",
+      "Assume it is abandoned",
+      "Cut it if it is smaller than the watermain",
+      "Stop work, protect the area, and have the utility identified and the locate resolved"
+    ],
+    "correctIndex": 3,
+    "explanation": "Unknown services may be energized, pressurized, or critical. Work cannot continue until ownership and safe handling are established.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 582,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why must stored hydraulic pressure be relieved before repairing a valve actuator?",
+    "options": [
+      "Isolation alone may leave energy capable of moving parts unexpectedly",
+      "Pressure improves lockout",
+      "Stored energy exists only in electrical circuits",
+      "Relieving pressure sterilizes the valve"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydraulic accumulators, trapped water, springs, and gravity can retain hazardous energy after the power source is isolated.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 583,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A worker is using a cut-off saw on old pipe that may contain hazardous material. What is the correct approach?",
+    "options": [
+      "Dry-cut it immediately",
+      "Identify the material and use the approved cutting, dust-control, PPE, and disposal procedure",
+      "Judge material only by colour",
+      "Use compressed air to spread dust"
+    ],
+    "correctIndex": 1,
+    "explanation": "Material identification is essential because asbestos-cement and other materials require specific controls.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 584,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What should be done when water begins accumulating in an occupied trench?",
+    "options": [
+      "Use the water as a trench shield",
+      "Remove shoring to improve drainage",
+      "Stop work and control the water and stability hazards before re-entry",
+      "Continue if boots are waterproof"
+    ],
+    "correctIndex": 2,
+    "explanation": "Water can undermine soil and protective systems and create slips, drowning, or electrical hazards.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 585,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A traffic-control setup no longer matches traffic after a lane closure changes. What is required?",
+    "options": [
+      "Leave it because it was correct at the start",
+      "Remove advance-warning signs",
+      "Ask workers to direct vehicles without training",
+      "Reassess and modify the plan and devices before continuing work"
+    ],
+    "correctIndex": 3,
+    "explanation": "Work-zone controls must reflect actual geometry, traffic, visibility, and pedestrian needs throughout the job.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 586,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why is a retrieval system used for some vertical confined-space entries?",
+    "options": [
+      "It can permit non-entry rescue when compatible with the space and hazards",
+      "It replaces atmospheric testing",
+      "It allows the attendant to leave",
+      "It guarantees rescue through every obstruction"
+    ],
+    "correctIndex": 0,
+    "explanation": "Non-entry retrieval reduces rescuer exposure but must be suitable for the opening, worker, and internal configuration.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 587,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A chlorine-based disinfectant splashes on a worker's skin. What should guide the immediate response?",
+    "options": [
+      "Wait for a supervisor before rinsing",
+      "The product label, SDS, site emergency procedure, and prompt decontamination",
+      "Apply another chemical to neutralize it",
+      "Cover the chemical with grease"
+    ],
+    "correctIndex": 1,
+    "explanation": "Prompt flushing or other specified first aid reduces exposure; unapproved neutralization can worsen injury.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 588,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A worker must enter a chamber while nearby pumps can change water level. What energy control is required?",
+    "options": [
+      "Monitor only the pump sound",
+      "Leave the pumps on automatic",
+      "Isolate or otherwise control flows and equipment that could engulf or endanger the entrant",
+      "Rely on the entrant to climb out"
+    ],
+    "correctIndex": 2,
+    "explanation": "Engulfment and unexpected flow are confined-space hazards that require positive control under the entry plan.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 589,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why should excavation spoil be kept back from the trench edge?",
+    "options": [
+      "It increases soil moisture",
+      "It locates the watermain",
+      "It supports the trench wall",
+      "It reduces surcharge loading and prevents material falling onto workers"
+    ],
+    "correctIndex": 3,
+    "explanation": "Spoil adds load to the edge and can roll or slide into the excavation. Required setback is maintained.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 590,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A portable ladder is the trench access. What must be checked?",
+    "options": [
+      "It is secured, extends appropriately, is undamaged, and is positioned for ready egress",
+      "It is painted the utility colour",
+      "It rests on the watermain",
+      "It is removed while workers are below"
+    ],
+    "correctIndex": 0,
+    "explanation": "Safe access must remain available and cannot introduce a fall or collapse hazard.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 591,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What is the purpose of a GFCI in a temporary power circuit?",
+    "options": [
+      "Regulate pump flow",
+      "Interrupt power rapidly when leakage current indicates a ground fault",
+      "Increase circuit voltage",
+      "Replace equipment grounding"
+    ],
+    "correctIndex": 1,
+    "explanation": "A GFCI reduces shock exposure by sensing current imbalance. It complements, not replaces, suitable equipment and grounding.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 592,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A worker reports dizziness near an open valve chamber. What should the crew do?",
+    "options": [
+      "Send another worker in to investigate without protection",
+      "Assume heat is the only cause",
+      "Move to fresh air, restrict access, seek assistance, and test the atmosphere under the emergency procedure",
+      "Lower a household smoke detector into the space"
+    ],
+    "correctIndex": 2,
+    "explanation": "Symptoms can signal atmospheric exposure. Unprotected rescue attempts can create additional victims.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 593,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A trench shield is in place, but a worker is standing between the shield and trench wall. Why is this unsafe?",
+    "options": [
+      "The shield makes the soil heavier",
+      "The worker is too close to the pipe",
+      "The space outside is safer during a collapse",
+      "The shield protects only workers located inside its protected area"
+    ],
+    "correctIndex": 3,
+    "explanation": "A trench box does not prevent a cave-in; it provides a survival zone inside the shield.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 594,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "Atmospheric readings are acceptable at the top of a chamber but hazardous near the bottom. What should change?",
+    "options": [
+      "Treat the space as hazardous and test and ventilate all representative levels before and during entry",
+      "Use only the top reading",
+      "Average the readings",
+      "Enter while holding the meter above the worker"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gases stratify by density and airflow. Testing must cover the worker's breathing zone and all levels they may occupy.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 595,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A main break undermines pavement beside the excavation. What is the best immediate decision?",
+    "options": [
+      "Park heavy equipment on the undermined pavement",
+      "Expand the exclusion zone and have excavation, traffic, and structural conditions reassessed",
+      "Let pedestrians cross one at a time",
+      "Cover the void with loose soil"
+    ],
+    "correctIndex": 1,
+    "explanation": "Undermined surfaces can collapse under people, vehicles, or equipment. The hazard area must be isolated and stabilized.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 596,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A crew must isolate a watermain, but a closed valve may leak past its seat. How should hazardous pressure be controlled?",
+    "options": [
+      "Treat valve position as proof of isolation",
+      "Loosen a fitting to test pressure",
+      "Verify zero energy, drain or bleed pressure, and use additional isolation or engineered controls as required",
+      "Rely on SCADA colour alone"
+    ],
+    "correctIndex": 2,
+    "explanation": "Valve position does not prove pressure is absent. Isolation must be verified and residual pressure safely controlled.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 597,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A rescue plan says to call emergency services but provides no access information or retrieval method. What is missing?",
+    "options": [
+      "A larger entry permit font",
+      "A water sample result",
+      "A spare traffic cone",
+      "A site-specific, feasible rescue arrangement matched to the space and response time"
+    ],
+    "correctIndex": 3,
+    "explanation": "A rescue plan must be executable, timely, and coordinated; merely naming a phone number is not sufficient.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 598,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "An excavation crosses variable soils and an old backfilled utility cut. Why is one protective slope angle not automatically adequate?",
+    "options": [
+      "The least stable soil and disturbed zones may require a different engineered or tabulated system",
+      "Backfill is always stronger than native soil",
+      "Slope rules apply only above watermains",
+      "Soil type cannot change across a site"
+    ],
+    "correctIndex": 0,
+    "explanation": "Disturbed and layered soil can behave differently. A competent assessment governs protective-system selection.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 599,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A crew plans hot work in a chamber that previously contained flammable vapour. What is required before work?",
+    "options": [
+      "One acceptable reading taken the day before",
+      "Hazard isolation, cleaning or ventilation, gas testing, permit controls, fire watch, and approved rescue planning",
+      "Only hearing protection",
+      "Opening the cover without further testing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hot work adds an ignition source. Conditions must be controlled and continuously verified under both hot-work and confined-space procedures.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 600,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A chlorine leak is suspected in a small pump building. What is the safest first action for an unprotected operator outside?",
+    "options": [
+      "Enter briefly to confirm the odour",
+      "Turn on an unverified electrical fan from inside",
+      "Stay out, isolate the area, raise the alarm, and use the emergency response plan",
+      "Hold breath and close the cylinder"
+    ],
+    "correctIndex": 2,
+    "explanation": "Entry into a potentially toxic atmosphere requires trained responders and appropriate protection. Unprotected investigation risks incapacitation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 601,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A machine guard must be removed for alignment. What conditions are required before hands enter the danger zone?",
+    "options": [
+      "Press the stop button only",
+      "Ask a coworker to watch the switch",
+      "Run the motor slowly",
+      "Complete hazardous-energy isolation and verify zero energy before removing the guard"
+    ],
+    "correctIndex": 3,
+    "explanation": "A stop command is not energy isolation. Lockout and verification prevent unexpected movement.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 602,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A work zone provides a path for cars but forces pedestrians into live traffic. What must be corrected?",
+    "options": [
+      "Provide an accessible, protected pedestrian route consistent with the traffic-control plan",
+      "Tell pedestrians to wait until the repair ends",
+      "Remove pedestrian signs",
+      "Let workers escort people through the excavation"
+    ],
+    "correctIndex": 0,
+    "explanation": "Traffic control must address all road users, including pedestrians and accessibility needs, without directing them into hazards.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 603,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What PPE primarily protects the eyes from flying particles?",
+    "options": [
+      "Hearing protectors",
+      "Safety glasses or goggles selected for the hazard",
+      "High-visibility vest",
+      "Steel-toe boots"
+    ],
+    "correctIndex": 1,
+    "explanation": "Eye protection is selected for impact, splash, or dust hazards. Other PPE protects different body areas.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 604,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does a four-gas meter commonly measure?",
+    "options": [
+      "Flow, pressure, pH, and turbidity",
+      "Voltage, current, resistance, and power",
+      "Oxygen, combustible gas, and selected toxic gases",
+      "Chlorine residual, hardness, iron, and manganese"
+    ],
+    "correctIndex": 2,
+    "explanation": "Common meters measure oxygen, percent LEL, carbon monoxide, and hydrogen sulfide, subject to sensor configuration.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 605,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Why is high-visibility apparel worn in road work?",
+    "options": [
+      "Provide chemical splash protection",
+      "Replace traffic-control devices",
+      "Prevent hearing damage",
+      "Make workers more conspicuous to equipment operators and road users"
+    ],
+    "correctIndex": 3,
+    "explanation": "Visibility garments improve recognition but do not replace barriers, spotters, or the work-zone plan.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 606,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the purpose of a hard hat?",
+    "options": [
+      "Protect the head from specified impact and penetration hazards",
+      "Provide respiratory protection",
+      "Measure trench atmosphere",
+      "Insulate against every voltage"
+    ],
+    "correctIndex": 0,
+    "explanation": "Head protection must be of the correct class and condition for the hazard. It has defined, not unlimited, protection.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 607,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "When is hearing protection required?",
+    "options": [
+      "Whenever a worker wears gloves",
+      "When noise exposure cannot be reduced sufficiently by higher-level controls",
+      "Only after hearing loss occurs",
+      "Only in confined spaces"
+    ],
+    "correctIndex": 1,
+    "explanation": "Engineering and administrative controls come first where practicable; suitable hearing protection completes the program.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 608,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A gas detector has passed calibration but fails its bump test. Can it be used?",
+    "options": [
+      "Yes, calibration makes the bump test optional",
+      "Yes, if the display reads zero",
+      "No; remove it from service until it is corrected and verified",
+      "Yes, for entries under ten minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "A bump test confirms sensor response, alarms, and flow path. Failure means the instrument cannot be trusted.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 609,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why must a respirator user be fit-tested?",
+    "options": [
+      "To measure lung capacity for all work",
+      "To eliminate cartridge change schedules",
+      "To replace medical evaluation",
+      "To confirm the selected facepiece can seal adequately to that individual"
+    ],
+    "correctIndex": 3,
+    "explanation": "Fit testing verifies the model and size; medical assessment, training, inspection, and correct filters are also required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 610,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A worker's safety glasses fog during a critical cut. What is the proper response?",
+    "options": [
+      "Stop safely and correct visibility using suitable anti-fog or ventilation measures",
+      "Remove eye protection while cutting",
+      "Continue by feel",
+      "Stand closer to the blade"
+    ],
+    "correctIndex": 0,
+    "explanation": "Impaired vision and absent PPE are both hazards. Work pauses until suitable protection and visibility are restored.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 611,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What should be checked before using a fall-arrest harness?",
+    "options": [
+      "Only the colour",
+      "Webbing, stitching, hardware, labels, fit, compatibility, and inspection status",
+      "Only the worker's height",
+      "Whether it has been exposed to wastewater"
+    ],
+    "correctIndex": 1,
+    "explanation": "A complete pre-use inspection and correct fit are needed; damaged or involved-in-a-fall equipment is removed from service.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 612,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why are gloves selected by task rather than using one pair for all work?",
+    "options": [
+      "Glove colour determines voltage",
+      "All glove materials offer equal protection",
+      "Materials differ in resistance to cuts, chemicals, heat, puncture, and dexterity needs",
+      "Thicker gloves always eliminate every hazard"
+    ],
+    "correctIndex": 2,
+    "explanation": "No glove protects against all hazards. Selection uses the chemical data and mechanical task.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 613,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What is the purpose of a barricade around an open chamber?",
+    "options": [
+      "Ventilate the chamber",
+      "Support the chamber walls",
+      "Disinfect the ladder",
+      "Prevent people and vehicles from entering the fall and work hazard area"
+    ],
+    "correctIndex": 3,
+    "explanation": "Barricades define and protect the hazard zone; they must suit the traffic and fall exposure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 614,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A fire extinguisher gauge is in the operable range, but the hose is cracked. What should be done?",
+    "options": [
+      "Remove it from service and replace or service it",
+      "Use it because pressure is acceptable",
+      "Tape the hose and return it",
+      "Discharge it into the chamber"
+    ],
+    "correctIndex": 0,
+    "explanation": "Extinguisher readiness includes the cylinder, pin, hose, nozzle, inspection, and correct type—not only pressure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 615,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A gas detector is calibrated with the wrong cylinder concentration entered in its settings. What is the risk?",
+    "options": [
+      "Only battery life is affected",
+      "The displayed values and alarm response may be systematically inaccurate",
+      "The meter becomes intrinsically safe",
+      "Oxygen readings become unnecessary"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration establishes the sensor response against a known concentration. An incorrect reference creates false confidence.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 616,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A worker needs respiratory protection for an atmosphere immediately dangerous to life or health. Which equipment principle applies?",
+    "options": [
+      "Use a disposable dust mask",
+      "Use any air-purifying cartridge",
+      "Use positive-pressure supplied-air or SCBA protection specified for IDLH response",
+      "Hold a wet cloth over the face"
+    ],
+    "correctIndex": 2,
+    "explanation": "Air-purifying respirators do not provide oxygen or adequate IDLH protection. Only trained responders with suitable equipment should enter.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 617,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A fall-arrest anchor is convenient but its capacity and design are unknown. Can it be used?",
+    "options": [
+      "Yes, if two workers test it by pulling",
+      "Yes, for short tasks",
+      "Yes, if the lanyard is new",
+      "No; use only an approved anchor and complete rescue-compatible fall protection plan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Anchor suitability cannot be guessed. The whole system, clearance, swing-fall, and rescue conditions must be verified.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 618,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does water pressure represent?",
+    "options": [
+      "Force exerted per unit area",
+      "Volume passing per unit time",
+      "Pipe length per unit mass",
+      "Chlorine consumed per day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pressure is force divided by area and is commonly reported as kilopascals or psi.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 619,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is static pressure in a distribution main?",
+    "options": [
+      "Pressure lost through fittings while flowing",
+      "Pressure measured when water is not flowing at the test point",
+      "The minimum fire-flow rate",
+      "The velocity head at maximum demand"
+    ],
+    "correctIndex": 1,
+    "explanation": "Static pressure reflects elevation and system energy without local flow losses at the measurement point.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 620,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Why does pressure generally decrease at a higher elevation in the same pressure zone?",
+    "options": [
+      "Water becomes less dense enough to stop flow",
+      "Pipe roughness disappears",
+      "More pressure head is used to reach the higher elevation",
+      "Chlorine residual creates pressure"
+    ],
+    "correctIndex": 2,
+    "explanation": "Elevation head and pressure head trade within the system energy balance. Roughly 9.81 kPa corresponds to one metre of water head.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 621,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is head loss?",
+    "options": [
+      "The elevation of a reservoir",
+      "The diameter of a hydrant outlet",
+      "The total chlorine residual",
+      "A reduction in hydraulic energy caused by pipe and fitting resistance"
+    ],
+    "correctIndex": 3,
+    "explanation": "Friction and local disturbances dissipate hydraulic energy, commonly expressed as metres of head.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 622,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What normally happens to velocity when the same flow enters a smaller-diameter pipe?",
+    "options": [
+      "Velocity increases",
+      "Velocity becomes zero",
+      "Velocity decreases",
+      "Pressure and velocity become identical units"
+    ],
+    "correctIndex": 0,
+    "explanation": "For a fixed flow, velocity equals flow divided by area. Smaller area produces higher velocity.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 623,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does a pump curve show?",
+    "options": [
+      "Only the pipe material",
+      "The relationship between pump head and flow at stated operating conditions",
+      "The daily chlorine sample schedule",
+      "The excavation soil type"
+    ],
+    "correctIndex": 1,
+    "explanation": "A pump curve describes pump performance; the operating point occurs where it intersects the system curve.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 624,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the main purpose of a pressure-reducing valve?",
+    "options": [
+      "Prevent every reverse-flow event",
+      "Measure water age",
+      "Maintain a lower downstream pressure within its control range",
+      "Increase upstream reservoir elevation"
+    ],
+    "correctIndex": 2,
+    "explanation": "A PRV throttles to control downstream pressure. It requires correct sizing, pilots, strainers, and maintenance.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 625,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A reservoir water surface is 25 m above a pressure gauge. Ignoring losses, what pressure is expected using 9.81 kPa per metre?",
+    "options": [
+      "About 25 kPa",
+      "About 98 kPa",
+      "About 2,450 kPa",
+      "About 245 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Static pressure equals elevation head multiplied by the pressure per metre of water.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Head",
+        "c": "Elevation head = 25 m"
+      },
+      {
+        "l": "Step 2 — Pressure",
+        "c": "25 m × 9.81 kPa/m = 245.25 kPa"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 626,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A main carries 30 L/s through an internal area of 0.025 m². What is the average velocity?",
+    "options": [
+      "1.2 m/s",
+      "0.12 m/s",
+      "7.5 m/s",
+      "750 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert flow to cubic metres per second and divide by area.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Convert",
+        "c": "30 L/s = 0.030 m³/s"
+      },
+      {
+        "l": "Step 2 — Divide",
+        "c": "0.030 m³/s ÷ 0.025 m² = 1.2 m/s"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 627,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A hydrant test shows a large difference between static and residual pressure at moderate flow. What can this indicate?",
+    "options": [
+      "The hydrant has no connection to a main",
+      "High distribution-system resistance or limited supply capacity",
+      "Static pressure is always incorrect",
+      "Chlorine residual is too high"
+    ],
+    "correctIndex": 1,
+    "explanation": "A large pressure drop under flow can reflect small or rough mains, restrictions, closed valves, or limited source capacity.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 628,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why can a dead-end main have lower pressure during high demand than a well-looped main?",
+    "options": [
+      "Dead ends eliminate friction",
+      "Looping prevents any pressure loss",
+      "Flow has fewer paths, so more passes through the same restrictive route",
+      "Water at dead ends has no mass"
+    ],
+    "correctIndex": 2,
+    "explanation": "Looping provides alternate paths and can reduce head loss and improve reliability, though actual conditions depend on the network.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 629,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A partially closed boundary valve has what likely hydraulic effect?",
+    "options": [
+      "It increases pipe diameter",
+      "It raises reservoir elevation",
+      "It eliminates water hammer",
+      "It adds head loss and may reduce downstream pressure and flow"
+    ],
+    "correctIndex": 3,
+    "explanation": "A restriction steepens the effective system resistance. Pressure patterns and valve records can help locate it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 630,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why does tuberculation in an iron main reduce hydraulic capacity?",
+    "options": [
+      "It narrows the effective area and increases roughness",
+      "It makes the pipe perfectly smooth",
+      "It increases pump efficiency",
+      "It converts pressure to chlorine residual"
+    ],
+    "correctIndex": 0,
+    "explanation": "Internal corrosion deposits obstruct flow and increase friction, so more head is needed for the same flow.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 631,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Two pumps operate in parallel at a booster station. What is the intended effect?",
+    "options": [
+      "Double pressure at zero flow in every case",
+      "Increase available flow at the system head",
+      "Remove all pipe friction",
+      "Reverse the suction and discharge"
+    ],
+    "correctIndex": 1,
+    "explanation": "Parallel operation adds flow, with actual gain determined by the combined pump curve and system curve.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 632,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What happens to friction loss if flow through the same watermain increases substantially?",
+    "options": [
+      "Friction loss becomes zero",
+      "Friction loss decreases",
+      "Friction loss increases more rapidly than flow",
+      "Friction loss equals static pressure"
+    ],
+    "correctIndex": 2,
+    "explanation": "Common pipe-flow relationships show head loss rising nonlinearly with flow. This drives pressure drops during peaks and fire flow.",
+    "isCalc": "no",
+    "steps": null
+  }
+]

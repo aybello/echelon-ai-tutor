@@ -1,0 +1,29 @@
+{
+  "candidates": [
+    {
+      "bankKey": "class1-water-dist",
+      "newQuestionNum": 652,
+      "newQuestion": "What is the basic purpose of a pressure switch in a water-distribution control system?",
+      "existingQuestionNum": 142,
+      "existingQuestion": "What is the purpose of a pressure gauge in a water distribution system?",
+      "similarity": 0.556
+    },
+    {
+      "bankKey": "class1-water-dist",
+      "newQuestionNum": 652,
+      "newQuestion": "What is the basic purpose of a pressure switch in a water-distribution control system?",
+      "existingQuestionNum": 89,
+      "existingQuestion": "What is the primary purpose of a pressure zone in a water distribution system?",
+      "similarity": 0.5
+    },
+    {
+      "bankKey": "class1-water-dist",
+      "newQuestionNum": 652,
+      "newQuestion": "What is the basic purpose of a pressure switch in a water-distribution control system?",
+      "existingQuestionNum": 122,
+      "existingQuestion": "What is the purpose of a pressure zone in a large water distribution system?",
+      "similarity": 0.5
+    }
+  ],
+  "candidateCount": 3
+}

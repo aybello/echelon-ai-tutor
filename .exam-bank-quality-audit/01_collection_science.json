@@ -1,0 +1,1152 @@
+[
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 575,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What does static head represent in a wastewater pumping system?",
+    "options": [
+      "The vertical elevation difference the pump must overcome when no flow is occurring",
+      "The pressure lost only through pipe fittings",
+      "The velocity created by the impeller",
+      "The electrical load on the pump motor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Static head is the elevation difference between the suction and discharge liquid levels when flow-related losses are absent. Friction head is added separately when the system is flowing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 576,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Which condition normally causes friction head in a forcemain to increase?",
+    "options": [
+      "Lowering the wet-well level while the pump is off",
+      "Increasing the flow rate through the same pipe",
+      "Increasing the pipe diameter at the same flow",
+      "Opening an air-release valve at a high point"
+    ],
+    "correctIndex": 1,
+    "explanation": "Friction loss rises as velocity and flow increase through a given pipe. A larger pipe at the same flow generally reduces velocity and friction loss.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 577,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Pressure head is commonly expressed as which unit?",
+    "options": [
+      "Litres per second",
+      "Kilowatt-hours",
+      "Metres of liquid column",
+      "Milligrams per litre"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pressure head expresses pressure as the equivalent height of a liquid column, normally metres of water. It is not a flow, energy, or concentration unit.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 578,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What does pump efficiency compare?",
+    "options": [
+      "Static head with friction head",
+      "Motor speed with wet-well depth",
+      "Discharge pressure with atmospheric pressure only",
+      "Useful hydraulic power delivered to the liquid with power supplied to the pump"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pump efficiency is useful hydraulic output divided by power input. Losses inside the pump make the efficiency less than 100%.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 579,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What is flow rate?",
+    "options": [
+      "The volume of liquid passing a point during a stated time",
+      "The force exerted per unit area",
+      "The elevation above a reference point",
+      "The resistance of a conductor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Flow rate describes volume per unit time, such as litres per second. Pressure and head describe energy or force conditions, not the amount moving per time.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 580,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A pump moves 540 m³ of wastewater in 3 hours. What is its average flow rate?",
+    "options": [
+      "60 m³/h",
+      "180 m³/h",
+      "162 m³/h",
+      "1,620 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "Average flow equals total volume divided by elapsed time.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Identify values",
+        "c": "Volume = 540 m³; time = 3 h"
+      },
+      {
+        "l": "Step 2 — Divide",
+        "c": "540 m³ ÷ 3 h = 180 m³/h"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 581,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A pressure gauge reads 196 kPa. Using 9.81 kPa per metre of water, what is the approximate pressure head?",
+    "options": [
+      "2.0 m",
+      "19.2 m",
+      "20.0 m",
+      "200 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pressure head is pressure divided by the pressure produced by one metre of water.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Use conversion",
+        "c": "1 m of water ≈ 9.81 kPa"
+      },
+      {
+        "l": "Step 2 — Calculate head",
+        "c": "196 kPa ÷ 9.81 kPa/m ≈ 20.0 m"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 582,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Two identical pumps operate in parallel. What is their primary combined effect near the design operating range?",
+    "options": [
+      "They double the static head regardless of the system",
+      "They eliminate all friction loss",
+      "They force each pump to operate at shutoff head",
+      "They can provide more flow at a similar head than one pump"
+    ],
+    "correctIndex": 3,
+    "explanation": "Parallel pumps add flow at a common head, although the actual gain depends on the system curve. Pumps in series are used when more head is required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 583,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A pump is operating far to the left of its best-efficiency point. Which condition is most likely?",
+    "options": [
+      "Low flow with internal recirculation and increased vibration",
+      "Maximum flow with no developed head",
+      "Zero motor current under full load",
+      "A flat system curve with no static head"
+    ],
+    "correctIndex": 0,
+    "explanation": "Operating well below the best-efficiency flow can cause internal recirculation, vibration, heat, and wear. The pump may still develop considerable head.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 584,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Why does a partially closed discharge valve move a centrifugal pump to a lower flow on its curve?",
+    "options": [
+      "It removes static head from the system",
+      "It increases system resistance and required head",
+      "It increases the pump impeller diameter",
+      "It converts the pump to positive displacement"
+    ],
+    "correctIndex": 1,
+    "explanation": "Throttling adds resistance to the system curve, so its intersection with the pump curve occurs at lower flow and higher pump head.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 585,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A pump receives 12 kW and delivers 8.4 kW of hydraulic power. What is its efficiency?",
+    "options": [
+      "42%",
+      "120%",
+      "70%",
+      "3.6%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Efficiency is useful output divided by input, expressed as a percentage.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Form ratio",
+        "c": "8.4 kW ÷ 12 kW = 0.70"
+      },
+      {
+        "l": "Step 2 — Convert",
+        "c": "0.70 × 100 = 70%"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 586,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A wet-well pump starts normally, but discharge flow is much lower than usual and discharge pressure is high. What should the operator suspect first?",
+    "options": [
+      "A completely empty forcemain with no resistance",
+      "An oversized wet well",
+      "A lower wastewater specific gravity",
+      "A restriction or closed valve in the discharge path"
+    ],
+    "correctIndex": 3,
+    "explanation": "High discharge pressure with low flow indicates the pump is working against excessive resistance, such as a closed valve or blockage. Worn impellers more often reduce both developed head and flow.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 587,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "After a replacement pump is installed, it delivers more flow but repeatedly overloads its motor. What is the best hydraulic explanation?",
+    "options": [
+      "The operating point requires more brake power than the motor can supply",
+      "The static head has become negative",
+      "The wet-well volume is too large for the motor",
+      "The check valve is preventing all reverse flow"
+    ],
+    "correctIndex": 0,
+    "explanation": "A changed pump or system operating point can move the pump into a region with higher power demand. Motor selection must cover the pump's required brake power over the expected operating range.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 588,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A forcemain system has 14 m of static head and 11 m of friction head at the required flow. If minor losses are estimated at 2 m, what total dynamic head must the pump overcome?",
+    "options": [
+      "23 m",
+      "27 m",
+      "25 m",
+      "154 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total dynamic head is the sum of static head and all flow-related losses at the selected flow.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — List components",
+        "c": "Static = 14 m, friction = 11 m, minor = 2 m"
+      },
+      {
+        "l": "Step 2 — Add",
+        "c": "14 + 11 + 2 = 27 m"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 589,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A pump station's measured operating point has shifted to lower flow and higher head without a speed change. Which investigation is most appropriate?",
+    "options": [
+      "Assume the wet well has gained storage volume",
+      "Reduce motor overload protection immediately",
+      "Check for increased system resistance from a restriction, fouling, or valve position",
+      "Replace the pressure gauge with a larger range without verification"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lower flow and higher head indicate the system curve has become steeper or more restrictive. Instrument accuracy should also be verified, but protective settings should not be weakened.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 590,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "A wastewater pH of 7 is described as what?",
+    "options": [
+      "Strongly acidic",
+      "Strongly alkaline",
+      "Free of dissolved solids",
+      "Neutral"
+    ],
+    "correctIndex": 3,
+    "explanation": "On the pH scale, 7 is neutral at typical reference conditions. Values below 7 are acidic and values above 7 are alkaline.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 591,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Under oxygen-poor sewer conditions, which gas is commonly associated with a rotten-egg odour?",
+    "options": [
+      "Hydrogen sulfide",
+      "Nitrogen",
+      "Oxygen",
+      "Carbon dioxide only"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydrogen sulfide can form when sulfate is reduced under anaerobic conditions. It is toxic and can also contribute to odour and corrosion.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 592,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What does dissolved oxygen measure?",
+    "options": [
+      "The oxygen bound in water molecules",
+      "The amount of oxygen dissolved in water",
+      "The amount of suspended grit",
+      "The chlorine demand of wastewater"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dissolved oxygen is molecular oxygen available in the liquid. It is distinct from the oxygen chemically bound in H₂O.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 593,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "BOD is primarily an indication of what?",
+    "options": [
+      "The total pipe capacity",
+      "The wastewater electrical conductivity only",
+      "The oxygen microorganisms may use while degrading biodegradable material",
+      "The number of coliform organisms"
+    ],
+    "correctIndex": 2,
+    "explanation": "Biochemical oxygen demand estimates the oxygen consumed biologically under specified test conditions. It is not a direct pathogen count.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 594,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Why is methane a concern in a confined collection-system space?",
+    "options": [
+      "It always provides adequate breathing oxygen",
+      "It neutralizes every corrosive compound",
+      "It is visible before reaching a hazardous level",
+      "It can create a flammable or explosive atmosphere"
+    ],
+    "correctIndex": 3,
+    "explanation": "Methane is combustible and may accumulate in oxygen-deficient spaces. It is colourless, so atmospheric testing is required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 595,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A sewer has long detention time, warm wastewater, and very low dissolved oxygen. Which condition is most likely to develop?",
+    "options": [
+      "Anaerobic sulfide formation and odour",
+      "Rapid oxygen enrichment without aeration",
+      "Immediate precipitation of all dissolved solids",
+      "Elimination of biological activity"
+    ],
+    "correctIndex": 0,
+    "explanation": "Long, warm, oxygen-depleted retention promotes anaerobic conditions and sulfide production. Shortening detention or adding oxygen or suitable chemicals can reduce the problem.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 596,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Why can lowering wastewater pH increase the immediate hazard from dissolved sulfide?",
+    "options": [
+      "All sulfide becomes harmless sulfate instantly",
+      "More sulfide shifts to gaseous hydrogen sulfide",
+      "Methane becomes nonflammable",
+      "Dissolved oxygen automatically rises"
+    ],
+    "correctIndex": 1,
+    "explanation": "At lower pH, a greater fraction of sulfide exists as undissociated H₂S, which can leave the liquid as toxic gas.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 597,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "An operator adds nitrate to control sewer odour. What is the intended effect?",
+    "options": [
+      "Lower the pipe's hydraulic grade line",
+      "Create chlorine residual for drinking water",
+      "Provide an alternative electron acceptor that suppresses sulfate reduction",
+      "Increase grit settling by raising velocity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nitrate can support biological pathways that limit sulfate reduction and sulfide formation. It does not change pipe hydraulics directly.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 598,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "What is the main distinction between BOD and COD?",
+    "options": [
+      "BOD is always higher than COD",
+      "COD counts bacteria and BOD counts viruses",
+      "COD measures only dissolved oxygen already present",
+      "COD measures chemically oxidizable material, while BOD measures biologically consumed oxygen under test conditions"
+    ],
+    "correctIndex": 3,
+    "explanation": "COD commonly gives a faster estimate of chemically oxidizable matter; BOD reflects biological oxygen demand over a specified incubation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 599,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A wastewater sample changes from pH 6 to pH 5. What does the logarithmic pH scale imply?",
+    "options": [
+      "The hydrogen-ion activity is approximately ten times greater",
+      "The acidity has increased by one percent",
+      "The sample has ten times more dissolved oxygen",
+      "The alkalinity must be unchanged"
+    ],
+    "correctIndex": 0,
+    "explanation": "A one-unit decrease in pH represents about a tenfold increase in hydrogen-ion activity. pH does not directly state dissolved oxygen or alkalinity.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 600,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Why should incompatible collection-system chemicals be stored separately?",
+    "options": [
+      "Separation always increases chemical strength",
+      "Mixing can cause heat, toxic gas, fire, or loss of treatment effectiveness",
+      "All liquid chemicals react safely when diluted",
+      "Storage compatibility applies only to drinking-water plants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chemical compatibility controls prevent dangerous reactions and preserve product performance. The SDS and facility procedures govern segregation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 601,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Which observation best indicates that a wastewater line is becoming septic?",
+    "options": [
+      "Clear water with stable chlorine residual",
+      "High flow with no detention time",
+      "Dark wastewater with sulfide odour and depleted dissolved oxygen",
+      "Cold water with vigorous aeration"
+    ],
+    "correctIndex": 2,
+    "explanation": "Septic wastewater is associated with anaerobic conditions, dark colour, sulfide odour, and low dissolved oxygen.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 602,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A forcemain discharge has recurring hydrogen sulfide peaks after long pump-off periods. Which control addresses the cause most directly?",
+    "options": [
+      "Increase detention time to allow more settling",
+      "Close the air-release valves permanently",
+      "Lower the wastewater pH",
+      "Reduce detention time or maintain conditions that prevent anaerobic sulfide formation"
+    ],
+    "correctIndex": 3,
+    "explanation": "Long detention encourages anaerobic sulfide generation. Operational changes that reduce retention or add oxygen, nitrate, or another validated control address formation rather than only masking odour.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 603,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "An operator measures a strong sulfide odour at a wet well, but a direct-reading meter shows zero H₂S. What is the safest conclusion?",
+    "options": [
+      "Do not rely on odour; verify calibration, bump-test status, sampling method, and atmosphere before entry",
+      "The atmosphere is safe because the display is zero",
+      "The gas is harmless if it can be smelled",
+      "Increase the alarm setpoint until the reading appears"
+    ],
+    "correctIndex": 0,
+    "explanation": "Odour is unreliable because olfactory fatigue can occur, and a zero reading may reflect instrument or sampling failure. Entry decisions require a properly functioning, tested instrument and the full confined-space procedure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 604,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A corrosion investigation finds sulfuric acid damage above the normal wastewater level in a concrete sewer. Which sequence best explains it?",
+    "options": [
+      "Methane dissolves concrete directly below the flow line",
+      "H₂S leaves the wastewater, is biologically oxidized on moist surfaces, and forms sulfuric acid",
+      "Dissolved oxygen reacts with sand to form hydrochloric acid",
+      "BOD converts calcium carbonate into chlorine gas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Biogenic sulfuric acid corrosion begins with sulfide generation, H₂S release, and oxidation to acid on moist sewer surfaces. The attack is often severe above the water line.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 605,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What electrical quantity is measured in amperes?",
+    "options": [
+      "Voltage",
+      "Resistance",
+      "Current",
+      "Power factor"
+    ],
+    "correctIndex": 2,
+    "explanation": "Amperes measure electric current. Volts measure potential difference and ohms measure resistance.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 606,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What is the purpose of a motor overload relay?",
+    "options": [
+      "Protect only against a direct lightning strike",
+      "Increase motor speed above its rating",
+      "Replace the disconnecting means",
+      "Protect the motor from sustained overcurrent and overheating"
+    ],
+    "correctIndex": 3,
+    "explanation": "An overload relay responds to sustained excessive current that can overheat a motor. Short-circuit protection is normally provided separately.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 607,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "A normally open control contact has what state when it is not actuated?",
+    "options": [
+      "Its circuit path is open",
+      "Its circuit path is shorted to ground",
+      "Its contacts carry full motor current",
+      "Its resistance is always zero"
+    ],
+    "correctIndex": 0,
+    "explanation": "Normally open describes the contact's de-energized or unactuated state. Actuation closes the control path.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 608,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What unit is used for electrical resistance?",
+    "options": [
+      "Ampere",
+      "Ohm",
+      "Watt-hour",
+      "Volt-ampere only"
+    ],
+    "correctIndex": 1,
+    "explanation": "Resistance is measured in ohms. Current is measured in amperes and voltage in volts.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 609,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A 24 V control circuit has a 12 Ω load. Using Ohm's law, what current should flow?",
+    "options": [
+      "0.5 A",
+      "12 A",
+      "2 A",
+      "288 A"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ohm's law gives current as voltage divided by resistance.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Formula",
+        "c": "I = V ÷ R"
+      },
+      {
+        "l": "Step 2 — Substitute",
+        "c": "I = 24 V ÷ 12 Ω = 2 A"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 610,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A three-phase pump motor suddenly draws high current on two phases and little current on the third. What should the operator suspect?",
+    "options": [
+      "Normal balanced operation",
+      "An oversized wet well only",
+      "A correct low-voltage control signal",
+      "A lost phase or serious phase imbalance"
+    ],
+    "correctIndex": 3,
+    "explanation": "Marked phase-current imbalance can indicate a lost phase, connection problem, or supply fault. The motor should be stopped and qualified electrical personnel involved.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 611,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Why is lockout/tagout required before mechanical work on an electrically driven pump?",
+    "options": [
+      "To isolate hazardous energy and prevent unexpected startup",
+      "To record the pump's normal flow",
+      "To increase starter holding current",
+      "To test the SCADA alarm remotely"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lockout/tagout controls electrical and other stored energy so the equipment cannot start unexpectedly during servicing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 612,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A motor starter's control fuse opens repeatedly. What is the appropriate response?",
+    "options": [
+      "Install a larger fuse without engineering review",
+      "Find and correct the control-circuit fault before replacing the fuse again",
+      "Bypass the fuse to keep the pump available",
+      "Hold the starter contactor closed manually"
+    ],
+    "correctIndex": 1,
+    "explanation": "A repeated fuse operation indicates a fault or overload. Increasing or bypassing protection can create fire, shock, and equipment hazards.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 613,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "What does a variable-frequency drive primarily change to control an AC motor's speed?",
+    "options": [
+      "The wet-well pH",
+      "The mechanical seal material",
+      "The frequency of the electrical supply to the motor",
+      "The utility transformer location"
+    ],
+    "correctIndex": 2,
+    "explanation": "Motor synchronous speed is related to supply frequency, so a VFD varies frequency and voltage in a controlled manner.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 614,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A pump motor trips on overload only when the wet well is high and the pump is delivering maximum flow. What should be checked first?",
+    "options": [
+      "Whether the alarm horn is loud enough",
+      "Whether the incoming sewer slope is too steep",
+      "Whether the control fuse is a different colour",
+      "Actual phase currents and the pump's required load against motor and overload ratings"
+    ],
+    "correctIndex": 3,
+    "explanation": "Load-dependent trips require measurement of current and comparison with nameplate, overload, voltage, phase balance, and pump operating conditions. Protection should not simply be increased.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 615,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A motor insulation test is required after water intrusion into a terminal box. Who should perform and interpret the test?",
+    "options": [
+      "A qualified electrical worker following isolation and manufacturer procedures",
+      "Any operator while the motor remains energized",
+      "The SCADA historian automatically",
+      "A CCTV contractor using the sewer camera"
+    ],
+    "correctIndex": 0,
+    "explanation": "Insulation resistance testing involves electrical hazards and equipment-specific interpretation. It requires qualified personnel and verified isolation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 616,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A standby pump starts whenever the lead pump starts, even though the high-level setpoint is not reached. Which fault is most consistent?",
+    "options": [
+      "Normal alternation after every stop",
+      "A control logic, relay, or level-input fault falsely issuing the lag-start command",
+      "A larger discharge pipe",
+      "Lower wastewater conductivity"
+    ],
+    "correctIndex": 1,
+    "explanation": "An unintended simultaneous start points to the lag control circuit or logic, including a stuck relay or false level signal. Hydraulic conditions alone do not issue a start command.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 617,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Why must operators avoid direct contact with untreated wastewater?",
+    "options": [
+      "It always contains enough chlorine for disinfection",
+      "It is sterile once it enters a sewer",
+      "It may contain disease-causing microorganisms",
+      "Only its odour can cause infection"
+    ],
+    "correctIndex": 2,
+    "explanation": "Untreated wastewater may contain bacteria, viruses, protozoa, and other hazards. Exposure controls and hygiene reduce transmission risk.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 618,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Which route can transmit a wastewater-related gastrointestinal pathogen?",
+    "options": [
+      "Looking at a sewer plan",
+      "Hearing a lift-station alarm",
+      "Touching clean PPE before use",
+      "Hand-to-mouth contact after handling contaminated material"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ingestion can occur when contaminated hands, food, or objects reach the mouth. Handwashing and no-eating rules are important controls.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 619,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What do coliform bacteria commonly serve as in water-quality testing?",
+    "options": [
+      "Indicator organisms for possible contamination or treatment failure",
+      "A direct measurement of every virus",
+      "A measure of pipe pressure",
+      "A chemical used for odour control"
+    ],
+    "correctIndex": 0,
+    "explanation": "Coliforms are indicators; their presence can signal contamination pathways or inadequate control. They do not enumerate every pathogen.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 620,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Why is vaccination relevant for some wastewater workers?",
+    "options": [
+      "It replaces gloves and handwashing",
+      "It can reduce risk from specific occupationally relevant infectious diseases",
+      "It prevents all chemical exposures",
+      "It makes atmospheric testing unnecessary"
+    ],
+    "correctIndex": 1,
+    "explanation": "Vaccination may be one layer of protection according to occupational-health advice. It does not replace engineering controls, PPE, or hygiene.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 621,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "An operator receives a splash of wastewater to the eyes. What is the immediate priority?",
+    "options": [
+      "Wait for symptoms before rinsing",
+      "Neutralize the splash with an unknown chemical",
+      "Flush the eyes promptly and follow the exposure-reporting and medical-evaluation procedure",
+      "Return to work without documenting the exposure"
+    ],
+    "correctIndex": 2,
+    "explanation": "Immediate flushing reduces contact time, and the event must be managed under the workplace exposure protocol. Chemical neutralization can worsen injury.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 622,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Why should clean and contaminated areas be separated in a collection-system vehicle?",
+    "options": [
+      "To increase the vehicle's payload rating",
+      "To raise dissolved oxygen in samples",
+      "To eliminate the need for disinfection",
+      "To prevent wastewater organisms from being transferred to food, personal items, and clean equipment"
+    ],
+    "correctIndex": 3,
+    "explanation": "Physical separation reduces cross-contamination. Cleaning and disinfection procedures are still required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 623,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A sewage backup enters an occupied basement. Which response best protects public health?",
+    "options": [
+      "Restrict exposure, stop the source when safe, and initiate approved cleanup and notification procedures",
+      "Allow occupants to clean without protective measures",
+      "Use a fan to spread aerosols through the building",
+      "Ignore the event if the water level drops"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sewage backups can expose occupants to pathogens and contaminated materials. Access control, safe source control, proper cleanup, and applicable notification are required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 624,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Why is aerosol generation a concern during high-pressure sewer cleaning?",
+    "options": [
+      "Aerosols remove every pathogen from the work area",
+      "Fine droplets may carry biological contaminants into the breathing zone",
+      "Only visible solids can transmit disease",
+      "Aerosols prevent eye exposure"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jetting can aerosolize contaminated wastewater. Work practices, positioning, PPE, and hygiene should control inhalation and mucous-membrane exposure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 625,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "Several workers develop gastrointestinal symptoms after a sewer-cleaning job. Which investigation would best identify an occupational transmission pathway?",
+    "options": [
+      "Compare only the truck fuel records",
+      "Increase pump discharge pressure without review",
+      "Review splash and aerosol exposure, hygiene, PPE use, breaks, and decontamination practices",
+      "Assume the illness cannot be work-related because wastewater looked clear"
+    ],
+    "correctIndex": 2,
+    "explanation": "A transmission investigation examines how contaminated material could have been ingested or contacted. Appearance does not establish microbiological safety.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 626,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A cross-connection could allow sewage-contaminated water to enter a potable supply used for jetting. What is the strongest preventive control?",
+    "options": [
+      "Rely on positive pressure at the hydrant at all times",
+      "Close the jetter nozzle between uses",
+      "Add deodorizer to the jetter tank",
+      "Use the approved backflow-prevention method with an air gap or suitable tested device"
+    ],
+    "correctIndex": 3,
+    "explanation": "Backsiphonage or backpressure can contaminate the potable system. An approved air gap or properly selected and tested backflow preventer provides the required separation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 627,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What is the main purpose of an as-built sewer drawing?",
+    "options": [
+      "Show the installed location and configuration of the completed work",
+      "Show only the original tender estimate",
+      "Replace every field locate",
+      "Record employee training hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "As-built drawings document the work as installed, including approved changes from design. Field locating is still required before excavation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 628,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "On a sewer profile, what does invert elevation identify?",
+    "options": [
+      "The top of the manhole cover only",
+      "The elevation of the inside bottom of the pipe",
+      "The ground-water pH",
+      "The pipe wall thickness"
+    ],
+    "correctIndex": 1,
+    "explanation": "Invert elevation is the elevation of the lowest inside surface of the pipe and is used to assess grade and flow direction.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 629,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What does a plan view normally show?",
+    "options": [
+      "Only vertical pipe elevations",
+      "A motor wiring schematic",
+      "A top-down layout of features and their horizontal locations",
+      "A wastewater laboratory result"
+    ],
+    "correctIndex": 2,
+    "explanation": "A plan view shows horizontal arrangement. Profiles and sections provide vertical and cross-sectional information.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 630,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Two adjacent manholes have invert elevations of 102.40 m and 101.80 m. In which direction should gravity flow occur?",
+    "options": [
+      "Toward the 102.40 m invert",
+      "Equally in both directions",
+      "Flow direction cannot depend on elevation",
+      "Toward the manhole with the 101.80 m invert"
+    ],
+    "correctIndex": 3,
+    "explanation": "Gravity flow moves from higher hydraulic elevation toward lower elevation when the pipe is unobstructed. The lower invert is downstream in this comparison.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 631,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A GIS map and a field locate disagree about a sewer's position. What should the operator do before excavation?",
+    "options": [
+      "Stop and resolve the discrepancy using approved locating and record-verification procedures",
+      "Excavate at the map line without further checks",
+      "Ignore the field locate because GIS is always exact",
+      "Move the GIS feature after excavation without evidence"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maps are valuable but may contain offsets or outdated information. The conflict must be resolved before disturbing the ground.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 632,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A drawing scale is 1:500. What does 1 cm measured on the drawing represent in the field?",
+    "options": [
+      "0.5 m",
+      "5 m",
+      "50 m",
+      "500 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "At 1:500, one drawing unit equals 500 of the same field units. One centimetre therefore represents 500 cm, or 5 m.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 633,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A proposed repair drawing shows a service lateral crossing a utility but omits elevations. What is the best decision?",
+    "options": [
+      "Assume the lateral passes beneath every utility",
+      "Select a repair depth from the nearest street sign",
+      "Obtain verified utility and sewer elevations before confirming the repair method",
+      "Proceed because horizontal coordinates are sufficient"
+    ],
+    "correctIndex": 2,
+    "explanation": "A crossing cannot be safely designed from horizontal location alone. Verified depths and clearances are required to avoid conflict and maintain grade.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 634,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "An as-built profile shows the downstream invert higher than the upstream invert, but field flow appears normal. What should be investigated?",
+    "options": [
+      "Whether gravity has reversed temporarily",
+      "Whether pH changed the elevation",
+      "Whether the pipe diameter is measured in litres",
+      "Possible drawing error, datum mismatch, or unrecorded field change"
+    ],
+    "correctIndex": 3,
+    "explanation": "The inconsistency suggests record or datum problems, or construction differing from the drawing. Survey and field verification should resolve it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 635,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "What does the prefix milli- mean?",
+    "options": [
+      "One-thousandth",
+      "One hundred",
+      "One thousand",
+      "One-millionth"
+    ],
+    "correctIndex": 0,
+    "explanation": "Milli- represents 10⁻³, or one-thousandth of the base unit.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 636,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "easy",
+    "question": "Which unit expresses a volume flow rate?",
+    "options": [
+      "Kilopascals",
+      "Litres per second",
+      "Milligrams per litre",
+      "Kilowatt-hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "Litres per second expresses volume divided by time. Kilopascals express pressure and milligrams per litre express concentration.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 637,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "Which relationship between litres and cubic metres is correct?",
+    "options": [
+      "1 m³ equals 100 L",
+      "1 L equals 1,000 m³",
+      "1 m³ equals 1,000 L",
+      "1 m³ equals 10,000 L"
+    ],
+    "correctIndex": 2,
+    "explanation": "A cubic metre contains 1,000 litres. This relationship is used frequently in flow and volume calculations.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 638,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "medium",
+    "question": "A pressure is reported as 70 kPa. Which statement correctly interprets the prefix?",
+    "options": [
+      "The pressure is 70 pascals",
+      "The pressure is 0.070 pascal",
+      "The pressure is 7,000,000 pascals",
+      "The pressure is 70,000 pascals"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kilo- means one thousand, so 70 kilopascals equals 70,000 pascals.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 639,
+    "module": "Applied Science & Hydraulics",
+    "difficulty": "hard",
+    "question": "A flow log mixes US gallons per minute and litres per second without identifying which is used in each row. Why is this a serious problem?",
+    "options": [
+      "The values cannot be compared or used safely until units are verified and converted",
+      "The units are numerically identical",
+      "Only pressure calculations require units",
+      "Averaging the numbers automatically corrects them"
+    ],
+    "correctIndex": 0,
+    "explanation": "Unit ambiguity can produce major operating and design errors. Each value needs a verified unit before conversion or comparison.",
+    "isCalc": "no",
+    "steps": null
+  }
+]

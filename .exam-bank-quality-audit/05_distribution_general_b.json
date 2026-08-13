@@ -1,0 +1,1151 @@
+[
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 633,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A pressure gauge oscillates rapidly when a pump starts. What should be investigated?",
+    "options": [
+      "Water hardness only",
+      "The customer billing cycle",
+      "The trench soil classification",
+      "Hydraulic transient, air, check-valve action, and instrument damping or condition"
+    ],
+    "correctIndex": 3,
+    "explanation": "Rapid pressure changes can be true surge or instrument behaviour. Both system conditions and gauge installation should be assessed.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 634,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A pressure zone has 360 kPa at elevation 110 m. Ignoring losses, what pressure is expected at elevation 120 m?",
+    "options": [
+      "About 262 kPa",
+      "About 98 kPa",
+      "About 360 kPa",
+      "About 458 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "A 10 m elevation rise uses about 98.1 kPa of pressure head.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Elevation change",
+        "c": "120 m − 110 m = 10 m"
+      },
+      {
+        "l": "Step 2 — Pressure change",
+        "c": "10 m × 9.81 kPa/m = 98.1 kPa"
+      },
+      {
+        "l": "Step 3 — Subtract",
+        "c": "360 − 98.1 ≈ 262 kPa"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 635,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why is a system curve steeper when a valve is throttled?",
+    "options": [
+      "The pump impeller becomes larger",
+      "The system requires more head at each flow because resistance increased",
+      "Static elevation decreases",
+      "Water viscosity becomes zero"
+    ],
+    "correctIndex": 1,
+    "explanation": "Added valve loss increases the friction component of required head, shifting the operating point.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 636,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A high-elevation customer has adequate static pressure but poor pressure during morning peaks. What is the likely cause?",
+    "options": [
+      "The elevation changes every morning",
+      "Static pressure cannot be measured",
+      "Demand-related head loss in the supply path",
+      "The service meter creates supply pressure"
+    ],
+    "correctIndex": 2,
+    "explanation": "Peak flow raises friction loss, and high elevations have less pressure head available. Restrictions or undersized infrastructure may worsen it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 637,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A booster station pump operates well to the right of its best-efficiency point. What combination is most concerning?",
+    "options": [
+      "Zero flow and maximum head only",
+      "No radial or axial loads",
+      "Guaranteed motor unloading",
+      "Excess flow, higher power demand, low efficiency, and possible cavitation or wear"
+    ],
+    "correctIndex": 3,
+    "explanation": "Far-right operation can exceed motor or hydraulic limits and reduce reliability. The system and pump curves must be reviewed.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 638,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "Closing a large valve too quickly creates a pressure spike. What causes the transient?",
+    "options": [
+      "Rapid change in water velocity converts momentum into a pressure wave",
+      "The water instantly boils",
+      "Chlorine creates extra volume",
+      "Static head disappears"
+    ],
+    "correctIndex": 0,
+    "explanation": "Water hammer results from abrupt velocity change. Controlled valve and pump operation and surge devices reduce it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 639,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "Pressure logging shows normal values at the zone inlet but repeated low-pressure events at one branch. What is the best investigation?",
+    "options": [
+      "Raise the whole zone pressure immediately",
+      "Compare synchronized flow and pressure data, valve status, elevations, and branch restrictions",
+      "Ignore local data",
+      "Replace every service meter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Localized events point to branch demand or resistance. Coordinated data helps distinguish capacity, valves, main condition, and customer-side issues.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 640,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A pump delivers 0.040 m³/s against 32 m of head. Using water density 1,000 kg/m³ and g = 9.81 m/s², what is approximate hydraulic power?",
+    "options": [
+      "1.26 kW",
+      "78.5 kW",
+      "12.6 kW",
+      "126 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic power is ρgQH.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Formula",
+        "c": "P = ρgQH"
+      },
+      {
+        "l": "Step 2 — Substitute",
+        "c": "1,000 × 9.81 × 0.040 × 32 = 12,557 W"
+      },
+      {
+        "l": "Step 3 — Convert",
+        "c": "12,557 W ≈ 12.6 kW"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 641,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A field gauge shows lower pressure than expected at the far end of an older watermain. After verifying the gauge, which system condition could contribute most directly?",
+    "options": [
+      "A larger pipe diameter than shown on the plan",
+      "Eliminating all customer demand from the district",
+      "A reservoir surface elevation that is higher than usual",
+      "Increased friction loss from a roughened main or a partially closed valve"
+    ],
+    "correctIndex": 3,
+    "explanation": "Roughness, deposits, restrictions, and valve position can increase head loss and lower downstream pressure. Operators should verify field conditions and report findings using approved procedures.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 642,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A pump trip produces sub-atmospheric pressure at a watermain high point. What risk must be evaluated?",
+    "options": [
+      "Column separation, contamination intrusion, pipe damage, and severe return surge",
+      "Automatic increase in chlorine residual",
+      "Permanent elimination of air pockets",
+      "Higher static pressure"
+    ],
+    "correctIndex": 0,
+    "explanation": "Negative transients can admit contamination through leaks, form vapour cavities, and damage infrastructure when pressure recovers.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 643,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What electrical quantity is measured in volts?",
+    "options": [
+      "Current",
+      "Electrical potential difference",
+      "Resistance",
+      "Energy consumption"
+    ],
+    "correctIndex": 1,
+    "explanation": "Voltage is electrical potential difference. Current is measured in amperes and resistance in ohms.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 644,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the function of a circuit breaker?",
+    "options": [
+      "Control chlorine dose",
+      "Measure water pressure",
+      "Interrupt current under specified overload or short-circuit conditions",
+      "Increase motor speed continuously"
+    ],
+    "correctIndex": 2,
+    "explanation": "A breaker provides overcurrent protection and switching within its rating. Motor overload protection may be separate.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 645,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does SCADA stand for?",
+    "options": [
+      "System Chlorination and Distribution Analysis",
+      "Static Current and Direct Amperage",
+      "Safety Control and Drainage Assessment",
+      "Supervisory Control and Data Acquisition"
+    ],
+    "correctIndex": 3,
+    "explanation": "SCADA is used to supervise processes, acquire data, alarm conditions, and execute authorized controls.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 646,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does a motor starter do?",
+    "options": [
+      "Controls motor power and commonly provides overload protection",
+      "Measure turbidity",
+      "Prevent backflow",
+      "Store pump curves"
+    ],
+    "correctIndex": 0,
+    "explanation": "A starter switches motor power through a contactor and integrates protective and control functions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 647,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is the purpose of an electrical disconnect?",
+    "options": [
+      "Adjust system pressure",
+      "Provide a means to isolate equipment from its power source",
+      "Increase pipe flow",
+      "Disinfect electrical panels"
+    ],
+    "correctIndex": 1,
+    "explanation": "A properly rated disconnect supports safe isolation. Lockout and verification are still required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 648,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A 120 V heater has a resistance of 20 Ω. What current does it draw?",
+    "options": [
+      "0.17 A",
+      "20 A",
+      "6 A",
+      "2,400 A"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ohm's law gives current as voltage divided by resistance.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Formula",
+        "c": "I = V ÷ R"
+      },
+      {
+        "l": "Step 2 — Calculate",
+        "c": "120 V ÷ 20 Ω = 6 A"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 649,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A three-phase booster motor loses one phase while running. What condition can result?",
+    "options": [
+      "Normal balanced operation",
+      "Lower current in every winding",
+      "Improved efficiency",
+      "High current, low torque, overheating, and damage"
+    ],
+    "correctIndex": 3,
+    "explanation": "Single-phasing unbalances currents and can rapidly overheat a motor. Protective devices should trip and the cause must be corrected.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 650,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why is a VFD used on a distribution pump?",
+    "options": [
+      "Match pump speed to demand and pressure while reducing throttling and starting stress",
+      "Eliminate all electrical protection",
+      "Increase pipe diameter",
+      "Measure chlorine residual"
+    ],
+    "correctIndex": 0,
+    "explanation": "Variable speed can improve pressure control and energy use, but requires correct minimum-flow and control settings.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 651,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A control panel shows a tripped overload. What should the operator do before resetting it?",
+    "options": [
+      "Reset repeatedly until it holds",
+      "Identify the cause and verify motor, pump, current, and process conditions",
+      "Install a larger overload",
+      "Bypass the trip contact"
+    ],
+    "correctIndex": 1,
+    "explanation": "An overload trip is evidence of excess current or heat. Repeated reset can damage equipment or create a hazard.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 652,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What is the basic purpose of a pressure switch in a water-distribution control system?",
+    "options": [
+      "Measures flow directly",
+      "Provides motor power without a starter",
+      "Changes contact state when pressure crosses a preset threshold",
+      "Raises reservoir elevation"
+    ],
+    "correctIndex": 2,
+    "explanation": "A pressure switch translates a high- or low-pressure setpoint into a change of electrical contact state. The approved control drawing determines the specific alarm or equipment response.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 653,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why should control wires and power conductors be separated as designed?",
+    "options": [
+      "To increase chlorine demand",
+      "To reduce pipe friction",
+      "To avoid calibrating instruments",
+      "To reduce interference and meet insulation, heat, and safety requirements"
+    ],
+    "correctIndex": 3,
+    "explanation": "Power conductors can induce noise in sensitive signals, and electrical codes govern separation and routing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 654,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A remote pressure reading is fixed at zero but the local gauge is normal. What should be checked?",
+    "options": [
+      "Transmitter power, signal loop, wiring, scaling, and input configuration",
+      "The main's pipe material only",
+      "The reservoir's paint colour",
+      "The customer meter register"
+    ],
+    "correctIndex": 0,
+    "explanation": "The process pressure exists, so the problem is likely in sensing or signal transmission rather than the hydraulic source.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 655,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A VFD-controlled pump repeatedly accelerates and decelerates around its pressure setpoint. What is the most appropriate Class 1 operator response?",
+    "options": [
+      "Remove the pressure sensor so the pump holds one speed",
+      "Verify the pressure reading and operating conditions, then report the instability for qualified review before changing control settings",
+      "Increase maximum speed without limits until the cycling stops",
+      "Change control settings repeatedly without documenting the original configuration"
+    ],
+    "correctIndex": 1,
+    "explanation": "Repeated speed changes can reflect a poor pressure signal or an operating/control issue. Operators should verify observable conditions, document the behaviour, and have authorized personnel assess configuration changes.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 656,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A motor has correct line voltage but one phase current is much higher. What is the best response?",
+    "options": [
+      "Raise overload settings",
+      "Assume voltage proves the motor is healthy",
+      "Stop and have phase balance, connections, windings, and mechanical load evaluated",
+      "Reverse two phases while running"
+    ],
+    "correctIndex": 2,
+    "explanation": "Current imbalance can damage the motor and may originate in connections, winding faults, supply imbalance, or load.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 657,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A SCADA command can start a pump even though a local maintenance inhibit is active. What does that indicate?",
+    "options": [
+      "Remote control should override every local condition",
+      "The pump needs a larger motor",
+      "The pressure transmitter range is too low",
+      "The control logic does not enforce the safety interlock across all start paths"
+    ],
+    "correctIndex": 3,
+    "explanation": "A documented maintenance inhibit should block automatic, remote, and local start paths as designed. It is a control-system measure only and never replaces physical lockout/tagout and verified energy isolation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 658,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does pH indicate?",
+    "options": [
+      "How acidic or alkaline the water is",
+      "The water pressure",
+      "The pipe diameter",
+      "The number of service connections"
+    ],
+    "correctIndex": 0,
+    "explanation": "pH reflects hydrogen-ion activity on a logarithmic scale. It affects corrosion, treatment, and disinfectant chemistry.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 659,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does turbidity measure?",
+    "options": [
+      "Water pressure",
+      "The scattering of light by particles in water",
+      "Chlorine dose only",
+      "Electrical resistance of a motor"
+    ],
+    "correctIndex": 1,
+    "explanation": "Turbidity is an optical measure related to suspended and colloidal material. It is reported in nephelometric turbidity units.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 660,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is chlorine residual?",
+    "options": [
+      "The total pipe corrosion rate",
+      "The amount of dissolved oxygen",
+      "Chlorine remaining after the water's chlorine demand has been satisfied",
+      "The water's hardness only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Residual is the measurable disinfectant remaining after reactions. It can provide continuing protection in distribution.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 661,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Why is iron corrosion a water-quality concern?",
+    "options": [
+      "It always raises chlorine residual",
+      "It makes water sterile",
+      "It eliminates tuberculation",
+      "It can cause red water, deposits, leaks, and customer complaints"
+    ],
+    "correctIndex": 3,
+    "explanation": "Corrosion can release iron and build deposits, affecting appearance, capacity, and infrastructure condition.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 662,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is an example of a microorganism relevant to drinking-water safety?",
+    "options": [
+      "Bacterium",
+      "Sand grain",
+      "Chloride ion",
+      "Air bubble"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bacteria, viruses, and protozoa can affect drinking-water safety. Sand, ions, and bubbles are not organisms.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 663,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does water hardness primarily reflect?",
+    "options": [
+      "Water velocity",
+      "Dissolved calcium and magnesium",
+      "Free chlorine only",
+      "Number of coliforms"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hardness is mainly caused by calcium and magnesium ions and can contribute to scale.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 664,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A chlorine residual falls sharply across a storage area with long water age. What is the most likely explanation?",
+    "options": [
+      "Static head consumes chlorine",
+      "Pressure converts chlorine into turbidity",
+      "Chlorine decays over time through reactions with water, deposits, and biofilm",
+      "Hardness creates chlorine automatically"
+    ],
+    "correctIndex": 2,
+    "explanation": "Long residence time increases the opportunity for chlorine demand and natural decay.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 665,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why can disturbing tuberculation during a flow reversal cause discoloured water?",
+    "options": [
+      "Flow reversal sterilizes the pipe",
+      "Pressure creates new iron instantly",
+      "The water loses all minerals",
+      "Deposits and corrosion products can be mobilized into the water"
+    ],
+    "correctIndex": 3,
+    "explanation": "A hydraulic change can scour loose material from pipe walls. Controlled flushing and operational planning reduce impacts.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 666,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A free-chlorine sample is tested long after collection. Why may the result be unreliable?",
+    "options": [
+      "Chlorine can decay after sampling, so specified immediate testing is important",
+      "The bottle increases pressure",
+      "Chlorine becomes a microorganism",
+      "Temperature never affects chemistry"
+    ],
+    "correctIndex": 0,
+    "explanation": "Residual changes with time, light, temperature, and demand. Field procedures require prompt measurement.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 667,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What water condition tends to increase metal corrosion risk?",
+    "options": [
+      "A correctly managed corrosion-control program",
+      "Aggressive water with unsuitable pH, alkalinity, and stability",
+      "A sealed sample bottle",
+      "A smooth hydraulic grade line"
+    ],
+    "correctIndex": 1,
+    "explanation": "Corrosion depends on water chemistry, materials, temperature, disinfectant, and protective scales—not a single factor alone.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 668,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why is a representative bacteriological sample tap disinfected before collection?",
+    "options": [
+      "To disinfect the entire watermain",
+      "To increase flow pressure",
+      "To avoid external tap contamination affecting the sample",
+      "To lower turbidity in the system"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tap preparation helps ensure the result represents the distribution water rather than organisms on the fixture.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 669,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A customer reports black particles after a hydrant operation. Which cause is plausible?",
+    "options": [
+      "Pure oxygen crystals",
+      "Increased pipe diameter",
+      "Static head sediment",
+      "Mobilized manganese deposits or deteriorated rubber components"
+    ],
+    "correctIndex": 3,
+    "explanation": "Black material can originate from manganese deposits or plumbing components. Sampling and inspection should identify it rather than assume a cause.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 670,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why can warm water and low disinfectant residual encourage biofilm growth?",
+    "options": [
+      "Microbial activity can increase when temperature and nutrients are favourable and control is weak",
+      "Warm water prevents all metabolism",
+      "Biofilm grows only in reservoirs",
+      "Pressure alone sterilizes mains"
+    ],
+    "correctIndex": 0,
+    "explanation": "Biofilm is influenced by temperature, nutrients, disinfectant, pipe surfaces, and water age.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 671,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A sample has pH 8 compared with pH 7. What does the pH scale imply?",
+    "options": [
+      "It is one percent less acidic",
+      "Its hydrogen-ion activity is approximately one-tenth as great",
+      "It has ten times the chlorine residual",
+      "It must be ten times harder"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each pH unit is a tenfold change in hydrogen-ion activity. pH does not directly set residual or hardness.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 672,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why should a turbidity instrument be verified with standards?",
+    "options": [
+      "To increase main pressure",
+      "To remove particles from the sample",
+      "To confirm its optical response and measurement accuracy",
+      "To calibrate a flowmeter"
+    ],
+    "correctIndex": 2,
+    "explanation": "Standards check instrument response. Clean cells, correct technique, and maintenance also affect results.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 673,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A zone has adequate entry residual but repeated low residual at dead ends. Which response addresses the underlying conditions?",
+    "options": [
+      "Raise pressure without measuring residual",
+      "Sample only at the zone inlet",
+      "Close more boundary valves",
+      "Evaluate water age, demand, storage turnover, flushing, and disinfectant demand"
+    ],
+    "correctIndex": 3,
+    "explanation": "Low-use areas can experience long residence and decay. A system-level water-age strategy is more defensible than blind dosing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 674,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "After a major flow change, turbidity rises but chlorine residual remains stable. What should the operator infer?",
+    "options": [
+      "Deposits may have been mobilized even though disinfectant residual did not change",
+      "Stable chlorine proves there are no particles",
+      "The turbidity meter must be wrong",
+      "Pressure and turbidity are identical"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydraulic disturbance can release particles independently of a large immediate residual change. Both data sets should be verified.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 675,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "Lead levels increase after a source-water chemistry change. Which mechanism should be investigated?",
+    "options": [
+      "Lead is created by chlorine",
+      "The change may have destabilized protective scales or altered corrosion control",
+      "Pipe pressure converts copper into lead",
+      "Only bacteriological sampling can explain it"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water chemistry changes can alter scale solubility and corrosion rates. Distribution materials and treatment history must be reviewed.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 676,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A bacteriological sample is positive, but its control and nearby repeats are negative. What is the correct conclusion?",
+    "options": [
+      "The original result is automatically false",
+      "The entire system is proven contaminated",
+      "Follow the regulatory response while investigating sampling, site, and system causes; do not dismiss either possibility",
+      "Chlorine residual no longer matters"
+    ],
+    "correctIndex": 2,
+    "explanation": "A positive result requires the prescribed response. Investigation distinguishes true system contamination from localized or sampling contamination.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 677,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A disinfectant residual reading is unexpectedly high after reagent addition, but the sample is intensely coloured. What should be considered?",
+    "options": [
+      "Colour cannot affect colorimetric tests",
+      "Report the value without review",
+      "Dilute with tap water of unknown quality",
+      "Method interference and verification with an appropriate approved technique"
+    ],
+    "correctIndex": 3,
+    "explanation": "Colour and turbidity can interfere with colorimetric methods. Approved blanks, alternative methods, or laboratory confirmation may be required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 678,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is a cross-connection?",
+    "options": [
+      "A connection between a potable system and a source that may contaminate it",
+      "A loop between two potable mains only",
+      "A pipe-support bracket",
+      "A customer service meter"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cross-connections create a path for contaminants to enter through backpressure or backsiphonage.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 679,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is backsiphonage?",
+    "options": [
+      "Forward flow caused by high reservoir level",
+      "Backflow caused by negative or sub-atmospheric pressure in the potable supply piping",
+      "Leakage through a closed hydrant",
+      "Normal meter registration"
+    ],
+    "correctIndex": 1,
+    "explanation": "A vacuum or sub-atmospheric pressure can draw non-potable material into the drinking-water system. Backpressure is different: it occurs when downstream pressure exceeds potable-system pressure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 680,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "During a boil-water advisory, which instruction is appropriate for water used for drinking or food preparation?",
+    "options": [
+      "Assume water is safe if it looks clear",
+      "Use only cold tap water without further precautions",
+      "Follow the authority-issued boiling or alternative-safe-supply instruction before using the water",
+      "Wait until the next billing cycle for instructions"
+    ],
+    "correctIndex": 2,
+    "explanation": "A boil-water advisory gives affected consumers temporary risk-reduction instructions when microbiological safety may be compromised. The applicable authority specifies the required action and when it can end.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 681,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "Which disease can be transmitted through contaminated drinking water?",
+    "options": [
+      "A broken bone",
+      "Noise-induced hearing loss",
+      "Electrical shock",
+      "Giardiasis"
+    ],
+    "correctIndex": 3,
+    "explanation": "Giardia is a waterborne protozoan pathogen. The other conditions are not infectious waterborne diseases.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 682,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A hose submerged in a pesticide tank is connected to a hydrant without protection. What hazard exists?",
+    "options": [
+      "Backsiphonage or backpressure could contaminate the potable system",
+      "The hose increases fire flow",
+      "The tank disinfects the main",
+      "The hydrant becomes an air valve"
+    ],
+    "correctIndex": 0,
+    "explanation": "The submerged connection is a severe cross-connection. An approved air gap or suitable backflow prevention is required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 683,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why can a low-pressure event increase contamination risk?",
+    "options": [
+      "Low pressure sterilizes the pipe",
+      "Contaminated water may enter through leaks or cross-connections when internal pressure is lost",
+      "Pathogens cannot move through water",
+      "Only high pressure causes intrusion"
+    ],
+    "correctIndex": 1,
+    "explanation": "Positive pressure helps keep external contamination out. Pressure loss requires investigation and the prescribed response.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 684,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "What is the role of an air gap in cross-connection control?",
+    "options": [
+      "Reduce chlorine demand",
+      "Measure backpressure",
+      "Provide physical separation between the potable outlet and receiving vessel",
+      "Increase pump efficiency"
+    ],
+    "correctIndex": 2,
+    "explanation": "A properly sized air gap is a highly reliable physical separation because there is no continuous connection.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 685,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A backflow-prevention assembly has not been tested at its required interval. What is the concern?",
+    "options": [
+      "It automatically becomes an air gap",
+      "Testing is needed only after contamination",
+      "The assembly always fails closed safely",
+      "Internal components may have failed without visible evidence"
+    ],
+    "correctIndex": 3,
+    "explanation": "Check valves and relief mechanisms can foul or wear. Qualified testing verifies performance.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 686,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why should consumers not be told a boil-water advisory is lifted until authorized?",
+    "options": [
+      "Premature lifting may expose people before required evidence and approval are complete",
+      "Boiling lowers water pressure",
+      "Only the media can test samples",
+      "Advisories are unrelated to health"
+    ],
+    "correctIndex": 0,
+    "explanation": "Clear, authorized communication prevents conflicting instructions and protects public health.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 687,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A main break creates negative pressure beside a flooded sanitary sewer trench. What is the primary public-health concern?",
+    "options": [
+      "The watermain will become larger",
+      "Contaminated water may be drawn into the drinking-water main through the break",
+      "Chlorine residual must increase",
+      "The sanitary sewer will supply fire flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "The combination of contamination source and negative pressure creates a direct intrusion pathway. Isolation, repair, disinfection, sampling, and notification follow the approved plan.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 688,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A facility needs both backpressure and backsiphonage protection against a high health hazard. What determines device selection?",
+    "options": [
+      "Pipe colour only",
+      "Whether the device is least expensive",
+      "The hazard classification, hydraulic condition, applicable standard, and local program",
+      "The customer's preference alone"
+    ],
+    "correctIndex": 2,
+    "explanation": "Backflow devices have different capabilities. A high hazard and backpressure may require a reduced-pressure principle assembly or physical separation, subject to requirements.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 689,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "Several gastrointestinal illness reports cluster in one pressure zone after a low-pressure event. What is the best utility response?",
+    "options": [
+      "Wait for definitive proof before documenting anything",
+      "Flush without collecting any evidence",
+      "Assume complaints are unrelated",
+      "Activate the incident plan, preserve pressure and water-quality data, sample strategically, notify authorities, and control exposure"
+    ],
+    "correctIndex": 3,
+    "explanation": "A potential outbreak needs coordinated operational, epidemiological, regulatory, and communication action while evidence is gathered.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 690,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does a water-distribution system map primarily show?",
+    "options": [
+      "The location and relationship of mains, valves, hydrants, and other assets",
+      "Only customer bills",
+      "Water chemistry reactions",
+      "Motor winding diagrams"
+    ],
+    "correctIndex": 0,
+    "explanation": "System maps support operations, isolation, maintenance, and emergency response.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 691,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What is an as-built drawing?",
+    "options": [
+      "The original concept drawing only",
+      "A record of the infrastructure as installed, including approved field changes",
+      "A daily operator log",
+      "A laboratory chain-of-custody form"
+    ],
+    "correctIndex": 1,
+    "explanation": "As-builts capture final alignment, size, material, elevation, and appurtenances where recorded.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 692,
+    "module": "General",
+    "difficulty": "easy",
+    "question": "What does a drawing legend explain?",
+    "options": [
+      "The hydraulic grade only",
+      "The contractor's payroll",
+      "Symbols, line types, abbreviations, and other conventions",
+      "The chlorine demand"
+    ],
+    "correctIndex": 2,
+    "explanation": "A legend is required to interpret graphical conventions correctly.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 693,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A map scale is 1:1,000. What field distance does 2 cm on the drawing represent?",
+    "options": [
+      "2 m",
+      "200 m",
+      "2,000 m",
+      "20 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Two centimetres at 1:1,000 equals 2,000 cm, or 20 m.",
+    "isCalc": "yes",
+    "steps": [
+      {
+        "l": "Step 1 — Apply the scale",
+        "c": "2 cm × 1,000 = 2,000 cm"
+      },
+      {
+        "l": "Step 2 — Convert centimetres to metres",
+        "c": "2,000 cm ÷ 100 = 20 m"
+      }
+    ]
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 694,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "A valve shown on GIS cannot be found at the mapped point. What should the operator do?",
+    "options": [
+      "Use approved locating, records, measurements, and field evidence to resolve and correct the asset position",
+      "Assume the valve was removed",
+      "Excavate immediately at the symbol",
+      "Delete the valve from GIS"
+    ],
+    "correctIndex": 0,
+    "explanation": "GIS coordinates may be approximate or outdated. Verification precedes excavation and documented correction follows.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 695,
+    "module": "General",
+    "difficulty": "medium",
+    "question": "Why are valve numbers linked to work orders and maps?",
+    "options": [
+      "To calculate pH",
+      "To identify the exact asset and preserve its operating and maintenance history",
+      "To set motor voltage",
+      "To replace field tags"
+    ],
+    "correctIndex": 1,
+    "explanation": "A stable asset identifier connects spatial and maintenance records. Field identification remains important.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 696,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "An isolation plan relies on a boundary valve not shown on the latest map but present on an older as-built. What is the safest approach?",
+    "options": [
+      "Assume the older drawing is exact",
+      "Assume the latest map proves it does not exist",
+      "Verify the valve and connected mains in the field and records before relying on it",
+      "Close unrelated valves instead"
+    ],
+    "correctIndex": 2,
+    "explanation": "Conflicting records require resolution because isolation effectiveness affects customers, fire flow, pressure, and repair safety.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 697,
+    "module": "General",
+    "difficulty": "hard",
+    "question": "A proposed watermain crosses a sewer, but the plan lacks vertical separation details. What should occur?",
+    "options": [
+      "Assume horizontal separation is sufficient",
+      "Set both pipes at the same elevation",
+      "Proceed and update the drawing later",
+      "Obtain design and surveyed elevations and confirm required separation and protection"
+    ],
+    "correctIndex": 3,
+    "explanation": "Horizontal coordinates alone cannot establish a safe crossing. Applicable separation and protection requirements must be designed and verified.",
+    "isCalc": "no",
+    "steps": null
+  }
+]

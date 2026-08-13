@@ -1,0 +1,852 @@
+[
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 640,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Which component of a centrifugal pump adds velocity to the wastewater?",
+    "options": [
+      "The check valve",
+      "The rotating impeller",
+      "The wet-well access hatch",
+      "The motor overload relay"
+    ],
+    "correctIndex": 1,
+    "explanation": "The impeller transfers rotational energy to the liquid. The casing then helps convert velocity into pressure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 641,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Why might a pump station use a slow-closing check valve on a discharge line?",
+    "options": [
+      "To increase motor speed during every start",
+      "To measure the wet-well level directly",
+      "To reduce a rapid flow reversal and pressure surge when the pump stops",
+      "To add air continuously into the forcemain"
+    ],
+    "correctIndex": 2,
+    "explanation": "A fast flow reversal can create a damaging pressure surge. Where required by the system design, controlled check-valve closure helps limit that transient while still preventing sustained reverse flow.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 642,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Which pump type moves liquid by trapping and advancing a fixed volume each cycle?",
+    "options": [
+      "Centrifugal pump",
+      "Axial-flow pump",
+      "Mixed-flow pump",
+      "Positive-displacement pump"
+    ],
+    "correctIndex": 3,
+    "explanation": "Positive-displacement pumps move discrete volumes and can develop high pressure. Centrifugal pumps impart velocity continuously.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 643,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Why is a metering pump used for chemical addition?",
+    "options": [
+      "It delivers a controlled, adjustable dose",
+      "It grinds sewage solids",
+      "It measures motor insulation",
+      "It replaces the chemical storage tank"
+    ],
+    "correctIndex": 0,
+    "explanation": "Metering pumps provide repeatable low-volume chemical feed. They must still be calibrated for the actual system pressure and chemical.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 644,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A centrifugal pump runs, but no discharge pressure develops after maintenance. What should be checked first?",
+    "options": [
+      "Whether the alarm beacon is amber",
+      "Whether the pump is properly primed and suction and discharge valves are correctly positioned",
+      "Whether the flow totalizer has been reset",
+      "Whether the wet-well ladder is stainless steel"
+    ],
+    "correctIndex": 1,
+    "explanation": "Loss of prime, air binding, or an incorrect valve lineup can prevent a centrifugal pump from developing flow and head.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 645,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "What condition most directly causes cavitation in a centrifugal pump?",
+    "options": [
+      "Excessive pressure at the motor starter",
+      "A fully charged standby battery",
+      "Insufficient pressure at the pump suction",
+      "An open ventilation fan damper"
+    ],
+    "correctIndex": 2,
+    "explanation": "When suction pressure falls below the liquid's vapour-pressure requirement, vapour bubbles form and collapse, causing noise, vibration, and damage.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 646,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A screw pump is best suited to which collection-system duty?",
+    "options": [
+      "Injecting a few millilitres of polymer per minute",
+      "Generating compressed air for controls",
+      "Measuring chlorine residual",
+      "Lifting large flows at relatively low head while passing solids"
+    ],
+    "correctIndex": 3,
+    "explanation": "Screw pumps can handle debris-laden wastewater gently at low to moderate lift. Metering pumps suit precise chemical dosing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 647,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A pneumatic ejector station moves wastewater by what means?",
+    "options": [
+      "Compressed air alternately pressurizes a receiving vessel",
+      "A submerged centrifugal impeller runs continuously",
+      "A gravity valve creates electrical current",
+      "A screw conveyor raises the wet-well floor"
+    ],
+    "correctIndex": 0,
+    "explanation": "A pneumatic ejector uses compressed air to force wastewater from a vessel after it fills. Sequencing and check valves control the cycle.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 648,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A pump's seal leakage increases suddenly. What is the correct operational response?",
+    "options": [
+      "Tighten every fastener while the pump runs",
+      "Assess leakage against the manufacturer's limits and inspect the seal system promptly",
+      "Block the seal drain so leakage cannot be seen",
+      "Increase speed until the leakage stops"
+    ],
+    "correctIndex": 1,
+    "explanation": "A sudden change can signal seal or shaft problems. Safe isolation and manufacturer procedures are required; hiding leakage does not correct it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 649,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A wet-well pump experiences repeated ragging. Which change is most likely to address the operating cause?",
+    "options": [
+      "Increase overload settings until the motor no longer trips",
+      "Remove the check valve from the discharge",
+      "Review pump passage size, impeller type, operating point, and upstream screening",
+      "Disable the high-level alarm"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ragging is influenced by solids characteristics, pump geometry, speed, and upstream control. Electrical protection and alarms must remain effective.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 650,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "Two duty pumps show the same discharge pressure, but one draws substantially more current and vibrates. What is the best next step?",
+    "options": [
+      "Assume equal pressure proves equal condition",
+      "Raise its overload setting",
+      "Close the common discharge valve completely while both run",
+      "Remove the abnormal pump from duty when safe and inspect for mechanical or hydraulic damage"
+    ],
+    "correctIndex": 3,
+    "explanation": "Current and vibration differences can reveal obstruction, wear, misalignment, or bearing damage even when the common header pressure is the same.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 651,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A centrifugal pump repeatedly cycles near shutoff because downstream flow is restricted. What risk should be controlled?",
+    "options": [
+      "Internal heating, recirculation, vibration, and pump damage from very low flow",
+      "Loss of all developed head",
+      "Automatic conversion to a metering pump",
+      "Elimination of radial load"
+    ],
+    "correctIndex": 0,
+    "explanation": "Centrifugal pumps require an acceptable operating range or minimum flow. Prolonged operation near shutoff can overheat and damage the pump.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 652,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What information is found on an electric motor nameplate?",
+    "options": [
+      "The sewer's as-built invert elevations",
+      "Rated voltage, current, power, speed, and other operating limits",
+      "The wastewater BOD result",
+      "The confined-space entry permit"
+    ],
+    "correctIndex": 1,
+    "explanation": "The nameplate identifies the motor's electrical and mechanical ratings needed for correct supply, protection, and loading.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 653,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What does a gear reducer do between a motor and driven equipment?",
+    "options": [
+      "Changes AC power to drinking water",
+      "Eliminates the need for lubrication",
+      "Reduces speed while increasing available torque",
+      "Measures flow through the forcemain"
+    ],
+    "correctIndex": 2,
+    "explanation": "A gear reducer trades rotational speed for torque according to its ratio. It requires alignment and lubrication.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 654,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Why is coupling alignment important?",
+    "options": [
+      "Alignment raises wastewater pH",
+      "Misalignment improves motor efficiency",
+      "Alignment replaces shaft guarding",
+      "Misalignment increases vibration and bearing and seal wear"
+    ],
+    "correctIndex": 3,
+    "explanation": "Proper alignment reduces damaging forces on shafts, bearings, couplings, and seals. Guards remain required after alignment.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 655,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A three-phase motor reverses direction after electrical work. What is the likely cause?",
+    "options": [
+      "Two supply phases were interchanged",
+      "The wet-well setpoint was lowered",
+      "The coupling was lubricated",
+      "The discharge valve was opened"
+    ],
+    "correctIndex": 0,
+    "explanation": "Changing the phase sequence reverses a three-phase motor. Rotation must be verified safely before coupling or operation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 656,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why should a VFD-driven motor be checked for adequate cooling at very low speed?",
+    "options": [
+      "Low speed always doubles insulation strength",
+      "A shaft-mounted fan may move less cooling air while the motor still carries load",
+      "The VFD supplies mechanical lubrication",
+      "Cooling depends only on wet-well volume"
+    ],
+    "correctIndex": 1,
+    "explanation": "Motor self-cooling can decline at low speed. Application limits or separate cooling may be required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 657,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "What is the purpose of a flexible coupling?",
+    "options": [
+      "Provide electrical overload protection",
+      "Prevent all reverse flow",
+      "Transmit torque while accommodating small permitted misalignment and shock",
+      "Measure the motor's insulation resistance"
+    ],
+    "correctIndex": 2,
+    "explanation": "A flexible coupling transfers torque and tolerates limited misalignment; it does not excuse poor alignment or replace guarding.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 658,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A motor bearing repeatedly fails shortly after replacement. Which investigation is most complete?",
+    "options": [
+      "Replace it again without finding the cause",
+      "Increase motor speed to smooth the vibration",
+      "Disable condition alarms",
+      "Check alignment, lubrication, loading, vibration, installation, and possible electrical bearing currents"
+    ],
+    "correctIndex": 3,
+    "explanation": "Recurring failure requires root-cause analysis across mechanical, lubrication, operating, and electrical factors.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 659,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A driven pump shaft is difficult to turn after the motor is decoupled. What does this indicate?",
+    "options": [
+      "The mechanical resistance is likely in the pump or driven train rather than the motor",
+      "The electrical supply has reversed phase",
+      "The overload relay is undersized",
+      "The SCADA screen has the wrong units"
+    ],
+    "correctIndex": 0,
+    "explanation": "Decoupling helps isolate the source of drag. The driven equipment should be safely inspected before recoupling.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 660,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What is the purpose of a standby generator at a lift station?",
+    "options": [
+      "Provide continuous sewer ventilation",
+      "Supply power during loss of the normal utility source",
+      "Measure forcemain pressure",
+      "Replace every station battery"
+    ],
+    "correctIndex": 1,
+    "explanation": "Standby generation keeps critical pumping and controls available during utility outages.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 661,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What does an automatic transfer switch do?",
+    "options": [
+      "Changes pump discharge direction",
+      "Controls wastewater pH",
+      "Transfers the load between normal and standby power sources",
+      "Ventilates the generator room"
+    ],
+    "correctIndex": 2,
+    "explanation": "The transfer switch selects the approved power source and prevents unsafe parallel connection unless designed for it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 662,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why should a standby generator be tested under load?",
+    "options": [
+      "No-load running proves every load will operate",
+      "It increases fuel shelf life indefinitely",
+      "It eliminates preventive maintenance",
+      "To verify it can start, transfer, and carry the station's actual electrical demand"
+    ],
+    "correctIndex": 3,
+    "explanation": "A load test reveals cooling, fuel, voltage, frequency, and capacity problems that a no-load run may miss.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 663,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Before connecting a portable generator to station equipment, what must be confirmed?",
+    "options": [
+      "Approved connection, grounding/bonding, voltage, frequency, phase, and isolation from the utility",
+      "Only that the fuel tank is full",
+      "That the wet well is empty",
+      "That the generator is louder than the alarm"
+    ],
+    "correctIndex": 0,
+    "explanation": "Incorrect connection can damage equipment, energize utility lines, or expose workers. The engineered connection procedure governs use.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 664,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A generator starts but frequency falls sharply as pumps come on. What is the most likely concern?",
+    "options": [
+      "The discharge check valve is too quiet",
+      "The generator is overloaded or the engine cannot maintain speed",
+      "The wet-well pH is neutral",
+      "The transfer switch is measuring flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "AC frequency follows engine speed. A large drop under load signals excessive load or an engine/governor/fuel problem.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 665,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A station's largest pump starts successfully on utility power but stalls the generator. What should be evaluated?",
+    "options": [
+      "Only the generator's fuel colour",
+      "Whether the sewer map is at 1:500 scale",
+      "Motor starting current, generator transient capacity, starting method, and load sequencing",
+      "Removing motor overload protection"
+    ],
+    "correctIndex": 2,
+    "explanation": "Motor starting can demand several times running current. Generator sizing and staged or reduced-voltage starting must accommodate the transient.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 666,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Which valve is commonly used for isolation and is intended to be fully open or fully closed?",
+    "options": [
+      "Check valve",
+      "Air-release valve",
+      "Pressure gauge",
+      "Gate valve"
+    ],
+    "correctIndex": 3,
+    "explanation": "A gate valve provides low resistance when fully open and is generally used for isolation rather than throttling.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 667,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What is the function of an air-release valve at a forcemain high point?",
+    "options": [
+      "Release accumulated air or gas that can restrict flow",
+      "Prevent every form of water hammer",
+      "Measure electrical resistance",
+      "Stop all reverse flow at the pump"
+    ],
+    "correctIndex": 0,
+    "explanation": "Air pockets collect at high points and can reduce capacity or cause unstable operation. The valve requires safe inspection and maintenance.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 668,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "Which valve prevents reverse flow automatically?",
+    "options": [
+      "Sluice gate",
+      "Check valve",
+      "Plug valve used only for isolation",
+      "Air-vacuum valve"
+    ],
+    "correctIndex": 1,
+    "explanation": "A check valve responds to flow direction and closes when flow reverses.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 669,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why is a plug valve often used in wastewater service?",
+    "options": [
+      "It has no moving parts",
+      "It is an electrical protective device",
+      "Its port and wiping action can handle solids-laden flow better than some valve designs",
+      "It adds oxygen to wastewater"
+    ],
+    "correctIndex": 2,
+    "explanation": "Eccentric plug valves are common in wastewater because their passage and seating action suit dirty service.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 670,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A check valve slams when a pump stops. What should be investigated?",
+    "options": [
+      "Whether the valve is painted the correct colour",
+      "Increasing forcemain detention time",
+      "Removing the station high-level alarm",
+      "Closing characteristics, reverse velocity, pump stop sequence, and valve condition"
+    ],
+    "correctIndex": 3,
+    "explanation": "Valve slam is a transient caused by reverse flow and closure dynamics. Selection, condition, and pump controls can affect it.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 671,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "What is the main operating advantage of a butterfly valve?",
+    "options": [
+      "Quarter-turn operation with compact size for larger pipes",
+      "It prevents backflow without an actuator",
+      "It meters chemicals at laboratory rates",
+      "It has zero head loss in every position"
+    ],
+    "correctIndex": 0,
+    "explanation": "Butterfly valves are compact quarter-turn valves. Their disc remains in the flow and creates some loss.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 672,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "An isolation valve shows fully closed on SCADA, but downstream flow continues. What is the best interpretation?",
+    "options": [
+      "SCADA proves the valve is mechanically sealed",
+      "Position indication may be wrong, or the valve may be obstructed or damaged and not sealing",
+      "The flowmeter must be ignored",
+      "Reverse the motor phases"
+    ],
+    "correctIndex": 1,
+    "explanation": "A limit switch reports actuator position, not necessarily seat integrity. Field verification under safe procedures is required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 673,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A buried valve becomes progressively harder to operate. What is the safest maintenance approach?",
+    "options": [
+      "Apply unlimited torque until it moves",
+      "Strike the stem while the line is pressurized",
+      "Verify valve type and position, inspect the operator, and exercise it within approved torque limits",
+      "Use it for throttling regardless of design"
+    ],
+    "correctIndex": 2,
+    "explanation": "Excessive force can break the stem or operator. Condition-based maintenance follows manufacturer and utility limits.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 674,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What is a common advantage of PVC gravity sewer pipe?",
+    "options": [
+      "It cannot deflect under load",
+      "It requires no bedding",
+      "It is unaffected by every chemical",
+      "It is corrosion resistant and has a smooth interior"
+    ],
+    "correctIndex": 3,
+    "explanation": "PVC resists many wastewater corrosion mechanisms and has low roughness, but installation and chemical compatibility still matter.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 675,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What is the purpose of a flexible pipe coupling?",
+    "options": [
+      "Join compatible pipe ends while allowing limited movement or dimensional difference",
+      "Increase motor speed",
+      "Measure pipe grade",
+      "Provide atmospheric ventilation"
+    ],
+    "correctIndex": 0,
+    "explanation": "Flexible couplings can connect or repair pipes within their rated size, pressure, restraint, and material limits.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 676,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why must pipe bedding be properly placed and compacted?",
+    "options": [
+      "It increases wastewater BOD",
+      "It provides uniform support and controls pipe deformation and settlement",
+      "It replaces leak testing",
+      "It eliminates surface restoration"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bedding transfers loads and supports the pipe. Poor support can cause deflection, joint movement, or grade problems.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 677,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A gasketed pipe joint will not seat evenly. What should be done?",
+    "options": [
+      "Apply excavator force until it seats",
+      "Remove the gasket permanently",
+      "Stop, clean and inspect the bell, spigot, gasket, alignment, and insertion mark",
+      "Heat the joint with an open flame"
+    ],
+    "correctIndex": 2,
+    "explanation": "Debris, rolled gaskets, damage, or misalignment can cause leaks. The joint should be reassembled by the approved procedure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 678,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why are restrained joints or thrust control required at some forcemain fittings?",
+    "options": [
+      "Gravity flow cannot pass a bend",
+      "Restraint increases motor voltage",
+      "Fittings always weigh less than straight pipe",
+      "Internal pressure creates unbalanced forces at bends, tees, and closures"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure thrust can separate joints unless restrained by designed joints, anchors, or thrust blocks.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 679,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A flexible gravity sewer repeatedly shows excessive ovality after backfill. What is the most likely installation issue?",
+    "options": [
+      "Inadequate side support or improper embedment compaction",
+      "Too much wastewater alkalinity",
+      "An oversized manhole cover",
+      "A low motor power factor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Flexible pipe relies on soil-pipe interaction. Poor haunch support and embedment compaction allow excessive deflection.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 680,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What does a level sensor in a wet well provide to the control system?",
+    "options": [
+      "A direct laboratory BOD result",
+      "A signal representing liquid level",
+      "The motor insulation class",
+      "The sewer pipe material"
+    ],
+    "correctIndex": 1,
+    "explanation": "The level signal is used for pump start, stop, alarm, and monitoring functions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 681,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What is SCADA used for at a lift station?",
+    "options": [
+      "Replacing every local protective device",
+      "Physically clearing pump blockages",
+      "Supervisory monitoring, data collection, alarms, and authorized remote control",
+      "Disinfecting the wastewater"
+    ],
+    "correctIndex": 2,
+    "explanation": "SCADA supports supervision and control, but local controls and protective devices remain essential.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 682,
+    "module": "Operate Equipment",
+    "difficulty": "easy",
+    "question": "What does a flow totalizer display?",
+    "options": [
+      "Instantaneous pressure only",
+      "Motor winding temperature only",
+      "The current wet-well level only",
+      "Accumulated volume over time"
+    ],
+    "correctIndex": 3,
+    "explanation": "A totalizer integrates flow rate to report total volume. Instantaneous flow is a separate value.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 683,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "An ultrasonic level sensor suddenly reads maximum level while visual checks show a low wet well. What should be checked?",
+    "options": [
+      "Echo obstruction, condensation, sensor face condition, wiring, and scaling",
+      "Increase pump speed immediately without verification",
+      "Assume the visual check is always wrong",
+      "Disable the high-level alarm permanently"
+    ],
+    "correctIndex": 0,
+    "explanation": "False ultrasonic readings can result from blocked sound paths, foam, condensation, configuration, or signal faults. Safe independent verification is needed.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 684,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why is a magnetic flowmeter suitable for wastewater?",
+    "options": [
+      "It measures any gas without a full pipe",
+      "It has no primary obstruction and measures conductive liquid velocity",
+      "It requires a nonconductive liquid",
+      "It produces flow by rotating an impeller"
+    ],
+    "correctIndex": 1,
+    "explanation": "Magnetic meters use Faraday's law and need a conductive, adequately filled pipe. Their open bore suits solids-bearing flows.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 685,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "A high-level float operates locally but no SCADA alarm appears. Where is the fault most likely?",
+    "options": [
+      "In the gravity sewer slope only",
+      "In the discharge check valve seat only",
+      "In the alarm input, wiring, RTU/PLC logic, communications, or SCADA configuration",
+      "In the wastewater pH"
+    ],
+    "correctIndex": 2,
+    "explanation": "The sensing device works locally, so the failed path is downstream in signal transmission or alarm processing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 686,
+    "module": "Operate Equipment",
+    "difficulty": "medium",
+    "question": "Why are instrument calibration records important?",
+    "options": [
+      "They replace field calibration",
+      "They guarantee the process never changes",
+      "They are needed only when an instrument fails",
+      "They demonstrate measurement reliability and show drift or recurring problems"
+    ],
+    "correctIndex": 3,
+    "explanation": "Traceable records support maintenance, compliance, and data interpretation. Calibration still must be performed at required intervals.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 687,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A flowmeter reports stable flow while wet-well drawdown indicates a value 30% lower. What is the best response?",
+    "options": [
+      "Verify both methods, meter zero and scaling, pipe-full condition, wet-well geometry, influent flow, and time-volume measurements",
+      "Average the two values without investigation",
+      "Change the meter range until they match",
+      "Ignore drawdown because it is not electronic"
+    ],
+    "correctIndex": 0,
+    "explanation": "A material discrepancy requires independent verification and review of assumptions. Drawdown-based pump flow must account for wet-well geometry, elapsed time, and influent flow during the test; a flowmeter also requires correct zero, scaling, and full-pipe conditions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 688,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "Intermittent communication loss causes pumps to stop even though local level controls are healthy. What control-design principle should be reviewed?",
+    "options": [
+      "Every pump should depend entirely on the remote screen",
+      "The station should fail safely and retain appropriate local automatic control on communication loss",
+      "High-level alarms should be disabled during outages",
+      "The wet well should be allowed to overflow before local control acts"
+    ],
+    "correctIndex": 1,
+    "explanation": "Critical pumping should not be made unsafe by loss of supervisory communications. Local protection and defined fail states are required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 689,
+    "module": "Operate Equipment",
+    "difficulty": "hard",
+    "question": "A pressure transmitter reads correctly at zero but increasingly low at higher pressure. What is the likely calibration issue?",
+    "options": [
+      "A zero offset only",
+      "A reversed motor phase",
+      "A span error",
+      "A sewer-grade error"
+    ],
+    "correctIndex": 2,
+    "explanation": "A span error changes the slope of the measurement response, causing error that grows across the range. A zero error is a more constant offset.",
+    "isCalc": "no",
+    "steps": null
+  }
+]
