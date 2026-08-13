@@ -88,6 +88,7 @@ function formatCAD(cents: number): string {
 
 export function FlexOrderBuilder() {
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
+  const [organizationName, setOrganizationName] = useState("");
   const [billingEmail, setBillingEmail] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
   const [sameEmail, setSameEmail] = useState(true);
@@ -128,6 +129,10 @@ export function FlexOrderBuilder() {
   };
 
   const handleSubmit = () => {
+    if (!organizationName.trim()) {
+      toast.error("Please enter your organization name");
+      return;
+    }
     if (!billingEmail.trim() || !billingEmail.includes("@")) {
       toast.error("Please enter a valid billing email");
       return;
@@ -143,6 +148,7 @@ export function FlexOrderBuilder() {
       return;
     }
     createOrder.mutate({
+      organizationName: organizationName.trim(),
       managerEmail: mgr.trim().toLowerCase(),
       billingEmail: billingEmail.trim().toLowerCase(),
       province,
@@ -158,6 +164,19 @@ export function FlexOrderBuilder() {
         <p className="text-sm text-gray-500">Pick the courses your operators need, choose 3, 6, or 12 month access, and check out in one order.</p>
       </CardHeader>
       <CardContent className="space-y-5">
+        {/* Organization */}
+        <div className="space-y-1.5">
+          <Label className="text-gray-700 font-medium">Organization name</Label>
+          <Input
+            type="text"
+            placeholder="City or organization"
+            value={organizationName}
+            onChange={e => setOrganizationName(e.target.value)}
+            maxLength={200}
+          />
+          <p className="text-xs text-gray-400">This name will appear on the manager dashboard.</p>
+        </div>
+
         {/* Province */}
         <div className="space-y-1.5">
           <Label className="text-gray-700 font-medium">Province</Label>

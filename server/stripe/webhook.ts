@@ -80,6 +80,7 @@ export function registerStripeWebhook(app: Express) {
             }, teamFlexOrderId);
             if (!result.success) {
               console.error(`[Stripe Webhook] Flex fulfilment failed for order #${teamFlexOrderId}: ${result.error}`);
+              return res.status(503).json({ error: "Course Pass fulfilment is incomplete" });
             }
             return res.json({ received: true });
           }

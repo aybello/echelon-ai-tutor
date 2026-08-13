@@ -36,6 +36,13 @@
       "when": 1786507200000,
       "tag": "0049_individual_exam_pass_expiry",
       "breakpoints": true
+    },
+    {
+      "idx": 50,
+      "version": "5",
+      "when": 1786636800000,
+      "tag": "0050_team_flex_guest_checkout",
+      "breakpoints": true
     }
   ]
 }

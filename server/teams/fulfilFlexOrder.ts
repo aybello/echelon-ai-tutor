@@ -11,6 +11,7 @@
 import { and, eq, sql } from "drizzle-orm";
 import { getDb } from "../db";
 import {
+  organizations,
   teamFlexLicences,
   teamFlexOrderItems,
   teamFlexOrders,
@@ -18,6 +19,10 @@ import {
 import { notifyOwner } from "../_core/notification";
 import { addUtcCalendarMonths } from "./flexLicenceService";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { grantSeat } from "../routers/orgRouter";
+import { sendManagerOnboardingEmail } from "../email";
+import { ENV } from "../_core/env";
+import { isProvisionalCoursePassOrganization } from "./flexCheckoutOrganization";
 
 const ACTIVATION_DEADLINE_MONTHS = 12;
 
@@ -63,10 +68,7 @@ export async function fulfilFlexOrder(
   if (!order) {
     return { success: false, orderId: teamFlexOrderId, licencesCreated: 0, error: "Order not found" };
   }
-  if (order.status === "paid") {
-    return { success: true, orderId: teamFlexOrderId, licencesCreated: 0, alreadyFulfilled: true };
-  }
-  if (order.status !== "pending") {
+  if (order.status !== "pending" && order.status !== "paid") {
     return {
       success: false,
       orderId: teamFlexOrderId,
@@ -104,7 +106,7 @@ export async function fulfilFlexOrder(
   }
 
   const now = new Date();
-  const licencesCreated = await db.transaction(async (tx) => {
+  const fulfilment = await db.transaction(async (tx) => {
     await tx.execute(sql`SELECT id FROM team_flex_orders WHERE id = ${teamFlexOrderId} FOR UPDATE`);
 
     const [lockedOrder] = await tx
@@ -114,7 +116,13 @@ export async function fulfilFlexOrder(
       .limit(1);
 
     if (!lockedOrder) throw new Error(`Flex order #${teamFlexOrderId} not found`);
-    if (lockedOrder.status === "paid") return 0;
+    if (lockedOrder.status === "paid") {
+      return {
+        licencesCreated: 0,
+        organizationId: lockedOrder.organizationId,
+        managerEmail: lockedOrder.managerEmail,
+      };
+    }
     if (lockedOrder.status !== "pending") {
       throw new Error(`Flex order #${teamFlexOrderId} is ${lockedOrder.status}`);
     }
@@ -127,6 +135,40 @@ export async function fulfilFlexOrder(
     if (items.length === 0 || expectedQuantity !== lockedOrder.totalLicences) {
       throw new Error(`Flex order #${teamFlexOrderId} item quantity does not reconcile`);
     }
+
+    const [organization] = await tx
+      .select()
+      .from(organizations)
+      .where(eq(organizations.id, lockedOrder.organizationId))
+      .limit(1);
+    if (!organization) {
+      throw new Error(`Flex order #${teamFlexOrderId} has no valid organization`);
+    }
+
+    // A guest checkout creates a provisional Course Pass organization with no
+    // membership or access. Payment is the authority that activates it.
+    if (isProvisionalCoursePassOrganization(organization)) {
+      await tx.update(organizations)
+        .set({
+          status: "active",
+          stripeCustomerId: stripeSession.customer,
+        })
+        .where(eq(organizations.id, organization.id));
+    }
+
+    await grantSeat(
+      tx as any,
+      {
+        id: organization.id,
+        name: organization.name,
+        province: organization.province,
+        tier: organization.tier,
+        termStart: organization.termStart,
+        termEnd: organization.termEnd,
+      },
+      lockedOrder.managerEmail.toLowerCase().trim(),
+      "manager",
+    );
 
     const activationDeadline = addUtcCalendarMonths(now, ACTIVATION_DEADLINE_MONTHS);
     let created = 0;
@@ -157,15 +199,43 @@ export async function fulfilFlexOrder(
       })
       .where(and(eq(teamFlexOrders.id, teamFlexOrderId), eq(teamFlexOrders.status, "pending")));
 
-    return created;
+    return {
+      licencesCreated: created,
+      organizationId: organization.id,
+      managerEmail: lockedOrder.managerEmail,
+    };
   });
 
-  console.log(`[Flex Fulfilment] Order #${teamFlexOrderId}: ${licencesCreated} licences created`);
+  // Course Pass managers must be able to reach the dashboard after payment.
+  // If email delivery fails, throw after the paid transaction commits so Stripe
+  // retries the webhook; the next run is idempotent and retries only onboarding.
+  const [fulfilledOrganization] = await db
+    .select()
+    .from(organizations)
+    .where(eq(organizations.id, fulfilment.organizationId))
+    .limit(1);
+  if (
+    fulfilledOrganization?.billingType === "course-pass" &&
+    !fulfilledOrganization.onboardingEmailSentAt
+  ) {
+    await sendManagerOnboardingEmail({
+      managerEmail: fulfilment.managerEmail,
+      orgName: fulfilledOrganization.name,
+      seats: order.totalLicences,
+      tierLabel: "Course Passes",
+      dashboardUrl: `${ENV.appBaseUrl}/account?next=/team`,
+    });
+    await db.update(organizations)
+      .set({ onboardingEmailSentAt: new Date() })
+      .where(eq(organizations.id, fulfilledOrganization.id));
+  }
+
+  console.log(`[Flex Fulfilment] Order #${teamFlexOrderId}: ${fulfilment.licencesCreated} licences created`);
   return {
     success: true,
     orderId: teamFlexOrderId,
-    licencesCreated,
-    alreadyFulfilled: licencesCreated === 0,
+    licencesCreated: fulfilment.licencesCreated,
+    alreadyFulfilled: fulfilment.licencesCreated === 0,
   };
 }
 

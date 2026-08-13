@@ -45,6 +45,7 @@ import {
   MAX_BULK_ONBOARDING_ROWS,
   previewFlexBulkOnboarding,
 } from "../teams/flexBulkOnboardingService";
+import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
 
 const flexBulkRowsSchema = z.array(z.object({
   clientRowId: z.string().min(1).max(64),
@@ -239,9 +240,10 @@ export const teamFlexRouter = router({
       return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.orgId);
     }),
 
-  // ─── Create order (AUTHENTICATED MANAGER ONLY) ─────────────────────────────
+  // ─── Create order (existing manager or guest purchaser) ───────────────────
   createOrder: publicProcedure
     .input(z.object({
+      organizationName: z.string().trim().min(2).max(200),
       managerEmail: z.string().email().optional(),
       billingEmail: z.string().email().optional(),
       province: z.enum(["ontario", "western"]),
@@ -266,14 +268,14 @@ export const teamFlexRouter = router({
       // ── Auth: accept OAuth, email-code session, OR input.managerEmail ──
       let purchaserUserId: number | null = null;
       let managerEmail: string;
-      let orgId: number = 0;
+      let orgId: number | null = null;
       const ctxEmail = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
       if (ctxEmail) {
         purchaserUserId = ctx.user?.id ?? null;
         managerEmail = ctxEmail;
         try {
           const mgr = await resolveManagerOrg(ctx);
-          orgId = mgr.orgId ?? 0;
+          orgId = mgr.orgId;
         } catch { /* new manager, no org yet */ }
       } else if (input.managerEmail) {
         managerEmail = input.managerEmail.toLowerCase().trim();
@@ -368,38 +370,88 @@ export const teamFlexRouter = router({
         return sum + (item.listUnitPriceCents * item.quantity - item.lineTotalCents);
       }, 0);
 
-      // ── Insert pending order ────────────────────────────────────────────────
-      const [orderResult] = await db.insert(teamFlexOrders).values({
-        organizationId: orgId ?? 0,
-        purchaserUserId: purchaserUserId ?? 0,
-        managerEmail,
-        totalLicences,
-        subtotalCents,
-        discountRate: String(discountRate),
-        discountCents,
-        totalBeforeTaxCents: subtotalCents,
-        taxCents: 0, // Updated from Stripe after payment
-        totalPaidCents: 0, // Updated from Stripe after payment
-        currency: "cad",
-        status: "pending",
-        overlapAcknowledged: input.overlapAcknowledged,
-      });
-      const orderId = orderResult.insertId;
+      // ── Create/reuse a real organization and insert the pending order ───────
+      // Guest checkout used to write organizationId=0 and purchaserUserId=0.
+      // That can violate foreign keys immediately and would attach paid licences
+      // to a non-existent organization. A provisional organization is safe: it
+      // has no manager membership or course access until Stripe confirms payment.
+      let orderId: number;
+      try {
+        orderId = await db.transaction(async (tx) => {
+          let checkoutOrgId = orgId;
 
-      // ── Insert order items ──────────────────────────────────────────────────
-      for (const item of orderItems) {
-        await db.insert(teamFlexOrderItems).values({
-          orderId,
-          courseKey: item.courseKey,
-          examFamily: item.examFamily,
-          pricingBand: item.pricingBand,
-          courseLevel: item.courseLevel,
-          termMonths: item.termMonths,
-          quantity: item.quantity,
-          listUnitPriceCents: item.listUnitPriceCents,
-          discountRate: String(discountRate),
-          discountedUnitPriceCents: item.discountedUnitPriceCents,
-          lineTotalCents: item.lineTotalCents,
+          if (!checkoutOrgId) {
+            const existingOrganizations = await tx
+              .select({ id: organizations.id })
+              .from(organizations)
+              .where(and(
+                eq(organizations.managerEmail, managerEmail),
+                eq(organizations.province, input.province),
+                eq(organizations.status, "active"),
+              ))
+              .limit(2);
+
+            // Reuse an unambiguous existing manager organization. If the same
+            // email manages multiple organizations, create a separate Course
+            // Pass organization instead of guessing which one owns the order.
+            if (existingOrganizations.length === 1) {
+              checkoutOrgId = existingOrganizations[0].id;
+            } else {
+              const [organizationResult] = await tx.insert(organizations).values(
+                buildProvisionalCoursePassOrganization({
+                  organizationName: input.organizationName,
+                  managerEmail,
+                  province: input.province,
+                }),
+              );
+              checkoutOrgId = Number(organizationResult.insertId);
+            }
+          }
+
+          if (!checkoutOrgId || checkoutOrgId <= 0) {
+            throw new Error("Could not resolve an organization for the Course Pass order");
+          }
+
+          const [orderResult] = await tx.insert(teamFlexOrders).values({
+            organizationId: checkoutOrgId,
+            purchaserUserId,
+            managerEmail,
+            totalLicences,
+            subtotalCents,
+            discountRate: String(discountRate),
+            discountCents,
+            totalBeforeTaxCents: subtotalCents,
+            taxCents: null, // Updated from Stripe after payment
+            totalPaidCents: null, // Updated from Stripe after payment
+            currency: "cad",
+            status: "pending",
+            overlapAcknowledged: input.overlapAcknowledged,
+          });
+          const pendingOrderId = Number(orderResult.insertId);
+
+          for (const item of orderItems) {
+            await tx.insert(teamFlexOrderItems).values({
+              orderId: pendingOrderId,
+              courseKey: item.courseKey,
+              examFamily: item.examFamily,
+              pricingBand: item.pricingBand,
+              courseLevel: item.courseLevel,
+              termMonths: item.termMonths,
+              quantity: item.quantity,
+              listUnitPriceCents: item.listUnitPriceCents,
+              discountRate: String(discountRate),
+              discountedUnitPriceCents: item.discountedUnitPriceCents,
+              lineTotalCents: item.lineTotalCents,
+            });
+          }
+
+          return pendingOrderId;
+        });
+      } catch (error) {
+        console.error("[Flex Checkout] Failed to create pending order:", error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "We could not start checkout. Please try again or contact support if the problem continues.",
         });
       }
 
@@ -417,21 +469,33 @@ export const teamFlexRouter = router({
       }));
 
       const baseUrl = ENV.appBaseUrl;
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        mode: "payment",
-        line_items: stripeLineItems as any,
-        customer_email: input.billingEmail || managerEmail,
-        metadata: {
-          type: "team_flex",
-          teamFlexOrderId: String(orderId),
-        },
-        phone_number_collection: { enabled: true },
-        automatic_tax: { enabled: true },
-        // No allow_promotion_codes — removed per security directive
-        success_url: `${baseUrl}/team?flex_order_id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${baseUrl}/teams`,
-      });
+      let session;
+      try {
+        session = await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          mode: "payment",
+          line_items: stripeLineItems as any,
+          customer_email: input.billingEmail || managerEmail,
+          metadata: {
+            type: "team_flex",
+            teamFlexOrderId: String(orderId),
+          },
+          phone_number_collection: { enabled: true },
+          automatic_tax: { enabled: true },
+          // No allow_promotion_codes — removed per security directive
+          success_url: `${baseUrl}/team?flex_order_id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${baseUrl}/teams`,
+        });
+      } catch (error) {
+        await db.update(teamFlexOrders)
+          .set({ status: "checkout_failed" })
+          .where(and(eq(teamFlexOrders.id, orderId), eq(teamFlexOrders.status, "pending")));
+        console.error(`[Flex Checkout] Stripe session creation failed for order #${orderId}:`, error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Checkout is temporarily unavailable. Please try again in a few minutes.",
+        });
+      }
 
       // ── Store Stripe session ID on order ────────────────────────────────────
       await db.update(teamFlexOrders)
