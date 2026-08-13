@@ -1335,4 +1335,4 @@
 ## Class 2 Water Mock-Exam Gate Navigation
 - [x] Trace and fix the purchase-gate close/back action that sends Class 2 Water mock-exam users to a 404
 - [x] Add regression coverage for valid course-page return navigation
-- [ ] Verify the repaired flow, deploy, and synchronize GitHub
+- [x] Verify the repaired flow, deploy, and synchronize GitHub
