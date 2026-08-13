@@ -47,6 +47,7 @@ export default function Teams() {
   const [planType, setPlanType] = useState<"annual" | "flex">("annual");
   const [location] = useLocation();
   const [seats, setSeats] = useState(5);
+  const [seatInput, setSeatInput] = useState("5");
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
   const tier: TeamStreamTier = "all-access"; // Annual Plan is always all-access at CA$399
   const [orgName, setOrgName] = useState("");
@@ -59,9 +60,15 @@ export default function Teams() {
   const basePriceCents = 39900; // CA$399 unified price
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
 
-  const handleSeatsChange = (val: string) => {
-    const n = parseInt(val, 10);
-    if (!isNaN(n) && n >= 5 && n <= 500) setSeats(n);
+  const handleSeatsChange = (val: string) => setSeatInput(val);
+  const commitSeats = () => {
+    const n = parseInt(seatInput, 10);
+    if (!isNaN(n) && n >= 5 && n <= 500) {
+      setSeats(n);
+      setSeatInput(String(n));
+    } else {
+      setSeatInput(String(seats));
+    }
   };
 
   const handleCheckout = async () => {
@@ -239,8 +246,10 @@ export default function Teams() {
                 type="number"
                 min={5}
                 max={500}
-                value={seats}
+                value={seatInput}
                 onChange={e => handleSeatsChange(e.target.value)}
+                onBlur={commitSeats}
+                onKeyDown={e => { if (e.key === "Enter") commitSeats(); }}
                 className="border-gray-300 text-gray-900 w-28"
               />
               <span className="text-gray-500 text-sm">operators</span>
@@ -249,7 +258,7 @@ export default function Teams() {
               {[5, 10, 25, 50, 100].map(n => (
                 <button
                   key={n}
-                  onClick={() => setSeats(n)}
+                  onClick={() => { setSeats(n); setSeatInput(String(n)); }}
                   className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
                     seats === n
                       ? "text-white border-transparent"
