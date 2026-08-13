@@ -44,8 +44,8 @@ jobs:
             < /tmp/echelon-baseline.sql
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
             -e "CREATE DATABASE echelon_migration_ci; CREATE TABLE echelon_migration_ci.exam_outcomes (id int PRIMARY KEY);"
-          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_migration_ci \
-            < drizzle/0051_product_observability.sql
+          sed '/^--> statement-breakpoint$/d' drizzle/0051_product_observability.sql \
+            | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_migration_ci
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
             -Nse "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='echelon_migration_ci' AND table_name='exam_outcomes' AND column_name IN ('readinessScoreAtOutcome','readinessModelVersion')" \
             | grep -qx 2
