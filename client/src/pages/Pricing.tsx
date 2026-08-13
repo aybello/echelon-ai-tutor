@@ -1780,7 +1780,7 @@ export default function Pricing() {
         </h3>
         <p style={{ color: "#94A3B8", fontSize: 14, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
           Utilities, municipalities, and training departments can purchase seats for their whole team.
-          Each operator gets their own account — individual progress tracking, AI tutor access, and exam readiness scores.
+          Each operator gets their own account — individual progress tracking, AI tutor access, and estimated study scores.
           Volume discounts begin at 10 annual operator licences.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 4 }}>
@@ -1849,7 +1849,7 @@ export default function Pricing() {
             },
             {
               q: "How do Teams / utility plans work?",
-              a: "A manager purchases a seat plan and assigns individual operators to seats. Each operator gets their own access to the included courses, plus the manager gets a team dashboard showing readiness scores, weak topics, and activity. Volume discounts apply automatically at checkout."
+              a: "A manager purchases a seat plan and assigns individual operators to seats. Each operator gets their own access to the included courses, plus the manager gets a team dashboard showing estimated study scores, weak topics, and activity. Estimates are not official pass predictions. Volume discounts apply automatically at checkout."
             },
             {
               q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",

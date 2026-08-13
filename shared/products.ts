@@ -401,6 +401,9 @@ export const BUNDLES: EchelonBundle[] = [
     description: "Every course on the platform — all 4 streams, all 4 levels, WPI and Ontario. 18,000+ questions, AI Tutor, mock exams, formula sheets, and unlimited attempts.",
     priceCAD: 34900,
     priceUSD: 24900,
+    // Populated below from the canonical individual catalogue. Keeping this
+    // mapping explicit in the entitlement layer preserves historical access
+    // without putting retired bundles back on sale.
     examTypes: [],
     badge: "Best Value",
     highlight: true,
@@ -426,6 +429,11 @@ export function formatPriceUSD(cents: number): string {
 
 // ── Backward-compatible flat list ─────────────────────────────────────────────
 export const ALL_PRODUCTS = [...INDIVIDUAL_PRODUCTS];
+
+/** Every currently supported individual course, deduplicated. */
+export const ALL_INDIVIDUAL_EXAM_TYPES = Array.from(
+  new Set(INDIVIDUAL_PRODUCTS.flatMap(product => product.examTypes)),
+);
 
 /** Maps product key to quiz and mock exam paths */
 export const PRODUCT_STUDY_PATHS: Record<string, ProductStudyPaths> = {
@@ -468,8 +476,17 @@ export const PRODUCT_STUDY_PATHS: Record<string, ProductStudyPaths> = {
 
 /** Given a product key, return all exam types it unlocks */
 export function getUnlockedExamTypes(productKey: string): string[] {
-  const product = ALL_PRODUCTS.find(p => p.key === productKey);
-  return product?.examTypes ?? [];
+  const product = getProductByKey(productKey);
+  if (!product) return [];
+
+  // The historical All-Access bundle was sold as every course on the
+  // platform. Resolve it dynamically so newly renamed or added canonical
+  // exam types do not silently disappear from grandfathered access.
+  if (product.key === "bundle-all-access") {
+    return [...ALL_INDIVIDUAL_EXAM_TYPES];
+  }
+
+  return [...product.examTypes];
 }
 
 /** Given a list of purchased product keys, return all unlocked exam types */

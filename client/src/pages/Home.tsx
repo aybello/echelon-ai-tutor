@@ -99,6 +99,7 @@ export default function Home() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="oit"
           productName="OIT Water Treatment Exam Pass"
           priceLabel="CA$49"

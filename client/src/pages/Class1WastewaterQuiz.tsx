@@ -115,6 +115,7 @@ export default function Class1WastewaterQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="class1-ww"
           productName="Class 1 Wastewater Treatment Practice Pass"
           priceLabel="CA$99"

@@ -11,16 +11,13 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof
 };
 
 function readinessLabel(score: number): string {
-  if (score >= 85) return "Study Ready";
-  if (score >= 75) return "Approaching Ready";
-  if (score >= 60) return "Building";
-  if (score >= 30) return "Developing";
-  return "Exploring";
+  if (score >= 80) return "Estimated Ready";
+  if (score >= 60) return "Progressing";
+  return score > 0 ? "Needs Focus" : "Not Started";
 }
 
 function readinessColor(score: number): string {
-  if (score >= 85) return "text-emerald-600";
-  if (score >= 75) return "text-teal-600";
+  if (score >= 80) return "text-emerald-600";
   if (score >= 60) return "text-blue-600";
   if (score >= 30) return "text-amber-600";
   return "text-slate-500";

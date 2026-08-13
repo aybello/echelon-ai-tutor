@@ -12,6 +12,19 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: echelon_ci
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=12
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -21,6 +34,21 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - name: Rebuild an empty database from the canonical schema
+        shell: bash
+        run: |
+          pnpm exec drizzle-kit export --dialect mysql --schema ./drizzle/schema.ts \
+            | sed '/^Reading schema files:/d; /^\/.*schema.ts$/d' \
+            > /tmp/echelon-baseline.sql
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_ci \
+            < /tmp/echelon-baseline.sql
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
+            -e "CREATE DATABASE echelon_migration_ci; CREATE TABLE echelon_migration_ci.exam_outcomes (id int PRIMARY KEY);"
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_migration_ci \
+            < drizzle/0051_product_observability.sql
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
+            -Nse "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='echelon_migration_ci' AND table_name='exam_outcomes' AND column_name IN ('readinessScoreAtOutcome','readinessModelVersion')" \
+            | grep -qx 2
       - name: Deterministic unit and acceptance tests
         run: >-
           pnpm exec vitest run
@@ -35,9 +63,34 @@ jobs:
           server/readiness.test.ts
           server/teams/flexBulkOnboarding.test.ts
           shared/teamPricing.test.ts
+          server/trpcRateLimit.test.ts
+          server/previewDiagnostic.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
+      - name: Database-backed access, OTP and Stripe lifecycle tests
+        run: >-
+          pnpm exec vitest run
+          server/_core/access.test.ts
+          server/accessService.test.ts
+          server/emailOtp.test.ts
+          server/ki001.otp.test.ts
+          server/purchase.flow.test.ts
+          server/subscription.flow.test.ts
+          server/org.teams.test.ts
+          server/quiz.serverScoring.test.ts
+          server/exam.submitMock.test.ts
+          server/stripe/individualExamPass.test.ts
+          server/stripe/validateOneTimeCheckout.test.ts
+          server/stripe/webhook.handler.test.ts
+          server/webhook.integration.test.ts
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
       - run: pnpm build
         env:
           NODE_ENV: development

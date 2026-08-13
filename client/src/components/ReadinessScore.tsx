@@ -17,7 +17,7 @@ export default function ReadinessScore({ history }: Props) {
   const color =
     score >= 75 ? "#059669" : score >= 60 ? "#D97706" : "#DC2626";
   const label =
-    score >= 75 ? "Exam Ready" : score >= 60 ? "Getting There" : "Needs Work";
+    score >= 80 ? "Estimated Ready" : score >= 60 ? "Progressing" : "Needs Focus";
 
   return (
     <div
@@ -62,11 +62,14 @@ export default function ReadinessScore({ history }: Props) {
       {/* Labels */}
       <div style={{ flex: 1 }}>
         <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>
-          Session Readiness:{" "}
+          Session Study Estimate:{" "}
           <span style={{ color }}>{label}</span>
         </div>
         <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 2 }}>
           {correct} correct · {wrong} wrong · {history.length} attempted
+        </div>
+        <div style={{ fontSize: 9, color: "#94A3B8", marginTop: 2 }}>
+          Not an official exam-pass prediction.
         </div>
       </div>
 

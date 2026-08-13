@@ -34,7 +34,7 @@ const FEATURES = [
   "Complete question bank for your selected stream",
   "AI Tutor with personalized coaching",
   "Progress dashboard per operator",
-  "Manager dashboard with readiness metrics",
+  "Manager dashboard with estimated study metrics",
   "Exam date tracking and reminders",
   "Progress-tracked flashcards",
   "Proactive email nudges for inactive operators",
@@ -378,7 +378,7 @@ export default function Teams() {
               <span className="font-bold">Manager Dashboard</span>
             </div>
             <p className="text-blue-100 text-sm">
-              See every operator's readiness score, last activity, and exam date at a glance.
+              See every operator's estimated study score, last activity, and exam date at a glance. Estimates are not official pass predictions.
               Get early-warning alerts for operators who are stalled or at risk before their exam.
             </p>
             <div className="grid grid-cols-2 gap-3">

@@ -518,6 +518,9 @@ export const examOutcomes = mysqlTable("exam_outcomes", {
   result: mysqlEnum("result", ["passed", "failed", "no_show"]).notNull(),
   examDate: timestamp("examDate"),
   recordedBy: varchar("recordedBy", { length: 320 }).notNull(), // manager email
+  /** Study estimate captured immediately before the official result was recorded. */
+  readinessScoreAtOutcome: int("readinessScoreAtOutcome"),
+  readinessModelVersion: varchar("readinessModelVersion", { length: 64 }),
   recordedAt: timestamp("recordedAt").defaultNow().notNull(),
 }, (t) => [
   index("exam_outcomes_orgid_idx").on(t.orgId),
@@ -525,6 +528,28 @@ export const examOutcomes = mysqlTable("exam_outcomes", {
 ]);
 export type ExamOutcome = typeof examOutcomes.$inferSelect;
 export type InsertExamOutcome = typeof examOutcomes.$inferInsert;
+
+/**
+ * Durable, queryable product events. Raw email addresses are never stored;
+ * analytics.ts writes a deterministic SHA-256 hash for identity stitching.
+ */
+export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
+  id: int("id").autoincrement().primaryKey(),
+  eventName: varchar("eventName", { length: 64 }).notNull(),
+  occurredAt: timestamp("occurredAt").defaultNow().notNull(),
+  userId: varchar("userId", { length: 64 }),
+  emailHash: varchar("emailHash", { length: 64 }),
+  examType: varchar("examType", { length: 64 }),
+  productKey: varchar("productKey", { length: 64 }),
+  orgId: int("orgId"),
+  metadata: text("metadata"),
+}, (table) => [
+  index("analytics_event_time_idx").on(table.eventName, table.occurredAt),
+  index("analytics_email_time_idx").on(table.emailHash, table.occurredAt),
+  index("analytics_org_time_idx").on(table.orgId, table.occurredAt),
+]);
+export type ProductAnalyticsEvent = typeof productAnalyticsEvents.$inferSelect;
+export type InsertProductAnalyticsEvent = typeof productAnalyticsEvents.$inferInsert;
 
 /**
  * FIX 5 (P3): Bookmarks — per-user+question table so bookmark state persists across

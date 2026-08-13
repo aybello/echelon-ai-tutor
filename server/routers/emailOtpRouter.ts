@@ -148,7 +148,7 @@ export const emailOtpRouter = router({
       // Issue verified email session cookie (same as magic link flow)
       await issueVerifiedEmailSessionCookie(ctx.res, email);
 
-      trackEvent("otp_verified", { email });
+      await trackEvent("otp_verified", { email });
 
       return {
         valid: true as const,

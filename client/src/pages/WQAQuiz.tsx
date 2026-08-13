@@ -115,6 +115,7 @@ export default function WQAQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="wqa"
           productName="WQA Practice Pass"
           priceLabel="CA$99"

@@ -37,6 +37,7 @@ import {
   INDIVIDUAL_EXAM_PASS_TERM_MONTHS,
   getIndividualExamPassExpiry,
 } from "../stripe/individualExamPass";
+import { trackEvent } from "../analytics";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -113,6 +114,17 @@ export const stripeRouter = router({
         success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${appBaseUrl}/pricing`,
       });
+
+      await trackEvent(
+        input.utmSource === "quiz-diagnostic" ? "diagnostic_checkout_started" : "checkout_started",
+        {
+          userId: ctx.user?.id?.toString() ?? null,
+          email: userEmail ?? null,
+          examType: product.examTypes[0] ?? null,
+          productKey: product.key,
+          extra: { currency, amountCents: unitAmount, source: input.utmSource ?? "pricing" },
+        },
+      );
 
       return { url: session.url };
     }),

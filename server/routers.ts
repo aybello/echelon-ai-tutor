@@ -28,6 +28,7 @@ import { incidentCommandRouter } from "./routers/incidentCommandRouter";
 import { teamFlexRouter } from "./routers/teamFlexRouter";
 import { changelogRouter } from "./routers/changelogRouter";
 import { sendContactEmail } from "./email";
+import { trackEvent } from "./analytics";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -555,6 +556,28 @@ export const appRouter = router({
 
   // User feedback — collected after 15-question gate and session completion
   feedback: router({
+    trackDiagnostic: publicProcedure
+      .input(z.object({
+        examType: z.string().min(1).max(64),
+        productKey: z.string().min(1).max(64),
+        score: z.number().int().min(0).max(100),
+        questionsAnswered: z.number().int().min(1).max(100),
+        weakTopicCount: z.number().int().min(0).max(20),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        await trackEvent("diagnostic_completed", {
+          userId: ctx.user?.id?.toString() ?? null,
+          email: ctx.studentEmail ?? ctx.user?.email ?? null,
+          examType: input.examType,
+          productKey: input.productKey,
+          extra: {
+            score: input.score,
+            questionsAnswered: input.questionsAnswered,
+            weakTopicCount: input.weakTopicCount,
+          },
+        });
+        return { success: true };
+      }),
     submit: publicProcedure
       .input(
         z.object({

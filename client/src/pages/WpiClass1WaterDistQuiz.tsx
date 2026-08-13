@@ -130,6 +130,7 @@ export default function WpiClass1WaterDistQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="wpi-class1-water-dist"
           productName="WPI Class 1 Water Distribution Practice Pass"
           priceLabel="CA$99"

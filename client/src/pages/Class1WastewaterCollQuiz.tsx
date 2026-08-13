@@ -125,6 +125,7 @@ export default function Class1WastewaterCollQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="class1-wastewater-coll"
           productName="Ontario Class 1 Wastewater Collection Practice Pass"
           priceLabel="CA$99"

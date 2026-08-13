@@ -15,7 +15,13 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { INDIVIDUAL_PRODUCTS, ALL_PRODUCTS } from "../shared/products";
+import {
+  INDIVIDUAL_PRODUCTS,
+  ALL_INDIVIDUAL_EXAM_TYPES,
+  ALL_PRODUCTS,
+  BUNDLES,
+  getUnlockedExamTypes,
+} from "../shared/products";
 
 // ── Canonical price table (CAD cents) ────────────────────────────────────────
 // These are the approved prices. Any deviation will fail the test.
@@ -114,6 +120,41 @@ describe("shared/products.ts — price-change audit", () => {
     for (const product of INDIVIDUAL_PRODUCTS) {
       expect(allKeys.has(product.key), `${product.key} is in INDIVIDUAL_PRODUCTS but missing from ALL_PRODUCTS`).toBe(true);
     }
+  });
+
+  it("keeps retired bundles out of the sale catalogue", () => {
+    const saleKeys = new Set(ALL_PRODUCTS.map(product => product.key));
+    for (const bundle of BUNDLES) {
+      expect(saleKeys.has(bundle.key), `${bundle.key} must remain retired`).toBe(false);
+    }
+  });
+
+  it("grandfathers the historical Water bundle", () => {
+    expect(getUnlockedExamTypes("bundle-water")).toEqual([
+      "class1-water",
+      "class2-water",
+      "class3-water",
+      "class4-water",
+    ]);
+  });
+
+  it("grandfathers the historical Wastewater bundle", () => {
+    expect(getUnlockedExamTypes("bundle-wastewater")).toEqual([
+      "class1-ww",
+      "class2-ww",
+      "class3-ww",
+      "class4-ww",
+    ]);
+  });
+
+  it("grandfathers All-Access to every canonical individual course", () => {
+    expect(new Set(getUnlockedExamTypes("bundle-all-access"))).toEqual(
+      new Set(ALL_INDIVIDUAL_EXAM_TYPES),
+    );
+  });
+
+  it("fails closed for unknown historical product keys", () => {
+    expect(getUnlockedExamTypes("bundle-does-not-exist")).toEqual([]);
   });
 
   it("EXPECTED_PRICES covers all products in INDIVIDUAL_PRODUCTS", () => {

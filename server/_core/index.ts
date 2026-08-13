@@ -12,7 +12,7 @@ import { serveStatic, setupVite } from "./vite";
 import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
 import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
-import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter, commandDebriefLimiter } from "../rateLimit";
+import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
@@ -80,15 +80,9 @@ async function startServer() {
   registerOAuthRoutes(app);
 
   // Rate limiting
-  app.use("/api/trpc/tutor", aiTutorLimiter);     // AI Tutor — 15 req/min (LLM cost protection)
-  app.use("/api/trpc/incidentCommand.debrief", commandDebriefLimiter); // Debrief fans out to 2-4 LLM calls
-  app.use("/api/trpc/incidentCommand.evaluateJudgment", commandDebriefLimiter); // Judgment also calls LLM
-  app.use("/api/trpc/incidentCommand", aiTutorLimiter); // General Command cost protection
-  app.use("/api/trpc/contact", contactLimiter);   // Contact form — 5 req/15min (spam protection)
-  app.use("/api/trpc/auth", authLimiter);          // Auth — 10 req/min (brute force protection)
-  app.use("/api/trpc/dashboardAuth", authLimiter); // Dashboard OTP — 10 req/min (brute force protection)
-  app.use("/api/trpc/magicLink", authLimiter);     // Magic-link — 10 req/min (brute force protection)
-  app.use("/api/trpc", generalLimiter);            // All API — 100 req/min (general protection)
+  // Route dotted and batched tRPC procedure names through the intended
+  // cost/spam/auth limiter before the general API policy.
+  app.use("/api/trpc", trpcRateLimitDispatcher);
 
   // tRPC API
   app.use(
