@@ -378,8 +378,8 @@ export const teamFlexRouter = router({
         discountRate: String(discountRate),
         discountCents,
         totalBeforeTaxCents: subtotalCents,
-        taxCents: null, // Updated from Stripe after payment
-        totalPaidCents: null, // Updated from Stripe after payment
+        taxCents: 0, // Updated from Stripe after payment
+        totalPaidCents: 0, // Updated from Stripe after payment
         currency: "cad",
         status: "pending",
         overlapAcknowledged: input.overlapAcknowledged,
