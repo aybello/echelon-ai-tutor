@@ -135,7 +135,7 @@ function buildFaqJsonLd(): string {
         name: "How much does Echelon cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Echelon offers a monthly plan and an annual plan at a discounted rate. Team plans are available for utilities and municipalities. Visit echeloninstitute.ca/pricing for current pricing in Canadian dollars.",
+          text: "Individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Team plans are available for utilities and municipalities. Visit echeloninstitute.ca/pricing for current pricing.",
         },
       },
     ],
@@ -168,35 +168,27 @@ function buildPricingJsonLd(): string {
       "@type": "WebPage",
       name: "Pricing — Echelon Institute",
       description:
-        "View Echelon Institute's subscription plans for individual operators and team plans for utilities and municipalities.",
+        "View Echelon Institute's 12-month Individual Exam Passes and team plans for utilities and municipalities.",
       url: `${SITE_URL}/pricing`,
     },
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      name: "Echelon Institute Practice Pass",
+      name: "Echelon Institute Individual Exam Pass",
       description:
-        "Full access to all water and wastewater operator exam prep courses, including 500+ practice questions per course, flashcards, study notes, mock exams, and AI tutor.",
+        "Twelve months of access to one selected water or wastewater operator exam-prep course, including practice questions, flashcards, study notes, mock exams, and AI tutor.",
       brand: {
         "@type": "Brand",
         name: "Echelon Institute",
       },
-      offers: [
-        {
-          "@type": "Offer",
-          name: "Monthly Plan",
-          priceCurrency: "CAD",
-          availability: "https://schema.org/InStock",
-          url: `${SITE_URL}/pricing`,
-        },
-        {
-          "@type": "Offer",
-          name: "Annual Plan",
-          priceCurrency: "CAD",
-          availability: "https://schema.org/InStock",
-          url: `${SITE_URL}/pricing`,
-        },
-      ],
+      offers: {
+        "@type": "AggregateOffer",
+        lowPrice: "49",
+        highPrice: "299",
+        priceCurrency: "CAD",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/pricing`,
+      },
     },
   ]);
 }
@@ -218,10 +210,10 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Every Echelon course includes over 500 adaptive practice questions organized by module and difficulty, 500+ digital flashcards, comprehensive study notes, timed mock exams that simulate the real test format, and an AI tutor available 24/7 to explain concepts, walk through calculations, and answer your questions in plain language.</p>
 
       <h2>Courses Available</h2>
-      <p>Echelon covers Ontario Class 1, 2, 3, and 4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection certifications. OIT (Operator-in-Training) content is available for free. British Columbia EOCP, Alberta AWWOA Level 1–4, Saskatchewan SLWA, and Manitoba WQAM courses are also available.</p>
+      <p>Echelon covers Ontario OIT and Class 1, 2, 3, and 4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection certifications. British Columbia EOCP, Alberta AWWOA Level 1–4, Saskatchewan SLWA, and Manitoba WQAM courses are also available.</p>
 
       <h2>Free to Start</h2>
-      <p>The first 15 questions on every course are completely free — no account or credit card required. Start practising right now and see exactly how Echelon works before you subscribe.</p>
+      <p>The first 15 questions on every course are completely free — no account or credit card required. Start practising right now and see exactly how Echelon works before purchasing a 12-month Exam Pass.</p>
 
       <h2>Team Plans for Utilities</h2>
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Team plans include a shared admin dashboard and volume discounts. Contact us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit <a href="${SITE_URL}/pricing">our pricing page</a> to learn more.</p>
@@ -349,7 +341,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Job postings are sourced from Ontario, British Columbia, Alberta, Saskatchewan, Manitoba, and other provinces. Filter by province and certification class to find roles that match your credentials.</p>
 
       <h2>Advance Your Career</h2>
-      <p>Preparing for a promotion or a new role? Echelon's exam prep platform helps you earn higher-class certifications faster. Visit <a href="${SITE_URL}/pricing">our pricing page</a> to see subscription options, or start with the <a href="${SITE_URL}/">free practice questions</a> available on every course.</p>
+      <p>Preparing for a promotion or a new role? Echelon's exam prep platform supports higher-class certification study. Visit <a href="${SITE_URL}/pricing">our pricing page</a> to see Individual Exam Passes, or start with the <a href="${SITE_URL}/">free practice questions</a> available on every course.</p>
 
       <h2>Water Operator Career Resources</h2>
       <p>Read the <a href="${SITE_URL}/blog/water-operator-salary-canada-by-province-2026">2026 Water Operator Salary Guide</a> for current compensation context, and the <a href="${SITE_URL}/blog/canadian-water-operator-certification-by-province">Canadian Certification Guide</a> for a province-by-province overview.</p>
@@ -408,7 +400,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       </ul>
 
       <h2>Start Practising</h2>
-      <p>Ready to study? <a href="${SITE_URL}/">Start with free practice questions</a> on any course — no account required. Subscribe for full access to all 500+ questions, flashcards, mock exams, and the AI tutor.</p>
+      <p>Ready to study? <a href="${SITE_URL}/">Start with free practice questions</a> on any course — no account required. Purchase the selected course's 12-month Exam Pass for full access to its question bank, flashcards, mock exams, and AI tutor.</p>
     `,
   },
   {
@@ -435,7 +427,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>WPI content is aligned with the regulatory frameworks of Ontario (MECP), British Columbia (EOCP), Alberta (AWWOA), Saskatchewan (SLWA), and Manitoba (WQAM). Regulatory references and standards are province-specific where they differ.</p>
 
       <h2>Use WPI Alongside Your Practice Questions</h2>
-      <p>WPI is designed to complement Echelon's practice question bank. When you encounter a topic you are unsure about in a practice question, WPI provides the conceptual background and regulatory context to help you understand the correct answer. <a href="${SITE_URL}/">Start practising</a> or <a href="${SITE_URL}/pricing">view subscription plans</a>.</p>
+      <p>WPI is designed to complement Echelon's practice question bank. When you encounter a topic you are unsure about in a practice question, WPI provides the conceptual background and regulatory context to help you understand the correct answer. <a href="${SITE_URL}/">Start practising</a> or <a href="${SITE_URL}/pricing">view Individual Exam Passes</a>.</p>
     `,
   },
   {
@@ -453,7 +445,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon covers Ontario (OIT, Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, Wastewater Collection), British Columbia (EOCP), Alberta (AWWOA Level 1–4), Saskatchewan (SLWA), and Manitoba (WQAM).</p>
 
       <h2>Is There a Free Trial?</h2>
-      <p>Yes. The first 15 questions on every course are completely free — no account or credit card required. OIT content is also available at no cost. <a href="${SITE_URL}/">Start practising now</a>.</p>
+      <p>Yes. The first 15 questions on every course, including OIT, are completely free — no account or credit card required. A 12-month Exam Pass is required to continue beyond the preview. <a href="${SITE_URL}/">Start practising now</a>.</p>
 
       <h2>How Many Practice Questions Are There?</h2>
       <p>Each course has 500+ practice questions organized by module and difficulty level. Topics include treatment processes, laboratory analysis, equipment operation and maintenance, source water, and safety and administration.</p>
@@ -465,7 +457,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit the <a href="${SITE_URL}/pricing">pricing page</a>.</p>
 
       <h2>How Much Does It Cost?</h2>
-      <p>Echelon offers monthly and annual plans. The annual plan provides the best value. Visit <a href="${SITE_URL}/pricing">echeloninstitute.ca/pricing</a> for current pricing in Canadian dollars.</p>
+      <p>Individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Visit <a href="${SITE_URL}/pricing">echeloninstitute.ca/pricing</a> for current pricing.</p>
     `,
   },
   {
@@ -492,7 +484,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
     path: "/terms",
     title: "Terms of Service | Echelon Institute",
     description:
-      "Read Echelon Institute's terms of service. These terms govern your use of the platform and all subscription services.",
+      "Read Echelon Institute's terms of service. These terms govern your use of the platform, Exam Passes, and legacy subscription services.",
     h1: "Terms of Service",
     jsonLd: buildWebPageJsonLd({
       path: "/terms",
@@ -503,7 +495,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
     }),
     bodyHtml: `
       <h2>Terms Governing Your Use of Echelon Institute</h2>
-      <p>These terms of service govern your access to and use of the Echelon Institute platform, including all subscription services, practice questions, flashcards, mock exams, and AI tutor features.</p>
+      <p>These terms of service govern your access to and use of the Echelon Institute platform, including Individual Exam Passes, Team plans, grandfathered legacy subscriptions, practice questions, flashcards, mock exams, and AI tutor features.</p>
       <h2>Contact</h2>
       <p>For questions about these terms, contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. Read the <a href="${SITE_URL}/privacy">privacy policy</a> or return to the <a href="${SITE_URL}/">homepage</a>.</p>
     `,
@@ -517,14 +509,14 @@ export const STATIC_PAGE_META: PageMeta[] = [
     jsonLd: buildWebPageJsonLd({
       path: "/refund",
       title: "Refund Policy | Echelon Institute",
-      description: "Echelon Institute's refund policy for subscriptions.",
+      description: "Echelon Institute's refund policy for Individual Exam Passes and Teams plans.",
       h1: "Refund Policy",
     }),
     bodyHtml: `
       <h2>Satisfaction Guarantee</h2>
-      <p>Echelon Institute offers a satisfaction guarantee for subscriptions. If you are not satisfied with your purchase, contact us to discuss your options.</p>
+      <p>Echelon Institute offers a satisfaction guarantee subject to the published refund terms. If you are not satisfied with an eligible purchase, contact us to discuss your options.</p>
       <h2>Contact</h2>
-      <p>To request a refund or ask about eligibility, contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. View <a href="${SITE_URL}/pricing">subscription plans</a> or return to the <a href="${SITE_URL}/">homepage</a>.</p>
+      <p>To request a refund or ask about eligibility, contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. View <a href="${SITE_URL}/pricing">Exam Pass and Team pricing</a> or return to the <a href="${SITE_URL}/">homepage</a>.</p>
     `,
   },
   // ── US Expansion Pages ────────────────────────────────────────────────────

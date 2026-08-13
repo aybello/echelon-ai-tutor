@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
-import FeedbackModal from "@/components/FeedbackModal";
+import CheckoutContactModal from "@/components/CheckoutContactModal";
+import { useGeoRegion } from "@/hooks/useGeoRegion";
+import { formatPriceCAD, formatPriceUSD, getProductByKey } from "@shared/products";
+import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -20,6 +23,8 @@ interface QuizGateProps {
   paidFeatures?: string[];
   /** The exam type / bank key for feedback tracking, e.g. "class1-water" */
   examType?: string;
+  /** The completed preview answers used to build a transparent diagnostic. */
+  history?: Array<{ module?: string; correct?: boolean }>;
 }
 
 const TRIAL_UNLOCKED_KEY = "echelon_trial_unlocked";
@@ -58,23 +63,20 @@ export function isSubscriptionUnlocked(examType: string): boolean {
 
 export default function QuizGate({
   questionsAnswered,
-  onUnlocked,
   onDismiss,
   productKey,
   productName,
   priceLabel,
   paidFeatures,
   examType,
+  history = [],
 }: QuizGateProps) {
   const [, navigate] = useLocation();
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const { isUS } = useGeoRegion();
+  const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
-
-  // ── Feedback modal state ────────────────────────────────────────────────
-  const [showFeedback, setShowFeedback] = useState(true);
-  const [feedbackDone, setFeedbackDone] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
+  const diagnosticTracked = useRef(false);
 
   // Ensure portal target is available (SSR-safe)
   useEffect(() => {
@@ -88,60 +90,51 @@ export default function QuizGate({
     };
   }, []);
 
-  // Free email unlock mutation (only used when no productKey)
-  const unlockMutation = trpc.trial.unlock.useMutation({
-    onSuccess: () => {
-      setTrialUnlocked();
-      try { localStorage.setItem("echelon_trial_email", email.trim().toLowerCase()); } catch {}
-      setSubmitted(true);
-      setTimeout(() => { onUnlocked(); }, 1400);
+  const product = productKey ? getProductByKey(productKey) : undefined;
+  const hasPaidOption = Boolean(product && productName);
+  const checkoutPriceLabel = product
+    ? isUS ? formatPriceUSD(product.priceUSD) : formatPriceCAD(product.priceCAD)
+    : priceLabel;
+  const diagnostic = buildPreviewDiagnostic(history, questionsAnswered);
+
+  const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
+    onSuccess: data => {
+      if (data.url) window.location.href = data.url;
     },
     onError: () => {
-      setTrialUnlocked();
-      try { localStorage.setItem("echelon_trial_email", email.trim().toLowerCase()); } catch {}
-      setSubmitted(true);
-      setTimeout(() => { onUnlocked(); }, 1400);
+      setCheckoutError("We could not start checkout. Please try again.");
     },
   });
+  const trackDiagnostic = trpc.feedback.trackDiagnostic.useMutation();
 
-  function validateEmail(val: string): boolean {
-    if (!val.trim()) { setEmailError("Please enter your email address."); return false; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim())) { setEmailError("Please enter a valid email address."); return false; }
-    setEmailError("");
-    return true;
+  useEffect(() => {
+    if (
+      diagnosticTracked.current ||
+      !productKey ||
+      diagnostic.total === 0
+    ) return;
+    diagnosticTracked.current = true;
+    trackDiagnostic.mutate({
+      examType: examType ?? productKey,
+      productKey,
+      score: diagnostic.score,
+      questionsAnswered: diagnostic.total,
+      weakTopicCount: diagnostic.weakTopics.length,
+    });
+  }, [diagnostic, examType, productKey, trackDiagnostic]);
+
+  function handleCheckout(contact: { name: string; email: string; phone: string }) {
+    if (!productKey) return;
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    createCheckout.mutate({
+      productKey,
+      email: contact.email,
+      name: contact.name,
+      phone: contact.phone,
+      currency: isUS ? "usd" : "cad",
+      utmSource: "quiz-diagnostic",
+    });
   }
-
-  function handleFreeSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!validateEmail(email)) return;
-    const trimmed = email.trim().toLowerCase();
-    try { localStorage.setItem("echelon_trial_email", trimmed); } catch {}
-    unlockMutation.mutate({ email: trimmed });
-  }
-
-  const hasPaidOption = Boolean(productKey && productName && priceLabel);
-
-  // ── Success state ──────────────────────────────────────────────────────────
-  const successContent = (
-    <div style={{
-      position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-      background: "rgba(15,23,42,0.55)",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      zIndex: 99999,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: 20,
-      WebkitOverflowScrolling: "touch",
-    }}>
-      <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", maxWidth: 480, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center" }}>
-        <div style={{ fontSize: 52, marginBottom: 12 }}>🎉</div>
-        <h2 style={{ fontSize: 22, fontWeight: 700, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
-          You're in — full access unlocked!
-        </h2>
-        <p style={{ color: "#64748B", fontSize: 15 }}>Loading your next question…</p>
-      </div>
-    </div>
-  );
 
   // ── Main gate modal ────────────────────────────────────────────────────────
   const gateContent = (
@@ -217,6 +210,33 @@ export default function QuizGate({
             ✓ {questionsAnswered} questions answered
           </div>
 
+          {diagnostic.total > 0 && (
+            <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 14, padding: "14px 16px", marginBottom: 14, textAlign: "left" }}>
+              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: "#64748B", letterSpacing: "0.08em" }}>YOUR PREVIEW RESULT</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A" }}>{diagnostic.label}</div>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <div style={{ fontSize: 24, fontWeight: 900, color: "#1D4ED8" }}>{diagnostic.score}%</div>
+                  <div style={{ fontSize: 10, color: "#64748B" }}>{diagnostic.correct}/{diagnostic.total} correct</div>
+                </div>
+              </div>
+              {diagnostic.weakTopics.length > 0 && (
+                <div style={{ marginBottom: 8 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#475569", marginBottom: 5 }}>Topics to strengthen</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                    {diagnostic.weakTopics.map(topic => (
+                      <span key={topic} style={{ background: "#FEF3C7", color: "#92400E", borderRadius: 100, padding: "3px 8px", fontSize: 10, fontWeight: 700 }}>{topic}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <p style={{ margin: 0, color: "#475569", fontSize: 11, lineHeight: 1.5 }}>{diagnostic.recommendation}</p>
+              <p style={{ margin: "7px 0 0", color: "#94A3B8", fontSize: 9, lineHeight: 1.4 }}>This 15-question preview is a study diagnostic, not a prediction of your official exam result.</p>
+            </div>
+          )}
+
           {/* ── PAID PATH (primary) — shown when productKey is provided ── */}
           {hasPaidOption ? (
             <>
@@ -238,8 +258,9 @@ export default function QuizGate({
                     </li>
                   ))}
                 </ul>
-                <Link href="/pricing">
-                  <button
+                <button
+                    onClick={() => setShowCheckout(true)}
+                    disabled={createCheckout.isPending}
                     style={{
                       width: "100%",
                       padding: "13px 20px",
@@ -253,13 +274,14 @@ export default function QuizGate({
                       fontFamily: "Sora, sans-serif",
                       letterSpacing: "0.01em",
                       touchAction: "manipulation",
+                      opacity: createCheckout.isPending ? 0.7 : 1,
                     }}
                   >
-                    View Plans & Subscribe →
+                    {createCheckout.isPending ? "Opening checkout…" : `Continue with 12-Month Exam Pass — ${checkoutPriceLabel} →`}
                   </button>
-                </Link>
+                {checkoutError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, marginTop: 8, textAlign: "center" }}>{checkoutError}</p>}
                 <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
-                  Annual subscription · Cancel renewal anytime · Access through paid term
+                  One-time payment · 12 months of access · No subscription
                 </p>
               </div>
 
@@ -291,83 +313,20 @@ export default function QuizGate({
                   onClick={() => navigate("/account")}
                   style={{ width: "100%", padding: "8px 20px", borderRadius: 10, border: "none", background: "transparent", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                 >
-                  🎫 Already subscribed? Restore access →
-                </button>
-              </div>
-            </>
-          ) : (
-            /* ── FREE PATH — only shown when no productKey (OIT free course) ── */
-            <>
-              <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
-                Enter your email to continue with the <strong>full question bank</strong> — completely free.
-              </p>
-              <form onSubmit={handleFreeSubmit} noValidate>
-                <div style={{ marginBottom: 10 }}>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={e => { setEmail(e.target.value); if (emailError) validateEmail(e.target.value); }}
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      borderRadius: 10,
-                      border: emailError ? "1.5px solid #EF4444" : "1.5px solid #CBD5E1",
-                      fontSize: 14,
-                      outline: "none",
-                      fontFamily: "inherit",
-                      boxSizing: "border-box",
-                    }}
-                    onFocus={e => { if (!emailError) e.target.style.borderColor = "#1D4ED8"; }}
-                    onBlur={e => { if (!emailError) e.target.style.borderColor = "#CBD5E1"; }}
-                  />
-                  {emailError && <p style={{ color: "#EF4444", fontSize: 12, marginTop: 5, textAlign: "left" }}>{emailError}</p>}
-                </div>
-                <button
-                  type="submit"
-                  disabled={unlockMutation.isPending}
-                  style={{
-                    width: "100%",
-                    padding: "12px 20px",
-                    borderRadius: 10,
-                    border: "none",
-                    background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
-                    color: "#fff",
-                    fontSize: 14,
-                    fontWeight: 700,
-                    cursor: unlockMutation.isPending ? "not-allowed" : "pointer",
-                    fontFamily: "inherit",
-                    touchAction: "manipulation",
-                  }}
-                >
-                  {unlockMutation.isPending ? "Unlocking…" : "Unlock Full Access — Free →"}
-                </button>
-                <p style={{ color: "#94A3B8", fontSize: 11, marginTop: 10 }}>No spam, no credit card.</p>
-              </form>
-              <div style={{ borderTop: "1px solid #E2E8F0", paddingTop: 14, marginTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
-                {onDismiss && (
-                  <button
-                    onClick={onDismiss}
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
-                  >
-                    🔄 Try Another 15 Free Questions
-                  </button>
-                )}
-                <Link href="/">
-                  <button
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
-                  >
-                    ← Back to Homepage
-                  </button>
-                </Link>
-                <button
-                  onClick={() => navigate("/account")}
-                  style={{ width: "100%", padding: "8px 20px", borderRadius: 10, border: "none", background: "transparent", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
-                >
                   🎫 Already purchased? Restore access →
                 </button>
               </div>
             </>
+          ) : (
+            <div role="alert" style={{ color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
+              Checkout is temporarily unavailable for this course. Please choose
+              the exact Exam Pass from the pricing page or contact support.
+              <Link href="/pricing">
+                <button style={{ width: "100%", marginTop: 14, padding: "11px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+                  View Exam Passes →
+                </button>
+              </Link>
+            </div>
           )}
         </div>
       </div>
@@ -379,18 +338,20 @@ export default function QuizGate({
   // trap fixed positioning on mobile Chrome/Safari.
   if (!mounted) return null;
 
-  // Show feedback modal first (before the gate), then transition to the gate
-  if (showFeedback && !feedbackDone && !submitted) {
-    return createPortal(
-      <FeedbackModal
-        examType={examType ?? productKey ?? "unknown"}
-        feedbackType="quiz_gate"
-        onClose={() => { setShowFeedback(false); setFeedbackDone(true); }}
-        onSubmitted={() => { setShowFeedback(false); setFeedbackDone(true); }}
-      />,
-      document.body,
-    );
-  }
-
-  return createPortal(submitted ? successContent : gateContent, document.body);
+  return createPortal(
+    <>
+      {gateContent}
+      {showCheckout && productKey && productName && (
+        <CheckoutContactModal
+          productName={productName}
+          priceLabel={checkoutPriceLabel}
+          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
+          onSubmit={handleCheckout}
+          onClose={() => setShowCheckout(false)}
+          isLoading={createCheckout.isPending}
+        />
+      )}
+    </>,
+    document.body,
+  );
 }

@@ -1,7 +1,5 @@
 /**
- * Unified readiness formula — single source of truth for all readiness calculations.
- * Used by: dashboardRouter.readinessScore, orgRouter.getOperatorReadiness,
- *          orgRouter.getOrgOverview (CSV export), orgIntelRouter.
+ * Learner readiness formula for views with the full practice-data set.
  *
  * Formula (weights sum to 1.0):
  *   accuracy      × 0.40  — overall correct/total
@@ -37,6 +35,13 @@ export interface ReadinessResult {
   description: string;
   nextAction: string;
 }
+
+/** Increment when formula weights, inputs, or thresholds change. */
+export const READINESS_MODEL_VERSION = "estimated-readiness-v1";
+/** Manager views use a reduced input set and are calibrated independently. */
+export const MANAGER_READINESS_MODEL_VERSION = "estimated-manager-readiness-v1";
+/** Remains false until scores are calibrated against sufficient official outcomes. */
+export const READINESS_MODEL_CALIBRATED = false;
 
 export function computeReadiness(input: ReadinessInput): ReadinessResult {
   const {
@@ -80,39 +85,31 @@ export function computeReadiness(input: ReadinessInput): ReadinessResult {
   let description: string;
   let nextAction: string;
 
-  if (score >= 85) {
+  if (score >= 80) {
     level = "exam_ready";
-    label = "Exam Ready";
-    description = "Your performance is strong across all areas. You're well-prepared for the exam.";
-    nextAction = "Take a full mock exam to confirm your readiness.";
-  } else if (score >= 75) {
-    level = "proficient";
-    label = "Proficient";
-    description = "You're performing well. Focus on your weakest topics to push your score higher.";
-    nextAction = "Review your weakest topic and take a mock exam.";
+    label = "Estimated Ready";
+    description = "Your Echelon study indicators are strong across the measured areas.";
+    nextAction = "Take a full timed mock exam and review any remaining weak topics.";
   } else if (score >= 60) {
     level = "developing";
-    label = "Developing";
-    description = "You're making solid progress. Keep practicing consistently.";
+    label = "Progressing";
+    description = "Your study indicators are improving, with more preparation still recommended.";
     nextAction = "Practice your weakest topics daily.";
-  } else if (score >= 30) {
-    level = "beginner";
-    label = "Building";
-    description = "You're making progress. Consistent daily practice will accelerate your readiness.";
-    nextAction = "Aim for at least 20 questions per day.";
   } else {
     level = "beginner";
-    label = "Getting Started";
-    description = "Keep practicing. Your score will improve with consistent study.";
-    nextAction = "Start with 10 questions per day and build from there.";
+    label = "Needs Focus";
+    description = "The measured areas show important topics that need more practice.";
+    nextAction = score >= 30
+      ? "Aim for at least 20 targeted questions per day."
+      : "Start with 10 questions per day and build from there.";
   }
 
   return { score, level, label, description, nextAction };
 }
 
 /**
- * Simplified readiness for manager dashboard — uses only the data available
- * in the org analytics queries (no topic coverage breakdown).
+ * Manager study estimate — uses only the data available in org analytics
+ * queries (no topic-coverage or mock-score breakdown).
  */
 export function computeManagerReadiness(opts: {
   accuracy: number;
@@ -139,14 +136,12 @@ export function computeManagerReadiness(opts: {
   return Math.min(100, Math.round(raw * 100));
 }
 
-/** Convert a numeric readiness score to the unified tier label.
- * Same thresholds as computeReadiness: 85+ Exam Ready, 75+ Proficient, 60+ Developing, 30+ Building, <30 Getting Started.
+/** Convert a numeric readiness score to the unified estimated tier label.
+ * Thresholds: 80+ Estimated Ready, 60-79 Progressing, below 60 Needs Focus.
  */
 export function readinessScoreToLabel(score: number): string {
-  if (score >= 85) return "Exam Ready";
-  if (score >= 75) return "Proficient";
-  if (score >= 60) return "Developing";
-  if (score >= 30) return "Building";
-  if (score > 0) return "Getting Started";
+  if (score >= 80) return "Estimated Ready";
+  if (score >= 60) return "Progressing";
+  if (score > 0) return "Needs Focus";
   return "Not Started";
 }

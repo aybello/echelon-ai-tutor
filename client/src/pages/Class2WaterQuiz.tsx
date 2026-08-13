@@ -121,6 +121,7 @@ export default function Class2WaterQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="class2-water"
           productName="Class 2 Water Treatment Practice Pass"
           priceLabel="CA$99"

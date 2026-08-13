@@ -86,6 +86,7 @@ export default function OITWastewaterQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="oit-ww"
           productName="OIT Wastewater Treatment Exam Pass"
           priceLabel="CA$49"

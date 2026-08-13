@@ -713,37 +713,14 @@ export const dashboardRouter = router({
       });
       const score = readinessResult.score;
 
-      let level: "not_ready" | "building" | "getting_close" | "likely_ready" | "exam_ready";
-      let label: string;
-      let description: string;
-      let nextAction: string;
-
-      if (score >= 85) {
-        level = "exam_ready"; label = "Exam-Ready";
-        description = "You're performing at a high level across all areas. Consider booking your exam.";
-        nextAction = "Take a full mock exam to confirm your readiness.";
-      } else if (score >= 75) {
-        level = "likely_ready"; label = "Likely Ready with Review";
-        description = "Strong performance overall. A focused review of weak topics will push you over the top.";
-        nextAction = "Review your weak topics, then take a mock exam.";
-      } else if (score >= 60) {
-        level = "getting_close"; label = "Getting Close";
-        description = "Good progress. Keep studying consistently and focus on your weakest areas.";
-        nextAction = "Practice 20 questions on your weakest topic today.";
-      } else if (score >= 40) {
-        level = "building"; label = "Building Foundation";
-        description = "You're making progress. Consistent daily practice will accelerate your readiness.";
-        nextAction = "Aim for 15–20 questions per day across all topics.";
-      } else {
-        level = "not_ready"; label = "Not Ready Yet";
-        description = recentTotal === 0
-          ? "Start practicing to build your readiness score."
-          : "Keep practicing. Your score will improve with consistent study.";
-        nextAction = "Start with 10 questions today to build momentum.";
-      }
-
       return {
-        score, level, label, description, nextAction,
+        score,
+        level: readinessResult.level,
+        label: readinessResult.label,
+        description: readinessResult.description,
+        nextAction: readinessResult.nextAction,
+        isEstimate: true,
+        calibrationNote: "Echelon study estimate only; it is not an official exam-pass prediction.",
         breakdown: {
           recentAccuracy: Math.round(recentAccuracy * 100),
           mockAccuracy: Math.round(mockAccuracy * 100),

@@ -50,7 +50,7 @@ describe("readiness consistency — student vs manager", () => {
     });
     expect(result.score).toBeGreaterThanOrEqual(80);
     expect(result.level).toBe("exam_ready");
-    expect(result.label).toBe("Exam Ready");
+    expect(result.label).toBe("Estimated Ready");
   });
 
   it("computeReadiness returns not_started for zero attempts", () => {

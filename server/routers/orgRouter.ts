@@ -20,7 +20,7 @@ import { and, count, desc, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import { randomBytes } from "crypto";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { computeManagerReadiness } from "../_core/readiness";
+import { computeManagerReadiness, MANAGER_READINESS_MODEL_VERSION } from "../_core/readiness";
 import {
   organizations,
   organizationMembers,
@@ -41,8 +41,8 @@ import { allowedCourseKeysForOrg, validateOrgCourseKeys } from "../stripe/subscr
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-/** Operators with accuracy >= this threshold are "on track to pass" */
-const ON_TRACK_THRESHOLD = 75;
+/** Operators with accuracy >= this threshold have strong study indicators. */
+const ON_TRACK_THRESHOLD = 80;
 
 /** Operators with accuracy < this are "behind" */
 const BEHIND_THRESHOLD = 40;
@@ -357,7 +357,7 @@ async function consumeOrReuseAnnualLicence(
 export const orgRouter = router({
   /**
    * getOrgOverview — four summary numbers for the dashboard header cards.
-   * Seats assigned, active this week, average readiness, on track to pass.
+   * Seats assigned, active this week, average study indicator, strong indicators.
    */
   getOrgOverview: publicProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
@@ -424,12 +424,13 @@ export const orgRouter = router({
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
     // Phase 8: scope by orgId instead of email to prevent cross-org data leakage
-    const [accuracyRows, activeRows] = await Promise.all([
+    const [accuracyRows, activeRows, mockRows] = await Promise.all([
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
           total: sql<number>`COUNT(*)`,
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+          lastActive: sql<Date | null>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
         .where(eq(questionAttempts.orgId, orgId))
@@ -444,30 +445,50 @@ export const orgRouter = router({
           ),
         )
         .groupBy(questionAttempts.organizationMemberId),
+      db
+        .select({
+          memberId: examResults.organizationMemberId,
+          count: sql<number>`COUNT(*)`,
+        })
+        .from(examResults)
+        .where(eq(examResults.orgId, orgId))
+        .groupBy(examResults.organizationMemberId),
     ]);
 
     const accuracyByMemberId = new Map(
       accuracyRows
         .filter(r => r.memberId !== null)
-        .map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
+        .map(r => [Number(r.memberId), {
+          total: Number(r.total),
+          correct: Number(r.correct),
+          lastActive: r.lastActive ? new Date(r.lastActive) : null,
+        }]),
+    );
+    const mockCountByMemberId = new Map(
+      mockRows
+        .filter(r => r.memberId !== null)
+        .map(r => [Number(r.memberId), Number(r.count)]),
     );
     const activeMemberIds = new Set(activeRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
     const activeThisWeek = activeMemberIds.size;
-    // Compute per-member accuracy; members with no attempts count as 0 for avg
-    let totalAccuracy = 0;
+    // Compute the same reduced-input study estimate used throughout manager views.
+    let totalReadiness = 0;
     let onTrackCount = 0;
     for (const m of activeMembers) {
       const stats = accuracyByMemberId.get(m.id);
-      const acc =
-        stats && stats.total > 0
-          ? Math.round((stats.correct / stats.total) * 100)
-          : 0;
-      totalAccuracy += acc;
-      if (acc >= ON_TRACK_THRESHOLD) onTrackCount++;
+      const totalAttempts = stats?.total ?? 0;
+      const score = computeManagerReadiness({
+        accuracy: totalAttempts > 0 ? (stats?.correct ?? 0) / totalAttempts : 0,
+        totalAttempts,
+        mockExamsCompleted: mockCountByMemberId.get(m.id) ?? 0,
+        activeRecently: !!stats?.lastActive && stats.lastActive >= oneWeekAgo,
+      });
+      totalReadiness += score;
+      if (score >= ON_TRACK_THRESHOLD) onTrackCount++;
     }
 
     const avgReadiness =
-      seatsAssigned > 0 ? Math.round(totalAccuracy / seatsAssigned) : 0;
+      seatsAssigned > 0 ? Math.round(totalReadiness / seatsAssigned) : 0;
 
     return {
       orgId: org.id,
@@ -1047,6 +1068,38 @@ export const orgRouter = router({
         }
       }
 
+      const outcomeExamTypes = getExamTypesForCourseKey(input.courseKey);
+      const attemptRows = await db
+        .select({
+          total: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+          lastActive: sql<Date | null>`MAX(${questionAttempts.createdAt})`,
+        })
+        .from(questionAttempts)
+        .where(and(
+          eq(questionAttempts.studentEmail, memberEmail),
+          outcomeExamTypes.length > 0 ? inArray(questionAttempts.examType, outcomeExamTypes) : undefined,
+        ));
+      const totalAttempts = Number(attemptRows[0]?.total ?? 0);
+      const correctAttempts = Number(attemptRows[0]?.correct ?? 0);
+      const lastActive = attemptRows[0]?.lastActive ? new Date(attemptRows[0].lastActive) : null;
+      const recentCutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+      const mockRows = await db
+        .select({ count: sql<number>`COUNT(*)` })
+        .from(examResults)
+        .where(and(
+          eq(examResults.studentEmail, memberEmail),
+          eq(examResults.courseKey, input.courseKey),
+        ));
+      const readinessScoreAtOutcome = totalAttempts > 0
+        ? computeManagerReadiness({
+            accuracy: correctAttempts / totalAttempts,
+            totalAttempts,
+            mockExamsCompleted: Number(mockRows[0]?.count ?? 0),
+            activeRecently: !!lastActive && lastActive >= recentCutoff,
+          })
+        : null;
+
       await db.insert(examOutcomes).values({
         orgId,
         memberEmail,
@@ -1054,6 +1107,8 @@ export const orgRouter = router({
         result: input.result,
         examDate: input.examDate ? new Date(input.examDate) : null,
         recordedBy: managerEmail,
+        readinessScoreAtOutcome,
+        readinessModelVersion: readinessScoreAtOutcome == null ? null : MANAGER_READINESS_MODEL_VERSION,
       });
       return { success: true };
     }),
@@ -1138,7 +1193,7 @@ export const orgIntelRouter = router({
     const memberEmails = activeMembers.map(m => m.email);
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, activeRows, topicRows] = await Promise.all([
+    const [accuracyRows, activeRows, topicRows, mockRows] = await Promise.all([
       db.select({
           memberId: questionAttempts.organizationMemberId,
         total: sql<number>`COUNT(*)`,
@@ -1154,6 +1209,11 @@ export const orgIntelRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId))
         .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`),
+      db.select({
+        memberId: examResults.organizationMemberId,
+        count: sql<number>`COUNT(*)`,
+      }).from(examResults).where(eq(examResults.orgId, orgId))
+        .groupBy(examResults.organizationMemberId),
     ]);
     // PATCH 4: Also fetch exam dates to align at-risk count with exam-date risk
     const examDateRows = memberEmails.length > 0
@@ -1173,21 +1233,30 @@ export const orgIntelRouter = router({
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct), lastActive: r.lastActive }]),
     );
     const activeMemberIds = new Set(activeRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
+    const mockCountByMemberId = new Map(
+      mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.count)]),
+    );
     let totalReadiness = 0, examReadyCount = 0, atRiskCount = 0, inactiveCount = 0;
     const now = new Date();
     for (const m of activeMembers) {
       const stats = accuracyByMemberId.get(m.id);
       const total = stats?.total ?? 0;
       const correct = stats?.correct ?? 0;
-      const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+      const accuracy = total > 0 ? correct / total : 0;
       const lastActive = stats?.lastActive ?? null;
-      totalReadiness += accuracy;
-      if (accuracy >= 80) examReadyCount++;
-      // PATCH 4: at-risk = score-based risk OR exam-date risk (exam within 21 days and accuracy < 70%)
+      const readinessScore = computeManagerReadiness({
+        accuracy,
+        totalAttempts: total,
+        mockExamsCompleted: mockCountByMemberId.get(m.id) ?? 0,
+        activeRecently: !!lastActive && lastActive >= twoWeeksAgo,
+      });
+      totalReadiness += readinessScore;
+      if (readinessScore >= 80) examReadyCount++;
+      // At-risk = estimate-based risk OR a near exam with weak practice accuracy.
       const examDate = examDateByEmail.get(m.email);
       const daysUntilExam = examDate ? Math.ceil((examDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)) : null;
-      const examDateRisk = daysUntilExam !== null && daysUntilExam <= 21 && accuracy < 70;
-      const scoreRisk = accuracy < 50 && total > 10;
+      const examDateRisk = daysUntilExam !== null && daysUntilExam <= 21 && accuracy < 0.70;
+      const scoreRisk = readinessScore < 50 && total > 10;
       if (scoreRisk || examDateRisk) atRiskCount++;
       if (!lastActive || lastActive <= twoWeeksAgo) inactiveCount++;
     }
@@ -1396,7 +1465,7 @@ export const orgIntelRouter = router({
       let status = "Not Started";
       if (m.status === "revoked") status = "Revoked";
       else if (total === 0) status = "Not Started";
-      else if (readinessScore >= 80) status = "Exam Ready";
+      else if (readinessScore >= 80) status = "Estimated Ready";
       else if (readinessScore >= 60) status = "Active";
       else if (readinessScore < 40 && total > 10) status = "At Risk";
       else status = "Improving";

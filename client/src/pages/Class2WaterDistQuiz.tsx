@@ -121,6 +121,7 @@ export default function Class2WaterDistQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="class2-water-dist"
           productName="Ontario Class 2 Water Distribution Practice Pass"
           priceLabel="CA$99"

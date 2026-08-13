@@ -1,7 +1,6 @@
 /**
- * Tests for the unified readiness formula.
- * Verifies computeReadiness() and computeManagerReadiness() return
- * correct scores and levels for key input combinations.
+ * Tests for the learner and manager study-estimate models.
+ * Verifies both formulas return correct scores and levels for key inputs.
  */
 import { describe, it, expect } from "vitest";
 import { computeReadiness, computeManagerReadiness } from "./_core/readiness";
@@ -33,6 +32,25 @@ describe("computeReadiness", () => {
     });
     expect(result.score).toBeGreaterThanOrEqual(85);
     expect(result.level).toBe("exam_ready");
+    expect(result.label).toBe("Estimated Ready");
+  });
+
+  it("uses transparent estimated tiers and never predicts an official result", () => {
+    const base = {
+      totalAttempts: 100,
+      mockAccuracy: 0,
+      topicsAttempted: 10,
+      totalTopics: 20,
+      activeDaysLast30: 5,
+      activeRecently: true,
+    };
+    const labels = [
+      computeReadiness({ ...base, accuracy: 1 }).label,
+      computeReadiness({ ...base, accuracy: 0.7 }).label,
+      computeReadiness({ ...base, accuracy: 0.2 }).label,
+    ];
+    expect(labels).not.toContain("Exam Ready");
+    expect(labels.join(" ").toLowerCase()).not.toContain("pass");
   });
 
   it("returns level='beginner' for low accuracy with some attempts", () => {
@@ -117,4 +135,3 @@ describe("computeManagerReadiness", () => {
     expect(score).toBe(100);
   });
 });
-

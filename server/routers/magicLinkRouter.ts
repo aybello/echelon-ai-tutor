@@ -125,7 +125,7 @@ export const magicLinkRouter = router({
       // cookie after a valid magic link — no separate dashboard login required.
       await issueVerifiedEmailSessionCookie(ctx.res, link.email);
 
-      trackEvent("restore_access_completed", { email: link.email });
+      await trackEvent("restore_access_completed", { email: link.email });
       return {
         valid: true,
         email: link.email,

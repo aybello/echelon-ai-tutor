@@ -6,7 +6,7 @@
  *
  * Layout (light theme — matches rest of echeloninstitute.ca):
  *   - Header: org name, term end, status badge, Manage Seats + Manage Billing buttons
- *   - 4 metric cards: Seats Assigned, Active This Week, Avg Readiness, On Track
+ *   - 4 metric cards: Seats Assigned, Active This Week, Avg Study Estimate, Strong Indicators
  *   - Attention panel: at-risk (exam approaching) + stalled operators
  *   - Operator roster table with per-row assign/revoke actions
  *   - Assign Seat modal (single email or bulk paste)
@@ -611,7 +611,7 @@ export default function OrgDashboard() {
           />
           <MetricCard
             icon={Target}
-            label="Avg Readiness"
+            label="Avg Study Estimate"
             value={`${overview.avgReadiness}%`}
             sub="across all operators"
             accent={
@@ -624,9 +624,9 @@ export default function OrgDashboard() {
           />
           <MetricCard
             icon={TrendingUp}
-            label="Approaching Ready"
+            label="Strong Study Indicators"
             value={overview.onTrackCount}
-            sub="≥75% Echelon readiness"
+            sub="≥80% estimated score"
             accent="text-green-600"
           />
         </div>
@@ -642,13 +642,13 @@ export default function OrgDashboard() {
           </div>
         )}
 
-        {/* Needs Focus panel — operators below 75% who have started studying */}
+        {/* Needs Focus panel — operators below the strong-indicator threshold */}
         {needsFocusMembers.length > 0 && (
           <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
             <div className="flex items-center gap-2 text-orange-700 font-semibold text-sm mb-3">
               <AlertTriangle className="w-4 h-4" />
               {needsFocusMembers.length} Operator{needsFocusMembers.length === 1 ? "" : "s"} Need{needsFocusMembers.length === 1 ? "s" : ""} Focus
-              <span className="text-orange-400 font-normal text-xs ml-1">Below 75% readiness</span>
+              <span className="text-orange-400 font-normal text-xs ml-1">Below 80% study estimate</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {needsFocusMembers.map(m => (
@@ -678,14 +678,14 @@ export default function OrgDashboard() {
             </div>
             {attention.atRisk.length > 0 && (
               <div>
-                <p className="text-xs text-amber-600 uppercase tracking-wider mb-2 font-semibold">Exam approaching — below readiness threshold</p>
+                <p className="text-xs text-amber-600 uppercase tracking-wider mb-2 font-semibold">Exam approaching — study estimate needs attention</p>
                 <div className="space-y-2">
                   {attention.atRisk.map(op => (
                     <div key={op.email} className="flex items-center justify-between bg-white border border-amber-100 rounded-lg px-4 py-3">
                       <div>
                         <div className="text-sm font-medium text-slate-800">{op.email}</div>
                         <div className="text-xs text-slate-500">
-                          Exam in {op.daysUntilExam} day{op.daysUntilExam === 1 ? "" : "s"} · {op.accuracy}% readiness
+                          Exam in {op.daysUntilExam} day{op.daysUntilExam === 1 ? "" : "s"} · {op.accuracy}% practice accuracy
                         </div>
                       </div>
                       <Badge className="bg-red-50 text-red-700 border-red-200 text-xs">At Risk</Badge>
@@ -990,7 +990,7 @@ export default function OrgDashboard() {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-semibold text-slate-800 flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-blue-500" />
-                Team Readiness Intelligence
+                Team Study Intelligence
               </h2>
               <div className="flex gap-2">
                 <Button
@@ -1015,7 +1015,7 @@ export default function OrgDashboard() {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldCheck className="w-3.5 h-3.5 text-green-500" />Study Ready</div>
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldCheck className="w-3.5 h-3.5 text-green-500" />Estimated Ready</div>
                 <div className="text-2xl font-bold text-green-600">{readinessSummaryQuery.data.examReadyCount}</div>
                 <div className="text-xs text-slate-400 mt-0.5">≥ 80% accuracy</div>
               </div>
@@ -1030,11 +1030,14 @@ export default function OrgDashboard() {
                 <div className="text-xs text-slate-400 mt-0.5">No activity 14+ days</div>
               </div>
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><Target className="w-3.5 h-3.5 text-blue-500" />Avg Readiness</div>
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><Target className="w-3.5 h-3.5 text-blue-500" />Avg Study Estimate</div>
                 <div className="text-2xl font-bold text-blue-600">{readinessSummaryQuery.data.avgReadiness}%</div>
                 <div className="text-xs text-slate-400 mt-0.5">Across all operators</div>
               </div>
             </div>
+            <p className="text-xs text-slate-400 -mt-3 mb-5">
+              Echelon study estimates summarize platform activity and practice performance. They are not official exam-pass predictions.
+            </p>
             {readinessSummaryQuery.data.topWeakTopics.length > 0 && (
               <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 mb-6">
                 <div className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -1064,14 +1067,14 @@ export default function OrgDashboard() {
                   <option value="all">All operators</option>
                   <option value="at_risk">At Risk</option>
                   <option value="not_started">Not Started</option>
-                  <option value="exam_ready">Exam Ready</option>
+                  <option value="exam_ready">Estimated Ready</option>
                 </select>
                 <select
                   value={intelSortKey}
                   onChange={e => setIntelSortKey(e.target.value as typeof intelSortKey)}
                   className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 bg-white text-slate-600"
                 >
-                  <option value="readinessScore">Sort: Readiness</option>
+                  <option value="readinessScore">Sort: Study Estimate</option>
                   <option value="accuracy">Sort: Accuracy</option>
                   <option value="totalAttempts">Sort: Questions Done</option>
                   <option value="lastActive">Sort: Last Active</option>
@@ -1090,7 +1093,7 @@ export default function OrgDashboard() {
                   <tr className="border-b border-slate-100 bg-slate-50">
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Operator</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Course</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Readiness</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Study Estimate</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Questions</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Weak Topic</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Mock Scores</th>
@@ -1129,7 +1132,7 @@ export default function OrgDashboard() {
                         active: "Active",
                         improving: "Improving",
                         at_risk: "At Risk",
-                        exam_ready: "Exam Ready",
+                        exam_ready: "Estimated Ready",
                       };
                       return (
                         <tr key={op.id} className="hover:bg-slate-50 transition-colors">

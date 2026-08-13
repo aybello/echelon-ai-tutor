@@ -132,6 +132,7 @@ export default function WpiClass1WaterQuiz() {
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}
+          history={session.history}
           productKey="wpi-class1-water"
           productName="WPI Class 1 Water Treatment Practice Pass"
           priceLabel="CA$99"

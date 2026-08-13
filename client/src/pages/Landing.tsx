@@ -1294,7 +1294,7 @@ export default function Landing() {
     title: "Water & Wastewater Operator Exam Prep",
     description: isUS
       ? "Exam prep for US water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. WPI exam prep for all 4 streams."
-      : "Canada's exam prep for water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
+      : "Canada's exam prep for water & wastewater operators. Preview 15 questions, review your study diagnostic, then choose a 12-month Exam Pass.",
     keywords: "water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
     path: "/",
   });
@@ -2425,10 +2425,10 @@ export default function Landing() {
         textAlign: "center",
       }}>
         <h2 style={{ fontSize: "clamp(20px, 3vw, 32px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 12px 0", letterSpacing: "-0.02em" }}>
-          Start with the OIT — It's Free
+          Start with a 15-Question OIT Preview
         </h2>
         <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", margin: "0 0 32px 0", maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>
-          Try 500+ OIT practice questions across 10 modules with full AI Tutor access. No account required.
+          Try the first 15 OIT questions, see a transparent study diagnostic, and decide whether the full course is right for you. No account required.
         </p>
         <Link href="/quiz">
           <button className="btn-pulse" style={{
@@ -2438,7 +2438,7 @@ export default function Landing() {
             cursor: "pointer", fontFamily: "inherit",
             boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
           }}>
-            Start Free OIT Practice →
+            Start the OIT Preview →
           </button>
         </Link>
       </section>
@@ -2494,13 +2494,13 @@ export default function Landing() {
                 margin: "0 0 20px 0",
                 maxWidth: 480,
               }}>
-                Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Self-serve plans are available for any team size. Volume discounts begin at 10 annual operator licences.
+                Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time study tracking — all from a single manager dashboard. Self-serve plans are available for any team size. Volume discounts begin at 10 annual operator licences.
               </p>
 
               {/* Benefit bullets */}
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, marginBottom: 24 }}>
                 {[
-                  { icon: "📊", text: "Manager dashboard — track every operator's readiness score" },
+                  { icon: "📊", text: "Manager dashboard — track every operator's estimated study score" },
                   { icon: "🪑", text: "Assign operators by email and track annual licence usage" },
                   { icon: "💰", text: "Volume discounts from 10% to 20% off" },
                   { icon: "🇨🇦", text: "Ontario, BC, Alberta, Saskatchewan & more" },
@@ -2741,7 +2741,7 @@ export default function Landing() {
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {[
               {
-                q: "How does the subscription work?",
+                q: "How does individual access work?",
                 a: "Individuals buy a 12-month Exam Pass for one selected certification course. Utilities and municipalities can choose targeted Course Passes for named operators or Teams All-Access. Existing individual subscriptions remain active under their original terms, but are no longer offered to new customers.",
               },
               {

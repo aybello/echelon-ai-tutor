@@ -141,7 +141,7 @@ export function registerStripeWebhook(app: Express) {
             });
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
-            trackEvent("checkout_completed", { email, productKey, extra: { amountCAD } });
+            await trackEvent("checkout_completed", { email, productKey, extra: { amountCAD } });
 
             // Send purchase confirmation email (non-blocking — don't fail webhook on email error)
             const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
@@ -206,7 +206,7 @@ export function registerStripeWebhook(app: Express) {
           // Notify owner immediately so they can manually restore access
           const sessionEmail = session?.customer_details?.email ?? session?.customer_email ?? session?.metadata?.customer_email ?? "unknown";
           const sessionProduct = session?.metadata?.product_name ?? session?.metadata?.product_key ?? "unknown";
-          trackEvent("stripe_provisioning_failed", { email: sessionEmail, productKey: sessionProduct, extra: { error: err.message } });
+          await trackEvent("stripe_provisioning_failed", { email: sessionEmail, productKey: sessionProduct, extra: { error: err.message } });
           notifyOwner({
             title: "⚠️ Webhook Processing Error",
             content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,

@@ -9,6 +9,8 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
+import CheckoutContactModal from "@/components/CheckoutContactModal";
+import { formatPriceCAD, formatPriceUSD, getProductByKey } from "@shared/products";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -131,9 +133,31 @@ export default function PurchaseGate({
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
+  const [showCheckout, setShowCheckout] = useState(false);
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
+  const product = getProductByKey(productKey);
+  const checkoutPriceLabel = product
+    ? isUS ? formatPriceUSD(product.priceUSD) : formatPriceCAD(product.priceCAD)
+    : `${isUS ? "US" : "CA"}$${price}`;
+  const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
+    onSuccess: data => {
+      if (data.url) window.location.href = data.url;
+    },
+  });
+
+  function handleCheckout(contact: { name: string; email: string; phone: string }) {
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    createCheckout.mutate({
+      productKey,
+      email: contact.email,
+      name: contact.name,
+      phone: contact.phone,
+      currency: isUS ? "usd" : "cad",
+      utmSource: "purchase-gate",
+    });
+  }
 
   // Determine back navigation: use explicit backPath, or browser history if available, else "/"
   const handleBack = () => {
@@ -318,7 +342,7 @@ export default function PurchaseGate({
           Unlock {productName}
         </h2>
         <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-          Subscribe for full access — plans from {isUS ? "US$69/yr" : "CA$99/yr"}
+          Get 12 months of course access with one payment of {checkoutPriceLabel}
         </p>
 
         {/* Feature bullets */}
@@ -344,8 +368,9 @@ export default function PurchaseGate({
 
         {/* CTAs */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <Link href="/pricing">
             <button
+              onClick={() => setShowCheckout(true)}
+              disabled={createCheckout.isPending}
               style={{
                 width: "100%",
                 padding: "13px 0",
@@ -360,11 +385,10 @@ export default function PurchaseGate({
                 letterSpacing: "0.01em",
               }}
             >
-              View Plans & Subscribe →
+              {createCheckout.isPending ? "Opening checkout…" : `Buy 12-Month Exam Pass — ${checkoutPriceLabel} →`}
             </button>
-          </Link>
           <p style={{ fontSize: 11, color: "#64748B", margin: "0 0 4px", textAlign: "center" }}>
-            Annual subscription · Cancel renewal anytime · Access through paid term
+            One-time payment · 12 months of access · No subscription
           </p>
 
           <Link href={isUS ? "/us/courses" : "/quiz"}>
@@ -382,7 +406,7 @@ export default function PurchaseGate({
                 fontFamily: "inherit",
               }}
             >
-              {isUS ? "Try Free Practice Instead" : "Try Free OIT Practice Instead"}
+              Browse other courses
             </button>
           </Link>
         </div>
@@ -415,8 +439,18 @@ export default function PurchaseGate({
           >
             Log in to your account →
           </a>
-        </div>
       </div>
+      {showCheckout && (
+        <CheckoutContactModal
+          productName={productName}
+          priceLabel={checkoutPriceLabel}
+          prefillEmail={email}
+          onSubmit={handleCheckout}
+          onClose={() => setShowCheckout(false)}
+          isLoading={createCheckout.isPending}
+        />
+      )}
+    </div>
 
       {/* Back link at bottom */}
       <button
