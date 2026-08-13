@@ -1,4 +1,5 @@
 import { boolean, decimal, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { sql } from "drizzle-orm";
 
 /**
  * Core user table backing auth flow.
@@ -612,7 +613,7 @@ export const jobPostings = mysqlTable("job_postings", {
   province: mysqlEnum("province", ["ON", "BC", "AB", "SK", "MB", "other"]).notNull().default("other"),
   salary: varchar("salary", { length: 255 }),
   jobType: mysqlEnum("jobType", ["full-time", "part-time", "contract"]).notNull().default("full-time"),
-  sourceUrl: varchar("sourceUrl", { length: 1024 }).notNull().unique(),
+  sourceUrl: varchar("sourceUrl", { length: 1024 }).notNull(),
   sourceName: varchar("sourceName", { length: 128 }).notNull(),
   sourceType: mysqlEnum("sourceType", ["rss", "scraper"]).notNull().default("rss"),
   description: text("description"),
@@ -622,6 +623,9 @@ export const jobPostings = mysqlTable("job_postings", {
   lastSeenAt: timestamp("lastSeenAt").defaultNow().notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (t) => [
+  // MySQL 8 + utf8mb4 cannot index all 1,024 characters (4,096 bytes).
+  // A 700-character prefix preserves full URLs while staying below 3,072 bytes.
+  uniqueIndex("job_postings_source_url_unique").on(sql`${t.sourceUrl}(700)`),
   index("job_province_idx").on(t.province),
   index("job_type_idx").on(t.jobType),
   index("job_posted_at_idx").on(t.postedAt),
