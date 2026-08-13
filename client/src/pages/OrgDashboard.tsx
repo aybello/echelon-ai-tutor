@@ -103,6 +103,37 @@ const STATUS_CONFIG: Record<OperatorStatus, { label: string; color: string; bg: 
   on_track:    { label: "Approaching Ready", color: "text-green-700",  bg: "bg-green-50" },
 };
 
+const TEAM_REPORT_STYLES = `
+  .team-print-header { display: none; }
+  @media print {
+    @page { size: landscape; margin: 12mm; }
+    body { background: #fff !important; }
+    body * { visibility: hidden !important; }
+    .team-outcomes-report, .team-outcomes-report * { visibility: visible !important; }
+    .team-outcomes-report {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      margin: 0 !important;
+      color: #0f172a !important;
+      background: #fff !important;
+    }
+    .team-print-header { display: block !important; visibility: visible !important; margin-bottom: 18px; }
+    .team-print-hidden { display: none !important; }
+    .team-outcomes-report .bg-gradient-to-br {
+      background: #f1f5f9 !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #0f172a !important;
+      box-shadow: none !important;
+    }
+    .team-outcomes-report .bg-gradient-to-br * { color: #0f172a !important; }
+    .team-outcomes-report .shadow-sm { box-shadow: none !important; }
+    .team-outcomes-report table { font-size: 9px !important; }
+    .team-outcomes-report th, .team-outcomes-report td { padding: 5px 7px !important; }
+    .team-outcomes-report tr, .team-outcomes-report [class*="rounded-xl"] { break-inside: avoid; }
+  }
+`;
+
 // ── Metric card ───────────────────────────────────────────────────────────────
 
 function MetricCard({
@@ -320,8 +351,12 @@ export default function OrgDashboard() {
   function handlePrintReport() {
     const originalTitle = document.title;
     document.title = `${overview?.orgName ?? "Echelon Team"} Learning Outcomes`;
+    const restoreTitle = () => {
+      document.title = originalTitle;
+      window.removeEventListener("afterprint", restoreTitle);
+    };
+    window.addEventListener("afterprint", restoreTitle);
     window.print();
-    document.title = originalTitle;
   }
 
   // ── Auth check ─────────────────────────────────────────────────────────────
@@ -444,6 +479,7 @@ export default function OrgDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <style>{TEAM_REPORT_STYLES}</style>
       {/* Bug fix: welcome banner shown after Stripe checkout redirect */}
       {showWelcomeBanner && (
         <div className="bg-green-50 border-b border-green-200 px-6 py-3">
@@ -992,18 +1028,30 @@ export default function OrgDashboard() {
 
         {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
 
+        <section className="team-outcomes-report">
+        <div className="team-print-header">
+          <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Echelon Institute</div>
+          <h1 className="text-2xl font-bold text-slate-900 mt-1">{overview.orgName} — Learning Outcomes Report</h1>
+          <div className="text-xs text-slate-500 mt-1">
+            Generated {formatDate(new Date())} · Licence term {formatDate(overview.termStart)} to {formatDate(overview.termEnd)}
+          </div>
+          <p className="text-xs text-slate-600 mt-3 max-w-3xl">
+            Aggregate activation, practice, and readiness indicators for municipal training review. Study estimates are coaching signals, not official exam scores or pass guarantees.
+          </p>
+        </div>
+
         {/* Team Readiness Summary */}
         {readinessSummaryQuery.data && (
           <div className="mt-8">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
               <h2 className="text-base font-semibold text-slate-800 flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-blue-500" />
                 Team Study Intelligence
               </h2>
-              <div className="flex gap-2">
+              <div className="team-print-hidden flex flex-wrap gap-2 w-full sm:w-auto">
                 <Button
                   size="sm" variant="outline"
-                  className="text-xs gap-1.5"
+                  className="text-xs gap-1.5 flex-1 sm:flex-none whitespace-nowrap"
                   onClick={handlePrintReport}
                 >
                   <Printer className="w-3.5 h-3.5" />
@@ -1011,7 +1059,7 @@ export default function OrgDashboard() {
                 </Button>
                 <Button
                   size="sm" variant="outline"
-                  className="text-xs gap-1.5"
+                  className="text-xs gap-1.5 flex-1 sm:flex-none whitespace-nowrap"
                   onClick={handleExportCSV}
                   disabled={exportCSVQuery.isFetching}
                 >
@@ -1020,7 +1068,7 @@ export default function OrgDashboard() {
                 </Button>
                 <Button
                   size="sm" variant="outline"
-                  className="text-xs gap-1.5 text-amber-700 border-amber-200 hover:bg-amber-50"
+                  className="text-xs gap-1.5 text-amber-700 border-amber-200 hover:bg-amber-50 flex-1 sm:flex-none whitespace-nowrap"
                   onClick={() => sendBulkReminders.mutate()}
                   disabled={sendBulkReminders.isPending}
                 >
@@ -1122,9 +1170,9 @@ export default function OrgDashboard() {
         {/* Operator Progress Table */}
         {operatorReadinessQuery.data && operatorReadinessQuery.data.operators.length > 0 && (
           <div className="mt-6">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
               <h2 className="text-base font-semibold text-slate-800">Operator Progress</h2>
-              <div className="flex items-center gap-2">
+              <div className="team-print-hidden flex flex-wrap items-center gap-2 w-full sm:w-auto">
                 <select
                   value={intelFilter}
                   onChange={e => setIntelFilter(e.target.value as typeof intelFilter)}
@@ -1335,6 +1383,7 @@ export default function OrgDashboard() {
             </div>
           </div>
         )}
+        </section>
 
         {/* ── Command Centre Cohort Intelligence ─────────────────────────── */}
         {commandCohortQuery.data && commandCohortQuery.data.totalRuns > 0 && (

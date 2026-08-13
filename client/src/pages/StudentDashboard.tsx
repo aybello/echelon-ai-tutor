@@ -21,6 +21,21 @@ import {
 } from "chart.js";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { resolveCourseKey } from "@shared/courseRegistry";
+import {
+  AlertTriangle,
+  BarChart3,
+  BookOpen,
+  Bot,
+  CalendarDays,
+  ClipboardCheck,
+  Clock3,
+  Flame,
+  Gauge,
+  GraduationCap,
+  ListChecks,
+  RotateCcw,
+  Target,
+} from "lucide-react";
 
 ChartJS.register(
   CategoryScale,
@@ -61,6 +76,25 @@ const GREEN = "#22C55E";
 const SLATE_700 = "#E2E8F0";
 const SLATE_800 = "#F1F5F9";
 const SLATE_900 = "#FFFFFF";
+
+const DASHBOARD_RESPONSIVE_STYLES = `
+  .dashboard-metrics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .dashboard-two-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+  .dashboard-two-one { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
+  .dashboard-action-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .dashboard-action-card { transition: transform 160ms ease, box-shadow 160ms ease; }
+  .dashboard-action-card:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12); }
+  .dashboard-section-title { display: flex; align-items: center; gap: 8px; }
+  @media (max-width: 820px) {
+    .dashboard-metrics-grid, .dashboard-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dashboard-two-column, .dashboard-two-one { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .dashboard-metrics-grid, .dashboard-action-grid { grid-template-columns: minmax(0, 1fr); }
+    .dashboard-mobile-actions { width: 100%; flex-wrap: wrap; }
+    .dashboard-mobile-actions > a { flex: 1; text-align: center; }
+  }
+`;
 
 export default function StudentDashboard() {
   usePageMeta({
@@ -290,6 +324,7 @@ export default function StudentDashboard() {
   const isLoading = overview.isLoading;
   return (
     <div style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      <style>{DASHBOARD_RESPONSIVE_STYLES}</style>
       <SiteNav currentPath="/dashboard" />
       <div style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>
 
@@ -313,7 +348,8 @@ export default function StudentDashboard() {
               padding: "7px 14px", color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer",
               textDecoration: "none", display: "inline-block",
             }}>
-              📚 My Courses
+              <BookOpen size={14} style={{ display: "inline", marginRight: 6, verticalAlign: -2 }} aria-hidden="true" />
+              My Courses
             </a>
             <button
               onClick={handleDashboardLogout}
@@ -389,7 +425,7 @@ export default function StudentDashboard() {
             gap: 10,
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 20 }}>🎯</span>
+              <Target size={20} color="#2563EB" aria-hidden="true" />
               <div>
                 <div style={{ color: "#1E40AF", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>
                   Studying: {studyFocus.data.label ?? studyFocus.data.courseKey}
@@ -401,7 +437,7 @@ export default function StudentDashboard() {
                 </div>
               </div>
             </div>
-            <div style={{ display: "flex", gap: 8 }}>
+            <div className="dashboard-mobile-actions" style={{ display: "flex", gap: 8 }}>
               <a
                 href={studyFocus.data.quizPath}
                 style={{ padding: "6px 14px", borderRadius: 8, background: "#3B82F6", color: "#fff", fontSize: 12, fontWeight: 700, textDecoration: "none" }}
@@ -419,7 +455,7 @@ export default function StudentDashboard() {
         )}
 
         {/* Top row: Readiness ring + Countdown + Key stats */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 14, marginBottom: 20 }}>
+        <div className="dashboard-metrics-grid">
 
           {/* Readiness Score */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0", gridColumn: "span 1" }}>
@@ -520,8 +556,8 @@ export default function StudentDashboard() {
             {isLoading ? <Skeleton height={50} /> : (
               <>
                 <div style={{ color: "#3B82F6", fontSize: 34, fontWeight: 900, fontFamily: "Sora,sans-serif", lineHeight: 1 }}>{stats?.totalAttempts ?? 0}</div>
-                <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 6 }}>
-                  {stats?.currentStreak ?? 0} day streak 🔥
+                <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 6, display: "flex", alignItems: "center", gap: 5 }}>
+                  {stats?.currentStreak ?? 0} day streak <Flame size={13} color="#F59E0B" aria-hidden="true" />
                 </div>
               </>
             )}
@@ -554,9 +590,7 @@ export default function StudentDashboard() {
             borderRadius: 14, padding: "14px 18px", marginBottom: 20,
             display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap",
           }}>
-            <span style={{ fontSize: 22 }}>
-              {{ weak_topic: "⚠️", missed_review: "❌", low_confidence: "😰", bookmarked: "🔖", mock_exam: "📋", start_practicing: "🚀" }[studyPlan.data.recommendations[0].type] ?? "📌"}
-            </span>
+            <RecommendationIcon type={studyPlan.data.recommendations[0].type} size={22} />
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800 }}>{studyPlan.data.recommendations[0].title}</div>
               <div style={{ color: "#64748B", fontSize: 12, marginTop: 2 }}>{studyPlan.data.recommendations[0].description}</div>
@@ -576,12 +610,12 @@ export default function StudentDashboard() {
             MIDDLE SECTION: Action Cards
         ═══════════════════════════════════════════════════ */}
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 24 }}>
+        <div className="dashboard-action-grid">
 
           {/* Continue Practicing */}
           <a href={studyFocus.data?.quizPath ?? "/quiz"} style={{ textDecoration: "none" }}>
-            <div style={{ background: "linear-gradient(135deg, #3B82F6, #2563EB)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-              <div style={{ fontSize: 28, marginBottom: 10 }}>📝</div>
+            <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #3B82F6, #2563EB)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <ListChecks size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
               <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Continue Practicing</div>
               <div style={{ color: "#BFDBFE", fontSize: 12, lineHeight: 1.4 }}>Pick up where you left off with adaptive questions.</div>
             </div>
@@ -590,8 +624,8 @@ export default function StudentDashboard() {
           {/* Review Weak Topics */}
           {(topicAccuracy.data?.topics?.filter((t: any) => t.status === "weak")?.length ?? 0) > 0 ? (
             <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?topic=${encodeURIComponent(topicAccuracy.data!.topics.filter((t: any) => t.status === "weak")[0].name)}`} style={{ textDecoration: "none" }}>
-              <div style={{ background: "linear-gradient(135deg, #EF4444, #DC2626)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
+              <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #EF4444, #DC2626)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+                <AlertTriangle size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
                 <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
                 <div style={{ color: "#FECACA", fontSize: 12, lineHeight: 1.4 }}>
                   {topicAccuracy.data!.topics.filter((t: any) => t.status === "weak").length} topic{topicAccuracy.data!.topics.filter((t: any) => t.status === "weak").length !== 1 ? "s" : ""} need attention.
@@ -600,8 +634,8 @@ export default function StudentDashboard() {
             </a>
           ) : (
             <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=standard`} style={{ textDecoration: "none" }}>
-              <div style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
+              <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+                <AlertTriangle size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
                 <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
                 <div style={{ color: "#FEF3C7", fontSize: 12, lineHeight: 1.4 }}>No weak topics yet — keep practicing!</div>
               </div>
@@ -610,8 +644,8 @@ export default function StudentDashboard() {
 
           {/* Take Mock Exam */}
           <a href={studyFocus.data?.mockExamPath ?? "/mock-exam"} style={{ textDecoration: "none" }}>
-            <div style={{ background: "linear-gradient(135deg, #14B8A6, #0D9488)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-              <div style={{ fontSize: 28, marginBottom: 10 }}>📋</div>
+            <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #14B8A6, #0D9488)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <ClipboardCheck size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
               <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Take Mock Exam</div>
               <div style={{ color: "#CCFBF1", fontSize: 12, lineHeight: 1.4 }}>Simulate real exam conditions and track your score.</div>
             </div>
@@ -619,8 +653,8 @@ export default function StudentDashboard() {
 
           {/* Review Missed Questions */}
           <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ textDecoration: "none" }}>
-            <div style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-              <div style={{ fontSize: 28, marginBottom: 10 }}>❌</div>
+            <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <RotateCcw size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
               <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Missed</div>
               <div style={{ color: "#EDE9FE", fontSize: 12, lineHeight: 1.4 }}>
                 {studyPlan.data?.totalMissed ? `${studyPlan.data.totalMissed} questions to review.` : "Practice questions you got wrong."}
@@ -634,10 +668,10 @@ export default function StudentDashboard() {
         ═══════════════════════════════════════════════════ */}
 
         {/* Row 1: Daily Activity + Topic Accuracy */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+        <div className="dashboard-two-column">
 
           {/* Daily Activity */}
-          <Section title="📅 Daily Activity (Last 30 Days)" style={{ margin: 0 }}>
+          <Section title={<><CalendarDays size={17} color="#2563EB" />Daily Activity (Last 30 Days)</>} style={{ margin: 0 }}>
             {dailyActivity.isLoading ? (
               <Skeleton height={200} />
             ) : (dailyActivity.data?.length ?? 0) === 0 ? (
@@ -660,7 +694,7 @@ export default function StudentDashboard() {
           </Section>
 
           {/* Topic Accuracy */}
-          <Section title="📚 Topic Accuracy" style={{ margin: 0 }}>
+          <Section title={<><BarChart3 size={17} color="#0F766E" />Topic Accuracy</>} style={{ margin: 0 }}>
             {topicAccuracy.isLoading ? (
               <Skeleton height={200} />
             ) : (topicAccuracy.data?.topics.length ?? 0) === 0 ? (
@@ -685,10 +719,10 @@ export default function StudentDashboard() {
         </div>
 
         {/* Row 2: Weak Focus Areas + Difficulty Split */}
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16, marginBottom: 16 }}>
+        <div className="dashboard-two-one">
 
           {/* Weak Focus Areas */}
-          <Section title="⚠️ Focus Areas" style={{ margin: 0 }}>
+          <Section title={<><AlertTriangle size={17} color="#DC2626" />Focus Areas</>} style={{ margin: 0 }}>
             {topicAccuracy.isLoading ? (
               <Skeleton height={120} />
             ) : (() => {
@@ -720,7 +754,7 @@ export default function StudentDashboard() {
           </Section>
 
           {/* Difficulty Split */}
-          <Section title="⚡ Difficulty Split" style={{ margin: 0 }}>
+          <Section title={<><Gauge size={17} color="#7C3AED" />Difficulty Split</>} style={{ margin: 0 }}>
             {difficultyBreakdown.isLoading ? (
               <Skeleton height={120} />
             ) : (difficultyBreakdown.data?.length ?? 0) === 0 ? (
@@ -741,7 +775,7 @@ export default function StudentDashboard() {
         </div>
 
         {/* Row 3: Course Breakdown */}
-        <Section title="🎓 Course Breakdown">
+        <Section title={<><GraduationCap size={17} color="#2563EB" />Course Breakdown</>}>
           {courseBreakdown.isLoading ? (
             <Skeleton height={80} />
           ) : (courseBreakdown.data?.length ?? 0) === 0 ? (
@@ -767,10 +801,10 @@ export default function StudentDashboard() {
         </Section>
 
         {/* Row 4: AI Tutor Sessions + Study Plan */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+        <div className="dashboard-two-column">
 
           {/* AI Tutor Sessions */}
-          <Section title="🤖 AI Tutor Sessions" style={{ margin: 0 }}>
+          <Section title={<><Bot size={17} color="#0F766E" />AI Tutor Sessions</>} style={{ margin: 0 }}>
             {aiSessions.isLoading ? (
               <Skeleton height={120} />
             ) : (aiSessions.data?.length ?? 0) === 0 ? (
@@ -793,7 +827,7 @@ export default function StudentDashboard() {
           </Section>
 
           {/* Full Study Plan */}
-          <Section title="📋 Your Study Plan" style={{ margin: 0 }}>
+          <Section title={<><ClipboardCheck size={17} color="#2563EB" />Your Study Plan</>} style={{ margin: 0 }}>
             {studyPlan.isLoading ? (
               <Skeleton height={120} />
             ) : !studyPlan.data || studyPlan.data.recommendations.length === 0 ? (
@@ -801,12 +835,11 @@ export default function StudentDashboard() {
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 {studyPlan.data.recommendations.slice(0, 4).map((rec, i) => {
-                  const iconMap: Record<string, string> = { weak_topic: "⚠️", missed_review: "❌", low_confidence: "😰", bookmarked: "🔖", mock_exam: "📋", start_practicing: "🚀" };
                   const colorMap: Record<string, string> = { weak_topic: "#EF4444", missed_review: "#F59E0B", low_confidence: "#F59E0B", bookmarked: "#3B82F6", mock_exam: "#14B8A6", start_practicing: "#22C55E" };
                   const color = colorMap[rec.type] ?? "#3B82F6";
                   return (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: color + "10", borderRadius: 10, border: `1px solid ${color}22` }}>
-                      <span style={{ fontSize: 15, flexShrink: 0, marginTop: 1 }}>{iconMap[rec.type] ?? "📌"}</span>
+                      <RecommendationIcon type={rec.type} size={15} color={color} />
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ color: "#0F172A", fontSize: 12, fontWeight: 700, marginBottom: 2 }}>{rec.title}</div>
                         <div style={{ color: "#64748B", fontSize: 11, lineHeight: 1.4 }}>{rec.description}</div>
@@ -820,13 +853,13 @@ export default function StudentDashboard() {
                 {/* Review mode quick-links */}
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
                   {(studyPlan.data.totalMissed ?? 0) > 0 && (
-                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>❌ Missed ({studyPlan.data.totalMissed})</a>
+                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>Missed ({studyPlan.data.totalMissed})</a>
                   )}
                   {(studyPlan.data.totalBookmarked ?? 0) > 0 && (
-                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=bookmarked`} style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>🔖 Bookmarks ({studyPlan.data.totalBookmarked})</a>
+                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=bookmarked`} style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>Bookmarks ({studyPlan.data.totalBookmarked})</a>
                   )}
                   {(studyPlan.data.totalLowConf ?? 0) > 0 && (
-                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=low-confidence`} style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>😰 Low Confidence ({studyPlan.data.totalLowConf})</a>
+                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=low-confidence`} style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>Low Confidence ({studyPlan.data.totalLowConf})</a>
                   )}
                 </div>
               </div>
@@ -835,7 +868,7 @@ export default function StudentDashboard() {
         </div>
 
         {/* Row 5: Recent Sessions */}
-        <Section title="🕐 Recent Sessions">
+        <Section title={<><Clock3 size={17} color="#475569" />Recent Sessions</>}>
           {recentSessions.isLoading ? (
             <Skeleton height={120} />
           ) : (recentSessions.data?.length ?? 0) === 0 ? (
@@ -905,7 +938,7 @@ function StatCard({ label, value, icon, color }: { label: string; value: string;
   );
 }
 
-function Section({ title, children, style: extraStyle }: { title: string; children: React.ReactNode; style?: React.CSSProperties }) {
+function Section({ title, children, style: extraStyle }: { title: React.ReactNode; children: React.ReactNode; style?: React.CSSProperties }) {
   return (
     <div
       style={{
@@ -917,7 +950,7 @@ function Section({ title, children, style: extraStyle }: { title: string; childr
         ...extraStyle,
       }}
     >
-      <h2 style={{ color: "#1E293B", fontSize: 16, fontWeight: 800, margin: "0 0 14px", letterSpacing: "-0.01em" }}>
+      <h2 className="dashboard-section-title" style={{ color: "#1E293B", fontSize: 16, fontWeight: 800, margin: "0 0 14px", letterSpacing: "-0.01em" }}>
         {title}
       </h2>
       {children}
@@ -942,8 +975,21 @@ function Skeleton({ height }: { height: number }) {
 function EmptyState({ text }: { text: string }) {
   return (
     <div style={{ padding: "28px 16px", textAlign: "center" }}>
-      <div style={{ fontSize: 32, marginBottom: 8, opacity: 0.5 }}>📭</div>
+      <BookOpen size={28} color="#94A3B8" style={{ margin: "0 auto 9px" }} aria-hidden="true" />
       <div style={{ color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>{text}</div>
     </div>
   );
+}
+
+function RecommendationIcon({ type, size, color = "#2563EB" }: { type: string; size: number; color?: string }) {
+  const Icon = type === "weak_topic"
+    ? AlertTriangle
+    : type === "mock_exam"
+      ? ClipboardCheck
+      : type === "start_practicing"
+        ? ListChecks
+        : type === "missed_review"
+          ? RotateCcw
+          : Target;
+  return <Icon size={size} color={color} style={{ flexShrink: 0, marginTop: 1 }} aria-hidden="true" />;
 }

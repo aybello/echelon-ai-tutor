@@ -1,7 +1,7 @@
 // Echelon Institute — Purchase Success Page
 // Shown after Stripe Checkout completes successfully
-// Verifies the session, stores email in localStorage for access gating
-// Auto-redirects to the purchased course quiz after 4 seconds
+// Verifies the Stripe session and continues into the purchased course setup.
+// Course access remains server-authoritative; browser storage is not an entitlement source.
 
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -134,7 +134,7 @@ export default function PurchaseSuccess() {
 
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id") ?? "";
-  const productKey = params.get("product") ?? "";
+  const requestedProductKey = params.get("product") ?? "";
 
   const [email, setEmail] = useState<string>("");
   const [verified, setVerified] = useState(false);
@@ -142,7 +142,7 @@ export default function PurchaseSuccess() {
   const [referralSource, setReferralSource] = useState("");
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [stripeSessionId, setStripeSessionId] = useState("");
-  const [allUnlockedProducts, setAllUnlockedProducts] = useState<string[]>([]);
+  const [purchasedProductKey, setPurchasedProductKey] = useState(requestedProductKey);
   const [accessExpiresAt, setAccessExpiresAt] = useState<Date | null>(null);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
@@ -151,22 +151,16 @@ export default function PurchaseSuccess() {
   // Verify the session with Stripe and record the purchase
   const verifySession = trpc.stripe.verifySession.useMutation({
     onSuccess: (data) => {
-      if (data.email) {
+      if (data.paid && data.email) {
         setEmail(data.email);
         try {
           localStorage.setItem("echelon_trial_email", data.email);
-          localStorage.setItem("echelon_trial_unlocked", "true");
-          const existing = JSON.parse(localStorage.getItem("echelon_purchased_products") ?? "[]");
-          if (!existing.includes(productKey)) {
-            existing.push(productKey);
-            localStorage.setItem("echelon_purchased_products", JSON.stringify(existing));
-          }
-          setAllUnlockedProducts(existing);
         } catch {
           // ignore
         }
       }
-      setVerified(true);
+      setPurchasedProductKey(data.paid ? data.productKey : "");
+      setVerified(data.paid);
       setVerifying(false);
       setStripeSessionId(sessionId);
       setAccessExpiresAt(data.accessExpiresAt ?? null);
@@ -225,6 +219,21 @@ export default function PurchaseSuccess() {
               Please wait while we verify your payment.
             </p>
           </>
+        ) : !verified ? (
+          <>
+            <div style={{ fontSize: 40, marginBottom: 16 }}>!</div>
+            <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
+              We couldn't confirm this purchase
+            </h1>
+            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
+              No access was changed. Please return to pricing or contact us if Stripe charged your card.
+            </p>
+            <Link href="/pricing">
+              <button style={{ padding: "10px 20px", borderRadius: 8, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+                Return to Pricing
+              </button>
+            </Link>
+          </>
         ) : (
           <>
             <div
@@ -282,16 +291,16 @@ export default function PurchaseSuccess() {
                 Your Courses
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {(allUnlockedProducts.length > 0 ? allUnlockedProducts : [productKey]).map(pk => {
+                {[purchasedProductKey].filter(Boolean).map(pk => {
                   const courseLinks = PRODUCT_PATHS[pk] ?? [{ label: pk, path: "/quiz" }];
                   return courseLinks.map(link => (
                     <Link key={link.path} href={link.path}>
                       <div
                         style={{
                           padding: "10px 14px",
-                          background: pk === productKey ? "#DCFCE7" : "#fff",
+                          background: pk === purchasedProductKey ? "#DCFCE7" : "#fff",
                           borderRadius: 8,
-                          border: pk === productKey ? "1.5px solid #86EFAC" : "1px solid #BBF7D0",
+                          border: pk === purchasedProductKey ? "1.5px solid #86EFAC" : "1px solid #BBF7D0",
                           fontSize: 13,
                           fontWeight: 600,
                           color: "#0F172A",
@@ -302,7 +311,7 @@ export default function PurchaseSuccess() {
                         }}
                       >
                         {link.label}
-                        {pk === productKey && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
+                        {pk === purchasedProductKey && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
                         <span style={{ color: "#16A34A" }}>→</span>
                       </div>
                     </Link>
@@ -364,8 +373,8 @@ export default function PurchaseSuccess() {
             </div>
 
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
-              {productKey && PRODUCT_PATHS[productKey] && (
-                <Link href={`/account?next=${encodeURIComponent(`/activate/${productKey}`)}`}>
+              {purchasedProductKey && PRODUCT_PATHS[purchasedProductKey] && (
+                <Link href={`/activate/${encodeURIComponent(purchasedProductKey)}`}>
                   <button
                     style={{
                       padding: "9px 20px", borderRadius: 8, border: "none",
@@ -373,7 +382,7 @@ export default function PurchaseSuccess() {
                       fontSize: 13, fontWeight: 800, cursor: "pointer", fontFamily: "inherit",
                     }}
                   >
-                    Set Up My Study Plan
+                    Continue to Study Setup
                   </button>
                 </Link>
               )}
