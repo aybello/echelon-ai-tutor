@@ -7,6 +7,7 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import QuizGate from "@/components/QuizGate";
 
 export default function OITWastewaterQuiz() {
   usePageMeta({
@@ -42,7 +43,7 @@ export default function OITWastewaterQuiz() {
       currentPath="/oit-ww"
       courseLabel="Ontario OIT · Wastewater Treatment"
       courseTitle="OIT Wastewater Practice Quiz"
-      courseSubtitle="Free · Ontario OIT Wastewater Exam Prep"
+      courseSubtitle="Ontario OIT Wastewater Exam Prep"
       headerGradient="linear-gradient(135deg, #0F766E 0%, #0369A1 100%)"
       headerIcon="🌊"
       headerActions={[
@@ -80,6 +81,23 @@ export default function OITWastewaterQuiz() {
       mockExamHref="/oit-ww-mock"
       formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
+      gate={session.trialDone && !session.trialUnlocked ? (
+        <QuizGate
+          questionsAnswered={session.history.length}
+          productKey="oit-ww"
+          productName="OIT Wastewater Treatment Exam Pass"
+          priceLabel="CA$49"
+          paidFeatures={[
+            "500+ OIT Wastewater questions — unlimited attempts",
+            "Timed mock exam (100 questions, 2 hrs)",
+            "AI Tutor explanations on every question",
+            "Module-by-module performance tracking",
+          ]}
+          onUnlocked={session.handleGateUnlocked}
+        />
+      ) : null}
       headerExtra={
         <>
           <QuizModeBar

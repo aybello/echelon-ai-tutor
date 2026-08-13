@@ -1129,7 +1129,7 @@ function CourseCard({ course }: { course: CourseType }) {
     course.code === "WQA" ? "/wqa" : "/quiz"
   );
   const isWpiCourse = (course as any).province === "wpi";
-  const subFromPrice = isWpiCourse ? "CA$149/yr" : "CA$99/yr";
+  const subFromPrice = isWpiCourse ? "from CA$149" : "from CA$49";
   const pricingHref = isWpiCourse ? "/pricing?tab=western" : "/pricing";
   return (
     <>
@@ -1217,7 +1217,7 @@ function CourseCard({ course }: { course: CourseType }) {
               borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
             }}>
               <div>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included in subscription</span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included with Exam Pass</span>
                 <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>from {subFromPrice}</span>
               </div>
               {!course.comingSoon && (

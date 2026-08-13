@@ -1376,7 +1376,7 @@ export default function Pricing() {
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
             {isUS
               ? "Subscribe annually and unlock every exam type for your class level. All four WPI tracks included: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Prices in USD."
-              : "Subscribe annually and unlock every exam type for your class level. Ontario subscriptions include all four MOECP / OWWCO tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Western Canada subscriptions cover all four WPI tracks."}
+              : "Legacy annual plans remain active under their original terms. New individual access is available as a 12-month Exam Pass for one selected certification course."}
           </p>
 
           {/* Province toggle for subscriptions */}
@@ -1719,7 +1719,7 @@ export default function Pricing() {
           }}
         >
           <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
-            Everything you need to pass — included in every subscription
+            Everything you need to pass — included with your Exam Pass
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
             Every Echelon pass includes the study tools you need. Annual access continues through its paid term if you cancel renewal.
@@ -1856,8 +1856,8 @@ export default function Pricing() {
               a: "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
             },
             {
-              q: "Can I cancel my subscription?",
-              a: "Yes. You can cancel renewal anytime from your account page using the Manage Subscription link. Your access continues through the end of your current billing period."
+              q: "Can I cancel or get a refund?",
+              a: "Individual Exam Passes are one-time purchases with 12 months of access — no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. Refund requests within 7 days of purchase can be sent to support@echeloninstitute.ca."
             },
           ].map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} />
@@ -2010,7 +2010,7 @@ function ProductCard({
             background: "#F8FAFC", border: "1px solid #E2E8F0",
             borderRadius: 20, padding: "2px 10px",
           whiteSpace: "nowrap",
-          }}>One-time · no subscription</span>
+          }}>One-time payment · 12 months access</span>
         </div>
       </div>
 

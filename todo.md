@@ -1321,3 +1321,7 @@
 - [x] Graduated pricing: update Teams.tsx to show average per-seat price
 - [x] Graduated pricing: add teamGraduatedPrice.ts (Stripe tiered Price creation)
 - [x] Graduated pricing: update all tests to expect graduated totals
+- [x] Fix OIT Water quiz: add PurchaseGate after question 15 (was free, now paid)
+- [x] Fix OIT Wastewater quiz: add PurchaseGate after question 15 (was free, now paid)
+- [x] Clean up outdated subscription language (references to "every subscription", annual renewal, cancelling subscriptions)
+- [ ] Verify question 16 triggers purchase gate on both OIT courses

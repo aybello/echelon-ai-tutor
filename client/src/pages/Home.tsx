@@ -7,6 +7,7 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import QuizGate from "@/components/QuizGate";
 
 
 const MODULE_CONFIG: ModuleConfig[] = [
@@ -52,7 +53,7 @@ export default function Home() {
       currentPath="/quiz"
       courseLabel="Ontario OIT · Water Treatment"
       courseTitle="OIT Practice Quiz — 551+ Questions"
-      courseSubtitle="Free · Ontario OIT Exam Prep"
+      courseSubtitle="Ontario OIT Water Exam Prep"
       headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%)"
       headerIcon="💧"
       headerActions={[
@@ -93,6 +94,23 @@ export default function Home() {
       mockExamHref="/oit-mock"
       formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
+      gate={session.trialDone && !session.trialUnlocked ? (
+        <QuizGate
+          questionsAnswered={session.history.length}
+          productKey="oit"
+          productName="OIT Water Treatment Exam Pass"
+          priceLabel="CA$49"
+          paidFeatures={[
+            "551 OIT Water questions — unlimited attempts",
+            "Timed mock exam (100 questions, 2 hrs)",
+            "AI Tutor explanations on every question",
+            "Module-by-module performance tracking",
+          ]}
+          onUnlocked={session.handleGateUnlocked}
+        />
+      ) : null}
       headerExtra={
         <>
           <QuizModeBar
