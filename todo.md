@@ -1330,4 +1330,4 @@
 - [x] Review the uploaded Class 1 Collection and Distribution question file against the approved gap specification
 - [x] Validate question records, answer indices, module coverage, and duplicate risk before import
 - [x] Create an idempotent import path and add only approved question records to production
-- [ ] Verify expanded bank counts, tests, deployment, GitHub sync, and AI Context Hub entry
+- [x] Verify expanded bank counts, tests, deployment, GitHub sync, and AI Context Hub entry
