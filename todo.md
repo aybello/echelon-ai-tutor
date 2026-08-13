@@ -1341,3 +1341,9 @@
 - [x] Merge the shared-shell navigation fix that uses each mock exam's registered practice route
 - [x] Verify the dynamic all-mock-exam route regression checks
 - [x] Deploy the architectural safeguard and synchronize GitHub
+
+## Unified Echelon Design
+- [x] Merge the registry-driven course workspace and unified navigation branch
+- [x] Run full regression and dynamic navigation tests after integration
+- [x] Verify the redesigned desktop and mobile course-workspace flows visually
+- [ ] Deploy the approved unified design and synchronize GitHub
