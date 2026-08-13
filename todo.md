@@ -1336,3 +1336,8 @@
 - [x] Trace and fix the purchase-gate close/back action that sends Class 2 Water mock-exam users to a 404
 - [x] Add regression coverage for valid course-page return navigation
 - [x] Verify the repaired flow, deploy, and synchronize GitHub
+
+## Architectural Mock-Exam Navigation Safeguard
+- [x] Merge the shared-shell navigation fix that uses each mock exam's registered practice route
+- [x] Verify the dynamic all-mock-exam route regression checks
+- [ ] Deploy the architectural safeguard and synchronize GitHub
