@@ -15,6 +15,7 @@ import { ENV } from "../_core/env";
 import { provisionOrgFromWebhook } from "./provisionOrg";
 import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
 import type { SubscriptionProvince } from "./subscriptionProducts";
+import { getIndividualExamPassExpiry } from "./individualExamPass";
 
 
 
@@ -104,6 +105,10 @@ export function registerStripeWebhook(app: Express) {
           const amountCAD = session.amount_total ?? 0;
           const stripeSessionId = session.id;
           const stripePaymentIntentId = session.payment_intent ?? null;
+          const accessExpiresAt = getIndividualExamPassExpiry(
+            session.metadata,
+            new Date(session.created * 1000),
+          );
 
           if (!productKey || !email) {
             // email is already normalized above
@@ -131,6 +136,7 @@ export function registerStripeWebhook(app: Express) {
               amountCAD,
               stripeSessionId,
               stripePaymentIntentId,
+              accessExpiresAt,
             });
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);

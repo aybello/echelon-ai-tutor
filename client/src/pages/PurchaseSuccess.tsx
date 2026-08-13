@@ -143,6 +143,7 @@ export default function PurchaseSuccess() {
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [stripeSessionId, setStripeSessionId] = useState("");
   const [allUnlockedProducts, setAllUnlockedProducts] = useState<string[]>([]);
+  const [accessExpiresAt, setAccessExpiresAt] = useState<Date | null>(null);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
 
@@ -168,6 +169,7 @@ export default function PurchaseSuccess() {
       setVerified(true);
       setVerifying(false);
       setStripeSessionId(sessionId);
+      setAccessExpiresAt(data.accessExpiresAt ?? null);
     },
     onError: () => {
       setVerifying(false);
@@ -246,12 +248,13 @@ export default function PurchaseSuccess() {
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
               {email ? (
                 <>
-                  Your Practice Pass is now active for <strong>{email}</strong>.
-                  You have unlimited access — no expiry.
+                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} is now active for <strong>{email}</strong>.
+                  {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
                 </>
               ) : (
                 <>
-                  Your Practice Pass is now active. You have unlimited access — no expiry.
+                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} is now active.
+                  {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
                 </>
               )}
             </p>

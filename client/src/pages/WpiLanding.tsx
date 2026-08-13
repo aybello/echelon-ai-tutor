@@ -162,7 +162,7 @@ const FAQS = [
   },
   {
     q: "What's included in a practice pass?",
-    a: "Each pass includes 500+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes. Access is one-time purchase with no expiry.",
+    a: "Each Individual Exam Pass includes 500+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes for 12 months from purchase.",
   },
   {
     q: "Do I need an account to start?",
@@ -394,7 +394,7 @@ export default function WpiLanding() {
 
                     {/* Price */}
                     <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
-                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 12 }}>One-time · unlimited access</div>
+                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 12 }}>One-time payment · 12 months access</div>
 
                     {/* Free trial */}
                     <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 12 }}>✓ 15 questions free — no account needed</div>

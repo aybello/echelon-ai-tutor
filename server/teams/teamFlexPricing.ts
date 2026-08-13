@@ -3,6 +3,7 @@
  * Course-specific licences: 3-month, 6-month, or 12-month terms.
  * Volume discount calculated from total licences in the complete order.
  */
+import { calculateBlendedDiscount } from "../../shared/pricingCatalogue";
 
 export type TeamFlexTermMonths = 3 | 6 | 12;
 
@@ -41,10 +42,7 @@ export const FLEX_VOLUME_TIERS = [
 ] as const;
 
 export function getTeamFlexVolumeDiscount(totalLicences: number): number {
-  const tier = FLEX_VOLUME_TIERS.find(
-    t => totalLicences >= t.min && (t.max === null || totalLicences <= t.max)
-  );
-  return tier?.rate ?? 0;
+  return calculateBlendedDiscount(totalLicences);
 }
 
 export function getCourseKeyPricingBand(courseKey: string): {

@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { calculateBlendedDiscount } from "@shared/pricingCatalogue";
 
 interface FlexItem {
   courseKey: string;
@@ -78,10 +79,7 @@ function getItemPrice(province: string, band: string, termMonths: number): numbe
 }
 
 function getDiscount(totalLicences: number): number {
-  if (totalLicences >= 50) return 0.20;
-  if (totalLicences >= 25) return 0.15;
-  if (totalLicences >= 10) return 0.10;
-  return 0;
+  return calculateBlendedDiscount(totalLicences);
 }
 
 function formatCAD(cents: number): string {
@@ -103,11 +101,18 @@ export function FlexOrderBuilder() {
   const lineItems = items.map(item => {
     const course = courses.find(c => c.key === item.courseKey);
     const unitPrice = course ? getItemPrice(province, course.band, item.termMonths) : 0;
-    return { ...item, unitPrice, lineTotal: unitPrice * item.quantity, label: course?.label ?? "" };
+    const discountedUnitPrice = Math.round(unitPrice * (1 - discount));
+    return {
+      ...item,
+      unitPrice,
+      discountedUnitPrice,
+      lineTotal: discountedUnitPrice * item.quantity,
+      label: course?.label ?? "",
+    };
   });
-  const subtotal = lineItems.reduce((sum, li) => sum + li.lineTotal, 0);
-  const discountAmount = Math.round(subtotal * discount);
-  const total = subtotal - discountAmount;
+  const subtotal = lineItems.reduce((sum, li) => sum + li.unitPrice * li.quantity, 0);
+  const total = lineItems.reduce((sum, li) => sum + li.lineTotal, 0);
+  const discountAmount = subtotal - total;
 
   const createOrder = trpc.teamFlex.createOrder.useMutation({
     onSuccess: (data) => {
@@ -260,7 +265,7 @@ export function FlexOrderBuilder() {
           </div>
           {discount > 0 && (
             <div className="flex justify-between text-sm text-green-700">
-              <span>Volume discount ({Math.round(discount * 100)}% off)</span>
+              <span>Graduated volume discount ({(discount * 100).toFixed(1)}% effective)</span>
               <span className="font-medium">−{formatCAD(discountAmount)}</span>
             </div>
           )}

@@ -16,13 +16,10 @@ import { resolveCourseKey } from "../../shared/courseRegistry";
 export const FREE_TRIAL_LIMIT = 15;
 
 /**
- * Exam types that are fully free — no purchase or subscription required.
- * OIT (Operator-in-Training) is the free funnel product.
+ * No course is fully free. Every unentitled learner receives the same
+ * 15-question preview through FREE_TRIAL_LIMIT.
  */
-export const FREE_EXAM_TYPES = new Set([
-  // OIT free tiers — full quiz access without a purchase
-  "oit", "oit-ww",
-]);
+export const FREE_EXAM_TYPES = new Set<string>();
 
 /**
  * AI Tutor is free for ALL exam types — users hit the 15-question quiz gate
@@ -167,13 +164,20 @@ export async function resolveEntitlementsByEmail(
   // 1. One-time purchases
   // -------------------------------------------------------------------------
   const purchaseRows = await db
-    .select({ productKey: purchases.productKey, status: purchases.status })
+    .select({
+      productKey: purchases.productKey,
+      status: purchases.status,
+      accessExpiresAt: purchases.accessExpiresAt,
+    })
     .from(purchases)
     .where(eq(purchases.email, normalised));
 
   // Preserve historic behaviour: missing status counts as active
   const activePurchaseKeys = purchaseRows
-    .filter((r) => !r.status || PURCHASE_ACCESS_STATUSES.has(r.status))
+    .filter((r) =>
+      (!r.status || PURCHASE_ACCESS_STATUSES.has(r.status)) &&
+      (r.accessExpiresAt == null || r.accessExpiresAt >= now),
+    )
     .map((r) => r.productKey);
 
   let purchaseExamTypes: string[] = [];

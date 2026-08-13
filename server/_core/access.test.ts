@@ -30,7 +30,7 @@ import { resolveEntitlementsByEmail } from "./access";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
-type PurchaseRow = { productKey: string; status: string | null };
+type PurchaseRow = { productKey: string; status: string | null; accessExpiresAt: Date | null };
 type SubRow = {
   tier: string;
   province: string;
@@ -89,8 +89,12 @@ function mockDb(
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-function purchase(productKey: string, status: string | null = null): PurchaseRow {
-  return { productKey, status };
+function purchase(
+  productKey: string,
+  status: string | null = null,
+  accessExpiresAt: Date | null = null,
+): PurchaseRow {
+  return { productKey, status, accessExpiresAt };
 }
 
 function sub(
@@ -153,6 +157,26 @@ describe("resolveEntitlementsByEmail", () => {
     mockDb([purchase("class2-water", "active")], [], []);
     const r = await resolveEntitlementsByEmail("user@example.com");
     expect(r.unlockedExamTypes).toContain("class2-water");
+  });
+
+  it("grandfathers a purchase with no expiry", async () => {
+    mockDb([purchase("class2-water", "active", null)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class2-water");
+  });
+
+  it("grants access before an Individual Exam Pass expires", async () => {
+    mockDb([purchase("class2-water", "active", FUTURE)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class2-water");
+  });
+
+  it("denies access after an Individual Exam Pass expires", async () => {
+    const past = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    mockDb([purchase("class2-water", "active", past)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).not.toContain("class2-water");
+    expect(r.hasAnyAccess).toBe(false);
   });
 
   it("denies access for refunded purchase", async () => {

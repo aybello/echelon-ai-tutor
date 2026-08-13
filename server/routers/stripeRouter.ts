@@ -5,11 +5,8 @@ import { resolveAccess, resolveAccessByEmail, normalizeEmail } from "../_core/ac
 import { stripe } from "../stripe/stripe";
 import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
 import {
-  getSubscriptionProduct,
   getAllSubscriptionExamTypes,
   getSubscriptionExamTypes,
-  TIER_LABELS,
-  PROVINCE_LABELS,
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
   TEAM_STREAM_TIER_LABELS,
@@ -35,6 +32,11 @@ import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
+import {
+  INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
+  INDIVIDUAL_EXAM_PASS_TERM_MONTHS,
+  getIndividualExamPassExpiry,
+} from "../stripe/individualExamPass";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -102,6 +104,9 @@ export const stripeRouter = router({
           utm_medium: input.utmMedium ?? "",
           utm_campaign: input.utmCampaign ?? "",
           currency,
+          entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
+          access_term_months: String(INDIVIDUAL_EXAM_PASS_TERM_MONTHS),
+          catalogue_version: CATALOGUE_VERSION,
         },
         allow_promotion_codes: true,
         phone_number_collection: { enabled: true },
@@ -125,6 +130,10 @@ export const stripeRouter = router({
         // Use canonical validator — never trust client-supplied productKey
         const checkout = validateOneTimeCheckout(session);
         const { email, productKey, productName, amountPaidCents: amountCAD, paymentIntentId: stripePaymentIntentId, phone, customerName } = checkout;
+        const accessExpiresAt = getIndividualExamPassExpiry(
+          session.metadata,
+          new Date(session.created * 1000),
+        );
 
         try {
           await issueVerifiedEmailSessionCookie(ctx.res, email);
@@ -149,6 +158,7 @@ export const stripeRouter = router({
               amountCAD,
               stripeSessionId: input.sessionId,
               stripePaymentIntentId,
+              accessExpiresAt,
             });
             const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
             sendPurchaseConfirmationEmail({
@@ -169,14 +179,14 @@ export const stripeRouter = router({
           ? await issueSubscriptionToken({ email, examTypes: unlockedExamTypes })
           : null;
 
-        return { email, productKey, paid: true, unlockedExamTypes, accessToken };
+        return { email, productKey, paid: true, unlockedExamTypes, accessToken, accessExpiresAt };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
           content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
         }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
-        return { email: "", productKey: "", paid: false, unlockedExamTypes: [], accessToken: null };
+        return { email: "", productKey: "", paid: false, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null };
       }
     }),
 
@@ -194,7 +204,13 @@ export const stripeRouter = router({
         .from(purchases)
         .where(eq(purchases.email, email));
 
-      const productKeys = rows.map(r => r.productKey);
+      const now = new Date();
+      const productKeys = rows
+        .filter((row) =>
+          row.status === "active" &&
+          (row.accessExpiresAt == null || row.accessExpiresAt >= now),
+        )
+        .map(r => r.productKey);
       const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
 
       return { purchases: rows, unlockedExamTypes };
@@ -215,7 +231,7 @@ export const stripeRouter = router({
       return { success: true };
     }),
 
-  /** Create a Stripe Checkout session for an annual subscription */
+  /** Legacy endpoint retained to fail closed for stale clients and bookmarked pages. */
   createSubscriptionCheckout: publicProcedure
     .input(z.object({
       tier: z.enum(["class1", "class2", "class3", "class4", "all-access"]),
@@ -229,72 +245,11 @@ export const stripeRouter = router({
       referralSource: z.string().max(128).optional(),
       currency: z.enum(["cad", "usd"]).default("cad"),
     }))
-    .mutation(async ({ input, ctx }) => {
-      const product = getSubscriptionProduct(input.tier as SubscriptionTier, input.province as SubscriptionProvince);
-      if (!product) throw new Error("Subscription tier not found");
-      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
-
-      const userEmail = ctx.user?.email ?? input.email;
-      const tierLabel = TIER_LABELS[input.tier as SubscriptionTier];
-      const provinceLabel = PROVINCE_LABELS[input.province as SubscriptionProvince];
-      const currency = input.currency ?? "cad";
-      const unitAmount = currency === "usd" ? product.priceUSD : product.priceCAD;
-
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        mode: "subscription",
-        line_items: [
-          {
-            price_data: {
-              currency,
-              unit_amount: unitAmount,
-              recurring: { interval: "year" },
-              product_data: {
-                name: `${tierLabel} -- ${provinceLabel}`,
-                description: product.description,
-              },
-            },
-            quantity: 1,
-          },
-        ],
-        customer_email: userEmail,
-        client_reference_id: ctx.user?.id?.toString() ?? undefined,
-        metadata: {
-          subscription_tier: input.tier,
-          subscription_province: input.province,
-          user_id: ctx.user?.id?.toString() ?? "",
-          customer_email: userEmail ?? "",
-          customer_name: input.name ?? "",
-          customer_phone: input.phone,
-          utm_source: input.utmSource ?? "",
-          utm_medium: input.utmMedium ?? "",
-          utm_campaign: input.utmCampaign ?? "",
-          referral_source: input.referralSource ?? "",
-        },
-        // CRITICAL: subscription_data.metadata is what Stripe attaches to the
-        // subscription object itself. The webhook receives the subscription object
-        // (not the session), so tier/province MUST be here or the webhook silently drops it.
-        subscription_data: {
-          metadata: {
-            subscription_tier: input.tier,
-            subscription_province: input.province,
-            user_id: ctx.user?.id?.toString() ?? "",
-            customer_email: userEmail ?? "",
-            customer_name: input.name ?? "",
-            customer_phone: input.phone,
-            utm_source: input.utmSource ?? "",
-            utm_medium: input.utmMedium ?? "",
-            utm_campaign: input.utmCampaign ?? "",
-            referral_source: input.referralSource ?? "",
-          },
-        },
-        phone_number_collection: { enabled: true },
-        allow_promotion_codes: true,
-        success_url: `${appBaseUrl}/subscription-success?session_id={CHECKOUT_SESSION_ID}&tier=${input.tier}&province=${input.province}`,
-        cancel_url: `${appBaseUrl}/pricing`,
+    .mutation(async (): Promise<{ url: string | null }> => {
+      throw new TRPCError({
+        code: "PRECONDITION_FAILED",
+        message: "Individual subscriptions are no longer available for new purchases. Choose an Individual Exam Pass or a Teams plan.",
       });
-
-      return { url: session.url };
     }),
 
   /** Get all active subscriptions for the current user (by email) */

@@ -26,22 +26,27 @@ describe("Teams Flex pricing", () => {
     expect(getFlexListPrice("western", "class1", 6)).toBe(11900);
   });
 
-  it("rejects 12-month term", async () => {
+  it("accepts the supported 3-, 6-, and 12-month terms", async () => {
     const { isValidFlexTerm } = await import("./teamFlexPricing");
     expect(isValidFlexTerm(12)).toBe(true);
     expect(isValidFlexTerm(3)).toBe(true);
     expect(isValidFlexTerm(6)).toBe(true);
   });
 
-  it("volume discount: 1-9 = 0%, 10-24 = 10%, 25-49 = 15%, 50+ = 20%", async () => {
+  it("uses a graduated blended discount without retroactive threshold cliffs", async () => {
     const { getTeamFlexVolumeDiscount } = await import("./teamFlexPricing");
     expect(getTeamFlexVolumeDiscount(5)).toBe(0);
-    expect(getTeamFlexVolumeDiscount(10)).toBe(0.10);
-    expect(getTeamFlexVolumeDiscount(24)).toBe(0.10);
-    expect(getTeamFlexVolumeDiscount(25)).toBe(0.15);
-    expect(getTeamFlexVolumeDiscount(49)).toBe(0.15);
-    expect(getTeamFlexVolumeDiscount(50)).toBe(0.20);
-    expect(getTeamFlexVolumeDiscount(100)).toBe(0.20);
+    expect(getTeamFlexVolumeDiscount(10)).toBeCloseTo(0.01);
+    expect(getTeamFlexVolumeDiscount(24)).toBeCloseTo(0.0625);
+    expect(getTeamFlexVolumeDiscount(25)).toBeCloseTo(0.066);
+    expect(getTeamFlexVolumeDiscount(49)).toBeCloseTo(0.107142857);
+    expect(getTeamFlexVolumeDiscount(50)).toBeCloseTo(0.109);
+    expect(getTeamFlexVolumeDiscount(100)).toBeCloseTo(0.1545);
+
+    const listUnitPrice = 10_000;
+    const totalAt24 = Math.round(listUnitPrice * (1 - getTeamFlexVolumeDiscount(24))) * 24;
+    const totalAt25 = Math.round(listUnitPrice * (1 - getTeamFlexVolumeDiscount(25))) * 25;
+    expect(totalAt25).toBeGreaterThan(totalAt24);
   });
 
   it("retake extension = 25% of 3-month price", async () => {
@@ -67,7 +72,7 @@ describe("Teams Flex pricing", () => {
     const totalLicences = 10 + 7 + 6 + 2;
     expect(totalLicences).toBe(25);
     const discount = getTeamFlexVolumeDiscount(totalLicences);
-    expect(discount).toBe(0.15);
+    expect(discount).toBeCloseTo(0.066);
 
     const item1 = getFlexListPrice("western", "class1", 3) * 10; // Class I 3mo
     const item2 = getFlexListPrice("western", "class2", 6) * 7;  // Class II 6mo

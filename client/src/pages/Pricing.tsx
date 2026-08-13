@@ -1245,7 +1245,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Choose a focused Course Pass for one known exam or annual all-access for broader study. Every pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        <p>Choose a 12-month Individual Exam Pass for one certification course, or a Teams plan for multiple operators. Every paid pass includes unlimited practice during its term, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1308,8 +1308,8 @@ export default function Pricing() {
             >
               <div style={{ fontSize: 25, marginBottom: 10 }}>👤</div>
               <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For myself</div>
-              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Choose a focused Course Pass for one exam or broader all-access study.</p>
-              <div style={{ marginTop: 12, color: "#2563EB", fontSize: 13, fontWeight: 800 }}>Choose individual access →</div>
+              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Choose one certification course with 12 months of individual access.</p>
+              <div style={{ marginTop: 12, color: "#2563EB", fontSize: 13, fontWeight: 800 }}>Choose an Exam Pass →</div>
             </button>
             <button
               type="button"
@@ -1323,31 +1323,12 @@ export default function Pricing() {
             </button>
           </div>
 
-          {buyerType === "individual" && (
-            <div style={{ marginTop: 20, padding: "22px", background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 16 }}>
-              <p style={{ margin: 0, fontSize: 12, color: "#64748B", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" }}>Step 2</p>
-              <h3 style={{ margin: "6px 0 14px", color: "#0F172A", fontSize: 20, fontWeight: 850 }}>What do you need to prepare for?</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12 }}>
-                <button type="button" onClick={() => setIndividualModel("course")} style={{ cursor: "pointer", fontFamily: "inherit", textAlign: "left", padding: 18, borderRadius: 12, background: individualModel === "course" ? "#EFF6FF" : "#fff", border: individualModel === "course" ? "2px solid #2563EB" : "1px solid #E2E8F0" }}>
-                  <div style={{ fontWeight: 800, color: "#0F172A" }}>One known exam</div>
-                  <div style={{ marginTop: 5, color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Start with a Course Pass for one selected certification course.</div>
-                  <div style={{ marginTop: 10, color: "#2563EB", fontSize: 13, fontWeight: 800 }}>View Course Passes →</div>
-                </button>
-                <button type="button" onClick={() => setIndividualModel("allAccess")} style={{ cursor: "pointer", fontFamily: "inherit", textAlign: "left", padding: 18, borderRadius: 12, background: individualModel === "allAccess" ? "#F5F3FF" : "#fff", border: individualModel === "allAccess" ? "2px solid #7C3AED" : "1px solid #E2E8F0" }}>
-                  <div style={{ fontWeight: 800, color: "#0F172A" }}>Several classes or streams</div>
-                  <div style={{ marginTop: 5, color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Compare annual all-access subscriptions and unlock broader study.</div>
-                  <div style={{ marginTop: 10, color: "#7C3AED", fontSize: 13, fontWeight: 800 }}>View all-access options →</div>
-                </button>
-              </div>
+          {buyerType === "individual" && activeSubs.length > 0 && (
+            <div style={{ marginTop: 20, padding: "16px 18px", background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 12, color: "#166534", fontSize: 13 }}>
+              Your existing subscription remains active and grandfathered. <Link href="/account"><strong>Manage it in your account →</strong></Link>
             </div>
           )}
         </section>
-
-        {buyerType === "individual" && individualModel === null && (
-          <p style={{ margin: "-16px auto 40px", maxWidth: 620, textAlign: "center", color: "#64748B", fontSize: 14 }}>
-            Select one study path above to see the pricing and checkout options that apply to you.
-          </p>
-        )}
 
         {buyerType === "team" && (
           <TeamSeatCalculator />
@@ -1370,7 +1351,7 @@ export default function Pricing() {
               <tbody>
                 {[
                   ["Best for", "Operators studying several streams or levels", "One specific exam"],
-                  ["Access", "All included courses for 12 months", "One course, no expiry"],
+                  ["Access", "Legacy plan terms", "One course for 12 months"],
                   ["Billing", "Renews annually until cancelled", "Single payment"],
                   ["Cancellation", "Stop renewal anytime; access continues through paid term", "Not applicable"],
                   ["Features", "Practice, mocks, flashcards, formulas, AI Tutor", "Same features for that course"],
@@ -1541,10 +1522,10 @@ export default function Pricing() {
         </div>
 
         {/* ── Individual Practice Passes — collapsible ── */}
-        <div style={{ display: buyerType === "individual" && individualModel === "course" ? "block" : "none", marginTop: 24, marginBottom: 24 }}>
+        <div style={{ display: buyerType === "individual" ? "block" : "none", marginTop: 24, marginBottom: 24 }}>
           <div style={{ padding: "18px 20px", background: "#EFF6FF", border: "1.5px solid #BFDBFE", borderRadius: 12 }}>
-            <div style={{ fontSize: 17, fontWeight: 850, color: "#0F172A" }}>Choose your individual Course Pass</div>
-            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select only the course that matches your upcoming exam. One-time payment; access does not expire.</p>
+            <div style={{ fontSize: 17, fontWeight: 850, color: "#0F172A" }}>Choose your Individual Exam Pass</div>
+            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select the course that matches your upcoming exam. One-time payment; 12 months of access from purchase.</p>
           </div>
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
@@ -1847,12 +1828,12 @@ export default function Pricing() {
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {[
             {
-              q: "What's the difference between a subscription and a one-time pass?",
-              a: "A subscription gives you access to all exam types included in your tier for one year, with automatic renewal. A one-time pass gives you lifetime access to a single exam type — no renewal required. Both include the same features: practice questions, AI tutor, mock exams, and flashcards."
+              q: "What does an Individual Exam Pass include?",
+              a: "An Individual Exam Pass gives one learner 12 months of access to one selected certification course. It includes practice questions, AI Tutor, mock exams, flashcards, formulas, and study resources for that course."
             },
             {
-              q: "What courses are included in each subscription tier?",
-              a: "Ontario subscriptions cover all four MOECP / OWWCO tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection — all levels included in your tier. WPI subscriptions cover the Western Canada Water & Wastewater Operators program tracks. The exact exam types are shown on each plan card above."
+              q: "What if I need access for several operators or courses?",
+              a: "Choose a Teams plan. Course Passes provide one course for a named operator in 3-, 6-, or 12-month terms, while Teams All-Access covers every course for each named operator on an annual plan."
             },
             {
               q: "How do I access my passes after purchase?",

@@ -119,20 +119,20 @@ describe("identityEmail", () => {
 });
 
 // ---------------------------------------------------------------------------
-// hasAccessToExam — free exam types
+// hasAccessToExam — every course uses the 15-question preview gate
 // ---------------------------------------------------------------------------
 
-describe("hasAccessToExam — free exam types", () => {
-  it("grants access to OIT (free) for anonymous users", async () => {
+describe("hasAccessToExam — no fully free exam types", () => {
+  it("requires an entitlement for OIT", async () => {
     const identity = { type: "anonymous" as const };
     const result = await hasAccessToExam(identity, "oit");
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
 
-  it("grants access to oit-ww (free) for anonymous users", async () => {
+  it("requires an entitlement for OIT wastewater", async () => {
     const identity = { type: "anonymous" as const };
     const result = await hasAccessToExam(identity, "oit-ww");
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
 
   it("denies access to a paid exam type for anonymous users", async () => {
@@ -143,18 +143,18 @@ describe("hasAccessToExam — free exam types", () => {
 });
 
 // ---------------------------------------------------------------------------
-// assertAccess — free exam types pass without DB
+// assertAccess — the free preview is enforced by the quiz gate, not full API access
 // ---------------------------------------------------------------------------
 
-describe("assertAccess — free exam types", () => {
-  it("does not throw for OIT (free) with anonymous context", async () => {
+describe("assertAccess — OIT still requires a paid entitlement", () => {
+  it("throws for anonymous OIT access", async () => {
     const ctx = makeAnonCtx();
-    await expect(assertAccess(ctx as any, "oit")).resolves.toBeUndefined();
+    await expect(assertAccess(ctx as any, "oit")).rejects.toThrow(TRPCError);
   });
 
-  it("does not throw for oit-ww (free) with anonymous context", async () => {
+  it("throws for anonymous OIT wastewater access", async () => {
     const ctx = makeAnonCtx();
-    await expect(assertAccess(ctx as any, "oit-ww")).resolves.toBeUndefined();
+    await expect(assertAccess(ctx as any, "oit-ww")).rejects.toThrow(TRPCError);
   });
 });
 
@@ -202,17 +202,17 @@ describe("verifyAccessTokenAndRecheckDb", () => {
 
 import { resolveAccessForRequest } from "../server/_core/accessService";
 
-describe("resolveAccessForRequest — free exam types", () => {
-  it("returns true for OIT (free) with anonymous context", async () => {
+describe("resolveAccessForRequest — no fully free exam types", () => {
+  it("returns false for OIT with anonymous context", async () => {
     const ctx = makeAnonCtx();
     const result = await resolveAccessForRequest(ctx as any, "oit");
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
 
-  it("returns true for oit-ww (free) with anonymous context", async () => {
+  it("returns false for OIT wastewater with anonymous context", async () => {
     const ctx = makeAnonCtx();
     const result = await resolveAccessForRequest(ctx as any, "oit-ww");
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
 
   it("returns false for paid exam type with anonymous context and no token", async () => {

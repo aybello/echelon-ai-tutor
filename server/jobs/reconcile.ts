@@ -13,6 +13,7 @@ import { type SubscriptionTier as ST, type SubscriptionProvince as SP } from "..
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { notifyOwner } from "../_core/notification";
+import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
 
 function getStripe(): Stripe {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -84,6 +85,10 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
           ? parseInt(session.metadata.user_id)
           : null;
         const phone = (session as any).customer_details?.phone ?? null;
+        const accessExpiresAt = getIndividualExamPassExpiry(
+          session.metadata,
+          new Date(session.created * 1000),
+        );
 
         await db.insert(purchases).values({
           userId: userId ?? undefined,
@@ -94,6 +99,7 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
           stripeSessionId: session.id,
           stripePaymentIntentId,
           phone,
+          accessExpiresAt,
         });
 
         // Save phone to users table if available

@@ -15,6 +15,7 @@ import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
+import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
 
 const OWNER_EMAIL = "belllo.ayoola@gmail.com";
 
@@ -254,6 +255,10 @@ export const adminRouter = router({
             : null;
           const phone = (session as any).customer_details?.phone ?? (session.metadata?.customer_phone || null);
           const customerName = (session as any).customer_details?.name ?? (session.metadata?.customer_name || null);
+          const accessExpiresAt = getIndividualExamPassExpiry(
+            session.metadata,
+            new Date(session.created * 1000),
+          );
 
           await db.insert(purchases).values({
             userId: userId ?? undefined,
@@ -265,6 +270,7 @@ export const adminRouter = router({
             stripePaymentIntentId,
             phone,
             customerName,
+            accessExpiresAt,
           });
 
           // Save phone to users table if available

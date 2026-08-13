@@ -110,6 +110,8 @@ export const purchases = mysqlTable("purchases", {
   phone: varchar("phone", { length: 32 }), // captured from Stripe checkout
   customerName: varchar("customerName", { length: 128 }), // captured from pre-checkout modal
   status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'refunded' | 'disputed'
+  /** Null means a grandfathered permanent purchase; new Individual Exam Passes expire after 12 months. */
+  accessExpiresAt: timestamp("accessExpiresAt"),
   refundedAt: timestamp("refundedAt"),
   welcomeEmailSentAt: timestamp("welcomeEmailSentAt"), // set when 24h onboarding email is sent; null = not yet sent
   createdAt: timestamp("createdAt").defaultNow().notNull(),

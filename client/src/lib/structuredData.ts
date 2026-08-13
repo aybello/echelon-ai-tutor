@@ -156,7 +156,7 @@ const faqs = [
   {
     question: "How is Echelon priced compared to other prep courses?",
     answer:
-      "Echelon offers annual subscriptions starting at CA$99/yr for Class 1 All-Access — less than most textbooks and far cheaper than in-person prep courses. Each tier unlocks all 4 tracks for that class level (water treatment, wastewater treatment, water distribution, and wastewater collection) for your province. The All-Access Pass at CA$349/yr unlocks every course on the platform.",
+      "Individuals can buy a 12-month Exam Pass for one selected certification course. Utilities and municipalities can choose targeted Course Passes for named operators or Teams All-Access, with the first 15 questions in every course available free.",
   },
   {
     question: "How does the subscription work?",

@@ -20,7 +20,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearch } from "wouter";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
-import { isTrialUnlocked, setTrialUnlocked, isSubscriptionUnlocked } from "@/components/QuizGate";
+import { setTrialUnlocked } from "@/components/QuizGate";
 import { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import type { DBQuestion } from "@/hooks/useQuestionBank";
@@ -189,9 +189,9 @@ export function useQuizSession({
   const [initialized, setInitialized] = useState(false);
 
   // ── Trial / gate state ─────────────────────────────────────────────────────
-  const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() =>
-    isTrialUnlocked() || isSubscriptionUnlocked(examType),
-  );
+  // Paid access must be confirmed by the server. Browser flags are not an
+  // entitlement source because they can outlive a refunded or expired pass.
+  const [trialUnlocked, setTrialUnlockedState] = useState(false);
   const [trialDone, setTrialDone] = useState(false);
 
   // ── Server-side access check — lifts gate for paid users on any device ─────
@@ -216,13 +216,16 @@ export function useQuizSession({
       refetchOnWindowFocus: false,
     },
   );
-  // Lift the gate when server confirms access (safe useEffect pattern)
+  // Mirror the authoritative server decision so an expired/refunded pass is
+  // relocked even when this browser still contains an older unlock flag.
   useEffect(() => {
-    if (accessData?.hasAccess === true && !trialUnlocked) {
-      setTrialUnlockedState(true);
-      setTrialUnlocked(); // persist to localStorage for instant next visit
+    if (accessData) {
+      setTrialUnlockedState(accessData.hasAccess === true);
+      if (accessData.hasAccess === true) {
+        setTrialUnlocked();
+      }
     }
-  }, [accessData?.hasAccess, trialUnlocked]);
+  }, [accessData]);
 
   // ── Quiz mode & settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>(initialMode);

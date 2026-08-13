@@ -266,21 +266,21 @@ export const STATIC_PAGE_META: PageMeta[] = [
     path: "/pricing",
     title: "Pricing — Echelon Institute | Water Operator Exam Prep Plans",
     description:
-      "View Echelon Institute's subscription plans. Monthly and annual plans for individual operators, plus team plans for utilities and municipalities across Canada.",
+      "View 12-month Individual Exam Passes and team plans for utilities and municipalities across Canada.",
     h1: "Simple, Transparent Pricing for Every Operator",
     jsonLd: buildPricingJsonLd(),
     bodyHtml: `
-      <h2>Individual Plans</h2>
-      <p>Echelon offers monthly and annual subscription plans for individual water and wastewater operators. The annual plan provides the best value with a significant discount compared to monthly billing. All plans include full access to every course — Ontario OIT, Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, Wastewater Collection, BC EOCP, Alberta AWWOA, Saskatchewan SLWA, and Manitoba WQAM.</p>
+      <h2>Individual Exam Passes</h2>
+      <p>Individuals choose one certification course and receive 12 months of access from purchase. Exam Passes are available for Ontario OIT, Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment and Wastewater Collection, as well as WPI/ABC courses used across Western Canada and the United States.</p>
 
       <h2>What Every Plan Includes</h2>
-      <p>Every subscription includes 500+ adaptive practice questions per course organized by module, 500+ digital flashcards, comprehensive study notes, timed mock exams, the AI tutor, WPI process guides, and score history tracking so you can see your progress over time.</p>
+      <p>Every paid pass includes adaptive practice questions organized by module, digital flashcards, study notes, timed mock exams, the AI Tutor, process guides, and score history tracking.</p>
 
       <h2>Team Plans for Utilities and Municipalities</h2>
       <p>Echelon offers bulk seat pricing for utilities, municipalities, training organizations, and Indigenous water authorities. Team plans include a shared admin dashboard, usage reporting, and volume discounts. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> to discuss your organization's needs.</p>
 
       <h2>Free Access</h2>
-      <p>The first 15 questions on every course are always free — no account required. OIT content is available at no cost to help entry-level operators get started. Visit <a href="${SITE_URL}/">the homepage</a> to begin practising immediately.</p>
+      <p>The first 15 questions on every course are free — no account or credit card required. Visit <a href="${SITE_URL}/">the homepage</a> to begin practising immediately.</p>
 
       <h2>Refund Policy</h2>
       <p>Echelon offers a satisfaction guarantee. Read the full <a href="${SITE_URL}/refund">refund policy</a> for details on eligibility and the process for requesting a refund.</p>
@@ -512,7 +512,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
     path: "/refund",
     title: "Refund Policy | Echelon Institute",
     description:
-      "Read Echelon Institute's refund policy. Understand the conditions under which refunds are issued for monthly and annual subscriptions.",
+      "Read Echelon Institute's refund policy for Individual Exam Passes and Teams plans.",
     h1: "Refund Policy",
     jsonLd: buildWebPageJsonLd({
       path: "/refund",
@@ -566,7 +566,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon's AI tutor explains every answer in detail, identifies your weak modules, and adapts the session to focus where you need it most. Practice with 500+ questions per level, take full-length 100-question timed mock exams, and review key concepts with organized flashcards.</p>
 
       <h2>Pricing for US Operators</h2>
-      <p>Echelon offers monthly and annual subscription plans. The annual plan provides the best value. <a href="${SITE_URL}/pricing">View current pricing</a>. Free practice questions are included — no account required to begin.</p>
+      <p>Individuals can purchase a 12-month Exam Pass for one selected course. Utilities can choose targeted Course Passes or Teams All-Access. <a href="${SITE_URL}/pricing">View current pricing</a>. The first 15 questions in every course are free.</p>
 
       <h2>Start Preparing Today</h2>
       <p>Select your stream and class level to begin: <a href="${SITE_URL}/us/courses">browse all 16 courses</a> or <a href="${SITE_URL}/us/states">find your state</a> for state-specific certification information.</p>

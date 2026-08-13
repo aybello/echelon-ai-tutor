@@ -2742,7 +2742,7 @@ export default function Landing() {
             {[
               {
                 q: "How does the subscription work?",
-                a: "Echelon uses an annual subscription model. You subscribe to a class tier (Class 1 through Class 4, or All-Access) for your province, and you get full access to all courses in that tier for 12 months. Your subscription renews automatically each year — you can cancel anytime before the renewal date. Prefer to buy just one course? Individual practice passes are also available on the pricing page.",
+                a: "Individuals buy a 12-month Exam Pass for one selected certification course. Utilities and municipalities can choose targeted Course Passes for named operators or Teams All-Access. Existing individual subscriptions remain active under their original terms, but are no longer offered to new customers.",
               },
               {
                 q: "Do the practice questions match the real exam?",
