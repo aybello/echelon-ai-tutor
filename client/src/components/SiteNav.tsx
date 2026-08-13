@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs } from "@/lib/courseNavigation";
+import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -92,6 +92,7 @@ export default function SiteNav({
   authenticatedOverride,
 }: SiteNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const { isAuthenticated } = useAuth({ lazy: true });
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const progressCourseKey = currentPath.split("?")[0] === "/dashboard" && typeof window !== "undefined"
@@ -101,9 +102,13 @@ export default function SiteNav({
   const learningMode = variant === "learning" || (variant === "auto" && !!course);
   const isSignedIn = authenticatedOverride ?? (isAuthenticated || !!dashboardMe.data?.email);
   const workspaceTabs = course ? getCourseWorkspaceTabs(course) : [];
+  const { primaryTabs: mobilePrimaryTabs, secondaryTabs: mobileSecondaryTabs } = getMobileWorkspaceTabs(workspaceTabs);
   const activeTab = course ? getActiveWorkspaceTab(currentPath, course) : null;
 
-  useEffect(() => setMenuOpen(false), [currentPath]);
+  useEffect(() => {
+    setMenuOpen(false);
+    setMobileToolsOpen(false);
+  }, [currentPath]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -152,7 +157,7 @@ export default function SiteNav({
             <span>{course.shortName}</span>
             <small>{course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
           </div>
-          <nav className="echelon-course-tabs" aria-label={`${course.displayName} study tools`}>
+          <nav className="echelon-course-tabs echelon-course-tabs-desktop" aria-label={`${course.displayName} study tools`}>
             {workspaceTabs.map((tab) => {
               const Icon = tabIcons[tab.kind];
               return (
@@ -162,6 +167,44 @@ export default function SiteNav({
                 </a>
               );
             })}
+          </nav>
+          <nav className="echelon-course-tabs-mobile" aria-label={`${course.displayName} mobile study tools`}>
+            {mobilePrimaryTabs.map((tab) => {
+              const Icon = tabIcons[tab.kind];
+              return (
+                <a key={tab.kind} href={tab.href} className={`echelon-mobile-course-tab${activeTab === tab.kind ? " is-active" : ""}`} aria-current={activeTab === tab.kind ? "page" : undefined}>
+                  <Icon size={13} aria-hidden="true" />
+                  <span>{tab.label}</span>
+                </a>
+              );
+            })}
+            {mobileSecondaryTabs.length > 0 && (
+              <div className="echelon-mobile-tools">
+                <button
+                  type="button"
+                  className={`echelon-mobile-course-tab echelon-mobile-tools-trigger${mobileSecondaryTabs.some((tab) => tab.kind === activeTab) ? " is-active" : ""}`}
+                  onClick={() => setMobileToolsOpen((open) => !open)}
+                  aria-expanded={mobileToolsOpen}
+                  aria-label="More study tools"
+                >
+                  <span>More</span>
+                  <ChevronDown size={13} aria-hidden="true" />
+                </button>
+                {mobileToolsOpen && (
+                  <div className="echelon-mobile-tools-menu">
+                    {mobileSecondaryTabs.map((tab) => {
+                      const Icon = tabIcons[tab.kind];
+                      return (
+                        <a key={tab.kind} href={tab.href} className={`echelon-mobile-tool-link${activeTab === tab.kind ? " is-active" : ""}`} aria-current={activeTab === tab.kind ? "page" : undefined}>
+                          <Icon size={15} aria-hidden="true" />
+                          <span>{tab.label}</span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
           </nav>
         </div>
       )}

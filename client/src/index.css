@@ -256,6 +256,7 @@
 .echelon-course-identity small { color: #93c5fd; font-size: 9px; font-weight: 650; white-space: nowrap; }
 .echelon-course-tabs { display: flex; align-items: stretch; gap: 2px; padding: 5px 10px; overflow-x: auto; scrollbar-width: none; }
 .echelon-course-tabs::-webkit-scrollbar { display: none; }
+.echelon-course-tabs-mobile { display: none; }
 .echelon-course-tab {
   min-height: 38px;
   padding: 0 12px;
@@ -318,9 +319,56 @@
   .echelon-course-bar { min-height: 50px; display: block; }
   .echelon-course-identity { min-width: 0; height: 30px; padding: 0 14px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.09); }
   .echelon-course-identity small { margin-left: auto; }
-  .echelon-course-tabs { padding: 4px 8px; }
-  .echelon-course-tab { min-height: 34px; padding: 0 10px; font-size: 10px; }
-  .echelon-course-tab svg { width: 13px; height: 13px; }
+  .echelon-course-tabs-desktop { display: none; }
+  .echelon-course-tabs-mobile { display: flex; align-items: stretch; gap: 4px; padding: 4px 8px; }
+  .echelon-mobile-course-tab {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 8px;
+    color: #b8c5d7;
+    background: transparent;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .echelon-mobile-course-tab:not(.echelon-mobile-tools-trigger) { flex: 1 1 0; min-width: 0; }
+  .echelon-mobile-course-tab.is-active { color: #fff; background: var(--echelon-blue-bright); box-shadow: 0 3px 12px rgba(37, 99, 235, 0.32); }
+  .echelon-mobile-tools { position: relative; flex: 0 0 auto; }
+  .echelon-mobile-tools-trigger { cursor: pointer; }
+  .echelon-mobile-tools-menu {
+    position: absolute;
+    z-index: 215;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 176px;
+    display: grid;
+    gap: 3px;
+    padding: 6px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.24);
+  }
+  .echelon-mobile-tool-link {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: var(--echelon-copy);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .echelon-mobile-tool-link.is-active, .echelon-mobile-tool-link:hover { color: var(--echelon-blue); background: #eff6ff; }
 }
 
 @layer components {

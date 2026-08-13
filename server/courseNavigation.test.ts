@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getCourseForPath, getCourseWorkspaceTabs } from "../client/src/lib/courseNavigation";
+import { getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "../client/src/lib/courseNavigation";
 import { getAllCourses } from "../shared/courseRegistry";
 import { readFileSync } from "node:fs";
 
@@ -15,6 +15,10 @@ describe("course workspace navigation", () => {
       "practice", "mock", "flashcards", "notes", "formulas", "tutor", "progress",
     ]);
     expect(tabs.find((tab) => tab.kind === "progress")?.href).toBe("/dashboard?course=class2-water");
+
+    const mobileTabs = getMobileWorkspaceTabs(tabs);
+    expect(mobileTabs.primaryTabs.map((tab) => tab.kind)).toEqual(["practice", "mock", "flashcards"]);
+    expect(mobileTabs.secondaryTabs.map((tab) => tab.kind)).toEqual(["notes", "formulas", "tutor", "progress"]);
   });
 
   it("resolves WPI distribution routes without colliding with water treatment", () => {
@@ -42,5 +46,11 @@ describe("course workspace navigation", () => {
         expect(routedPaths.has(path), `${course.courseKey} → ${tab.label} (${path})`).toBe(true);
       }
     }
+  });
+
+  it("uses the compact mobile course-tools menu in the shared navigation", () => {
+    const navSource = readFileSync(new URL("../client/src/components/SiteNav.tsx", import.meta.url), "utf8");
+    expect(navSource).toContain("getMobileWorkspaceTabs");
+    expect(navSource).toContain("More study tools");
   });
 });

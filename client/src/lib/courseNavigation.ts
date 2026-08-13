@@ -6,6 +6,8 @@ export type CourseWorkspaceTab = {
   kind: "practice" | "mock" | "flashcards" | "notes" | "formulas" | "tutor" | "progress";
 };
 
+const MOBILE_PRIMARY_TOOL_KINDS: CourseWorkspaceTab["kind"][] = ["practice", "mock", "flashcards"];
+
 function cleanPath(path: string): string {
   return path.split("?")[0].split("#")[0].replace(/\/$/, "") || "/";
 }
@@ -45,6 +47,14 @@ export function getCourseWorkspaceTabs(course: CourseEntry): CourseWorkspaceTab[
   );
 
   return tabs;
+}
+
+/** Keep the highest-frequency study actions visible on narrow screens. */
+export function getMobileWorkspaceTabs(tabs: CourseWorkspaceTab[]) {
+  return {
+    primaryTabs: tabs.filter((tab) => MOBILE_PRIMARY_TOOL_KINDS.includes(tab.kind)),
+    secondaryTabs: tabs.filter((tab) => !MOBILE_PRIMARY_TOOL_KINDS.includes(tab.kind)),
+  };
 }
 
 export function getActiveWorkspaceTab(path: string, course: CourseEntry): CourseWorkspaceTab["kind"] | null {
