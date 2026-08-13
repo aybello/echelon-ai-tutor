@@ -6,7 +6,6 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
 import { QuestionBankPrefetcher } from "./components/QuestionBankPrefetcher";
-import MobileBottomNav from "./components/MobileBottomNav";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
 
@@ -453,7 +452,6 @@ function App() {
           </div>
           <PhoneGate />
           <QuestionBankPrefetcher />
-          <MobileBottomNav />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

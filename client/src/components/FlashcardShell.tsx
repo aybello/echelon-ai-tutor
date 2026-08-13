@@ -7,6 +7,7 @@ import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
+import SiteNav from "@/components/SiteNav";
 
 const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
 
@@ -234,8 +235,10 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const deckKnownCount = deck.filter(c => known.has(c.id)).length;
     const unknownCount = deck.length - deckKnownCount;
     return (
-      <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
-        <div style={{ background: "#fff", borderRadius: "20px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+      <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
+        <SiteNav currentPath={window.location.pathname} />
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 24px" }}>
+        <div style={{ background: "#fff", borderRadius: "18px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", border: "1px solid var(--echelon-line)", boxShadow: "var(--echelon-shadow-md)" }}>
           <div style={{ fontSize: "56px", marginBottom: "16px" }}>🎉</div>
           <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#0f172a", marginBottom: "8px" }}>Session Complete!</h2>
           <p style={{ color: "#64748b", fontSize: "16px", marginBottom: "32px" }}>You reviewed all {deck.length} cards</p>
@@ -270,25 +273,27 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             </Link>
           </div>
         </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
+      <SiteNav currentPath={window.location.pathname} />
       <style>{`
         .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto; }
         .fc-inner { position: relative; width: 100%; min-height: 320px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
         .fc-inner.flipped { transform: rotateY(180deg); }
         .fc-face { position: absolute; top: 0; left: 0; right: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; }
-        .fc-front { background: #ffffff; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .fc-back { background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%); transform: rotateY(180deg); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .fc-front { background: #ffffff; border: 1px solid var(--echelon-line); box-shadow: var(--echelon-shadow-md); }
+        .fc-back { background: linear-gradient(135deg, var(--echelon-navy) 0%, #1d4ed8 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
         .fc-mod-tab { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
         .fc-mod-tab.active { border-color: #3b82f6; }
         .fc-act-btn { border: none; border-radius: 12px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; flex: 1; }
         .fc-act-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .fc-nav-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
-        .fc-nav-btn:hover { background: rgba(255,255,255,0.2); }
+        .fc-nav-btn { background: #fff; border: 1px solid var(--echelon-line); color: var(--echelon-ink); border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 650; cursor: pointer; transition: all 0.15s; }
+        .fc-nav-btn:hover { border-color: #93c5fd; background: #eff6ff; color: var(--echelon-blue); }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
           .fc-face { padding: 24px 20px; min-height: 240px; }
@@ -305,15 +310,15 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       `}</style>
 
       {/* Header */}
-      <div className="fc-header" style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
+      <div className="fc-header" style={{ background: "#fff", borderBottom: "1px solid var(--echelon-line)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Link href={backPath}>
-            <button style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
+            <button style={{ background: "#F8FAFC", border: "1px solid var(--echelon-line)", color: "#475569", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
               Back
             </button>
           </Link>
           <div>
-            <div className="fc-header-title" style={{ color: "#fff", fontWeight: 700, fontSize: "16px" }}>Flashcards: {examName}</div>
+            <div className="fc-header-title" style={{ color: "var(--echelon-ink)", fontWeight: 750, fontSize: "16px" }}>Flashcards: {examName}</div>
             <div className="fc-header-sub" style={{ color: "#94a3b8", fontSize: "12px" }}>{deck.length} cards{reviewing ? " (missed only)" : ""}</div>
           </div>
         </div>
@@ -322,7 +327,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownCount}</span> known
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
-          <button onClick={handleShuffle} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
+          <button onClick={handleShuffle} style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1D4ED8", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
             Shuffle
           </button>
         </div>
@@ -333,7 +338,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <div className="fc-module-row" style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
           <span
             className={"fc-mod-tab" + (selectedModule === null ? " active" : "")}
-            style={{ background: selectedModule === null ? "#1e40af" : "rgba(255,255,255,0.1)", color: "#fff" }}
+            style={{ background: selectedModule === null ? "#1D4ED8" : "#fff", color: selectedModule === null ? "#fff" : "#475569", borderColor: selectedModule === null ? "#1D4ED8" : "var(--echelon-line)" }}
             onClick={() => handleModuleChange(null)}
           >
             All Modules
@@ -342,7 +347,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span
               key={mod}
               className={"fc-mod-tab" + (selectedModule === mod ? " active" : "")}
-              style={{ background: selectedModule === mod ? "#1e40af" : "rgba(255,255,255,0.1)", color: "#fff" }}
+              style={{ background: selectedModule === mod ? "#1D4ED8" : "#fff", color: selectedModule === mod ? "#fff" : "#475569", borderColor: selectedModule === mod ? "#1D4ED8" : "var(--echelon-line)" }}
               onClick={() => handleModuleChange(mod)}
             >
               {mod}
@@ -353,7 +358,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
       {/* Progress bar */}
       <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>
-        <div style={{ background: "rgba(255,255,255,0.1)", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
+        <div style={{ background: "#DBE4EF", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
           <div style={{ background: "linear-gradient(90deg, #3b82f6, #06b6d4)", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
@@ -480,7 +485,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             Prev
           </button>
           <button
-            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#94a3b8", borderRadius: "10px", padding: "10px 20px", fontSize: "13px", cursor: "pointer" }}
+            style={{ background: "#fff", border: "1px solid var(--echelon-line)", color: "#64748B", borderRadius: "10px", padding: "10px 20px", fontSize: "13px", cursor: "pointer" }}
             onClick={handleFlip}
           >
             {flipped ? "Show Question" : "Show Answer"}

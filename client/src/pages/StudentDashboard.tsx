@@ -20,6 +20,7 @@ import {
   Filler,
 } from "chart.js";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { resolveCourseKey } from "@shared/courseRegistry";
 
 ChartJS.register(
   CategoryScale,
@@ -76,7 +77,10 @@ export default function StudentDashboard() {
   const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation();
   const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
   const utils = trpc.useUtils();
-  const [selectedCourseKey, setSelectedCourseKey] = useState<string | undefined>(undefined);
+  const [selectedCourseKey] = useState<string | undefined>(() => {
+    const requested = new URLSearchParams(window.location.search).get("course");
+    return requested ? resolveCourseKey(requested)?.courseKey : undefined;
+  });
 
   const [otpEmail, setOtpEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
@@ -379,21 +383,23 @@ export default function StudentDashboard() {
                     <circle cx="32" cy="32" r="26" fill="none" stroke="#E2E8F0" strokeWidth="7" />
                     <circle
                       cx="32" cy="32" r="26" fill="none"
-                      stroke={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : readinessScore.data.score >= 40 ? "#F59E0B" : "#EF4444"}
+                      stroke={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : "#EF4444"}
                       strokeWidth="7"
                       strokeDasharray={`${(readinessScore.data.score / 100) * 163.4} 163.4`}
                       strokeLinecap="round"
                       transform="rotate(-90 32 32)"
                     />
                     <text x="32" y="37" textAnchor="middle" fontSize="15" fontWeight="900" fontFamily="Sora,sans-serif"
-                      fill={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : readinessScore.data.score >= 40 ? "#F59E0B" : "#EF4444"}>
+                      fill={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : "#EF4444"}>
                       {readinessScore.data.score}%
                     </text>
                   </svg>
                   <div>
-                    <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>{readinessScore.data.label}</div>
+                    <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>
+                      {readinessScore.data.score >= 80 ? "Exam Ready" : readinessScore.data.score >= 60 ? "Progressing" : "Needs Focus"}
+                    </div>
                     <div style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, lineHeight: 1.4 }}>{readinessScore.data.nextAction}</div>
-                    <div style={{ color: "#CBD5E1", fontSize: 10, marginTop: 4, lineHeight: 1.4 }}>Echelon study readiness based on recent accuracy, coverage, consistency, and mock performance.</div>
+                    <div title="A study benchmark, not an official exam score or a guarantee of passing." style={{ color: "#94A3B8", fontSize: 10, marginTop: 4, lineHeight: 1.4, cursor: "help" }}>Study benchmark · not an official score or guarantee.</div>
                   </div>
                 </div>
               </>

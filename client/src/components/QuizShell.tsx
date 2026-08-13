@@ -207,6 +207,22 @@ export default function QuizShell({
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+
+  // Course-workspace deep links open the requested learning surface directly.
+  useEffect(() => {
+    const panel = new URLSearchParams(window.location.search).get("panel");
+    if (panel === "notes") {
+      if (moduleOverviews && Object.keys(moduleOverviews).length > 0) {
+        setStudyNotesModule(selectedModule);
+        setStudyNotesOpen(true);
+      } else {
+        toast.info("Study notes are being prepared for this course.");
+      }
+    }
+    if (panel === "tutor") onTutorOpen();
+  // Run only when arriving on a course route; callbacks vary between quiz pages.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPath]);
   const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
     onSuccess: (data) => {
       setBookmarked(data.bookmarked);
@@ -537,25 +553,6 @@ export default function QuizShell({
                   </button>
                 </Link>
               ))}
-              {/* Dashboard shortcut — always visible so students can easily check progress */}
-              <Link href="/dashboard">
-                <button style={{
-                  padding: "5px 10px",
-                  background: "rgba(255,255,255,0.15)",
-                  color: "#fff",
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  borderRadius: 8,
-                  fontSize: 11,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 4,
-                }}>
-                  📊 Dashboard
-                </button>
-              </Link>
             </div>
           </div>
 
