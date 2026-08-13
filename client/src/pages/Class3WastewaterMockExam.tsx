@@ -47,7 +47,7 @@ export default function Class3WastewaterMockExam() {
       productKey="class3-ww"
       productName="Class 3 Wastewater Treatment Practice Pass"
       price={249}
-      backPath="/ontario"
+      backPath="/class3-ww"
       practicePath="/class3-ww"
       practiceLabel="Class 3 Wastewater Practice"
       showProvinceSelector={true}

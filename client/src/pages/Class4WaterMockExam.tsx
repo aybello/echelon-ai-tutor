@@ -48,7 +48,7 @@ export default function Class4WaterMockExam() {
       productKey="class4-water"
       productName="Class 4 Water Treatment Practice Pass"
       price={299}
-      backPath="/ontario"
+      backPath="/class4-water"
       practicePath="/class4-water"
       practiceLabel="Class 4 Water Practice"
       showProvinceSelector={true}

@@ -50,7 +50,7 @@ export default function Class3WaterMockExam() {
       price={249}
       formulaPath="/formulas-water3"
       formulaLabel="Class 3 Water Formulas"
-      backPath="/ontario"
+      backPath="/class3-water"
       practicePath="/class3-water"
       practiceLabel="Class 3 Water Practice"
       accentColor="#0369A1"

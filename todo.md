@@ -1331,3 +1331,8 @@
 - [x] Validate question records, answer indices, module coverage, and duplicate risk before import
 - [x] Create an idempotent import path and add only approved question records to production
 - [x] Verify expanded bank counts, tests, deployment, GitHub sync, and AI Context Hub entry
+
+## Class 2 Water Mock-Exam Gate Navigation
+- [x] Trace and fix the purchase-gate close/back action that sends Class 2 Water mock-exam users to a 404
+- [x] Add regression coverage for valid course-page return navigation
+- [ ] Verify the repaired flow, deploy, and synchronize GitHub

@@ -47,7 +47,7 @@ export default function Class1WastewaterMockExam() {
       productKey="class1-ww"
       productName="Class 1 Wastewater Practice Pass"
       price={99}
-      backPath="/ontario"
+      backPath="/class1-ww"
       practicePath="/class1-ww"
       practiceLabel="Class 1 Wastewater Practice"
       showProvinceSelector={true}
