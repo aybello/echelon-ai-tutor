@@ -1346,4 +1346,4 @@
 - [x] Merge the registry-driven course workspace and unified navigation branch
 - [x] Run full regression and dynamic navigation tests after integration
 - [x] Verify the redesigned desktop and mobile course-workspace flows visually
-- [ ] Deploy the approved unified design and synchronize GitHub
+- [x] Deploy the approved unified design and synchronize GitHub
