@@ -1147,6 +1147,7 @@ function TeamSeatCalculator() {
 
 export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
+  const funnelAnalytics = trpc.funnelAnalytics.track.useMutation();
   usePageMeta({
     title: "Pricing — Echelon Institute",
     description: isUS
@@ -1188,6 +1189,12 @@ export default function Pricing() {
     if (tabParam === "western") {
       setSelectedProvince("BC");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    funnelAnalytics.mutate({ event: "pricing_viewed" });
+  // A single page-view event is intentional; mutation identity is not a dependency.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -1303,7 +1310,10 @@ export default function Pricing() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
             <button
               type="button"
-              onClick={() => setBuyerType("individual")}
+              onClick={() => {
+                setBuyerType("individual");
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual" });
+              }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "individual" ? "linear-gradient(135deg, #EFF6FF, #ECFEFF)" : "#fff", border: buyerType === "individual" ? "2px solid #2563EB" : "1.5px solid #E2E8F0", boxShadow: buyerType === "individual" ? "0 10px 24px rgba(37,99,235,0.12)" : "none" }}
             >
               <div style={{ fontSize: 25, marginBottom: 10 }}>👤</div>
@@ -1313,7 +1323,10 @@ export default function Pricing() {
             </button>
             <button
               type="button"
-              onClick={() => setBuyerType("team")}
+              onClick={() => {
+                setBuyerType("team");
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team" });
+              }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "team" ? "linear-gradient(135deg, #F0FDFA, #ECFEFF)" : "#fff", border: buyerType === "team" ? "2px solid #0D9488" : "1.5px solid #E2E8F0", boxShadow: buyerType === "team" ? "0 10px 24px rgba(13,148,136,0.12)" : "none" }}
             >
               <div style={{ fontSize: 25, marginBottom: 10 }}>🏢</div>
@@ -1534,7 +1547,10 @@ export default function Pricing() {
                 <select
                   id="individual-course-picker"
                   value={selectedIndividualKey}
-                  onChange={e => setSelectedIndividualKey(e.target.value)}
+                  onChange={e => {
+                    setSelectedIndividualKey(e.target.value);
+                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value });
+                  }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
                 >
                   <option value="">Choose your Course Pass…</option>

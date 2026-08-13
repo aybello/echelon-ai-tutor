@@ -39,5 +39,9 @@ describe("orgRouter — Phase 8 orgId scoping", () => {
       "inArray(examResults.studentEmail, allEmails)"
     );
   });
-});
 
+  it("scopes activation and diagnostic outcomes by server-resolved orgId", () => {
+    expect(orgRouterSource).toContain("eq(learnerOnboarding.orgId, orgId)");
+    expect(orgRouterSource).toContain("eq(diagnosticSessions.orgId, orgId)");
+  });
+});

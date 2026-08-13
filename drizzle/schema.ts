@@ -255,6 +255,62 @@ export const studentProfiles = mysqlTable("student_profiles", {
 export type StudentProfile = typeof studentProfiles.$inferSelect;
 export type InsertStudentProfile = typeof studentProfiles.$inferInsert;
 
+/**
+ * One onboarding record per learner and course. This is deliberately separate
+ * from entitlements: completing or skipping onboarding can never grant or
+ * revoke paid access.
+ */
+export const learnerOnboarding = mysqlTable("learner_onboarding", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  studentEmail: varchar("studentEmail", { length: 320 }),
+  orgId: int("orgId"),
+  organizationMemberId: int("organizationMemberId"),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  examDate: timestamp("examDate"),
+  studyDaysPerWeek: int("studyDaysPerWeek").notNull().default(3),
+  sessionMinutes: int("sessionMinutes").notNull().default(25),
+  confidence: varchar("confidence", { length: 24 }).notNull().default("somewhat"),
+  status: varchar("status", { length: 24 }).notNull().default("profile_started"),
+  diagnosticStartedAt: timestamp("diagnosticStartedAt"),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => [
+  uniqueIndex("learner_onboarding_user_course_idx").on(table.userId, table.courseKey),
+  uniqueIndex("learner_onboarding_email_course_idx").on(table.studentEmail, table.courseKey),
+  index("learner_onboarding_org_status_idx").on(table.orgId, table.status),
+  index("learner_onboarding_member_idx").on(table.organizationMemberId),
+]);
+export type LearnerOnboarding = typeof learnerOnboarding.$inferSelect;
+export type InsertLearnerOnboarding = typeof learnerOnboarding.$inferInsert;
+
+/** Server-scored starting baselines. Scores stay out of client-side analytics. */
+export const diagnosticSessions = mysqlTable("diagnostic_sessions", {
+  id: int("id").autoincrement().primaryKey(),
+  sessionId: varchar("sessionId", { length: 36 }).notNull().unique(),
+  userId: int("userId"),
+  studentEmail: varchar("studentEmail", { length: 320 }),
+  orgId: int("orgId"),
+  organizationMemberId: int("organizationMemberId"),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  correct: int("correct").notNull(),
+  total: int("total").notNull(),
+  score: int("score").notNull(),
+  label: varchar("label", { length: 64 }).notNull(),
+  weakTopics: text("weakTopics").notNull(),
+  strongTopics: text("strongTopics").notNull(),
+  topicBreakdown: text("topicBreakdown").notNull(),
+  completedAt: timestamp("completedAt").defaultNow().notNull(),
+}, (table) => [
+  index("diagnostic_identity_time_idx").on(table.studentEmail, table.courseKey, table.completedAt),
+  index("diagnostic_user_time_idx").on(table.userId, table.courseKey, table.completedAt),
+  index("diagnostic_org_time_idx").on(table.orgId, table.completedAt),
+  index("diagnostic_member_idx").on(table.organizationMemberId),
+]);
+export type DiagnosticSession = typeof diagnosticSessions.$inferSelect;
+export type InsertDiagnosticSession = typeof diagnosticSessions.$inferInsert;
+
 /** QOTD completions — tracks which users completed each day's Question of the Day */
 export const qotdCompletions = mysqlTable("qotd_completions", {
   id: int("id").autoincrement().primaryKey(),

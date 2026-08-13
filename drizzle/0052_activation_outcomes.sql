@@ -1,0 +1,47 @@
+-- Activation and outcomes MVP. Additive only: entitlement tables are unchanged.
+CREATE TABLE IF NOT EXISTS `learner_onboarding` (
+  `id` int AUTO_INCREMENT NOT NULL,
+  `userId` int NULL,
+  `studentEmail` varchar(320) NULL,
+  `orgId` int NULL,
+  `organizationMemberId` int NULL,
+  `courseKey` varchar(64) NOT NULL,
+  `examDate` timestamp NULL,
+  `studyDaysPerWeek` int NOT NULL DEFAULT 3,
+  `sessionMinutes` int NOT NULL DEFAULT 25,
+  `confidence` varchar(24) NOT NULL DEFAULT 'somewhat',
+  `status` varchar(24) NOT NULL DEFAULT 'profile_started',
+  `diagnosticStartedAt` timestamp NULL,
+  `completedAt` timestamp NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `learner_onboarding_pk` PRIMARY KEY (`id`),
+  UNIQUE INDEX `learner_onboarding_user_course_idx` (`userId`, `courseKey`),
+  UNIQUE INDEX `learner_onboarding_email_course_idx` (`studentEmail`, `courseKey`),
+  INDEX `learner_onboarding_org_status_idx` (`orgId`, `status`),
+  INDEX `learner_onboarding_member_idx` (`organizationMemberId`)
+);
+
+CREATE TABLE IF NOT EXISTS `diagnostic_sessions` (
+  `id` int AUTO_INCREMENT NOT NULL,
+  `sessionId` varchar(36) NOT NULL,
+  `userId` int NULL,
+  `studentEmail` varchar(320) NULL,
+  `orgId` int NULL,
+  `organizationMemberId` int NULL,
+  `courseKey` varchar(64) NOT NULL,
+  `correct` int NOT NULL,
+  `total` int NOT NULL,
+  `score` int NOT NULL,
+  `label` varchar(64) NOT NULL,
+  `weakTopics` text NOT NULL,
+  `strongTopics` text NOT NULL,
+  `topicBreakdown` text NOT NULL,
+  `completedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT `diagnostic_sessions_pk` PRIMARY KEY (`id`),
+  UNIQUE INDEX `diagnostic_sessions_session_idx` (`sessionId`),
+  INDEX `diagnostic_identity_time_idx` (`studentEmail`, `courseKey`, `completedAt`),
+  INDEX `diagnostic_user_time_idx` (`userId`, `courseKey`, `completedAt`),
+  INDEX `diagnostic_org_time_idx` (`orgId`, `completedAt`),
+  INDEX `diagnostic_member_idx` (`organizationMemberId`)
+);

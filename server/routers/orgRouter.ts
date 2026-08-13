@@ -31,6 +31,8 @@ import {
   users,
   examOutcomes,
   examResults,
+  learnerOnboarding,
+  diagnosticSessions,
 } from "../../drizzle/schema";
 import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
@@ -38,6 +40,7 @@ import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../emai
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 import { allowedCourseKeysForOrg, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
+import { trackEvent } from "../analytics";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -1188,12 +1191,21 @@ export const orgIntelRouter = router({
       .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
     const totalAssigned = activeMembers.length;
     if (totalAssigned === 0) {
-      return { orgName: org.name, seatsTotal: org.seatsTotal, seatsAssigned: 0, activeThisWeek: 0, inactiveCount: 0, examReadyCount: 0, atRiskCount: 0, avgReadiness: 0, topWeakTopics: [] };
+      return {
+        orgName: org.name, seatsTotal: org.seatsTotal, seatsAssigned: 0,
+        activeThisWeek: 0, activeThirtyDays: 0, inactiveCount: 0,
+        examReadyCount: 0, atRiskCount: 0, avgReadiness: 0, topWeakTopics: [],
+        learningActivated: 0, activationRate: 0, diagnosticCompleted: 0,
+        diagnosticCompletionRate: 0, mockParticipants: 0, mockParticipationRate: 0,
+        totalQuestions: 0, avgDiagnosticBaseline: null, avgPracticeAccuracy: null,
+        accuracyChange: null,
+      };
     }
     const memberEmails = activeMembers.map(m => m.email);
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, activeRows, topicRows, mockRows] = await Promise.all([
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const [accuracyRows, activeRows, topicRows, mockRows, onboardingRows, diagnosticRows, activeThirtyRows, practiceRows] = await Promise.all([
       db.select({
           memberId: questionAttempts.organizationMemberId,
         total: sql<number>`COUNT(*)`,
@@ -1214,6 +1226,30 @@ export const orgIntelRouter = router({
         count: sql<number>`COUNT(*)`,
       }).from(examResults).where(eq(examResults.orgId, orgId))
         .groupBy(examResults.organizationMemberId),
+      db.select({ memberId: learnerOnboarding.organizationMemberId })
+        .from(learnerOnboarding)
+        .where(eq(learnerOnboarding.orgId, orgId))
+        .groupBy(learnerOnboarding.organizationMemberId),
+      db.select({
+        memberId: diagnosticSessions.organizationMemberId,
+        score: sql<number>`MAX(${diagnosticSessions.score})`,
+      }).from(diagnosticSessions)
+        .where(eq(diagnosticSessions.orgId, orgId))
+        .groupBy(diagnosticSessions.organizationMemberId),
+      db.select({ memberId: questionAttempts.organizationMemberId })
+        .from(questionAttempts)
+        .where(and(eq(questionAttempts.orgId, orgId), gte(questionAttempts.createdAt, thirtyDaysAgo)))
+        .groupBy(questionAttempts.organizationMemberId),
+      db.select({
+        memberId: questionAttempts.organizationMemberId,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      }).from(questionAttempts)
+        .where(and(
+          eq(questionAttempts.orgId, orgId),
+          sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
+        ))
+        .groupBy(questionAttempts.organizationMemberId),
     ]);
     // PATCH 4: Also fetch exam dates to align at-risk count with exam-date risk
     const examDateRows = memberEmails.length > 0
@@ -1233,6 +1269,12 @@ export const orgIntelRouter = router({
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct), lastActive: r.lastActive }]),
     );
     const activeMemberIds = new Set(activeRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
+    const activeThirtyDayMemberIds = new Set(activeThirtyRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
+    const activatedMemberIds = new Set([
+      ...onboardingRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)),
+      ...accuracyRows.filter(r => r.memberId !== null && Number(r.total) > 0).map(r => Number(r.memberId)),
+    ]);
+    const diagnosticMemberIds = new Set(diagnosticRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
     const mockCountByMemberId = new Map(
       mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.count)]),
     );
@@ -1264,7 +1306,50 @@ export const orgIntelRouter = router({
     const topWeakTopics = topicRows
       .map(r => ({ topic: r.topic, accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0 }))
       .sort((a, b) => a.accuracy - b.accuracy).slice(0, 3).map(t => t.topic);
-    return { orgName: org.name, seatsTotal: org.seatsTotal, seatsAssigned: totalAssigned, activeThisWeek: activeMemberIds.size, inactiveCount, examReadyCount, atRiskCount, avgReadiness, topWeakTopics };
+    const diagnosticScores = diagnosticRows.map(row => Number(row.score)).filter(Number.isFinite);
+    const avgDiagnosticBaseline = diagnosticScores.length > 0
+      ? Math.round(diagnosticScores.reduce((sum, score) => sum + score, 0) / diagnosticScores.length)
+      : null;
+    const practiceAccuracyByMemberId = new Map(
+      practiceRows
+        .filter(row => row.memberId !== null && Number(row.total) > 0)
+        .map(row => [Number(row.memberId), Math.round((Number(row.correct) / Number(row.total)) * 100)]),
+    );
+    const practiceAccuracies = Array.from(practiceAccuracyByMemberId.values());
+    const avgPracticeAccuracy = practiceAccuracies.length > 0
+      ? Math.round(practiceAccuracies.reduce((sum, accuracy) => sum + accuracy, 0) / practiceAccuracies.length)
+      : null;
+    const diagnosticByMemberId = new Map(
+      diagnosticRows.filter(row => row.memberId !== null).map(row => [Number(row.memberId), Number(row.score)]),
+    );
+    const individualAccuracyChanges = Array.from(practiceAccuracyByMemberId.entries())
+      .filter(([memberId]) => diagnosticByMemberId.has(memberId))
+      .map(([memberId, practiceAccuracy]) => practiceAccuracy - diagnosticByMemberId.get(memberId)!);
+    const mockParticipants = Array.from(mockCountByMemberId.values()).filter(count => count > 0).length;
+    return {
+      orgName: org.name,
+      seatsTotal: org.seatsTotal,
+      seatsAssigned: totalAssigned,
+      activeThisWeek: activeMemberIds.size,
+      activeThirtyDays: activeThirtyDayMemberIds.size,
+      inactiveCount,
+      examReadyCount,
+      atRiskCount,
+      avgReadiness,
+      topWeakTopics,
+      learningActivated: activatedMemberIds.size,
+      activationRate: Math.round((activatedMemberIds.size / totalAssigned) * 100),
+      diagnosticCompleted: diagnosticMemberIds.size,
+      diagnosticCompletionRate: Math.round((diagnosticMemberIds.size / totalAssigned) * 100),
+      mockParticipants,
+      mockParticipationRate: Math.round((mockParticipants / totalAssigned) * 100),
+      totalQuestions: accuracyRows.reduce((sum, row) => sum + Number(row.total), 0),
+      avgDiagnosticBaseline,
+      avgPracticeAccuracy,
+      accuracyChange: individualAccuracyChanges.length > 0
+        ? Math.round(individualAccuracyChanges.reduce((sum, change) => sum + change, 0) / individualAccuracyChanges.length)
+        : null,
+    };
   }),
 
   /**
@@ -1421,22 +1506,46 @@ export const orgIntelRouter = router({
     if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
     const members = await db.select().from(organizationMembers)
       .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator")));
-    const header = "Email,Name,Assigned Course,Readiness Score,Questions Attempted,Last Active,Weakest Topic,Status";
-    if (members.length === 0) return { csv: header + "\n", orgName: org.name };
+    const header = "Email,Name,Assigned Course,Readiness Score,Activation,Diagnostic Baseline,Practice Accuracy,Accuracy Change,Mock Exams,Questions Attempted,Last Active,Weakest Topic,Status";
+    if (members.length === 0) {
+      await trackEvent("export_downloaded", { orgId, extra: { exportType: "team_learning_outcomes", rowCount: 0 } });
+      return { csv: header + "\n", orgName: org.name };
+    }
     const allEmails = members.map(m => m.email);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, topicRows, mockRows, lastActiveRows] = await Promise.all([
+    const [accuracyRows, practiceRows, topicRows, mockRows, lastActiveRows, onboardingRows, diagnosticRows] = await Promise.all([
       db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
+      db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
+        .from(questionAttempts)
+        .where(and(
+          eq(questionAttempts.orgId, orgId),
+          sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
+        ))
+        .groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId, topic: questionAttempts.topic, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId, questionAttempts.topic),
       db.select({ memberId: questionAttempts.organizationMemberId, mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})` })
         .from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), eq(questionAttempts.quizMode, "mock"))).groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId, lastActive: sql<Date>`MAX(${questionAttempts.createdAt})` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
+      db.select({ memberId: learnerOnboarding.organizationMemberId })
+        .from(learnerOnboarding).where(eq(learnerOnboarding.orgId, orgId)).groupBy(learnerOnboarding.organizationMemberId),
+      db.select({ memberId: diagnosticSessions.organizationMemberId, score: sql<number>`MAX(${diagnosticSessions.score})` })
+        .from(diagnosticSessions).where(eq(diagnosticSessions.orgId, orgId)).groupBy(diagnosticSessions.organizationMemberId),
     ]);
     const accuracyByMemberId = new Map(
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
+    );
+    const practiceByMemberId = new Map(
+      practiceRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
+    );
+    const activatedMemberIds = new Set([
+      ...onboardingRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)),
+      ...accuracyRows.filter(r => r.memberId !== null && Number(r.total) > 0).map(r => Number(r.memberId)),
+    ]);
+    const diagnosticByMemberId = new Map(
+      diagnosticRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.score)]),
     );
     const mockByMemberId = new Map(mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.mockCount)]));
     const lastActiveByMemberId = new Map(
@@ -1455,6 +1564,14 @@ export const orgIntelRouter = router({
       const total = stats?.total ?? 0;
       const correct = stats?.correct ?? 0;
       const accuracy = total > 0 ? Math.round((correct / total) * 100) : null;
+      const practiceStats = practiceByMemberId.get(m.id);
+      const practiceAccuracy = practiceStats && practiceStats.total > 0
+        ? Math.round((practiceStats.correct / practiceStats.total) * 100)
+        : null;
+      const diagnosticBaseline = diagnosticByMemberId.get(m.id) ?? null;
+      const accuracyChange = practiceAccuracy !== null && diagnosticBaseline !== null
+        ? practiceAccuracy - diagnosticBaseline
+        : null;
       const lastActive = lastActiveByMemberId.get(m.id) ?? null;
       const mockExamsCompleted = mockByMemberId.get(m.id) ?? 0;
       let readinessScore = 0;
@@ -1470,8 +1587,19 @@ export const orgIntelRouter = router({
       else if (readinessScore < 40 && total > 10) status = "At Risk";
       else status = "Improving";
       const courseLabel = m.courseKey ? courseKeyToLabel(m.courseKey, org.province) : "All Access";
-      return [escapeCSV(m.email), escapeCSV(m.name), escapeCSV(courseLabel), readinessScore > 0 ? readinessScore + "%" : "0%", String(total), lastActive ? lastActive.toISOString().split("T")[0] : "Never", escapeCSV(weakestTopic), status].join(",");
+      return [
+        escapeCSV(m.email), escapeCSV(m.name), escapeCSV(courseLabel),
+        readinessScore > 0 ? `${readinessScore}%` : "0%",
+        activatedMemberIds.has(m.id) ? "Activated" : "Not Started",
+        diagnosticBaseline === null ? "" : `${diagnosticBaseline}%`,
+        practiceAccuracy === null ? "" : `${practiceAccuracy}%`,
+        accuracyChange === null ? "" : `${accuracyChange >= 0 ? "+" : ""}${accuracyChange} pts`,
+        String(mockExamsCompleted), String(total),
+        lastActive ? lastActive.toISOString().split("T")[0] : "Never",
+        escapeCSV(weakestTopic), status,
+      ].join(",");
     });
+    await trackEvent("export_downloaded", { orgId, extra: { exportType: "team_learning_outcomes", rowCount: rows.length } });
     return { csv: [header, ...rows].join("\n"), orgName: org.name };
   }),
 

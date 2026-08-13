@@ -27,6 +27,8 @@ import { emailOtpRouter } from "./routers/emailOtpRouter";
 import { incidentCommandRouter } from "./routers/incidentCommandRouter";
 import { teamFlexRouter } from "./routers/teamFlexRouter";
 import { changelogRouter } from "./routers/changelogRouter";
+import { activationRouter } from "./routers/activationRouter";
+import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 
@@ -115,6 +117,8 @@ export const appRouter = router({
   emailOtp: emailOtpRouter,
   incidentCommand: incidentCommandRouter,
   teamFlex: teamFlexRouter,
+  activation: activationRouter,
+  funnelAnalytics: funnelAnalyticsRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
@@ -311,6 +315,15 @@ export const appRouter = router({
           calcOnly: input.calcOnly ? "yes" : "no",
         });
 
+        if (!input.calcOnly) {
+          await trackEvent("mock_exam_completed", {
+            userId: userId?.toString() ?? null,
+            email: studentEmail,
+            examType: input.examType,
+            extra: { passed: input.passed, totalQuestions: input.total },
+          });
+        }
+
         return { success: true, persisted: true };
       }),
 
@@ -443,6 +456,16 @@ export const appRouter = router({
           moduleBreakdown: JSON.stringify(moduleBreakdown),
           calcOnly: input.calcOnly ? "yes" : "no",
         });
+
+        if (hasVerifiedIdentity && !input.calcOnly) {
+          await trackEvent("mock_exam_completed", {
+            userId: identity.userId?.toString() ?? null,
+            email: identity.studentEmail,
+            examType: input.examType,
+            orgId: identity.orgId,
+            extra: { passed, totalQuestions: total },
+          });
+        }
 
         return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, moduleBreakdown };
       }),

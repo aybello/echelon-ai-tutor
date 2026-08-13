@@ -142,6 +142,7 @@ export function registerStripeWebhook(app: Express) {
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
             await trackEvent("checkout_completed", { email, productKey, extra: { amountCAD } });
+            await trackEvent("access_activated", { email, productKey, extra: { activationType: "individual_purchase" } });
 
             // Send purchase confirmation email (non-blocking — don't fail webhook on email error)
             const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };

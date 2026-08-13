@@ -61,6 +61,7 @@ import {
   ShieldAlert,
   ShieldCheck,
   ArrowUpDown,
+  Printer,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -314,6 +315,13 @@ export default function OrgDashboard() {
       a.click();
       URL.revokeObjectURL(url);
     });
+  }
+
+  function handlePrintReport() {
+    const originalTitle = document.title;
+    document.title = `${overview?.orgName ?? "Echelon Team"} Learning Outcomes`;
+    window.print();
+    document.title = originalTitle;
   }
 
   // ── Auth check ─────────────────────────────────────────────────────────────
@@ -996,6 +1004,14 @@ export default function OrgDashboard() {
                 <Button
                   size="sm" variant="outline"
                   className="text-xs gap-1.5"
+                  onClick={handlePrintReport}
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  Save PDF
+                </Button>
+                <Button
+                  size="sm" variant="outline"
+                  className="text-xs gap-1.5"
                   onClick={handleExportCSV}
                   disabled={exportCSVQuery.isFetching}
                 >
@@ -1012,6 +1028,56 @@ export default function OrgDashboard() {
                   {sendBulkReminders.isPending ? "Sending…" : "Remind Inactive"}
                 </Button>
               </div>
+            </div>
+            <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-5 mb-5 text-white shadow-sm">
+              <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-200">Activation & outcomes</div>
+                  <div className="text-lg font-bold mt-1">From assigned seat to active learning</div>
+                </div>
+                <div className="text-xs text-blue-100 bg-white/10 border border-white/10 rounded-full px-3 py-1.5">
+                  {readinessSummaryQuery.data.seatsAssigned} assigned operators
+                </div>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
+                <div className="bg-white/10 border border-white/10 rounded-xl p-3">
+                  <div className="text-[11px] text-blue-100">Activated</div>
+                  <div className="text-2xl font-bold mt-1">{readinessSummaryQuery.data.activationRate}%</div>
+                  <div className="text-[10px] text-blue-200 mt-1">{readinessSummaryQuery.data.learningActivated} learners</div>
+                </div>
+                <div className="bg-white/10 border border-white/10 rounded-xl p-3">
+                  <div className="text-[11px] text-blue-100">Diagnostic complete</div>
+                  <div className="text-2xl font-bold mt-1">{readinessSummaryQuery.data.diagnosticCompletionRate}%</div>
+                  <div className="text-[10px] text-blue-200 mt-1">{readinessSummaryQuery.data.diagnosticCompleted} baselines</div>
+                </div>
+                <div className="bg-white/10 border border-white/10 rounded-xl p-3">
+                  <div className="text-[11px] text-blue-100">Active · 30 days</div>
+                  <div className="text-2xl font-bold mt-1">{readinessSummaryQuery.data.activeThirtyDays}</div>
+                  <div className="text-[10px] text-blue-200 mt-1">unique learners</div>
+                </div>
+                <div className="bg-white/10 border border-white/10 rounded-xl p-3">
+                  <div className="text-[11px] text-blue-100">Mock participation</div>
+                  <div className="text-2xl font-bold mt-1">{readinessSummaryQuery.data.mockParticipationRate}%</div>
+                  <div className="text-[10px] text-blue-200 mt-1">{readinessSummaryQuery.data.mockParticipants} learners</div>
+                </div>
+                <div className="bg-white/10 border border-white/10 rounded-xl p-3">
+                  <div className="text-[11px] text-blue-100">Questions completed</div>
+                  <div className="text-2xl font-bold mt-1">{readinessSummaryQuery.data.totalQuestions.toLocaleString()}</div>
+                  <div className="text-[10px] text-blue-200 mt-1">team total</div>
+                </div>
+                <div className="bg-white/10 border border-white/10 rounded-xl p-3">
+                  <div className="text-[11px] text-blue-100">Accuracy change</div>
+                  <div className="text-2xl font-bold mt-1">
+                    {readinessSummaryQuery.data.accuracyChange === null
+                      ? "—"
+                      : `${readinessSummaryQuery.data.accuracyChange >= 0 ? "+" : ""}${readinessSummaryQuery.data.accuracyChange} pts`}
+                  </div>
+                  <div className="text-[10px] text-blue-200 mt-1">baseline to practice</div>
+                </div>
+              </div>
+              <p className="text-[10px] text-blue-200 mt-4 leading-relaxed">
+                Aggregate learning indicators only. Diagnostic baselines and practice accuracy support coaching decisions; they are not official exam scores or pass guarantees.
+              </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">

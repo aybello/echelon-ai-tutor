@@ -50,6 +50,13 @@
       "when": 1786636801000,
       "tag": "0051_product_observability",
       "breakpoints": true
+    },
+    {
+      "idx": 52,
+      "version": "5",
+      "when": 1786640400000,
+      "tag": "0052_activation_outcomes",
+      "breakpoints": true
     }
   ]
 }

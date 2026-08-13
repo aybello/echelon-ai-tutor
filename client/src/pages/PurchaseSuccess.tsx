@@ -364,6 +364,19 @@ export default function PurchaseSuccess() {
             </div>
 
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
+              {productKey && PRODUCT_PATHS[productKey] && (
+                <Link href={`/account?next=${encodeURIComponent(`/activate/${productKey}`)}`}>
+                  <button
+                    style={{
+                      padding: "9px 20px", borderRadius: 8, border: "none",
+                      background: "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff",
+                      fontSize: 13, fontWeight: 800, cursor: "pointer", fontFamily: "inherit",
+                    }}
+                  >
+                    Set Up My Study Plan
+                  </button>
+                </Link>
+              )}
               <Link href="/">
                 <button
                   style={{

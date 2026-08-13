@@ -163,9 +163,13 @@ export default function StudentDashboard() {
   const examCountdown = trpc.dashboard.examCountdown.useQuery(undefined, { enabled: hasAccess, retry: false });
   const aiSessions = trpc.dashboard.aiSessionHistory.useQuery(undefined, { enabled: hasAccess, retry: false });
   const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: hasAccess, retry: false });
-  const readinessScore = trpc.dashboard.readinessScore.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const readinessScore = trpc.dashboard.readinessScore.useQuery(selectedCourseKey ? { examType: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const studyFocus = trpc.dashboard.studyFocus.useQuery(undefined, { enabled: hasAccess, retry: false });
-  const studyPlan = trpc.dashboard.studyPlan.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const studyPlan = trpc.dashboard.studyPlan.useQuery(selectedCourseKey ? { examType: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
+  const activation = trpc.activation.status.useQuery(
+    selectedCourseKey ? { courseKey: selectedCourseKey } : undefined,
+    { enabled: hasAccess, retry: false },
+  );
 
   /* ── Activity chart data (last 30 days) ── */
   const activityChartData = useMemo(() => {
@@ -320,6 +324,55 @@ export default function StudentDashboard() {
             </button>
           </div>
         </div>
+
+        {/* Activation continuity: every paid learner should see the next useful action. */}
+        {activation.data && activation.data.status !== "completed" && (
+          <div style={{
+            background: "linear-gradient(135deg, #0F766E, #1D4ED8)", color: "#fff",
+            borderRadius: 16, padding: "18px 20px", marginBottom: 16,
+            display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16,
+            boxShadow: "0 12px 30px rgba(29, 78, 216, 0.16)",
+          }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.09em", textTransform: "uppercase", color: "#BAE6FD", marginBottom: 5 }}>Your study plan</div>
+              <div style={{ fontSize: 18, fontWeight: 900 }}>Build your starting baseline</div>
+              <div style={{ fontSize: 12, color: "#DBEAFE", marginTop: 4, maxWidth: 560, lineHeight: 1.5 }}>
+                Set your schedule and complete a short diagnostic so Echelon can focus your practice on the topics that need it most.
+              </div>
+            </div>
+            <a href={`/activate/${encodeURIComponent(activation.data.course.courseKey)}`} style={{
+              padding: "10px 17px", borderRadius: 9, background: "#fff", color: "#1D4ED8",
+              fontSize: 13, fontWeight: 800, textDecoration: "none", whiteSpace: "nowrap",
+            }}>
+              {activation.data.status === "not_started" ? "Set Up My Plan" : "Continue Setup"} →
+            </a>
+          </div>
+        )}
+
+        {activation.data?.status === "completed" && studyPlan.data?.recommendations?.[0] && (
+          <div style={{
+            background: "linear-gradient(135deg, #ECFDF5, #EFF6FF)", border: "1px solid #A7F3D0",
+            borderRadius: 16, padding: "18px 20px", marginBottom: 16,
+            display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16,
+          }}>
+            <div style={{ flex: 1, minWidth: 240 }}>
+              <div style={{ color: "#047857", fontSize: 11, fontWeight: 800, letterSpacing: "0.09em", textTransform: "uppercase", marginBottom: 5 }}>Today's plan</div>
+              <div style={{ color: "#0F172A", fontSize: 17, fontWeight: 900 }}>{studyPlan.data.recommendations[0].title}</div>
+              <div style={{ color: "#475569", fontSize: 12, marginTop: 4, lineHeight: 1.5 }}>{studyPlan.data.recommendations[0].description}</div>
+              {activation.data.profile?.weeklyQuestionGoal && (
+                <div style={{ color: "#0F766E", fontSize: 11, fontWeight: 700, marginTop: 7 }}>
+                  Weekly target: {activation.data.profile.weeklyQuestionGoal} questions
+                </div>
+              )}
+            </div>
+            <a href={studyPlan.data.recommendations[0].actionHref ?? activation.data.course.quizPath} style={{
+              padding: "10px 17px", borderRadius: 9, background: "#0F766E", color: "#fff",
+              fontSize: 13, fontWeight: 800, textDecoration: "none", whiteSpace: "nowrap",
+            }}>
+              Continue Studying →
+            </a>
+          </div>
+        )}
 
         {/* Primary Study Focus banner */}
         {studyFocus.data?.courseKey && (

@@ -6,6 +6,7 @@ import { eq, and, or } from "drizzle-orm";
 import { getDb } from "../db";
 import { organizations, teamFlexLicences } from "../../drizzle/schema";
 import { TRPCError } from "@trpc/server";
+import { trackEvent } from "../analytics";
 import crypto from "crypto";
 import { ENV } from "../_core/env";
 import { sendCoursePassInvitationEmail } from "../email";
@@ -441,6 +442,15 @@ export async function activateFlexLicence(
   if (!activated?.startsAt || !activated.accessEndsAt || !activated.reportingEndsAt) {
     throw new TRPCError({ code: "CONFLICT", message: "Course activation did not complete. Please try again." });
   }
+
+  await trackEvent("access_activated", {
+    userId: operatorUserId?.toString() ?? null,
+    email: normalizedEmail,
+    examType: activated.courseKey,
+    productKey: "teams-flex",
+    orgId: activated.organizationId,
+    extra: { termMonths: activated.termMonths },
+  });
 
   return {
     licenceId: activated.id,

@@ -120,7 +120,7 @@ export default function CoursePassClaim() {
                   You can now use the full question bank and mock exams. Access ends {pass.accessEndsAt ? new Date(pass.accessEndsAt).toLocaleDateString() : "at the end of your term"}.
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <Button asChild className="h-12 bg-teal-700 hover:bg-teal-800"><Link href={pass.quizPath}>Start Studying</Link></Button>
+                  <Button asChild className="h-12 bg-teal-700 hover:bg-teal-800"><Link href={`/activate/${encodeURIComponent(pass.courseKey)}`}>Set Up My Study Plan</Link></Button>
                   <Button asChild variant="outline" className="h-12"><Link href={pass.mockExamPath}>Take a Mock Exam</Link></Button>
                 </div>
               </div>
