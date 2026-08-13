@@ -1364,4 +1364,4 @@
 - [x] Design a compact mobile pattern for the course workspace tools
 - [x] Keep Practice, Mock Exam, and Flashcards immediately accessible while grouping secondary tools
 - [x] Add navigation regression coverage and verify key mobile study routes
-- [ ] Deploy the mobile workspace refinement and synchronize GitHub
+- [x] Deploy the mobile workspace refinement and synchronize GitHub
