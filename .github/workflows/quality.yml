@@ -85,6 +85,7 @@ jobs:
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - name: Database-backed access, OTP and Stripe lifecycle tests
         run: >-
           pnpm exec vitest run
