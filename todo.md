@@ -1376,4 +1376,4 @@
 - [x] Merge the approved Teams receipt and invoice branch
 - [x] Replace fabricated Teams-page social-proof figures exposed during visual verification
 - [x] Run full regression coverage and verify billing/purchase-success behavior
-- [ ] Deploy both approved improvements and synchronize GitHub
+- [x] Deploy both approved improvements and synchronize GitHub
