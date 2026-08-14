@@ -94,6 +94,12 @@ export function normalizeMySqlType(type: string): string {
     .replace(/\bint\(\d+\)/g, "int");
 }
 
+export function mysqlNonUniqueToUnique(
+  nonUnique: string | number | bigint | null | undefined
+): boolean {
+  return Number(nonUnique) === 0;
+}
+
 function indexColumnName(column: unknown): string | null {
   if (typeof column !== "object" || column === null) return null;
   const candidate = column as { name?: unknown };
@@ -365,7 +371,7 @@ export async function fetchActualSchemaContract(
   type IndexRow = {
     tableName: string;
     indexName: string;
-    nonUnique: number;
+    nonUnique: string | number | bigint | null;
     sequenceNumber: number;
     columnName: string | null;
   };
@@ -391,7 +397,7 @@ export async function fetchActualSchemaContract(
     const key = `${row.tableName}\0${row.indexName}`;
     const index = indexMap.get(key) ?? {
       name: row.indexName,
-      unique: row.nonUnique === 0,
+      unique: mysqlNonUniqueToUnique(row.nonUnique),
       columns: [],
     };
     if (row.columnName) index.columns.push(row.columnName);
