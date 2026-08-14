@@ -34,21 +34,40 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - name: Rebuild an empty database from the canonical schema
+      - run: pnpm db:verify-migrations
+      - name: Verify clean baseline and forward-only upgrade path
         shell: bash
+        env:
+          MIGRATION_APPROVED: APPLY_FORWARD_MIGRATIONS
+          MIGRATION_BACKUP_CONFIRMED: BACKUP_VERIFIED
         run: |
           pnpm exec drizzle-kit export --dialect mysql --schema ./drizzle/schema.ts \
             | sed '/^Reading schema files:/d; /^\/.*schema.ts$/d' \
             > /tmp/echelon-baseline.sql
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_ci \
             < /tmp/echelon-baseline.sql
+
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_ci \
+            pnpm db:verify-schema --strict
+
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
-            -e "CREATE DATABASE echelon_migration_ci; CREATE TABLE echelon_migration_ci.exam_outcomes (id int PRIMARY KEY);"
+            -e "CREATE DATABASE echelon_upgrade_ci"
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
+            < /tmp/echelon-baseline.sql
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
+            -e "DROP TABLE product_analytics_events, learner_onboarding, diagnostic_sessions; ALTER TABLE exam_outcomes DROP COLUMN readinessScoreAtOutcome, DROP COLUMN readinessModelVersion;"
+
           sed '/^--> statement-breakpoint$/d' drizzle/0051_product_observability.sql \
-            | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_migration_ci
-          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
-            -Nse "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='echelon_migration_ci' AND table_name='exam_outcomes' AND column_name IN ('readinessScoreAtOutcome','readinessModelVersion')" \
-            | grep -qx 2
+            | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
+          sed '/^--> statement-breakpoint$/d' drizzle/0052_activation_outcomes.sql \
+            | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
+
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
+            pnpm db:migrate:adopt
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
+            pnpm db:migrate:apply
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
+            pnpm db:verify-schema --strict
       - name: Deterministic unit and acceptance tests
         run: >-
           pnpm exec vitest run
@@ -65,6 +84,7 @@ jobs:
           shared/teamPricing.test.ts
           server/trpcRateLimit.test.ts
           server/previewDiagnostic.test.ts
+          server/migrationSafety.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production

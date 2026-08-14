@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["scripts/db/**/*.ts", "drizzle/schema.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"],
+  "compilerOptions": {
+    "incremental": false,
+    "target": "ES2022",
+    "module": "ESNext"
+  }
+}

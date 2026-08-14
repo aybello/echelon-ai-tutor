@@ -1,0 +1,10 @@
+{
+  "formatVersion": 1,
+  "baseline": {
+    "version": 52,
+    "tag": "0052_activation_outcomes",
+    "contract": "drizzle/baseline-0052.contract.json",
+    "sha256": "55eddc1457ab90c584c458a5236786c054911c5240cae02cfa63d2eb256abb7c"
+  },
+  "migrations": []
+}
