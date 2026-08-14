@@ -9,12 +9,14 @@ Allow: /privacy
 Allow: /terms
 Allow: /refund
 Allow: /wpi
+Allow: /teams
+Allow: /courses/
+Allow: /canada/
 
 # Block all app/private pages — these are authenticated or utility pages
 # that should not be indexed by search engines
 Disallow: /admin
 Disallow: /admin/
-Disallow: /quiz
 Disallow: /dashboard
 Disallow: /account
 Disallow: /login
@@ -23,8 +25,10 @@ Disallow: /login/
 Disallow: /purchase-success
 Disallow: /subscription-success
 Disallow: /preview
-Disallow: /team
-Disallow: /teams
+Disallow: /team$
+Disallow: /team/
+Disallow: /activate/
+Disallow: /course-pass/
 Disallow: /api/
 
 # Sitemap location

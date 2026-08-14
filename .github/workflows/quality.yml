@@ -65,6 +65,7 @@ jobs:
           shared/teamPricing.test.ts
           server/trpcRateLimit.test.ts
           server/previewDiagnostic.test.ts
+          server/seoGeo.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production

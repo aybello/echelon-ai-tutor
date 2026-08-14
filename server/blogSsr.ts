@@ -16,6 +16,7 @@ import path from "path";
 import { getDb } from "./db";
 import { blogPosts } from "../drizzle/schema";
 import { eq, and, desc } from "drizzle-orm";
+import { STATIC_PAGE_META } from "./pageSsr";
 
 const SITE_URL = "https://echeloninstitute.ca";
 const DEFAULT_OG_IMAGE =
@@ -178,7 +179,7 @@ function injectBlogPostMeta(
   // Inject the article content into the root div so it's visible without JS
   // React will hydrate over this on load
   const articleHtml = `
-    <article id="ssr-blog-content" style="display:none" aria-hidden="true">
+    <article id="ssr-blog-content" data-ssr-fallback="true">
       <h1>${escapeHtml(post.title)}</h1>
       ${post.content}
     </article>`;
@@ -307,17 +308,7 @@ export function registerBlogSsrRoutes(app: Express, isDev: boolean) {
 
 /** Build the dynamic sitemap from DB posts + static routes */
 export async function buildDynamicSitemap(): Promise<string> {
-  const staticRoutes = [
-    { url: `${SITE_URL}/`, priority: "1.0", changefreq: "weekly" },
-    { url: `${SITE_URL}/guides`, priority: "0.9", changefreq: "monthly" },
-    { url: `${SITE_URL}/pricing`, priority: "0.9", changefreq: "monthly" },
-    { url: `${SITE_URL}/about`, priority: "0.7", changefreq: "monthly" },
-    { url: `${SITE_URL}/jobs`, priority: "0.7", changefreq: "daily" },
-    { url: `${SITE_URL}/blog`, priority: "0.9", changefreq: "weekly" },
-    { url: `${SITE_URL}/wpi`, priority: "0.8", changefreq: "monthly" },
-    { url: `${SITE_URL}/faq`, priority: "0.7", changefreq: "monthly" },
-    { url: `${SITE_URL}/teams`, priority: "0.9", changefreq: "weekly" },
-    { url: `${SITE_URL}/guides`, priority: "0.8", changefreq: "monthly" },
+  const supplementalRoutes = [
     { url: `${SITE_URL}/process`, priority: "0.7", changefreq: "monthly" },
     { url: `${SITE_URL}/wastewater`, priority: "0.7", changefreq: "monthly" },
     {
@@ -336,13 +327,18 @@ export async function buildDynamicSitemap(): Promise<string> {
       priority: "0.7",
       changefreq: "monthly",
     },
-    { url: `${SITE_URL}/us`, priority: "0.9", changefreq: "weekly" },
-    { url: `${SITE_URL}/us/states`, priority: "0.8", changefreq: "monthly" },
-    { url: `${SITE_URL}/us/courses`, priority: "0.8", changefreq: "monthly" },
-    { url: `${SITE_URL}/privacy`, priority: "0.3", changefreq: "yearly" },
-    { url: `${SITE_URL}/terms`, priority: "0.3", changefreq: "yearly" },
-    { url: `${SITE_URL}/refund`, priority: "0.3", changefreq: "yearly" },
   ];
+  const routeMap = new Map(
+    [
+      ...STATIC_PAGE_META.map(meta => ({
+        url: `${SITE_URL}${meta.path}`,
+        priority: meta.priority ?? (meta.path === "/" ? "1.0" : "0.7"),
+        changefreq: meta.changefreq ?? "monthly",
+      })),
+      ...supplementalRoutes,
+    ].map(route => [route.url, route])
+  );
+  const staticRoutes = Array.from(routeMap.values());
 
   let postEntries = "";
   try {

@@ -23,6 +23,14 @@
 import type { Express, Request, Response } from "express";
 import fs from "fs";
 import path from "path";
+import {
+  COURSE_SEO_PAGES,
+  REGION_SEO_PAGES,
+  formatCad,
+  getCoursesForRegion,
+  type CourseSeoPage,
+  type RegionSeoPage,
+} from "../shared/seoCatalog";
 
 const SITE_URL = "https://echeloninstitute.ca";
 const DEFAULT_OG_IMAGE =
@@ -30,7 +38,7 @@ const DEFAULT_OG_IMAGE =
 const PUBLISHER_LOGO =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/favicon-512_1eb3c09e.png";
 
-interface PageMeta {
+export interface PageMeta {
   path: string;
   title: string;
   description: string;
@@ -41,6 +49,8 @@ interface PageMeta {
   jsonLd?: string;
   /** changefreq for sitemap */
   changefreq?: string;
+  /** priority for sitemap */
+  priority?: string;
 }
 
 function buildWebPageJsonLd(meta: PageMeta): string {
@@ -87,7 +97,7 @@ function buildFaqJsonLd(): string {
         name: "Which provinces does Echelon cover?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Echelon covers Ontario (OIT, Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection), British Columbia (EOCP), Alberta (AWWOA Level 1–4), Saskatchewan (SLWA), and Manitoba (WQAM). WPI content is available for all provinces.",
+          text: "Echelon provides Ontario-specific OIT and Class 1–4 courses plus WPI-aligned Class I–IV preparation for treatment, distribution, and collection candidates in British Columbia, Alberta, Saskatchewan, and Manitoba. Candidates should confirm the current exam and eligibility requirements with their provincial certifying authority.",
         },
       },
       {
@@ -150,7 +160,7 @@ function buildOrganizationJsonLd(): string {
     url: SITE_URL,
     logo: PUBLISHER_LOGO,
     description:
-      "Canada's AI-powered exam prep platform for water and wastewater operators. Adaptive practice questions, flashcards, study notes, and an AI tutor for OIT, EOCP, AWWOA, SLWA, and WQAM certifications.",
+      "Independent Canadian exam preparation for water and wastewater operators, with course-specific practice, flashcards, mock exams, process guides, and an AI tutor.",
     sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",
@@ -194,23 +204,23 @@ function buildPricingJsonLd(): string {
 }
 
 /** All static public page metadata */
-export const STATIC_PAGE_META: PageMeta[] = [
+const BASE_STATIC_PAGE_META: PageMeta[] = [
   {
     path: "/",
     title: "Water & Wastewater Operator Exam Prep | Echelon Institute",
     description:
-      "Canada's AI-powered exam prep platform for water and wastewater operators. Adaptive practice questions, 500+ flashcards, study notes, and an AI tutor for OIT, EOCP, AWWOA, SLWA, and WQAM certifications.",
-    h1: "Pass Your Operator Exam. Advance Your Career.",
+      "Canadian water and wastewater operator exam preparation with course-specific practice, mock exams, flashcards, process guides, and a free 15-question preview.",
+    h1: "Prepare for Your Operator Exam. Advance Your Career.",
     jsonLd: buildOrganizationJsonLd(),
     bodyHtml: `
       <h2>Canada's Exam Prep Platform for Water &amp; Wastewater Operators</h2>
-      <p>Echelon Institute is Canada's AI-powered exam prep platform built specifically for water and wastewater operators. Whether you are preparing for the Ontario OIT exam, the BC EOCP certification, the Alberta AWWOA exam, Saskatchewan SLWA, or Manitoba WQAM, Echelon provides the tools you need to pass on your first attempt.</p>
+      <p>Echelon Institute is an independent Canadian exam-preparation platform built specifically for water and wastewater operators. It provides Ontario-specific courses and WPI-aligned preparation for treatment, distribution, and collection candidates in Western Canada.</p>
 
       <h2>What's Included</h2>
       <p>Every Echelon course includes over 500 adaptive practice questions organized by module and difficulty, 500+ digital flashcards, comprehensive study notes, timed mock exams that simulate the real test format, and an AI tutor available 24/7 to explain concepts, walk through calculations, and answer your questions in plain language.</p>
 
       <h2>Courses Available</h2>
-      <p>Echelon covers Ontario OIT and Class 1, 2, 3, and 4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection certifications. British Columbia EOCP, Alberta AWWOA Level 1–4, Saskatchewan SLWA, and Manitoba WQAM courses are also available.</p>
+      <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
 
       <h2>Free to Start</h2>
       <p>The first 15 questions on every course are completely free — no account or credit card required. Start practising right now and see exactly how Echelon works before purchasing a 12-month Exam Pass.</p>
@@ -282,7 +292,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
     path: "/about",
     title: "About Echelon Institute | Canadian Water Operator Exam Prep",
     description:
-      "Learn about Echelon Institute — Canada's AI-powered exam prep platform built specifically for water and wastewater operators preparing for OIT, EOCP, AWWOA, SLWA, and WQAM certifications.",
+      "Learn about Echelon Institute, an independent Canadian exam-preparation platform built specifically for water and wastewater operators.",
     h1: "About Echelon Institute",
     jsonLd: buildWebPageJsonLd({
       path: "/about",
@@ -296,13 +306,13 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon Institute exists to help Canadian water and wastewater operators pass their certification exams and advance their careers. Water operators are among the most essential workers in any community — they protect public health every day — and they deserve world-class study tools to match the importance of their work.</p>
 
       <h2>Built for Canadian Operators</h2>
-      <p>Unlike generic exam prep platforms, Echelon is built specifically for the Canadian water sector. Every question, study note, and process guide is written to reflect Canadian regulations, provincial certification standards, and the actual content of exams administered by MECP (Ontario), EOCP (BC), AWWOA (Alberta), SLWA (Saskatchewan), and WQAM (Manitoba).</p>
+      <p>Unlike generic exam-prep platforms, Echelon is built specifically for the water sector. Ontario-specific courses and WPI-aligned Western Canadian courses are organized by certification stream and class. Candidates should verify current requirements with OWWCO, EOCP, or the applicable provincial authority.</p>
 
       <h2>AI-Powered Learning</h2>
       <p>Echelon's AI tutor is available 24/7 to answer questions, explain concepts, and walk through calculation problems in plain language. The adaptive question engine tracks your performance by module and adjusts difficulty to focus your study time where it matters most.</p>
 
       <h2>Certifications Covered</h2>
-      <p>Echelon covers Ontario OIT, Class 1–4 Water Treatment, Class 1–4 Water Distribution, Class 1–4 Wastewater Treatment, Class 1–4 Wastewater Collection, British Columbia EOCP, Alberta AWWOA Level 1–4, Saskatchewan SLWA, and Manitoba WQAM. New certifications are added regularly.</p>
+      <p>Echelon covers Ontario OIT and Class 1–4 treatment, distribution, and collection streams, plus WPI-aligned Class I–IV preparation used by candidates in Western Canada. Echelon is independent and is not endorsed by a certifying authority.</p>
 
       <h2>Contact Us</h2>
       <p>Questions about Echelon? Reach us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. For team and organizational inquiries, visit the <a href="${SITE_URL}/pricing">pricing page</a>.</p>
@@ -393,10 +403,10 @@ export const STATIC_PAGE_META: PageMeta[] = [
         <li><a href="${SITE_URL}/blog/canadian-water-operator-certification-by-province">Canadian Water Operator Certification by Province</a></li>
         <li><a href="${SITE_URL}/blog/bc-water-operator-certification-guide">BC Water Operator Certification Guide (EOCP)</a></li>
         <li><a href="${SITE_URL}/blog/eocp-exam-study-tips-bc">EOCP Exam Study Tips for BC Operators</a></li>
-        <li><a href="${SITE_URL}/blog/alberta-water-operator-certification-guide">Alberta Water Operator Certification Guide (AWWOA)</a></li>
-        <li><a href="${SITE_URL}/blog/awwoa-level-1-exam-prep-alberta">AWWOA Level 1 Exam Prep for Alberta Operators</a></li>
-        <li><a href="${SITE_URL}/blog/manitoba-water-operator-certification-guide">Manitoba Water Operator Certification Guide (WQAM)</a></li>
-        <li><a href="${SITE_URL}/blog/saskatchewan-water-operator-certification-guide">Saskatchewan Water Operator Certification Guide (SLWA)</a></li>
+        <li><a href="${SITE_URL}/blog/alberta-water-operator-certification-guide">Alberta Water Operator Certification Guide</a></li>
+        <li><a href="${SITE_URL}/blog/awwoa-level-1-exam-prep-alberta">Alberta Level I Operator Exam Prep</a></li>
+        <li><a href="${SITE_URL}/blog/manitoba-water-operator-certification-guide">Manitoba Water Operator Certification Guide</a></li>
+        <li><a href="${SITE_URL}/blog/saskatchewan-water-operator-certification-guide">Saskatchewan Water Operator Certification Guide</a></li>
       </ul>
 
       <h2>Start Practising</h2>
@@ -407,7 +417,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
     path: "/wpi",
     title: "WPI Water Professionals International | Echelon Institute",
     description:
-      "WPI (Water Professionals International) is Echelon Institute's interactive process guide for Canadian water and wastewater operators. Explore treatment processes, equipment, and regulations by province.",
+      "Explore WPI-aligned Class I–IV water treatment, wastewater treatment, distribution, and collection exam preparation for Western Canadian operators.",
     h1: "WPI — Water Professionals International",
     jsonLd: buildWebPageJsonLd({
       path: "/wpi",
@@ -424,7 +434,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>WPI includes detailed explanations of coagulation and flocculation, sedimentation, filtration, disinfection (chlorination, UV, ozone), chemical feed and dosing, iron and manganese removal, water quality regulations, pump operation, and more. Wastewater content covers primary and secondary treatment, biological processes, sludge handling, and collection system maintenance.</p>
 
       <h2>Province-Specific Content</h2>
-      <p>WPI content is aligned with the regulatory frameworks of Ontario (MECP), British Columbia (EOCP), Alberta (AWWOA), Saskatchewan (SLWA), and Manitoba (WQAM). Regulatory references and standards are province-specific where they differ.</p>
+      <p>Echelon's Western Canadian courses follow WPI-aligned operator topics. Certification rules remain province-specific; candidates should confirm the current exam blueprint, eligibility, and permitted references with EOCP or the applicable provincial authority.</p>
 
       <h2>Use WPI Alongside Your Practice Questions</h2>
       <p>WPI is designed to complement Echelon's practice question bank. When you encounter a topic you are unsure about in a practice question, WPI provides the conceptual background and regulatory context to help you understand the correct answer. <a href="${SITE_URL}/">Start practising</a> or <a href="${SITE_URL}/pricing">view Individual Exam Passes</a>.</p>
@@ -442,7 +452,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 500+ flashcards per course, interactive process guides, mock exams, and an AI tutor available 24/7.</p>
 
       <h2>Which Provinces Are Covered?</h2>
-      <p>Echelon covers Ontario (OIT, Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, Wastewater Collection), British Columbia (EOCP), Alberta (AWWOA Level 1–4), Saskatchewan (SLWA), and Manitoba (WQAM).</p>
+      <p>Echelon provides Ontario-specific OIT and Class 1–4 courses plus WPI-aligned Class I–IV preparation for treatment, distribution, and collection candidates in British Columbia, Alberta, Saskatchewan, and Manitoba. Confirm current requirements with your certifying authority.</p>
 
       <h2>Is There a Free Trial?</h2>
       <p>Yes. The first 15 questions on every course, including OIT, are completely free — no account or credit card required. A 12-month Exam Pass is required to continue beyond the preview. <a href="${SITE_URL}/">Start practising now</a>.</p>
@@ -509,7 +519,8 @@ export const STATIC_PAGE_META: PageMeta[] = [
     jsonLd: buildWebPageJsonLd({
       path: "/refund",
       title: "Refund Policy | Echelon Institute",
-      description: "Echelon Institute's refund policy for Individual Exam Passes and Teams plans.",
+      description:
+        "Echelon Institute's refund policy for Individual Exam Passes and Teams plans.",
       h1: "Refund Policy",
     }),
     bodyHtml: `
@@ -636,6 +647,122 @@ export const STATIC_PAGE_META: PageMeta[] = [
   },
 ];
 
+function buildRegionPageMeta(page: RegionSeoPage): PageMeta {
+  const courses = getCoursesForRegion(page);
+  return {
+    path: page.path,
+    title: `${page.title} | Echelon Institute`,
+    description: page.description,
+    h1: page.heading,
+    changefreq: "monthly",
+    priority: "0.9",
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          name: page.heading,
+          description: page.description,
+          url: `${SITE_URL}${page.path}`,
+          inLanguage: "en-CA",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Echelon Institute",
+            url: SITE_URL,
+          },
+        },
+        {
+          "@type": "ItemList",
+          name: `${page.name} operator exam-prep courses`,
+          numberOfItems: courses.length,
+          itemListElement: courses.map((course, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: course.displayName,
+            url: `${SITE_URL}${course.path}`,
+          })),
+        },
+      ],
+    }),
+    bodyHtml: `
+      <p>${escapeHtml(page.summary)}</p>
+      <h2>Confirm the Current Certification Requirements</h2>
+      <p>${escapeHtml(page.frameworkNote)} <a href="${page.authorityUrl}">Visit ${escapeHtml(page.authorityName)}</a>.</p>
+      <h2>${escapeHtml(page.name)} Operator Exam-Prep Courses</h2>
+      <ul>${courses.map(course => `<li><a href="${SITE_URL}${course.path}">${escapeHtml(course.displayName)}</a> — ${formatCad(course.priceCAD)} for 12 months</li>`).join("")}</ul>
+      <h2>Independent Preparation Provider</h2>
+      <p>Echelon Institute is independent and is not affiliated with or endorsed by OWWCO, MOECP, EOCP, WPI, or any provincial certifying authority. The authority's current documents control.</p>
+    `,
+  };
+}
+
+function buildCoursePageMeta(course: CourseSeoPage): PageMeta {
+  return {
+    path: course.path,
+    title: `${course.title} | Echelon Institute`,
+    description: course.description,
+    h1: course.heading,
+    changefreq: "monthly",
+    priority: "0.8",
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: course.displayName,
+      description: course.description,
+      url: `${SITE_URL}${course.path}`,
+      inLanguage: "en-CA",
+      educationalLevel: course.levelLabel,
+      provider: {
+        "@type": "EducationalOrganization",
+        name: "Echelon Institute",
+        url: SITE_URL,
+      },
+      offers: {
+        "@type": "Offer",
+        price: (course.priceCAD / 100).toFixed(0),
+        priceCurrency: "CAD",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/pricing`,
+      },
+    }),
+    bodyHtml: `
+      <p>${escapeHtml(course.description)}</p>
+      <h2>What Is Included</h2>
+      <p>Start with a free 15-question preview. Full access includes course-specific practice, explanations, weak-topic tracking, a timed mock exam, study tools, and AI-supported explanations.</p>
+      <h2>Individual Exam Pass</h2>
+      <p>${formatCad(course.priceCAD)} CAD for one course and 12 months of access through a one-time payment. <a href="${SITE_URL}/pricing">View current pricing</a>.</p>
+      <h2>Start the Free Preview</h2>
+      <p><a href="${SITE_URL}${course.quizPath}">Try the first 15 questions</a> with no account or credit card required.</p>
+      <h2>Certification Requirements</h2>
+      <p>Echelon is an independent preparation provider. It does not issue certificates or guarantee an exam result. Confirm eligibility, exam content, permitted references, and current rules with the applicable certifying authority.</p>
+    `,
+  };
+}
+
+export const STATIC_PAGE_META: PageMeta[] = [
+  ...BASE_STATIC_PAGE_META,
+  {
+    path: "/teams",
+    title:
+      "Water Operator Training for Utilities & Municipalities | Echelon Teams",
+    description:
+      "Manage water and wastewater operator exam preparation with flexible team seats, learner assignments, progress reporting, receipts, and invoices.",
+    h1: "Operator Training and Exam Preparation for Teams",
+    changefreq: "monthly",
+    priority: "0.9",
+    bodyHtml: `
+      <h2>Certification Preparation for Utilities and Municipalities</h2>
+      <p>Echelon Teams lets managers assign course access, monitor learner activity, and support operators preparing for water and wastewater certification exams.</p>
+      <h2>Flexible Team Access</h2>
+      <p>Choose 3, 6, or 12 months of access and assign seats to the courses each operator needs. Payment records include downloadable receipts and invoices.</p>
+      <h2>Independent Training Platform</h2>
+      <p>Echelon Institute is an independent preparation provider and is not affiliated with or endorsed by a certifying authority. <a href="${SITE_URL}/teams">Explore Teams</a> or <a href="mailto:abello@echeloninstitute.ca">contact Echelon</a>.</p>
+    `,
+  },
+  ...REGION_SEO_PAGES.map(buildRegionPageMeta),
+  ...COURSE_SEO_PAGES.map(buildCoursePageMeta),
+];
+
 /** Build a map for O(1) lookup */
 const META_MAP = new Map<string, PageMeta>(
   STATIC_PAGE_META.map(m => [m.path, m])
@@ -701,6 +828,9 @@ function buildSsrBody(meta: PageMeta): string {
     <a href="${SITE_URL}/">Home</a>
     <a href="${SITE_URL}/guides">Process Guides</a>
     <a href="${SITE_URL}/pricing">Pricing</a>
+    <a href="${SITE_URL}/teams">Teams</a>
+    <a href="${SITE_URL}/canada/ontario">Ontario Courses</a>
+    <a href="${SITE_URL}/canada/british-columbia">Western Canada Courses</a>
     <a href="${SITE_URL}/about">About</a>
     <a href="${SITE_URL}/blog">Blog</a>
     <a href="${SITE_URL}/faq">FAQ</a>
@@ -738,34 +868,36 @@ function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
   return html;
 }
 
-/** Build the llms.txt content for AI model discoverability */
-function buildLlmsTxt(): string {
+/** Build the llms.txt content for AI assistants and answer engines. */
+export function buildLlmsTxt(): string {
   return `# Echelon Institute
-> AI-powered exam prep platform for water and wastewater operators in Canada and the United States.
+> Independent Canadian exam-preparation platform for water and wastewater operators.
 
-Echelon Institute helps water and wastewater operators in Canada and the US pass their certification exams. The platform provides adaptive practice questions, flashcards, mock exams, study notes, interactive process guides, and a 24/7 AI tutor. The first 15 questions on every course are free.
+Echelon Institute provides course-specific practice questions, mock exams, flashcards, process guides, progress tracking, and AI-supported explanations. The first 15 questions on every course are available without an account or credit card. An Individual Exam Pass is a one-time payment for one selected course and 12 months of access.
 
-## Canadian Certifications Covered
-- Ontario OIT (Operator-in-Training) — Water Treatment and Wastewater Treatment
-- Ontario Class 1, 2, 3, 4 — Water Treatment
-- Ontario Class 1, 2, 3, 4 — Water Distribution
-- Ontario Class 1, 2, 3, 4 — Wastewater Treatment
-- Ontario Class 1, 2, 3, 4 — Wastewater Collection
-- British Columbia EOCP (Environmental Operators Certification Program)
-- Alberta AWWOA (Alberta Water & Wastewater Operators Association) Level 1–4
-- Saskatchewan SLWA (Saskatchewan Water and Wastewater Association)
-- Manitoba WQAM (Water and Wastewater Association of Manitoba)
+Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO, MOECP, EOCP, WPI, or a provincial or US state certifying authority. Official authority documents control eligibility, exam content, permitted references, and certification decisions.
 
-## US Certifications Covered (ABC/WPI Standardized Exam)
+## Canadian Course Coverage
+- Ontario-specific OIT, Water Quality Analyst, and Class 1–4 preparation for water treatment, water distribution, wastewater treatment, and wastewater collection
+- WPI-aligned Class I–IV preparation for water treatment, wastewater treatment, water distribution, and wastewater collection
+- Province guides for British Columbia, Alberta, Saskatchewan, and Manitoba explain where to confirm current requirements
+
+## US Coverage
 - Water Treatment — Class I, II, III, IV
 - Wastewater Treatment — Class I, II, III, IV
 - Water Distribution — Class I, II, III, IV
 - Wastewater Collection — Class I, II, III, IV
-- US coverage varies by state and is labelled full, partial, or limited; candidates should confirm requirements with their certifying authority
-- Content aligned to 2025 WPI Need-to-Know Criteria published by Water Professionals International (WPI) and the Association of Boards of Certification (ABC)
+- Coverage varies by state and is labelled full, partial, or limited. Candidates should confirm fit with their state authority before purchasing.
 
 ## Key Pages
 - Homepage: ${SITE_URL}/
+- Ontario Exam Prep: ${SITE_URL}/canada/ontario
+- British Columbia Exam Prep: ${SITE_URL}/canada/british-columbia
+- Alberta Exam Prep: ${SITE_URL}/canada/alberta
+- Saskatchewan Exam Prep: ${SITE_URL}/canada/saskatchewan
+- Manitoba Exam Prep: ${SITE_URL}/canada/manitoba
+- Course Catalogue: ${SITE_URL}/#courses
+- Teams: ${SITE_URL}/teams
 - US Operator Exam Prep: ${SITE_URL}/us
 - US Courses: ${SITE_URL}/us/courses
 - US States: ${SITE_URL}/us/states
@@ -776,6 +908,9 @@ Echelon Institute helps water and wastewater operators in Canada and the US pass
 - Blog: ${SITE_URL}/blog
 - WPI Process Guides: ${SITE_URL}/wpi
 - Jobs Board: ${SITE_URL}/jobs
+
+## Course Detail Pages
+${COURSE_SEO_PAGES.map(course => `- ${course.displayName}: ${SITE_URL}${course.path}`).join("\n")}
 
 ## Blog Articles (for detailed certification information)
 - ${SITE_URL}/blog/how-to-pass-ontario-oit-water-exam

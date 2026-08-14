@@ -35,13 +35,19 @@ function setMeta(name: string, content: string, property = false) {
 
 export function usePageMeta({ title, description, keywords, path, noindex }: PageMetaOptions) {
   useEffect(() => {
-    const fullTitle = `${title} | ${BASE_TITLE}`;
+    const fullTitle = title.toLowerCase().includes(BASE_TITLE.toLowerCase())
+      ? title
+      : `${title} | ${BASE_TITLE}`;
     const canonicalUrl = `${BASE_URL}${path ?? window.location.pathname}`;
 
     // Basic
     document.title = fullTitle;
     setMeta("description", description);
-    if (keywords) setMeta("keywords", keywords);
+    if (keywords) {
+      setMeta("keywords", keywords);
+    } else {
+      document.querySelector('meta[name="keywords"]')?.remove();
+    }
 
     // Open Graph
     setMeta("og:title", fullTitle, true);
@@ -50,6 +56,7 @@ export function usePageMeta({ title, description, keywords, path, noindex }: Pag
     setMeta("og:image", OG_IMAGE, true);
     setMeta("og:type", "website", true);
     setMeta("og:site_name", BASE_TITLE, true);
+    setMeta("og:locale", "en_CA", true);
 
     // Twitter Card
     setMeta("twitter:card", "summary_large_image");
