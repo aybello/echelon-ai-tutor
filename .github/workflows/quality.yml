@@ -45,7 +45,7 @@ jobs:
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_ci \
             < /tmp/echelon-baseline.sql
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
-            -e "CREATE DATABASE echelon_migration_ci; CREATE TABLE echelon_migration_ci.exam_outcomes (id int PRIMARY KEY); CREATE TABLE echelon_migration_ci.questions (id int PRIMARY KEY);"
+            -e "CREATE DATABASE echelon_migration_ci; CREATE TABLE echelon_migration_ci.exam_outcomes (id int PRIMARY KEY); CREATE TABLE echelon_migration_ci.questions (id int PRIMARY KEY, bankKey varchar(100) NOT NULL);"
           sed '/^--> statement-breakpoint$/d' drizzle/0051_product_observability.sql \
             | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_migration_ci
           sed '/^--> statement-breakpoint$/d' drizzle/0052_activation_outcomes.sql \
