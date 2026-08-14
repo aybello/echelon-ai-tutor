@@ -141,6 +141,7 @@ export interface CourseSeoPage {
 }
 
 function levelLabel(course: CourseEntry): string {
+  if (course.track === "water-quality") return "Specialty certification";
   if (course.classLevel === 0) return "Entry level";
   return course.examFamily === "western"
     ? `Class ${["", "I", "II", "III", "IV"][course.classLevel]}`

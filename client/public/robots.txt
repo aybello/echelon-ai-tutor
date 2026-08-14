@@ -17,6 +17,7 @@ Allow: /canada/
 # that should not be indexed by search engines
 Disallow: /admin
 Disallow: /admin/
+Disallow: /quiz
 Disallow: /dashboard
 Disallow: /account
 Disallow: /login

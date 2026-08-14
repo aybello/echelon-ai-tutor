@@ -31,6 +31,10 @@ describe("SEO and geographic landing-page contract", () => {
         productByKey.get(course.productKey)?.priceCAD
       );
     }
+
+    expect(
+      COURSE_SEO_PAGES.find(course => course.courseKey === "wqa")?.levelLabel
+    ).toBe("Specialty certification");
   });
 
   it("publishes unique province pages and server-renders every generated route", () => {
@@ -59,7 +63,25 @@ describe("SEO and geographic landing-page contract", () => {
     expect(robots).toContain("Allow: /canada/");
     expect(robots).toContain("Disallow: /team$");
     expect(robots).not.toContain("Disallow: /teams");
-    expect(robots).not.toContain("Disallow: /quiz");
+    expect(robots).toContain("Disallow: /quiz");
+  });
+
+  it("registers public SSR routes before the development SPA catch-all", () => {
+    const coreIndex = fs.readFileSync(
+      path.resolve(process.cwd(), "server/_core/index.ts"),
+      "utf8"
+    );
+    const ssrRegistration = coreIndex.indexOf(
+      "registerPageSsrRoutes(app, isDev, viteInstance)"
+    );
+    const viteFallbackRegistration = coreIndex.indexOf(
+      "registerViteFallback(app, viteInstance)"
+    );
+    expect(ssrRegistration).toBeGreaterThan(-1);
+    expect(viteFallbackRegistration).toBeGreaterThan(-1);
+    expect(ssrRegistration).toBeLessThan(
+      viteFallbackRegistration
+    );
   });
 
   it("generates a deduplicated sitemap with all geographic and course pages", async () => {

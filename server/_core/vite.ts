@@ -3,10 +3,13 @@ import fs from "fs";
 import { type Server } from "http";
 import { nanoid } from "nanoid";
 import path from "path";
-import { createServer as createViteServer } from "vite";
+import {
+  createServer as createViteServer,
+  type ViteDevServer,
+} from "vite";
 import viteConfig from "../../vite.config";
 
-export async function setupVite(app: Express, server: Server): Promise<{ transformIndexHtml: (url: string, html: string) => Promise<string> }> {
+export async function createViteRenderer(server: Server): Promise<ViteDevServer> {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
@@ -20,9 +23,13 @@ export async function setupVite(app: Express, server: Server): Promise<{ transfo
     appType: "custom",
   });
 
+  return vite;
+}
+
+export function registerViteFallback(app: Express, vite: ViteDevServer) {
   app.use(vite.middlewares);
-  // Return vite instance so SSR handlers can use transformIndexHtml
-  // The catch-all below handles any routes not matched by SSR handlers
+  // This must be registered after explicit public SSR routes. It is the
+  // development SPA catch-all for any route that SSR does not own.
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
@@ -47,7 +54,13 @@ export async function setupVite(app: Express, server: Server): Promise<{ transfo
       next(e);
     }
   });
+}
 
+// Backward-compatible convenience wrapper for callers that do not need to
+// register public SSR routes ahead of Vite's development catch-all.
+export async function setupVite(app: Express, server: Server): Promise<ViteDevServer> {
+  const vite = await createViteRenderer(server);
+  registerViteFallback(app, vite);
   return vite;
 }
 

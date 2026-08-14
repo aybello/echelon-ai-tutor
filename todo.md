@@ -1389,3 +1389,16 @@
 - [x] Classify every schema difference as verifier defect, intentional production state, incorrect schema.ts, or required additive migration
 - [x] Make no production schema changes, do not adopt the baseline, and do not replay historical migrations
 - [ ] Approve PR #17 only after read-only production verification reports zero blocking errors
+
+## Latest Repository Update Review — August 14 (Follow-up)
+- [x] Fetch and identify the newly available repository update
+- [x] Assess conflicts, regressions, and compatibility with the current product
+- [x] Present a merge recommendation before changing production
+
+## SEO and GEO Landing-Page Foundation
+- [x] Merge the approved registry-driven SEO/GEO landing-page branch
+- [x] Retain `Disallow: /quiz` while allowing the new public course and provincial pages
+- [x] Correct the WQA SEO landing-page level label so it does not present WQA as Class 4
+- [x] Fix public SEO SSR route ordering so crawler requests receive page-specific metadata before the development SPA catch-all
+- [x] Run regression coverage and verify public route metadata, SSR, sitemap, and robots behavior
+- [ ] Deploy the approved SEO/GEO foundation and synchronize GitHub
