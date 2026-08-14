@@ -1377,3 +1377,15 @@
 - [x] Replace fabricated Teams-page social-proof figures exposed during visual verification
 - [x] Run full regression coverage and verify billing/purchase-success behavior
 - [x] Deploy both approved improvements and synchronize GitHub
+
+## Latest Repository Update Review — August 14
+- [x] Fetch and identify the newly available repository update
+- [x] Assess conflicts, regressions, and compatibility with the current product
+- [x] Present a merge recommendation before changing production
+
+## Read-Only Migration-Safety Reconciliation
+- [x] Fix the verifier NON_UNIQUE type-conversion defect without touching production data or schema
+- [x] Export a sanitized metadata-only production schema contract with no customer data
+- [x] Classify every schema difference as verifier defect, intentional production state, incorrect schema.ts, or required additive migration
+- [x] Make no production schema changes, do not adopt the baseline, and do not replay historical migrations
+- [ ] Approve PR #17 only after read-only production verification reports zero blocking errors
