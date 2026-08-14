@@ -399,7 +399,7 @@ export default function Teams() {
           {/* Security note */}
           <div className="flex items-start gap-3 text-gray-400 text-sm">
             <Shield className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
-            <span>Secure checkout via Stripe. Annual billing. Cancel or adjust seats at any time through the manager dashboard.</span>
+            <span>Secure checkout via Stripe. Your receipt and paid invoice are emailed automatically. Annual billing; cancel or adjust seats through the manager dashboard.</span>
           </div>
 
           <div className="text-sm text-gray-400">

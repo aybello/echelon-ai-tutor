@@ -46,6 +46,7 @@ import {
   previewFlexBulkOnboarding,
 } from "../teams/flexBulkOnboardingService";
 import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
+import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 
 const flexBulkRowsSchema = z.array(z.object({
   clientRowId: z.string().min(1).max(64),
@@ -282,6 +283,7 @@ export const teamFlexRouter = router({
       } else {
         throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your email address." });
       }
+      const billingEmail = (input.billingEmail ?? managerEmail).toLowerCase().trim();
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -475,7 +477,11 @@ export const teamFlexRouter = router({
           payment_method_types: ["card"],
           mode: "payment",
           line_items: stripeLineItems as any,
-          customer_email: input.billingEmail || managerEmail,
+          ...buildTeamFlexBillingDocumentOptions({
+            billingEmail,
+            organizationName: input.organizationName,
+            orderId,
+          }),
           metadata: {
             type: "team_flex",
             teamFlexOrderId: String(orderId),
