@@ -12,7 +12,7 @@ interface Props {
   history: HistoryEntry[];
   patternMode: boolean;
   onClose: () => void;
-  examType?: string; // for AI memory context
+  examType: string; // canonical course key for server-owned tutor context
 }
 
 function renderMsg(text: string) {
@@ -64,6 +64,10 @@ export default function AITutor({
   const [loading, setLoading] = useState(false);
   const [lastUserMsg, setLastUserMsg] = useState<string | null>(null);
   const chatRef = useRef<HTMLDivElement>(null);
+  const accessToken = (() => {
+    try { return localStorage.getItem("echelon_access_token") ?? undefined; }
+    catch { return undefined; }
+  })();
 
   useEffect(() => {
     if (chatRef.current) {
@@ -118,53 +122,22 @@ export default function AITutor({
     setLoading(true);
     setLastUserMsg(userMsg);
 
-    const historyContext =
-      normHistory.length > 0
-        ? `\n\nStudent's recent performance:\n${normHistory
-            .slice(-5)
-            .map(
-              (h) =>
-                `- Q${h.questionId} (${h.module}): ${h.correct ? "✓ Correct" : "✗ Wrong"} | Confidence: ${h.confidence}/5`
-            )
-            .join("\n")}`
-        : "";
-
-    const systemPrompt = `You are an expert AI tutor for Echelon Institute — Canadian water and wastewater operator certification exam preparation. You are knowledgeable about provincial certification programs across Canada including Ontario (OWWCO/MECP), British Columbia (EOCP), Alberta (EPA), and other provincial frameworks.
-
-${
-  patternMode
-    ? `PATTERN ANALYSIS MODE: The student has a pattern of getting ${question?.module || "certain"} questions wrong. Your goal is to diagnose the root misconception through Socratic questioning. Ask them to explain their thinking, identify the exact point where their mental model breaks down, and rebuild it correctly.`
-    : `
-Current question: ${questionText}
-Module: ${question?.module}
-Type: ${(question as any)?.type ?? "conceptual"}
-Correct answer: ${correctIdx !== undefined ? question?.options[correctIdx]?.replace(/^[A-Da-d][.):]\s*/, "") : "(not yet confirmed)"}
-Explanation: ${question?.explanation}
-${(question as any)?.formula ? `Formula: ${(question as any).formula}` : ""}
-${question?.steps ? `Steps: ${question.steps.map((s, i) => `${i + 1}. ${s.l}: ${s.c}`).join(" | ")}` : ""}
-${userAnswer !== null ? `Student selected: ${question?.options[userAnswer ?? 0]?.replace(/^[A-Da-d][.):]\s*/, "")} (${userAnswer === correctIdx ? "CORRECT" : "INCORRECT"})` : "Student hasn't answered yet."}
-${userAnswer !== null && userAnswer !== correctIdx ? `Why student was wrong: ${(question as any)?.wrongExp?.[userAnswer ?? 0] ?? ""}` : ""}
-${(question as any)?.tip ? `Operator tip: ${(question as any).tip}` : ""}`
-}
-${historyContext}
-
-Your approach:
-- Be encouraging, warm, and patient — exam anxiety is real
-- Use ** for bold on key numbers, formulas, and terms
-- Show calculations step by step with clear formatting
-- Connect everything to real operator practice and relevant provincial regulations
-- Keep responses concise (3-5 sentences) unless doing a full worked example
-- If the student seems confused, ask a clarifying question rather than lecturing
-- Reference applicable regulations (e.g., O. Reg. 170/03 for Ontario, EOCP for BC, Alberta EPA) where relevant
-- If they've made the same mistake before (check the history), mention it gently`;
-
     try {
       const result = await chatMutation.mutateAsync({
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...newMessages.map((m) => ({ role: m.role as "user" | "assistant", content: typeof m.content === "string" ? m.content : String(m.content) })),
-        ],
-        examType: examType || undefined,
+        messages: newMessages.map((m) => ({
+          role: m.role as "user" | "assistant",
+          content: typeof m.content === "string" ? m.content : String(m.content),
+        })),
+        examType,
+        questionId: question?.id && question.id > 0 ? question.id : undefined,
+        selectedIndex: userAnswer,
+        patternMode,
+        recentPerformance: normHistory.slice(-6).map((entry) => ({
+          module: entry.module,
+          correct: entry.correct === true,
+          confidence: typeof entry.confidence === "number" ? entry.confidence : null,
+        })),
+        accessToken,
       });
       const replyText = typeof result.reply === "string" ? result.reply : String(result.reply);
       setMessages((prev) => [...prev, { role: "assistant" as const, content: replyText }]);
@@ -281,6 +254,7 @@ Your approach:
                   examType,
                   messages: messages.filter(m => m.role === "user" || m.role === "assistant"),
                   sessionStartMs,
+                  accessToken,
                 });
               }
               onClose();

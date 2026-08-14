@@ -267,6 +267,13 @@ export function registerStripeWebhook(app: Express) {
           });
 
           if (result.state === "completed" || result.state === "already_completed") {
+            if (result.state === "completed" && event.type === "customer.subscription.created") {
+              await trackEvent("subscription_created", {
+                email: managerEmail,
+                productKey: "teams-all-access",
+                extra: { subscriptionType: "organization", tier, seats },
+              });
+            }
             return res.json({ received: true });
           }
           if (result.state === "busy") {
@@ -364,6 +371,12 @@ export function registerStripeWebhook(app: Express) {
               title: `New Subscription: ${tier} (${province})`,
               content: `${email} subscribed to ${tier} for ${province}. Expires: ${currentPeriodEnd.toISOString()}`,
             });
+            await trackEvent("subscription_created", {
+              userId: userId?.toString() ?? null,
+              email,
+              productKey: `${province}-${tier}`,
+              extra: { subscriptionType: "individual", tier, province },
+            });
             // Send activation confirmation email (non-blocking)
             const subTierLabel = TIER_LABELS[tier as ST] ?? tier;
             const subProvinceLabel = PROVINCE_LABELS[province as SP] ?? province;
@@ -400,24 +413,56 @@ export function registerStripeWebhook(app: Express) {
           // Org cancellation: expire all org-managed seats
           if (sub.metadata?.type === "org") {
             const orgRow = await db
-              .select({ id: organizations.id })
+              .select({ id: organizations.id, managerEmail: organizations.managerEmail })
               .from(organizations)
               .where(eq(organizations.stripeSubscriptionId, sub.id))
               .limit(1);
             if (orgRow.length > 0) {
               const orgId = orgRow[0].id;
+              const members = await db
+                .select({ email: organizationMembers.email })
+                .from(organizationMembers)
+                .where(and(
+                  eq(organizationMembers.orgId, orgId),
+                  eq(organizationMembers.role, "operator"),
+                  eq(organizationMembers.status, "assigned"),
+                ));
               await db.update(organizations).set({ status: "cancelled" }).where(eq(organizations.id, orgId));
               await db.update(subscriptions).set({ status: "expired" }).where(eq(subscriptions.orgId, orgId));
               await db.update(organizationMembers).set({ status: "revoked", revokedAt: new Date() }).where(eq(organizationMembers.orgId, orgId));
+              await trackEvent("subscription_cancelled", {
+                email: orgRow[0].managerEmail,
+                orgId,
+                productKey: "teams-all-access",
+                extra: { subscriptionType: "organization", seatsRevoked: members.length },
+              });
+              for (const member of members) {
+                await trackEvent("team_seat_revoked", {
+                  email: member.email,
+                  orgId,
+                  extra: { reason: "organization_subscription_cancelled" },
+                });
+              }
               console.log(`[Stripe Webhook] Org cancelled: ${orgId}`);
             }
             return res.json({ received: true });
           }
 
+          const cancelledRows = await db
+            .select({ email: subscriptions.email, tier: subscriptions.tier, province: subscriptions.province })
+            .from(subscriptions)
+            .where(eq(subscriptions.stripeSubscriptionId, sub.id))
+            .limit(1);
           await db
             .update(subscriptions)
             .set({ status: "cancelled" })
             .where(eq(subscriptions.stripeSubscriptionId, sub.id));
+          const cancelled = cancelledRows[0];
+          await trackEvent("subscription_cancelled", {
+            email: cancelled?.email ?? null,
+            productKey: cancelled ? `${cancelled.province}-${cancelled.tier}` : null,
+            extra: { subscriptionType: "individual" },
+          });
           console.log(`[Stripe Webhook] Subscription cancelled: ${sub.id}`);
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing subscription.deleted:", err.message);

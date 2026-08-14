@@ -5,7 +5,7 @@
 import { desc, eq, sql, count, ne, and } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
@@ -26,6 +26,107 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  /** Review coverage for the certification question library. */
+  getQuestionGovernanceStats: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+
+    const [row] = await db
+      .select({
+        total: count(),
+        unreviewed: sql<number>`SUM(CASE WHEN ${questions.reviewStatus} = 'unreviewed' THEN 1 ELSE 0 END)`,
+        inReview: sql<number>`SUM(CASE WHEN ${questions.reviewStatus} = 'in_review' THEN 1 ELSE 0 END)`,
+        approved: sql<number>`SUM(CASE WHEN ${questions.reviewStatus} = 'approved' THEN 1 ELSE 0 END)`,
+        rejected: sql<number>`SUM(CASE WHEN ${questions.reviewStatus} = 'rejected' THEN 1 ELSE 0 END)`,
+        missingSource: sql<number>`SUM(CASE WHEN ${questions.sourceTitle} IS NULL OR ${questions.sourceReference} IS NULL THEN 1 ELSE 0 END)`,
+      })
+      .from(questions);
+
+    return {
+      total: Number(row?.total ?? 0),
+      unreviewed: Number(row?.unreviewed ?? 0),
+      inReview: Number(row?.inReview ?? 0),
+      approved: Number(row?.approved ?? 0),
+      rejected: Number(row?.rejected ?? 0),
+      missingSource: Number(row?.missingSource ?? 0),
+    };
+  }),
+
+  /** A bounded admin queue for sourcing and reviewing question content. */
+  getQuestionGovernanceQueue: adminProcedure
+    .input(z.object({
+      bankKey: z.string().trim().min(1).max(64).optional(),
+      status: z.enum(["unreviewed", "in_review", "approved", "rejected"]).optional(),
+      limit: z.number().int().min(1).max(200).default(100),
+    }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      return db
+        .select({
+          id: questions.id,
+          bankKey: questions.bankKey,
+          questionNum: questions.questionNum,
+          module: questions.module,
+          question: questions.question,
+          sourceTitle: questions.sourceTitle,
+          sourceReference: questions.sourceReference,
+          sourceUrl: questions.sourceUrl,
+          blueprintObjective: questions.blueprintObjective,
+          reviewStatus: questions.reviewStatus,
+          reviewedBy: questions.reviewedBy,
+          reviewedAt: questions.reviewedAt,
+        })
+        .from(questions)
+        .where(and(
+          input.bankKey ? eq(questions.bankKey, input.bankKey) : undefined,
+          input.status ? eq(questions.reviewStatus, input.status) : undefined,
+        ))
+        .orderBy(questions.bankKey, questions.questionNum)
+        .limit(input.limit);
+    }),
+
+  /** Persist one question's citation and review decision with server-owned reviewer identity. */
+  reviewQuestion: adminProcedure
+    .input(z.object({
+      id: z.number().int().positive(),
+      sourceTitle: z.string().trim().max(255).nullable(),
+      sourceReference: z.string().trim().max(512).nullable(),
+      sourceUrl: z.string().trim().url().max(1024).nullable(),
+      blueprintObjective: z.string().trim().max(255).nullable(),
+      reviewStatus: z.enum(["unreviewed", "in_review", "approved", "rejected"]),
+    }).superRefine((value, ctx) => {
+      if (value.reviewStatus === "approved" && (!value.sourceTitle || !value.sourceReference)) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Approved questions require a source title and precise source reference.",
+          path: ["sourceReference"],
+        });
+      }
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const reviewer = normalizeEmail(ctx.user.email ?? "") || ctx.user.name || `user:${ctx.user.id}`;
+      const reviewed = input.reviewStatus !== "unreviewed";
+      await db
+        .update(questions)
+        .set({
+          sourceTitle: input.sourceTitle || null,
+          sourceReference: input.sourceReference || null,
+          sourceUrl: input.sourceUrl || null,
+          blueprintObjective: input.blueprintObjective || null,
+          reviewStatus: input.reviewStatus,
+          reviewedBy: reviewed ? reviewer : null,
+          reviewedAt: reviewed ? new Date() : null,
+        })
+        .where(eq(questions.id, input.id));
+
+      return { success: true };
+    }),
+
   /** Summary counts for the dashboard header */
   stats: adminProcedure.query(async () => {
     const db = await getDb();

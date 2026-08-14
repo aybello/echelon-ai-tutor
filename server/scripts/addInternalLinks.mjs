@@ -23,7 +23,7 @@ const linkMap = {
       { slug: "ontario-water-operator-exam-math-formulas-cheat-sheet", title: "Ontario Water Operator Exam: Essential Math Formulas and Practice Problems" },
     ],
     courseLink: "/quiz",
-    courseName: "OIT Practice (free, 500+ questions)",
+    courseName: "OIT Practice (free, 400+ questions)",
   },
   "ontario-class-1-vs-class-2-water-operator-differences": {
     related: [
@@ -41,7 +41,7 @@ const linkMap = {
       { slug: "eocp-wastewater-operator-certification-ontario-guide", title: "EOCP Wastewater Operator Certification in Ontario: Complete Guide" },
     ],
     courseLink: "/quiz",
-    courseName: "OIT Practice (free, 500+ questions)",
+    courseName: "OIT Practice (free, 400+ questions)",
   },
   "eocp-wastewater-operator-certification-ontario-guide": {
     related: [

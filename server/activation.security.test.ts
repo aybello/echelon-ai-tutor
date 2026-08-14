@@ -27,9 +27,13 @@ describe("activation journey security invariants", () => {
   });
 
   it("allowlists anonymous funnel events without accepting email or metadata", () => {
-    expect(funnelSource).toContain('z.discriminatedUnion("event"');
-    expect(funnelSource).not.toContain("email:");
-    expect(funnelSource).not.toContain("metadata:");
+    const publicInputSchema = funnelSource.slice(
+      funnelSource.indexOf(".input("),
+      funnelSource.indexOf(".mutation("),
+    );
+    expect(publicInputSchema).toContain('z.discriminatedUnion("event"');
+    expect(publicInputSchema).not.toContain("email:");
+    expect(publicInputSchema).not.toContain("metadata:");
   });
 
   it("renders an entitlement recovery state before retaining the activation loading screen", () => {

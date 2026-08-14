@@ -57,7 +57,7 @@ export default function Class2WaterMockExam() {
       accentColor2="#0E7490"
       showProvinceSelector={true}
       currentPath="/class2-water-mock"
-      infoLine="500+ questions · Ontario (MECP) · BC (EOCP Level II) · Alberta (AWWOA Class II)"
+      infoLine="400+ questions · Ontario (MECP) · BC (EOCP Level II) · Alberta (AWWOA Class II)"
       stream="water"
     />
   );

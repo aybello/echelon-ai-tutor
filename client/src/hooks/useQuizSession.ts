@@ -111,8 +111,33 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
+/** Build the single canonical client-side record for a submitted answer. */
+export function createHistoryEntry(
+  question: DBQuestion,
+  selectedOption: number,
+  confidence: number | null,
+): HistoryEntry {
+  return {
+    questionId: question.id,
+    module: question.module,
+    difficulty: question.difficulty ?? undefined,
+    correct: selectedOption === (question.correctIndex ?? 0),
+    confidence,
+    selectedOption,
+    questionObj: question,
+  };
+}
+
+export function summarizeHistory(history: HistoryEntry[]): {
+  correctCount: number;
+  wrongCount: number;
+} {
+  const correctCount = history.filter((entry) => entry.correct === true).length;
+  return { correctCount, wrongCount: history.length - correctCount };
+}
+
 // ─── Adaptive next-question selection ────────────────────────────────────────
-function getAdaptiveNext(
+export function getAdaptiveNext(
   history: HistoryEntry[],
   pool: DBQuestion[],
   trialUnlocked: boolean,
@@ -232,6 +257,31 @@ export function useQuizSession({
   const [quizSettings, setQuizSettings] =
     useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const analyticsMutation = trpc.funnelAnalytics.track.useMutation();
+  const analyticsStartedRef = useRef(false);
+  const analyticsCompletedRef = useRef(false);
+
+  const resetAnalyticsTracking = useCallback(() => {
+    analyticsStartedRef.current = false;
+    analyticsCompletedRef.current = false;
+  }, []);
+
+  const trackQuizCompleted = useCallback((
+    completedHistory: HistoryEntry[],
+    completionReason: "session_limit" | "preview_gate" | "pool_exhausted",
+  ) => {
+    if (analyticsCompletedRef.current || completedHistory.length === 0) return;
+    analyticsCompletedRef.current = true;
+    const totals = summarizeHistory(completedHistory);
+    analyticsMutation.mutate({
+      event: "quiz_completed",
+      examType,
+      quizMode,
+      questionCount: completedHistory.length,
+      correctCount: totals.correctCount,
+      completionReason,
+    });
+  }, [analyticsMutation, examType, quizMode]);
 
   // ── Missed-questions data ──────────────────────────────────────────────────
   const [missedIds, setMissedIds] = useState<number[]>([]);
@@ -282,8 +332,7 @@ export function useQuizSession({
   }, [attemptStats, allQuestions.length]);
 
   // ── Derived ────────────────────────────────────────────────────────────────
-  const correctCount = history.filter((h) => h.correct === true).length;
-  const wrongCount = history.length - correctCount;
+  const { correctCount, wrongCount } = summarizeHistory(history);
   // sessionSize: quick10 is always 10; the free preview is always fixed at
   // DEFAULT_SESSION_SIZE (so the counter/limit shown to a locked user can never
   // disagree with the actual paywall); paid users get their configured setting.
@@ -345,8 +394,17 @@ export function useQuizSession({
   );
 
   const setTutorOpen = useCallback((v: boolean) => {
+    if (v && accessData?.hasAccess !== true) {
+      toast("AI Tutor is included with an active course pass", {
+        description: "Unlock this course with a paid pass to ask the tutor questions.",
+      });
+      return;
+    }
+    if (v && !tutorOpen) {
+      analyticsMutation.mutate({ event: "ai_tutor_opened", examType });
+    }
     setTutorOpenState(v);
-  }, []);
+  }, [accessData?.hasAccess, analyticsMutation, examType, tutorOpen]);
 
   // ── Initialize (call once when allQuestions loads) ──────────────────────────
   const initialize = useCallback(() => {
@@ -360,19 +418,19 @@ export function useQuizSession({
     setInitialized(true);
   }, [initialized, allQuestions]);
 
+  useEffect(() => {
+    if (!initialized || !current || analyticsStartedRef.current) return;
+    analyticsStartedRef.current = true;
+    analyticsMutation.mutate({ event: "quiz_started", examType, quizMode });
+  }, [analyticsMutation, current, examType, initialized, quizMode]);
+
   // ── Confirm answer (step 1: lock answer, show explanation) ─────────────────
   const handleConfirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
     const correctIdx = current.correctIndex ?? 0;
     const isCorrect = selected === correctIdx;
 
-    const entry: HistoryEntry = {
-      questionId: current.id,
-      module: current.module,
-      confidence,
-      selectedOption: selected,
-      questionObj: current,
-    };
+    const entry = createHistoryEntry(current, selected, confidence);
 
     const updatedHistory = [...history, entry];
     setHistory(updatedHistory);
@@ -411,6 +469,9 @@ export function useQuizSession({
       updatedHistory.length >= sessionSize
     ) {
       setTrialDone(true);
+      trackQuizCompleted(updatedHistory, "preview_gate");
+    } else if (updatedHistory.length >= sessionSize) {
+      trackQuizCompleted(updatedHistory, "session_limit");
     }
   }, [
     selected,
@@ -422,12 +483,14 @@ export function useQuizSession({
     refetchMissed,
     quizMode,
     sessionSize,
+    trackQuizCompleted,
   ]);
 
   // ── Next question (step 2: advance to next question) ───────────────────────
   const handleNext = useCallback(() => {
     // Quick 10 stop: end session cleanly at 10 (never paywalled)
     if (quizMode === "quick10" && history.length >= 10) {
+      trackQuizCompleted(history, "session_limit");
       setCurrent(null);
       return;
     }
@@ -435,6 +498,7 @@ export function useQuizSession({
     // Free (locked) users are capped at the free preview in every mode except
     // quick10 (which self-limits at 10). sessionSize is clamped to 15 for them.
     if (!trialUnlocked && quizMode !== "quick10" && history.length >= sessionSize) {
+      trackQuizCompleted(history, "preview_gate");
       setTrialDone(true);
       return;
     }
@@ -443,6 +507,7 @@ export function useQuizSession({
     // showing the Session Complete screen. Missed-review is intentionally
     // exempt — it runs until the missed pool is exhausted.
     if (trialUnlocked && quizMode === "standard" && history.length >= sessionSize) {
+      trackQuizCompleted(history, "session_limit");
       setCurrent(null);
       return;
     }
@@ -461,13 +526,14 @@ export function useQuizSession({
       next = getAdaptiveNext(history, recycledPool, trialUnlocked);
       if (!next) {
         // Truly exhausted (very small bank + long session) — end session cleanly
+        trackQuizCompleted(history, "pool_exhausted");
         setCurrent(null);
         return;
       }
     }
     setCurrent(next);
     clearUI();
-  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI]);
+  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted]);
 
   // ── Go back (undo last answer) ─────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -519,6 +585,7 @@ export function useQuizSession({
 
   // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {
+    resetAnalyticsTracking();
     setHistory([]);
     setUsedIds(new Set());
     setTrialDone(false);
@@ -533,12 +600,13 @@ export function useQuizSession({
       if (filtered.length > 0) newPool = filtered;
     }
     setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
-  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI]);
+  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback(
     (mode: QuizMode) => {
       setQuizMode(mode);
+      resetAnalyticsTracking();
       setHistory([]);
       setUsedIds(new Set());
       setTrialDone(false);
@@ -558,13 +626,14 @@ export function useQuizSession({
         setCurrent(pickRandom(allQuestions));
       }
     },
-    [missedData, allQuestions, clearUI],
+    [missedData, allQuestions, clearUI, resetAnalyticsTracking],
   );
 
   // ── Settings apply ─────────────────────────────────────────────────────────
   const handleSettingsApply = useCallback(
     (settings: QuizSettings) => {
       setQuizSettings(settings);
+      resetAnalyticsTracking();
       setSettingsOpen(false);
       setHistory([]);
       setUsedIds(new Set());
@@ -581,7 +650,7 @@ export function useQuizSession({
       }
       setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
     },
-    [allQuestions, selectedModule, calcOnly, clearUI],
+    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking],
   );
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
@@ -597,12 +666,13 @@ export function useQuizSession({
       return;
     }
     setNoCalcQuestions(false);
+    resetAnalyticsTracking();
     setCalcOnly(next);
     setHistory([]);
     setUsedIds(new Set());
     clearUI();
     setCurrent(pickRandom(filtered));
-  }, [calcOnly, allQuestions, selectedModule, clearUI]);
+  }, [calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback(
@@ -639,13 +709,7 @@ export function useQuizSession({
     const isCorrect = effectiveSelected === correctIdx;
     const effectiveConfidence = latestConfidence ?? 50;
 
-    const entry: HistoryEntry = {
-      questionId: current.id,
-      module: current.module,
-      confidence: effectiveConfidence,
-      selectedOption: effectiveSelected,
-      questionObj: current,
-    };
+    const entry = createHistoryEntry(current, effectiveSelected, effectiveConfidence);
 
     setHistory((h) => [...h, entry]);
     setUsedIds((s) => new Set([...Array.from(s), current.id]));
@@ -655,7 +719,7 @@ export function useQuizSession({
       : null;
     logAttemptFn({
       questionId: current.id,
-      selectedIndex: selected ?? 0,
+      selectedIndex: effectiveSelected,
       bankKey: examType,
       confidenceLevel: confLevel,
     });

@@ -31,7 +31,7 @@ import SiteNav from "@/components/SiteNav";
 import { Building2, CheckCircle2, Zap, Shield, BarChart3, Users, TrendingUp, Award } from "lucide-react";
 
 const FEATURES = [
-  "Complete question bank for your selected stream",
+  "Every certification stream and class level in your plan",
   "AI Tutor with personalized coaching",
   "Progress dashboard per operator",
   "Manager dashboard with estimated study metrics",

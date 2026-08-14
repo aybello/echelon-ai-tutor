@@ -172,7 +172,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class1-water",
@@ -187,7 +187,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0F9FF",
     border: "#BAE6FD",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Water1 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Water1 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class2-water",
@@ -202,7 +202,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Water2 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Water2 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class3-water",
@@ -217,7 +217,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Water3 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Water3 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class4-water",
@@ -232,7 +232,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "oit-ww",
@@ -247,7 +247,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class1-ww",
@@ -262,7 +262,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class2-ww",
@@ -277,7 +277,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW2 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "WW2 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class3-ww",
@@ -292,7 +292,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW3 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "WW3 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class4-ww",
@@ -307,7 +307,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "class1-water-dist",
@@ -322,7 +322,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0F9FF",
     border: "#BAE6FD",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class2-water-dist",
@@ -337,7 +337,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class3-water-dist",
@@ -352,7 +352,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class4-water-dist",
@@ -367,7 +367,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F5F3FF",
     border: "#C4B5FD",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class1-wastewater-coll",
@@ -382,7 +382,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class2-wastewater-coll",
@@ -397,7 +397,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class3-wastewater-coll",
@@ -412,7 +412,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "class4-wastewater-coll",
@@ -427,7 +427,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F5F3FF",
     border: "#C4B5FD",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
+    features: ["400+ practice questions", "Timed mock exam", "AI Tutor", "Score history", "flashcards", "Ontario OWWCO"],
   },
   {
     key: "wqa",
@@ -442,7 +442,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#FFFBEB",
     border: "#FDE68A",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "flashcards", "Module study notes"],
+    features: ["400+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "flashcards", "Module study notes"],
   },
   {
     key: "wpi-class1-water",
@@ -457,7 +457,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WPI formula sheet", "AI Tutor", "BC / AB / SK / MB", "flashcards"],
+    features: ["400+ practice questions", "Timed mock exam", "WPI formula sheet", "AI Tutor", "BC / AB / SK / MB", "flashcards"],
   },
   {
     key: "wpi-class2-water",
@@ -1738,7 +1738,7 @@ export default function Pricing() {
             Everything you need to pass — included with your Exam Pass
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
-            Every Echelon pass includes the study tools you need. Annual access continues through its paid term if you cancel renewal.
+            Individual Exam Passes are one-time purchases with no renewal. Grandfathered annual subscriptions continue through their paid term if renewal is cancelled.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             18,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
@@ -1919,7 +1919,7 @@ function ProductCard({
   const displayBadge = isWpi && wpiLabel?.badge ? wpiLabel.badge : product.badge;
   const displayBadgeColor = isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8");
 
-  // Extract question count from first feature bullet (e.g. "500+ practice questions" → "500 Q")
+  // Extract question count from first feature bullet (e.g. "400+ practice questions" → "500 Q")
   const qMatch = product.features?.[0]?.match(/(\d[\d,]+)/);
   const questionCount = qMatch ? qMatch[1] : null;
 

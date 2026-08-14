@@ -8,7 +8,8 @@ import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs";
+type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions";
+type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   // OIT
@@ -130,6 +131,7 @@ export default function Admin() {
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>("revenue");
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+  const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
@@ -141,6 +143,11 @@ export default function Admin() {
   const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
   const orgsQ = trpc.admin.listOrganizations.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "orgs" });
   const subscriptionsQ = trpc.admin.getSubscriptions.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "subscriptions" });
+  const governanceStatsQ = trpc.admin.getQuestionGovernanceStats.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "questions" });
+  const governanceQueueQ = trpc.admin.getQuestionGovernanceQueue.useQuery(
+    { limit: 100, status: reviewFilter },
+    { enabled: user?.role === "admin" && activeTab === "questions" },
+  );
   const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
     onSuccess: (data) => {
       if (data.recovered > 0) {
@@ -175,6 +182,48 @@ export default function Admin() {
   });
 
   const utils = trpc.useUtils();
+
+  const reviewQuestion = trpc.admin.reviewQuestion.useMutation({
+    onSuccess: () => {
+      utils.admin.getQuestionGovernanceStats.invalidate();
+      utils.admin.getQuestionGovernanceQueue.invalidate();
+    },
+    onError: (err) => alert(`Question review could not be saved: ${err.message}`),
+  });
+
+  const setQuestionReviewState = (row: any, reviewStatus: ReviewStatus) => {
+    reviewQuestion.mutate({
+      id: row.id,
+      sourceTitle: row.sourceTitle || null,
+      sourceReference: row.sourceReference || null,
+      sourceUrl: row.sourceUrl || null,
+      blueprintObjective: row.blueprintObjective || null,
+      reviewStatus,
+    });
+  };
+
+  const sourceAndApproveQuestion = (row: any) => {
+    const sourceTitle = window.prompt("Source title (required)", row.sourceTitle ?? "");
+    if (sourceTitle === null) return;
+    const sourceReference = window.prompt("Precise section, page, table, or objective reference (required)", row.sourceReference ?? "");
+    if (sourceReference === null) return;
+    if (!sourceTitle.trim() || !sourceReference.trim()) {
+      alert("Approval requires both a source title and a precise source reference.");
+      return;
+    }
+    const sourceUrl = window.prompt("Source URL (optional)", row.sourceUrl ?? "");
+    if (sourceUrl === null) return;
+    const blueprintObjective = window.prompt("Certification blueprint objective (optional)", row.blueprintObjective ?? "");
+    if (blueprintObjective === null) return;
+    reviewQuestion.mutate({
+      id: row.id,
+      sourceTitle: sourceTitle.trim(),
+      sourceReference: sourceReference.trim(),
+      sourceUrl: sourceUrl.trim() || null,
+      blueprintObjective: blueprintObjective.trim() || null,
+      reviewStatus: "approved",
+    });
+  };
 
   const dismissError = trpc.admin.dismissErrorReport.useMutation({
     onSuccess: () => utils.admin.getErrorReports.invalidate(),
@@ -271,6 +320,7 @@ export default function Admin() {
     { id: "trials", label: "Trial Emails", icon: "📧" },
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
+    { id: "questions", label: "Question Review", icon: "✓" },
     { id: "scores", label: "Score History", icon: "📊" },
     { id: "feedback", label: "Feedback", icon: "💬" },
     { id: "health", label: "System Health", icon: "🩺" },
@@ -317,7 +367,7 @@ export default function Admin() {
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); }}
+            onClick={() => { stats.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); }}
             style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
             ↻ Refresh
@@ -956,6 +1006,81 @@ export default function Admin() {
                 })}
               </div>
             )}
+          </div>
+        )}
+
+        {/* -- QUESTION GOVERNANCE TAB -- */}
+        {activeTab === "questions" && (
+          <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+              <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 6 }}>✓ Question sourcing and review</div>
+              <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.5 }}>
+                A question can only be approved after its source title and exact reference are recorded. Reviewer identity and review time are added by the server.
+              </div>
+            </div>
+            {governanceStatsQ.data && (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, minmax(110px, 1fr))", gap: 8, padding: "14px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", overflowX: "auto" }}>
+                {[
+                  ["Total", governanceStatsQ.data.total],
+                  ["Unreviewed", governanceStatsQ.data.unreviewed],
+                  ["In review", governanceStatsQ.data.inReview],
+                  ["Approved", governanceStatsQ.data.approved],
+                  ["Missing source", governanceStatsQ.data.missingSource],
+                ].map(([label, value]) => (
+                  <div key={String(label)} style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px" }}>
+                    <div style={{ fontSize: 18, fontWeight: 900 }}>{String(value)}</div>
+                    <div style={{ fontSize: 10, color: "#64748B", fontWeight: 700 }}>{String(label)}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div style={{ padding: "12px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", gap: 8, alignItems: "center" }}>
+              <label htmlFor="question-review-filter" style={{ fontSize: 11, fontWeight: 700, color: "#475569" }}>Queue:</label>
+              <select
+                id="question-review-filter"
+                value={reviewFilter}
+                onChange={(event) => setReviewFilter(event.target.value as ReviewStatus)}
+                style={{ padding: "7px 10px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#fff", fontFamily: "inherit", fontSize: 11 }}
+              >
+                <option value="unreviewed">Unreviewed</option>
+                <option value="in_review">In review</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+              </select>
+              <span style={{ fontSize: 10, color: "#94A3B8" }}>Showing up to 100 questions</span>
+            </div>
+            {governanceQueueQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading review queue…</div>}
+            {governanceQueueQ.data?.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No questions in this review state.</div>}
+            {governanceQueueQ.data?.map((row) => (
+              <div key={row.id} className="admin-row" style={{ padding: "16px 20px", borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start", flexWrap: "wrap" }}>
+                  <div style={{ flex: "1 1 580px" }}>
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8, flexWrap: "wrap" }}>
+                      <span style={{ padding: "3px 8px", borderRadius: 100, background: "#DBEAFE", color: "#1D4ED8", fontSize: 10, fontWeight: 800 }}>{row.bankKey} #{row.questionNum}</span>
+                      <span style={{ fontSize: 10, color: "#64748B" }}>{row.module}</span>
+                      <span style={{ fontSize: 10, color: "#64748B", textTransform: "capitalize" }}>{row.reviewStatus.replace("_", " ")}</span>
+                    </div>
+                    <div style={{ fontSize: 13, color: "#1E293B", lineHeight: 1.55, fontWeight: 600 }}>{row.question}</div>
+                    {(row.sourceTitle || row.sourceReference) && (
+                      <div style={{ marginTop: 8, fontSize: 11, color: "#64748B", lineHeight: 1.5 }}>
+                        Source: {row.sourceTitle || "—"}{row.sourceReference ? ` — ${row.sourceReference}` : ""}
+                        {row.reviewedBy ? ` · Reviewed by ${row.reviewedBy}` : ""}
+                        {row.reviewedAt ? ` on ${formatDate(row.reviewedAt)}` : ""}
+                      </div>
+                    )}
+                  </div>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {row.reviewStatus === "unreviewed" && (
+                      <button className="admin-btn" onClick={() => setQuestionReviewState(row, "in_review")} disabled={reviewQuestion.isPending} style={{ padding: "7px 12px", borderRadius: 20, border: "1px solid #CBD5E1", background: "#fff", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Start review</button>
+                    )}
+                    <button className="admin-btn" onClick={() => sourceAndApproveQuestion(row)} disabled={reviewQuestion.isPending} style={{ padding: "7px 12px", borderRadius: 20, border: "none", background: "#059669", color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Source & approve</button>
+                    {row.reviewStatus !== "rejected" && (
+                      <button className="admin-btn" onClick={() => setQuestionReviewState(row, "rejected")} disabled={reviewQuestion.isPending} style={{ padding: "7px 12px", borderRadius: 20, border: "1px solid rgba(239,68,68,0.3)", background: "transparent", color: "#DC2626", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Reject</button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 

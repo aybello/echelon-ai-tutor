@@ -226,6 +226,15 @@ async function grantSeat(
     }
   }
 
+  if (role === "operator") {
+    await trackEvent("team_seat_assigned", {
+      email,
+      examType: primaryCourseKey,
+      orgId: org.id,
+      extra: { courseKeys: validatedKeys, reactivated: wasRevoked },
+    });
+  }
+
   // Note: annual licence usage is recorded by consumeOrReuseAnnualLicence BEFORE grantSeat is called.
   // grantSeat no longer inserts into organizationTermUsage directly.
 
@@ -278,6 +287,8 @@ async function revokeSeat(
     .update(subscriptions)
     .set({ status: "expired" })
     .where(and(eq(subscriptions.email, email), eq(subscriptions.orgId, orgId)));
+
+  await trackEvent("team_seat_revoked", { email, orgId });
 }
 
 // ── Annual licence allocation ─────────────────────────────────────────────────

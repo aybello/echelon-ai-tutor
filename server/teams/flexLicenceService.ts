@@ -268,6 +268,15 @@ export async function claimFlexLicence(
       eq(teamFlexLicences.invitationToken, invitationTokenHash),
     ));
 
+  await trackEvent("team_seat_assigned", {
+    userId: operatorUserId?.toString() ?? null,
+    email: normalizedEmail,
+    examType: licence.courseKey,
+    productKey: "teams-flex",
+    orgId: licence.organizationId,
+    extra: { licenceId: licence.id, assignmentMethod: "invitation_claim" },
+  });
+
   return { licenceId: licence.id, courseKey: licence.courseKey };
 }
 
@@ -306,6 +315,14 @@ export async function assignFlexLicence(
       invitationToken: null,
     })
     .where(eq(teamFlexLicences.id, licenceId));
+
+  await trackEvent("team_seat_assigned", {
+    userId: operatorUserId.toString(),
+    examType: licence.courseKey,
+    productKey: "teams-flex",
+    orgId,
+    extra: { licenceId, assignmentMethod: "manager_direct" },
+  });
 }
 
 // ─── Activate (explicit, first-write-wins) ────────────────────────────────────

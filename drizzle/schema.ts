@@ -348,7 +348,22 @@ export const questions = mysqlTable("questions", {
   topic: varchar("topic", { length: 128 }),
   /** Cognitive level per WPI NTK: 'recall' = knowledge/comprehension, 'application' = analysis/synthesis */
   cognitiveLevel: mysqlEnum("cognitiveLevel", ["recall", "application"]),
-}, (table) => [uniqueIndex("bank_question_idx").on(table.bankKey, table.questionNum)]);
+  /** Traceable source and blueprint metadata for content governance. */
+  sourceTitle: varchar("sourceTitle", { length: 255 }),
+  sourceReference: varchar("sourceReference", { length: 512 }),
+  sourceUrl: varchar("sourceUrl", { length: 1024 }),
+  blueprintObjective: varchar("blueprintObjective", { length: 255 }),
+  /** Existing questions start unreviewed and must be explicitly approved by an admin. */
+  reviewStatus: mysqlEnum("reviewStatus", ["unreviewed", "in_review", "approved", "rejected"])
+    .default("unreviewed")
+    .notNull(),
+  reviewedBy: varchar("reviewedBy", { length: 320 }),
+  reviewedAt: timestamp("reviewedAt"),
+}, (table) => [
+  uniqueIndex("bank_question_idx").on(table.bankKey, table.questionNum),
+  index("question_review_status_idx").on(table.reviewStatus),
+  index("question_bank_review_status_idx").on(table.bankKey, table.reviewStatus),
+]);
 
 export type QuestionRow = typeof questions.$inferSelect;
 export type InsertQuestion = typeof questions.$inferInsert;

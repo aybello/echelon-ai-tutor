@@ -20,7 +20,7 @@ const TIMELINE = [
   {
     year: "2026",
     title: "Platform Launched",
-    body: "Echelon Institute launched publicly with 500+ OIT practice questions, 10 study modules, interactive process diagrams for both drinking water and wastewater treatment, a pumping systems module, a lab and sampling module, and a formula reference — launching in Ontario with BC and Alberta coming next.",
+    body: "Echelon Institute launched publicly with 400+ OIT practice questions, 10 study modules, interactive process diagrams for both drinking water and wastewater treatment, a pumping systems module, a lab and sampling module, and a formula reference — launching in Ontario with BC and Alberta coming next.",
   },
 ];
 
@@ -329,7 +329,7 @@ export default function About() {
             Ready to Start Studying?
           </h2>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", marginBottom: 36, lineHeight: 1.7 }}>
-            500+ OIT practice questions, an AI Tutor that knows Canadian provincial regulations, and a formula sheet — all free.
+            400+ OIT practice questions, an AI Tutor that knows Canadian provincial regulations, and a formula sheet — all free.
           </p>
           {/* Google Review CTA */}
           <a

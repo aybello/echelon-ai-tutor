@@ -89,7 +89,7 @@ function buildFaqJsonLd(): string {
         name: "What is Echelon Institute?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 500+ flashcards per course, interactive process guides, and an AI tutor available 24/7.",
+          text: "Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 400+ concept flashcards per course, interactive process guides, and an AI tutor for active course-pass holders.",
         },
       },
       {
@@ -217,7 +217,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon Institute is an independent Canadian exam-preparation platform built specifically for water and wastewater operators. It provides Ontario-specific courses and WPI-aligned preparation for treatment, distribution, and collection candidates in Western Canada.</p>
 
       <h2>What's Included</h2>
-      <p>Every Echelon course includes over 500 adaptive practice questions organized by module and difficulty, 500+ digital flashcards, comprehensive study notes, timed mock exams that simulate the real test format, and an AI tutor available 24/7 to explain concepts, walk through calculations, and answer your questions in plain language.</p>
+      <p>Every Echelon course includes over 500 adaptive practice questions organized by module and difficulty, 400+ concept flashcards, comprehensive study notes, timed mock exams that simulate the real test format, and an AI tutor for active course-pass holders that explains concepts and calculations in plain language.</p>
 
       <h2>Courses Available</h2>
       <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
@@ -449,7 +449,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     jsonLd: buildFaqJsonLd(),
     bodyHtml: `
       <h2>About Echelon Institute</h2>
-      <p>Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 500+ flashcards per course, interactive process guides, mock exams, and an AI tutor available 24/7.</p>
+      <p>Echelon Institute is Canada's AI-powered exam prep platform for water and wastewater operators. It provides adaptive practice questions, module study notes, 400+ concept flashcards per course, interactive process guides, mock exams, and an AI tutor for active course-pass holders.</p>
 
       <h2>Which Provinces Are Covered?</h2>
       <p>Echelon provides Ontario-specific OIT and Class 1–4 courses plus WPI-aligned Class I–IV preparation for treatment, distribution, and collection candidates in British Columbia, Alberta, Saskatchewan, and Manitoba. Confirm current requirements with your certifying authority.</p>
@@ -458,7 +458,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Yes. The first 15 questions on every course, including OIT, are completely free — no account or credit card required. A 12-month Exam Pass is required to continue beyond the preview. <a href="${SITE_URL}/">Start practising now</a>.</p>
 
       <h2>How Many Practice Questions Are There?</h2>
-      <p>Each course has 500+ practice questions organized by module and difficulty level. Topics include treatment processes, laboratory analysis, equipment operation and maintenance, source water, and safety and administration.</p>
+      <p>Each course has 400+ practice questions organized by module and difficulty level. Topics include treatment processes, laboratory analysis, equipment operation and maintenance, source water, and safety and administration.</p>
 
       <h2>What Is the AI Tutor?</h2>
       <p>The Echelon AI tutor is a 24/7 study assistant trained on water and wastewater operator content. It explains concepts, walks through calculation steps, clarifies regulations, and answers questions about any topic in your course — all in plain language.</p>
@@ -566,7 +566,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>The WPI exam consists of 100 multiple-choice questions covering treatment processes, laboratory analysis, equipment operation and maintenance, source water quality, and safety and security. Calculation questions make up 10–16% of the exam. The passing score is 70%.</p>
 
       <h2>AI-Powered Study Tools</h2>
-      <p>Echelon's AI tutor explains every answer in detail, identifies your weak modules, and adapts the session to focus where you need it most. Practice with 500+ questions per level, take full-length 100-question timed mock exams, and review key concepts with organized flashcards.</p>
+      <p>Echelon's AI tutor explains every answer in detail, identifies your weak modules, and adapts the session to focus where you need it most. Practice with 400+ questions per level, take full-length 100-question timed mock exams, and review key concepts with organized flashcards.</p>
 
       <h2>Pricing for US Operators</h2>
       <p>Individuals can purchase a 12-month Exam Pass for one selected course. Utilities can choose targeted Course Passes or Teams All-Access. <a href="${SITE_URL}/pricing">View current pricing</a>. The first 15 questions in every course are free.</p>
@@ -590,7 +590,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     }),
     bodyHtml: `
       <h2>16 Courses for US Water and Wastewater Operators</h2>
-      <p>Echelon Institute offers 16 certification prep courses covering all four ABC/WPI streams and all four class levels. Each course includes 500+ practice questions, a 100-question timed mock exam, and organized flashcards aligned to the 2025 WPI Need-to-Know Criteria.</p>
+      <p>Echelon Institute offers 16 certification prep courses covering all four ABC/WPI streams and all four class levels. Each course includes 400+ practice questions, a 100-question timed mock exam, and organized flashcards aligned to the 2025 WPI Need-to-Know Criteria.</p>
 
       <h2>Water Treatment — Class I through Class IV</h2>
       <p>Water treatment operator courses cover coagulation, flocculation, sedimentation, filtration, disinfection, chemical feed, source water quality, and regulatory compliance. <a href="${SITE_URL}/wpi-class1-water">Start with Class I Water Treatment</a>.</p>

@@ -71,7 +71,7 @@ const DEFAULT_FEATURES: Record<string, string[]> = {
     "AI Tutor explanations on every question",
   ],
   "class3-water": [
-    "500+ Class 3 Water questions — unlimited attempts",
+    "400+ Class 3 Water questions — unlimited attempts",
     "Timed Class 3 Water mock exam",
     "Class 3 Water formula sheet",
     "AI Tutor explanations on every question",
@@ -89,25 +89,25 @@ const DEFAULT_FEATURES: Record<string, string[]> = {
     "AI Tutor explanations on every question",
   ],
   "class2-water": [
-    "500+ Class 2 Water questions — unlimited attempts",
+    "400+ Class 2 Water questions — unlimited attempts",
     "Timed Class 2 Water mock exam",
     "Water2 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class2-ww": [
-    "500+ Class 2 WW questions — unlimited attempts",
+    "400+ Class 2 WW questions — unlimited attempts",
     "Timed Class 2 WW mock exam",
     "WW2 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class1-water": [
-    "500+ Class 1 Water questions — unlimited attempts",
+    "400+ Class 1 Water questions — unlimited attempts",
     "Timed Class 1 Water mock exam",
     "Water1 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class1-ww": [
-    "500+ Class 1 WW questions — unlimited attempts",
+    "400+ Class 1 WW questions — unlimited attempts",
     "Timed Class 1 WW mock exam",
     "WW1 formula sheet",
     "AI Tutor explanations on every question",
