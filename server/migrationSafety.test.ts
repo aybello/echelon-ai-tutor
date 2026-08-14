@@ -119,6 +119,46 @@ describe("forward-only migration safety", () => {
     );
   });
 
+  it("accepts equivalent index definitions with different MySQL names", () => {
+    const expected: SchemaContract = {
+      formatVersion: 1,
+      tables: [
+        {
+          name: "diagnostic_sessions",
+          columns: [],
+          indexes: [
+            {
+              name: "diagnostic_sessions_sessionId_unique",
+              unique: true,
+              columns: ["sessionId"],
+            },
+          ],
+        },
+      ],
+    };
+    const actual: SchemaContract = {
+      formatVersion: 1,
+      tables: [
+        {
+          name: "diagnostic_sessions",
+          columns: [],
+          indexes: [
+            {
+              name: "diagnostic_sessions_session_idx",
+              unique: true,
+              columns: ["sessionId"],
+            },
+          ],
+        },
+      ],
+    };
+
+    expect(diffSchemaContracts(expected, actual)).toEqual({
+      errors: [],
+      warnings: [],
+    });
+  });
+
   it("refuses modified checksums and failed ledger states", () => {
     const migrationSql = "ALTER TABLE orders ADD COLUMN reference varchar(64);";
     const manifest: MigrationManifest = {

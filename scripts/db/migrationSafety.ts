@@ -483,25 +483,38 @@ export function diffSchemaContracts(
     const actualIndexes = new Map(
       actualTable.indexes.map(index => [index.name, index])
     );
-    const expectedIndexes = new Set(
-      expectedTable.indexes.map(index => index.name)
-    );
+    const matchedActualIndexes = new Set<string>();
     for (const expectedIndex of expectedTable.indexes) {
       const actualIndex = actualIndexes.get(expectedIndex.name);
-      if (!actualIndex) {
+      if (actualIndex) {
+        matchedActualIndexes.add(actualIndex.name);
+        const mismatch = compareIndex(expectedIndex, actualIndex);
+        if (mismatch)
+          errors.push(
+            `Index drift: ${expectedTable.name}.${expectedIndex.name} ${mismatch}`
+          );
+        continue;
+      }
+
+      // MySQL/Drizzle may assign a different name to an equivalent implicit
+      // unique index (for example, column.unique() versus an explicit index).
+      // The safety contract is the uniqueness and ordered column set, not the
+      // cosmetic identifier chosen for that index.
+      const equivalentIndex = actualTable.indexes.find(
+        index =>
+          !matchedActualIndexes.has(index.name) &&
+          compareIndex(expectedIndex, index) === null
+      );
+      if (!equivalentIndex) {
         errors.push(
           `Missing index: ${expectedTable.name}.${expectedIndex.name}`
         );
         continue;
       }
-      const mismatch = compareIndex(expectedIndex, actualIndex);
-      if (mismatch)
-        errors.push(
-          `Index drift: ${expectedTable.name}.${expectedIndex.name} ${mismatch}`
-        );
+      matchedActualIndexes.add(equivalentIndex.name);
     }
     for (const actualIndex of actualTable.indexes) {
-      if (!expectedIndexes.has(actualIndex.name))
+      if (!matchedActualIndexes.has(actualIndex.name))
         warnings.push(
           `Unexpected index: ${expectedTable.name}.${actualIndex.name}`
         );
