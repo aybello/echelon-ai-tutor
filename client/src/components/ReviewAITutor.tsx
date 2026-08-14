@@ -11,10 +11,10 @@ interface ReviewAITutorProps {
   explanation?: string;
   module?: string;
   examType: string;
-  questionId: number;
+  questionNum: number;
 }
 
-export default function ReviewAITutor({ questionText, options, correctIndex, userAnswerIndex, explanation, module, examType, questionId }: ReviewAITutorProps) {
+export default function ReviewAITutor({ questionText, options, correctIndex, userAnswerIndex, explanation, module, examType, questionNum }: ReviewAITutorProps) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [input, setInput] = useState("");
@@ -33,7 +33,7 @@ export default function ReviewAITutor({ questionText, options, correctIndex, use
       const result = await chatMutation.mutateAsync({
         messages: newMessages,
         examType,
-        questionId,
+        questionNum,
         selectedIndex: userAnswerIndex,
         patternMode: false,
         recentPerformance: [],

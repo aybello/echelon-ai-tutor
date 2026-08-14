@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { MySqlDialect } from "drizzle-orm/mysql-core";
 import type { TrpcContext } from "./_core/context";
 
 const mocks = vi.hoisted(() => ({
@@ -27,6 +28,7 @@ vi.mock("./_core/aiTutorPolicy", async () => {
 import { appRouter } from "./routers";
 
 const canonicalQuestion = {
+  id: 9_001,
   questionNum: 42,
   module: "Disinfection",
   topic: "Chlorination",
@@ -38,6 +40,8 @@ const canonicalQuestion = {
   tip: "Think about what remains after demand is satisfied.",
   isCalc: "no",
 };
+
+let questionWhere: ReturnType<typeof vi.fn>;
 
 function queryChain(rows: unknown[]) {
   return {
@@ -68,8 +72,9 @@ function createPaidContext(): TrpcContext {
 }
 
 function arrangeDatabase() {
+  questionWhere = vi.fn(() => ({ limit: vi.fn().mockResolvedValue([canonicalQuestion]) }));
   const select = vi.fn()
-    .mockReturnValueOnce(queryChain([canonicalQuestion]))
+    .mockReturnValueOnce({ from: vi.fn(() => ({ where: questionWhere })) })
     .mockReturnValueOnce(queryChain([]));
   mocks.getDb.mockResolvedValue({ select });
 }
@@ -89,7 +94,7 @@ describe("tutor.chat", () => {
     const caller = appRouter.createCaller(createPaidContext());
     const result = await caller.tutor.chat({
       examType: "class1-water",
-      questionId: 42,
+      questionNum: 42,
       selectedIndex: 0,
       patternMode: false,
       recentPerformance: [{ module: "Disinfection", correct: false, confidence: 45 }],
@@ -111,6 +116,12 @@ describe("tutor.chat", () => {
     expect(llmInput.messages[0].content).toContain("NON-NEGOTIABLE RULES");
     expect(llmInput.messages[0].content).toContain(canonicalQuestion.question);
     expect(llmInput.messages[1]).toEqual({ role: "user", content: "Why is option A correct?" });
+
+    const lookup = new MySqlDialect().sqlToQuery(questionWhere.mock.calls[0][0]);
+    expect(lookup.sql).toContain("`questions`.`bankKey` = ?");
+    expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
+    expect(lookup.sql).not.toContain("`questions`.`id` = ?");
+    expect(lookup.params).toEqual(["class1-water", 42]);
   });
 
   it("rejects caller-supplied system messages at input validation", async () => {
@@ -141,7 +152,7 @@ describe("tutor.chat", () => {
     const caller = appRouter.createCaller(createPaidContext());
     const result = await caller.tutor.chat({
       examType: "class1-water",
-      questionId: 42,
+      questionNum: 42,
       messages: [{ role: "user", content: "What is turbidity?" }],
       patternMode: false,
       recentPerformance: [],

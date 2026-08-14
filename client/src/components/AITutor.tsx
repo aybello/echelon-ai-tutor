@@ -129,7 +129,8 @@ export default function AITutor({
           content: typeof m.content === "string" ? m.content : String(m.content),
         })),
         examType,
-        questionId: question?.id && question.id > 0 ? question.id : undefined,
+        // Question.id in the learner model is the bank-scoped questionNum.
+        questionNum: question?.id && question.id > 0 ? question.id : undefined,
         selectedIndex: userAnswer,
         patternMode,
         recentPerformance: normHistory.slice(-6).map((entry) => ({

@@ -37,7 +37,8 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
       const result = await chatMutation.mutateAsync({
         messages: newMessages,
         examType,
-        questionId: q.id,
+        // ExamQuestion.id is the bank-scoped questionNum returned by quiz.getQuestions.
+        questionNum: q.id,
         selectedIndex: userAnswerIdx,
         patternMode: false,
         recentPerformance: [],
@@ -486,10 +487,10 @@ export default function MockExamShell({
     const answerPayload = answers
       .filter(a => a.selected !== null)
       .map(a => ({
-        questionId: questions[a.questionIndex]?.id ?? 0,
+        questionNum: questions[a.questionIndex]?.id ?? 0,
         selectedIndex: a.selected as number,
       }))
-      .filter(a => a.questionId > 0);
+      .filter(a => a.questionNum > 0);
     submitMock.mutate({
       sessionId,
       examType: scoreExamType ?? productKey,

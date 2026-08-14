@@ -395,7 +395,7 @@ export const appRouter = router({
         stream: z.enum(["water", "wastewater"]).optional(),
         calcOnly: z.boolean().optional(),
         answers: z.array(z.object({
-          questionId: z.number().int().positive(),
+          questionNum: z.number().int().positive(),
           selectedIndex: z.number().int().min(0).max(3),
         })).min(1).max(200),
       }))
@@ -403,13 +403,16 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-        const questionIds = input.answers.map(a => a.questionId);
+        const questionNums = input.answers.map(a => a.questionNum);
         const questionRows = await db
-          .select({ id: questions.id, correctIndex: questions.correctIndex, module: questions.module, difficulty: questions.difficulty })
+          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, difficulty: questions.difficulty })
           .from(questions)
-          .where(inArray(questions.id, questionIds));
+          .where(and(
+            eq(questions.bankKey, input.bankKey),
+            inArray(questions.questionNum, questionNums),
+          ));
 
-        const questionMap = new Map(questionRows.map(q => [q.id, q]));
+        const questionMap = new Map(questionRows.map(q => [q.questionNum, q]));
         const identity = await resolveLearningIdentity(ctx);
         const hasVerifiedIdentity = Boolean(identity.userId || identity.studentEmail);
 
@@ -417,7 +420,7 @@ export const appRouter = router({
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
 
         for (const answer of input.answers) {
-          const q = questionMap.get(answer.questionId);
+          const q = questionMap.get(answer.questionNum);
           if (!q) continue;
           const isCorrect = answer.selectedIndex === q.correctIndex;
           if (isCorrect) correct++;
@@ -431,7 +434,7 @@ export const appRouter = router({
               studentEmail: identity.studentEmail,
               examType: input.examType,
               topic: mod,
-              questionId: answer.questionId,
+              questionId: answer.questionNum,
               correct: isCorrect ? "yes" : "no",
               difficulty: q.difficulty ?? null,
               quizMode: "mock",
@@ -661,7 +664,9 @@ export const appRouter = router({
             }),
           ).min(1).max(20),
           examType: z.string().min(1).max(64),
-          questionId: z.number().int().positive().optional(),
+          // Learner-facing question identifiers are the per-bank questionNum,
+          // never the questions table's internal auto-increment primary key.
+          questionNum: z.number().int().positive().optional(),
           selectedIndex: z.number().int().min(0).max(3).nullable().optional(),
           patternMode: z.boolean().default(false),
           recentPerformance: z.array(z.object({
@@ -706,7 +711,7 @@ export const appRouter = router({
         }
 
         let questionContext: Parameters<typeof buildTutorSystemPrompt>[0]["question"] = null;
-        if (input.questionId) {
+        if (input.questionNum) {
           const [row] = await db
             .select({
               questionNum: questions.questionNum,
@@ -723,7 +728,7 @@ export const appRouter = router({
             .from(questions)
             .where(and(
               eq(questions.bankKey, course.questionBankKey),
-              eq(questions.questionNum, input.questionId),
+              eq(questions.questionNum, input.questionNum),
             ))
             .limit(1);
           if (!row) {
@@ -800,7 +805,7 @@ export const appRouter = router({
             email: resolvedEmail,
             examType: course.courseKey,
             productKey: course.productKey,
-            extra: { questionId: input.questionId ?? null, patternMode: input.patternMode },
+            extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
           });
           return { reply };
         } catch (err) {
