@@ -138,9 +138,9 @@ export default function Teams() {
           </p>
           <div className="flex flex-wrap justify-center gap-6 mt-6">
             {[
-            { icon: <Users className="w-4 h-4" />, value: "25", label: "Operators at Utilities Kingston" },
-            { icon: <Award className="w-4 h-4" />, value: "105", label: "Five-star ratings" },
-            { icon: <TrendingUp className="w-4 h-4" />, value: "18,885", label: "Questions answered" },
+            { icon: <Users className="w-4 h-4" />, value: "Annual All-Access", label: "every stream and level" },
+            { icon: <Award className="w-4 h-4" />, value: "Course Passes", label: "3, 6, or 12 months" },
+            { icon: <TrendingUp className="w-4 h-4" />, value: "Team dashboard", label: "study progress and readiness" },
             ].map((stat: { icon: React.ReactNode; value: string; label: string }) => (
               <div key={stat.label} className="flex items-center gap-2 text-white/80">
                 <span className="text-cyan-200">{stat.icon}</span>
@@ -149,11 +149,11 @@ export default function Teams() {
               </div>
             ))}
           </div>
-          {/* Trust badge */}
+          {/* Product positioning */}
           <div className="mt-4 flex justify-center">
             <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2.5 backdrop-blur-sm">
-              <span className="text-yellow-300 text-sm">★★★★★</span>
-              <span className="text-white/90 text-sm font-medium">Trusted by <span className="font-bold text-white">Utilities Kingston</span></span>
+              <Shield className="w-4 h-4 text-cyan-200" aria-hidden="true" />
+              <span className="text-white/90 text-sm font-medium">Built for <span className="font-bold text-white">utility training teams</span></span>
             </div>
           </div>
         </div>
