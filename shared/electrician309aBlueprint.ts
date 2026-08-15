@@ -44,7 +44,7 @@ export interface Electrician309AModule {
   /** Number of questions on the 100-question Red Seal exam. */
   examQuestions: number;
   weightPercent: number;
-  tasks: Electrician309ATask[];
+  tasks: readonly Electrician309ATask[];
 }
 
 export const ELECTRICIAN_309A_MODULES: readonly Electrician309AModule[] = [
