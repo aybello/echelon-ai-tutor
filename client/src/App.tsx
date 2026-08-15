@@ -66,6 +66,9 @@ const USStates = lazy(() => import("./pages/USStates"));
 const USStatePage = lazy(() => import("./pages/USStatePage"));
 const USCourses = lazy(() => import("./pages/USCourses"));
 
+// Skilled-trades expansion — private demo surface
+const Electrician309ADemo = lazy(() => import("./pages/Electrician309ADemo"));
+
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
 
@@ -388,6 +391,7 @@ function Router() {
         <Route path={"/distribution-guide"} component={WaterDistributionGuide} />
         <Route path={"/collection-guide"} component={WastewaterCollectionGuide} />
         <Route path={"/preview"} component={PreviewMode} />
+        <Route path={"/electrician-309a-demo"} component={Electrician309ADemo} />
         <Route path={"/admin"} component={Admin} />
         <Route path={"/pricing"} component={Pricing} />
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
