@@ -6,6 +6,7 @@ import {
   findDestructiveSql,
   loadManifest,
   loadSchemaContract,
+  mysqlNonUniqueToUnique,
   normalizeMySqlType,
   planForwardMigrations,
   resolveRepoPath,
@@ -68,6 +69,21 @@ describe("forward-only migration safety", () => {
     expect(normalizeMySqlType("bigint(20)")).toBe("bigint");
     expect(normalizeMySqlType("tinyint(1)")).toBe("tinyint(1)");
     expect(normalizeMySqlType("boolean")).toBe("tinyint(1)");
+  });
+
+  it("normalizes MySQL NON_UNIQUE values returned as different driver types", () => {
+    for (const value of [0, "0", 0n, Buffer.from("0")]) {
+      expect(mysqlNonUniqueToUnique(value)).toBe(true);
+    }
+    for (const value of [1, "1", 1n, Buffer.from("1")]) {
+      expect(mysqlNonUniqueToUnique(value)).toBe(false);
+    }
+  });
+
+  it("fails closed on an unexpected MySQL NON_UNIQUE value", () => {
+    for (const value of [2, "yes", null, undefined]) {
+      expect(() => mysqlNonUniqueToUnique(value)).toThrow(/NON_UNIQUE/);
+    }
   });
 
   it("splits only at explicit Drizzle statement boundaries", () => {

@@ -58,6 +58,7 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Refund = lazy(() => import("./pages/Refund"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const SeoLandingPage = lazy(() => import("./pages/SeoLandingPage"));
 
 // US Expansion pages
 const USLanding = lazy(() => import("./pages/USLanding"));
@@ -409,6 +410,8 @@ function Router() {
         <Route path={"/terms"} component={Terms} />
         <Route path={"/refund"} component={Refund} />
         <Route path={"/faq"} component={FAQ} />
+        <Route path={"/courses/:courseKey"} component={SeoLandingPage} />
+        <Route path={"/canada/:regionSlug"} component={SeoLandingPage} />
         {/* US Expansion routes */}
         <Route path={"/us"} component={USLanding} />
         <Route path={"/us/states"} component={USStates} />

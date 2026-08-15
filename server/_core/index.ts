@@ -8,7 +8,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
-import { serveStatic, setupVite } from "./vite";
+import { createViteRenderer, registerViteFallback, serveStatic } from "./vite";
 import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
 import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
@@ -217,11 +217,13 @@ async function startServer() {
   // isDev is used by both SSR handlers
   const isDev = process.env.NODE_ENV === "development";
 
-  // In dev mode, initialize Vite FIRST so we can pass its transformIndexHtml
-  // to the SSR handlers — without this, React never mounts on SSR-served pages.
-  let viteInstance: { transformIndexHtml: (url: string, html: string) => Promise<string> } | undefined;
+  // Create Vite before the SSR routes so they can transform their HTML, but do
+  // not mount Vite's SPA catch-all until the explicit public SSR routes exist.
+  // Express dispatches in registration order; mounting it first would prevent
+  // crawlers from receiving route-specific metadata and server-rendered copy.
+  let viteInstance: Awaited<ReturnType<typeof createViteRenderer>> | undefined;
   if (isDev) {
-    viteInstance = await setupVite(app, server);
+    viteInstance = await createViteRenderer(server);
   }
 
   // ── Static page SSR routes — must be AFTER Vite init (needs viteInstance) ────────────────────────────────────────
@@ -246,9 +248,11 @@ async function startServer() {
   });
 
   // ── Static file serving / SPA catch-all — must be LAST ────────────────────────────
-  // In production, serves built assets and falls through to index.html for SPA routes.
-  // In dev, Vite middleware (registered above via setupVite) handles this.
-  if (!isDev) {
+  // In production, serve built assets and then fall through to index.html. In dev,
+  // mount Vite only after all public SSR, blog SSR, and sitemap routes are registered.
+  if (isDev && viteInstance) {
+    registerViteFallback(app, viteInstance);
+  } else {
     serveStatic(app);
   }
 

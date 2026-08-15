@@ -13,9 +13,9 @@ import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 
 const PROVINCES = [
   { code: "BC", name: "British Columbia", body: "EOCP",  url: "https://www.eocp.ca" },
-  { code: "AB", name: "Alberta",          body: "AWWOA", url: "https://www.awwoa.ab.ca" },
-  { code: "SK", name: "Saskatchewan",     body: "SAHO",  url: "https://www.saho.org" },
-  { code: "MB", name: "Manitoba",         body: "MWWA",  url: "https://www.mwwa.net" },
+  { code: "AB", name: "Alberta",          body: "Government of Alberta", url: "https://www.alberta.ca/water-and-wastewater-operator-certification" },
+  { code: "SK", name: "Saskatchewan",     body: "Water Security Agency",  url: "https://www.wsask.ca" },
+  { code: "MB", name: "Manitoba",         body: "Government of Manitoba",  url: "https://www.gov.mb.ca/sd" },
 ];
 
 type ClassEntry = {
@@ -175,12 +175,12 @@ const FAQS = [
 export default function WpiLanding() {
   const { isAuthenticated } = useAuth({ lazy: true });
   usePageMeta({
-    title: "WPI Water Treatment Exam Prep — BC EOCP, Alberta AWWOA, SK, MB | Echelon Institute",
+    title: "WPI-Aligned Water & Wastewater Exam Prep | Echelon Institute",
     description:
-      "Prepare for the WPI Water & Wastewater exams with 8,000+ practice questions for Class I–IV Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
+      "Prepare with WPI-aligned Class I–IV practice for Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection in Western Canada. Confirm current requirements with your provincial authority.",
     path: "/wpi",
     keywords:
-      "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III wastewater, WPI Class IV wastewater",
+      "WPI exam prep, BC EOCP water treatment, Alberta water operator exam prep, Saskatchewan water operator exam prep, Manitoba water operator exam prep, WPI Class I practice questions, WPI Class II practice questions",
   });
 
   const [activeTrack, setActiveTrack] = useState<string>("water");
@@ -475,7 +475,7 @@ export default function WpiLanding() {
               <tbody>
                 {[
                   ["Provinces",        "BC, AB, SK, MB",                              "Ontario only"],
-                  ["Certifying body",  "EOCP / AWWOA / SAHO / MWWA",                  "OWWCO"],
+                  ["Certifying authority", "EOCP or applicable provincial authority", "OWWCO"],
                   ["Class levels",     "Class I – IV",                                "OIT, Class 1 – 4"],
                   ["Tracks",           "Water, Wastewater, Distribution, Collection",  "Water & Wastewater"],
                   ["Exam format",      "Multiple choice, written",                    "Multiple choice"],

@@ -94,6 +94,33 @@ export function normalizeMySqlType(type: string): string {
     .replace(/\bint\(\d+\)/g, "int");
 }
 
+export function mysqlNonUniqueToUnique(value: unknown): boolean {
+  const primitive = Buffer.isBuffer(value) ? value.toString("utf8") : value;
+  let nonUnique: number;
+
+  if (typeof primitive === "bigint") {
+    nonUnique = Number(primitive);
+  } else if (typeof primitive === "number") {
+    nonUnique = primitive;
+  } else if (
+    typeof primitive === "string" &&
+    /^(?:0|1)$/.test(primitive.trim())
+  ) {
+    nonUnique = Number(primitive.trim());
+  } else {
+    throw new Error(
+      `Unexpected information_schema.STATISTICS.NON_UNIQUE value: ${String(value)}`
+    );
+  }
+
+  if (nonUnique !== 0 && nonUnique !== 1) {
+    throw new Error(
+      `Unexpected information_schema.STATISTICS.NON_UNIQUE value: ${String(value)}`
+    );
+  }
+  return nonUnique === 0;
+}
+
 function indexColumnName(column: unknown): string | null {
   if (typeof column !== "object" || column === null) return null;
   const candidate = column as { name?: unknown };
@@ -365,8 +392,8 @@ export async function fetchActualSchemaContract(
   type IndexRow = {
     tableName: string;
     indexName: string;
-    nonUnique: number;
-    sequenceNumber: number;
+    nonUnique: unknown;
+    sequenceNumber: unknown;
     columnName: string | null;
   };
 
@@ -391,7 +418,7 @@ export async function fetchActualSchemaContract(
     const key = `${row.tableName}\0${row.indexName}`;
     const index = indexMap.get(key) ?? {
       name: row.indexName,
-      unique: row.nonUnique === 0,
+      unique: mysqlNonUniqueToUnique(row.nonUnique),
       columns: [],
     };
     if (row.columnName) index.columns.push(row.columnName);

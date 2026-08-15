@@ -28,7 +28,7 @@ const VALUES = [
   {
     icon: "🎯",
     title: "Operator-First",
-    body: "Every question, regulation reference, and process description is built on the actual exam framework operators face — whether that's Ontario (OWWCO/MECP), BC (EOCP), Alberta (AWWOA), or the WPI system used across Canada and the United States. No generic content, no shortcuts.",
+    body: "Courses are organized around Ontario-specific or WPI-aligned operator topics. Echelon is an independent preparation provider, and candidates should always confirm current requirements with OWWCO, EOCP, or their applicable certifying authority.",
   },
   {
     icon: "🧠",

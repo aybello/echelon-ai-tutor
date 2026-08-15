@@ -85,6 +85,7 @@ jobs:
           server/trpcRateLimit.test.ts
           server/previewDiagnostic.test.ts
           server/migrationSafety.test.ts
+          server/seoGeo.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
