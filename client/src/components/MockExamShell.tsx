@@ -18,24 +18,13 @@ import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
-function ReviewAITutor({ q, userAnswerIdx }: { q: ExamQuestion; userAnswerIdx: number | null }) {
+function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAnswerIdx: number | null; examType: string }) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const chatMutation = trpc.tutor.chat.useMutation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const systemPrompt = `You are an expert water/wastewater treatment exam tutor. A student just reviewed this question and got it wrong. Explain clearly and concisely.
-
-Question: ${q.question}
-Options: ${q.options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o.replace(/^[A-Da-d][.):]\s*/, "")}`).join("; ")}
-Correct Answer: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct].replace(/^[A-Da-d][.):]\s*/, "")}
-${userAnswerIdx !== null ? `Student's Answer: ${String.fromCharCode(65 + userAnswerIdx)}. ${q.options[userAnswerIdx].replace(/^[A-Da-d][.):]\s*/, "")}` : "Student skipped this question."}
-${q.explanation ? `Hint: ${q.explanation}` : ""}
-Module: ${q.module}
-
-Provide a clear, educational explanation of why the correct answer is right and why the student's answer was wrong. Be concise (3-5 sentences). Use plain language suitable for a water treatment operator exam.`;
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
@@ -46,10 +35,17 @@ Provide a clear, educational explanation of why the correct answer is right and 
     setLoading(true);
     try {
       const result = await chatMutation.mutateAsync({
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...newMessages,
-        ],
+        messages: newMessages,
+        examType,
+        // ExamQuestion.id is the bank-scoped questionNum returned by quiz.getQuestions.
+        questionNum: q.id,
+        selectedIndex: userAnswerIdx,
+        patternMode: false,
+        recentPerformance: [],
+        accessToken: (() => {
+          try { return localStorage.getItem("echelon_access_token") ?? undefined; }
+          catch { return undefined; }
+        })(),
       });
       setMessages(prev => [...prev, { role: "assistant" as const, content: String(result.reply) }]);
     } catch {
@@ -491,10 +487,10 @@ export default function MockExamShell({
     const answerPayload = answers
       .filter(a => a.selected !== null)
       .map(a => ({
-        questionId: questions[a.questionIndex]?.id ?? 0,
+        questionNum: questions[a.questionIndex]?.id ?? 0,
         selectedIndex: a.selected as number,
       }))
-      .filter(a => a.questionId > 0);
+      .filter(a => a.questionNum > 0);
     submitMock.mutate({
       sessionId,
       examType: scoreExamType ?? productKey,
@@ -845,7 +841,7 @@ export default function MockExamShell({
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
                     )}
                     {(!isCorrect || wasSkipped) && (
-                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} />
+                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} />
                     )}
                   </div>
                 );

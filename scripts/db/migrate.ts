@@ -13,6 +13,7 @@ import {
   splitMigrationStatements,
   validateManifest,
   type LedgerRow,
+  type ContractDiff,
   type MigrationManifest,
 } from "./migrationSafety.ts";
 
@@ -104,14 +105,20 @@ async function assertBaselineSchema(
 }
 
 async function assertCurrentSchema(connection: Connection): Promise<void> {
-  const expected = buildExpectedSchemaContract();
-  const actual = await fetchActualSchemaContract(connection);
-  const diff = diffSchemaContracts(expected, actual);
+  const diff = await getCurrentSchemaDiff(connection);
   printSchemaDiff(diff.errors, diff.warnings);
   if (diff.errors.length > 0)
     throw new Error(
       "Database schema does not match drizzle/schema.ts after migration."
     );
+}
+
+async function getCurrentSchemaDiff(
+  connection: Connection
+): Promise<ContractDiff> {
+  const expected = buildExpectedSchemaContract();
+  const actual = await fetchActualSchemaContract(connection);
+  return diffSchemaContracts(expected, actual);
 }
 
 async function validateRepository(manifest: MigrationManifest): Promise<void> {
@@ -132,18 +139,48 @@ async function adopt(
     );
 
   const baselineChecksum = await assertBaselineSchema(connection, manifest);
+  let adoptForwardMigrations = false;
+  if (
+    manifest.migrations.length > 0 &&
+    manifest.migrations.every(
+      migration => migration.adoptIfCurrentSchemaMatches === true
+    )
+  ) {
+    const currentDiff = await getCurrentSchemaDiff(connection);
+    adoptForwardMigrations = currentDiff.errors.length === 0;
+    if (adoptForwardMigrations) printSchemaDiff([], currentDiff.warnings);
+  }
   await createLedger(connection);
+  const adoptedRows = [
+    [manifest.baseline.version, manifest.baseline.tag, baselineChecksum],
+    ...(adoptForwardMigrations
+      ? manifest.migrations.map(migration => [
+          migration.version,
+          migration.tag,
+          migration.sha256,
+        ])
+      : []),
+  ];
   await connection.query(
     `
     INSERT INTO \`${LEDGER_TABLE}\`
       (version, tag, checksum, status, appliedAt, executionMs)
-    VALUES (?, ?, ?, 'applied', CURRENT_TIMESTAMP, 0)
+    VALUES ${adoptedRows
+      .map(() => "(?, ?, ?, 'applied', CURRENT_TIMESTAMP, 0)")
+      .join(", ")}
   `,
-    [manifest.baseline.version, manifest.baseline.tag, baselineChecksum]
+    adoptedRows.flat()
   );
   console.log(
     `Adopted verified baseline ${manifest.baseline.version} (${manifest.baseline.tag}).`
   );
+  if (adoptForwardMigrations) {
+    for (const migration of manifest.migrations) {
+      console.log(
+        `Adopted existing ${migration.version} (${migration.tag}) after current-schema verification.`
+      );
+    }
+  }
 }
 
 async function status(

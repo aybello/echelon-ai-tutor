@@ -162,7 +162,7 @@ const FAQS = [
   },
   {
     q: "What's included in a practice pass?",
-    a: "Each Individual Exam Pass includes 500+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes for 12 months from purchase.",
+    a: "Each Individual Exam Pass includes 400+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes for 12 months from purchase.",
   },
   {
     q: "Do I need an account to start?",
@@ -254,7 +254,7 @@ export default function WpiLanding() {
             lineHeight: 1.7, marginBottom: 32, maxWidth: 560, margin: "0 auto 32px",
           }}>
             Canada's only AI-powered exam prep platform built for WPI-certified operators.
-            500+ adaptive questions per class, mock exams, flashcards, and an AI tutor — available 24/7.
+            400+ adaptive questions per class, mock exams, flashcards, and an AI tutor — available 24/7.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/wpi-class1-water">

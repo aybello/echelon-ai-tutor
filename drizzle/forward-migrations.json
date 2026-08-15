@@ -6,5 +6,13 @@
     "contract": "drizzle/baseline-0052.contract.json",
     "sha256": "55eddc1457ab90c584c458a5236786c054911c5240cae02cfa63d2eb256abb7c"
   },
-  "migrations": []
+  "migrations": [
+    {
+      "version": 53,
+      "tag": "0053_question_governance",
+      "file": "drizzle/0053_question_governance.sql",
+      "sha256": "10b8141bbfed9fc674116561468630e73b0911d4d018caccd1911be5c40cd03a",
+      "adoptIfCurrentSchemaMatches": true
+    }
+  ]
 }

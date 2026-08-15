@@ -75,6 +75,15 @@ describe("resolveCourseKey", () => {
   it("returns undefined for an unknown key", () => {
     expect(resolveCourseKey("garbage-key")).toBeUndefined();
   });
+
+  it.each([1, 2, 3, 4])(
+    "maps Ontario Class %i wastewater activation to the populated database bank",
+    (level) => {
+      const course = resolveCourseKey(`class${level}-ww`);
+      expect(course?.courseKey).toBe(`class${level}-ww`);
+      expect(course?.questionBankKey).toBe(`class${level}-wastewater`);
+    },
+  );
 });
 
 // ---------------------------------------------------------------------------

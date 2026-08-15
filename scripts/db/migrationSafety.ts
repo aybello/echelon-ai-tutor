@@ -47,6 +47,7 @@ export interface ForwardMigration {
   file: string;
   sha256: string;
   allowDestructive?: boolean;
+  adoptIfCurrentSchemaMatches?: boolean;
 }
 
 export interface MigrationManifest {
@@ -348,6 +349,14 @@ export async function validateManifest(
     if (destructive.length > 0 && !migration.allowDestructive) {
       errors.push(
         `${migration.file} contains destructive SQL (${destructive.join(", ")}) without allowDestructive=true.`
+      );
+    }
+    if (
+      destructive.length > 0 &&
+      migration.adoptIfCurrentSchemaMatches === true
+    ) {
+      errors.push(
+        `${migration.file} cannot be adopted from schema state because it contains destructive SQL.`
       );
     }
     if (splitMigrationStatements(sql).length === 0)

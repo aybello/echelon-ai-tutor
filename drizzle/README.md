@@ -14,8 +14,9 @@ Production is expected to contain the schema represented by:
 - current application schema: `drizzle/schema.ts`
 - forward manifest: `drizzle/forward-migrations.json`
 
-The baseline contract never changes. Future schema work changes
-`drizzle/schema.ts` and adds a checksummed migration numbered 0053 or later.
+The baseline contract never changes. The already-deployed question-governance
+change is registered as forward migration 0053. Future schema work changes
+`drizzle/schema.ts` and adds a checksummed migration numbered 0054 or later.
 
 ## New empty database
 
@@ -52,6 +53,14 @@ pnpm db:migrate:adopt
 
 4. Confirm `pnpm db:migrate:status` reports baseline 52 and no unknown or failed migrations.
 
+Migration 0053 was deployed before this ledger existed. If adoption verifies
+that the database already matches the complete current schema, it records 0053
+as applied without rerunning its SQL. This behavior is explicitly opted into by
+the 0053 manifest entry and is forbidden for destructive migrations. If the
+database is still at baseline 52, adoption records only the baseline and status
+reports 0053 as pending; run the normal backup-gated apply step before deploying
+application code that requires the governance columns.
+
 Extra legacy tables, columns, or indexes are reported as warnings during
 production verification. Missing or incompatible application objects are
 blocking errors. CI uses `--strict`, where warnings also fail.
@@ -59,7 +68,7 @@ blocking errors. CI uses `--strict`, where warnings also fail.
 ## Adding a forward migration
 
 1. Update `drizzle/schema.ts`.
-2. Add exactly one migration such as `drizzle/0053_short_description.sql`.
+2. Add exactly one migration such as `drizzle/0054_short_description.sql`.
 3. Separate statements with `--> statement-breakpoint` so each statement has an
    unambiguous result in the migration ledger.
 4. Prefer additive and backward-compatible SQL. Destructive SQL is rejected
@@ -68,7 +77,7 @@ blocking errors. CI uses `--strict`, where warnings also fail.
 5. Calculate the immutable checksum:
 
 ```bash
-sha256sum drizzle/0053_short_description.sql
+sha256sum drizzle/0054_short_description.sql
 ```
 
 6. Add the version, tag, file, and checksum to

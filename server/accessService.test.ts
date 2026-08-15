@@ -316,7 +316,7 @@ describe("getExamTypesForCourseKey", () => {
 
   it("resolves legacy alias to canonical questionBankKey", () => {
     // class1-wastewater is an alias for class1-ww
-    expect(getExamTypesForCourseKey("class1-wastewater")).toEqual(["class1-ww"]);
+    expect(getExamTypesForCourseKey("class1-wastewater")).toEqual(["class1-wastewater"]);
   });
 
   it("returns [] for unknown course key (fail closed)", () => {

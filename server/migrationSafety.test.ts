@@ -23,6 +23,13 @@ describe("forward-only migration safety", () => {
     const manifest = await loadManifest();
     await expect(validateManifest(manifest)).resolves.toEqual([]);
     expect(manifest.baseline.version).toBe(52);
+    expect(manifest.migrations).toEqual([
+      expect.objectContaining({
+        version: 53,
+        tag: "0053_question_governance",
+        adoptIfCurrentSchemaMatches: true,
+      }),
+    ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
       resolveRepoPath(manifest.baseline.contract),

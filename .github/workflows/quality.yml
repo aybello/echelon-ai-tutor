@@ -33,6 +33,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Block high and critical production dependency advisories
+        run: pnpm audit --prod --audit-level high
       - run: pnpm check
       - run: pnpm db:verify-migrations
       - name: Verify clean baseline and forward-only upgrade path
@@ -56,6 +58,8 @@ jobs:
             < /tmp/echelon-baseline.sql
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
             -e "DROP TABLE product_analytics_events, learner_onboarding, diagnostic_sessions; ALTER TABLE exam_outcomes DROP COLUMN readinessScoreAtOutcome, DROP COLUMN readinessModelVersion;"
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
+            -e "ALTER TABLE questions DROP INDEX question_review_status_idx, DROP INDEX question_bank_review_status_idx, DROP COLUMN sourceTitle, DROP COLUMN sourceReference, DROP COLUMN sourceUrl, DROP COLUMN blueprintObjective, DROP COLUMN reviewStatus, DROP COLUMN reviewedBy, DROP COLUMN reviewedAt;"
 
           sed '/^--> statement-breakpoint$/d' drizzle/0051_product_observability.sql \
             | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
@@ -86,9 +90,14 @@ jobs:
           server/previewDiagnostic.test.ts
           server/migrationSafety.test.ts
           server/seoGeo.test.ts
+          server/questionGovernance.test.ts
+          server/tutor.chat.test.ts
+          server/aiTutorPolicy.test.ts
+          client/src/hooks/useQuizSession.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - name: Database-backed access, OTP and Stripe lifecycle tests
         run: >-
           pnpm exec vitest run

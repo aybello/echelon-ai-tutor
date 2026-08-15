@@ -10,6 +10,20 @@ Merged, deployed, and production-proven are different states. A release is not c
 - Required production secrets are present: `JWT_SECRET`, `DATABASE_URL`, `CRON_SECRET`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SMTP_HOST`, `SMTP_USER`, and `SMTP_PASS`.
 - No unsupported testimonials, unqualified coverage claims, or conflicting prices are introduced.
 
+## Audit remediation migration-first gate
+
+The question-governance application code must not be released before migration
+`drizzle/0053_question_governance.sql`. Use this order for the remediation release:
+
+1. Create and verify a restorable production database backup.
+2. Apply only the additive migration `drizzle/0053_question_governance.sql` in a low-traffic window.
+3. Run `pnpm db:verify-question-governance` against the production database. It must report all seven governance columns and both review indexes as present.
+4. Deploy the application commit only after that verification passes.
+5. Smoke-test a normal quiz read and AI Tutor lookup for one paid course, then open the admin question-governance queue and update one test question's review state.
+
+Do not use `pnpm db:push` for this release. If the schema verification fails,
+stop the deployment and leave the existing application version running.
+
 ## City of Winnipeg Course Pass smoke test
 
 Run this only after a real paid Course Pass order exists.

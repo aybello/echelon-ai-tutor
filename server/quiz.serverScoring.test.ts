@@ -4,6 +4,7 @@
  * ignores any client-supplied "correct" field.
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import { MySqlDialect } from "drizzle-orm/mysql-core";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
@@ -36,7 +37,7 @@ function makeDb(questionRow = QUESTION_ROW, insertResult = []) {
     insert: insertInto,
     update: vi.fn().mockReturnValue({ set: vi.fn().mockReturnValue({ where: vi.fn().mockResolvedValue([]) }) }),
   };
-  return { db, insertValues, insertInto, selectFn };
+  return { db, insertValues, insertInto, selectFn, selectWhere };
 }
 
 function makeCtx(user: TrpcContext["user"] = null): TrpcContext {
@@ -94,6 +95,19 @@ describe("quiz.logAttempt — server scoring", () => {
     await caller.quiz.logAttempt(BASE_INPUT);
     const insertedRow = insertValues.mock.calls[0][0];
     expect(insertedRow.bankKey).toBe("ontario-class1-water");
+  });
+
+  it("scores by bankKey plus the learner-facing question number, not the database primary key", async () => {
+    const { db, selectWhere } = makeDb();
+    vi.mocked(getDb).mockResolvedValue(db);
+    const caller = appRouter.createCaller(makeCtx());
+    await caller.quiz.logAttempt(BASE_INPUT);
+
+    const lookup = new MySqlDialect().sqlToQuery(selectWhere.mock.calls[0][0]);
+    expect(lookup.sql).toContain("`questions`.`bankKey` = ?");
+    expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
+    expect(lookup.sql).not.toContain("`questions`.`id` = ?");
+    expect(lookup.params).toEqual([BASE_INPUT.bankKey, BASE_INPUT.questionId]);
   });
 
   it("persists selectedIndex in the DB row", async () => {

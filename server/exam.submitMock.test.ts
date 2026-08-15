@@ -19,9 +19,9 @@ vi.mock("./_core/learningIdentity", () => ({
 import { getDb } from "./db";
 
 const QUESTIONS = [
-  { id: 1, correctIndex: 0, module: "Disinfection", difficulty: "easy" },
-  { id: 2, correctIndex: 1, module: "Hydraulics", difficulty: "medium" },
-  { id: 3, correctIndex: 2, module: "Disinfection", difficulty: "hard" },
+  { questionNum: 1, correctIndex: 0, module: "Disinfection", difficulty: "easy" },
+  { questionNum: 2, correctIndex: 1, module: "Hydraulics", difficulty: "medium" },
+  { questionNum: 3, correctIndex: 2, module: "Disinfection", difficulty: "hard" },
 ];
 
 function makeDb(questionRows = QUESTIONS) {
@@ -48,9 +48,9 @@ const BASE_INPUT = {
   bankKey: "ontario-class1-water",
   timeTakenSeconds: 3600,
   answers: [
-    { questionId: 1, selectedIndex: 0 }, // correct
-    { questionId: 2, selectedIndex: 3 }, // wrong
-    { questionId: 3, selectedIndex: 2 }, // correct
+    { questionNum: 1, selectedIndex: 0 }, // correct
+    { questionNum: 2, selectedIndex: 3 }, // wrong
+    { questionNum: 3, selectedIndex: 2 }, // correct
   ],
 };
 
@@ -74,9 +74,9 @@ describe("exam.submitMock — server scoring", () => {
     const result = await caller.exam.submitMock({
       ...BASE_INPUT,
       answers: [
-        { questionId: 1, selectedIndex: 0 }, // correct
-        { questionId: 2, selectedIndex: 1 }, // correct
-        { questionId: 3, selectedIndex: 2 }, // correct
+        { questionNum: 1, selectedIndex: 0 }, // correct
+        { questionNum: 2, selectedIndex: 1 }, // correct
+        { questionNum: 3, selectedIndex: 2 }, // correct
       ],
     });
     expect(result.passed).toBe(true);
@@ -90,8 +90,8 @@ describe("exam.submitMock — server scoring", () => {
     const result = await caller.exam.submitMock({
       ...BASE_INPUT,
       answers: [
-        { questionId: 1, selectedIndex: 0 }, // correct
-        { questionId: 999, selectedIndex: 0 }, // unknown — skipped
+        { questionNum: 1, selectedIndex: 0 }, // correct
+        { questionNum: 999, selectedIndex: 0 }, // unknown — skipped
       ],
     });
     // total is answers.length (2) but Q999 is skipped in scoring

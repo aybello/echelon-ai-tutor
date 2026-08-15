@@ -30,6 +30,7 @@ export type AnalyticsEventName =
   | "quiz_completed"
   | "mock_exam_completed"
   | "ai_tutor_opened"
+  | "ai_tutor_message"
   | "team_seat_assigned"
   | "team_seat_revoked"
   | "operator_inactive_alert"
@@ -55,7 +56,7 @@ export interface AnalyticsEvent {
   extra?: Record<string, unknown>;
 }
 
-function hashEmail(email: string): string {
+export function hashAnalyticsEmail(email: string): string {
   return createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
 }
 
@@ -71,7 +72,7 @@ export async function persistAnalyticsEvent(payload: AnalyticsEvent): Promise<vo
       eventName: payload.event,
       occurredAt: new Date(payload.ts),
       userId: payload.userId ?? null,
-      emailHash: payload.email ? hashEmail(payload.email) : null,
+      emailHash: payload.email ? hashAnalyticsEmail(payload.email) : null,
       examType: payload.examType ?? null,
       productKey: payload.productKey ?? null,
       orgId: payload.orgId ?? null,

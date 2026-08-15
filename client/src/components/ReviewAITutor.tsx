@@ -10,24 +10,17 @@ interface ReviewAITutorProps {
   userAnswerIndex: number | null;
   explanation?: string;
   module?: string;
+  examType: string;
+  questionNum: number;
 }
 
-export default function ReviewAITutor({ questionText, options, correctIndex, userAnswerIndex, explanation, module }: ReviewAITutorProps) {
+export default function ReviewAITutor({ questionText, options, correctIndex, userAnswerIndex, explanation, module, examType, questionNum }: ReviewAITutorProps) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const chatMutation = trpc.tutor.chat.useMutation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const systemPrompt = `You are an expert water/wastewater treatment exam tutor. A student just reviewed this question and got it wrong. Explain clearly and concisely.
-Question: ${questionText}
-Options: ${options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o}`).join("; ")}
-Correct Answer: ${String.fromCharCode(65 + correctIndex)}. ${options[correctIndex]}
-${userAnswerIndex !== null ? `Student's Answer: ${String.fromCharCode(65 + userAnswerIndex)}. ${options[userAnswerIndex]}` : "Student skipped this question."}
-${explanation ? `Hint: ${explanation}` : ""}
-${module ? `Module: ${module}` : ""}
-Provide a clear, educational explanation of why the correct answer is right and why the student's answer was wrong. Be concise (3-5 sentences). Use plain language suitable for a water treatment operator exam.`;
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
@@ -38,10 +31,16 @@ Provide a clear, educational explanation of why the correct answer is right and 
     setLoading(true);
     try {
       const result = await chatMutation.mutateAsync({
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...newMessages,
-        ],
+        messages: newMessages,
+        examType,
+        questionNum,
+        selectedIndex: userAnswerIndex,
+        patternMode: false,
+        recentPerformance: [],
+        accessToken: (() => {
+          try { return localStorage.getItem("echelon_access_token") ?? undefined; }
+          catch { return undefined; }
+        })(),
       });
       setMessages(prev => [...prev, { role: "assistant" as const, content: String(result.reply) }]);
     } catch {

@@ -13,6 +13,28 @@ import { and, eq, desc, sql, gte } from "drizzle-orm";
 import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 
+/**
+ * Columns needed by learner quiz screens. Keep governance-only columns out of
+ * this projection so ordinary quiz reads remain compatible during the brief
+ * additive 0053 migration window.
+ */
+export const learnerQuestionColumns = {
+  id: questions.id,
+  bankKey: questions.bankKey,
+  questionNum: questions.questionNum,
+  module: questions.module,
+  difficulty: questions.difficulty,
+  question: questions.question,
+  options: questions.options,
+  correctIndex: questions.correctIndex,
+  explanation: questions.explanation,
+  steps: questions.steps,
+  tip: questions.tip,
+  isCalc: questions.isCalc,
+  topic: questions.topic,
+  cognitiveLevel: questions.cognitiveLevel,
+};
+
 export const quizRouter = router({
   /**
    * getQuestions — fetch all questions for a given bank key.
@@ -32,8 +54,12 @@ export const quizRouter = router({
       const hasAccess = await resolveAccessForRequest(ctx, examType, {
         accessToken: input.accessToken,
       });
+      // Keep the learner read path compatible with the pre-0053 schema. The
+      // governance fields are only read by the admin governance procedures,
+      // so an application rollout cannot break ordinary quiz reads while the
+      // additive migration is being applied.
       const rows = await db
-        .select()
+        .select(learnerQuestionColumns)
         .from(questions)
         .where(eq(questions.bankKey, input.bankKey))
         .orderBy(questions.questionNum);
@@ -308,11 +334,16 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { success: false };
 
-        // Server-score the attempt
+        // Learner clients receive questionNum as their question id. Verify it
+        // inside the supplied bank so an identical number in another course
+        // can never be used for scoring.
         const [questionRow] = await db
           .select({ correctIndex: questions.correctIndex, topic: questions.topic, difficulty: questions.difficulty, module: questions.module })
           .from(questions)
-          .where(eq(questions.id, input.questionId))
+          .where(and(
+            eq(questions.bankKey, input.bankKey),
+            eq(questions.questionNum, input.questionId),
+          ))
           .limit(1);
 
         if (!questionRow) {
