@@ -1344,6 +1344,7 @@ export default function Landing() {
   };
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
   const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
+  const [showOitPreviewChoice, setShowOitPreviewChoice] = useState(false);
 
   const handleProvinceSelect = (id: ProvinceId) => {
     setProvince(id);
@@ -1475,24 +1476,72 @@ export default function Landing() {
             Practice questions, timed mocks, study notes, and AI-powered explanations for Canadian water and wastewater certification.
           </motion.p>
 
-          {/* Hero CTAs — always Ontario-first */}
+          {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-            className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            {/* Primary CTA: direct OIT preview */}
-            <Link href="/quiz">
-              <button className="btn-pulse" style={{
+            className="landing-hero-btns" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+            <button
+              type="button"
+              className="btn-pulse"
+              aria-expanded={showOitPreviewChoice}
+              aria-controls="oit-preview-choice"
+              onClick={() => setShowOitPreviewChoice(open => !open)}
+              style={{
                 padding: "13px 30px", borderRadius: 10,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
                 color: "#fff", border: "none", fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
-              }}>
-                Try 15 OIT Questions Free →
-              </button>
-            </Link>
+              }}
+            >
+              Try 15 OIT Questions Free →
+            </button>
+
+            {showOitPreviewChoice && (
+              <div
+                id="oit-preview-choice"
+                aria-label="Choose an OIT practice preview"
+                style={{
+                  width: "min(100%, 430px)",
+                  background: "rgba(15, 23, 42, 0.72)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  borderRadius: 14,
+                  padding: "14px",
+                  boxShadow: "0 12px 30px rgba(2, 6, 23, 0.28)",
+                }}
+              >
+                <p style={{ margin: "0 0 11px", color: "#fff", fontSize: 14, fontWeight: 700 }}>
+                  Which OIT exam would you like to preview?
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 9 }}>
+                  <Link
+                    href="/quiz"
+                    style={{
+                      display: "block", padding: "12px 11px", borderRadius: 10,
+                      background: "#FFFFFF", color: "#1D4ED8", textDecoration: "none",
+                      fontSize: 14, fontWeight: 800, lineHeight: 1.25, textAlign: "left",
+                    }}
+                  >
+                    <span style={{ display: "block" }}>Water OIT</span>
+                    <span style={{ display: "block", marginTop: 3, fontSize: 11, color: "#0E7490", fontWeight: 700 }}>Recommended</span>
+                  </Link>
+                  <Link
+                    href="/oit-ww"
+                    style={{
+                      display: "block", padding: "12px 11px", borderRadius: 10,
+                      background: "rgba(255,255,255,0.10)", color: "#FFFFFF", textDecoration: "none",
+                      border: "1px solid rgba(255,255,255,0.28)",
+                      fontSize: 14, fontWeight: 800, lineHeight: 1.25, textAlign: "left",
+                    }}
+                  >
+                    <span style={{ display: "block" }}>Wastewater OIT</span>
+                    <span style={{ display: "block", marginTop: 3, fontSize: 11, color: "rgba(255,255,255,0.72)", fontWeight: 600 }}>Start free</span>
+                  </Link>
+                </div>
+              </div>
+            )}
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
@@ -1500,7 +1549,7 @@ export default function Landing() {
             transition={{ duration: 0.4, delay: 0.45 }}
             style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
           >
-            🎁 First 15 questions free on every course — no account or credit card needed
+            🎁 Choose Water or Wastewater — the first 15 OIT questions are free, with no account or credit card needed
           </motion.p>
         </div>
       </section>

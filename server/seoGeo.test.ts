@@ -66,7 +66,7 @@ describe("SEO and geographic landing-page contract", () => {
     expect(robots).toContain("Disallow: /quiz");
   });
 
-  it("keeps the homepage CTA connected to the free OIT preview", () => {
+  it("lets homepage visitors choose the correct free OIT preview", () => {
     const landing = fs.readFileSync(
       path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
       "utf8"
@@ -75,9 +75,11 @@ describe("SEO and geographic landing-page contract", () => {
     const ctaLabel = "Try 15 OIT Questions Free →";
     const ctaIndex = landing.indexOf(ctaLabel);
     expect(ctaIndex).toBeGreaterThan(-1);
-    expect(landing.slice(Math.max(0, ctaIndex - 700), ctaIndex)).toContain(
-      '<Link href="/quiz">'
-    );
+    expect(landing).toContain("Which OIT exam would you like to preview?");
+    expect(landing).toContain('<Link\n                    href="/quiz"');
+    expect(landing).toContain('<Link\n                    href="/oit-ww"');
+    expect(landing).toContain("Water OIT");
+    expect(landing).toContain("Wastewater OIT");
     expect(landing).not.toContain('href="#course-finder"');
   });
 

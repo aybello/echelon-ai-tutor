@@ -1465,3 +1465,8 @@
 - [x] Review the current Ontario 309A prototype, authoritative blueprint, and existing Echelon product patterns
 - [x] Define the 309A product scope, content-governance standard, and shared course architecture
 - [x] Produce a phased electrician-trades build plan with launch gates and ownership decisions
+## Water or Wastewater OIT Preview Selection
+- [x] Inspect the existing homepage CTA, OIT Water route, and OIT Wastewater route
+- [x] Replace the single-path hero CTA with a Water or Wastewater free-practice selection flow
+- [x] Add regression coverage and validate the choice flow on desktop and mobile
+- [ ] Publish the updated homepage OIT preview selector
