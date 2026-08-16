@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import {
   buildExpectedSchemaContract,
+  downgradeProposedMissingIndexErrors,
   diffSchemaContracts,
   findDestructiveSql,
   loadManifest,
@@ -29,6 +30,16 @@ describe("forward-only migration safety", () => {
         tag: "0053_question_governance",
         adoptIfCurrentSchemaMatches: true,
       }),
+      expect.objectContaining({
+        version: 54,
+        tag: "0054_add_stripe_event_log_status_idx",
+        proposedOnly: true,
+      }),
+      expect.objectContaining({
+        version: 55,
+        tag: "0055_add_team_flex_orders_org_status_idx",
+        proposedOnly: true,
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -36,6 +47,12 @@ describe("forward-only migration safety", () => {
       "utf8"
     );
     expect(sha256(baselineRaw)).toBe(manifest.baseline.sha256);
+    expect(baseline.tables.find(table => table.name === "stripe_event_log")?.indexes).not.toContainEqual({
+      name: "stripe_event_log_status_idx", unique: false, columns: ["status"],
+    });
+    expect(baseline.tables.find(table => table.name === "team_flex_orders")?.indexes).not.toContainEqual({
+      name: "team_flex_orders_org_status_idx", unique: false, columns: ["organizationId", "status"],
+    });
     if (manifest.migrations.length === 0) {
       expect(stableContractJson(buildExpectedSchemaContract())).toBe(
         stableContractJson(baseline)
@@ -55,6 +72,53 @@ describe("forward-only migration safety", () => {
     ).toBe(true);
   });
 
+  it("exports a metadata-only baseline contract with no data rows or customer values", async () => {
+    const manifest = await loadManifest();
+    const baseline = await loadSchemaContract(manifest.baseline.contract);
+    const serialized = stableContractJson(baseline);
+
+    expect(baseline).toMatchObject({ formatVersion: 1 });
+    expect(baseline.tables.every(table => Object.keys(table).every(key => ["name", "columns", "indexes"].includes(key)))).toBe(true);
+    expect(serialized).not.toMatch(/"rows"\s*:/);
+    expect(serialized).not.toMatch(/"values"\s*:/);
+    expect(serialized).not.toMatch(/@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  });
+
+  it("models the reconciled production subscriptions and compatibility columns", () => {
+    const tables = new Map(buildExpectedSchemaContract().tables.map(table => [table.name, table]));
+    expect(tables.get("subscriptions")?.columns).toEqual(expect.arrayContaining([
+      { name: "tier", type: "enum('class1','class2','class3','class4','all-access')", nullable: false, autoIncrement: false },
+      { name: "province", type: "enum('ontario','western')", nullable: false, autoIncrement: false },
+      { name: "status", type: "enum('active','cancelled','past_due','unpaid','expired')", nullable: false, autoIncrement: false },
+      { name: "stripeSubscriptionId", type: "varchar(128)", nullable: false, autoIncrement: false },
+      { name: "currentPeriodStart", type: "timestamp", nullable: false, autoIncrement: false },
+      { name: "updatedAt", type: "timestamp", nullable: false, autoIncrement: false },
+    ]));
+    expect(tables.get("organizations")?.columns).toContainEqual({
+      name: "stream", type: "varchar(32)", nullable: true, autoIncrement: false,
+    });
+  });
+
+  it("declares every reconciled production index and both proposed missing indexes", () => {
+    const tables = new Map(buildExpectedSchemaContract().tables.map(table => [table.name, table]));
+    expect(tables.get("exam_dates")?.indexes).toContainEqual({
+      name: "exam_dates_org_member_idx", unique: false, columns: ["orgId", "organizationMemberId", "courseKey", "examDate"],
+    });
+    expect(tables.get("exam_results")?.indexes).toEqual(expect.arrayContaining([
+      { name: "exam_results_session_unique_idx", unique: true, columns: ["sessionId"] },
+      { name: "idx_exam_results_user", unique: false, columns: ["userId"] },
+    ]));
+    expect(tables.get("team_flex_orders")?.indexes).toEqual(expect.arrayContaining([
+      { name: "team_flex_orders_org_status_idx", unique: false, columns: ["organizationId", "status"] },
+      { name: "idx_flex_orders_org", unique: false, columns: ["organizationId"] },
+      { name: "idx_flex_orders_status", unique: false, columns: ["status"] },
+      { name: "uk_stripe_pi", unique: true, columns: ["stripePaymentIntentId"] },
+    ]));
+    expect(tables.get("stripe_event_log")?.indexes).toContainEqual({
+      name: "stripe_event_log_status_idx", unique: false, columns: ["status"],
+    });
+  });
+
   it("detects destructive SQL unless a manifest explicitly allows it", () => {
     expect(
       findDestructiveSql(
@@ -69,6 +133,12 @@ describe("forward-only migration safety", () => {
     expect(
       findDestructiveSql("ALTER TABLE users DROP INDEX email_idx;")
     ).toEqual(["DROP INDEX OR KEY"]);
+  });
+
+  it("prohibits destructive migrations from being adopted from current schema state", async () => {
+    const manifest = await loadManifest();
+    expect(manifest.migrations.every(migration => !(migration.adoptIfCurrentSchemaMatches && migration.proposedOnly))).toBe(true);
+    expect(manifest.migrations.filter(migration => migration.proposedOnly).every(migration => !migration.allowDestructive)).toBe(true);
   });
 
   it("normalizes legacy integer widths without corrupting tinyint types", () => {
@@ -180,6 +250,24 @@ describe("forward-only migration safety", () => {
       errors: [],
       warnings: [],
     });
+  });
+
+  it("keeps a genuine verifier blocker fatal while downgrading only declared proposed indexes", async () => {
+    const manifest = await loadManifest();
+    const diff = downgradeProposedMissingIndexErrors({
+      errors: [
+        "Missing index: stripe_event_log.stripe_event_log_status_idx",
+        "Column type drift: subscriptions.tier is varchar(32), expected enum('class1','class2','class3','class4','all-access')",
+      ],
+      warnings: [],
+    }, manifest);
+
+    expect(diff.errors).toEqual([
+      "Column type drift: subscriptions.tier is varchar(32), expected enum('class1','class2','class3','class4','all-access')",
+    ]);
+    expect(diff.warnings).toEqual([
+      expect.stringContaining("Pending proposed migration 54"),
+    ]);
   });
 
   it("refuses modified checksums and failed ledger states", () => {

@@ -3,6 +3,7 @@ import mysql, { type Connection, type RowDataPacket } from "mysql2/promise";
 import {
   LEDGER_TABLE,
   buildExpectedSchemaContract,
+  downgradeProposedMissingIndexErrors,
   diffSchemaContracts,
   fetchActualSchemaContract,
   loadManifest,
@@ -114,11 +115,15 @@ async function assertCurrentSchema(connection: Connection): Promise<void> {
 }
 
 async function getCurrentSchemaDiff(
-  connection: Connection
+  connection: Connection,
+  manifest?: MigrationManifest
 ): Promise<ContractDiff> {
   const expected = buildExpectedSchemaContract();
   const actual = await fetchActualSchemaContract(connection);
-  return diffSchemaContracts(expected, actual);
+  const diff = diffSchemaContracts(expected, actual);
+  return manifest
+    ? downgradeProposedMissingIndexErrors(diff, manifest)
+    : diff;
 }
 
 async function validateRepository(manifest: MigrationManifest): Promise<void> {
@@ -139,14 +144,14 @@ async function adopt(
     );
 
   const baselineChecksum = await assertBaselineSchema(connection, manifest);
+  const adoptablePrefix = [] as MigrationManifest["migrations"];
+  for (const migration of manifest.migrations) {
+    if (migration.proposedOnly || !migration.adoptIfCurrentSchemaMatches) break;
+    adoptablePrefix.push(migration);
+  }
   let adoptForwardMigrations = false;
-  if (
-    manifest.migrations.length > 0 &&
-    manifest.migrations.every(
-      migration => migration.adoptIfCurrentSchemaMatches === true
-    )
-  ) {
-    const currentDiff = await getCurrentSchemaDiff(connection);
+  if (adoptablePrefix.length > 0) {
+    const currentDiff = await getCurrentSchemaDiff(connection, manifest);
     adoptForwardMigrations = currentDiff.errors.length === 0;
     if (adoptForwardMigrations) printSchemaDiff([], currentDiff.warnings);
   }
@@ -154,7 +159,7 @@ async function adopt(
   const adoptedRows = [
     [manifest.baseline.version, manifest.baseline.tag, baselineChecksum],
     ...(adoptForwardMigrations
-      ? manifest.migrations.map(migration => [
+      ? adoptablePrefix.map(migration => [
           migration.version,
           migration.tag,
           migration.sha256,
@@ -175,7 +180,7 @@ async function adopt(
     `Adopted verified baseline ${manifest.baseline.version} (${manifest.baseline.tag}).`
   );
   if (adoptForwardMigrations) {
-    for (const migration of manifest.migrations) {
+    for (const migration of adoptablePrefix) {
       console.log(
         `Adopted existing ${migration.version} (${migration.tag}) after current-schema verification.`
       );

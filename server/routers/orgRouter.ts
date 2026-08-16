@@ -8,7 +8,7 @@
  *
  * Seat lifecycle (Decision 2 from spec):
  *   Assign: insert organization_members row + upsert subscriptions row (orgId set,
- *           stripeSubscriptionId null, tier = all-access, province = org province).
+ *           deterministic synthetic stripeSubscriptionId, tier = assigned course tier, province = org province).
  *   Revoke: set member status = 'revoked' + set subscription status = 'expired'.
  *   Access flows through the existing resolveAccess / resolveAccessByEmail stack
  *   with zero changes to access.ts, quizRouter, or any PurchaseGate.
@@ -39,7 +39,7 @@ import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
-import { allowedCourseKeysForOrg, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
+import { allowedCourseKeysForOrg, isSubscriptionProvince, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -183,9 +183,16 @@ async function grantSeat(
   if (coursesToUpsert.length === 0 && role === "operator") {
     throw new Error("Select at least one course included in your team plan.");
   }
+  if (!isSubscriptionProvince(org.province)) {
+    throw new Error("Organization province is not supported for subscription access.");
+  }
+  const subscriptionProvince = org.province;
 
   for (const ck of coursesToUpsert) {
-    const tier = ck ? (courseKeyToTierStrict(ck, org.province) ?? "all-access") : "all-access";
+    const tier = courseKeyToTierStrict(ck, org.province);
+    if (!isSubscriptionTier(tier)) {
+      throw new Error(`Could not resolve a valid subscription tier for ${ck}.`);
+    }
     // Unique sentinel: org-{orgId}-{email}-{courseKey|all}
     const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
 
@@ -207,15 +214,15 @@ async function grantSeat(
         .set({
           status: "active",
           currentPeriodEnd: org.termEnd,
-          tier: tier as any,
-          province: org.province,
+          tier,
+          province: subscriptionProvince,
         })
         .where(eq(subscriptions.id, existingSub[0].id));
     } else {
       await db.insert(subscriptions).values({
         email,
-        tier: tier as any,
-        province: org.province,
+        tier,
+        province: subscriptionProvince,
         stripeSubscriptionId: orgSubId,
         stripeCustomerId: "",
         status: "active",
@@ -886,12 +893,19 @@ export const orgRouter = router({
 
       const primaryCourseKey = validatedKeys[0] ?? null;
       const courseKeysJson = validatedKeys.length > 0 ? JSON.stringify(validatedKeys) : null;
+      if (!isSubscriptionProvince(org.province)) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Organization province is not supported for subscription access." });
+      }
+      const subscriptionProvince = org.province;
 
       // Build tier map for subscription upserts (all keys validated above)
       const coursesToUpsert = validatedKeys;
-      const resolvedTiers = new Map<string, string>();
+      const resolvedTiers = new Map<string, ReturnType<typeof courseKeyToTierStrict>>();
       for (const ck of coursesToUpsert) {
-        const resolvedTier = courseKeyToTierStrict(ck, org.province) ?? "all-access";
+        const resolvedTier = courseKeyToTierStrict(ck, org.province);
+        if (!isSubscriptionTier(resolvedTier)) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Could not resolve a valid subscription tier for ${ck}.` });
+        }
         resolvedTiers.set(ck, resolvedTier);
       }
 
@@ -919,7 +933,10 @@ export const orgRouter = router({
 
         // Upsert one active subscription per new course key
         for (const ck of coursesToUpsert) {
-          const tier = resolvedTiers.get(ck)!;
+          const tier = resolvedTiers.get(ck);
+          if (!isSubscriptionTier(tier)) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: `Could not resolve a valid subscription tier for ${ck}.` });
+          }
           const orgSubId = `org-${org.id}-${email}-${ck}`;
           const existingSub = await tx
             .select({ id: subscriptions.id })
@@ -935,13 +952,13 @@ export const orgRouter = router({
           if (existingSub.length > 0) {
             await tx
               .update(subscriptions)
-              .set({ status: "active", tier: tier as any, currentPeriodEnd: org.termEnd })
+              .set({ status: "active", tier, currentPeriodEnd: org.termEnd })
               .where(eq(subscriptions.id, existingSub[0].id));
           } else {
             await tx.insert(subscriptions).values({
               email,
-              tier: tier as any,
-              province: org.province,
+              tier,
+              province: subscriptionProvince,
               stripeSubscriptionId: orgSubId,
               stripeCustomerId: "",
               status: "active",

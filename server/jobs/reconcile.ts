@@ -9,7 +9,7 @@ import { getDb } from "../db";
 import { purchases, users, subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
-import { type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
+import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { notifyOwner } from "../_core/notification";
@@ -177,8 +177,10 @@ export async function runSubscriptionReconciliation(): Promise<SubscriptionRecon
 
     for (const sub of page.data) {
       try {
-        const tier = sub.metadata?.subscription_tier as ST | undefined;
-        const province = sub.metadata?.subscription_province as SP | undefined;
+        const tierMetadata = sub.metadata?.subscription_tier;
+        const provinceMetadata = sub.metadata?.subscription_province;
+        const tier = isSubscriptionTier(tierMetadata) ? tierMetadata : undefined;
+        const province = isSubscriptionProvince(provinceMetadata) ? provinceMetadata : undefined;
         if (!tier || !province) {
           skipped.push(`${sub.id}: missing tier/province metadata`);
           continue;
@@ -199,8 +201,8 @@ export async function runSubscriptionReconciliation(): Promise<SubscriptionRecon
         }
 
         const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
-        if (!currentPeriodEnd) {
-          skipped.push(`${sub.id}: could not resolve currentPeriodEnd`);
+        if (!currentPeriodStart || !currentPeriodEnd) {
+          skipped.push(`${sub.id}: could not resolve subscription period`);
           continue;
         }
 

@@ -69,7 +69,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -165,22 +167,31 @@
         {
           "name": "blog_posts_slug_unique",
           "unique": true,
-          "columns": ["slug"]
+          "columns": [
+            "slug"
+          ]
         },
         {
           "name": "blog_published_idx",
           "unique": false,
-          "columns": ["published", "publishedAt"]
+          "columns": [
+            "published",
+            "publishedAt"
+          ]
         },
         {
           "name": "blog_slug_idx",
           "unique": false,
-          "columns": ["slug"]
+          "columns": [
+            "slug"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -228,27 +239,41 @@
         {
           "name": "bm_email_idx",
           "unique": false,
-          "columns": ["studentEmail"]
+          "columns": [
+            "studentEmail"
+          ]
         },
         {
           "name": "bm_email_question_idx",
           "unique": true,
-          "columns": ["studentEmail", "bankKey", "questionId"]
+          "columns": [
+            "studentEmail",
+            "bankKey",
+            "questionId"
+          ]
         },
         {
           "name": "bm_user_question_idx",
           "unique": true,
-          "columns": ["userId", "bankKey", "questionId"]
+          "columns": [
+            "userId",
+            "bankKey",
+            "questionId"
+          ]
         },
         {
           "name": "bm_userid_idx",
           "unique": false,
-          "columns": ["userId"]
+          "columns": [
+            "userId"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -320,7 +345,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -368,17 +395,23 @@
         {
           "name": "cdq_guest_idx",
           "unique": false,
-          "columns": ["guestId"]
+          "columns": [
+            "guestId"
+          ]
         },
         {
           "name": "cdq_user_idx",
           "unique": false,
-          "columns": ["userId"]
+          "columns": [
+            "userId"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -426,7 +459,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -486,7 +521,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -570,27 +607,37 @@
         {
           "name": "crh_guest_idx",
           "unique": false,
-          "columns": ["guestId"]
+          "columns": [
+            "guestId"
+          ]
         },
         {
           "name": "crh_scenario_idx",
           "unique": false,
-          "columns": ["scenarioId"]
+          "columns": [
+            "scenarioId"
+          ]
         },
         {
           "name": "crh_score_idx",
           "unique": false,
-          "columns": ["commandScore"]
+          "columns": [
+            "commandScore"
+          ]
         },
         {
           "name": "crh_user_idx",
           "unique": false,
-          "columns": ["userId"]
+          "columns": [
+            "userId"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -638,7 +685,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -692,7 +741,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -794,32 +845,49 @@
         {
           "name": "diagnostic_identity_time_idx",
           "unique": false,
-          "columns": ["studentEmail", "courseKey", "completedAt"]
+          "columns": [
+            "studentEmail",
+            "courseKey",
+            "completedAt"
+          ]
         },
         {
           "name": "diagnostic_member_idx",
           "unique": false,
-          "columns": ["organizationMemberId"]
+          "columns": [
+            "organizationMemberId"
+          ]
         },
         {
           "name": "diagnostic_org_time_idx",
           "unique": false,
-          "columns": ["orgId", "completedAt"]
+          "columns": [
+            "orgId",
+            "completedAt"
+          ]
         },
         {
           "name": "diagnostic_sessions_sessionId_unique",
           "unique": true,
-          "columns": ["sessionId"]
+          "columns": [
+            "sessionId"
+          ]
         },
         {
           "name": "diagnostic_user_time_idx",
           "unique": false,
-          "columns": ["userId", "courseKey", "completedAt"]
+          "columns": [
+            "userId",
+            "courseKey",
+            "completedAt"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -873,12 +941,16 @@
         {
           "name": "otp_email_idx",
           "unique": false,
-          "columns": ["email"]
+          "columns": [
+            "email"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -948,9 +1020,21 @@
       ],
       "indexes": [
         {
+          "name": "exam_dates_org_member_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "organizationMemberId",
+            "courseKey",
+            "examDate"
+          ]
+        },
+        {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1022,17 +1106,23 @@
         {
           "name": "exam_outcomes_email_idx",
           "unique": false,
-          "columns": ["memberEmail"]
+          "columns": [
+            "memberEmail"
+          ]
         },
         {
           "name": "exam_outcomes_orgid_idx",
           "unique": false,
-          "columns": ["orgId"]
+          "columns": [
+            "orgId"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1150,9 +1240,50 @@
       ],
       "indexes": [
         {
+          "name": "exam_results_identity_idx",
+          "unique": false,
+          "columns": [
+            "studentEmail",
+            "courseKey",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "exam_results_org_member_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "organizationMemberId",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "exam_results_session_unique_idx",
+          "unique": true,
+          "columns": [
+            "sessionId"
+          ]
+        },
+        {
+          "name": "idx_exam_results_email",
+          "unique": false,
+          "columns": [
+            "studentEmail"
+          ]
+        },
+        {
+          "name": "idx_exam_results_user",
+          "unique": false,
+          "columns": [
+            "userId"
+          ]
+        },
+        {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1200,7 +1331,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1308,12 +1441,16 @@
         {
           "name": "job_active_idx",
           "unique": false,
-          "columns": ["isActive"]
+          "columns": [
+            "isActive"
+          ]
         },
         {
           "name": "job_posted_at_idx",
           "unique": false,
-          "columns": ["postedAt"]
+          "columns": [
+            "postedAt"
+          ]
         },
         {
           "name": "job_postings_source_url_unique",
@@ -1323,17 +1460,23 @@
         {
           "name": "job_province_idx",
           "unique": false,
-          "columns": ["province"]
+          "columns": [
+            "province"
+          ]
         },
         {
           "name": "job_type_idx",
           "unique": false,
-          "columns": ["jobType"]
+          "columns": [
+            "jobType"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1435,27 +1578,40 @@
         {
           "name": "learner_onboarding_email_course_idx",
           "unique": true,
-          "columns": ["studentEmail", "courseKey"]
+          "columns": [
+            "studentEmail",
+            "courseKey"
+          ]
         },
         {
           "name": "learner_onboarding_member_idx",
           "unique": false,
-          "columns": ["organizationMemberId"]
+          "columns": [
+            "organizationMemberId"
+          ]
         },
         {
           "name": "learner_onboarding_org_status_idx",
           "unique": false,
-          "columns": ["orgId", "status"]
+          "columns": [
+            "orgId",
+            "status"
+          ]
         },
         {
           "name": "learner_onboarding_user_course_idx",
           "unique": true,
-          "columns": ["userId", "courseKey"]
+          "columns": [
+            "userId",
+            "courseKey"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1509,12 +1665,16 @@
         {
           "name": "magic_links_tokenHash_unique",
           "unique": true,
-          "columns": ["tokenHash"]
+          "columns": [
+            "tokenHash"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1544,12 +1704,16 @@
         {
           "name": "bank_overview_idx",
           "unique": true,
-          "columns": ["bankKey"]
+          "columns": [
+            "bankKey"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1639,17 +1803,31 @@
         {
           "name": "org_members_email_idx",
           "unique": false,
-          "columns": ["email"]
+          "columns": [
+            "email"
+          ]
+        },
+        {
+          "name": "org_members_org_email_unique_idx",
+          "unique": true,
+          "columns": [
+            "orgId",
+            "email"
+          ]
         },
         {
           "name": "org_members_orgid_idx",
           "unique": false,
-          "columns": ["orgId"]
+          "columns": [
+            "orgId"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1697,22 +1875,32 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "term_usage_email_idx",
           "unique": false,
-          "columns": ["memberEmail"]
+          "columns": [
+            "memberEmail"
+          ]
         },
         {
           "name": "term_usage_orgid_idx",
           "unique": false,
-          "columns": ["orgId"]
+          "columns": [
+            "orgId"
+          ]
         },
         {
           "name": "term_usage_unique_idx",
           "unique": true,
-          "columns": ["orgId", "memberEmail", "termStart"]
+          "columns": [
+            "orgId",
+            "memberEmail",
+            "termStart"
+          ]
         }
       ]
     },
@@ -1774,6 +1962,12 @@
           "autoIncrement": false
         },
         {
+          "name": "stream",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
           "name": "stripeCustomerId",
           "type": "varchar(128)",
           "nullable": true,
@@ -1808,12 +2002,16 @@
         {
           "name": "organizations_stripeSubscriptionId_unique",
           "unique": true,
-          "columns": ["stripeSubscriptionId"]
+          "columns": [
+            "stripeSubscriptionId"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -1879,22 +2077,33 @@
         {
           "name": "analytics_email_time_idx",
           "unique": false,
-          "columns": ["emailHash", "occurredAt"]
+          "columns": [
+            "emailHash",
+            "occurredAt"
+          ]
         },
         {
           "name": "analytics_event_time_idx",
           "unique": false,
-          "columns": ["eventName", "occurredAt"]
+          "columns": [
+            "eventName",
+            "occurredAt"
+          ]
         },
         {
           "name": "analytics_org_time_idx",
           "unique": false,
-          "columns": ["orgId", "occurredAt"]
+          "columns": [
+            "orgId",
+            "occurredAt"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -2026,12 +2235,16 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "purchases_stripeSessionId_unique",
           "unique": true,
-          "columns": ["stripeSessionId"]
+          "columns": [
+            "stripeSessionId"
+          ]
         }
       ]
     },
@@ -2091,7 +2304,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -2217,22 +2432,42 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "qa_email_createdat_idx",
           "unique": false,
-          "columns": ["studentEmail", "createdAt"]
+          "columns": [
+            "studentEmail",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "qa_org_member_course_created_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "organizationMemberId",
+            "courseKey",
+            "createdAt"
+          ]
         },
         {
           "name": "qa_sessionid_idx",
           "unique": false,
-          "columns": ["sessionId"]
+          "columns": [
+            "sessionId"
+          ]
         },
         {
           "name": "qa_userid_createdat_idx",
           "unique": false,
-          "columns": ["userId", "createdAt"]
+          "columns": [
+            "userId",
+            "createdAt"
+          ]
         }
       ]
     },
@@ -2304,12 +2539,16 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "question_bank_meta_bankKey_unique",
           "unique": true,
-          "columns": ["bankKey"]
+          "columns": [
+            "bankKey"
+          ]
         }
       ]
     },
@@ -2363,7 +2602,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -2374,6 +2615,12 @@
           "name": "bankKey",
           "type": "varchar(64)",
           "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "blueprintObjective",
+          "type": "varchar(255)",
+          "nullable": true,
           "autoIncrement": false
         },
         {
@@ -2437,6 +2684,42 @@
           "autoIncrement": false
         },
         {
+          "name": "reviewedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "reviewedBy",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "reviewStatus",
+          "type": "enum('unreviewed','in_review','approved','rejected')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceReference",
+          "type": "varchar(512)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceTitle",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceUrl",
+          "type": "varchar(1024)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
           "name": "steps",
           "type": "text",
           "nullable": true,
@@ -2459,12 +2742,32 @@
         {
           "name": "bank_question_idx",
           "unique": true,
-          "columns": ["bankKey", "questionNum"]
+          "columns": [
+            "bankKey",
+            "questionNum"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "question_bank_review_status_idx",
+          "unique": false,
+          "columns": [
+            "bankKey",
+            "reviewStatus"
+          ]
+        },
+        {
+          "name": "question_review_status_idx",
+          "unique": false,
+          "columns": [
+            "reviewStatus"
+          ]
         }
       ]
     },
@@ -2560,27 +2863,30 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "stripe_event_log_event_type_idx",
           "unique": false,
-          "columns": ["eventType"]
+          "columns": [
+            "eventType"
+          ]
         },
         {
           "name": "stripe_event_log_org_id_idx",
           "unique": false,
-          "columns": ["orgId"]
-        },
-        {
-          "name": "stripe_event_log_status_idx",
-          "unique": false,
-          "columns": ["status"]
+          "columns": [
+            "orgId"
+          ]
         },
         {
           "name": "stripe_event_log_stripeEventId_unique",
           "unique": true,
-          "columns": ["stripeEventId"]
+          "columns": [
+            "stripeEventId"
+          ]
         }
       ]
     },
@@ -2670,17 +2976,23 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "student_profiles_email_idx",
           "unique": true,
-          "columns": ["studentEmail"]
+          "columns": [
+            "studentEmail"
+          ]
         },
         {
           "name": "student_profiles_userId_idx",
           "unique": true,
-          "columns": ["userId"]
+          "columns": [
+            "userId"
+          ]
         }
       ]
     },
@@ -2708,7 +3020,7 @@
         {
           "name": "currentPeriodStart",
           "type": "timestamp",
-          "nullable": true,
+          "nullable": false,
           "autoIncrement": false
         },
         {
@@ -2743,7 +3055,7 @@
         },
         {
           "name": "province",
-          "type": "varchar(32)",
+          "type": "enum('ontario','western')",
           "nullable": false,
           "autoIncrement": false
         },
@@ -2755,7 +3067,7 @@
         },
         {
           "name": "status",
-          "type": "varchar(32)",
+          "type": "enum('active','cancelled','past_due','unpaid','expired')",
           "nullable": false,
           "autoIncrement": false
         },
@@ -2768,12 +3080,18 @@
         {
           "name": "stripeSubscriptionId",
           "type": "varchar(128)",
-          "nullable": true,
+          "nullable": false,
           "autoIncrement": false
         },
         {
           "name": "tier",
-          "type": "varchar(32)",
+          "type": "enum('class1','class2','class3','class4','all-access')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
           "nullable": false,
           "autoIncrement": false
         },
@@ -2806,12 +3124,16 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "subscriptions_stripeSubscriptionId_unique",
           "unique": true,
-          "columns": ["stripeSubscriptionId"]
+          "columns": [
+            "stripeSubscriptionId"
+          ]
         }
       ]
     },
@@ -2895,12 +3217,16 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "team_flex_extensions_licence_unique",
           "unique": true,
-          "columns": ["licenceId"]
+          "columns": [
+            "licenceId"
+          ]
         }
       ]
     },
@@ -3074,32 +3400,74 @@
         {
           "name": "flex_lic_deadline_idx",
           "unique": false,
-          "columns": ["status", "activationDeadline"]
+          "columns": [
+            "status",
+            "activationDeadline"
+          ]
         },
         {
           "name": "flex_lic_email_idx",
           "unique": false,
-          "columns": ["invitedEmail", "status", "courseKey"]
+          "columns": [
+            "invitedEmail",
+            "status",
+            "courseKey"
+          ]
         },
         {
           "name": "flex_lic_invitation_idx",
           "unique": false,
-          "columns": ["invitationToken", "status"]
+          "columns": [
+            "invitationToken",
+            "status"
+          ]
         },
         {
           "name": "flex_lic_operator_idx",
           "unique": false,
-          "columns": ["operatorUserId", "status", "courseKey"]
+          "columns": [
+            "operatorUserId",
+            "status",
+            "courseKey"
+          ]
         },
         {
           "name": "flex_lic_org_status_idx",
           "unique": false,
-          "columns": ["organizationId", "status"]
+          "columns": [
+            "organizationId",
+            "status"
+          ]
+        },
+        {
+          "name": "idx_flex_lic_deadline",
+          "unique": false,
+          "columns": [
+            "status",
+            "activationDeadline"
+          ]
+        },
+        {
+          "name": "idx_flex_lic_expiry",
+          "unique": false,
+          "columns": [
+            "status",
+            "accessEndsAt"
+          ]
+        },
+        {
+          "name": "idx_flex_lic_invitation",
+          "unique": false,
+          "columns": [
+            "invitationToken"
+          ]
         },
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -3187,9 +3555,18 @@
       ],
       "indexes": [
         {
+          "name": "idx_flex_items_order",
+          "unique": false,
+          "columns": [
+            "orderId"
+          ]
+        },
+        {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -3313,19 +3690,39 @@
       ],
       "indexes": [
         {
+          "name": "idx_flex_orders_org",
+          "unique": false,
+          "columns": [
+            "organizationId"
+          ]
+        },
+        {
+          "name": "idx_flex_orders_status",
+          "unique": false,
+          "columns": [
+            "status"
+          ]
+        },
+        {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "team_flex_orders_checkout_unique",
           "unique": true,
-          "columns": ["stripeCheckoutSessionId"]
+          "columns": [
+            "stripeCheckoutSessionId"
+          ]
         },
         {
-          "name": "team_flex_orders_org_status_idx",
-          "unique": false,
-          "columns": ["organizationId", "status"]
+          "name": "uk_stripe_pi",
+          "unique": true,
+          "columns": [
+            "stripePaymentIntentId"
+          ]
         }
       ]
     },
@@ -3361,7 +3758,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -3427,17 +3826,25 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "trigger_logs_email_sentat_idx",
           "unique": false,
-          "columns": ["studentEmail", "sentAt"]
+          "columns": [
+            "studentEmail",
+            "sentAt"
+          ]
         },
         {
           "name": "trigger_logs_userid_sentat_idx",
           "unique": false,
-          "columns": ["userId", "sentAt"]
+          "columns": [
+            "userId",
+            "sentAt"
+          ]
         }
       ]
     },
@@ -3503,7 +3910,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     },
@@ -3581,12 +3990,16 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         },
         {
           "name": "users_openId_unique",
           "unique": true,
-          "columns": ["openId"]
+          "columns": [
+            "openId"
+          ]
         }
       ]
     },
@@ -3634,7 +4047,9 @@
         {
           "name": "PRIMARY",
           "unique": true,
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       ]
     }
