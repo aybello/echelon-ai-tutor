@@ -1438,6 +1438,6 @@
 - [ ] Push a focused branch and open a draft PR with an explicit approve-or-hold evidence summary
 ## PR #22 Reconciliation Merge and Deployment
 - [x] Merge the validated PR #22 reconciliation branch into `agent/migration-safety`
-- [ ] Integrate the merged migration-safety changes into `main` without applying proposed production migrations
-- [ ] Re-run release validation and confirm no unapproved production schema writes are included
+- [x] Integrate the merged migration-safety changes into `main` without applying proposed production migrations
+- [x] Re-run release validation and confirm no unapproved production schema writes are included
 - [ ] Publish the validated main-branch release and synchronize GitHub
