@@ -1454,6 +1454,6 @@
 ## Homepage Button Fix Inspection — Refresh
 - [x] Fetch and inspect the newly available Codex update
 ## PR #23 Homepage OIT Preview CTA Release
-- [ ] Merge the validated homepage OIT preview CTA fix into `main`
-- [ ] Validate the merged release with focused CTA and SEO regression coverage
+- [x] Merge the validated homepage OIT preview CTA fix into `main`
+- [x] Validate the merged release with focused CTA and SEO regression coverage
 - [ ] Deploy the updated homepage CTA and confirm the live release
