@@ -1470,3 +1470,7 @@
 - [x] Replace the single-path hero CTA with a Water or Wastewater free-practice selection flow
 - [x] Add regression coverage and validate the choice flow on desktop and mobile
 - [x] Publish the updated homepage OIT preview selector
+## Latest Repository Update Review — August 16
+- [x] Fetch and identify the newly available repository updates
+- [x] Assess conflicts, regressions, compatibility, and validation evidence
+- [x] Provide a merge recommendation before changing production
