@@ -7,8 +7,9 @@ import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import ChangelogManager from "@/components/ChangelogManager";
 
-type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions";
+type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
@@ -323,6 +324,7 @@ export default function Admin() {
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
     { id: "questions", label: "Question Review", icon: "✓" },
+    { id: "changelog", label: "Changelog", icon: "📝" },
     { id: "scores", label: "Score History", icon: "📊" },
     { id: "feedback", label: "Feedback", icon: "💬" },
     { id: "health", label: "System Health", icon: "🩺" },
@@ -1129,6 +1131,9 @@ export default function Admin() {
             ))}
           </div>
         )}
+
+        {/* -- PLATFORM CHANGELOG TAB -- */}
+        {activeTab === "changelog" && <ChangelogManager />}
 
         {/* -- ORGANIZATIONS TAB -- */}
         {activeTab === "orgs" && (

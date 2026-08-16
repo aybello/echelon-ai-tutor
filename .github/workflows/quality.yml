@@ -92,6 +92,7 @@ jobs:
           server/previewDiagnostic.test.ts
           server/migrationSafety.test.ts
           server/seoGeo.test.ts
+          server/changelog.test.ts
           server/questionGovernance.test.ts
           server/tutor.chat.test.ts
           server/aiTutorPolicy.test.ts
