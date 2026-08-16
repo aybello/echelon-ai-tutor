@@ -1219,7 +1219,7 @@ function CourseCard({ course }: { course: CourseType }) {
             }}>
               <div>
                 <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included with Exam Pass</span>
-                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>from {subFromPrice}</span>
+                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>{subFromPrice}</span>
               </div>
               {!course.comingSoon && (
                 <span style={{
@@ -2160,8 +2160,8 @@ export default function Landing() {
               {/* Mock dashboard header */}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
                 <div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>Utilities Kingston</div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Manager Dashboard · Ontario (MOECP / OWWCO)</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>Example Municipality</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>Illustrative dashboard · sample data</div>
                 </div>
                 <div style={{
                   background: "rgba(16,185,129,0.15)",
@@ -2171,7 +2171,7 @@ export default function Landing() {
                   fontSize: 11,
                   fontWeight: 700,
                   color: "#10B981",
-                }}>Active</div>
+                }}>Demo</div>
               </div>
 
               {/* Mock stat cards */}
@@ -2197,9 +2197,9 @@ export default function Landing() {
               {/* Mock operator rows */}
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: 10 }}>Operator Roster</div>
               {[
-                { name: "Alex Thompson", acc: "81%", status: "Approaching Ready", color: "#10B981" },
-                { name: "Jamie Lee", acc: "68%", status: "Needs Focus", color: "#F59E0B" },
-                { name: "Sam Rivera", acc: "—", status: "Not Started", color: "rgba(255,255,255,0.3)" },
+                { name: "Operator A", acc: "81%", status: "Approaching Ready", color: "#10B981" },
+                { name: "Operator B", acc: "68%", status: "Needs Focus", color: "#F59E0B" },
+                { name: "Operator C", acc: "—", status: "Not Started", color: "rgba(255,255,255,0.3)" },
               ].map(op => (
                 <div key={op.name} style={{
                   display: "flex",

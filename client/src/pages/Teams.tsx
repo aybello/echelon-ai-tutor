@@ -93,24 +93,7 @@ export default function Teams() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-gray-900">
-      <SiteNav
-        currentPath={location}
-        rightSlot={
-          <a
-            href="/account"
-            style={{
-              padding: "8px 16px", borderRadius: 10,
-              background: "transparent",
-              color: "#1E3A5F", border: "1.5px solid #1E3A5F",
-              fontSize: 13, fontWeight: 700,
-              cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
-              textDecoration: "none", display: "inline-block",
-            }}
-          >
-            Sign In
-          </a>
-        }
-      />
+      <SiteNav currentPath={location} />
 
       {/* Hero — bold gradient band */}
       <section

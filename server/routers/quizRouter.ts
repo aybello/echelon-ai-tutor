@@ -12,6 +12,7 @@ import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleO
 import { and, eq, desc, sql, gte } from "drizzle-orm";
 import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { learnerVisibleQuestionFilter } from "../questionGovernance";
 
 /**
  * Columns needed by learner quiz screens. Keep governance-only columns out of
@@ -54,14 +55,13 @@ export const quizRouter = router({
       const hasAccess = await resolveAccessForRequest(ctx, examType, {
         accessToken: input.accessToken,
       });
-      // Keep the learner read path compatible with the pre-0053 schema. The
-      // governance fields are only read by the admin governance procedures,
-      // so an application rollout cannot break ordinary quiz reads while the
-      // additive migration is being applied.
       const rows = await db
         .select(learnerQuestionColumns)
         .from(questions)
-        .where(eq(questions.bankKey, input.bankKey))
+        .where(and(
+          eq(questions.bankKey, input.bankKey),
+          learnerVisibleQuestionFilter(),
+        ))
         .orderBy(questions.questionNum);
 
       const total = rows.length;
@@ -142,7 +142,7 @@ export const quizRouter = router({
       if (hasAccess) {
         // Full access: random from entire bank
         const rows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus <> 'rejected'${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
         );
         const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
           try {
@@ -159,7 +159,7 @@ export const quizRouter = router({
         // Trial: sample across modules (round-robin first question from each module)
         // to give a representative experience instead of all from one module.
         const allRows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause} ORDER BY module, questionNum`
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus <> 'rejected'${excludeClause} ORDER BY module, questionNum`
         );
         const allList = allRows[0] as unknown as any[];
         // Group by module
@@ -295,7 +295,10 @@ export const quizRouter = router({
           calculationQuestions: sql<number>`SUM(CASE WHEN ${questions.isCalc} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questions)
-        .where(eq(questions.bankKey, course.questionBankKey));
+        .where(and(
+          eq(questions.bankKey, course.questionBankKey),
+          learnerVisibleQuestionFilter(),
+        ));
       const total = Number(row?.totalQuestions ?? 0);
       const calculations = Number(row?.calculationQuestions ?? 0);
       return {
@@ -343,6 +346,7 @@ export const quizRouter = router({
           .where(and(
             eq(questions.bankKey, input.bankKey),
             eq(questions.questionNum, input.questionId),
+            learnerVisibleQuestionFilter(),
           ))
           .limit(1);
 

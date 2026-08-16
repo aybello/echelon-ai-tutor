@@ -8,7 +8,7 @@ import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions";
+type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
@@ -129,11 +129,12 @@ export default function Admin() {
   });
 
   const { user, loading } = useAuth();
-  const [activeTab, setActiveTab] = useState<Tab>("revenue");
+  const [activeTab, setActiveTab] = useState<Tab>("insights");
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
+  const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
@@ -315,6 +316,7 @@ export default function Admin() {
   ];
 
   const TABS: { id: Tab; label: string; icon: string }[] = [
+    { id: "insights", label: "Product KPIs", icon: "📈" },
     { id: "revenue", label: "Revenue", icon: "💰" },
     { id: "subscriptions", label: "Subscriptions", icon: "🔄" },
     { id: "trials", label: "Trial Emails", icon: "📧" },
@@ -363,11 +365,11 @@ export default function Admin() {
         <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
           <div>
             <h1 style={{ fontSize: 22, fontWeight: 800, margin: 0, marginBottom: 4 }}>Admin Dashboard</h1>
-            <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>Trial signups, waitlist entries, and question error reports</p>
+            <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>Product performance, revenue, learner outcomes, and content quality</p>
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); }}
+            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); }}
             style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
             ↻ Refresh
@@ -405,7 +407,7 @@ export default function Admin() {
               style={{
                 flex: 1, padding: "9px 12px", borderRadius: 8, border: "none",
                 background: activeTab === tab.id ? "#E2E8F0" : "transparent",
-                color: activeTab === tab.id ? "#F1F5F9" : "#64748B",
+                color: activeTab === tab.id ? "#0F172A" : "#64748B",
                 fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.15s",
               }}
@@ -414,6 +416,50 @@ export default function Admin() {
             </button>
           ))}
         </div>
+
+        {/* -- PRODUCT KPI TAB -- */}
+        {activeTab === "insights" && (
+          <div style={{ background: "#F8FAFC", borderRadius: 16, border: "1px solid rgba(0,0,0,0.07)", padding: 20 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, marginBottom: 18, flexWrap: "wrap" }}>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#1E293B" }}>📈 Product scorecard</div>
+                <div style={{ fontSize: 11, color: "#64748B", marginTop: 4 }}>Last 30 days unless stated otherwise. A dash means the denominator or outcome sample does not exist yet.</div>
+              </div>
+              {kpisQ.data && <div style={{ fontSize: 10, color: "#94A3B8" }}>Updated {formatDate(kpisQ.data.generatedAt)}</div>}
+            </div>
+
+            {kpisQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Calculating product metrics…</div>}
+            {kpisQ.error && <div style={{ padding: 18, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Metrics could not be loaded: {kpisQ.error.message}</div>}
+            {kpisQ.data && (
+              <>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 12 }}>
+                  {[
+                    { label: "Weekly active learners", value: kpisQ.data.engagement.weeklyActiveLearners, note: "Distinct signed-in learners in 7 days" },
+                    { label: "Time to first quiz", value: kpisQ.data.engagement.medianMinutesToFirstQuiz == null ? "—" : `${kpisQ.data.engagement.medianMinutesToFirstQuiz} min`, note: "Median after signup or activation" },
+                    { label: "Mastery gain", value: kpisQ.data.engagement.masteryGainPercentagePoints == null ? "—" : `${kpisQ.data.engagement.masteryGainPercentagePoints >= 0 ? "+" : ""}${kpisQ.data.engagement.masteryGainPercentagePoints} pts`, note: `${kpisQ.data.engagement.masteryGainSampleSize} learner-course pairs with repeat quizzes` },
+                    { label: "Activation rate", value: kpisQ.data.commercial.activationRate == null ? "—" : `${kpisQ.data.commercial.activationRate}%`, note: "Signed-up learners who activated access" },
+                    { label: "Quiz completion", value: kpisQ.data.commercial.quizCompletionRate == null ? "—" : `${kpisQ.data.commercial.quizCompletionRate}%`, note: `${kpisQ.data.funnel.quizCompletions} completions / ${kpisQ.data.funnel.quizStarts} starts` },
+                    { label: "Pricing → checkout", value: kpisQ.data.commercial.pricingToCheckoutRate == null ? "—" : `${kpisQ.data.commercial.pricingToCheckoutRate}%`, note: `${kpisQ.data.funnel.checkoutCompletions} completed checkouts` },
+                    { label: "Team seat utilization", value: kpisQ.data.teams.utilizationRate == null ? "—" : `${kpisQ.data.teams.utilizationRate}%`, note: `${kpisQ.data.teams.assignedSeats} assigned / ${kpisQ.data.teams.totalSeats} purchased` },
+                    { label: "Reported exam pass rate", value: kpisQ.data.outcomes.passRate == null ? "—" : `${kpisQ.data.outcomes.passRate}%`, note: `${kpisQ.data.outcomes.passed} passed / ${kpisQ.data.outcomes.failed} failed` },
+                    { label: "Refund rate", value: kpisQ.data.commercial.refundRate == null ? "—" : `${kpisQ.data.commercial.refundRate}%`, note: "Individual purchases created in period" },
+                    { label: "Renewals / cancellations", value: `${kpisQ.data.commercial.renewals} / ${kpisQ.data.commercial.cancellations}`, note: "Tracked lifecycle events" },
+                  ].map(metric => (
+                    <div key={metric.label} style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: 16 }}>
+                      <div style={{ fontSize: 11, color: "#64748B", fontWeight: 700, marginBottom: 6 }}>{metric.label}</div>
+                      <div style={{ fontSize: 24, color: "#0F766E", fontWeight: 900 }}>{metric.value}</div>
+                      <div style={{ fontSize: 10, color: "#94A3B8", lineHeight: 1.45, marginTop: 5 }}>{metric.note}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1E3A8A", fontSize: 11, lineHeight: 1.6 }}>
+                  Readiness calibration: learners who passed averaged <strong>{kpisQ.data.outcomes.averageReadinessPassed ?? "—"}</strong>; learners who failed averaged <strong>{kpisQ.data.outcomes.averageReadinessFailed ?? "—"}</strong>. Diagnostic completions: <strong>{kpisQ.data.funnel.diagnosticCompletions}</strong>. Mock exams completed: <strong>{kpisQ.data.funnel.mockExamCompletions}</strong>.
+                </div>
+              </>
+            )}
+          </div>
+        )}
 
         {/* ── TRIAL EMAILS TAB ── */}
         {activeTab === "trials" && (

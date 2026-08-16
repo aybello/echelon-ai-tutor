@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { getTableColumns } from "drizzle-orm";
 import { getTableConfig } from "drizzle-orm/mysql-core";
 import { describe, expect, it } from "vitest";
@@ -26,7 +28,7 @@ describe("question governance schema", () => {
     expect(indexNames).toContain("question_bank_review_status_idx");
   });
 
-  it("does not make ordinary learner quiz reads depend on migration 0053 columns", () => {
+  it("does not expose governance-only metadata to learner quiz clients", () => {
     expect(Object.keys(learnerQuestionColumns)).not.toEqual(expect.arrayContaining([
       "sourceTitle",
       "sourceReference",
@@ -36,5 +38,35 @@ describe("question governance schema", () => {
       "reviewedBy",
       "reviewedAt",
     ]));
+  });
+
+  it("excludes explicitly rejected questions from every learner-facing bank read", () => {
+    const expectedMinimumUses: Record<string, number> = {
+      "server/routers/quizRouter.ts": 3,
+      "server/routers/activationRouter.ts": 2,
+      "server/routers.ts": 2,
+      "server/routers/dashboardRouter.ts": 3,
+    };
+
+    for (const [relativePath, expectedMinimum] of Object.entries(expectedMinimumUses)) {
+      const source = fs.readFileSync(path.resolve(process.cwd(), relativePath), "utf8");
+      const uses = source.match(/learnerVisibleQuestionFilter\(\)/g) ?? [];
+      expect(uses.length, `${relativePath} is missing a rejected-question guard`).toBeGreaterThanOrEqual(expectedMinimum);
+    }
+
+    const quizRouter = fs.readFileSync(
+      path.resolve(process.cwd(), "server/routers/quizRouter.ts"),
+      "utf8",
+    );
+    expect(quizRouter.match(/reviewStatus <> 'rejected'/g)).toHaveLength(2);
+  });
+
+  it("invalidates cached banks when an admin changes a review decision", () => {
+    const adminRouter = fs.readFileSync(
+      path.resolve(process.cwd(), "server/routers/admin.ts"),
+      "utf8",
+    );
+    expect(adminRouter).toContain("contentVersion: sql`${questionBankMeta.contentVersion} + 1`");
+    expect(adminRouter).toContain("AND ${questions.reviewStatus} <> 'rejected'");
   });
 });
