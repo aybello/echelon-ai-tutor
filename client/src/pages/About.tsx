@@ -5,6 +5,8 @@ import LandingNav from "@/components/LandingNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
+import { formatChangelogTimestamp, latestChangelogTimestamp } from "@shared/changelog";
+import type { ChangelogEntry } from "../../../drizzle/schema";
 
 const TIMELINE = [
   {
@@ -42,10 +44,14 @@ const VALUES = [
   },
 ];
 
-function ChangelogList() {
-  const { data: entries, isLoading } = trpc.changelog.list.useQuery();
+function ChangelogList({ entries, isLoading, error }: {
+  entries: ChangelogEntry[] | undefined;
+  isLoading: boolean;
+  error: { message: string } | null;
+}) {
   if (isLoading) return <div style={{ textAlign: "center", padding: 40, color: "#94A3B8" }}>Loading changelog...</div>;
-  if (!entries || entries.length === 0) return null;
+  if (error) return <div style={{ textAlign: "center", padding: 40, color: "#64748B" }}>The latest platform updates are temporarily unavailable.</div>;
+  if (!entries || entries.length === 0) return <div style={{ textAlign: "center", padding: 40, color: "#64748B" }}>No platform updates have been published yet.</div>;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       {entries.map((item) => (
@@ -102,6 +108,14 @@ export default function About() {
   });
 
   const { isAuthenticated } = useAuth({ lazy: true });
+  const changelogQuery = trpc.changelog.list.useQuery(undefined, {
+    staleTime: 0,
+    refetchOnMount: "always",
+    refetchOnWindowFocus: true,
+  });
+  const changelogUpdatedAt = formatChangelogTimestamp(
+    latestChangelogTimestamp(changelogQuery.data ?? []),
+  );
 
   return (
     <div style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
@@ -302,13 +316,17 @@ export default function About() {
             letterSpacing: "0.06em",
             textTransform: "uppercase",
           }}>36 Courses Live</span>
-          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: Aug 12, 2026</span>
+          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: {changelogUpdatedAt}</span>
         </div>
         <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 36px", lineHeight: 1.7 }}>
           A running record of every course and feature added to the platform.
         </p>
 
-        <ChangelogList />
+        <ChangelogList
+          entries={changelogQuery.data}
+          isLoading={changelogQuery.isLoading}
+          error={changelogQuery.error}
+        />
       </section>
 
       {/* ── CTA ── */}

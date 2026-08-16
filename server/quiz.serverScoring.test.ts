@@ -107,7 +107,7 @@ describe("quiz.logAttempt — server scoring", () => {
     expect(lookup.sql).toContain("`questions`.`bankKey` = ?");
     expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
     expect(lookup.sql).not.toContain("`questions`.`id` = ?");
-    expect(lookup.params).toEqual([BASE_INPUT.bankKey, BASE_INPUT.questionId]);
+    expect(lookup.params).toEqual([BASE_INPUT.bankKey, BASE_INPUT.questionId, "rejected"]);
   });
 
   it("persists selectedIndex in the DB row", async () => {

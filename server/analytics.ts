@@ -40,7 +40,9 @@ export type AnalyticsEventName =
   | "otp_sent"
   | "otp_verified"
   | "subscription_created"
+  | "subscription_renewed"
   | "subscription_cancelled"
+  | "purchase_refunded"
   | "stripe_provisioning_failed"
   | "webhook_error"
   | "scheduled_job_failed";

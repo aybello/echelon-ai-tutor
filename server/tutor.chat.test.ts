@@ -121,7 +121,7 @@ describe("tutor.chat", () => {
     expect(lookup.sql).toContain("`questions`.`bankKey` = ?");
     expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
     expect(lookup.sql).not.toContain("`questions`.`id` = ?");
-    expect(lookup.params).toEqual(["class1-water", 42]);
+    expect(lookup.params).toEqual(["class1-water", 42, "rejected"]);
   });
 
   it("rejects caller-supplied system messages at input validation", async () => {

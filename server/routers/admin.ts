@@ -2,10 +2,10 @@
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sql, count, ne, and } from "drizzle-orm";
+import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
@@ -16,6 +16,7 @@ import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
+import { analyticsIdentity, masteryGain, medianTimeToFirstQuizMinutes, percentage } from "../productKpis";
 
 const OWNER_EMAIL = "belllo.ayoola@gmail.com";
 
@@ -26,6 +27,136 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  /** Owner-facing product, conversion, team-usage, and outcome signals. */
+  getProductKpis: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+
+    const now = new Date();
+    const since30 = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const since7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+    const [events, outcomes, recentPurchases, [seatCapacity], [assignedSeats]] = await Promise.all([
+      db.select({
+        eventName: productAnalyticsEvents.eventName,
+        occurredAt: productAnalyticsEvents.occurredAt,
+        userId: productAnalyticsEvents.userId,
+        emailHash: productAnalyticsEvents.emailHash,
+        examType: productAnalyticsEvents.examType,
+        metadata: productAnalyticsEvents.metadata,
+      }).from(productAnalyticsEvents)
+        .where(gte(productAnalyticsEvents.occurredAt, since30))
+        .orderBy(productAnalyticsEvents.occurredAt)
+        .limit(100_000),
+      db.select({
+        result: examOutcomes.result,
+        readinessScore: examOutcomes.readinessScoreAtOutcome,
+      }).from(examOutcomes)
+        .where(gte(examOutcomes.recordedAt, since30)),
+      db.select({ status: purchases.status })
+        .from(purchases)
+        .where(and(
+          gte(purchases.createdAt, since30),
+          ne(purchases.email, OWNER_EMAIL),
+        )),
+      db.select({ seats: sql<number>`COALESCE(SUM(${organizations.seatsTotal}), 0)` })
+        .from(organizations)
+        .where(eq(organizations.status, "active")),
+      db.select({ seats: count() })
+        .from(organizationMembers)
+        .innerJoin(organizations, eq(organizations.id, organizationMembers.orgId))
+        .where(and(
+          eq(organizations.status, "active"),
+          eq(organizationMembers.role, "operator"),
+          eq(organizationMembers.status, "assigned"),
+        )),
+    ]);
+
+    const eventCounts = new Map<string, number>();
+    for (const event of events) {
+      eventCounts.set(event.eventName, (eventCounts.get(event.eventName) ?? 0) + 1);
+    }
+    const eventCount = (name: string) => eventCounts.get(name) ?? 0;
+    const identitiesFor = (name: string) => new Set(
+      events
+        .filter(event => event.eventName === name)
+        .map(analyticsIdentity)
+        .filter((identity): identity is string => Boolean(identity)),
+    );
+    const signupIdentities = identitiesFor("signup");
+    const activationIdentities = identitiesFor("access_activated");
+    const activatedSignupCohort = Array.from(signupIdentities)
+      .filter(identity => activationIdentities.has(identity)).length;
+
+    const learningEvents = new Set([
+      "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
+      "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
+    ]);
+    const weeklyActiveLearners = new Set(
+      events
+        .filter(event => event.occurredAt >= since7 && learningEvents.has(event.eventName))
+        .map(analyticsIdentity)
+        .filter((identity): identity is string => Boolean(identity)),
+    ).size;
+
+    const passed = outcomes.filter(outcome => outcome.result === "passed");
+    const failed = outcomes.filter(outcome => outcome.result === "failed");
+    const noShow = outcomes.filter(outcome => outcome.result === "no_show").length;
+    const readinessAverage = (rows: typeof outcomes) => {
+      const scores = rows.flatMap(row => row.readinessScore === null ? [] : [Number(row.readinessScore)]);
+      if (scores.length === 0) return null;
+      return Math.round((scores.reduce((sum, score) => sum + score, 0) / scores.length) * 10) / 10;
+    };
+
+    const refundedPurchases = recentPurchases.filter(purchase => purchase.status === "refunded").length;
+    const seats = Number(seatCapacity?.seats ?? 0);
+    const assigned = Number(assignedSeats?.seats ?? 0);
+    const mastery = masteryGain(events);
+
+    return {
+      periodDays: 30,
+      generatedAt: now,
+      funnel: {
+        pricingViews: eventCount("pricing_viewed"),
+        signups: eventCount("signup"),
+        accessActivations: eventCount("access_activated"),
+        quizStarts: eventCount("quiz_started"),
+        quizCompletions: eventCount("quiz_completed"),
+        diagnosticCompletions: eventCount("diagnostic_completed"),
+        mockExamCompletions: eventCount("mock_exam_completed"),
+        checkoutCompletions: eventCount("checkout_completed"),
+      },
+      engagement: {
+        weeklyActiveLearners,
+        medianMinutesToFirstQuiz: medianTimeToFirstQuizMinutes(events),
+        masteryGainPercentagePoints: mastery.percentagePoints,
+        masteryGainSampleSize: mastery.sampleSize,
+      },
+      teams: {
+        assignedSeats: assigned,
+        availableSeats: Math.max(seats - assigned, 0),
+        totalSeats: seats,
+        utilizationRate: percentage(assigned, seats),
+      },
+      outcomes: {
+        passed: passed.length,
+        failed: failed.length,
+        noShow,
+        passRate: percentage(passed.length, passed.length + failed.length),
+        averageReadinessPassed: readinessAverage(passed),
+        averageReadinessFailed: readinessAverage(failed),
+      },
+      commercial: {
+        pricingToCheckoutRate: percentage(eventCount("checkout_completed"), eventCount("pricing_viewed")),
+        activationRate: percentage(activatedSignupCohort, signupIdentities.size),
+        quizCompletionRate: percentage(eventCount("quiz_completed"), eventCount("quiz_started")),
+        refundRate: percentage(refundedPurchases, recentPurchases.length),
+        renewals: eventCount("subscription_renewed"),
+        cancellations: eventCount("subscription_cancelled"),
+      },
+    };
+  }),
+
   /** Review coverage for the certification question library. */
   getQuestionGovernanceStats: adminProcedure.query(async () => {
     const db = await getDb();
@@ -109,20 +240,43 @@ export const adminRouter = router({
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
 
+      const [existing] = await db
+        .select({ bankKey: questions.bankKey })
+        .from(questions)
+        .where(eq(questions.id, input.id))
+        .limit(1);
+      if (!existing) throw new Error("Question not found");
+
       const reviewer = normalizeEmail(ctx.user.email ?? "") || ctx.user.name || `user:${ctx.user.id}`;
       const reviewed = input.reviewStatus !== "unreviewed";
-      await db
-        .update(questions)
-        .set({
-          sourceTitle: input.sourceTitle || null,
-          sourceReference: input.sourceReference || null,
-          sourceUrl: input.sourceUrl || null,
-          blueprintObjective: input.blueprintObjective || null,
-          reviewStatus: input.reviewStatus,
-          reviewedBy: reviewed ? reviewer : null,
-          reviewedAt: reviewed ? new Date() : null,
-        })
-        .where(eq(questions.id, input.id));
+      await db.transaction(async tx => {
+        await tx
+          .update(questions)
+          .set({
+            sourceTitle: input.sourceTitle || null,
+            sourceReference: input.sourceReference || null,
+            sourceUrl: input.sourceUrl || null,
+            blueprintObjective: input.blueprintObjective || null,
+            reviewStatus: input.reviewStatus,
+            reviewedBy: reviewed ? reviewer : null,
+            reviewedAt: reviewed ? new Date() : null,
+          })
+          .where(eq(questions.id, input.id));
+
+        // Force every cached learner bank to refresh after a review decision,
+        // and keep the advertised inventory aligned with visible questions.
+        await tx
+          .update(questionBankMeta)
+          .set({
+            contentVersion: sql`${questionBankMeta.contentVersion} + 1`,
+            totalQuestions: sql`(
+              SELECT COUNT(*) FROM ${questions}
+              WHERE ${questions.bankKey} = ${existing.bankKey}
+                AND ${questions.reviewStatus} <> 'rejected'
+            )`,
+          })
+          .where(eq(questionBankMeta.bankKey, existing.bankKey));
+      });
 
       return { success: true };
     }),

@@ -16,6 +16,7 @@ import { provisionOrgFromWebhook } from "./provisionOrg";
 import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
 import type { SubscriptionProvince } from "./subscriptionProducts";
 import { getIndividualExamPassExpiry } from "./individualExamPass";
+import { processRefund } from "./processRefund";
 
 
 
@@ -515,6 +516,13 @@ export function registerStripeWebhook(app: Express) {
                 organization: org,
               });
               if (result.state === "completed" || result.state === "already_completed") {
+                if (result.state === "completed" && invoice.billing_reason === "subscription_cycle") {
+                  await trackEvent("subscription_renewed", {
+                    orgId: org.id,
+                    productKey: "teams-all-access",
+                    extra: { subscriptionType: "organization" },
+                  });
+                }
                 return res.json({ received: true });
               }
               return res.status(503).json({ error: result.state === "retryable_failure" ? (result as any).error : "Invoice processing failed" });
@@ -539,6 +547,13 @@ export function registerStripeWebhook(app: Express) {
                 .limit(1);
               if (subRow.length > 0) {
                 const { email: subEmail, tier: subTier, province: subProvince } = subRow[0];
+                if (invoice.billing_reason === "subscription_cycle") {
+                  await trackEvent("subscription_renewed", {
+                    email: subEmail,
+                    productKey: `${subProvince}-${subTier}`,
+                    extra: { subscriptionType: "individual" },
+                  });
+                }
                 const renewTierLabel = TIER_LABELS[subTier as ST] ?? subTier;
                 const renewProvinceLabel = PROVINCE_LABELS[subProvince as SP] ?? subProvince;
                 const renewQuizPath = subProvince === "western"
@@ -634,10 +649,23 @@ export function registerStripeWebhook(app: Express) {
           try {
             const db = await getDb();
             if (db) {
-              await db.update(purchases)
-                .set({ status: "refunded", refundedAt: new Date() })
-                .where(eq(purchases.stripePaymentIntentId, pi));
-              await notifyOwner({ title: "Purchase refunded", content: `Refund for PI ${pi}. Access revoked.` });
+              const result = await processRefund(db, {
+                stripeEventId: event.id,
+                stripePaymentIntentId: pi,
+                stripeChargeId: charge.id ?? null,
+              });
+              if (result.state === "busy") {
+                return res.status(503).json({ error: "Refund event is already being processed" });
+              }
+              if (result.state === "retryable_failure") {
+                return res.status(503).json({ error: result.error });
+              }
+              if (result.state === "completed" && result.purchase) {
+                await notifyOwner({
+                  title: "Purchase refunded",
+                  content: `Refund for ${result.purchase.productKey} purchase ${pi}. Access revoked.`,
+                });
+              }
             }
           } catch (err: any) { console.error("[Stripe Webhook] charge.refunded:", err.message); }
         }

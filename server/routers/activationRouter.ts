@@ -23,6 +23,7 @@ import { resolveLearningIdentity } from "../_core/learningIdentity";
 import { publicProcedure, router } from "../_core/trpc";
 import { trackEvent } from "../analytics";
 import { getDb } from "../db";
+import { learnerVisibleQuestionFilter } from "../questionGovernance";
 
 type Identity = Awaited<ReturnType<typeof resolveLearningIdentity>>;
 
@@ -265,7 +266,10 @@ export const activationRouter = router({
         difficulty: questions.difficulty,
         question: questions.question,
         options: questions.options,
-      }).from(questions).where(eq(questions.bankKey, course.questionBankKey));
+      }).from(questions).where(and(
+        eq(questions.bankKey, course.questionBankKey),
+        learnerVisibleQuestionFilter(),
+      ));
       if (rows.length < DIAGNOSTIC_QUESTION_COUNT) {
         throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This course does not have enough diagnostic questions yet." });
       }
@@ -332,7 +336,10 @@ export const activationRouter = router({
         module: questions.module,
         topic: questions.topic,
         difficulty: questions.difficulty,
-      }).from(questions).where(eq(questions.bankKey, course.questionBankKey));
+      }).from(questions).where(and(
+        eq(questions.bankKey, course.questionBankKey),
+        learnerVisibleQuestionFilter(),
+      ));
       const expectedQuestionIds = selectDiagnosticQuestionNumbers(rows, diagnosticSeed(identity, course.courseKey));
       const submittedQuestionIds = input.answers.map(answer => answer.questionId);
       if (
