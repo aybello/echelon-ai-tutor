@@ -1441,3 +1441,7 @@
 - [x] Integrate the merged migration-safety changes into `main` without applying proposed production migrations
 - [x] Re-run release validation and confirm no unapproved production schema writes are included
 - [x] Publish the validated main-branch release and synchronize GitHub
+## Latest Repository Update Review — August 16
+- [x] Fetch and identify the newly available repository update
+- [x] Assess conflicts, regressions, compatibility, and validation evidence
+- [x] Provide a merge recommendation before changing production
