@@ -16,6 +16,7 @@ import { provisionOrgFromWebhook } from "./provisionOrg";
 import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
 import type { SubscriptionProvince } from "./subscriptionProducts";
 import { getIndividualExamPassExpiry } from "./individualExamPass";
+import { processRefund } from "./processRefund";
 
 
 
@@ -648,11 +649,23 @@ export function registerStripeWebhook(app: Express) {
           try {
             const db = await getDb();
             if (db) {
-              await db.update(purchases)
-                .set({ status: "refunded", refundedAt: new Date() })
-                .where(eq(purchases.stripePaymentIntentId, pi));
-              await trackEvent("purchase_refunded");
-              await notifyOwner({ title: "Purchase refunded", content: `Refund for PI ${pi}. Access revoked.` });
+              const result = await processRefund(db, {
+                stripeEventId: event.id,
+                stripePaymentIntentId: pi,
+                stripeChargeId: charge.id ?? null,
+              });
+              if (result.state === "busy") {
+                return res.status(503).json({ error: "Refund event is already being processed" });
+              }
+              if (result.state === "retryable_failure") {
+                return res.status(503).json({ error: result.error });
+              }
+              if (result.state === "completed" && result.purchase) {
+                await notifyOwner({
+                  title: "Purchase refunded",
+                  content: `Refund for ${result.purchase.productKey} purchase ${pi}. Access revoked.`,
+                });
+              }
             }
           } catch (err: any) { console.error("[Stripe Webhook] charge.refunded:", err.message); }
         }
