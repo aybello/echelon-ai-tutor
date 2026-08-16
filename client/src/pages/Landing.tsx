@@ -1481,8 +1481,8 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
             className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            {/* Primary CTA: Find My Course */}
-            <Link href="#course-finder">
+            {/* Primary CTA: direct OIT preview */}
+            <Link href="/quiz">
               <button className="btn-pulse" style={{
                 padding: "13px 30px", borderRadius: 10,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
@@ -1490,7 +1490,7 @@ export default function Landing() {
                 cursor: "pointer", fontFamily: "inherit",
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
               }}>
-                Find My Course →
+                Try 15 OIT Questions Free →
               </button>
             </Link>
           </motion.div>

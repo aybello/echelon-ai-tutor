@@ -66,6 +66,21 @@ describe("SEO and geographic landing-page contract", () => {
     expect(robots).toContain("Disallow: /quiz");
   });
 
+  it("keeps the homepage CTA connected to the free OIT preview", () => {
+    const landing = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
+      "utf8"
+    );
+
+    const ctaLabel = "Try 15 OIT Questions Free →";
+    const ctaIndex = landing.indexOf(ctaLabel);
+    expect(ctaIndex).toBeGreaterThan(-1);
+    expect(landing.slice(Math.max(0, ctaIndex - 700), ctaIndex)).toContain(
+      '<Link href="/quiz">'
+    );
+    expect(landing).not.toContain('href="#course-finder"');
+  });
+
   it("registers public SSR routes before the development SPA catch-all", () => {
     const coreIndex = fs.readFileSync(
       path.resolve(process.cwd(), "server/_core/index.ts"),
