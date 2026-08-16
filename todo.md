@@ -1427,3 +1427,17 @@
 ## PR #17 GPT Reconciliation Brief
 - [x] Write a precise read-only reconciliation brief covering the seven remaining production-schema blockers
 - [x] State required safety constraints, classification rules, validation commands, and merge acceptance criteria
+
+## GPT Repository Instructions
+- [x] Pull the latest repository state and locate GPT-authored instructions
+- [x] Review the instructions and translate them into a safe implementation plan
+- [ ] Create a focused non-production reconciliation branch and confirm no-write constraints
+- [ ] Classify the seven production-schema blockers and all seventeen warnings from metadata-only evidence
+- [ ] Make only evidence-supported verifier, source-model, contract, test, and documentation changes
+- [ ] Run migration verification, production schema verification, tests, type checks, and build without production writes
+- [ ] Push a focused branch and open a draft PR with an explicit approve-or-hold evidence summary
+## PR #22 Reconciliation Merge and Deployment
+- [x] Merge the validated PR #22 reconciliation branch into `agent/migration-safety`
+- [ ] Integrate the merged migration-safety changes into `main` without applying proposed production migrations
+- [ ] Re-run release validation and confirm no unapproved production schema writes are included
+- [ ] Publish the validated main-branch release and synchronize GitHub
