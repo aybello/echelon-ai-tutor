@@ -1461,3 +1461,7 @@
 - [x] Validate the direct 309A review route and retained draft status
 - [x] Publish the direct 309A review page while keeping it out of the main navigation
 - [x] Provide Ay with the direct review URL
+## Electrician Trades Product Plan
+- [x] Review the current Ontario 309A prototype, authoritative blueprint, and existing Echelon product patterns
+- [x] Define the 309A product scope, content-governance standard, and shared course architecture
+- [x] Produce a phased electrician-trades build plan with launch gates and ownership decisions
