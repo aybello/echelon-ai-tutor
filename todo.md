@@ -1479,4 +1479,4 @@
 - [x] Add a refund-webhook replay regression test and run focused policy, governance, KPI, Stripe, and scoring coverage
 - [x] Review the newly added changelog-management changes on the PR #24 branch before merge
 - [x] Merge the validated PR #24 remediation into `main` and revalidate the integrated release
-- [ ] Publish the corrected product-audit remediation release
+- [x] Publish the corrected product-audit remediation release
