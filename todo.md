@@ -1457,3 +1457,7 @@
 - [x] Merge the validated homepage OIT preview CTA fix into `main`
 - [x] Validate the merged release with focused CTA and SEO regression coverage
 - [x] Deploy the updated homepage CTA and confirm the live release
+## 309A Draft Review Page Publication
+- [x] Validate the direct 309A review route and retained draft status
+- [ ] Publish the direct 309A review page while keeping it out of the main navigation
+- [ ] Provide Ay with the direct review URL
