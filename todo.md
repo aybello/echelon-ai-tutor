@@ -1449,3 +1449,5 @@
 - [x] Merge the user-approved PR #20 Ontario 309A draft into `main`
 - [x] Retain the 309A question bank as draft content pending Ay’s review and electrician SME approval
 - [x] Keep the public production deployment unchanged while the review is underway
+## Homepage Button Fix Inspection
+- [x] Locate the Codex homepage-button update and verify whether it is merged or awaiting review
