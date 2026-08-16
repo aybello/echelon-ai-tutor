@@ -1446,6 +1446,6 @@
 - [x] Assess conflicts, regressions, compatibility, and validation evidence
 - [x] Provide a merge recommendation before changing production
 ## PR #20 Private 309A Draft Merge
-- [ ] Merge the user-approved PR #20 Ontario 309A draft into `main`
-- [ ] Retain the 309A question bank as draft content pending Ay’s review and electrician SME approval
-- [ ] Keep the public production deployment unchanged while the review is underway
+- [x] Merge the user-approved PR #20 Ontario 309A draft into `main`
+- [x] Retain the 309A question bank as draft content pending Ay’s review and electrician SME approval
+- [x] Keep the public production deployment unchanged while the review is underway
