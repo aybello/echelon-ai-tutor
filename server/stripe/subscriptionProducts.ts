@@ -38,7 +38,8 @@ import {
  *     Class I: $149 | Class II: $199 | Class III: $249 | Class IV: $299 | All-Access: $449
  */
 
-export type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
+export const SUBSCRIPTION_TIER_VALUES = ["class1", "class2", "class3", "class4", "all-access"] as const;
+export type SubscriptionTier = (typeof SUBSCRIPTION_TIER_VALUES)[number];
 
 // TeamStreamTier, TEAM_STREAM_TIER_LABELS, TEAM_STREAM_TIER_DESCRIPTIONS — re-exported from shared/teamPricing above
 
@@ -150,7 +151,19 @@ export function validateOrgCourseKeys(
 }
 
 // TEAM_BASE_PRICE, TEAM_VOLUME_TIERS — re-exported from shared/teamPricing above
-export type SubscriptionProvince = "ontario" | "western";
+export const SUBSCRIPTION_PROVINCE_VALUES = ["ontario", "western"] as const;
+export type SubscriptionProvince = (typeof SUBSCRIPTION_PROVINCE_VALUES)[number];
+
+export const SUBSCRIPTION_STATUS_VALUES = ["active", "cancelled", "past_due", "unpaid", "expired"] as const;
+export type SubscriptionStatus = (typeof SUBSCRIPTION_STATUS_VALUES)[number];
+
+export function isSubscriptionTier(value: unknown): value is SubscriptionTier {
+  return typeof value === "string" && (SUBSCRIPTION_TIER_VALUES as readonly string[]).includes(value);
+}
+
+export function isSubscriptionProvince(value: unknown): value is SubscriptionProvince {
+  return typeof value === "string" && (SUBSCRIPTION_PROVINCE_VALUES as readonly string[]).includes(value);
+}
 
 export interface SubscriptionProduct {
   tier: SubscriptionTier;

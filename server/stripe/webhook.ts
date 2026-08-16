@@ -5,7 +5,7 @@ import { getDb } from "../db";
 import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
-import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct, type OrganizationSubscriptionTier } from "./subscriptionProducts";
+import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct, isSubscriptionProvince, isSubscriptionTier, type OrganizationSubscriptionTier } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
@@ -291,17 +291,19 @@ export function registerStripeWebhook(app: Express) {
 
           // Use liveSubscription (already retrieved above) throughout the individual branch
           const sub = liveSubscription;
-          const tier = sub.metadata?.subscription_tier as ST | undefined;
-          const province = sub.metadata?.subscription_province as SP | undefined;
+          const tierMetadata = sub.metadata?.subscription_tier;
+          const provinceMetadata = sub.metadata?.subscription_province;
+          const tier = isSubscriptionTier(tierMetadata) ? tierMetadata : undefined;
+          const province = isSubscriptionProvince(provinceMetadata) ? provinceMetadata : undefined;
           const stripeSubscriptionId = sub.id;
           const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
           const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
           const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
 
-          if (!tier || !province || !currentPeriodEnd) {
+          if (!tier || !province || !currentPeriodStart || !currentPeriodEnd) {
             // ALERTING: Notify owner immediately so they can manually patch the subscription
             // This is the silent failure mode that caused Matt Cooper's access issue
-            const missingFields = [!tier && 'tier', !province && 'province', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
+            const missingFields = [!tier && 'tier', !province && 'province', !currentPeriodStart && 'currentPeriodStart', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
             console.warn(`[Stripe Webhook] Subscription ${stripeSubscriptionId} missing required metadata: ${missingFields}`);
             notifyOwner({
               title: '\u26a0\ufe0f Subscription Webhook: Missing Metadata',
@@ -378,8 +380,8 @@ export function registerStripeWebhook(app: Express) {
               extra: { subscriptionType: "individual", tier, province },
             });
             // Send activation confirmation email (non-blocking)
-            const subTierLabel = TIER_LABELS[tier as ST] ?? tier;
-            const subProvinceLabel = PROVINCE_LABELS[province as SP] ?? province;
+            const subTierLabel = TIER_LABELS[tier] ?? tier;
+            const subProvinceLabel = PROVINCE_LABELS[province] ?? province;
             const subQuizPath = province === "western"
               ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
               : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");

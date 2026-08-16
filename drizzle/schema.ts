@@ -89,7 +89,13 @@ export const examResults = mysqlTable("exam_results", {
   organizationMemberId: int("organizationMemberId"),
   courseKey: varchar("courseKey", { length: 64 }),
   bankKey: varchar("bankKey", { length: 64 }),
-});
+}, (t) => [
+  index("exam_results_identity_idx").on(t.studentEmail, t.courseKey, t.createdAt),
+  index("exam_results_org_member_idx").on(t.orgId, t.organizationMemberId, t.createdAt),
+  uniqueIndex("exam_results_session_unique_idx").on(t.sessionId),
+  index("idx_exam_results_email").on(t.studentEmail),
+  index("idx_exam_results_user").on(t.userId),
+]);
 
 export type ExamResult = typeof examResults.$inferSelect;
 export type InsertExamResult = typeof examResults.$inferInsert;
@@ -125,15 +131,15 @@ export const subscriptions = mysqlTable("subscriptions", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId"), // null for guest subscriptions (email-only)
   email: varchar("email", { length: 320 }).notNull(),
-  tier: varchar("tier", { length: 32 }).notNull(), // 'class1' | 'class2' | 'class3' | 'class4' | 'all-access'
-  province: varchar("province", { length: 32 }).notNull(), // 'ontario' | 'western'
-  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
+  tier: mysqlEnum("tier", ["class1", "class2", "class3", "class4", "all-access"]).notNull(),
+  province: mysqlEnum("province", ["ontario", "western"]).notNull(),
+  /** Stripe ID for self-serve rows; deterministic org-{orgId}-{email}-{courseKey} ID for org-managed rows. */
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).notNull().unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
-  status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'cancelled' | 'expired' | 'past_due'
-  currentPeriodStart: timestamp("currentPeriodStart"),
+  status: mysqlEnum("status", ["active", "cancelled", "past_due", "unpaid", "expired"]).notNull().default("active"),
+  currentPeriodStart: timestamp("currentPeriodStart").notNull(),
   currentPeriodEnd: timestamp("currentPeriodEnd").notNull(),
-  /** Set when this row is org-managed (seat granted by an org). Null for self-serve subscriptions.
-   *  Org-managed rows have stripeSubscriptionId = null and are excluded from the self-serve billing portal. */
+  /** Set when this row is org-managed (seat granted by an org). Null for self-serve subscriptions. */
   orgId: int("orgId"),
   /** Subscriber's full name (captured from pre-checkout modal) */
   customerName: varchar("customerName", { length: 128 }),
@@ -147,6 +153,7 @@ export const subscriptions = mysqlTable("subscriptions", {
   utmCampaign: varchar("utmCampaign", { length: 128 }),
   referralSource: varchar("referralSource", { length: 128 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 export type Subscription = typeof subscriptions.$inferSelect;
 export type InsertSubscription = typeof subscriptions.$inferInsert;
@@ -189,7 +196,9 @@ export const examDates = mysqlTable("exam_dates", {
   orgId: int("orgId"),
   organizationMemberId: int("organizationMemberId"),
   courseKey: varchar("courseKey", { length: 64 }),
-});
+}, (t) => [
+  index("exam_dates_org_member_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.examDate),
+]);
 export type ExamDate = typeof examDates.$inferSelect;
 export type InsertExamDate = typeof examDates.$inferInsert;
 
@@ -229,6 +238,7 @@ export const questionAttempts = mysqlTable("question_attempts", {
   index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
   // Issue Q: index for GROUP BY sessionId queries in recentSessions
   index("qa_sessionid_idx").on(t.sessionId),
+  index("qa_org_member_course_created_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.createdAt),
 ]);
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
 export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
@@ -501,6 +511,8 @@ export const organizations = mysqlTable("organizations", {
   name: varchar("name", { length: 200 }).notNull(),
   province: varchar("province", { length: 32 }).notNull(), // 'ontario' | 'western'
   tier: varchar("tier", { length: 32 }).notNull().default("all-access"), // always all-access for self-serve teams
+  /** Legacy stream-tier column retained for production schema compatibility. */
+  stream: varchar("stream", { length: 32 }),
   seatsTotal: int("seatsTotal").notNull(), // = Stripe subscription quantity
   managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
   stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
@@ -551,6 +563,7 @@ export const organizationMembers = mysqlTable("organization_members", {
 }, (t) => [
   index("org_members_orgid_idx").on(t.orgId),
   index("org_members_email_idx").on(t.email),
+  uniqueIndex("org_members_org_email_unique_idx").on(t.orgId, t.email),
 ]);
 
 export type OrganizationMember = typeof organizationMembers.$inferSelect;
@@ -858,6 +871,9 @@ export const teamFlexOrders = mysqlTable("team_flex_orders", {
 }, (table) => [
   uniqueIndex("team_flex_orders_checkout_unique").on(table.stripeCheckoutSessionId),
   index("team_flex_orders_org_status_idx").on(table.organizationId, table.status),
+  index("idx_flex_orders_org").on(table.organizationId),
+  index("idx_flex_orders_status").on(table.status),
+  uniqueIndex("uk_stripe_pi").on(table.stripePaymentIntentId),
 ]);
 export type TeamFlexOrder = typeof teamFlexOrders.$inferSelect;
 
@@ -876,7 +892,9 @@ export const teamFlexOrderItems = mysqlTable("team_flex_order_items", {
   discountedUnitPriceCents: int("discountedUnitPriceCents").notNull(),
   lineTotalCents: int("lineTotalCents").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, (table) => [
+  index("idx_flex_items_order").on(table.orderId),
+]);
 export type TeamFlexOrderItem = typeof teamFlexOrderItems.$inferSelect;
 
 /** Teams Flex licences - individual operator access grants */
@@ -914,6 +932,9 @@ export const teamFlexLicences = mysqlTable("team_flex_licences", {
   index("flex_lic_email_idx").on(table.invitedEmail, table.status, table.courseKey),
   index("flex_lic_deadline_idx").on(table.status, table.activationDeadline),
   index("flex_lic_invitation_idx").on(table.invitationToken, table.status),
+  index("idx_flex_lic_deadline").on(table.status, table.activationDeadline),
+  index("idx_flex_lic_expiry").on(table.status, table.accessEndsAt),
+  index("idx_flex_lic_invitation").on(table.invitationToken),
 ]);
 export type TeamFlexLicence = typeof teamFlexLicences.$inferSelect;
 

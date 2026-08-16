@@ -7,11 +7,16 @@
     "dev": "NODE_ENV=development tsx watch server/_core/index.ts",
     "build": "vite build && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
-    "check": "tsc --noEmit",
+    "check": "tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json",
     "format": "prettier --write .",
     "test": "vitest run",
     "content:seed:2026": "node server/scripts/seedBlog2026.mjs",
-    "db:push": "drizzle-kit generate && drizzle-kit migrate",
+    "db:push": "node scripts/db/refuseUnsafePush.mjs",
+    "db:verify-migrations": "node --import tsx scripts/db/verifyMigrations.ts",
+    "db:verify-schema": "node --import tsx scripts/db/verifySchema.ts",
+    "db:migrate:status": "node --import tsx scripts/db/migrate.ts status",
+    "db:migrate:adopt": "node --import tsx scripts/db/migrate.ts adopt",
+    "db:migrate:apply": "node --import tsx scripts/db/migrate.ts apply",
     "db:verify-question-governance": "node scripts/verify-question-governance-schema.mjs"
   },
   "dependencies": {
