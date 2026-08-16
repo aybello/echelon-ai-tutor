@@ -1440,4 +1440,4 @@
 - [x] Merge the validated PR #22 reconciliation branch into `agent/migration-safety`
 - [x] Integrate the merged migration-safety changes into `main` without applying proposed production migrations
 - [x] Re-run release validation and confirm no unapproved production schema writes are included
-- [ ] Publish the validated main-branch release and synchronize GitHub
+- [x] Publish the validated main-branch release and synchronize GitHub
