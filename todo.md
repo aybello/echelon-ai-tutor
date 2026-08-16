@@ -1486,3 +1486,7 @@
 - [x] Provide a merge recommendation before changing production
 ## PR #24 Codex Commit Verification
 - [x] Compare the merged PR #24 commit history against current GitHub references and identify any post-review Codex commits
+## Live Platform Changelog Correction
+- [x] Inspect current public changelog entries and determine why recent releases are absent
+- [x] Add or correct accurate current changelog entries through the database-backed publication flow
+- [x] Verify the live About page displays the updated platform changelog
