@@ -17,6 +17,7 @@ import { z } from "zod";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
 import { getCourseByKey } from "../../shared/courseRegistry";
+import { learnerVisibleQuestionFilter } from "../questionGovernance";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -671,14 +672,18 @@ export const dashboardRouter = router({
         const bankTopicRows = await db
           .select({ count: sql<number>`COUNT(DISTINCT ${questions.topic})` })
           .from(questions)
-          .where(eq(questions.bankKey, examTypeFilter));
+          .where(and(
+            eq(questions.bankKey, examTypeFilter),
+            learnerVisibleQuestionFilter(),
+          ));
         totalTopicsInBank = Math.max(Number(bankTopicRows[0]?.count ?? 1), 1);
       } else {
         // No exam type — count distinct topics across all questions in the bank.
         // This is still per-bank (not per-user) so it doesn't drift.
         const bankTopicRows = await db
           .select({ count: sql<number>`COUNT(DISTINCT ${questions.topic})` })
-          .from(questions);
+          .from(questions)
+          .where(learnerVisibleQuestionFilter());
         totalTopicsInBank = Math.max(Number(bankTopicRows[0]?.count ?? 1), 1);
       }
       const topicCoverage = Math.min(distinctTopics / totalTopicsInBank, 1);
@@ -909,7 +914,11 @@ export const dashboardRouter = router({
         })
         .from(bookmarks)
         .leftJoin(questions, and(eq(questions.bankKey, bookmarks.bankKey), eq(questions.questionNum, bookmarks.questionId)))
-        .where(and(bmIdentityWhere, input.examType ? eq(bookmarks.bankKey, input.examType) : undefined))
+        .where(and(
+          bmIdentityWhere,
+          input.examType ? eq(bookmarks.bankKey, input.examType) : undefined,
+          learnerVisibleQuestionFilter(),
+        ))
         .orderBy(desc(bookmarks.createdAt));
       return rows.map(r => ({
         id: r.bookmarkId,

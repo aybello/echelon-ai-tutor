@@ -83,6 +83,26 @@ describe("SEO and geographic landing-page contract", () => {
     expect(landing).not.toContain('href="#course-finder"');
   });
 
+  it("labels the manager dashboard as illustrative and keeps pricing copy clean", () => {
+    const landing = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
+      "utf8"
+    );
+    expect(landing).toContain("Illustrative dashboard · sample data");
+    expect(landing).toContain("Example Municipality");
+    expect(landing).not.toContain('>from {subFromPrice}</span>');
+    expect(landing).not.toContain('{ name: "Alex Thompson"');
+  });
+
+  it("uses the shared account action only once on the Teams page", () => {
+    const teams = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/pages/Teams.tsx"),
+      "utf8"
+    );
+    expect(teams).toContain("<SiteNav currentPath={location} />");
+    expect(teams).not.toContain("rightSlot=");
+  });
+
   it("registers public SSR routes before the development SPA catch-all", () => {
     const coreIndex = fs.readFileSync(
       path.resolve(process.cwd(), "server/_core/index.ts"),

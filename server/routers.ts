@@ -39,6 +39,7 @@ import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
+import { learnerVisibleQuestionFilter } from "./questionGovernance";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -410,6 +411,7 @@ export const appRouter = router({
           .where(and(
             eq(questions.bankKey, input.bankKey),
             inArray(questions.questionNum, questionNums),
+            learnerVisibleQuestionFilter(),
           ));
 
         const questionMap = new Map(questionRows.map(q => [q.questionNum, q]));
@@ -729,6 +731,7 @@ export const appRouter = router({
             .where(and(
               eq(questions.bankKey, course.questionBankKey),
               eq(questions.questionNum, input.questionNum),
+              learnerVisibleQuestionFilter(),
             ))
             .limit(1);
           if (!row) {
