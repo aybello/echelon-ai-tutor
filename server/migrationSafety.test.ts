@@ -47,6 +47,12 @@ describe("forward-only migration safety", () => {
       "utf8"
     );
     expect(sha256(baselineRaw)).toBe(manifest.baseline.sha256);
+    expect(baseline.tables.find(table => table.name === "stripe_event_log")?.indexes).not.toContainEqual({
+      name: "stripe_event_log_status_idx", unique: false, columns: ["status"],
+    });
+    expect(baseline.tables.find(table => table.name === "team_flex_orders")?.indexes).not.toContainEqual({
+      name: "team_flex_orders_org_status_idx", unique: false, columns: ["organizationId", "status"],
+    });
     if (manifest.migrations.length === 0) {
       expect(stableContractJson(buildExpectedSchemaContract())).toBe(
         stableContractJson(baseline)

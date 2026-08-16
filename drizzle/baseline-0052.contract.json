@@ -2882,13 +2882,6 @@
           ]
         },
         {
-          "name": "stripe_event_log_status_idx",
-          "unique": false,
-          "columns": [
-            "status"
-          ]
-        },
-        {
           "name": "stripe_event_log_stripeEventId_unique",
           "unique": true,
           "columns": [
@@ -3722,14 +3715,6 @@
           "unique": true,
           "columns": [
             "stripeCheckoutSessionId"
-          ]
-        },
-        {
-          "name": "team_flex_orders_org_status_idx",
-          "unique": false,
-          "columns": [
-            "organizationId",
-            "status"
           ]
         },
         {

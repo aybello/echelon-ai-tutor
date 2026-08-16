@@ -4,7 +4,7 @@
     "version": 52,
     "tag": "0052_activation_outcomes",
     "contract": "drizzle/baseline-0052.contract.json",
-    "sha256": "2cedec5a3b86b26862aa013920fb6e636944884ee1d03d344667c52a631c3127"
+    "sha256": "afd3d15c00d6b6af551ce10e0c18d6da851957f725915a0327c3bcea35dc06de"
   },
   "migrations": [
     {
