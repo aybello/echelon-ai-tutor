@@ -1451,3 +1451,5 @@
 - [x] Keep the public production deployment unchanged while the review is underway
 ## Homepage Button Fix Inspection
 - [x] Locate the Codex homepage-button update and verify whether it is merged or awaiting review
+## Homepage Button Fix Inspection — Refresh
+- [x] Fetch and inspect the newly available Codex update
