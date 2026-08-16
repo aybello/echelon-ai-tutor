@@ -1,8 +1,11 @@
 import mysql from "mysql2/promise";
 import {
   buildExpectedSchemaContract,
+  downgradeProposedMissingIndexErrors,
   diffSchemaContracts,
   fetchActualSchemaContract,
+  loadManifest,
+  validateManifest,
 } from "./migrationSafety.ts";
 
 const databaseUrl = process.env.DATABASE_URL;
@@ -17,12 +20,21 @@ const connection = await mysql.createConnection(databaseUrl);
 try {
   const expected = buildExpectedSchemaContract();
   const actual = await fetchActualSchemaContract(connection);
-  const diff = diffSchemaContracts(expected, actual);
+  const manifest = await loadManifest();
+  const manifestErrors = await validateManifest(manifest);
+  if (manifestErrors.length > 0) {
+    for (const error of manifestErrors) console.error(`ERROR: ${error}`);
+    process.exitCode = 1;
+  }
+  const diff = downgradeProposedMissingIndexErrors(
+    diffSchemaContracts(expected, actual),
+    manifest
+  );
 
   for (const warning of diff.warnings) console.warn(`WARNING: ${warning}`);
   for (const error of diff.errors) console.error(`ERROR: ${error}`);
 
-  if (diff.errors.length > 0 || (strict && diff.warnings.length > 0)) {
+  if (manifestErrors.length > 0 || diff.errors.length > 0 || (strict && diff.warnings.length > 0)) {
     console.error(
       `Schema verification failed with ${diff.errors.length} error(s) and ${diff.warnings.length} warning(s).`
     );

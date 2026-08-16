@@ -4,7 +4,7 @@
     "version": 52,
     "tag": "0052_activation_outcomes",
     "contract": "drizzle/baseline-0052.contract.json",
-    "sha256": "55eddc1457ab90c584c458a5236786c054911c5240cae02cfa63d2eb256abb7c"
+    "sha256": "2cedec5a3b86b26862aa013920fb6e636944884ee1d03d344667c52a631c3127"
   },
   "migrations": [
     {
@@ -13,6 +13,34 @@
       "file": "drizzle/0053_question_governance.sql",
       "sha256": "10b8141bbfed9fc674116561468630e73b0911d4d018caccd1911be5c40cd03a",
       "adoptIfCurrentSchemaMatches": true
+    },
+    {
+      "version": 54,
+      "tag": "0054_add_stripe_event_log_status_idx",
+      "file": "drizzle/0054_add_stripe_event_log_status_idx.sql",
+      "sha256": "0d0c3240ae8e4eca0feb482fb97eedb38d023665b28277f34ec4449147db27e3",
+      "proposedOnly": true,
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "stripe_event_log",
+          "index": "stripe_event_log_status_idx",
+          "columns": ["status"]
+        }
+      ]
+    },
+    {
+      "version": 55,
+      "tag": "0055_add_team_flex_orders_org_status_idx",
+      "file": "drizzle/0055_add_team_flex_orders_org_status_idx.sql",
+      "sha256": "80af908d0cc70697e78abfd573a9e3fb8d57f3fc9cf6d4bc04eec601a8346e04",
+      "proposedOnly": true,
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "team_flex_orders",
+          "index": "team_flex_orders_org_status_idx",
+          "columns": ["organizationId", "status"]
+        }
+      ]
     }
   ]
 }

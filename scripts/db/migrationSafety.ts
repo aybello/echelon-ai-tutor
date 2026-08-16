@@ -48,6 +48,14 @@ export interface ForwardMigration {
   sha256: string;
   allowDestructive?: boolean;
   adoptIfCurrentSchemaMatches?: boolean;
+  /** Explicitly proposed but not yet applied additive schema changes. */
+  proposedOnly?: boolean;
+  /** Missing indexes that this exact proposed migration will add. */
+  verifierAllowMissingIndexes?: Array<{
+    table: string;
+    index: string;
+    columns: string[];
+  }>;
 }
 
 export interface MigrationManifest {
@@ -361,6 +369,40 @@ export async function validateManifest(
     }
     if (splitMigrationStatements(sql).length === 0)
       errors.push(`${migration.file} contains no SQL statements.`);
+    if (migration.proposedOnly && migration.adoptIfCurrentSchemaMatches) {
+      errors.push(
+        `${migration.file} cannot be both proposedOnly and adoptIfCurrentSchemaMatches.`
+      );
+    }
+    for (const allowedIndex of migration.verifierAllowMissingIndexes ?? []) {
+      const expectedTable = buildExpectedSchemaContract().tables.find(
+        table => table.name === allowedIndex.table
+      );
+      const expectedIndex = expectedTable?.indexes.find(
+        index => index.name === allowedIndex.index
+      );
+      if (!expectedIndex) {
+        errors.push(
+          `${migration.file} allows an index that is not declared in schema.ts: ${allowedIndex.table}.${allowedIndex.index}.`
+        );
+        continue;
+      }
+      if (
+        expectedIndex.columns.join(",") !== allowedIndex.columns.join(",") ||
+        expectedIndex.unique
+      ) {
+        errors.push(
+          `${migration.file} has incorrect expected metadata for ${allowedIndex.table}.${allowedIndex.index}.`
+        );
+      }
+      const normalizedSql = sql.toLowerCase().replace(/[\s`]/g, "");
+      const requiredStatement = `createindex${allowedIndex.index.toLowerCase()}on${allowedIndex.table.toLowerCase()}(${allowedIndex.columns.join(",").toLowerCase()})`;
+      if (!normalizedSql.includes(requiredStatement)) {
+        errors.push(
+          `${migration.file} does not create declared pending index ${allowedIndex.table}.${allowedIndex.index}.`
+        );
+      }
+    }
   }
 
   for (const file of declaredFiles) {
@@ -564,6 +606,38 @@ export function diffSchemaContracts(
     ) {
       warnings.push(`Unexpected table: ${actualTable.name}`);
     }
+  }
+  return { errors, warnings };
+}
+
+/**
+ * Downgrade only explicitly declared, checksum-validated, forward-only missing
+ * indexes to warnings. All other contract errors remain blocking.
+ */
+export function downgradeProposedMissingIndexErrors(
+  diff: ContractDiff,
+  manifest: MigrationManifest
+): ContractDiff {
+  const proposedIndexes = new Map<string, ForwardMigration>();
+  for (const migration of manifest.migrations) {
+    if (!migration.proposedOnly) continue;
+    for (const index of migration.verifierAllowMissingIndexes ?? []) {
+      proposedIndexes.set(`${index.table}.${index.index}`, migration);
+    }
+  }
+
+  const errors: string[] = [];
+  const warnings = [...diff.warnings];
+  for (const error of diff.errors) {
+    const match = /^Missing index: ([^.]+)\.(.+)$/.exec(error);
+    const migration = match ? proposedIndexes.get(`${match[1]}.${match[2]}`) : undefined;
+    if (!migration) {
+      errors.push(error);
+      continue;
+    }
+    warnings.push(
+      `Pending proposed migration ${migration.version} (${migration.tag}): ${error}`
+    );
   }
   return { errors, warnings };
 }
