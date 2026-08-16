@@ -1474,3 +1474,9 @@
 - [x] Fetch and identify the newly available repository updates
 - [x] Assess conflicts, regressions, compatibility, and validation evidence
 - [x] Provide a merge recommendation before changing production
+## PR #24 Refund Analytics Safety Repair and Release
+- [x] Attribute refund analytics to the affected purchase or organization and persist a replay-safe Stripe event correlation key
+- [x] Add a refund-webhook replay regression test and run focused policy, governance, KPI, Stripe, and scoring coverage
+- [x] Review the newly added changelog-management changes on the PR #24 branch before merge
+- [x] Merge the validated PR #24 remediation into `main` and revalidate the integrated release
+- [ ] Publish the corrected product-audit remediation release
