@@ -1521,7 +1521,7 @@
 - [x] Refactor the 309A preview to use shared Echelon Institute marketing and learning design patterns
 - [x] Validate and publish the integrated 309A visual experience on desktop and mobile
 ## Ontario 309A Full Course and Question Bank
-- [ ] Audit the current course registry, products, entitlements, study tools, question schema, and 309A source readiness
+- [x] Audit the current course registry, products, entitlements, study tools, question schema, and 309A source readiness
 - [ ] Define and implement the 309A full-course product, catalogue, access, and workspace integration
 - [ ] Establish a source-backed 309A question-authoring and SME-review workflow by official blueprint category
 - [ ] Build and review the initial blueprint-weighted 309A question-bank release with original explanations and governance metadata
@@ -1529,7 +1529,7 @@
 - [ ] Run full release validation and publish the staged live 309A course launch
 ## Ontario 309A Free 500-Question Build
 - [ ] Keep 309A publicly free while converting it into the shared Echelon Institute course workspace
-- [ ] Create the 500-question allocation by official current-exam Major Work Activity and task
+- [x] Create the 500-question allocation by official current-exam Major Work Activity and task
 - [ ] Research and author original, source-traceable 309A question batches without Canadian Electrical Code rule-number content
 - [ ] Import reviewed 309A questions, metadata, study notes, flashcards, practice, and mock-exam support in staged releases
 - [ ] Track live 309A bank coverage against the 500-question target and publish progress transparently
