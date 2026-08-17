@@ -128,7 +128,6 @@ describe("tutor.chat", () => {
   });
 
   it("allows the OIT tutor during the free product preview", async () => {
-    mocks.resolveAccessForRequest.mockResolvedValueOnce(false);
     const caller = appRouter.createCaller(createPaidContext());
     const result = await caller.tutor.chat({
       examType: "oit",
