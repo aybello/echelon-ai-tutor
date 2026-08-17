@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
-import electricianQuestions from "../client/src/lib/electrician309aDraftQuestions";
+import electricianQuestions from "./private/electrician309aDraftQuestions";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
+import {
+  ELECTRICIAN_309A_BLUEPRINT_VERSION,
+  ELECTRICIAN_309A_PROGRAM_KEY,
+} from "../shared/certificationPrograms";
 
 describe("309A electrician draft question bank", () => {
   it("contains the 25-question first-pass diagnostic seed", () => {
@@ -33,6 +37,14 @@ describe("309A electrician draft question bank", () => {
   it("keeps all first-pass content in draft review status", () => {
     for (const question of electricianQuestions) {
       expect(question.reviewStatus).toBe("draft");
+      expect(question.programKey).toBe(ELECTRICIAN_309A_PROGRAM_KEY);
+      expect(question.blueprintVersion).toBe(
+        ELECTRICIAN_309A_BLUEPRINT_VERSION,
+      );
+      expect(question.sourceVerifiedAt).toBe("2026-08-15");
+      expect(question.approvedForPractice).toBe(false);
+      expect(question.approvedForMock).toBe(false);
+      expect(question.retiredAt).toBeNull();
       expect(question.sourceUrl).toContain("red-seal.ca");
       expect(question.sourceReference.length).toBeGreaterThan(0);
     }

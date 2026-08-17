@@ -36,6 +36,7 @@ import { teamFlexRouter } from "./routers/teamFlexRouter";
 import { changelogRouter } from "./routers/changelogRouter";
 import { activationRouter } from "./routers/activationRouter";
 import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
+import { electricianReviewRouter } from "./routers/electricianReviewRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
@@ -128,6 +129,7 @@ export const appRouter = router({
   teamFlex: teamFlexRouter,
   activation: activationRouter,
   funnelAnalytics: funnelAnalyticsRouter,
+  electricianReview: electricianReviewRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

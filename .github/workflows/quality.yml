@@ -94,6 +94,9 @@ jobs:
           server/seoGeo.test.ts
           server/changelog.test.ts
           server/questionGovernance.test.ts
+          server/certificationPrograms.test.ts
+          server/electrician309aBlueprint.test.ts
+          server/electrician309aQuestions.test.ts
           server/tutor.chat.test.ts
           server/aiTutorPolicy.test.ts
           client/src/hooks/useQuizSession.test.ts
