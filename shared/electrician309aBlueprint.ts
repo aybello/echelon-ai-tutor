@@ -1,3 +1,8 @@
+import {
+  ELECTRICIAN_309A_BLUEPRINT_VERSION,
+  ELECTRICIAN_309A_PROGRAM_KEY,
+} from "./certificationPrograms";
+
 /**
  * Ontario 309A Electrician — Construction & Maintenance
  * Red Seal Construction Electrician exam blueprint.
@@ -15,6 +20,8 @@
  */
 
 export const ELECTRICIAN_309A = {
+  programKey: ELECTRICIAN_309A_PROGRAM_KEY,
+  blueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
   courseKey: "electrician-309a",
   bankKey: "electrician-309a",
   credentialCode: "309A",

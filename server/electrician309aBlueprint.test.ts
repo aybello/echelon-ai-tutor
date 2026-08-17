@@ -4,6 +4,10 @@ import {
   ELECTRICIAN_309A_MODULES,
   ELECTRICIAN_309A_MODULE_WEIGHTS,
 } from "../shared/electrician309aBlueprint";
+import {
+  ELECTRICIAN_309A_BLUEPRINT_VERSION,
+  ELECTRICIAN_309A_PROGRAM_KEY,
+} from "../shared/certificationPrograms";
 
 describe("Ontario 309A Construction Electrician blueprint", () => {
   it("matches the current Red Seal 100-question exam structure", () => {
@@ -42,5 +46,9 @@ describe("Ontario 309A Construction Electrician blueprint", () => {
 
   it("explicitly records that the current exam still uses the previous RSOS", () => {
     expect(ELECTRICIAN_309A.standardStatus).toBe("current-exam-previous-rsos");
+    expect(ELECTRICIAN_309A.programKey).toBe(ELECTRICIAN_309A_PROGRAM_KEY);
+    expect(ELECTRICIAN_309A.blueprintVersion).toBe(
+      ELECTRICIAN_309A_BLUEPRINT_VERSION,
+    );
   });
 });

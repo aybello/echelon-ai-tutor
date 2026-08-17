@@ -1,4 +1,9 @@
-import type { Electrician309AModuleCode } from "../../../shared/electrician309aBlueprint";
+import type { Electrician309AModuleCode } from "../../shared/electrician309aBlueprint";
+import {
+  ELECTRICIAN_309A_BLUEPRINT_VERSION,
+  ELECTRICIAN_309A_PROGRAM_KEY,
+  type CertificationQuestionGovernance,
+} from "../../shared/certificationPrograms";
 
 /**
  * First-pass diagnostic content for the Sept. 22 skilled-trades demo.
@@ -13,7 +18,8 @@ import type { Electrician309AModuleCode } from "../../../shared/electrician309aB
  * controlled source access plus SME review.
  */
 
-export interface Electrician309ADraftQuestion {
+export interface Electrician309ADraftQuestion
+  extends CertificationQuestionGovernance {
   id: number;
   module: Electrician309AModuleCode;
   task: string;
@@ -30,10 +36,20 @@ export interface Electrician309ADraftQuestion {
   reviewStatus: "draft";
 }
 
+type Electrician309AQuestionDraft = Omit<
+  Electrician309ADraftQuestion,
+  | "programKey"
+  | "blueprintVersion"
+  | "sourceVerifiedAt"
+  | "approvedForPractice"
+  | "approvedForMock"
+  | "retiredAt"
+>;
+
 const RED_SEAL_WEIGHTING_URL =
   "https://red-seal.ca/eng/trades/constelectric/previous/exam-weightings.shtml";
 
-const questions: Electrician309ADraftQuestion[] = [
+const questionDrafts: Electrician309AQuestionDraft[] = [
   {
     id: 309001,
     module: "A",
@@ -575,5 +591,17 @@ const questions: Electrician309ADraftQuestion[] = [
     reviewStatus: "draft",
   },
 ];
+
+const questions: Electrician309ADraftQuestion[] = questionDrafts.map(
+  (question) => ({
+    ...question,
+    programKey: ELECTRICIAN_309A_PROGRAM_KEY,
+    blueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
+    sourceVerifiedAt: "2026-08-15",
+    approvedForPractice: false,
+    approvedForMock: false,
+    retiredAt: null,
+  }),
+);
 
 export default questions;
