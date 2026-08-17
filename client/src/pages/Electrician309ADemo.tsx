@@ -172,7 +172,7 @@ export default function Electrician309ADemo() {
                   </div>
                 </div>
                 <p className="mt-5 max-w-2xl text-xs leading-5 text-blue-100/80">
-                  This is an original Echelon Institute draft preview—not a full course, mock exam, or Canadian Electrical Code preparation product. Technical SME review is ongoing.
+                  This is an original Echelon Institute draft preview—not a full course, mock exam, or Canadian Electrical Code preparation product. Echelon's research review is ongoing.
                 </p>
               </div>
 
@@ -273,7 +273,7 @@ export default function Electrician309ADemo() {
                 return <button key={option} type="button" disabled={confirmed} onClick={() => setSelected(optionIndex)} className={`rounded-xl border p-4 text-left text-sm font-semibold leading-6 transition md:text-base ${isCorrect ? "border-emerald-500 bg-emerald-50 text-emerald-900" : isWrong ? "border-rose-400 bg-rose-50 text-rose-900" : isSelected ? "border-[#0047AB] bg-blue-50 text-[#1E3A5F]" : "border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:bg-blue-50/40"}`}><span className="mr-3 text-slate-400">{String.fromCharCode(65 + optionIndex)}.</span>{option}</button>;
               })}
             </div>
-            {confirmed && <div className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5"><p className="font-extrabold text-[#1E3A5F]">{selected === current.correctIndex ? "Correct." : "Not quite."}</p><p className="mt-2 text-sm leading-6 text-slate-700">{current.explanation}</p><p className="mt-3 text-xs text-slate-500">Blueprint: {current.blueprintObjective} · Review status: SME draft</p></div>}
+            {confirmed && <div className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5"><p className="font-extrabold text-[#1E3A5F]">{selected === current.correctIndex ? "Correct." : "Not quite."}</p><p className="mt-2 text-sm leading-6 text-slate-700">{current.explanation}</p><p className="mt-3 text-xs text-slate-500">Blueprint: {current.blueprintObjective} · Review status: Echelon draft</p></div>}
             <div className="mt-7 flex justify-end">{!confirmed ? <button type="button" disabled={selected === null} onClick={confirm} className="rounded-xl bg-[#0047AB] px-5 py-3 font-extrabold text-white disabled:cursor-not-allowed disabled:opacity-40">Confirm answer</button> : <button type="button" onClick={next} className="rounded-xl bg-[#0047AB] px-5 py-3 font-extrabold text-white">{index === diagnostic.length - 1 ? "See readiness" : "Next question"}</button>}</div>
           </section>
         </main>
