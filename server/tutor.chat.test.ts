@@ -107,10 +107,13 @@ describe("tutor.chat", () => {
       "class1-water",
       { accessToken: undefined },
     );
-    expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith({
-      userId: "7",
-      email: "operator@example.com",
-    });
+    expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith(
+      {
+        userId: "7",
+        email: "operator@example.com",
+      },
+      { allowAnonymous: true },
+    );
     const llmInput = mocks.invokeLLM.mock.calls[0][0];
     expect(llmInput.messages[0].role).toBe("system");
     expect(llmInput.messages[0].content).toContain("NON-NEGOTIABLE RULES");
@@ -122,6 +125,27 @@ describe("tutor.chat", () => {
     expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
     expect(lookup.sql).not.toContain("`questions`.`id` = ?");
     expect(lookup.params).toEqual(["class1-water", 42, "rejected"]);
+  });
+
+  it("allows the OIT tutor during the free product preview", async () => {
+    mocks.resolveAccessForRequest.mockResolvedValueOnce(false);
+    const caller = appRouter.createCaller(createPaidContext());
+    const result = await caller.tutor.chat({
+      examType: "oit",
+      messages: [{ role: "user", content: "How does chlorine demand affect dosage?" }],
+      patternMode: false,
+      recentPerformance: [],
+    });
+
+    expect(result.reply).toContain("Chlorine residual");
+    expect(mocks.resolveAccessForRequest).not.toHaveBeenCalled();
+    expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith(
+      {
+        userId: "7",
+        email: "operator@example.com",
+      },
+      { allowAnonymous: true },
+    );
   });
 
   it("rejects caller-supplied system messages at input validation", async () => {
