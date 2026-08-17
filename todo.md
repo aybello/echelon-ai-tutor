@@ -1580,8 +1580,8 @@
 
 ## PR #27 309A Content-Quality Release
 - [x] Repair the rewrite pipeline so an invalid single-item response is retried before batch validation and all completed content remains protected
-- [ ] Refresh governed content hashes after the approved B–E rewrites and re-run package validation
-- [ ] Correct diagram-use prompts and answer-choice length cues identified by deterministic validation
-- [ ] Rebalance correct-answer positions across the complete 500-question bank without changing question accuracy
+- [x] Refresh governed content hashes after the approved B–E rewrites and re-run package validation
+- [x] Correct diagram-use prompts and answer-choice length cues identified by deterministic validation
+- [x] Rebalance correct-answer positions across the complete 500-question bank without changing question accuracy
 - [ ] Complete an independent external-model quality review of every rewritten B–E question and resolve substantive findings
-- [ ] Restore governed diagram metadata integrity after the interrupted external revision run and revalidate the full bank
+- [x] Restore governed diagram metadata integrity after the interrupted external revision run and revalidate the full bank
