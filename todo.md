@@ -1637,3 +1637,8 @@
 - [x] Audit the “Got it” and “Still learning” counts, card filtering, and persistence identifiers
 - [x] Correct the progress-state calculation and review controls so display matches actual learner decisions
 - [x] Validate, publish, and verify the corrected flashcard progress experience
+
+## 309A Flashcard Action-Control Layering Repair
+- [x] Reproduce the revealed-card action-button overlap on desktop and mobile
+- [x] Correct card sizing, stacking, and action-control spacing so both learner decisions remain clickable
+- [x] Validate and publish the repaired action-control layout

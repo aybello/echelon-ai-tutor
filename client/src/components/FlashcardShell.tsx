@@ -304,12 +304,13 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
       <style>{`
-        .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto; }
-        .fc-inner { position: relative; width: 100%; min-height: 320px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+        .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto 16px; }
+        .fc-inner { position: relative; width: 100%; min-height: 500px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
         .fc-inner.flipped { transform: rotateY(180deg); }
-        .fc-face { position: absolute; top: 0; left: 0; right: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; }
+        .fc-face { position: absolute; top: 0; left: 0; right: 0; bottom: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 500px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
         .fc-front { background: #ffffff; border: 1px solid var(--echelon-line); box-shadow: var(--echelon-shadow-md); }
         .fc-back { background: linear-gradient(135deg, var(--echelon-navy) 0%, #1d4ed8 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
+        .fc-actions-row { position: relative; z-index: 4; padding: 12px 24px 20px; background: var(--echelon-canvas); }
         .fc-mod-tab { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
         .fc-mod-tab.active { border-color: #3b82f6; }
         .fc-act-btn { border: none; border-radius: 12px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; flex: 1; }
@@ -318,7 +319,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-nav-btn:hover { border-color: #93c5fd; background: #eff6ff; color: var(--echelon-blue); }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
-          .fc-face { padding: 24px 20px; min-height: 240px; }
+          .fc-inner { min-height: 420px; }
+          .fc-face { padding: 24px 20px; min-height: 420px; }
           .fc-act-btn { padding: 12px 14px; font-size: 14px; }
           .fc-wrap { max-width: 100%; }
           .fc-header { padding: 12px 16px !important; }
@@ -327,7 +329,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           .fc-module-row { padding: 8px 16px !important; }
           .fc-progress-row { padding: 0 16px 6px !important; }
           .fc-card-area { padding: 12px 16px 6px !important; }
-          .fc-actions-row { padding: 0 16px 16px !important; }
+          .fc-actions-row { padding: 12px 16px 20px !important; }
         }
       `}</style>
 
@@ -478,7 +480,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
       {/* Action buttons — only show after flip */}
       {flipped && card && (
-        <div style={{ padding: "12px 24px" }}>
+        <div className="fc-actions-row">
           <div style={{ maxWidth: "680px", margin: "0 auto", display: "flex", gap: "12px" }}>
             <button
               className="fc-act-btn"
