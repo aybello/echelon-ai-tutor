@@ -1551,3 +1551,7 @@
 - [x] Fetch and identify the newly available Codex updates
 - [x] Assess conflicts, regressions, compatibility, and validation evidence
 - [x] Provide a merge recommendation before changing production
+## PR #26 Migration-Path Repair
+- [x] Repair the clean-schema Quality Gate so certification governance migration 0056 is applied exactly once
+- [x] Run migration, governed-bank, question-content, test, type, and build validation without production writes
+- [x] Push the repaired PR #26 branch and confirm the refreshed Quality Gate
