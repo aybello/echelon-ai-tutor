@@ -1152,7 +1152,6 @@ export default function MockExamShell({
           })}
           productKey={productKey}
           productName={productName}
-          priceLabel={`CA${price}`}
           paidFeatures={features}
           examType={productKey}
           previewName="mock-exam questions"
