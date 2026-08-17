@@ -20,4 +20,6 @@ Build a 309A-specific flashcard adapter that turns governed questions into conci
 
 ## Post-publication verification
 
-The initial live verification immediately after the flashcard checkpoint still returned the prior flashcard client bundle: it showed the full question stem, the legacy header count, and no explicit study or still-learning review controls. The deployment therefore requires a production-refresh verification before the release can be described as live.
+The initial live verification immediately after the flashcard checkpoint still returned the prior flashcard client bundle: it showed the full question stem, the legacy header count, and no explicit study or still-learning review controls. A forced follow-up deployment was required.
+
+The subsequent cache-busted public verification passed. The live route now exposes a short topic-led card front, a compact approved answer and explanation, a key takeaway, and the `Study deck` and `Review still-learning` controls.

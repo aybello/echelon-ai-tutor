@@ -1601,7 +1601,7 @@
 - [x] Audit the live 309A flashcard page, navigation, answer/reveal flow, module filtering, progress tracking, and governed-bank concept mapping
 - [x] Implement the required 309A flashcard content and interaction improvements in the shared Echelon flashcard workflow
 - [x] Validate desktop and mobile flashcard behaviour, learner progression, and governed-bank coverage before deployment
-- [ ] Publish the revised flashcard bundle and verify the public route serves the refreshed learner experience
+- [x] Publish the revised flashcard bundle and verify the public route serves the refreshed learner experience
 
 ## Latest Repository Update Review — August 17 (Follow-up)
 - [x] Fetch and identify the newly available updates
