@@ -7,6 +7,10 @@ import {
   ELECTRICIAN_309A_MODULES,
   type Electrician309AModuleCode,
 } from "../../../shared/electrician309aBlueprint";
+import {
+  ELECTRICIAN_309A_PROGRAM_KEY,
+  selectCertificationQuestionsForInternalReview,
+} from "../../../shared/certificationPrograms";
 
 const DEMO_TARGETS: Record<Electrician309AModuleCode, number> = {
   A: 1,
@@ -25,8 +29,13 @@ const MODULE_SHORT_NAMES: Record<Electrician309AModuleCode, string> = {
 };
 
 function buildDiagnostic() {
+  const reviewQuestions = selectCertificationQuestionsForInternalReview(
+    electricianQuestions,
+    ELECTRICIAN_309A_PROGRAM_KEY,
+  );
+
   return ELECTRICIAN_309A_MODULES.flatMap((module) =>
-    electricianQuestions
+    reviewQuestions
       .filter((question) => question.module === module.code)
       .slice(0, DEMO_TARGETS[module.code]),
   );
