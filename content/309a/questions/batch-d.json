@@ -1410,15 +1410,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A packaging line's VFD-fed conveyor motor keeps dropping out of bypass after nuisance overcurrent trips, and the supervisor wants equipment D23-10 back in service before the next shift. Using the rectifier, DC bus, and inverter diagram, which verification approach for the bypass sequence is most defensible before re-energizing?",
+      "question": "On a packaging line, a conveyor motor trips the bypass overload relay every time the operator transfers the motor from the drive output to the across-the-line bypass contactor, and the supervisor wants unit D23-10 running before the next shift. In the supplied energy-path diagram, supply power enters the rectifier, feeds the DC bus, and leaves the inverter as adjustable-frequency output to the motor terminals, while the bypass path must deliver full line voltage to those same terminals with the inverter output isolated. Which verification approach for the bypass sequence is most defensible before re-energizing?",
       "options": [
-        "Rely on the supervisor's account of past successful transfers to confirm the bypass sequence is still correct.",
-        "Re-energize the line immediately and treat the next shift's operation as verification of bypass sequence.",
-        "Accept the bypass sequence because a similar conveyor drive on another line uses the same wiring diagram.",
-        "Verify bypass sequence against the approved schematic, drive nameplate ratings, manufacturer transfer logic, and measured motor terminal voltage/current."
+        "Rely on the supervisor's account that earlier transfers worked, and assume the interlock between the drive-output and bypass contactors is still set as it was at commissioning.",
+        "Close the bypass contactor now and let the next shift's running current confirm that inverter-output isolation and the bypass overload settings are correct.",
+        "Accept the sequence as correct because an identical conveyor drive on another line uses the same wiring diagram and the same bypass overload setting.",
+        "Verify the sequence against the approved schematic and the manufacturer's transfer logic, confirm the drive-output contactor opens before the bypass contactor closes, and compare measured motor terminal voltage and current with nameplate ratings."
       ],
       "correctIndex": 3,
-      "explanation": "The nuisance trips are physical evidence that conditions have changed since commissioning, so verification must use current, measurable data rather than assumptions. Cross-checking the approved schematic, drive and motor nameplate ratings, manufacturer bypass transfer logic, and actual terminal voltage and current confirms whether contactor timing, overload settings, or supply conditions caused the fault before re-energizing a critical load. The supervisor's memory of prior transfers does not account for component drift, contactor wear, or setting changes. Treating shift operation as the test risks equipment damage or an uncontrolled restart on a critical load. Assuming correctness from a similar drive elsewhere ignores differences in load characteristics, wiring, or programmed limits that make each bypass sequence unique. Documented, measured verification against approved references is the only approach that supports a safe, independently reviewable decision.",
+      "explanation": "When the motor runs on the inverter output shown in the diagram, starting current is limited by the drive's frequency and current control. When the bypass contactor closes, that controlled path through the rectifier, DC bus and inverter is no longer used and the motor is started directly across the line, so inrush is several times higher and the bypass overload device and its settings must suit across-the-line starting. Correct verification therefore means checking the approved schematic and the manufacturer's transfer logic, proving the electrical and mechanical interlock opens the drive-output contactor before line voltage reaches the motor terminals (otherwise line voltage is applied back onto the inverter output devices), and comparing measured terminal voltage and current against the motor and overload nameplate values. Relying on the supervisor's recollection ignores contactor wear, changed overload dial settings and interlock drift since commissioning. Letting the next shift's operation serve as the test can damage the inverter output stage and stall a critical load. Copying the conclusion from a similar drive on another line ignores differences in load inertia, conductor length and programmed limits, so each bypass sequence must be confirmed on its own equipment.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1426,7 +1426,7 @@
       "diagramAlt": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output.",
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply bypass sequence knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "2417b7d53c19db0558cb9778297f9ef6e9b1067670c2618da9423dd3bdba9b32"
+      "contentHash": "4ed92bc8156e6d9fb364244298ef5fa76115924489e9e8b787e5c2ef9900cb48"
     },
     {
       "bankItemNumber": 396,
@@ -1775,15 +1775,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase capacitor-start motor used to jog a three-phase conveyor during commissioning hums, then intermittently fails to reach running speed. The electrician traces the start-winding and centrifugal switch wiring, finding it does not match the manufacturer's approved wiring diagram. What should the electrician do next?",
+      "question": "During commissioning of a 1 hp, 240 V single-phase capacitor-start motor driving a small packaging-line conveyor, the motor hums and only intermittently comes up to running speed. The electrician opens the motor terminal box and finds the start-winding and centrifugal switch connections do not match the manufacturer's approved wiring diagram. What should the electrician do next?",
       "options": [
-        "Accept the wiring from appearance alone because a similar motor worked correctly on an earlier job.",
-        "Bypass the centrifugal switch so the motor keeps running while the mismatch cause is assumed.",
-        "Adjust several terminal connections at once, then treat any brief improvement as confirmed repair.",
-        "Pause, verify the start-winding wiring against the approved diagram, correct the discrepancy, document findings, then restart."
+        "Accept the existing connections based on appearance, since a similar conveyor motor on an earlier job ran correctly with comparable wiring.",
+        "Jumper across the centrifugal switch so the conveyor keeps running while the cause of the mismatch is assumed to be a diagram error.",
+        "Change several start-winding terminal connections at once and treat any brief improvement in starting as a confirmed fix.",
+        "Stop the motor, verify the start-winding and switch wiring against the approved diagram, correct the confirmed discrepancy, record the change, then restart and retest."
       ],
       "correctIndex": 3,
-      "explanation": "Intermittent starting with humming points to a start-winding or switch fault that can overheat the auxiliary winding or damage the switch if left uncorrected. Verifying the actual wiring against the manufacturer's approved diagram, correcting only the confirmed discrepancy, and documenting the change lets the electrician confirm the fix and gives others a clear record. Accepting the wiring from appearance risks missing a genuine miswire because prior success on different equipment does not confirm this unit's condition. Bypassing the centrifugal switch removes the protection that disconnects the start winding at speed, risking winding burnout. Changing several connections together and judging success from brief improvement can mask the real fault or introduce a new one, since it is impossible to isolate which change, if any, resolved the symptom.",
+      "explanation": "Humming with intermittent starting is a classic sign that the start winding or the centrifugal start switch is not connected as designed, and the auxiliary winding can overheat quickly if it stays energized or never energizes properly. Comparing the actual connections to the manufacturer's approved diagram, correcting only the confirmed discrepancy, recording what was changed, and then retesting confirms the motor now starts reliably and leaves a clear record for the next person. Accepting the wiring from appearance is unreliable because another motor's terminal arrangement does not prove this unit is connected correctly. Jumpering the centrifugal switch defeats the device that disconnects the start winding near full speed, so the auxiliary winding stays energized and can burn out. Altering several connections together and judging success from a brief improvement makes it impossible to tell which change mattered, so the real fault can remain hidden or a new one can be introduced.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1791,7 +1791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply single-phase starting circuit knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "f68ccadb278541ad512a59dc1709e985ffb97bf9bea57990f7ccfd845bfc4623"
+      "contentHash": "f08c12f14a0ee8aaf0ed0f5736e8171ce6f3005ffbfa8b08dbc1702515a64b32"
     },
     {
       "bankItemNumber": 409,
@@ -2465,15 +2465,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the accompanying diagram, a rewound three-phase pump motor is reinstalled, but its nameplate pole count differs from the original maintenance record. A tachometer reading also shows shaft speed below the expected synchronous value for the labeled frequency and poles. What should the electrician do before returning the motor to service?",
+      "question": "In the accompanying motor-speed diagram, synchronous speed is fixed by supply frequency and pole count, and rotor speed sits below it by the amount of slip. A single-phase capacitor-start pump motor has been rewound and reinstalled. Its new nameplate lists a pole count different from the original maintenance record, and a tachometer reading at rated load is well below the synchronous speed the diagram predicts for the labelled frequency and poles — a gap much larger than normal full-load slip. What should the electrician do before returning this motor to service?",
       "options": [
-        "Accept the nameplate data as correct since the motor looks identical to the original unit.",
-        "Return the motor to service now and investigate the speed discrepancy later if problems occur.",
-        "Adjust the drive frequency and load settings together until the tachometer reading looks acceptable.",
-        "Verify pole count, frequency, and rated speed against the approved design and manufacturer data before energizing."
+        "Record the lower tachometer reading as the new normal slip value for the rewound winding and release the pump to operations",
+        "Update the maintenance record to agree with the new nameplate, since the diagram shows synchronous speed is set by supply frequency alone",
+        "Replace the start capacitor and the centrifugal starting switch, because these starting components determine the motor's running speed",
+        "Verify pole count, supply frequency, and rated speed against the approved design and the manufacturer's data before energizing the motor"
       ],
       "correctIndex": 3,
-      "explanation": "A mismatch between nameplate pole count and the maintenance record, combined with a measured speed below expected synchronous value, signals a documentation or rewind error that could indicate wrong slip, torque, or thermal characteristics. The correct action is to confirm supply frequency, pole count, and rated speed against the approved design and manufacturer data before energizing, since visual similarity to the old unit does not verify internal winding configuration. Returning it to service while planning to investigate later risks equipment damage or unsafe operation if the motor is mismatched to the load. Adjusting multiple settings simultaneously to force an acceptable-looking reading masks the real discrepancy and prevents identifying its root cause, making future troubleshooting unreliable and potentially unsafe for connected equipment.",
+      "explanation": "The diagram shows that synchronous speed is determined by both supply frequency and pole count, and that the rotor turns slightly slower by an amount called slip. When the measured shaft speed falls far below the synchronous speed predicted by the labelled frequency and poles, the winding configuration, the nameplate data, or both are suspect. Confirming pole count, frequency, and rated speed against the approved design and manufacturer's data before energizing protects the motor and the driven pump, because torque, slip, and heating characteristics all change with pole count. Treating the large speed gap as normal slip accepts an unverified condition and can lead to overheating or a pump that cannot meet its duty. Assuming frequency alone sets synchronous speed ignores the pole-count term in the diagram, so copying the nameplate into the record hides the mismatch. The start capacitor and centrifugal switch only bring the single-phase motor up to transfer speed; they drop out of the circuit during running and cannot change the running speed set by frequency, poles, and load.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2481,7 +2481,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply single-phase starting circuit knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "b940b9119215161dd419b5f51b7e8480bed67fe3f44580ddefc4bdfc2548c1b2"
+      "contentHash": "7f43f0986c3f2592c17b8624e49a35bde11bed9747fea50b27ad7fb1f15254d1"
     },
     {
       "bankItemNumber": 433,
@@ -2865,15 +2865,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On packaging line equipment D25-13, a photo-eye's digital input reads active (1) while the approved control narrative specifies it should read 0 when the beam is unbroken. No fault light shows on the sensor. What should the electrician do before restarting the line?",
+      "question": "On packaging line D25-13, an electrician confirms the photo-eye's target area is clear and the receiver's beam-strength LED shows a made beam, yet the PLC status monitor shows input I:1/4 at logic 1. The approved control narrative states this input must be 0 whenever the beam is unbroken. The sensor has no fault indication, and its output-mode selector is found in the light-operate (light-on) position. What is the correct action before restarting the line?",
       "options": [
-        "Swap the photo-eye sensor for a spare unit and restart without checking wiring or logic first.",
-        "Silence the discrepancy alert and monitor for repeat occurrences before running further tests.",
-        "Accept the operator's verbal description of normal behaviour as the acceptance record for this input.",
-        "Pause, verify the input state against the approved control narrative, resolve the discrepancy, then document findings before continuing."
+        "Rewire the sensor output through the normally closed contact of an interposing relay so the input reads 0 with the beam made, then restart the line.",
+        "Replace the photo-eye with an identical spare unit, since a correctly functioning sensor cannot produce a state opposite to the control narrative.",
+        "Invert the status bit for I:1/4 in the program logic, leave the sensor's output mode as found, and restart the line at production speed.",
+        "Confirm the signal at the input module terminal, set the sensor's output mode to dark-operate so the made beam turns the input off, retest against the narrative, and record the change."
       ],
       "correctIndex": 3,
-      "explanation": "A digital input state that contradicts the approved control narrative signals a wiring, logic, or sensor configuration mismatch that could cause unsafe or unpredictable line behaviour. Pausing to verify against approved documentation, isolating the cause, and recording the resolution ensures the fix is deliberate and reviewable. Swapping the sensor without diagnosis risks masking a wiring or program fault that will recur or cause a different failure mode. Silencing the alert and waiting for repetition delays correction and risks equipment damage or injury in the interim. Relying on an operator's memory provides no traceable verification and cannot substitute for approved control documentation during commissioning or troubleshooting of automated systems.",
+      "explanation": "With the beam confirmed made, a light-operate sensor energizes its output and drives the input to 1, which is exactly the opposite of what the narrative requires. Measuring at the input terminal separates a genuine field signal from a monitoring or addressing issue, and moving the selector to dark-operate makes the input turn off with the beam unbroken and on when the beam is blocked, matching the documented logic. Adding an interposing relay to invert the signal introduces an extra component and coil failure point when the sensor itself has a mode selector for this purpose. The sensor is behaving normally for its selected mode, so a spare unit set the same way would read 1 as well. Inverting the bit in the program leaves the field device wired opposite to the drawings, so the next person troubleshooting the line sees hardware and software that disagree.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2881,7 +2881,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply digital input state knowledge while the electrician installs automated control systems.",
-      "contentHash": "27bce939984d1dce310c393b06a2f4089d5febcd9ff06600707a20e16c9cda73"
+      "contentHash": "5fb75e2a13f487377af41898b4fdfaaafead46813a6bb7d00048470cd1409d76"
     },
     {
       "bankItemNumber": 447,

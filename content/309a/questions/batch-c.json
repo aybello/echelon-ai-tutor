@@ -595,15 +595,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Twelve identical 3-wire NMD90 cables land in a basement suite subpanel. All twelve carry the same jacket printing, the pull tags were torn off during drywall, and the feeder is locked out. Working from the panel with access to each room's rough-in box, what method positively identifies which cable serves which room before the conductors are terminated?",
+      "question": "During a basement suite rough-in, ten identical 3-wire NMD90 cables enter the suite subpanel. The marker tags were destroyed during drywall, every jacket carries the same printing, the feeder is locked out and tagged, and each room's device box is still open. Before terminating any conductors, the electrician must positively identify which cable serves the kitchen counter box. What procedure accomplishes this?",
       "options": [
-        "At one room's box, twist that cable's neutral and bond conductors together, then test for continuity between the neutral and bond of each cable at the panel until the matching cable is found and tagged.",
-        "Assume the cables were pulled and landed room by room, and tag them at the panel in the same order that they enter the box connectors along the top of the enclosure.",
-        "Measure the loop resistance of each cable at the panel and tag the cables with the highest readings as the rooms farthest from the panel, working down to the lowest readings.",
-        "Trace each cable visually through the open joist space above the panel and tag it at the point where it turns up and disappears into the finished wall cavity."
+        "At the kitchen counter box, twist that cable's neutral and bond conductors together, then at the panel test each cable for continuity between its neutral and bond until the one closed circuit is found and tagged.",
+        "Tag the cables at the panel in the order they enter the box connectors along the top of the enclosure, on the basis that they were landed room by room in the sequence they were pulled.",
+        "Measure the loop resistance of each cable at the panel and assign the highest reading to the kitchen counter box, since that run travels the greatest distance from the enclosure.",
+        "Trace each cable visually across the open joist space above the panel and tag the one that turns up into the finished wall directly below the kitchen counter."
       ],
       "correctIndex": 0,
-      "explanation": "With the circuit dead, deliberately creating a known short at the far end turns each cable into a testable pair: shorting the neutral to the bond conductor in one room's box means only that one cable will read continuity between neutral and bond at the panel. Tag it, remove the short, and repeat for the next room. This gives positive, one-cable-at-a-time proof of identity before any conductor is terminated. Tagging by the order the cables enter the connectors assumes a pulling sequence that is rarely followed and cannot be verified. Loop resistance readings on cables of similar size and length differ by only fractions of an ohm, so ranking them cannot reliably separate one room from another. Visual tracing stops where the cable enters the finished wall, which is exactly where the uncertainty begins. Positive identification always depends on a test that produces a unique response from one cable at a time.",
+      "explanation": "With the circuit dead, deliberately creating a known short at the far end turns one cable into a uniquely testable pair. Twisting the neutral to the bond conductor at the kitchen counter box means only that cable will read continuity between neutral and bond back at the panel; tag it, remove the short, and repeat the process for the next room. That gives positive, one-cable-at-a-time proof of identity before any conductor is terminated. Tagging by the order cables enter the connectors relies on a pulling and landing sequence that is rarely followed and cannot be confirmed after the fact. Loop resistance readings on cables of the same size and similar length differ by only fractions of an ohm, so ranking them cannot reliably separate one room from another, and the kitchen run is not necessarily the longest. Visual tracing stops at the point where the cable disappears into the finished wall, which is exactly where the uncertainty begins. Positive identification always depends on a test that produces a unique response from a single cable.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -611,7 +611,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician installs conductors and cables.",
-      "contentHash": "e024d0fce467e6a72bb5d088ec6966da91cc103b9d9a86509f9b43f08d83e0f8"
+      "contentHash": "9b206d3d6f3d5bfe6340503b04bcab9f90f5eef0b4f64af710fabd3e034d1a2e"
     },
     {
       "bankItemNumber": 217,
@@ -1099,15 +1099,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician is closing a 4x4 box that contains a single-pole switch on its yoke, the switch-loop conductors, and splices that feed three downstream receptacles. The device cover will not seat flush and conductors bulge past the box edge. What should the electrician confirm before forcing the cover shut and energizing the circuit?",
+      "question": "An electrician is closing a 4 in. × 4 in. device box in a finished basement. Mounted in the box is one single-pole switch on its yoke, and four cables enter it: the supply, the switch leg to the luminaire, and two cables whose ungrounded, neutral, and bond conductors are spliced through to three downstream receptacles. The device cover will not seat flush and the folded conductors bulge past the box edge. What should the electrician confirm before fastening the cover and energizing the circuit?",
       "options": [
-        "Recalculate conductor count and size, device volume, bonding arrangement, and physical fit against the approved design before closing the box.",
-        "Trim a few conductors shorter so the cover seats flush, without recalculating box fill or device volume allowances.",
-        "Swap the cover for one taken from a similarly sized box on another circuit that has different device counts and loads.",
-        "Force the cover with extra screws, since the box passed inspection at rough-in before the switch and splices were added."
+        "Recalculate the conductor count and size, the device volume allowance, the bonding arrangement, and the physical fit against the approved design before closing the box.",
+        "Trim several of the spliced conductors shorter so the cover seats flush, without recalculating the conductor count or device volume allowance.",
+        "Push the splices tightly to the back of the box and re-fold the remaining conductors, treating a cover that finally seats as proof the volume is adequate.",
+        "Rely on the box size chosen at rough-in, since a single-pole switch is credited a smaller volume allowance than a receptacle would have been."
       ],
       "correctIndex": 0,
-      "explanation": "A cover that will not seat and conductors pushing past the box edge indicate the installed contents now exceed the usable volume of that box. The switch occupies volume on its yoke, and every spliced conductor entering the box for the three downstream receptacles adds to the fill, as do the bonding conductors. Rechecking conductor count and size, device volume, bonding arrangement, and physical fit against the approved design tells the electrician whether a deeper box, an extension ring, or a separate splice enclosure is needed. Trimming conductors only removes the slack needed for safe folding and future device replacement while leaving the volume shortfall unchanged. Taking a cover from another box matches an outside dimension but ignores that fill depends on the specific conductors and devices in this box. Forcing the cover with extra screws can pinch or nick insulation behind the switch and blocks safe maintenance access, so it hides a genuine capacity problem rather than correcting it.",
+      "explanation": "A cover that will not seat and conductors pushing past the box edge indicate the installed contents now exceed the usable volume of that box. The switch is credited volume on its yoke, each cable's ungrounded and neutral conductors that are spliced through to the three downstream receptacles count toward fill, and the bond conductors add their own allowance. Rechecking the conductor count and size, device volume allowance, bonding arrangement, and physical fit against the approved design tells the electrician whether a deeper box, an extension ring, or a separate splice enclosure is required. Trimming conductors removes the slack needed for safe folding and future device replacement while leaving the volume shortfall unchanged. Compressing splices into the back of the box only hides the crowding: insulation can be pinched or nicked behind the switch, and a cover that seats under pressure is not evidence that the calculated volume is sufficient. The rough-in size was chosen before the feed-through splices and bond conductors were added, so the smaller allowance for a switch does not offset the conductors that were introduced afterward.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1115,7 +1115,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply raceway support knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "c71233e1dfaa429668c797583216bc0c46a0a4c8dec5b77ca80682b34b089198"
+      "contentHash": "02673be6d9da4ab4bf3d79dec6f136cc7a3eef8a965431b8725647bce1c79e1e"
     },
     {
       "bankItemNumber": 235,
@@ -2571,15 +2571,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "While troubleshooting a rooftop HVAC unit where zone damper actuators intermittently lose their call signal each time the supply fan relay energizes, which statement best explains the purpose of control-transformer loading?",
+      "question": "On a rooftop HVAC unit, zone damper actuators briefly lose their call signal every time the supply fan relay energizes. Which statement best describes the loading principle used to size the 24 V control transformer for this circuit?",
       "options": [
-        "Confirm the sag appears only when two actuators start together, then swap the nearest accessible transformer without further testing.",
+        "Transformer VA need only cover the largest single coil's holding demand, because relays and actuators are unlikely to energize during the same interval.",
         "Transformer VA capacity must exceed the combined steady-state and inrush demand of all connected relays, actuators, and control devices operating together.",
-        "Trust the transformer nameplate rating alone and skip measuring device VA totals, sequence timing, and actual secondary voltage under load.",
-        "Check the downstream thermostat wiring first and postpone verifying simultaneous inrush or secondary voltage drop until the fault becomes constant."
+        "Transformer VA is selected from the secondary conductor ampacity, since control wiring size sets the practical limit on load the transformer can supply.",
+        "Transformer VA is adequate whenever open-circuit secondary voltage measures within tolerance, because inrush events are too brief to affect device holding voltage."
       ],
       "correctIndex": 1,
-      "explanation": "The symptom—dropped calls precisely when the fan relay and damper actuators energize together—points to secondary voltage sagging below holding levels during combined inrush, not a wiring or thermostat fault. Control-transformer loading requires sizing capacity to cover the simultaneous VA draw and inrush of every coil and actuator on the circuit, verified against measured secondary voltage under actual operating conditions. Relying on the nameplate alone ignores real device VA totals and timing overlap, so it misses the true cause. Swapping the transformer without measuring VA demand or sequence wastes effort and may not fix a capacity mismatch. Deferring testing until failure becomes permanent risks continued nuisance dropouts and possible actuator or relay damage. Confirming rated capacity against measured combined load and voltage is the only approach supported by the evidence presented.",
+      "explanation": "Dropped calls that occur exactly when the fan relay and damper actuators pick up together indicate the secondary voltage is sagging below device holding levels during combined inrush. Correct loading practice is to total the sealed (steady-state) VA of every coil, actuator, and control device that can be energized at the same time, add the much higher inrush VA of the devices that pick up together, and choose a transformer whose rating exceeds that total, then confirm the secondary voltage stays within tolerance under real operating load. Sizing to only the largest single coil ignores the simultaneous demand that causes the sag. Conductor ampacity limits how much current the wiring may carry, but it does not establish the VA the transformer must deliver. Open-circuit voltage looks normal on an undersized transformer because no current is flowing; inrush lasting only a fraction of a second is still long enough to drop a relay or actuator out.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2587,7 +2587,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply thermostat signal knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "b316f836e2fed1f91e781899e54fc212731f8001ee994016905662e51c6e4d86"
+      "contentHash": "3617b8b81b33736cd73290c44e9df54fdc11a59328279010f5fdbfaf08de6056"
     },
     {
       "bankItemNumber": 287,
@@ -3799,15 +3799,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While finalizing a monthly emergency lighting test log for a distribution warehouse, an electrician notices one remote head's logged duration is shorter than the branch circuit's rated interval, with a note stating the unit was replaced but no retest figure entered. Which action should precede sign-off?",
+      "question": "While finalizing the monthly emergency lighting test log for a distribution warehouse, an electrician sees that one remote head's logged illumination time is shorter than the rated duration specified for the unit-equipment battery, and the entry has a note stating the head was replaced but no retest time was recorded. Which action should precede sign-off on the record?",
       "options": [
-        "Cross-check the head's tag number, measured duration, corrective action, and retest date against the approved design's required test interval before closing the record.",
-        "Sign off because the replacement note alone confirms the corrective action was completed satisfactorily.",
-        "Copy the duration entry from a similar remote head tested last month at another building.",
-        "Verify only that the head illuminates during a quick visual check, since operation confirms compliance."
+        "Cross-check the head's tag number, measured illumination time, corrective action, and retest date against the rated duration required by the approved design before closing the record.",
+        "Sign off on the entry because the replacement note by itself confirms the corrective action was completed satisfactorily.",
+        "Copy the illumination time recorded last month for a similar remote head on another unit equipment in the warehouse.",
+        "Confirm only that the head lights when the test switch is pressed, since successful transfer to battery demonstrates compliance."
       ],
       "correctIndex": 0,
-      "explanation": "The log shows a replaced unit but no retest duration, so the file cannot confirm the new head meets the branch circuit's rated interval. Cross-checking the tag number, measured duration, corrective action, and retest date against the approved design's required interval closes this gap and gives verifiable evidence the repair was tested, not merely installed. Signing off on the replacement note alone is tempting because it looks like the deficiency was addressed, but a replaced component still requires a documented retest proving it meets the rated duration; without that figure the record is incomplete. Reusing a duration figure from another remote head ignores that loading and wiring differ head to head. A quick illumination check only proves the lamp lights, not that it sustains the required duration, so it cannot substitute for the missing retest data before acceptance.",
+      "explanation": "The log records a replaced head but no retest time, so the file cannot show that the new head sustains illumination for the rated duration of the unit equipment. Cross-checking the tag number, measured illumination time, corrective action, and retest date against the duration required by the approved design closes that gap and provides verifiable evidence the correction was tested, not just installed. Accepting the replacement note alone is tempting because the deficiency appears handled, but any replaced component still needs a documented retest time; without that figure the record stays incomplete. Borrowing a time from another head ignores that battery condition and head loading differ from unit to unit, so the number does not describe the head in question. Watching the head light on transfer proves only that the lamp energizes, not that the battery carries it for the full rated period, so it cannot replace the missing retest data.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3815,7 +3815,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply remote-head loading knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "30c32ab56787a140ab08d449662b84f1813748b365bef6a81249a0442a05c97c"
+      "contentHash": "51eaffa9423e51ac1aeda82c6dfaf0e0ba59a95145924d225365e05594399449"
     },
     {
       "bankItemNumber": 331,
@@ -3825,15 +3825,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A contractor commissions egress lighting in a renovated stairwell where the battery pack sits beside the branch circuit supplying it. Before sign-off, why must the electrician verify normal-source sensing at the exact point specified for that unit? Use the accompanying diagram to support your assessment.",
+      "question": "An electrician is commissioning battery-pack egress lighting in a renovated stairwell. In the sequence shown in the diagram, the normal source enters the unit ahead of the charger/battery and the transfer function that feeds the emergency luminaires. Why must the sensing connection be made at that normal-source input shown, rather than at any convenient energized conductor nearby?",
       "options": [
-        "Raise the sensing threshold until the unit drops to battery mode while normal power is still present, then log it as passing.",
-        "Swap the sensing relay and its adjustment dial simultaneously so the unit resumes emergency mode faster.",
+        "Sensing taken from any energized conductor in the area keeps the charger's float voltage stable, which is the purpose the diagram assigns to that input.",
+        "Because the transfer function shown is initiated by declining battery voltage, the sensing location only influences how quickly the charger recovers the battery.",
         "The unit must detect loss of power at its designated normal source and switch to battery supply automatically.",
-        "Clear the fault indicator, re-energize the circuit repeatedly, and investigate only if the breaker trips again."
+        "Because the emergency luminaires shown continue on the normal source until its breaker trips, the sensing location only sets the delay before battery pickup."
       ],
       "correctIndex": 2,
-      "explanation": "The evidence that matters is whether the sensing input actually reflects the branch feeding the unit, whether the transfer relay engages on loss of that source, and whether the emergency luminaires light from battery. Confirming sensing at the intended point proves the unit will respond during a real outage, which is the purpose of the test. Forcing a threshold change to trip the unit while normal power is still live only demonstrates that the adjustment works, not that the correct source is monitored, so a wiring error to the wrong branch could still pass undetected. Repeated re-energizing or component swapping does not verify the sensing point either. Without confirming detection at the specified location, the fixture could fail to transfer during an actual loss of normal power, defeating its life-safety function.",
+      "explanation": "In the diagram, the normal-source input is what the unit monitors; when that source disappears, the transfer function drops the emergency luminaires onto the battery. If sensing is landed on a different circuit, the lighting the stairwell depends on can stay dark during a real outage of the branch actually serving that area, so the sensing point must match the source specified for the unit. The charger's float voltage is set by the unit's internal circuitry, not by which conductor is used for sensing, so a nearby conductor would not serve that purpose. Transfer is triggered by loss of the monitored source, not by declining battery voltage, and the battery would already be discharging before any such signal appeared. The emergency luminaires are supplied through the transfer function rather than directly from the normal source, so the sensing connection determines whether transfer happens at all, not merely how long it is delayed.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3841,7 +3841,7 @@
       "diagramAlt": "Emergency-lighting sequence showing normal source, charger and battery, transfer function and emergency luminaires.",
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply monthly functional test knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "aeec84575451ff408709feef6ac161f7ffcc12fdf9a676e983bce293393bb757"
+      "contentHash": "c074148de981c4f1222ec435625c058734dde3b7115a3c1250a14e271c760824"
     },
     {
       "bankItemNumber": 332,

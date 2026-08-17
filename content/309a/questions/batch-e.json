@@ -167,15 +167,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "The diagram traces the fire alarm signal path from an initiating device, through control panel logic, to notification appliances and associated building functions. A security CCTV camera is aimed at the manual pull station located at the initiating-device end of that path so staff can visually identify who operated it. During commissioning you find a newly installed storage rack blocks part of that view. What is the correct action on camera field of view before sign-off?",
+      "question": "In the diagram, the manual pull station is shown at the input side of the fire alarm control panel, upstream of the panel logic that drives the notification appliances and the associated building functions. A separate security camera has been aimed at that pull station so staff can see who operated it. While commissioning the camera you find a newly installed storage rack now cuts across part of that view. What is the correct action on the camera's field of view before sign-off?",
       "options": [
-        "Accept the camera's original commissioning record, since the pull station's position at the initiating-device end of the path has not been moved.",
-        "Re-aim the camera toward the notification appliances shown downstream of the panel logic, because alarm output is more visible than device operation.",
-        "Widen the camera zoom and lengthen the panel's alarm verification delay together, then accept the result if the next test alarm looks clearer on screen.",
-        "Re-verify that the camera view still covers the pull station at the initiating-device end of the path, using the approved camera layout, lens coverage data, and the measured sightline past the new rack."
+        "Accept the camera's original commissioning record, since the pull station itself is still in the same location on the input side of the panel as when the camera was first aimed.",
+        "Re-aim the camera at the horns and strobes shown downstream of the panel logic, because the alarm output is easier to capture on video than the operation of a single device.",
+        "Increase the camera's zoom and lengthen the panel's alarm verification delay at the same time, then accept the result if the next test alarm appears clearer on the monitor.",
+        "Stand at the pull station on the input side of the panel, confirm on the live image that the station and its approach are fully within the camera view, and re-aim or relocate the camera so the sightline clears the new rack."
       ],
       "correctIndex": 3,
-      "explanation": "The camera's job is to give a clear view of the manual pull station shown at the initiating-device end of the signal path, so the site condition must be re-checked against the approved camera layout, the lens coverage data for that mounting height and distance, and an actual measured sightline around the new rack. The original commissioning record no longer describes the room, because the obstruction — not the pull station — is what changed. Re-aiming to the notification appliances covers the wrong end of the path; horns and strobes are already supervised electrically by the panel, while the camera exists to show who activated the device. Adjusting zoom and the panel verification delay at the same time changes two independent variables, so any apparent improvement cannot be traced to the field of view, and the delay setting is part of panel logic rather than camera coverage. Confirming coverage against the layout, lens data, and measured sightline is what proves the camera still performs its intended monitoring function.",
+      "explanation": "The camera exists to show who operated the manual pull station shown at the input side of the panel, so coverage has to be proven at that spot: someone stands at the station while the live image is watched, confirming both the station and the walk-up approach to it are inside the picture, and the camera is re-aimed or moved until the sightline passes clear of the new rack. The earlier commissioning record no longer describes the room, because what changed is the obstruction, not the location of the station. Aiming at the horns and strobes captures the output end of the path instead of the input end; those circuits are already electrically supervised by the panel, while the camera is a security device that supervises nothing and only provides a visual record of who pulled the station. Increasing zoom and changing the panel's verification delay together alters two unrelated settings, so any improvement on screen cannot be attributed to coverage, and the delay belongs to panel logic rather than to camera aiming. Verifying the view from the pull station location is what proves the camera still does its intended job.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -183,7 +183,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "68fff690f3c62fd06309586179a29e8c0ef938d080fb3b30e29e1287807bac79"
+      "contentHash": "206d96edee111ee39d9d424d9fb980cc48c284924415185d528ace7985150170"
     },
     {
       "bankItemNumber": 457,
@@ -367,15 +367,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "A technician commissioning a supervised initiating circuit finds the installed end-of-line resistor value differs from the value on the approved shop drawing, and the panel intermittently reports a trouble signal. Which verification approach best supports safe acceptance of equipment E26-13?",
+      "question": "While commissioning a supervised initiating device circuit on a fire alarm panel, an electrician notices the end-of-line resistor installed in the last device backbox has a different marked value than the one shown on the approved shop drawing, and the panel intermittently annunciates a trouble condition on that zone. Which verification approach best supports safe acceptance of the circuit?",
       "options": [
-        "Accept the circuit because the resistor looks like a standard type used on past jobs.",
-        "Energize the system and treat panel response during normal operation as the first check.",
-        "Confirm the resistor value against approved drawings, manufacturer data, and a measured reading.",
-        "Rely on the operator's recollection of similar circuits instead of checking documentation."
+        "Accept the circuit because the resistor body and colour bands match the type used on previous fire alarm jobs.",
+        "Energize the zone and treat the panel's response during normal building operation as the first check of supervision.",
+        "Confirm the resistor value against the approved drawings and manufacturer data, then verify it with a measured reading.",
+        "Rely on the building operator's recollection of what value was used on similar zones instead of checking documentation."
       ],
       "correctIndex": 2,
-      "explanation": "An end-of-line resistor value that does not match the approved design can cause false trouble signals, masked wiring faults, or unreliable supervision of the circuit. The defensible method is to compare the installed component against the approved shop drawing, the manufacturer's specified resistance, and an actual measured reading before accepting the circuit as correct. Relying on appearance or memory ignores objective evidence and risks accepting a circuit that will not properly detect an open or short condition. Treating first energization as the test exposes the building to an unverified life-safety circuit. Documented verification against design and measured values allows an independent reviewer to confirm the correction before final acceptance, which is essential for supervised fire alarm circuits.",
+      "explanation": "Supervision of an initiating device circuit depends on the panel sensing a specific, predictable current through the end-of-line resistor. If the installed value does not match the manufacturer's requirement and the approved design, the panel may report false troubles or, worse, fail to detect a real open or short in the field wiring. The defensible method is to compare the installed component against the approved shop drawing and the panel manufacturer's specified resistance, then confirm the actual value with a resistance measurement taken with the circuit isolated from the panel. Judging the resistor by appearance is unreliable because similar-looking resistors carry very different values and tolerances. Treating first energization as the test leaves an unverified life-safety circuit in service. Depending on someone's memory of other zones provides no objective evidence that this circuit will supervise correctly.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply end-of-line supervision knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "8f6f6858281293c073c6c494706466f82edb734e9b97d66e6d4be908b015da2c"
+      "contentHash": "15eb5029a085353826a196bcbba1458012507cfd03975b7210fdd8ce3038049e"
     },
     {
       "bankItemNumber": 464,
@@ -593,15 +593,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "During commissioning of a new initiating-device circuit in a plant expansion, the fire alarm panel logs a supervisory trouble, and the measured loop resistance exceeds the end-of-line value shown on the riser drawing. Which verification approach should the electrician use before closing out equipment E26-21?",
+      "question": "While commissioning a new initiating-device circuit for a plant expansion, an electrician sees the fire alarm panel report a supervisory trouble on that zone, and the loop resistance measured at the panel terminals is well above the end-of-line resistor value specified on the riser drawing. How should the electrician proceed before signing the zone off as complete?",
       "options": [
-        "Reset the panel and treat a successful re-energization as sufficient verification of the circuit.",
-        "Rely on the previous electrician's handover notes as the only proof the circuit is compliant.",
-        "Assume the reading is acceptable since similar zones on other floors passed testing.",
-        "Verify the circuit against approved drawings, device ratings, manufacturer specifications, and measured field readings."
+        "Reset the panel and treat a trouble-free restart as proof that the zone loop is now within specification.",
+        "Accept the reading based on the previous shift's handover notes stating the loop was terminated correctly.",
+        "Accept the reading because identical zones on the other floors of the expansion already passed their loop tests.",
+        "Isolate the loop, compare the measured resistance against the specified end-of-line resistor and manufacturer loop-resistance limits, correct the high-resistance connection or splice, then retest and record the final reading."
       ],
       "correctIndex": 3,
-      "explanation": "The measured loop resistance exceeding the end-of-line value signals a wiring or connection issue that could delay alarm reporting on circuit E26-21. Confirming compliance requires comparing the approved riser drawing, the rated end-of-line resistor value, and manufacturer wiring specifications against the actual field measurement, correcting the fault, and documenting the verified reading before sign-off. This traceable process lets another qualified person confirm the circuit will supervise properly under actual conditions. Resetting the panel and accepting a clean restart ignores the underlying resistance discrepancy, risking a false sense of readiness. Relying on another electrician's handover notes substitutes secondhand information for direct verification of this specific circuit's rating and reading. Assuming acceptability because other zones passed disregards that each initiating-device circuit has its own wiring run, terminations, and measured value, so one zone's success cannot certify another's compliance or safe operation.",
+      "explanation": "A loop resistance well above the specified end-of-line value points to a loose termination, a corroded splice, an undersized or wrong-value resistor, or a partially broken conductor. Any of these can keep the panel from reliably distinguishing normal, alarm, and open-circuit states, delaying or preventing alarm reporting. The correct approach is to isolate the loop, compare the field measurement to the end-of-line resistor value on the riser drawing and the manufacturer's maximum loop resistance, repair the high-resistance point, then re-measure and record the corrected value so the supervised condition is documented for the verification report. Resetting the panel only clears the display; the resistance problem remains and the zone may sit in a marginal state until it fails. Handover notes from another worker describe intent, not the present condition of this loop, and cannot replace a measurement taken at the panel terminals. Passing results on other floors say nothing about this zone, since every initiating-device circuit has its own conductor run, device terminations, and end-of-line device.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -609,7 +609,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply initiating-device circuit knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "0f0e02f3f0597bd1112f2a9f47fc6066d16a3c634e903eeb385e4c5753840f8f"
+      "contentHash": "a309f823d4446524f50256794b6aa1874c1fbc4056caa94b8b4e310959232eee"
     },
     {
       "bankItemNumber": 472,
@@ -801,15 +801,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "During commissioning of nurse-call panel E27-07 in a hospital corridor, a staff member acknowledged a code-blue alarm but the incident log's cause field is blank. Which verification method best confirms correct alarm priority before sign-off?",
+      "question": "While commissioning nurse-call panel E27-07 on a hospital patient wing, you activate a bedside code-blue station and the panel annunciates it in the same queue position and display colour as a routine patient call. Which verification method best confirms that alarm priorities are correctly assigned before commissioning sign-off?",
       "options": [
-        "Rely on the staff member's recollection as the sole record confirming alarm priority assignment.",
-        "Complete installation and let final system energization serve as the first priority verification.",
-        "Compare the approved design, equipment ratings, manufacturer specs, and measured panel response to confirm priority.",
-        "Accept the priority setting because a similar panel functioned correctly on a prior job."
+        "Confirm at the nursing station that the code-blue tone sounds different from the routine patient-call tone.",
+        "Verify continuity and terminal labelling for every station circuit against the riser drawing before sign-off.",
+        "Compare the approved design, device listings, manufacturer configuration data, and the panel's measured response for each call type.",
+        "Confirm the panel firmware matches the manufacturer's latest published release, then log the version as verified."
       ],
       "correctIndex": 2,
-      "explanation": "The missing cause entry means the alarm's priority classification cannot be traced through documentation alone, so the electrician must independently confirm it against the approved design, the equipment's listed rating, manufacturer configuration data, and an actual measured response at the panel. This creates a verifiable, repeatable record suitable for commissioning sign-off and future audits. Relying on the staff member's memory is tempting because it seems like direct evidence, but recollection is subjective, unrecorded, and cannot be independently checked later, especially in a life-safety system. Waiting until final energization to test priority is unsafe because errors would only surface after the system is live and potentially relied upon during an emergency. Assuming correctness from a similar prior installation ignores that panel configuration, wiring, and priority mapping are site-specific and must be confirmed for this installation, not inferred from past experience.",
+      "explanation": "Priority assignment in a nurse-call system is a configured function, so it is confirmed by checking the approved design documents and device listings to establish what priority each station type must have, checking the manufacturer's configuration data to see how that priority is programmed, and then activating each call type and observing the panel's actual annunciation, queue order, and display response. That combination produces a traceable result that can be repeated by anyone. A tone difference at the nursing station only shows that two signals are distinguishable; it does not prove code blue overrides lower-priority calls or holds the top queue position. Continuity and labelling checks confirm the wiring matches the riser, but correctly wired stations can still be assigned the wrong priority in software. Matching firmware to the latest release addresses product updates, not the site-specific priority mapping the design requires, so the misassigned code-blue station would remain undetected.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -817,7 +817,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply nurse-call priority knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "99f55620c50650d4cc4740a4be7d5de9ebdd044122606da18898d269f281a4b4"
+      "contentHash": "593415bb1993ac59b3ebec09aa5f3f657fe35a55eaf6074eaa989901ecd7bbe7"
     },
     {
       "bankItemNumber": 480,
@@ -827,15 +827,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A data cabinet reports intermittent link drops on one riser only during evening peak load. Visual inspection finds that riser cable looped tightly around a rack corner with a bend radius far under the jacket's rated minimum, and the fault must remain traceable for the incoming shift. What is the most appropriate troubleshooting response?",
+      "question": "A data cabinet on a plant mezzanine shows intermittent link drops on one riser cable during evening peak load. Inspection finds that riser pulled hard around a sharp rack corner, with the loop clearly tighter than the minimum bend radius marked on the jacket. How should the electrician proceed to confirm and clear the fault?",
       "options": [
-        "Accept the cable as adequate from a quick visual check since a similar run performed fine on another site.",
-        "Remove the strain relief clamp temporarily so the link stays live while the suspected cause is assumed.",
-        "Adjust several patch panel and switch port settings together, then call any brief stability improvement proof of repair.",
-        "Isolate the riser link, test cable bend compliance, correct the confirmed tight bend, then repeat the controlled functional test."
+        "Treat the visual check as sufficient and leave the loop as installed, since an identical cable type ran reliably around a similar corner on another job.",
+        "Loosen the strain relief clamp at the rack entry so the loop relaxes on its own while the link is left in service and monitored for further drops.",
+        "Change several patch panel and switch port settings at the same time, then treat any short period without drops as evidence the problem has been cleared.",
+        "Take the riser link out of service, measure the actual bend radius against the jacket's marked minimum, re-dress and support the cable to a compliant radius, then re-test link performance under peak load."
       ],
       "correctIndex": 3,
-      "explanation": "Excessive bend radius stresses conductors or fiber cores, producing intermittent attenuation, crosstalk, or dropped links that worsen under load or heat cycling. The correct approach isolates the affected riser, measures actual bend radius against manufacturer minimums, corrects the confirmed cause with proper dressing and support, then re-runs a controlled functional test while documenting readings for the next shift. Accepting appearance alone ignores that damage is often invisible externally. Removing strain relief to keep the link live bypasses verification and risks further degradation or safety issues. Changing multiple settings at once and crediting temporary improvement to the fix is unreliable, since load variation or coincidence could explain the change, leaving the true bend fault undocumented and likely to recur once conditions shift again.",
+      "explanation": "A bend tighter than the rated minimum deforms conductors or microbends a fibre core, causing attenuation and dropped links that get worse as load and temperature rise, which explains why the trouble appears only at evening peak. Taking the link out of service allows the actual radius to be measured against the value marked on the jacket, the cable to be re-routed with a proper sweeping bend and adequate support, and performance to be re-checked under the same peak conditions that produced the symptom. Judging by appearance alone is unreliable because bend damage is usually invisible from outside the jacket. Loosening the strain relief does not restore the required radius and lets the cable sag and shift, adding tension at the same stressed point. Changing multiple port settings at once masks the mechanical cause, and a brief quiet period proves nothing when the fault only appears under heavy load.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -843,7 +843,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply cable bend control knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "09dbc494aad92e048b7b44777fe60c190db291c09e59f806ace25420245fbcc0"
+      "contentHash": "02196888a56ec3b54d84876a54bdb785ce250b4ccac4d759daa37ce13ee3c8ac"
     },
     {
       "bankItemNumber": 481,
@@ -957,15 +957,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning a CATV coaxial distribution segment in a multi-unit building, you find the low-band channels are clear but the upper-frequency digital channels pixelate at the end-of-run taps. Your insertion-loss measurement across the connectors at junction J-14 is higher than the connector loss listed on the approved design record. What is the correct next action?",
+      "question": "You are commissioning a CATV coaxial distribution segment in a multi-unit residential building. Low-band analog channels are clean throughout, but the upper-frequency digital carriers pixelate at the end-of-run taps. When you measure insertion loss across the connectors at junction J-14, the reading is noticeably higher than the connector loss allowed in the approved design record for that junction. What is the correct next action?",
       "options": [
         "Swap several connectors along the run at the same time and accept any improvement on the upper channels as confirmation that the segment is now correct.",
-        "Use the connector loss value taken from a previous unrelated CATV installation, since it was accepted there and no design change is needed.",
-        "Replace the distribution amplifier and passive splitter first, and only document the loss discrepancy if the pixelation reappears later.",
-        "Pause work, verify the measured connector loss against the approved design documentation, isolate and correct the source of the discrepancy, then document the result before continuing."
+        "Enter the connector loss figure used on a previous CATV installation of similar size into the record, since that value was accepted there and no design change is required.",
+        "Replace the distribution amplifier and the passive splitter feeding the run first, and document the loss discrepancy only if the pixelation returns later.",
+        "Pause work, compare the measured connector loss against the approved design documentation, isolate and correct the source of the discrepancy, then record the result before continuing."
       ],
       "correctIndex": 3,
-      "explanation": "Insertion loss in coaxial connectors rises as frequency rises, so a poorly made or damaged termination often passes the low channels while pushing the upper-frequency digital carriers below the level the taps need. When a measured connector loss is higher than the value the designer allowed in the loss budget, the reading must be checked against the approved documentation to determine whether the record is wrong or a physical termination is faulty; the discrepancy is then corrected and recorded so the as-built loss budget stays accurate for future service work. Changing several connectors at once removes any way to tell which termination was actually at fault. Carrying over a value from a different installation ignores this system's cable lengths, connector count, and tap layout, so the loss budget no longer reflects reality. Replacing the amplifier and splitter treats active equipment before the measured cause is confirmed, and it leaves the documented loss error in place for the next technician.",
+      "explanation": "Coaxial connector insertion loss increases as frequency increases, so a poorly made, loose, or moisture-damaged termination can still pass low-band carriers while dropping the upper-frequency digital carriers below the level the end-of-run taps require. When a measured connector loss exceeds the value the designer allowed in the loss budget, you compare the reading to the approved documentation to determine whether the recorded value is wrong or a physical termination is faulty, correct the cause, and record the result so the as-built loss budget stays accurate for future service work. Changing several connectors at once removes any way to identify which termination was actually at fault, so the real cause stays unknown. Copying a value from a different installation ignores this system's cable lengths, connector count, and tap layout, so the loss budget no longer matches the installed system. Replacing the amplifier and splitter changes active and passive devices before the measured cause is confirmed and leaves the documented loss error in place for the next technician.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -973,7 +973,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "5279061ebbda9617a6f9e316dc9171b170f3c70cdc577896e971c6f8812de7b0"
+      "contentHash": "c403fe7d90186d5e313fe02f1ab7ccaff46f55a1219d53f28ca0c6f44fbe4092"
     },
     {
       "bankItemNumber": 486,
@@ -1295,15 +1295,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A rooftop unit's outdoor air damper actuator drives fully closed when the BAS commands 100% open during an economizer functional test, and the space temperature climbs steadily. What should the electrician confirm before returning this point to automatic control?",
+      "question": "During an economizer functional test on a rooftop unit, the outdoor air damper actuator drives fully closed each time the BAS commands 100% open, and the space temperature climbs steadily. Before this point is released back to automatic control, what should the electrician confirm?",
       "options": [
-        "Swap the actuator with the nearest spare unit and resume automatic control immediately.",
-        "Verify the actuator direction against approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Reset the alarm and monitor for another temperature excursion before changing anything.",
-        "Rely on the mechanical contractor's memory of the original commissioning setup as confirmation."
+        "That the 24 V supply and transformer capacity measured at the actuator terminals match the actuator's inrush and holding load",
+        "That the actuator's rotation/direction selection and control signal wiring produce opening travel on an increasing command, as shown in the sequence of operation",
+        "That the mixed air and outdoor air sensors read within tolerance of a calibrated reference thermometer at the damper inlet",
+        "That the BAS analog output has been rescaled so the software command matches the damper position now being reported"
       ],
       "correctIndex": 1,
-      "explanation": "The actuator's rotation and spring-return action must match the sequence of operation; a reversed actuator drives the damper opposite the intended command, causing loss of temperature control and freeze or overheating risk. Checking approved drawings, manufacturer data, and nameplate ratings against measured behavior confirms correct direction before restoring automatic control. Swapping actuators without confirming rotation risks installing another mismatched unit and wastes time without solving the root cause. Resetting the alarm and waiting delays corrective action and misses the chance to gather diagnostic evidence while conditions are present. Relying on someone's memory is unverifiable and may perpetuate an undetected wiring or configuration error from prior commissioning. The correct approach uses documented references and measured performance to make a verified decision before the point returns to unattended automatic operation.",
+      "explanation": "A modulating damper actuator has a direction (CW/CCW) selection and a defined signal-to-travel relationship, plus a spring-return direction on loss of power. If the actuator strokes closed on an increasing open command, the direction selection or the control signal wiring is opposite to the documented sequence of operation, so the damper also fails in the wrong direction on power loss. Confirming the direction setting and signal wiring against the sequence of operation, then re-stroking the damper from 0% to 100%, proves the point behaves correctly before it runs unattended. Checking supply voltage and transformer capacity is worthwhile for actuators that stall or chatter, but a unit that strokes smoothly the wrong way is being powered adequately. Sensor calibration affects when the economizer is enabled and how far it modulates, not which way the actuator travels for a given command. Rescaling the analog output to make the software agree with observed position hides the reversal in the front end while the spring-return direction and any hardwired override still act backwards.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1311,7 +1311,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician installs building automation systems.",
-      "contentHash": "ef2a7714ab744b39d9ebb7f07d5aa18b025478bdb406f2d4c3e42d83ce1a852d"
+      "contentHash": "5bbc46a3a3fff320605c821d5be812465371c01bdf26490b61c4ee78a3e8b44d"
     },
     {
       "bankItemNumber": 499,
@@ -1347,15 +1347,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While troubleshooting a nuisance alarm on a rooftop air-handling unit, the electrician finds the high-temperature alarm point is mapped to the exhaust fan relay instead of the supply fan relay shown on the approved points list. The unit otherwise runs normally. What should the electrician do next?",
+      "question": "On a rooftop air-handling unit, the supply-air high-temperature switch is wired to controller input 4, but in the controller database that input is addressed to the software point named \"Exhaust Fan Status.\" The approved points list assigns input 4 to \"Supply Air High Temp.\" As a result, when the switch closes the workstation annunciates an exhaust fan event and the high-temperature alarm never appears. What should the electrician do next?",
       "options": [
-        "Accept the current mapping since the exhaust fan still activates whenever the alarm triggers.",
-        "Disable the alarm point temporarily so the unit keeps running while the mismatch is reviewed later.",
-        "Reassign several alarm points at once and check whether the nuisance alarms disappear afterward.",
-        "Pause work, verify the mapping against the approved points list, correct the discrepancy, and document the change."
+        "Edit the workstation graphic text so the incoming alarm reads as a supply-air high-temperature event, leaving the input's point address as found.",
+        "Re-terminate the high-temperature switch conductors onto the input already addressed as exhaust fan status so the field wiring agrees with the existing database.",
+        "Create an additional software point for supply-air high temperature and leave the original address active as a second annunciation path.",
+        "Re-address input 4 to the supply-air high-temperature point named on the approved points list, retest by tripping the switch, and record the corrected mapping."
       ],
       "correctIndex": 3,
-      "explanation": "The evidence shows a documented mismatch between the actual point mapping and the approved points list, which is exactly the condition requiring verification before continuing. Comparing against approved documentation, correcting the discrepancy, and recording the change protects fail-safe operation and gives future technicians an accurate reference. Accepting the mapping because the exhaust fan happens to run is tempting since the equipment appears functional, but a coincidentally active output does not confirm correct alarm logic and could mask a hazard during a different fault condition. Disabling the point sacrifices protection entirely, and changing multiple points at once without isolating variables makes it impossible to confirm which change actually resolved the nuisance alarm, risking further misconfiguration in an integrated control system.",
+      "explanation": "Alarm mapping is only correct when the physical input, the software point address, and the approved points list all agree. Re-addressing input 4 to the supply-air high-temperature point, then tripping the switch to confirm the right alarm text and priority appear at the workstation, proves the signal path end to end; recording the corrected mapping keeps the as-built documentation usable by the next technician. Editing only the graphic text hides the fault: the underlying address still belongs to the exhaust fan point, so any interlock, alarm priority, or trend tied to that point continues to behave incorrectly. Re-terminating the switch to the exhaust-fan-addressed input makes the wiring match a database entry that itself contradicts the approved points list, and it leaves input 4 unused and unmonitored. Adding a duplicate point produces two annunciations from one contact, which inflates alarm counts and still leaves an unresolved conflict between the drawings and the installed configuration.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1363,7 +1363,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply alarm mapping knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "9e696f85341c566b5cca8cddca9f59fcf871cfcdd93b09ad017587b9dbce0892"
+      "contentHash": "8539cf50fc89e431621439ca5ac4dabf9504538149754ab0e1ab53c1583440c8"
     }
   ]
 }

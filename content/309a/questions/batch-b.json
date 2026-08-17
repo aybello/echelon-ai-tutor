@@ -393,15 +393,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "An electrician has just landed three current transformers on the incoming conductors of a new 600/347 V three-phase service. The CT secondary leads at the test switch are unmarked, the meter socket voltage taps are untagged, and nothing records which incoming conductor each CT was slipped over or which way its polarity mark was turned. The utility arrives tomorrow to seal the metering. What should the electrician do before the meter is energized?",
+      "question": "On a 1200 A, 600/347 V three-phase service for a food-processing plant, an apprentice has slipped three window-type current transformers over the incoming conductors and pulled the CT secondary leads into the test switch. The secondary leads are unmarked, the meter socket voltage taps are untagged, and no record was kept of which incoming conductor each CT was placed over or which way its polarity mark was turned. The utility is scheduled to seal the metering the next morning. What should the electrician do before the meter is energized?",
       "options": [
-        "Trace and mark each service conductor, each CT secondary lead with its polarity identification, each meter voltage tap, and each bus termination so every current sample is paired with the voltage of the same phase and every CT polarity mark faces the source",
-        "Mark only the CT secondary leads at the test switch, because the meter internally pairs each current input with the matching voltage reference regardless of how the socket voltage taps happen to land",
-        "Record one line-to-line voltage reading taken at the meter socket, because a reading within the normal range confirms that each incoming conductor and its CT are on the intended phase",
-        "Wait until the process motors are started and use correct shaft rotation on the largest motor to establish which phase belongs to each service conductor and CT"
+        "Trace and tag each service conductor, each CT secondary lead with its polarity identification, each meter socket voltage tap, and the bus termination it feeds, so every current sample is multiplied by the voltage of the same phase and every CT polarity mark faces the supply",
+        "Tag only the CT secondary leads at the test switch, since the meter internally pairs each current input with its matching voltage reference no matter how the socket voltage taps happen to land",
+        "Take one line-to-line voltage reading at the meter socket, since a reading within the normal range confirms that each incoming conductor and the CT over it are on the intended phase",
+        "Leave the secondary leads untagged and rely on the CT polarity marks still being visible from the front of the switchboard, since the utility will confirm orientation with a phasing meter when it seals the meter"
       ],
       "correctIndex": 0,
-      "explanation": "A CT-metered service registers correctly only when each current sample is multiplied by the voltage of the same phase and each CT is installed with its polarity mark toward the source, so the conductors, CT secondary leads and their polarity identification, socket voltage taps, and bus terminations all have to be traced and marked so phase identity and polarity carry through consistently. The meter has no way to re-pair a current input with a different voltage reference, so marking the secondary leads alone leaves a current-to-voltage mismatch or a reversed CT in place and produces false registration. A single line-to-line voltage reading only proves potential exists between two conductors; two interchanged conductors read the same normal voltage, so it confirms nothing about individual phase identity or CT orientation. Motor rotation reveals phase sequence only, not which conductor is A, B, or C, and it comes far too late to correct metering connections before the utility seals the installation.",
+      "explanation": "A CT-metered service registers correctly only when each current sample is multiplied by the voltage of the same phase and each CT is installed with its polarity mark toward the source, so the service conductors, the CT secondary leads and their polarity identification, the socket voltage taps, and the bus terminations must all be traced and tagged so phase identity and polarity carry through the test switch consistently. The meter cannot re-pair a current input with a different voltage reference, so tagging the secondary leads alone can leave a current-to-voltage mismatch or a reversed CT in service, producing readings that are low, high, or even negative on one element. A single line-to-line voltage reading only proves potential exists between two conductors; two interchanged conductors give the identical normal reading, so it confirms nothing about individual phase identity or CT orientation. Depending on marks still being visible after the CTs are cabled and the compartment is closed is unreliable, and correcting a reversed CT or a mismatched voltage tap is the installer's work, not something to leave for the sealing visit.",
       "steps": null,
       "tip": "Confirm phase identity and CT polarity at every point in the metering circuit before the meter is energized and sealed.",
       "isCalc": "no",
@@ -409,7 +409,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply phase identification knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "4c8c07f8bc40e33ed3707602fc15a8a98c8bb227b08b0330570ea4a13c27f4a5"
+      "contentHash": "75bfadcd9594bb6a7c42380cda725fd0d5e03933fb045e88f404a2047d1234f7"
     },
     {
       "bankItemNumber": 70,
@@ -1650,15 +1650,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a shutdown on a service switchboard, an electrician finds a feeder lug on the main-bus riser that is discoloured and one bolted bus joint whose hardware feels loose. What evidence should control the decision that these terminations are fit to return to service?",
+      "question": "During a scheduled shutdown of a 1200 A service switchboard, an electrician inspects the main-bus riser and finds one feeder lug with heat discolouration at its pad and an adjacent bolted bus joint whose hardware turns easily by hand. Before these terminations are returned to service, what evidence should govern the decision that they are sound?",
       "options": [
-        "Accept the joint once the bolt is drawn down snug with a hand wrench and the discoloured contact surface has been wiped clean of oxide.",
-        "Replace only the discoloured lug with the closest available size and re-terminate it, since the heat marking shows the lug rather than the joint failed.",
-        "After isolation and verification of the de-energized state, compare conductor size, lug and bus ratings, contact-surface condition, hardware arrangement, and torque values with the manufacturer's termination instructions.",
-        "Re-energize the feeder at reduced load and decide from a thermal scan taken after the tenant load builds up whether either termination needs further work."
+        "Draw each bolt down snug with a hand wrench until it stops turning, then wipe the discoloured contact surface clean of oxide and reassemble the connection.",
+        "Change out only the discoloured lug for the closest available size on the truck and re-terminate, since the heat marking shows the lug rather than the bolted joint failed.",
+        "With the switchboard isolated and the de-energized state verified, compare conductor size, lug and bus ratings, contact-surface condition, hardware arrangement, and applied torque against the manufacturer's termination instructions.",
+        "Reassemble as found, energize the feeder, and let a thermal scan taken once the tenant load builds decide whether either termination needs further attention."
       ],
       "correctIndex": 2,
-      "explanation": "Termination integrity depends on documented conditions: a lug rated for the conductor size and temperature rating, clean and undamaged plated contact surfaces, the specified bolt, washer and belleville arrangement, and the manufacturer's torque value, all confirmed with the equipment isolated and verified dead. Snugging the bolt by feel is tempting because the joint then seems tight, but hand-tightening varies widely and it leaves heat-damaged plating and possibly annealed hardware in service. Swapping the lug alone assumes the cause without checking the joint that produced the heat, and waiting for a thermal scan after energizing keeps a degraded high-current connection in operation while it deteriorates further.",
+      "explanation": "A sound high-current termination is proven by documented conditions: a lug rated for the conductor size and temperature rating, clean and undamaged plated contact surfaces, the specified bolt, washer and belleville arrangement, and the manufacturer's torque value, all confirmed while the equipment is isolated and verified dead. Tightening by feel is appealing because the joint then seems tight, but hand-tightening varies widely and it leaves heat-damaged plating and possibly annealed hardware in service. Replacing the lug alone assumes the cause without evaluating the bolted joint that generated the heat, and deferring to a thermal scan after energizing keeps a degraded connection carrying load while it deteriorates further.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1666,7 +1666,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply switchboard alignment knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "76cdf78c7b77eb3849d7e4847bdc344083f0d647275e48a540513abfc1d06158"
+      "contentHash": "0d68891ea5dc0882ae36d3721fc67d612a581d768d27776cddb3b22c1ca3c945"
     },
     {
       "bankItemNumber": 113,
@@ -1676,15 +1676,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Two shipping sections of a new switchboard have been set on the housekeeping pad in a renovated clinic, and the fronts of the sections do not line up evenly. Why should the sections be levelled, plumbed and squared to the manufacturer's tolerances before the bus splice bars are bolted up?",
+      "question": "Two shipping sections of a new 1200 A switchboard have been set on the housekeeping pad in a renovated clinic, and the fronts of the two sections do not line up evenly. Why must the sections be levelled, plumbed and squared to the manufacturer's tolerances before the bus splice bars are bolted up?",
       "options": [
-        "Sections held level, plumb and square let the bus bars and draw-out mechanisms mate fully, so bolted joints stay tight and units seat correctly in their cells.",
-        "Alignment is mainly a finishing concern, so matching the front trim line with the adjacent panels is the key point to satisfy before handover.",
-        "If the switchboard energizes and carries load without tripping, the splices can be taken as properly mated, since misaligned bus would operate the protection.",
-        "Bolting the splice bars first pulls the sections into line, so levelling can be completed afterward by driving shims under the lowest corner."
+        "Sections held level, plumb and square let the bus splice bars and draw-out mechanisms mate fully, so bolted joints stay tight and units seat correctly in their cells.",
+        "Levelling matters mainly for the finished appearance, so bringing the front edges of both sections into one straight line is the requirement to satisfy before handover.",
+        "Once the switchboard is energized and carries load without tripping, the splices can be taken as properly mated, since misaligned bus would operate the protection.",
+        "Bolting the splice bars first draws the sections into line, so levelling can be finished afterward by driving shims under the low corner of each section."
       ],
       "correctIndex": 0,
-      "explanation": "Switchboard bus joints and cell mechanisms are built to close tolerances. When sections sit level, plumb and square, splice bars land flat on the full contact surface and draw-out units engage their stabs squarely, so torqued joints hold and units seat without binding. Forcing alignment with the splice hardware, or shimming after the bus is bolted, leaves the joint stressed and the contact area reduced, which can loosen and overheat under load. Appearance of the front trim tells nothing about bus fit, and a joint with reduced contact area will carry normal load and pass current without operating any protective device while it heats and degrades.",
+      "explanation": "Switchboard bus joints and draw-out cell mechanisms are built to close tolerances. When the sections sit level, plumb and square on the pad, the splice bars land flat across the full contact surface and draw-out units engage their stabs squarely, so torqued joints hold and units seat without binding. Pulling the sections together with the splice hardware, or shimming after the bus is bolted, leaves the joint stressed with reduced contact area, which loosens and overheats under load. A straight front line tells you nothing about how the bus is mating behind the covers, and a joint with reduced contact area will still carry normal load current without operating any protective device while it heats and degrades.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1692,7 +1692,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply panel directory accuracy knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "310e03a0538edde62c9b73b5b9ca2f535ddee8a18d1bd39262030be8a0877577"
+      "contentHash": "364008f9e01a23188d686cdb6c380bed195a06fc107fde3e4f0bff397442ce34"
     },
     {
       "bankItemNumber": 114,
@@ -2528,15 +2528,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A ground-fault protection system is being installed on a 1200 A, 600/347 V, 4-wire service. The zero-sequence sensor encircles the three phase conductors only, the neutral is routed outside the sensor window, and the main bonding jumper lands on the load side of the sensor. What should the electrician verify before the equipment is energized?",
+      "question": "While commissioning a new 1600 A, 600/347 V, 4-wire service in a distribution warehouse, an electrician finds that the window-type (zero-sequence) sensor for the ground-fault protection system encircles only the three phase conductors, the service neutral is run alongside the sensor window, and the neutral-to-ground bonding connection is made on the load side of the sensor. What action should be taken before the service is energized?",
       "options": [
-        "Confirm only that the equipment bonding conductor is continuous back to the service, because the sensor will respond to any imbalance once the enclosure is properly bonded.",
-        "Verify against the approved drawings and manufacturer instructions that every circuit conductor, including the neutral, passes through the sensor window and that the neutral-to-ground bonding connection is made on the supply side of the sensor.",
-        "Raise the ground-fault pickup setting and time delay until normal neutral unbalance current no longer operates the relay with the conductors routed as they are now.",
-        "Confirm phase rotation and balanced phase loading at the sensor, because zero-sequence sensing depends on matched phase currents rather than on which conductors pass through the window."
+        "Verify only that the equipment bonding conductor is continuous back to the service enclosure, since the sensor will detect any imbalance once all enclosures are solidly bonded.",
+        "Compare the installation with the approved single-line drawing and the relay manufacturer's instructions, then route the neutral through the sensor window and move the neutral-to-ground bonding connection to the supply side of the sensor.",
+        "Increase the ground-fault pickup current and time-delay settings until normal neutral unbalance current no longer operates the relay with the conductors left as they are installed.",
+        "Check phase rotation and equalize the phase loading at the sensor, since zero-sequence sensing depends on matched phase currents rather than on which conductors pass through the window."
       ],
       "correctIndex": 1,
-      "explanation": "A zero-sequence sensor measures the vector sum of the currents in the conductors that pass through its window. That sum is zero during normal operation only when every current-carrying conductor, including the neutral, is routed through the window, so leaving the neutral outside makes ordinary neutral unbalance current look like a ground fault and causes nuisance tripping. The neutral-to-ground bonding connection must also be made on the supply side of the sensor; if it is made downstream, ground-fault current returning through the neutral passes back through the window and cancels the signal, so the relay may never operate. Checking bonding continuity alone, changing pickup settings, or looking at phase rotation and load balance leaves the routing error in place.",
+      "explanation": "A zero-sequence sensor responds to the vector sum of the currents in the conductors passing through its window. On a 4-wire service that sum is zero during normal operation only when every current-carrying conductor, including the neutral, passes through the window. Leaving the neutral outside makes ordinary neutral unbalance current look like a ground fault, causing nuisance tripping. The neutral-to-ground bonding connection must also be made on the supply side of the sensor; if it is made downstream, fault current returning through the neutral passes back through the window and cancels the signal, so the relay may never operate on a real ground fault. Checking bonding continuity alone, raising the pickup and delay settings, or verifying rotation and load balance all leave the incorrect conductor routing and bonding location in place.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2544,7 +2544,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.03",
       "blueprintObjective": "Apply lightning down-conductor routing knowledge while the electrician installs lightning protection systems.",
-      "contentHash": "1f86bf8d8477c4d09ea4b88231e4b04f9a5b0618222f9113bf75804c274a5364"
+      "contentHash": "ddbf721058d9f2f028ac4c69dbf6ea3adb59e5d5bd1e822f3dce1d30f034d415"
     },
     {
       "bankItemNumber": 144,
@@ -3217,15 +3217,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a cold, clear winter morning an electrician is commissioning a rooftop PV array and measures the open-circuit voltage of a 20-module series string. The reading is noticeably higher than 20 times the open-circuit voltage printed on the module nameplate. How should the electrician determine whether this string is acceptable for the installed inverter?",
+      "question": "While commissioning a rooftop PV array on a clear −18 °C February morning, an electrician measures the open-circuit voltage of a 20-module series string at the combiner and gets a reading well above 20 times the open-circuit voltage printed on the module nameplate. To decide whether this string is compatible with the installed string inverter, what should the electrician do?",
       "options": [
-        "Record 20 times the nameplate open-circuit voltage as the string voltage, because readings taken in cold weather run high and are not usable for comparison.",
-        "Repeat the reading at midday when the modules have warmed up and compare that lower voltage with the inverter's maximum input voltage rating.",
+        "Use 20 times the nameplate open-circuit voltage as the string voltage, since cold-weather readings run high and cannot be compared with equipment ratings.",
+        "Take the reading again at midday once the modules have warmed to normal operating temperature and compare that lower voltage with the inverter's maximum input voltage rating.",
         "Multiply the module open-circuit voltage by the number of modules in series, apply the module temperature coefficient for the lowest expected ambient temperature at the site, and compare that corrected value with the inverter's maximum input voltage.",
         "Divide the measured string voltage by the number of modules and accept the string if each module's share stays below the module's maximum system voltage rating."
       ],
       "correctIndex": 2,
-      "explanation": "PV open-circuit voltage rises as cell temperature falls, so the highest string voltage the inverter will ever see occurs at the coldest expected temperature, not at the nameplate test condition. The string is evaluated by taking the module open-circuit voltage, multiplying by the number of series modules, then correcting with the module's voltage temperature coefficient for the lowest expected ambient temperature, and comparing that worst-case value with the inverter's maximum input voltage. Using the uncorrected nameplate total or a warm midday reading understates the peak voltage the inverter must withstand, and dividing the string voltage by the module count compares against the wrong limit, since maximum system voltage applies to the full string, not to one module's share.",
+      "explanation": "A PV module's open-circuit voltage climbs as cell temperature drops, so the highest voltage the inverter will ever see occurs at the coldest expected temperature at that site, not at the 25 °C nameplate test condition. The correct check is to multiply the module open-circuit voltage by the number of series-connected modules, then adjust that total using the module's voltage temperature coefficient for the lowest expected ambient temperature, and compare the worst-case result with the inverter's maximum input voltage. Using the uncorrected nameplate total, or a warm midday measurement, both understate the peak voltage the inverter must withstand, so a string that looks acceptable could overvoltage the inverter on the coldest morning. Dividing the string voltage by the module count compares against the wrong limit, because the maximum system voltage rating applies to the voltage present on the whole string and its conductors, not to one module's share of it.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3233,7 +3233,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply energy-flow monitoring knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "60fa4bace099456aeeebead79e96cc24b85cd9c8680ff93964df933d81e24c71"
+      "contentHash": "0f2fbd6f9248150cd7659e6e80c4a135be9e0bd197bb71f228ce393bbf756c9b"
     },
     {
       "bankItemNumber": 168,
