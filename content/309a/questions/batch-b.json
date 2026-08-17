@@ -28,15 +28,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A shop addition will add several single-phase loads to an existing 120/240 V service, and before ordering the meter base and main disconnect the electrician must confirm the calculated service load that the equipment selection is based on. Which check gives the strongest basis for accepting that calculated load?",
+      "question": "A machine shop addition adds several single-phase loads to an existing 120/240 V service, and the electrician must confirm the calculated service load before ordering the meter base and main disconnect. Which check best confirms the calculated load the equipment selection depends on?",
       "options": [
-        "Verify that the calculated load on the stamped drawings was worked out at the actual supply voltage and configuration, then read the meter base and main disconnect nameplates to confirm both cover that calculated load",
-        "Total the full nameplate ratings of every load in the addition together with every existing load, then choose a meter base and main disconnect rated at or above that combined total",
-        "Take the highest demand the utility metered on the existing service over the past twelve months and add the full connected load of the addition to that recorded figure",
-        "Add up the ratings of the branch-circuit breakers installed in the new addition panel and choose a main disconnect at least equal to that sum, since those breakers cap the current drawn"
+        "Confirm the calculation on the stamped drawings was done for the actual 120/240 V supply and system configuration, then compare it against the meter base and main disconnect nameplate ratings",
+        "Total the full nameplate ratings of every load in the addition plus every existing load, then order a meter base and main disconnect rated at or above that combined total",
+        "Take the highest demand the utility metered on the existing service over the past twelve months, then add the full connected rating of the new shop equipment to that figure",
+        "Total the ratings of the branch-circuit breakers to be installed in the new addition panel, then order a main disconnect at least equal to that sum of breaker ratings"
       ],
       "correctIndex": 0,
-      "explanation": "Service equipment is selected from the calculated load for the installation, so the defensible check is to confirm the calculation on the stamped drawings was done for the actual supply voltage and system configuration, then read the meter base and main disconnect nameplates to verify each is rated for that calculated load at that voltage. Totalling full nameplate ratings of new and existing loads discards the demand factors the calculation is built on and produces an inflated figure that no longer represents the approved design. The utility's twelve-month peak describes how the earlier load behaved and cannot stand in for a calculated load that includes the new equipment. The sum of branch-circuit breaker ratings in a panel is normally far larger than the calculated load, because each breaker is sized to protect the conductors of its own circuit rather than to represent coincident demand on the service.",
+      "explanation": "Service equipment is chosen from the calculated load for the installation, so the meaningful check is that the calculation on the stamped drawings was worked out for the actual supply voltage and system configuration, and that the meter base and main disconnect nameplates are each rated for that calculated load at that voltage. Adding full nameplate ratings of new and existing loads throws away the demand factors the calculation is built on and gives an inflated number that no longer matches the approved design. A twelve-month metered peak describes only how the earlier load behaved and cannot represent a calculated load that includes the new equipment. Summing branch-circuit breaker ratings also overstates the load, since each breaker is sized to protect its own circuit conductors rather than to reflect loads operating at the same time on the service.",
       "steps": null,
       "tip": "Check the calculated load against the actual equipment nameplate ratings before ordering or installing service equipment.",
       "isCalc": "no",
@@ -44,7 +44,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply single-phase service load knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "b7fb420e2336d998336c60e493bf1d02497fd83c40745af0efbb6347b1f4c665"
+      "contentHash": "31b3028b624a7a1ede795d22a41dd109b5f6c246af8d8cf9af67a22bc681921e"
     },
     {
       "bankItemNumber": 57,
@@ -306,7 +306,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While commissioning a balanced three-phase feeder that supplies a new process panel, an electrician clamps each line conductor and reads 20 A, measures 600 V line-to-line at the panel lugs, and reads a power factor of 0.80 on the panel meter. What real power is the load drawing?",
+      "question": "During commissioning of a balanced three-phase feeder supplying a new process panel, an electrician clamps each line conductor and reads 20 A on each, measures 600 V between any two line conductors at the panel lugs, and the panel meter displays a power factor of 0.80. What real power is the load drawing?",
       "options": [
         "9.6 kW",
         "16.6 kW",
@@ -314,7 +314,7 @@
         "28.8 kW"
       ],
       "correctIndex": 1,
-      "explanation": "For a balanced three-phase load measured with line values, P = √3 × V(line) × I(line) × PF = 1.732 × 600 × 20 × 0.80 = 16 627 W, or about 16.6 kW. The 9.6 kW answer is 600 × 20 × 0.80, the single-phase form, which drops the √3 multiplier and understates the load by roughly 42 percent. The 20.8 kW answer is 1.732 × 600 × 20 = 20 784 VA, the apparent power the feeder conductors must carry; because the 0.80 power factor was never applied, it is in kVA rather than kW. The 28.8 kW answer uses 3 × 600 × 20 × 0.80, substituting 3 for √3; the plain 3 multiplier belongs with phase voltage and phase current taken together, not with a line-to-line voltage reading, so the result is overstated by about 73 percent. When recording commissioning data, confirm whether the meter values are line or phase quantities before choosing the multiplier.",
+      "explanation": "With line voltage and line current for a balanced three-phase load, P = √3 × V(line) × I(line) × PF = 1.732 × 600 × 20 × 0.80 = 16 627 W, or about 16.6 kW. The 9.6 kW choice comes from 600 × 20 × 0.80, the single-phase form; leaving out the √3 multiplier understates the load by about 42 percent. The 20.8 kW choice is 1.732 × 600 × 20 = 20 784, which is apparent power in kVA that the conductors must carry; because the 0.80 power factor was never applied, it is not real power. The 28.8 kW choice uses 3 × 600 × 20 × 0.80, substituting 3 for √3; the plain 3 multiplier is used with phase voltage and phase current together, not with a line-to-line voltage reading, so the answer is overstated by about 73 percent. Before selecting a multiplier, confirm whether the meter is showing line or phase quantities, and confirm whether the value you need is real power (kW) or apparent power (kVA).",
       "steps": [
         {
           "label": "Formula",
@@ -331,7 +331,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "9980ab407c95382125136ca2f2a5b3b9ecf9cba383670b5b3071bc4366ad54e8"
+      "contentHash": "6bf548bec5db2c90e8a2cf82583ea1658731b10b27ebd470f385de71b39243d0"
     },
     {
       "bankItemNumber": 67,
@@ -688,15 +688,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electronic protective device is being added ahead of a production-area panel, and the design notes flag that its proposed ground-fault pickup and time delay may overlap with the settings already programmed into the upstream main device. What evidence should the electrician examine to confirm that the two devices will coordinate?",
+      "question": "An electronic trip unit with adjustable ground-fault pickup and time delay is being installed ahead of a production-area panel. The design notes warn that the proposed ground-fault settings may overlap with the settings already programmed into the upstream main device. What evidence should the electrician examine to confirm the two devices will coordinate?",
       "options": [
-        "The result of a single no-load energization test, since measuring normal voltage at the panel shows that both protective devices are working together.",
+        "The voltage readings taken during a no-load energization of the panel, since both devices holding in at normal voltage shows their trip settings do not overlap.",
         "The time-current curves and programmed settings of both devices, evaluated at the calculated fault levels available at each device location and compared with the design intent.",
-        "The settings recorded on an unrelated panel of similar size elsewhere in the plant, since comparable equipment normally coordinates the same way.",
-        "The interrupting ratings and frame sizes marked on the two devices, since a downstream device with the smaller frame size always clears a fault before the larger upstream one."
+        "The settings recorded on a similar-sized panel elsewhere in the plant, since devices of the same rating normally coordinate using the same pickup and delay values.",
+        "The interrupting ratings and ampere frame sizes marked on the two devices, since the device with the smaller frame size always clears a fault before the larger upstream one."
       ],
       "correctIndex": 1,
-      "explanation": "Coordination is a comparison of how quickly each device operates at the current it would actually see, so the evidence needed is both devices' time-current curves and programmed settings plotted against the calculated fault levels at their locations, then checked against the design intent. That comparison shows whether the downstream device clears a local fault before the upstream device opens and drops the rest of the system. A no-load energization test is tempting because it is quick, but it only proves the circuit can be energized, not how the trip units interact under fault current. Settings copied from another panel ignore that panel's own available fault current and downstream loads. Interrupting ratings and frame sizes describe how much fault current a device can safely break and how much it can carry, not how fast its trip unit responds, so a smaller frame does not guarantee it opens first.",
+      "explanation": "Coordination is a comparison of how quickly each device operates at the current it would actually see, so the evidence needed is both devices' time-current curves and programmed settings plotted against the calculated fault levels at their locations, then checked against the design intent. That comparison shows whether the downstream device clears a local fault before the upstream device opens and drops the rest of the system. A no-load energization check only proves the circuit can be energized at normal voltage; no fault current flows, so it reveals nothing about how the two trip units interact. Settings copied from another panel ignore that panel's own available fault current, conductor lengths, and downstream loads, so the same numbers can produce overlap here. Interrupting ratings and frame sizes describe how much fault current a device can safely break and how much load it can carry, not how fast its trip unit responds, so a smaller frame does not guarantee it opens first.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -704,7 +704,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply ground-fault sensing knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "f5bf6a396fcee500f1e52c20b677aedd3fd6db339376b50a1f75abb47c713a86"
+      "contentHash": "f5b0645892af979b3fbf17806fe626a30aaac8b37d7cad1ff0bafb8d85ee8617"
     },
     {
       "bankItemNumber": 80,
@@ -1624,15 +1624,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A tenant fit-out adds three new feeder breakers to an existing 1200 A switchboard in a strip mall electrical room, and several breaker spaces remain unused. Before the main-bus loading can be accepted at inspection, what evidence should the electrician assemble?",
+      "question": "A tenant fit-out adds three new feeder breakers to an existing 1200 A switchboard in a strip mall electrical room, and several breaker spaces remain unused. What evidence best demonstrates that main-bus loading is still within capacity?",
       "options": [
-        "Add up the ampere ratings of every breaker in the switchboard, including the new feeders, and accept the bus if that total stays below the main-bus rating.",
-        "Confirm the new breakers fit the open spaces and match the frame size of the existing feeder breakers, since identical frames keep bus-stab loading uniform.",
-        "Compare the updated demand calculation, main-bus rating, ambient temperature condition, and feeder schedule against the approved design for the switchboard.",
-        "Log the incoming line current on one busy afternoon after the tenant moves in and accept the bus if the readings stay below the main rating."
+        "The total of the ampere ratings of every branch and feeder breaker mounted in the switchboard, including the three new devices, kept below the main-bus rating.",
+        "The interrupting rating and frame compatibility of the three new breakers, showing they match the bus bracing and short-circuit rating stamped on the switchboard nameplate.",
+        "The updated calculated demand, main-bus ampere rating, ambient and enclosure temperature conditions, and revised feeder schedule, checked against the approved switchboard design.",
+        "A one-week current log taken on the incoming conductors before the tenant equipment is energized, projected forward to show the bus stays under its rated ampacity."
       ],
       "correctIndex": 2,
-      "explanation": "Main-bus loading is governed by the calculated demand the switchboard must carry, the bus ampere rating, the ambient and enclosure temperature conditions that limit that rating, and the feeder schedule showing what is actually connected. Comparing these against the approved design shows whether the fit-out keeps the bus within its intended capacity. Adding up breaker ratings is misleading because connected devices are sized for their own loads and diversity, so the sum routinely exceeds a properly sized bus. Matching breaker frames only addresses how the devices mount, not how much current the bus carries. A single afternoon of readings misses seasonal peaks, load growth, and the heating effect of a fully populated enclosure.",
+      "explanation": "Main-bus loading is judged from the calculated demand the switchboard must actually carry, the ampere rating of the bus, the ambient and enclosure temperature conditions that can limit that rating, and an accurate feeder schedule showing what is connected. Checking those four pieces against the approved design shows whether the fit-out keeps the bus within its intended capacity. Adding up breaker ampere ratings overstates loading because each device is sized for its own circuit and demand factors are ignored, so the sum normally exceeds a correctly sized bus. Interrupting rating and bus bracing confirm the assembly can withstand fault current, which is a separate concern from how much continuous current the bus carries. A current log taken before the new loads are energized captures only the previous condition, missing the added tenant demand, seasonal peaks, and the extra heating from a more fully populated enclosure.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1640,7 +1640,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply ventilation clearance knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "845b29f7cda06ab3a2692dda76709529f709ef934ad928785af3801e623bea55"
+      "contentHash": "fca2ec485d072eef8d042362d89e9a26cc572ccdc4d5867e042f208657dc8740"
     },
     {
       "bankItemNumber": 112,
@@ -3356,15 +3356,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During commissioning of a newly installed shielded high-voltage feeder, an electrician measures several volts on a shield section that the design shows as bonded at both ends. What should be done before the shield is accepted as installed correctly?",
+      "question": "While commissioning a newly installed 13.8 kV shielded feeder between a plant substation and a motor control centre, an electrician measures 4 V between a shield section and the station ground bus, even though the cable design shows that shield bonded at both terminations. What should the electrician do before signing the shield off as correctly installed?",
       "options": [
-        "Treat the reading as the normal capacitive coupling found on any shielded cable and record the shield section as satisfactory",
-        "Re-terminate the shield to the nearest ground point on the cable tray and accept the section once the measured voltage drops",
-        "Order replacement bonding jumpers and connectors for the entire cable run before locating which shield connection is open",
-        "Carry out a point-to-point continuity check along the shield path and confirm each bonding connection is made at the location the design calls for"
+        "Record the section as satisfactory, since a few volts on a shield is the normal capacitive coupling seen on any shielded cable",
+        "Bond the shield to the nearest grounded cable tray section and accept the reading once the measured voltage falls",
+        "Repeat the measurement with the feeder de-energized and accept the shield once the reading falls to zero",
+        "Carry out a point-to-point continuity check along the shield path and confirm the bonding connection at each splice and termination is intact"
       ],
       "correctIndex": 3,
-      "explanation": "A shield deliberately bonded at both ends is a closed path, so induced voltage should not appear on it. Measurable voltage indicates an open, loose or misplaced bonding connection somewhere in that path, and a point-to-point continuity check is what locates it. Capacitive coupling voltage is expected only where a shield is intentionally floating at one end, so accepting the reading as normal hides a real break. Bonding to the nearest tray steel may lower the reading while creating an unintended parallel path and circulating current. Ordering new jumpers for the whole run replaces hardware without ever identifying which connection failed.",
+      "explanation": "A shield bonded at both ends forms a closed, grounded path, so induced voltage has nowhere to build up and a reading of several volts points to an open, loose, or missing bonding connection somewhere along that path. A point-to-point continuity check from termination to termination, checking each splice and shield ground connection, is what pinpoints the break so it can be corrected before energizing the load. Standing capacitive-coupling voltage is expected only on a shield intentionally floated at one end, so calling the reading normal leaves a real discontinuity in service. Adding a bond to the nearest tray steel may pull the reading down while creating an unintended parallel path that carries circulating current through the tray. Voltage on any shield disappears when the feeder is de-energized whether the shield is continuous or open, so that retest proves nothing about the integrity of the bonding path.",
       "steps": null,
       "tip": "A shield continuity concern should be resolved from the bonding design and field measurements, not from repeated energizing attempts.",
       "isCalc": "no",
@@ -3372,7 +3372,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply phasing confirmation knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "90aa61bcf1642a90c5e429891ca287100d3dc8c93556ffb10cacf52804a2951f"
+      "contentHash": "cfbb10bcaa533c48ef23342db81b7907bba2bdc7fec2851e6473e12a703c127b"
     },
     {
       "bankItemNumber": 173,
@@ -3786,15 +3786,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The dry-type transformer feeding a new lighting distribution section is connected as shown in the concept diagram, where the winding on the secondary side has fewer turns than the primary winding. The owner reports that the transformer runs hottest late in the afternoon, when only some of the panels supplied from that secondary winding appear heavily loaded. Before accepting the secondary loading, what comparison should be made?",
+      "question": "A dry-type transformer feeding a new lighting distribution section matches the concept diagram: the winding drawn with fewer turns is the secondary that supplies the lighting panels, so it carries the larger of the two winding currents. The owner reports the transformer runs hottest late in the afternoon, when only some of the panels fed from that winding appear heavily loaded. Before accepting the secondary loading, what comparison should be made using readings taken at the low-turns winding shown?",
       "options": [
-        "Record one no-load secondary voltage reading at a panel and accept the installation if it matches the value predicted by the turns relationship shown in the diagram.",
-        "Compare the measured phase currents, secondary voltage, afternoon load profile, and winding temperature rise against the transformer kVA rating and the approved design load calculation.",
-        "Compare the turns relationship shown in the diagram with the voltage ratio stamped on the nameplate and accept the loading once the two ratios are found to agree.",
-        "Measure only the primary current during the afternoon peak and accept the loading if it stays below the rating of the primary overcurrent device."
+        "Take a single no-load voltage reading at one lighting panel and accept the loading if it agrees with the voltage predicted by the turns relationship shown in the diagram.",
+        "Compare the measured per-phase currents, secondary voltage, afternoon load profile, and winding temperature rise at that winding against the transformer kVA rating and the approved design load calculation.",
+        "Compare the turns relationship drawn for the two windings with the voltage ratio stamped on the nameplate, then accept the loading once the two ratios are confirmed to agree.",
+        "Log the current in the higher-turns winding drawn in the diagram during the afternoon peak and accept the loading if it stays below the rating of the primary overcurrent device."
       ],
       "correctIndex": 1,
-      "explanation": "The turns relationship in the diagram sets the secondary voltage, but it says nothing about how much current the secondary winding is actually carrying. Accepting secondary loading requires comparing measured per-phase secondary current, voltage, how long the peak lasts, and temperature rise against the kVA rating and the design load calculation, because heating follows current and load duration. A single no-load voltage reading or a ratio check confirms the transformer relationship but hides overload and phase imbalance, and primary current alone can look acceptable while one heavily loaded secondary phase overheats.",
+      "explanation": "The turns relationship in the diagram only sets the voltage produced by each winding; because the secondary has fewer turns, it is the winding that carries the higher current, and that current is what produces heating. Accepting secondary loading therefore means measuring current in each secondary phase, checking secondary voltage, noting how long the afternoon peak lasts, and comparing the resulting temperature rise with the transformer kVA rating and the design load calculation. A single no-load voltage reading, or matching the drawn turns relationship to the nameplate ratio, only confirms the transformer relationship and reveals nothing about overload or phase imbalance. Readings taken on the higher-turns primary winding reflect total loading and can look acceptable while one heavily loaded secondary phase overheats.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3802,7 +3802,7 @@
       "diagramAlt": "Two-winding transformer concept showing primary voltage and turns related to secondary voltage and turns.",
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.04",
       "blueprintObjective": "Apply insulation test trend knowledge while the electrician installs high-voltage transformers.",
-      "contentHash": "4f9024744eb44ecb3f9df67d5984298c4b39f65d6fe4e0b5de0e4eafd95c07c9",
+      "contentHash": "d60f3383d0371438345f2e8c9be4592e2801742840f97ab2a0953fbf66cef4ae",
       "options_note": null
     },
     {
@@ -3813,15 +3813,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A 45 kVA dry-type transformer in a plant switchroom continued to carry load for several hours after its cooling fan seized, and the windings ran well above their rated temperature. With the unit locked out, discharged, and the enclosure open, an electrician notices a faint scorched odour and light brown discolouration on the coil surfaces near the ventilation openings. Which evidence should decide whether the winding insulation has retained enough dielectric strength for the transformer to be returned to service?",
+      "question": "A 45 kVA dry-type transformer in a plant switchroom kept carrying load for several hours after its cooling fan seized, and the windings ran well above their rated temperature. With the unit locked out, discharged, and the enclosure open, an electrician notes a faint scorched odour and light brown discolouration on the coil surfaces near the ventilation openings. Which evidence should decide whether the winding insulation still has enough dielectric strength for the transformer to be returned to service?",
       "options": [
-        "A close visual survey of the coil surfaces and varnish for cracking, blistering, or carbon tracking once the windings have cooled fully to ambient temperature",
+        "A close visual survey of the coil surfaces and varnish for cracking, blistering, or carbon tracking, done once the windings have cooled fully to ambient temperature",
         "Insulation resistance readings taken at the manufacturer's recommended test voltage, corrected for winding temperature and compared against the unit's earlier test records",
-        "Secondary voltage and phase currents recorded under load, confirming that the voltage ratio and the current balance stay within the transformer's normal operating ranges",
+        "Secondary voltage and phase currents recorded under load, confirming that the voltage ratio and the current balance both stay within the transformer's normal operating ranges",
         "Winding resistance measured phase by phase with a low-resistance ohmmeter, with the three readings agreeing within a few percent of each other and of the nameplate values"
       ],
       "correctIndex": 1,
-      "explanation": "Losing cooling airflow lets winding temperature climb past the limit of the insulation system, and that heat ages the insulating material rather than the copper. Insulation condition is judged by insulation resistance testing at the voltage the manufacturer specifies, with the reading corrected to a common reference temperature so it can be compared fairly with earlier results for that same transformer; a marked drop from the established trend points to heat-degraded insulation even when the unit would still energize and carry load. A visual survey may reveal discolouration or tracking and is always worth doing, but varnish that still looks sound can cover insulation whose dielectric strength is already reduced, so appearance alone cannot clear the unit. Secondary voltage and phase current readings reflect turns ratio and connected load, not the dielectric strength between turns or from winding to ground. Winding resistance readings verify conductor continuity and joint quality, so they would catch an open or high-resistance connection but say nothing about the insulation surrounding those conductors.",
+      "explanation": "When cooling airflow is lost, winding temperature climbs past the limit of the insulation system, and that heat ages the insulating material rather than the copper. Insulation condition is judged by insulation resistance testing at the voltage the manufacturer specifies, with the reading corrected to a common reference temperature so it can be compared fairly with earlier results for that same transformer; a marked drop from the established trend points to heat-degraded insulation even though the unit would still energize and carry load. A visual survey can reveal discolouration or tracking and is always worth doing, but varnish that still looks sound may cover insulation whose dielectric strength is already reduced, so appearance alone cannot clear the unit. Secondary voltage and phase current readings reflect turns ratio and connected load, not the dielectric strength between turns or from winding to ground, so balanced readings can be obtained from weakened insulation. Winding resistance readings verify conductor continuity and joint quality, so they would catch an open or high-resistance connection but say nothing about the insulation surrounding those conductors.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3829,7 +3829,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.05",
       "blueprintObjective": "Apply audible-noise change knowledge while the electrician services and maintains transformers.",
-      "contentHash": "22c75d97a5df56df576f9e35d92aa977a45e6915ebc3271629a71f39583ad1e3",
+      "contentHash": "345e552dd8dbe1249ab6dca92a5a13e9f613478aae58fd2bd710f07845a1df27",
       "options_note": null
     },
     {
@@ -3905,15 +3905,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A three-phase transformer bank is being reconnected after the terminals were cleaned and re-marked. Before the secondary conductors are landed on the load side, which field check gives the strongest basis for accepting winding polarity?",
+      "question": "A three-phase transformer bank in a plant substation is being reconnected after the bushing terminals were cleaned and the identification markings re-applied. Before the secondary feeder conductors are landed on the load side, which field check gives the strongest basis for accepting winding polarity?",
       "options": [
-        "Take one unloaded line-to-line voltage reading on the secondary and accept the connections if the value is close to the expected secondary voltage.",
-        "Match the terminal arrangement to another transformer bank in the same room that supplies a comparable lighting and receptacle load.",
-        "Compare the nameplate polarity information, the re-marked terminal markings, and the approved connection diagram, then confirm the result with a suitable polarity test before landing the conductors.",
-        "Check continuity through each winding with an ohmmeter and accept the polarity if all three windings give similar resistance readings."
+        "Take one unloaded line-to-line voltage reading on the secondary and accept the connections if the value is within a few percent of the nameplate secondary voltage.",
+        "Energize the bank unloaded, check secondary phase rotation with a rotation tester, and accept the connections if the rotation agrees with the existing feeder.",
+        "Compare the nameplate polarity information, the re-applied terminal markings, and the approved connection diagram, then confirm the result with a suitable polarity test before landing the conductors.",
+        "Measure the resistance of each phase winding with a low-resistance ohmmeter and accept the connections if all three readings agree closely with each other."
       ],
       "correctIndex": 2,
-      "explanation": "Polarity describes the instantaneous relationship between primary and secondary terminals, so it must be established from the nameplate, the terminal markings as re-applied, the approved connection diagram, and a polarity test that actually compares the windings before the load-side conductors are landed. One unloaded line-to-line reading can look correct even when a winding is reversed within the bank, another bank's terminal layout may reflect a different internal connection or vector arrangement, and winding continuity or resistance readings confirm only that the coils and joints are sound, not which way each winding is oriented.",
+      "explanation": "Polarity describes the instantaneous relationship between the primary and secondary terminals of each winding, so it has to be established from the nameplate data, the terminal markings as they were re-applied, the approved connection diagram, and a polarity test that actually compares the windings against one another before load-side conductors are landed. A single unloaded line-to-line reading can fall close to the expected value even when one winding is reversed inside the bank, a rotation tester only shows the sequence in which the three secondary phases peak and will read correctly for more than one internal arrangement, and winding resistance readings confirm only that the coils and joints are sound and matched, not which direction each winding is oriented.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3921,7 +3921,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.03",
       "blueprintObjective": "Apply winding polarity knowledge while the electrician installs low-voltage three-phase transformers.",
-      "contentHash": "84c64e9da6417d4e03d1334502aa430e8a5b3824b6f6e2fc5cb4371795b3cf84",
+      "contentHash": "cf6b93ef96aa05eb10b158ac2ffe927f2834ec5e8c821fa04df6c30013b5fcc0",
       "options_note": null
     },
     {

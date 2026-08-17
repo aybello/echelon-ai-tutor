@@ -80,7 +80,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A parking garage security panel supplies 24 motion sensors, and each sensor draws 18 mA while in the alarm state. During a forced-entry event all 24 sensors alarm at the same time, and the technician must know the total simultaneous draw before sizing the standby battery. What is the combined alarm-state current draw of the sensors?",
+      "question": "A parking garage security panel feeds 24 motion sensors, and each sensor draws 18 mA while in the alarm state. During a forced-entry event all 24 sensors alarm at the same time, and the technician needs the total simultaneous draw in amperes before sizing the standby battery. What is the combined alarm-state current of the sensors?",
       "options": [
         "0.432 A",
         "0.450 A",
@@ -88,7 +88,7 @@
         "4.32 A"
       ],
       "correctIndex": 0,
-      "explanation": "Because all of the sensors alarm at once, their currents add: 24 sensors x 18 mA = 432 mA, and 432 mA divided by 1000 gives 0.432 A. This is the figure used when totalling alarm-state load for standby battery sizing. The 0.450 A choice comes from counting 25 sensors instead of 24 (25 x 18 mA = 450 mA), and 0.414 A comes from counting only 23 sensors (23 x 18 mA = 414 mA), so both are miscounts of the device schedule. The 4.32 A choice comes from dividing 432 mA by 100 rather than 1000, a decimal-place slip in the milliampere-to-ampere conversion. Working with an inflated or understated total leads to a battery that either cannot carry the panel through a real alarm or costs far more than the load requires, so always verify the device count and the rated per-device draw before converting units.",
+      "explanation": "Devices on a common signalling circuit are a parallel load, so alarm-state currents add: 24 x 18 mA = 432 mA. Converting to amperes, 432 mA / 1000 = 0.432 A, and that is the figure used when totalling worst-case alarm load for standby battery sizing. Choosing 0.450 A means 25 sensors were counted instead of 24 (25 x 18 mA = 450 mA), and 0.414 A means only 23 were counted (23 x 18 mA = 414 mA); both come from misreading the device schedule. Choosing 4.32 A comes from dividing 432 mA by 100 instead of 1000, a decimal-place slip in the milliampere-to-ampere conversion. Always confirm the exact device count and the rated per-device alarm draw, then convert units carefully, so the battery calculation reflects the real load.",
       "steps": [
         {
           "label": "Multiply device count by rated current",
@@ -105,7 +105,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "8cefce8615b3cf482a011196d17c3c61522645eb08a128b0df773678b4c0b2d0"
+      "contentHash": "b5b5fc203602a2f3f43b88c80834872932e8d998adc6abc8af53c2359b4c2e74"
     },
     {
       "bankItemNumber": 454,
@@ -454,15 +454,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A warehouse camera on the diagram's associated-system output now shows an obstructed loading-dock view after a mechanical contractor relocated a duct bracket into the camera's original sightline. The electrician is dispatched to restore coverage before the next shift begins. What is the correct next step?",
+      "question": "In diagram 309A-D14, the control panel logic drives both the notification circuit and an associated-building-functions output; on this warehouse installation that associated-functions branch also calls a pan-tilt-zoom camera to a preset covering the loading dock whenever the dock-area smoke detector initiates. A mechanical contractor has since relocated a duct bracket into the camera's sightline, so the preset now shows the dock partly blocked. What is the correct next step before the camera is returned to service?",
       "options": [
-        "Rotate the camera housing by eye until the dock looks clear, then close the work order without further checks.",
-        "Note the obstruction in a personal logbook and leave the camera as-is until the next scheduled maintenance visit.",
-        "Ask a warehouse supervisor to confirm the view looks fine on a phone screen and skip formal verification.",
-        "Pause work, verify the camera's field of view against approved layout drawings, resolve the obstruction, and document the correction."
+        "Increase the digital zoom stored in the preset so the duct bracket falls outside the framed image, then save the preset as the new dock view.",
+        "Re-aim the camera to the clearest available angle, save that position as the preset, and treat the resulting live image as the record of dock coverage.",
+        "Trigger the dock-area smoke detector to confirm the associated-functions output still drives the camera to its preset, since the panel logic response governs the coverage delivered.",
+        "Compare the camera's actual field of view with the approved coverage layout drawings, clear or work around the obstruction to restore the specified view, and record the corrected preset."
       ],
       "correctIndex": 3,
-      "explanation": "The obstruction changes actual coverage from what approved drawings specify, so the camera's function must be re-verified against that documented reference before any physical adjustment is trusted. Confirming field of view against approved information, correcting the conflict, and recording the change gives an independently reviewable result and prevents recurring blind spots. Eyeballing the adjustment risks leaving partial coverage gaps that look acceptable but fail under different lighting or angles, and it creates no verifiable record. Deferring the fix to a future visit leaves a known security gap unresolved, which is unacceptable once the discrepancy is identified. Relying on a supervisor's casual visual check substitutes an unqualified, undocumented opinion for measured verification against the system's approved reference information, so none of these three alternatives meet the standard of controlled, documented, verifiable correction that the situation demands.",
+      "explanation": "The approved coverage layout drawings define what the dock preset is required to see, so the actual field of view has to be measured against that reference before the camera is trusted again. Restoring the specified view and recording the corrected preset leaves a coverage that matches design intent and can be confirmed by the next person on the site. Cropping the obstruction out with digital zoom narrows the viewed area and quietly sacrifices part of the required dock coverage while making the image look clean. Re-aiming to whatever angle looks clearest and using the live image as the record is guesswork: the new angle may miss dock zones the drawings call for, and nothing exists to compare against later. Triggering the initiating device only proves the signal path from detector through panel logic to the associated-functions output is intact and that the camera travels to its preset; that test says nothing about whether the preset still frames the dock, because the fault here is a physical obstruction rather than a signalling problem.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -470,7 +470,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "36aa44ea3275a9518dad9ade6a8b086e2a209669f411e5a4ee66655f0cfc69c1"
+      "contentHash": "93d80220a5bd7ed8465c2c15a5618f26741a546173161aa6a9efdfc42c16fd55"
     },
     {
       "bankItemNumber": 467,
@@ -480,15 +480,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "While pulling and terminating a fire alarm zone circuit in a renovated hospital corridor, the electrician labels the loop as Zone 14 per the as-built drawing. Measured supervisory current is steady but falls outside the manufacturer's stated range for that device class. What verification approach is most defensible?",
+      "question": "An electrician terminates the last device on a hospital corridor loop that the as-built drawing identifies as security Zone 14. The panel shows a steady supervisory current, but the value sits above the manufacturer's stated range for that initiating-device class. Before signing the loop off as Zone 14, which approach best establishes that the zone is correctly identified?",
       "options": [
-        "Rely on the technician's memory of the original design intent as the acceptance record for this zone.",
-        "Energize the full system first and treat that action as the initial verification step for the zone.",
-        "Accept the zone identification because a similar corridor loop performed correctly on a prior hospital project.",
-        "Verify the zone identification against approved drawings, device ratings, manufacturer data, and the measured condition before accepting it."
+        "Substitute an end-of-line resistor sized to bring the supervisory current back inside the manufacturer's published range, then label the loop Zone 14.",
+        "Reassign the loop to the next unused zone address in the panel so the field label and the panel display agree with each other.",
+        "Log the measured current as the as-left baseline for Zone 14, since a steady reading confirms the loop is free of opens and shorts.",
+        "Compare the field label against the approved zone drawing, the installed device's listed ratings, and the manufacturer's supervisory data before accepting the reading."
       ],
       "correctIndex": 3,
-      "explanation": "A stable reading that sits outside the manufacturer's expected range signals a possible mismatch between the labelled zone, the installed device, or the wiring configuration, not a resolved condition. Cross-referencing the approved drawing, device rating, and manufacturer specification against the actual measurement lets the electrician isolate whether the discrepancy comes from a wrong device, an incorrect zone assignment, or a wiring error, before anyone relies on that zone for alarm response. Depending on memory removes the documented basis needed for independent review. Treating energization as the first verification risks masking a wiring or device error under live conditions where a life-safety function could fail silently. Assuming success because a different project's similar-looking loop worked ignores that zone identification depends on the specific approved design and measured condition for this installation, not surface resemblance to unrelated past work.",
+      "explanation": "A steady reading that falls outside the manufacturer's expected range still points to a mismatch somewhere between the labelled zone, the device installed, and the wiring actually pulled. Checking the field label against the approved zone drawing, the device's listed ratings, and the manufacturer's supervisory data lets you tell whether the wrong device model was installed, whether the loop was landed on the wrong zone terminal, or whether an extra device or splice is loading the circuit, all before anyone depends on Zone 14 to annunciate an event. Resizing the end-of-line resistor forces the current into range but hides the underlying cause, so the loop reads normal while a wrong device or extra load remains. Moving the loop to a different zone address makes the panel and label agree yet leaves the drawing, response procedures, and any interconnected systems pointing at the wrong corridor. Recording the out-of-range value as a baseline proves only that the loop is continuous; stability says nothing about whether the current belongs to the device class the drawing assigns to that zone.",
       "steps": null,
       "tip": "When a measurement is stable but off-spec, treat it as unresolved until cross-checked against drawings and manufacturer data, not as passing.",
       "isCalc": "no",
@@ -496,7 +496,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply security-zone identification knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "22e788fbef65b8995bb4319ce3cab06da92991958e054f2f1d5269d106b264f8"
+      "contentHash": "0005d3bf9df84a9a3a1aa1f617a3cc567bb2b8eec8c826f15761916f8e25d9c9"
     },
     {
       "bankItemNumber": 468,
@@ -567,15 +567,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A card-access controller securing a data-room door shows a device address that does not match the last approved verification record, and this door protects a critical server load. What should the technician do next?",
+      "question": "While completing verification records for a new card-access system, a technician finds that the controller on the data-room door is programmed with device address 04, while the approved verification record and panel point list both show address 07 for that door. How should the technician handle this address discrepancy on the verification record?",
       "options": [
-        "Replace the controller with a spare unit and log the discrepancy only if the door malfunctions again.",
-        "Silence the mismatch alert and wait for a repeat occurrence before collecting additional evidence.",
-        "Rely on the installer's verbal confirmation as the only accepted verification record.",
-        "Pause work, verify the controller data against the approved verification record, resolve the mismatch, then document and continue."
+        "Edit the verification record to read address 04, since the field configuration is the true as-built condition of the installed controller.",
+        "Enter the address field as verified and add a note in the closing paperwork so the discrepancy can be sorted out by others later.",
+        "Repeat the door's lock and unlock functional test, and sign off the address field as acceptable because the door operates as intended.",
+        "Confirm the address required by the approved documentation and panel programming, correct the controller mismatch, then record the final address, the change made, and the sign-off on the verification record."
       ],
       "correctIndex": 3,
-      "explanation": "The mismatch between the controller's live data and the approved verification record on a door protecting a critical load is exactly the condition verification records exist to catch. Pausing to compare against approved documentation, resolving the discrepancy, and recording the resolution preserves an auditable trail and prevents an unverified access-control state from protecting critical equipment. Swapping hardware without first confirming the cause risks masking a wiring, addressing, or programming error that could recur. Waiting for a second failure delays detection on a system tied to a critical load, increasing exposure. Accepting a verbal confirmation removes the independent, reviewable record that verification procedures require, leaving no defensible evidence if the system later fails to secure the space. Controlled verification against approved records is the only option that maintains both system integrity and accountability.",
+      "explanation": "A verification record is only useful if the entries match what the approved documentation requires and what is actually installed and programmed. Here the controller address and the approved point list disagree, so the technician must first establish which address the head-end programming and documentation call for, bring the controller into agreement, and then record the final address along with the correction and sign-off so the completed record is traceable. Simply editing the record to match address 04 assumes the field setting is right, and if the panel is monitoring point 07 the door will report as a missing or unknown device. Marking the field verified with a note passes an unresolved conflict downstream, and the record then certifies something the technician did not actually confirm. Repeating the lock and unlock test proves the hardware operates, but it does not prove the controller reports to the correct address, so the door could still annunciate or log under the wrong point in the access-control software.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -583,7 +583,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply verification record knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "99c87c2f49a8824f90ea50f98baec7a16159ef5b5d59958cd4f096d185c44afc"
+      "contentHash": "06a96f5e10be50ad81384ac53777d215182afd3a1141de46e7783dfd2d634b0e"
     },
     {
       "bankItemNumber": 471,
@@ -853,15 +853,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a service call, you find the telecom rack's bonding conductor terminates on a nearby water pipe instead of the point shown on the approved riser diagram. Intermittent static appears on VoIP lines whenever adjacent equipment cycles on. What is the correct next step?",
+      "question": "On a service call you find that the bonding conductor for a telecom equipment rack has been terminated on a cold water pipe a few metres away, rather than on the telecommunications bonding busbar shown on the approved riser diagram. Intermittent static appears on the VoIP lines each time a nearby motor load cycles on. What is the correct action?",
       "options": [
-        "Add a second bonding conductor to the water pipe to reinforce the connection without checking the riser diagram.",
-        "Assume the water pipe bond is acceptable since the static only occurs occasionally and equipment still functions.",
-        "Disconnect the existing bond entirely and leave the rack floating until an inspector happens to arrive.",
-        "Stop work, compare the bonding path to the approved riser diagram and manufacturer instructions, correct the discrepancy, then document and verify."
+        "Fit ferrite cores and an inline filter on the VoIP patch cords to suppress the noise while the water pipe bond stays in service.",
+        "Replace the existing conductor with the next larger size but keep it terminated on the cold water pipe closest to the equipment rack.",
+        "Run a second short bonding conductor from the rack frame to the nearest building steel column and leave the pipe connection in place.",
+        "Re-terminate the rack bonding conductor on the telecommunications bonding busbar shown on the riser diagram, then verify continuity and record the reading."
       ],
       "correctIndex": 3,
-      "explanation": "The static appears whenever nearby equipment cycles, showing the bonding path is not providing a stable low-impedance reference as intended by the approved riser diagram. Stopping to compare the actual termination against approved documentation and manufacturer instructions identifies the discrepancy so it can be corrected and verified, restoring predictable performance and creating a record for review. Adding a second conductor to the same incorrect point reinforces the wrong reference instead of fixing it. Treating intermittent noise as acceptable ignores real evidence of a grounding problem. Disconnecting the bond entirely removes a required reference path and leaves equipment unprotected while waiting on an inspector, which is not a controlled or documented response. Verifying against approved information before making any change keeps the work traceable and defensible.",
+      "explanation": "Telecom equipment needs a single, low-impedance path back to the telecommunications bonding busbar so all racks share the same voltage reference. Because the static tracks the cycling of a nearby motor load, the rack is picking up potential differences through an unintended path. Moving the conductor to the busbar shown on the riser diagram restores the intended reference, and a continuity or resistance check confirms the connection is solid before the rack is put back in service. Adding ferrites and a filter only masks a symptom while the incorrect reference point remains. Upsizing the conductor lowers resistance but still ties the rack to a piping system that may be interrupted by a dielectric fitting or non-metallic repair section. Bonding to building steel while leaving the pipe connected creates two parallel paths, allowing circulating current through the rack and worsening the noise.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -869,7 +869,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply telecommunications grounding knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "6f2b27e73bca963759747fd67b82bb3556519c515349a593e999b625ce6c9a74"
+      "contentHash": "f85248604cfcb765c067b8da82ca382797c8bd7ccff09069e49569a702768242"
     },
     {
       "bankItemNumber": 482,
@@ -931,15 +931,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A duplex fibre run feeding a nurse call annunciator panel shows an intermittent link-light dropout after a patch cord swap. The technician suspects a transmit/receive mismatch rather than a damaged strand. What is the most appropriate troubleshooting response?",
+      "question": "After a duplex patch cord at a hospital telecom room was swapped, the fibre link to a nurse call annunciator panel now drops its link light intermittently. Received power at the panel measures near the receiver's sensitivity threshold, and the technician suspects the transmit and receive strands are crossed rather than a broken fibre. Which action best confirms and resolves the fault?",
       "options": [
-        "Assume polarity is fine because an identical panel worked correctly on a prior hospital project.",
-        "Leave the verification step out so the nurse call system stays live while the cause is guessed.",
-        "Swap several unrelated patch cords at once and call any brief improvement proof the fault is fixed.",
-        "Isolate the affected link, verify fibre polarity with proper test equipment, correct the confirmed cause, then repeat the functional test."
+        "Re-terminate both field connectors on the assumption that a contaminated or poorly seated ferrule is causing the marginal reading.",
+        "Install a longer-reach transceiver pair so the extra launch power keeps the link up despite the marginal received level.",
+        "Substitute another duplex patch cord of the same A-to-A configuration and monitor the annunciator link overnight before doing anything else.",
+        "Take the link out of service, use a light source and power meter to identify which end has transmit and receive reversed, correct that connection, then repeat the functional link test."
       ],
       "correctIndex": 3,
-      "explanation": "The dropout pattern points to a possible transmit/receive polarity mismatch introduced by the patch cord swap, not a random strand failure, so the link must be isolated and polarity confirmed with test equipment before any repair is trusted. Correcting only the verified cause and repeating the functional test confirms the fix on evidence, which matters on a life-safety nurse call circuit. Assuming polarity is fine based on a past project ignores the specific evidence at hand. Skipping isolation risks masking an intermittent fault on a critical system while it stays energized. Changing multiple cords simultaneously destroys the ability to link any single change to the outcome, so a temporary improvement proves nothing about the actual cause. Only a controlled, evidence-based isolate-verify-correct-retest sequence reliably identifies and resolves the polarity fault.",
+      "explanation": "On a duplex link, each transmitter must land on the far-end receiver, so a crossed pair produces exactly this symptom of a marginal or unstable link after a cord change. Injecting light from a source at one end and reading it with a power meter at the other identifies which strand carries transmit at each end, so the reversed connection can be corrected and then proven by repeating the functional test on the annunciator. Re-terminating connectors attacks a contamination problem that has not been shown to exist and may leave the reversal in place. Fitting higher-power transceivers only pushes light down a mispaired strand and hides the real cause on a life-safety circuit. Fitting another cord of the same A-to-A configuration reproduces the same pairing, so an overnight watch gathers no information about which end is crossed. Confirming polarity with test equipment before correcting it is what makes the repair evidence-based.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -947,7 +947,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply fibre polarity knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "b0485b909d3520d3ce202141bba720ff013643d25ad420b23eef6ce0d30156ea"
+      "contentHash": "e96d0e86ab8aadfb316eaa6762898f89c95d1e6993e6cf458019ac1453fcb1bc"
     },
     {
       "bankItemNumber": 485,
@@ -983,15 +983,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A newly installed discharge-air temperature sensor on rooftop unit RTU-4 is causing the building automation controller to command full heating even though the space reads warm. Referencing the closed-loop diagram, what should the electrician do before returning the loop to automatic control?",
+      "question": "On rooftop unit RTU-4 the building automation controller is commanding full heating while occupants report the space is warm. Tracing the closed-loop diagram, the electrician confirms the actuator strokes fully on command and the process (discharge air) responds to that output, so the remaining suspect element is the discharge-air measurement that the diagram feeds back to the controller's comparison point. What should the electrician do before returning the loop to automatic control?",
       "options": [
-        "Force the actuator to a fixed position and leave the loop in manual permanently.",
+        "Retune the controller's proportional band and integral time so the heating output settles at a stable position.",
         "Confirm the sensor's scaling matches approved design, device rating, manufacturer data, and actual measured input.",
-        "Silence the alarm and monitor trends until another complaint is received.",
-        "Rely on the previous technician's verbal description of the sensor range."
+        "Stroke the actuator through full travel and reset its end stops so valve position tracks the controller output signal.",
+        "Add a setpoint bias in the controller equal to the difference between the displayed and measured discharge temperature."
       ],
       "correctIndex": 1,
-      "explanation": "The controller's decision is only as good as the feedback it receives, so a scaling mismatch between the sensor's actual output range and the value the controller expects will make the loop respond incorrectly even though wiring and power are fine. Comparing the sensor to approved design documents, its nameplate rating, manufacturer scaling data, and a measured site reading verifies the feedback path before automatic control resumes. Forcing the actuator hides the fault instead of correcting it, silencing the alarm removes evidence needed for diagnosis, and trusting an unverified verbal description offers no documented basis for the safety-critical decision. Only a confirmed, recorded scaling check ensures the loop will behave predictably once released to automatic operation.",
+      "explanation": "In the closed loop shown, the controller compares its setpoint to the value arriving on the feedback path from the sensor, so if that measured value is scaled wrong the controller will drive the actuator hard in the wrong direction even though wiring, power, and the output side are healthy. Comparing the sensor against the approved design documents, its nameplate rating, the manufacturer's scaling data, and an actual measured site reading proves the feedback signal is trustworthy before automatic control resumes. Retuning the proportional band and integral time only changes how quickly the controller reacts to a value that is still incorrect. Stroking the actuator and resetting its end stops works on the output branch of the loop, which testing has already shown is responding properly. Adding a setpoint bias buries a known scaling error inside the controller database, so the reading drifts out of agreement again at other temperatures and the next technician has no record of the real cause.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -999,7 +999,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply sensor scaling knowledge while the electrician installs building automation systems.",
-      "contentHash": "4fc84feb5ef225399fb644b9d47e0eb144b3f1d373487995a4105fd32c510da4"
+      "contentHash": "593fafcb17cad33c59b61efd035a861c690abad90e2118413bbed0156b2b91f3"
     },
     {
       "bankItemNumber": 487,
@@ -1009,15 +1009,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "After a firmware update on a rooftop unit controller, the displayed discharge-air setpoint no longer matches the commissioning report on file. A technician suggests re-entering the setpoint from memory of a similar past project to save time before energizing the unit. What should the supervising electrician direct?",
+      "question": "During start-up of a rooftop unit after a controller firmware update, the displayed discharge-air setpoint no longer matches the value recorded in the commissioning report on file. A technician offers to key in a setpoint remembered from a similar past project so the unit can be energized on schedule. What should the supervising electrician direct?",
       "options": [
-        "Allow the remembered value to be entered now and confirm accuracy at the next scheduled service visit.",
-        "Energize the unit and judge setpoint accuracy from how the airflow and temperature respond initially.",
+        "Load the manufacturer's factory default discharge-air setpoint and proceed with start-up on that value.",
+        "Energize the unit and judge setpoint accuracy from how airflow and discharge temperature respond initially.",
         "Stop work, verify the setpoint against the approved sequence of operation, resolve the mismatch, and document it.",
-        "Accept the technician's remembered value since the earlier project used comparable rooftop equipment and controls."
+        "Accept the technician's remembered value, since the earlier project used comparable rooftop equipment and controls."
       ],
       "correctIndex": 2,
-      "explanation": "A firmware update can silently alter stored parameters, points mapping, or default values, so a mismatch against the commissioning report is a real discrepancy, not a nuisance display error. Relying on memory from a different project risks applying an incompatible sequence, wrong fail-safe behaviour, or an unsafe operating range for this specific unit. The correct response is to pause work, compare the displayed setpoint against approved sequence-of-operation documentation, identify why it changed, correct it, and record the resolution before energizing. Energizing first and judging by airflow response only confirms gross malfunction, not accuracy, and could mask a hazardous or inefficient condition. Deferring verification to a later visit leaves the unit running on unverified control data in the meantime, which is unacceptable when documentation conflicts are already known and correctable now.",
+      "explanation": "A firmware update can quietly change stored parameters, point mapping, or default values, so a setpoint that disagrees with the commissioning report is a genuine discrepancy rather than a display glitch. The correct action is to pause, compare the displayed value with the approved sequence of operation for this unit, determine why it changed, correct it, and record the resolution before energizing. A factory default is a generic starting value that rarely matches the engineered discharge-air requirement for a specific building zone, so proceeding on it can cause poor temperature control or nuisance limit trips. A value remembered from another project may belong to different equipment capacity, staging, or fail-safe behaviour, and that mismatch may not show up until the unit is loaded. Energizing first and watching airflow and temperature only reveals gross malfunctions, not whether the setpoint is the specified one, and it leaves the system operating on unverified control data while correct documentation is already available.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1025,7 +1025,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician installs building control systems.",
-      "contentHash": "a880601dcab88aa77bbbff1986442a27809fb38bc365374157d6e0659aff5e79"
+      "contentHash": "44d8208faa7bde1c12ab05dda7fe1887557620780096feb251c4c6b8ef8d4a7d"
     },
     {
       "bankItemNumber": 488,
@@ -1087,15 +1087,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A replacement DDC controller for AHU-3 shows the smoke-detector alarm point linked to the wrong zone on the operator graphics screen. Before commissioning continues, what should the electrician do to confirm the alarm mapping is correct?",
+      "question": "During commissioning of a replacement DDC controller for AHU-3, the operator graphics screen shows the duct smoke-detector alarm point annunciating under the wrong zone. What should the electrician do to confirm the alarm mapping is correct before commissioning continues?",
       "options": [
-        "Force the alarm point clear on the graphics and continue commissioning without further checks.",
-        "Replace the DDC controller a second time before checking any wiring or configuration records.",
+        "Edit the zone name on the graphics page so the label matches the zone the detector actually annunciates in.",
+        "Restore the saved database file from the controller that was removed and let it overwrite the current point configuration.",
         "Verify the alarm mapping against the approved points list, sequence of operation, and manufacturer configuration data.",
-        "Accept the operator's verbal description of normal zone behaviour as sufficient confirmation."
+        "Log the mismatch on the deficiency list and finish the remaining commissioning checks before returning to the alarm point."
       ],
       "correctIndex": 2,
-      "explanation": "A mismatched alarm point can send a life-safety signal to the wrong zone, delaying response or masking a real hazard. The approved points list and sequence of operation define the intended addressing and logic, while manufacturer configuration data confirms the controller was set up correctly after replacement; comparing all three against measured input/output behaviour verifies the mapping before the system is trusted. Forcing the alarm clear hides the discrepancy rather than resolving it and risks leaving a life-safety point unmonitored. Swapping the controller again wastes time and may not fix a configuration or wiring error, since the fault could originate in addressing rather than hardware. Relying on an operator's memory of normal behaviour provides no documented evidence and cannot substitute for verified design records during commissioning.",
+      "explanation": "A smoke-detector point mapped to the wrong zone can send a life-safety signal to the wrong location, delaying response or masking a real hazard. The approved points list and sequence of operation define the intended addressing and shutdown logic, and the manufacturer configuration data confirms how the replacement controller's inputs were set up, so comparing all three against the actual input and output behaviour proves the mapping before the system is relied on. Renaming the graphic to match what is observed only hides the addressing error, because the underlying point still drives the wrong zone logic and interlocks. Restoring the old controller's database may carry forward the same faulty mapping and can overwrite correct settings made during the replacement. Deferring the check to a deficiency list leaves a life-safety point unverified while the rest of the system is being placed in service, so the mapping must be confirmed before commissioning moves on.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1103,7 +1103,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply alarm mapping knowledge while the electrician installs building control systems.",
-      "contentHash": "7465c03bc690943b3b840f4e86743aefec9f283522ee5dc32711eb518ac29e70"
+      "contentHash": "bb56da52ee830d64640893f885a0dee9272dacb2382926c7138acd85208cf3c3"
     },
     {
       "bankItemNumber": 491,
@@ -1191,15 +1191,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "An AHU has run in manual override for several months after a nuisance alarm. A tenant fit-up now requires automatic sequence control to resume. Before removing the override on unit E28-09, what should the electrician confirm first?",
+      "question": "An air handling unit has run in manual override for several months after a nuisance freezestat alarm. A tenant fit-up now requires the automatic sequence to resume. Before removing the override on unit E28-09, what should the electrician confirm first?",
       "options": [
-        "Swap the largest nearby device and log the fix only if the fault recurs later.",
+        "Return the unit to automatic and watch discharge air temperature through one full occupied cycle before checking anything else.",
         "Confirm override status against the approved control drawings, equipment ratings, manufacturer data, and current field readings.",
-        "Clear the alarm history and wait for a repeat failure before collecting diagnostic data.",
-        "Rely solely on the operator's verbal recollection to justify why the override was applied."
+        "Match the occupied and unoccupied setpoints on the building automation graphic to the tenant's new schedule and save the change.",
+        "Have the building operator describe the original nuisance alarm and enter that description as the record of the override's cause."
       ],
       "correctIndex": 1,
-      "explanation": "An extended override can mask a real fault, so returning to automatic control without verification risks unstable operation, incorrect commands, or loss of protective action. Comparing override status against approved drawings, rated equipment parameters, manufacturer data, and measured field conditions confirms whether the original cause is resolved before restoring automatic sequencing. Swapping the largest nearby device guesses at a cause without diagnosis and delays proper documentation. Clearing alarm history destroys evidence needed to trace the fault and forces reliance on recurrence rather than analysis. Trusting an operator's memory alone provides no verifiable record and cannot substitute for measured data or approved design references. Only the verified, documented comparison supports a safe, traceable decision that the next shift or reviewer can independently confirm.",
+      "explanation": "An extended override can mask a real fault, so returning to automatic control without verification risks unstable operation, incorrect commands, or loss of protective action such as freeze protection. Comparing the override status against approved control drawings, rated equipment parameters, manufacturer data, and measured field values confirms whether the original cause is resolved before automatic sequencing is restored. Releasing the unit to automatic and observing one cycle tests the system with an unverified fault still possible and no baseline to interpret what is seen. Adjusting occupied and unoccupied setpoints addresses the tenant schedule but does nothing to prove the overridden point, sensor, or interlock now functions as designed. An operator's spoken account of the alarm is useful background, but it is not measured evidence and cannot confirm current device condition or wiring integrity. Only the verified, documented comparison supports a traceable decision that the next shift can independently confirm.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1207,7 +1207,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply override status knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "02c6675078327dc92420b64c0454c09822ebe257465696a4bca8d678b0d4b566"
+      "contentHash": "78547dff11a9c8e6f4456c81436bdb7a1fe50dc169bb173315d5a82271aa07ac"
     },
     {
       "bankItemNumber": 495,
@@ -1243,15 +1243,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning a rooftop unit's discharge air sensor loop (see diagram), the electrician compares the transmitter's scaling to the approved points list and finds the range set at 0-50°C instead of the specified 0-100°C, causing valve hunting. What is the correct next action?",
+      "question": "A rooftop unit's discharge air control follows the closed loop shown in the diagram: sensor measurement feeds the controller, the controller drives the actuator, the process responds, and the result is fed back to the controller. During commissioning, the electrician finds the discharge air transmitter configured for 0-50°C while the approved points list specifies 0-100°C, and the modulating valve is hunting. Because the error enters the loop at the sensor measurement block, every controller decision is made on a feedback value that is roughly double the actual temperature. What is the correct next action?",
       "options": [
-        "Accept the current scaling since a similar sensor performed acceptably on a prior rooftop unit project.",
-        "Bypass the controller's verification step so the zone stays online while assuming the cause.",
-        "Adjust several unrelated controller parameters together, then treat any brief stability as confirmation.",
-        "Pause the loop, verify scaling against the approved points list, correct it, document, then resume."
+        "Widen the controller's proportional band and lengthen the integral time until the actuator output settles, leaving the transmitter configured for 0-50°C.",
+        "Leave the transmitter range as found and enter a fixed offset at the controller input so the displayed discharge temperature matches a handheld thermometer at the present operating temperature.",
+        "Replace the discharge air transmitter with a wider-range unit and re-verify actuator stroke, on the assumption the hunting is caused by a failing sensor element.",
+        "Take the loop out of automatic control, reset the transmitter range to the specified 0-100°C, confirm the controller input scaling matches, then check that feedback tracks actual temperature and record the change."
       ],
       "correctIndex": 3,
-      "explanation": "The evidence shows a scaling mismatch that directly explains the valve hunting, so the electrician must stop, confirm the correct range against the approved points list, apply the fix, and record the change before returning the loop to automatic control. This protects sequence integrity and gives a verifiable audit trail. Accepting scaling from a past project ignores that ranges are equipment- and application-specific. Bypassing verification to keep the zone online risks continued unstable control and masks the real fault. Changing multiple unrelated parameters at once destroys the ability to isolate which change fixed the problem, since any apparent stability could result from an unrelated adjustment rather than the actual scaling correction, leaving the root cause undocumented and unresolved for future troubleshooting or code compliance review.",
+      "explanation": "In the loop shown, the controller can only act on the number arriving from the sensor measurement block. A 0-50°C transmitter feeding a controller expecting 0-100°C sends a signal that overstates temperature across the whole range, so the controller over-drives the valve, the process overshoots, and the feedback path sustains the hunting. Correcting the range at its source, confirming the controller's input scaling agrees, then watching feedback follow real temperature restores an accurate loop and leaves a record of what was changed. Retuning the proportional band and integral time only slows the actuator's reaction to a false measurement, so the discharge temperature still stabilizes at the wrong value. A fixed offset cannot fix a span error, because a wrong span is off by a percentage of reading and only matches the reference at the single point where it was trimmed, drifting again as temperature changes. Replacing the transmitter spends time and material on hardware that is functioning correctly and simply configured for the wrong range, and the new unit will behave the same way if it is set up from the incorrect range.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1259,7 +1259,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply sensor scaling knowledge while the electrician installs building control systems.",
-      "contentHash": "25b2a737c4d95fa3e8c15625ac216e306d262440f9de1447c7a04aad00aa05d5"
+      "contentHash": "f31ac3681a76440bca91bdbfb3b5930d3e8c2fd3f1b24062b7a0c87eca81bb7f"
     },
     {
       "bankItemNumber": 497,
@@ -1269,15 +1269,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a service call for tenant overheating complaints on air handler AHU-6, the electrician sees the controller's active discharge-air setpoint reading 18 °C while the approved sequence of operations calls for 13 °C during occupied cooling. What response maintains proper control of the work?",
+      "question": "Tenants served by air handler AHU-6 report overheating. At the controller the electrician sees discharge-air temperature holding steady at 18 °C, the chilled-water valve almost fully closed, and the active discharge-air setpoint displaying 18 °C where the occupied cooling target should be 13 °C. Which response correctly addresses this control condition?",
       "options": [
-        "Apply a negative calibration offset to the discharge-air sensor so the controller drives the chilled-water valve further open all day.",
-        "Widen the proportional band on the cooling loop so the valve begins modulating earlier and drives supply air colder.",
-        "Determine why the active setpoint is elevated — a reset routine, schedule, or local override — restore the specified value, then confirm the valve modulates to hold it.",
-        "Place the chilled-water valve in manual override at 60 percent open so the space temperature drops while the complaints are investigated."
+        "Enter a negative calibration offset on the discharge-air sensor so the controller reads colder than actual air and opens the chilled-water valve further.",
+        "Narrow the throttling range on the cooling loop so a small temperature error drives the chilled-water valve toward full open much sooner.",
+        "Trace what is writing the elevated value — a supply-air reset routine, an unoccupied or warm-up mode, or a retained local override — restore the 13 °C target, then confirm the valve modulates to hold it.",
+        "Command the chilled-water valve to a fixed 60 percent open for the remainder of the occupied period so supply air cools while the setpoint stays at 18 °C."
       ],
       "correctIndex": 2,
-      "explanation": "A setpoint is the target value the control loop drives toward, so an elevated discharge-air setpoint fully explains warm supply air even when the sensor, valve, and controller are all healthy. The first step is finding what is writing the higher value: a supply-air temperature reset schedule tied to outdoor air or return air, an occupancy or unoccupied-mode schedule, or a local override left in place from earlier service. Restoring the value from the sequence of operations and then watching the chilled-water valve stroke and the discharge temperature settle confirms the loop is actually controlling. Adding a sensor offset falsifies the feedback signal, so every alarm, trend, and reset calculation using that input becomes unreliable. Widening the proportional band only changes how aggressively the valve responds and increases steady-state droop; it cannot lower a target the controller is already satisfying. Forcing the valve to a fixed position removes modulating control entirely, causing overcooling, coil freeze risk, and reheat energy waste while leaving the wrong setpoint in place.",
+      "explanation": "Read the evidence first: measured temperature equals the active setpoint and the valve has backed nearly closed, which means the sensor, valve, and control loop are all working — they are simply driving toward the wrong target. A loop can only be as correct as the number written to its setpoint, so the troubleshooting effort belongs at the setpoint source. Common sources of an elevated value are a supply-air reset routine that raises the target as outdoor or return-air temperature falls, a mode-based setpoint left active from warm-up or unoccupied operation, and an override written at a higher command priority that was never released. Restoring 13 °C and then watching the valve stroke open and the discharge temperature pull down proves the loop responds. A negative sensor offset corrupts the feedback signal every alarm, trend, and reset calculation depends on, and it hides the real supply temperature from anyone who looks later. Narrowing the throttling range raises loop gain, which causes valve hunting and temperature swings, and it cannot lower a target the controller is already satisfying. Fixing the valve at 60 percent abandons closed-loop control altogether, so discharge temperature drifts with load and flow, risking overcooling, coil freeze conditions, and wasted terminal reheat while the wrong setpoint remains in place.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1285,7 +1285,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "1421c2250e6a1cf46f29544a8b7ad1e41c110b9cf68fe1ce9d9f6e5c8869748f"
+      "contentHash": "cccf781a60e5799bd082576f0c4be5229469dae137130f434e13000e374848b0"
     },
     {
       "bankItemNumber": 498,

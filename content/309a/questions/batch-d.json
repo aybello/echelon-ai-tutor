@@ -367,15 +367,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a conveyor drive rated 15 HP, the installed overload heater size does not match the motor nameplate full-load amperage shown on the approved drawing. The starter has not yet been energized for the first time. What is the correct next step?",
+      "question": "A 15 HP, 575 V, three-phase conveyor motor has a nameplate full-load current of 15 A. During pre-start checks on a new magnetic starter, an apprentice finds the installed overload element has an adjustment range of 21–29 A, which was intended for a larger motor on the same job. The starter has not been energized. What action correctly sizes the overload protection for this motor?",
       "options": [
-        "Swap the largest overload heater available in stock and energize, planning to document only if a trip occurs later.",
-        "Clear the discrepancy note and energize once, then decide whether more checking is needed based on results.",
-        "Accept the panel builder's memory of the original order as sufficient proof of correct overload sizing.",
-        "Stop, verify the correct starter and overload size against nameplate and approved drawings, correct any mismatch, then document before energizing."
+        "Keep the installed 21–29 A element and turn its adjustment dial down to the 21 A minimum, since that is the closest available value above the nameplate current.",
+        "Choose the overload element using the horsepower-and-voltage current values used for feeder and conductor sizing rather than the 15 A stamped on the motor nameplate.",
+        "Leave the oversized element in place and rely on the branch-circuit breaker's instantaneous trip together with the control-circuit fusing to protect the motor winding.",
+        "Install the overload element whose adjustment range brackets the 15 A nameplate full-load current per the starter manufacturer's selection table, then confirm running current at full conveyor load."
       ],
       "correctIndex": 3,
-      "explanation": "A mismatch between installed overload size and motor nameplate FLA can cause nuisance tripping, motor damage, or an undersized overload that fails to protect the motor. The safe, verifiable step is to pause before first energization, compare the installed components against the motor nameplate and approved drawing, correct any discrepancy, and record the resolution for traceability. Swapping in the largest available heater ignores nameplate data and may leave the motor unprotected or cause premature tripping under normal load. Energizing first and deciding afterward risks equipment damage before any verification occurs. Relying on someone's recollection instead of documented nameplate and drawing data provides no reliable record and cannot be independently confirmed later, which defeats the purpose of proper starter sizing verification before commissioning.",
+      "explanation": "Running overload protection must be matched to the current actually stamped on the motor nameplate. The starter manufacturer publishes a selection table listing an overload element or heater for each band of full-load current, and the element chosen must have an adjustment range that includes 15 A so the relay trips on a modest, sustained overload. Checking running current with a clamp meter after start-up confirms the setting suits the real conveyor loading. Dialling a 21–29 A element to its 21 A minimum still permits roughly 140 % of nameplate current indefinitely, so the winding can overheat without tripping. The horsepower-and-voltage current values are intended for sizing conductors and short-circuit protection, not overload elements, and are usually higher than nameplate current. Breakers and control fusing respond to short circuits and ground faults, not to the slow temperature rise caused by a jammed or overloaded conveyor, so they cannot substitute for a correctly sized overload element.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "df307eced9ef2e5b1fcefe4018de9eb2abb41efcc5c24a045a5a03ed80b3c327"
+      "contentHash": "e28487933a0a9c441e744ce2f564675d9398e8e34385686529d05f0ae497f00c"
     },
     {
       "bankItemNumber": 359,
@@ -532,7 +532,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A panel builder is verifying that a 120 V control transformer can support seven identical interlocked relay coils on a packaging line starter panel, each rated 12 VA and energized together during normal operation. Using the nameplate data, what secondary current must the transformer supply to these coils?",
+      "question": "A panel builder is checking the 120 V control transformer on a packaging line reversing starter panel. The state diagram for the panel shows the forward and reverse contactors with both electrical and mechanical interlocks, so the branch feeding the reverse contactor coil is held open whenever the forward path is closed. In the forward running state shown on that diagram, seven identical coils rated 12 VA each are energized at the same time. What current must the transformer secondary supply in that forward running state?",
       "options": [
         "0.5 A",
         "0.9 A",
@@ -540,7 +540,7 @@
         "0.7 A"
       ],
       "correctIndex": 3,
-      "explanation": "The correct value, 0.7 A, comes from multiplying the seven 12 VA coils by their common count to get 84 VA total, then dividing by the 120 V secondary voltage. This method reflects the actual simultaneous load the transformer must supply when all interlocked coils energize together. The tempting distractor of 0.9 A results from mistakenly adding an extra coil or inrush margin without basis, while 1.1 A comes from dividing VA by a lower assumed voltage instead of the actual 120 V secondary. Choosing 0.5 A ignores one or more coils entirely. Only careful multiplication of VA per coil by the confirmed quantity, divided by the correct rated voltage, gives the true steady-state current draw the transformer must handle without overheating or nuisance tripping.",
+      "explanation": "In the forward running state shown on the state diagram, the interlocks hold the reverse contactor coil branch open, so only the seven energized coils load the transformer: 7 x 12 VA = 84 VA, and 84 VA / 120 V = 0.7 A. The 0.9 A choice comes from counting the two interlocked coils that the diagram shows cannot be energized in this state (9 x 12 = 108 VA / 120 V = 0.9 A). The 1.1 A choice adds those two blocked coils plus two 12 VA pilot devices that are not part of the simultaneous coil load (11 x 12 = 132 VA / 120 V = 1.1 A). The 0.5 A choice counts only five coils and leaves out two energized control relays (5 x 12 = 60 VA / 120 V = 0.5 A). Reading the interlock logic first tells you exactly which coils are on together, and that simultaneous VA total divided by the rated secondary voltage is the steady-state current the transformer must carry.",
       "steps": [
         {
           "label": "Total VA",
@@ -557,7 +557,7 @@
       "diagramAlt": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "78fc7b32d0d76bed21bb0a041c91047124aa8ca76947638c5ba0a51a3d53bb28"
+      "contentHash": "9237767e7ba1254bdec794d4c222ba184d6e5818a89caf3c3445d8b2fd541ef0"
     },
     {
       "bankItemNumber": 365,
@@ -593,15 +593,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a cooling tower fan starter panel, a previous shift acknowledged a start-failure alarm without logging its cause, and the auxiliary contact state for the fan's interlocking circuit remains unconfirmed. Before re-energizing the starter, what is the correct next step?",
+      "question": "On a cooling tower fan starter panel, the previous shift acknowledged a start-failure alarm without recording a cause. You cannot confirm whether the starter's normally open auxiliary contact — the one that seals in the coil circuit and sends the \"fan running\" signal to the interlock string — is actually transferring when the contactor picks up. With the panel isolated and locked out, what is the correct next step before re-energizing the starter?",
       "options": [
-        "Swap the largest accessible relay first and document the reason only if the fault returns.",
-        "Clear the alarm log and wait for a repeat failure before gathering any test data.",
-        "Accept the previous operator's verbal account as the only confirmation of auxiliary contact state.",
-        "Pause work, verify auxiliary contact state against approved drawings, resolve any discrepancy, then document and proceed."
+        "Ohm out the contactor coil and replace it, since a seal-in failure of this type is normally caused by coil deterioration rather than by the auxiliary contact block.",
+        "Reset the overload relay and restart the fan, treating the acknowledged alarm as a thermal trip that has since cooled and cleared itself.",
+        "Replace the auxiliary contact block with a spare of the same catalogue number and record the change as scheduled preventive maintenance on the starter.",
+        "Check continuity of the auxiliary contact both de-energized and with the armature pushed in by hand, compare its normally open or closed function to the approved control schematic and interlock sequence, correct any mismatch, then record the results."
       ],
       "correctIndex": 3,
-      "explanation": "An unresolved alarm with unverified auxiliary contact state creates risk of nuisance tripping, contactor damage, or conflicting start commands once power is restored. The correct action is to isolate, compare the actual contact state to the approved control schematic and interlock sequence, correct any mismatch, and record findings before re-energizing so the fix is verifiable. Randomly swapping components wastes time, may mask the real fault, and lacks documentation for review. Clearing the log without data destroys evidence needed to diagnose recurring failures. Relying on verbal memory instead of measured, recorded verification is unreliable and cannot be independently confirmed by another qualified person, violating sound troubleshooting practice for auxiliary contact circuits in starter control systems.",
+      "explanation": "An auxiliary contact either transfers or it does not, and that can be proven quickly on a locked-out starter: read continuity across the contact with the armature at rest, then manually push the armature in and read it again. Comparing that measured behaviour to the approved schematic confirms whether the contact is wired and functioning as the normally open seal-in and interlock device the control circuit expects, and recording the result gives the next person a starting point instead of another blank alarm entry. Replacing the coil first assumes a fault that has not been proven; a coil that pulls the contactor in is not the reason a seal-in path fails to make. Resetting the overload and restarting only repeats the failed start without gathering any information about the contact state. Swapping in a new contact block may restore operation by chance, but if the block was wired to the wrong pole or the interlock expects the opposite contact function, the same alarm returns and the actual mismatch is still unknown.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -609,7 +609,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply auxiliary contact state knowledge while the electrician installs motor starters.",
-      "contentHash": "19efe17811c4ed21a33ef4a0510f7b6a02c1f0ad374f12488e0f89aef7be4d6c"
+      "contentHash": "107ac7b74647a0d9fa9402540ea1167622673c0d432f118fc3145e8139ac4012"
     },
     {
       "bankItemNumber": 367,
@@ -706,15 +706,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A replacement motor was installed on Line 7's mixer, but the nameplate full-load current exceeds the rating shown on the panel's approved motor schedule. The crew is ready to energize the starter. What is the correct next step?",
+      "question": "A replacement motor has been installed on Line 7's mixer, and its nameplate full-load current is higher than the value shown for that motor on the panel's approved motor schedule. The starter and overload relay were originally selected from the schedule. Before energizing, what should the electrician do about starter sizing?",
       "options": [
-        "Swap the overload heater for a larger stock unit without checking documentation, then energize immediately.",
-        "Reset any existing fault log and monitor for repeat failures before pulling any nameplate or schedule information.",
-        "Rely on the previous electrician's verbal description of the motor's rating instead of checking the nameplate.",
-        "Stop, compare the nameplate data with the approved motor schedule and starter sizing documentation, resolve any discrepancy, and record the outcome before energizing."
+        "Set the overload relay to the new nameplate full-load current and energize, leaving the motor schedule and starter sizing calculation to be updated on a later shift.",
+        "Set the overload relay to the schedule's full-load current because the approved drawings govern the installation, and note the nameplate difference in the shift log.",
+        "Energize briefly with the mixer unloaded, clamp the running current, and keep the existing starter if the measured value stays below the present overload setting.",
+        "Verify the nameplate full-load current, voltage, and service factor against the motor schedule and the starter sizing calculation, resolve the discrepancy with the responsible person, and document the change before energizing."
       ],
       "correctIndex": 3,
-      "explanation": "The nameplate discrepancy signals a possible mismatch between the installed motor's electrical characteristics and the starter, overload, and conductor sizing already verified for this circuit. Energizing without resolving that mismatch risks nuisance overload trips, contactor damage, or an undersized starter failing under load. The correct response is to stop work, cross-check the nameplate current, voltage, and service factor against the approved motor schedule and starter documentation, involve a qualified person to resolve any conflict, and record the resolution so future troubleshooting has an accurate reference. Simply installing a larger overload heater without documentation review is tempting because it seems to fix an obvious symptom, but it bypasses verification of upstream conductor and starter ratings and creates an undocumented change. Resetting fault logs or relying on a verbal account discards the only reliable evidence available and delays proper verification, increasing the risk of repeated failures or equipment damage.",
+      "explanation": "Starter selection depends on the actual motor being controlled: the contactor must carry the motor's full-load current and match its horsepower and voltage rating, the overload element must be chosen from the nameplate current and service factor, and the branch-circuit conductors and short-circuit protection ahead of the starter were sized for the original motor. When the nameplate exceeds the scheduled value, all of those selections must be re-checked and the discrepancy settled and documented before the motor runs. Simply dialling the overload up to the new nameplate current protects the motor windings but leaves an undersized contactor and possibly undersized conductors carrying more current than they were selected for. Setting the overload to the lower scheduled value protects the wrong machine and will cause nuisance tripping while the motor is still within its own rating. Measuring current with the mixer unloaded proves little, because an unloaded motor draws well under its full-load current, so the starter could still be overloaded once the mixer is charged with product.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -722,7 +722,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "28f09344a99580cf5ae6d431d91391697c328e83f551d5daa7142c3ad07729a7"
+      "contentHash": "fb32a1116cf7ff88d7591c3c08e6da7cfa06a1de27dfabc607b9722f1f497c7e"
     },
     {
       "bankItemNumber": 371,
@@ -932,15 +932,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A conveyor motor starter's auxiliary contact provides a permissive interlock to a downstream gate motor circuit. After a mechanical contractor relocated conduit near the starter enclosure, the auxiliary contact's normally open or normally closed state can no longer be confirmed by inspection alone. The gate motor must not run out of sequence. What should the electrician do before restoring power?",
+      "question": "On a packaging line, a conveyor starter's auxiliary contact supplies the permissive interlock that allows a downstream gate motor to run only when the conveyor is ready. During a shutdown, conduit and control wiring near the starter enclosure were relocated, and the auxiliary contact's normally open or normally closed function can no longer be confirmed by looking at the installation. The gate motor must not be able to run out of sequence. What should the electrician do before restoring power?",
       "options": [
-        "Swap the largest nearby component and only document findings if the fault reappears later.",
-        "Reset the interlock fault indicator and wait for a repeat failure before gathering any test data.",
-        "Rely on the operator's recollection of the original wiring as the sole basis for restoring power.",
-        "Stop work, confirm the auxiliary contact state against the approved control schematic, correct any mismatch, and record it."
+        "Meter the auxiliary contact for continuity with the starter de-energized, label the contact from that single reading, and re-energize without opening the control drawings.",
+        "Match the auxiliary contact block's catalogue number and terminal markings to the starter manufacturer's data sheet, then restore power on that basis.",
+        "Ring out the interlock conductors between the starter enclosure and the gate motor panel and restore power once both ends show continuity.",
+        "Stop work, confirm the auxiliary contact state against the approved control schematic, correct any mismatch, and record the as-found and corrected condition."
       ],
       "correctIndex": 3,
-      "explanation": "The permissive interlock's function depends entirely on the auxiliary contact's actual switching state matching what the schematic assumes; if the contractor's work disturbed wiring or contact position without documentation, energizing blind risks the gate motor running while the conveyor is not ready. Verifying against approved drawings, correcting any mismatch, and logging the finding gives a traceable, code-consistent basis for safe restart. Swapping the largest component wastes time and ignores the actual evidence, since nothing indicates the contact itself failed. Resetting the fault and waiting for recurrence is reactive and lets an unsafe interlock condition run live in the meantime. Relying on an operator's memory is unverifiable, inconsistent with approved documentation, and provides no defensible record if the interlock later fails, making the schematic-based verification and documented correction the only defensible next step.",
+      "explanation": "The permissive interlock only protects the sequence if the auxiliary contact's actual switching state matches what the control schematic assumes. Because the relocation work could have changed which contact the interlock conductors land on, the state must be compared to the approved drawing, any mismatch corrected, and the as-found and corrected condition recorded so the next person has accurate information. A single de-energized continuity reading tells you whether that contact is closed at rest, but without the schematic it does not tell you whether that is the state the gate motor permissive requires, or whether the conductors are on the intended contact. Matching the contact block to the manufacturer's data sheet confirms only what hardware is installed; a correct block can still be wired to the wrong pole or used for the wrong function. Ringing out the interlock conductors proves the pair is continuous end to end but says nothing about whether that path opens and closes at the right point in the conveyor sequence, so the gate motor could still pick up out of order.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -948,7 +948,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply auxiliary contact state knowledge while the electrician installs motor starters.",
-      "contentHash": "f72dfcf6d091b226ba1e41a26b4aaedfe4b5d645a3236caf7798a22c5429d63a"
+      "contentHash": "53876e68add75b223696f49301facbd294dd4799aa4b23c42807d38428b19d6b"
     },
     {
       "bankItemNumber": 379,
@@ -1158,15 +1158,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On packaging line drive PL-14, the nameplate shows a 600 V input class, but a clamp-on meter and voltmeter check at the drive terminals reads 380 V because the feeder was reconnected through an unverified transformer tap. The drive trips on overcurrent only while accelerating the conveyor under full load, and runs without tripping when lightly loaded. What should the electrician do next?",
+      "question": "On packaging line drive PL-14, the drive nameplate lists an input rating of 525–600 V, three phase, and the conveyor motor nameplate reads 575 V. With the line energized, a true-RMS meter across the drive's input terminals reads 380 V phase-to-phase on all three pairs, and the drive's keypad shows a low DC bus value. The drive runs the empty conveyor without complaint but trips on output overcurrent every time it accelerates a fully loaded belt. Records show the feeder was recently reconnected through a transformer whose tap arrangement was never verified. What should the electrician do next?",
       "options": [
-        "Lengthen the acceleration ramp time and raise the drive's current-limit setting until the loaded conveyor reaches full speed without tripping.",
-        "Change the drive's motor base-voltage and base-frequency parameters to suit the 380 V reading, then rerun the autotune routine on the conveyor motor.",
-        "Order a larger frame drive of the same input voltage class to gain current headroom for the acceleration load, and leave the existing feeder connection as found.",
-        "Stop and confirm the drive's rated input voltage range against the approved drawings and manufacturer data, correct the transformer tap discrepancy, and record the verified supply values before restarting the line."
+        "Extend the acceleration ramp time and raise the drive's current-limit setting until the fully loaded conveyor reaches full speed without tripping, then release the line to production.",
+        "Reprogram the drive's motor base voltage and base frequency to match the 380 V reading and rerun the autotune routine so the drive matches the measured supply.",
+        "Install a larger frame drive of the same input voltage class to gain acceleration current headroom, leaving the existing feeder and transformer tap connection as found.",
+        "Stop and compare the drive's rated input voltage range with the approved drawings and manufacturer data, correct the transformer tap discrepancy, then record the verified supply values before restarting the line."
       ],
       "correctIndex": 3,
-      "explanation": "A drive supplied well below its rated input voltage has a low DC bus, so it must draw more current to produce the same shaft torque. Acceleration under full conveyor load is the highest-torque condition, which is exactly why the overcurrent trip appears there and not at light load. That symptom pattern points to the supply, so the first step is to compare the nameplate input voltage range with the approved drawings and manufacturer data, trace the transformer tap that produced 380 V, correct it, and log the verified voltage so the next person knows the supply matches the drive rating. Stretching the ramp and raising the current limit only pushes the trip point away from a real supply deficiency and keeps the motor and drive running hot at elevated current. Editing motor base-voltage and base-frequency parameters to match 380 V forces the drive to operate the motor away from its own nameplate ratings and still leaves an improperly tapped feeder in service. Ordering a larger drive adds current capacity to compensate for a wiring error that is far cheaper to correct, and the mismatch would continue to reduce available torque. Confirming rated input against actual measured supply is the controlled action that resolves the cause instead of the symptom.",
+      "explanation": "A drive can only produce an output voltage up to roughly what its DC bus supports, and the bus follows the incoming line voltage. Fed at 380 V when it is rated 525–600 V, the drive cannot deliver anything close to the 575 V the motor needs at full speed, so the motor must draw much higher current to make the same shaft torque. Accelerating a fully loaded belt is the highest-torque condition, which is why the output overcurrent trip shows up there and not at light load, and the low DC bus reading confirms the supply is the source of the problem. The controlled next step is to verify the drive's rated input range against the approved drawings and manufacturer data, trace and correct the transformer tap that produced 380 V, and log the verified supply voltage so the next person can see the feeder now matches the drive rating. Stretching the ramp and raising the current limit only moves the trip threshold while the motor and drive keep running at elevated current and temperature. Resetting motor base voltage and base frequency to suit 380 V drives the motor away from its own nameplate values, still leaves the drive operating below its rated input range where undervoltage trips are likely, and leaves the mis-tapped feeder in service. A larger drive adds current capacity but cannot restore the missing output voltage, so torque stays limited and the wiring error remains uncorrected.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1174,7 +1174,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply drive input rating knowledge while the electrician installs ac drives.",
-      "contentHash": "8d7ccd5c223e314de94ef21a7d644639df5705d9317ec5961b7b3d1398c49b87"
+      "contentHash": "695bc8e2502311e7f9e86a33bc439f889c91519d1dae41645d9688387ba93e60"
     },
     {
       "bankItemNumber": 387,
@@ -1271,15 +1271,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On drive tag D23-11 feeding a packaging conveyor (see diagram), operators report the belt creeps unevenly whenever demand drops, and the technician notices the minimum-speed parameter was never checked against the OEM setpoint sheet after startup. What is the correct next step?",
+      "question": "Using the accompanying diagram, operators of a packaging conveyor report the belt creeps unevenly whenever demand drops. Using the drive energy path shown, the technician notes that the stage producing the adjustable output frequency to the motor is the inverter section downstream of the DC bus, and that the minimum-speed limit clamping that stage's output was never compared to the OEM setpoint sheet after startup. What is the correct next step?",
       "options": [
-        "Swap the inverter output module immediately and log the reason only if creeping recurs.",
-        "Silence the fault log and wait for a full stall before gathering further data.",
-        "Rely on the shift supervisor's recollection of the original commissioning speed as the acceptance record.",
+        "Raise the inverter section's carrier switching frequency to smooth the output waveform, leaving the programmed minimum-speed limit as originally loaded.",
+        "Program the minimum output frequency to zero so the inverter section can follow falling demand freely, then observe the belt for improvement.",
+        "Install a DC bus reactor ahead of the inverter section to steady bus voltage before evaluating any of the drive's speed-limit setpoints.",
         "Pause operation, compare the programmed minimum speed to approved OEM documentation, correct any mismatch, and record the result."
       ],
       "correctIndex": 3,
-      "explanation": "Uneven creeping at low demand is a classic symptom of a minimum-speed setpoint that doesn't match the load's actual requirements, which can cause instability, nuisance trips, or motor overheating at low frequency. The correct response is to stop, check the drive's programmed value against the manufacturer's approved documentation, correct any discrepancy, and document the change for review. Replacing the inverter module first wastes resources without confirming the parameter is even wrong. Waiting for a full stall ignores an active symptom and risks equipment damage or process failure. Trusting memory instead of documented acceptance criteria removes traceability and leaves no verifiable record if the issue recurs or is questioned later. Verified, documented parameter checks against approved references are the only reliable way to resolve minimum-speed discrepancies safely.",
+      "explanation": "In the energy path shown, the rectifier and DC bus supply steady DC power, but it is the inverter section that synthesizes the variable frequency sent to the motor, and the minimum-speed parameter sets the lowest frequency that section is allowed to produce. If that floor does not match the load's requirement, the conveyor becomes unstable at low demand and the motor can overheat or lose torque, which matches the uneven creeping reported. The correct step is to stop, compare the programmed value to the manufacturer's approved setpoint documentation, correct any discrepancy, and document the value so the drive has a traceable acceptance record. Changing the carrier switching frequency alters waveform smoothness and drive heating but does nothing to the low-speed limit causing the symptom. Setting minimum speed to zero removes the protective floor entirely, so the motor runs at frequencies where its own cooling and torque production fall off and instability typically worsens. Adding a DC bus reactor addresses supply-side ripple and harmonics upstream of the inverter, not a programmed speed limit, so the original mismatch would remain in place.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1287,7 +1287,7 @@
       "diagramAlt": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output.",
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply minimum speed knowledge while the electrician installs ac drives.",
-      "contentHash": "5aad262bce73c45257eb94d05c332a3d015005880bdb4cda492e5455400e680d"
+      "contentHash": "191cab906cd0f714c3e15ec0aeaae63dc733f0e8c283c3d898872a0290a85dbe"
     },
     {
       "bankItemNumber": 391,
@@ -1866,15 +1866,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "The diagram relates supply frequency and pole count to synchronous speed, with rotor speed running lower by slip. On a service call, a 575 V three-phase squirrel-cage motor driving a conveyor is turning noticeably slower than its nameplate full-load speed under normal load, and an ohmmeter check shows one stator phase winding reading well below the other two. Given the speed and slip relationship shown in the diagram, which verification approach best determines whether this winding resistance imbalance is acceptable before the motor is put back in service?",
+      "question": "A 575 V three-phase squirrel-cage motor driving a conveyor is turning noticeably slower than its nameplate full-load speed under normal load. The diagram shows that synchronous speed is set only by supply frequency and pole count, while actual rotor speed sits below that value by the amount of slip, which grows as developed torque falls short of load demand. An ohmmeter check across the stator leads shows one phase winding reading well below the other two, although all three windings are identical by design. Working from the diagram's separation of the fixed synchronous speed from the load-dependent slip portion, which verification approach best determines whether the measured winding resistance imbalance is acceptable before the motor is returned to service?",
       "options": [
-        "Recalculate synchronous speed from the supply frequency and pole count shown, and accept the windings if that calculated speed matches the nameplate speed.",
-        "Measure running current in each supply conductor and treat reasonably balanced current draw as proof that the three phase windings are within tolerance.",
-        "Compare each phase winding resistance against the manufacturer's reference values and the allowable deviation between phases for that motor.",
-        "Treat the windings as sound because the diagram shows slip is fixed by frequency and pole count, so winding condition cannot influence shaft speed."
+        "Recalculate synchronous speed from the supply frequency and pole count shown in the diagram, and accept the stator windings if that calculated value agrees with the nameplate speed",
+        "Measure running current in each of the three supply conductors and treat reasonably balanced current draw as proof that all three phase windings are within tolerance",
+        "Compare each measured phase winding resistance against the manufacturer's reference value and the allowable deviation between phases for that specific motor",
+        "Subtract the measured shaft speed from the synchronous speed shown in the diagram and use the resulting slip percentage as the acceptance limit for winding resistance balance"
       ],
       "correctIndex": 2,
-      "explanation": "The three stator phase windings of a squirrel-cage motor are wound alike, so their resistances should read nearly equal, typically within a few percent. One phase reading well below the others suggests shorted turns or a partial internal fault, which reduces developed torque and shows up as excess slip. The defensible check is to compare each measured phase resistance with the manufacturer's reference values and the allowable phase-to-phase deviation, since acceptable spread depends on winding size and design. Recalculating synchronous speed from frequency and pole count only confirms the no-load reference speed set by the supply; it tells nothing about winding condition, and the diagram shows rotor speed always falls below that value. Balanced line current is not proof of healthy windings, because supply voltage and internal circulating currents can mask a shorted-turn fault while the winding overheats. The last choice misreads the diagram: only synchronous speed is fixed by frequency and poles, while slip varies with load and with the torque the windings can actually produce, so damaged windings do affect running speed.",
+      "explanation": "All three stator phase windings of a squirrel-cage motor are wound alike, so their resistances should read nearly equal. One phase reading well below the others points to shorted turns or a partial internal fault, which lowers developed torque and shows up as extra slip on the diagram's lower speed line. The defensible check is to compare each measured phase resistance with the manufacturer's reference value and the permitted phase-to-phase deviation, because the acceptable spread depends on conductor size, winding design, and winding temperature at the time of the reading. Recalculating synchronous speed from frequency and pole count only reproduces the upper reference line in the diagram; that value is fixed by the supply and reveals nothing about winding condition. Balanced line current is not proof of healthy windings, since supply voltage differences and internal circulating currents can hide a shorted-turn fault while the affected coil overheats. Using slip percentage as an acceptance limit confuses a performance symptom with a winding measurement: slip tells you torque is short but gives no resistance tolerance, so it cannot confirm whether the windings themselves are within specification.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1882,7 +1882,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply winding resistance balance knowledge while the electrician installs single-phase motors.",
-      "contentHash": "355a242164fdae39b483108104e85aa9f37d30f780bc99c34c9031279111ccde"
+      "contentHash": "8dc8d4ec7abb486a67e727ede19a26723fdc23043d916fb9e3448d0913375de6"
     },
     {
       "bankItemNumber": 412,
@@ -2187,15 +2187,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the accompanying diagram, during commissioning of a rewound DC motor on a critical conveyor drive, the electrician notes rising armature current and hears a faint scraping sound near the outboard bearing at low speed, but bearing condition has not yet been checked against baseline data. What should happen next?",
+      "question": "During commissioning of a rewound 30 hp induction motor driving a critical conveyor, an electrician hears a faint scraping near the outboard bearing at low speed and sees stator current climbing. To place bearing defect frequencies against baseline limits, the vibration analyzer must be given the motor's actual shaft speed. Using the speed relationship shown in the accompanying diagram, what should happen next?",
       "options": [
-        "Replace the nearest bearing housing without confirming diagnostic readings, noting the change only if the issue recurs.",
-        "Silence the deficiency tag and wait for a repeat failure before gathering further test data.",
-        "Rely solely on the machine operator's verbal recollection to confirm bearing condition acceptance.",
-        "Pause work, verify bearing condition using approved diagnostic data, resolve any discrepancy, and document findings before resuming."
+        "Change out the outboard bearing immediately on the strength of the scraping sound alone, and note the work only if the noise returns after restart.",
+        "Log the noise as a low-priority item, leave the conveyor drive in service at full load, and collect bearing readings at the next scheduled shutdown.",
+        "Enter the operator's recollection of how the drive sounded before the rewind as the bearing condition assessment, without collecting any analyzer data.",
+        "Pause the run, determine actual rotor speed from the supply frequency and pole count shown, less slip, compare the bearing vibration data to baseline limits, and record the results before resuming."
       ],
       "correctIndex": 3,
-      "explanation": "The scraping sound and rising armature current at low speed are early indicators of bearing wear that can worsen into misalignment, overheating, or shaft damage if the motor stays in service. Pausing to compare actual bearing condition against nameplate data, vendor diagnostic limits, and prior baseline readings lets the electrician confirm whether the noise stems from lubrication, wear, or an installation fault before returning the drive to a critical load. Documenting the finding preserves objective evidence for trending and independent review. Replacing the nearest bearing housing without confirming diagnostic readings seems proactive but risks discarding usable evidence and may not correct the actual fault. Clearing the deficiency tag or relying on an operator's memory both discard verifiable evidence and risk an unsafe restart or repeat failure on equipment supporting a critical process.",
+      "explanation": "Bearing defect frequencies are multiples of actual shaft rotation, so the analyzer must be set up with true rotor speed. The diagram shows that supply frequency and pole count set synchronous speed, while rotor speed is lower by slip; entering synchronous speed alone would shift the calculated bearing frequencies and hide or misidentify a developing fault. Scraping noise combined with rising stator current at low speed points to lubrication loss, wear, or an installation error, all of which can progress to overheating and shaft damage on a critical drive. Pausing to gather speed-corrected vibration data, resolving any difference from baseline, and recording the readings gives an objective trend for the machine. Swapping the bearing on sound alone can leave the true cause in place, deferring measurement while the drive runs at full load allows damage to advance, and an operator's recollection provides no measurable baseline comparison.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2203,7 +2203,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.06",
       "blueprintObjective": "Apply bearing condition knowledge while the electrician services and maintains dc motors.",
-      "contentHash": "4dd2cfef62ba3e4b591780e74c0241f8f1271e2dd9230ffba25fdc17889e4abb"
+      "contentHash": "a5e3c07016936143cf9355338badcb2d21870264354b60dbdf6766603461af7e"
     },
     {
       "bankItemNumber": 423,
@@ -2213,15 +2213,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A 5 hp three-phase squirrel-cage motor driving a packaging line conveyor has tripped its overload twice during one shift. The motor is locked out and the leads are disconnected at the starter. Which action best determines whether the windings themselves are the cause before the motor is returned to service?",
+      "question": "A 5 hp three-phase squirrel-cage motor driving a packaging line conveyor has tripped its overload twice during one shift. The motor is locked out and the three motor leads are disconnected at the starter. Which action best determines whether the motor windings themselves are the cause before the motor is returned to service?",
       "options": [
-        "Reset the overload relay and set it to the next larger current setting so the motor rides through the higher starting current.",
-        "Test insulation resistance from each lead to the frame only, and return the motor to service if the readings exceed the minimum acceptable value.",
+        "Reconnect the leads, run the conveyor, and clamp each line conductor with an ammeter, accepting the motor if the three running currents are within 10 percent of the nameplate full-load value.",
+        "Test insulation resistance from each lead to the frame only, and return the motor to service if all three readings exceed the minimum acceptable value.",
         "Measure the resistance of each phase winding with a low-resistance ohmmeter, compare the three readings to each other and to manufacturer data, and correct any imbalance before re-energizing.",
         "Measure line voltage at the starter terminals with the feeder energized, and return the motor to service if the three phases are within the allowed voltage unbalance."
       ],
       "correctIndex": 2,
-      "explanation": "Repeated overload trips can be caused by an internal winding problem such as shorted turns, a partially open coil, or a poor internal connection. With the motor de-energized and the leads free of the starter, measuring each phase winding with a low-resistance (milliohm) ohmmeter and comparing the three readings against one another and against the manufacturer's data is the direct test: balanced windings should read very close to each other, and a phase that reads noticeably low or high points to a winding fault that must be corrected before re-energizing. Increasing the overload setting only allows a faulty motor to draw excessive current longer and removes the protection that revealed the problem. An insulation-resistance test to the frame checks only the insulation between the windings and ground; a motor with shorted turns between conductors in the same phase can still pass that test. Checking supply voltage balance is a useful step for diagnosing external supply problems, but balanced voltage does not confirm that the windings inside the motor are sound.",
+      "explanation": "Repeated overload trips can come from an internal winding problem such as shorted turns, a partially open coil, or a high-resistance internal connection. With the motor de-energized and the leads free of the starter, measuring each of the three phase windings with a low-resistance (milliohm) ohmmeter and comparing the readings to one another and to the manufacturer's data is the direct test: on a healthy three-phase winding set the three values are nearly identical, so a phase reading noticeably low or high identifies a fault that must be corrected before re-energizing. Clamping running current only shows the total effect of a fault under load and cannot separate a winding problem from a mechanical or supply problem, and it requires energizing a motor that is still suspect. An insulation-resistance test to the frame evaluates only the insulation between the windings and ground, so a winding with turn-to-turn shorts in the same phase can still give an acceptable reading. Checking supply voltage balance is worthwhile for diagnosing external supply issues, but balanced voltage says nothing about the condition of the windings inside the motor.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2229,7 +2229,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply winding resistance balance knowledge while the electrician installs single-phase motors.",
-      "contentHash": "247a714be0000c0dfc63ed32b57a35993fbd4f620931ae733ce09dd4900aa585"
+      "contentHash": "dd533f0b0e1f9c08b69891c7332b74b72ce027abbdd95cfce5945dd853be4116"
     },
     {
       "bankItemNumber": 424,
