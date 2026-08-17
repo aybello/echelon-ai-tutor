@@ -1490,3 +1490,6 @@
 - [x] Inspect current public changelog entries and determine why recent releases are absent
 - [x] Add or correct accurate current changelog entries through the database-backed publication flow
 - [x] Verify the live About page displays the updated platform changelog
+## Study Notes Coverage Audit
+- [x] Map every active course to its study-note content and course-workspace wiring
+- [x] Identify missing study notes and explain the cause before planning any content expansion
