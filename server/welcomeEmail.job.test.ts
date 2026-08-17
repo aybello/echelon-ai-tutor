@@ -144,7 +144,8 @@ describe("runWelcomeEmailJob (Issue C regression)", () => {
 
     expect(result.sent).toBe(1);
     expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toContain("fail@example.com");
+    expect(result.errors[0]).toContain("purchase #2");
+    expect(result.errors[0]).not.toContain("fail@example.com");
   });
 
   it("throws when database is unavailable", async () => {
