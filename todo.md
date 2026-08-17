@@ -1636,4 +1636,4 @@
 ## 309A Flashcard Progress Display Repair
 - [x] Audit the “Got it” and “Still learning” counts, card filtering, and persistence identifiers
 - [x] Correct the progress-state calculation and review controls so display matches actual learner decisions
-- [ ] Validate, publish, and verify the corrected flashcard progress experience
+- [x] Validate, publish, and verify the corrected flashcard progress experience

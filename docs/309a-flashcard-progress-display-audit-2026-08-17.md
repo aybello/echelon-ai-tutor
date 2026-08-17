@@ -11,3 +11,7 @@ When a learner selects the still-learning review mode, the rendered deck is inte
 ## Required correction
 
 Calculate `Got it` and `Still learning` from the selected module’s full conceptual scope, not the temporary review deck. Normalize persisted card IDs to one stable representation before all membership checks. Keep session-completion counts explicitly scoped to the cards studied in that session.
+
+## Verification
+
+The deployed 309A flashcard page was exercised with a live learner action. Before the action it displayed `0 got it · 400 still learning`; after selecting `Got It!` on one card, it advanced to the next card and displayed `1 got it · 399 still learning`. The review control changed to `Review 399 still-learning`, matching the same selected scope.
