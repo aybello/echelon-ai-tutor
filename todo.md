@@ -1512,3 +1512,7 @@
 - [x] Allow the clearly labelled 309A draft diagnostic to be viewed publicly
 - [x] Retain no-indexing, non-commercial, no-Teams, and no-full-course safeguards
 - [x] Validate and publish the public 309A draft preview route
+## 309A Public Navigation Discovery
+- [x] Inspect current course and resource navigation surfaces for the appropriate 309A preview entry
+- [x] Add a clearly labelled public 309A draft-preview entry without implying a full course launch
+- [x] Validate and publish the discoverable 309A navigation entry

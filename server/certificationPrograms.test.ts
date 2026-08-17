@@ -198,6 +198,7 @@ describe("trade-agnostic certification program foundation", () => {
     const appSource = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
     const demoSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309ADemo.tsx"), "utf8");
     const reviewRouterSource = readFileSync(resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"), "utf8");
+    const siteNavSource = readFileSync(resolve(process.cwd(), "client/src/components/SiteNav.tsx"), "utf8");
 
     expect(appSource).toContain("Electrician309ADemo");
     expect(demoSource).toContain("trpc.electricianReview.get309APublicPreview.useQuery()");
@@ -206,5 +207,7 @@ describe("trade-agnostic certification program foundation", () => {
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForInternalReview");
     expect(reviewRouterSource).toContain("publicProcedure.query");
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForPublicPreview");
+    expect(siteNavSource).toContain("Electrician Preview");
+    expect(siteNavSource).toContain("/electrician-309a-demo");
   });
 });
