@@ -1621,3 +1621,14 @@
 - [x] Fetch and identify the newly available updates
 - [x] Assess conflicts, regressions, compatibility, and validation evidence
 - [x] Provide a merge recommendation before changing production
+
+## Newly Available Repository Update Review
+- [ ] Identify the incoming branch or pull request and inspect its change set
+- [ ] Review compatibility, tests, conflicts, and regressions before any merge decision
+- [ ] Integrate and validate only an approved update
+
+## Page-Load Flash Repair
+- [x] Reproduce the visible pre-render flash on public course pages and identify its source
+- [x] Repair the initial loading and hydration sequence without masking legitimate errors
+- [ ] Validate and publish the corrected page-load experience
+- [x] Hide the server-rendered crawl fallback before React hydration while preserving a no-JavaScript fallback
