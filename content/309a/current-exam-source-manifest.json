@@ -1,0 +1,45 @@
+{
+  "programKey": "construction-electrician-309a-on",
+  "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
+  "retrievedAt": "2026-08-17",
+  "sources": [
+    {
+      "id": "red-seal-current-exam-weightings",
+      "title": "Construction Electrician examination weightings — current exam, previous RSOS",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/exam-weightings.shtml",
+      "usage": "authoritative current-exam task and weighting matrix",
+      "sha256": "4bf297f12c011725ff81427fbb6f85ed171a1727c01407f3ddb50b9ff94d2abc"
+    },
+    {
+      "id": "red-seal-construction-electrician-trade-page",
+      "title": "Construction Electrician",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/const-elect.shtml",
+      "usage": "authoritative current-versus-in-development RSOS status",
+      "sha256": "83f45827f51c60785ba000b96b1a168ffb8952dbd9a7bffa1ca66a87726e3124"
+    },
+    {
+      "id": "red-seal-exam-preparation-guide",
+      "title": "Red Seal examination preparation guide",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/resources/exam-prep-guide.shtml",
+      "usage": "public examination format and candidate-preparation information",
+      "sha256": "d272860d2c6a571e6e966fe3c56501353f2fe05cd44c04f24a1388ae06f76ec2"
+    },
+    {
+      "id": "skilled-trades-ontario-309a",
+      "title": "Electrician — Construction and Maintenance (309A)",
+      "publisher": "Skilled Trades Ontario",
+      "url": "https://www.skilledtradesontario.ca/trade-information/electrician-construction-and-maintenance/",
+      "usage": "Ontario credential and curriculum-transition context",
+      "sha256": "a2c9e2d0efd4f075a25c4bb11c98a532b54f1b1a8221e068f8426e4253e94dcd"
+    }
+  ],
+  "exclusions": [
+    "Canadian Electrical Code rule, table, appendix, or copyrighted wording without recorded rights clearance",
+    "Red Seal sample-question wording or answers",
+    "manufacturer-specific proprietary programming or configuration procedures",
+    "utility-specific drawings, specifications, or protected technical data"
+  ]
+}
