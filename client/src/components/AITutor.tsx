@@ -75,6 +75,39 @@ export default function AITutor({
     }
   }, [messages]);
 
+  const handleClose = useCallback(() => {
+    // A tutor opened by the ?panel=tutor deep link must remove that parameter
+    // as well as close local state, otherwise later workspace state changes can
+    // silently reopen it.
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("panel") === "tutor") {
+        url.searchParams.delete("panel");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch {
+      // The local close action is still safe if browser history is unavailable.
+    }
+
+    if (hasSession && examType && messages.some((message) => message.role === "user")) {
+      saveSessionMutation.mutate({
+        examType,
+        messages: messages.filter((message) => message.role === "user" || message.role === "assistant"),
+        sessionStartMs,
+        accessToken,
+      });
+    }
+    onClose();
+  }, [accessToken, examType, hasSession, messages, onClose, saveSessionMutation, sessionStartMs]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") handleClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [handleClose]);
+
   useEffect(() => {
     let initMsg: string;
     const isElectrician309A = examType === "electrician-309a";
@@ -145,12 +178,15 @@ export default function AITutor({
       });
       const replyText = typeof result.reply === "string" ? result.reply : String(result.reply);
       setMessages((prev) => [...prev, { role: "assistant" as const, content: replyText }]);
-    } catch {
+    } catch (error) {
+      const message = error instanceof Error && error.message
+        ? error.message
+        : "Connection issue — please try again.";
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "__ERROR__",
+          content: `__ERROR__:${message}`,
         },
       ]);
     }
@@ -251,34 +287,24 @@ export default function AITutor({
           </div>
           <button
             aria-label="Close AI Tutor"
-            onClick={() => {
-              // Save session on close for any verified user (OAuth or email session)
-              if (hasSession && examType && messages.filter(m => m.role === "user").length > 0) {
-                saveSessionMutation.mutate({
-                  examType,
-                  messages: messages.filter(m => m.role === "user" || m.role === "assistant"),
-                  sessionStartMs,
-                  accessToken,
-                });
-              }
-              onClose();
-            }}
+            onClick={handleClose}
             style={{
               background: "rgba(255,255,255,0.15)",
-              border: "none",
+              border: "1px solid rgba(255,255,255,0.38)",
               color: "#fff",
-              width: 30,
+              minWidth: 78,
               height: 30,
-              borderRadius: "50%",
+              borderRadius: 8,
               cursor: "pointer",
-              fontSize: 18,
+              fontSize: 12,
+              fontWeight: 700,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontFamily: "inherit",
             }}
           >
-            ×
+            Close ×
           </button>
         </div>
         {patternMode && (
@@ -398,9 +424,9 @@ export default function AITutor({
                 lineHeight: 1.65,
               }}
             >
-              {m.content === "__ERROR__" ? (
+              {m.content.startsWith("__ERROR__:") ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <span style={{ color: "#DC2626", fontWeight: 600 }}>⚠️ Connection issue — please try again.</span>
+                  <span style={{ color: "#DC2626", fontWeight: 600 }}>⚠️ {m.content.slice("__ERROR__:".length)}</span>
                   {lastUserMsg && i === messages.length - 1 && (
                     <button
                       onClick={() => {

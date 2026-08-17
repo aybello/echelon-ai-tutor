@@ -92,7 +92,7 @@ export default function Electrician309APractice() {
       return moduleCode ? <Electrician309AStudySupplement moduleCode={moduleCode} /> : null;
     }}
     headerExtra={<><QuizModeBar examType="electrician-309a" currentMode={session.quizMode} onModeChange={session.handleModeChange} missedCount={session.missedCount} onSettingsOpen={() => session.setSettingsOpen(true)} />{session.settingsOpen && <QuizSettingsDrawer settings={session.quizSettings} onApply={session.handleSettingsApply} onClose={() => session.setSettingsOpen(false)} totalQuestions={bank.totalQuestions} trialUnlocked />}</>}
-    renderAITutor={() => <AITutor question={session.current as never} userAnswer={session.selected} history={session.history as never} patternMode={false} onClose={() => session.setTutorOpen(false)} examType="electrician-309a" />}
+    renderAITutor={(onDismiss) => <AITutor question={session.current as never} userAnswer={session.selected} history={session.history as never} patternMode={false} onClose={onDismiss} examType="electrician-309a" />}
     isFreePreview={false}
     freeLimit={session.sessionSize}
   />;

@@ -709,7 +709,13 @@ export const appRouter = router({
           resolvedEmail = tokenResult.hasAccess ? tokenResult.email : null;
         }
         const resolvedUserId = ctx.user?.id?.toString() ?? null;
-        await enforceAiTutorDailyQuota({ userId: resolvedUserId, email: resolvedEmail });
+        // The course tutor is intentionally available without a paid pass. A
+        // verified learner is still quota-tracked; an anonymous learner may use
+        // the tutor without being blocked before the internal model is reached.
+        await enforceAiTutorDailyQuota(
+          { userId: resolvedUserId, email: resolvedEmail },
+          { allowAnonymous: true },
+        );
 
         const db = await getDb();
         if (!db) {

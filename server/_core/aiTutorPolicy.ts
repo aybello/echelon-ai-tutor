@@ -91,8 +91,9 @@ ${input.studentMemory?.trim() || "No verified student memory is available yet."}
 export async function enforceAiTutorDailyQuota(identity: {
   userId: string | null;
   email: string | null;
-}): Promise<void> {
+}, options?: { allowAnonymous?: boolean }): Promise<void> {
   if (!identity.userId && !identity.email) {
+    if (options?.allowAnonymous) return;
     throw new TRPCError({
       code: "UNAUTHORIZED",
       message: "Sign in or restore your paid access to use the AI Tutor.",

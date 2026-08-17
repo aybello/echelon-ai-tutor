@@ -11,7 +11,7 @@
  *  - AI Tutor drawer + Report Error modal
  */
 
-import React, { useState, useEffect, useRef, type ReactNode } from "react";
+import React, { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
@@ -103,7 +103,7 @@ export interface QuizShellProps {
   onResetSession: () => void;
 
   // AI Tutor render prop (optional — caller renders its own AITutor)
-  renderAITutor?: () => ReactNode;
+  renderAITutor?: (onDismiss: () => void) => ReactNode;
   // Optional: mock exam link for session-complete screen
   mockExamHref?: string;
 
@@ -213,6 +213,19 @@ export default function QuizShell({
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+
+  const dismissTutor = useCallback(() => {
+    onTutorClose();
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("panel") === "tutor") {
+        url.searchParams.delete("panel");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch {
+      // Closing the panel must still work when browser history is unavailable.
+    }
+  }, [onTutorClose]);
 
   // Course-workspace deep links open the requested learning surface directly.
   // Notes often arrive after cached questions, so this deliberately retries when
@@ -1133,7 +1146,7 @@ export default function QuizShell({
       </div>
 
       {/* ── AI Tutor drawer ── */}
-      {tutorOpen && renderAITutor && renderAITutor()}
+      {tutorOpen && renderAITutor && renderAITutor(dismissTutor)}
 
       {/* ── Report Error modal ── */}
       {reportModalOpen && current && (
