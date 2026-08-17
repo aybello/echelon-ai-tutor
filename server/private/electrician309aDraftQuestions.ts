@@ -1,9 +1,9 @@
-import type { Electrician309AModuleCode } from "../../../shared/electrician309aBlueprint";
+import type { Electrician309AModuleCode } from "../../shared/electrician309aBlueprint";
 import {
   ELECTRICIAN_309A_BLUEPRINT_VERSION,
   ELECTRICIAN_309A_PROGRAM_KEY,
   type CertificationQuestionGovernance,
-} from "../../../shared/certificationPrograms";
+} from "../../shared/certificationPrograms";
 
 /**
  * First-pass diagnostic content for the Sept. 22 skilled-trades demo.

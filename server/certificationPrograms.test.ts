@@ -1,5 +1,7 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import electricianQuestions from "../client/src/lib/electrician309aDraftQuestions";
+import electricianQuestions from "./private/electrician309aDraftQuestions";
 import {
   ELECTRICIAN_309A_BLUEPRINT_VERSION,
   ELECTRICIAN_309A_PROGRAM,
@@ -169,5 +171,17 @@ describe("trade-agnostic certification program foundation", () => {
     );
 
     expect(visible.map((question) => question.id)).toEqual([current.id]);
+  });
+
+  it("keeps draft 309A questions out of the public browser bundle", () => {
+    const appSource = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
+    const demoSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309ADemo.tsx"), "utf8");
+    const reviewRouterSource = readFileSync(resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"), "utf8");
+
+    expect(appSource).toContain("Electrician309AReviewGate");
+    expect(demoSource).toContain("trpc.electricianReview.get309ADiagnostic.useQuery()");
+    expect(demoSource).not.toContain("electrician309aDraftQuestions");
+    expect(reviewRouterSource).toContain("adminProcedure.query");
+    expect(reviewRouterSource).toContain("selectCertificationQuestionsForInternalReview");
   });
 });

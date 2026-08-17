@@ -1,16 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import electricianQuestions from "@/lib/electrician309aDraftQuestions";
+import { trpc } from "@/lib/trpc";
 import {
   ELECTRICIAN_309A,
   ELECTRICIAN_309A_MODULES,
   type Electrician309AModuleCode,
 } from "../../../shared/electrician309aBlueprint";
-import {
-  ELECTRICIAN_309A_PROGRAM_KEY,
-  selectCertificationQuestionsForInternalReview,
-} from "../../../shared/certificationPrograms";
 
 const DEMO_TARGETS: Record<Electrician309AModuleCode, number> = {
   A: 1,
@@ -28,12 +24,19 @@ const MODULE_SHORT_NAMES: Record<Electrician309AModuleCode, string> = {
   E: "Signalling & Communications",
 };
 
-function buildDiagnostic() {
-  const reviewQuestions = selectCertificationQuestionsForInternalReview(
-    electricianQuestions,
-    ELECTRICIAN_309A_PROGRAM_KEY,
-  );
+type ReviewQuestion = {
+  module: Electrician309AModuleCode;
+  correctIndex: number;
+  task: string;
+  difficulty: string;
+  isCalc: boolean;
+  question: string;
+  options: readonly string[];
+  explanation: string;
+  blueprintObjective: string;
+};
 
+function buildDiagnostic(reviewQuestions: readonly ReviewQuestion[]) {
   return ELECTRICIAN_309A_MODULES.flatMap((module) =>
     reviewQuestions
       .filter((question) => question.module === module.code)
@@ -49,7 +52,11 @@ export default function Electrician309ADemo() {
     noindex: true,
   });
 
-  const diagnostic = useMemo(buildDiagnostic, []);
+  const reviewQuery = trpc.electricianReview.get309ADiagnostic.useQuery();
+  const diagnostic = useMemo(
+    () => buildDiagnostic((reviewQuery.data ?? []) as ReviewQuestion[]),
+    [reviewQuery.data],
+  );
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -104,6 +111,20 @@ export default function Electrician309ADemo() {
     setSelected(null);
     setConfirmed(false);
   };
+
+  if (reviewQuery.isLoading) {
+    return <main className="min-h-screen bg-slate-950" aria-label="Loading approved review content" />;
+  }
+
+  if (reviewQuery.error || diagnostic.length === 0) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-slate-950 px-6 text-center text-white">
+        <p className="max-w-md text-sm leading-6 text-slate-300">
+          The 309A draft diagnostic is unavailable until the internal review workspace authorizes it.
+        </p>
+      </main>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">

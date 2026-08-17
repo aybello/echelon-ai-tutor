@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import electricianQuestions from "../client/src/lib/electrician309aDraftQuestions";
+import electricianQuestions from "./private/electrician309aDraftQuestions";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import {
   ELECTRICIAN_309A_BLUEPRINT_VERSION,
