@@ -1627,6 +1627,11 @@
 - [ ] Review compatibility, tests, conflicts, and regressions before any merge decision
 - [ ] Integrate and validate only an approved update
 
+## PR #28 Review and Release
+- [ ] Inspect PR #28 scope, changed files, mergeability, and automated checks
+- [ ] Review PR #28 implementation and run required integration validation
+- [ ] Merge the approved PR #28, synchronize main, and verify the published release
+
 ## Page-Load Flash Repair
 - [x] Reproduce the visible pre-render flash on public course pages and identify its source
 - [x] Repair the initial loading and hydration sequence without masking legitimate errors
