@@ -3253,7 +3253,7 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A rooftop unit's duct heater is chattering because the airflow proving switch trips before elements reach temperature. An apprentice wants to raise the switch's pressure setpoint so heat stays on longer. Which principle should guide the supervisor's decision?",
+      "question": "A rooftop unit's duct heater is chattering because the airflow proving switch opens during operation. An apprentice suggests changing the pressure-switch setting without first determining why airflow is marginal. Which principle should guide the supervisor's decision?",
       "options": [
         "Electric heat must energize only once airflow is proven and must de-energize the moment airflow is lost, regardless of nuisance tripping.",
         "Raise the proving switch setpoint until chattering stops, then log the adjusted value as the new acceptable baseline.",
@@ -3261,7 +3261,7 @@
         "Bypass the proving switch alarm, restart the unit repeatedly, and investigate only if a breaker eventually opens."
       ],
       "correctIndex": 0,
-      "explanation": "The evidence—chattering tied to the proving switch, not the heater itself—shows the interlock is functioning as designed by protecting against low or lost airflow. The correct action preserves that safety logic: heat only runs when airflow is proven and drops out immediately if airflow fails, so elements never operate without cooling airflow. Raising the setpoint defeats the interlock's purpose by allowing heat to persist during marginal airflow, risking overheated elements or ductwork. Swapping the switch and setpoint together does not address why airflow is marginal and could mask a duct restriction or fan issue. Bypassing the alarm and cycling the unit ignores the root cause and exposes elements to repeated unprotected operation. The chattering symptom must be diagnosed against actual airflow conditions, not corrected by weakening the interlock's protective threshold.",
+      "explanation": "The proving switch protects the duct heater by allowing heat only when airflow is present and opening the circuit when airflow falls away. The supervisor must preserve that safety function and investigate the actual cause of marginal airflow, such as a fan, filter, belt, damper, or duct issue. Raising a pressure-switch setpoint requires more airflow before the switch closes, so it can make the heater drop out sooner rather than keep it energized longer; lowering a setting without diagnosis can instead weaken the intended protection. Replacing the switch without evidence can hide the airflow problem, and bypassing the interlock exposes the heater to operation without dependable cooling airflow.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3269,7 +3269,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply airflow interlock knowledge while the electrician installs electric heating systems.",
-      "contentHash": "4fb45e0bed9f0d1010c98df84dc64e2a5653bbf634a80ba557934a948ee4a0ee"
+      "contentHash": "6d15d96e872bcfc918d59a8ff12499dea3ebde375be443922a2a06f38d0a7f56"
     },
     {
       "bankItemNumber": 311,
@@ -3903,7 +3903,7 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During the annual 90-minute discharge test, a maintenance electrician notes heads near the emergency panel stay at rated brightness while three heads added last year on the same circuit dim noticeably after 60 minutes. Which action reflects a sound, evidence-based inspection decision?",
+      "question": "During the scheduled 30-minute discharge test, a maintenance electrician notes heads near the emergency panel stay at rated brightness while three heads added last year on the same circuit dim noticeably before the test is complete. Which action reflects a sound, evidence-based inspection decision?",
       "options": [
         "Check the downstream conductors only and postpone verifying total connected load and voltage drop until the dimming becomes constant.",
         "Compare the unit's rated output, combined wattage of original and added lamps, circuit length, and discharge results against the approved design.",
@@ -3919,7 +3919,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply inspection log knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "8cba67b3d26d469fe9920387e41dae36f502b0d5dba02978aa377dc448169e13"
+      "contentHash": "3f2b6c89931498b8b3b44be8d7095d0a81d1ebe2b0eb4081c0e53e3500799d3f"
     },
     {
       "bankItemNumber": 335,
