@@ -13,6 +13,7 @@ const questionChunkSize = 1;
 const concurrentChunkLimit = 1;
 const selectedCategories = new Set((process.env.REPAIR_CATEGORIES ?? "").split(",").map((value) => value.trim()).filter(Boolean));
 const skippedQuestionNumbers = new Set((process.env.REPAIR_SKIP_IDS ?? "").split(",").map((value) => Number(value.trim())).filter(Number.isInteger));
+const minimumQuestionNumber = Number(process.env.REPAIR_MIN_BANK_ITEM ?? 0);
 
 if (!apiKey) throw new Error(`${provider === "perplexity" ? "SONAR_API_KEY" : "ANTHROPIC_API_KEY"} is required for the independent-review repair pass.`);
 
@@ -24,7 +25,8 @@ const findings = report.chunks
   .flatMap((chunk) => chunk.items)
   .filter((item) => item.verdict === "needs_revision")
   .filter((item) => selectedCategories.size === 0 || item.issues.some((issue) => selectedCategories.has(issue.category)))
-  .filter((item) => !skippedQuestionNumbers.has(item.bankItemNumber));
+  .filter((item) => !skippedQuestionNumbers.has(item.bankItemNumber))
+  .filter((item) => item.bankItemNumber >= minimumQuestionNumber);
 const records = findings.map((finding) => {
   const found = [...documents.entries()]
     .map(([file, value]) => ({ file, ...value, question: value.document.questions.find((item) => item.bankItemNumber === finding.bankItemNumber) }))

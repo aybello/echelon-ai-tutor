@@ -1497,15 +1497,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A conveyor VFD begins tripping on overcurrent only when several machines start at once. After a utility service upgrade, the line voltage at the starter panel is higher than it was when the drive was installed. What should the electrician do before restarting the conveyor?",
+      "question": "A conveyor VFD starts tripping on overcurrent whenever several upstream motors start at the same time, and a recent utility service upgrade has increased the measured line voltage at the VFD’s supply terminals. Before placing the conveyor back into normal operation, what action should the electrician take?",
       "options": [
-        "Replace the drive with a larger enclosure and restart the conveyor to see whether the fault clears.",
-        "Increase the current limit so the drive can ride through the startup surge without further checks.",
-        "Ignore the higher voltage because the motor nameplate has not changed.",
-        "Confirm the drive’s input voltage and current ratings match the actual supply and connected load, correct any mismatch, and document the results before returning the conveyor to service."
+        "Install a physically larger VFD of the same nameplate ratings and run the conveyor to see if the tripping stops.",
+        "Raise the programmed current limit so the VFD will ride through the inrush that occurs when other equipment starts.",
+        "Disregard the change in measured line voltage because the conveyor motor nameplate data remains the same.",
+        "Confirm that the VFD’s input voltage and current ratings correspond to the actual supply conditions and connected load, correct any mismatch, and record the settings and test results before returning the conveyor to service."
       ],
       "correctIndex": 3,
-      "explanation": "A change in supply conditions can put a drive outside its intended input rating and contribute to nuisance trips or equipment stress. The proper action is to verify the drive’s input voltage and current ratings against the measured supply and load, correct any mismatch, and record the findings before resuming operation. Changing components or increasing limits without verification can mask the cause and leave the drive improperly applied.",
+      "explanation": "When supply characteristics change, the VFD must still operate within its rated input voltage and current range to prevent nuisance trips and overheating. The electrician should compare the measured line voltage and expected current draw with the VFD nameplate and settings, adjust the application or equipment if they do not match, and document the final configuration and test results. Simply installing a larger enclosure, increasing current limits, or ignoring the higher voltage can leave the drive misapplied and increase the risk of damage or recurrent faults.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1513,7 +1513,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply drive input rating knowledge while the electrician installs ac drives.",
-      "contentHash": "a358d50a6e3c4ff0bc1eab905b4bb34240962a17ff445619eb08ddab1e83c57d"
+      "contentHash": "6192df5c27ed0f27f3b7afd91a2d9ce7d8d18aadc5ae8e8b0c96189f42ff4d37"
     },
     {
       "bankItemNumber": 399,
@@ -1662,15 +1662,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A DC drive feeding a conveyor motor starts tripping on overcurrent partway through each afternoon shift. When the electrician reviews the drive’s stored fault history, the fault codes and timestamps do not line up with the baseline data recorded at start-up. What is the most appropriate next step?",
+      "question": "A DC drive feeding a conveyor motor begins tripping on overcurrent partway through each afternoon shift. When the electrician checks the drive’s fault history, the stored codes and timestamps do not match the commissioning records that were signed off at start-up. What should the electrician do next to keep the troubleshooting evidence reliable and the system safe?",
       "options": [
-        "Assume the mismatch is just a harmless firmware quirk and clear the fault history so the log starts fresh.",
-        "Disable the drive’s fault logging so the nuisance trips do not clutter the fault history while production continues.",
-        "Change multiple drive settings at once based only on past experience, then rely on whether trips stop as the measure of success.",
-        "Pause troubleshooting, verify the fault log against the start-up records, identify and correct the source of the discrepancy, record the actions taken, and then continue with further checks."
+        "Ignore the mismatch and clear the drive’s fault history so a new log can build from the next shift onward.",
+        "Leave the drive running and disable its fault logging so the trips stop filling up the event history during production.",
+        "Adjust several drive parameters at once based on previous jobs and see if the trips disappear under the current load conditions.",
+        "Stop making further changes, compare the fault log with the commissioning records, find and correct the cause of the mismatch, document the findings and actions, and only then continue with additional tests."
       ],
       "correctIndex": 3,
-      "explanation": "When the drive’s fault history does not match the original start-up records, the electrician needs to treat that discrepancy as a priority and confirm what has changed in the system or the documentation before proceeding. Comparing the current faults and timestamps with the commissioning data, checking against manufacturer information and actual operating conditions, and then documenting what was found and corrected maintains safety, traceability, and a clear basis for further troubleshooting. Simply clearing the log removes useful evidence. Turning off fault logging eliminates a key diagnostic tool. Changing multiple parameters at once and judging success only by whether trips stop makes it difficult to know which change affected the fault, and the problem may return under different loading or ambient conditions.",
+      "explanation": "The electrician needs a trustworthy fault history to diagnose repeated overcurrent trips on a DC conveyor drive. If the stored fault codes and timestamps do not line up with the commissioning records, the first priority is to confirm what has changed in the documentation, drive configuration, or time settings before altering parameters. By pausing further adjustments, checking the log against the start-up data, correcting any configuration or time-base errors, and recording the actions taken, the electrician preserves accurate evidence and maintains a clear basis for ongoing troubleshooting. Clearing the log without understanding the mismatch removes useful information. Disabling fault logging removes a key tool for tracking intermittent issues. Changing several parameters at once and judging success only by whether trips stop makes it difficult to identify which change had an effect and increases the chance that the problem will return under different operating conditions.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1678,7 +1678,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply fault history knowledge while the electrician installs dc drives.",
-      "contentHash": "a37957f35a9c4286bcb83f60b2ce836b6f220735f9577518c5c881004f86de7f"
+      "contentHash": "0c366dd17dca531c053579d768d759983a8503caca1a7c6cde1d4053d7508a73"
     },
     {
       "bankItemNumber": 405,
@@ -1723,15 +1723,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase capacitor-start motor has been rewound and reinstalled on a packaging conveyor. Using the diagram that shows synchronous speed set by supply frequency and the new winding’s pole count, with rotor speed lower by the amount of slip, the tachometer indicates rotor speed is well below the nameplate full-load speed, so slip is much higher than expected. To use the speed–slip relationship in the diagram to properly troubleshoot this condition before returning the conveyor to service, what should the technician do next?",
+      "question": "A single-phase capacitor-start motor has been rewound and reinstalled on a small packaging conveyor. The tachometer shows that the rotor speed is well below the nameplate full-load speed, indicating much higher slip than expected. The supplied diagram 309A-D13 shows how synchronous speed depends on supply frequency and the pole count of the stator, with the rotor speed lower by the amount of slip. To use this speed–slip relationship from the diagram to troubleshoot the problem before the conveyor is returned to operation, what should the technician do next?",
       "options": [
         "Replace the motor bearings immediately, assuming that higher than nameplate slip is normally caused by mechanical drag on the rotor shaft.",
-        "Assume the higher slip is a temporary characteristic of a newly rewound motor, allow it to break in, and put the conveyor back into production.",
+        "Assume the higher slip is a temporary characteristic of a newly rewound motor, let it run as is, and put the conveyor back into production.",
         "Replace the start capacitor right away on the assumption that slip above the nameplate value is always due to a weak starting capacitor.",
-        "Calculate synchronous speed from the actual supply frequency and the pole count of the rewound stator shown in the diagram, compare this with the measured rotor speed to determine slip, then investigate and document electrical or load-related causes before putting the motor back into service."
+        "Calculate synchronous speed from the actual supply frequency and the pole count of the rewound stator shown in the diagram, compare this with the measured rotor speed to determine slip, then investigate electrical or load-related causes based on the results before putting the motor back into service."
       ],
       "correctIndex": 3,
-      "explanation": "Synchronous speed for the motor is determined only by the supply frequency and the number of poles in the stator winding, as shown in the diagram, and the rotor speed will be lower by the amount of slip. The technician should first use the diagram’s relationship to calculate synchronous speed from the measured frequency and the pole count of the rewound stator, then compare this value with the tachometer reading to find the actual slip. If the calculated slip is significantly greater than the nameplate figure, the technician can then focus on real causes such as the stator being rewound with the wrong pole count, misconnected coil groups, low voltage at the motor terminals, a faulty capacitor or centrifugal switch affecting running torque, or a conveyor load that exceeds the motor’s rating. Immediately changing bearings without checking the electrical data risks leaving an electrical or loading problem untouched. Treating high slip as a normal break-in condition is incorrect, because a properly rewound motor should run at close to its rated speed under its rated load as soon as it is put back in service. Blaming only the start capacitor is also incorrect, since the start capacitor mainly affects starting performance and does not, by itself, set the steady-state running speed once the motor is up to speed. By calculating slip and relating it to the diagram before making changes, the technician builds a clear understanding of the fault and a useful record for future maintenance.",
+      "explanation": "For an induction motor, synchronous speed is set by the supply frequency and the number of poles in the stator winding, as illustrated in diagram 309A-D13, and the rotor speed will be lower by the amount of slip. The technician should first use the diagram’s relationship to calculate synchronous speed from the measured line frequency and the pole count of the rewound stator, then compare that value with the tachometer reading to find the actual slip. If the calculated slip is significantly greater than the nameplate figure, the high slip can then be traced to realistic causes such as an incorrect pole count in the rewind, misconnected coil groups reducing available torque, low voltage at the motor terminals, a faulty capacitor or centrifugal switch that limits running torque, or a conveyor load that exceeds the motor’s rating. Changing bearings without confirming the electrical data may leave the root cause untouched, and assuming high slip is a normal break-in condition ignores that a correctly rewound motor should run close to its rated speed under rated load from the start. Blaming only the start capacitor is also misleading, because the capacitor mainly affects starting performance and does not alone determine steady-state running speed once the motor is up to speed.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1739,7 +1739,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "9dca8c892f23653a1f4b43597ca259d380f008e63b85f269225a6eb384483d91"
+      "contentHash": "d5839668755d38aaa001e9afc67858cbcdd4d23b358a63a0f945a420fa8efec3"
     },
     {
       "bankItemNumber": 407,
@@ -1979,15 +1979,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a bench check of a DC traction motor before installation, the coupling hub key seats loosely and the measured mounting dimensions do not match the manufacturer’s nameplate data. A coworker says to assemble it anyway because the same motor model worked last month. What must the supervising electrician direct?",
+      "question": "While bench-checking a DC traction motor before installation, you find the coupling hub key fits with noticeable play in the keyway and the mounting dimensions differ from the manufacturer’s data sheet for that motor model. A coworker insists the motor should be assembled because an identical model ran fine on a previous overhaul. As the supervising electrician, what instruction is required in this situation?",
       "options": [
-        "Use the previous rebuild as proof that the coupling condition is acceptable and continue assembly.",
-        "Finish the reassembly and use the first start-up test as the check for coupling condition.",
-        "Allow the loose key fit because the motor frame matches the earlier unit by appearance.",
-        "Stop the job, verify coupling fit and alignment against approved drawings and manufacturer data, correct the mismatch, and document the results before proceeding."
+        "Proceed with assembly based on the successful previous overhaul and treat the earlier job as evidence that the coupling setup is acceptable.",
+        "Complete the mechanical assembly and use the initial energization of the motor as the primary test of the coupling fit and alignment.",
+        "Accept the loose key fit because the motor frame and nameplate appear similar to the unit that ran correctly last month.",
+        "Stop assembly, re-measure the coupling hub, key fit, and mounting dimensions, verify them against the manufacturer’s specifications, correct any discrepancies, and record the checks before continuing installation."
       ],
       "correctIndex": 3,
-      "explanation": "A loose key fit and a mismatch in mounting dimensions are clear signs that coupling condition cannot be assumed correct. The supervising electrician must stop work, measure and compare the assembly against approved drawings and manufacturer information, correct the discrepancy, and record the outcome before reassembly continues. Relying on memory, appearance, or a first energization test does not confirm that the coupling is properly fitted and aligned.",
+      "explanation": "Loose key fit and mounting dimensions that do not match the manufacturer’s specifications indicate the coupling may not transmit torque correctly or may run out of alignment, leading to vibration, key or shaft damage, and premature bearing failure. The supervising electrician must treat these as defects: pause the work, re-measure the coupling hub, key, and mounting interfaces, compare them to the manufacturer’s data, and correct any mismatches before the motor is assembled. Documenting these checks provides traceable proof that the coupling condition has been verified. Depending on appearance, past jobs, or start-up performance does not ensure the coupling is mechanically sound or within tolerance before the motor is put into service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1995,7 +1995,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.05",
       "blueprintObjective": "Apply coupling condition knowledge while the electrician installs dc motors.",
-      "contentHash": "dfb5b68b54976257ae91a5433c0d6620be1b81ac9357e60e44d5d109a0f1d954"
+      "contentHash": "c0043ba933ac7bcca492fd785f1df02e5a29123ccb1a2cbd0470bf5cebe2053d"
     },
     {
       "bankItemNumber": 416,
@@ -2148,7 +2148,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A millwright is checking slip on a 4‑pole, single‑phase capacitor‑start motor driving a small conveyor. The supply is 60 Hz as shown on the nameplate. Using the synchronous speed formula before comparing to the measured shaft speed, what synchronous reference speed should be used in the slip calculation?",
+      "question": "An industrial electrician is verifying slip on a 4‑pole, single‑phase capacitor‑start induction motor that drives a packaging conveyor. The nameplate shows a 60 Hz supply. Before comparing the measured shaft speed to the theoretical value, what synchronous speed should be used as the reference in the slip calculation for this motor?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2156,7 +2156,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "For an induction motor, synchronous speed is found from Ns = 120f ÷ P. With a 60 Hz supply and 4 poles, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct reference speed for slip calculations. The 1500 rpm option incorrectly uses 50 Hz instead of the actual 60 Hz supply. The 2100 rpm and 2400 rpm options do not result from the synchronous speed formula for a 4‑pole, 60 Hz motor and would not be used when checking slip on this conveyor drive.",
+      "explanation": "Synchronous speed for an AC induction motor is found from Ns = 120f ÷ P. With a 60 Hz supply and 4 poles, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct reference speed for calculating slip on this conveyor motor. The 1500 rpm value comes from using 50 Hz instead of the actual 60 Hz supply. The 2100 rpm and 2400 rpm options do not match the synchronous speed formula for a 4‑pole, 60 Hz induction motor and therefore are not valid reference speeds for slip checks.",
       "steps": [
         {
           "label": "Formula",
@@ -2177,7 +2177,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "e8ea9e79b1ec3b9f3ed212f35cba3a55f0bc3b52e710a01b2fbd0abc52e51f59"
+      "contentHash": "2867f2f9323914e4aab1a3241775670e60bb76b36592d6431b06a62489b12210"
     },
     {
       "bankItemNumber": 422,
@@ -2265,7 +2265,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A single-phase capacitor-start motor driving a packaging conveyor has a nameplate speed of 1745 rpm and is marked 4-pole, 60 Hz. To verify that the motor slip is within a normal range before choosing a replacement with similar characteristics, what synchronous speed must the electrician calculate for a 4-pole motor on a 60 Hz supply?",
+      "question": "A single-phase capacitor-start induction motor drives a small packaging conveyor and has a nameplate speed of 1745 rpm. The nameplate also shows 4 poles and 60 Hz. Before selecting a replacement with similar slip characteristics, the electrician calculates the theoretical synchronous speed for a 4-pole motor on a 60 Hz supply. What synchronous speed should be used as the reference for this comparison?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2273,7 +2273,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Synchronous speed for an AC motor depends only on supply frequency and number of poles, using Ns = 120f ÷ P. For a 60 Hz, 4-pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, which is the correct baseline speed for comparing slip to the 1745 rpm nameplate value. The 1500 rpm option is the synchronous speed for a 4-pole motor on a 50 Hz system, not 60 Hz, and would falsely suggest excessive slip in this conveyor application. The 2100 rpm and 2400 rpm options do not match standard frequency–pole combinations used in industrial motors. Using 1800 rpm allows the electrician to confirm that the observed slip from synchronous speed to 1745 rpm is typical for a single-phase induction motor under load.",
+      "explanation": "Synchronous speed for an AC induction motor is found using Ns = 120f ÷ P, where f is the supply frequency in hertz and P is the number of poles. For a 60 Hz, 4-pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct reference speed to compare with the 1745 rpm nameplate speed. This shows a slip of about 55 rpm, which is typical for a loaded single-phase induction motor. The 1500 rpm option is the synchronous speed for a 4-pole motor on a 50 Hz supply, not 60 Hz. The 2100 rpm and 2400 rpm values do not correspond to common frequency–pole combinations used for standard industrial motors and therefore are not suitable reference speeds for this application.",
       "steps": [
         {
           "label": "Formula",
@@ -2290,7 +2290,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "fbb1464288fa0f6394cb77ecb568b001995ee1946a4f555f4c04da11a5f3e641"
+      "contentHash": "b88bfda0448f6b82502d9b1e19494eee4dace87ff82b36250b6428fa0ac7ad8c"
     },
     {
       "bankItemNumber": 426,
@@ -2378,7 +2378,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "An industrial electrician is replacing a single-phase motor driving a belt‑coupled ventilation fan. The new motor nameplate shows 4 poles and a 60 Hz supply rating. Before she selects the new belt and pulley sizes to match the original fan speed, what synchronous speed must she use in her calculations?",
+      "question": "A maintenance electrician is setting up a new single‑phase, 4‑pole, 60 Hz motor to drive an existing belt‑coupled exhaust fan. She wants to calculate the correct pulley ratio to keep the fan speed the same as before. What synchronous motor speed should she use in her calculations?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2386,7 +2386,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Synchronous speed for an AC motor is determined only by the supply frequency and the number of poles and is found using Ns = 120f ÷ P. With a 60 Hz supply and a 4‑pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct speed to use when sizing the fan pulleys. The 1500 rpm option would be correct for a 4‑pole motor on a 50 Hz system, but this motor is clearly rated 60 Hz. The 2100 rpm and 2400 rpm values do not follow from the synchronous speed formula for the given pole count and frequency and would lead to an incorrect pulley ratio and fan speed. Understanding how synchronous speed is set by frequency and pole count helps ensure driven equipment runs at the intended speed without overloading or underperforming.",
+      "explanation": "For an AC motor, the synchronous speed depends only on the supply frequency and the number of poles, given by Ns = 120f ÷ P. With a 60 Hz supply and a 4‑pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct synchronous speed to use for pulley calculations. The 1500 rpm value would apply to a 4‑pole motor on a 50 Hz system, not a 60 Hz system. The 2100 rpm and 2400 rpm values do not match the synchronous speed formula for a 4‑pole motor at 60 Hz and would result in an incorrect pulley selection and fan speed.",
       "steps": [
         {
           "label": "Formula",
@@ -2403,7 +2403,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "12fd774dc02b0116f8d0866932012a79f60eee3883f621eec8510d20533ae377"
+      "contentHash": "ae04fb6fbb7e131db1836644f65197ecdd7a7d418b36a82ad62e04b403c573cb"
     },
     {
       "bankItemNumber": 430,
@@ -2491,7 +2491,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A single-phase, capacitor-start motor driving a sump pump has a nameplate marked 4 poles and is supplied from a 60 Hz system. You want to verify the pump’s rated input speed by calculating the motor’s synchronous speed from these nameplate values. What synchronous speed do you obtain?",
+      "question": "A 4‑pole, single‑phase capacitor‑start motor is used to drive a small conveyor and is supplied from a 60 Hz system. You need to confirm from the nameplate data what synchronous speed this motor is designed for before selecting a replacement unit. What synchronous speed do you calculate?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2499,7 +2499,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Synchronous speed for an AC motor depends only on the supply frequency and the number of poles, using Ns = 120f/P. With a 60 Hz supply and a 4‑pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so the motor’s synchronous speed is 1800 rpm. The 1500 rpm option comes from using 50 Hz instead of the given 60 Hz. The 1200 rpm choice is the speed for a 6‑pole motor at 60 Hz, not the 4‑pole motor in this scenario. The 2400 rpm answer would require fewer poles or a higher frequency than stated. Being able to calculate synchronous speed from nameplate data helps you confirm that a replacement motor will drive the pump at the correct speed and maintain proper flow and performance.",
+      "explanation": "Synchronous speed for an AC motor is determined by the supply frequency and the number of poles using Ns = 120f/P. With a 60 Hz supply and a 4‑pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so the synchronous speed is 1800 rpm. The 1500 rpm option is the value for a 4‑pole motor on a 50 Hz supply, not the 60 Hz system in this question. The 1200 rpm option corresponds to a 6‑pole motor at 60 Hz, and the 2400 rpm option would require either fewer poles or a higher frequency than the conditions given. Knowing how to calculate synchronous speed from nameplate data helps you match replacement motors to the driven equipment so that speed and throughput remain correct.",
       "steps": [
         {
           "label": "Formula",
@@ -2516,7 +2516,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "36d4ea786b3b3bcd579b26608a6c70a4b20fceea9fab86019192f38e5e45fe82"
+      "contentHash": "de0ba4ab6fc4b6ec326def69f0959664cf90a89de7090f9529a39349c3e20954"
     },
     {
       "bankItemNumber": 434,
@@ -2604,7 +2604,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "Refer to diagram 309A-D16. The level transmitter is part of a closed 4–20 mA control loop from the sensor to the controller and back to the tank fill valve. While bench-testing this loop before tying it into the skid, the commissioning electrician simulates a process condition at exactly 40% of the calibrated level range. What output current must the transmitter send so that the controller correctly interprets 40% on its display?",
+      "question": "On diagram 309A-D16, the level transmitter sends a 4–20 mA signal to the controller, which then positions the tank fill valve based on the indicated level. During bench testing, the electrician uses the transmitter’s simulator to represent the tank at exactly 40% of the calibrated level range as shown on the controller input scale in the diagram. What output current must the transmitter provide so that the controller display correctly shows 40% level and drives the valve accordingly in this loop?",
       "options": [
         "10.4 mA",
         "8.4 mA",
@@ -2612,7 +2612,7 @@
         "14.4 mA"
       ],
       "correctIndex": 0,
-      "explanation": "In a standard 4–20 mA loop, 4 mA represents 0% and 20 mA represents 100% of the calibrated process range. The usable span is therefore 16 mA (20 mA − 4 mA). At 40% of span, the transmitter must output 40% of 16 mA, which is 0.40 × 16 mA = 6.4 mA above the live zero. Adding this to the 4 mA live zero gives 4 mA + 6.4 mA = 10.4 mA at 40% of process range. The 8.4 mA option comes from incorrectly treating 0–20 mA as the span and ignoring the 4 mA live zero. The 12.4 mA and 14.4 mA options result from applying the 40% to the wrong reference (such as starting at 8 mA or 10 mA) instead of the 4–20 mA span. Understanding how the transmitter’s live zero and span are mapped to the controller input ensures that the level indication and valve control in the closed loop follow the actual process level accurately during commissioning.",
+      "explanation": "In a standard 4–20 mA analog loop, 4 mA represents 0% and 20 mA represents 100% of the calibrated process range, so the usable span is 16 mA. At 40% of span, the transmitter must output 40% of 16 mA: 0.40 × 16 mA = 6.4 mA above the 4 mA live zero. Adding this to the live zero gives 4 mA + 6.4 mA = 10.4 mA at 40% of process range. The 8.4 mA option comes from incorrectly treating 0–20 mA as the span and ignoring the 4 mA live zero. The 12.4 mA and 14.4 mA options result from applying the 40% to a wrong starting point instead of using the actual 4–20 mA span. Technicians need to understand how the transmitter’s live zero and span are mapped to the controller input so the indicated level and the fill valve position in the control loop match the actual tank condition during commissioning and operation.",
       "steps": [
         {
           "label": "Determine live span",
@@ -2629,7 +2629,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician installs automated control systems.",
-      "contentHash": "653c0a297cad873c977bc53387e51390eeca09de9b8d9db516d628e304850a34"
+      "contentHash": "23866d61602027ae3197b9acc4ce5f4a760a3cee0447fe3a3c294f7f48b7b86a"
     },
     {
       "bankItemNumber": 438,
@@ -2665,15 +2665,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On automated batching skid B-14, an operator flags that a recent recipe changeover altered valve sequencing. A colleague suggests reusing interlock notes from a similar skid commissioned last year without checking current documentation. What should the lead electrician direct?",
+      "question": "On batching skid B-14, the PLC program was modified for a new recipe and the operator reports that the wash and fill valves now sequence differently than before. A coworker proposes copying the old interlock logic used on another skid without reviewing the current control narrative or P&ID for B-14. What should the lead electrician instruct before any live testing of the skid?",
       "options": [
-        "Rely on the colleague's recollection of the prior skid as the sole basis for accepting the interlock logic.",
-        "Continue installation and treat the final energization test as the first check of the interlock logic.",
-        "Approve the interlock logic because the skid resembles equipment that functioned correctly on a past job.",
-        "Halt work, verify current interlock logic against the approved control narrative, resolve any mismatch, log the outcome, then proceed."
+        "Accept the coworker’s recollection of the previous skid and load the same interlock logic into B-14 without further checks.",
+        "Complete all field terminations and use the first powered start-up of the skid to see whether the interlocks behave correctly.",
+        "Reuse the past skid’s PLC interlock routine because the piping layout and valve types appear similar to B-14.",
+        "Stop and compare the existing interlock logic with the current control narrative and P&ID for B-14, correct any mismatch in the PLC program, record the changes, and only then proceed to functional testing."
       ],
       "correctIndex": 3,
-      "explanation": "The operator's report of a recipe changeover is direct evidence that valve sequencing may differ from what a colleague remembers from another skid, so undocumented reuse risks accepting logic that no longer matches actual process requirements. Pausing to verify against the approved control narrative, program version, and I/O configuration, resolving any discrepancy, and documenting the result ensures the interlock will produce correct fail-safe behaviour before energization. Relying on memory or visual similarity is tempting because it saves time, but neither source confirms current sequencing, signal scaling, or fail-safe states for this specific changeover. Waiting until final energization to discover a mismatch risks unexpected valve operation or loss of safe fallback during live testing. Controlled verification against current documentation, followed by clear records, allows independent review and protects both personnel and process integrity.",
+      "explanation": "Recipe changes often alter valve open/close conditions, permissives, and fail-safe states, so interlock logic that worked on another skid may not match the current process requirements. The lead electrician needs to verify the existing interlocks against the latest control narrative and P&ID for B-14, confirm that each valve and sensor is tied into the correct logic, and update the PLC program where needed before the system is energized. Documenting any changes provides a clear record for maintenance and future troubleshooting. Using memory, visual similarity, or first energization as the main check can lead to incorrect valve sequencing, unexpected flow paths, or loss of fail-safe operation during live testing, increasing risk to both personnel and equipment.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2681,7 +2681,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply interlock logic knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "6afbc73a4579e9a2266d1a3798f0ac55ca26e263974eb356634b6c9c63aa04b4"
+      "contentHash": "94b929ca36d370522cd3f770228bd0937e0e72af259f1b4b384bac985f520a72"
     },
     {
       "bankItemNumber": 440,
@@ -2717,7 +2717,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A technician calibrating a tank level transmitter finds the panel label reads differently than the as-built schematic for loop TX-12. The transmitter outputs 4–20 mA representing 0–100% of tank level. What current should the loop read at 40% level so the technician can confirm proper scaling before updating the documentation?",
+      "question": "A technician is checking the analog scaling on tank level loop TX-12. The level transmitter is ranged so that 4–20 mA corresponds to 0–100% of tank level. During a calibration at a measured tank level of 40%, what loop current should the technician expect to read to confirm the transmitter is correctly scaled?",
       "options": [
         "10.4 mA",
         "8.4 mA",
@@ -2725,7 +2725,7 @@
         "14.4 mA"
       ],
       "correctIndex": 0,
-      "explanation": "The transmitter has a live zero of 4 mA and a usable span of 16 mA (20 mA minus 4 mA). To find the current at 40%, multiply the span by the percentage (16 × 0.40 = 6.4 mA) and add the live zero (6.4 + 4 = 10.4 mA). The tempting distractor of 8.4 mA comes from applying 40% to the full 20 mA range without accounting for the 4 mA offset, which ignores that 0% is not 0 mA. The 12.4 mA and 14.4 mA options correspond to percentages closer to 52% and 65%, showing miscalculated spans. Correctly scaling analog signals ensures the technician can verify the loop against the as-built record rather than trusting a mismatched field label, supporting accurate documentation and safe automated control system maintenance.",
+      "explanation": "For a 4–20 mA signal representing 0–100%, the usable span is 16 mA (20 − 4). At 40% level, the span contribution is 16 × 0.40 = 6.4 mA. Adding the 4 mA live zero gives 6.4 + 4 = 10.4 mA, so the loop should read 10.4 mA at 40%. The 8.4 mA option incorrectly treats 40% of the full 20 mA instead of the 16 mA span and ignores the 4 mA offset. The 12.4 mA and 14.4 mA values correspond to higher levels and reflect misapplied percentages to the span. Understanding live zero and span prevents misinterpreting loop readings and helps technicians confirm that transmitters and indicators are scaled consistently in the process control system.",
       "steps": [
         {
           "label": "Span contribution",
@@ -2742,7 +2742,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "d14e682e4ba5a8e629321c68c9ecab7b860a07da9b3cfa122a42758c0a346f3b"
+      "contentHash": "a4eda7d0dce71ee88ee939c44e8225587121eefec60af3c3155c1348a79597a1"
     },
     {
       "bankItemNumber": 442,
@@ -2830,7 +2830,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While commissioning a new water pumping station, a technician confirms a level transmitter's 4–20 mA output correctly represents 0–100% tank level before enabling automatic control. What current corresponds to a 40% tank level reading?",
+      "question": "During start-up of a chemical storage tank, you are checking that the PLC analog input is correctly scaled to a level transmitter ranged 0–100% with a 4–20 mA signal. If the HMI should display 40% level, what current should you read on the loop with a multimeter?",
       "options": [
         "10.4 mA",
         "8.4 mA",
@@ -2838,7 +2838,7 @@
         "14.4 mA"
       ],
       "correctIndex": 0,
-      "explanation": "The 4–20 mA signal has a live zero of 4 mA and a usable span of 16 mA. Forty percent of that span (16 mA × 0.4 = 6.4 mA) is added to the 4 mA live zero, giving 10.4 mA. This matches the transmitter's expected scaling and confirms the loop is calibrated correctly before automatic control is enabled. The tempting 8.4 mA distractor comes from applying the percentage to the full 20 mA range instead of the 16 mA span, ignoring the live zero offset entirely. The 12.4 mA and 14.4 mA options result from using an incorrect percentage basis or reversing the scaling direction, producing values that would falsely indicate a higher tank level than actually exists, risking incorrect pump control decisions.",
+      "explanation": "A 4–20 mA loop has a live zero of 4 mA and a span of 16 mA. The span is the part of the signal that represents 0–100% of the process range. For 40% level, multiply the 16 mA span by 0.40: 16 mA × 0.40 = 6.4 mA. Add this to the 4 mA live zero: 4 mA + 6.4 mA = 10.4 mA, so 40% level corresponds to 10.4 mA. The 8.4 mA option incorrectly applies 40% to the full 0–20 mA instead of the 16 mA span, ignoring the live zero. The 12.4 mA and 14.4 mA values come from using the wrong percentage or treating the signal as if the live zero were at 0 mA, which would misrepresent the actual tank level and lead to improper control if used for pump operation.",
       "steps": [
         {
           "label": "Span contribution",
@@ -2855,7 +2855,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "a17273f7b41144d1e0323bf624abfa5fd05165193a0123cd718b18172297221c"
+      "contentHash": "23cbfe581cc6e19c81d5dbad7d621740aae3c83043d89fd8ea484c7a2e3e6b37"
     },
     {
       "bankItemNumber": 446,
@@ -2865,15 +2865,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On packaging line D25-13, an electrician confirms the photo-eye's target area is clear and the receiver's beam-strength LED shows a made beam, yet the PLC status monitor shows input I:1/4 at logic 1. The approved control narrative states this input must be 0 whenever the beam is unbroken. The sensor has no fault indication, and its output-mode selector is found in the light-operate (light-on) position. What is the correct action before restarting the line?",
+      "question": "On packaging line D25-13, a diffuse photo-eye is guarding a carton transfer point. The electrician verifies that a test flap is removed from the sensing area, the receiver’s LED indicates a solid beam, and a meter at the PLC input terminal for I:1/4 shows the sensor’s output is high. The approved control narrative specifies that I:1/4 must be 0 whenever the beam is unbroken so that a blocked beam represents a product present. The sensor has no fault indication, and its output selector is currently set to light-operate. What should the electrician do to bring the input state into line with the narrative before restarting the line?",
       "options": [
-        "Rewire the sensor output through the normally closed contact of an interposing relay so the input reads 0 with the beam made, then restart the line.",
-        "Replace the photo-eye with an identical spare unit, since a correctly functioning sensor cannot produce a state opposite to the control narrative.",
-        "Invert the status bit for I:1/4 in the program logic, leave the sensor's output mode as found, and restart the line at production speed.",
-        "Confirm the signal at the input module terminal, set the sensor's output mode to dark-operate so the made beam turns the input off, retest against the narrative, and record the change."
+        "Install an interposing relay and use its normally closed contact to drive I:1/4 low when the beam is made, then restart the line once the relay wiring is complete.",
+        "Swap the photo-eye for an identical spare and assume the new unit will correct the mismatch between the sensor output and the control narrative.",
+        "Change the PLC program to invert the I:1/4 bit while leaving the sensor set to light-operate, then resume full-speed production.",
+        "Verify the signal at I:1/4 in the input module, switch the sensor to dark-operate so the made beam drives the input low, test the operation against the narrative, and update the device setting in the maintenance record."
       ],
       "correctIndex": 3,
-      "explanation": "With the beam confirmed made, a light-operate sensor energizes its output and drives the input to 1, which is exactly the opposite of what the narrative requires. Measuring at the input terminal separates a genuine field signal from a monitoring or addressing issue, and moving the selector to dark-operate makes the input turn off with the beam unbroken and on when the beam is blocked, matching the documented logic. Adding an interposing relay to invert the signal introduces an extra component and coil failure point when the sensor itself has a mode selector for this purpose. The sensor is behaving normally for its selected mode, so a spare unit set the same way would read 1 as well. Inverting the bit in the program leaves the field device wired opposite to the drawings, so the next person troubleshooting the line sees hardware and software that disagree.",
+      "explanation": "When the beam is made and the selector is in light-operate, the photo-eye’s output turns on, so the PLC input reads 1 with an unbroken beam, which is the opposite of what the control narrative specifies. Confirming the signal at the input terminal ensures the PLC status matches the actual voltage from the sensor, ruling out a monitoring or addressing issue. Switching the output mode to dark-operate makes the output turn off, and the PLC input read 0, whenever the beam is unbroken and turn on when the beam is blocked, matching the intended product-detection logic. Using an interposing relay solely to invert the signal adds unnecessary components and failure points when the sensor already provides a mode setting to achieve the required behaviour. Replacing the photo-eye with an identical unit set to light-operate would produce the same high output with a made beam and would not resolve the discrepancy. Inverting the bit in software while leaving the field device in light-operate causes the program and device wiring to represent opposite conventions, complicating future troubleshooting for maintenance personnel.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2881,7 +2881,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply digital input state knowledge while the electrician installs automated control systems.",
-      "contentHash": "5fb75e2a13f487377af41898b4fdfaaafead46813a6bb7d00048470cd1409d76"
+      "contentHash": "e283f8cac4051fea07981e612ad655e6e155651e07f3aa35988730b8c05bf279"
     },
     {
       "bankItemNumber": 447,
@@ -2891,15 +2891,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning a chiller plant control panel, a technician finds the 4-20 mA pressure transmitter scaling on panel CH-07 does not match the approved control narrative. A colleague suggests accepting it because a similar transmitter worked on another job. What must the supervising electrician require?",
+      "question": "While commissioning a chiller plant control panel, you see that the 4–20 mA pressure transmitter scaling in PLC tag CH-07 does not match the range and span shown on the approved control narrative for that loop. A coworker says you can leave it as-is because they used the same transmitter range on a previous chiller job and it worked fine. What must the supervising electrician instruct the crew to do in this situation?",
       "options": [
-        "Rely on the colleague's recollection as the only record supporting the analog scaling value.",
-        "Continue commissioning and treat final start-up as the first confirmation of correct scaling.",
-        "Stop work, verify scaling against the approved control narrative, resolve the mismatch, and document findings before proceeding.",
-        "Accept the scaling because similar transmitters functioned correctly on an earlier project."
+        "Use the coworker’s past experience as the only basis for keeping the existing analog scaling on CH-07.",
+        "Proceed with the commissioning sequence and wait until live start-up to see whether the pressure readings look reasonable.",
+        "Stop commissioning on that loop, verify the scaling against the approved control narrative, correct any mismatch, and record the adjustment in the job documentation before continuing.",
+        "Keep the present scaling because transmitters with the same model number are normally set up the same way from project to project."
       ],
       "correctIndex": 2,
-      "explanation": "Analog scaling errors on a pressure transmitter can cause false readings, unstable control loops, or loss of a safe fallback state in the chiller plant. The correct response is to halt work, compare the observed scaling against the approved control narrative, identify the source of the mismatch, correct it, and record the resolution for review. Relying on memory provides no verifiable reference and risks repeating an undetected error. Deferring verification to final start-up allows an unscaled or mis-scaled signal to influence live equipment operation before anyone confirms accuracy. Accepting the value because similar equipment worked elsewhere ignores that transmitter ranges, spans, and application requirements can differ between installations even when hardware looks alike. Only documented verification against approved engineering information ensures the control system responds predictably and safely once energized.",
+      "explanation": "For 4–20 mA devices such as chiller plant pressure transmitters, the scaling in the PLC or controller must match the engineered range and span so the control logic sees the correct process value. If the observed scaling on CH-07 differs from the approved control narrative, the supervising electrician must require that commissioning pause on that loop, the scaling be checked against the narrative, any discrepancy be corrected, and the change be documented in the project records. This prevents the control system from acting on false pressure readings, which can lead to improper staging of compressors, nuisance trips, or unsafe operating conditions. Relying only on a coworker’s memory or on what worked on a previous job ignores that different projects can use different pressure ranges, setpoints, and safety limits, even with similar hardware. Allowing the mismatch to remain until live start-up means the system could operate on mis-scaled data before anyone confirms accuracy. Verifying and documenting against approved engineering information ensures the transmitter signal is interpreted correctly and that future technicians can see how and why the scaling was set.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2907,7 +2907,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply analog scaling knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "c49a444806d646736739036996953b85f09dfdaeef9624f7df410ba416cde484"
+      "contentHash": "a8de12c3fba1726eaf1a53f1bc74a41f432d6fe6f60f58fe993a9a2d77d260b5"
     },
     {
       "bankItemNumber": 448,
