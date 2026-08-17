@@ -107,10 +107,13 @@ describe("tutor.chat", () => {
       "class1-water",
       { accessToken: undefined },
     );
-    expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith({
-      userId: "7",
-      email: "operator@example.com",
-    });
+    expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith(
+      {
+        userId: "7",
+        email: "operator@example.com",
+      },
+      { allowAnonymous: true },
+    );
     const llmInput = mocks.invokeLLM.mock.calls[0][0];
     expect(llmInput.messages[0].role).toBe("system");
     expect(llmInput.messages[0].content).toContain("NON-NEGOTIABLE RULES");
