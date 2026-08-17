@@ -60,6 +60,8 @@ jobs:
             -e "DROP TABLE product_analytics_events, learner_onboarding, diagnostic_sessions; ALTER TABLE exam_outcomes DROP COLUMN readinessScoreAtOutcome, DROP COLUMN readinessModelVersion;"
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
             -e "ALTER TABLE questions DROP INDEX question_review_status_idx, DROP INDEX question_bank_review_status_idx, DROP COLUMN sourceTitle, DROP COLUMN sourceReference, DROP COLUMN sourceUrl, DROP COLUMN blueprintObjective, DROP COLUMN reviewStatus, DROP COLUMN reviewedBy, DROP COLUMN reviewedAt; DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders;"
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
+            -e "DROP TABLE certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions;"
 
           sed '/^--> statement-breakpoint$/d' drizzle/0051_product_observability.sql \
             | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
