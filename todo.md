@@ -1607,8 +1607,8 @@
 - [x] Audit the shared course AI Tutor open state, route state, and existing return controls
 - [x] Add an accessible close action that returns a learner to their existing course workspace without losing study context
 - [x] Diagnose and repair the live AI Tutor request, response, error, and retry flow for 309A learners
-- [ ] Validate and publish the close behaviour on the 309A course workspace
-- [ ] Force-refresh the current production revision when the public client bundle remains stale after the initial checkpoint
+- [x] Validate and publish the close behaviour on the 309A course workspace
+- [x] Force-refresh the current production revision when the public client bundle remains stale after the initial checkpoint
 
 ## Latest Repository Update Review — August 17 (Follow-up)
 - [x] Fetch and identify the newly available updates

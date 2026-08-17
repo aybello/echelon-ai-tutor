@@ -19,3 +19,9 @@ Even after the browser tool reported a hydrated workspace with the close control
 The first cache-busted production check loaded the tutor panel but still displayed the prior icon-only close control. The newly published client bundle requires a brief propagation window before final public verification. No production learner response test was accepted from this first stale-bundle view.
 
 The second cache-busted production check still served the icon-only close control after the normal propagation window. The current main revision must be republished through a fresh checkpoint before the public learner-flow verification can be completed.
+
+The forced production publication succeeded. The public 309A course now serves the explicit `Close ×` tutor control. The final response test will verify that anonymous free-course tutor prompts now reach the internal model rather than returning the prior unauthorized error.
+
+The final public response test passed. An anonymous learner used the `Walk me through step by step` prompt and received a question-specific internal-model explanation instead of the prior unauthorized or generic connection error. The remaining dismissal validation will use the keyboard-accessible Escape path, which is not affected by the browser tool’s button-index mismatch.
+
+The public dismissal verification passed. Pressing Escape closed the tutor, removed `panel=tutor` from the URL, and retained the learner on the same 309A practice question. This confirms the route-preserving close behaviour in the deployed workspace.
