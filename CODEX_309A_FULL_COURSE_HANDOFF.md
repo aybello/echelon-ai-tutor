@@ -75,7 +75,9 @@ Commit the architecture and validation suite first. Then ship A, B, C, D, and E 
 
 ## Acceptance gate
 
-The handoff is complete only when `pnpm check`, `pnpm test`, `pnpm build`, the existing migration checks, and the new 309A bank validator all pass. Confirm the public beta has no paywall, no Teams assignment, no commerce product, clear beta language, reviewer-separation evidence, an emergency unpublish action, and no public claims that the content is official or guaranteed to produce a pass.
+The handoff is complete only when `pnpm check`, `pnpm test`, `pnpm build`, the existing migration checks, and the new 309A bank validator all pass. Confirm the public beta has no paywall, no Teams assignment, no commerce product, clear beta language, documented internal reviewer-separation evidence, an emergency unpublish action, and no public claims that the content is official or guaranteed to produce a pass.
+
+The internal review workflow is defined in `content/309a/REVIEW_POLICY.md`. Review is performed by Ay, Codex, Claude, and Manus using the official source manifest, independent calculation checks, automated validation, and a second Echelon reviewer for technical and release decisions. An outside subject-matter expert is not a release requirement.
 
 ## References
 

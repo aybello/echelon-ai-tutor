@@ -9,11 +9,16 @@ import {
   getCertificationProgram,
   isCertificationQuestionPubliclyDeliverable,
   isCertificationQuestionPublicPreviewable,
+  canApproveCertificationReview,
+  isCertificationContentBetaDeliverable,
+  selectCertificationContentForBeta,
   selectCertificationQuestionsForInternalReview,
   selectCertificationQuestionsForPublicDelivery,
   selectCertificationQuestionsForPublicPreview,
   type CertificationProgram,
   type CertificationQuestionGovernance,
+  type CertificationBankVersionGovernance,
+  type GovernedCertificationContent,
 } from "../shared/certificationPrograms";
 
 function commercialProgram(): CertificationProgram {
@@ -209,5 +214,44 @@ describe("trade-agnostic certification program foundation", () => {
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForPublicPreview");
     expect(siteNavSource).toContain("Electrician Preview");
     expect(siteNavSource).toContain("/electrician-309a-demo");
+  });
+
+  it("fails closed unless the governed free-beta release gates all pass", () => {
+    const bank: CertificationBankVersionGovernance = {
+      programKey: ELECTRICIAN_309A_PROGRAM_KEY,
+      bankKey: "electrician-309a",
+      versionKey: "309a-current-rsos-v1",
+      blueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
+      releaseChannel: "beta",
+      active: true,
+      commercialEligibility: false,
+      teamEligibility: false,
+      retiredAt: null,
+    };
+    const item: GovernedCertificationContent = {
+      programKey: ELECTRICIAN_309A_PROGRAM_KEY,
+      blueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
+      sourceId: "red-seal-current-exam-weightings",
+      contentStatus: "beta_approved",
+      publicEligibility: true,
+      retiredAt: null,
+    };
+    const source = ELECTRICIAN_309A_PROGRAM.sources.find(
+      (candidate) => candidate.id === item.sourceId,
+    );
+
+    expect(isCertificationContentBetaDeliverable(ELECTRICIAN_309A_PROGRAM, bank, item, source)).toBe(true);
+    expect(isCertificationContentBetaDeliverable(ELECTRICIAN_309A_PROGRAM, { ...bank, releaseChannel: "internal" }, item, source)).toBe(false);
+    expect(isCertificationContentBetaDeliverable(ELECTRICIAN_309A_PROGRAM, bank, { ...item, contentStatus: "draft" }, source)).toBe(false);
+    expect(isCertificationContentBetaDeliverable(ELECTRICIAN_309A_PROGRAM, bank, { ...item, sourceId: "canadian-electrical-code" }, ELECTRICIAN_309A_PROGRAM.sources.find((candidate) => candidate.id === "canadian-electrical-code"))).toBe(false);
+    expect(selectCertificationContentForBeta([item, { ...item, contentStatus: "technical_approved" }], ELECTRICIAN_309A_PROGRAM_KEY, bank, ELECTRICIAN_309A_PROGRAM.sources)).toEqual([item]);
+  });
+
+  it("requires a second Echelon reviewer for technical and beta approval", () => {
+    expect(canApproveCertificationReview("codex", "codex", "editorial")).toBe(true);
+    expect(canApproveCertificationReview("codex", "codex", "technical")).toBe(false);
+    expect(canApproveCertificationReview("codex", "claude", "technical")).toBe(true);
+    expect(canApproveCertificationReview("codex", "manus", "beta_release")).toBe(true);
+    expect(canApproveCertificationReview("codex", "CODEX", "beta_release")).toBe(false);
   });
 });

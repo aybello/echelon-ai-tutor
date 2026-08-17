@@ -21,7 +21,50 @@ export type CertificationBlueprintStatus =
 
 export type CertificationSourceUsage =
   | "public_official_reference"
+  | "permission_granted"
   | "licensed_access_required";
+
+export type CertificationBankReleaseChannel =
+  | "internal"
+  | "beta"
+  | "public"
+  | "retired";
+
+export type CertificationContentStatus =
+  | "draft"
+  | "editorial_approved"
+  | "technical_approved"
+  | "beta_approved"
+  | "rejected"
+  | "retired";
+
+export interface CertificationBankVersionGovernance {
+  programKey: string;
+  bankKey: string;
+  versionKey: string;
+  blueprintVersion: string;
+  releaseChannel: CertificationBankReleaseChannel;
+  active: boolean;
+  commercialEligibility: boolean;
+  teamEligibility: boolean;
+  retiredAt: string | null;
+}
+
+export interface GovernedCertificationContent {
+  programKey: string;
+  blueprintVersion: string;
+  sourceId: string;
+  contentStatus: CertificationContentStatus;
+  publicEligibility: boolean;
+  retiredAt: string | null;
+}
+
+export interface CertificationSourceGovernance {
+  id: string;
+  usage: CertificationSourceUsage;
+  verifiedAt: string;
+  approvedForQuestionAuthoring: boolean;
+}
 
 export interface CertificationProgramSource {
   id: string;
@@ -175,7 +218,7 @@ export const ELECTRICIAN_309A_PROGRAM: CertificationProgram = {
       usage: "licensed_access_required",
       approvedForQuestionAuthoring: false,
       notes:
-        "Rule-number-specific content remains blocked until Echelon confirms legitimate licensed access and SME review.",
+        "Rule-number-specific content remains blocked until Echelon confirms legitimate licensed access and completes its documented research review.",
     },
   ],
   launch: {
@@ -284,4 +327,62 @@ export function selectCertificationQuestionsForInternalReview<
       question.reviewStatus !== "rejected" &&
       question.retiredAt === null,
   );
+}
+
+/**
+ * The governed free beta is a release channel, not a commerce entitlement.
+ * Every gate is repeated here so an active bank alone can never expose draft,
+ * stale, unlicensed, commercial, Teams, rejected, or retired content.
+ */
+export function isCertificationContentBetaDeliverable(
+  program: CertificationProgram,
+  bank: CertificationBankVersionGovernance,
+  item: GovernedCertificationContent,
+  source: CertificationSourceGovernance | undefined,
+): boolean {
+  if (program.lifecycle !== "public_preview") return false;
+  if (!program.launch.publicPreviewApproved) return false;
+  if (program.launch.sellable || program.launch.teamAssignable) return false;
+  if (bank.programKey !== program.programKey || bank.bankKey !== program.bankKey) return false;
+  if (bank.blueprintVersion !== program.currentBlueprintVersion) return false;
+  if (!bank.active || bank.releaseChannel !== "beta") return false;
+  if (bank.commercialEligibility || bank.teamEligibility || bank.retiredAt !== null) return false;
+  if (item.programKey !== program.programKey) return false;
+  if (item.blueprintVersion !== program.currentBlueprintVersion) return false;
+  if (item.contentStatus !== "beta_approved" || !item.publicEligibility) return false;
+  if (item.retiredAt !== null) return false;
+  if (!source || source.id !== item.sourceId || !source.verifiedAt) return false;
+  if (!source.approvedForQuestionAuthoring) return false;
+  return source.usage === "public_official_reference" || source.usage === "permission_granted";
+}
+
+export function selectCertificationContentForBeta<
+  T extends GovernedCertificationContent,
+>(
+  items: readonly T[],
+  programKey: string,
+  bank: CertificationBankVersionGovernance,
+  sources: readonly CertificationSourceGovernance[],
+): T[] {
+  const program = getCertificationProgram(programKey);
+  if (!program) return [];
+  const sourcesById = new Map(sources.map((source) => [source.id, source]));
+  return items.filter((item) =>
+    isCertificationContentBetaDeliverable(
+      program,
+      bank,
+      item,
+      sourcesById.get(item.sourceId),
+    ),
+  );
+}
+
+export function canApproveCertificationReview(
+  authorIdentity: string,
+  reviewerIdentity: string,
+  reviewType: "editorial" | "technical" | "beta_release",
+): boolean {
+  if (!authorIdentity.trim() || !reviewerIdentity.trim()) return false;
+  if (reviewType === "editorial") return true;
+  return authorIdentity.trim().toLowerCase() !== reviewerIdentity.trim().toLowerCase();
 }

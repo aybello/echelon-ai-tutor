@@ -41,6 +41,13 @@
           "columns": ["organizationId", "status"]
         }
       ]
+    },
+    {
+      "version": 56,
+      "tag": "0056_certification_bank_governance",
+      "file": "drizzle/0056_certification_bank_governance.sql",
+      "sha256": "43df8406a00f5678956dbc16104ac64933326ed6e7c4e7c5ff9afc2702bb43f4",
+      "proposedOnly": true
     }
   ]
 }
