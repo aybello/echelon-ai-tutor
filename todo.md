@@ -1583,5 +1583,6 @@
 - [x] Refresh governed content hashes after the approved B–E rewrites and re-run package validation
 - [x] Correct diagram-use prompts and answer-choice length cues identified by deterministic validation
 - [x] Rebalance correct-answer positions across the complete 500-question bank without changing question accuracy
-- [ ] Complete an independent external-model quality review of every rewritten B–E question and resolve substantive findings
+- [x] Complete an independent external-model quality review of every rewritten B–E question and resolve substantive findings
 - [x] Restore governed diagram metadata integrity after the interrupted external revision run and revalidate the full bank
+- [x] Pass TypeScript validation, the full Vitest suite, the production build, and governed-bank package checks for the PR #27 release candidate

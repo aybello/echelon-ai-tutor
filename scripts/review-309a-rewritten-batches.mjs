@@ -1,15 +1,16 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const outputDirectory = resolve(root, "reports");
 const outputPath = resolve(outputDirectory, "309a-independent-quality-review.json");
-const apiKey = process.env.ANTHROPIC_API_KEY;
-const model = process.env.QUESTION_REVIEW_MODEL ?? "claude-opus-5";
+const provider = process.env.QUESTION_REVIEW_PROVIDER ?? "anthropic";
+const apiKey = provider === "perplexity" ? process.env.SONAR_API_KEY : process.env.ANTHROPIC_API_KEY;
+const model = process.env.QUESTION_REVIEW_MODEL ?? (provider === "perplexity" ? "sonar-pro" : "claude-opus-5");
 const files = ["batch-b.json", "batch-c.json", "batch-d.json", "batch-e.json"];
-const chunkSize = 10;
+const chunkSize = Number(process.env.QUESTION_REVIEW_CHUNK_SIZE ?? 10);
 
-if (!apiKey) throw new Error("ANTHROPIC_API_KEY is required for independent review.");
+if (!apiKey) throw new Error(`${provider === "perplexity" ? "SONAR_API_KEY" : "ANTHROPIC_API_KEY"} is required for independent review.`);
 
 const questions = files.flatMap((file) => {
   const document = JSON.parse(readFileSync(resolve(root, "content/309a/questions", file), "utf8"));
@@ -42,26 +43,47 @@ async function reviewChunk(records, chunkNumber, totalChunks) {
   let lastError;
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const request = provider === "perplexity"
+        ? {
+            url: "https://api.perplexity.ai/chat/completions",
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: {
+              model,
+              max_tokens: 4096,
+              messages: [
+                { role: "system", content: instruction },
+                { role: "user", content: JSON.stringify({ questions: records }) },
+              ],
+            },
+          }
+        : {
+            url: "https://api.anthropic.com/v1/messages",
+            headers: {
+              "x-api-key": apiKey,
+              "anthropic-version": "2023-06-01",
+              "Content-Type": "application/json",
+            },
+            body: {
+              model,
+              max_tokens: 4096,
+              system: instruction,
+              messages: [{ role: "user", content: JSON.stringify({ questions: records }) }],
+            },
+          };
+      const response = await fetch(request.url, {
         method: "POST",
-        headers: {
-          "x-api-key": apiKey,
-          "anthropic-version": "2023-06-01",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model,
-          max_tokens: 4096,
-          system: instruction,
-          messages: [
-            { role: "user", content: JSON.stringify({ questions: records }) },
-          ],
-        }),
+        headers: request.headers,
+        body: JSON.stringify(request.body),
         signal: AbortSignal.timeout(180_000),
       });
-      if (!response.ok) throw new Error(`Anthropic HTTP ${response.status}: ${await response.text()}`);
+      if (!response.ok) throw new Error(`${provider} HTTP ${response.status}: ${await response.text()}`);
       const payload = await response.json();
-      const text = payload.content?.find((block) => block.type === "text")?.text ?? "";
+      const text = provider === "perplexity"
+        ? payload.choices?.[0]?.message?.content ?? ""
+        : payload.content?.find((block) => block.type === "text")?.text ?? "";
       const parsed = JSON.parse(stripFence(text));
       if (!Array.isArray(parsed.items) || parsed.items.length !== records.length) {
         throw new Error("Reviewer returned an incomplete item set.");
@@ -85,19 +107,26 @@ mkdirSync(outputDirectory, { recursive: true });
 const chunks = Array.from({ length: Math.ceil(questions.length / chunkSize) }, (_, index) =>
   questions.slice(index * chunkSize, (index + 1) * chunkSize),
 );
-const report = {
-  reviewedAt: new Date().toISOString(),
-  model,
-  scope: "All rewritten Ontario 309A questions in batches B through E",
-  questionCount: questions.length,
-  chunks: [],
-};
+const report = process.env.QUESTION_REVIEW_RESUME === "true" && existsSync(outputPath)
+  ? JSON.parse(readFileSync(outputPath, "utf8"))
+  : {
+      reviewedAt: new Date().toISOString(),
+      model,
+      scope: "All rewritten Ontario 309A questions in batches B through E",
+      questionCount: questions.length,
+      chunks: [],
+    };
+const completedQuestionNumbers = new Set(report.chunks.flatMap((chunk) => chunk.items.map((item) => item.bankItemNumber)));
+const remainingQuestions = questions.filter((question) => !completedQuestionNumbers.has(question.bankItemNumber));
+const remainingChunks = Array.from({ length: Math.ceil(remainingQuestions.length / chunkSize) }, (_, index) =>
+  remainingQuestions.slice(index * chunkSize, (index + 1) * chunkSize),
+);
 
-for (let index = 0; index < chunks.length; index += 1) {
-  const reviewed = await reviewChunk(chunks[index], index + 1, chunks.length);
+for (let index = 0; index < remainingChunks.length; index += 1) {
+  const reviewed = await reviewChunk(remainingChunks[index], report.chunks.length + 1, report.chunks.length + remainingChunks.length);
   report.chunks.push(reviewed);
   writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`);
-  process.stdout.write(`Reviewed quality chunk ${index + 1}/${chunks.length}.\n`);
+  process.stdout.write(`Reviewed quality chunk ${report.chunks.length}.\n`);
 }
 
 const items = report.chunks.flatMap((chunk) => chunk.items);
