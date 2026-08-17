@@ -230,15 +230,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While roughing in a hospital corridor lighting circuit, you find a 4 × 4 device box containing three 12/2 cables, a three-way switch, and bonding pigtails. The cover bows outward and will not seat flush against the box. Which action best verifies the box fill before the outlet is closed up?",
+      "question": "Roughing in a hospital corridor lighting circuit, you land a 12/2 supply cable, a 12/3 traveller cable, and a 12/2 cable feeding the luminaires in one 4 in x 4 in device box, then mount a three-way switch and make up the bonding pigtails. The device cover bows outward and will not seat flush against the box. Before closing the outlet, which action best verifies that the box has adequate space for its contents?",
       "options": [
-        "Tally the insulated conductors by size, add the allowances for the mounted device and for the bonding conductors, then compare the total with the volume in cubic centimetres marked on the box.",
-        "Draw the cover down with longer screws, since the switch and all three cables already fit inside the enclosure without visible insulation damage.",
-        "Leave the bonding pigtails out of the tally, since bonding conductors are considered to occupy no volume once a device is mounted in the box.",
-        "Accept the box as adequate because the same box size was used on the matching corridor circuit in the next room."
+        "Tally the insulated conductors entering the box by conductor size, add the volume allowance for the mounted three-way switch plus one allowance covering all bonding conductors together, then compare that total with the volume in cubic centimetres marked on the enclosure.",
+        "Measure the inside depth and width of the box with a tape and confirm those dimensions exceed the length of the switch body plus the folded cable jackets sitting behind it.",
+        "Tally only the conductors that terminate on the switch terminals, treating conductors that pass through the box unbroken and the bonding pigtails as contents that add no volume.",
+        "Compare the number of cables entering the box with the number of cable clamp openings provided, since the manufacturer sizes those openings to match the fill the box can accept."
       ],
       "correctIndex": 0,
-      "explanation": "A cover that bows and will not seat flush is physical evidence that the contents may exceed what the enclosure can hold, so the check has to be arithmetic rather than visual. Count the insulated conductors entering the box by size, add the volume allowance for the mounted device and one allowance covering all of the bonding conductors together, then compare that total with the volume marked on the box in cubic centimetres (or with the permitted conductor count listed for that box size). Forcing the cover with longer screws crushes conductors, can damage insulation at the device terminals, and defeats the enclosure's protective function. Bonding conductors do occupy space and must be counted, so leaving them out understates the fill. Copying a neighbouring outlet is unreliable because cable size, conductor count, and device type may differ, and that box could itself be overfilled. Only comparing the calculated total with the box's marked volume confirms adequate space and leaves room to safely fold conductors back during future maintenance.",
+      "explanation": "A cover that bows and will not seat flush is physical evidence that the contents may exceed what the enclosure can hold, so the check has to be arithmetic rather than visual or dimensional. Count the insulated conductors entering the box by conductor size, add the volume allowance for the mounted three-way switch and a single allowance covering all of the bonding conductors together, then compare that total with the volume in cubic centimetres marked on the box (or with the permitted conductor count published for that box size). Checking inside depth and width with a tape tells you nothing about total fill, because the conductors, connectors, and device yoke all consume volume that a linear measurement does not capture. Conductors that pass through the box unbroken still occupy space and must be counted, and bonding conductors are also part of the tally, so counting only terminated conductors badly understates the fill. Clamp openings are provided for cable entry and support and are not an indication of allowable volume; a box can be fully clamped and still overfilled. Only comparing the calculated total against the box's marked volume confirms there is room to fold the conductors back neatly and to work safely in the box during future maintenance.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -246,7 +246,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply firestop restoration knowledge while the electrician installs raceways.",
-      "contentHash": "d69031a13f6f01ee8bb0267ea6a9b2c71a4751bc66d86ae2bb4641b8cb3e56aa"
+      "contentHash": "8dca7fc78c19fc2b97bed4453752c96bd3fcc5690ff6ff15d7258e10c7805969"
     },
     {
       "bankItemNumber": 204,
@@ -1125,7 +1125,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A baseboard heater on a 120 V single-phase branch circuit runs cooler than expected, so the electrician marks up the conductor route diagram. The diagram labels the panel-to-heater one-way length as 25 m, the measured load current as 12 A, and each conductor as 0.004 Ω/m. Considering the complete current path traced on the diagram — out from the breaker terminal on the supply conductor, through the heater terminals, and back to the panel on the identified conductor — what is the approximate total voltage drop?",
+      "question": "A 120 V single-phase baseboard heater is producing less heat than the owner expects, so the electrician works from the annotated route drawing for the circuit. The drawing labels the panel-to-heater one-way run as 25 m, the measured load current as 12 A, and each of the two circuit conductors as 0.004 Ω/m; the current path is drawn leaving the breaker terminal on the supply conductor, passing through the heater terminals, and returning to the panel neutral bar on the identified conductor. Following that drawn path, what total voltage drop occurs in the circuit conductors?",
       "options": [
         "1.2 V",
         "4.8 V",
@@ -1133,7 +1133,7 @@
         "2.0 V"
       ],
       "correctIndex": 2,
-      "explanation": "The path traced on the diagram shows current leaving the breaker on one conductor and returning on the identified conductor, so the resistive length is twice the 25 m one-way distance: 2 × 25 m = 50 m. Total conductor resistance is 50 m × 0.004 Ω/m = 0.2 Ω, and the drop is 12 A × 0.2 Ω = 2.4 V. Choosing 1.2 V counts only the 25 m supply leg (0.1 Ω) and leaves out the return conductor shown on the diagram. Choosing 4.8 V doubles the length a second time, treating the loop as 100 m of conductor. Choosing 2.0 V keeps the correct 0.2 Ω loop resistance but uses a rounded 10 A instead of the 12 A actually measured. At 2.4 V the loss is only about 2 % of 120 V, so the conductor run is not the reason for the low heat output; the electrician should look for loose terminations, a partly failed element, or a supply voltage problem instead.",
+      "explanation": "The path drawn on the diagram shows current travelling out on the supply conductor and returning on the identified conductor to the neutral bar, so the resistive length in the loop is twice the labelled 25 m one-way run: 2 × 25 m = 50 m. Loop resistance is 50 m × 0.004 Ω/m = 0.2 Ω, and the drop is 12 A × 0.2 Ω = 2.4 V. The 1.2 V choice counts only the 25 m supply leg (0.1 Ω × 12 A) and ignores the return conductor shown on the drawing. The 4.8 V choice doubles the length twice, treating the loop as 100 m (0.4 Ω × 12 A). The 2.0 V choice uses the correct 0.2 Ω loop resistance but a rounded 10 A instead of the 12 A actually measured. Because 2.4 V is only about 2 % of 120 V, the conductor run is not limiting the heat output, so the electrician should look instead at loose terminations at the heater or panel, an element rated for a different voltage, or low supply voltage at the panel.",
       "steps": [
         {
           "label": "Determine total conductor path length",
@@ -1150,7 +1150,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "d8e9bde9259fe9e4d6b3d1dd526d2a8a962105c7ad8f6147255b57a601aaaaec"
+      "contentHash": "289ed33380f073913c03b0c7a36cd2443bb12ef1b571645ace91c137e89f4e30"
     },
     {
       "bankItemNumber": 236,
@@ -3166,15 +3166,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A rooftop make-up air unit uses a two-stage electric heating bank switched by a line-voltage thermostat that cycles roughly every 90 seconds in cold weather. The panel schedule shows a 45 A single-stage heater, yet the installed contactor's nameplate does not match this duty. What should be examined for contactor duty? Use the accompanying diagram to support your assessment.",
+      "question": "A rooftop make-up air unit has a two-stage electric heating bank switched by a line-voltage thermostat that cycles roughly every 90 seconds in cold weather. The panel schedule lists a single-stage 45 A heater, but the branch-circuit diagram annotates the one-way run length, conductor resistance, load-end voltage, and a load current at the load end that is higher than the schedule value. The installed contactor's nameplate switching duty matches neither the schedule figure nor the annotated load-end current. Which step confirms whether the contactor is suited to this duty?",
       "options": [
-        "Compare contactor duty with a nearby lighting contactor even though its load, settings, and operating state differ.",
-        "Use one unloaded reading to accept contactor duty without checking heater current, stages, cycle rate, coil voltage, and rating.",
-        "Compare heater current, number of stages, cycle rate, coil voltage, and contactor rating with the approved design and required duty.",
-        "Bypass the thermostat's low-voltage control input and accept normal contactor output as the final test."
+        "Compare this contactor's nameplate duty with the lighting contactor feeding an adjacent circuit, even though that device carries a different current and cycles on a completely different schedule.",
+        "Measure the current at the load end while the heating bank sits between cycles and accept the contactor as suitable if that reading stays below its nameplate continuous rating.",
+        "Compare the load current annotated at the load end of the run, the number of heating stages being switched, the thermostat's cycling rate, the coil voltage, and the contactor's rated switching duty against the approved design.",
+        "Match the contactor's continuous current rating to the 45 A single-stage value shown on the panel schedule and treat the annotated load-end current and the 90-second cycling rate as field details."
       ],
       "correctIndex": 2,
-      "explanation": "The evidence shows a mismatch between the panel schedule (single-stage, 45 A) and the field installation (two-stage, frequent cycling). Confirming contactor duty requires comparing actual heater current, stage count, cycle rate, coil voltage, and the contactor's rated switching capacity against the approved design intent. Option 2 addresses this directly and prevents installing a contactor undersized for repetitive heating cycles, which can cause premature contact wear or failure. Option 0 fails because an unrelated circuit's duty cycle has no bearing on this heater's demand. Option 1 is tempting because an unloaded reading looks like verification, but it ignores the actual cycling load entirely. Option 3 is unsafe because bypassing a control input removes protective staging logic and risks equipment damage, masking rather than resolving the duty mismatch.",
+      "explanation": "The current annotated at the load end of the run in the diagram is the actual current the contacts must make and break, and it disagrees with the single-stage 45 A figure on the panel schedule. Confirming contactor duty means comparing that annotated load-end current, the number of stages the contactor switches, how often the thermostat cycles, the coil voltage supplied through the line-voltage thermostat, and the contactor's rated switching duty against the approved design. Those five pieces together show whether the device can survive repetitive heating cycles, because a contactor selected for occasional operation erodes and eventually welds its contacts when it makes and breaks heater current every 90 seconds. A lighting contactor on another circuit proves nothing, since its load current and operating pattern are unrelated. A reading taken between cycles captures almost no current and says nothing about the switched load. Relying on the panel schedule rating alone ignores both the higher annotated load-end current and the frequent cycling, which are exactly the conditions that determine switching duty.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3182,7 +3182,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply thermostat location knowledge while the electrician installs electric heating systems.",
-      "contentHash": "8e41464e233bdb5e60a2e9032e22344089212b55beee653f4ec0c6952c157a1a"
+      "contentHash": "2dc448801e9ddcbc2c65bc39141053c826ef8ef29d90d586414a0cd7c1828222"
     },
     {
       "bankItemNumber": 308,
@@ -3695,15 +3695,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While performing the annual 90-minute discharge test on a corridor emergency light in a distribution warehouse, the technician notices the fixture visibly dims at the 70-minute mark, well before the test concludes. Which evidence set should determine whether the battery condition is acceptable?",
+      "question": "A technician is performing the annual discharge test on a corridor emergency lighting unit in a distribution warehouse. The unit must sustain its connected lamp load for the full 30 minutes specified for the building, but the lamps visibly dim at the 22-minute mark. Which evidence set should determine whether the battery condition is acceptable?",
       "options": [
-        "Compare recorded initial voltage, connected load, sustained voltage under load, elapsed run time, and charger recovery against the approved design duration.",
-        "Reuse the pass or fail result from a similar unit tested last month since both use the same battery type and charger.",
-        "Accept the unit because the indicator lamp glowed steadily throughout the discharge test, confirming charger operation.",
-        "Log the dimming as a wiring fault and close the test without measuring battery voltage under the full connected load."
+        "Compare recorded initial voltage, connected lamp load, sustained voltage under load, elapsed run time, and charger recovery against the unit's required 30-minute duration.",
+        "Reuse the pass result from a similar unit tested last month, since both units share the same battery type, lamp heads, and charger circuit.",
+        "Accept the unit because the charging indicator lamp glowed steadily throughout the discharge, confirming the charging circuit is functional.",
+        "Record the dimming as a lamp head connection fault and close the test without measuring battery terminal voltage under the full connected load."
       ],
       "correctIndex": 0,
-      "explanation": "Dimming before the required run time is directly measurable evidence of insufficient capacity, so the technician must compare initial voltage, connected load, sustained loaded voltage, elapsed time, and charger recovery against the approved duration to confirm whether the battery meets its rated performance. Reusing another unit's result ignores that batteries degrade individually and prior data cannot substitute for this unit's actual test readings. A steady indicator lamp only shows the charger is powered, not that the battery can sustain rated load for the full duration, so it cannot confirm acceptable condition. Assuming a wiring fault without measuring loaded voltage skips the verification step needed to distinguish a wiring issue from a capacity failure, risking an unresolved life-safety deficiency. Only the full comparative data set supports a defensible decision on battery condition.",
+      "explanation": "Lamps that dim at 22 minutes on a unit required to carry its load for 30 minutes is measurable evidence of lost capacity, so the decision must rest on this unit's own data: initial voltage, the connected lamp load, the voltage held under that load, the elapsed run time reached, and how the charger restores the battery afterward, all compared to the required 30-minute duration. A pass result from another unit cannot be borrowed, because batteries age and lose capacity individually according to their own temperature, cycling, and charging history. A steady charging indicator only shows the charger is energized; it does not prove the battery can carry rated load for the full duration. Blaming a lamp head connection without measuring loaded terminal voltage skips the one measurement that separates a wiring problem from a failing battery, which can leave a life-safety deficiency in service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3711,7 +3711,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply charger condition knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "f5a2db17e5538ff8adac777bd65beacf4d769959053a91eb1d23a86f86d78078"
+      "contentHash": "c1b4f00f323f3931dd5afb092eeeb8f7bbf89e0ba7227ad987cf172a8974ea9b"
     },
     {
       "bankItemNumber": 327,

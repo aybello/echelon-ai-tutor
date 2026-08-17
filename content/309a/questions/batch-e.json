@@ -167,15 +167,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "Using the accompanying diagram, an electrician commissioning a fire alarm system notices that a newly installed storage rack partially blocks the CCTV camera monitoring a manual pull station tied to the notification circuit. What is the correct action regarding camera field of view before signing off?",
+      "question": "The diagram traces the fire alarm signal path from an initiating device, through control panel logic, to notification appliances and associated building functions. A security CCTV camera is aimed at the manual pull station located at the initiating-device end of that path so staff can visually identify who operated it. During commissioning you find a newly installed storage rack blocks part of that view. What is the correct action on camera field of view before sign-off?",
       "options": [
-        "Assume the camera still works properly since it performed correctly during initial installation testing.",
-        "Disable the camera monitoring function temporarily to keep the fire alarm system available for use.",
-        "Adjust several camera and sensor settings together, then confirm success if any alarm event improves.",
-        "Confirm camera field of view against approved design, equipment rating, manufacturer data, and current site condition."
+        "Accept the camera's original commissioning record, since the pull station's position at the initiating-device end of the path has not been moved.",
+        "Re-aim the camera toward the notification appliances shown downstream of the panel logic, because alarm output is more visible than device operation.",
+        "Widen the camera zoom and lengthen the panel's alarm verification delay together, then accept the result if the next test alarm looks clearer on screen.",
+        "Re-verify that the camera view still covers the pull station at the initiating-device end of the path, using the approved camera layout, lens coverage data, and the measured sightline past the new rack."
       ],
       "correctIndex": 3,
-      "explanation": "The storage rack has physically altered the monitored area, so the electrician must verify field of view against approved drawings, manufacturer specifications, and the actual measured condition to confirm the pull station remains visible and alarm response can be verified. Assuming prior performance ignores the new obstruction. Disabling the camera removes supervision without addressing the cause, reducing system reliability. Changing multiple settings simultaneously and judging success from indirect improvement makes it impossible to isolate which change fixed the issue, risking unverified system function. Only a controlled, documented verification against reference standards and current field measurements ensures the camera still fulfills its intended monitoring role within the fire alarm system's design intent, supporting accurate incident response and code-based commissioning practices required for reliable qualified sign-off.",
+      "explanation": "The camera's job is to give a clear view of the manual pull station shown at the initiating-device end of the signal path, so the site condition must be re-checked against the approved camera layout, the lens coverage data for that mounting height and distance, and an actual measured sightline around the new rack. The original commissioning record no longer describes the room, because the obstruction — not the pull station — is what changed. Re-aiming to the notification appliances covers the wrong end of the path; horns and strobes are already supervised electrically by the panel, while the camera exists to show who activated the device. Adjusting zoom and the panel verification delay at the same time changes two independent variables, so any apparent improvement cannot be traced to the field of view, and the delay setting is part of panel logic rather than camera coverage. Confirming coverage against the layout, lens data, and measured sightline is what proves the camera still performs its intended monitoring function.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -183,7 +183,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "bb9e97c32758942751c093b6cd105cc87a650314a7ce938f2cf0e65c26cfa335"
+      "contentHash": "68fff690f3c62fd06309586179a29e8c0ef938d080fb3b30e29e1287807bac79"
     },
     {
       "bankItemNumber": 457,
@@ -341,15 +341,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A supervised notification circuit feeding a camera enclosure heater and door contact shows an intermittent trouble indicator on the panel history, but no one has compared the wiring against the approved riser drawing or manufacturer specifications yet. A technician wants to swap the device now. What should the technician do first?",
+      "question": "A supervised notification appliance circuit serving corridor horn/strobes in an office building logs intermittent open-circuit trouble events in the fire alarm panel history. No one has yet compared the installed wiring, end-of-line device, and appliance ratings against the approved riser drawing and manufacturer data. A technician proposes replacing the last strobe on the run right away. What should the technician do first?",
       "options": [
-        "Swap the device immediately since intermittent troubles usually indicate a failed sensor needing replacement.",
-        "Pause work, verify the circuit against approved drawings and manufacturer data, resolve the discrepancy, then document findings.",
-        "Silence the trouble indicator and monitor for a repeat occurrence before doing any further investigation.",
-        "Rely on the site supervisor's recollection of the original circuit design instead of checking documentation."
+        "Replace the last strobe immediately, since intermittent open-circuit troubles on a notification circuit almost always mean a failed appliance.",
+        "Pause the work, verify the circuit wiring, end-of-line device, and appliance ratings against the approved drawings and manufacturer data, correct any discrepancy, then record what was found.",
+        "Silence the trouble indication at the panel and leave the circuit in service to see whether the fault repeats before investigating further.",
+        "Ask the site supervisor to describe how the notification circuit was originally laid out and work from that description instead of the drawings."
       ],
       "correctIndex": 1,
-      "explanation": "An intermittent trouble signal on a supervised circuit can stem from wiring faults, loose supervision resistors, or device compatibility issues that are not obvious without checking approved documentation first. Comparing the field wiring and device specifications against the riser drawing and manufacturer data isolates the actual cause before any component is disturbed, and documenting the result supports future troubleshooting and code compliance review. Swapping the device without verification risks masking a wiring fault, wasting the new part, and repeating the failure. Silencing the trouble and waiting for recurrence delays resolution and risks a missed alarm condition in the interim. Relying on memory instead of documentation introduces error since as-built conditions may differ from what was originally installed or later modified.",
+      "explanation": "Intermittent open-circuit trouble on a supervised notification appliance circuit usually points to something in the wiring path: a loose terminal or splice, a T-tap that breaks supervision, an end-of-line resistor of the wrong value or one installed in the wrong location, or an appliance whose polarity or current draw does not match the circuit design. None of that is visible without first comparing the field installation to the approved riser drawing and the manufacturer's appliance data, so verification comes before any device is disturbed, and recording the findings helps anyone who works on the circuit later. Replacing the last strobe first can hide a loose connection or supervision error, consume a new appliance for nothing, and let the same trouble return. Silencing the trouble and waiting leaves occupants on a circuit that may not sound when needed. Working from someone's description of the layout is unreliable because as-built wiring often differs from the original design after additions or repairs.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -357,7 +357,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "ed597f4dcdf68eebf2285ea4135025da739cf979c6efa3afd6b91cb6d9f1a140"
+      "contentHash": "99d45fe7fd90035d50cd5c412ce75c45da67af9a1404c689308aa7104b2fe6f2"
     },
     {
       "bankItemNumber": 463,
@@ -697,15 +697,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "A nurse-call patch panel in a hospital corridor shows connector loss readings that are consistent across five stations but sit above the manufacturer's stated limit. Wiring appears intact and terminations look correct. What verification approach is most defensible before returning the system to service?",
+      "question": "While commissioning a hospital fibre backbone, an apprentice measures insertion loss at a patch panel and finds five duplex ports all reading about 0.8 dB above the connector manufacturer's stated maximum, with consistent values on repeat tests. Terminations and cable routing appear sound. What verification approach is most defensible before the links are handed over?",
       "options": [
-        "Accept the readings because a caregiver reports the call bells sound normal during a quick test.",
-        "Cross-check the readings against approved drawings, equipment ratings, manufacturer specifications, and actual site measurements before deciding.",
-        "Re-energize the panel and treat any alarm during first use as the real verification step.",
-        "Approve the panel since a similar nurse-call panel performed acceptably on an earlier hospital project."
+        "Accept the readings because the switch reports a live link with no bit errors at the current data rate.",
+        "Inspect and clean each end face, re-test using reference-grade launch cords, and compare the corrected results to the calculated loss budget for each link.",
+        "Raise the transmitter output level at the switch to offset the extra loss and record the links as passing.",
+        "Average the five readings and log the mean figure, since it falls inside the connector's typical published loss range."
       ],
       "correctIndex": 1,
-      "explanation": "Stable but out-of-spec connector loss readings must be checked against the approved design, connector and cable ratings, manufacturer test limits, and the actual measured site condition before acceptance, since consistent numbers do not confirm they meet performance requirements. Relying on a caregiver's informal impression ignores that call bells can still function while intelligibility, alarm routing, or dropped-call risks remain hidden. Treating energization as the test exposes patients and staff to communication failures during actual emergencies. Assuming performance from an unrelated prior project ignores differences in cable length, connector type, and pathway conditions that directly affect loss. Documented, criteria-based verification protects patient safety and gives an independent reviewer a clear, defensible record of why the system was accepted or held back for correction.",
+      "explanation": "Consistent but out-of-tolerance insertion loss usually points to contaminated or damaged end faces, or to a test setup problem such as worn launch cords, so the defensible sequence is to inspect and clean the ferrules, re-test with reference-grade cords, and judge the corrected numbers against the loss budget calculated for each link. A live error-free link only shows the receiver currently has enough optical power; the excess loss leaves no margin for future splices, connector wear, or temperature effects. Boosting transmitter output masks the fault rather than correcting it and can drive the receiver toward overload on short links, and it still leaves the connectors out of specification. Averaging readings hides the individual ports that fail, and comparing to a 'typical' range instead of the specified maximum abandons the acceptance criterion the installation was designed around.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -713,7 +713,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "03b3edd3c65d6d8905534a0aff47df081198a11305f59106324001253af07e2f"
+      "contentHash": "689471ead77f02290ce9c8db733e2d3cf62e15609d24d433c92bff0675050ab5"
     },
     {
       "bankItemNumber": 476,
@@ -775,15 +775,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a hospital nurse-call/intercom retrofit, technicians are about to energize substation E27-06, which shares wiring with the fire-paging override circuit, but the call path routing has not been checked against the approved riser diagram. What should the crew do before proceeding?",
+      "question": "A crew is ready to energize the third-floor nurse-call master station panel NC-3 on a hospital intercom retrofit. Its paging amplifier output shares a conduit and a common terminal strip with the fire-alarm paging override, and the call path from the patient stations through NC-3 to the nursing console has not yet been checked against the approved riser diagram. What should the crew do before energizing NC-3?",
       "options": [
-        "Swap the largest terminal block first and note the change only if paging fails during the next test.",
-        "Clear any existing trouble log entry and wait for a second complaint before gathering call path data.",
-        "Accept the nurse's verbal confirmation that paging previously worked as sufficient proof of correct routing.",
-        "Pause work, verify the call path against approved drawings and manufacturer instructions, resolve any discrepancy, and document findings before continuing."
+        "Energize NC-3 first, then identify the call path afterward by placing a test call from each patient station until the console annunciates.",
+        "Isolate the fire-paging override relay, energize the nurse-call side only, and leave the call path check for the commissioning agent to complete later.",
+        "Treat the reused terminal strip labelling from the old system as the call path record and proceed once those labels match the new station numbers.",
+        "Trace and verify the call path against the approved riser diagram and manufacturer wiring instructions, resolve any discrepancy, and record the verification before energizing."
       ],
       "correctIndex": 3,
-      "explanation": "Because the paging override shares wiring with a critical safety function, an unverified call path risks misrouted emergency announcements or lost communication to occupied areas. The correct action is to stop, compare actual wiring against the approved riser drawing and manufacturer instructions, confirm topology, terminations, and coverage, correct any mismatch, and record the verification for review before re-energizing. Swapping a component without diagnosis wastes effort and may mask the real routing fault. Waiting for another failure delays discovery of a hazard already present in a life-safety-adjacent circuit. Relying on a verbal report from an untrained occupant provides no technical assurance of correct signal path, termination integrity, or compliance with design intent. Only documented, drawing-based verification protects both system function and accountability, ensuring the installation meets its intended communication and emergency-paging performance.",
+      "explanation": "The paging output shares raceway and terminals with a life-safety override, so an unverified call path can misroute emergency announcements or leave a patient station silent at the console. Verifying each leg against the approved riser diagram and the manufacturer's wiring data confirms station addressing, terminal assignments, shield and pair identification, and zone coverage, and the written record gives the next technician a reliable reference. Energizing first and hunting the path by trial calls can drive audio into the fire-paging circuit and gives no proof of correct pair or shield terminations. Isolating the override relay removes the shared function from the test entirely, so the very interaction most likely to cause trouble goes unchecked, and deferring the task leaves an unverified system energized. Old terminal labelling is unreliable on a retrofit because station numbering, amplifier zones, and pair assignments commonly change, so matching legacy labels can confirm a wrong path with confidence.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -791,7 +791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply intercom call path knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "2f2df616bbd3dce912ab72523e8e32189246afcac6dafb99ddb87118736cf82e"
+      "contentHash": "1bd12bd3646060dc9d87e8e8df8b8ec43c3053d48af3e2af196d92a30d1af1d0"
     },
     {
       "bankItemNumber": 479,
@@ -905,15 +905,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "At Ward 4B, a nurse-call permanent link commissioning test shows the call station's equipment nameplate rating differs from the as-built record filed two years earlier. Which verification approach best confirms the structured-cable permanent link before the station is energized for patient use?",
+      "question": "While closing out a nurse-call installation on Ward 4B, the certification report for outlet 4B-12 shows a \"pass,\" but the jacket printing on the horizontal run reads Category 5e while the approved cable schedule and the installed patch panel are Category 6A. Which verification approach best confirms this structured-cable permanent link before the outlet is accepted for patient-care use?",
       "options": [
-        "Rely on the nursing staff's recollection of the original installation as the sole acceptance basis.",
-        "Energize the call station first and treat the resulting alarm response as the verification test.",
-        "Compare the permanent link against the approved design, current nameplate data, and measured field test results.",
-        "Accept the link as correct because a similar nurse-call station performed well on another floor."
+        "Accept the reported pass, since the tester's autotest feature selects an appropriate limit whenever a link is scanned.",
+        "Re-run the measurement as a channel test with patch cords added, then record the more favourable insertion-loss figure.",
+        "Retest to the design's permanent-link limits and compare the results against the approved cable schedule and the ratings of the components actually installed.",
+        "Swap in a shorter patch cord at the cross-connect to improve the margin and log that new reading as the final result."
       ],
       "correctIndex": 2,
-      "explanation": "The nameplate discrepancy is direct evidence that the as-built record can no longer be trusted, so the permanent link must be reverified against the approved design, the equipment actually installed, and measured test data such as length, wire map, and attenuation limits before the station is placed into service. Energizing first and using the alarm response as proof is tempting because it seems efficient, but a partial or intermittent fault can still trigger an alarm while leaving the link out of specification, risking missed calls later. Relying on staff memory or comparing to an unrelated station ignores the specific documented mismatch and provides no measurable basis for acceptance. Only a documented comparison against current design and test data gives a defensible, repeatable verification suitable for a patient-safety system.",
+      "explanation": "A permanent link performs only to the level of its lowest-rated component, so a Category 5e horizontal run terminated on Category 6A hardware cannot meet the Category 6A performance the design calls for. The defensible verification is to retest using the test limits named in the approved design and then compare the wire map, length, insertion loss, NEXT and return-loss results against the cable schedule and the ratings printed on the cable, jacks and panel actually in place; that documented comparison either proves conformance or identifies exactly what must be replaced. Trusting the autotest selection is unreliable because the tester applies whatever limit was last configured, and a pass to a 5e limit is not evidence of 6A performance. Switching to a channel test changes the measurement configuration and its allowances rather than verifying the permanent link the design specifies. Substituting a shorter patch cord alters the test setup to chase margin and leaves the installed horizontal cable unverified, so the recorded result no longer represents the link the nurse-call system depends on.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -921,7 +921,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply structured-cable permanent link knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "1632bdc0cb068932ed9b73d53bde6c945e7965d7a64f83039c1a9a732cac88b8"
+      "contentHash": "e8295a1206168446b8423286c838b5908da2bb9ca87056fd39edd63d94ced844"
     },
     {
       "bankItemNumber": 484,
@@ -957,15 +957,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During data-network commissioning, a CATV distribution segment shows a clear picture off-peak but pixelates whenever subscriber load peaks each evening. Field connector-loss readings at junction J-14 differ from the approved design record. What is the correct next action?",
+      "question": "While commissioning a CATV coaxial distribution segment in a multi-unit building, you find the low-band channels are clear but the upper-frequency digital channels pixelate at the end-of-run taps. Your insertion-loss measurement across the connectors at junction J-14 is higher than the connector loss listed on the approved design record. What is the correct next action?",
       "options": [
-        "Swap several connectors along the run simultaneously and treat any temporary evening improvement as confirmation of a repair.",
-        "Apply the connector loss value used on a previous unrelated CATV installation without confirming it fits this design.",
-        "Replace the entire distribution panel first and only document the discrepancy if the pixelation problem returns.",
-        "Pause work, verify the connector loss reading against approved design documentation, isolate and resolve the discrepancy, then document before proceeding."
+        "Swap several connectors along the run at the same time and accept any improvement on the upper channels as confirmation that the segment is now correct.",
+        "Use the connector loss value taken from a previous unrelated CATV installation, since it was accepted there and no design change is needed.",
+        "Replace the distribution amplifier and passive splitter first, and only document the loss discrepancy if the pixelation reappears later.",
+        "Pause work, verify the measured connector loss against the approved design documentation, isolate and correct the source of the discrepancy, then document the result before continuing."
       ],
       "correctIndex": 3,
-      "explanation": "Connector loss that only becomes visible under peak load points to a marginal termination meeting tolerance only when signal demand is low. Comparing the field reading against the approved design record isolates whether the cause is a documentation error or a physical connector fault before more work proceeds. Pausing to verify and document preserves an accurate record for other trades and future troubleshooting. Swapping several connectors at once destroys the ability to identify which change actually caused any improvement, and a transient overnight readback is not reliable proof of repair. Reusing a value from an unrelated installation ignores this system's actual cable length and topology. Replacing the whole panel is costly, skips root-cause verification, and leaves the discrepancy unexplained for the next technician to encounter.",
+      "explanation": "Insertion loss in coaxial connectors rises as frequency rises, so a poorly made or damaged termination often passes the low channels while pushing the upper-frequency digital carriers below the level the taps need. When a measured connector loss is higher than the value the designer allowed in the loss budget, the reading must be checked against the approved documentation to determine whether the record is wrong or a physical termination is faulty; the discrepancy is then corrected and recorded so the as-built loss budget stays accurate for future service work. Changing several connectors at once removes any way to tell which termination was actually at fault. Carrying over a value from a different installation ignores this system's cable lengths, connector count, and tap layout, so the loss budget no longer reflects reality. Replacing the amplifier and splitter treats active equipment before the measured cause is confirmed, and it leaves the documented loss error in place for the next technician.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -973,7 +973,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "5dbda8af88c382a269846598b8f37e65e0f8ccedf51087aca617d643ee337e33"
+      "contentHash": "5279061ebbda9617a6f9e316dc9171b170f3c70cdc577896e971c6f8812de7b0"
     },
     {
       "bankItemNumber": 486,
@@ -1321,15 +1321,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A VAV zone reverts to unoccupied setpoints during business hours only when an adjacent AHU ramps to high fan speed, prompting comfort complaints. The commissioning log for controller E28-14 shows no documented occupied schedule verification under load. What is the most reliable next step?",
+      "question": "During business hours, VAV zone controller E28-14 repeatedly drops to its unoccupied setpoints, but only while the 30 kW supply fan drive in the adjacent mechanical room ramps up to high speed. The controller is programmed to fall back to unoccupied defaults whenever it stops receiving the global occupied schedule broadcast from the front end over the BAS communication trunk. What is the most reliable next step?",
       "options": [
-        "Accept the operator's verbal recollection that the schedule worked correctly last winter as sufficient proof.",
-        "Treat the sequence as correct because an identical controller performed well on a previous project site.",
-        "Isolate the zone controller, verify occupied schedule logic against the approved sequence, correct the confirmed fault, and retest under load.",
-        "Re-energize the full system and use the next occupied period as the first functional verification."
+        "Raise the unoccupied heating and cooling setpoints at the controller so the zone stays comfortable each time the fallback occurs.",
+        "Program the front end for a 24-hour occupied schedule so the zone is never issued an unoccupied command during the heating season.",
+        "Trend the controller's communication status while the drive ramps up to confirm whether the schedule broadcast is being lost, then correct the cable routing, shield termination, or bonding deficiency and retest under the same load.",
+        "Replace the zone temperature sensor and damper actuator on the affected box, then have occupants report whether the comfort complaints continue."
       ],
       "correctIndex": 2,
-      "explanation": "The symptom only appears under a specific load condition, so isolating the zone controller and comparing its occupied schedule logic to the approved sequence documentation is the only way to confirm the actual cause before making a change. Retesting under the same load condition after correction verifies the fix rather than assuming it worked. Relying on an operator's memory provides no verifiable record and cannot capture the load-dependent trigger. Assuming correctness because a similar controller worked elsewhere ignores that wiring, programming, or point mapping errors are specific to this installation. Waiting until the next occupied period to test treats live building operation as the first verification, risking recurring comfort complaints or unsafe control loss before the fault is even identified.",
+      "explanation": "The fallback to unoccupied setpoints is a programmed response to losing the occupied schedule broadcast, and the symptom appears only when a large drive is running, which points to induced noise on the communication trunk. Trending the communication status while the drive ramps confirms whether packets are actually being lost, so the cabling, shield termination, or bonding problem can be corrected and then proven by repeating the same load condition. Raising the unoccupied setpoints only hides the dropout while the controller still loses its schedule, so control remains unreliable. Forcing a 24-hour occupied schedule wastes fan and heating energy and still leaves the trunk vulnerable to interference that can affect other controllers. Changing the sensor and actuator addresses hardware that is not causing the mode change, since the zone follows its setpoints correctly once the schedule broadcast is received.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1337,7 +1337,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply occupied schedule knowledge while the electrician installs building control systems.",
-      "contentHash": "50886f92985948984a09e0634384b4397a391e2ef1b1bc0a4dd34166f8723cd8"
+      "contentHash": "afccba47651aa771878b88806f256668ee4936d33f56ede6f27c725a3327a128"
     },
     {
       "bankItemNumber": 500,

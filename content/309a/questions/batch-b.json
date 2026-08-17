@@ -3813,15 +3813,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A 45 kVA dry-type transformer in a plant switchroom kept running for several hours after its cooling fan seized. When the electrician locks it out and opens the enclosure, there is a faint scorched odour and light brown discolouration on the coil surfaces near the ventilation openings. Which evidence should decide whether the winding insulation is still fit for the transformer to be returned to service?",
+      "question": "A 45 kVA dry-type transformer in a plant switchroom continued to carry load for several hours after its cooling fan seized, and the windings ran well above their rated temperature. With the unit locked out, discharged, and the enclosure open, an electrician notices a faint scorched odour and light brown discolouration on the coil surfaces near the ventilation openings. Which evidence should decide whether the winding insulation has retained enough dielectric strength for the transformer to be returned to service?",
       "options": [
-        "Close visual examination of the coil surfaces and varnish for cracking, blistering, or carbon tracking once the windings have fully cooled.",
-        "Insulation resistance readings taken at the manufacturer's recommended test voltage, corrected for winding temperature and compared with the unit's earlier test records.",
-        "Secondary voltage and phase currents measured under load, confirming that the ratio and the current balance stay within the transformer's normal ranges.",
-        "Winding resistance measured phase by phase with a low-resistance ohmmeter, with the three readings agreeing within a few percent of one another."
+        "A close visual survey of the coil surfaces and varnish for cracking, blistering, or carbon tracking once the windings have cooled fully to ambient temperature",
+        "Insulation resistance readings taken at the manufacturer's recommended test voltage, corrected for winding temperature and compared against the unit's earlier test records",
+        "Secondary voltage and phase currents recorded under load, confirming that the voltage ratio and the current balance stay within the transformer's normal operating ranges",
+        "Winding resistance measured phase by phase with a low-resistance ohmmeter, with the three readings agreeing within a few percent of each other and of the nameplate values"
       ],
       "correctIndex": 1,
-      "explanation": "Losing cooling airflow lets the winding temperature climb past the insulation system's rated limit, and that heat ages the insulating material rather than the copper. Insulation condition is judged by insulation resistance testing at the voltage the manufacturer specifies, with the result corrected to a common temperature so it can be compared fairly against earlier readings for that unit; a marked drop from the previous trend points to heat-degraded insulation even when the transformer would still operate. A visual check of the coils may reveal discolouration or tracking and is worth doing, but sound-looking varnish can still cover insulation whose dielectric strength has been reduced, so appearance alone cannot clear the unit. Secondary voltage and phase currents reflect turns ratio and connected load, not the dielectric strength between turns or to ground. Winding resistance readings verify conductor continuity and connection quality, so they would catch a broken or high-resistance joint but tell nothing about the insulation surrounding the conductors.",
+      "explanation": "Losing cooling airflow lets winding temperature climb past the limit of the insulation system, and that heat ages the insulating material rather than the copper. Insulation condition is judged by insulation resistance testing at the voltage the manufacturer specifies, with the reading corrected to a common reference temperature so it can be compared fairly with earlier results for that same transformer; a marked drop from the established trend points to heat-degraded insulation even when the unit would still energize and carry load. A visual survey may reveal discolouration or tracking and is always worth doing, but varnish that still looks sound can cover insulation whose dielectric strength is already reduced, so appearance alone cannot clear the unit. Secondary voltage and phase current readings reflect turns ratio and connected load, not the dielectric strength between turns or from winding to ground. Winding resistance readings verify conductor continuity and joint quality, so they would catch an open or high-resistance connection but say nothing about the insulation surrounding those conductors.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3829,7 +3829,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.05",
       "blueprintObjective": "Apply audible-noise change knowledge while the electrician services and maintains transformers.",
-      "contentHash": "1ed313889ca6301382cbbc8fbe8ec7bd01359c7ea9da0870878baba5d62dc8c6",
+      "contentHash": "22c75d97a5df56df576f9e35d92aa977a45e6915ebc3271629a71f39583ad1e3",
       "options_note": null
     },
     {

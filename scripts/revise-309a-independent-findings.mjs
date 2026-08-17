@@ -11,6 +11,7 @@ const files = ["batch-b.json", "batch-c.json", "batch-d.json", "batch-e.json"];
 const questionChunkSize = 1;
 const concurrentChunkLimit = 1;
 const selectedCategories = new Set((process.env.REPAIR_CATEGORIES ?? "").split(",").map((value) => value.trim()).filter(Boolean));
+const skippedQuestionNumbers = new Set((process.env.REPAIR_SKIP_IDS ?? "").split(",").map((value) => Number(value.trim())).filter(Number.isInteger));
 
 if (!apiKey) throw new Error("ANTHROPIC_API_KEY is required for the independent-review repair pass.");
 
@@ -21,7 +22,8 @@ const documents = new Map(files.map((file) => {
 const findings = report.chunks
   .flatMap((chunk) => chunk.items)
   .filter((item) => item.verdict === "needs_revision")
-  .filter((item) => selectedCategories.size === 0 || item.issues.some((issue) => selectedCategories.has(issue.category)));
+  .filter((item) => selectedCategories.size === 0 || item.issues.some((issue) => selectedCategories.has(issue.category)))
+  .filter((item) => !skippedQuestionNumbers.has(item.bankItemNumber));
 const records = findings.map((finding) => {
   const found = [...documents.entries()]
     .map(([file, value]) => ({ file, ...value, question: value.document.questions.find((item) => item.bankItemNumber === finding.bankItemNumber) }))
@@ -129,6 +131,7 @@ const repairLog = [];
 let completed = 0;
 for (let start = 0; start < chunks.length; start += concurrentChunkLimit) {
   const group = chunks.slice(start, start + concurrentChunkLimit);
+  console.log(`Starting repair for question ${group.flatMap((chunk) => chunk.map((record) => record.question.bankItemNumber)).join(", ")}.`);
   const results = await Promise.all(group.map(reviseChunk));
   for (const revisions of results) {
     for (const [bankItemNumber, revision] of revisions) {

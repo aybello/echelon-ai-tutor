@@ -341,15 +341,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While troubleshooting nuisance overload trips on a conveyor motor starter, you find the physical interlock wiring does not match the approved control schematic. The maintenance log shows three similar trips this month. What is the correct response to keep the repair under control?",
+      "question": "A conveyor motor starter trips on overload two or three times per shift. Tracing the control wiring, you find the upstream conveyor's run interlock contact has been jumpered out at the starter terminal block, so this conveyor can start under a full bed of material instead of only after the upstream unit is running and clear. The approved control schematic shows the interlock contact in series with the start circuit. What is the correct response to keep the repair under control?",
       "options": [
-        "Adjust the overload heater size and the timer setting together, then judge success by whether trips stop.",
-        "Wire the interlock the way it was done on a similar job last year without confirming this schematic.",
-        "Swap the starter contactor first since it is the largest visible part, and document only if trips continue.",
-        "Stop work, compare the wiring to the approved schematic, resolve the mismatch, record findings, then proceed."
+        "Increase the overload setting one step and lengthen the start timer, then judge success by whether the tripping stops.",
+        "Rewire the interlock the way it was arranged on a similar conveyor line last year rather than confirming this schematic.",
+        "Replace the starter contactor first since it is the largest component in the enclosure, and document only if trips continue.",
+        "Stop work, compare the field wiring to the approved schematic, restore the interlock circuit, record what was found and corrected, then test."
       ],
       "correctIndex": 3,
-      "explanation": "A mismatch between field wiring and the approved schematic is exactly the kind of discrepancy that causes recurring nuisance trips, so the safe path is to stop, verify the actual wiring against the approved control documentation, correct the discrepancy, and log what was found and changed. Adjusting the heater and timer together fails because changing two variables at once makes it impossible to know which change fixed anything, and a temporary quiet period is not proof of a repair. Copying a prior job's wiring skips verification of this specific schematic and load, risking repeating or masking the real fault. Replacing the contactor first targets the biggest visible part rather than the documented control logic, wasting time and money while leaving the true documentation conflict unresolved and undocumented for the next technician.",
+      "explanation": "The jumper defeats a documented permissive, so the motor is allowed to start against a loaded belt and draws locked-rotor-level current long enough to heat the overload element. Restoring the circuit shown on the approved schematic removes the actual cause, and recording the discrepancy tells the next worker why the trips were happening. Raising the overload setting and stretching the start timer only lets the motor draw excessive current longer while removing its thermal protection, and changing two settings at once hides which one had any effect. Copying another line's interlock arrangement ignores this system's sequence and load, so the same starting condition can return. Swapping the contactor targets a component that is doing its job; the starter is opening because the motor is genuinely overloaded, and the bypassed interlock stays hidden.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -357,7 +357,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control-circuit documentation knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "f8d60ff5ebef4de15fcbd4cad5e9e9151516821c0c8e6f7623e8f3655161fde5"
+      "contentHash": "bc63db742c82ba3acf85635bb303e46bfaae17b7cead1afdbec557fd4bb9c8de"
     },
     {
       "bankItemNumber": 358,
@@ -567,15 +567,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A conveyor motor starter contactor chatters intermittently during operation. The coil nameplate reads 120 V, but measured voltage at the control transformer secondary is only 24 V. The approved control schematic specifies a 120 V coil for this circuit. What is the correct next step?",
+      "question": "A conveyor motor starter contactor chatters and buzzes each time it is commanded to run. The control voltage measured directly at the coil terminals holds steady at 118 V, but the coil nameplate on the replacement coil installed by the previous shift reads 240 V. The approved control schematic for this starter specifies a 120 V coil. What is the correct next step?",
       "options": [
-        "Install a 24 V coil to match the measured voltage without checking the schematic or transformer tap.",
-        "Bypass the chattering by jumpering the coil circuit so the contactor stays engaged continuously.",
-        "Increase the overload trip setting so nuisance chatter stops tripping the starter.",
-        "Isolate and lock out the control circuit, verify coil rating against the approved schematic, correct the mismatch, and document findings."
+        "Reconnect the control transformer to its 240 V secondary tap so the installed coil receives its rated nameplate voltage.",
+        "Tighten the coil terminal screws and restart the conveyor, treating the chatter as a loose control connection.",
+        "Fit a larger contactor frame size, on the assumption that the chatter shows the device is undersized for the motor load.",
+        "Isolate and lock out the control circuit, verify the coil rating against the approved schematic, install the correct 120 V coil, and document the findings."
       ],
       "correctIndex": 3,
-      "explanation": "The chattering points to a voltage mismatch, not a defective coil. Since the schematic calls for 120 V but only 24 V reaches the coil, the fault likely lies in the transformer tap, wiring, or a loose connection feeding the control circuit. Isolating and locking out the circuit before investigating protects the technician and equipment, and confirming the coil rating against approved documentation ensures the repair matches design intent rather than the symptom. Installing a 24 V coil seems to solve the immediate issue but hides the real wiring or transformer fault and violates the approved design record. Jumpering the coil defeats safety interlocks and creates an uncontrolled hazard, while raising the overload setting masks a control fault instead of correcting it, risking motor or contactor damage.",
+      "explanation": "A coil rated 240 V energized at only 118 V develops roughly half its design magnetic pull, which is not enough to seat and hold the armature. The armature partially closes, the magnetic force collapses, and it drops out and re-attempts, producing the characteristic chatter and buzz. Because the measured control voltage matches the approved schematic, the wrong part is the coil, so the circuit must be isolated and locked out, the coil rating confirmed against the approved documentation, the correct 120 V coil fitted, and the work recorded. Raising the transformer secondary to 240 V would over-voltage every other 120 V device on that control circuit and deviates from the approved design. Tightening terminals treats a symptom that measurement has already ruled out, since full voltage is reaching the coil. Changing to a larger contactor frame addresses load capacity, which is unrelated to an armature that cannot seat because of an under-excited coil.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -583,7 +583,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply contactor coil voltage knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "2c0f744e0fb4789c6bddbab6da4074751975325ae76dcb9351e1f1506c1a1ca0"
+      "contentHash": "81b0148884b39c383f0141889fcf1cfaa61a7eb21c0bcedac4aa5e9ec9989df1"
     },
     {
       "bankItemNumber": 366,
@@ -906,15 +906,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A conveyor motor starter contactor chatters and drops out intermittently. The coil nameplate reads 120 V, but the control transformer secondary tap on the schematic is marked 24 V for that panel. Which response maintains control of the work?",
+      "question": "A conveyor motor starter contactor pulls in but chatters and drops out intermittently under load. The coil nameplate reads 120 V, yet a meter at the coil terminals reads about 92 V while the schematic shows a 120 V control transformer secondary. Which response maintains control of the work?",
       "options": [
-        "Move the transformer tap to whatever setting stops the chattering without checking the schematic first.",
-        "Install a spare coil from another job that seems close in rating without confirming compatibility with this circuit.",
-        "Jump control voltage directly from line power to bypass the transformer and stop the dropout.",
-        "Isolate and lock out, verify the coil voltage against the schematic and transformer tap, correct the mismatch, then document and re-energize."
+        "Reconnect the control transformer primary to a lower tap based only on the panel label, without comparing the coil nameplate to the schematic.",
+        "Install a spare 110 V coil from shop stock on the assumption it is close enough to the 120 V rating, then return the starter to service.",
+        "Replace and reset the starter's overload relay, treating the intermittent dropout as a nuisance overload trip on the motor circuit.",
+        "Isolate and lock out, verify the coil rating against the schematic and the transformer tap connections, correct the voltage mismatch, then document and re-energize."
       ],
       "correctIndex": 3,
-      "explanation": "Chattering and dropout are classic symptoms of a coil energized below its rated voltage, which matches a 120 V coil fed from a 24 V tap. The correct approach isolates the circuit, cross-checks the schematic and transformer tap against the coil nameplate, corrects the actual mismatch, and documents the finding before re-energizing so the fix is traceable and verified. Randomly adjusting the tap may mask the root cause or damage the transformer. Substituting an unverified coil risks installing incorrect voltage or current ratings, causing repeat failure or coil burnout. Bypassing the transformer to feed line voltage directly could overvolt the coil, destroying it and defeating the control transformer's isolation and protection function, creating an unsafe, undocumented deviation from the approved control design.",
+      "explanation": "A contactor that seals in but chatters and releases is being held by a coil voltage well below its rating; most coils need roughly 85 percent of nameplate voltage to hold, so 92 V on a 120 V coil is marginal. Typical causes are a control transformer primary connected to the wrong tap for the supply voltage, an undersized transformer that sags when the coil seals, or excessive voltage drop in the control wiring. The controlled response is to isolate and lock out, compare the coil nameplate to the schematic and the actual transformer tap connections, correct the mismatch, and record what was found before re-energizing so the change is traceable and the repair verified. Changing taps from the panel label alone can leave the coil under- or over-excited because the label may not reflect the installed wiring. A 110 V coil is not a verified match for a 120 V control circuit and will run hot or fail again, and it does not address the low supply voltage. Overload relays trip and latch out rather than causing rapid chatter, so replacing the overload leaves the real cause untouched.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -922,7 +922,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply contactor coil voltage knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "d75f4f00faf3bf91893a15cfaaac40f217cc94743faed0dd6bc134060e3bcc0e"
+      "contentHash": "20a27d2c96d8ac3a03cf7f46aca7f08ecf0924d729f8432beaa04dcb46072bbe"
     },
     {
       "bankItemNumber": 378,
@@ -984,15 +984,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Referring to the forward-reverse starter diagram, an electrician installing new control devices notices the reversing contactor's contacts show heavier pitting than the wear pattern shown on the approved schematic, though both electrical and mechanical interlocks appear intact. What is the correct next step?",
+      "question": "On a conveyor forward–reverse starter, the diagram shows the reverse contactor coil energized only through the normally closed auxiliary interlock contact of the forward contactor, with a mechanical interlock also fitted. During a service call the electrician finds the reverse contactor's main contacts far more pitted than the forward contactor's, and the forward contactor's normally closed auxiliary contact in that reverse coil path is eroded, although both interlocks still function. What is the correct next step?",
       "options": [
-        "Judge the wear acceptable by comparison to a similar starter from a past job.",
-        "Skip further verification and energize the circuit to keep the schedule on track.",
-        "Adjust the interlock timing and overload settings together, then judge success by a single successful start.",
-        "Stop work, compare the wear against approved drawings and manufacturer data, resolve the discrepancy, then document before continuing."
+        "Accept the wear as normal because a similar starter on an earlier job showed the same pitting on its reverse contacts.",
+        "Return the starter to service now and note the contact condition so it can be looked at during the next scheduled shutdown.",
+        "Change the reverse contactor, readjust the mechanical interlock, and reset the overload dial together, then judge the result by one successful reversal.",
+        "Stop work, compare the contact condition and contactor ratings against the manufacturer's data and the approved drawings, determine why the reverse contacts and that interlock contact are eroding, correct the cause, and record the findings before returning the starter to service."
       ],
       "correctIndex": 3,
-      "explanation": "The diagram's interlocks prevent simultaneous forward/reverse operation, but abnormal contact wear signals a possible mismatch in duty cycle, coil voltage, or contactor rating not visible from the interlock logic alone. The correct response is to halt, cross-check the observed wear against approved drawings and manufacturer ratings, identify the cause, and document findings before re-energizing—this protects against undetected component failure. Relying on memory of unrelated equipment ignores site-specific ratings and wiring differences. Energizing without verification risks contactor failure or interlock defeat under load. Changing multiple settings simultaneously and judging success by one successful start hides the real cause and prevents traceable verification, since several variables changed together cannot isolate what fixed or worsened the fault, leaving the system vulnerable to repeat failure or misdiagnosis later.",
+      "explanation": "The interlocks shown in the diagram only prevent both contactors from closing at once; they say nothing about whether the reverse contactor is suited to the duty it is seeing. Uneven pitting on the reverse main contacts points to causes such as plugging or frequent reversing, a jogging duty beyond the contactor's rating, or low coil voltage causing chatter. Erosion of the forward contactor's normally closed auxiliary contact matters because it carries the reverse coil current: as that contact degrades, the reverse coil can drop out and re-close, arcing the main contacts even more. Halting, checking the observed condition and ratings against manufacturer data and the approved drawings, correcting the cause, and recording what was found gives a traceable basis for putting the starter back in service. Comparing to an unrelated starter ignores this site's motor loading, duty cycle, and control voltage. Returning it to service and waiting for a shutdown leaves a known degrading coil path in a circuit that must reliably de-energize one direction before the other closes. Changing the contactor, interlock adjustment, and overload setting at the same time means one successful reversal cannot show which change helped, so the real cause stays hidden.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1000,7 +1000,7 @@
       "diagramAlt": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply contact wear knowledge while the electrician installs motor control devices.",
-      "contentHash": "883dc96786abb0bd58490c7b1af701101fc21945ab15fca0674c1a88539ff74c"
+      "contentHash": "a765bbd583bbdd5fe3d9359dcb45f17549d94fea773fae75777be735ebfc4a4c"
     },
     {
       "bankItemNumber": 381,
@@ -1158,15 +1158,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On packaging line drive PL-14, the nameplate lists a 380 V input, but the feeder was reconnected to a 600 V source through an unverified transformer tap. The drive faults on overcurrent only during acceleration under full conveyor load. What should the electrician do next?",
+      "question": "On packaging line drive PL-14, the nameplate shows a 600 V input class, but a clamp-on meter and voltmeter check at the drive terminals reads 380 V because the feeder was reconnected through an unverified transformer tap. The drive trips on overcurrent only while accelerating the conveyor under full load, and runs without tripping when lightly loaded. What should the electrician do next?",
       "options": [
-        "Swap the largest accessible drive module and document the reason only if the fault returns.",
-        "Clear the overcurrent fault and wait for it to reoccur before gathering further test data.",
-        "Accept the operator's recollection of the original supply voltage as the acceptance record.",
-        "Pause work, verify the drive input rating against approved documentation, resolve the voltage discrepancy, and record findings before continuing."
+        "Lengthen the acceleration ramp time and raise the drive's current-limit setting until the loaded conveyor reaches full speed without tripping.",
+        "Change the drive's motor base-voltage and base-frequency parameters to suit the 380 V reading, then rerun the autotune routine on the conveyor motor.",
+        "Order a larger frame drive of the same input voltage class to gain current headroom for the acceleration load, and leave the existing feeder connection as found.",
+        "Stop and confirm the drive's rated input voltage range against the approved drawings and manufacturer data, correct the transformer tap discrepancy, and record the verified supply values before restarting the line."
       ],
       "correctIndex": 3,
-      "explanation": "The intermittent overcurrent occurring specifically during acceleration under load points to a supply-to-drive mismatch, consistent with the nameplate showing 380 V while 600 V is present. Verifying the input rating against approved documentation and manufacturer data isolates whether the transformer tap, drive programming, or wiring caused the mismatch, and documenting the correction supports safe handoff. Swapping the largest module is tempting because it seems decisive, but it ignores the voltage evidence and risks damaging a correctly rated part while leaving the real cause unresolved. Clearing the fault and waiting for recurrence delays diagnosis and risks equipment damage or unsafe restart under load. Relying on an operator's memory provides no verifiable record and cannot substitute for checked nameplate and supply data. Confirming rated input against actual supply, correcting the discrepancy, and logging the verification is the controlled, defensible action supporting safe, code-compliant drive operation.",
+      "explanation": "A drive supplied well below its rated input voltage has a low DC bus, so it must draw more current to produce the same shaft torque. Acceleration under full conveyor load is the highest-torque condition, which is exactly why the overcurrent trip appears there and not at light load. That symptom pattern points to the supply, so the first step is to compare the nameplate input voltage range with the approved drawings and manufacturer data, trace the transformer tap that produced 380 V, correct it, and log the verified voltage so the next person knows the supply matches the drive rating. Stretching the ramp and raising the current limit only pushes the trip point away from a real supply deficiency and keeps the motor and drive running hot at elevated current. Editing motor base-voltage and base-frequency parameters to match 380 V forces the drive to operate the motor away from its own nameplate ratings and still leaves an improperly tapped feeder in service. Ordering a larger drive adds current capacity to compensate for a wiring error that is far cheaper to correct, and the mismatch would continue to reduce available torque. Confirming rated input against actual measured supply is the controlled action that resolves the cause instead of the symptom.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1174,7 +1174,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply drive input rating knowledge while the electrician installs ac drives.",
-      "contentHash": "52b7b0113ef5a8c5842e1cf8e9736c4a53d65443bf48132de7b3f45936f281b1"
+      "contentHash": "8d7ccd5c223e314de94ef21a7d644639df5705d9317ec5961b7b3d1398c49b87"
     },
     {
       "bankItemNumber": 387,
@@ -1553,11 +1553,11 @@
       "options": [
         "Leave the ramp at 8 seconds since the motor reaches full speed without tripping the breaker.",
         "Adjust several unrelated drive parameters at once and observe whether startup current improves.",
-        "Isolate and lock out the drive, verify the ramp value against the approved commissioning sheet, correct and document it.",
+        "Stop the conveyor and secure it against unexpected motion, compare the drive's ramp setting to the approved commissioning sheet, correct the value, and document the change.",
         "Rely on the equipment's visual operation to judge that the shorter ramp time is acceptable."
       ],
       "correctIndex": 2,
-      "explanation": "The mismatch between the displayed ramp and the approved commissioning sheet, combined with elevated startup current, points to a parameter error introduced by the firmware update rather than normal operation. Isolating the drive before adjustment protects the electrician and equipment, and comparing against the approved record identifies the exact discrepancy so it can be corrected with confidence rather than guesswork. Documenting the change supports future troubleshooting and verification by others. Leaving the ramp unchanged ignores clear evidence of elevated current stress that can shorten motor and drive life even without an immediate trip. Adjusting multiple unrelated parameters at once risks masking the real cause and makes any improvement unreliable to interpret. Judging performance by appearance alone overlooks the documented approved value, which is the only reliable reference after a firmware change, and could allow an unsafe or damaging condition to persist.",
+      "explanation": "The mismatch between the displayed ramp and the approved commissioning sheet, combined with elevated startup current, points to a parameter that was reset by the firmware update rather than normal operation. Because the ramp value can only be read and edited with the drive's control power on, the safe approach is to stop the conveyor and guard against unexpected material movement or restart while working at the keypad, then compare the setting to the approved record so the exact discrepancy is identified rather than guessed at. Restoring the 15-second ramp and recording the change lets the next person confirm the drive matches the commissioned configuration. Leaving the ramp at 8 seconds ignores clear evidence of elevated current stress that shortens motor and drive life even when no trip occurs. Changing several unrelated parameters at once masks the real cause and makes any apparent improvement impossible to attribute. Judging performance by how the conveyor looks while running overlooks the documented approved value, which is the only reliable reference after a firmware change.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1565,7 +1565,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply acceleration time knowledge while the electrician installs dc drives.",
-      "contentHash": "9a3f77548fe5164fe1e709e42ce092f218e9dc4c2ad77a10b8f3ded686708d69"
+      "contentHash": "603ba29cd6e2f00e0e20c623a7d82e75678a7058609ac4b03e964c072d5f08f4"
     },
     {
       "bankItemNumber": 401,
@@ -1610,15 +1610,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a pump-house VFD, the motor draws excessive current only after downstream demand rises, and the technician has not confirmed the drive's minimum speed setting against the motor nameplate and system design. What is the correct next step?",
+      "question": "During overnight low-demand periods, a pump-house VFD ramps its 15 hp TEFC motor down to the programmed minimum speed and the motor's thermal protection trips after about 40 minutes. The technician has not yet confirmed that the drive's minimum speed parameter meets the motor nameplate cooling requirements and the pump manufacturer's minimum flow rating. What is the correct next step?",
       "options": [
-        "Replace the drive with a spare unit immediately and document the swap only if the fault recurs.",
-        "Clear the alarm and continue running until the fault repeats before recording any test data.",
+        "Reset the thermal trip and keep the pump running through the next low-demand cycle before comparing any drive parameters to the nameplate.",
+        "Exchange the drive for a spare unit of the same rating, load the default parameter set, and document the swap only if the trips continue.",
         "Stop work, verify the minimum speed setting against nameplate and manufacturer data, correct any mismatch, then document before resuming.",
-        "Accept the previous technician's verbal report as the only proof that minimum speed is correct."
+        "Accept the previous shift's verbal statement that minimum speed matches the nameplate and return the pump to automatic operation."
       ],
       "correctIndex": 2,
-      "explanation": "The excessive current appears only as downstream demand rises, suggesting the programmed minimum speed may not match the motor's rated characteristics or the pump's load profile. Work must stop so the technician can compare the setting to nameplate ratings and manufacturer application data, correct any discrepancy, and record the verification for future reference. Swapping the drive without checking settings wastes effort and risks repeating the same fault on new equipment. Clearing the alarm and waiting for another failure ignores available evidence and risks motor or drive damage from sustained overcurrent. Relying on a verbal report from another technician provides no verifiable documentation and cannot confirm a setting that affects safe, stable operation. Verifying against approved manufacturer information and documenting the outcome supports safe, code-compliant operation and creates a traceable maintenance record for future reviewers.",
+      "explanation": "A shaft-mounted fan on a TEFC motor moves much less air as speed drops, and a centrifugal pump also has a manufacturer minimum flow below which it recirculates and heats the liquid. Repeated thermal trips that occur only at the programmed minimum speed point directly at a minimum speed parameter set lower than the motor and pump can tolerate continuously. Work should stop so the technician compares the programmed value to the nameplate and the pump manufacturer's application data, raises it to the allowable limit (or adds separate forced-air cooling if the design requires low-speed running), and records the verified setting. Resetting the trip and letting the pump run through another low-demand cycle exposes the winding insulation to more heat and gains no new information. Installing a spare drive with default parameters replaces sound equipment and typically loads a default minimum speed of zero, which repeats or worsens the problem. A verbal assurance from another shift cannot be traced or confirmed and does not establish that the setting suits this motor and pump combination.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1626,7 +1626,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply minimum speed knowledge while the electrician installs ac drives.",
-      "contentHash": "eaed657fd5b00e53c63d5f1ba431bb9e3c660743fbac77a60c6cca8350466918"
+      "contentHash": "4b6786ffc4e86bb823fff4507d4717c5132a1bb93f9dac57035e99a7198d7ff1"
     },
     {
       "bankItemNumber": 403,
@@ -1723,15 +1723,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase capacitor-start motor was rewound and reinstalled on a packaging conveyor. Using the diagram, the technician measures rotor speed with a tachometer and finds slip well above the nameplate value, but the alarm was cleared before the cause was logged. What should the technician do next?",
+      "question": "A single-phase capacitor-start motor was rewound and reinstalled on a packaging conveyor. A tachometer reading shows rotor speed well below the nameplate full-load speed, so slip is much higher than expected, and the earlier drive alarm was cleared before anyone recorded the cause. The diagram shows synchronous speed being set by supply frequency and the winding pole count, with rotor speed sitting below it by the amount of slip. Following that relationship, what should the technician do next?",
       "options": [
-        "Replace the motor bearings immediately since higher slip usually indicates mechanical wear.",
-        "Clear the alarm log and wait to see if the high slip reading happens again before acting.",
-        "Accept the operator's verbal report that the motor sounds fine as sufficient acceptance evidence.",
-        "Pause, verify slip against nameplate and synchronous speed data, resolve the discrepancy, then document and proceed."
+        "Install new motor bearings right away, since slip above the nameplate value normally comes from bearing drag on the rotor shaft.",
+        "Treat the higher slip as a normal break-in characteristic of a freshly rewound winding and release the conveyor back to production.",
+        "Fit a new start capacitor, because slip that exceeds the nameplate figure is caused by a weakened starting capacitor in every case.",
+        "Calculate synchronous speed from the supply frequency and the rewound pole count, compare it with the measured rotor speed to size the slip, find the cause, and record the results before releasing the motor."
       ],
       "correctIndex": 3,
-      "explanation": "Slip is the measurable difference between synchronous and rotor speed, and an unexplained increase can point to voltage imbalance, wiring error, incorrect pole data, or load issues introduced during the rewind. The correct action is to pause, compare the measured speed against nameplate and synchronous speed data, identify the real cause, and document the finding before returning the motor to service. Replacing bearings first is tempting because wear can affect speed, but it skips verifying supply and rewind data, risking a repeat failure and unnecessary cost. Clearing the alarm and waiting for recurrence ignores the abnormal reading entirely, allowing a fault to persist. Relying on an operator's impression provides no measurable evidence and cannot confirm electrical parameters. Only a verified, documented slip check ensures the motor meets specifications and supports future troubleshooting or inspection.",
+      "explanation": "The diagram shows that synchronous speed depends only on supply frequency and pole count, and that rotor speed falls below it by the slip. So the first step is to calculate synchronous speed from frequency and the pole count of the new winding, subtract the measured rotor speed to get actual slip, and compare that with the nameplate value. This narrows the cause to something real, such as the motor being rewound with the wrong number of poles or a miswired coil group, low terminal voltage at the motor, a failing capacitor or centrifugal switch, or a conveyor loaded beyond the motor rating. Replacing bearings first is tempting because drag adds load, but it skips the rewind and supply data and may leave the true fault in place. Calling the high slip a break-in characteristic is wrong; a correctly rewound motor runs at rated speed under rated load from the first start. Blaming the capacitor alone ignores that a start capacitor affects starting torque, not steady running speed. Recording the calculated and measured values also gives the next technician a baseline for comparison.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1739,7 +1739,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "f30f2880cef2e4a4ea69eede695c662f7ad2fd92e8d998c56eb39c65445c7e08"
+      "contentHash": "c4f3a56ca0d2b570aaa61181631a92b5ebab3a826d0162ee9fd700fe98902e43"
     },
     {
       "bankItemNumber": 407,
@@ -1866,15 +1866,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the accompanying diagram, a single-phase capacitor-start motor pulled from storage shows unequal ohmmeter readings between its start and run windings during a pre-installation check. Which verification approach best determines whether this winding resistance imbalance is acceptable before the motor is connected and energized?",
+      "question": "The diagram relates supply frequency and pole count to synchronous speed, with rotor speed running lower by slip. On a service call, a 575 V three-phase squirrel-cage motor driving a conveyor is turning noticeably slower than its nameplate full-load speed under normal load, and an ohmmeter check shows one stator phase winding reading well below the other two. Given the speed and slip relationship shown in the diagram, which verification approach best determines whether this winding resistance imbalance is acceptable before the motor is put back in service?",
       "options": [
-        "Rely on a previous technician's verbal report that the motor tested fine a year ago.",
-        "Energize the motor briefly, assuming any winding fault will trip the breaker immediately.",
-        "Compare the measured winding resistance values against the manufacturer's nameplate and reference data before proceeding.",
-        "Assume the imbalance is normal because capacitor-start motors always show uneven readings."
+        "Recalculate synchronous speed from the supply frequency and pole count shown, and accept the windings if that calculated speed matches the nameplate speed.",
+        "Measure running current in each supply conductor and treat reasonably balanced current draw as proof that the three phase windings are within tolerance.",
+        "Compare each phase winding resistance against the manufacturer's reference values and the allowable deviation between phases for that motor.",
+        "Treat the windings as sound because the diagram shows slip is fixed by frequency and pole count, so winding condition cannot influence shaft speed."
       ],
       "correctIndex": 2,
-      "explanation": "Winding resistance imbalance can indicate shorted turns, corrosion, or moisture damage that leads to overheating, nuisance tripping, or motor failure. The defensible verification is comparing measured start and run winding values against manufacturer nameplate data and reference specifications for that motor type before energizing, since expected imbalance ratios vary by design. A verbal report from a prior test is unverifiable and does not confirm present condition after storage. Energizing to see if a breaker trips risks equipment damage and does not verify winding integrity beforehand; a fault may not trip protection immediately even while degrading the motor. Assuming imbalance is inherently normal ignores the need to confirm values against actual manufacturer tolerances, since some imbalance patterns signal genuine winding damage rather than normal design characteristics. Documented comparison against manufacturer data supports safe, code-compliant decision-making.",
+      "explanation": "The three stator phase windings of a squirrel-cage motor are wound alike, so their resistances should read nearly equal, typically within a few percent. One phase reading well below the others suggests shorted turns or a partial internal fault, which reduces developed torque and shows up as excess slip. The defensible check is to compare each measured phase resistance with the manufacturer's reference values and the allowable phase-to-phase deviation, since acceptable spread depends on winding size and design. Recalculating synchronous speed from frequency and pole count only confirms the no-load reference speed set by the supply; it tells nothing about winding condition, and the diagram shows rotor speed always falls below that value. Balanced line current is not proof of healthy windings, because supply voltage and internal circulating currents can mask a shorted-turn fault while the winding overheats. The last choice misreads the diagram: only synchronous speed is fixed by frequency and poles, while slip varies with load and with the torque the windings can actually produce, so damaged windings do affect running speed.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1882,7 +1882,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply winding resistance balance knowledge while the electrician installs single-phase motors.",
-      "contentHash": "164cdf2dd9a48ab7422c9bc966c9cad06a5bcdef3428085a68742b743be812e5"
+      "contentHash": "355a242164fdae39b483108104e85aa9f37d30f780bc99c34c9031279111ccde"
     },
     {
       "bankItemNumber": 412,
@@ -2070,15 +2070,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase split-phase motor driving a packaging conveyor trips its overload within minutes of starting. A coworker notes the shaft turns visibly slower than the speed marked on the nameplate, and supply voltage and phase rotation have not yet been confirmed. What should the electrician do next?",
+      "question": "A single-phase split-phase motor driving a packaging conveyor trips its overload within minutes of each start. A coworker notes the shaft turns visibly slower than the full-load speed marked on the nameplate, and neither the supply voltage nor the conveyor's mechanical loading has been measured yet. What should the electrician do next?",
       "options": [
-        "Increase the overload trip setting so the conveyor keeps running until the next scheduled shutdown.",
-        "Restart the motor immediately, since slip readings are only required after a full rewind.",
-        "Ask the conveyor operator to describe the noise instead of taking any electrical measurements.",
-        "Isolate and lock out the motor, verify nameplate data, supply voltage, and driven-load conditions before resuming."
+        "Reset the overload, log the trip, and compare actual shaft speed to the nameplate value only if the motor trips again next shift.",
+        "Order a replacement motor of the same frame size, since running below nameplate speed always means the running winding is shorted.",
+        "Fit a larger sheave on the motor shaft so the conveyor returns to the speed stamped on the motor nameplate.",
+        "Isolate and lock out the motor, then verify nameplate data against measured supply voltage, start-winding and centrifugal switch condition, and the mechanical load on the conveyor."
       ],
       "correctIndex": 3,
-      "explanation": "Excessive slip on a single-phase motor raises current draw and heat, explaining both the repeated overload trip and the slower-than-rated shaft speed. The correct response is to isolate the motor safely, then compare nameplate data against measured supply voltage, phase sequence, and the mechanical load the conveyor is placing on the shaft, since any mismatch can increase slip and current. Raising the trip setting hides the underlying fault and risks winding damage or fire. Restarting without investigation ignores clear symptom evidence and risks repeat failure or injury. Relying only on a verbal description skips measurable diagnostic information needed to confirm whether slip, load, or supply conditions are the actual cause. Controlled isolation, verified data, and documented findings protect both equipment and personnel while supporting an accurate root-cause decision.",
+      "explanation": "Slip increases whenever a motor is loaded beyond its rating or supplied below its rated voltage, and higher slip means higher current and heat, which explains both the slow shaft speed and the repeated overload trips. The sound next step is to isolate and lock out the motor, then gather facts: read the nameplate rated voltage, current, and full-load speed, measure the supply voltage at the motor terminals under load, check that the start winding and centrifugal starting switch are operating correctly, and check the conveyor for binding, jammed product, or a dragging belt. A split-phase motor is fed from a single-phase supply, so there is no phase rotation or phase sequence to confirm; the phase displacement comes from the start winding itself. Simply resetting and waiting for another trip allows continued winding overheating without gaining useful data. Assuming a shorted winding skips the low-cost supply and load checks that most often cause excessive slip. Changing the sheave alters conveyor speed but does nothing about the overloaded motor and can increase the load torque, making the slip and overheating worse.",
       "steps": null,
       "tip": "Compare measured shaft speed to nameplate RPM under actual load before assuming a winding fault.",
       "isCalc": "no",
@@ -2086,7 +2086,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "c401c023877529858a140723e34c2571149ee3ef2e9772173b7d6bcf08489e7f"
+      "contentHash": "23e8e0c00745055ad88fe756fbed1fdf3ba7d8ad4ebdad40e60ef06e82821f2a"
     },
     {
       "bankItemNumber": 419,
@@ -2213,15 +2213,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase capacitor-start motor on a packaging line has tripped its overload twice this shift. A technician wants to skip measuring winding resistance, arguing the motor 'sounds normal' and that a spare motor's spec sheet can substitute for actual readings. What must the supervising electrician require before allowing re-energization?",
+      "question": "A 5 hp three-phase squirrel-cage motor driving a packaging line conveyor has tripped its overload twice during one shift. The motor is locked out and the leads are disconnected at the starter. Which action best determines whether the windings themselves are the cause before the motor is returned to service?",
       "options": [
-        "Accept the technician's hearing assessment alone as sufficient proof winding resistance balance is acceptable.",
-        "Re-energize the motor immediately and treat the next overload trip as the verification step.",
-        "Pause work, measure winding resistance against manufacturer data, resolve any imbalance, and document findings before proceeding.",
-        "Accept the spare motor's spec sheet as adequate proof without measuring the installed motor's actual windings."
+        "Reset the overload relay and set it to the next larger current setting so the motor rides through the higher starting current.",
+        "Test insulation resistance from each lead to the frame only, and return the motor to service if the readings exceed the minimum acceptable value.",
+        "Measure the resistance of each phase winding with a low-resistance ohmmeter, compare the three readings to each other and to manufacturer data, and correct any imbalance before re-energizing.",
+        "Measure line voltage at the starter terminals with the feeder energized, and return the motor to service if the three phases are within the allowed voltage unbalance."
       ],
       "correctIndex": 2,
-      "explanation": "Repeated overload trips are a symptom consistent with winding imbalance, so the correct response is to pause, take actual resistance readings on the installed motor, compare them against nameplate and manufacturer data, resolve any discrepancy, and document the result before re-energizing. Listening for unusual sound is not a measurable diagnostic and can miss developing faults that have not yet produced audible or thermal symptoms. Substituting a spare motor's specification sheet is equally unreliable because it reflects a different physical unit, not the windings actually installed and subjected to the load history causing the trips. Re-energizing and waiting for another trip risks equipment damage, unsafe conditions, and destroys the opportunity to diagnose the fault safely. Verified measurement, documented comparison, and resolution before continuing protect both the equipment and the decision trail for future reference.",
+      "explanation": "Repeated overload trips can be caused by an internal winding problem such as shorted turns, a partially open coil, or a poor internal connection. With the motor de-energized and the leads free of the starter, measuring each phase winding with a low-resistance (milliohm) ohmmeter and comparing the three readings against one another and against the manufacturer's data is the direct test: balanced windings should read very close to each other, and a phase that reads noticeably low or high points to a winding fault that must be corrected before re-energizing. Increasing the overload setting only allows a faulty motor to draw excessive current longer and removes the protection that revealed the problem. An insulation-resistance test to the frame checks only the insulation between the windings and ground; a motor with shorted turns between conductors in the same phase can still pass that test. Checking supply voltage balance is a useful step for diagnosing external supply problems, but balanced voltage does not confirm that the windings inside the motor are sound.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2229,7 +2229,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply winding resistance balance knowledge while the electrician installs single-phase motors.",
-      "contentHash": "71cbed027fb604882643fc732cea03b92e188c9471d9b65643f8a7104c85c27d"
+      "contentHash": "247a714be0000c0dfc63ed32b57a35993fbd4f620931ae733ce09dd4900aa585"
     },
     {
       "bankItemNumber": 424,
