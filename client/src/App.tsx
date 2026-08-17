@@ -66,8 +66,7 @@ const USStates = lazy(() => import("./pages/USStates"));
 const USStatePage = lazy(() => import("./pages/USStatePage"));
 const USCourses = lazy(() => import("./pages/USCourses"));
 
-// Skilled-trades expansion — standard free public-beta course family
-const Electrician309ADemo = lazy(() => import("./pages/Electrician309ADemo"));
+// Skilled-trades expansion — standard Ontario 309A course family
 const Electrician309APractice = lazy(() => import("./pages/Electrician309APractice"));
 const Electrician309AMockExam = lazy(() => import("./pages/Electrician309AMockExam"));
 const Electrician309AFlashcards = lazy(() => import("./pages/Electrician309AFlashcards"));
@@ -394,7 +393,6 @@ function Router() {
         <Route path={"/distribution-guide"} component={WaterDistributionGuide} />
         <Route path={"/collection-guide"} component={WastewaterCollectionGuide} />
         <Route path={"/preview"} component={PreviewMode} />
-        <Route path={"/electrician-309a-demo"} component={Electrician309ADemo} />
         <Route path={"/electrician-309a"} component={Electrician309APractice} />
         <Route path={"/electrician-309a-mock"} component={Electrician309AMockExam} />
         <Route path={"/electrician-309a-flashcards"} component={Electrician309AFlashcards} />

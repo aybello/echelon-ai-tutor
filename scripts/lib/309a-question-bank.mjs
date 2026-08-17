@@ -92,6 +92,9 @@ export function validateQuestionBank({ batchFilter = null, full = false } = {}) 
   const questionTexts = new Set();
   const taskCounts = new Map();
   const typeCounts = new Map();
+  const bcExplanationCounts = new Map();
+  const bcOptionCounts = new Map();
+  const bcOpeningCounts = new Map();
   const answerCounts = [0, 0, 0, 0];
   let calculationCount = 0;
   let diagramCount = 0;
@@ -140,6 +143,20 @@ export function validateQuestionBank({ batchFilter = null, full = false } = {}) 
     const bannedText = `${question.question} ${question.options?.join(" ") ?? ""}`;
     assert(!/all of the above|none of the above/i.test(bannedText), errors, `${label} uses an all/none-of-the-above option.`);
     assert(!/\bCEC\s+(?:rule|table)|\bRule\s+\d|\bTable\s+\d/i.test(bannedText), errors, `${label} contains blocked code rule/table lookup content.`);
+    if (["B", "C"].includes(question.module) && question.isCalc === "no") {
+      assert(!/\bon equipment [A-E]\d|\bequipment [BC]\d+-\d+|\bcan directly affect\b|make one controlled decision at a time/i.test(`${bannedText} ${question.explanation ?? ""}`), errors, `${label} contains a retired formulaic bank pattern.`);
+      if (question.diagramId !== null) {
+        assert(/diagram/i.test(question.question), errors, `${label} must direct the learner to use its diagram.`);
+      }
+      const explanationKey = question.explanation.trim().toLowerCase();
+      bcExplanationCounts.set(explanationKey, (bcExplanationCounts.get(explanationKey) ?? 0) + 1);
+      const openingKey = question.question.trim().toLowerCase().split(/\s+/).slice(0, 8).join(" ");
+      bcOpeningCounts.set(openingKey, (bcOpeningCounts.get(openingKey) ?? 0) + 1);
+      for (const option of question.options) {
+        const optionKey = option.trim().toLowerCase();
+        bcOptionCounts.set(optionKey, (bcOptionCounts.get(optionKey) ?? 0) + 1);
+      }
+    }
     if (question.isCalc === "yes") {
       calculationCount += 1;
       assert(question.questionType === "troubleshooting_or_calculation", errors, `${label} calculations must use the troubleshooting/calculation type.`);
@@ -165,6 +182,11 @@ export function validateQuestionBank({ batchFilter = null, full = false } = {}) 
     taskCounts.set(question.taskCode, (taskCounts.get(question.taskCode) ?? 0) + 1);
     typeCounts.set(question.questionType, (typeCounts.get(question.questionType) ?? 0) + 1);
   }
+
+  const maxCount = (counts) => counts.size ? Math.max(...counts.values()) : 0;
+  assert(maxCount(bcExplanationCounts) <= 3, errors, "Batch B/C non-calculation explanations repeat too often.");
+  assert(maxCount(bcOptionCounts) <= 3, errors, "Batch B/C non-calculation answer options repeat too often.");
+  assert(maxCount(bcOpeningCounts) <= 12, errors, "Batch B/C non-calculation stem openings repeat too often.");
 
   const checkedModules = new Set(batches.map((batch) => batch.batch));
   const expectedModules = allocation.majorWorkActivities.filter(

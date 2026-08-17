@@ -23,6 +23,7 @@
     "309a:validate:full": "node scripts/validate-309a-question-bank.mjs --full",
     "309a:validate:a": "node scripts/validate-309a-question-bank.mjs --batch A",
     "309a:hash": "node scripts/stamp-309a-content-hashes.mjs",
+    "309a:rewrite:bc": "node scripts/rewrite-309a-bc-quality.mjs",
     "309a:generate:remaining": "node scripts/generate-309a-remaining-batches.mjs",
     "309a:import:dry-run": "node scripts/import-309a-question-bank.mjs"
   },

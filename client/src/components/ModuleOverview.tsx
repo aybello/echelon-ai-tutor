@@ -6,7 +6,7 @@
  * Renders: intro paragraph, key concept cards, optional table, and exam tips.
  */
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { ModuleOverview } from "@/lib/questionTypes";
 
 // Normalise legacy `keyTopics: string[]` shape into `keyPoints` so the component
@@ -28,6 +28,7 @@ interface ModuleOverviewProps {
   moduleBg?: string;
   moduleIcon?: string;
   defaultExpanded?: boolean;
+  children?: ReactNode;
 }
 
 export default function ModuleOverviewPanel({
@@ -37,6 +38,7 @@ export default function ModuleOverviewPanel({
   moduleBg = "#DBEAFE",
   moduleIcon = "📚",
   defaultExpanded = true,
+  children,
 }: ModuleOverviewProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   // Normalise legacy keyTopics shape so we never crash on old-schema banks
@@ -206,6 +208,8 @@ export default function ModuleOverviewPanel({
               ))}
             </ul>
           </div>
+
+          {children && <div style={{ marginTop: 18 }}>{children}</div>}
 
         </div>
       )}

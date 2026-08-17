@@ -45,7 +45,7 @@ export default function AITutor({
   const hasSession = !!emailSessionQuery.data?.email;
   // Normalise field names — Ontario uses `correct`, WPI uses `correctAnswer`
   const correctIdx: number | undefined =
-    (question as any)?.correctAnswer ?? (question as any)?.correct ?? undefined;
+    (question as any)?.correctIndex ?? (question as any)?.correctAnswer ?? (question as any)?.correct ?? undefined;
   // Normalise question text — Ontario uses `q`, WPI uses `question`
   const questionText: string =
     (question as any)?.question ?? (question as any)?.q ?? "";
@@ -77,6 +77,7 @@ export default function AITutor({
 
   useEffect(() => {
     let initMsg: string;
+    const isElectrician309A = examType === "electrician-309a";
 
     if (patternMode) {
       const byModule: Record<string, { wrong: number; total: number }> = {};
@@ -103,7 +104,9 @@ export default function AITutor({
         initMsg = `Let's work through this together.\n\nYou selected **${selectedText}** — ${(question as any).wrongExp?.[userAnswer] || "that's not quite right."}\n\nThe correct answer is **${correctText}**.\n\nWould you like me to walk through the solution step by step, or would you like me to explain the underlying concept first?`;
       }
     } else {
-      initMsg = `Hi! I'm your Echelon AI Tutor — here to help you master your Canadian water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
+      initMsg = isElectrician309A
+        ? `Hi! I'm your Echelon 309A AI Tutor — here to help you study for the Ontario Construction Electrician exam.\n\nI can explain electrical concepts, walk through calculations, interpret the course diagrams, and help you understand *why* an answer is right or wrong.\n\nWhat would you like to work on?`
+        : `Hi! I'm your Echelon AI Tutor — here to help you master your Canadian water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
     }
 
     setMessages([{ role: "assistant", content: initMsg }]);
