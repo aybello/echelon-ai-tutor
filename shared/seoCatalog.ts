@@ -119,6 +119,7 @@ const TRACK_LABELS: Record<CourseEntry["track"], string> = {
   "wastewater-collection": "Wastewater Collection",
   "water-quality": "Water Quality Analyst",
   oit: "Operator-in-Training",
+  "construction-electrician": "Construction Electrician",
 };
 
 export interface CourseSeoPage {

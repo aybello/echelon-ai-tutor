@@ -16,10 +16,10 @@ import { resolveCourseKey } from "../../shared/courseRegistry";
 export const FREE_TRIAL_LIMIT = 15;
 
 /**
- * No course is fully free. Every unentitled learner receives the same
- * 15-question preview through FREE_TRIAL_LIMIT.
+ * Course keys with a deliberately free learner beta bypass the standard
+ * 15-question preview gate. All others receive the regular free preview.
  */
-export const FREE_EXAM_TYPES = new Set<string>();
+export const FREE_EXAM_TYPES = new Set<string>(["electrician-309a"]);
 
 /**
  * AI Tutor is free for ALL exam types — users hit the 15-question quiz gate

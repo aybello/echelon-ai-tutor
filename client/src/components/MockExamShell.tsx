@@ -198,7 +198,7 @@ export interface StreamOption {
 }
 
 export type ExamProductKey =
-  | "class1" | "wqa" | "oit" | "oit-ww"
+  | "class1" | "wqa" | "oit" | "oit-ww" | "electrician-309a"
   | "class1-water" | "class1-ww" | "class2-water" | "class2-ww"
   | "class3-water" | "class3-ww" | "class4-water" | "class4-ww"
   | "wpi-class1-water" | "wpi-class2-water" | "wpi-class3-water" | "wpi-class4-water"
@@ -237,6 +237,8 @@ export interface MockExamConfig {
   price: number;
   /** Optional feature bullets for paywall */
   features?: string[];
+  /** Deliberately free course mock; bypasses the standard purchase gate. */
+  freeAccess?: boolean;
   /**
    * @deprecated Mock-exam paywalls always return to practicePath so the close,
    * back, intro, active-exam exit, and results actions share one destination.
@@ -355,6 +357,7 @@ export default function MockExamShell({
   productName: productNameProp,
   price: priceProp,
   features,
+  freeAccess = false,
   practicePath,
   practiceLabel,
   formulaPath,
@@ -535,6 +538,7 @@ export default function MockExamShell({
         productName={productNameProp}
         price={priceProp}
         features={features}
+        freeAccess={freeAccess}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -643,6 +647,7 @@ export default function MockExamShell({
         productName={productName}
         price={price}
         features={features}
+        freeAccess={freeAccess}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

@@ -45,6 +45,8 @@ export interface UseQuizSessionConfig {
   examType: string;
   /** All questions loaded from useQuestionBank */
   allQuestions: DBQuestion[];
+  /** Deliberately free courses use the standard workspace without a trial gate. */
+  freeCourse?: boolean;
 }
 
 export interface UseQuizSessionReturn {
@@ -178,6 +180,7 @@ export function getAdaptiveNext(
 export function useQuizSession({
   examType,
   allQuestions,
+  freeCourse = false,
 }: UseQuizSessionConfig): UseQuizSessionReturn {
   // ── URL params ─────────────────────────────────────────────────────────────
   const searchString = useSearch();
@@ -216,7 +219,7 @@ export function useQuizSession({
   // ── Trial / gate state ─────────────────────────────────────────────────────
   // Paid access must be confirmed by the server. Browser flags are not an
   // entitlement source because they can outlive a refunded or expired pass.
-  const [trialUnlocked, setTrialUnlockedState] = useState(false);
+  const [trialUnlocked, setTrialUnlockedState] = useState(freeCourse);
   const [trialDone, setTrialDone] = useState(false);
 
   // ── Server-side access check — lifts gate for paid users on any device ─────
@@ -245,12 +248,13 @@ export function useQuizSession({
   // relocked even when this browser still contains an older unlock flag.
   useEffect(() => {
     if (accessData) {
-      setTrialUnlockedState(accessData.hasAccess === true);
-      if (accessData.hasAccess === true) {
+      const unlocked = freeCourse || accessData.hasAccess === true;
+      setTrialUnlockedState(unlocked);
+      if (unlocked) {
         setTrialUnlocked();
       }
     }
-  }, [accessData]);
+  }, [accessData, freeCourse]);
 
   // ── Quiz mode & settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>(initialMode);

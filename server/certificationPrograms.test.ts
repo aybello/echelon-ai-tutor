@@ -203,6 +203,7 @@ describe("trade-agnostic certification program foundation", () => {
     const appSource = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
     const demoSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309ADemo.tsx"), "utf8");
     const practiceSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309APractice.tsx"), "utf8");
+    const adapterSource = readFileSync(resolve(process.cwd(), "client/src/hooks/useElectrician309ABank.ts"), "utf8");
     const reviewRouterSource = readFileSync(resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"), "utf8");
     const siteNavSource = readFileSync(resolve(process.cwd(), "client/src/components/SiteNav.tsx"), "utf8");
 
@@ -211,7 +212,8 @@ describe("trade-agnostic certification program foundation", () => {
     expect(appSource).toContain('/electrician-309a');
     expect(demoSource).toContain("trpc.electricianReview.get309APublicPreview.useQuery()");
     expect(demoSource).not.toContain("electrician309aDraftQuestions");
-    expect(practiceSource).toContain("trpc.electricianReview.get309ABetaPractice.useQuery()");
+    expect(practiceSource).toContain("useElectrician309ABank");
+    expect(adapterSource).toContain("trpc.electricianReview.get309ABetaPractice.useQuery(");
     expect(practiceSource).not.toContain("electrician309aDraftQuestions");
     expect(reviewRouterSource).toContain("adminProcedure.query");
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForInternalReview");
@@ -219,8 +221,8 @@ describe("trade-agnostic certification program foundation", () => {
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForPublicPreview");
     expect(reviewRouterSource).toContain("get309ABetaPractice");
     expect(reviewRouterSource).toContain('contentStatus, "beta_approved"');
-    expect(siteNavSource).toContain("Electrician Preview");
-    expect(siteNavSource).toContain("/electrician-309a-demo");
+    expect(siteNavSource).toContain("309A Electrician");
+    expect(siteNavSource).toContain("/electrician-309a");
   });
 
   it("fails closed unless the governed free-beta release gates all pass", () => {

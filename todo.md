@@ -1565,3 +1565,11 @@
 - [x] Activate the public 309A learner quiz and connect it to approved governed content
 - [x] Validate and publish the live 309A quiz route with the expected free-course access
 - [x] Fix the live 309A learner-route 404 and re-verify the deployed public quiz
+## 309A Standard Course Architecture Correction
+- [x] Compare the existing course registry, workspace, and tool conventions with the separate 309A implementation
+- [x] Register 309A as a free standard Echelon Institute course with canonical course navigation and access policy
+- [x] Replace the custom 309A practice flow with shared course-workspace patterns for practice, mock, flashcards, notes, and progress
+- [x] Validate and publish the unified 309A course experience without a separate prototype path
+- [x] Fix the stale welcome-email scheduler import error before releasing the unified course update
+- [x] Remove the CA$0 purchase gate from the free 309A standard mock-exam flow
+- [x] Repair the 309A free-access resolver and update stale source-contract tests for the shared governed-bank adapter
