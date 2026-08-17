@@ -1560,3 +1560,7 @@
 - [x] Validate the integrated migration, governed-bank, and release path on `main`
 - [x] Publish the staged free 309A governed-bank foundation and verify the live release
 - [x] Restore the welcome-email job regression expectation while preserving its privacy-safe error output
+## Live 309A Learner Quiz Activation
+- [x] Inspect the live learner route, certification-governance migration state, imported-bank state, and quiz delivery wiring
+- [x] Activate the public 309A learner quiz and connect it to approved governed content
+- [x] Validate and publish the live 309A quiz route with the expected free-course access

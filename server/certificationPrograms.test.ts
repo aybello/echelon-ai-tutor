@@ -55,11 +55,11 @@ describe("trade-agnostic certification program foundation", () => {
     );
   });
 
-  it("keeps 309A as a public draft preview but unavailable to commerce or Teams", () => {
-    expect(ELECTRICIAN_309A_PROGRAM.lifecycle).toBe("public_preview");
+  it("keeps 309A as a free governed beta but unavailable to commerce or Teams", () => {
+    expect(ELECTRICIAN_309A_PROGRAM.lifecycle).toBe("closed_beta");
     expect(ELECTRICIAN_309A_PROGRAM.launch).toEqual({
       publicPreviewApproved: true,
-      publicDeliveryApproved: false,
+      publicDeliveryApproved: true,
       sellable: false,
       teamAssignable: false,
     });
@@ -202,21 +202,30 @@ describe("trade-agnostic certification program foundation", () => {
   it("keeps draft 309A questions out of the public browser bundle", () => {
     const appSource = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
     const demoSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309ADemo.tsx"), "utf8");
+    const practiceSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309APractice.tsx"), "utf8");
     const reviewRouterSource = readFileSync(resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"), "utf8");
     const siteNavSource = readFileSync(resolve(process.cwd(), "client/src/components/SiteNav.tsx"), "utf8");
 
     expect(appSource).toContain("Electrician309ADemo");
+    expect(appSource).toContain("Electrician309APractice");
+    expect(appSource).toContain('/electrician-309a');
     expect(demoSource).toContain("trpc.electricianReview.get309APublicPreview.useQuery()");
     expect(demoSource).not.toContain("electrician309aDraftQuestions");
+    expect(practiceSource).toContain("trpc.electricianReview.get309ABetaPractice.useQuery()");
+    expect(practiceSource).not.toContain("electrician309aDraftQuestions");
     expect(reviewRouterSource).toContain("adminProcedure.query");
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForInternalReview");
     expect(reviewRouterSource).toContain("publicProcedure.query");
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForPublicPreview");
+    expect(reviewRouterSource).toContain("get309ABetaPractice");
+    expect(reviewRouterSource).toContain('contentStatus, "beta_approved"');
     expect(siteNavSource).toContain("Electrician Preview");
     expect(siteNavSource).toContain("/electrician-309a-demo");
   });
 
   it("fails closed unless the governed free-beta release gates all pass", () => {
+    expect(ELECTRICIAN_309A_PROGRAM.lifecycle).toBe("closed_beta");
+    expect(ELECTRICIAN_309A_PROGRAM.launch.publicDeliveryApproved).toBe(true);
     const bank: CertificationBankVersionGovernance = {
       programKey: ELECTRICIAN_309A_PROGRAM_KEY,
       bankKey: "electrician-309a",

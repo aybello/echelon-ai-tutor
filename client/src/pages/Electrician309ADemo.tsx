@@ -167,12 +167,18 @@ export default function Electrician309ADemo() {
                   >
                     Start 10-question diagnostic
                   </button>
+                  <a
+                    href="/electrician-309a"
+                    className="rounded-xl border border-white/35 bg-white/10 px-6 py-3.5 font-extrabold text-white transition hover:bg-white/20"
+                  >
+                    Practice the free beta bank →
+                  </a>
                   <div className="rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-blue-50">
                     100 questions · 4 hours · 70% pass mark
                   </div>
                 </div>
                 <p className="mt-5 max-w-2xl text-xs leading-5 text-blue-100/80">
-                  This is an original Echelon Institute draft preview—not a full course, mock exam, or Canadian Electrical Code preparation product. Echelon's research review is ongoing.
+                  This is an original Echelon Institute course preview. The free beta practice bank is growing toward 500 questions; it is not a mock exam or Canadian Electrical Code preparation product.
                 </p>
               </div>
 

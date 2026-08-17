@@ -150,7 +150,7 @@ export const ELECTRICIAN_309A_PROGRAM: CertificationProgram = {
     credentialCode: "309A",
     redSeal: true,
   },
-  lifecycle: "public_preview",
+  lifecycle: "closed_beta",
   currentBlueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
   blueprints: [
     {
@@ -223,7 +223,7 @@ export const ELECTRICIAN_309A_PROGRAM: CertificationProgram = {
   ],
   launch: {
     publicPreviewApproved: true,
-    publicDeliveryApproved: false,
+    publicDeliveryApproved: true,
     sellable: false,
     teamAssignable: false,
   },
@@ -270,7 +270,7 @@ export function isCertificationQuestionPublicPreviewable(
   program: CertificationProgram,
   question: CertificationQuestionGovernance,
 ): boolean {
-  if (program.lifecycle !== "public_preview") return false;
+  if (program.lifecycle !== "public_preview" && program.lifecycle !== "closed_beta") return false;
   if (!program.launch.publicPreviewApproved) return false;
   if (question.programKey !== program.programKey) return false;
   if (question.blueprintVersion !== program.currentBlueprintVersion) return false;
@@ -340,8 +340,9 @@ export function isCertificationContentBetaDeliverable(
   item: GovernedCertificationContent,
   source: CertificationSourceGovernance | undefined,
 ): boolean {
-  if (program.lifecycle !== "public_preview") return false;
+  if (program.lifecycle !== "public_preview" && program.lifecycle !== "closed_beta") return false;
   if (!program.launch.publicPreviewApproved) return false;
+  if (!program.launch.publicDeliveryApproved) return false;
   if (program.launch.sellable || program.launch.teamAssignable) return false;
   if (bank.programKey !== program.programKey || bank.bankKey !== program.bankKey) return false;
   if (bank.blueprintVersion !== program.currentBlueprintVersion) return false;

@@ -68,6 +68,7 @@ const USCourses = lazy(() => import("./pages/USCourses"));
 
 // Skilled-trades expansion — clearly labelled public draft preview
 const Electrician309ADemo = lazy(() => import("./pages/Electrician309ADemo"));
+const Electrician309APractice = lazy(() => import("./pages/Electrician309APractice"));
 
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
@@ -392,6 +393,7 @@ function Router() {
         <Route path={"/collection-guide"} component={WastewaterCollectionGuide} />
         <Route path={"/preview"} component={PreviewMode} />
         <Route path={"/electrician-309a-demo"} component={Electrician309ADemo} />
+        <Route path={"/electrician-309a"} component={Electrician309APractice} />
         <Route path={"/admin"} component={Admin} />
         <Route path={"/pricing"} component={Pricing} />
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
