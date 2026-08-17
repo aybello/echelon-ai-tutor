@@ -209,20 +209,20 @@ export default function QuizShell({
   const [bookmarked, setBookmarked] = useState(false);
 
   // Course-workspace deep links open the requested learning surface directly.
+  // Notes often arrive after cached questions, so this deliberately retries when
+  // the note payload resolves instead of showing an inaccurate preparation state.
   useEffect(() => {
     const panel = new URLSearchParams(window.location.search).get("panel");
     if (panel === "notes") {
       if (moduleOverviews && Object.keys(moduleOverviews).length > 0) {
         setStudyNotesModule(selectedModule);
         setStudyNotesOpen(true);
-      } else {
-        toast.info("Study notes are being prepared for this course.");
       }
     }
     if (panel === "tutor") onTutorOpen();
-  // Run only when arriving on a course route; callbacks vary between quiz pages.
+  // Retry when cached-question pages receive their independent notes payload.
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPath]);
+  }, [currentPath, moduleOverviews, selectedModule]);
   const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
     onSuccess: (data) => {
       setBookmarked(data.bookmarked);

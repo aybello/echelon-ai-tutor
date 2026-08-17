@@ -1493,3 +1493,7 @@
 ## Study Notes Coverage Audit
 - [x] Map every active course to its study-note content and course-workspace wiring
 - [x] Identify missing study notes and explain the cause before planning any content expansion
+## OIT Study Notes Compatibility Repair
+- [x] Compare the OIT module-overviews payload with the course-workspace note renderer
+- [x] Correct the OIT study-notes compatibility failure that shows the preparation placeholder
+- [x] Add regression coverage and verify the live OIT study-notes panel

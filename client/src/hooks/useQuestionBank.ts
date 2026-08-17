@@ -152,7 +152,9 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     { bankKey },
     {
       staleTime: 1000 * 60 * 30,
-      enabled: !cached,
+      // Notes are maintained independently from questions. Always refresh them:
+      // an existing question-cache entry may predate when notes were published.
+      enabled: true,
       retry: 4,
       retryDelay: 5000,
     }
@@ -230,7 +232,9 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     moduleTargets = cached.moduleTargets;
     formulaLinks = cached.formulaLinks;
     totalQuestions = (liveQuestions && liveQuestions.length > 0) ? liveQuestions.length : cached.totalQuestions;
-    overviews = cached.overviews;
+    // Retain cached notes for an instant render, but prefer the live result so
+    // newly published notes appear without requiring users to clear storage.
+    overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? cached.overviews;
     // isLoading: false so quiz renders immediately; fullQuery runs silently in bg
     isLoading = false;
   } else if (mode === "lazy") {
