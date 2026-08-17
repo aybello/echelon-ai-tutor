@@ -1538,3 +1538,7 @@
 - [x] Produce the exact 500-question blueprint allocation, authoring rules, governance fields, and import-validation contract
 - [x] Prepare original Echelon Institute diagram briefs and implementation specifications for 309A learning content
 - [x] Write a self-contained Codex handoff with source links, target files, acceptance tests, and staged delivery instructions
+## Welcome Email Reliability Repair
+- [x] Inspect welcome-email eligibility, scheduled-job execution, delivery configuration, and database audit state
+- [x] Repair the specific welcome-email failure without risking duplicate customer messages
+- [x] Add regression coverage and validate the corrected welcome-email flow before publication
