@@ -27,7 +27,7 @@ export default function OITWastewaterQuiz() {
     color: typeof m === "object" ? (m as any).color : undefined,
   }));
 
-  const session = useQuizSession({ examType: "oit-ww", allQuestions });
+  const session = useQuizSession({ examType: "oit-ww", allQuestions, freeTutorPreview: true });
 
   // Initialize first question once data loads
   if (!bankLoading && allQuestions.length > 0 && !session.initialized) {

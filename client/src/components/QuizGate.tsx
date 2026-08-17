@@ -173,7 +173,7 @@ export default function QuizGate({
           {/* X button — top-right corner of the card */}
           <button
             onClick={() => navigate(backPath)}
-            aria-label="Back to homepage"
+            aria-label="Close preview gate"
             style={{
               position: "absolute",
               top: 14,

@@ -37,7 +37,7 @@ export default function Home() {
 
   const MODULES = MODULE_CONFIG;
 
-  const session = useQuizSession({ examType: "oit", allQuestions });
+  const session = useQuizSession({ examType: "oit", allQuestions, freeTutorPreview: true });
 
   // Initialize first question once data loads
   if (!bankLoading && allQuestions.length > 0 && !session.initialized) {

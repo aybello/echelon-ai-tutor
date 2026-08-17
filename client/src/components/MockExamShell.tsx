@@ -1154,6 +1154,7 @@ export default function MockExamShell({
           productName={productName}
           priceLabel={`CA${price}`}
           paidFeatures={features}
+          examType={productKey}
           previewName="mock-exam questions"
           backPath={practicePath}
           onUnlocked={() => {}}
