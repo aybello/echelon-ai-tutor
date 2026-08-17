@@ -17,3 +17,7 @@
 ## Improvement direction
 
 Build a 309A-specific flashcard adapter that turns governed questions into concise concept cards, preserves a learner-actionable answer and takeaway, carries module/topic metadata, and keeps the existing shared shell’s module filtering and saved known/unknown progress.
+
+## Post-publication verification
+
+The initial live verification immediately after the flashcard checkpoint still returned the prior flashcard client bundle: it showed the full question stem, the legacy header count, and no explicit study or still-learning review controls. The deployment therefore requires a production-refresh verification before the release can be described as live.
