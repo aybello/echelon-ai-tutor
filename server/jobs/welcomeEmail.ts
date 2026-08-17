@@ -18,6 +18,15 @@ export interface WelcomeEmailResult {
   errors: string[];
 }
 
+/**
+ * Project-owned Heartbeat identity created for the hourly welcome-email job.
+ * This is not a secret; callback access still requires a valid cron session.
+ */
+export const WELCOME_EMAIL_HEARTBEAT_TASK_UID = "cZST8deaHfDg7fKZDTWz5u";
+
+export const isWelcomeEmailHeartbeatTask = (taskUid: string | undefined): boolean =>
+  taskUid === WELCOME_EMAIL_HEARTBEAT_TASK_UID;
+
 /** Stable transport identity retained if the callback itself is retried. */
 export const getWelcomeEmailMessageId = (purchaseId: number): string =>
   `<welcome-purchase-${purchaseId}@echeloninstitute.ca>`;

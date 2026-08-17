@@ -2,7 +2,9 @@ import { describe, expect, it, vi } from "vitest";
 import {
   deliverWelcomeEmailForPurchase,
   getWelcomeEmailMessageId,
+  isWelcomeEmailHeartbeatTask,
   toWelcomeEmailScheduledResponse,
+  WELCOME_EMAIL_HEARTBEAT_TASK_UID,
 } from "./welcomeEmail";
 
 const purchase = {
@@ -17,6 +19,12 @@ describe("welcome email delivery", () => {
   it("uses a stable per-purchase Message-ID for platform retries", () => {
     expect(getWelcomeEmailMessageId(42)).toBe("<welcome-purchase-42@echeloninstitute.ca>");
     expect(getWelcomeEmailMessageId(42)).toBe(getWelcomeEmailMessageId(42));
+  });
+
+  it("accepts only the configured project-owned Heartbeat task", () => {
+    expect(isWelcomeEmailHeartbeatTask(WELCOME_EMAIL_HEARTBEAT_TASK_UID)).toBe(true);
+    expect(isWelcomeEmailHeartbeatTask("another-task")).toBe(false);
+    expect(isWelcomeEmailHeartbeatTask(undefined)).toBe(false);
   });
 
   it("marks a purchase as sent only after SMTP accepts the welcome email", async () => {

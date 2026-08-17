@@ -1542,3 +1542,4 @@
 - [x] Inspect welcome-email eligibility, scheduled-job execution, delivery configuration, and database audit state
 - [x] Repair the specific welcome-email failure without risking duplicate customer messages
 - [x] Add regression coverage and validate the corrected welcome-email flow before publication
+- [x] Bind the created platform schedule identity to the welcome-email callback and verify its configuration

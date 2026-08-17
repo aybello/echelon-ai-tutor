@@ -17,7 +17,11 @@ import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
-import { runWelcomeEmailJob, toWelcomeEmailScheduledResponse } from "../jobs/welcomeEmail";
+import {
+  isWelcomeEmailHeartbeatTask,
+  runWelcomeEmailJob,
+  toWelcomeEmailScheduledResponse,
+} from "../jobs/welcomeEmail";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 
@@ -200,7 +204,7 @@ async function startServer() {
   // the retry; failed purchases remain eligible with the same Message-ID.
   app.post("/api/scheduled/welcome-email", async (_req, res) => {
     const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
-    if (!cronUser?.isCron || !cronUser.taskUid) {
+    if (!cronUser?.isCron || !isWelcomeEmailHeartbeatTask(cronUser.taskUid)) {
       return res.status(403).json({ error: "cron-only" });
     }
     try {
