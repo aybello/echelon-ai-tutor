@@ -1520,3 +1520,17 @@
 - [x] Compare the 309A prototype layout, type, colours, and navigation with the existing Echelon Institute course experience
 - [x] Refactor the 309A preview to use shared Echelon Institute marketing and learning design patterns
 - [x] Validate and publish the integrated 309A visual experience on desktop and mobile
+## 309A Question Bank and Study Guide Quality Repair
+- [ ] Audit question phrasing, explanation specificity, module coverage, and study-note completeness across the 309A course
+- [ ] Rewrite repetitive 309A question content into varied, original, technically specific scenarios with answer-linked explanations
+- [ ] Replace thin module notes with complete study guides linked to the 309A blueprint and approved diagrams
+- [ ] Run independent content review, governance validation, and learner-experience regression checks before publication
+## PR #27 Corrected 309A Course Merge and Deployment
+- [ ] Push the corrected quality-reviewed 309A course branch and confirm its Quality Gate
+- [ ] Merge the corrected 309A course update into `main` and validate the integrated release
+- [ ] Publish the repaired 309A study materials and verify the live course
+
+## 309A Flashcard Progress Display Repair
+- [ ] Audit the “Got it” and “Still learning” counts, card filtering, and persistence identifiers
+- [ ] Correct the progress-state calculation and review controls so display matches actual learner decisions
+- [ ] Validate, publish, and verify the corrected flashcard progress experience
