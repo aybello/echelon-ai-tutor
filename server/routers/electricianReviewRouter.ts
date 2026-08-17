@@ -11,9 +11,8 @@ import {
 } from "../../shared/certificationPrograms";
 
 /**
- * Full draft material stays on the server. The limited public preview is a
- * policy-controlled demonstration, while commercial learner delivery remains
- * blocked until technical review and product approval are complete.
+ * Full draft material stays on the server. The legacy preview remains limited,
+ * while the standard shared course reads only the governed active learner bank.
  */
 export const electricianReviewRouter = router({
   get309APublicPreview: publicProcedure.query(() =>
@@ -52,7 +51,7 @@ export const electricianReviewRouter = router({
     if (!bank) return { questions: [], total: 0 };
     const rows = await db
       .select({
-        id: certificationQuestions.id,
+        id: certificationQuestions.bankItemNumber,
         module: certificationQuestions.module,
         taskCode: certificationQuestions.taskCode,
         topic: certificationQuestions.topic,
@@ -65,6 +64,7 @@ export const electricianReviewRouter = router({
         tip: certificationQuestions.tip,
         isCalc: certificationQuestions.isCalc,
         diagramId: certificationQuestions.diagramId,
+        diagramAlt: certificationQuestions.diagramAlt,
       })
       .from(certificationQuestions)
       .where(and(

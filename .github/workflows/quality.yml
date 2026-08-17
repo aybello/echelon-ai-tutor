@@ -36,6 +36,11 @@ jobs:
       - name: Block high and critical production dependency advisories
         run: pnpm audit --prod --audit-level high
       - run: pnpm check
+      - name: Validate the complete governed 309A content package
+        run: |
+          pnpm 309a:validate:full
+          pnpm 309a:validate-package
+          pnpm 309a:import:dry-run
       - run: pnpm db:verify-migrations
       - name: Verify clean baseline and forward-only upgrade path
         shell: bash
@@ -86,6 +91,7 @@ jobs:
           server/changelog.test.ts
           server/questionGovernance.test.ts
           server/certificationPrograms.test.ts
+          server/electricianStandardCourse.test.ts
           server/electrician309aBlueprint.test.ts
           server/electrician309aQuestions.test.ts
           server/tutor.chat.test.ts

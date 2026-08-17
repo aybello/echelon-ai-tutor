@@ -116,6 +116,10 @@ export interface QuizShellProps {
   // Optional: module overview study notes (keyed by module name)
   moduleOverviews?: Record<string, ModuleOverview>;
 
+  // Optional course-specific visuals that extend the shared question and notes surfaces.
+  renderQuestionSupplement?: (question: AnyQuizQuestion) => ReactNode;
+  renderModuleSupplement?: (moduleName: string) => ReactNode;
+
   // Optional: extra content rendered inside the header (below stats/pills row)
   headerExtra?: ReactNode;
   // Optional: timed mode — seconds per question (0 = disabled)
@@ -188,6 +192,8 @@ export default function QuizShell({
   extraContent,
   renderAITutor,
   moduleOverviews,
+  renderQuestionSupplement,
+  renderModuleSupplement,
   headerExtra,
   timedSeconds = 0,
   onTimeUp,
@@ -811,6 +817,7 @@ export default function QuizShell({
           </div>
 
           {/* Question text */}
+          {renderQuestionSupplement?.(current)}
           <p style={{
             fontSize: "clamp(13px, 2.2vw, 15px)",
             fontWeight: 700,
@@ -1232,7 +1239,9 @@ export default function QuizShell({
                   moduleBg={modules.find(m => m.name === studyNotesModule)?.bg}
                   moduleIcon={modules.find(m => m.name === studyNotesModule)?.icon}
                   defaultExpanded={true}
-                />
+                >
+                  {renderModuleSupplement?.(studyNotesModule)}
+                </ModuleOverviewPanel>
               </div>
             )}
           </div>

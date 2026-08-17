@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import {
   BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical,
   Gauge, GraduationCap, LayoutDashboard, Menu, MessageCircleQuestion,
-  NotebookTabs, Sigma, Sparkles, X,
+  NotebookTabs, Sigma, Sparkles, X, Zap,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -123,7 +123,7 @@ export default function SiteNav({
           <img src={LOGO_URL} alt="" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
-            <small>Operator certification prep</small>
+            <small>{course?.courseKey === "electrician-309a" ? "309A electrician exam prep" : "Operator certification prep"}</small>
           </span>
         </Link>
 
@@ -155,7 +155,7 @@ export default function SiteNav({
       {course && (
         <div className="echelon-course-bar">
           <div className="echelon-course-identity">
-            <FlaskConical size={16} aria-hidden="true" />
+            {course.courseKey === "electrician-309a" ? <Zap size={16} aria-hidden="true" /> : <FlaskConical size={16} aria-hidden="true" />}
             <span>{course.shortName}</span>
             <small>{course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
           </div>

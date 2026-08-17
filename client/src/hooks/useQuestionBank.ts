@@ -40,6 +40,8 @@ export interface DBQuestion {
   tip?: string;
   isCalc: boolean;
   topic?: string;
+  diagramId?: string | null;
+  diagramAlt?: string | null;
 }
 
 export interface ModuleOverview {

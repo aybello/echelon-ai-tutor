@@ -201,17 +201,15 @@ describe("trade-agnostic certification program foundation", () => {
 
   it("keeps draft 309A questions out of the public browser bundle", () => {
     const appSource = readFileSync(resolve(process.cwd(), "client/src/App.tsx"), "utf8");
-    const demoSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309ADemo.tsx"), "utf8");
     const practiceSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309APractice.tsx"), "utf8");
     const adapterSource = readFileSync(resolve(process.cwd(), "client/src/hooks/useElectrician309ABank.ts"), "utf8");
     const reviewRouterSource = readFileSync(resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"), "utf8");
     const siteNavSource = readFileSync(resolve(process.cwd(), "client/src/components/SiteNav.tsx"), "utf8");
 
-    expect(appSource).toContain("Electrician309ADemo");
     expect(appSource).toContain("Electrician309APractice");
+    expect(appSource).not.toContain("Electrician309ADemo");
+    expect(appSource).not.toContain("/electrician-309a-demo");
     expect(appSource).toContain('/electrician-309a');
-    expect(demoSource).toContain("trpc.electricianReview.get309APublicPreview.useQuery()");
-    expect(demoSource).not.toContain("electrician309aDraftQuestions");
     expect(practiceSource).toContain("useElectrician309ABank");
     expect(adapterSource).toContain("trpc.electricianReview.get309ABetaPractice.useQuery(");
     expect(practiceSource).not.toContain("electrician309aDraftQuestions");
@@ -231,7 +229,7 @@ describe("trade-agnostic certification program foundation", () => {
     const bank: CertificationBankVersionGovernance = {
       programKey: ELECTRICIAN_309A_PROGRAM_KEY,
       bankKey: "electrician-309a",
-      versionKey: "309a-current-rsos-v1",
+      versionKey: "309a-current-rsos-v2",
       blueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
       releaseChannel: "beta",
       active: true,

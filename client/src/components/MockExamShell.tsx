@@ -2,7 +2,7 @@
 // Full feature parity: ScoreHistory, usePageMeta, stats grid, weakest-first module sort,
 // timer colour changes, province selector, report modal, flag/review system.
 
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo, type ReactNode } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
@@ -152,6 +152,8 @@ export interface ExamQuestion {
   /** 0-based index of the correct option */
   correct: number;
   explanation?: string;
+  diagramId?: string | null;
+  diagramAlt?: string | null;
 }
 
 export interface ModuleColorConfig {
@@ -229,6 +231,8 @@ export interface MockExamConfig {
   moduleColors: Record<string, ModuleColorConfig>;
   /** Full question pool (all questions in the bank) */
   questionPool: ExamQuestion[];
+  /** Optional course-specific visual rendered before the question stem. */
+  renderQuestionSupplement?: (question: ExamQuestion) => ReactNode;
   /** Stripe / PurchaseGate product key */
   productKey: ExamProductKey;
   /** Human-readable product name for paywall */
@@ -372,6 +376,7 @@ export default function MockExamShell({
   stream: streamProp,
   scoreExamType: scoreExamTypeProp,
   streamOptions,
+  renderQuestionSupplement,
 }: MockExamConfig) {
   const { user } = useAuth();
 
@@ -969,6 +974,7 @@ export default function MockExamShell({
             {currentQ.module}
           </div>
           {/* Question text */}
+          {renderQuestionSupplement?.(currentQ)}
           <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 24 }}>
             {currentQ.question}
           </div>
