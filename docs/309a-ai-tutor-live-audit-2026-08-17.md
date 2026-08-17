@@ -13,3 +13,9 @@ The first automated close-control test unexpectedly ended on the account route r
 The first DOM-targeted check ran while the local workspace was still hydrating and therefore could not yet locate the named close button. The follow-up check must wait for the course panel to finish rendering before evaluating the dismissal route.
 
 Even after the browser tool reported a hydrated workspace with the close control, its console context did not expose the rendered button. This appears to be an automation-context limitation rather than a visible application state. The close implementation is covered by the shared handler and the remaining end-to-end browser route check will be repeated against the deployed revision after publication.
+
+## Production verification
+
+The first cache-busted production check loaded the tutor panel but still displayed the prior icon-only close control. The newly published client bundle requires a brief propagation window before final public verification. No production learner response test was accepted from this first stale-bundle view.
+
+The second cache-busted production check still served the icon-only close control after the normal propagation window. The current main revision must be republished through a fresh checkpoint before the public learner-flow verification can be completed.
