@@ -1506,3 +1506,5 @@
 - [x] Add regression coverage and validate the corrected electrician-program foundation
 - [x] Merge the validated PR #25 foundation into `main` and verify the integrated release
 - [x] Publish the electrician-program foundation release
+## Shared Preview Synchronization
+- [x] Synchronize local services and preview with the newest shared-project version
