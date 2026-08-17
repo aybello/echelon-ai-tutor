@@ -63,6 +63,7 @@ export default function OITWastewaterMockExam() {
       productKey="oit-ww"
       productName="OIT Wastewater Practice Pass"
       price={49}
+      freeQuestionLimit={30}
       backPath="/oit-ww-mock"
       practicePath="/oit-ww"
       practiceLabel="OIT Wastewater Practice"

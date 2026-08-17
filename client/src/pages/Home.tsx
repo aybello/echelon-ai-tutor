@@ -105,8 +105,8 @@ export default function Home() {
           priceLabel="CA$49"
           paidFeatures={[
             "551 OIT Water questions — unlimited attempts",
-            "Timed mock exam (100 questions, 2 hrs)",
-            "AI Tutor explanations on every question",
+            "Complete 100-question timed mock exams",
+            "Full flashcard deck and saved progress",
             "Module-by-module performance tracking",
           ]}
           onUnlocked={session.handleGateUnlocked}

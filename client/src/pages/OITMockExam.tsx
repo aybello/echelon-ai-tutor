@@ -61,6 +61,7 @@ export default function OITMockExam() {
       productKey="oit"
       productName="OIT Practice Pass"
       price={49}
+      freeQuestionLimit={30}
       backPath="/oit-mock"
       practicePath="/quiz"
       practiceLabel="OIT Practice Mode"

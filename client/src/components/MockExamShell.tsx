@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import PurchaseGate from "@/components/PurchaseGate";
+import QuizGate from "@/components/QuizGate";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import ScoreHistory from "@/components/ScoreHistory";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -259,6 +260,8 @@ export interface MockExamConfig {
   features?: string[];
   /** Deliberately free course mock; bypasses the standard purchase gate. */
   freeAccess?: boolean;
+  /** Let a learner answer this many mock-exam questions before the checkout gate. */
+  freeQuestionLimit?: number;
   /**
    * @deprecated Mock-exam paywalls always return to practicePath so the close,
    * back, intro, active-exam exit, and results actions share one destination.
@@ -378,6 +381,7 @@ export default function MockExamShell({
   price: priceProp,
   features,
   freeAccess = false,
+  freeQuestionLimit,
   practicePath,
   practiceLabel,
   formulaPath,
@@ -395,6 +399,31 @@ export default function MockExamShell({
   renderQuestionSupplement,
 }: MockExamConfig) {
   const { user } = useAuth();
+  const [storedEmailForAccess] = useState<string | undefined>(() => {
+    try {
+      return localStorage.getItem("echelon_subscription_email")
+        ?? localStorage.getItem("echelon_trial_email")
+        ?? undefined;
+    } catch { return undefined; }
+  });
+  const [storedAccessTokenForAccess] = useState<string | undefined>(() => {
+    try { return localStorage.getItem("echelon_access_token") ?? undefined; }
+    catch { return undefined; }
+  });
+  const { data: accessData } = trpc.stripe.checkAccess.useQuery(
+    {
+      examType: productKeyProp,
+      email: user?.email ?? storedEmailForAccess,
+      accessToken: storedAccessTokenForAccess,
+    },
+    {
+      enabled: freeQuestionLimit !== undefined,
+      staleTime: 5 * 60 * 1000,
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  );
+  const hasPaidAccess = freeAccess || accessData?.hasAccess === true;
 
   usePageMeta({
     title,
@@ -438,6 +467,12 @@ export default function MockExamShell({
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
   const submitMock = trpc.exam.submitMock.useMutation();
+  const answered = answers.filter(a => a.selected !== null).length;
+  const showPreviewGate =
+    examState === "active" &&
+    freeQuestionLimit !== undefined &&
+    !hasPaidAccess &&
+    answered >= freeQuestionLimit;
 
   const startExam = useCallback((overridePool?: ExamQuestion[], overrideTargets?: Record<string, number>) => {
     if (showProvinceSelector) {
@@ -463,7 +498,7 @@ export default function MockExamShell({
 
   // Timer
   useEffect(() => {
-    if (examState !== "active") return;
+    if (examState !== "active" || showPreviewGate) return;
     // Seed from the freshly-reset timeLeft (startExam sets it to EXAM_DURATION).
     let remaining = EXAM_DURATION;
     let fired = false;
@@ -478,7 +513,7 @@ export default function MockExamShell({
       }
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [examState]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [examState, showPreviewGate]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
@@ -535,7 +570,6 @@ export default function MockExamShell({
   }, [examState, results]);
 
   const currentQ = questions[currentIdx];
-  const answered = answers.filter(a => a.selected !== null).length;
   const timerColor = timeLeft < 600 ? "#DC2626" : timeLeft < 1800 ? "#D97706" : resolvedAccent;
 
   const toggleFlag = () => {
@@ -559,7 +593,7 @@ export default function MockExamShell({
         productName={productNameProp}
         price={priceProp}
         features={features}
-        freeAccess={freeAccess}
+        freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -668,7 +702,7 @@ export default function MockExamShell({
         productName={productName}
         price={price}
         features={features}
-        freeAccess={freeAccess}
+        freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -1106,6 +1140,25 @@ export default function MockExamShell({
           </button>
         </div>
       </div>
+
+      {showPreviewGate && (
+        <QuizGate
+          questionsAnswered={answered}
+          history={questions.flatMap((question, index) => {
+            const selected = answers[index]?.selected;
+            return selected === null || selected === undefined
+              ? []
+              : [{ module: question.module, correct: selected === question.correct }];
+          })}
+          productKey={productKey}
+          productName={productName}
+          priceLabel={`CA${price}`}
+          paidFeatures={features}
+          previewName="mock-exam questions"
+          backPath={practicePath}
+          onUnlocked={() => {}}
+        />
+      )}
 
       {reportModal && (
         <ReportErrorModal

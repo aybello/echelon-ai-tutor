@@ -398,17 +398,11 @@ export function useQuizSession({
   );
 
   const setTutorOpen = useCallback((v: boolean) => {
-    if (v && accessData?.hasAccess !== true) {
-      toast("AI Tutor is included with an active course pass", {
-        description: "Unlock this course with a paid pass to ask the tutor questions.",
-      });
-      return;
-    }
     if (v && !tutorOpen) {
       analyticsMutation.mutate({ event: "ai_tutor_opened", examType });
     }
     setTutorOpenState(v);
-  }, [accessData?.hasAccess, analyticsMutation, examType, tutorOpen]);
+  }, [analyticsMutation, examType, tutorOpen]);
 
   // ── Initialize (call once when allQuestions loads) ──────────────────────────
   const initialize = useCallback(() => {

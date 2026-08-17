@@ -12,7 +12,7 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { adminRouter } from "./routers/admin";
-import { resolveEntitlementsByEmail } from "./_core/access";
+import { FREE_AI_TUTOR, resolveEntitlementsByEmail } from "./_core/access";
 import {
   getAccessibleCoursesForIdentity,
   identityEmail,
@@ -692,7 +692,7 @@ export const appRouter = router({
         }
         const isElectrician309A = course.courseKey === "electrician-309a";
 
-        const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
+        const hasAccess = FREE_AI_TUTOR || await resolveAccessForRequest(ctx, course.courseKey, {
           accessToken: input.accessToken,
         });
         if (!hasAccess) {
@@ -880,7 +880,7 @@ export const appRouter = router({
           throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
         }
         const isElectrician309A = course.courseKey === "electrician-309a";
-        const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
+        const hasAccess = FREE_AI_TUTOR || await resolveAccessForRequest(ctx, course.courseKey, {
           accessToken: input.accessToken,
         });
         if (!hasAccess) {

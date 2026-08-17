@@ -53,6 +53,8 @@ interface FlashcardShellProps {
   freeFlipLimit?: number;
   /** Product key to link to on the paywall CTA */
   productKey?: string;
+  /** Whether the learner may dismiss the gate for another preview block. */
+  allowMorePreview?: boolean;
   /** Optional course-specific study-card projection from governed question data. */
   cardContent?: (card: FlashcardQuestion) => FlashcardCardContent;
 }
@@ -91,7 +93,7 @@ function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
   return qs.filter(q => !q.isCalc && q.type !== "calculation");
 }
 
-export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, cardContent }: FlashcardShellProps) {
+export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, allowMorePreview = true, cardContent }: FlashcardShellProps) {
   // Remove calculation questions once, before any deck operations
   const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
@@ -517,12 +519,14 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   Get Full Access →
                 </button>
               </Link>
-              <button
-                onClick={() => setPaywallDismissed(true)}
-                style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
-              >
-                🔄 Try {limit} More Free Cards
-              </button>
+              {allowMorePreview && (
+                <button
+                  onClick={() => setPaywallDismissed(true)}
+                  style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
+                >
+                  🔄 Try {limit} More Free Cards
+                </button>
+              )}
               <Link href="/pricing">
                 <button style={{ width: "100%", padding: "10px 20px", borderRadius: "12px", border: "none", background: "transparent", color: "#94A3B8", fontSize: "12px", cursor: "pointer" }}>
                   📋 View All Courses & Pricing
