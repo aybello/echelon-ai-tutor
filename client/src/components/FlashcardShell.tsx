@@ -4,6 +4,7 @@
 // Persists spaced-repetition state (known/unknown) to the database per email+examType
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -62,6 +63,8 @@ interface FlashcardShellProps {
   productKey?: string;
   /** Optional course-specific study-card projection from governed question data. */
   cardContent?: (card: FlashcardQuestion) => FlashcardCardContent;
+  /** Optional course-specific visual shown on the front of the card. */
+  renderFrontSupplement?: (card: FlashcardQuestion) => ReactNode;
 }
 
 function shuffleArr<T>(arr: T[]): T[] {
@@ -121,7 +124,7 @@ function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
   return qs.filter(q => !q.isCalc && q.type !== "calculation");
 }
 
-export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, cardContent }: FlashcardShellProps) {
+export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, cardContent, renderFrontSupplement }: FlashcardShellProps) {
   // Remove calculation questions once, before any deck operations
   const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
@@ -228,6 +231,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const difficulty = card?.difficulty ?? "medium";
   const diffStyle = DIFF_COLOR[difficulty] ?? DIFF_COLOR.medium;
   const projectedContent = card ? cardContent?.(card) : undefined;
+  const frontSupplement = card ? renderFrontSupplement?.(card) : undefined;
   const displayPrompt = projectedContent?.prompt ?? questionText;
   const displayAnswer = projectedContent?.answer ?? answerText;
   const displayExplanation = projectedContent?.explanation ?? explanation;
@@ -390,6 +394,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-inner { position: relative; width: 100%; min-height: 500px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
         .fc-inner.flipped { transform: rotateY(180deg); }
         .fc-face { position: absolute; top: 0; left: 0; right: 0; bottom: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 500px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
+        .fc-face.fc-face-projected { justify-content: flex-start; }
         .fc-front { background: #ffffff; border: 1px solid var(--echelon-line); box-shadow: var(--echelon-shadow-md); }
         .fc-back { background: linear-gradient(135deg, var(--echelon-navy) 0%, #1d4ed8 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
         .fc-actions-row { position: relative; z-index: 4; padding: 12px 24px 20px; background: var(--echelon-canvas); }
@@ -500,7 +505,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               style={{ background: "none", border: "none", padding: 0, width: "100%", textAlign: "left" }}
             >
               {/* Front */}
-              <div className="fc-face fc-front">
+              <div className={"fc-face fc-front" + (projectedContent ? " fc-face-projected" : "")}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
                   <span style={{ background: "#f1f5f9", color: "#475569", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     {projectedContent?.kicker ?? card.module}
@@ -519,7 +524,12 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                     {projectedContent.title}
                   </div>
                 )}
-                <div style={{ fontSize: projectedContent ? "16px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: "center" }}>
+                {frontSupplement && (
+                  <div style={{ marginBottom: "18px", width: "100%" }}>
+                    {frontSupplement}
+                  </div>
+                )}
+                <div style={{ fontSize: projectedContent ? "16px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
                   {displayPrompt}
                 </div>
                 <div style={{ marginTop: "20px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
@@ -527,7 +537,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                 </div>
               </div>
               {/* Back */}
-              <div className="fc-face fc-back">
+              <div className={"fc-face fc-back" + (projectedContent ? " fc-face-projected" : "")}>
                 <div style={{ marginBottom: "12px" }}>
                   <span style={{ background: "rgba(255,255,255,0.15)", color: "#93c5fd", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     Correct Answer

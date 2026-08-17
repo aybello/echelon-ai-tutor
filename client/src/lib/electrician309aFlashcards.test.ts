@@ -1,27 +1,36 @@
 import { describe, expect, it } from "vitest";
-import { buildElectrician309AFlashcard } from "./electrician309aFlashcards";
+import {
+  buildElectrician309AFlashcard,
+  ELECTRICIAN_309A_FLASHCARD_TARGETS,
+  selectElectrician309AFlashcards,
+} from "./electrician309aFlashcards";
 
 describe("buildElectrician309AFlashcard", () => {
-  it("keeps the governed answer while projecting a concise topic-led study card", () => {
+  it("keeps the complete governed prompt, answer, explanation, and authored takeaway", () => {
+    const longContext = "The approved drawing identifies the source, protection, distribution equipment, feeder, and connected load. ".repeat(3);
+    const longExplanation = "The measured condition must be compared with the approved design and manufacturer information before the equipment is accepted. ".repeat(4);
     const card = buildElectrician309AFlashcard({
       module: "B. Distribution systems",
       topic: "Transformer loading verification",
-      question: "A dry-type transformer feeding a lighting distribution section runs hottest late in the afternoon. What comparison should be made before accepting the secondary loading?",
+      question: `${longContext}What comparison should be made before accepting the secondary loading?`,
       options: ["A. Check the enclosure colour", "B. Compare measured secondary current with the transformer rating", "C. Measure only no-load voltage", "D. Replace the transformer"],
       correctIndex: 1,
-      explanation: "The secondary winding carries the larger current in this relationship. Compare per-phase current, load duration, voltage, temperature rise, and the approved load calculation against the transformer rating.",
+      explanation: longExplanation,
       tip: "Check the rating and the actual load together.",
       diagramId: "D04",
     });
 
     expect(card.topic).toBe("Transformer Loading Verification");
     expect(card.answer).toBe("Compare measured secondary current with the transformer rating");
-    expect(card.prompt).toContain("Scenario cue:");
+    expect(card.prompt).toBe(`${longContext}What comparison should be made before accepting the secondary loading?`.replace(/\s+/g, " ").trim());
+    expect(card.prompt).toContain("What comparison should be made");
+    expect(card.prompt).not.toContain("…");
+    expect(card.explanation).toBe(longExplanation.replace(/\s+/g, " ").trim());
     expect(card.takeaway).toBe("Check the rating and the actual load together.");
-    expect(card.diagramNote).toContain("original Echelon study diagram");
+    expect(card.diagramNote).toBeUndefined();
   });
 
-  it("uses the approved explanation as the takeaway when no card tip is available", () => {
+  it("does not repeat the explanation as a fake takeaway when no tip is authored", () => {
     const card = buildElectrician309AFlashcard({
       module: "A. Occupational skills",
       topic: "Safe isolation",
@@ -31,7 +40,42 @@ describe("buildElectrician309AFlashcard", () => {
       explanation: "Prove the tester before and after verifying absence of voltage. This preserves the complete safe-work sequence.",
     });
 
-    expect(card.takeaway).toBe("Prove the tester before and after verifying absence of voltage.");
+    expect(card.takeaway).toBeUndefined();
     expect(card.diagramNote).toBeUndefined();
+  });
+
+  it("fails visibly instead of silently treating option A as correct", () => {
+    const card = buildElectrician309AFlashcard({
+      module: "A. Occupational skills",
+      question: "Which answer is approved?",
+      options: ["A. One", "B. Two", "C. Three", "D. Four"],
+      explanation: "The governed answer index is required.",
+    });
+
+    expect(card.answer).toBe("Answer unavailable");
+  });
+
+  it("selects a stable 200-card conceptual deck using the exam blueprint", () => {
+    const available = { A: 50, B: 105, C: 120, D: 80, E: 45 } as const;
+    const questions = Object.entries(available).flatMap(([module, count]) =>
+      Array.from({ length: count }, (_, index) => ({
+        id: `${module}-${index + 1}`,
+        module: `${module}. Module ${module}`,
+        isCalc: false,
+      })),
+    );
+    questions.push(...Object.keys(available).map((module) => ({
+      id: `${module}-calc`,
+      module: `${module}. Module ${module}`,
+      isCalc: true,
+    })));
+
+    const deck = selectElectrician309AFlashcards(questions);
+    expect(deck).toHaveLength(200);
+    expect(new Set(deck.map((question) => question.id)).size).toBe(200);
+    expect(deck.every((question) => !question.isCalc)).toBe(true);
+    for (const [module, target] of Object.entries(ELECTRICIAN_309A_FLASHCARD_TARGETS)) {
+      expect(deck.filter((question) => question.module.startsWith(`${module}.`))).toHaveLength(target);
+    }
   });
 });

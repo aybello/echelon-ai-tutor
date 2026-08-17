@@ -16,26 +16,20 @@ export interface Electrician309AFlashcardContent {
   prompt: string;
   answer: string;
   explanation: string;
-  takeaway: string;
+  takeaway?: string;
   diagramNote?: string;
 }
 
+export const ELECTRICIAN_309A_FLASHCARD_TARGETS = {
+  A: 22,
+  B: 56,
+  C: 60,
+  D: 42,
+  E: 20,
+} as const;
+
 function normalise(value: string | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
-}
-
-function compact(value: string, limit: number): string {
-  const text = normalise(value);
-  if (text.length <= limit) return text;
-  const sentenceEnd = text.lastIndexOf(". ", limit);
-  const boundary = sentenceEnd >= Math.floor(limit * 0.55) ? sentenceEnd + 1 : text.lastIndexOf(" ", limit);
-  return `${text.slice(0, Math.max(boundary, 1)).trimEnd()}…`;
-}
-
-function firstSentence(value: string): string {
-  const text = normalise(value);
-  const match = text.match(/^.*?[.!?](?=\s|$)/);
-  return match?.[0] ?? compact(text, 150);
 }
 
 function moduleCode(module: string): string {
@@ -49,28 +43,47 @@ function displayTopic(value: string): string {
 }
 
 function optionText(card: Electrician309AFlashcardSource): string {
-  const index = card.correctIndex ?? 0;
+  const index = card.correctIndex;
+  if (index === undefined || index < 0 || index >= card.options.length) return "Answer unavailable";
   return normalise(card.options[index]).replace(/^[A-Da-d][.):]\s*/, "");
 }
 
+function selectEvenly<T>(cards: T[], target: number): T[] {
+  if (cards.length <= target) return cards;
+  return Array.from({ length: target }, (_, index) => cards[Math.floor(((index + 0.5) * cards.length) / target)]);
+}
+
 /**
- * Projects a governed assessment question into a concise study card without
- * changing the approved answer, explanation, topic, or source-derived facts.
+ * Produces a stable, blueprint-weighted study deck instead of exposing every
+ * assessment item as a flashcard. The original question IDs remain intact so
+ * existing learner progress continues to refer to canonical bank records.
+ */
+export function selectElectrician309AFlashcards<T extends { module: string; isCalc?: boolean; type?: string }>(questions: T[]): T[] {
+  const conceptual = questions.filter((question) => !question.isCalc && question.type !== "calculation");
+  return (Object.entries(ELECTRICIAN_309A_FLASHCARD_TARGETS) as [keyof typeof ELECTRICIAN_309A_FLASHCARD_TARGETS, number][])
+    .flatMap(([code, target]) => selectEvenly(
+      conceptual.filter((question) => moduleCode(question.module) === code),
+      target,
+    ));
+}
+
+/**
+ * Projects a governed assessment question into a complete study card without
+ * removing scenario facts that are required to understand the answer.
  */
 export function buildElectrician309AFlashcard(card: Electrician309AFlashcardSource): Electrician309AFlashcardContent {
   const topic = normalise(card.topic) || "Construction electrician decision making";
   const explanation = normalise(card.explanation);
-  const prompt = compact(card.question ?? "", 180);
-  const takeaway = normalise(card.tip) || firstSentence(explanation);
+  const prompt = normalise(card.question);
+  const takeaway = normalise(card.tip) || undefined;
 
   return {
     kicker: `Module ${moduleCode(card.module)} · Ontario 309A`,
     topic: displayTopic(topic),
-    title: "Decision check",
-    prompt: prompt ? `Scenario cue: ${prompt}` : "Recall the safest and most defensible operating decision for this topic.",
+    title: "What is the best response?",
+    prompt: prompt || "Recall the safest and most defensible decision for this topic.",
     answer: optionText(card),
-    explanation: compact(explanation, 360),
-    takeaway: compact(takeaway, 180),
-    diagramNote: card.diagramId ? "This concept is paired with an original Echelon study diagram in the course notes." : undefined,
+    explanation,
+    takeaway,
   };
 }
