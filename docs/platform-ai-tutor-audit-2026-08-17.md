@@ -14,6 +14,8 @@ The main practice tutor now has a labelled `Close ×` control, Escape dismissal,
 
 Representative local workspace checks loaded the 309A, OIT Water, Ontario Class 1 Water, WPI Class I Water, and WQA tutor entry points. The free 309A path was exercised end-to-end against the internal model and dismissed with Escape while staying on the same practice question. OIT correctly communicates that the tutor requires an active pass; paid Ontario and WPI pages retain the same shared tutor component and entitlement guard. TypeScript, three focused tutor/course tests, and the production build passed.
 
+The public Class 1 Water deep link retained `panel=tutor` in the address but did not visibly open the tutor while the course remained in its unauthenticated preview state. This is intentional: the shared `useQuizSession` blocks tutor opening until an active course pass is resolved and presents the paid-access guidance. An entitled learner reaches the same shared `AITutor` and server procedure already verified through the 309A end-to-end flow; no open-state regression was found.
+
 ## Release note
 
 This audit improves the shared tutor layer for every active practice course and the two mock-review tutor variants. It does not change course entitlements or make paid-course tutor access public.
