@@ -753,6 +753,8 @@ export interface WelcomeOnboardingEmailPayload {
   productKey: string;
   quizPath: string;
   mockPath: string;
+  /** Stable transport identity used when a scheduled delivery is retried. */
+  messageId?: string;
 }
 
 /**
@@ -760,7 +762,7 @@ export interface WelcomeOnboardingEmailPayload {
  * Walks the student through the 3 most important features.
  */
 export async function sendWelcomeOnboardingEmail(payload: WelcomeOnboardingEmailPayload): Promise<void> {
-  const { email, customerName, productName, quizPath, mockPath } = payload;
+  const { email, customerName, productName, quizPath, mockPath, messageId } = payload;
   const firstName = customerName?.split(" ")[0] ?? "there";
   const siteUrl = "https://echeloninstitute.ca";
   const quizUrl = `${siteUrl}${quizPath}`;
@@ -774,6 +776,7 @@ export async function sendWelcomeOnboardingEmail(payload: WelcomeOnboardingEmail
     from: `"Ayoola at Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
     to: email,
     subject: `3 things to do first with your ${productName}`,
+    ...(messageId ? { messageId } : {}),
     text: [
       `Hi ${firstName},`,
       ``,

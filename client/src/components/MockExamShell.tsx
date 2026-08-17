@@ -2,7 +2,7 @@
 // Full feature parity: ScoreHistory, usePageMeta, stats grid, weakest-first module sort,
 // timer colour changes, province selector, report modal, flag/review system.
 
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo, type ReactNode } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
@@ -15,6 +15,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { shuffle } from "@/lib/utils";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
+import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -25,6 +26,17 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
   const [loading, setLoading] = useState(false);
   const chatMutation = trpc.tutor.chat.useMutation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const closeTutor = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (isTutorDismissKey(event.key)) closeTutor();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [closeTutor, open]);
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
@@ -48,8 +60,9 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
         })(),
       });
       setMessages(prev => [...prev, { role: "assistant" as const, content: String(result.reply) }]);
-    } catch {
-      setMessages(prev => [...prev, { role: "assistant" as const, content: "Connection issue — please try again." }]);
+    } catch (error) {
+      const message = getTutorFailureMessage(error);
+      setMessages(prev => [...prev, { role: "assistant" as const, content: `⚠️ ${message}` }]);
     } finally {
       setLoading(false);
     }
@@ -85,9 +98,12 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
             <button
-              onClick={() => setOpen(false)}
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#94A3B8", fontSize: 14, padding: 0 }}
-            >✕</button>
+              type="button"
+              aria-label="Close AI Tutor"
+              title="Close AI Tutor"
+              onClick={closeTutor}
+              style={{ background: "none", border: "1px solid #C7D2FE", cursor: "pointer", color: "#4338CA", fontSize: 11, fontWeight: 700, padding: "4px 8px", borderRadius: 6 }}
+            >Close ×</button>
           </div>
           <div style={{ maxHeight: 200, overflowY: "auto", marginBottom: 8 }}>
             {messages.map((m, i) => (
@@ -152,6 +168,8 @@ export interface ExamQuestion {
   /** 0-based index of the correct option */
   correct: number;
   explanation?: string;
+  diagramId?: string | null;
+  diagramAlt?: string | null;
 }
 
 export interface ModuleColorConfig {
@@ -198,7 +216,7 @@ export interface StreamOption {
 }
 
 export type ExamProductKey =
-  | "class1" | "wqa" | "oit" | "oit-ww"
+  | "class1" | "wqa" | "oit" | "oit-ww" | "electrician-309a"
   | "class1-water" | "class1-ww" | "class2-water" | "class2-ww"
   | "class3-water" | "class3-ww" | "class4-water" | "class4-ww"
   | "wpi-class1-water" | "wpi-class2-water" | "wpi-class3-water" | "wpi-class4-water"
@@ -229,6 +247,8 @@ export interface MockExamConfig {
   moduleColors: Record<string, ModuleColorConfig>;
   /** Full question pool (all questions in the bank) */
   questionPool: ExamQuestion[];
+  /** Optional course-specific visual rendered before the question stem. */
+  renderQuestionSupplement?: (question: ExamQuestion) => ReactNode;
   /** Stripe / PurchaseGate product key */
   productKey: ExamProductKey;
   /** Human-readable product name for paywall */
@@ -237,6 +257,8 @@ export interface MockExamConfig {
   price: number;
   /** Optional feature bullets for paywall */
   features?: string[];
+  /** Deliberately free course mock; bypasses the standard purchase gate. */
+  freeAccess?: boolean;
   /**
    * @deprecated Mock-exam paywalls always return to practicePath so the close,
    * back, intro, active-exam exit, and results actions share one destination.
@@ -355,6 +377,7 @@ export default function MockExamShell({
   productName: productNameProp,
   price: priceProp,
   features,
+  freeAccess = false,
   practicePath,
   practiceLabel,
   formulaPath,
@@ -369,6 +392,7 @@ export default function MockExamShell({
   stream: streamProp,
   scoreExamType: scoreExamTypeProp,
   streamOptions,
+  renderQuestionSupplement,
 }: MockExamConfig) {
   const { user } = useAuth();
 
@@ -535,6 +559,7 @@ export default function MockExamShell({
         productName={productNameProp}
         price={priceProp}
         features={features}
+        freeAccess={freeAccess}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -643,6 +668,7 @@ export default function MockExamShell({
         productName={productName}
         price={price}
         features={features}
+        freeAccess={freeAccess}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -964,6 +990,7 @@ export default function MockExamShell({
             {currentQ.module}
           </div>
           {/* Question text */}
+          {renderQuestionSupplement?.(currentQ)}
           <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 24 }}>
             {currentQ.question}
           </div>

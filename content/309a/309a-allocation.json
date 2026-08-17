@@ -1,0 +1,102 @@
+{
+  "programKey": "construction-electrician-309a-on",
+  "bankKey": "electrician-309a",
+  "bankVersionKey": "309a-current-rsos-v3",
+  "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
+  "bankTarget": 500,
+  "officialExamTarget": 100,
+  "majorWorkActivities": [
+    {
+      "code": "A",
+      "title": "Performs common occupational skills",
+      "officialExamQuestions": 11,
+      "bankTarget": 55,
+      "questionMix": { "foundation": 14, "appliedScenario": 27, "troubleshootingOrCalculation": 14 },
+      "cognitiveMix": { "recall": 6, "proceduralApplication": 35, "criticalThinking": 14 },
+      "tasks": [
+        { "code": "A-1", "title": "Performs safety-related functions", "bankTarget": 11 },
+        { "code": "A-2", "title": "Uses tools and equipment", "bankTarget": 10 },
+        { "code": "A-3", "title": "Organizes work", "bankTarget": 10 },
+        { "code": "A-4", "title": "Fabricates and installs support components", "bankTarget": 12 },
+        { "code": "A-5", "title": "Commissions and decommissions electrical systems", "bankTarget": 9 },
+        { "code": "A-6", "title": "Uses communication and mentoring techniques", "bankTarget": 3 }
+      ]
+    },
+    {
+      "code": "B",
+      "title": "Generating, distribution and service systems",
+      "officialExamQuestions": 28,
+      "bankTarget": 140,
+      "questionMix": { "foundation": 35, "appliedScenario": 70, "troubleshootingOrCalculation": 35 },
+      "cognitiveMix": { "recall": 14, "proceduralApplication": 91, "criticalThinking": 35 },
+      "tasks": [
+        { "code": "B-7", "title": "Consumer/supply services and metering equipment", "bankTarget": 20 },
+        { "code": "B-8", "title": "Protection devices", "bankTarget": 21 },
+        { "code": "B-9", "title": "Power distribution equipment", "bankTarget": 21 },
+        { "code": "B-10", "title": "Power conditioning, UPS and surge suppression systems", "bankTarget": 11 },
+        { "code": "B-11", "title": "Bonding, grounding and ground-fault systems", "bankTarget": 18 },
+        { "code": "B-12", "title": "Power generation and conversion systems", "bankTarget": 11 },
+        { "code": "B-13", "title": "Renewable energy generating and storage systems", "bankTarget": 11 },
+        { "code": "B-14", "title": "High-voltage systems", "bankTarget": 10 },
+        { "code": "B-15", "title": "Transformers", "bankTarget": 17 }
+      ]
+    },
+    {
+      "code": "C",
+      "title": "Wiring systems",
+      "officialExamQuestions": 30,
+      "bankTarget": 150,
+      "questionMix": { "foundation": 37, "appliedScenario": 76, "troubleshootingOrCalculation": 37 },
+      "cognitiveMix": { "recall": 15, "proceduralApplication": 98, "criticalThinking": 37 },
+      "tasks": [
+        { "code": "C-16", "title": "Raceways, conductors, cables and enclosures", "bankTarget": 45 },
+        { "code": "C-17", "title": "Branch circuitry and devices", "bankTarget": 42 },
+        { "code": "C-18", "title": "HVAC systems", "bankTarget": 21 },
+        { "code": "C-19", "title": "Electric heating systems", "bankTarget": 21 },
+        { "code": "C-20", "title": "Exit and emergency lighting systems", "bankTarget": 15 },
+        { "code": "C-21", "title": "Cathodic protection systems", "bankTarget": 6 }
+      ]
+    },
+    {
+      "code": "D",
+      "title": "Motors and control systems",
+      "officialExamQuestions": 21,
+      "bankTarget": 105,
+      "questionMix": { "foundation": 26, "appliedScenario": 53, "troubleshootingOrCalculation": 26 },
+      "cognitiveMix": { "recall": 10, "proceduralApplication": 69, "criticalThinking": 26 },
+      "tasks": [
+        { "code": "D-22", "title": "Motor starters and controls", "bankTarget": 40 },
+        { "code": "D-23", "title": "Drives", "bankTarget": 19 },
+        { "code": "D-24", "title": "Motors", "bankTarget": 29 },
+        { "code": "D-25", "title": "Automated control systems", "bankTarget": 17 }
+      ]
+    },
+    {
+      "code": "E",
+      "title": "Signalling and communication systems",
+      "officialExamQuestions": 10,
+      "bankTarget": 50,
+      "questionMix": { "foundation": 13, "appliedScenario": 24, "troubleshootingOrCalculation": 13 },
+      "cognitiveMix": { "recall": 5, "proceduralApplication": 32, "criticalThinking": 13 },
+      "tasks": [
+        { "code": "E-26", "title": "Signalling systems", "bankTarget": 22 },
+        { "code": "E-27", "title": "Communication systems", "bankTarget": 13 },
+        { "code": "E-28", "title": "Integrated control systems", "bankTarget": 15 }
+      ]
+    }
+  ],
+  "requiredBankMix": {
+    "foundationQuestions": 125,
+    "appliedScenarioQuestions": 250,
+    "troubleshootingOrCalculationQuestions": 125,
+    "minimumCalculationQuestions": 100,
+    "minimumDiagramBackedQuestions": 75,
+    "minimumFlashcards": 150
+  },
+  "sources": [
+    "https://red-seal.ca/eng/trades/const-elect.shtml",
+    "https://red-seal.ca/eng/trades/constelectric/previous/exam-weightings.shtml",
+    "https://red-seal.ca/eng/resources/exam-prep-guide.shtml",
+    "https://www.skilledtradesontario.ca/trade-information/electrician-construction-and-maintenance/"
+  ]
+}

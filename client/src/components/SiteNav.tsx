@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import {
   BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical,
   Gauge, GraduationCap, LayoutDashboard, Menu, MessageCircleQuestion,
-  NotebookTabs, Sigma, Sparkles, X,
+  NotebookTabs, Sigma, Sparkles, X, Zap,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -14,7 +14,7 @@ const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7
 
 export const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
-  { label: "Electrician Preview", href: "/electrician-309a-demo" },
+  { label: "309A Electrician", href: "/electrician-309a" },
   { label: "Process Guides", href: "/guides" },
   { label: "WPI", href: "/wpi" },
   { label: "US", href: "/us" },
@@ -123,13 +123,13 @@ export default function SiteNav({
           <img src={LOGO_URL} alt="" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
-            <small>Operator certification prep</small>
+            <small>{course?.courseKey === "electrician-309a" ? "309A electrician exam prep" : "Operator certification prep"}</small>
           </span>
         </Link>
 
         <div className="echelon-desktop-links">
           <Link href="/#courses" className={`echelon-nav-link${isPathActive(currentPath, "/") ? " is-active" : ""}`}>Courses</Link>
-          <Link href="/electrician-309a-demo" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a-demo") ? " is-active" : ""}`}>Electrician Preview</Link>
+          <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
           <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
           <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
           <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
@@ -155,7 +155,7 @@ export default function SiteNav({
       {course && (
         <div className="echelon-course-bar">
           <div className="echelon-course-identity">
-            <FlaskConical size={16} aria-hidden="true" />
+            {course.courseKey === "electrician-309a" ? <Zap size={16} aria-hidden="true" /> : <FlaskConical size={16} aria-hidden="true" />}
             <span>{course.shortName}</span>
             <small>{course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
           </div>

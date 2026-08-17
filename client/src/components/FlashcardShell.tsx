@@ -14,6 +14,7 @@ const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
 export interface FlashcardQuestion {
   id: number | string;
   module: string;
+  topic?: string;
   question?: string;
   q?: string;
   text?: string;
@@ -23,9 +24,23 @@ export interface FlashcardQuestion {
   correctIndex?: number;
   explanation: string;
   difficulty?: string;
+  steps?: { l: string; c: string }[];
+  tip?: string;
+  diagramId?: string | null;
   /** Calculation questions are excluded from flashcard decks */
   isCalc?: boolean;
   type?: string;
+}
+
+export interface FlashcardCardContent {
+  kicker?: string;
+  topic?: string;
+  title?: string;
+  prompt: string;
+  answer: string;
+  explanation: string;
+  takeaway?: string;
+  diagramNote?: string;
 }
 
 interface FlashcardShellProps {
@@ -38,6 +53,8 @@ interface FlashcardShellProps {
   freeFlipLimit?: number;
   /** Product key to link to on the paywall CTA */
   productKey?: string;
+  /** Optional course-specific study-card projection from governed question data. */
+  cardContent?: (card: FlashcardQuestion) => FlashcardCardContent;
 }
 
 function shuffleArr<T>(arr: T[]): T[] {
@@ -74,7 +91,7 @@ function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
   return qs.filter(q => !q.isCalc && q.type !== "calculation");
 }
 
-export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey }: FlashcardShellProps) {
+export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, cardContent }: FlashcardShellProps) {
   // Remove calculation questions once, before any deck operations
   const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
@@ -145,10 +162,16 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const explanation = card?.explanation ?? "";
   const difficulty = card?.difficulty ?? "medium";
   const diffStyle = DIFF_COLOR[difficulty] ?? DIFF_COLOR.medium;
+  const projectedContent = card ? cardContent?.(card) : undefined;
+  const displayPrompt = projectedContent?.prompt ?? questionText;
+  const displayAnswer = projectedContent?.answer ?? answerText;
+  const displayExplanation = projectedContent?.explanation ?? explanation;
 
   const total = deck.length;
   const progress = total > 0 ? Math.round((index / total) * 100) : 0;
   const knownCount = known.size;
+  const knownInDeck = deck.filter(item => known.has(item.id)).length;
+  const remainingInDeck = deck.length - knownInDeck;
 
   const reshuffleDeck = useCallback((qs: FlashcardQuestion[]) => {
     setDeck(shuffleArr(qs));
@@ -217,9 +240,6 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
     const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
     reshuffleDeck(next);
-    const empty = new Set<number | string>();
-    setKnown(empty);
-    persistKnown(empty);
   };
 
   const handleReviewUnknown = () => {
@@ -228,6 +248,12 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     if (missed.length === 0) return;
     setReviewing(true);
     reshuffleDeck(missed);
+  };
+
+  const handleStudyDeck = () => {
+    setReviewing(false);
+    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
+    reshuffleDeck(base);
   };
 
   if (sessionComplete) {
@@ -263,8 +289,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                 Review {unknownCount} Missed Cards
               </button>
             )}
-            <button onClick={handleShuffle} style={{ background: "#f1f5f9", color: "#0f172a", border: "none", borderRadius: "10px", padding: "14px 24px", fontSize: "15px", fontWeight: 600, cursor: "pointer" }}>
-              Shuffle &amp; Restart
+            <button onClick={handleStudyDeck} style={{ background: "#f1f5f9", color: "#0f172a", border: "none", borderRadius: "10px", padding: "14px 24px", fontSize: "15px", fontWeight: 600, cursor: "pointer" }}>
+              Study This Deck Again
             </button>
             <Link href={backPath}>
               <button style={{ background: "transparent", color: "#64748b", border: "1px solid #e2e8f0", borderRadius: "10px", padding: "12px 24px", fontSize: "14px", cursor: "pointer", width: "100%" }}>
@@ -324,13 +350,22 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ color: "#94a3b8", fontSize: "13px" }}>
-            <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownCount}</span> known
+            <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownInDeck}</span> secure · {remainingInDeck} to review
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
           <button onClick={handleShuffle} style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1D4ED8", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
             Shuffle
           </button>
         </div>
+      </div>
+
+      <div style={{ padding: "10px 24px", background: "#F8FAFC", borderBottom: "1px solid var(--echelon-line)", display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
+        <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E0ECFF" : "#fff", color: !reviewing ? "#1D4ED8" : undefined }}>
+          Study deck
+        </button>
+        <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={remainingInDeck === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
+          Review {remainingInDeck} still-learning
+        </button>
       </div>
 
       {/* Module Filter */}
@@ -388,14 +423,24 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               <div className="fc-face fc-front">
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
                   <span style={{ background: "#f1f5f9", color: "#475569", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
-                    {card.module}
+                    {projectedContent?.kicker ?? card.module}
                   </span>
                   <span style={{ background: diffStyle.bg, color: diffStyle.fg, borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     {difficulty}
                   </span>
                 </div>
-                <div style={{ fontSize: "18px", fontWeight: 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: "center" }}>
-                  {questionText}
+                {projectedContent?.topic && (
+                  <div style={{ color: "#1D4ED8", fontSize: "13px", fontWeight: 750, marginBottom: "10px" }}>
+                    {projectedContent.topic}
+                  </div>
+                )}
+                {projectedContent?.title && (
+                  <div style={{ color: "#0f172a", fontSize: "22px", fontWeight: 800, lineHeight: 1.25, marginBottom: "12px" }}>
+                    {projectedContent.title}
+                  </div>
+                )}
+                <div style={{ fontSize: projectedContent ? "16px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: "center" }}>
+                  {displayPrompt}
                 </div>
                 <div style={{ marginTop: "20px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
                   Tap to flip
@@ -409,11 +454,21 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   </span>
                 </div>
                 <div style={{ fontSize: "20px", fontWeight: 800, color: "#ffffff", marginBottom: "16px", lineHeight: 1.4 }}>
-                  {answerText}
+                  {displayAnswer}
                 </div>
                 <div style={{ fontSize: "14px", color: "#bfdbfe", lineHeight: 1.6 }}>
-                  {explanation}
+                  {displayExplanation}
                 </div>
+                {projectedContent?.takeaway && (
+                  <div style={{ marginTop: "16px", borderTop: "1px solid rgba(255,255,255,0.16)", paddingTop: "14px", color: "#fff", fontSize: "13px", lineHeight: 1.5 }}>
+                    <strong>Key takeaway:</strong> {projectedContent.takeaway}
+                  </div>
+                )}
+                {projectedContent?.diagramNote && (
+                  <div style={{ marginTop: "10px", color: "#BFDBFE", fontSize: "12px", lineHeight: 1.45 }}>
+                    {projectedContent.diagramNote}
+                  </div>
+                )}
                 <div style={{ marginTop: "16px", color: "rgba(255,255,255,0.4)", fontSize: "12px", textAlign: "center" }}>
                   Tap to flip back
                 </div>

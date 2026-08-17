@@ -11,7 +11,7 @@
  *  - AI Tutor drawer + Report Error modal
  */
 
-import React, { useState, useEffect, useRef, type ReactNode } from "react";
+import React, { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
@@ -103,7 +103,7 @@ export interface QuizShellProps {
   onResetSession: () => void;
 
   // AI Tutor render prop (optional — caller renders its own AITutor)
-  renderAITutor?: () => ReactNode;
+  renderAITutor?: (onDismiss: () => void) => ReactNode;
   // Optional: mock exam link for session-complete screen
   mockExamHref?: string;
 
@@ -115,6 +115,10 @@ export interface QuizShellProps {
 
   // Optional: module overview study notes (keyed by module name)
   moduleOverviews?: Record<string, ModuleOverview>;
+
+  // Optional course-specific visuals that extend the shared question and notes surfaces.
+  renderQuestionSupplement?: (question: AnyQuizQuestion) => ReactNode;
+  renderModuleSupplement?: (moduleName: string) => ReactNode;
 
   // Optional: extra content rendered inside the header (below stats/pills row)
   headerExtra?: ReactNode;
@@ -188,6 +192,8 @@ export default function QuizShell({
   extraContent,
   renderAITutor,
   moduleOverviews,
+  renderQuestionSupplement,
+  renderModuleSupplement,
   headerExtra,
   timedSeconds = 0,
   onTimeUp,
@@ -207,6 +213,19 @@ export default function QuizShell({
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+
+  const dismissTutor = useCallback(() => {
+    onTutorClose();
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("panel") === "tutor") {
+        url.searchParams.delete("panel");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch {
+      // Closing the panel must still work when browser history is unavailable.
+    }
+  }, [onTutorClose]);
 
   // Course-workspace deep links open the requested learning surface directly.
   // Notes often arrive after cached questions, so this deliberately retries when
@@ -811,6 +830,7 @@ export default function QuizShell({
           </div>
 
           {/* Question text */}
+          {renderQuestionSupplement?.(current)}
           <p style={{
             fontSize: "clamp(13px, 2.2vw, 15px)",
             fontWeight: 700,
@@ -1126,7 +1146,7 @@ export default function QuizShell({
       </div>
 
       {/* ── AI Tutor drawer ── */}
-      {tutorOpen && renderAITutor && renderAITutor()}
+      {tutorOpen && renderAITutor && renderAITutor(dismissTutor)}
 
       {/* ── Report Error modal ── */}
       {reportModalOpen && current && (
@@ -1232,7 +1252,9 @@ export default function QuizShell({
                   moduleBg={modules.find(m => m.name === studyNotesModule)?.bg}
                   moduleIcon={modules.find(m => m.name === studyNotesModule)?.icon}
                   defaultExpanded={true}
-                />
+                >
+                  {renderModuleSupplement?.(studyNotesModule)}
+                </ModuleOverviewPanel>
               </div>
             )}
           </div>
