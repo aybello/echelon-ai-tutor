@@ -194,7 +194,7 @@ export function getCertificationProgram(
 }
 
 export function getCertificationPrograms(): readonly CertificationProgram[] {
-  return [...CERTIFICATION_PROGRAMS.values()];
+  return Array.from(CERTIFICATION_PROGRAMS.values());
 }
 
 export function isCertificationQuestionPubliclyDeliverable(
