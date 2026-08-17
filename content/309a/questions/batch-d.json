@@ -193,7 +193,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A panel builder commissioning a new bottling-line control cabinet must size the secondary conductor for a control transformer feeding five identical 120 V coils, each rated 12 VA, that energize together at startup. What secondary current must the transformer deliver?",
+      "question": "While troubleshooting a conveyor sorting station, an electrician clamps an ammeter on the 120 V secondary of the control transformer with the station running and all five identical relay coils sealed in. Each coil is rated 12 VA sealed. What secondary current should the meter read if the control circuit is drawing normal load?",
       "options": [
         "0.5 A",
         "0.3 A",
@@ -201,7 +201,7 @@
         "0.9 A"
       ],
       "correctIndex": 0,
-      "explanation": "Total simultaneous burden is 5 × 12 VA = 60 VA. Dividing by the 120 V secondary gives 0.5 A, the correct load current the transformer and its secondary conductors must handle. The 0.3 A distractor comes from dividing only one coil's VA by voltage and ignoring the other four coils energized together. The 0.7 A and 0.9 A choices result from arithmetic slips—adding voltage figures or mis-multiplying VA—rather than correctly summing burden before dividing by voltage. Since all five coils operate simultaneously in this cabinet, the electrician must total their VA first, then convert to current using the actual secondary voltage, ensuring the transformer and conductor sizing reflect true worst-case simultaneous load rather than a single-coil estimate.",
+      "explanation": "With all five coils sealed in at the same time, the total sealed burden is 5 x 12 VA = 60 VA. Current is found by dividing the total burden by the secondary voltage: 60 VA / 120 V = 0.5 A, so a healthy circuit should read about half an amp on the clamp meter. A reading of 0.3 A (36 VA) would indicate only three of the five coils are actually sealed in, so it is what an electrician would measure with two relays dropped out rather than the expected full-load value. The 0.7 A figure corresponds to 84 VA, which comes from adding two extra 12 VA devices that are not part of this circuit. The 0.9 A figure corresponds to 108 VA, which results from mixing inrush ratings in with sealed ratings instead of using the sealed values consistently. The working habit is to total the VA of everything energized at once, then divide by the actual secondary voltage, and compare that calculated value to the measured current to judge whether the control circuit is loaded normally.",
       "steps": [
         {
           "label": "Total VA",
@@ -218,7 +218,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "9e545aca0d3de48453c16ef7d0590d9fe355a8146b3c00701d8486b1cc581078"
+      "contentHash": "fe3ee8bf745a12129f6fc4f8044e29df1a118ad8378e95ce5dd1517a0ae289cf"
     },
     {
       "bankItemNumber": 353,
@@ -758,7 +758,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A rooftop unit control panel labeled RTU-14 uses one control transformer to feed six relay coils that can all pull in together during a cold-start sequence. Each coil is rated 10 VA at 120 V control voltage. What secondary current must the transformer be capable of supplying?",
+      "question": "In a packaging line control panel, a 208 V to 120 V control transformer feeds six relay coils that all seal in at the same time when the operator presses the emergency-stop reset. Each coil is rated 10 VA at the 120 V control voltage. What sealed secondary current must the transformer be able to deliver?",
       "options": [
         "0.3 A",
         "0.7 A",
@@ -766,7 +766,7 @@
         "0.5 A"
       ],
       "correctIndex": 3,
-      "explanation": "Because all six coils can be energized simultaneously during the cold-start sequence, the transformer must be sized for their combined VA, not just one coil. Total VA equals six coils multiplied by 10 VA each, giving 60 VA. Dividing 60 VA by the 120 V control voltage gives 0.5 A, the correct secondary current demand. A common error is calculating current from a single coil's VA rating alone, which understates real demand and can cause nuisance tripping or voltage sag under full load. Another mistake is dividing total VA by primary voltage instead of secondary control voltage, which produces an incorrect current value that does not match the coil circuit being evaluated. Only the sum of simultaneously energized coil VA divided by the secondary voltage gives the true current the transformer secondary must deliver.",
+      "explanation": "Since all six coils remain sealed in together after the reset, the transformer secondary has to carry their combined burden, so total load is 6 x 10 VA = 60 VA. Sealed current on the secondary is found by dividing that total by the secondary control voltage: 60 VA / 120 V = 0.5 A. The 0.3 A choice results from dividing the 60 VA total by the 208 V primary voltage instead of the 120 V secondary, which gives a primary-side value that does not represent the current in the coil circuit. The 0.7 A and 0.9 A choices come from multiplying the sealed load by inrush or spare-capacity factors; those allowances apply when selecting transformer size for pick-up surge, not when calculating the steady sealed current the coils actually draw. Always sum the VA of the loads that are energized at the same instant and divide by the voltage of the winding supplying them.",
       "steps": [
         {
           "label": "Total VA",
@@ -783,7 +783,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "a574224e3c6f1fcdcdc326fd8ae0ee8eb67678729285d4eac9218e811462fbd1"
+      "contentHash": "62487696ae39074bbbb69b7f610976be123a0becefbdf0e62ae943b9dc7f74b6"
     },
     {
       "bankItemNumber": 373,
@@ -871,7 +871,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A machine builder is verifying conductor sizing on a control panel where one 120 V secondary transformer must simultaneously energize four identical solenoid coils, each rated 12 VA. Before selecting the secondary conductor and overcurrent protection, what total secondary current must the transformer supply?",
+      "question": "On a packaging line, a 120 V control transformer secondary feeds four identical solenoid valve coils, each rated 12 VA, and all four are energized together during the clamp-and-seal step. An electrician clamps an ammeter on the secondary conductor to confirm the load matches the panel drawings. What steady-state secondary current should the meter read?",
       "options": [
         "0.2 A",
         "0.6 A",
@@ -879,7 +879,7 @@
         "0.4 A"
       ],
       "correctIndex": 3,
-      "explanation": "Total apparent power equals the sum of all simultaneously energized coil ratings: 4 × 12 VA = 48 VA. Dividing by the 120 V secondary voltage gives 48 ÷ 120 = 0.4 A, the correct total current the transformer secondary must supply. This value confirms adequate conductor ampacity and overcurrent protection sizing for the worst-case simultaneous load. Choosing 0.2 A wrongly assumes only two coils operate together, ignoring that all four are energized at once. Selecting 0.6 A or 0.8 A results from mis-multiplying VA by voltage instead of dividing, or from mistakenly adding an extra coil's rating. Only totaling actual simultaneous VA and dividing by voltage yields a technically accurate current value matching the panel's real operating condition, ensuring the electrician avoids undersizing conductors or protection devices for the connected control load.",
+      "explanation": "Add the apparent power of every coil that is on at the same time: 4 x 12 VA = 48 VA. Divide that total by the secondary voltage the coils actually operate at: 48 VA / 120 V = 0.4 A, so the clamp meter should read about 0.4 A while all four valves are held open. Reading 0.2 A would come from dividing the 48 VA by the 240 V primary supply instead of the 120 V secondary that the coils are connected across. Reading 0.6 A would come from applying a 1.5 inrush allowance to the calculated 0.4 A; inrush lasts only milliseconds while the coil armature is moving and is not the steady-state current a clamp meter settles on. Reading 0.8 A would come from treating each coil as 24 VA instead of 12 VA, doubling the total to 96 VA. Working from the true simultaneous VA total divided by the operating voltage gives the current used to verify secondary conductor ampacity and overcurrent protection for the connected control load.",
       "steps": [
         {
           "label": "Total VA",
@@ -896,7 +896,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "846a6856639c3281eaa836903661c058271897a94efc278c399c0758373b05f7"
+      "contentHash": "d181801c203b2e49541cf5d2b0dbc3db90215c2fb0635d6d6c679e9b1d2c3383"
     },
     {
       "bankItemNumber": 377,
@@ -1010,7 +1010,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A panel builder is verifying that a control transformer can supply four contactor coils that all pull in together during a sequenced motor-start operation. Each coil is rated 12 VA at 120 V control voltage. Ignoring inrush, what steady-state secondary current must the transformer deliver?",
+      "question": "During commissioning of a packaging-line control panel, an electrician must confirm the 120 V secondary of the control transformer will not be overloaded when the machine enters its run mode. In run mode, four interlocking contactor coils remain energized at the same time, and each coil draws 12 VA at 120 V. Ignoring inrush, what continuous secondary current must the transformer supply in run mode?",
       "options": [
         "0.4 A",
         "0.2 A",
@@ -1018,7 +1018,7 @@
         "0.8 A"
       ],
       "correctIndex": 0,
-      "explanation": "Because all four coils energize together, their VA ratings add before dividing by voltage: 4 × 12 VA = 48 VA, then 48 VA ÷ 120 V = 0.4 A. This is the correct running current the transformer secondary must supply. Choosing 0.2 A wrongly treats only a single coil's VA against the full load, ignoring the other three energized coils. Selecting 0.6 A results from miscombining VA values instead of a clean multiplication, producing an inflated total that doesn't match the rated load. Choosing 0.8 A comes from doubling the correct total VA before dividing, an error that overstates real steady-state draw. Recognizing simultaneous coil operation as additive VA, rather than picking one coil's rating or applying an unjustified multiplier, is essential to correctly size the transformer and avoid nuisance dropout or overheating under normal operating conditions.",
+      "explanation": "Coils that are held in at the same time present a combined burden, so add their VA ratings first: 4 × 12 VA = 48 VA. Dividing by the control voltage gives 48 VA ÷ 120 V = 0.4 A, the continuous secondary current in run mode. The 0.2 A answer comes from counting only two of the four coils (2 × 12 VA = 24 VA ÷ 120 V), which understates the actual holding load. The 0.6 A answer comes from padding the total with an extra 50 % allowance (48 VA × 1.5 = 72 VA ÷ 120 V) even though the question asks for steady-state current with inrush excluded. The 0.8 A answer comes from doubling the total VA (96 VA ÷ 120 V), which would push the electrician toward an unnecessarily large transformer. Adding the VA of every simultaneously energized coil, then dividing once by the control voltage, gives the true holding current so the transformer keeps its secondary voltage up and the contactors do not chatter or drop out.",
       "steps": [
         {
           "label": "Total VA",
@@ -1035,7 +1035,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "87e042ca1db53911fb62d989e29694a0cd1ab2bb21efde1c1605b1b5acec8a84"
+      "contentHash": "c0428c60cf768ebd0fd7d85026d0cb72bda1221ea85e865ff9d3537c0dac9f76"
     },
     {
       "bankItemNumber": 382,
@@ -1123,15 +1123,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A panel has one control transformer feeding three separate starter coils, each rated 12 VA at 120 V, and all three can be energized together during a sequenced start. To confirm the transformer secondary fuse rating is adequate, what total secondary current must the three coils draw when energized simultaneously?",
+      "question": "Three across-the-line starter control circuits, each wired exactly as shown in the diagram, are fed from the 120 V secondary of one control transformer, and each starter coil is rated 12 VA at 120 V. During a sequenced start the three start contacts are pressed and released one after the other, and in each circuit the seal-in contact keeps its coil energized after the start contact reopens. With all three coils held in this way, what total current must the transformer secondary and its fuse carry?",
       "options": [
         "0.3 A",
         "0.1 A",
-        "0.5 A",
-        "0.7 A"
+        "0.9 A",
+        "1.5 A"
       ],
       "correctIndex": 0,
-      "explanation": "Total apparent power is 3 × 12 VA = 36 VA. Dividing by the 120 V secondary gives 36 ÷ 120 = 0.3 A, the current the fuse and transformer must sustain when all coils pull in together. The 0.1 A option comes from dividing a single coil's VA by 120 V and forgetting to add the other two coils, understating the real simultaneous load. The 0.5 A and 0.7 A options result from mistakenly using a lower assumed voltage or adding extra inrush margin without basing it on the actual VA sum, producing values not supported by the given ratings. Only the 0.3 A answer matches the arithmetic from the supplied coil VA and control voltage. Confirming this current against the transformer's rated secondary current and the installed fuse size is the correct verification step before returning the control circuit to service.",
+      "explanation": "Because each seal-in contact in the diagram parallels its start contact, every coil stays energized once its start contact is released, so all three coils are drawing current at the same time. Total apparent power is 3 × 12 VA = 36 VA, and 36 VA ÷ 120 V = 0.3 A, the current the secondary conductors and fuse must sustain. The 0.1 A choice is 12 VA ÷ 120 V, which accounts for only one sealed-in coil and ignores the other two. The 0.9 A choice comes from correctly finding 36 VA ÷ 120 V = 0.3 A and then multiplying by three a second time, counting the three coils twice. The 1.5 A choice comes from dividing the 36 VA total by 24 V instead of the stated 120 V control voltage. Comparing the calculated 0.3 A against the transformer's rated secondary current and the installed fuse size confirms the control supply can hold all three starters in.",
       "steps": [
         {
           "label": "Total VA",
@@ -1148,7 +1148,7 @@
       "diagramAlt": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "4d3e8c7c9c6d3683ce22e5dfc1e0fc20b040479a9c4ddd2d7c786b13a743780e"
+      "contentHash": "1a29467f97939be4aa786d1d2c0c7b1eac60671cdc15745f9754175ccc4a5443"
     },
     {
       "bankItemNumber": 386,
@@ -1236,7 +1236,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A packaging line's conveyor motor, originally rated 1740 rpm at 60 Hz, has its VFD reprogrammed to output 45 Hz to slow the line. Ignoring slip change and low-speed compensation, what approximate motor speed should result at 45 Hz?",
+      "question": "A packaging line's conveyor motor is nameplated 1740 rpm at 60 Hz. To slow the line, the VFD is reprogrammed to output 45 Hz. Ignoring the change in slip and any low-speed torque compensation, what approximate shaft speed should the electrician expect to measure at 45 Hz?",
       "options": [
         "1305 rpm",
         "1160 rpm",
@@ -1244,7 +1244,7 @@
         "1653 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Induction-motor speed is directly proportional to applied frequency when pole count is fixed and slip change is ignored, so speed scales by the frequency ratio: 1740 × (45 ÷ 60) = 1305 rpm. This is the correct first-order estimate an electrician uses when verifying VFD reprogramming results. The 1160 rpm option comes from mistakenly using a 40 Hz ratio instead of the actual 45 Hz setpoint, a common data-entry or misreading error. The 1450 rpm option results from applying an incorrect proportion (assuming a smaller frequency drop than actually occurred). The 1653 rpm option wrongly assumes speed increases, which would only happen if frequency rose above 60 Hz. Real-world speed will differ slightly due to slip and any low-speed torque compensation programmed into the drive, but the proportional method gives the expected baseline for troubleshooting or verifying commissioning results.",
+      "explanation": "With the pole count fixed and the change in slip ignored, induction-motor speed is directly proportional to the applied frequency, so the nameplate speed scales by the frequency ratio: 1740 × (45 ÷ 60) = 1305 rpm. That is the first-order figure an electrician uses with a tachometer to confirm the drive is actually running at the new setpoint. The 1160 rpm choice results from scaling with 40 Hz (1740 × 40 ÷ 60) instead of the 45 Hz that was programmed. The 1450 rpm choice comes from scaling with 50 Hz (1740 × 50 ÷ 60), a common mix-up when reading the drive's speed reference. The 1653 rpm choice reduces the speed by only about 5 percent (1740 × 0.95) rather than the full 25 percent frequency reduction, so it leaves the motor well above what 45 Hz can produce. In service the measured speed will be slightly different because slip changes with load and the drive may add low-speed compensation, but the proportional method gives the expected baseline.\n\nWorked steps:\n1. Frequency ratio = 45 Hz ÷ 60 Hz = 0.75\n2. New speed = 1740 rpm × 0.75 = 1305 rpm",
       "steps": [
         {
           "label": "Ratio",
@@ -1261,7 +1261,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "434c5819564bbb177069329c1606ccf9e7a504cd24bf62fde94f2797a3ca5869"
+      "contentHash": "af7843164fe145ca26caa557585fd515cfc29d0b49d6623486caf8cc4f8979d6"
     },
     {
       "bankItemNumber": 390,
@@ -1462,7 +1462,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A bakery conveyor drive motor is rated 1725 rpm at 60 Hz. A technician is confirming the VFD's expected output speed before troubleshooting a downstream jam sensor, with the drive commanded to 45 Hz under proportional V/Hz control. Ignoring slip variation, what speed should the motor produce at 45 Hz?",
+      "question": "A bakery conveyor drive motor has a nameplate rating of 1725 rpm at 60 Hz. Before troubleshooting a downstream jam sensor, a technician needs to confirm the shaft speed the VFD should be producing with the drive commanded to 45 Hz under proportional V/Hz control. Ignoring any change in slip, what speed should the motor produce at 45 Hz?",
       "options": [
         "1294 rpm",
         "1150 rpm",
@@ -1470,7 +1470,7 @@
         "1500 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Under proportional V/Hz control with pole count unchanged, motor speed scales directly with applied frequency. Multiplying the nameplate speed (1725 rpm) by the frequency ratio (45÷60) gives 1294 rpm, the correct first-approximation output. The 1150 rpm option results from mistakenly using a 40 Hz ratio instead of the specified 45 Hz, a common data-entry error when reading drive parameters. The 1381 rpm option incorrectly substitutes the motor's synchronous speed instead of its actual nameplate (slip-included) speed as the baseline. The 1500 rpm option is an unsupported estimate with no proportional basis. The correct approach uses the given nameplate speed and exact frequency ratio, matching how VFDs scale output frequency linearly before slip and load compensation are applied.",
+      "explanation": "With the pole count fixed and the drive holding a proportional volts-per-hertz ratio, shaft speed changes directly with applied frequency. Multiply the nameplate speed by the frequency ratio: 1725 rpm x (45 Hz / 60 Hz) = 1294 rpm. The 1150 rpm choice comes from applying a 40 Hz ratio (1725 x 40/60) instead of the commanded 45 Hz, an easy slip when reading drive parameters. The 1381 rpm choice comes from scaling by 0.80 (a 48 Hz ratio) rather than the 0.75 ratio that 45 Hz actually represents. The 1500 rpm choice is the synchronous speed of a four-pole motor at 50 Hz, which has nothing to do with this 60 Hz nameplate at a 45 Hz command. Using the nameplate speed with the exact frequency ratio mirrors how a VFD scales output speed linearly before slip and load compensation are considered.",
       "steps": [
         {
           "label": "Ratio",
@@ -1487,7 +1487,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "d12a94c24c565c2bad4e859ae9bfd508b6b81c22418946ec5423d079a3f25bda"
+      "contentHash": "e53b69428b3d746b4a7bedc95ecb06afd762c75f3cd10fd33a6f27939d350bf5"
     },
     {
       "bankItemNumber": 398,
@@ -1575,7 +1575,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A rooftop exhaust-fan motor nameplated for 1760 rpm at 60 Hz is reprogrammed on its VFD (see diagram) to run at 35 Hz to match a reduced-airflow setpoint. Using the linear frequency-speed relationship and ignoring slip and low-speed compensation, what output shaft speed should the technician expect for verification?",
+      "question": "A rooftop exhaust-fan motor nameplated 1760 rpm at 60 Hz is fed from the variable-frequency drive shown in the diagram. The supply feeding the rectifier remains at the utility's fixed 60 Hz, while the inverter stage downstream of the DC bus has been programmed to deliver 35 Hz to match a reduced-airflow setpoint. Ignoring slip and any low-speed compensation, what shaft speed should the technician expect to read with a tachometer on the fan motor?",
       "options": [
         "1027 rpm",
         "877 rpm",
@@ -1583,7 +1583,7 @@
         "1327 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Induction-motor speed is approximately proportional to applied frequency when pole count stays fixed, so 1760 rpm × (35 ÷ 60) gives 1027 rpm, the value the technician should expect on the fan shaft. This matches the drive's linear volts-per-hertz output shown on the diagram's inverter stage. The tempting 877 rpm comes from mistakenly halving the frequency ratio instead of applying 35/60 directly, while 1177 rpm results from inverting the ratio (60/35 applied to a smaller base) and 1327 rpm from an arithmetic slip in the multiplication step. None of these reflect the correct proportional scaling, and all ignore that the calculation is a first approximation only—actual measured speed will vary slightly due to motor slip, load torque, and any programmed compensation the drive applies at reduced frequency.",
+      "explanation": "Shaft speed of an induction motor follows the frequency actually applied at its terminals, which comes from the inverter stage after the DC bus — not the fixed 60 Hz entering the rectifier. Because the pole count cannot change, speed scales in direct proportion to that inverter output frequency: 1760 rpm × (35 Hz ÷ 60 Hz) = 1026.7, or about 1027 rpm. Reading 877 rpm would mean the motor was running at roughly half nameplate speed, which corresponds to about 30 Hz rather than the programmed 35 Hz. Reading 1177 rpm corresponds to roughly 40 Hz of output, and 1327 rpm to roughly 45 Hz, so either reading suggests the drive is not actually holding the 35 Hz setpoint the technician entered. Remember that 1027 rpm is a first approximation: the measured value will sit slightly lower because of rotor slip under fan load, and it can differ if the drive applies programmed slip or torque compensation at reduced frequency.",
       "steps": [
         {
           "label": "Ratio",
@@ -1600,7 +1600,7 @@
       "diagramAlt": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output.",
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "808eec4e9525a52f1a680b5b78b0a9cbf9506db655352c7b7d9f9dec1a9c415d"
+      "contentHash": "59e87d2eda70903a04e8847d346830ae620c24468454d5f11522ae0ac5aa4d19"
     },
     {
       "bankItemNumber": 402,
@@ -2413,15 +2413,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase capacitor-start motor on equipment D24-26 was rebuilt after a bearing failure. It now sounds normal, but conveyor speed reads slightly below the process line's rated output, and motor slip has not been rechecked. What should happen next?",
+      "question": "A single-phase capacitor-start motor driving conveyor D24-26 has been reassembled with new bearings and end shields. It runs quietly, but a tachometer reading at the shaft shows conveyor speed slightly below the rated process line output, and slip has not been rechecked since reassembly. What is the appropriate next action?",
       "options": [
-        "Increase supply voltage slightly to compensate for the speed shortfall without further checks.",
-        "Install a replacement capacitor of unknown rating and restart the conveyor immediately.",
-        "Record the speed difference as normal wear and place the conveyor back into production.",
-        "Pause the return to service, verify motor slip against nameplate and diagnostic data, resolve any discrepancy, and record findings."
+        "Raise the supply voltage a few percent at the transformer taps to bring shaft speed back up to the rated figure.",
+        "Fit a start capacitor taken from stores with no marked microfarad rating and restart the conveyor at full load.",
+        "Attribute the small speed shortfall to normal winding aging and release the conveyor straight back into production.",
+        "Hold the return to service, measure shaft speed and compare calculated slip with nameplate values, correct any discrepancy found, and log the readings."
       ],
       "correctIndex": 3,
-      "explanation": "Motor slip reflects the difference between synchronous and actual rotor speed and signals problems such as bearing drag, incorrect voltage, or load mismatch. Since the conveyor now runs slower than the process line's rated output after a bearing rebuild, the technician must pause and verify slip using nameplate data, supply voltage, phase sequence, load torque, alignment, and ventilation conditions before returning the motor to service. Raising supply voltage without diagnosis risks overheating or insulation damage while masking the true cause of excess slip. Installing an unrated capacitor could alter starting torque and current, creating a new fault. Treating the discrepancy as normal wear skips verification entirely, allowing an undetected mechanical or electrical defect to persist and potentially damage the motor or driven equipment. Confirming slip against approved data and documenting the resolution protects reliability and gives future technicians a verified record for troubleshooting.",
+      "explanation": "Slip is the difference between the motor's synchronous speed and the actual rotor speed, expressed as a percentage of synchronous speed, and it rises when the rotor meets extra drag or when the motor is not producing normal torque. After bearings and end shields are reassembled, higher-than-nameplate slip commonly points to bearing preload or misalignment, a shaft rubbing an end shield, low terminal voltage, a weak or wrong-value start capacitor, or added belt and conveyor load. The technician measures shaft speed with a tachometer, calculates slip from the nameplate synchronous and full-load speeds, checks terminal voltage under load, and corrects whatever is out of tolerance before the drive is released. Increasing supply voltage only pushes more current and heat into the windings while hiding the real cause of the speed loss. Installing an unmarked capacitor changes starting torque and current in an unpredictable way and can overheat the start winding. Calling the shortfall normal aging skips measurement entirely, so a developing mechanical or electrical fault keeps running and can damage the motor or the driven conveyor. Logging the measured speed and slip values gives the next technician a verified baseline for comparison.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2429,7 +2429,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "82456be2d1aea0982c0422f52a82bc0a43409bf6bd076acc20653488d44f85df"
+      "contentHash": "2cd9a0159c3cc3e8572f475027e23d2c4cd0c6cda23830bcd3947f50fd2e7dbc"
     },
     {
       "bankItemNumber": 431,

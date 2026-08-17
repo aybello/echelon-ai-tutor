@@ -80,7 +80,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A rooftop exhaust fan motor is fed by a single-phase branch circuit of two conductors run in rigid conduit. The one-way conductor length is 20 m, the motor draws 21 A, and each conductor has a resistance of 0.004 Ω/m. Calculate the approximate voltage drop of this circuit.",
+      "question": "A rooftop exhaust fan motor is supplied by a single-phase branch circuit consisting of two conductors installed in rigid conduit. The one-way run from the panel to the motor is 20 m, the motor draws 21 A, and each conductor has a resistance of 0.004 Ω/m. Calculate the approximate voltage drop of this circuit.",
       "options": [
         "1.68 V",
         "3.36 V",
@@ -88,7 +88,7 @@
         "6.72 V"
       ],
       "correctIndex": 1,
-      "explanation": "Current travels out to the motor on one conductor and returns on the other, so the resistance the current sees covers twice the one-way length: 2 × 20 m = 40 m. Total conductor resistance is 40 m × 0.004 Ω/m = 0.16 Ω, and the drop is 21 A × 0.16 Ω = 3.36 V. The 1.68 V answer comes from using only the 20 m one-way length (0.08 Ω × 21 A) and therefore counts just half the conductor path. The 6.72 V answer comes from doubling the length a second time (80 m), applying the return-path correction twice. The 5.82 V answer comes from multiplying the correct 3.36 V by 1.732, a factor that applies to three-phase line-to-line calculations and not to this two-conductor single-phase circuit. Tracing the complete out-and-back path is essential when checking whether the drop stays low enough for reliable motor starting and running performance.",
+      "explanation": "Current flows out to the motor on one conductor and returns on the other, so the resistance in the loop covers twice the one-way run: 2 × 20 m = 40 m. Total conductor resistance is 40 m × 0.004 Ω/m = 0.16 Ω, and the drop is 21 A × 0.16 Ω = 3.36 V. Using only the 20 m one-way length gives 0.08 Ω × 21 A = 1.68 V, which counts just half of the conductor path. Doubling the length a second time to 80 m gives 0.32 Ω × 21 A = 6.72 V, applying the return-path allowance twice. Multiplying the correct 3.36 V by 1.732 gives about 5.82 V, but that factor belongs to three-phase line-to-line calculations, not to this two-wire single-phase circuit. Tracing the full out-and-back path is what keeps the result accurate when you are checking whether the drop is small enough for dependable motor starting and running performance.",
       "steps": [
         {
           "label": "Determine total circuit length",
@@ -105,7 +105,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs raceways.",
-      "contentHash": "bdff9e166b4ba53e501bf8e23962a984485514e56f6fc4bbdb96a4d2c4d05cc9",
+      "contentHash": "68da6da1652bc1b45dc80f452b7b1aa274e918d8be9d5228d0c45eda5a00faa2",
       "options_note": null
     },
     {
@@ -195,15 +195,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A single-phase 120 V branch circuit supplies a bench grinder in a millwork shop located 40 m from its panel. Each of the two current-carrying conductors has a resistance of 0.004 Ω/m, and the grinder draws 18 A at full load. Before energizing, the apprentice must confirm the voltage drop on this run. What is the approximate voltage drop?",
+      "question": "A pedestal grinder in a millwork shop is fed by a single-phase 120 V branch circuit run 40 m from the shop panel. Each of the two current-carrying conductors in the run has a resistance of 0.004 Ω/m, and the grinder draws 18 A at full load. Using these values, what is the approximate voltage drop in the conductors at full load?",
       "options": [
-        "4.76 V",
+        "2.88 V",
         "5.76 V",
-        "6.76 V",
-        "7.76 V"
+        "8.64 V",
+        "11.52 V"
       ],
       "correctIndex": 1,
-      "explanation": "Current travels out to the grinder on one conductor and returns on the other, so the resistance of both conductors must be included: total length = 2 × 40 m = 80 m. Voltage drop = length × current × resistance per metre = 80 × 18 × 0.004 = 5.76 V. Notice that using only the one-way 40 m length gives 2.88 V, a value that does not appear among the choices, which is a useful reminder that the full round-trip conductor path always applies. The remaining values (4.76 V, 6.76 V, and 7.76 V) cannot be produced from the given 80 m, 18 A, and 0.004 Ω/m; they come from slips such as mis-multiplying 80 × 0.004 (which is 0.32 Ω) or dropping a digit when multiplying by the 18 A load. Working the calculation in a fixed order — double the one-way length, multiply by current, then by resistance per metre — keeps the result reliable when checking whether a conductor size holds the drop within acceptable limits.",
+      "explanation": "Current leaves the panel on one conductor and returns on the other, so the drop occurs over both conductor lengths: total conductor length = 2 × 40 m = 80 m. Voltage drop = total length × current × resistance per metre = 80 m × 18 A × 0.004 Ω/m = 5.76 V (about 4.8 % of 120 V). Counting only the one-way 40 m run gives 2.88 V, which ignores the return conductor. Treating the loop as 120 m of conductor gives 8.64 V, and doubling the 40 m twice to 160 m gives 11.52 V; both overstate the copper actually carrying the load current. A reliable order of operations is: double the one-way length, multiply by the load current, then multiply by the resistance per metre, and finally compare the result to the allowable percentage of supply voltage to judge whether the conductor size is adequate.",
       "steps": [
         {
           "label": "Determine total conductor length",
@@ -220,7 +220,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "e1f1716dbeb85b9c8a0c4510c8b25a4981569905ecaa54a3f2a1a2a3b48ecb66"
+      "contentHash": "41332f82c1e973a82a5f316f915d6d21807703f15e81fd5a3c623869e9850d0d"
     },
     {
       "bankItemNumber": 203,
@@ -421,7 +421,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A rooftop unit's single-phase branch circuit trips randomly, and the enclosure at disconnect C16-15 shows no scorch marks or loose terminations. The two current-carrying conductors run 20 m one way, carry 12 A, and each conductor has a resistance of 0.004 Ω/m. Calculate the approximate voltage drop over the complete circuit path so you can judge whether drop is contributing to the nuisance tripping.",
+      "question": "A single-phase 240 V branch circuit feeding a rooftop unit trips randomly, and the disconnect enclosure shows no scorch marks or loose terminations, so you decide to check voltage drop before condemning the breaker. The two current-carrying conductors run 20 m from the panel to the unit, the load draws 12 A, and each conductor has a resistance of 0.004 ohms per metre. What is the approximate voltage drop over the complete circuit path?",
       "options": [
         "0.96 V",
         "1.92 V",
@@ -429,7 +429,7 @@
         "3.84 V"
       ],
       "correctIndex": 1,
-      "explanation": "Voltage drop occurs over the full current path, out to the load and back, so the one-way length is doubled before applying resistance and current: 2 × 20 m = 40 m of conductor, and 40 m × 0.004 Ω/m × 12 A = 1.92 V. The 0.96 V choice uses only the 20 m one-way length and therefore reports half the real drop, which can hide a genuine conductor-sizing or connection problem. The 2.88 V choice comes from using 60 m, as though three conductor lengths carried the current, which applies to a three-phase calculation rather than this two-wire single-phase run. The 3.84 V choice doubles the length twice (80 m). Getting the loop length right gives a trustworthy drop figure before you decide whether conductor size, terminations, or the load itself explains the intermittent tripping.",
+      "explanation": "Current travels out to the load on one conductor and returns on the other, so the drop is calculated over both conductor lengths: 2 x 20 m = 40 m of conductor. Then 40 m x 0.004 ohms/m = 0.16 ohms, and 0.16 ohms x 12 A = 1.92 V. Choosing 0.96 V means only the 20 m one-way length was used, which reports half the real drop and can hide a genuine conductor-sizing or connection problem. Choosing 2.88 V comes from applying a length of 60 m, as though three conductor lengths carried the current, which suits a three-phase estimate rather than this two-wire single-phase run. Choosing 3.84 V doubles the length twice, giving 80 m. Always confirm the total loop length first so the drop figure you compare against the supply voltage is trustworthy when deciding whether conductor size, terminations, or the load itself explains intermittent tripping.",
       "steps": [
         {
           "label": "Determine total conductor length",
@@ -446,7 +446,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "f6211311b9754fa09fd9d4e057fe16c29ef0aeb6053adcb53a057d55b840a658"
+      "contentHash": "f969b1835f116fe30d14787928c61c839432c93a02bf1521e4dcfa15b9d8a623"
     },
     {
       "bankItemNumber": 211,
@@ -760,15 +760,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While landing 3/0 feeder conductors in the wiring gutter of a new motor control centre, an electrician finds the cable ends only reach the main lugs when the gutter cover is pressed down hard against them, bending the conductors sharply over the enclosure edge. What is the most defensible action before completing the terminations?",
+      "question": "An electrician is landing 3/0 feeder conductors on the main lugs inside the wiring gutter of a new motor control centre. The cable ends only reach the lug pads when the conductors are pulled taut and forced into a sharp bend over the edge of the enclosure, and the cover presses against them when it is fitted. Before crimping and torquing the lugs, what should the electrician do?",
       "options": [
-        "Install longer-barrel compression lugs so the cable ends reach the terminals without changing the length already pulled into the gutter.",
-        "Determine the free conductor length and bending space that the lug positions in this gutter require, then re-pull or re-route the cables so that allowance exists.",
-        "Torque each lug to the upper end of its specified range so the tension held in the strained conductors cannot work the connection loose in service.",
-        "Note the tight cover fit on the panel schedule and refit the cover, since the conductor insulation shows no cuts or abrasion at the bend."
+        "Fit extension lugs with longer barrels so the cable ends reach the terminal pads without changing the length of cable already brought into the gutter.",
+        "Bring additional slack in from the raceway, or re-route the run in the gutter, so each conductor has the free length to sweep into its lug within the available bending space and terminates with no tension on it.",
+        "Crimp the lugs as they sit and torque each one at the top of its rated range so the tension held in the strained conductors cannot work the connection loose in service.",
+        "Wrap the enclosure edge with insulating tape and refit the cover, since the sharp bend has not cut or abraded the conductor insulation at the contact point."
       ],
       "correctIndex": 1,
-      "explanation": "Conductor allowance is the extra length left at each termination so the conductor can curve from its entry point into the lug within the bending space the enclosure provides, without tension on the connection. Establishing how much free length the lug locations and gutter dimensions demand, then re-pulling or re-routing to provide it, removes the stress before the joint is made. Longer-barrel lugs may bring the copper closer to the terminal but they do not create bending space, and they can crowd required clearances while still leaving the conductor loaded in tension. Over-torquing does not relieve mechanical strain; excessive torque deforms strands and the lug barrel and can crack the terminal, while the pull on the conductor remains. Refitting the cover because the insulation looks undamaged leaves a permanently loaded termination that loosens under vibration and thermal cycling, producing a high-resistance, overheating connection later even though nothing is visibly wrong today.",
+      "explanation": "Conductor allowance is the extra free length left at a termination so the conductor can curve from where it enters the enclosure into the lug, using the bending space provided, without being held in tension. Pulling in more slack from the raceway or re-routing the conductors inside the gutter gives that allowance and lets the connection be made on a relaxed conductor. Longer-barrel extension lugs move the copper closer to the pad but they do not create bending space; they crowd clearances in the gutter while the conductor stays loaded. Torquing to the high end of the range does not relieve mechanical strain: excessive torque distorts the strands and the lug barrel and can crack the terminal, and the pull on the conductor is still there. Taping the enclosure edge protects the insulation but leaves a permanently tensioned termination that vibration and thermal cycling will loosen, creating a high-resistance, overheating connection later even though nothing looks wrong at the time of installation.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -776,7 +776,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply raceway support knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "d2fba2912041560a5084c51f51ee1294fb6cdc2820c812cc0f3c3d270f316450"
+      "contentHash": "2184c2fcaa96abfba43ac49039eafea08972fafb896212f1e77b5283e2ec2f05"
     },
     {
       "bankItemNumber": 223,
@@ -1125,7 +1125,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A 120 V single-phase baseboard heater is producing less heat than the owner expects, so the electrician works from the annotated route drawing for the circuit. The drawing labels the panel-to-heater one-way run as 25 m, the measured load current as 12 A, and each of the two circuit conductors as 0.004 Ω/m; the current path is drawn leaving the breaker terminal on the supply conductor, passing through the heater terminals, and returning to the panel neutral bar on the identified conductor. Following that drawn path, what total voltage drop occurs in the circuit conductors?",
+      "question": "A 120 V single-phase baseboard heater is producing less heat than the owner expects, so the electrician works from the annotated route drawing for the circuit. The drawing labels the panel-to-heater one-way run as 25 m, the load current as 12 A, and each of the two circuit conductors as 0.004 Ω/m. The traced current path on the drawing leaves the breaker terminal on the supply conductor, passes through the heater terminals, and returns to the panel neutral bar on the identified conductor. Following the complete path shown on the drawing, what is the total voltage drop in the circuit conductors?",
       "options": [
         "1.2 V",
         "4.8 V",
@@ -1133,7 +1133,7 @@
         "2.0 V"
       ],
       "correctIndex": 2,
-      "explanation": "The path drawn on the diagram shows current travelling out on the supply conductor and returning on the identified conductor to the neutral bar, so the resistive length in the loop is twice the labelled 25 m one-way run: 2 × 25 m = 50 m. Loop resistance is 50 m × 0.004 Ω/m = 0.2 Ω, and the drop is 12 A × 0.2 Ω = 2.4 V. The 1.2 V choice counts only the 25 m supply leg (0.1 Ω × 12 A) and ignores the return conductor shown on the drawing. The 4.8 V choice doubles the length twice, treating the loop as 100 m (0.4 Ω × 12 A). The 2.0 V choice uses the correct 0.2 Ω loop resistance but a rounded 10 A instead of the 12 A actually measured. Because 2.4 V is only about 2 % of 120 V, the conductor run is not limiting the heat output, so the electrician should look instead at loose terminations at the heater or panel, an element rated for a different voltage, or low supply voltage at the panel.",
+      "explanation": "The traced path on the drawing shows current going out on the supply conductor and returning on the identified conductor, so the conductor length carrying current is twice the labelled one-way run: 2 × 25 m = 50 m. Loop resistance is 50 m × 0.004 Ω/m = 0.2 Ω, and the drop is 12 A × 0.2 Ω = 2.4 V. Choosing 1.2 V counts only the 25 m supply leg (0.1 Ω × 12 A) and ignores the return conductor drawn back to the neutral bar. Choosing 4.8 V doubles the length twice, treating the loop as 100 m (0.4 Ω × 12 A). Choosing 2.0 V uses the correct 0.2 Ω loop resistance but a rounded 10 A instead of the labelled 12 A. Since 2.4 V is only about 2 % of 120 V, the conductor run is not the reason for the low heat output; more likely causes are loose terminations at the heater or panel, an element rated for a different voltage, or low supply voltage at the panel.",
       "steps": [
         {
           "label": "Determine total conductor path length",
@@ -1150,7 +1150,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "289ed33380f073913c03b0c7a36cd2443bb12ef1b571645ace91c137e89f4e30"
+      "contentHash": "86c036a7c8a8d13633fa6afdef138982c152bac5fd9dfc0d64c74b2f80bd96fc"
     },
     {
       "bankItemNumber": 236,
@@ -1238,7 +1238,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "An electrician is checking a two-wire, single-phase branch circuit supplying a workshop dust collector. The one-way run is 45 m, the load draws 24 A, and each conductor has a resistance of 0.004 Ω/m. What is the approximate voltage drop on this circuit?",
+      "question": "An electrician is verifying performance on a two-wire, 120 V single-phase branch circuit that supplies a workshop dust collector. The one-way run from the panel to the machine is 45 m, the running load is 24 A, and each conductor has a resistance of 0.004 Ω/m. What is the approximate voltage drop on this circuit?",
       "options": [
         "4.32 V",
         "7.48 V",
@@ -1246,7 +1246,7 @@
         "17.28 V"
       ],
       "correctIndex": 2,
-      "explanation": "Current leaves the panel on one conductor and returns on the other, so the resistance that produces voltage drop belongs to both conductors: 2 × 45 m = 90 m of conductor in the loop. Voltage drop is then 90 m × 24 A × 0.004 Ω/m = 8.64 V. The 4.32 V figure comes from using only the 45 m one-way distance and ignoring the return conductor, which understates the drop by half. The 7.48 V figure comes from applying the 1.732 three-phase multiplier to the one-way run (1.732 × 45 × 24 × 0.004); that multiplier belongs to three-phase line-to-line calculations, not a two-wire single-phase circuit. The 17.28 V figure comes from doubling the 90 m loop length a second time, counting each conductor twice. Underestimating drop on a motor-driven load such as a dust collector can lead to sluggish starting and overheating, so the full loop length must always be used.",
+      "explanation": "Current leaves the panel on one conductor and returns on the other, so the resistance that produces the drop is that of both conductors: 2 × 45 m = 90 m of conductor in the loop. Voltage drop = 90 m × 24 A × 0.004 Ω/m = 8.64 V. Choosing 4.32 V comes from using only the 45 m one-way length (45 × 24 × 0.004) and ignoring the return conductor, which cuts the true drop in half. Choosing 7.48 V comes from applying the 1.732 three-phase multiplier to the one-way run (1.732 × 45 × 24 × 0.004); that multiplier belongs to three-phase line-to-line work, not a two-wire single-phase circuit. Choosing 17.28 V comes from doubling the 90 m loop a second time (180 × 24 × 0.004), counting each conductor twice. On a motor-driven load such as a dust collector, underestimating the drop leads to reduced starting torque and higher running current, so always base the calculation on the full loop length.",
       "steps": [
         {
           "label": "Determine loop length",
@@ -1263,7 +1263,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "32ad38f8273e247e37d610a2638b014fe4276cd5654700f853d472a2972f1124"
+      "contentHash": "2a4d588f065aa7c5d4af574a3129842bda1c3017634742d005d691d8032e33e6"
     },
     {
       "bankItemNumber": 240,
@@ -1387,15 +1387,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A retail fit-up adds six LED track heads to a dimmed lighting circuit that already feeds twelve LED fixtures. In normal operation the dimmer now shuts down intermittently and restarts after it cools, while the branch circuit breaker stays closed. What should the electrician verify before returning the circuit to service?",
+      "question": "During a retail fit-up, an electrician adds six LED track heads to a dimmed lighting circuit that already feeds twelve LED fixtures. With the dimmer at full output the lighting now drops out after several minutes and comes back once the dimmer has cooled, while the branch circuit breaker remains closed the whole time. What should the electrician verify before returning the circuit to service?",
       "options": [
-        "Install a higher-rated dimmer of the same family and re-energize, treating the shutdowns as a defective control device",
-        "Confirm the added track heads use dimmable drivers compatible with the dimmer type, leaving the circuit load calculation unchanged",
-        "Re-terminate the track head connections and retighten the dimmer terminals, treating the shutdowns as a loose-connection problem",
+        "Replace the dimmer with a higher-wattage model from the same product family and re-energize, since the repeated dropouts point to a failing control device",
+        "Confirm the six added track heads use drivers listed as dimmable and matched to the dimmer's control method, leaving the existing circuit load calculation as it stands",
+        "Re-terminate the track head taps and retorque the dimmer terminals, since intermittent operation of the lighting points to a high-resistance connection",
         "Compare total fixture wattage, fixture count, measured current, the dimmer rating, and the branch circuit calculation against the approved lighting design"
       ],
       "correctIndex": 3,
-      "explanation": "The dimmer's internal overload and thermal protection is what is opening the load, not the branch circuit breaker, which is a strong indication that the connected load now exceeds the dimmer's rating even though it remains below the breaker rating. Comparing the total wattage of all eighteen fixtures, the measured current with the dimmer at full output, the dimmer's rated capacity, and the branch calculation against the approved lighting design tells the electrician whether the control and circuit were ever sized for the added track heads. Fitting a larger dimmer first is wrong because without the load figures there is no way to know what rating is actually required or whether the branch wiring supports it. Checking driver compatibility alone is wrong because incompatible drivers usually cause flicker or poor low-end performance rather than repeated thermal shutdown, and it leaves the capacity question unanswered. Chasing loose terminations is wrong because a loose connection typically produces erratic operation or heating at the joint, not a shutdown that clears once the control cools.",
+      "explanation": "The branch circuit breaker never opened, so the total current is still below the overcurrent device rating. What is dropping the load is the dimmer's own internal overload and thermal protection, and the fact that operation is restored once the control cools is the classic signature of that protection cycling. This points to connected load that now exceeds the dimmer's rated capacity after six track heads were added to twelve existing fixtures. Adding up the wattage of all eighteen fixtures, measuring the actual current at full output, and comparing those figures to the dimmer's rating and to the branch circuit calculation in the approved lighting design tells the electrician whether both the control device and the circuit were ever sized for the added load. Fitting a larger dimmer first is premature because without the load figures there is no way to know what rating is required or whether the existing wiring and overcurrent protection support the new total. Checking driver compatibility alone is not enough because a mismatch between driver and control method usually shows up as flicker, buzzing, or poor performance at low dimming levels rather than a timed shutdown that clears on cooling, and it leaves the capacity question unanswered. Re-terminating connections addresses a different symptom, since a loose or high-resistance joint typically causes erratic flickering and localized heating at the joint rather than a clean dropout of the whole load that recovers after the control cools.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1403,7 +1403,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician installs lighting standards.",
-      "contentHash": "5e23fafd3050334f0b2b88ec542f8a2615fe1661e7c701b070c678c309628dce",
+      "contentHash": "c9cffe91a6a4b4085417c8f6b6b1add927545ccbe21190cf3bdb345146a5deb1",
       "tips": "When a control device shuts down but the breaker holds, suspect the rating of the control device and compare the actual connected load to it."
     },
     {
@@ -1806,15 +1806,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A hallway uses the switching arrangement shown, with two end switches and one intermediate point controlling a single branch circuit. That circuit feeds 14 luminaires, each rated at 32 W. Calculate the total connected lighting power for this branch circuit.",
+      "question": "In the multi-location lighting circuit shown, the luminaire symbol drawn on the switch leg beyond the second end switch represents 14 identical 32 W luminaires wired in parallel at that point on the hallway branch circuit. What connected lighting power must that switch leg between the second end switch and the luminaire group be able to carry?",
       "options": [
         "420 W",
         "480 W",
         "448 W",
-        "400 W"
+        "416 W"
       ],
       "correctIndex": 2,
-      "explanation": "Connected power for identical loads equals the number of units multiplied by the rated wattage per unit: 14 × 32 W = 448 W. This value reflects nameplate power draw only, independent of how the multi-location switching directs control signals to the luminaires. The 420 W and 400 W options result from rounding or misreading the rated wattage as slightly lower than 32 W, while 480 W comes from miscounting the luminaires as 15 instead of 14, an easy error when tracing a multi-point switched circuit on a diagram. Because switch quantity and switching configuration do not affect connected power, an electrician should isolate rated wattage and luminaire count from the switching path shown before performing the multiplication, ensuring the branch circuit's connected load calculation is not confused with switch loading or voltage drop considerations.",
+      "explanation": "Trace the path in the diagram: the travellers running from the first end switch through the intermediate switching point to the second end switch only redirect the switched supply, so no lighting load is measured on them. The conductor leaving the second end switch is the switch leg that feeds every luminaire in the group, so it carries the full connected lighting power. For identical parallel loads that value is the count multiplied by the nameplate rating: 14 × 32 W = 448 W. The 420 W choice comes from reading the nameplate as 30 W instead of 32 W, 480 W comes from counting 15 luminaires when tracing the load point on the diagram, and 416 W comes from counting only 13. Remember that switch quantity and switching configuration do not change connected power; confirm the luminaire count and rated wattage at the load point first, then identify which conductor in the arrangement actually carries that load.",
       "steps": [
         {
           "label": "Identify",
@@ -1831,7 +1831,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician services branch circuitry.",
-      "contentHash": "2c6dc45c3950d5e7b904b1aa585f785728a5b87f765c9efec496ca8f5ccb1a2f"
+      "contentHash": "9fe66ee381d4bdcd54fd2b712e3c0f643b91b22919d0a880c36e5f8a449d21c7"
     },
     {
       "bankItemNumber": 260,
@@ -1841,15 +1841,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician adds runway edge luminaires to an existing airfield lighting circuit. During commissioning, the breaker holds normally, but the series lighting regulator (dimmer) runs unusually hot. What must be confirmed before signing off the installation inspection?",
+      "question": "An electrician adds runway edge luminaires to an existing airfield series lighting circuit. During commissioning, the branch breaker holds without tripping, but the constant-current series lighting regulator runs unusually hot at its highest brightness step. What must be confirmed before signing off the installation inspection?",
       "options": [
-        "Record the overheating as a breaker issue and close the inspection without checking the regulator's load type or rating.",
-        "Reuse a circuit arrangement from a similar airfield lighting job without verifying this site's actual load data.",
-        "Confirm the luminaires energize normally, since successful energization proves the lighting load is acceptable.",
+        "Rely on the branch overcurrent device's rating as proof the connected load is within limits, since it carries the circuit without tripping.",
+        "Duplicate the circuit loading arrangement used on a previous airfield project of similar size, assuming luminaire count and spacing are equivalent.",
+        "Confirm the luminaires energize and reach full brightness on every step, since correct light output proves the connected load is acceptable.",
         "Compare luminaire wattage, quantity, measured current, and regulator rating against the approved design and branch load calculation."
       ],
       "correctIndex": 3,
-      "explanation": "A regulator overheating while the breaker holds indicates the connected load may exceed the control device's rated capacity, even though the branch protection is undersized to detect it. The correct action compares luminaire wattage, quantity, and measured current draw against the regulator rating and the approved branch calculation, confirming the actual installed load matches design intent. Blaming the breaker fails because breaker trip points do not reflect regulator thermal limits. Reusing another job's arrangement fails because airfield loads and luminaire counts vary by site and are not interchangeable. Assuming energization proves adequacy fails because a circuit can energize and operate while still overloading a control device, risking premature failure of critical visual aid equipment relied upon for safe aircraft operations.",
+      "explanation": "A regulator running hot while the breaker holds is a sign that the connected load may be at or above the regulator's rated output capacity. The correct step is to compare installed luminaire wattage and quantity, the measured circuit current, and the regulator's nameplate rating against the approved design and branch load calculation, which confirms the actual installed load matches design intent. Relying on the breaker fails because an overcurrent device is sized and set to protect the conductors it feeds; it responds to conductor-level current, not to the thermal limits inside the regulator, so it can hold normally while the regulator is overloaded. Duplicating another project's arrangement fails because luminaire counts, spacing, and circuit lengths differ from site to site, so the loading is not transferable. Relying on correct light output fails because a series circuit can energize and produce full brightness while still driving the regulator beyond its rating, leading to premature failure of visual aid equipment relied upon for safe aircraft operations.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1857,7 +1857,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply branch-circuit tracing knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "f284ebfd3d325f9b42e75a0ed0073adde5efce2e4d06b2a7102feebb1bd947b2"
+      "contentHash": "22a626dc041954119ca64f4645a2fd4877e8928838a56dd99d1c01a9971628cf"
     },
     {
       "bankItemNumber": 261,
@@ -2827,7 +2827,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A rooftop packaged HVAC unit's control transformer is nameplated 150 VA at 24 V secondary. Before selecting a properly rated control-circuit fuse to stop nuisance tripping, the electrician must confirm the transformer's rated secondary current. What is that rated current?",
+      "question": "A rooftop packaged HVAC unit's control transformer is nameplated 150 VA at 24 V secondary. The annotated run in the diagram is the 24 V control-circuit conductor pair from that secondary out to the contactor coil, and because it is a single series path, the current shown at the load end is the same current leaving the transformer. Before selecting a control-circuit fuse that will carry the fully loaded transformer without nuisance tripping, the electrician must confirm the rated secondary current in that run. What is that rated current?",
       "options": [
         "5 A",
         "7.5 A",
@@ -2835,7 +2835,7 @@
         "8.75 A"
       ],
       "correctIndex": 2,
-      "explanation": "The nameplate gives apparent power (VA) and secondary voltage, so rated secondary current equals VA divided by voltage: 150 ÷ 24 = 6.25 A. This value lets the electrician select a fuse sized to protect the transformer without nuisance tripping under normal control loads. The 7.5 A distractor results from mistakenly dividing an assumed 180 VA rating instead of the actual 150 VA nameplate value, a common transcription error. The 5 A option would apply only to a smaller 120 VA transformer, not this unit. The 8.75 A option incorrectly adds an arbitrary safety margin to the calculated current rather than using the nameplate VA directly. Correct fuse selection depends on accurately calculating rated current first, then referencing manufacturer instructions and approved drawings for the correct protective device size.",
+      "explanation": "The nameplate gives apparent power (VA) and secondary voltage, so the rated secondary current is VA divided by voltage: 150 ÷ 24 = 6.25 A. Since the annotated control run is one series loop, that same 6.25 A flows in the conductor at the transformer terminals and at the contactor coil, so 6.25 A is the current the fuse must carry continuously. The 7.5 A choice comes from misreading the nameplate as 180 VA (180 ÷ 24 = 7.5 A) instead of the actual 150 VA. The 5 A choice matches a smaller 120 VA transformer (120 ÷ 24 = 5 A), not this unit. The 8.75 A choice comes from multiplying the correct 6.25 A by a 140% overcurrent-sizing factor and then reporting that protection figure as if it were the transformer's rated current; rated current is calculated from the nameplate alone, and any sizing multiplier is applied afterward when choosing the fuse. Always establish rated current first, then use the manufacturer's instructions and the approved control drawings to pick the protective device.",
       "steps": [
         {
           "label": "Formula",
@@ -2852,7 +2852,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply control transformer current knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "aaaae37f7768227e07515a70fbc61140fccdfdb27ff89aaa726c35b939156d59"
+      "contentHash": "1dd076528dd7a2a72705c4122cf585dbc884b7f95a3e4c89d46eaa8afb3cd17a"
     },
     {
       "bankItemNumber": 296,
@@ -3192,7 +3192,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A homeowner reports a baseboard heater cycling weaker than usual. Before re-energizing, an apprentice isolates the circuit, verifies zero energy, and measures the heater element resistance at 24 Ω across a 240 V supply. Using this measured value, what is the element's theoretical power output?",
+      "question": "A homeowner reports that a 240 V baseboard heater is putting out less heat than it used to. The apprentice locks out and isolates the circuit, verifies zero energy, disconnects the element leads, and measures the element resistance at 24 Ω. Based on this measured resistance and the 240 V supply, what is the element's theoretical power output?",
       "options": [
         "1.6 kW",
         "3.2 kW",
@@ -3200,7 +3200,7 @@
         "2.4 kW"
       ],
       "correctIndex": 3,
-      "explanation": "Power for a resistive load is found using P = V² ÷ R. Substituting the measured values gives P = 240² ÷ 24 = 57600 ÷ 24 = 2400 W, or 2.4 kW. This matches the correct option because it applies the proper formula directly to the supplied voltage and resistance without altering either value. The 4 kW option results from mistakenly using P = V × I with an assumed current instead of resistance data, producing an inflated figure. The 3.2 kW option comes from a division error when squaring voltage, and 1.6 kW results from halving the correct answer, a common slip when confusing series and parallel heating element configurations. Because the technician confirmed isolation and used a properly measured resistance, the theoretical calculation is valid, though actual heat output may vary once the element reaches full operating temperature.",
+      "explanation": "For a purely resistive load such as a heating element, use P = V² ÷ R. Substituting the given values: P = 240² ÷ 24 = 57 600 ÷ 24 = 2400 W, or 2.4 kW. The same result can be confirmed the long way: I = V ÷ R = 240 ÷ 24 = 10 A, then P = V × I = 240 × 10 = 2400 W. The 4 kW figure corresponds to an element of about 14.4 Ω at 240 V, so it would only apply if part of the element winding were shorted out and the resistance read much lower than 24 Ω. The 3.2 kW figure comes from substituting a 277 V supply into the formula (277² ÷ 24 ≈ 3200 W) instead of the actual 240 V measured at the heater. The 1.6 kW figure corresponds to about 36 Ω, which is what would be read if an additional series section of element were included in the measurement rather than the single 24 Ω element. Remember that this calculated value is the cold-resistance power; the element's resistance rises slightly at operating temperature, so the measured heat output in service will be a little lower than the theoretical figure.",
       "steps": [
         {
           "label": "Formula",
@@ -3217,7 +3217,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "9012649a0f8b4ac63c0fd510bb2d0aefe741f746e36687596df7d29277911710"
+      "contentHash": "9f738b7130a2504a3840e5865c05d12c38727381f50fee9e2b98aab6abb9f077"
     },
     {
       "bankItemNumber": 309,
@@ -3305,15 +3305,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A homeowner reports one baseboard zone heats poorly compared to others in a multi-zone electric heating system. After isolating and verifying the circuit is de-energized, a technician measures the heater element's resistance at 20 Ω. The element is rated for 240 V supply. What is its theoretical power output when energized?",
+      "question": "While servicing an electric duct heater in a shop's makeup-air unit, an electrician locks out and verifies the de-energized 240 V branch circuit, then measures one heating element at 20 Ω. What power will that element develop once the unit is returned to service?",
       "options": [
-        "2.08 kW",
-        "3.68 kW",
-        "4.48 kW",
+        "2.16 kW",
+        "4.80 kW",
+        "0.72 kW",
         "2.88 kW"
       ],
       "correctIndex": 3,
-      "explanation": "Using P = V²/R, the technician calculates P = 240² ÷ 20 = 57600 ÷ 20 = 2880 W, or 2.88 kW. This matches the correct approach because the measured resistance and rated voltage are both verified values suitable for direct substitution into the resistive power formula. The 2.08 kW distractor results from mistakenly using 208 V (a common three-phase line voltage) instead of the actual 240 V single-phase supply specified. The 3.68 kW option comes from an arithmetic error dividing 240² incorrectly. The 4.48 kW option reflects a miscalculation using an incorrect resistance value. Confirming the applied voltage matches the nameplate and circuit conditions before calculating is essential, since substituting an unverified or assumed voltage produces a plausible but incorrect result that could mislead troubleshooting decisions on the underperforming zone.",
+      "explanation": "For a purely resistive heating element, P = V²/R, so P = 240² ÷ 20 = 57 600 ÷ 20 = 2880 W, or 2.88 kW. The same answer is reached the longer way: I = V/R = 240 ÷ 20 = 12 A, then P = I²R = 12² × 20 = 2880 W. The 2.16 kW choice comes from substituting 208 V instead of the actual 240 V supply (208² ÷ 20 = 2160 W), which is why the nameplate and measured supply voltage must be confirmed before calculating. The 4.80 kW choice comes from multiplying voltage by resistance (240 × 20) instead of dividing the square of the voltage by resistance. The 0.72 kW choice comes from assuming a 120 V line-to-neutral supply (120² ÷ 20 = 720 W) rather than the 240 V across the element. Because power varies with the square of the applied voltage, using the wrong voltage changes the result dramatically.",
       "steps": [
         {
           "label": "Formula",
@@ -3334,7 +3334,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "edc00a5011da285da5ffb5f3aaf75514bd54fce935c7b15c385f3bfed20861bc"
+      "contentHash": "567df548a4c5a8dc8e4dfd3f3a6abac77742746c9c091277527baa8145ce59d7"
     },
     {
       "bankItemNumber": 313,
@@ -4085,15 +4085,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "At a buried pipeline test station, a technician resplices a damaged anode lead uncovered during excavation. Before closing out the repair record, which check confirms the connection meets the approved cathodic protection design?",
+      "question": "A low structure-to-soil potential reading at a buried pipeline test station leads to an excavation, where a technician finds and resplices a damaged anode lead. Before signing off the work order, which check confirms the reconnected anode lead meets the approved cathodic protection design?",
       "options": [
-        "Verify cable identification, splice technique, continuity, insulation integrity, and post-repair potential readings against approved design specifications.",
-        "Swap the anode lead and rectifier tap setting together to restore normal system operation faster.",
-        "Clear the low-potential alarm, re-energize the rectifier, and investigate only if the alarm recurs.",
-        "Raise rectifier output voltage until current drops below normal, then log the reading as passing."
+        "Verify cable identification, splice technique, continuity, insulation integrity, and post-splice potential readings against approved design specifications.",
+        "Change the anode lead termination and the rectifier tap setting at the same time to restore normal system operation faster.",
+        "Clear the low-potential alarm, re-energize the rectifier, and investigate further only if the alarm returns later.",
+        "Increase rectifier output voltage until the structure-to-soil potential reads more negative, then record that value as acceptance."
       ],
       "correctIndex": 0,
-      "explanation": "A low-potential alarm only signals that something is wrong; it does not confirm the splice was made correctly. Verifying cable identification, splice technique, continuity, insulation integrity, and post-repair potential readings against the approved design gives direct evidence that the anode lead was reconnected properly and the structure is receiving adequate protection. Swapping the lead and rectifier tap together removes the ability to isolate which change caused any improvement, masking a defective splice. Clearing the alarm and re-energizing without inspection risks leaving a high-resistance connection that will fail again under load, delaying detection of corrosion damage. Forcing rectifier voltage up until current drops produces numbers that look acceptable but do not reflect true continuity or insulation quality, making it unsafe to log as a passing repair.",
+      "explanation": "A potential reading or alarm only tells you that protection is inadequate somewhere; it does not prove the new splice was made correctly. Confirming cable identification, splice technique, continuity, insulation integrity, and post-splice potential readings against the approved design gives direct evidence that the correct anode was reconnected and that the structure is receiving the designed level of protection. Changing the lead termination and the rectifier tap together removes any way to tell which change altered the readings, so a high-resistance splice can hide behind an improved potential. Clearing the alarm and re-energizing without inspection can leave a poor connection that heats and opens under load, so corrosion continues undetected on the buried pipe. Driving rectifier voltage up until the potential looks more negative masks a faulty connection by overdriving the whole system, and it wastes anode life while proving nothing about continuity or insulation quality at the splice.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -4101,7 +4101,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.02",
       "blueprintObjective": "Apply anode connection knowledge while the electrician services and maintains cathodic protection systems.",
-      "contentHash": "6c40307a22fdf8cf327e862a7333caf456acdd0fabac604566c273cbd95b617e"
+      "contentHash": "d26b621dc668dc587c288e95e0d209bab690a9898308aa3b94191c4129f7ca46"
     },
     {
       "bankItemNumber": 342,

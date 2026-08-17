@@ -80,7 +80,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "In Diagram 309A-D04, the power path runs from the source through the main protection, into the distribution equipment, through the feeder overcurrent device, and ends at the connected load. An electrician takes readings on the final segment of that path — the three conductors on the load side of the feeder overcurrent device that terminate at the connected load — rather than on the conductors between the main protection and the distribution equipment, so the readings represent that one load only. The balanced readings on that segment are 40 A per line at 600 V line-to-line with a power factor of 0.85. Approximately what real power is being delivered to the connected load at the end of the path?",
+      "question": "Diagram 309A-D04 traces the power path from the source, through the main protection, into the distribution equipment, out through the feeder overcurrent device, and on to the connected load. To capture the loading of that one load only, an electrician clamps the three conductors in the final segment of the path — the load-side conductors of the feeder overcurrent device that terminate at the connected load — rather than the conductors between the main protection and the distribution equipment, which carry all of the panel's loads. On that final segment the balanced readings are 40 A per line and 600 V line-to-line, and the load's power factor is 0.85. Approximately how much real power is the connected load in the diagram drawing?",
       "options": [
         "20.4 kW",
         "35.3 kW",
@@ -88,7 +88,7 @@
         "61.2 kW"
       ],
       "correctIndex": 1,
-      "explanation": "Because the clamp is on the segment between the feeder overcurrent device and the connected load, the readings belong to that single load and not to everything fed from the distribution equipment upstream. For a balanced three-phase load measured with line-to-line voltage and line current, real power is P = √3 × V × I × PF = 1.732 × 600 V × 40 A × 0.85 = 35 332 W, about 35.3 kW. The 20.4 kW figure is 600 × 40 × 0.85, the single-phase form, which drops the √3 factor required when line voltage and line current are used. The 41.6 kW figure is really the apparent power, 1.732 × 600 × 40 = 41.6 kVA; leaving out the 0.85 power factor describes the volt-amperes the feeder carries, not the power converted to useful work. The 61.2 kW figure substitutes 3 for √3, overstating the answer by about 73 percent and producing a real power greater than the apparent power on the same conductors, which cannot happen.",
+      "explanation": "Clamping the segment between the feeder overcurrent device and the connected load isolates that single load; readings taken upstream, between the main protection and the distribution equipment, would include every other load fed from the panel. For a balanced three-phase load measured with line-to-line voltage and line current, real power is P = √3 × V × I × PF = 1.732 × 600 V × 40 A × 0.85 = 35 332 W, or about 35.3 kW. The 20.4 kW result comes from 600 × 40 × 0.85, the single-phase form, which omits the √3 factor needed when line voltage is paired with line current. The 41.6 kW result is actually apparent power, 1.732 × 600 × 40 = 41.6 kVA; dropping the 0.85 power factor describes the volt-amperes the feeder conductors must carry, not the power converted to useful work. The 61.2 kW result substitutes 3 for √3, which overstates the answer by about 73 percent and would make real power larger than the apparent power measured on the same three conductors — an impossible result.",
       "steps": [
         {
           "label": "Formula",
@@ -105,7 +105,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "5bb733f3d44862b7662cfc9151b372491df8d9598fc8fbadbdeda2b153bc7e65"
+      "contentHash": "5738b6319e7ca8809d3b5cace6f80f2047d1533d0949701acff955d2f6277ae0"
     },
     {
       "bankItemNumber": 59,
@@ -193,7 +193,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "After restoring power to a balanced three-phase tenant service in a commercial unit, an electrician clamps the line conductors at the tenant disconnect and reads 30 A on each line at 600 V line-to-line, while the metering shows a power factor of 0.90. What is the approximate real power drawn by the tenant load?",
+      "question": "An electrician is verifying the load on a balanced three-phase, 600 V tenant service in a commercial unit. Clamping each line conductor at the tenant disconnect gives a steady 30 A per line, and the tenant's meter displays a power factor of 0.90. What is the approximate real power drawn by the tenant load?",
       "options": [
         "16.2 kW",
         "28.1 kW",
@@ -201,7 +201,7 @@
         "48.6 kW"
       ],
       "correctIndex": 1,
-      "explanation": "For a balanced three-phase load measured with line-to-line voltage and line current, real power is P = √3 × V × I × PF = 1.732 × 600 V × 30 A × 0.90 = 28 058 W, about 28.1 kW. The 16.2 kW choice is 600 × 30 × 0.90, which treats the readings as a single-phase load and omits the √3 factor, understating the load by roughly 42 percent. The 31.2 kW choice is the apparent power, 1.732 × 600 × 30 = 31.2 kVA; that is the volt-amperes the service conductors must carry, and the 0.90 power factor still has to be applied to reach real power. The 48.6 kW choice substitutes 3 for √3, using the number of phases in place of the correct line-to-phase relationship, which inflates the result by about 73 percent.",
+      "explanation": "For a balanced three-phase load, when the measured voltage is line-to-line and the measured current is line current, real power is P = √3 × V(line) × I(line) × PF = 1.732 × 600 V × 30 A × 0.90 = 28 059 W, or about 28.1 kW. The 16.2 kW value comes from 600 × 30 × 0.90, the single-phase formula, which leaves out the √3 factor needed when a line-to-line voltage is used with line current. The 31.2 kW value is really the apparent power, 1.732 × 600 × 30 = 31.2 kVA; that figure tells you the volt-amperes the service conductors and disconnect must carry, but the 0.90 power factor still has to be applied before it becomes real power in watts. The 48.6 kW value substitutes 3 for √3, using the number of phases instead of the correct line-to-phase voltage relationship, which overstates the real power by about 73 percent.",
       "steps": [
         {
           "label": "Formula",
@@ -218,7 +218,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "35ba32a385718f9d78bdf1020feaebfbb639a9ca2e94aa7c673674fc1be140bd"
+      "contentHash": "1cc309ead71d908fc8d524373989ad92cd4aa3dda09553ce88ace46a0d343026"
     },
     {
       "bankItemNumber": 63,
@@ -306,7 +306,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "An electrician is recording commissioning data for a balanced three-phase feeder supplying a new process panel. The clamp meter reads 20 A on each line conductor, the line-to-line voltage measures 600 V, and the panel metering shows a power factor of 0.80. What real power is the load drawing?",
+      "question": "While commissioning a balanced three-phase feeder that supplies a new process panel, an electrician clamps each line conductor and reads 20 A, measures 600 V line-to-line at the panel lugs, and reads a power factor of 0.80 on the panel meter. What real power is the load drawing?",
       "options": [
         "9.6 kW",
         "16.6 kW",
@@ -314,7 +314,7 @@
         "28.8 kW"
       ],
       "correctIndex": 1,
-      "explanation": "With line values on a balanced three-phase load, P = √3 × V(line) × I(line) × PF = 1.732 × 600 × 20 × 0.80 = 16 627 W, about 16.6 kW. The 9.6 kW figure comes from 600 × 20 × 0.80, the single-phase form, which leaves out the √3 factor and understates a three-phase load by about 42 percent. The 20.8 kW figure is apparent power, 1.732 × 600 × 20 = 20.8 kVA; it omits the 0.80 power factor, so it states the total volt-amperes the feeder conductors carry rather than the power converted to useful work. The 28.8 kW figure uses 3 × 600 × 20 × 0.80, substituting 3 for √3; the multiplier 3 belongs with phase voltage and phase current taken together, not with a line-to-line voltage reading, so the result is overstated by about 73 percent.",
+      "explanation": "For a balanced three-phase load measured with line values, P = √3 × V(line) × I(line) × PF = 1.732 × 600 × 20 × 0.80 = 16 627 W, or about 16.6 kW. The 9.6 kW answer is 600 × 20 × 0.80, the single-phase form, which drops the √3 multiplier and understates the load by roughly 42 percent. The 20.8 kW answer is 1.732 × 600 × 20 = 20 784 VA, the apparent power the feeder conductors must carry; because the 0.80 power factor was never applied, it is in kVA rather than kW. The 28.8 kW answer uses 3 × 600 × 20 × 0.80, substituting 3 for √3; the plain 3 multiplier belongs with phase voltage and phase current taken together, not with a line-to-line voltage reading, so the result is overstated by about 73 percent. When recording commissioning data, confirm whether the meter values are line or phase quantities before choosing the multiplier.",
       "steps": [
         {
           "label": "Formula",
@@ -331,7 +331,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "8e31782201aa9e36b6c4489cb597ed237455d6fb1417240a34c26a8d19db1112"
+      "contentHash": "9980ab407c95382125136ca2f2a5b3b9ecf9cba383670b5b3071bc4366ad54e8"
     },
     {
       "bankItemNumber": 67,
@@ -419,7 +419,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "On the power path shown, the source feeds main protection, then distribution equipment, then feeder protection, and finally one connected load. An electrician clamps each of the three conductors in the segment lying between the feeder protection and that load — the only segment in the path with no other taps — and reads 40 A on each. Line-to-line voltage at the feeder protection terminals is 600 V and the load power factor is 0.85. What real power is being delivered to that load?",
+      "question": "The single-line diagram traces one power path: source, then main protection, then distribution equipment, then feeder protection, then a single connected load. To capture only that load's current, the electrician clamps each of the three conductors in the last segment shown — the run between the feeder protection and the load — and reads 40 A on every conductor. Line-to-line voltage measured at the feeder protection terminals is 600 V and the load power factor is 0.85. What real power is being delivered to that load?",
       "options": [
         "20.4 kW",
         "35.3 kW",
@@ -427,7 +427,7 @@
         "61.2 kW"
       ],
       "correctIndex": 1,
-      "explanation": "Because the clamped segment sits downstream of the feeder protection and ahead of the load with no taps between, each 40 A reading is that load's line current only. P = √3 × V(line) × I(line) × PF = 1.732 × 600 × 40 × 0.85 = 35 300 W, about 35.3 kW. Had the clamps been placed on the conductors between the main protection and the distribution equipment, the reading would have included current for every other feeder leaving that equipment. The 20.4 kW figure is 600 × 40 × 0.85, the single-phase form, which drops the √3 needed with line-to-line voltage. The 41.6 kW figure is apparent power, 1.732 × 600 × 40 = 41.6 kVA, which leaves out the 0.85 power factor. The 61.2 kW figure uses 3 in place of √3 (3 × 600 × 40 × 0.85); the multiplier 3 belongs with phase voltage and phase current together, not with line-to-line values.",
+      "explanation": "The segment clamped in the diagram lies past the feeder protection and ahead of the load, so nothing else draws current through it and each 40 A reading is the load's line current. For a balanced three-phase load: P = √3 × V(line-to-line) × I(line) × PF = 1.732 × 600 × 40 × 0.85 = 35 300 W, or about 35.3 kW. (Clamping the conductors between the main protection and the distribution equipment instead would have added the current of every other feeder leaving that equipment, giving a reading far larger than this load's share.) 20.4 kW is 600 × 40 × 0.85, the single-phase form, which omits the √3 required when line-to-line voltage and line current are used. 41.6 kW is really apparent power, 1.732 × 600 × 40 = 41.6 kVA, because the 0.85 power factor was never applied. 61.2 kW comes from using 3 instead of √3 (3 × 600 × 40 × 0.85); the multiplier 3 belongs with phase voltage and phase current together, not with line-to-line voltage and line current.",
       "steps": [
         {
           "label": "Formula",
@@ -444,7 +444,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "ebde639b3f743b852fac7e8b334e078c344eb907e875dd2a1a4a856485f4936a"
+      "contentHash": "d6027cdd2b6f3c8e8c86861655f635a0c730f8ee6a226b12c28738317876822d"
     },
     {
       "bankItemNumber": 71,
@@ -1468,7 +1468,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While sizing conductors for a new distribution section, an electrician checks the load study and finds one feeder listed as a balanced three-phase load of 45 kVA at 600 V. Approximately what line current should be expected in each phase conductor of that feeder?",
+      "question": "An electrician is sizing feeder conductors for a new distribution section in a plant. The load study lists one feeder as a balanced three-phase load of 45 kVA supplied at 600 V line-to-line. Approximately what line current should be expected in each phase conductor of that feeder?",
       "options": [
         "25.0 A",
         "43.3 A",
@@ -1476,7 +1476,7 @@
         "129.9 A"
       ],
       "correctIndex": 1,
-      "explanation": "For a balanced three-phase load, I = (kVA × 1000) ÷ (V(line) × 1.732). Step 1: 600 × 1.732 = 1039.2. Step 2: 45 000 ÷ 1039.2 = 43.3 A in each phase conductor. The 25.0 A value comes from dividing by 3 instead of 1.732 (45 000 ÷ 1800), a factor that applies only to phase quantities. The 75.0 A value comes from using the single-phase relationship 45 000 ÷ 600 and leaving √3 out altogether. The 129.9 A value comes from multiplying by 1.732 instead of dividing (45 000 ÷ 600 × 1.732), which inflates the current by a factor of three.",
+      "explanation": "For a balanced three-phase load, line current is found with I = (kVA x 1000) / (E(line) x 1.732). Step 1: 600 V x 1.732 = 1039.2. Step 2: 45 000 VA / 1039.2 = 43.3 A, so each of the three phase conductors carries about 43.3 A. The 25.0 A result comes from dividing by 3 (45 000 / (600 x 3) = 25.0 A); the number 3 belongs in power relationships between phase and line quantities, not as the divisor for line current. The 75.0 A result comes from applying the single-phase formula 45 000 / 600 and leaving the 1.732 factor out entirely. The 129.9 A result comes from multiplying instead of dividing by 1.732 (75.0 A x 1.732), which overstates the true current by a factor of three and would lead to badly oversized conductors and overcurrent protection.",
       "steps": [
         {
           "label": "Use the three-phase apparent power relationship",
@@ -1497,7 +1497,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "8c13fb6322a92f228d473ff03e9e7b48f205c55a547ddd074ccdedc0afc597ee"
+      "contentHash": "881f21e18cff377d6c428f0b4bb0dc516f959a5f0e3710f2ee7a577940d18488"
     },
     {
       "bankItemNumber": 107,
@@ -1585,7 +1585,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "Before restoring a feeder that supplies a critical ventilation system, a technician compares the clamp-on ammeter reading with the calculated value. The nameplate data lists the balanced three-phase load as 105 kVA at 600 V. Approximately what line current should the meter show on each phase conductor?",
+      "question": "A technician is preparing to re-energize a 600 V, three-phase feeder that supplies a hospital ventilation system. The panel schedule lists the balanced three-phase load as 105 kVA. Using a clamp-on ammeter on each phase conductor after energizing, approximately what line current should be measured if the load matches the schedule?",
       "options": [
         "58.3 A",
         "101 A",
@@ -1593,7 +1593,7 @@
         "303 A"
       ],
       "correctIndex": 1,
-      "explanation": "Using the balanced three-phase relationship, I = (kVA × 1000) ÷ (V(line) × 1.732). Step 1: 600 × 1.732 = 1039.2. Step 2: 105 000 ÷ 1039.2 = 101 A, so a reading near 101 A on each phase confirms the load matches the listed apparent power. The 58.3 A value results from dividing by 3 rather than 1.732 (105 000 ÷ 1800). The 175 A value results from applying the single-phase relationship 105 000 ÷ 600 and omitting √3 entirely. The 303 A value results from multiplying by 1.732 instead of dividing (105 000 ÷ 600 × 1.732), giving a current three times too high.",
+      "explanation": "For a balanced three-phase load, line current is found with I = (kVA x 1000) / (E(line) x 1.732). Step 1: 600 V x 1.732 = 1039.2. Step 2: 105 000 VA / 1039.2 = 101.0 A, so about 101 A on each of the three phase conductors confirms the feeder is carrying the scheduled apparent power. 58.3 A comes from dividing by 3 instead of 1.732 (105 000 / (600 x 3) = 58.3), which understates the current. 175 A comes from using the single-phase relationship 105 000 / 600 and leaving out the 1.732 factor. 303 A comes from multiplying by 1.732 instead of dividing (105 000 / 600 = 175, then 175 x 1.732 = 303), which is three times the true value and would suggest a badly overloaded feeder.",
       "steps": [
         {
           "label": "Use the three-phase apparent power relationship",
@@ -1614,7 +1614,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "a867f24dd5a36a128e8cef8156999b54ce8a416961e24dd74014a98b07dbf751"
+      "contentHash": "87cf4fd66e23fce6b439112da006ba0ce8e5fc181cd24d46436f6a172b0f4549"
     },
     {
       "bankItemNumber": 111,
@@ -1702,7 +1702,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "The one-line diagram shows the only load on the system: a balanced three-phase load supplied from the source through the main protection, then the distribution equipment, then the feeder protective device. A load study rates that load at 60 kVA at 600 V. What approximate current should the electrician expect in each phase conductor of the segment between the main protection and the distribution equipment?",
+      "question": "A load study for a small industrial service rates the single balanced three-phase load at 60 kVA, 600 V. In the one-line diagram, that load is connected downstream of the feeder protective device, the feeder protective device is fed from the distribution equipment, and the distribution equipment is fed from the source through the main protection. Following that path, what current should an electrician expect to read with a clamp-on ammeter on each phase conductor of the segment between the main protection and the distribution equipment?",
       "options": [
         "46.2 A",
         "57.7 A",
@@ -1710,7 +1710,7 @@
         "80.7 A"
       ],
       "correctIndex": 1,
-      "explanation": "For a balanced three-phase load, apparent power equals √3 × line voltage × line current, so the load current is 60 000 VA ÷ (1.732 × 600 V) ≈ 57.7 A. Because the one-line path shows this load as the only load on the system, every series segment upstream of it carries that same current, including the segment between the main protection and the distribution equipment; the feeder protective device and distribution equipment add no other current path. Checking the other values in the same relationship shows they belong to different loads: 46.2 A corresponds to about 48 kVA at 600 V, 69.2 A to about 72 kVA, and 80.7 A to about 84 kVA, none of which match the 60 kVA established by the load study.",
+      "explanation": "First find the load current: for a balanced three-phase load, apparent power = 1.732 x line voltage x line current, so 60 000 VA / (1.732 x 600 V) = 57.7 A. Next, use the one-line path. The diagram shows a single series path from the source through the main protection, the distribution equipment and the feeder protective device to that one load, and no other load taps off along the way. Because everything is in series with the one load, the segment between the main protection and the distribution equipment carries the same 57.7 A as the load conductors. The other values match different load sizes rather than this system: 46.2 A corresponds to about 48 kVA at 600 V, 69.2 A to about 72 kVA (also what you get if 500 V is used in place of 600 V), and 80.7 A to about 84 kVA. None of these agree with the 60 kVA the load study established.",
       "steps": [
         {
           "label": "Rearrange",
@@ -1727,7 +1727,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "64e94b56d4b8484d112bc9565e1c9e53140f2b0145f368207a5e5e20d7da78ba"
+      "contentHash": "fabcf4c5f0c9e10743e6b441c38be1c7f162f86f2f5394f168efa900c80d49c6"
     },
     {
       "bankItemNumber": 115,
@@ -2493,7 +2493,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "In the diagram, the fault-current return from the metal enclosure to the source protection point is carried by two bonding conductors, both landed on the enclosure terminal and both landed at the source protection point. Field measurements give 8 ohms for one conductor and 24 ohms for the other. What single resistance represents that bonded return portion of the fault-current path?",
+      "question": "The diagram traces a ground-fault return path from a metal motor enclosure, through bonding conductors, back to the source protection point. The two bonding conductors in that segment share one landing lug on the enclosure bonding terminal and one landing lug at the source protection point. A low-resistance test reads 8 ohms on one of those conductors and 24 ohms on the other. What single resistance value can replace that two-conductor segment of the path shown?",
       "options": [
         "4 ohms",
         "6 ohms",
@@ -2501,7 +2501,7 @@
         "32 ohms"
       ],
       "correctIndex": 1,
-      "explanation": "The diagram shows both bonding conductors landed on the same two terminals, so they form parallel paths that share the return current, and the combined resistance must be lower than the smaller conductor alone. Using 1/R = 1/8 + 1/24 = 3/24 + 1/24 = 4/24 gives R = 6 ohms. The 32 ohm value is the result of adding the two resistances as though the conductors were spliced end to end in one continuous run, which the diagram does not show. The 12 ohm value is half of the 24 ohm conductor, and 4 ohms is half of the 8 ohm conductor; halving a single reading only gives the correct answer when both parallel conductors have the same resistance, which is not the case here. Both 12 ohms and 32 ohms are also larger than the smallest path, so they can be ruled out immediately.",
+      "explanation": "Because the diagram shows both bonding conductors landed on the same enclosure lug and the same lug at the source protection point, they bridge the identical two points and form parallel paths that share the return current, so the combined resistance must be lower than the 8 ohm conductor alone. Using 1/R = 1/8 + 1/24 = 3/24 + 1/24 = 4/24 gives R = 6 ohms. The 32 ohm value comes from adding the two readings as if the conductors were spliced end to end in one continuous run, which is not how the diagram shows them connected. The 12 ohm value is half of the 24 ohm reading and the 4 ohm value is half of the 8 ohm reading; halving one reading only works when both parallel conductors have equal resistance, which is not the case here. Both 12 ohms and 32 ohms are also higher than the lowest single path, so they can be dismissed on sight.",
       "steps": [
         {
           "label": "Formula",
@@ -2518,7 +2518,7 @@
       "diagramAlt": "Conceptual fault-current path from a metal enclosure through bonding conductors back to the source protection point.",
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "2a1c468f35bcfbb7b23a0954373b15d02c3c2f77378cde7d0c740c5269c43681"
+      "contentHash": "6ec9d3ccd0ce31a205c12707190dc090769c79d27b3187cf5ce5edeb76be335d"
     },
     {
       "bankItemNumber": 143,

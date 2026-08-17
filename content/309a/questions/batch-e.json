@@ -80,15 +80,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A parking garage security panel lists 24 motion sensors that each draw 18 mA when they enter alarm state simultaneously during a forced-entry event. The technician must confirm the total simultaneous current draw before sizing the standby battery. What is the combined current draw?",
+      "question": "A parking garage security panel supplies 24 motion sensors, and each sensor draws 18 mA while in the alarm state. During a forced-entry event all 24 sensors alarm at the same time, and the technician must know the total simultaneous draw before sizing the standby battery. What is the combined alarm-state current draw of the sensors?",
       "options": [
         "0.432 A",
-        "0.382 A",
-        "0.482 A",
-        "0.532 A"
+        "0.450 A",
+        "0.414 A",
+        "4.32 A"
       ],
       "correctIndex": 0,
-      "explanation": "Multiplying the 24 identical sensors by 18 mA each gives 432 mA, which converts to 0.432 A after dividing by 1000. This value reflects the true simultaneous alarm-state draw the standby battery must support. The distractor values result from arithmetic slips, such as misapplying the milliampere-to-ampere conversion or adding an extra device's current, producing totals that overstate or understate the real load. Selecting an incorrect total could cause the technician to specify a standby battery that is undersized or oversized for the panel's actual alarm demand, risking failure during a real event or unnecessary cost. Confirming the calculation against the device count and rated draw ensures the battery selection matches manufacturer specifications and supports reliable signalling performance under actual alarm conditions.",
+      "explanation": "Because all of the sensors alarm at once, their currents add: 24 sensors x 18 mA = 432 mA, and 432 mA divided by 1000 gives 0.432 A. This is the figure used when totalling alarm-state load for standby battery sizing. The 0.450 A choice comes from counting 25 sensors instead of 24 (25 x 18 mA = 450 mA), and 0.414 A comes from counting only 23 sensors (23 x 18 mA = 414 mA), so both are miscounts of the device schedule. The 4.32 A choice comes from dividing 432 mA by 100 rather than 1000, a decimal-place slip in the milliampere-to-ampere conversion. Working with an inflated or understated total leads to a battery that either cannot carry the panel through a real alarm or costs far more than the load requires, so always verify the device count and the rated per-device draw before converting units.",
       "steps": [
         {
           "label": "Multiply device count by rated current",
@@ -105,7 +105,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "fa1213c0448d5e325eb9a82e85f81722a3f6021a2fcc2aa38fe6697b4b4402ab"
+      "contentHash": "8cefce8615b3cf482a011196d17c3c61522645eb08a128b0df773678b4c0b2d0"
     },
     {
       "bankItemNumber": 454,
@@ -419,7 +419,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While commissioning a supervised motion-detection loop on a warehouse surveillance panel, a technician confirms 9 identical sensors each draw 22 mA in the active alarm state, with no reported wiring faults. What is the total loop current in amperes?",
+      "question": "An electrician is commissioning the door-position signalling circuit for a loading-dock annunciator. The panel drawings show 9 identical contact modules on one output, each drawing 22 mA when its door is signalled, and the sequence of operation allows all 9 to signal at the same time. Wiring has been verified clear of faults. What total current must that annunciator output be able to supply?",
       "options": [
         "0.198 A",
         "0.298 A",
@@ -427,7 +427,7 @@
         "0.218 A"
       ],
       "correctIndex": 0,
-      "explanation": "The evidence states nine identical sensors each drawing 22 mA simultaneously in alarm condition, so total current equals the sum of all device currents: 9 × 22 mA = 198 mA, converted to 0.198 A. This value must be checked against the panel's rated alarm output before the loop is placed in service. The tempting wrong answer of 0.298 A results from misreading the sensor count as ten or adding an extra 100 mA, which does not match the stated evidence. The 0.188 A and 0.218 A options reflect simple arithmetic slips in multiplication or unit conversion. Because the question specifies identical devices and a defined alarm current, no additional standby or supervisory current should be included unless separately documented on approved drawings. Confirming this calculated value against manufacturer specifications ensures the surveillance system's power supply is correctly sized before final acceptance testing.",
+      "explanation": "Because all 9 modules can operate at once on the same output, their currents add: 9 × 22 mA = 198 mA, and 198 mA ÷ 1000 = 0.198 A. Compare that figure with the rated output of the annunciator so the circuit is not loaded past its listed capacity. The 0.298 A choice is what you get by tacking an unsupported 100 mA allowance onto the correct 198 mA; the question gives no such extra load. The 0.188 A choice comes from a multiplication slip that records 188 instead of 198 mA for 9 × 22 mA. The 0.218 A choice adds an assumed 20 mA end-of-line supervisory current that was never stated in the device data. Only currents documented on the approved drawings or in the manufacturer's specifications belong in the total, so identical devices with a stated operating current are simply multiplied by the number of devices energized together.",
       "steps": [
         {
           "label": "Total milliamperes",
@@ -444,7 +444,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "94ae3bef90f03145203563ae7bda7b365c58a1f1a6c0e36f607c0312133bae1b"
+      "contentHash": "d4be1e881e034d3665fc422bf991aa4c9cb9bd99ccd18719d56d9a0d8783edc1"
     },
     {
       "bankItemNumber": 466,
@@ -749,15 +749,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During commissioning of a CATV distribution amplifier serving twelve outlets, a technician measures output levels below the value shown on the accepted system record. A prior acceptance test performed at installation shows the amplifier met the specified output capacity at that time. What should the technician do first?",
+      "question": "While commissioning a CATV distribution amplifier that feeds twelve outlets through a series of splitters, a technician finds the levels at the outlets are about 6 dB below the values recorded when the system was accepted at installation. What is the most effective next step to determine where the signal is being lost?",
       "options": [
-        "Adjust several amplifier and splitter settings at once and treat any improved reception as confirmation of a fix.",
-        "Apply the gain setting used on a similar amplifier from an unrelated project without checking this system's design.",
-        "Replace the amplifier with a larger-capacity unit immediately, documenting the reason only if the problem returns.",
-        "Pause, compare current readings to the approved record and manufacturer specs, isolate the cause, then document findings before proceeding."
+        "Raise the amplifier gain until the farthest outlet reaches its design level, accepting the higher levels this produces at the outlets closest to the amplifier.",
+        "Set the amplifier gain to match the value used on another twelve-outlet system in the building so both distribution amplifiers operate with identical settings.",
+        "Install a higher-output amplifier at the same location so the extra gain covers the shortfall at every outlet without changing the existing splitter arrangement.",
+        "Measure the level at the amplifier input and at each splitter output, comparing the readings to the design loss budget to see whether the shortfall begins upstream of the amplifier or within a distribution leg."
       ],
       "correctIndex": 3,
-      "explanation": "The measured output no longer matches the approved record even though a prior acceptance test confirmed the amplifier once met capacity, so a controlled comparison against both the record and manufacturer specifications is needed to isolate whether the cause is cable loss, splitter count, connector degradation, or amplifier drift. Documenting the finding preserves traceability for future review. Adjusting multiple settings simultaneously destroys the ability to identify which change actually caused any improvement, risking a false conclusion. Copying a gain setting from another project ignores this system's specific cable lengths, splitter losses, and coverage requirements, which vary between installations. Replacing the amplifier outright skips root-cause diagnosis, wastes resources if the real fault lies elsewhere in the pathway, and only documents after the fact rather than supporting an informed decision from the start.",
+      "explanation": "Outlet level equals amplifier output level minus the cable attenuation and splitter insertion loss in each leg, so a uniform 6 dB shortfall can only be traced by taking readings at the amplifier input and at successive splitter outputs and comparing them with the calculated loss budget. If the input level is low, the loss is upstream (a corroded or water-soaked connector, a damaged feeder, or a weak headend output); if the input is correct but output is down, the amplifier gain has drifted or is being clipped; if only one leg is low, the loss is in that cable or splitter. Raising gain to satisfy the farthest outlet drives the near outlets above the amplifier's rated output window, producing distortion and cross-modulation instead of correcting the fault. Copying a gain setting from another system ignores this system's cable lengths and splitter tap losses, which differ from leg to leg. Adding a larger amplifier simply amplifies a degraded input and can exceed the maximum level allowed at the nearest outlets while the actual defect remains in the pathway.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -765,7 +765,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply amplifier capacity knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "61eebc783f8c25bfa43631d6e31ef76c0c714c59b91356ceac5e7da24d70ca73"
+      "contentHash": "d7643cc258f28fef981ebaa5b54412f9d4957a920b1a82943af98558229b45f5"
     },
     {
       "bankItemNumber": 478,
@@ -1269,15 +1269,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a service call for tenant overheating complaints on air handler AHU-6, the electrician finds the displayed controller setpoint does not match the sequence of operations document supplied by the design engineer. What response maintains proper control of the work?",
+      "question": "On a service call for tenant overheating complaints on air handler AHU-6, the electrician sees the controller's active discharge-air setpoint reading 18 °C while the approved sequence of operations calls for 13 °C during occupied cooling. What response maintains proper control of the work?",
       "options": [
-        "Adjust several unrelated setpoints at once and judge success by whether the complaints eventually stop.",
-        "Match the setpoint to a similar building's configuration from memory without confirming the current sequence of operations.",
-        "Pause work, verify the setpoint against the approved sequence of operations, resolve the mismatch, then document it before continuing.",
-        "Replace the temperature sensor first because it is easiest, and log the mismatch only if complaints continue."
+        "Apply a negative calibration offset to the discharge-air sensor so the controller drives the chilled-water valve further open all day.",
+        "Widen the proportional band on the cooling loop so the valve begins modulating earlier and drives supply air colder.",
+        "Determine why the active setpoint is elevated — a reset routine, schedule, or local override — restore the specified value, then confirm the valve modulates to hold it.",
+        "Place the chilled-water valve in manual override at 60 percent open so the space temperature drops while the complaints are investigated."
       ],
       "correctIndex": 2,
-      "explanation": "An unexplained setpoint mismatch can point to a wrong install, a revised sequence, or a failed component; changing values without confirming the approved reference risks masking the real fault and destabilizing control. The correct approach uses the sequence of operations, points list, and commissioning records to confirm what the setpoint should be, resolves the discrepancy through one controlled, verifiable change, and documents the finding for review. Adjusting multiple settings together removes the ability to isolate cause and effect, and treating complaint resolution as proof of correctness ignores the underlying data. Relying on memory from another site substitutes assumption for verification against current design documents. Replacing hardware before confirming the setpoint is correct wastes effort and may hide a configuration error, so isolating and documenting the discrepancy first preserves an accurate, traceable record for any future troubleshooting.",
+      "explanation": "A setpoint is the target value the control loop drives toward, so an elevated discharge-air setpoint fully explains warm supply air even when the sensor, valve, and controller are all healthy. The first step is finding what is writing the higher value: a supply-air temperature reset schedule tied to outdoor air or return air, an occupancy or unoccupied-mode schedule, or a local override left in place from earlier service. Restoring the value from the sequence of operations and then watching the chilled-water valve stroke and the discharge temperature settle confirms the loop is actually controlling. Adding a sensor offset falsifies the feedback signal, so every alarm, trend, and reset calculation using that input becomes unreliable. Widening the proportional band only changes how aggressively the valve responds and increases steady-state droop; it cannot lower a target the controller is already satisfying. Forcing the valve to a fixed position removes modulating control entirely, causing overcooling, coil freeze risk, and reheat energy waste while leaving the wrong setpoint in place.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1285,7 +1285,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "913438326c549e1da1e12bfadee11f74b191620af0e58bf7a5efe3f1a6d22030"
+      "contentHash": "1421c2250e6a1cf46f29544a8b7ad1e41c110b9cf68fe1ce9d9f6e5c8869748f"
     },
     {
       "bankItemNumber": 498,
