@@ -1558,5 +1558,5 @@
 ## PR #26 Governed 309A Bank Merge and Deployment
 - [x] Merge the validated 309A governed 500-question-bank pull request into `main`
 - [x] Validate the integrated migration, governed-bank, and release path on `main`
-- [ ] Publish the staged free 309A governed-bank foundation and verify the live release
+- [x] Publish the staged free 309A governed-bank foundation and verify the live release
 - [x] Restore the welcome-email job regression expectation while preserving its privacy-safe error output
