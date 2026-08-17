@@ -3,7 +3,7 @@
   "title": "Motors and control systems",
   "questionDefaults": {
     "bankKey": "electrician-309a",
-    "bankVersionKey": "309a-current-rsos-v2",
+    "bankVersionKey": "309a-current-rsos-v3",
     "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
     "module": "D",
     "steps": null,
@@ -44,7 +44,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "4af82bda7af9c933adb7e17cbb71cea4be3e96ebf02fe5f5e3a9025aa5a325d3"
+      "contentHash": "e44346ac0e48adb3631d65c9fdf8e2e013f6511364d894322bbdc608b654e750"
     },
     {
       "bankItemNumber": 347,
@@ -70,7 +70,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply overload setting knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "8afc87d96a01061269329b457656ab932a245eaa3863000915dc7dda651e970f"
+      "contentHash": "e8b67b2e7c4959ea8b9fa5a5c74bf7bac6e676a8b7206a8017fbf7634a371fb5"
     },
     {
       "bankItemNumber": 348,
@@ -105,7 +105,7 @@
       "diagramAlt": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "82bffc4836dac02dcbfdd65888b3072b3702b28ee63602347dba7a7618cdbf49"
+      "contentHash": "766023b56e09d76a745a3cd41e9e7615eaaced81a11986c12cfa00de6eefa591"
     },
     {
       "bankItemNumber": 349,
@@ -131,7 +131,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply seal-in contact knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "6f66c419e5b2e1d682390d981d34da7edaf2e3e502cd6ebd3c7526e15c6b7ac1"
+      "contentHash": "d00c9abb255d4ac75dd578b01a45877956e7714f9c5c0218ce84478bbf6d3894"
     },
     {
       "bankItemNumber": 350,
@@ -157,7 +157,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply stop-circuit continuity knowledge while the electrician installs motor starters.",
-      "contentHash": "00702c628c66159c12d6060caa4ffc25509bf42e7d85456033b9dd0bf95de0df"
+      "contentHash": "0e58a7fc388f231759fbdcc22246a0c9013ace9b961f16906c18d2da97e65aaa"
     },
     {
       "bankItemNumber": 351,
@@ -183,7 +183,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply forward-reverse interlock knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "31004836b279d78e4507b91b8488bc4d4244601f6bc7ba8af45aa4173477b4a4"
+      "contentHash": "90d0b2817862bc23daede556152824286d958b7a4717ee568e6df8871a5d9415"
     },
     {
       "bankItemNumber": 352,
@@ -218,7 +218,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "fcf2a95870c58146c1f61e8dd97a34e2fec9ee035ee3cd1782bb24b93315c3ad"
+      "contentHash": "69cbb3980c350b8ff56c831a915acc21f4e8ca957e50a9040ff5fd77ba062f66"
     },
     {
       "bankItemNumber": 353,
@@ -244,7 +244,7 @@
       "diagramAlt": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply contactor coil voltage knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "6c0d17ecb6c05163c15598143f9132918615f4cd9b242c3cb2c6a2653030601f"
+      "contentHash": "537a2ea027e35c80b95940e220950ed6361c174db0983e75b004541194fbaac7"
     },
     {
       "bankItemNumber": 354,
@@ -270,7 +270,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply auxiliary contact state knowledge while the electrician installs motor starters.",
-      "contentHash": "8f0bd5a96e007a833e050c3fc448ece875e8dfd239e0e4661097627242f0e025"
+      "contentHash": "047d87a22fc04da8bf146fbb3e724334eb0bbbc3f3b5894bc5c33d06a0f3abd2"
     },
     {
       "bankItemNumber": 355,
@@ -296,7 +296,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply post-repair sequence test knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "81fc2e6b1c6022454530ccd872209336ba243f3922dbeecf6b2d482e1b26d15d"
+      "contentHash": "dfe9a165c038e5fd6efc7f59b9257a1a0301998ec6797550b2848883f89a1a78"
     },
     {
       "bankItemNumber": 356,
@@ -331,7 +331,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "64bc4952ec1b0c17df3e399c872ba119dc322a3727dbf4ca774a1b31663ea61c"
+      "contentHash": "85421687831988a3fed7d6a6764764ac831989c42531a8aee75e95c939aea06c"
     },
     {
       "bankItemNumber": 357,
@@ -357,7 +357,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control-circuit documentation knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "bc63db742c82ba3acf85635bb303e46bfaae17b7cead1afdbec557fd4bb9c8de"
+      "contentHash": "1fa7cb39fa7586209bde064f46378e3f76817dcab931c8f4555a9806a39547f0"
     },
     {
       "bankItemNumber": 358,
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "ae3c681dd69ce3188c645c286e9b53b014be0f94f7b329c2a39b81d7c99a814c"
+      "contentHash": "964742991599de2f01170625ae710e293e6df307fdd53486fd63e71b04b63e96"
     },
     {
       "bankItemNumber": 359,
@@ -409,7 +409,7 @@
       "diagramAlt": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply overload setting knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "b3ad191a83ac9d861809f2b97308e290990b14ac5cda51da8c6200c89bb09559"
+      "contentHash": "b2b626c9d2f76eee48e18970887c9ddbc2a20f6cd940f0f247e9359f75bc3a23"
     },
     {
       "bankItemNumber": 360,
@@ -444,7 +444,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "464ed7848cc2900f78201849c032b0d6378365d0980b86e7dcd084006a10e270"
+      "contentHash": "8dab99ed70695b7b3717d4b534c4f76383a78a283063b2d9ae127650d02f3a8b"
     },
     {
       "bankItemNumber": 361,
@@ -470,7 +470,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply seal-in contact knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "2804be82e8161450ed083530c3fbfe154b991f351d0b546b174e714330ab52ec"
+      "contentHash": "e9e3f8075bd18a5acb75232f465d76df0c74a8e1dae3158e1e64b2b73ee9f5d3"
     },
     {
       "bankItemNumber": 362,
@@ -496,7 +496,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply stop-circuit continuity knowledge while the electrician installs motor starters.",
-      "contentHash": "098ec3d3585e2a011f20c612f55869451c5db93870d116fbbc06490c556208d2"
+      "contentHash": "61d2da9b7db466aab5fadf08e4ca97924d00828d0386a2843f3007bd729eb131"
     },
     {
       "bankItemNumber": 363,
@@ -522,7 +522,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply forward-reverse interlock knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "d0b7c50a8be0bc54842b91ab42c242c4801a9dd68f31463cbd9edda3646282f4"
+      "contentHash": "b03cd81d78f5952407b5f13135e43fb37cd314b500326bcc6ec47c21fbc82df9"
     },
     {
       "bankItemNumber": 364,
@@ -557,7 +557,7 @@
       "diagramAlt": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "9237767e7ba1254bdec794d4c222ba184d6e5818a89caf3c3445d8b2fd541ef0"
+      "contentHash": "b94d83879b0955d3206d55687ac0a9a23ebecee051b583ca7637e01a301a9aef"
     },
     {
       "bankItemNumber": 365,
@@ -583,7 +583,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply contactor coil voltage knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "81b0148884b39c383f0141889fcf1cfaa61a7eb21c0bcedac4aa5e9ec9989df1"
+      "contentHash": "816252164c0c6bf8ab360cace71e94af010bb044089267721541c91e44536a10"
     },
     {
       "bankItemNumber": 366,
@@ -609,7 +609,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply auxiliary contact state knowledge while the electrician installs motor starters.",
-      "contentHash": "7282ff6dd1982a5ce943604ca5fda5358a43b8cffd955424952d2449100d39a1"
+      "contentHash": "07ea5d1932241bdd9835baa3002a7bc3a6554c9df77707baa1787781d1773532"
     },
     {
       "bankItemNumber": 367,
@@ -635,7 +635,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply post-repair sequence test knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "016e41c2a1561b66490fb682c0b92c00172a1c6ec96c79b11c0e55b0f173b045"
+      "contentHash": "1d19a620c6dd033f88839e4eabaa69781b61c09526e58163324a51f2690a2efa"
     },
     {
       "bankItemNumber": 368,
@@ -670,7 +670,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "c572ba30a50811490b3f45cabc3743c5a2f19c19dd7520f5570740a68b509c39"
+      "contentHash": "9a1342e6959fd31ec69dec38ec8268f90f4237ef43609c1b5d179b5084868ffa"
     },
     {
       "bankItemNumber": 369,
@@ -696,7 +696,7 @@
       "diagramAlt": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control-circuit documentation knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "0cdbde5bbc8beb76abc4a443cf5f6570f2382d0a402a9713d15236931c8bf721"
+      "contentHash": "ab311bbbc3a38303574ecdb2e2965e890b7b66f30dd3ef97fe1ed47b1f6abccc"
     },
     {
       "bankItemNumber": 370,
@@ -722,7 +722,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "00e2cb24a9b8c106a9913b51f1745742c95e66c5c1ab257a133e3ce5e45127f1"
+      "contentHash": "efd951015ad7a6af5594e9d19d42d8334cb39cfdb0d0a3dc93de3afec90a94a9"
     },
     {
       "bankItemNumber": 371,
@@ -748,7 +748,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply overload setting knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "8e2b2d29c21950896a78cab4d973f4c7310a791c2a24f0445fd79e96f7d7de31"
+      "contentHash": "39b2035bbc63db31954d7ce550e94763392612fa2112b488d0a324f19457c782"
     },
     {
       "bankItemNumber": 372,
@@ -783,7 +783,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "5812812fd8980a3e83a9fc6bd46a2971aaacfd64beb3946f2666bc3981b9eb92"
+      "contentHash": "6a020198301d25a7ea42e1b3b81f4ea86cf5a6e56e2498001cd001fec2a7881d"
     },
     {
       "bankItemNumber": 373,
@@ -809,7 +809,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply seal-in contact knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "13d89f60f873a2ef991cb85fb09fde2c737a9653dcf45c9c28a20bc9474bdece"
+      "contentHash": "6732e1451f50a924277962e9254823dc7f02e6903686b90e1efa35f3d2dd2963"
     },
     {
       "bankItemNumber": 374,
@@ -835,7 +835,7 @@
       "diagramAlt": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply stop-circuit continuity knowledge while the electrician installs motor starters.",
-      "contentHash": "8c5e2c52f0c55bc5a584474c5fe27ac6631464365472b77a56660f8daacceed2"
+      "contentHash": "f4a30f865e01e6fb27c3fbe907cf10b23824c3a903c82086af09f930c8338704"
     },
     {
       "bankItemNumber": 375,
@@ -861,7 +861,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply forward-reverse interlock knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "71c554c7f627996af9ef5a95c7032c35a968987f222a63977dadac42ca77bf61"
+      "contentHash": "c4691334adbe4c4925485b84b2e3b1739085971d13cffde7310f5983f831dec9"
     },
     {
       "bankItemNumber": 376,
@@ -896,7 +896,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "f2648f48f1ce828da64481769b70b0c225a7a9194f0bdb2904692ed5f0a23fe9"
+      "contentHash": "3ccfb993c54d4b81be42f6adc60c6ac5056d095ea3d4cd956a48bf5939357ae6"
     },
     {
       "bankItemNumber": 377,
@@ -922,7 +922,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply contactor coil voltage knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "20a27d2c96d8ac3a03cf7f46aca7f08ecf0924d729f8432beaa04dcb46072bbe"
+      "contentHash": "273bddfb922e84ed8f3929e6f8e00b5b7d07f48fdf10c86f985334ce4a21434b"
     },
     {
       "bankItemNumber": 378,
@@ -948,7 +948,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply auxiliary contact state knowledge while the electrician installs motor starters.",
-      "contentHash": "53876e68add75b223696f49301facbd294dd4799aa4b23c42807d38428b19d6b"
+      "contentHash": "bd86d189b5d0224c0e8b04d76c584d204ad1df623cbdf8c265a9e006b3df39b8"
     },
     {
       "bankItemNumber": 379,
@@ -974,7 +974,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply post-repair sequence test knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "a60af224f6c53875f6acf53c141abf25247f20ede6a1cb149dc7d2c3e2776a08"
+      "contentHash": "89e9a7613abb3e2a80afb537446fc1fec0058b5c290e84ddf46d95e3fc509544"
     },
     {
       "bankItemNumber": 380,
@@ -1000,7 +1000,7 @@
       "diagramAlt": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply contact wear knowledge while the electrician installs motor control devices.",
-      "contentHash": "a765bbd583bbdd5fe3d9359dcb45f17549d94fea773fae75777be735ebfc4a4c"
+      "contentHash": "b971a1f788b97d9f2e383f8a96118b024a3aa1987fd36a37037addafb21fc884"
     },
     {
       "bankItemNumber": 381,
@@ -1035,7 +1035,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "96149198ba6007ce443f041b8ee2968ee1749cdfee57616798ab94802749d107"
+      "contentHash": "057071f49e19164af850555022b6892e60848ffce7e0338d1f5447701aa038ae"
     },
     {
       "bankItemNumber": 382,
@@ -1061,7 +1061,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "cfdb45db78460fdd250613293a80b1770e2a661c37ae3d7ae104f5fb8510a474"
+      "contentHash": "2e74026b703a3acdaf78375f1126d7a20ffa70832c6c86682c06dcef1fb09ee3"
     },
     {
       "bankItemNumber": 383,
@@ -1087,7 +1087,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply overload setting knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "4458180e1467a92930b6b4dede5ef3f363abc4a003af3a7b2e1271870b1ce828"
+      "contentHash": "f0ac2b09c1c483c1e522a369036e71befb2f767f4c539a780215eebcc31a23ee"
     },
     {
       "bankItemNumber": 384,
@@ -1113,7 +1113,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control-transformer loading knowledge while the electrician installs motor control devices.",
-      "contentHash": "9c6db31c3423ecf08a13e683c70a56bdfcc55cca3b89dcd87e776d2181f030d3"
+      "contentHash": "e6f6b4f1c12e18b2d1c84d74847e56b56dfb3ba97fd3bf88803d546275d08491"
     },
     {
       "bankItemNumber": 385,
@@ -1148,7 +1148,7 @@
       "diagramAlt": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "1a29467f97939be4aa786d1d2c0c7b1eac60671cdc15745f9754175ccc4a5443"
+      "contentHash": "4710bed8ed7cefe31cbc123cec6b34e83e15fd28716c3c5af51762efac5ed32d"
     },
     {
       "bankItemNumber": 386,
@@ -1174,7 +1174,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply drive input rating knowledge while the electrician installs ac drives.",
-      "contentHash": "695bc8e2502311e7f9e86a33bc439f889c91519d1dae41645d9688387ba93e60"
+      "contentHash": "e7b260369bb40c18cc61b636341ce787b2d42cd2006f7228470198c538ba4e4b"
     },
     {
       "bankItemNumber": 387,
@@ -1200,7 +1200,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply motor base frequency knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "fb05f98f216adeb5d6a603948c5d8f93277fdde66f4d9a38157bf69d6d43b441"
+      "contentHash": "edd2b2f6b6ce53509b60dab09104189f74da29519a1ece77356f4294e2ab2b84"
     },
     {
       "bankItemNumber": 388,
@@ -1226,7 +1226,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply acceleration time knowledge while the electrician installs dc drives.",
-      "contentHash": "ed337848d625dc1da47ed2f6a071bea68e117c574923281e1db5d01351bfb653"
+      "contentHash": "3100d4b5391e8637d5bb7773f0a33b6083752edb6fc600e19324840558e0a2c1"
     },
     {
       "bankItemNumber": 389,
@@ -1261,7 +1261,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "af7843164fe145ca26caa557585fd515cfc29d0b49d6623486caf8cc4f8979d6"
+      "contentHash": "a0e750ab06dd55643485b117a74e5f39938014aef58dd74920d90b081666e459"
     },
     {
       "bankItemNumber": 390,
@@ -1287,7 +1287,7 @@
       "diagramAlt": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output.",
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply minimum speed knowledge while the electrician installs ac drives.",
-      "contentHash": "191cab906cd0f714c3e15ec0aeaae63dc733f0e8c283c3d898872a0290a85dbe"
+      "contentHash": "b3c157b964069ed87e0043c4f1e138e780296cbf183be51b79073adf9d3d7616"
     },
     {
       "bankItemNumber": 391,
@@ -1313,7 +1313,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply current limit knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "f32b4f35cff099ea41ed77f03888594fee0ca9b83af369259381fd74cc4e4c13"
+      "contentHash": "b286525663b6c2b93edb8628542388adca4a20ca203993586d3bc5e81a8cf4dd"
     },
     {
       "bankItemNumber": 392,
@@ -1339,7 +1339,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply fault history knowledge while the electrician installs dc drives.",
-      "contentHash": "63b5aac3d3f5a1df50e5accd84ee3dace6d7c3e23a3adbf37aaf3bbee8414a2f"
+      "contentHash": "e0d864907a0a201801ff5380320d45a30f2f597560781d7e83a2afd51eb21be7"
     },
     {
       "bankItemNumber": 393,
@@ -1374,7 +1374,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "3b02675b7394eccac86b16f9ed1faa167e303642af72497aeb3b9af9eb0a2819"
+      "contentHash": "ce73f4583a180ea06cd1742a84fbb398c1aaa87f7b4a9e188cbdb7b89c5ea490"
     },
     {
       "bankItemNumber": 394,
@@ -1400,7 +1400,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply control reference scaling knowledge while the electrician installs ac drives.",
-      "contentHash": "40773fbb651e1a0d51206ec298e66e781d2965395c5119038f6f304dcd35d2b1"
+      "contentHash": "7f5c6e0c1f8535faa2ea8ac3ab070fd458e7a2d6690008ef342124b265137161"
     },
     {
       "bankItemNumber": 395,
@@ -1426,7 +1426,7 @@
       "diagramAlt": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output.",
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply bypass sequence knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "4ed92bc8156e6d9fb364244298ef5fa76115924489e9e8b787e5c2ef9900cb48"
+      "contentHash": "e037b413757a17ae72e9b6e7da6867d7aa5940e688abe12a9e4c2c655262eda2"
     },
     {
       "bankItemNumber": 396,
@@ -1452,7 +1452,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply dc-bus condition knowledge while the electrician installs dc drives.",
-      "contentHash": "9b763485c76368e5127d9e182451551aab596b6da17bbc2775f830cbd0ace0bb"
+      "contentHash": "bf64da9bcae55cdac8412d2421b1c2d1ef42d48b7f641a8cc5c7f7c85d80771d"
     },
     {
       "bankItemNumber": 397,
@@ -1487,7 +1487,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "e53b69428b3d746b4a7bedc95ecb06afd762c75f3cd10fd33a6f27939d350bf5"
+      "contentHash": "86ec43109be462b993b8d87f80a83140ce89a2359aab277c90384ad3a390ccb3"
     },
     {
       "bankItemNumber": 398,
@@ -1513,7 +1513,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply drive input rating knowledge while the electrician installs ac drives.",
-      "contentHash": "6192df5c27ed0f27f3b7afd91a2d9ce7d8d18aadc5ae8e8b0c96189f42ff4d37"
+      "contentHash": "3059b5399c65cf6fe87cdb6a3de3f888e95f9f72beda358b1570ffe2e1a05d40"
     },
     {
       "bankItemNumber": 399,
@@ -1539,7 +1539,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply motor base frequency knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "c68f80b84aef79e0c87b8782bbc4796a0131947f986a33478379e0d328648de2"
+      "contentHash": "18d1ddbab04b3743d56345b0ceb7343fd64e66a4b7b323edf47446bcd2c5d5cc"
     },
     {
       "bankItemNumber": 400,
@@ -1565,7 +1565,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply acceleration time knowledge while the electrician installs dc drives.",
-      "contentHash": "603ba29cd6e2f00e0e20c623a7d82e75678a7058609ac4b03e964c072d5f08f4"
+      "contentHash": "dfe6f9ba7d95da0ceae0ebf66d65e95e3c7cf59ba0f1a3e9adfd0ea0de47d28a"
     },
     {
       "bankItemNumber": 401,
@@ -1600,7 +1600,7 @@
       "diagramAlt": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output.",
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "59e87d2eda70903a04e8847d346830ae620c24468454d5f11522ae0ac5aa4d19"
+      "contentHash": "8926a3ecdca054c3b25819eac9944fece3bfc74cb07c9fb7c2c46ffe63f9bc3b"
     },
     {
       "bankItemNumber": 402,
@@ -1626,7 +1626,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply minimum speed knowledge while the electrician installs ac drives.",
-      "contentHash": "4b6786ffc4e86bb823fff4507d4717c5132a1bb93f9dac57035e99a7198d7ff1"
+      "contentHash": "8443375c1f116776edfd10feaf93f539703ffc8c23b5c4d255210fbb2db5e1e0"
     },
     {
       "bankItemNumber": 403,
@@ -1652,7 +1652,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply current limit knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "ecb79e588a5424def37fb1ec7595e651957024c00de9c1c776dbeded3017f12c"
+      "contentHash": "faf98374abe175b90157e204ec0fc5f2375f6657c9ec198703e1b0a2de64fbec"
     },
     {
       "bankItemNumber": 404,
@@ -1678,7 +1678,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply fault history knowledge while the electrician installs dc drives.",
-      "contentHash": "0c366dd17dca531c053579d768d759983a8503caca1a7c6cde1d4053d7508a73"
+      "contentHash": "86f466890314a69de8d267b4b1628fe3aae590b4486ff362bb1c032fc1eb3c62"
     },
     {
       "bankItemNumber": 405,
@@ -1713,7 +1713,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "97e9889d99a1e0ca8c794b7b724682aa3c9c8b1439ae7c29dcf89bfaec79fbc8"
+      "contentHash": "e9a5e3195930da3d5fce0af05294fd9af03a195cde8a3f7d36fc148e4de158ff"
     },
     {
       "bankItemNumber": 406,
@@ -1739,7 +1739,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "d5839668755d38aaa001e9afc67858cbcdd4d23b358a63a0f945a420fa8efec3"
+      "contentHash": "2acf4bd5dd66c00908ba315f486d410bd3004f70ce90d93817e401ed2fb246ad"
     },
     {
       "bankItemNumber": 407,
@@ -1765,7 +1765,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.03",
       "blueprintObjective": "Apply phase sequence knowledge while the electrician installs three-phase motors.",
-      "contentHash": "2dc93477db786a9ee7b9d73e9053d50745c4b0e24ec695fceae99ae981aa576c"
+      "contentHash": "0334110c4fb0656f83d99b4d93363b72fdb9b70a2bf6eb03f67a182b2495a7d2"
     },
     {
       "bankItemNumber": 408,
@@ -1791,7 +1791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply single-phase starting circuit knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "f08c12f14a0ee8aaf0ed0f5736e8171ce6f3005ffbfa8b08dbc1702515a64b32"
+      "contentHash": "916ecd4e85ee7f20755ee11c0df7394c149c59c6d1b0bbde08962941a4da6313"
     },
     {
       "bankItemNumber": 409,
@@ -1830,7 +1830,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "5783e290c4212ffbf8c4c4b8b46eb4a9d239ca9b683e49db8b6000bbd8a0f5aa"
+      "contentHash": "0b0c93bc43a839296421012143a09594d40f328ec9ff937731cbaaaae7aee227"
     },
     {
       "bankItemNumber": 410,
@@ -1856,7 +1856,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.06",
       "blueprintObjective": "Apply bearing condition knowledge while the electrician services and maintains dc motors.",
-      "contentHash": "67e2892aabeaf3334a00f6b9b7e6cab517d09cd00b83009a83b75d2851197d44"
+      "contentHash": "7865e9ec5b4bb0e795170041b3a39bb9f94a5a973babda5b70a55a13a87fff4e"
     },
     {
       "bankItemNumber": 411,
@@ -1882,7 +1882,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply winding resistance balance knowledge while the electrician installs single-phase motors.",
-      "contentHash": "8dc8d4ec7abb486a67e727ede19a26723fdc23043d916fb9e3448d0913375de6"
+      "contentHash": "43f129a44a84710f36c8a6a987a47d5993e45dcc49758f8c23034577bc4242bf"
     },
     {
       "bankItemNumber": 412,
@@ -1908,7 +1908,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply insulation trend knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "f00e13f4fb35fbdf9a166714770dead37919de2655126b679a44d955c662780b"
+      "contentHash": "efe3a2b4f5c904b5ac32026af037fd8325ac6ae1f11c4344fc560c73d582e126"
     },
     {
       "bankItemNumber": 413,
@@ -1943,7 +1943,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "2e31ec84b577086a44d71f622e1df9564f9280099058eac6e451f8e5b21aaa33"
+      "contentHash": "a07bc9e6f68687755cf1a3c513a518c15ffa00caa6bec708581ff6ef783aff38"
     },
     {
       "bankItemNumber": 414,
@@ -1969,7 +1969,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply load current balance knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "e0d4d131149a53274de528ba3a9c2d26af972b6f5e11546f6545dbf589fefe68"
+      "contentHash": "a07d973903a9d886270d78ca54517927956c15d6592c4db91b3a301956db3d8a"
     },
     {
       "bankItemNumber": 415,
@@ -1995,7 +1995,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.05",
       "blueprintObjective": "Apply coupling condition knowledge while the electrician installs dc motors.",
-      "contentHash": "c0043ba933ac7bcca492fd785f1df02e5a29123ccb1a2cbd0470bf5cebe2053d"
+      "contentHash": "d862f6892dcdd3be5a4bf0732eb7ad211b571e47dba338367740ebff5e73b4fc"
     },
     {
       "bankItemNumber": 416,
@@ -2021,7 +2021,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.06",
       "blueprintObjective": "Apply dc brush condition knowledge while the electrician services and maintains dc motors.",
-      "contentHash": "10d01713a609484812229405da44ff8226a75d20e68b3a93cf215149d0d0326c"
+      "contentHash": "0241e16fdb672b8a3ed6c940008dfe09cb369e561e6531bc8c835f92e998d073"
     },
     {
       "bankItemNumber": 417,
@@ -2060,7 +2060,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "cab3aa41f5d289eb2dc3146b937ef073c2742dd22ff2dad12b132a135b77265f"
+      "contentHash": "a24e381d9a7a8adaa31ab82c085a881b9dbf68552731f7d5a89dc5d2c5fdb4bc"
     },
     {
       "bankItemNumber": 418,
@@ -2086,7 +2086,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "23e8e0c00745055ad88fe756fbed1fdf3ba7d8ad4ebdad40e60ef06e82821f2a"
+      "contentHash": "ddb4f6e1786788c633437188e29961cab8d8ebe1680d378f3d87793e80485c50"
     },
     {
       "bankItemNumber": 419,
@@ -2112,7 +2112,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.03",
       "blueprintObjective": "Apply phase sequence knowledge while the electrician installs three-phase motors.",
-      "contentHash": "6956ff8741e46fa077eb4a72b23554a915d25b41895bd1788b6f3dc546820f6c"
+      "contentHash": "41d13b51bc6ffcbe9246b9f4787ea799ee585bcd95409afd4b751d92b863c312"
     },
     {
       "bankItemNumber": 420,
@@ -2138,7 +2138,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply single-phase starting circuit knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "7af8f1c923f0825235077505b26f3d6eddd5933d250f54c360d2fc7998eb1453"
+      "contentHash": "ce23c875dfa9c0b8bc742981fe36435a0471e9df4baca2509ebaf741060eab15"
     },
     {
       "bankItemNumber": 421,
@@ -2177,7 +2177,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "2867f2f9323914e4aab1a3241775670e60bb76b36592d6431b06a62489b12210"
+      "contentHash": "75d11beae215adbb39dbbd100d949dbf3782a7c6beefa77a87e263df5207cb11"
     },
     {
       "bankItemNumber": 422,
@@ -2203,7 +2203,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.06",
       "blueprintObjective": "Apply bearing condition knowledge while the electrician services and maintains dc motors.",
-      "contentHash": "a5e3c07016936143cf9355338badcb2d21870264354b60dbdf6766603461af7e"
+      "contentHash": "f5d0b7ddfae8d04c1f00c27058a2a3a1b24b62052db56a82596a52e9f4929cbf"
     },
     {
       "bankItemNumber": 423,
@@ -2229,7 +2229,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply winding resistance balance knowledge while the electrician installs single-phase motors.",
-      "contentHash": "dd533f0b0e1f9c08b69891c7332b74b72ce027abbdd95cfce5945dd853be4116"
+      "contentHash": "70c8115084e9463d000162503a894d080d2f61c8d92c069bff501d992aca078f"
     },
     {
       "bankItemNumber": 424,
@@ -2255,7 +2255,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply insulation trend knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "88b4376a7f1839f602db76be5e057ada3e9bc4a3676ae145f400026aac7bf6de"
+      "contentHash": "a4765f00f5038d48f45835bd735e3f5eaeae2ffb4f125e9f45449dd325306acf"
     },
     {
       "bankItemNumber": 425,
@@ -2290,7 +2290,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "b88bfda0448f6b82502d9b1e19494eee4dace87ff82b36250b6428fa0ac7ad8c"
+      "contentHash": "c53156c53c4351e7e534a183a54881c87c3c133304a47d5314dd34d985b435f0"
     },
     {
       "bankItemNumber": 426,
@@ -2316,7 +2316,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply load current balance knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "f611ec955d2283d1c6640181b51b30304e7aa6e0c5cb351c97a84cbe168d2ca2"
+      "contentHash": "f944894615434aa1307c07a507bc80b05dad91ae75dc4adc2d95b2dad0cdf69b"
     },
     {
       "bankItemNumber": 427,
@@ -2342,7 +2342,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.05",
       "blueprintObjective": "Apply coupling condition knowledge while the electrician installs dc motors.",
-      "contentHash": "c9c6540f59ba136082f6b5b328267b8c780123488737dd634f03436b2314f000"
+      "contentHash": "df05d8bae338630accc6d93bb2ca63c16026d0b491e6c373ab29368f0f172963"
     },
     {
       "bankItemNumber": 428,
@@ -2368,7 +2368,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.06",
       "blueprintObjective": "Apply dc brush condition knowledge while the electrician services and maintains dc motors.",
-      "contentHash": "996bb34580f28c0d1cbaaa57cf85d8e35ded21ef054f0e5a4c40d364054e78ca"
+      "contentHash": "765d835462b7dc4dd742c0ea73460f5983b4cccd4eb3550f3c5bf06e7d77dc6b"
     },
     {
       "bankItemNumber": 429,
@@ -2403,7 +2403,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "ae04fb6fbb7e131db1836644f65197ecdd7a7d418b36a82ad62e04b403c573cb"
+      "contentHash": "6320d836ca89f43ecd90147eb437a6497be98cad2dd0def285edfb0894673122"
     },
     {
       "bankItemNumber": 430,
@@ -2429,7 +2429,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "2cd9a0159c3cc3e8572f475027e23d2c4cd0c6cda23830bcd3947f50fd2e7dbc"
+      "contentHash": "9ce4ade03336562b56ebd5d17ef2ef130ddc099e522bf6f3c561948b58621454"
     },
     {
       "bankItemNumber": 431,
@@ -2455,7 +2455,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.03",
       "blueprintObjective": "Apply phase sequence knowledge while the electrician installs three-phase motors.",
-      "contentHash": "849bb763a0b970125e4b9ee3c95821bb341e8b9bfe7d747f223a1e0604dbe6fe"
+      "contentHash": "ba9f1cd045461f243d4c4f012ffd1e90fe3bbe3368bef9fcb8288e867ba5f66d"
     },
     {
       "bankItemNumber": 432,
@@ -2481,7 +2481,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.04",
       "blueprintObjective": "Apply single-phase starting circuit knowledge while the electrician services and maintains three-phase motors.",
-      "contentHash": "7f43f0986c3f2592c17b8624e49a35bde11bed9747fea50b27ad7fb1f15254d1"
+      "contentHash": "8ffbe3dc7a5c86f0fab388833d165f44024a4b357badefc86ea0099c986d7d7a"
     },
     {
       "bankItemNumber": 433,
@@ -2516,7 +2516,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "de0ba4ab6fc4b6ec326def69f0959664cf90a89de7090f9529a39349c3e20954"
+      "contentHash": "fd59cc842c2a1fd833a9e9015c4861d80891e7df984f7139f91342085605e4fe"
     },
     {
       "bankItemNumber": 434,
@@ -2542,7 +2542,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply digital input state knowledge while the electrician installs automated control systems.",
-      "contentHash": "db518aa70e8a8c32f9407c7555dc0b4d64063ca3ed29751ea468d154b5a731ad"
+      "contentHash": "172f28ff3c00c7d244d3eef7c68f27cc2ab0f1353f8c203bc37665e9eee22de2"
     },
     {
       "bankItemNumber": 435,
@@ -2568,7 +2568,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply analog scaling knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "75188113305e77b607d163a06070d95b44101b7a18680cf11397ecd6392d3e5a"
+      "contentHash": "ef1044d2e81417cacbd41976616d9cfd6df88c0153829cfaeb79318ecc5ed8dd"
     },
     {
       "bankItemNumber": 436,
@@ -2594,7 +2594,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply output fail state knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "a9637f701c4ffe720c82af240dbd58435568a51dd707fdcee337a9e489595293"
+      "contentHash": "f27410f7e99db9bf4b1f9571781590906057fb5329854586c91b70deca8534b7"
     },
     {
       "bankItemNumber": 437,
@@ -2629,7 +2629,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician installs automated control systems.",
-      "contentHash": "23866d61602027ae3197b9acc4ce5f4a760a3cee0447fe3a3c294f7f48b7b86a"
+      "contentHash": "01078cf5b4222878d53d95a2214ef9051fb50df48b1ac853404c1fcf30b328e9"
     },
     {
       "bankItemNumber": 438,
@@ -2655,7 +2655,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "6fbf03fe2a1c4adee088bd2c4ac8f43ef271089cc3878a65a44e81f08b3668a9"
+      "contentHash": "41638791010968350d384ce2e00461bb661d0ae70a271a01e5c0e27018e37f0d"
     },
     {
       "bankItemNumber": 439,
@@ -2681,7 +2681,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply interlock logic knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "94b929ca36d370522cd3f770228bd0937e0e72af259f1b4b384bac985f520a72"
+      "contentHash": "fade7230f33b7b195fb57e52a432e594c8723ff5f52915f6dcd0f8eca9e2eb91"
     },
     {
       "bankItemNumber": 440,
@@ -2707,7 +2707,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply alarm priority knowledge while the electrician installs automated control systems.",
-      "contentHash": "c0559c5a5bdd5ddec44dbe474b9e742e45d4f043629a848655bcbf957ca8d0d0"
+      "contentHash": "3c64c369dd7b16c1c41cef953a22a419d134ce865a66ee3c798c6f6cec871eae"
     },
     {
       "bankItemNumber": 441,
@@ -2742,7 +2742,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "a4eda7d0dce71ee88ee939c44e8225587121eefec60af3c3155c1348a79597a1"
+      "contentHash": "9d33496e6213463705921fcfbf285703a6dd0655b8815a03289e6c27c4192193"
     },
     {
       "bankItemNumber": 442,
@@ -2768,7 +2768,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply network addressing knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "18cb78b913572cdd0f3c244aecc194067a315ee56c02fd1408c06e6a0ef9c18a"
+      "contentHash": "b3adf2b1ebe09e4936048f0d95d57228cac26a1031772130ed98909125766165"
     },
     {
       "bankItemNumber": 443,
@@ -2794,7 +2794,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply loop tuning knowledge while the electrician installs automated control systems.",
-      "contentHash": "51534f2bb1868dbb10b62ddb3af65a498ebb60de42766ed73c65494c14e94645"
+      "contentHash": "6af1a94369dfaf4be9c404cef17140f89b6644b382998172c2e848a638064092"
     },
     {
       "bankItemNumber": 444,
@@ -2820,7 +2820,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply trend history knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "4875c8445bfab9626334cbc649ced80ae121449b3dfa95e182c5fff8dfd05568"
+      "contentHash": "8c90a6c9763d25bca72de4ec62c2becdffd6da8dec954e29b7ec9fc75034768d"
     },
     {
       "bankItemNumber": 445,
@@ -2855,7 +2855,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "23cbfe581cc6e19c81d5dbad7d621740aae3c83043d89fd8ea484c7a2e3e6b37"
+      "contentHash": "b4043de39bba600c242195be4cf48f19b0f5492fb14c89c6b6c6facafeebfc54"
     },
     {
       "bankItemNumber": 446,
@@ -2881,7 +2881,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply digital input state knowledge while the electrician installs automated control systems.",
-      "contentHash": "e283f8cac4051fea07981e612ad655e6e155651e07f3aa35988730b8c05bf279"
+      "contentHash": "b196cb49c03a0dddc77c6d7fc92901dc85b0a8608c9b0cd20b52c2606155b2d1"
     },
     {
       "bankItemNumber": 447,
@@ -2907,7 +2907,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply analog scaling knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "a8de12c3fba1726eaf1a53f1bc74a41f432d6fe6f60f58fe993a9a2d77d260b5"
+      "contentHash": "884442f0ab29724fcb5ada2a7c97f40b312aa79cfd9b1d18e5f03092ebf0b43e"
     },
     {
       "bankItemNumber": 448,
@@ -2933,7 +2933,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.03",
       "blueprintObjective": "Apply output fail state knowledge while the electrician programs and configures automated control systems.",
-      "contentHash": "eee4fb6dd22ab71a9b21773323e62ab3d76441c4f3bdd47c4f041ce4719748c9"
+      "contentHash": "5a8ff75012a6c662aa8ed24bebcfc5674f410f82195c1a943f5f90594ad55537"
     },
     {
       "bankItemNumber": 449,
@@ -2959,7 +2959,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply sensor range knowledge while the electrician installs automated control systems.",
-      "contentHash": "a7f2dfebf378766a380b6b9974243be1ac98a3e97b48cab272c2171f49bb8146"
+      "contentHash": "fa91a3cd7e1f76270651a4fdc5734788e35df031a12c6112d5b4d2e92f5faa4c"
     },
     {
       "bankItemNumber": 450,
@@ -2985,7 +2985,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.02",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician services and maintains automated control systems.",
-      "contentHash": "f8513992c1c36e04f0d24b3c213a8be26cc0873f0edc9d26414e04a509b17d56"
+      "contentHash": "0268c836019013847922570882157ca8d0a7fca2d5edbdcd68b71c30b01d9e84"
     }
   ]
 }

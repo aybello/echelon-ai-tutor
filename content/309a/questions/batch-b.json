@@ -3,7 +3,7 @@
   "title": "Generating, distribution and service systems",
   "questionDefaults": {
     "bankKey": "electrician-309a",
-    "bankVersionKey": "309a-current-rsos-v2",
+    "bankVersionKey": "309a-current-rsos-v3",
     "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
     "module": "B",
     "steps": null,
@@ -44,7 +44,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply single-phase service load knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "31b3028b624a7a1ede795d22a41dd109b5f6c246af8d8cf9af67a22bc681921e"
+      "contentHash": "c83706282756541cb70b1547776803adbb157241695849b4d32da805a1dccf60"
     },
     {
       "bankItemNumber": 57,
@@ -70,7 +70,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase service load knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "1408f1253fb6203e814807ea5b0129d6e3f21b231d7cd146a17d3daee98b4103"
+      "contentHash": "dee1233a5719b2e0d00f5c4146f4d7fc1119496dad8248ceb808532f2dd2ebdd"
     },
     {
       "bankItemNumber": 58,
@@ -105,7 +105,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "5738b6319e7ca8809d3b5cace6f80f2047d1533d0949701acff955d2f6277ae0"
+      "contentHash": "5e556fa2d097d04b8e3d5cff09bf988d570b59511f35b029dbf702508797777c"
     },
     {
       "bankItemNumber": 59,
@@ -131,7 +131,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.04",
       "blueprintObjective": "Apply phase identification knowledge while the electrician services and maintains three-phase consumer/supply services and metering equipment.",
-      "contentHash": "5396e3ebdce059fe6b5c4a2c8eeda5e121499c1d6ef17ad9cba723af2f6f3432"
+      "contentHash": "19d7aae7d2b63781bcaf84685d4fa7164ac19a419e68a3ce4e7251ae295b4f0a"
     },
     {
       "bankItemNumber": 60,
@@ -157,7 +157,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply service-conductor strain relief knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "34945d20e8444cf42c397e7836ed843b1cdea3e314d06e1fe9c895f9a99cf65d"
+      "contentHash": "965e9a5a45476e9d8d79b19d2e8d1679845453c61dbb7376d3db15215fba36d3"
     },
     {
       "bankItemNumber": 61,
@@ -183,7 +183,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply environmental protection knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "afdd2132ec0002daceda5a2246e1c05056ea7910cbf3f1ed4e0bea216cf5d873"
+      "contentHash": "c023e03e22c2f6107c4a50806fee634af5e5bb1a9ce57768172a81335d9de2bb"
     },
     {
       "bankItemNumber": 62,
@@ -218,7 +218,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "1cc309ead71d908fc8d524373989ad92cd4aa3dda09553ce88ace46a0d343026"
+      "contentHash": "d7f1938900da15dc68c2f02800408320775ddd3830882bb52d457d1b10f61a36"
     },
     {
       "bankItemNumber": 63,
@@ -244,7 +244,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.04",
       "blueprintObjective": "Apply load balance knowledge while the electrician services and maintains three-phase consumer/supply services and metering equipment.",
-      "contentHash": "12ca9ab4f0e61bad54626ffc27336e86ff43c54831f4e2a7aa7805dd18b4410b"
+      "contentHash": "90eeb73cd23b3157deb8628aca8e59eda0fff10947c5be470fd49f449cba7333"
     },
     {
       "bankItemNumber": 64,
@@ -270,7 +270,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply service-component layout knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "d5abdaaffd11b873c50afb9a32295c1fee08d3effaaef6aaa10b5dc2e443ead6"
+      "contentHash": "178d2484c66d842457269c0af3753cc7bd76dea2ec3f2243218209f8c6d0a4bf"
     },
     {
       "bankItemNumber": 65,
@@ -296,7 +296,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply maintenance history knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "8165eccbfd489a59d055564245a284d8002297d43ab1145e2497c1a360ac15fb"
+      "contentHash": "14637eb7503e1c2a19bae549b20601d4ce78f77628963f9bab4b41af0ed4d247"
     },
     {
       "bankItemNumber": 66,
@@ -331,7 +331,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "6bf548bec5db2c90e8a2cf82583ea1658731b10b27ebd470f385de71b39243d0"
+      "contentHash": "0759178a59422dd50e9c801f25accfd47652a54062a76086f03c869b76434ef0"
     },
     {
       "bankItemNumber": 67,
@@ -357,7 +357,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.04",
       "blueprintObjective": "Apply three-phase service load knowledge while the electrician services and maintains three-phase consumer/supply services and metering equipment.",
-      "contentHash": "1f8ca5201421f0327c3f9468562dab65dbb95cba78e31513a6dd4e63f47203a6"
+      "contentHash": "4b85996847006864864ff01dc1e3fb6f471671d973189152bcbd6cae71b95b7e"
     },
     {
       "bankItemNumber": 68,
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply metering-transformer polarity knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "e81a4b842a5a1300b465dd4c15b8402126f90b687ed3ed72935ede72db738a84"
+      "contentHash": "f28f88ffe0f7d6b80e724107184150397f333606ff0dddaef43e0a7a7ab39f8f"
     },
     {
       "bankItemNumber": 69,
@@ -409,7 +409,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply phase identification knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "d0654d2d6279ab5e0111ce14246a909bceddf4f1738570bee95a8cc083671bdb"
+      "contentHash": "1a2b9a44e5072bec971f98b0caff1828e484c668b3a5cddd328bcf5e0b6d8737"
     },
     {
       "bankItemNumber": 70,
@@ -444,7 +444,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "d6027cdd2b6f3c8e8c86861655f635a0c730f8ee6a226b12c28738317876822d"
+      "contentHash": "3940e24595db232d74ea4245dacd87d438123f2aa3910fdd592f23e0223cf6c0"
     },
     {
       "bankItemNumber": 71,
@@ -470,7 +470,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.04",
       "blueprintObjective": "Apply environmental protection knowledge while the electrician services and maintains three-phase consumer/supply services and metering equipment.",
-      "contentHash": "f87abbdaa2b2cf5e16a264f6bea8ad11474650df11d596b8bd400174ed2438d2"
+      "contentHash": "fc3b50ed8665416fc7acdc1afd454660a21bb07719bc7a5cb7887fa033121f18"
     },
     {
       "bankItemNumber": 72,
@@ -496,7 +496,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply metering documentation knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "2877ecefea989908d41d552d20385e04efddf7914fcdaca67242145e34bd6046"
+      "contentHash": "e8726390ba4860b9e060a4dcf26501c666d3dc5fb98cf4a655c2fd6ec30402e0"
     },
     {
       "bankItemNumber": 73,
@@ -522,7 +522,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply load balance knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "5e54f71c266a935c793c8f78e23fbc8adadf0593356d016b95345530d7000e34"
+      "contentHash": "b8855e3c006d86f74deb545ca148a69ce17a797e8628633faf70563300cac2aa"
     },
     {
       "bankItemNumber": 74,
@@ -561,7 +561,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "c5ae87d700bf8875a6235d94cadbc28bab01cb8a046cf7b0d631d65a26dea02f"
+      "contentHash": "8ec217f7c40d3cf1f4705aed5bc297b7bf71d3be62ce46b01749bc5619a8b58c"
     },
     {
       "bankItemNumber": 75,
@@ -587,7 +587,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.04",
       "blueprintObjective": "Apply maintenance history knowledge while the electrician services and maintains three-phase consumer/supply services and metering equipment.",
-      "contentHash": "1fd2aac475d3788c3c03afefccf2e8dbc67c8a7c098b0f44dda894dc99c943b5"
+      "contentHash": "e41a0d215a04cb0f1cb97ce0a153a3e64db0bc2323c556692e75c3a97491fe64"
     },
     {
       "bankItemNumber": 76,
@@ -613,7 +613,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply interrupting capability knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "0c04623c3a1853ad56b705a30f0a47eb3a459fcba3d0f27a678ca809f7149e7c"
+      "contentHash": "317a4e48bfc517f4bd8da580a86faea40ce5f9d2b0016905c56de5b8c67a6ea2"
     },
     {
       "bankItemNumber": 77,
@@ -639,7 +639,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply continuous-current rating knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "2f3149f47262a3b8149b31848052b559fb30aee89a1d136e4e1cc2b63bce1fd2"
+      "contentHash": "6960bad12c5ed580188b20969336cf510d3a7b00b3e87b7222f4f66f7aa9609e"
     },
     {
       "bankItemNumber": 78,
@@ -678,7 +678,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply protected load current knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "e801986ab7dc3b61878b6d6c9d91e20e8ed512bb5b638bb2be49fd8fbf957445"
+      "contentHash": "9b31cb83990c4830f657e8e5c03e561e9d07ae04c01bafbf993286d303289217"
     },
     {
       "bankItemNumber": 79,
@@ -704,7 +704,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply ground-fault sensing knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "f5b0645892af979b3fbf17806fe626a30aaac8b37d7cad1ff0bafb8d85ee8617"
+      "contentHash": "47297464c261b28ce955d1a4cb408db81d037ad7127d189f9b34b9a8c32a3696"
     },
     {
       "bankItemNumber": 80,
@@ -730,7 +730,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply arc-fault detection knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "7655926be2fa7ad01e544df00e7df6a73e0d3f313b16718bfbda72c3e55d72a8"
+      "contentHash": "25e538983e321d182cf15893626ae2c63b60643356e64a4088a18c0509b19219"
     },
     {
       "bankItemNumber": 81,
@@ -756,7 +756,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply surge diversion knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "e065e10a27f2cbadf9b65492d9d092ad443d52f4cddf0bbaf4e72d7fb67a9be3"
+      "contentHash": "5dcf3e67748160cabf8a65ea15bae5b5339271aa634889d6f832a60fe2abf179"
     },
     {
       "bankItemNumber": 82,
@@ -795,7 +795,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply protected load current knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "0796b8032e51da0aed8fa5a89755e2fcc85001462b9d552a973d3a61600c690f"
+      "contentHash": "102b566e24c6f06d455e5ee18f24433a3f249080f58ddc933c3ea905e666da76"
     },
     {
       "bankItemNumber": 83,
@@ -821,7 +821,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply trip setting control knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "ce0e642e8688d851e3a883bd3d8211132a6ca1695b1c92f0ee7b133d92f1d76f"
+      "contentHash": "8c8d00c855001583aaf82a810777c63ca6e5b37e3a56ca3fdd9900672e5efa02"
     },
     {
       "bankItemNumber": 84,
@@ -847,7 +847,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply protection-device labelling knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "991866f666190063f7c21c3fe248c6da57ca6c9a437d2303b8ec9fa8f72107f4"
+      "contentHash": "eae2319ae6405ee879bd1f9f64819f9dfd5c2e948eb242eff242dff89f21f4c7"
     },
     {
       "bankItemNumber": 85,
@@ -873,7 +873,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply post-trip investigation knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "69d63d17024cf9534ea49c9d9a1b2ccf9b534ffb2c32c89ca539d1f8929fdf85"
+      "contentHash": "3dac6590747a0534a4ff8f73557f918a3ed068d38b16e9d392d9b38dfab8805e"
     },
     {
       "bankItemNumber": 86,
@@ -912,7 +912,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply protected load current knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "3566284e830c06186304ec3caa4e7c3b26e285fd1d5296b7d722a065e1e2156d"
+      "contentHash": "5186e4a954a63ff1e346ccfabb7921d6b4f3d110689b598dc1e0a63fa29297cf"
     },
     {
       "bankItemNumber": 87,
@@ -938,7 +938,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply continuous-current rating knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "9c81dbb46be145e936b99a53165e6850968f711f3d7b850de6bbe9a5bc4ed0da"
+      "contentHash": "85d590897d4ed890cfb5844e51e2501500cc4a3a1af6587a40685dfcc14c06fc"
     },
     {
       "bankItemNumber": 88,
@@ -964,7 +964,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply time-current coordination knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "00bbb6bf7a27aa1d26949427e196c8b74756bde7907ab6a042bb263f23fe725f"
+      "contentHash": "76b0d63a6cb3f4915daebb00ecbef70c4d24f26ad4a7d930a2110b4698596de8"
     },
     {
       "bankItemNumber": 89,
@@ -990,7 +990,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply ground-fault sensing knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "57b4be18f7a4cf055ac1a41d95628956faecafccdda95dd11685808960bbba23"
+      "contentHash": "c3400395cc7a93d20953b929d1e1b0e406a23867a04482fbeb60d4eba54cd41d"
     },
     {
       "bankItemNumber": 90,
@@ -1029,7 +1029,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply protected load current knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "2ef0e70c040ff197aba059fedf6ea40a3f7aca8e702a253983705eae261f9c56"
+      "contentHash": "38cdee010e9d8b387e98f9e55f56c7d38c10fdc3dfee15af0d7e9b7214640f4f"
     },
     {
       "bankItemNumber": 91,
@@ -1055,7 +1055,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply surge diversion knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "358eefcab5867ec3c3e1c8ade630612257ba50720bb6a50cbcce9edbcf6dc6b6"
+      "contentHash": "1a03a0a2f32cd970172d5f1ac870bdb3889059d6c6d218e69ece91f02437bc86"
     },
     {
       "bankItemNumber": 92,
@@ -1081,7 +1081,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply line-load orientation knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "74d064584fbaf13c28ec265ddae96c6c15df8b1970f478d9ef74da83d08816a5"
+      "contentHash": "937ae8207349ec3968214197166ec7591522649bace456efb85e56713f7ae5c8"
     },
     {
       "bankItemNumber": 93,
@@ -1107,7 +1107,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply trip setting control knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "a829c2162affe3ed1e1f53f62bc43b737fe50e9f1973f6e6e9777d4051a94753"
+      "contentHash": "8898831b78a98c387fe4312ace122167a7fe388c8730f0c5c3416e799e9a4082"
     },
     {
       "bankItemNumber": 94,
@@ -1146,7 +1146,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply protected load current knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "45fc13f3a035a1fb8363f11212d8075a6e09049134b7ca4b12950f08333203f0"
+      "contentHash": "7b4c94df6ffe0446fd50a6f2e690a13cf2fbda54df1291419820e03d3ddb2db5"
     },
     {
       "bankItemNumber": 95,
@@ -1172,7 +1172,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.02",
       "blueprintObjective": "Apply post-trip investigation knowledge while the electrician installs ground-fault, arc-fault and surge protection devices.",
-      "contentHash": "8500f176d291ebda33bdb05a0d4b6b156eddab702920efd29971f33fbd53b0e5"
+      "contentHash": "fbe8ef96b03bdfb6e71d3f44fcd9402c3c7e3af3ad527f1e51f595a6248ba978"
     },
     {
       "bankItemNumber": 96,
@@ -1198,7 +1198,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply interrupting capability knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "f296e07e27ebec7a85fbf114ff1deeb12eb426a561991fac03ca1a6d74aefa46"
+      "contentHash": "9365fe5fa7ed7dd1ab800f451b88095ca378243c8e380c00ed9eeec792ebfe8d"
     },
     {
       "bankItemNumber": 97,
@@ -1224,7 +1224,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply bus phasing knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "1c3052b4b4bf58c098c74a389ebddda32e19be8c72d734738585f5d4685fc6a4"
+      "contentHash": "11ee33eee186d6e320d94516e2cca9733adc13a9232c1c0bed79a3fb93123f1b"
     },
     {
       "bankItemNumber": 98,
@@ -1263,7 +1263,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "1bbb66e6e20fa0d0baa80e5594aeb65750e2549aac68b875646a06cb0017612b"
+      "contentHash": "5eb7b1362c74e1e8872456cb877404e0cc602ddc9bca8224be2f3b73e3ca12c8"
     },
     {
       "bankItemNumber": 99,
@@ -1289,7 +1289,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply main-bus loading knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "d50d77b0343b6b2d2a80f8a4ed2b5ad7160bbf257e290465f2f8a8a0505671da"
+      "contentHash": "16aed5a8bc159a737cea0fee88cecf790421d2d295358d5b0ec5f2c45454282c"
     },
     {
       "bankItemNumber": 100,
@@ -1315,7 +1315,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply termination torque knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "ff70a9c9a87f9a754421ae663aa122519d7464864418af2752648e5e0c39bd5d"
+      "contentHash": "1f4c196dde7e7f274590c7b74a225ea410874a4322a6a5de83616d88cfa1de4e"
     },
     {
       "bankItemNumber": 101,
@@ -1341,7 +1341,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply ventilation clearance knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "c39cf1a851091aa7f12f71e5fe8a22cc9e7ec39c6df93c61f0aabb52353819bf"
+      "contentHash": "dd5f28e380cf6439656ef9c870b37fadb1b6c36f6ebbe1b7d7541a5e6ba0ce24"
     },
     {
       "bankItemNumber": 102,
@@ -1380,7 +1380,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "040308643ff1a312c829c4a09eb74cf8b7e817383a4d14b2f243385cd5fd8e3d"
+      "contentHash": "9b2fb2d3ff9b79815dd781e69826e40cf136c9924e5fe33703330ce07b03a092"
     },
     {
       "bankItemNumber": 103,
@@ -1406,7 +1406,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply panel directory accuracy knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "8676d4d2333a1f499a008d60de759191d964c6bb42b825eeb4dc775b3a2d96e2"
+      "contentHash": "fe4c034cd76654d5153e2f98f11ca7e53cb0e9cb72a8fb5e50874b0a64bbb2bd"
     },
     {
       "bankItemNumber": 104,
@@ -1432,7 +1432,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply disconnect operation knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "92fd2bb6261b717e2243456e8a12113aece44fe03ba020bddc5095027ac2f627"
+      "contentHash": "64feb428bd53e28b68512b3b9c8d987fd7a4090d80cc60b01f4e0b4c64a4da20"
     },
     {
       "bankItemNumber": 105,
@@ -1458,7 +1458,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply thermal inspection trend knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "59a0cdb9d803aafc0134ac2d492d36f19987dfa1a60e0432406e2ae5f7862093"
+      "contentHash": "a50b555e5c7534d0c34950b600b7744db92a1a4ae78a0ac4a317939c5a37510f"
     },
     {
       "bankItemNumber": 106,
@@ -1497,7 +1497,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "881f21e18cff377d6c428f0b4bb0dc516f959a5f0e3710f2ee7a577940d18488"
+      "contentHash": "f1b261585d84dcdbb3fd5eb3d7cb41341ee61a21a17b45f1843da266dcda0964"
     },
     {
       "bankItemNumber": 107,
@@ -1523,7 +1523,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply bus phasing knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "052311c86941110cd04fe9da8efbdcfe97ee10c8aba8fa60b56601cc26c61a99"
+      "contentHash": "21adc09e028a08ec337f5a3c1630bb5692260e1b0feaa76fc5e973b0397de3eb"
     },
     {
       "bankItemNumber": 108,
@@ -1549,7 +1549,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply equipment short-circuit rating knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "625bb15c1dc76d83c89173a140b5ac6955716c607124fc24f99c60122ff15de8"
+      "contentHash": "760afe442ff6b0980e0039ed8a76eb7b9de07190b499ce388962c94531cd04d9"
     },
     {
       "bankItemNumber": 109,
@@ -1575,7 +1575,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply main-bus loading knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "ba938af47cefb839634313e97c615635ab7767eb5a30654442e1cfc3343521aa"
+      "contentHash": "bc1170afb89a140f7b2d05d2cf303ed592bf3fd8246d2449c46da9d0e3ec5cf4"
     },
     {
       "bankItemNumber": 110,
@@ -1614,7 +1614,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "87cf4fd66e23fce6b439112da006ba0ce8e5fc181cd24d46436f6a172b0f4549"
+      "contentHash": "b946b86902291bbcd8f6a19929bff0ae8f47b1406a42a158e04c543708ad6881"
     },
     {
       "bankItemNumber": 111,
@@ -1640,7 +1640,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply ventilation clearance knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "d9cb7a72bb9f26ef4f54f616f1d26eebfa415874db00f69b3cba398601129b0e"
+      "contentHash": "9a0dc0ec911cdd49f3956d79ec92c26b6aa9347d550296d921b3d646085e5607"
     },
     {
       "bankItemNumber": 112,
@@ -1666,7 +1666,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply switchboard alignment knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "0d68891ea5dc0882ae36d3721fc67d612a581d768d27776cddb3b22c1ca3c945"
+      "contentHash": "a6a3ea203675ec0985790a54fc00f989509954eac77cbc30ee9bf89b3f9292d6"
     },
     {
       "bankItemNumber": 113,
@@ -1692,7 +1692,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply panel directory accuracy knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "364008f9e01a23188d686cdb6c380bed195a06fc107fde3e4f0bff397442ce34"
+      "contentHash": "21a8c3eff3037d0488430ac9a19f2d5eac86b753b6f6fd3e9d7088c36cea0d28"
     },
     {
       "bankItemNumber": 114,
@@ -1727,7 +1727,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "fabcf4c5f0c9e10743e6b441c38be1c7f162f86f2f5394f168efa900c80d49c6"
+      "contentHash": "f53746f010c9d770a23be2274ccc219cb14536f00a86f296abf0e6ddb1d5f72e"
     },
     {
       "bankItemNumber": 115,
@@ -1753,7 +1753,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply thermal inspection trend knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "0d5308660c5013b2b80d243cde2eab98d34926e67403373f566bf33439a87a99"
+      "contentHash": "2183a8c257e24a44929ed62deac09cc969caf9906826e5db2bff9f8cd962bed3"
     },
     {
       "bankItemNumber": 116,
@@ -1779,7 +1779,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply foreign-material control knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "84ea1e12c3f73049ac74086592fe06df498ca21e3a2d64c6f61b3d0c79b0375f"
+      "contentHash": "d1375ad11345a66dea189d840d88d94d57fdc4da6a756aa5574d640743bf1913"
     },
     {
       "bankItemNumber": 117,
@@ -1805,7 +1805,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply bus phasing knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "e9a62b22c67fb9b094359626b9a6d8f3f95124537f6efc1ee78df90371dbd4e6"
+      "contentHash": "a1b5e91879d6f5ea32182e50fa98f977c97c6955fd170d539cd3923ecf634408"
     },
     {
       "bankItemNumber": 118,
@@ -1840,7 +1840,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply ups battery runtime knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "0cdfd06a5f745e71fd105687c934464f3e6e0a458cce89c212e17efcb45cb880"
+      "contentHash": "325bcdd080bb2403d04a9a9b6b3599881237dfcd916e94c60ef63f2a1ef901fe"
     },
     {
       "bankItemNumber": 119,
@@ -1866,7 +1866,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.02",
       "blueprintObjective": "Apply battery autonomy knowledge while the electrician services and maintains power conditioning, ups and surge suppression systems.",
-      "contentHash": "c503b11d01c9be93142ef51db1a6d0013267267932ef2e33da4d4bf996a520d6"
+      "contentHash": "5519b5215a39595cdee203a1afdfb467422a50bf55d0343ab07d3b0010ab149c"
     },
     {
       "bankItemNumber": 120,
@@ -1892,7 +1892,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply maintenance bypass knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "8f6c10f9b82b7b1d447e067523e8ea6d49294ea528c50aedb0ab3d9c64108635"
+      "contentHash": "25dd307c75e3399fe654117deccad766a0ec23bbd176f5f641c247a35b322254"
     },
     {
       "bankItemNumber": 121,
@@ -1918,7 +1918,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.02",
       "blueprintObjective": "Apply input power quality knowledge while the electrician services and maintains power conditioning, ups and surge suppression systems.",
-      "contentHash": "fa2ad83207f4df96c0009beb9493febaf45b085022c174ed7ca4b5aee83300a4"
+      "contentHash": "228614c836f720a5bd0e54632b3bab93ee56b4b8a1399ed1691be5e473bab442"
     },
     {
       "bankItemNumber": 122,
@@ -1953,7 +1953,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply ups battery runtime knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "654cdb015fa302becac8d0273f3cc6f8889db58e148dd2855516a8493b8e9b65"
+      "contentHash": "a6b33d8cdde07ed2047ae282060b18fbe579f611edeca764c21d17eeb7d88eda"
     },
     {
       "bankItemNumber": 123,
@@ -1979,7 +1979,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.02",
       "blueprintObjective": "Apply surge-device status knowledge while the electrician services and maintains power conditioning, ups and surge suppression systems.",
-      "contentHash": "494fad275fcfcaec1e66b66ede1f52fa7a96271a7f99b612b4455c1bcb7cbf0b"
+      "contentHash": "375c21bf9946696d43e9ec6019ecc8879cc63d2bce541d2361675a284e21bb6b"
     },
     {
       "bankItemNumber": 124,
@@ -2005,7 +2005,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply battery temperature knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "9fecfa4037559ddbd2b93942c183cbf6462fec190cf7ef7eb1d04005d6e30fc2"
+      "contentHash": "b1d922d9244b378e38b0ec3c618414599f34c52b6bdd9382556a0dbc136150f4"
     },
     {
       "bankItemNumber": 125,
@@ -2031,7 +2031,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.02",
       "blueprintObjective": "Apply transfer operation knowledge while the electrician services and maintains power conditioning, ups and surge suppression systems.",
-      "contentHash": "a4924acf4e324daf4c2d233de210116cf335a9ee7b1e25d7d90e4300b8739dfd"
+      "contentHash": "61ee980b58a7d03e575729013887d0ccadf8a0b872bcbaecf5a784b8782928ae"
     },
     {
       "bankItemNumber": 126,
@@ -2066,7 +2066,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply ups battery runtime knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "8642ca94399ab565f30efa4288851c6a3983dbc98aded8572bb399c3aaafe666"
+      "contentHash": "7994abc5ead19b7c1fad82cafe8010c662340d21b1fc3f911398fe5e8ad0f4ce"
     },
     {
       "bankItemNumber": 127,
@@ -2092,7 +2092,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.02",
       "blueprintObjective": "Apply critical-load prioritization knowledge while the electrician services and maintains power conditioning, ups and surge suppression systems.",
-      "contentHash": "bdfc9d09dbe70799b56ca2b8be53daf5fba7a268df94403d64c9704a5e7ae1c5"
+      "contentHash": "1f2c25418ec44f4d388fcced65bde8bbb1d2e3eaa9465956502942c3cff01375"
     },
     {
       "bankItemNumber": 128,
@@ -2118,7 +2118,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply ups load capacity knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "96da14c3cb23738edd85dfc0bd159235f66b84d273d0015e6fe968f4468f48c0"
+      "contentHash": "3c8bcf2505c0a6b3bf66d962959b4679a212cbe3d32cf6a7e39219280aa23a45"
     },
     {
       "bankItemNumber": 129,
@@ -2144,7 +2144,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.01",
       "blueprintObjective": "Apply bonding-path continuity knowledge while the electrician installs bonding and grounding systems.",
-      "contentHash": "e26c16e9c30a515cdaa12116b05f541d4d0cd79c7d8fb840d9a8ecd9a64127ee"
+      "contentHash": "4124b55d2194107d01540786aab460b455219b7106137e528f18ada308db5bea"
     },
     {
       "bankItemNumber": 130,
@@ -2179,7 +2179,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "6d95ea62f9b50f3ab364406d5ec53cdbdcf0f968a857980bc699c3bb1016de4f"
+      "contentHash": "eb6aadbb677f04875223513b4285928c591ec0565ec7985fe3423579be41e17a"
     },
     {
       "bankItemNumber": 131,
@@ -2205,7 +2205,7 @@
       "diagramAlt": "Conceptual fault-current path from a metal enclosure through bonding conductors back to the source protection point.",
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.03",
       "blueprintObjective": "Apply neutral-to-bond relationship knowledge while the electrician installs lightning protection systems.",
-      "contentHash": "379d9bf2d7c577bcf088760fe56d366e9f3a760ddce8ade5302593573791376a"
+      "contentHash": "9b67b6343cd6cccc21020310639236eabf6bdcb40902200e3136f2bf56a2eedd"
     },
     {
       "bankItemNumber": 132,
@@ -2231,7 +2231,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.04",
       "blueprintObjective": "Apply ground-fault sensor placement knowledge while the electrician services and maintains bonding and grounding systems.",
-      "contentHash": "e3bafdf6593eecd481336e26779961c2fb2948be5ae813bde27ebe99a855fe80"
+      "contentHash": "91f73078be8835a337e4f2c0bbef79b9fe5670b24a2773e447f2125ba51cbcb9"
     },
     {
       "bankItemNumber": 133,
@@ -2257,7 +2257,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.01",
       "blueprintObjective": "Apply lightning down-conductor routing knowledge while the electrician installs bonding and grounding systems.",
-      "contentHash": "3c79c7c42ec63c8a252fe48ca5319f8c7433b3342d9ae8f98edec3d763a74b24"
+      "contentHash": "796e9de065503e52016b075e9245aeb931a6f8b036adcd5d3e0fc58d4ff53996"
     },
     {
       "bankItemNumber": 134,
@@ -2292,7 +2292,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "90958573ee2914e9d986d5bcd606522c5b2830538ef88d43bb1417c5cbf22358"
+      "contentHash": "37cf83a06ef796e16ca630e6fdf0737f96c00be3f7af7b596c40023b45b16a5b"
     },
     {
       "bankItemNumber": 135,
@@ -2318,7 +2318,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.03",
       "blueprintObjective": "Apply parallel metallic paths knowledge while the electrician installs lightning protection systems.",
-      "contentHash": "80eed3201879253f4bbbc2b4f115f147e23a949a7d2ade4b1cdcf89ee01d06fa"
+      "contentHash": "66c8720c91145a901f7b2eb37180e4c1232d0430e254ba031be02ed6127cc373"
     },
     {
       "bankItemNumber": 136,
@@ -2344,7 +2344,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.04",
       "blueprintObjective": "Apply ground-fault alarm testing knowledge while the electrician services and maintains bonding and grounding systems.",
-      "contentHash": "e7b60ef285777453cc5a4bd5c67204398e94443dd9d3e31ddc8c2f477765dc35"
+      "contentHash": "edb1d468feb35b0ce5c53a991db1f9b498805cfb27e5ddbf660a18aec6882224"
     },
     {
       "bankItemNumber": 137,
@@ -2370,7 +2370,7 @@
       "diagramAlt": "Conceptual fault-current path from a metal enclosure through bonding conductors back to the source protection point.",
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.01",
       "blueprintObjective": "Apply bonding-jumper integrity knowledge while the electrician installs bonding and grounding systems.",
-      "contentHash": "8e379b17a97d5f557e33be4219581a78c9d31881e37c0552ae5dbb78937090a0"
+      "contentHash": "3e73eab0fff5abc2cec13166e61274bd4b57e383fbe1d52dbdb0e30213e9be9d"
     },
     {
       "bankItemNumber": 138,
@@ -2405,7 +2405,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "389becc40761faf4a0c569f0c7270e1133aa41265297d3f5c67c19463250a268"
+      "contentHash": "a250ced6ff883264e201f0ba6a47c86664cf0687b0d88ace51b26fbb3de06e02"
     },
     {
       "bankItemNumber": 139,
@@ -2431,7 +2431,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.03",
       "blueprintObjective": "Apply bonding-path continuity knowledge while the electrician installs lightning protection systems.",
-      "contentHash": "c53f1372ab296198e8410ecb47a326fdd38b586fa2f7c467cd810e803e606712"
+      "contentHash": "74a65df83577607aa1e0971ee210c49f513ba4161d68bd4ec92082b66eba8a1c"
     },
     {
       "bankItemNumber": 140,
@@ -2457,7 +2457,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.04",
       "blueprintObjective": "Apply grounding-electrode connection knowledge while the electrician services and maintains bonding and grounding systems.",
-      "contentHash": "94bc4345b451cb4d543a6bf2232379023a31889e21e70f9b338f38ed704f3c55"
+      "contentHash": "585564b3f6154d5e8684f50da1a0752c72893106109a123519294cef6307f71a"
     },
     {
       "bankItemNumber": 141,
@@ -2483,7 +2483,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.01",
       "blueprintObjective": "Apply neutral-to-bond relationship knowledge while the electrician installs bonding and grounding systems.",
-      "contentHash": "7e1ad328841cc1132d51771c689b3b27154fc560bb83ea36ee5d30b93f7b00de"
+      "contentHash": "1dd2d9ccadc93acc2b8ceb40c8fea377d4caa4d5ee759781127e5f4e1b08fc0e"
     },
     {
       "bankItemNumber": 142,
@@ -2518,7 +2518,7 @@
       "diagramAlt": "Conceptual fault-current path from a metal enclosure through bonding conductors back to the source protection point.",
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "6ec9d3ccd0ce31a205c12707190dc090769c79d27b3187cf5ce5edeb76be335d"
+      "contentHash": "b2526d652e530c00c684c06457189a137493bdcb8d6471afd9ebfe6fcbcf55c5"
     },
     {
       "bankItemNumber": 143,
@@ -2544,7 +2544,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.03",
       "blueprintObjective": "Apply lightning down-conductor routing knowledge while the electrician installs lightning protection systems.",
-      "contentHash": "4465c1425ab8a18c922727dea2f984fdb3af37fd5e456758e8463b88a49fb47e"
+      "contentHash": "15a8662c8f11dea39b3d59c8bad6cdb183bf664ad6d567d1f7fb2a5e55dda00e"
     },
     {
       "bankItemNumber": 144,
@@ -2570,7 +2570,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.04",
       "blueprintObjective": "Apply connection corrosion knowledge while the electrician services and maintains bonding and grounding systems.",
-      "contentHash": "c51f1d810f4620aa7fc8e682f49b1c27534f8ec9dd2f54b684a01fdc6886b30a"
+      "contentHash": "328660537b40a4c5b038d6aa19974844e4773fb740616e928ae865fb51104c3a"
     },
     {
       "bankItemNumber": 145,
@@ -2596,7 +2596,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.01",
       "blueprintObjective": "Apply parallel metallic paths knowledge while the electrician installs bonding and grounding systems.",
-      "contentHash": "0e66c8144003f8b39dfe9f8b7dfa56989419fd811e2cd750f4382d9bbb80c294"
+      "contentHash": "68841a1273ddea442280ea2122217111e5e1901a5da159cd516d4c6f0562395c"
     },
     {
       "bankItemNumber": 146,
@@ -2631,7 +2631,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "920b739d4c410b3e14c18d51ba16b36e5e0aa39a2af74a2887064e40f522f0fc"
+      "contentHash": "aa8ad4562526ab54e3cbdd8642e96bfd8636eb6273b1df6630b0b9d0bb3c4fb0"
     },
     {
       "bankItemNumber": 147,
@@ -2657,7 +2657,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.01",
       "blueprintObjective": "Apply generator phase sequence knowledge while the electrician installs ac generating systems.",
-      "contentHash": "44f6efb9b4729f77d3fbdd16472132846757a6a9f1d2e3cc6a99f30d92c357e0"
+      "contentHash": "4b799a41ed0d1294e1a3b7960079cf52a47a41170ddfe57f27c80afa4c2c8134"
     },
     {
       "bankItemNumber": 148,
@@ -2683,7 +2683,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply frequency stability knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "d77a6d34b95fc6bf48c966be452ff5af13989122f26058ea3640c4ebd9e934f1"
+      "contentHash": "515ac5c9c4049ba09b01a4cde7fddb1e63dd1a1ef942382475d3d846f6a6040d"
     },
     {
       "bankItemNumber": 149,
@@ -2709,7 +2709,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.03",
       "blueprintObjective": "Apply voltage regulation knowledge while the electrician installs dc generating and conversion systems.",
-      "contentHash": "f3142289b202c1085609b10dcf14686b09186f9f6fed87b561e8f688ec15f97a"
+      "contentHash": "c0fb2f4958714d2fa680b08c15a840ef8c48483780c596d81e8baafc57fe17ba"
     },
     {
       "bankItemNumber": 150,
@@ -2748,7 +2748,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply generator load current knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "70687546e0df1214379fd137e5be6c89bf03179eecc5f2241bb5ec8f85457bf3"
+      "contentHash": "5baa54da327da9e5d2c692e703058b930cff4f076a00111f63ae78518f671c6e"
     },
     {
       "bankItemNumber": 151,
@@ -2774,7 +2774,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.01",
       "blueprintObjective": "Apply starting-battery condition knowledge while the electrician installs ac generating systems.",
-      "contentHash": "1137d1c50770a6af403e8361dbf5eac261211fb758f6c5d8fb0574f0c32d2b46"
+      "contentHash": "d09206eaf3ae5f5af2c6abbdaa9d6e047ea061689f8328c9273be123c537214c"
     },
     {
       "bankItemNumber": 152,
@@ -2800,7 +2800,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply dc polarity knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "a223bebe989a3b75aaf17b057ae3720aa0a910978a7d6669e8f7498cc0905da4"
+      "contentHash": "73bfb9858381f7ccc4f186ee428832b3c90e2dc88f3f90a566bf6771034ef192"
     },
     {
       "bankItemNumber": 153,
@@ -2826,7 +2826,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.03",
       "blueprintObjective": "Apply converter output knowledge while the electrician installs dc generating and conversion systems.",
-      "contentHash": "df459d455fb909de890a5d8ec7908d3fce7be80106c2535abbd492bccccbe6b5"
+      "contentHash": "84b60ac6ec5cdd82e36dee4146d319a756d5764b1e797cb50ad2ddd8ef385350"
     },
     {
       "bankItemNumber": 154,
@@ -2865,7 +2865,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply generator load current knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "1d9f2fb3e6a4ac2fde1081b14d76ac6c38a91c00d28dd5fbdaad1e4171158319",
+      "contentHash": "51a904df5ada25ce95a0a355ef0684a9417ff76dcd6b2e619a299da8d097c17b",
       "options_note": null
     },
     {
@@ -2892,7 +2892,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.01",
       "blueprintObjective": "Apply fuel or energy readiness knowledge while the electrician installs ac generating systems.",
-      "contentHash": "e5a30e9c0434b22f077367b42d511d162df376a5ca56c8ef8702e6af3f47490a",
+      "contentHash": "8154b5b8edaf552231f98b458d225a8ece29576e956c0453c439def364e798d1",
       "options_note": null
     },
     {
@@ -2919,7 +2919,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply maintenance run record knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "c7f67a562a94818f12b185d97cdade3dbccc18c3e4bb5b9507af257010db2c55"
+      "contentHash": "f786710ca12dcf879b35cc3134909dda69d2012890456a68df8946c561366d22"
     },
     {
       "bankItemNumber": 157,
@@ -2945,7 +2945,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.03",
       "blueprintObjective": "Apply generator phase sequence knowledge while the electrician installs dc generating and conversion systems.",
-      "contentHash": "acb0784a4f5235d53eb223652387ce06c695cc7b806942a41353698041803b90"
+      "contentHash": "ef1d17febcb3aae030d131369027f0b6b66a6c94ef0137dd64f700f7871fc306"
     },
     {
       "bankItemNumber": 158,
@@ -2980,7 +2980,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply pv string voltage knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "e99995dca3d2da4bbcaba6e666656236da4813d8bf4a9017918ab15681069d54"
+      "contentHash": "8ca9e7993d1b82459c7c50823908973d0a2433e307a4018c8b9e639a8e53f2b0"
     },
     {
       "bankItemNumber": 159,
@@ -3006,7 +3006,7 @@
       "diagramAlt": "Renewable-energy block diagram from photovoltaic array through DC isolation, inverter, AC distribution and energy storage.",
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply parallel-string current knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "53d555566e79b050c550a740abf5940ba91fa82086b2e78ebb56dc5d34c50d0b"
+      "contentHash": "6917e303f84abc87d0017038529bcba29be0035baaff22643f4d8190528c77e1"
     },
     {
       "bankItemNumber": 160,
@@ -3032,7 +3032,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply battery usable energy knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "e4e5ab4dec34898fb53be6e0f04f4cd9e266c1282610c8df55d68394e019702b"
+      "contentHash": "f2eb56c05b19576b2b30b612b1a89be65613a16129ab1dd9e6bd81c5f75d7490"
     },
     {
       "bankItemNumber": 161,
@@ -3058,7 +3058,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply dc polarity knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "3a9100865fb36e1bc54ca9dac3b1fc0bbbcfa94821231f0c3ac59a1f50bbab47"
+      "contentHash": "bf66d0dcbb4f153a3f5e130d2cfe5501a995186eef6f960568d69f160f3723a5"
     },
     {
       "bankItemNumber": 162,
@@ -3093,7 +3093,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply pv string voltage knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "49d3b7c6064c8572d4bdd57d195ef36bdd2467b537de75ad50a0dc9501e09ea7"
+      "contentHash": "c444979e71af3220d52edda8d884625a6c6185bc62eebe928a6ad04c4fb539e2"
     },
     {
       "bankItemNumber": 163,
@@ -3119,7 +3119,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply rapid or emergency shutdown knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "ba43bf00552d5d44922eb0efa7860f396d1daf48acc5b62ff551abbeaa5d6b09"
+      "contentHash": "db0d8f0a18cda7644571c6d8545652d80b32daa32e576ecbdfb6d927672fe383"
     },
     {
       "bankItemNumber": 164,
@@ -3145,7 +3145,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply storage ventilation knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "691dca1034912e102d91c5fffedbd594f302cf4869b3e391aafb95c9ac948823",
+      "contentHash": "6322e159b8b35463f2b3c540399a1fdc99ceb2e26b5b8dc364ff267131261f2b",
       "options_note": null
     },
     {
@@ -3172,7 +3172,7 @@
       "diagramAlt": "Renewable-energy block diagram from photovoltaic array through DC isolation, inverter, AC distribution and energy storage.",
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply array shading knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "04a6c74f0ab1a1a141b2857b0319d9a6bcac213915cf6bea8a229b9d57d165bb"
+      "contentHash": "94d2285f977b02f3da84517ebfeb89c36ca29872d21d8cb4810d7f884ccf132c"
     },
     {
       "bankItemNumber": 166,
@@ -3207,7 +3207,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply pv string voltage knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "cafbca823891066bffd6728e486318d878ffd3bc8ca65bda8a808b0b660f7853"
+      "contentHash": "9295729dc6bd5f13a0fc4e0f3a28091f886c50233d22b97c7f9e962e7e0befa0"
     },
     {
       "bankItemNumber": 167,
@@ -3233,7 +3233,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply energy-flow monitoring knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "5ca1fe2d45d47eea3c4bb27d72266d5eb8afd7e6d9ccaecd4b68bf651e7c086e"
+      "contentHash": "d519c2df6277e35fe002832546b507de359096f4db17bdbcf36070fdd7d2c3b0"
     },
     {
       "bankItemNumber": 168,
@@ -3259,7 +3259,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply pv string voltage knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "8344cade5ddb9ba72efbabc22c9b01e0d387441d81e226a5dbe186e0ec20a16f"
+      "contentHash": "e5d861b7079c61b23d54470c25aaea972bfa1fe9e965d784f50f2870c32b51ed"
     },
     {
       "bankItemNumber": 169,
@@ -3285,7 +3285,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply cable insulation condition knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "634c5250cf0b645fdc4c27b0773352b9030c2a08b20541b1aafeccf6377d0b78"
+      "contentHash": "6696762761e0b4df2c87ca8176f30001bd279d9d136e023fef9fe2e74e8368b4"
     },
     {
       "bankItemNumber": 170,
@@ -3320,7 +3320,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.02",
       "blueprintObjective": "Apply high-voltage load current knowledge while the electrician installs high-voltage cables.",
-      "contentHash": "eaf10cbe18a9a64eeebb7a36062dac0fed82e97091eca05019c6b693198b407b"
+      "contentHash": "8fa14dabb4fff9ecfb4bb91441b49cbace0a37146b1d007b3d9cb6ba529081ee"
     },
     {
       "bankItemNumber": 171,
@@ -3346,7 +3346,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.03",
       "blueprintObjective": "Apply shield continuity knowledge while the electrician services and maintains high-voltage systems.",
-      "contentHash": "38557868c40489db65c6e1223b3d60c25124ce5e70e5fd962e034d95ca8c2e60"
+      "contentHash": "2f7def155a0719f29f47f358e67a85aad6a2c7208c7962103cff577f0162b7cf"
     },
     {
       "bankItemNumber": 172,
@@ -3372,7 +3372,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply phasing confirmation knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "c95e6e8ab55e3584076b79e8762b887da36a55c3798eece6ecf8eb9ef704cfd3"
+      "contentHash": "7cde9e4bb3a76aea2d8793ae08e0d094ce36256fa89a3815cf58a1250f272f9c"
     },
     {
       "bankItemNumber": 173,
@@ -3398,7 +3398,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.02",
       "blueprintObjective": "Apply equipment clearances knowledge while the electrician installs high-voltage cables.",
-      "contentHash": "63a5b95d7539c78268cccf3be67274646ad511085c14715f9b2a421609739732"
+      "contentHash": "bb12b899eb8d51786b81cd5493932a7309cbf03180b0d48919c2e2589e41c44c"
     },
     {
       "bankItemNumber": 174,
@@ -3433,7 +3433,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.03",
       "blueprintObjective": "Apply high-voltage load current knowledge while the electrician services and maintains high-voltage systems.",
-      "contentHash": "e8dca1df2a3f1a06abf5d3458c4db7af364661b8f5e64db3e6a3646387c3bcb4"
+      "contentHash": "91c32937bade53e2daf27477aa593f16ad8a3b3681cfba3ea543b76bf3e7db75"
     },
     {
       "bankItemNumber": 175,
@@ -3459,7 +3459,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply interlock operation knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "f6ffafb59f8fcbd5c231f0132268176b09cff363b1e21201f4ffab821505bef2"
+      "contentHash": "a4ce9a40942ff9a05c4c7611a11fa78c888b6478815775870cfa2e982284dba2"
     },
     {
       "bankItemNumber": 176,
@@ -3485,7 +3485,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.02",
       "blueprintObjective": "Apply test-result trend knowledge while the electrician installs high-voltage cables.",
-      "contentHash": "fccbe6816a8f1484dde5f8b0968b9c46d0204b027495c2d6210b5b2207e88e81"
+      "contentHash": "546e9db4bb56107e37b9e58b9fadc674d660670c9638169abb0d8cb52f7a57ae"
     },
     {
       "bankItemNumber": 177,
@@ -3511,7 +3511,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.03",
       "blueprintObjective": "Apply access control knowledge while the electrician services and maintains high-voltage systems.",
-      "contentHash": "cd055873b2c06d5968b3cd1dc84dee5266201c5689a66cda307afa97b2d1a272"
+      "contentHash": "b295997924b6f2f4daa25fb5c11e9184ad553cafb89ec725ba70fc29823ec710"
     },
     {
       "bankItemNumber": 178,
@@ -3546,7 +3546,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply high-voltage load current knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "5a38d9c4b3f20e5dbad102f3b76e9a8e19a547d39ef127d42821fac7c8a70c2a"
+      "contentHash": "62caf26f1be3c43c3a6cacb8debea6a6db76c3c980987bb5d387f5e5ff08d33d"
     },
     {
       "bankItemNumber": 179,
@@ -3572,7 +3572,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.01",
       "blueprintObjective": "Apply turns ratio knowledge while the electrician installs extra-low-voltage transformers.",
-      "contentHash": "deca638fd80e9fa06d6c267d4737d8393ae06d0f0636f9ed3a46718f7a048ed9"
+      "contentHash": "b98aa90a77f5a799735f24c8639b1626d74d2f3d7f3c2794117aacdb01702c9a"
     },
     {
       "bankItemNumber": 180,
@@ -3598,7 +3598,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.02",
       "blueprintObjective": "Apply primary-secondary voltage knowledge while the electrician installs low-voltage single-phase transformers.",
-      "contentHash": "7cd4689a72a5ea559ed9af37efceac3c26c2b333e5ffeb69229e18082125142a"
+      "contentHash": "deb028ae4d465543f0af0089837fb9723b0cfacdb771dc4610ad8b8805a81ac7"
     },
     {
       "bankItemNumber": 181,
@@ -3624,7 +3624,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.03",
       "blueprintObjective": "Apply winding polarity knowledge while the electrician installs low-voltage three-phase transformers.",
-      "contentHash": "0ce8be58cc4294a085228999cb2c1a7a6193193efd1e39aa359ec830a2bf733f"
+      "contentHash": "ad8e0bb5a578ef12a7b594b9d2affdb336764f5c4437ae4304a72ff3c6d761f3"
     },
     {
       "bankItemNumber": 182,
@@ -3659,7 +3659,7 @@
       "diagramAlt": "Two-winding transformer concept showing primary voltage and turns related to secondary voltage and turns.",
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.04",
       "blueprintObjective": "Apply transformer turns ratio knowledge while the electrician installs high-voltage transformers.",
-      "contentHash": "b80bd371fc7150cfd8603f4a5393aa878cb13eabb7f204a236ce3a09acac9ae6"
+      "contentHash": "5466ff199bd506c5d1b3a962695188233835633dc8efcd72a991166c6c7c5d3c"
     },
     {
       "bankItemNumber": 183,
@@ -3685,7 +3685,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.05",
       "blueprintObjective": "Apply tap position knowledge while the electrician services and maintains transformers.",
-      "contentHash": "6f935eabe14547a6c077444558178ce40720071b47ce20a9fd3cba8168ebb9d0"
+      "contentHash": "648e99d02f241897f09603bbd4dd2b3d51c41c30f41cb16de163d9948c90e204"
     },
     {
       "bankItemNumber": 184,
@@ -3711,7 +3711,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.01",
       "blueprintObjective": "Apply cooling clearance knowledge while the electrician installs extra-low-voltage transformers.",
-      "contentHash": "1b8bd81101f78abc92eca2464acaad5fbe179ab65702940b418c262110954229"
+      "contentHash": "c0f460c94e50890936272e5650e80753a9d24753df7da3fbccfd3adab1ab44b7"
     },
     {
       "bankItemNumber": 185,
@@ -3737,7 +3737,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.02",
       "blueprintObjective": "Apply inrush effect knowledge while the electrician installs low-voltage single-phase transformers.",
-      "contentHash": "ebe157c86acb64e36c9bc7597faf6bdd9f3555245cecdc09eda41a3edde995fb"
+      "contentHash": "b07527f37024ee53b113c3b4d9fbc370454be29c29757a8d5eacb30ae75202ce"
     },
     {
       "bankItemNumber": 186,
@@ -3776,7 +3776,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.03",
       "blueprintObjective": "Apply transformer turns ratio knowledge while the electrician installs low-voltage three-phase transformers.",
-      "contentHash": "0e59724137d0d7b252e014c09b0d28627ddac3dd39808c0bece62eb8ac848704"
+      "contentHash": "343fae05437114a9adb056551704c2abc5ffafa8bc8ef09dda51e0d091371c1b"
     },
     {
       "bankItemNumber": 187,
@@ -3802,7 +3802,7 @@
       "diagramAlt": "Two-winding transformer concept showing primary voltage and turns related to secondary voltage and turns.",
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.04",
       "blueprintObjective": "Apply insulation test trend knowledge while the electrician installs high-voltage transformers.",
-      "contentHash": "d60f3383d0371438345f2e8c9be4592e2801742840f97ab2a0953fbf66cef4ae",
+      "contentHash": "5dcf5ca6235700db406fa46d19e3568671b8088cfb3086dc673436052714d887",
       "options_note": null
     },
     {
@@ -3829,7 +3829,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.05",
       "blueprintObjective": "Apply audible-noise change knowledge while the electrician services and maintains transformers.",
-      "contentHash": "345e552dd8dbe1249ab6dca92a5a13e9f613478aae58fd2bd710f07845a1df27",
+      "contentHash": "a1d7a18c04713935419f63054f226fd031274a53403f667b1c3cf6fe1740ffa2",
       "options_note": null
     },
     {
@@ -3856,7 +3856,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.01",
       "blueprintObjective": "Apply turns ratio knowledge while the electrician installs extra-low-voltage transformers.",
-      "contentHash": "0351b9910e1a13ff1231d1efd7019ff04db40a9c0bc3c66d31708995cdd996ba"
+      "contentHash": "66f2c4af68708788a469ff73435c8a6ee27211bb596ea6e21f9049c7e338c564"
     },
     {
       "bankItemNumber": 190,
@@ -3895,7 +3895,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.02",
       "blueprintObjective": "Apply transformer turns ratio knowledge while the electrician installs low-voltage single-phase transformers.",
-      "contentHash": "363328af8206e170ece91cdd96408f4c4e3eabbdb1c64f58b30836b59fe1994e"
+      "contentHash": "2001d96787497e1895da410e3c815caf063b86c1887075744028891b923649f9"
     },
     {
       "bankItemNumber": 191,
@@ -3921,7 +3921,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.03",
       "blueprintObjective": "Apply winding polarity knowledge while the electrician installs low-voltage three-phase transformers.",
-      "contentHash": "cf6b93ef96aa05eb10b158ac2ffe927f2834ec5e8c821fa04df6c30013b5fcc0",
+      "contentHash": "eb857c60bd457ecf7fa7e31dd9d98a827806b8433243bcce381e5a409b11f1dc",
       "options_note": null
     },
     {
@@ -3948,7 +3948,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.04",
       "blueprintObjective": "Apply three-phase connection knowledge while the electrician installs high-voltage transformers.",
-      "contentHash": "4a549c981823feb11c0feb7181cf70c7bdd0bd5b97b983f485c22b59d194acd0"
+      "contentHash": "5f317a39aedd3c710cf376ddabee96ec19e1fbe6064e986b29398fc1e648d2cd"
     },
     {
       "bankItemNumber": 193,
@@ -3974,7 +3974,7 @@
       "diagramAlt": "Two-winding transformer concept showing primary voltage and turns related to secondary voltage and turns.",
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.05",
       "blueprintObjective": "Apply tap position knowledge while the electrician services and maintains transformers.",
-      "contentHash": "ee1a25f49bca6e73b0926bc90b0ccf2909eb38b8635e7ffc69cd5bf0f2a944b7",
+      "contentHash": "d1d945bdec8435f036858c37f8bd3865c791578eaafe589ed28e0ba6f6ca259c",
       "options_note": null
     },
     {
@@ -4014,7 +4014,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.01",
       "blueprintObjective": "Apply transformer turns ratio knowledge while the electrician installs extra-low-voltage transformers.",
-      "contentHash": "56e2a432396535435011a4766305c9a45aa6b7d442734e5341a2d80366f665bf"
+      "contentHash": "fe621f4f421106779769f56f2b9e6b74f4edea69a297d75afc02b2fef9c40945"
     },
     {
       "bankItemNumber": 195,
@@ -4040,8 +4040,8 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.02",
       "blueprintObjective": "Apply inrush effect knowledge while the electrician installs low-voltage single-phase transformers.",
-      "contentHash": "dafad058eaa86f5d5f89eb810b6f2687de3b92de9e4cdfcc0f72e05e1f1a36fe"
+      "contentHash": "fd86e3606c37601a3d05cc2183dc89ba55e9c0967291b4a23c3d3e4b61c9dc1b"
     }
   ],
-  "bankVersionKey": "309a-current-rsos-v2"
+  "bankVersionKey": "309a-current-rsos-v3"
 }

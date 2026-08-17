@@ -3,7 +3,7 @@
   "title": "Signalling and communication systems",
   "questionDefaults": {
     "bankKey": "electrician-309a",
-    "bankVersionKey": "309a-current-rsos-v2",
+    "bankVersionKey": "309a-current-rsos-v3",
     "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
     "module": "E",
     "steps": null,
@@ -44,7 +44,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply initiating-device circuit knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "df75f6a9969b1b1961d95ad28c3e9faf19c0975982fbe06f7eae083385d6b895"
+      "contentHash": "f25a2d154f425719180c5b9e80d751bf82f9c132771db32f0f6e615b11f2f54a"
     },
     {
       "bankItemNumber": 452,
@@ -70,7 +70,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "9bccd733efd40fc6583f34483760925430fb7a09ed884d68266fac6894075089"
+      "contentHash": "f1404793520039993bcf20d75587cb998df8f3ceea0811b264111841f7347ad3"
     },
     {
       "bankItemNumber": 453,
@@ -105,7 +105,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "b5b5fc203602a2f3f43b88c80834872932e8d998adc6abc8af53c2359b4c2e74"
+      "contentHash": "8603fa3508043ff806741ae07ea65509383191ffe5e4905bb7a35a16e328369e"
     },
     {
       "bankItemNumber": 454,
@@ -131,7 +131,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply standby battery knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "954836b1056874129b4f9cc75fd7fa0701716a1b6a078812f4c601ccee41ea08"
+      "contentHash": "2aadd86547cb611df1d8181aa9ff50ea78b056cc946c71b4d47e95286baf311a"
     },
     {
       "bankItemNumber": 455,
@@ -157,7 +157,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply annunciator indication knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "be1639197a5f05697c3c69c6fb31592973742e81f2f1bc8a18210f6a1d9d4dee"
+      "contentHash": "bf128bcd6d2a81bc20079b117272a9748308e7f5c3c3517c4b81a110e50fd335"
     },
     {
       "bankItemNumber": 456,
@@ -183,7 +183,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "206d96edee111ee39d9d424d9fb980cc48c284924415185d528ace7985150170"
+      "contentHash": "0fea417e88ecd5bcb5144df8c6dd1f91db6ca80190fcb510bdf105cbdbbeae2f"
     },
     {
       "bankItemNumber": 457,
@@ -218,7 +218,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "86f20f2f262e921affcf17c22077b29d7316ea8a759c951d22874bf578b2f8f7"
+      "contentHash": "1072b0376949936fa32cbe6dce0735423519e2da006122e755b4cbe6f4c3dbf0"
     },
     {
       "bankItemNumber": 458,
@@ -244,7 +244,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply door-contact state knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "68b5e9291d4c98e62d500e488c15b6214a18be15cca54bcc1e6c2249dbe2b8ae"
+      "contentHash": "55f63542424cbbb570b50dda9b067abbfec646096e5acabd97b0df1491f69142"
     },
     {
       "bankItemNumber": 459,
@@ -270,7 +270,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply associated-system relay knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "49afa224e7554f6a2fdc473e642d200c1a029900b9620d17564dd8097bbb0bdd"
+      "contentHash": "ca4e0e12103fc51e740317a1e60eabf95d664824fd34c50032d552bac0820667"
     },
     {
       "bankItemNumber": 460,
@@ -296,7 +296,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply verification record knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "09aeb910419b5e022269b98c1405a5243558511c4b9b5dbf8ca47fa31836dd7b"
+      "contentHash": "ea9dbd90d87ae656196b79e1737f7c9947a77dd5e15180634f5aa92da5f0e7df"
     },
     {
       "bankItemNumber": 461,
@@ -331,7 +331,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "2c75e95db885e8b2357d728817fc123a30c60ec420a05105f8fd7c549749834e"
+      "contentHash": "cbd1101d0fd3a2d25e20b8ce183e54067d7343753b5fb2c7dae8b0017305681c"
     },
     {
       "bankItemNumber": 462,
@@ -357,7 +357,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "99d45fe7fd90035d50cd5c412ce75c45da67af9a1404c689308aa7104b2fe6f2"
+      "contentHash": "34e5d66866385e9ccf0f502dd260faaf2a66bafb7b050b2bb636de4bc78b34e8"
     },
     {
       "bankItemNumber": 463,
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply end-of-line supervision knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "15eb5029a085353826a196bcbba1458012507cfd03975b7210fdd8ce3038049e"
+      "contentHash": "03a8edf4eaaece6ddec77cc507f686b3f40e0a3ba4318a59f0bd858f3e97a76d"
     },
     {
       "bankItemNumber": 464,
@@ -409,7 +409,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply standby battery knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "f4bc97249c93daac8834dbfaba0ec0d53faf235282901dc6576ce24a55cf2daf"
+      "contentHash": "a54370d3f7977e563305abcf6aa5de9474d4c0fe641bdd25b65a82843f5c9e10"
     },
     {
       "bankItemNumber": 465,
@@ -444,7 +444,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "ac50a76662a8534082415ebcf308394253315d6dbf5a063817a3f8c8b143703b"
+      "contentHash": "78cd849121a814694cccc21a3dcdc520de9ddf28a6c2b655ac3fc656874ae51f"
     },
     {
       "bankItemNumber": 466,
@@ -470,7 +470,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "93d80220a5bd7ed8465c2c15a5618f26741a546173161aa6a9efdfc42c16fd55"
+      "contentHash": "1ee5b0eadbe2f56e5a41336a040c91dd5fcbc5c0b533cdab5e7ba0cbf70830d5"
     },
     {
       "bankItemNumber": 467,
@@ -496,7 +496,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply security-zone identification knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "f302a8553d68b4d89b5ce830687f65ab3ed4dcae497e7ad6816c8b6f1bd32ffe"
+      "contentHash": "462802a71e738b05eefc28503b6be221f6a5a88fbb0bf01fa147275fe8da5ce5"
     },
     {
       "bankItemNumber": 468,
@@ -531,7 +531,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "ffa9886cae9486e0226312dccdfafd9dab5cc128f2764b39fa941f84ce59e5f2"
+      "contentHash": "290300ee083a65a96e7c9a870c63b6120718795ea59a153a42177304ce8ab7c0"
     },
     {
       "bankItemNumber": 469,
@@ -557,7 +557,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply associated-system relay knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "3199c1ecbed4daa0645b8f882c0d9886f9880c00071b69af76109a2a7e097eb4"
+      "contentHash": "b3038db671a03267845e6bc42db2e9e4862afebdc1efaac95f05bac127c3ddd9"
     },
     {
       "bankItemNumber": 470,
@@ -583,7 +583,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply verification record knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "4057edfcf91570dbd0b2c15bb949a19fffa907f1179097007a385b2812c7f58b"
+      "contentHash": "0339dcd03806947b8a1f90519a21fe41fb92301b6b217c3bb9e7b8d7d0f658c8"
     },
     {
       "bankItemNumber": 471,
@@ -609,7 +609,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply initiating-device circuit knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "40e4ccde04464f20c7b47aade352eb02fdf4666d3bf7e30b1bdb8049dd98a8ad"
+      "contentHash": "eb29177c2092c38f4665024822a1f66f240d5b5c0d72fc7a736e9155b9954ae8"
     },
     {
       "bankItemNumber": 472,
@@ -635,7 +635,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "07fb5304d0b6fdd0e7fd671ff16847a3c2c4c637555195b0a6b60f76fc9aec27"
+      "contentHash": "d46d91bc33f42e74504b3b42643e9aea5dbbbcefaeecc6916843a4e31dee3b5e"
     },
     {
       "bankItemNumber": 473,
@@ -661,7 +661,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply structured-cable permanent link knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "55a8957c60c5550d2386813bdec83eabe75be3b7c59f304f4f95c3ca3291d14d"
+      "contentHash": "dcd5293565928872a4dcd90868c41650729de84e5138992910d58bc511bb3a97"
     },
     {
       "bankItemNumber": 474,
@@ -687,7 +687,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply fibre polarity knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "51246cec7a1acebb09c06b0565a6e1f56e9f19daffd3bb56bae88f29b6bfe780"
+      "contentHash": "587c7153178a33a4b88f7a61415bc90a909520871b92d22dd9d13c25117e49a4"
     },
     {
       "bankItemNumber": 475,
@@ -713,7 +713,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "0e7da80b495878bcae76cb4ed24ed56aa111d69101cf470957a0b425cc6d8fd8"
+      "contentHash": "442c60cfbadb0f2d64e52c49d1d8284c6af70a08a8c4ca05222a42e4ff1c9714"
     },
     {
       "bankItemNumber": 476,
@@ -739,7 +739,7 @@
       "diagramAlt": "Structured-cabling hierarchy from service entrance to equipment room, telecommunications room, horizontal cable and work area.",
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply speaker loading knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "120804d7efdb0144ad26a90e1d435b400a2e7de39f77c4e6cc9282680d115f77"
+      "contentHash": "a4ebd50ac96b8addb1edb3ac2844d8cb5cde285b75525803e7286c9d6d821144"
     },
     {
       "bankItemNumber": 477,
@@ -765,7 +765,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply amplifier capacity knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "6bfa3645f44db6667e679fa0ada62966d8147696054d605f9999570a22cfaf68"
+      "contentHash": "5d3dc16e21e6d566d0e3fc3c4bc071eb43e3373ab533bec5f90d86b98e3f28a0"
     },
     {
       "bankItemNumber": 478,
@@ -791,7 +791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply intercom call path knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "ab28a6cd160bdcf9db1a2aea56072731a32209e5a9af44cae14a3ff6f8650911"
+      "contentHash": "09a107dbeb4efa51d515a04249410ef22f224d6942b3c0594a7d240452c1a78a"
     },
     {
       "bankItemNumber": 479,
@@ -817,7 +817,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply nurse-call priority knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "73e35ed630060f22f7b05fb7d24c0620b8e54d59d3283097c593776d63a1920a"
+      "contentHash": "3ea59cd3d85c5c414ca91eb0123281bc64b7d09644fdd7aad2ac3a2dffa86796"
     },
     {
       "bankItemNumber": 480,
@@ -843,7 +843,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply cable bend control knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "47e82ae10dc78db9577d343b044213212db4275cbd0b7efb49336c738fe18c9d"
+      "contentHash": "48295b1b6867eecc6311a585e2eba81354cbb97fd1f868d10d48ed4684351c7d"
     },
     {
       "bankItemNumber": 481,
@@ -869,7 +869,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply telecommunications grounding knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "56abdd17f4b92993a2b3a643d541b36ad9711396aa7c0795817abcd5a3b61b13"
+      "contentHash": "172b9a5ce8463df0b538be1cd13c509ac95de479feeeb1287e77066d185f1f5c"
     },
     {
       "bankItemNumber": 482,
@@ -895,7 +895,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply certification result knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "3a8d678a13d41730a2f187c7b1e1c9bf0428f8bc22826401abcdbd11f5f0d6f4"
+      "contentHash": "510ae79184f2d1a8bd74098958070e7fe14ca364d353eb55cd95b35a23db7b9d"
     },
     {
       "bankItemNumber": 483,
@@ -921,7 +921,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply structured-cable permanent link knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "641655474c5563b6573b36ac71d487f83982a03a2a1e02e09e8459dcbdd5023a"
+      "contentHash": "c1d08202c030caf3c5e631d3d44b425291c103458d77123e0689ea144827afe5"
     },
     {
       "bankItemNumber": 484,
@@ -947,7 +947,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply fibre polarity knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "d8d0637845a5c914b34f03fad1e23b3e88e192654b156a710ba0f7fb9e1b5726"
+      "contentHash": "559a825df3b344fc8c24ea74b0bf8c744dc9b304796da87146562e9405ed4ac6"
     },
     {
       "bankItemNumber": 485,
@@ -973,7 +973,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "c403fe7d90186d5e313fe02f1ab7ccaff46f55a1219d53f28ca0c6f44fbe4092"
+      "contentHash": "2df62c18771bcb0cea6d1dfb5478b48286d399c54733bae050caec42a4b44b06"
     },
     {
       "bankItemNumber": 486,
@@ -999,7 +999,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply sensor scaling knowledge while the electrician installs building automation systems.",
-      "contentHash": "593fafcb17cad33c59b61efd035a861c690abad90e2118413bbed0156b2b91f3"
+      "contentHash": "002a55269bd0ff9be0fb90e6c9995e1c5cb6ffad9235df9dca816c4e4c531505"
     },
     {
       "bankItemNumber": 487,
@@ -1025,7 +1025,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician installs building control systems.",
-      "contentHash": "44d8208faa7bde1c12ab05dda7fe1887557620780096feb251c4c6b8ef8d4a7d"
+      "contentHash": "48100edc49b3d820e30a8947390e16206713ddef69491e4b7fea28181720976d"
     },
     {
       "bankItemNumber": 488,
@@ -1051,7 +1051,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "65d9f8717cc67f3d61fcc892b071abca6f7564bebfaf10ace185774549936aa4"
+      "contentHash": "7ec6b0af352a941e1af10552319cf4731c68bf88ce6e79d1d537c0076c34179d"
     },
     {
       "bankItemNumber": 489,
@@ -1077,7 +1077,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply occupied schedule knowledge while the electrician installs building automation systems.",
-      "contentHash": "fcdc5408f75059b86d2df3e121543d5f291b40438a33d97c8cb41296a74063ea"
+      "contentHash": "d21c81ad9579ae0a5a796b38563458fa79e06c4c4eddc5198534b1d88564b6dc"
     },
     {
       "bankItemNumber": 490,
@@ -1103,7 +1103,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply alarm mapping knowledge while the electrician installs building control systems.",
-      "contentHash": "bb56da52ee830d64640893f885a0dee9272dacb2382926c7138acd85208cf3c3"
+      "contentHash": "e9051e5c87a6a3512dcb10edd32c4978dcd8b31da12e5f20d4af815d780fb101"
     },
     {
       "bankItemNumber": 491,
@@ -1129,7 +1129,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply network point mapping knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "d80cb630742f537cc2eb2fef8bbab0defbd53bb2d304d7fa32d4fc21b566e380"
+      "contentHash": "3948ede26d4a26d479210775202bd1602a2191e5a81280bfeeb32f5cce6bbcae"
     },
     {
       "bankItemNumber": 492,
@@ -1155,7 +1155,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply fail-safe state knowledge while the electrician installs building automation systems.",
-      "contentHash": "470562b5d09506cd0c43735bf577ea51eafbdfb4884dca7c42e41e1eec526885"
+      "contentHash": "1c3d56632ab7dc61683d2428ea908ecc737acd0327958f07de342fdaced25543"
     },
     {
       "bankItemNumber": 493,
@@ -1181,7 +1181,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply trend comparison knowledge while the electrician installs building control systems.",
-      "contentHash": "06d2455e6e97994babf194bacae081d7389fc2d673e8eb89693b30c67028ce79"
+      "contentHash": "da079e1a9de3f7ab604c228fc9021f5864dde43a4c6ad79d7082ce1cca9947dd"
     },
     {
       "bankItemNumber": 494,
@@ -1207,7 +1207,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply override status knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "78547dff11a9c8e6f4456c81436bdb7a1fe50dc169bb173315d5a82271aa07ac"
+      "contentHash": "4577121eed3874be90c2d981b48950f106e65cf1b61cfbea1b029287aafb5a50"
     },
     {
       "bankItemNumber": 495,
@@ -1233,7 +1233,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply sequence commissioning knowledge while the electrician installs building automation systems.",
-      "contentHash": "3f77e1a641c216ba50db49a408b75fba2d5da005039d436b34b3cdbc901423d2"
+      "contentHash": "0ddb966e563ade51631191aad3ac8c0b6b803f4c4e90b33f8796305ca1565ab7"
     },
     {
       "bankItemNumber": 496,
@@ -1259,7 +1259,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply sensor scaling knowledge while the electrician installs building control systems.",
-      "contentHash": "5c1846f909fb3597c55306292cd871e009469d4747d0542c90d3f13df9d86156"
+      "contentHash": "496f8a9f2edf696f94b56a495ae68035f4f66e5876ad0cfdf3c1f199e3e7de41"
     },
     {
       "bankItemNumber": 497,
@@ -1285,7 +1285,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "f67d0c54879abf1ae6c53d68fffc1472574222604356ebceffac8c71737818df"
+      "contentHash": "8a88d36f88c3c3d85aaa3d2ae4d0e4b6ae7fe94673fd9c194bfc06a73795c8aa"
     },
     {
       "bankItemNumber": 498,
@@ -1311,7 +1311,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician installs building automation systems.",
-      "contentHash": "4e8877553f40afb49827cfe05734875fe7f1a099f1c9b4cbe17f91318a4249db"
+      "contentHash": "78c180df8ab3dd1e363a3968f49f5bed19ff770b90350b7fa6e2c06bad5d57c2"
     },
     {
       "bankItemNumber": 499,
@@ -1337,7 +1337,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply occupied schedule knowledge while the electrician installs building control systems.",
-      "contentHash": "a53749bdd4aa33705127f41f90a1893fb1889370e4c241202e4b9163a1cceed5"
+      "contentHash": "2c63b5d69b121f8e916f3985432d2aca162db9f34baecc6d54a79fec52e997cb"
     },
     {
       "bankItemNumber": 500,
@@ -1363,7 +1363,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply alarm mapping knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "1682ec9e9b9347f8641c3ac875e952760fed900c379ed0942b803fa03143bdd7"
+      "contentHash": "78e82976cbda0f685593b7209e1ff0c17afd0a046734b42050b2107294e6d567"
     }
   ]
 }

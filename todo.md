@@ -1528,7 +1528,8 @@
 ## PR #27 Corrected 309A Course Merge and Deployment
 - [x] Push the corrected quality-reviewed 309A course branch and confirm its Quality Gate
 - [x] Merge the corrected 309A course update into `main` and validate the integrated release
-- [ ] Publish the repaired 309A study materials and verify the live course
+- [x] Publish the repaired 309A study materials and verify the live course
+- [x] Create and activate immutable governed bank version 309a-current-rsos-v3 with the corrected 500-question learner payload
 
 ## Ontario 309A Full Course and Question Bank
 - [x] Audit the current course registry, products, entitlements, study tools, question schema, and 309A source readiness

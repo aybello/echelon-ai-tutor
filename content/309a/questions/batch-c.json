@@ -3,7 +3,7 @@
   "title": "Wiring systems",
   "questionDefaults": {
     "bankKey": "electrician-309a",
-    "bankVersionKey": "309a-current-rsos-v2",
+    "bankVersionKey": "309a-current-rsos-v3",
     "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
     "module": "C",
     "steps": null,
@@ -44,7 +44,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply conductor pulling tension knowledge while the electrician installs conductors and cables.",
-      "contentHash": "90969888f15d90d68418c776c566f01d9b5dd2f502b2fc7ecad2df38a7e5f2d7"
+      "contentHash": "9ef935cadcc48153db190e0156e2de072ea5b1fb6ceaf9176734582c1cfcb35e"
     },
     {
       "bankItemNumber": 197,
@@ -70,7 +70,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply bend planning knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "a35bfe69e1b4249fd3ab3d068a0f3bb161d720844eaeaaf7513505ac2e70d814"
+      "contentHash": "b0e890481b130923f0dedae89bc16a7c3688defd1b21d013966f78b907483c5c"
     },
     {
       "bankItemNumber": 198,
@@ -105,7 +105,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs raceways.",
-      "contentHash": "68da6da1652bc1b45dc80f452b7b1aa274e918d8be9d5228d0c45eda5a00faa2",
+      "contentHash": "505a49fef23a2b4ed97f2c54d1fa309123fca4b3e1c067edb8f9177e46c07e69",
       "options_note": null
     },
     {
@@ -132,7 +132,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply cable identification knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "85e3779be0dce55bca634fb8361c212d3e3747afd75dbc464613400e6eb3b189",
+      "contentHash": "7adc85002c0bbd258e2dbfee0c794981ca6162760ed285058fb8fd3ed15a02c2",
       "options_note": null
     },
     {
@@ -159,7 +159,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply termination preparation knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "ab7bb1f7166b9534e56728fa27d150dee393eb58d3902dfb13aae2d6dc305b71"
+      "contentHash": "159095d6d0a8fa1efc94d7a7397f295cb9b5f09a4061d59bf37fa0f1cc691f98"
     },
     {
       "bankItemNumber": 201,
@@ -185,7 +185,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply box fill planning knowledge while the electrician installs conductors and cables.",
-      "contentHash": "5ba6462b5454c11881d4dd7026c9dc8ef2651472831508c80f2fa2331b1882ba"
+      "contentHash": "10cbaf39afc3daeedbfeb5484263606f4ab819426a241b21e7cc6814bf7e89bc"
     },
     {
       "bankItemNumber": 202,
@@ -220,7 +220,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "d692079b7cdfd11928508636b0eb1f5811acf49dbdfa3937c07dcd3c5baf7606"
+      "contentHash": "c1a3fda4336eb14c464974e7b318992e8c423ed548f5f85739cb6229d98c49ab"
     },
     {
       "bankItemNumber": 203,
@@ -246,7 +246,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply firestop restoration knowledge while the electrician installs raceways.",
-      "contentHash": "8dca7fc78c19fc2b97bed4453752c96bd3fcc5690ff6ff15d7258e10c7805969"
+      "contentHash": "821b88eb773112e94cdc16443827fb487696979d74dcc683293a54b437173814"
     },
     {
       "bankItemNumber": 204,
@@ -272,7 +272,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "186100901a51f239ece1d9fa484b6583cb4b06b5ec801b18a4957e27aeb6340e"
+      "contentHash": "03e26d6acd56d32981f5a0ff795006eb6a11a931a392be284b7290d4b1d12aaa"
     },
     {
       "bankItemNumber": 205,
@@ -298,7 +298,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply raceway corrosion knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "b16482b7f71f440d53076d409c8cbf46cb19b3c79fd9e33bf82ec8d67298e512"
+      "contentHash": "dd9ab25ef0d422c2cd2af6f1f3928426cfbbb799813180e335f678f0274d0feb"
     },
     {
       "bankItemNumber": 206,
@@ -333,7 +333,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conductors and cables.",
-      "contentHash": "826879c68cc4bd9ad271f1246109fd04d9da2a25961be19a2cf154105c887173"
+      "contentHash": "bf24b2d8035c9dcbacd8b3744d49f129ccc4394694a8923476a815d0300296c5"
     },
     {
       "bankItemNumber": 207,
@@ -359,7 +359,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply removal impact knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "ab38ec5a294abb02eeabb94141199ff51e52925ed0c071505764dea789823c21"
+      "contentHash": "fcdc49fef5b404773c397f351fb28b42d915e13e4150d5476b46456be9fe2011"
     },
     {
       "bankItemNumber": 208,
@@ -385,7 +385,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply conductor pulling tension knowledge while the electrician installs raceways.",
-      "contentHash": "cba74e0216cf9b62b2840a5e1e8f8c0600a64aa89b160ea79b5abd31ab78f493"
+      "contentHash": "0960a412329657c9af0d27dbd96fa8c511599451f0e41a15400594ffe606fd8f"
     },
     {
       "bankItemNumber": 209,
@@ -411,7 +411,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply bend planning knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "ecce4ee1f5262175bc6b68ee1a124065364c52df26e8172f12b4ca56358718f1"
+      "contentHash": "981cf07b53cf8f0c2df2c637a9f09505a2bd6bbfe20c1c1a1f883928f5125875"
     },
     {
       "bankItemNumber": 210,
@@ -446,7 +446,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "cc2fdc7d41dbf4974c2f0d88596214e728069246b13e0d8980d3afb578e69715"
+      "contentHash": "d26e8b0e8957c63cfcdf61d304a549b75b52bd2242bda84deb85432ccdd48198"
     },
     {
       "bankItemNumber": 211,
@@ -472,7 +472,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply cable identification knowledge while the electrician installs conductors and cables.",
-      "contentHash": "0c7a3c938c91d17419fe711a0f223afde8957a5e51dce0bd993552359df32526"
+      "contentHash": "e6e59f28764e93396a2be108151ec9a816e79c934615284076d78ec888033dd3"
     },
     {
       "bankItemNumber": 212,
@@ -498,7 +498,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply termination preparation knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "ff71a05392f4e1b8af9f2882dd1b4c9385622075553c853a2f0393ae92e4779c"
+      "contentHash": "d1016837850306ce681c4af115c9c5213fc0acfcf357864c563db1525973fa59"
     },
     {
       "bankItemNumber": 213,
@@ -524,7 +524,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply box fill planning knowledge while the electrician installs raceways.",
-      "contentHash": "e117ba1d0434d5965b46d265e2b48072f074f153d6f5b45f4c4dfb5387f535c2"
+      "contentHash": "ddb1ac3d3f28f833c3f8faf618222178f362547a4ce7ad9610b4fc86af812223"
     },
     {
       "bankItemNumber": 214,
@@ -559,7 +559,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "794dd4b1c75205a62af5bda2a50b69360c5ccd7702b1c4f8574105f15ea86694"
+      "contentHash": "a671ae3cb1eb8e209153fbc9343d4cf6425ac737916a73fc1a0f2b9550cf08ff"
     },
     {
       "bankItemNumber": 215,
@@ -585,7 +585,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply firestop restoration knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "2586bf340356e62aa96ba636800d5ab6fb8295e606a008159e0b60fbd98b280b"
+      "contentHash": "1c0db3ff41f7481cb55fc6acb9c46b20e6e76639af17c9d807b3a1ea08e8185e"
     },
     {
       "bankItemNumber": 216,
@@ -611,7 +611,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician installs conductors and cables.",
-      "contentHash": "431ad3bea13ec078d0631d4d58fcf67f92a9a70463bfa8b4c6767f4ff24c7964"
+      "contentHash": "f96b76328df2e34a1a60f8fc081be66661254a140f6f5c185feaf28deae6437d"
     },
     {
       "bankItemNumber": 217,
@@ -637,7 +637,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply raceway corrosion knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "901f90ef8dd248beb623b837f9a040392cf033e80aa88345e202e3c4772af27c"
+      "contentHash": "d25601df2547c9032ad28ed5c5807d635855f4e9ea153ac8ba0d27e7339eb400"
     },
     {
       "bankItemNumber": 218,
@@ -672,7 +672,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs raceways.",
-      "contentHash": "4b3e23e6af166c6ce035203210d498d50a65903f8afcd22a968d1ea957263639"
+      "contentHash": "ed014cc117dcdc0417575c090f9f2247788e3092c07dd4eb0ba3277238a7c810"
     },
     {
       "bankItemNumber": 219,
@@ -698,7 +698,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply removal impact knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "d6114be00c7902a52f1a254cb48a5391466b6c3ee06e3b14e7b05b98c358dc3e"
+      "contentHash": "c8e40ffd9accbd6f30b7e7858cb81c8be33878939973f0582dec6b8b99d39655"
     },
     {
       "bankItemNumber": 220,
@@ -724,7 +724,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply conductor pulling tension knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "78457268fc1a91879d7344d8852cf457b1d3de8e4689272028d7151a904c3088"
+      "contentHash": "cc80404e5fdb5dd09f40c5c6d9faee481c2d2c8c0363d4af0161186d47aaf005"
     },
     {
       "bankItemNumber": 221,
@@ -750,7 +750,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply bend planning knowledge while the electrician installs conductors and cables.",
-      "contentHash": "b7f8b6fc727a491be17d9e5754ced47208d1d66015eb70dde63e37e3e8ce565c"
+      "contentHash": "248fe2ca1029eb00aa4f2e0eebd38b7c95a16dda8244fcafa475cccb7c5af37d"
     },
     {
       "bankItemNumber": 222,
@@ -776,7 +776,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply raceway support knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "62e387f6e30e7489f443548e0fb2eef750a7d3f3c25abefa6e8f547bd3d50285"
+      "contentHash": "6be6b83c82c0a6171c83024009f4a69d2d8d7808d67faaceeb651804239ce0b1"
     },
     {
       "bankItemNumber": 223,
@@ -811,7 +811,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs raceways.",
-      "contentHash": "a89e4b97a5db0a33abb709232993888b5689399077f25b56a8dad99a91e42f74"
+      "contentHash": "d92d19e261bdf55943e9f1027f2b75329f2b2241302f1aa573bfa2ae2191f64f"
     },
     {
       "bankItemNumber": 224,
@@ -837,7 +837,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply termination preparation knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "24953cd39821a837131be95ffa02c2136212adf3169c9d13f9997f448b1a40cd"
+      "contentHash": "56f919b1240fe024030439a2f45ba370cc67f14d1c6ec6d8643e715757379076"
     },
     {
       "bankItemNumber": 225,
@@ -863,7 +863,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply box fill planning knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "7a9855a0a62b02f8c95051e33c68df5079db63a75855783761c43e3774cc1978"
+      "contentHash": "8a00c780c32cefa82f15445aeb68f569ff4682d37f67888e5ddd0f60f60d0838"
     },
     {
       "bankItemNumber": 226,
@@ -889,7 +889,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply enclosure environmental suitability knowledge while the electrician installs conductors and cables.",
-      "contentHash": "1a7fe0965992d17f8b0ab3e1ea30d2c7603a7836d1550107c9ebc7b4d81cae46"
+      "contentHash": "778b34ca9ce427115a6ddeda67e1a609d98a680d4e7e5cfc021fb7fe10eca295"
     },
     {
       "bankItemNumber": 227,
@@ -924,7 +924,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "7f6c1e7d62390f60adac53f3b8a99fe8ff6c4b7031ba5f0dfebe1f4996973d25"
+      "contentHash": "67087038db07466f905999c39e839fb6a5902188b27198004a463233f435004e"
     },
     {
       "bankItemNumber": 228,
@@ -950,7 +950,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician installs raceways.",
-      "contentHash": "0f455139ffcbae06b022ebff59686f5cd214ca8f092fb17d3fb83acdd37601aa"
+      "contentHash": "0a898bb14db10a8e2039db6ff82fc41e22e4ceade9b4b633cf31934b6f274b34"
     },
     {
       "bankItemNumber": 229,
@@ -976,7 +976,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply raceway corrosion knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "e874cdf1a65e4b89d3db51e78a1e3db057c8bb0d7bacf51d326365caba18577f"
+      "contentHash": "6cb89acd00e0417940d9726835ab0a2d7961bccfa0597fc1b5c447bf32e43599"
     },
     {
       "bankItemNumber": 230,
@@ -1002,7 +1002,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply cable-tray loading knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "c3d28c36d99c5d8ee8e1f55844090a7e76c2954e99a90da5dec53b6c50825faf"
+      "contentHash": "95ec42251315f226b770b02ba6bc58f47e49a882f22c414054e6532427c943b3"
     },
     {
       "bankItemNumber": 231,
@@ -1037,7 +1037,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conductors and cables.",
-      "contentHash": "6b85616a4ef0f967eea5441773caa0476cd9ff1b08964a9cdd622f4c2dd70607"
+      "contentHash": "bf46e7122c262392478dbf26877992949130efb857a030d8b4bc700deaba8147"
     },
     {
       "bankItemNumber": 232,
@@ -1063,7 +1063,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply conductor pulling tension knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "b37d4da82d6dc03babb6f65410b69569c7349eef92c24759bab72b7219451650"
+      "contentHash": "71194c7fbc5c56c7ccbab60c6db56088328613fa99746d57d11cffa52e55aa5d"
     },
     {
       "bankItemNumber": 233,
@@ -1089,7 +1089,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply bend planning knowledge while the electrician installs raceways.",
-      "contentHash": "01a55bd42314b4fcd63f7f6ae77230f9a0fee20fdb403c6aa4786ea58f7f813a"
+      "contentHash": "1ed75371596c75a341def39e463ee41505a39fdb15dc19a65189f2d1d0e7cc9a"
     },
     {
       "bankItemNumber": 234,
@@ -1115,7 +1115,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply raceway support knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "02673be6d9da4ab4bf3d79dec6f136cc7a3eef8a965431b8725647bce1c79e1e"
+      "contentHash": "b56674947d40fc409a20d5a3b95ede52a59e8f75256a749c58ad6614774e148b"
     },
     {
       "bankItemNumber": 235,
@@ -1150,7 +1150,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "86c036a7c8a8d13633fa6afdef138982c152bac5fd9dfc0d64c74b2f80bd96fc"
+      "contentHash": "5fccacf1b21d2e82eebcdbfa242020075b775d8b3b6721111d7f868c62457764"
     },
     {
       "bankItemNumber": 236,
@@ -1176,7 +1176,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply termination preparation knowledge while the electrician installs conductors and cables.",
-      "contentHash": "65c8ba2e1d827346a2957faa0a9f05f0ba2b03906bfe1054e2dc5d82f4fa49cc"
+      "contentHash": "2c14b0d85a91c9429743b18236336c17e906771bd9230d8e1f4ed4281254a076"
     },
     {
       "bankItemNumber": 237,
@@ -1202,7 +1202,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply box fill planning knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "c1b114c4daaf73bab1166342957f508a6ca8cf88c12d13a60b9cc2cb7f49820e"
+      "contentHash": "97c90cdfc1925d6bc7620dc92858b4a5eccc597cffd62edabeb44c22431a362b"
     },
     {
       "bankItemNumber": 238,
@@ -1228,7 +1228,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply enclosure environmental suitability knowledge while the electrician installs raceways.",
-      "contentHash": "38fc70c17f2ecd89f868d08dbaaca86deda36ebc60a561f95432f9a157836f90"
+      "contentHash": "e3f16e847b236bf3b6131329717881d1dc72f239f9b02e549a1f9f165b49f83b"
     },
     {
       "bankItemNumber": 239,
@@ -1263,7 +1263,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "6070e09ccffd5a3a5ee6cd5230b2b59c189ed8add2f302373b33a89454985f7d"
+      "contentHash": "f6ccd90e29bdd578d351dcdc6d1186f76a5dcbb047a3a044e526786f0dd53b60"
     },
     {
       "bankItemNumber": 240,
@@ -1289,7 +1289,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "8987c1533e3c100d83d73a2e81dff2acb5571233ef38d8d9d1953d39d4854237"
+      "contentHash": "c661da877b52f55b37628a99beef7b955efe27c44c74d0401dd849ae32a26f93"
     },
     {
       "bankItemNumber": 241,
@@ -1315,7 +1315,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply luminaire load knowledge while the electrician installs luminaires.",
-      "contentHash": "91b7c61d6971d325bfe2c0b0c0b2964cbfa5cdefc98e44af022620b62283484e",
+      "contentHash": "91f80e4e462193da58f5736f333f6201d637fff9ad0d5f1d6072101ff56aa791",
       "tips": "Trace the identified conductor from the panel to the luminaire first, then trace the ungrounded conductor through both end switches and the intermediate switch."
     },
     {
@@ -1342,7 +1342,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply device polarity knowledge while the electrician installs wiring devices.",
-      "contentHash": "21a4fde0bf4bb30357ceecf321671afa5512a379f1aed6e0cc5dfb6f6501ede3"
+      "contentHash": "3abb0e6faa0701dc8555597cb2cfc0dff4e6a755dda951bdff3d41db1359a6b9"
     },
     {
       "bankItemNumber": 243,
@@ -1377,7 +1377,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs lighting controls.",
-      "contentHash": "5fc5f90734b69eddb478fe344db735408f587dad9920c5d1af4885ebf7985b98"
+      "contentHash": "6f0696f5a088cb38bc7654b12948e0897d3caaa3239b77f0e5eba5dea645d4c1"
     },
     {
       "bankItemNumber": 244,
@@ -1403,7 +1403,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician installs lighting standards.",
-      "contentHash": "b7fce5bea3de5f84f18f01a7d898c086b51d51b481ad819df8f50602e722c211",
+      "contentHash": "c61b5b099c1b5a078afe2b804168195d942d620dea631247f6d2b029cbb586c2",
       "tips": "When a control device shuts down but the breaker holds, suspect the rating of the control device and compare the actual connected load to it."
     },
     {
@@ -1430,7 +1430,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply occupancy sensor coverage knowledge while the electrician services branch circuitry.",
-      "contentHash": "aaed6773a5fad32be31c1904759b01231b4ac6dfc2e70a91dba0a80e01271b9a"
+      "contentHash": "adf3e349757099638831525a1e78b7011346b553f1eb820f365c48aaede404d0"
     },
     {
       "bankItemNumber": 246,
@@ -1456,7 +1456,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply dimming compatibility knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "e6a18e9362d9c9012edc69afe1c8bb1ee335807e525a2306c3680eac0578fe03"
+      "contentHash": "07818c7b9136b14ec48957a985fafcf0a526cee0e873f3c1427f589de36b8f09"
     },
     {
       "bankItemNumber": 247,
@@ -1491,7 +1491,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "9c950371891cfeeda66373beb1701115e48ce17d2bbe4044a3370a37f523f704",
+      "contentHash": "8b2db535b0865a2996e9834b39c3064b1fd65b8a3b662f3019d461857833644e",
       "tips": "For identical luminaires, multiply the verified fixture count by the nameplate wattage, and confirm both figures at the fixtures before calculating."
     },
     {
@@ -1518,7 +1518,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply branch-circuit tracing knowledge while the electrician installs luminaires.",
-      "contentHash": "5cc6895c14aee47de7ffd64182e0587434eaa92fc667d4f56b5bbc08ca0e808d"
+      "contentHash": "f2748d29fa0b07c6196f6dd5fe4a2237569edb2e27cb343f84ff3957b6e11f78"
     },
     {
       "bankItemNumber": 249,
@@ -1544,7 +1544,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply traffic-signal sequence knowledge while the electrician installs wiring devices.",
-      "contentHash": "5c91c5b1bfef5020af09bb281cab67311b48c46c4f31610a8af842af62826c03"
+      "contentHash": "4fc7934742fad63603d472f9cad4223116ce28f81aebf210de06cd6efed9d351"
     },
     {
       "bankItemNumber": 250,
@@ -1570,7 +1570,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply airport-lighting isolation knowledge while the electrician installs lighting controls.",
-      "contentHash": "41e363017ebc948617e36d7dacab6137dbae09f0627b27329d2a4aca01cc72ee"
+      "contentHash": "fa07b44266193476360e8e09d64008af6492a934cc3401ffedccf80013f3e74d"
     },
     {
       "bankItemNumber": 251,
@@ -1605,7 +1605,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs lighting standards.",
-      "contentHash": "4dbf211b20842d1abb44d59feb21733a278e7f8e14a89fefd1149098fc21642b"
+      "contentHash": "d20f8b805181aaddeaae327b5bf3666126790cc88573b6ee6ddc8188b1bee931"
     },
     {
       "bankItemNumber": 252,
@@ -1631,7 +1631,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply post-repair functional test knowledge while the electrician services branch circuitry.",
-      "contentHash": "b00c19f7a7a5f9ba85aaba3a8843084ca530495b498021d7a2592d60bf478130"
+      "contentHash": "0cee7e61e9f874284ae04e49ea802365948369a44f0da292bc9e5376b797548d"
     },
     {
       "bankItemNumber": 253,
@@ -1657,7 +1657,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply luminaire load knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "c0c802165953a93de133f84015f2b7871d1af74a8ee20c1261ee73ba149bcd3f"
+      "contentHash": "c5930c7fda64759ea880f1bc66e895ff4437c63f80192ef0f01e316ef9e280fa"
     },
     {
       "bankItemNumber": 254,
@@ -1683,7 +1683,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply device polarity knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "d035a4a6894ab568e6f06666cdca5ea58fd8fe7cb471976c6563d4cf50e5685a"
+      "contentHash": "56cd19dd3b8c01a6f46c977afa63d021e421ed58d1d7c71a9e335e3138728cdd"
     },
     {
       "bankItemNumber": 255,
@@ -1718,7 +1718,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs luminaires.",
-      "contentHash": "670739c69214a784a63e1666091148c396ed42eaa55f9b862a959674bb44d290"
+      "contentHash": "4b522138df20d1cb5df0f6289e5ca13c2d0ffc37eb0891f5472d6cdf3295c9c5"
     },
     {
       "bankItemNumber": 256,
@@ -1744,7 +1744,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician installs wiring devices.",
-      "contentHash": "cd7899d6c28b41e4f86d0a6d676974606c64146c39f8f86c9cb74f64c16c3cdf"
+      "contentHash": "2f1a6a522f5e8e7395a349497828a85ae6d92adfc501e6f5e3626dfd412feb61"
     },
     {
       "bankItemNumber": 257,
@@ -1770,7 +1770,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply occupancy sensor coverage knowledge while the electrician installs lighting controls.",
-      "contentHash": "bf1dec6c04ffe65434dd39614aa3366685547ac0b98776b9a219b9f8063a5425"
+      "contentHash": "4175601a7583babe1cd50ba196e1fa4dc4118e3fc43b6ac362e750becfec454a"
     },
     {
       "bankItemNumber": 258,
@@ -1796,7 +1796,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply dimming compatibility knowledge while the electrician installs lighting standards.",
-      "contentHash": "a55e119dc396302ac81af20ebb9cf9c43e27dbf218148c0c90b433eb9b4a40b8"
+      "contentHash": "b3880793df69e59b3f050da013adf0906131e8cec2608fd4dd970fe18d59af62"
     },
     {
       "bankItemNumber": 259,
@@ -1831,7 +1831,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician services branch circuitry.",
-      "contentHash": "9fe66ee381d4bdcd54fd2b712e3c0f643b91b22919d0a880c36e5f8a449d21c7"
+      "contentHash": "c2d2e10c0bee57b5e391bcf1f68894de4ed697ec5633bb65a0ab96711fe8c0ee"
     },
     {
       "bankItemNumber": 260,
@@ -1857,7 +1857,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply branch-circuit tracing knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "22a626dc041954119ca64f4645a2fd4877e8928838a56dd99d1c01a9971628cf"
+      "contentHash": "0da999cfbc2804ce3257f24064e7f41f69b2f6bc68b22682b0580dd7f2ab4f2b"
     },
     {
       "bankItemNumber": 261,
@@ -1883,7 +1883,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply traffic-signal sequence knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "983ba04c7f2f243f02b0b16a6350df58e5e2b39e28a9989a491238d27eacbe52"
+      "contentHash": "12d8cdade80585743eebc516afcb8a0a4b76b1fd8cb536d5f09b74bad9bfdaa5"
     },
     {
       "bankItemNumber": 262,
@@ -1909,7 +1909,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply airport-lighting isolation knowledge while the electrician installs luminaires.",
-      "contentHash": "4fbcf988298134225924582d9bd96511ccb3729b393a951f860e2d6aba7a4ea2"
+      "contentHash": "08306b7389512136b2703be1b77d9ab70db5b59b145d44e632b0e987093d9fd9"
     },
     {
       "bankItemNumber": 263,
@@ -1944,7 +1944,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs wiring devices.",
-      "contentHash": "89686bd0a8e0fc03d6bcd5741ef0a8d51c3d2014ec31882888a427ef1fe995b8"
+      "contentHash": "074ad9c38fc4481187147d8ede50290e1967ccf8bfe961b358e207e230c795e9"
     },
     {
       "bankItemNumber": 264,
@@ -1970,7 +1970,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply post-repair functional test knowledge while the electrician installs lighting controls.",
-      "contentHash": "4d17e48a4ce79514755b1e6d90b5cab4c66553e387dd0534c5ef26b566c3d593"
+      "contentHash": "6a7685ef294832ca5d36b8f15f482421908c3904239a30a480dbfe50775af1c8"
     },
     {
       "bankItemNumber": 265,
@@ -1996,7 +1996,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply luminaire load knowledge while the electrician installs lighting standards.",
-      "contentHash": "8f8d055c10ac3ca987192f2048387f053663693151e35b208a12dead520e1d76"
+      "contentHash": "907922899a6e998e883a4a6a588cd6173034040f82cc56c0e152614d7f0e29a5"
     },
     {
       "bankItemNumber": 266,
@@ -2022,7 +2022,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply device polarity knowledge while the electrician services branch circuitry.",
-      "contentHash": "ff12aed849613c54e2c8312763af566fe5ebae269fee67a0d5ef226b0743e328"
+      "contentHash": "43eaa546e09cbc89706b8af5d93e7e5ca081f6fb2c8cba046d4aa239cce818d0"
     },
     {
       "bankItemNumber": 267,
@@ -2057,7 +2057,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "afa69c992709e78e34127ea98afa1cdaf467ce11782333a45add785fe79e1265"
+      "contentHash": "a9038f219f3a86e895535fce43aeb105bd297c29dff06c5344fe0e8ba8792f7c"
     },
     {
       "bankItemNumber": 268,
@@ -2083,7 +2083,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "ff69062e2bca4deb80357c59e02b6b3faa32d1d91693435c4479e256bc35f2d2"
+      "contentHash": "b22c8e558bb6a79c3af607dbfbca7292c4fbc594da3ce433dcc1748e70cf4cc7"
     },
     {
       "bankItemNumber": 269,
@@ -2109,7 +2109,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply occupancy sensor coverage knowledge while the electrician installs luminaires.",
-      "contentHash": "39f9c2d6c653ea69a6b9dd7b2f7bd673e165f4d0b1cd777bc770b76a700e45e7"
+      "contentHash": "51c4d7e2208fa20e6f383d86eff1ddd4eb18a1a8ec42055fa51eabce69f91723"
     },
     {
       "bankItemNumber": 270,
@@ -2135,7 +2135,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply dimming compatibility knowledge while the electrician installs wiring devices.",
-      "contentHash": "fa6895e59e6b4d53db04b8a64cc28dd1013057cbe6739c6f5d44fd8b233f3c6a"
+      "contentHash": "8cd161a6d34aef5ee489c3c9098158ec0f63c4b39881004a24d66deb26ab9d04"
     },
     {
       "bankItemNumber": 271,
@@ -2170,7 +2170,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs lighting controls.",
-      "contentHash": "dfd90c59bcca83466e6ee77be6c6577ebfaaa65554dcac93d6b604d6b9bfb1e8"
+      "contentHash": "8e8100356fe874c597ac19b466d2566fc6b892c8bd413b8a35f3554e3f061bda"
     },
     {
       "bankItemNumber": 272,
@@ -2196,7 +2196,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply branch-circuit tracing knowledge while the electrician installs lighting standards.",
-      "contentHash": "cc90042065e6c5b8e4a90c69127ce1e4d37aa86ad92453b8a30bd315ecc70e2d"
+      "contentHash": "b9630d7303b51af196821ff6cd6131aae81339686a77e50504d2eeba6c996344"
     },
     {
       "bankItemNumber": 273,
@@ -2222,7 +2222,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply traffic-signal sequence knowledge while the electrician services branch circuitry.",
-      "contentHash": "2e85bf0eedf7ebf2f3798d06509c119a8dd8e2ac928b2d74ef2aaf5476eddcda"
+      "contentHash": "de56bc758f1dcf690e8ebf7d02eb66b4248c56f873d60e904f8c96363f70d776"
     },
     {
       "bankItemNumber": 274,
@@ -2248,7 +2248,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply airport-lighting isolation knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "82842f246c77e16479a9e5290a292dccfc29810ea80c7f6b79ff4f300cc5edc7"
+      "contentHash": "6856eafa2483a32550f0303d93a14a1a38266671a9c7a92274d07ae819652de9"
     },
     {
       "bankItemNumber": 275,
@@ -2283,7 +2283,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "636c544de266a462d511a87d70118b79649b5784a43f6b13cf80adbcf28a0f44"
+      "contentHash": "b590f66c434be3fa33aefe0953dca7f54a3783e92701f4af780a77224a4490a9"
     },
     {
       "bankItemNumber": 276,
@@ -2309,7 +2309,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply post-repair functional test knowledge while the electrician installs luminaires.",
-      "contentHash": "b10d6f3cae08d9412b2e1521ffeda0522146d90f9808880aecc42d5cf114076f"
+      "contentHash": "2a8acf7d1be45d6de0fb83f2524280dbbbc3965b2568d817a456b2dd612cc3d8"
     },
     {
       "bankItemNumber": 277,
@@ -2335,7 +2335,7 @@
       "diagramAlt": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire.",
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply luminaire load knowledge while the electrician installs wiring devices.",
-      "contentHash": "d8cf7c871a91f83c7d1c307344a3310525f23e3fb9a6cc69d925c7a24828b0a7"
+      "contentHash": "0a21499aee69552f703c1df0644a6816a6d0e33dc05ffad135546d764fd3e140"
     },
     {
       "bankItemNumber": 278,
@@ -2361,7 +2361,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply device polarity knowledge while the electrician installs lighting controls.",
-      "contentHash": "f9b86fb4bb4ab5206ffb90fcd1c5a031ee727630a670258f41d9bda56499d8e5"
+      "contentHash": "45e27c033f2c27d011730a69d46d04c2d155db954b9dcef6913428e466d30787"
     },
     {
       "bankItemNumber": 279,
@@ -2396,7 +2396,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs lighting standards.",
-      "contentHash": "bf1835087d3ac2a96396422d35b3c2685a688bca71598ddec4b6a1e280aa2a2d"
+      "contentHash": "f4ccd12c08076e7073d89fa847597d7300fb14e9cd4a8abec1fbde5a15f2e7a0"
     },
     {
       "bankItemNumber": 280,
@@ -2422,7 +2422,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician services branch circuitry.",
-      "contentHash": "01332ef5e06cbe1bc7ec1dfd783e27cf03833f399ea62f09210a97ac85015fae"
+      "contentHash": "c7b29e217df9af43b22ebe5ab661f7b0151c429143dace899521575cdbd0544a"
     },
     {
       "bankItemNumber": 281,
@@ -2448,7 +2448,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply occupancy sensor coverage knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "34eee005dc4170ba7ee52f0ddbd0ffb0371f4fe331fab2416dffe16dbf6fb153"
+      "contentHash": "ab472c401a5223772fac6f3f1db53c28dc99545e03b1d44d3847b8125dbf7bf6"
     },
     {
       "bankItemNumber": 282,
@@ -2474,7 +2474,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply dimming compatibility knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "5b4aeb8d04ff15eeaf7320056b0382e31565069f9bfc85ea41dfb9687622fd50"
+      "contentHash": "d42564e8aaffb4ed25c984b90b8ee3f1375e48627b1a23c16d28f20223460c42"
     },
     {
       "bankItemNumber": 283,
@@ -2509,7 +2509,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply control transformer current knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "264e8aef87094eb2ae36318757f26b4fdc7ba0a4c78bfc56f723f8b2b4cbca75"
+      "contentHash": "94fd435854b9c5734cc659b375e8018c746f54a21b5f9478487fcaffab3865de"
     },
     {
       "bankItemNumber": 284,
@@ -2535,7 +2535,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply fan proving knowledge while the electrician installs hvac controls.",
-      "contentHash": "c75e3635ebd8b68578758d946be0b950322255daa54b6bd79a24b43def7f84ea"
+      "contentHash": "aedf269bbdfa809c416e1b182322d459e50b1dc350957d66d136d444a9d48b3c"
     },
     {
       "bankItemNumber": 285,
@@ -2561,7 +2561,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply control transformer loading knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "55b9499f906983f704253813683bfae458ab75b7c8b1caf8b307c22dad43f12b"
+      "contentHash": "4de4213d19305212525307ba46de9a4a4e3a7e177e287e9cbcbce9519ea8b407"
     },
     {
       "bankItemNumber": 286,
@@ -2587,7 +2587,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply thermostat signal knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "3617b8b81b33736cd73290c44e9df54fdc11a59328279010f5fdbfaf08de6056"
+      "contentHash": "13c17c674b150cee69b5bcfa522ddd8467fbfb06e745b349e40145869c2455f5"
     },
     {
       "bankItemNumber": 287,
@@ -2622,7 +2622,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply control transformer current knowledge while the electrician installs hvac controls.",
-      "contentHash": "efa9babdcaba8d3d85367c910be918d5edd020f18cb26f6b1fedf3b2f3c7ec16"
+      "contentHash": "3051daf6d7359f5cc879f9e6292d15c3894fb78e51f2efaf0619eed845422f3c"
     },
     {
       "bankItemNumber": 288,
@@ -2648,7 +2648,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply condensate safety knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "c3ec9940f403d2966a5822704b09f6e48f8fa008d12a925d70d58ea7ba79f0c8"
+      "contentHash": "e86d99903cc0252a19ce98cd12804139ad311a5a865138dec715384b98e8d280"
     },
     {
       "bankItemNumber": 289,
@@ -2674,7 +2674,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply equipment disconnect knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "b1f562260e0af7174c10fd8b5a1ecdf8b006b746105428275377b7edf5ec9dd5"
+      "contentHash": "068b35383140b28662e68a81e8c4c4af24ac398415638e13d3cd4a4c8aa05bb4"
     },
     {
       "bankItemNumber": 290,
@@ -2700,7 +2700,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply phase sequence knowledge while the electrician installs hvac controls.",
-      "contentHash": "4691ba3d435c017acf9c5f9a0e05f21ff6e059e4fcff1e35dc1b1748303226ce"
+      "contentHash": "d6797ddfb475862729eecdf6ab966ac0e061fcde6f4f79cee38d8148cc0ecdaa"
     },
     {
       "bankItemNumber": 291,
@@ -2739,7 +2739,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply control transformer current knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "260b3580c29a3d3b5537f4d72a5f0e4670ca0c1ae1af1a02e0a6a1e40f49287f"
+      "contentHash": "ce8b6dc823d1b2d863aaaa844872d2444df802d174b261ecd9832065aff2ddd5"
     },
     {
       "bankItemNumber": 292,
@@ -2765,7 +2765,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply service alarm history knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "774b152cc926967783de1afc5a208595431c253b9eee64109c2a616239b564c8"
+      "contentHash": "81c3a2560206ec762845902bb2f8866d7131e0fee381e083c960e5230e19449b"
     },
     {
       "bankItemNumber": 293,
@@ -2791,7 +2791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply compressor interlock knowledge while the electrician installs hvac controls.",
-      "contentHash": "0d0129881fb59469c847837ea303adf7dc408232d4752c81d84d1f49dec4ce12"
+      "contentHash": "461075c25f670622a8658e5dd31fcc248087d4cb87ad5a76bbf81acad8bfa952"
     },
     {
       "bankItemNumber": 294,
@@ -2817,7 +2817,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply fan proving knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "3b8ed61cd891e7f108b2c04d0592b3db5444e8ea3b6298d786d836287ccb2125"
+      "contentHash": "4f66a9a5b498fb80f5c8ff13a15e2ed49af2d684631a923070598d38c4a2c1dd"
     },
     {
       "bankItemNumber": 295,
@@ -2852,7 +2852,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply control transformer current knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "1dd076528dd7a2a72705c4122cf585dbc884b7f95a3e4c89d46eaa8afb3cd17a"
+      "contentHash": "6b975a5ea159f53153ac95b684c01428d07eb361c19c2c4221086e6805b514db"
     },
     {
       "bankItemNumber": 296,
@@ -2878,7 +2878,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply thermostat signal knowledge while the electrician installs hvac controls.",
-      "contentHash": "341f22acfd3d78d19764545bc2cce0265e5e668615a1b6ab122d48e3580b7d3a"
+      "contentHash": "e8b8664454cc8251a4e53731ba9fe0f74b937fdefb7461be177a79b04755fbdc"
     },
     {
       "bankItemNumber": 297,
@@ -2904,7 +2904,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply damper actuator knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "d5e8751e5bd6474c9590354e69dca1e8cc381564977d37995695b2cedf1c1060"
+      "contentHash": "83ea4026659e6d412da3a566819d1b9d292af361e46a047373f99aeaadc14d5f"
     },
     {
       "bankItemNumber": 298,
@@ -2930,7 +2930,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply condensate safety knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "9cfa77398795299079de482b096201e213e68ebdbfb5f2ec7972ea2dbd8fabc4"
+      "contentHash": "9c672b294f022157e47fb080027c9982ceebeede1b1588cd6d9df34f1a620355"
     },
     {
       "bankItemNumber": 299,
@@ -2956,7 +2956,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply equipment disconnect knowledge while the electrician installs hvac controls.",
-      "contentHash": "d80e06ca294e2e5b925f63fec73babf57c08a62305eca7c6032a417ab7233b0d"
+      "contentHash": "5c69304129c9533bd44c08068336b282fb3a0b3ec14c91cd990eb7372fcd2895"
     },
     {
       "bankItemNumber": 300,
@@ -2991,7 +2991,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply control transformer current knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "5bcc1cd2a8db1609777d89cfd4496a48af4d142b5b3ae2bfbb618d774b557f54"
+      "contentHash": "afe58380756d730e9acdbfbfd5150a2df1dbc30ef509b7c232f7ab01e3a4d09e"
     },
     {
       "bankItemNumber": 301,
@@ -3017,7 +3017,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.01",
       "blueprintObjective": "Apply control-sequence verification knowledge while the electrician connects hvac systems and associated equipment.",
-      "contentHash": "00a0330f1b5ec9c468c0cada1827dde696f9eb31dfe606abe19027777e62b5a9"
+      "contentHash": "a59bdda4c23207bf4824ea24c395b22ebafeb953b7f2d43fc61d5e3eb05b6900"
     },
     {
       "bankItemNumber": 302,
@@ -3043,7 +3043,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply service alarm history knowledge while the electrician installs hvac controls.",
-      "contentHash": "4977273dbd81b58243ff01d024d76f8c35b77ff04bad90f775105ffaf9000a15"
+      "contentHash": "ee30c5365d503ea177144dfea00be276c9b4c9c2a5ff09f3f1d5b6060229c040"
     },
     {
       "bankItemNumber": 303,
@@ -3069,7 +3069,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply compressor interlock knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "bc587aa67de777fc3d79290bf6ca123a83d0c0f5106545adef522904274068e1"
+      "contentHash": "b76a108c3832e76cf259115bc557c79997f89d33256f481639bfa813981546c9"
     },
     {
       "bankItemNumber": 304,
@@ -3104,7 +3104,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician installs electric heating systems.",
-      "contentHash": "841b75d56e2159cdd7bacfe3fe50dc5c222497128b16997182ace34e6d78b9f9"
+      "contentHash": "82b247e82152be851545ba96e026b17d820c904b4f0838313db2044fc49b4f9a"
     },
     {
       "bankItemNumber": 305,
@@ -3130,7 +3130,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply element resistance knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "ea8a31508a9e95973b87f6fa0442adf1a2fbe7fa1ce14f9cb1ffc4eb6c6d6970"
+      "contentHash": "64a1ac1a9cb9ecc5c569f11cab9a77b2027dfcf1c9c58c4d916603f2e0ffdda5"
     },
     {
       "bankItemNumber": 306,
@@ -3156,7 +3156,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply zone loading knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "c13a603a31fdc7b187d808e04c6f5825e0de9fb2e801304cb27612e7797ff5f1"
+      "contentHash": "1a1c7e821c105987dfd4b1902fe6c57e3cdff61513656f772f1e3725f9afaeaa"
     },
     {
       "bankItemNumber": 307,
@@ -3182,7 +3182,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply thermostat location knowledge while the electrician installs electric heating systems.",
-      "contentHash": "2dc448801e9ddcbc2c65bc39141053c826ef8ef29d90d586414a0cd7c1828222"
+      "contentHash": "205989e4128f70b29b92b0da4e1f2ec46e749af148819015459f3f6210c92dc6"
     },
     {
       "bankItemNumber": 308,
@@ -3217,7 +3217,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "9f738b7130a2504a3840e5865c05d12c38727381f50fee9e2b98aab6abb9f077"
+      "contentHash": "974c58416357d58edb459e23ab45febbb79b4ccaa6905b710458a62901661e5f"
     },
     {
       "bankItemNumber": 309,
@@ -3243,7 +3243,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply high-limit operation knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "93d3444f3ca4498b7dc87e57b086d51f7857d4842762717657b9c7f01a2ce6f9"
+      "contentHash": "1678c7acd8c844717ee8162db15736c79575b57f8401fc3c5ebaf7c51acc09fd"
     },
     {
       "bankItemNumber": 310,
@@ -3269,7 +3269,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply airflow interlock knowledge while the electrician installs electric heating systems.",
-      "contentHash": "6d15d96e872bcfc918d59a8ff12499dea3ebde375be443922a2a06f38d0a7f56"
+      "contentHash": "a5c43c2ef0e476a6d38221af8db3d855adfc6ce35ac32ef59a5a3354d342e9bd"
     },
     {
       "bankItemNumber": 311,
@@ -3295,7 +3295,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply floor-sensor placement knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "f435b23358fd3748357902bb847f28c254cf21910873de972f2469faf4cecdd4"
+      "contentHash": "827ed440e2d4a5f1d24b0d42b109a8ede11fd55a25d507e8eeacadf9851c9038"
     },
     {
       "bankItemNumber": 312,
@@ -3334,7 +3334,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "10c9750424c1bee8cae094abfc628c9795ccd43ff25f1e7e44a995c7209c0f42"
+      "contentHash": "3a433c2a6269b4f8c1b1da3ac6e1b1feeb991a8e8e08fab96e741244dfc8fd2d"
     },
     {
       "bankItemNumber": 313,
@@ -3360,7 +3360,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply maintenance temperature trend knowledge while the electrician installs electric heating systems.",
-      "contentHash": "55038016bd951ab0feba738462a5869148423262d8ed1aba0b94a8e1601dc9e7"
+      "contentHash": "86f5e678562f31ea7ff061fde7cc0f61e7822c009e0b17db70357aff211044a5"
     },
     {
       "bankItemNumber": 314,
@@ -3386,7 +3386,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply heater current knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "209ed6cc29e792beb521112d95687b31403ef4c2b05fc1fe2e046afcbeadcb33"
+      "contentHash": "aaf7cfcb9638c4fa432964e1679b72ac3cb0c2cbff9f5332c28c108f43103ef3"
     },
     {
       "bankItemNumber": 315,
@@ -3412,7 +3412,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply element resistance knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "a055ff85c31ff752829cbf6400fd7397cd96ecb9ca09dc26e81fe4456e07aa4f"
+      "contentHash": "af694807f66278148fcd2306f2e0903236749e9b05125744de08d90afb4d714f"
     },
     {
       "bankItemNumber": 316,
@@ -3451,7 +3451,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician installs electric heating systems.",
-      "contentHash": "c89150d9b2797bb31df8b78c4eb5b60cf83859797d29306cabcf9f2fed66a19b"
+      "contentHash": "bb7728668be43ecac00631049728d6b62d221c1f9a1db5549249749019141cdf"
     },
     {
       "bankItemNumber": 317,
@@ -3477,7 +3477,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply thermostat location knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "f8a9ab5671aea18ae2698438ecdeacf0d78cf39896eff76905f6aa1f682209b8"
+      "contentHash": "327459f6c2c7ba45c5713a06021afa6565a96a8b4550164a18c3641ba20226df"
     },
     {
       "bankItemNumber": 318,
@@ -3503,7 +3503,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply contactor duty knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "fbc90f01e7fb70dc62e5f614eeefa5bf5590acca043533864fb5b9d6e7386cd6"
+      "contentHash": "d815d12e3fd3298112542674e7129dd552c11829cd0fba42951af62a0d248ca3"
     },
     {
       "bankItemNumber": 319,
@@ -3529,7 +3529,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply high-limit operation knowledge while the electrician installs electric heating systems.",
-      "contentHash": "acee06efc9f710447ceadad8a8e62282fdf0b723f91f56bd602c2d978387dd0b"
+      "contentHash": "13b6dd9589008aa9f682b8119d071701c3b3a9ed606af39d0926e4fc27eba2cf"
     },
     {
       "bankItemNumber": 320,
@@ -3555,7 +3555,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply airflow interlock knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "7cafe06c755be8ccd28e241a65882c3ad999df127b5a020b5fdd06f8d0485236"
+      "contentHash": "b797a22af7ed685117e4e57b0746e1fbcb8436625a58b094a1f8c3c70dde8d80"
     },
     {
       "bankItemNumber": 321,
@@ -3581,7 +3581,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply floor-sensor placement knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "61f550313bd5f363263f0d8b04755808db99148bd31a21d4dc2882e859161383"
+      "contentHash": "cdf95b22ab372850e56b251c72f01074987f0c332e955bce8491e430c7ccd480"
     },
     {
       "bankItemNumber": 322,
@@ -3607,7 +3607,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.01",
       "blueprintObjective": "Apply staged heating knowledge while the electrician installs electric heating systems.",
-      "contentHash": "611d7c3829e39d4e1e1f423e784e6faedebb1de1368c424542f1df1538e681ef"
+      "contentHash": "842bc034a5e9bb1e6696e976659fd25a434faf489decace5412b4c7a47c28404"
     },
     {
       "bankItemNumber": 323,
@@ -3633,7 +3633,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply maintenance temperature trend knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "9df979ab0f73f3214116a814aa0f669abdfed4f383fa0157bf52675a41895275"
+      "contentHash": "28bba235e3c4ee8f20438182632d49672a1a0b254fe3c904c24f5baf0cae3cef"
     },
     {
       "bankItemNumber": 324,
@@ -3659,7 +3659,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply heater current knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "91e16ef39a70fd3421888ae0491d0a280486f5fc5d9153a1ea70391f44bdcfdb"
+      "contentHash": "99e0ce605b3e16f04352b5211bed2a531d1229b8ee541d0998c856c4d52091f8"
     },
     {
       "bankItemNumber": 325,
@@ -3685,7 +3685,7 @@
       "diagramAlt": "Emergency-lighting sequence showing normal source, charger and battery, transfer function and emergency luminaires.",
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply battery autonomy knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "c30d630feb91ca153bae1b6d6ec3899cade78ab1a78a3bf6c1d732c0ed05bd29"
+      "contentHash": "2dec2f5b7aeffb9206d7f294f744ca2b0a83c1f1ff357fd6ccd0de3146cecb53"
     },
     {
       "bankItemNumber": 326,
@@ -3711,7 +3711,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply charger condition knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "c1b4f00f323f3931dd5afb092eeeb8f7bbf89e0ba7227ad987cf172a8974ea9b"
+      "contentHash": "780df74ff4e487b90ee08564eed8d363322a691ec6423039c5c366b56be9de6b"
     },
     {
       "bankItemNumber": 327,
@@ -3737,7 +3737,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply normal-source sensing knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "c6334d5c2f692991db1d76e7ab3d53609dc94405999542ed90005d2ec7b5fb23"
+      "contentHash": "af9e4257ee9092ad50dc704d8613221ce965fdcd8d03ee953d0d9bf2e49fa547"
     },
     {
       "bankItemNumber": 328,
@@ -3763,7 +3763,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply transfer response knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "45d84a487bd77108d47ce08e40159b69f95a0b7cbfd7d0799aa1c2964885fcb0"
+      "contentHash": "2b7e332c8a5e3a1f9684562b52f864b4b4960343076183abb6e52b3d8651e836"
     },
     {
       "bankItemNumber": 329,
@@ -3789,7 +3789,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply exit-sign direction knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "33221b45e212f3634b3dd8a312d00d92f5fa0c548dbffa247fb1ad5c7bc5bc75"
+      "contentHash": "afec85e48492425bf04ae2f78b03475ba819c7b9238ec94be9ad5511d62c100b"
     },
     {
       "bankItemNumber": 330,
@@ -3815,7 +3815,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply remote-head loading knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "51eaffa9423e51ac1aeda82c6dfaf0e0ba59a95145924d225365e05594399449"
+      "contentHash": "22f559c08e28d416579a2c120ccb9584a2b87cc957949a9aed02dce20d384408"
     },
     {
       "bankItemNumber": 331,
@@ -3841,7 +3841,7 @@
       "diagramAlt": "Emergency-lighting sequence showing normal source, charger and battery, transfer function and emergency luminaires.",
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply monthly functional test knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "c074148de981c4f1222ec435625c058734dde3b7115a3c1250a14e271c760824"
+      "contentHash": "a155897587d13ccc47e34456fa15cab795616787fe8d82f8c8df2b90a32809d9"
     },
     {
       "bankItemNumber": 332,
@@ -3867,7 +3867,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply annual duration test knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "4946c0a613be9e00436d7e736374e3c25303627554c99c2e19a1ad168a75ac1b"
+      "contentHash": "af77d4cc32475990d5ad8e05c555d56537b89b40f15ac0d426a5515a779803c2"
     },
     {
       "bankItemNumber": 333,
@@ -3893,7 +3893,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply fixture obstruction knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "d258ced8014fcc5e796d4f363470c363abcb1131ad45cc0f9da2339c2245e23f"
+      "contentHash": "cdb6cfe8d48b4031e91a7fb065b4cb2b39fb5e2a3170b80e433cb4cc7ca6d576"
     },
     {
       "bankItemNumber": 334,
@@ -3919,7 +3919,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply inspection log knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "b1fa3fda3447aa1905706315f2b8fcace9f467ece697847821fe7d3a076b71fc"
+      "contentHash": "05742d56a389dbc1b321f124574c9e4eade2bb307164be0cb631cfe0521f6147"
     },
     {
       "bankItemNumber": 335,
@@ -3945,7 +3945,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply battery autonomy knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "275556947181fefa75717b0fb367b2f3d53f0002547ed07d2a49999a6ac44cb2"
+      "contentHash": "344328da96f7a5a431920b93ff9f17afa5114568c62fce36c0ce67203e30d379"
     },
     {
       "bankItemNumber": 336,
@@ -3971,7 +3971,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply charger condition knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "86448cfbf81f615d99b0ef54c3533ee2781c128a74899a73f8b7015a283bb146"
+      "contentHash": "66a8b7c7e7498cab753f184166f9d720388158ee4e26dd441751f0e0e496cddf"
     },
     {
       "bankItemNumber": 337,
@@ -3997,7 +3997,7 @@
       "diagramAlt": "Emergency-lighting sequence showing normal source, charger and battery, transfer function and emergency luminaires.",
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply normal-source sensing knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "cb61b1fffb96c2adb4ba4e18923e08ba094389753090324d526f24afb00a9a0d"
+      "contentHash": "1478c8f1d7e55d1045c9e4391a8eadc4dfa87684e1a1785f492a8ef06361df2e"
     },
     {
       "bankItemNumber": 338,
@@ -4023,7 +4023,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply transfer response knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "06a1263a8f91e36a411fc5423216f4a90a0c696fd060d0b264597a76b395db14"
+      "contentHash": "d0638313d47472a53e96627d362cd54fbccd9eb772caa73dabe65bb4d00ad0ba"
     },
     {
       "bankItemNumber": 339,
@@ -4049,7 +4049,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply exit-sign direction knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "7265808a74b63768f1ebef8b6fdd331cc5c15694a4e9bae2230d8a78df51734e"
+      "contentHash": "2ce9812003ff9372c946be2f7612d25006b092dd8604d86d57e4f94a1e7a32ef"
     },
     {
       "bankItemNumber": 340,
@@ -4075,7 +4075,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.01",
       "blueprintObjective": "Apply rectifier polarity knowledge while the electrician installs cathodic protection systems.",
-      "contentHash": "3328abf0b417e89dae9b90f2ecf83fc55934e34b67400414731aa6883fa10aad"
+      "contentHash": "3541194bc76ccc1c92c097b5bdbd2833b87df114f101f86b19d419e68dd557cc"
     },
     {
       "bankItemNumber": 341,
@@ -4101,7 +4101,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.02",
       "blueprintObjective": "Apply anode connection knowledge while the electrician services and maintains cathodic protection systems.",
-      "contentHash": "d26b621dc668dc587c288e95e0d209bab690a9898308aa3b94191c4129f7ca46"
+      "contentHash": "6337e7f8c5cd0737e6720bc1c9b0b5dbd120cfa4101793e310c7cf3020d93cdf"
     },
     {
       "bankItemNumber": 342,
@@ -4127,7 +4127,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.01",
       "blueprintObjective": "Apply structure continuity knowledge while the electrician installs cathodic protection systems.",
-      "contentHash": "b5fe16c765a92f1a2a8e390126e631eee3fe3e59b37d62c5ce557f617b465eda"
+      "contentHash": "e15d88cdea6c111931eb45093febe1011ffe2e5c013a0e84bd51a9b36c8e7afa"
     },
     {
       "bankItemNumber": 343,
@@ -4153,7 +4153,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.02",
       "blueprintObjective": "Apply reference-electrode reading knowledge while the electrician services and maintains cathodic protection systems.",
-      "contentHash": "e0324ed2a04f2606715feb552c069127cbfff6205cf809da55b63fae4b8243d7"
+      "contentHash": "e96410805fa64f88bb5204e5409440ae4f61b240bb5f874e692c91f37d9d1dc2"
     },
     {
       "bankItemNumber": 344,
@@ -4179,7 +4179,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.01",
       "blueprintObjective": "Apply test-station identification knowledge while the electrician installs cathodic protection systems.",
-      "contentHash": "fce6c901d9c310f2a6b79a72875fa861a27be135056487785a510c7760c1cb93"
+      "contentHash": "27c86ea12d0d43bfbf4d4049bf8f2c233ab50d1f19944deb351d506ccbc53364"
     },
     {
       "bankItemNumber": 345,
@@ -4205,8 +4205,8 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.02",
       "blueprintObjective": "Apply isolation-joint integrity knowledge while the electrician services and maintains cathodic protection systems.",
-      "contentHash": "a6aad69109deeb0a78a2af3957e377955c73ce867b646417c5baf6897f03f152"
+      "contentHash": "471585fbd8d588c257c7a8b279e0a986e566f30e519901f7ea26940469631abd"
     }
   ],
-  "bankVersionKey": "309a-current-rsos-v2"
+  "bankVersionKey": "309a-current-rsos-v3"
 }

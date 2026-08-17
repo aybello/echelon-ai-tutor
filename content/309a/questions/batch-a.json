@@ -3,7 +3,7 @@
   "title": "Performs common occupational skills",
   "questionDefaults": {
     "bankKey": "electrician-309a",
-    "bankVersionKey": "309a-current-rsos-v2",
+    "bankVersionKey": "309a-current-rsos-v3",
     "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
     "module": "A",
     "steps": null,
@@ -39,7 +39,7 @@
       "explanation": "Personal protective equipment is the last layer of defence. It must be selected for the actual residual hazards after elimination, isolation, and other controls have been considered; it does not replace those controls.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Select personal protective equipment that is appropriate for identified workplace hazards.",
-      "contentHash": "c40475f51ebe22e5ed8c645357e0fd502e9c65a13b8871611d09f8f671035c92"
+      "contentHash": "b61dcecf0dde7d2a1b56a62b2e6d446feb8b42ad88cf48eb8ed71b9c5b0db3ad"
     },
     {
       "bankItemNumber": 2,
@@ -60,7 +60,7 @@
       "explanation": "Visible damage can reduce the shell's ability to distribute impact. The damaged hard hat should be removed from service according to workplace and manufacturer procedures rather than repaired or reassigned informally.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Inspect protective equipment and remove damaged equipment from service.",
-      "contentHash": "07f92d162ee7626a1ee9991ac1f057a11c83397d61a25bdbafd7be976d27efc4"
+      "contentHash": "a6fb517d0836060d72940858441341dbb6e7d0506398c9c7aef8db8735f04a08"
     },
     {
       "bankItemNumber": 3,
@@ -81,7 +81,7 @@
       "explanation": "A shield that will not stay positioned cannot provide reliable protection. The whole assembly must be removed from service and handled through the approved inspection, repair, or replacement process before use.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Respond correctly when protective equipment fails a functional inspection.",
-      "contentHash": "2b3523450b1344215ae405fec0da0f6f5fc590ef1d49b20b397d417521f511a0"
+      "contentHash": "e8909529747237c5dbcff645be0f9862309a3582cfe90bd0873f223e622e5f44"
     },
     {
       "bankItemNumber": 4,
@@ -102,7 +102,7 @@
       "explanation": "A tight-fitting respirator depends on an effective face seal. Fit testing checks that the selected model and size fit the individual; it does not eliminate ventilation, cartridge-change, or inspection requirements.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Recognize the purpose of fit testing for respiratory protective equipment.",
-      "contentHash": "608ebb9319727ca222046855889c2302130439e17739e9867c019f206bb8db10"
+      "contentHash": "2b5cc6c0e26bdd3efbc0152400b1fdf57ccc0b997fdbeee6a85d5c45a08c42ae"
     },
     {
       "bankItemNumber": 5,
@@ -123,7 +123,7 @@
       "explanation": "The fall hazard should be controlled before work starts by an approved cover, guard, or equivalent site control. Awareness alone or an improvised marker does not provide dependable protection during a busy cable pull.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Establish a safe work area before beginning electrical work.",
-      "contentHash": "64dda295fc0998a522b34eedec868fe3451315c043320202b3e99daea775c4b5"
+      "contentHash": "acc4d8d5554ed7708f15390eec471961fd5b49cbad6639fcba98da4c83da451d"
     },
     {
       "bankItemNumber": 6,
@@ -144,7 +144,7 @@
       "explanation": "Good housekeeping keeps access and working space usable and reduces trip and emergency-response hazards. Material should be removed to a designated location, not stored against equipment or in an exit route.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Maintain orderly access and working areas around electrical equipment.",
-      "contentHash": "00dde80751de64a58f806e6dd755420919a5f6d9452f7a70f013c7dac84d177d"
+      "contentHash": "51e90b0bb6b5801e81472c78a67817d2b809344a3bd1edef9598d7f08c02e8eb"
     },
     {
       "bankItemNumber": 7,
@@ -165,7 +165,7 @@
       "explanation": "Elimination and engineered physical controls act on the hazard itself and do not depend solely on each person's attention. Signs can support a control plan, but they are weaker when used alone.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Apply the hierarchy of controls when preparing a work area.",
-      "contentHash": "603fe0a120beed08102f32d6e671aa38108209dae7be4c1a8cdf631623c381b4"
+      "contentHash": "1579bd37982e203a8439222e65155b4c2c66039918c3c05633907daa30321534"
     },
     {
       "bankItemNumber": 8,
@@ -186,7 +186,7 @@
       "explanation": "A hazard assessment is not a one-time formality. New work can introduce vapours, visibility issues, access restrictions, or ignition concerns, so the crew must pause and update its controls before resuming.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Reassess hazards when workplace conditions or concurrent activities change.",
-      "contentHash": "0c0ee74437ad8cae008be9486f11a033b70926ad96b42a7b960f1b845f8629e4"
+      "contentHash": "9dfed46c7018cc67ab0cf6bf372f0ddcc36982860475fb380746eb78849a8d8a"
     },
     {
       "bankItemNumber": 9,
@@ -207,7 +207,7 @@
       "explanation": "A failed absence-of-voltage verification means the circuit is not proven safe. Work must stop while alternate feeds, stored energy, induced voltage, wrong identification, or test-method issues are investigated under the isolation procedure.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Respond safely when verification does not confirm the expected isolated state.",
-      "contentHash": "93644b649a4265d18e9d9fbe84a36fc408e1656fb8285356c28e3b098aad0ead"
+      "contentHash": "7a5368f35fcd596485f7c1367083accb2b4072479eae826b3f147a864dcfaa24"
     },
     {
       "bankItemNumber": 10,
@@ -228,7 +228,7 @@
       "explanation": "Personal locks remain under the worker's control. If the worker cannot return, removal requires the employer's formal exceptional procedure, including verification and notification; convenience alone is not sufficient.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Maintain individual control and accountability during lockout.",
-      "contentHash": "351695bfa145b5c3c9928545da160dbf35431137fc967cf6d2c73bb7397543f2"
+      "contentHash": "060f9f8affb02d6339ac5bc1dbb2efe08d891c3f5e457599106e049f4a3e5750"
     },
     {
       "bankItemNumber": 11,
@@ -249,7 +249,7 @@
       "explanation": "Electrical isolation does not control every energy source. Coasting motion and compressed springs can still cause injury, so stored and mechanical energy must be brought to a verified safe state before the work begins.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Identify and control stored and non-electrical energy during isolation.",
-      "contentHash": "b5fd26f47e115d37748802c8dbee058abb0adba04915183722daf2622a0d46d8"
+      "contentHash": "e3be42571b32bf8fa43538df01e93165cd04ddecab16e754f0220e3c39f6dcfc"
     },
     {
       "bankItemNumber": 12,
@@ -270,7 +270,7 @@
       "explanation": "A correctly matched driver seats properly, improves control, and reduces cam-out and fastener damage. It does not replace the manufacturer's tightening method or later inspection requirements.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Choose hand tools that match the component and task.",
-      "contentHash": "cadee80848c7b3a826262fbf474f6f8af313e1544e14aa9fa5a118c13c4307ea"
+      "contentHash": "626c696d5779ce17229e7bea0541c2f5696abe5267ca4e6007a4a4852b83d3cb"
     },
     {
       "bankItemNumber": 13,
@@ -291,7 +291,7 @@
       "explanation": "Both defects can affect control and electrical safety. The drill should be removed from service and routed through the approved repair or replacement process rather than receiving a temporary field repair.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Inspect portable tools and remove defective equipment from service.",
-      "contentHash": "67723a40ea7feabc6620d47fdeca29d7375c97f9cf49e3fb555cc0f0051a0296"
+      "contentHash": "5867524a6fd5c10872228d8d8ff4ed091685ab50d99514bff06ff67130ddc813"
     },
     {
       "bankItemNumber": 14,
@@ -312,7 +312,7 @@
       "explanation": "A suitable calibrated torque tool provides a controlled, repeatable tightening value. Guessing by feel, overtightening, or trusting an unchecked previous setting can damage the connection or leave it loose.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Use measuring and torque tools according to their intended method.",
-      "contentHash": "d3a2f0aa8f2701bcc85c308791ef86d54ce8c6bbb6b1adb16348624f5d42bb2e"
+      "contentHash": "8f0767a0cba81bb56e312dbbb095b2d615860934532ecf4667f8fe438b0d9db6"
     },
     {
       "bankItemNumber": 15,
@@ -333,7 +333,7 @@
       "explanation": "Calibration status or comparison with a suitable reference provides evidence that readings are acceptably accurate. It does not excuse inspection, correct range selection, or compliance with the instrument's ratings.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Recognize why measuring tools require accuracy and calibration controls.",
-      "contentHash": "a8b89be9d4fc3257772e14060ffa6621d6023af94b4667e6d989dd0db2051b41"
+      "contentHash": "ae35a9e3e4a947c095c6f3257009fbead5be9b6d08c3b8ec7856f40814d303c5"
     },
     {
       "bankItemNumber": 16,
@@ -354,7 +354,7 @@
       "explanation": "The ladder has structural and stability defects, and the short duration or modest height does not make them acceptable. It must be removed from service and replaced with suitable inspected equipment.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Reject defective access equipment regardless of task duration.",
-      "contentHash": "97d906ed2f373bc3a4a8aaf68d6f8ed06a65f22e75209a9ca6dc15d7bba3ff9b"
+      "contentHash": "2d152513b25f8bd5c45203a37b78d5f217e47a9ddd1e405e1102ee951d6d7e8e"
     },
     {
       "bankItemNumber": 17,
@@ -375,7 +375,7 @@
       "explanation": "Safe setup includes adequate ground support, a controlled travel path, and identification of overhead and surrounding hazards. These checks complement operator authorization and the equipment's pre-use inspection.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Assess site and overhead conditions before positioning access equipment.",
-      "contentHash": "e26fba6c181334527a794de1ec222472aee3b0349b875f759f4bd01484ebf3ae"
+      "contentHash": "b70fcb446678f1eee7d2de14ad20aa6a5754a4e43c53975223fcdc5606c27372"
     },
     {
       "bankItemNumber": 18,
@@ -396,7 +396,7 @@
       "explanation": "Three-point contact means maintaining three limbs in contact with the ladder while climbing. It improves stability and is supported by carrying tools in a way that leaves the hands available.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Apply stable climbing technique when using ladders.",
-      "contentHash": "7951b8c91088302dd481d2da248215b91939ef83094b952c6cbecc04c03ee2c3"
+      "contentHash": "ecbed4ab09489332151418f9acff75c5259d4ed50d72e94d58d7274ad9d5abe8"
     },
     {
       "bankItemNumber": 19,
@@ -417,7 +417,7 @@
       "explanation": "The crew must be able to verify that rigging is suitable for the load and configuration. An unreadable or missing identification tag prevents that check, so the sling cannot be selected by guesswork.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Verify rigging identification and capacity before lifting.",
-      "contentHash": "a9f9f0b2120dfb88e20babc8cfc9f8368df2289fa10f128fb040b55c7d01d099"
+      "contentHash": "e0aa7d5c651cbc7cc404b29a89cd0aadd37594791ce1c4994cc7af5aaee9b910"
     },
     {
       "bankItemNumber": 20,
@@ -450,7 +450,7 @@
       "isCalc": "yes",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Calculate a simple equally shared vertical lifting load before selecting rigging.",
-      "contentHash": "1f7cc3edd289dbfe6031bd6bdda39e1764afc38c32770d1e36445a7135623ad6"
+      "contentHash": "22d071461e6df6d92622395d5c539a91e5e5d694575e2845030252989d5a08bd"
     },
     {
       "bankItemNumber": 21,
@@ -471,7 +471,7 @@
       "explanation": "Conflicting signals create an uncontrolled lift. The operator should stop safely, and the crew must re-establish a single designated signaler and understood communication before movement resumes.",
       "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
       "blueprintObjective": "Maintain unambiguous communication and control during lifting operations.",
-      "contentHash": "14d85ed473aaea5d06ab182243a4d01133fad8904b6e5036fd95526348226df0"
+      "contentHash": "0c1895bf28dc8d92c6a640542f3c9cd41d4349c840d916b461ad0b1ac41b3af5"
     },
     {
       "bankItemNumber": 22,
@@ -492,7 +492,7 @@
       "explanation": "Using the current authorized revision reduces rework and prevents installation from obsolete information. Revision control complements, rather than replaces, specifications, field verification, and approved change documents.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Use current drawings and specifications when planning electrical work.",
-      "contentHash": "a49f6d819b5d3354a36ad39521816f356c46b32084c332d9c838d22c8608c1f1"
+      "contentHash": "a802937ce1dd464bb9b6e1797922f3db508f26079eb9ff8797d1f0bc927533d8"
     },
     {
       "bankItemNumber": 23,
@@ -513,7 +513,7 @@
       "explanation": "A cross-discipline conflict should be documented and resolved through the project's authorized clarification process. An electrician should not conceal the conflict or make an unapproved field design change.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Recognize and escalate conflicting project information before installation.",
-      "contentHash": "031836c073692d0f33790b4bbee8326f1b572321902705fe80dc8ccef5c782b6"
+      "contentHash": "19a44f51c46602ec94762ce25a312c356f3f798234a027b241e5a1ead156e3b9"
     },
     {
       "bankItemNumber": 24,
@@ -534,7 +534,7 @@
       "explanation": "Written dimensions generally take precedence over scaling a drawing, which may have been resized. Any remaining inconsistency should be clarified through the authorized project process before work continues.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Interpret drawing dimensions accurately and identify information requiring clarification.",
-      "contentHash": "199226b18b6b17e7a8d56e59ec239c345bb17b648c8d0bda6ccd6e28013a3b0f"
+      "contentHash": "34ec05bf7e8f76c8aaef5158d3bedbba29af1f5a8ee569b48fd9f38e577da49a"
     },
     {
       "bankItemNumber": 25,
@@ -555,7 +555,7 @@
       "explanation": "Material must match the approved requirements, not just the quantity. Segregating nonconforming items prevents accidental installation while procurement and project authorities resolve the discrepancy.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Verify delivered materials against approved specifications and suitability requirements.",
-      "contentHash": "42fbf77ed90eb0cbd19d5160d2eed7f5468bf4b89ecb6dff9561d3b6e23a57a3"
+      "contentHash": "2962effb7fe0c09cafed601a5c21c9680a2741a1a28533253295ab8b4ba97951"
     },
     {
       "bankItemNumber": 26,
@@ -576,7 +576,7 @@
       "explanation": "Appropriate storage preserves material condition and traceability while reducing loss or unauthorized use. Different products may also require specific handling, orientation, temperature, or environmental controls.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Store electrical materials to maintain their condition and suitability.",
-      "contentHash": "1ae3eea742e5b1fb2c9f51971cf9e54a8c3fe97b46e30b926277ce1350d85c5c"
+      "contentHash": "84c491e5f55e94b77bf405fe75f4ba96fd65238cf9eec6ea6f6c358dc578e5e7"
     },
     {
       "bankItemNumber": 27,
@@ -597,7 +597,7 @@
       "explanation": "Effective sequencing considers access, dependencies, required inspections, and concurrent trades. Early coordination reduces rework and makes sure concealed work is complete and accepted before it becomes inaccessible.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Coordinate electrical tasks with project schedule, access, and other trades.",
-      "contentHash": "5e1937379e40c72a965eb9e98f10166ee6885c0345e97d036ddc67f21b3e42be"
+      "contentHash": "5c7ebc6aaa0b3a4727447adf07b3756b9e1b13a73e20e0dca8fe6fff15f44b16"
     },
     {
       "bankItemNumber": 28,
@@ -618,7 +618,7 @@
       "explanation": "A coordinated pre-shutdown plan puts required people, controls, information, tools, and materials in place before the outage begins. It also defines how the system will be tested and returned to service.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Plan resources, controls, and restoration activities for scheduled work.",
-      "contentHash": "5ac5e1890a02e8ac822e06d8611eadd1d2bf186e42ac71317291a562d8eee746"
+      "contentHash": "5f3620521bd39ddcc3c5163dbd8fdf45df11f4ace98239ca98df63e42648d31f"
     },
     {
       "bankItemNumber": 29,
@@ -651,7 +651,7 @@
       "isCalc": "yes",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Prepare a simple material takeoff from verified route measurements.",
-      "contentHash": "61c873c93a93c7ef93a560c206b6373110eccd241d7c3ce49338be9557d07450"
+      "contentHash": "df50d36d5127a18e8c695e8f6afe64337ee2e5ade7124ce13460fc9b01ed0465"
     },
     {
       "bankItemNumber": 30,
@@ -672,7 +672,7 @@
       "explanation": "Accurate as-built records preserve the approved installed condition for commissioning, maintenance, and future work. The change should be recorded using the project's controlled documentation process.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Maintain accurate controlled records of approved field changes.",
-      "contentHash": "e9e1a5b6c3df3b10cf764ac98a9b297eb760571eb4a5f7d2b916e6aec43b4c7c"
+      "contentHash": "aa0a3abefa7e0394da98d3e1a1c21388b08c6b196fb493738eb8c6373cead5f2"
     },
     {
       "bankItemNumber": 31,
@@ -693,7 +693,7 @@
       "explanation": "A useful daily record is factual, specific, and traceable. Work locations, progress, resources, constraints, testing, and change references help support coordination and later verification.",
       "sourceReference": "MWA A, Task A-3 — Organizes work",
       "blueprintObjective": "Create clear and traceable documentation of completed electrical work.",
-      "contentHash": "0bd8ce1a191b45d67c7bbb0436193fd6649c9896cdbb0431649e3059d54046fe"
+      "contentHash": "3d869ffc890c5d40c8819f3de1ff444739b90420e2ff418de5ec3dec47f72425"
     },
     {
       "bankItemNumber": 32,
@@ -714,7 +714,7 @@
       "explanation": "Fabrication should begin from verified design and field information. Dimensions, load, material, clearances, and attachments determine whether the finished support will fit and perform as intended.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Verify requirements before fabricating an electrical support component.",
-      "contentHash": "4bbc81bc5e98768304df866e5ff62fa11737cf98ab9195dd99b32ce3f1c20cc2"
+      "contentHash": "40580f4ca05235fef917bca28090a059bdb08ac1f39f446a9afb1b2313ad6720"
     },
     {
       "bankItemNumber": 33,
@@ -735,7 +735,7 @@
       "explanation": "A support must meet more than load and fit requirements; it cannot defeat required operation or maintenance access. The conflict should be resolved through an approved support revision, not an unauthorized equipment change.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Evaluate fabricated supports for fit, function, and maintainable access.",
-      "contentHash": "229c23b9808f56ed7ec99c2a128ddc527fa1edfb311ad0f920321b44d17999e1"
+      "contentHash": "29e0b08c967608c0c994173e208de5fc228769465d6b17440fa0176cb4ba1af7"
     },
     {
       "bankItemNumber": 34,
@@ -756,7 +756,7 @@
       "explanation": "Burrs and sharp edges can injure workers or damage wiring, and drilling may expose metal to corrosion. Deburring and restoring the specified finish prepares the support for safe service.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Finish fabricated supports to remove hazards and preserve material protection.",
-      "contentHash": "4dc9f57d2514c6a2ab1a44c5eebc8dc8ddeaabc4cac8ffa641b008c415ceb4ee"
+      "contentHash": "011c6842d3735a1ea6882063b9ed936078e84247bac4395df0e66e46b74c4668"
     },
     {
       "bankItemNumber": 35,
@@ -777,7 +777,7 @@
       "explanation": "Checking geometry helps confirm that equipment will fit and that the support will not impose unintended stress through forced alignment. It does not change the approved load or attachment requirements.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Verify dimensional quality of fabricated support components.",
-      "contentHash": "c1634ed463a4652c2a82c7222893a0c75ee1c18fb2260d618f9c093ad9b0b889"
+      "contentHash": "cf0f39a2c94bdd29241534a4a443ed0af3b6ad247e56612cc8d744e1070d09d4"
     },
     {
       "bankItemNumber": 36,
@@ -798,7 +798,7 @@
       "explanation": "Anchor capacity depends on the substrate, load direction and magnitude, geometry, environment, and correct installation. Selection should use approved design and manufacturer information, not appearance or habit.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Select fasteners and anchors for the actual substrate, load, and environment.",
-      "contentHash": "04ed59003bbf9016dcb00426900db3fc9f86cb7380440837f0392691d8fc33c8"
+      "contentHash": "dee30656dafbb68f4387cf2c0231092c964c5092d931c4a1118204df2c83ef87"
     },
     {
       "bankItemNumber": 37,
@@ -831,7 +831,7 @@
       "isCalc": "yes",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Calculate the minimum number of evenly spaced supports for a simple run.",
-      "contentHash": "2f7c199ebc05625a37ebe10fb41192168bb4fd4d19ccc6836b49aa7dac708a04"
+      "contentHash": "5361052ca93532e13ef67744a6026e294d824a3708ffe7e96d53abe493c094a8"
     },
     {
       "bankItemNumber": 38,
@@ -852,7 +852,7 @@
       "explanation": "Hole size, depth, cleaning, embedment, and installation method can materially affect anchor performance. Deviating from the approved method can produce an attachment that looks secure but lacks its intended capacity.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Install anchors and fasteners according to approved product requirements.",
-      "contentHash": "0b8f1a163dee4da92f2931a03694cd0a32b85ba24603b2c64dc580794ac47ec0"
+      "contentHash": "86290f28bbaae047e460ba98451d9ddd0f7e3783e9875459088366f2b67041b5"
     },
     {
       "bankItemNumber": 39,
@@ -873,7 +873,7 @@
       "explanation": "Existing supports were selected for known loads, locations, and attachments. Added equipment can change total load, eccentricity, vibration, and anchor demand, so suitability must be verified before modification.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Recognize how unplanned loads can affect a support system.",
-      "contentHash": "77efb55ef8a7b8311c84a765594064b3af5169dda91eb9dee2e81cdbd908f207"
+      "contentHash": "f3ffdb0710132d76ee15f5cd64cd1bef3b997f6a965ef7e19156e709bb9ff881"
     },
     {
       "bankItemNumber": 40,
@@ -894,7 +894,7 @@
       "explanation": "Moisture and incompatible metals can accelerate corrosion and weaken the support or connection. Material selection, coatings, environmental suitability, and approved separation methods must be coordinated.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Account for environmental exposure and material compatibility in support installations.",
-      "contentHash": "5b58e5e474910fa34365073735a4b82474df9d1481a644a58866ee73e62472b0"
+      "contentHash": "378600b4e23697d0b584b3ecbb69a18de3376cfe1bb54d591aea2e5df60eac46"
     },
     {
       "bankItemNumber": 41,
@@ -915,7 +915,7 @@
       "explanation": "Seismic restraint geometry and attachment are part of an engineered system. A field conflict must be coordinated and resolved through authorized design information rather than by omitting or improvising the brace.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Resolve seismic-restraint conflicts without making unauthorized field changes.",
-      "contentHash": "c072eaf6c1f9a25d3cb6b9babff62c6ee2c58e03cf2053af76653ce700c35665"
+      "contentHash": "3d22737ed24d7d4eab08194e4979a2c583d0397802d0c3e96e30247830da6d3f"
     },
     {
       "bankItemNumber": 42,
@@ -948,7 +948,7 @@
       "isCalc": "yes",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Calculate material quantity from an approved repeated restraint layout.",
-      "contentHash": "3681b6f2b50ff26575c7c2fb9877e3bd2f4fd14b453281b2f32f4327b3cdc816"
+      "contentHash": "de58cd77db238236d287b6fecd4a34f62d5d400c4982034953510d7dbfa5e5f4"
     },
     {
       "bankItemNumber": 43,
@@ -969,7 +969,7 @@
       "explanation": "A rigid feel does not demonstrate the required capacity. Anchor performance depends on the substrate and approved detail, so the deviation must be documented and resolved by an authorized party.",
       "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
       "blueprintObjective": "Identify seismic restraint installations that do not match approved details.",
-      "contentHash": "41577a316916c11fa8a09297a596fb019def12244805a8b00daf81c63878e18c"
+      "contentHash": "d18aa7a85ca36a54d59298aca1a70d13504d15d12ba0c433f3eb01598b9b2b87"
     },
     {
       "bankItemNumber": 44,
@@ -990,7 +990,7 @@
       "explanation": "A pre-startup checklist verifies that installation, protection, documentation, controls, and coordination are ready for a controlled energization. It reduces the chance of overlooking a critical prerequisite.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Verify system and stakeholder readiness before startup.",
-      "contentHash": "2110d0da50ec29364a16f8364ee90da09e7713b8f824220c26350f0c0867c1de"
+      "contentHash": "fb96a7fbc678c77bbadc7d63a4a4199b32257a1e343256bcf94d659a796aebc7"
     },
     {
       "bankItemNumber": 45,
@@ -1011,7 +1011,7 @@
       "explanation": "Startup should not proceed with a missing safety prerequisite. The guard must be installed and the readiness checks completed before a controlled startup is authorized.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Stop startup when a required safety or operational prerequisite is incomplete.",
-      "contentHash": "0bb69924f83b2cdcca2c0238d328d914d9831bdac9ca2a1535c1ac4457811eed"
+      "contentHash": "db5dcc2962dfdf64b27af27343dfc3582a687483b8093ce12681448374bbe7e2"
     },
     {
       "bankItemNumber": 46,
@@ -1032,7 +1032,7 @@
       "explanation": "Unexpected rotation can damage the driven process or create a hazard. The system should be stopped and isolated under the approved procedure before the cause is investigated, corrected, documented, and retested.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Respond safely to an unexpected condition during startup.",
-      "contentHash": "bc564674b7d856f8b7c041bf50ac90401e3e5a94265b4489fb7f110b8300b322"
+      "contentHash": "a88e2cd87058e9ec0d463f63c6139e7a72b6a3d7179db9ed1d971e97d4f79497"
     },
     {
       "bankItemNumber": 47,
@@ -1053,7 +1053,7 @@
       "explanation": "A planned shutdown should identify the correct system, affected users, dependencies, backup arrangements, and restoration steps. Clear authorization and communication reduce operational and safety surprises.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Coordinate planned shutdowns with authorized stakeholders and system dependencies.",
-      "contentHash": "e1074f4d5614c696822cccb58e35c0319c4a0c5990ff0a09ac3a3e2f3bcde98a"
+      "contentHash": "7633be59409005cdeb8a6d3eb08337522061492ff360d555a2cb25a3365b2c38"
     },
     {
       "bankItemNumber": 48,
@@ -1074,7 +1074,7 @@
       "explanation": "Traceable records connect each result to the correct equipment, method, conditions, acceptance criteria, and date. They support deficiency correction, handover, maintenance, and later comparison.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Document commissioning tests so results are complete and traceable.",
-      "contentHash": "b47aebec0f21c8a49d4e9f8dd11ddc730b7988bcbac7bab2bc1d4eec4a832610"
+      "contentHash": "52d41c7d5070ac208841d7d667652d63add2468f72d6f9c2b070d7e125ccde70"
     },
     {
       "bankItemNumber": 49,
@@ -1095,7 +1095,7 @@
       "explanation": "A precise deficiency record preserves the conditions that produced the failure and helps separate local equipment operation from remote command, communication, interlock, or indication issues.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Record commissioning deficiencies with enough detail to support diagnosis and retest.",
-      "contentHash": "943b42c375704309d0677ca823bdc641c0db779201130cf2bf6d3d8d97e531fe"
+      "contentHash": "0a492a223372baeda60ac47f2daa2a9bb47fe6a3b845a2bbc13a5cd142742786"
     },
     {
       "bankItemNumber": 50,
@@ -1128,7 +1128,7 @@
       "isCalc": "yes",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Calculate and interpret a simple average from commissioning measurements.",
-      "contentHash": "e99bf5f074a770bd556a2ca25ae544c5bb974b6a0224b79a98b38071f09b1eb1"
+      "contentHash": "aa74b73c83180d31753fb2010cc6059fac2db1ac83f39bb1d0ed37fc2d705144"
     },
     {
       "bankItemNumber": 51,
@@ -1149,7 +1149,7 @@
       "explanation": "A faded label or apparent disuse is not proof that a cable is abandoned. Positive identification, functional verification, authorization, and isolation prevent removal of an active or safety-related circuit.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Verify identity, authorization, and safe state before decommissioning wiring.",
-      "contentHash": "de60d9c2d59c8239abc63175640b474449e3e974f142204e1c448e6009dfed7d"
+      "contentHash": "be1c44575fca45026f5d21788b4365c5b8a39a96a95aacb66c994bb38c377467"
     },
     {
       "bankItemNumber": 52,
@@ -1170,7 +1170,7 @@
       "explanation": "A failed protective function is a commissioning deficiency, not a partial pass. It must be controlled, documented, corrected, and retested through the approved process before the affected system is accepted.",
       "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
       "blueprintObjective": "Manage a failed commissioning result without bypassing acceptance requirements.",
-      "contentHash": "42f39f0d7bd06a21caaa10a70eb92c95291d1de24166afc98ca687a3026ca92b"
+      "contentHash": "04793f2456ff290291f14666daf97f87ad36dd9575d9ba33e36970a13b401989"
     },
     {
       "bankItemNumber": 53,
@@ -1191,7 +1191,7 @@
       "explanation": "Closed-loop communication confirms that the message was received and understood as intended. This gives the sender an opportunity to correct an error before the receiver acts on the instruction.",
       "sourceReference": "MWA A, Task A-6 — Uses communication and mentoring techniques",
       "blueprintObjective": "Use clear confirmed communication during coordinated electrical work.",
-      "contentHash": "109cad5d2771812143025f977895f94f0d5cce31c009e4324134f1f24e14075f"
+      "contentHash": "267aaa201b789e3bed495998eefec1a51b1b787dd3f949a3995cb9571f472cae"
     },
     {
       "bankItemNumber": 54,
@@ -1212,7 +1212,7 @@
       "explanation": "A safe handover makes the current system and work state explicit. Isolations, hazards, incomplete items, changes, test results, documentation, and authorized next steps all need clear transfer.",
       "sourceReference": "MWA A, Task A-6 — Uses communication and mentoring techniques",
       "blueprintObjective": "Transfer complete and accurate task status between workers or shifts.",
-      "contentHash": "58f8d05e117dfa417fe47072e74c9961c42e2bc7edee563c115419d9032fd11c"
+      "contentHash": "4a1decafc4f9d9df718622b16b0f472f8979196992083e6c8fea52ef80bd3be1"
     },
     {
       "bankItemNumber": 55,
@@ -1233,7 +1233,7 @@
       "explanation": "Teach-back and supervised performance reveal whether the apprentice understands both the reasoning and the method. Specific feedback can then correct gaps before independent work is considered.",
       "sourceReference": "MWA A, Task A-6 — Uses communication and mentoring techniques",
       "blueprintObjective": "Verify learning through explanation, supervised practice, and feedback.",
-      "contentHash": "e989479f4f325c597d1d8767cf6551c961da698b7d421580a89fdb4a8e3d5b21"
+      "contentHash": "17e44629ce7add88426b98aeb68a9cc30b542952fa6ad79a9a667c9e2fb51e72"
     }
   ]
 }
