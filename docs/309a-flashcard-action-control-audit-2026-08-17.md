@@ -11,3 +11,5 @@ The card now uses a stable responsive height with internal scrolling for longer 
 ## Verification
 
 The revealed 309A card was inspected locally after the correction. Both `Still Learning` and `Got It!` were visibly rendered beneath the back face as independent foreground buttons, with the navigation controls below them. TypeScript and focused flashcard layout, progress, and projection tests passed.
+
+The cache-busted public 309A flashcard page was then exercised after deployment. Its revealed card exposed the same independent `Still Learning` and `Got It!` controls beneath the back face, confirming that the learner decisions are no longer covered by the card.
