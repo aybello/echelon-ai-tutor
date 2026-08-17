@@ -16,6 +16,7 @@ The governing files and documentation are already present:
 | `content/309a/current-exam-source-manifest.json` | Versioned official-source metadata and retrieval hashes |
 | `content/309a/309a-question.schema.json` | Authoring/import contract |
 | `docs/309a-diagram-specifications.md` | Original SVG/React diagram pack |
+| `content/309a/diagram-manifest.json` | Implemented diagram allowlist and visual-content constraints |
 | `docs/309a-production-governance.md` | Required data model, review controls, free-beta policy, and claims rules |
 
 ## Non-negotiable product policy
@@ -49,7 +50,7 @@ Write in five batches aligned to Major Work Activities: A=55, B=140, C=150, D=10
 
 ## Diagrams and flashcards
 
-Implement the 16 original editable React/SVG diagrams defined in `docs/309a-diagram-specifications.md`. Store diagram components under `client/src/components/electrician309a/`; do not place static media in the project tree. If a raster asset is ever needed, follow the project storage policy and upload it through webdev storage.
+The first five original editable SVG diagrams are implemented in `client/src/components/ElectricianDiagrams.tsx` and rendered on the public preview. Use `content/309a/diagram-manifest.json` as the permitted `diagramId` allowlist for the first question batches. Do not reference a proposed diagram until its component, alt text, and manifest entry are checked in. Extend the remaining diagrams in the established component rather than putting static media in the project tree. If a raster asset is ever needed, follow the project storage policy and upload it through webdev storage.
 
 Create at least 150 flashcards from the 500-question bank, weighted proportionally by Major Work Activity. Cards should test terminology, relationships, formulas, fault paths, equipment purpose, and diagram labels; they must not merely repeat full multiple-choice stems.
 

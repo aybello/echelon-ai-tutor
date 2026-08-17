@@ -31,6 +31,18 @@ The visual library must teach concepts from the official current-exam task matri
 
 Every diagram must render at `320px` to `1440px` width without cropped labels. Electrical conductors must not rely on colour alone; use labels and distinct line treatments. Callouts must describe a conceptual function, not a code-mandated installation value. Calculations must show variables and units but no proprietary table values. A question may reference `diagramId` only after the diagram component and its alt text have been checked in.
 
+## First implemented pack
+
+The following original editable SVG diagrams are now implemented in `client/src/components/ElectricianDiagrams.tsx`, exposed through `ElectricianDiagramLibrary`, and rendered on the public 309A preview page. Their IDs are stable and may now be referenced by approved 309A questions in the import manifest.
+
+| Diagram ID | Component topic | Intended first question use |
+|---|---|---|
+| `309A-D01` | Lockout and absence-of-voltage sequence | Identify sequencing and verification concepts |
+| `309A-D03` | Transformer turns and voltage relationship | Explain turns-ratio calculations and voltage concepts |
+| `309A-D04` | Distribution hierarchy and protective-device path | Trace a conceptual source-to-load path |
+| `309A-D05` | Grounding and bonding conceptual fault path | Explain bonding purpose and protective-device clearing concepts |
+| `309A-D10` | Across-the-line starter control concept | Identify functional start/stop/overload/coil relationships |
+
 ## References
 
 [1]: [Red Seal Program — Construction Electrician examination weightings (current exam, previous RSOS)](https://red-seal.ca/eng/trades/constelectric/previous/exam-weightings.shtml)

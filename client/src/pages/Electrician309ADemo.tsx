@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import { ElectricianDiagramLibrary } from "@/components/ElectricianDiagrams";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import {
@@ -220,6 +221,17 @@ export default function Electrician309ADemo() {
                   <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
                 </div>
               ))}
+            </div>
+          </section>
+
+          <section className="border-y border-slate-200 bg-white">
+            <div className="mx-auto max-w-6xl px-5 py-12 md:py-16">
+              <div className="mb-8 max-w-3xl">
+                <p className="text-sm font-extrabold uppercase tracking-[0.14em] text-[#0047AB]">Visual learning library</p>
+                <h2 className="mt-2 text-3xl font-black tracking-tight text-[#1E3A5F]">Build the mental models before you meet the questions.</h2>
+                <p className="mt-3 text-sm leading-6 text-slate-600">These original Echelon Institute concept diagrams are being built alongside the 309A question bank. They teach relationships and troubleshooting logic—not code tables or installation prescriptions.</p>
+              </div>
+              <ElectricianDiagramLibrary />
             </div>
           </section>
         </>
