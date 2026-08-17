@@ -8,6 +8,12 @@ import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import SiteNav from "@/components/SiteNav";
+import {
+  flashcardProgressKey,
+  normalizeKnownFlashcardIds,
+  stillLearningCards,
+  summarizeFlashcardProgress,
+} from "@/lib/flashcardProgress";
 
 const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
 
@@ -101,7 +107,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const limit = freeFlipLimit ?? FREE_FLIP_LIMIT;
   const showPaywall = freeFlipLimit !== undefined && totalFlips >= limit && !paywallDismissed;
   const [index, setIndex] = useState(0);
-  const [known, setKnown] = useState<Set<number | string>>(new Set());
+  const [known, setKnown] = useState<Set<string>>(new Set());
   const [reviewing, setReviewing] = useState(false);
   const [deck, setDeck] = useState<FlashcardQuestion[]>(() => shuffleArr(conceptualQuestions));
   const [sessionComplete, setSessionComplete] = useState(false);
@@ -123,10 +129,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
   useEffect(() => {
     if (savedProgress && !progressLoaded) {
-      const ids = savedProgress.knownIds ?? [];
-      if (ids.length > 0) {
-        setKnown(new Set(ids));
-      }
+      setKnown(normalizeKnownFlashcardIds(savedProgress.knownIds ?? [], conceptualQuestions));
       setProgressLoaded(true);
     }
   }, [savedProgress, progressLoaded]);
@@ -135,7 +138,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const saveProgress = trpc.flashcard.saveProgress.useMutation();
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const persistKnown = useCallback((nextKnown: Set<number | string>) => {
+  const persistKnown = useCallback((nextKnown: Set<string>) => {
     if (!email) return;
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
@@ -148,12 +151,10 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     }, 800);
   }, [email, examType, conceptualQuestions.length, saveProgress]);
 
-  // Memoized filtered list (used for module switching)
-  const _filtered = useMemo(() => {
-    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    return reviewing ? base.filter(q => !known.has(q.id)) : base;
-  }, [conceptualQuestions, selectedModule, reviewing, known]);
-  void _filtered;
+  const selectedScope = useMemo(
+    () => selectedModule ? conceptualQuestions.filter((question) => question.module === selectedModule) : conceptualQuestions,
+    [conceptualQuestions, selectedModule],
+  );
 
   const card = deck[index] ?? null;
   const questionText = card ? getQText(card) : "";
@@ -169,9 +170,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
   const total = deck.length;
   const progress = total > 0 ? Math.round((index / total) * 100) : 0;
-  const knownCount = known.size;
-  const knownInDeck = deck.filter(item => known.has(item.id)).length;
-  const remainingInDeck = deck.length - knownInDeck;
+  const scopeSummary = summarizeFlashcardProgress(selectedScope, known);
+  const sessionSummary = summarizeFlashcardProgress(deck, known);
 
   const reshuffleDeck = useCallback((qs: FlashcardQuestion[]) => {
     setDeck(shuffleArr(qs));
@@ -183,7 +183,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const handleModuleChange = (mod: string | null) => {
     setSelectedModule(mod);
     const base = mod ? conceptualQuestions.filter(q => q.module === mod) : conceptualQuestions;
-    const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
+    const next = reviewing ? stillLearningCards(base, known) : base;
     reshuffleDeck(next);
   };
 
@@ -216,7 +216,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     if (card) {
       setKnown(prev => {
         const s = new Set(prev);
-        s.add(card.id);
+        s.add(flashcardProgressKey(card.id));
         persistKnown(s);
         return s;
       });
@@ -228,7 +228,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     if (card) {
       setKnown(prev => {
         const s = new Set(prev);
-        s.delete(card.id);
+        s.delete(flashcardProgressKey(card.id));
         persistKnown(s);
         return s;
       });
@@ -238,13 +238,12 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
   const handleShuffle = () => {
     const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
+    const next = reviewing ? stillLearningCards(base, known) : base;
     reshuffleDeck(next);
   };
 
   const handleReviewUnknown = () => {
-    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    const missed = base.filter(q => !known.has(q.id));
+    const missed = stillLearningCards(selectedScope, known);
     if (missed.length === 0) return;
     setReviewing(true);
     reshuffleDeck(missed);
@@ -252,14 +251,11 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
   const handleStudyDeck = () => {
     setReviewing(false);
-    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    reshuffleDeck(base);
+    reshuffleDeck(selectedScope);
   };
 
   if (sessionComplete) {
-    // Count cards in the current deck that are NOT in the known set (not global knownCount)
-    const deckKnownCount = deck.filter(c => known.has(c.id)).length;
-    const unknownCount = deck.length - deckKnownCount;
+    const { gotIt: deckKnownCount, stillLearning: unknownCount } = sessionSummary;
     return (
       <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
         <SiteNav currentPath={window.location.pathname} />
@@ -350,7 +346,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ color: "#94a3b8", fontSize: "13px" }}>
-            <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownInDeck}</span> secure · {remainingInDeck} to review
+            <span style={{ color: "#22c55e", fontWeight: 700 }}>{scopeSummary.gotIt}</span> got it · {scopeSummary.stillLearning} still learning
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
           <button onClick={handleShuffle} style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1D4ED8", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
@@ -363,8 +359,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E0ECFF" : "#fff", color: !reviewing ? "#1D4ED8" : undefined }}>
           Study deck
         </button>
-        <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={remainingInDeck === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
-          Review {remainingInDeck} still-learning
+        <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={scopeSummary.stillLearning === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
+          Review {scopeSummary.stillLearning} still-learning
         </button>
       </div>
 

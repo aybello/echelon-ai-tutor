@@ -1634,6 +1634,6 @@
 - [x] Hide the server-rendered crawl fallback before React hydration while preserving a no-JavaScript fallback
 
 ## 309A Flashcard Progress Display Repair
-- [ ] Audit the “Got it” and “Still learning” counts, card filtering, and persistence identifiers
-- [ ] Correct the progress-state calculation and review controls so display matches actual learner decisions
+- [x] Audit the “Got it” and “Still learning” counts, card filtering, and persistence identifiers
+- [x] Correct the progress-state calculation and review controls so display matches actual learner decisions
 - [ ] Validate, publish, and verify the corrected flashcard progress experience
