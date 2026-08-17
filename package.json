@@ -17,7 +17,14 @@
     "db:migrate:status": "node --import tsx scripts/db/migrate.ts status",
     "db:migrate:adopt": "node --import tsx scripts/db/migrate.ts adopt",
     "db:migrate:apply": "node --import tsx scripts/db/migrate.ts apply",
-    "db:verify-question-governance": "node scripts/verify-question-governance-schema.mjs"
+    "db:verify-question-governance": "node scripts/verify-question-governance-schema.mjs",
+    "309a:validate-package": "node scripts/validate-309a-production-package.mjs",
+    "309a:validate": "node scripts/validate-309a-question-bank.mjs",
+    "309a:validate:full": "node scripts/validate-309a-question-bank.mjs --full",
+    "309a:validate:a": "node scripts/validate-309a-question-bank.mjs --batch A",
+    "309a:hash": "node scripts/stamp-309a-content-hashes.mjs",
+    "309a:generate:remaining": "node scripts/generate-309a-remaining-batches.mjs",
+    "309a:import:dry-run": "node scripts/import-309a-question-bank.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1111.0",
