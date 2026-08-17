@@ -1516,3 +1516,7 @@
 - [x] Inspect current course and resource navigation surfaces for the appropriate 309A preview entry
 - [x] Add a clearly labelled public 309A draft-preview entry without implying a full course launch
 - [x] Validate and publish the discoverable 309A navigation entry
+## 309A Echelon Institute Design-System Integration
+- [x] Compare the 309A prototype layout, type, colours, and navigation with the existing Echelon Institute course experience
+- [x] Refactor the 309A preview to use shared Echelon Institute marketing and learning design patterns
+- [x] Validate and publish the integrated 309A visual experience on desktop and mobile
