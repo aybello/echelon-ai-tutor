@@ -2,8 +2,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
-const apiKey = process.env.ANTHROPIC_API_KEY;
-const model = process.env.QUESTION_REVIEW_MODEL ?? "claude-opus-5";
+const provider = process.env.QUESTION_REVIEW_PROVIDER ?? "anthropic";
+const apiKey = provider === "perplexity" ? process.env.SONAR_API_KEY : process.env.ANTHROPIC_API_KEY;
+const model = process.env.QUESTION_REVIEW_MODEL ?? (provider === "perplexity" ? "sonar-pro" : "claude-opus-5");
 const report = JSON.parse(readFileSync(resolve(root, "reports/309a-independent-quality-review.json"), "utf8"));
 const diagramCatalogue = JSON.parse(readFileSync(resolve(root, "content/309a/309a-diagrams.json"), "utf8"));
 const diagramById = new Map(diagramCatalogue.diagrams.map((diagram) => [diagram.id, diagram.altText]));
@@ -13,7 +14,7 @@ const concurrentChunkLimit = 1;
 const selectedCategories = new Set((process.env.REPAIR_CATEGORIES ?? "").split(",").map((value) => value.trim()).filter(Boolean));
 const skippedQuestionNumbers = new Set((process.env.REPAIR_SKIP_IDS ?? "").split(",").map((value) => Number(value.trim())).filter(Number.isInteger));
 
-if (!apiKey) throw new Error("ANTHROPIC_API_KEY is required for the independent-review repair pass.");
+if (!apiKey) throw new Error(`${provider === "perplexity" ? "SONAR_API_KEY" : "ANTHROPIC_API_KEY"} is required for the independent-review repair pass.`);
 
 const documents = new Map(files.map((file) => {
   const path = resolve(root, "content/309a/questions", file);
@@ -88,24 +89,47 @@ async function reviseChunk(chunk) {
   let lastError;
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const request = provider === "perplexity"
+        ? {
+            url: "https://api.perplexity.ai/chat/completions",
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: {
+              model,
+              max_tokens: 1800,
+              messages: [
+                { role: "system", content: instruction },
+                { role: "user", content: JSON.stringify({ items: chunk.map(compactRecord) }) },
+              ],
+            },
+          }
+        : {
+            url: "https://api.anthropic.com/v1/messages",
+            headers: {
+              "x-api-key": apiKey,
+              "anthropic-version": "2023-06-01",
+              "Content-Type": "application/json",
+            },
+            body: {
+              model,
+              max_tokens: 8000,
+              system: instruction,
+              messages: [{ role: "user", content: JSON.stringify({ items: chunk.map(compactRecord) }) }],
+            },
+          };
+      const response = await fetch(request.url, {
         method: "POST",
-        headers: {
-          "x-api-key": apiKey,
-          "anthropic-version": "2023-06-01",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model,
-          max_tokens: 8000,
-          system: instruction,
-          messages: [{ role: "user", content: JSON.stringify({ items: chunk.map(compactRecord) }) }],
-        }),
+        headers: request.headers,
+        body: JSON.stringify(request.body),
         signal: AbortSignal.timeout(240_000),
       });
-      if (!response.ok) throw new Error(`Anthropic HTTP ${response.status}: ${await response.text()}`);
+      if (!response.ok) throw new Error(`${provider} HTTP ${response.status}: ${await response.text()}`);
       const payload = await response.json();
-      const text = payload.content?.find((block) => block.type === "text")?.text ?? "";
+      const text = provider === "perplexity"
+        ? payload.choices?.[0]?.message?.content ?? ""
+        : payload.content?.find((block) => block.type === "text")?.text ?? "";
       const parsed = JSON.parse(stripFence(text));
       if (!Array.isArray(parsed.items) || parsed.items.length !== chunk.length) throw new Error("Revision response is incomplete.");
       const revisions = new Map();

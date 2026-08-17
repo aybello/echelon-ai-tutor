@@ -167,15 +167,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "On a bidirectional conveyor drive, operators report the reverse contactor occasionally energizes before the motor fully coasts down, though this fault does not appear every cycle. Which method best confirms whether the forward-reverse interlock is functioning correctly?",
+      "question": "On a forward‑reverse conveyor starter, the reverse contactor sometimes pulls in before the motor has stopped. How should an electrician verify that the electrical and mechanical interlocks between the forward and reverse contactors are operating as designed?",
       "options": [
-        "Rely on the operator's verbal description of the fault as sufficient proof of interlock condition.",
-        "Visually inspect contactor wiring only, since intermittent faults rarely involve control logic issues.",
-        "Assume the interlock is fine because an identical starter performed correctly on another line.",
-        "Compare the interlock function against approved schematics, nameplate ratings, manufacturer data, and measured timing."
+        "Ask the operator to describe when the fault occurs and treat that description as the main proof of interlock performance.",
+        "Check for loose control wires on the contactors only, assuming intermittent issues are rarely caused by the way the circuit is designed.",
+        "Consider the interlock satisfactory because a similar forward‑reverse starter on another conveyor runs without problems.",
+        "Test the forward‑reverse control circuit against the schematic, contactor nameplate data, manufacturer instructions, and observed stopping and pickup times."
       ],
       "correctIndex": 3,
-      "explanation": "An intermittent reversing fault suggests a timing, contact-bounce, or interlock-wiring issue that will not always show on a single observation. Comparing measured behavior against the approved schematic, nameplate data, and manufacturer specifications lets the electrician confirm whether mechanical and electrical interlocking, timing relays, and auxiliary contacts meet design intent under actual load conditions. Relying on an operator's description alone provides no technical verification and may miss root cause. Visual inspection alone ignores that intermittent faults often stem from control logic, contact wear, or timing drift not visible externally. Assuming performance based on another unit ignores that wiring errors, wear, or setpoint differences are unit-specific. Only structured verification against documented design and measured performance reliably confirms correct forward-reverse interlock operation and supports a defensible, repeatable record for future troubleshooting.",
+      "explanation": "Forward‑reverse interlocks must be verified against how the circuit is supposed to operate, not just how it appears. Comparing the actual control sequence, contactor operation, and timing with the schematic, equipment ratings, and manufacturer guidance confirms that auxiliary contacts, mechanical interlocks, and any timing devices prevent one contactor from energizing while the other is still active or the motor is coasting. Relying only on the operator’s description does not show how the circuit is wired or timed. Simply checking for loose wires ignores logic or timing faults that cause intermittent problems. Assuming the interlock is acceptable because another starter works correctly overlooks unit‑specific wiring errors, worn parts, or different settings. A structured test against documentation and observed behavior is the most reliable way to confirm correct forward‑reverse interlock operation on the conveyor drive.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -183,7 +183,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply forward-reverse interlock knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "f2107ad5a8b04bac9a7c8a3cc8f5f90a7e0b52c15f33319bad19cf2fa5aab656"
+      "contentHash": "31004836b279d78e4507b91b8488bc4d4244601f6bc7ba8af45aa4173477b4a4"
     },
     {
       "bankItemNumber": 352,
@@ -196,12 +196,12 @@
       "question": "While troubleshooting a conveyor sorting station, an electrician clamps an ammeter on the 120 V secondary of the control transformer with the station running and all five identical relay coils sealed in. Each coil is rated 12 VA sealed. What secondary current should the meter read if the control circuit is drawing normal load?",
       "options": [
         "0.5 A",
-        "0.3 A",
-        "0.7 A",
+        "0.4 A",
+        "0.6 A",
         "0.9 A"
       ],
       "correctIndex": 0,
-      "explanation": "With all five coils sealed in at the same time, the total sealed burden is 5 x 12 VA = 60 VA. Current is found by dividing the total burden by the secondary voltage: 60 VA / 120 V = 0.5 A, so a healthy circuit should read about half an amp on the clamp meter. A reading of 0.3 A (36 VA) would indicate only three of the five coils are actually sealed in, so it is what an electrician would measure with two relays dropped out rather than the expected full-load value. The 0.7 A figure corresponds to 84 VA, which comes from adding two extra 12 VA devices that are not part of this circuit. The 0.9 A figure corresponds to 108 VA, which results from mixing inrush ratings in with sealed ratings instead of using the sealed values consistently. The working habit is to total the VA of everything energized at once, then divide by the actual secondary voltage, and compare that calculated value to the measured current to judge whether the control circuit is loaded normally.",
+      "explanation": "With all five coils sealed in at the same time, the total sealed burden is 5 × 12 VA = 60 VA. Current is found by dividing the total burden by the secondary voltage: 60 VA ÷ 120 V = 0.5 A, so a healthy circuit should read about half an amp on the clamp meter. The 0.4 A choice matches 48 VA, which would mean only four coils are energized. The 0.6 A choice matches 72 VA, which would require an additional load not described in the circuit. The 0.9 A choice matches 108 VA, which is far above the stated sealed burden and would suggest an abnormal condition rather than normal operation.",
       "steps": [
         {
           "label": "Total VA",
@@ -218,7 +218,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "fe3ee8bf745a12129f6fc4f8044e29df1a118ad8378e95ce5dd1517a0ae289cf"
+      "contentHash": "fcf2a95870c58146c1f61e8dd97a34e2fec9ee035ee3cd1782bb24b93315c3ad"
     },
     {
       "bankItemNumber": 353,
@@ -280,15 +280,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "A reversing motor starter feeding a conveyor (tag D22-10) was returned to service after a contactor swap. It runs fine unloaded but drops out once the conveyor is loaded. What verification approach best confirms the sequence test result before re-energizing for production?",
+      "question": "A reversing motor starter feeding a conveyor (tag D22-10) has just had a contactor replaced. It runs properly with the conveyor unloaded but the starter drops out when the conveyor is carrying product. Before releasing the conveyor back to production, what is the best way to verify that the post‑repair sequence test is acceptable?",
       "options": [
-        "Rely on the technician's recollection of last week's similar repair as the acceptance record.",
-        "Let the next production run serve as the first real test of the repaired sequence.",
+        "Record that the starter runs unloaded and assume it will behave the same once the conveyor is fully loaded.",
+        "Start the conveyor with a normal product load and see if the starter holds in during the next scheduled run.",
         "Compare readings against approved drawings, nameplate ratings, manufacturer data, and measured site values.",
-        "Approve the sequence because the starter looks correctly wired and matches a past job."
+        "Confirm that the control wiring appears tidy, matches typical shop practice, and that all terminals are tight."
       ],
       "correctIndex": 2,
-      "explanation": "A load-dependent dropout points to overload, interlock, or control-voltage issues that only appear once current rises, so acceptance must be based on measured evidence, not visual inspection or memory. Comparing measured control voltage, overload trip settings, and interlock timing against the approved drawing and manufacturer data confirms whether the starter is correctly matched to the motor's actual running current. Relying on memory or a past similar job ignores that this unit's load profile and wiring may differ. Treating production energization as the first test risks nuisance trips, contactor chatter, or motor damage under real load. Accepting the repair on appearance alone misses electrical parameters that are invisible without measurement, leaving the load-triggered fault undiagnosed and the equipment unsafe for full-duty operation.",
+      "explanation": "When a starter drops out only under load, the cause is often related to overload settings, control voltage sag, or interlocks that operate at higher current. The sequence test is only meaningful if electrical values are verified against reference data. Comparing actual measurements such as motor current, overload trip settings, and control circuit voltage to approved drawings, nameplate ratings, manufacturer information, and site conditions confirms that the starter and control sequence are correctly matched to the conveyor’s real operating load. Simply running unloaded, relying on a production run, or judging by neat wiring and tight terminals does not check whether the electrical parameters stay within limits when the conveyor is carrying product, leaving the load‑related dropout unaddressed and the equipment at risk of nuisance trips or damage in service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -296,7 +296,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply post-repair sequence test knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "005cfaa51dbbffe6ef2cd5f95dbc63ad0b8d6f403be21878fd106f8ee712d206"
+      "contentHash": "81fc2e6b1c6022454530ccd872209336ba243f3922dbeecf6b2d482e1b26d15d"
     },
     {
       "bankItemNumber": 356,
@@ -367,15 +367,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A 15 HP, 575 V, three-phase conveyor motor has a nameplate full-load current of 15 A. During pre-start checks on a new magnetic starter, an apprentice finds the installed overload element has an adjustment range of 21–29 A, which was intended for a larger motor on the same job. The starter has not been energized. What action correctly sizes the overload protection for this motor?",
+      "question": "On a 575 V, three-phase conveyor motor starter, the motor nameplate shows a full-load current of 15 A. The starter currently has an overload element installed with an adjustment range of 21–29 A, which was selected for a larger motor on the same project. The starter has not been energized yet. What is the correct next step to size the overload protection for this motor?",
       "options": [
-        "Keep the installed 21–29 A element and turn its adjustment dial down to the 21 A minimum, since that is the closest available value above the nameplate current.",
-        "Choose the overload element using the horsepower-and-voltage current values used for feeder and conductor sizing rather than the 15 A stamped on the motor nameplate.",
-        "Leave the oversized element in place and rely on the branch-circuit breaker's instantaneous trip together with the control-circuit fusing to protect the motor winding.",
-        "Install the overload element whose adjustment range brackets the 15 A nameplate full-load current per the starter manufacturer's selection table, then confirm running current at full conveyor load."
+        "Set the installed 21–29 A overload to its lowest setting, because it is the nearest available range above the motor's 15 A full-load current.",
+        "Select the overload element based on the motor horsepower and supply voltage values used for conductor sizing, instead of the 15 A nameplate current.",
+        "Leave the 21–29 A overload in place and depend on the branch-circuit breaker and control-circuit fuse to protect the motor windings.",
+        "Install the overload element whose adjustment range includes the 15 A nameplate full-load current, then verify the conveyor's running current under normal load."
       ],
       "correctIndex": 3,
-      "explanation": "Running overload protection must be matched to the current actually stamped on the motor nameplate. The starter manufacturer publishes a selection table listing an overload element or heater for each band of full-load current, and the element chosen must have an adjustment range that includes 15 A so the relay trips on a modest, sustained overload. Checking running current with a clamp meter after start-up confirms the setting suits the real conveyor loading. Dialling a 21–29 A element to its 21 A minimum still permits roughly 140 % of nameplate current indefinitely, so the winding can overheat without tripping. The horsepower-and-voltage current values are intended for sizing conductors and short-circuit protection, not overload elements, and are usually higher than nameplate current. Breakers and control fusing respond to short circuits and ground faults, not to the slow temperature rise caused by a jammed or overloaded conveyor, so they cannot substitute for a correctly sized overload element.",
+      "explanation": "Motor overload protection is selected from the motor nameplate full-load current, not from a larger motor's setting or from conductor-sizing values. The proper element is the one whose adjustment range includes 15 A, so the overload relay can trip on a sustained overload without nuisance tripping during normal starting. After the starter is put into service, the running current should be checked under normal conveyor load to confirm the setting is appropriate. Setting a 21–29 A element to 21 A still leaves the motor poorly protected, and branch breakers or control fuses are intended for short-circuit protection, not for slow overheating caused by overload.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "e28487933a0a9c441e744ce2f564675d9398e8e34385686529d05f0ae497f00c"
+      "contentHash": "ae3c681dd69ce3188c645c286e9b53b014be0f94f7b329c2a39b81d7c99a814c"
     },
     {
       "bankItemNumber": 359,
@@ -454,15 +454,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While troubleshooting a conveyor motor starter, you find the seal-in contact wiring on the panel does not match the approved as-built drawing pulled from document control, and the motor is cycling on and off unexpectedly. What is the correct next step?",
+      "question": "While troubleshooting a conveyor motor starter, you discover that the seal-in contact wiring in the control panel does not match the approved as-built drawing, and the motor contactor is dropping out and re-energizing repeatedly. What should you do next to safely restore proper seal-in operation?",
       "options": [
-        "Assume the panel wiring is correct since the motor still runs, and skip comparing it to the approved drawing.",
-        "Adjust the seal-in contact connections while energized, using the cycling pattern alone to guide your changes.",
-        "Accept the previous shift electrician's verbal description of the wiring without confirming it against the approved drawing.",
-        "Isolate and lock out the circuit, verify seal-in contact wiring against the approved drawing, resolve the discrepancy, then document and restore."
+        "Leave the wiring as found and look for a mechanical problem on the conveyor, since the motor still starts.",
+        "Attempt to rewire the seal-in circuit with the panel energized, using the contactor chatter alone to decide which wires to move.",
+        "Rely on the operator’s description of how the starter used to behave instead of checking the circuit against the approved drawing.",
+        "Isolate and lock out the control circuit, confirm the seal-in contact wiring against the approved as-built drawing, correct any miswiring, then document the changes before returning the starter to service."
       ],
       "correctIndex": 3,
-      "explanation": "The unexpected cycling combined with a documented wiring mismatch signals a real control fault, not a cosmetic discrepancy. Locking out before comparing the physical wiring to the approved drawing protects against shock or arc exposure while establishing which source is correct, and documenting the resolution gives the next technician reliable information. Trusting the panel simply because the motor runs ignores the risk that the seal-in contact is miswired and could fail dangerously under different load conditions. Making live adjustments based only on the cycling symptom risks misdiagnosis and injury, since the actual fault may be elsewhere in the control logic. Relying on a colleague's verbal account without checking the approved drawing repeats the same verification failure that caused the conflict, leaving the true wiring configuration unconfirmed.",
+      "explanation": "A seal-in contact must be wired exactly as shown on the approved control drawing, or the motor starter may drop out unexpectedly and cycle on and off. Locking out the circuit before opening the panel eliminates shock and arc flash risk while you trace the seal-in path against the as-built diagram. Once you identify and correct any miswired seal-in contacts, you restore proper holding of the contactor coil. Documenting the correction ensures that future troubleshooting and maintenance are based on accurate information. Ignoring the wiring because the motor still starts can leave an intermittent control fault in place, and making live changes or relying only on verbal descriptions bypasses the controlled, safe verification process needed for seal-in troubleshooting.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -470,7 +470,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply seal-in contact knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "c1d479742ca7ae12ad2586bb761b5d563f7a7fa6363d3553815e922bcadd8c4f"
+      "contentHash": "2804be82e8161450ed083530c3fbfe154b991f351d0b546b174e714330ab52ec"
     },
     {
       "bankItemNumber": 362,
@@ -593,15 +593,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a cooling tower fan starter panel, the previous shift acknowledged a start-failure alarm without recording a cause. You cannot confirm whether the starter's normally open auxiliary contact — the one that seals in the coil circuit and sends the \"fan running\" signal to the interlock string — is actually transferring when the contactor picks up. With the panel isolated and locked out, what is the correct next step before re-energizing the starter?",
+      "question": "On a cooling tower fan starter that has been locked out for troubleshooting after a start-failure alarm, you suspect that the normally open auxiliary contact used for coil seal-in and the \"fan running\" interlock may not be changing state when the contactor pulls in. Before putting the starter back into service, what should you do to verify that this auxiliary contact is providing the correct signal to the control circuit?",
       "options": [
-        "Ohm out the contactor coil and replace it, since a seal-in failure of this type is normally caused by coil deterioration rather than by the auxiliary contact block.",
-        "Reset the overload relay and restart the fan, treating the acknowledged alarm as a thermal trip that has since cooled and cleared itself.",
-        "Replace the auxiliary contact block with a spare of the same catalogue number and record the change as scheduled preventive maintenance on the starter.",
-        "Check continuity of the auxiliary contact both de-energized and with the armature pushed in by hand, compare its normally open or closed function to the approved control schematic and interlock sequence, correct any mismatch, then record the results."
+        "Test the contactor coil insulation and resistance with an ohmmeter, then replace the coil on spec if its readings are outside typical values for that size of starter.",
+        "Reset the overload relay and clear the alarm, then attempt to start the fan again to see if the fault reoccurs under normal operating load.",
+        "Change out the existing auxiliary contact block for a new one of the same type, assuming internal wear is the most likely cause of the intermittent start failure.",
+        "Check continuity of the auxiliary contact with the starter de-energized and again with the armature pushed in by hand, confirm that its open/closed state matches the control schematic and interlock logic, correct any discrepancy found, and document the test results for future reference."
       ],
       "correctIndex": 3,
-      "explanation": "An auxiliary contact either transfers or it does not, and that can be proven quickly on a locked-out starter: read continuity across the contact with the armature at rest, then manually push the armature in and read it again. Comparing that measured behaviour to the approved schematic confirms whether the contact is wired and functioning as the normally open seal-in and interlock device the control circuit expects, and recording the result gives the next person a starting point instead of another blank alarm entry. Replacing the coil first assumes a fault that has not been proven; a coil that pulls the contactor in is not the reason a seal-in path fails to make. Resetting the overload and restarting only repeats the failed start without gathering any information about the contact state. Swapping in a new contact block may restore operation by chance, but if the block was wired to the wrong pole or the interlock expects the opposite contact function, the same alarm returns and the actual mismatch is still unknown.",
+      "explanation": "The key task is to prove whether the auxiliary contact changes state as intended and whether its wiring matches the control diagram and interlock logic. With the starter safely locked out, you can meter continuity across the auxiliary contact at rest, then manually depress the contactor armature and meter it again. If the contact is supposed to be normally open for coil seal-in and the \"fan running\" signal, its measured state must correspond to that function and the control schematic. Any mismatch in contact designation or wiring can be corrected before the starter is re-energized, and recording the findings provides clear information for later troubleshooting. Testing or replacing the coil does not address whether the seal-in and status contact is operating correctly. Simply resetting the overload and trying another start repeats the fault condition without confirming the control contact behaviour. Replacing the auxiliary block without testing its function or matching it to the diagram might change hardware but leaves the underlying control logic and contact state unverified.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -609,7 +609,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply auxiliary contact state knowledge while the electrician installs motor starters.",
-      "contentHash": "107ac7b74647a0d9fa9402540ea1167622673c0d432f118fc3145e8139ac4012"
+      "contentHash": "7282ff6dd1982a5ce943604ca5fda5358a43b8cffd955424952d2449100d39a1"
     },
     {
       "bankItemNumber": 367,
@@ -619,15 +619,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "A reversing starter on a conveyor motor was rebuilt after a burned contactor. Before the equipment returns to service, which approach best confirms the post-repair sequence test is acceptable and leaves a traceable record for the next shift?",
+      "question": "A reversing starter on a conveyor motor was rebuilt after a burned contactor. Before returning the conveyor to production, which action best confirms the post-repair sequence test is acceptable and provides a record that the control operates as designed?",
       "options": [
-        "Rely on the previous electrician's verbal report as the only proof the sequence test passed.",
-        "Energize the conveyor and treat the first production run as the verification of the repair.",
-        "Confirm the sequence test against the control schematic, motor nameplate, starter rating, and measured voltages.",
-        "Approve the starter because an identical unit on another line functioned correctly last month."
+        "Rely on the previous electrician’s verbal report that the motor started and stopped correctly.",
+        "Start the conveyor with product and assume a normal production run proves the repair is acceptable.",
+        "Verify the forward and reverse sequence against the control schematic, motor nameplate, starter and overload ratings, and measured control and line voltages.",
+        "Approve the rebuilt starter because a matching starter on a different conveyor has been running without issues."
       ],
       "correctIndex": 2,
-      "explanation": "Verifying against the control schematic, motor nameplate data, starter and overload ratings, and measured control and load voltages gives an objective, documented basis for accepting the repair and lets the next shift see exactly what was checked. A verbal report leaves no record and cannot be independently reviewed. Treating the first production run as the test risks failure to start or stop, contactor re-damage, or an overload trip under load with product or personnel exposed. Assuming equivalence from another unit ignores that this specific starter was just rebuilt and its actual measured condition, wiring, and interlocks have not been confirmed. Only the evidence-based comparison against approved design data and measured site conditions supports a defensible, traceable acceptance decision.",
+      "explanation": "After rebuilding a reversing starter, the sequence test needs to be checked against the actual design and equipment data so the controls are proven safe and reliable. Comparing the forward and reverse operation to the control schematic confirms that all interlocks, pushbuttons, and auxiliary contacts are wired and functioning correctly. Checking the motor nameplate and starter/overload ratings ensures the device is properly matched to the motor and not likely to overheat or nuisance trip. Measuring control and line voltages verifies that the coils and contacts are operating within their intended limits. Documenting these checks gives the next shift clear evidence of what was tested. A verbal report offers no objective record. Using a live production run as the only test exposes people, product, and equipment if the controls malfunction. Assuming the rebuilt starter is acceptable because another starter on a different conveyor works ignores that this unit was just repaired and may still have wiring or component issues that only a proper sequence test would reveal.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -635,7 +635,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.02",
       "blueprintObjective": "Apply post-repair sequence test knowledge while the electrician services and maintains motor starters.",
-      "contentHash": "e263a150278043e809936e79ece8d7be872fd88120d20750c6d5b1314b555f49"
+      "contentHash": "016e41c2a1561b66490fb682c0b92c00172a1c6ec96c79b11c0e55b0f173b045"
     },
     {
       "bankItemNumber": 368,
@@ -680,15 +680,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the accompanying diagram, while preparing a conveyor's across-the-line starter for restart, the seal-in contact wiring shown on the approved schematic does not match the as-found terminal connections inside the starter cabinet. Which response keeps this restart under proper control?",
+      "question": "Using the across‑the‑line starter control diagram showing the stop, start, seal‑in, overload contacts and coil, you notice that the seal‑in contact is drawn in parallel with the start pushbutton, but the as‑found wiring has the seal‑in contact landed on different terminal numbers and effectively in series with the start. How should you proceed to keep the conveyor restart under proper control?",
       "options": [
-        "Adjust several terminal connections at once and treat any successful start as proof the wiring is now correct.",
-        "Reuse the seal-in wiring configuration from a similar starter on another line without checking this schematic.",
-        "Replace the seal-in contact with a new one first, and document the mismatch only if the fault recurs.",
-        "Stop work, compare the as-found seal-in wiring to the approved schematic, resolve and record the discrepancy before restarting."
+        "Move several control wires at once until the starter runs, using a successful start as confirmation that the wiring must now be correct.",
+        "Copy the seal‑in contact wiring from another conveyor starter in the plant, assuming its terminal layout will suit this circuit.",
+        "Replace the seal‑in contact device immediately and only review the schematic if the contact fails again after restart.",
+        "Stop work, trace how the seal‑in contact is actually wired against the approved diagram, correct the circuit to match the schematic, and record the change before restarting."
       ],
       "correctIndex": 3,
-      "explanation": "The seal-in contact holds the coil energized once the start button is released, so any mismatch between as-found wiring and the approved schematic can cause failure to latch, unexpected drop-out, or conflicting stop/start commands. Pausing to verify against the approved record, correcting the discrepancy, and documenting it preserves an accurate maintenance history and confirms the sequence of operation before energizing equipment. Changing multiple terminals at once and judging success by a temporary start hides which change mattered and risks masking a wiring fault. Copying wiring from another line ignores differences in interlocks, overload settings, or control voltage specific to this starter. Replacing the contact first without checking documentation may not address a wiring error and delays the required record correction, leaving the discrepancy unresolved for the next technician.",
+      "explanation": "In an across‑the‑line starter, the seal‑in contact must be connected in parallel with the start pushbutton so the coil stays energized after the operator releases the start button. If the as‑found wiring puts the seal‑in contact in the wrong path, the starter may fail to latch or drop out unexpectedly when the conveyor is running. Comparing the wiring directly to the diagram, then correcting the seal‑in path to match the intended parallel connection and documenting the change, ensures the control circuit operates as designed and provides a clear record for future troubleshooting. Randomly moving wires risks creating new faults and makes it difficult to know which change affected the circuit. Borrowing a configuration from another starter ignores possible differences in control layout, interlocks, and terminal numbering. Swapping the contact without first confirming the wiring does not address a miswired seal‑in path and can leave the underlying control problem unresolved.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -696,7 +696,7 @@
       "diagramAlt": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil.",
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control-circuit documentation knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "de409fa65335f41467b59292cc82366213e8c3614f30be4cf5704628f267c765"
+      "contentHash": "0cdbde5bbc8beb76abc4a443cf5f6570f2382d0a402a9713d15236931c8bf721"
     },
     {
       "bankItemNumber": 370,
@@ -706,7 +706,7 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A replacement motor has been installed on Line 7's mixer, and its nameplate full-load current is higher than the value shown for that motor on the panel's approved motor schedule. The starter and overload relay were originally selected from the schedule. Before energizing, what should the electrician do about starter sizing?",
+      "question": "A replacement motor has been installed on Line 7's mixer, and its nameplate full-load current is higher than the value shown for that motor on the panel's approved motor schedule. The starter and overload relay were originally selected from the schedule. Before energizing the mixer, what should the electrician do about starter sizing?",
       "options": [
         "Set the overload relay to the new nameplate full-load current and energize, leaving the motor schedule and starter sizing calculation to be updated on a later shift.",
         "Set the overload relay to the schedule's full-load current because the approved drawings govern the installation, and note the nameplate difference in the shift log.",
@@ -714,7 +714,7 @@
         "Verify the nameplate full-load current, voltage, and service factor against the motor schedule and the starter sizing calculation, resolve the discrepancy with the responsible person, and document the change before energizing."
       ],
       "correctIndex": 3,
-      "explanation": "Starter selection depends on the actual motor being controlled: the contactor must carry the motor's full-load current and match its horsepower and voltage rating, the overload element must be chosen from the nameplate current and service factor, and the branch-circuit conductors and short-circuit protection ahead of the starter were sized for the original motor. When the nameplate exceeds the scheduled value, all of those selections must be re-checked and the discrepancy settled and documented before the motor runs. Simply dialling the overload up to the new nameplate current protects the motor windings but leaves an undersized contactor and possibly undersized conductors carrying more current than they were selected for. Setting the overload to the lower scheduled value protects the wrong machine and will cause nuisance tripping while the motor is still within its own rating. Measuring current with the mixer unloaded proves little, because an unloaded motor draws well under its full-load current, so the starter could still be overloaded once the mixer is charged with product.",
+      "explanation": "Starter selection must match the actual motor being installed. The contactor and overload settings are based on the motor's nameplate current, voltage, and service factor, while the existing starter was selected for the original scheduled motor. When the replacement motor has a higher nameplate current than the scheduled value, the electrician must confirm the motor data, compare it with the starter sizing information, and have the discrepancy resolved and recorded before the motor is energized. Setting only the overload to the higher current does not confirm that the starter contact rating and related equipment are still suitable. Leaving the overload at the scheduled value can cause nuisance tripping and does not address the mismatch. Checking current with the mixer unloaded does not prove the starter will be properly sized when the mixer is operating under normal load.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -722,7 +722,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.01",
       "blueprintObjective": "Apply starter size knowledge while the electrician installs motor starters.",
-      "contentHash": "fb32a1116cf7ff88d7591c3c08e6da7cfa06a1de27dfabc607b9722f1f497c7e"
+      "contentHash": "00e2cb24a9b8c106a9913b51f1745742c95e66c5c1ab257a133e3ce5e45127f1"
     },
     {
       "bankItemNumber": 371,
@@ -758,7 +758,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "In a packaging line control panel, a 208 V to 120 V control transformer feeds six relay coils that all seal in at the same time when the operator presses the emergency-stop reset. Each coil is rated 10 VA at the 120 V control voltage. What sealed secondary current must the transformer be able to deliver?",
+      "question": "A 208 V to 120 V control transformer in a conveyor control panel supplies six 120 V relay coils that all energize and remain sealed in together when the operator presses the start pushbutton. Each relay coil is rated 10 VA at 120 V. What steady secondary current must the transformer be able to supply while all six coils are sealed in?",
       "options": [
         "0.3 A",
         "0.7 A",
@@ -766,7 +766,7 @@
         "0.5 A"
       ],
       "correctIndex": 3,
-      "explanation": "Since all six coils remain sealed in together after the reset, the transformer secondary has to carry their combined burden, so total load is 6 x 10 VA = 60 VA. Sealed current on the secondary is found by dividing that total by the secondary control voltage: 60 VA / 120 V = 0.5 A. The 0.3 A choice results from dividing the 60 VA total by the 208 V primary voltage instead of the 120 V secondary, which gives a primary-side value that does not represent the current in the coil circuit. The 0.7 A and 0.9 A choices come from multiplying the sealed load by inrush or spare-capacity factors; those allowances apply when selecting transformer size for pick-up surge, not when calculating the steady sealed current the coils actually draw. Always sum the VA of the loads that are energized at the same instant and divide by the voltage of the winding supplying them.",
+      "explanation": "All six relay coils are energized at the same time and remain sealed in, so the transformer must supply the sum of their VA ratings on the secondary. Total sealed load is 6 × 10 VA = 60 VA. The secondary current is the total VA divided by the secondary voltage: 60 VA ÷ 120 V = 0.5 A, so the transformer must deliver 0.5 A on the 120 V side. The 0.3 A option is less than the actual load and would underestimate the current the coils require. The 0.7 A and 0.9 A options are higher than the calculated sealed current and would be more appropriate as minimum transformer ratings if you were allowing extra capacity for coil inrush or future added loads, but they do not represent the actual steady current drawn by the six coils. For sealed current calculations, always add the VA of all loads that are energized together and divide by the voltage of the winding supplying those loads.",
       "steps": [
         {
           "label": "Total VA",
@@ -783,7 +783,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "62487696ae39074bbbb69b7f610976be123a0becefbdf0e62ae943b9dc7f74b6"
+      "contentHash": "5812812fd8980a3e83a9fc6bd46a2971aaacfd64beb3946f2666bc3981b9eb92"
     },
     {
       "bankItemNumber": 373,
@@ -871,7 +871,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "On a packaging line, a 120 V control transformer secondary feeds four identical solenoid valve coils, each rated 12 VA, and all four are energized together during the clamp-and-seal step. An electrician clamps an ammeter on the secondary conductor to confirm the load matches the panel drawings. What steady-state secondary current should the meter read?",
+      "question": "On a cartoner’s clamp-and-seal station, a 120 V control transformer secondary supplies four identical 12 VA solenoid valve coils that all energize at the same time. With the machine running and all four valves held open, what steady-state current should an electrician expect to measure on the transformer’s 120 V secondary using a clamp-on ammeter?",
       "options": [
         "0.2 A",
         "0.6 A",
@@ -879,7 +879,7 @@
         "0.4 A"
       ],
       "correctIndex": 3,
-      "explanation": "Add the apparent power of every coil that is on at the same time: 4 x 12 VA = 48 VA. Divide that total by the secondary voltage the coils actually operate at: 48 VA / 120 V = 0.4 A, so the clamp meter should read about 0.4 A while all four valves are held open. Reading 0.2 A would come from dividing the 48 VA by the 240 V primary supply instead of the 120 V secondary that the coils are connected across. Reading 0.6 A would come from applying a 1.5 inrush allowance to the calculated 0.4 A; inrush lasts only milliseconds while the coil armature is moving and is not the steady-state current a clamp meter settles on. Reading 0.8 A would come from treating each coil as 24 VA instead of 12 VA, doubling the total to 96 VA. Working from the true simultaneous VA total divided by the operating voltage gives the current used to verify secondary conductor ampacity and overcurrent protection for the connected control load.",
+      "explanation": "Each solenoid coil draws 12 VA at 120 V. When all four coils are energized together, their apparent power adds: 4 × 12 VA = 48 VA. The secondary current is the total VA divided by the secondary voltage the coils are actually connected to: 48 VA ÷ 120 V = 0.4 A, so the clamp meter should read about 0.4 A during steady operation. 0.2 A is based on dividing the 48 VA by 240 V, using the primary voltage instead of the 120 V secondary that feeds the coils. 0.6 A is higher than the calculated value and would be associated with short inrush peaks, not the stabilized reading once the armatures are pulled in. 0.8 A would require twice the actual load, as if each coil were 24 VA, which is not the rating given. Using the total simultaneous VA on the secondary voltage gives the current needed to check that the control transformer secondary conductors and overcurrent protection are correctly sized for the load.",
       "steps": [
         {
           "label": "Total VA",
@@ -896,7 +896,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.03",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician installs motor control devices.",
-      "contentHash": "d181801c203b2e49541cf5d2b0dbc3db90215c2fb0635d6d6c679e9b1d2c3383"
+      "contentHash": "f2648f48f1ce828da64481769b70b0c225a7a9194f0bdb2904692ed5f0a23fe9"
     },
     {
       "bankItemNumber": 377,
@@ -1010,7 +1010,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During commissioning of a packaging-line control panel, an electrician must confirm the 120 V secondary of the control transformer will not be overloaded when the machine enters its run mode. In run mode, four interlocking contactor coils remain energized at the same time, and each coil draws 12 VA at 120 V. Ignoring inrush, what continuous secondary current must the transformer supply in run mode?",
+      "question": "During commissioning of a packaging-line control panel, an electrician must confirm that the 120 V secondary of the control transformer can carry the continuous holding load in run mode. In this mode, four interlocking contactor coils are energized simultaneously, and each coil is rated 12 VA at 120 V. Ignoring inrush, what continuous secondary current must the transformer supply in run mode?",
       "options": [
         "0.4 A",
         "0.2 A",
@@ -1018,7 +1018,7 @@
         "0.8 A"
       ],
       "correctIndex": 0,
-      "explanation": "Coils that are held in at the same time present a combined burden, so add their VA ratings first: 4 × 12 VA = 48 VA. Dividing by the control voltage gives 48 VA ÷ 120 V = 0.4 A, the continuous secondary current in run mode. The 0.2 A answer comes from counting only two of the four coils (2 × 12 VA = 24 VA ÷ 120 V), which understates the actual holding load. The 0.6 A answer comes from padding the total with an extra 50 % allowance (48 VA × 1.5 = 72 VA ÷ 120 V) even though the question asks for steady-state current with inrush excluded. The 0.8 A answer comes from doubling the total VA (96 VA ÷ 120 V), which would push the electrician toward an unnecessarily large transformer. Adding the VA of every simultaneously energized coil, then dividing once by the control voltage, gives the true holding current so the transformer keeps its secondary voltage up and the contactors do not chatter or drop out.",
+      "explanation": "Each coil contributes to the total burden whenever it is energized, so the first step is to add the VA of all coils that are on at the same time: 4 × 12 VA = 48 VA. Dividing the total VA by the control voltage gives the steady-state current: 48 VA ÷ 120 V = 0.4 A, which is the continuous secondary current in run mode. The 0.2 A option reflects underestimating the number of energized coils, which would lead to sizing the transformer for less current than the actual holding load. The 0.6 A option assumes an extra allowance on top of the calculated holding VA even though the question asks specifically for continuous current with inrush excluded. The 0.8 A option effectively doubles the required VA, which would push the selection toward a transformer larger than needed for this running condition. By summing the VA of every coil energized together and dividing by the control voltage, an electrician can confirm that the transformer is properly loaded and will maintain control voltage so the contactors stay pulled in reliably.",
       "steps": [
         {
           "label": "Total VA",
@@ -1035,7 +1035,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-22, Sub-task D-22.04",
       "blueprintObjective": "Apply control transformer coil current knowledge while the electrician services and maintains motor controls.",
-      "contentHash": "c0428c60cf768ebd0fd7d85026d0cb72bda1221ea85e865ff9d3537c0dac9f76"
+      "contentHash": "96149198ba6007ce443f041b8ee2968ee1749cdfee57616798ab94802749d107"
     },
     {
       "bankItemNumber": 382,
@@ -1349,7 +1349,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A packaging-line induction motor is rated 1760 rpm at 60 Hz. A qualified electrician, following the approved drive parameter sheet, reprograms the VFD for proportional V/Hz control at 45 Hz. Ignoring slip and low-speed compensation, what shaft speed should the electrician expect from this frequency change?",
+      "question": "A conveyor drive induction motor is nameplated 1760 rpm at 60 Hz. After the electrician programs the VFD for constant V/Hz control and reduces the output frequency to 45 Hz, with slip and low-speed compensation ignored, what approximate shaft speed should be expected at this new setting?",
       "options": [
         "1320 rpm",
         "1170 rpm",
@@ -1357,7 +1357,7 @@
         "1620 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Induction-motor speed tracks applied frequency directly when pole count and V/Hz ratio stay constant, so 1760 rpm at 60 Hz scales to 1760 × (45 ÷ 60) = 1320 rpm at 45 Hz. This matches the evidence: proportional control with no slip or compensation applied. The 1170 rpm option wrongly assumes a lower ratio near 40 Hz. The 1470 rpm option incorrectly applies a 50 Hz ratio instead of 45 Hz. The 1620 rpm option mistakenly treats the frequency drop as smaller than actual, closer to a 55 Hz scaling. Technicians must recognize that real-world slip, load torque, and drive-programmed limits will shift actual measured speed slightly from this theoretical value, but for baseline frequency-speed verification, direct proportional calculation is the correct first approximation before consulting drive documentation or manufacturer instructions for compensation settings.",
+      "explanation": "For an induction motor running with constant volts-per-hertz and the same number of poles, synchronous speed is directly proportional to applied frequency. With slip ignored, the motor’s rated speed at 60 Hz can be scaled linearly to the new frequency: 1760 rpm × (45 ÷ 60) = 1760 × 0.75 = 1320 rpm. This is the theoretical shaft speed under ideal proportional V/Hz control. The 1170 rpm option would correspond to a larger frequency reduction than 45 Hz. The 1470 rpm and 1620 rpm options would require higher frequencies than 45 Hz. In practice, actual speed will differ slightly due to slip, load torque, and any drive limits, but the proportional frequency-speed relationship gives the correct baseline value for verification at 45 Hz.",
       "steps": [
         {
           "label": "Ratio",
@@ -1374,7 +1374,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.02",
       "blueprintObjective": "Apply frequency-speed relationship knowledge while the electrician services and maintains ac drives.",
-      "contentHash": "5839e9998ab7a9c36e493a8f7b8f2519e8cc398c17dc5a81f718d9c82e98b699"
+      "contentHash": "3b02675b7394eccac86b16f9ed1faa167e303642af72497aeb3b9af9eb0a2819"
     },
     {
       "bankItemNumber": 394,
@@ -1436,15 +1436,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A hoist drive with regenerative braking trips on overvoltage. Logged dc-bus readings run higher than the values on the approved commissioning sheet, and the fault history shows no recorded cause for a prior nuisance trip. What should the electrician do next?",
+      "question": "A hoist drive with regenerative braking is tripping on dc-bus overvoltage, and logged bus values are consistently higher than the approved commissioning sheet shows for the same speed and load. The fault log does not identify a clear cause. What is the most appropriate next step for the electrician?",
       "options": [
-        "Assume the bus reading is fine because a similar hoist on another site never had this problem.",
-        "Disable the overvoltage protection temporarily so the hoist stays in service while the cause is investigated.",
-        "Adjust several braking and acceleration parameters together, then call it fixed if the trips stop.",
-        "Stop work, compare bus readings against approved data, isolate and confirm the discrepancy, document findings, then proceed."
+        "Rely on experience from a different hoist installation and treat the higher bus readings as acceptable for this site.",
+        "Bypass the dc-bus overvoltage protection until the trips stop, then reconnect it after adjustments are made.",
+        "Change several braking and acceleration settings at the same time and leave them if the drive stops tripping.",
+        "Systematically verify the dc-bus measurements against the commissioning data, isolate and confirm the source of the higher voltage, record the results, and then correct the issue."
       ],
       "correctIndex": 3,
-      "explanation": "An elevated dc-bus voltage under regenerative braking points to a real mismatch between braking resistor sizing, deceleration profile, or supply conditions and the approved commissioning data, so the discrepancy must be isolated and confirmed before continuing, with findings documented for review. Disabling protection removes the safeguard meant to catch exactly this fault and risks equipment damage or an unsafe restart. Assuming the reading is fine ignores site-specific supply and load differences that make comparisons to another installation unreliable. Changing multiple braking and acceleration settings at once destroys the ability to identify which change actually addressed the overvoltage, and a temporary stop in trips does not confirm the root cause was resolved. The disciplined approach protects the equipment, preserves traceability, and supports correct sign-off.",
+      "explanation": "Regenerative hoist drives depend on correct dc-bus voltage limits, braking resistor sizing, and deceleration profiles to keep the bus within its design range during braking. When actual bus voltage trends are higher than the approved commissioning values, the electrician needs to confirm the readings, trace the cause of the discrepancy, and document the findings before making changes so that any correction is based on evidence and can be properly signed off. Simply assuming the readings are acceptable because a different hoist has not had problems ignores site-specific supply characteristics and mechanical loading. Defeating overvoltage protection removes the safeguard that prevents damage or unsafe operation and is not an acceptable troubleshooting step. Changing multiple drive parameters at once without isolating the effect of each adjustment makes it difficult to know what solved the problem and can hide an unresolved root cause.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1452,7 +1452,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply dc-bus condition knowledge while the electrician installs dc drives.",
-      "contentHash": "5c3f34a9c2651817c54628f2a659f862b019fca8186cdd56c952e38505a00018"
+      "contentHash": "9b763485c76368e5127d9e182451551aab596b6da17bbc2775f830cbd0ace0bb"
     },
     {
       "bankItemNumber": 397,
@@ -1497,15 +1497,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a packaging line, a VFD intermittently faults on overcurrent only during peak load. A recent transformer tap change altered the supply voltage, and the drive's input rating was never re-checked against the new supply. What should the electrician do before resuming production?",
+      "question": "A conveyor VFD begins tripping on overcurrent only when several machines start at once. After a utility service upgrade, the line voltage at the starter panel is higher than it was when the drive was installed. What should the electrician do before restarting the conveyor?",
       "options": [
-        "Swap in a spare drive of similar horsepower without checking its input rating and restart the line immediately.",
-        "Raise the drive's overload trip setting so the intermittent fault stops appearing on the operator screen.",
-        "Log the fault as intermittent and wait for it to worsen before investigating supply conditions.",
-        "Stop, confirm the drive's input voltage and current rating against the actual supply and load data, resolve any mismatch, and document findings."
+        "Replace the drive with a larger enclosure and restart the conveyor to see whether the fault clears.",
+        "Increase the current limit so the drive can ride through the startup surge without further checks.",
+        "Ignore the higher voltage because the motor nameplate has not changed.",
+        "Confirm the drive’s input voltage and current ratings match the actual supply and connected load, correct any mismatch, and document the results before returning the conveyor to service."
       ],
       "correctIndex": 3,
-      "explanation": "An input rating mismatch after a supply change can cause nuisance overcurrent trips, motor stress, or unsafe operation under peak load. The correct action is to verify the drive's rated input voltage and current against the actual measured supply and connected load, correct any discrepancy, and record the verification for review. Swapping drives without checking ratings risks repeating the same fault or introducing new incompatibilities. Raising the overload setting masks the symptom instead of addressing the root cause, risking downstream damage. Waiting for the fault to worsen delays a known hazard and can lead to unplanned failure or unsafe automatic restart. Verifying ratings against approved supply and load documentation before continuing ensures the drive operates within its intended parameters and protects both equipment and personnel.",
+      "explanation": "A change in supply conditions can put a drive outside its intended input rating and contribute to nuisance trips or equipment stress. The proper action is to verify the drive’s input voltage and current ratings against the measured supply and load, correct any mismatch, and record the findings before resuming operation. Changing components or increasing limits without verification can mask the cause and leave the drive improperly applied.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1513,7 +1513,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.01",
       "blueprintObjective": "Apply drive input rating knowledge while the electrician installs ac drives.",
-      "contentHash": "d84f412d8e73f7c8f1f790f544b702b3e954a4050584730648e30d8a9aa56933"
+      "contentHash": "a358d50a6e3c4ff0bc1eab905b4bb34240962a17ff445619eb08ddab1e83c57d"
     },
     {
       "bankItemNumber": 399,
@@ -1662,15 +1662,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A DC drive feeding a conveyor motor keeps nuisance-tripping on overcurrent each afternoon. The electrician pulls the drive's stored fault log, but the recorded fault codes and timestamps do not match the approved commissioning report on file. What should the electrician do next?",
+      "question": "A DC drive feeding a conveyor motor starts tripping on overcurrent partway through each afternoon shift. When the electrician reviews the drive’s stored fault history, the fault codes and timestamps do not line up with the baseline data recorded at start-up. What is the most appropriate next step?",
       "options": [
-        "Assume the stored fault codes are outdated firmware artifacts and clear the log without further comparison.",
-        "Disable the drive's fault-logging function temporarily so production scheduling is not interrupted by nuisance trips.",
-        "Adjust several drive parameters at once based on past experience, then judge success only by whether trips stop.",
-        "Stop work, compare the fault log against the approved commissioning record, resolve the discrepancy, document findings, then resume."
+        "Assume the mismatch is just a harmless firmware quirk and clear the fault history so the log starts fresh.",
+        "Disable the drive’s fault logging so the nuisance trips do not clutter the fault history while production continues.",
+        "Change multiple drive settings at once based only on past experience, then rely on whether trips stop as the measure of success.",
+        "Pause troubleshooting, verify the fault log against the start-up records, identify and correct the source of the discrepancy, record the actions taken, and then continue with further checks."
       ],
       "correctIndex": 3,
-      "explanation": "The mismatch between the drive's actual fault log and the approved commissioning record is direct evidence that something has changed or was recorded incorrectly, and continuing without reconciling it risks masking the real cause of the overcurrent trips. Stopping to compare records against manufacturer diagnostics, load conditions, and cabling/grounding, then documenting the resolved discrepancy, protects both safety and traceability. Clearing the log assumes an explanation without verification and destroys evidence. Disabling logging removes the diagnostic tool needed to find the intermittent cause. Changing multiple parameters at once and judging success only by trips stopping is unreliable, since it cannot isolate which change mattered or whether the fault will recur under different load conditions.",
+      "explanation": "When the drive’s fault history does not match the original start-up records, the electrician needs to treat that discrepancy as a priority and confirm what has changed in the system or the documentation before proceeding. Comparing the current faults and timestamps with the commissioning data, checking against manufacturer information and actual operating conditions, and then documenting what was found and corrected maintains safety, traceability, and a clear basis for further troubleshooting. Simply clearing the log removes useful evidence. Turning off fault logging eliminates a key diagnostic tool. Changing multiple parameters at once and judging success only by whether trips stop makes it difficult to know which change affected the fault, and the problem may return under different loading or ambient conditions.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1678,7 +1678,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-23, Sub-task D-23.03",
       "blueprintObjective": "Apply fault history knowledge while the electrician installs dc drives.",
-      "contentHash": "180e18c84b725580e8a51c2d120d9d591d2a7ef0acabf01ea697fd7424288a5b"
+      "contentHash": "a37957f35a9c4286bcb83f60b2ce836b6f220735f9577518c5c881004f86de7f"
     },
     {
       "bankItemNumber": 405,
@@ -1723,15 +1723,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-phase capacitor-start motor was rewound and reinstalled on a packaging conveyor. A tachometer reading shows rotor speed well below the nameplate full-load speed, so slip is much higher than expected, and the earlier drive alarm was cleared before anyone recorded the cause. The diagram shows synchronous speed being set by supply frequency and the winding pole count, with rotor speed sitting below it by the amount of slip. Following that relationship, what should the technician do next?",
+      "question": "A single-phase capacitor-start motor has been rewound and reinstalled on a packaging conveyor. Using the diagram that shows synchronous speed set by supply frequency and the new winding’s pole count, with rotor speed lower by the amount of slip, the tachometer indicates rotor speed is well below the nameplate full-load speed, so slip is much higher than expected. To use the speed–slip relationship in the diagram to properly troubleshoot this condition before returning the conveyor to service, what should the technician do next?",
       "options": [
-        "Install new motor bearings right away, since slip above the nameplate value normally comes from bearing drag on the rotor shaft.",
-        "Treat the higher slip as a normal break-in characteristic of a freshly rewound winding and release the conveyor back to production.",
-        "Fit a new start capacitor, because slip that exceeds the nameplate figure is caused by a weakened starting capacitor in every case.",
-        "Calculate synchronous speed from the supply frequency and the rewound pole count, compare it with the measured rotor speed to size the slip, find the cause, and record the results before releasing the motor."
+        "Replace the motor bearings immediately, assuming that higher than nameplate slip is normally caused by mechanical drag on the rotor shaft.",
+        "Assume the higher slip is a temporary characteristic of a newly rewound motor, allow it to break in, and put the conveyor back into production.",
+        "Replace the start capacitor right away on the assumption that slip above the nameplate value is always due to a weak starting capacitor.",
+        "Calculate synchronous speed from the actual supply frequency and the pole count of the rewound stator shown in the diagram, compare this with the measured rotor speed to determine slip, then investigate and document electrical or load-related causes before putting the motor back into service."
       ],
       "correctIndex": 3,
-      "explanation": "The diagram shows that synchronous speed depends only on supply frequency and pole count, and that rotor speed falls below it by the slip. So the first step is to calculate synchronous speed from frequency and the pole count of the new winding, subtract the measured rotor speed to get actual slip, and compare that with the nameplate value. This narrows the cause to something real, such as the motor being rewound with the wrong number of poles or a miswired coil group, low terminal voltage at the motor, a failing capacitor or centrifugal switch, or a conveyor loaded beyond the motor rating. Replacing bearings first is tempting because drag adds load, but it skips the rewind and supply data and may leave the true fault in place. Calling the high slip a break-in characteristic is wrong; a correctly rewound motor runs at rated speed under rated load from the first start. Blaming the capacitor alone ignores that a start capacitor affects starting torque, not steady running speed. Recording the calculated and measured values also gives the next technician a baseline for comparison.",
+      "explanation": "Synchronous speed for the motor is determined only by the supply frequency and the number of poles in the stator winding, as shown in the diagram, and the rotor speed will be lower by the amount of slip. The technician should first use the diagram’s relationship to calculate synchronous speed from the measured frequency and the pole count of the rewound stator, then compare this value with the tachometer reading to find the actual slip. If the calculated slip is significantly greater than the nameplate figure, the technician can then focus on real causes such as the stator being rewound with the wrong pole count, misconnected coil groups, low voltage at the motor terminals, a faulty capacitor or centrifugal switch affecting running torque, or a conveyor load that exceeds the motor’s rating. Immediately changing bearings without checking the electrical data risks leaving an electrical or loading problem untouched. Treating high slip as a normal break-in condition is incorrect, because a properly rewound motor should run at close to its rated speed under its rated load as soon as it is put back in service. Blaming only the start capacitor is also incorrect, since the start capacitor mainly affects starting performance and does not, by itself, set the steady-state running speed once the motor is up to speed. By calculating slip and relating it to the diagram before making changes, the technician builds a clear understanding of the fault and a useful record for future maintenance.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1739,7 +1739,7 @@
       "diagramAlt": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip.",
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.02",
       "blueprintObjective": "Apply motor slip knowledge while the electrician services and maintains single-phase motors.",
-      "contentHash": "c4f3a56ca0d2b570aaa61181631a92b5ebab3a826d0162ee9fd700fe98902e43"
+      "contentHash": "9dca8c892f23653a1f4b43597ca259d380f008e63b85f269225a6eb384483d91"
     },
     {
       "bankItemNumber": 407,
@@ -1979,15 +1979,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While bench-testing a DC traction motor before reassembly, the crew finds the coupling hub key fits loosely and the as-built alignment record differs from the nameplate mounting dimension. A senior apprentice suggests trusting last month's identical rebuild instead of re-checking. What must the supervising electrician direct?",
+      "question": "During a bench check of a DC traction motor before installation, the coupling hub key seats loosely and the measured mounting dimensions do not match the manufacturer’s nameplate data. A coworker says to assemble it anyway because the same motor model worked last month. What must the supervising electrician direct?",
       "options": [
-        "Rely on the apprentice's recollection of the earlier rebuild as sufficient confirmation of coupling condition.",
-        "Complete reassembly and treat the first energization test as verification of coupling condition.",
-        "Accept the loose key fit since the motor frame appears identical to the previous unit.",
-        "Halt work, confirm coupling fit and alignment against approved drawings and manufacturer data, resolve the mismatch, then document before proceeding."
+        "Use the previous rebuild as proof that the coupling condition is acceptable and continue assembly.",
+        "Finish the reassembly and use the first start-up test as the check for coupling condition.",
+        "Allow the loose key fit because the motor frame matches the earlier unit by appearance.",
+        "Stop the job, verify coupling fit and alignment against approved drawings and manufacturer data, correct the mismatch, and document the results before proceeding."
       ],
       "correctIndex": 3,
-      "explanation": "A loose key and a mismatch between the as-built record and nameplate mounting dimension are direct evidence that coupling fit and alignment cannot be assumed correct. The supervising electrician must stop, compare the coupling against approved drawings and manufacturer mounting and alignment data, resolve why the records disagree, and log the resolution before reassembly continues. Relying on memory of a past rebuild is not verifiable and ignores the current discrepancy. Treating energization as the first check risks bearing damage, excessive current, vibration, or coupling failure once torque is applied. Judging fit by appearance alone misses dimensional and key-fit tolerances that only measurement against approved data can confirm. Only a documented, verified correction protects driven-load performance and creates a record another qualified person can review later.",
+      "explanation": "A loose key fit and a mismatch in mounting dimensions are clear signs that coupling condition cannot be assumed correct. The supervising electrician must stop work, measure and compare the assembly against approved drawings and manufacturer information, correct the discrepancy, and record the outcome before reassembly continues. Relying on memory, appearance, or a first energization test does not confirm that the coupling is properly fitted and aligned.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1995,7 +1995,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.05",
       "blueprintObjective": "Apply coupling condition knowledge while the electrician installs dc motors.",
-      "contentHash": "41d98d8f688d1e884768c464175c9f19d8ed8d43a1e945f72b6fad2dd7f7b12c"
+      "contentHash": "dfb5b68b54976257ae91a5433c0d6620be1b81ac9357e60e44d5d109a0f1d954"
     },
     {
       "bankItemNumber": 416,
@@ -2148,7 +2148,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A technician commissioning a single-phase capacitor-start motor on a conveyor drive reads the nameplate: 4 poles, 60 Hz supply. Before checking slip against the measured shaft speed, what synchronous speed should the technician calculate as the reference value?",
+      "question": "A millwright is checking slip on a 4‑pole, single‑phase capacitor‑start motor driving a small conveyor. The supply is 60 Hz as shown on the nameplate. Using the synchronous speed formula before comparing to the measured shaft speed, what synchronous reference speed should be used in the slip calculation?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2156,7 +2156,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Using Ns = 120f/P, the technician calculates Ns = 120 × 60 ÷ 4 = 1800 rpm, which is the correct synchronous reference speed for comparing against the measured rotor speed to confirm normal slip. The 1500 rpm option results from mistakenly using a 50 Hz supply frequency instead of the nameplate's 60 Hz value, which does not match this motor's actual supply. The 2100 rpm and 2400 rpm options come from arithmetic errors or assuming an incorrect pole count, producing speeds that no standard 4-pole, 60 Hz motor can reach. Only 1800 rpm correctly applies both nameplate values in the formula, giving the technician a valid baseline; any measured shaft speed noticeably below this confirms expected slip, while a much larger gap would indicate a mechanical or electrical fault requiring further investigation before returning the conveyor to service.",
+      "explanation": "For an induction motor, synchronous speed is found from Ns = 120f ÷ P. With a 60 Hz supply and 4 poles, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct reference speed for slip calculations. The 1500 rpm option incorrectly uses 50 Hz instead of the actual 60 Hz supply. The 2100 rpm and 2400 rpm options do not result from the synchronous speed formula for a 4‑pole, 60 Hz motor and would not be used when checking slip on this conveyor drive.",
       "steps": [
         {
           "label": "Formula",
@@ -2177,7 +2177,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "4fe80a8914a01478d683edd040ebe58ed68d23edc8a8febd8546bfae27ae6d53"
+      "contentHash": "e8ea9e79b1ec3b9f3ed212f35cba3a55f0bc3b52e710a01b2fbd0abc52e51f59"
     },
     {
       "bankItemNumber": 422,
@@ -2265,7 +2265,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A single-phase capacitor-start motor driving a packaging conveyor carries a nameplate speed of 1745 rpm and is stamped 4-pole, 60 Hz. Before selecting a replacement motor, the electrician calculates the expected synchronous speed to confirm the nameplate slip value is reasonable. What synchronous speed should be used for this comparison?",
+      "question": "A single-phase capacitor-start motor driving a packaging conveyor has a nameplate speed of 1745 rpm and is marked 4-pole, 60 Hz. To verify that the motor slip is within a normal range before choosing a replacement with similar characteristics, what synchronous speed must the electrician calculate for a 4-pole motor on a 60 Hz supply?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2273,7 +2273,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Synchronous speed depends only on supply frequency and pole count: Ns = 120f ÷ P. With 60 Hz and 4 poles, Ns = 120 × 60 ÷ 4 = 1800 rpm. Comparing this to the nameplate speed of 1745 rpm gives a slip of about 55 rpm, roughly 3%, which is normal for an induction-type single-phase motor under load. The 1500 rpm option is tempting because it is the correct synchronous speed for a 4-pole motor on a 50 Hz supply, not 60 Hz, so applying it here would wrongly suggest excessive slip and an unnecessary rejection of a healthy motor. The 2100 and 2400 rpm values do not correspond to any standard frequency-pole combination and would misrepresent the motor's rated performance, leading to an incorrect replacement decision. Using the correct 1800 rpm baseline lets the electrician confirm the existing nameplate slip is acceptable before ordering parts.",
+      "explanation": "Synchronous speed for an AC motor depends only on supply frequency and number of poles, using Ns = 120f ÷ P. For a 60 Hz, 4-pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, which is the correct baseline speed for comparing slip to the 1745 rpm nameplate value. The 1500 rpm option is the synchronous speed for a 4-pole motor on a 50 Hz system, not 60 Hz, and would falsely suggest excessive slip in this conveyor application. The 2100 rpm and 2400 rpm options do not match standard frequency–pole combinations used in industrial motors. Using 1800 rpm allows the electrician to confirm that the observed slip from synchronous speed to 1745 rpm is typical for a single-phase induction motor under load.",
       "steps": [
         {
           "label": "Formula",
@@ -2290,7 +2290,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "6fccd9c4f27c71fa80bd6e5aca5da5c179da24fb3325a19163bfd0d1f0564e97"
+      "contentHash": "fbb1464288fa0f6394cb77ecb568b001995ee1946a4f555f4c04da11a5f3e641"
     },
     {
       "bankItemNumber": 426,
@@ -2378,7 +2378,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A technician is fitting a replacement single-phase pump motor and reads the nameplate: 4 poles, rated for a 60 Hz supply. Before selecting the correct pulley ratio for the driven pump, the technician must confirm the motor's synchronous speed. What speed should the technician calculate?",
+      "question": "An industrial electrician is replacing a single-phase motor driving a belt‑coupled ventilation fan. The new motor nameplate shows 4 poles and a 60 Hz supply rating. Before she selects the new belt and pulley sizes to match the original fan speed, what synchronous speed must she use in her calculations?",
       "options": [
         "1800 rpm",
         "1500 rpm",
@@ -2386,7 +2386,7 @@
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Synchronous speed depends only on supply frequency and pole count, found with Ns = 120f ÷ P. Using the nameplate values of 60 Hz and 4 poles gives Ns = 120 × 60 ÷ 4 = 1800 rpm, matching the correct option. The tempting 1500 rpm distractor results from mistakenly applying a 50 Hz supply frequency, which is common on European equipment but not on this 60 Hz nameplate, so it misrepresents the actual electrical supply. The 2100 rpm and 2400 rpm options come from arithmetic errors in dividing or from assuming an incorrect pole count, neither of which matches the nameplate data given. Confirming synchronous speed correctly ensures the pulley ratio delivers the pump's required output speed without over- or under-driving the load, which is essential before any mechanical coupling work proceeds.",
+      "explanation": "Synchronous speed for an AC motor is determined only by the supply frequency and the number of poles and is found using Ns = 120f ÷ P. With a 60 Hz supply and a 4‑pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so 1800 rpm is the correct speed to use when sizing the fan pulleys. The 1500 rpm option would be correct for a 4‑pole motor on a 50 Hz system, but this motor is clearly rated 60 Hz. The 2100 rpm and 2400 rpm values do not follow from the synchronous speed formula for the given pole count and frequency and would lead to an incorrect pulley ratio and fan speed. Understanding how synchronous speed is set by frequency and pole count helps ensure driven equipment runs at the intended speed without overloading or underperforming.",
       "steps": [
         {
           "label": "Formula",
@@ -2403,7 +2403,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "40e41a4f71aa2737d46196fa19f368e5d91a2e746b907ce3ee5e04c412e3000d"
+      "contentHash": "12fd774dc02b0116f8d0866932012a79f60eee3883f621eec8510d20533ae377"
     },
     {
       "bankItemNumber": 430,
@@ -2491,15 +2491,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A single-phase capacitor-start pump motor's nameplate shows 4 poles on a 60 Hz supply. Before ordering an identical replacement, you calculate its synchronous speed to confirm it matches the pump's rated input speed. What synchronous speed results?",
+      "question": "A single-phase, capacitor-start motor driving a sump pump has a nameplate marked 4 poles and is supplied from a 60 Hz system. You want to verify the pump’s rated input speed by calculating the motor’s synchronous speed from these nameplate values. What synchronous speed do you obtain?",
       "options": [
         "1800 rpm",
         "1500 rpm",
-        "2100 rpm",
+        "1200 rpm",
         "2400 rpm"
       ],
       "correctIndex": 0,
-      "explanation": "Synchronous speed depends only on supply frequency and pole count, found with Ns = 120f/P. With 60 Hz and 4 poles, Ns = 120 × 60 ÷ 4 = 1800 rpm, matching the correct option. The 1500 rpm distractor results from mistakenly using a 50 Hz supply value instead of the given 60 Hz, a common error when recalling formulas from memory rather than applying the stated frequency. The 2100 rpm and 2400 rpm choices come from arithmetic slips in the division step, not from a valid electrical relationship. Confirming synchronous speed before ordering a replacement motor ensures compatibility with the pump's rated input speed and avoids installing a motor that runs the load at the wrong speed, which could cause reduced flow, overheating, or premature failure.",
+      "explanation": "Synchronous speed for an AC motor depends only on the supply frequency and the number of poles, using Ns = 120f/P. With a 60 Hz supply and a 4‑pole motor, Ns = 120 × 60 ÷ 4 = 1800 rpm, so the motor’s synchronous speed is 1800 rpm. The 1500 rpm option comes from using 50 Hz instead of the given 60 Hz. The 1200 rpm choice is the speed for a 6‑pole motor at 60 Hz, not the 4‑pole motor in this scenario. The 2400 rpm answer would require fewer poles or a higher frequency than stated. Being able to calculate synchronous speed from nameplate data helps you confirm that a replacement motor will drive the pump at the correct speed and maintain proper flow and performance.",
       "steps": [
         {
           "label": "Formula",
@@ -2516,7 +2516,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA D, Task D-24, Sub-task D-24.01",
       "blueprintObjective": "Apply synchronous motor speed knowledge while the electrician installs single-phase motors.",
-      "contentHash": "2f3a6517d1c41e82c7428998b651ae99f39b00e12bc5cd8b05cba46bb00a3fce"
+      "contentHash": "36d4ea786b3b3bcd579b26608a6c70a4b20fceea9fab86019192f38e5e45fe82"
     },
     {
       "bankItemNumber": 434,
@@ -2604,7 +2604,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While bench-testing a 4–20 mA level transmitter loop before it is tied into a tank filling skid, a commissioning electrician must verify the controller reads the correct signal for 40% of the calibrated span. What output current should the transmitter produce at exactly 40% of process range?",
+      "question": "Refer to diagram 309A-D16. The level transmitter is part of a closed 4–20 mA control loop from the sensor to the controller and back to the tank fill valve. While bench-testing this loop before tying it into the skid, the commissioning electrician simulates a process condition at exactly 40% of the calibrated level range. What output current must the transmitter send so that the controller correctly interprets 40% on its display?",
       "options": [
         "10.4 mA",
         "8.4 mA",
@@ -2612,7 +2612,7 @@
         "14.4 mA"
       ],
       "correctIndex": 0,
-      "explanation": "The transmitter's live zero is 4 mA, so the usable span is 16 mA (20 mA − 4 mA). Multiplying the span by 40% gives 6.4 mA, which is added to the 4 mA live zero to get 10.4 mA. This value matches the evidence because the loop is defined as 4–20 mA representing 0–100%, not 0–20 mA. The 8.4 mA distractor results from mistakenly using a 20 mA span (20 × 0.4 = 8) without accounting for the live zero offset, which understates the true output. The other distractors come from misapplying the percentage to the wrong reference point or transposing digits. Confirming the live zero before scaling prevents miscalibration that could cause the controller to misinterpret actual tank level during commissioning.",
+      "explanation": "In a standard 4–20 mA loop, 4 mA represents 0% and 20 mA represents 100% of the calibrated process range. The usable span is therefore 16 mA (20 mA − 4 mA). At 40% of span, the transmitter must output 40% of 16 mA, which is 0.40 × 16 mA = 6.4 mA above the live zero. Adding this to the 4 mA live zero gives 4 mA + 6.4 mA = 10.4 mA at 40% of process range. The 8.4 mA option comes from incorrectly treating 0–20 mA as the span and ignoring the 4 mA live zero. The 12.4 mA and 14.4 mA options result from applying the 40% to the wrong reference (such as starting at 8 mA or 10 mA) instead of the 4–20 mA span. Understanding how the transmitter’s live zero and span are mapped to the controller input ensures that the level indication and valve control in the closed loop follow the actual process level accurately during commissioning.",
       "steps": [
         {
           "label": "Determine live span",
@@ -2629,7 +2629,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA D, Task D-25, Sub-task D-25.01",
       "blueprintObjective": "Apply analog signal scaling knowledge while the electrician installs automated control systems.",
-      "contentHash": "ac428c361c2533d645034d4e6fe9d441cb89acf4b82d834bc7dd89bf183d6f70"
+      "contentHash": "653c0a297cad873c977bc53387e51390eeca09de9b8d9db516d628e304850a34"
     },
     {
       "bankItemNumber": 438,

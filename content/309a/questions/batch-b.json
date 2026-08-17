@@ -393,15 +393,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "On a 1200 A, 600/347 V three-phase service for a food-processing plant, an apprentice has slipped three window-type current transformers over the incoming conductors and pulled the CT secondary leads into the test switch. The secondary leads are unmarked, the meter socket voltage taps are untagged, and no record was kept of which incoming conductor each CT was placed over or which way its polarity mark was turned. The utility is scheduled to seal the metering the next morning. What should the electrician do before the meter is energized?",
+      "question": "On a 1200 A, 600/347 V three‑phase service feeding a food‑processing plant, an electrician finds that three window‑type current transformers have already been slipped over the incoming conductors and their unmarked secondary leads pulled into the test switch, with no record of which CT is on which phase or how the polarity marks are oriented. The meter socket voltage taps are also untagged. Before the new demand meter is energized and sealed by the utility the next morning, what field work is required to ensure the metering elements will read correctly?",
       "options": [
         "Trace and tag each service conductor, each CT secondary lead with its polarity identification, each meter socket voltage tap, and the bus termination it feeds, so every current sample is multiplied by the voltage of the same phase and every CT polarity mark faces the supply",
         "Tag only the CT secondary leads at the test switch, since the meter internally pairs each current input with its matching voltage reference no matter how the socket voltage taps happen to land",
-        "Take one line-to-line voltage reading at the meter socket, since a reading within the normal range confirms that each incoming conductor and the CT over it are on the intended phase",
+        "Take one line‑to‑line voltage reading at the meter socket, since a reading within the normal range confirms that each incoming conductor and the CT over it are on the intended phase",
         "Leave the secondary leads untagged and rely on the CT polarity marks still being visible from the front of the switchboard, since the utility will confirm orientation with a phasing meter when it seals the meter"
       ],
       "correctIndex": 0,
-      "explanation": "A CT-metered service registers correctly only when each current sample is multiplied by the voltage of the same phase and each CT is installed with its polarity mark toward the source, so the service conductors, the CT secondary leads and their polarity identification, the socket voltage taps, and the bus terminations must all be traced and tagged so phase identity and polarity carry through the test switch consistently. The meter cannot re-pair a current input with a different voltage reference, so tagging the secondary leads alone can leave a current-to-voltage mismatch or a reversed CT in service, producing readings that are low, high, or even negative on one element. A single line-to-line voltage reading only proves potential exists between two conductors; two interchanged conductors give the identical normal reading, so it confirms nothing about individual phase identity or CT orientation. Depending on marks still being visible after the CTs are cabled and the compartment is closed is unreliable, and correcting a reversed CT or a mismatched voltage tap is the installer's work, not something to leave for the sealing visit.",
+      "explanation": "For a CT‑metered service to register accurately, each current input must be matched with the voltage of the same phase and each CT must be installed with its polarity mark toward the source. Tracing and tagging the service conductors, CT secondaries and polarity, meter socket voltage taps, and bus terminations ensures that phase identity and polarity are consistent from the CTs through the test switch to the meter. The meter cannot automatically reassign current inputs to different voltage references, so tagging only the CT secondary leads can still leave a phase mismatch or a reversed CT in service. A single line‑to‑line voltage check only proves there is normal voltage between two conductors; swapped phases or reversed CTs can still produce a normal reading. Relying on visible polarity marks and leaving corrections for the utility is poor practice, because verifying and correcting CT orientation and phase pairing is part of the electrician’s installation responsibility before the meter is energized.",
       "steps": null,
       "tip": "Confirm phase identity and CT polarity at every point in the metering circuit before the meter is energized and sealed.",
       "isCalc": "no",
@@ -409,7 +409,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply phase identification knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "75bfadcd9594bb6a7c42380cda725fd0d5e03933fb045e88f404a2047d1234f7"
+      "contentHash": "d0654d2d6279ab5e0111ce14246a909bceddf4f1738570bee95a8cc083671bdb"
     },
     {
       "bankItemNumber": 70,
@@ -480,15 +480,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A metering cabinet and its current-transformer enclosure have been mounted on an unventilated mezzanine directly above a plant boiler. During normal production the crew measures 48 °C ambient at the cabinet and finds a film of fine conductive dust settling on the enclosure and its cooling openings. Which check gives the best basis for deciding whether this metering equipment is suitable for that location?",
+      "question": "A metering cabinet and its current-transformer enclosure are installed on an unventilated mezzanine directly above a plant boiler. During normal operation, the maintenance crew measures a 48 °C ambient temperature at the cabinet and notes a film of fine conductive dust settling on the enclosure and blocking some of the cooling openings. Before approving this installation, what is the most appropriate way to determine if this metering equipment is suitable for these conditions?",
       "options": [
-        "Confirm that the meter registers correct voltage and current while the plant is running, and treat the accurate readings as proof that the mounting location is acceptable.",
-        "Compare the measured 48 °C ambient and the conductive dust conditions with the maximum ambient temperature marked on the equipment, the enclosure type designation, and the manufacturer's mounting and clearance instructions.",
-        "Record the interior temperature of the cabinet after the boiler is shut down overnight and use that cooler reading as the operating ambient for the location.",
-        "Match the enclosure type and mounting arrangement to what was used in the plant's air-conditioned electrical room, since the service voltage and meter model are identical in both places."
+        "Verify that the meter displays stable voltage and current readings during peak production and accept the correct readings as evidence that the mounting location is appropriate.",
+        "Compare the measured 48 °C ambient temperature and the conductive dust exposure with the maximum ambient temperature marked on the equipment, the enclosure type designation, and the manufacturer’s specified mounting clearances and ventilation requirements.",
+        "Measure the cabinet interior temperature after the boiler has been shut down overnight and use that cooler value to represent the normal operating ambient for the equipment.",
+        "Use the same enclosure type and mounting arrangement that was used for an identical meter in the plant’s air-conditioned electrical room, assuming that the service voltage and meter model make the installations equally suitable."
       ],
       "correctIndex": 1,
-      "explanation": "Heat and conductive dust both attack metering equipment. A 48 °C ambient can drive internal temperatures past what the terminations, current transformers, and electronics are rated for, and settling conductive dust can bridge live parts or blanket cooling openings. Suitability is therefore judged by measuring the real conditions and matching them against the maximum ambient temperature marked on the equipment, the enclosure type designation that describes what it keeps out, and the manufacturer's mounting and clearance instructions. Correct meter readings only show the metering is wired and calibrated properly today; they say nothing about how the equipment will survive months in that ambient. Using an overnight shutdown temperature understates the ambient the equipment actually operates in, and copying an arrangement from a clean, temperature-controlled electrical room ignores the very heat and dust that make this mezzanine different.",
+      "explanation": "In a boiler mezzanine environment, both elevated ambient temperature and conductive dust can stress metering equipment and its current transformers. The correct approach is to compare the actual operating conditions—such as the measured 48 °C ambient and dust contamination—with the equipment’s marked maximum ambient rating, the enclosure type designation, and the manufacturer’s mounting and ventilation instructions. This confirms whether the equipment is designed to handle that level of heat and contamination. Simply relying on accurate meter readings during production only proves the meter is functioning at that moment, not that it will remain reliable under long-term thermal and dust stress. Using overnight temperatures understates the true operating conditions, since the equipment is most stressed when the boiler is running. Copying an arrangement from a clean, temperature-controlled electrical room ignores the harsher environment at the mezzanine and can lead to premature failure or unsafe operation if the equipment is not rated for those conditions.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -496,7 +496,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.01",
       "blueprintObjective": "Apply metering documentation knowledge while the electrician installs single-phase consumer/supply services and metering equipment.",
-      "contentHash": "eef9194c551b3c061133b2fe0a36ae5098187feec76c5370d556f17637f6c316"
+      "contentHash": "2877ecefea989908d41d552d20385e04efddf7914fcdaca67242145e34bd6046"
     },
     {
       "bankItemNumber": 73,
@@ -532,15 +532,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A submeter on the 600 V feeder to a balanced three-phase process compressor is being verified against field measurements. With the machine at steady load, the technician reads 600 V line-to-line, 30 A in each line conductor, and a power factor of 0.90. What real power should the submeter display if it is reading correctly?",
+      "question": "A 600 V, three-phase process compressor is supplied by a balanced feeder that is being checked using a portable power analyzer. With the compressor at steady load, the analyzer shows 600 V line-to-line, 30 A in each line, and a power factor of 0.90. If the analyzer and the installed submeter are both accurate, what real power should the submeter indicate?",
       "options": [
         "31.2 kW",
         "28.1 kW",
-        "16.2 kW",
+        "22.5 kW",
         "48.6 kW"
       ],
       "correctIndex": 1,
-      "explanation": "Real power in a balanced three-phase circuit is P = √3 × V(line) × I(line) × PF = 1.732 × 600 × 30 × 0.90 = 28 058 W, or about 28.1 kW, so a correctly reading submeter should show close to 28 kW at this load. The 31.2 kW figure is really apparent power, √3 × 600 × 30 = 31.2 kVA, and leaves out the 0.90 power factor, so it describes the loading carried by the conductors rather than the power converted to work. The 16.2 kW figure comes from using the single-phase form V × I × PF = 600 × 30 × 0.90 and omitting the √3 factor that accounts for three line currents. The 48.6 kW figure substitutes 3 for √3 (3 × 600 × 30 × 0.90); the plain 3 applies only when phase voltage is paired with phase current.",
+      "explanation": "For a balanced three-phase load, real power is calculated using P = √3 × V(line) × I(line) × PF. Substituting the given values gives P = 1.732 × 600 V × 30 A × 0.90 ≈ 28 058 W, or about 28.1 kW, which is the real power the submeter should display when both instruments are reading properly. The 31.2 kW value comes from √3 × 600 V × 30 A ≈ 31.2 kVA and represents apparent power without the power factor, so it is not the real power delivered to the compressor. The 22.5 kW option is based on mistakenly using a lower current value in the three-phase formula, which underestimates the load. The 48.6 kW figure results from incorrectly using 3 instead of √3 in the formula (3 × 600 V × 30 A × 0.90), which overestimates the real power because it treats the line-to-line voltage and line current as if they were phase quantities.",
       "steps": [
         {
           "label": "Formula",
@@ -561,7 +561,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-7, Sub-task B-7.02",
       "blueprintObjective": "Apply three-phase real power knowledge while the electrician installs three-phase consumer/supply services and metering equipment.",
-      "contentHash": "1c9cb9a5ff368c10eb4a67e1883818309671f3d38be64b1b8a853b735a6d8038"
+      "contentHash": "c5ae87d700bf8875a6235d94cadbc28bab01cb8a046cf7b0d631d65a26dea02f"
     },
     {
       "bankItemNumber": 75,
@@ -1000,7 +1000,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While commissioning an adjustable-trip protective device at a 600 V motor control centre, an electrician clamps each phase conductor of the feeder and reads about 118 A with the ventilation unit running steadily. The nameplate lists the balanced three-phase load as 120 kVA. What approximate full-load line current should the readings be compared against?",
+      "question": "An electrician is commissioning an adjustable-trip protective device feeding a 600 V, three-phase ventilation unit at a motor control centre. The unit’s nameplate shows a balanced three-phase rating of 120 kVA, and clamp-on measurements on each phase during steady operation are about 118 A. To verify that the measured current is close to the unit’s rated full load, what approximate full-load line current should these readings be compared to?",
       "options": [
         "92.4 A",
         "115.5 A",
@@ -1008,7 +1008,7 @@
         "161.7 A"
       ],
       "correctIndex": 1,
-      "explanation": "Convert the nameplate rating to volt-amperes (120 kVA = 120,000 VA) and use the balanced three-phase relationship I = S ÷ (√3 × V): 120,000 ÷ (1.732 × 600) ≈ 115.5 A. The clamp readings of about 118 A are within normal measurement tolerance of that value, so the unit is drawing close to its rated full load and the trip setting can be evaluated against 115.5 A. The other choices are that current multiplied by roughly 0.8, 1.2 and 1.4; applying an adjustment percentage before establishing the actual full-load current gives a comparison figure that does not match what the phase conductors are carrying.",
+      "explanation": "For a balanced three-phase load, the full-load line current is found using I = S ÷ (√3 × V). The nameplate rating of 120 kVA is 120,000 VA. Substituting into the formula gives I = 120,000 ÷ (1.732 × 600) ≈ 115.5 A, so the measured 118 A is close to the unit’s rated full-load current. The other options represent values roughly 20% lower, 20% higher, and 40% higher than the calculated current and would not match the expected current for a 120 kVA load at 600 V.",
       "steps": [
         {
           "label": "Convert the load",
@@ -1029,7 +1029,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.03",
       "blueprintObjective": "Apply protected load current knowledge while the electrician services and maintains protection devices.",
-      "contentHash": "b5924fa8f70e10b274937814df5318e7cbdb8dd05b43443b08ca80a2e1d04da1"
+      "contentHash": "2ef0e70c040ff197aba059fedf6ea40a3f7aca8e702a253983705eae261f9c56"
     },
     {
       "bankItemNumber": 91,
@@ -1117,15 +1117,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A balanced three-phase resistive load bank rated 75 kVA is connected to a 600 V construction panel to load-test a standby generator, and the electrician is confirming the line current before selecting the overcurrent device. With the bank at full output, approximately what current should a clamp-on ammeter read on each line conductor?",
+      "question": "A balanced three-phase resistive load bank rated 75 kVA is connected to a 480 V temporary power distribution board to load-test a standby generator at full output. Before choosing the feeder overcurrent device, the electrician checks one line with a clamp-on ammeter. Approximately what current should the meter indicate on each line conductor?",
       "options": [
-        "57.8 A",
+        "62.5 A",
         "72.2 A",
-        "86.6 A",
-        "101 A"
+        "89.0 A",
+        "104.0 A"
       ],
       "correctIndex": 1,
-      "explanation": "Convert the rating to volt-amperes (75 kVA = 75 000 VA) and divide by √3 times the line-to-line voltage: I = 75 000 ÷ (1.732 × 600) ≈ 72.2 A. That is the current in each line conductor and what the clamp-on meter should indicate at full output. The other choices are that result scaled by roughly 0.8, 1.2 and 1.4; applying a derating or a sizing multiplier before the actual line current has been established misstates the measured load and leads to the wrong device rating.",
+      "explanation": "For a balanced three-phase load, line current is found using I = S ÷ (√3 × V), where S is the three-phase kVA in volt-amperes and V is the line-to-line voltage. Convert 75 kVA to 75 000 VA and divide by √3 times 480 V: I = 75 000 ÷ (1.732 × 480) ≈ 72.2 A. This is the approximate current in each line conductor that the clamp-on ammeter should show at full load. The other options represent lower or higher currents that would result from using the wrong voltage value or misapplying multipliers when calculating three-phase line current.",
       "steps": [
         {
           "label": "Convert the load",
@@ -1146,7 +1146,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-8, Sub-task B-8.01",
       "blueprintObjective": "Apply protected load current knowledge while the electrician installs overcurrent protection devices.",
-      "contentHash": "7511f3e78249eb4a162762bfe645f2061e60144ce9000fc84feb85d31a5c0fd9"
+      "contentHash": "45fc13f3a035a1fb8363f11212d8075a6e09049134b7ca4b12950f08333203f0"
     },
     {
       "bankItemNumber": 95,
@@ -1351,7 +1351,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While commissioning a 600 V three-phase, 3-wire transformer secondary that feeds a machine shop panel, an electrician needs the expected full-load line current before setting the overload relay range. The nameplate secondary rating is 90 kVA. What is the approximate line current at full load?",
+      "question": "While setting the overload protection for a 600 V, three-phase, 3-wire service supplying a 90 kVA distribution transformer secondary to a machine shop panel, what is the approximate full-load line current on the secondary conductors?",
       "options": [
         "50.0 A",
         "86.6 A",
@@ -1359,7 +1359,7 @@
         "259.8 A"
       ],
       "correctIndex": 1,
-      "explanation": "For a balanced three-phase load, I = kVA x 1000 / (line voltage x 1.732) = 90 000 / (600 x 1.732) = 90 000 / 1039.2 = 86.6 A. The 50.0 A choice comes from dividing by 3 instead of the square root of 3 (90 000 / 1800). The 150.0 A choice comes from treating the load as single-phase and leaving out the square root of 3 (90 000 / 600). The 259.8 A choice comes from multiplying by 1.732 instead of dividing by it. Only dividing the volt-amperes by the line voltage times 1.732 gives the correct three-phase line current.",
+      "explanation": "For a balanced three-phase load, the full-load line current is found using I = kVA × 1000 ÷ (line voltage × 1.732). Substituting the given values: I = 90 000 ÷ (600 × 1.732) = 90 000 ÷ 1039.2 ≈ 86.6 A, so the full-load line current is about 86.6 A.\n\nThe 50.0 A option results from incorrectly dividing the kVA by 3 × line voltage instead of by √3 × line voltage (90 000 ÷ 1800). The 150.0 A option comes from treating the system as if it were single-phase and omitting the √3 factor (90 000 ÷ 600). The 259.8 A option comes from incorrectly multiplying by √3 instead of dividing by it. Using the three-phase relationship with the √3 factor in the denominator is necessary to obtain the correct line current for a three-phase, 3-wire system.",
       "steps": [
         {
           "label": "Convert apparent power",
@@ -1380,7 +1380,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.02",
       "blueprintObjective": "Apply distribution load current knowledge while the electrician services and maintains power distribution equipment.",
-      "contentHash": "cafea503322b4693da68b9d9e9b72e265c24becba10792a3d81f26ff780b0e16"
+      "contentHash": "040308643ff1a312c829c4a09eb74cf8b7e817383a4d14b2f243385cd5fd8e3d"
     },
     {
       "bankItemNumber": 103,
@@ -1624,15 +1624,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A tenant fit-out adds three new feeder breakers to an existing 1200 A switchboard in a strip mall electrical room, and several breaker spaces remain unused. What evidence best demonstrates that main-bus loading is still within capacity?",
+      "question": "A landlord is adding three new tenant feeders to an existing 1200 A switchboard in a strip mall electrical room. Several spare breaker positions are still available. Before approving the added feeders, what documentation best confirms that the main bus can carry the resulting load without exceeding its ampacity?",
       "options": [
-        "The total of the ampere ratings of every branch and feeder breaker mounted in the switchboard, including the three new devices, kept below the main-bus rating.",
-        "The interrupting rating and frame compatibility of the three new breakers, showing they match the bus bracing and short-circuit rating stamped on the switchboard nameplate.",
-        "The updated calculated demand, main-bus ampere rating, ambient and enclosure temperature conditions, and revised feeder schedule, checked against the approved switchboard design.",
-        "A one-week current log taken on the incoming conductors before the tenant equipment is energized, projected forward to show the bus stays under its rated ampacity."
+        "A list showing that the sum of the ampere ratings of all existing and new branch and feeder breakers installed in the switchboard does not exceed 1200 A.",
+        "Manufacturer data and inspection records confirming the three new breakers have interrupting ratings and frames suitable for the switchboard’s short-circuit rating and bus bracing.",
+        "An updated load summary that includes the new tenant feeders, the main-bus ampere rating, ambient and enclosure temperature limits, and a revised feeder schedule, all compared to the original switchboard design criteria.",
+        "A monitoring report showing that, over a one-week period after installation, the main breaker never reached more than 60% of its rating during normal operation."
       ],
       "correctIndex": 2,
-      "explanation": "Main-bus loading is judged from the calculated demand the switchboard must actually carry, the ampere rating of the bus, the ambient and enclosure temperature conditions that can limit that rating, and an accurate feeder schedule showing what is connected. Checking those four pieces against the approved design shows whether the fit-out keeps the bus within its intended capacity. Adding up breaker ampere ratings overstates loading because each device is sized for its own circuit and demand factors are ignored, so the sum normally exceeds a correctly sized bus. Interrupting rating and bus bracing confirm the assembly can withstand fault current, which is a separate concern from how much continuous current the bus carries. A current log taken before the new loads are energized captures only the previous condition, missing the added tenant demand, seasonal peaks, and the extra heating from a more fully populated enclosure.",
+      "explanation": "To verify main-bus loading, you rely on a calculated demand that includes the new tenant feeders, the bus ampere rating, any ambient or enclosure temperature limits that affect that rating, and a current feeder schedule that reflects what is actually connected. Comparing this updated information against the original design criteria shows whether the bus capacity is still adequate. Simply totaling breaker ratings ignores demand factors and diversity, so it usually exaggerates the actual load on the bus. Checking interrupting rating and bus bracing confirms the assembly can withstand fault current, which is different from verifying continuous load on the bus. A short monitoring period, even after installation, may miss seasonal peaks or changes in occupancy and does not replace a proper load calculation tied to the design assumptions.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1640,7 +1640,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-9, Sub-task B-9.01",
       "blueprintObjective": "Apply ventilation clearance knowledge while the electrician installs power distribution equipment.",
-      "contentHash": "fca2ec485d072eef8d042362d89e9a26cc572ccdc4d5867e042f208657dc8740"
+      "contentHash": "d9cb7a72bb9f26ef4f54f616f1d26eebfa415874db00f69b3cba398601129b0e"
     },
     {
       "bankItemNumber": 112,
@@ -1928,7 +1928,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During a planned feeder shutdown at a water treatment plant, a UPS must keep the monitoring equipment in a control cabinet energized. The battery bank is rated to store 3600 Wh, and the usable conversion efficiency is estimated at 85%. What is the theoretical runtime for a steady 1800 W load?",
+      "question": "During a planned feeder shutdown at a water treatment plant, a UPS must keep the SCADA monitoring equipment in a control cabinet energized. The battery bank is rated to store 3600 Wh, and overall usable conversion efficiency is estimated at 85%. Assuming the load is a steady 1800 W, what is the theoretical backup runtime?",
       "options": [
         "1.45 h",
         "1.70 h",
@@ -1936,7 +1936,7 @@
         "2.20 h"
       ],
       "correctIndex": 1,
-      "explanation": "First find the energy actually delivered to the load: 3600 Wh × 0.85 = 3060 Wh usable. Then divide by the load: 3060 Wh ÷ 1800 W = 1.70 h. Checking the other choices shows why they do not fit: 1.45 h would need only 2610 Wh delivered (about 72.5% efficiency), 1.95 h would need 3510 Wh (about 97.5% efficiency), and 2.20 h would need 3960 Wh, which is more energy than the bank stores even with no conversion losses at all. Remember this figure is only an estimate for planning the shutdown; actual autonomy still depends on approved equipment data, battery age and temperature, and suitable testing.",
+      "explanation": "To estimate UPS backup time you convert the battery’s stored energy into usable watt‑hours at the load, then divide by the load power. The battery bank stores 3600 Wh, but with 85% usable efficiency only 3600 Wh × 0.85 = 3060 Wh can be delivered to the equipment. Dividing by the steady 1800 W load gives 3060 Wh ÷ 1800 W = 1.70 h, which is the theoretical runtime under these conditions. The other values would require different efficiencies or stored energy: 1.45 h corresponds to only about 2610 Wh delivered, 1.95 h to about 3510 Wh, and 2.20 h to about 3960 Wh, which is more energy than the battery bank can provide. In the field, you use this type of calculation for planning, then confirm expected autonomy against manufacturer data, battery condition, and site test results.",
       "steps": [
         {
           "label": "Find usable energy",
@@ -1953,7 +1953,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-10, Sub-task B-10.01",
       "blueprintObjective": "Apply ups battery runtime knowledge while the electrician installs power conditioning, ups and surge suppression systems.",
-      "contentHash": "e8a2dfb3cac9753d9254ec0b20eeaac5f7c26a2ba10282cb9b062e4ec5109518"
+      "contentHash": "654cdb015fa302becac8d0273f3cc6f8889db58e148dd2855516a8493b8e9b65"
     },
     {
       "bankItemNumber": 123,
@@ -2267,7 +2267,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During an outage for a ground-fault protection upgrade on a critical pump controller, an apprentice measures two unintended metallic return paths between the same two points: one path is 15 ohms and the other is 30 ohms. For the conceptual check, what single resistance between those two points would draw the same total current as the two paths together?",
+      "question": "During testing on a motor control panel, you find two parallel fault-current paths between the same bonded enclosure and neutral bar: one path has a resistance of 15 ohms and the other has 30 ohms. For verification of your readings, what single resistance between those two points would draw the same total current as the two parallel paths combined?",
       "options": [
         "10 ohms",
         "15 ohms",
@@ -2275,7 +2275,7 @@
         "45 ohms"
       ],
       "correctIndex": 0,
-      "explanation": "Because both paths connect the same two points, the current divides between them, so the single equivalent resistance must be smaller than either path. Using 1/R = 1/15 + 1/30 = 2/30 + 1/30 = 3/30, R = 10 ohms. Choosing 15 ohms ignores the extra current carried by the 30 ohm path, 22.5 ohms is the simple average of the two values, and 45 ohms is the sum that would apply only if the paths were connected end to end in series.",
+      "explanation": "Because both conductors are in parallel between the same two points, the total current splits between them and the equivalent resistance must be lower than the smallest individual resistance. The parallel resistance is found using 1/R = 1/15 + 1/30 = 2/30 + 1/30 = 3/30, so R = 10 ohms. Choosing 15 ohms treats only the lower-resistance path and ignores the additional current in the 30 ohm path. 22.5 ohms is just the arithmetic mean of the two values, which does not apply to parallel circuits. 45 ohms is the sum of the two resistances, which would be correct only if they were connected in series rather than in parallel.",
       "steps": [
         {
           "label": "Formula",
@@ -2292,7 +2292,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.02",
       "blueprintObjective": "Apply parallel path resistance knowledge while the electrician installs ground-fault protection and detection systems.",
-      "contentHash": "a90184d57f86270f9ea37cf8c43ca0eb3e760b79c5ffc95812d4ebf7b554d60c"
+      "contentHash": "90958573ee2914e9d986d5bcd606522c5b2830538ef88d43bb1417c5cbf22358"
     },
     {
       "bankItemNumber": 135,
@@ -2528,15 +2528,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning a new 1600 A, 600/347 V, 4-wire service in a distribution warehouse, an electrician finds that the window-type (zero-sequence) sensor for the ground-fault protection system encircles only the three phase conductors, the service neutral is run alongside the sensor window, and the neutral-to-ground bonding connection is made on the load side of the sensor. What action should be taken before the service is energized?",
+      "question": "While commissioning a new 1600 A, 600/347 V, 4‑wire service for a distribution warehouse main switchboard, an electrician notices that the window‑type ground‑fault sensor encircles only the three phase conductors, the service neutral is pulled outside the sensor opening, and the neutral‑to‑ground bonding jumper is landed on a neutral bar downstream of the sensor. What should be done before the service is energized to ensure the ground‑fault protection operates correctly on this 4‑wire service?",
       "options": [
-        "Verify only that the equipment bonding conductor is continuous back to the service enclosure, since the sensor will detect any imbalance once all enclosures are solidly bonded.",
-        "Compare the installation with the approved single-line drawing and the relay manufacturer's instructions, then route the neutral through the sensor window and move the neutral-to-ground bonding connection to the supply side of the sensor.",
-        "Increase the ground-fault pickup current and time-delay settings until normal neutral unbalance current no longer operates the relay with the conductors left as they are installed.",
-        "Check phase rotation and equalize the phase loading at the sensor, since zero-sequence sensing depends on matched phase currents rather than on which conductors pass through the window."
+        "Confirm that all equipment bonding conductors are properly terminated in the service enclosure, because a bonded system will allow the sensor to respond to any ground‑fault current even if the neutral conductor is outside the sensor window.",
+        "Compare the installed arrangement with the approved single‑line diagram and the relay manufacturer’s instructions, then reroute the neutral through the sensor window and relocate the neutral‑to‑ground bonding jumper so it connects on the line side of the sensor.",
+        "Leave the conductors as installed, but increase the ground‑fault pickup setting and time delay so that normal neutral current does not cause the ground‑fault relay to operate.",
+        "Keep the sensor wiring as installed and focus on checking phase rotation and balancing the three phase loads, since proper load balance is the main requirement for zero‑sequence ground‑fault sensing."
       ],
       "correctIndex": 1,
-      "explanation": "A zero-sequence sensor responds to the vector sum of the currents in the conductors passing through its window. On a 4-wire service that sum is zero during normal operation only when every current-carrying conductor, including the neutral, passes through the window. Leaving the neutral outside makes ordinary neutral unbalance current look like a ground fault, causing nuisance tripping. The neutral-to-ground bonding connection must also be made on the supply side of the sensor; if it is made downstream, fault current returning through the neutral passes back through the window and cancels the signal, so the relay may never operate on a real ground fault. Checking bonding continuity alone, raising the pickup and delay settings, or verifying rotation and load balance all leave the incorrect conductor routing and bonding location in place.",
+      "explanation": "A window‑type zero‑sequence ground‑fault sensor measures the sum of the currents in all conductors that pass through its opening. On a 4‑wire service, that sum is near zero in normal operation only if each current‑carrying conductor, including the neutral, passes through the sensor. If the neutral is left outside, normal neutral current appears to the relay as ground‑fault current and can cause nuisance trips. The main neutral‑to‑ground bonding jumper also has to be located on the line side of the sensor. If the bonding jumper is downstream, fault current can return on the neutral through the sensor and cancel part of the ground‑fault signal, so the relay may not trip on a true fault. Verifying equipment bonding alone, changing pickup and delay settings, or focusing on phase rotation and load balance does not correct the fundamental issue of improper conductor routing and bonding location for zero‑sequence protection on the service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2544,7 +2544,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-11, Sub-task B-11.03",
       "blueprintObjective": "Apply lightning down-conductor routing knowledge while the electrician installs lightning protection systems.",
-      "contentHash": "ddbf721058d9f2f028ac4c69dbf6ea3adb59e5d5bd1e822f3dce1d30f034d415"
+      "contentHash": "4465c1425ab8a18c922727dea2f984fdb3af37fd5e456758e8463b88a49fb47e"
     },
     {
       "bankItemNumber": 144,
@@ -2784,15 +2784,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During the monthly test of a standby set at a water treatment plant, the engine starts and runs normally, but the battery charger ammeter stays near maximum output for several hours after the run, the annunciator briefly displayed a battery-trouble alarm, and light corrosion is visible on one battery terminal. Which check best uses the available evidence before any part is replaced?",
+      "question": "During the monthly test of a standby generator at a water treatment plant, the engine starts and runs normally, but the battery charger ammeter stays near maximum output for several hours, the annunciator briefly shows a battery-trouble alarm, and light corrosion is visible on one battery terminal. Before replacing any component, what is the most appropriate way to assess the starting battery and dc circuit using the evidence available?",
       "options": [
-        "Replace the battery charger, because a sustained high charging current after a run proves its output regulation circuit has failed.",
-        "Compare battery polarity, loaded battery voltage, cranking current, connection voltage drop, battery temperature and charger output history with the approved service data.",
-        "Inspect the generator output terminals first, because a battery-trouble alarm normally originates on the ac side of the set rather than the dc starting system.",
-        "Clean the visible terminal corrosion and clear the alarm, then record the battery as serviceable once the charger settles back to its float voltage."
+        "Replace the battery charger, because a sustained high charging current and a battery-trouble alarm confirm that the charger is overcharging the starting battery.",
+        "Compare battery polarity, loaded battery voltage during cranking, starting current, connection voltage drop, battery temperature and charger output history with the approved service specifications.",
+        "Inspect the generator output terminals first, because a battery-trouble alarm normally indicates a fault on the ac side of the generator rather than in the dc starting system.",
+        "Clean the visible terminal corrosion, reset the annunciator and record the battery as serviceable once the charger ammeter drops back toward its normal float level."
       ],
       "correctIndex": 1,
-      "explanation": "The starting system is a dc source that has to deliver very high current for a short time, so it must be evaluated under an actual cranking load along with polarity, cable and terminal voltage drop, electrolyte temperature and the charger's recorded output. A charger that keeps running at high output and an intermittent battery alarm both point to a battery that is losing capacity or a high-resistance connection, and only loaded measurements will show which. Replacing the charger, looking at the ac output terminals, or simply cleaning a terminal and clearing the alarm leaves the underlying condition undiagnosed, so the set may fail to crank during an actual outage.",
+      "explanation": "The starting battery and dc cables must be evaluated under operating conditions to confirm whether the battery is losing capacity or a connection has developed excessive resistance. Comparing polarity, cranking voltage, starting current, voltage drop across cables and terminals, battery temperature and the charger’s recorded output with the service specifications uses both the observed alarm and the high charging current to identify the actual fault. Simply replacing the charger assumes the problem is in the charger without checking the battery or connections, inspecting the ac generator output does not address a dc battery alarm, and cleaning corrosion and waiting for the charger to settle may hide a weak battery or high-resistance joint that could prevent the set from cranking during an outage.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2800,7 +2800,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply dc polarity knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "375da2ee89255dd9cbf8f78cf3c7351b0890994d5ea0e46a698ed378cdb8a1f2"
+      "contentHash": "a223bebe989a3b75aaf17b057ae3720aa0a910978a7d6669e8f7498cc0905da4"
     },
     {
       "bankItemNumber": 153,
@@ -2836,7 +2836,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During a load-bank test on the generator feeder shown, the load bank is connected at the far end of the power path, downstream of the feeder overcurrent device. The balanced three-phase load bank is set to 30 kVA at 600 V. What should a clamp-on ammeter read on one phase of the feeder conductors that run between the feeder overcurrent device and the load bank?",
+      "question": "During a load-bank test on the generator feeder shown in diagram 309A-D04, the balanced three-phase load bank is connected at the far end of the single power path, downstream of the feeder overcurrent device, at the distribution section feeding that branch. The load bank is set to 30 kVA at 600 V. When a clamp-on ammeter is placed on one phase conductor between the feeder overcurrent device and the load bank connection point shown in the diagram, what current should it indicate?",
       "options": [
         "23.1 A",
         "28.9 A",
@@ -2844,7 +2844,7 @@
         "40.5 A"
       ],
       "correctIndex": 1,
-      "explanation": "Line current for a balanced three-phase load is I = (kVA x 1000) / (1.73 x line voltage) = 30 000 / (1.73 x 600) = 28.9 A. Because the source, main protection, distribution equipment, feeder protection and load bank are all in series along the single power path, that same 28.9 A flows in the feeder conductors between the feeder overcurrent device and the load bank. Reading 23.1 A would come from using 750 V instead of the actual 600 V line voltage, 34.7 A from using 500 V, and 40.5 A from multiplying the correct 28.9 A by about 1.4 as though converting an RMS value to a peak value.",
+      "explanation": "For a balanced three-phase load, the line current is calculated using I = (kVA × 1000) / (1.73 × line voltage). Substituting the given values: I = 30 000 / (1.73 × 600) ≈ 28.9 A, so the ammeter on any one phase between the feeder overcurrent device and the load bank should read about 28.9 A. Because the generator, main protection, distribution equipment, feeder protection and the load bank connection shown in the diagram are all in series along a single power path, the same current flows through that feeder segment. A reading of 23.1 A results from incorrectly using 750 V instead of the actual 600 V line voltage, 34.7 A from using 500 V, and 40.5 A from multiplying the correct 28.9 A by roughly 1.4 as though converting an RMS value to a peak value, which does not apply to this measurement.",
       "steps": [
         {
           "label": "Convert apparent power",
@@ -2865,7 +2865,7 @@
       "diagramAlt": "Power path from source through main protection, distribution equipment, feeder protection and a connected load.",
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.02",
       "blueprintObjective": "Apply generator load current knowledge while the electrician services and maintains ac generating systems.",
-      "contentHash": "0367af5386ef36505d80bfa846922c30876acf5cd423f65287860ec8ed6bd42f",
+      "contentHash": "1d9f2fb3e6a4ac2fde1081b14d76ac6c38a91c00d28dd5fbdaad1e4171158319",
       "options_note": null
     },
     {
@@ -2876,15 +2876,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A portable diesel generator has been connected to a temporary three-phase distribution panel on a construction site. The site's submersible dewatering pump turns the correct way when the panel is fed from the temporary utility service, but pumps poorly and turns backward when the crew switches the panel over to the generator. What should be verified before the crew continues using the generator?",
+      "question": "A portable diesel generator has been connected to a temporary three-phase distribution panel on a construction site. A submersible dewatering pump runs in the correct direction when the panel is supplied from the utility source, but it runs backward and pumps poorly when the crew transfers the panel to the generator. What should be checked before the crew continues using the generator supply?",
       "options": [
-        "Increase the generator's voltage adjustment until the pump performance on generator power matches its performance on utility power.",
-        "Run the generator for a longer warm-up period and restart the pump several times to see whether correct rotation returns on its own.",
-        "With the temporary panel de-energized and locked out, take phase-rotation readings at the panel line terminals for both the utility feed and the generator feed and compare them to the documented sequence for the site distribution.",
-        "Reverse two of the pump's supply leads at the panel so it turns correctly on generator power, and leave the utility connection as it is."
+        "Increase the generator voltage setting until the pump performance on generator power matches its performance on utility power.",
+        "Allow the generator to run at no load for a longer period and restart the pump several times to see whether correct rotation returns.",
+        "With the temporary panel de-energized and locked out, measure phase rotation at the panel line terminals for the utility source and the generator source and compare both readings with the documented site phase sequence.",
+        "Reverse two of the pump motor supply conductors at the panel so the pump turns correctly on generator power, and leave the utility connection unchanged."
       ],
       "correctIndex": 2,
-      "explanation": "Rotation that reverses when only the source changes points to a phase-sequence difference between the two supplies, not to a voltage level or motor fault. The correct approach is to isolate and lock out the temporary panel, use a phase-rotation tester on the line terminals for each source, and compare both results to the sequence the site distribution was documented to use, then correct the generator connections if they differ. Reversing the pump leads seems to solve the problem because the pump then runs correctly on the generator, but it leaves the pump and every other three-phase load turning backward whenever the panel is fed from the utility service again.",
+      "explanation": "A motor that runs backward only when the supply source changes usually indicates a phase-sequence mismatch between the utility and the generator, not a voltage problem. The correct check is to isolate the panel, verify phase rotation at the line terminals for each source, and confirm that both match the established site sequence before continuing. Reversing the pump leads would make the pump run correctly on one source but incorrectly on the other source.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2892,7 +2892,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-12, Sub-task B-12.01",
       "blueprintObjective": "Apply fuel or energy readiness knowledge while the electrician installs ac generating systems.",
-      "contentHash": "93ab4af6a9f70f5e0081f88907c66ba00d3b9d2e731b0ef5dc6826b7052cf6cb",
+      "contentHash": "e5a30e9c0434b22f077367b42d511d162df376a5ca56c8ef8702e6af3f47490a",
       "options_note": null
     },
     {
@@ -3129,15 +3129,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician is commissioning a battery-based inverter system. The inverter carries the load normally at first, but partway through the discharge test it trips and reports a DC input voltage out-of-range fault. Which action makes the best use of the available evidence?",
+      "question": "During commissioning of a battery-based inverter at a small commercial site, the unit transfers the load normally at first, but midway through a controlled discharge test it shuts down and displays a DC input voltage out-of-range fault. Which action makes the best use of the available evidence?",
       "options": [
-        "Raise the inverter's low DC trip setting until it stops shutting down during the discharge test.",
-        "Replace the inverter, because a DC input fault code shows the unit's input stage has failed.",
-        "Record the battery string terminal voltage through the discharge and compare it with the inverter's specified DC input window and the low-voltage disconnect setting on the approved design.",
-        "Accept the installation as it is, since the inverter produced correct AC output voltage and frequency earlier in the test."
+        "Increase the inverter's low-voltage trip point so it continues running through the discharge test.",
+        "Replace the inverter immediately, because a DC input fault code means the inverter input stage has failed.",
+        "Measure the battery string terminal voltage throughout the discharge and compare it with the inverter's specified DC input window and the low-voltage disconnect setting shown on the approved design.",
+        "Accept the installation as satisfactory, since the inverter delivered correct AC voltage and frequency before the fault appeared."
       ],
       "correctIndex": 2,
-      "explanation": "An inverter only operates while the DC supplied to it stays inside the input voltage window given in its specifications. Logging string voltage as the batteries discharge and comparing those readings with that window and with the disconnect setting shown on the approved design tells you whether the string voltage sags too low, whether a cell or connection is weak, or whether the setting is simply mismatched. Replacing the inverter is tempting because the fault code names the input, but the fault is reporting what the battery is delivering, and moving the trip setting to hide the shutdown would let the batteries discharge below the level the manufacturer permits.",
+      "explanation": "An inverter can only operate while the DC supply remains within its specified input voltage window. Tracking the battery string voltage during discharge and comparing those readings with the inverter's input range and the design disconnect setting shows whether the batteries are sagging too far, whether a connection or cell is weak, or whether the settings do not match the design. Raising the trip point only hides the problem, and replacing the inverter is not justified until the supplied DC and its settings have been verified.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3145,7 +3145,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply storage ventilation knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "50a2b41fabddfc38f32917bf7da49f81d0e754e4c76f69af45362a1acf8aa12d",
+      "contentHash": "691dca1034912e102d91c5fffedbd594f302cf4869b3e391aafb95c9ac948823",
       "options_note": null
     },
     {
@@ -3217,15 +3217,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning a rooftop PV array on a clear −18 °C February morning, an electrician measures the open-circuit voltage of a 20-module series string at the combiner and gets a reading well above 20 times the open-circuit voltage printed on the module nameplate. To decide whether this string is compatible with the installed string inverter, what should the electrician do?",
+      "question": "While commissioning a rooftop PV array on a clear −18 °C February morning, an electrician measures the open-circuit voltage of a 20-module series string at the combiner and finds it significantly higher than the total based on the 25 °C nameplate values. To confirm that this string will not exceed the installed string inverter’s maximum DC input voltage under the coldest expected conditions, what should the electrician do next?",
       "options": [
-        "Use 20 times the nameplate open-circuit voltage as the string voltage, since cold-weather readings run high and cannot be compared with equipment ratings.",
-        "Take the reading again at midday once the modules have warmed to normal operating temperature and compare that lower voltage with the inverter's maximum input voltage rating.",
-        "Multiply the module open-circuit voltage by the number of modules in series, apply the module temperature coefficient for the lowest expected ambient temperature at the site, and compare that corrected value with the inverter's maximum input voltage.",
-        "Divide the measured string voltage by the number of modules and accept the string if each module's share stays below the module's maximum system voltage rating."
+        "Use 20 times the nameplate open-circuit voltage as the string voltage and ignore the higher cold-weather reading, because field measurements in very low temperatures are not representative for equipment selection.",
+        "Repeat the open-circuit voltage measurement later in the day after the modules warm up and base the compatibility check on that lower midday voltage compared with the inverter’s maximum input rating.",
+        "Multiply the module open-circuit voltage by the number of series-connected modules, apply the module’s voltage temperature coefficient for the lowest expected ambient temperature at the site, and compare that corrected string voltage with the inverter’s maximum DC input rating.",
+        "Divide the measured string open-circuit voltage by the number of modules in the string and accept the design if the resulting per‑module voltage is below the module’s maximum system voltage rating."
       ],
       "correctIndex": 2,
-      "explanation": "A PV module's open-circuit voltage climbs as cell temperature drops, so the highest voltage the inverter will ever see occurs at the coldest expected temperature at that site, not at the 25 °C nameplate test condition. The correct check is to multiply the module open-circuit voltage by the number of series-connected modules, then adjust that total using the module's voltage temperature coefficient for the lowest expected ambient temperature, and compare the worst-case result with the inverter's maximum input voltage. Using the uncorrected nameplate total, or a warm midday measurement, both understate the peak voltage the inverter must withstand, so a string that looks acceptable could overvoltage the inverter on the coldest morning. Dividing the string voltage by the module count compares against the wrong limit, because the maximum system voltage rating applies to the voltage present on the whole string and its conductors, not to one module's share of it.",
+      "explanation": "PV module open-circuit voltage increases as cell temperature drops, so the highest DC voltage the inverter may see occurs at the coldest expected outdoor temperature, not at the 25 °C test condition printed on the nameplate. To check string compatibility, the electrician multiplies the module open-circuit voltage by the number of modules in series, then uses the module’s voltage temperature coefficient to adjust that total for the lowest expected ambient temperature at the site. The resulting worst-case cold‑weather string voltage is then compared with the inverter’s maximum DC input rating to ensure the input does not exceed the inverter’s design limit. Relying only on the uncorrected nameplate total or on a warm midday measurement understates the peak voltage the inverter must withstand, which can lead to overvoltage on very cold mornings. Dividing the measured string voltage by the number of modules and comparing to the module’s maximum system voltage rating uses the wrong benchmark, because that rating applies to the entire string and its conductors, not to a per‑module share of the series voltage.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3233,7 +3233,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.02",
       "blueprintObjective": "Apply energy-flow monitoring knowledge while the electrician services and maintains renewable energy generating and storage systems.",
-      "contentHash": "0f2fbd6f9248150cd7659e6e80c4a135be9e0bd197bb71f228ce393bbf756c9b"
+      "contentHash": "5ca1fe2d45d47eea3c4bb27d72266d5eb8afd7e6d9ccaecd4b68bf651e7c086e"
     },
     {
       "bankItemNumber": 168,
@@ -3243,15 +3243,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "At a PV combiner box, four parallel strings all show similar string voltage, but the combined output current is well below the value expected for the measured irradiance. What should the electrician do next to find the cause?",
+      "question": "At a rooftop PV combiner box, four parallel strings are connected and all show similar open‑circuit string voltages at their fuses, but the combiner output current is much lower than expected for the steady irradiance measured on site. What should the electrician do next to pinpoint which string is not contributing properly to the array current?",
       "options": [
-        "Replace the most accessible combiner fuse, since matching string voltages confirm each string is delivering its share of current.",
-        "Investigate the inverter and its load side first, because a break in one paralleled string path cannot reduce the combined output current.",
-        "Clamp each string conductor in turn while irradiance stays steady, then compare the individual string currents with one another and with the expected per-string value to identify the low or dead string.",
-        "Add the nameplate current ratings of the four strings, record that sum as the combiner output current, and accept the array without taking field current readings."
+        "Replace the easiest fuse to access, because equal string voltages mean each string must be supplying its full share of current.",
+        "Check only the inverter and load connections first, since a single open or weak string in parallel will not significantly affect the total combiner output current.",
+        "Use a clamp meter to measure each string conductor one at a time while irradiance remains steady, then compare the individual string currents to each other and to the expected per‑string current to locate the weak or open string.",
+        "Add up the four string nameplate current ratings, record that total as the combiner output current, and rely on those values instead of taking live current measurements."
       ],
       "correctIndex": 2,
-      "explanation": "A string with an opened fuse, a loose termination, or a broken conductor can still show near-normal voltage at the combiner, so voltage alone does not prove current is flowing. Measuring each string's current with a clamp meter under steady irradiance and comparing the readings to each other and to the expected per-string value isolates which path is contributing little or nothing. Swapping an accessible fuse guesses at the fault, blaming the inverter ignores that the four string currents add to make the output, and adding nameplate values only predicts what should flow without confirming what actually does.",
+      "explanation": "Similar string voltages at the combiner indicate the strings are all connected, but they do not confirm that each string is delivering current. A string with an open fuse, loose termination, or damaged conductor can still show near‑normal voltage while contributing little or no current. Using a clamp meter on each string lead under steady irradiance and comparing the readings with each other and with the expected per‑string current reveals which path is weak or open. Simply replacing a random fuse assumes the fault location without testing, focusing only on the inverter ignores that low array current originates at the string level, and relying on nameplate currents does not verify actual performance in the field.",
       "steps": null,
       "tip": "For paralleled PV strings, similar voltage does not prove that each string is contributing current.",
       "isCalc": "no",
@@ -3259,7 +3259,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-13, Sub-task B-13.01",
       "blueprintObjective": "Apply pv string voltage knowledge while the electrician installs renewable energy generating and storage systems.",
-      "contentHash": "3c872a044ebfa67bb6279df1a904ef3beb497c9daed7ab9003e12111835b1be0"
+      "contentHash": "8344cade5ddb9ba72efbabc22c9b01e0d387441d81e226a5dbe186e0ec20a16f"
     },
     {
       "bankItemNumber": 169,
@@ -3330,15 +3330,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A shielded 13.8 kV cable has been isolated, tested dead and grounded. While inspecting a stress-cone termination, the electrician finds faint tracking marks on the insulation surface just past the shield cutback. What should be checked to determine why the tracking has developed at that point?",
+      "question": "A shielded 13.8 kV feeder has been isolated, tested dead and grounded. During inspection of a premoulded stress-cone termination, the electrician notices faint tracking marks on the cable insulation starting right at the end of the metallic shield cutback. To identify the cause of tracking at this location, what should be checked on the termination layout?",
       "options": [
-        "Measure insulation resistance from conductor to shield and return the cable to service if the reading is at least as high as the commissioning value",
-        "Wipe the tracked surface with solvent, re-coat it with silicone grease and reinstall the protective boot over the marks",
-        "Re-measure the shield cutback and insulation shaving dimensions, confirm the stress-relief element sits fully over the cutback, and check for contamination or sharp shield strands",
-        "Wrap additional layers of high-voltage tape over the tracked area, since added insulation thickness removes the stress concentration"
+        "Confirm that the insulation resistance from conductor to shield matches the original test record, and re-energize the feeder if the value has not decreased",
+        "Clean the tracking marks with approved solvent, apply a fresh coating of silicone grease over the area and refit the outer boot",
+        "Re-measure the shield cutback length and insulation taper, verify that the stress-control component fully overlaps the cutback, and look for contamination or sharp shield wires at the transition",
+        "Add more layers of high-voltage insulating tape over the affected area so the increased insulation thickness reduces the electrical stress"
       ],
       "correctIndex": 2,
-      "explanation": "Tracking just past a shield cutback is a symptom of concentrated electrical stress at the point where the shield ends. The stress-relief element must bridge that cutback by the exact dimensions specified for the cable, and the surface must be clean and free of protruding shield strands, because contamination or a sharp edge raises the surface stress further. A DC insulation-resistance reading is taken at a fraction of operating stress and will usually pass even where the geometry is wrong, so it proves nothing about the cutback. Grease and extra tape only cover the marks; neither changes the field geometry that caused them, so the tracking will continue and eventually puncture the insulation.",
+      "explanation": "Tracking at the end of the shield cutback indicates that electrical stress has been concentrated where the metallic shield stops and the insulation is no longer evenly graded. The first check is whether the shield has been cut back and the insulation tapered to the dimensions required for that cable and termination, and whether the stress-control element fully overlaps the cutback so it can properly grade the field at the transition. Any dirt, moisture, compound residue or protruding shield strands at that point can further concentrate stress and initiate tracking. Insulation-resistance tests are performed at relatively low DC voltage and mainly indicate bulk insulation condition, not local stress concentration, so a good reading does not prove the geometry is correct. Simply cleaning and greasing the surface or adding more tape only cover the marks without correcting the field grading at the shield end, so the underlying stress condition and risk of future failure remain unchanged.",
       "steps": null,
       "tip": "At high-voltage terminations, small preparation or placement errors can create concentrated electrical stress.",
       "isCalc": "no",
@@ -3346,7 +3346,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.03",
       "blueprintObjective": "Apply shield continuity knowledge while the electrician services and maintains high-voltage systems.",
-      "contentHash": "3f5323e224739d6cd0b97469c38d7a6f995d436a6fbe7fafd7202018cce9b825"
+      "contentHash": "38557868c40489db65c6e1223b3d60c25124ce5e70e5fd962e034d95ca8c2e60"
     },
     {
       "bankItemNumber": 172,
@@ -3356,15 +3356,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning a newly installed 13.8 kV shielded feeder between a plant substation and a motor control centre, an electrician measures 4 V between a shield section and the station ground bus, even though the cable design shows that shield bonded at both terminations. What should the electrician do before signing the shield off as correctly installed?",
+      "question": "While commissioning a newly installed 13.8 kV shielded feeder between a plant substation and a motor control centre, an electrician measures 4 V between a shield section and the station ground bus, even though the cable schedule shows the shield bonded at both ends. What action is required before the shield can be accepted as correctly installed?",
       "options": [
-        "Record the section as satisfactory, since a few volts on a shield is the normal capacitive coupling seen on any shielded cable",
-        "Bond the shield to the nearest grounded cable tray section and accept the reading once the measured voltage falls",
-        "Repeat the measurement with the feeder de-energized and accept the shield once the reading falls to zero",
-        "Carry out a point-to-point continuity check along the shield path and confirm the bonding connection at each splice and termination is intact"
+        "Note the reading in the test report and proceed, since a few volts on a shield can be ignored on a medium-voltage feeder",
+        "Install an extra bond from the shield to nearby structural steel to bring the reading closer to zero and leave the original terminations in place",
+        "Repeat the measurement at several points along the route and accept the shield if the voltage is similar at each location",
+        "Carry out a point-to-point continuity check along the entire shield path and verify that every splice and termination bonding connection is intact"
       ],
       "correctIndex": 3,
-      "explanation": "A shield bonded at both ends forms a closed, grounded path, so induced voltage has nowhere to build up and a reading of several volts points to an open, loose, or missing bonding connection somewhere along that path. A point-to-point continuity check from termination to termination, checking each splice and shield ground connection, is what pinpoints the break so it can be corrected before energizing the load. Standing capacitive-coupling voltage is expected only on a shield intentionally floated at one end, so calling the reading normal leaves a real discontinuity in service. Adding a bond to the nearest tray steel may pull the reading down while creating an unintended parallel path that carries circulating current through the tray. Voltage on any shield disappears when the feeder is de-energized whether the shield is continuous or open, so that retest proves nothing about the integrity of the bonding path.",
+      "explanation": "A shield that is designed to be bonded at both ends should form a continuous, low-impedance path to ground, so a measurable voltage between the shield and the station ground bus suggests a gap, loose lug, or missing bond in that path. Performing a point-to-point continuity test along the cable run, including each splice and termination, is how the electrician confirms that the shield is truly continuous and properly bonded before the feeder is put into service. Simply recording or averaging the voltage readings does not verify the integrity of the bonding path. Adding extra bonds to nearby steel may reduce the voltage but can introduce unintended parallel current paths. Checking the voltage at multiple points without confirming continuity may still leave an undetected open in the shield system.",
       "steps": null,
       "tip": "A shield continuity concern should be resolved from the bonding design and field measurements, not from repeated energizing attempts.",
       "isCalc": "no",
@@ -3372,7 +3372,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply phasing confirmation knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "cfbb10bcaa533c48ef23342db81b7907bba2bdc7fec2851e6473e12a703c127b"
+      "contentHash": "c95e6e8ab55e3584076b79e8762b887da36a55c3798eece6ecf8eb9ef704cfd3"
     },
     {
       "bankItemNumber": 173,
@@ -3443,15 +3443,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While commissioning metal-clad high-voltage switchgear, an electrician notices the load-break switch operating handle can begin to move even though the grounding switch position indicator reads closed. What must be completed before this cubicle is accepted?",
+      "question": "While commissioning metal-clad high-voltage switchgear, an electrician finds that the load-break switch operating handle can start to move even though the grounding switch position indicator shows closed. With the cubicle de-energized and verified grounded, what procedure must be carried out before the cubicle can be put into service?",
       "options": [
-        "Adjust the grounding switch position indicator until it agrees with the observed handle travel, then note the indication as corrected",
-        "Accept the interlock as functional, since the switch cannot be closed electrically while the grounding switch indicator reads closed",
-        "With the gear de-energized and grounded, cycle the mechanism through its full sequence to confirm handle travel is blocked with the grounding switch closed and that indication matches actual blade position",
-        "Block the handle in position and tag the cubicle so operators leave it alone until the next scheduled shutdown"
+        "Realign the grounding switch position indicator so it agrees with the initial handle movement, then record the new indication on the cubicle documentation",
+        "Confirm the control circuit prevents remote electrical closing when the grounding switch indicator shows closed and accept the mechanical handle travel as normal",
+        "With the gear de-energized and grounded, operate the mechanism through its full sequence to prove the handle is blocked when the grounding switch is actually closed and that the indicator matches the grounding switch blade position",
+        "Install a temporary blocking device on the operating handle and attach a caution tag so the cubicle remains out of use until a future maintenance outage"
       ],
       "correctIndex": 2,
-      "explanation": "A mechanical interlock is only proven by operating it. With the equipment safe, running the mechanism through its complete sequence shows whether handle travel is actually blocked while the grounding switch is closed, and confirms the indicator agrees with the real blade position. Re-adjusting the indicator assumes the indication is wrong when it may be truthful, and it masks a mechanism that no longer blocks travel. Relying on an electrical close block ignores the fact that a manual handle can still be operated. Blocking and tagging the handle defers the problem and leaves an unverified interlock in an energized lineup, where a switching error could close onto a grounded bus.",
+      "explanation": "For metal-clad high-voltage switchgear, the interlock between the load-break switch and the grounding switch must be proven by safely operating the mechanism, not by relying on indication alone. With the cubicle de-energized and the bus verified grounded, cycling the mechanism through its complete sequence confirms that the operating handle cannot move out of the safe position when the grounding switch blades are truly closed, and that the position indicator accurately reflects actual blade position. Simply adjusting the indicator to match the observed handle movement risks hiding a mechanical interlock failure. Trusting only the control circuit close-block ignores that a person can still move the manual handle toward an unsafe position. Parking the handle with a temporary block and tag delays the required verification and leaves the cubicle with an unproven interlock instead of correcting the condition before the equipment is placed in service.",
       "steps": null,
       "tip": "Interlock acceptance depends on the approved sequence and verified positions, not just on whether the equipment can be energized.",
       "isCalc": "no",
@@ -3459,7 +3459,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-14, Sub-task B-14.01",
       "blueprintObjective": "Apply interlock operation knowledge while the electrician installs high-voltage equipment.",
-      "contentHash": "ae5445dc7a926b4a73194936c29ef82c826ab46321b0482ccf3169def7c8ee47"
+      "contentHash": "f6ffafb59f8fcbd5c231f0132268176b09cff363b1e21201f4ffab821505bef2"
     },
     {
       "bankItemNumber": 176,
@@ -3582,15 +3582,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Two single-phase transformer secondary windings are to be interconnected to supply a control circuit, following an approved connection diagram. The terminals carry markings, but the crew must confirm the winding relationship before the final connection is accepted. What comparison best verifies winding polarity?",
+      "question": "On a control panel retrofit, you are asked to parallel two single-phase transformer secondary windings to feed a new 120 V control circuit. The terminals are marked X1 and X2 on each winding, and there is an approved connection diagram, but the crew must confirm the instantaneous winding relationship before the final tie-in is accepted. What procedure best verifies that the two secondary windings have the correct polarity relationship for a safe parallel connection?",
       "options": [
-        "Compare the nameplate polarity data, the terminal markings, the approved connection diagram, and the result of a suitable polarity test before making or accepting the final connection.",
-        "Energize one winding at reduced voltage and accept the polarity if the measured no-load voltage of that winding matches its nameplate value.",
-        "Copy the lead arrangement used on an identically rated transformer in the same enclosure, since equal ratings mean the terminals are marked in the same order.",
-        "Check the leads with an ohmmeter and connect the pair of leads that shows the lowest resistance reading between the two windings."
+        "Compare the nameplate polarity information with the terminal markings, follow the approved connection diagram, and perform a proper polarity test on the two secondary windings before accepting the final connection.",
+        "Energize one secondary at reduced voltage and accept the polarity if the measured no-load voltage on that winding matches its nameplate value within normal tolerance.",
+        "Copy the secondary lead arrangement used on another transformer of the same kVA and voltage rating in the panel, assuming the polarity and terminal sequence are identical.",
+        "Use an ohmmeter on the secondary terminals and connect together the pair of leads that shows the lowest resistance reading between the two windings."
       ],
       "correctIndex": 0,
-      "explanation": "Winding polarity describes the instantaneous relationship between identified terminals, so it is confirmed by reading the nameplate polarity information and terminal markings, following the approved connection diagram, and proving the relationship with a polarity test. A correct no-load voltage on one winding only shows that winding's ratio; it says nothing about how two windings will add or oppose once joined. Ratings shared with another transformer do not guarantee identical lead marking, and a resistance reading identifies continuity within a winding rather than which ends are of the same instantaneous polarity.",
+      "explanation": "Polarity describes the instantaneous voltage relationship between marked terminals, so it must be confirmed by using the nameplate polarity data and terminal markings, wiring according to the approved connection diagram, and proving the relationship with a polarity test on the actual windings. This ensures that when the windings are paralleled, their voltages are in phase and will add correctly. Measuring the correct no-load voltage on a single winding only confirms its ratio, not how two windings interact when interconnected. Duplicating connections from another transformer assumes its markings and internal connections are identical, which is not guaranteed. An ohmmeter reading shows continuity and approximate resistance within or between windings, but it does not indicate which terminals have the same instantaneous polarity or how the induced voltages will combine when paralleled.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3598,7 +3598,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA B, Task B-15, Sub-task B-15.02",
       "blueprintObjective": "Apply primary-secondary voltage knowledge while the electrician installs low-voltage single-phase transformers.",
-      "contentHash": "bcc744e3f68d0f7cc05df0b0fd394ec804eda01b60a37cbe71c8e39a37adee60"
+      "contentHash": "7cd4689a72a5ea559ed9af37efceac3c26c2b333e5ffeb69229e18082125142a"
     },
     {
       "bankItemNumber": 181,

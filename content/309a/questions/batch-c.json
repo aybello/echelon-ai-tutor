@@ -116,7 +116,7 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the accompanying diagram, on the annotated route drawing for an exposed EMT run feeding a rooftop compressor, the conductor path is shown from the supply end to the load-end connection at the compressor. The connector at that load-end termination rattles noticeably whenever the compressor runs. Before completing the pull, what should the electrician do about support of the final section of the run shown reaching that termination?",
+      "question": "On the diagram of an exposed EMT run feeding a rooftop compressor, the final length of conduit at the compressor end is shown with a vibrating connector at the load-end termination. What should the electrician verify and correct before the pull is completed?",
       "options": [
         "Compare the final section to a nearby communications raceway of different size and span, and match that raceway's support spacing.",
         "Confirm the rattle stops once the compressor is shut down, then finish the pull and leave the existing support locations as installed.",
@@ -124,7 +124,7 @@
         "Increase the EMT size for the final section so the added stiffness compensates for the support locations already installed near the compressor."
       ],
       "correctIndex": 2,
-      "explanation": "A rattling connector at the load end of the run points to a support that is too far from the termination, a loose connector, or vibration transmitted from the compressor into the raceway. The correct response is to check the location of the last support before the load-end connection against the spacing allowed for that raceway type and size, retighten the connector, and add support so the section is held securely where vibration acts on it. Copying spacing from a communications raceway is misleading, since a different raceway type, size, span, and vibration exposure require different support. Confirming the rattle stops with the compressor off only removes the condition that reveals the problem, so the loose termination and inadequate support remain once the unit restarts. Upsizing the raceway does not correct support spacing or a loose connector, and it adds weight and cost while leaving the vibrating termination unsupported.",
+      "explanation": "The final section must be supported so the termination is secure and not left to vibrate at the compressor connection. The electrician should check that the last support is within the allowed spacing for that EMT size, tighten the connector, and add support where the equipment vibration affects the run. Matching a communications raceway is not appropriate because support requirements depend on the raceway type and installation conditions. Waiting until the compressor is shut down only hides the symptom, and upsizing the conduit does not correct a loose termination or inadequate support.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -132,7 +132,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply cable identification knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "a0704a9de8d8c065e650dfd72efd32566f24be2a90ac9b31a18fb9da4a0f6463",
+      "contentHash": "85e3779be0dce55bca634fb8361c212d3e3747afd75dbc464613400e6eb3b189",
       "options_note": null
     },
     {
@@ -195,7 +195,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A pedestal grinder in a millwork shop is fed by a single-phase 120 V branch circuit run 40 m from the shop panel. Each of the two current-carrying conductors in the run has a resistance of 0.004 Ω/m, and the grinder draws 18 A at full load. Using these values, what is the approximate voltage drop in the conductors at full load?",
+      "question": "A bench-mounted pedestal grinder in a fabrication shop is supplied by a single-phase 120 V branch circuit that is 40 m from the panel. Each of the two current-carrying conductors in the circuit has a resistance of 0.004 Ω per metre, and the grinder draws 18 A at full load. Using these values, what is the approximate voltage drop in the circuit conductors at full load?",
       "options": [
         "2.88 V",
         "5.76 V",
@@ -203,7 +203,7 @@
         "11.52 V"
       ],
       "correctIndex": 1,
-      "explanation": "Current leaves the panel on one conductor and returns on the other, so the drop occurs over both conductor lengths: total conductor length = 2 × 40 m = 80 m. Voltage drop = total length × current × resistance per metre = 80 m × 18 A × 0.004 Ω/m = 5.76 V (about 4.8 % of 120 V). Counting only the one-way 40 m run gives 2.88 V, which ignores the return conductor. Treating the loop as 120 m of conductor gives 8.64 V, and doubling the 40 m twice to 160 m gives 11.52 V; both overstate the copper actually carrying the load current. A reliable order of operations is: double the one-way length, multiply by the load current, then multiply by the resistance per metre, and finally compare the result to the allowable percentage of supply voltage to judge whether the conductor size is adequate.",
+      "explanation": "In a single-phase branch circuit the load current flows out on one conductor and returns on the other, so the voltage drop is based on the total loop length. The total length of copper carrying current is 2 × 40 m = 80 m. The resistance of the loop is 80 m × 0.004 Ω/m = 0.32 Ω. The voltage drop is V = I × R = 18 A × 0.32 Ω = 5.76 V, which matches option B. The 2.88 V option uses only the one-way 40 m length and ignores the return conductor. The 8.64 V option treats the loop as 120 m of conductor, and the 11.52 V option treats it as 160 m; both assume more copper in the current path than is actually present and therefore overstate the voltage drop. A consistent approach is to double the one-way length for the supply and return, multiply by the load current, multiply by the resistance per metre, and then compare the resulting voltage drop to the supply voltage to judge whether the conductor size and length are acceptable for the load.",
       "steps": [
         {
           "label": "Determine total conductor length",
@@ -220,7 +220,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "41332f82c1e973a82a5f316f915d6d21807703f15e81fd5a3c623869e9850d0d"
+      "contentHash": "d692079b7cdfd11928508636b0eb1f5811acf49dbdfa3937c07dcd3c5baf7606"
     },
     {
       "bankItemNumber": 203,
@@ -482,15 +482,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A crew has just finished pulling three 500 kcmil copper conductors 45 m through an underground PVC duct with two 90° bends into a transformer vault. The tensiometer's peak reading during the pull was logged, and the lubricant supply ran low partway through. What gives the strongest basis for accepting this completed pull?",
+      "question": "A crew has pulled three 500 kcmil copper conductors 45 m through an underground PVC duct with two 90° bends into a transformer vault. The tensiometer peak tension was recorded, and the lubricant supply became low near the second bend. To decide whether this pull can be accepted, what should the supervisor rely on as the primary basis for the assessment?",
       "options": [
-        "Accept the pull because peak tension stayed below the winch's rated capacity, which is set well above what conductors can withstand.",
-        "Inspect the last metre of conductor jacket at the vault entry and accept the pull if no scuffing or flattening is visible there.",
-        "Use the average tension recorded across the whole pull rather than the peak value, since averaging evens out momentary spikes.",
-        "Compare duct geometry, conductor data, pulling method, measured peak tension, and lubricant compatibility against the approved design values."
+        "Confirm that the peak tension reading did not exceed the winch’s rated pulling capacity, since the equipment rating is chosen to safely handle any cable on the job.",
+        "Look only at the visible condition of the conductors where they enter the transformer vault and accept the pull if the jackets appear undamaged in that area.",
+        "Evaluate the pull using the average tension over the full 45 m instead of the peak tension, because the average better represents typical loading on the conductors.",
+        "Compare the actual duct layout, conductor size and construction, pulling method, peak tension reading, and lubricant performance against the engineered pulling limits for tension and sidewall pressure."
       ],
       "correctIndex": 3,
-      "explanation": "Acceptance depends on whether the measured tension stayed within the maximum allowable tension calculated for these conductors on this route, which is built from conductor weight and construction, coefficient of friction, the two 90° bends, and the lubricant specified in the approved design. Checking all of those together, including the low lubricant supply, is what confirms the conductors and sidewall pressure limits were respected. Winch capacity is a machine rating chosen for the equipment, not a conductor limit, so staying under it says nothing about cable stress. Jacket damage at the vault entry is only the last few metres of a 45 m run; the highest sidewall pressure occurs at the bends where friction peaked. Averaging tension hides exactly the peak that determines whether insulation was overstressed, since a short spike at a bend can exceed the limit while the average stays comfortable.",
+      "explanation": "For an underground duct pull with large conductors and bends, acceptance is based on whether the measured peak tension and sidewall pressure stayed within the engineered limits for that specific route and cable type. These limits are calculated from conductor weight and construction, duct geometry, bend angles, expected friction, and the intended lubricant, so the supervisor must compare the actual pull conditions and peak reading to those design values. A winch’s rated capacity is only an equipment limit and does not indicate what the conductors or insulation can safely withstand. Inspecting jacket condition at the vault entry ignores the areas of highest sidewall pressure at the bends, where damage is most likely to occur. Using average tension masks short peak events; a brief spike in tension at a bend can exceed allowable limits even when the average value remains within a comfortable range.",
       "steps": null,
       "tip": "Always verify measured pulling tension against calculated limits from conductor and duct data, not against another job's results.",
       "isCalc": "no",
@@ -498,7 +498,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply termination preparation knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "05ef2545dc3d8119b2ecf913031b8aa3db697d037568abcdf4333898589e9e20"
+      "contentHash": "ff71a05392f4e1b8af9f2882dd1b4c9385622075553c853a2f0393ae92e4779c"
     },
     {
       "bankItemNumber": 213,
@@ -595,15 +595,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a basement suite rough-in, ten identical 3-wire NMD90 cables enter the suite subpanel. The marker tags were destroyed during drywall, every jacket carries the same printing, the feeder is locked out and tagged, and each room's device box is still open. Before terminating any conductors, the electrician must positively identify which cable serves the kitchen counter box. What procedure accomplishes this?",
+      "question": "During a basement suite rough-in, ten identical 3-wire NMD90 cables enter the suite subpanel and all the original cable labels are missing. The feeder is locked out, all branch circuits are de-energized, and the kitchen counter receptacle box is open with the cable sheath accessible. Before landing any conductors in the subpanel, how can the electrician positively identify which of the ten cables supplies the kitchen counter box?",
       "options": [
-        "At the kitchen counter box, twist that cable's neutral and bond conductors together, then at the panel test each cable for continuity between its neutral and bond until the one closed circuit is found and tagged.",
-        "Tag the cables at the panel in the order they enter the box connectors along the top of the enclosure, on the basis that they were landed room by room in the sequence they were pulled.",
-        "Measure the loop resistance of each cable at the panel and assign the highest reading to the kitchen counter box, since that run travels the greatest distance from the enclosure.",
-        "Trace each cable visually across the open joist space above the panel and tag the one that turns up into the finished wall directly below the kitchen counter."
+        "At the kitchen counter box, temporarily twist that cable’s neutral and bond conductors together, then at the subpanel test each cable for continuity between its neutral and bond until the single closed circuit is found and permanently tagged.",
+        "Tag the ten cables at the subpanel in the same left‑to‑right order as the connectors along the top of the enclosure, assuming they were originally pulled and installed room by room in that sequence.",
+        "Measure resistance between the hot and neutral of each cable at the subpanel and assign the cable with the highest resistance reading to the kitchen counter box, since it is likely the longest run from the panel.",
+        "Follow each cable visually across the exposed joists from the subpanel and mark the one that disappears into the finished wall closest to the kitchen counter location, treating that as the kitchen circuit."
       ],
       "correctIndex": 0,
-      "explanation": "With the circuit dead, deliberately creating a known short at the far end turns one cable into a uniquely testable pair. Twisting the neutral to the bond conductor at the kitchen counter box means only that cable will read continuity between neutral and bond back at the panel; tag it, remove the short, and repeat the process for the next room. That gives positive, one-cable-at-a-time proof of identity before any conductor is terminated. Tagging by the order cables enter the connectors relies on a pulling and landing sequence that is rarely followed and cannot be confirmed after the fact. Loop resistance readings on cables of the same size and similar length differ by only fractions of an ohm, so ranking them cannot reliably separate one room from another, and the kitchen run is not necessarily the longest. Visual tracing stops at the point where the cable disappears into the finished wall, which is exactly where the uncertainty begins. Positive identification always depends on a test that produces a unique response from a single cable.",
+      "explanation": "With all circuits de-energized, temporarily bonding the neutral and equipment bond conductors together at the kitchen counter box creates a unique closed path on that cable only. At the subpanel, the electrician can use an ohmmeter on the neutral and bond of each cable; the one that shows continuity is the kitchen counter circuit. After tagging that cable, the temporary connection is removed to restore proper separation of the conductors. This method provides clear, one-cable identification based on an electrical test, rather than assumptions about installation order, small differences in resistance, or visual tracing that becomes unreliable once cables disappear into finished walls.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -611,7 +611,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician installs conductors and cables.",
-      "contentHash": "9b206d3d6f3d5bfe6340503b04bcab9f90f5eef0b4f64af710fabd3e034d1a2e"
+      "contentHash": "431ad3bea13ec078d0631d4d58fcf67f92a9a70463bfa8b4c6767f4ff24c7964"
     },
     {
       "bankItemNumber": 217,
@@ -682,15 +682,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "You are roughing in a four-gang box in a finished basement rec room. It will hold two 3-way switches, a duplex receptacle, a dimmer, internal cable clamps, the bonded grounding conductors, and a pass-through smoke alarm interconnect cable. Before the drywall crew closes the wall, how should you establish that the box is big enough for everything it will hold?",
+      "question": "You are roughing in a four-gang device box in a finished basement rec room. It will contain two 3-way switches, a duplex receptacle, a dimmer, internal cable clamps, bonded grounding conductors, and a pass-through smoke alarm interconnect cable. Before the drywall crew closes the wall, what is the proper way to verify that the box has enough volume for this installation?",
       "options": [
-        "Rely on the gang rating: a box built to accept four devices is manufactured to hold the conductors those four devices normally require.",
-        "Mount the devices and plaster ring temporarily, and accept the box if nothing binds and the devices sit flush with no visible crowding.",
-        "Total the volume allowances for the conductors by size plus the allowances for the devices, the internal clamps, and the bonded grounding conductors, then confirm that total does not exceed the cubic capacity marked inside the box.",
-        "Count only the circuit conductors spliced or terminated in the box, since clamps, grounding conductors, and pass-through conductors are not part of the space calculation."
+        "Use the box’s four-gang configuration as your guide, assuming that any box designed for four devices will automatically have enough volume for the conductors those devices typically need.",
+        "Test-fit all devices with a temporary cover or plaster ring and, if the devices sit flush and can be tightened without binding, accept that the box has adequate space for the conductors.",
+        "Calculate the box fill by totalling the volume allowances for all conductors by size, plus allowances for the devices, internal clamps, and bonded grounding conductors, then verify that this total does not exceed the cubic capacity marked on or inside the box.",
+        "Estimate the space based only on the number of current-carrying conductors terminated or spliced in the box, since grounding, clamped, and pass-through conductors do not need to be included in the box volume calculation."
       ],
       "correctIndex": 2,
-      "explanation": "Box fill is settled by arithmetic, not by how the rough-in looks. Every conductor entering the box gets a volume allowance based on its size, the internal clamps together get one allowance, all the bonded grounding conductors together get one allowance, and each mounted device gets an allowance based on the space it occupies. Add those figures, then check the sum against the cubic capacity stamped inside the box or published by the manufacturer. Doing this before the wall closes is the only reliable way to know the conductors can be folded back and terminated without pinched insulation or heat build-up. A gang rating describes only how many device openings the box has; a four-gang box loaded with 3-way travellers and a pass-through cable can easily exceed its capacity. Test-fitting the devices proves the faces line up, but conductors jammed behind a dimmer can still be nicked when it is pushed home, and later servicing becomes difficult. Ignoring the clamps, grounding conductors, and pass-through conductors leaves out a large share of the fill, since conductors that only pass through still occupy the same space as terminated ones.",
+      "explanation": "Box volume must be checked by calculation, not by appearance. For box fill, you assign a volume allowance to every conductor based on its wire size, include a single allowance for all internal clamps, include a single allowance for all bonded grounding conductors, and add the allowances for each device installed in the box. The sum of these allowances must not be greater than the cubic capacity stamped on or inside the box or provided by the manufacturer. Doing this before the wall is closed confirms there is enough space to fold and terminate conductors without damaging insulation or creating overheating issues. Relying only on the number of gangs or a visual test-fit of devices ignores the actual conductor count and sizes. Leaving out clamps, grounding conductors, or pass-through conductors skips part of the fill, even though those items still occupy space in the box.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -698,7 +698,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.04",
       "blueprintObjective": "Apply removal impact knowledge while the electrician installs boxes and enclosures.",
-      "contentHash": "034db4fbc5a0bde2481188ee170bd19bf871771ad3390fed0c1f6c10e97ae89f"
+      "contentHash": "d6114be00c7902a52f1a254cb48a5391466b6c3ee06e3b14e7b05b98c358dc3e"
     },
     {
       "bankItemNumber": 220,
@@ -760,15 +760,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician is landing 3/0 feeder conductors on the main lugs inside the wiring gutter of a new motor control centre. The cable ends only reach the lug pads when the conductors are pulled taut and forced into a sharp bend over the edge of the enclosure, and the cover presses against them when it is fitted. Before crimping and torquing the lugs, what should the electrician do?",
+      "question": "An electrician is terminating 3/0 feeder conductors on the main lugs inside the wiring gutter of a new motor control centre. The conductors only reach the lug pads if they are pulled tight and forced over the enclosure edge, and the cover contacts the cables when it is installed. Before crimping and torquing the lugs, what should the electrician do to provide proper conductor allowance at these terminations?",
       "options": [
-        "Fit extension lugs with longer barrels so the cable ends reach the terminal pads without changing the length of cable already brought into the gutter.",
-        "Bring additional slack in from the raceway, or re-route the run in the gutter, so each conductor has the free length to sweep into its lug within the available bending space and terminates with no tension on it.",
-        "Crimp the lugs as they sit and torque each one at the top of its rated range so the tension held in the strained conductors cannot work the connection loose in service.",
-        "Wrap the enclosure edge with insulating tape and refit the cover, since the sharp bend has not cut or abraded the conductor insulation at the contact point."
+        "Install compression splice links inside the gutter so the existing conductors can be joined to short extensions that reach the lugs without altering the main feeder length.",
+        "Bring additional slack in from the raceway, or re-route the conductors in the gutter, so each conductor has enough free length to sweep into its lug within the available bending space and sit relaxed at the termination.",
+        "Crimp the lugs in their current position and torque them at the upper end of the specified range so the mechanical tension in the conductors is held firmly by the connection.",
+        "Apply insulating tape over the enclosure edge and refit the cover, relying on the intact insulation to prevent damage even though the conductors remain under bending strain."
       ],
       "correctIndex": 1,
-      "explanation": "Conductor allowance is the extra free length left at a termination so the conductor can curve from where it enters the enclosure into the lug, using the bending space provided, without being held in tension. Pulling in more slack from the raceway or re-routing the conductors inside the gutter gives that allowance and lets the connection be made on a relaxed conductor. Longer-barrel extension lugs move the copper closer to the pad but they do not create bending space; they crowd clearances in the gutter while the conductor stays loaded. Torquing to the high end of the range does not relieve mechanical strain: excessive torque distorts the strands and the lug barrel and can crack the terminal, and the pull on the conductor is still there. Taping the enclosure edge protects the insulation but leaves a permanently tensioned termination that vibration and thermal cycling will loosen, creating a high-resistance, overheating connection later even though nothing looks wrong at the time of installation.",
+      "explanation": "Conductor allowance is the extra free length left at a termination so the conductor can enter the enclosure, follow a smooth bend in the available space, and land on the lug without being held in tension. Bringing more slack in from the raceway or adjusting the routing in the gutter gives each 3/0 feeder a relaxed path into its lug, preventing mechanical strain on the termination. Using splice links to add short extensions moves the connection point but leaves the original conductors tight against the enclosure edge and can overcrowd the gutter. Torquing at the high end of the range does not remove pull from the conductor; excessive torque can damage the lug or strands while the cable remains strained. Simply taping the edge protects insulation at that point but still leaves a bent, tensioned conductor that is more likely to loosen or overheat over time from vibration and thermal cycling.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -776,7 +776,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.02",
       "blueprintObjective": "Apply raceway support knowledge while the electrician installs conduit and fittings.",
-      "contentHash": "2184c2fcaa96abfba43ac49039eafea08972fafb896212f1e77b5283e2ec2f05"
+      "contentHash": "62e387f6e30e7489f443548e0fb2eef750a7d3f3c25abefa6e8f547bd3d50285"
     },
     {
       "bankItemNumber": 223,
@@ -786,7 +786,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A submersible pump at a lift station stalls on hot restarts, so the electrician checks voltage at the motor. Diagram 309A-D07 shows the two-conductor single-phase feeder routed from the panel to the pump disconnect, with the annotated 30 m measured one way along that route only. The circuit carries 18 A and each conductor has a resistance of 0.005 Ω/m. Based on the conductor path shown, what is the approximate voltage drop of this feeder?",
+      "question": "A submersible pump at a lift station stalls on hot restarts, so the electrician checks voltage at the motor. Diagram 309A-D07 shows a two-conductor single-phase feeder from the panel to the pump disconnect, with the conductor route annotated as 30 m one way along the actual path. The circuit carries 18 A and each conductor has a resistance of 0.005 Ω/m. Using the total current path indicated in the diagram, what is the approximate voltage drop across this feeder?",
       "options": [
         "2.7 V",
         "5.4 V",
@@ -794,7 +794,7 @@
         "9.4 V"
       ],
       "correctIndex": 1,
-      "explanation": "The diagram's 30 m annotation follows the route from the panel to the disconnect in one direction, but the current must return on the second conductor drawn along that same route, so the complete path contains 2 × 30 m = 60 m of conductor. Multiplying total length by current and resistance per metre gives 60 × 18 × 0.005 = 5.4 V, which is the drop the motor loses on a hot restart when starting current pushes the value even higher. The 2.7 V answer uses only the 30 m shown on the drawing and ignores the return conductor, understating the drop by half. The 10.8 V answer counts the return path twice, treating the run as 120 m of conductor. The 9.4 V answer applies the 1.732 three-phase multiplier to a circuit that has only two current-carrying conductors. Reading the diagram to identify how many conductors the current actually travels through is what makes the calculation correct.",
+      "explanation": "For a single-phase two-wire feeder, current travels out on one conductor and back on the other, so the total length of conductor in the current path is twice the one-way run shown on the diagram: 2 × 30 m = 60 m. The voltage drop is found using Vdrop = I × Rtotal, where Rtotal is resistance per metre multiplied by total length. Rtotal = 0.005 Ω/m × 60 m = 0.3 Ω, and Vdrop = 18 A × 0.3 Ω = 5.4 V. That is the approximate voltage the motor loses under normal load, with even greater loss when starting current rises on a hot restart. The 2.7 V option incorrectly uses only the 30 m one-way length and ignores the return conductor. The 10.8 V option wrongly doubles the already-correct total length, treating the route as 120 m. The 9.4 V option incorrectly applies a three-phase multiplier to a circuit that has only two current-carrying conductors. Focusing on the diagram to identify the complete current path is essential for an accurate voltage-drop calculation.",
       "steps": [
         {
           "label": "Determine total conductor length",
@@ -811,7 +811,7 @@
       "diagramAlt": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage.",
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs raceways.",
-      "contentHash": "dbf7a0699e77adb7622a76f52840b5c963ce8844900fa47c40bbfe0336862b13"
+      "contentHash": "a89e4b97a5db0a33abb709232993888b5689399077f25b56a8dad99a91e42f74"
     },
     {
       "bankItemNumber": 224,
@@ -1012,15 +1012,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A crew is energizing a new 120 V branch circuit that supplies a heated eavestrough cable controller mounted 35 m of cable-run distance from the loadcentre. The controller draws a steady 15 A, and each copper conductor in the run measures 0.004 Ω per metre. Accounting for the full current-carrying loop from the breaker to the load and back to the neutral bar, what line voltage drop should the crew record on the commissioning sheet?",
+      "question": "A technician is testing a new 120 V branch circuit feeding a roof de-icing cable controller installed 35 m away from the panel. The controller draws a continuous 15 A, and each copper conductor in the run has a resistance of 0.004 Ω per metre. Considering the complete current path from the breaker to the controller and back on the neutral, what line voltage drop should be recorded on the commissioning report?",
       "options": [
+        "1.4 V",
         "2.1 V",
-        "8.4 V",
         "4.2 V",
-        "7.3 V"
+        "6.0 V"
       ],
       "correctIndex": 2,
-      "explanation": "Current has to travel out on the ungrounded conductor and back on the neutral, so the resistive length in the loop is 2 × 35 m = 70 m. That gives 70 m × 0.004 Ω/m = 0.28 Ω of loop resistance, and 0.28 Ω × 15 A = 4.2 V dropped in the conductors. The 2.1 V figure results from using only the 35 m one-way distance, which accounts for just half the copper the current actually passes through. The 8.4 V figure comes from doubling the 35 m to 70 m and then doubling again to 140 m, counting the return conductor twice. The 7.3 V figure comes from multiplying the correct 4.2 V by 1.732, a factor that belongs only to three-phase line-to-line work, not to a two-wire single-phase loop. Tracking the loop length correctly keeps the controller's terminal voltage high enough that its heater draws normal current instead of overheating conductors and nuisance-tripping the breaker.",
+      "explanation": "In a two‑wire single‑phase branch circuit, the current flows out on the ungrounded conductor and returns on the neutral, so the electrical length of the loop is twice the one‑way distance. The one‑way run is 35 m, so the loop length is 2 × 35 m = 70 m. With each conductor at 0.004 Ω per metre, the loop resistance is 70 m × 0.004 Ω/m = 0.28 Ω. Using Ohm’s law for voltage drop (V = I × R), the drop across the loop conductors is 15 A × 0.28 Ω = 4.2 V, which is the correct line voltage drop. A result like 2.1 V would come from using only the one‑way distance and ignoring the return path, giving half the actual loop resistance. Values such as 1.4 V or 6.0 V reflect incorrect combinations of distance, resistance per metre, or current and do not match the circuit’s actual loop resistance and load current. Understanding that voltage drop is based on the full circuit loop helps ensure the controller operates at the proper terminal voltage and that the branch circuit remains within acceptable performance limits.",
       "steps": [
         {
           "label": "Circuit length",
@@ -1037,7 +1037,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply circuit voltage drop knowledge while the electrician installs conductors and cables.",
-      "contentHash": "cf4a132d53780f815956614bea65cba19135d1ac4facd3766b9db84d64c1f7f1"
+      "contentHash": "6b85616a4ef0f967eea5441773caa0476cd9ff1b08964a9cdd622f4c2dd70607"
     },
     {
       "bankItemNumber": 232,
@@ -1160,15 +1160,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An underground parkade's supply-fan control circuit includes a floor-mounted junction box fed by rigid conduit that runs in from the vehicle ramp. Walking the circuit before it is energized, the technician finds salt-laden slush from the ramp pooling around the base of the box and staining the lower conduit fittings. Which action best addresses this exposure before the splices inside the box are put under voltage?",
+      "question": "A contractor is wiring the supply-fan control circuit in an underground parkade. The floor-mounted junction box for the ramp-side control wiring is fed by rigid steel conduit that comes in from the vehicle ramp. During a pre-energization walk-down, the technician notices salt-laden slush from the ramp pooling around the base of the box, with rust starting on the lower conduit fittings. To ensure the splices in this junction box remain protected once the circuit is energized, what should the technician do next?",
       "options": [
-        "Drill a weep hole in the bottom of the box so any chloride-bearing water that gets past the cover gasket drains back out, then energize the fan circuit.",
-        "Pack duct seal into the ramp-side conduit entry so meltwater cannot migrate along the raceway into the junction box.",
-        "Relocate the box about 300 mm higher on strut so it sits above the slush line, re-terminating the ramp conduit with the fittings already installed.",
-        "Confirm that the enclosure rating, each conduit entry fitting, and the box's drainage provisions all suit a wet, corrosive location, and replace whatever does not match before energizing."
+        "Install a raised pedestal or short section of unistrut to lift the junction box above the slush line, reusing the existing steel box and fittings for the control circuit.",
+        "Pack duct seal into the ramp-side conduit entry and at the threads of the fittings to limit moisture migration along the raceway into the junction box before energizing.",
+        "Apply corrosion-inhibiting compound to the visible rusted fittings and tighten the box cover screws, relying on the existing gasket to keep moisture away from the splices.",
+        "Confirm that the junction box rating, each conduit entry fitting, and any factory drainage or weep features are suitable for a wet, corrosive location, and replace any components that are not before energizing the circuit."
       ],
       "correctIndex": 3,
-      "explanation": "Slush carrying road salt makes the floor of a parkade ramp area both a wet and a corrosive location, so three things must match that exposure: the enclosure itself (corrosion-resistant finish or material with a gasketed, listed cover), the fitting at every conduit entry (watertight hubs rather than plain locknuts and bushings), and any drainage or weep provision built into the enclosure. Checking all three and swapping out the parts that do not suit the location is what keeps chloride-bearing water off live splices. Drilling a weep hole in a box that was never listed for wet service defeats the enclosure's integrity and still leaves untreated steel and terminals exposed to salt. Duct seal blocks only one migration path along the raceway; water and salt fog can still enter through unsealed entries and an unrated cover, and duct seal is not a substitute for a watertight fitting. Raising the box on strut helps with standing water, but reusing fittings that are not watertight and an enclosure that is not corrosion resistant leaves the same splices exposed to spray from vehicles and to the salty air of the ramp.",
+      "explanation": "Salt-laden slush in an underground parkade creates a wet, corrosive environment around floor-level equipment, so the junction box, cover, and conduit fittings must all be rated and installed for that exposure. The technician should verify that the enclosure material or finish resists corrosion, that the cover and gasket are listed for wet locations, and that each conduit entry uses a watertight hub or other fitting intended for wet service. Any component that is not suitable for a wet, corrosive location should be replaced before the splices are energized so that moisture and chlorides are kept away from live terminations. Raising the box above the slush line without upgrading the enclosure and fittings still leaves it exposed to spray and salt-laden air. Packing duct seal in a single conduit entry only reduces one moisture path and does not turn an unrated box and plain fittings into a wet-location assembly. Applying corrosion-inhibiting compound and tightening the existing cover relies on an installation that may not be properly rated, and does not address the need for suitable hubs and enclosure construction in this environment.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1176,7 +1176,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.01",
       "blueprintObjective": "Apply termination preparation knowledge while the electrician installs conductors and cables.",
-      "contentHash": "188dafa8a37633e6adb94c53dd8556ba2f355c59d658d614b124b2199742bfe6"
+      "contentHash": "65c8ba2e1d827346a2957faa0a9f05f0ba2b03906bfe1054e2dc5d82f4fa49cc"
     },
     {
       "bankItemNumber": 237,
@@ -1212,15 +1212,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician is landing 4/0 aluminum feeder conductors on the bottom-fed lugs of a 400 A distribution panel in an underground parking level. The conductors come off the last cable support and just barely reach the lugs, leaving no room to redress them. Before the terminations are made up, what should the electrician do to determine whether the conductor allowance inside the enclosure is genuinely deficient?",
+      "question": "An electrician is installing 4/0 aluminum feeder conductors onto bottom-fed lugs in a 400 A distribution panel in an underground parking level. The feeders come off the last cable support and only just reach the lugs, making it unclear whether there is enough length to route and bend them correctly inside the wiring space. Before making any terminations, what is the best way to determine if the available conductor allowance inside the enclosure is truly inadequate?",
       "options": [
-        "Measure the gutter depth where the raceway enters the enclosure and confirm it is at least equal to the outside diameter of the largest feeder conductor being landed.",
-        "Compare the lug locations and the bending space each terminal requires against the conductor length available from the last support point, using the panel manufacturer's wiring instructions together with the approved routing on the shop drawings.",
-        "Confirm the raceway fill for the trade size entering the panel is within the allowable percentage, since fill determines how much conductor length can be carried through into the wiring space.",
-        "Form a small offset in each conductor just ahead of its lug so the termination is not under tension, then confirm the offsets stay clear of the deadfront once the cover is refitted."
+        "Measure the distance from the raceway entry to the nearest side of the enclosure and compare it to the conductor diameter to see if the physical gutter depth appears reasonable.",
+        "Compare the location of the lugs and the minimum bending space each terminal needs with the conductor length available from the last support point, using the panel manufacturer’s wiring diagram along with the approved feeder routing shown on the project drawings.",
+        "Check that the number and size of conductors in the raceway entering the panel are within the allowable raceway fill, since this indicates how much conductor can extend into the enclosure.",
+        "Add a slight hand-formed offset in each conductor near the lugs to ease the tension at the termination, then ensure the conductors still clear the deadfront once the cover is installed."
       ],
       "correctIndex": 1,
-      "explanation": "Conductor allowance is a matter of geometry inside the enclosure: enough length to enter the wiring space, make the turn without violating the conductor's bending radius, and land squarely on the lug with slack for a future re-termination. The manufacturer's wiring instructions state the bending space required at each terminal and show where the lugs sit, while the approved shop drawings show where the raceway enters and how the feeder was intended to be routed and supported. Measuring the field condition against both tells you whether the conductors are actually short or simply need to be re-dressed. Gutter depth alone says nothing about the travel needed to reach a specific lug. Raceway fill controls heat build-up and pulling tension in the conduit, not the slack left at a termination. Forming an offset only relieves visible tension; if the length is short, the conductor is still forced into too tight a bend and the insulation stays stressed at the terminal.",
+      "explanation": "To determine whether conductor allowance is sufficient, the electrician must confirm that the available length allows the feeder to enter the wiring space, make the required bend without exceeding the minimum bending radius, and land on the lug with some slack for future work. This is done by comparing the actual conductor length from the last support to the lug locations and the bending space specified in the panel manufacturer’s wiring diagram, along with the intended routing shown on the project drawings. Measuring gutter depth alone does not show whether a specific conductor can reach and bend properly to its terminal. Raceway fill relates to heat dissipation and pulling conditions in the conduit, not the amount of slack at terminations. Simply adding an offset may reduce visible tension but does not correct a fundamentally short conductor, and can still leave the bend too tight at the lug, stressing the insulation and conductor.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1228,7 +1228,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.03",
       "blueprintObjective": "Apply enclosure environmental suitability knowledge while the electrician installs raceways.",
-      "contentHash": "eb3b31459967147c573617ebcb64331c251e5ebd3b69dfdfe27a1c9c42c47188"
+      "contentHash": "38fc70c17f2ecd89f868d08dbaaca86deda36ebc60a561f95432f9a157836f90"
     },
     {
       "bankItemNumber": 239,
@@ -1273,15 +1273,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An exterior rigid steel conduit run feeds a rooftop condenser. After several days of rain you find white deposits and pitting on the conduit at one coupling. The circuit is isolated and locked out. Which examination best establishes the true condition of the raceway before it is returned to service?",
+      "question": "An exterior rigid steel conduit run feeds a rooftop condenser. After several days of rain you notice white deposits and pitting on the conduit at one coupling. The circuit is isolated and locked out. Before restoring power, what examination best determines whether the raceway still provides adequate mechanical and bonding protection for the conductors?",
       "options": [
-        "Compare the stained coupling with an adjacent clean coupling and, as long as the pitting has not perforated the wall, record the run as serviceable and reclose the disconnect.",
-        "Wire-brush the white deposits away and apply a zinc-rich cold galvanizing coating, then return the run to service on the basis that the coating restores the joint to its original condition.",
-        "Withdraw the conductors and inspect their insulation where it passes the coupling; if the jackets are unmarked, conclude the corroded steel is still protecting them adequately.",
-        "Gauge the pit depth against the conduit's original wall thickness at the coupling, verify the threads are still fully made up with low-resistance bonding continuity across the joint, and locate where rain is entering the run."
+        "Visually compare the stained coupling with nearby fittings, and if no holes are visible in the conduit wall, note it as acceptable and re-energize the disconnect.",
+        "Clean the coupling with a wire brush, apply a zinc-rich cold galvanizing compound over the affected area, and treat the run as fully restored once the coating has cured.",
+        "Pull the conductors back from the coupling, check that the insulation shows no abrasion or moisture staining, and rely on the undamaged jackets as evidence that the raceway condition is satisfactory.",
+        "Measure the pit depth against the conduit’s original wall thickness at the coupling, confirm the threads remain fully engaged with low-resistance bonding continuity across the joint, and identify the point where rainwater is entering the raceway so corrective work can be planned."
       ],
       "correctIndex": 3,
-      "explanation": "White deposits are the corrosion products of the zinc coating, and pitting means the base steel underneath is now being attacked. Rigid steel conduit must still protect the conductors mechanically and, where it serves as the bonding path, carry fault current, so both jobs have to be verified. Gauging pit depth against the original wall thickness shows how much steel is left, checking thread make-up and continuity across the joint shows whether the bonding path is still sound, and finding the water entry point shows whether corrosion will keep progressing. A wall can be badly thinned long before it perforates, so a visual comparison with a clean coupling proves little. A zinc-rich coating slows further attack but cannot replace metal already lost or tighten a corroded thread. Undamaged conductor insulation only tells you the conductors are intact today; the steel around them can continue to thin until the raceway fails mechanically or loses its bonding continuity.",
+      "explanation": "White deposits indicate the zinc coating has been sacrificed and pitting shows the underlying steel is now corroding. For a rigid steel conduit feeding rooftop equipment, the raceway must still provide mechanical protection and a reliable bonding path for fault current. Measuring pit depth against the original wall thickness reveals how much steel remains, checking that the threads are fully engaged and that there is low-resistance continuity across the joint confirms the bonding path is intact, and locating the water entry point helps prevent further internal corrosion. Simply noting the absence of holes, relying on a surface coating, or judging only by the conductor insulation does not verify whether the steel has thinned to the point where mechanical strength or bonding reliability is compromised.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1289,7 +1289,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-16, Sub-task C-16.05",
       "blueprintObjective": "Apply conductor length allowance knowledge while the electrician services and maintains raceways, conductors, cables and enclosures.",
-      "contentHash": "6021c82b757d8ad42de030c1ccce66be8b5ad11caf787f67af1ac2fd8c15a60d"
+      "contentHash": "8987c1533e3c100d83d73a2e81dff2acb5571233ef38d8d9d1953d39d4854237"
     },
     {
       "bankItemNumber": 241,
@@ -1528,15 +1528,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A parking-garage lighting system uses an astronomical time-clock schedule combined with local override switches at each entrance. During functional testing, an electrician finds fixtures still lit after the schedule commands them off. What evidence confirms the control sequence matches the approved design?",
+      "question": "A multi-level parking garage uses an astronomical time clock to shut off lighting after hours, with maintained override switches at each vehicle entrance for security events. During testing, fixtures remain on past the scheduled off time whenever an entrance override has been used earlier in the night. What action gives the electrician clear evidence that the lighting-control sequence matches the approved design intent?",
       "options": [
-        "Compare the control narrative, time-clock inputs, override outputs, and mode test results against the approved design intent.",
-        "Reuse the override wiring layout from a similar garage project without checking this site's schedule or override points.",
-        "Confirm the fixtures illuminate on demand, since normal light output proves the sequence is functioning correctly.",
-        "Record that the override switch caused the discrepancy and close testing without checking schedule-override priority logic."
+        "Review the written control narrative and verify that the actual time-clock schedules, entrance override switch points, and observed mode transitions all operate as described in the approved design.",
+        "Replicate the entrance-override wiring arrangement from another garage project that appeared to work well, without verifying this building’s programmed time schedules or input assignments.",
+        "Rely on the fact that the garage lights turn on when the entrance switches are operated, since visible light output indicates the control system is functioning properly.",
+        "Document that an entrance override switch kept the lights on and finish testing, without checking how the programmed schedule is supposed to regain control after an override is released."
       ],
       "correctIndex": 0,
-      "explanation": "Confirming correct sequence operation requires comparing the control narrative, actual time-clock inputs, override outputs, and results from each mode against the approved design. This is the only method that verifies whether the override is correctly configured to release control back to the schedule as intended. Assuming normal light output proves function ignores the real fault: fixtures energizing does not confirm they follow the schedule. Reusing another job's override layout ignores this system's specific schedule points and could introduce mismatched logic. Closing out after blaming the override switch, without checking priority logic between schedule and override, risks leaving fixtures energized unnecessarily or unable to be controlled remotely, which wastes energy and may violate the design intent for after-hours lighting control.",
+      "explanation": "In a garage lighting system that combines an astronomical time clock with local overrides, the electrician must confirm that real operation matches the written sequence of operations. This is done by comparing the approved control narrative with the programmed schedules, the actual wiring and input points for the entrance override switches, and the behavior observed when switching between normal, override, and scheduled-off modes. If the fixtures turn off when the narrative says they should, and the overrides release control back to the clock exactly as described, the sequence matches the approved design intent. Simply copying a layout from another job does not verify that this building’s schedule and logic are correct. Checking only that lights come on when a switch is used ignores whether they respond to time-based commands afterward. Ending testing as soon as an override is blamed, without confirming how control is supposed to transfer back to the time clock, can leave the garage lights running longer than required and not following the intended energy-management strategy.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1544,7 +1544,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply traffic-signal sequence knowledge while the electrician installs wiring devices.",
-      "contentHash": "9f22a7ab2144d129b401d341a753c8e4c81a1d613f7ba49c178d2dcfff02f648"
+      "contentHash": "5c91c5b1bfef5020af09bb281cab67311b48c46c4f31610a8af842af62826c03"
     },
     {
       "bankItemNumber": 250,
@@ -1615,15 +1615,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "After completing a splice repair on a runway edge-light series loop fed by a constant-current regulator, which check gives the strongest basis for confirming isolation is properly restored before requesting re-energization from the control tower?",
+      "question": "After completing a splice repair on a runway edge-light series loop fed by a constant-current regulator, which check gives the strongest basis for confirming that isolation has been restored before you ask the control tower for re-energization?",
       "options": [
-        "Inspect only the repaired splice enclosure and skip verifying the regulator secondary and remote control status unless the fault reappears.",
-        "Note the local disconnect is locked open while the remote panel still shows the circuit as available, then swap the regulator.",
-        "Rely on the equipment nameplate rating and skip confirming control status, isolation, circuit identification, and work authorization records.",
-        "Compare control status, isolation confirmation, circuit identification, discharge verification, and authorization documentation against the approved design and work order."
+        "Verify only the repaired splice enclosure and ignore the regulator output, remote control indication, and paperwork unless the fault returns.",
+        "Confirm that the local disconnect is locked open, even if the remote panel still shows the circuit as available, then replace the regulator if needed.",
+        "Rely on the equipment nameplate rating and skip checking control status, circuit identity, discharge condition, and work authorization records.",
+        "Verify control status, isolation points, circuit identification, discharge condition, and authorization records against the approved work order and circuit documentation."
       ],
       "correctIndex": 3,
-      "explanation": "Airfield series-loop circuits use constant-current regulators that can re-energize remotely, so confirming isolation requires comparing control status, isolation confirmation, circuit identification, discharge verification, and authorization records against the approved design and work order before requesting re-energization. This gives complete, documented evidence rather than a single indicator. The tempting wrong choice treats a mismatch between a locked-open local disconnect and an 'available' remote status as proof the regulator itself is defective, then replaces it without confirming the actual isolation path or documentation—risking unnecessary component swaps while the true hazard, an incomplete isolation record, remains unresolved. Skipping the splice-only check or trusting a nameplate ignores the layered control and regulator isolation unique to airfield circuits, leaving a gap where unexpected energization from an unseen source is possible. Only the documented, multi-point comparison confirms isolation is genuinely restored.",
+      "explanation": "Airfield series-loop circuits can be energized remotely through the constant-current regulator, so isolation is not proven by one local check alone. The strongest basis is to confirm the control status, isolation points, circuit identity, discharge condition, and authorization records match the approved work order and circuit documentation before requesting re-energization.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1631,7 +1631,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.05",
       "blueprintObjective": "Apply post-repair functional test knowledge while the electrician services branch circuitry.",
-      "contentHash": "6d60bbdeda647fd4fe95e26080599211a22c6be860937f5f4ec293d6f07847b9"
+      "contentHash": "b00c19f7a7a5f9ba85aaba3a8843084ca530495b498021d7a2592d60bf478130"
     },
     {
       "bankItemNumber": 253,
@@ -1728,15 +1728,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician has replaced a failed control relay in a corridor lighting panel. The original complaint was that the corridor zones did not dim to their reduced night level when the time clock called for it. Before closing the service call, what verification best confirms the repair corrected the reported fault?",
+      "question": "An electrician has replaced a failed control relay in a corridor lighting control panel. The original complaint was that the corridor zones did not drop to their reduced night level when the time clock initiated the dimming sequence. Before closing the service call, what verification best confirms that the repair has corrected the reported fault?",
       "options": [
-        "Bench-test the replacement relay for correct coil resistance and contact continuity, treating a good component reading as proof the scheduled dimming now works.",
-        "Place the panel in manual override so every corridor fixture energizes at full output, accepting that illumination as proof the scheduling fault is cleared.",
-        "Watch the new relay pick up and drop out on command from the panel, then close the ticket and note that one zone still misses its scheduled dim level.",
-        "Re-run the full dimming sequence from the time-clock input against the approved control diagram, confirming the zones now respond at the scheduled times and levels."
+        "Test the replacement relay on the bench for correct coil resistance and contact continuity, and assume the scheduled dimming works because the component readings are within specification.",
+        "Use the panel’s manual override to force all corridor fixtures to full output and rely on the fact that every light turns on as evidence that the scheduling issue is resolved.",
+        "Operate the new relay from the panel’s control, confirm that it picks up and drops out when commanded, then close the call even though one corridor zone still fails to reach its scheduled dim level.",
+        "Re-run the complete dimming sequence using the time-clock input and compare the zone responses to the lighting control diagram, confirming that each corridor zone now reaches its intended level at the scheduled times."
       ],
       "correctIndex": 3,
-      "explanation": "A functional test after a repair has to prove the system performs the way the design intends, not just that a part was changed. Re-running the complete dimming sequence from the time-clock input and comparing the response to the approved control diagram confirms each zone reaches the correct level at the correct time, which directly answers the original complaint. A good coil resistance and continuity reading only shows the replacement component is sound; it says nothing about how the control logic sequences the zones. Forcing the fixtures on in manual override bypasses the very time-clock path that failed, so full illumination proves nothing about the schedule. Verifying that the relay operates while one zone still misses its dim level leaves the reported symptom present and can hide a second fault, such as a broken dimming signal conductor or a mis-set channel, so the call is not complete.",
+      "explanation": "After replacing a control relay in a lighting panel, the verification has to demonstrate that the corridor lighting now follows the programmed time-clock dimming sequence, because that was the original complaint. Re-running the full sequence from the time-clock input and checking the zone responses against the control diagram confirms that every corridor zone reaches the correct dim level at the correct time, showing the fault is cleared. Bench-testing the relay only proves that the component itself is healthy, not that it functions correctly in the control circuit or that the time-clock signal is being processed. Forcing the fixtures on with manual override bypasses the automatic scheduling path, so it does not verify that the night dimming function works. Watching the relay operate while leaving one zone that still misses its scheduled dim level means the symptom is still present and suggests an additional issue in the dimming control wiring or configuration, so the repair cannot be considered complete.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1744,7 +1744,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.02",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician installs wiring devices.",
-      "contentHash": "aeac506610de610f5163e4d7d8853167d2d092d7e9fd4fd18dc94063b73b37fa"
+      "contentHash": "cd7899d6c28b41e4f86d0a6d676974606c64146c39f8f86c9cb74f64c16c3cdf"
     },
     {
       "bankItemNumber": 257,
@@ -2067,15 +2067,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A technician is replacing a damaged runway edge light on a series airfield circuit supplied by a constant-current regulator in the lighting vault. The tower control panel shows the circuit as de-energized, but nothing has been verified at the regulator or at the field connection kit. What is the correct next step before opening the fixture?",
+      "question": "A technician is replacing a damaged runway edge light on a series airfield circuit fed by a constant-current regulator in the lighting vault. The tower panel shows the circuit as off, but the regulator and field connection point have not been verified. What is the correct next step before opening the fixture?",
       "options": [
-        "Place a hold tag on the tower control panel and rely on the remote de-energized indication plus a radio confirmation from the tower before opening the fixture.",
-        "Lock out the regulator's isolating means in the vault, then test for absence of voltage and apply a shorting or grounding connection on the series loop at the field connection point.",
-        "Select the regulator's lowest brightness step so the loop current drops to a low value, then open the fixture while that reduced current is still circulating.",
-        "Disconnect the lamp leads at the isolating transformer secondary first and treat the lamp going dark as proof that the primary series loop carries no current."
+        "Place a hold tag on the tower control panel and rely on the remote off indication plus a radio confirmation from the tower before opening the fixture.",
+        "Open and lock out the regulator supply, verify absence of voltage at the field connection point, and apply the required shorting or grounding connection on the series loop before opening the fixture.",
+        "Set the regulator to the lowest brightness step so the loop current is reduced, then open the fixture while that lower current is still flowing.",
+        "Remove the lamp leads at the fixture first and use the lamp going out as proof that the series loop has been made safe."
       ],
       "correctIndex": 1,
-      "explanation": "A constant-current regulator drives a series loop that can develop very high voltage if the loop is interrupted, so the only acceptable proof of a safe condition is established at the regulator and confirmed at the work point: open and lock the regulator's isolating means, test for absence of voltage on the loop conductors, then short or ground the loop so it cannot be re-energized or hold a stored charge while the fixture is open. A tower panel indication and a radio call tell you what the control system believes, not what the conductors at the field connection are actually doing, and misidentified circuits or control faults defeat that assumption. Reducing the brightness step only lowers regulated current; the loop remains energized, and a series loop at reduced current still presents a shock hazard when opened. Opening the isolating transformer secondary proves only that the lamp branch is broken; the primary loop can remain fully energized, and interrupting a live series loop is exactly the condition that produces dangerous open-circuit voltage.",
+      "explanation": "A constant-current series circuit can develop hazardous voltage if it is opened, so the circuit must be isolated at the regulator, verified de-energized at the work point, and secured with the required shorting or grounding connection before the fixture is opened. A tower indication and radio confirmation do not prove the field conductors are safe. Lowering the brightness step still leaves the loop energized, and removing the lamp leads only isolates the lamp branch while the series loop can remain live.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2083,7 +2083,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply lighting-control sequence knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "4e151c794716b365fddccc0ecc3bd6af3db0f12d8b7d9a31cb7e36fae58ad8e4"
+      "contentHash": "ff69062e2bca4deb80357c59e02b6b3faa32d1d91693435c4479e256bc35f2d2"
     },
     {
       "bankItemNumber": 269,
@@ -2180,15 +2180,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "While closing out a parking-lot lighting standard branch-circuit repair, the crew finds the relay they replaced now switches correctly, but a photocell-controlled dusk sensor on an adjacent standard no longer cycles with the rest of the row. Which action supports an evidence-based decision before signing off?",
+      "question": "After replacing a relay in a parking-lot lighting branch circuit, the crew verifies that the new relay operates correctly, but one photocell-controlled standard on the same row now turns on and off out of sequence with the others. What action best supports an evidence-based sign-off before the job is closed?",
       "options": [
-        "Check only the adjacent photocell wiring and postpone tracing the shared circuit unless the sensor fault repeats on a second night.",
-        "Conclude the entire branch circuit is defective from the mismatched cycling and swap the nearest accessible photocell.",
-        "Trust the relay's nameplate rating alone and skip retesting the full sequence of connected standards.",
-        "Compare the documented original fault and a repeatable full-sequence retest against the approved design and expected dusk-to-dawn operation."
+        "Check only the adjacent photocell wiring and wait to trace the shared circuit until the problem repeats on another night.",
+        "Assume the entire branch circuit is defective and replace the nearest accessible photocell first.",
+        "Rely on the relay nameplate rating and skip a full retest of the connected lighting sequence.",
+        "Perform a repeatable end-to-end functional test of the affected row and compare the observed operation with the original fault notes and expected lighting sequence."
       ],
       "correctIndex": 3,
-      "explanation": "A sound close-out compares what was originally recorded against a repeatable, full-sequence retest measured against the approved design intent, since the relay change may have disturbed a shared neutral or control conductor feeding the adjacent standard. Swapping the nearest photocell assumes the fault location without evidence, risking a second unnecessary replacement while the real wiring disturbance from the relay work stays hidden. Waiting for the fault to repeat delays diagnosis and leaves the row operating outside design intent overnight, which is not defensible once a discrepancy is already observed. Relying on nameplate data ignores that the sensor's actual field behavior, not its rating, is the symptom needing verification. Only a documented comparison of pre- and post-repair operation against approved sequencing confirms the repair is complete and isolates whether the new fault stems from the recent work or a pre-existing condition.",
+      "explanation": "A repeatable end-to-end functional test is the best way to verify that the repaired relay did not leave a control issue elsewhere in the row, such as a disturbed neutral, control conductor, or timer/photorcell connection. Comparing the post-repair operation with the original fault notes shows whether the repair fixed the intended problem and whether any new symptom was introduced during the work. Limiting the check to one nearby photocell assumes the source of the fault without proof. Replacing another device before testing the whole row can create unnecessary work and hide the real cause. The relay nameplate only confirms device capacity, not correct field operation.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2196,7 +2196,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.04",
       "blueprintObjective": "Apply branch-circuit tracing knowledge while the electrician installs lighting standards.",
-      "contentHash": "e43e1ec0621b7cd82635f3bb1ed3ecdb09246bf15ca94ae74f0b86bf433bf124"
+      "contentHash": "cc90042065e6c5b8e4a90c69127ce1e4d37aa86ad92453b8a30bd315ecc70e2d"
     },
     {
       "bankItemNumber": 273,
@@ -2258,7 +2258,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A technician verifying breaker sizing for an intersection signal lighting branch finds 18 pedestrian countdown luminaires, each rated 36 W, sharing the same circuit. Before completing the load worksheet, what is the total connected lighting power for this branch?",
+      "question": "A construction electrician is confirming the breaker size for a traffic signal circuit that feeds 18 identical pedestrian countdown signal heads, each nameplated at 36 W. When all of these luminaires are on at once, what is the total connected lighting power on this branch circuit?",
       "options": [
         "576 W",
         "720 W",
@@ -2266,7 +2266,7 @@
         "792 W"
       ],
       "correctIndex": 2,
-      "explanation": "For a branch of identical fixtures, total connected lighting power equals the fixture count multiplied by the rated wattage of each unit: 18 × 36 W = 648 W. This value reflects the maximum load the branch can draw when every luminaire operates simultaneously, which is what breaker and conductor sizing must account for. The 576 W option results from mistakenly using 32 W per fixture instead of the nameplate 36 W, an error that could occur if an outdated fixture record is referenced. The 720 W and 792 W options come from miscounting the luminaires as 20 or 22 respectively, which could happen if extra fixtures on an adjacent circuit are included by mistake. Confirming both the correct nameplate rating and the actual fixture count on the specific branch prevents these errors and ensures the load calculation matches field conditions rather than assumptions.",
+      "explanation": "To determine the total connected lighting power for a branch with identical luminaires, multiply the number of fixtures by the wattage of each fixture: 18 × 36 W = 648 W. This represents the maximum lighting load when every pedestrian signal head is energized at the same time, which is the condition used when selecting breakers and conductors. The 576 W choice comes from incorrectly using 32 W per luminaire, such as if someone relies on an old catalog value instead of the current nameplate. The 720 W and 792 W choices result from miscounting the fixtures as 20 or 22, for example including signal heads from another circuit. Verifying both the actual fixture count on the branch and the nameplate wattage ensures the load calculation matches the real field installation.",
       "steps": [
         {
           "label": "Identify",
@@ -2283,7 +2283,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.07",
       "blueprintObjective": "Apply connected lighting power knowledge while the electrician installs, services and maintains traffic signal lights and controls.",
-      "contentHash": "911c89e004a21019cc6214c637dc4e7ed62ce9fea52de2ad4671f5244f92f0d8"
+      "contentHash": "636c544de266a462d511a87d70118b79649b5784a43f6b13cf80adbcf28a0f44"
     },
     {
       "bankItemNumber": 276,
@@ -2293,15 +2293,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "In a hotel corridor, twelve luminaires have just been relamped with dimmable LED lamps that are fed from the existing wall dimmer originally selected for the incandescent lamps. During commissioning the lamps flicker below mid-slider travel and the dimmer faceplate runs noticeably warm at full output, with the breaker holding. Which action best supports returning the corridor lighting to service?",
+      "question": "In a hotel corridor, twelve luminaires have just been relamped with dimmable LED lamps and are still connected to the existing wall dimmer that was originally selected for incandescent lamps. During commissioning, the lamps flicker below mid-slider travel and the dimmer faceplate feels noticeably warm at full output, while the breaker remains closed. Which action best supports returning the corridor lighting to service?",
       "options": [
-        "Raise the dimmer's low-end trim setting until the flicker disappears at the bottom of the slider travel, then leave the existing control in place.",
-        "Split the twelve luminaires between two existing dimmers on the same lighting circuit so each control handles roughly half the connected load.",
-        "Replace the dimmer with an identical model of the same rating, since the warm faceplate indicates the original control has reached the end of its service life.",
-        "Compare the LED lamp driver data, luminaire count, measured circuit current, and dimmer load rating against the lighting design before energizing for service."
+        "Raise the dimmer's low-end trim setting until the flicker disappears at the bottom of the slider travel, then keep the existing control in service.",
+        "Split the twelve luminaires between two existing dimmers on the same lighting circuit so each control carries about half the connected load.",
+        "Replace the dimmer with an identical model of the same rating, since the warm faceplate indicates the original control has simply aged.",
+        "Compare the LED lamp driver data, luminaire quantity, measured circuit current, and dimmer load rating against the lighting design before energizing for service."
       ],
       "correctIndex": 3,
-      "explanation": "An LED lamp's driver draws current very differently from an incandescent filament: the load is small, non-linear, and often capacitive, so a control chosen for a resistive filament load can fall below its minimum load, misfire at low conduction angles, and dissipate extra heat. Flicker at the low end combined with a warm faceplate points to that load-type and rating mismatch, so the correct step is to check the driver specifications, luminaire quantity, measured current, and dimmer rating against the lighting design before the corridor is put back in service. Trimming the low end only hides the flicker while the control keeps running hot. Spreading the luminaires across two dimmers changes the current per control but not the fact that the control type does not suit LED drivers, and it departs from the approved switching arrangement. Installing the same model again reproduces the original mismatch, because the heat comes from how the control interacts with the new drivers rather than from age.",
+      "explanation": "LED lamp drivers draw current differently from incandescent lamps, so a dimmer chosen for a resistive filament load may not operate properly with the new LED load. Flicker at the low end together with a warm control faceplate points to a compatibility or loading issue, so the proper step is to verify the driver specifications, number of luminaires, measured current, and dimmer rating before putting the corridor back into service. Adjusting the low-end trim only masks the symptom if the control is still poorly matched to the load. Splitting the luminaires between two dimmers changes the loading arrangement without addressing whether the controls are suitable for the LED drivers. Replacing the dimmer with the same model repeats the same compatibility problem if the original control was not appropriate for the new lamps.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2309,7 +2309,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.01",
       "blueprintObjective": "Apply post-repair functional test knowledge while the electrician installs luminaires.",
-      "contentHash": "a6b1f48d55d6c798004b56c2d4516f308dea68d3b7d6f6fb0404cce28305a0f4"
+      "contentHash": "b10d6f3cae08d9412b2e1521ffeda0522146d90f9808880aecc42d5cf114076f"
     },
     {
       "bankItemNumber": 277,
@@ -2345,15 +2345,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "During a retrofit, new LED troffers connected to an existing incandescent-rated dimmer flicker at low output and never fully turn off. Before further troubleshooting, what must the electrician confirm to resolve the fault correctly?",
+      "question": "On a commercial office retrofit, existing wallbox dimmers marked for incandescent loads are left in place when the troffers are replaced with dimmable LED fixtures. The new LED troffers flicker at low levels and glow dimly instead of turning fully off. Before changing any devices, what must the electrician confirm to address this dimming problem correctly?",
       "options": [
-        "Increase the dimmer's minimum-load resistor value and disregard the driver manufacturer's published compatibility list.",
-        "Verify the dimmer, LED driver, control method, and connected load are compatible across the full dimming range.",
-        "Assume the flicker proves the dimmer is defective and replace it with any dimmer rated for the circuit amperage.",
-        "Rely on the luminaire nameplate wattage alone without checking the driver's dimming curve or minimum-load data."
+        "Adjust the dimmer’s internal trim or add a larger minimum‑load resistor without consulting any manufacturer information for the LED drivers.",
+        "Verify that the dimmer, LED driver, selected control protocol, and total connected load are listed by the manufacturers as compatible over the entire dimming range.",
+        "Treat the flicker as proof of a failed dimmer and replace it with any device that matches the branch‑circuit voltage and amperage rating.",
+        "Size the replacement luminaires only by their nameplate wattage and ignore the driver’s published dimming performance and minimum‑load requirements."
       ],
       "correctIndex": 1,
-      "explanation": "The flicker and incomplete shutoff at minimum output are symptoms of mismatched dimming components, not proof of a defective dimmer. An incandescent-rated dimmer typically cannot properly control an LED driver unless both share a common dimming protocol and the load meets the driver's minimum requirement. Verifying compatibility across the dimmer, driver, control method, and load addresses the actual cause identified by the evidence. Swapping the dimmer for any amperage-rated unit tempts because it seems logical after a fault, but it ignores dimming-curve and protocol compatibility, so the flicker will likely persist. Relying on nameplate wattage alone also fails because it omits the manufacturer's compatibility data and minimum-load specification needed for correct operation. A full-range functional test after confirming compatibility data is the reliable method to eliminate the fault permanently.",
+      "explanation": "Flicker, ghosting, and incomplete shutoff with LED luminaires controlled by an incandescent‑rated dimmer typically indicate a compatibility issue between the dimmer and the LED driver, not a simple device failure. The control protocol (such as forward‑phase or reverse‑phase), load range, and dimming curve all have to match what the driver and dimmer are designed to handle. Confirming that the dimmer, driver, control method, and connected load appear on the manufacturers’ compatibility information helps ensure stable, full‑range dimming without flicker or glow. Simply trimming the dimmer, changing resistors, or swapping in any amperage‑rated dimmer can leave the underlying mismatch in place, so the symptoms are likely to continue. Relying only on luminaire wattage ignores critical data such as minimum‑load and dimming performance, which is why using the compatibility information from both the dimmer and luminaire manufacturers is the most reliable way to correct the issue.",
       "steps": null,
       "tip": "Always cross-reference the driver's compatibility list with the specific dimmer model before assuming a wiring or product defect.",
       "isCalc": "no",
@@ -2361,7 +2361,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.03",
       "blueprintObjective": "Apply device polarity knowledge while the electrician installs lighting controls.",
-      "contentHash": "2d653a556fd8f039a8b6f67656c57e91fd06594f4dc291bb5d079cabc5b7dc42"
+      "contentHash": "f9b86fb4bb4ab5206ffb90fcd1c5a031ee727630a670258f41d9bda56499d8e5"
     },
     {
       "bankItemNumber": 279,
@@ -2432,15 +2432,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a functional check of an airport apron lighting system, an occupancy sensor near a taxiway gate keeps the fixtures energized after the scheduled dim command activates. Before accepting the system, what should the electrician verify first?",
+      "question": "During commissioning of an airport apron lighting control system, the fixtures along a taxiway gate remain at full output when the timeclock issues a scheduled dim command because the nearby occupancy sensor is active. Before signing off that this behaviour is correct, what should the electrician verify first?",
       "options": [
-        "Compare the control narrative, sensor input states, and scheduled output commands against manufacturer documentation for that mode.",
-        "Accept the result after one unloaded test without checking the sensor input against the scheduled control narrative.",
-        "Bypass the occupancy sensor input and confirm normal output as the final acceptance test.",
-        "Compare the sensor behaviour with a different apron zone even though its traffic pattern and schedule differ."
+        "Compare the approved control narrative, the occupancy sensor input status, and the scheduled dimming output commands to the manufacturer’s documentation for this operating mode.",
+        "Rely on a single no-traffic test run and accept the behaviour without checking how the occupancy sensor is supposed to interact with the schedule.",
+        "Temporarily bypass the occupancy sensor input so the lights dim on schedule, and treat that result as confirmation that the system is working properly.",
+        "Compare how this sensor zone responds to the dim command with another apron zone that has a different schedule and traffic pattern."
       ],
       "correctIndex": 0,
-      "explanation": "The sensor keeping fixtures on past the scheduled dim time could reflect correct priority logic (occupancy overriding schedule) or a wiring/programming fault. The electrician must compare the control narrative, sensor input states, and output commands against manufacturer documentation for that specific operating mode to determine which is occurring before signing off. A single unloaded test cannot reveal how inputs interact under real traffic conditions, so it risks accepting a hidden fault. Bypassing the sensor input removes a safety/priority function entirely and only proves the output relay works, not that the control sequence is correct. Comparing to a different zone is invalid because differing traffic patterns and schedules mean the two systems are not expected to behave alike, so no valid conclusion can be drawn from that comparison.",
+      "explanation": "In a lighting control system, occupancy inputs often have higher priority than time-based dimming, so lights may correctly stay at full output when a sensor detects movement. The electrician must first confirm that the sensor input, timeclock schedule, and output response match the approved control narrative and the manufacturer’s described sequence for that operating mode. This shows whether the system is behaving as designed or if there is a programming or wiring error. A single no-traffic test does not prove that inputs interact correctly under real occupancy. Bypassing the sensor only shows that the lights can follow the schedule when the safety function is removed, not that the overall sequence is correct. Comparing with a different apron zone that uses another schedule or traffic pattern does not provide a valid benchmark for proper operation in the tested zone.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2448,7 +2448,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-17, Sub-task C-17.06",
       "blueprintObjective": "Apply occupancy sensor coverage knowledge while the electrician installs, services and maintains airport visual aid systems.",
-      "contentHash": "1640bcce4698dcc2f31fc9890bca272ff5edfe93fbaa496d0bb63fc935c5af79"
+      "contentHash": "34eee005dc4170ba7ee52f0ddbd0ffb0371f4fe331fab2416dffe16dbf6fb153"
     },
     {
       "bankItemNumber": 282,
@@ -2632,15 +2632,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A rooftop unit thermostat display shows an active heat call, yet the gas valve never energizes and the blower stays silent. Before replacing any component, what evidence should the electrician gather to confirm the thermostat signal is functioning correctly?",
+      "question": "On a rooftop unit, the thermostat display indicates a call for heat, but the gas valve does not energize and the supply fan remains off. Before replacing any parts, what evidence should the electrician gather to verify that the thermostat signal is actually being carried through the control circuit?",
       "options": [
-        "Copy the wiring arrangement used on a similar rooftop unit last week without checking this unit's actual source, load, or equipment data.",
-        "Assume the thermostat is proving correctly because the display shows an active call, and move directly to component replacement.",
-        "Record that the controller input never activated, then close out the call without tracing the wiring between thermostat and controller.",
-        "Compare supply voltage, call state, controller input, interlocks, and output command against the approved design and expected result."
+        "Copy the wiring arrangement from another rooftop unit installed recently without checking this unit's source, load, or control wiring.",
+        "Assume the thermostat is operating correctly because the display shows a call for heat, and go straight to replacing components.",
+        "Record that the controller input never energized, then close the work order without tracing the conductors between the thermostat and the controller.",
+        "Compare supply voltage, call state, controller input, interlocks, and output command against the approved design and expected operating sequence."
       ],
       "correctIndex": 3,
-      "explanation": "A displayed heat call does not confirm the signal reached the controller output stage. The electrician must trace supply voltage, call state, controller input, interlocks, and output command against the manufacturer's sequence and approved drawing to locate exactly where the signal path fails. Assuming the display proves correct operation skips verification and risks unnecessary parts replacement. Copying another job's wiring ignores this unit's actual conditions and could mask a real fault or create a mismatch with the approved design. Stopping at the controller input reading without tracing the path leaves the open circuit undiagnosed, so the true cause—whether a broken conductor, failed relay, or interlock—remains unresolved and the zone stays without heat.",
+      "explanation": "A heat call shown on the thermostat display does not by itself prove the signal reached the controlled device. The electrician should verify the control voltage, the actual call condition, the controller input, any safety interlocks, and the output command so the open point in the signal path can be identified. Copying another unit's wiring does not confirm this system's actual control circuit, and assuming the display is enough can lead to unnecessary replacement. Stopping at the input reading alone still leaves the fault location unknown, such as a broken conductor, failed relay, or open interlock.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2648,7 +2648,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply condensate safety knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "7e8cbacac011ed1c0a0910f547b96f1139bd43ad042da9d579a44c642a98836f"
+      "contentHash": "c3ec9940f403d2966a5822704b09f6e48f8fa008d12a925d70d58ea7ba79f0c8"
     },
     {
       "bankItemNumber": 289,
@@ -2775,15 +2775,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A rooftop packaged unit's compressor restarts within seconds after its low-pressure safety trips and resets, causing rapid cycling that trips the overload. Which action best uses the available evidence to confirm proper compressor interlock operation?",
+      "question": "A rooftop packaged unit’s compressor is rapid-cycling because it restarts almost immediately after the low-pressure control trips and then resets. To verify that the compressor interlock and anti-short-cycle protection are working as intended, what should the technician do next?",
       "options": [
-        "Compare the control sequence diagram, pressure and temperature safety inputs, timer delays, and contactor state against the approved design and required commissioning result.",
-        "Accept the interlock as correct after one unloaded test cycle without checking the sequence diagram, safeties, timers, or contactor state.",
-        "Bypass the anti-short-cycle timer input feeding the interlock and treat a normal-looking output as a passed test.",
-        "Compare this compressor's interlock behaviour to a similar unit nearby despite differing loads, setpoints, and safety configurations."
+        "Review the control sequence and then observe the low-pressure and other safety inputs, the programmed time delays, and the compressor contactor operation through one or more start–stop cycles to confirm they match the unit’s design documentation.",
+        "Run the compressor through one unloaded start–stop cycle and assume the interlock is correct without checking the control sequence, safety devices, or time-delay operation.",
+        "Temporarily bypass the anti-short-cycle timer feeding the interlock and consider a normal-appearing compressor start as proof that the interlock is functioning correctly.",
+        "Judge the compressor interlock performance by comparing its cycling to another rooftop unit with different load conditions and control settings on the same building."
       ],
       "correctIndex": 0,
-      "explanation": "Rapid restart after a safety reset indicates the anti-short-cycle timer or permissive logic is not holding the contactor open as designed. The correct approach is to trace the sequence diagram against actual safety inputs, timer delays, and contactor state, confirming the control logic matches approved design intent and the observed symptom is resolved. A single unloaded cycle can appear normal while masking an intermittent timer fault, so it is insufficient evidence. Bypassing the timer input removes the very protection causing the fault and risks compressor damage from repeated starts under pressure imbalance. Comparing to a dissimilar unit ignores differences in load, safety setpoints, and sequence logic, producing an unreliable conclusion. Only a full comparison of documented sequence, safety states, timing, and contactor behaviour against approved design correctly diagnoses and verifies proper interlock operation before return to service.",
+      "explanation": "When a compressor restarts too quickly after a safety trip, the technician needs to confirm that each permissive and timing function in the interlock is holding the contactor open for the required delay. This is done by checking the written control sequence and watching the actual safety inputs, programmed time delays, and contactor operation over several cycles to ensure they behave exactly as specified. Simply running one unloaded cycle can miss intermittent timing or safety faults, and bypassing the anti-short-cycle timer removes essential protection and can lead to repeated starts under unfavourable conditions. Comparing to a different unit with unlike loads and settings does not verify that this compressor’s own interlock is performing as designed. A structured comparison of documented control logic to observed safety, timing, and contactor behaviour provides reliable confirmation that the interlock is operating properly before returning the unit to normal service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2791,7 +2791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply compressor interlock knowledge while the electrician installs hvac controls.",
-      "contentHash": "a3504cef707aa4a7c6712d6d5977762fc88c7392b6320ce16e84818818ccd6ce"
+      "contentHash": "0d0129881fb59469c847837ea303adf7dc408232d4752c81d84d1f49dec4ce12"
     },
     {
       "bankItemNumber": 294,
@@ -2862,15 +2862,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a rooftop unit's morning warm-up cycle, an electrician measures the 24 V control transformer secondary right at its own terminals. Voltage stays at rated value when either damper actuator strokes alone, but sags well below 24 V whenever the outdoor-air and return-air actuators drive at the same time. What is the most useful first step in diagnosing this behaviour?",
+      "question": "During a rooftop unit’s morning warm-up cycle, an electrician sees that the 24 V control transformer secondary, measured directly at the transformer terminals, stays close to 24 V when either the outdoor-air or return-air damper actuator runs by itself, but drops noticeably whenever both actuators drive together. What is the most appropriate first diagnostic action to confirm whether the transformer is being overloaded by these two actuators?",
       "options": [
-        "Inspect the low-voltage conductor gauge and terminal tightness on both actuator runs, since long undersized leads pull the transformer output down",
-        "Confirm the primary taps match the 208 V supply feeding the unit, then re-read the secondary with both actuators de-energized",
-        "Wire a time-delay relay so the two actuators stroke one after the other, then watch the next warm-up cycle to see if the sag clears",
-        "Add up the inrush and running VA of both actuators, compare that total to the transformer's VA rating, and re-measure secondary voltage while both drive together"
+        "Measure the running current of each actuator during a warm-up cycle and compare the total secondary current to the transformer’s nameplate VA rating",
+        "Check the control circuit for any additional loads that energize only when both dampers move, then verify their individual VA ratings against the transformer",
+        "Verify the transformer secondary voltage and current with one actuator disconnected from the circuit, then repeat the measurements with the other actuator disconnected",
+        "Add up the inrush and running VA of both actuators, compare that total to the transformer’s VA rating, and re-measure secondary voltage while both drive together"
       ],
       "correctIndex": 3,
-      "explanation": "Voltage that holds for one actuator but collapses when both drive together is the classic signature of a transformer being pushed past its VA capacity by combined motor inrush. Totalling each actuator's inrush and running VA, comparing that figure with the nameplate VA of the transformer, and confirming the sag with a live reading during simultaneous operation tells you directly whether the source is undersized before any component or sequence is altered. Conductor size and loose terminals do cause low-voltage problems, but their drop shows up between the transformer and the load, not at the transformer terminals where this reading was taken. Checking the primary taps is worthwhile when voltage is low all the time; here the no-load and single-actuator readings are already correct, so a tap error is ruled out. Staggering the actuators with a time-delay relay may hide the symptom, yet it changes the control sequence without ever establishing whether the transformer can carry the intended load, and the shortfall will reappear on any other combination of coils fed from the same secondary.",
+      "explanation": "Because the voltage only drops when both actuators operate together, the key question is whether their combined demand is exceeding the control transformer’s VA capacity. The best first step is to quantify each actuator’s inrush and running VA from manufacturer data or test measurements, sum those values, and compare the total load to the transformer’s nameplate VA rating while confirming the voltage sag under simultaneous operation. This directly checks for transformer overloading without changing the control scheme. Simply measuring current without relating it to the VA rating, looking for extra loads without first assessing the known actuator demand, or disconnecting actuators during tests can all miss the root cause or temporarily hide it rather than confirming whether the transformer is properly sized for the intended combined load.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2878,7 +2878,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply thermostat signal knowledge while the electrician installs hvac controls.",
-      "contentHash": "438d8234713cb35d6d731329bc5b08e99f797bf758573010ce373f79058ae886"
+      "contentHash": "341f22acfd3d78d19764545bc2cce0265e5e668615a1b6ab122d48e3580b7d3a"
     },
     {
       "bankItemNumber": 297,
@@ -2888,15 +2888,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A single-zone rooftop unit is not cooling. The wall thermostat display shows an active cooling call, but the supply fan does not start and the outdoor-air damper actuator stays fully closed. Working at the unit's low-voltage terminal strip, which step best localizes the break in the control path?",
+      "question": "A single-zone rooftop unit is not providing cooling. The wall thermostat display is lit and shows a cooling demand, but at the unit the supply fan does not start and the outdoor-air damper actuator stays closed. Working at the rooftop unit’s low-voltage terminal strip, which test best localizes where the cooling control signal is being lost?",
       "options": [
-        "With the call active, read from the controller's Y input to common; if 24 V is present there, move downstream and check the fan interlock and the actuator command terminal",
-        "Read across the thermostat's closed cooling contacts; a steady 24 V there confirms the call is reaching the controller, so attention should shift downstream",
-        "Replace the 24 V control transformer, since only a loss of control power upstream would leave both the fan output and the damper actuator de-energized",
-        "Switch the thermostat fan setting to continuous; if the fan then runs, the cooling call wiring from the thermostat can be ruled out as the source of the fault"
+        "With the cooling call present, measure between the controller’s Y input and common; if 24 V is present at Y, then move along the circuit to check the fan interlock and the damper actuator command terminal.",
+        "Measure from the thermostat’s Y output wire to common; if you read 24 V there, the problem must be in the fan circuit or damper actuator wiring inside the rooftop unit.",
+        "Replace the 24 V control transformer first, because a failed transformer would stop both the fan output and the damper actuator from receiving any control power.",
+        "Switch the thermostat fan setting to continuous and see if the supply fan starts; if the fan runs, the cooling control circuit can be considered satisfactory and the issue is likely refrigeration-related."
       ],
       "correctIndex": 0,
-      "explanation": "Reading Y to common at the controller input tells you whether the call actually arrived at the board, and the answer directs the next reading either upstream (thermostat and its wiring) or downstream (interlock chain and actuator command output), so the fault is bracketed one section at a time. Reading across the thermostat's closed contacts is measured correctly but interpreted backwards: closed contacts passing a call drop close to 0 V, while a full 24 V across them means the contacts or their wiring are open. Replacing the transformer ignores the evidence already in hand—the thermostat display is lit and showing a call, so control power is present; the transformer would be suspect only if the thermostat were dead. Running the fan in continuous mode proves the G circuit and the fan motor, but the cooling call travels through the Y terminal and the cooling interlocks, so a working fan in continuous mode says nothing about that path.",
+      "explanation": "Measuring between the rooftop unit controller’s Y input and common confirms whether the thermostat’s cooling signal is actually reaching the control board at the unit. If 24 V is present at Y, the fault lies somewhere downstream in the interlock or actuator output path; if 24 V is missing at Y, the fault is upstream in the thermostat or its wiring. Measuring only at the thermostat’s Y terminal does not show whether the signal is arriving at the unit, so it does not bracket the problem. Replacing the transformer is not justified because the powered thermostat display already proves that 24 V control power is available. Using the continuous fan setting only checks the G circuit and fan operation; it does not test the Y cooling signal path or the damper actuator control, so it does not localize the loss of the cooling call.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2904,7 +2904,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.03",
       "blueprintObjective": "Apply damper actuator knowledge while the electrician services and maintains hvac systems and controls.",
-      "contentHash": "d206f7d1a3bea9b54465cd5d46889b718f8d7138f4cc7444a91645dfda42db3d"
+      "contentHash": "d5e8751e5bd6474c9590354e69dca1e8cc381564977d37995695b2cedf1c1060"
     },
     {
       "bankItemNumber": 298,
@@ -2940,15 +2940,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A rooftop unit's cooling shuts down every afternoon after roughly 40 minutes of runtime and only restarts hours later, once the drain pan has emptied. Before any parts are changed or drain work is done, the electrician must establish whether the condensate float switch is in fact the device interrupting the cooling control circuit. Which step accomplishes that?",
+      "question": "A rooftop air-conditioning unit on an office building is shutting down its cooling every afternoon after about 40 minutes of operation. The unit will not restart until the condensate has drained from the pan. Before changing any components or modifying the drain, the electrician needs to confirm that the pan-mounted condensate float switch is the device that is opening the cooling control circuit. What is the most appropriate diagnostic step to verify that the float switch is the source of the shutdown?",
       "options": [
-        "Log supply air and outdoor temperatures over several afternoons to see whether the shutdown tracks the peak cooling load.",
-        "Measure the control transformer secondary voltage during a shutdown to see whether the 24 V supply sags under afternoon load.",
-        "Verify that the float switch opens the cooling control circuit at the pan level given in the unit's commissioning data, checking contact continuity, the controller input, and reset behaviour.",
-        "Level and flush the condensate drain line and pan trap first, then watch whether the afternoon shutdowns stop on their own."
+        "Monitor the thermostat’s cooling call and compressor contactor operation through a full afternoon cycle to see if the shutdown is being driven by the space temperature control.",
+        "Check the compressor contactor coil voltage and the low-pressure control during a shutdown to determine whether a refrigeration safety is dropping the cooling circuit.",
+        "Verify that the float switch opens the cooling control circuit at the pan level specified for that unit by checking the switch contact continuity, observing the controller input during the trip, and confirming the reset behaviour when the pan level falls.",
+        "Check the condensate pump operation and its interlock wiring by simulating a full pan condition to see whether a separate pump safety is removing the cooling call."
       ],
       "correctIndex": 2,
-      "explanation": "The afternoon pattern only tells you the fault follows runtime and load; it does not prove the float switch opened, because a stuck contact, a wiring fault, or a controller input problem can drop the cooling call with the pan still below its trip level. Confirming that the switch actually opens the circuit at the pan level stated in the unit's commissioning data, and that the controller sees that open and resets as designed, identifies the interrupting device before anything is altered. Logging supply air and outdoor temperatures documents the load pattern but never touches the switch contacts or the controller input, so the trip source stays unproven. Checking the transformer secondary is a reasonable control-power test, but a healthy 24 V reading still leaves you unsure which series safety device opened. Flushing and levelling the drain changes the pan conditions that produce the trip, destroying the evidence needed to confirm whether the switch works at its design level.",
+      "explanation": "To confirm that the condensate float switch is the device interrupting cooling, you need to directly test the switch and its control wiring under pan level conditions that match the unit’s design. Manually raising the water level or using the unit’s test procedure to reach the specified trip height, while monitoring contact continuity and the controller input, shows whether the switch opens the cooling circuit at the correct level and whether the controller responds and resets properly when the level drops. Focusing only on thermostat behaviour checks the space temperature control, not the pan safety, and does not identify which device opened the circuit. Looking at the contactor coil and low-pressure control verifies refrigeration safeties, but leaves the condensate safety untested. Checking the condensate pump interlock can reveal a separate safety device, yet it still does not confirm that the pan float switch itself is the source of the afternoon shutdown unless its contacts and input are intentionally exercised and observed.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -2956,7 +2956,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-18, Sub-task C-18.02",
       "blueprintObjective": "Apply equipment disconnect knowledge while the electrician installs hvac controls.",
-      "contentHash": "b8b89c94f9678e092c2ca016a12051e030aa8b1daedb058f89604fbb35bccbac"
+      "contentHash": "d80e06ca294e2e5b925f63fec73babf57c08a62305eca7c6032a417ab7233b0d"
     },
     {
       "bankItemNumber": 300,
@@ -3114,15 +3114,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A three-phase 600 V duct heater is being commissioned. With Stage 2 called, the clamp meter reads near the nameplate value on L1 and L3 but zero amperes on L2, and the stage contactor is confirmed pulled in. Which action best identifies the fault before the unit is released to service?",
+      "question": "A three-phase 600 V duct heater is being commissioned on a rooftop air-handling unit. With Stage 2 called, the clamp meter shows current on L1 and L3 close to the nameplate value, but zero amperes on L2, and the Stage 2 contactor is visibly pulled in. Which action most effectively pinpoints the fault on the heater before the unit is put into service?",
       "options": [
-        "Lock out the supply, then measure element resistance and check terminal tightness on the L2 leg, comparing the result with the other two legs and the nameplate wattage",
-        "Measure line-to-line voltage at the heater terminals with the stage energized; if all three pairs read 600 V, record the heater as balanced and release it",
-        "Raise the thermostat setpoint so Stage 3 also energizes, then note whether the total heater current comes closer to the nameplate full-load value",
-        "Replace the L2 branch-circuit fuse and re-energize, since the other two legs reading near nameplate shows the elements and connections are sound"
+        "Lock out and tag the supply, then isolate the heater and measure element resistance and terminal tightness on the L2 leg, comparing these results to the other two legs and to the nameplate wattage",
+        "Check line-to-line voltage at the heater terminals while Stage 2 is energized; if all three phase pairs read close to 600 V, note the readings and continue commissioning",
+        "Increase the space temperature demand so Stage 3 also pulls in, then compare the combined current draw of Stages 2 and 3 to the heater nameplate full-load amperes",
+        "Replace the protective device feeding L2 and re-energize the heater, since normal current on L1 and L3 indicates the elements and wiring are generally in good condition"
       ],
       "correctIndex": 0,
-      "explanation": "Zero current on one leg while the other two legs draw near nameplate current points to an open element or a loose/burned terminal on that leg, not to a supply problem. Locking out and measuring the resistance of each element leg lets you compare the suspect leg with the two known-good legs and with the resistance implied by the nameplate wattage, which pinpoints an open coil or high-resistance joint. Reading line-to-line voltage proves only that supply is present; an open element still shows normal voltage because no current flows through the break. Energizing another stage adds current from different elements and hides the original problem instead of isolating it. Replacing the L2 fuse is misdirected: an open fuse on that leg would also pull down the current in the remaining legs, so the near-nameplate readings on L1 and L3 actually rule the fuse out and point back to the element circuit itself.",
+      "explanation": "Normal current on L1 and L3 but zero on L2 with the contactor closed indicates a problem in the heater circuit on L2, such as an open element or a failed termination, rather than a supply issue. Locking out the feeder and measuring the element resistance and checking the physical connections on the L2 leg, then comparing to the other two legs and to values implied by the nameplate wattage, allows you to confirm whether that phase’s element bank is open or has a high-resistance joint. Simply checking line-to-line voltage only verifies that the supply is present; an open element will still show full voltage because no current flows through the break. Energizing an additional stage changes the load and can mask which stage or leg is faulty instead of isolating it. Replacing the protective device on L2 is unsupported by the readings; a blown fuse on one phase would typically affect current symmetry, so having L1 and L3 near nameplate strongly suggests the issue is within the Stage 2 heater elements or connections on L2.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3130,7 +3130,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply element resistance knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "5fadab3b9ff9b9b2dbedf129de482051aadcd10b67dc478567e1a87abce9eb2a"
+      "contentHash": "ea8a31508a9e95973b87f6fa0442adf1a2fbe7fa1ce14f9cb1ffc4eb6c6d6970"
     },
     {
       "bankItemNumber": 306,
@@ -3305,7 +3305,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "While servicing an electric duct heater in a shop's makeup-air unit, an electrician locks out and verifies the de-energized 240 V branch circuit, then measures one heating element at 20 Ω. What power will that element develop once the unit is returned to service?",
+      "question": "An electrician is testing a single 240 V resistance heater mounted in a paint booth supply duct. With the branch circuit locked out and proven de-energized, the resistance of that heating element is measured at 20 Ω. When the heater is placed back in normal operation on the 240 V supply, what power will that element dissipate?",
       "options": [
         "2.16 kW",
         "4.80 kW",
@@ -3313,7 +3313,7 @@
         "2.88 kW"
       ],
       "correctIndex": 3,
-      "explanation": "For a purely resistive heating element, P = V²/R, so P = 240² ÷ 20 = 57 600 ÷ 20 = 2880 W, or 2.88 kW. The same answer is reached the longer way: I = V/R = 240 ÷ 20 = 12 A, then P = I²R = 12² × 20 = 2880 W. The 2.16 kW choice comes from substituting 208 V instead of the actual 240 V supply (208² ÷ 20 = 2160 W), which is why the nameplate and measured supply voltage must be confirmed before calculating. The 4.80 kW choice comes from multiplying voltage by resistance (240 × 20) instead of dividing the square of the voltage by resistance. The 0.72 kW choice comes from assuming a 120 V line-to-neutral supply (120² ÷ 20 = 720 W) rather than the 240 V across the element. Because power varies with the square of the applied voltage, using the wrong voltage changes the result dramatically.",
+      "explanation": "For a resistive heating element, power can be found using P = V² ÷ R. Substituting the measured values gives P = 240² ÷ 20 = 57 600 ÷ 20 = 2 880 W, or 2.88 kW, so the correct choice is 2.88 kW. Using the longer method gives the same result: first find current I = V ÷ R = 240 ÷ 20 = 12 A, then P = I²R = 12² × 20 = 2 880 W. The 2.16 kW option reflects using a 208 V supply instead of the actual 240 V (P = 208² ÷ 20 = 2 16  0 W), showing how an incorrect supply voltage changes the result. The 4.80 kW option comes from incorrectly multiplying voltage by resistance (240 × 20) instead of dividing V² by R. The 0.72 kW option comes from assuming only 120 V across the element (120² ÷ 20 = 720 W, or 0.72 kW). Because power changes with the square of the applied voltage, confirming the actual line voltage before calculating is essential for accurate results.",
       "steps": [
         {
           "label": "Formula",
@@ -3334,7 +3334,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply resistive heating power knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "567df548a4c5a8dc8e4dfd3f3a6abac77742746c9c091277527baa8145ce59d7"
+      "contentHash": "10c9750424c1bee8cae094abfc628c9795ccd43ff25f1e7e44a995c7209c0f42"
     },
     {
       "bankItemNumber": 313,
@@ -3396,15 +3396,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A baseboard heater thermostat mounted on an exterior wall near a single-pane window causes the room to overheat then underheat in cycles, though the heater tested correctly on the bench. What should the electrician verify before replacing any component?",
+      "question": "A wall-mounted thermostat for a baseboard heater is installed on an exterior wall directly beside a drafty single-pane window. The room temperature swings from too hot to too cold, even though the heater and thermostat operated correctly during bench testing. Before deciding to replace the thermostat or heater, what should the electrician confirm on site?",
       "options": [
-        "Assume the window draft proves the thermostat is defective and immediately swap it for a new unit.",
-        "Skip checking sensor placement and rely only on the nameplate rating to explain the cycling pattern.",
-        "Compare sensor location, nearby drafts, airflow, and measured room temperature against the manufacturer's mounting guidance.",
-        "Measure heater element resistance first and postpone reviewing thermostat placement until the cycling recurs."
+        "Confirm the window draft is proof of a faulty thermostat and replace the control without further field checks.",
+        "Ignore where the sensing element is mounted and base the diagnosis only on the heater’s nameplate output.",
+        "Compare the thermostat sensor location, nearby drafts, airflow patterns, and actual room temperature readings with the manufacturer’s recommended mounting positions.",
+        "Focus on re-testing element resistance and delay evaluating thermostat placement until the customer reports more cycling issues."
       ],
       "correctIndex": 2,
-      "explanation": "The bench-tested heater rules out an element fault, so the cycling likely stems from where the sensor reads temperature. Comparing sensor location, drafts, airflow, and actual room readings against manufacturer mounting guidance identifies whether cold air from the window is falsely triggering the thermostat, which is the documented root cause pattern for this symptom. Assuming the draft alone proves a defective thermostat skips verification and risks replacing a functioning device while the placement problem persists. Relying only on the nameplate ignores real field conditions entirely. Checking element resistance again is redundant once the heater has already tested correctly, and deferring the placement review lets the comfort complaint continue unresolved, wasting a service call.",
+      "explanation": "Because the heater and thermostat both tested correctly off the wall, the temperature swings are likely caused by poor thermostat placement rather than a defective component. A thermostat mounted beside a cold, drafty window senses air that is cooler than the rest of the room, causing the heater to overrun and then shut off too late. By checking the sensor location, nearby drafts and airflow, and measured room temperature against the manufacturer’s mounting guidance, the electrician can determine whether relocating the thermostat will correct the cycling. Simply assuming the draft proves the thermostat is faulty, ignoring sensor placement, or focusing only on element resistance can lead to unnecessary replacement while leaving the comfort issue unresolved.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3412,7 +3412,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.03",
       "blueprintObjective": "Apply element resistance knowledge while the electrician services and maintains electric heating systems and controls.",
-      "contentHash": "4589b8d8784e88da4bd02192792cf64335e51af2c34a59dcc9f7e32559c12e76"
+      "contentHash": "a055ff85c31ff752829cbf6400fd7397cd96ecb9ca09dc26e81fe4456e07aa4f"
     },
     {
       "bankItemNumber": 316,
@@ -3461,15 +3461,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "On a 600 V, 3-stage duct heater, the line contactor has been replaced twice in one year because the power contacts pit and occasionally weld, yet each stage measures within its nameplate current. Before ordering another replacement, what is the most defensible way to determine whether the installed contactor suits this switching service?",
+      "question": "On a 600 V, three-stage duct heater controlled by a line contactor that frequently starts and stops the elements, the contactor power poles have pitted and occasionally welded twice in one year, even though each stage’s current is within its nameplate rating. Before ordering another contactor, what is the most defensible way to verify that the installed contactor is suitable for this specific switching duty?",
       "options": [
-        "Compare each stage's measured current, the actual cycling frequency, coil voltage, and the contactor's utilization rating against the approved design documents.",
-        "Add a correctly sized overload relay ahead of the contactor so it opens the circuit before the power contacts can overheat.",
-        "Fit a coil suppression module across the contactor coil to reduce the arc energy appearing across the power contacts.",
-        "Measure the resistance of each heating element to confirm that the three stages are drawing balanced current per pole."
+        "Compare each stage’s measured current, the actual cycling frequency of the heater stages, the contactor coil voltage, and the contactor’s utilization category and current rating against the original heater and control design documentation.",
+        "Install a thermal overload relay ahead of the line contactor so it will trip on heating of the contactor and protect the power contacts from further damage.",
+        "Replace the existing contactor with a physically larger unit of the same voltage and current rating so the contacts have more mass and can absorb the arc energy.",
+        "Adjust the control circuit to reduce the heater staging so only one pole of the contactor switches the load while the other poles remain closed, minimizing wear on the contacts."
       ],
       "correctIndex": 0,
-      "explanation": "Contacts that pit and weld while current stays within the nameplate rating usually indicate the contactor's duty is mismatched to how often it makes and breaks the resistive heater load, not that the load is excessive. Gathering the per-stage current, the real number of operations per hour, the control coil voltage, and the contactor's utilization rating, then checking them against the approved design, shows whether the device was selected for this switching service or is being cycled far beyond its intended contact life. An overload relay responds to sustained overcurrent in the elements and conductors; it does nothing about the arc erosion that occurs each time the contacts open. Coil suppression protects the control circuit from inductive spikes when the coil de-energizes and has no effect on load-side arcing across the power contacts. Checking element resistance is a reasonable balance test, but the stages are already reading within rating, so it will not reveal the cycling rate or duty rating that is causing the failures.",
+      "explanation": "Repeated pitting and welding of power contacts with current still within the contactor’s nameplate rating points to a duty issue: the contactor may not be rated for the actual number of operations per hour or the specific utilization category of this resistive heater application. Verifying each stage’s current, the true cycling frequency, the coil voltage, and the contactor’s utilization category and current rating against the heater’s design documents confirms whether the contactor selection matches the required duty or is being operated beyond its intended switching life. A thermal overload relay responds to sustained overcurrent or excessive heating in conductors and motors, not the momentary arc energy at each make and break of a resistive heater load, so it will not prevent contact erosion. Simply installing a physically larger contactor with the same electrical rating does not ensure it has the correct utilization category or duty rating and may still leave the contacts operating outside their design limits. Changing the control circuit so only one pole carries most of the switching duty is poor practice because it unbalances wear, can overstress a single pole, and does not address whether the overall contactor is properly rated for the required switching service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3477,7 +3477,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-19, Sub-task C-19.02",
       "blueprintObjective": "Apply thermostat location knowledge while the electrician installs electric heating system controls.",
-      "contentHash": "47507c0420a01074069e6eb1388dbd50ba5e2dff5ac9bbbf2b200dfda7068c8d"
+      "contentHash": "f8a9ab5671aea18ae2698438ecdeacf0d78cf39896eff76905f6aa1f682209b8"
     },
     {
       "bankItemNumber": 318,
@@ -3851,15 +3851,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A warehouse self-contained emergency lighting unit has triggered three recurring battery condition complaints. The charge indicator glows steadily, yet the lamps visibly dim before the rated duration elapses during each monthly function test. Which action gives the electrician the most reliable diagnosis before replacing any component?",
+      "question": "During a fire drill, a self-contained emergency lighting unit in a warehouse is reported to dim noticeably after about half the rated 90‑minute run time, even though the charge LED stays on solid between tests. Before deciding whether to change the battery or the charger, what should the electrician do to confirm the battery’s actual condition under realistic operating conditions?",
       "options": [
-        "Trust the steady charge indicator and log the battery condition as satisfactory without further testing.",
-        "Postpone capacity testing until the unit fails completely, since intermittent dimming may resolve on its own.",
-        "Assume the dimming confirms a defective battery and replace the nearest accessible component immediately.",
-        "Discharge the battery under its full connected emergency load, record voltage and elapsed time, then compare to rated values."
+        "Rely on the steady charge LED as proof the battery is healthy and note the unit as acceptable in the inspection report.",
+        "Ignore the dimming until the unit stops working entirely, since borderline batteries often continue to operate for some time.",
+        "Replace the battery pack right away based only on the dimming complaint, without checking performance under load.",
+        "Discharge the battery while supplying the full connected emergency lamp load, record voltage and run time, and compare the results with the unit’s rated values."
       ],
       "correctIndex": 3,
-      "explanation": "Dimming before the rated duration despite a normal charge indicator means the indicator only confirms the charging circuit is energized, not that the battery can sustain the connected load for the full rated time. Discharging under the actual connected load and comparing measured voltage and elapsed time against rated values isolates whether the battery, connector, or charger is the true cause. Trusting the indicator ignores the documented symptom and risks certifying a unit that will fail during an actual outage. Waiting for total failure is unacceptable because life-safety lighting must remain reliable continuously. Replacing the nearest accessible part without measured evidence wastes resources and may leave the actual fault, whether battery capacity, corroded connections, or charger output, uncorrected, allowing the recurring complaint to persist across future service visits and endangering occupants during an emergency egress.",
+      "explanation": "Emergency lighting batteries must be evaluated on their ability to support the connected lamp load for the full rated duration, not just on a charge indicator. A steady charge LED only shows that the charger has power, not that the battery still has adequate capacity. Performing a controlled discharge test under the normal emergency load and recording voltage and elapsed time allows the electrician to see whether the battery maintains voltage and run time within its rating, which is the most reliable way to confirm battery condition in the field. Simply trusting the indicator ignores the reported performance issue, waiting for complete failure exposes occupants to unsafe egress conditions, and replacing parts without testing can waste time and cost while leaving other potential issues, such as loose or corroded connections, undetected.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3867,7 +3867,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply annual duration test knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "fbc63e90fb82c702cb85dfc212ee0916ee10acdc7df0f6dfe81aacb2f4b6118c"
+      "contentHash": "4946c0a613be9e00436d7e736374e3c25303627554c99c2e19a1ad168a75ac1b"
     },
     {
       "bankItemNumber": 333,
@@ -3903,15 +3903,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During the scheduled 30-minute discharge test, a maintenance electrician notes heads near the emergency panel stay at rated brightness while three heads added last year on the same circuit dim noticeably before the test is complete. Which action reflects a sound, evidence-based inspection decision?",
+      "question": "During a scheduled 30-minute emergency lighting discharge test, an electrician observes that the original remote heads closest to the battery unit maintain full brightness, while three remote heads added last year on the same circuit begin to dim partway through the test. What is the most appropriate inspection step to determine whether the circuit is properly loaded and the remote-head run is acceptable?",
       "options": [
-        "Check the downstream conductors only and postpone verifying total connected load and voltage drop until the dimming becomes constant.",
-        "Compare the unit's rated output, combined wattage of original and added lamps, circuit length, and discharge results against the approved design.",
-        "Conclude the dimming heads confirm a wiring fault and swap the nearest junction box connector.",
-        "Rely on the equipment nameplate rating alone and skip field verification of load, circuit length, and discharge duration."
+        "Inspect only the downstream conductors for damage and wait for the dimming to become frequent before checking connected load or voltage drop.",
+        "Compare the battery unit’s rated output with the total wattage of all original and added remote heads, along with the circuit length and test results, against the documented design for the installation.",
+        "Assume the dimming remote heads prove a loose splice on the added run and replace the connector in the nearest junction box without further verification.",
+        "Rely on the battery unit nameplate rating and treat the added heads as acceptable without measuring the actual load, circuit length, or discharge performance."
       ],
       "correctIndex": 1,
-      "explanation": "The dimming pattern—stable brightness near the source, fading at added remote heads late in the discharge cycle—points to either an overloaded battery unit or excessive voltage drop from added lamp load. Confirming this requires comparing the unit's rated output, total lamp wattage before and after the addition, circuit length, and the actual discharge-test result against the approved design, isolating the real cause before acting. Deferring measurement until the fault is permanent risks unsafe conditions persisting. Assuming a wiring fault and swapping the nearest connector wastes time on an unverified guess and may not address load or drop issues. Trusting the nameplate alone ignores that added heads change the circuit's real-world performance, which only field measurement can confirm. Only the comparison-based approach ties the observed symptom to verified data before any corrective work begins.",
+      "explanation": "The observation that heads closest to the battery unit remain bright while newly added remote heads on the same circuit dim during the 30‑minute test indicates that load and voltage drop need to be verified, not simply the wiring hardware. By comparing the battery unit’s rated output to the total lamp wattage for all remote heads, checking the length of the remote‑head run, and relating these values to the measured discharge performance, the electrician can confirm whether the remote-head loading and voltage drop match the intended design. Focusing only on downstream conductors delays addressing a possible overload or excessive voltage drop and does not explain why the added heads are the ones dimming. Replacing connectors based on assumption may overlook a correctly wired but over‑loaded or over‑length run. Relying solely on nameplate data ignores changes introduced when heads were added and provides no assurance that the actual installed load and run length still fall within the unit’s capabilities.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -3919,7 +3919,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply inspection log knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "3f2b6c89931498b8b3b44be8d7095d0a81d1ebe2b0eb4081c0e53e3500799d3f"
+      "contentHash": "b1fa3fda3447aa1905706315f2b8fcace9f467ece697847821fe7d3a076b71fc"
     },
     {
       "bankItemNumber": 335,
@@ -3929,15 +3929,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "An electrician is installing directional exit signs along the corridors of a newly built office floor that has two stair towers, one of which is designated for service access only and not part of the means of egress. Before energizing the signs and signing off the emergency lighting installation, what must the electrician verify?",
+      "question": "An electrician is installing directional exit signs in the corridors of a new office floor with two stair towers. One stair tower serves only equipment and service access and is not part of the required means of egress. Before energizing the signs and turning over the installation, what must the electrician verify?",
       "options": [
-        "That every sign's arrow direction matches the current stamped egress plan, with each route walked from all approaches to confirm it leads to a designated exit",
-        "That each arrow points toward the nearest exterior wall or stair door visible from that corridor, since the shortest travel distance is the preferred exit route",
-        "That the arrow orientation shipped from the sign manufacturer is left as supplied, because the fixtures were ordered and labelled by corridor and room number",
-        "That the illumination level and battery run time at each sign meet the specification, treating arrow direction as an architectural finishing detail"
+        "That each sign arrow matches the approved egress layout and points occupants toward a designated exit route from every approach",
+        "That each arrow points toward the nearest door visible from that corridor, because the shortest walking path is always the correct exit route",
+        "That the factory-installed arrow direction is left unchanged, because the sign was supplied for that corridor location",
+        "That the sign is mounted at the correct height and the lens is fully illuminated, because arrow direction is only a finishing detail"
       ],
       "correctIndex": 0,
-      "explanation": "A directional exit sign is a life-safety information device: its value depends entirely on pointing occupants toward a route the designer has designated as egress. The only reliable reference is the stamped egress plan, so the electrician compares each sign's arrows to that plan and physically walks the route from every direction of approach, which is how a service-only stair door gets excluded. Aiming arrows at the closest visible door or exterior wall is wrong because the shortest path may end at a service stair, mechanical space, or door that does not discharge to a safe area. Leaving factory arrow orientation as shipped is unreliable, since packaging and room-number labelling do not account for field conditions or the final approved layout. Checking illumination and battery duration confirms the sign will stay lit during a power loss, but a fully illuminated sign pointing the wrong way sends occupants away from the exit, so direction must be verified against the plan as well.",
+      "explanation": "Directional exit signs are part of the life-safety system, so their arrows must guide people along the approved exit route rather than toward any nearby door. The electrician should confirm the arrow direction against the approved egress layout and check the route from each approach so a service-only stair is not mistakenly identified as an exit. A nearby door is not automatically a valid egress route, and factory arrow orientation is not reliable if the final layout differs from the intended use. Mounting height and illumination matter, but a brightly lit sign that points the wrong way still misdirects occupants.",
       "steps": null,
       "tip": "Battery autonomy and power confirm the sign works; only the approved egress plan confirms it is telling the truth.",
       "isCalc": "no",
@@ -3945,7 +3945,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.01",
       "blueprintObjective": "Apply battery autonomy knowledge while the electrician installs exit and emergency lighting.",
-      "contentHash": "ea71bbd3f7478e09bb2baa45fb6d8154f00956e760885ebb4b5c544078ad1fc2"
+      "contentHash": "275556947181fefa75717b0fb367b2f3d53f0002547ed07d2a49999a6ac44cb2"
     },
     {
       "bankItemNumber": 336,
@@ -4007,15 +4007,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "A contractor is confirming battery acceptance after a scheduled duration test on a parking garage emergency lighting circuit that just had its battery bank replaced. Before allowing normal power to re-energize the circuit, which evidence set should determine whether the battery condition is acceptable?",
+      "question": "A contractor is verifying battery acceptance after a timed discharge test on a parking garage emergency lighting circuit that recently received a new battery bank. Before normal power is restored to the circuit, which evidence should be used to decide whether the battery condition is acceptable?",
       "options": [
-        "Compare initial condition, connected load, voltage under load, elapsed test time, and charger recovery against the approved design and required outcome.",
-        "Bypass the low-voltage protective input and accept normal output as confirmation the test passed.",
-        "Compare this battery bank's readings to a similar circuit in another building despite different load and settings.",
-        "Rely on a single unloaded voltage reading without checking connected load, elapsed time, or charger recovery."
+        "Check the battery’s starting condition, connected load, voltage while under load, elapsed test time, and charger recovery against the approved design and the required test result.",
+        "Bypass the low-voltage protective input and accept normal output as proof that the battery bank passed the test.",
+        "Compare this battery bank’s readings with a similar emergency circuit in another building, even though the load and settings are different.",
+        "Use only a single no-load voltage reading and ignore the connected load, elapsed time, and charger recovery."
       ],
       "correctIndex": 0,
-      "explanation": "Acceptance depends on comparing initial condition, connected load, loaded voltage, elapsed time, and charger recovery against the design and the outcome required for that duration test, since these together confirm the bank can sustain egress lighting for the rated period. A single unloaded reading is tempting because it is fast and the voltage may look normal, but it hides sag under actual connected load and ignores whether the charger properly recovers afterward. Bypassing the protective input only proves the output circuit is live, not that the battery can hold rated duration. Comparing to a dissimilar circuit ignores differing loads and settings, making the comparison meaningless. Without the full evidence set, a bank that passes a quick check could still fail during an actual outage, leaving occupants without adequate illumination before power is restored.",
+      "explanation": "Battery acceptance is based on the battery’s starting condition, the connected load, the voltage measured during the load period, the elapsed test time, and how the charger recovers after the test, because those details show whether the system can support the emergency lighting for the required duration. A no-load voltage reading can look normal even when the battery sags under actual load. Bypassing the protective input only confirms the circuit path, not the battery’s ability to sustain the load. Comparing to a different building is unreliable because load and control settings may not match.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -4023,7 +4023,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-20, Sub-task C-20.02",
       "blueprintObjective": "Apply transfer response knowledge while the electrician services and maintains exit and emergency lighting systems.",
-      "contentHash": "39f982565a725178981896282f5fc43c6f201f6eeb0a6aef1d73bb68b6451895"
+      "contentHash": "06a1263a8f91e36a411fc5423216f4a90a0c696fd060d0b264597a76b395db14"
     },
     {
       "bankItemNumber": 339,
@@ -4163,15 +4163,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "A new impressed-current cathodic protection rectifier is energized on a buried steel pipeline. Structure-to-electrolyte potential becomes less negative instead of more negative as expected. What should the electrician verify first to isolate the cause before increasing output?",
+      "question": "A new impressed-current cathodic protection rectifier has just been energized on a buried steel pipeline. The structure-to-electrolyte potential unexpectedly shifts in the positive direction, indicating reduced protection. Before making any changes to the rectifier output settings, what should the electrician do first to confirm whether the current is being applied in the correct direction?",
       "options": [
-        "Accept a single unloaded meter reading as proof of correct polarity without checking terminal markings, lead identity, or baseline data.",
-        "Bypass a protective interlock tied to rectifier polarity and treat the resulting output reading as an acceptable pass.",
-        "Compare this rectifier's polarity to a nearby unit with different load and settings, assuming similar readings confirm correctness.",
-        "At reduced output, verify rectifier and field-lead polarity against terminal identification and baseline readings, then correct only the confirmed fault."
+        "Rely on a single open-circuit meter reading at the rectifier without checking terminal markings, field conductor identification, or original potential survey data.",
+        "Override a rectifier safety interlock associated with output polarity and use the resulting higher output to judge if the system is operating correctly.",
+        "Match this rectifier’s meter readings to those on another rectifier feeding a different section of pipeline and assume similar values mean correct polarity on both.",
+        "At a reduced output setting, confirm rectifier and field-lead polarity against terminal identification and documented baseline structure-to-electrolyte readings, then correct only the verified polarity error."
       ],
       "correctIndex": 3,
-      "explanation": "A shift toward less negative potential after energization indicates protective current is flowing in the wrong direction, which accelerates corrosion instead of preventing it. The correct action confirms polarity at low output against rectifier terminal identification, conductor identity, and prior baseline data before raising current, ensuring the actual fault is located and corrected. A single unloaded reading cannot rule out reversed leads or mislabeled terminals, so it is insufficient evidence. Bypassing a protective interlock removes a safeguard meant to prevent exactly this failure mode and risks structure damage. Comparing against a different rectifier with unmatched load and settings gives no valid baseline, since normal readings there do not confirm correct polarity here. Only direct verification against known reference data isolates the true cause safely.",
+      "explanation": "When the pipeline potential becomes less negative after energizing an impressed-current rectifier, the protective current may be applied in the wrong direction, increasing corrosion risk. The electrician must first confirm that the positive and negative rectifier terminals are correctly connected to the anodes and pipeline at a low output level, using factory terminal markings, labelled field leads, and baseline potential measurements as references. This isolates a polarity problem without overdriving the system. Relying on a single open-circuit reading does not reveal reversed leads or mislabeled terminals, because it does not reflect the loaded pipeline condition. Defeating a safety interlock removes a critical safeguard and can expose the structure to excessive or misdirected current. Comparing readings to a nearby rectifier with different anode bed, cable runs, and load does not provide a valid polarity check, since similar voltage values do not confirm that current is entering the pipeline from the correct direction on this installation.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -4179,7 +4179,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA C, Task C-21, Sub-task C-21.01",
       "blueprintObjective": "Apply test-station identification knowledge while the electrician installs cathodic protection systems.",
-      "contentHash": "d4d43c75f388b275b04aa33e247136f2548e2aa3a8e54f7ce25b2157ad579ee9"
+      "contentHash": "fce6c901d9c310f2a6b79a72875fa861a27be135056487785a510c7760c1cb93"
     },
     {
       "bankItemNumber": 345,
