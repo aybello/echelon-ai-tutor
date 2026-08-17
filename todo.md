@@ -1597,6 +1597,11 @@
 - [x] Restore governed diagram metadata integrity after the interrupted external revision run and revalidate the full bank
 - [x] Pass TypeScript validation, the full Vitest suite, the production build, and governed-bank package checks for the PR #27 release candidate
 
+## 309A Flashcard Experience Repair
+- [x] Audit the live 309A flashcard page, navigation, answer/reveal flow, module filtering, progress tracking, and governed-bank concept mapping
+- [x] Implement the required 309A flashcard content and interaction improvements in the shared Echelon flashcard workflow
+- [x] Validate desktop and mobile flashcard behaviour, learner progression, and governed-bank coverage before deployment
+
 ## Latest Repository Update Review — August 17 (Follow-up)
 - [x] Fetch and identify the newly available updates
 - [x] Assess conflicts, regressions, compatibility, and validation evidence

@@ -3,6 +3,7 @@ import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { useElectrician309ABank } from "@/hooks/useElectrician309ABank";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { buildElectrician309AFlashcard } from "@/lib/electrician309aFlashcards";
 
 export default function Electrician309AFlashcards() {
   usePageMeta({
@@ -20,6 +21,7 @@ export default function Electrician309AFlashcards() {
       examType="electrician-309a"
       backPath="/electrician-309a"
       modules={bank.modules}
+      cardContent={buildElectrician309AFlashcard}
     />
   </FlashcardErrorBoundary>;
 }

@@ -93,7 +93,7 @@ export function useElectrician309ABank() {
     steps: question.steps,
     tip: question.tip ?? undefined,
     isCalc: question.isCalc,
-    topic: question.taskCode,
+    topic: question.topic ?? question.taskCode,
     diagramId: question.diagramId,
     diagramAlt: question.diagramAlt,
   })), [query.data]);
