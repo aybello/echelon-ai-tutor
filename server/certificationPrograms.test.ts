@@ -8,8 +8,10 @@ import {
   ELECTRICIAN_309A_PROGRAM_KEY,
   getCertificationProgram,
   isCertificationQuestionPubliclyDeliverable,
+  isCertificationQuestionPublicPreviewable,
   selectCertificationQuestionsForInternalReview,
   selectCertificationQuestionsForPublicDelivery,
+  selectCertificationQuestionsForPublicPreview,
   type CertificationProgram,
   type CertificationQuestionGovernance,
 } from "../shared/certificationPrograms";
@@ -48,9 +50,10 @@ describe("trade-agnostic certification program foundation", () => {
     );
   });
 
-  it("keeps 309A review-only and unavailable to commerce or Teams", () => {
-    expect(ELECTRICIAN_309A_PROGRAM.lifecycle).toBe("internal_review");
+  it("keeps 309A as a public draft preview but unavailable to commerce or Teams", () => {
+    expect(ELECTRICIAN_309A_PROGRAM.lifecycle).toBe("public_preview");
     expect(ELECTRICIAN_309A_PROGRAM.launch).toEqual({
+      publicPreviewApproved: true,
       publicDeliveryApproved: false,
       sellable: false,
       teamAssignable: false,
@@ -67,7 +70,13 @@ describe("trade-agnostic certification program foundation", () => {
     expect(codeSource?.approvedForQuestionAuthoring).toBe(false);
   });
 
-  it("serves the 25 draft questions only through internal review", () => {
+  it("serves the 25 draft questions only through the approved preview or internal review paths", () => {
+    expect(
+      selectCertificationQuestionsForPublicPreview(
+        electricianQuestions,
+        ELECTRICIAN_309A_PROGRAM_KEY,
+      ),
+    ).toHaveLength(25);
     expect(
       selectCertificationQuestionsForInternalReview(
         electricianQuestions,
@@ -88,6 +97,18 @@ describe("trade-agnostic certification program foundation", () => {
         "mock",
       ),
     ).toHaveLength(0);
+  });
+
+  it("keeps a public preview separate from commercial learner delivery", () => {
+    const question = electricianQuestions[0];
+    expect(isCertificationQuestionPublicPreviewable(ELECTRICIAN_309A_PROGRAM, question)).toBe(true);
+    expect(
+      isCertificationQuestionPubliclyDeliverable(
+        ELECTRICIAN_309A_PROGRAM,
+        question,
+        "practice",
+      ),
+    ).toBe(false);
   });
 
   it("requires every public-delivery gate to pass", () => {
@@ -178,10 +199,12 @@ describe("trade-agnostic certification program foundation", () => {
     const demoSource = readFileSync(resolve(process.cwd(), "client/src/pages/Electrician309ADemo.tsx"), "utf8");
     const reviewRouterSource = readFileSync(resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"), "utf8");
 
-    expect(appSource).toContain("Electrician309AReviewGate");
-    expect(demoSource).toContain("trpc.electricianReview.get309ADiagnostic.useQuery()");
+    expect(appSource).toContain("Electrician309ADemo");
+    expect(demoSource).toContain("trpc.electricianReview.get309APublicPreview.useQuery()");
     expect(demoSource).not.toContain("electrician309aDraftQuestions");
     expect(reviewRouterSource).toContain("adminProcedure.query");
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForInternalReview");
+    expect(reviewRouterSource).toContain("publicProcedure.query");
+    expect(reviewRouterSource).toContain("selectCertificationQuestionsForPublicPreview");
   });
 });

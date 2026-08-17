@@ -52,7 +52,7 @@ export default function Electrician309ADemo() {
     noindex: true,
   });
 
-  const reviewQuery = trpc.electricianReview.get309ADiagnostic.useQuery();
+  const reviewQuery = trpc.electricianReview.get309APublicPreview.useQuery();
   const diagnostic = useMemo(
     () => buildDiagnostic((reviewQuery.data ?? []) as ReviewQuestion[]),
     [reviewQuery.data],
@@ -113,14 +113,14 @@ export default function Electrician309ADemo() {
   };
 
   if (reviewQuery.isLoading) {
-    return <main className="min-h-screen bg-slate-950" aria-label="Loading approved review content" />;
+    return <main className="min-h-screen bg-slate-950" aria-label="Loading 309A draft preview" />;
   }
 
   if (reviewQuery.error || diagnostic.length === 0) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-slate-950 px-6 text-center text-white">
         <p className="max-w-md text-sm leading-6 text-slate-300">
-          The 309A draft diagnostic is unavailable until the internal review workspace authorizes it.
+          The 309A draft preview is temporarily unavailable. Please try again shortly.
         </p>
       </main>
     );
@@ -134,7 +134,7 @@ export default function Electrician309ADemo() {
             ECHELON <span className="text-teal-400">INSTITUTE</span>
           </Link>
           <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-bold text-amber-200">
-            SKILLED TRADES LAB · PRIVATE DEMO
+            SKILLED TRADES LAB · PUBLIC DRAFT PREVIEW
           </span>
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function Electrician309ADemo() {
                 </div>
 
                 <p className="mt-5 text-xs leading-5 text-slate-500">
-                  Demo questions are original Echelon draft items mapped to the official current-exam Red Seal blueprint. Technical SME review is required before public release.
+                  This public preview uses original Echelon Institute draft items mapped to the current Red Seal blueprint. It is not a full course, mock exam, or Canadian Electrical Code preparation product; technical SME review is ongoing.
                 </p>
               </section>
 

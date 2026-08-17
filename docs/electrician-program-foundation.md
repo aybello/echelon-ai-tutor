@@ -1,8 +1,9 @@
 # 309A Certification Program Foundation
 
 This checkpoint implements the safe boundary for Echelon Institute's first
-non-water certification program. It does not launch, sell or migrate 309A into
-the production question database.
+non-water certification program. The 309A diagnostic is available as a clearly
+labelled public draft preview; it does not sell or migrate 309A into the
+production question database.
 
 ## Implemented boundary
 
@@ -14,7 +15,8 @@ the production question database.
   source ledger with verification dates and usage controls.
 - Canadian Electrical Code rule-specific authoring remains blocked until
   legitimate licensed access and technical SME review are confirmed.
-- The program lifecycle is `internal_review`; public delivery, selling and
+- The program lifecycle is `public_preview`; the limited draft diagnostic is
+  approved for demonstration only. Commercial learner delivery, selling and
   Teams assignment are all disabled.
 
 ## Content delivery contract
@@ -30,16 +32,19 @@ Public practice or mock delivery fails closed unless all of these are true:
 7. The question is explicitly approved for the requested practice or mock
    surface.
 
-Internal review is a separate selector. It may show draft and in-review items,
-but never rejected, retired or stale-blueprint content. The existing direct
-`/electrician-309a-demo` route now uses this selector.
+Public preview is a separate selector. It may show current draft and in-review
+items for the limited diagnostic, but never rejected, retired or
+stale-blueprint content. It is not a learner-practice or mock-exam entitlement.
+Internal review remains separately available to administrators. The existing
+direct `/electrician-309a-demo` route uses the public-preview selector.
 
 ## Current question state
 
 All 25 prototype questions carry the program key, blueprint version, source
 verification date, review status, separate practice/mock approvals and
-retirement state. Every item remains draft and is blocked from public practice,
-mock exams, learner inventory, commerce and Teams.
+retirement state. Every item remains draft and is limited to the public
+diagnostic; it is blocked from public practice, mock exams, learner inventory,
+commerce and Teams.
 
 ## Deferred database work
 

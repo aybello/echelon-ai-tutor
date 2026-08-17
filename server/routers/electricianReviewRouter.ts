@@ -1,16 +1,23 @@
-import { router, adminProcedure } from "../_core/trpc";
+import { router, adminProcedure, publicProcedure } from "../_core/trpc";
 import electricianQuestions from "../private/electrician309aDraftQuestions";
 import {
   ELECTRICIAN_309A_PROGRAM_KEY,
   selectCertificationQuestionsForInternalReview,
+  selectCertificationQuestionsForPublicPreview,
 } from "../../shared/certificationPrograms";
 
 /**
- * Draft skilled-trades material is deliberately served only to authenticated
- * administrators. It must not be bundled into a public client route or treated
- * as learner-deliverable content before its technical review is complete.
+ * Full draft material stays on the server. The limited public preview is a
+ * policy-controlled demonstration, while commercial learner delivery remains
+ * blocked until technical review and product approval are complete.
  */
 export const electricianReviewRouter = router({
+  get309APublicPreview: publicProcedure.query(() =>
+    selectCertificationQuestionsForPublicPreview(
+      electricianQuestions,
+      ELECTRICIAN_309A_PROGRAM_KEY,
+    ),
+  ),
   get309ADiagnostic: adminProcedure.query(() =>
     selectCertificationQuestionsForInternalReview(
       electricianQuestions,

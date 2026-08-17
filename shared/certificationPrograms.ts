@@ -9,6 +9,7 @@
 
 export type CertificationProgramLifecycle =
   | "internal_review"
+  | "public_preview"
   | "closed_beta"
   | "commercial"
   | "retired";
@@ -61,6 +62,7 @@ export interface CertificationProgram {
   blueprints: readonly CertificationBlueprint[];
   sources: readonly CertificationProgramSource[];
   launch: {
+    publicPreviewApproved: boolean;
     publicDeliveryApproved: boolean;
     sellable: boolean;
     teamAssignable: boolean;
@@ -105,7 +107,7 @@ export const ELECTRICIAN_309A_PROGRAM: CertificationProgram = {
     credentialCode: "309A",
     redSeal: true,
   },
-  lifecycle: "internal_review",
+  lifecycle: "public_preview",
   currentBlueprintVersion: ELECTRICIAN_309A_BLUEPRINT_VERSION,
   blueprints: [
     {
@@ -177,6 +179,7 @@ export const ELECTRICIAN_309A_PROGRAM: CertificationProgram = {
     },
   ],
   launch: {
+    publicPreviewApproved: true,
     publicDeliveryApproved: false,
     sellable: false,
     teamAssignable: false,
@@ -213,6 +216,35 @@ export function isCertificationQuestionPubliclyDeliverable(
   return surface === "practice"
     ? question.approvedForPractice
     : question.approvedForMock;
+}
+
+/**
+ * A public preview is a limited, clearly labelled product demonstration. It is
+ * deliberately separate from learner practice and mock delivery: it cannot
+ * create an entitlement, become sellable, or be assigned to a Team.
+ */
+export function isCertificationQuestionPublicPreviewable(
+  program: CertificationProgram,
+  question: CertificationQuestionGovernance,
+): boolean {
+  if (program.lifecycle !== "public_preview") return false;
+  if (!program.launch.publicPreviewApproved) return false;
+  if (question.programKey !== program.programKey) return false;
+  if (question.blueprintVersion !== program.currentBlueprintVersion) return false;
+  if (!question.sourceVerifiedAt) return false;
+  if (question.reviewStatus === "rejected") return false;
+  return question.retiredAt === null;
+}
+
+export function selectCertificationQuestionsForPublicPreview<
+  T extends CertificationQuestionGovernance,
+>(questions: readonly T[], programKey: string): T[] {
+  const program = getCertificationProgram(programKey);
+  if (!program) return [];
+
+  return questions.filter((question) =>
+    isCertificationQuestionPublicPreviewable(program, question),
+  );
 }
 
 /**

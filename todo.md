@@ -1508,3 +1508,7 @@
 - [x] Publish the electrician-program foundation release
 ## Shared Preview Synchronization
 - [x] Synchronize local services and preview with the newest shared-project version
+## Public 309A Draft Preview
+- [x] Allow the clearly labelled 309A draft diagnostic to be viewed publicly
+- [x] Retain no-indexing, non-commercial, no-Teams, and no-full-course safeguards
+- [x] Validate and publish the public 309A draft preview route
