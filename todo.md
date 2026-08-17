@@ -1610,6 +1610,13 @@
 - [x] Validate and publish the close behaviour on the 309A course workspace
 - [x] Force-refresh the current production revision when the public client bundle remains stale after the initial checkpoint
 
+## Platform-wide AI Tutor Reliability Audit
+- [x] Map every course family’s AI Tutor entry route, access policy, and route-preserving dismissal handler
+- [x] Test a representative public or entitled learner tutor response and Escape dismissal for each course family
+- [x] Repair any shared or course-specific tutor access, response, close-control, or error-handling defects found
+- [ ] Publish and verify the completed platform-wide AI Tutor audit
+- [x] Replace mock-review tutor icon-only exits and generic connection messages with accessible dismissal and meaningful retry-safe errors
+
 ## Latest Repository Update Review — August 17 (Follow-up)
 - [x] Fetch and identify the newly available updates
 - [x] Assess conflicts, regressions, compatibility, and validation evidence

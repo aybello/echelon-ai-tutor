@@ -15,6 +15,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { shuffle } from "@/lib/utils";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
+import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -25,6 +26,17 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
   const [loading, setLoading] = useState(false);
   const chatMutation = trpc.tutor.chat.useMutation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const closeTutor = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (isTutorDismissKey(event.key)) closeTutor();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [closeTutor, open]);
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
@@ -48,8 +60,9 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
         })(),
       });
       setMessages(prev => [...prev, { role: "assistant" as const, content: String(result.reply) }]);
-    } catch {
-      setMessages(prev => [...prev, { role: "assistant" as const, content: "Connection issue — please try again." }]);
+    } catch (error) {
+      const message = getTutorFailureMessage(error);
+      setMessages(prev => [...prev, { role: "assistant" as const, content: `⚠️ ${message}` }]);
     } finally {
       setLoading(false);
     }
@@ -85,9 +98,12 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
             <button
-              onClick={() => setOpen(false)}
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#94A3B8", fontSize: 14, padding: 0 }}
-            >✕</button>
+              type="button"
+              aria-label="Close AI Tutor"
+              title="Close AI Tutor"
+              onClick={closeTutor}
+              style={{ background: "none", border: "1px solid #C7D2FE", cursor: "pointer", color: "#4338CA", fontSize: 11, fontWeight: 700, padding: "4px 8px", borderRadius: 6 }}
+            >Close ×</button>
           </div>
           <div style={{ maxHeight: 200, overflowY: "auto", marginBottom: 8 }}>
             {messages.map((m, i) => (

@@ -5,6 +5,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
+import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 
 interface Props {
   question: Question | null;
@@ -102,7 +103,7 @@ export default function AITutor({
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") handleClose();
+      if (isTutorDismissKey(event.key)) handleClose();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -179,9 +180,7 @@ export default function AITutor({
       const replyText = typeof result.reply === "string" ? result.reply : String(result.reply);
       setMessages((prev) => [...prev, { role: "assistant" as const, content: replyText }]);
     } catch (error) {
-      const message = error instanceof Error && error.message
-        ? error.message
-        : "Connection issue — please try again.";
+      const message = getTutorFailureMessage(error);
       setMessages((prev) => [
         ...prev,
         {
