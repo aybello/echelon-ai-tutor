@@ -67,8 +67,6 @@ jobs:
             | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
           sed '/^--> statement-breakpoint$/d' drizzle/0052_activation_outcomes.sql \
             | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
-          sed '/^--> statement-breakpoint$/d' drizzle/0053_question_governance.sql \
-            | mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci
 
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:adopt
