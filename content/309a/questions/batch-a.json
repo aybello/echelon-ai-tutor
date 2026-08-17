@@ -1,0 +1,1239 @@
+{
+  "batch": "A",
+  "title": "Performs common occupational skills",
+  "questionDefaults": {
+    "bankKey": "electrician-309a",
+    "bankVersionKey": "309a-current-rsos-v2",
+    "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
+    "module": "A",
+    "steps": null,
+    "tip": null,
+    "isCalc": "no",
+    "diagramId": null,
+    "diagramAlt": null,
+    "sourceId": "red-seal-previous-rsos-mwa-a",
+    "sourceTitle": "Construction Electrician previous RSOS — Major Work Activity A",
+    "sourceUrl": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-a.shtml",
+    "authorIdentity": "OpenAI Codex",
+    "origin": "ai_assisted",
+    "contentStatus": "draft",
+    "publicEligibility": false
+  },
+  "questions": [
+    {
+      "bankItemNumber": 1,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.01",
+      "topic": "Personal protective equipment selection",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "What is the main reason an electrician completes a task-specific hazard assessment before selecting personal protective equipment?",
+      "options": [
+        "To replace the need for equipment isolation",
+        "To make every worker wear the same equipment on every task",
+        "To match the protective equipment to the hazards that remain after controls are applied",
+        "To transfer responsibility for safety to the equipment manufacturer"
+      ],
+      "correctIndex": 2,
+      "explanation": "Personal protective equipment is the last layer of defence. It must be selected for the actual residual hazards after elimination, isolation, and other controls have been considered; it does not replace those controls.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Select personal protective equipment that is appropriate for identified workplace hazards.",
+      "contentHash": "c40475f51ebe22e5ed8c645357e0fd502e9c65a13b8871611d09f8f671035c92"
+    },
+    {
+      "bankItemNumber": 2,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.01",
+      "topic": "PPE inspection",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "During a pre-use inspection, an electrician finds a deep cut in the shell of a hard hat. What is the most appropriate action?",
+      "options": [
+        "Cover the cut with durable tape and continue",
+        "Turn the suspension around so the cut is at the rear",
+        "Wear the hard hat only for indoor work",
+        "Remove the hard hat from service and obtain an undamaged replacement"
+      ],
+      "correctIndex": 3,
+      "explanation": "Visible damage can reduce the shell's ability to distribute impact. The damaged hard hat should be removed from service according to workplace and manufacturer procedures rather than repaired or reassigned informally.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Inspect protective equipment and remove damaged equipment from service.",
+      "contentHash": "07f92d162ee7626a1ee9991ac1f057a11c83397d61a25bdbafd7be976d27efc4"
+    },
+    {
+      "bankItemNumber": 3,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.01",
+      "topic": "Damaged protective equipment",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "An electrician notices that a face shield is clear but its headgear no longer locks in the lowered position. What should the electrician do first?",
+      "options": [
+        "Hold the shield down by hand while working",
+        "Tighten the nearest accessible screw and use it without another inspection",
+        "Use safety glasses alone because the shield lens is not cracked",
+        "Remove the assembly from service and follow the approved replacement or repair process"
+      ],
+      "correctIndex": 3,
+      "explanation": "A shield that will not stay positioned cannot provide reliable protection. The whole assembly must be removed from service and handled through the approved inspection, repair, or replacement process before use.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Respond correctly when protective equipment fails a functional inspection.",
+      "contentHash": "2b3523450b1344215ae405fec0da0f6f5fc590ef1d49b20b397d417521f511a0"
+    },
+    {
+      "bankItemNumber": 4,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.01",
+      "topic": "Respiratory protection",
+      "difficulty": "medium",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "Why is a successful fit test important before a worker relies on a tight-fitting respirator?",
+      "options": [
+        "It confirms the filter will never require replacement",
+        "It allows facial hair inside the sealing surface",
+        "It proves the work area no longer needs ventilation",
+        "It verifies that the selected facepiece can form an effective seal on that worker"
+      ],
+      "correctIndex": 3,
+      "explanation": "A tight-fitting respirator depends on an effective face seal. Fit testing checks that the selected model and size fit the individual; it does not eliminate ventilation, cartridge-change, or inspection requirements.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Recognize the purpose of fit testing for respiratory protective equipment.",
+      "contentHash": "608ebb9319727ca222046855889c2302130439e17739e9867c019f206bb8db10"
+    },
+    {
+      "bankItemNumber": 5,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.02",
+      "topic": "Work-area control",
+      "difficulty": "easy",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "An open floor penetration is discovered beside the planned cable-pulling route. What should be done before the pull begins?",
+      "options": [
+        "Place a coil of cable beside the opening as a warning",
+        "Ask one worker to watch the opening during the pull",
+        "Install an approved cover or guard and control the area",
+        "Continue because the crew already knows the opening is there"
+      ],
+      "correctIndex": 2,
+      "explanation": "The fall hazard should be controlled before work starts by an approved cover, guard, or equivalent site control. Awareness alone or an improvised marker does not provide dependable protection during a busy cable pull.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Establish a safe work area before beginning electrical work.",
+      "contentHash": "64dda295fc0998a522b34eedec868fe3451315c043320202b3e99daea775c4b5"
+    },
+    {
+      "bankItemNumber": 6,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.02",
+      "topic": "Housekeeping and access",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "Scrap conductor and packaging are accumulating in front of a distribution panel during an installation. What is the best response?",
+      "options": [
+        "Leave the material until the end of the shift",
+        "Stack the material neatly against the panel enclosure",
+        "Remove the debris and keep the access route and working area clear",
+        "Move the material into the nearest exit corridor"
+      ],
+      "correctIndex": 2,
+      "explanation": "Good housekeeping keeps access and working space usable and reduces trip and emergency-response hazards. Material should be removed to a designated location, not stored against equipment or in an exit route.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Maintain orderly access and working areas around electrical equipment.",
+      "contentHash": "00dde80751de64a58f806e6dd755420919a5f6d9452f7a70f013c7dac84d177d"
+    },
+    {
+      "bankItemNumber": 7,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.02",
+      "topic": "Hazard hierarchy",
+      "difficulty": "medium",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "Which control is generally more effective than relying only on warning signs around a temporary overhead hazard?",
+      "options": [
+        "Sending a reminder email after the shift",
+        "Giving each worker an extra copy of the drawing",
+        "Changing the colour of the warning sign each day",
+        "Removing the hazard or installing a physical barrier that prevents exposure"
+      ],
+      "correctIndex": 3,
+      "explanation": "Elimination and engineered physical controls act on the hazard itself and do not depend solely on each person's attention. Signs can support a control plan, but they are weaker when used alone.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Apply the hierarchy of controls when preparing a work area.",
+      "contentHash": "603fe0a120beed08102f32d6e671aa38108209dae7be4c1a8cdf631623c381b4"
+    },
+    {
+      "bankItemNumber": 8,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.02",
+      "topic": "Changing site conditions",
+      "difficulty": "hard",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "critical_thinking",
+      "question": "A crew's hazard assessment was completed in the morning, but another trade begins spraying a coating nearby. What should the electrical crew do?",
+      "options": [
+        "Continue because the original assessment was signed",
+        "Wait until the end of the day to mention the change",
+        "Rely on the other trade to control every new hazard",
+        "Pause, reassess the changed conditions, and revise controls before continuing"
+      ],
+      "correctIndex": 3,
+      "explanation": "A hazard assessment is not a one-time formality. New work can introduce vapours, visibility issues, access restrictions, or ignition concerns, so the crew must pause and update its controls before resuming.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Reassess hazards when workplace conditions or concurrent activities change.",
+      "contentHash": "0c0ee74437ad8cae008be9486f11a033b70926ad96b42a7b960f1b845f8629e4"
+    },
+    {
+      "bankItemNumber": 9,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.03",
+      "topic": "Isolation verification",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "After the identified disconnect is opened and locked, an approved tester still indicates voltage at the work point. What is the correct next action?",
+      "options": [
+        "Stop work and investigate additional or incorrect energy sources while maintaining the isolation",
+        "Remove the lock so the disconnect can be cycled repeatedly",
+        "Begin work because the disconnect handle is visibly open",
+        "Ask a co-worker to touch the enclosure and confirm the reading"
+      ],
+      "correctIndex": 0,
+      "explanation": "A failed absence-of-voltage verification means the circuit is not proven safe. Work must stop while alternate feeds, stored energy, induced voltage, wrong identification, or test-method issues are investigated under the isolation procedure.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Respond safely when verification does not confirm the expected isolated state.",
+      "contentHash": "93644b649a4265d18e9d9fbe84a36fc408e1656fb8285356c28e3b098aad0ead"
+    },
+    {
+      "bankItemNumber": 10,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.03",
+      "topic": "Personal lock control",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A worker who installed a personal lock leaves the site unexpectedly before the job is complete. Who should remove that lock?",
+      "options": [
+        "Any worker who needs the equipment",
+        "Only the worker, unless the employer's documented exceptional-removal procedure is followed",
+        "The equipment operator without documenting the change",
+        "The next shift after a verbal agreement with a co-worker"
+      ],
+      "correctIndex": 1,
+      "explanation": "Personal locks remain under the worker's control. If the worker cannot return, removal requires the employer's formal exceptional procedure, including verification and notification; convenience alone is not sufficient.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Maintain individual control and accountability during lockout.",
+      "contentHash": "351695bfa145b5c3c9928545da160dbf35431137fc967cf6d2c73bb7397543f2"
+    },
+    {
+      "bankItemNumber": 11,
+      "taskCode": "A-1",
+      "subtaskCode": "A-1.03",
+      "topic": "Stored energy control",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "A machine has been electrically isolated, but its driven mechanism can coast and a spring remains compressed. What must occur before work starts?",
+      "options": [
+        "Only the electrical disconnect needs to be labelled",
+        "The crew should wait a fixed five minutes and then begin",
+        "All hazardous stored and mechanical energy must be released, blocked, or otherwise controlled and verified",
+        "A larger personal lock must be added to the electrical disconnect"
+      ],
+      "correctIndex": 2,
+      "explanation": "Electrical isolation does not control every energy source. Coasting motion and compressed springs can still cause injury, so stored and mechanical energy must be brought to a verified safe state before the work begins.",
+      "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
+      "blueprintObjective": "Identify and control stored and non-electrical energy during isolation.",
+      "contentHash": "b5fd26f47e115d37748802c8dbee058abb0adba04915183722daf2622a0d46d8"
+    },
+    {
+      "bankItemNumber": 12,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.01",
+      "topic": "Tool selection",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "Why should an electrician use the correct size and type of screwdriver for a terminal screw?",
+      "options": [
+        "It guarantees the terminal never needs inspection",
+        "It makes the conductor insulation harder",
+        "It removes the need to follow a torque specification",
+        "It improves control and reduces damage to the fastener and tool"
+      ],
+      "correctIndex": 3,
+      "explanation": "A correctly matched driver seats properly, improves control, and reduces cam-out and fastener damage. It does not replace the manufacturer's tightening method or later inspection requirements.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Choose hand tools that match the component and task.",
+      "contentHash": "cadee80848c7b3a826262fbf474f6f8af313e1544e14aa9fa5a118c13c4307ea"
+    },
+    {
+      "bankItemNumber": 13,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.01",
+      "topic": "Power-tool inspection",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A portable drill has an intermittent trigger and a damaged cord jacket near the strain relief. What should be done before use?",
+      "options": [
+        "Remove it from service, identify it as defective, and arrange approved repair or replacement",
+        "Wrap the cord with tape and use the drill at low speed",
+        "Use it only from a ground-level work area",
+        "Hold the cord away from the drill while operating it"
+      ],
+      "correctIndex": 0,
+      "explanation": "Both defects can affect control and electrical safety. The drill should be removed from service and routed through the approved repair or replacement process rather than receiving a temporary field repair.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Inspect portable tools and remove defective equipment from service.",
+      "contentHash": "67723a40ea7feabc6620d47fdeca29d7375c97f9cf49e3fb555cc0f0051a0296"
+    },
+    {
+      "bankItemNumber": 14,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.01",
+      "topic": "Torque tools",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A connection requires a specified tightening torque. Which practice gives the most reliable result?",
+      "options": [
+        "Estimate the torque using a longer handle",
+        "Use an appropriate calibrated torque tool and follow the component instructions",
+        "Tighten until the fastener can no longer move",
+        "Reuse the last setting without checking the tool"
+      ],
+      "correctIndex": 1,
+      "explanation": "A suitable calibrated torque tool provides a controlled, repeatable tightening value. Guessing by feel, overtightening, or trusting an unchecked previous setting can damage the connection or leave it loose.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Use measuring and torque tools according to their intended method.",
+      "contentHash": "d3a2f0aa8f2701bcc85c308791ef86d54ce8c6bbb6b1adb16348624f5d42bb2e"
+    },
+    {
+      "bankItemNumber": 15,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.01",
+      "topic": "Measuring-tool care",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "What is the main purpose of checking a measuring instrument against a known reference or calibration status?",
+      "options": [
+        "To make every measurement read exactly zero",
+        "To eliminate the need for a pre-use inspection",
+        "To provide confidence that the instrument's readings are within an acceptable accuracy",
+        "To allow the instrument to be used outside its rated conditions"
+      ],
+      "correctIndex": 2,
+      "explanation": "Calibration status or comparison with a suitable reference provides evidence that readings are acceptably accurate. It does not excuse inspection, correct range selection, or compliance with the instrument's ratings.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Recognize why measuring tools require accuracy and calibration controls.",
+      "contentHash": "a8b89be9d4fc3257772e14060ffa6621d6023af94b4667e6d989dd0db2051b41"
+    },
+    {
+      "bankItemNumber": 16,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.02",
+      "topic": "Ladder inspection",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "An extension ladder has a bent rung and one foot is worn smooth. The work is brief and only two metres above the floor. What is the correct decision?",
+      "options": [
+        "Use the ladder with a co-worker holding it",
+        "Place plywood under the worn foot",
+        "Use only the undamaged side of each rung",
+        "Remove the ladder from service and obtain suitable inspected access equipment"
+      ],
+      "correctIndex": 3,
+      "explanation": "The ladder has structural and stability defects, and the short duration or modest height does not make them acceptable. It must be removed from service and replaced with suitable inspected equipment.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Reject defective access equipment regardless of task duration.",
+      "contentHash": "97d906ed2f373bc3a4a8aaf68d6f8ed06a65f22e75209a9ca6dc15d7bba3ff9b"
+    },
+    {
+      "bankItemNumber": 17,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.02",
+      "topic": "Mobile platform setup",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "Before using a mobile elevating work platform, what should the operator confirm about the setup area?",
+      "options": [
+        "The ground and travel path can support the equipment and overhead hazards are controlled",
+        "The platform can be driven with the entry gate open",
+        "The work can be completed without a pre-use inspection",
+        "The platform is positioned as far as possible from the work"
+      ],
+      "correctIndex": 0,
+      "explanation": "Safe setup includes adequate ground support, a controlled travel path, and identification of overhead and surrounding hazards. These checks complement operator authorization and the equipment's pre-use inspection.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Assess site and overhead conditions before positioning access equipment.",
+      "contentHash": "e26fba6c181334527a794de1ec222472aee3b0349b875f759f4bd01484ebf3ae"
+    },
+    {
+      "bankItemNumber": 18,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.02",
+      "topic": "Three-point contact",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "What does maintaining three-point contact while climbing a ladder mean?",
+      "options": [
+        "Keeping three workers on the ladder",
+        "Keeping two hands and one foot, or two feet and one hand, in contact",
+        "Placing the ladder against three separate surfaces",
+        "Securing only the top three rungs"
+      ],
+      "correctIndex": 1,
+      "explanation": "Three-point contact means maintaining three limbs in contact with the ladder while climbing. It improves stability and is supported by carrying tools in a way that leaves the hands available.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Apply stable climbing technique when using ladders.",
+      "contentHash": "7951b8c91088302dd481d2da248215b91939ef83094b952c6cbecc04c03ee2c3"
+    },
+    {
+      "bankItemNumber": 19,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.03",
+      "topic": "Rigging inspection",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A synthetic lifting sling has a torn identification tag and its capacity cannot be confirmed. What should the crew do?",
+      "options": [
+        "Estimate capacity from the sling's colour",
+        "Use it only for a load that feels light",
+        "Remove it from service until it is properly identified and accepted under the inspection procedure",
+        "Double the sling so the missing information is less important"
+      ],
+      "correctIndex": 2,
+      "explanation": "The crew must be able to verify that rigging is suitable for the load and configuration. An unreadable or missing identification tag prevents that check, so the sling cannot be selected by guesswork.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Verify rigging identification and capacity before lifting.",
+      "contentHash": "a9f9f0b2120dfb88e20babc8cfc9f8368df2289fa10f128fb040b55c7d01d099"
+    },
+    {
+      "bankItemNumber": 20,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.03",
+      "topic": "Balanced lifting load",
+      "difficulty": "medium",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "procedural_application",
+      "question": "A 360 kg enclosure is lifted level by two vertical sling legs that share the load equally. Ignoring sling weight, what load does each leg carry?",
+      "options": [
+        "90 kg",
+        "120 kg",
+        "180 kg",
+        "360 kg"
+      ],
+      "correctIndex": 2,
+      "explanation": "With two vertical legs sharing a balanced load equally, each leg carries one-half of the total load. Actual rigging selection must also consider sling angles, configuration, hardware, and rated capacities.",
+      "steps": [
+        {
+          "label": "Identify",
+          "content": "Total balanced load = 360 kg and number of equal vertical legs = 2."
+        },
+        {
+          "label": "Calculate",
+          "content": "Load per leg = 360 kg ÷ 2 = 180 kg."
+        }
+      ],
+      "tip": "Equal sharing applies only to a level, balanced load with vertical legs; sling angle changes leg tension.",
+      "isCalc": "yes",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Calculate a simple equally shared vertical lifting load before selecting rigging.",
+      "contentHash": "1f7cc3edd289dbfe6031bd6bdda39e1764afc38c32770d1e36445a7135623ad6"
+    },
+    {
+      "bankItemNumber": 21,
+      "taskCode": "A-2",
+      "subtaskCode": "A-2.03",
+      "topic": "Lift communication",
+      "difficulty": "hard",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "critical_thinking",
+      "question": "During a lift, the operator receives conflicting hand signals from two workers. What should happen immediately?",
+      "options": [
+        "Stop the lift and resume only after one designated signaler and clear communication are established",
+        "Follow the signal from the worker closest to the load",
+        "Average the two signals and continue slowly",
+        "Continue if the load has already cleared the floor"
+      ],
+      "correctIndex": 0,
+      "explanation": "Conflicting signals create an uncontrolled lift. The operator should stop safely, and the crew must re-establish a single designated signaler and understood communication before movement resumes.",
+      "sourceReference": "MWA A, Task A-2 — Uses tools and equipment",
+      "blueprintObjective": "Maintain unambiguous communication and control during lifting operations.",
+      "contentHash": "14d85ed473aaea5d06ab182243a4d01133fad8904b6e5036fd95526348226df0"
+    },
+    {
+      "bankItemNumber": 22,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.01",
+      "topic": "Drawing revision control",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "Why should an electrician confirm the drawing revision before laying out an installation?",
+      "options": [
+        "Older revisions always contain more dimensions",
+        "Revision marks replace the need to read specifications",
+        "Every revision changes the project schedule",
+        "The current revision reflects the latest authorized design information"
+      ],
+      "correctIndex": 3,
+      "explanation": "Using the current authorized revision reduces rework and prevents installation from obsolete information. Revision control complements, rather than replaces, specifications, field verification, and approved change documents.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Use current drawings and specifications when planning electrical work.",
+      "contentHash": "a49f6d819b5d3354a36ad39521816f356c46b32084c332d9c838d22c8608c1f1"
+    },
+    {
+      "bankItemNumber": 23,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.01",
+      "topic": "Drawing discrepancy",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "A panel location on the electrical drawing conflicts with a structural wall shown on the latest architectural drawing. What is the best next step?",
+      "options": [
+        "Install the panel at the electrical drawing location without comment",
+        "Document the conflict and obtain an authorized clarification before proceeding",
+        "Move the panel to the nearest open space and update the drawing later",
+        "Follow whichever drawing was printed first"
+      ],
+      "correctIndex": 1,
+      "explanation": "A cross-discipline conflict should be documented and resolved through the project's authorized clarification process. An electrician should not conceal the conflict or make an unapproved field design change.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Recognize and escalate conflicting project information before installation.",
+      "contentHash": "031836c073692d0f33790b4bbee8326f1b572321902705fe80dc8ccef5c782b6"
+    },
+    {
+      "bankItemNumber": 24,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.01",
+      "topic": "Scale and dimensions",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A scaled drawing appears inconsistent with a written dimension at an equipment location. Which information should guide the layout?",
+      "options": [
+        "The visual scale alone, because it is faster",
+        "An estimate based on nearby equipment",
+        "The written dimension, followed by clarification if the conflict remains",
+        "The dimension from an older drawing revision"
+      ],
+      "correctIndex": 2,
+      "explanation": "Written dimensions generally take precedence over scaling a drawing, which may have been resized. Any remaining inconsistency should be clarified through the authorized project process before work continues.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Interpret drawing dimensions accurately and identify information requiring clarification.",
+      "contentHash": "199226b18b6b17e7a8d56e59ec239c345bb17b648c8d0bda6ccd6e28013a3b0f"
+    },
+    {
+      "bankItemNumber": 25,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.02",
+      "topic": "Material verification",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A shipment arrives with the correct quantity of enclosures, but their environmental rating differs from the approved submittal. What should be done?",
+      "options": [
+        "Segregate the material and resolve the mismatch before installation",
+        "Install the enclosures indoors regardless of the intended location",
+        "Change the labels to match the approved submittal",
+        "Accept the shipment because the quantity is correct"
+      ],
+      "correctIndex": 0,
+      "explanation": "Material must match the approved requirements, not just the quantity. Segregating nonconforming items prevents accidental installation while procurement and project authorities resolve the discrepancy.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Verify delivered materials against approved specifications and suitability requirements.",
+      "contentHash": "42fbf77ed90eb0cbd19d5160d2eed7f5468bf4b89ecb6dff9561d3b6e23a57a3"
+    },
+    {
+      "bankItemNumber": 26,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.02",
+      "topic": "Material storage",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "procedural_application",
+      "question": "What is a primary reason for storing electrical materials in a clean, dry, secure location?",
+      "options": [
+        "To make inventory records unnecessary",
+        "To protect them from damage, contamination, deterioration, and unauthorized use",
+        "To allow packaging to be discarded before inspection",
+        "To ensure every item can be stored outdoors"
+      ],
+      "correctIndex": 1,
+      "explanation": "Appropriate storage preserves material condition and traceability while reducing loss or unauthorized use. Different products may also require specific handling, orientation, temperature, or environmental controls.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Store electrical materials to maintain their condition and suitability.",
+      "contentHash": "1ae3eea742e5b1fb2c9f51971cf9e54a8c3fe97b46e30b926277ce1350d85c5c"
+    },
+    {
+      "bankItemNumber": 27,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.03",
+      "topic": "Work sequencing",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A cable tray route will be concealed by ceiling work scheduled for tomorrow. How should the electrician organize the work?",
+      "options": [
+        "Wait until the ceiling is complete and cut access holes",
+        "Install without coordinating because the electrical drawing is approved",
+        "Coordinate access, prerequisites, inspection points, and sequence with the affected trades",
+        "Ask the ceiling crew to redesign the route"
+      ],
+      "correctIndex": 2,
+      "explanation": "Effective sequencing considers access, dependencies, required inspections, and concurrent trades. Early coordination reduces rework and makes sure concealed work is complete and accepted before it becomes inaccessible.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Coordinate electrical tasks with project schedule, access, and other trades.",
+      "contentHash": "5e1937379e40c72a965eb9e98f10166ee6885c0345e97d036ddc67f21b3e42be"
+    },
+    {
+      "bankItemNumber": 28,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.03",
+      "topic": "Task planning",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "Before a planned shutdown, which preparation most directly reduces avoidable outage time?",
+      "options": [
+        "Beginning disassembly before permits are confirmed",
+        "Bringing only the tools used on the previous job",
+        "Leaving replacement material in the supplier's warehouse",
+        "Confirming scope, isolation points, permits, labour, tools, materials, and restoration steps in advance"
+      ],
+      "correctIndex": 3,
+      "explanation": "A coordinated pre-shutdown plan puts required people, controls, information, tools, and materials in place before the outage begins. It also defines how the system will be tested and returned to service.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Plan resources, controls, and restoration activities for scheduled work.",
+      "contentHash": "5ac5e1890a02e8ac822e06d8611eadd1d2bf186e42ac71317291a562d8eee746"
+    },
+    {
+      "bankItemNumber": 29,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.04",
+      "topic": "Material takeoff",
+      "difficulty": "medium",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "procedural_application",
+      "question": "A planned raceway route has straight segments of 8.5 m, 12.0 m, and 6.5 m. If 10% extra is allowed for routing adjustments, how much raceway should be planned?",
+      "options": [
+        "27.0 m",
+        "29.7 m",
+        "30.0 m",
+        "32.4 m"
+      ],
+      "correctIndex": 1,
+      "explanation": "The measured route totals 27.0 m. Adding ten percent gives 29.7 m. Procurement and field planning must also consider standard stock lengths, fittings, approved routing, and project-specific waste allowances.",
+      "steps": [
+        {
+          "label": "Total route",
+          "content": "8.5 m + 12.0 m + 6.5 m = 27.0 m."
+        },
+        {
+          "label": "Add allowance",
+          "content": "27.0 m × 1.10 = 29.7 m."
+        }
+      ],
+      "tip": "Add the route segments first, then multiply by one plus the allowance expressed as a decimal.",
+      "isCalc": "yes",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Prepare a simple material takeoff from verified route measurements.",
+      "contentHash": "61c873c93a93c7ef93a560c206b6373110eccd241d7c3ce49338be9557d07450"
+    },
+    {
+      "bankItemNumber": 30,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.05",
+      "topic": "As-built records",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "An approved field change moves a junction box from the location shown on the construction drawing. What documentation action is most appropriate?",
+      "options": [
+        "Record the actual location accurately for the project as-built documentation",
+        "Erase the original drawing without identifying the change",
+        "Rely on the installer's memory for the final handover",
+        "Wait until the building is occupied before mentioning the change"
+      ],
+      "correctIndex": 0,
+      "explanation": "Accurate as-built records preserve the approved installed condition for commissioning, maintenance, and future work. The change should be recorded using the project's controlled documentation process.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Maintain accurate controlled records of approved field changes.",
+      "contentHash": "e9e1a5b6c3df3b10cf764ac98a9b297eb760571eb4a5f7d2b916e6aec43b4c7c"
+    },
+    {
+      "bankItemNumber": 31,
+      "taskCode": "A-3",
+      "subtaskCode": "A-3.05",
+      "topic": "Daily work records",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "recall",
+      "question": "Which entry is most useful in a daily work record for later project verification?",
+      "options": [
+        "A general statement that work went well",
+        "A list of personal opinions about other trades",
+        "Specific work completed, locations, labour, delays, tests, and referenced changes",
+        "Only the time the crew arrived"
+      ],
+      "correctIndex": 2,
+      "explanation": "A useful daily record is factual, specific, and traceable. Work locations, progress, resources, constraints, testing, and change references help support coordination and later verification.",
+      "sourceReference": "MWA A, Task A-3 — Organizes work",
+      "blueprintObjective": "Create clear and traceable documentation of completed electrical work.",
+      "contentHash": "0bd8ce1a191b45d67c7bbb0436193fd6649c9896cdbb0431649e3059d54046fe"
+    },
+    {
+      "bankItemNumber": 32,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.01",
+      "topic": "Support fabrication planning",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "Before cutting metal channel for a custom equipment support, what should be verified first?",
+      "options": [
+        "Only the colour of the finished support",
+        "Approved dimensions, load, material, clearances, and attachment method",
+        "The location of the nearest scrap bin",
+        "Whether the channel can be cut without measuring"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fabrication should begin from verified design and field information. Dimensions, load, material, clearances, and attachments determine whether the finished support will fit and perform as intended.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Verify requirements before fabricating an electrical support component.",
+      "contentHash": "4bbc81bc5e98768304df866e5ff62fa11737cf98ab9195dd99b32ce3f1c20cc2"
+    },
+    {
+      "bankItemNumber": 33,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.01",
+      "topic": "Fabricated support fit",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "A fabricated support fits the equipment but interferes with an access panel needed for maintenance. What is the best corrective action?",
+      "options": [
+        "Install it because the equipment is supported",
+        "Remove the access-panel fasteners permanently",
+        "Modify the equipment access panel to clear the support",
+        "Stop and revise the support through the approved process so required access is maintained"
+      ],
+      "correctIndex": 3,
+      "explanation": "A support must meet more than load and fit requirements; it cannot defeat required operation or maintenance access. The conflict should be resolved through an approved support revision, not an unauthorized equipment change.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Evaluate fabricated supports for fit, function, and maintainable access.",
+      "contentHash": "229c23b9808f56ed7ec99c2a128ddc527fa1edfb311ad0f920321b44d17999e1"
+    },
+    {
+      "bankItemNumber": 34,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.01",
+      "topic": "Cut-edge protection",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "After drilling a metal support near a future cable route, what finishing step is important before installation?",
+      "options": [
+        "Remove burrs and sharp edges and restore any required protective finish",
+        "Leave burrs because the cable is not installed yet",
+        "Enlarge every hole to hide the rough edge",
+        "Cover the entire support with cardboard"
+      ],
+      "correctIndex": 0,
+      "explanation": "Burrs and sharp edges can injure workers or damage wiring, and drilling may expose metal to corrosion. Deburring and restoring the specified finish prepares the support for safe service.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Finish fabricated supports to remove hazards and preserve material protection.",
+      "contentHash": "4dc9f57d2514c6a2ab1a44c5eebc8dc8ddeaabc4cac8ffa641b008c415ceb4ee"
+    },
+    {
+      "bankItemNumber": 35,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.01",
+      "topic": "Fabrication quality",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "recall",
+      "question": "Why should a fabricated support be checked for square, level, and alignment before equipment is mounted?",
+      "options": [
+        "To make fastener ratings irrelevant",
+        "To eliminate the need for field measurements",
+        "To confirm fit and load transfer without forcing equipment into position",
+        "To ensure the support can be used for any future load"
+      ],
+      "correctIndex": 2,
+      "explanation": "Checking geometry helps confirm that equipment will fit and that the support will not impose unintended stress through forced alignment. It does not change the approved load or attachment requirements.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Verify dimensional quality of fabricated support components.",
+      "contentHash": "c1634ed463a4652c2a82c7222893a0c75ee1c18fb2260d618f9c093ad9b0b889"
+    },
+    {
+      "bankItemNumber": 36,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.02",
+      "topic": "Anchor selection",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "What information is most important when selecting an anchor for electrical equipment mounted to concrete?",
+      "options": [
+        "The colour of the anchor package",
+        "Substrate condition, design load, edge distance, environment, and approved installation data",
+        "The length of the electrician's drill bit alone",
+        "Whether a similar anchor was available on a previous project"
+      ],
+      "correctIndex": 1,
+      "explanation": "Anchor capacity depends on the substrate, load direction and magnitude, geometry, environment, and correct installation. Selection should use approved design and manufacturer information, not appearance or habit.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Select fasteners and anchors for the actual substrate, load, and environment.",
+      "contentHash": "04ed59003bbf9016dcb00426900db3fc9f86cb7380440837f0392691d8fc33c8"
+    },
+    {
+      "bankItemNumber": 37,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.02",
+      "topic": "Support quantity planning",
+      "difficulty": "medium",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "procedural_application",
+      "question": "A straight 18 m run requires a support at each end and the spacing between supports must not exceed 3 m. What is the minimum number of supports?",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctIndex": 1,
+      "explanation": "An 18 m run divided into maximum 3 m spaces needs six spaces. A line of six spaces has seven support points because both ends must be supported.",
+      "steps": [
+        {
+          "label": "Find spaces",
+          "content": "18 m ÷ 3 m per space = 6 spaces."
+        },
+        {
+          "label": "Find supports",
+          "content": "6 spaces require 7 support points, including both ends."
+        }
+      ],
+      "tip": "For a straight run supported at both ends, the number of supports is one more than the number of spaces.",
+      "isCalc": "yes",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Calculate the minimum number of evenly spaced supports for a simple run.",
+      "contentHash": "2f7c199ebc05625a37ebe10fb41192168bb4fd4d19ccc6836b49aa7dac708a04"
+    },
+    {
+      "bankItemNumber": 38,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.02",
+      "topic": "Fastener installation",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "An anchor installation requires a specific hole diameter and cleaning method. Why should those instructions be followed?",
+      "options": [
+        "They make substrate inspection unnecessary",
+        "They guarantee unlimited load capacity",
+        "They reduce the number of anchors shown on the design",
+        "Anchor performance depends on correct hole preparation and installation"
+      ],
+      "correctIndex": 3,
+      "explanation": "Hole size, depth, cleaning, embedment, and installation method can materially affect anchor performance. Deviating from the approved method can produce an attachment that looks secure but lacks its intended capacity.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Install anchors and fasteners according to approved product requirements.",
+      "contentHash": "0b8f1a163dee4da92f2931a03694cd0a32b85ba24603b2c64dc580794ac47ec0"
+    },
+    {
+      "bankItemNumber": 39,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.02",
+      "topic": "Support loading",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "recall",
+      "question": "Why should an electrician avoid adding unplanned equipment to an existing support system?",
+      "options": [
+        "The added load and its distribution may exceed the approved support capacity",
+        "Existing supports can never be modified",
+        "New equipment always weighs less than old equipment",
+        "Support capacity depends only on the paint finish"
+      ],
+      "correctIndex": 0,
+      "explanation": "Existing supports were selected for known loads, locations, and attachments. Added equipment can change total load, eccentricity, vibration, and anchor demand, so suitability must be verified before modification.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Recognize how unplanned loads can affect a support system.",
+      "contentHash": "77efb55ef8a7b8311c84a765594064b3af5169dda91eb9dee2e81cdbd908f207"
+    },
+    {
+      "bankItemNumber": 40,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.02",
+      "topic": "Corrosion compatibility",
+      "difficulty": "hard",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "critical_thinking",
+      "question": "A support assembly will be installed in a damp, corrosive area using dissimilar metals. What should be considered before installation?",
+      "options": [
+        "Only whether the metals have the same colour",
+        "Whether the assembly can be hidden above a ceiling",
+        "Material compatibility, protective finish, environmental rating, and approved isolation method",
+        "Using the smallest available fastener to reduce metal contact"
+      ],
+      "correctIndex": 2,
+      "explanation": "Moisture and incompatible metals can accelerate corrosion and weaken the support or connection. Material selection, coatings, environmental suitability, and approved separation methods must be coordinated.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Account for environmental exposure and material compatibility in support installations.",
+      "contentHash": "5b58e5e474910fa34365073735a4b82474df9d1481a644a58866ee73e62472b0"
+    },
+    {
+      "bankItemNumber": 41,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.03",
+      "topic": "Seismic restraint coordination",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A seismic brace shown for a cable tray conflicts with a mechanical duct. What should the electrician do?",
+      "options": [
+        "Omit the brace because the tray has vertical supports",
+        "Move or redesign the brace only through the authorized coordination and approval process",
+        "Attach the brace to the mechanical duct",
+        "Cut the brace shorter without documenting the change"
+      ],
+      "correctIndex": 1,
+      "explanation": "Seismic restraint geometry and attachment are part of an engineered system. A field conflict must be coordinated and resolved through authorized design information rather than by omitting or improvising the brace.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Resolve seismic-restraint conflicts without making unauthorized field changes.",
+      "contentHash": "c072eaf6c1f9a25d3cb6b9babff62c6ee2c58e03cf2053af76653ce700c35665"
+    },
+    {
+      "bankItemNumber": 42,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.03",
+      "topic": "Seismic brace layout",
+      "difficulty": "medium",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "procedural_application",
+      "question": "An approved layout requires four identical brace assemblies for each of six equipment rows. How many brace assemblies are required in total?",
+      "options": [
+        "10",
+        "18",
+        "24",
+        "30"
+      ],
+      "correctIndex": 2,
+      "explanation": "Each of the six rows requires four brace assemblies, so the total is twenty-four. The calculation establishes quantity only; installation must still follow the approved layout and attachment details.",
+      "steps": [
+        {
+          "label": "Identify",
+          "content": "There are 6 rows and 4 brace assemblies per row."
+        },
+        {
+          "label": "Calculate",
+          "content": "6 × 4 = 24 brace assemblies."
+        }
+      ],
+      "tip": "For a repeated identical layout, multiply the number per unit by the number of units.",
+      "isCalc": "yes",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Calculate material quantity from an approved repeated restraint layout.",
+      "contentHash": "3681b6f2b50ff26575c7c2fb9877e3bd2f4fd14b453281b2f32f4327b3cdc816"
+    },
+    {
+      "bankItemNumber": 43,
+      "taskCode": "A-4",
+      "subtaskCode": "A-4.03",
+      "topic": "Seismic restraint inspection",
+      "difficulty": "hard",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "critical_thinking",
+      "question": "During inspection, a brace is tight but its anchor is installed in a different substrate than the approved detail. What is the proper response?",
+      "options": [
+        "Accept it because the brace feels rigid",
+        "Paint the anchor so the substrate is not visible",
+        "Add an unapproved second anchor beside it",
+        "Treat it as a nonconformance and obtain an approved resolution before acceptance"
+      ],
+      "correctIndex": 3,
+      "explanation": "A rigid feel does not demonstrate the required capacity. Anchor performance depends on the substrate and approved detail, so the deviation must be documented and resolved by an authorized party.",
+      "sourceReference": "MWA A, Task A-4 — Fabricates and installs support components",
+      "blueprintObjective": "Identify seismic restraint installations that do not match approved details.",
+      "contentHash": "41577a316916c11fa8a09297a596fb019def12244805a8b00daf81c63878e18c"
+    },
+    {
+      "bankItemNumber": 44,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.01",
+      "topic": "Startup prerequisites",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "recall",
+      "question": "What is the purpose of a pre-startup checklist for a newly installed electrical system?",
+      "options": [
+        "To confirm prerequisites, inspections, settings, guards, documentation, and affected-party readiness",
+        "To transfer all responsibility to the equipment operator",
+        "To avoid recording test results",
+        "To energize each component as soon as it is physically mounted"
+      ],
+      "correctIndex": 0,
+      "explanation": "A pre-startup checklist verifies that installation, protection, documentation, controls, and coordination are ready for a controlled energization. It reduces the chance of overlooking a critical prerequisite.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Verify system and stakeholder readiness before startup.",
+      "contentHash": "2110d0da50ec29364a16f8364ee90da09e7713b8f824220c26350f0c0867c1de"
+    },
+    {
+      "bankItemNumber": 45,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.01",
+      "topic": "Controlled energization",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A system is ready for first startup, but a required guard has not been installed on driven equipment. What should the electrician do?",
+      "options": [
+        "Start the system briefly while everyone stands back",
+        "Delay startup until the guard and other prerequisites are complete and verified",
+        "Ask the operator to hold a temporary warning sign",
+        "Bypass the start circuit and test the motor directly"
+      ],
+      "correctIndex": 1,
+      "explanation": "Startup should not proceed with a missing safety prerequisite. The guard must be installed and the readiness checks completed before a controlled startup is authorized.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Stop startup when a required safety or operational prerequisite is incomplete.",
+      "contentHash": "0bb69924f83b2cdcca2c0238d328d914d9831bdac9ca2a1535c1ac4457811eed"
+    },
+    {
+      "bankItemNumber": 46,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.01",
+      "topic": "Unexpected startup result",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "During a controlled first startup, a motor-driven load rotates opposite to the verified process direction. What is the safest next step?",
+      "options": [
+        "Allow it to run until the process stabilizes",
+        "Reverse a connection while the equipment is running",
+        "Stop the system using the approved procedure, isolate it, and investigate before correcting and retesting",
+        "Increase the protective-device setting so the motor can accelerate"
+      ],
+      "correctIndex": 2,
+      "explanation": "Unexpected rotation can damage the driven process or create a hazard. The system should be stopped and isolated under the approved procedure before the cause is investigated, corrected, documented, and retested.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Respond safely to an unexpected condition during startup.",
+      "contentHash": "bc564674b7d856f8b7c041bf50ac90401e3e5a94265b4489fb7f110b8300b322"
+    },
+    {
+      "bankItemNumber": 47,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.01",
+      "topic": "Shutdown coordination",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "Before shutting down a system that serves an occupied area, what coordination is most important?",
+      "options": [
+        "Confirm the authorized shutdown plan, notify affected parties, and verify operational consequences",
+        "Turn off the first disconnect found and wait for complaints",
+        "Assume backup systems will start automatically",
+        "Complete the shutdown without recording its scope"
+      ],
+      "correctIndex": 0,
+      "explanation": "A planned shutdown should identify the correct system, affected users, dependencies, backup arrangements, and restoration steps. Clear authorization and communication reduce operational and safety surprises.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Coordinate planned shutdowns with authorized stakeholders and system dependencies.",
+      "contentHash": "e1074f4d5614c696822cccb58e35c0319c4a0c5990ff0a09ac3a3e2f3bcde98a"
+    },
+    {
+      "bankItemNumber": 48,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.02",
+      "topic": "Commissioning records",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "recall",
+      "question": "Why should commissioning test results be recorded with the equipment identifier and test conditions?",
+      "options": [
+        "To avoid using acceptance criteria",
+        "To create traceable evidence of what was tested, under what conditions, and with what result",
+        "To make future maintenance unnecessary",
+        "To permit failed results to be removed from the record"
+      ],
+      "correctIndex": 1,
+      "explanation": "Traceable records connect each result to the correct equipment, method, conditions, acceptance criteria, and date. They support deficiency correction, handover, maintenance, and later comparison.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Document commissioning tests so results are complete and traceable.",
+      "contentHash": "b47aebec0f21c8a49d4e9f8dd11ddc730b7988bcbac7bab2bc1d4eec4a832610"
+    },
+    {
+      "bankItemNumber": 49,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.02",
+      "topic": "Commissioning deficiency",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "A functional test passes locally but fails from the remote control station. What should be recorded before troubleshooting continues?",
+      "options": [
+        "Record only that the equipment is defective, without capturing the test state or conditions",
+        "Record a pass because local control worked, without distinguishing the remote-command failure",
+        "The exact mode, command point, indication, expected response, actual response, and test conditions",
+        "Wait for the repair and record only the final passing state, omitting the original failure"
+      ],
+      "correctIndex": 2,
+      "explanation": "A precise deficiency record preserves the conditions that produced the failure and helps separate local equipment operation from remote command, communication, interlock, or indication issues.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Record commissioning deficiencies with enough detail to support diagnosis and retest.",
+      "contentHash": "943b42c375704309d0677ca823bdc641c0db779201130cf2bf6d3d8d97e531fe"
+    },
+    {
+      "bankItemNumber": 50,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.02",
+      "topic": "Commissioning measurement comparison",
+      "difficulty": "medium",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "procedural_application",
+      "question": "Three measured phase-to-phase values are 598 V, 602 V, and 600 V. What is their arithmetic average?",
+      "options": [
+        "598 V",
+        "599 V",
+        "600 V",
+        "602 V"
+      ],
+      "correctIndex": 2,
+      "explanation": "The three readings total 1800 V, and dividing by three gives an average of 600 V. Acceptance still depends on the commissioning plan, instrument suitability, and the permitted tolerance for the equipment.",
+      "steps": [
+        {
+          "label": "Add readings",
+          "content": "598 V + 602 V + 600 V = 1800 V."
+        },
+        {
+          "label": "Average",
+          "content": "1800 V ÷ 3 readings = 600 V."
+        }
+      ],
+      "tip": "An average summarizes the readings but does not replace checking the spread and the applicable acceptance criteria.",
+      "isCalc": "yes",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Calculate and interpret a simple average from commissioning measurements.",
+      "contentHash": "e99bf5f074a770bd556a2ca25ae544c5bb974b6a0224b79a98b38071f09b1eb1"
+    },
+    {
+      "bankItemNumber": 51,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.02",
+      "topic": "Decommissioning identification",
+      "difficulty": "hard",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "critical_thinking",
+      "question": "Before removing an abandoned control cable from a crowded tray, how should its status be established?",
+      "options": [
+        "Pull it until the connected device becomes obvious",
+        "Identify both ends, trace and verify its function, obtain authorization, and isolate it under the approved plan",
+        "Cut it at the midpoint and test the remaining ends",
+        "Assume it is abandoned because its label is faded"
+      ],
+      "correctIndex": 1,
+      "explanation": "A faded label or apparent disuse is not proof that a cable is abandoned. Positive identification, functional verification, authorization, and isolation prevent removal of an active or safety-related circuit.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Verify identity, authorization, and safe state before decommissioning wiring.",
+      "contentHash": "de60d9c2d59c8239abc63175640b474449e3e974f142204e1c448e6009dfed7d"
+    },
+    {
+      "bankItemNumber": 52,
+      "taskCode": "A-5",
+      "subtaskCode": "A-5.02",
+      "topic": "Failed commissioning test",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "A protective interlock fails one step of the commissioning sequence but all other functions pass. How should the result be handled?",
+      "options": [
+        "Accept the system because most steps passed and list the interlock as a minor outstanding item",
+        "Repeat only the passing steps and treat the successful repetition as system acceptance",
+        "Temporarily bypass the interlock for handover and leave correction to the equipment operator",
+        "Record the failure, keep the affected function out of service, correct it, and repeat the required tests"
+      ],
+      "correctIndex": 3,
+      "explanation": "A failed protective function is a commissioning deficiency, not a partial pass. It must be controlled, documented, corrected, and retested through the approved process before the affected system is accepted.",
+      "sourceReference": "MWA A, Task A-5 — Commissions and decommissions electrical systems",
+      "blueprintObjective": "Manage a failed commissioning result without bypassing acceptance requirements.",
+      "contentHash": "42f39f0d7bd06a21caaa10a70eb92c95291d1de24166afc98ca687a3026ca92b"
+    },
+    {
+      "bankItemNumber": 53,
+      "taskCode": "A-6",
+      "subtaskCode": "A-6.01",
+      "topic": "Closed-loop communication",
+      "difficulty": "easy",
+      "questionType": "foundation",
+      "cognitiveLevel": "recall",
+      "question": "What is the key benefit of closed-loop communication during a switching or lifting activity?",
+      "options": [
+        "The receiver repeats or confirms the instruction so misunderstandings can be corrected before action",
+        "It allows several people to issue commands simultaneously",
+        "It removes the need for a designated procedure",
+        "It keeps instructions informal and undocumented"
+      ],
+      "correctIndex": 0,
+      "explanation": "Closed-loop communication confirms that the message was received and understood as intended. This gives the sender an opportunity to correct an error before the receiver acts on the instruction.",
+      "sourceReference": "MWA A, Task A-6 — Uses communication and mentoring techniques",
+      "blueprintObjective": "Use clear confirmed communication during coordinated electrical work.",
+      "contentHash": "109cad5d2771812143025f977895f94f0d5cce31c009e4324134f1f24e14075f"
+    },
+    {
+      "bankItemNumber": 54,
+      "taskCode": "A-6",
+      "subtaskCode": "A-6.01",
+      "topic": "Shift handover",
+      "difficulty": "medium",
+      "questionType": "applied_scenario",
+      "cognitiveLevel": "procedural_application",
+      "question": "Which information is most important during handover of an incomplete electrical task to the next shift?",
+      "options": [
+        "Only the percentage of the shift already worked",
+        "A complete status of work, isolations, hazards, deficiencies, changes, tests, and next authorized steps",
+        "The names of workers who are already off site",
+        "A verbal statement that the next shift can figure it out"
+      ],
+      "correctIndex": 1,
+      "explanation": "A safe handover makes the current system and work state explicit. Isolations, hazards, incomplete items, changes, test results, documentation, and authorized next steps all need clear transfer.",
+      "sourceReference": "MWA A, Task A-6 — Uses communication and mentoring techniques",
+      "blueprintObjective": "Transfer complete and accurate task status between workers or shifts.",
+      "contentHash": "58f8d05e117dfa417fe47072e74c9961c42e2bc7edee563c115419d9032fd11c"
+    },
+    {
+      "bankItemNumber": 55,
+      "taskCode": "A-6",
+      "subtaskCode": "A-6.02",
+      "topic": "Mentoring verification",
+      "difficulty": "hard",
+      "questionType": "troubleshooting_or_calculation",
+      "cognitiveLevel": "critical_thinking",
+      "question": "After demonstrating a new termination procedure to an apprentice, what is the best way for the journeyperson to verify understanding?",
+      "options": [
+        "Ask only whether the apprentice understands",
+        "Have the apprentice watch the same demonstration again without discussion",
+        "Have the apprentice explain the hazards and steps, perform the task under appropriate supervision, and receive feedback",
+        "Leave the apprentice alone immediately so the result is independent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Teach-back and supervised performance reveal whether the apprentice understands both the reasoning and the method. Specific feedback can then correct gaps before independent work is considered.",
+      "sourceReference": "MWA A, Task A-6 — Uses communication and mentoring techniques",
+      "blueprintObjective": "Verify learning through explanation, supervised practice, and feedback.",
+      "contentHash": "e989479f4f325c597d1d8767cf6551c961da698b7d421580a89fdb4a8e3d5b21"
+    }
+  ]
+}

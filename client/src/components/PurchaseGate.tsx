@@ -24,6 +24,8 @@ interface PurchaseGateProps {
   features?: string[];
   /** Path to navigate to when the user dismisses the paywall (defaults to "/") */
   backPath?: string;
+  /** Deliberately free course surface; bypasses purchase access checks. */
+  freeAccess?: boolean;
 }
 
 /** Read email from localStorage (set during QuizGate or PurchaseSuccess) */
@@ -129,6 +131,7 @@ export default function PurchaseGate({
   children,
   features,
   backPath,
+  freeAccess = false,
 }: PurchaseGateProps) {
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
@@ -172,6 +175,10 @@ export default function PurchaseGate({
 
   // Owner preview mode — bypass all paywalls instantly
   if (isPreviewModeActive()) {
+    return <>{children}</>;
+  }
+
+  if (freeAccess) {
     return <>{children}</>;
   }
 

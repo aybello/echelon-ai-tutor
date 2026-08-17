@@ -42,4 +42,20 @@ describe("AI Tutor server-owned policy", () => {
     expect(prompt).toContain("No single question is currently selected.");
     expect(prompt).toContain("Diagnose the learner's recurring misconception");
   });
+
+  it("uses construction-electrician grounding for the shared 309A course", () => {
+    const prompt = buildTutorSystemPrompt({
+      courseName: "Ontario 309A Construction Electrician",
+      examFamily: "ontario",
+      subject: "construction_electrician",
+      question: null,
+      selectedIndex: null,
+      patternMode: false,
+      recentPerformance: [],
+    });
+
+    expect(prompt).toContain("Ontario Construction Electrician (309A)");
+    expect(prompt).toContain("Do not invent Canadian Electrical Code rule or table references");
+    expect(prompt).not.toContain("Teach only water, wastewater");
+  });
 });

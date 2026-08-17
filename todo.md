@@ -1529,3 +1529,74 @@
 - [x] Push the corrected quality-reviewed 309A course branch and confirm its Quality Gate
 - [x] Merge the corrected 309A course update into `main` and validate the integrated release
 - [ ] Publish the repaired 309A study materials and verify the live course
+
+## Ontario 309A Full Course and Question Bank
+- [x] Audit the current course registry, products, entitlements, study tools, question schema, and 309A source readiness
+- [ ] Define and implement the 309A full-course product, catalogue, access, and workspace integration
+- [ ] Establish a source-backed 309A question-authoring and SME-review workflow by official blueprint category
+- [ ] Build and review the initial blueprint-weighted 309A question-bank release with original explanations and governance metadata
+- [ ] Connect approved 309A content to practice, mock exams, flashcards, study notes, progress, and purchase journeys
+- [ ] Run full release validation and publish the staged live 309A course launch
+## Ontario 309A Free 500-Question Build
+- [ ] Keep 309A publicly free while converting it into the shared Echelon Institute course workspace
+- [x] Create the 500-question allocation by official current-exam Major Work Activity and task
+- [ ] Research and author original, source-traceable 309A question batches without Canadian Electrical Code rule-number content
+- [ ] Import reviewed 309A questions, metadata, study notes, flashcards, practice, and mock-exam support in staged releases
+- [ ] Track live 309A bank coverage against the 500-question target and publish progress transparently
+## Codex-Ready Ontario 309A Production Package
+- [x] Collect and archive authoritative current-exam, Ontario curriculum, and official sample-format sources
+- [x] Produce the exact 500-question blueprint allocation, authoring rules, governance fields, and import-validation contract
+- [x] Prepare original Echelon Institute diagram briefs and implementation specifications for 309A learning content
+- [x] Write a self-contained Codex handoff with source links, target files, acceptance tests, and staged delivery instructions
+## Welcome Email Reliability Repair
+- [x] Inspect welcome-email eligibility, scheduled-job execution, delivery configuration, and database audit state
+- [x] Repair the specific welcome-email failure without risking duplicate customer messages
+- [x] Add regression coverage and validate the corrected welcome-email flow before publication
+- [x] Bind the created platform schedule identity to the welcome-email callback and verify its configuration
+## Ontario 309A Visual Learning Diagrams
+- [x] Map safe, high-value 309A blueprint concepts to original visual learning aids
+- [x] Create the first editable Echelon Institute electrical diagram pack with accessibility metadata
+- [x] Integrate and validate the diagrams in the 309A course production package
+## Latest Codex Update Review — August 17
+- [x] Fetch and identify the newly available Codex updates
+- [x] Assess conflicts, regressions, compatibility, and validation evidence
+- [x] Provide a merge recommendation before changing production
+## PR #26 Migration-Path Repair
+- [x] Repair the clean-schema Quality Gate so certification governance migration 0056 is applied exactly once
+- [x] Run migration, governed-bank, question-content, test, type, and build validation without production writes
+- [x] Push the repaired PR #26 branch and confirm the refreshed Quality Gate
+## PR #26 Governed 309A Bank Merge and Deployment
+- [x] Merge the validated 309A governed 500-question-bank pull request into `main`
+- [x] Validate the integrated migration, governed-bank, and release path on `main`
+- [x] Publish the staged free 309A governed-bank foundation and verify the live release
+- [x] Restore the welcome-email job regression expectation while preserving its privacy-safe error output
+## Live 309A Learner Quiz Activation
+- [x] Inspect the live learner route, certification-governance migration state, imported-bank state, and quiz delivery wiring
+- [x] Activate the public 309A learner quiz and connect it to approved governed content
+- [x] Validate and publish the live 309A quiz route with the expected free-course access
+- [x] Fix the live 309A learner-route 404 and re-verify the deployed public quiz
+## 309A Standard Course Architecture Correction
+- [x] Compare the existing course registry, workspace, and tool conventions with the separate 309A implementation
+- [x] Register 309A as a free standard Echelon Institute course with canonical course navigation and access policy
+- [x] Replace the custom 309A practice flow with shared course-workspace patterns for practice, mock, flashcards, notes, and progress
+- [x] Validate and publish the unified 309A course experience without a separate prototype path
+- [x] Fix the stale welcome-email scheduler import error before releasing the unified course update
+- [x] Remove the CA$0 purchase gate from the free 309A standard mock-exam flow
+- [x] Repair the 309A free-access resolver and update stale source-contract tests for the shared governed-bank adapter
+## Latest Repository Update Review — August 17 (309A Course)
+- [x] Fetch and identify the newly available updates
+- [x] Assess conflicts, regressions, compatibility, and validation evidence
+- [x] Provide a merge recommendation before changing production
+## PR #27 309A Content-Quality Release
+- [x] Repair the rewrite pipeline so an invalid single-item response is retried before batch validation and all completed content remains protected
+- [x] Refresh governed content hashes after the approved B–E rewrites and re-run package validation
+- [x] Correct diagram-use prompts and answer-choice length cues identified by deterministic validation
+- [x] Rebalance correct-answer positions across the complete 500-question bank without changing question accuracy
+- [x] Complete an independent external-model quality review of every rewritten B–E question and resolve substantive findings
+- [x] Restore governed diagram metadata integrity after the interrupted external revision run and revalidate the full bank
+- [x] Pass TypeScript validation, the full Vitest suite, the production build, and governed-bank package checks for the PR #27 release candidate
+
+## Latest Repository Update Review — August 17 (Follow-up)
+- [x] Fetch and identify the newly available updates
+- [x] Assess conflicts, regressions, compatibility, and validation evidence
+- [x] Provide a merge recommendation before changing production

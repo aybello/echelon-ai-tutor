@@ -17,13 +17,15 @@
 // ---------------------------------------------------------------------------
 
 export type ExamFamily = "ontario" | "western";
+export type ProvinceOrRegion = "ontario" | "western";
 export type TrackType =
   | "water-treatment"
   | "wastewater-treatment"
   | "water-distribution"
   | "wastewater-collection"
   | "water-quality"
-  | "oit";
+  | "oit"
+  | "construction-electrician";
 
 export interface CourseEntry {
   /** Canonical course key — used in DB, URLs, and product keys */
@@ -33,7 +35,7 @@ export interface CourseEntry {
   /** Short display name for compact UIs */
   shortName: string;
   /** Province / regulatory family */
-  provinceOrRegion: ExamFamily;
+  provinceOrRegion: ProvinceOrRegion;
   /** Regulatory exam family */
   examFamily: ExamFamily;
   /** Track within the exam family */
@@ -70,6 +72,26 @@ export interface CourseEntry {
 // ---------------------------------------------------------------------------
 
 const REGISTRY: CourseEntry[] = [
+  // ── Ontario Skilled Trades ────────────────────────────────────────────────
+  {
+    courseKey: "electrician-309a",
+    displayName: "Ontario 309A Construction Electrician",
+    shortName: "Ontario 309A Electrician",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "construction-electrician",
+    classLevel: 0,
+    quizPath: "/electrician-309a",
+    mockExamPath: "/electrician-309a-mock",
+    flashcardPath: "/electrician-309a-flashcards",
+    formulaPath: null,
+    productKey: "electrician-309a",
+    subscriptionTier: "all-access",
+    questionBankKey: "electrician-309a",
+    teamAssignable: false,
+    aliases: ["electrician-309a-demo"],
+    isActive: true,
+  },
   // ── Ontario OIT ──────────────────────────────────────────────────────────
   {
     courseKey: "oit",

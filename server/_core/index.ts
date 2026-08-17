@@ -6,6 +6,7 @@ import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
+import { sdk, type AuthenticatedUser } from "./sdk";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { createViteRenderer, registerViteFallback, serveStatic } from "./vite";
@@ -16,7 +17,11 @@ import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
-import { startWelcomeEmailJob } from "../jobs/welcomeEmail";
+import {
+  isWelcomeEmailHeartbeatTask,
+  runWelcomeEmailJob,
+  toWelcomeEmailScheduledResponse,
+} from "../jobs/welcomeEmail";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 
@@ -177,11 +182,47 @@ async function startServer() {
   // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
   // Ticket 10: In production, require x-cron-secret header to match ENV.cronSecret.
   // If ENV.cronSecret is empty (local dev), the check is skipped.
-  app.use("/api/scheduled", (req, res, next) => {
+  app.use("/api/scheduled", async (req, res, next) => {
     if (ENV.cronSecret && req.headers["x-cron-secret"] !== ENV.cronSecret) {
-      return res.status(401).json({ error: "Unauthorized: missing or invalid x-cron-secret" });
+      try {
+        const cronUser = await sdk.authenticateRequest(req);
+        if (!cronUser.isCron || !cronUser.taskUid) {
+          return res.status(401).json({ error: "Unauthorized scheduled request" });
+        }
+        res.locals.cronUser = cronUser;
+        return next();
+      } catch {
+        return res.status(401).json({ error: "Unauthorized scheduled request" });
+      }
     }
     return next();
+  });
+
+  // ── Welcome-email delivery (platform-managed Heartbeat) ────────────────────
+  // The callback intentionally returns 5xx when any delivery fails so Heartbeat
+  // retries. Successful purchases are persisted immediately and are skipped on
+  // the retry; failed purchases remain eligible with the same Message-ID.
+  app.post("/api/scheduled/welcome-email", async (_req, res) => {
+    const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
+    if (!cronUser?.isCron || !isWelcomeEmailHeartbeatTask(cronUser.taskUid)) {
+      return res.status(403).json({ error: "cron-only" });
+    }
+    try {
+      const result = await runWelcomeEmailJob();
+      const response = toWelcomeEmailScheduledResponse(result);
+      return res.status(response.status).json({
+        ...response.body,
+        taskUid: cronUser.taskUid,
+        ts: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error("[welcome-email] scheduled job failed:", err);
+      return res.status(500).json({
+        error: String(err),
+        taskUid: cronUser.taskUid,
+        ts: new Date().toISOString(),
+      });
+    }
   });
 
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
@@ -273,7 +314,6 @@ async function startServer() {
     startReconciliationJob();
     startExamReminderJob();
     startTriggerEngineJob();
-    startWelcomeEmailJob();
   });
 }
 

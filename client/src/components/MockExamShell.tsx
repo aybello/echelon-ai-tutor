@@ -2,7 +2,7 @@
 // Full feature parity: ScoreHistory, usePageMeta, stats grid, weakest-first module sort,
 // timer colour changes, province selector, report modal, flag/review system.
 
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo, type ReactNode } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
@@ -152,6 +152,8 @@ export interface ExamQuestion {
   /** 0-based index of the correct option */
   correct: number;
   explanation?: string;
+  diagramId?: string | null;
+  diagramAlt?: string | null;
 }
 
 export interface ModuleColorConfig {
@@ -198,7 +200,7 @@ export interface StreamOption {
 }
 
 export type ExamProductKey =
-  | "class1" | "wqa" | "oit" | "oit-ww"
+  | "class1" | "wqa" | "oit" | "oit-ww" | "electrician-309a"
   | "class1-water" | "class1-ww" | "class2-water" | "class2-ww"
   | "class3-water" | "class3-ww" | "class4-water" | "class4-ww"
   | "wpi-class1-water" | "wpi-class2-water" | "wpi-class3-water" | "wpi-class4-water"
@@ -229,6 +231,8 @@ export interface MockExamConfig {
   moduleColors: Record<string, ModuleColorConfig>;
   /** Full question pool (all questions in the bank) */
   questionPool: ExamQuestion[];
+  /** Optional course-specific visual rendered before the question stem. */
+  renderQuestionSupplement?: (question: ExamQuestion) => ReactNode;
   /** Stripe / PurchaseGate product key */
   productKey: ExamProductKey;
   /** Human-readable product name for paywall */
@@ -237,6 +241,8 @@ export interface MockExamConfig {
   price: number;
   /** Optional feature bullets for paywall */
   features?: string[];
+  /** Deliberately free course mock; bypasses the standard purchase gate. */
+  freeAccess?: boolean;
   /**
    * @deprecated Mock-exam paywalls always return to practicePath so the close,
    * back, intro, active-exam exit, and results actions share one destination.
@@ -355,6 +361,7 @@ export default function MockExamShell({
   productName: productNameProp,
   price: priceProp,
   features,
+  freeAccess = false,
   practicePath,
   practiceLabel,
   formulaPath,
@@ -369,6 +376,7 @@ export default function MockExamShell({
   stream: streamProp,
   scoreExamType: scoreExamTypeProp,
   streamOptions,
+  renderQuestionSupplement,
 }: MockExamConfig) {
   const { user } = useAuth();
 
@@ -535,6 +543,7 @@ export default function MockExamShell({
         productName={productNameProp}
         price={priceProp}
         features={features}
+        freeAccess={freeAccess}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -643,6 +652,7 @@ export default function MockExamShell({
         productName={productName}
         price={price}
         features={features}
+        freeAccess={freeAccess}
         backPath={practicePath}
       >
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -964,6 +974,7 @@ export default function MockExamShell({
             {currentQ.module}
           </div>
           {/* Question text */}
+          {renderQuestionSupplement?.(currentQ)}
           <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 24 }}>
             {currentQ.question}
           </div>

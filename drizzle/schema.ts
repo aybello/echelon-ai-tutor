@@ -378,6 +378,265 @@ export const questions = mysqlTable("questions", {
 export type QuestionRow = typeof questions.$inferSelect;
 export type InsertQuestion = typeof questions.$inferInsert;
 
+/**
+ * Versioned certification banks for regulated trades such as Ontario 309A.
+ *
+ * These tables deliberately sit beside the legacy water/wastewater question
+ * tables. A bank version is the publication boundary: content may exist in a
+ * draft bank without becoming visible to learners, commerce, or Teams.
+ */
+export const certificationBankVersions = mysqlTable("certification_bank_versions", {
+  id: int("id").autoincrement().primaryKey(),
+  programKey: varchar("programKey", { length: 128 }).notNull(),
+  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+  versionKey: varchar("versionKey", { length: 128 }).notNull(),
+  blueprintVersion: varchar("blueprintVersion", { length: 255 }).notNull(),
+  releaseChannel: mysqlEnum("releaseChannel", ["internal", "beta", "public", "retired"])
+    .default("internal")
+    .notNull(),
+  itemTarget: int("itemTarget").notNull(),
+  active: boolean("active").default(false).notNull(),
+  allocationChecksum: varchar("allocationChecksum", { length: 64 }).notNull(),
+  sourceManifestChecksum: varchar("sourceManifestChecksum", { length: 64 }).notNull(),
+  commercialEligibility: boolean("commercialEligibility").default(false).notNull(),
+  teamEligibility: boolean("teamEligibility").default(false).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  publishedAt: timestamp("publishedAt"),
+  retiredAt: timestamp("retiredAt"),
+}, (table) => [
+  uniqueIndex("cert_bank_version_unique_idx").on(table.bankKey, table.versionKey),
+  index("cert_bank_blueprint_idx").on(table.bankKey, table.blueprintVersion),
+  index("cert_bank_program_active_idx").on(table.programKey, table.active, table.releaseChannel),
+]);
+
+export type CertificationBankVersionRow = typeof certificationBankVersions.$inferSelect;
+export type InsertCertificationBankVersion = typeof certificationBankVersions.$inferInsert;
+
+/** Rights and provenance records shared by governed certification content. */
+export const certificationSources = mysqlTable("certification_sources", {
+  id: int("id").autoincrement().primaryKey(),
+  sourceKey: varchar("sourceKey", { length: 128 }).notNull(),
+  publisher: varchar("publisher", { length: 255 }).notNull(),
+  title: varchar("title", { length: 512 }).notNull(),
+  stableUrl: varchar("stableUrl", { length: 1024 }).notNull(),
+  editionVersion: varchar("editionVersion", { length: 255 }),
+  retrievedAt: timestamp("retrievedAt").notNull(),
+  sha256: varchar("sha256", { length: 64 }).notNull(),
+  rightsBasis: mysqlEnum("rightsBasis", [
+    "public_official_reference",
+    "permission_granted",
+    "licensed_access_required",
+  ]).notNull(),
+  permittedUsage: text("permittedUsage").notNull(),
+  verifiedAt: timestamp("verifiedAt").notNull(),
+}, (table) => [
+  uniqueIndex("cert_source_version_unique_idx").on(table.sourceKey, table.sha256),
+  index("cert_source_key_idx").on(table.sourceKey),
+  index("cert_source_rights_idx").on(table.rightsBasis),
+]);
+
+export type CertificationSourceRow = typeof certificationSources.$inferSelect;
+export type InsertCertificationSource = typeof certificationSources.$inferInsert;
+
+/** Exact task allocation for each immutable bank version. */
+export const certificationBlueprintTasks = mysqlTable("certification_blueprint_tasks", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  mwaCode: varchar("mwaCode", { length: 4 }).notNull(),
+  taskCode: varchar("taskCode", { length: 16 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  officialTarget: decimal("officialTarget", { precision: 5, scale: 2 }).notNull(),
+  bankTarget: int("bankTarget").notNull(),
+  sourceId: int("sourceId").notNull(),
+  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+}, (table) => [
+  uniqueIndex("cert_blueprint_task_unique_idx").on(table.bankVersionId, table.taskCode),
+  index("cert_blueprint_mwa_idx").on(table.bankVersionId, table.mwaCode),
+]);
+
+export type CertificationBlueprintTaskRow = typeof certificationBlueprintTasks.$inferSelect;
+export type InsertCertificationBlueprintTask = typeof certificationBlueprintTasks.$inferInsert;
+
+/** Original, versioned certification questions. */
+export const certificationQuestions = mysqlTable("certification_questions", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  bankItemNumber: int("bankItemNumber").notNull(),
+  taskId: int("taskId").notNull(),
+  module: varchar("module", { length: 4 }).notNull(),
+  taskCode: varchar("taskCode", { length: 16 }).notNull(),
+  subtaskCode: varchar("subtaskCode", { length: 16 }).notNull(),
+  topic: varchar("topic", { length: 128 }).notNull(),
+  difficulty: mysqlEnum("difficulty", ["easy", "medium", "hard"]).notNull(),
+  questionType: mysqlEnum("questionType", [
+    "foundation",
+    "applied_scenario",
+    "troubleshooting_or_calculation",
+  ]).notNull(),
+  cognitiveLevel: mysqlEnum("cognitiveLevel", [
+    "recall",
+    "procedural_application",
+    "critical_thinking",
+  ]).notNull(),
+  question: text("question").notNull(),
+  options: text("options").notNull(),
+  correctIndex: int("correctIndex").notNull(),
+  explanation: text("explanation").notNull(),
+  steps: text("steps"),
+  tip: text("tip"),
+  isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
+  diagramId: varchar("diagramId", { length: 64 }),
+  diagramAlt: text("diagramAlt"),
+  sourceId: int("sourceId").notNull(),
+  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+  blueprintObjective: varchar("blueprintObjective", { length: 512 }).notNull(),
+  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+  origin: mysqlEnum("origin", ["human", "ai_assisted", "imported"]).notNull(),
+  contentHash: varchar("contentHash", { length: 64 }).notNull(),
+  contentStatus: mysqlEnum("contentStatus", [
+    "draft",
+    "editorial_approved",
+    "technical_approved",
+    "beta_approved",
+    "rejected",
+    "retired",
+  ]).default("draft").notNull(),
+  publicEligibility: boolean("publicEligibility").default(false).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  retiredAt: timestamp("retiredAt"),
+}, (table) => [
+  uniqueIndex("cert_question_bank_item_unique_idx").on(table.bankVersionId, table.bankItemNumber),
+  uniqueIndex("cert_question_content_hash_unique_idx").on(table.bankVersionId, table.contentHash),
+  index("cert_question_delivery_idx").on(table.bankVersionId, table.contentStatus, table.publicEligibility),
+  index("cert_question_task_idx").on(table.bankVersionId, table.taskCode),
+]);
+
+export type CertificationQuestionRow = typeof certificationQuestions.$inferSelect;
+export type InsertCertificationQuestion = typeof certificationQuestions.$inferInsert;
+
+/** Immutable review decisions; authors cannot technically approve their own content. */
+export const certificationContentReviews = mysqlTable("certification_content_reviews", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  contentKind: mysqlEnum("contentKind", ["question", "diagram", "flashcard", "module_note"]).notNull(),
+  contentId: int("contentId").notNull(),
+  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+  reviewerIdentity: varchar("reviewerIdentity", { length: 320 }).notNull(),
+  reviewType: mysqlEnum("reviewType", ["editorial", "technical", "beta_release"]).notNull(),
+  decision: mysqlEnum("decision", ["approved", "changes_requested", "rejected"]).notNull(),
+  notes: text("notes"),
+  reviewedAt: timestamp("reviewedAt").defaultNow().notNull(),
+}, (table) => [
+  index("cert_review_content_idx").on(table.contentKind, table.contentId, table.reviewType),
+  index("cert_review_bank_idx").on(table.bankVersionId, table.reviewedAt),
+]);
+
+export type CertificationContentReviewRow = typeof certificationContentReviews.$inferSelect;
+export type InsertCertificationContentReview = typeof certificationContentReviews.$inferInsert;
+
+/** Auditable, atomic content-import runs. */
+export const certificationImportRuns = mysqlTable("certification_import_runs", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  manifestChecksum: varchar("manifestChecksum", { length: 64 }).notNull(),
+  dryRun: boolean("dryRun").default(true).notNull(),
+  importerIdentity: varchar("importerIdentity", { length: 320 }).notNull(),
+  status: mysqlEnum("status", ["planned", "validated", "completed", "failed"]).default("planned").notNull(),
+  insertedCount: int("insertedCount").default(0).notNull(),
+  updatedCount: int("updatedCount").default(0).notNull(),
+  rejectedCount: int("rejectedCount").default(0).notNull(),
+  errorMessage: text("errorMessage"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  completedAt: timestamp("completedAt"),
+}, (table) => [
+  uniqueIndex("cert_import_manifest_unique_idx").on(table.bankVersionId, table.manifestChecksum),
+  index("cert_import_status_idx").on(table.status, table.createdAt),
+]);
+
+export type CertificationImportRunRow = typeof certificationImportRuns.$inferSelect;
+export type InsertCertificationImportRun = typeof certificationImportRuns.$inferInsert;
+
+export const certificationDiagrams = mysqlTable("certification_diagrams", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  diagramId: varchar("diagramId", { length: 64 }).notNull(),
+  version: int("version").default(1).notNull(),
+  componentKey: varchar("componentKey", { length: 255 }).notNull(),
+  altText: text("altText").notNull(),
+  sourceId: int("sourceId").notNull(),
+  rightsMetadata: text("rightsMetadata").notNull(),
+  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+  contentStatus: mysqlEnum("contentStatus", [
+    "draft",
+    "editorial_approved",
+    "technical_approved",
+    "beta_approved",
+    "rejected",
+    "retired",
+  ]).default("draft").notNull(),
+  retiredAt: timestamp("retiredAt"),
+}, (table) => [
+  uniqueIndex("cert_diagram_version_unique_idx").on(table.bankVersionId, table.diagramId, table.version),
+  index("cert_diagram_delivery_idx").on(table.bankVersionId, table.contentStatus),
+]);
+
+export type CertificationDiagramRow = typeof certificationDiagrams.$inferSelect;
+export type InsertCertificationDiagram = typeof certificationDiagrams.$inferInsert;
+
+export const certificationFlashcards = mysqlTable("certification_flashcards", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  taskId: int("taskId").notNull(),
+  cardNumber: int("cardNumber").notNull(),
+  front: text("front").notNull(),
+  back: text("back").notNull(),
+  sourceId: int("sourceId").notNull(),
+  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+  contentStatus: mysqlEnum("contentStatus", [
+    "draft",
+    "editorial_approved",
+    "technical_approved",
+    "beta_approved",
+    "rejected",
+    "retired",
+  ]).default("draft").notNull(),
+  retiredAt: timestamp("retiredAt"),
+}, (table) => [
+  uniqueIndex("cert_flashcard_number_unique_idx").on(table.bankVersionId, table.cardNumber),
+  index("cert_flashcard_delivery_idx").on(table.bankVersionId, table.contentStatus),
+]);
+
+export type CertificationFlashcardRow = typeof certificationFlashcards.$inferSelect;
+export type InsertCertificationFlashcard = typeof certificationFlashcards.$inferInsert;
+
+export const certificationModuleNotes = mysqlTable("certification_module_notes", {
+  id: int("id").autoincrement().primaryKey(),
+  bankVersionId: int("bankVersionId").notNull(),
+  moduleCode: varchar("moduleCode", { length: 4 }).notNull(),
+  taskCode: varchar("taskCode", { length: 16 }),
+  sectionsJson: text("sectionsJson").notNull(),
+  sourceId: int("sourceId").notNull(),
+  sourceReference: varchar("sourceReference", { length: 512 }).notNull(),
+  authorIdentity: varchar("authorIdentity", { length: 320 }).notNull(),
+  contentStatus: mysqlEnum("contentStatus", [
+    "draft",
+    "editorial_approved",
+    "technical_approved",
+    "beta_approved",
+    "rejected",
+    "retired",
+  ]).default("draft").notNull(),
+  retiredAt: timestamp("retiredAt"),
+}, (table) => [
+  uniqueIndex("cert_module_note_scope_unique_idx").on(table.bankVersionId, table.moduleCode, table.taskCode),
+  index("cert_module_note_delivery_idx").on(table.bankVersionId, table.contentStatus),
+]);
+
+export type CertificationModuleNoteRow = typeof certificationModuleNotes.$inferSelect;
+export type InsertCertificationModuleNote = typeof certificationModuleNotes.$inferInsert;
+
 /** Question bank metadata — module lists, module targets, formula links per bank */
 export const questionBankMeta = mysqlTable("question_bank_meta", {
   id: int("id").autoincrement().primaryKey(),

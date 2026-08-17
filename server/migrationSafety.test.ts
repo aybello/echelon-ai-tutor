@@ -40,6 +40,11 @@ describe("forward-only migration safety", () => {
         tag: "0055_add_team_flex_orders_org_status_idx",
         proposedOnly: true,
       }),
+      expect.objectContaining({
+        version: 56,
+        tag: "0056_certification_bank_governance",
+        proposedOnly: true,
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(

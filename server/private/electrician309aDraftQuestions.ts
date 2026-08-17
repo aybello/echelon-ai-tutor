@@ -10,12 +10,12 @@ import {
  *
  * These questions are ORIGINAL Echelon practice items. They are not copied from
  * Red Seal sample questions. Every item is mapped to the official CURRENT-exam
- * Construction Electrician blueprint, but remains DRAFT until an electrician SME
- * reviews technical accuracy, wording, and trade realism.
+ * Construction Electrician blueprint, but remains DRAFT until Echelon's documented
+ * research review checks technical accuracy, wording, and trade realism.
  *
  * We deliberately avoid Canadian Electrical Code rule-number memorization in this
  * first set because the CEC is a licensed standard and exact code-rule items need
- * controlled source access plus SME review.
+ * controlled source access plus documented source review.
  */
 
 export interface Electrician309ADraftQuestion
