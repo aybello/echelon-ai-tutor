@@ -28,15 +28,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a new installation on equipment E26-01, where the latest approved drawing is available, a technician proposes accepting initiating-device circuit based on a previous job. What should the supervising electrician require?",
+      "question": "While wiring initiating-device circuits for new smoke detectors on a hospital's third-floor addition, a contractor notices the zone numbering on site differs from the current approved fire alarm drawing set issued this week. The electrician recalls the numbering scheme from a similar hospital job completed last year and wants to proceed using that memory. What should the supervising electrician require?",
       "options": [
-        "Use an operator's memory as the only acceptance record for initiating-device circuit.",
-        "Continue the work and treat final energization as the first verification of initiating-device circuit.",
-        "Pause, verify initiating-device circuit against approved information, resolve the discrepancy, document it, and then continue.",
-        "Accept initiating-device circuit from appearance alone because similar equipment worked on a previous project."
+        "Accept the recalled zone numbering as sufficient documentation and proceed without checking the current drawing set.",
+        "Continue installing devices and treat the final system commissioning test as the first verification of correct zone assignment.",
+        "Stop work, compare the site wiring against the current approved drawing, resolve any zone discrepancy, and record the outcome before continuing.",
+        "Approve the zone numbering based on visual similarity to the previous hospital installation without further checking."
       ],
       "correctIndex": 2,
-      "explanation": "Initiating-device circuit can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The site zone numbering does not match the current approved drawing, which is the authoritative reference for this installation. Relying on memory from a different hospital project ignores that layouts, zoning, and code requirements vary by building and revision. Continuing installation and waiting for commissioning to catch the error risks masking a wiring fault until testing, delaying discovery and possibly causing costly rework. Visual similarity between projects is not a valid substitute for verified documentation, since coverage areas, device addresses, and supervised circuit arrangements differ between buildings. The correct response is to stop, cross-check the on-site wiring against the current approved drawing, resolve the discrepancy with the design authority if needed, and document the resolution before resuming work. This preserves an accurate, independently reviewable record and ensures the initiating-device circuit functions as designed, protecting alarm reliability and life-safety response for the addition.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -44,7 +44,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply initiating-device circuit knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "08f2475f7e96a8692fb028dac8a7272d0ef248b048ec6ff6dac2e6ab46cb4444"
+      "contentHash": "c9dc643391775f24c83eb171efe944cd6c21a7481f5ff2b4986a26dc9ce2d1aa"
     },
     {
       "bankItemNumber": 452,
@@ -54,15 +54,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "For a commissioning check on equipment E26-02, where a previous test result is available for comparison, which statement best describes the role of notification circuit when an electrician services and maintains fire alarm systems?",
+      "question": "During a scheduled fire alarm inspection, a supervised notification circuit shows one strobe/horn appliance producing sound output below its listed rating when compared with the original acceptance test record. What is the correct next step for the electrician?",
       "options": [
-        "Accept notification circuit from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Verify notification circuit against the approved design, equipment rating, manufacturer data, and measured site condition."
+        "Accept the reading as normal because the appliance looks undamaged and the previous readings were close.",
+        "Temporarily bypass the zone's supervisory function so the panel stays active while the technician investigates further.",
+        "Adjust several nearby notification appliance settings at once, then see if the overall sound level improves.",
+        "Compare the appliance rating and measured current draw to the approved drawings and manufacturer data, then verify field condition."
       ],
       "correctIndex": 3,
-      "explanation": "Notification circuit can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A drop in rated output on a supervised notification circuit can indicate voltage drop, wiring fault, or a failing appliance, any of which threatens occupant notification. The correct approach is to compare the measured current draw and output against the approved drawings, appliance listing, and manufacturer data, then verify actual field condition before making changes—this isolates the true cause with traceable evidence. Accepting the reading on appearance alone ignores measurable degradation that visual inspection cannot detect. Bypassing supervision to keep the panel active removes the very function meant to alert staff to circuit faults, creating unmonitored risk. Changing multiple appliance settings simultaneously prevents identifying which change caused any improvement, making the result unverifiable and violating single-variable troubleshooting practice required for reliable fire alarm servicing.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -70,7 +70,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "555b3b8641e4378a47609a216f899c164e3f8740d8a46447fae20997ef3bfdab"
+      "contentHash": "9bccd733efd40fc6583f34483760925430fb7a09ed884d68266fac6894075089"
     },
     {
       "bankItemNumber": 453,
@@ -80,7 +80,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During an intermittent fault investigation on equipment E26-03, where the work affects a critical operating load, while evaluating signalling device current for work that installs security and surveillance systems, a signalling circuit has 24 devices drawing 18 mA each in the stated alarm condition. What is their total current?",
+      "question": "A parking garage security panel lists 24 motion sensors that each draw 18 mA when they enter alarm state simultaneously during a forced-entry event. The technician must confirm the total simultaneous current draw before sizing the standby battery. What is the combined current draw?",
       "options": [
         "0.432 A",
         "0.382 A",
@@ -88,24 +88,24 @@
         "0.532 A"
       ],
       "correctIndex": 0,
-      "explanation": "Total current is the number of identical devices multiplied by current per device, then converted from milliamperes to amperes.",
+      "explanation": "Multiplying the 24 identical sensors by 18 mA each gives 432 mA, which converts to 0.432 A after dividing by 1000. This value reflects the true simultaneous alarm-state draw the standby battery must support. The distractor values result from arithmetic slips, such as misapplying the milliampere-to-ampere conversion or adding an extra device's current, producing totals that overstate or understate the real load. Selecting an incorrect total could cause the technician to specify a standby battery that is undersized or oversized for the panel's actual alarm demand, risking failure during a real event or unnecessary cost. Confirming the calculation against the device count and rated draw ensures the battery selection matches manufacturer specifications and supports reliable signalling performance under actual alarm conditions.",
       "steps": [
         {
-          "label": "Total milliamperes",
-          "content": "24 × 18 mA = 432 mA."
+          "label": "Multiply device count by rated current",
+          "content": "24 sensors × 18 mA = 432 mA."
         },
         {
-          "label": "Convert",
+          "label": "Convert to amperes",
           "content": "432 mA ÷ 1000 = 0.432 A."
         }
       ],
-      "tip": "Include every simultaneous panel and field load when checking the approved standby-supply calculation.",
+      "tip": "Always total every device active during the worst-case alarm condition before selecting standby battery capacity.",
       "isCalc": "yes",
       "diagramId": null,
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "f71bb621dfc054d7922250505115790645074328f343345a8f12d60d8cb4cfaf"
+      "contentHash": "fa1213c0448d5e325eb9a82e85f81722a3f6021a2fcc2aa38fe6697b4b4402ab"
     },
     {
       "bankItemNumber": 454,
@@ -115,15 +115,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a field-layout conflict on equipment E26-04, where an alarm was acknowledged but its cause was not recorded, but standby battery has not been verified. What should happen next?",
+      "question": "A retail security panel logs an AC-power-loss trouble condition, yet its battery-status indicator reads normal. Manual voltage testing shows the standby battery well below the manufacturer's rated float voltage. What should the electrician do next?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify standby battery against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for standby battery."
+        "Trust the panel's self-test indicator and clear the trouble condition without further testing.",
+        "Pause, verify the battery reading against manufacturer specifications, resolve the discrepancy, and document findings before proceeding.",
+        "Replace the battery immediately and discard the old unit without recording any readings.",
+        "Silence the alarm and wait for the fault to repeat before investigating further."
       ],
       "correctIndex": 1,
-      "explanation": "Standby battery can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The self-test indicator disagrees with the measured voltage, so the discrepancy itself is evidence that the panel's automated check cannot be trusted alone. Correct practice is to pause, confirm the actual battery condition against manufacturer specifications, resolve why the indicator misreported it, and document the finding so the system's standby capability is verifiable before returning it to service. Trusting the self-test alone ignores confirmed low-voltage evidence and risks an undetected standby failure during a real power outage. Replacing the battery without documentation destroys the ability to trace whether the charger, wiring, or battery itself caused the discrepancy. Waiting for a repeat fault leaves the system unable to sustain alarm or surveillance functions during an actual outage, which is unacceptable for life-safety and security equipment relying on standby power.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -131,7 +131,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply standby battery knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "ba929bc53056d93b3ff2d6adda6d4cf79b5736c4d5a44852900877e7437b6a6e"
+      "contentHash": "33ada6125cb22ad8f32398926322679a86598952b8e93b61ba91619cc123c35f"
     },
     {
       "bankItemNumber": 455,
@@ -141,15 +141,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a new installation on equipment E26-05, where the installation must remain traceable for the next shift, a technician proposes accepting annunciator indication based on a previous job. What should the supervising electrician require?",
+      "question": "On a fire alarm annunciator serving a mid-rise apartment building, Zone 12 illuminates labelled 'Third Floor Corridor,' but the mounted zone directory card lists Zone 12 as 'Stairwell C Discharge Door.' The technician suggests the label is just outdated and wants to proceed with commissioning. What should the electrician require?",
       "options": [
-        "Use an operator's memory as the only acceptance record for annunciator indication.",
-        "Continue the work and treat final energization as the first verification of annunciator indication.",
-        "Pause, verify annunciator indication against approved information, resolve the discrepancy, document it, and then continue.",
-        "Accept annunciator indication from appearance alone because similar equipment worked on a previous project."
+        "Rely on the technician's memory of a similar building's zone layout to settle which label is correct.",
+        "Continue commissioning since the annunciator lit up as expected, treating any label wording as unimportant.",
+        "Accept the mismatch because the zone card is likely outdated paperwork rather than a wiring or programming error.",
+        "Stop, compare the annunciator indication against approved zone schedules, resolve the mismatch, document it, then proceed."
       ],
-      "correctIndex": 2,
-      "explanation": "Annunciator indication can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "A zone label mismatch between the annunciator and the approved zone directory could cause responders to be sent to the wrong location during a real alarm, so the discrepancy must be treated as a life-safety issue, not paperwork. The correct action pauses further work, cross-checks the indication against approved system documentation such as verified zone schedules or as-built records, resolves and documents the root cause before continuing. Assuming the card is simply outdated risks accepting a genuine wiring or programming error. Relying on memory from another building ignores that zone assignments are site-specific. Continuing commissioning because the light illuminated only confirms the device activated, not that its labelled location is accurate, leaving the traceability and life-safety risk unresolved for the next shift or authority review.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -157,7 +157,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply annunciator indication knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "d642343b23109b9543115f459324811dd8ad37f53f14b07a810263b313b7ad11"
+      "contentHash": "f220a733c090a735d73f52e7105640ef022648b640b85ddec0d6c15309eb0a41"
     },
     {
       "bankItemNumber": 456,
@@ -167,15 +167,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "Using the referenced conceptual diagram, for a commissioning check on equipment E26-06, where the condition is intermittent, which statement best describes the role of camera field of view when an electrician services and maintains fire alarm systems?",
+      "question": "Using the accompanying diagram, an electrician commissioning a fire alarm system notices that a newly installed storage rack partially blocks the CCTV camera monitoring a manual pull station tied to the notification circuit. What is the correct action regarding camera field of view before signing off?",
       "options": [
-        "Accept camera field of view from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Verify camera field of view against the approved design, equipment rating, manufacturer data, and measured site condition."
+        "Assume the camera still works properly since it performed correctly during initial installation testing.",
+        "Disable the camera monitoring function temporarily to keep the fire alarm system available for use.",
+        "Adjust several camera and sensor settings together, then confirm success if any alarm event improves.",
+        "Confirm camera field of view against approved design, equipment rating, manufacturer data, and current site condition."
       ],
       "correctIndex": 3,
-      "explanation": "Camera field of view can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The storage rack has physically altered the monitored area, so the electrician must verify field of view against approved drawings, manufacturer specifications, and the actual measured condition to confirm the pull station remains visible and alarm response can be verified. Assuming prior performance ignores the new obstruction. Disabling the camera removes supervision without addressing the cause, reducing system reliability. Changing multiple settings simultaneously and judging success from indirect improvement makes it impossible to isolate which change fixed the issue, risking unverified system function. Only a controlled, documented verification against reference standards and current field measurements ensures the camera still fulfills its intended monitoring role within the fire alarm system's design intent, supporting accurate incident response and code-based commissioning practices required for reliable qualified sign-off.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -183,7 +183,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "78354b7f42dadb8574782595c0a03edbaa9dd18b23ec76fe49d5a1367d652c6d"
+      "contentHash": "bb9e97c32758942751c093b6cd105cc87a650314a7ce938f2cf0e65c26cfa335"
     },
     {
       "bankItemNumber": 457,
@@ -193,7 +193,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During an intermittent fault investigation on equipment E26-07, where the system is being prepared for return to service, while evaluating signalling device current for work that installs security and surveillance systems, a signalling circuit has 20 devices drawing 18 mA each in the stated alarm condition. What is their total current?",
+      "question": "A retail plaza's access-control alarm loop feeds 20 identical door-contact modules, each drawing 18 mA once the loop enters alarm condition. The panel's standby battery must be sized to support this worst-case loop load. Calculate the total current the loop draws when every module is active.",
       "options": [
         "0.36 A",
         "0.31 A",
@@ -201,24 +201,24 @@
         "0.46 A"
       ],
       "correctIndex": 0,
-      "explanation": "Total current is the number of identical devices multiplied by current per device, then converted from milliamperes to amperes.",
+      "explanation": "The loop's total alarm current equals the number of identical devices multiplied by each device's rated draw: 20 × 18 mA = 360 mA, which converts to 0.36 A. This is the only figure that correctly applies both the multiplication and the milliampere-to-ampere conversion using the given values. The 0.31 A option results from underestimating the per-device draw or mis-multiplying the device count, while 0.41 A and 0.46 A come from arithmetic slips or adding an unstated margin that isn't supported by the evidence. Standby battery sizing must reflect the actual worst-case simultaneous alarm draw stated in the scenario, not an assumed safety factor, since manufacturer documentation and system design already account for reserve capacity separately. Confirming the calculation against the stated device count and rated current avoids undersizing or oversizing the standby supply for this loop.",
       "steps": [
         {
-          "label": "Total milliamperes",
-          "content": "20 × 18 mA = 360 mA."
+          "label": "Determine total milliamperes",
+          "content": "20 devices × 18 mA per device = 360 mA total loop current during alarm."
         },
         {
-          "label": "Convert",
-          "content": "360 mA ÷ 1000 = 0.36 A."
+          "label": "Convert to amperes",
+          "content": "360 mA ÷ 1000 = 0.36 A, the total current the standby supply must support."
         }
       ],
-      "tip": "Include every simultaneous panel and field load when checking the approved standby-supply calculation.",
+      "tip": "Always base standby battery sizing on the stated worst-case simultaneous device draw, not an assumed number of active devices.",
       "isCalc": "yes",
       "diagramId": null,
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "ffa2f7cda423cb1dec7dbca676df4f2dfaaf648423aa41fb3c4c0e4d35acdbc2"
+      "contentHash": "86f20f2f262e921affcf17c22077b29d7316ea8a759c951d22874bf578b2f8f7"
     },
     {
       "bankItemNumber": 458,
@@ -228,15 +228,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a field-layout conflict on equipment E26-08, where the current nameplate differs from an older record, but door-contact state has not been verified. What should happen next?",
+      "question": "At a warehouse loading dock, the access-control panel shows 'secure' while the door is visibly open six inches. The on-file wiring diagram predates a hardware upgrade shown on the current door-contact nameplate. What should the electrician do next?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify door-contact state against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for door-contact state."
+        "Swap the door contact for a spare unit right away and log the change only if the fault recurs.",
+        "Isolate the circuit, verify door-contact state against current approved drawings and nameplate data, resolve the discrepancy, then document findings.",
+        "Silence the panel discrepancy alarm and wait for another occupant complaint before testing.",
+        "Accept the site supervisor's verbal recollection of the original wiring as the verification record."
       ],
       "correctIndex": 1,
-      "explanation": "Door-contact state can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The open door reading as 'secure' shows a mismatch between actual contact state and panel indication, and the outdated diagram versus the newer nameplate means the wiring record can no longer be trusted without confirmation. Isolating the circuit protects against unintended alarm actions during testing, while comparing measured contact state to current approved documentation and nameplate data resolves whether the fault is wiring, device, or configuration before any repair. Swapping the contact first risks reinstalling the same fault if the wiring or supervised circuit is the real cause, and skips the record needed for future troubleshooting. Silencing the alarm and waiting delays correction of a life-safety and security gap. Relying on someone's memory instead of verified documentation is unreliable when hardware has already changed and records are known to be out of date.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -244,7 +244,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply door-contact state knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "3aa11db5779386b5bb5ad28cde4005a4aa27d20a702d39ac25215b4316acde54"
+      "contentHash": "68b5e9291d4c98e62d500e488c15b6214a18be15cca54bcc1e6c2249dbe2b8ae"
     },
     {
       "bankItemNumber": 459,
@@ -254,15 +254,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "Which verification approach is most defensible for associated-system relay during a new installation on equipment E26-09, where the deficiency was discovered during a controlled functional test when the electrician installs fire alarm systems?",
+      "question": "During commissioning of a fire alarm system, a door-holder release relay (an associated-system relay) fails to drop the third-floor corridor door during a functional alarm test. Which action best confirms whether the relay circuit is correctly installed and supervised before acceptance testing proceeds?",
       "options": [
-        "Use an operator's memory as the only acceptance record for associated-system relay.",
-        "Continue the work and treat final energization as the first verification of associated-system relay.",
-        "Verify associated-system relay against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept associated-system relay from appearance alone because similar equipment worked on a previous project."
+        "Rely on the technician's memory of similar past installations to confirm the wiring is correct.",
+        "Proceed to final system acceptance and treat energization as the first verification step.",
+        "Compare the relay wiring and operation against approved drawings, manufacturer data, and measured field readings.",
+        "Accept the relay as functional because it released successfully on an earlier test."
       ],
       "correctIndex": 2,
-      "explanation": "Associated-system relay can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A failed release during a functional test is direct evidence that the relay's actual behaviour does not match its intended supervised function. Only comparing the wiring, contact configuration, and supply against the approved design, the manufacturer's data sheet, and current measured readings (voltage, continuity, supervisory signal) can isolate whether the fault lies in wiring, the relay itself, or the associated circuit. Accepting the relay because it worked previously is tempting but wrong: conditions, wiring, or connections may have changed since that earlier test, and past performance does not confirm present correctness. Treating energization as the verification step skips the controlled, documented check needed before life-safety equipment is trusted. Relying on memory alone provides no verifiable record. Systematic comparison against approved references and measured data supports a defensible, documented decision suitable for independent review.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -270,7 +270,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply associated-system relay knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "48739cc128eae45490e486b298d8197beaa5bd99c646ace31cd2dcdc3dcd0eb7"
+      "contentHash": "49afa224e7554f6a2fdc473e642d200c1a029900b9620d17564dd8097bbb0bdd"
     },
     {
       "bankItemNumber": 460,
@@ -280,15 +280,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a commissioning check on equipment E26-10, where the issue appears only when the load increases, the crew finds that verification record does not match the approved information. What should the electrician do next?",
+      "question": "While completing the annual fire alarm inspection at a retail plaza, the electrician finds the verification record lists two fewer smoke detectors on the second floor than the approved as-built drawings show. What should the electrician do next?",
       "options": [
-        "Accept verification record from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Pause, verify verification record against approved information, resolve the discrepancy, document it, and then continue."
+        "Accept the verification record as accurate because the panel currently shows no trouble or supervisory signals.",
+        "Disable the affected zone temporarily so testing can continue while assuming the drawings are outdated.",
+        "Adjust several zone settings at once and treat any cleared trouble signal as confirmation of accuracy.",
+        "Pause testing, compare the verification record against approved drawings, resolve the discrepancy, document it, then continue."
       ],
       "correctIndex": 3,
-      "explanation": "Verification record can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A mismatch between the verification record and approved drawings on a life-safety system must be resolved before testing continues, since missing devices could leave areas without detection coverage. The correct action is to stop, cross-check the record against approved drawings, confirm actual device locations, document the resolution, and only then proceed—preserving traceability for review. Accepting the record because the panel shows no trouble ignores that a missing detector produces no signal at all, so absence of trouble is not proof of coverage. Disabling the zone based on an assumption removes protection without verification. Changing multiple settings and using a cleared trouble signal as proof risks masking the real discrepancy and violates the principle of making one verified, documented change at a time on a supervised life-safety system.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -296,7 +296,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply verification record knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "80c6f8706ead94c107daf8ab4858bb1ef0852208f56480db5ebc14c87a53a98f"
+      "contentHash": "09aeb910419b5e022269b98c1405a5243558511c4b9b5dbf8ca47fa31836dd7b"
     },
     {
       "bankItemNumber": 461,
@@ -306,32 +306,32 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During an intermittent fault investigation on equipment E26-11, where the operator reports a recent process change, while evaluating signalling device current for work that installs security and surveillance systems, a signalling circuit has 16 devices drawing 18 mA each in the stated alarm condition. What is their total current?",
+      "question": "A commissioning technician is sizing the standby power supply for a supervised motion-sensor loop in a retail security installation. Twelve identical sensors each draw 22 mA when in alarm condition. What is the total loop current the supply must be rated to carry?",
       "options": [
-        "0.288 A",
-        "0.238 A",
-        "0.338 A",
-        "0.388 A"
+        "0.264 A",
+        "0.224 A",
+        "0.304 A",
+        "0.344 A"
       ],
       "correctIndex": 0,
-      "explanation": "Total current is the number of identical devices multiplied by current per device, then converted from milliamperes to amperes.",
+      "explanation": "The correct approach multiplies the number of identical devices by the alarm-state current draw per device, then converts milliamperes to amperes for supply sizing: 12 × 22 mA = 264 mA = 0.264 A. A tempting error is to average or partially sum the device currents, or to misplace the decimal during conversion, producing plausible but incorrect totals like 0.224 A or 0.344 A. These fail because standby supply sizing requires accounting for every device operating simultaneously in the worst-case alarm state, not an assumed partial load. Manufacturer specification sheets and approved system drawings must confirm per-device current ratings before calculating total loop demand, ensuring the selected power supply and battery backup can support all connected devices without voltage drop or nuisance faults during an actual alarm event.",
       "steps": [
         {
           "label": "Total milliamperes",
-          "content": "16 × 18 mA = 288 mA."
+          "content": "12 × 22 mA = 264 mA."
         },
         {
-          "label": "Convert",
-          "content": "288 mA ÷ 1000 = 0.288 A."
+          "label": "Convert to amperes",
+          "content": "264 mA ÷ 1000 = 0.264 A."
         }
       ],
-      "tip": "Include every simultaneous panel and field load when checking the approved standby-supply calculation.",
+      "tip": "Always size the supply for full simultaneous alarm-state current draw, confirmed against manufacturer device ratings.",
       "isCalc": "yes",
       "diagramId": null,
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "b56bb83211ef7dd0cdc7b42620e6c9b4faf6f4ae04af073d324b48a87015459e"
+      "contentHash": "2c75e95db885e8b2357d728817fc123a30c60ec420a05105f8fd7c549749834e"
     },
     {
       "bankItemNumber": 462,
@@ -341,15 +341,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a field-layout conflict on equipment E26-12, where the maintenance log shows a recurring trend, but notification circuit has not been verified. What should happen next?",
+      "question": "A supervised notification circuit feeding a camera enclosure heater and door contact shows an intermittent trouble indicator on the panel history, but no one has compared the wiring against the approved riser drawing or manufacturer specifications yet. A technician wants to swap the device now. What should the technician do first?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify notification circuit against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for notification circuit."
+        "Swap the device immediately since intermittent troubles usually indicate a failed sensor needing replacement.",
+        "Pause work, verify the circuit against approved drawings and manufacturer data, resolve the discrepancy, then document findings.",
+        "Silence the trouble indicator and monitor for a repeat occurrence before doing any further investigation.",
+        "Rely on the site supervisor's recollection of the original circuit design instead of checking documentation."
       ],
       "correctIndex": 1,
-      "explanation": "Notification circuit can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "An intermittent trouble signal on a supervised circuit can stem from wiring faults, loose supervision resistors, or device compatibility issues that are not obvious without checking approved documentation first. Comparing the field wiring and device specifications against the riser drawing and manufacturer data isolates the actual cause before any component is disturbed, and documenting the result supports future troubleshooting and code compliance review. Swapping the device without verification risks masking a wiring fault, wasting the new part, and repeating the failure. Silencing the trouble and waiting for recurrence delays resolution and risks a missed alarm condition in the interim. Relying on memory instead of documentation introduces error since as-built conditions may differ from what was originally installed or later modified.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -357,7 +357,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "e1cd743096915f7b61eaf7563fe76bf67d803cb4e26971382ada088968267806"
+      "contentHash": "ed597f4dcdf68eebf2285ea4135025da739cf979c6efa3afd6b91cb6d9f1a140"
     },
     {
       "bankItemNumber": 463,
@@ -367,15 +367,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "Which verification approach is most defensible for end-of-line supervision during a new installation on equipment E26-13, where the field labels do not fully match the as-built record when the electrician installs fire alarm systems?",
+      "question": "A technician commissioning a supervised initiating circuit finds the installed end-of-line resistor value differs from the value on the approved shop drawing, and the panel intermittently reports a trouble signal. Which verification approach best supports safe acceptance of equipment E26-13?",
       "options": [
-        "Use an operator's memory as the only acceptance record for end-of-line supervision.",
-        "Continue the work and treat final energization as the first verification of end-of-line supervision.",
-        "Verify end-of-line supervision against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept end-of-line supervision from appearance alone because similar equipment worked on a previous project."
+        "Accept the circuit because the resistor looks like a standard type used on past jobs.",
+        "Energize the system and treat panel response during normal operation as the first check.",
+        "Confirm the resistor value against approved drawings, manufacturer data, and a measured reading.",
+        "Rely on the operator's recollection of similar circuits instead of checking documentation."
       ],
       "correctIndex": 2,
-      "explanation": "End-of-line supervision can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "An end-of-line resistor value that does not match the approved design can cause false trouble signals, masked wiring faults, or unreliable supervision of the circuit. The defensible method is to compare the installed component against the approved shop drawing, the manufacturer's specified resistance, and an actual measured reading before accepting the circuit as correct. Relying on appearance or memory ignores objective evidence and risks accepting a circuit that will not properly detect an open or short condition. Treating first energization as the test exposes the building to an unverified life-safety circuit. Documented verification against design and measured values allows an independent reviewer to confirm the correction before final acceptance, which is essential for supervised fire alarm circuits.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -383,7 +383,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply end-of-line supervision knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "cf85d91fe18a476f5aa5a1d294bae959d53d72be65877938e92ca222efb047db"
+      "contentHash": "8f6f6858281293c073c6c494706466f82edb734e9b97d66e6d4be908b015da2c"
     },
     {
       "bankItemNumber": 464,
@@ -393,15 +393,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a commissioning check on equipment E26-14, where the equipment has recently been replaced, the crew finds that standby battery does not match the approved information. What should the electrician do next?",
+      "question": "While performing an annual fire alarm inspection on panel FACP-3, the electrician finds the newly installed standby battery's ampere-hour rating does not match the value shown on the approved system documentation. What should the electrician do next?",
       "options": [
-        "Accept standby battery from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Pause, verify standby battery against approved information, resolve the discrepancy, document it, and then continue."
+        "Accept the battery based on its physical appearance since a similar unit performed well on another job.",
+        "Bypass the standby power supervision so the panel stays in service while the mismatch is assumed acceptable.",
+        "Adjust several unrelated panel settings together and treat any brief improvement as confirmation of correct operation.",
+        "Stop work, compare the battery rating against approved documentation, resolve the discrepancy, and record the outcome."
       ],
       "correctIndex": 3,
-      "explanation": "Standby battery can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A standby battery with a rating that differs from the approved documentation can leave the fire alarm system without sufficient standby duration during a power outage, directly affecting life-safety performance. The correct response is to halt further work, cross-check the installed battery against the manufacturer's data sheet and approved shop drawings, correct or confirm the discrepancy, and document the finding for verification. Accepting the battery on appearance alone ignores the documented mismatch and risks undetected undersized capacity. Bypassing supervision keeps the panel active but hides the real problem instead of resolving it. Adjusting multiple settings simultaneously and judging success from a temporary change offers no reliable proof the battery meets requirements and could mask the true cause. Only a controlled, documented comparison against approved information ensures the standby supply meets code-required duration and supports safe, verifiable commissioning.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -409,7 +409,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply standby battery knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "17aa0eeec8e98d8f8fc85d08c332705aa93f957263354d9e6f298276724f30df"
+      "contentHash": "f4bc97249c93daac8834dbfaba0ec0d53faf235282901dc6576ce24a55cf2daf"
     },
     {
       "bankItemNumber": 465,
@@ -419,32 +419,32 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During an intermittent fault investigation on equipment E26-15, where the enclosure shows no obvious mechanical damage, while evaluating signalling device current for work that installs security and surveillance systems, a signalling circuit has 12 devices drawing 18 mA each in the stated alarm condition. What is their total current?",
+      "question": "While commissioning a supervised motion-detection loop on a warehouse surveillance panel, a technician confirms 9 identical sensors each draw 22 mA in the active alarm state, with no reported wiring faults. What is the total loop current in amperes?",
       "options": [
-        "0.216 A",
-        "0.166 A",
-        "0.266 A",
-        "0.316 A"
+        "0.198 A",
+        "0.298 A",
+        "0.188 A",
+        "0.218 A"
       ],
       "correctIndex": 0,
-      "explanation": "Total current is the number of identical devices multiplied by current per device, then converted from milliamperes to amperes.",
+      "explanation": "The evidence states nine identical sensors each drawing 22 mA simultaneously in alarm condition, so total current equals the sum of all device currents: 9 × 22 mA = 198 mA, converted to 0.198 A. This value must be checked against the panel's rated alarm output before the loop is placed in service. The tempting wrong answer of 0.298 A results from misreading the sensor count as ten or adding an extra 100 mA, which does not match the stated evidence. The 0.188 A and 0.218 A options reflect simple arithmetic slips in multiplication or unit conversion. Because the question specifies identical devices and a defined alarm current, no additional standby or supervisory current should be included unless separately documented on approved drawings. Confirming this calculated value against manufacturer specifications ensures the surveillance system's power supply is correctly sized before final acceptance testing.",
       "steps": [
         {
           "label": "Total milliamperes",
-          "content": "12 × 18 mA = 216 mA."
+          "content": "9 sensors × 22 mA = 198 mA."
         },
         {
-          "label": "Convert",
-          "content": "216 mA ÷ 1000 = 0.216 A."
+          "label": "Convert to amperes",
+          "content": "198 mA ÷ 1000 = 0.198 A."
         }
       ],
-      "tip": "Include every simultaneous panel and field load when checking the approved standby-supply calculation.",
+      "tip": "Always verify calculated alarm-state current against the panel's rated output and manufacturer specifications before final commissioning.",
       "isCalc": "yes",
       "diagramId": null,
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "1eeb818a5122adfc3067ddbde3211198855932ee626665fc9d6cee534466c012"
+      "contentHash": "94ae3bef90f03145203563ae7bda7b365c58a1f1a6c0e36f607c0312133bae1b"
     },
     {
       "bankItemNumber": 466,
@@ -454,15 +454,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the referenced conceptual diagram, the crew is ready to continue during a field-layout conflict on equipment E26-16, where another trade has changed the nearby installation, but camera field of view has not been verified. What should happen next?",
+      "question": "A warehouse camera on the diagram's associated-system output now shows an obstructed loading-dock view after a mechanical contractor relocated a duct bracket into the camera's original sightline. The electrician is dispatched to restore coverage before the next shift begins. What is the correct next step?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify camera field of view against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for camera field of view."
+        "Rotate the camera housing by eye until the dock looks clear, then close the work order without further checks.",
+        "Note the obstruction in a personal logbook and leave the camera as-is until the next scheduled maintenance visit.",
+        "Ask a warehouse supervisor to confirm the view looks fine on a phone screen and skip formal verification.",
+        "Pause work, verify the camera's field of view against approved layout drawings, resolve the obstruction, and document the correction."
       ],
-      "correctIndex": 1,
-      "explanation": "Camera field of view can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "The obstruction changes actual coverage from what approved drawings specify, so the camera's function must be re-verified against that documented reference before any physical adjustment is trusted. Confirming field of view against approved information, correcting the conflict, and recording the change gives an independently reviewable result and prevents recurring blind spots. Eyeballing the adjustment risks leaving partial coverage gaps that look acceptable but fail under different lighting or angles, and it creates no verifiable record. Deferring the fix to a future visit leaves a known security gap unresolved, which is unacceptable once the discrepancy is identified. Relying on a supervisor's casual visual check substitutes an unqualified, undocumented opinion for measured verification against the system's approved reference information, so none of these three alternatives meet the standard of controlled, documented, verifiable correction that the situation demands.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -470,7 +470,7 @@
       "diagramAlt": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions.",
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply camera field of view knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "9e690d460dbd5632f48a80f82410fc34a730e5f8dac64173d5b88beb5e81d81c"
+      "contentHash": "36aa44ea3275a9518dad9ade6a8b086e2a209669f411e5a4ee66655f0cfc69c1"
     },
     {
       "bankItemNumber": 467,
@@ -480,23 +480,23 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "recall",
-      "question": "Which verification approach is most defensible for security-zone identification during a new installation on equipment E26-17, where the measured values are stable but outside the approved expectation when the electrician installs fire alarm systems?",
+      "question": "While pulling and terminating a fire alarm zone circuit in a renovated hospital corridor, the electrician labels the loop as Zone 14 per the as-built drawing. Measured supervisory current is steady but falls outside the manufacturer's stated range for that device class. What verification approach is most defensible?",
       "options": [
-        "Use an operator's memory as the only acceptance record for security-zone identification.",
-        "Continue the work and treat final energization as the first verification of security-zone identification.",
-        "Verify security-zone identification against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept security-zone identification from appearance alone because similar equipment worked on a previous project."
+        "Rely on the technician's memory of the original design intent as the acceptance record for this zone.",
+        "Energize the full system first and treat that action as the initial verification step for the zone.",
+        "Accept the zone identification because a similar corridor loop performed correctly on a prior hospital project.",
+        "Verify the zone identification against approved drawings, device ratings, manufacturer data, and the measured condition before accepting it."
       ],
-      "correctIndex": 2,
-      "explanation": "Security-zone identification can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "A stable reading that sits outside the manufacturer's expected range signals a possible mismatch between the labelled zone, the installed device, or the wiring configuration, not a resolved condition. Cross-referencing the approved drawing, device rating, and manufacturer specification against the actual measurement lets the electrician isolate whether the discrepancy comes from a wrong device, an incorrect zone assignment, or a wiring error, before anyone relies on that zone for alarm response. Depending on memory removes the documented basis needed for independent review. Treating energization as the first verification risks masking a wiring or device error under live conditions where a life-safety function could fail silently. Assuming success because a different project's similar-looking loop worked ignores that zone identification depends on the specific approved design and measured condition for this installation, not surface resemblance to unrelated past work.",
       "steps": null,
-      "tip": null,
+      "tip": "When a measurement is stable but off-spec, treat it as unresolved until cross-checked against drawings and manufacturer data, not as passing.",
       "isCalc": "no",
       "diagramId": null,
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply security-zone identification knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "049d2a1979434f7657aeac38f80d9db2cef3fe4e683e5716430abe98793c6b00"
+      "contentHash": "22e788fbef65b8995bb4319ce3cab06da92991958e054f2f1d5269d106b264f8"
     },
     {
       "bankItemNumber": 468,
@@ -506,7 +506,7 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "During a commissioning check on equipment E26-18, where the latest approved drawing is available, while evaluating signalling device current for work that services and maintains fire alarm systems, a signalling circuit has 24 devices drawing 18 mA each in the stated alarm condition. What is their total current?",
+      "question": "A technician verifying a notification appliance circuit for a school fire alarm system counts 24 identical horn/strobes, each rated 18 mA in alarm per the manufacturer's data sheet and the approved riser diagram. What total current must the circuit's power supply be capable of delivering?",
       "options": [
         "0.382 A",
         "0.482 A",
@@ -514,24 +514,24 @@
         "0.432 A"
       ],
       "correctIndex": 3,
-      "explanation": "Total current is the number of identical devices multiplied by current per device, then converted from milliamperes to amperes.",
+      "explanation": "Multiplying the 24 devices by 18 mA each gives 432 mA, which converts to 0.432 A—the correct load the power supply must support per the manufacturer data and approved drawing. The 0.482 A and 0.532 A options come from arithmetic slips, such as miscounting devices or misapplying the multiplier, and do not match the stated quantity or rating. The 0.382 A option undercounts the devices, understating the true load and risking an undersized supply that could fail to sustain all appliances in alarm. Verifying device count and rated draw against approved documentation before sizing ensures the standby and alarm power supply meets code-required capacity, preventing nuisance shutdowns or failure during an actual alarm condition.",
       "steps": [
         {
           "label": "Total milliamperes",
-          "content": "24 × 18 mA = 432 mA."
+          "content": "24 devices × 18 mA = 432 mA."
         },
         {
-          "label": "Convert",
+          "label": "Convert to amperes",
           "content": "432 mA ÷ 1000 = 0.432 A."
         }
       ],
-      "tip": "Include every simultaneous panel and field load when checking the approved standby-supply calculation.",
+      "tip": "Always confirm device count and rated current against the approved drawing and manufacturer data before sizing the supply.",
       "isCalc": "yes",
       "diagramId": null,
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply signalling device current knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "754c51364ffa4c363a1d87fbf869b2ecd665623824cf9b0766d4f3e14004a891"
+      "contentHash": "ffa9886cae9486e0226312dccdfafd9dab5cc128f2764b39fa941f84ce59e5f2"
     },
     {
       "bankItemNumber": 469,
@@ -541,15 +541,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for associated-system relay conflicts with the approved record during an intermittent fault investigation on equipment E26-19, where a previous test result is available for comparison. Which response maintains control of the work?",
+      "question": "A supervised access-control relay intermittently releases a secure door with no recorded card-read or request-to-exit signal. The alarm log shows two unexplained activations overnight, but the approved sequence-of-operations drawing shows no scheduled unlock event for that period. Which response best maintains control of the investigation?",
       "options": [
-        "Pause, verify associated-system relay against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for associated-system relay without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Adjust several relay timing settings simultaneously and assume the fault is fixed if the door stops releasing.",
+        "Apply the relay configuration used on a similar building without confirming it matches this system's approved design.",
+        "Replace the relay module immediately and only log the failure if the door releases again.",
+        "Isolate the relay circuit, verify wiring and logic against the approved sequence drawing, then document findings before restoring service."
       ],
-      "correctIndex": 0,
-      "explanation": "Associated-system relay can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "The unexplained activations with no matching input event mean the relay's actual logic must be compared against the approved sequence drawing before any repair decision, since restoring service without verification risks a repeat security breach. Isolating first prevents further unauthorized releases while evidence is gathered, and documenting findings supports independent review. Changing several settings at once destroys the ability to identify which change actually resolved the fault, and a temporary improvement could be coincidental rather than proof of repair. Borrowing another building's configuration ignores that approved designs are site-specific and may not match this system's supervised circuit arrangement. Swapping the module first treats a symptom without confirming the root cause, and deferring documentation until failure recurs abandons the verification trail needed for a controlled, defensible resolution of an intermittent security fault.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -557,7 +557,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.03",
       "blueprintObjective": "Apply associated-system relay knowledge while the electrician installs security and surveillance systems.",
-      "contentHash": "ef87ee70987f8b21e06edb8e4e95a1f57ec8ac9a265021856ff6cd7369aa4d65"
+      "contentHash": "3199c1ecbed4daa0645b8f882c0d9886f9880c00071b69af76109a2a7e097eb4"
     },
     {
       "bankItemNumber": 470,
@@ -567,15 +567,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a field-layout conflict on equipment E26-20, where the work affects a critical operating load, but verification record has not been verified. What should happen next?",
+      "question": "A card-access controller securing a data-room door shows a device address that does not match the last approved verification record, and this door protects a critical server load. What should the technician do next?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify verification record against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for verification record."
+        "Replace the controller with a spare unit and log the discrepancy only if the door malfunctions again.",
+        "Silence the mismatch alert and wait for a repeat occurrence before collecting additional evidence.",
+        "Rely on the installer's verbal confirmation as the only accepted verification record.",
+        "Pause work, verify the controller data against the approved verification record, resolve the mismatch, then document and continue."
       ],
-      "correctIndex": 1,
-      "explanation": "Verification record can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "The mismatch between the controller's live data and the approved verification record on a door protecting a critical load is exactly the condition verification records exist to catch. Pausing to compare against approved documentation, resolving the discrepancy, and recording the resolution preserves an auditable trail and prevents an unverified access-control state from protecting critical equipment. Swapping hardware without first confirming the cause risks masking a wiring, addressing, or programming error that could recur. Waiting for a second failure delays detection on a system tied to a critical load, increasing exposure. Accepting a verbal confirmation removes the independent, reviewable record that verification procedures require, leaving no defensible evidence if the system later fails to secure the space. Controlled verification against approved records is the only option that maintains both system integrity and accountability.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -583,7 +583,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.04",
       "blueprintObjective": "Apply verification record knowledge while the electrician services and maintains security and surveillance systems.",
-      "contentHash": "093affdd64b48a64341547da1847519dc6bfdc8fa79cc8b39ac5c9ebc6f6d8ae"
+      "contentHash": "99c87c2f49a8824f90ea50f98baec7a16159ef5b5d59958cd4f096d185c44afc"
     },
     {
       "bankItemNumber": 471,
@@ -593,15 +593,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Which verification approach is most defensible for initiating-device circuit during a new installation on equipment E26-21, where an alarm was acknowledged but its cause was not recorded when the electrician installs fire alarm systems?",
+      "question": "During commissioning of a new initiating-device circuit in a plant expansion, the fire alarm panel logs a supervisory trouble, and the measured loop resistance exceeds the end-of-line value shown on the riser drawing. Which verification approach should the electrician use before closing out equipment E26-21?",
       "options": [
-        "Use an operator's memory as the only acceptance record for initiating-device circuit.",
-        "Continue the work and treat final energization as the first verification of initiating-device circuit.",
-        "Verify initiating-device circuit against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept initiating-device circuit from appearance alone because similar equipment worked on a previous project."
+        "Reset the panel and treat a successful re-energization as sufficient verification of the circuit.",
+        "Rely on the previous electrician's handover notes as the only proof the circuit is compliant.",
+        "Assume the reading is acceptable since similar zones on other floors passed testing.",
+        "Verify the circuit against approved drawings, device ratings, manufacturer specifications, and measured field readings."
       ],
-      "correctIndex": 2,
-      "explanation": "Initiating-device circuit can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "The measured loop resistance exceeding the end-of-line value signals a wiring or connection issue that could delay alarm reporting on circuit E26-21. Confirming compliance requires comparing the approved riser drawing, the rated end-of-line resistor value, and manufacturer wiring specifications against the actual field measurement, correcting the fault, and documenting the verified reading before sign-off. This traceable process lets another qualified person confirm the circuit will supervise properly under actual conditions. Resetting the panel and accepting a clean restart ignores the underlying resistance discrepancy, risking a false sense of readiness. Relying on another electrician's handover notes substitutes secondhand information for direct verification of this specific circuit's rating and reading. Assuming acceptability because other zones passed disregards that each initiating-device circuit has its own wiring run, terminations, and measured value, so one zone's success cannot certify another's compliance or safe operation.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -609,7 +609,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.01",
       "blueprintObjective": "Apply initiating-device circuit knowledge while the electrician installs fire alarm systems.",
-      "contentHash": "23a976a8da2c50384619ba59e109d5a3daa46be437ac3939bb93233b0ef9454f"
+      "contentHash": "0f0e02f3f0597bd1112f2a9f47fc6066d16a3c634e903eeb385e4c5753840f8f"
     },
     {
       "bankItemNumber": 472,
@@ -619,15 +619,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "After a commissioning check on equipment E26-22, where the installation must remain traceable for the next shift, the system shows a problem involving notification circuit. Which troubleshooting response is most appropriate?",
+      "question": "During a night shift, a fire alarm panel logs a ground-fault trouble on Notification Circuit 3, and the work order requires a documented trail so the incoming crew can confirm system status. Which troubleshooting response is most appropriate?",
       "options": [
-        "Accept notification circuit from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Isolate the function, test notification circuit, correct the confirmed cause, and repeat the controlled functional test."
+        "Silence the trouble buzzer and let the incoming crew investigate whenever the panel happens to reset itself.",
+        "Isolate the circuit, verify the fault location, correct the confirmed cause, then perform a controlled functional retest.",
+        "Swap several notification appliances at once and assume the fault cleared once the buzzer stops sounding.",
+        "Log the panel as normal because the same circuit passed inspection on a similar job last month."
       ],
-      "correctIndex": 3,
-      "explanation": "Notification circuit can directly affect missed alarms, false alarms, blind surveillance areas or failed associated-system actions. The reliable approach is to use approved system drawings, device function, supervised circuit arrangement, standby supply, field-of-view or coverage, associated-system interfaces and verification results, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 1,
+      "explanation": "A ground-fault trouble on a notification circuit can mask missed alarms or delayed occupant warning, so the fault must be isolated, located using system drawings and continuity/insulation testing, corrected, and confirmed with a controlled functional test before returning the circuit to service, with results logged for the next shift. Silencing the buzzer and waiting ignores an active fault and breaks traceability. Swapping multiple appliances simultaneously destroys the ability to identify which change actually fixed the fault, since improvement could be coincidental. Assuming the circuit is fine based on a prior job's unrelated inspection ignores the present, confirmed trouble condition and ground-fault evidence currently displayed on this panel. Only isolate-verify-correct-retest satisfies both technical reliability and the documented handover requirement.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -635,7 +635,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-26, Sub-task E-26.02",
       "blueprintObjective": "Apply notification circuit knowledge while the electrician services and maintains fire alarm systems.",
-      "contentHash": "08f98ef2fb811f35b6ecc99431c87105a24ed8f589e9318ecd225d3f579ca9a9"
+      "contentHash": "07fb5304d0b6fdd0e7fd671ff16847a3c2c4c637555195b0a6b60f76fc9aec27"
     },
     {
       "bankItemNumber": 473,
@@ -645,15 +645,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for structured-cable permanent link conflicts with the approved record during a field-layout conflict on equipment E27-01, where the enclosure shows no obvious mechanical damage. Which response maintains control of the work?",
+      "question": "A structured-cable permanent link certification report shows a marginal NEXT reading, but the patch panel label and the approved record drawing list different cable categories for that run. No physical damage is visible at either termination. What should the electrician do first?",
       "options": [
-        "Pause, verify structured-cable permanent link against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for structured-cable permanent link without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Adjust several tester settings and channel parameters together, then call any improved reading a confirmed fix.",
+        "Use the cable category noted on a similar past project without confirming what is actually installed here.",
+        "Re-terminate the largest visible connector first and record the cause only if the fault reappears.",
+        "Stop, compare the labeling and cabling against the approved record drawing, resolve the discrepancy, document findings, then retest."
       ],
-      "correctIndex": 0,
-      "explanation": "Structured-cable permanent link can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "A mismatch between the installed cable category and the approved record drawing is a documentation conflict, not confirmed damage, so the correct control step is to verify the discrepancy against approved information before touching terminations. Resolving and documenting the conflict protects certification accuracy and traceability for the owner and future testers. Changing multiple tester settings at once removes the ability to isolate which change affected the reading, so an apparent improvement proves nothing. Copying a category from an unrelated project ignores the actual installed cable and record drawing, risking a false pass. Re-terminating the largest connector without diagnosis wastes labour, may introduce new faults, and skips the documentation step needed for accountability if the marginal reading returns after work resumes.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -661,7 +661,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply structured-cable permanent link knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "707829cf2f7514b69aa10fafc7c4e9679abd729014ee2877ed55026c50c29111"
+      "contentHash": "55a8957c60c5550d2386813bdec83eabe75be3b7c59f304f4f95c3ca3291d14d"
     },
     {
       "bankItemNumber": 474,
@@ -671,15 +671,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a new installation on equipment E27-02, where another trade has changed the nearby installation, but fibre polarity has not been verified. What should happen next?",
+      "question": "After a facilities crew relocates a network rack near the intercom head-end, one paging zone in the east wing has no audio while all other zones work normally. Approved fibre records exist, but polarity was never re-verified on the reconnected run. What should the electrician do next?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify fibre polarity against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for fibre polarity."
+        "Swap the largest media converter module first, then document the reason only if the zone still fails.",
+        "Pause work, verify the fibre polarity against approved documentation, correct any mismatch, and record the result.",
+        "Close the trouble ticket and wait for a repeat complaint before collecting any fibre test data.",
+        "Accept the facilities crew's verbal assurance that connections are correct as the sole verification record."
       ],
       "correctIndex": 1,
-      "explanation": "Fibre polarity can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A single dead zone after a rack relocation points to a transmit/receive mismatch on the reconnected fibre, so the correct step is to stop, check polarity against approved documentation, fix any mismatch, and log the result for review. Swapping the converter first is tempting because it seems faster, but it wastes time and cost if polarity, not hardware, is the actual fault, and it leaves no verified record. Closing the ticket ignores an active deficiency and risks a callback or safety concern later. Relying on another trade's verbal statement is unverifiable and unacceptable as documentation, since it cannot be checked against approved records or produced for inspection. Verifying against documented polarity information and recording the outcome protects system integrity, supports troubleshooting continuity, and gives other qualified persons accurate information for future work on the same pathway.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -687,7 +687,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply fibre polarity knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "babcaa0eb711327806adfeab0ead1db8e27ba3f120bab6baf59d125ae4cbf91b"
+      "contentHash": "51246cec7a1acebb09c06b0565a6e1f56e9f19daffd3bb56bae88f29b6bfe780"
     },
     {
       "bankItemNumber": 475,
@@ -697,15 +697,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Which verification approach is most defensible for connector loss during a commissioning check on equipment E27-03, where the measured values are stable but outside the approved expectation when the electrician installs nurse-call systems?",
+      "question": "A nurse-call patch panel in a hospital corridor shows connector loss readings that are consistent across five stations but sit above the manufacturer's stated limit. Wiring appears intact and terminations look correct. What verification approach is most defensible before returning the system to service?",
       "options": [
-        "Use an operator's memory as the only acceptance record for connector loss.",
-        "Continue the work and treat final energization as the first verification of connector loss.",
-        "Verify connector loss against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept connector loss from appearance alone because similar equipment worked on a previous project."
+        "Accept the readings because a caregiver reports the call bells sound normal during a quick test.",
+        "Cross-check the readings against approved drawings, equipment ratings, manufacturer specifications, and actual site measurements before deciding.",
+        "Re-energize the panel and treat any alarm during first use as the real verification step.",
+        "Approve the panel since a similar nurse-call panel performed acceptably on an earlier hospital project."
       ],
-      "correctIndex": 2,
-      "explanation": "Connector loss can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 1,
+      "explanation": "Stable but out-of-spec connector loss readings must be checked against the approved design, connector and cable ratings, manufacturer test limits, and the actual measured site condition before acceptance, since consistent numbers do not confirm they meet performance requirements. Relying on a caregiver's informal impression ignores that call bells can still function while intelligibility, alarm routing, or dropped-call risks remain hidden. Treating energization as the test exposes patients and staff to communication failures during actual emergencies. Assuming performance from an unrelated prior project ignores differences in cable length, connector type, and pathway conditions that directly affect loss. Documented, criteria-based verification protects patient safety and gives an independent reviewer a clear, defensible record of why the system was accepted or held back for correction.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -713,7 +713,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "d3ae805eef0b019a387d8e86adef1eaefe05a0acb956db40d6ee79de657281c0"
+      "contentHash": "03b3edd3c65d6d8905534a0aff47df081198a11305f59106324001253af07e2f"
     },
     {
       "bankItemNumber": 476,
@@ -723,15 +723,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "Using the referenced conceptual diagram, after an intermittent fault investigation on equipment E27-04, where the latest approved drawing is available, the system shows a problem involving speaker loading. Which troubleshooting response is most appropriate?",
+      "question": "Using the accompanying diagram, at a distribution warehouse paging system, one 70V speaker zone has gone silent while other zones function normally. The amplifier shows an overload indicator, and the speaker tap settings differ from the approved riser drawing. What is the most appropriate troubleshooting response?",
       "options": [
-        "Accept speaker loading from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Isolate the function, test speaker loading, correct the confirmed cause, and repeat the controlled functional test."
+        "Assume the tap settings match the drawing because the zone played correctly during last month's inspection.",
+        "Disconnect the amplifier's overload protection so the zone stays active while investigating the cause later.",
+        "Re-tap several speakers throughout the building at once, then treat any volume increase as a successful repair.",
+        "Isolate the silent zone, measure line loading against the amplifier's rated output, correct the mismatched tap, then retest."
       ],
       "correctIndex": 3,
-      "explanation": "Speaker loading can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "Speaker loading is the aggregate wattage the amplifier tap must supply; a mismatched tap creates an impedance mismatch that trips overload protection and silences the zone. The correct response isolates the affected zone, measures actual line loading against the amplifier's rated capacity using the approved riser drawing as the reference, corrects the confirmed miswired tap, and repeats a controlled functional test before returning the zone to service. Assuming prior performance proves current wiring is unreliable, since taps may have been altered since the last inspection. Disabling overload protection risks further amplifier damage and defeats a safety function meant to prevent exactly this failure. Changing multiple taps simultaneously and judging success by a volume increase masks the true fault location and prevents verifying which change actually resolved the confirmed loading mismatch.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -739,7 +739,7 @@
       "diagramAlt": "Structured-cabling hierarchy from service entrance to equipment room, telecommunications room, horizontal cable and work area.",
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply speaker loading knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "d35c06eb53716d0a4ff5a44ec21a3f106f144d088fcd6c4ac5ea0b4e77e5ddf6"
+      "contentHash": "30264096f942951a0eff592048cc9c8bd2a6eafc4ceb80ac97bacd54a10c3b61"
     },
     {
       "bankItemNumber": 477,
@@ -749,15 +749,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for amplifier capacity conflicts with the approved record during a field-layout conflict on equipment E27-05, where a previous test result is available for comparison. Which response maintains control of the work?",
+      "question": "During commissioning of a CATV distribution amplifier serving twelve outlets, a technician measures output levels below the value shown on the accepted system record. A prior acceptance test performed at installation shows the amplifier met the specified output capacity at that time. What should the technician do first?",
       "options": [
-        "Pause, verify amplifier capacity against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for amplifier capacity without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Adjust several amplifier and splitter settings at once and treat any improved reception as confirmation of a fix.",
+        "Apply the gain setting used on a similar amplifier from an unrelated project without checking this system's design.",
+        "Replace the amplifier with a larger-capacity unit immediately, documenting the reason only if the problem returns.",
+        "Pause, compare current readings to the approved record and manufacturer specs, isolate the cause, then document findings before proceeding."
       ],
-      "correctIndex": 0,
-      "explanation": "Amplifier capacity can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "The measured output no longer matches the approved record even though a prior acceptance test confirmed the amplifier once met capacity, so a controlled comparison against both the record and manufacturer specifications is needed to isolate whether the cause is cable loss, splitter count, connector degradation, or amplifier drift. Documenting the finding preserves traceability for future review. Adjusting multiple settings simultaneously destroys the ability to identify which change actually caused any improvement, risking a false conclusion. Copying a gain setting from another project ignores this system's specific cable lengths, splitter losses, and coverage requirements, which vary between installations. Replacing the amplifier outright skips root-cause diagnosis, wastes resources if the real fault lies elsewhere in the pathway, and only documents after the fact rather than supporting an informed decision from the start.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -765,7 +765,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply amplifier capacity knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "34a2f530dc3fd1650bd3fe1481e23c0ec44bb0b7f9ea3a6a783ca477c3a620c6"
+      "contentHash": "61eebc783f8c25bfa43631d6e31ef76c0c714c59b91356ceac5e7da24d70ca73"
     },
     {
       "bankItemNumber": 478,
@@ -775,15 +775,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a new installation on equipment E27-06, where the work affects a critical operating load, but intercom call path has not been verified. What should happen next?",
+      "question": "On a hospital nurse-call/intercom retrofit, technicians are about to energize substation E27-06, which shares wiring with the fire-paging override circuit, but the call path routing has not been checked against the approved riser diagram. What should the crew do before proceeding?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify intercom call path against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for intercom call path."
+        "Swap the largest terminal block first and note the change only if paging fails during the next test.",
+        "Clear any existing trouble log entry and wait for a second complaint before gathering call path data.",
+        "Accept the nurse's verbal confirmation that paging previously worked as sufficient proof of correct routing.",
+        "Pause work, verify the call path against approved drawings and manufacturer instructions, resolve any discrepancy, and document findings before continuing."
       ],
-      "correctIndex": 1,
-      "explanation": "Intercom call path can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "Because the paging override shares wiring with a critical safety function, an unverified call path risks misrouted emergency announcements or lost communication to occupied areas. The correct action is to stop, compare actual wiring against the approved riser drawing and manufacturer instructions, confirm topology, terminations, and coverage, correct any mismatch, and record the verification for review before re-energizing. Swapping a component without diagnosis wastes effort and may mask the real routing fault. Waiting for another failure delays discovery of a hazard already present in a life-safety-adjacent circuit. Relying on a verbal report from an untrained occupant provides no technical assurance of correct signal path, termination integrity, or compliance with design intent. Only documented, drawing-based verification protects both system function and accountability, ensuring the installation meets its intended communication and emergency-paging performance.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -791,7 +791,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply intercom call path knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "a43ee51fc54e445167ce0650ddae49ede73b29fe625e7e4b3e9f3e5613b55764"
+      "contentHash": "2f2df616bbd3dce912ab72523e8e32189246afcac6dafb99ddb87118736cf82e"
     },
     {
       "bankItemNumber": 479,
@@ -801,15 +801,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Which verification approach is most defensible for nurse-call priority during a commissioning check on equipment E27-07, where an alarm was acknowledged but its cause was not recorded when the electrician installs nurse-call systems?",
+      "question": "During commissioning of nurse-call panel E27-07 in a hospital corridor, a staff member acknowledged a code-blue alarm but the incident log's cause field is blank. Which verification method best confirms correct alarm priority before sign-off?",
       "options": [
-        "Use an operator's memory as the only acceptance record for nurse-call priority.",
-        "Continue the work and treat final energization as the first verification of nurse-call priority.",
-        "Verify nurse-call priority against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept nurse-call priority from appearance alone because similar equipment worked on a previous project."
+        "Rely on the staff member's recollection as the sole record confirming alarm priority assignment.",
+        "Complete installation and let final system energization serve as the first priority verification.",
+        "Compare the approved design, equipment ratings, manufacturer specs, and measured panel response to confirm priority.",
+        "Accept the priority setting because a similar panel functioned correctly on a prior job."
       ],
       "correctIndex": 2,
-      "explanation": "Nurse-call priority can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The missing cause entry means the alarm's priority classification cannot be traced through documentation alone, so the electrician must independently confirm it against the approved design, the equipment's listed rating, manufacturer configuration data, and an actual measured response at the panel. This creates a verifiable, repeatable record suitable for commissioning sign-off and future audits. Relying on the staff member's memory is tempting because it seems like direct evidence, but recollection is subjective, unrecorded, and cannot be independently checked later, especially in a life-safety system. Waiting until final energization to test priority is unsafe because errors would only surface after the system is live and potentially relied upon during an emergency. Assuming correctness from a similar prior installation ignores that panel configuration, wiring, and priority mapping are site-specific and must be confirmed for this installation, not inferred from past experience.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -817,7 +817,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply nurse-call priority knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "ebdc245bf0dc4be2765ebd2796da20d6f7759104fd0ca8f826b7a2f89fbd8edf"
+      "contentHash": "99f55620c50650d4cc4740a4be7d5de9ebdd044122606da18898d269f281a4b4"
     },
     {
       "bankItemNumber": 480,
@@ -827,15 +827,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "After an intermittent fault investigation on equipment E27-08, where the installation must remain traceable for the next shift, the system shows a problem involving cable bend control. Which troubleshooting response is most appropriate?",
+      "question": "A data cabinet reports intermittent link drops on one riser only during evening peak load. Visual inspection finds that riser cable looped tightly around a rack corner with a bend radius far under the jacket's rated minimum, and the fault must remain traceable for the incoming shift. What is the most appropriate troubleshooting response?",
       "options": [
-        "Accept cable bend control from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Isolate the function, test cable bend control, correct the confirmed cause, and repeat the controlled functional test."
+        "Accept the cable as adequate from a quick visual check since a similar run performed fine on another site.",
+        "Remove the strain relief clamp temporarily so the link stays live while the suspected cause is assumed.",
+        "Adjust several patch panel and switch port settings together, then call any brief stability improvement proof of repair.",
+        "Isolate the riser link, test cable bend compliance, correct the confirmed tight bend, then repeat the controlled functional test."
       ],
       "correctIndex": 3,
-      "explanation": "Cable bend control can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "Excessive bend radius stresses conductors or fiber cores, producing intermittent attenuation, crosstalk, or dropped links that worsen under load or heat cycling. The correct approach isolates the affected riser, measures actual bend radius against manufacturer minimums, corrects the confirmed cause with proper dressing and support, then re-runs a controlled functional test while documenting readings for the next shift. Accepting appearance alone ignores that damage is often invisible externally. Removing strain relief to keep the link live bypasses verification and risks further degradation or safety issues. Changing multiple settings at once and crediting temporary improvement to the fix is unreliable, since load variation or coincidence could explain the change, leaving the true bend fault undocumented and likely to recur once conditions shift again.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -843,7 +843,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply cable bend control knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "131d2eb6b3803173c965850c9bf5aaf060001060ec9387550c2de012fc63d734"
+      "contentHash": "09dbc494aad92e048b7b44777fe60c190db291c09e59f806ace25420245fbcc0"
     },
     {
       "bankItemNumber": 481,
@@ -853,15 +853,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for telecommunications grounding conflicts with the approved record during a field-layout conflict on equipment E27-09, where the condition is intermittent. Which response maintains control of the work?",
+      "question": "During a service call, you find the telecom rack's bonding conductor terminates on a nearby water pipe instead of the point shown on the approved riser diagram. Intermittent static appears on VoIP lines whenever adjacent equipment cycles on. What is the correct next step?",
       "options": [
-        "Pause, verify telecommunications grounding against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for telecommunications grounding without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Add a second bonding conductor to the water pipe to reinforce the connection without checking the riser diagram.",
+        "Assume the water pipe bond is acceptable since the static only occurs occasionally and equipment still functions.",
+        "Disconnect the existing bond entirely and leave the rack floating until an inspector happens to arrive.",
+        "Stop work, compare the bonding path to the approved riser diagram and manufacturer instructions, correct the discrepancy, then document and verify."
       ],
-      "correctIndex": 0,
-      "explanation": "Telecommunications grounding can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "The static appears whenever nearby equipment cycles, showing the bonding path is not providing a stable low-impedance reference as intended by the approved riser diagram. Stopping to compare the actual termination against approved documentation and manufacturer instructions identifies the discrepancy so it can be corrected and verified, restoring predictable performance and creating a record for review. Adding a second conductor to the same incorrect point reinforces the wrong reference instead of fixing it. Treating intermittent noise as acceptable ignores real evidence of a grounding problem. Disconnecting the bond entirely removes a required reference path and leaves equipment unprotected while waiting on an inspector, which is not a controlled or documented response. Verifying against approved information before making any change keeps the work traceable and defensible.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -869,7 +869,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply telecommunications grounding knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "4725d82191471d42f719de8bae3252316b37f168bfb60011ad09e7718f0f9bfe"
+      "contentHash": "6f2b27e73bca963759747fd67b82bb3556519c515349a593e999b625ce6c9a74"
     },
     {
       "bankItemNumber": 482,
@@ -879,15 +879,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "The crew is ready to continue during a new installation on equipment E27-10, where the system is being prepared for return to service, but certification result has not been verified. What should happen next?",
+      "question": "While closing out a hospital paging system upgrade, the electrician finds zone 4's speaker output test result missing from the certification package, though all other zones show recorded values. What should happen next?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Pause, verify certification result against approved information, resolve the discrepancy, document it, and then continue.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for certification result."
+        "Assume zone 4 passed since neighboring zones passed and submit the closeout package for sign-off.",
+        "Pause, verify zone 4's certification result against approved test criteria, resolve the discrepancy, document it, then continue.",
+        "Substitute the averaged results from surrounding zones into zone 4's record and close the file.",
+        "Re-run only a continuity check on zone 4's cabling and skip the audio level measurement."
       ],
       "correctIndex": 1,
-      "explanation": "Certification result can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A missing certification result is a discrepancy against the approved acceptance criteria, not an assumption to fill in. Zone 4 may have a wiring fault, incorrect amplifier tap, or coverage gap specific to that circuit, so borrowing neighboring zone data or averaging results could mask a real deficiency in a life-safety paging system. Testing continuity alone ignores required intelligibility and output level verification. The correct approach is to stop, compare the actual zone 4 measurement against the approved acceptance information, take the actual reading if it was never captured, document the resolution, and only then proceed with sign-off. This preserves accurate, defensible test records and ensures the system performs as designed before returning it to service.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -895,7 +895,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.02",
       "blueprintObjective": "Apply certification result knowledge while the electrician installs public-address and intercom systems.",
-      "contentHash": "a178c9f109942f9304f9c95035566aabe7dcdf9488904a2c6be9f21574ae07e0"
+      "contentHash": "6d44f94f12ce463465b28c09720d749600e4d12f7e2fb87cf53465b817de6db2"
     },
     {
       "bankItemNumber": 483,
@@ -905,15 +905,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Which verification approach is most defensible for structured-cable permanent link during a commissioning check on equipment E27-11, where the current nameplate differs from an older record when the electrician installs nurse-call systems?",
+      "question": "At Ward 4B, a nurse-call permanent link commissioning test shows the call station's equipment nameplate rating differs from the as-built record filed two years earlier. Which verification approach best confirms the structured-cable permanent link before the station is energized for patient use?",
       "options": [
-        "Use an operator's memory as the only acceptance record for structured-cable permanent link.",
-        "Continue the work and treat final energization as the first verification of structured-cable permanent link.",
-        "Verify structured-cable permanent link against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Accept structured-cable permanent link from appearance alone because similar equipment worked on a previous project."
+        "Rely on the nursing staff's recollection of the original installation as the sole acceptance basis.",
+        "Energize the call station first and treat the resulting alarm response as the verification test.",
+        "Compare the permanent link against the approved design, current nameplate data, and measured field test results.",
+        "Accept the link as correct because a similar nurse-call station performed well on another floor."
       ],
       "correctIndex": 2,
-      "explanation": "Structured-cable permanent link can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The nameplate discrepancy is direct evidence that the as-built record can no longer be trusted, so the permanent link must be reverified against the approved design, the equipment actually installed, and measured test data such as length, wire map, and attenuation limits before the station is placed into service. Energizing first and using the alarm response as proof is tempting because it seems efficient, but a partial or intermittent fault can still trigger an alarm while leaving the link out of specification, risking missed calls later. Relying on staff memory or comparing to an unrelated station ignores the specific documented mismatch and provides no measurable basis for acceptance. Only a documented comparison against current design and test data gives a defensible, repeatable verification suitable for a patient-safety system.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -921,7 +921,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.03",
       "blueprintObjective": "Apply structured-cable permanent link knowledge while the electrician installs nurse-call systems.",
-      "contentHash": "bbd6c6bdfbfd706c79045e84954da6d0ae3add83a0695ef38537af2dc18b66d2"
+      "contentHash": "1632bdc0cb068932ed9b73d53bde6c945e7965d7a64f83039c1a9a732cac88b8"
     },
     {
       "bankItemNumber": 484,
@@ -931,15 +931,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "After an intermittent fault investigation on equipment E27-12, where the deficiency was discovered during a controlled functional test, the system shows a problem involving fibre polarity. Which troubleshooting response is most appropriate?",
+      "question": "A duplex fibre run feeding a nurse call annunciator panel shows an intermittent link-light dropout after a patch cord swap. The technician suspects a transmit/receive mismatch rather than a damaged strand. What is the most appropriate troubleshooting response?",
       "options": [
-        "Accept fibre polarity from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Isolate the function, test fibre polarity, correct the confirmed cause, and repeat the controlled functional test."
+        "Assume polarity is fine because an identical panel worked correctly on a prior hospital project.",
+        "Leave the verification step out so the nurse call system stays live while the cause is guessed.",
+        "Swap several unrelated patch cords at once and call any brief improvement proof the fault is fixed.",
+        "Isolate the affected link, verify fibre polarity with proper test equipment, correct the confirmed cause, then repeat the functional test."
       ],
       "correctIndex": 3,
-      "explanation": "Fibre polarity can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The dropout pattern points to a possible transmit/receive polarity mismatch introduced by the patch cord swap, not a random strand failure, so the link must be isolated and polarity confirmed with test equipment before any repair is trusted. Correcting only the verified cause and repeating the functional test confirms the fix on evidence, which matters on a life-safety nurse call circuit. Assuming polarity is fine based on a past project ignores the specific evidence at hand. Skipping isolation risks masking an intermittent fault on a critical system while it stays energized. Changing multiple cords simultaneously destroys the ability to link any single change to the outcome, so a temporary improvement proves nothing about the actual cause. Only a controlled, evidence-based isolate-verify-correct-retest sequence reliably identifies and resolves the polarity fault.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -947,7 +947,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.04",
       "blueprintObjective": "Apply fibre polarity knowledge while the electrician services and maintains communication systems.",
-      "contentHash": "fa4ba860e8faac184eb7249e44a7bd02ec95f4279485c3c06464a7b2573dc883"
+      "contentHash": "b0485b909d3520d3ce202141bba720ff013643d25ad420b23eef6ce0d30156ea"
     },
     {
       "bankItemNumber": 485,
@@ -957,15 +957,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for connector loss conflicts with the approved record during a field-layout conflict on equipment E27-13, where the issue appears only when the load increases. Which response maintains control of the work?",
+      "question": "During data-network commissioning, a CATV distribution segment shows a clear picture off-peak but pixelates whenever subscriber load peaks each evening. Field connector-loss readings at junction J-14 differ from the approved design record. What is the correct next action?",
       "options": [
-        "Pause, verify connector loss against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for connector loss without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Swap several connectors along the run simultaneously and treat any temporary evening improvement as confirmation of a repair.",
+        "Apply the connector loss value used on a previous unrelated CATV installation without confirming it fits this design.",
+        "Replace the entire distribution panel first and only document the discrepancy if the pixelation problem returns.",
+        "Pause work, verify the connector loss reading against approved design documentation, isolate and resolve the discrepancy, then document before proceeding."
       ],
-      "correctIndex": 0,
-      "explanation": "Connector loss can directly affect poor signal quality, crosstalk, dropped communication, inadequate intelligibility or incorrect call routing. The reliable approach is to use system topology, cable performance, pathway separation, termination method, equipment power, coverage and documented test limits, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 3,
+      "explanation": "Connector loss that only becomes visible under peak load points to a marginal termination meeting tolerance only when signal demand is low. Comparing the field reading against the approved design record isolates whether the cause is a documentation error or a physical connector fault before more work proceeds. Pausing to verify and document preserves an accurate record for other trades and future troubleshooting. Swapping several connectors at once destroys the ability to identify which change actually caused any improvement, and a transient overnight readback is not reliable proof of repair. Reusing a value from an unrelated installation ignores this system's actual cable length and topology. Replacing the whole panel is costly, skips root-cause verification, and leaves the discrepancy unexplained for the next technician to encounter.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -973,7 +973,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-27, Sub-task E-27.01",
       "blueprintObjective": "Apply connector loss knowledge while the electrician installs voice/data/video and catv systems.",
-      "contentHash": "639721a66a96120654c4cf773d2a29930f4e01b7f738a6b24ef41ab4c3d6b1c0"
+      "contentHash": "5dbda8af88c382a269846598b8f37e65e0f8ccedf51087aca617d643ee337e33"
     },
     {
       "bankItemNumber": 486,
@@ -983,15 +983,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the referenced conceptual diagram, why should sensor scaling be confirmed before work continues during a maintenance outage on equipment E28-01, where the equipment has recently been replaced where the electrician installs building automation systems?",
+      "question": "A newly installed discharge-air temperature sensor on rooftop unit RTU-4 is causing the building automation controller to command full heating even though the space reads warm. Referencing the closed-loop diagram, what should the electrician do before returning the loop to automatic control?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Verify sensor scaling against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for sensor scaling."
+        "Force the actuator to a fixed position and leave the loop in manual permanently.",
+        "Confirm the sensor's scaling matches approved design, device rating, manufacturer data, and actual measured input.",
+        "Silence the alarm and monitor trends until another complaint is received.",
+        "Rely on the previous technician's verbal description of the sensor range."
       ],
       "correctIndex": 1,
-      "explanation": "Sensor scaling can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The controller's decision is only as good as the feedback it receives, so a scaling mismatch between the sensor's actual output range and the value the controller expects will make the loop respond incorrectly even though wiring and power are fine. Comparing the sensor to approved design documents, its nameplate rating, manufacturer scaling data, and a measured site reading verifies the feedback path before automatic control resumes. Forcing the actuator hides the fault instead of correcting it, silencing the alarm removes evidence needed for diagnosis, and trusting an unverified verbal description offers no documented basis for the safety-critical decision. Only a confirmed, recorded scaling check ensures the loop will behave predictably once released to automatic operation.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -999,7 +999,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply sensor scaling knowledge while the electrician installs building automation systems.",
-      "contentHash": "35ddd6fa22268dc6a21774b4bdb778f8f83586399d2d1b5a53bc712447769076"
+      "contentHash": "4fc84feb5ef225399fb644b9d47e0eb144b3f1d373487995a4105fd32c510da4"
     },
     {
       "bankItemNumber": 487,
@@ -1009,15 +1009,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a post-repair test on equipment E28-02, where the enclosure shows no obvious mechanical damage, a technician proposes accepting controller setpoint based on a previous job. What should the supervising electrician require?",
+      "question": "After a firmware update on a rooftop unit controller, the displayed discharge-air setpoint no longer matches the commissioning report on file. A technician suggests re-entering the setpoint from memory of a similar past project to save time before energizing the unit. What should the supervising electrician direct?",
       "options": [
-        "Use an operator's memory as the only acceptance record for controller setpoint.",
-        "Continue the work and treat final energization as the first verification of controller setpoint.",
-        "Pause, verify controller setpoint against approved information, resolve the discrepancy, document it, and then continue.",
-        "Accept controller setpoint from appearance alone because similar equipment worked on a previous project."
+        "Allow the remembered value to be entered now and confirm accuracy at the next scheduled service visit.",
+        "Energize the unit and judge setpoint accuracy from how the airflow and temperature respond initially.",
+        "Stop work, verify the setpoint against the approved sequence of operation, resolve the mismatch, and document it.",
+        "Accept the technician's remembered value since the earlier project used comparable rooftop equipment and controls."
       ],
       "correctIndex": 2,
-      "explanation": "Controller setpoint can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A firmware update can silently alter stored parameters, points mapping, or default values, so a mismatch against the commissioning report is a real discrepancy, not a nuisance display error. Relying on memory from a different project risks applying an incompatible sequence, wrong fail-safe behaviour, or an unsafe operating range for this specific unit. The correct response is to pause work, compare the displayed setpoint against approved sequence-of-operation documentation, identify why it changed, correct it, and record the resolution before energizing. Energizing first and judging by airflow response only confirms gross malfunction, not accuracy, and could mask a hazardous or inefficient condition. Deferring verification to a later visit leaves the unit running on unverified control data in the meantime, which is unacceptable when documentation conflicts are already known and correctable now.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1025,7 +1025,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician installs building control systems.",
-      "contentHash": "2d2b4762720c546fcd34d1bda44fd61cf17e1811f60685377caea4be2982f682"
+      "contentHash": "a880601dcab88aa77bbbff1986442a27809fb38bc365374157d6e0659aff5e79"
     },
     {
       "bankItemNumber": 488,
@@ -1035,15 +1035,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "After a documented inspection on equipment E28-03, where another trade has changed the nearby installation, the system shows a problem involving actuator direction. Which troubleshooting response is most appropriate?",
+      "question": "A zone damper actuator on an AHU is commanded closed by the control sequence, yet trend logs and direct observation show it fully open, discovered right after a mechanical contractor replaced the damper linkage. Which troubleshooting response is most appropriate?",
       "options": [
-        "Accept actuator direction from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Isolate the function, test actuator direction, correct the confirmed cause, and repeat the controlled functional test."
+        "Accept actuator direction from appearance alone because similar dampers behaved correctly on another job site.",
+        "Bypass the interlock so the AHU stays online while assuming the linkage alone caused the fault.",
+        "Adjust several controller parameters simultaneously and treat any temporary airflow change as confirmation.",
+        "Isolate the damper function, verify actuator direction, correct the confirmed wiring or linkage fault, then repeat the controlled functional test."
       ],
       "correctIndex": 3,
-      "explanation": "Actuator direction can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The evidence—commanded closed versus feedback and observed open, timed to linkage work by another trade—points to a reversed actuator connection or mismatched coupling introduced during that work. Isolating the function stops uncontrolled airflow while the actuator is tested against the sequence, letting the technician confirm whether wiring, coupling orientation, or configuration is the true cause before making a single corrected change and retesting under controlled conditions. Accepting appearance from unrelated equipment ignores this specific fault signature and risks leaving reversed action in place. Bypassing the interlock keeps the AHU running but permits continued incorrect airflow, wasting energy or causing comfort complaints. Changing multiple parameters at once and crediting any airflow shift as proof confuses coincidence with correction, since the actual reversed direction may remain uncorrected while another variable masked the symptom temporarily.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1051,7 +1051,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "514e660a3f3dff45a7dab8f7a39cabe7a2e2db3cab9df53216ea8f2b868643d2"
+      "contentHash": "65d9f8717cc67f3d61fcc892b071abca6f7564bebfaf10ace185774549936aa4"
     },
     {
       "bankItemNumber": 489,
@@ -1061,15 +1061,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for occupied schedule conflicts with the approved record during a planned upgrade on equipment E28-04, where the measured values are stable but outside the approved expectation. Which response maintains control of the work?",
+      "question": "During BAS controller commissioning for zone AHU-3, the programmed occupied schedule shows continuous occupied mode, while the approved sequence of operations specifies occupied mode only weekdays 06:00-18:00. Trend logs confirm stable operation despite the mismatch with the approved document. Which response maintains control of the work?",
       "options": [
-        "Pause, verify occupied schedule against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for occupied schedule without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Leave the schedule as programmed since equipment operates stably and no comfort complaints have been received.",
+        "Copy the occupied schedule used on a similar building's AHU without confirming it matches this project's approved sequence.",
+        "Pause work, compare the programmed schedule to the approved sequence of operations, correct the discrepancy, and document the change.",
+        "Adjust several unrelated schedule points at once and assume improvement means the schedule conflict is resolved."
       ],
-      "correctIndex": 0,
-      "explanation": "Occupied schedule can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 2,
+      "explanation": "Stable trend data does not confirm the occupied schedule matches the approved sequence of operations; continuous occupied mode wastes energy, defeats security scheduling, and can mask a programming error. The reliable response is to pause, compare the controller's schedule against the approved sequence, correct the discrepancy, and log the change so the commissioning record reflects the verified configuration. Leaving the schedule unchanged because operation seems stable ignores the conflict with approved design intent and risks accepting an unauthorized deviation. Copying a schedule from another project assumes point mapping and building use are identical, which is rarely true and can introduce new conflicts. Adjusting multiple schedule points simultaneously without isolating the cause makes it impossible to confirm which change resolved the discrepancy, undermining traceability. Controlled verification against approved documentation, followed by a single corrective action and clear documentation, preserves accountability and supports safe, compliant building automation commissioning.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1077,7 +1077,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply occupied schedule knowledge while the electrician installs building automation systems.",
-      "contentHash": "451c24dcfdf3f1131b64be1feeb77b75c4628004207baea5d7d8350e948203f6"
+      "contentHash": "d0d3741accbc89f9d37e9752b629b55e10227d0a1a5f66cc34446e682eb71fdc"
     },
     {
       "bankItemNumber": 490,
@@ -1087,15 +1087,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Why should alarm mapping be confirmed before work continues during a maintenance outage on equipment E28-05, where the latest approved drawing is available where the electrician installs building control systems?",
+      "question": "A replacement DDC controller for AHU-3 shows the smoke-detector alarm point linked to the wrong zone on the operator graphics screen. Before commissioning continues, what should the electrician do to confirm the alarm mapping is correct?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Verify alarm mapping against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for alarm mapping."
+        "Force the alarm point clear on the graphics and continue commissioning without further checks.",
+        "Replace the DDC controller a second time before checking any wiring or configuration records.",
+        "Verify the alarm mapping against the approved points list, sequence of operation, and manufacturer configuration data.",
+        "Accept the operator's verbal description of normal zone behaviour as sufficient confirmation."
       ],
-      "correctIndex": 1,
-      "explanation": "Alarm mapping can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 2,
+      "explanation": "A mismatched alarm point can send a life-safety signal to the wrong zone, delaying response or masking a real hazard. The approved points list and sequence of operation define the intended addressing and logic, while manufacturer configuration data confirms the controller was set up correctly after replacement; comparing all three against measured input/output behaviour verifies the mapping before the system is trusted. Forcing the alarm clear hides the discrepancy rather than resolving it and risks leaving a life-safety point unmonitored. Swapping the controller again wastes time and may not fix a configuration or wiring error, since the fault could originate in addressing rather than hardware. Relying on an operator's memory of normal behaviour provides no documented evidence and cannot substitute for verified design records during commissioning.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1103,7 +1103,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply alarm mapping knowledge while the electrician installs building control systems.",
-      "contentHash": "515c23520694c872edc82117f3e8c240840e9cdbf88d3fdf51785ec5ad35dfec"
+      "contentHash": "7465c03bc690943b3b840f4e86743aefec9f283522ee5dc32711eb518ac29e70"
     },
     {
       "bankItemNumber": 491,
@@ -1113,15 +1113,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a post-repair test on equipment E28-06, where a previous test result is available for comparison, a technician proposes accepting network point mapping based on a previous job. What should the supervising electrician require?",
+      "question": "After swapping a failed controller on air handler E28-06, a technician notices the new device's point addresses differ slightly from the archived commissioning report. Recalling a similar job, the technician wants to reuse that old mapping without further checks. What must the supervising electrician require before energizing the system?",
       "options": [
-        "Use an operator's memory as the only acceptance record for network point mapping.",
-        "Continue the work and treat final energization as the first verification of network point mapping.",
-        "Pause, verify network point mapping against approved information, resolve the discrepancy, document it, and then continue.",
-        "Accept network point mapping from appearance alone because similar equipment worked on a previous project."
+        "Accept the technician's memory of the prior job as sufficient proof of correct mapping.",
+        "Energize the system and treat the first live sequence as the verification step.",
+        "Pause work, compare the new mapping to approved documentation, resolve any discrepancy, and record the outcome before proceeding.",
+        "Approve the mapping because the equipment looks identical to the earlier installation."
       ],
       "correctIndex": 2,
-      "explanation": "Network point mapping can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "A mismatch between the new controller's addresses and the approved commissioning report is a documented discrepancy, not a matter of memory or visual similarity. Incorrect point mapping on E28-06 could cause false alarms, wrong actuator response, or loss of fail-safe control once energized, so verification must occur before power is restored. Relying on recollection from a different job ignores that hardware revisions, firmware, or wiring can change addressing even on similar equipment. Energizing first and treating live operation as the test risks unsafe or unstable control action. The correct practice is to pause, cross-check the new mapping against the approved points list and sequence documentation, correct any deviation, and log the resolution so the change is traceable for future service or inspection. This protects both system integrity and worker accountability.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1129,7 +1129,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply network point mapping knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "cbf3005e7d55c292658859b8c3f8c2c2c1cb3a7039bf707fb56662982723c313"
+      "contentHash": "6ff59e0c84309a1b18211097c30321065bd7c241e8c67ffd35227ad46f607519"
     },
     {
       "bankItemNumber": 492,
@@ -1139,15 +1139,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "After a documented inspection on equipment E28-07, where the work affects a critical operating load, the system shows a problem involving fail-safe state. Which troubleshooting response is most appropriate?",
+      "question": "During commissioning of a hot water valve actuator serving a critical process heating loop, a simulated power-loss test shows the valve driving fully open instead of the specified fail-closed position, risking overheating. What is the most appropriate troubleshooting response?",
       "options": [
-        "Accept fail-safe state from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Isolate the function, test fail-safe state, correct the confirmed cause, and repeat the controlled functional test."
+        "Accept the vendor's fail-safe claim without testing because the same actuator model performed correctly on another site.",
+        "Bypass the fail-safe verification step to keep the loop online while assuming the actuator spring is fine.",
+        "Adjust several actuator and controller parameters together, then call any brief stabilization proof of correction.",
+        "Isolate the valve function, verify the fail-safe response, correct the confirmed cause, then repeat the controlled functional test."
       ],
       "correctIndex": 3,
-      "explanation": "Fail-safe state can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The observed evidence—an actuator driving open instead of the specified closed position during a simulated power-loss test—confirms a fail-safe fault that could overheat a critical process loop. Isolating the function, retesting against approved sequence documentation, correcting only the confirmed cause (such as spring return failure or wrong fail action configuration), and repeating the controlled test verifies the fix without introducing new risk. Accepting the vendor's claim ignores contrary test evidence from this specific installation. Bypassing verification to keep the loop online leaves an unconfirmed, unsafe fail-safe state in place. Changing multiple parameters simultaneously prevents isolating which change actually corrected the fault, and treating temporary stabilization as proof risks masking an intermittent or unresolved failure mode that could recur under real power-loss conditions.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1155,7 +1155,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply fail-safe state knowledge while the electrician installs building automation systems.",
-      "contentHash": "d3a6e35c96e1878536d5ab61ede7b736557e2a678f95f0a32ac2f8e1060929bc"
+      "contentHash": "470562b5d09506cd0c43735bf577ea51eafbdfb4884dca7c42e41e1eec526885"
     },
     {
       "bankItemNumber": 493,
@@ -1165,15 +1165,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for trend comparison conflicts with the approved record during a planned upgrade on equipment E28-08, where an alarm was acknowledged but its cause was not recorded. Which response maintains control of the work?",
+      "question": "While reviewing trend logs for an air-handling unit controller, an electrician notices the supply-air temperature trace diverges from the commissioned setpoint curve after a recent firmware update. An alarm was acknowledged, but no cause was logged. What action maintains proper control of the situation?",
       "options": [
-        "Pause, verify trend comparison against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for trend comparison without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Adjust several loop tuning parameters at once and treat any temporary stabilization as proof the issue is fixed.",
+        "Apply the trend baseline from a similar AHU in another building without verifying this unit's actual sequence.",
+        "Pause, compare the trend data to the approved sequence of operations, resolve the discrepancy, and document findings before proceeding.",
+        "Replace the sensor with the greatest calibration drift first and document the cause only if the fault returns."
       ],
-      "correctIndex": 0,
-      "explanation": "Trend comparison can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 2,
+      "explanation": "An undocumented alarm and a trend that no longer matches the commissioned setpoint curve signal an unverified control discrepancy, not a confirmed hardware fault. The correct response is to stop, compare live trend data against the approved sequence of operations and commissioning records, identify the actual cause, and log the resolution before continuing—this preserves an auditable, verifiable change history. Adjusting multiple parameters simultaneously masks the true cause and makes any apparent improvement unreliable. Borrowing a baseline from a different unit ignores this AHU's specific sequence and equipment configuration, risking incorrect commands. Replacing hardware before confirming the cause wastes resources and may leave the real fault unresolved, since the discrepancy could stem from firmware logic changes rather than sensor drift.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1181,7 +1181,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply trend comparison knowledge while the electrician installs building control systems.",
-      "contentHash": "d9d298d69420165e6f4779eef799dfb5f7a5ee8ec640e320dff8abd97d015145"
+      "contentHash": "f0150bcb5210901142d3d6ca8ed57dfdd23d574a2c16b87b6c9784a933b19b5f"
     },
     {
       "bankItemNumber": 494,
@@ -1191,15 +1191,15 @@
       "difficulty": "medium",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Why should override status be confirmed before work continues during a maintenance outage on equipment E28-09, where the installation must remain traceable for the next shift where the electrician services and maintains integrated control systems?",
+      "question": "An AHU has run in manual override for several months after a nuisance alarm. A tenant fit-up now requires automatic sequence control to resume. Before removing the override on unit E28-09, what should the electrician confirm first?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Verify override status against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for override status."
+        "Swap the largest nearby device and log the fix only if the fault recurs later.",
+        "Confirm override status against the approved control drawings, equipment ratings, manufacturer data, and current field readings.",
+        "Clear the alarm history and wait for a repeat failure before collecting diagnostic data.",
+        "Rely solely on the operator's verbal recollection to justify why the override was applied."
       ],
       "correctIndex": 1,
-      "explanation": "Override status can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "An extended override can mask a real fault, so returning to automatic control without verification risks unstable operation, incorrect commands, or loss of protective action. Comparing override status against approved drawings, rated equipment parameters, manufacturer data, and measured field conditions confirms whether the original cause is resolved before restoring automatic sequencing. Swapping the largest nearby device guesses at a cause without diagnosis and delays proper documentation. Clearing alarm history destroys evidence needed to trace the fault and forces reliance on recurrence rather than analysis. Trusting an operator's memory alone provides no verifiable record and cannot substitute for measured data or approved design references. Only the verified, documented comparison supports a safe, traceable decision that the next shift or reviewer can independently confirm.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1207,7 +1207,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply override status knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "84522cab4276bf8c50d31f7ecdc40132d8e2334e7ff277288f89119e099dd003"
+      "contentHash": "02c6675078327dc92420b64c0454c09822ebe257465696a4bca8d678b0d4b566"
     },
     {
       "bankItemNumber": 495,
@@ -1217,15 +1217,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "The maintenance record shows a recurring problem with sequence commissioning during a post-repair test on equipment E28-10, where the condition is intermittent. Which response is most reliable?",
+      "question": "Trend logs on a rooftop AHU show its heating/cooling sequence intermittently skips a stage every third cycle, but only during shoulder-season mornings. Occupants report brief temperature swings. Which response gives the most reliable resolution?",
       "options": [
-        "Use an operator's memory as the only acceptance record for sequence commissioning.",
-        "Continue the work and treat final energization as the first verification of sequence commissioning.",
-        "Isolate the function, test sequence commissioning, correct the confirmed cause, and repeat the controlled functional test.",
-        "Accept sequence commissioning from appearance alone because similar equipment worked on a previous project."
+        "Rely on the building operator's recollection of past behaviour as the acceptance record for the sequence.",
+        "Complete remaining programming and treat the next full energization as the first check of the sequence.",
+        "Isolate the affected control loop, test the sequence logic, fix the confirmed cause, then repeat a controlled functional test.",
+        "Accept the sequence as correct because an identical AHU performed properly on a prior job site."
       ],
       "correctIndex": 2,
-      "explanation": "Sequence commissioning can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "An intermittent staging fault tied to a specific temperature window points to a real but occasional condition-such as a sensor drift, timer race, or point-mapping error-that only a controlled, isolated test can confirm and fix. Isolating the loop lets the technician force conditions matching the reported pattern, verify the corrected logic against the points list and sequence description, and repeat the functional test to prove the fix holds before returning it to normal service. Relying on memory or a colleague's past success ignores this unit's actual trend data. Treating energization as the first test risks repeating the fault live during occupied hours, and assuming correctness from a similar prior installation overlooks documented evidence that this specific sequence is behaving incorrectly. Only a targeted, repeatable verification against recorded evidence and approved commissioning documentation reliably closes out an intermittent fault.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1233,7 +1233,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply sequence commissioning knowledge while the electrician installs building automation systems.",
-      "contentHash": "f9b64d10a3aa938fc67249ac2e8c25159cfc1745e0d445a77a20c6229e8ff046"
+      "contentHash": "796ee101ad24a978b9ab734d83d731f99fecf03a305bb649714c41cad3576cec"
     },
     {
       "bankItemNumber": 496,
@@ -1243,15 +1243,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Using the referenced conceptual diagram, during a documented inspection on equipment E28-11, where the system is being prepared for return to service, the crew finds that sensor scaling does not match the approved information. What should the electrician do next?",
+      "question": "While commissioning a rooftop unit's discharge air sensor loop (see diagram), the electrician compares the transmitter's scaling to the approved points list and finds the range set at 0-50°C instead of the specified 0-100°C, causing valve hunting. What is the correct next action?",
       "options": [
-        "Accept sensor scaling from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Pause, verify sensor scaling against approved information, resolve the discrepancy, document it, and then continue."
+        "Accept the current scaling since a similar sensor performed acceptably on a prior rooftop unit project.",
+        "Bypass the controller's verification step so the zone stays online while assuming the cause.",
+        "Adjust several unrelated controller parameters together, then treat any brief stability as confirmation.",
+        "Pause the loop, verify scaling against the approved points list, correct it, document, then resume."
       ],
       "correctIndex": 3,
-      "explanation": "Sensor scaling can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The evidence shows a scaling mismatch that directly explains the valve hunting, so the electrician must stop, confirm the correct range against the approved points list, apply the fix, and record the change before returning the loop to automatic control. This protects sequence integrity and gives a verifiable audit trail. Accepting scaling from a past project ignores that ranges are equipment- and application-specific. Bypassing verification to keep the zone online risks continued unstable control and masks the real fault. Changing multiple unrelated parameters at once destroys the ability to isolate which change fixed the problem, since any apparent stability could result from an unrelated adjustment rather than the actual scaling correction, leaving the root cause undocumented and unresolved for future troubleshooting or code compliance review.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1259,7 +1259,7 @@
       "diagramAlt": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback.",
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply sensor scaling knowledge while the electrician installs building control systems.",
-      "contentHash": "2c80a0d12f161fb99833a2911170b2a4ca6d42379ea2f9051dfa92ada8e97dd1"
+      "contentHash": "25b2a737c4d95fa3e8c15625ac216e306d262440f9de1447c7a04aad00aa05d5"
     },
     {
       "bankItemNumber": 497,
@@ -1269,15 +1269,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "Field information for controller setpoint conflicts with the approved record during a planned upgrade on equipment E28-12, where the current nameplate differs from an older record. Which response maintains control of the work?",
+      "question": "During a service call for tenant overheating complaints on air handler AHU-6, the electrician finds the displayed controller setpoint does not match the sequence of operations document supplied by the design engineer. What response maintains proper control of the work?",
       "options": [
-        "Pause, verify controller setpoint against approved information, resolve the discrepancy, document it, and then continue.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Copy the previous project's setting for controller setpoint without checking the present equipment or design.",
-        "Replace the largest accessible component first and document the reason only if the problem returns."
+        "Adjust several unrelated setpoints at once and judge success by whether the complaints eventually stop.",
+        "Match the setpoint to a similar building's configuration from memory without confirming the current sequence of operations.",
+        "Pause work, verify the setpoint against the approved sequence of operations, resolve the mismatch, then document it before continuing.",
+        "Replace the temperature sensor first because it is easiest, and log the mismatch only if complaints continue."
       ],
-      "correctIndex": 0,
-      "explanation": "Controller setpoint can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "correctIndex": 2,
+      "explanation": "An unexplained setpoint mismatch can point to a wrong install, a revised sequence, or a failed component; changing values without confirming the approved reference risks masking the real fault and destabilizing control. The correct approach uses the sequence of operations, points list, and commissioning records to confirm what the setpoint should be, resolves the discrepancy through one controlled, verifiable change, and documents the finding for review. Adjusting multiple settings together removes the ability to isolate cause and effect, and treating complaint resolution as proof of correctness ignores the underlying data. Relying on memory from another site substitutes assumption for verification against current design documents. Replacing hardware before confirming the setpoint is correct wastes effort and may hide a configuration error, so isolating and documenting the discrepancy first preserves an accurate, traceable record for any future troubleshooting.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1285,7 +1285,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply controller setpoint knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "35b7753b725e10be68325514f8996ed463d6871f853e5ca58430e15cd5ad0561"
+      "contentHash": "913438326c549e1da1e12bfadee11f74b191620af0e58bf7a5efe3f1a6d22030"
     },
     {
       "bankItemNumber": 498,
@@ -1295,15 +1295,15 @@
       "difficulty": "easy",
       "questionType": "foundation",
       "cognitiveLevel": "procedural_application",
-      "question": "Why should actuator direction be confirmed before work continues during a maintenance outage on equipment E28-13, where the deficiency was discovered during a controlled functional test where the electrician installs building automation systems?",
+      "question": "A rooftop unit's outdoor air damper actuator drives fully closed when the BAS commands 100% open during an economizer functional test, and the space temperature climbs steadily. What should the electrician confirm before returning this point to automatic control?",
       "options": [
-        "Replace the largest accessible component first and document the reason only if the problem returns.",
-        "Verify actuator direction against the approved design, equipment rating, manufacturer data, and measured site condition.",
-        "Clear the alarm or deficiency record and wait for another failure before collecting test information.",
-        "Use an operator's memory as the only acceptance record for actuator direction."
+        "Swap the actuator with the nearest spare unit and resume automatic control immediately.",
+        "Verify the actuator direction against approved design, equipment rating, manufacturer data, and measured site condition.",
+        "Reset the alarm and monitor for another temperature excursion before changing anything.",
+        "Rely on the mechanical contractor's memory of the original commissioning setup as confirmation."
       ],
       "correctIndex": 1,
-      "explanation": "Actuator direction can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The actuator's rotation and spring-return action must match the sequence of operation; a reversed actuator drives the damper opposite the intended command, causing loss of temperature control and freeze or overheating risk. Checking approved drawings, manufacturer data, and nameplate ratings against measured behavior confirms correct direction before restoring automatic control. Swapping actuators without confirming rotation risks installing another mismatched unit and wastes time without solving the root cause. Resetting the alarm and waiting delays corrective action and misses the chance to gather diagnostic evidence while conditions are present. Relying on someone's memory is unverifiable and may perpetuate an undetected wiring or configuration error from prior commissioning. The correct approach uses documented references and measured performance to make a verified decision before the point returns to unattended automatic operation.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1311,7 +1311,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.01",
       "blueprintObjective": "Apply actuator direction knowledge while the electrician installs building automation systems.",
-      "contentHash": "d8bfa74cbff8b0d99aeab7ef41b093dc1da7270e53e149e084e30dbf805cb434"
+      "contentHash": "ef2a7714ab744b39d9ebb7f07d5aa18b025478bdb406f2d4c3e42d83ce1a852d"
     },
     {
       "bankItemNumber": 499,
@@ -1321,15 +1321,15 @@
       "difficulty": "hard",
       "questionType": "troubleshooting_or_calculation",
       "cognitiveLevel": "critical_thinking",
-      "question": "The maintenance record shows a recurring problem with occupied schedule during a post-repair test on equipment E28-14, where the issue appears only when the load increases. Which response is most reliable?",
+      "question": "A VAV zone reverts to unoccupied setpoints during business hours only when an adjacent AHU ramps to high fan speed, prompting comfort complaints. The commissioning log for controller E28-14 shows no documented occupied schedule verification under load. What is the most reliable next step?",
       "options": [
-        "Use an operator's memory as the only acceptance record for occupied schedule.",
-        "Continue the work and treat final energization as the first verification of occupied schedule.",
-        "Isolate the function, test occupied schedule, correct the confirmed cause, and repeat the controlled functional test.",
-        "Accept occupied schedule from appearance alone because similar equipment worked on a previous project."
+        "Accept the operator's verbal recollection that the schedule worked correctly last winter as sufficient proof.",
+        "Treat the sequence as correct because an identical controller performed well on a previous project site.",
+        "Isolate the zone controller, verify occupied schedule logic against the approved sequence, correct the confirmed fault, and retest under load.",
+        "Re-energize the full system and use the next occupied period as the first functional verification."
       ],
       "correctIndex": 2,
-      "explanation": "Occupied schedule can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The symptom only appears under a specific load condition, so isolating the zone controller and comparing its occupied schedule logic to the approved sequence documentation is the only way to confirm the actual cause before making a change. Retesting under the same load condition after correction verifies the fix rather than assuming it worked. Relying on an operator's memory provides no verifiable record and cannot capture the load-dependent trigger. Assuming correctness because a similar controller worked elsewhere ignores that wiring, programming, or point mapping errors are specific to this installation. Waiting until the next occupied period to test treats live building operation as the first verification, risking recurring comfort complaints or unsafe control loss before the fault is even identified.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1337,7 +1337,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.02",
       "blueprintObjective": "Apply occupied schedule knowledge while the electrician installs building control systems.",
-      "contentHash": "627aa1daa1886d0ec524f0fcc4ad757f4d55287173f27fe24f8d9b661fb78c76"
+      "contentHash": "50886f92985948984a09e0634384b4397a391e2ef1b1bc0a4dd34166f8723cd8"
     },
     {
       "bankItemNumber": 500,
@@ -1347,15 +1347,15 @@
       "difficulty": "medium",
       "questionType": "applied_scenario",
       "cognitiveLevel": "procedural_application",
-      "question": "During a documented inspection on equipment E28-15, where the operator reports a recent process change, the crew finds that alarm mapping does not match the approved information. What should the electrician do next?",
+      "question": "While troubleshooting a nuisance alarm on a rooftop air-handling unit, the electrician finds the high-temperature alarm point is mapped to the exhaust fan relay instead of the supply fan relay shown on the approved points list. The unit otherwise runs normally. What should the electrician do next?",
       "options": [
-        "Accept alarm mapping from appearance alone because similar equipment worked on a previous project.",
-        "Bypass the protective or verification step so the system can remain available while the cause is assumed.",
-        "Change several unrelated settings at once, then treat any temporary improvement as proof of the repair.",
-        "Pause, verify alarm mapping against approved information, resolve the discrepancy, document it, and then continue."
+        "Accept the current mapping since the exhaust fan still activates whenever the alarm triggers.",
+        "Disable the alarm point temporarily so the unit keeps running while the mismatch is reviewed later.",
+        "Reassign several alarm points at once and check whether the nuisance alarms disappear afterward.",
+        "Pause work, verify the mapping against the approved points list, correct the discrepancy, and document the change."
       ],
       "correctIndex": 3,
-      "explanation": "Alarm mapping can directly affect unstable building operation, incorrect commands, energy waste, false alarms or unsafe loss of control. The reliable approach is to use control sequence, points list, sensor range, actuator action, communication mapping, fail-safe operation, trend data and approved commissioning plan, make one controlled decision at a time, and preserve test and change records for independent review.",
+      "explanation": "The evidence shows a documented mismatch between the actual point mapping and the approved points list, which is exactly the condition requiring verification before continuing. Comparing against approved documentation, correcting the discrepancy, and recording the change protects fail-safe operation and gives future technicians an accurate reference. Accepting the mapping because the exhaust fan happens to run is tempting since the equipment appears functional, but a coincidentally active output does not confirm correct alarm logic and could mask a hazard during a different fault condition. Disabling the point sacrifices protection entirely, and changing multiple points at once without isolating variables makes it impossible to confirm which change actually resolved the nuisance alarm, risking further misconfiguration in an integrated control system.",
       "steps": null,
       "tip": null,
       "isCalc": "no",
@@ -1363,7 +1363,7 @@
       "diagramAlt": null,
       "sourceReference": "MWA E, Task E-28, Sub-task E-28.03",
       "blueprintObjective": "Apply alarm mapping knowledge while the electrician services and maintains integrated control systems.",
-      "contentHash": "7ab78db07568e4e89fd0986c6804ff8e2d98184c62893ffd21a65d8f07bbde98"
+      "contentHash": "9e696f85341c566b5cca8cddca9f59fcf871cfcdd93b09ad017587b9dbce0892"
     }
   ]
 }

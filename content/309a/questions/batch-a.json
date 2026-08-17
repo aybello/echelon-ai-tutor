@@ -30,16 +30,16 @@
       "cognitiveLevel": "procedural_application",
       "question": "What is the main reason an electrician completes a task-specific hazard assessment before selecting personal protective equipment?",
       "options": [
-        "To match the protective equipment to the hazards that remain after controls are applied",
         "To replace the need for equipment isolation",
         "To make every worker wear the same equipment on every task",
+        "To match the protective equipment to the hazards that remain after controls are applied",
         "To transfer responsibility for safety to the equipment manufacturer"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Personal protective equipment is the last layer of defence. It must be selected for the actual residual hazards after elimination, isolation, and other controls have been considered; it does not replace those controls.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Select personal protective equipment that is appropriate for identified workplace hazards.",
-      "contentHash": "49df28384b45b0ca38802cef3043b011fbcb4d2b99fae710145280117fb427a2"
+      "contentHash": "c40475f51ebe22e5ed8c645357e0fd502e9c65a13b8871611d09f8f671035c92"
     },
     {
       "bankItemNumber": 2,
@@ -114,16 +114,16 @@
       "cognitiveLevel": "procedural_application",
       "question": "An open floor penetration is discovered beside the planned cable-pulling route. What should be done before the pull begins?",
       "options": [
-        "Install an approved cover or guard and control the area",
         "Place a coil of cable beside the opening as a warning",
         "Ask one worker to watch the opening during the pull",
+        "Install an approved cover or guard and control the area",
         "Continue because the crew already knows the opening is there"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "The fall hazard should be controlled before work starts by an approved cover, guard, or equivalent site control. Awareness alone or an improvised marker does not provide dependable protection during a busy cable pull.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Establish a safe work area before beginning electrical work.",
-      "contentHash": "c9ad2223a2abe806da56b8e2ff4f8ad998d52615c8d24b5013803bb5ed13b0ec"
+      "contentHash": "64dda295fc0998a522b34eedec868fe3451315c043320202b3e99daea775c4b5"
     },
     {
       "bankItemNumber": 6,
@@ -135,16 +135,16 @@
       "cognitiveLevel": "procedural_application",
       "question": "Scrap conductor and packaging are accumulating in front of a distribution panel during an installation. What is the best response?",
       "options": [
-        "Remove the debris and keep the access route and working area clear",
         "Leave the material until the end of the shift",
         "Stack the material neatly against the panel enclosure",
+        "Remove the debris and keep the access route and working area clear",
         "Move the material into the nearest exit corridor"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Good housekeeping keeps access and working space usable and reduces trip and emergency-response hazards. Material should be removed to a designated location, not stored against equipment or in an exit route.",
       "sourceReference": "MWA A, Task A-1 — Performs safety-related functions",
       "blueprintObjective": "Maintain orderly access and working areas around electrical equipment.",
-      "contentHash": "cb1f7a35b81e6d96485cf1f25d048ec843056e42e93bfd81538b2623d8ab5dab"
+      "contentHash": "00dde80751de64a58f806e6dd755420919a5f6d9452f7a70f013c7dac84d177d"
     },
     {
       "bankItemNumber": 7,
