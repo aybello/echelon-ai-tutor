@@ -1630,5 +1630,5 @@
 ## Page-Load Flash Repair
 - [x] Reproduce the visible pre-render flash on public course pages and identify its source
 - [x] Repair the initial loading and hydration sequence without masking legitimate errors
-- [ ] Validate and publish the corrected page-load experience
+- [x] Validate and publish the corrected page-load experience
 - [x] Hide the server-rendered crawl fallback before React hydration while preserving a no-JavaScript fallback
