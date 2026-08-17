@@ -1564,3 +1564,4 @@
 - [x] Inspect the live learner route, certification-governance migration state, imported-bank state, and quiz delivery wiring
 - [x] Activate the public 309A learner quiz and connect it to approved governed content
 - [x] Validate and publish the live 309A quiz route with the expected free-course access
+- [x] Fix the live 309A learner-route 404 and re-verify the deployed public quiz
