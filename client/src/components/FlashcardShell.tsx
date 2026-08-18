@@ -390,10 +390,10 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
       <style>{`
-        .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto 8px; }
-        .fc-inner { position: relative; width: 100%; height: 240px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+        .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto 16px; }
+        .fc-inner { position: relative; width: 100%; min-height: 500px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
         .fc-inner.flipped { transform: rotateY(180deg); }
-        .fc-face { position: absolute; top: 0; left: 0; right: 0; bottom: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
+        .fc-face { position: absolute; top: 0; left: 0; right: 0; bottom: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 500px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
         .fc-face.fc-face-projected { justify-content: flex-start; }
         .fc-front { background: #ffffff; border: 1px solid var(--echelon-line); box-shadow: var(--echelon-shadow-md); }
         .fc-back { background: linear-gradient(135deg, #1E3A5F 0%, #0047AB 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
@@ -406,8 +406,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-nav-btn:hover { border-color: #AFC5E3; background: #EEF4FB; color: #1E3A5F; }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
-          .fc-inner { height: 220px; }
-          .fc-face { padding: 20px 18px; }
+          .fc-inner { min-height: 420px; }
+          .fc-face { padding: 24px 20px; min-height: 420px; }
           .fc-act-btn { padding: 12px 14px; font-size: 14px; }
           .fc-wrap { max-width: 100%; }
           .fc-header { padding: 12px 16px !important; }
@@ -532,7 +532,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                 <div style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
                   {displayPrompt}
                 </div>
-                <div style={{ marginTop: "12px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
+                <div style={{ marginTop: "20px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
                   Tap to flip
                 </div>
               </div>
