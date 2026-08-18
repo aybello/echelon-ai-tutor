@@ -1633,8 +1633,8 @@
 - [ ] Integrate and validate only an approved update
 
 ## PR #30 309A Flashcard Deck Merge
-- [ ] Merge the approved 200-card blueprint-weighted study deck while retaining stable progress and action-control safeguards
-- [ ] Validate complete prompts, diagram context, deck allocation, learner review controls, and production build
+- [x] Merge the approved 200-card blueprint-weighted study deck while retaining stable progress and action-control safeguards
+- [x] Validate complete prompts, diagram context, deck allocation, learner review controls, and production build
 - [ ] Publish and verify the corrected 309A study deck
 
 ## PR #28 Review and Release
