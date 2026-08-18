@@ -1636,6 +1636,7 @@
 - [x] Merge the approved 200-card blueprint-weighted study deck while retaining stable progress and action-control safeguards
 - [x] Validate complete prompts, diagram context, deck allocation, learner review controls, and production build
 - [ ] Publish and verify the corrected 309A study deck
+- [ ] Force-refresh the production flashcard bundle if the first deployed client revision remains stale
 
 ## PR #28 Review and Release
 - [x] Inspect PR #28 scope, changed files, mergeability, and automated checks
