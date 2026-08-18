@@ -1664,3 +1664,7 @@
 - [x] Shorten card-front cues while retaining complete answer and explanation content after reveal
 - [x] Replace off-brand bright-blue styling with the Echelon Institute deep-blue palette
 - [x] Validate and publish the refined flashcard visual hierarchy
+
+## Live Platform User Count Check
+- [x] Query current registered-account and learner-activity counts from production records
+- [x] Report the verified platform user count with clear metric definitions
