@@ -1668,3 +1668,7 @@
 ## Live Platform User Count Check
 - [x] Query current registered-account and learner-activity counts from production records
 - [x] Report the verified platform user count with clear metric definitions
+
+## Deduplicated Total Learner Count
+- [x] Deduplicate account, purchase, quiz, flashcard, and mock-result email identifiers into one total-person measure
+- [x] Report the verified total unique people represented in production records
