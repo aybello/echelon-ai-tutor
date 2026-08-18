@@ -1627,6 +1627,16 @@
 - [ ] Review compatibility, tests, conflicts, and regressions before any merge decision
 - [ ] Integrate and validate only an approved update
 
+## Newly Available Repository Update Review — Latest
+- [ ] Identify the incoming branch or pull request and inspect its change set
+- [ ] Review compatibility, tests, conflicts, and regressions before any merge decision
+- [ ] Integrate and validate only an approved update
+
+## PR #30 309A Flashcard Deck Merge
+- [ ] Merge the approved 200-card blueprint-weighted study deck while retaining stable progress and action-control safeguards
+- [ ] Validate complete prompts, diagram context, deck allocation, learner review controls, and production build
+- [ ] Publish and verify the corrected 309A study deck
+
 ## PR #28 Review and Release
 - [x] Inspect PR #28 scope, changed files, mergeability, and automated checks
 - [x] Review PR #28 implementation and run required integration validation
