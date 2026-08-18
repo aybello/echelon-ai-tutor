@@ -442,21 +442,7 @@ export default function QuizShell({
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
-        /* Keep study controls visible without allowing the header to consume the question viewport. */
-        .qs-module-pills-row { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 3px; }
-        .qs-module-pills-row::-webkit-scrollbar, .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
-        .qs-mode-bar-wrap { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding-bottom: 3px; scrollbar-width: none; }
-        .qs-mode-card { min-width: 0 !important; padding: 6px 10px !important; }
-        .qs-mode-card-desc { display: none; }
-        .qs-mode-settings-btn { padding: 6px 10px !important; }
         @media (max-width: 640px) {
-          .qs-course-header { padding: 8px 16px 6px !important; }
-          .qs-course-subtitle { display: none !important; }
-          /* These destinations are already present in the course navigation above the quiz. */
-          .qs-header-actions { display: none !important; }
-          .qs-stats-only { margin-top: 4px !important; }
-          .qs-module-pills-row { margin-top: 4px !important; }
-          .qs-mode-bar-wrap { margin-top: 2px !important; }
           /* Larger touch targets for answer options */
           .qs-question-card button {
             min-height: 48px !important;
@@ -472,8 +458,10 @@ export default function QuizShell({
         }
         @media (max-width: 640px) {
           .qs-header-title-row { flex-direction: column !important; align-items: flex-start !important; }
-          /* Course navigation already exposes these destinations; keep the question viewport clear. */
-          .qs-header-actions { display: none !important; }
+          /* Scrollable action buttons strip */
+          .qs-header-actions { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; gap: 6px !important; padding-bottom: 4px !important; margin-top: 8px !important; width: 100% !important; scrollbar-width: none !important; }
+          .qs-header-actions::-webkit-scrollbar { display: none !important; }
+          .qs-header-actions a, .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 5px 10px !important; }
           /* Inline segmented stats bar */
           .qs-stats-only { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.20) !important; border-radius: 10px !important; overflow: hidden !important; margin-top: 10px !important; width: 100% !important; }
           .qs-stats-only > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; background: transparent !important; border-radius: 0 !important; }
@@ -505,7 +493,7 @@ export default function QuizShell({
       <SiteNav currentPath={currentPath} />
 
       {/* ── Header ── */}
-      <div className="qs-course-header" style={{ background: headerGradient, color: "#fff", padding: "10px 16px 8px" }}>
+      <div style={{ background: headerGradient, color: "#fff", padding: "10px 16px 8px" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
 
           {/* Top row: title + action buttons */}
@@ -530,7 +518,7 @@ export default function QuizShell({
                   {courseTitle}
                 </h1>
                 {courseSubtitle && (
-                  <div className="qs-course-subtitle" style={{ fontSize: 12, opacity: 0.8, marginTop: 3 }}>
+                  <div style={{ fontSize: 12, opacity: 0.8, marginTop: 3 }}>
                     {courseSubtitle}
                     {accuracy !== null && (
                       <span style={{ fontWeight: 700, opacity: 1 }}> · {accuracy}% accuracy</span>
