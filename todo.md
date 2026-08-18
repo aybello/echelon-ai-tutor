@@ -1663,4 +1663,4 @@
 - [x] Audit card-front prompt density and non-brand blue treatments in the current 200-card deck
 - [x] Shorten card-front cues while retaining complete answer and explanation content after reveal
 - [x] Replace off-brand bright-blue styling with the Echelon Institute deep-blue palette
-- [ ] Validate and publish the refined flashcard visual hierarchy
+- [x] Validate and publish the refined flashcard visual hierarchy
