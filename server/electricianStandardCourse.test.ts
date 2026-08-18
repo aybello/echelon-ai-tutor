@@ -35,6 +35,8 @@ describe("Ontario 309A standard Echelon course", () => {
     expect(mock).toContain("renderQuestionSupplement");
     expect(mock).toContain("freeAccess");
     expect(flashcards).toContain("FlashcardShell");
+    expect(flashcards).toContain("selectElectrician309AFlashcards");
+    expect(flashcards).toContain("renderFrontSupplement");
     expect(practice).not.toContain("ElectricianCourseWorkspace");
     expect(mock).not.toContain("ElectricianCourseWorkspace");
   });
