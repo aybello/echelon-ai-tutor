@@ -48,6 +48,15 @@ function optionText(card: Electrician309AFlashcardSource): string {
   return normalise(card.options[index]).replace(/^[A-Da-d][.):]\s*/, "");
 }
 
+function frontCue(value: string): string {
+  const normalised = normalise(value);
+  if (!normalised) return "Recall the safest and most defensible response for this topic.";
+  const firstSentence = normalised.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() ?? normalised;
+  if (firstSentence.length <= 220) return firstSentence;
+  const cut = firstSentence.slice(0, 217).replace(/\s+\S*$/, "").trim();
+  return `${cut}…`;
+}
+
 function selectEvenly<T>(cards: T[], target: number): T[] {
   if (cards.length <= target) return cards;
   return Array.from({ length: target }, (_, index) => cards[Math.floor(((index + 0.5) * cards.length) / target)]);
@@ -68,20 +77,20 @@ export function selectElectrician309AFlashcards<T extends { module: string; isCa
 }
 
 /**
- * Projects a governed assessment question into a complete study card without
- * removing scenario facts that are required to understand the answer.
+ * Projects a governed assessment question into a concise study-card cue while
+ * retaining the complete approved answer and explanation after reveal.
  */
 export function buildElectrician309AFlashcard(card: Electrician309AFlashcardSource): Electrician309AFlashcardContent {
   const topic = normalise(card.topic) || "Construction electrician decision making";
   const explanation = normalise(card.explanation);
-  const prompt = normalise(card.question);
+  const prompt = frontCue(card.question ?? "");
   const takeaway = normalise(card.tip) || undefined;
 
   return {
     kicker: `Module ${moduleCode(card.module)} · Ontario 309A`,
     topic: displayTopic(topic),
     title: "What is the best response?",
-    prompt: prompt || "Recall the safest and most defensible decision for this topic.",
+    prompt,
     answer: optionText(card),
     explanation,
     takeaway,

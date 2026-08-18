@@ -396,14 +396,14 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-face { position: absolute; top: 0; left: 0; right: 0; bottom: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 500px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
         .fc-face.fc-face-projected { justify-content: flex-start; }
         .fc-front { background: #ffffff; border: 1px solid var(--echelon-line); box-shadow: var(--echelon-shadow-md); }
-        .fc-back { background: linear-gradient(135deg, var(--echelon-navy) 0%, #1d4ed8 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
+        .fc-back { background: linear-gradient(135deg, #1E3A5F 0%, #0047AB 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
         .fc-actions-row { position: relative; z-index: 4; padding: 12px 24px 20px; background: var(--echelon-canvas); }
         .fc-mod-tab { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
-        .fc-mod-tab.active { border-color: #3b82f6; }
+        .fc-mod-tab.active { border-color: #0047AB; }
         .fc-act-btn { border: none; border-radius: 12px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; flex: 1; }
         .fc-act-btn:hover { opacity: 0.9; transform: translateY(-1px); }
         .fc-nav-btn { background: #fff; border: 1px solid var(--echelon-line); color: var(--echelon-ink); border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 650; cursor: pointer; transition: all 0.15s; }
-        .fc-nav-btn:hover { border-color: #93c5fd; background: #eff6ff; color: var(--echelon-blue); }
+        .fc-nav-btn:hover { border-color: #AFC5E3; background: #EEF4FB; color: #1E3A5F; }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
           .fc-inner { min-height: 420px; }
@@ -438,14 +438,14 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span style={{ color: "#22c55e", fontWeight: 700 }}>{scopeSummary.gotIt}</span> got it · {scopeSummary.stillLearning} still learning
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
-          <button onClick={handleShuffle} style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1D4ED8", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
+          <button onClick={handleShuffle} style={{ background: "#EEF4FB", border: "1px solid #B8CAE2", color: "#1E3A5F", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
             Shuffle
           </button>
         </div>
       </div>
 
       <div style={{ padding: "10px 24px", background: "#F8FAFC", borderBottom: "1px solid var(--echelon-line)", display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
-        <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E0ECFF" : "#fff", color: !reviewing ? "#1D4ED8" : undefined }}>
+        <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E5EFF9" : "#fff", color: !reviewing ? "#1E3A5F" : undefined }}>
           Study deck
         </button>
         <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={scopeSummary.stillLearning === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
@@ -458,7 +458,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <div className="fc-module-row" style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
           <span
             className={"fc-mod-tab" + (selectedModule === null ? " active" : "")}
-            style={{ background: selectedModule === null ? "#1D4ED8" : "#fff", color: selectedModule === null ? "#fff" : "#475569", borderColor: selectedModule === null ? "#1D4ED8" : "var(--echelon-line)" }}
+            style={{ background: selectedModule === null ? "#1E3A5F" : "#fff", color: selectedModule === null ? "#fff" : "#475569", borderColor: selectedModule === null ? "#1E3A5F" : "var(--echelon-line)" }}
             onClick={() => handleModuleChange(null)}
           >
             All Modules
@@ -467,7 +467,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span
               key={mod}
               className={"fc-mod-tab" + (selectedModule === mod ? " active" : "")}
-              style={{ background: selectedModule === mod ? "#1D4ED8" : "#fff", color: selectedModule === mod ? "#fff" : "#475569", borderColor: selectedModule === mod ? "#1D4ED8" : "var(--echelon-line)" }}
+              style={{ background: selectedModule === mod ? "#1E3A5F" : "#fff", color: selectedModule === mod ? "#fff" : "#475569", borderColor: selectedModule === mod ? "#1E3A5F" : "var(--echelon-line)" }}
               onClick={() => handleModuleChange(mod)}
             >
               {mod}
@@ -479,7 +479,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       {/* Progress bar */}
       <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>
         <div style={{ background: "#DBE4EF", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
-          <div style={{ background: "linear-gradient(90deg, #3b82f6, #06b6d4)", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
+          <div style={{ background: "#0047AB", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
           <span style={{ color: "#64748b", fontSize: "12px" }}>Card {Math.min(index + 1, deck.length)} of {deck.length}</span>
@@ -515,12 +515,12 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   </span>
                 </div>
                 {projectedContent?.topic && (
-                  <div style={{ color: "#1D4ED8", fontSize: "13px", fontWeight: 750, marginBottom: "10px" }}>
+                  <div style={{ color: "#0047AB", fontSize: "13px", fontWeight: 750, marginBottom: "10px" }}>
                     {projectedContent.topic}
                   </div>
                 )}
                 {projectedContent?.title && (
-                  <div style={{ color: "#0f172a", fontSize: "22px", fontWeight: 800, lineHeight: 1.25, marginBottom: "12px" }}>
+                  <div style={{ color: "#0f172a", fontSize: "20px", fontWeight: 800, lineHeight: 1.25, marginBottom: "10px" }}>
                     {projectedContent.title}
                   </div>
                 )}
@@ -529,7 +529,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                     {frontSupplement}
                   </div>
                 )}
-                <div style={{ fontSize: projectedContent ? "16px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
+                <div style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
                   {displayPrompt}
                 </div>
                 <div style={{ marginTop: "20px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>

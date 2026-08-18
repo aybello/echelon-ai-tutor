@@ -1658,3 +1658,9 @@
 - [x] Reproduce the revealed-card action-button overlap on desktop and mobile
 - [x] Correct card sizing, stacking, and action-control spacing so both learner decisions remain clickable
 - [x] Validate and publish the repaired action-control layout
+
+## 309A Flashcard Prompt and Color Refinement
+- [x] Audit card-front prompt density and non-brand blue treatments in the current 200-card deck
+- [x] Shorten card-front cues while retaining complete answer and explanation content after reveal
+- [x] Replace off-brand bright-blue styling with the Echelon Institute deep-blue palette
+- [ ] Validate and publish the refined flashcard visual hierarchy
