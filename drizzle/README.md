@@ -65,6 +65,25 @@ Extra legacy tables, columns, or indexes are reported as warnings during
 production verification. Missing or incompatible application objects are
 blocking errors. CI uses `--strict`, where warnings also fail.
 
+### Repairing the legacy welcome-email marker before adoption
+
+Some legacy production databases were created without
+`purchases.welcomeEmailSentAt`, even though that nullable column is part of the
+immutable v52 baseline. Do not replay migration 0028 or the archived historical
+chain. After verifying a restorable backup, run the narrow idempotent repair:
+
+```bash
+MIGRATION_APPROVED=REPAIR_WELCOME_EMAIL_COLUMN \
+MIGRATION_BACKUP_CONFIRMED=BACKUP_VERIFIED \
+DATABASE_URL='mysql://...' \
+pnpm db:repair-welcome-email-column
+```
+
+The command adds only the missing marker, verifies its type and default, marks
+historical purchases to prevent a duplicate-email burst, and leaves active
+purchases from the last 24 hours eligible for normal onboarding delivery. Then
+run `pnpm db:verify-schema` and continue the standard adoption procedure.
+
 ## Adding a forward migration
 
 1. Update `drizzle/schema.ts`.
