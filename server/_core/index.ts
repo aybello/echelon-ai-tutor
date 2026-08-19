@@ -17,11 +17,6 @@ import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
-import {
-  isWelcomeEmailHeartbeatTask,
-  runWelcomeEmailJob,
-  toWelcomeEmailScheduledResponse,
-} from "../jobs/welcomeEmail";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 
@@ -203,33 +198,6 @@ async function startServer() {
       return next();
     }
     return res.status(401).json({ error: "Unauthorized scheduled request" });
-  });
-
-  // ── Welcome-email delivery (platform-managed Heartbeat) ────────────────────
-  // The callback intentionally returns 5xx when any delivery fails so Heartbeat
-  // retries. Successful purchases are persisted immediately and are skipped on
-  // the retry; failed purchases remain eligible with the same Message-ID.
-  app.post("/api/scheduled/welcome-email", async (_req, res) => {
-    const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
-    if (!cronUser?.isCron || !isWelcomeEmailHeartbeatTask(cronUser.taskUid)) {
-      return res.status(403).json({ error: "cron-only" });
-    }
-    try {
-      const result = await runWelcomeEmailJob();
-      const response = toWelcomeEmailScheduledResponse(result);
-      return res.status(response.status).json({
-        ...response.body,
-        taskUid: cronUser.taskUid,
-        ts: new Date().toISOString(),
-      });
-    } catch (err) {
-      console.error("[welcome-email] scheduled job failed:", err);
-      return res.status(500).json({
-        error: String(err),
-        taskUid: cronUser.taskUid,
-        ts: new Date().toISOString(),
-      });
-    }
   });
 
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
