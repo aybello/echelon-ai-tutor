@@ -1,5 +1,9 @@
 # Echelon Command
 
+> **License:** Source-available, not open source. See [NOTICE.md](./NOTICE.md).
+> All rights reserved. No license is granted to copy, modify, redistribute, or
+> train models on this code or its exam content.
+
 Echelon Command is an adaptive incident simulator for the people responsible for drinking-water safety. It places an operator inside a live control-room scenario, changes plant conditions in response to their decisions, uses GPT-5.6 to interpret free-text operational judgment, and verifies its decision-specific after-action review against the canonical incident record.
 
 This Build Week project is part of Echelon Institute, a preparation and professional-development platform for regulated water and wastewater operators.

@@ -1,0 +1,76 @@
+# Dependabot configuration.
+#
+# Security updates are enabled separately in
+# repo Settings -> Code security -> Dependabot security updates
+# and do not require this file.
+#
+# This file adds a scheduled pass so version updates (not just CVEs)
+# arrive as PRs on a predictable cadence with sensible grouping,
+# instead of flooding the queue.
+version: 2
+updates:
+  # npm dependencies via pnpm.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Toronto"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "npm"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    groups:
+      # Batch safe patch/minor bumps into one PR per ecosystem to keep the
+      # PR queue reviewable. Majors are still opened individually because
+      # they usually need real review.
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+      # Group anything React-adjacent so peer-dep bumps land together.
+      react:
+        applies-to: version-updates
+        patterns:
+          - "react"
+          - "react-*"
+          - "@types/react"
+          - "@types/react-*"
+      # tRPC packages should always move together.
+      trpc:
+        applies-to: version-updates
+        patterns:
+          - "@trpc/*"
+      # Drizzle packages should always move together.
+      drizzle:
+        applies-to: version-updates
+        patterns:
+          - "drizzle-*"
+          - "@drizzle/*"
+
+  # GitHub Actions used in .github/workflows/*.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Toronto"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      actions:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
