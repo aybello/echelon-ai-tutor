@@ -8,6 +8,7 @@ describe("repository licence metadata", () => {
     const notice = fs.readFileSync(path.resolve(process.cwd(), "NOTICE.md"), "utf8");
     expect(packageJson.private).toBe(true);
     expect(packageJson.license).toBe("UNLICENSED");
-    expect(notice).toContain("source-available, not open source");
+    const plainNotice = notice.replace(/\*\*/g, "");
+    expect(plainNotice).toContain("source-available, not open source");
   });
 });
