@@ -155,11 +155,6 @@ export function registerStripeWebhook(app: Express) {
               console.error("[Stripe Webhook] Failed to send confirmation email:", err.message);
             });
 
-            // Welcome onboarding email is sent 24 hours after purchase by the hourly
-            // welcomeEmail scheduled job (server/jobs/welcomeEmail.ts), which queries
-            // purchases where welcomeEmailSentAt IS NULL and createdAt <= NOW() - 24h.
-            // No setTimeout needed here — the job survives server restarts.
-
             // Notify owner
             const purchasePhone = session.customer_details?.phone ?? null;
             await notifyOwner({

@@ -779,22 +779,6 @@ export const adminRouter = router({
       checks.push({ name: "Database", status: "error", detail: err.message });
     }
 
-    // The general DB check deliberately selects only a stable primary key. The
-    // welcome-email marker needs its own check because a missing column pauses
-    // customer onboarding without making the rest of the database unavailable.
-    try {
-      const db = await getDb();
-      if (!db) throw new Error("getDb returned null");
-      await db.select({ marker: purchases.welcomeEmailSentAt }).from(purchases).limit(1);
-      checks.push({ name: "Welcome Email Queue", status: "ok", detail: "Delivery marker column is ready" });
-    } catch (err: any) {
-      checks.push({
-        name: "Welcome Email Queue",
-        status: "error",
-        detail: `Onboarding emails are paused: ${err.message}. Run the backup-gated welcome-email schema repair.`,
-      });
-    }
-
     // 2. Stripe connectivity
     try {
       const stripe = getStripe();
