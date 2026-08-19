@@ -34,7 +34,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function OITWastewaterMockExam() {
-  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("oit-ww");
+  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("oit-ww", "full", "mock");
 
   const pool: ExamQuestion[] = dbQuestions.map(q => ({
     id: q.id,

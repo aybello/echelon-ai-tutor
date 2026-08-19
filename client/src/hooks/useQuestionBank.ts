@@ -96,7 +96,13 @@ function mergeCorrectIndex(
   });
 }
 
-export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full") {
+export type QuestionBankPreviewSurface = "practice" | "flashcards" | "mock";
+
+export function useQuestionBank(
+  bankKey: string,
+  mode: "full" | "lazy" = "full",
+  previewSurface?: QuestionBankPreviewSurface,
+) {
   // ── Seed questions — instant fallback, correctIndex included ──────────────
   const seedForBank = seedQuestions[bankKey] ?? [];
   const seedAsDBQuestions: DBQuestion[] = seedForBank.map(seedToDBQuestion);
@@ -109,7 +115,10 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   });
 
   // ── Check localStorage cache first ───────────────────────────────────────
-  const [cached] = useState<CachedBank | null>(() => getCached(bankKey));
+  // A free OIT practice request (15), flashcard request (50), and mock request
+  // (30) must never reuse one another's cached response.
+  const cacheKey = previewSurface ? `${bankKey}::${previewSurface}` : bankKey;
+  const [cached] = useState<CachedBank | null>(() => getCached(cacheKey));
   const wroteCache = useRef(false);
 
   // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
@@ -127,7 +136,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   // When cache is present: runs silently in background, result used to patch correctIndex.
   // When no cache: runs normally to populate questions.
   const fullQuery = trpc.quiz.getQuestions.useQuery(
-    { bankKey, accessToken: storedAccessToken },
+    { bankKey, accessToken: storedAccessToken, previewSurface },
     {
       staleTime: 1000 * 60 * 30,
       // Always fetch full bank — cache hit just means we show cached questions
@@ -170,9 +179,9 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     const cachedVersion = cached.contentVersion ?? 0;
     if (serverVersion > cachedVersion) {
       // Admin edited a question — bust the cache immediately
-      invalidate(bankKey);
+      invalidate(cacheKey);
     }
-  }, [bankKey, cached, metaQuery.data]);
+  }, [cacheKey, cached, metaQuery.data]);
 
   // ── Invalidate stale cache when live full-bank data differs ─────────────────────────
   // Always invalidate when live data arrives — the cache may have stale questions
@@ -183,8 +192,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     if (liveQuestions.length === 0) return;
     // Always invalidate: live data is authoritative. The cache will be rewritten
     // with the fresh data on the next cycle via the write-cache effect.
-    invalidate(bankKey);
-  }, [bankKey, cached, fullQuery.data]);
+    invalidate(cacheKey);
+  }, [cacheKey, cached, fullQuery.data]);
 
   // ── Write to cache once full bank is loaded (with correctIndex) ────────────
   useEffect(() => {
@@ -195,7 +204,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     if (rawQuestions.length === 0) return; // don't cache empty (DB down)
     wroteCache.current = true;
 
-    setCached(bankKey, {
+    setCached(cacheKey, {
       questions: rawQuestions as DBQuestion[],
       modules,
       moduleTargets: metaQuery.data.moduleTargets ?? null,
@@ -205,7 +214,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
       // Issue L: persist the server version so future loads can detect content changes
       contentVersion: metaQuery.data.contentVersion ?? 1,
     });
-  }, [bankKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
+  }, [cacheKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
 
   // ── Resolve data: cache (+ live correctIndex patch) → full → batch → seed ─
   let questions: DBQuestion[];

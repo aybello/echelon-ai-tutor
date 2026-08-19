@@ -99,28 +99,15 @@ describe("Issue H — flashcard saveProgress size cap", () => {
 // ─── Issue H: getAllProgress IDOR guard ───────────────────────────────────────
 
 describe("Issue H — getAllProgress IDOR guard", () => {
-  it("uses session email when ctx.studentEmail is present, ignoring input.email", () => {
+  it("uses only the verified session email", () => {
     const ctx = { user: null, studentEmail: "alice@example.com" };
-    const input = { email: "attacker@example.com" };
-    // Simulate the resolution logic
     const sessionEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
-    const email = sessionEmail ?? input.email ?? null;
-    expect(email).toBe("alice@example.com");
+    expect(sessionEmail).toBe("alice@example.com");
   });
 
-  it("falls back to input.email when no session is present (public Account page)", () => {
+  it("does not accept a caller-supplied email when no session is present", () => {
     const ctx = { user: null, studentEmail: null };
-    const input = { email: "bob@example.com" };
     const sessionEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
-    const email = sessionEmail ?? input.email ?? null;
-    expect(email).toBe("bob@example.com");
-  });
-
-  it("returns empty progress when neither session nor input.email is provided", () => {
-    const ctx = { user: null, studentEmail: null };
-    const input = { email: undefined };
-    const sessionEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
-    const email = sessionEmail ?? input.email ?? null;
-    expect(email).toBeNull();
+    expect(sessionEmail).toBeNull();
   });
 });

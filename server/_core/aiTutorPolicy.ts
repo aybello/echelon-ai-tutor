@@ -1,10 +1,11 @@
 import { TRPCError } from "@trpc/server";
 import { and, count, eq, gte, or } from "drizzle-orm";
 import { productAnalyticsEvents } from "../../drizzle/schema";
-import { hashAnalyticsEmail } from "../analytics";
+import { hashAnalyticsAnonymousId, hashAnalyticsEmail } from "../analytics";
 import { getDb } from "../db";
 
 export const AI_TUTOR_DAILY_MESSAGE_LIMIT = 100;
+export const AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT = 3;
 
 export interface TutorQuestionContext {
   questionNum: number;
@@ -91,13 +92,15 @@ ${input.studentMemory?.trim() || "No verified student memory is available yet."}
 export async function enforceAiTutorDailyQuota(identity: {
   userId: string | null;
   email: string | null;
-}, options?: { allowAnonymous?: boolean }): Promise<void> {
+  anonymousId?: string | null;
+}, options?: { limit?: number; limitMessage?: string }): Promise<void> {
   if (!identity.userId && !identity.email) {
-    if (options?.allowAnonymous) return;
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "Sign in or restore your paid access to use the AI Tutor.",
-    });
+    if (!identity.anonymousId) {
+      throw new TRPCError({
+        code: "UNAUTHORIZED",
+        message: "Sign in or restore your paid access to use the AI Tutor.",
+      });
+    }
   }
 
   const db = await getDb();
@@ -117,6 +120,11 @@ export async function enforceAiTutorDailyQuota(identity: {
       eq(productAnalyticsEvents.emailHash, hashAnalyticsEmail(identity.email)),
     );
   }
+  if (!identity.userId && !identity.email && identity.anonymousId) {
+    identityFilters.push(
+      eq(productAnalyticsEvents.emailHash, hashAnalyticsAnonymousId(identity.anonymousId)),
+    );
+  }
 
   const identityFilter = identityFilters.length === 1
     ? identityFilters[0]
@@ -130,10 +138,11 @@ export async function enforceAiTutorDailyQuota(identity: {
       identityFilter,
     ));
 
-  if (Number(row?.total ?? 0) >= AI_TUTOR_DAILY_MESSAGE_LIMIT) {
+  const limit = options?.limit ?? AI_TUTOR_DAILY_MESSAGE_LIMIT;
+  if (Number(row?.total ?? 0) >= limit) {
     throw new TRPCError({
       code: "TOO_MANY_REQUESTS",
-      message: "You have reached today's AI Tutor message limit. Please continue tomorrow or use the course explanations and study guides.",
+      message: options?.limitMessage ?? "You have reached today's AI Tutor message limit. Please continue tomorrow or use the course explanations and study guides.",
     });
   }
 }

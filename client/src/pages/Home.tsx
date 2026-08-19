@@ -32,7 +32,7 @@ export default function Home() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "full", "practice");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;

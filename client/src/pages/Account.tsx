@@ -201,7 +201,7 @@ export default function Account() {
   const [otpRedirecting, setOtpRedirecting] = useState(false);
 
   const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
-    { email: submittedEmail ?? "" },
+    undefined,
     { enabled: !!submittedEmail && isAnyAuthenticated, retry: false, staleTime: 30_000 }
   );
   const flashcardMastery = getFlashcardProgress.data?.progress ?? {};

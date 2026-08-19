@@ -31,6 +31,7 @@ export type AnalyticsEventName =
   | "mock_exam_completed"
   | "ai_tutor_opened"
   | "ai_tutor_message"
+  | "ai_tutor_session_saved"
   | "team_seat_assigned"
   | "team_seat_revoked"
   | "operator_inactive_alert"
@@ -52,6 +53,10 @@ export interface AnalyticsEvent {
   ts: string;
   userId?: string | null;
   email?: string | null;
+  /** Raw short-lived/browser identifier; SHA-256 hashed before persistence. */
+  anonymousId?: string | null;
+  /** Already-hashed internal identity, used when a payment provider returns it. */
+  identityHash?: string | null;
   examType?: string | null;
   productKey?: string | null;
   orgId?: number | null;
@@ -60,6 +65,10 @@ export interface AnalyticsEvent {
 
 export function hashAnalyticsEmail(email: string): string {
   return createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
+}
+
+export function hashAnalyticsAnonymousId(anonymousId: string): string {
+  return createHash("sha256").update(`anonymous:${anonymousId.trim()}`).digest("hex");
 }
 
 export async function persistAnalyticsEvent(payload: AnalyticsEvent): Promise<void> {
@@ -74,7 +83,13 @@ export async function persistAnalyticsEvent(payload: AnalyticsEvent): Promise<vo
       eventName: payload.event,
       occurredAt: new Date(payload.ts),
       userId: payload.userId ?? null,
-      emailHash: payload.email ? hashAnalyticsEmail(payload.email) : null,
+      emailHash: payload.identityHash && /^[a-f0-9]{64}$/.test(payload.identityHash)
+        ? payload.identityHash
+        : payload.email
+          ? hashAnalyticsEmail(payload.email)
+          : payload.anonymousId
+            ? hashAnalyticsAnonymousId(payload.anonymousId)
+            : null,
       examType: payload.examType ?? null,
       productKey: payload.productKey ?? null,
       orgId: payload.orgId ?? null,
@@ -103,6 +118,9 @@ export async function trackEvent(
       ...payload,
       extra: payload.extra ? { ...payload.extra } : undefined,
     };
+    // Browser IDs are never emitted to application logs.
+    delete payload.anonymousId;
+    delete payload.identityHash;
     // Mask email before logging — applies to every caller without requiring
     // each call site to remember to redact. Pattern: abc@example.com → abc***@example.com
     if (payload.email) {

@@ -11,7 +11,7 @@ export default function OITWaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("oit");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("oit", "full", "flashcards");
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 

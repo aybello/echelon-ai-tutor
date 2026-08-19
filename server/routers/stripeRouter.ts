@@ -37,7 +37,7 @@ import {
   INDIVIDUAL_EXAM_PASS_TERM_MONTHS,
   getIndividualExamPassExpiry,
 } from "../stripe/individualExamPass";
-import { trackEvent } from "../analytics";
+import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 
 export const stripeRouter = router({
@@ -63,6 +63,7 @@ export const stripeRouter = router({
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
       currency: z.enum(["cad", "usd"]).default("cad"),
+      visitorId: z.string().min(16).max(128).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
@@ -109,6 +110,7 @@ export const stripeRouter = router({
           entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
           access_term_months: String(INDIVIDUAL_EXAM_PASS_TERM_MONTHS),
           catalogue_version: CATALOGUE_VERSION,
+          analytics_identity_hash: input.visitorId ? hashAnalyticsAnonymousId(input.visitorId) : "",
         },
         allow_promotion_codes: true,
         phone_number_collection: { enabled: true },
@@ -123,6 +125,7 @@ export const stripeRouter = router({
           email: userEmail ?? null,
           examType: product.examTypes[0] ?? null,
           productKey: product.key,
+          anonymousId: input.visitorId ?? null,
           extra: { currency, amountCents: unitAmount, source: input.utmSource ?? "pricing" },
         },
       );

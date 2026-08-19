@@ -5,6 +5,7 @@ import { getDb } from "../db";
 import { changelog } from "../../drizzle/schema";
 import { eq, asc, desc, sql } from "drizzle-orm";
 import { nextChangelogSortOrder } from "../../shared/changelog";
+import { PLATFORM_RELEASES } from "../../shared/platformReleases";
 
 export const changelogRouter = {
   /** Public: list all visible changelog entries ordered by sortOrder ASC (newest first) */
@@ -16,7 +17,8 @@ export const changelogRouter = {
       .from(changelog)
       .where(eq(changelog.visible, true))
       .orderBy(asc(changelog.sortOrder), desc(changelog.createdAt), desc(changelog.id));
-    return rows;
+    return [...PLATFORM_RELEASES, ...rows]
+      .sort((a, b) => a.sortOrder - b.sortOrder || b.createdAt.getTime() - a.createdAt.getTime());
   }),
 
   /** Admin: list ALL entries including hidden ones */

@@ -436,13 +436,13 @@ export default function Admin() {
               <>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 12 }}>
                   {[
-                    { label: "Weekly active learners", value: kpisQ.data.engagement.weeklyActiveLearners, note: "Distinct signed-in learners in 7 days" },
+                    { label: "Weekly active learners", value: kpisQ.data.engagement.weeklyActiveLearners, note: "Distinct learner or anonymous-browser identities in 7 days" },
                     { label: "Time to first quiz", value: kpisQ.data.engagement.medianMinutesToFirstQuiz == null ? "—" : `${kpisQ.data.engagement.medianMinutesToFirstQuiz} min`, note: "Median after signup or activation" },
                     { label: "Mastery gain", value: kpisQ.data.engagement.masteryGainPercentagePoints == null ? "—" : `${kpisQ.data.engagement.masteryGainPercentagePoints >= 0 ? "+" : ""}${kpisQ.data.engagement.masteryGainPercentagePoints} pts`, note: `${kpisQ.data.engagement.masteryGainSampleSize} learner-course pairs with repeat quizzes` },
                     { label: "Activation rate", value: kpisQ.data.commercial.activationRate == null ? "—" : `${kpisQ.data.commercial.activationRate}%`, note: "Signed-up learners who activated access" },
                     { label: "Quiz completion", value: kpisQ.data.commercial.quizCompletionRate == null ? "—" : `${kpisQ.data.commercial.quizCompletionRate}%`, note: `${kpisQ.data.funnel.quizCompletions} completions / ${kpisQ.data.funnel.quizStarts} starts` },
                     { label: "Pricing → checkout", value: kpisQ.data.commercial.pricingToCheckoutRate == null ? "—" : `${kpisQ.data.commercial.pricingToCheckoutRate}%`, note: `${kpisQ.data.funnel.checkoutCompletions} completed checkouts` },
-                    { label: "Team seat utilization", value: kpisQ.data.teams.utilizationRate == null ? "—" : `${kpisQ.data.teams.utilizationRate}%`, note: `${kpisQ.data.teams.assignedSeats} assigned / ${kpisQ.data.teams.totalSeats} purchased` },
+                    { label: "Team seat utilization", value: kpisQ.data.teams.utilizationRate == null ? "—" : `${kpisQ.data.teams.utilizationRate}%`, note: `${kpisQ.data.teams.assignedSeats} allocated / ${kpisQ.data.teams.totalSeats} purchased (All-Access + Course Pass)` },
                     { label: "Reported exam pass rate", value: kpisQ.data.outcomes.passRate == null ? "—" : `${kpisQ.data.outcomes.passRate}%`, note: `${kpisQ.data.outcomes.passed} passed / ${kpisQ.data.outcomes.failed} failed` },
                     { label: "Refund rate", value: kpisQ.data.commercial.refundRate == null ? "—" : `${kpisQ.data.commercial.refundRate}%`, note: "Individual purchases created in period" },
                     { label: "Renewals / cancellations", value: `${kpisQ.data.commercial.renewals} / ${kpisQ.data.commercial.cancellations}`, note: "Tracked lifecycle events" },
@@ -457,6 +457,9 @@ export default function Admin() {
 
                 <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1E3A8A", fontSize: 11, lineHeight: 1.6 }}>
                   Readiness calibration: learners who passed averaged <strong>{kpisQ.data.outcomes.averageReadinessPassed ?? "—"}</strong>; learners who failed averaged <strong>{kpisQ.data.outcomes.averageReadinessFailed ?? "—"}</strong>. Diagnostic completions: <strong>{kpisQ.data.funnel.diagnosticCompletions}</strong>. Mock exams completed: <strong>{kpisQ.data.funnel.mockExamCompletions}</strong>.
+                </div>
+                <div style={{ marginTop: 10, padding: 14, borderRadius: 12, background: "#F0FDFA", border: "1px solid #99F6E4", color: "#115E59", fontSize: 11, lineHeight: 1.6 }}>
+                  Team breakdown: All-Access <strong>{kpisQ.data.teams.allAccess.assignedSeats}/{kpisQ.data.teams.allAccess.totalSeats}</strong> assigned; Course Pass <strong>{kpisQ.data.teams.coursePass.allocatedLicences}/{kpisQ.data.teams.coursePass.totalLicences}</strong> allocated and <strong>{kpisQ.data.teams.coursePass.activatedLicences}</strong> activated.
                 </div>
               </>
             )}

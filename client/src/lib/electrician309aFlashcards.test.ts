@@ -6,7 +6,7 @@ import {
 } from "./electrician309aFlashcards";
 
 describe("buildElectrician309AFlashcard", () => {
-  it("uses a concise governed scenario cue while retaining the complete answer, explanation, and takeaway", () => {
+  it("keeps the complete answerable question while retaining the approved answer, explanation, and takeaway", () => {
     const longContext = "The approved drawing identifies the source, protection, distribution equipment, feeder, and connected load. ".repeat(3);
     const longExplanation = "The measured condition must be compared with the approved design and manufacturer information before the equipment is accepted. ".repeat(4);
     const card = buildElectrician309AFlashcard({
@@ -23,9 +23,9 @@ describe("buildElectrician309AFlashcard", () => {
     expect(card.topic).toBe("Transformer Loading Verification");
     expect(card.answer).toBe("Compare measured secondary current with the transformer rating");
     expect(card.prompt).toContain("The approved drawing identifies the source");
-    expect(card.prompt.length).toBeLessThanOrEqual(220);
-    expect(card.prompt).toBe(longContext.trim().split(". ")[0] + ".");
-    expect(card.prompt).not.toContain("What comparison should be made");
+    expect(card.prompt).toContain("What comparison should be made before accepting the secondary loading?");
+    expect(card.prompt).toBe(`${longContext}What comparison should be made before accepting the secondary loading?`.replace(/\s+/g, " ").trim());
+    expect(card.title).toBe("Check your understanding");
     expect(card.explanation).toBe(longExplanation.replace(/\s+/g, " ").trim());
     expect(card.takeaway).toBe("Check the rating and the actual load together.");
     expect(card.diagramNote).toBeUndefined();
