@@ -153,4 +153,40 @@ describe("runWelcomeEmailJob (Issue C regression)", () => {
 
     await expect(runWelcomeEmailJob()).rejects.toThrow("Database unavailable");
   });
+
+  it("defers without triggering an hourly retry alert when the marker column is missing", async () => {
+    const wrapped = new Error("Failed query: select id, welcomeEmailSentAt from purchases", {
+      cause: Object.assign(new Error("Unknown column 'purchases.welcomeEmailSentAt' in 'field list'"), {
+        code: "ER_BAD_FIELD_ERROR",
+        errno: 1054,
+      }),
+    });
+    const db = {
+      select: vi.fn().mockReturnThis(),
+      from: vi.fn().mockReturnThis(),
+      where: vi.fn().mockReturnThis(),
+      limit: vi.fn().mockRejectedValue(wrapped),
+    };
+    vi.mocked(getDb).mockResolvedValue(db as any);
+
+    await expect(runWelcomeEmailJob()).resolves.toEqual({
+      sent: 0,
+      skipped: 0,
+      errors: [],
+      deferred: "missing_welcome_email_column",
+    });
+    expect(sendWelcomeOnboardingEmail).not.toHaveBeenCalled();
+  });
+
+  it("still throws unrelated database failures so real outages alert", async () => {
+    const db = {
+      select: vi.fn().mockReturnThis(),
+      from: vi.fn().mockReturnThis(),
+      where: vi.fn().mockReturnThis(),
+      limit: vi.fn().mockRejectedValue(new Error("connection reset")),
+    };
+    vi.mocked(getDb).mockResolvedValue(db as any);
+
+    await expect(runWelcomeEmailJob()).rejects.toThrow("connection reset");
+  });
 });
