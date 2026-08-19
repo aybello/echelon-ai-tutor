@@ -1,6 +1,5 @@
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
-import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -20,20 +19,16 @@ export default function OITWastewaterFlashcards() {
 
   return (
     <FlashcardErrorBoundary examName="OIT Wastewater" backPath="/oit-ww">
-      <PurchaseGate
+      <FlashcardShell
+        questions={questions as unknown as FlashcardQuestion[]}
+        examName="OIT Wastewater"
         examType="oit-ww"
+        backPath="/oit-ww"
+        modules={modules as unknown as string[]}
+        freeFlipLimit={50}
         productKey="oit-ww"
-        productName="OIT Wastewater Practice Pass"
-        price={49}
-      >
-        <FlashcardShell
-          questions={questions as unknown as FlashcardQuestion[]}
-          examName="OIT Wastewater"
-          examType="oit-ww"
-          backPath="/oit-ww"
-          modules={modules as unknown as string[]}
-        />
-      </PurchaseGate>
+        allowMorePreview={false}
+      />
     </FlashcardErrorBoundary>
 
   );

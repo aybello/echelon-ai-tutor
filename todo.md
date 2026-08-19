@@ -1665,10 +1665,12 @@
 - [x] Replace off-brand bright-blue styling with the Echelon Institute deep-blue palette
 - [x] Validate and publish the refined flashcard visual hierarchy
 
-## Live Platform User Count Check
-- [x] Query current registered-account and learner-activity counts from production records
-- [x] Report the verified platform user count with clear metric definitions
+## 309A Flashcard Compact Layout Repair
+- [x] Audit the fixed card-height and overflow rules that cause cards to occupy the learner viewport
+- [x] Replace the oversized fixed layout with compact content-led sizing while preserving answer and action accessibility
+- [x] Validate and publish the compact flashcard layout on desktop and mobile
 
-## Deduplicated Total Learner Count
-- [x] Deduplicate account, purchase, quiz, flashcard, and mock-result email identifiers into one total-person measure
-- [x] Report the verified total unique people represented in production records
+## Shared Quiz Workspace Compact Layout Repair
+- [x] Audit the shared quiz layout areas causing oversized viewport use across course practice pages
+- [x] Compact quiz spacing and question-panel sizing without harming answer selection, feedback, or accessibility
+- [x] Validate and publish the compact quiz workspace on desktop and mobile

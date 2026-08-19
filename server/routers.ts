@@ -692,7 +692,7 @@ export const appRouter = router({
         }
         const isElectrician309A = course.courseKey === "electrician-309a";
 
-        const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
+        const hasAccess = course.track === "oit" || await resolveAccessForRequest(ctx, course.courseKey, {
           accessToken: input.accessToken,
         });
         if (!hasAccess) {
@@ -880,7 +880,7 @@ export const appRouter = router({
           throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
         }
         const isElectrician309A = course.courseKey === "electrician-309a";
-        const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
+        const hasAccess = course.track === "oit" || await resolveAccessForRequest(ctx, course.courseKey, {
           accessToken: input.accessToken,
         });
         if (!hasAccess) {

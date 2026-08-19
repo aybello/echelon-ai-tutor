@@ -23,8 +23,9 @@ export default function OITWaterFlashcards() {
         examType="oit"
         backPath="/quiz"
         modules={modules as unknown as string[]}
-        freeFlipLimit={10}
+        freeFlipLimit={50}
         productKey="oit"
+        allowMorePreview={false}
       />
     </FlashcardErrorBoundary>
   );

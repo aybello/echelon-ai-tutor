@@ -27,7 +27,7 @@ export default function OITWastewaterQuiz() {
     color: typeof m === "object" ? (m as any).color : undefined,
   }));
 
-  const session = useQuizSession({ examType: "oit-ww", allQuestions });
+  const session = useQuizSession({ examType: "oit-ww", allQuestions, freeTutorPreview: true });
 
   // Initialize first question once data loads
   if (!bankLoading && allQuestions.length > 0 && !session.initialized) {
@@ -92,8 +92,8 @@ export default function OITWastewaterQuiz() {
           priceLabel="CA$49"
           paidFeatures={[
             "400+ OIT Wastewater questions — unlimited attempts",
-            "Timed mock exam (100 questions, 2 hrs)",
-            "AI Tutor explanations on every question",
+            "Complete 50-question timed mock exams",
+            "Full flashcard deck and saved progress",
             "Module-by-module performance tracking",
           ]}
           onUnlocked={session.handleGateUnlocked}
