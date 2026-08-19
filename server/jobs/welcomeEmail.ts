@@ -16,6 +16,12 @@ export interface WelcomeEmailResult {
   sent: number;
   skipped: number;
   errors: string[];
+  /**
+   * A known, non-retryable deployment prerequisite is missing. The scheduled
+   * endpoint returns 200 for this state so Heartbeat does not email the owner
+   * every hour while the database is being reconciled.
+   */
+  deferred?: "missing_welcome_email_column";
 }
 
 /**
@@ -30,6 +36,37 @@ export const isWelcomeEmailHeartbeatTask = (taskUid: string | undefined): boolea
 /** Stable transport identity retained if the callback itself is retried. */
 export const getWelcomeEmailMessageId = (purchaseId: number): string =>
   `<welcome-purchase-${purchaseId}@echeloninstitute.ca>`;
+
+/**
+ * Drizzle wraps mysql2 failures, so inspect both the public error and its cause.
+ * Keep this deliberately narrow: only MySQL's unknown-column failure for the
+ * welcome-email marker is non-retryable. Database outages and SMTP failures
+ * must still surface as 5xx responses and alert normally.
+ */
+export function isMissingWelcomeEmailColumnError(error: unknown): boolean {
+  const candidates: unknown[] = [error];
+  if (typeof error === "object" && error !== null && "cause" in error) {
+    candidates.push((error as { cause?: unknown }).cause);
+  }
+
+  return candidates.some(candidate => {
+    if (typeof candidate !== "object" || candidate === null) return false;
+    const mysqlError = candidate as {
+      code?: unknown;
+      errno?: unknown;
+      message?: unknown;
+      sqlMessage?: unknown;
+    };
+    const message = [mysqlError.message, mysqlError.sqlMessage]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ");
+    const isUnknownColumn =
+      mysqlError.code === "ER_BAD_FIELD_ERROR" ||
+      mysqlError.errno === 1054 ||
+      /unknown column/i.test(message);
+    return isUnknownColumn && /welcomeEmailSentAt/i.test(message);
+  });
+}
 
 export type WelcomeEmailDependencies = {
   sendWelcomeOnboardingEmail: typeof sendWelcomeOnboardingEmail;
@@ -68,6 +105,7 @@ export const toWelcomeEmailScheduledResponse = (result: WelcomeEmailResult) => (
     sent: result.sent,
     skipped: result.skipped,
     errors: result.errors,
+    deferred: result.deferred ?? null,
   },
 });
 
@@ -76,17 +114,36 @@ export async function runWelcomeEmailJob(): Promise<WelcomeEmailResult> {
   if (!db) throw new Error("Database unavailable");
 
   const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
-  const pending = await db
-    .select()
-    .from(purchases)
-    .where(
-      and(
-        isNull(purchases.welcomeEmailSentAt),
-        lte(purchases.createdAt, cutoff),
-        eq(purchases.status, "active"),
-      ),
-    )
-    .limit(100);
+  let pending: Purchase[];
+  try {
+    pending = await db
+      .select()
+      .from(purchases)
+      .where(
+        and(
+          isNull(purchases.welcomeEmailSentAt),
+          lte(purchases.createdAt, cutoff),
+          eq(purchases.status, "active"),
+        ),
+      )
+      .limit(100);
+  } catch (error) {
+    if (!isMissingWelcomeEmailColumnError(error)) throw error;
+
+    // This is a deployment prerequisite, not a transient job failure. Returning
+    // a successful deferred result stops the hourly alert loop without sending
+    // duplicate customer emails. The backup-gated repair command adds the
+    // marker column and safely preserves only recent purchases as eligible.
+    console.warn(
+      "[welcomeEmail] Deferred: purchases.welcomeEmailSentAt is missing; run pnpm db:repair-welcome-email-column.",
+    );
+    return {
+      sent: 0,
+      skipped: 0,
+      errors: [],
+      deferred: "missing_welcome_email_column",
+    };
+  }
 
   let sent = 0;
   const errors: string[] = [];
