@@ -32,7 +32,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function OITMockExam() {
-  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("oit");
+  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("oit", "full", "mock");
 
   const pool: ExamQuestion[] = dbQuestions.map(q => ({
     id: q.id,

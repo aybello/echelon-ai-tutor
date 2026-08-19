@@ -1,7 +1,7 @@
 // ECHELON AI TUTOR — FlashcardShell Component
 // Flip-card study mode derived from any question bank
 // Handles all field name variants: question/q/text, correct/correctAnswer/correctIndex
-// Persists spaced-repetition state (known/unknown) to the database per email+examType
+// Persists mastery state (got it/still learning) per verified learner and course
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import type { ReactNode } from "react";
@@ -92,12 +92,6 @@ const DIFF_COLOR: Record<string, { bg: string; fg: string }> = {
   hard:   { bg: "#FEE2E2", fg: "#B91C1C" },
 };
 
-/** Get email from localStorage (set by Account page restore flow) */
-function getStoredEmail(): string {
-  try { return localStorage.getItem("echelon_purchase_email") ?? localStorage.getItem("echelon_trial_email") ?? ""; }
-  catch { return ""; }
-}
-
 function guestProgressKey(examType: string): string {
   return `echelon_flashcard_progress:guest:${examType}`;
 }
@@ -149,13 +143,15 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const [sessionComplete, setSessionComplete] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
 
-  // Use auth user email first, fall back to localStorage
+  // Database progress is attached only to a server-verified OAuth/OTP identity.
+  // Anonymous learners remain fully supported through local storage.
   const { user } = useAuth();
-  const email = user?.email || getStoredEmail();
+  const verifiedEmailSession = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
+  const email = user?.email || verifiedEmailSession.data?.email || "";
 
   // ── Load saved progress on mount ──────────────────────────────────────────
   const { data: savedProgress } = trpc.flashcard.getProgress.useQuery(
-    { email, examType },
+    { examType },
     {
       enabled: !!email,
       staleTime: Infinity,
@@ -186,7 +182,6 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   // a newer known/learning decision with an older snapshot.
   const saveProgress = trpc.flashcard.saveProgress.useMutation();
   const queuedSaveRef = useRef<{
-    email: string;
     examType: string;
     knownIds: string[];
     totalCards: number;
@@ -218,7 +213,6 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       return;
     }
     queuedSaveRef.current = {
-      email,
       examType,
       knownIds: Array.from(nextKnown),
       totalCards: conceptualQuestions.length,

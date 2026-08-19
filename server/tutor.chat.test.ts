@@ -14,6 +14,7 @@ vi.mock("./_core/llm", () => ({ invokeLLM: mocks.invokeLLM }));
 vi.mock("./db", () => ({ getDb: mocks.getDb }));
 vi.mock("./analytics", () => ({
   hashAnalyticsEmail: (email: string) => `hash:${email}`,
+  hashAnalyticsAnonymousId: (id: string) => `anonymous-hash:${id}`,
   trackEvent: mocks.trackEvent,
 }));
 vi.mock("./_core/accessService", async () => {
@@ -66,7 +67,8 @@ function createPaidContext(): TrpcContext {
       phone: null,
       province: "on",
     },
-    req: { protocol: "https", headers: {} } as TrpcContext["req"],
+    studentEmail: null,
+    req: { protocol: "https", headers: {}, ip: "192.0.2.10", get: vi.fn(() => "test-agent") } as unknown as TrpcContext["req"],
     res: { clearCookie: vi.fn() } as unknown as TrpcContext["res"],
   };
 }
@@ -111,8 +113,9 @@ describe("tutor.chat", () => {
       {
         userId: "7",
         email: "operator@example.com",
+        anonymousId: "192.0.2.10:test-agent",
       },
-      { allowAnonymous: true },
+      undefined,
     );
     const llmInput = mocks.invokeLLM.mock.calls[0][0];
     expect(llmInput.messages[0].role).toBe("system");
@@ -128,6 +131,7 @@ describe("tutor.chat", () => {
   });
 
   it("allows the OIT tutor during the free product preview", async () => {
+    mocks.resolveAccessForRequest.mockResolvedValueOnce(false);
     const caller = appRouter.createCaller(createPaidContext());
     const result = await caller.tutor.chat({
       examType: "oit",
@@ -137,13 +141,17 @@ describe("tutor.chat", () => {
     });
 
     expect(result.reply).toContain("Chlorine residual");
-    expect(mocks.resolveAccessForRequest).not.toHaveBeenCalled();
+    expect(mocks.resolveAccessForRequest).toHaveBeenCalledWith(expect.anything(), "oit", { accessToken: undefined });
     expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith(
       {
         userId: "7",
         email: "operator@example.com",
+        anonymousId: "192.0.2.10:test-agent",
       },
-      { allowAnonymous: true },
+      {
+        limit: 3,
+        limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
+      },
     );
   });
 

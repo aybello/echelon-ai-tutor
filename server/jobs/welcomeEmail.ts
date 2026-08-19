@@ -18,8 +18,8 @@ export interface WelcomeEmailResult {
   errors: string[];
   /**
    * A known, non-retryable deployment prerequisite is missing. The scheduled
-   * endpoint returns 200 for this state so Heartbeat does not email the owner
-   * every hour while the database is being reconciled.
+   * endpoint returns 503 for this state so monitoring cannot report a healthy
+   * customer-onboarding pipeline while the database is being reconciled.
    */
   deferred?: "missing_welcome_email_column";
 }
@@ -99,9 +99,9 @@ export async function deliverWelcomeEmailForPurchase(
 }
 
 export const toWelcomeEmailScheduledResponse = (result: WelcomeEmailResult) => ({
-  status: result.errors.length > 0 ? 500 : 200,
+  status: result.deferred ? 503 : result.errors.length > 0 ? 500 : 200,
   body: {
-    ok: result.errors.length === 0,
+    ok: result.errors.length === 0 && !result.deferred,
     sent: result.sent,
     skipped: result.skipped,
     errors: result.errors,
@@ -130,10 +130,10 @@ export async function runWelcomeEmailJob(): Promise<WelcomeEmailResult> {
   } catch (error) {
     if (!isMissingWelcomeEmailColumnError(error)) throw error;
 
-    // This is a deployment prerequisite, not a transient job failure. Returning
-    // a successful deferred result stops the hourly alert loop without sending
-    // duplicate customer emails. The backup-gated repair command adds the
-    // marker column and safely preserves only recent purchases as eligible.
+    // This is a deployment prerequisite, not a transient job failure. The
+    // backup-gated repair command adds the marker column and safely preserves
+    // only recent purchases as eligible. Keep the job non-successful so schema
+    // drift cannot look healthy while customer onboarding is disabled.
     console.warn(
       "[welcomeEmail] Deferred: purchases.welcomeEmailSentAt is missing; run pnpm db:repair-welcome-email-column.",
     );

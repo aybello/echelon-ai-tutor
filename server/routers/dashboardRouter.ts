@@ -8,15 +8,15 @@
  */
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { computeReadiness } from "../_core/readiness";
-import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks } from "../../drizzle/schema";
+import { computeReadiness, READINESS_MODEL_VERSION } from "../_core/readiness";
+import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
-import { getCourseByKey } from "../../shared/courseRegistry";
+import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 
 /**
@@ -63,6 +63,88 @@ function attemptsWhere(userId: number | null, email: string | null) {
 }
 
 export const dashboardRouter = router({
+  /** The reserved organization id for an outcome entered by the learner. */
+  reportExamOutcome: publicProcedure
+    .input(z.object({
+      courseKey: z.string().min(1).max(64),
+      result: z.enum(["passed", "failed"]),
+      examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+      readinessScore: z.number().int().min(0).max(100).nullable(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const { email } = resolveDashboardIdentity(ctx);
+      if (!email) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "A verified email is required to report an exam outcome." });
+      }
+      const course = resolveCourseKey(input.courseKey);
+      if (!course?.isActive) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
+      }
+      const examDate = new Date(`${input.examDate}T12:00:00.000Z`);
+      if (examDate.getTime() > Date.now() + 24 * 60 * 60 * 1000) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "The official exam date cannot be in the future." });
+      }
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const memberEmail = email.trim().toLowerCase();
+      const [existing] = await db
+        .select({ id: examOutcomes.id })
+        .from(examOutcomes)
+        .where(and(
+          eq(examOutcomes.orgId, 0),
+          eq(examOutcomes.memberEmail, memberEmail),
+          eq(examOutcomes.courseKey, course.courseKey),
+        ))
+        .orderBy(desc(examOutcomes.recordedAt))
+        .limit(1);
+      const values = {
+        result: input.result,
+        examDate,
+        readinessScoreAtOutcome: input.readinessScore,
+        readinessModelVersion: input.readinessScore === null ? null : READINESS_MODEL_VERSION,
+        recordedAt: new Date(),
+      };
+      if (existing) {
+        await db.update(examOutcomes).set(values).where(eq(examOutcomes.id, existing.id));
+      } else {
+        await db.insert(examOutcomes).values({
+          orgId: 0,
+          memberEmail,
+          courseKey: course.courseKey,
+          recordedBy: "learner-self-report",
+          ...values,
+        });
+      }
+      return { success: true, courseKey: course.courseKey };
+    }),
+
+  myExamOutcome: publicProcedure
+    .input(z.object({ courseKey: z.string().min(1).max(64) }))
+    .query(async ({ ctx, input }) => {
+      const { email } = resolveDashboardIdentity(ctx);
+      if (!email) return null;
+      const course = resolveCourseKey(input.courseKey);
+      if (!course?.isActive) return null;
+      const db = await getDb();
+      if (!db) return null;
+      const [outcome] = await db
+        .select({
+          result: examOutcomes.result,
+          examDate: examOutcomes.examDate,
+          readinessScoreAtOutcome: examOutcomes.readinessScoreAtOutcome,
+          recordedAt: examOutcomes.recordedAt,
+        })
+        .from(examOutcomes)
+        .where(and(
+          eq(examOutcomes.orgId, 0),
+          eq(examOutcomes.memberEmail, email.trim().toLowerCase()),
+          eq(examOutcomes.courseKey, course.courseKey),
+        ))
+        .orderBy(desc(examOutcomes.recordedAt))
+        .limit(1);
+      return outcome ?? null;
+    }),
+
   /**
    * Overview stats — hero numbers for the dashboard
    */

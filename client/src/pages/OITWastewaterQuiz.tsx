@@ -17,7 +17,7 @@ export default function OITWastewaterQuiz() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit-ww", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit-ww", "lazy", "practice");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({

@@ -20,6 +20,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearch } from "wouter";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { setTrialUnlocked } from "@/components/QuizGate";
 import { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
@@ -282,6 +283,7 @@ export function useQuizSession({
     const totals = summarizeHistory(completedHistory);
     analyticsMutation.mutate({
       event: "quiz_completed",
+      visitorId: getAnonymousAnalyticsId(),
       examType,
       quizMode,
       questionCount: completedHistory.length,
@@ -408,7 +410,7 @@ export function useQuizSession({
       return;
     }
     if (v && !tutorOpen) {
-      analyticsMutation.mutate({ event: "ai_tutor_opened", examType });
+      analyticsMutation.mutate({ event: "ai_tutor_opened", examType, visitorId: getAnonymousAnalyticsId() });
     }
     setTutorOpenState(v);
   }, [accessData?.hasAccess, analyticsMutation, examType, freeTutorPreview, tutorOpen]);
@@ -428,7 +430,7 @@ export function useQuizSession({
   useEffect(() => {
     if (!initialized || !current || analyticsStartedRef.current) return;
     analyticsStartedRef.current = true;
-    analyticsMutation.mutate({ event: "quiz_started", examType, quizMode });
+    analyticsMutation.mutate({ event: "quiz_started", examType, quizMode, visitorId: getAnonymousAnalyticsId() });
   }, [analyticsMutation, current, examType, initialized, quizMode]);
 
   // ── Confirm answer (step 1: lock answer, show explanation) ─────────────────

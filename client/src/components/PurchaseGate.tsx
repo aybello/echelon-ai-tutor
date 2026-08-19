@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
@@ -159,6 +160,7 @@ export default function PurchaseGate({
       phone: contact.phone,
       currency: isUS ? "usd" : "cad",
       utmSource: "purchase-gate",
+      visitorId: getAnonymousAnalyticsId(),
     });
   }
 

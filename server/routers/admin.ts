@@ -5,7 +5,7 @@
 import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
@@ -36,7 +36,7 @@ export const adminRouter = router({
     const since30 = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
     const since7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-    const [events, outcomes, recentPurchases, [seatCapacity], [assignedSeats]] = await Promise.all([
+    const [events, outcomes, recentPurchases, [seatCapacity], [assignedSeats], [coursePassSeats]] = await Promise.all([
       db.select({
         eventName: productAnalyticsEvents.eventName,
         occurredAt: productAnalyticsEvents.occurredAt,
@@ -70,6 +70,15 @@ export const adminRouter = router({
           eq(organizationMembers.role, "operator"),
           eq(organizationMembers.status, "assigned"),
         )),
+      db.select({
+        total: count(),
+        allocated: sql<number>`SUM(CASE WHEN ${teamFlexLicences.status} IN ('invited', 'assigned', 'active', 'suspended') THEN 1 ELSE 0 END)`,
+        activated: sql<number>`SUM(CASE WHEN ${teamFlexLicences.status} IN ('active', 'suspended') THEN 1 ELSE 0 END)`,
+      }).from(teamFlexLicences)
+        .where(and(
+          ne(teamFlexLicences.status, "revoked"),
+          sql`(${teamFlexLicences.activationDeadline} >= ${now} OR ${teamFlexLicences.reportingEndsAt} >= ${now})`,
+        )),
     ]);
 
     const eventCounts = new Map<string, number>();
@@ -85,6 +94,10 @@ export const adminRouter = router({
     );
     const signupIdentities = identitiesFor("signup");
     const activationIdentities = identitiesFor("access_activated");
+    const pricingIdentities = identitiesFor("pricing_viewed");
+    const checkoutIdentities = identitiesFor("checkout_completed");
+    const quizStartIdentities = identitiesFor("quiz_started");
+    const quizCompletionIdentities = identitiesFor("quiz_completed");
     const activatedSignupCohort = Array.from(signupIdentities)
       .filter(identity => activationIdentities.has(identity)).length;
 
@@ -111,6 +124,11 @@ export const adminRouter = router({
     const refundedPurchases = recentPurchases.filter(purchase => purchase.status === "refunded").length;
     const seats = Number(seatCapacity?.seats ?? 0);
     const assigned = Number(assignedSeats?.seats ?? 0);
+    const coursePassTotal = Number(coursePassSeats?.total ?? 0);
+    const coursePassAllocated = Number(coursePassSeats?.allocated ?? 0);
+    const coursePassActivated = Number(coursePassSeats?.activated ?? 0);
+    const totalTeamCapacity = seats + coursePassTotal;
+    const totalTeamAllocated = assigned + coursePassAllocated;
     const mastery = masteryGain(events);
 
     return {
@@ -133,10 +151,22 @@ export const adminRouter = router({
         masteryGainSampleSize: mastery.sampleSize,
       },
       teams: {
-        assignedSeats: assigned,
-        availableSeats: Math.max(seats - assigned, 0),
-        totalSeats: seats,
-        utilizationRate: percentage(assigned, seats),
+        assignedSeats: totalTeamAllocated,
+        availableSeats: Math.max(totalTeamCapacity - totalTeamAllocated, 0),
+        totalSeats: totalTeamCapacity,
+        utilizationRate: percentage(totalTeamAllocated, totalTeamCapacity),
+        allAccess: {
+          assignedSeats: assigned,
+          totalSeats: seats,
+          utilizationRate: percentage(assigned, seats),
+        },
+        coursePass: {
+          allocatedLicences: coursePassAllocated,
+          activatedLicences: coursePassActivated,
+          totalLicences: coursePassTotal,
+          allocationRate: percentage(coursePassAllocated, coursePassTotal),
+          activationRate: percentage(coursePassActivated, coursePassTotal),
+        },
       },
       outcomes: {
         passed: passed.length,
@@ -147,9 +177,9 @@ export const adminRouter = router({
         averageReadinessFailed: readinessAverage(failed),
       },
       commercial: {
-        pricingToCheckoutRate: percentage(eventCount("checkout_completed"), eventCount("pricing_viewed")),
+        pricingToCheckoutRate: percentage(checkoutIdentities.size, pricingIdentities.size),
         activationRate: percentage(activatedSignupCohort, signupIdentities.size),
-        quizCompletionRate: percentage(eventCount("quiz_completed"), eventCount("quiz_started")),
+        quizCompletionRate: percentage(quizCompletionIdentities.size, quizStartIdentities.size),
         refundRate: percentage(refundedPurchases, recentPurchases.length),
         renewals: eventCount("subscription_renewed"),
         cancellations: eventCount("subscription_cancelled"),
@@ -747,6 +777,22 @@ export const adminRouter = router({
       checks.push({ name: "Database", status: "ok", detail: "Connected and queryable" });
     } catch (err: any) {
       checks.push({ name: "Database", status: "error", detail: err.message });
+    }
+
+    // The general DB check deliberately selects only a stable primary key. The
+    // welcome-email marker needs its own check because a missing column pauses
+    // customer onboarding without making the rest of the database unavailable.
+    try {
+      const db = await getDb();
+      if (!db) throw new Error("getDb returned null");
+      await db.select({ marker: purchases.welcomeEmailSentAt }).from(purchases).limit(1);
+      checks.push({ name: "Welcome Email Queue", status: "ok", detail: "Delivery marker column is ready" });
+    } catch (err: any) {
+      checks.push({
+        name: "Welcome Email Queue",
+        status: "error",
+        detail: `Onboarding emails are paused: ${err.message}. Run the backup-gated welcome-email schema repair.`,
+      });
     }
 
     // 2. Stripe connectivity

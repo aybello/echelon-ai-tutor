@@ -10,6 +10,8 @@ describe("product KPI calculations", () => {
   it("uses pseudonymous identities without exposing an email address", () => {
     expect(analyticsIdentity({ userId: "42", emailHash: "hash" })).toBe("user:42");
     expect(analyticsIdentity({ userId: null, emailHash: "hash" })).toBe("email:hash");
+    // Anonymous browser identifiers are server-hashed into this same field,
+    // allowing free preview starts and completions to form one journey.
     expect(analyticsIdentity({ userId: null, emailHash: null })).toBeNull();
   });
 

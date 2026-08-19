@@ -8,6 +8,7 @@ import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { formatPriceUSD } from "@shared/products";
 import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
@@ -732,6 +733,7 @@ function CheckoutButton({
         name: contact.name,
         phone: contact.phone,
         currency,
+        visitorId: getAnonymousAnalyticsId(),
       });
   }
 
@@ -1193,7 +1195,7 @@ export default function Pricing() {
   }, []);
 
   useEffect(() => {
-    funnelAnalytics.mutate({ event: "pricing_viewed" });
+    funnelAnalytics.mutate({ event: "pricing_viewed", visitorId: getAnonymousAnalyticsId() });
   // A single page-view event is intentional; mutation identity is not a dependency.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -1312,7 +1314,7 @@ export default function Pricing() {
               type="button"
               onClick={() => {
                 setBuyerType("individual");
-                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual" });
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual", visitorId: getAnonymousAnalyticsId() });
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "individual" ? "linear-gradient(135deg, #EFF6FF, #ECFEFF)" : "#fff", border: buyerType === "individual" ? "2px solid #2563EB" : "1.5px solid #E2E8F0", boxShadow: buyerType === "individual" ? "0 10px 24px rgba(37,99,235,0.12)" : "none" }}
             >
@@ -1325,7 +1327,7 @@ export default function Pricing() {
               type="button"
               onClick={() => {
                 setBuyerType("team");
-                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team" });
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team", visitorId: getAnonymousAnalyticsId() });
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "team" ? "linear-gradient(135deg, #F0FDFA, #ECFEFF)" : "#fff", border: buyerType === "team" ? "2px solid #0D9488" : "1.5px solid #E2E8F0", boxShadow: buyerType === "team" ? "0 10px 24px rgba(13,148,136,0.12)" : "none" }}
             >
@@ -1549,7 +1551,7 @@ export default function Pricing() {
                   value={selectedIndividualKey}
                   onChange={e => {
                     setSelectedIndividualKey(e.target.value);
-                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value });
+                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId() });
                   }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
                 >
