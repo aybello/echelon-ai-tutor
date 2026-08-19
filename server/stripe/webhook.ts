@@ -142,9 +142,6 @@ export function registerStripeWebhook(app: Express) {
             });
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
-            await trackEvent("checkout_completed", { email, productKey, extra: { amountCAD } });
-            await trackEvent("access_activated", { email, productKey, extra: { activationType: "individual_purchase" } });
-
             // Send purchase confirmation email (non-blocking — don't fail webhook on email error)
             const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
             sendPurchaseConfirmationEmail({
@@ -172,6 +169,13 @@ export function registerStripeWebhook(app: Express) {
           } else {
             console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping insert`);
           }
+
+          // The browser success page may create the purchase before the webhook
+          // arrives. The webhook event itself is idempotency-guarded, so record
+          // the conversion here even when the purchase row already exists.
+          const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
+          await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD } });
+          await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase" } });
 
           // Always attempt to save phone and name — runs for both new and duplicate sessions
           // This handles the case where verifySession inserted the row before the webhook fired

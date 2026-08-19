@@ -1,17 +1,13 @@
 /**
- * Flashcard progress router — persists spaced-repetition known/unknown state
+ * Flashcard progress router — persists got-it/still-learning mastery state
  * per email + examType so students can resume across sessions and devices.
  *
  * Security notes (Issue H):
  * - saveProgress: knownIds is capped at 20,000 entries; each string ID is capped at 64 chars;
  *   the serialized JSON must be ≤ 200,000 bytes. Oversized payloads are rejected with a
  *   clear PAYLOAD_TOO_LARGE error before any DB write.
- * - getAllProgress / getProgress: identity is resolved from the verified server session
- *   (ctx.user or ctx.studentEmail) first. If no session is present, input.email is used as
- *   a fallback ONLY when the caller supplies it — this preserves the existing public Account
- *   page use-case while preventing unauthenticated enumeration of other users' progress once
- *   a session is in place. A future hardening step can remove the input.email fallback
- *   entirely once all clients pass a session cookie.
+ * - Database progress is bound to a verified OAuth or OTP session. Anonymous
+ *   progress remains browser-local and caller-supplied emails are never trusted.
  */
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
@@ -34,12 +30,10 @@ export const flashcardRouter = router({
    */
   getProgress: publicProcedure
     .input(z.object({
-      email: z.string().email().optional(), // optional — session takes priority
       examType: z.string().min(1).max(64),
     }))
     .query(async ({ input, ctx }) => {
-      // Priority: OAuth email > server-verified OTP session email > client-supplied email
-      const email = ctx.user?.email ?? ctx.studentEmail ?? input.email;
+      const email = ctx.user?.email ?? ctx.studentEmail;
       if (!email) return { knownIds: [] as (number | string)[], totalCards: 0 };
       const db = await getDb();
       if (!db) return { knownIds: [] as (number | string)[], totalCards: 0 };
@@ -67,7 +61,6 @@ export const flashcardRouter = router({
    */
   saveProgress: publicProcedure
     .input(z.object({
-      email: z.string().email().optional(), // optional — session takes priority
       examType: z.string().min(1).max(64),
       // Bounded: max 20,000 entries; each string ID max 64 chars
       knownIds: z.array(
@@ -79,15 +72,8 @@ export const flashcardRouter = router({
       totalCards: z.number().int().min(0),
     }))
     .mutation(async ({ input, ctx }) => {
-      // Attribution priority: OAuth email > server-verified OTP session email > client-supplied email.
-      // The client-supplied email fallback is kept for genuine guest sessions (no session cookie)
-      // but is NOT trusted for attribution when a session exists — the session always wins.
-      // This prevents unauthenticated callers from writing flashcard progress under any email.
-      // Resolve the email for attribution: session always wins over client-supplied.
       const verifiedEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
-      const resolvedEmail = verifiedEmail
-        ? verifiedEmail.toLowerCase()
-        : (input.email ?? "").toLowerCase();
+      const resolvedEmail = verifiedEmail?.toLowerCase() ?? "";
       if (!resolvedEmail) return { success: false };
       const db = await getDb();
       if (!db) return { success: false };
@@ -139,34 +125,21 @@ export const flashcardRouter = router({
    * Get all flashcard progress rows for a given email (used on Account page).
    * Returns a map of examType → { knownCount, totalCards }.
    *
-   * Issue H fix: when a verified session is present, the session email is used
-   * exclusively — the caller cannot enumerate another user's progress by passing
-   * a different email. Without a session, input.email is required (existing
-   * Account page use-case).
+   * The verified session is the only accepted identity.
    */
   getAllProgress: publicProcedure
-    .input(z.object({ email: z.string().email().optional() }))
-    .query(async ({ input, ctx }) => {
-      // Resolve identity: verified session takes priority
+    .query(async ({ ctx }) => {
       const sessionEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
-
-      // If a session is present, ignore input.email entirely (IDOR guard)
-      // If no session, require input.email (public Account page fallback)
-      const email = sessionEmail ?? input.email ?? null;
-
-      if (!email) {
+      if (!sessionEmail) {
         return { progress: {} as Record<string, { knownCount: number; totalCards: number }> };
       }
-
-      // If no session and input.email differs from session — this branch only
-      // runs when sessionEmail is null (no session), so no IDOR risk.
       const db = await getDb();
       if (!db) return { progress: {} as Record<string, { knownCount: number; totalCards: number }> };
 
       const rows = await db
         .select()
         .from(flashcardProgress)
-        .where(eq(flashcardProgress.email, email.toLowerCase()));
+        .where(eq(flashcardProgress.email, sessionEmail.toLowerCase()));
 
       const progress: Record<string, { knownCount: number; totalCards: number }> = {};
       for (const row of rows) {

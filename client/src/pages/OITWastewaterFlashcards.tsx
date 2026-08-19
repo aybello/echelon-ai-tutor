@@ -13,7 +13,7 @@ export default function OITWastewaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("oit-ww");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("oit-ww", "full", "flashcards");
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 

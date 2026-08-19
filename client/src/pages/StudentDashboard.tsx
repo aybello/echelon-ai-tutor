@@ -125,6 +125,10 @@ export default function StudentDashboard() {
   // FIX 8: Inline exam date picker state
   const [inlineExamDate, setInlineExamDate] = useState("");
   const [inlineDateSaving, setInlineDateSaving] = useState(false);
+  const [outcomeResult, setOutcomeResult] = useState<"passed" | "failed">("passed");
+  const [outcomeDate, setOutcomeDate] = useState("");
+  const [outcomeSaved, setOutcomeSaved] = useState(false);
+  const [editingOutcome, setEditingOutcome] = useState(false);
   const setExamDateMutation = trpc.examDate.set.useMutation({
     onSuccess: () => {
       setInlineDateSaving(false);
@@ -199,6 +203,17 @@ export default function StudentDashboard() {
   const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: hasAccess, retry: false });
   const readinessScore = trpc.dashboard.readinessScore.useQuery(selectedCourseKey ? { examType: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const studyFocus = trpc.dashboard.studyFocus.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const outcomeCourseKey = selectedCourseKey ?? studyFocus.data?.courseKey ?? "oit";
+  const myExamOutcome = trpc.dashboard.myExamOutcome.useQuery(
+    { courseKey: outcomeCourseKey },
+    { enabled: hasAccess, retry: false },
+  );
+  const reportExamOutcome = trpc.dashboard.reportExamOutcome.useMutation({
+    onSuccess: () => {
+      setOutcomeSaved(true);
+      utils.dashboard.myExamOutcome.invalidate({ courseKey: outcomeCourseKey });
+    },
+  });
   const studyPlan = trpc.dashboard.studyPlan.useQuery(selectedCourseKey ? { examType: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const activation = trpc.activation.status.useQuery(
     selectedCourseKey ? { courseKey: selectedCourseKey } : undefined,
@@ -605,6 +620,52 @@ export default function StudentDashboard() {
             )}
           </div>
         )}
+
+        <div style={{
+          background: "#fff", border: "1px solid #E2E8F0", borderRadius: 14,
+          padding: "16px 18px", marginBottom: 20,
+        }}>
+          <div style={{ color: "#0F172A", fontSize: 14, fontWeight: 850 }}>Did you write your official exam?</div>
+          <p style={{ color: "#64748B", fontSize: 12, lineHeight: 1.55, margin: "5px 0 12px" }}>
+            Share a pass or fail result for {resolveCourseKey(outcomeCourseKey)?.shortName ?? outcomeCourseKey}. This helps us test whether the readiness score reflects real outcomes. You can update the result later.
+          </p>
+          {myExamOutcome.data && !outcomeSaved && !editingOutcome ? (
+            <div style={{ color: "#0F766E", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+              <span>Saved result: {myExamOutcome.data.result === "passed" ? "Passed" : "Did not pass"} · {myExamOutcome.data.examDate ? new Date(myExamOutcome.data.examDate).toLocaleDateString("en-CA") : "date not recorded"}</span>
+              <button type="button" onClick={() => setEditingOutcome(true)} style={{ padding: "5px 9px", border: "1px solid #99F6E4", borderRadius: 7, background: "#F0FDFA", color: "#0F766E", fontSize: 11, fontWeight: 750, cursor: "pointer" }}>Update</button>
+            </div>
+          ) : outcomeSaved ? (
+            <div style={{ color: "#15803D", fontSize: 12, fontWeight: 750 }}>Thank you—your official result was saved.</div>
+          ) : (
+            <div style={{ display: "flex", gap: 8, alignItems: "end", flexWrap: "wrap" }}>
+              <label style={{ color: "#475569", fontSize: 11, fontWeight: 700 }}>
+                Result
+                <select value={outcomeResult} onChange={event => setOutcomeResult(event.target.value as "passed" | "failed")} style={{ display: "block", marginTop: 4, padding: "8px 10px", border: "1px solid #CBD5E1", borderRadius: 8, background: "#fff" }}>
+                  <option value="passed">Passed</option>
+                  <option value="failed">Did not pass</option>
+                </select>
+              </label>
+              <label style={{ color: "#475569", fontSize: 11, fontWeight: 700 }}>
+                Official exam date
+                <input type="date" max={new Date().toISOString().slice(0, 10)} value={outcomeDate} onChange={event => setOutcomeDate(event.target.value)} style={{ display: "block", marginTop: 4, padding: "8px 10px", border: "1px solid #CBD5E1", borderRadius: 8 }} />
+              </label>
+              <button
+                type="button"
+                disabled={!outcomeDate || reportExamOutcome.isPending}
+                onClick={() => reportExamOutcome.mutate({
+                  courseKey: outcomeCourseKey,
+                  result: outcomeResult,
+                  examDate: outcomeDate,
+                  readinessScore: readinessScore.data?.score ?? null,
+                })}
+                style={{ padding: "9px 14px", border: 0, borderRadius: 8, background: outcomeDate ? "#0F766E" : "#CBD5E1", color: "#fff", fontSize: 12, fontWeight: 800, cursor: outcomeDate ? "pointer" : "not-allowed" }}
+              >
+                {reportExamOutcome.isPending ? "Saving…" : "Save Result"}
+              </button>
+              {reportExamOutcome.error && <span style={{ color: "#B91C1C", fontSize: 11 }}>{reportExamOutcome.error.message}</span>}
+            </div>
+          )}
+        </div>
 
         {/* ═══════════════════════════════════════════════════
             MIDDLE SECTION: Action Cards

@@ -14,6 +14,23 @@ import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 
+export const OIT_PREVIEW_LIMITS = {
+  practice: 15,
+  flashcards: 50,
+  mock: 30,
+} as const;
+
+export type OitPreviewSurface = keyof typeof OIT_PREVIEW_LIMITS;
+
+export function previewLimitForRequest(input: {
+  bankKey: string;
+  previewSurface?: OitPreviewSurface;
+}): number {
+  const course = resolveCourseKey(bankKeyToExamType(input.bankKey));
+  if (course?.track !== "oit") return FREE_TRIAL_LIMIT;
+  return OIT_PREVIEW_LIMITS[input.previewSurface ?? "practice"];
+}
+
 /**
  * Columns needed by learner quiz screens. Keep governance-only columns out of
  * this projection so ordinary quiz reads remain compatible during the brief
@@ -45,6 +62,7 @@ export const quizRouter = router({
     .input(z.object({
       bankKey: z.string().min(1).max(64),
       accessToken: z.string().optional(),
+      previewSurface: z.enum(["practice", "flashcards", "mock"]).optional(),
     }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
@@ -65,15 +83,22 @@ export const quizRouter = router({
         .orderBy(questions.questionNum);
 
       const total = rows.length;
+      const previewLimit = previewLimitForRequest(input);
       // For trial users, sample questions across all modules for a representative experience
       // instead of just taking the first N (which would all be from one module).
       let visible;
       if (hasAccess) {
         visible = rows;
       } else {
+        // Flashcard study intentionally excludes calculation items. Select from
+        // the same eligible pool here so "50 free flashcards" means 50 cards,
+        // rather than 50 mixed questions that shrink after client filtering.
+        const previewRows = input.previewSurface === "flashcards"
+          ? rows.filter(row => row.isCalc !== "yes")
+          : rows;
         // Group by module, then round-robin pick from each module
         const byModule = new Map<string, typeof rows>();
-        for (const r of rows) {
+        for (const r of previewRows) {
           const arr = byModule.get(r.module) ?? [];
           arr.push(r);
           byModule.set(r.module, arr);
@@ -81,9 +106,9 @@ export const quizRouter = router({
         const moduleArrays = Array.from(byModule.values());
         const sampled: typeof rows = [];
         let idx = 0;
-        while (sampled.length < FREE_TRIAL_LIMIT && idx < rows.length) {
+        while (sampled.length < previewLimit && idx < previewRows.length) {
           for (const arr of moduleArrays) {
-            if (sampled.length >= FREE_TRIAL_LIMIT) break;
+            if (sampled.length >= previewLimit) break;
             if (idx < arr.length) sampled.push(arr[idx]);
           }
           idx++;
@@ -113,7 +138,7 @@ export const quizRouter = router({
         }
       });
 
-      return { questions: parsed, locked: !hasAccess, total, trialLimit: FREE_TRIAL_LIMIT };
+      return { questions: parsed, locked: !hasAccess, total, trialLimit: previewLimit };
     }),
 
   /**

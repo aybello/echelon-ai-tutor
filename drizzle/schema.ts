@@ -851,8 +851,9 @@ export type OrganizationTermUsage = typeof organizationTermUsage.$inferSelect;
 export type InsertOrganizationTermUsage = typeof organizationTermUsage.$inferInsert;
 
 /**
- * Exam outcomes — manager-recorded pass/fail results for operators.
- * Used to compute first-time pass rates for renewal justification.
+ * Exam outcomes — manager-recorded results plus learner self-reports.
+ * orgId=0 and recordedBy="learner-self-report" identify an individual report;
+ * positive org IDs remain manager-owned team outcomes.
  */
 export const examOutcomes = mysqlTable("exam_outcomes", {
   id: int("id").autoincrement().primaryKey(),

@@ -75,6 +75,9 @@ jobs:
           pnpm exec vitest run
           server/product.acceptance.test.ts
           server/products.audit.test.ts
+          server/licenceConsistency.test.ts
+          server/oitPreview.test.ts
+          server/analyticsIdentity.test.ts
           server/courseRegistry.test.ts
           server/access.bankkey.test.ts
           server/mockExamScore.test.ts

@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { buildTutorSystemPrompt } from "./_core/aiTutorPolicy";
+import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, buildTutorSystemPrompt } from "./_core/aiTutorPolicy";
 
 describe("AI Tutor server-owned policy", () => {
+  it("limits the free OIT taste to three model-backed messages", () => {
+    expect(AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT).toBe(3);
+  });
   it("grounds the tutor in canonical question data and preserves safety rules", () => {
     const prompt = buildTutorSystemPrompt({
       courseName: "Class 1 Wastewater Treatment",

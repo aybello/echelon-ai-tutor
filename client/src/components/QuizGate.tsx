@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { formatPriceCAD, formatPriceUSD, getProductByKey } from "@shared/products";
@@ -139,6 +140,7 @@ export default function QuizGate({
       phone: contact.phone,
       currency: isUS ? "usd" : "cad",
       utmSource: "quiz-diagnostic",
+      visitorId: getAnonymousAnalyticsId(),
     });
   }
 

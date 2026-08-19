@@ -83,8 +83,8 @@ describe("welcome email delivery", () => {
       errors: [],
       deferred: "missing_welcome_email_column",
     })).toMatchObject({
-      status: 200,
-      body: { deferred: "missing_welcome_email_column" },
+      status: 503,
+      body: { ok: false, deferred: "missing_welcome_email_column" },
     });
   });
 });

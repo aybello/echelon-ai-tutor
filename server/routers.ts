@@ -20,7 +20,7 @@ import {
   resolveAccessForRequest,
   verifyAccessTokenAndRecheckDb,
 } from "./_core/accessService";
-import { buildTutorSystemPrompt, enforceAiTutorDailyQuota } from "./_core/aiTutorPolicy";
+import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, buildTutorSystemPrompt, enforceAiTutorDailyQuota } from "./_core/aiTutorPolicy";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { quizRouter } from "./routers/quizRouter";
@@ -692,10 +692,11 @@ export const appRouter = router({
         }
         const isElectrician309A = course.courseKey === "electrician-309a";
 
-        const hasAccess = course.track === "oit" || await resolveAccessForRequest(ctx, course.courseKey, {
+        const hasPaidAccess = await resolveAccessForRequest(ctx, course.courseKey, {
           accessToken: input.accessToken,
         });
-        if (!hasAccess) {
+        const isFreeOitPreview = course.track === "oit" && !hasPaidAccess;
+        if (!hasPaidAccess && !isFreeOitPreview) {
           throw new TRPCError({
             code: "FORBIDDEN",
             message: "An active Echelon course pass is required to use the AI Tutor.",
@@ -709,12 +710,15 @@ export const appRouter = router({
           resolvedEmail = tokenResult.hasAccess ? tokenResult.email : null;
         }
         const resolvedUserId = ctx.user?.id?.toString() ?? null;
-        // The course tutor is intentionally available without a paid pass. A
-        // verified learner is still quota-tracked; an anonymous learner may use
-        // the tutor without being blocked before the internal model is reached.
+        const anonymousTutorId = `${ctx.req.ip ?? "unknown"}:${ctx.req.get("user-agent") ?? "unknown"}`;
         await enforceAiTutorDailyQuota(
-          { userId: resolvedUserId, email: resolvedEmail },
-          { allowAnonymous: true },
+          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
+          isFreeOitPreview
+            ? {
+                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
+                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
+              }
+            : undefined,
         );
 
         const db = await getDb();
@@ -847,6 +851,7 @@ export const appRouter = router({
             email: resolvedEmail,
             examType: course.courseKey,
             productKey: course.productKey,
+            anonymousId: resolvedUserId || resolvedEmail ? null : anonymousTutorId,
             extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
           });
           return { reply };
@@ -985,7 +990,7 @@ export const appRouter = router({
               .catch((err) => { console.error("[session] profile update (email) failed:", err); }); // non-fatal
           }
 
-          await trackEvent("ai_tutor_message", {
+          await trackEvent("ai_tutor_session_saved", {
             userId: resolvedUserId?.toString() ?? null,
             email: resolvedEmail,
             examType: course.courseKey,

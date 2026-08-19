@@ -6,6 +6,7 @@ import {
   latestChangelogTimestamp,
   nextChangelogSortOrder,
 } from "../shared/changelog";
+import { PLATFORM_RELEASES } from "../shared/platformReleases";
 
 describe("platform changelog", () => {
   it("places each automatically ordered entry ahead of the current first entry", () => {
@@ -48,5 +49,7 @@ describe("platform changelog", () => {
     expect(manager).toContain("utils.changelog.list.invalidate()");
     expect(router).toContain("nextChangelogSortOrder(orderRow?.minimum)");
     expect(router).toContain("desc(changelog.createdAt)");
+    expect(router).toContain("PLATFORM_RELEASES");
+    expect(PLATFORM_RELEASES[0].title).toBe("A complete free OIT preview");
   });
 });
