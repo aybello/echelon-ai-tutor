@@ -1627,8 +1627,50 @@
 - [ ] Review compatibility, tests, conflicts, and regressions before any merge decision
 - [ ] Integrate and validate only an approved update
 
+## Newly Available Repository Update Review — Latest
+- [ ] Identify the incoming branch or pull request and inspect its change set
+- [ ] Review compatibility, tests, conflicts, and regressions before any merge decision
+- [ ] Integrate and validate only an approved update
+
+## PR #30 309A Flashcard Deck Merge
+- [x] Merge the approved 200-card blueprint-weighted study deck while retaining stable progress and action-control safeguards
+- [x] Validate complete prompts, diagram context, deck allocation, learner review controls, and production build
+- [x] Publish and verify the corrected 309A study deck
+- [x] Force-refresh the production flashcard bundle if the first deployed client revision remains stale
+
+## PR #28 Review and Release
+- [x] Inspect PR #28 scope, changed files, mergeability, and automated checks
+- [x] Review PR #28 implementation and run required integration validation
+- [x] Merge the approved PR #28, synchronize main, and verify the published release
+
 ## Page-Load Flash Repair
 - [x] Reproduce the visible pre-render flash on public course pages and identify its source
 - [x] Repair the initial loading and hydration sequence without masking legitimate errors
 - [x] Validate and publish the corrected page-load experience
 - [x] Hide the server-rendered crawl fallback before React hydration while preserving a no-JavaScript fallback
+
+## 309A Flashcard Progress Display Repair
+- [x] Audit the “Got it” and “Still learning” counts, card filtering, and persistence identifiers
+- [x] Correct the progress-state calculation and review controls so display matches actual learner decisions
+- [x] Validate, publish, and verify the corrected flashcard progress experience
+
+## 309A Flashcard Action-Control Layering Repair
+- [x] Reproduce the revealed-card action-button overlap on desktop and mobile
+- [x] Correct card sizing, stacking, and action-control spacing so both learner decisions remain clickable
+- [x] Validate and publish the repaired action-control layout
+
+## 309A Flashcard Prompt and Color Refinement
+- [x] Audit card-front prompt density and non-brand blue treatments in the current 200-card deck
+- [x] Shorten card-front cues while retaining complete answer and explanation content after reveal
+- [x] Replace off-brand bright-blue styling with the Echelon Institute deep-blue palette
+- [x] Validate and publish the refined flashcard visual hierarchy
+
+## 309A Flashcard Compact Layout Repair
+- [x] Audit the fixed card-height and overflow rules that cause cards to occupy the learner viewport
+- [x] Replace the oversized fixed layout with compact content-led sizing while preserving answer and action accessibility
+- [x] Validate and publish the compact flashcard layout on desktop and mobile
+
+## Shared Quiz Workspace Compact Layout Repair
+- [x] Audit the shared quiz layout areas causing oversized viewport use across course practice pages
+- [x] Compact quiz spacing and question-panel sizing without harming answer selection, feedback, or accessibility
+- [x] Validate and publish the compact quiz workspace on desktop and mobile

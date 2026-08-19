@@ -4,10 +4,18 @@
 // Persists spaced-repetition state (known/unknown) to the database per email+examType
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import SiteNav from "@/components/SiteNav";
+import {
+  flashcardProgressKey,
+  normalizeKnownFlashcardIds,
+  stillLearningCards,
+  summarizeFlashcardProgress,
+} from "@/lib/flashcardProgress";
+import { advanceReviewQueue } from "@/lib/flashcardStudy";
 
 const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
 
@@ -57,6 +65,8 @@ interface FlashcardShellProps {
   allowMorePreview?: boolean;
   /** Optional course-specific study-card projection from governed question data. */
   cardContent?: (card: FlashcardQuestion) => FlashcardCardContent;
+  /** Optional course-specific visual shown on the front of the card. */
+  renderFrontSupplement?: (card: FlashcardQuestion) => ReactNode;
 }
 
 function shuffleArr<T>(arr: T[]): T[] {
@@ -88,12 +98,35 @@ function getStoredEmail(): string {
   catch { return ""; }
 }
 
+function guestProgressKey(examType: string): string {
+  return `echelon_flashcard_progress:guest:${examType}`;
+}
+
+function loadGuestKnown(examType: string): (number | string)[] {
+  try {
+    const raw = localStorage.getItem(guestProgressKey(examType));
+    if (!raw) return [];
+    const value = JSON.parse(raw);
+    return Array.isArray(value) ? value.filter(id => typeof id === "number" || typeof id === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveGuestKnown(examType: string, ids: Set<string>): void {
+  try {
+    localStorage.setItem(guestProgressKey(examType), JSON.stringify(Array.from(ids)));
+  } catch {
+    // The in-memory session still works when storage is unavailable.
+  }
+}
+
 /** Strip calculation questions — they require multi-step math and are not suitable for flip-card study */
 function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
   return qs.filter(q => !q.isCalc && q.type !== "calculation");
 }
 
-export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, allowMorePreview = true, cardContent }: FlashcardShellProps) {
+export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, allowMorePreview = true, cardContent, renderFrontSupplement }: FlashcardShellProps) {
   // Remove calculation questions once, before any deck operations
   const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
@@ -109,8 +142,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     !flipped &&
     !paywallDismissed;
   const [index, setIndex] = useState(0);
-  const [known, setKnown] = useState<Set<number | string>>(new Set());
+  const [known, setKnown] = useState<Set<string>>(new Set());
   const [reviewing, setReviewing] = useState(false);
+  const [reviewStartCount, setReviewStartCount] = useState(0);
   const [deck, setDeck] = useState<FlashcardQuestion[]>(() => shuffleArr(conceptualQuestions));
   const [sessionComplete, setSessionComplete] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
@@ -129,39 +163,73 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     }
   );
 
+  // Reset and load the correct identity whenever the learner or course changes.
+  // Anonymous learners use local storage; signed-in learners use server progress.
   useEffect(() => {
-    if (savedProgress && !progressLoaded) {
-      const ids = savedProgress.knownIds ?? [];
-      if (ids.length > 0) {
-        setKnown(new Set(ids));
-      }
+    setKnown(new Set());
+    setProgressLoaded(false);
+    if (!email) {
+      setKnown(normalizeKnownFlashcardIds(loadGuestKnown(examType), conceptualQuestions));
       setProgressLoaded(true);
     }
-  }, [savedProgress, progressLoaded]);
+  }, [email, examType, conceptualQuestions]);
 
-  // ── Save progress (debounced) ─────────────────────────────────────────────
+  useEffect(() => {
+    if (email && savedProgress && !progressLoaded) {
+      setKnown(normalizeKnownFlashcardIds(savedProgress.knownIds ?? [], conceptualQuestions));
+      setProgressLoaded(true);
+    }
+  }, [email, savedProgress, progressLoaded, conceptualQuestions]);
+
+  // ── Save progress ──────────────────────────────────────────────────────────
+  // Serialize writes so rapid ratings cannot arrive out of order and overwrite
+  // a newer known/learning decision with an older snapshot.
   const saveProgress = trpc.flashcard.saveProgress.useMutation();
-  const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const queuedSaveRef = useRef<{
+    email: string;
+    examType: string;
+    knownIds: string[];
+    totalCards: number;
+  } | null>(null);
+  const saveInFlightRef = useRef(false);
 
-  const persistKnown = useCallback((nextKnown: Set<number | string>) => {
-    if (!email) return;
-    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-    saveTimerRef.current = setTimeout(() => {
-      saveProgress.mutate({
-        email,
-        examType,
-        knownIds: Array.from(nextKnown),
-        totalCards: conceptualQuestions.length,
-      });
-    }, 800);
-  }, [email, examType, conceptualQuestions.length, saveProgress]);
+  const drainSaveQueue = useCallback(async () => {
+    if (saveInFlightRef.current) return;
+    saveInFlightRef.current = true;
+    try {
+      while (queuedSaveRef.current) {
+        const payload = queuedSaveRef.current;
+        queuedSaveRef.current = null;
+        try {
+          await saveProgress.mutateAsync(payload);
+        } catch {
+          // The next learner action queues the full latest state and retries it.
+          break;
+        }
+      }
+    } finally {
+      saveInFlightRef.current = false;
+    }
+  }, [saveProgress]);
 
-  // Memoized filtered list (used for module switching)
-  const _filtered = useMemo(() => {
-    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    return reviewing ? base.filter(q => !known.has(q.id)) : base;
-  }, [conceptualQuestions, selectedModule, reviewing, known]);
-  void _filtered;
+  const persistKnown = useCallback((nextKnown: Set<string>) => {
+    if (!email) {
+      saveGuestKnown(examType, nextKnown);
+      return;
+    }
+    queuedSaveRef.current = {
+      email,
+      examType,
+      knownIds: Array.from(nextKnown),
+      totalCards: conceptualQuestions.length,
+    };
+    void drainSaveQueue();
+  }, [email, examType, conceptualQuestions.length, drainSaveQueue]);
+
+  const selectedScope = useMemo(
+    () => selectedModule ? conceptualQuestions.filter((question) => question.module === selectedModule) : conceptualQuestions,
+    [conceptualQuestions, selectedModule],
+  );
 
   const card = deck[index] ?? null;
   const questionText = card ? getQText(card) : "";
@@ -171,15 +239,17 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const difficulty = card?.difficulty ?? "medium";
   const diffStyle = DIFF_COLOR[difficulty] ?? DIFF_COLOR.medium;
   const projectedContent = card ? cardContent?.(card) : undefined;
+  const frontSupplement = card ? renderFrontSupplement?.(card) : undefined;
   const displayPrompt = projectedContent?.prompt ?? questionText;
   const displayAnswer = projectedContent?.answer ?? answerText;
   const displayExplanation = projectedContent?.explanation ?? explanation;
 
   const total = deck.length;
-  const progress = total > 0 ? Math.round((index / total) * 100) : 0;
-  const knownCount = known.size;
-  const knownInDeck = deck.filter(item => known.has(item.id)).length;
-  const remainingInDeck = deck.length - knownInDeck;
+  const progress = reviewing && reviewStartCount > 0
+    ? Math.round(((reviewStartCount - deck.length) / reviewStartCount) * 100)
+    : total > 0 ? Math.round((index / total) * 100) : 0;
+  const scopeSummary = summarizeFlashcardProgress(selectedScope, known);
+  const sessionSummary = summarizeFlashcardProgress(deck, known);
 
   const reshuffleDeck = useCallback((qs: FlashcardQuestion[]) => {
     setDeck(shuffleArr(qs));
@@ -191,7 +261,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const handleModuleChange = (mod: string | null) => {
     setSelectedModule(mod);
     const base = mod ? conceptualQuestions.filter(q => q.module === mod) : conceptualQuestions;
-    const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
+    const next = reviewing ? stillLearningCards(base, known) : base;
+    if (reviewing) setReviewStartCount(next.length);
     reshuffleDeck(next);
   };
 
@@ -227,53 +298,64 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   };
 
   const markKnown = () => {
-    if (card) {
-      setKnown(prev => {
-        const s = new Set(prev);
-        s.add(card.id);
-        persistKnown(s);
-        return s;
-      });
+    if (!card) return;
+    const nextKnown = new Set(known);
+    nextKnown.add(flashcardProgressKey(card.id));
+    setKnown(nextKnown);
+    persistKnown(nextKnown);
+
+    if (reviewing) {
+      const next = advanceReviewQueue(deck, index, "known");
+      setDeck(next.deck);
+      setIndex(next.index);
+      setFlipped(false);
+      if (next.complete) setSessionComplete(true);
+      return;
     }
     handleNext();
   };
 
   const markUnknown = () => {
-    if (card) {
-      setKnown(prev => {
-        const s = new Set(prev);
-        s.delete(card.id);
-        persistKnown(s);
-        return s;
-      });
+    if (!card) return;
+    const nextKnown = new Set(known);
+    nextKnown.delete(flashcardProgressKey(card.id));
+    setKnown(nextKnown);
+    persistKnown(nextKnown);
+
+    if (reviewing) {
+      const next = advanceReviewQueue(deck, index, "learning");
+      setDeck(next.deck);
+      setIndex(next.index);
+      setFlipped(false);
+      return;
     }
     handleNext();
   };
 
   const handleShuffle = () => {
     const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
+    const next = reviewing ? stillLearningCards(base, known) : base;
     reshuffleDeck(next);
   };
 
   const handleReviewUnknown = () => {
-    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    const missed = base.filter(q => !known.has(q.id));
+    const missed = stillLearningCards(selectedScope, known);
     if (missed.length === 0) return;
+    setReviewStartCount(missed.length);
     setReviewing(true);
     reshuffleDeck(missed);
   };
 
   const handleStudyDeck = () => {
+    setReviewStartCount(0);
     setReviewing(false);
-    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
-    reshuffleDeck(base);
+    reshuffleDeck(selectedScope);
   };
 
   if (sessionComplete) {
-    // Count cards in the current deck that are NOT in the known set (not global knownCount)
-    const deckKnownCount = deck.filter(c => known.has(c.id)).length;
-    const unknownCount = deck.length - deckKnownCount;
+    const { gotIt: deckKnownCount, stillLearning: standardUnknownCount } = sessionSummary;
+    const unknownCount = reviewing ? 0 : standardUnknownCount;
+    const reviewedTotal = reviewing ? reviewStartCount : deck.length;
     return (
       <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
         <SiteNav currentPath={window.location.pathname} />
@@ -281,7 +363,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <div style={{ background: "#fff", borderRadius: "18px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", border: "1px solid var(--echelon-line)", boxShadow: "var(--echelon-shadow-md)" }}>
           <div style={{ fontSize: "56px", marginBottom: "16px" }}>🎉</div>
           <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#0f172a", marginBottom: "8px" }}>Session Complete!</h2>
-          <p style={{ color: "#64748b", fontSize: "16px", marginBottom: "32px" }}>You reviewed all {deck.length} cards</p>
+          <p style={{ color: "#64748b", fontSize: "16px", marginBottom: "32px" }}>You reviewed all {reviewedTotal} cards</p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginBottom: "32px" }}>
             <div style={{ background: "#DCFCE7", borderRadius: "12px", padding: "16px 24px" }}>
               <div style={{ fontSize: "32px", fontWeight: 800, color: "#15803D" }}>{deckKnownCount}</div>
@@ -322,21 +404,24 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
       <style>{`
-        .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto; }
-        .fc-inner { position: relative; width: 100%; min-height: 320px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
+        .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto 8px; }
+        .fc-inner { position: relative; width: 100%; height: 240px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
         .fc-inner.flipped { transform: rotateY(180deg); }
-        .fc-face { position: absolute; top: 0; left: 0; right: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 36px 32px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; }
+        .fc-face { position: absolute; top: 0; left: 0; right: 0; bottom: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
+        .fc-face.fc-face-projected { justify-content: flex-start; }
         .fc-front { background: #ffffff; border: 1px solid var(--echelon-line); box-shadow: var(--echelon-shadow-md); }
-        .fc-back { background: linear-gradient(135deg, var(--echelon-navy) 0%, #1d4ed8 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
+        .fc-back { background: linear-gradient(135deg, #1E3A5F 0%, #0047AB 100%); transform: rotateY(180deg); box-shadow: var(--echelon-shadow-md); }
+        .fc-actions-row { position: relative; z-index: 4; padding: 12px 24px 20px; background: var(--echelon-canvas); }
         .fc-mod-tab { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
-        .fc-mod-tab.active { border-color: #3b82f6; }
+        .fc-mod-tab.active { border-color: #0047AB; }
         .fc-act-btn { border: none; border-radius: 12px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; flex: 1; }
         .fc-act-btn:hover { opacity: 0.9; transform: translateY(-1px); }
         .fc-nav-btn { background: #fff; border: 1px solid var(--echelon-line); color: var(--echelon-ink); border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 650; cursor: pointer; transition: all 0.15s; }
-        .fc-nav-btn:hover { border-color: #93c5fd; background: #eff6ff; color: var(--echelon-blue); }
+        .fc-nav-btn:hover { border-color: #AFC5E3; background: #EEF4FB; color: #1E3A5F; }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
-          .fc-face { padding: 24px 20px; min-height: 240px; }
+          .fc-inner { height: 220px; }
+          .fc-face { padding: 20px 18px; }
           .fc-act-btn { padding: 12px 14px; font-size: 14px; }
           .fc-wrap { max-width: 100%; }
           .fc-header { padding: 12px 16px !important; }
@@ -345,7 +430,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           .fc-module-row { padding: 8px 16px !important; }
           .fc-progress-row { padding: 0 16px 6px !important; }
           .fc-card-area { padding: 12px 16px 6px !important; }
-          .fc-actions-row { padding: 0 16px 16px !important; }
+          .fc-actions-row { padding: 12px 16px 20px !important; }
         }
       `}</style>
 
@@ -364,21 +449,21 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ color: "#94a3b8", fontSize: "13px" }}>
-            <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownInDeck}</span> secure · {remainingInDeck} to review
+            <span style={{ color: "#22c55e", fontWeight: 700 }}>{scopeSummary.gotIt}</span> got it · {scopeSummary.stillLearning} still learning
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
-          <button onClick={handleShuffle} style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1D4ED8", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
+          <button onClick={handleShuffle} style={{ background: "#EEF4FB", border: "1px solid #B8CAE2", color: "#1E3A5F", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
             Shuffle
           </button>
         </div>
       </div>
 
       <div style={{ padding: "10px 24px", background: "#F8FAFC", borderBottom: "1px solid var(--echelon-line)", display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
-        <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E0ECFF" : "#fff", color: !reviewing ? "#1D4ED8" : undefined }}>
+        <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E5EFF9" : "#fff", color: !reviewing ? "#1E3A5F" : undefined }}>
           Study deck
         </button>
-        <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={remainingInDeck === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
-          Review {remainingInDeck} still-learning
+        <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={scopeSummary.stillLearning === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
+          Review {scopeSummary.stillLearning} still-learning
         </button>
       </div>
 
@@ -387,7 +472,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <div className="fc-module-row" style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
           <span
             className={"fc-mod-tab" + (selectedModule === null ? " active" : "")}
-            style={{ background: selectedModule === null ? "#1D4ED8" : "#fff", color: selectedModule === null ? "#fff" : "#475569", borderColor: selectedModule === null ? "#1D4ED8" : "var(--echelon-line)" }}
+            style={{ background: selectedModule === null ? "#1E3A5F" : "#fff", color: selectedModule === null ? "#fff" : "#475569", borderColor: selectedModule === null ? "#1E3A5F" : "var(--echelon-line)" }}
             onClick={() => handleModuleChange(null)}
           >
             All Modules
@@ -396,7 +481,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span
               key={mod}
               className={"fc-mod-tab" + (selectedModule === mod ? " active" : "")}
-              style={{ background: selectedModule === mod ? "#1D4ED8" : "#fff", color: selectedModule === mod ? "#fff" : "#475569", borderColor: selectedModule === mod ? "#1D4ED8" : "var(--echelon-line)" }}
+              style={{ background: selectedModule === mod ? "#1E3A5F" : "#fff", color: selectedModule === mod ? "#fff" : "#475569", borderColor: selectedModule === mod ? "#1E3A5F" : "var(--echelon-line)" }}
               onClick={() => handleModuleChange(mod)}
             >
               {mod}
@@ -408,7 +493,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       {/* Progress bar */}
       <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>
         <div style={{ background: "#DBE4EF", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
-          <div style={{ background: "linear-gradient(90deg, #3b82f6, #06b6d4)", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
+          <div style={{ background: "#0047AB", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
           <span style={{ color: "#64748b", fontSize: "12px" }}>Card {Math.min(index + 1, deck.length)} of {deck.length}</span>
@@ -434,7 +519,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               style={{ background: "none", border: "none", padding: 0, width: "100%", textAlign: "left" }}
             >
               {/* Front */}
-              <div className="fc-face fc-front">
+              <div className={"fc-face fc-front" + (projectedContent ? " fc-face-projected" : "")}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
                   <span style={{ background: "#f1f5f9", color: "#475569", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     {projectedContent?.kicker ?? card.module}
@@ -444,24 +529,29 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   </span>
                 </div>
                 {projectedContent?.topic && (
-                  <div style={{ color: "#1D4ED8", fontSize: "13px", fontWeight: 750, marginBottom: "10px" }}>
+                  <div style={{ color: "#0047AB", fontSize: "13px", fontWeight: 750, marginBottom: "10px" }}>
                     {projectedContent.topic}
                   </div>
                 )}
                 {projectedContent?.title && (
-                  <div style={{ color: "#0f172a", fontSize: "22px", fontWeight: 800, lineHeight: 1.25, marginBottom: "12px" }}>
+                  <div style={{ color: "#0f172a", fontSize: "20px", fontWeight: 800, lineHeight: 1.25, marginBottom: "10px" }}>
                     {projectedContent.title}
                   </div>
                 )}
-                <div style={{ fontSize: projectedContent ? "16px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: "center" }}>
+                {frontSupplement && (
+                  <div style={{ marginBottom: "18px", width: "100%" }}>
+                    {frontSupplement}
+                  </div>
+                )}
+                <div style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
                   {displayPrompt}
                 </div>
-                <div style={{ marginTop: "20px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
+                <div style={{ marginTop: "12px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>
                   Tap to flip
                 </div>
               </div>
               {/* Back */}
-              <div className="fc-face fc-back">
+              <div className={"fc-face fc-back" + (projectedContent ? " fc-face-projected" : "")}>
                 <div style={{ marginBottom: "12px" }}>
                   <span style={{ background: "rgba(255,255,255,0.15)", color: "#93c5fd", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     Correct Answer
@@ -496,7 +586,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
       {/* Action buttons — only show after flip */}
       {flipped && card && (
-        <div style={{ padding: "12px 24px" }}>
+        <div className="fc-actions-row">
           <div style={{ maxWidth: "680px", margin: "0 auto", display: "flex", gap: "12px" }}>
             <button
               className="fc-act-btn"

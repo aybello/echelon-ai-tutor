@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   deliverWelcomeEmailForPurchase,
   getWelcomeEmailMessageId,
+  isMissingWelcomeEmailColumnError,
   isWelcomeEmailHeartbeatTask,
   toWelcomeEmailScheduledResponse,
   WELCOME_EMAIL_HEARTBEAT_TASK_UID,
@@ -25,6 +26,22 @@ describe("welcome email delivery", () => {
     expect(isWelcomeEmailHeartbeatTask(WELCOME_EMAIL_HEARTBEAT_TASK_UID)).toBe(true);
     expect(isWelcomeEmailHeartbeatTask("another-task")).toBe(false);
     expect(isWelcomeEmailHeartbeatTask(undefined)).toBe(false);
+  });
+
+  it("recognizes only the missing welcome-email marker as non-retryable schema drift", () => {
+    const wrapped = new Error("Failed query: select id, welcomeEmailSentAt from purchases", {
+      cause: Object.assign(new Error("Unknown column 'purchases.welcomeEmailSentAt' in 'field list'"), {
+        code: "ER_BAD_FIELD_ERROR",
+        errno: 1054,
+      }),
+    });
+
+    expect(isMissingWelcomeEmailColumnError(wrapped)).toBe(true);
+    expect(isMissingWelcomeEmailColumnError(Object.assign(new Error("Unknown column 'other'"), {
+      code: "ER_BAD_FIELD_ERROR",
+      errno: 1054,
+    }))).toBe(false);
+    expect(isMissingWelcomeEmailColumnError(new Error("Database unavailable"))).toBe(false);
   });
 
   it("marks a purchase as sent only after SMTP accepts the welcome email", async () => {
@@ -60,5 +77,14 @@ describe("welcome email delivery", () => {
   it("returns a retryable scheduled response whenever a delivery error remains", () => {
     expect(toWelcomeEmailScheduledResponse({ sent: 1, skipped: 0, errors: [] }).status).toBe(200);
     expect(toWelcomeEmailScheduledResponse({ sent: 1, skipped: 0, errors: ["SMTP unavailable"] }).status).toBe(500);
+    expect(toWelcomeEmailScheduledResponse({
+      sent: 0,
+      skipped: 0,
+      errors: [],
+      deferred: "missing_welcome_email_column",
+    })).toMatchObject({
+      status: 200,
+      body: { deferred: "missing_welcome_email_column" },
+    });
   });
 });

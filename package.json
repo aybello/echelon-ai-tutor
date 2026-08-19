@@ -17,6 +17,7 @@
     "db:migrate:status": "node --import tsx scripts/db/migrate.ts status",
     "db:migrate:adopt": "node --import tsx scripts/db/migrate.ts adopt",
     "db:migrate:apply": "node --import tsx scripts/db/migrate.ts apply",
+    "db:repair-welcome-email-column": "node --import tsx scripts/db/repairWelcomeEmailColumn.ts",
     "db:verify-question-governance": "node scripts/verify-question-governance-schema.mjs",
     "309a:validate-package": "node scripts/validate-309a-production-package.mjs",
     "309a:validate": "node scripts/validate-309a-question-bank.mjs",
