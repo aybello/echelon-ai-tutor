@@ -31,6 +31,7 @@ import {
   type CourseSeoPage,
   type RegionSeoPage,
 } from "../shared/seoCatalog";
+import { getStudyUtilityPageMeta } from "./studyUtilityPageMeta";
 
 const SITE_URL = "https://echeloninstitute.ca";
 const DEFAULT_OG_IMAGE =
@@ -161,7 +162,10 @@ function buildOrganizationJsonLd(): string {
     logo: PUBLISHER_LOGO,
     description:
       "Independent Canadian exam preparation for water and wastewater operators, with course-specific practice, flashcards, mock exams, process guides, and an AI tutor.",
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/company/echeloninstitute",
+      "https://github.com/aybello/echelon-ai-tutor",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -791,6 +795,7 @@ function buildCoursePageMeta(course: CourseSeoPage): PageMeta {
 
 export const STATIC_PAGE_META: PageMeta[] = [
   ...BASE_STATIC_PAGE_META,
+  ...getStudyUtilityPageMeta(),
   {
     path: "/teams",
     title:
@@ -843,22 +848,54 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#39;");
 }
 
+/**
+ * hreflang pairs — where a US and a Canadian equivalent exist for the same content,
+ * we tell Google which language/region each is for. `/us` is the entry to the US
+ * variant; `/` is the entry to the Canadian variant. `x-default` should point to
+ * the language-neutral fallback (we use `/` since the site is English-first).
+ */
+const HREFLANG_GROUPS: ReadonlyArray<{
+  enCA: string;
+  enUS: string;
+}> = [
+  { enCA: "/", enUS: "/us" },
+  { enCA: "/wpi", enUS: "/us/courses" },
+  { enCA: "/canada/ontario", enUS: "/us/states" },
+];
+
+function buildHreflangTags(path: string): string {
+  const group = HREFLANG_GROUPS.find(
+    g => g.enCA === path || g.enUS === path
+  );
+  if (!group) return "";
+  const caUrl = `${SITE_URL}${group.enCA}`;
+  const usUrl = `${SITE_URL}${group.enUS}`;
+  return `
+    <link rel="alternate" hreflang="en-CA" href="${caUrl}" />
+    <link rel="alternate" hreflang="en-US" href="${usUrl}" />
+    <link rel="alternate" hreflang="x-default" href="${caUrl}" />`;
+}
+
 function buildSeoHead(meta: PageMeta): string {
   const canonicalUrl = `${SITE_URL}${meta.path}`;
   const titleEsc = escapeHtml(meta.title);
   const descEsc = escapeHtml(meta.description);
   const jsonLd = meta.jsonLd ?? buildWebPageJsonLd(meta);
+  const hreflangTags = buildHreflangTags(meta.path);
+  const isUsPage = meta.path === "/us" || meta.path.startsWith("/us/");
+  const ogLocale = isUsPage ? "en_US" : "en_CA";
 
   return `
     <meta name="description" content="${descEsc}" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="canonical" href="${canonicalUrl}" />${hreflangTags}
     <meta property="og:title" content="${titleEsc}" />
     <meta property="og:description" content="${descEsc}" />
     <meta property="og:url" content="${canonicalUrl}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="${DEFAULT_OG_IMAGE}" />
     <meta property="og:site_name" content="Echelon Institute" />
+    <meta property="og:locale" content="${ogLocale}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${titleEsc}" />
     <meta name="twitter:description" content="${descEsc}" />
