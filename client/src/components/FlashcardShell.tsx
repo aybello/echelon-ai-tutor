@@ -61,6 +61,8 @@ interface FlashcardShellProps {
   freeFlipLimit?: number;
   /** Product key to link to on the paywall CTA */
   productKey?: string;
+  /** Whether the learner may dismiss the gate for another preview block. */
+  allowMorePreview?: boolean;
   /** Optional course-specific study-card projection from governed question data. */
   cardContent?: (card: FlashcardQuestion) => FlashcardCardContent;
   /** Optional course-specific visual shown on the front of the card. */
@@ -124,15 +126,21 @@ function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
   return qs.filter(q => !q.isCalc && q.type !== "calculation");
 }
 
-export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, cardContent, renderFrontSupplement }: FlashcardShellProps) {
+export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey, allowMorePreview = true, cardContent, renderFrontSupplement }: FlashcardShellProps) {
   // Remove calculation questions once, before any deck operations
   const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [flipped, setFlipped] = useState(false);
-  const [totalFlips, setTotalFlips] = useState(0);
+  const [previewedIds, setPreviewedIds] = useState<Set<number | string>>(new Set());
   const [paywallDismissed, setPaywallDismissed] = useState(false);
   const limit = freeFlipLimit ?? FREE_FLIP_LIMIT;
-  const showPaywall = freeFlipLimit !== undefined && totalFlips >= limit && !paywallDismissed;
+  // Gate only after the learner has revealed the requested number of distinct
+  // cards and finished viewing the final answer.
+  const showPaywall =
+    freeFlipLimit !== undefined &&
+    previewedIds.size >= limit &&
+    !flipped &&
+    !paywallDismissed;
   const [index, setIndex] = useState(0);
   const [known, setKnown] = useState<Set<string>>(new Set());
   const [reviewing, setReviewing] = useState(false);
@@ -274,12 +282,18 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     }
   };
 
-  // Flip the card. The free-flip counter is incremented OUTSIDE the setFlipped
-  // updater so it can't double-count (which would burn a free-preview user's
-  // flips twice as fast). Only counts a flip when revealing the answer.
+  // Count distinct cards, not repeated flips of the same card. This lets a
+  // learner fully view the final preview answer before the gate appears.
   const handleFlip = () => {
     if (showPaywall) return;
-    if (!flipped) setTotalFlips(n => n + 1);
+    if (!flipped && card) {
+      setPreviewedIds(previous => {
+        if (previous.has(card.id)) return previous;
+        const next = new Set(previous);
+        next.add(card.id);
+        return next;
+      });
+    }
     setFlipped(f => !f);
   };
 
@@ -607,12 +621,14 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   Get Full Access →
                 </button>
               </Link>
-              <button
-                onClick={() => setPaywallDismissed(true)}
-                style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
-              >
-                🔄 Try {limit} More Free Cards
-              </button>
+              {allowMorePreview && (
+                <button
+                  onClick={() => setPaywallDismissed(true)}
+                  style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
+                >
+                  🔄 Try {limit} More Free Cards
+                </button>
+              )}
               <Link href="/pricing">
                 <button style={{ width: "100%", padding: "10px 20px", borderRadius: "12px", border: "none", background: "transparent", color: "#94A3B8", fontSize: "12px", cursor: "pointer" }}>
                   📋 View All Courses & Pricing

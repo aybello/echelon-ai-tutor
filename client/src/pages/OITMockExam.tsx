@@ -61,6 +61,13 @@ export default function OITMockExam() {
       productKey="oit"
       productName="OIT Practice Pass"
       price={49}
+      freeQuestionLimit={30}
+      features={[
+        "551 OIT Water questions — unlimited attempts",
+        "Complete 100-question timed mock exams",
+        "Full flashcard deck and saved progress",
+        "Module-by-module performance tracking",
+      ]}
       backPath="/oit-mock"
       practicePath="/quiz"
       practiceLabel="OIT Practice Mode"

@@ -25,6 +25,10 @@ interface QuizGateProps {
   examType?: string;
   /** The completed preview answers used to build a transparent diagnostic. */
   history?: Array<{ module?: string; correct?: boolean }>;
+  /** Label used in the completion headline, e.g. "mock-exam questions". */
+  previewName?: string;
+  /** Destination for closing the gate. Defaults to the homepage. */
+  backPath?: string;
 }
 
 const TRIAL_UNLOCKED_KEY = "echelon_trial_unlocked";
@@ -70,6 +74,8 @@ export default function QuizGate({
   paidFeatures,
   examType,
   history = [],
+  previewName = "questions",
+  backPath = "/",
 }: QuizGateProps) {
   const [, navigate] = useLocation();
   const { isUS } = useGeoRegion();
@@ -166,8 +172,8 @@ export default function QuizGate({
         }}>
           {/* X button — top-right corner of the card */}
           <button
-            onClick={() => navigate("/")}
-            aria-label="Back to homepage"
+            onClick={() => navigate(backPath)}
+            aria-label="Close preview gate"
             style={{
               position: "absolute",
               top: 14,
@@ -204,7 +210,7 @@ export default function QuizGate({
             🏆
           </div>
           <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 6, fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
-            You've finished your 15 free questions!
+            You've finished your {questionsAnswered} free {previewName}!
           </h2>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 100, padding: "4px 12px", fontSize: 12, color: "#1D4ED8", fontWeight: 600, marginBottom: 16 }}>
             ✓ {questionsAnswered} questions answered
@@ -233,7 +239,7 @@ export default function QuizGate({
                 </div>
               )}
               <p style={{ margin: 0, color: "#475569", fontSize: 11, lineHeight: 1.5 }}>{diagnostic.recommendation}</p>
-              <p style={{ margin: "7px 0 0", color: "#94A3B8", fontSize: 9, lineHeight: 1.4 }}>This 15-question preview is a study diagnostic, not a prediction of your official exam result.</p>
+              <p style={{ margin: "7px 0 0", color: "#94A3B8", fontSize: 9, lineHeight: 1.4 }}>This preview is a study diagnostic, not a prediction of your official exam result.</p>
             </div>
           )}
 
@@ -292,7 +298,7 @@ export default function QuizGate({
                     onClick={onDismiss}
                     style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
-                    🔄 Try Another 15 Free Questions
+                    🔄 Try Another {questionsAnswered} Free Questions
                   </button>
                 )}
                 <Link href="/pricing">

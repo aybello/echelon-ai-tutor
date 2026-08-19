@@ -63,6 +63,13 @@ export default function OITWastewaterMockExam() {
       productKey="oit-ww"
       productName="OIT Wastewater Practice Pass"
       price={49}
+      freeQuestionLimit={30}
+      features={[
+        "400+ OIT Wastewater questions — unlimited attempts",
+        "Complete 50-question timed mock exams",
+        "Full flashcard deck and saved progress",
+        "Module-by-module performance tracking",
+      ]}
       backPath="/oit-ww-mock"
       practicePath="/oit-ww"
       practiceLabel="OIT Wastewater Practice"

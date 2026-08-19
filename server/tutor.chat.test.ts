@@ -127,6 +127,26 @@ describe("tutor.chat", () => {
     expect(lookup.params).toEqual(["class1-water", 42, "rejected"]);
   });
 
+  it("allows the OIT tutor during the free product preview", async () => {
+    const caller = appRouter.createCaller(createPaidContext());
+    const result = await caller.tutor.chat({
+      examType: "oit",
+      messages: [{ role: "user", content: "How does chlorine demand affect dosage?" }],
+      patternMode: false,
+      recentPerformance: [],
+    });
+
+    expect(result.reply).toContain("Chlorine residual");
+    expect(mocks.resolveAccessForRequest).not.toHaveBeenCalled();
+    expect(mocks.enforceAiTutorDailyQuota).toHaveBeenCalledWith(
+      {
+        userId: "7",
+        email: "operator@example.com",
+      },
+      { allowAnonymous: true },
+    );
+  });
+
   it("rejects caller-supplied system messages at input validation", async () => {
     const caller = appRouter.createCaller(createPaidContext());
     await expect(caller.tutor.chat({

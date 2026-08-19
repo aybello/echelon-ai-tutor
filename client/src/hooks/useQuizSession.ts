@@ -47,6 +47,8 @@ export interface UseQuizSessionConfig {
   allQuestions: DBQuestion[];
   /** Deliberately free courses use the standard workspace without a trial gate. */
   freeCourse?: boolean;
+  /** Let this course expose the AI Tutor during its free preview. */
+  freeTutorPreview?: boolean;
 }
 
 export interface UseQuizSessionReturn {
@@ -181,6 +183,7 @@ export function useQuizSession({
   examType,
   allQuestions,
   freeCourse = false,
+  freeTutorPreview = false,
 }: UseQuizSessionConfig): UseQuizSessionReturn {
   // ── URL params ─────────────────────────────────────────────────────────────
   const searchString = useSearch();
@@ -398,7 +401,7 @@ export function useQuizSession({
   );
 
   const setTutorOpen = useCallback((v: boolean) => {
-    if (v && accessData?.hasAccess !== true) {
+    if (v && !freeTutorPreview && accessData?.hasAccess !== true) {
       toast("AI Tutor is included with an active course pass", {
         description: "Unlock this course with a paid pass to ask the tutor questions.",
       });
@@ -408,7 +411,7 @@ export function useQuizSession({
       analyticsMutation.mutate({ event: "ai_tutor_opened", examType });
     }
     setTutorOpenState(v);
-  }, [accessData?.hasAccess, analyticsMutation, examType, tutorOpen]);
+  }, [accessData?.hasAccess, analyticsMutation, examType, freeTutorPreview, tutorOpen]);
 
   // ── Initialize (call once when allQuestions loads) ──────────────────────────
   const initialize = useCallback(() => {
