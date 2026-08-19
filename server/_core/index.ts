@@ -180,22 +180,29 @@ async function startServer() {
   });
 
   // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
-  // Ticket 10: In production, require x-cron-secret header to match ENV.cronSecret.
-  // If ENV.cronSecret is empty (local dev), the check is skipped.
+  // Ticket 10: Authenticate scheduled requests via x-cron-secret header OR
+  // platform Heartbeat SDK auth (cron_ session cookie). Both paths set
+  // res.locals.cronUser when successful.
   app.use("/api/scheduled", async (req, res, next) => {
-    if (ENV.cronSecret && req.headers["x-cron-secret"] !== ENV.cronSecret) {
-      try {
-        const cronUser = await sdk.authenticateRequest(req);
-        if (!cronUser.isCron || !cronUser.taskUid) {
-          return res.status(401).json({ error: "Unauthorized scheduled request" });
-        }
+    // Path 1: x-cron-secret header matches ENV.cronSecret (legacy/manual triggers)
+    if (ENV.cronSecret && req.headers["x-cron-secret"] === ENV.cronSecret) {
+      return next();
+    }
+    // Path 2: Platform Heartbeat SDK auth (cron_ session cookie with taskUid)
+    try {
+      const cronUser = await sdk.authenticateRequest(req);
+      if (cronUser.isCron && cronUser.taskUid) {
         res.locals.cronUser = cronUser;
         return next();
-      } catch {
-        return res.status(401).json({ error: "Unauthorized scheduled request" });
       }
+    } catch {
+      // Fall through to rejection
     }
-    return next();
+    // Path 3: No CRON_SECRET set and no SDK auth — allow in dev, reject in prod
+    if (!ENV.cronSecret) {
+      return next();
+    }
+    return res.status(401).json({ error: "Unauthorized scheduled request" });
   });
 
   // ── Welcome-email delivery (platform-managed Heartbeat) ────────────────────
