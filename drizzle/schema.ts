@@ -120,10 +120,39 @@ export const purchases = mysqlTable("purchases", {
   /** Null means a grandfathered permanent purchase; new Individual Exam Passes expire after 12 months. */
   accessExpiresAt: timestamp("accessExpiresAt"),
   refundedAt: timestamp("refundedAt"),
+  /**
+   * Retired legacy marker. It remains in the immutable migration contract, but
+   * application reads use purchaseReadColumns so deployments created without
+   * this unused column continue to work.
+   */
+  welcomeEmailSentAt: timestamp("welcomeEmailSentAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;
 export type InsertPurchase = typeof purchases.$inferInsert;
+
+/** Active purchase fields; deliberately excludes the retired welcome marker. */
+export const purchaseReadColumns = {
+  id: purchases.id,
+  userId: purchases.userId,
+  email: purchases.email,
+  productKey: purchases.productKey,
+  productName: purchases.productName,
+  amountCAD: purchases.amountCAD,
+  stripeSessionId: purchases.stripeSessionId,
+  stripePaymentIntentId: purchases.stripePaymentIntentId,
+  province: purchases.province,
+  utmSource: purchases.utmSource,
+  utmMedium: purchases.utmMedium,
+  utmCampaign: purchases.utmCampaign,
+  referralSource: purchases.referralSource,
+  phone: purchases.phone,
+  customerName: purchases.customerName,
+  status: purchases.status,
+  accessExpiresAt: purchases.accessExpiresAt,
+  refundedAt: purchases.refundedAt,
+  createdAt: purchases.createdAt,
+};
 
 /** Subscriptions — tracks active Stripe recurring subscriptions */
 export const subscriptions = mysqlTable("subscriptions", {
