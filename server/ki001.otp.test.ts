@@ -18,10 +18,10 @@ let mockUserRow: { id: number } | null = null;
 
 const mockDb = {
   insert: () => ({ values: mockInsert }),
-  select: () => ({
-    from: () => ({
-      where: () => ({
-        limit: () => Promise.resolve(mockUserRow ? [mockUserRow] : []),
+  select: (..._args: unknown[]) => ({
+    from: (..._args: unknown[]) => ({
+      where: (..._args: unknown[]) => ({
+        limit: (..._args: unknown[]) => Promise.resolve(mockUserRow ? [mockUserRow] : []),
       }),
     }),
   }),

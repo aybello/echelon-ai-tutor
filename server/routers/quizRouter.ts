@@ -20,6 +20,12 @@ export const OIT_PREVIEW_LIMITS = {
   mock: 30,
 } as const;
 
+export const OIT_PREVIEW_CALC_MINIMUMS = {
+  practice: 2,
+  flashcards: 0,
+  mock: 4,
+} as const;
+
 export type OitPreviewSurface = keyof typeof OIT_PREVIEW_LIMITS;
 
 export function previewLimitForRequest(input: {
@@ -29,6 +35,92 @@ export function previewLimitForRequest(input: {
   const course = resolveCourseKey(bankKeyToExamType(input.bankKey));
   if (course?.track !== "oit") return FREE_TRIAL_LIMIT;
   return OIT_PREVIEW_LIMITS[input.previewSurface ?? "practice"];
+}
+
+type PreviewQuestionRow = {
+  module: string;
+  isCalc: string | null;
+};
+
+/**
+ * Build a deterministic, module-balanced preview while reserving enough room
+ * for calculation questions to demonstrate Echelon's worked-solution support.
+ * Flashcards deliberately remain conceptual.
+ */
+export function buildPreviewSample<T extends PreviewQuestionRow>(
+  rows: T[],
+  limit: number,
+  surface: OitPreviewSurface,
+  minimumCalculations = 0,
+): T[] {
+  const eligible = surface === "flashcards"
+    ? rows.filter(row => row.isCalc !== "yes")
+    : rows;
+
+  const byModule = new Map<string, T[]>();
+  for (const row of eligible) {
+    const moduleRows = byModule.get(row.module) ?? [];
+    moduleRows.push(row);
+    byModule.set(row.module, moduleRows);
+  }
+
+  const moduleArrays = Array.from(byModule.values());
+  const sampled: T[] = [];
+  let rowIndex = 0;
+  while (sampled.length < limit && sampled.length < eligible.length) {
+    let added = false;
+    for (const moduleRows of moduleArrays) {
+      if (sampled.length >= limit) break;
+      const row = moduleRows[rowIndex];
+      if (row) {
+        sampled.push(row);
+        added = true;
+      }
+    }
+    if (!added) break;
+    rowIndex++;
+  }
+
+  if (minimumCalculations <= 0 || surface === "flashcards") return sampled;
+
+  const target = Math.min(
+    minimumCalculations,
+    limit,
+    eligible.filter(row => row.isCalc === "yes").length,
+  );
+  let calculationCount = sampled.filter(row => row.isCalc === "yes").length;
+  if (calculationCount >= target) return sampled;
+
+  const selected = new Set(sampled);
+  const candidates = eligible.filter(row => row.isCalc === "yes" && !selected.has(row));
+  for (const candidate of candidates) {
+    if (calculationCount >= target) break;
+
+    const moduleCounts = new Map<string, number>();
+    for (const row of sampled) {
+      moduleCounts.set(row.module, (moduleCounts.get(row.module) ?? 0) + 1);
+    }
+
+    let replaceIndex = -1;
+    for (let index = sampled.length - 1; index >= 0; index--) {
+      const row = sampled[index];
+      if (row.isCalc !== "yes" && (moduleCounts.get(row.module) ?? 0) > 1) {
+        replaceIndex = index;
+        break;
+      }
+    }
+    if (replaceIndex < 0) {
+      replaceIndex = sampled.findLastIndex(row => row.isCalc !== "yes");
+    }
+    if (replaceIndex < 0) break;
+
+    selected.delete(sampled[replaceIndex]);
+    sampled[replaceIndex] = candidate;
+    selected.add(candidate);
+    calculationCount++;
+  }
+
+  return sampled;
 }
 
 /**
@@ -90,30 +182,11 @@ export const quizRouter = router({
       if (hasAccess) {
         visible = rows;
       } else {
-        // Flashcard study intentionally excludes calculation items. Select from
-        // the same eligible pool here so "50 free flashcards" means 50 cards,
-        // rather than 50 mixed questions that shrink after client filtering.
-        const previewRows = input.previewSurface === "flashcards"
-          ? rows.filter(row => row.isCalc !== "yes")
-          : rows;
-        // Group by module, then round-robin pick from each module
-        const byModule = new Map<string, typeof rows>();
-        for (const r of previewRows) {
-          const arr = byModule.get(r.module) ?? [];
-          arr.push(r);
-          byModule.set(r.module, arr);
-        }
-        const moduleArrays = Array.from(byModule.values());
-        const sampled: typeof rows = [];
-        let idx = 0;
-        while (sampled.length < previewLimit && idx < previewRows.length) {
-          for (const arr of moduleArrays) {
-            if (sampled.length >= previewLimit) break;
-            if (idx < arr.length) sampled.push(arr[idx]);
-          }
-          idx++;
-        }
-        visible = sampled;
+        const surface = input.previewSurface ?? "practice";
+        const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
+          ? OIT_PREVIEW_CALC_MINIMUMS[surface]
+          : 0;
+        visible = buildPreviewSample(rows, previewLimit, surface, minimumCalculations);
       }
 
       // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
@@ -187,29 +260,16 @@ export const quizRouter = router({
           sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus <> 'rejected'${excludeClause} ORDER BY module, questionNum`
         );
         const allList = allRows[0] as unknown as any[];
-        // Group by module
-        const byModule = new Map<string, any[]>();
-        for (const r of allList) {
-          const arr = byModule.get(r.module) ?? [];
-          arr.push(r);
-          byModule.set(r.module, arr);
-        }
-        const moduleArrays = Array.from(byModule.values());
-        const sampled: any[] = [];
-        let mIdx = 0;
-        // Round-robin pick from each module until we hit the limit
-        while (sampled.length < Math.min(FREE_TRIAL_LIMIT, input.limit)) {
-          let added = false;
-          for (const arr of moduleArrays) {
-            if (sampled.length >= Math.min(FREE_TRIAL_LIMIT, input.limit)) break;
-            if (mIdx < arr.length) {
-              sampled.push(arr[mIdx]);
-              added = true;
-            }
-          }
-          if (!added) break;
-          mIdx++;
-        }
+        const sampleLimit = Math.min(FREE_TRIAL_LIMIT, input.limit);
+        const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
+          ? Math.min(OIT_PREVIEW_CALC_MINIMUMS.practice, sampleLimit)
+          : 0;
+        const sampled = buildPreviewSample(
+          allList,
+          sampleLimit,
+          "practice",
+          minimumCalculations,
+        );
         // Shuffle the sampled array for randomness
         for (let i = sampled.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));

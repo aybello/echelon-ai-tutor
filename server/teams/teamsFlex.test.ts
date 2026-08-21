@@ -187,7 +187,7 @@ describe("Teams Flex retake extension", () => {
   it("extension from expired licence starts at payment timestamp", () => {
     const originalAccessEndsAt = new Date("2026-08-01T00:00:00Z");
     const paymentTimestamp = new Date("2026-08-15T00:00:00Z");
-    const licenceStatus = "expired";
+    const licenceStatus: string = "expired";
 
     const extensionStartsAt = licenceStatus === "active"
       ? originalAccessEndsAt

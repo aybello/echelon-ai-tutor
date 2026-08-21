@@ -1261,7 +1261,7 @@ export default function Pricing() {
           borderRadius: 10, padding: "10px 18px", marginTop: 12, marginBottom: 4,
         }}>
           <span style={{ fontSize: 16 }}>🎁</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>Every course includes 15 free questions — no account or credit card needed</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages.</span>
         </div>
 
         {/* Province selector */}

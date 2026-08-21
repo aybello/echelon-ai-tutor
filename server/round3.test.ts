@@ -100,13 +100,13 @@ describe("Issue H — flashcard saveProgress size cap", () => {
 
 describe("Issue H — getAllProgress IDOR guard", () => {
   it("uses only the verified session email", () => {
-    const ctx = { user: null, studentEmail: "alice@example.com" };
+    const ctx: { user: { email: string } | null; studentEmail: string | null } = { user: null, studentEmail: "alice@example.com" };
     const sessionEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
     expect(sessionEmail).toBe("alice@example.com");
   });
 
   it("does not accept a caller-supplied email when no session is present", () => {
-    const ctx = { user: null, studentEmail: null };
+    const ctx: { user: { email: string } | null; studentEmail: string | null } = { user: null, studentEmail: null };
     const sessionEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
     expect(sessionEmail).toBeNull();
   });
