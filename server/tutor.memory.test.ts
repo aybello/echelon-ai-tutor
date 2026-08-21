@@ -98,7 +98,7 @@ describe("tutor.saveSession", () => {
   it("rejects callers without paid course access", async () => {
     const caller = appRouter.createCaller(createPublicContext());
     await expect(caller.tutor.saveSession({
-      examType: "oit",
+      examType: "class1-water",
       messages: [{ role: "user", content: "test" }],
       sessionStartMs: Date.now(),
     })).rejects.toMatchObject({ code: "FORBIDDEN" });
