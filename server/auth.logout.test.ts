@@ -23,10 +23,13 @@ function createAuthContext(): { ctx: TrpcContext; clearedCookies: CookieCall[] }
     createdAt: new Date(),
     updatedAt: new Date(),
     lastSignedIn: new Date(),
+    phone: null,
+    province: null,
   };
 
   const ctx: TrpcContext = {
     user,
+    studentEmail: null,
     req: {
       protocol: "https",
       headers: {},

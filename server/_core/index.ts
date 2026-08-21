@@ -193,9 +193,17 @@ async function startServer() {
     } catch {
       // Fall through to rejection
     }
-    // Path 3: No CRON_SECRET set and no SDK auth — allow in dev, reject in prod
-    if (!ENV.cronSecret) {
+    // Path 3: No CRON_SECRET set and no SDK auth — allow in dev only.
+    // Fails closed everywhere else: a missing CRON_SECRET must never turn these
+    // endpoints into public triggers, so production requires explicit auth.
+    if (!ENV.cronSecret && process.env.NODE_ENV !== "production") {
       return next();
+    }
+    if (!ENV.cronSecret) {
+      console.error(
+        "[scheduled] CRON_SECRET is not configured — rejecting scheduled request. " +
+        "Set CRON_SECRET so background jobs can authenticate."
+      );
     }
     return res.status(401).json({ error: "Unauthorized scheduled request" });
   });

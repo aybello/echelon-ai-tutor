@@ -93,6 +93,8 @@ describe("validateOneTimeCheckout", () => {
         address: null,
         tax_exempt: "none",
         tax_ids: [],
+        business_name: null,
+        individual_name: null,
       },
       metadata: {
         product_key: PRODUCT.key,

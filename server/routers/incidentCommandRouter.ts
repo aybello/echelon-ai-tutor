@@ -3,10 +3,10 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { invokeGPT56 } from "../_core/openaiResponses";
-import { resolveVerifiedIdentity } from "../_core/accessService";
+import { resolveVerifiedIdentity, identityEmail } from "../_core/accessService";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
-import { commandDrillQueue, commandRunHistory, users } from "../../drizzle/schema";
+import { commandDrillQueue, commandRunHistory, users, userFeedback, trialEmails } from "../../drizzle/schema";
 import { eq, desc, sql } from "drizzle-orm";
 import {
   getScenarioById,
@@ -342,7 +342,25 @@ export const incidentCommandRouter = router({
       comment: z.string().max(2000).default(""),
       guestId: z.string().max(128).default(""),
     }))
-    .mutation(async () => {
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) return { saved: false };
+
+      // Attribute the rating to the signed-in learner when there is one. Guests
+      // store a null userId, which user_feedback already allows. Deliberately
+      // uses resolveVerifiedIdentity rather than resolveCommandUser: the latter
+      // creates a users row, which submitting a rating should never do.
+      const identity = resolveVerifiedIdentity(ctx);
+
+      await db.insert(userFeedback).values({
+        userId: identity.type === "oauth" ? identity.userId : null,
+        email: identityEmail(identity),
+        examType: input.scenarioId,
+        rating: input.rating,
+        comment: input.comment.trim() || null,
+        feedbackType: "command_scenario",
+      });
+
       return { saved: true };
     }),
 
@@ -352,7 +370,15 @@ export const incidentCommandRouter = router({
       scenarioId: z.string().min(1).max(60).default(""),
       guestId: z.string().max(128).default(""),
     }))
-    .mutation(async () => {
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { captured: false };
+
+      await db.insert(trialEmails).values({
+        email: input.email.toLowerCase().trim(),
+        source: "command_sim",
+      });
+
       return { captured: true };
     }),
 

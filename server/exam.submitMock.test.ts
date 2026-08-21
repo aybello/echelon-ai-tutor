@@ -37,6 +37,7 @@ function makeDb(questionRows = QUESTIONS) {
 function makeCtx(): TrpcContext {
   return {
     user: null,
+    studentEmail: null,
     req: { protocol: "https", headers: {} } as TrpcContext["req"],
     res: {} as TrpcContext["res"],
   };
