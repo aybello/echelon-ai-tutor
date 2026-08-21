@@ -99,7 +99,7 @@ describe("course registry — all courses have required fields", () => {
     const { getAllCourses } = await import("../shared/courseRegistry");
     const courses = getAllCourses();
     for (const course of courses) {
-      if (course.status === "active") {
+      if (course.isActive) {
         expect(course.quizPath, `quizPath missing for ${course.courseKey}`).toBeTruthy();
       }
     }

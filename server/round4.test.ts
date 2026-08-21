@@ -72,19 +72,19 @@ describe("Issue K — AI tutor personalization gate accepts OTP students", () =>
   });
 
   it("resolves studentIdent from ctx.studentEmail for OTP students", () => {
-    const ctx = { user: null, studentEmail: "student@example.com" };
+    const ctx: { user: { id: number } | null; studentEmail: string | null } = { user: null, studentEmail: "student@example.com" };
     const studentIdent = ctx.user?.id ?? ctx.studentEmail ?? null;
     expect(studentIdent).toBe("student@example.com");
   });
 
   it("returns null when neither is present (anonymous user)", () => {
-    const ctx = { user: null, studentEmail: null };
+    const ctx: { user: { id: number } | null; studentEmail: string | null } = { user: null, studentEmail: null };
     const studentIdent = ctx.user?.id ?? ctx.studentEmail ?? null;
     expect(studentIdent).toBeNull();
   });
 
   it("personalization block runs for OTP student with examType", () => {
-    const ctx = { user: null, studentEmail: "student@example.com" };
+    const ctx: { user: { id: number } | null; studentEmail: string | null } = { user: null, studentEmail: "student@example.com" };
     const input = { examType: "oit-class1-water" };
     const studentIdent = ctx.user?.id ?? ctx.studentEmail ?? null;
     const shouldPersonalize = Boolean(studentIdent && input.examType);
@@ -92,7 +92,7 @@ describe("Issue K — AI tutor personalization gate accepts OTP students", () =>
   });
 
   it("personalization block does NOT run for anonymous user", () => {
-    const ctx = { user: null, studentEmail: null };
+    const ctx: { user: { id: number } | null; studentEmail: string | null } = { user: null, studentEmail: null };
     const input = { examType: "oit-class1-water" };
     const studentIdent = ctx.user?.id ?? ctx.studentEmail ?? null;
     const shouldPersonalize = Boolean(studentIdent && input.examType);

@@ -55,7 +55,8 @@ function makeDb(opts: {
 
 function makeCtx(email = "manager@example.com"): TrpcContext {
   return {
-    user: { id: 1, email, openId: "x", name: "M", loginMethod: "manus", role: "user", createdAt: new Date(), updatedAt: new Date(), lastSignedIn: new Date() },
+    user: { id: 1, email, openId: "x", name: "M", loginMethod: "manus", role: "user", createdAt: new Date(), updatedAt: new Date(), lastSignedIn: new Date(), phone: null, province: null },
+    studentEmail: null,
     req: { protocol: "https", headers: {} } as TrpcContext["req"],
     res: {} as TrpcContext["res"],
   };

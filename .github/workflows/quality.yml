@@ -99,6 +99,10 @@ jobs:
           server/electrician309aQuestions.test.ts
           server/tutor.chat.test.ts
           server/aiTutorPolicy.test.ts
+          server/_core/aiTutorPolicy.test.ts
+          server/_core/scheduledAuth.test.ts
+          server/commandCapture.test.ts
+          server/mockExamRoutes.test.ts
           client/src/hooks/useQuizSession.test.ts
         env:
           NODE_ENV: test

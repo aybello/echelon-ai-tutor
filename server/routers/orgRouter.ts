@@ -62,9 +62,34 @@ const STALLED_INACTIVE_DAYS = 14;
 // ── requireOrgManager middleware ─────────────────────────────────────────────
 
 /**
+ * Organisation statuses that still grant manager access to the team dashboard.
+ * Mirrors ORG_ACCESS_STATUSES in _core/access.ts, which governs operator access
+ * to study material — a cancelled organisation loses both, not just one.
+ */
+const MANAGER_ACCESS_STATUSES = new Set(["active", "past_due"]);
+
+/** One contract year, in milliseconds. */
+const ONE_TERM_MS = 365 * 24 * 60 * 60 * 1000;
+
+/**
+ * The single definition of when an organisation's current contract term began.
+ *
+ * organizations.termStart is nullable for rows created before Stripe started
+ * reporting the period start. When it is null the term is taken to have begun
+ * one year before it ends, matching the column's documented contract. Every
+ * caller must use this helper: the licence ledger is keyed on (orgId, email,
+ * termStart), so two callers disagreeing about the start date would read and
+ * write different terms for the same organisation.
+ */
+function resolveTermStart(org: { termStart: Date | null; termEnd: Date }): Date {
+  return org.termStart ?? new Date(org.termEnd.getTime() - ONE_TERM_MS);
+}
+
+/**
  * Resolves the manager's email from ctx.studentEmail (OTP session, already
  * verified by context.ts) and looks up their manager membership row.
- * Throws UNAUTHORIZED if no valid manager membership is found.
+ * Throws UNAUTHORIZED if no valid manager membership is found, or if the
+ * organisation itself is no longer active.
  * Returns the orgId and managerEmail attached to the context.
  */
 async function resolveOrgManager(ctx: {
@@ -105,7 +130,41 @@ async function resolveOrgManager(ctx: {
     });
   }
 
-  return { orgId: rows[0].orgId, managerEmail: normalised };
+  const orgId = rows[0].orgId;
+
+  // Lifecycle gate: manager access must expire on exactly the same terms as
+  // operator access in _core/access.ts, which requires an eligible status AND
+  // termEnd in the future. Without both checks a cancelled or lapsed account
+  // could still assign seats, export the full team roster and send reminder
+  // emails to operators who have themselves already lost access.
+  //
+  // Billing is deliberately not gated here: stripe.createBillingPortalSession
+  // is reachable from /account, so a lapsed manager can always still renew.
+  const [org] = await db
+    .select({ status: organizations.status, termEnd: organizations.termEnd })
+    .from(organizations)
+    .where(eq(organizations.id, orgId))
+    .limit(1);
+
+  if (!org) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "No manager account found for this email." });
+  }
+
+  if (!MANAGER_ACCESS_STATUSES.has(org.status ?? "active")) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "This team subscription is no longer active. Renew from your account page to regain access to the team dashboard.",
+    });
+  }
+
+  if (!org.termEnd || org.termEnd.getTime() <= Date.now()) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "This team contract term has ended. Renew from your account page to regain access to the team dashboard.",
+    });
+  }
+
+  return { orgId, managerEmail: normalised };
 }
 
 // ── Seat lifecycle helpers ────────────────────────────────────────────────────
@@ -312,12 +371,14 @@ async function consumeOrReuseAnnualLicence(
 ): Promise<{ alreadyCounted: boolean; used: number; remaining: number }> {
   const email = normalizeEmail(rawEmail);
 
-  if (!org.termStart || !org.termEnd) {
+  if (!org.termEnd) {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
       message: "Organization contract term is not configured.",
     });
   }
+
+  const termStart = resolveTermStart(org);
 
   // Pessimistic lock: serialize licence allocation for this organization
   await tx.execute(sql`SELECT id FROM organizations WHERE id = ${org.id} FOR UPDATE`);
@@ -330,7 +391,7 @@ async function consumeOrReuseAnnualLicence(
       and(
         eq(organizationTermUsage.orgId, org.id),
         eq(organizationTermUsage.memberEmail, email),
-        eq(organizationTermUsage.termStart, org.termStart),
+        eq(organizationTermUsage.termStart, termStart),
       ),
     )
     .limit(1);
@@ -342,7 +403,7 @@ async function consumeOrReuseAnnualLicence(
     .where(
       and(
         eq(organizationTermUsage.orgId, org.id),
-        eq(organizationTermUsage.termStart, org.termStart),
+        eq(organizationTermUsage.termStart, termStart),
       ),
     );
 
@@ -366,7 +427,7 @@ async function consumeOrReuseAnnualLicence(
   await tx.insert(organizationTermUsage).values({
     orgId: org.id,
     memberEmail: email,
-    termStart: org.termStart,
+    termStart,
     termEnd: org.termEnd,
   });
 
@@ -409,7 +470,7 @@ export const orgRouter = router({
     const seatsAssigned = memberEmails.length;
 
     // Count licences used this term from the annual usage ledger
-    const orgTermStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+    const orgTermStart = resolveTermStart(org);
     const [{ termCnt }] = await db
       .select({ termCnt: sql<number>`COUNT(*)` })
       .from(organizationTermUsage)
@@ -434,7 +495,7 @@ export const orgRouter = router({
         province: org.province,
         tier: org.tier,
         allowedCourseKeys: allowedCourseKeysForOrg(org.tier, org.province),
-        termStart: org.termStart ?? org.createdAt,
+        termStart: resolveTermStart(org),
         termEnd: org.termEnd,
         status: org.status,
         billingType: org.billingType,
@@ -523,7 +584,7 @@ export const orgRouter = router({
       province: org.province,
       tier: org.tier,
       allowedCourseKeys: allowedCourseKeysForOrg(org.tier, org.province),
-      termStart: org.termStart ?? org.createdAt,
+      termStart: resolveTermStart(org),
       termEnd: org.termEnd,
       status: org.status,
       billingType: org.billingType,
@@ -1175,7 +1236,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) return { total: 0, passed: 0, passRate: 0 };
-      const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+      const termStart = resolveTermStart(org);
       const rows = await db
         .select({
           memberEmail: examOutcomes.memberEmail,
