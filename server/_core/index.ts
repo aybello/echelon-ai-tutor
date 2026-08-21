@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
+import { scheduledSecretMatches, allowsUnauthenticatedScheduledRequest } from "./scheduledAuth";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -180,7 +181,7 @@ async function startServer() {
   // res.locals.cronUser when successful.
   app.use("/api/scheduled", async (req, res, next) => {
     // Path 1: x-cron-secret header matches ENV.cronSecret (legacy/manual triggers)
-    if (ENV.cronSecret && req.headers["x-cron-secret"] === ENV.cronSecret) {
+    if (scheduledSecretMatches(ENV.cronSecret, req.headers["x-cron-secret"])) {
       return next();
     }
     // Path 2: Platform Heartbeat SDK auth (cron_ session cookie with taskUid)
@@ -193,10 +194,10 @@ async function startServer() {
     } catch {
       // Fall through to rejection
     }
-    // Path 3: No CRON_SECRET set and no SDK auth — allow in dev only.
-    // Fails closed everywhere else: a missing CRON_SECRET must never turn these
-    // endpoints into public triggers, so production requires explicit auth.
-    if (!ENV.cronSecret && process.env.NODE_ENV !== "production") {
+    // Path 3: No CRON_SECRET set and no SDK auth — local development only.
+    // See allowsUnauthenticatedScheduledRequest: every environment other than
+    // "development" fails closed, including an unset or misspelled NODE_ENV.
+    if (allowsUnauthenticatedScheduledRequest(ENV.cronSecret, process.env.NODE_ENV)) {
       return next();
     }
     if (!ENV.cronSecret) {

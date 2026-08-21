@@ -6,7 +6,7 @@ import { invokeGPT56 } from "../_core/openaiResponses";
 import { resolveVerifiedIdentity, identityEmail } from "../_core/accessService";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
-import { commandDrillQueue, commandRunHistory, users, userFeedback, trialEmails } from "../../drizzle/schema";
+import { commandDrillQueue, commandRunHistory, users, commandFeedback, commandEmailCapture } from "../../drizzle/schema";
 import { eq, desc, sql } from "drizzle-orm";
 import {
   getScenarioById,
@@ -346,19 +346,19 @@ export const incidentCommandRouter = router({
       const db = await getDb();
       if (!db) return { saved: false };
 
-      // Attribute the rating to the signed-in learner when there is one. Guests
-      // store a null userId, which user_feedback already allows. Deliberately
-      // uses resolveVerifiedIdentity rather than resolveCommandUser: the latter
-      // creates a users row, which submitting a rating should never do.
+      // Written to command_feedback, the table built for this: it keeps scenarioId
+      // as a real column and retains guestId, so anonymous runs stay linked to the
+      // learner who made them. Deliberately uses resolveVerifiedIdentity rather
+      // than resolveCommandUser — the latter creates a users row, which submitting
+      // a rating should never do.
       const identity = resolveVerifiedIdentity(ctx);
 
-      await db.insert(userFeedback).values({
+      await db.insert(commandFeedback).values({
         userId: identity.type === "oauth" ? identity.userId : null,
-        email: identityEmail(identity),
-        examType: input.scenarioId,
+        guestId: input.guestId.trim() || null,
+        scenarioId: input.scenarioId,
         rating: input.rating,
         comment: input.comment.trim() || null,
-        feedbackType: "command_scenario",
       });
 
       return { saved: true };
@@ -370,13 +370,19 @@ export const incidentCommandRouter = router({
       scenarioId: z.string().min(1).max(60).default(""),
       guestId: z.string().max(128).default(""),
     }))
-    .mutation(async ({ input }) => {
+    .mutation(async ({ ctx, input }) => {
       const db = await getDb();
       if (!db) return { captured: false };
 
-      await db.insert(trialEmails).values({
+      // command_email_capture, not trial_emails: keeping Command leads in their
+      // own table preserves guestId and keeps trial-conversion reporting clean.
+      const identity = resolveVerifiedIdentity(ctx);
+
+      await db.insert(commandEmailCapture).values({
         email: input.email.toLowerCase().trim(),
-        source: "command_sim",
+        userId: identity.type === "oauth" ? identity.userId : null,
+        guestId: input.guestId.trim() || null,
+        source: "command_debrief",
       });
 
       return { captured: true };

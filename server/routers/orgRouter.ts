@@ -132,11 +132,16 @@ async function resolveOrgManager(ctx: {
 
   const orgId = rows[0].orgId;
 
-  // Lifecycle gate: a cancelled organisation keeps no dashboard access. Without
-  // this, a cancelled account could still assign seats, export the full team
-  // roster and send reminder emails to its operators.
+  // Lifecycle gate: manager access must expire on exactly the same terms as
+  // operator access in _core/access.ts, which requires an eligible status AND
+  // termEnd in the future. Without both checks a cancelled or lapsed account
+  // could still assign seats, export the full team roster and send reminder
+  // emails to operators who have themselves already lost access.
+  //
+  // Billing is deliberately not gated here: stripe.createBillingPortalSession
+  // is reachable from /account, so a lapsed manager can always still renew.
   const [org] = await db
-    .select({ status: organizations.status })
+    .select({ status: organizations.status, termEnd: organizations.termEnd })
     .from(organizations)
     .where(eq(organizations.id, orgId))
     .limit(1);
@@ -148,7 +153,14 @@ async function resolveOrgManager(ctx: {
   if (!MANAGER_ACCESS_STATUSES.has(org.status ?? "active")) {
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "This team subscription is no longer active. Renew to regain access to the team dashboard.",
+      message: "This team subscription is no longer active. Renew from your account page to regain access to the team dashboard.",
+    });
+  }
+
+  if (!org.termEnd || org.termEnd.getTime() <= Date.now()) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+      message: "This team contract term has ended. Renew from your account page to regain access to the team dashboard.",
     });
   }
 

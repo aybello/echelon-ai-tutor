@@ -574,4 +574,36 @@ describe("Multi-course seat support", () => {
         .where(eq(organizations.id, orgId));
     }
   });
+
+  it("blocks the manager dashboard once the contract term has ended", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    const caller = appRouter.createCaller(makeCtx(MANAGER_EMAIL));
+
+    // Read the real termEnd so it can be restored exactly.
+    const [before] = await db!
+      .select({ termEnd: organizations.termEnd })
+      .from(organizations)
+      .where(eq(organizations.id, orgId))
+      .limit(1);
+
+    try {
+      // status stays "active": an expired term must block on its own, because
+      // operators already lose access at termEnd via _core/access.ts. A manager
+      // outliving their own operators is the gap this closes.
+      await db!.update(organizations)
+        .set({ termEnd: new Date(Date.now() - 24 * 60 * 60 * 1000) })
+        .where(eq(organizations.id, orgId));
+
+      await expect(caller.org.getOrgOverview()).rejects.toMatchObject({ code: "FORBIDDEN" });
+      await expect(
+        caller.org.assignSeat({ email: testEmail(16) })
+      ).rejects.toMatchObject({ code: "FORBIDDEN" });
+      await expect(caller.orgIntel.exportTeamCSV()).rejects.toMatchObject({ code: "FORBIDDEN" });
+    } finally {
+      await db!.update(organizations)
+        .set({ termEnd: before!.termEnd })
+        .where(eq(organizations.id, orgId));
+    }
+  });
 });
