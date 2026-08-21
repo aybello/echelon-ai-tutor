@@ -1295,7 +1295,7 @@ export default function Landing() {
     title: "Water & Wastewater Operator Exam Prep",
     description: isUS
       ? "Exam prep for US water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. WPI exam prep for all 4 streams."
-      : "Canada's exam prep for water & wastewater operators. Preview 15 questions, review your study diagnostic, then choose a 12-month Exam Pass.",
+      : "Canada's exam prep for water & wastewater operators. Try 15 OIT practice questions, 50 flashcards, 30 mock questions, and three AI Tutor messages free.",
     keywords: "water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
     path: "/",
   });
@@ -1549,7 +1549,7 @@ export default function Landing() {
             transition={{ duration: 0.4, delay: 0.45 }}
             style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
           >
-            🎁 Choose Water or Wastewater — the first 15 OIT questions are free, with no account or credit card needed
+            🎁 Free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and 3 AI Tutor messages
           </motion.p>
         </div>
       </section>
@@ -2031,10 +2031,10 @@ export default function Landing() {
         textAlign: "center",
       }}>
         <h2 style={{ fontSize: "clamp(20px, 3vw, 32px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 12px 0", letterSpacing: "-0.02em" }}>
-          Start with a 15-Question OIT Preview
+          Experience the Complete OIT Study System Free
         </h2>
         <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", margin: "0 0 32px 0", maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>
-          Try the first 15 OIT questions, see a transparent study diagnostic, and decide whether the full course is right for you. No account required.
+          Try 15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages. No account or credit card required.
         </p>
         <Link href="/quiz">
           <button className="btn-pulse" style={{

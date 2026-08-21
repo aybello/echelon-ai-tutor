@@ -7,6 +7,7 @@ import { resolveVerifiedIdentity, identityEmail } from "../_core/accessService";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
 import { commandDrillQueue, commandRunHistory, users, commandFeedback, commandEmailCapture } from "../../drizzle/schema";
+import { trackEvent } from "../analytics";
 import { eq, desc, sql } from "drizzle-orm";
 import {
   getScenarioById,
@@ -206,6 +207,27 @@ async function verifyDebrief(evaluation: Evaluation, review: Awaited<ReturnType<
 }
 
 export const incidentCommandRouter = router({
+  trackJourney: publicProcedure
+    .input(z.object({
+      event: z.enum(["command_started", "command_step_completed"]),
+      scenarioId: z.string().min(1).max(60),
+      guestId: z.string().min(16).max(128),
+      stepIndex: z.number().int().min(0).max(20).optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = resolveVerifiedIdentity(ctx);
+      await trackEvent(input.event, {
+        userId: identity.type === "oauth" ? identity.userId.toString() : null,
+        email: identityEmail(identity),
+        anonymousId: input.guestId,
+        extra: {
+          scenarioId: input.scenarioId,
+          ...(input.stepIndex === undefined ? {} : { stepIndex: input.stepIndex }),
+        },
+      });
+      return { tracked: true };
+    }),
+
   queueDrill: publicProcedure
     .input(z.object({ drillName: z.string().min(1).max(255) }))
     .mutation(async ({ ctx, input }) => {
@@ -261,6 +283,7 @@ export const incidentCommandRouter = router({
       userName: users.name,
     }).from(commandRunHistory)
       .leftJoin(users, eq(commandRunHistory.userId, users.id))
+      .where(sql`${commandRunHistory.userId} IS NOT NULL`)
       .groupBy(commandRunHistory.userId, users.name)
       .orderBy(desc(sql`MAX(${commandRunHistory.commandScore})`))
       .limit(20);
@@ -344,7 +367,12 @@ export const incidentCommandRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       const db = await getDb();
-      if (!db) return { saved: false };
+      if (!db) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Feedback could not be saved. Please try again.",
+        });
+      }
 
       // Written to command_feedback, the table built for this: it keeps scenarioId
       // as a real column and retains guestId, so anonymous runs stay linked to the
@@ -361,6 +389,13 @@ export const incidentCommandRouter = router({
         comment: input.comment.trim() || null,
       });
 
+      await trackEvent("command_feedback_submitted", {
+        userId: identity.type === "oauth" ? identity.userId.toString() : null,
+        email: identityEmail(identity),
+        anonymousId: input.guestId.trim() || null,
+        extra: { scenarioId: input.scenarioId, rating: input.rating },
+      });
+
       return { saved: true };
     }),
 
@@ -372,7 +407,12 @@ export const incidentCommandRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       const db = await getDb();
-      if (!db) return { captured: false };
+      if (!db) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Your email could not be saved. Please try again.",
+        });
+      }
 
       // command_email_capture, not trial_emails: keeping Command leads in their
       // own table preserves guestId and keeps trial-conversion reporting clean.
@@ -385,6 +425,13 @@ export const incidentCommandRouter = router({
         source: "command_debrief",
       });
 
+      await trackEvent("command_email_captured", {
+        userId: identity.type === "oauth" ? identity.userId.toString() : null,
+        email: identityEmail(identity),
+        anonymousId: input.guestId.trim() || null,
+        extra: { scenarioId: input.scenarioId },
+      });
+
       return { captured: true };
     }),
 
@@ -393,24 +440,50 @@ export const incidentCommandRouter = router({
       scenarioId: z.string().min(1).max(60),
       decisions: z.array(submittedDecisionSchema).min(1).max(10),
       elapsedSeconds: z.number().int().min(0).max(86400).default(0),
+      guestId: z.string().min(16).max(128),
     }))
     .mutation(async ({ ctx, input }) => {
       const evaluation = evaluateCanonicalDecisions(input.scenarioId, input.decisions);
       let runSaved = false;
       const commandUser = await resolveCommandUser(ctx);
-      if (commandUser) {
-        const { db, userId } = commandUser;
-        await db.insert(commandRunHistory).values({
-          userId,
+      const db = commandUser?.db ?? await getDb();
+      if (db) {
+        try {
+          await db.insert(commandRunHistory).values({
+            userId: commandUser?.userId ?? null,
+            guestId: input.guestId,
+            scenarioId: evaluation.scenarioId,
+            scenarioTitle: evaluation.scenarioTitle,
+            commandScore: evaluation.commandScore,
+            optimalCalls: evaluation.optimalCalls,
+            totalSteps: evaluation.totalSteps,
+            elapsedSeconds: input.elapsedSeconds,
+            decisionsJson: JSON.stringify(evaluation.decisions.map(decision => ({
+              stepId: decision.stepId,
+              choiceId: decision.choiceId,
+              points: decision.points,
+            }))),
+          });
+          runSaved = true;
+        } catch (error) {
+          console.warn("[Echelon Command] Run history persistence failed; continuing debrief.", error);
+        }
+      }
+
+      const identity = resolveVerifiedIdentity(ctx);
+      await trackEvent("command_completed", {
+        userId: identity.type === "oauth" ? identity.userId.toString() : null,
+        email: identityEmail(identity),
+        anonymousId: input.guestId,
+        extra: {
           scenarioId: evaluation.scenarioId,
-          scenarioTitle: evaluation.scenarioTitle,
           commandScore: evaluation.commandScore,
           optimalCalls: evaluation.optimalCalls,
           totalSteps: evaluation.totalSteps,
           elapsedSeconds: input.elapsedSeconds,
-        });
-        runSaved = true;
-      }
+          runSaved,
+        },
+      });
 
       try {
         let review = await generateDebrief(evaluation);

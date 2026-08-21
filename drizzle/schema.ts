@@ -120,7 +120,6 @@ export const purchases = mysqlTable("purchases", {
   /** Null means a grandfathered permanent purchase; new Individual Exam Passes expire after 12 months. */
   accessExpiresAt: timestamp("accessExpiresAt"),
   refundedAt: timestamp("refundedAt"),
-  welcomeEmailSentAt: timestamp("welcomeEmailSentAt"), // set when 24h onboarding email is sent; null = not yet sent
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;
