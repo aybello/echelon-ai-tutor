@@ -10,15 +10,15 @@ describe("Issue R — triggerLogs written before sendMail", () => {
     const insertOrder: string[] = [];
 
     const mockDb = {
-      insert: vi.fn(() => ({
-        values: vi.fn(() => {
+      insert: vi.fn((..._args: unknown[]) => ({
+        values: vi.fn((..._args: unknown[]) => {
           insertOrder.push("insert");
           return [{ insertId: 42 }];
         }),
       })),
-      update: vi.fn(() => ({
+      update: vi.fn((..._args: unknown[]) => ({
         set: vi.fn(() => ({
-          where: vi.fn(() => Promise.resolve()),
+          where: vi.fn((..._args: unknown[]) => Promise.resolve()),
         })),
       })),
       select: vi.fn(() => ({
@@ -33,7 +33,7 @@ describe("Issue R — triggerLogs written before sendMail", () => {
     };
 
     const mockTransporter = {
-      sendMail: vi.fn(async () => {
+      sendMail: vi.fn(async (..._args: unknown[]) => {
         insertOrder.push("sendMail");
       }),
     };
@@ -54,21 +54,21 @@ describe("Issue R — triggerLogs written before sendMail", () => {
     let statusWritten: string | null = null;
 
     const mockDb = {
-      insert: vi.fn(() => ({
-        values: vi.fn(() => Promise.resolve([{ insertId: 99 }])),
+      insert: vi.fn((..._args: unknown[]) => ({
+        values: vi.fn((..._args: unknown[]) => Promise.resolve([{ insertId: 99 }])),
       })),
-      update: vi.fn(() => ({
+      update: vi.fn((..._args: unknown[]) => ({
         set: vi.fn((data: { status: string }) => {
           statusWritten = data.status;
           return {
-            where: vi.fn(() => Promise.resolve()),
+            where: vi.fn((..._args: unknown[]) => Promise.resolve()),
           };
         }),
       })),
     };
 
     const mockTransporter = {
-      sendMail: vi.fn(async () => {
+      sendMail: vi.fn(async (..._args: unknown[]) => {
         throw new Error("SMTP connection refused");
       }),
     };
@@ -92,18 +92,18 @@ describe("Issue R — triggerLogs written before sendMail", () => {
     let statusWritten: string | null = null;
 
     const mockDb = {
-      update: vi.fn(() => ({
+      update: vi.fn((..._args: unknown[]) => ({
         set: vi.fn((data: { status: string }) => {
           statusWritten = data.status;
           return {
-            where: vi.fn(() => Promise.resolve()),
+            where: vi.fn((..._args: unknown[]) => Promise.resolve()),
           };
         }),
       })),
     };
 
     const mockTransporter = {
-      sendMail: vi.fn(async () => ({ messageId: "abc123" })),
+      sendMail: vi.fn(async (..._args: unknown[]) => ({ messageId: "abc123" })),
     };
 
     let sendError: Error | null = null;

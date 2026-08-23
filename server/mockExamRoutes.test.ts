@@ -16,8 +16,13 @@ const mockExamFiles = readdirSync(pagesDir)
   .sort();
 
 describe("mock-exam navigation", () => {
-  it("uses practicePath for both purchase-gate exit surfaces", () => {
-    expect(shellSource.match(/backPath=\{practicePath\}/g)).toHaveLength(2);
+  it("routes every purchase-gate exit surface through practicePath", () => {
+    // Asserts the rule rather than a fixed count: adding a legitimate new exit
+    // surface should not fail this test, but routing one to anything other than
+    // practicePath should.
+    const allBackPaths = shellSource.match(/backPath=\{[^}]+\}/g) ?? [];
+    expect(allBackPaths.length).toBeGreaterThan(0);
+    expect(new Set(allBackPaths)).toEqual(new Set(["backPath={practicePath}"]));
     expect(shellSource).not.toContain("backPath={backPath}");
   });
 

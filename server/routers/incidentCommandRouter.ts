@@ -3,10 +3,10 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { invokeGPT56 } from "../_core/openaiResponses";
-import { resolveVerifiedIdentity } from "../_core/accessService";
+import { resolveVerifiedIdentity, identityEmail } from "../_core/accessService";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
-import { commandDrillQueue, commandRunHistory, users } from "../../drizzle/schema";
+import { commandDrillQueue, commandRunHistory, users, commandFeedback, commandEmailCapture } from "../../drizzle/schema";
 import { eq, desc, sql } from "drizzle-orm";
 import {
   getScenarioById,
@@ -342,7 +342,25 @@ export const incidentCommandRouter = router({
       comment: z.string().max(2000).default(""),
       guestId: z.string().max(128).default(""),
     }))
-    .mutation(async () => {
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) return { saved: false };
+
+      // Written to command_feedback, the table built for this: it keeps scenarioId
+      // as a real column and retains guestId, so anonymous runs stay linked to the
+      // learner who made them. Deliberately uses resolveVerifiedIdentity rather
+      // than resolveCommandUser — the latter creates a users row, which submitting
+      // a rating should never do.
+      const identity = resolveVerifiedIdentity(ctx);
+
+      await db.insert(commandFeedback).values({
+        userId: identity.type === "oauth" ? identity.userId : null,
+        guestId: input.guestId.trim() || null,
+        scenarioId: input.scenarioId,
+        rating: input.rating,
+        comment: input.comment.trim() || null,
+      });
+
       return { saved: true };
     }),
 
@@ -352,7 +370,21 @@ export const incidentCommandRouter = router({
       scenarioId: z.string().min(1).max(60).default(""),
       guestId: z.string().max(128).default(""),
     }))
-    .mutation(async () => {
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) return { captured: false };
+
+      // command_email_capture, not trial_emails: keeping Command leads in their
+      // own table preserves guestId and keeps trial-conversion reporting clean.
+      const identity = resolveVerifiedIdentity(ctx);
+
+      await db.insert(commandEmailCapture).values({
+        email: input.email.toLowerCase().trim(),
+        userId: identity.type === "oauth" ? identity.userId : null,
+        guestId: input.guestId.trim() || null,
+        source: "command_debrief",
+      });
+
       return { captured: true };
     }),
 
