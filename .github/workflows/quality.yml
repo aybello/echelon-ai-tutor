@@ -118,3 +118,21 @@ jobs:
           server/ki001.otp.test.ts
           server/purchase.flow.test.ts
           server/subscription.flow.test.ts
+          server/org.teams.test.ts
+          server/quiz.serverScoring.test.ts
+          server/exam.submitMock.test.ts
+          server/stripe/individualExamPass.test.ts
+          server/stripe/validateOneTimeCheckout.test.ts
+          server/stripe/webhook.handler.test.ts
+          server/webhook.integration.test.ts
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+      - run: pnpm build
+        env:
+          NODE_ENV: development
+          JWT_SECRET: test-only-not-for-production
