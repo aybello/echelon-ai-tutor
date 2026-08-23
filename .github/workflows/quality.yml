@@ -102,6 +102,7 @@ jobs:
           server/_core/aiTutorPolicy.test.ts
           server/_core/scheduledAuth.test.ts
           server/commandCapture.test.ts
+          server/welcomeEmailRetirement.test.ts
           server/mockExamRoutes.test.ts
           client/src/hooks/useQuizSession.test.ts
         env:

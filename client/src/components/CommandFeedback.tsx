@@ -20,9 +20,14 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
   const [submitted, setSubmitted] = useState(false);
   const [redirectedToGoogle, setRedirectedToGoogle] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [saveError, setSaveError] = useState("");
 
   const submitMutation = trpc.incidentCommand.submitFeedback.useMutation({
-    onSuccess: () => setSubmitted(true),
+    onSuccess: () => {
+      setSaveError("");
+      setSubmitted(true);
+    },
+    onError: () => setSaveError("We couldn't save that feedback. Please try again."),
   });
 
   function handleStarClick(star: number) {
@@ -121,6 +126,7 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
           >
             {submitMutation.isPending ? "Sending..." : "Submit"}
           </Button>
+          {saveError && <p role="alert" className="text-xs text-red-600">{saveError}</p>}
         </div>
       )}
     </div>
@@ -130,16 +136,22 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
 // --- Email Capture CTA ---
 
 interface EmailCapturePanelProps {
+  scenarioId: string;
   guestId: string;
 }
 
-export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
+export function EmailCapturePanel({ scenarioId, guestId }: EmailCapturePanelProps) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [saveError, setSaveError] = useState("");
 
   const captureMutation = trpc.incidentCommand.captureEmail.useMutation({
-    onSuccess: () => setSubmitted(true),
+    onSuccess: () => {
+      setSaveError("");
+      setSubmitted(true);
+    },
+    onError: () => setSaveError("We couldn't save your email. Please try again."),
   });
 
   const alreadySubscribed = typeof window !== "undefined" && localStorage.getItem("echelon_command_subscribed") === "true";
@@ -176,7 +188,7 @@ export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
         onSubmit={(e) => {
           e.preventDefault();
           if (email.trim()) {
-            captureMutation.mutate({ email: email.trim(), guestId });
+            captureMutation.mutate({ email: email.trim(), scenarioId, guestId });
           }
         }}
         className="flex gap-2"
@@ -198,6 +210,7 @@ export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
           {captureMutation.isPending ? "..." : "Notify me"}
         </Button>
       </form>
+      {saveError && <p role="alert" className="text-xs text-red-600">{saveError}</p>}
     </div>
   );
 }

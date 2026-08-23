@@ -138,8 +138,29 @@ describe("SEO and geographic landing-page contract", () => {
     const llms = buildLlmsTxt();
     expect(llms).toContain("Echelon Institute is independent");
     expect(llms).toContain("one selected course and 12 months");
+    expect(llms).toContain("OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(llms).not.toContain("Alberta AWWOA");
     expect(llms).not.toContain("Saskatchewan SLWA");
     expect(llms).not.toContain("Manitoba WQAM");
+  });
+
+  it("advertises the complete free OIT taste on public conversion surfaces", () => {
+    const landing = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
+      "utf8"
+    );
+    const pricing = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/pages/Pricing.tsx"),
+      "utf8"
+    );
+    const homeSsr = STATIC_PAGE_META.find(page => page.path === "/");
+    const pricingSsr = STATIC_PAGE_META.find(page => page.path === "/pricing");
+
+    for (const source of [landing, pricing, homeSsr?.bodyHtml ?? "", pricingSsr?.bodyHtml ?? ""]) {
+      expect(source).toContain("15");
+      expect(source).toContain("50 flashcards");
+      expect(source).toContain("30 mock");
+      expect(source).toMatch(/3 AI Tutor|three AI Tutor/);
+    }
   });
 });
