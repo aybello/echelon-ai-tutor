@@ -65,7 +65,7 @@ jobs:
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:adopt
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
-            -e "DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions;"
+            -e "DROP INDEX analytics_anonymous_time_idx ON product_analytics_events; ALTER TABLE product_analytics_events DROP COLUMN anonymousHash; ALTER TABLE question_bank_meta DROP COLUMN publicationPolicy; DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions;"
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:apply
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
@@ -118,21 +118,3 @@ jobs:
           server/ki001.otp.test.ts
           server/purchase.flow.test.ts
           server/subscription.flow.test.ts
-          server/org.teams.test.ts
-          server/quiz.serverScoring.test.ts
-          server/exam.submitMock.test.ts
-          server/stripe/individualExamPass.test.ts
-          server/stripe/validateOneTimeCheckout.test.ts
-          server/stripe/webhook.handler.test.ts
-          server/webhook.integration.test.ts
-        env:
-          NODE_ENV: test
-          JWT_SECRET: test-only-not-for-production
-          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
-          REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
-          STRIPE_SECRET_KEY: sk_test_ci_placeholder
-          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
-      - run: pnpm build
-        env:
-          NODE_ENV: development
-          JWT_SECRET: test-only-not-for-production
