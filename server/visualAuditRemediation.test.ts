@@ -7,7 +7,7 @@ function source(relativePath: string): string {
 }
 
 describe("live visual-audit remediation", () => {
-  it("keeps private 309A demo routes available but out of public discovery", () => {
+  it("keeps the free 309A course public and discoverable while the bank develops", () => {
     const app = source("client/src/App.tsx");
     const nav = source("client/src/components/SiteNav.tsx");
     const practice = source("client/src/pages/Electrician309APractice.tsx");
@@ -16,12 +16,14 @@ describe("live visual-audit remediation", () => {
     const server = source("server/_core/index.ts");
 
     expect(app).toContain('<Route path={"/electrician-309a"}');
-    expect(nav).not.toContain('{ label: "309A Electrician"');
-    expect(practice).toContain("noindex: true");
-    expect(mock).toContain("noindex");
-    expect(flashcards).toContain("noindex: true");
-    expect(server).toContain('"/electrician-309a-mock"');
-    expect(server).toContain('"X-Robots-Tag", "noindex, nofollow"');
+    const pageSsr = source("server/pageSsr.ts");
+
+    expect(nav).toContain('{ label: "309A Electrician"');
+    expect(practice).not.toContain("noindex: true");
+    expect(mock).not.toContain("noindex");
+    expect(flashcards).not.toContain("noindex: true");
+    expect(server).not.toContain('"X-Robots-Tag", "noindex, nofollow"');
+    expect(pageSsr).toContain('path: "/electrician-309a"');
   });
 
   it("uses accurate public trust and free-preview copy", () => {

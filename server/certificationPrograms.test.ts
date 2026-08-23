@@ -219,8 +219,8 @@ describe("trade-agnostic certification program foundation", () => {
     expect(reviewRouterSource).toContain("selectCertificationQuestionsForPublicPreview");
     expect(reviewRouterSource).toContain("get309ABetaPractice");
     expect(reviewRouterSource).toContain('contentStatus, "beta_approved"');
-    expect(siteNavSource).not.toContain('{ label: "309A Electrician"');
-    expect(siteNavSource).not.toContain('href="/electrician-309a"');
+    expect(siteNavSource).toContain("309A Electrician");
+    expect(siteNavSource).toContain("/electrician-309a");
   });
 
   it("fails closed unless the governed free-beta release gates all pass", () => {

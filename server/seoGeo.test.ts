@@ -53,7 +53,7 @@ describe("SEO and geographic landing-page contract", () => {
     expect(serverPaths.has("/teams")).toBe(true);
   });
 
-  it("keeps public landing pages crawlable and private workspaces blocked", () => {
+  it("keeps public landing pages crawlable and private account workspaces blocked", () => {
     const robots = fs.readFileSync(
       path.resolve(process.cwd(), "client/public/robots.txt"),
       "utf8"
@@ -64,12 +64,12 @@ describe("SEO and geographic landing-page contract", () => {
     expect(robots).toContain("Disallow: /team$");
     expect(robots).not.toContain("Disallow: /teams");
     expect(robots).toContain("Disallow: /quiz");
-    expect(robots).toContain("Disallow: /electrician-309a");
+    expect(robots).not.toContain("Disallow: /electrician-309a");
 
     const publicPaths = new Set(STATIC_PAGE_META.map(meta => meta.path));
-    expect(publicPaths.has("/electrician-309a")).toBe(false);
-    expect(publicPaths.has("/electrician-309a-mock")).toBe(false);
-    expect(publicPaths.has("/electrician-309a-flashcards")).toBe(false);
+    expect(publicPaths.has("/electrician-309a")).toBe(true);
+    expect(publicPaths.has("/electrician-309a-mock")).toBe(true);
+    expect(publicPaths.has("/electrician-309a-flashcards")).toBe(true);
   });
 
   it("lets homepage visitors choose the correct free OIT preview", () => {

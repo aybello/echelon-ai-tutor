@@ -430,8 +430,8 @@ export default function QuizShell({
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
         /* Keep study controls visible without allowing the header to consume the question viewport. */
-        .qs-module-pills-row { flex-wrap: wrap !important; overflow-x: visible !important; padding-bottom: 3px; }
-        .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
+        .qs-module-pills-row { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 3px; }
+        .qs-module-pills-row::-webkit-scrollbar, .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
         .qs-mode-bar-wrap { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding-bottom: 3px; scrollbar-width: none; }
         .qs-mode-card { min-width: 0 !important; padding: 6px 10px !important; }
         .qs-mode-card-desc { display: none; }

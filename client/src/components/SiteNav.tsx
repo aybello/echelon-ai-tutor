@@ -14,6 +14,7 @@ const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7
 
 export const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
+  { label: "309A Electrician", href: "/electrician-309a" },
   { label: "Process Guides", href: "/guides" },
   { label: "WPI", href: "/wpi" },
   { label: "US", href: "/us" },
@@ -128,6 +129,7 @@ export default function SiteNav({
 
         <div className="echelon-desktop-links">
           <Link href="/#courses" className={`echelon-nav-link${isPathActive(currentPath, "/") ? " is-active" : ""}`}>Courses</Link>
+          <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
           <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
           <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
           <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>

@@ -37,7 +37,6 @@ export default function Electrician309APractice() {
     title: "Ontario 309A Electrician Practice | Echelon Institute",
     description: "Free Ontario 309A Construction Electrician practice, mock exams, flashcards, study notes, and progress tools from Echelon Institute.",
     path: "/electrician-309a",
-    noindex: true,
   });
   const bank = useElectrician309ABank();
   const session = useQuizSession({ examType: "electrician-309a", allQuestions: bank.questions, freeCourse: true });
