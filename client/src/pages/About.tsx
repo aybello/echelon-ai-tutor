@@ -12,7 +12,7 @@ const TIMELINE = [
   {
     year: "2025",
     title: "The Gap Identified",
-    body: "Ay Bello, an Environmental Engineer (EIT) and Master's student in Digital Transformation at the University of Ottawa, identified a clear gap in Canada's water sector — operators were studying for some of the most technically demanding exams in the trades with resources that hadn't evolved in decades.",
+    body: "Ay Bello, an Environmental Engineer (EIT) and Master of Digital Transformation and Innovation graduate from the University of Ottawa, identified a clear gap in Canada's water sector — operators were studying for some of the most technically demanding exams in the trades with resources that hadn't evolved in decades.",
   },
   {
     year: "Early 2026",
@@ -22,7 +22,7 @@ const TIMELINE = [
   {
     year: "2026",
     title: "Platform Launched",
-    body: "Echelon Institute launched publicly with 400+ OIT practice questions, 10 study modules, interactive process diagrams for both drinking water and wastewater treatment, a pumping systems module, a lab and sampling module, and a formula reference — launching in Ontario with BC and Alberta coming next.",
+    body: "Echelon Institute launched publicly in Ontario with 400+ OIT practice questions, 10 study modules, interactive process diagrams for drinking water and wastewater treatment, pumping and laboratory modules, and a formula reference. It later expanded with WPI-aligned preparation for operators in British Columbia, Alberta, Saskatchewan, and Manitoba.",
   },
 ];
 
@@ -184,7 +184,7 @@ export default function About() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           {[
-            "Water and wastewater operators work in one of the most regulated and technically demanding fields in the trades. Whether you are sitting the Ontario OIT, a WPI Class II Water Treatment exam in Iowa, or the FDEP exam in Florida, the path to certification requires mastering process chemistry, hydraulics, complex dosing calculations, and a dense body of regulatory knowledge specific to your jurisdiction.",
+            "Water and wastewater operators work in one of the most regulated and technically demanding fields in the trades. Whether you are sitting the Ontario OIT or a WPI Class II Water Treatment exam in Iowa, the path to certification requires mastering process chemistry, hydraulics, complex dosing calculations, and a dense body of regulatory knowledge specific to your jurisdiction.",
             "Yet the only study resources available were dense government study manuals, expensive in-person courses built on decade-old PowerPoint slides, and generic prep apps that referenced the wrong regulations entirely. There was nothing interactive. Nothing visual. Nothing that actually showed operators how a clarifier works before asking them to answer questions about it.",
             "Echelon Institute was built to fix that. Every question is mapped to the actual exam framework — provincial for Canadian operators, WPI/ABC for US operators. Every visual module lets you see and interact with real treatment processes. The AI Tutor can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what regulations require for turbidity monitoring — in plain language, with worked examples.",
           ].map((para, i) => (
@@ -347,7 +347,7 @@ export default function About() {
             Ready to Start Studying?
           </h2>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", marginBottom: 36, lineHeight: 1.7 }}>
-            400+ OIT practice questions, an AI Tutor that knows Canadian provincial regulations, and a formula sheet — all free.
+            Try the complete OIT study system free: 15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages. No account or credit card required.
           </p>
           {/* Google Review CTA */}
           <a
@@ -375,36 +375,11 @@ export default function About() {
             Enjoying Echelon? Leave us a Google Review
           </a>
           <div className="about-cta-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/quiz">
-              <button style={{
-                padding: "14px 28px",
-                borderRadius: 10,
-                border: "none",
-                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
-                color: "#fff",
-                fontSize: 14,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                boxShadow: "0 4px 16px rgba(29,78,216,0.3)",
-              }}>
-                Start Free OIT Practice →
-              </button>
+            <Link href="/quiz" style={{ padding: "14px 28px", borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(29,78,216,0.3)", textDecoration: "none", textAlign: "center" }}>
+              Start Free OIT Practice →
             </Link>
-            <Link href="/formulas">
-              <button style={{
-                padding: "14px 28px",
-                borderRadius: 10,
-                border: "1.5px solid rgba(255,255,255,0.3)",
-                background: "rgba(255,255,255,0.1)",
-                color: "#fff",
-                fontSize: 14,
-                fontWeight: 600,
-                cursor: "pointer",
-                fontFamily: "inherit",
-              }}>
-                View Formula Sheet
-              </button>
+            <Link href="/formulas" style={{ padding: "14px 28px", borderRadius: 10, border: "1.5px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center" }}>
+              View Formula Sheet
             </Link>
           </div>
         </div>

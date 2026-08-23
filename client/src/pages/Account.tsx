@@ -714,8 +714,8 @@ export default function Account() {
           </div>
         )}
 
-        {/* Rate us on Google */}
-        <div style={{ marginTop: 32, textAlign: "center" }}>
+        {/* Ask active customers for a review after access is restored, not before sign-in. */}
+        {hasPurchases && <div style={{ marginTop: 32, textAlign: "center" }}>
           <a
             href="https://g.page/r/CWsjBbkUlS8rEBM/review"
             target="_blank"
@@ -744,7 +744,7 @@ export default function Account() {
           <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 6 }}>
             Your review helps other operators find quality training.
           </p>
-        </div>
+        </div>}
 
         {/* Clear device state / sign out */}
         <div style={{ marginTop: 40, borderTop: "1px solid #E2E8F0", paddingTop: 24, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>

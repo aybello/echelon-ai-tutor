@@ -3,6 +3,7 @@ import {
   OIT_PREVIEW_CALC_MINIMUMS,
   OIT_PREVIEW_LIMITS,
   buildPreviewSample,
+  previewRowsForBank,
   previewLimitForRequest,
 } from "./routers/quizRouter";
 
@@ -64,5 +65,20 @@ describe("server-owned OIT preview pools", () => {
     expect(flashcards.every(row => row.isCalc !== "yes")).toBe(true);
     expect(flashcards).toHaveLength(48);
     expect(scarceCalculations.filter(row => row.isCalc === "yes")).toHaveLength(2);
+  });
+
+  it("keeps wastewater modules out of the explicitly labelled Water OIT preview", () => {
+    const rows = [
+      { module: "Water Treatment", isCalc: "no" },
+      { module: "Hydraulics", isCalc: "yes" },
+      { module: "Wastewater Treatment", isCalc: "no" },
+      { module: "Wastewater Collection Systems", isCalc: "no" },
+    ];
+
+    expect(previewRowsForBank(rows, "oit").map(row => row.module)).toEqual([
+      "Water Treatment",
+      "Hydraulics",
+    ]);
+    expect(previewRowsForBank(rows, "oit-ww")).toEqual(rows);
   });
 });
