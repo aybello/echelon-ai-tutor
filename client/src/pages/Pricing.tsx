@@ -1082,10 +1082,30 @@ function TeamSeatCalculator() {
   return (
     <section style={{ maxWidth: 860, margin: "0 auto 52px", padding: 28, borderRadius: 18, background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", color: "#fff" }}>
       <div style={{ textAlign: "center" }}>
-        <h2 style={{ fontSize: 25, margin: "0 0 6px", fontWeight: 900 }}>Teams All-Access</h2>
+        <h2 style={{ fontSize: 25, margin: "0 0 6px", fontWeight: 900 }}>Choose Your Team Plan</h2>
         <p style={{ maxWidth: 560, margin: "0 auto 20px", color: "#CBD5E1", fontSize: 14, lineHeight: 1.6 }}>
-          Every course, every stream. One price per operator per year. Volume discounts applied automatically.
+          Choose targeted access for an upcoming exam or year-round access to the complete training library.
         </p>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 12, margin: "0 auto 26px", maxWidth: 700 }}>
+        <div style={{ padding: 18, borderRadius: 14, background: "rgba(20,184,166,0.12)", border: "1px solid rgba(45,212,191,0.35)" }}>
+          <div style={{ color: "#5EEAD4", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>Teams Course Pass</div>
+          <div style={{ marginTop: 7, fontSize: 18, fontWeight: 850 }}>One operator · one course</div>
+          <p style={{ color: "#CBD5E1", fontSize: 13, lineHeight: 1.55, margin: "8px 0 0" }}>Choose a 3-, 6-, or 12-month term for each named operator. One-time payment, no five-seat minimum, from CA$29.</p>
+          <div style={{ color: "#99F6E4", fontSize: 12, fontWeight: 750, marginTop: 10 }}>Best for a specific exam or mixed certification cohort.</div>
+        </div>
+        <div style={{ padding: 18, borderRadius: 14, background: "rgba(59,130,246,0.14)", border: "1px solid rgba(96,165,250,0.4)" }}>
+          <div style={{ color: "#93C5FD", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>Teams All-Access</div>
+          <div style={{ marginTop: 7, fontSize: 18, fontWeight: 850 }}>One operator · every course</div>
+          <p style={{ color: "#CBD5E1", fontSize: 13, lineHeight: 1.55, margin: "8px 0 0" }}>Twelve months across every stream and level for each named operator. CA$399 per operator per year, five-seat minimum.</p>
+          <div style={{ color: "#BFDBFE", fontSize: 12, fontWeight: 750, marginTop: 10 }}>Best for ongoing workforce development.</div>
+        </div>
+      </div>
+
+      <div style={{ textAlign: "center", borderTop: "1px solid rgba(148,163,184,0.25)", paddingTop: 22, marginBottom: 18 }}>
+        <h3 style={{ fontSize: 20, margin: "0 0 5px", fontWeight: 850 }}>Calculate Teams All-Access</h3>
+        <p style={{ margin: 0, color: "#94A3B8", fontSize: 13 }}>Volume discounts are applied automatically.</p>
       </div>
 
       {/* Seat slider */}

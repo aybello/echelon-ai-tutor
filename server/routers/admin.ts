@@ -16,7 +16,13 @@ import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
-import { analyticsIdentity, masteryGain, medianTimeToFirstQuizMinutes, percentage } from "../productKpis";
+import {
+  buildJourneyIdentityResolver,
+  cohortConversion,
+  comparableQuizGain,
+  medianTimeToFirstQuizMinutes,
+  percentage,
+} from "../productKpis";
 
 const OWNER_EMAIL = "belllo.ayoola@gmail.com";
 
@@ -86,31 +92,32 @@ export const adminRouter = router({
       eventCounts.set(event.eventName, (eventCounts.get(event.eventName) ?? 0) + 1);
     }
     const eventCount = (name: string) => eventCounts.get(name) ?? 0;
-    const identitiesFor = (name: string) => new Set(
-      events
-        .filter(event => event.eventName === name)
-        .map(analyticsIdentity)
-        .filter((identity): identity is string => Boolean(identity)),
-    );
-    const signupIdentities = identitiesFor("signup");
-    const activationIdentities = identitiesFor("access_activated");
-    const pricingIdentities = identitiesFor("pricing_viewed");
-    const checkoutIdentities = identitiesFor("checkout_completed");
-    const quizStartIdentities = identitiesFor("quiz_started");
-    const quizCompletionIdentities = identitiesFor("quiz_completed");
-    const activatedSignupCohort = Array.from(signupIdentities)
-      .filter(identity => activationIdentities.has(identity)).length;
-
     const learningEvents = new Set([
       "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
       "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
     ]);
+    const resolveJourneyIdentity = buildJourneyIdentityResolver(events);
     const weeklyActiveLearners = new Set(
       events
         .filter(event => event.occurredAt >= since7 && learningEvents.has(event.eventName))
-        .map(analyticsIdentity)
+        .map(resolveJourneyIdentity)
         .filter((identity): identity is string => Boolean(identity)),
     ).size;
+    const pricingConversion = cohortConversion(
+      events,
+      new Set(["pricing_viewed"]),
+      new Set(["checkout_completed"]),
+    );
+    const learningActivation = cohortConversion(
+      events,
+      new Set(["access_activated"]),
+      learningEvents,
+    );
+    const quizCompletion = cohortConversion(
+      events,
+      new Set(["quiz_started"]),
+      new Set(["quiz_completed"]),
+    );
 
     const passed = outcomes.filter(outcome => outcome.result === "passed");
     const failed = outcomes.filter(outcome => outcome.result === "failed");
@@ -129,7 +136,7 @@ export const adminRouter = router({
     const coursePassActivated = Number(coursePassSeats?.activated ?? 0);
     const totalTeamCapacity = seats + coursePassTotal;
     const totalTeamAllocated = assigned + coursePassAllocated;
-    const mastery = masteryGain(events);
+    const quizImprovement = comparableQuizGain(events);
 
     return {
       periodDays: 30,
@@ -147,8 +154,8 @@ export const adminRouter = router({
       engagement: {
         weeklyActiveLearners,
         medianMinutesToFirstQuiz: medianTimeToFirstQuizMinutes(events),
-        masteryGainPercentagePoints: mastery.percentagePoints,
-        masteryGainSampleSize: mastery.sampleSize,
+        quizImprovementPercentagePoints: quizImprovement.percentagePoints,
+        quizImprovementSampleSize: quizImprovement.sampleSize,
       },
       teams: {
         assignedSeats: totalTeamAllocated,
@@ -177,9 +184,15 @@ export const adminRouter = router({
         averageReadinessFailed: readinessAverage(failed),
       },
       commercial: {
-        pricingToCheckoutRate: percentage(checkoutIdentities.size, pricingIdentities.size),
-        activationRate: percentage(activatedSignupCohort, signupIdentities.size),
-        quizCompletionRate: percentage(quizCompletionIdentities.size, quizStartIdentities.size),
+        pricingToCheckoutRate: pricingConversion.rate,
+        pricingCohortSize: pricingConversion.cohortSize,
+        attributedCheckouts: pricingConversion.converted,
+        learningActivationRate: learningActivation.rate,
+        accessCohortSize: learningActivation.cohortSize,
+        learningActivated: learningActivation.converted,
+        quizCompletionRate: quizCompletion.rate,
+        quizStarterCohortSize: quizCompletion.cohortSize,
+        quizCompleters: quizCompletion.converted,
         refundRate: percentage(refundedPurchases, recentPurchases.length),
         renewals: eventCount("subscription_renewed"),
         cancellations: eventCount("subscription_cancelled"),

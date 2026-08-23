@@ -1693,3 +1693,12 @@
 
 ## PR 43 and PR 44 Release — August 21
 - [x] Merge PR 43, merge its stacked PR 44 follow-up, validate the combined release, and deploy it
+
+## Newly Available Repository Updates — August 23
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 45 Scope Reduction — August 23
+- [x] Remove the unneeded question-bank governance migration and dependent code while retaining the reviewed KPI attribution and Teams-plan clarity improvements
+
+## PR 45 KPI and Teams Clarity Release — August 23
+- [x] Merge the approved no-migration PR 45, validate the integrated release, and deploy it

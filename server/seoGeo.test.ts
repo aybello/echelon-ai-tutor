@@ -163,4 +163,19 @@ describe("SEO and geographic landing-page contract", () => {
       expect(source).toMatch(/3 AI Tutor|three AI Tutor/);
     }
   });
+
+  it("explains the two Teams products in both the interactive and search-visible pricing pages", () => {
+    const pricing = fs.readFileSync(
+      path.resolve(process.cwd(), "client/src/pages/Pricing.tsx"),
+      "utf8"
+    );
+    const pricingSsr = STATIC_PAGE_META.find(page => page.path === "/pricing")?.bodyHtml ?? "";
+
+    for (const source of [pricing, pricingSsr]) {
+      expect(source).toContain("Teams Course Pass");
+      expect(source).toContain("Teams All-Access");
+      expect(source).toMatch(/3-, 6-, or 12-month|3, 6, or 12 months/);
+      expect(source).toContain("five-seat minimum");
+    }
+  });
 });
