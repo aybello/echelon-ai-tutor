@@ -127,9 +127,7 @@ describe("tutor.chat", () => {
     expect(lookup.sql).toContain("`questions`.`bankKey` = ?");
     expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
     expect(lookup.sql).not.toContain("`questions`.`id` = ?");
-    expect(lookup.sql).toContain("`question_bank_meta`.`publicationPolicy` = 'legacy_non_rejected'");
-    expect(lookup.sql).toContain("`question_bank_meta`.`publicationPolicy` = 'approved_only'");
-    expect(lookup.params).toEqual(["class1-water", 42]);
+    expect(lookup.params).toEqual(["class1-water", 42, "rejected"]);
   });
 
   it("allows the OIT tutor during the free product preview", async () => {

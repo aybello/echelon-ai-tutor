@@ -3,7 +3,7 @@ import path from "node:path";
 import { getTableColumns } from "drizzle-orm";
 import { getTableConfig } from "drizzle-orm/mysql-core";
 import { describe, expect, it } from "vitest";
-import { questionBankMeta, questions } from "../drizzle/schema";
+import { questions } from "../drizzle/schema";
 import { learnerQuestionColumns } from "./routers/quizRouter";
 
 describe("question governance schema", () => {
@@ -20,9 +20,6 @@ describe("question governance schema", () => {
     });
     expect(columns.reviewStatus.notNull).toBe(true);
     expect(columns.reviewStatus.hasDefault).toBe(true);
-    const bankColumns = getTableColumns(questionBankMeta);
-    expect(bankColumns.publicationPolicy.notNull).toBe(true);
-    expect(bankColumns.publicationPolicy.hasDefault).toBe(true);
   });
 
   it("indexes review queues globally and by question bank", () => {
@@ -43,7 +40,7 @@ describe("question governance schema", () => {
     ]));
   });
 
-  it("uses the bank publication policy on every learner-facing bank read", () => {
+  it("excludes explicitly rejected questions from every learner-facing bank read", () => {
     const expectedMinimumUses: Record<string, number> = {
       "server/routers/quizRouter.ts": 3,
       "server/routers/activationRouter.ts": 2,
@@ -54,21 +51,14 @@ describe("question governance schema", () => {
     for (const [relativePath, expectedMinimum] of Object.entries(expectedMinimumUses)) {
       const source = fs.readFileSync(path.resolve(process.cwd(), relativePath), "utf8");
       const uses = source.match(/learnerVisibleQuestionFilter\(\)/g) ?? [];
-      expect(uses.length, `${relativePath} is missing a publication-policy guard`).toBeGreaterThanOrEqual(expectedMinimum);
+      expect(uses.length, `${relativePath} is missing a rejected-question guard`).toBeGreaterThanOrEqual(expectedMinimum);
     }
 
     const quizRouter = fs.readFileSync(
       path.resolve(process.cwd(), "server/routers/quizRouter.ts"),
       "utf8",
     );
-    expect(quizRouter).not.toContain("AND reviewStatus <> 'rejected'");
-    const governance = fs.readFileSync(
-      path.resolve(process.cwd(), "server/questionGovernance.ts"),
-      "utf8",
-    );
-    expect(governance).toContain("legacy_non_rejected");
-    expect(governance).toContain("approved_only");
-    expect(governance).toContain("reviewStatus} = 'approved'");
+    expect(quizRouter.match(/reviewStatus <> 'rejected'/g)).toHaveLength(2);
   });
 
   it("invalidates cached banks when an admin changes a review decision", () => {
@@ -77,7 +67,6 @@ describe("question governance schema", () => {
       "utf8",
     );
     expect(adminRouter).toContain("contentVersion: sql`${questionBankMeta.contentVersion} + 1`");
-    expect(adminRouter).toContain('existing.publicationPolicy === "approved_only"');
-    expect(adminRouter).toContain("totalQuestions: Number(inventory?.total ?? 0)");
+    expect(adminRouter).toContain("AND ${questions.reviewStatus} <> 'rejected'");
   });
 });

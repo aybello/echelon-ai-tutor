@@ -3,7 +3,6 @@
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
 import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
-import { TRPCError } from "@trpc/server";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
@@ -49,7 +48,6 @@ export const adminRouter = router({
         occurredAt: productAnalyticsEvents.occurredAt,
         userId: productAnalyticsEvents.userId,
         emailHash: productAnalyticsEvents.emailHash,
-        anonymousHash: productAnalyticsEvents.anonymousHash,
         examType: productAnalyticsEvents.examType,
         metadata: productAnalyticsEvents.metadata,
       }).from(productAnalyticsEvents)
@@ -286,25 +284,11 @@ export const adminRouter = router({
       if (!db) throw new Error("Database unavailable");
 
       const [existing] = await db
-        .select({
-          bankKey: questions.bankKey,
-          publicationPolicy: questionBankMeta.publicationPolicy,
-        })
+        .select({ bankKey: questions.bankKey })
         .from(questions)
-        .innerJoin(questionBankMeta, eq(questionBankMeta.bankKey, questions.bankKey))
         .where(eq(questions.id, input.id))
         .limit(1);
       if (!existing) throw new Error("Question not found");
-      if (
-        input.reviewStatus === "approved"
-        && existing.publicationPolicy === "approved_only"
-        && !input.blueprintObjective
-      ) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Approved questions in approved-only banks require a blueprint objective.",
-        });
-      }
 
       const reviewer = normalizeEmail(ctx.user.email ?? "") || ctx.user.name || `user:${ctx.user.id}`;
       const reviewed = input.reviewStatus !== "unreviewed";
@@ -322,23 +306,17 @@ export const adminRouter = router({
           })
           .where(eq(questions.id, input.id));
 
-        const [inventory] = await tx
-          .select({ total: count() })
-          .from(questions)
-          .where(and(
-            eq(questions.bankKey, existing.bankKey),
-            existing.publicationPolicy === "approved_only"
-              ? eq(questions.reviewStatus, "approved")
-              : ne(questions.reviewStatus, "rejected"),
-          ));
-
         // Force every cached learner bank to refresh after a review decision,
-        // and keep the advertised inventory aligned with its publication policy.
+        // and keep the advertised inventory aligned with visible questions.
         await tx
           .update(questionBankMeta)
           .set({
             contentVersion: sql`${questionBankMeta.contentVersion} + 1`,
-            totalQuestions: Number(inventory?.total ?? 0),
+            totalQuestions: sql`(
+              SELECT COUNT(*) FROM ${questions}
+              WHERE ${questions.bankKey} = ${existing.bankKey}
+                AND ${questions.reviewStatus} <> 'rejected'
+            )`,
           })
           .where(eq(questionBankMeta.bankKey, existing.bankKey));
       });
