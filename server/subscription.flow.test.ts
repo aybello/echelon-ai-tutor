@@ -110,7 +110,10 @@ vi.mock("stripe", () => ({
 
 function makeCtx(email?: string): TrpcContext {
   return {
-    user: email ? { id: 1, email, openId: "user_openid", name: "Test User", role: "user" } : null,
+    user: email
+      ? { id: 1, email, openId: "user_openid", name: "Test User", role: "user" as const, loginMethod: "manus", createdAt: new Date(), updatedAt: new Date(), lastSignedIn: new Date(), phone: null, province: null }
+      : null,
+    studentEmail: null,
     req: { protocol: "https", headers: { origin: "https://example.com" } } as TrpcContext["req"],
     res: { clearCookie: vi.fn(), cookie: vi.fn() } as unknown as TrpcContext["res"],
   };
@@ -206,13 +209,13 @@ describe("getMySubscriptions", () => {
   it("returns active subscriptions for a logged-in user", async () => {
     addSubscription({ email: "sub@example.com", tier: "class2", province: "ontario", status: "active", currentPeriodEnd: FUTURE });
     const caller = appRouter.createCaller(makeCtx("sub@example.com"));
-    const result = await caller.stripe.getMySubscriptions({});
+    const result = await caller.stripe.getMySubscriptions();
     expect(result.subscriptions.length).toBeGreaterThan(0);
     expect(result.unlockedExamTypes.length).toBeGreaterThan(0);
   });
 
   it("throws UNAUTHORIZED when user is not logged in", async () => {
     const caller = appRouter.createCaller(makeCtx());
-    await expect(caller.stripe.getMySubscriptions({})).rejects.toMatchObject({ code: "UNAUTHORIZED" });
+    await expect(caller.stripe.getMySubscriptions()).rejects.toMatchObject({ code: "UNAUTHORIZED" });
   });
 });

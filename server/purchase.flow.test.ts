@@ -89,7 +89,7 @@ vi.mock("./db", () => ({
             // We approximate by returning all rows (tests control state)
             return Promise.resolve(mockPurchases.slice(0, n));
           },
-          then: (resolve: Function) => Promise.resolve(mockPurchases).then(resolve),
+          then: (resolve: (value: PurchaseRow[]) => unknown) => Promise.resolve(mockPurchases).then(resolve),
         }),
         orderBy: () => ({
           limit: (n: number) => Promise.resolve(mockPurchases.slice(0, n)),
@@ -102,8 +102,8 @@ vi.mock("./db", () => ({
         mockPurchases.push({
           id: nextId++,
           createdAt: new Date(),
-          referralSource: null,
           ...vals,
+          referralSource: vals.referralSource ?? null,
         } as PurchaseRow);
         return Promise.resolve();
       },
@@ -147,6 +147,7 @@ vi.mock("stripe", () => ({
 function makeCtx(): TrpcContext {
   return {
     user: null,
+    studentEmail: null,
     req: { protocol: "https", headers: { origin: "https://example.com" } } as TrpcContext["req"],
     res: { clearCookie: vi.fn(), cookie: vi.fn() } as unknown as TrpcContext["res"],
   };
@@ -240,7 +241,7 @@ describe("stripe.verifySession", () => {
 describe("stripe.getMyPurchases", () => {
   it("throws UNAUTHORIZED when user is not logged in", async () => {
     const caller = appRouter.createCaller(makeCtx());
-    await expect(caller.stripe.getMyPurchases({})).rejects.toMatchObject({ code: "UNAUTHORIZED" });
+    await expect(caller.stripe.getMyPurchases()).rejects.toMatchObject({ code: "UNAUTHORIZED" });
   });
 });
 

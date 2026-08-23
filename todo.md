@@ -1674,3 +1674,22 @@
 - [x] Audit the shared quiz layout areas causing oversized viewport use across course practice pages
 - [x] Compact quiz spacing and question-panel sizing without harming answer selection, feedback, or accessibility
 - [x] Validate and publish the compact quiz workspace on desktop and mobile
+
+## Development Server Recovery — August 21
+- [x] Restart the stopped development server and verify the preview responds
+
+## Welcome-Email Heartbeat Final Verification — August 21
+- [x] List all active heartbeat jobs and delete any residual welcome-email task
+
+## Newly Available Repository Updates — August 21
+- [x] Identify incoming pull requests and review their scope, compatibility, and validation evidence before a merge decision
+
+## PR 43 Validation Repair — August 21
+- [x] Correct the unreliable anonymous AI Tutor policy test and validate PR 43 under database-backed conditions
+- [x] Correct the tutor-memory access test to exercise a paid course instead of the intentionally free OIT course
+
+## Newly Available Repository Updates — August 21 (Follow-up)
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 43 and PR 44 Release — August 21
+- [x] Merge PR 43, merge its stacked PR 44 follow-up, validate the combined release, and deploy it

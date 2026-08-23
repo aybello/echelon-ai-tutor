@@ -16,7 +16,7 @@ describe("Ontario 309A standard Echelon course", () => {
       teamAssignable: false,
       isActive: true,
     });
-    expect(getRouteForCourse("electrician-309a").mockExamPath).toBe("/electrician-309a-mock");
+    expect(getRouteForCourse("electrician-309a")!.mockExamPath).toBe("/electrician-309a-mock");
   });
 
   it("keeps the complete 309A standard course free without a purchase entitlement", async () => {

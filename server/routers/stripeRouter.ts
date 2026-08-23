@@ -23,7 +23,7 @@ import {
 import { CATALOGUE_VERSION } from "../../shared/pricingCatalogue";
 import { getOrCreateTeamAllAccessPrice } from "../stripe/teamGraduatedPrice";
 import { getDb } from "../db";
-import { purchases, subscriptions } from "../../drizzle/schema";
+import { purchaseReadColumns, purchases, subscriptions } from "../../drizzle/schema";
 import { eq, and, gt, count } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
@@ -216,7 +216,7 @@ export const stripeRouter = router({
       if (!db) return { purchases: [], unlockedExamTypes: [] };
 
       const rows = await db
-        .select()
+        .select(purchaseReadColumns)
         .from(purchases)
         .where(eq(purchases.email, email));
 

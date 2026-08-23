@@ -106,7 +106,7 @@ function buildFaqJsonLd(): string {
         name: "Is there a free trial?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. The first 15 questions on every course are completely free — no account or credit card required. You can start practising immediately at echeloninstitute.ca.",
+          text: "Yes. Every course includes 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required.",
         },
       },
       {
@@ -213,7 +213,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     path: "/",
     title: "Water & Wastewater Operator Exam Prep | Echelon Institute",
     description:
-      "Canadian water and wastewater operator exam preparation with course-specific practice, mock exams, flashcards, process guides, and a free 15-question preview.",
+      "Canadian water and wastewater operator exam preparation with a free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and three AI Tutor messages.",
     h1: "Prepare for Your Operator Exam. Advance Your Career.",
     jsonLd: buildOrganizationJsonLd(),
     bodyHtml: `
@@ -227,7 +227,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
 
       <h2>Free to Start</h2>
-      <p>The first 15 questions on every course are completely free — no account or credit card required. Start practising right now and see exactly how Echelon works before purchasing a 12-month Exam Pass.</p>
+      <p>Every course includes 15 free practice questions. OIT learners can also try 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Experience the complete study system before purchasing a 12-month Exam Pass.</p>
 
       <h2>Team Plans for Utilities</h2>
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Team plans include a shared admin dashboard and volume discounts. Contact us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit <a href="${SITE_URL}/pricing">our pricing page</a> to learn more.</p>
@@ -336,7 +336,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon offers bulk seat pricing for utilities, municipalities, training organizations, and Indigenous water authorities. Team plans include a shared admin dashboard, usage reporting, and volume discounts. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> to discuss your organization's needs.</p>
 
       <h2>Free Access</h2>
-      <p>The first 15 questions on every course are free — no account or credit card required. Visit <a href="${SITE_URL}/">the homepage</a> to begin practising immediately.</p>
+      <p>Every course includes 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Visit <a href="${SITE_URL}/">the homepage</a> to begin immediately.</p>
 
       <h2>Refund Policy</h2>
       <p>Echelon offers a satisfaction guarantee. Read the full <a href="${SITE_URL}/refund">refund policy</a> for details on eligibility and the process for requesting a refund.</p>
@@ -509,7 +509,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon provides Ontario-specific OIT and Class 1–4 courses plus WPI-aligned Class I–IV preparation for treatment, distribution, and collection candidates in British Columbia, Alberta, Saskatchewan, and Manitoba. Confirm current requirements with your certifying authority.</p>
 
       <h2>Is There a Free Trial?</h2>
-      <p>Yes. The first 15 questions on every course, including OIT, are completely free — no account or credit card required. A 12-month Exam Pass is required to continue beyond the preview. <a href="${SITE_URL}/">Start practising now</a>.</p>
+      <p>Yes. Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. A 12-month Exam Pass is required to continue beyond those limits. <a href="${SITE_URL}/">Start practising now</a>.</p>
 
       <h2>How Many Practice Questions Are There?</h2>
       <p>Each course has 400+ practice questions organized by module and difficulty level. Topics include treatment processes, laboratory analysis, equipment operation and maintenance, source water, and safety and administration.</p>
@@ -960,7 +960,7 @@ export function buildLlmsTxt(): string {
   return `# Echelon Institute
 > Independent Canadian exam-preparation platform for water and wastewater operators.
 
-Echelon Institute provides course-specific practice questions, mock exams, flashcards, process guides, progress tracking, and AI-supported explanations. The first 15 questions on every course are available without an account or credit card. An Individual Exam Pass is a one-time payment for one selected course and 12 months of access.
+Echelon Institute provides course-specific practice questions, mock exams, flashcards, process guides, progress tracking, and AI-supported explanations. Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages without an account or credit card. An Individual Exam Pass is a one-time payment for one selected course and 12 months of access.
 
 Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO, MOECP, EOCP, WPI, or a provincial or US state certifying authority. Official authority documents control eligibility, exam content, permitted references, and certification decisions.
 

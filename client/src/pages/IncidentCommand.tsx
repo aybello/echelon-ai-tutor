@@ -20,7 +20,9 @@ import {
   Zap,
 } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
+import { EmailCapturePanel, FeedbackPanel } from "@/components/CommandFeedback";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import {
   ALL_SCENARIOS,
@@ -225,12 +227,14 @@ export default function IncidentCommand() {
   const [judgmentDegraded, setJudgmentDegraded] = useState(false);
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
+  const guestId = useMemo(() => getAnonymousAnalyticsId(), []);
 
   const { data: me } = trpc.auth.me.useQuery(undefined, { retry: false });
   const { data: accessIdentity } = trpc.access.auditMyEntitlements.useQuery(undefined, { retry: false });
   const isAuthenticated = Boolean(me || (accessIdentity && accessIdentity.identityType !== "anonymous"));
   const debriefMutation = trpc.incidentCommand.debrief.useMutation();
   const judgmentMutation = trpc.incidentCommand.evaluateJudgment.useMutation();
+  const journeyMutation = trpc.incidentCommand.trackJourney.useMutation();
   const queueDrillMutation = trpc.incidentCommand.queueDrill.useMutation({
     onSuccess: () => { setDrillQueued(true); },
   });
@@ -297,6 +301,11 @@ export default function IncidentCommand() {
     setJudgmentResponse("");
     setJudgmentDegraded(false);
     startTimeRef.current = Date.now();
+    journeyMutation.mutate({
+      event: "command_started",
+      scenarioId: s.id,
+      guestId,
+    });
   };
 
   const choose = (choice: Choice) => {
@@ -343,6 +352,12 @@ export default function IncidentCommand() {
 
   const continueScenario = async () => {
     if (!selectedChoice) return;
+    journeyMutation.mutate({
+      event: "command_step_completed",
+      scenarioId: selectedScenario.id,
+      guestId,
+      stepIndex,
+    });
     if (stepIndex < selectedScenario.steps.length - 1) {
       setStepIndex(index => index + 1);
       setSelectedChoice(null);
@@ -362,6 +377,7 @@ export default function IncidentCommand() {
       })),
       scenarioId: selectedScenario.id,
       elapsedSeconds: elapsed,
+      guestId,
     });
     setDebrief(result);
     setMode("debrief");
@@ -510,6 +526,11 @@ export default function IncidentCommand() {
               ))}
             </div>
           </section>
+
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            <FeedbackPanel scenarioId={selectedScenario.id} guestId={guestId} />
+            <EmailCapturePanel scenarioId={selectedScenario.id} guestId={guestId} />
+          </div>
 
           <div className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-teal-400/20 bg-teal-400/[.06] px-6 py-8 text-center">
             <RotateCcw className="h-8 w-8 text-teal-300" />

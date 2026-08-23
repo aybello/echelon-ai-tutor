@@ -5,7 +5,7 @@
 import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
@@ -368,7 +368,7 @@ export const adminRouter = router({
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
       return db
-        .select()
+        .select(purchaseReadColumns)
         .from(purchases)
         .where(ne(purchases.email, OWNER_EMAIL))
         .orderBy(desc(purchases.createdAt))
@@ -684,7 +684,7 @@ export const adminRouter = router({
 
       // ── Purchases ────────────────────────────────────────────────────────────
       const missingPurchases = await db
-        .select()
+        .select(purchaseReadColumns)
         .from(purchases)
         .where(
           sql`(${purchases.phone} IS NULL OR ${purchases.customerName} IS NULL) AND ${purchases.stripeSessionId} IS NOT NULL AND ${purchases.stripeSessionId} NOT LIKE 'manual_%'`

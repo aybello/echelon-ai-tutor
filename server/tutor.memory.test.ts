@@ -27,6 +27,7 @@ import { appRouter } from "./routers";
 function createPublicContext(): TrpcContext {
   return {
     user: null,
+    studentEmail: null,
     req: { protocol: "https", headers: {} } as TrpcContext["req"],
     res: { clearCookie: vi.fn() } as unknown as TrpcContext["res"],
   };
@@ -39,9 +40,15 @@ function createAuthContext(userId = 999999, email = "test@echelon.test"): TrpcCo
       openId: "test-open-id",
       name: "Test Student",
       email,
-      avatar: null,
       role: "user",
+      loginMethod: "manus",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      lastSignedIn: new Date(),
+      phone: null,
+      province: null,
     },
+    studentEmail: null,
     req: { protocol: "https", headers: {} } as TrpcContext["req"],
     res: { clearCookie: vi.fn() } as unknown as TrpcContext["res"],
   };
@@ -91,7 +98,7 @@ describe("tutor.saveSession", () => {
   it("rejects callers without paid course access", async () => {
     const caller = appRouter.createCaller(createPublicContext());
     await expect(caller.tutor.saveSession({
-      examType: "oit",
+      examType: "class1-water",
       messages: [{ role: "user", content: "test" }],
       sessionStartMs: Date.now(),
     })).rejects.toMatchObject({ code: "FORBIDDEN" });
