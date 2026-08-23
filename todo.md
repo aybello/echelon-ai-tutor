@@ -1702,3 +1702,13 @@
 
 ## PR 45 KPI and Teams Clarity Release — August 23
 - [x] Merge the approved no-migration PR 45, validate the integrated release, and deploy it
+
+## Mobile Experience Review — August 23
+- [x] Inspect the landing, pricing, study workspace, and Teams journeys at a phone viewport and report prioritized usability findings
+
+## Newly Available Repository Updates — August 23 (Follow-up)
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 46 Public 309A Preservation and Release — August 23
+- [x] Remove only PR 46’s 309A visibility/indexing changes, retain all other validated audit fixes, then merge and deploy
+- [x] Retain the existing compact horizontal quiz-control layout and update audit assertions to reflect the public 309A course decision

@@ -117,7 +117,10 @@ export function useQuestionBank(
   // ── Check localStorage cache first ───────────────────────────────────────
   // A free OIT practice request (15), flashcard request (50), and mock request
   // (30) must never reuse one another's cached response.
-  const cacheKey = previewSurface ? `${bankKey}::${previewSurface}` : bankKey;
+  // v2 retires the earlier Water OIT preview cache, which could contain a
+  // wastewater-module question even after the server-side preview was fixed.
+  const previewCacheVersion = bankKey === "oit" && previewSurface ? "::v2" : "";
+  const cacheKey = `${previewSurface ? `${bankKey}::${previewSurface}` : bankKey}${previewCacheVersion}`;
   const [cached] = useState<CachedBank | null>(() => getCached(cacheKey));
   const wroteCache = useRef(false);
 

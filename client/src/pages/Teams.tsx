@@ -56,6 +56,7 @@ export default function Teams() {
 
   const volumeTier = useMemo(() => getTeamVolumeTier(seats), [seats]);
   const seatPriceCents = useMemo(() => getTeamEffectiveSeatPriceCents(province, tier, seats), [province, seats]);
+  const effectiveDiscountPct = useMemo(() => getTeamEffectiveDiscountPct(province, tier, seats), [province, seats]);
   const totalCents = useMemo(() => getTeamTotalPriceCents(province, tier, seats), [province, seats]);
   const basePriceCents = 39900; // CA$399 unified price
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
@@ -197,7 +198,7 @@ export default function Teams() {
         <div className="bg-white rounded-2xl p-8 space-y-6 shadow-xl border border-gray-100">
           <div>
             <h2 className="text-xl font-bold mb-1 text-gray-900">Configure your plan</h2>
-            <p className="text-gray-500 text-sm">Volume discounts apply automatically.</p>
+            <p className="text-gray-500 text-sm">Graduated discounts apply only to seats inside each volume band.</p>
           </div>
 
           {/* Province */}
@@ -258,7 +259,7 @@ export default function Teams() {
           {/* Pricing display */}
           <div className="rounded-xl p-5 space-y-3" style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #ECFDF5 100%)", border: "1px solid #BFDBFE" }}>
             <div className="flex items-center justify-between">
-              <span className="text-gray-600 text-sm">Per operator licence / year</span>
+              <span className="text-gray-600 text-sm">Average per operator / year</span>
               <span className="text-2xl font-bold" style={{ color: "#0E7490" }}>{formatTeamPriceCAD(seatPriceCents)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-blue-100 pt-3">
@@ -268,7 +269,7 @@ export default function Teams() {
             {volumeTier.discountPct > 0 ? (
               <div className="flex items-center gap-2 text-xs font-semibold text-teal-700">
                 <span className="inline-block w-2 h-2 rounded-full bg-teal-500" />
-                {volumeTier.discountPct}% volume discount applied ({volumeTier.label})
+                Blended order discount: {effectiveDiscountPct}% · the last seat is in the {volumeTier.label} band
               </div>
             ) : (
               <div className="flex items-center gap-2 text-xs text-gray-400">
@@ -291,7 +292,7 @@ export default function Teams() {
                   }`}
                   style={t === volumeTier ? { background: "linear-gradient(135deg, #EFF6FF, #ECFDF5)", color: "#1E3A5F" } : {}}
                 >
-                  <span>{t.label}{t.discountPct > 0 ? ` (${t.discountPct}% off)` : ""}</span>
+                  <span>Seats {t.min}{t.max === null ? "+" : `–${t.max}`}{t.discountPct > 0 ? ` (${t.discountPct}% off those seats)` : " (list price)"}</span>
                   <span>{formatTeamPriceCAD(discountedCents)} / seat / yr</span>
                 </div>
               );

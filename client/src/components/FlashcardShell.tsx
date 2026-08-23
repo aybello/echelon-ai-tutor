@@ -382,10 +382,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <button onClick={handleStudyDeck} style={{ background: "#f1f5f9", color: "#0f172a", border: "none", borderRadius: "10px", padding: "14px 24px", fontSize: "15px", fontWeight: 600, cursor: "pointer" }}>
               Study This Deck Again
             </button>
-            <Link href={backPath}>
-              <button style={{ background: "transparent", color: "#64748b", border: "1px solid #e2e8f0", borderRadius: "10px", padding: "12px 24px", fontSize: "14px", cursor: "pointer", width: "100%" }}>
-                Back to {examName}
-              </button>
+            <Link href={backPath} style={{ display: "block", background: "transparent", color: "#64748b", border: "1px solid #e2e8f0", borderRadius: "10px", padding: "12px 24px", fontSize: "14px", cursor: "pointer", width: "100%", textDecoration: "none", boxSizing: "border-box" }}>
+              Back to {examName}
             </Link>
           </div>
         </div>
@@ -421,7 +419,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           .fc-header { padding: 12px 16px !important; }
           .fc-header-title { font-size: 14px !important; }
           .fc-header-sub { font-size: 11px !important; }
-          .fc-module-row { padding: 8px 16px !important; }
+          .fc-module-row { padding: 8px 16px !important; flex-wrap: nowrap !important; overflow-x: auto !important; scrollbar-width: thin; scrollbar-color: #94A3B8 transparent; -webkit-overflow-scrolling: touch; }
           .fc-progress-row { padding: 0 16px 6px !important; }
           .fc-card-area { padding: 12px 16px 6px !important; }
           .fc-actions-row { padding: 12px 16px 20px !important; }
@@ -431,10 +429,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       {/* Header */}
       <div className="fc-header" style={{ background: "#fff", borderBottom: "1px solid var(--echelon-line)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Link href={backPath}>
-            <button style={{ background: "#F8FAFC", border: "1px solid var(--echelon-line)", color: "#475569", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
-              Back
-            </button>
+          <Link href={backPath} style={{ background: "#F8FAFC", border: "1px solid var(--echelon-line)", color: "#475569", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer", textDecoration: "none" }}>
+            Back
           </Link>
           <div>
             <div className="fc-header-title" style={{ color: "var(--echelon-ink)", fontWeight: 750, fontSize: "16px" }}>Flashcards: {examName}</div>
@@ -463,23 +459,25 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
       {/* Module Filter */}
       {modules.length > 1 && (
-        <div className="fc-module-row" style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
-          <span
+        <div className="fc-module-row" role="group" aria-label="Filter flashcards by module" style={{ padding: "12px 24px", display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }}>
+          <button
+            type="button"
             className={"fc-mod-tab" + (selectedModule === null ? " active" : "")}
             style={{ background: selectedModule === null ? "#1E3A5F" : "#fff", color: selectedModule === null ? "#fff" : "#475569", borderColor: selectedModule === null ? "#1E3A5F" : "var(--echelon-line)" }}
             onClick={() => handleModuleChange(null)}
           >
             All Modules
-          </span>
+          </button>
           {modules.map(mod => (
-            <span
+            <button
+              type="button"
               key={mod}
               className={"fc-mod-tab" + (selectedModule === mod ? " active" : "")}
               style={{ background: selectedModule === mod ? "#1E3A5F" : "#fff", color: selectedModule === mod ? "#fff" : "#475569", borderColor: selectedModule === mod ? "#1E3A5F" : "var(--echelon-line)" }}
               onClick={() => handleModuleChange(mod)}
             >
               {mod}
-            </span>
+            </button>
           ))}
         </div>
       )}
@@ -610,10 +608,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               Unlock the full <strong>{examName}</strong> flashcard deck — {questions.length}+ concept flashcards with module filters and saved progress.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <Link href={productKey ? `/pricing#${productKey}` : "/pricing"}>
-                <button style={{ width: "100%", padding: "14px 20px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)", color: "#fff", fontSize: "15px", fontWeight: 700, cursor: "pointer" }}>
-                  Get Full Access →
-                </button>
+              <Link href={productKey ? `/pricing#${productKey}` : "/pricing"} style={{ display: "block", width: "100%", padding: "14px 20px", borderRadius: "12px", background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)", color: "#fff", fontSize: "15px", fontWeight: 700, cursor: "pointer", textDecoration: "none", boxSizing: "border-box" }}>
+                Get Full Access →
               </Link>
               {allowMorePreview && (
                 <button
@@ -623,10 +619,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                   🔄 Try {limit} More Free Cards
                 </button>
               )}
-              <Link href="/pricing">
-                <button style={{ width: "100%", padding: "10px 20px", borderRadius: "12px", border: "none", background: "transparent", color: "#94A3B8", fontSize: "12px", cursor: "pointer" }}>
-                  📋 View All Courses & Pricing
-                </button>
+              <Link href="/pricing" style={{ display: "block", width: "100%", padding: "10px 20px", borderRadius: "12px", background: "transparent", color: "#94A3B8", fontSize: "12px", cursor: "pointer", textDecoration: "none", boxSizing: "border-box" }}>
+                📋 View All Courses & Pricing
               </Link>
             </div>
           </div>

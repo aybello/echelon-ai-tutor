@@ -18,6 +18,7 @@ import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 import {
   getTeamTotalPriceCents,
   getTeamEffectiveSeatPriceCents,
+  getTeamEffectiveDiscountPct,
   getTeamSavingsCents,
 } from "@shared/teamPricing";
 import { TEAMS_ALL_ACCESS_PRICE_CENTS } from "@shared/pricingCatalogue";
@@ -1076,6 +1077,7 @@ function TeamSeatCalculator() {
   // Stripe checkout can never quote three different numbers again.
   const totalCents = getTeamTotalPriceCents("ontario", "all-access", seats);
   const perSeatAvg = getTeamEffectiveSeatPriceCents("ontario", "all-access", seats);
+  const effectiveDiscountPct = getTeamEffectiveDiscountPct("ontario", "all-access", seats);
   const savings = getTeamSavingsCents("ontario", "all-access", seats);
   const fmt = (c: number) => `CA$${(c / 100).toLocaleString("en-CA", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
 
@@ -1105,7 +1107,7 @@ function TeamSeatCalculator() {
 
       <div style={{ textAlign: "center", borderTop: "1px solid rgba(148,163,184,0.25)", paddingTop: 22, marginBottom: 18 }}>
         <h3 style={{ fontSize: 20, margin: "0 0 5px", fontWeight: 850 }}>Calculate Teams All-Access</h3>
-        <p style={{ margin: 0, color: "#94A3B8", fontSize: 13 }}>Volume discounts are applied automatically.</p>
+        <p style={{ margin: 0, color: "#94A3B8", fontSize: 13 }}>Graduated discounts apply only to seats inside each volume band.</p>
       </div>
 
       {/* Seat slider */}
@@ -1131,7 +1133,7 @@ function TeamSeatCalculator() {
       {/* Pricing result */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, maxWidth: 520, margin: "0 auto 20px" }}>
         <div style={{ padding: "14px 16px", borderRadius: 12, background: "rgba(255,255,255,0.06)", textAlign: "center" }}>
-          <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, marginBottom: 4 }}>Per Operator</div>
+          <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, marginBottom: 4 }}>Average Per Operator</div>
           <div style={{ fontSize: 22, fontWeight: 900, color: "#fff" }}>{fmt(perSeatAvg)}</div>
           <div style={{ fontSize: 11, color: "#64748B" }}>/year</div>
         </div>
@@ -1149,9 +1151,15 @@ function TeamSeatCalculator() {
         )}
       </div>
 
+      {effectiveDiscountPct > 0 && (
+        <p style={{ margin: "-8px auto 18px", maxWidth: 560, color: "#CBD5E1", fontSize: 12, lineHeight: 1.55, textAlign: "center" }}>
+          Your blended order discount is {effectiveDiscountPct}%. Earlier seats keep their original band price as more operators are added.
+        </p>
+      )}
+
       {/* Volume bands */}
       <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
-        {["1–9: list price", "10–24: 10% off", "25–49: 15% off", "50+: 20% off"].map((text) => (
+        {["Seats 1–9: list price", "Seats 10–24: 10% off those seats", "Seats 25–49: 15% off those seats", "Seats 50+: 20% off those seats"].map((text) => (
           <span key={text} style={{ padding: "6px 10px", borderRadius: 20, background: "rgba(255,255,255,0.08)", color: "#E2E8F0", fontSize: 11, fontWeight: 700 }}>{text}</span>
         ))}
       </div>
@@ -1161,7 +1169,7 @@ function TeamSeatCalculator() {
         <p style={{ margin: "0 0 16px", color: "#94A3B8", fontSize: 13 }}>
           Need targeted exam prep instead? <strong style={{ color: "#E2E8F0" }}>Course Passes</strong> start at CA$29/operator for 3 months.
         </p>
-        <Link href="/teams"><button style={{ cursor: "pointer", fontFamily: "inherit", border: "none", borderRadius: 10, padding: "13px 22px", background: "linear-gradient(135deg, #2563EB, #14B8A6)", color: "#fff", fontSize: 14, fontWeight: 800 }}>Build a Team Plan →</button></Link>
+        <Link href="/teams" style={{ display: "inline-block", cursor: "pointer", fontFamily: "inherit", borderRadius: 10, padding: "13px 22px", background: "linear-gradient(135deg, #2563EB, #14B8A6)", color: "#fff", fontSize: 14, fontWeight: 800, textDecoration: "none" }}>Build a Team Plan →</Link>
       </div>
     </section>
   );
@@ -1529,15 +1537,8 @@ export default function Pricing() {
                         <li style={{ color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards &amp; Mock Exams</li>
                       </ul>
                       {isActivePlan ? (
-                        <Link href="/account">
-                          <button style={{
-                            padding: "11px 0", borderRadius: 10,
-                            background: "linear-gradient(135deg, #16A34A, #15803D)",
-                            color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
-                            cursor: "pointer", fontFamily: "inherit", width: "100%", marginTop: "auto",
-                          }}>
-                            Manage Subscription →
-                          </button>
+                        <Link href="/account" style={{ display: "block", padding: "11px 0", borderRadius: 10, background: "linear-gradient(135deg, #16A34A, #15803D)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", width: "100%", marginTop: "auto", textDecoration: "none", textAlign: "center" }}>
+                          Manage Subscription →
                         </Link>
                       ) : (
                        <SubscriptionCheckoutButton
@@ -2063,16 +2064,8 @@ function ProductCard({
           currency={isUS ? "usd" : "cad"}
         />
         {product.available && QUIZ_ROUTES[product.key] && (
-          <Link href={QUIZ_ROUTES[product.key]}>
-            <button style={{
-              width: "100%", padding: "9px",
-              background: "transparent",
-              color: "#64748B", border: "1px solid #E2E8F0",
-              borderRadius: 10, fontSize: 12, fontWeight: 600,
-              cursor: "pointer", fontFamily: "inherit",
-            }}>
-              Try Free →
-            </button>
+          <Link href={QUIZ_ROUTES[product.key]} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+            Try Free →
           </Link>
         )}
         {FLASHCARD_ROUTES[product.key] && (

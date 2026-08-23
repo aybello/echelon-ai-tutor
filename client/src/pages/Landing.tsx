@@ -16,7 +16,7 @@ import { trpc } from "@/lib/trpc";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { FadeUp, FadeIn, SlideLeft, StaggerContainer, StaggerItem } from "@/components/animations";
+import { FadeUp, FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import React from "react";
@@ -132,19 +132,7 @@ function BlogPreviewSection() {
         </div>
 
         <div style={{ textAlign: "center" }}>
-          <Link href="/blog">
-            <button style={{
-              background: "#1D4ED8",
-              color: "#FFFFFF",
-              border: "none",
-              borderRadius: 8,
-              padding: "12px 28px",
-              fontSize: 15,
-              fontWeight: 600,
-              cursor: "pointer",
-              fontFamily: "Sora, sans-serif",
-            }}>View All Articles</button>
-          </Link>
+          <Link href="/blog" style={{ display: "inline-block", background: "#1D4ED8", color: "#FFFFFF", borderRadius: 8, padding: "12px 28px", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "Sora, sans-serif", textDecoration: "none" }}>View All Articles</Link>
         </div>
       </div>
     </section>
@@ -1130,7 +1118,8 @@ function CourseCard({ course }: { course: CourseType }) {
     course.code === "WQA" ? "/wqa" : "/quiz"
   );
   const isWpiCourse = (course as any).province === "wpi";
-  const subFromPrice = isWpiCourse ? "from CA$149" : "from CA$49";
+  const passPrice = Number((course as any).price);
+  const passPriceLabel = Number.isFinite(passPrice) ? `CA$${passPrice}` : "See pricing";
   const pricingHref = isWpiCourse ? "/pricing?tab=western" : "/pricing";
   return (
     <>
@@ -1219,7 +1208,7 @@ function CourseCard({ course }: { course: CourseType }) {
             }}>
               <div>
                 <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included with Exam Pass</span>
-                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>{subFromPrice}</span>
+                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>{passPriceLabel}</span>
               </div>
               {!course.comingSoon && (
                 <span style={{
@@ -1249,28 +1238,12 @@ function CourseCard({ course }: { course: CourseType }) {
             </button>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <Link href={quizHref}>
-                <button className="btn-pulse" style={{
-                  width: "100%", padding: "12px",
-                  background: course.color,
-                  color: "#fff", border: "none", borderRadius: 10,
-                  fontSize: 13, fontWeight: 700, cursor: "pointer",
-                  fontFamily: "inherit",
-                }}>
-                  Start Studying →
-                </button>
+              <Link href={quizHref} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                Start Studying →
               </Link>
               {(course as any).productKey && (
-                <Link href={pricingHref}>
-                  <button style={{
-                    width: "100%", padding: "9px",
-                    background: "transparent",
-                    color: "#64748B", border: "1px solid #E2E8F0",
-                    borderRadius: 10, fontSize: 12, fontWeight: 600,
-                    cursor: "pointer", fontFamily: "inherit",
-                  }}>
-                    View Plans →
-                  </button>
+                <Link href={pricingHref} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                  View Plans →
                 </Link>
               )}
             </div>
@@ -1406,8 +1379,6 @@ export default function Landing() {
           .contact-info-row { flex-direction: row !important; flex-wrap: wrap !important; gap: 12px !important; }
           .contact-info-card { flex: 1 1 140px !important; }
           .contact-form-grid { grid-template-columns: 1fr !important; }
-          .landing-whats-new { flex-direction: column !important; gap: 12px !important; }
-          .landing-whats-new-btn { width: 100% !important; text-align: center !important; }
           .landing-teams-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .landing-course-section { padding: 48px 16px !important; }
           .landing-hero-section { padding: 28px 16px 30px !important; }
@@ -1553,61 +1524,6 @@ export default function Landing() {
           </motion.p>
         </div>
       </section>
-
-      {/* ── Teams Promo Banner ── */}
-      <SlideLeft delay={0.1}>
-      <div style={{ padding: "12px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
-        <div
-          className="landing-whats-new"
-          style={{
-            background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
-            borderRadius: 16,
-            padding: "16px 24px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 16,
-            flexWrap: "wrap" as const,
-            boxShadow: "0 4px 24px rgba(14,116,144,0.3)",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" as const }}>
-              <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" as const }}>ECHELON FOR TEAMS</span>
-              <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
-                🏗️ Train your entire team under one plan — dashboards, progress tracking &amp; volume pricing
-              </span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>Trusted by</span>
-              <span style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.1)", borderRadius: 20, padding: "3px 10px 3px 6px", border: "1px solid rgba(255,255,255,0.2)" }}>
-                <span style={{ fontSize: 9, fontWeight: 800, color: "#93C5FD", background: "rgba(147,197,253,0.2)", borderRadius: 4, padding: "2px 5px" }}>UK</span>
-                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>Utilities Kingston</span>
-              </span>
-            </div>
-          </div>
-          <a
-            href="/teams"
-            className="landing-whats-new-btn"
-            style={{
-              background: "rgba(255,255,255,0.15)",
-              border: "1.5px solid rgba(255,255,255,0.4)",
-              borderRadius: 10,
-              padding: "8px 18px",
-              fontSize: 13,
-              fontWeight: 700,
-              color: "#fff",
-              textDecoration: "none",
-              whiteSpace: "nowrap" as const,
-              flexShrink: 0,
-            }}
-          >
-            View Team Plans →
-          </a>
-        </div>
-      </div>
-      </SlideLeft>
-
 
       {/* ── Course Catalogue ── */}
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
@@ -1881,21 +1797,8 @@ export default function Landing() {
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto 32px", lineHeight: 1.75 }}>
               Echelon Institute was built by an Environmental Engineer (EIT) who saw first-hand that Canada's water and wastewater operators were studying for technically demanding provincial exams with resources that hadn't evolved in decades. Every question is mapped to each province's regulatory framework. Every module is built for understanding, not memorization.
             </p>
-            <Link href="/about">
-              <button style={{
-                padding: "12px 28px",
-                borderRadius: 10,
-                border: "1.5px solid rgba(96,165,250,0.4)",
-                background: "rgba(96,165,250,0.08)",
-                color: "#60A5FA",
-                fontSize: 14,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                letterSpacing: "0.01em",
-              }}>
-                Read our full story, values &amp; changelog →
-              </button>
+            <Link href="/about" style={{ display: "inline-block", padding: "12px 28px", borderRadius: 10, border: "1.5px solid rgba(96,165,250,0.4)", background: "rgba(96,165,250,0.08)", color: "#60A5FA", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", letterSpacing: "0.01em", textDecoration: "none" }}>
+              Read our full story, values &amp; changelog →
             </Link>
           </div>
           </FadeUp>
@@ -1944,18 +1847,8 @@ export default function Landing() {
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Provinces covered</div>
               </div>
             </div>
-            <a href="/wpi" style={{ textDecoration: "none" }}>
-              <button
-                style={{
-                  padding: "12px 28px", borderRadius: 10,
-                  background: "linear-gradient(135deg, #0891B2, #7C3AED)",
-                  color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
-                  cursor: "pointer", fontFamily: "inherit",
-                  boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
-                }}
-              >
-                Explore WPI Courses →
-              </button>
+            <a href="/wpi" style={{ display: "inline-block", textDecoration: "none", padding: "12px 28px", borderRadius: 10, background: "linear-gradient(135deg, #0891B2, #7C3AED)", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(8,145,178,0.3)" }}>
+              Explore WPI Courses →
             </a>
           </div>
 
@@ -1965,7 +1858,7 @@ export default function Landing() {
               {
                 flag: "🏔️",
                 province: "British Columbia",
-                certBody: "MOECP / OWWCO",
+                certBody: "EOCP",
                 operators: "~4,200 operators",
                 color: "#0891B2",
                 colorBg: "rgba(8,145,178,0.1)",
@@ -2022,33 +1915,6 @@ export default function Landing() {
 
         </div>
       </section>
-
-      {/* ── CTA Banner ── */}
-      <FadeUp>
-      <section style={{
-        background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-        padding: "64px 24px",
-        textAlign: "center",
-      }}>
-        <h2 style={{ fontSize: "clamp(20px, 3vw, 32px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 12px 0", letterSpacing: "-0.02em" }}>
-          Experience the Complete OIT Study System Free
-        </h2>
-        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", margin: "0 0 32px 0", maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>
-          Try 15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages. No account or credit card required.
-        </p>
-        <Link href="/quiz">
-          <button className="btn-pulse" style={{
-            padding: "16px 40px", borderRadius: 12,
-            background: "#FFFFFF", color: "#1D4ED8",
-            border: "none", fontSize: 16, fontWeight: 800,
-            cursor: "pointer", fontFamily: "inherit",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
-          }}>
-            Start the OIT Preview →
-          </button>
-        </Link>
-      </section>
-      </FadeUp>
 
       {/* ── Teams / Enterprise Section ── */}
       <FadeUp>
@@ -2119,33 +1985,8 @@ export default function Landing() {
               </div>
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-                <Link href="/teams">
-                  <button style={{
-                    padding: "14px 32px",
-                    borderRadius: 10,
-                    background: "#10B981",
-                    color: "#FFFFFF",
-                    border: "none",
-                    fontSize: 15,
-                    fontWeight: 800,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    boxShadow: "0 4px 20px rgba(16,185,129,0.35)",
-                  }}>View Team Plans →</button>
-                </Link>
-                <Link href="/account">
-                  <button style={{
-                    padding: "14px 28px",
-                    borderRadius: 10,
-                    background: "transparent",
-                    color: "rgba(255,255,255,0.7)",
-                    border: "1.5px solid rgba(255,255,255,0.2)",
-                    fontSize: 15,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                  }}>Manager Sign In</button>
-                </Link>
+                <Link href="/teams" style={{ display: "inline-block", padding: "14px 32px", borderRadius: 10, background: "#10B981", color: "#FFFFFF", fontSize: 15, fontWeight: 800, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(16,185,129,0.35)", textDecoration: "none" }}>View Team Plans →</Link>
+                <Link href="/account" style={{ display: "inline-block", padding: "14px 28px", borderRadius: 10, background: "transparent", color: "rgba(255,255,255,0.7)", border: "1.5px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>Manager Sign In</Link>
               </div>
             </div>
 
