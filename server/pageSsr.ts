@@ -333,7 +333,13 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Every paid pass includes adaptive practice questions organized by module, digital flashcards, study notes, timed mock exams, the AI Tutor, process guides, and score history tracking.</p>
 
       <h2>Team Plans for Utilities and Municipalities</h2>
-      <p>Echelon offers bulk seat pricing for utilities, municipalities, training organizations, and Indigenous water authorities. Team plans include a shared admin dashboard, usage reporting, and volume discounts. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> to discuss your organization's needs.</p>
+      <p>Echelon offers two team models for utilities, municipalities, training organizations, and Indigenous water authorities. Both include named-operator accounts, a shared manager dashboard, progress reporting, and volume discounts.</p>
+
+      <h3>Teams Course Pass</h3>
+      <p>Assign one certification course to one named operator for 3, 6, or 12 months. Course Passes are one-time purchases with no five-seat minimum and start at CA$29 per operator. They are best for a specific upcoming exam or a cohort studying different certifications.</p>
+
+      <h3>Teams All-Access</h3>
+      <p>Give each named operator every course, stream, and certification level for 12 months. Teams All-Access costs CA$399 per operator per year, requires at least five operators, and is best for ongoing workforce development. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> to discuss your organization's needs.</p>
 
       <h2>Free Access</h2>
       <p>Every course includes 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Visit <a href="${SITE_URL}/">the homepage</a> to begin immediately.</p>

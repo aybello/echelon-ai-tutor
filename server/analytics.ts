@@ -88,13 +88,12 @@ export async function persistAnalyticsEvent(payload: AnalyticsEvent): Promise<vo
       eventName: payload.event,
       occurredAt: new Date(payload.ts),
       userId: payload.userId ?? null,
-      emailHash: payload.identityHash && /^[a-f0-9]{64}$/.test(payload.identityHash)
+      emailHash: payload.email ? hashAnalyticsEmail(payload.email) : null,
+      anonymousHash: payload.identityHash && /^[a-f0-9]{64}$/.test(payload.identityHash)
         ? payload.identityHash
-        : payload.email
-          ? hashAnalyticsEmail(payload.email)
-          : payload.anonymousId
-            ? hashAnalyticsAnonymousId(payload.anonymousId)
-            : null,
+        : payload.anonymousId
+          ? hashAnalyticsAnonymousId(payload.anonymousId)
+          : null,
       examType: payload.examType ?? null,
       productKey: payload.productKey ?? null,
       orgId: payload.orgId ?? null,

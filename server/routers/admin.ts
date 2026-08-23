@@ -3,6 +3,7 @@
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
 import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
+import { TRPCError } from "@trpc/server";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
@@ -16,7 +17,13 @@ import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
-import { analyticsIdentity, masteryGain, medianTimeToFirstQuizMinutes, percentage } from "../productKpis";
+import {
+  buildJourneyIdentityResolver,
+  cohortConversion,
+  comparableQuizGain,
+  medianTimeToFirstQuizMinutes,
+  percentage,
+} from "../productKpis";
 
 const OWNER_EMAIL = "belllo.ayoola@gmail.com";
 
@@ -42,6 +49,7 @@ export const adminRouter = router({
         occurredAt: productAnalyticsEvents.occurredAt,
         userId: productAnalyticsEvents.userId,
         emailHash: productAnalyticsEvents.emailHash,
+        anonymousHash: productAnalyticsEvents.anonymousHash,
         examType: productAnalyticsEvents.examType,
         metadata: productAnalyticsEvents.metadata,
       }).from(productAnalyticsEvents)
@@ -86,31 +94,32 @@ export const adminRouter = router({
       eventCounts.set(event.eventName, (eventCounts.get(event.eventName) ?? 0) + 1);
     }
     const eventCount = (name: string) => eventCounts.get(name) ?? 0;
-    const identitiesFor = (name: string) => new Set(
-      events
-        .filter(event => event.eventName === name)
-        .map(analyticsIdentity)
-        .filter((identity): identity is string => Boolean(identity)),
-    );
-    const signupIdentities = identitiesFor("signup");
-    const activationIdentities = identitiesFor("access_activated");
-    const pricingIdentities = identitiesFor("pricing_viewed");
-    const checkoutIdentities = identitiesFor("checkout_completed");
-    const quizStartIdentities = identitiesFor("quiz_started");
-    const quizCompletionIdentities = identitiesFor("quiz_completed");
-    const activatedSignupCohort = Array.from(signupIdentities)
-      .filter(identity => activationIdentities.has(identity)).length;
-
     const learningEvents = new Set([
       "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
       "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
     ]);
+    const resolveJourneyIdentity = buildJourneyIdentityResolver(events);
     const weeklyActiveLearners = new Set(
       events
         .filter(event => event.occurredAt >= since7 && learningEvents.has(event.eventName))
-        .map(analyticsIdentity)
+        .map(resolveJourneyIdentity)
         .filter((identity): identity is string => Boolean(identity)),
     ).size;
+    const pricingConversion = cohortConversion(
+      events,
+      new Set(["pricing_viewed"]),
+      new Set(["checkout_completed"]),
+    );
+    const learningActivation = cohortConversion(
+      events,
+      new Set(["access_activated"]),
+      learningEvents,
+    );
+    const quizCompletion = cohortConversion(
+      events,
+      new Set(["quiz_started"]),
+      new Set(["quiz_completed"]),
+    );
 
     const passed = outcomes.filter(outcome => outcome.result === "passed");
     const failed = outcomes.filter(outcome => outcome.result === "failed");
@@ -129,7 +138,7 @@ export const adminRouter = router({
     const coursePassActivated = Number(coursePassSeats?.activated ?? 0);
     const totalTeamCapacity = seats + coursePassTotal;
     const totalTeamAllocated = assigned + coursePassAllocated;
-    const mastery = masteryGain(events);
+    const quizImprovement = comparableQuizGain(events);
 
     return {
       periodDays: 30,
@@ -147,8 +156,8 @@ export const adminRouter = router({
       engagement: {
         weeklyActiveLearners,
         medianMinutesToFirstQuiz: medianTimeToFirstQuizMinutes(events),
-        masteryGainPercentagePoints: mastery.percentagePoints,
-        masteryGainSampleSize: mastery.sampleSize,
+        quizImprovementPercentagePoints: quizImprovement.percentagePoints,
+        quizImprovementSampleSize: quizImprovement.sampleSize,
       },
       teams: {
         assignedSeats: totalTeamAllocated,
@@ -177,9 +186,15 @@ export const adminRouter = router({
         averageReadinessFailed: readinessAverage(failed),
       },
       commercial: {
-        pricingToCheckoutRate: percentage(checkoutIdentities.size, pricingIdentities.size),
-        activationRate: percentage(activatedSignupCohort, signupIdentities.size),
-        quizCompletionRate: percentage(quizCompletionIdentities.size, quizStartIdentities.size),
+        pricingToCheckoutRate: pricingConversion.rate,
+        pricingCohortSize: pricingConversion.cohortSize,
+        attributedCheckouts: pricingConversion.converted,
+        learningActivationRate: learningActivation.rate,
+        accessCohortSize: learningActivation.cohortSize,
+        learningActivated: learningActivation.converted,
+        quizCompletionRate: quizCompletion.rate,
+        quizStarterCohortSize: quizCompletion.cohortSize,
+        quizCompleters: quizCompletion.converted,
         refundRate: percentage(refundedPurchases, recentPurchases.length),
         renewals: eventCount("subscription_renewed"),
         cancellations: eventCount("subscription_cancelled"),
@@ -271,11 +286,25 @@ export const adminRouter = router({
       if (!db) throw new Error("Database unavailable");
 
       const [existing] = await db
-        .select({ bankKey: questions.bankKey })
+        .select({
+          bankKey: questions.bankKey,
+          publicationPolicy: questionBankMeta.publicationPolicy,
+        })
         .from(questions)
+        .innerJoin(questionBankMeta, eq(questionBankMeta.bankKey, questions.bankKey))
         .where(eq(questions.id, input.id))
         .limit(1);
       if (!existing) throw new Error("Question not found");
+      if (
+        input.reviewStatus === "approved"
+        && existing.publicationPolicy === "approved_only"
+        && !input.blueprintObjective
+      ) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Approved questions in approved-only banks require a blueprint objective.",
+        });
+      }
 
       const reviewer = normalizeEmail(ctx.user.email ?? "") || ctx.user.name || `user:${ctx.user.id}`;
       const reviewed = input.reviewStatus !== "unreviewed";
@@ -293,17 +322,23 @@ export const adminRouter = router({
           })
           .where(eq(questions.id, input.id));
 
+        const [inventory] = await tx
+          .select({ total: count() })
+          .from(questions)
+          .where(and(
+            eq(questions.bankKey, existing.bankKey),
+            existing.publicationPolicy === "approved_only"
+              ? eq(questions.reviewStatus, "approved")
+              : ne(questions.reviewStatus, "rejected"),
+          ));
+
         // Force every cached learner bank to refresh after a review decision,
-        // and keep the advertised inventory aligned with visible questions.
+        // and keep the advertised inventory aligned with its publication policy.
         await tx
           .update(questionBankMeta)
           .set({
             contentVersion: sql`${questionBankMeta.contentVersion} + 1`,
-            totalQuestions: sql`(
-              SELECT COUNT(*) FROM ${questions}
-              WHERE ${questions.bankKey} = ${existing.bankKey}
-                AND ${questions.reviewStatus} <> 'rejected'
-            )`,
+            totalQuestions: Number(inventory?.total ?? 0),
           })
           .where(eq(questionBankMeta.bankKey, existing.bankKey));
       });

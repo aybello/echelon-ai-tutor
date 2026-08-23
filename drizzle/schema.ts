@@ -685,6 +685,14 @@ export const questionBankMeta = mysqlTable("question_bank_meta", {
   minCalcPerMock: int("minCalcPerMock"),
   /** Cognitive level split target: percentage of recall questions (remainder = application) */
   recallTargetPct: int("recallTargetPct"),
+  /**
+   * Legacy banks remain usable while their historical inventory is reviewed.
+   * Every newly-created bank defaults to approved-only publication.
+   */
+  publicationPolicy: mysqlEnum("publicationPolicy", [
+    "legacy_non_rejected",
+    "approved_only",
+  ]).default("approved_only").notNull(),
 });
 
 export type QuestionBankMetaRow = typeof questionBankMeta.$inferSelect;
@@ -912,6 +920,8 @@ export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
   occurredAt: timestamp("occurredAt").defaultNow().notNull(),
   userId: varchar("userId", { length: 64 }),
   emailHash: varchar("emailHash", { length: 64 }),
+  /** Browser journey identity, stored separately so signup/login does not sever attribution. */
+  anonymousHash: varchar("anonymousHash", { length: 64 }),
   examType: varchar("examType", { length: 64 }),
   productKey: varchar("productKey", { length: 64 }),
   orgId: int("orgId"),
@@ -919,6 +929,7 @@ export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
 }, (table) => [
   index("analytics_event_time_idx").on(table.eventName, table.occurredAt),
   index("analytics_email_time_idx").on(table.emailHash, table.occurredAt),
+  index("analytics_anonymous_time_idx").on(table.anonymousHash, table.occurredAt),
   index("analytics_org_time_idx").on(table.orgId, table.occurredAt),
 ]);
 export type ProductAnalyticsEvent = typeof productAnalyticsEvents.$inferSelect;

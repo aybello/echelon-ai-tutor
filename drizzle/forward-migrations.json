@@ -48,6 +48,13 @@
       "file": "drizzle/0056_certification_bank_governance.sql",
       "sha256": "43df8406a00f5678956dbc16104ac64933326ed6e7c4e7c5ff9afc2702bb43f4",
       "proposedOnly": true
+    },
+    {
+      "version": 57,
+      "tag": "0057_governance_and_journey_identity",
+      "file": "drizzle/0057_governance_and_journey_identity.sql",
+      "sha256": "f8a2b696a5977093bbd18c579a5c8d3a49d8434dca484f06075d5b7693cb7236",
+      "proposedOnly": true
     }
   ]
 }
