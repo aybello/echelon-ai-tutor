@@ -66,6 +66,18 @@ async function startServer() {
     },
   }));
 
+  // The 309A workspace is a private direct-link demonstration. Keep the route
+  // functional for invited viewers while preventing search engines from
+  // treating the unfinished course as a public Echelon offering.
+  app.use([
+    "/electrician-309a",
+    "/electrician-309a-mock",
+    "/electrician-309a-flashcards",
+  ], (_req, res, next) => {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    next();
+  });
+
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
 

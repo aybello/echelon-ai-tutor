@@ -64,6 +64,12 @@ describe("SEO and geographic landing-page contract", () => {
     expect(robots).toContain("Disallow: /team$");
     expect(robots).not.toContain("Disallow: /teams");
     expect(robots).toContain("Disallow: /quiz");
+    expect(robots).toContain("Disallow: /electrician-309a");
+
+    const publicPaths = new Set(STATIC_PAGE_META.map(meta => meta.path));
+    expect(publicPaths.has("/electrician-309a")).toBe(false);
+    expect(publicPaths.has("/electrician-309a-mock")).toBe(false);
+    expect(publicPaths.has("/electrician-309a-flashcards")).toBe(false);
   });
 
   it("lets homepage visitors choose the correct free OIT preview", () => {
@@ -90,7 +96,8 @@ describe("SEO and geographic landing-page contract", () => {
     );
     expect(landing).toContain("Illustrative dashboard · sample data");
     expect(landing).toContain("Example Municipality");
-    expect(landing).not.toContain('>from {subFromPrice}</span>');
+    expect(landing).toContain("{passPriceLabel}");
+    expect(landing).not.toContain('from CA$49');
     expect(landing).not.toContain('{ name: "Alex Thompson"');
   });
 

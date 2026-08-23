@@ -236,6 +236,8 @@ export interface MockExamConfig {
   metaDescription?: string;
   /** SEO keywords */
   metaKeywords?: string;
+  /** Keep private demonstration or utility exams out of search indexes. */
+  noindex?: boolean;
   /** Number of questions to draw per exam session */
   examQuestions: number;
   /** Duration in seconds */
@@ -370,6 +372,7 @@ export default function MockExamShell({
   badge,
   metaDescription,
   metaKeywords,
+  noindex = false,
   examQuestions: EXAM_QUESTIONS,
   examDuration: EXAM_DURATION,
   passThreshold,
@@ -430,6 +433,7 @@ export default function MockExamShell({
     description: metaDescription ?? `${title} — ${EXAM_QUESTIONS} questions, ${Math.round(EXAM_DURATION / 3600)}-hour timer, ${Math.round(passThreshold * 100)}% pass threshold.`,
     keywords: metaKeywords,
     path: currentPath,
+    noindex,
   });
 
   // ── Stream selection state (only used when streamOptions is provided) ────────

@@ -33,6 +33,7 @@ export default function Electrician309AMockExam() {
     title="Ontario 309A Electrician Mock Exam"
     badge="ONTARIO 309A · CONSTRUCTION ELECTRICIAN"
     metaDescription="Free 100-question Ontario 309A Construction Electrician practice mock exam based on the current official Red Seal weighting."
+    noindex
     examQuestions={100}
     examDuration={4 * 60 * 60}
     passThreshold={0.7}

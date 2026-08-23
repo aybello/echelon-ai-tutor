@@ -401,21 +401,8 @@ export default function QuizShell({
                 🔄 New Session
               </button>
               {mockExamHref && (
-                <Link href={mockExamHref} style={{ flex: 1 }}>
-                  <button style={{
-                    width: "100%",
-                    padding: "14px 20px",
-                    borderRadius: 12,
-                    background: "#fff",
-                    color: "#0369A1",
-                    fontWeight: 700,
-                    fontSize: 15,
-                    border: "1.5px solid #0369A1",
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                  }}>
-                    📝 Mock Exam
-                  </button>
+                <Link href={mockExamHref} style={{ flex: 1, width: "100%", padding: "14px 20px", borderRadius: 12, background: "#fff", color: "#0369A1", fontWeight: 700, fontSize: 15, border: "1.5px solid #0369A1", cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                  📝 Mock Exam
                 </Link>
               )}
             </div>
@@ -443,8 +430,8 @@ export default function QuizShell({
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
         /* Keep study controls visible without allowing the header to consume the question viewport. */
-        .qs-module-pills-row { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 3px; }
-        .qs-module-pills-row::-webkit-scrollbar, .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
+        .qs-module-pills-row { flex-wrap: wrap !important; overflow-x: visible !important; padding-bottom: 3px; }
+        .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
         .qs-mode-bar-wrap { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding-bottom: 3px; scrollbar-width: none; }
         .qs-mode-card { min-width: 0 !important; padding: 6px 10px !important; }
         .qs-mode-card-desc { display: none; }
@@ -568,20 +555,8 @@ export default function QuizShell({
                 </button>
               )}
               {headerActions.map(a => (
-                <Link key={a.href} href={a.href}>
-                  <button style={{
-                    padding: "5px 10px",
-                    background: "rgba(255,255,255,0.15)",
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    borderRadius: 8,
-                    fontSize: 11,
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                  }}>
-                    {a.label}
-                  </button>
+                <Link key={a.href} href={a.href} style={{ padding: "5px 10px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+                  {a.label}
                 </Link>
               ))}
             </div>
@@ -630,7 +605,7 @@ export default function QuizShell({
 
           {/* Module pills + Calc Only — scrollable row on mobile via .qs-module-pills-row CSS */}
           {(modules.length > 0 || hasCalcOnly) && (
-            <div className="qs-module-pills-row" style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
+            <div className="qs-module-pills-row" role="group" aria-label="Filter questions by module" style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
               {modules.length > 0 && (
                 <button
                   onClick={() => onModuleChange(null)}

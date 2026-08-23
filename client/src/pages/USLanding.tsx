@@ -40,12 +40,6 @@ const FEATURES = [
   { icon: "📊", title: "Progress Dashboard", body: "Track your accuracy by module, monitor your study streak, and see exactly where you stand before exam day." },
 ];
 
-const TESTIMONIALS = [
-  { quote: "Passed my Class II Water Treatment exam on the first try. The AI explanations made the hard math questions click.", name: "Marcus T.", role: "Water Treatment Operator, Iowa" },
-  { quote: "The mock exams are spot-on for the WPI format. I felt completely prepared walking into the testing center.", name: "Sandra K.", role: "Wastewater Treatment Operator, Colorado" },
-  { quote: "Finally a study tool that covers all four streams. I used it for both my collection and distribution upgrades.", name: "Derek M.", role: "Utility Operator, Oregon" },
-];
-
 export default function USLanding() {
   usePageMeta({
     title: "US Water Operator Exam Prep — ABC/WPI Certification | Echelon Institute",
@@ -76,10 +70,8 @@ export default function USLanding() {
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <Link href="/us/courses"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>All Courses</span></Link>
           <Link href="/pricing"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Pricing</span></Link>
-          <Link href="/us/courses">
-            <button style={{ padding: "8px 18px", borderRadius: 8, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", border: "none", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
-              Start Free →
-            </button>
+          <Link href="/us/courses" style={{ padding: "8px 18px", borderRadius: 8, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+            Start Free →
           </Link>
         </div>
       </nav>
@@ -104,15 +96,11 @@ export default function USLanding() {
             AI-powered exam prep for US water and wastewater operators. Aligned to the official 2025 WPI Need-to-Know Criteria for all four streams and all four class levels.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }} style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/us/courses">
-              <button className="btn-pulse" style={{ padding: "14px 32px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", border: "none", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)" }}>
-                Start Studying Free →
-              </button>
+            <Link href="/us/courses" className="btn-pulse" style={{ padding: "14px 32px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
+              Start Studying Free →
             </Link>
-            <Link href="/us/states">
-              <button style={{ padding: "14px 32px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
-                Find Your State
-              </button>
+            <Link href="/us/states" style={{ padding: "14px 32px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+              Find Your State
             </Link>
           </motion.div>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.9 }} style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.5)", marginTop: 12 }}>
@@ -225,10 +213,8 @@ export default function USLanding() {
                 ))}
               </div>
               <div style={{ textAlign: "center" }}>
-                <Link href="/us/states">
-                  <button style={{ padding: "10px 24px", borderRadius: 8, background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
-                    Check your state coverage →
-                  </button>
+                <Link href="/us/states" style={{ display: "inline-block", padding: "10px 24px", borderRadius: 8, background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+                  Check your state coverage →
                 </Link>
               </div>
             </>
@@ -261,31 +247,6 @@ export default function USLanding() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section style={{ background: "#0B1120", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <FadeUp>
-            <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", textAlign: "center", margin: "0 0 48px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Operators Who Passed</h2>
-          </FadeUp>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-            {TESTIMONIALS.map((t, i) => (
-              <FadeUp key={t.name} delay={i * 0.1}>
-                <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "28px 24px" }}>
-                  <div style={{ display: "flex", gap: 2, marginBottom: 16 }}>
-                    {[...Array(5)].map((_, j) => <span key={j} style={{ color: "#F59E0B", fontSize: 14 }}>★</span>)}
-                  </div>
-                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, margin: "0 0 20px", fontStyle: "italic" }}>"{t.quote}"</p>
-                  <div>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>{t.name}</div>
-                    <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>{t.role}</div>
-                  </div>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section style={{ padding: "96px 24px", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)", backgroundSize: "40px 40px", pointerEvents: "none" }} />
@@ -297,15 +258,11 @@ export default function USLanding() {
             </h2>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", margin: "0 0 40px", lineHeight: 1.6 }}>Start with free practice questions today. No account required to begin.</p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/us/courses">
-                <button className="btn-pulse" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", border: "none", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)" }}>
-                  Start Free Practice →
-                </button>
+              <Link href="/us/courses" className="btn-pulse" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
+                Start Free Practice →
               </Link>
-              <Link href="/pricing">
-                <button style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
-                  View Pricing
-                </button>
+              <Link href="/pricing" style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+                View Pricing
               </Link>
             </div>
             <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.35)" }}>Aligned to 2025 ABC/WPI Need-to-Know Criteria · Not affiliated with ABC or WPI</p>

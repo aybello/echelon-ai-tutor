@@ -8,13 +8,13 @@ import PhoneCollectionModal from "./components/PhoneCollectionModal";
 import { QuestionBankPrefetcher } from "./components/QuestionBankPrefetcher";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
+import Landing from "./pages/Landing";
 
 // ── Lazy-loaded pages (code splitting) ───────────────────────────────────────
-// Each page is loaded only when the user navigates to it, dramatically reducing
-// the initial JS bundle size from ~2MB to ~200KB.
+// Secondary pages load only when visited. The landing page stays eager so a
+// first-time visitor does not wait through a second route-level loading state.
 
-// Core pages — lazy loaded like all others to keep the initial bundle small
-const Landing = lazy(() => import("./pages/Landing"));
+// Secondary core pages remain lazy-loaded to keep the first route focused.
 const Home = lazy(() => import("./pages/Home"));
 const Guides = lazy(() => import("./pages/Guides"));
 

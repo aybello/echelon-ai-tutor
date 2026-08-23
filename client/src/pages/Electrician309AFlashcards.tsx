@@ -26,6 +26,7 @@ export default function Electrician309AFlashcards() {
     title: "Ontario 309A Electrician Flashcards",
     description: "Study Ontario 309A Construction Electrician concepts with explanation-backed flashcards organized by the current exam blueprint.",
     path: "/electrician-309a-flashcards",
+    noindex: true,
   });
   const bank = useElectrician309ABank();
   const flashcards = useMemo(

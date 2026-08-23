@@ -237,56 +237,6 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     `,
   },
   {
-    path: "/electrician-309a",
-    title: "Ontario 309A Electrician Exam Prep | Echelon Institute",
-    description: "Free Ontario 309A Construction Electrician exam preparation with 500 original practice questions, study guides, concept diagrams, flashcards and a 100-question mock exam.",
-    h1: "Ontario 309A Construction Electrician Exam Prep",
-    changefreq: "weekly",
-    priority: "0.9",
-    jsonLd: buildWebPageJsonLd({
-      path: "/electrician-309a",
-      title: "Ontario 309A Electrician Exam Prep | Echelon Institute",
-      description: "Free, blueprint-aligned Ontario 309A Construction Electrician practice and study tools.",
-      h1: "Ontario 309A Construction Electrician Exam Prep",
-    }),
-    bodyHtml: `
-      <h2>A Complete 309A Study Workspace</h2>
-      <p>Prepare with 500 original multiple-choice questions, a 100-question timed mock exam, explanation-backed flashcards, module study guides and 16 original concept diagrams.</p>
-      <h2>Weighted to the Published Construction Electrician Blueprint</h2>
-      <p>The course follows the five current Major Work Activities: common occupational skills; generating, distribution and service systems; wiring systems; motors and control systems; and signalling and communication systems.</p>
-      <h2>Learn the Process, Not Just the Answer</h2>
-      <p>Every module connects safe work sequences, system relationships, troubleshooting logic and worked calculations. Diagram-backed questions help learners trace distribution, bonding, transformers, wiring, motor controls, drives, automation and signalling systems.</p>
-      <h2>Independent Exam Preparation</h2>
-      <p>Echelon Institute is an independent training provider and is not affiliated with Skilled Trades Ontario or the Red Seal Program. Candidates should confirm current eligibility and examination requirements with the applicable authority.</p>
-    `,
-  },
-  {
-    path: "/electrician-309a-mock",
-    title: "Ontario 309A Electrician Mock Exam | Echelon Institute",
-    description: "Take a free 100-question Ontario 309A Construction Electrician mock exam with a four-hour timer and module-level results.",
-    h1: "Ontario 309A Construction Electrician Mock Exam",
-    changefreq: "weekly",
-    priority: "0.8",
-    bodyHtml: `
-      <h2>Blueprint-Weighted Exam Practice</h2>
-      <p>The mock exam selects 100 original questions across the five published Construction Electrician Major Work Activities, with a four-hour timer, question flags and module-level scoring.</p>
-      <p><a href="${SITE_URL}/electrician-309a">Return to the complete 309A study workspace</a> for targeted practice, study guides, diagrams and flashcards.</p>
-    `,
-  },
-  {
-    path: "/electrician-309a-flashcards",
-    title: "Ontario 309A Electrician Flashcards | Echelon Institute",
-    description: "Study Ontario 309A Construction Electrician concepts with free explanation-backed flashcards organized by exam module.",
-    h1: "Ontario 309A Construction Electrician Flashcards",
-    changefreq: "weekly",
-    priority: "0.8",
-    bodyHtml: `
-      <h2>Concept Review by 309A Module</h2>
-      <p>Review occupational skills, distribution and services, wiring systems, motors and controls, and signalling and communications using explanation-backed concept cards.</p>
-      <p><a href="${SITE_URL}/electrician-309a">Return to the complete 309A study workspace</a> for practice sessions, study guides, diagrams and the full mock exam.</p>
-    `,
-  },
-  {
     path: "/guides",
     title: "Interactive Process Guides for Water Operators | Echelon Institute",
     description:

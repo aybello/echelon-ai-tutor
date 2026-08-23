@@ -26,6 +26,7 @@ Disallow: /login/
 Disallow: /purchase-success
 Disallow: /subscription-success
 Disallow: /preview
+Disallow: /electrician-309a
 Disallow: /team$
 Disallow: /team/
 Disallow: /activate/

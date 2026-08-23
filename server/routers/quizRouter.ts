@@ -43,6 +43,19 @@ type PreviewQuestionRow = {
 };
 
 /**
+ * The historical Ontario Water OIT bank contains one cross-stream wastewater
+ * module. Keep that material available to paid/full-bank learners, but do not
+ * use it in the deliberately labelled Water OIT sales preview.
+ */
+export function previewRowsForBank<T extends { module: string }>(
+  rows: T[],
+  bankKey: string,
+): T[] {
+  if (bankKey !== "oit") return rows;
+  return rows.filter(row => !/wastewater|sewage|collection system/i.test(row.module));
+}
+
+/**
  * Build a deterministic, module-balanced preview while reserving enough room
  * for calculation questions to demonstrate Echelon's worked-solution support.
  * Flashcards deliberately remain conceptual.
@@ -186,7 +199,12 @@ export const quizRouter = router({
         const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
           ? OIT_PREVIEW_CALC_MINIMUMS[surface]
           : 0;
-        visible = buildPreviewSample(rows, previewLimit, surface, minimumCalculations);
+        visible = buildPreviewSample(
+          previewRowsForBank(rows, input.bankKey),
+          previewLimit,
+          surface,
+          minimumCalculations,
+        );
       }
 
       // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
@@ -265,7 +283,7 @@ export const quizRouter = router({
           ? Math.min(OIT_PREVIEW_CALC_MINIMUMS.practice, sampleLimit)
           : 0;
         const sampled = buildPreviewSample(
-          allList,
+          previewRowsForBank(allList, input.bankKey),
           sampleLimit,
           "practice",
           minimumCalculations,
