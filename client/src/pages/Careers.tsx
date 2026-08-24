@@ -15,6 +15,8 @@ import {
   DollarSign,
   Calendar,
   Globe,
+  AlertTriangle,
+  RefreshCw,
 } from "lucide-react";
 
 const PROVINCES = [
@@ -97,12 +99,15 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
   return createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-4"
-      onClick={(e) => {
+      onClick={e => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
+      <div
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        onClick={onClose}
+      />
 
       {/* Modal panel */}
       <div className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden">
@@ -172,9 +177,12 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
           ) : (
             <div className="text-center py-10 text-slate-400">
               <Globe className="w-10 h-10 mx-auto mb-3 opacity-40" />
-              <p className="text-sm font-medium text-slate-500">Full description on the employer's site</p>
+              <p className="text-sm font-medium text-slate-500">
+                Full description on the employer's site
+              </p>
               <p className="text-xs mt-1 max-w-xs mx-auto">
-                Click "View Full Posting" below to see the complete job description, requirements, and how to apply.
+                Click "View Full Posting" below to see the complete job
+                description, requirements, and how to apply.
               </p>
             </div>
           )}
@@ -183,7 +191,9 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
         {/* Footer — source + apply CTA */}
         <div className="border-t border-slate-100 px-5 py-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="text-xs text-slate-400">
-            <span className="font-medium text-slate-500">{job.sourceName ?? "Job Bank Canada"}</span>
+            <span className="font-medium text-slate-500">
+              {job.sourceName ?? "Job Bank Canada"}
+            </span>
             {job.postedAt && <span> · {timeAgo(job.postedAt)}</span>}
           </div>
           <a
@@ -295,7 +305,7 @@ export default function Careers() {
 
   const { data, isLoading } = trpc.jobs.listJobs.useQuery(
     { page, province },
-    { placeholderData: (prev) => prev }
+    { placeholderData: prev => prev }
   );
   const { data: stats } = trpc.jobs.stats.useQuery();
 
@@ -328,14 +338,29 @@ export default function Careers() {
             Water &amp; Wastewater Operator Jobs in Canada
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl">
-            Live job postings for certified water and wastewater operators across Ontario, BC,
-            Alberta, Saskatchewan, and Manitoba. Updated daily from Job Bank Canada, OWWA, and
-            municipal employers.
+            Live job postings for certified water and wastewater operators
+            across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Refreshed
+            automatically from Job Bank Canada, OWWA, and municipal employers.
           </p>
-          {stats && stats.total > 0 && (
+          {stats && !stats.isStale && stats.total > 0 && (
             <div className="mt-4 inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-sm text-blue-700 font-medium">
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              {stats.total} active posting{stats.total !== 1 ? "s" : ""} right now
+              {stats.total} active posting{stats.total !== 1 ? "s" : ""} right
+              now
+              {stats.lastRefreshedAt && (
+                <span className="font-normal text-blue-500">
+                  · refreshed {timeAgo(stats.lastRefreshedAt).toLowerCase()}
+                </span>
+              )}
+            </div>
+          )}
+          {stats?.isStale && (
+            <div className="mt-4 inline-flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5 text-sm text-amber-800">
+              <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
+              <span>
+                Job updates are temporarily delayed. Older unverified listings
+                have been hidden while the next refresh completes.
+              </span>
             </div>
           )}
         </div>
@@ -344,7 +369,7 @@ export default function Careers() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Province filter */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {PROVINCES.map((p) => (
+          {PROVINCES.map(p => (
             <button
               key={String(p.value)}
               onClick={() => handleProvinceChange(p.value as Province)}
@@ -363,14 +388,16 @@ export default function Careers() {
         {!isLoading && total > 0 && (
           <p className="text-sm text-slate-500 mb-4">
             Showing {jobs.length} of {total} posting{total !== 1 ? "s" : ""}
-            {province ? ` in ${PROVINCES.find((p) => p.value === province)?.label}` : ""}
+            {province
+              ? ` in ${PROVINCES.find(p => p.value === province)?.label}`
+              : ""}
           </p>
         )}
 
         {/* Loading skeleton */}
         {isLoading && (
           <div className="space-y-4">
-            {[1, 2, 3, 4].map((i) => (
+            {[1, 2, 3, 4].map(i => (
               <div
                 key={i}
                 className="bg-white rounded-xl border border-slate-200 p-5 animate-pulse"
@@ -388,11 +415,15 @@ export default function Careers() {
         {!isLoading && jobs.length === 0 && (
           <div className="text-center py-20 text-slate-500">
             <div className="text-5xl mb-4">🔍</div>
-            <p className="text-lg font-medium text-slate-700">No postings found</p>
+            <p className="text-lg font-medium text-slate-700">
+              No postings found
+            </p>
             <p className="text-sm mt-1 max-w-sm mx-auto">
-              {province
-                ? `No active postings in ${PROVINCES.find((p) => p.value === province)?.label} right now. Try "All Provinces" or check back soon.`
-                : "No active postings right now. The board refreshes daily — check back soon."}
+              {stats?.isStale
+                ? "The automatic job feeds are refreshing. Please check back shortly."
+                : province
+                  ? `No active postings in ${PROVINCES.find(p => p.value === province)?.label} right now. Try "All Provinces" or check back soon.`
+                  : "No active postings right now. New verified listings will appear automatically."}
             </p>
             {province && (
               <button
@@ -408,8 +439,12 @@ export default function Careers() {
         {/* Job cards */}
         {!isLoading && jobs.length > 0 && (
           <div className="space-y-4">
-            {jobs.map((job) => (
-              <JobCard key={job.id} job={job} onClick={() => setSelectedJob(job)} />
+            {jobs.map(job => (
+              <JobCard
+                key={job.id}
+                job={job}
+                onClick={() => setSelectedJob(job)}
+              />
             ))}
           </div>
         )}
@@ -418,7 +453,7 @@ export default function Careers() {
         {!isLoading && totalPages > 1 && (
           <div className="flex items-center justify-center gap-3 mt-8">
             <button
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              onClick={() => setPage(p => Math.max(1, p - 1))}
               disabled={page === 1}
               className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-300 hover:text-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white"
             >
@@ -429,7 +464,7 @@ export default function Careers() {
               Page {page} of {totalPages}
             </span>
             <button
-              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              onClick={() => setPage(p => Math.min(totalPages, p + 1))}
               disabled={page === totalPages}
               className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-300 hover:text-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all bg-white"
             >
@@ -443,9 +478,12 @@ export default function Careers() {
         <div className="mt-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <p className="font-bold text-lg">Need your certification first?</p>
+              <p className="font-bold text-lg">
+                Need your certification first?
+              </p>
               <p className="text-blue-100 text-sm mt-0.5">
-                Prepare for your operator exam with Echelon's AI-powered practice questions.
+                Prepare for your operator exam with Echelon's AI-powered
+                practice questions.
               </p>
             </div>
             <a
@@ -459,6 +497,7 @@ export default function Careers() {
 
         {/* Source note */}
         <p className="mt-6 text-xs text-slate-400 text-center">
+          <RefreshCw className="w-3 h-3 inline mr-1 -mt-0.5" />
           Job postings sourced from{" "}
           <a
             href="https://www.jobbank.gc.ca"
@@ -477,7 +516,8 @@ export default function Careers() {
           >
             OWWA
           </a>
-          , and municipal employers. Echelon Institute is not affiliated with any employer. Always verify postings directly.
+          , and municipal employers. Echelon Institute is not affiliated with
+          any employer. Always verify postings directly.
         </p>
       </div>
 
@@ -487,14 +527,26 @@ export default function Careers() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <p className="text-white font-bold text-sm">Echelon Institute</p>
-              <p className="text-xs mt-0.5">Canadian Water &amp; Wastewater Operator Certification</p>
+              <p className="text-xs mt-0.5">
+                Canadian Water &amp; Wastewater Operator Certification
+              </p>
             </div>
             <div className="flex flex-wrap gap-4 text-xs">
-              <a href="/" className="hover:text-white transition-colors">Home</a>
-              <a href="/quiz" className="hover:text-white transition-colors">Practice</a>
-              <a href="/blog" className="hover:text-white transition-colors">Blog</a>
-              <a href="/jobs" className="hover:text-white transition-colors">Jobs</a>
-              <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
+              <a href="/" className="hover:text-white transition-colors">
+                Home
+              </a>
+              <a href="/quiz" className="hover:text-white transition-colors">
+                Practice
+              </a>
+              <a href="/blog" className="hover:text-white transition-colors">
+                Blog
+              </a>
+              <a href="/jobs" className="hover:text-white transition-colors">
+                Jobs
+              </a>
+              <a href="/pricing" className="hover:text-white transition-colors">
+                Pricing
+              </a>
             </div>
           </div>
           <div className="border-t border-slate-800 mt-6 pt-6 text-xs text-center">

@@ -2,10 +2,12 @@ import { z } from "zod";
 import { router, publicProcedure, protectedProcedure } from "../_core/trpc";
 import { getDb } from "../db";
 import { jobPostings } from "../../drizzle/schema";
-import { eq, and, desc, sql } from "drizzle-orm";
+import { eq, and, desc, gte, sql } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 
 const PAGE_SIZE = 20;
+const PUBLIC_STALE_JOB_DAYS = 21;
+const REFRESH_STALE_AFTER_HOURS = 24;
 
 const ProvinceEnum = z.enum(["ON", "BC", "AB", "SK", "MB", "other"]);
 const JobTypeEnum = z.enum(["full-time", "part-time", "contract"]);
@@ -21,11 +23,24 @@ export const jobsRouter = router({
     )
     .query(async ({ input }) => {
       const db = await getDb();
-      if (!db) return { jobs: [], total: 0, page: 1, pageSize: PAGE_SIZE, totalPages: 0 };
+      if (!db)
+        return {
+          jobs: [],
+          total: 0,
+          page: 1,
+          pageSize: PAGE_SIZE,
+          totalPages: 0,
+        };
       const { page, province, jobType } = input;
       const offset = (page - 1) * PAGE_SIZE;
+      const publicCutoff = new Date(
+        Date.now() - PUBLIC_STALE_JOB_DAYS * 24 * 60 * 60 * 1000
+      );
 
-      const conditions: ReturnType<typeof eq>[] = [eq(jobPostings.isActive, 1)];
+      const conditions = [
+        eq(jobPostings.isActive, 1),
+        gte(jobPostings.lastSeenAt, publicCutoff),
+      ];
       if (province) conditions.push(eq(jobPostings.province, province));
       if (jobType) conditions.push(eq(jobPostings.jobType, jobType));
       const where = and(...conditions);
@@ -52,7 +67,10 @@ export const jobsRouter = router({
           .limit(PAGE_SIZE)
           .offset(offset),
 
-        db.select({ count: sql<number>`count(*)` }).from(jobPostings).where(where),
+        db
+          .select({ count: sql<number>`count(*)` })
+          .from(jobPostings)
+          .where(where),
       ]);
 
       const total = Number(countResult[0]?.count ?? 0);
@@ -69,13 +87,27 @@ export const jobsRouter = router({
     .input(z.object({ id: z.number().int() }))
     .query(async ({ input }) => {
       const db = await getDb();
-      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "DB unavailable" });
+      if (!db)
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "DB unavailable",
+        });
       const [job] = await db
         .select()
         .from(jobPostings)
-        .where(eq(jobPostings.id, input.id))
+        .where(
+          and(
+            eq(jobPostings.id, input.id),
+            eq(jobPostings.isActive, 1),
+            gte(
+              jobPostings.lastSeenAt,
+              new Date(Date.now() - PUBLIC_STALE_JOB_DAYS * 24 * 60 * 60 * 1000)
+            )
+          )
+        )
         .limit(1);
-      if (!job) throw new TRPCError({ code: "NOT_FOUND", message: "Job not found" });
+      if (!job)
+        throw new TRPCError({ code: "NOT_FOUND", message: "Job not found" });
       return job;
     }),
 
@@ -83,7 +115,11 @@ export const jobsRouter = router({
     .input(z.object({ id: z.number().int(), featured: z.boolean() }))
     .mutation(async ({ input, ctx }) => {
       const db = await getDb();
-      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "DB unavailable" });
+      if (!db)
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "DB unavailable",
+        });
       if (ctx.user.role !== "admin") {
         throw new TRPCError({ code: "FORBIDDEN", message: "Admin only" });
       }
@@ -97,11 +133,30 @@ export const jobsRouter = router({
   // Returns stats for the board header
   stats: publicProcedure.query(async () => {
     const db = await getDb();
-    if (!db) return { total: 0 };
+    if (!db) return { total: 0, lastRefreshedAt: null, isStale: true };
+    const publicCutoff = new Date(
+      Date.now() - PUBLIC_STALE_JOB_DAYS * 24 * 60 * 60 * 1000
+    );
     const [result] = await db
-      .select({ total: sql<number>`count(*)` })
+      .select({
+        total: sql<number>`count(*)`,
+        lastRefreshedAt: sql<Date | null>`max(${jobPostings.lastSeenAt})`,
+      })
       .from(jobPostings)
-      .where(eq(jobPostings.isActive, 1));
-    return { total: Number(result?.total ?? 0) };
+      .where(
+        and(
+          eq(jobPostings.isActive, 1),
+          gte(jobPostings.lastSeenAt, publicCutoff)
+        )
+      );
+    const lastRefreshedAt = result?.lastRefreshedAt
+      ? new Date(result.lastRefreshedAt)
+      : null;
+    const staleBefore = Date.now() - REFRESH_STALE_AFTER_HOURS * 60 * 60 * 1000;
+    return {
+      total: Number(result?.total ?? 0),
+      lastRefreshedAt,
+      isStale: !lastRefreshedAt || lastRefreshedAt.getTime() < staleBefore,
+    };
   }),
 });
