@@ -79,7 +79,7 @@ const BROAD_WATER_KEYWORDS = [
 function isWaterJob(title = "", broad = false) {
   const t = title.toLowerCase();
   const keywords = broad ? BROAD_WATER_KEYWORDS : WATER_KEYWORDS;
-  return keywords.some((kw) => t.includes(kw));
+  return keywords.some(kw => t.includes(kw));
 }
 
 async function fetchHtml(url, timeoutMs = 15000) {
@@ -87,8 +87,7 @@ async function fetchHtml(url, timeoutMs = 15000) {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-      Accept:
-        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
       "Accept-Language": "en-CA,en;q=0.9",
       "Cache-Control": "no-cache",
     },
@@ -102,7 +101,13 @@ async function fetchHtml(url, timeoutMs = 15000) {
  * Generic extractor: find all <a> tags whose text matches water keywords.
  * Excludes navigation/footer links by requiring href to contain job-related path segments.
  */
-function extractJobLinks(html, baseUrl, company, location, jobPathPatterns = []) {
+function extractJobLinks(
+  html,
+  baseUrl,
+  company,
+  location,
+  jobPathPatterns = []
+) {
   const jobs = [];
   const seen = new Set();
 
@@ -112,7 +117,10 @@ function extractJobLinks(html, baseUrl, company, location, jobPathPatterns = [])
   while ((m = linkRe.exec(html)) !== null) {
     const href = m[1].trim();
     // Strip HTML tags from link text
-    const title = m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const title = m[2]
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
 
     if (!title || title.length < 5 || title.length > 200) continue;
     if (!isWaterJob(title)) continue;
@@ -120,7 +128,7 @@ function extractJobLinks(html, baseUrl, company, location, jobPathPatterns = [])
     // If jobPathPatterns provided, only accept hrefs matching at least one pattern
     if (
       jobPathPatterns.length > 0 &&
-      !jobPathPatterns.some((p) => href.includes(p))
+      !jobPathPatterns.some(p => href.includes(p))
     )
       continue;
 
@@ -155,11 +163,13 @@ async function scrapeGuelph() {
   );
   const jobs = [];
   // iCIMS job titles are in <h3 class="iCIMS_JobTitle"> or similar
-  const titleRe =
-    /<a[^>]+href="(\/jobs\/\d+\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  const titleRe = /<a[^>]+href="(\/jobs\/\d+\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
   let m;
   while ((m = titleRe.exec(html)) !== null) {
-    const title = m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const title = m[2]
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
     if (!isWaterJob(title)) continue;
     jobs.push({
       title,
@@ -202,7 +212,10 @@ async function scrapeOCWA() {
       /<a[^>]+href="([^"]*JobDetails\.aspx[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
     let m;
     while ((m = linkRe.exec(html)) !== null) {
-      const title = m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const title = m[2]
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
       if (!isWaterJob(title)) continue;
       const href = m[1];
       const url = href.startsWith("http")
@@ -271,7 +284,14 @@ async function scrapeHamilton() {
     "https://www.hamilton.ca",
     "City of Hamilton",
     "Hamilton, ON",
-    ["/jobs/", "/posting/", "/position/", "/employment/", "/careers/", "/city-council/jobs-city/"]
+    [
+      "/jobs/",
+      "/posting/",
+      "/position/",
+      "/employment/",
+      "/careers/",
+      "/city-council/jobs-city/",
+    ]
   );
 }
 
@@ -313,7 +333,7 @@ async function scrapeMetroVancouver() {
     "Metro Vancouver",
     "Metro Vancouver, BC",
     ["/careers/", "/job-opportunities/", "/posting/", "/position/"]
-  ).map((j) => ({ ...j, province: "BC" }));
+  ).map(j => ({ ...j, province: "BC" }));
 }
 
 async function scrapeSurrey() {
@@ -333,7 +353,9 @@ async function scrapeCalgary() {
   while ((m = linkRe.exec(html)) !== null) {
     const title = m[2].trim();
     if (!isWaterJob(title)) continue;
-    const url = m[1].startsWith("http") ? m[1] : `https://www.calgary.ca${m[1]}`;
+    const url = m[1].startsWith("http")
+      ? m[1]
+      : `https://www.calgary.ca${m[1]}`;
     jobs.push({
       title,
       company: "City of Calgary",
@@ -353,7 +375,7 @@ async function scrapeEdmonton() {
     "City of Edmonton",
     "Edmonton, AB",
     ["/jobs/", "/careers/", "/posting/", "/position/", "/employment/"]
-  ).map((j) => ({ ...j, province: "AB" }));
+  ).map(j => ({ ...j, province: "AB" }));
 }
 
 async function scrapeEpcor() {
@@ -364,31 +386,35 @@ async function scrapeEpcor() {
     "EPCOR",
     "Edmonton, AB",
     ["/careers/", "/jobs/", "/posting/", "/apply/", "/opportunities/"]
-  ).map((j) => ({ ...j, province: "AB" }));
+  ).map(j => ({ ...j, province: "AB" }));
 }
 
 // ─── SK Scrapers ──────────────────────────────────────────────────────────
 
 async function scrapeSaskatoon() {
-  const html = await fetchHtml("https://www.saskatoon.ca/city-hall/careers-city");
+  const html = await fetchHtml(
+    "https://www.saskatoon.ca/city-hall/careers-city"
+  );
   return extractJobLinks(
     html,
     "https://www.saskatoon.ca",
     "City of Saskatoon",
     "Saskatoon, SK",
     ["/careers-city/", "/job/", "/posting/", "/position/", "/employment/"]
-  ).map((j) => ({ ...j, province: "SK" }));
+  ).map(j => ({ ...j, province: "SK" }));
 }
 
 async function scrapeRegina() {
-  const html = await fetchHtml("https://www.regina.ca/about-regina/job-opportunities/");
+  const html = await fetchHtml(
+    "https://www.regina.ca/about-regina/job-opportunities/"
+  );
   return extractJobLinks(
     html,
     "https://www.regina.ca",
     "City of Regina",
     "Regina, SK",
     ["/job-opportunities/", "/job/", "/posting/", "/position/", "/employment/"]
-  ).map((j) => ({ ...j, province: "SK" }));
+  ).map(j => ({ ...j, province: "SK" }));
 }
 
 // ─── MB Scrapers ──────────────────────────────────────────────────────────
@@ -401,7 +427,7 @@ async function scrapeWinnipeg() {
     "City of Winnipeg",
     "Winnipeg, MB",
     ["/careers/", "/job-postings/", "/job/", "/posting/", "/position/"]
-  ).map((j) => ({ ...j, province: "MB" }));
+  ).map(j => ({ ...j, province: "MB" }));
 }
 
 async function scrapeManitobaCivilService() {
@@ -413,39 +439,95 @@ async function scrapeManitobaCivilService() {
 // ─── Orchestrator ─────────────────────────────────────────────────────────
 
 const SCRAPERS = [
-  { name: "City of Cambridge", fn: scrapeCambridge, sourceName: "City of Cambridge" },
+  {
+    name: "City of Cambridge",
+    fn: scrapeCambridge,
+    sourceName: "City of Cambridge",
+  },
   { name: "City of Guelph", fn: scrapeGuelph, sourceName: "City of Guelph" },
   { name: "City of Barrie", fn: scrapeBarrie, sourceName: "City of Barrie" },
   { name: "OCWA", fn: scrapeOCWA, sourceName: "OCWA / OPS Jobs" },
-  { name: "Region of Waterloo", fn: scrapeWaterloo, sourceName: "Region of Waterloo" },
+  {
+    name: "Region of Waterloo",
+    fn: scrapeWaterloo,
+    sourceName: "Region of Waterloo",
+  },
   { name: "Region of Peel", fn: scrapePeel, sourceName: "Region of Peel" },
   { name: "York Region", fn: scrapeYorkRegion, sourceName: "York Region" },
   { name: "City of Ottawa", fn: scrapeOttawa, sourceName: "City of Ottawa" },
-  { name: "City of Hamilton", fn: scrapeHamilton, sourceName: "City of Hamilton" },
+  {
+    name: "City of Hamilton",
+    fn: scrapeHamilton,
+    sourceName: "City of Hamilton",
+  },
   { name: "Durham Region", fn: scrapeDurham, sourceName: "Durham Region" },
-  { name: "City of Brantford", fn: scrapeBrantford, sourceName: "City of Brantford" },
+  {
+    name: "City of Brantford",
+    fn: scrapeBrantford,
+    sourceName: "City of Brantford",
+  },
   // BC
-  { name: "Metro Vancouver", fn: scrapeMetroVancouver, sourceName: "Metro Vancouver" },
+  {
+    name: "Metro Vancouver",
+    fn: scrapeMetroVancouver,
+    sourceName: "Metro Vancouver",
+  },
   { name: "City of Surrey", fn: scrapeSurrey, sourceName: "City of Surrey" },
   // AB
   { name: "City of Calgary", fn: scrapeCalgary, sourceName: "City of Calgary" },
-  { name: "City of Edmonton", fn: scrapeEdmonton, sourceName: "City of Edmonton" },
+  {
+    name: "City of Edmonton",
+    fn: scrapeEdmonton,
+    sourceName: "City of Edmonton",
+  },
   { name: "EPCOR", fn: scrapeEpcor, sourceName: "EPCOR" },
   // SK
-  { name: "City of Saskatoon", fn: scrapeSaskatoon, sourceName: "City of Saskatoon" },
+  {
+    name: "City of Saskatoon",
+    fn: scrapeSaskatoon,
+    sourceName: "City of Saskatoon",
+  },
   { name: "City of Regina", fn: scrapeRegina, sourceName: "City of Regina" },
   // MB
-  { name: "City of Winnipeg", fn: scrapeWinnipeg, sourceName: "City of Winnipeg" },
-  { name: "Manitoba Civil Service", fn: scrapeManitobaCivilService, sourceName: "Manitoba Civil Service" },
+  {
+    name: "City of Winnipeg",
+    fn: scrapeWinnipeg,
+    sourceName: "City of Winnipeg",
+  },
+  {
+    name: "Manitoba Civil Service",
+    fn: scrapeManitobaCivilService,
+    sourceName: "Manitoba Civil Service",
+  },
 ];
 
 export async function ingestMunicipal(upsertJob) {
   const errors = [];
   let totalFetched = 0;
+  let successfulSources = 0;
+  let failedSources = 0;
 
-  for (const scraper of SCRAPERS) {
+  // Each municipality is independent. Fetch them concurrently so blocked or
+  // slow ATS pages do not make the scheduled request run for several minutes.
+  const scrapeResults = await Promise.all(
+    SCRAPERS.map(async scraper => {
+      try {
+        return { scraper, jobs: await scraper.fn(), error: null };
+      } catch (error) {
+        return { scraper, jobs: [], error };
+      }
+    })
+  );
+
+  for (const { scraper, jobs, error } of scrapeResults) {
+    if (error) {
+      failedSources++;
+      errors.push(`Scrape failed (${scraper.name}): ${error.message}`);
+      console.log(`  ✗ ${scraper.name}: ${error.message}`);
+      continue;
+    }
+
     try {
-      const jobs = await scraper.fn();
       let scraperCount = 0;
 
       for (const job of jobs) {
@@ -471,16 +553,21 @@ export async function ingestMunicipal(upsertJob) {
       }
 
       if (scraperCount > 0) {
-        console.log(`  ✓ ${scraper.name}: ${scraperCount} water/wastewater jobs`);
+        console.log(
+          `  ✓ ${scraper.name}: ${scraperCount} water/wastewater jobs`
+        );
       } else {
         console.log(`  · ${scraper.name}: 0 water/wastewater jobs found`);
       }
+      successfulSources++;
     } catch (err) {
-      errors.push(`Scrape failed (${scraper.name}): ${err.message}`);
-      console.log(`  ✗ ${scraper.name}: ${err.message}`);
+      // This catches unexpected processing failures after a source was fetched.
+      failedSources++;
+      errors.push(`Scrape processing failed (${scraper.name}): ${err.message}`);
+      console.log(`  ✗ ${scraper.name}: processing failed: ${err.message}`);
     }
   }
 
   console.log(`  Total fetched from municipal scrapers: ${totalFetched}`);
-  return { errors };
+  return { errors, totalFetched, successfulSources, failedSources };
 }
