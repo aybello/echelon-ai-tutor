@@ -78,6 +78,7 @@ const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
 const WQAQuiz = lazy(() => import("./pages/WQAQuiz"));
 const WQAMockExam = lazy(() => import("./pages/WQAMockExam"));
 const OITMockExam = lazy(() => import("./pages/OITMockExam"));
+const OitHub = lazy(() => import("./pages/OitHub"));
 const OITWastewaterQuiz = lazy(() => import("./pages/OITWastewaterQuiz"));
 const OITWastewaterMockExam = lazy(() => import("./pages/OITWastewaterMockExam"));
 
@@ -257,6 +258,7 @@ function Router() {
         <Route path={"/class1-mock"} component={Class1MockExam} />
         <Route path={"/wqa"} component={WQAQuiz} />
         <Route path={"/wqa-mock"} component={WQAMockExam} />
+        <Route path={"/oit"} component={OitHub} />
         <Route path={"/oit-mock"} component={OITMockExam} />
         <Route path={"/oit-ww"} component={OITWastewaterQuiz} />
         <Route path={"/oit-ww-mock"} component={OITWastewaterMockExam} />

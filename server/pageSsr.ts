@@ -182,7 +182,7 @@ function buildPricingJsonLd(): string {
       "@type": "WebPage",
       name: "Pricing — Echelon Institute",
       description:
-        "View Echelon Institute's 12-month Individual Exam Passes and team plans for utilities and municipalities.",
+        "12-month Individual Exam Passes from CA$49 (OIT) to CA$299 (Class 4), plus Teams All-Access at CA$399/operator/year with volume discounts.",
       url: `${SITE_URL}/pricing`,
     },
     {
@@ -190,18 +190,41 @@ function buildPricingJsonLd(): string {
       "@type": "Product",
       name: "Echelon Institute Individual Exam Pass",
       description:
-        "Twelve months of access to one selected water or wastewater operator exam-prep course, including practice questions, flashcards, study notes, mock exams, and AI tutor.",
-      brand: {
-        "@type": "Brand",
-        name: "Echelon Institute",
-      },
+        "Twelve months of access to one selected water or wastewater operator exam-prep course, including 500+ practice questions, 400+ flashcards, study notes, timed mock exams, and the AI Tutor.",
+      brand: { "@type": "Brand", name: "Echelon Institute" },
       offers: {
         "@type": "AggregateOffer",
         lowPrice: "49",
         highPrice: "299",
         priceCurrency: "CAD",
+        offerCount: 23,
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "Echelon Teams All-Access",
+      description:
+        "Every Echelon course for every operator on your team, with a shared admin dashboard, usage reporting, and graduated volume discounts. 5-seat minimum.",
+      brand: { "@type": "Brand", name: "Echelon Institute" },
+      offers: {
+        "@type": "Offer",
+        price: "399",
+        priceCurrency: "CAD",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/teams`,
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "399",
+          priceCurrency: "CAD",
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            value: 1,
+            unitText: "operator per year",
+          },
+        },
       },
     },
   ]);
@@ -227,7 +250,10 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
 
       <h2>Free to Start</h2>
-      <p>The first 15 questions on every course are completely free — no account or credit card required. Start practising right now and see exactly how Echelon works before purchasing a 12-month Exam Pass.</p>
+      <p>The first 15 questions on every course are completely free — no account or credit card required. Start with the <a href="${SITE_URL}/oit">Ontario OIT free preview</a> and see how Echelon works before purchasing a 12-month Exam Pass.</p>
+
+      <h2>Pricing at a Glance</h2>
+      <p>Individual Exam Passes are one-time purchases with 12 months of access from purchase date. Ontario OIT is CA$49, Ontario Class 1 is CA$99, Class 2 or WQA is CA$149, Class 3 is CA$249 and Class 4 is CA$299. WPI (Western Canada / US ABC) courses start at CA$149 for Class I and top out at CA$299 for Class IV. See the <a href="${SITE_URL}/pricing">full price list</a>.</p>
 
       <h2>Team Plans for Utilities</h2>
       <p>Echelon offers bulk seat pricing for utilities, municipalities, and training organizations. Team plans include a shared admin dashboard and volume discounts. Contact us at <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> or visit <a href="${SITE_URL}/pricing">our pricing page</a> to learn more.</p>
@@ -322,24 +348,101 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     path: "/pricing",
     title: "Pricing — Echelon Institute | Water Operator Exam Prep Plans",
     description:
-      "View 12-month Individual Exam Passes and team plans for utilities and municipalities across Canada.",
+      "12-month Individual Exam Passes from CA$49 (OIT) to CA$299 (Class 4), plus Teams All-Access at CA$399/operator/year with volume discounts.",
     h1: "Simple, Transparent Pricing for Every Operator",
     jsonLd: buildPricingJsonLd(),
     bodyHtml: `
-      <h2>Individual Exam Passes</h2>
-      <p>Individuals choose one certification course and receive 12 months of access from purchase. Exam Passes are available for Ontario OIT, Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment and Wastewater Collection, as well as WPI/ABC courses used across Western Canada and the United States.</p>
+      <h2>Try 15 questions free — no account or credit card</h2>
+      <p>Every course starts with 15 free questions so you can see the question quality, the AI Tutor explanations and the mock-exam format before you pay. <a href="${SITE_URL}/quiz">Try the Ontario OIT preview</a> or <a href="${SITE_URL}/oit-ww">the Wastewater OIT preview</a>.</p>
 
-      <h2>What Every Plan Includes</h2>
-      <p>Every paid pass includes adaptive practice questions organized by module, digital flashcards, study notes, timed mock exams, the AI Tutor, process guides, and score history tracking.</p>
+      <h2>Individual Exam Passes — Ontario</h2>
+      <p>Each pass is a single 12-month licence for one course, one learner. Prices are in Canadian dollars, taxes extra.</p>
+      <table>
+        <thead><tr><th>Course</th><th>Price (CA$)</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><a href="${SITE_URL}/quiz">Ontario OIT — Water Treatment</a></td><td>CA$49</td><td>12 months</td></tr>
+          <tr><td><a href="${SITE_URL}/oit-ww">Ontario OIT — Wastewater</a></td><td>CA$49</td><td>12 months</td></tr>
+          <tr><td>Ontario Class 1 (Water Treatment, Wastewater, Distribution or Collection)</td><td>CA$99</td><td>12 months</td></tr>
+          <tr><td>Ontario Class 2 (any track) or Water Quality Analyst</td><td>CA$149</td><td>12 months</td></tr>
+          <tr><td>Ontario Class 3 (any track)</td><td>CA$249</td><td>12 months</td></tr>
+          <tr><td>Ontario Class 4 (any track)</td><td>CA$299</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+      <p><a href="${SITE_URL}/canada/ontario">See every Ontario course</a>.</p>
 
-      <h2>Team Plans for Utilities and Municipalities</h2>
-      <p>Echelon offers bulk seat pricing for utilities, municipalities, training organizations, and Indigenous water authorities. Team plans include a shared admin dashboard, usage reporting, and volume discounts. Contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> to discuss your organization's needs.</p>
+      <h2>Individual Exam Passes — Western Canada (WPI/ABC)</h2>
+      <p>WPI-aligned preparation for candidates in BC, Alberta, Saskatchewan and Manitoba, and for ABC/WPI-standard state exams in the United States.</p>
+      <table>
+        <thead><tr><th>Course</th><th>Price (CA$)</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td>Class I (Water Treatment, Wastewater, Distribution or Collection)</td><td>CA$149</td><td>12 months</td></tr>
+          <tr><td>Class II (any WPI track)</td><td>CA$199</td><td>12 months</td></tr>
+          <tr><td>Class III (any WPI track)</td><td>CA$249</td><td>12 months</td></tr>
+          <tr><td>Class IV (any WPI track)</td><td>CA$299</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+      <p><a href="${SITE_URL}/wpi">See the WPI course catalogue</a>.</p>
 
-      <h2>Free Access</h2>
-      <p>The first 15 questions on every course are free — no account or credit card required. Visit <a href="${SITE_URL}/">the homepage</a> to begin practising immediately.</p>
+      <h2>What every paid pass includes</h2>
+      <ul>
+        <li>500+ adaptive practice questions organised by module and difficulty</li>
+        <li>400+ concept flashcards with spaced repetition</li>
+        <li>Timed 100-question mock exams that mirror the real test format</li>
+        <li>AI Tutor for concept and calculation explanations, included with every course</li>
+        <li>Interactive process guides for treatment, distribution, collection, pumping, instrumentation and chemistry</li>
+        <li>Score history and weak-topic tracking</li>
+      </ul>
 
-      <h2>Refund Policy</h2>
-      <p>Echelon offers a satisfaction guarantee. Read the full <a href="${SITE_URL}/refund">refund policy</a> for details on eligibility and the process for requesting a refund.</p>
+      <h2>Team plans for utilities, municipalities and training organisations</h2>
+      <p>Echelon Teams gives every operator on your team access to every course, with a shared admin dashboard, usage reporting and volume discounts. Pricing:</p>
+      <ul>
+        <li><strong>Teams All-Access:</strong> CA$399 per operator per year, 5-seat minimum. One licence per operator covers every Echelon course.</li>
+        <li><strong>Teams Course Pass:</strong> per-course licences at 3-month, 6-month or 12-month terms — same annual price as the Individual Exam Pass with shorter-term options for seasonal training.</li>
+        <li><strong>Volume discounts</strong> (graduated, applied per additional seat): seats 1–9 list price, seats 10–24 at 10% off, seats 25–49 at 15% off, seats 50 or more at 20% off.</li>
+      </ul>
+      <p><a href="${SITE_URL}/teams">See Echelon Teams</a> or contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a> for a quote, a sample invoice or purchase-order terms.</p>
+
+      <h2>Refund policy</h2>
+      <p>Every Individual Exam Pass is covered by a 7-day refund for first-time purchases with up to 50 questions completed. Teams plans are refundable within 7 days if no seats have been activated. Read the <a href="${SITE_URL}/refund">full refund policy</a> for eligibility and the request process.</p>
+    `,
+  },
+  {
+    path: "/oit",
+    title: "Ontario OIT Exam Prep — Free Practice | Echelon Institute",
+    description:
+      "Ontario Operator-in-Training (OIT) exam prep for water and wastewater. Start with 15 free questions, then unlock the full 12-month pass for CA$49.",
+    h1: "Ontario OIT Exam Prep for Water and Wastewater",
+    jsonLd: buildWebPageJsonLd({
+      path: "/oit",
+      title: "Ontario OIT Exam Prep",
+      description:
+        "Ontario Operator-in-Training (OIT) exam prep with 15 free questions per stream and 12-month passes at CA$49.",
+      h1: "Ontario OIT Exam Prep",
+    }),
+    bodyHtml: `
+      <h2>What is the Ontario OIT exam?</h2>
+      <p>Ontario's Operator-in-Training certificate is the entry point to a career in regulated water and wastewater operation, issued by the <a href="https://owwco.ca" rel="noopener">Ontario Water Wastewater Certification Office (OWWCO)</a>. Candidates write one of two entry-level exams: Water Treatment/Distribution or Wastewater Treatment/Collection. Echelon prepares candidates for both.</p>
+
+      <h2>Start free — 15 questions, no account, no credit card</h2>
+      <ul>
+        <li><a href="${SITE_URL}/quiz">Try the Water OIT preview</a> — 15 free questions on water treatment and distribution fundamentals.</li>
+        <li><a href="${SITE_URL}/oit-ww">Try the Wastewater OIT preview</a> — 15 free questions on wastewater treatment and collection fundamentals.</li>
+      </ul>
+      <p>You'll see how Echelon's adaptive question bank, AI Tutor explanations, and mock-exam format work before you decide to buy.</p>
+
+      <h2>Full Ontario OIT preparation</h2>
+      <p>Each Ontario OIT Exam Pass is a 12-month licence for CA$49 that includes:</p>
+      <ul>
+        <li>500+ adaptive practice questions organised by module and difficulty</li>
+        <li>400+ concept flashcards with spaced repetition (<a href="${SITE_URL}/oit-water-flashcards">Water OIT flashcards</a>, <a href="${SITE_URL}/oit-ww-flashcards">Wastewater OIT flashcards</a>)</li>
+        <li>Timed 100-question mock exams (<a href="${SITE_URL}/oit-mock">Water OIT mock exam</a>, <a href="${SITE_URL}/oit-ww-mock">Wastewater OIT mock exam</a>)</li>
+        <li>AI Tutor for concept and calculation explanations</li>
+        <li>Interactive <a href="${SITE_URL}/process">process guides</a>, <a href="${SITE_URL}/formulas">formula sheets</a> and <a href="${SITE_URL}/math-practice">math practice</a></li>
+      </ul>
+      <p>Ready to buy? <a href="${SITE_URL}/pricing">See pricing</a>, then <a href="${SITE_URL}/canada/ontario">choose an Ontario OIT course</a>.</p>
+
+      <h2>Ontario OIT exam requirements</h2>
+      <p>Eligibility, registration, permitted references and exam requirements are set by OWWCO. Confirm the current rules on the <a href="https://owwco.ca" rel="noopener">OWWCO website</a> before you register. Echelon Institute is independent and is not affiliated with or endorsed by OWWCO, MOECP, EOCP, WPI or any provincial certifying authority.</p>
     `,
   },
   {

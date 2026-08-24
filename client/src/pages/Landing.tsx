@@ -1551,6 +1551,44 @@ export default function Landing() {
           >
             🎁 Choose Water or Wastewater — the first 15 OIT questions are free, with no account or credit card needed
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.55 }}
+            style={{ textAlign: "center", marginTop: 14, display: "flex", justifyContent: "center", gap: 18, flexWrap: "wrap" }}
+          >
+            <Link
+              href="/pricing"
+              style={{
+                color: "rgba(255,255,255,0.9)", textDecoration: "underline",
+                textDecorationColor: "rgba(255,255,255,0.35)", textUnderlineOffset: 4,
+                fontSize: 13, fontWeight: 600,
+              }}
+            >
+              See pricing — from CA$49
+            </Link>
+            <Link
+              href="/canada/ontario"
+              style={{
+                color: "rgba(255,255,255,0.9)", textDecoration: "underline",
+                textDecorationColor: "rgba(255,255,255,0.35)", textUnderlineOffset: 4,
+                fontSize: 13, fontWeight: 600,
+              }}
+            >
+              Browse all 19 Ontario courses
+            </Link>
+            <Link
+              href="/teams"
+              style={{
+                color: "rgba(255,255,255,0.9)", textDecoration: "underline",
+                textDecorationColor: "rgba(255,255,255,0.35)", textUnderlineOffset: 4,
+                fontSize: 13, fontWeight: 600,
+              }}
+            >
+              Team plans for utilities
+            </Link>
+          </motion.div>
         </div>
       </section>
 
