@@ -1712,3 +1712,9 @@
 ## PR 46 Public 309A Preservation and Release — August 23
 - [x] Remove only PR 46’s 309A visibility/indexing changes, retain all other validated audit fixes, then merge and deploy
 - [x] Retain the existing compact horizontal quiz-control layout and update audit assertions to reflect the public 309A course decision
+
+## Newly Available Repository Updates — August 23 (Post-PR 46)
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 53 Job-Board Refresh Release — August 24
+- [ ] Merge PR 53, validate and deploy the job-board refresh repair, then create and verify the six-hour project-level Heartbeat schedule

@@ -18,6 +18,7 @@ import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
+import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 
@@ -47,24 +48,35 @@ async function startServer() {
   // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
   app.set("trust proxy", 1);
 
-  app.use(helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-        fontSrc: ["'self'", "data:", "https://fonts.gstatic.com"],
-        imgSrc: ["'self'", "data:", "blob:", "https:"],
-        connectSrc: ["'self'", "https://api.stripe.com", "https://*.oaiusercontent.com"],
-        frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
-        objectSrc: ["'none'"],
-        baseUri: ["'self'"],
-        formAction: ["'self'", "https://checkout.stripe.com"],
-        frameAncestors: ["'none'"],
-        upgradeInsecureRequests: process.env.NODE_ENV === "production" ? [] : null,
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
+          styleSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "https://fonts.googleapis.com",
+          ],
+          fontSrc: ["'self'", "data:", "https://fonts.gstatic.com"],
+          imgSrc: ["'self'", "data:", "blob:", "https:"],
+          connectSrc: [
+            "'self'",
+            "https://api.stripe.com",
+            "https://*.oaiusercontent.com",
+          ],
+          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
+          objectSrc: ["'none'"],
+          baseUri: ["'self'"],
+          formAction: ["'self'", "https://checkout.stripe.com"],
+          frameAncestors: ["'none'"],
+          upgradeInsecureRequests:
+            process.env.NODE_ENV === "production" ? [] : null,
+        },
       },
-    },
-  }));
+    })
+  );
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
@@ -105,7 +117,9 @@ async function startServer() {
 
     if (!isInternal) {
       res.set("Cache-Control", "no-store");
-      return res.status(200).json({ status: "ok", ts: new Date().toISOString() });
+      return res
+        .status(200)
+        .json({ status: "ok", ts: new Date().toISOString() });
     }
 
     let overallOk = true;
@@ -142,36 +156,62 @@ async function startServer() {
 
     if (isInternal) {
       // Full details for internal callers (daily-health-check.mjs, monitoring)
-      return res.status(httpStatus).json({ status, checks, ts: new Date().toISOString() });
+      return res
+        .status(httpStatus)
+        .json({ status, checks, ts: new Date().toISOString() });
     }
 
-    return res.status(httpStatus).json({ status, ts: new Date().toISOString() });
+    return res
+      .status(httpStatus)
+      .json({ status, ts: new Date().toISOString() });
   });
 
   // ── FIX 4: One-click unsubscribe endpoint for reminder emails ────────────────
   // Accessible without authentication — the token IS the credential.
   app.get("/api/unsubscribe-reminder", async (req, res) => {
-    const token = typeof req.query.token === "string" ? req.query.token.trim() : "";
+    const token =
+      typeof req.query.token === "string" ? req.query.token.trim() : "";
     if (!token) {
-      return res.status(400).send("<html><body><h2>Invalid unsubscribe link.</h2></body></html>");
+      return res
+        .status(400)
+        .send("<html><body><h2>Invalid unsubscribe link.</h2></body></html>");
     }
     try {
       const db = await getDb();
-      if (!db) return res.status(503).send("<html><body><h2>Service temporarily unavailable. Please try again later.</h2></body></html>");
+      if (!db)
+        return res
+          .status(503)
+          .send(
+            "<html><body><h2>Service temporarily unavailable. Please try again later.</h2></body></html>"
+          );
       const { organizationMembers } = await import("../../drizzle/schema");
       const { eq } = await import("drizzle-orm");
-      const rows = await db.select().from(organizationMembers)
-        .where(eq(organizationMembers.unsubscribeToken, token)).limit(1);
+      const rows = await db
+        .select()
+        .from(organizationMembers)
+        .where(eq(organizationMembers.unsubscribeToken, token))
+        .limit(1);
       if (rows.length === 0) {
-        return res.status(404).send("<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>");
+        return res
+          .status(404)
+          .send(
+            "<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>"
+          );
       }
-      await db.update(organizationMembers)
+      await db
+        .update(organizationMembers)
         .set({ reminderOptOut: true })
         .where(eq(organizationMembers.unsubscribeToken, token));
-      return res.send(`<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive reminder emails from Echelon Institute for Teams. Your access to the platform is not affected.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`);
+      return res.send(
+        `<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive reminder emails from Echelon Institute for Teams. Your access to the platform is not affected.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`
+      );
     } catch (err) {
       console.error("[unsubscribe-reminder] Error:", err);
-      return res.status(500).send("<html><body><h2>An error occurred. Please try again later.</h2></body></html>");
+      return res
+        .status(500)
+        .send(
+          "<html><body><h2>An error occurred. Please try again later.</h2></body></html>"
+        );
     }
   });
 
@@ -218,24 +258,45 @@ async function startServer() {
     try {
       const { forceReconnect } = await import("../db");
       const ok = await forceReconnect();
-      return res.json({ ok, action: ok ? "ping" : "reconnect_failed", ts: new Date().toISOString() });
+      return res.json({
+        ok,
+        action: ok ? "ping" : "reconnect_failed",
+        ts: new Date().toISOString(),
+      });
     } catch (err) {
       console.error("[keepalive] forceReconnect failed:", err);
-      return res.status(500).json({ error: String(err), ts: new Date().toISOString() });
+      return res
+        .status(500)
+        .json({ error: String(err), ts: new Date().toISOString() });
     }
   });
 
   // ── Job board refresh endpoint (Heartbeat cron, every 6 hours) ─────────────
   app.post("/api/scheduled/fetch-jobs", async (req, res) => {
     try {
-      const taskUid = req.headers["x-manus-cron-task-uid"] as string | undefined;
-      const { ingestAllFeeds } = await import("../scripts/fetchJobs.mjs" as string) as { ingestAllFeeds: () => Promise<{ inserted: number; skipped: number; total: number }> };
-      const result = await ingestAllFeeds();
-      console.log(`[fetch-jobs] ${result.inserted} inserted, ${result.skipped} skipped, ${result.total} total | taskUid=${taskUid}`);
-      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+      const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
+      const taskUid =
+        cronUser?.taskUid ??
+        (req.headers["x-manus-cron-task-uid"] as string | undefined);
+      const result = await fetchAndIngest();
+      console.log(
+        `[fetch-jobs] ${result.newCount} inserted, ${result.seenCount} refreshed, ` +
+          `${result.expiredCount} expired; ${result.successfulSources} sources succeeded, ` +
+          `${result.failedSources} failed | taskUid=${taskUid ?? "manual"}`
+      );
+
+      // A total upstream or database-processing failure must be visible to the
+      // Heartbeat platform so it can retry and alert instead of recording a
+      // false-success run.
+      const status = result.ok ? 200 : 503;
+      return res
+        .status(status)
+        .json({ ...result, ts: new Date().toISOString() });
     } catch (err) {
       console.error("[fetch-jobs] error:", err);
-      return res.status(500).json({ error: String(err), ts: new Date().toISOString() });
+      return res
+        .status(500)
+        .json({ error: String(err), ts: new Date().toISOString() });
     }
   });
 
@@ -265,7 +326,10 @@ async function startServer() {
   app.get("/sitemap.xml", async (_req, res) => {
     try {
       const xml = await buildDynamicSitemap();
-      res.status(200).set({ "Content-Type": "application/xml; charset=utf-8" }).end(xml);
+      res
+        .status(200)
+        .set({ "Content-Type": "application/xml; charset=utf-8" })
+        .end(xml);
     } catch (err) {
       console.error("[sitemap] error:", err);
       res.status(500).send("Internal server error");

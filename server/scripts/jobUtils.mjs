@@ -5,18 +5,25 @@
 
 // ---- Province detection ----
 const PROVINCE_MAP = [
-  { province: "ON", patterns: ["ontario", ", on", "(on)", " on,", "on,", " on "] },
-  { province: "BC", patterns: ["british columbia", ", bc", "(bc)", " bc,", "bc,", " bc "] },
-  { province: "AB", patterns: ["alberta", ", ab", "(ab)", " ab,", "ab,", " ab "] },
-  { province: "SK", patterns: ["saskatchewan", ", sk", "(sk)", " sk,", "sk,", " sk "] },
-  { province: "MB", patterns: ["manitoba", ", mb", "(mb)", " mb,", "mb,", " mb "] },
+  { province: "ON", names: ["ontario", "on"] },
+  { province: "BC", names: ["british columbia", "bc"] },
+  { province: "AB", names: ["alberta", "ab"] },
+  { province: "SK", names: ["saskatchewan", "sk"] },
+  { province: "MB", names: ["manitoba", "mb"] },
 ];
 
 export function detectProvince(locationStr) {
   if (!locationStr) return "other";
-  const lower = " " + locationStr.toLowerCase() + " ";
-  for (const { province, patterns } of PROVINCE_MAP) {
-    if (patterns.some((p) => lower.includes(p))) return province;
+  const lower = locationStr.toLowerCase();
+  for (const { province, names } of PROVINCE_MAP) {
+    if (
+      names.some(name =>
+        name.length > 2
+          ? lower.includes(name)
+          : new RegExp(`(?:^|[^a-z])${name}(?:$|[^a-z])`, "i").test(lower)
+      )
+    )
+      return province;
   }
   return "other";
 }
@@ -24,7 +31,8 @@ export function detectProvince(locationStr) {
 // ---- Job type detection ----
 export function detectJobType(text) {
   const lower = (text || "").toLowerCase();
-  if (lower.includes("part-time") || lower.includes("part time")) return "part-time";
+  if (lower.includes("part-time") || lower.includes("part time"))
+    return "part-time";
   if (
     lower.includes("contract") ||
     lower.includes("temporary") ||
@@ -86,12 +94,12 @@ const NEGATIVE_KEYWORDS = [
 export function isWaterJob(title, description) {
   const text = ((title || "") + " " + (description || "")).toLowerCase();
   if (
-    NEGATIVE_KEYWORDS.some((kw) => text.includes(kw)) &&
-    !WATER_KEYWORDS.some((kw) => text.includes(kw))
+    NEGATIVE_KEYWORDS.some(kw => text.includes(kw)) &&
+    !WATER_KEYWORDS.some(kw => text.includes(kw))
   ) {
     return false;
   }
-  return WATER_KEYWORDS.some((kw) => text.includes(kw));
+  return WATER_KEYWORDS.some(kw => text.includes(kw));
 }
 
 // ---- Description truncation ----
@@ -99,6 +107,29 @@ export function truncate(text, max = 600) {
   if (!text) return null;
   const clean = text.replace(/\s+/g, " ").trim();
   return clean.length > max ? clean.slice(0, max) + "\u2026" : clean;
+}
+
+// ---- HTML entity decoding ----
+export function decodeHtmlEntities(text = "") {
+  const named = {
+    amp: "&",
+    apos: "'",
+    gt: ">",
+    lt: "<",
+    nbsp: " ",
+    quot: '"',
+  };
+  return text
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) =>
+      String.fromCodePoint(Number.parseInt(hex, 16))
+    )
+    .replace(/&#(\d+);/g, (_, code) =>
+      String.fromCodePoint(Number.parseInt(code, 10))
+    )
+    .replace(
+      /&([a-z]+);/gi,
+      (match, name) => named[name.toLowerCase()] ?? match
+    );
 }
 
 // ---- URL normalization for dedup ----
@@ -154,7 +185,9 @@ export function extractTag(xml, tag) {
     .replace(/&#39;/g, "'")
     .replace(/&nbsp;/g, " ")
     .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) =>
+      String.fromCharCode(parseInt(hex, 16))
+    )
     .trim();
 }
 
@@ -168,9 +201,11 @@ export function parseRssItems(xml) {
     const link = extractTag(block, "link");
     const description = extractTag(block, "description");
     const pubDate = extractTag(block, "pubDate");
-    const company = extractTag(block, "source") || extractTag(block, "author") || null;
+    const company =
+      extractTag(block, "source") || extractTag(block, "author") || null;
     const location = extractTag(block, "location") || null;
-    if (title && link) items.push({ title, link, description, pubDate, company, location });
+    if (title && link)
+      items.push({ title, link, description, pubDate, company, location });
   }
   return items;
 }
@@ -189,4 +224,4 @@ export function parseIndeedTitle(rawTitle) {
   return { title: rawTitle.trim(), company: null, location: null };
 }
 
-export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+export const sleep = ms => new Promise(r => setTimeout(r, ms));

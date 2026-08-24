@@ -13,6 +13,7 @@
  */
 
 import { XMLParser } from "fast-xml-parser";
+import { decodeHtmlEntities } from "./jobUtils.mjs";
 
 const JOB_BANK_BASE =
   "https://www.jobbank.gc.ca/jobsearch/feed/jobSearchRSSfeed";
@@ -94,7 +95,7 @@ const WATER_KEYWORDS = [
 
 function isWaterJob(title = "", description = "") {
   const combined = `${title} ${description}`.toLowerCase();
-  return WATER_KEYWORDS.some((kw) => combined.includes(kw));
+  return WATER_KEYWORDS.some(kw => combined.includes(kw));
 }
 
 // Province detection from location string
@@ -153,8 +154,8 @@ async function fetchFeed(feed, parser) {
   const entries = Array.isArray(feed_data.entry)
     ? feed_data.entry
     : feed_data.entry
-    ? [feed_data.entry]
-    : [];
+      ? [feed_data.entry]
+      : [];
 
   return entries;
 }
@@ -162,6 +163,8 @@ async function fetchFeed(feed, parser) {
 export async function ingestRss(upsertJob) {
   const errors = [];
   let totalFetched = 0;
+  let successfulSources = 0;
+  let failedSources = 0;
   const seenUrls = new Set(); // deduplicate across feeds
 
   const parser = new XMLParser({
@@ -179,8 +182,10 @@ export async function ingestRss(upsertJob) {
     // Approach 1: RSS feed with browser-like headers (Content-Type required to bypass CF 415)
     const res = await fetch(OWWA_FEED.url, {
       headers: {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "User-Agent":
+          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept-Language": "en-CA,en;q=0.9",
         "Cache-Control": "no-cache",
@@ -192,134 +197,172 @@ export async function ingestRss(upsertJob) {
 
     const xml = await res.text();
     // If Cloudflare served a JS challenge page instead of XML, skip gracefully
-    if (xml.includes("One moment, please") || xml.includes("cf-browser-verification") || !xml.includes("<rss") && !xml.includes("<channel")) {
-      console.log(`  · OWWA: Cloudflare challenge detected — skipping (jobs already in DB from last successful fetch)`);
-      return { errors };
-    }
-    const parsed = parser.parse(xml);
-    const channel = parsed?.rss?.channel;
-    const items = channel?.item
-      ? Array.isArray(channel.item) ? channel.item : [channel.item]
-      : [];
+    const blocked =
+      xml.includes("One moment, please") ||
+      xml.includes("cf-browser-verification") ||
+      (!xml.includes("<rss") && !xml.includes("<channel"));
 
-    let owwaCount = 0;
-    for (const item of items) {
-      try {
-        const title = (item.title?.__cdata ?? item.title ?? "").trim();
-        const sourceUrl = (item.link?.__cdata ?? item.link ?? "").trim();
-        if (!title || !sourceUrl) continue;
-        if (seenUrls.has(sourceUrl)) continue;
-        seenUrls.add(sourceUrl);
+    if (blocked) {
+      failedSources++;
+      errors.push("RSS fetch skipped (OWWA): Cloudflare challenge detected");
+      console.log(
+        "  · OWWA: Cloudflare challenge detected — continuing with Job Bank feeds"
+      );
+    } else {
+      const parsed = parser.parse(xml);
+      const channel = parsed?.rss?.channel;
+      const items = channel?.item
+        ? Array.isArray(channel.item)
+          ? channel.item
+          : [channel.item]
+        : [];
 
-        const descRaw = item.description?.__cdata ?? item.description ?? "";
-        const description = descRaw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 400);
-        const company = (item["job-location"]?.__cdata ?? item["job-location"] ?? "").trim() || null;
-        const location = company || "Ontario";
-        const province = detectProvince(location);
-        const postedAt = item.pubDate ? new Date(item.pubDate) : new Date();
-
-        await upsertJob({
-          title,
-          company: null,
-          location,
-          province,
-          salary: null,
-          jobType: "full-time",
-          sourceUrl,
-          sourceName: "OWWA",
-          sourceType: "rss",
-          description,
-          postedAt,
-        });
-        owwaCount++;
-        totalFetched++;
-      } catch (itemErr) {
-        errors.push(`OWWA item error: ${itemErr.message}`);
-      }
-    }
-    console.log(`  ✓ ${OWWA_FEED.name}: ${owwaCount} jobs`);
-  } catch (err) {
-    errors.push(`RSS fetch failed (OWWA): ${err.message}`);
-  }
-
-  for (const feed of allFeeds) {
-    try {
-      const entries = await fetchFeed(feed, parser);
-      let feedCount = 0;
-      let skipped = 0;
-
-      for (const entry of entries) {
+      let owwaCount = 0;
+      for (const item of items) {
         try {
-          const title = (entry.title?.__cdata ?? entry.title ?? "").trim();
-
-          // Link — Atom uses <link rel="alternate" href="..."/>
-          let sourceUrl = "";
-          if (Array.isArray(entry.link)) {
-            const alt = entry.link.find((l) => l["@_rel"] === "alternate");
-            sourceUrl = alt?.["@_href"] ?? entry.link[0]?.["@_href"] ?? "";
-          } else if (entry.link) {
-            sourceUrl = entry.link["@_href"] ?? entry.link ?? "";
-          }
-
-          if (!sourceUrl || !title) continue;
-
-          // Deduplicate across feeds
+          const title = decodeHtmlEntities(
+            (item.title?.__cdata ?? item.title ?? "").trim()
+          );
+          const sourceUrl = (item.link?.__cdata ?? item.link ?? "").trim();
+          if (!title || !sourceUrl) continue;
           if (seenUrls.has(sourceUrl)) continue;
           seenUrls.add(sourceUrl);
 
-          const summary = entry.summary?.__cdata ?? entry.summary ?? "";
-          const location = parseLocation(summary);
-          const company = parseEmployer(summary);
-          const salary = parseSalary(summary);
-          const province = detectProvince(location ?? "");
-
-          const description = summary
-            .replace(/<[^>]+>/g, " ")
-            .replace(/\s+/g, " ")
-            .trim()
-            .slice(0, 400);
-
-          // Apply relevance filter for feeds that need it
-          if (feed.requiresFilter && !isWaterJob(title, description)) {
-            skipped++;
-            continue;
-          }
-
-          const postedAt = entry.updated ? new Date(entry.updated) : new Date();
+          const descRaw = item.description?.__cdata ?? item.description ?? "";
+          const description = decodeHtmlEntities(
+            descRaw
+              .replace(/<[^>]+>/g, " ")
+              .replace(/\s+/g, " ")
+              .trim()
+              .slice(0, 400)
+          );
+          const company =
+            (
+              item["job-location"]?.__cdata ??
+              item["job-location"] ??
+              ""
+            ).trim() || null;
+          const location = company || "Ontario";
+          const province = detectProvince(location);
+          const postedAt = item.pubDate ? new Date(item.pubDate) : new Date();
 
           await upsertJob({
             title,
-            company,
+            company: null,
             location,
             province,
-            salary,
+            salary: null,
             jobType: "full-time",
             sourceUrl,
-            sourceName: "Job Bank Canada",
+            sourceName: "OWWA",
             sourceType: "rss",
             description,
             postedAt,
           });
-
-          feedCount++;
+          owwaCount++;
           totalFetched++;
-        } catch (entryErr) {
-          errors.push(
-            `Entry parse error (${feed.name}): ${entryErr.message}`
-          );
+        } catch (itemErr) {
+          errors.push(`OWWA item error: ${itemErr.message}`);
         }
       }
-
-      console.log(
-        `  ✓ ${feed.name}: ${feedCount} relevant jobs${skipped > 0 ? ` (${skipped} filtered out)` : ""}`
-      );
-    } catch (err) {
-      errors.push(
-        `RSS fetch failed (${feed.name} — ${feed.url}): ${err.message}`
-      );
+      successfulSources++;
+      console.log(`  ✓ ${OWWA_FEED.name}: ${owwaCount} jobs`);
     }
+  } catch (err) {
+    failedSources++;
+    errors.push(`RSS fetch failed (OWWA): ${err.message}`);
   }
 
+  // Fetch independent feeds in parallel so one slow source cannot push the
+  // Heartbeat request beyond the platform timeout.
+  await Promise.all(
+    allFeeds.map(async feed => {
+      try {
+        const entries = await fetchFeed(feed, parser);
+        let feedCount = 0;
+        let skipped = 0;
+
+        for (const entry of entries) {
+          try {
+            const title = decodeHtmlEntities(
+              (entry.title?.__cdata ?? entry.title ?? "").trim()
+            );
+
+            // Link — Atom uses <link rel="alternate" href="..."/>
+            let sourceUrl = "";
+            if (Array.isArray(entry.link)) {
+              const alt = entry.link.find(l => l["@_rel"] === "alternate");
+              sourceUrl = alt?.["@_href"] ?? entry.link[0]?.["@_href"] ?? "";
+            } else if (entry.link) {
+              sourceUrl = entry.link["@_href"] ?? entry.link ?? "";
+            }
+
+            if (!sourceUrl || !title) continue;
+
+            // Deduplicate across feeds
+            if (seenUrls.has(sourceUrl)) continue;
+            seenUrls.add(sourceUrl);
+
+            const summary = entry.summary?.__cdata ?? entry.summary ?? "";
+            const location = parseLocation(summary);
+            const company = parseEmployer(summary);
+            const salary = parseSalary(summary);
+            const province = detectProvince(location ?? "");
+
+            const description = decodeHtmlEntities(
+              summary
+                .replace(/<[^>]+>/g, " ")
+                .replace(/\s+/g, " ")
+                .trim()
+                .slice(0, 400)
+            );
+
+            // Apply relevance filter for feeds that need it
+            if (feed.requiresFilter && !isWaterJob(title, description)) {
+              skipped++;
+              continue;
+            }
+
+            const postedAt = entry.updated
+              ? new Date(entry.updated)
+              : new Date();
+
+            await upsertJob({
+              title,
+              company,
+              location,
+              province,
+              salary,
+              jobType: "full-time",
+              sourceUrl,
+              sourceName: "Job Bank Canada",
+              sourceType: "rss",
+              description,
+              postedAt,
+            });
+
+            feedCount++;
+            totalFetched++;
+          } catch (entryErr) {
+            errors.push(
+              `Entry parse error (${feed.name}): ${entryErr.message}`
+            );
+          }
+        }
+
+        console.log(
+          `  ✓ ${feed.name}: ${feedCount} relevant jobs${skipped > 0 ? ` (${skipped} filtered out)` : ""}`
+        );
+        successfulSources++;
+      } catch (err) {
+        failedSources++;
+        errors.push(
+          `RSS fetch failed (${feed.name} — ${feed.url}): ${err.message}`
+        );
+      }
+    })
+  );
+
   console.log(`  Total fetched from all feeds: ${totalFetched}`);
-  return { errors };
+  return { errors, totalFetched, successfulSources, failedSources };
 }
