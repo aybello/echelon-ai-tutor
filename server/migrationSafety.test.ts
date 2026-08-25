@@ -45,6 +45,16 @@ describe("forward-only migration safety", () => {
         tag: "0056_certification_bank_governance",
         proposedOnly: true,
       }),
+      expect.objectContaining({
+        version: 57,
+        tag: "0057_add_analytics_anonymous_hash",
+        proposedOnly: true,
+      }),
+      expect.objectContaining({
+        version: 58,
+        tag: "0058_job_source_association",
+        proposedOnly: true,
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(

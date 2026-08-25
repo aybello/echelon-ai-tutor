@@ -8,7 +8,7 @@
  */
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { computeReadiness, READINESS_MODEL_VERSION } from "../_core/readiness";
+import { READINESS_MODEL_VERSION } from "../_core/readiness";
 import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
@@ -18,6 +18,7 @@ import { resolveEntitlementsByEmail } from "../_core/access";
 import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
 import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
+import { calculateReadinessSnapshot } from "../readinessSnapshot";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -69,10 +70,9 @@ export const dashboardRouter = router({
       courseKey: z.string().min(1).max(64),
       result: z.enum(["passed", "failed"]),
       examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-      readinessScore: z.number().int().min(0).max(100).nullable(),
     }))
     .mutation(async ({ ctx, input }) => {
-      const { email } = resolveDashboardIdentity(ctx);
+      const { userId, email } = resolveDashboardIdentity(ctx);
       if (!email) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "A verified email is required to report an exam outcome." });
       }
@@ -87,6 +87,11 @@ export const dashboardRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const memberEmail = email.trim().toLowerCase();
+      const readiness = await calculateReadinessSnapshot(db, {
+        userId,
+        email: memberEmail,
+        examType: course.questionBankKey,
+      });
       const [existing] = await db
         .select({ id: examOutcomes.id })
         .from(examOutcomes)
@@ -100,8 +105,8 @@ export const dashboardRouter = router({
       const values = {
         result: input.result,
         examDate,
-        readinessScoreAtOutcome: input.readinessScore,
-        readinessModelVersion: input.readinessScore === null ? null : READINESS_MODEL_VERSION,
+        readinessScoreAtOutcome: readiness.hasData ? readiness.score : null,
+        readinessModelVersion: readiness.hasData ? READINESS_MODEL_VERSION : null,
         recordedAt: new Date(),
       };
       if (existing) {
@@ -684,138 +689,23 @@ export const dashboardRouter = router({
         const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes: entitlements.unlockedExamTypes });
         examTypeFilter = focus.examType;
       }
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-      const sevenDaysAgo = new Date();
-      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-
-      const identityWhere = userId
-        ? eq(questionAttempts.userId, userId)
-        : eq(questionAttempts.studentEmail, email!);
-
-      // 1. Recent accuracy (last 30 days)
-      const recentRows = await db
-        .select({
-          total: sql<number>`COUNT(*)`,
-          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-          activeDays: sql<number>`COUNT(DISTINCT DATE(${questionAttempts.createdAt}))`,
-          distinctTopics: sql<number>`COUNT(DISTINCT ${questionAttempts.topic})`,
-        })
-        .from(questionAttempts)
-        .where(
-          and(
-            identityWhere,
-            gte(questionAttempts.createdAt, thirtyDaysAgo),
-            examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
-          )
-        );
-
-      const recent = recentRows[0];
-      const recentTotal = Number(recent?.total ?? 0);
-      const recentCorrect = Number(recent?.correct ?? 0);
-      const activeDays = Number(recent?.activeDays ?? 0);
-      const distinctTopics = Number(recent?.distinctTopics ?? 0);
-      const recentAccuracy = recentTotal > 0 ? recentCorrect / recentTotal : 0;
-
-      // 2. Mock exam accuracy (last 3 mock sessions)
-      const mockRows = await db
-        .select({
-          sessionId: questionAttempts.sessionId,
-          total: sql<number>`COUNT(*)`,
-          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-        })
-        .from(questionAttempts)
-        .where(
-          and(
-            identityWhere,
-            eq(questionAttempts.quizMode, "mock"),
-            examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
-          )
-        )
-        .groupBy(questionAttempts.sessionId)
-        .orderBy(desc(sql`MAX(${questionAttempts.createdAt})`))
-        .limit(3);
-
-      let mockAccuracy = 0;
-      if (mockRows.length > 0) {
-        const totalMockCorrect = mockRows.reduce((s, r) => s + Number(r.correct), 0);
-        const totalMockAttempts = mockRows.reduce((s, r) => s + Number(r.total), 0);
-        mockAccuracy = totalMockAttempts > 0 ? totalMockCorrect / totalMockAttempts : 0;
-      }
-
-      // 3. Topic coverage
-      // FIX 3 (P2): The denominator must be the real number of distinct topics in the
-      // question BANK for this exam type — not from questionAttempts (which counts
-      // topics any user has ever practiced and drifts over time).
-      // If no examType filter is provided, we still scope to the bank to avoid
-      // cross-exam contamination.
-      let totalTopicsInBank = 1;
-      if (examTypeFilter) {
-        const bankTopicRows = await db
-          .select({ count: sql<number>`COUNT(DISTINCT ${questions.topic})` })
-          .from(questions)
-          .where(and(
-            eq(questions.bankKey, examTypeFilter),
-            learnerVisibleQuestionFilter(),
-          ));
-        totalTopicsInBank = Math.max(Number(bankTopicRows[0]?.count ?? 1), 1);
-      } else {
-        // No exam type — count distinct topics across all questions in the bank.
-        // This is still per-bank (not per-user) so it doesn't drift.
-        const bankTopicRows = await db
-          .select({ count: sql<number>`COUNT(DISTINCT ${questions.topic})` })
-          .from(questions)
-          .where(learnerVisibleQuestionFilter());
-        totalTopicsInBank = Math.max(Number(bankTopicRows[0]?.count ?? 1), 1);
-      }
-      const topicCoverage = Math.min(distinctTopics / totalTopicsInBank, 1);
-
-      // 4. Study frequency
-      const studyFrequency = Math.min(activeDays / 20, 1);
-
-      // 5. Recency bonus
-      const recentActiveRows = await db
-        .select({ count: sql<number>`COUNT(*)` })
-        .from(questionAttempts)
-        .where(
-          and(
-            identityWhere,
-            gte(questionAttempts.createdAt, sevenDaysAgo),
-            examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
-          )
-        );
-      const recentBonus = Number(recentActiveRows[0]?.count ?? 0) > 0 ? 1 : 0;
-
-      const rawScore =
-        0; // unused - replaced by computeReadiness below
-
-      const readinessResult = computeReadiness({
-        accuracy: recentAccuracy,
-        totalAttempts: recentTotal,
-        mockAccuracy,
-        topicsAttempted: distinctTopics,
-        totalTopics: totalTopicsInBank,
-        activeDaysLast30: activeDays,
-        activeRecently: recentBonus > 0,
+      if (!examTypeFilter) return null;
+      const readinessResult = await calculateReadinessSnapshot(db, {
+        userId,
+        email,
+        examType: examTypeFilter,
       });
-      const score = readinessResult.score;
 
       return {
-        score,
+        score: readinessResult.score,
         level: readinessResult.level,
         label: readinessResult.label,
         description: readinessResult.description,
         nextAction: readinessResult.nextAction,
         isEstimate: true,
         calibrationNote: "Echelon study estimate only; it is not an official exam-pass prediction.",
-        breakdown: {
-          recentAccuracy: Math.round(recentAccuracy * 100),
-          mockAccuracy: Math.round(mockAccuracy * 100),
-          topicCoverage: Math.round(topicCoverage * 100),
-          studyFrequency: Math.round(studyFrequency * 100),
-          recentBonus: recentBonus === 1,
-        },
-        hasData: recentTotal > 0,
+        breakdown: readinessResult.breakdown,
+        hasData: readinessResult.hasData,
       };
     }),
 

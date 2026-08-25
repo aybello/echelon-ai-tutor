@@ -13,6 +13,10 @@ import mysql from "mysql2/promise";
 import { ingestAssociations } from "./fetchJobsAssociations.mjs";
 import { ingestRss } from "./fetchJobsRss.mjs";
 import { ingestMunicipal } from "./fetchJobsMunicipal.mjs";
+import { detectProvince } from "./jobUtils.mjs";
+
+const VALID_PROVINCES = new Set(["ON", "BC", "AB", "SK", "MB", "other"]);
+const VALID_SOURCE_TYPES = new Set(["rss", "scraper", "association"]);
 
 /**
  * Run one complete refresh.
@@ -37,13 +41,27 @@ export async function fetchAndIngest(options = {}) {
 
   let newCount = 0;
   let seenCount = 0;
+  let failedUpsertCount = 0;
   let expiredCount = 0;
   const allErrors = [];
+  const observedProvinces = new Set();
   const runStart = now();
 
   // Single upsert function passed to every tier.
   async function upsertJob(job) {
     if (!job.sourceUrl) return;
+    const inferredProvince = detectProvince(
+      [job.location, job.title, job.description].filter(Boolean).join(" ")
+    );
+    const province =
+      inferredProvince !== "other"
+        ? inferredProvince
+        : VALID_PROVINCES.has(job.province)
+          ? job.province
+          : "other";
+    const sourceType = VALID_SOURCE_TYPES.has(job.sourceType)
+      ? job.sourceType
+      : "rss";
     try {
       const [rows] = await conn.execute(
         "SELECT id FROM job_postings WHERE sourceUrl = ? LIMIT 1",
@@ -51,11 +69,40 @@ export async function fetchAndIngest(options = {}) {
       );
 
       if (rows.length > 0) {
-        // Refresh lastSeenAt and reactivate if it had been expired
+        // Refresh the complete source record so parser and classification fixes
+        // repair existing rows instead of preserving stale public data forever.
         await conn.execute(
-          "UPDATE job_postings SET lastSeenAt = ?, isActive = 1 WHERE id = ?",
-          [runStart, rows[0].id]
+          `UPDATE job_postings SET
+             title = ?,
+             company = COALESCE(?, company),
+             location = COALESCE(?, location),
+             province = CASE WHEN ? = 'other' THEN province ELSE ? END,
+             salary = COALESCE(?, salary),
+             jobType = ?,
+             sourceName = ?,
+             sourceType = ?,
+             description = COALESCE(?, description),
+             postedAt = COALESCE(?, postedAt),
+             lastSeenAt = ?,
+             isActive = 1
+           WHERE id = ?`,
+          [
+            job.title,
+            job.company ?? null,
+            job.location ?? null,
+            province,
+            province,
+            job.salary ?? null,
+            job.jobType ?? "full-time",
+            job.sourceName,
+            sourceType,
+            job.description ?? null,
+            job.postedAt ?? null,
+            runStart,
+            rows[0].id,
+          ]
         );
+        if (province !== "other") observedProvinces.add(province);
         seenCount++;
       } else {
         await conn.execute(
@@ -66,23 +113,25 @@ export async function fetchAndIngest(options = {}) {
             job.title,
             job.company ?? null,
             job.location ?? null,
-            job.province ?? "other",
+            province,
             job.salary ?? null,
             job.jobType ?? "full-time",
             job.sourceUrl,
             job.sourceName,
-            job.sourceType ?? "rss",
+            sourceType,
             job.description ?? null,
             job.postedAt ?? runStart,
             runStart,
           ]
         );
+        if (province !== "other") observedProvinces.add(province);
         newCount++;
       }
     } catch (err) {
       if (err.code === "ER_DUP_ENTRY" || /unique/i.test(err.message)) {
         seenCount++;
       } else {
+        failedUpsertCount++;
         allErrors.push(`Upsert failed (${job.sourceUrl}): ${err.message}`);
       }
     }
@@ -113,10 +162,15 @@ export async function fetchAndIngest(options = {}) {
       (rss.totalFetched ?? 0) +
       (associations.totalFetched ?? 0) +
       (municipal.totalFetched ?? 0);
+    const productiveTiers = [rss, associations, municipal].filter(
+      result => (result.totalFetched ?? 0) > 0
+    ).length;
+    const provinceCount = observedProvinces.size;
+    const hasNationalCoverage = productiveTiers >= 2 && provinceCount >= 2;
 
-    // Never age out the board during a total upstream outage. Once at least one
-    // source succeeds, normal 14-day last-seen cleanup can safely resume.
-    if (successfulSources > 0 && totalFetched > 0) {
+    // Never age out national inventory during a partial-source refresh. At
+    // least two independent tiers and provinces must contribute current jobs.
+    if (hasNationalCoverage) {
       const staleCutoff = new Date(
         runStart.getTime() - 14 * 24 * 60 * 60 * 1000
       );
@@ -131,21 +185,30 @@ export async function fetchAndIngest(options = {}) {
       }
     } else {
       allErrors.push(
-        "Expiry skipped because no trustworthy upstream job set was returned; existing jobs were preserved"
+        `Expiry skipped because national coverage was incomplete (${productiveTiers} productive tiers, ${provinceCount} provinces); existing jobs were preserved`
       );
     }
 
     const processedCount = newCount + seenCount;
     // Across the national feeds, a zero-job run is not a healthy refresh. Mark
     // it retryable so silent parser/source changes cannot look successful.
-    const ok = successfulSources > 0 && totalFetched > 0 && processedCount > 0;
+    const ok =
+      successfulSources > 0 &&
+      totalFetched > 0 &&
+      processedCount > 0 &&
+      failedUpsertCount === 0 &&
+      hasNationalCoverage;
 
     console.log(`\n\u2705 Ingestion complete:`);
     console.log(`   New:     ${newCount}`);
     console.log(`   Seen:    ${seenCount} (existing, refreshed)`);
+    console.log(`   Failed:  ${failedUpsertCount} database upserts`);
     console.log(`   Expired: ${expiredCount}`);
     console.log(
       `   Sources: ${successfulSources} succeeded, ${failedSources} failed`
+    );
+    console.log(
+      `   Coverage: ${productiveTiers} productive tiers, ${provinceCount} provinces`
     );
     if (allErrors.length) {
       console.warn(`\n\u26a0\ufe0f  ${allErrors.length} error(s):`);
@@ -158,10 +221,14 @@ export async function fetchAndIngest(options = {}) {
       newCount,
       seenCount,
       processedCount,
+      failedUpsertCount,
       expiredCount,
       totalFetched,
       successfulSources,
       failedSources,
+      productiveTiers,
+      provinceCount,
+      provinces: [...observedProvinces].sort(),
       errors: allErrors,
     };
   } finally {

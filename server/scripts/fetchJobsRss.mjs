@@ -13,7 +13,7 @@
  */
 
 import { XMLParser } from "fast-xml-parser";
-import { decodeHtmlEntities } from "./jobUtils.mjs";
+import { decodeHtmlEntities, detectProvince } from "./jobUtils.mjs";
 
 const JOB_BANK_BASE =
   "https://www.jobbank.gc.ca/jobsearch/feed/jobSearchRSSfeed";
@@ -96,17 +96,6 @@ const WATER_KEYWORDS = [
 function isWaterJob(title = "", description = "") {
   const combined = `${title} ${description}`.toLowerCase();
   return WATER_KEYWORDS.some(kw => combined.includes(kw));
-}
-
-// Province detection from location string
-function detectProvince(location = "") {
-  const loc = location.toUpperCase();
-  if (/\bON\b|ONTARIO/.test(loc)) return "ON";
-  if (/\bBC\b|BRITISH COLUMBIA/.test(loc)) return "BC";
-  if (/\bAB\b|ALBERTA/.test(loc)) return "AB";
-  if (/\bSK\b|SASKATCHEWAN/.test(loc)) return "SK";
-  if (/\bMB\b|MANITOBA/.test(loc)) return "MB";
-  return "other";
 }
 
 // Parse salary from Job Bank summary HTML snippet
@@ -236,14 +225,17 @@ export async function ingestRss(upsertJob) {
               .trim()
               .slice(0, 400)
           );
-          const company =
+          const location =
             (
               item["job-location"]?.__cdata ??
               item["job-location"] ??
               ""
             ).trim() || null;
-          const location = company || "Ontario";
-          const province = detectProvince(location);
+          const detectedProvince = detectProvince(
+            `${location ?? ""} ${title} ${description}`
+          );
+          const province =
+            detectedProvince === "other" ? "ON" : detectedProvince;
           const postedAt = item.pubDate ? new Date(item.pubDate) : new Date();
 
           await upsertJob({
