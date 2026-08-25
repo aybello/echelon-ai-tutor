@@ -19,6 +19,10 @@ import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
+import {
+  ensureWeeklyBlogHeartbeat,
+  generateWeeklyBlogPost,
+} from "../blogAutomation";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 
@@ -300,6 +304,35 @@ async function startServer() {
     }
   });
 
+  // ── Weekly researched blog article (Heartbeat cron) ─────────────────────
+  app.post("/api/scheduled/generate-blog", async (req, res) => {
+    try {
+      const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
+      const taskUid =
+        cronUser?.taskUid ??
+        (req.headers["x-manus-cron-task-uid"] as string | undefined);
+      const result = await generateWeeklyBlogPost();
+      console.log(
+        `[blog-automation] ${result.action} slug=${result.slug ?? "none"} | ` +
+          `taskUid=${taskUid ?? "manual"}`
+      );
+      return res
+        .status(result.action === "article_published" ? 201 : 200)
+        .json({
+          ...result,
+          published: result.action === "article_published",
+          ts: new Date().toISOString(),
+        });
+    } catch (error) {
+      console.error("[blog-automation] scheduled article failed", error);
+      return res.status(503).json({
+        ok: false,
+        error: error instanceof Error ? error.message : String(error),
+        ts: new Date().toISOString(),
+      });
+    }
+  });
+
   // isDev is used by both SSR handlers
   const isDev = process.env.NODE_ENV === "development";
 
@@ -362,6 +395,18 @@ async function startServer() {
     startReconciliationJob();
     startExamReminderJob();
     startTriggerEngineJob();
+    if (ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
+      void ensureWeeklyBlogHeartbeat()
+        .then(action =>
+          console.log(`[blog-automation] weekly Heartbeat ${action}`)
+        )
+        .catch(error =>
+          console.error(
+            "[blog-automation] could not register weekly Heartbeat",
+            error
+          )
+        );
+    }
   });
 }
 

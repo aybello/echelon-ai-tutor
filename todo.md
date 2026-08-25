@@ -1717,4 +1717,15 @@
 - [x] Identify and review newly available pull requests before making a merge recommendation
 
 ## PR 53 Job-Board Refresh Release — August 24
-- [ ] Merge PR 53, validate and deploy the job-board refresh repair, then create and verify the six-hour project-level Heartbeat schedule
+- [x] Merge PR 53, validate and deploy the job-board refresh repair, then create and verify the six-hour project-level Heartbeat schedule
+
+## Newly Available Repository Updates — August 24
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 54 Automatic Blog Publication Hardening — August 25
+- [ ] Replace the built-in blog-generation model route with an approved external current model
+- [ ] Add a durable concurrency guard so overlapping scheduled runs cannot publish duplicate articles
+- [ ] Validate the automatic weekly publication workflow before a merge decision
+
+## PR 54 User-Approved Automatic Publication Release — August 25
+- [ ] Merge and deploy PR 54 as explicitly approved, then verify the production weekly blog Heartbeat schedule
