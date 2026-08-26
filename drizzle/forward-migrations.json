@@ -68,7 +68,15 @@
       "tag": "0058_job_source_association",
       "file": "drizzle/0058_job_source_association.sql",
       "sha256": "dd351211bd3fd735fe3dbbf3c9700c9a49603c3bc32df6b28bd71662af9c8b10",
-      "proposedOnly": true
+      "proposedOnly": true,
+      "verifierAllowPendingColumnTypes": [
+        {
+          "table": "job_postings",
+          "column": "sourceType",
+          "baselineType": "enum('rss','scraper')",
+          "targetType": "enum('rss','scraper','association')"
+        }
+      ]
     }
   ]
 }
