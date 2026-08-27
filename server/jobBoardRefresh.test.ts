@@ -7,14 +7,19 @@ import {
   parseSwwa,
 } from "./scripts/fetchJobsAssociations.mjs";
 import { ingestRss } from "./scripts/fetchJobsRss.mjs";
-import { decodeHtmlEntities, detectProvince } from "./scripts/jobUtils.mjs";
+import {
+  buildJobIdentityKey,
+  canonicalizeJobSourceUrl,
+  decodeHtmlEntities,
+  detectProvince,
+} from "./scripts/jobUtils.mjs";
 
 const FIXED_NOW = new Date("2026-08-24T12:00:00.000Z");
 
 function makeConnection(existingUrls: string[] = []) {
   const existing = new Set(existingUrls);
   const execute = vi.fn(async (query: string, params: unknown[] = []) => {
-    if (query.startsWith("SELECT id FROM job_postings")) {
+    if (query.startsWith("SELECT id")) {
       return [existing.has(String(params[0])) ? [{ id: 42 }] : []];
     }
     if (query.includes("lastSeenAt <")) {
@@ -240,7 +245,7 @@ describe("job board ingestion", () => {
 
   it("fails the refresh when a source fetched jobs that the database could not store", async () => {
     const execute = vi.fn(async (query: string, params: unknown[] = []) => {
-      if (query.startsWith("SELECT id FROM job_postings")) return [[]];
+      if (query.startsWith("SELECT id")) return [[]];
       if (
         query.includes("INSERT INTO job_postings") &&
         params.includes("association")
@@ -338,6 +343,181 @@ describe("job board ingestion", () => {
     ).rejects.toThrow("unexpected feed parser failure");
 
     expect(connection.end).toHaveBeenCalledOnce();
+  });
+});
+
+describe("stable job identity", () => {
+  const swwaJob = {
+    title: "Water & Wastewater Technologist 2",
+    company: "City of Regina",
+    location: "Regina, SK",
+    sourceName: "SWWA",
+  };
+
+  it("ignores case, whitespace, and HTML entity differences", () => {
+    expect(
+      buildJobIdentityKey({
+        ...swwaJob,
+        title: "  Water &amp;   Wastewater Technologist 2 ",
+        company: "CITY OF REGINA",
+      })
+    ).toBe(buildJobIdentityKey(swwaJob));
+  });
+
+  it("replaces changing SWWA Cloudflare email links with one stable URL", () => {
+    const first = canonicalizeJobSourceUrl({
+      ...swwaJob,
+      sourceUrl:
+        "https://www.swwa.ca/cdn-cgi/l/email-protection#4f242c2d2a2f2b2c",
+    });
+    const second = canonicalizeJobSourceUrl({
+      ...swwaJob,
+      sourceUrl:
+        "https://www.swwa.ca/cdn-cgi/l/email-protection#9af5f8f9fefbf5f8",
+    });
+
+    expect(first).toBe(second);
+    expect(first).toMatch(
+      /^https:\/\/www\.swwa\.ca\/careers\?jobid=echelon-[a-f0-9]{20}$/
+    );
+    expect(first).not.toContain("email-protection");
+  });
+
+  it("stores repeated source rows only once during a refresh", async () => {
+    const connection = makeConnection();
+    const job = {
+      ...swwaJob,
+      province: "SK",
+      sourceType: "association",
+      sourceUrl:
+        "https://www.swwa.ca/cdn-cgi/l/email-protection#4f242c2d2a2f2b2c",
+    };
+
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      now: () => FIXED_NOW,
+      ingestRss: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 0,
+      }),
+      ingestAssociations: async (
+        upsertJob: (job: unknown) => Promise<void>
+      ) => {
+        await upsertJob(job);
+        await upsertJob({
+          ...job,
+          sourceUrl:
+            "https://www.swwa.ca/cdn-cgi/l/email-protection#9af5f8f9fefbf5f8",
+        });
+        return {
+          errors: [],
+          totalFetched: 2,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestMunicipal: async (upsertJob: (job: unknown) => Promise<void>) => {
+        await upsertJob({
+          title: "Water operator",
+          company: "City of Winnipeg",
+          location: "Winnipeg, MB",
+          sourceName: "City of Winnipeg",
+          sourceType: "scraper",
+          sourceUrl: "https://jobs.test/winnipeg-water-operator",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+    });
+
+    expect(result).toMatchObject({
+      ok: true,
+      newCount: 2,
+      duplicateInputCount: 1,
+      productiveTiers: 2,
+      provinceCount: 2,
+    });
+    const inserts = connection.execute.mock.calls.filter(([query]) =>
+      String(query).includes("INSERT INTO job_postings")
+    );
+    expect(inserts).toHaveLength(2);
+  });
+
+  it("deactivates extra stored rows that match the same natural job", async () => {
+    const execute = vi.fn(async (query: string) => {
+      if (query.startsWith("SELECT id")) {
+        return [[{ id: 12 }, { id: 34 }]];
+      }
+      if (query.includes("lastSeenAt <")) return [{ affectedRows: 0 }];
+      return [{ affectedRows: 1 }];
+    });
+    const connection = {
+      execute,
+      end: vi.fn().mockResolvedValue(undefined),
+    };
+
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      now: () => FIXED_NOW,
+      ingestRss: async (upsertJob: (job: unknown) => Promise<void>) => {
+        await upsertJob({
+          title: "Ontario water operator",
+          company: "City of Toronto",
+          location: "Toronto, ON",
+          sourceUrl: "https://jobs.test/toronto",
+          sourceName: "OWWA",
+          sourceType: "rss",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestAssociations: async (
+        upsertJob: (job: unknown) => Promise<void>
+      ) => {
+        await upsertJob({
+          title: "Alberta utility operator",
+          company: "City of Edmonton",
+          location: "Edmonton, AB",
+          sourceUrl: "https://jobs.test/edmonton",
+          sourceName: "AWWOA",
+          sourceType: "association",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestMunicipal: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 0,
+      }),
+    });
+
+    expect(result).toMatchObject({
+      ok: true,
+      seenCount: 2,
+      deduplicatedCount: 2,
+    });
+    expect(execute).toHaveBeenCalledWith(
+      expect.stringContaining("WHERE id IN (?)"),
+      [FIXED_NOW, 34]
+    );
   });
 });
 

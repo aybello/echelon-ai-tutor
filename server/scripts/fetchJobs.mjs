@@ -13,7 +13,12 @@ import mysql from "mysql2/promise";
 import { ingestAssociations } from "./fetchJobsAssociations.mjs";
 import { ingestRss } from "./fetchJobsRss.mjs";
 import { ingestMunicipal } from "./fetchJobsMunicipal.mjs";
-import { detectProvince } from "./jobUtils.mjs";
+import {
+  buildJobIdentityKey,
+  canonicalizeJobSourceUrl,
+  detectProvince,
+  normalizeJobIdentityText,
+} from "./jobUtils.mjs";
 
 const VALID_PROVINCES = new Set(["ON", "BC", "AB", "SK", "MB", "other"]);
 const VALID_SOURCE_TYPES = new Set(["rss", "scraper", "association"]);
@@ -43,32 +48,66 @@ export async function fetchAndIngest(options = {}) {
   let seenCount = 0;
   let failedUpsertCount = 0;
   let expiredCount = 0;
+  let deduplicatedCount = 0;
+  let duplicateInputCount = 0;
   const allErrors = [];
   const observedProvinces = new Set();
+  const seenJobIdentities = new Set();
   const runStart = now();
 
   // Single upsert function passed to every tier.
   async function upsertJob(job) {
     if (!job.sourceUrl) return;
+    const sourceUrl = canonicalizeJobSourceUrl(job);
+    const normalizedJob = { ...job, sourceUrl };
+    const identityKey = buildJobIdentityKey(normalizedJob);
+    if (seenJobIdentities.has(identityKey)) {
+      duplicateInputCount++;
+      return;
+    }
+    seenJobIdentities.add(identityKey);
+
     const inferredProvince = detectProvince(
-      [job.location, job.title, job.description].filter(Boolean).join(" ")
+      [normalizedJob.location, normalizedJob.title, normalizedJob.description]
+        .filter(Boolean)
+        .join(" ")
     );
     const province =
       inferredProvince !== "other"
         ? inferredProvince
-        : VALID_PROVINCES.has(job.province)
-          ? job.province
+        : VALID_PROVINCES.has(normalizedJob.province)
+          ? normalizedJob.province
           : "other";
-    const sourceType = VALID_SOURCE_TYPES.has(job.sourceType)
-      ? job.sourceType
+    const sourceType = VALID_SOURCE_TYPES.has(normalizedJob.sourceType)
+      ? normalizedJob.sourceType
       : "rss";
     try {
+      const sourceNameIdentity = normalizeJobIdentityText(normalizedJob.sourceName);
+      const titleIdentity = normalizeJobIdentityText(normalizedJob.title);
+      const companyIdentity = normalizeJobIdentityText(normalizedJob.company);
+      const locationIdentity = normalizeJobIdentityText(normalizedJob.location);
       const [rows] = await conn.execute(
-        "SELECT id FROM job_postings WHERE sourceUrl = ? LIMIT 1",
-        [job.sourceUrl]
+        `SELECT id, sourceUrl FROM job_postings
+         WHERE sourceUrl = ?
+            OR (
+              LOWER(TRIM(COALESCE(sourceName, ''))) = ?
+              AND LOWER(TRIM(title)) = ?
+              AND LOWER(TRIM(COALESCE(company, ''))) = ?
+              AND LOWER(TRIM(COALESCE(location, ''))) = ?
+            )
+         ORDER BY CASE WHEN sourceUrl = ? THEN 0 ELSE 1 END, id`,
+        [
+          sourceUrl,
+          sourceNameIdentity,
+          titleIdentity,
+          companyIdentity,
+          locationIdentity,
+          sourceUrl,
+        ]
       );
 
       if (rows.length > 0) {
+        const canonicalRow = rows[0];
         // Refresh the complete source record so parser and classification fixes
         // repair existing rows instead of preserving stale public data forever.
         await conn.execute(
@@ -79,6 +118,7 @@ export async function fetchAndIngest(options = {}) {
              province = CASE WHEN ? = 'other' THEN province ELSE ? END,
              salary = COALESCE(?, salary),
              jobType = ?,
+             sourceUrl = ?,
              sourceName = ?,
              sourceType = ?,
              description = COALESCE(?, description),
@@ -87,21 +127,33 @@ export async function fetchAndIngest(options = {}) {
              isActive = 1
            WHERE id = ?`,
           [
-            job.title,
-            job.company ?? null,
-            job.location ?? null,
+            normalizedJob.title,
+            normalizedJob.company ?? null,
+            normalizedJob.location ?? null,
             province,
             province,
-            job.salary ?? null,
-            job.jobType ?? "full-time",
-            job.sourceName,
+            normalizedJob.salary ?? null,
+            normalizedJob.jobType ?? "full-time",
+            sourceUrl,
+            normalizedJob.sourceName,
             sourceType,
-            job.description ?? null,
-            job.postedAt ?? null,
+            normalizedJob.description ?? null,
+            normalizedJob.postedAt ?? null,
             runStart,
-            rows[0].id,
+            canonicalRow.id,
           ]
         );
+        const duplicateIds = rows.slice(1).map(row => row.id);
+        if (duplicateIds.length > 0) {
+          const placeholders = duplicateIds.map(() => "?").join(", ");
+          await conn.execute(
+            `UPDATE job_postings
+             SET isActive = 0, lastSeenAt = ?
+             WHERE id IN (${placeholders})`,
+            [runStart, ...duplicateIds]
+          );
+          deduplicatedCount += duplicateIds.length;
+        }
         if (province !== "other") observedProvinces.add(province);
         seenCount++;
       } else {
@@ -110,17 +162,17 @@ export async function fetchAndIngest(options = {}) {
             (title, company, location, province, salary, jobType, sourceUrl, sourceName, sourceType, description, postedAt, isFeatured, isActive, lastSeenAt, createdAt)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, ?, NOW())`,
           [
-            job.title,
-            job.company ?? null,
-            job.location ?? null,
+            normalizedJob.title,
+            normalizedJob.company ?? null,
+            normalizedJob.location ?? null,
             province,
-            job.salary ?? null,
-            job.jobType ?? "full-time",
-            job.sourceUrl,
-            job.sourceName,
+            normalizedJob.salary ?? null,
+            normalizedJob.jobType ?? "full-time",
+            sourceUrl,
+            normalizedJob.sourceName,
             sourceType,
-            job.description ?? null,
-            job.postedAt ?? runStart,
+            normalizedJob.description ?? null,
+            normalizedJob.postedAt ?? runStart,
             runStart,
           ]
         );
@@ -132,7 +184,7 @@ export async function fetchAndIngest(options = {}) {
         seenCount++;
       } else {
         failedUpsertCount++;
-        allErrors.push(`Upsert failed (${job.sourceUrl}): ${err.message}`);
+        allErrors.push(`Upsert failed (${sourceUrl}): ${err.message}`);
       }
     }
   }
@@ -202,6 +254,9 @@ export async function fetchAndIngest(options = {}) {
     console.log(`\n\u2705 Ingestion complete:`);
     console.log(`   New:     ${newCount}`);
     console.log(`   Seen:    ${seenCount} (existing, refreshed)`);
+    console.log(
+      `   Deduped: ${deduplicatedCount} stored rows, ${duplicateInputCount} repeated source rows`
+    );
     console.log(`   Failed:  ${failedUpsertCount} database upserts`);
     console.log(`   Expired: ${expiredCount}`);
     console.log(
@@ -223,6 +278,8 @@ export async function fetchAndIngest(options = {}) {
       processedCount,
       failedUpsertCount,
       expiredCount,
+      deduplicatedCount,
+      duplicateInputCount,
       totalFetched,
       successfulSources,
       failedSources,

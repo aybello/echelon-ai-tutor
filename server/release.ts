@@ -1,0 +1,31 @@
+/**
+ * Public release marker used to verify that the serving application—not only
+ * the database or a scheduled script—has reached the intended deployment.
+ *
+ * Bump RELEASE_ID whenever a production release changes a capability listed
+ * below. The values are deliberately non-secret and safe for /api/health.
+ */
+export const RELEASE_ID = "2026-08-27.product-integrity.1";
+
+export const RELEASE_CAPABILITIES = [
+  "analytics-identity-v1",
+  "course-pass-order-scoped-refunds-v1",
+  "job-coverage-health-v2",
+  "job-identity-dedup-v1",
+  "oit-hub-v1",
+  "pricing-ssr-v2",
+] as const;
+
+export function publicReleaseHealth(ts = new Date()): {
+  status: "ok";
+  release: string;
+  capabilities: readonly string[];
+  ts: string;
+} {
+  return {
+    status: "ok",
+    release: RELEASE_ID,
+    capabilities: RELEASE_CAPABILITIES,
+    ts: ts.toISOString(),
+  };
+}
