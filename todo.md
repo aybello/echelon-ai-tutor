@@ -1728,4 +1728,25 @@
 - [ ] Validate the automatic weekly publication workflow before a merge decision
 
 ## PR 54 User-Approved Automatic Publication Release — August 25
-- [ ] Merge and deploy PR 54 as explicitly approved, then verify the production weekly blog Heartbeat schedule
+- [x] Merge and deploy PR 54 as explicitly approved, then verify the production weekly blog Heartbeat schedule
+
+## Newly Available Repository Updates — August 25
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 55 Production Migration and Integrity Release — August 27
+- [ ] Confirm a restorable production backup, apply and verify migrations 0057 and 0058, then merge and deploy PR 55
+
+## PR 55 Controlled Post-Deployment Verification — August 27
+- [ ] Verify backup evidence, apply migrations 0057 and 0058, then validate production analytics writes and manually run the job-board refresh after deployment
+
+## PR 55 Migration Ledger Blocker — August 27
+- [x] Resolve the absent production migration ledger without violating the established no-baseline-adoption policy before applying migrations 0057 and 0058
+
+## PR 55 Approved Ledger Adoption — August 27
+- [x] Verify the immutable production baseline, adopt only that verified baseline into the migration ledger, then apply and verify migrations 0057 and 0058
+
+## PR 55 Historical Ledger Reconciliation — August 27
+- [x] Reconcile verified pre-existing migrations 0053 and 0056 with the adopted production ledger without replaying their SQL, before applying later forward migrations
+
+## PR 55 Approved Historical Ledger Reconciliation — August 27
+- [x] Record verified 0053 and 0056 states in order, apply migrations 0054, 0055, 0057, and 0058, and strictly verify production schema integrity
