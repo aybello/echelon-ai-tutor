@@ -45,6 +45,16 @@ describe("forward-only migration safety", () => {
         tag: "0056_certification_bank_governance",
         proposedOnly: true,
       }),
+      expect.objectContaining({
+        version: 57,
+        tag: "0057_add_analytics_anonymous_hash",
+        proposedOnly: true,
+      }),
+      expect.objectContaining({
+        version: 58,
+        tag: "0058_job_source_association",
+        proposedOnly: true,
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -262,6 +272,7 @@ describe("forward-only migration safety", () => {
     const diff = downgradeProposedMissingIndexErrors({
       errors: [
         "Missing index: stripe_event_log.stripe_event_log_status_idx",
+        "Column type drift: job_postings.sourceType is enum('rss','scraper'), expected enum('rss','scraper','association')",
         "Column type drift: subscriptions.tier is varchar(32), expected enum('class1','class2','class3','class4','all-access')",
       ],
       warnings: [],
@@ -272,7 +283,25 @@ describe("forward-only migration safety", () => {
     ]);
     expect(diff.warnings).toEqual([
       expect.stringContaining("Pending proposed migration 54"),
+      expect.stringContaining("Pending proposed migration 58"),
     ]);
+  });
+
+  it("does not excuse an undeclared or reversed column type change", async () => {
+    const manifest = await loadManifest();
+    const diff = downgradeProposedMissingIndexErrors(
+      {
+        errors: [
+          "Column type drift: job_postings.sourceType is varchar(64), expected enum('rss','scraper','association')",
+          "Column type drift: job_postings.sourceType is enum('rss','scraper','association'), expected enum('rss','scraper')",
+        ],
+        warnings: [],
+      },
+      manifest
+    );
+
+    expect(diff.errors).toHaveLength(2);
+    expect(diff.warnings).toEqual([]);
   });
 
   it("refuses modified checksums and failed ledger states", () => {

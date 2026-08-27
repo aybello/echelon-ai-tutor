@@ -285,8 +285,10 @@ async function startServer() {
       const result = await fetchAndIngest();
       console.log(
         `[fetch-jobs] ${result.newCount} inserted, ${result.seenCount} refreshed, ` +
-          `${result.expiredCount} expired; ${result.successfulSources} sources succeeded, ` +
-          `${result.failedSources} failed | taskUid=${taskUid ?? "manual"}`
+          `${result.failedUpsertCount} upserts failed, ${result.expiredCount} expired; ` +
+          `${result.successfulSources} sources succeeded, ${result.failedSources} failed; ` +
+          `${result.productiveTiers} tiers and ${result.provinceCount} provinces covered | ` +
+          `taskUid=${taskUid ?? "manual"}`
       );
 
       // A total upstream or database-processing failure must be visible to the

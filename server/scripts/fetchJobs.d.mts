@@ -4,10 +4,14 @@ export type JobIngestionResult = {
   newCount: number;
   seenCount: number;
   processedCount: number;
+  failedUpsertCount: number;
   expiredCount: number;
   totalFetched: number;
   successfulSources: number;
   failedSources: number;
+  productiveTiers: number;
+  provinceCount: number;
+  provinces: string[];
   errors: string[];
 };
 

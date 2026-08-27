@@ -45,7 +45,8 @@ describe("question governance schema", () => {
       "server/routers/quizRouter.ts": 3,
       "server/routers/activationRouter.ts": 2,
       "server/routers.ts": 2,
-      "server/routers/dashboardRouter.ts": 3,
+      "server/routers/dashboardRouter.ts": 1,
+      "server/readinessSnapshot.ts": 1,
     };
 
     for (const [relativePath, expectedMinimum] of Object.entries(expectedMinimumUses)) {

@@ -402,30 +402,6 @@ export const stripeRouter = router({
       return { url: portalSession.url };
     }),
 
-  /**
-   * Neutral email lookup — confirms only whether an account exists.
-   * Does NOT return tokens, exam types, or course data.
-   * Access restoration must go through the verified OTP or magic-link flow.
-   * @deprecated Use magicLink.requestMagicLink for actual access restoration.
-   */
-  getPurchasesByEmail: publicProcedure
-    .input(z.object({ email: z.string().email() }))
-    .query(async ({ input }) => {
-      // FIX 1 (P0): Never return tokens or unlocked exam types from a public email-only endpoint.
-      // The caller cannot prove they own this inbox. Access restoration must go through
-      // magicLinkRouter (inbox-verified) or dashboardAuthRouter OTP (inbox-verified).
-      // We still check DB existence so the UI can show a neutral "if an account exists" message.
-      const db = await getDb();
-      if (!db) return { accountExists: false };
-      const normalised = normalizeEmail(input.email);
-      const rows = await db
-        .select({ id: purchases.id })
-        .from(purchases)
-        .where(eq(purchases.email, normalised))
-        .limit(1);
-      return { accountExists: rows.length > 0 };
-    }),
-
   /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
   checkAccess: publicProcedure
     .input(z.object({ examType: z.string(), email: z.string().email().optional(), accessToken: z.string().optional() }))

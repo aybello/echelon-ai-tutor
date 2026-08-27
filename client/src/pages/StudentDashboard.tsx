@@ -656,7 +656,6 @@ export default function StudentDashboard() {
                   courseKey: outcomeCourseKey,
                   result: outcomeResult,
                   examDate: outcomeDate,
-                  readinessScore: readinessScore.data?.score ?? null,
                 })}
                 style={{ padding: "9px 14px", border: 0, borderRadius: 8, background: outcomeDate ? "#0F766E" : "#CBD5E1", color: "#fff", fontSize: 12, fontWeight: 800, cursor: outcomeDate ? "pointer" : "not-allowed" }}
               >

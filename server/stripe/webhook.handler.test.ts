@@ -16,12 +16,22 @@ const {
   mockProvisionOrg,
   mockProcessOrgInvoice,
   mockGetDb,
+  mockFlexFullRefund,
+  mockFlexPartialRefund,
+  mockFlexUnallocatedRefund,
+  mockFlexDisputeCreated,
+  mockFlexDisputeClosed,
 } = vi.hoisted(() => ({
   mockConstructEvent: vi.fn(),
   mockRetrieveSubscription: vi.fn(),
   mockProvisionOrg: vi.fn(),
   mockProcessOrgInvoice: vi.fn(),
   mockGetDb: vi.fn(),
+  mockFlexFullRefund: vi.fn(),
+  mockFlexPartialRefund: vi.fn(),
+  mockFlexUnallocatedRefund: vi.fn(),
+  mockFlexDisputeCreated: vi.fn(),
+  mockFlexDisputeClosed: vi.fn(),
 }));
 
 vi.mock("./stripe", () => ({
@@ -41,6 +51,14 @@ vi.mock("../db", () => ({
 
 vi.mock("./provisionOrg", () => ({
   provisionOrgFromWebhook: mockProvisionOrg,
+}));
+
+vi.mock("../teams/flexRefundDisputeHandlers", () => ({
+  handleFlexFullRefund: mockFlexFullRefund,
+  handleFlexPartialRefund: mockFlexPartialRefund,
+  handleFlexUnallocatedRefund: mockFlexUnallocatedRefund,
+  handleFlexDisputeCreated: mockFlexDisputeCreated,
+  handleFlexDisputeClosed: mockFlexDisputeClosed,
 }));
 
 vi.mock("./processOrgInvoice", async () => {
@@ -75,7 +93,7 @@ vi.mock("../email", async () => {
   };
 });
 
-import { registerStripeWebhook } from "./webhook";
+import { parseRefundLicenceIds, registerStripeWebhook } from "./webhook";
 
 type WebhookHandler = (req: Request, res: Response) => Promise<unknown>;
 
@@ -145,6 +163,98 @@ function dbWithNoOrganization() {
 beforeEach(() => {
   vi.clearAllMocks();
   process.env.STRIPE_WEBHOOK_SECRET = "whsec_test";
+  mockFlexFullRefund.mockResolvedValue(false);
+  mockFlexPartialRefund.mockResolvedValue(false);
+  mockFlexUnallocatedRefund.mockResolvedValue(false);
+  mockFlexDisputeCreated.mockResolvedValue(false);
+  mockFlexDisputeClosed.mockResolvedValue(false);
+});
+
+describe("Stripe webhook handler — Course Pass refunds and disputes", () => {
+  it("parses only positive integer licence IDs", () => {
+    expect(parseRefundLicenceIds({ licenceIds: "[12, 13, -1, 2.5]" })).toEqual([12, 13]);
+    expect(parseRefundLicenceIds({ licence_ids: "21, 22" })).toEqual([21, 22]);
+  });
+
+  it("routes a full Course Pass refund to the order-scoped handler", async () => {
+    const handler = captureWebhookHandler();
+    const response = makeResponse();
+    mockConstructEvent.mockReturnValue({
+      id: "evt_flex_refund",
+      type: "charge.refunded",
+      data: { object: { id: "ch_flex", payment_intent: "pi_flex", amount: 5000, amount_refunded: 5000 } },
+    });
+    mockFlexFullRefund.mockResolvedValue(true);
+
+    await handler(makeRequest(), response);
+
+    expect(mockFlexFullRefund).toHaveBeenCalledWith("pi_flex");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ received: true });
+  });
+
+  it("routes a partial refund with licence metadata to the scoped handler", async () => {
+    const handler = captureWebhookHandler();
+    const response = makeResponse();
+    mockConstructEvent.mockReturnValue({
+      id: "evt_partial_refund",
+      type: "refund.created",
+      data: { object: { payment_intent: "pi_flex", metadata: { licenceIds: "[31,32]" } } },
+    });
+    mockFlexPartialRefund.mockResolvedValue(true);
+
+    await handler(makeRequest(), response);
+
+    expect(mockFlexPartialRefund).toHaveBeenCalledWith("pi_flex", [31, 32]);
+    expect(response.statusCode).toBe(200);
+  });
+
+  it("uses refund metadata embedded in charge.refunded when refund.created is not subscribed", async () => {
+    const handler = captureWebhookHandler();
+    const response = makeResponse();
+    mockConstructEvent.mockReturnValue({
+      id: "evt_partial_charge_refund",
+      type: "charge.refunded",
+      data: {
+        object: {
+          id: "ch_flex",
+          payment_intent: "pi_flex",
+          amount: 5000,
+          amount_refunded: 1000,
+          refunds: { data: [{ metadata: { licenceIds: "[41]" } }] },
+        },
+      },
+    });
+    mockFlexPartialRefund.mockResolvedValue(true);
+
+    await handler(makeRequest(), response);
+
+    expect(mockFlexPartialRefund).toHaveBeenCalledWith("pi_flex", [41]);
+    expect(mockFlexUnallocatedRefund).not.toHaveBeenCalled();
+  });
+
+  it("suspends and restores only the disputed Course Pass order", async () => {
+    const handler = captureWebhookHandler();
+    const openedResponse = makeResponse();
+    mockConstructEvent.mockReturnValue({
+      id: "evt_dispute_opened",
+      type: "charge.dispute.created",
+      data: { object: { payment_intent: "pi_flex" } },
+    });
+    mockFlexDisputeCreated.mockResolvedValue(true);
+    await handler(makeRequest(), openedResponse);
+    expect(mockFlexDisputeCreated).toHaveBeenCalledWith("pi_flex");
+
+    const closedResponse = makeResponse();
+    mockConstructEvent.mockReturnValue({
+      id: "evt_dispute_closed",
+      type: "charge.dispute.closed",
+      data: { object: { payment_intent: "pi_flex", status: "won" } },
+    });
+    mockFlexDisputeClosed.mockResolvedValue(true);
+    await handler(makeRequest(), closedResponse);
+    expect(mockFlexDisputeClosed).toHaveBeenCalledWith("pi_flex", "won");
+  });
 });
 
 describe("Stripe webhook handler — org provisioning delegation", () => {

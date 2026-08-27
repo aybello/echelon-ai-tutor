@@ -912,6 +912,8 @@ export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
   occurredAt: timestamp("occurredAt").defaultNow().notNull(),
   userId: varchar("userId", { length: 64 }),
   emailHash: varchar("emailHash", { length: 64 }),
+  /** Browser journey identifier, stored separately so checkout can bridge anonymous and signed-in activity. */
+  anonymousHash: varchar("anonymousHash", { length: 64 }),
   examType: varchar("examType", { length: 64 }),
   productKey: varchar("productKey", { length: 64 }),
   orgId: int("orgId"),
@@ -919,6 +921,7 @@ export const productAnalyticsEvents = mysqlTable("product_analytics_events", {
 }, (table) => [
   index("analytics_event_time_idx").on(table.eventName, table.occurredAt),
   index("analytics_email_time_idx").on(table.emailHash, table.occurredAt),
+  index("analytics_anonymous_time_idx").on(table.anonymousHash, table.occurredAt),
   index("analytics_org_time_idx").on(table.orgId, table.occurredAt),
 ]);
 export type ProductAnalyticsEvent = typeof productAnalyticsEvents.$inferSelect;
@@ -987,7 +990,7 @@ export const jobPostings = mysqlTable("job_postings", {
   jobType: mysqlEnum("jobType", ["full-time", "part-time", "contract"]).notNull().default("full-time"),
   sourceUrl: varchar("sourceUrl", { length: 1024 }).notNull(),
   sourceName: varchar("sourceName", { length: 128 }).notNull(),
-  sourceType: mysqlEnum("sourceType", ["rss", "scraper"]).notNull().default("rss"),
+  sourceType: mysqlEnum("sourceType", ["rss", "scraper", "association"]).notNull().default("rss"),
   description: text("description"),
   postedAt: timestamp("postedAt"),
   isFeatured: int("isFeatured").notNull().default(0), // 1 = featured

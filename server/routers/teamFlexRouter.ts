@@ -17,7 +17,7 @@ import {
   organizationMembers,
   questionAttempts,
 } from "../../drizzle/schema";
-import { eq, and, sql, gte } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 import {
   TEAM_PRICES_CAD,
   getCourseKeyPricingBand,
@@ -38,8 +38,8 @@ import {
   getFlexInvitation,
   listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
-import { computeReadiness } from "../_core/readiness";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { calculateReadinessSnapshot } from "../readinessSnapshot";
 import {
   bulkInviteFlexOperators,
   MAX_BULK_ONBOARDING_ROWS,
@@ -531,9 +531,6 @@ export const teamFlexRouter = router({
       if (licences.length === 0) return [];
 
       // For each licence with an operatorUserId, fetch their study progress
-      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-      const fourteenDaysAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-
       const results = await Promise.all(
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
@@ -571,42 +568,13 @@ export const teamFlexRouter = router({
               eq(questionAttempts.examType, progressExamType),
             ));
 
-          const [recentStats] = await db
-            .select({
-              daysActive: sql<number>`COUNT(DISTINCT DATE(${questionAttempts.createdAt}))`,
-            })
-            .from(questionAttempts)
-            .where(and(
-              eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, progressExamType),
-              gte(questionAttempts.createdAt, thirtyDaysAgo),
-            ));
-
-          const [recentActivity] = await db
-            .select({
-              hasRecent: sql<number>`COUNT(*)`,
-            })
-            .from(questionAttempts)
-            .where(and(
-              eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, progressExamType),
-              gte(questionAttempts.createdAt, fourteenDaysAgo),
-            ));
-
           const total = Number(stats?.total ?? 0);
           const correct = Number(stats?.correct ?? 0);
           const accuracy = total > 0 ? correct / total : 0;
-          const daysActive30 = Number(recentStats?.daysActive ?? 0);
-          const activeRecently = Number(recentActivity?.hasRecent ?? 0) > 0;
-
-          const readinessResult = computeReadiness({
-            accuracy,
-            totalAttempts: total,
-            mockAccuracy: 0, // Would need mock exam data — simplified for now
-            topicsAttempted: Number(stats?.distinctTopics ?? 0),
-            totalTopics: 15, // Approximate topics per course
-            activeDaysLast30: daysActive30,
-            activeRecently,
+          const readinessResult = await calculateReadinessSnapshot(db, {
+            userId: lic.operatorUserId,
+            email: lic.invitedEmail,
+            examType: progressExamType,
           });
 
           return {
@@ -622,7 +590,7 @@ export const teamFlexRouter = router({
             accuracy: Math.round(accuracy * 100),
             readinessScore: readinessResult.score,
             lastActiveAt: stats?.lastActive ?? null,
-            daysActive30,
+            daysActive30: readinessResult.activeDaysLast30,
           };
         }),
       );

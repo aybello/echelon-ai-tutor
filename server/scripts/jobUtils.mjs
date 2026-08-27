@@ -15,17 +15,20 @@ const PROVINCE_MAP = [
 export function detectProvince(locationStr) {
   if (!locationStr) return "other";
   const lower = locationStr.toLowerCase();
+  let earliestMatch = null;
   for (const { province, names } of PROVINCE_MAP) {
-    if (
-      names.some(name =>
+    for (const name of names) {
+      const match =
         name.length > 2
-          ? lower.includes(name)
-          : new RegExp(`(?:^|[^a-z])${name}(?:$|[^a-z])`, "i").test(lower)
-      )
-    )
-      return province;
+          ? { index: lower.indexOf(name) }
+          : new RegExp(`(?:^|[^a-z])${name}(?:$|[^a-z])`, "i").exec(lower);
+      const index = match?.index ?? -1;
+      if (index >= 0 && (!earliestMatch || index < earliestMatch.index)) {
+        earliestMatch = { province, index };
+      }
+    }
   }
-  return "other";
+  return earliestMatch?.province ?? "other";
 }
 
 // ---- Job type detection ----

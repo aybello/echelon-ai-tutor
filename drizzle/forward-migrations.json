@@ -48,6 +48,35 @@
       "file": "drizzle/0056_certification_bank_governance.sql",
       "sha256": "43df8406a00f5678956dbc16104ac64933326ed6e7c4e7c5ff9afc2702bb43f4",
       "proposedOnly": true
+    },
+    {
+      "version": 57,
+      "tag": "0057_add_analytics_anonymous_hash",
+      "file": "drizzle/0057_add_analytics_anonymous_hash.sql",
+      "sha256": "f23c51e94bd338ac68d361971c933c8364a16c89492f90cfa94fb53c9f1e7e7e",
+      "proposedOnly": true,
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "product_analytics_events",
+          "index": "analytics_anonymous_time_idx",
+          "columns": ["anonymousHash", "occurredAt"]
+        }
+      ]
+    },
+    {
+      "version": 58,
+      "tag": "0058_job_source_association",
+      "file": "drizzle/0058_job_source_association.sql",
+      "sha256": "dd351211bd3fd735fe3dbbf3c9700c9a49603c3bc32df6b28bd71662af9c8b10",
+      "proposedOnly": true,
+      "verifierAllowPendingColumnTypes": [
+        {
+          "table": "job_postings",
+          "column": "sourceType",
+          "baselineType": "enum('rss','scraper')",
+          "targetType": "enum('rss','scraper','association')"
+        }
+      ]
     }
   ]
 }

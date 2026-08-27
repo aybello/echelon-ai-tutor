@@ -17,8 +17,28 @@ import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvo
 import type { SubscriptionProvince } from "./subscriptionProducts";
 import { getIndividualExamPassExpiry } from "./individualExamPass";
 import { processRefund } from "./processRefund";
+import {
+  handleFlexDisputeClosed,
+  handleFlexDisputeCreated,
+  handleFlexFullRefund,
+  handleFlexPartialRefund,
+  handleFlexUnallocatedRefund,
+} from "../teams/flexRefundDisputeHandlers";
 
-
+export function parseRefundLicenceIds(metadata: Record<string, string> | null | undefined): number[] {
+  const raw = metadata?.licenceIds ?? metadata?.licence_ids;
+  if (!raw) return [];
+  let values: unknown[];
+  try {
+    const parsed = JSON.parse(raw);
+    values = Array.isArray(parsed) ? parsed : [parsed];
+  } catch {
+    values = raw.split(",");
+  }
+  return values
+    .map(value => Number(String(value).trim()))
+    .filter(value => Number.isInteger(value) && value > 0);
+}
 
 export function registerStripeWebhook(app: Express) {
   // MUST use raw body parser for Stripe signature verification
@@ -641,32 +661,65 @@ export function registerStripeWebhook(app: Express) {
         }
       }
 
+      if (event.type === "refund.created") {
+        const refund = event.data.object as any;
+        const pi = typeof refund.payment_intent === "string"
+          ? refund.payment_intent
+          : refund.payment_intent?.id;
+        if (pi) {
+          try {
+            const licenceIds = parseRefundLicenceIds(refund.metadata);
+            const handled = licenceIds.length > 0
+              ? await handleFlexPartialRefund(pi, licenceIds)
+              : await handleFlexUnallocatedRefund(pi);
+            if (handled) return res.json({ received: true });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] refund.created:", err.message);
+            return res.status(503).json({ error: "Course Pass refund processing failed" });
+          }
+        }
+      }
+
       if (event.type === "charge.refunded") {
         const charge = event.data.object as any;
         const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
         if (pi) {
           try {
+            const amount = Number(charge.amount ?? 0);
+            const amountRefunded = Number(charge.amount_refunded ?? 0);
+            const refundLicenceIds = Array.isArray(charge.refunds?.data)
+              ? charge.refunds.data.flatMap((refund: any) => parseRefundLicenceIds(refund.metadata))
+              : [];
+            const flexHandled = amount > 0 && amountRefunded >= amount
+              ? await handleFlexFullRefund(pi)
+              : refundLicenceIds.length > 0
+                ? await handleFlexPartialRefund(pi, refundLicenceIds)
+                : await handleFlexUnallocatedRefund(pi);
+            if (flexHandled) return res.json({ received: true });
+
             const db = await getDb();
-            if (db) {
-              const result = await processRefund(db, {
-                stripeEventId: event.id,
-                stripePaymentIntentId: pi,
-                stripeChargeId: charge.id ?? null,
-              });
-              if (result.state === "busy") {
-                return res.status(503).json({ error: "Refund event is already being processed" });
-              }
-              if (result.state === "retryable_failure") {
-                return res.status(503).json({ error: result.error });
-              }
-              if (result.state === "completed" && result.purchase) {
-                await notifyOwner({
-                  title: "Purchase refunded",
-                  content: `Refund for ${result.purchase.productKey} purchase ${pi}. Access revoked.`,
-                });
-              }
+            if (!db) return res.status(503).json({ error: "Database unavailable" });
+            const result = await processRefund(db, {
+              stripeEventId: event.id,
+              stripePaymentIntentId: pi,
+              stripeChargeId: charge.id ?? null,
+            });
+            if (result.state === "busy") {
+              return res.status(503).json({ error: "Refund event is already being processed" });
             }
-          } catch (err: any) { console.error("[Stripe Webhook] charge.refunded:", err.message); }
+            if (result.state === "retryable_failure") {
+              return res.status(503).json({ error: result.error });
+            }
+            if (result.state === "completed" && result.purchase) {
+              await notifyOwner({
+                title: "Purchase refunded",
+                content: `Refund for ${result.purchase.productKey} purchase ${pi}. Access revoked.`,
+              });
+            }
+          } catch (err: any) {
+            console.error("[Stripe Webhook] charge.refunded:", err.message);
+            return res.status(503).json({ error: "Refund processing failed" });
+          }
         }
       }
 
@@ -675,12 +728,36 @@ export function registerStripeWebhook(app: Express) {
         const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
         if (pi) {
           try {
-            const db = await getDb();
-            if (db) {
-              await db.update(purchases).set({ status: "disputed" }).where(eq(purchases.stripePaymentIntentId, pi));
-              await notifyOwner({ title: "\u26a0\ufe0f Dispute opened", content: `Chargeback for PI ${pi}. Review in Stripe.` });
+            const flexHandled = await handleFlexDisputeCreated(pi);
+            if (flexHandled) {
+              await notifyOwner({
+                title: "⚠️ Course Pass dispute opened",
+                content: `Chargeback for PI ${pi}. Order licences were suspended pending Stripe's decision.`,
+              });
+              return res.json({ received: true });
             }
-          } catch (err: any) { console.error("[Stripe Webhook] dispute.created:", err.message); }
+            const db = await getDb();
+            if (!db) return res.status(503).json({ error: "Database unavailable" });
+            await db.update(purchases).set({ status: "disputed" }).where(eq(purchases.stripePaymentIntentId, pi));
+            await notifyOwner({ title: "⚠️ Dispute opened", content: `Chargeback for PI ${pi}. Review in Stripe.` });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] dispute.created:", err.message);
+            return res.status(503).json({ error: "Dispute processing failed" });
+          }
+        }
+      }
+
+      if (event.type === "charge.dispute.closed") {
+        const dispute = event.data.object as any;
+        const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
+        if (pi && (dispute.status === "won" || dispute.status === "lost")) {
+          try {
+            const handled = await handleFlexDisputeClosed(pi, dispute.status);
+            if (handled) return res.json({ received: true });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] dispute.closed:", err.message);
+            return res.status(503).json({ error: "Dispute closure processing failed" });
+          }
         }
       }
 
