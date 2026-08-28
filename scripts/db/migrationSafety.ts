@@ -56,6 +56,13 @@ export interface ForwardMigration {
     index: string;
     columns: string[];
   }>;
+  /** Exact pending column-type transition allowed during baseline adoption. */
+  verifierAllowPendingColumnTypes?: Array<{
+    table: string;
+    column: string;
+    baselineType: string;
+    targetType: string;
+  }>;
 }
 
 export interface MigrationManifest {
@@ -403,6 +410,50 @@ export async function validateManifest(
         );
       }
     }
+    for (const allowedType of
+      migration.verifierAllowPendingColumnTypes ?? []) {
+      if (!migration.proposedOnly) {
+        errors.push(
+          `${migration.file} permits pending column drift but is not proposedOnly.`
+        );
+      }
+      const expectedTable = buildExpectedSchemaContract().tables.find(
+        table => table.name === allowedType.table
+      );
+      const expectedColumn = expectedTable?.columns.find(
+        column => column.name === allowedType.column
+      );
+      const baselineColumn = contract?.tables
+        .find(table => table.name === allowedType.table)
+        ?.columns.find(column => column.name === allowedType.column);
+      if (
+        !expectedColumn ||
+        normalizeMySqlType(expectedColumn.type) !==
+          normalizeMySqlType(allowedType.targetType)
+      ) {
+        errors.push(
+          `${migration.file} has an incorrect target type for ${allowedType.table}.${allowedType.column}.`
+        );
+      }
+      if (
+        !baselineColumn ||
+        normalizeMySqlType(baselineColumn.type) !==
+          normalizeMySqlType(allowedType.baselineType)
+      ) {
+        errors.push(
+          `${migration.file} has an incorrect baseline type for ${allowedType.table}.${allowedType.column}.`
+        );
+      }
+      const normalizedSql = sql.toLowerCase().replace(/[\s`]/g, "");
+      const requiredStatement =
+        `altertable${allowedType.table.toLowerCase()}modifycolumn${allowedType.column.toLowerCase()}` +
+        allowedType.targetType.toLowerCase().replace(/\s/g, "");
+      if (!normalizedSql.includes(requiredStatement)) {
+        errors.push(
+          `${migration.file} does not apply the declared type transition for ${allowedType.table}.${allowedType.column}.`
+        );
+      }
+    }
   }
 
   for (const file of declaredFiles) {
@@ -611,26 +662,54 @@ export function diffSchemaContracts(
 }
 
 /**
- * Downgrade only explicitly declared, checksum-validated, forward-only missing
- * indexes to warnings. All other contract errors remain blocking.
+ * Downgrade only explicitly declared, checksum-validated, forward-only schema
+ * changes to warnings. All other contract errors remain blocking.
  */
 export function downgradeProposedMissingIndexErrors(
   diff: ContractDiff,
   manifest: MigrationManifest
 ): ContractDiff {
   const proposedIndexes = new Map<string, ForwardMigration>();
+  const proposedColumnTypes = new Map<
+    string,
+    { migration: ForwardMigration; baselineType: string; targetType: string }
+  >();
   for (const migration of manifest.migrations) {
     if (!migration.proposedOnly) continue;
     for (const index of migration.verifierAllowMissingIndexes ?? []) {
       proposedIndexes.set(`${index.table}.${index.index}`, migration);
+    }
+    for (const column of migration.verifierAllowPendingColumnTypes ?? []) {
+      proposedColumnTypes.set(`${column.table}.${column.column}`, {
+        migration,
+        baselineType: normalizeMySqlType(column.baselineType),
+        targetType: normalizeMySqlType(column.targetType),
+      });
     }
   }
 
   const errors: string[] = [];
   const warnings = [...diff.warnings];
   for (const error of diff.errors) {
-    const match = /^Missing index: ([^.]+)\.(.+)$/.exec(error);
-    const migration = match ? proposedIndexes.get(`${match[1]}.${match[2]}`) : undefined;
+    const indexMatch = /^Missing index: ([^.]+)\.(.+)$/.exec(error);
+    const indexMigration = indexMatch
+      ? proposedIndexes.get(`${indexMatch[1]}.${indexMatch[2]}`)
+      : undefined;
+    const typeMatch =
+      /^Column type drift: ([^.]+)\.([^ ]+) is (.+), expected (.+)$/.exec(
+        error
+      );
+    const allowedType = typeMatch
+      ? proposedColumnTypes.get(`${typeMatch[1]}.${typeMatch[2]}`)
+      : undefined;
+    const typeMigration =
+      typeMatch &&
+      allowedType &&
+      normalizeMySqlType(typeMatch[3]) === allowedType.baselineType &&
+      normalizeMySqlType(typeMatch[4]) === allowedType.targetType
+        ? allowedType.migration
+        : undefined;
+    const migration = indexMigration ?? typeMigration;
     if (!migration) {
       errors.push(error);
       continue;

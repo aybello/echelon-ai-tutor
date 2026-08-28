@@ -2,6 +2,7 @@
  * Shared helpers for Echelon job board ingestion pipeline.
  * Used by fetchJobsRss.mjs and the orchestrator fetchJobs.mjs.
  */
+import { createHash } from "node:crypto";
 
 // ---- Province detection ----
 const PROVINCE_MAP = [
@@ -15,17 +16,20 @@ const PROVINCE_MAP = [
 export function detectProvince(locationStr) {
   if (!locationStr) return "other";
   const lower = locationStr.toLowerCase();
+  let earliestMatch = null;
   for (const { province, names } of PROVINCE_MAP) {
-    if (
-      names.some(name =>
+    for (const name of names) {
+      const match =
         name.length > 2
-          ? lower.includes(name)
-          : new RegExp(`(?:^|[^a-z])${name}(?:$|[^a-z])`, "i").test(lower)
-      )
-    )
-      return province;
+          ? { index: lower.indexOf(name) }
+          : new RegExp(`(?:^|[^a-z])${name}(?:$|[^a-z])`, "i").exec(lower);
+      const index = match?.index ?? -1;
+      if (index >= 0 && (!earliestMatch || index < earliestMatch.index)) {
+        earliestMatch = { province, index };
+      }
+    }
   }
-  return "other";
+  return earliestMatch?.province ?? "other";
 }
 
 // ---- Job type detection ----
@@ -148,6 +152,51 @@ export function normalizeUrl(url) {
   } catch {
     return url.split("?")[0];
   }
+}
+
+// ---- Stable job identity ---------------------------------------------------
+// Some association boards publish a fresh Cloudflare email-protection URL on
+// every request. URL-only upserts therefore create a new public row on every
+// refresh. A normalized source/title/company/location identity remains stable
+// while preserving distinct vacancies at different employers or locations.
+export function normalizeJobIdentityText(value) {
+  return decodeHtmlEntities(String(value ?? ""))
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function buildJobIdentityKey(job) {
+  return [job.sourceName, job.title, job.company, job.location]
+    .map(normalizeJobIdentityText)
+    .join("|");
+}
+
+/**
+ * Converts unstable SWWA apply-email links into a stable public board URL.
+ * The jobid query parameter is deterministic and is retained by normalizeUrl;
+ * SWWA safely ignores it while still opening the correct careers board.
+ */
+export function canonicalizeJobSourceUrl(job) {
+  const rawUrl = job.sourceUrl;
+  if (!rawUrl) return rawUrl;
+  try {
+    const url = new URL(rawUrl);
+    const isSwwaEmailProtection =
+      /(^|\.)swwa\.ca$/i.test(url.hostname) &&
+      url.pathname.toLowerCase() === "/cdn-cgi/l/email-protection";
+    if (isSwwaEmailProtection) {
+      const digest = createHash("sha256")
+        .update(buildJobIdentityKey(job))
+        .digest("hex")
+        .slice(0, 20);
+      return `https://www.swwa.ca/careers?jobid=echelon-${digest}`;
+    }
+  } catch {
+    // normalizeUrl below handles malformed third-party input fail-safely.
+  }
+  return normalizeUrl(rawUrl);
 }
 
 // ---- Fetch with timeout and polite User-Agent ----

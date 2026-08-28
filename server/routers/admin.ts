@@ -16,6 +16,7 @@ import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
+import { READINESS_MODEL_VERSION } from "../_core/readiness";
 import {
   buildJourneyIdentityResolver,
   cohortConversion,
@@ -48,6 +49,7 @@ export const adminRouter = router({
         occurredAt: productAnalyticsEvents.occurredAt,
         userId: productAnalyticsEvents.userId,
         emailHash: productAnalyticsEvents.emailHash,
+        anonymousHash: productAnalyticsEvents.anonymousHash,
         examType: productAnalyticsEvents.examType,
         metadata: productAnalyticsEvents.metadata,
       }).from(productAnalyticsEvents)
@@ -57,6 +59,7 @@ export const adminRouter = router({
       db.select({
         result: examOutcomes.result,
         readinessScore: examOutcomes.readinessScoreAtOutcome,
+        readinessModelVersion: examOutcomes.readinessModelVersion,
       }).from(examOutcomes)
         .where(gte(examOutcomes.recordedAt, since30)),
       db.select({ status: purchases.status })
@@ -119,8 +122,14 @@ export const adminRouter = router({
       new Set(["quiz_completed"]),
     );
 
-    const passed = outcomes.filter(outcome => outcome.result === "passed");
-    const failed = outcomes.filter(outcome => outcome.result === "failed");
+    // Calibration averages must never combine scores produced by different formulas.
+    // The headline figures use only the current learner model; other versions stay
+    // available in the database for explicitly versioned analysis.
+    const currentModelOutcomes = outcomes.filter(
+      outcome => outcome.readinessModelVersion === READINESS_MODEL_VERSION,
+    );
+    const passed = currentModelOutcomes.filter(outcome => outcome.result === "passed");
+    const failed = currentModelOutcomes.filter(outcome => outcome.result === "failed");
     const noShow = outcomes.filter(outcome => outcome.result === "no_show").length;
     const readinessAverage = (rows: typeof outcomes) => {
       const scores = rows.flatMap(row => row.readinessScore === null ? [] : [Number(row.readinessScore)]);

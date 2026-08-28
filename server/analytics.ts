@@ -60,7 +60,7 @@ export interface AnalyticsEvent {
   email?: string | null;
   /** Raw short-lived/browser identifier; SHA-256 hashed before persistence. */
   anonymousId?: string | null;
-  /** Already-hashed internal identity, used when a payment provider returns it. */
+  /** Already-hashed browser identity, returned by a payment provider in metadata. */
   identityHash?: string | null;
   examType?: string | null;
   productKey?: string | null;
@@ -76,6 +76,17 @@ export function hashAnalyticsAnonymousId(anonymousId: string): string {
   return createHash("sha256").update(`anonymous:${anonymousId.trim()}`).digest("hex");
 }
 
+export function resolveAnalyticsHashes(payload: Pick<AnalyticsEvent, "email" | "anonymousId" | "identityHash">) {
+  const validIdentityHash = payload.identityHash && /^[a-f0-9]{64}$/.test(payload.identityHash)
+    ? payload.identityHash
+    : null;
+  return {
+    emailHash: payload.email ? hashAnalyticsEmail(payload.email) : null,
+    anonymousHash: validIdentityHash
+      ?? (payload.anonymousId ? hashAnalyticsAnonymousId(payload.anonymousId) : null),
+  };
+}
+
 export async function persistAnalyticsEvent(payload: AnalyticsEvent): Promise<void> {
   try {
     const [{ getDb }, { productAnalyticsEvents }] = await Promise.all([
@@ -84,17 +95,13 @@ export async function persistAnalyticsEvent(payload: AnalyticsEvent): Promise<vo
     ]);
     const db = await getDb();
     if (!db) return;
+    const identity = resolveAnalyticsHashes(payload);
     await db.insert(productAnalyticsEvents).values({
       eventName: payload.event,
       occurredAt: new Date(payload.ts),
       userId: payload.userId ?? null,
-      emailHash: payload.identityHash && /^[a-f0-9]{64}$/.test(payload.identityHash)
-        ? payload.identityHash
-        : payload.email
-          ? hashAnalyticsEmail(payload.email)
-          : payload.anonymousId
-            ? hashAnalyticsAnonymousId(payload.anonymousId)
-            : null,
+      emailHash: identity.emailHash,
+      anonymousHash: identity.anonymousHash,
       examType: payload.examType ?? null,
       productKey: payload.productKey ?? null,
       orgId: payload.orgId ?? null,

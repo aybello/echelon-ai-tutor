@@ -45,6 +45,7 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
+const OitHub = lazy(() => import("./pages/OitHub"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
@@ -239,6 +240,7 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Landing} />
         <Route path={"/quiz"} component={Home} />
+        <Route path={"/oit"} component={OitHub} />
         <Route path={"/guides"} component={Guides} />
         <Route path={"/process"} component={Process} />
         <Route path={"/wastewater"} component={Wastewater} />

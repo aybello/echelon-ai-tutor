@@ -1750,3 +1750,31 @@
 
 ## PR 55 Approved Historical Ledger Reconciliation — August 27
 - [x] Record verified 0053 and 0056 states in order, apply migrations 0054, 0055, 0057, and 0058, and strictly verify production schema integrity
+
+## PR 55 Post-Deployment Analytics Verification Failure — August 27
+- [ ] Correct the analytics persistence mapping so anonymous visitor hashes are written to `anonymousHash`, then re-run the production verification
+
+## UWS Schedule Migration — August 27
+- [ ] Identify the target UWS repository and exact Echelon schedules to transfer before moving scheduling ownership
+
+## DMZ Pitch Deck v5 Title Restoration — August 28
+- [x] Restore the original simple section titles while retaining the polished deck layouts and verified content
+
+## Production User Count Reconciliation — August 28
+- [x] Recalculate distinct people across registered accounts, purchases, trials, and learning activity using current production data
+
+## DMZ Pitch Deck v5 Traction Update — August 28
+- [x] Update the traction slide with the latest Stripe revenue and MRR plus the recalculated identifiable platform audience
+
+## DMZ Pitch Deck v5 Founder Positioning Update — August 28
+- [x] Replace the founder slide content with the provided operational, enterprise-scale, credential, and advisory-board positioning
+- [x] Replace the founder slide with the corrected EIT, municipal operations, certification, and advisory-board profile provided by Ay
+
+## Newly Available Repository Updates — August 28
+- [x] Identify and review newly available pull requests before making a merge recommendation
+
+## PR 56 Release Marker Correction — August 28
+- [x] Remove the unverified analytics identity capability from the public PR 56 release marker and validate the revision
+
+## PR 56 Merge and Deployment — August 28
+- [ ] Merge the validated PR 56 revision, deploy the merged Echelon Institute release, and complete post-deployment verification

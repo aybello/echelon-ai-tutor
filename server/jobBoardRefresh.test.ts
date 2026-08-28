@@ -7,14 +7,19 @@ import {
   parseSwwa,
 } from "./scripts/fetchJobsAssociations.mjs";
 import { ingestRss } from "./scripts/fetchJobsRss.mjs";
-import { decodeHtmlEntities } from "./scripts/jobUtils.mjs";
+import {
+  buildJobIdentityKey,
+  canonicalizeJobSourceUrl,
+  decodeHtmlEntities,
+  detectProvince,
+} from "./scripts/jobUtils.mjs";
 
 const FIXED_NOW = new Date("2026-08-24T12:00:00.000Z");
 
 function makeConnection(existingUrls: string[] = []) {
   const existing = new Set(existingUrls);
   const execute = vi.fn(async (query: string, params: unknown[] = []) => {
-    if (query.startsWith("SELECT id FROM job_postings")) {
+    if (query.startsWith("SELECT id")) {
       return [existing.has(String(params[0])) ? [{ id: 42 }] : []];
     }
     if (query.includes("lastSeenAt <")) {
@@ -42,11 +47,15 @@ describe("job board ingestion", () => {
       ingestRss: async (upsertJob: (job: unknown) => Promise<void>) => {
         await upsertJob({
           title: "Existing operator",
+          location: "Toronto, Ontario",
+          province: "ON",
           sourceUrl: "https://jobs.test/existing",
           sourceName: "Job Bank Canada",
         });
         await upsertJob({
           title: "New operator",
+          location: "Vancouver, British Columbia",
+          province: "BC",
           sourceUrl: "https://jobs.test/new",
           sourceName: "Job Bank Canada",
         });
@@ -63,25 +72,46 @@ describe("job board ingestion", () => {
         successfulSources: 1,
         failedSources: 0,
       }),
-      ingestAssociations: async () => ({
-        errors: [],
-        totalFetched: 0,
-        successfulSources: 4,
-        failedSources: 0,
-      }),
+      ingestAssociations: async (
+        upsertJob: (job: unknown) => Promise<void>
+      ) => {
+        await upsertJob({
+          title: "Utility operator",
+          location: "Edmonton, Alberta",
+          province: "AB",
+          sourceUrl: "https://jobs.test/association",
+          sourceName: "AWWOA",
+          sourceType: "association",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 4,
+          failedSources: 0,
+        };
+      },
     });
 
     expect(createConnection).toHaveBeenCalledWith("mysql://test");
     expect(result).toMatchObject({
       ok: true,
-      newCount: 1,
+      newCount: 2,
       seenCount: 1,
-      processedCount: 2,
+      processedCount: 3,
       expiredCount: 2,
-      totalFetched: 2,
+      totalFetched: 3,
       successfulSources: 6,
       failedSources: 0,
+      productiveTiers: 2,
+      provinceCount: 3,
+      provinces: ["AB", "BC", "ON"],
     });
+    expect(
+      connection.execute.mock.calls.some(
+        ([query, params]) =>
+          String(query).includes("company = COALESCE") && params?.at(-1) === 42
+      )
+    ).toBe(true);
     expect(connection.execute).toHaveBeenCalledWith(
       expect.stringContaining("lastSeenAt <"),
       [new Date("2026-08-10T12:00:00.000Z")]
@@ -118,7 +148,7 @@ describe("job board ingestion", () => {
 
     expect(result.ok).toBe(false);
     expect(result.errors).toContain(
-      "Expiry skipped because no trustworthy upstream job set was returned; existing jobs were preserved"
+      "Expiry skipped because national coverage was incomplete (0 productive tiers, 0 provinces); existing jobs were preserved"
     );
     expect(
       connection.execute.mock.calls.some(([query]) =>
@@ -164,6 +194,129 @@ describe("job board ingestion", () => {
     expect(connection.end).toHaveBeenCalledOnce();
   });
 
+  it("does not report a one-feed, one-province refresh as nationally healthy", async () => {
+    const connection = makeConnection();
+
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      ingestRss: async (upsertJob: (job: unknown) => Promise<void>) => {
+        await upsertJob({
+          title: "Ontario water operator",
+          location: "Ontario",
+          sourceUrl: "https://jobs.test/ontario-only",
+          sourceName: "OWWA",
+          sourceType: "rss",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 6,
+        };
+      },
+      ingestMunicipal: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 20,
+      }),
+      ingestAssociations: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 4,
+      }),
+    });
+
+    expect(result).toMatchObject({
+      ok: false,
+      productiveTiers: 1,
+      provinceCount: 1,
+      provinces: ["ON"],
+      expiredCount: 0,
+    });
+    expect(
+      connection.execute.mock.calls.some(([query]) =>
+        String(query).includes("lastSeenAt <")
+      )
+    ).toBe(false);
+  });
+
+  it("fails the refresh when a source fetched jobs that the database could not store", async () => {
+    const execute = vi.fn(async (query: string, params: unknown[] = []) => {
+      if (query.startsWith("SELECT id")) return [[]];
+      if (
+        query.includes("INSERT INTO job_postings") &&
+        params.includes("association")
+      ) {
+        throw Object.assign(new Error("invalid sourceType enum"), {
+          code: "ER_TRUNCATED_WRONG_VALUE_FOR_FIELD",
+        });
+      }
+      return [{ affectedRows: 1 }];
+    });
+    const connection = {
+      execute,
+      end: vi.fn().mockResolvedValue(undefined),
+    };
+
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      ingestRss: async (upsertJob: (job: unknown) => Promise<void>) => {
+        await upsertJob({
+          title: "Ontario water operator",
+          location: "Ontario",
+          sourceUrl: "https://jobs.test/ontario",
+          sourceName: "OWWA",
+          sourceType: "rss",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestAssociations: async (
+        upsertJob: (job: unknown) => Promise<void>
+      ) => {
+        await upsertJob({
+          title: "Alberta utility operator",
+          location: "Alberta",
+          sourceUrl: "https://jobs.test/alberta",
+          sourceName: "AWWOA",
+          sourceType: "association",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestMunicipal: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 0,
+      }),
+    });
+
+    expect(result).toMatchObject({
+      ok: false,
+      newCount: 1,
+      failedUpsertCount: 1,
+      productiveTiers: 2,
+      provinceCount: 1,
+      provinces: ["ON"],
+    });
+    expect(result.errors).toContain(
+      "Upsert failed (https://jobs.test/alberta): invalid sourceType enum"
+    );
+  });
+
   it("closes the database connection when an ingestion tier throws", async () => {
     const connection = makeConnection();
 
@@ -190,6 +343,181 @@ describe("job board ingestion", () => {
     ).rejects.toThrow("unexpected feed parser failure");
 
     expect(connection.end).toHaveBeenCalledOnce();
+  });
+});
+
+describe("stable job identity", () => {
+  const swwaJob = {
+    title: "Water & Wastewater Technologist 2",
+    company: "City of Regina",
+    location: "Regina, SK",
+    sourceName: "SWWA",
+  };
+
+  it("ignores case, whitespace, and HTML entity differences", () => {
+    expect(
+      buildJobIdentityKey({
+        ...swwaJob,
+        title: "  Water &amp;   Wastewater Technologist 2 ",
+        company: "CITY OF REGINA",
+      })
+    ).toBe(buildJobIdentityKey(swwaJob));
+  });
+
+  it("replaces changing SWWA Cloudflare email links with one stable URL", () => {
+    const first = canonicalizeJobSourceUrl({
+      ...swwaJob,
+      sourceUrl:
+        "https://www.swwa.ca/cdn-cgi/l/email-protection#4f242c2d2a2f2b2c",
+    });
+    const second = canonicalizeJobSourceUrl({
+      ...swwaJob,
+      sourceUrl:
+        "https://www.swwa.ca/cdn-cgi/l/email-protection#9af5f8f9fefbf5f8",
+    });
+
+    expect(first).toBe(second);
+    expect(first).toMatch(
+      /^https:\/\/www\.swwa\.ca\/careers\?jobid=echelon-[a-f0-9]{20}$/
+    );
+    expect(first).not.toContain("email-protection");
+  });
+
+  it("stores repeated source rows only once during a refresh", async () => {
+    const connection = makeConnection();
+    const job = {
+      ...swwaJob,
+      province: "SK",
+      sourceType: "association",
+      sourceUrl:
+        "https://www.swwa.ca/cdn-cgi/l/email-protection#4f242c2d2a2f2b2c",
+    };
+
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      now: () => FIXED_NOW,
+      ingestRss: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 0,
+      }),
+      ingestAssociations: async (
+        upsertJob: (job: unknown) => Promise<void>
+      ) => {
+        await upsertJob(job);
+        await upsertJob({
+          ...job,
+          sourceUrl:
+            "https://www.swwa.ca/cdn-cgi/l/email-protection#9af5f8f9fefbf5f8",
+        });
+        return {
+          errors: [],
+          totalFetched: 2,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestMunicipal: async (upsertJob: (job: unknown) => Promise<void>) => {
+        await upsertJob({
+          title: "Water operator",
+          company: "City of Winnipeg",
+          location: "Winnipeg, MB",
+          sourceName: "City of Winnipeg",
+          sourceType: "scraper",
+          sourceUrl: "https://jobs.test/winnipeg-water-operator",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+    });
+
+    expect(result).toMatchObject({
+      ok: true,
+      newCount: 2,
+      duplicateInputCount: 1,
+      productiveTiers: 2,
+      provinceCount: 2,
+    });
+    const inserts = connection.execute.mock.calls.filter(([query]) =>
+      String(query).includes("INSERT INTO job_postings")
+    );
+    expect(inserts).toHaveLength(2);
+  });
+
+  it("deactivates extra stored rows that match the same natural job", async () => {
+    const execute = vi.fn(async (query: string) => {
+      if (query.startsWith("SELECT id")) {
+        return [[{ id: 12 }, { id: 34 }]];
+      }
+      if (query.includes("lastSeenAt <")) return [{ affectedRows: 0 }];
+      return [{ affectedRows: 1 }];
+    });
+    const connection = {
+      execute,
+      end: vi.fn().mockResolvedValue(undefined),
+    };
+
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      now: () => FIXED_NOW,
+      ingestRss: async (upsertJob: (job: unknown) => Promise<void>) => {
+        await upsertJob({
+          title: "Ontario water operator",
+          company: "City of Toronto",
+          location: "Toronto, ON",
+          sourceUrl: "https://jobs.test/toronto",
+          sourceName: "OWWA",
+          sourceType: "rss",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestAssociations: async (
+        upsertJob: (job: unknown) => Promise<void>
+      ) => {
+        await upsertJob({
+          title: "Alberta utility operator",
+          company: "City of Edmonton",
+          location: "Edmonton, AB",
+          sourceUrl: "https://jobs.test/edmonton",
+          sourceName: "AWWOA",
+          sourceType: "association",
+        });
+        return {
+          errors: [],
+          totalFetched: 1,
+          successfulSources: 1,
+          failedSources: 0,
+        };
+      },
+      ingestMunicipal: async () => ({
+        errors: [],
+        totalFetched: 0,
+        successfulSources: 0,
+        failedSources: 0,
+      }),
+    });
+
+    expect(result).toMatchObject({
+      ok: true,
+      seenCount: 2,
+      deduplicatedCount: 2,
+    });
+    expect(execute).toHaveBeenCalledWith(
+      expect.stringContaining("WHERE id IN (?)"),
+      [FIXED_NOW, 34]
+    );
   });
 });
 
@@ -238,6 +566,14 @@ describe("association board parsers", () => {
 });
 
 describe("RSS source isolation", () => {
+  it("uses the earliest explicit province signal instead of Ontario map order", () => {
+    expect(
+      detectProvince(
+        "Fort McMurray, Alberta — Ontario Water Works Association listing"
+      )
+    ).toBe("AB");
+  });
+
   it("decodes numeric and named entities before jobs reach the UI", () => {
     expect(
       decodeHtmlEntities("Water &#038; Wastewater &#8211; Lead &amp; Operator")

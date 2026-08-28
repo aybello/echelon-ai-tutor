@@ -141,6 +141,8 @@ export const jobsRouter = router({
       .select({
         total: sql<number>`count(*)`,
         lastRefreshedAt: sql<Date | null>`max(${jobPostings.lastSeenAt})`,
+        sourceCount: sql<number>`count(distinct ${jobPostings.sourceName})`,
+        provinceCount: sql<number>`count(distinct case when ${jobPostings.province} <> 'other' then ${jobPostings.province} end)`,
       })
       .from(jobPostings)
       .where(
@@ -153,10 +155,18 @@ export const jobsRouter = router({
       ? new Date(result.lastRefreshedAt)
       : null;
     const staleBefore = Date.now() - REFRESH_STALE_AFTER_HOURS * 60 * 60 * 1000;
+    const sourceCount = Number(result?.sourceCount ?? 0);
+    const provinceCount = Number(result?.provinceCount ?? 0);
     return {
       total: Number(result?.total ?? 0),
       lastRefreshedAt,
-      isStale: !lastRefreshedAt || lastRefreshedAt.getTime() < staleBefore,
+      sourceCount,
+      provinceCount,
+      isStale:
+        !lastRefreshedAt ||
+        lastRefreshedAt.getTime() < staleBefore ||
+        sourceCount < 2 ||
+        provinceCount < 2,
     };
   }),
 });

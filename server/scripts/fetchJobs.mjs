@@ -13,6 +13,15 @@ import mysql from "mysql2/promise";
 import { ingestAssociations } from "./fetchJobsAssociations.mjs";
 import { ingestRss } from "./fetchJobsRss.mjs";
 import { ingestMunicipal } from "./fetchJobsMunicipal.mjs";
+import {
+  buildJobIdentityKey,
+  canonicalizeJobSourceUrl,
+  detectProvince,
+  normalizeJobIdentityText,
+} from "./jobUtils.mjs";
+
+const VALID_PROVINCES = new Set(["ON", "BC", "AB", "SK", "MB", "other"]);
+const VALID_SOURCE_TYPES = new Set(["rss", "scraper", "association"]);
 
 /**
  * Run one complete refresh.
@@ -37,25 +46,115 @@ export async function fetchAndIngest(options = {}) {
 
   let newCount = 0;
   let seenCount = 0;
+  let failedUpsertCount = 0;
   let expiredCount = 0;
+  let deduplicatedCount = 0;
+  let duplicateInputCount = 0;
   const allErrors = [];
+  const observedProvinces = new Set();
+  const seenJobIdentities = new Set();
   const runStart = now();
 
   // Single upsert function passed to every tier.
   async function upsertJob(job) {
     if (!job.sourceUrl) return;
+    const sourceUrl = canonicalizeJobSourceUrl(job);
+    const normalizedJob = { ...job, sourceUrl };
+    const identityKey = buildJobIdentityKey(normalizedJob);
+    if (seenJobIdentities.has(identityKey)) {
+      duplicateInputCount++;
+      return;
+    }
+    seenJobIdentities.add(identityKey);
+
+    const inferredProvince = detectProvince(
+      [normalizedJob.location, normalizedJob.title, normalizedJob.description]
+        .filter(Boolean)
+        .join(" ")
+    );
+    const province =
+      inferredProvince !== "other"
+        ? inferredProvince
+        : VALID_PROVINCES.has(normalizedJob.province)
+          ? normalizedJob.province
+          : "other";
+    const sourceType = VALID_SOURCE_TYPES.has(normalizedJob.sourceType)
+      ? normalizedJob.sourceType
+      : "rss";
     try {
+      const sourceNameIdentity = normalizeJobIdentityText(normalizedJob.sourceName);
+      const titleIdentity = normalizeJobIdentityText(normalizedJob.title);
+      const companyIdentity = normalizeJobIdentityText(normalizedJob.company);
+      const locationIdentity = normalizeJobIdentityText(normalizedJob.location);
       const [rows] = await conn.execute(
-        "SELECT id FROM job_postings WHERE sourceUrl = ? LIMIT 1",
-        [job.sourceUrl]
+        `SELECT id, sourceUrl FROM job_postings
+         WHERE sourceUrl = ?
+            OR (
+              LOWER(TRIM(COALESCE(sourceName, ''))) = ?
+              AND LOWER(TRIM(title)) = ?
+              AND LOWER(TRIM(COALESCE(company, ''))) = ?
+              AND LOWER(TRIM(COALESCE(location, ''))) = ?
+            )
+         ORDER BY CASE WHEN sourceUrl = ? THEN 0 ELSE 1 END, id`,
+        [
+          sourceUrl,
+          sourceNameIdentity,
+          titleIdentity,
+          companyIdentity,
+          locationIdentity,
+          sourceUrl,
+        ]
       );
 
       if (rows.length > 0) {
-        // Refresh lastSeenAt and reactivate if it had been expired
+        const canonicalRow = rows[0];
+        // Refresh the complete source record so parser and classification fixes
+        // repair existing rows instead of preserving stale public data forever.
         await conn.execute(
-          "UPDATE job_postings SET lastSeenAt = ?, isActive = 1 WHERE id = ?",
-          [runStart, rows[0].id]
+          `UPDATE job_postings SET
+             title = ?,
+             company = COALESCE(?, company),
+             location = COALESCE(?, location),
+             province = CASE WHEN ? = 'other' THEN province ELSE ? END,
+             salary = COALESCE(?, salary),
+             jobType = ?,
+             sourceUrl = ?,
+             sourceName = ?,
+             sourceType = ?,
+             description = COALESCE(?, description),
+             postedAt = COALESCE(?, postedAt),
+             lastSeenAt = ?,
+             isActive = 1
+           WHERE id = ?`,
+          [
+            normalizedJob.title,
+            normalizedJob.company ?? null,
+            normalizedJob.location ?? null,
+            province,
+            province,
+            normalizedJob.salary ?? null,
+            normalizedJob.jobType ?? "full-time",
+            sourceUrl,
+            normalizedJob.sourceName,
+            sourceType,
+            normalizedJob.description ?? null,
+            normalizedJob.postedAt ?? null,
+            runStart,
+            canonicalRow.id,
+          ]
         );
+        const duplicateIds = rows.slice(1).map(row => row.id);
+        if (duplicateIds.length > 0) {
+          const placeholders = duplicateIds.map(() => "?").join(", ");
+          await conn.execute(
+            `UPDATE job_postings
+             SET isActive = 0, lastSeenAt = ?
+             WHERE id IN (${placeholders})`,
+            [runStart, ...duplicateIds]
+          );
+          deduplicatedCount += duplicateIds.length;
+        }
+        if (province !== "other") observedProvinces.add(province);
         seenCount++;
       } else {
         await conn.execute(
@@ -63,27 +162,29 @@ export async function fetchAndIngest(options = {}) {
             (title, company, location, province, salary, jobType, sourceUrl, sourceName, sourceType, description, postedAt, isFeatured, isActive, lastSeenAt, createdAt)
            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, ?, NOW())`,
           [
-            job.title,
-            job.company ?? null,
-            job.location ?? null,
-            job.province ?? "other",
-            job.salary ?? null,
-            job.jobType ?? "full-time",
-            job.sourceUrl,
-            job.sourceName,
-            job.sourceType ?? "rss",
-            job.description ?? null,
-            job.postedAt ?? runStart,
+            normalizedJob.title,
+            normalizedJob.company ?? null,
+            normalizedJob.location ?? null,
+            province,
+            normalizedJob.salary ?? null,
+            normalizedJob.jobType ?? "full-time",
+            sourceUrl,
+            normalizedJob.sourceName,
+            sourceType,
+            normalizedJob.description ?? null,
+            normalizedJob.postedAt ?? runStart,
             runStart,
           ]
         );
+        if (province !== "other") observedProvinces.add(province);
         newCount++;
       }
     } catch (err) {
       if (err.code === "ER_DUP_ENTRY" || /unique/i.test(err.message)) {
         seenCount++;
       } else {
-        allErrors.push(`Upsert failed (${job.sourceUrl}): ${err.message}`);
+        failedUpsertCount++;
+        allErrors.push(`Upsert failed (${sourceUrl}): ${err.message}`);
       }
     }
   }
@@ -113,10 +214,15 @@ export async function fetchAndIngest(options = {}) {
       (rss.totalFetched ?? 0) +
       (associations.totalFetched ?? 0) +
       (municipal.totalFetched ?? 0);
+    const productiveTiers = [rss, associations, municipal].filter(
+      result => (result.totalFetched ?? 0) > 0
+    ).length;
+    const provinceCount = observedProvinces.size;
+    const hasNationalCoverage = productiveTiers >= 2 && provinceCount >= 2;
 
-    // Never age out the board during a total upstream outage. Once at least one
-    // source succeeds, normal 14-day last-seen cleanup can safely resume.
-    if (successfulSources > 0 && totalFetched > 0) {
+    // Never age out national inventory during a partial-source refresh. At
+    // least two independent tiers and provinces must contribute current jobs.
+    if (hasNationalCoverage) {
       const staleCutoff = new Date(
         runStart.getTime() - 14 * 24 * 60 * 60 * 1000
       );
@@ -131,21 +237,33 @@ export async function fetchAndIngest(options = {}) {
       }
     } else {
       allErrors.push(
-        "Expiry skipped because no trustworthy upstream job set was returned; existing jobs were preserved"
+        `Expiry skipped because national coverage was incomplete (${productiveTiers} productive tiers, ${provinceCount} provinces); existing jobs were preserved`
       );
     }
 
     const processedCount = newCount + seenCount;
     // Across the national feeds, a zero-job run is not a healthy refresh. Mark
     // it retryable so silent parser/source changes cannot look successful.
-    const ok = successfulSources > 0 && totalFetched > 0 && processedCount > 0;
+    const ok =
+      successfulSources > 0 &&
+      totalFetched > 0 &&
+      processedCount > 0 &&
+      failedUpsertCount === 0 &&
+      hasNationalCoverage;
 
     console.log(`\n\u2705 Ingestion complete:`);
     console.log(`   New:     ${newCount}`);
     console.log(`   Seen:    ${seenCount} (existing, refreshed)`);
+    console.log(
+      `   Deduped: ${deduplicatedCount} stored rows, ${duplicateInputCount} repeated source rows`
+    );
+    console.log(`   Failed:  ${failedUpsertCount} database upserts`);
     console.log(`   Expired: ${expiredCount}`);
     console.log(
       `   Sources: ${successfulSources} succeeded, ${failedSources} failed`
+    );
+    console.log(
+      `   Coverage: ${productiveTiers} productive tiers, ${provinceCount} provinces`
     );
     if (allErrors.length) {
       console.warn(`\n\u26a0\ufe0f  ${allErrors.length} error(s):`);
@@ -158,10 +276,16 @@ export async function fetchAndIngest(options = {}) {
       newCount,
       seenCount,
       processedCount,
+      failedUpsertCount,
       expiredCount,
+      deduplicatedCount,
+      duplicateInputCount,
       totalFetched,
       successfulSources,
       failedSources,
+      productiveTiers,
+      provinceCount,
+      provinces: [...observedProvinces].sort(),
       errors: allErrors,
     };
   } finally {
