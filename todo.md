@@ -1777,4 +1777,23 @@
 - [x] Remove the unverified analytics identity capability from the public PR 56 release marker and validate the revision
 
 ## PR 56 Merge and Deployment — August 28
-- [ ] Merge the validated PR 56 revision, deploy the merged Echelon Institute release, and complete post-deployment verification
+- [x] Merge the validated PR 56 revision, deploy the merged Echelon Institute release, and complete post-deployment verification
+
+## PR 57 OIT Question-Bank Review and Release — August 28
+- [x] Inspect the 500-question OIT Water and 500-question OIT Wastewater packages, their source alignment, and their import safeguards
+- [x] Run deterministic validation plus a full external-model content-quality review before merging
+- [ ] Rebuild PR 57’s unsafe and predictable question package before any learner-facing import, merge, or deployment
+
+## PR 59 Review — August 28
+- [x] Review PR 59’s implementation and validation evidence before recommending whether it can be merged
+
+## PR 59 Refresh and Integration — August 28
+- [x] Refresh PR 59 against the latest canonical Echelon Institute branch without overwriting the training-record release
+- [x] Validate the integrated OTP change and update the pull request for merge readiness
+- [x] Resolve the canonical-versus-GitHub main-history divergence before applying the PR 59 OTP fix to either branch
+
+## Canonical and GitHub History Reconciliation — August 28
+- [x] Merge the divergent GitHub main history into an isolated canonical integration branch without overwriting current training-record work
+- [x] Validate the combined migration chain, core application behavior, and the reviewed PR 59 OTP fix
+- [x] Update the public release marker to accurately identify the deployed OTP-reliability release
+- [ ] Promote the reconciled branch, update GitHub, deploy, and verify the integrated Echelon Institute release

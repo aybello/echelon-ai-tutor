@@ -20,8 +20,10 @@ describe("public release health", () => {
         "course-pass-order-scoped-refunds-v1",
         "job-coverage-health-v2",
         "job-identity-dedup-v1",
+        "manager-otp-delivery-reliability-v1",
       ])
     );
+    expect(RELEASE_ID).toBe("2026-08-28.otp-reliability.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
