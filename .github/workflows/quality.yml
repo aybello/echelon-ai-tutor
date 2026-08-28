@@ -67,7 +67,7 @@ jobs:
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:adopt
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
-            -e "DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions; DROP INDEX analytics_anonymous_time_idx ON product_analytics_events; ALTER TABLE product_analytics_events DROP COLUMN anonymousHash;"
+            -e "DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions, on_the_job_training_records, learning_activity_sessions, training_attestations; DROP INDEX analytics_anonymous_time_idx ON product_analytics_events; ALTER TABLE product_analytics_events DROP COLUMN anonymousHash;"
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:apply
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
