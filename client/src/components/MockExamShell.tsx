@@ -17,6 +17,7 @@ import { shuffle } from "@/lib/utils";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
+import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -27,6 +28,13 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
   const [loading, setLoading] = useState(false);
   const chatMutation = trpc.tutor.chat.useMutation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  useLearningActivitySession({
+    courseKey: examType,
+    activityType: "ai_tutor",
+    enabled: open,
+    topic: q.module,
+    unitsCompleted: messages.filter((message) => message.role === "user").length,
+  });
 
   const closeTutor = useCallback(() => setOpen(false), []);
 
@@ -540,6 +548,15 @@ export default function MockExamShell({
       .sort(([, a], [, b]) => (a.correct / a.total) - (b.correct / b.total));
     return { correct, score, pct, passed, moduleBreakdown, sortedModules };
   }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold]);
+
+  useLearningActivitySession({
+    courseKey: productKey,
+    activityType: "mock_exam",
+    enabled: examState === "active" && !showPreviewGate,
+    unitsCompleted: answered,
+    score: results?.correct,
+    total: results ? questions.length : undefined,
+  });
 
   // Save result once
   useEffect(() => {

@@ -77,6 +77,13 @@
           "targetType": "enum('rss','scraper','association')"
         }
       ]
+    },
+    {
+      "version": 59,
+      "tag": "0059_training_hours_records",
+      "file": "drizzle/0059_training_hours_records.sql",
+      "sha256": "001bc0aed125999df32f284711d7bddeb54c0fde6445b37ceaa3474058d777b5",
+      "proposedOnly": true
     }
   ]
 }

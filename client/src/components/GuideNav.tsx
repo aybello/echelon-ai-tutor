@@ -10,6 +10,8 @@ import {
   type GuideLevel,
 } from "@/lib/guideRegistry";
 import { useGuideProgress } from "@/hooks/useGuideProgress";
+import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { getAllCourses } from "@shared/courseRegistry";
 
 interface GuideNavProps {
   guideId: GuideId;
@@ -35,6 +37,15 @@ export default function GuideNav({ guideId, currentStepId, currentStepLabel, tot
     progress.preferences.jurisdiction,
     progress.preferences.level,
   );
+  const practicePath = practiceHref.split("?")[0];
+  const trackingCourse = getAllCourses().find((course) => course.quizPath === practicePath)?.courseKey ?? null;
+  useLearningActivitySession({
+    courseKey: trackingCourse ?? "",
+    activityType: "process_guide",
+    enabled: trackingCourse !== null,
+    topic: currentStepLabel,
+    unitsCompleted: progress.record.completedStepIds.length,
+  });
 
   const handleJurisdiction = (value: GuideJurisdiction) => progress.setJurisdiction(value);
   const visibleLevels = progress.preferences.jurisdiction === "wpi"

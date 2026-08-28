@@ -92,7 +92,7 @@ function resolveTermStart(org: { termStart: Date | null; termEnd: Date }): Date 
  * organisation itself is no longer active.
  * Returns the orgId and managerEmail attached to the context.
  */
-async function resolveOrgManager(ctx: {
+export async function resolveOrgManager(ctx: {
   user: { id: number; email?: string | null } | null;
   studentEmail?: string | null;
 }): Promise<{ orgId: number; managerEmail: string }> {

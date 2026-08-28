@@ -55,6 +55,11 @@ describe("forward-only migration safety", () => {
         tag: "0058_job_source_association",
         proposedOnly: true,
       }),
+      expect.objectContaining({
+        version: 59,
+        tag: "0059_training_hours_records",
+        proposedOnly: true,
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -80,6 +85,8 @@ describe("forward-only migration safety", () => {
     const tables = new Map(contract.tables.map(table => [table.name, table]));
     expect(tables.has("learner_onboarding")).toBe(true);
     expect(tables.has("diagnostic_sessions")).toBe(true);
+    expect(tables.has("learning_activity_sessions")).toBe(true);
+    expect(tables.has("training_attestations")).toBe(true);
     expect(
       tables
         .get("team_flex_orders")
