@@ -22,5 +22,6 @@ describe("public release health", () => {
         "job-identity-dedup-v1",
       ])
     );
+    expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });

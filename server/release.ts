@@ -8,7 +8,6 @@
 export const RELEASE_ID = "2026-08-27.product-integrity.1";
 
 export const RELEASE_CAPABILITIES = [
-  "analytics-identity-v1",
   "course-pass-order-scoped-refunds-v1",
   "job-coverage-health-v2",
   "job-identity-dedup-v1",
