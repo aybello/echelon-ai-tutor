@@ -36,17 +36,38 @@ export default function OtpLogin() {
   const [errorMsg, setErrorMsg] = useState("");
   const [attemptsLeft, setAttemptsLeft] = useState(5);
   const [isManager, setIsManager] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const cooldownRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  function startResendCooldown() {
+    setResendCooldown(60);
+    if (cooldownRef.current) clearInterval(cooldownRef.current);
+    cooldownRef.current = setInterval(() => {
+      setResendCooldown((remaining) => {
+        if (remaining <= 1) {
+          if (cooldownRef.current) clearInterval(cooldownRef.current);
+          return 0;
+        }
+        return remaining - 1;
+      });
+    }, 1000);
+  }
+
+  useEffect(() => () => {
+    if (cooldownRef.current) clearInterval(cooldownRef.current);
+  }, []);
 
   const requestOtp = trpc.emailOtp.requestOtp.useMutation({
     onSuccess: () => {
       setStep("code");
       setErrorMsg("");
+      startResendCooldown();
       // Focus first code input after transition
       setTimeout(() => inputRefs.current[0]?.focus(), 100);
     },
-    onError: () => {
-      setErrorMsg("Something went wrong. Please try again.");
+    onError: (error) => {
+      setErrorMsg(error.message || "We couldn't send your login code. Please try again.");
     },
   });
 
@@ -328,18 +349,23 @@ export default function OtpLogin() {
                   setErrorMsg("");
                   requestOtp.mutate({ email });
                 }}
+                disabled={requestOtp.isPending || resendCooldown > 0}
                 style={{
                   background: "none",
                   border: "none",
-                  color: "#1D4ED8",
+                  color: resendCooldown > 0 ? "#94A3B8" : "#1D4ED8",
                   fontWeight: 600,
                   fontSize: 13,
-                  cursor: "pointer",
+                  cursor: requestOtp.isPending || resendCooldown > 0 ? "not-allowed" : "pointer",
                   padding: 0,
                   fontFamily: "inherit",
                 }}
               >
-                Resend code
+                {requestOtp.isPending
+                  ? "Sending…"
+                  : resendCooldown > 0
+                    ? `Resend in ${resendCooldown}s`
+                    : "Resend code"}
               </button>
             </p>
             <p style={{ marginTop: 8, fontSize: 13, color: "#94A3B8" }}>
