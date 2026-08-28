@@ -1796,4 +1796,10 @@
 - [x] Merge the divergent GitHub main history into an isolated canonical integration branch without overwriting current training-record work
 - [x] Validate the combined migration chain, core application behavior, and the reviewed PR 59 OTP fix
 - [x] Update the public release marker to accurately identify the deployed OTP-reliability release
-- [ ] Promote the reconciled branch, update GitHub, deploy, and verify the integrated Echelon Institute release
+- [x] Promote the reconciled branch, update GitHub, deploy, and verify the integrated Echelon Institute release
+
+## Newly Available Pull Request Review — August 28
+- [x] Identify and review the newly available pull request before making a merge recommendation
+
+## PR 60 Manager Organization Resolution Release — August 28
+- [ ] Merge the validated manager-organization resolution fix, deploy it, and verify the live release marker
