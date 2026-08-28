@@ -41,6 +41,7 @@ const Admin = lazy(() => import("./pages/Admin"));
 const Account = lazy(() => import("./pages/Account"));
 const Login = lazy(() => import("./pages/Login"));
 const StudentDashboard = lazy(() => import("./pages/StudentDashboard"));
+const TrainingRecords = lazy(() => import("./pages/TrainingRecords"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
@@ -407,9 +408,11 @@ function Router() {
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/login/otp"} component={OtpLogin} />
         <Route path={"/dashboard"} component={StudentDashboard} />
+        <Route path={"/training-record"}>{() => <TrainingRecords view="operator" />}</Route>
         <Route path={"/teams"} component={Teams} />
         <Route path={"/team/login"}>{() => { window.location.replace("/account?next=/team"); return null; }}</Route>
         <Route path={"/team"} component={OrgDashboard} />
+        <Route path={"/team/training-records"}>{() => <TrainingRecords view="manager" />}</Route>
         <Route path={"/course-pass/claim"} component={CoursePassClaim} />
         <Route path={"/activate/:courseKey"} component={LearnerActivation} />
         <Route path={"/blog/eocp-wastewater-operator-certification-ontario-guide"}>{() => { window.location.replace("/blog/owwco-wastewater-operator-certification-ontario-guide"); return null; }}</Route>

@@ -54,6 +54,7 @@ import {
   CheckCircle2,
   CalendarDays,
   Download,
+  ClipboardList,
   Bell,
   BellRing,
   BarChart3,
@@ -622,6 +623,15 @@ export default function OrgDashboard() {
                 {billingPortal.isPending ? "Opening..." : "Manage Billing"}
               </Button>
             )}
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
+              onClick={() => navigate("/team/training-records")}
+            >
+              <ClipboardList className="w-4 h-4 mr-1.5" />
+              Training Records
+            </Button>
             <Button
               variant="ghost"
               size="sm"

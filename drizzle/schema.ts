@@ -857,6 +857,36 @@ export type OrganizationMember = typeof organizationMembers.$inferSelect;
 export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
 
 /**
+ * Manager-entered on-the-job practical training records for an organisation
+ * operator. These are records for supervisor review, not Echelon-issued CEUs
+ * or a determination that a learning event qualifies under any regulation.
+ */
+export const onTheJobTrainingRecords = mysqlTable("on_the_job_training_records", {
+  id: int("id").autoincrement().primaryKey(),
+  orgId: int("orgId").notNull(),
+  organizationMemberId: int("organizationMemberId").notNull(),
+  studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
+  courseKey: varchar("courseKey", { length: 64 }),
+  sessionDate: timestamp("sessionDate").notNull(),
+  topics: text("topics").notNull(),
+  learningObjectives: text("learningObjectives").notNull(),
+  providerName: varchar("providerName", { length: 200 }).notNull(),
+  providerPhone: varchar("providerPhone", { length: 64 }),
+  durationHours: decimal("durationHours", { precision: 5, scale: 2 }).notNull(),
+  /** Manager confirms the reported event was structured and facilitator-led. */
+  structuredLearningConfirmed: boolean("structuredLearningConfirmed").notNull().default(false),
+  recordedByEmail: varchar("recordedByEmail", { length: 320 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (t) => [
+  index("ojt_records_org_member_date_idx").on(t.orgId, t.organizationMemberId, t.sessionDate),
+  index("ojt_records_student_date_idx").on(t.studentEmail, t.sessionDate),
+]);
+
+export type OnTheJobTrainingRecord = typeof onTheJobTrainingRecords.$inferSelect;
+export type InsertOnTheJobTrainingRecord = typeof onTheJobTrainingRecords.$inferInsert;
+
+/**
  * Annual licence usage ledger.
  * One row per distinct operator per organization per contract term.
  * Used to enforce the annual-licence model: revoking an operator does NOT free a licence.

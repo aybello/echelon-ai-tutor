@@ -366,6 +366,14 @@ export default function StudentDashboard() {
               <BookOpen size={14} style={{ display: "inline", marginRight: 6, verticalAlign: -2 }} aria-hidden="true" />
               My Courses
             </a>
+            <a href="/training-record" style={{
+              background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8,
+              padding: "7px 14px", color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer",
+              textDecoration: "none", display: "inline-block",
+            }}>
+              <ClipboardCheck size={14} style={{ display: "inline", marginRight: 6, verticalAlign: -2 }} aria-hidden="true" />
+              Training Record
+            </a>
             <button
               onClick={handleDashboardLogout}
               disabled={dashboardLogout.isPending}
