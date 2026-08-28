@@ -11,6 +11,7 @@ import {
 import { ENV } from "./env";
 import { resolveTeamAccess } from "../teams/resolveTeamAccess";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -324,13 +325,19 @@ export async function resolveEntitlementsByEmail(
   // -------------------------------------------------------------------------
   let isManager = false;
   try {
-    const [orgRow] = await db
-      .select({ id: organizations.id, status: organizations.status })
+    const orgRows = await db
+      .select({
+        id: organizations.id,
+        status: organizations.status,
+        termEnd: organizations.termEnd,
+        createdAt: organizations.createdAt,
+      })
       .from(organizations)
-      .where(eq(organizations.managerEmail, normalised))
-      .limit(1);
+      .where(eq(organizations.managerEmail, normalised));
 
-    if (orgRow && ORG_ACCESS_STATUSES.has(orgRow.status ?? "active")) {
+    const orgRow = selectCurrentManagerOrganization(orgRows, now);
+
+    if (orgRow) {
       isManager = true;
       sources.push("org_manager");
     }
