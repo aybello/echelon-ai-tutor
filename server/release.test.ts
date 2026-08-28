@@ -23,7 +23,7 @@ describe("public release health", () => {
         "manager-otp-delivery-reliability-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-08-28.otp-reliability.1");
+    expect(RELEASE_ID).toBe("2026-08-28.manager-org-resolution.2");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });

@@ -38,7 +38,12 @@ type SubRow = {
   currentPeriodEnd: Date;
   orgId: number | null;
 };
-type OrgRow = { id: number; status: string };
+type OrgRow = {
+  id: number;
+  status: string;
+  termEnd: Date;
+  createdAt: Date;
+};
 
 // ── Dates ────────────────────────────────────────────────────────────────────
 
@@ -50,7 +55,7 @@ const FUTURE = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
 //   Call 1: purchases  — .select().from().where()  → returns PurchaseRow[]
 //   Call 2: subscriptions — .select().from().where() → returns SubRow[]
 //   Call 3: org seat check — .select().from().innerJoin().where() → returns OrgSeatRow[]
-//   Call 4: manager check — .select().from().where().limit(1) → returns OrgRow[]
+//   Call 4: manager check — .select().from().where() → returns OrgRow[]
 //
 // We track call order with a counter and return the right rows for each call.
 
@@ -70,8 +75,8 @@ function mockDb(
         // org seat check — innerJoin path returns empty array (no org seats in unit tests)
         return Promise.resolve([]);
       }
-      // call 4 — manager check — has an extra .limit(1) chained
-      return { limit: () => Promise.resolve(orgRows) };
+      // call 4 — manager check
+      return Promise.resolve(orgRows);
     },
   });
 
@@ -106,8 +111,13 @@ function sub(
   return { tier, province, status, currentPeriodEnd, orgId: null };
 }
 
-function org(status = "active"): OrgRow {
-  return { id: 1, status };
+function org(
+  status = "active",
+  id = 1,
+  createdAt = new Date("2026-08-28T19:00:00.000Z"),
+  termEnd = FUTURE,
+): OrgRow {
+  return { id, status, termEnd, createdAt };
 }
 
 // ── Tests ────────────────────────────────────────────────────────────────────
@@ -275,6 +285,29 @@ describe("resolveEntitlementsByEmail", () => {
     const r = await resolveEntitlementsByEmail("manager@example.com");
     expect(r.isManager).toBe(true);
     expect(r.hasAnyAccess).toBe(true);
+  });
+
+  it("recognises a manager when an older pending checkout precedes the active organization", async () => {
+    mockDb([], [], [
+      org("pending", 41, new Date("2026-08-28T18:00:00.000Z")),
+      org("active", 42, new Date("2026-08-28T19:00:00.000Z")),
+    ]);
+
+    const r = await resolveEntitlementsByEmail("stattersall@winnipeg.ca");
+
+    expect(r.isManager).toBe(true);
+    expect(r.hasAnyAccess).toBe(true);
+    expect(r.sources).toContain("org_manager");
+  });
+
+  it("does not recognise a manager whose organization term has expired", async () => {
+    const expired = new Date(Date.now() - 60_000);
+    mockDb([], [], [org("active", 43, new Date("2026-08-28T19:00:00.000Z"), expired)]);
+
+    const r = await resolveEntitlementsByEmail("expired-manager@example.com");
+
+    expect(r.isManager).toBe(false);
+    expect(r.hasAnyAccess).toBe(false);
   });
 
   it("does not set isManager for cancelled org", async () => {

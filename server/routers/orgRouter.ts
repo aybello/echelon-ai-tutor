@@ -41,6 +41,7 @@ import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 import { allowedCourseKeysForOrg, isSubscriptionProvince, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
+import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -66,8 +67,6 @@ const STALLED_INACTIVE_DAYS = 14;
  * Mirrors ORG_ACCESS_STATUSES in _core/access.ts, which governs operator access
  * to study material — a cancelled organisation loses both, not just one.
  */
-const MANAGER_ACCESS_STATUSES = new Set(["active", "past_due"]);
-
 /** One contract year, in milliseconds. */
 const ONE_TERM_MS = 365 * 24 * 60 * 60 * 1000;
 
@@ -109,19 +108,26 @@ export async function resolveOrgManager(ctx: {
 
   const normalised = normalizeEmail(email);
 
-  // Find an active manager membership for this email
+  // Resolve every manager membership before choosing an organization. A
+  // previous checkout or contract can leave an older manager row behind; it
+  // must not hide a newer active organization for the same verified email.
   const rows = await db
-    .select({ orgId: organizationMembers.orgId })
+    .select({
+      id: organizations.id,
+      orgId: organizationMembers.orgId,
+      status: organizations.status,
+      termEnd: organizations.termEnd,
+      createdAt: organizations.createdAt,
+    })
     .from(organizationMembers)
+    .innerJoin(organizations, eq(organizationMembers.orgId, organizations.id))
     .where(
       and(
         eq(organizationMembers.email, normalised),
         eq(organizationMembers.role, "manager"),
         eq(organizationMembers.status, "assigned"),
       ),
-    )
-    .orderBy(organizationMembers.orgId)
-    .limit(1);
+    );
 
   if (rows.length === 0) {
     throw new TRPCError({
@@ -130,7 +136,7 @@ export async function resolveOrgManager(ctx: {
     });
   }
 
-  const orgId = rows[0].orgId;
+  const org = selectCurrentManagerOrganization(rows);
 
   // Lifecycle gate: manager access must expire on exactly the same terms as
   // operator access in _core/access.ts, which requires an eligible status AND
@@ -140,31 +146,19 @@ export async function resolveOrgManager(ctx: {
   //
   // Billing is deliberately not gated here: stripe.createBillingPortalSession
   // is reachable from /account, so a lapsed manager can always still renew.
-  const [org] = await db
-    .select({ status: organizations.status, termEnd: organizations.termEnd })
-    .from(organizations)
-    .where(eq(organizations.id, orgId))
-    .limit(1);
-
   if (!org) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "No manager account found for this email." });
-  }
-
-  if (!MANAGER_ACCESS_STATUSES.has(org.status ?? "active")) {
+    const hasEligibleStatus = rows.some((row) =>
+      row.status === "active" || row.status === "past_due",
+    );
     throw new TRPCError({
       code: "FORBIDDEN",
-      message: "This team subscription is no longer active. Renew from your account page to regain access to the team dashboard.",
+      message: hasEligibleStatus
+        ? "This team contract term has ended. Renew from your account page to regain access to the team dashboard."
+        : "This team subscription is no longer active. Renew from your account page to regain access to the team dashboard.",
     });
   }
 
-  if (!org.termEnd || org.termEnd.getTime() <= Date.now()) {
-    throw new TRPCError({
-      code: "FORBIDDEN",
-      message: "This team contract term has ended. Renew from your account page to regain access to the team dashboard.",
-    });
-  }
-
-  return { orgId, managerEmail: normalised };
+  return { orgId: org.orgId, managerEmail: normalised };
 }
 
 // ── Seat lifecycle helpers ────────────────────────────────────────────────────

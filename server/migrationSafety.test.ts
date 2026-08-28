@@ -104,6 +104,14 @@ describe("forward-only migration safety", () => {
     ).toBe(true);
   });
 
+  it("removes every post-baseline training table before replaying forward migrations in CI", async () => {
+    const workflow = await readFile(resolveRepoPath(".github/workflows/quality.yml"), "utf8");
+
+    expect(workflow).toContain("on_the_job_training_records");
+    expect(workflow).toContain("learning_activity_sessions");
+    expect(workflow).toContain("training_attestations");
+  });
+
   it("exports a metadata-only baseline contract with no data rows or customer values", async () => {
     const manifest = await loadManifest();
     const baseline = await loadSchemaContract(manifest.baseline.contract);
