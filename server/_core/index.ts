@@ -19,6 +19,7 @@ import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
+import { publicReleaseHealth, RELEASE_CAPABILITIES, RELEASE_ID } from "../release";
 import {
   ensureWeeklyBlogHeartbeat,
   generateWeeklyBlogPost,
@@ -111,7 +112,8 @@ async function startServer() {
   );
 
   // ── Health endpoint ────────────────────────────────────────────────────────
-  // Public surface: returns only { status, ts } — no internal config details.
+  // Public surface includes a non-secret release marker so a merge, migration,
+  // scheduled script and serving application cannot be mistaken for one another.
   // Internal details (db, stripe, email, ai checks) are only returned when the
   // caller provides the correct X-Health-Secret header matching ENV.cronSecret.
   app.get("/api/health", async (req, res) => {
@@ -121,9 +123,7 @@ async function startServer() {
 
     if (!isInternal) {
       res.set("Cache-Control", "no-store");
-      return res
-        .status(200)
-        .json({ status: "ok", ts: new Date().toISOString() });
+      return res.status(200).json(publicReleaseHealth());
     }
 
     let overallOk = true;
@@ -162,12 +162,23 @@ async function startServer() {
       // Full details for internal callers (daily-health-check.mjs, monitoring)
       return res
         .status(httpStatus)
-        .json({ status, checks, ts: new Date().toISOString() });
+        .json({
+          status,
+          release: RELEASE_ID,
+          capabilities: RELEASE_CAPABILITIES,
+          checks,
+          ts: new Date().toISOString(),
+        });
     }
 
     return res
       .status(httpStatus)
-      .json({ status, ts: new Date().toISOString() });
+      .json({
+        status,
+        release: RELEASE_ID,
+        capabilities: RELEASE_CAPABILITIES,
+        ts: new Date().toISOString(),
+      });
   });
 
   // ── FIX 4: One-click unsubscribe endpoint for reminder emails ────────────────
