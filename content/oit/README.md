@@ -17,8 +17,10 @@ The validator enforces more than count and JSON shape. It checks:
 - unique item IDs and unique normalized question stems;
 - near-duplicate conceptual stems;
 - four plausible, distinct options with no obvious giveaway language;
+- sentence-cased options and no correct answer that repeats the topic supplied by its stem;
 - no strong correct-answer length cue;
 - distinct worked answers across all eight variants of every calculation objective;
+- physically possible 0-100% options for removal-efficiency calculations;
 - balanced answer positions without a repeating A-B-C-D or short-period sequence;
 - item-specific source references and minimum explanation quality;
 - known inaccurate or nonsensical wording identified in the first PR review.

@@ -105,10 +105,12 @@ for (const bank of manifest.banks) {
     question.options.forEach((option, optionIndex) => {
       assert.equal(typeof option, "string", `${context}: option ${optionIndex} is not text.`);
       assert(option.trim().length >= 2, `${context}: option ${optionIndex} is too short.`);
+      assert(!/^[a-z]/.test(option), `${context}: option ${optionIndex} must start with an uppercase letter or number.`);
     });
     assert.equal(new Set(question.options.map(normalized)).size, 4, `${context}: duplicate options.`);
     assert(Number.isInteger(question.correctIndex) && question.correctIndex >= 0 && question.correctIndex <= 3, `${context}: invalid correctIndex.`);
     assert.equal(question.correctAnswer, question.options[question.correctIndex], `${context}: correctAnswer does not match correctIndex.`);
+    assert(!question.correctAnswer.toLowerCase().includes(question.topic.toLowerCase()), `${context}: correct answer repeats the topic supplied by the stem.`);
     assert.equal(question.optionA, question.options[0], `${context}: optionA drift.`);
     assert.equal(question.optionB, question.options[1], `${context}: optionB drift.`);
     assert.equal(question.optionC, question.options[2], `${context}: optionC drift.`);
@@ -147,6 +149,13 @@ for (const bank of manifest.banks) {
       answers.add(question.correctAnswer);
       calculationAnswers.set(calculationKey, answers);
       streamCalculationCounts.set(question.stream, (streamCalculationCounts.get(question.stream) ?? 0) + 1);
+    }
+
+    if (question.topic === "turbidity removal" || question.topic === "BOD removal") {
+      question.options.forEach((option, optionIndex) => {
+        const percentage = Number.parseFloat(option);
+        assert(Number.isFinite(percentage) && percentage >= 0 && percentage <= 100, `${context}: efficiency option ${optionIndex} must be between 0% and 100%.`);
+      });
     }
 
     streamCounts.set(question.stream, (streamCounts.get(question.stream) ?? 0) + 1);

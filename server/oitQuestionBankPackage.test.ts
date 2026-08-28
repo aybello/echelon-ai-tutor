@@ -45,6 +45,16 @@ describe("OIT question-bank deployment package", () => {
       expect(question.options).toHaveLength(4);
       expect(new Set(question.options).size).toBe(4);
       expect(question.correctAnswer).toBe(question.options[question.correctIndex]);
+      expect(question.correctAnswer.toLowerCase()).not.toContain(question.topic.toLowerCase());
+      for (const option of question.options) {
+        expect(option).not.toMatch(/^[a-z]/);
+      }
+      if (question.topic === "turbidity removal" || question.topic === "BOD removal") {
+        for (const option of question.options) {
+          expect(Number.parseFloat(option)).toBeGreaterThanOrEqual(0);
+          expect(Number.parseFloat(option)).toBeLessThanOrEqual(100);
+        }
+      }
       expect(["recall", "application"]).toContain(question.cognitiveLevel);
       expect(question.reviewStatus).toBe("unreviewed");
       expect(question.sourceReference).toContain(question.topic);
