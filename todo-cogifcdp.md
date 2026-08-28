@@ -10,3 +10,23 @@
 - [x] Add focused automated policy and forward-migration tests; provide clear empty activity states in the interface.
 - [x] Run type checks, tests, and responsive visual verification before publishing.
 - [ ] Document the release, decisions, and remaining action in the AI Context Hub.
+- [x] Review Codex’s current training-report implementation against Philip’s request and OWWCO record requirements without changing or publishing code.
+- [x] Validate the relevant implementation tests and report whether the current build is fit for a demonstration review.
+- [x] Independently review GitHub PR #58 for implementation correctness, safety, test coverage, and product fit without changing or merging it.
+- [x] Re-review Codex’s corrected PR #58 against the published migration ledger and audit-record requirements once it is updated.
+- [x] Integrate the approved active-study tracking replacement with a reconciled forward migration and retire the superseded report screens.
+- [ ] Apply any approved additive database migration, validate the release, publish it, and update the AI Context Hub.
+- [x] Trace the completed purchase, entitlement, and code-delivery status for wwd-education-training@winnipeg.ca without changing customer access prematurely.
+- [ ] Diagnose the access-code delivery failure and apply the least-invasive authorized recovery after verification.
+- [x] Re-review Codex’s updated PR #58 against the prior training-record, migration, audit, and access-code findings.
+- [x] Integrate the corrected PR only after validating compatibility with the live project and production database.
+- [ ] Apply the reviewed migration, publish the replacement release, and verify the purchaser’s email-code flow.
+- [x] Complete a PR #58-only release review; keep the separate purchaser code-delivery issue out of this deployment decision.
+- [x] Reconcile Codex PR #58 with the live project’s existing 0059 migration and current training-record implementation.
+- [x] Integrate the approved platform-recorded training-hours workflow without overwriting existing deployed data.
+- [x] Create and apply a forward-only 0060 migration for the new learning-session and immutable-attestation tables.
+- [x] Replace the superseded manual training-record routes with the reviewed operator, manager, and immutable signed-record flows.
+- [ ] Validate the merged workflow, publish the release, and preserve a clear rollback checkpoint.
+- [x] Restore large-period error recovery on the operator training-hours page so users can narrow the report period without being shown an incorrect sign-in state.
+- [x] Restore manager parity by showing prior immutable record links and the optional session-detail appendix.
+- [x] Add focused coverage for report-period limits and immutable-record access after the 0060 migration.

@@ -84,6 +84,13 @@
       "file": "drizzle/0059_on_the_job_training_records.sql",
       "sha256": "5543c3cb615765940ec0f9c4de0034537c5b492d60b5d1afd266232d1f6d9851",
       "proposedOnly": true
+    },
+    {
+      "version": 60,
+      "tag": "0060_training_hours_records",
+      "file": "drizzle/0060_training_hours_records.sql",
+      "sha256": "81ae5191a6c828ed889d244590c82574a94aee0c63624de10598cf11822e4ccf",
+      "proposedOnly": true
     }
   ]
 }

@@ -25,6 +25,7 @@ import { setTrialUnlocked } from "@/components/QuizGate";
 import { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import type { DBQuestion } from "@/hooks/useQuestionBank";
+import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 // Default/fallback session size; actual size comes from quizSettings.sessionSize
@@ -349,8 +350,17 @@ export function useQuizSession({
     quizMode === "quick10"
       ? 10
       : !trialUnlocked
-        ? DEFAULT_SESSION_SIZE
-        : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
+      ? DEFAULT_SESSION_SIZE
+      : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
+  useLearningActivitySession({
+    courseKey: examType,
+    activityType: "quiz",
+    enabled: initialized && current !== null && !tutorOpen && !trialDone,
+    topic: selectedModule ?? current?.module ?? null,
+    unitsCompleted: history.length,
+    score: correctCount,
+    total: history.length || undefined,
+  });
 
   // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {

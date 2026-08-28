@@ -24,7 +24,7 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 11, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 28, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -37,7 +37,7 @@ export default function Privacy() {
           <ul>
             <li><strong>Email address</strong> — used to identify your account, restore access, and send purchase receipts and study reminders.</li>
             <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
-            <li><strong>Practice activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, and session history. Used to power your study plan and readiness score.</li>
+            <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
             <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
             <li><strong>Device, browser, IP, and security-event information</strong> — used to secure accounts, prevent abuse, and diagnose service problems.</li>
           </ul>
@@ -69,7 +69,7 @@ export default function Privacy() {
         </LegalSection>
 
         <LegalSection title="6. Teams and Organizational Data">
-          <p>If an employer or utility provides your access, authorized managers can see course activation, practice activity, readiness indicators, weak-topic summaries, exam dates you enter, and exam outcomes recorded in the platform. Managers do not receive the text of private AI Tutor conversations or individual answer content. Some records may need to be retained for contractual, security, legal, or aggregate reporting purposes after a deletion request.</p>
+          <p>If an employer or utility provides your access, authorized managers can see course activation, practice activity, platform-recorded study time, session dates and durations, readiness indicators, weak-topic summaries, exam dates you enter, and exam outcomes recorded in the platform. A manager or ORO may sign an immutable training-record snapshot, which remains available to the operator. Managers do not receive the text of private AI Tutor conversations or individual answer content. Some records may need to be retained for contractual, training-record, security, legal, or aggregate reporting purposes after a deletion request.</p>
         </LegalSection>
 
         <LegalSection title="7. Your Rights">
@@ -77,7 +77,7 @@ export default function Privacy() {
             <li><strong>Access:</strong> Request a copy of the data we hold about you.</li>
             <li><strong>Correction:</strong> Request correction of inaccurate data.</li>
             <li><strong>Deletion:</strong> Request deletion of your account and associated data.</li>
-            <li><strong>Portability:</strong> Request an export of your practice history.</li>
+            <li><strong>Portability:</strong> Download or request an export of your practice and training-hours history.</li>
           </ul>
           <p>To exercise a right or make a privacy complaint, email <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Request" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>. We may need to verify your identity. If you are not satisfied with our response, you may contact the Office of the Privacy Commissioner of Canada or the applicable provincial/state regulator.</p>
         </LegalSection>

@@ -24,7 +24,7 @@ export default function Terms() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Terms of Use
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 11, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 28, 2026</p>
         </div>
 
         <LegalSection title="1. Acceptance of Terms">
@@ -68,6 +68,7 @@ export default function Terms() {
 
         <LegalSection title="7. Disclaimer of Warranties">
           <p>Echelon is provided "as is" without warranties of any kind. We do not guarantee that use of Echelon will result in passing any certification exam. Exam content and formats may change; we strive to keep our question bank current but cannot guarantee it reflects the most recent exam syllabus at all times.</p>
+          <p>Training-hours reports show platform-recorded study time. They do not by themselves establish eligibility for on-the-job training or continuing-education credit. The employer, manager/ORO, and applicable regulator remain responsible for deciding whether a signed record meets their requirements.</p>
         </LegalSection>
 
         <LegalSection title="8. Limitation of Liability">

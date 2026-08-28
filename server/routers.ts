@@ -38,6 +38,7 @@ import { changelogRouter } from "./routers/changelogRouter";
 import { activationRouter } from "./routers/activationRouter";
 import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
+import { trainingRouter } from "./routers/trainingRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
@@ -133,6 +134,7 @@ export const appRouter = router({
   activation: activationRouter,
   funnelAnalytics: funnelAnalyticsRouter,
   electricianReview: electricianReviewRouter,
+  training: trainingRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

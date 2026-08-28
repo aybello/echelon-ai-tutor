@@ -16,6 +16,7 @@ import {
   summarizeFlashcardProgress,
 } from "@/lib/flashcardProgress";
 import { advanceReviewQueue } from "@/lib/flashcardStudy";
+import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 
 const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
 
@@ -237,6 +238,13 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const displayPrompt = projectedContent?.prompt ?? questionText;
   const displayAnswer = projectedContent?.answer ?? answerText;
   const displayExplanation = projectedContent?.explanation ?? explanation;
+  useLearningActivitySession({
+    courseKey: examType,
+    activityType: "flashcards",
+    enabled: card !== null && !sessionComplete && !showPaywall,
+    topic: selectedModule ?? card?.module ?? null,
+    unitsCompleted: previewedIds.size,
+  });
 
   const total = deck.length;
   const progress = reviewing && reviewStartCount > 0

@@ -26,6 +26,7 @@ import { dashboardOtps } from "../../drizzle/schema";
 import { normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
+import { hasTrainingRecord } from "./trainingRouter";
 import {
   issueVerifiedEmailSessionCookie,
   clearVerifiedEmailSessionCookie,
@@ -94,7 +95,10 @@ export const dashboardAuthRouter = router({
       // Re-resolve live entitlements — do not trust stale purchase/subscription queries
       const entitlements = await resolveEntitlementsByEmail(email);
 
-      if (!entitlements.hasAnyAccess && !entitlements.isManager) {
+      // A signed training record remains available to its learner after paid
+      // course access ends; identity verification alone restores that record.
+      const canRestoreRecords = await hasTrainingRecord(email);
+      if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords) {
         // Return success anyway to avoid email enumeration — just don't send
         return { sent: true };
       }

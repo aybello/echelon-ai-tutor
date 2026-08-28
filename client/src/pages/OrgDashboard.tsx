@@ -626,11 +626,11 @@ export default function OrgDashboard() {
             <Button
               variant="outline"
               size="sm"
-              className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
-              onClick={() => navigate("/team/training-records")}
+              className="text-blue-700 border-blue-200 hover:bg-blue-50 hidden sm:flex"
+              onClick={() => navigate("/team/training-hours")}
             >
               <ClipboardList className="w-4 h-4 mr-1.5" />
-              Training Records
+              Training Hours
             </Button>
             <Button
               variant="ghost"
