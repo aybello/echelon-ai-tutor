@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  assignedAnnualCourseKeys,
   buildOperatorRows,
+  calculateSupervisorReviewDuration,
   canonicalSnapshotDigest,
+  parseVerifiedTrainingSnapshot,
   sessionsToCsv,
   summarizeTrainingSessions,
   type TrainingSessionView,
@@ -45,6 +48,28 @@ describe("training record summaries", () => {
     expect(rows).toHaveLength(2);
     expect(rows.find((row) => row.operatorEmail === "second@example.ca")).toMatchObject({ activeSeconds: 700, sessionCount: 2 });
   });
+
+  it("keeps all platform time while deriving the capped, quarter-hour supervisor-review duration", () => {
+    const rows = [
+      session({ activeSeconds: 8 * 60 * 60, startedAt: new Date("2026-08-28T14:00:00.000Z") }),
+      session({ sessionKey: "00000000-0000-4000-8000-000000000002", activeSeconds: 14 * 60, startedAt: new Date("2026-08-29T14:00:00.000Z") }),
+      session({ sessionKey: "00000000-0000-4000-8000-000000000003", activeSeconds: 17 * 60, startedAt: new Date("2026-08-29T15:00:00.000Z") }),
+    ];
+    const result = calculateSupervisorReviewDuration(rows);
+    expect(rows.reduce((total, row) => total + row.activeSeconds, 0)).toBe(30_660);
+    expect(result.days).toMatchObject([
+      { platformRecordedSeconds: 28_800, cappedSeconds: 25_200, supervisorReviewSeconds: 25_200 },
+      { platformRecordedSeconds: 1_860, cappedSeconds: 1_860, supervisorReviewSeconds: 1_800 },
+    ]);
+    expect(result.supervisorReviewSeconds).toBe(27_000);
+  });
+
+  it("fails closed for missing annual assignments and preserves a legacy singular assignment", () => {
+    expect(assignedAnnualCourseKeys(null, null)).toEqual([]);
+    expect(assignedAnnualCourseKeys("class1-water", null)).toEqual(["class1-water"]);
+    expect(assignedAnnualCourseKeys("class1-water", "[]")).toEqual(["class1-water"]);
+    expect(assignedAnnualCourseKeys("class1-water", "not-json")).toEqual(["class1-water"]);
+  });
 });
 
 describe("training record integrity and export", () => {
@@ -59,5 +84,17 @@ describe("training record integrity and export", () => {
     expect(csv).toContain('"Pumps, valves & controls"');
     expect(csv).toContain("15.0");
     expect(csv).toContain("8/10");
+  });
+
+  it("neutralizes spreadsheet formulas in learner-controlled topic fields", () => {
+    const csv = sessionsToCsv([session({ topic: "=HYPERLINK(\"https://attacker.invalid\")" })]);
+    expect(csv).toContain("'=");
+    expect(csv).not.toContain(',"=HYPERLINK');
+  });
+
+  it("rejects an immutable snapshot when its digest no longer matches", () => {
+    const snapshotJson = JSON.stringify({ version: 1, reportId: "00000000-0000-4000-8000-000000000099" });
+    expect(() => parseVerifiedTrainingSnapshot(snapshotJson, canonicalSnapshotDigest(`${snapshotJson}changed`)))
+      .toThrow("integrity check failed");
   });
 });

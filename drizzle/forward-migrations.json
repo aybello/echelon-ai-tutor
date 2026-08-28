@@ -82,7 +82,7 @@
       "version": 59,
       "tag": "0059_training_hours_records",
       "file": "drizzle/0059_training_hours_records.sql",
-      "sha256": "001bc0aed125999df32f284711d7bddeb54c0fde6445b37ceaa3474058d777b5",
+      "sha256": "81ae5191a6c828ed889d244590c82574a94aee0c63624de10598cf11822e4ccf",
       "proposedOnly": true
     }
   ]

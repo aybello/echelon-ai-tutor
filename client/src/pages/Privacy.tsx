@@ -37,7 +37,7 @@ export default function Privacy() {
           <ul>
             <li><strong>Email address</strong> — used to identify your account, restore access, and send purchase receipts and study reminders.</li>
             <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
-            <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, verified active-study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
+            <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
             <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
             <li><strong>Device, browser, IP, and security-event information</strong> — used to secure accounts, prevent abuse, and diagnose service problems.</li>
           </ul>
@@ -69,7 +69,7 @@ export default function Privacy() {
         </LegalSection>
 
         <LegalSection title="6. Teams and Organizational Data">
-          <p>If an employer or utility provides your access, authorized managers can see course activation, practice activity, verified active-study time, session dates and durations, readiness indicators, weak-topic summaries, exam dates you enter, and exam outcomes recorded in the platform. A manager or ORO may sign an immutable training-record snapshot, which remains available to the operator. Managers do not receive the text of private AI Tutor conversations or individual answer content. Some records may need to be retained for contractual, training-record, security, legal, or aggregate reporting purposes after a deletion request.</p>
+          <p>If an employer or utility provides your access, authorized managers can see course activation, practice activity, platform-recorded study time, session dates and durations, readiness indicators, weak-topic summaries, exam dates you enter, and exam outcomes recorded in the platform. A manager or ORO may sign an immutable training-record snapshot, which remains available to the operator. Managers do not receive the text of private AI Tutor conversations or individual answer content. Some records may need to be retained for contractual, training-record, security, legal, or aggregate reporting purposes after a deletion request.</p>
         </LegalSection>
 
         <LegalSection title="7. Your Rights">

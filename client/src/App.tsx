@@ -52,6 +52,7 @@ const Teams = lazy(() => import("./pages/Teams"));
 const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
 const TrainingHours = lazy(() => import("./pages/TrainingHours"));
 const TeamTrainingHours = lazy(() => import("./pages/TeamTrainingHours"));
+const AttestedTrainingRecord = lazy(() => import("./pages/AttestedTrainingRecord"));
 const CoursePassClaim = lazy(() => import("./pages/CoursePassClaim"));
 const LearnerActivation = lazy(() => import("./pages/LearnerActivation"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -410,6 +411,7 @@ function Router() {
         <Route path={"/login/otp"} component={OtpLogin} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/training-hours"} component={TrainingHours} />
+        <Route path={"/training-hours/records/:reportId"} component={AttestedTrainingRecord} />
         <Route path={"/teams"} component={Teams} />
         <Route path={"/team/login"}>{() => { window.location.replace("/account?next=/team"); return null; }}</Route>
         <Route path={"/team"} component={OrgDashboard} />

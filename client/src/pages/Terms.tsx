@@ -68,7 +68,7 @@ export default function Terms() {
 
         <LegalSection title="7. Disclaimer of Warranties">
           <p>Echelon is provided "as is" without warranties of any kind. We do not guarantee that use of Echelon will result in passing any certification exam. Exam content and formats may change; we strive to keep our question bank current but cannot guarantee it reflects the most recent exam syllabus at all times.</p>
-          <p>Training-hours reports show Echelon-verified active study time. They do not by themselves establish eligibility for on-the-job training or continuing-education credit. The employer, manager/ORO, and applicable regulator remain responsible for deciding whether a signed record meets their requirements.</p>
+          <p>Training-hours reports show platform-recorded study time. They do not by themselves establish eligibility for on-the-job training or continuing-education credit. The employer, manager/ORO, and applicable regulator remain responsible for deciding whether a signed record meets their requirements.</p>
         </LegalSection>
 
         <LegalSection title="8. Limitation of Liability">

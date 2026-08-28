@@ -87,6 +87,11 @@ describe("forward-only migration safety", () => {
     expect(tables.has("diagnostic_sessions")).toBe(true);
     expect(tables.has("learning_activity_sessions")).toBe(true);
     expect(tables.has("training_attestations")).toBe(true);
+    expect(tables.get("training_attestations")?.columns).toEqual(expect.arrayContaining([
+      { name: "snapshotJson", type: "mediumtext", nullable: false, autoIncrement: false },
+      { name: "platformRecordedSeconds", type: "int", nullable: false, autoIncrement: false },
+      { name: "supervisorReviewSeconds", type: "int", nullable: false, autoIncrement: false },
+    ]));
     expect(
       tables
         .get("team_flex_orders")

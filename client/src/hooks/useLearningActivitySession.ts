@@ -14,9 +14,10 @@ interface LearningActivityOptions {
 }
 
 /**
- * Records verified active study time in one continuous block. Time accumulates
- * only while the page is visible and the learner has interacted in the last two
- * minutes. Thirty-second flushes are sequenced and idempotent server-side.
+ * Records platform study time in one continuous block. A session does not begin
+ * until the learner deliberately interacts with the study surface. Time then
+ * accumulates only while the page is visible and interaction has occurred in
+ * the last minute. Thirty-second flushes are sequenced and idempotent server-side.
  */
 export function useLearningActivitySession(options: LearningActivityOptions): void {
   const startMutation = trpc.training.start.useMutation();
@@ -30,47 +31,61 @@ export function useLearningActivitySession(options: LearningActivityOptions): vo
   useEffect(() => {
     if (!options.enabled || !options.courseKey) return;
 
-    const sessionKey = crypto.randomUUID();
+    let sessionKey = crypto.randomUUID();
+    let startRequested = false;
     let tracking = false;
     let stopped = false;
     let sequence = 0;
     let pendingSeconds = 0;
-    let lastInteractionAt = Date.now();
+    let lastInteractionAt: number | null = null;
     let writeChain: Promise<unknown> = Promise.resolve();
 
-    const noteInteraction = () => { lastInteractionAt = Date.now(); };
+    const recoverExpiredSession = (error: unknown) => {
+      const code = (error as { data?: { code?: string } })?.data?.code;
+      if (code !== "BAD_REQUEST" && code !== "NOT_FOUND") return;
+      tracking = false;
+      startRequested = false;
+      sessionKey = crypto.randomUUID();
+      sequence = 0;
+      pendingSeconds = 0;
+    };
+
+    const beginTracking = () => {
+      if (startRequested) return;
+      startRequested = true;
+      void mutationsRef.current.startMutation.mutateAsync({
+        sessionKey,
+        courseKey: options.courseKey,
+        activityType: options.activityType,
+        topic: options.topic?.slice(0, 128) || undefined,
+      }).then((result) => {
+        tracking = result.tracking;
+        if (stopped && result.tracking) {
+          mutationsRef.current.completeMutation.mutate({
+            sessionKey,
+            sequence: 1,
+            activeSeconds: pendingSeconds,
+            unitsCompleted: Math.max(0, valuesRef.current.unitsCompleted ?? 0),
+            topic: valuesRef.current.topic?.slice(0, 128) || undefined,
+            score: valuesRef.current.score,
+            total: valuesRef.current.total,
+          });
+        }
+      }).catch(() => {
+        // Anonymous preview use remains available; it simply is not represented
+        // in the operator's platform study record.
+        tracking = false;
+      });
+    };
+    const noteInteraction = () => {
+      lastInteractionAt = Date.now();
+      beginTracking();
+    };
     const interactionEvents: Array<keyof WindowEventMap> = ["pointerdown", "keydown", "scroll", "touchstart"];
     interactionEvents.forEach((event) => window.addEventListener(event, noteInteraction, { passive: true }));
 
-    void mutationsRef.current.startMutation.mutateAsync({
-      sessionKey,
-      courseKey: options.courseKey,
-      activityType: options.activityType,
-      topic: options.topic?.slice(0, 128) || undefined,
-    }).then((result) => {
-      if (!stopped) {
-        tracking = result.tracking;
-        return;
-      }
-      if (result.tracking) {
-        mutationsRef.current.completeMutation.mutate({
-          sessionKey,
-          sequence: 1,
-          activeSeconds: pendingSeconds,
-          unitsCompleted: Math.max(0, valuesRef.current.unitsCompleted ?? 0),
-          topic: valuesRef.current.topic?.slice(0, 128) || undefined,
-          score: valuesRef.current.score,
-          total: valuesRef.current.total,
-        });
-      }
-    }).catch(() => {
-      // Anonymous preview use remains available; it simply is not represented
-      // as verified training time.
-      tracking = false;
-    });
-
     const activeTimer = window.setInterval(() => {
-      if (document.visibilityState === "visible" && Date.now() - lastInteractionAt <= 120_000) {
+      if (tracking && lastInteractionAt != null && document.visibilityState === "visible" && Date.now() - lastInteractionAt <= 60_000) {
         pendingSeconds = Math.min(45, pendingSeconds + 1);
       }
     }, 1_000);
@@ -95,7 +110,10 @@ export function useLearningActivitySession(options: LearningActivityOptions): vo
       // time; serialization avoids that race on slow mobile connections.
       writeChain = writeChain
         .then(() => mutationsRef.current.heartbeatMutation.mutateAsync(payload))
-        .catch(() => undefined);
+        .catch((error) => {
+          recoverExpiredSession(error);
+          if (!stopped && lastInteractionAt != null && Date.now() - lastInteractionAt <= 60_000) beginTracking();
+        });
     };
     const flushTimer = window.setInterval(flush, 30_000);
 

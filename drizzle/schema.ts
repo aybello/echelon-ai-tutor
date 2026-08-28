@@ -1,4 +1,4 @@
-import { boolean, decimal, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -1230,7 +1230,7 @@ export const teamFlexLicences = mysqlTable("team_flex_licences", {
 export type TeamFlexLicence = typeof teamFlexLicences.$inferSelect;
 
 /**
- * Verified active learning sessions. A row represents one continuous activity
+ * Platform-recorded learning sessions. A row represents one continuous activity
  * block, not every click or question. The server accepts sequenced heartbeats
  * and caps credited time to elapsed wall-clock time so retries, background tabs,
  * and client clock changes cannot manufacture training hours.
@@ -1284,19 +1284,23 @@ export const trainingAttestations = mysqlTable("training_attestations", {
   courseKey: varchar("courseKey", { length: 64 }).notNull(),
   periodStart: timestamp("periodStart").notNull(),
   periodEnd: timestamp("periodEnd").notNull(),
-  verifiedActiveSeconds: int("verifiedActiveSeconds").notNull(),
+  platformRecordedSeconds: int("platformRecordedSeconds").notNull(),
+  supervisorReviewSeconds: int("supervisorReviewSeconds").notNull(),
   studySessionCount: int("studySessionCount").notNull(),
   providerName: varchar("providerName", { length: 200 }).notNull().default("Echelon Institute"),
   instructorName: varchar("instructorName", { length: 200 }).notNull(),
   instructorContact: varchar("instructorContact", { length: 320 }).notNull(),
+  learningObjectives: text("learningObjectives").notNull(),
   trainingMethod: varchar("trainingMethod", { length: 120 }).notNull().default("Interactive online training"),
   subjectSummary: text("subjectSummary").notNull(),
   signedByName: varchar("signedByName", { length: 200 }).notNull(),
   signedByEmail: varchar("signedByEmail", { length: 320 }).notNull(),
   signedRole: varchar("signedRole", { length: 100 }).notNull(),
+  signerAuthority: varchar("signerAuthority", { length: 64 }).notNull(),
+  attestationKind: mysqlEnum("attestationKind", ["ojt_attestation", "manager_acknowledgement"]).notNull(),
   signedAt: timestamp("signedAt").defaultNow().notNull(),
   digestSha256: varchar("digestSha256", { length: 64 }).notNull(),
-  snapshotJson: text("snapshotJson").notNull(),
+  snapshotJson: mediumtext("snapshotJson").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (table) => [
   uniqueIndex("training_attestations_report_unique_idx").on(table.reportId),
