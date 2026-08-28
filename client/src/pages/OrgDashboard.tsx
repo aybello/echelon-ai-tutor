@@ -583,6 +583,11 @@ export default function OrgDashboard() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <Link href="/team/training-hours">
+              <Button variant="outline" size="sm" className="text-blue-700 border-blue-200 hover:bg-blue-50">
+                Training Hours
+              </Button>
+            </Link>
             <Badge
               className={
                 overview.status === "active"

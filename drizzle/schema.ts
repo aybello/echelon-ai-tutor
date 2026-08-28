@@ -1,4 +1,4 @@
-import { boolean, decimal, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -1228,6 +1228,87 @@ export const teamFlexLicences = mysqlTable("team_flex_licences", {
   index("idx_flex_lic_invitation").on(table.invitationToken),
 ]);
 export type TeamFlexLicence = typeof teamFlexLicences.$inferSelect;
+
+/**
+ * Platform-recorded learning sessions. A row represents one continuous activity
+ * block, not every click or question. The server accepts sequenced heartbeats
+ * and caps credited time to elapsed wall-clock time so retries, background tabs,
+ * and client clock changes cannot manufacture training hours.
+ */
+export const learningActivitySessions = mysqlTable("learning_activity_sessions", {
+  id: int("id").autoincrement().primaryKey(),
+  sessionKey: varchar("sessionKey", { length: 64 }).notNull(),
+  userId: int("userId"),
+  studentEmail: varchar("studentEmail", { length: 320 }).notNull(),
+  orgId: int("orgId"),
+  organizationMemberId: int("organizationMemberId"),
+  teamFlexLicenceId: int("teamFlexLicenceId"),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  activityType: mysqlEnum("activityType", ["quiz", "mock_exam", "flashcards", "process_guide", "ai_tutor"]).notNull(),
+  topic: varchar("topic", { length: 128 }),
+  startedAt: timestamp("startedAt").defaultNow().notNull(),
+  lastHeartbeatAt: timestamp("lastHeartbeatAt").defaultNow().notNull(),
+  activeSeconds: int("activeSeconds").notNull().default(0),
+  lastSequence: int("lastSequence").notNull().default(0),
+  unitsCompleted: int("unitsCompleted").notNull().default(0),
+  score: int("score"),
+  total: int("total"),
+  status: mysqlEnum("status", ["active", "completed", "abandoned"]).notNull().default("active"),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => [
+  uniqueIndex("learning_sessions_key_unique_idx").on(table.sessionKey),
+  index("learning_sessions_identity_time_idx").on(table.studentEmail, table.startedAt),
+  index("learning_sessions_org_time_idx").on(table.orgId, table.startedAt),
+  index("learning_sessions_member_time_idx").on(table.organizationMemberId, table.startedAt),
+  index("learning_sessions_flex_time_idx").on(table.teamFlexLicenceId, table.startedAt),
+  index("learning_sessions_course_time_idx").on(table.courseKey, table.startedAt),
+]);
+export type LearningActivitySession = typeof learningActivitySessions.$inferSelect;
+export type InsertLearningActivitySession = typeof learningActivitySessions.$inferInsert;
+
+/**
+ * Immutable manager/ORO attestations. snapshotJson freezes the concise summary
+ * and optional session appendix that was reviewed at signing time; digestSha256
+ * makes later accidental or unauthorized changes detectable.
+ */
+export const trainingAttestations = mysqlTable("training_attestations", {
+  id: int("id").autoincrement().primaryKey(),
+  reportId: varchar("reportId", { length: 64 }).notNull(),
+  orgId: int("orgId").notNull(),
+  organizationMemberId: int("organizationMemberId"),
+  teamFlexLicenceId: int("teamFlexLicenceId"),
+  operatorUserId: int("operatorUserId"),
+  operatorEmail: varchar("operatorEmail", { length: 320 }).notNull(),
+  operatorName: varchar("operatorName", { length: 200 }),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  periodStart: timestamp("periodStart").notNull(),
+  periodEnd: timestamp("periodEnd").notNull(),
+  platformRecordedSeconds: int("platformRecordedSeconds").notNull(),
+  supervisorReviewSeconds: int("supervisorReviewSeconds").notNull(),
+  studySessionCount: int("studySessionCount").notNull(),
+  providerName: varchar("providerName", { length: 200 }).notNull().default("Echelon Institute"),
+  instructorName: varchar("instructorName", { length: 200 }).notNull(),
+  instructorContact: varchar("instructorContact", { length: 320 }).notNull(),
+  learningObjectives: text("learningObjectives").notNull(),
+  trainingMethod: varchar("trainingMethod", { length: 120 }).notNull().default("Interactive online training"),
+  subjectSummary: text("subjectSummary").notNull(),
+  signedByName: varchar("signedByName", { length: 200 }).notNull(),
+  signedByEmail: varchar("signedByEmail", { length: 320 }).notNull(),
+  signedRole: varchar("signedRole", { length: 100 }).notNull(),
+  signerAuthority: varchar("signerAuthority", { length: 64 }).notNull(),
+  attestationKind: mysqlEnum("attestationKind", ["ojt_attestation", "manager_acknowledgement"]).notNull(),
+  signedAt: timestamp("signedAt").defaultNow().notNull(),
+  digestSha256: varchar("digestSha256", { length: 64 }).notNull(),
+  snapshotJson: mediumtext("snapshotJson").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => [
+  uniqueIndex("training_attestations_report_unique_idx").on(table.reportId),
+  index("training_attestations_org_time_idx").on(table.orgId, table.signedAt),
+  index("training_attestations_operator_time_idx").on(table.operatorEmail, table.signedAt),
+]);
+export type TrainingAttestation = typeof trainingAttestations.$inferSelect;
+export type InsertTrainingAttestation = typeof trainingAttestations.$inferInsert;
 
 /** Teams Flex extensions - 90-day retake extensions */
 export const teamFlexExtensions = mysqlTable("team_flex_extensions", {

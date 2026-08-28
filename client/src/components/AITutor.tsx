@@ -6,6 +6,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
+import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 
 interface Props {
   question: Question | null;
@@ -61,6 +62,13 @@ export default function AITutor({
   const [messages, setMessages] = useState<
     { role: "user" | "assistant"; content: string }[]
   >([]);
+  useLearningActivitySession({
+    courseKey: examType,
+    activityType: "ai_tutor",
+    enabled: true,
+    topic: (question as any)?.module ?? (question as any)?.topic ?? null,
+    unitsCompleted: messages.filter((message) => message.role === "user").length,
+  });
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [lastUserMsg, setLastUserMsg] = useState<string | null>(null);

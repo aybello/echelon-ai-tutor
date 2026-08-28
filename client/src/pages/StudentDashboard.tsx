@@ -358,6 +358,13 @@ export default function StudentDashboard() {
             </p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <a href="/training-hours" style={{
+              background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 8,
+              padding: "7px 14px", color: "#1D4ED8", fontSize: 13, fontWeight: 700,
+              textDecoration: "none", display: "inline-block",
+            }}>
+              My Training Hours
+            </a>
             <a href="/account" style={{
               background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8,
               padding: "7px 14px", color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer",
