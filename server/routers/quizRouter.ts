@@ -258,7 +258,7 @@ export const quizRouter = router({
       if (hasAccess) {
         // Full access: random from entire bank
         const rows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus <> 'rejected'${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus NOT IN ('in_review', 'rejected')${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
         );
         const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
           try {
@@ -275,7 +275,7 @@ export const quizRouter = router({
         // Trial: sample across modules (round-robin first question from each module)
         // to give a representative experience instead of all from one module.
         const allRows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus <> 'rejected'${excludeClause} ORDER BY module, questionNum`
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus NOT IN ('in_review', 'rejected')${excludeClause} ORDER BY module, questionNum`
         );
         const allList = allRows[0] as unknown as any[];
         const sampleLimit = Math.min(FREE_TRIAL_LIMIT, input.limit);

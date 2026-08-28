@@ -1,0 +1,127 @@
+{
+  "version": "2026-08-28-v2",
+  "importMode": "additive",
+  "questionNumberRange": {
+    "start": 1001,
+    "end": 1500
+  },
+  "banks": [
+    {
+      "bankKey": "oit",
+      "file": "questions/oit-water-500.json",
+      "expectedCount": 500
+    },
+    {
+      "bankKey": "oit-ww",
+      "file": "questions/oit-wastewater-500.json",
+      "expectedCount": 500
+    }
+  ],
+  "governance": {
+    "sourceReviewStatus": "unreviewed",
+    "databaseStagingStatus": "in_review",
+    "activation": "individual-admin-approval-required",
+    "historicalAttemptSafety": "additive question numbers preserve existing question identity"
+  },
+  "blueprint": {
+    "Water Treatment": {
+      "questionCount": 250,
+      "calculationCount": 48,
+      "difficulty": {
+        "easy": 50,
+        "medium": 134,
+        "hard": 66
+      }
+    },
+    "Water Distribution": {
+      "questionCount": 250,
+      "calculationCount": 48,
+      "difficulty": {
+        "easy": 50,
+        "medium": 135,
+        "hard": 65
+      }
+    },
+    "Wastewater Treatment": {
+      "questionCount": 250,
+      "calculationCount": 48,
+      "difficulty": {
+        "easy": 50,
+        "medium": 134,
+        "hard": 66
+      }
+    },
+    "Wastewater Collection": {
+      "questionCount": 250,
+      "calculationCount": 48,
+      "difficulty": {
+        "easy": 50,
+        "medium": 134,
+        "hard": 66
+      }
+    }
+  },
+  "examBasis": {
+    "title": "Ontario Water Wastewater Certification Office - Preparing for Your Exam",
+    "url": "https://owwco.ca/preparing-for-your-exam/",
+    "verifiedAt": "2026-08-28",
+    "note": "OWWCO states that the OIT exam uses current Ontario content and consists of 40 general questions plus selectable Water Treatment, Water Distribution/Supply, Wastewater Treatment and Wastewater Collection modules. This package is an expanded practice pool, not a copy of an official examination form."
+  },
+  "sources": [
+    {
+      "title": "Ontario Water Wastewater Certification Office - Preparing for Your Exam",
+      "reference": "Current Ontario OIT exam-content and preparation context",
+      "url": "https://owwco.ca/preparing-for-your-exam/"
+    },
+    {
+      "title": "Ontario Regulation 170/03 - Drinking Water Systems",
+      "reference": "Operational checks, sampling, reporting and drinking-water requirements",
+      "url": "https://www.ontario.ca/laws/regulation/030170"
+    },
+    {
+      "title": "Ontario Regulation 128/04 - Certification of Drinking Water System Operators",
+      "reference": "Operator duties, certification and operational responsibility",
+      "url": "https://www.ontario.ca/laws/regulation/040128"
+    },
+    {
+      "title": "Ontario Regulation 129/04 - Licensing of Sewage Works Operators",
+      "reference": "Wastewater operator licensing and operational responsibility",
+      "url": "https://www.ontario.ca/laws/regulation/040129"
+    },
+    {
+      "title": "US EPA - Small Drinking Water Systems Handbook",
+      "reference": "Treatment barriers, filtration, disinfection and small-system operations",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
+    },
+    {
+      "title": "US EPA - Surface Water Treatment Rule Turbidity Guidance Manual",
+      "reference": "Coagulation, flocculation, sedimentation, filtration and turbidity",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100ZLYM.TXT"
+    },
+    {
+      "title": "US EPA - Resources for Wastewater Operators",
+      "reference": "Wastewater process operation and troubleshooting resources",
+      "url": "https://www.epa.gov/compliance/resources-wastewater-operators"
+    },
+    {
+      "title": "US EPA - Start-Up of Municipal Wastewater Treatment Facilities",
+      "reference": "Activated sludge, biological treatment and plant operation",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00000IDV.TXT"
+    },
+    {
+      "title": "US EPA - Alternative Wastewater Collection Systems Manual",
+      "reference": "Collection-system components, operation and maintenance",
+      "url": "https://nepis.epa.gov/Exe/ZyNET.exe?Index=Prior+to+1976&Query=&SearchMethod=1&FuzzyDegree=0&User=ANONYMOUS&Password=anonymous&QField=pubnumber%5E%22625191024%22&UseQField=pubnumber&IntQFieldOp=1&ExtQFieldOp=1&Docs="
+    },
+    {
+      "title": "Canadian Centre for Occupational Health and Safety - Hydrogen Sulfide",
+      "reference": "Hydrogen sulfide properties and confined-space hazard",
+      "url": "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+    },
+    {
+      "title": "Canadian Centre for Occupational Health and Safety - Confined Spaces",
+      "reference": "Atmospheric, engulfment, entry and rescue hazards",
+      "url": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+    }
+  ]
+}

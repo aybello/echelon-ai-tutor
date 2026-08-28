@@ -26,7 +26,10 @@
     "309a:hash": "node scripts/stamp-309a-content-hashes.mjs",
     "309a:rewrite:bc": "node scripts/rewrite-309a-bc-quality.mjs",
     "309a:generate:remaining": "node scripts/generate-309a-remaining-batches.mjs",
-    "309a:import:dry-run": "node scripts/import-309a-question-bank.mjs"
+    "309a:import:dry-run": "node scripts/import-309a-question-bank.mjs",
+    "oit:generate": "node scripts/content/build-oit-question-banks.mjs",
+    "oit:validate": "node scripts/validate-oit-question-banks.mjs",
+    "oit:import:dry-run": "node scripts/import-oit-question-banks.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1111.0",
