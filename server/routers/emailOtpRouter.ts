@@ -4,7 +4,8 @@
  * Flow:
  *   1. Operator enters their email at /login/otp
  *   2. requestOtp: resolves entitlements, generates a 6-digit code, stores SHA-256 hash,
- *      sends the code via email. Returns { sent: true } always (no enumeration).
+ *      sends the code via email. Unknown emails receive a neutral success response;
+ *      delivery failures return a generic error.
  *   3. Operator types the code into the UI.
  *   4. verifyOtp: checks hash, checks expiry, checks attempt count (max 5),
  *      marks used, issues session cookie + localStorage token, returns access data.
@@ -18,7 +19,8 @@
  */
 
 import crypto from "crypto";
-import { and, eq, gt, isNull } from "drizzle-orm";
+import { TRPCError } from "@trpc/server";
+import { and, desc, eq, gt, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
@@ -46,7 +48,8 @@ function hashCode(code: string): string {
 export const emailOtpRouter = router({
   /**
    * Request a 6-digit OTP code for the given email.
-   * Always returns { sent: true } to prevent email enumeration.
+   * Returns a neutral success for unknown emails to prevent enumeration. For an
+   * entitled email, success means the SMTP provider accepted the message.
    */
   requestOtp: publicProcedure
     .input(z.object({ email: z.string().email() }))
@@ -68,12 +71,36 @@ export const emailOtpRouter = router({
       const codeHash = hashCode(code);
       const expiresAt = new Date(Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000);
 
+      // A resend replaces every older unused code. This prevents the verifier
+      // from accepting a stale code after the learner asks for a new one.
+      await db
+        .update(emailOtpCodes)
+        .set({ usedAt: new Date() })
+        .where(and(eq(emailOtpCodes.email, email), isNull(emailOtpCodes.usedAt)));
+
       await db.insert(emailOtpCodes).values({ email, codeHash, expiresAt });
 
-      // Send email (non-blocking)
-      sendOtpEmail({ email, code, expiresInMinutes: OTP_EXPIRY_MINUTES }).catch((err) => {
-        console.error("[OTP] Failed to send email:", err.message);
-      });
+      // Do not tell the browser that a code was sent until the SMTP provider
+      // has accepted it. The previous fire-and-forget call could be terminated
+      // with the request and silently strand managers on the code-entry screen.
+      try {
+        await sendOtpEmail({ email, code, expiresInMinutes: OTP_EXPIRY_MINUTES });
+      } catch (error) {
+        // Never leave an undelivered code valid in the database.
+        await db
+          .delete(emailOtpCodes)
+          .where(and(
+            eq(emailOtpCodes.email, email),
+            eq(emailOtpCodes.codeHash, codeHash),
+            isNull(emailOtpCodes.usedAt),
+          ));
+        console.error("[OTP] Failed to send email:", error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "We couldn't send your login code. Please try again in a moment.",
+          cause: error,
+        });
+      }
 
       console.log(`[OTP] Code sent to ${email.replace(/(^.{3}).+@/, "$1***@")}`);
       return { sent: true };
@@ -108,7 +135,7 @@ export const emailOtpRouter = router({
             gt(emailOtpCodes.expiresAt, now),
           )
         )
-        .orderBy(emailOtpCodes.createdAt)
+        .orderBy(desc(emailOtpCodes.createdAt), desc(emailOtpCodes.id))
         .limit(1);
 
       if (!otpRow) {
