@@ -11,7 +11,8 @@ const allowedSourceUrls = new Set(manifest.sources.map(source => source.url));
 const normalized = value => value.toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ").trim();
 const wordCount = value => value.trim().split(/\s+/).filter(Boolean).length;
 const giveawayLanguage = /\b(always|never|ignore|guess|wait until|omit|regardless|by smell|previous day's|cancel each other|unattended)\b/i;
-const knownBadContent = /filterable particulate material|effective biochemical oxygen demand|achieving its intended operational result/i;
+const knownBadContent = /filterable particulate material|effective biochemical oxygen demand|achieving its intended operational result|confined-space and biological-hazard task even when performed from the surface|restore rotation before biomass condition deteriorates/i;
+const broadConceptStem = /which statement (?:about .+ )?is correct|which statement is accurate|what should an oit understand about|which explanation .+ is technically sound|which principle should guide an operator working with/i;
 
 function longestRun(values) {
   let longest = 0;
@@ -45,6 +46,45 @@ function jaccard(left, right) {
   const intersection = [...left].filter(token => right.has(token)).length;
   const union = new Set([...left, ...right]).size;
   return union === 0 ? 0 : intersection / union;
+}
+
+function independentlyRecompute(question) {
+  const numericStem = question.question.split(/Round to/i)[0].replaceAll(",", "");
+  const numbers = [...numericStem.matchAll(/(?<![A-Za-z])\d+(?:\.\d+)?(?![A-Za-z])/g)].map(match => Number(match[0]));
+  const [a, b, c] = numbers;
+  switch (question.topic) {
+    case "turbidity removal":
+    case "BOD removal": return (a - b) / a * 100;
+    case "chemical mass":
+    case "booster chemical mass":
+    case "BOD loading":
+    case "CT value": return a * b;
+    case "detention time": return a / b * 24;
+    case "filter loading rate": return a / b;
+    case "chlorine demand": return a - b;
+    case "head and pressure": return a * 9.81;
+    case "pipe volume": return Math.PI * a ** 2 / 4 * b;
+    case "pipe velocity":
+    case "force-main velocity": return b / (Math.PI * a ** 2 / 4);
+    case "flow conversion": return a * 86_400 / 1_000_000;
+    case "storage detention":
+    case "aeration detention": return a / (b * 1_000) * 24;
+    case "sludge volume index": return b * 1_000 / c;
+    case "solids retention time":
+    case "food-to-microorganism ratio": return a / b;
+    case "sewer slope": return a / b * 100;
+    case "pump run time": return a / (b * 0.06);
+    case "wet-weather increase": return (b - a) / a * 100;
+    case "wet-well fill time": return a / ((b - c) * 0.06);
+    default: throw new Error(`No independent calculation rule for ${question.topic}.`);
+  }
+}
+
+function calculationPrecision(question) {
+  if (/Round to the nearest whole number\./.test(question.question)) return 0;
+  const match = question.question.match(/Round to (\d+) decimal (?:place|places)\./);
+  assert(match, `${question.itemId}: calculation stem must state its rounding precision.`);
+  return Number(match[1]);
 }
 
 assert.equal(manifest.version, "2026-08-28-v2", "Unexpected OIT package version.");
@@ -99,6 +139,9 @@ for (const bank of manifest.banks) {
 
     const pattern = stemPattern(question);
     patternCounts.set(pattern, (patternCounts.get(pattern) ?? 0) + 1);
+    if (question.isCalc === "no") {
+      assert(!broadConceptStem.test(question.question), `${context}: broad conceptual stem can permit more than one true option.`);
+    }
 
     assert(Array.isArray(question.options), `${context}: options must be an array.`);
     assert.equal(question.options.length, 4, `${context}: exactly four options are required.`);
@@ -108,6 +151,13 @@ for (const bank of manifest.banks) {
       assert(!/^[a-z]/.test(option), `${context}: option ${optionIndex} must start with an uppercase letter or number.`);
     });
     assert.equal(new Set(question.options.map(normalized)).size, 4, `${context}: duplicate options.`);
+    if (question.isCalc === "no") {
+      for (let left = 0; left < question.options.length; left += 1) {
+        for (let right = left + 1; right < question.options.length; right += 1) {
+          assert(jaccard(tokenSet(question.options[left]), tokenSet(question.options[right])) < 0.4, `${context}: options ${left} and ${right} are too similar to be uniquely distinguishable.`);
+        }
+      }
+    }
     assert(Number.isInteger(question.correctIndex) && question.correctIndex >= 0 && question.correctIndex <= 3, `${context}: invalid correctIndex.`);
     assert.equal(question.correctAnswer, question.options[question.correctIndex], `${context}: correctAnswer does not match correctIndex.`);
     assert(!question.correctAnswer.toLowerCase().includes(question.topic.toLowerCase()), `${context}: correct answer repeats the topic supplied by the stem.`);
@@ -149,6 +199,10 @@ for (const bank of manifest.banks) {
       answers.add(question.correctAnswer);
       calculationAnswers.set(calculationKey, answers);
       streamCalculationCounts.set(question.stream, (streamCalculationCounts.get(question.stream) ?? 0) + 1);
+      const precision = calculationPrecision(question);
+      const factor = 10 ** precision;
+      const independentlyRounded = Math.round((independentlyRecompute(question) + Number.EPSILON) * factor) / factor;
+      assert.equal(Number.parseFloat(question.correctAnswer), independentlyRounded, `${context}: keyed calculation answer does not match independent recomputation and stated precision.`);
     }
 
     if (question.topic === "turbidity removal" || question.topic === "BOD removal") {

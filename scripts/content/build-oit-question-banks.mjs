@@ -66,7 +66,7 @@ const add = (stream, module, source, name, purpose, scenario, action, principle,
 
 // Water treatment: 25 objectives x 4 item forms = 100 questions.
 add("Water Treatment", "Source Water & Multiple Barriers", "EPA_WATER", "source-water assessment", "identify raw-water hazards and variability before selecting operating responses", "Raw-water turbidity and colour rise sharply after heavy rain", "increase monitoring and adjust treatment only from verified process data", "Source conditions can change quickly, so treatment decisions begin with representative raw-water data", "current raw-water results agree with field and online observations");
-add("Water Treatment", "Source Water & Multiple Barriers", "EPA_WATER", "multiple-barrier treatment", "reduce risk through several independent removal and inactivation steps", "One treatment barrier becomes temporarily less effective", "stabilize that barrier while verifying that the remaining barriers continue to perform", "No single barrier should be assumed to remove every microbial and chemical hazard", "each barrier has a defined control measure and stays within limits");
+add("Water Treatment", "Source Water & Multiple Barriers", "EPA_WATER", "multiple-barrier treatment", "reduce risk through several independent removal and inactivation steps", "A confirmed non-critical performance decline affects one barrier, but no critical limit has been exceeded and the barrier remains available", "stabilize that barrier while verifying that the remaining barriers continue to perform", "No single barrier should be assumed to remove every microbial and chemical hazard", "each barrier has a defined control measure and stays within limits");
 add("Water Treatment", "Coagulation & Flocculation", "EPA_FILTER", "coagulation", "destabilize fine suspended and colloidal particles so they can combine", "Filtered-water turbidity rises after the raw-water pH changes", "run a jar test and adjust coagulant conditions using plant procedures", "Coagulant performance depends on dose, mixing, pH, alkalinity and raw-water character", "pin floc forms promptly and downstream turbidity decreases");
 add("Water Treatment", "Coagulation & Flocculation", "EPA_FILTER", "rapid mixing", "disperse coagulant quickly and uniformly through the incoming water", "Coagulant is fed correctly but floc forms unevenly across the basin", "inspect rapid-mix energy, feed location and chemical distribution", "This step is intense and brief; it is not intended to grow large floc", "the chemical is distributed uniformly before water enters flocculation");
 add("Water Treatment", "Coagulation & Flocculation", "EPA_FILTER", "flocculation", "gently bring destabilized particles together into settleable floc", "Floc is small and breaks apart near the end of the basin", "check mixing intensity and reduce excessive shear where permitted", "This stage needs enough contact and gentle mixing without breaking formed floc", "floc becomes larger and denser as it moves through the basin");
@@ -77,7 +77,7 @@ add("Water Treatment", "Filtration", "EPA_FILTER", "filter-to-waste", "keep init
 add("Water Treatment", "Disinfection", "EPA_WATER", "primary disinfection", "inactivate pathogens before water enters the distribution system", "Flow increases through a chlorine contact basin while residual is unchanged", "recalculate effective contact time and verify the required inactivation remains achieved", "Disinfection performance depends on disinfectant concentration, contact time, temperature and water quality", "the verified residual and effective contact time meet the operating target");
 add("Water Treatment", "Disinfection", "EPA_WATER", "chlorine demand", "describe the chlorine consumed before a measurable residual remains", "A 2.0 mg/L dose produces a 0.6 mg/L residual", "recognize that 1.4 mg/L was consumed before a measurable residual remained", "Applied dose equals the amount consumed plus the measured residual", "dose and residual measurements reconcile within expected process variation");
 add("Water Treatment", "Disinfection", "EPA_WATER", "breakpoint chlorination", "apply enough chlorine to satisfy demand and oxidize ammonia before free residual develops", "Increasing chlorine dose first lowers the combined residual and later produces free chlorine", "confirm the system is moving through breakpoint rather than assuming feed failure", "The breakpoint curve reflects chlorine demand, chloramine formation, destruction and free residual", "free chlorine rises predictably after the breakpoint region");
-add("Water Treatment", "Disinfection", "EPA_WATER", "CT control", "verify disinfectant exposure using residual concentration multiplied by effective contact time", "A basin baffle is damaged even though outlet residual remains normal", "reassess effective contact time and the resulting CT value", "Nominal basin volume alone can overstate effective contact time when short-circuiting occurs", "calculated CT uses validated effective contact time and the measured residual");
+add("Water Treatment", "Disinfection", "EPA_WATER", "CT control", "verify disinfectant exposure using residual concentration multiplied by effective contact time", "A basin baffle is damaged even though outlet residual remains normal", "reassess effective contact time and the resulting CT value", "Nominal basin volume alone can overstate effective contact time when short-circuiting occurs", "calculated CT uses validated effective contact time and measured residual and meets the required target");
 add("Water Treatment", "Water Chemistry", "EPA_WATER", "pH control", "maintain chemical conditions needed for treatment, disinfection and corrosion control", "A chemical dose works poorly after pH shifts outside its normal range", "verify the pH measurement and restore the approved operating range", "pH is logarithmic and can strongly affect coagulation, chlorine speciation and metal solubility", "process response improves when verified pH returns to its target range");
 add("Water Treatment", "Water Chemistry", "EPA_WATER", "alkalinity", "provide acid-neutralizing capacity and help stabilize treatment pH", "Alum addition causes a larger-than-normal pH drop", "check raw-water buffering capacity and apply approved chemical adjustment if required", "Water with limited buffering capacity is vulnerable to pH drops from acid-producing reactions", "pH remains more stable during normal coagulant dosing");
 add("Water Treatment", "Water Chemistry", "EPA_WATER", "hardness control", "manage calcium and magnesium effects such as scale, soap use and stability", "Customers report scale after finished-water hardness increases", "verify hardness and review the softening or blending process", "Hardness is primarily associated with dissolved calcium and magnesium", "hardness and stability results remain within the plant's operating goals");
@@ -97,7 +97,7 @@ add("Water Distribution", "Valves", "EPA_WATER", "gate valves", "provide low-los
 add("Water Distribution", "Valves", "EPA_WATER", "butterfly valves", "isolate or regulate flow in large pipes with a rotating disc", "A large transmission main needs compact valve installation", "evaluate a butterfly valve suited to the pressure and service", "The disc remains in the flow path and produces some head loss even when open", "position indication agrees with flow response during controlled operation");
 add("Water Distribution", "Valves", "EPA_WATER", "check valves", "prevent reverse flow when pumping stops or pressure reverses", "A pump stops and water begins moving backward through its discharge", "inspect the check valve and isolate the affected equipment safely", "A check valve operates automatically from flow and pressure differential", "reverse flow stops without severe slam or pressure surge");
 add("Water Distribution", "Valves", "EPA_WATER", "pressure-reducing valves", "maintain a lower controlled downstream pressure zone", "Downstream pressure rises above its normal set point", "verify sensing lines, pilot condition and valve operation", "A pressure-reducing valve responds to downstream pressure, not merely upstream flow", "downstream pressure remains near set point as demand changes");
-add("Water Distribution", "Valves", "EPA_WATER", "air-release valves", "release trapped air from high points while limiting vacuum formation", "Flow capacity declines and surging appears near a pipeline summit", "inspect the high-point air valve for blockage or malfunction", "Trapped air can restrict flow and intensify hydraulic transients", "air is released without continuous water leakage");
+add("Water Distribution", "Valves", "EPA_WATER", "air-release valves", "release small pockets of accumulated air from pressurized pipeline high points", "Flow capacity declines and surging appears near a pipeline summit", "inspect the high-point air valve for blockage or malfunction", "These devices vent small air pockets in pressurized pipes; admitting air under vacuum requires an air-vacuum or combination valve", "air is released during pressurized operation without continuous water leakage");
 add("Water Distribution", "Fire Protection", "EPA_WATER", "fire hydrants", "provide controlled high-flow access for firefighting, flushing and testing", "A hydrant will be operated for a flow test", "coordinate the test, protect water quality and open or close it slowly", "Rapid hydrant operation can create damaging pressure transients and disturb deposits", "hydrant flow, pressure and drainage meet the maintenance criteria");
 add("Water Distribution", "Storage", "EPA_WATER", "elevated storage", "provide pressure, balancing storage and emergency or fire reserve", "Night demand falls and tank level remains unusually high", "review turnover and adjust approved operating levels or cycling", "Poor turnover can increase water age even when tank volume is adequate", "tank level cycles predictably and stored water is regularly exchanged");
 add("Water Distribution", "Hydraulics", "EPA_WATER", "pressure monitoring", "verify service pressure and detect abnormal hydraulic conditions", "Customers in one zone report low pressure during peak demand", "compare calibrated pressure readings with pump, tank and valve status", "Pressure must be interpreted with elevation, demand and system configuration", "field and telemetry readings agree with expected hydraulic grade");
@@ -132,7 +132,7 @@ add("Wastewater Treatment", "Secondary Clarification", "EPA_AS", "secondary clar
 add("Wastewater Treatment", "Process Control", "EPA_AS", "settleability testing", "observe how activated sludge settles and compacts over a defined time", "Effluent solids rise even though MLSS is unchanged", "run a settleometer test and compare blanket formation and compaction", "A settleability result must be interpreted with MLSS and plant conditions", "settling pattern helps explain the observed clarifier behaviour");
 add("Wastewater Treatment", "Process Control", "EPA_AS", "sludge bulking control", "restore settleability when dispersed or filamentous biomass fails to compact", "A 30-minute settle test leaves a high, diffuse blanket", "identify the cause using microscopy and process data before applying control", "Bulking can result from low DO, septicity or nutrient imbalance", "settling improves after the verified root cause is corrected");
 add("Wastewater Treatment", "Attached Growth", "EPA_WW", "trickling filtration", "treat wastewater as it passes over attached biofilm media", "Ponding develops on the media surface", "inspect distributor operation, hydraulic loading and media plugging", "A trickling filter uses attached growth and still needs downstream solids separation", "distribution remains even and ponding or fly problems are controlled");
-add("Wastewater Treatment", "Attached Growth", "EPA_WW", "rotating biological contactors", "expose attached biofilm alternately to wastewater and air on rotating media", "A shaft drive trips and discs stop rotating", "protect the unit and restore rotation before biomass condition deteriorates", "Rotation supplies contact, oxygen transfer and sloughing control", "media rotates smoothly with healthy biofilm and stable effluent");
+add("Wastewater Treatment", "Attached Growth", "EPA_WW", "rotating biological contactors", "expose attached biofilm alternately to wastewater and air on rotating media", "A shaft drive trips and discs stop rotating", "isolate and lock out the drive, investigate the trip cause, and restart only under the approved procedure", "Rotation supplies contact, oxygen transfer and sloughing control, but a tripped drive must not be reset before safe isolation and fault investigation", "media rotates smoothly with healthy biofilm and stable effluent after the trip cause is corrected");
 add("Wastewater Treatment", "Pond Systems", "EPA_WW", "wastewater stabilization ponds", "use long detention and natural biological activity for treatment", "Effluent algae and TSS rise during warm weather", "evaluate pond loading, short-circuiting and the approved algae-control strategy", "Pond performance varies with temperature, sunlight, wind, depth and detention", "treatment remains stable across seasonal operating conditions");
 add("Wastewater Treatment", "Disinfection", "EPA_WW", "wastewater chlorination", "inactivate pathogens before effluent discharge or reuse", "Effluent demand rises and the target residual is not achieved", "confirm feed, mixing, demand and effective contact time", "Solids and ammonia can increase chlorine demand and shield microorganisms", "residual and contact conditions meet the approved disinfection target");
 add("Wastewater Treatment", "Disinfection", "EPA_WW", "dechlorination", "remove excess chlorine residual before discharge where required", "Chlorinated effluent meets bacteria goals but residual is too high", "verify and adjust the approved dechlorinating chemical feed", "Excess reducing chemical can consume oxygen or leave an unwanted residual after chlorine removal", "final residual meets the discharge target without excessive chemical use");
@@ -180,65 +180,84 @@ const questions = [];
 let nextId = 1;
 const stemTemplates = {
   purpose: [
-    c => `What is the primary operational purpose of ${c.name}?`,
-    c => `An OIT is reviewing ${c.name}. Which description best states its main purpose?`,
-    c => `Which outcome is ${c.name} chiefly intended to achieve?`,
-    c => `In routine operation, why is ${c.name} used?`,
-    c => `What operating need is addressed by ${c.name}?`,
-    c => `Which description best explains the role of ${c.name} in the process?`,
-    c => `A new operator asks why ${c.name} matters. Which answer is most accurate?`,
-    c => `What is an operator trying to accomplish through ${c.name}?`,
+    c => `Which operating objective is specifically associated with ${c.name}?`,
+    c => `Which description most directly identifies the intended function of ${c.name}?`,
+    c => `Which outcome is the defining objective of ${c.name}, rather than a related process?`,
+    c => `Which operating need is addressed most directly by ${c.name}?`,
+    c => `Which objective distinguishes ${c.name} from the other processes in this module?`,
+    c => `Which description most specifically explains the role of ${c.name} in this process?`,
+    c => `Which result is ${c.name} principally intended to produce?`,
+    c => `Which objective should an operator associate directly with ${c.name}?`,
   ],
   action: [
-    c => `${c.scenario}. What should the operator do first?`,
-    c => `${c.scenario}. Which response is most appropriate?`,
-    c => `During routine rounds, ${c.scenario.toLowerCase()}. What is the best next step?`,
-    c => `Consider this operating condition: ${c.scenario}. Which action best addresses it?`,
-    c => `${c.scenario}. How should the OIT respond?`,
-    c => `An operator observes the following: ${c.scenario}. What is the most defensible first action?`,
-    c => `${c.scenario}. Which operating response best protects process control and safety?`,
-    c => `While checking the system, the operator finds this condition: ${c.scenario}. What should happen next?`,
+    c => `${c.scenario}. Which response most directly addresses this specific finding?`,
+    c => `${c.scenario}. Which listed action is targeted most directly to the stated condition?`,
+    c => `During routine rounds, ${c.scenario.toLowerCase()}. Which response directly addresses the evidence given?`,
+    c => `Consider this operating condition: ${c.scenario}. Which action is specific to this problem?`,
+    c => `${c.scenario}. Which response addresses the stated hazard or process condition most directly?`,
+    c => `An operator observes the following: ${c.scenario}. Which action is most directly supported by these facts?`,
+    c => `${c.scenario}. Which operating response is specific to the condition described?`,
+    c => `While checking the system, the operator finds this condition: ${c.scenario}. Which response directly targets it?`,
   ],
   principle: [
-    c => `Which statement about ${c.name} is correct?`,
-    c => `Which principle should guide an operator working with ${c.name}?`,
-    c => `What should an OIT understand about ${c.name}?`,
-    c => `Which operating statement correctly applies to ${c.name}?`,
-    c => `Which explanation of ${c.name} is technically sound?`,
-    c => `What is the most accurate operating principle for ${c.name}?`,
-    c => `Which statement should guide a decision involving ${c.name}?`,
-    c => `An OIT is learning about ${c.name}. Which statement is accurate?`,
+    c => `${c.scenario}. Which principle most directly explains the operating issue involving ${c.name}?`,
+    c => `For ${c.name}, which principle specifically governs the response to this finding: ${c.scenario}?`,
+    c => `Which principle distinguishes ${c.name} in the following situation: ${c.scenario}?`,
+    c => `${c.scenario}. Which statement most specifically applies to ${c.name}?`,
+    c => `Given this ${c.name} finding—${c.scenario}—which explanation is most directly relevant?`,
+    c => `Given this finding—${c.scenario}—which operating principle is specific to ${c.name}?`,
+    c => `Which principle should govern the ${c.name} decision raised by this finding: ${c.scenario}?`,
+    c => `An OIT encounters this ${c.name} situation: ${c.scenario}. Which principle applies most directly?`,
   ],
   indicator: [
-    c => `Which observation most directly indicates satisfactory performance for ${c.name}?`,
-    c => `What is the strongest routine evidence supporting effective use of ${c.name}?`,
-    c => `Which result best confirms acceptable performance of ${c.name}?`,
-    c => `How should an operator verify proper operation of ${c.name}?`,
-    c => `Which field result is the clearest sign of satisfactory operation for ${c.name}?`,
-    c => `What evidence should an operator use to judge the performance of ${c.name}?`,
-    c => `Which finding provides the best operational check for ${c.name}?`,
-    c => `What would give an OIT the most confidence in the operation of ${c.name}?`,
+    c => `After this response—${c.action}—which result most directly confirms the intended ${c.name} outcome?`,
+    c => `Which result is the most specific evidence that the response to ${c.name} worked as intended?`,
+    c => `After addressing this finding—${c.scenario}—which result most directly confirms the intended outcome of ${c.name}?`,
+    c => `Which result specifically verifies the intended outcome after this response—${c.action}?`,
+    c => `Which field result most directly shows that the ${c.name} response achieved its objective?`,
+    c => `After this response—${c.action}—which evidence is specific to achieving the objective of ${c.name}?`,
+    c => `Which finding most directly confirms that the operating objective for ${c.name} has been achieved?`,
+    c => `Which result is the clearest operational confirmation that the ${c.name} response was effective?`,
   ],
 };
 
 function peersFor(index, answerField) {
   const c = concepts[index];
-  const deliveryModule = canonicalModule(c.stream, c.module);
   const answerLength = value => value.trim().split(/\s+/).length;
-  const byComparableLength = (left, right) => (
-    Math.abs(answerLength(left.x[answerField]) - answerLength(c[answerField]))
-    - Math.abs(answerLength(right.x[answerField]) - answerLength(c[answerField]))
-  );
-  const same = concepts
+  const tokens = value => new Set(value.toLowerCase().replace(/[^a-z0-9 ]/g, "").split(/\s+/).filter(token => token.length > 2));
+  const similarity = (left, right) => {
+    const leftTokens = tokens(left);
+    const rightTokens = tokens(right);
+    const intersection = [...leftTokens].filter(token => rightTokens.has(token)).length;
+    const union = new Set([...leftTokens, ...rightTokens]).size;
+    return union === 0 ? 0 : intersection / union;
+  };
+  const targetLength = answerLength(c[answerField]);
+  const candidates = concepts
     .map((x, i) => ({ x, i }))
-    .filter(v => v.i !== index && v.x.stream === c.stream && canonicalModule(v.x.stream, v.x.module) === deliveryModule)
-    .sort(byComparableLength);
-  const broader = concepts
-    .map((x, i) => ({ x, i }))
-    .filter(v => v.i !== index && v.x.stream === c.stream && !same.some(s => s.i === v.i))
-    .sort(byComparableLength);
-  const ordered = [...same, ...broader];
-  return ordered.slice(0, 3).map(value => value.x);
+    .filter(v => v.i !== index && v.x.stream === c.stream)
+    .filter(v => similarity(v.x[answerField], c[answerField]) < 0.35)
+    .sort((left, right) => {
+      const leftDifferentModule = left.x.module === c.module ? 1 : 0;
+      const rightDifferentModule = right.x.module === c.module ? 1 : 0;
+      if (leftDifferentModule !== rightDifferentModule) return leftDifferentModule - rightDifferentModule;
+      const leftLengthPenalty = Math.abs(answerLength(left.x[answerField]) - targetLength) > Math.max(4, targetLength * 0.4) ? 1 : 0;
+      const rightLengthPenalty = Math.abs(answerLength(right.x[answerField]) - targetLength) > Math.max(4, targetLength * 0.4) ? 1 : 0;
+      if (leftLengthPenalty !== rightLengthPenalty) return leftLengthPenalty - rightLengthPenalty;
+      const leftLengthDifference = Math.abs(answerLength(left.x[answerField]) - targetLength);
+      const rightLengthDifference = Math.abs(answerLength(right.x[answerField]) - targetLength);
+      if (leftLengthDifference !== rightLengthDifference) return leftLengthDifference - rightLengthDifference;
+      return ((left.i - index + concepts.length) * 17 % concepts.length) - ((right.i - index + concepts.length) * 17 % concepts.length);
+    });
+  const selected = [];
+  for (const candidate of candidates) {
+    if (selected.every(existing => similarity(existing.x[answerField], candidate.x[answerField]) < 0.35)) {
+      selected.push(candidate);
+      if (selected.length === 3) break;
+    }
+  }
+  if (selected.length < 3) throw new Error(`Could not find three distinct distractors for ${c.name} ${answerField}.`);
+  return selected.map(value => value.x);
 }
 
 function canonicalModule(stream, module) {
@@ -312,15 +331,31 @@ function addQuestion({ stream, module, topic, difficulty, stem, correct, distrac
 
 const informationTopics = /assessment|demand|monitoring|sampling|testing|index|oxygen demand|suspended solids|meter|inspection|records|survey/i;
 const isInformationObjective = concept => informationTopics.test(concept.name);
+const adverseConditionTopics = new Set([
+  "pump cavitation",
+  "hypochlorite strength decay",
+  "backpressure backflow",
+  "backsiphonage backflow",
+  "tuberculation",
+  "inflow",
+  "infiltration",
+  "clarifier hydraulic overloading",
+  "activated-sludge foaming",
+  "sewer surcharge",
+]);
+const isAdverseCondition = concept => adverseConditionTopics.has(concept.name);
 
 function purposeStem(concept, variant) {
+  if (isAdverseCondition(concept)) {
+    return `Which objective should an operator associate with recognizing or controlling ${concept.name}?`;
+  }
   if (isInformationObjective(concept)) {
     return [
       `What can an operator primarily determine from ${concept.name}?`,
       `Which description best states the information obtained through ${concept.name}?`,
       `What information should an operator obtain from ${concept.name}?`,
-      `Why does an operator use information from ${concept.name} during routine operation?`,
-      `Which operating decision should be supported by ${concept.name}?`,
+      `Which information is obtained most directly from ${concept.name}?`,
+      `Which result describes the specific purpose of ${concept.name}?`,
       `Which description best explains the value of data from ${concept.name}?`,
       `What does an operator gain by using the results of ${concept.name} correctly?`,
       `Which operating need is addressed by information from ${concept.name}?`,
@@ -330,6 +365,9 @@ function purposeStem(concept, variant) {
 }
 
 function indicatorStem(concept, variant) {
+  if (isAdverseCondition(concept)) {
+    return `After corrective work, which result most directly confirms that ${concept.name} has been controlled?`;
+  }
   if (isInformationObjective(concept)) {
     return [
       `Which result gives the strongest confidence in information from ${concept.name}?`,
@@ -348,13 +386,33 @@ function indicatorStem(concept, variant) {
 for (let i = 0; i < concepts.length; i += 1) {
   const c = concepts[i];
   const t = i % 8;
-  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "easy", stem: purposeStem(c, t), correct: c.purpose, distractors: peersFor(i, "purpose").map(p => p.purpose), explanation: `The purpose of ${c.name} is to ${c.purpose}. ${c.principle}.`, source: c.source });
+  const purposeExplanation = isAdverseCondition(c)
+    ? `The operator's objective when addressing ${c.name} is to ${c.purpose}. ${c.principle}.`
+    : `The purpose of ${c.name} is to ${c.purpose}. ${c.principle}.`;
+  const indicatorExplanation = isAdverseCondition(c)
+    ? `The relevant evidence is that ${c.indicator}. This shows that ${c.name} has been controlled after this response: ${c.action}.`
+    : `The relevant performance evidence is that ${c.indicator}. The objective of ${c.name} is to ${c.purpose}.`;
+  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "easy", stem: purposeStem(c, t), correct: c.purpose, distractors: peersFor(i, "purpose").map(p => p.purpose), explanation: purposeExplanation, source: c.source });
   addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: c.difficulty, stem: stemTemplates.action[(t + 1) % 8](c), correct: c.action, distractors: peersFor(i, "action").map(p => p.action), explanation: `The first response is to ${c.action}. ${c.principle}.`, source: c.source });
   addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "medium", stem: stemTemplates.principle[(t + 2) % 8](c), correct: c.principle, distractors: peersFor(i, "principle").map(p => p.principle), explanation: `${c.principle}. In practice, the operator should ${c.action}.`, source: c.source });
-  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: i % 3 === 0 ? "hard" : "medium", stem: indicatorStem(c, (t + 3) % 8), correct: c.indicator, distractors: peersFor(i, "indicator").map(p => p.indicator), explanation: `The relevant performance evidence is that ${c.indicator}. The objective of ${c.name} is to ${c.purpose}.`, source: c.source });
+  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: i % 3 === 0 ? "hard" : "medium", stem: indicatorStem(c, (t + 3) % 8), correct: c.indicator, distractors: peersFor(i, "indicator").map(p => p.indicator), explanation: indicatorExplanation, source: c.source });
 }
 
-const fmt = (n, decimals = 1) => Number(n.toFixed(decimals));
+const fmt = (n, decimals = 1) => {
+  const factor = 10 ** decimals;
+  return Math.round((n + Number.EPSILON) * factor) / factor;
+};
+const calculationVariants = new Map();
+const calculationContexts = [
+  "During the morning operating review",
+  "While checking the daily process record",
+  "During an afternoon performance check",
+  "After confirming the field measurements",
+  "During shift handoff",
+  "While reviewing a process trend",
+  "During the weekly performance review",
+  "While independently verifying the operator log",
+];
 function numericDistractors(value, scale = 1, decimals = 1, bounds = { min: 0, max: Number.POSITIVE_INFINITY }) {
   const candidates = [value * 0.8, value * 1.2, value + scale, Math.max(0, value - scale), value * 1.5]
     .map(v => fmt(v, decimals))
@@ -367,8 +425,11 @@ function addCalc(stream, module, topic, stem, correctValue, unit, formula, work,
   const value = fmt(correctValue, decimals);
   if (value < bounds.min || value > bounds.max) throw new Error(`${topic} correct answer ${value} is outside its permitted range.`);
   const distractors = numericDistractors(value, scale, decimals, bounds).map(v => `${v} ${unit}`.trim());
+  const variant = calculationVariants.get(`${stream}|${topic}`) ?? 0;
+  calculationVariants.set(`${stream}|${topic}`, variant + 1);
+  const precision = decimals === 0 ? "Round to the nearest whole number." : `Round to ${decimals} decimal ${decimals === 1 ? "place" : "places"}.`;
   addQuestion({
-    stream, module, topic, difficulty: "hard", stem,
+    stream, module, topic, difficulty: "hard", stem: `${calculationContexts[variant % calculationContexts.length]}, ${stem.charAt(0).toLowerCase()}${stem.slice(1)} ${precision}`,
     correct: `${value} ${unit}`.trim(), distractors,
     explanation: `${formula}. ${work} Therefore, the answer is ${value} ${unit}.`,
     source, isCalc: true, formula,

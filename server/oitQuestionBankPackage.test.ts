@@ -109,4 +109,40 @@ describe("OIT question-bank deployment package", () => {
     expect(serialized).not.toMatch(/effective biochemical oxygen demand/i);
     expect(serialized).not.toMatch(/achieving its intended operational result/i);
   });
+
+  it("keeps the independent-review safety, rounding, and terminology repairs", () => {
+    const water = load("oit-water-500.json");
+    const wastewater = load("oit-wastewater-500.json");
+    const get = (questions: any[], questionNum: number) => questions.find(question => question.questionNum === questionNum);
+
+    const rbcTrip = get(wastewater, 1054);
+    expect(rbcTrip.correctAnswer).toMatch(/isolate and lock out/i);
+    expect(rbcTrip.correctAnswer).toMatch(/investigate the trip cause/i);
+    expect(rbcTrip.correctAnswer).not.toMatch(/restore rotation before/i);
+
+    const fmRatio = get(wastewater, 1438);
+    expect(fmRatio.question).toContain("Round to 2 decimal places.");
+    expect(Number.parseFloat(fmRatio.correctAnswer)).toBe(0.18);
+
+    const airRelease = get(water, 1121);
+    expect(airRelease.correctAnswer).toMatch(/pressurized pipeline/i);
+    expect(airRelease.correctAnswer).not.toMatch(/vacuum/i);
+
+    const wetWellCleaning = get(wastewater, 1351);
+    expect(wetWellCleaning.correctAnswer).toMatch(/surface work/i);
+    expect(wetWellCleaning.correctAnswer).toMatch(/confined-space entry controls apply only when bodily entry is required/i);
+  });
+
+  it("uses discriminating conceptual stems and explicit calculation precision", () => {
+    const questions = [...load("oit-water-500.json"), ...load("oit-wastewater-500.json")];
+    const broadStem = /which statement (?:about .+ )?is correct|which statement is accurate|what should an oit understand about|which explanation .+ is technically sound|which principle should guide an operator working with/i;
+
+    for (const question of questions) {
+      if (question.isCalc === "yes") {
+        expect(question.question).toMatch(/Round to (?:the nearest whole number|\d+ decimal (?:place|places))\./);
+      } else {
+        expect(question.question).not.toMatch(broadStem);
+      }
+    }
+  });
 });
