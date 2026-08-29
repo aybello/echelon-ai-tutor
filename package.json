@@ -19,6 +19,7 @@
     "db:migrate:adopt": "node --import tsx scripts/db/migrate.ts adopt",
     "db:migrate:apply": "node --import tsx scripts/db/migrate.ts apply",
     "db:verify-question-governance": "node scripts/verify-question-governance-schema.mjs",
+    "audit:answer-bias": "node --import tsx scripts/audit-answer-length-bias.ts",
     "309a:validate-package": "node scripts/validate-309a-production-package.mjs",
     "309a:validate": "node scripts/validate-309a-question-bank.mjs",
     "309a:validate:full": "node scripts/validate-309a-question-bank.mjs --full",
