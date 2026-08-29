@@ -22,8 +22,9 @@ const checksum = createHash("sha256")
   .update(payloads.map(payload => payload.bytes).reduce((combined, bytes) => Buffer.concat([combined, bytes]), Buffer.alloc(0)))
   .digest("hex");
 const apply = process.argv.includes("--apply");
+const plannedCounts = Object.fromEntries(payloads.map(payload => [payload.bankKey, payload.questions.length]));
 
-console.log(`OIT import plan ${checksum.slice(0, 12)}: 500 water + 500 wastewater questions.`);
+console.log(`OIT import plan ${checksum.slice(0, 12)}: ${plannedCounts.oit} water + ${plannedCounts["oit-ww"]} wastewater questions.`);
 console.log("Mode: additive question numbers 1001-1500; existing lower-numbered questions and historical attempts are unchanged.");
 
 if (!apply) {

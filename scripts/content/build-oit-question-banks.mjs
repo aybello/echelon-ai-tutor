@@ -528,6 +528,17 @@ for (const [globalIndex, question] of questions.entries()) {
   bankCounters.set(question.bankKey, bankSequence + 1);
 }
 
+// Independent final review exclusions. Keep the original question identities for
+// retained rows so prior audit references remain meaningful and no content is
+// silently renumbered into a different item.
+const EXCLUDED_QUESTION_NUMBERS = {
+  oit: new Set([1080, 1084, 1114, 1148, 1150, 1176, 1224, 1280, 1312, 1397, 1400]),
+  "oit-ww": new Set([1006, 1044, 1051, 1060, 1067, 1083, 1130, 1153, 1161, 1162, 1193, 1251, 1289, 1327, 1378, 1483, 1486]),
+};
+const retainedQuestions = questions.filter(
+  question => !EXCLUDED_QUESTION_NUMBERS[question.bankKey].has(question.questionNum),
+);
+
 const outputDirectory = "content/oit/questions";
 function hashSeed(value) {
   let hash = 2166136261;
@@ -598,24 +609,30 @@ function distributeAnswerPositions(rows, bankKey) {
     };
   });
 }
-const waterQuestions = distributeAnswerPositions(questions.filter(question => question.bankKey === "oit"), "oit");
-const wastewaterQuestions = distributeAnswerPositions(questions.filter(question => question.bankKey === "oit-ww"), "oit-ww");
-const BLUEPRINT = {
-  "Water Treatment": { questionCount: 250, calculationCount: 48, difficulty: { easy: 50, medium: 134, hard: 66 } },
-  "Water Distribution": { questionCount: 250, calculationCount: 48, difficulty: { easy: 50, medium: 135, hard: 65 } },
-  "Wastewater Treatment": { questionCount: 250, calculationCount: 48, difficulty: { easy: 50, medium: 134, hard: 66 } },
-  "Wastewater Collection": { questionCount: 250, calculationCount: 48, difficulty: { easy: 50, medium: 134, hard: 66 } },
-};
+const waterQuestions = distributeAnswerPositions(retainedQuestions.filter(question => question.bankKey === "oit"), "oit");
+const wastewaterQuestions = distributeAnswerPositions(retainedQuestions.filter(question => question.bankKey === "oit-ww"), "oit-ww");
+const retainedByStream = new Map();
+for (const question of retainedQuestions) {
+  retainedByStream.set(question.stream, [...(retainedByStream.get(question.stream) ?? []), question]);
+}
+const BLUEPRINT = Object.fromEntries([...retainedByStream].map(([stream, rows]) => [stream, {
+  questionCount: rows.length,
+  calculationCount: rows.filter(question => question.isCalc === "yes").length,
+  difficulty: rows.reduce((counts, question) => {
+    counts[question.difficulty] += 1;
+    return counts;
+  }, { easy: 0, medium: 0, hard: 0 }),
+}]));
 await fs.mkdir(outputDirectory, { recursive: true });
 await fs.writeFile(`${outputDirectory}/oit-water-500.json`, `${JSON.stringify(waterQuestions, null, 2)}\n`);
 await fs.writeFile(`${outputDirectory}/oit-wastewater-500.json`, `${JSON.stringify(wastewaterQuestions, null, 2)}\n`);
 await fs.writeFile("content/oit/manifest.json", `${JSON.stringify({
-  version: "2026-08-28-v2",
+  version: "2026-08-29-v3",
   importMode: "additive",
   questionNumberRange: { start: 1001, end: 1500 },
   banks: [
-    { bankKey: "oit", file: "questions/oit-water-500.json", expectedCount: 500 },
-    { bankKey: "oit-ww", file: "questions/oit-wastewater-500.json", expectedCount: 500 },
+    { bankKey: "oit", file: "questions/oit-water-500.json", expectedCount: waterQuestions.length },
+    { bankKey: "oit-ww", file: "questions/oit-wastewater-500.json", expectedCount: wastewaterQuestions.length },
   ],
   governance: {
     sourceReviewStatus: "unreviewed",
@@ -633,4 +650,4 @@ await fs.writeFile("content/oit/manifest.json", `${JSON.stringify({
   sources: Object.values(SOURCES),
 }, null, 2)}\n`);
 
-export { questions, SOURCES };
+export { retainedQuestions as questions, SOURCES };

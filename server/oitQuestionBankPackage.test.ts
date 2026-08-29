@@ -28,17 +28,16 @@ describe("OIT question-bank deployment package", () => {
     { bankKey: "oit-ww", file: "oit-wastewater-500.json" },
   ];
 
-  it.each(banks)("contains 500 validated additive questions for $bankKey", ({ bankKey, file }) => {
+  it.each(banks)("contains the validated additive questions retained for $bankKey", ({ bankKey, file }) => {
     const questions = load(file);
+    const expectedCount = manifest.banks.find((bank: any) => bank.bankKey === bankKey).expectedCount;
     const answerCounts = [0, 0, 0, 0];
     const answerSequence: number[] = [];
 
-    expect(questions).toHaveLength(500);
-    expect(questions.map((question: any) => question.questionNum)).toEqual(
-      Array.from({ length: 500 }, (_, index) => 1001 + index),
-    );
-    expect(new Set(questions.map((question: any) => question.question)).size).toBe(500);
-    expect(questions.filter((question: any) => question.isCalc === "yes")).toHaveLength(96);
+    expect(questions).toHaveLength(expectedCount);
+    expect(new Set(questions.map((question: any) => question.questionNum)).size).toBe(expectedCount);
+    expect(questions.every((question: any) => question.questionNum >= 1001 && question.questionNum <= 1500)).toBe(true);
+    expect(new Set(questions.map((question: any) => question.question)).size).toBe(expectedCount);
 
     for (const question of questions) {
       expect(question.bankKey).toBe(bankKey);
@@ -62,7 +61,7 @@ describe("OIT question-bank deployment package", () => {
       answerSequence.push(question.correctIndex);
     }
 
-    expect(answerCounts).toEqual([125, 125, 125, 125]);
+    expect(Math.max(...answerCounts) - Math.min(...answerCounts)).toBeLessThanOrEqual(2);
     expect(longestRun(answerSequence)).toBeLessThanOrEqual(3);
     expect(answerSequence.some((answer, index) => answer !== index % 4)).toBe(true);
 
@@ -72,8 +71,8 @@ describe("OIT question-bank deployment package", () => {
     }
     expect(byStream.size).toBe(2);
     for (const [stream, streamQuestions] of byStream) {
-      expect(streamQuestions).toHaveLength(250);
-      expect(streamQuestions.filter((question: any) => question.isCalc === "yes")).toHaveLength(48);
+      expect(streamQuestions).toHaveLength(manifest.blueprint[stream].questionCount);
+      expect(streamQuestions.filter((question: any) => question.isCalc === "yes")).toHaveLength(manifest.blueprint[stream].calculationCount);
       expect(streamQuestions.reduce((counts: Record<string, number>, question: any) => {
         counts[question.difficulty] = (counts[question.difficulty] ?? 0) + 1;
         return counts;
@@ -81,12 +80,13 @@ describe("OIT question-bank deployment package", () => {
     }
   });
 
-  it("contains 1,000 globally unique questions and item IDs", () => {
+  it("contains globally unique retained questions and item IDs", () => {
     const questions = [...load("oit-water-500.json"), ...load("oit-wastewater-500.json")];
+    const expectedTotal = manifest.banks.reduce((sum: number, bank: any) => sum + bank.expectedCount, 0);
 
-    expect(questions).toHaveLength(1_000);
-    expect(new Set(questions.map((question: any) => question.itemId)).size).toBe(1_000);
-    expect(new Set(questions.map((question: any) => question.question)).size).toBe(1_000);
+    expect(questions).toHaveLength(expectedTotal);
+    expect(new Set(questions.map((question: any) => question.itemId)).size).toBe(expectedTotal);
+    expect(new Set(questions.map((question: any) => question.question)).size).toBe(expectedTotal);
   });
 
   it("keeps the package behind an individual approval gate", () => {
@@ -139,10 +139,9 @@ describe("OIT question-bank deployment package", () => {
     const get = (questions: any[], questionNum: number) => questions.find(question => question.questionNum === questionNum);
 
     const utilityLocating = get(water, 1393);
-    const trenchProtection = get(water, 1397);
     const trafficControl = get(wastewater, 1500);
 
-    for (const question of [utilityLocating, trenchProtection]) {
+    for (const question of [utilityLocating]) {
       expect(question.sourceUrl).toBe("https://www.ontario.ca/page/achieve-compliance-construction-sites-excavations-underground-work-and-work-compressed-air");
       expect(question.sourceReference).toMatch(/O\. Reg\. 213\/91 sections 222 to 241/i);
       expect(question.sourceUrl).not.toMatch(/confinedspace/i);
@@ -162,6 +161,19 @@ describe("OIT question-bank deployment package", () => {
         expect(question.question).toMatch(/Round to (?:the nearest whole number|\d+ decimal (?:place|places))\./);
       } else {
         expect(question.question).not.toMatch(broadStem);
+      }
+    }
+  });
+
+  it("excludes every independently flagged question from the staged source package", () => {
+    const excluded = {
+      oit: [1080, 1084, 1114, 1148, 1150, 1176, 1224, 1280, 1312, 1397, 1400],
+      "oit-ww": [1006, 1044, 1051, 1060, 1067, 1083, 1130, 1153, 1161, 1162, 1193, 1251, 1289, 1327, 1378, 1483, 1486],
+    };
+    for (const { bankKey, file } of banks) {
+      const questionNums = new Set(load(file).map((question: any) => question.questionNum));
+      for (const questionNum of excluded[bankKey as keyof typeof excluded]) {
+        expect(questionNums.has(questionNum)).toBe(false);
       }
     }
   });

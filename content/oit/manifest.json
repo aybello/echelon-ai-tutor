@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-28-v2",
+  "version": "2026-08-29-v3",
   "importMode": "additive",
   "questionNumberRange": {
     "start": 1001,
@@ -9,12 +9,12 @@
     {
       "bankKey": "oit",
       "file": "questions/oit-water-500.json",
-      "expectedCount": 500
+      "expectedCount": 489
     },
     {
       "bankKey": "oit-ww",
       "file": "questions/oit-wastewater-500.json",
-      "expectedCount": 500
+      "expectedCount": 483
     }
   ],
   "governance": {
@@ -25,39 +25,39 @@
   },
   "blueprint": {
     "Water Treatment": {
-      "questionCount": 250,
+      "questionCount": 246,
       "calculationCount": 48,
       "difficulty": {
         "easy": 50,
-        "medium": 134,
-        "hard": 66
-      }
-    },
-    "Water Distribution": {
-      "questionCount": 250,
-      "calculationCount": 48,
-      "difficulty": {
-        "easy": 50,
-        "medium": 135,
+        "medium": 131,
         "hard": 65
       }
     },
-    "Wastewater Treatment": {
-      "questionCount": 250,
+    "Water Distribution": {
+      "questionCount": 243,
       "calculationCount": 48,
       "difficulty": {
-        "easy": 50,
-        "medium": 134,
-        "hard": 66
+        "easy": 49,
+        "medium": 130,
+        "hard": 64
+      }
+    },
+    "Wastewater Treatment": {
+      "questionCount": 242,
+      "calculationCount": 48,
+      "difficulty": {
+        "easy": 49,
+        "medium": 128,
+        "hard": 65
       }
     },
     "Wastewater Collection": {
-      "questionCount": 250,
-      "calculationCount": 48,
+      "questionCount": 241,
+      "calculationCount": 46,
       "difficulty": {
-        "easy": 50,
-        "medium": 134,
-        "hard": 66
+        "easy": 47,
+        "medium": 130,
+        "hard": 64
       }
     }
   },
