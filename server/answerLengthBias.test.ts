@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
   analyseQuestion,
@@ -167,5 +168,13 @@ describe("formatBankVerdict", () => {
     expect(formatBankVerdict("empty-bank", summariseAnswerLengthBias([]))).toBe(
       "empty-bank: no questions",
     );
+  });
+});
+
+describe("machine rewrite governance", () => {
+  it("returns rewritten questions to the staged review queue", () => {
+    const script = readFileSync(new URL("../scripts/fix-answer-length-bias.ts", import.meta.url), "utf8");
+    expect(script).toContain("reviewStatus = 'in_review'");
+    expect(script).not.toContain("reviewStatus = 'unreviewed'");
   });
 });

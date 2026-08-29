@@ -11,7 +11,7 @@
  *   - correctIndex never moves, so answer-position balance is unchanged.
  *   - Every rewrite is re-measured; if it still carries a length tell, or the
  *     correct option changed, the rewrite is rejected and the row is skipped.
- *   - Written rows are reset to reviewStatus='unreviewed' so they re-enter the
+ *   - Written rows are reset to reviewStatus='in_review' so they re-enter the
  *     governance queue. A machine rewrite is a draft, not an approval.
  *   - questionBankMeta.contentVersion is bumped so client caches invalidate.
  *
@@ -257,7 +257,7 @@ try {
       }
 
       await connection.execute(
-        "UPDATE questions SET options = ?, reviewStatus = 'unreviewed', reviewedBy = NULL, reviewedAt = NULL WHERE bankKey = ? AND questionNum = ?",
+        "UPDATE questions SET options = ?, reviewStatus = 'in_review', reviewedBy = NULL, reviewedAt = NULL WHERE bankKey = ? AND questionNum = ?",
         [JSON.stringify(newOptions), bankFilter, offender.questionNum],
       );
       console.log(`q${offender.questionNum}: rewritten (+${offender.charAdvantage} → +${recheck.charAdvantage})`);
@@ -274,7 +274,7 @@ try {
       [bankFilter],
     );
     console.log(`\n${fixed} rewritten, ${skipped} skipped. contentVersion bumped for ${bankFilter}.`);
-    console.log("All rewritten questions are reviewStatus='unreviewed' and need approval before learners see them.");
+    console.log("All rewritten questions are reviewStatus='in_review' and need approval before learners see them.");
   } else if (execute) {
     console.log(`\n0 rewritten, ${skipped} skipped. No changes written.`);
   } else {
