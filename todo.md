@@ -1782,7 +1782,8 @@
 ## PR 57 OIT Question-Bank Review and Release — August 28
 - [x] Inspect the 500-question OIT Water and 500-question OIT Wastewater packages, their source alignment, and their import safeguards
 - [x] Run deterministic validation plus a full external-model content-quality review before merging
-- [ ] Rebuild PR 57’s unsafe and predictable question package before any learner-facing import, merge, or deployment
+- [x] Confirm Codex rebuilt PR 57 with an additive `in_review` staging gate that keeps unapproved content out of learner-facing reads
+- [ ] Remediate the revised package’s confirmed safety, answer-key, ambiguity, repetition, and technical-wording defects before import or approval
 
 ## PR 59 Review — August 28
 - [x] Review PR 59’s implementation and validation evidence before recommending whether it can be merged
@@ -1802,4 +1803,24 @@
 - [x] Identify and review the newly available pull request before making a merge recommendation
 
 ## PR 60 Manager Organization Resolution Release — August 28
-- [ ] Merge the validated manager-organization resolution fix, deploy it, and verify the live release marker
+- [x] Merge the validated manager-organization resolution fix, deploy it, and verify the live release marker
+
+## Latest Repository Update Review — August 28
+- [x] Identify and review the latest pull request before making a merge recommendation
+
+## PR 57 Content Remediation Brief — August 28
+- [x] Post the complete source-level remediation criteria from the reviewed 1,000-question OIT package to Codex on PR 57
+
+## New Repository Update Review — August 29
+- [x] Identify and review the newly available pull request before making a merge recommendation
+
+## PR 57 Final Content Remediation — August 29
+- [x] Remove all three remaining safety-critical OIT questions and the remaining major/minor item-quality findings from the staged package before reconsidering the merge
+
+## PR 57 Flagged Question Removal — August 29
+- [x] Remove all 28 final-audit flagged OIT questions from the source package and update package-count safeguards
+- [x] Validate the revised staged package and push the corrected branch to PR 57 without importing or approving questions
+
+## PR 57 Staged OIT Package Release — August 29
+- [ ] Merge the validated staged OIT package, deploy the release, and verify unapproved questions remain inaccessible to learners
+- [x] Update the public release marker to identify the staged OIT package deployment accurately
