@@ -22,9 +22,10 @@ describe("public release health", () => {
         "job-identity-dedup-v1",
         "manager-otp-delivery-reliability-v1",
         "oit-question-bank-staging-v1",
+        "answer-length-governance-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-08-29.oit-package-staging.1");
+    expect(RELEASE_ID).toBe("2026-08-29.answer-length-governance.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
