@@ -1822,5 +1822,25 @@
 - [x] Validate the revised staged package and push the corrected branch to PR 57 without importing or approving questions
 
 ## PR 57 Staged OIT Package Release — August 29
-- [ ] Merge the validated staged OIT package, deploy the release, and verify unapproved questions remain inaccessible to learners
+- [x] Merge the validated staged OIT package, deploy the release, and verify unapproved questions remain inaccessible to learners
 - [x] Update the public release marker to identify the staged OIT package deployment accurately
+
+## PR 57 OIT Learner Content Activation — August 29
+- [x] Verify the exact staged OIT payload and current production question-governance state
+- [x] Run the checksum-confirmed additive import and approve the validated staged questions for learner access
+- [x] Synchronize OIT learner-visible bank metadata with the approved question counts
+- [x] Verify live OIT Water and OIT Wastewater inventory counts and learner-facing practice delivery
+
+## New Pull Request Review — August 29
+- [x] Identify and review the newly available pull request before making a merge recommendation
+
+## Claude Pull Request Identification — August 29
+- [x] Identify the current Claude-authored repository branch and report its pull-request status
+
+## Claude Branch Inspection and Release — August 29
+- [ ] Deploy and verify the merged Claude answer-length governance release
+- [x] Inspect Claude’s branch and validate compatible changes against canonical main
+- [x] Preserve staged question governance by ensuring any machine-rewritten item is returned to `in_review`, not learner-visible `unreviewed`
+- [x] Restore GitHub write access before publishing the validated Claude integration branch and merging it
+- [x] Diagnose the active GitHub write token and branch-protection path because the configured read/write connector initially returned 403
+- [x] Update the public release marker for the answer-length governance tooling release
