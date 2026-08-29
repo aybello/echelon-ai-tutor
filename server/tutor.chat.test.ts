@@ -127,7 +127,7 @@ describe("tutor.chat", () => {
     expect(lookup.sql).toContain("`questions`.`bankKey` = ?");
     expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
     expect(lookup.sql).not.toContain("`questions`.`id` = ?");
-    expect(lookup.params).toEqual(["class1-water", 42, "rejected"]);
+    expect(lookup.params).toEqual(["class1-water", 42, "in_review", "rejected"]);
   });
 
   it("allows the OIT tutor during the free product preview", async () => {

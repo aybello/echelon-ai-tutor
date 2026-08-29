@@ -324,7 +324,7 @@ export const adminRouter = router({
             totalQuestions: sql`(
               SELECT COUNT(*) FROM ${questions}
               WHERE ${questions.bankKey} = ${existing.bankKey}
-                AND ${questions.reviewStatus} <> 'rejected'
+                AND ${questions.reviewStatus} NOT IN ('in_review', 'rejected')
             )`,
           })
           .where(eq(questionBankMeta.bankKey, existing.bankKey));

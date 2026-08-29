@@ -63,7 +63,7 @@ export default function OITMockExam() {
       price={49}
       freeQuestionLimit={30}
       features={[
-        "551 OIT Water questions — unlimited attempts",
+        `${pool.length.toLocaleString()} OIT Water questions — unlimited attempts`,
         "Complete 100-question timed mock exams",
         "Full flashcard deck and saved progress",
         "Module-by-module performance tracking",

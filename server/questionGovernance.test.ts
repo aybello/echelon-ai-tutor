@@ -40,7 +40,7 @@ describe("question governance schema", () => {
     ]));
   });
 
-  it("excludes explicitly rejected questions from every learner-facing bank read", () => {
+  it("excludes staged and rejected questions from every learner-facing bank read", () => {
     const expectedMinimumUses: Record<string, number> = {
       "server/routers/quizRouter.ts": 3,
       "server/routers/activationRouter.ts": 2,
@@ -52,14 +52,14 @@ describe("question governance schema", () => {
     for (const [relativePath, expectedMinimum] of Object.entries(expectedMinimumUses)) {
       const source = fs.readFileSync(path.resolve(process.cwd(), relativePath), "utf8");
       const uses = source.match(/learnerVisibleQuestionFilter\(\)/g) ?? [];
-      expect(uses.length, `${relativePath} is missing a rejected-question guard`).toBeGreaterThanOrEqual(expectedMinimum);
+      expect(uses.length, `${relativePath} is missing a staged-question guard`).toBeGreaterThanOrEqual(expectedMinimum);
     }
 
     const quizRouter = fs.readFileSync(
       path.resolve(process.cwd(), "server/routers/quizRouter.ts"),
       "utf8",
     );
-    expect(quizRouter.match(/reviewStatus <> 'rejected'/g)).toHaveLength(2);
+    expect(quizRouter.match(/reviewStatus NOT IN \('in_review', 'rejected'\)/g)).toHaveLength(2);
   });
 
   it("invalidates cached banks when an admin changes a review decision", () => {
@@ -68,6 +68,6 @@ describe("question governance schema", () => {
       "utf8",
     );
     expect(adminRouter).toContain("contentVersion: sql`${questionBankMeta.contentVersion} + 1`");
-    expect(adminRouter).toContain("AND ${questions.reviewStatus} <> 'rejected'");
+    expect(adminRouter).toContain("AND ${questions.reviewStatus} NOT IN ('in_review', 'rejected')");
   });
 });

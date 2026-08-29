@@ -65,7 +65,7 @@ export default function OITWastewaterMockExam() {
       price={49}
       freeQuestionLimit={30}
       features={[
-        "400+ OIT Wastewater questions — unlimited attempts",
+        `${pool.length.toLocaleString()} OIT Wastewater questions — unlimited attempts`,
         "Complete 50-question timed mock exams",
         "Full flashcard deck and saved progress",
         "Module-by-module performance tracking",
