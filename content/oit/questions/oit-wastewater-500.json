@@ -15492,9 +15492,9 @@
     "explanation": "Roadway access work requires planned traffic control and protection before the manhole becomes an open hazard. Vehicle lights or an unprotected attendant are not substitutes.",
     "isCalc": "no",
     "formula": "",
-    "sourceTitle": "Canadian Centre for Occupational Health and Safety - Confined Spaces",
-    "sourceReference": "Atmospheric, engulfment, entry and rescue hazards — Wastewater Collection / Ontario Regulations & Safety / traffic control",
-    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety - Road Work: Traffic Control Person",
+    "sourceReference": "Traffic-protection planning, trained traffic-control duties, visibility, positioning and protection of workers and road users — Wastewater Collection / Ontario Regulations & Safety / traffic control",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/safety_haz/road_work/traffic_control_person.html",
     "blueprintObjective": "Wastewater Collection - Ontario Regulations & Safety - traffic control",
     "reviewStatus": "unreviewed",
     "itemId": "OIT-1000"

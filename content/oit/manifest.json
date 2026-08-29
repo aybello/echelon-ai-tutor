@@ -89,6 +89,11 @@
       "url": "https://www.ontario.ca/laws/regulation/040129"
     },
     {
+      "title": "Ontario Ministry of Labour - Excavations and Underground Work Compliance Guidance",
+      "reference": "O. Reg. 213/91 sections 222 to 241; underground-service locates, soil assessment, excavation support, access and worker protection",
+      "url": "https://www.ontario.ca/page/achieve-compliance-construction-sites-excavations-underground-work-and-work-compressed-air"
+    },
+    {
       "title": "US EPA - Small Drinking Water Systems Handbook",
       "reference": "Treatment barriers, filtration, disinfection and small-system operations",
       "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"
@@ -122,6 +127,11 @@
       "title": "Canadian Centre for Occupational Health and Safety - Confined Spaces",
       "reference": "Atmospheric, engulfment, entry and rescue hazards",
       "url": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html"
+    },
+    {
+      "title": "Canadian Centre for Occupational Health and Safety - Road Work: Traffic Control Person",
+      "reference": "Traffic-protection planning, trained traffic-control duties, visibility, positioning and protection of workers and road users",
+      "url": "https://www.ccohs.ca/oshanswers/safety_haz/road_work/traffic_control_person.html"
     }
   ]
 }

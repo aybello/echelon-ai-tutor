@@ -91,7 +91,7 @@ describe("OIT question-bank deployment package", () => {
 
   it("keeps the package behind an individual approval gate", () => {
     const importer = fs.readFileSync(
-      path.resolve(contentRoot, "..", "..", "scripts", "import-oit-question-banks.mjs"),
+      path.resolve(contentRoot, "..", "..", "scripts", "lib", "oitImporter.mjs"),
       "utf8",
     );
     expect(manifest.governance).toMatchObject({
@@ -99,7 +99,7 @@ describe("OIT question-bank deployment package", () => {
       databaseStagingStatus: "in_review",
       activation: "individual-admin-approval-required",
     });
-    expect(importer).toContain("VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?, ?, 'in_review')");
+    expect(importer).toContain("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'in_review')");
     expect(importer).toContain("reviewStatus NOT IN ('in_review', 'rejected')");
   });
 
@@ -131,6 +131,26 @@ describe("OIT question-bank deployment package", () => {
     const wetWellCleaning = get(wastewater, 1351);
     expect(wetWellCleaning.correctAnswer).toMatch(/surface work/i);
     expect(wetWellCleaning.correctAnswer).toMatch(/confined-space entry controls apply only when bodily entry is required/i);
+  });
+
+  it("uses directly applicable Ontario excavation and traffic-control sources for the corrected safety items", () => {
+    const water = load("oit-water-500.json");
+    const wastewater = load("oit-wastewater-500.json");
+    const get = (questions: any[], questionNum: number) => questions.find(question => question.questionNum === questionNum);
+
+    const utilityLocating = get(water, 1393);
+    const trenchProtection = get(water, 1397);
+    const trafficControl = get(wastewater, 1500);
+
+    for (const question of [utilityLocating, trenchProtection]) {
+      expect(question.sourceUrl).toBe("https://www.ontario.ca/page/achieve-compliance-construction-sites-excavations-underground-work-and-work-compressed-air");
+      expect(question.sourceReference).toMatch(/O\. Reg\. 213\/91 sections 222 to 241/i);
+      expect(question.sourceUrl).not.toMatch(/confinedspace/i);
+    }
+
+    expect(trafficControl.sourceUrl).toBe("https://www.ccohs.ca/oshanswers/safety_haz/road_work/traffic_control_person.html");
+    expect(trafficControl.sourceReference).toMatch(/traffic-protection planning/i);
+    expect(trafficControl.sourceUrl).not.toMatch(/confinedspace/i);
   });
 
   it("uses discriminating conceptual stems and explicit calculation precision", () => {

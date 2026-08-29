@@ -22,6 +22,11 @@ const SOURCES = {
     reference: "Wastewater operator licensing and operational responsibility",
     url: "https://www.ontario.ca/laws/regulation/040129",
   },
+  ON_EXCAVATION: {
+    title: "Ontario Ministry of Labour - Excavations and Underground Work Compliance Guidance",
+    reference: "O. Reg. 213/91 sections 222 to 241; underground-service locates, soil assessment, excavation support, access and worker protection",
+    url: "https://www.ontario.ca/page/achieve-compliance-construction-sites-excavations-underground-work-and-work-compressed-air",
+  },
   EPA_WATER: {
     title: "US EPA - Small Drinking Water Systems Handbook",
     reference: "Treatment barriers, filtration, disinfection and small-system operations",
@@ -56,6 +61,11 @@ const SOURCES = {
     title: "Canadian Centre for Occupational Health and Safety - Confined Spaces",
     reference: "Atmospheric, engulfment, entry and rescue hazards",
     url: "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html",
+  },
+  CCOHS_TRAFFIC: {
+    title: "Canadian Centre for Occupational Health and Safety - Road Work: Traffic Control Person",
+    reference: "Traffic-protection planning, trained traffic-control duties, visibility, positioning and protection of workers and road users",
+    url: "https://www.ccohs.ca/oshanswers/safety_haz/road_work/traffic_control_person.html",
   },
 };
 
@@ -506,7 +516,7 @@ addQuestion({stream:"Wastewater Collection",module:"Ontario Regulations & Safety
 addQuestion({stream:"Water Treatment",module:"Health & Safety",topic:"chemical response",difficulty:"hard",stem:"A sodium hypochlorite leak is discovered beside an incompatible acid-storage area. What is the safest first response?",correct:"isolate the area, prevent mixing and follow the facility's chemical emergency procedure",distractors:["approach from upwind and close the leaking valve before initiating the site alarm","move the adjacent acid containers first so routine hypochlorite cleanup can begin","start controlled dilution immediately and decide where the liquid will drain afterward"],explanation:"Hypochlorite and acids must be kept from mixing because toxic chlorine gas can be released. The area should be isolated and the approved emergency procedure followed.",source:"EPA_WATER"});
 addQuestion({stream:"Water Distribution",module:"Health & Safety",topic:"public protection",difficulty:"medium",stem:"A hydrant-flushing operation sends water across a busy pedestrian route. What should the operator do?",correct:"control the discharge, protect the public and redirect flow to a safe approved location",distractors:["maintain the discharge and place one observer where pedestrians cross the flowing water","close the hydrant rapidly, then arrange a safer outlet before restarting the flushing work","finish the planned flushing volume before redirecting the discharge away from the route"],explanation:"Flushing must protect pedestrians, traffic, property and the distribution system. Discharge control and a safe outlet are part of the operating task.",source:"ON_DW"});
 addQuestion({stream:"Wastewater Treatment",module:"Ontario Regulations & Safety",topic:"process upset escalation",difficulty:"hard",stem:"Effluent quality is deteriorating rapidly and the cause is not yet confirmed. What is the best OIT response?",correct:"notify the responsible operator, preserve accurate data and begin the approved upset-response procedure",distractors:["delay reporting until laboratory confirmation identifies a single definitive cause","change several process set points at once so at least one adjustment improves the effluent","record only the final stable readings so the operating log does not contain conflicting data"],explanation:"A rapidly developing upset requires prompt escalation, accurate records and controlled response. Simultaneous untracked changes can hide the cause and worsen the condition.",source:"ON_WW"});
-addQuestion({stream:"Wastewater Collection",module:"Ontario Regulations & Safety",topic:"traffic control",difficulty:"medium",stem:"A blocked sewer must be accessed through a manhole in an active traffic lane. What must occur before the cover is removed?",correct:"establish the approved traffic-control zone and protect workers, road users and the open access",distractors:["park the service truck directly over the manhole and rely on its hazard lights alone","remove the cover first so the blockage can be assessed before traffic-control equipment is placed","ask the attendant to stand in the lane and wave vehicles around the unprotected work area"],explanation:"Roadway access work requires planned traffic control and protection before the manhole becomes an open hazard. Vehicle lights or an unprotected attendant are not substitutes.",source:"CCOHS_CS"});
+addQuestion({stream:"Wastewater Collection",module:"Ontario Regulations & Safety",topic:"traffic control",difficulty:"medium",stem:"A blocked sewer must be accessed through a manhole in an active traffic lane. What must occur before the cover is removed?",correct:"establish the approved traffic-control zone and protect workers, road users and the open access",distractors:["park the service truck directly over the manhole and rely on its hazard lights alone","remove the cover first so the blockage can be assessed before traffic-control equipment is placed","ask the attendant to stand in the lane and wave vehicles around the unprotected work area"],explanation:"Roadway access work requires planned traffic control and protection before the manhole becomes an open hazard. Vehicle lights or an unprotected attendant are not substitutes.",source:"CCOHS_TRAFFIC"});
 
 if (questions.length !== 1000) throw new Error(`Expected 1000 questions, found ${questions.length}`);
 
