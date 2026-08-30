@@ -198,6 +198,15 @@ describe("machine rewrite governance", () => {
     expect(script).toContain("semanticReview.severity !== \"none\"");
     expect(script).toContain("OPENAI_CUSTOM_API_KEY or OPENAI_API_KEY is required");
   });
+
+  it("stages source-level repairs only when the independent review explicitly approves them", () => {
+    const script = readFileSync(new URL("../scripts/stage-oit-water-source-repairs.mjs", import.meta.url), "utf8");
+    expect(script).toContain('process.argv.includes("--approved-only")');
+    expect(script).toContain('argument.startsWith("--question-nums=")');
+    expect(script).toContain("oit-water-source-repair-gpt-independent-review-2026-08-30.json");
+    expect(script).toContain(".filter(review => review.approved === true)");
+    expect(script).toContain("reviewStatus = 'in_review'");
+  });
 });
 
 describe("CLI database shutdown", () => {

@@ -1874,5 +1874,12 @@
 - [x] Update the public release marker and deploy the hardened answer-length remediation safeguards
 
 ## OIT Water Source-Level Remediation Follow-up — August 30
-- [ ] Repair q104 at source so it distinguishes O. Reg. 128/04 (water) from O. Reg. 129/04 (wastewater), then submit it for independent review before learner approval
-- [ ] Resolve the fourteen skipped OIT Water candidates through authoritative-source and SME item review before any further automated batch is attempted
+- [x] Repair q104 at source so it distinguishes O. Reg. 128/04 (water) from O. Reg. 129/04 (wastewater), then submit it for independent review before learner approval
+- [x] Resolve the fourteen skipped OIT Water candidates through authoritative-source and independent external semantic review before any further automated batch is attempted
+
+## OIT Water Source-Level Repair Batch — August 30
+- [x] Retrieve authoritative references and diagnose the regulatory, safety, answer-key, ambiguity, and technical defects in q104 and the fourteen skipped OIT Water candidates
+- [x] Draft only source-supported repairs, retain original content where evidence does not support an unambiguous correction, and stage every changed item as `in_review`
+- [x] Obtain an independent external semantic review before approving any staged repair for learner access
+- [x] Verify learner-visible inventory and preview-gate behavior after any approved content change; do not start OIT Wastewater execution without separate confirmation
+- [x] Resolve the eleven independently held candidates through additional authoritative-source and independent external semantic review; do not alter them until they meet the same two-gate standard

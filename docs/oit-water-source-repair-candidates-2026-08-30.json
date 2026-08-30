@@ -1,0 +1,257 @@
+[
+  {
+    "questionNum": 104,
+    "module": "Ontario Regulations",
+    "question": "Which Ontario regulation sets the certification requirements for an operator-in-training in a municipal residential drinking-water subsystem?",
+    "options": [
+      "O. Reg. 128/04, which governs certification of drinking-water system operators and water quality analysts.",
+      "O. Reg. 129/04, which governs licensing of wastewater collection and treatment facility operators.",
+      "O. Reg. 170/03, which sets drinking-water system operating, testing, and reporting requirements.",
+      "O. Reg. 675/98, which addresses spill-reporting duties under environmental-protection legislation."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 128/04 governs drinking-water operator certification. Its section 9 and Schedule 2 set the operator-in-training certificate framework for municipal residential drinking-water subsystems. Wastewater operator licensing is governed separately by O. Reg. 129/04.",
+    "sourceTitle": "O. Reg. 128/04: Certification of Drinking Water System Operators and Water Quality Analysts",
+    "sourceReference": "s. 9; Schedule 2, s. 1",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/040128",
+    "repairRationale": "Corrects the prior mixed water-and-wastewater scope and removes the inaccurate age-focused premise."
+  },
+  {
+    "questionNum": 385,
+    "module": "Pumping Systems",
+    "question": "What is the role of an operational plan in Ontario’s Drinking Water Quality Management Standard (DWQMS)?",
+    "options": [
+      "It replaces the operating authority’s obligation to maintain system-specific procedures, controls, and records.",
+      "It documents the quality management system and the processes used to meet applicable DWQMS requirements.",
+      "It is limited to design drawings for a new facility and does not address ongoing quality-management processes.",
+      "It applies only during emergencies and does not address routine quality-management processes or responsibilities."
+    ],
+    "correctIndex": 1,
+    "explanation": "The operational plan documents the quality management system required by the DWQMS. A guidance document can help an operating authority prepare a plan, but the applicable legal, licensing, and DWQMS requirements—not the guidance document alone—create mandatory obligations.",
+    "sourceTitle": "Ontario’s Drinking Water Quality Management Standard pocket guide",
+    "sourceReference": "Operational plan",
+    "sourceUrl": "https://www.ontario.ca/page/ontarios-drinking-water-quality-management-standard-pocket-guide",
+    "repairRationale": "Removes the incorrect claim that a guidance document itself imposes universal mandatory pumping-system procedures."
+  },
+  {
+    "questionNum": 386,
+    "module": "Pumping Systems",
+    "question": "When a manufacturer does not specify a calibration frequency for continuous monitoring equipment, what does O. Reg. 170/03 require?",
+    "options": [
+      "Apply the monthly default to every system type, including municipal and non-municipal systems instead governed by the prescribed accuracy margin.",
+      "Use a single fixed interval for every system rather than apply the regulation’s system-specific default requirements.",
+      "Use the Schedule 7 default: at least monthly for specified small or seasonal systems, and otherwise as needed to maintain prescribed error margins.",
+      "Treat the prescribed accuracy margin as a substitute for checking and calibrating continuous monitoring equipment."
+    ],
+    "correctIndex": 2,
+    "explanation": "Schedule 7 requires continuous monitoring equipment to be checked and calibrated according to manufacturer instructions. If those instructions do not specify a frequency, the regulation requires at least monthly checks for specified small or seasonal systems and, for other systems, checks as often as necessary to maintain prescribed margins of error.",
+    "sourceTitle": "O. Reg. 170/03: Drinking Water Systems",
+    "sourceReference": "Schedule 7, continuous monitoring equipment default calibration requirements, paras. 9-10",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/030170",
+    "repairRationale": "Replaces the prior unsupported general hierarchy with the traceable Schedule 7 default requirements."
+  },
+  {
+    "questionNum": 387,
+    "module": "Pumping Systems",
+    "question": "At a wastewater pump station, why must operators and maintenance personnel have ready access to comprehensive operations and maintenance manuals?",
+    "options": [
+      "The manuals must contain only construction drawings; they do not need process descriptions or operating information for the facility.",
+      "They provide plans, drawings, and process descriptions sufficient for the safe and efficient operation of the facility.",
+      "The regulation requires one generic manual for all facilities, regardless of each facility’s actual plans and operating processes.",
+      "Manual access is required for licensed operators but not for maintenance personnel who work with the facility’s equipment."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 requires a wastewater-facility owner to ensure that operators and maintenance personnel have ready access to comprehensive operations and maintenance manuals containing plans, drawings, and process descriptions sufficient for safe and efficient operation.",
+    "sourceTitle": "O. Reg. 129/04: Licensing of Sewage Works Operators",
+    "sourceReference": "s. 20(1), operations and maintenance manuals",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/040129",
+    "repairRationale": "Replaces the unsupported universal pump-alarm rule with the directly applicable operating-manual requirement."
+  },
+  {
+    "questionNum": 396,
+    "module": "Pumping Systems",
+    "question": "Before any work begins on an electrical pump motor, which control must be completed to establish a verified de-energized state?",
+    "options": [
+      "Disconnect, lock out, and tag the power supply, then verify the absence of electrical energy with an approved, appropriately rated device.",
+      "Review the current work order and identify the motor, isolation points, and planned maintenance task before beginning the required energy-control process.",
+      "Confirm the task-specific personal protective equipment identified by the hazard assessment, which does not itself establish an energy-free state.",
+      "Check the motor nameplate and operating log, which describe equipment information but do not verify that hazardous energy is absent."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario’s electrical-lockout requirements require the power supply to be disconnected, locked out, and tagged before work begins. The absence of electrical energy must then be verified with an approved device appropriately rated for the purpose before any work proceeds.",
+    "sourceTitle": "Ontario: Alert—Electrical lockout using manual motor controllers",
+    "sourceReference": "Lockout requirements before electrical work begins",
+    "sourceUrl": "https://www.ontario.ca/page/alert-electrical-lockout-using-manual-motor-controllers",
+    "repairRationale": "Replaces the unsafe generated distractors while preserving the existing correct safety controls."
+  },
+  {
+    "questionNum": 398,
+    "module": "Pumping Systems",
+    "question": "What is an appropriate practice for verifying standby-pump readiness at a drinking-water facility?",
+    "options": [
+      "A documented no-load start that does not test the automatic controls, duty-condition response, or any required follow-up.",
+      "A dated record of functional testing under applicable facility O&M and manufacturer procedures, including observed results, control response, and deficiency follow-up.",
+      "A fixed calendar interval for every standby pump, even where applicable manufacturer instructions and facility procedures require a different test approach.",
+      "A completed test card showing only the date and operator, without the pump response, control performance, or any corrective action."
+    ],
+    "correctIndex": 1,
+    "explanation": "Standby-pump testing frequency and documentation can be specified by facility approvals, operating manuals, manufacturer instructions, and quality-management procedures. A readiness program should include functional testing, records, and appropriate follow-up under the applicable facility and manufacturer procedures.",
+    "sourceTitle": "U.S. EPA: Preventive Maintenance Tasks for Tribal Drinking Water Systems",
+    "sourceReference": "Preventive-maintenance programs, functional equipment checks, and site-specific operation and maintenance planning",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P1009V54.TXT",
+    "repairRationale": "Removes the unsupported universal O. Reg. 170/03 testing-frequency attribution and unsafe omissions."
+  },
+  {
+    "questionNum": 405,
+    "module": "Pumping Systems",
+    "question": "Which factor is relevant when assessing whether a wastewater spill triggers provincial reporting requirements?",
+    "options": [
+      "The pollutant’s nature and whether the discharge caused or may cause an adverse effect, subject to applicable legal exemptions.",
+      "Whether the event requires a formal root-cause analysis, which may be useful but does not determine statutory spill reporting.",
+      "The scheduled maintenance-reporting cycle for the affected station, pump, or collection-system equipment.",
+      "The asset’s condition rating and repair budget in the facility’s annual asset-management plan."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 675/98 requires a person subject to its notice provisions to telephone the Spills Action Centre and provide specified information. That information includes the pollutant, quantity, location, cause, actual or potential adverse effects, and actions taken or planned. The regulation also establishes specified spill classifications and exemptions.",
+    "sourceTitle": "O. Reg. 675/98: Classification and Exemption of Spills and Reporting of Discharges",
+    "sourceReference": "s. 13(1)-(5), reportable discharge/spill notification and required report information",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/980675",
+    "repairRationale": "Replaces unsafe response-style distractors with a single, source-supported reportability assessment principle."
+  },
+  {
+    "questionNum": 524,
+    "module": "Water Distribution",
+    "question": "After sampling error is ruled out, which data set best supports investigation of unexpectedly rapid chlorine-residual decline in one distribution zone?",
+    "options": [
+      "Compare residuals from several affected-zone locations with water age or travel time, temperature, and initial chlorine information.",
+      "Use only the plant-outlet residual and a historical average instead of comparing current measurements from the affected zone.",
+      "Treat pipe distance as the sole cause without comparing current residuals with relevant water-quality and hydraulic conditions.",
+      "Assess each affected location in isolation without relating residual change to water age, travel time, or chlorine concentration."
+    ],
+    "correctIndex": 0,
+    "explanation": "Residual-chlorine decay can be affected by physical and water-quality parameters. The cited study identifies initial chlorine concentration, distance, travel time, temperature, pipe characteristics, and water-quality conditions as relevant factors. Comparing current, location-specific data is more informative than assuming one universal cause.",
+    "sourceTitle": "Kwio-Tamale and Onyutha: Influence of physical and water quality parameters on residual chlorine decay in water distribution network",
+    "sourceReference": "Abstract; introduction; physical and water-quality parameters affecting residual chlorine decay",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11109830/",
+    "repairRationale": "Narrows the diagnostic claims to factors supported by a traceable peer-reviewed distribution-system study and removes unsafe operating-style distractors."
+  },
+  {
+    "questionNum": 528,
+    "module": "Water Distribution",
+    "question": "Which statement correctly defines non-revenue water (NRW) in a distribution system?",
+    "options": [
+      "It is only water lost through physical leaks from mains and service connections; meter and billing errors are not considered part of this measurement.",
+      "It is the total volume of treated water that remains held in storage tanks after daily customer demand has been fully satisfied by the utility.",
+      "It is water consumed during emergency response, hydrant flushing, or firefighting operations, regardless of whether the use is billed or authorized.",
+      "It is the system-input volume that does not generate billed revenue, including real losses, apparent losses, and unbilled authorized consumption."
+    ],
+    "correctIndex": 3,
+    "explanation": "The International Water Association water balance distinguishes real losses, apparent losses, and authorized consumption. Non-revenue water is the portion of system-input volume that does not generate billed revenue, so it can include unbilled authorized uses as well as real and apparent losses.",
+    "sourceTitle": "City of Galveston Non-Revenue Water Analysis",
+    "sourceReference": "IWA/AWWA water-balance methodology and non-revenue-water components",
+    "sourceUrl": "https://www.galvestontx.gov/DocumentCenter/View/9279/Non-revenue-water-analysis-technical-memo",
+    "repairRationale": "Corrects the incomplete definition and eliminates ambiguity created by treating flushing as only a distractor."
+  },
+  {
+    "questionNum": 547,
+    "module": "Water Distribution",
+    "question": "For an E. coli adverse result that requires an immediate report, which Ministry contact point is named in Schedule 16 of O. Reg. 170/03?",
+    "options": [
+      "The Ministry’s Spills Action Centre, reached by speaking in person or by telephone with a person there.",
+      "The Ministry’s regional inspection office, which receives routine operational and compliance correspondence for the system.",
+      "The Ministry office that administers municipal drinking-water licensing applications and annual administrative filings.",
+      "The Ministry laboratory-accreditation unit, which oversees laboratory service standards and test-method requirements."
+    ],
+    "correctIndex": 0,
+    "explanation": "Schedule 16 requires an immediate report to the Ministry to be made by speaking in person or by telephone with a person at the Ministry’s Spills Action Centre. The corresponding Medical Officer of Health report is made to the office or, when closed, the health unit’s on-call system. A written notice is also required within 24 hours for reports subject to section 16-6(2).",
+    "sourceTitle": "O. Reg. 170/03: Drinking Water Systems",
+    "sourceReference": "Schedule 16, ss. 16-6 and 16-7; Safe Drinking Water Act, s. 18",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/030170",
+    "repairRationale": "Corrects the notification details, removes the inaccurate automatic boil-water-advisory instruction, and preserves immediate reporting."
+  },
+  {
+    "questionNum": 29,
+    "module": "Disinfection",
+    "question": "Which statement correctly describes calibration of continuous monitoring equipment under O. Reg. 170/03?",
+    "options": [
+      "The regulation applies the monthly default to all system types whenever continuous monitoring equipment is used.",
+      "An operating authority may select one fixed local interval for every system without applying the applicable Schedule 7 default requirements.",
+      "Calibration follows manufacturer instructions; where no frequency is provided, Schedule 7 supplies applicable default requirements.",
+      "Schedule 7 makes manufacturer directions optional whenever an operating authority documents a different calibration interval."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 first requires continuous monitoring equipment to be checked and calibrated in accordance with manufacturer instructions. If no frequency is specified, Schedule 7 requires at least monthly checks for specified small or seasonal systems and, for other systems, checks as often as necessary to maintain the prescribed margins of error.",
+    "sourceTitle": "O. Reg. 170/03: Drinking Water Systems",
+    "sourceReference": "Schedule 7, continuous monitoring equipment default calibration requirements, paras. 9-10",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/030170",
+    "repairRationale": "States the source-exact manufacturer-instruction and Schedule 7 default hierarchy without retaining a length cue."
+  },
+  {
+    "questionNum": 224,
+    "module": "Chemical Feed & Storage",
+    "question": "Before storing or handling a corrosive chemical-feed product, what should an operator use to identify product-specific hazards and precautions?",
+    "options": [
+      "The product SDS, current label, and applicable facility procedures, which communicate hazards and product-specific precautions.",
+      "A facility chemical inventory, which identifies products but does not replace the product SDS, label, or applicable procedures.",
+      "A general material-compatibility chart, which may assist planning but does not set product-specific manufacturer precautions.",
+      "A delivery receipt, which confirms shipment but does not communicate the product’s workplace hazard controls or precautions."
+    ],
+    "correctIndex": 0,
+    "explanation": "WHMIS uses labels and safety data sheets to communicate the hazards of workplace products and applicable precautionary information. Product-specific storage, handling, and protective measures must be taken from the current SDS, label, and the facility’s procedures rather than assumed from a generic chemical category.",
+    "sourceTitle": "Health Canada: Guidance on the WHMIS supplier requirements",
+    "sourceReference": "WHMIS hazard communication, labels, and safety data sheets",
+    "sourceUrl": "https://www.canada.ca/en/health-canada/services/environmental-workplace-health/occupational-health-safety/workplace-hazardous-materials-information-system/supplier-hazard-communication-requirements-whmis/guidance.html",
+    "repairRationale": "Reframes the item around the source-controlled safety decision and avoids inventing universal ferric-sulfate storage requirements."
+  },
+  {
+    "questionNum": 397,
+    "module": "Pumping Systems",
+    "question": "Which statement correctly distinguishes a mechanical seal from packing at a pump shaft?",
+    "options": [
+      "Packing uses stationary and rotating seal faces with a fluid film, while a mechanical seal relies on compressed packing around the shaft.",
+      "A mechanical seal remains closed by static friction rather than using a lubricating fluid film between its sealing faces.",
+      "A mechanical seal uses stationary and rotating faces with a lubricating fluid film, while packing is an alternative that can require adjustment.",
+      "Mechanical seals require deliberate controlled leakage and frequent adjustment in the same way as traditional shaft packing."
+    ],
+    "correctIndex": 2,
+    "explanation": "A mechanical seal contains pumped fluid where a rotating shaft passes through a pump housing. It uses stationary and rotating seal faces separated by a lubricating fluid film. Packing is a commonly used alternative but can require adjustment and is associated with visible leakage.",
+    "sourceTitle": "AESSEAL: What is a mechanical seal?",
+    "sourceReference": "Basics of fluid pump sealing; traditional packing methods",
+    "sourceUrl": "https://www.aesseal.com/en/resources/academy/what-is-a-mechanical-seal/",
+    "repairRationale": "Replaces an untraceable generic-selection citation with a directly supported, technically precise seal-principle item."
+  },
+  {
+    "questionNum": 399,
+    "module": "Pumping Systems",
+    "question": "Under O. Reg. 129/04, what must the owner of a wastewater facility ensure regarding operations and maintenance manuals?",
+    "options": [
+      "Ensure operators and maintenance personnel have ready access to comprehensive manuals sufficient for safe and efficient operation.",
+      "Ensure the manuals contain general procedure checklists without facility-specific plans, drawings, or process descriptions.",
+      "Ensure manual access is limited to administrative managers rather than the operators and maintenance personnel named in the regulation.",
+      "Ensure one generic manual is kept for all wastewater facilities, without reflecting the particular facility’s own plans and process descriptions."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires the owner to ensure that operators and maintenance personnel have ready access to comprehensive operations and maintenance manuals containing plans, drawings, and process descriptions sufficient for safe and efficient operation of the facility.",
+    "sourceTitle": "O. Reg. 129/04: Licensing of Sewage Works Operators",
+    "sourceReference": "s. 20(1), operations and maintenance manuals",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/040129",
+    "repairRationale": "Replaces the unsupported disposal claim with a directly traceable wastewater operations requirement."
+  },
+  {
+    "questionNum": 532,
+    "module": "Water Distribution",
+    "question": "A garden hose connected to a potable-water service is submerged in a swimming pool. Why is this a cross-connection concern?",
+    "options": [
+      "A cross-connection exists only where a pool is connected directly to a distribution main, not where it is connected through premise plumbing.",
+      "Backflow occurs only when water moves from the pool into a service under normal supply pressure, rather than when pressure conditions reverse.",
+      "A pressure loss can reverse flow through the submerged hose, creating a route for pool water to enter the potable-water service.",
+      "The condition concerns ordinary plumbing appearance but does not create a potential route for non-potable water to enter a potable-water service."
+    ],
+    "correctIndex": 2,
+    "explanation": "A submerged hose connected to a potable-water service can form a backsiphonage cross-connection when pressure changes occur. The immediate unsafe connection should be isolated, and the local cross-connection-control or backflow-prevention program should determine the required protective device, follow-up, and enforcement process.",
+    "sourceTitle": "City of Greater Sudbury: Backflow Prevention (Cross Connection Control)",
+    "sourceReference": "Cross-connections, backflow hazards, and locally administered prevention requirements",
+    "sourceUrl": "https://www.greatersudbury.ca/live/water-wastewater-treatment-compliance/water/backflow-prevention-cross-connection-control/",
+    "repairRationale": "Preserves the high-hazard cross-connection concept but avoids an unsupported claim that an individual OIT has unilateral device-enforcement authority."
+  }
+]
