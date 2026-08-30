@@ -1871,4 +1871,8 @@
 - [x] Restore the rejected OIT Water pilot item and add a semantic-quality gate before any further rewrite is staged
 
 ## OIT Water Batch 1 Safeguard Release — August 30
-- [ ] Update the public release marker and deploy the hardened answer-length remediation safeguards
+- [x] Update the public release marker and deploy the hardened answer-length remediation safeguards
+
+## OIT Water Source-Level Remediation Follow-up — August 30
+- [ ] Repair q104 at source so it distinguishes O. Reg. 128/04 (water) from O. Reg. 129/04 (wastewater), then submit it for independent review before learner approval
+- [ ] Resolve the fourteen skipped OIT Water candidates through authoritative-source and SME item review before any further automated batch is attempted
