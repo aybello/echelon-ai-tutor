@@ -1838,9 +1838,37 @@
 - [x] Identify the current Claude-authored repository branch and report its pull-request status
 
 ## Claude Branch Inspection and Release — August 29
-- [ ] Deploy and verify the merged Claude answer-length governance release
+- [x] Deploy and verify the merged Claude answer-length governance release
 - [x] Inspect Claude’s branch and validate compatible changes against canonical main
 - [x] Preserve staged question governance by ensuring any machine-rewritten item is returned to `in_review`, not learner-visible `unreviewed`
 - [x] Restore GitHub write access before publishing the validated Claude integration branch and merging it
 - [x] Diagnose the active GitHub write token and branch-protection path because the configured read/write connector initially returned 403
 - [x] Update the public release marker for the answer-length governance tooling release
+
+## Answer-Length Bias Audit — August 29
+- [x] Run the read-only answer-length bias audit across all live question banks and preserve its bank-by-bank review worklist
+
+## Answer-Length Bias Remediation — August 29
+- [x] Prepare a bank-scoped rewrite plan and dry-run candidates without changing learner-visible content
+- [ ] Apply approved answer-length rewrites, validate content quality, and explicitly approve each staged changed question before re-exposing it to learners
+
+## OIT Answer-Length Remediation — August 29
+- [ ] Generate, validate, and review dry-run answer-length remediation candidates for OIT Water and OIT Wastewater
+- [ ] Apply approved OIT rewrites, stage changed questions for review, and restore only validated revised items to learner access
+
+## OIT Worklist Stall Diagnosis — August 29
+- [x] Trace the read-only OIT worklist command’s database connection and query flow; the worklists completed, but the Node process failed to exit promptly after its final database-close path
+
+## OIT Water Answer-Length Batch 1 — August 29
+- [x] Add bounded database shutdown handling to the remediation script and validate its dry-run exit path
+- [x] Attempt and validate the first 25 OIT Water answer-length cues, keeping changes staged until independently approved
+- [x] Approve the eleven qualifying revised items, retain one regulatory-scope item in review, and verify learner-visible inventory
+- [x] Align OIT Water metadata with the 1,037 currently learner-visible questions while the one held item remains in review
+
+## OIT Water Batch 1 Recovery — August 29
+- [x] Verify the stopped batch made no content changes, then correct external-model response parsing and per-item database lifecycle handling before retrying
+- [x] Add bounded validation-aware rewrite retries so near-miss model outputs do not prevent eligible OIT distractor corrections
+- [x] Restore the rejected OIT Water pilot item and add a semantic-quality gate before any further rewrite is staged
+
+## OIT Water Batch 1 Safeguard Release — August 30
+- [ ] Update the public release marker and deploy the hardened answer-length remediation safeguards

@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   analyseQuestion,
   summariseAnswerLengthBias,
@@ -9,6 +9,7 @@ import {
   CHANCE_LONGEST_RATE,
   type BiasCheckQuestion,
 } from "./answerLengthBias";
+import { closeDatabaseConnection } from "./connectionCleanup";
 
 /** Build a question whose option lengths are controlled exactly. */
 function q(
@@ -146,7 +147,7 @@ describe("summariseAnswerLengthBias", () => {
 describe("targetDistractorLength", () => {
   it("brackets the correct option so rewritten distractors sit alongside it", () => {
     const band = targetDistractorLength(100);
-    expect(band.min).toBe(85);
+    expect(band.min).toBe(95);
     expect(band.max).toBe(115);
   });
 
@@ -176,5 +177,43 @@ describe("machine rewrite governance", () => {
     const script = readFileSync(new URL("../scripts/fix-answer-length-bias.ts", import.meta.url), "utf8");
     expect(script).toContain("reviewStatus = 'in_review'");
     expect(script).not.toContain("reviewStatus = 'unreviewed'");
+  });
+
+  it("uses low-effort adaptive thinking so Claude Sonnet 5 returns a final structured answer", () => {
+    const script = readFileSync(new URL("../scripts/fix-answer-length-bias.ts", import.meta.url), "utf8");
+    expect(script).toContain('thinking: { type: "adaptive" }');
+    expect(script).toContain('output_config: { effort: "low" }');
+  });
+
+  it("retries a structurally rejected model draft without bypassing final staged governance", () => {
+    const script = readFileSync(new URL("../scripts/fix-answer-length-bias.ts", import.meta.url), "utf8");
+    expect(script).toContain("generationAttempt <= 3");
+    expect(script).toContain("SKIPPED after 3 attempts");
+    expect(script).toContain("reviewStatus = 'in_review'");
+  });
+
+  it("requires an independent semantic-quality approval before staging a rewritten question", () => {
+    const script = readFileSync(new URL("../scripts/fix-answer-length-bias.ts", import.meta.url), "utf8");
+    expect(script).toContain("reviewRewriteSemantics");
+    expect(script).toContain("semanticReview.severity !== \"none\"");
+    expect(script).toContain("OPENAI_CUSTOM_API_KEY or OPENAI_API_KEY is required");
+  });
+});
+
+describe("CLI database shutdown", () => {
+  it("finishes normally when the database connection closes within the timeout", async () => {
+    const end = vi.fn().mockResolvedValue(undefined);
+    const destroy = vi.fn();
+
+    await expect(closeDatabaseConnection({ end, destroy }, 20)).resolves.toBe("closed");
+    expect(destroy).toHaveBeenCalledTimes(1);
+  });
+
+  it("force-closes a connection that does not finish its graceful shutdown", async () => {
+    const end = vi.fn(() => new Promise<void>(() => undefined));
+    const destroy = vi.fn();
+
+    await expect(closeDatabaseConnection({ end, destroy }, 0)).resolves.toBe("forced");
+    expect(destroy).toHaveBeenCalledTimes(1);
   });
 });
