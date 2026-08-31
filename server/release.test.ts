@@ -31,9 +31,10 @@ describe("public release health", () => {
         "training-hours-consolidated-v1",
         "manager-account-routing-v1",
         "course-pass-invite-confirmation-v1",
+        "course-pass-browser-e2e-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-08-31.course-pass-invite-confirmation.1");
+    expect(RELEASE_ID).toBe("2026-08-31.course-pass-browser-e2e.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });

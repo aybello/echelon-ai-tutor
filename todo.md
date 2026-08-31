@@ -1957,3 +1957,8 @@
 - [x] Execute a controlled end-to-end Team Flex Course Pass assignment validation without delivering any unapproved customer email — router lifecycle covered unused → invited → assigned → active with mocked delivery
 - [x] Add a single-recipient Course Pass invitation preview and explicit confirmation step before email delivery
 - [x] Update the public release marker to identify the Course Pass invitation confirmation safeguard
+- [x] Review PR #66 scope, compatibility, validation, and merge readiness before any integration action — approve: adds isolated browser E2E coverage and fixes the verified post-OTP Course Pass claim path
+- [x] Merge approved PR #66 while preserving the current Course Pass confirmation release
+- [x] Validate and publish the combined manager-routing, invitation, claim, and activation release — main Quality Gate passed with the real Playwright journey; focused merged regressions passed 76/76
+- [x] Confirm the complete corporate-access resolution status for the reported manager journey without sending any unapproved customer email
+- [x] Update the public release marker to identify the browser-verified Course Pass journey
