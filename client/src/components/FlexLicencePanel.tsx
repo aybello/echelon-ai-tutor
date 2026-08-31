@@ -14,6 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { prepareSingleInvitePreview, type SingleInvitePreview } from "@/lib/singleInvitePreview";
 import { courseKeyToLabel, resolveCourseKey } from "@shared/courseRegistry";
 import { toast } from "sonner";
 
@@ -96,6 +97,7 @@ function csvCell(value: unknown): string {
 export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
   const [inviteEmail, setInviteEmail] = useState<Record<number, string>>({});
   const [invitingId, setInvitingId] = useState<number | null>(null);
+  const [singleInvitePreview, setSingleInvitePreview] = useState<SingleInvitePreview | null>(null);
   const [bulkOpen, setBulkOpen] = useState(false);
   const [bulkText, setBulkText] = useState("");
   const [bulkRows, setBulkRows] = useState<BulkRow[]>([]);
@@ -107,6 +109,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
       toast.success("Invitation sent");
       licencesQuery.refetch();
       setInvitingId(null);
+      setSingleInvitePreview(null);
     },
     onError: (err) => toast.error(err.message),
   });
@@ -199,6 +202,19 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
     const failedIds = new Set(failedRows.map((row) => row.clientRowId));
     sendBulkMutation.mutate({ orgId, rows: bulkRows.filter((row) => failedIds.has(row.clientRowId)) });
   };
+  const reviewSingleInvitation = (licenceId: number, courseName: string, termMonths: number) => {
+    const preview = prepareSingleInvitePreview({
+      licenceId,
+      operatorEmail: inviteEmail[licenceId] ?? "",
+      courseName,
+      termMonths,
+    });
+    if (!preview) {
+      toast.error("Enter an operator email before reviewing the invitation.");
+      return;
+    }
+    setSingleInvitePreview(preview);
+  };
 
   return (
     <>
@@ -233,7 +249,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                     {licence.status === "unused" && (invitingId === licence.id ? (
                       <div className="flex items-center gap-1">
                         <Input type="email" placeholder="operator@email.com" className="h-7 w-44 text-xs" value={inviteEmail[licence.id] ?? ""} onChange={(event) => setInviteEmail((current) => ({ ...current, [licence.id]: event.target.value }))} />
-                        <Button size="sm" className="h-7 text-xs" disabled={!inviteEmail[licence.id] || inviteMutation.isPending} onClick={() => inviteMutation.mutate({ licenceId: licence.id, operatorEmail: inviteEmail[licence.id] ?? "", orgId })}>Send</Button>
+                        <Button size="sm" className="h-7 text-xs" disabled={!inviteEmail[licence.id] || inviteMutation.isPending} onClick={() => reviewSingleInvitation(licence.id, courseKeyToLabel(licence.courseKey), licence.termMonths)}>Review</Button>
                         <Button size="sm" variant="ghost" className="h-7 text-xs" onClick={() => setInvitingId(null)}>Cancel</Button>
                       </div>
                     ) : <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => setInvitingId(licence.id)}>Invite</Button>)}
@@ -248,6 +264,25 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
           </div>
         </CardContent>
       </Card>
+
+      <Dialog open={!!singleInvitePreview} onOpenChange={(open) => { if (!open && !inviteMutation.isPending) setSingleInvitePreview(null); }}>
+        <DialogContent className="w-[calc(100vw-2rem)] max-w-lg bg-white">
+          <DialogHeader>
+            <DialogTitle>Review Course Pass invitation</DialogTitle>
+            <DialogDescription>One invitation will be emailed only after you confirm this recipient and licence assignment.</DialogDescription>
+          </DialogHeader>
+          {singleInvitePreview && <div className="space-y-3 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm">
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Recipient count</span><span className="font-semibold text-slate-950">1 operator</span></div>
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Recipient</span><span className="break-all text-right font-semibold text-slate-950">{singleInvitePreview.operatorEmail}</span></div>
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Course Pass</span><span className="text-right font-semibold text-slate-950">{singleInvitePreview.courseName}</span></div>
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Access term</span><span className="font-semibold text-slate-950">{singleInvitePreview.termMonths} months</span></div>
+          </div>}
+          <DialogFooter>
+            <Button variant="outline" disabled={inviteMutation.isPending} onClick={() => setSingleInvitePreview(null)}>Back</Button>
+            <Button disabled={!singleInvitePreview || inviteMutation.isPending} onClick={() => singleInvitePreview && inviteMutation.mutate({ licenceId: singleInvitePreview.licenceId, operatorEmail: singleInvitePreview.operatorEmail, orgId })}>{inviteMutation.isPending ? "Sending…" : "Send 1 invitation"}</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={bulkOpen} onOpenChange={setBulkOpen}>
         <DialogContent className="max-h-[92vh] w-[calc(100vw-2rem)] max-w-5xl overflow-y-auto overflow-x-hidden bg-white">

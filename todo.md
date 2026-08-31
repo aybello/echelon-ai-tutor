@@ -1952,3 +1952,7 @@
 - [x] Add regression coverage so a Team Flex manager with no direct pass is not routed to the no-purchases state
 - [x] Publish the account-to-Team Dashboard handoff and validate the live recovery path on both public domains
 - [ ] Invite Thomas Johnson only after the exact operator email and explicit send authorization are confirmed
+- [x] Review PR #65 status, diff, and validation before taking any further pull-request action — already merged and deployed as manager-account routing release
+- [x] Verify staging Account-to-Team Dashboard redirect behavior for an authenticated Team Flex manager — `/account` returned directly to `/team` and the dashboard loaded without a loop
+- [x] Execute a controlled end-to-end Team Flex Course Pass assignment validation without delivering any unapproved customer email — router lifecycle covered unused → invited → assigned → active with mocked delivery
+- [x] Add a single-recipient Course Pass invitation preview and explicit confirmation step before email delivery
