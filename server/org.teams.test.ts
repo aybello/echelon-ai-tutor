@@ -61,10 +61,13 @@ const ORG_B_MANAGER = `teams-mgr-b-${RUN_ID}@echelon-test.invalid`;
 const ORG_B_NAME = `Test Org B ${RUN_ID}`;
 const MULTI_MANAGER_EMAIL = `teams-mgr-mc-${RUN_ID}@echelon-test.invalid`;
 const MULTI_ORG_NAME = `Test Org Multi ${RUN_ID}`;
+const DIRECT_MANAGER_EMAIL = `teams-mgr-direct-${RUN_ID}@echelon-test.invalid`;
+const DIRECT_ORG_NAME = `Test Org Direct ${RUN_ID}`;
 
 let orgId: number;
 let orgBId: number;
 let multiOrgId: number;
+let directOrgId: number;
 let db: Awaited<ReturnType<typeof getDb>>;
 
 // ── Setup / teardown ──────────────────────────────────────────────────────────
@@ -147,6 +150,23 @@ beforeAll(async () => {
     role: "manager",
     status: "assigned",
   });
+
+  // Reproduce a legacy Course Pass customer whose paid organization is
+  // authoritative but whose manager membership row was not backfilled.
+  const [insertDirect] = await db.insert(organizations).values({
+    name: DIRECT_ORG_NAME,
+    province: "ontario",
+    tier: "all-access",
+    seatsTotal: 4,
+    managerEmail: DIRECT_MANAGER_EMAIL,
+    stripeSubscriptionId: null,
+    stripeCustomerId: null,
+    termEnd,
+    termStart,
+    billingType: "course-pass",
+    status: "active",
+  });
+  directOrgId = (insertDirect as any).insertId;
 });
 
 afterAll(async () => {
@@ -157,6 +177,7 @@ afterAll(async () => {
     MANAGER_EMAIL,
     ORG_B_MANAGER,
     MULTI_MANAGER_EMAIL,
+    DIRECT_MANAGER_EMAIL,
     ...Array.from({ length: 15 }, (_, i) => testEmail(i + 1)),
   ];
 
@@ -177,6 +198,10 @@ afterAll(async () => {
   if (multiOrgId) {
     await db.delete(organizationMembers).where(eq(organizationMembers.orgId, multiOrgId)).catch(() => {});
     await db.delete(organizations).where(eq(organizations.id, multiOrgId)).catch(() => {});
+  }
+  if (directOrgId) {
+    await db.delete(organizationMembers).where(eq(organizationMembers.orgId, directOrgId)).catch(() => {});
+    await db.delete(organizations).where(eq(organizations.id, directOrgId)).catch(() => {});
   }
 });
 
@@ -200,6 +225,15 @@ describe("Echelon for Teams — org seat management", () => {
     expect(overview.orgName).toBe(ORG_NAME);
     expect(overview.seatsTotal).toBe(3);
     expect(overview.seatsAssigned).toBe(0);
+  });
+
+  it("accepts the verified organization manager when a legacy membership row is missing", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    const overview = await appRouter.createCaller(makeCtx(DIRECT_MANAGER_EMAIL)).org.getOrgOverview();
+
+    expect(overview.orgName).toBe(DIRECT_ORG_NAME);
+    expect(overview.seatsTotal).toBe(4);
   });
 
   it("assignSeat grants access to an operator (subscription row created)", async () => {

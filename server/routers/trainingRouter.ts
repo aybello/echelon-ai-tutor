@@ -110,12 +110,33 @@ export const trainingRouter = router({
   managerSummary: publicProcedure.input(periodInput).query(async ({ ctx, input }) => {
     const { orgId } = await resolveOrgManager(ctx); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const { from, to } = periodBounds(input);
     const grouped = await db.select({ operatorEmail: learningActivitySessions.studentEmail, courseKey: learningActivitySessions.courseKey, activeSeconds: sql<number>`COALESCE(SUM(${learningActivitySessions.activeSeconds}), 0)`, sessionCount: sql<number>`COUNT(*)`, latestAt: sql<Date>`MAX(${learningActivitySessions.startedAt})` }).from(learningActivitySessions).where(and(eq(learningActivitySessions.orgId, orgId), gt(learningActivitySessions.activeSeconds, 0), gte(learningActivitySessions.startedAt, from), lte(learningActivitySessions.startedAt, to))).groupBy(learningActivitySessions.studentEmail, learningActivitySessions.courseKey);
-    const operatorMap = new Map(grouped.map((row) => [`${normalizeEmail(row.operatorEmail)}\u0000${row.courseKey}`, { operatorEmail: normalizeEmail(row.operatorEmail), courseKey: row.courseKey, courseName: courseKeyToLabel(row.courseKey), activeSeconds: Number(row.activeSeconds), sessionCount: Number(row.sessionCount), latestAt: row.latestAt ? new Date(row.latestAt) : null, hasActivity: true }]));
+    type ManagerOperatorRow = { operatorEmail: string; courseKey: string; courseName: string; activeSeconds: number; sessionCount: number; latestAt: Date | null; hasActivity: boolean };
+    const operatorMap = new Map<string, ManagerOperatorRow>(grouped.map((row) => [`${normalizeEmail(row.operatorEmail)}\u0000${row.courseKey}`, { operatorEmail: normalizeEmail(row.operatorEmail), courseKey: row.courseKey, courseName: courseKeyToLabel(row.courseKey), activeSeconds: Number(row.activeSeconds), sessionCount: Number(row.sessionCount), latestAt: row.latestAt ? new Date(row.latestAt) : null, hasActivity: true }]));
     const annual = await db.select({ email: organizationMembers.email, courseKey: organizationMembers.courseKey, courseKeys: organizationMembers.courseKeys }).from(organizationMembers).where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
-    for (const member of annual) for (const assigned of assignedAnnualCourseKeys(member.courseKey, member.courseKeys)) { const key = `${normalizeEmail(member.email)}\u0000${assigned}`; if (!operatorMap.has(key)) operatorMap.set(key, { operatorEmail: normalizeEmail(member.email), courseKey: assigned, courseName: courseKeyToLabel(assigned), activeSeconds: 0, sessionCount: 0, latestAt: null, hasActivity: false }); }
+    let unassignedOperatorCount = 0;
+    for (const member of annual) {
+      const assignments = assignedAnnualCourseKeys(member.courseKey, member.courseKeys);
+      if (assignments.length === 0) unassignedOperatorCount += 1;
+      for (const assigned of assignments) { const key = `${normalizeEmail(member.email)}\u0000${assigned}`; if (!operatorMap.has(key)) operatorMap.set(key, { operatorEmail: normalizeEmail(member.email), courseKey: assigned, courseName: courseKeyToLabel(assigned), activeSeconds: 0, sessionCount: 0, latestAt: null, hasActivity: false }); }
+    }
+    const now = new Date();
+    const coursePassOperators = await db.select({ email: teamFlexLicences.invitedEmail, courseKey: teamFlexLicences.courseKey }).from(teamFlexLicences).where(and(
+      eq(teamFlexLicences.organizationId, orgId),
+      eq(teamFlexLicences.status, "active"),
+      lte(teamFlexLicences.startsAt, now),
+      or(gte(teamFlexLicences.reportingEndsAt, now), gte(teamFlexLicences.accessEndsAt, now)),
+    ));
+    for (const licence of coursePassOperators) {
+      if (!licence.email) continue;
+      const courseKey = resolveCourseKey(licence.courseKey)?.courseKey;
+      if (!courseKey) continue;
+      const operatorEmail = normalizeEmail(licence.email);
+      const key = `${operatorEmail}\u0000${courseKey}`;
+      if (!operatorMap.has(key)) operatorMap.set(key, { operatorEmail, courseKey, courseName: courseKeyToLabel(courseKey), activeSeconds: 0, sessionCount: 0, latestAt: null, hasActivity: false });
+    }
     const activity = await db.select({ activityType: learningActivitySessions.activityType, activeSeconds: sql<number>`COALESCE(SUM(${learningActivitySessions.activeSeconds}), 0)`, sessionCount: sql<number>`COUNT(*)` }).from(learningActivitySessions).where(and(eq(learningActivitySessions.orgId, orgId), gt(learningActivitySessions.activeSeconds, 0), gte(learningActivitySessions.startedAt, from), lte(learningActivitySessions.startedAt, to))).groupBy(learningActivitySessions.activityType);
     const operators = [...operatorMap.values()].sort((a, b) => (b.latestAt?.getTime() ?? 0) - (a.latestAt?.getTime() ?? 0) || a.operatorEmail.localeCompare(b.operatorEmail));
-    return { from, to, operators, activeSeconds: operators.reduce((total, item) => total + item.activeSeconds, 0), sessionCount: operators.reduce((total, item) => total + item.sessionCount, 0), byActivity: activity.map((item) => ({ activityType: item.activityType, label: ACTIVITY_LABELS[item.activityType], activeSeconds: Number(item.activeSeconds), sessionCount: Number(item.sessionCount) })) };
+    return { from, to, operators, unassignedOperatorCount, activeSeconds: operators.reduce((total, item) => total + item.activeSeconds, 0), sessionCount: operators.reduce((total, item) => total + item.sessionCount, 0), byActivity: activity.map((item) => ({ activityType: item.activityType, label: ACTIVITY_LABELS[item.activityType], activeSeconds: Number(item.activeSeconds), sessionCount: Number(item.sessionCount) })) };
   }),
   managerOperatorReport: publicProcedure.input(z.object({ operatorEmail: z.string().email(), courseKey: z.string().max(64), from: z.coerce.date(), to: z.coerce.date() })).query(async ({ ctx, input }) => {
     const { orgId } = await resolveOrgManager(ctx); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const { from, to } = periodBounds(input); const email = normalizeEmail(input.operatorEmail); const courseKey = canonicalCourseKey(input.courseKey);
