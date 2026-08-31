@@ -14,7 +14,6 @@ import {
   teamFlexOrderItems,
   teamFlexLicences,
   organizations,
-  organizationMembers,
   questionAttempts,
 } from "../../drizzle/schema";
 import { eq, and, sql } from "drizzle-orm";
@@ -47,6 +46,7 @@ import {
 } from "../teams/flexBulkOnboardingService";
 import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
 import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import { resolveOrgManager } from "./orgRouter";
 
 const flexBulkRowsSchema = z.array(z.object({
   clientRowId: z.string().min(1).max(64),
@@ -60,61 +60,18 @@ async function requireManagerOfOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
   orgId: number,
 ): Promise<{ managerEmail: string }> {
-  const email = ctx.user?.email ?? ctx.studentEmail ?? null;
-  if (!email) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
-  }
-  const db = await getDb();
-  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-  const normalised = email.toLowerCase().trim();
-  const rows = await db
-    .select({ orgId: organizationMembers.orgId })
-    .from(organizationMembers)
-    .where(
-      and(
-        eq(organizationMembers.orgId, orgId),
-        eq(organizationMembers.email, normalised),
-        eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
-    )
-    .limit(1);
-
-  if (rows.length === 0) {
+  const manager = await resolveOrgManager(ctx);
+  if (manager.orgId !== orgId) {
     throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." });
   }
-  return { managerEmail: normalised };
+  return { managerEmail: manager.managerEmail };
 }
 
 /** Resolve the authenticated user's managed org. */
 async function resolveManagerOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
 ): Promise<{ orgId: number; managerEmail: string }> {
-  const email = ctx.user?.email ?? ctx.studentEmail ?? null;
-  if (!email) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
-  }
-  const db = await getDb();
-  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-  const normalised = email.toLowerCase().trim();
-  const rows = await db
-    .select({ orgId: organizationMembers.orgId })
-    .from(organizationMembers)
-    .where(
-      and(
-        eq(organizationMembers.email, normalised),
-        eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
-    )
-    .limit(1);
-
-  if (rows.length === 0) {
-    throw new TRPCError({ code: "FORBIDDEN", message: "No manager account found for this email." });
-  }
-  return { orgId: rows[0].orgId, managerEmail: normalised };
+  return resolveOrgManager(ctx);
 }
 
 function requireVerifiedOperator(
