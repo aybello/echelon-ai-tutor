@@ -1945,3 +1945,9 @@
 ## Technical Diagram Example Gallery — August 31
 - [x] Create representative Echelon Institute examples of a process-flow diagram, equipment cutaway, 3D-style explanatory visual, and operator workflow schematic
 - [x] Map each example to a practical course-workspace use case before presentation; do not add examples to learner pages without approval
+
+## Organization Entitlement Recovery — August 31
+- [x] Verify the Tattersall organization purchase, owner account linkage, and active Level 4 Wastewater entitlement without altering unverified data
+- [x] Diagnose the misleading owner no-purchases state: the paid organization manager has an unused licence but no direct learner pass, so the Account page hid the Team Dashboard handoff
+- [x] Add regression coverage so a Team Flex manager with no direct pass is not routed to the no-purchases state
+- [ ] Publish the account-to-Team Dashboard handoff and validate Sally’s live recovery path; invite Thomas Johnson only after an operator email is confirmed
