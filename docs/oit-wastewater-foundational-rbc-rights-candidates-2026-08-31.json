@@ -1,0 +1,32 @@
+[
+  {
+    "questionNum": 122,
+    "question": "What is the basic purpose of a rotating biological contactor (RBC) in wastewater treatment?",
+    "options": [
+      "It provides attached-growth biological treatment by slowly rotating media that supports biofilm through wastewater and exposure to air.",
+      "It removes large debris at the plant inlet by spinning screens so settled grit and rags can be separated before primary treatment begins.",
+      "It disinfects final effluent by exposing it to rotating ultraviolet lamps that leave a free chlorine residual for downstream protection.",
+      "It thickens waste sludge by compressing solids between rotating belts until all biological activity has stopped before final disposal."
+    ],
+    "correctIndex": 0,
+    "explanation": "An RBC is an attached-growth biological treatment process. Plastic media rotate slowly so the biofilm on the media is alternately exposed to wastewater and air, allowing the microorganisms to treat wastewater.",
+    "sourceTitle": "U.S. EPA — Summary of Design Information on Rotating Biological Contactors",
+    "sourceReference": "Process description: RBC media are mounted on rotating shafts, partially submerged in wastewater, and support a biofilm that is alternately exposed to wastewater and the atmosphere. This is used as general technical background only, not as an Ontario regulatory or certification requirement.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000GGPR.TXT"
+  },
+  {
+    "questionNum": 455,
+    "question": "Which set lists the three basic worker rights recognized in Ontario workplace health and safety?",
+    "options": [
+      "The right to know about hazards, the right to participate in health and safety, and the right to refuse unsafe work.",
+      "The right to set independent work schedules, choose any protective equipment, and bypass workplace procedures when production is delayed.",
+      "The right to operate unfamiliar equipment without training, reject supervisor direction, and transfer all safety duties to a co-worker.",
+      "The right to approve facility permits, set regulatory limits, and direct other workers to perform hazardous work without supervision."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario workers have core health-and-safety rights to know about hazards, participate in health-and-safety decisions, and refuse work they have reason to believe is unsafe. A work refusal follows the procedure set out in the OHSA and the workplace process.",
+    "sourceTitle": "Ontario Ministry of Labour — Guide to the Occupational Health and Safety Act; CCOHS — Three Rights of Workers",
+    "sourceReference": "Ontario’s OHSA guide confirms the right to refuse work believed unsafe and the prescribed process. CCOHS identifies the three core worker rights as the rights to know, participate, and refuse. The question assesses recognition of the rights only and does not teach a site-specific refusal procedure.",
+    "sourceUrl": "https://www.ontario.ca/document/guide-occupational-health-and-safety-act/part-v-right-refuse-or-stop-work-where-health-and-safety-danger"
+  }
+]

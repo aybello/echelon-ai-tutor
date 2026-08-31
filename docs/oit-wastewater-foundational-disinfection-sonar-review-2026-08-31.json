@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 191,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option closely paraphrases Ontario Design Guidelines factors for chlorination selection without adding unsupported requirements.",
+        "Jurisdiction and regulatory scope are accurate and clearly tied to Ontario Ministry of the Environment guidance.",
+        "Learning objective (recognizing that effective disinfection depends on multiple sewage and operational factors) is foundational and appropriate for an Ontario OIT learner.",
+        "Distractor options are plausible misunderstandings that do not normalize unsafe operation or omit required actions; they simply oversimplify or misidentify controlling factors.",
+        "Explanation accurately attributes the factors to Ontario guidance and does not assert site-specific effluent limits or universal operational instructions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

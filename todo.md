@@ -1913,3 +1913,20 @@
 - [x] Exclude or defer any advanced process-design, specialist laboratory-method, or non-Ontario regulatory content before drafting
 - [x] Repair and approve three source-supported foundational concepts only: centrifuge purpose, force-main purpose, and primary-versus-secondary-sludge origin
 - [x] Repair and approve three source-supported foundational concepts only: inflow, trickling-filter purpose, and secondary-clarifier solids separation
+
+## OIT Wastewater Foundational Continuation — Resumed August 31
+- [x] Generate the next read-only worklist after all previously assessed, approved, and deferred candidates are excluded
+- [x] Select only foundational Ontario/Canadian-compatible concepts for source-backed repair and independent external review
+- [x] Repair and approve two source-supported foundational concepts only: drop-connection purpose and chlorine-gas hazard recognition
+- [x] Repair and approve two source-supported foundational concepts only: RBC process purpose and Ontario worker health-and-safety rights
+- [x] Repair and approve one Ontario-sourced foundational concept only: the multiple factors relevant to chlorine disinfection assessment
+- [x] Repair and approve three Ontario-sourced foundational concepts only: preliminary-treatment purpose, bar-screen purpose, and grit-removal purpose
+
+## Evidence-Grounded Certification Content Skill — August 31
+- [x] Package the reusable source hierarchy, OIT-level scope gate, textbook-handling rules, independent-review procedure, and staged-approval workflow as a skill
+- [x] Validate the skill package and make it available for future Echelon Institute content work
+- [x] Include source-governed process-guide additions and labelled technical or 3D-style visual workflows, with technical-label review before publication
+
+## Technical Diagram Example Gallery — August 31
+- [x] Create representative Echelon Institute examples of a process-flow diagram, equipment cutaway, 3D-style explanatory visual, and operator workflow schematic
+- [x] Map each example to a practical course-workspace use case before presentation; do not add examples to learner pages without approval

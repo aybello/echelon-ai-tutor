@@ -109,3 +109,53 @@ The separately bounded foundational treatment-and-collection batch is limited to
 [16] [U.S. EPA — Wastewater Technology Fact Sheet: Trickling Filters](https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P10099PA.TXT)
 
 [17] [U.S. EPA — A Mathematical Model of a Final Clarifier](https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=9101SCVU.TXT)
+
+## Ontario and Canadian foundation sources
+
+| Topic | Authoritative source and scoped use |
+|---|---|
+| Drop connections | Ontario’s *Design Guidelines for Sewage Works* state that a drop pipe should be provided when a sewer enters a manhole 610 mm or more above the manhole invert. The question is limited to the basic flow-conveyance function and does not assess engineering design criteria. [18] |
+| Chlorine-gas hazards | CCOHS classifies chlorine as an oxidizing gas, acute inhalation hazard, corrosive to skin, eyes, and respiratory tract, and a gas under pressure. The question tests hazard recognition only; emergency actions remain subject to the facility plan. [19] |
+
+[18] [Ontario Ministry of the Environment — Design Guidelines for Sewage Works: Odour Control and Design of Sewer](https://www.ontario.ca/document/design-guidelines-sewage-works/odour-control-and-design-sewer)
+
+[19] [Canadian Centre for Occupational Health and Safety — Chlorine Chemical Profile](https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/chlorine/health-chlorine.htm)
+
+## Further foundational process and worker-rights sources
+
+| Topic | Authoritative source and scoped use |
+|---|---|
+| Rotating biological contactors | U.S. EPA describes an RBC as plastic media on rotating shafts, partially submerged in wastewater and supporting biofilm alternately exposed to wastewater and air. This is general technical background only, with no U.S. regulatory or certification claim. [20] |
+| Worker rights | Ontario’s OHSA guide confirms a worker’s right to refuse work believed unsafe and its prescribed process. CCOHS lists the three common Canadian health-and-safety rights as know, participate, and refuse. The question tests recognition of those rights only. [21] [22] |
+
+[20] [U.S. EPA — Summary of Design Information on Rotating Biological Contactors](https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000GGPR.TXT)
+
+[21] [Ontario Ministry of Labour — Guide to the Occupational Health and Safety Act: Right to Refuse](https://www.ontario.ca/document/guide-occupational-health-and-safety-act/part-v-right-refuse-or-stop-work-where-health-and-safety-danger)
+
+[22] [Canadian Centre for Occupational Health and Safety — Three Rights of Workers](https://www.ccohs.ca/oshanswers/legisl/legislation/three_rights.html)
+
+## Ontario disinfection scope source
+
+Ontario’s *Design Guidelines for Sewage Works*, Chapter 14, identifies sewage characteristics, prior treatment, flow, pH, effluent criteria, disinfectant demand, equipment, and maintenance as factors in selecting chlorination. It also states that regular maintenance and breakdowns must be considered to maintain continuous disinfection and that chlorine-gas systems present safety concerns. These are technical-design considerations, not universal operator instructions or site-specific effluent obligations. [23]
+
+[23] [Ontario Ministry of the Environment — Design Guidelines for Sewage Works: Disinfection and Supplemental Treatment Processes](https://www.ontario.ca/document/design-guidelines-sewage-works/disinfection-and-supplement-treatment-processes)
+
+## Activated-sludge source boundary
+
+Ontario’s biological-treatment guidance identifies activated sludge as a common secondary-treatment process and refers to both return activated sludge and waste activated sludge lines in secondary-sedimentation design. It does not, in the scoped passages reviewed, support q124’s existing explanation about a required solids-retention-time target or predicted system failure. q124 is therefore deferred rather than reworded from inference. [24]
+
+[24] [Ontario Ministry of the Environment — Design Guidelines for Sewage Works: Biological Treatment and Secondary Sedimentation](https://www.ontario.ca/document/design-guidelines-sewage-works/biological-treatment-and-secondary-sedimentation)
+
+## OIT-scope deferrals from the next worklist
+
+The next read-only worklist was screened against the current OIT boundary. Detailed process control, facility design, specialist construction, site-specific monitoring, quantitative gas hazards, chemical-specific PPE, procedural lockout, and duplicate BOD items were deferred. The structured decisions and reasons are retained in `oit-wastewater-deferred-candidates-2026-08-31.json`; no deferred item was drafted, staged, or changed.
+
+## Ontario preliminary-treatment and WCWC scope
+
+Ontario’s sewage-works design guidance identifies preliminary treatment at plant headworks as screening, comminution, grinding, and grit removal intended to remove debris and protect equipment and downstream processes. It states that coarse screens remove debris that may harm other process units and that grit removal protects pumps and other equipment from damaging grit accumulation. These principles support only basic OIT recognition questions, not design parameters or site-specific operation. [25]
+
+The Walkerton Clean Water Centre identifies itself as a Government of Ontario agency supporting clean and safe **drinking water**, including education and support for drinking-water operators and operating authorities. The present OIT Wastewater worklist item that describes it as serving the wastewater sector is out of scope and is deferred for curriculum review rather than rewritten. [26]
+
+[25] [Ontario Ministry of the Environment — Design Guidelines for Sewage Works: Preliminary Treatment and Primary Sedimentation](https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation)
+
+[26] [Walkerton Clean Water Centre — Home](https://wcwc.ca/)

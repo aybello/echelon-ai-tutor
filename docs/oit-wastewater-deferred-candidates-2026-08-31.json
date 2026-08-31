@@ -1,0 +1,25 @@
+[
+  {"questionNum":199,"decision":"defer","reason":"UV-lamp maintenance wording depends on equipment configuration and supplier instructions; the Ontario design source reviewed does not support a narrow universal maintenance answer."},
+  {"questionNum":280,"decision":"defer","reason":"Dry-well versus submersible pump-station configuration is a facility-design comparison rather than a foundational entry-level outcome in the available source record."},
+  {"questionNum":299,"decision":"defer","reason":"Hydrogen-sulphide crown-corrosion mechanism is advanced sewer-chemistry content."},
+  {"questionNum":131,"decision":"defer","reason":"Diagnosing return-activated-sludge concentration trends requires advanced process-control interpretation."},
+  {"questionNum":249,"decision":"defer","reason":"The available source record does not support a narrow, unambiguous description of a specific sludge-holding-tank purpose."},
+  {"questionNum":115,"decision":"defer","reason":"Sludge Volume Index is advanced activated-sludge process-control content."},
+  {"questionNum":268,"decision":"defer","reason":"Trenchless rehabilitation methods are construction-specialist content."},
+  {"questionNum":85,"decision":"defer","reason":"The flow-equalization sizing problem is design-level and uses ambiguous equivalent-flow assumptions."},
+  {"questionNum":283,"decision":"defer","reason":"The purpose and design of a flow-monitoring program are system-specific and not narrowly sourced for the OIT scope."},
+  {"questionNum":448,"decision":"defer","reason":"Step-by-step lockout/tagout instruction is safety-critical and requires workplace-specific procedures and training."},
+  {"questionNum":82,"decision":"defer","reason":"Primary-clarifier short-circuiting diagnosis is beyond the current foundational OIT boundary."},
+  {"questionNum":439,"decision":"defer","reason":"Gas-detector specification and use near collection structures are safety-critical and workplace-specific."},
+  {"questionNum":451,"decision":"defer","reason":"Methane Lower Explosive Limit numeric interpretation is safety-critical and requires controlled confined-space training context."},
+  {"questionNum":252,"decision":"defer","reason":"Non-Agricultural Source Material classification under O. Reg. 267/03 is a separate, specialized regulatory topic."},
+  {"questionNum":70,"decision":"defer","reason":"In-line versus off-line equalization comparison is process-design content."},
+  {"questionNum":124,"decision":"defer","reason":"The scoped Ontario source confirms WAS terminology but not the original explanation’s process-control claims."},
+  {"questionNum":486,"decision":"defer","reason":"Duplicate of the basic BOD learning objective already present in the bank; no learner-value justification for a near-duplicate repair."},
+  {"questionNum":183,"decision":"defer","reason":"A universal UV-versus-chlorine advantage claim risks site-specific overgeneralization without a more narrowly scoped local source."},
+  {"questionNum":121,"decision":"defer","reason":"Pin-floc mechanisms are advanced activated-sludge process-control content."},
+  {"questionNum":164,"decision":"defer","reason":"UV-transmittance performance interpretation is specialized disinfection-process content."},
+  {"questionNum":445,"decision":"defer","reason":"Chemical-specific PPE selection must follow the site’s current safety data sheet and workplace procedure."},
+  {"questionNum":23,"decision":"defer","reason":"Duplicate of the basic BOD learning objective already present in the bank; no learner-value justification for a near-duplicate repair."}
+  ,{"questionNum":419,"decision":"defer","reason":"Walkerton Clean Water Centre describes a drinking-water mandate; a question presenting it as part of the wastewater sector is out of scope for this OIT Wastewater remediation path and requires curriculum review or relocation."}
+]
