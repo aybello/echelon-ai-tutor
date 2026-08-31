@@ -134,6 +134,8 @@ jobs:
         env:
           NODE_ENV: development
           JWT_SECRET: test-only-not-for-production
+          VITE_APP_ID: echelon-browser-test
+          VITE_OAUTH_PORTAL_URL: https://oauth.echelon.test
       - name: Seed the Teams Course Pass browser journey
         run: node scripts/e2e/seedTeamsCoursePass.mjs
         env:
