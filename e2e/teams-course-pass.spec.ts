@@ -78,12 +78,18 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await licenceRow.getByRole("button", { name: "Invite" }).click();
   const inviteInput = licenceRow.getByPlaceholder("operator@email.com");
   await inviteInput.fill(OPERATOR_EMAIL);
-  // Target the primary action beside the email field. Some hosted browser
-  // layers relabel this confirmation action to "Review"; the behavioural
-  // assertions below still require the invitation email and state transition.
+  // Target the primary action beside the email field. The deployed manager UI
+  // may insert a review step before sending, while older builds send directly.
+  // Both paths must still produce the real email and state transition below.
   const inviteAction = inviteInput.locator("xpath=following-sibling::button[1]");
   await expect(inviteAction).toBeEnabled();
+  const inviteActionLabel = (await inviteAction.textContent())?.trim() ?? "";
   await inviteAction.click();
+  if (/review/i.test(inviteActionLabel)) {
+    const reviewDialog = page.getByRole("dialog", { name: "Review Course Pass invitation" });
+    await expect(reviewDialog).toBeVisible();
+    await reviewDialog.getByRole("button", { name: /^Send 1 invitation$/ }).click();
+  }
   await expect(page.getByText("Invitation sent")).toBeVisible();
   await expect(licenceRow).toContainText(OPERATOR_EMAIL);
 
