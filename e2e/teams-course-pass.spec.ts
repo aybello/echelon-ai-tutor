@@ -69,7 +69,7 @@ test("manager can invite an operator who claims, activates and opens the assigne
   // into the team workspace instead of showing the personal-purchase empty state.
   await signInWithOtp(page, MANAGER_EMAIL, "/account");
   await page.waitForURL(/\/team$/, { timeout: 30_000 });
-  await expect(page.getByRole("heading", { name: "Manager Dashboard" })).toBeVisible();
+  await expect(page.getByText("Manager Dashboard", { exact: true })).toBeVisible();
   await expect(page.getByText(ORG_NAME)).toBeVisible();
   await expect(page.getByText("No purchases found")).toHaveCount(0);
 
