@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 263,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches Ontario MECP definition that combined sewers convey sanitary sewage and stormwater in one pipe and that combined sewer overflows are discharges from these systems to the environment when capacity is exceeded.",
+        "Jurisdiction and regulatory scope are correctly framed as Ontario MECP design guidance, without importing U.S. EPA terminology or non-Ontario regulatory claims.",
+        "The explanation accurately reflects the cited sections’ description of combined sewers and CSOs and does not introduce unsourced universal performance claims or design criteria.",
+        "Exactly one option is correct; the distractors are technically incorrect but plausible, and none encourage unsafe operation, missed maintenance, or omission of required actions.",
+        "The learning objective—understanding the basic concern with combined sewer overflows during wet weather—is foundational and appropriate for an Ontario OIT learner."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

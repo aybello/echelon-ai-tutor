@@ -1929,6 +1929,7 @@
 - [x] Repair and approve one Ontario-sourced foundational concept only: dissolved-oxygen monitoring for aerobic biological treatment
 - [x] Repair and approve one Ontario-sourced foundational concept only: combined-versus-separate sewer collection systems
 - [x] Repair and approve one Ontario-sourced foundational concept only: grit-removal protection of pumps and downstream equipment
+- [x] Repair and approve one Ontario-sourced foundational concept only: the basic wet-weather concern with combined sewer overflows
 
 ## Evidence-Grounded Certification Content Skill — August 31
 - [x] Package the reusable source hierarchy, OIT-level scope gate, textbook-handling rules, independent-review procedure, and staged-approval workflow as a skill
