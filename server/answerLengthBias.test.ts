@@ -207,6 +207,17 @@ describe("machine rewrite governance", () => {
     expect(script).toContain(".filter(review => review.approved === true)");
     expect(script).toContain("reviewStatus = 'in_review'");
   });
+
+  it("requires an explicit no-change independent-review decision before wastewater source repairs can be staged", () => {
+    const stageScript = readFileSync(new URL("../scripts/stage-oit-wastewater-source-repairs.mjs", import.meta.url), "utf8");
+    const reviewScript = readFileSync(new URL("../scripts/independent-review-held-oit-wastewater-sonar.mjs", import.meta.url), "utf8");
+    expect(stageScript).toContain('const bankKey = "oit-ww"');
+    expect(stageScript).toContain('process.env.REVIEW_PATH ||');
+    expect(stageScript).toContain("review.requiredChanges.every");
+    expect(stageScript).toContain("reviewStatus = 'in_review'");
+    expect(reviewScript).toContain('model: "sonar-pro"');
+    expect(reviewScript).toContain("selectedQuestionNumbers");
+  });
 });
 
 describe("CLI database shutdown", () => {

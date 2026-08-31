@@ -1,0 +1,102 @@
+{
+  "reviews": [
+    {
+      "questionNum": 426,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option accurately reflects source: MLVSS is the volatile portion of MLSS and is used with other data to interpret mixed-liquor solids; the explanation notes it is not a direct measure of active biomass, consistent with source constraints.",
+        "No Ontario regulatory claims are made; this is process-control guidance only, appropriate for OIT wastewater scope.",
+        "Exactly one option is correct; the distractors incorrectly treat the ratio as a fixed compliance threshold, claim MLVSS/MLSS are interchangeable, or deny its role in interpretation, which are plausible misunderstandings but not promoting unsafe practice.",
+        "Explanation properly cautions against over-interpreting MLVSS as a stand-alone diagnostic, aligning with the source record’s instruction to treat MLVSS as an indicator rather than a direct biomass measure."
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    },
+    {
+      "questionNum": 436,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option aligns with Ontario Design Guidelines for Sewage Works — Pumping Stations, which emphasize inspection, servicing, corrective work, and reliable operation following O&M manuals and manufacturer guidance.",
+        "Question stays within technical guidance and does not convert the guideline into rigid legal obligations or universal rules beyond its scope.",
+        "Exactly one option is correct; other options portray maintenance planning as budget-only, one annual review, or age-only replacement, all of which are plausible but clearly incorrect and do not normalize unsafe operation or missed maintenance.",
+        "Explanation reinforces that equipment-condition information must complement facility O&M and manufacturer requirements, not replace them, consistent with the source constraints."
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    },
+    {
+      "questionNum": 437,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option accurately reflects DWQMS as a standard for Ontario municipal residential drinking-water systems and correctly states it is not a wastewater operator-licensing standard, matching the pocket guide and scope constraints.",
+        "The stem explicitly asks whether DWQMS applies to wastewater, and the correct option clearly denies that, avoiding any implication that DWQMS is a wastewater regulatory standard, as required by the source record.",
+        "Exactly one option is correct; distractors incorrectly extend DWQMS to wastewater systems, misstate it as a federal standard, or limit it to private systems, which are plausible misconceptions without safety implications.",
+        "Explanation correctly situates DWQMS in the drinking-water licensing/accreditation framework and confirms it does not establish a sewage-works operator-licensing standard, consistent with Ontario Regulation 129/04 being the licensing basis for wastewater operators."
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    },
+    {
+      "questionNum": 496,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option accurately reflects EPA guidance: establishing an energy-use baseline to understand energy use, track performance, prioritize improvements, and evaluate measures, which matches the cited source’s described purposes.",
+        "The item treats EPA material as general technical/management guidance and does not assert that every Ontario facility must use a specific programme or metric, in line with source constraints.",
+        "Exactly one option is correct; distractors describe universal equipment lists, predicting effluent quality from design capacity alone, or ranking efficiency by size only, which are plausible but clearly incorrect and do not promote unsafe operation.",
+        "Explanation appropriately summarizes baseline use for understanding current energy use and high-energy processes (pumping, aeration) without overstating regulatory requirements or creating unsupported universal mandates."
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    },
+    {
+      "questionNum": 521,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option aligns with EPA’s MBR fact sheet: membrane fouling is material buildup reducing permeability, managed through air scouring and cleaning per manufacturer protocols and facility O&M procedures.",
+        "The item uses EPA guidance only for general technical description and explicitly anchors cleaning practices to manufacturer and facility O&M, avoiding universal prescriptive instructions beyond the source constraints.",
+        "Exactly one option is correct; distractors misdefine fouling as loss of microbial capacity, permanent pore widening, or grit/screenings accumulation, all plausible misunderstandings but not encouraging unsafe operation or neglect of fouling control.",
+        "Explanation accurately notes that membrane cleaning, fouling control, and air scouring are operating considerations, and stresses adherence to manufacturer protocols and approved O&M, consistent with the source record’s use limitation."
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    },
+    {
+      "questionNum": 536,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches EPA nutrient-removal guidance: VFAs are readily biodegradable carbon taken up anaerobically by PAOs, and primary-sludge or sidestream fermentation is a supported method to increase VFA supply.",
+        "The item stays at a high-level conceptual description of EBPR and does not invent numeric targets or overstate EPA guidance as Ontario regulatory requirement, satisfying source constraints.",
+        "Exactly one option is correct; distractors misstate VFAs as inhibitory by-products, electron acceptors for nitrifiers, or substrates for chemical precipitation, which are plausible but technically incorrect and do not promote unsafe operation.",
+        "Explanation correctly emphasizes VFAs as carbon substrates for PAOs in anaerobic phase and mentions fermentation as a way to generate VFAs, while avoiding unsupported universal claims such as “all plants should ferment sludge.”"
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    },
+    {
+      "questionNum": 540,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option accurately describes depth filtration (particle capture within a porous medium) and surface filtration (particle capture mainly at the surface), consistent with general filtration principles and the Ontario Design Guidelines for Sewage Works context.",
+        "The question stays within design/technology comparison and does not present guidelines as legal obligations, respecting the source’s status as technical guidance.",
+        "Exactly one option is correct; distractors reverse definitions, mischaracterize processes as biological vs chemical, or claim no practical difference, which are plausible misunderstandings without encouraging unsafe or non-compliant operation.",
+        "Explanation appropriately notes that design selection and performance depend on technology, pretreatment, operating conditions, and objectives, avoiding universal prescriptions not supported by the source."
+      ],
+      "requiredChanges": [
+        "None required; item may proceed as drafted."
+      ]
+    }
+  ]
+}

@@ -25,9 +25,10 @@ describe("public release health", () => {
         "answer-length-governance-v1",
         "answer-length-semantic-gate-v1",
         "answer-length-source-repair-governance-v1",
+        "answer-length-wastewater-source-repair-governance-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-08-30.answer-length-source-repair.2");
+    expect(RELEASE_ID).toBe("2026-08-30.answer-length-wastewater-remediation.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });

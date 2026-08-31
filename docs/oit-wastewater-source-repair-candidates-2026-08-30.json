@@ -1,0 +1,227 @@
+[
+  {
+    "questionNum": 277,
+    "question": "What conditions in a sanitary sewer promote the generation of hydrogen sulphide (H₂S)?",
+    "options": [
+      "Long detention times, warm temperatures, low velocities, and high organic loading create anaerobic conditions in the slime layer where sulphate-reducing bacteria produce H₂S",
+      "Hydrogen sulphide develops when high-velocity, cold, well-aerated wastewater moves quickly through short, steep sewer segments with frequent air release and little time for anaerobic slime layers to form",
+      "Hydrogen sulphide is produced mainly when dissolved oxygen stays high and sulphate-reducing bacteria are prevented from colonizing submerged pipe surfaces or accumulating in biofilm layers",
+      "H₂S formation is controlled principally by longer, steeper sewers and greater turbulence, which eliminates the low-oxygen conditions normally associated with sewer corrosion and odours"
+    ],
+    "correctIndex": 0,
+    "explanation": "H₂S is produced by sulphate-reducing bacteria in the anaerobic slime layer on submerged pipe surfaces. Conditions that promote H₂S generation include long detention times (force mains, flat grades), warm temperatures, low velocities, and high organic loading with low dissolved oxygen. These conditions are common in force mains and long, flat gravity sewers.",
+    "sourceTitle": "Ontario Design Guidelines for Sewage Works",
+    "sourceReference": "Ontario Design Guidelines for Sewage Works",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works-0"
+  },
+  {
+    "questionNum": 284,
+    "question": "What is Inflow and Infiltration (I&I) and why is it a problem for sanitary sewer systems?",
+    "options": [
+      "Inflow is stormwater entering through direct connections (roof drains, catch basins); infiltration is groundwater seeping through pipe defects — both overload the system and treatment plant during wet weather",
+      "I&I refers to industrial and institutional discharges intentionally permitted into sanitary sewers, so it is managed chiefly through pretreatment approvals rather than inspection of private connections and pipe defects",
+      "I&I is the planned introduction of potable water by utility staff to sustain sewer flows during dry periods, a practice intended to reduce odour and keep solids from settling in the system",
+      "I&I affects only combined sewer systems because separate sanitary systems have no direct stormwater connections, groundwater pathways, cracked joints, or defective maintenance holes through which added flow can enter"
+    ],
+    "correctIndex": 0,
+    "explanation": "Inflow enters quickly during rain events through direct connections (cross-connected roof leaders, foundation drains, manhole covers). Infiltration enters more slowly through cracked pipes, defective joints, and deteriorated manholes, varying with groundwater levels. Together, I&I increases wet weather flows, causing overflows, treatment plant bypasses, and basement flooding.",
+    "sourceTitle": "Ontario Design Guidelines for Sewage Works",
+    "sourceReference": "Ontario Design Guidelines for Sewage Works",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works-0"
+  },
+  {
+    "questionNum": 426,
+    "question": "What can a trend in the mixed liquor volatile suspended solids to total suspended solids (MLVSS/MLSS) ratio help an operator assess in activated sludge?",
+    "options": [
+      "It shows the volatile fraction of mixed liquor; a declining trend may indicate more fixed solids, but the result must be interpreted with other plant and laboratory data",
+      "The ratio is a fixed compliance threshold that must remain unchanged in an activated-sludge process, regardless of influent solids, wasting practice, chemical addition, or the amount of inert material retained",
+      "MLVSS and MLSS are interchangeable names for the same laboratory result, so comparing them cannot show whether non-volatile solids or inert material are accumulating in the mixed liquor",
+      "The ratio is used only for annual reporting and has no role in interpreting the balance of active biomass, chemical solids, grit carryover, or other inert material in activated sludge"
+    ],
+    "correctIndex": 0,
+    "explanation": "MLVSS is the volatile portion of MLSS and can be used with other operating and laboratory information to interpret mixed-liquor solids. A declining MLVSS/MLSS trend can be consistent with an increasing fixed-solids fraction, but it is not a direct measure of active biomass or a stand-alone diagnosis.",
+    "sourceTitle": "U.S. EPA — Characterization of the Activated Sludge Process",
+    "sourceReference": "U.S. EPA, Characterization of the Activated Sludge Process; activated-sludge control parameters and volatile-solids relationships",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=9100TG1H.TXT"
+  },
+  {
+    "questionNum": 436,
+    "question": "What is the primary purpose of maintenance planning for wastewater pump stations?",
+    "options": [
+      "Plan inspection, servicing, and corrective work to support reliable pump-station operation while following the site O&M manual and manufacturer requirements",
+      "Use maintenance planning chiefly to standardize budgets and staff schedules, while pump reliability, alarms, access, equipment condition, and manufacturer tasks are addressed through separate unrelated processes",
+      "Treat the maintenance plan as a single annual review of facility drawings, with routine inspection, testing, servicing, and adjustment considered unnecessary unless a major failure has already been recorded",
+      "Replace equipment strictly by age under one uniform schedule, regardless of inspection findings, operating history, site-specific O&M requirements, manufacturer recommendations, or the criticality of the equipment"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maintenance planning supports reliable pump-station operation by organizing inspection, servicing, and corrective work. Any use of equipment-condition information must complement, not replace, the facility’s approved O&M procedures and manufacturer-recommended maintenance requirements.",
+    "sourceTitle": "Ontario Design Guidelines for Sewage Works — Pumping Stations",
+    "sourceReference": "Ontario Design Guidelines for Sewage Works — Pumping Stations",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/sewage-pumping-stations"
+  },
+  {
+    "questionNum": 437,
+    "question": "What is the Drinking Water Quality Management Standard (DWQMS) and does it apply to wastewater?",
+    "options": [
+      "DWQMS sets mandatory quality-management criteria for Ontario municipal residential drinking-water systems; it is not a wastewater operator-licensing standard",
+      "DWQMS applies equally to Ontario drinking water, wastewater collection, and wastewater treatment systems, so wastewater facilities must use the same standard for their operating authority and management system",
+      "DWQMS is a federal national standard that overrides the Safe Drinking Water Act and Ontario Water Resources Act whenever a municipal system manages water quality or wastewater discharges",
+      "DWQMS is limited to privately owned systems; municipal residential drinking-water systems are exempt from quality-management accreditation and operate only under local municipal policies"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario’s DWQMS applies in the municipal residential drinking-water licensing and accreditation framework. It does not establish a wastewater operating or sewage-works operator-licensing standard.",
+    "sourceTitle": "Ontario’s Drinking Water Quality Management Standard — Pocket Guide",
+    "sourceReference": "Ontario DWQMS Pocket Guide, municipal residential drinking-water scope and licensing/accreditation context",
+    "sourceUrl": "https://www.ontario.ca/page/ontarios-drinking-water-quality-management-standard-pocket-guide"
+  },
+  {
+    "questionNum": 444,
+    "question": "What information should be included in a wastewater facility's emergency contact list?",
+    "options": [
+      "24-hour contacts for facility manager, on-call operators, the Spills Action Centre, local fire/police/EMS, utility companies, chemical suppliers, and equipment service providers",
+      "Routine business contacts for the facility manager, accounting office, office-supply vendors, landscaping contractor, and municipal reception, listed only by regular office extension",
+      "A staff social directory listing employees' personal interests, training anniversaries, preferred shifts, uniform sizes, and non-emergency committee memberships for internal reference",
+      "Contact details for the facility laboratory, engineering consultant, parts vendors, neighbouring treatment plants, and records archive, with emergency agencies represented by a municipal switchboard"
+    ],
+    "correctIndex": 0,
+    "explanation": "A comprehensive emergency contact list should include internal contacts (manager, supervisors, on-call operators), regulatory contacts (Spills Action Centre per O. Reg. 675/98), emergency services, utilities, and service contractors. The list must be posted, current, and accessible 24/7.",
+    "sourceTitle": "Ontario Regulation 675/98 — Classification and Exemption of Spills and Reporting of Discharges",
+    "sourceReference": "Ontario Regulation 675/98",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/980675"
+  },
+  {
+    "questionNum": 493,
+    "question": "What is the Method Detection Limit (MDL) and how does it differ from the Reporting Limit?",
+    "options": [
+      "MDL is the lowest concentration that can be reliably distinguished from zero; the Reporting Limit is set higher and represents the lowest concentration reported with quantitative confidence",
+      "MDL and the Reporting Limit are the same laboratory value; both identify the lowest concentration that can be quantified with equal confidence and may always be used interchangeably.",
+      "The MDL is established above the Reporting Limit because detection requires more analyte than quantitative reporting, so results below the MDL can still be reported with greater confidence.",
+      "The MDL is a fixed limit used only for metals testing, while the Reporting Limit applies to every other wastewater analysis and is determined solely by the concentration in the sample."
+    ],
+    "correctIndex": 0,
+    "explanation": "The MDL is determined statistically from replicate analyses of a low-concentration standard and represents the minimum detectable concentration. The Reporting Limit (or Practical Quantitation Limit) is set higher to ensure results are quantitatively reliable. Results between MDL and RL may be reported as detected but not quantified.",
+    "sourceTitle": "U.S. EPA — Handbook for Sampling and Sample Preservation of Water and Wastewater",
+    "sourceReference": "U.S. EPA — Handbook for Sampling and Sample Preservation of Water and Wastewater",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=30000QSA.TXT"
+  },
+  {
+    "questionNum": 496,
+    "question": "Why might a wastewater utility establish and track an energy-use baseline?",
+    "options": [
+      "To understand where energy is used, track energy performance over time, prioritize improvement opportunities, and evaluate whether energy-efficiency measures are working",
+      "Establish a single equipment purchasing list for every Ontario facility, so plants use identical pumps, controls, and treatment processes regardless of influent characteristics, site constraints, or treatment objectives",
+      "Determine the exact future effluent quality of each facility from its design capacity alone, without considering influent variability, process configuration, equipment condition, weather, or operator practices",
+      "Create a public ranking based only on annual wastewater volume, treating the largest facility as the most efficient and assuming that plant size by itself represents energy, staffing, cost, and compliance performance"
+    ],
+    "correctIndex": 0,
+    "explanation": "An energy-use baseline helps a utility understand its current energy use and the impact of energy-intensive processes such as pumping and aeration. EPA guidance describes baselines, assessments, and performance tracking as tools for prioritizing and evaluating energy-efficiency improvements.",
+    "sourceTitle": "U.S. EPA — Energy Efficiency for Water Utilities",
+    "sourceReference": "U.S. EPA, Energy Efficiency for Water Utilities; determining baseline energy use and tracking energy performance",
+    "sourceUrl": "https://www.epa.gov/sustainable-water-infrastructure/energy-efficiency-water-utilities"
+  },
+  {
+    "questionNum": 516,
+    "question": "What are Phosphorus Accumulating Organisms (PAOs) and how do they remove phosphorus?",
+    "options": [
+      "PAOs are bacteria that release phosphorus under anaerobic conditions while storing carbon, then take up excess phosphorus (luxury uptake) under aerobic conditions — net P removal occurs when PAO-rich sludge is wasted",
+      "PAOs are bacteria that secrete metal-based coagulants under aerobic conditions, causing dissolved phosphate to precipitate immediately; removal therefore occurs without anaerobic carbon storage or wasting PAO-rich sludge.",
+      "PAOs are photosynthetic algae that consume phosphate only when oxygen and light are present, incorporating it into cell material; they remove phosphorus through ordinary clarification rather than anaerobic release and luxury uptake.",
+      "PAOs are specialized nitrifying bacteria that oxidize phosphate into a volatile phosphorus gas during aeration; the gas leaves with the off-air, so their function does not depend on alternating anaerobic and aerobic conditions."
+    ],
+    "correctIndex": 0,
+    "explanation": "PAOs perform enhanced biological phosphorus removal through a two-phase metabolism: anaerobically they release stored polyphosphate to gain energy for uptaking volatile fatty acids as intracellular carbon storage; aerobically they oxidize this stored carbon and take up phosphorus in excess of metabolic needs (luxury uptake). Net removal occurs when P-rich biomass is wasted.",
+    "sourceTitle": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceReference": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceUrl": "https://www.epa.gov/compliance/optimizing-nutrient-removal-activated-sludge-wastewater-treatment-plants"
+  },
+  {
+    "questionNum": 521,
+    "question": "What is membrane fouling in an MBR system and how is it managed?",
+    "options": [
+      "Fouling is material buildup that reduces membrane permeability; it is managed with air scouring and cleaning practices specified by the membrane manufacturer and facility O&M procedures",
+      "Membrane fouling is the loss of microbial treatment capacity when mixed liquor becomes too dilute, rather than deposits forming on membranes; it is managed by changing sludge age and adding seed biomass.",
+      "Membrane fouling is permanent widening of membrane pores during normal filtration, allowing more solids into the permeate; it is managed primarily by adjusting influent nutrient balance and basin aeration.",
+      "Membrane fouling is the accumulation of settled grit and screenings beneath membrane tanks, with no effect on membrane permeability; it is managed through headworks screening and routine grit removal alone."
+    ],
+    "correctIndex": 0,
+    "explanation": "EPA identifies membrane cleaning, fouling control, and air scouring as MBR operating considerations. Specific cleaning methods, solutions, and schedules must follow the membrane manufacturer’s maintenance protocols and the facility’s approved O&M procedures.",
+    "sourceTitle": "U.S. EPA — Wastewater Management Fact Sheet: Membrane Bioreactors",
+    "sourceReference": "U.S. EPA, Wastewater Management Fact Sheet: Membrane Bioreactors; membrane fouling control, air scouring, cleaning, and manufacturer maintenance protocols",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P100IL7G.TXT"
+  },
+  {
+    "questionNum": 524,
+    "question": "What is the A2O (Anaerobic-Anoxic-Oxic) process and what does it achieve?",
+    "options": [
+      "A2O is a biological nutrient removal process with three zones in sequence: anaerobic (P release), anoxic (denitrification), and oxic (nitrification + P uptake) — it removes both nitrogen and phosphorus biologically",
+      "A2O is a two-stage aerobic treatment arrangement in which both basins are continuously aerated; the first basin oxidizes ammonia and the second provides final polishing, so phosphorus removal occurs only through routine biomass settling",
+      "A2O is a chemical nutrient-removal method that mixes alum with oxygen before primary clarification; the resulting precipitate captures nitrogen and phosphorus, while biological reactions are limited to downstream sludge stabilization",
+      "A2O is an attached-growth process with anaerobic, anoxic, and oxic media operated in parallel; each zone treats a separate third of the influent, and nutrient removal results mainly from filtration rather than biological cycling"
+    ],
+    "correctIndex": 0,
+    "explanation": "The A2O process arranges three biological environments in sequence: anaerobic (PAOs release phosphorus while taking up VFAs), anoxic (denitrifiers convert nitrate to nitrogen gas using influent carbon), and oxic (nitrifiers convert ammonia to nitrate, and PAOs take up luxury phosphorus). Internal recycle returns nitrate-rich mixed liquor from the oxic to anoxic zone.",
+    "sourceTitle": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceReference": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceUrl": "https://www.epa.gov/compliance/optimizing-nutrient-removal-activated-sludge-wastewater-treatment-plants"
+  },
+  {
+    "questionNum": 529,
+    "question": "What is simultaneous nitrification-denitrification (SND) and under what conditions does it occur?",
+    "options": [
+      "SND occurs when both nitrification and denitrification happen in the same reactor due to DO gradients within floc particles — outer layers are aerobic (nitrification) while inner cores are anoxic (denitrification)",
+      "SND is a process in which nitrification is completed in a fully aerobic reactor, after which the flow enters a separate anoxic reactor for denitrification, so the two reactions never occur together within one reactor or within floc particles",
+      "SND occurs only when dissolved oxygen is perfectly uniform throughout every floc particle, allowing one microbial population to alternate instantly between nitrification and denitrification without any aerobic or anoxic microzones developing",
+      "SND is a chemical nitrogen-removal process caused by adding an oxidant and an external carbon source to a completely mixed tank; biological activity and dissolved-oxygen gradients within the biomass are not involved"
+    ],
+    "correctIndex": 0,
+    "explanation": "SND occurs in aeration tanks operated at low dissolved oxygen where oxygen penetration into activated sludge flocs is limited. The aerobic outer layer supports nitrifiers converting ammonia to nitrate, while the anoxic inner core supports denitrifiers converting nitrate to nitrogen gas. Oxidation ditches and MBRs commonly achieve SND.",
+    "sourceTitle": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceReference": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceUrl": "https://www.epa.gov/compliance/optimizing-nutrient-removal-activated-sludge-wastewater-treatment-plants"
+  },
+  {
+    "questionNum": 536,
+    "question": "What is the role of volatile fatty acids (VFAs) in biological phosphorus removal, and how can VFA supply be increased?",
+    "options": [
+      "VFAs are readily biodegradable carbon that PAOs take up anaerobically; a supported way to increase supply is primary-sludge or sidestream fermentation",
+      "VFAs are mainly inhibitory by-products that PAOs must oxidize aerobically before taking up phosphorus; their supply is increased by extending aeration and maximizing oxygen transfer in the biological reactor.",
+      "VFAs serve chiefly as electron acceptors for nitrifiers in the aerobic zone, and operators can raise their availability by increasing sludge age and promoting complete oxidation of influent organic matter.",
+      "VFAs are stored by ordinary heterotrophs during aerobic treatment and later released to precipitate phosphorus chemically; supply is increased by lengthening primary clarification and reducing sludge fermentation."
+    ],
+    "correctIndex": 0,
+    "explanation": "VFAs are important carbon substrates for PAOs in the anaerobic phase of enhanced biological phosphorus removal. Primary-sludge or sidestream fermentation can generate VFAs; simply passing more soluble BOD or adding an unspecified external carbon source does not establish an equivalent VFA supply.",
+    "sourceTitle": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceReference": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceUrl": "https://www.epa.gov/compliance/optimizing-nutrient-removal-activated-sludge-wastewater-treatment-plants"
+  },
+  {
+    "questionNum": 540,
+    "question": "What is the difference between depth filtration and surface filtration in tertiary wastewater treatment?",
+    "options": [
+      "Depth filtration captures particles within a porous filter medium; surface filtration captures particles chiefly at the filtering surface, and suitability depends on the process and treatment objective",
+      "Depth filtration retains solids only as a cake on the top of a granular bed, whereas surface filtration traps particles throughout the full thickness of a membrane; therefore membranes are preferred mainly for accepting heavier solids loads.",
+      "Depth filtration is a biological process in which attached microorganisms consume dissolved contaminants, while surface filtration is a chemical process that precipitates dissolved matter directly onto a smooth filtering surface.",
+      "Surface and depth filtration differ only in the material used to build the filter housing; both remove particles exclusively at the inlet face, provide the same effluent quality, and respond identically to changes in solids loading."
+    ],
+    "correctIndex": 0,
+    "explanation": "Depth filtration retains particles within the depth of a porous medium, whereas surface filtration retains particles primarily at the filtering surface. Design selection and performance depend on the specific technology, pretreatment, operating conditions, and treatment objective.",
+    "sourceTitle": "Ontario Design Guidelines for Sewage Works",
+    "sourceReference": "Ontario Design Guidelines for Sewage Works",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works-0"
+  },
+  {
+    "questionNum": 550,
+    "question": "What is the difference between assimilatory and dissimilatory nitrogen removal in wastewater treatment?",
+    "options": [
+      "Assimilatory removal incorporates nitrogen into cell biomass (removed with WAS); dissimilatory removal converts nitrogen to N₂ gas through nitrification-denitrification — dissimilatory is the primary removal mechanism in BNR plants",
+      "Assimilatory removal converts ammonium directly to nitrogen gas during biomass synthesis, whereas dissimilatory removal stores dissolved nitrogen in new cells that are later separated from the treated effluent as waste sludge",
+      "Assimilatory removal occurs only in unaerated zones and releases nitrogen from biomass, while dissimilatory removal occurs only in aerated zones and permanently captures all incoming nitrogen in the activated sludge",
+      "Assimilatory and dissimilatory removal are two names for the same biological pathway: both depend on microorganisms absorbing nitrate into biomass, and neither involves converting ammonia or nitrate into nitrogen gas that can leave the treatment process"
+    ],
+    "correctIndex": 0,
+    "explanation": "Assimilatory nitrogen removal occurs when microorganisms incorporate ammonia or nitrate into cell mass during growth, leaving the system with wasted sludge. Dissimilatory removal is the deliberate biological conversion of ammonia to nitrate (nitrification) followed by conversion of nitrate to nitrogen gas (denitrification). BNR plants rely primarily on dissimilatory removal to achieve high total nitrogen removal.",
+    "sourceTitle": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceReference": "U.S. EPA — Optimizing Nutrient Removal in Activated Sludge WWTPs",
+    "sourceUrl": "https://www.epa.gov/compliance/optimizing-nutrient-removal-activated-sludge-wastewater-treatment-plants"
+  }
+]

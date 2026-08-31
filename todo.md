@@ -1883,3 +1883,12 @@
 - [x] Obtain an independent external semantic review before approving any staged repair for learner access
 - [x] Verify learner-visible inventory and preview-gate behavior after any approved content change; do not start OIT Wastewater execution without separate confirmation
 - [x] Resolve the eleven independently held candidates through additional authoritative-source and independent external semantic review; do not alter them until they meet the same two-gate standard
+
+## OIT Wastewater Controlled Remediation — August 30
+- [x] Generate and preserve a read-only OIT Wastewater answer-length worklist; make no learner-content change during analysis
+- [x] Select no more than 25 source-supported OIT Wastewater repair candidates and verify their governing operational, safety, and regulatory references
+- [x] Apply structural answer-length checks and independent external semantic review before staging any revised item as `in_review`
+- [x] Approve only the 13 independently cleared staged revisions and retain the two source-insufficient candidates unchanged
+- [x] Verify learner inventory and the 15-question preview gate after the approved controlled repair round
+- [ ] Publish the material OIT Wastewater tooling safeguards and public release marker
+- [ ] Repair q444 and q493 only after adding authoritative, source-specific support for the emergency-contact-list and laboratory-reporting-limit claims

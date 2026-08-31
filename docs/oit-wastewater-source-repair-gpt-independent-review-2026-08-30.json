@@ -1,0 +1,203 @@
+{
+  "reviews": [
+    {
+      "questionNum": 277,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The Ontario sewage-works guidance supports the sewer conditions associated with anaerobic sulphide generation.",
+        "Option 1 is uniquely correct, and the distractors describe conditions that inhibit rather than promote H₂S generation.",
+        "The source title, reference, jurisdiction, and URL are traceable."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 284,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The definitions of inflow and infiltration and their wet-weather hydraulic impacts are consistent with Ontario sewage-works guidance.",
+        "Option 1 is uniquely correct, and the distractors are plausible but clearly false.",
+        "The item does not present a bypass or overflow as an acceptable operating action."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 426,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "MLVSS is the volatile fraction of MLSS and is only a surrogate for biomass; it does not directly measure the proportion of active biomass.",
+        "Non-biodegradable organic solids can be included in MLVSS, so a declining ratio does not necessarily indicate accumulation of all non-biodegradable material as the explanation claims.",
+        "The keyed answer and explanation overstate what the ratio can diagnose."
+      ],
+      "requiredChanges": [
+        "Describe the ratio as the volatile or organic fraction of MLSS rather than the proportion of active biomass.",
+        "State that a declining ratio may indicate increasing fixed or inorganic solids, while noting that interpretation requires process and laboratory context.",
+        "Remove the unsupported claim that non-biodegradable organic accumulation necessarily lowers the ratio."
+      ]
+    },
+    {
+      "questionNum": 436,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The cited Ontario pumping-station guidance supports reliability, access, and maintenance concepts, but the source record does not establish the detailed real-time condition-monitoring program described in the key.",
+        "Specific reliance on vibration, temperature, power, and runtime data is not traceably supported by the cited source record.",
+        "The question therefore has a source-to-claim mismatch."
+      ],
+      "requiredChanges": [
+        "Either cite a traceable maintenance source that expressly supports condition-based monitoring and the listed measurements or simplify the item to maintenance and reliability principles expressly addressed by the Ontario pumping-station guidance.",
+        "Avoid implying that condition-based maintenance wholly replaces scheduled preventive tasks required by manufacturers or site procedures."
+      ]
+    },
+    {
+      "questionNum": 437,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The DWQMS source supports its application to Ontario municipal residential drinking-water systems and supports the statement that it is not a wastewater standard.",
+        "The claim that similar QMS principles are increasingly applied to wastewater is not supported by either cited source.",
+        "The explanation inaccurately says wastewater facilities are licensed under O. Reg. 129/04; that regulation addresses facility classification and sewage-works operator licensing, not licensing of the facility itself.",
+        "O. Reg. 129/04 is cited in the title and reference but has no corresponding source URL in the candidate."
+      ],
+      "requiredChanges": [
+        "Remove the unsupported statement about increasing wastewater application of similar QMS principles unless a traceable Ontario source is added.",
+        "Revise the explanation to state that O. Reg. 129/04 governs classification of facilities and licensing of sewage-works operators; do not say it licenses wastewater facilities.",
+        "Provide a direct URL for every cited source."
+      ]
+    },
+    {
+      "questionNum": 444,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "O. Reg. 675/98 addresses notification for legally reportable spills or discharges and required report information; it does not support the full emergency-contact-list contents in the keyed option.",
+        "The explanation's requirements that the list be posted, current, and accessible 24/7 are not traceably established by the cited source.",
+        "Including the Spills Action Centre without clarifying that notification depends on the applicable legal trigger risks implying that every wastewater emergency has the same reporting obligation.",
+        "Option 4's reliance on a municipal switchboard for emergency agencies could normalize delayed emergency access."
+      ],
+      "requiredChanges": [
+        "Use an emergency-planning or facility-manual source that expressly supports the required contact-list contents and availability requirements.",
+        "Distinguish general emergency contacts from legally triggered Spills Action Centre notification.",
+        "Replace any distractor that could imply delayed access to emergency agencies or regulators."
+      ]
+    },
+    {
+      "questionNum": 493,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The cited sampling handbook is not traceably shown to support the candidate's specific distinction between MDL and Reporting Limit.",
+        "Reporting Limit terminology and calculation can be method-, laboratory-, and program-specific; it cannot universally be defined as a single value always set higher than the MDL without qualification.",
+        "The statement that all results between the MDL and Reporting Limit are reported as detected but not quantified is dependent on the applicable method and laboratory reporting convention."
+      ],
+      "requiredChanges": [
+        "Cite a current, traceable analytical-method or laboratory-quality source defining both MDL and Reporting Limit.",
+        "Qualify Reporting Limit terminology according to the applicable method, approval, and accredited laboratory procedure.",
+        "Avoid universal statements about how results between the two limits must be reported."
+      ]
+    },
+    {
+      "questionNum": 496,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The purpose described is a reasonable general benchmarking concept, but the cited Ontario Design Guidelines source is not traceably shown to establish a comprehensive benchmarking program or the listed business-performance metrics.",
+        "The source record supports sewage-works design and operational-reliability concepts, not the specific benchmarking framework claimed here."
+      ],
+      "requiredChanges": [
+        "Provide a traceable Ontario or recognized wastewater benchmarking source that supports the stated purpose and metrics.",
+        "Alternatively, rewrite the item around a performance-monitoring concept expressly addressed in the Ontario Design Guidelines."
+      ]
+    },
+    {
+      "questionNum": 516,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed option accurately describes the anaerobic phosphorus-release and aerobic phosphorus-uptake cycle used by PAOs in enhanced biological phosphorus removal.",
+        "It correctly identifies wasting of phosphorus-rich biomass as the net removal step.",
+        "The distractors are clearly inconsistent with biological phosphorus-removal mechanisms, and the U.S. source is used only for a technical concept rather than an Ontario legal claim."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 521,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The keyed definition and listed controls are generally consistent with MBR practice, but the cited nutrient-removal source is not traceably identified in the source record as supporting membrane-fouling definitions and cleaning practices.",
+        "The source record limits this EPA source to high-level activated-sludge and biological nutrient-removal concepts, creating a source mismatch for detailed MBR operation."
+      ],
+      "requiredChanges": [
+        "Replace the citation with a traceable MBR design or operating source that expressly addresses fouling, permeability, air scouring, flux control, relaxation, and chemical cleaning.",
+        "Ensure the final wording defers to membrane-manufacturer instructions and facility-specific procedures for cleaning methods and chemicals."
+      ]
+    },
+    {
+      "questionNum": 524,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed option correctly describes the sequential anaerobic, anoxic, and oxic zones of the A2O biological nutrient-removal process.",
+        "The stated phosphorus-release, denitrification, nitrification, and phosphorus-uptake functions are technically defensible.",
+        "The U.S. source is used for a technical process concept rather than as Ontario law, and the distractors are clearly wrong."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 529,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed option accurately describes simultaneous nitrification and denitrification within one reactor through aerobic and anoxic microzones in flocs.",
+        "The explanation appropriately identifies limited oxygen penetration and low bulk dissolved oxygen as facilitating conditions.",
+        "The distractors are clearly incompatible with SND, and no regulatory claim is made."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 536,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The role of acetate and propionate as anaerobically stored carbon sources for PAOs is supported.",
+        "Shortening primary-clarifier detention does not by itself reliably increase VFA supply; it may pass more organic matter forward without demonstrating that the material is VFA.",
+        "The phrase 'external carbon addition' is too broad because some external carbon sources used for denitrification are not suitable substitutes for VFAs in EBPR.",
+        "The explanation inconsistently shifts from increasing VFA supply to passing more soluble BOD."
+      ],
+      "requiredChanges": [
+        "Retain primary-sludge or sidestream fermentation as a supported means of generating VFAs.",
+        "If external addition is included, specify a suitable readily biodegradable VFA source rather than external carbon generally.",
+        "Remove shorter primary-clarifier detention unless a source expressly supports it and the distinction between VFA and other biodegradable carbon is explained."
+      ]
+    },
+    {
+      "questionNum": 540,
+      "approved": false,
+      "severity": "minor",
+      "reasons": [
+        "The basic distinction between capture throughout a porous medium and capture predominantly at a surface is defensible.",
+        "The keyed option overgeneralizes surface filtration as membrane filtration and makes broad claims that depth filters handle higher solids loads and membranes always produce higher-quality effluent.",
+        "Actual solids-loading capacity and effluent quality depend on filter type, pore size, pretreatment, operating conditions, and treatment objective."
+      ],
+      "requiredChanges": [
+        "Define depth and surface filtration by where particles are retained, without treating all surface filters as membranes.",
+        "Remove or qualify the universal performance comparison concerning solids loading and effluent quality.",
+        "Use examples only after the general distinction is stated accurately."
+      ]
+    },
+    {
+      "questionNum": 550,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed option correctly distinguishes incorporation of nitrogen into biomass from biological conversion culminating in nitrogen gas.",
+        "It correctly notes that assimilated nitrogen leaves only when nitrogen-containing biomass is removed and that nitrification-denitrification is the principal total-nitrogen removal pathway in conventional BNR.",
+        "The distractors reverse or eliminate the defining mechanisms, and the U.S. source is used only for a technical concept."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}
