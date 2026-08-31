@@ -70,7 +70,7 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await signInWithOtp(page, MANAGER_EMAIL, "/account");
   await page.waitForURL(/\/team$/, { timeout: 30_000 });
   await expect(page.getByText("Manager Dashboard", { exact: true })).toBeVisible();
-  await expect(page.getByText(ORG_NAME)).toBeVisible();
+  await expect(page.getByRole("heading", { name: ORG_NAME, exact: true })).toBeVisible();
   await expect(page.getByText("No purchases found")).toHaveCount(0);
 
   const licenceRow = page.locator("tr").filter({ hasText: COURSE_NAME });
