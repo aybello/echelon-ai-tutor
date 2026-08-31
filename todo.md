@@ -1950,4 +1950,5 @@
 - [x] Verify the Tattersall organization purchase, owner account linkage, and active Level 4 Wastewater entitlement without altering unverified data
 - [x] Diagnose the misleading owner no-purchases state: the paid organization manager has an unused licence but no direct learner pass, so the Account page hid the Team Dashboard handoff
 - [x] Add regression coverage so a Team Flex manager with no direct pass is not routed to the no-purchases state
-- [ ] Publish the account-to-Team Dashboard handoff and validate Sally’s live recovery path; invite Thomas Johnson only after an operator email is confirmed
+- [x] Publish the account-to-Team Dashboard handoff and validate the live recovery path on both public domains
+- [ ] Invite Thomas Johnson only after the exact operator email and explicit send authorization are confirmed
