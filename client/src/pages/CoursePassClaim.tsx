@@ -44,7 +44,11 @@ export default function CoursePassClaim() {
   });
 
   const targetLicenceId = claim.data?.licenceId ?? invitation.data?.licenceId;
-  const pass = myLicences.data?.find((item) => item.id === targetLicenceId)
+  // myLicences includes invitations addressed to the signed-in email. An
+  // invited row is not claimed yet and must not suppress the Claim action.
+  const pass = myLicences.data?.find((item) =>
+    item.id === targetLicenceId && (item.status === "assigned" || item.status === "active"),
+  )
     ?? myLicences.data?.find((item) => item.status === "assigned" || item.status === "active");
   const nextPath = `/course-pass/claim?token=${encodeURIComponent(token)}`;
   const loginUrl = `/login/otp?next=${encodeURIComponent(nextPath)}`;
