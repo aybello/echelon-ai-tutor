@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 104,
+    "question": "Which is a primary function of return activated sludge (RAS) in an activated sludge process?",
+    "options": [
+      "To remove grit and other heavy inorganic particles before wastewater enters the main biological treatment process.",
+      "To return settled microorganisms from secondary sedimentation to the aeration or bioreactor tank for biological treatment.",
+      "To add oxygen directly to wastewater through a chemical reaction before it enters the aeration tank for biological treatment.",
+      "To lower the pH of the mixed liquor by adding chemicals before the wastewater reaches final effluent disinfection."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario guidance explains that secondary sedimentation separates biomass from biological-treatment effluent and returns microorganisms to the bioreactor in activated sludge systems. RAS is the return flow from final sedimentation to the aeration or reaeration tank.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 12: Biological Treatment and Chapter 13: Secondary Sedimentation",
+    "sourceReference": "Chapter 13 says secondary sedimentation separates biomass from biological process effluent and returns microorganisms to the bioreactor for activated sludge. It also describes return activated sludge recirculation from final sedimentation tanks to aeration or reaeration tanks.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/biological-treatment-and-secondary-sedimentation"
+  }
+]

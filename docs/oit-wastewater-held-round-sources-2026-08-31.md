@@ -159,3 +159,23 @@ The Walkerton Clean Water Centre identifies itself as a Government of Ontario ag
 [25] [Ontario Ministry of the Environment — Design Guidelines for Sewage Works: Preliminary Treatment and Primary Sedimentation](https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation)
 
 [26] [Walkerton Clean Water Centre — Home](https://wcwc.ca/)
+
+## Foundational manual-screen operation
+
+Ontario’s preliminary-treatment guidance identifies maintenance and labour requirements as factors for manually or mechanically cleaned screens. It also recommends an accessible platform from which an operator can rake screenings easily and safely. This supports a basic recognition question about ongoing manual handling and maintenance; it does not prescribe a site-specific frequency, manual procedure, or safety control. [25]
+
+## Foundational return activated sludge
+
+Ontario guidance says secondary sedimentation separates biomass from biological process effluent and returns microorganisms to the bioreactor in activated-sludge systems. It describes RAS recirculation from final sedimentation tanks to aeration or reaeration tanks. This supports a basic recognition item only; diagnostic RAS rates and process-control calculations remain deferred. [24]
+
+## Ontario collection-system infiltration
+
+The City of Port Colborne defines infiltration as groundwater seeping into a sanitary sewer through cracks, leaks, or deteriorated pipes. Its Ontario municipal wastewater program explains that excessive inflow and infiltration can overwhelm sewer systems, increase treatment costs, and contribute to environmental impacts. This supports a basic, non-prescriptive OIT recognition item; it does not support a site-specific operational response. [27]
+
+[27] [City of Port Colborne — Omer Area Inflow & Infiltration Investigation & Remediation Program](https://www.letsconnect.portcolborne.ca/inflow-infiltration-door-to-door-survey-remediation-omer-area)
+
+## Ontario composite wastewater sampling
+
+Ontario Procedure F-10-1 states that its sampling and analysis program evaluates municipal and private sewage treatment-work performance and effluent compliance. It describes composite samples as flow-proportioned aliquots collected over the sampling period and thoroughly mixed. This supports a foundational question about why a composite can represent conditions over time; it does not prescribe a site-specific sampling program. [28]
+
+[28] [Ontario MECP — F-10-1 Procedures for Sampling and Analysis Requirements for Municipal and Private Sewage Treatment Works](https://www.ontario.ca/page/f-10-1-procedures-sampling-and-analysis-requirements-municipal-and-private-sewage-treatment-works)

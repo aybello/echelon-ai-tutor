@@ -1921,6 +1921,11 @@
 - [x] Repair and approve two source-supported foundational concepts only: RBC process purpose and Ontario worker health-and-safety rights
 - [x] Repair and approve one Ontario-sourced foundational concept only: the multiple factors relevant to chlorine disinfection assessment
 - [x] Repair and approve three Ontario-sourced foundational concepts only: preliminary-treatment purpose, bar-screen purpose, and grit-removal purpose
+- [x] Repair and approve one Ontario-sourced foundational concept only: safe manual-screen handling and maintenance needs
+- [x] Repair and approve two Ontario-sourced foundational concepts only: comminutor purpose and manual-versus-mechanical bar-screen distinction
+- [x] Repair and approve one Ontario-sourced foundational concept only: return activated sludge recirculation purpose
+- [x] Repair and approve one Ontario-municipal-sourced foundational concept only: infiltration as groundwater entering defective sanitary sewers
+- [x] Repair and approve one Ontario-sourced foundational concept only: representative composite sampling over a defined period
 
 ## Evidence-Grounded Certification Content Skill — August 31
 - [x] Package the reusable source hierarchy, OIT-level scope gate, textbook-handling rules, independent-review procedure, and staged-approval workflow as a skill
