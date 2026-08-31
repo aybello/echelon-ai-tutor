@@ -50,4 +50,6 @@
   ,{"questionNum":146,"decision":"defer","reason":"The specific oxidation-ditch rotor relationship requires process-specific support; Ontario guidance found so far supports general aeration but not the exact equipment description."}
   ,{"questionNum":161,"decision":"defer","reason":"The chlorine-dose calculation depends on site-specific chlorine demand and residual conditions; retain it outside the foundational OIT answer-length remediation path."}
   ,{"questionNum":268,"decision":"defer","reason":"Trenchless rehabilitation methods and selection criteria are specialized collection-system content; defer them from the foundational OIT answer-length remediation path."}
+  ,{"questionNum":231,"decision":"defer","reason":"Biosolids stabilization, storage, and land-application consequences need broader solids-management and jurisdictional context than the foundational OIT remediation boundary."}
+  ,{"questionNum":269,"decision":"defer","reason":"The uniform-support and point-loading wording is a reasonable engineering paraphrase but lacks a precise Ontario source passage; retain the original until evidence is stronger."}
 ]

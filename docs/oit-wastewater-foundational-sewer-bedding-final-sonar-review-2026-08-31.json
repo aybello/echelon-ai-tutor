@@ -1,0 +1,19 @@
+{
+  "reviews": [
+    {
+      "questionNum": 269,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option reflects a basic, widely accepted purpose of sewer bedding (uniform support and avoidance of point loading) consistent with general engineering practice, and is framed as background rather than a prescriptive requirement, which aligns with the source note that bedding is a design consideration rather than an operator duty.",
+        "The item stays within foundational OIT scope by testing recognition of a basic collection-system concept without getting into design criteria, installation specifications, or Ontario-specific legal obligations.",
+        "Jurisdiction and regulatory scope are appropriate: Ontario MECP is correctly identified as design guidance, and the explanation clearly states the wording is a technical paraphrase, not a quoted regulatory prescription, avoiding overstatement of the source.",
+        "Exactly one option is clearly correct; the distractors are implausible but do not normalize unsafe operation, missed maintenance, or omitted required actions.",
+        "Although the specific point-loading language is not verbatim from the cited guideline, the paraphrase is reasonable and does not assert a universal regulatory rule; it uses the guidance as contextual background only, which matches the source record’s expectations for similar design-derived foundational questions."
+      ],
+      "requiredChanges": [
+        "To reduce any residual risk of source-to-claim mismatch, slightly soften the explanation to make explicit that the uniform-support/point-loading description is general engineering practice rather than a statement drawn directly from the Ontario guideline (for example, add: 'In general engineering practice, bedding provides uniform support to help avoid point loading on the pipe barrel; this concept is consistent with the guideline’s treatment of bedding as a design consideration.')."
+      ]
+    }
+  ]
+}

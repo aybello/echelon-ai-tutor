@@ -1933,6 +1933,7 @@
 - [x] Repair and approve one Ontario-regulation-sourced foundational concept only: an OIT cannot be designated overall responsible operator
 - [x] Repair and approve one Ontario-regulation-sourced foundational concept only: Class III overall-responsible-operator licence minimum
 - [x] Repair and approve one Ontario-regulation-sourced foundational concept only: Spills Action Centre notification method when notice is required
+- [x] Repair and approve one Canadian-sourced foundational concept only: confined-space atmosphere testing before entry
 
 ## Evidence-Grounded Certification Content Skill — August 31
 - [x] Package the reusable source hierarchy, OIT-level scope gate, textbook-handling rules, independent-review procedure, and staged-approval workflow as a skill
