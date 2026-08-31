@@ -1,0 +1,19 @@
+{
+  "reviews": [
+    {
+      "questionNum": 442,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The source record provided does not include this candidate number or any supporting source note for WHMIS pictograms, so the claim is not traceable to the supplied record.",
+        "The question is outside the bounded Ontario OIT wastewater foundation scope shown in the record; it is a general WHMIS hazard-communication item rather than wastewater-operator foundational content.",
+        "Because the review must be based on the source record, I cannot verify that the cited source, jurisdictional framing, and answer key are correct from the materials provided."
+      ],
+      "requiredChanges": [
+        "Provide a source note in the record that directly supports the WHMIS skull-and-crossbones meaning and confirms the intended Ontario learner scope.",
+        "If retained, tie the item explicitly to a foundational workplace-safety objective relevant to Ontario OIT learners.",
+        "Reconfirm that exactly one option is correct and that all distractors are plausible without introducing unsafe or non-applicable assumptions."
+      ]
+    }
+  ]
+}
