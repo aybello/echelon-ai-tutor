@@ -48,4 +48,6 @@
   ,{"questionNum":97,"decision":"defer","reason":"The available exact scum-baffle description is manufacturer-level; retain the original until an authoritative Ontario source supports a narrow repair."}
   ,{"questionNum":79,"decision":"defer","reason":"The available support is general U.S. technical background and the independent reviewer identified residual prescriptive wording risk; retain the original until an Ontario or Canadian source supports a narrower repair."}
   ,{"questionNum":146,"decision":"defer","reason":"The specific oxidation-ditch rotor relationship requires process-specific support; Ontario guidance found so far supports general aeration but not the exact equipment description."}
+  ,{"questionNum":161,"decision":"defer","reason":"The chlorine-dose calculation depends on site-specific chlorine demand and residual conditions; retain it outside the foundational OIT answer-length remediation path."}
+  ,{"questionNum":268,"decision":"defer","reason":"Trenchless rehabilitation methods and selection criteria are specialized collection-system content; defer them from the foundational OIT answer-length remediation path."}
 ]

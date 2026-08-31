@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 418,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim about notification method (telephoning the Spills Action Centre and providing required information) is directly traceable to O. Reg. 675/98 s.13(2) as cited.",
+        "Ontario jurisdiction and regulatory scope are correctly identified and not generalized beyond the specific regulation.",
+        "Exactly one option is correct; distractors represent non-compliant behaviours without normalizing them as acceptable practice.",
+        "Learning objective (basic understanding of spill/discharge notification under Ontario regulation) is appropriate and foundational for an Ontario OIT learner.",
+        "No unsupported universal claims or source-to-claim mismatches are present."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

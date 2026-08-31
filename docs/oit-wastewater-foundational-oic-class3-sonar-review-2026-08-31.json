@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 416,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim about minimum licence class for an overall responsible operator of a Class III wastewater treatment facility is directly traceable to O. Reg. 129/04 s.15(1), including the explicit Class III example in the regulation.",
+        "Jurisdiction and regulatory scope are accurate: Ontario Regulation 129/04 governs licensing of sewage works operators in Ontario and is correctly cited.",
+        "Exactly one option is correct: the Class III wastewater treatment operator licence; Class II, Class IV only, and OIT are incorrect but plausible distractors within the licensing framework.",
+        "The learning objective (understanding the minimum licensing requirement for an overall responsible operator at a given facility class) is foundational and appropriate for an Ontario OIT learner preparing for Ontario-content exams.",
+        "Distractors are plausible and do not normalize unsafe operation or omitted required actions; they reference real licence classes without suggesting non-compliance is acceptable."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}
