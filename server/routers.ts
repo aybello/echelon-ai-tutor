@@ -28,7 +28,6 @@ import { dashboardRouter } from "./routers/dashboardRouter";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
 import { orgRouter, orgIntelRouter } from "./routers/orgRouter";
-import { trainingRecordsRouter } from "./routers/trainingRecordsRouter";
 import { blogRouter } from "./routers/blogRouter";
 import { jobsRouter } from "./routers/jobsRouter";
 import { emailOtpRouter } from "./routers/emailOtpRouter";
@@ -81,6 +80,7 @@ export const appRouter = router({
           purchasedProductKeys: [],
           activeSubscriptions: [],
           accessibleCourses: [],
+          isManager: false,
           identityType: identity.type,
         };
       }
@@ -111,6 +111,7 @@ export const appRouter = router({
           mockExamPath: c.mockExamPath,
           subscriptionTier: c.subscriptionTier,
         })),
+        isManager: entitlements.isManager,
         identityType: identity.type,
       };
     }),
@@ -125,7 +126,6 @@ export const appRouter = router({
   dashboardAuth: dashboardAuthRouter,
   org: orgRouter,
   orgIntel: orgIntelRouter,
-  trainingRecords: trainingRecordsRouter,
   blog: blogRouter,
   jobs: jobsRouter,
   emailOtp: emailOtpRouter,

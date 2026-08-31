@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { managerAccountDestination } from "@/lib/managerAccountRoute";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ExamDateTracker from "@/components/ExamDateTracker";
@@ -154,6 +155,15 @@ export default function Account() {
     undefined,
     { enabled: isAnyAuthenticated, retry: false, staleTime: 60_000 }
   );
+  const isManager = entitlementsQuery.data?.isManager ?? false;
+
+  // Municipal managers own a team licence pool, not an individual practice
+  // pass. Sending them through the individual empty state incorrectly says
+  // their purchase is missing. Route active managers to their team workspace.
+  useEffect(() => {
+    if (!isManager) return;
+    window.location.replace(managerAccountDestination(window.location.search));
+  }, [isManager]);
 
   const handleClearDeviceState = () => {
     try {
@@ -242,6 +252,14 @@ export default function Account() {
       ].filter((v, i, a) => a.indexOf(v) === i);
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;
+
+  if (isManager) {
+    return (
+      <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <p style={{ color: "#475569", fontWeight: 700 }}>Opening your team dashboard…</p>
+      </div>
+    );
+  }
 
   const ontarioPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "Ontario");
   const wpiPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "WPI");

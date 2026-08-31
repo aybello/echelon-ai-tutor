@@ -108,10 +108,24 @@ export async function resolveOrgManager(ctx: {
 
   const normalised = normalizeEmail(email);
 
-  // Resolve every manager membership before choosing an organization. A
-  // previous checkout or contract can leave an older manager row behind; it
-  // must not hide a newer active organization for the same verified email.
-  const rows = await db
+  // The organization managerEmail is the checkout and OTP authority. Keep it
+  // as the primary source so a missing legacy membership row cannot let OTP
+  // succeed while the same manager is rejected by the dashboard.
+  const directRows = await db
+    .select({
+      id: organizations.id,
+      orgId: organizations.id,
+      status: organizations.status,
+      termEnd: organizations.termEnd,
+      createdAt: organizations.createdAt,
+    })
+    .from(organizations)
+    .where(eq(organizations.managerEmail, normalised));
+
+  // Preserve explicit manager memberships as a backwards-compatible source.
+  // A previous checkout or contract can leave an older row behind, so all
+  // candidates are evaluated before the current organization is chosen.
+  const membershipRows = await db
     .select({
       id: organizations.id,
       orgId: organizationMembers.orgId,
@@ -128,6 +142,10 @@ export async function resolveOrgManager(ctx: {
         eq(organizationMembers.status, "assigned"),
       ),
     );
+
+  const rows = [...new Map(
+    [...directRows, ...membershipRows].map((row) => [row.orgId, row]),
+  ).values()];
 
   if (rows.length === 0) {
     throw new TRPCError({
