@@ -56,8 +56,9 @@ export function getTrpcRateLimitPolicy(rawUrl: string): TrpcRateLimitPolicy {
   if (procedures.some(procedure => isProcedure(procedure, "contact"))) return "contact";
 
   if (procedures.some(procedure =>
-    isProcedure(procedure, "auth") ||
-    isProcedure(procedure, "dashboardAuth") ||
+    procedure === "auth.login" ||
+    procedure === "dashboardAuth.sendOtp" ||
+    procedure === "dashboardAuth.verifyOtp" ||
     isProcedure(procedure, "magicLink") ||
     isProcedure(procedure, "emailOtp")
   )) return "auth";
