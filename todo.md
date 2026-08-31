@@ -1956,3 +1956,4 @@
 - [x] Verify staging Account-to-Team Dashboard redirect behavior for an authenticated Team Flex manager — `/account` returned directly to `/team` and the dashboard loaded without a loop
 - [x] Execute a controlled end-to-end Team Flex Course Pass assignment validation without delivering any unapproved customer email — router lifecycle covered unused → invited → assigned → active with mocked delivery
 - [x] Add a single-recipient Course Pass invitation preview and explicit confirmation step before email delivery
+- [x] Update the public release marker to identify the Course Pass invitation confirmation safeguard

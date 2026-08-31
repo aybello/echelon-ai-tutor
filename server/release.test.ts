@@ -30,9 +30,10 @@ describe("public release health", () => {
         "answer-length-wastewater-foundational-scope-v1",
         "training-hours-consolidated-v1",
         "manager-account-routing-v1",
+        "course-pass-invite-confirmation-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-08-31.manager-account-routing.1");
+    expect(RELEASE_ID).toBe("2026-08-31.course-pass-invite-confirmation.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
