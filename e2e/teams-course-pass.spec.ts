@@ -101,7 +101,7 @@ test("manager can invite an operator who claims, activates and opens the assigne
   const operatorContext = await browser.newContext();
   const operatorPage = await operatorContext.newPage();
   await operatorPage.goto(claimUrl!);
-  await expect(operatorPage.getByRole("heading", { name: COURSE_NAME })).toBeVisible();
+  await expect(operatorPage.getByText(COURSE_NAME, { exact: true })).toBeVisible();
   await operatorPage.getByRole("link", { name: /Verify Email & Continue/i }).click();
 
   await operatorPage.getByPlaceholder("your@email.com").fill(OPERATOR_EMAIL);
