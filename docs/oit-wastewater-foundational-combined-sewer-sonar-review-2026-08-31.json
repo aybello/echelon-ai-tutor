@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 18,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects Ontario MECP’s definition of a combined sewer as conveying sanitary sewage and stormwater runoff in a single pipe to a treatment plant, contrasted with separate systems that use distinct sanitary and storm sewers.",
+        "Explanation is traceable to the cited Ontario MECP Design Guidelines, Chapter 8, and stays within the non-regulatory, definitional scope described in the source record.",
+        "Jurisdiction and regulatory scope are appropriate for an Ontario OIT learner, using Ontario MECP guidance without implying operator legal obligations beyond basic recognition.",
+        "The learning objective (distinguishing combined vs. separate sewer systems) is foundational and suitable for Ontario OIT level, aligning with basic collection-system understanding.",
+        "Exactly one option is correct; distractors are clearly incorrect yet plausible, and do not normalize unsafe operation, missed maintenance, or omission of required actions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

@@ -179,3 +179,15 @@ The City of Port Colborne defines infiltration as groundwater seeping into a san
 Ontario Procedure F-10-1 states that its sampling and analysis program evaluates municipal and private sewage treatment-work performance and effluent compliance. It describes composite samples as flow-proportioned aliquots collected over the sampling period and thoroughly mixed. This supports a foundational question about why a composite can represent conditions over time; it does not prescribe a site-specific sampling program. [28]
 
 [28] [Ontario MECP — F-10-1 Procedures for Sampling and Analysis Requirements for Municipal and Private Sewage Treatment Works](https://www.ontario.ca/page/f-10-1-procedures-sampling-and-analysis-requirements-municipal-and-private-sewage-treatment-works)
+
+## Ontario combined-sewer definition and primary scum control
+
+Ontario guidance defines a combined sewer as a single-pipe system that conveys sanitary sewage and stormwater runoff to a sewage treatment plant. The preliminary-treatment chapter explains that screens remove debris to protect equipment and downstream processes, while primary treatment separates floating materials. These facts support simple OIT recognition questions, not design specifications or overflow-response instruction. [29]
+
+[29] [Ontario MECP — Design Guidelines for Sewage Works, Chapter 8: Design Considerations for Sewage Treatment Plants](https://www.ontario.ca/document/design-guidelines-sewage-works/design-considerations-sewage-treatment-plants); [Ontario MECP — Chapter 10: Preliminary Treatment and Primary Sedimentation](https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation)
+
+## Flow-equalization mixing — general technical background only
+
+An EPA technical publication describes adequate mixing and aeration as measures to keep equalization basins aerobic and prevent solids deposition. This is general technical background only, not an Ontario legal or exam-framework authority. It may support a simple recognition item only if the explanation keeps that limitation clear. [30]
+
+[30] [U.S. EPA — Flow Equalization](https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000QTKP.TXT)

@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 18,
+    "question": "What is the main difference between a combined sewer system and a separate sewer system?",
+    "options": [
+      "A combined sewer carries sanitary sewage and stormwater in one pipe, while a separate system uses distinct sanitary and storm-sewer pipes.",
+      "A combined sewer carries only industrial wastewater, while a separate system carries all domestic wastewater to an open drainage channel.",
+      "A combined sewer relies only on pumps, while a separate system relies only on gravity and cannot include pumping equipment.",
+      "A combined sewer treats wastewater on-site, while a separate system sends untreated wastewater directly to a receiving water body."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario design guidance defines a combined sewer system as a single-pipe collection system that conveys sanitary sewage and stormwater runoff to a sewage treatment plant. It contrasts this with separate sewer systems that use different collection paths for sanitary sewage and stormwater.",
+    "sourceTitle": "Ontario MECP — Design Guidelines for Sewage Works, Chapter 8: Design Considerations for Sewage Treatment Plants",
+    "sourceReference": "Section 8.3.4 defines a combined sewer system as a sewage collection system that conveys sanitary sewage and stormwater runoff through a single-pipe system to a sewage treatment plant. Section 8.3.5 defines a sanitary sewer system as a separate sewer system.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/design-considerations-sewage-treatment-plants"
+  }
+]

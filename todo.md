@@ -1926,6 +1926,8 @@
 - [x] Repair and approve one Ontario-sourced foundational concept only: return activated sludge recirculation purpose
 - [x] Repair and approve one Ontario-municipal-sourced foundational concept only: infiltration as groundwater entering defective sanitary sewers
 - [x] Repair and approve one Ontario-sourced foundational concept only: representative composite sampling over a defined period
+- [x] Repair and approve one Ontario-sourced foundational concept only: dissolved-oxygen monitoring for aerobic biological treatment
+- [x] Repair and approve one Ontario-sourced foundational concept only: combined-versus-separate sewer collection systems
 
 ## Evidence-Grounded Certification Content Skill — August 31
 - [x] Package the reusable source hierarchy, OIT-level scope gate, textbook-handling rules, independent-review procedure, and staged-approval workflow as a skill

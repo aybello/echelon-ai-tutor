@@ -42,5 +42,9 @@
   {"questionNum":72,"decision":"defer","reason":"Primary-clarifier grease troubleshooting is a site-specific operational-response scenario."},
   {"questionNum":94,"decision":"defer","reason":"Flow-equalization performance comparison is treatment-system design content."},
   {"questionNum":28,"decision":"defer","reason":"The available support for diurnal-flow peaks is an older U.S. technical study; retain it only as general background rather than use it in the Ontario/Canadian-first foundational OIT path."},
-  {"questionNum":160,"decision":"defer","reason":"UV dose, intensity, contact time, and wastewater transmittance require detailed disinfection-process interpretation beyond the current foundational OIT boundary."}
+  {"questionNum":160,"decision":"defer","reason":"UV dose, intensity, contact time, and wastewater transmittance require detailed disinfection-process interpretation beyond the current foundational OIT boundary."},
+  {"questionNum":190,"decision":"defer","reason":"The present explanation conflates E. coli as an indicator with direct proof of pathogens and needs source-specific Ontario microbial-monitoring wording before any repair."},
+  {"questionNum":107,"decision":"defer","reason":"Oxidation-ditch retention times and nitrification-denitrification configuration are advanced biological-treatment content beyond the foundational OIT boundary."}
+  ,{"questionNum":97,"decision":"defer","reason":"The available exact scum-baffle description is manufacturer-level; retain the original until an authoritative Ontario source supports a narrow repair."}
+  ,{"questionNum":79,"decision":"defer","reason":"The available support is general U.S. technical background and the independent reviewer identified residual prescriptive wording risk; retain the original until an Ontario or Canadian source supports a narrower repair."}
 ]

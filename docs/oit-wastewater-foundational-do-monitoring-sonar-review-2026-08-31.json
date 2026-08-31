@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 502,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim that dissolved oxygen is monitored to support aerobic biological treatment is traceable to the cited Ontario Design Guidelines chapter, which states aeration equipment should maintain dissolved oxygen in mixed liquor and discusses oxygen demand in activated-sludge design.",
+        "Jurisdiction and regulatory scope are accurate: the item correctly references Ontario Ministry of the Environment design guidance without overstating it as a universal operational prescription.",
+        "Exactly one option is correct: only the first option relates dissolved oxygen in the aeration tank to aerobic biological treatment; the other options misapply DO monitoring to hardness, grease removal in primary clarification, or disinfection, which are distinct processes.",
+        "Learning objective is foundational and appropriate for an Ontario OIT learner: understanding the role of dissolved oxygen in aerobic activated-sludge treatment is a basic biological-treatment concept without requiring setpoints, process-control calculations, or advanced troubleshooting.",
+        "Distractors are plausible process terms (hardness, grit, grease, disinfection) but do not normalize unsafe operation, missed maintenance, or omitted required actions; they simply misattribute the purpose of DO monitoring."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}
