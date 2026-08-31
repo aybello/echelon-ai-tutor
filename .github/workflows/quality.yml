@@ -25,6 +25,15 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=12
+      mailpit:
+        image: axllent/mailpit:v1.31.0
+        env:
+          MP_SMTP_AUTH_ACCEPT_ANY: "1"
+          MP_SMTP_AUTH_ALLOW_INSECURE: "1"
+          MP_DISABLE_VERSION_CHECK: "1"
+        ports:
+          - 1025:1025
+          - 8025:8025
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -125,3 +134,37 @@ jobs:
         env:
           NODE_ENV: development
           JWT_SECRET: test-only-not-for-production
+          VITE_APP_ID: echelon-browser-test
+          VITE_OAUTH_PORTAL_URL: https://oauth.echelon.test
+      - name: Seed the Teams Course Pass browser journey
+        run: node scripts/e2e/seedTeamsCoursePass.mjs
+        env:
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+      - name: Install the Teams browser-test runtime
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Browser-test manager invitation and operator activation
+        run: pnpm test:e2e:teams
+        env:
+          CI: "1"
+          NODE_ENV: test
+          PORT: "3000"
+          APP_BASE_URL: http://127.0.0.1:3000
+          E2E_BASE_URL: http://127.0.0.1:3000
+          MAILPIT_URL: http://127.0.0.1:8025
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+          SMTP_HOST: 127.0.0.1
+          SMTP_PORT: "1025"
+          SMTP_USER: e2e@echelon.test
+          SMTP_PASS: test-only-placeholder
+      - name: Upload Teams browser-test evidence
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: teams-course-pass-browser-evidence
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore

@@ -6,7 +6,7 @@
  */
 
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
 
@@ -16,7 +16,6 @@ const LOGO_URL =
 type Step = "email" | "code" | "success" | "error";
 
 export default function OtpLogin() {
-  const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>("email");
   // Pre-fill email from ?email= URL param (set by /account redirect)
   // Read ?next= param — safe same-application relative paths only
@@ -89,7 +88,11 @@ export default function OtpLogin() {
         setStep("success");
         const redirectPath = data.isManager ? "/team" : "/quiz";
         const finalPath = nextParam || redirectPath;
-        setTimeout(() => navigate(finalPath), 2500);
+        // A hard navigation makes the newly issued HttpOnly session cookie the
+        // source of truth for the next page. A client-side route transition can
+        // reuse an earlier anonymous dashboardAuth.me result and incorrectly
+        // tell a verified Course Pass operator that the invitation is invalid.
+        setTimeout(() => window.location.assign(finalPath), 2500);
       } else {
         if (data.reason === "expired") {
           setErrorMsg("This code has expired. Please request a new one.");
