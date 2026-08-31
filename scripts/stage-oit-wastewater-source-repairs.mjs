@@ -4,7 +4,7 @@ import { analyseQuestion } from "../server/answerLengthBias.ts";
 import { closeDatabaseConnection } from "../server/connectionCleanup.ts";
 
 const bankKey = "oit-ww";
-const candidatePath = "/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-source-repair-candidates-2026-08-30.json";
+const candidatePath = process.env.CANDIDATE_PATH || "/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-source-repair-candidates-2026-08-30.json";
 const reviewPath = process.env.REVIEW_PATH || "/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-source-repair-gpt-independent-review-2026-08-30.json";
 const execute = process.argv.includes("--execute");
 const approvedOnly = process.argv.includes("--approved-only");

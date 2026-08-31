@@ -189,6 +189,8 @@ describe("machine rewrite governance", () => {
     const script = readFileSync(new URL("../scripts/fix-answer-length-bias.ts", import.meta.url), "utf8");
     expect(script).toContain("generationAttempt <= 3");
     expect(script).toContain("SKIPPED after 3 attempts");
+    expect(script).toContain('flagValue("exclude-question-nums")');
+    expect(script).toContain("excludedQuestionNumbers.has(offender.questionNum)");
     expect(script).toContain("reviewStatus = 'in_review'");
   });
 
@@ -212,6 +214,7 @@ describe("machine rewrite governance", () => {
     const stageScript = readFileSync(new URL("../scripts/stage-oit-wastewater-source-repairs.mjs", import.meta.url), "utf8");
     const reviewScript = readFileSync(new URL("../scripts/independent-review-held-oit-wastewater-sonar.mjs", import.meta.url), "utf8");
     expect(stageScript).toContain('const bankKey = "oit-ww"');
+    expect(stageScript).toContain("process.env.CANDIDATE_PATH ||");
     expect(stageScript).toContain('process.env.REVIEW_PATH ||');
     expect(stageScript).toContain("review.requiredChanges.every");
     expect(stageScript).toContain('argument.startsWith("--question-nums=")');
@@ -219,6 +222,9 @@ describe("machine rewrite governance", () => {
     expect(stageScript).toContain("reviewStatus = 'in_review'");
     expect(reviewScript).toContain('model: "sonar-pro"');
     expect(reviewScript).toContain("selectedQuestionNumbers");
+    expect(reviewScript).toContain("process.env.CANDIDATE_PATH ||");
+    expect(reviewScript).toContain("process.env.SOURCE_PATH ||");
+    expect(reviewScript).toContain("foundational Operator-in-Training learning outcomes");
     expect(reviewScript).toContain("REVIEW_OUTPUT_PATH");
   });
 });

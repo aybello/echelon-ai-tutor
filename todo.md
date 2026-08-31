@@ -1893,3 +1893,23 @@
 - [x] Publish the material OIT Wastewater tooling safeguards and public release marker
 - [x] Repair q444 and q493 with authoritative, source-specific emergency-response and laboratory-analysis support before independent approval
 - [ ] Review the ten first-worklist candidates excluded by source-and-safety triage; retain them unchanged until they meet the same source, structural, and independent-review gates
+
+## OIT Wastewater Controlled Remediation — Held Candidate Round
+- [ ] Retrieve and classify the ten first-worklist candidates excluded by source-and-safety triage without altering learner content
+- [ ] Research authoritative operational, safety, and regulatory support for any candidate that can be safely narrowed or corrected
+- [ ] Stage and approve only newly source-supported candidates after structural validation and independent external review
+
+## OIT Wastewater Continuous Remediation — August 31
+- [ ] Continue directly through the remaining held OIT Wastewater candidates in bounded source-supported batches without pausing between completed batches
+- [ ] Preserve explicit holds for any candidate that does not meet structural validation, authoritative-source support, independent review, and `in_review` staging requirements
+
+## OIT Wastewater Scope Correction — August 31
+- [x] Exclude the current advanced 10-question held-candidate draft from staging and learner access; preserve it only as an internal source record
+- [x] Reclassify held questions against foundational OIT-level outcomes and defer advanced nutrient-process, biosolids-classification, and detailed laboratory-method content to higher-level material
+- [x] Draft and review only foundational OIT Wastewater replacements before any staged learner-content change
+
+## OIT Wastewater Foundational Continuation — August 31
+- [x] Generate the next read-only answer-length worklist and retain only foundational OIT learning objectives for controlled repair
+- [x] Exclude or defer any advanced process-design, specialist laboratory-method, or non-Ontario regulatory content before drafting
+- [x] Repair and approve three source-supported foundational concepts only: centrifuge purpose, force-main purpose, and primary-versus-secondary-sludge origin
+- [x] Repair and approve three source-supported foundational concepts only: inflow, trickling-filter purpose, and secondary-clarifier solids separation

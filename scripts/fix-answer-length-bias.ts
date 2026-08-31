@@ -51,6 +51,12 @@ function flagValue(name: string): string | undefined {
 const bankFilter = flagValue("bank");
 const limit = Number(flagValue("limit") ?? 25);
 const execute = process.argv.includes("--execute");
+const excludedQuestionNumbers = new Set(
+  (flagValue("exclude-question-nums") ?? "")
+    .split(",")
+    .map(value => Number.parseInt(value, 10))
+    .filter(Number.isInteger),
+);
 
 if (execute && !apiKey) {
   console.error("ANTHROPIC_API_KEY is required to generate rewrites.");
@@ -296,7 +302,12 @@ try {
     `${bankFilter}: ${before.total} questions, ${before.tellCount} with an exploitable length tell ` +
       `(longest-correct ${Math.round(before.longestCorrectRate * 100)}%)`,
   );
-  const worklist = before.offenders.slice(0, limit);
+  const worklist = before.offenders
+    .filter(offender => !excludedQuestionNumbers.has(offender.questionNum))
+    .slice(0, limit);
+  if (excludedQuestionNumbers.size > 0) {
+    console.log(`Excluding ${excludedQuestionNumbers.size} previously assessed question(s) from this worklist.`);
+  }
   console.log(`${execute ? "REWRITING" : "DRY RUN — previewing"} ${worklist.length} question(s)\n`);
 
   let fixed = 0;

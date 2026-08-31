@@ -5,7 +5,7 @@
  * Bump RELEASE_ID whenever a production release changes a capability listed
  * below. The values are deliberately non-secret and safe for /api/health.
  */
-export const RELEASE_ID = "2026-08-31.answer-length-wastewater-remediation.2";
+export const RELEASE_ID = "2026-08-31.answer-length-wastewater-foundational.1";
 
 export const RELEASE_CAPABILITIES = [
   "course-pass-order-scoped-refunds-v1",
@@ -21,6 +21,7 @@ export const RELEASE_CAPABILITIES = [
   "answer-length-source-repair-governance-v1",
   "answer-length-wastewater-source-repair-governance-v1",
   "answer-length-wastewater-contained-source-review-v1",
+  "answer-length-wastewater-foundational-scope-v1",
 ] as const;
 
 export function publicReleaseHealth(ts = new Date()): {

@@ -1,0 +1,18 @@
+{
+  "reviews": [
+    {
+      "questionNum": 239,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects CCOHS description of hydrogen sulfide as highly toxic, flammable, and able to accumulate in low-lying or confined spaces, creating serious inhalation hazards.",
+        "Jurisdiction and regulatory scope are appropriate: CCOHS is a Canadian authority and the item frames H2S as a hazard recognition topic, not as a substitute for facility-specific confined-space procedures, consistent with the source notes.",
+        "Learning objective is foundational and suitable for an Ontario OIT learner: basic recognition of H2S health and fire hazards and its behaviour in confined/low-lying areas.",
+        "Explanation properly reinforces that workers must follow facility procedures, including atmospheric testing and ventilation, without prescribing unsourced universal operational instructions, and explicitly avoids replacing confined-space programs.",
+        "All distractors are plausible misconceptions an entry-level operator might have, yet they do not normalize unsafe operation because they clearly contradict established safety practices and hazard facts.",
+        "Exactly one option is correct, and the correct answer is traceable to the cited CCOHS source; there is no source-to-claim mismatch or overstated universal claim."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

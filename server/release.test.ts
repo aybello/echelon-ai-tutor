@@ -27,9 +27,10 @@ describe("public release health", () => {
         "answer-length-source-repair-governance-v1",
         "answer-length-wastewater-source-repair-governance-v1",
         "answer-length-wastewater-contained-source-review-v1",
+        "answer-length-wastewater-foundational-scope-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-08-31.answer-length-wastewater-remediation.2");
+    expect(RELEASE_ID).toBe("2026-08-31.answer-length-wastewater-foundational.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });

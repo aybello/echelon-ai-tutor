@@ -1,0 +1,124 @@
+{
+  "reviews": [
+    {
+      "questionNum": 239,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches CCOHS description that hydrogen sulfide is highly toxic, flammable, and can accumulate in low-lying and confined spaces, creating serious inhalation hazards.",
+        "Jurisdiction and regulatory scope are accurate: CCOHS is a Canadian source and the item frames content as hazard recognition, not as a full confined-space program or regulatory prescription.",
+        "Learning objective (recognizing H2S hazards around wastewater/digester-gas areas) is foundational and appropriate for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors are clearly incorrect but remain plausible misconceptions without normalizing unsafe entry as acceptable practice.",
+        "Explanation is generally supported, but the phrase “other required controls must be followed before work begins” slightly implies a universal sequence and requirements that are facility- and regulation-specific."
+      ],
+      "requiredChanges": [
+        "Revise the explanation to avoid implying a universal confined-space entry sequence or specific required controls. For example: “Hydrogen sulfide is highly toxic and flammable. It can accumulate in hazardous amounts in low-lying areas and confined spaces. Workers must follow their facility’s procedures, including atmospheric testing, ventilation, and other controls specified for the space, before work begins.”"
+      ]
+    },
+    {
+      "questionNum": 275,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option accurately reflects EPA’s distinction: an SSO is a release from a sanitary sewer system, while a CSO is associated with a combined sewer system that carries sewage together with stormwater.[4]",
+        "Question and explanation clearly treat SSO/CSO as non‑regulatory terminology, noting that reporting requirements depend on the applicable jurisdiction, which avoids misrepresenting U.S. EPA terms as Ontario legal categories.",
+        "Learning objective (basic difference between SSO and CSO) is conceptual and appropriate for Ontario OIT level.",
+        "Exactly one option is correct; distractors are implausible but do not promote unsafe operation or missed maintenance.",
+        "The additional explanation that sanitary sewers collect wastewater and limited stormwater/groundwater, while combined sewers carry larger stormwater volumes, is consistent with EPA descriptions.[4]"
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    },
+    {
+      "questionNum": 276,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches EPA guidance that sewer-camera (CCTV) inspection is used to assess internal sewer condition, identify defects/blockages, and inform maintenance decisions.[3]",
+        "Jurisdiction and scope are appropriate: EPA is used as an operational-concept reference, not as a source of Ontario-specific legal duties.",
+        "Learning objective (primary purpose of CCTV inspection) is foundational collection-system knowledge suitable for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors are clearly incorrect and do not normalize unsafe practices or omission of required actions, though they are somewhat extreme rather than subtle misconceptions.",
+        "Explanation accurately reflects the source by describing CCTV as an investigation tool that does not disinfect, replace sampling, or change hydraulic design, which avoids overstating its function."
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    },
+    {
+      "questionNum": 278,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option aligns with EPA guidance that smoke testing is used to help identify inflow and infiltration locations, defects, or improper connections for further investigation and corrective action.[3]",
+        "Jurisdiction and regulatory scope are appropriate: the item frames smoke testing as a collection-system investigation tool and leaves specific procedures to the facility, consistent with the source’s operational focus.",
+        "Learning objective (common purpose of smoke testing) is foundational and suitable for Ontario OIT learners.",
+        "Exactly one option is correct; distractors are incorrect and describe unsafe or impossible practices, but they do not present those practices as acceptable norms.",
+        "Explanation correctly notes that facility procedures determine the appropriate testing method and response, avoiding universal instructions or regulatory claims."
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    },
+    {
+      "questionNum": 296,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option reflects EPA guidance that inspecting and repairing sewer defects and improper connections can reduce inflow and infiltration and associated SSO risks.[3]",
+        "Question focuses on a basic operational concept (reducing I&I by addressing defects and improper connections), which is appropriate for Ontario OIT level and does not introduce detailed design or jurisdiction-specific legal requirements.",
+        "Exactly one option is correct; distractors are clearly unsafe or incorrect but framed as misconceptions rather than acceptable practice.",
+        "Explanation appropriately links inspection, smoke testing, and sewer-camera investigation with identifying defects and improper connections related to I&I, consistent with the source, and avoids universal regulatory prescriptions.",
+        "There is mild implication that these activities “can help” reduce I&I, which is supported by EPA but should remain clearly contextual rather than universal."
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    },
+    {
+      "questionNum": 305,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option reflects EPA guidance that inspection and maintenance of air‑relief valves on force mains are part of collection and lift-station maintenance and help support reliable operation by releasing trapped air.[3]",
+        "Jurisdiction and scope are appropriate: the item presents valve inspection as a maintenance practice, not as a legal requirement or universal design standard in Ontario.",
+        "Learning objective (reason for inspecting and maintaining air-release valves) is foundational and suitable for Ontario OIT level, focusing on basic collection-system operation.",
+        "Exactly one option is correct; distractors are clearly incorrect and do not normalize unsafe operation or omission of required maintenance as acceptable practice.",
+        "Explanation notes that exact valve design and procedures depend on facility equipment and manuals, which avoids universal operational prescriptions beyond the source."
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    },
+    {
+      "questionNum": 429,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches O. Reg. 129/04, s. 19(5)5, which requires that for each operating shift, records include any unusual or abnormal condition observed, the action taken, and any conclusions drawn.[6]",
+        "Question correctly frames the requirement as under Ontario Regulation 129/04, with accurate jurisdiction and regulatory scope for sewage works operators in Ontario.[6]",
+        "Learning objective (basic understanding of required log content for each operating shift) is foundational and appropriate for Ontario OIT learners.",
+        "Exactly one option is correct; distractors either omit abnormal conditions/actions or refer to non‑authorized entries and irrelevant content, without promoting unsafe operation.",
+        "Explanation accurately summarizes the broader log requirements (chronological, identifying the person making entries) without overstating beyond the regulation."
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    },
+    {
+      "questionNum": 454,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches CCOHS guidance that emergency exercises and drills allow practice of all or critical parts of an emergency plan and help identify gaps that should be corrected.[7]",
+        "Question frames drills as a safety practice rather than a regulatory requirement, which is appropriate given CCOHS’s role and avoids overstating non‑regulatory guidance as law.",
+        "Learning objective (primary purpose of emergency response drills) is foundational workplace-safety knowledge suitable for Ontario OIT learners.",
+        "Exactly one option is correct; distractors are clearly incorrect and do not normalize unsafe operation as acceptable practice.",
+        "Explanation closely tracks CCOHS content about using post‑drill review to identify areas for improvement and revising the plan when shortcomings are identified.[7]"
+      ],
+      "requiredChanges": [
+        "No change required to meet the stated review criteria."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "reviews": [
+    {
+      "questionNum": 16,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim that inflow is water entering a sanitary sewer through direct connections during wet weather is consistent with EPA’s inflow definition and limited to the basic non‑regulatory distinction between inflow and infiltration.",
+        "Jurisdiction and regulatory scope are appropriate: EPA guidance is used only for a technical concept and not presented as an Ontario legal requirement.",
+        "Exactly one option is correct; the other options describe infiltration, normal sanitary wastewater flow, and treated effluent, which are plausible but clearly distinct from inflow.",
+        "Learning objective is foundational and suitable for an Ontario OIT learner, focusing on basic collection-system terminology relevant to inflow and infiltration.",
+        "Distractors are plausible system concepts and do not normalize unsafe operation, missed maintenance, or omission of required actions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 112,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option’s description of a trickling filter as an aerobic attached-growth unit with microorganisms on media removing organic matter aligns with EPA’s fact sheet and does not add unsupported design or performance claims.",
+        "Jurisdiction and regulatory scope are appropriate: EPA material is used purely for general process description, not as a statement of Ontario regulatory obligations.",
+        "Exactly one option is correct; other options describe suspended-growth aeration, a chemical-addition basin with overstated disinfection/odour claims, and primary settling, all plausible but clearly incorrect for defining a trickling filter.",
+        "Learning objective is foundational and appropriate for an Ontario OIT learner, focusing on basic understanding of a key secondary treatment unit without advanced design criteria.",
+        "Distractors remain plausible wastewater processes and do not encourage unsafe operation, missed maintenance, or omission of required actions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 143,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim that a secondary clarifier’s basic role is to separate settled biological solids from treated liquid, providing clarified overflow and sludge for return or further handling, matches EPA’s description of final clarifier functions and is traceable to the cited source.",
+        "Jurisdiction and regulatory scope are appropriate: EPA content is used only for process function and not framed as Ontario-specific legal requirements.",
+        "Exactly one option is correct; other options describe aeration, headworks screening/grit removal, and disinfection, which are plausible plant functions but clearly not the basic role of a secondary clarifier.",
+        "Learning objective is foundational and suitable for an Ontario OIT learner, addressing core understanding of secondary clarification in activated-sludge treatment without advanced modeling or design parameters.",
+        "Distractors are reasonable alternative plant processes and do not normalize unsafe practices, missed maintenance, or omitted required actions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

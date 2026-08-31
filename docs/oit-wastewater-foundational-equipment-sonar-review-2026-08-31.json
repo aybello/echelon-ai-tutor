@@ -1,0 +1,30 @@
+{
+  "reviews": [
+    {
+      "questionNum": 235,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects the sourced definition of centrifuge thickening and dewatering and is traceable to the cited EPA fact sheet.",
+        "Jurisdiction and regulatory scope are appropriate: the item uses U.S. EPA technical content only for general process purpose, without implying Ontario-specific legal requirements.",
+        "Only one option is correct; distractors are clearly incorrect but remain plausible misinterpretations of equipment purpose without normalizing unsafe operation or omission of required actions.",
+        "Learning objective (basic purpose of centrifuge in solids handling) is foundational and appropriate for an Ontario OIT learner, aligned with basic solids-handling equipment understanding.",
+        "No universal performance claims, precise design figures, or operational prescriptions beyond the stated purpose; the explanation is consistent with and supported by the source reference."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 291,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option directly matches the EPA definition of a force main as a pressurized pipeline conveying wastewater from the discharge side of a pump or pneumatic ejector to a discharge point and is traceable to the cited source.",
+        "Jurisdiction and regulatory scope are appropriate: the item uses U.S. EPA technical terminology to describe general conveyance purpose without asserting Ontario-specific legal conditions or requirements.",
+        "Exactly one option is correct; distractors describe gravity sewers, bypasses to receiving waters, or effluent-only pipes, which are plausible misunderstandings but do not normalize unsafe bypassing or regulatory non-compliance as acceptable practice.",
+        "Learning objective (basic description and purpose of a force main) is foundational and suitable for Ontario OIT level, fitting the collection-system hydraulics and equipment basics scope.",
+        "The explanation stays within the source-supported concept of pressurized conveyance where gravity is insufficient and does not introduce unsourced universal claims, design parameters, or operational instructions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

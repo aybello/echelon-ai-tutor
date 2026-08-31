@@ -1,0 +1,62 @@
+[
+  {
+    "questionNum": 144,
+    "question": "Why is grit removed near the beginning of a wastewater treatment process?",
+    "options": [
+      "To remove dense mineral particles such as sand and gravel that can wear equipment or accumulate in downstream treatment units.",
+      "To biologically break down dissolved organic matter before primary treatment, using microorganisms that grow on the collected grit.",
+      "To disinfect wastewater at the headworks before it enters treatment, so pathogens cannot reach any later treatment process.",
+      "To convert grease and floatable material into settleable solids before it reaches screening or other preliminary treatment equipment."
+    ],
+    "correctIndex": 0,
+    "explanation": "Grit removal targets dense inorganic particles such as sand and gravel. Removing these materials early helps limit abrasion, deposition, and operational problems in downstream equipment and treatment units.",
+    "sourceTitle": "U.S. EPA — Wastewater Technology Fact Sheet: Screening and Grit Removal",
+    "sourceReference": "Grit-removal functions and the handling of mineral solids at wastewater treatment facilities.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P1000S7N.TXT"
+  },
+  {
+    "questionNum": 404,
+    "question": "Before a worker enters a confined space at a wastewater facility, what is the role of an entry permit?",
+    "options": [
+      "It documents the hazard assessment and required controls, including testing, isolation, lockout, ventilation, and authorization for entry.",
+      "It records payroll time for the entry team, allowing work to begin without first assessing atmospheric hazards or confirming control measures.",
+      "It gives permanent permission for any worker to enter similar spaces later, without new testing, a new risk assessment, or control verification.",
+      "It replaces the confined-space safety program, eliminating the need to identify hazards, assign responsibilities, or plan for emergency response."
+    ],
+    "correctIndex": 0,
+    "explanation": "An entry permit documents the hazard and risk assessment for a specific confined-space entry and records the controls required for that entry. The facility’s safety program and applicable jurisdictional requirements set the detailed process.",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety — Confined Space Program",
+    "sourceReference": "Entry permits document completion of a hazard and risk assessment and the required controls for a confined-space entry.",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_program.html"
+  },
+  {
+    "questionNum": 466,
+    "question": "What does a five-day biochemical oxygen demand (BOD) test indicate about a wastewater sample?",
+    "options": [
+      "It indicates the oxygen used by microorganisms as they break down biodegradable material during a defined incubation period.",
+      "It indicates the total mass of grit removed at headworks, including sand, gravel, and other dense inorganic material collected from flow.",
+      "It indicates the pressure required to pump wastewater through a collection system, including the effect of pipe friction and elevation change.",
+      "It indicates the amount of disinfectant residual present after treatment, including both free chlorine and combined chlorine forms in the sample."
+    ],
+    "correctIndex": 0,
+    "explanation": "The five-day BOD test measures the change in dissolved oxygen during biological incubation. It is used to indicate the oxygen demand associated with biodegradable material in the sample.",
+    "sourceTitle": "NEMI Summary of Standard Methods 5210B: BOD: 5-Day Test",
+    "sourceReference": "Method scope and the initial/final dissolved-oxygen measurement used to compute five-day BOD.",
+    "sourceUrl": "https://www.nemi.gov/methods/method_summary/5715/"
+  },
+  {
+    "questionNum": 480,
+    "question": "Why might a wastewater monitoring program use a flow-proportional composite sample?",
+    "options": [
+      "To relate sample collection to measured flow so the composite can represent changing discharge conditions over the sampling period.",
+      "To collect every aliquot at one fixed time of day, so changing flow conditions and variations in wastewater characteristics are excluded.",
+      "To avoid measuring flow during sampling, because flow-proportional collection is based only on the calendar schedule used by the sampler.",
+      "To replace all permit, program, and method requirements with one generic sample design that is automatically appropriate for every wastewater facility."
+    ],
+    "correctIndex": 0,
+    "explanation": "Flow-proportional composite sampling links collection to measured flow. It may provide a representative composite when flow varies, but the monitoring objective and applicable requirements determine the appropriate sampling approach.",
+    "sourceTitle": "U.S. EPA — Handbook for Sampling and Sample Preservation of Water and Wastewater",
+    "sourceReference": "Sampling objectives, flow measurement, and selection of sample type for wastewater monitoring programs.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=30000QSA.TXT"
+  }
+]
