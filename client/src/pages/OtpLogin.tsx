@@ -6,7 +6,7 @@
  */
 
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
 
@@ -16,7 +16,6 @@ const LOGO_URL =
 type Step = "email" | "code" | "success" | "error";
 
 export default function OtpLogin() {
-  const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>("email");
   // Pre-fill email from ?email= URL param (set by /account redirect)
   // Read ?next= param — safe same-application relative paths only
@@ -89,7 +88,11 @@ export default function OtpLogin() {
         setStep("success");
         const redirectPath = data.isManager ? "/team" : "/quiz";
         const finalPath = nextParam || redirectPath;
-        setTimeout(() => navigate(finalPath), 2500);
+        // A hard navigation makes the newly issued HttpOnly session cookie the
+        // source of truth for the next page. A client-side route transition can
+        // reuse an earlier anonymous dashboardAuth.me result and incorrectly
+        // tell a verified Course Pass operator that the invitation is invalid.
+        setTimeout(() => window.location.assign(finalPath), 2500);
       } else {
         if (data.reason === "expired") {
           setErrorMsg("This code has expired. Please request a new one.");
@@ -415,56 +418,3 @@ export default function OtpLogin() {
               }}
             >
               ✓
-            </div>
-            <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
-              You're signed in!
-            </h1>
-            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-              Welcome back, <strong>{email}</strong>. Redirecting to your {isManager ? "team dashboard" : "courses"}…
-            </p>
-            <Link href={nextParam || (isManager ? "/team" : "/quiz")}>
-              <button style={btnStyle}>
-                {isManager ? "Go to Team Dashboard →" : "Go to Practice Quiz →"}
-              </button>
-            </Link>
-          </div>
-        )}
-
-        {/* Error state */}
-        {step === "error" && (
-          <div style={cardStyle}>
-            <img
-              src={LOGO_URL}
-              alt="Echelon Institute"
-              style={{ height: 48, marginBottom: 20, objectFit: "contain" }}
-            />
-            <div
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: "50%",
-                background: "#FEE2E2",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 20px",
-                fontSize: 32,
-              }}
-            >
-              ✕
-            </div>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
-              Something went wrong
-            </h1>
-            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-              Please try again or contact support.
-            </p>
-            <button onClick={() => setStep("email")} style={btnStyle}>
-              Try Again →
-            </button>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
