@@ -9,10 +9,29 @@ const reviewPath = process.env.REVIEW_PATH || "/home/ubuntu/echelon-ai-tutor/doc
 const execute = process.argv.includes("--execute");
 const approvedOnly = process.argv.includes("--approved-only");
 const validateOnly = process.argv.includes("--validate-only");
+const questionNumbersArgument = process.argv.find(argument => argument.startsWith("--question-nums="));
+const requestedQuestionNumbers = new Set(
+  (questionNumbersArgument?.slice("--question-nums=".length) || "")
+    .split(",")
+    .map(value => Number.parseInt(value, 10))
+    .filter(Number.isInteger),
+);
 
 const allCandidates = JSON.parse(await readFile(candidatePath, "utf8"));
 if (!Array.isArray(allCandidates) || allCandidates.length === 0 || allCandidates.length > 25) {
   throw new Error("Expected a non-empty controlled candidate set of at most 25 questions.");
+}
+if (questionNumbersArgument && requestedQuestionNumbers.size === 0) {
+  throw new Error("--question-nums must contain at least one positive integer.");
+}
+if (execute && !approvedOnly) {
+  throw new Error("--execute requires --approved-only so unreviewed candidates cannot be staged.");
+}
+const scopedCandidates = requestedQuestionNumbers.size > 0
+  ? allCandidates.filter(candidate => requestedQuestionNumbers.has(candidate.questionNum))
+  : allCandidates;
+if (requestedQuestionNumbers.size > 0 && scopedCandidates.length !== requestedQuestionNumbers.size) {
+  throw new Error("One or more requested question numbers are not in the controlled candidate dossier.");
 }
 
 const approvedQuestionNumbers = approvedOnly
@@ -28,8 +47,8 @@ const approvedQuestionNumbers = approvedOnly
     )
   : null;
 const candidates = approvedQuestionNumbers
-  ? allCandidates.filter(candidate => approvedQuestionNumbers.has(candidate.questionNum))
-  : allCandidates;
+  ? scopedCandidates.filter(candidate => approvedQuestionNumbers.has(candidate.questionNum))
+  : scopedCandidates;
 
 if (approvedOnly && candidates.length === 0) throw new Error("Independent review did not approve any controlled candidates.");
 

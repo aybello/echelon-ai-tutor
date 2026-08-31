@@ -214,9 +214,12 @@ describe("machine rewrite governance", () => {
     expect(stageScript).toContain('const bankKey = "oit-ww"');
     expect(stageScript).toContain('process.env.REVIEW_PATH ||');
     expect(stageScript).toContain("review.requiredChanges.every");
+    expect(stageScript).toContain('argument.startsWith("--question-nums=")');
+    expect(stageScript).toContain("--execute requires --approved-only");
     expect(stageScript).toContain("reviewStatus = 'in_review'");
     expect(reviewScript).toContain('model: "sonar-pro"');
     expect(reviewScript).toContain("selectedQuestionNumbers");
+    expect(reviewScript).toContain("REVIEW_OUTPUT_PATH");
   });
 });
 

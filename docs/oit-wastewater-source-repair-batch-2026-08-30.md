@@ -26,3 +26,15 @@ This is a controlled answer-length remediation batch for **OIT Wastewater**. The
 - Never make a distractor read as a recommended unsafe act, a delayed spill report, a bypass of lockout, or a failure to respond to an alarm.
 - Remove unsupported precise performance ranges, named organisms, or regulatory claims when they are not required to teach the tested concept.
 - For Class A/Class B biosolids wording, make the United States regulatory context explicit or hold the item for Ontario-specific source review.
+
+## Contained-item source correction — q444 and q493
+
+Question 444 is framed as a public wastewater emergency-response-planning practice, not as a requirement of Ontario Regulation 675/98 or Ontario operator licensing. Indigenous Services Canada’s *Emergency Response Plan for Wastewater Systems in First Nations Communities*, Section 3, calls for a contact list with names and phone numbers for troubleshooting, servicing, and assistance; it names operators, repair people, government agencies, media representatives, and community members, and states that the list should be updated annually or whenever contact information changes.[1]
+
+Question 493 uses the more exact Ontario term **Reporting Detection Limit (RDL)**. Ontario’s Sampling and Analysis Protocol states that an MDL is a statistically defined method attribute, defines RDL as a reporting detection limit, and requires laboratories to achieve an MDL equal to or less than the RDL. The protocol is laboratory-analysis guidance under the Nutrient Management Act, so the question explicitly scopes its claim to that guidance rather than presenting it as a wastewater operator-licensing requirement.[2]
+
+## References
+
+[1] [Indigenous Services Canada, *Emergency Response Plan for Wastewater Systems in First Nations Communities*](https://www.sac-isc.gc.ca/eng/1398359749727/1533668100651)
+
+[2] [Government of Ontario, *Sampling and Analysis Protocol: Laboratory Analysis*](https://www.ontario.ca/document/sampling-and-analysis-protocol/laboratory-analysis)

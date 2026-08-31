@@ -76,33 +76,33 @@
   },
   {
     "questionNum": 444,
-    "question": "What information should be included in a wastewater facility's emergency contact list?",
+    "question": "In wastewater emergency-response planning, which contact-list practice is supported by public guidance?",
     "options": [
-      "24-hour contacts for facility manager, on-call operators, the Spills Action Centre, local fire/police/EMS, utility companies, chemical suppliers, and equipment service providers",
-      "Routine business contacts for the facility manager, accounting office, office-supply vendors, landscaping contractor, and municipal reception, listed only by regular office extension",
-      "A staff social directory listing employees' personal interests, training anniversaries, preferred shifts, uniform sizes, and non-emergency committee memberships for internal reference",
-      "Contact details for the facility laboratory, engineering consultant, parts vendors, neighbouring treatment plants, and records archive, with emergency agencies represented by a municipal switchboard"
+      "Include names and phone numbers for people and agencies who can provide troubleshooting, servicing, and assistance; update the list annually or whenever contact information changes",
+      "Keep only routine daytime extensions for office staff because operator, repair, and agency contacts can be located after an emergency has begun without affecting the response",
+      "Limit the list to plant employees and accounting contacts because external repair providers, government agencies, and community contacts are managed separately from emergency planning",
+      "List the facility manager and general municipal switchboard only; detailed contacts for operators, repair services, and relevant agencies are unnecessary if an emergency plan exists"
     ],
     "correctIndex": 0,
-    "explanation": "A comprehensive emergency contact list should include internal contacts (manager, supervisors, on-call operators), regulatory contacts (Spills Action Centre per O. Reg. 675/98), emergency services, utilities, and service contractors. The list must be posted, current, and accessible 24/7.",
-    "sourceTitle": "Ontario Regulation 675/98 — Classification and Exemption of Spills and Reporting of Discharges",
-    "sourceReference": "Ontario Regulation 675/98",
-    "sourceUrl": "https://www.ontario.ca/laws/regulation/980675"
+    "explanation": "Indigenous Services Canada’s wastewater ERP guide says that, at minimum, an emergency response plan should include contact people and phone numbers for troubleshooting, servicing, and assistance. Its examples include operators, repair people, government agencies, media representatives, and community members. The guide also says to update relevant ERP components when the system changes and to update the contact list annually or whenever contact information changes.",
+    "sourceTitle": "Indigenous Services Canada — Emergency Response Plan for Wastewater Systems in First Nations Communities",
+    "sourceReference": "Section 3, List of Contacts and ERP Update and Training; public wastewater emergency-response guidance, not an Ontario operator-licensing requirement",
+    "sourceUrl": "https://www.sac-isc.gc.ca/eng/1398359749727/1533668100651"
   },
   {
     "questionNum": 493,
-    "question": "What is the Method Detection Limit (MDL) and how does it differ from the Reporting Limit?",
+    "question": "Under Ontario laboratory-analysis guidance, what distinguishes a Method Detection Limit (MDL) from a Reporting Detection Limit (RDL)?",
     "options": [
-      "MDL is the lowest concentration that can be reliably distinguished from zero; the Reporting Limit is set higher and represents the lowest concentration reported with quantitative confidence",
-      "MDL and the Reporting Limit are the same laboratory value; both identify the lowest concentration that can be quantified with equal confidence and may always be used interchangeably.",
-      "The MDL is established above the Reporting Limit because detection requires more analyte than quantitative reporting, so results below the MDL can still be reported with greater confidence.",
-      "The MDL is a fixed limit used only for metals testing, while the Reporting Limit applies to every other wastewater analysis and is determined solely by the concentration in the sample."
+      "MDL is a statistically defined method attribute for detecting an analyte at a specified probability; RDL is a reporting threshold, and the laboratory must achieve an MDL at or below the RDL",
+      "MDL is the reporting threshold used to decide how a result is displayed, while RDL is a statistically calculated instrument sensitivity value that has no required relationship to MDL",
+      "MDL and RDL are interchangeable names for one fixed laboratory value, so a laboratory does not need to document a separate reporting threshold or compare its MDL with it",
+      "RDL must always be lower than MDL because reporting a concentration requires less analytical confidence than detecting it, so results below MDL can be reported as quantified values"
     ],
     "correctIndex": 0,
-    "explanation": "The MDL is determined statistically from replicate analyses of a low-concentration standard and represents the minimum detectable concentration. The Reporting Limit (or Practical Quantitation Limit) is set higher to ensure results are quantitatively reliable. Results between MDL and RL may be reported as detected but not quantified.",
-    "sourceTitle": "U.S. EPA — Handbook for Sampling and Sample Preservation of Water and Wastewater",
-    "sourceReference": "U.S. EPA — Handbook for Sampling and Sample Preservation of Water and Wastewater",
-    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=30000QSA.TXT"
+    "explanation": "Ontario laboratory-analysis guidance describes MDL as a statistically defined method attribute: results at or above it indicate an analyte is present with a specified probability, usually greater than 99%. The same guidance describes RDL as a reporting detection limit and requires laboratories to achieve an MDL equal to or less than the RDL. These terms should not be treated as interchangeable.",
+    "sourceTitle": "Ontario Sampling and Analysis Protocol — Laboratory Analysis",
+    "sourceReference": "Sections 3.3 Method Detection Limit and 3.4 Reporting Detection Limit; Ontario Nutrient Management Act laboratory guidance",
+    "sourceUrl": "https://www.ontario.ca/document/sampling-and-analysis-protocol/laboratory-analysis"
   },
   {
     "questionNum": 496,

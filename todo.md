@@ -1888,7 +1888,8 @@
 - [x] Generate and preserve a read-only OIT Wastewater answer-length worklist; make no learner-content change during analysis
 - [x] Select no more than 25 source-supported OIT Wastewater repair candidates and verify their governing operational, safety, and regulatory references
 - [x] Apply structural answer-length checks and independent external semantic review before staging any revised item as `in_review`
-- [x] Approve only the 13 independently cleared staged revisions and retain the two source-insufficient candidates unchanged
+- [x] Approve all 15 independently cleared staged revisions, including q444 and q493 after source-specific correction
 - [x] Verify learner inventory and the 15-question preview gate after the approved controlled repair round
 - [ ] Publish the material OIT Wastewater tooling safeguards and public release marker
-- [ ] Repair q444 and q493 only after adding authoritative, source-specific support for the emergency-contact-list and laboratory-reporting-limit claims
+- [x] Repair q444 and q493 with authoritative, source-specific emergency-response and laboratory-analysis support before independent approval
+- [ ] Review the ten first-worklist candidates excluded by source-and-safety triage; retain them unchanged until they meet the same source, structural, and independent-review gates

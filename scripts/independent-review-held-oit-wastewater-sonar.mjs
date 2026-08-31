@@ -4,12 +4,20 @@ import { analyseQuestion } from "../server/answerLengthBias.ts";
 const apiKey = process.env.SONAR_API_KEY;
 if (!apiKey) throw new Error("SONAR_API_KEY is required");
 const candidatePath = "/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-source-repair-candidates-2026-08-30.json";
-const outputPath = "/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-held-repairs-sonar-independent-review-2026-08-30.json";
-const selectedQuestionNumbers = new Set([426, 436, 437, 496, 521, 536, 540]);
+const outputPath = process.env.REVIEW_OUTPUT_PATH || "/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-held-repairs-sonar-independent-review-2026-08-30.json";
+const questionNumbersArgument = process.argv.find(argument => argument.startsWith("--question-nums="));
+const selectedQuestionNumbers = new Set(
+  (questionNumbersArgument?.slice("--question-nums=".length) || "426,436,437,496,521,536,540")
+    .split(",")
+    .map(value => Number.parseInt(value, 10))
+    .filter(Number.isInteger),
+);
 const candidates = JSON.parse(await readFile(candidatePath, "utf8")).filter(candidate => selectedQuestionNumbers.has(candidate.questionNum));
 const sources = await readFile("/home/ubuntu/echelon-ai-tutor/docs/oit-wastewater-source-repair-batch-2026-08-30.md", "utf8");
 
-if (candidates.length !== selectedQuestionNumbers.size) throw new Error("Expected exactly seven held OIT Wastewater candidates.");
+if (selectedQuestionNumbers.size === 0 || candidates.length !== selectedQuestionNumbers.size) {
+  throw new Error("Expected every requested held OIT Wastewater candidate to be present.");
+}
 const structuralFailures = candidates
   .map(candidate => {
     const result = analyseQuestion({ questionNum: candidate.questionNum, options: candidate.options, correctIndex: candidate.correctIndex });
