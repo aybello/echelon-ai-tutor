@@ -13,7 +13,12 @@ export default function CoursePassClaim() {
     return new URLSearchParams(window.location.search).get("token") ?? "";
   }, []);
 
-  const session = trpc.dashboardAuth.me.useQuery();
+  // This page is visited anonymously, sends the operator through OTP, then is
+  // mounted again in the same SPA. The query cache still contains the earlier
+  // unauthenticated result unless we explicitly re-check the verified cookie.
+  const session = trpc.dashboardAuth.me.useQuery(undefined, {
+    refetchOnMount: "always",
+  });
   const invitation = trpc.teamFlex.getInvitation.useQuery(
     { token },
     { enabled: /^[a-f0-9]{64}$/i.test(token), retry: false },
