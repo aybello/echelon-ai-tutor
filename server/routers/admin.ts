@@ -98,6 +98,7 @@ export const adminRouter = router({
     const learningEvents = new Set([
       "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
       "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
+      "training_session_started", "training_session_completed",
     ]);
     const resolveJourneyIdentity = buildJourneyIdentityResolver(events);
     const weeklyActiveLearners = new Set(
@@ -165,6 +166,10 @@ export const adminRouter = router({
         medianMinutesToFirstQuiz: medianTimeToFirstQuizMinutes(events),
         quizImprovementPercentagePoints: quizImprovement.percentagePoints,
         quizImprovementSampleSize: quizImprovement.sampleSize,
+        recordedStudySessionStarts: eventCount("training_session_started"),
+        recordedStudySessionCompletions: eventCount("training_session_completed"),
+        trainingHoursExports: eventCount("training_hours_exported"),
+        trainingRecordsAttested: eventCount("training_record_attested"),
       },
       teams: {
         assignedSeats: totalTeamAllocated,

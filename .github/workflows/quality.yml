@@ -42,8 +42,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Block high and critical production dependency advisories
-        run: pnpm audit --prod --audit-level high
+      - name: Block moderate, high and critical production dependency advisories
+        run: pnpm audit --prod --audit-level moderate
       - run: pnpm check
       - name: Validate the complete governed 309A content package
         run: |
