@@ -24,6 +24,10 @@ import {
   medianTimeToFirstQuizMinutes,
   percentage,
 } from "../productKpis";
+import {
+  getExactAnalyticsEventCounts,
+  type TrainingMetricEventName,
+} from "../analyticsAggregates";
 
 const OWNER_EMAIL = "belllo.ayoola@gmail.com";
 
@@ -43,7 +47,7 @@ export const adminRouter = router({
     const since30 = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
     const since7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-    const [events, outcomes, recentPurchases, [seatCapacity], [assignedSeats], [coursePassSeats]] = await Promise.all([
+    const [events, exactTrainingEventCounts, outcomes, recentPurchases, [seatCapacity], [assignedSeats], [coursePassSeats]] = await Promise.all([
       db.select({
         eventName: productAnalyticsEvents.eventName,
         occurredAt: productAnalyticsEvents.occurredAt,
@@ -56,6 +60,7 @@ export const adminRouter = router({
         .where(gte(productAnalyticsEvents.occurredAt, since30))
         .orderBy(productAnalyticsEvents.occurredAt)
         .limit(100_000),
+      getExactAnalyticsEventCounts(db, since30),
       db.select({
         result: examOutcomes.result,
         readinessScore: examOutcomes.readinessScoreAtOutcome,
@@ -95,6 +100,8 @@ export const adminRouter = router({
       eventCounts.set(event.eventName, (eventCounts.get(event.eventName) ?? 0) + 1);
     }
     const eventCount = (name: string) => eventCounts.get(name) ?? 0;
+    const exactTrainingEventCount = (name: TrainingMetricEventName) =>
+      exactTrainingEventCounts.get(name) ?? 0;
     const learningEvents = new Set([
       "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
       "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
@@ -166,10 +173,10 @@ export const adminRouter = router({
         medianMinutesToFirstQuiz: medianTimeToFirstQuizMinutes(events),
         quizImprovementPercentagePoints: quizImprovement.percentagePoints,
         quizImprovementSampleSize: quizImprovement.sampleSize,
-        recordedStudySessionStarts: eventCount("training_session_started"),
-        recordedStudySessionCompletions: eventCount("training_session_completed"),
-        trainingHoursExports: eventCount("training_hours_exported"),
-        trainingRecordsAttested: eventCount("training_record_attested"),
+        recordedStudySessionStarts: exactTrainingEventCount("training_session_started"),
+        recordedStudySessionCompletions: exactTrainingEventCount("training_session_completed"),
+        trainingHoursExports: exactTrainingEventCount("training_hours_exported"),
+        trainingRecordsAttested: exactTrainingEventCount("training_record_attested"),
       },
       teams: {
         assignedSeats: totalTeamAllocated,

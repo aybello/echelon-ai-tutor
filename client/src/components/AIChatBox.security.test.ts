@@ -2,9 +2,14 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Streamdown } from "streamdown";
+import { AI_TUTOR_MARKDOWN_PLUGINS } from "./AIChatBox";
 
 function renderMarkdown(markdown: string) {
-  return renderToStaticMarkup(createElement(Streamdown, null, markdown));
+  return renderToStaticMarkup(createElement(
+    Streamdown,
+    { plugins: AI_TUTOR_MARKDOWN_PLUGINS },
+    markdown,
+  ));
 }
 
 describe("AI Tutor markdown rendering", () => {
@@ -31,5 +36,18 @@ xychart
     expect(html).toMatch(/<code[\s>]/i);
     expect(html).toContain('data-streamdown="code-block"');
     expect(html).not.toContain('data-streamdown="mermaid"');
+  });
+
+  it("renders inline and block operator formulas instead of raw LaTeX", () => {
+    const html = renderMarkdown(`Flow is $Q = V/t$.
+
+$$
+Q = \\frac{2A}{t}
+$$`);
+
+    expect(html).toContain('class="katex"');
+    expect(html).toContain('class="katex-display"');
+    expect(html).not.toContain("$Q = V/t$");
+    expect(html).not.toContain("$$");
   });
 });
