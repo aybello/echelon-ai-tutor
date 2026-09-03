@@ -10,6 +10,7 @@ import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "@shared/refundPolicy";
 import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import LandingNav from "@/components/LandingNav";
@@ -1884,7 +1885,7 @@ export default function Pricing() {
             },
             {
               q: "What is your refund policy?",
-              a: "We offer a 7-day refund for first-time purchases if you haven't completed more than 50 questions. Contact abello@echeloninstitute.ca with your purchase email and we'll process the refund promptly."
+              a: `${INDIVIDUAL_REFUND_SUMMARY} ${TEAM_REFUND_SUMMARY} Contact ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`
             },
             {
               q: "How do Teams / utility plans work?",
@@ -1896,7 +1897,7 @@ export default function Pricing() {
             },
             {
               q: "Can I cancel or get a refund?",
-              a: "Individual Exam Passes are one-time purchases with 12 months of access — no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. Refund requests within 7 days of purchase can be sent to support@echeloninstitute.ca."
+              a: `Individual Exam Passes are one-time purchases with 12 months of access — no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. ${INDIVIDUAL_REFUND_SUMMARY} Contact ${REFUND_CONTACT_EMAIL}.`
             },
           ].map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} />

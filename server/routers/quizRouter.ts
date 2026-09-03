@@ -28,6 +28,14 @@ export const OIT_PREVIEW_CALC_MINIMUMS = {
 
 export type OitPreviewSurface = keyof typeof OIT_PREVIEW_LIMITS;
 
+/**
+ * A learner only needs a session-sized working set in the browser. Keeping the
+ * response bounded avoids sending an entire paid bank (including every answer
+ * and explanation) to one device while retaining enough breadth for a
+ * 100-question mock and module filtering.
+ */
+export const FULL_ACCESS_QUESTION_LIMIT = 200;
+
 export function previewLimitForRequest(input: {
   bankKey: string;
   previewSurface?: OitPreviewSurface;
@@ -136,6 +144,21 @@ export function buildPreviewSample<T extends PreviewQuestionRow>(
   return sampled;
 }
 
+export function buildFullAccessSample<T extends PreviewQuestionRow>(
+  rows: T[],
+  limit = FULL_ACCESS_QUESTION_LIMIT,
+  random: () => number = Math.random,
+): T[] {
+  if (rows.length <= limit) return [...rows];
+
+  const shuffled = [...rows];
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return buildPreviewSample(shuffled, limit, "practice");
+}
+
 /**
  * Columns needed by learner quiz screens. Keep governance-only columns out of
  * this projection so ordinary quiz reads remain compatible during the brief
@@ -160,8 +183,9 @@ export const learnerQuestionColumns = {
 
 export const quizRouter = router({
   /**
-   * getQuestions — fetch all questions for a given bank key.
-   * Returns the full question array needed by quiz/mock/flashcard pages.
+   * getQuestions — fetch a bounded, module-balanced working set.
+   * The total bank size is returned separately; the browser never needs every
+   * paid question and answer in one response.
    */
     getQuestions: publicProcedure
     .input(z.object({
@@ -193,7 +217,7 @@ export const quizRouter = router({
       // instead of just taking the first N (which would all be from one module).
       let visible;
       if (hasAccess) {
-        visible = rows;
+        visible = buildFullAccessSample(rows);
       } else {
         const surface = input.previewSurface ?? "practice";
         const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
@@ -234,8 +258,7 @@ export const quizRouter = router({
 
   /**
    * getRandomQuestions — fetch a small random batch of questions for instant quiz start.
-   * Returns N random questions (default 20) so the first question appears immediately
-   * while the full bank loads in the background.
+   * Returns only the session-sized working set needed by practice mode.
    */
     getRandomQuestions: publicProcedure
     .input(z.object({

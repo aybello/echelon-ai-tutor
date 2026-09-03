@@ -5,16 +5,15 @@
  *   1. Seed questions — 25 bundled questions per bank, correctIndex included.
  *      Shown INSTANTLY on first visit while the DB loads in the background.
  *      Questions score correctly from the first millisecond.
- *   2. localStorage cache — full bank cached after first successful DB load.
- *      Served instantly on return visits (24hr TTL) for fast display.
+ *   2. localStorage cache — bounded study sample cached after a successful DB load.
+ *      Served instantly on return visits (2-hour TTL) for fast display.
  *      correctIndex is stored in the cache so returning users score correctly.
- *   3. DB fetch — tRPC call to the server. Lazy mode fetches a batch first,
- *      then the full bank. Full mode fetches everything upfront.
+ *   3. DB fetch — tRPC call to the server. Lazy mode fetches one session-sized
+ *      batch. Full mode fetches a bounded, module-balanced working set.
  *
  * Supports two modes:
- *   - "full" (default): fetches ALL questions upfront. Use for mock exams and flashcards.
- *   - "lazy": fetches a small random batch (20 questions) instantly for fast first-question,
- *     then loads the full bank in the background. Use for quiz pages.
+ *   - "full" (default): fetches a bounded working set. Use for mock exams and flashcards.
+ *   - "lazy": fetches a random 50-question batch. Use for quiz pages.
  *
  * When the database is temporarily unavailable (TiDB hibernation), the API
  * returns empty arrays instead of hanging. This hook detects that case and
@@ -73,29 +72,6 @@ function seedToDBQuestion(q: SeedQuestion): DBQuestion {
   };
 }
 
-/**
- * Merge live correctIndex values from the server into cached questions.
- * Matches by question text (since IDs may differ between cache and live).
- * Returns a new array with correctIndex restored for all matched questions.
- */
-function mergeCorrectIndex(
-  cached: DBQuestion[],
-  live: DBQuestion[],
-): DBQuestion[] {
-  // Build a map from question text → correctIndex for fast lookup
-  const liveMap = new Map<string, number>();
-  for (const q of live) {
-    liveMap.set(q.question, q.correctIndex);
-  }
-  return cached.map((q) => {
-    const liveIdx = liveMap.get(q.question);
-    if (liveIdx !== undefined && liveIdx >= 0) {
-      return { ...q, correctIndex: liveIdx };
-    }
-    return q;
-  });
-}
-
 export type QuestionBankPreviewSurface = "practice" | "flashcards" | "mock";
 
 export function useQuestionBank(
@@ -121,12 +97,14 @@ export function useQuestionBank(
   // wastewater-module question even after the server-side preview was fixed.
   const previewCacheVersion = bankKey === "oit" && previewSurface ? "::v2" : "";
   const cacheKey = `${previewSurface ? `${bankKey}::${previewSurface}` : bankKey}${previewCacheVersion}`;
-  const [cached] = useState<CachedBank | null>(() => getCached(cacheKey));
+  // Practice sessions deliberately stay out of persistent browser storage.
+  // A fresh bounded batch is cheap and avoids accumulating paid content locally.
+  const [cached] = useState<CachedBank | null>(() => mode === "full" ? getCached(cacheKey) : null);
   const wroteCache = useRef(false);
 
   // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
   const batchQuery = trpc.quiz.getRandomQuestions.useQuery(
-    { bankKey, limit: 20, accessToken: storedAccessToken },
+    { bankKey, limit: 50, accessToken: storedAccessToken },
     {
       enabled: mode === "lazy" && !cached,
       staleTime: 1000 * 60 * 5,
@@ -135,16 +113,13 @@ export function useQuestionBank(
     }
   );
 
-  // ── Full bank — ALWAYS enabled (even on cache hit) to restore correctIndex ──
-  // When cache is present: runs silently in background, result used to patch correctIndex.
-  // When no cache: runs normally to populate questions.
+  // ── Bounded study set (mock exams and flashcards) ────────────────────────
+  // When cache is present this refreshes silently in the background.
   const fullQuery = trpc.quiz.getQuestions.useQuery(
     { bankKey, accessToken: storedAccessToken, previewSurface },
     {
       staleTime: 1000 * 60 * 30,
-      // Always fetch full bank — cache hit just means we show cached questions
-      // instantly, but we still need live correctIndex values from the server.
-      enabled: cached != null || mode === "full" || (mode === "lazy" && batchQuery.isSuccess),
+      enabled: mode === "full",
       retry: 4,
       retryDelay: 5000,
     }
@@ -198,7 +173,7 @@ export function useQuestionBank(
     invalidate(cacheKey);
   }, [cacheKey, cached, fullQuery.data]);
 
-  // ── Write to cache once full bank is loaded (with correctIndex) ────────────
+  // ── Write the bounded study set to cache once loaded ─────────────────────
   useEffect(() => {
     if (wroteCache.current) return;
     if (!fullQuery.data || !metaQuery.data) return;
@@ -296,7 +271,7 @@ export function useQuestionBank(
     totalQuestions,
     overviews,
     isLoading,
-    isFullyLoaded: cached != null || fullQuery.isSuccess,
+    isFullyLoaded: cached != null || fullQuery.isSuccess || batchQuery.isSuccess,
     /** True when the DB appears down AND no seed questions available */
     dbUnavailable,
     /** True when showing seed questions (DB not yet loaded) */

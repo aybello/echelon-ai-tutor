@@ -1,6 +1,7 @@
 // Terms of Use Page — Echelon Institute
 // Phase 9: Trust, Credibility, and Enterprise Polish
 import SiteNav from "@/components/SiteNav";
+import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "@shared/refundPolicy";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const LOGO_URL =
@@ -62,7 +63,9 @@ export default function Terms() {
 
         <LegalSection title="6. Payments and Refunds">
           <p>All payments are processed by Stripe. The checkout page identifies the currency before payment. Taxes may be added where required.</p>
-          <p><strong>Refund policy:</strong> We offer a 7-day refund for first-time purchases if you have not completed more than 50 questions. To request a refund, email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</p>
+          <p><strong>Individual Exam Pass refunds:</strong> {INDIVIDUAL_REFUND_SUMMARY}</p>
+          <p><strong>Teams refunds:</strong> {TEAM_REFUND_SUMMARY}</p>
+          <p>To request a refund, email <a href={`mailto:${REFUND_CONTACT_EMAIL}`} style={{ color: "#3B82F6" }}>{REFUND_CONTACT_EMAIL}</a> with your purchase email and Stripe receipt.</p>
           <p>Subscriptions auto-renew annually unless cancelled before the renewal date. You can cancel at any time from your Account page.</p>
         </LegalSection>
 

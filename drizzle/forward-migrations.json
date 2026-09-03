@@ -91,6 +91,13 @@
       "file": "drizzle/0060_training_hours_records.sql",
       "sha256": "81ae5191a6c828ed889d244590c82574a94aee0c63624de10598cf11822e4ccf",
       "proposedOnly": true
+    },
+    {
+      "version": 61,
+      "tag": "0061_correct_oit_guide",
+      "file": "drizzle/0061_correct_oit_guide.sql",
+      "sha256": "c0fa45c6ab4ef93077388805e2ac13393163c7ec4b8748ffd1c07ca2c9b6f164",
+      "proposedOnly": true
     }
   ]
 }

@@ -35,7 +35,7 @@ describe("crawlable pricing", () => {
     expect(body).toMatch(/20% off/);
     expect(body).toMatch(/within 7 days/);
     expect(body).toMatch(/fewer than 50 questions/);
-    expect(body).toMatch(/no seats have been activated/);
+    expect(body).toMatch(/no operator seat or Course Pass has been assigned or activated/);
   });
 
   it("links directly to free previews with no account or card", () => {
