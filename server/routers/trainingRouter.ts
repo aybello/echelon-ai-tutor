@@ -7,6 +7,7 @@ import { courseKeyToLabel, getCourseByKey, resolveCourseKey } from "../../shared
 import { normalizeEmail } from "../_core/access";
 import { assertAccess, identityEmail, resolveVerifiedIdentity } from "../_core/accessService";
 import { getDb } from "../db";
+import { trackEvent } from "../analytics";
 import { resolveOrgManager } from "./orgRouter";
 import { ACTIVITY_LABELS, assignedAnnualCourseKeys, canReadImmutableRecord, canonicalSnapshotDigest, parseVerifiedTrainingSnapshot, requireCompleteSessionSet, sessionsToCsv, summarizeTrainingSessions, trainingSnapshotSchema } from "../trainingRecords";
 import { publicProcedure, router } from "../_core/trpc";
@@ -15,6 +16,11 @@ const activityType = z.enum(["quiz", "mock_exam", "flashcards", "process_guide",
 const signerAuthority = z.enum(["oro", "oro_authorized_designate", "oro_manager_or_supervisor", "oro_authorized_training_coordinator", "manager_acknowledgement"]);
 const SESSION_EXPIRY_MS = 5 * 60 * 1000;
 const periodInput = z.object({ from: z.coerce.date().optional(), to: z.coerce.date().optional(), courseKey: z.string().max(64).optional() }).optional();
+
+function affectedRows(result: unknown): number {
+  const candidate = result as { affectedRows?: number } | [{ affectedRows?: number }];
+  return Array.isArray(candidate) ? candidate[0]?.affectedRows ?? 0 : candidate?.affectedRows ?? 0;
+}
 
 function requireIdentity(ctx: Parameters<typeof resolveVerifiedIdentity>[0]) {
   const identity = resolveVerifiedIdentity(ctx);
@@ -77,7 +83,15 @@ export const trainingRouter = router({
     const courseKey = canonicalCourseKey(input.courseKey); await assertAccess(ctx, courseKey);
     const [existing] = await db.select({ email: learningActivitySessions.studentEmail }).from(learningActivitySessions).where(eq(learningActivitySessions.sessionKey, input.sessionKey)).limit(1);
     if (existing) { if (existing.email !== email) throw new TRPCError({ code: "CONFLICT", message: "Session key is already in use." }); return { tracking: true, sessionKey: input.sessionKey }; }
-    await db.insert(learningActivitySessions).values({ sessionKey: input.sessionKey, userId, studentEmail: email, ...(await resolveTrainingOwnership(email, userId, courseKey)), courseKey, activityType: input.activityType, topic: input.topic || null });
+    const ownership = await resolveTrainingOwnership(email, userId, courseKey);
+    await db.insert(learningActivitySessions).values({ sessionKey: input.sessionKey, userId, studentEmail: email, ...ownership, courseKey, activityType: input.activityType, topic: input.topic || null });
+    await trackEvent("training_session_started", {
+      userId: userId?.toString() ?? null,
+      email,
+      examType: courseKey,
+      orgId: ownership.orgId,
+      extra: { activityType: input.activityType },
+    });
     return { tracking: true, sessionKey: input.sessionKey };
   }),
   heartbeat: publicProcedure.input(heartbeatInput).mutation(async ({ ctx, input }) => {
@@ -93,7 +107,15 @@ export const trainingRouter = router({
     if (row.status === "completed") return { completed: true }; if (row.status !== "active") return { completed: false, reason: row.status };
     if (Date.now() - row.lastHeartbeatAt.getTime() > SESSION_EXPIRY_MS) { await db.update(learningActivitySessions).set({ status: "abandoned", completedAt: new Date() }).where(and(eq(learningActivitySessions.id, row.id), eq(learningActivitySessions.status, "active"))); return { completed: false, reason: "expired" }; }
     if (row.lastSequence >= input.sequence) return { completed: false, reason: "duplicate" };
-    await db.update(learningActivitySessions).set({ activeSeconds: sql`LEAST(${learningActivitySessions.activeSeconds} + ${input.activeSeconds}, TIMESTAMPDIFF(SECOND, ${learningActivitySessions.startedAt}, NOW()))`, lastSequence: input.sequence, lastHeartbeatAt: new Date(), unitsCompleted: sql`GREATEST(${learningActivitySessions.unitsCompleted}, ${input.unitsCompleted})`, ...(input.topic ? { topic: input.topic } : {}), score: input.score ?? null, total: input.total ?? null, status: "completed", completedAt: new Date() }).where(and(eq(learningActivitySessions.id, row.id), sql`${learningActivitySessions.lastSequence} < ${input.sequence}`));
+    const completionResult = await db.update(learningActivitySessions).set({ activeSeconds: sql`LEAST(${learningActivitySessions.activeSeconds} + ${input.activeSeconds}, TIMESTAMPDIFF(SECOND, ${learningActivitySessions.startedAt}, NOW()))`, lastSequence: input.sequence, lastHeartbeatAt: new Date(), unitsCompleted: sql`GREATEST(${learningActivitySessions.unitsCompleted}, ${input.unitsCompleted})`, ...(input.topic ? { topic: input.topic } : {}), score: input.score ?? null, total: input.total ?? null, status: "completed", completedAt: new Date() }).where(and(eq(learningActivitySessions.id, row.id), eq(learningActivitySessions.status, "active"), sql`${learningActivitySessions.lastSequence} < ${input.sequence}`));
+    if (affectedRows(completionResult) !== 1) return { completed: false, reason: "duplicate" };
+    await trackEvent("training_session_completed", {
+      userId: row.userId?.toString() ?? null,
+      email,
+      examType: row.courseKey,
+      orgId: row.orgId,
+      extra: { activityType: row.activityType, unitsCompleted: input.unitsCompleted },
+    });
     return { completed: true };
   }),
   mySummary: publicProcedure.input(periodInput).query(async ({ ctx, input }) => {
@@ -104,7 +126,8 @@ export const trainingRouter = router({
   }),
   myCsv: publicProcedure.input(periodInput).query(async ({ ctx, input }) => {
     const { email } = requireIdentity(ctx); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-    const { from, to } = periodBounds(input); const sessions = await sessionsFor(db, email, from, to, input?.courseKey ? canonicalCourseKey(input.courseKey) : undefined);
+    const { from, to } = periodBounds(input); const courseKey = input?.courseKey ? canonicalCourseKey(input.courseKey) : undefined; const sessions = await sessionsFor(db, email, from, to, courseKey);
+    await trackEvent("training_hours_exported", { email, examType: courseKey ?? null, extra: { audience: "operator", sessionCount: sessions.length } });
     return { csv: sessionsToCsv(sessions), filename: `echelon-training-hours-${from.toISOString().slice(0, 10)}-${to.toISOString().slice(0, 10)}.csv` };
   }),
   managerSummary: publicProcedure.input(periodInput).query(async ({ ctx, input }) => {
@@ -145,7 +168,8 @@ export const trainingRouter = router({
     return { operatorEmail: email, operatorName: member?.name ?? null, courseKey, from, to, ...summarizeTrainingSessions(sessions), sessions, attestations };
   }),
   managerCsv: publicProcedure.input(z.object({ operatorEmail: z.string().email(), courseKey: z.string().max(64), from: z.coerce.date(), to: z.coerce.date() })).query(async ({ ctx, input }) => {
-    const { orgId } = await resolveOrgManager(ctx); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const { from, to } = periodBounds(input); const email = normalizeEmail(input.operatorEmail); const sessions = await sessionsFor(db, email, from, to, canonicalCourseKey(input.courseKey), orgId);
+    const { orgId, managerEmail } = await resolveOrgManager(ctx); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const { from, to } = periodBounds(input); const email = normalizeEmail(input.operatorEmail); const courseKey = canonicalCourseKey(input.courseKey); const sessions = await sessionsFor(db, email, from, to, courseKey, orgId);
+    await trackEvent("training_hours_exported", { email: managerEmail, examType: courseKey, orgId, extra: { audience: "manager", sessionCount: sessions.length } });
     return { csv: sessionsToCsv(sessions), filename: `${email.replace(/[^a-z0-9]+/gi, "-")}-training-hours.csv` };
   }),
   attest: publicProcedure.input(z.object({ operatorEmail: z.string().email(), courseKey: z.string().max(64), from: z.coerce.date(), to: z.coerce.date(), providerName: z.string().trim().min(2).max(200).default("Echelon Institute"), instructorName: z.string().trim().min(2).max(200), instructorContact: z.string().trim().min(3).max(320), learningObjectives: z.string().trim().min(10).max(2000), signedByName: z.string().trim().min(2).max(200), signedRole: z.string().trim().min(2).max(100), signerAuthority, structuredAndJobRelatedConfirmed: z.literal(true), confirmed: z.literal(true) })).mutation(async ({ ctx, input }) => {
@@ -153,6 +177,7 @@ export const trainingRouter = router({
     if (!sessions.length) throw new TRPCError({ code: "BAD_REQUEST", message: "There is no platform-recorded study activity in this period." }); const [member] = await db.select({ id: organizationMembers.id, name: organizationMembers.name }).from(organizationMembers).where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.email, email))).limit(1); const summary = summarizeTrainingSessions(sessions); const reportId = randomUUID(); const signedAt = new Date(); const attestationKind = input.signerAuthority === "manager_acknowledgement" ? "manager_acknowledgement" : "ojt_attestation"; const statement = attestationKind === "ojt_attestation" ? "The signer confirms this structured, job-related training record was reviewed under the stated authority. Echelon reports platform activity; final acceptance remains with the employer and regulator." : "The signer acknowledges reviewing this platform-recorded study activity. This acknowledgement is not an OJT attestation or regulatory approval.";
     const snapshot = trainingSnapshotSchema.parse({ version: 1, reportId, orgId, operatorEmail: email, operatorName: member?.name ?? null, courseKey, courseName: courseKeyToLabel(courseKey), periodStart: from.toISOString(), periodEnd: to.toISOString(), summary, signedAt: signedAt.toISOString(), sessions: sessions.map((row) => ({ sessionKey: row.sessionKey, startedAt: row.startedAt.toISOString(), activeSeconds: row.activeSeconds, activityType: row.activityType, topic: row.topic, unitsCompleted: row.unitsCompleted, score: row.score, total: row.total })), providerName: input.providerName, instructorName: input.instructorName, instructorContact: input.instructorContact, learningObjectives: input.learningObjectives, signedByName: input.signedByName, signedByEmail: managerEmail, signedRole: input.signedRole, signerAuthority: input.signerAuthority, attestationKind, statement });
     const snapshotJson = JSON.stringify(snapshot); const digestSha256 = canonicalSnapshotDigest(snapshotJson); await db.insert(trainingAttestations).values({ reportId, orgId, organizationMemberId: member?.id ?? null, teamFlexLicenceId: sessions.find((row) => row.teamFlexLicenceId != null)?.teamFlexLicenceId ?? null, operatorUserId: sessions.find((row) => row.userId != null)?.userId ?? null, operatorEmail: email, operatorName: member?.name ?? null, courseKey, periodStart: from, periodEnd: to, platformRecordedSeconds: summary.activeSeconds, supervisorReviewSeconds: summary.supervisorReview.supervisorReviewSeconds, studySessionCount: summary.sessionCount, providerName: input.providerName, instructorName: input.instructorName, instructorContact: input.instructorContact, learningObjectives: input.learningObjectives, subjectSummary: summary.byActivity.map((item) => item.label).join(", "), signedByName: input.signedByName, signedByEmail: managerEmail, signedRole: input.signedRole, signerAuthority: input.signerAuthority, attestationKind, signedAt, digestSha256, snapshotJson });
+    await trackEvent("training_record_attested", { email: managerEmail, examType: courseKey, orgId, extra: { attestationKind, sessionCount: summary.sessionCount, platformRecordedSeconds: summary.activeSeconds } });
     return { reportId, digestSha256, platformRecordedSeconds: summary.activeSeconds, supervisorReviewSeconds: summary.supervisorReview.supervisorReviewSeconds, studySessionCount: summary.sessionCount, attestationKind };
   }),
   attestedReport: publicProcedure.input(z.object({ reportId: z.string().uuid() })).query(async ({ ctx, input }) => {

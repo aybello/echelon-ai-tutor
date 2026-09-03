@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { eq } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import type { TrpcContext } from "./_core/context";
 import { appRouter } from "./routers";
 import { getDb } from "./db";
@@ -7,10 +7,12 @@ import {
   learningActivitySessions,
   organizationMembers,
   organizations,
+  productAnalyticsEvents,
   subscriptions,
   teamFlexLicences,
   trainingAttestations,
 } from "../drizzle/schema";
+import { hashAnalyticsEmail } from "./analytics";
 
 function makeCtx(studentEmail: string): TrpcContext {
   return {
@@ -107,6 +109,14 @@ beforeAll(async () => {
 
 afterAll(async () => {
   if (!db) return;
+  await db.delete(productAnalyticsEvents).where(inArray(productAnalyticsEvents.emailHash, [
+    hashAnalyticsEmail(MANAGER_A),
+    hashAnalyticsEmail(MANAGER_B),
+    hashAnalyticsEmail(OPERATOR),
+    hashAnalyticsEmail(ZERO_ACTIVITY_OPERATOR),
+    hashAnalyticsEmail(COURSE_PASS_ZERO_ACTIVITY_OPERATOR),
+    hashAnalyticsEmail(LEGACY_UNASSIGNED_OPERATOR),
+  ])).catch(() => {});
   for (const email of [OPERATOR, ZERO_ACTIVITY_OPERATOR, COURSE_PASS_ZERO_ACTIVITY_OPERATOR, LEGACY_UNASSIGNED_OPERATOR]) {
     await db.delete(trainingAttestations).where(eq(trainingAttestations.operatorEmail, email)).catch(() => {});
     await db.delete(learningActivitySessions).where(eq(learningActivitySessions.studentEmail, email)).catch(() => {});
@@ -138,6 +148,42 @@ describe("training records database integrity", () => {
       .where(eq(learningActivitySessions.sessionKey, sessionKey)).limit(1);
     expect(row.orgId).toBe(orgAId);
     expect(row.organizationMemberId).not.toBeNull();
+    const [event] = await db.select({ eventName: productAnalyticsEvents.eventName })
+      .from(productAnalyticsEvents)
+      .where(and(
+        eq(productAnalyticsEvents.eventName, "training_session_started"),
+        eq(productAnalyticsEvents.emailHash, hashAnalyticsEmail(OPERATOR)),
+      )).limit(1);
+    expect(event?.eventName).toBe("training_session_started");
+  });
+
+  it("records completed study sessions and training-hours exports", async () => {
+    if (!db) return;
+    const sessionKey = crypto.randomUUID();
+    const caller = appRouter.createCaller(makeCtx(OPERATOR));
+    await caller.training.start({ sessionKey, courseKey: "class1-water", activityType: "flashcards" });
+    await caller.training.complete({
+      sessionKey,
+      sequence: 1,
+      activeSeconds: 0,
+      unitsCompleted: 1,
+    });
+    await caller.training.myCsv({
+      from: new Date(Date.now() - 24 * 60 * 60 * 1000),
+      to: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      courseKey: "class1-water",
+    });
+
+    const events = await db.select({ eventName: productAnalyticsEvents.eventName })
+      .from(productAnalyticsEvents)
+      .where(and(
+        eq(productAnalyticsEvents.emailHash, hashAnalyticsEmail(OPERATOR)),
+        inArray(productAnalyticsEvents.eventName, ["training_session_completed", "training_hours_exported"]),
+      ));
+    expect(events.map((event) => event.eventName)).toEqual(expect.arrayContaining([
+      "training_session_completed",
+      "training_hours_exported",
+    ]));
   });
 
   it("fails closed when a legacy organization seat has no course assignment", async () => {
@@ -221,6 +267,13 @@ describe("training records database integrity", () => {
       structuredAndJobRelatedConfirmed: true,
       confirmed: true,
     });
+    const [attestationEvent] = await db.select({ eventName: productAnalyticsEvents.eventName })
+      .from(productAnalyticsEvents)
+      .where(and(
+        eq(productAnalyticsEvents.eventName, "training_record_attested"),
+        eq(productAnalyticsEvents.emailHash, hashAnalyticsEmail(MANAGER_A)),
+      )).limit(1);
+    expect(attestationEvent?.eventName).toBe("training_record_attested");
     await db.insert(learningActivitySessions).values({
       sessionKey: crypto.randomUUID(),
       studentEmail: OPERATOR,
