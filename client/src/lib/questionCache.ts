@@ -1,9 +1,9 @@
 /**
  * questionCache — localStorage-backed cache for question banks.
  *
- * Each bank is stored under the key `echelon_qbank_v1_<bankKey>` with a
- * 24-hour TTL. On cache hit the data is returned instantly; on miss the
- * caller fetches from the DB and writes back via `set()`.
+ * Each bounded mock/flashcard working set is stored under the key
+ * `echelon_qbank_v1_<bankKey>` with a short TTL. Practice batches are never
+ * persisted. On cache hit the sample is returned instantly.
  *
  * Cache schema:
  *   { ts: number, questions: DBQuestion[], modules: string[], ... }
@@ -12,7 +12,7 @@
 import type { DBQuestion, ModuleOverview } from "@/hooks/useQuestionBank";
 
 const CACHE_PREFIX = "echelon_qbank_v1_";
-const TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+const TTL_MS = 2 * 60 * 60 * 1000; // 2 hours
 
 export interface CachedBank {
   ts: number;

@@ -65,6 +65,11 @@ describe("forward-only migration safety", () => {
         tag: "0060_training_hours_records",
         proposedOnly: true,
       }),
+      expect.objectContaining({
+        version: 61,
+        tag: "0061_correct_oit_guide",
+        proposedOnly: true,
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(

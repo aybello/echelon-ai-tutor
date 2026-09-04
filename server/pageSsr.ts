@@ -37,6 +37,7 @@ import {
   TEAMS_ALL_ACCESS_MIN_SEATS,
   TEAMS_ALL_ACCESS_PRICE_CENTS,
 } from "../shared/pricingCatalogue";
+import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "../shared/refundPolicy";
 import { getStudyUtilityPageMeta } from "./studyUtilityPageMeta";
 
 const SITE_URL = "https://echeloninstitute.ca";
@@ -383,7 +384,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Every course includes 15 free practice questions. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Visit the <a href="${SITE_URL}/oit">Ontario OIT hub</a> to begin immediately.</p>
 
       <h2>Refund Policy</h2>
-      <p>First-time one-time passes are eligible for a refund when requested within 7 days and fewer than 50 questions have been completed. Team plans are eligible within 7 days only if no seats have been activated. Read the full <a href="${SITE_URL}/refund">refund policy</a> for all eligibility terms.</p>
+      <p>${INDIVIDUAL_REFUND_SUMMARY} ${TEAM_REFUND_SUMMARY} Read the full <a href="${SITE_URL}/refund">refund policy</a> for all eligibility terms.</p>
     `,
   },
   {
@@ -661,9 +662,10 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     }),
     bodyHtml: `
       <h2>Satisfaction Guarantee</h2>
-      <p>Echelon Institute offers a satisfaction guarantee subject to the published refund terms. If you are not satisfied with an eligible purchase, contact us to discuss your options.</p>
+      <p>${INDIVIDUAL_REFUND_SUMMARY}</p>
+      <p>${TEAM_REFUND_SUMMARY}</p>
       <h2>Contact</h2>
-      <p>To request a refund or ask about eligibility, contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. View <a href="${SITE_URL}/pricing">Exam Pass and Team pricing</a> or return to the <a href="${SITE_URL}/">homepage</a>.</p>
+      <p>To request a refund or ask about eligibility, contact <a href="mailto:${REFUND_CONTACT_EMAIL}">${REFUND_CONTACT_EMAIL}</a>. View <a href="${SITE_URL}/pricing">Exam Pass and Team pricing</a> or return to the <a href="${SITE_URL}/">homepage</a>.</p>
     `,
   },
   // ── US Expansion Pages ────────────────────────────────────────────────────

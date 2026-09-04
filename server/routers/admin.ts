@@ -5,7 +5,7 @@
 import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, productAnalyticsEvents, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
@@ -25,6 +25,7 @@ import {
   percentage,
 } from "../productKpis";
 import {
+  getAllProductKpiJourneyEvents,
   getExactAnalyticsEventCounts,
   type TrainingMetricEventName,
 } from "../analyticsAggregates";
@@ -48,18 +49,7 @@ export const adminRouter = router({
     const since7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
     const [events, exactTrainingEventCounts, outcomes, recentPurchases, [seatCapacity], [assignedSeats], [coursePassSeats]] = await Promise.all([
-      db.select({
-        eventName: productAnalyticsEvents.eventName,
-        occurredAt: productAnalyticsEvents.occurredAt,
-        userId: productAnalyticsEvents.userId,
-        emailHash: productAnalyticsEvents.emailHash,
-        anonymousHash: productAnalyticsEvents.anonymousHash,
-        examType: productAnalyticsEvents.examType,
-        metadata: productAnalyticsEvents.metadata,
-      }).from(productAnalyticsEvents)
-        .where(gte(productAnalyticsEvents.occurredAt, since30))
-        .orderBy(productAnalyticsEvents.occurredAt)
-        .limit(100_000),
+      getAllProductKpiJourneyEvents(db, since30),
       getExactAnalyticsEventCounts(db, since30),
       db.select({
         result: examOutcomes.result,

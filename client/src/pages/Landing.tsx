@@ -10,6 +10,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
 import { trpc } from "@/lib/trpc";
@@ -2217,7 +2218,7 @@ export default function Landing() {
               },
               {
                 q: "Can I get a refund?",
-                a: "We offer a 7-day money-back guarantee if you are not satisfied. Email abello@echeloninstitute.ca and we will make it right.",
+                a: `${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`,
               },
             ].map((faq, i, arr) => (
               <FaqItem key={faq.q} q={faq.q} a={faq.a} isLast={i === arr.length - 1} />
