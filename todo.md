@@ -1983,7 +1983,7 @@
 - [x] Review the supplied pasted content and apply any safe, verified, brochure-relevant revisions — content identified a distinct production traction-audit request, completed separately without altering the brochure
 - [x] Run a read-only production traction audit with sanitized aggregates and draft the Melamoon Question 18 response — fixed-cutoff evidence report, chart, and application-ready response created; production remained read-only
 - [ ] Reconcile the database billing snapshot against the independent live Stripe settlement totals before finalizing revenue claims in the traction audit
-- [ ] Review, merge, validate, publish, and verify approved PR #69 without overwriting concurrent work
+- [x] Review, merge, validate, publish, and verify approved PR #69 without overwriting concurrent work — production release `2026-09-04.public-trust-bounded-delivery.1` verified on both public domains
 - [x] Review and merge PR #69 from GitHub main without overwriting concurrent work — merged as `6618b94`; quality gate passed and isolated review found no blocking issue
 - [x] Apply and verify the authorized public OIT-guide correction before deploying PR #69 — one public row backed up with SHA-256 `1ec48997f074faff3cf4d5feb26b006eb7ba31c5468f04a24d7d9dbb192a8477`; targeted obsolete claims removed and authoritative OWWCO/Health Canada wording verified
 - [x] Validate the merged PR #69 source and release marker — 44 focused tests, TypeScript, and production build passed; existing bundle-size warnings remain non-blocking
