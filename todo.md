@@ -1975,4 +1975,15 @@
 - [x] Merge approved revised PR #67 while preserving the current Course Pass browser E2E production release — merged to GitHub main as `4c1066b`
 - [x] Validate the combined AI Tutor math/security, exact training analytics, and corporate-access release — 12/12 focused tests, TypeScript, and production build passed; CI browser journey had already passed on the merged revision
 - [x] Update the public release marker to identify the merged AI Tutor math/security and exact training-analytics release
-- [ ] Publish and runtime-verify the combined AI Tutor math/security, exact training analytics, and corporate-access release
+- [x] Publish and runtime-verify the combined AI Tutor math/security, exact training analytics, and corporate-access release — checkpoint `179be4b1`; both public domains served `2026-09-03.tutor-math-training-analytics.1`
+- [x] Create and deliver a premium print-ready Echelon Institute brochure based on the supplied overview and current verified program information — four-page A4 PDF compiled, verified, and visually reviewed
+- [x] Correct the distorted official Echelon Institute logo in the premium brochure and re-verify the rendered PDF — native-proportion logo treatment visibly confirmed on the rendered cover
+- [x] Replace the brochure logo with the exact current Echelon Institute brand asset and re-verify the rendered PDF — rebuilt to match the live icon-plus-wordmark header treatment; cover visually verified at full resolution
+- [x] Redesign the premium brochure cover brand treatment and headline composition for a cleaner final visual presentation — simplified editorial cover with compact live-style header, strict PDF verification, and full-resolution visual review completed
+- [x] Review the supplied pasted content and apply any safe, verified, brochure-relevant revisions — content identified a distinct production traction-audit request, completed separately without altering the brochure
+- [x] Run a read-only production traction audit with sanitized aggregates and draft the Melamoon Question 18 response — fixed-cutoff evidence report, chart, and application-ready response created; production remained read-only
+- [ ] Reconcile the database billing snapshot against the independent live Stripe settlement totals before finalizing revenue claims in the traction audit
+- [ ] Review, merge, validate, publish, and verify approved PR #69 without overwriting concurrent work
+- [x] Review and merge PR #69 from GitHub main without overwriting concurrent work — merged as `6618b94`; quality gate passed and isolated review found no blocking issue
+- [x] Apply and verify the authorized public OIT-guide correction before deploying PR #69 — one public row backed up with SHA-256 `1ec48997f074faff3cf4d5feb26b006eb7ba31c5468f04a24d7d9dbb192a8477`; targeted obsolete claims removed and authoritative OWWCO/Health Canada wording verified
+- [x] Validate the merged PR #69 source and release marker — 44 focused tests, TypeScript, and production build passed; existing bundle-size warnings remain non-blocking

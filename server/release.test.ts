@@ -34,9 +34,11 @@ describe("public release health", () => {
         "course-pass-browser-e2e-v1",
         "ai-tutor-safe-math-rendering-v1",
         "training-analytics-exact-aggregation-v1",
+        "public-trust-content-v1",
+        "bounded-paid-question-delivery-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-09-03.tutor-math-training-analytics.1");
+    expect(RELEASE_ID).toBe("2026-09-04.public-trust-bounded-delivery.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
