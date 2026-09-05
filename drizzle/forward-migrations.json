@@ -98,6 +98,13 @@
       "file": "drizzle/0061_correct_oit_guide.sql",
       "sha256": "c0fa45c6ab4ef93077388805e2ac13393163c7ec4b8748ffd1c07ca2c9b6f164",
       "proposedOnly": true
+    },
+    {
+      "version": 62,
+      "tag": "0062_purchase_email_outbox",
+      "file": "drizzle/0062_purchase_email_outbox.sql",
+      "sha256": "8066b3b683bea9b47040f6645a6c82e7cde20aa1e9d8fdc812e7d13d26a7d026",
+      "proposedOnly": true
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 /**
  * Stripe purchase reconciliation helper.
  * Can be called from the admin tRPC procedure OR the scheduled cron job.
@@ -10,8 +11,6 @@ import { purchases, users, subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
 import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
-import { sendPurchaseConfirmationEmail } from "../email";
-import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { notifyOwner } from "../_core/notification";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
 
@@ -90,7 +89,7 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
           new Date(session.created * 1000),
         );
 
-        await db.insert(purchases).values({
+        await recordPurchaseWithConfirmation(db, {
           userId: userId ?? undefined,
           email,
           productKey,
@@ -117,16 +116,7 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
           }
         }
 
-        // Send confirmation email (non-blocking)
-        const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
-        sendPurchaseConfirmationEmail({
-          email,
-          productName,
-          productKey,
-          amountCAD,
-          quizPath: studyPaths.quizPath,
-          mockPath: studyPaths.mockPath,
-        }).catch(err => console.error("[reconcile] Email failed:", err.message));
+        // Confirmation delivery is queued atomically with the purchase.
 
         recovered.push({ email, productKey, sessionId: session.id });
         console.log(`[reconcile] Recovered missing purchase: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${session.id})`);

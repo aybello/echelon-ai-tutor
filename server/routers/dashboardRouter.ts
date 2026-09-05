@@ -731,34 +731,20 @@ export const dashboardRouter = router({
     let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
     let weakTopics: string[] = [];
 
-    if (userId) {
-      const profiles = await db.select().from(studentProfiles).where(eq(studentProfiles.userId, userId)).limit(1);
-      if (profiles[0]) {
-        try { topicAccuracyMap = JSON.parse(profiles[0].topicAccuracy || "{}"); } catch { /* empty */ }
-        try { weakTopics = JSON.parse(profiles[0].weakTopics || "[]"); } catch { /* empty */ }
-      }
-    } else {
-      const rows = await db
-        .select({
-          topic: questionAttempts.topic,
-          total: sql<number>`COUNT(*)`,
-          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-        })
-        .from(questionAttempts)
-        .where(and(
-          eq(questionAttempts.studentEmail, email!),
-          examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
-        ))
-        .groupBy(questionAttempts.topic);
-      for (const r of rows) {
-        topicAccuracyMap[r.topic] = { correct: Number(r.correct), total: Number(r.total) };
-        if (Number(r.total) >= 5 && Number(r.correct) / Number(r.total) < 0.65) weakTopics.push(r.topic);
-      }
+    // Use the same verified identity and selected-course scope for every login method.
+    const identityWhere = userId && email
+      ? or(eq(questionAttempts.userId, userId), eq(questionAttempts.studentEmail, email))
+      : userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+    const rows = await db.select({
+      topic: questionAttempts.topic, total: sql<number>`COUNT(*)`,
+      correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+    }).from(questionAttempts).where(and(identityWhere,
+      examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
+    )).groupBy(questionAttempts.topic);
+    for (const row of rows) {
+      topicAccuracyMap[row.topic] = { correct: Number(row.correct), total: Number(row.total) };
+      if (Number(row.total) >= 5 && Number(row.correct) / Number(row.total) < 0.65) weakTopics.push(row.topic);
     }
-
-    const identityWhere = userId
-      ? eq(questionAttempts.userId, userId)
-      : eq(questionAttempts.studentEmail, email!);
 
     const examTypeWhere = examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined;
 

@@ -1,3 +1,4 @@
+import { startPurchaseEmailJob } from "../purchaseEmailOutbox";
 import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -406,6 +407,7 @@ async function startServer() {
     startDbKeepAlive();
     // Start background jobs after server is listening
     startReconciliationJob();
+    void startPurchaseEmailJob().catch(error => console.error("[purchase-email] Could not start worker", error));
     startExamReminderJob();
     startTriggerEngineJob();
     if (ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {

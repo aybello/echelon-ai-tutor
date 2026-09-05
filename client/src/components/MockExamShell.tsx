@@ -409,7 +409,7 @@ export default function MockExamShell({
   streamOptions,
   renderQuestionSupplement,
 }: MockExamConfig) {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const [storedEmailForAccess] = useState<string | undefined>(() => {
     try {
       return localStorage.getItem("echelon_subscription_email")
@@ -460,7 +460,10 @@ export default function MockExamShell({
   const resolvedAccent  = selectedStream?.color  ?? accentColor;
   const resolvedAccent2 = selectedStream?.color  ?? accentColor2;
 
-  const sessionId = useRef(`mock-${productKeyProp}-${Math.random().toString(36).slice(2)}`).current;
+  const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
+  const deadlineRef = useRef<number | null>(null);
+  const recoveryKey = `echelon.mock.v1:${productKeyProp}:${user?.email ?? storedEmailForAccess ?? "guest"}`;
+  const recoveryLoaded = useRef<string | null>(null);
 
   const [examState, setExamState] = useState<ExamState>(
     streamOptions && streamOptions.length > 0 ? "stream-select" : "intro"
@@ -478,7 +481,14 @@ export default function MockExamShell({
   );
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
-  const submitMock = trpc.exam.submitMock.useMutation();
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "guest" | "error">("idle");
+  const submitMock = trpc.exam.submitMock.useMutation({
+    onSuccess: result => {
+      resultSavedRef.current = true;
+      setSaveStatus(result.persisted ? "saved" : "guest");
+    },
+    onError: () => { resultSavedRef.current = false; setSaveStatus("error"); },
+  });
   const answered = answers.filter(a => a.selected !== null).length;
   const showPreviewGate =
     examState === "active" &&
@@ -493,6 +503,11 @@ export default function MockExamShell({
     const pool    = overridePool    ?? questionPool;
     const targets = overrideTargets ?? moduleTargets;
     const qs = selectExamQuestions(pool, targets, EXAM_QUESTIONS);
+    if (!qs.length) { toast.error("Questions are still loading. Please try again."); return; }
+    setSessionId(crypto.randomUUID());
+    deadlineRef.current = Date.now() + EXAM_DURATION * 1000;
+    setSaveStatus("idle");
+    submitMock.reset();
     setQuestions(qs);
     setCurrentIdx(0);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
@@ -508,24 +523,65 @@ export default function MockExamShell({
     setExamState("results");
   }, []);
 
-  // Timer
+  // Restore only this tab's exam for the same course and learner. No new
+  // questions are selected and the wall-clock deadline survives a refresh.
+  useEffect(() => {
+    if (authLoading || recoveryLoaded.current === recoveryKey) return;
+    recoveryLoaded.current = recoveryKey;
+    try {
+      const raw = sessionStorage.getItem(recoveryKey);
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      if (saved.version !== 1 || Date.now() - saved.updatedAt > 86400000
+        || !Array.isArray(saved.questions) || !saved.questions.length || saved.questions.length > 200
+        || !Array.isArray(saved.answers) || saved.answers.length !== saved.questions.length
+        || !["active", "results"].includes(saved.examState) || typeof saved.deadline !== "number"
+        || typeof saved.sessionId !== "string"
+        || !saved.questions.every((q: ExamQuestion) => Number.isInteger(q.id) && Array.isArray(q.options))
+        || !saved.answers.every((a: ExamAnswer, i: number) => a.questionIndex === i
+          && (a.selected === null || (Number.isInteger(a.selected) && a.selected >= 0 && a.selected < 4)))) return;
+      const restoredStream = streamOptions?.find(option => option.productKey === saved.streamKey) ?? null;
+      if (streamOptions?.length && !restoredStream) return;
+      setSelectedStream(restoredStream);
+      setSessionId(saved.sessionId);
+      setQuestions(saved.questions);
+      setAnswers(saved.answers);
+      setCurrentIdx(Math.max(0, Math.min(saved.currentIdx ?? 0, saved.questions.length - 1)));
+      setFlagged(Array.isArray(saved.flagged) ? saved.flagged : []);
+      deadlineRef.current = saved.deadline;
+      setTimeLeft(saved.examState === "results" ? saved.timeLeft : Math.max(0, Math.ceil((saved.deadline - Date.now()) / 1000)));
+      setExamState(saved.examState);
+      resultSavedRef.current = saved.saved === true;
+      setSaveStatus(saved.saved ? "saved" : "idle");
+      toast.info("Your exam has been restored.");
+    } catch { /* Storage may be unavailable or an old draft invalid. */ }
+  }, [recoveryKey, streamOptions, authLoading]);
+
+  useEffect(() => {
+    if (authLoading || recoveryLoaded.current !== recoveryKey || !["active", "results"].includes(examState) || !questions.length) return;
+    try {
+      sessionStorage.setItem(recoveryKey, JSON.stringify({
+        version: 1, updatedAt: Date.now(), sessionId, questions, answers, currentIdx, flagged,
+        examState, timeLeft, deadline: deadlineRef.current, streamKey: selectedStream?.productKey,
+        saved: saveStatus === "saved",
+      }));
+    } catch { /* Saving to the server remains available if local storage is full. */ }
+  }, [recoveryKey, sessionId, questions, answers, currentIdx, flagged, examState, timeLeft, selectedStream, saveStatus, authLoading]);
+
   useEffect(() => {
     if (examState !== "active" || showPreviewGate) return;
-    // Seed from the freshly-reset timeLeft (startExam sets it to EXAM_DURATION).
-    let remaining = EXAM_DURATION;
-    let fired = false;
-    timerRef.current = setInterval(() => {
-      remaining -= 1;
-      setTimeLeft(remaining > 0 ? remaining : 0);
-      if (remaining <= 0 && !fired) {
-        fired = true;
+    const tick = () => {
+      const remaining = Math.max(0, Math.ceil(((deadlineRef.current ?? Date.now()) - Date.now()) / 1000));
+      setTimeLeft(remaining);
+      if (remaining === 0) {
         if (timerRef.current) clearInterval(timerRef.current);
-        toast.warning("\u23f1\ufe0f Time's up!", { description: "Your exam has been auto-submitted.", duration: 5000 });
         setExamState("results");
       }
-    }, 1000);
+    };
+    tick();
+    timerRef.current = setInterval(tick, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [examState, showPreviewGate]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [examState, showPreviewGate]);
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
@@ -557,29 +613,20 @@ export default function MockExamShell({
     total: results ? questions.length : undefined,
   });
 
-  // Save result once
-  useEffect(() => {
-    if (examState !== "results" || !results || resultSavedRef.current) return;
-    resultSavedRef.current = true;
-    const calcOnlyProp = false; // Mock exams are not calc-only sessions
-    // Submit answer indices to server for server-side scoring
-    const answerPayload = answers
-      .filter(a => a.selected !== null)
-      .map(a => ({
-        questionNum: questions[a.questionIndex]?.id ?? 0,
-        selectedIndex: a.selected as number,
-      }))
-      .filter(a => a.questionNum > 0);
+  const saveResult = () => {
+    if (!results || submitMock.isPending) return;
+    setSaveStatus("saving");
     submitMock.mutate({
-      sessionId,
-      examType: scoreExamType ?? productKey,
-      bankKey: productKey,
+      sessionId, examType: scoreExamType ?? productKey, bankKey: productKey,
       timeTakenSeconds: EXAM_DURATION - timeLeft,
       ...(stream ? { stream } : {}),
-      ...(calcOnlyProp ? { calcOnly: true } : {}),
-      answers: answerPayload,
+      // Every selected question is submitted, including unanswered questions.
+      answers: questions.map((q, i) => ({ questionNum: q.id, selectedIndex: answers[i]?.selected ?? null })),
     });
-  }, [examState, results]); // eslint-disable-line react-hooks/exhaustive-deps
+  };
+  useEffect(() => {
+    if (examState === "results" && results && saveStatus === "idle" && !resultSavedRef.current) saveResult();
+  }, [examState, results, saveStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Show feedback modal after mock exam results (with delay for user to see score)
   useEffect(() => {
@@ -825,6 +872,13 @@ export default function MockExamShell({
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
+          <div role="status" aria-live="polite" style={{ marginBottom: 16 }}>
+            {saveStatus === "saving" && "Saving your exam result…"}
+            {saveStatus === "saved" && "Exam result saved."}
+            {saveStatus === "guest" && "Your result is shown below. Sign in before your next exam to save results to your history."}
+            {saveStatus === "error" && <><span>Your result could not be saved. Your answers are kept in this tab. </span>
+              <button onClick={saveResult}>Retry saving result</button></>}
+          </div>
           {/* Score hero */}
           <div style={{
             background: passed
@@ -841,6 +895,7 @@ export default function MockExamShell({
             </div>
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
+                disabled={saveStatus === "saving" || saveStatus === "error"}
                 onClick={() => { resultSavedRef.current = false; startExam(); }}
                 style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >
@@ -972,7 +1027,7 @@ export default function MockExamShell({
             {/* Exit button — lets user abandon the exam and return to the practice page */}
             <button
               onClick={() => {
-                if (window.confirm("Exit exam? Your progress will be lost.")) {
+                if (window.confirm("Leave this exam? Your progress is kept in this tab, and the exam timer will keep running.")) {
                   window.location.href = practicePath;
                 }
               }}
@@ -1058,6 +1113,7 @@ export default function MockExamShell({
                 <button
                   key={i}
                   className="mes-option-btn"
+                  aria-pressed={isSelected}
                   onClick={() => setAnswers(prev => prev.map((a, idx) => idx === currentIdx ? { ...a, selected: i } : a))}
                   style={{
                     padding: "14px 18px", borderRadius: 12, textAlign: "left",
