@@ -99,7 +99,7 @@ jobs:
             pnpm db:migrate:apply-standalone
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot -N -e \
             "SELECT tag, status FROM echelon_standalone_ci.echelon_schema_migrations WHERE version = 62" \
-            | grep -Fx "0062_purchase_email_outbox applied"
+            | grep -Ex "^0062_purchase_email_outbox[[:space:]]+applied$"
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot -N -e \
             "SELECT COUNT(*) FROM echelon_standalone_ci.echelon_schema_migrations WHERE version IN (59, 60, 61)" \
             | grep -Fx "0"
