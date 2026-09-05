@@ -404,7 +404,7 @@ export const appRouter = router({
         calcOnly: z.boolean().optional(),
         answers: z.array(z.object({
           questionNum: z.number().int().positive(),
-          selectedIndex: z.number().int().min(0).max(3),
+          selectedIndex: z.number().int().min(0).max(3).nullable(),
         })).min(1).max(200),
       }))
       .mutation(async ({ input, ctx }) => {
@@ -412,7 +412,20 @@ export const appRouter = router({
         if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
         const questionNums = input.answers.map(a => a.questionNum);
-        const questionRows = await db
+        if (new Set(questionNums).size !== questionNums.length) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "Each exam question must appear exactly once." });
+        }
+        const questionRows = input.bankKey === "electrician-309a"
+          ? await db.select({ questionNum: certificationQuestions.bankItemNumber,
+              correctIndex: certificationQuestions.correctIndex, module: certificationQuestions.module,
+              difficulty: certificationQuestions.difficulty })
+            .from(certificationQuestions)
+            .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+            .where(and(eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+              eq(certificationBankVersions.bankKey, input.bankKey), eq(certificationBankVersions.releaseChannel, "beta"),
+              eq(certificationBankVersions.active, true), inArray(certificationQuestions.bankItemNumber, questionNums),
+              eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
+          : await db
           .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, difficulty: questions.difficulty })
           .from(questions)
           .where(and(
@@ -425,66 +438,72 @@ export const appRouter = router({
         const identity = await resolveLearningIdentity(ctx);
         const hasVerifiedIdentity = Boolean(identity.userId || identity.studentEmail);
 
+        if (questionMap.size !== questionNums.length) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "Some exam questions are no longer available. Your answers have been kept; please contact support." });
+        }
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
-
-        for (const answer of input.answers) {
-          const q = questionMap.get(answer.questionNum);
-          if (!q) continue;
-          const isCorrect = answer.selectedIndex === q.correctIndex;
+        const attempts = input.answers.map(answer => {
+          const q = questionMap.get(answer.questionNum)!;
+          const isCorrect = answer.selectedIndex !== null && answer.selectedIndex === q.correctIndex;
           if (isCorrect) correct++;
           const mod = q.module ?? input.examType;
-          if (!moduleBreakdown[mod]) moduleBreakdown[mod] = { correct: 0, total: 0 };
+          moduleBreakdown[mod] ??= { correct: 0, total: 0 };
           moduleBreakdown[mod].total++;
           if (isCorrect) moduleBreakdown[mod].correct++;
-          if (hasVerifiedIdentity) try {
-            await db.insert(questionAttempts).values({
-              userId: identity.userId,
-              studentEmail: identity.studentEmail,
-              examType: input.examType,
-              topic: mod,
-              questionId: answer.questionNum,
-              correct: isCorrect ? "yes" : "no",
-              difficulty: q.difficulty ?? null,
-              quizMode: "mock",
-              sessionId: input.sessionId,
-              selectedIndex: answer.selectedIndex,
-              bankKey: input.bankKey,
-              courseKey: input.bankKey,
-              orgId: identity.orgId,
-              organizationMemberId: identity.organizationMemberId,
-            });
-          } catch (err) {
-            console.warn("[exam.submitMock] Failed to log attempt:", err);
-          }
-        }
-
-        const total = input.answers.length;
-        const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
-        const passed = pct >= 70;
-
-        if (hasVerifiedIdentity) await db.insert(examResults).values({
-          sessionId: input.sessionId,
-          userId: identity.userId,
-          studentEmail: identity.studentEmail,
-          examType: input.examType,
-          stream: input.stream ?? null,
-          score: correct,
-          total,
-          passed: passed ? "yes" : "no",
-          timeTakenSeconds: input.timeTakenSeconds ?? null,
-          moduleBreakdown: JSON.stringify(moduleBreakdown),
-          calcOnly: input.calcOnly ? "yes" : "no",
+          return {
+            userId: identity.userId, studentEmail: identity.studentEmail,
+            examType: input.examType, topic: mod, questionId: answer.questionNum,
+            correct: isCorrect ? "yes" as const : "no" as const,
+            difficulty: q.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
+            selectedIndex: answer.selectedIndex, bankKey: input.bankKey, courseKey: input.bankKey,
+            orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+          };
         });
-
-        if (hasVerifiedIdentity && !input.calcOnly) {
-          await trackEvent("mock_exam_completed", {
-            userId: identity.userId?.toString() ?? null,
-            email: identity.studentEmail,
-            examType: input.examType,
-            orgId: identity.orgId,
-            extra: { passed, totalQuestions: total },
-          });
+        const total = input.answers.length;
+        const pct = Math.round((correct / total) * 100);
+        const passed = correct / total >= 0.7;
+        if (hasVerifiedIdentity) {
+          const readExisting = async () => {
+            const [existing] = await db.select().from(examResults)
+              .where(eq(examResults.sessionId, input.sessionId)).limit(1);
+            if (!existing) return null;
+            const owned = (identity.userId && existing.userId === identity.userId)
+              || (identity.studentEmail && existing.studentEmail?.toLowerCase() === identity.studentEmail.toLowerCase());
+            if (!owned || existing.examType !== input.examType || existing.bankKey !== input.bankKey) {
+              throw new TRPCError({ code: "CONFLICT", message: "This exam session is already in use." });
+            }
+            return { success: true, persisted: true, score: existing.score, total: existing.total,
+              pct: Math.round(existing.score / existing.total * 100), passed: existing.passed === "yes",
+              moduleBreakdown: JSON.parse(existing.moduleBreakdown ?? "{}") as typeof moduleBreakdown };
+          };
+          const existing = await readExisting();
+          if (existing) return existing;
+          try {
+            await db.transaction(async tx => {
+              // Claim the unique session before writing attempts. A concurrent retry
+              // loses this insert and cannot write duplicate analytics.
+              await tx.insert(examResults).values({
+                sessionId: input.sessionId, userId: identity.userId, studentEmail: identity.studentEmail,
+                examType: input.examType, stream: input.stream ?? null, score: correct, total,
+                passed: passed ? "yes" : "no", timeTakenSeconds: input.timeTakenSeconds ?? null,
+                moduleBreakdown: JSON.stringify(moduleBreakdown), calcOnly: input.calcOnly ? "yes" : "no",
+                bankKey: input.bankKey, courseKey: input.bankKey,
+                orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+              });
+              await tx.insert(questionAttempts).values(attempts);
+            });
+          } catch (error) {
+            const saved = await readExisting();
+            if (saved) return saved;
+            throw error;
+          }
+          if (!input.calcOnly) {
+            await trackEvent("mock_exam_completed", {
+              userId: identity.userId?.toString() ?? null, email: identity.studentEmail,
+              examType: input.examType, orgId: identity.orgId, extra: { passed, totalQuestions: total },
+            }).catch(error => console.error("[submitMock] Analytics failed after save", error));
+          }
         }
 
         return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, moduleBreakdown };

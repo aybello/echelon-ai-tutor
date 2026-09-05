@@ -8,17 +8,21 @@ import {
   fetchActualSchemaContract,
   loadManifest,
   loadSchemaContract,
+  planApprovedStandaloneMigration,
   planForwardMigrations,
   resolveRepoPath,
   schemaContractChecksum,
   splitMigrationStatements,
   validateManifest,
+  type ForwardMigration,
   type LedgerRow,
   type ContractDiff,
   type MigrationManifest,
+  type SchemaContract,
 } from "./migrationSafety.ts";
 
 const APPROVAL_TOKEN = "APPLY_FORWARD_MIGRATIONS";
+const STANDALONE_APPROVAL_TOKEN = "APPLY_APPROVED_STANDALONE_MIGRATION";
 const BACKUP_TOKEN = "BACKUP_VERIFIED";
 
 function requireDatabaseUrl(): string {
@@ -38,6 +42,26 @@ function requireApproval(): void {
       `Refusing database write. Set MIGRATION_BACKUP_CONFIRMED=${BACKUP_TOKEN} after verifying a backup.`
     );
   }
+}
+
+function requireStandaloneApproval(): string {
+  if (process.env.MIGRATION_APPROVED !== STANDALONE_APPROVAL_TOKEN) {
+    throw new Error(
+      `Refusing database write. Set MIGRATION_APPROVED=${STANDALONE_APPROVAL_TOKEN}.`
+    );
+  }
+  if (process.env.MIGRATION_BACKUP_CONFIRMED !== BACKUP_TOKEN) {
+    throw new Error(
+      `Refusing database write. Set MIGRATION_BACKUP_CONFIRMED=${BACKUP_TOKEN} after verifying a backup.`
+    );
+  }
+  const target = process.env.MIGRATION_TARGET?.trim();
+  if (!target) {
+    throw new Error(
+      "Refusing database write. Set MIGRATION_TARGET to one approved manifest tag."
+    );
+  }
+  return target;
 }
 
 async function ledgerExists(connection: Connection): Promise<boolean> {
@@ -112,6 +136,37 @@ async function assertCurrentSchema(connection: Connection): Promise<void> {
     throw new Error(
       "Database schema does not match drizzle/schema.ts after migration."
     );
+}
+
+async function assertStandaloneMigrationSchema(
+  connection: Connection,
+  migration: ForwardMigration
+): Promise<void> {
+  const tableNames = migration.standaloneApply?.tables;
+  if (!tableNames || tableNames.length === 0) {
+    throw new Error(
+      `Migration ${migration.version} (${migration.tag}) has no standalone verification contract.`
+    );
+  }
+  const expected: SchemaContract = {
+    formatVersion: 1,
+    tables: buildExpectedSchemaContract().tables.filter(table =>
+      tableNames.includes(table.name)
+    ),
+  };
+  const actual: SchemaContract = {
+    formatVersion: 1,
+    tables: (await fetchActualSchemaContract(connection)).tables.filter(table =>
+      tableNames.includes(table.name)
+    ),
+  };
+  const diff = diffSchemaContracts(expected, actual);
+  printSchemaDiff(diff.errors, diff.warnings);
+  if (diff.errors.length > 0) {
+    throw new Error(
+      `Standalone migration ${migration.version} (${migration.tag}) did not produce the required schema.`
+    );
+  }
 }
 
 async function getCurrentSchemaDiff(
@@ -301,9 +356,93 @@ async function apply(
   }
 }
 
+async function applyStandalone(
+  connection: Connection,
+  manifest: MigrationManifest
+): Promise<void> {
+  const targetTag = requireStandaloneApproval();
+  if (!(await ledgerExists(connection))) {
+    throw new Error(
+      "Migration ledger is missing. Adopt the verified baseline first."
+    );
+  }
+
+  const [lockRows] = await connection.query<RowDataPacket[]>(
+    "SELECT GET_LOCK('echelon_forward_migrations', 15) AS acquired"
+  );
+  if (Number(lockRows[0]?.acquired ?? 0) !== 1)
+    throw new Error("Could not acquire the Echelon migration lock.");
+
+  try {
+    const rows = await readLedger(connection);
+    const expectedBaseline = await loadSchemaContract(
+      manifest.baseline.contract
+    );
+    const baseline = rows.find(
+      row => row.version === manifest.baseline.version
+    );
+    if (baseline?.checksum !== schemaContractChecksum(expectedBaseline)) {
+      throw new Error(
+        "The adopted baseline checksum does not match the immutable baseline contract."
+      );
+    }
+    const migration = planApprovedStandaloneMigration(
+      manifest,
+      rows,
+      targetTag
+    );
+    const startedAt = Date.now();
+    await connection.query(
+      `
+        INSERT INTO \`${LEDGER_TABLE}\`
+          (version, tag, checksum, status)
+        VALUES (?, ?, ?, 'applying')
+      `,
+      [migration.version, migration.tag, migration.sha256]
+    );
+    try {
+      const sql = await readFile(resolveRepoPath(migration.file), "utf8");
+      for (const statement of splitMigrationStatements(sql))
+        await connection.query(statement);
+      await assertStandaloneMigrationSchema(connection, migration);
+      await connection.query(
+        `
+          UPDATE \`${LEDGER_TABLE}\`
+          SET status = 'applied', appliedAt = CURRENT_TIMESTAMP, executionMs = ?, errorMessage = NULL
+          WHERE version = ?
+        `,
+        [Date.now() - startedAt, migration.version]
+      );
+      console.log(
+        `Applied approved standalone migration ${migration.version} (${migration.tag}).`
+      );
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message.slice(0, 4000)
+          : String(error).slice(0, 4000);
+      await connection.query(
+        `
+          UPDATE \`${LEDGER_TABLE}\`
+          SET status = 'failed', executionMs = ?, errorMessage = ?
+          WHERE version = ?
+        `,
+        [Date.now() - startedAt, message, migration.version]
+      );
+      throw error;
+    }
+  } finally {
+    await connection.query("SELECT RELEASE_LOCK('echelon_forward_migrations')");
+  }
+}
+
 const command = process.argv[2];
-if (!(["status", "adopt", "apply"] as const).includes(command as never)) {
-  console.error("Usage: migrate.ts <status|adopt|apply>");
+if (
+  !(["status", "adopt", "apply", "apply-standalone"] as const).includes(
+    command as never
+  )
+) {
+  console.error("Usage: migrate.ts <status|adopt|apply|apply-standalone>");
   process.exit(1);
 }
 
@@ -315,6 +454,8 @@ try {
   if (command === "status") await status(connection, manifest);
   if (command === "adopt") await adopt(connection, manifest);
   if (command === "apply") await apply(connection, manifest);
+  if (command === "apply-standalone")
+    await applyStandalone(connection, manifest);
 } catch (error) {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;

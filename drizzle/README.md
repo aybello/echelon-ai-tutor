@@ -109,6 +109,28 @@ The runner validates checksums, takes a MySQL named lock, records `applying`
 before each migration, records `applied` only after every statement succeeds,
 and stops on unknown, modified, interrupted, or failed ledger entries.
 
+### Explicit approved standalone migration
+
+The standard apply command preserves contiguous order and must not be used to
+skip pending migrations. A migration can run out of order only when its
+immutable manifest entry explicitly declares `standaloneApply`, it is additive,
+the required backup is verified, and an operator provides its exact manifest
+tag. This path is intended for an exceptional, reviewed release dependency; it
+does not authorize any other pending migration.
+
+```bash
+MIGRATION_APPROVED=APPLY_APPROVED_STANDALONE_MIGRATION \
+MIGRATION_BACKUP_CONFIRMED=BACKUP_VERIFIED \
+MIGRATION_TARGET='0062_purchase_email_outbox' \
+DATABASE_URL='mysql://...' \
+pnpm db:migrate:apply-standalone
+```
+
+The command takes the same migration lock, records `applying` then `applied` in
+the forward ledger, and verifies the manifest-declared target tables and
+indexes immediately after the SQL succeeds. It rejects unknown, destructive,
+undeclared, already-ledgered, and out-of-scope migration targets.
+
 ## Failure and rollback
 
 MySQL DDL can auto-commit, so a generic automatic rollback is unsafe. If a

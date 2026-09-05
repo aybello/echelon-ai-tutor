@@ -508,7 +508,7 @@ export default function StudentDashboard() {
                   </svg>
                   <div>
                     <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>
-                      {readinessScore.data.score >= 80 ? "Exam Ready" : readinessScore.data.score >= 60 ? "Progressing" : "Needs Focus"}
+                      {readinessScore.data.label}
                     </div>
                     <div style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, lineHeight: 1.4 }}>{readinessScore.data.nextAction}</div>
                     <div title="A study benchmark, not an official exam score or a guarantee of passing." style={{ color: "#94A3B8", fontSize: 10, marginTop: 4, lineHeight: 1.4, cursor: "help" }}>Study benchmark · not an official score or guarantee.</div>

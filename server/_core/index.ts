@@ -1,3 +1,7 @@
+import {
+  ensurePurchaseEmailHeartbeat,
+  runPurchaseEmailDelivery,
+} from "../purchaseEmailOutbox";
 import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -346,6 +350,31 @@ async function startServer() {
     }
   });
 
+  // ── Purchase confirmation delivery (Heartbeat cron, every minute) ────────
+  app.post("/api/scheduled/purchase-email-delivery", async (req, res) => {
+    const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
+    const taskUid =
+      cronUser?.taskUid ??
+      (req.headers["x-manus-cron-task-uid"] as string | undefined);
+    try {
+      const result = await runPurchaseEmailDelivery();
+      console.log(
+        `[purchase-email] scheduled delivery sent=${result.sent} | ` +
+          `taskUid=${taskUid ?? "manual"}`
+      );
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (error) {
+      console.error("[purchase-email] scheduled delivery failed", error);
+      return res.status(500).json({
+        ok: false,
+        error: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+        context: { url: req.originalUrl, taskUid: taskUid ?? "manual" },
+        timestamp: new Date().toISOString(),
+      });
+    }
+  });
+
   // isDev is used by both SSR handlers
   const isDev = process.env.NODE_ENV === "development";
 
@@ -409,6 +438,16 @@ async function startServer() {
     startExamReminderJob();
     startTriggerEngineJob();
     if (ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
+      void ensurePurchaseEmailHeartbeat()
+        .then(action =>
+          console.log(`[purchase-email] delivery Heartbeat ${action}`)
+        )
+        .catch(error =>
+          console.error(
+            "[purchase-email] could not register delivery Heartbeat",
+            error
+          )
+        );
       void ensureWeeklyBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)

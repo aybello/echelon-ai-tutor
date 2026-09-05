@@ -17,6 +17,7 @@ vi.mock("./_core/learningIdentity", () => ({
 }));
 
 import { getDb } from "./db";
+import { examResults } from "../drizzle/schema";
 
 const QUESTIONS = [
   { questionNum: 1, correctIndex: 0, module: "Disinfection", difficulty: "easy" },
@@ -27,10 +28,13 @@ const QUESTIONS = [
 function makeDb(questionRows = QUESTIONS) {
   const insertValues = vi.fn().mockResolvedValue([]);
   const insertInto = vi.fn().mockReturnValue({ values: insertValues });
-  const selectWhere = vi.fn().mockResolvedValue(questionRows);
-  const selectFrom = vi.fn().mockReturnValue({ where: selectWhere });
-  const selectFn = vi.fn().mockReturnValue({ from: selectFrom });
-  const db: any = { select: selectFn, insert: insertInto };
+  const db: any = {
+    select: vi.fn().mockReturnValue({ from: (table: unknown) => ({
+      where: () => table === examResults ? { limit: async () => [] } : Promise.resolve(questionRows),
+    }) }),
+    insert: insertInto,
+    transaction: async (work: (tx: any) => Promise<void>) => work(db),
+  };
   return { db, insertValues, insertInto };
 }
 
@@ -84,19 +88,38 @@ describe("exam.submitMock — server scoring", () => {
     expect(result.pct).toBe(100);
   });
 
-  it("ignores unknown questionIds gracefully", async () => {
-    const { db } = makeDb([QUESTIONS[0]]); // only Q1 exists
+  it("rejects unavailable questions rather than silently changing the exam", async () => {
+    const { db } = makeDb([QUESTIONS[0]]);
     vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.exam.submitMock({
-      ...BASE_INPUT,
-      answers: [
-        { questionNum: 1, selectedIndex: 0 }, // correct
-        { questionNum: 999, selectedIndex: 0 }, // unknown — skipped
-      ],
+    await expect(appRouter.createCaller(makeCtx()).exam.submitMock(BASE_INPUT)).rejects.toThrow("no longer available");
+  });
+
+  it("counts unanswered questions as incorrect in the saved denominator", async () => {
+    const { db, insertValues } = makeDb();
+    vi.mocked(getDb).mockResolvedValue(db);
+    const result = await appRouter.createCaller(makeCtx()).exam.submitMock({ ...BASE_INPUT,
+      answers: QUESTIONS.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i === 0 ? 0 : null })),
     });
-    // total is answers.length (2) but Q999 is skipped in scoring
-    expect(result.score).toBe(1);
+    expect(result).toMatchObject({ score: 1, total: 3, pct: 33, passed: false });
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ score: 1, total: 3 });
+  });
+
+  it("does not round a failing raw score into a pass", async () => {
+    const rows = Array.from({ length: 200 }, (_, i) => ({ ...QUESTIONS[0], questionNum: i + 1 }));
+    const { db } = makeDb(rows);
+    vi.mocked(getDb).mockResolvedValue(db);
+    const result = await appRouter.createCaller(makeCtx()).exam.submitMock({ ...BASE_INPUT,
+      answers: rows.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < 139 ? 0 : null })),
+    });
+    expect(result.pct).toBe(70);
+    expect(result.passed).toBe(false);
+  });
+
+  it("rejects repeated question numbers", async () => {
+    const { db } = makeDb(); vi.mocked(getDb).mockResolvedValue(db);
+    await expect(appRouter.createCaller(makeCtx()).exam.submitMock({ ...BASE_INPUT,
+      answers: [BASE_INPUT.answers[0], BASE_INPUT.answers[0]],
+    })).rejects.toThrow("exactly once");
   });
 
   it("throws INTERNAL_SERVER_ERROR when DB is unavailable", async () => {
@@ -111,7 +134,7 @@ describe("exam.submitMock — server scoring", () => {
     const caller = appRouter.createCaller(makeCtx());
     await caller.exam.submitMock(BASE_INPUT);
     // First insert call is a question attempt
-    const firstAttempt = insertValues.mock.calls[0][0];
+    const firstAttempt = insertValues.mock.calls[1][0][0];
     expect(firstAttempt.orgId).toBe(3);
     expect(firstAttempt.organizationMemberId).toBe(77);
   });
@@ -121,7 +144,7 @@ describe("exam.submitMock — server scoring", () => {
     vi.mocked(getDb).mockResolvedValue(db);
     const caller = appRouter.createCaller(makeCtx());
     await caller.exam.submitMock(BASE_INPUT);
-    const firstAttempt = insertValues.mock.calls[0][0];
+    const firstAttempt = insertValues.mock.calls[1][0][0];
     expect(firstAttempt.quizMode).toBe("mock");
   });
 
@@ -130,7 +153,7 @@ describe("exam.submitMock — server scoring", () => {
     vi.mocked(getDb).mockResolvedValue(db);
     const caller = appRouter.createCaller(makeCtx());
     await caller.exam.submitMock(BASE_INPUT);
-    const firstAttempt = insertValues.mock.calls[0][0];
+    const firstAttempt = insertValues.mock.calls[1][0][0];
     expect(firstAttempt.bankKey).toBe("ontario-class1-water");
   });
 

@@ -1,3 +1,5 @@
+import { purchaseEmailOutbox } from "../../drizzle/schema";
+import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 /**
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
@@ -11,8 +13,6 @@ import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 
-import { sendPurchaseConfirmationEmail } from "../email";
-import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
@@ -39,6 +39,22 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  purchaseEmailDelivery: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+    return db.select({ id: purchaseEmailOutbox.id, stripeSessionId: purchaseEmailOutbox.stripeSessionId,
+      status: purchaseEmailOutbox.status, attempts: purchaseEmailOutbox.attempts,
+      sentAt: purchaseEmailOutbox.sentAt }).from(purchaseEmailOutbox)
+      .orderBy(desc(purchaseEmailOutbox.id)).limit(100);
+  }),
+  retryPurchaseEmail: adminProcedure.input(z.object({ id: z.number().int().positive() })).mutation(async ({ input }) => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+    // Failed items only: cannot race a live worker or accidentally resend a sent email.
+    const [result] = await db.update(purchaseEmailOutbox).set({ status: "pending", attempts: 0, availableAt: new Date() })
+      .where(and(eq(purchaseEmailOutbox.id, input.id), eq(purchaseEmailOutbox.status, "failed")));
+    return { queued: result.affectedRows === 1 };
+  }),
   /** Owner-facing product, conversion, team-usage, and outcome signals. */
   getProductKpis: adminProcedure.query(async () => {
     const db = await getDb();
@@ -569,7 +585,7 @@ export const adminRouter = router({
             new Date(session.created * 1000),
           );
 
-          await db.insert(purchases).values({
+          await recordPurchaseWithConfirmation(db, {
             userId: userId ?? undefined,
             email,
             productKey,
@@ -595,16 +611,7 @@ export const adminRouter = router({
             }
           }
 
-          // Send confirmation email (non-blocking)
-          const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
-          sendPurchaseConfirmationEmail({
-            email,
-            productName,
-            productKey,
-            amountCAD,
-            quizPath: studyPaths.quizPath,
-            mockPath: studyPaths.mockPath,
-          }).catch(err => console.error("[reconcile] Email failed:", err.message));
+            // Confirmation delivery is queued atomically with the purchase.
 
           recovered.push({ email, productKey, sessionId: session.id });
           console.log(`[reconcile] Recovered missing purchase: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${session.id})`);
