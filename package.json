@@ -19,6 +19,7 @@
     "db:migrate:status": "node --import tsx scripts/db/migrate.ts status",
     "db:migrate:adopt": "node --import tsx scripts/db/migrate.ts adopt",
     "db:migrate:apply": "node --import tsx scripts/db/migrate.ts apply",
+    "db:migrate:apply-standalone": "node --import tsx scripts/db/migrate.ts apply-standalone",
     "db:verify-question-governance": "node scripts/verify-question-governance-schema.mjs",
     "audit:answer-bias": "node --import tsx scripts/audit-answer-length-bias.ts",
     "fix:answer-bias": "node --import tsx scripts/fix-answer-length-bias.ts",

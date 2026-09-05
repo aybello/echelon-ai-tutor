@@ -81,6 +81,30 @@ jobs:
             pnpm db:migrate:apply
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:verify-schema --strict
+
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot \
+            -e "CREATE DATABASE echelon_standalone_ci"
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_standalone_ci \
+            < /tmp/echelon-baseline.sql
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_standalone_ci \
+            -e "ALTER TABLE job_postings MODIFY COLUMN sourceType enum('rss','scraper') NOT NULL DEFAULT 'rss';"
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
+            pnpm db:migrate:adopt
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_standalone_ci \
+            -e "DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE purchase_email_outbox, certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions, on_the_job_training_records, learning_activity_sessions, training_attestations; DROP INDEX analytics_anonymous_time_idx ON product_analytics_events; ALTER TABLE product_analytics_events DROP COLUMN anonymousHash;"
+          MIGRATION_APPROVED=APPLY_APPROVED_STANDALONE_MIGRATION \
+          MIGRATION_BACKUP_CONFIRMED=BACKUP_VERIFIED \
+          MIGRATION_TARGET=0062_purchase_email_outbox \
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
+            pnpm db:migrate:apply-standalone
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot -N -e \
+            "SELECT tag, status FROM echelon_standalone_ci.echelon_schema_migrations WHERE version = 62" \
+            | grep -Ex "^0062_purchase_email_outbox[[:space:]]+applied$"
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot -N -e \
+            "SELECT COUNT(*) FROM echelon_standalone_ci.echelon_schema_migrations WHERE version IN (59, 60, 61)" \
+            | grep -Fx "0"
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
+            pnpm db:migrate:status
       - name: Deterministic unit and acceptance tests
         run: >-
           pnpm exec vitest run
