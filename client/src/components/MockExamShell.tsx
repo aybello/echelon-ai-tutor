@@ -13,7 +13,6 @@ import ScoreHistory from "@/components/ScoreHistory";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { shuffle } from "@/lib/utils";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
@@ -327,30 +326,6 @@ type ExamState = "stream-select" | "intro" | "active" | "results";
 
 // ─── Question selector ────────────────────────────────────────────────────────
 
-function selectExamQuestions(
-  pool: ExamQuestion[],
-  moduleTargets: Record<string, number>,
-  total: number
-): ExamQuestion[] {
-  const shuffled = shuffle([...pool]);
-  const selected: ExamQuestion[] = [];
-  const byModule: Record<string, ExamQuestion[]> = {};
-  for (const q of shuffled) {
-    if (!byModule[q.module]) byModule[q.module] = [];
-    byModule[q.module].push(q);
-  }
-  for (const [mod, target] of Object.entries(moduleTargets)) {
-    const available = byModule[mod] ?? [];
-    selected.push(...available.slice(0, target));
-  }
-  const selectedIds = new Set(selected.map(q => q.id));
-  const remaining = shuffled.filter(q => !selectedIds.has(q.id));
-  while (selected.length < total && remaining.length > 0) {
-    selected.push(remaining.shift()!);
-  }
-  return shuffle(selected).slice(0, total);
-}
-
 function formatTime(seconds: number): string {
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
@@ -460,8 +435,16 @@ export default function MockExamShell({
   const resolvedAccent  = selectedStream?.color  ?? accentColor;
   const resolvedAccent2 = selectedStream?.color  ?? accentColor2;
 
-  const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
+  const [sessionId, setSessionId] = useState<string>(() => crypto.randomUUID());
   const deadlineRef = useRef<number | null>(null);
+  const [sessionToken, setSessionToken] = useState("");
+  const [sessionExamType, setSessionExamType] = useState("");
+  const [previewSession, setPreviewSession] = useState(false);
+  const [legacyDraft, setLegacyDraft] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const startMock = trpc.exam.startMock.useMutation();
+  const startingRef = useRef(false);
+  const finalTimeRef = useRef(EXAM_DURATION);
   const recoveryKey = `echelon.mock.v1:${productKeyProp}:${user?.email ?? storedEmailForAccess ?? "guest"}`;
   const recoveryLoaded = useRef<string | null>(null);
 
@@ -487,7 +470,7 @@ export default function MockExamShell({
       resultSavedRef.current = true;
       setSaveStatus(result.persisted ? "saved" : "guest");
     },
-    onError: () => { resultSavedRef.current = false; setSaveStatus("error"); },
+    onError: error => { resultSavedRef.current = false; setSaveError(error.message); setSaveStatus("error"); },
   });
   const answered = answers.filter(a => a.selected !== null).length;
   const showPreviewGate =
@@ -496,30 +479,40 @@ export default function MockExamShell({
     !hasPaidAccess &&
     answered >= freeQuestionLimit;
 
-  const startExam = useCallback((overridePool?: ExamQuestion[], overrideTargets?: Record<string, number>) => {
-    if (showProvinceSelector) {
-      try { localStorage.setItem("echelon_province", selectedProvince); } catch {}
-    }
-    const pool    = overridePool    ?? questionPool;
-    const targets = overrideTargets ?? moduleTargets;
-    const qs = selectExamQuestions(pool, targets, EXAM_QUESTIONS);
-    if (!qs.length) { toast.error("Questions are still loading. Please try again."); return; }
-    setSessionId(crypto.randomUUID());
-    deadlineRef.current = Date.now() + EXAM_DURATION * 1000;
-    setSaveStatus("idle");
-    submitMock.reset();
-    setQuestions(qs);
-    setCurrentIdx(0);
-    setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
-    setTimeLeft(EXAM_DURATION);
-    setFlagged([]);
-    setShowReview(false);
-    resultSavedRef.current = false;
-    setExamState("active");
-  }, [questionPool, moduleTargets, EXAM_QUESTIONS, EXAM_DURATION, showProvinceSelector, selectedProvince]);
+  const startExam = useCallback(async () => {
+    if (startingRef.current) return;
+    startingRef.current = true;
+    try {
+      const issued = await startMock.mutateAsync({ courseKey: productKey, accessToken: storedAccessTokenForAccess });
+      if (showProvinceSelector) {
+        try { localStorage.setItem("echelon_province", selectedProvince); } catch {}
+      }
+      setSessionId(issued.sessionId);
+      setSessionToken(issued.token);
+      setSessionExamType(issued.examType);
+      setPreviewSession(issued.preview);
+      setLegacyDraft(false);
+      deadlineRef.current = issued.deadline;
+      finalTimeRef.current = issued.duration;
+      setSaveStatus("idle");
+      setSaveError("");
+      submitMock.reset();
+      setQuestions(issued.questions);
+      setCurrentIdx(0);
+      setAnswers(issued.questions.map((_, i) => ({ questionIndex: i, selected: null })));
+      setTimeLeft(Math.max(0, Math.ceil((issued.deadline - Date.now()) / 1000)));
+      setFlagged([]);
+      setShowReview(false);
+      resultSavedRef.current = false;
+      setExamState("active");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not start the exam. Please try again.");
+    } finally { startingRef.current = false; }
+  }, [productKey, storedAccessTokenForAccess, showProvinceSelector, selectedProvince, startMock.mutateAsync]);
 
   const handleSubmit = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
+    finalTimeRef.current = Math.max(0, Math.ceil(((deadlineRef.current ?? Date.now()) - Date.now()) / 1000));
     setExamState("results");
   }, []);
 
@@ -532,7 +525,7 @@ export default function MockExamShell({
       const raw = sessionStorage.getItem(recoveryKey);
       if (!raw) return;
       const saved = JSON.parse(raw);
-      if (saved.version !== 1 || Date.now() - saved.updatedAt > 86400000
+      if (![1, 2].includes(saved.version) || Date.now() - saved.updatedAt > 86400000
         || !Array.isArray(saved.questions) || !saved.questions.length || saved.questions.length > 200
         || !Array.isArray(saved.answers) || saved.answers.length !== saved.questions.length
         || !["active", "results"].includes(saved.examState) || typeof saved.deadline !== "number"
@@ -542,6 +535,13 @@ export default function MockExamShell({
           && (a.selected === null || (Number.isInteger(a.selected) && a.selected >= 0 && a.selected < 4)))) return;
       const restoredStream = streamOptions?.find(option => option.productKey === saved.streamKey) ?? null;
       if (streamOptions?.length && !restoredStream) return;
+      const legacy = saved.version === 1;
+      if (!legacy && (typeof saved.sessionToken !== "string" || !saved.sessionToken || typeof saved.sessionExamType !== "string")) return;
+      setLegacyDraft(legacy);
+      setSessionToken(saved.sessionToken ?? "");
+      setSessionExamType(saved.sessionExamType ?? "");
+      setPreviewSession(saved.previewSession === true);
+      finalTimeRef.current = saved.timeLeft;
       setSelectedStream(restoredStream);
       setSessionId(saved.sessionId);
       setQuestions(saved.questions);
@@ -550,10 +550,10 @@ export default function MockExamShell({
       setFlagged(Array.isArray(saved.flagged) ? saved.flagged : []);
       deadlineRef.current = saved.deadline;
       setTimeLeft(saved.examState === "results" ? saved.timeLeft : Math.max(0, Math.ceil((saved.deadline - Date.now()) / 1000)));
-      setExamState(saved.examState);
+      setExamState(legacy ? "results" : saved.examState);
       resultSavedRef.current = saved.saved === true;
-      setSaveStatus(saved.saved ? "saved" : "idle");
-      toast.info("Your exam has been restored.");
+      setSaveStatus(saved.saved ? "saved" : legacy ? "guest" : "idle");
+      toast.info(legacy ? "Your previous answers are available for review. Start a new exam to save a new result." : "Your exam has been restored.");
     } catch { /* Storage may be unavailable or an old draft invalid. */ }
   }, [recoveryKey, streamOptions, authLoading]);
 
@@ -561,12 +561,14 @@ export default function MockExamShell({
     if (authLoading || recoveryLoaded.current !== recoveryKey || !["active", "results"].includes(examState) || !questions.length) return;
     try {
       sessionStorage.setItem(recoveryKey, JSON.stringify({
-        version: 1, updatedAt: Date.now(), sessionId, questions, answers, currentIdx, flagged,
-        examState, timeLeft, deadline: deadlineRef.current, streamKey: selectedStream?.productKey,
+        version: legacyDraft ? 1 : 2, updatedAt: Date.now(), sessionId, sessionToken, sessionExamType, previewSession, questions, answers, currentIdx, flagged,
+        examState, timeLeft: finalTimeRef.current, deadline: deadlineRef.current, streamKey: selectedStream?.productKey,
         saved: saveStatus === "saved",
       }));
     } catch { /* Saving to the server remains available if local storage is full. */ }
-  }, [recoveryKey, sessionId, questions, answers, currentIdx, flagged, examState, timeLeft, selectedStream, saveStatus, authLoading]);
+  // The deadline is fixed. Timer ticks require no storage writes; answers,
+  // navigation, flags and save status are persisted immediately for refresh.
+  }, [recoveryKey, sessionId, sessionToken, sessionExamType, previewSession, legacyDraft, questions, answers, currentIdx, flagged, examState, selectedStream, saveStatus, authLoading]);
 
   useEffect(() => {
     if (examState !== "active" || showPreviewGate) return;
@@ -575,6 +577,7 @@ export default function MockExamShell({
       setTimeLeft(remaining);
       if (remaining === 0) {
         if (timerRef.current) clearInterval(timerRef.current);
+        finalTimeRef.current = 0;
         setExamState("results");
       }
     };
@@ -597,13 +600,13 @@ export default function MockExamShell({
     });
     const score = correct / questions.length;
     const pct = Math.round(score * 100);
-    const passed = score >= passThreshold; // compare raw floats to avoid rounding artifacts (e.g. 69.5% rounding to 70% and passing a 70% threshold)
+    const passed = !previewSession && score >= passThreshold; // compare raw floats to avoid rounding artifacts (e.g. 69.5% rounding to 70% and passing a 70% threshold)
     // Sort modules weakest first
     const sortedModules = Object.entries(moduleBreakdown)
       .filter(([, bd]) => bd.total > 0)
       .sort(([, a], [, b]) => (a.correct / a.total) - (b.correct / b.total));
     return { correct, score, pct, passed, moduleBreakdown, sortedModules };
-  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold]);
+  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession]);
   useLearningActivitySession({
     courseKey: productKey,
     activityType: "mock_exam",
@@ -614,10 +617,10 @@ export default function MockExamShell({
   });
 
   const saveResult = () => {
-    if (!results || submitMock.isPending) return;
+    if (!results || submitMock.isPending || !sessionToken || legacyDraft) return;
     setSaveStatus("saving");
     submitMock.mutate({
-      sessionId, examType: scoreExamType ?? productKey, bankKey: productKey,
+      sessionId, sessionToken, examType: sessionExamType, bankKey: productKey,
       timeTakenSeconds: EXAM_DURATION - timeLeft,
       ...(stream ? { stream } : {}),
       // Every selected question is submitted, including unanswered questions.
@@ -845,10 +848,11 @@ export default function MockExamShell({
               </div>
 
               <button
+                disabled={startMock.isPending}
                 onClick={() => startExam()}
                 style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${resolvedAccent}, ${resolvedAccent2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
               >
-                🚀 Start Exam
+                {startMock.isPending ? "Preparing exam…" : "🚀 Start Exam"}
               </button>
               <div style={{ marginTop: 16 }}>
                 <Link href={practicePath} style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>
@@ -875,8 +879,8 @@ export default function MockExamShell({
           <div role="status" aria-live="polite" style={{ marginBottom: 16 }}>
             {saveStatus === "saving" && "Saving your exam result…"}
             {saveStatus === "saved" && "Exam result saved."}
-            {saveStatus === "guest" && "Your result is shown below. Sign in before your next exam to save results to your history."}
-            {saveStatus === "error" && <><span>Your result could not be saved. Your answers are kept in this tab. </span>
+            {saveStatus === "guest" && (legacyDraft ? "Your previous answers are available for review. Start a new exam to save a new result." : previewSession ? "Preview complete. Full mock exams are saved with an active course pass." : "Your result is shown below. Sign in before your next exam to save results to your history.")}
+            {saveStatus === "error" && <><span>{saveError || "Your result could not be saved."} Your answers are kept in this tab. </span>
               <button onClick={saveResult}>Retry saving result</button></>}
           </div>
           {/* Score hero */}
@@ -889,13 +893,13 @@ export default function MockExamShell({
           }} className="mes-results-hero">
             <div style={{ fontSize: 52, marginBottom: 8 }}>{passed ? "🎉" : "📚"}</div>
             <div style={{ fontSize: 48, fontWeight: 900, marginBottom: 4 }}>{pct}%</div>
-            <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{passed ? "PASSED" : "NOT YET"}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{previewSession ? "PREVIEW COMPLETE" : passed ? "PASSED" : "NOT YET"}</div>
             <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 24 }}>
-              {correct} / {questions.length} correct · {passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
+              {correct} / {questions.length} correct · {previewSession ? "Practice preview — not a full mock result" : passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
             </div>
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
-                disabled={saveStatus === "saving" || saveStatus === "error"}
+                disabled={startMock.isPending || saveStatus === "saving" || (saveStatus === "error" && !saveError.includes("expired"))}
                 onClick={() => { resultSavedRef.current = false; startExam(); }}
                 style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >

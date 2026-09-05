@@ -125,7 +125,22 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await mockExamLink.click();
   await operatorPage.waitForURL(`**/${COURSE_KEY}-mock`);
 
+  await operatorPage.evaluate(() => {
+    const original = Storage.prototype.setItem;
+    (window as any).__mockWrites = 0;
+    Storage.prototype.setItem = function(key, value) {
+      if (key.startsWith("echelon.mock.")) (window as any).__mockWrites++;
+      return original.call(this, key, value);
+    };
+  });
   await operatorPage.getByRole("button", { name: /Start Exam/ }).click();
+  await expect(operatorPage.locator(".mes-option-btn")).toHaveCount(4);
+  // Idle clock ticks must not rewrite a full question set to synchronous storage.
+  await operatorPage.waitForTimeout(1500);
+  const writesBefore = await operatorPage.evaluate(() => (window as any).__mockWrites);
+  await operatorPage.waitForTimeout(3500);
+  expect(await operatorPage.evaluate(() => (window as any).__mockWrites)).toBe(writesBefore);
+
   await operatorPage.locator(".mes-option-btn").first().click();
   await expect(operatorPage.locator('.mes-option-btn[aria-pressed="true"]')).toHaveCount(1);
   await operatorPage.reload();
@@ -139,7 +154,7 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await operatorPage.unroute("**/api/trpc/*exam.submitMock*");
   await operatorPage.getByRole("button", { name: "Retry saving result" }).click();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
-  await expect(operatorPage.locator(".mes-results-hero").getByText("33%", { exact: true })).toBeVisible();
+  await expect(operatorPage.locator(".mes-results-hero").getByText("1%", { exact: true })).toBeVisible();
   await operatorPage.reload();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
 
@@ -158,12 +173,12 @@ test("manager can invite an operator who claims, activates and opens the assigne
       "SELECT score, total, passed FROM exam_results WHERE studentEmail = ? AND bankKey = ?",
       [OPERATOR_EMAIL, COURSE_KEY],
     );
-    expect(examRows).toEqual([expect.objectContaining({ score: 1, total: 3, passed: "no" })]);
+    expect(examRows).toEqual([expect.objectContaining({ score: 1, total: 100, passed: "no" })]);
     const [attemptRows] = await connection.execute(
       "SELECT id FROM question_attempts WHERE studentEmail = ? AND bankKey = ? AND quizMode = 'mock'",
       [OPERATOR_EMAIL, COURSE_KEY],
     );
-    expect(attemptRows).toHaveLength(3);
+    expect(attemptRows).toHaveLength(100);
     expect(rows).toEqual([
       expect.objectContaining({
         status: "active",

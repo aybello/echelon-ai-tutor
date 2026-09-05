@@ -1,170 +1,88 @@
-/**
- * Tests for exam.submitMock — server-scored mock exam submission.
- * Verifies server scoring, result persistence, and org identity propagation.
- */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
-
-vi.mock("./db", () => ({ getDb: vi.fn() }));
-vi.mock("./_core/learningIdentity", () => ({
-  resolveLearningIdentity: vi.fn().mockResolvedValue({
-    userId: 5,
-    studentEmail: "operator@example.com",
-    orgId: 3,
-    organizationMemberId: 77,
-  }),
-}));
-
-import { getDb } from "./db";
+import { issueMockSession, mockOwner, mockSpecification } from "./mockExamSession";
+import { ENV } from "./_core/env";
 import { examResults } from "../drizzle/schema";
-
-const QUESTIONS = [
-  { questionNum: 1, correctIndex: 0, module: "Disinfection", difficulty: "easy" },
-  { questionNum: 2, correctIndex: 1, module: "Hydraulics", difficulty: "medium" },
-  { questionNum: 3, correctIndex: 2, module: "Disinfection", difficulty: "hard" },
-];
-
-function makeDb(questionRows = QUESTIONS) {
+vi.mock("./db", () => ({ getDb: vi.fn() }));
+vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn().mockResolvedValue({
+  userId: 5, studentEmail: "operator@example.com", orgId: 3, organizationMemberId: 77,
+}) }));
+import { getDb } from "./db";
+const identity = { userId: 5, studentEmail: "operator@example.com" };
+const QUESTIONS = Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: 0, module: "Safety", difficulty: "easy" }));
+function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
   const insertValues = vi.fn().mockResolvedValue([]);
-  const insertInto = vi.fn().mockReturnValue({ values: insertValues });
   const db: any = {
     select: vi.fn().mockReturnValue({ from: (table: unknown) => ({
-      where: () => table === examResults ? { limit: async () => [] } : Promise.resolve(questionRows),
+      where: () => table === examResults ? { limit: async () => existing } : Promise.resolve(questionRows),
     }) }),
-    insert: insertInto,
+    insert: vi.fn().mockReturnValue({ values: insertValues }),
     transaction: async (work: (tx: any) => Promise<void>) => work(db),
   };
-  return { db, insertValues, insertInto };
+  vi.mocked(getDb).mockResolvedValue(db);
+  return { db, insertValues };
 }
-
-function makeCtx(): TrpcContext {
-  return {
-    user: null,
-    studentEmail: null,
-    req: { protocol: "https", headers: {} } as TrpcContext["req"],
-    res: {} as TrpcContext["res"],
-  };
+const ctx = { user: null, studentEmail: null, req: { headers: {} }, res: {} } as TrpcContext;
+function input(correct = 69, now = Date.now()) {
+  const spec = mockSpecification("class4-ww");
+  const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: false, questionNums: QUESTIONS.map(q => q.questionNum) }, now);
+  return { sessionId: issued.manifest.sessionId, sessionToken: issued.token, examType: spec.examType, bankKey: spec.courseKey,
+    answers: QUESTIONS.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct ? 0 : null })) };
 }
-
-const BASE_INPUT = {
-  sessionId: "session-abc-123",
-  examType: "class1-water",
-  bankKey: "ontario-class1-water",
-  timeTakenSeconds: 3600,
-  answers: [
-    { questionNum: 1, selectedIndex: 0 }, // correct
-    { questionNum: 2, selectedIndex: 3 }, // wrong
-    { questionNum: 3, selectedIndex: 2 }, // correct
-  ],
-};
-
-describe("exam.submitMock — server scoring", () => {
-  beforeEach(() => vi.clearAllMocks());
-
-  it("scores answers server-side and returns correct count and pass/fail", async () => {
-    const { db } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.exam.submitMock(BASE_INPUT);
-    expect(result.score).toBe(2);
-    expect(result.total).toBe(3);
-    expect(result.passed).toBe(false); // 67% < 70%
+describe("issued mock submission", () => {
+  beforeEach(() => { vi.clearAllMocks(); ENV.cookieSecret = "unit-test-secret-not-production"; });
+  it("saves 69/100 as a fail, including all unanswered items and organization attribution", async () => {
+    const { insertValues } = makeDb();
+    const result = await appRouter.createCaller(ctx).exam.submitMock(input());
+    expect(result).toMatchObject({ score: 69, total: 100, passed: false, persisted: true });
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ score: 69, total: 100, passed: "no" });
+    const attempts = insertValues.mock.calls[1][0];
+    expect(attempts).toHaveLength(100);
+    expect(attempts.filter((a: any) => a.selectedIndex === null)).toHaveLength(31);
+    expect(attempts[0]).toMatchObject({ orgId: 3, organizationMemberId: 77, quizMode: "mock", bankKey: "class4-ww" });
   });
-
-  it("marks as passed when score >= 70%", async () => {
-    const { db } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.exam.submitMock({
-      ...BASE_INPUT,
-      answers: [
-        { questionNum: 1, selectedIndex: 0 }, // correct
-        { questionNum: 2, selectedIndex: 1 }, // correct
-        { questionNum: 3, selectedIndex: 2 }, // correct
-      ],
-    });
-    expect(result.passed).toBe(true);
-    expect(result.pct).toBe(100);
+  it("passes a complete 70/100 exam", async () => {
+    makeDb(); expect(await appRouter.createCaller(ctx).exam.submitMock(input(70))).toMatchObject({ pct: 70, passed: true });
   });
-
-  it("rejects unavailable questions rather than silently changing the exam", async () => {
-    const { db } = makeDb([QUESTIONS[0]]);
-    vi.mocked(getDb).mockResolvedValue(db);
-    await expect(appRouter.createCaller(makeCtx()).exam.submitMock(BASE_INPUT)).rejects.toThrow("no longer available");
+  it.each(["one-question", "duplicate", "replacement", "course", "session", "calcOnly", "signature", "missing-token"])("rejects %s tampering before writing results", async kind => {
+    const { insertValues } = makeDb(); const data: any = input();
+    if (kind === "one-question") data.answers = data.answers.slice(0, 1);
+    if (kind === "duplicate") data.answers[99] = data.answers[0];
+    if (kind === "replacement") data.answers[99].questionNum = 99999;
+    if (kind === "course") data.bankKey = "oit";
+    if (kind === "session") data.sessionId = "another-session";
+    if (kind === "calcOnly") data.calcOnly = true;
+    if (kind === "signature") data.sessionToken = "altered." + data.sessionToken.split(".")[1];
+    if (kind === "missing-token") delete data.sessionToken;
+    await expect(appRouter.createCaller(ctx).exam.submitMock(data)).rejects.toThrow();
+    expect(insertValues).not.toHaveBeenCalled();
   });
-
-  it("counts unanswered questions as incorrect in the saved denominator", async () => {
-    const { db, insertValues } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const result = await appRouter.createCaller(makeCtx()).exam.submitMock({ ...BASE_INPUT,
-      answers: QUESTIONS.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i === 0 ? 0 : null })),
-    });
-    expect(result).toMatchObject({ score: 1, total: 3, pct: 33, passed: false });
-    expect(insertValues.mock.calls[0][0]).toMatchObject({ score: 1, total: 3 });
+  it("rejects new results after the deadline and transport grace", async () => {
+    const { insertValues } = makeDb();
+    await expect(appRouter.createCaller(ctx).exam.submitMock(input(100, Date.now() - 4 * 3600_000))).rejects.toThrow("expired");
+    expect(insertValues).not.toHaveBeenCalled();
   });
-
-  it("does not round a failing raw score into a pass", async () => {
-    const rows = Array.from({ length: 200 }, (_, i) => ({ ...QUESTIONS[0], questionNum: i + 1 }));
-    const { db } = makeDb(rows);
-    vi.mocked(getDb).mockResolvedValue(db);
-    const result = await appRouter.createCaller(makeCtx()).exam.submitMock({ ...BASE_INPUT,
-      answers: rows.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < 139 ? 0 : null })),
-    });
-    expect(result.pct).toBe(70);
-    expect(result.passed).toBe(false);
+  it("returns a persisted result even after the deadline or later bank edits", async () => {
+    const data = input(100, Date.now() - 4 * 3600_000);
+    const { insertValues } = makeDb([], [{ userId: 5, studentEmail: identity.studentEmail, examType: data.examType, bankKey: data.bankKey, score: 69, total: 100, passed: "no", moduleBreakdown: "{}" }]);
+    expect(await appRouter.createCaller(ctx).exam.submitMock(data)).toMatchObject({ score: 69, total: 100, persisted: true });
+    expect(insertValues).not.toHaveBeenCalled();
   });
-
-  it("rejects repeated question numbers", async () => {
-    const { db } = makeDb(); vi.mocked(getDb).mockResolvedValue(db);
-    await expect(appRouter.createCaller(makeCtx()).exam.submitMock({ ...BASE_INPUT,
-      answers: [BASE_INPUT.answers[0], BASE_INPUT.answers[0]],
-    })).rejects.toThrow("exactly once");
+  it("rejects unavailable questions without shrinking the saved denominator", async () => {
+    makeDb(QUESTIONS.slice(0, 99));
+    await expect(appRouter.createCaller(ctx).exam.submitMock(input())).rejects.toThrow("no longer available");
   });
-
-  it("throws INTERNAL_SERVER_ERROR when DB is unavailable", async () => {
-    vi.mocked(getDb).mockResolvedValue(null);
-    const caller = appRouter.createCaller(makeCtx());
-    await expect(caller.exam.submitMock(BASE_INPUT)).rejects.toThrow("Database unavailable");
+  it("does not persist or mark an OIT preview as a full mock pass", async () => {
+    const { insertValues } = makeDb(QUESTIONS.slice(0, 30)); const spec = mockSpecification("oit");
+    const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: true, questionNums: QUESTIONS.slice(0, 30).map(q => q.questionNum) });
+    expect(await appRouter.createCaller(ctx).exam.submitMock({ sessionId: issued.manifest.sessionId, sessionToken: issued.token,
+      bankKey: "oit", examType: "oit", answers: QUESTIONS.slice(0, 30).map(q => ({ questionNum: q.questionNum, selectedIndex: 0 })) })).toMatchObject({ persisted: false, passed: false, score: 30 });
+    expect(insertValues).not.toHaveBeenCalled();
   });
-
-  it("persists orgId and organizationMemberId on each question attempt", async () => {
-    const { db, insertValues } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    await caller.exam.submitMock(BASE_INPUT);
-    // First insert call is a question attempt
-    const firstAttempt = insertValues.mock.calls[1][0][0];
-    expect(firstAttempt.orgId).toBe(3);
-    expect(firstAttempt.organizationMemberId).toBe(77);
-  });
-
-  it("persists quizMode='mock' on all question attempts", async () => {
-    const { db, insertValues } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    await caller.exam.submitMock(BASE_INPUT);
-    const firstAttempt = insertValues.mock.calls[1][0][0];
-    expect(firstAttempt.quizMode).toBe("mock");
-  });
-
-  it("persists bankKey on all question attempts", async () => {
-    const { db, insertValues } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    await caller.exam.submitMock(BASE_INPUT);
-    const firstAttempt = insertValues.mock.calls[1][0][0];
-    expect(firstAttempt.bankKey).toBe("ontario-class1-water");
-  });
-
-  it("builds moduleBreakdown correctly", async () => {
-    const { db } = makeDb();
-    vi.mocked(getDb).mockResolvedValue(db);
-    const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.exam.submitMock(BASE_INPUT);
-    // Q1 (Disinfection, correct) + Q3 (Disinfection, correct) = 2/2
-    // Q2 (Hydraulics, wrong) = 0/1
-    expect(result.moduleBreakdown?.Disinfection).toEqual({ correct: 2, total: 2 });
-    expect(result.moduleBreakdown?.Hydraulics).toEqual({ correct: 0, total: 1 });
+  it("closes the legacy browser-score bypass", async () => {
+    const { insertValues } = makeDb();
+    await expect(appRouter.createCaller(ctx).exam.saveResult({ score: 1, total: 1, passed: true })).rejects.toThrow("no longer accepted");
+    expect(insertValues).not.toHaveBeenCalled();
   });
 });
