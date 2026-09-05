@@ -89,8 +89,8 @@ try {
     [orderItemId, organizationId, E2E_COURSE_KEY, activationDeadline],
   );
 
-  // Tiny, explicitly synthetic bank makes the learner journey deterministic.
-  for (let number = 990001; number <= 990003; number++) {
+  // A complete synthetic 100-question bank exercises the real exam-size invariant.
+  for (let number = 990001; number <= 990100; number++) {
     await connection.execute(
       `INSERT INTO questions (bankKey, questionNum, module, topic, question, options, correctIndex, explanation, reviewStatus)
        VALUES (?, ?, 'Safety & Admin', 'Safety & Admin', ?, ?, 0, 'Synthetic browser fixture.', 'approved')
