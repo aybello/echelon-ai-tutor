@@ -36,9 +36,11 @@ describe("public release health", () => {
         "training-analytics-exact-aggregation-v1",
         "public-trust-content-v1",
         "bounded-paid-question-delivery-v1",
+        "learner-reliability-recovery-v1",
+        "purchase-email-outbox-reliability-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-09-04.public-trust-bounded-delivery.1");
+    expect(RELEASE_ID).toBe("2026-09-05.learner-reliability.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
