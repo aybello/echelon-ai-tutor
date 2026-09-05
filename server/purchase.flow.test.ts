@@ -1,3 +1,4 @@
+import { purchaseEmailOutbox } from "../drizzle/schema";
 /**
  * Purchase Flow Integration Tests
  * ─────────────────────────────────────────────────────────────────────────────
@@ -78,9 +79,11 @@ type PurchaseRow = {
 
 let mockPurchases: PurchaseRow[] = [];
 let nextId = 1;
+let queuedEmails: unknown[] = [];
 
 vi.mock("./db", () => ({
   getDb: vi.fn(async () => ({
+    async transaction(work: (tx: any) => Promise<void>) { return work(this); },
     select: () => ({
       from: () => ({
         where: (cond: unknown) => ({
@@ -97,8 +100,9 @@ vi.mock("./db", () => ({
         limit: (n: number) => Promise.resolve(mockPurchases.slice(0, n)),
       }),
     }),
-    insert: () => ({
+    insert: (table: unknown) => ({
       values: (vals: Omit<PurchaseRow, "id" | "createdAt">) => {
+        if (table === purchaseEmailOutbox) { queuedEmails.push(vals); return Promise.resolve(); }
         mockPurchases.push({
           id: nextId++,
           createdAt: new Date(),
@@ -157,6 +161,7 @@ function makeCtx(): TrpcContext {
 
 beforeEach(() => {
   mockPurchases = [];
+  queuedEmails = [];
   nextId = 1;
   vi.clearAllMocks();
   // Reset to default paid session
@@ -279,7 +284,7 @@ describe("stripe.saveReferralSource", () => {
 });
 
 describe("purchase flow — confirmation email", () => {
-  it("sends a confirmation email after a new purchase is saved", async () => {
+  it("queues a confirmation email atomically with a new purchase", async () => {
     const { sendPurchaseConfirmationEmail } = await import("./email");
 
     const caller = appRouter.createCaller(makeCtx());
@@ -287,7 +292,8 @@ describe("purchase flow — confirmation email", () => {
 
     // Allow the non-blocking email to be triggered
     await new Promise(r => setTimeout(r, 10));
-    expect(sendPurchaseConfirmationEmail).toHaveBeenCalledTimes(1);
+    expect(queuedEmails).toHaveLength(1);
+    expect(sendPurchaseConfirmationEmail).not.toHaveBeenCalled();
   });
 
   it("does not send a confirmation email if purchase already exists", async () => {

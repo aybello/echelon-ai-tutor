@@ -89,6 +89,15 @@ try {
     [orderItemId, organizationId, E2E_COURSE_KEY, activationDeadline],
   );
 
+  // Tiny, explicitly synthetic bank makes the learner journey deterministic.
+  for (let number = 990001; number <= 990003; number++) {
+    await connection.execute(
+      `INSERT INTO questions (bankKey, questionNum, module, topic, question, options, correctIndex, explanation, reviewStatus)
+       VALUES (?, ?, 'Safety & Admin', 'Safety & Admin', ?, ?, 0, 'Synthetic browser fixture.', 'approved')
+       ON DUPLICATE KEY UPDATE question = VALUES(question)`,
+      [E2E_COURSE_KEY, number, `Browser QA question ${number}`, JSON.stringify(['Correct QA answer', 'Second QA answer', 'Third QA answer', 'Fourth QA answer'])],
+    );
+  }
   await connection.commit();
   console.log(JSON.stringify({ organizationId, orderId, managerEmail: E2E_MANAGER_EMAIL }));
 } catch (error) {

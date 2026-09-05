@@ -1,3 +1,4 @@
+import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
@@ -26,7 +27,6 @@ import { getDb } from "../db";
 import { purchaseReadColumns, purchases, subscriptions } from "../../drizzle/schema";
 import { eq, and, gt, count } from "drizzle-orm";
 import { ENV } from "../_core/env";
-import { sendPurchaseConfirmationEmail } from "../email";
 import { notifyOwner } from "../_core/notification";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
@@ -165,7 +165,7 @@ export const stripeRouter = router({
             .where(eq(purchases.stripeSessionId, input.sessionId))
             .limit(1);
           if (existing.length === 0) {
-            await db.insert(purchases).values({
+            await recordPurchaseWithConfirmation(db, {
               email,
               phone,
               customerName,
@@ -176,17 +176,7 @@ export const stripeRouter = router({
               stripePaymentIntentId,
               accessExpiresAt,
             });
-            const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
-            sendPurchaseConfirmationEmail({
-              email,
-              productName,
-              productKey,
-              amountCAD,
-              quizPath: studyPaths.quizPath,
-              mockPath: studyPaths.mockPath,
-            }).catch(err => {
-              console.error("[verifySession] Failed to send confirmation email:", err.message);
-            });
+            // Confirmation delivery is queued atomically with the purchase.
           }
         }
 

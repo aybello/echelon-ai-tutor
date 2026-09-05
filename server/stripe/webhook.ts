@@ -1,10 +1,11 @@
+import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
 import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
-import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
+import { sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct, isSubscriptionProvince, isSubscriptionTier, type OrganizationSubscriptionTier } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
@@ -148,7 +149,7 @@ export function registerStripeWebhook(app: Express) {
             .limit(1);
 
           if (existing.length === 0) {
-            await db.insert(purchases).values({
+            await recordPurchaseWithConfirmation(db, {
               userId: userId ?? undefined,
               email,
               phone: webhookPrePhone,
@@ -162,18 +163,7 @@ export function registerStripeWebhook(app: Express) {
             });
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
-            // Send purchase confirmation email (non-blocking — don't fail webhook on email error)
-            const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
-            sendPurchaseConfirmationEmail({
-              email,
-              productName: productName ?? productKey,
-              productKey,
-              amountCAD,
-              quizPath: studyPaths.quizPath,
-              mockPath: studyPaths.mockPath,
-            }).catch(err => {
-              console.error("[Stripe Webhook] Failed to send confirmation email:", err.message);
-            });
+            // Confirmation delivery is queued atomically with the purchase.
 
             // Notify owner
             const purchasePhone = session.customer_details?.phone ?? null;

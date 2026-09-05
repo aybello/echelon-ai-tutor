@@ -1,3 +1,4 @@
+import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
 // Gated to role === 'admin'. Shows trial emails, waitlist signups, and error reports.
 
@@ -698,6 +699,7 @@ export default function Admin() {
         {/* -- REVENUE TAB -- */}
         {activeTab === "revenue" && (
           <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+            <PurchaseEmailDelivery />
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
                 💰 Purchase History

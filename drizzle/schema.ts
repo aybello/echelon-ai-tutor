@@ -1368,3 +1368,17 @@ export const changelog = mysqlTable("changelog", {
 });
 export type ChangelogEntry = typeof changelog.$inferSelect;
 export type InsertChangelogEntry = typeof changelog.$inferInsert;
+
+/** Durable individual purchase email delivery. Existing purchases are not backfilled. */
+export const purchaseEmailOutbox = mysqlTable("purchase_email_outbox", {
+  id: int("id").autoincrement().primaryKey(),
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }).notNull(),
+  payload: text("payload").notNull(),
+  status: mysqlEnum("status", ["pending", "sending", "sent", "failed"]).default("pending").notNull(),
+  attempts: int("attempts").default(0).notNull(),
+  availableAt: timestamp("availableAt").defaultNow().notNull(),
+  leaseToken: varchar("leaseToken", { length: 36 }),
+  sentAt: timestamp("sentAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, t => [uniqueIndex("purchase_email_session_unique_idx").on(t.stripeSessionId),
+  index("purchase_email_delivery_idx").on(t.status, t.availableAt)]);
