@@ -12,10 +12,13 @@ Individual checkout webhook, browser verification, and both reconciliation paths
 
 ## Deployment order
 
-1. Take the normal database backup and apply forward migration **0062_purchase_email_outbox** using the existing migration runner. The change only creates the outbox table; it does not update historical purchases.
-2. Run the strict schema verifier and verify the migration ledger.
-3. Deploy the server and client together after the PR quality gate passes. The new purchase transaction requires the outbox table.
-4. Verify a test purchase queues and sends one confirmation, and verify an incomplete mock saves the full question count.
+No production migration, merge, or deployment is part of the CI revision. After the revised Quality Gate passes and re-review approves the release:
+
+1. Verify and record database backup evidence before any production schema write.
+2. Apply **only `drizzle/0062_purchase_email_outbox.sql`** through the controlled release process. Do not run the unrestricted `pnpm db:migrate:apply` command: it applies all pending migrations. Unrelated pending migrations must remain untouched. This migration only creates the outbox table; it does not update historical purchases.
+3. Verify the `purchase_email_outbox` columns, primary key, unique `purchase_email_session_unique_idx` index, and `purchase_email_delivery_idx` index against the SQL. Record the migration checksum and application evidence, and reconcile its ledger entry through the controlled release process. Do not mark unrelated migrations applied or apply them to clear whole-schema verification failures.
+4. Merge the reviewed commit, then deploy the server and client together. The new purchase transaction requires the verified outbox table.
+5. Validate the live release: verify a test purchase queues and sends one confirmation, and verify an incomplete mock saves the full question count.
 
 Rollback: roll back application code if needed; leave the additive outbox table intact. Investigate queued messages before restarting delivery. No production deployment was performed by this change.
 

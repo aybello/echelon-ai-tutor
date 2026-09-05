@@ -59,18 +59,23 @@ suite("learner reliability with a real database", () => {
     } finally { spy.mockRestore(); }
     expect(await db.select().from(examResults).where(eq(examResults.sessionId, sessionId))).toHaveLength(0);
   });
-  it("keeps email delivery pending after SMTP failure and retries it", async () => {
+  it("keeps email delivery pending after SMTP failure and retries without duplicating the purchase", async () => {
     const stripeSessionId = `cs_${randomUUID()}`; sessions.push(stripeSessionId);
     await recordPurchaseWithConfirmation(db, { email, productKey: "oit", productName: "OIT QA", amountCAD: 4900, stripeSessionId });
+    const originalPurchases = await db.select().from(purchases).where(eq(purchases.stripeSessionId, stripeSessionId));
+    expect(originalPurchases).toHaveLength(1);
     const send = vi.fn().mockRejectedValueOnce(new Error("SMTP down")).mockResolvedValue(undefined);
     await deliverPurchaseEmails(db, send, new Date(), stripeSessionId);
     const [pending] = await db.select().from(purchaseEmailOutbox).where(eq(purchaseEmailOutbox.stripeSessionId, stripeSessionId));
     expect(pending).toMatchObject({ status: "pending", attempts: 1 });
+    expect(await db.select().from(purchases).where(eq(purchases.stripeSessionId, stripeSessionId))).toEqual(originalPurchases);
     await deliverPurchaseEmails(db, send, new Date(Date.now() + 5 * 60_000), stripeSessionId);
     const [sent] = await db.select().from(purchaseEmailOutbox).where(eq(purchaseEmailOutbox.stripeSessionId, stripeSessionId));
     expect(sent).toMatchObject({ status: "sent", attempts: 2 });
     await deliverPurchaseEmails(db, send, new Date(Date.now() + 6 * 60_000), stripeSessionId);
     expect(send).toHaveBeenCalledTimes(2);
+    expect(await db.select().from(purchases).where(eq(purchases.stripeSessionId, stripeSessionId))).toEqual(originalPurchases);
+    expect(await db.select().from(purchaseEmailOutbox).where(eq(purchaseEmailOutbox.stripeSessionId, stripeSessionId))).toHaveLength(1);
   });
   it("keeps account study recommendations scoped to the selected course", async () => {
     const userId = 1900991;
