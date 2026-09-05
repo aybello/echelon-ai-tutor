@@ -50,6 +50,12 @@ export interface ForwardMigration {
   adoptIfCurrentSchemaMatches?: boolean;
   /** Explicitly proposed but not yet applied additive schema changes. */
   proposedOnly?: boolean;
+  /**
+   * Allows this additive migration to be applied through the separately
+   * approved standalone command when earlier proposed work remains pending.
+   * The listed tables are checked against schema.ts immediately after apply.
+   */
+  standaloneApply?: { tables: string[] };
   /** Missing indexes that this exact proposed migration will add. */
   verifierAllowMissingIndexes?: Array<{
     table: string;
@@ -380,6 +386,34 @@ export async function validateManifest(
       errors.push(
         `${migration.file} cannot be both proposedOnly and adoptIfCurrentSchemaMatches.`
       );
+    }
+    if (migration.standaloneApply) {
+      if (!migration.proposedOnly) {
+        errors.push(
+          `${migration.file} can allow standalone application only when proposedOnly=true.`
+        );
+      }
+      if (destructive.length > 0 || migration.allowDestructive) {
+        errors.push(
+          `${migration.file} cannot allow standalone application when it is destructive.`
+        );
+      }
+      if (migration.standaloneApply.tables.length === 0) {
+        errors.push(
+          `${migration.file} standalone application must declare at least one table to verify.`
+        );
+      }
+      for (const tableName of migration.standaloneApply.tables) {
+        if (
+          !buildExpectedSchemaContract().tables.some(
+            table => table.name === tableName
+          )
+        ) {
+          errors.push(
+            `${migration.file} standalone verification table is not declared in schema.ts: ${tableName}.`
+          );
+        }
+      }
     }
     for (const allowedIndex of migration.verifierAllowMissingIndexes ?? []) {
       const expectedTable = buildExpectedSchemaContract().tables.find(
@@ -770,7 +804,11 @@ export function planForwardMigrations(
   let foundPending = false;
   for (const migration of manifest.migrations) {
     if (!applied.has(migration.version)) foundPending = true;
-    if (foundPending && applied.has(migration.version)) {
+    if (
+      foundPending &&
+      applied.has(migration.version) &&
+      !migration.standaloneApply
+    ) {
       throw new Error(
         `Applied migration ${migration.version} appears after a gap in the forward ledger.`
       );
@@ -779,6 +817,36 @@ export function planForwardMigrations(
   return manifest.migrations.filter(
     migration => !applied.has(migration.version)
   );
+}
+
+/**
+ * Resolve a single manifest migration for the deliberately separate
+ * backup-gated application flow. This is intentionally unavailable for
+ * unapproved, destructive, unknown, or already-ledgered migrations.
+ */
+export function planApprovedStandaloneMigration(
+  manifest: MigrationManifest,
+  rows: LedgerRow[],
+  targetTag: string
+): ForwardMigration {
+  planForwardMigrations(manifest, rows);
+  const migration = manifest.migrations.find(
+    candidate => candidate.tag === targetTag
+  );
+  if (!migration) {
+    throw new Error(`Unknown standalone migration target: ${targetTag}.`);
+  }
+  if (!migration.standaloneApply) {
+    throw new Error(
+      `Migration ${migration.version} (${migration.tag}) is not approved for standalone application.`
+    );
+  }
+  if (rows.some(row => row.version === migration.version)) {
+    throw new Error(
+      `Migration ${migration.version} (${migration.tag}) is already present in the migration ledger.`
+    );
+  }
+  return migration;
 }
 
 export function resolveRepoPath(relativePath: string): string {

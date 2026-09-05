@@ -9,6 +9,7 @@ import {
   loadSchemaContract,
   mysqlNonUniqueToUnique,
   normalizeMySqlType,
+  planApprovedStandaloneMigration,
   planForwardMigrations,
   resolveRepoPath,
   sha256,
@@ -70,7 +71,12 @@ describe("forward-only migration safety", () => {
         tag: "0061_correct_oit_guide",
         proposedOnly: true,
       }),
-      expect.objectContaining({ version: 62, tag: "0062_purchase_email_outbox", proposedOnly: true }),
+      expect.objectContaining({
+        version: 62,
+        tag: "0062_purchase_email_outbox",
+        proposedOnly: true,
+        standaloneApply: { tables: ["purchase_email_outbox"] },
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -438,5 +444,70 @@ describe("forward-only migration safety", () => {
         },
       ])
     ).toThrow(/after a gap/);
+  });
+
+  it("permits only the explicitly declared additive outbox migration to be applied across a pending gap", async () => {
+    const manifest = await loadManifest();
+    const rows = [
+      {
+        version: 52,
+        tag: "0052_activation_outcomes",
+        checksum: manifest.baseline.sha256,
+        status: "applied" as const,
+      },
+      ...manifest.migrations
+        .filter(migration => migration.version <= 58)
+        .map(migration => ({
+          version: migration.version,
+          tag: migration.tag,
+          checksum: migration.sha256,
+          status: "applied" as const,
+        })),
+    ];
+
+    expect(
+      planApprovedStandaloneMigration(
+        manifest,
+        rows,
+        "0062_purchase_email_outbox"
+      )
+    ).toMatchObject({
+      version: 62,
+      standaloneApply: { tables: ["purchase_email_outbox"] },
+    });
+    expect(() =>
+      planApprovedStandaloneMigration(
+        manifest,
+        rows,
+        "0059_on_the_job_training_records"
+      )
+    ).toThrow(/not approved for standalone/);
+    expect(() =>
+      planApprovedStandaloneMigration(manifest, rows, "0063_unknown")
+    ).toThrow(/Unknown standalone migration target/);
+  });
+
+  it("keeps generic forward planning safe after the explicitly allowed standalone migration is ledgered", async () => {
+    const manifest = await loadManifest();
+    const rows = [
+      {
+        version: 52,
+        tag: "0052_activation_outcomes",
+        checksum: manifest.baseline.sha256,
+        status: "applied" as const,
+      },
+      ...manifest.migrations
+        .filter(migration => migration.version <= 58 || migration.version === 62)
+        .map(migration => ({
+          version: migration.version,
+          tag: migration.tag,
+          checksum: migration.sha256,
+          status: "applied" as const,
+        })),
+    ];
+
+    expect(
+      planForwardMigrations(manifest, rows).map(migration => migration.version)
+    ).toEqual([59, 60, 61]);
   });
 });
