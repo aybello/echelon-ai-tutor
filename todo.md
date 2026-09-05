@@ -1998,3 +1998,4 @@
 - [ ] Deploy merged PR #70 through the controlled production sequence: verify backup evidence, apply and verify only migration 0062, publish, and validate health and the managed purchase-email Heartbeat
 - [ ] Resolve PR #70 deployment migration ordering: the current forward-only runner requires pending 0059–0061 before 0062, while 0059–0061 are explicitly unauthorized; do not bypass the ledger or apply out-of-scope migrations
 - [ ] Implement, test, review, and merge an explicit approved-standalone migration path that permits only additive migration 0062 while refusing pending 0059–0061; then restart backup-gated migration and PR #70 production release validation
+- [ ] Republish the verified PR #70 release from the managed checkout after the initial checkpoint retained the prior public marker; verify the new release marker and managed Heartbeat before completion
