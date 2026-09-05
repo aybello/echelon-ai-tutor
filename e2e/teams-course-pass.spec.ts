@@ -132,14 +132,14 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await expect(operatorPage.locator('.mes-option-btn[aria-pressed="true"]')).toHaveCount(1);
 
   // A lost request must leave answers recoverable and offer an explicit retry.
-  await operatorPage.route("**/api/trpc/exam.submitMock*", route => route.abort());
+  await operatorPage.route("**/api/trpc/*exam.submitMock*", route => route.abort());
   operatorPage.once("dialog", dialog => dialog.accept());
   await operatorPage.getByRole("button", { name: /^Submit ✓$/ }).click();
   await expect(operatorPage.getByRole("button", { name: "Retry saving result" })).toBeVisible();
-  await operatorPage.unroute("**/api/trpc/exam.submitMock*");
+  await operatorPage.unroute("**/api/trpc/*exam.submitMock*");
   await operatorPage.getByRole("button", { name: "Retry saving result" }).click();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
-  await expect(operatorPage.getByText("33%", { exact: true })).toBeVisible();
+  await expect(operatorPage.locator(".mes-results-hero").getByText("33%", { exact: true })).toBeVisible();
   await operatorPage.reload();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
 

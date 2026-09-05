@@ -52,8 +52,12 @@ export async function deliverPurchaseEmails(db: Database, send = sendPurchaseCon
 
 export async function startPurchaseEmailJob() {
   const { default: cron } = await import("node-cron");
+  let running = false;
   cron.schedule("* * * * *", async () => {
+    if (running) return;
+    running = true;
     try { const db = await getDb(); if (db) await deliverPurchaseEmails(db); }
     catch (error) { console.error("[purchase-email] Worker failed", error); }
+    finally { running = false; }
   });
 }
