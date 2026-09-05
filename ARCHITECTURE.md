@@ -344,6 +344,9 @@ Registered in `server/jobs/triggerEngine.ts` via `TriggerEngine.start()`, called
 | Trigger engine (personalized emails) | Nightly 9 PM UTC | `jobs/triggerEngine.ts` |
 | Exam reminders | Daily 8 AM UTC | `jobs/examReminders.ts` |
 | Stripe reconciliation | On-demand | `jobs/reconcile.ts` |
+| Purchase confirmation delivery | Every minute via managed Heartbeat | `purchaseEmailOutbox.ts` and `/api/scheduled/purchase-email-delivery` |
+
+The purchase-confirmation retry path must use the platform-managed Heartbeat. Do not replace it with `node-cron`, `setInterval`, or another in-process timer: autoscaling instances may stop while idle. Production boot idempotently creates or repairs the owner-scoped schedule after deployment.
 
 ---
 

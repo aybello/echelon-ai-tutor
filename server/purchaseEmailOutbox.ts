@@ -1,11 +1,25 @@
 import { randomUUID } from "node:crypto";
 import { and, eq, inArray, lte } from "drizzle-orm";
 import { purchases, purchaseEmailOutbox, type InsertPurchase } from "../drizzle/schema";
+import {
+  createHeartbeatJob,
+  listHeartbeatJobs,
+  updateHeartbeatJob,
+} from "./_core/heartbeat";
 import { getDb } from "./db";
 import { sendPurchaseConfirmationEmail, type PurchaseConfirmationPayload } from "./email";
 import { PRODUCT_STUDY_PATHS } from "./stripe/products";
 
 type Database = NonNullable<Awaited<ReturnType<typeof getDb>>>;
+
+const PURCHASE_EMAIL_HEARTBEAT = {
+  name: "echelon-purchase-email-delivery",
+  cron: "0 * * * * *",
+  path: "/api/scheduled/purchase-email-delivery",
+  method: "POST" as const,
+  description:
+    "Deliver queued individual purchase confirmation emails every minute.",
+};
 
 /** Purchase and delivery intent commit together. No historical email backfill. */
 export async function recordPurchaseWithConfirmation(db: Database, purchase: InsertPurchase) {
@@ -20,7 +34,7 @@ export async function recordPurchaseWithConfirmation(db: Database, purchase: Ins
   });
 }
 
-/** Bounded worker with expiring claims. SMTP is at-least-once, not exactly-once. */
+/** Bounded delivery batch with expiring claims. SMTP is at-least-once, not exactly-once. */
 export async function deliverPurchaseEmails(db: Database, send = sendPurchaseConfirmationEmail, now = new Date(), onlySessionId?: string) {
   const ready = and(inArray(purchaseEmailOutbox.status, ["pending", "sending"]), lte(purchaseEmailOutbox.availableAt, now),
     onlySessionId ? eq(purchaseEmailOutbox.stripeSessionId, onlySessionId) : undefined);
@@ -50,14 +64,66 @@ export async function deliverPurchaseEmails(db: Database, send = sendPurchaseCon
   return { sent };
 }
 
-export async function startPurchaseEmailJob() {
-  const { default: cron } = await import("node-cron");
-  let running = false;
-  cron.schedule("* * * * *", async () => {
-    if (running) return;
-    running = true;
-    try { const db = await getDb(); if (db) await deliverPurchaseEmails(db); }
-    catch (error) { console.error("[purchase-email] Worker failed", error); }
-    finally { running = false; }
-  });
+type PurchaseEmailDeliveryDependencies = {
+  getDatabase: typeof getDb;
+  deliver: typeof deliverPurchaseEmails;
+};
+
+/** Run one bounded delivery batch from the protected scheduled endpoint. */
+export async function runPurchaseEmailDelivery(
+  dependencies: PurchaseEmailDeliveryDependencies = {
+    getDatabase: getDb,
+    deliver: deliverPurchaseEmails,
+  }
+) {
+  const db = await dependencies.getDatabase();
+  if (!db) throw new Error("Database unavailable for purchase email delivery");
+  return dependencies.deliver(db);
+}
+
+type HeartbeatDependencies = {
+  list: typeof listHeartbeatJobs;
+  create: typeof createHeartbeatJob;
+  update: typeof updateHeartbeatJob;
+};
+
+/**
+ * Idempotently create or repair the platform-managed delivery schedule. The
+ * schedule survives autoscale instance shutdown and never relies on a local
+ * process timer.
+ */
+export async function ensurePurchaseEmailHeartbeat(
+  dependencies: HeartbeatDependencies = {
+    list: listHeartbeatJobs,
+    create: createHeartbeatJob,
+    update: updateHeartbeatJob,
+  }
+): Promise<"created" | "updated" | "unchanged"> {
+  const { jobs } = await dependencies.list("", { page: 1, pageSize: 100 });
+  const existing = jobs.find(job => job.name === PURCHASE_EMAIL_HEARTBEAT.name);
+  if (!existing) {
+    await dependencies.create(PURCHASE_EMAIL_HEARTBEAT, "");
+    return "created";
+  }
+
+  const isCurrent =
+    existing.cronExpression === PURCHASE_EMAIL_HEARTBEAT.cron &&
+    existing.callbackPath === PURCHASE_EMAIL_HEARTBEAT.path &&
+    existing.callbackMethod.toUpperCase() === PURCHASE_EMAIL_HEARTBEAT.method &&
+    existing.description === PURCHASE_EMAIL_HEARTBEAT.description &&
+    existing.isEnable;
+  if (isCurrent) return "unchanged";
+
+  await dependencies.update(
+    existing.taskUid,
+    {
+      cron: PURCHASE_EMAIL_HEARTBEAT.cron,
+      path: PURCHASE_EMAIL_HEARTBEAT.path,
+      method: PURCHASE_EMAIL_HEARTBEAT.method,
+      description: PURCHASE_EMAIL_HEARTBEAT.description,
+      enable: true,
+    },
+    ""
+  );
+  return "updated";
 }
