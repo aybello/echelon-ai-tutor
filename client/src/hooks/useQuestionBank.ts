@@ -8,12 +8,12 @@
  *   2. localStorage cache — bounded study sample cached after a successful DB load.
  *      Served instantly on return visits (2-hour TTL) for fast display.
  *      correctIndex is stored in the cache so returning users score correctly.
- *   3. DB fetch — tRPC call to the server. Lazy mode fetches one session-sized
- *      batch. Full mode fetches a bounded, module-balanced working set.
+ *   3. Full mode fetches a bounded, module-balanced working set.
+ *      Practice paging lives in useQuizSession.
  *
  * Supports two modes:
  *   - "full" (default): fetches a bounded working set. Use for mock exams and flashcards.
- *   - "lazy": fetches a random 50-question batch. Use for quiz pages.
+ *   - "lazy": fetches metadata for quiz pages; useQuizSession owns question pages.
  *
  * When the database is temporarily unavailable (TiDB hibernation), the API
  * returns empty arrays instead of hanging. This hook detects that case and
@@ -101,17 +101,6 @@ export function useQuestionBank(
   // A fresh bounded batch is cheap and avoids accumulating paid content locally.
   const [cached] = useState<CachedBank | null>(() => mode === "full" ? getCached(cacheKey) : null);
   const wroteCache = useRef(false);
-
-  // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
-  const batchQuery = trpc.quiz.getRandomQuestions.useQuery(
-    { bankKey, limit: 50, accessToken: storedAccessToken },
-    {
-      enabled: mode === "lazy" && !cached,
-      staleTime: 1000 * 60 * 5,
-      retry: 4,
-      retryDelay: 5000, // TiDB cold-start can take 10-15s; 4 retries × 5s = 20s window
-    }
-  );
 
   // ── Bounded study set (mock exams and flashcards) ────────────────────────
   // When cache is present this refreshes silently in the background.
@@ -227,15 +216,9 @@ export function useQuestionBank(
     // isLoading: false so quiz renders immediately; fullQuery runs silently in bg
     isLoading = false;
   } else if (mode === "lazy") {
-    if (fullQuery.data) {
-      questions = fullQuery.data.questions ?? [];
-    } else if (batchQuery.data?.questions?.length) {
-      questions = batchQuery.data.questions;
-    } else {
-      // Seed fallback — shown instantly while DB loads
-      questions = seedAsDBQuestions;
-    }
-    isLoading = batchQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
+    // Practice owns server-filtered paging in useQuizSession. Metadata stays here.
+    questions = [];
+    isLoading = metaQuery.isLoading || overviewsQuery.isLoading;
     modules = metaQuery.data?.modules ?? [];
     moduleTargets = metaQuery.data?.moduleTargets ?? null;
     formulaLinks = metaQuery.data?.formulaLinks ?? null;
@@ -259,7 +242,7 @@ export function useQuestionBank(
   // ── Detect DB unavailable state ──────────────────────────────────────────
   // dbUnavailable is true only when queries settled with no data AND no seed
   const queriesSettled = !isLoading;
-  const noError = !fullQuery.error && !batchQuery.error && !metaQuery.error;
+  const noError = !fullQuery.error && !metaQuery.error;
   const emptyResult = questions.length === 0 && modules.length === 0;
   const dbUnavailable = !cached && queriesSettled && noError && emptyResult && seedAsDBQuestions.length === 0;
 
@@ -271,12 +254,12 @@ export function useQuestionBank(
     totalQuestions,
     overviews,
     isLoading,
-    isFullyLoaded: cached != null || fullQuery.isSuccess || batchQuery.isSuccess,
+    isFullyLoaded: cached != null || fullQuery.isSuccess || (mode === "lazy" && metaQuery.isSuccess),
     /** True when the DB appears down AND no seed questions available */
     dbUnavailable,
     /** True when showing seed questions (DB not yet loaded) */
-    isShowingSeed: !cached && !fullQuery.isSuccess && !batchQuery.isSuccess && seedAsDBQuestions.length > 0,
+    isShowingSeed: mode === "full" && !cached && !fullQuery.isSuccess && seedAsDBQuestions.length > 0,
     error:
-      fullQuery.error || batchQuery.error || metaQuery.error || overviewsQuery.error || null,
+      fullQuery.error || metaQuery.error || overviewsQuery.error || null,
   };
 }

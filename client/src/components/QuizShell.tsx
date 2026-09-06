@@ -85,6 +85,9 @@ export interface QuizShellProps {
   // Current question
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   current: any;
+  questionStatus?: "loading" | "error" | "empty";
+  questionError?: string;
+  onRetryQuestions?: () => void;
   selected: number | null;
   confidence: number | null;
   confirmed: boolean;
@@ -173,6 +176,7 @@ export default function QuizShell({
   noCalcQuestions = false,
   onCalcOnlyToggle,
   current,
+  questionStatus, questionError, onRetryQuestions,
   selected,
   confidence,
   confirmed,
@@ -258,7 +262,7 @@ export default function QuizShell({
   // Only show if at least 5 questions were answered (avoids premature trigger when pool is exhausted)
   const FEEDBACK_MIN_QUESTIONS = 5;
   useEffect(() => {
-    if (!current && history.length >= FEEDBACK_MIN_QUESTIONS && prevHistoryLen.current > 0) {
+    if (!questionStatus && !current && history.length >= FEEDBACK_MIN_QUESTIONS && prevHistoryLen.current > 0) {
       setShowSessionFeedback(true);
       // Increment session counter for review prompt gating
       try {
@@ -267,7 +271,7 @@ export default function QuizShell({
       } catch { /* ignore */ }
     }
     prevHistoryLen.current = history.length;
-  }, [current, history.length]);
+  }, [current, history.length, questionStatus]);
 
   // ── Timed mode countdown ───────────────────────────────────────────────────
   const [timeLeft, setTimeLeft] = useState(timedSeconds > 0 ? timedSeconds : 0);
@@ -315,6 +319,26 @@ export default function QuizShell({
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
 
   //  // ── Session complete screen ──────────────────────────────────────────
+  if (questionStatus) {
+    return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-2xl p-6">
+      <h1 className="text-xl font-bold">{courseTitle}</h1>
+      <div role={questionStatus === "error" ? "alert" : "status"} className="my-6">
+        {questionStatus === "loading" ? "Loading practice questions…" : questionStatus === "error" ? questionError : "No more questions match this practice selection."}
+      </div>
+      {questionStatus === "error" && <button onClick={onRetryQuestions} className="rounded border p-3">Retry loading questions</button>}
+      {questionStatus === "empty" && <>
+        <p>Your {history.length} answers remain in this session. Change your filters or start another session.</p>
+        <button onClick={onResetSession} className="m-2 rounded border p-3">Start another session</button>
+      </>}
+      <div className="my-4 flex flex-wrap gap-2">
+        <button onClick={() => onModuleChange(null)} className="rounded border p-2">All modules</button>
+        {modules.map(m => <button key={m.name} onClick={() => onModuleChange(m.name)} className="rounded border p-2">{m.name}</button>)}
+        {hasCalcOnly && <button onClick={onCalcOnlyToggle} className="rounded border p-2">{calcOnly ? "Turn off Calc Only" : "Calc Only"}</button>}
+      </div>
+      {headerExtra}
+    </main></>;
+  }
+
   if (!current && history.length > 0) {
     const pct = Math.round((correctCount / history.length) * 100);
     return (
@@ -818,7 +842,7 @@ export default function QuizShell({
 
           {/* Question text */}
           {renderQuestionSupplement?.(current)}
-          <p style={{
+          <p data-testid="practice-question" data-question-id={current.id} style={{
             fontSize: "clamp(13px, 2.2vw, 15px)",
             fontWeight: 700,
             color: "#0F172A",
