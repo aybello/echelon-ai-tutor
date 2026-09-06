@@ -5,7 +5,7 @@
  * Bump RELEASE_ID whenever a production release changes a capability listed
  * below. The values are deliberately non-secret and safe for /api/health.
  */
-export const RELEASE_ID = "2026-09-05.learner-reliability.1";
+export const RELEASE_ID = "2026-09-06.mock-exam-integrity.1";
 
 export const RELEASE_CAPABILITIES = [
   "course-pass-order-scoped-refunds-v1",
@@ -32,6 +32,9 @@ export const RELEASE_CAPABILITIES = [
   "bounded-paid-question-delivery-v1",
   "learner-reliability-recovery-v1",
   "purchase-email-outbox-reliability-v1",
+  "issued-mock-session-integrity-v1",
+  "mock-answer-key-protection-v1",
+  "course-scoped-learner-reporting-v1",
 ] as const;
 
 export function publicReleaseHealth(ts = new Date()): {
