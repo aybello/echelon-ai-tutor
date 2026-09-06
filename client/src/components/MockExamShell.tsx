@@ -888,11 +888,11 @@ export default function MockExamShell({
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
-          <div role="status" aria-live="polite" style={{ marginBottom: 16 }}>
             {!!scoredResult?.unavailableCount && <p role="status" className="mb-3 rounded bg-amber-50 p-3 text-amber-900">
               {scoredResult.unavailableCount} question(s) became unavailable during your exam and counted as incorrect.
               The full {scoredResult.total}-question denominator is retained. Answer explanations below reflect the questions when your exam started.
             </p>}
+          <div role="status" aria-live="polite" style={{ marginBottom: 16 }}>
             {saveStatus === "saving" && "Saving your exam result…"}
             {saveStatus === "saved" && "Exam result saved."}
             {saveStatus === "guest" && (legacyDraft ? "Your previous answers are available for review. Start a new exam to save a new result." : previewSession ? "Preview complete. Full mock exams are saved with an active course pass." : "Your result is shown below. Sign in before your next exam to save results to your history.")}
