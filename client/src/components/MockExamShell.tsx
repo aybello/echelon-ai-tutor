@@ -174,7 +174,8 @@ export interface ExamQuestion {
   question: string;
   options: string[];
   /** 0-based index of the correct option */
-  correct: number;
+  /** Present only after the server scores a finalized signed mock session. */
+  correct?: number;
   explanation?: string;
   diagramId?: string | null;
   diagramAlt?: string | null;
@@ -471,6 +472,13 @@ export default function MockExamShell({
   } | null>(null);
   const submitMock = trpc.exam.submitMock.useMutation({
     onSuccess: result => {
+      const reviewByQuestion = new Map(result.review.map(item => [item.questionNum, item]));
+      setQuestions(previous => previous.map(question => {
+        const review = reviewByQuestion.get(question.id);
+        return review?.correctIndex === null || !review
+          ? question
+          : { ...question, correct: review.correctIndex, explanation: review.explanation ?? undefined };
+      }));
       setScoredResult(result);
       resultSavedRef.current = true;
       setSaveStatus(result.persisted ? "saved" : "guest");
@@ -600,12 +608,15 @@ export default function MockExamShell({
       pct: scoredResult.pct, passed: scoredResult.passed, moduleBreakdown: scoredResult.moduleBreakdown,
       sortedModules: Object.entries(scoredResult.moduleBreakdown).filter(([, b]) => b.total > 0)
         .sort(([, a], [, b]) => a.correct / a.total - b.correct / b.total) };
+    // New signed sessions receive no answer key until submitMock returns the
+    // server-owned score. Only legacy drafts can retain browser-era keys.
+    if (!legacyDraft) return null;
     let correct = 0;
     const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
     questions.forEach((q, i) => {
       if (!moduleBreakdown[q.module]) moduleBreakdown[q.module] = { correct: 0, total: 0 };
       moduleBreakdown[q.module].total++;
-      if (answers[i]?.selected === q.correct) {
+      if (q.correct !== undefined && answers[i]?.selected === q.correct) {
         correct++;
         moduleBreakdown[q.module].correct++;
       }
@@ -618,7 +629,7 @@ export default function MockExamShell({
       .filter(([, bd]) => bd.total > 0)
       .sort(([, a], [, b]) => (a.correct / a.total) - (b.correct / b.total));
     return { correct, score, pct, passed, moduleBreakdown, sortedModules };
-  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession, scoredResult]);
+  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession, scoredResult, legacyDraft]);
   useLearningActivitySession({
     courseKey: productKey,
     activityType: "mock_exam",
@@ -629,7 +640,7 @@ export default function MockExamShell({
   });
 
   const saveResult = () => {
-    if (!results || submitMock.isPending || !sessionToken || legacyDraft) return;
+    if (submitMock.isPending || !sessionToken || legacyDraft) return;
     setSaveStatus("saving");
     submitMock.mutate({
       sessionId, sessionToken, examType: sessionExamType, bankKey: productKey,
@@ -640,8 +651,8 @@ export default function MockExamShell({
     });
   };
   useEffect(() => {
-    if (examState === "results" && results && saveStatus === "idle" && !resultSavedRef.current) saveResult();
-  }, [examState, results, saveStatus]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (examState === "results" && !legacyDraft && saveStatus === "idle" && !resultSavedRef.current) saveResult();
+  }, [examState, legacyDraft, saveStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Show feedback modal after mock exam results (with delay for user to see score)
   useEffect(() => {
@@ -980,24 +991,27 @@ export default function MockExamShell({
               <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Question Review</div>
               {questions.map((q, i) => {
                 const a = answers[i];
-                const isCorrect = a?.selected === q.correct;
+                const reviewAvailable = q.correct !== undefined;
+                const isCorrect = reviewAvailable && a?.selected === q.correct;
                 const wasSkipped = a?.selected === null;
                 return (
-                  <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
+                  <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: !reviewAvailable ? "#F8FAFC" : wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${!reviewAvailable ? "#E2E8F0" : wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
                     <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 8 }}>
-                      <span style={{ fontSize: 16, flexShrink: 0 }}>{wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
+                      <span style={{ fontSize: 16, flexShrink: 0 }}>{!reviewAvailable ? "ℹ️" : wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
                     </div>
+                    {!reviewAvailable ? <div style={{ fontSize: 12, color: "#64748B" }}>Answer review is unavailable because this question changed after your exam was finalized.</div> : <>
                     {!wasSkipped && !isCorrect && (
                       <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     )}
-                    <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct].replace(/^[A-Da-d][.):]\s*/, "")}</div>
+                    <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     {q.explanation && (
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
                     )}
                     {(!isCorrect || wasSkipped) && (
                       <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} />
                     )}
+                    </>}
                   </div>
                 );
               })}
@@ -1028,6 +1042,23 @@ export default function MockExamShell({
             onClose={() => setShowFeedbackModal(false)}
           />
         )}
+      </div>
+    );
+  }
+
+  if (examState === "results") {
+    return (
+      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <SiteNav currentPath={currentPath} />
+        <div style={{ maxWidth: 600, margin: "0 auto", padding: "72px 20px" }}>
+          <div style={{ background: "#fff", borderRadius: 20, padding: "36px", textAlign: "center", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+            <h1 style={{ margin: "0 0 12px", color: "#0F172A", fontSize: 24 }}>Finalizing your result</h1>
+            {saveStatus === "error" ? <>
+              <p style={{ color: "#B91C1C", lineHeight: 1.6 }}>{saveError || "Your result could not be saved."} Your answers remain in this tab.</p>
+              <button onClick={saveResult} style={{ padding: "12px 20px", border: "none", borderRadius: 10, background: resolvedAccent, color: "#fff", fontWeight: 700, cursor: "pointer" }}>Retry saving result</button>
+            </> : <p style={{ color: "#475569", lineHeight: 1.6 }}>The server is scoring your complete signed exam. Answer keys are revealed only after scoring finishes.</p>}
+          </div>
+        </div>
       </div>
     );
   }
@@ -1244,12 +1275,13 @@ export default function MockExamShell({
             const selected = answers[index]?.selected;
             return selected === null || selected === undefined
               ? []
-              : [{ module: question.module, correct: selected === question.correct }];
+              : [{ module: question.module }];
           })}
           productKey={productKey}
           productName={productName}
           paidFeatures={features}
           examType={productKey}
+          diagnosticAvailable={false}
           previewName="mock-exam questions"
           backPath={practicePath}
           onUnlocked={() => {}}

@@ -1,6 +1,6 @@
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
-import { issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
@@ -333,9 +333,7 @@ export const appRouter = router({
           sessionId: issued.manifest.sessionId, token: issued.token,
           deadline: issued.manifest.deadline, duration: spec.duration,
           examType: spec.examType, preview,
-          questions: selected.map(q => ({ id: q.id, module: q.module, question: q.question,
-            options: q.options, correct: q.correctIndex, explanation: q.explanation ?? undefined,
-            diagramId: q.diagramId, diagramAlt: q.diagramAlt })),
+          questions: selected.map(activeMockQuestion),
         };
       }),
 
@@ -415,18 +413,9 @@ export const appRouter = router({
           if (!owned || existing.examType !== manifest.examType || existing.bankKey !== manifest.courseKey) {
             throw new TRPCError({ code: "CONFLICT", message: "This exam session is already in use." });
           }
-          return { success: true, persisted: true, score: existing.score, total: existing.total,
-            pct: Math.round(existing.score / existing.total * 100), passed: existing.passed === "yes",
-            unavailableCount: (JSON.parse(existing.moduleBreakdown ?? "{}")[UNAVAILABLE_MOCK_MODULE]?.total ?? 0) as number,
-            moduleBreakdown: JSON.parse(existing.moduleBreakdown ?? "{}") as Record<string, { correct: number; total: number }> };
+          return existing;
         };
-        if (hasVerifiedIdentity) {
-          const existing = await readExisting();
-          if (existing) return existing;
-        }
-        if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
-        }
+        const existing = hasVerifiedIdentity ? await readExisting() : null;
         const questionNums = input.answers.map(a => a.questionNum);
         if (new Set(questionNums).size !== questionNums.length) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Each exam question must appear exactly once." });
@@ -434,7 +423,7 @@ export const appRouter = router({
         const questionRows = input.bankKey === "electrician-309a"
           ? await db.select({ questionNum: certificationQuestions.bankItemNumber,
               correctIndex: certificationQuestions.correctIndex, module: certificationQuestions.module, topic: certificationQuestions.module,
-              difficulty: certificationQuestions.difficulty })
+              difficulty: certificationQuestions.difficulty, explanation: certificationQuestions.explanation })
             .from(certificationQuestions)
             .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
             .where(and(eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
@@ -442,7 +431,7 @@ export const appRouter = router({
               eq(certificationBankVersions.active, true), inArray(certificationQuestions.bankItemNumber, questionNums),
               eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
           : await db
-          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, topic: questions.topic, difficulty: questions.difficulty })
+          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, topic: questions.topic, difficulty: questions.difficulty, explanation: questions.explanation })
           .from(questions)
           .where(and(
             eq(questions.bankKey, manifest.bankKey),
@@ -451,9 +440,36 @@ export const appRouter = router({
           ));
 
         const questionMap = new Map(questionRows.map(q => [q.questionNum, q]));
-
+        // The answer key becomes available only after the server has scored the
+        // complete, signed attempt. Retired questions remain visibly unavailable
+        // rather than receiving a fabricated answer or explanation.
+        const review = input.answers.map(answer => {
+          const q = questionMap.get(answer.questionNum);
+          return {
+            questionNum: answer.questionNum,
+            correctIndex: q?.correctIndex ?? null,
+            explanation: q?.explanation ?? null,
+          };
+        });
+        const existingResponse = (saved: NonNullable<typeof existing>) => ({
+          success: true,
+          persisted: true,
+          score: saved.score,
+          total: saved.total,
+          pct: Math.round(saved.score / saved.total * 100),
+          passed: saved.passed === "yes",
+          unavailableCount: (JSON.parse(saved.moduleBreakdown ?? "{}")[UNAVAILABLE_MOCK_MODULE]?.total ?? 0) as number,
+          moduleBreakdown: JSON.parse(saved.moduleBreakdown ?? "{}") as Record<string, { correct: number; total: number }>,
+          review,
+        });
+        // An idempotent retry remains available after expiry and bank changes.
+        // It receives current answer review for still-visible questions only.
+        if (existing) return existingResponse(existing);
         if (questionMap.size === 0) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "None of this exam's questions are available for scoring. No result was saved. Your answers remain in this tab for review; please contact support." });
+        }
+        if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
         }
         const unavailableCount = questionNums.length - questionMap.size;
         let correct = 0;
@@ -495,7 +511,7 @@ export const appRouter = router({
             });
           } catch (error) {
             const saved = await readExisting();
-            if (saved) return saved;
+            if (saved) return existingResponse(saved);
             throw error;
           }
           if (!input.calcOnly) {
@@ -506,7 +522,7 @@ export const appRouter = router({
           }
         }
 
-        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, unavailableCount, moduleBreakdown };
+        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, unavailableCount, moduleBreakdown, review };
       }),
   }),
 

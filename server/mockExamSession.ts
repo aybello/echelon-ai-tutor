@@ -26,6 +26,26 @@ export function mockSpecification(courseKey: string) {
     duration: course.courseKey === "oit-ww" ? 3600 : course.courseKey === "electrician-309a" ? 14400 : 10800,
   };
 }
+
+/**
+ * The active-exam response must be display-safe. Correct answers and
+ * explanations are deliberately excluded until the server has finalized the
+ * signed attempt; client-side code must never score an in-progress mock.
+ */
+export function activeMockQuestion<T extends {
+  id: number; module: string; question: string; options: string[];
+  diagramId?: string | null; diagramAlt?: string | null;
+}>(question: T) {
+  return {
+    id: question.id,
+    module: question.module,
+    question: question.question,
+    options: question.options,
+    diagramId: question.diagramId,
+    diagramAlt: question.diagramAlt,
+  };
+}
+
 function signingKey() {
   if (!ENV.cookieSecret) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Exam session signing is unavailable." });
   return ENV.cookieSecret;

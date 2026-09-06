@@ -1,8 +1,17 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { ENV } from "./_core/env";
-import { issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions } from "./mockExamSession";
+import { activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions } from "./mockExamSession";
 describe("mock session authority", () => {
   beforeEach(() => { ENV.cookieSecret = "test-only-signing-key"; });
+  it("does not expose answer keys or explanations in the active-exam projection", () => {
+    const active = activeMockQuestion({
+      id: 1, module: "Safety", question: "Prompt", options: ["A", "B", "C", "D"],
+      correctIndex: 2, explanation: "Only available after scoring.", diagramId: "diagram-1", diagramAlt: "Diagram",
+    });
+    expect(active).toEqual({ id: 1, module: "Safety", question: "Prompt", options: ["A", "B", "C", "D"], diagramId: "diagram-1", diagramAlt: "Diagram" });
+    expect(active).not.toHaveProperty("correctIndex");
+    expect(active).not.toHaveProperty("explanation");
+  });
   it("binds the session to the verified learner, bank, duration and complete question list", () => {
     const spec = mockSpecification("class4-ww");
     expect(spec.bankKey).toBe("class4-wastewater");

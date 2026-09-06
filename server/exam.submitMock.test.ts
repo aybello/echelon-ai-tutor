@@ -10,7 +10,7 @@ vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn().mo
 }) }));
 import { getDb } from "./db";
 const identity = { userId: 5, studentEmail: "operator@example.com" };
-const QUESTIONS = Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: 0, module: "Safety", difficulty: "easy" }));
+const QUESTIONS = Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: 0, module: "Safety", difficulty: "easy", explanation: `Explanation ${i + 1}` }));
 function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
   const insertValues = vi.fn().mockResolvedValue([]);
   const db: any = {
@@ -45,6 +45,12 @@ describe("issued mock submission", () => {
   it("passes a complete 70/100 exam", async () => {
     makeDb(); expect(await appRouter.createCaller(ctx).exam.submitMock(input(70))).toMatchObject({ pct: 70, passed: true });
   });
+  it("returns answer review only after the server scores the complete signed submission", async () => {
+    makeDb();
+    const result = await appRouter.createCaller(ctx).exam.submitMock(input(70));
+    expect(result.review).toHaveLength(100);
+    expect(result.review[0]).toEqual({ questionNum: 1, correctIndex: 0, explanation: "Explanation 1" });
+  });
   it.each(["one-question", "duplicate", "replacement", "course", "session", "calcOnly", "signature", "missing-token"])("rejects %s tampering before writing results", async kind => {
     const { insertValues } = makeDb(); const data: any = input();
     if (kind === "one-question") data.answers = data.answers.slice(0, 1);
@@ -66,7 +72,7 @@ describe("issued mock submission", () => {
   it("returns a persisted result even after the deadline or later bank edits", async () => {
     const data = input(100, Date.now() - 4 * 3600_000);
     const { insertValues } = makeDb([], [{ userId: 5, studentEmail: identity.studentEmail, examType: data.examType, bankKey: data.bankKey, score: 69, total: 100, passed: "no", moduleBreakdown: "{}" }]);
-    expect(await appRouter.createCaller(ctx).exam.submitMock(data)).toMatchObject({ score: 69, total: 100, persisted: true });
+    expect(await appRouter.createCaller(ctx).exam.submitMock(data)).toMatchObject({ score: 69, total: 100, persisted: true, review: Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: null, explanation: null })) });
     expect(insertValues).not.toHaveBeenCalled();
   });
   it("saves a retired question as incorrect without shrinking the denominator", async () => {

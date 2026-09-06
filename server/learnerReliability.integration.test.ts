@@ -34,6 +34,24 @@ suite("learner reliability with a real database", () => {
     if (sessions.length) await db.delete(purchaseEmailOutbox).where(inArray(purchaseEmailOutbox.stripeSessionId, sessions));
     await db.delete(purchases).where(eq(purchases.email, email));
   });
+  it("keeps answer keys server-side until the complete signed mock is finalized", async () => {
+    const issued = await caller.exam.startMock({ courseKey: bank });
+    expect(issued.questions).toHaveLength(100);
+    for (const question of issued.questions) {
+      expect(question).not.toHaveProperty("correct");
+      expect(question).not.toHaveProperty("correctIndex");
+      expect(question).not.toHaveProperty("explanation");
+    }
+    const result = await caller.exam.submitMock({
+      sessionId: issued.sessionId,
+      sessionToken: issued.token,
+      examType: issued.examType,
+      bankKey: bank,
+      answers: issued.questions.map(question => ({ questionNum: question.id, selectedIndex: 0 })),
+    });
+    expect(result.review).toHaveLength(100);
+    expect(result.review.every(item => item.correctIndex === 0 && item.explanation === "QA only")).toBe(true);
+  });
   it("saves incomplete exams once across concurrent retries", async () => {
     const issued = await caller.exam.startMock({ courseKey: bank });
     expect(issued.questions).toHaveLength(100);
