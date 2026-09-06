@@ -70,6 +70,11 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // Reproduce the path that failed for the municipal manager: OTP success is
   // sent to /account first, and /account must recognize the manager and route
   // into the team workspace instead of showing the personal-purchase empty state.
+  // Model independent users behind the application's trusted reverse proxy.
+  // RFC 5737 addresses keep separate fixtures from consuming one loopback IP's
+  // request budget; the real production rate limits remain enabled.
+  const addressBase = prefix === "teams" ? 10 : 20;
+  await page.setExtraHTTPHeaders({ "X-Forwarded-For": `192.0.2.${addressBase}` });
   await signInWithOtp(page, MANAGER_EMAIL, "/account");
   await page.waitForURL(/\/team$/, { timeout: 30_000 });
   await expect(page.getByText("Manager Dashboard", { exact: true })).toBeVisible();
@@ -101,7 +106,9 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   const claimUrl = invitationBody.match(/http:\/\/127\.0\.0\.1:3000\/course-pass\/claim\?token=[a-f0-9]{64}/i)?.[0];
   expect(claimUrl, "invitation email should contain the claim URL").toBeTruthy();
 
-  const operatorContext = await browser.newContext();
+  const operatorContext = await browser.newContext({
+    extraHTTPHeaders: { "X-Forwarded-For": `192.0.2.${addressBase + 1}` },
+  });
   const operatorPage = await operatorContext.newPage();
   await operatorPage.goto(claimUrl!);
   await expect(operatorPage.getByText(COURSE_NAME, { exact: true })).toBeVisible();
@@ -118,6 +125,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   }
 
   await operatorPage.waitForURL(/\/course-pass\/claim\?token=/, { timeout: 30_000 });
+  await expect(operatorPage.getByRole("button", { name: "Claim Course Pass" })).toBeVisible();
   await operatorPage.getByRole("button", { name: "Claim Course Pass" }).click();
   await expect(operatorPage.getByRole("button", { name: "Activate Course" })).toBeVisible();
   await operatorPage.getByRole("button", { name: "Activate Course" }).click();
@@ -167,7 +175,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
   const progressTable = page.locator("table").filter({
-    has: page.getByRole("columnheader", { name: "Readiness", exact: true }),
+    has: page.locator("th").filter({ hasText: /^Readiness$/ }),
   });
   const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
   await expect(progressRow.locator("td").nth(3)).toHaveText("100");
