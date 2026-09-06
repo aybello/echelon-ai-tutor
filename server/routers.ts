@@ -1,3 +1,4 @@
+import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
 import { issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
@@ -26,7 +27,7 @@ import {
 import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, buildTutorSystemPrompt, enforceAiTutorDailyQuota } from "./_core/aiTutorPolicy";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
-import { quizRouter } from "./routers/quizRouter";
+import { learnerQuestionColumns, parseLearnerQuestions, quizRouter } from "./routers/quizRouter";
 import { dashboardRouter } from "./routers/dashboardRouter";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
@@ -307,12 +308,19 @@ export const appRouter = router({
           targets = Object.fromEntries(ELECTRICIAN_309A_MODULES.map(m => [`${m.code}. ${m.title}`, m.weightPercent]));
         } else {
           const caller = quizRouter.createCaller(ctx);
-          const result = await caller.getQuestions({ bankKey: spec.bankKey, previewSurface: "mock", accessToken: input.accessToken });
-          preview = result.locked;
+          const hasAccess = await resolveAccessForRequest(ctx, spec.courseKey, { accessToken: input.accessToken });
+          preview = !hasAccess;
           if (preview && !["oit", "oit-ww"].includes(spec.courseKey)) {
             throw new TRPCError({ code: "FORBIDDEN", message: "An active course pass is required to start this mock exam." });
           }
-          pool = result.questions;
+          if (preview) {
+            pool = (await caller.getQuestions({ bankKey: spec.bankKey, previewSurface: "mock", accessToken: input.accessToken })).questions;
+          } else {
+            const db = await getDb();
+            if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+            pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
+              .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
+          }
           targets = (await caller.getBankMeta({ bankKey: spec.bankKey }))?.moduleTargets ?? {};
         }
         const count = preview ? 30 : spec.count;
@@ -409,6 +417,7 @@ export const appRouter = router({
           }
           return { success: true, persisted: true, score: existing.score, total: existing.total,
             pct: Math.round(existing.score / existing.total * 100), passed: existing.passed === "yes",
+            unavailableCount: (JSON.parse(existing.moduleBreakdown ?? "{}")[UNAVAILABLE_MOCK_MODULE]?.total ?? 0) as number,
             moduleBreakdown: JSON.parse(existing.moduleBreakdown ?? "{}") as Record<string, { correct: number; total: number }> };
         };
         if (hasVerifiedIdentity) {
@@ -443,24 +452,25 @@ export const appRouter = router({
 
         const questionMap = new Map(questionRows.map(q => [q.questionNum, q]));
 
-        if (questionMap.size !== questionNums.length) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: "Some exam questions are no longer available. Your answers have been kept; please contact support." });
+        if (questionMap.size === 0) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "None of this exam's questions are available for scoring. No result was saved. Your answers remain in this tab for review; please contact support." });
         }
+        const unavailableCount = questionNums.length - questionMap.size;
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
         const attempts = input.answers.map(answer => {
-          const q = questionMap.get(answer.questionNum)!;
-          const isCorrect = answer.selectedIndex !== null && answer.selectedIndex === q.correctIndex;
+          const q = questionMap.get(answer.questionNum);
+          const isCorrect = answer.selectedIndex !== null && answer.selectedIndex === q?.correctIndex;
           if (isCorrect) correct++;
-          const mod = q.module ?? input.examType;
+          const mod = q ? q.module : UNAVAILABLE_MOCK_MODULE;
           moduleBreakdown[mod] ??= { correct: 0, total: 0 };
           moduleBreakdown[mod].total++;
           if (isCorrect) moduleBreakdown[mod].correct++;
           return {
             userId: identity.userId, studentEmail: identity.studentEmail,
-            examType: input.examType, topic: q.topic?.trim() || mod, questionId: answer.questionNum,
+            examType: input.examType, topic: q?.topic?.trim() || mod, questionId: answer.questionNum,
             correct: isCorrect ? "yes" as const : "no" as const,
-            difficulty: q.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
+            difficulty: q?.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
             selectedIndex: answer.selectedIndex, bankKey: input.bankKey, courseKey: input.bankKey,
             orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
           };
@@ -496,7 +506,7 @@ export const appRouter = router({
           }
         }
 
-        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, moduleBreakdown };
+        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, unavailableCount, moduleBreakdown };
       }),
   }),
 

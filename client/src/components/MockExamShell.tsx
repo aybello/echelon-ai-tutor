@@ -465,8 +465,13 @@ export default function MockExamShell({
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "guest" | "error">("idle");
+  const [scoredResult, setScoredResult] = useState<{
+    score: number; total: number; pct: number; passed: boolean; unavailableCount: number;
+    moduleBreakdown: Record<string, { correct: number; total: number }>;
+  } | null>(null);
   const submitMock = trpc.exam.submitMock.useMutation({
     onSuccess: result => {
+      setScoredResult(result);
       resultSavedRef.current = true;
       setSaveStatus(result.persisted ? "saved" : "guest");
     },
@@ -497,6 +502,7 @@ export default function MockExamShell({
       setSaveStatus("idle");
       setSaveError("");
       submitMock.reset();
+      setScoredResult(null);
       setQuestions(issued.questions);
       setCurrentIdx(0);
       setAnswers(issued.questions.map((_, i) => ({ questionIndex: i, selected: null })));
@@ -551,8 +557,10 @@ export default function MockExamShell({
       deadlineRef.current = saved.deadline;
       setTimeLeft(saved.examState === "results" ? saved.timeLeft : Math.max(0, Math.ceil((saved.deadline - Date.now()) / 1000)));
       setExamState(legacy ? "results" : saved.examState);
-      resultSavedRef.current = saved.saved === true;
-      setSaveStatus(saved.saved ? "saved" : legacy ? "guest" : "idle");
+      // Replay retrieves the authoritative result, including later unavailable
+      // items, even after the deadline. Do not reconstruct saved scores locally.
+      resultSavedRef.current = false;
+      setSaveStatus(legacy ? "guest" : "idle");
       toast.info(legacy ? "Your previous answers are available for review. Start a new exam to save a new result." : "Your exam has been restored.");
     } catch { /* Storage may be unavailable or an old draft invalid. */ }
   }, [recoveryKey, streamOptions, authLoading]);
@@ -588,6 +596,10 @@ export default function MockExamShell({
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
+    if (scoredResult) return { correct: scoredResult.score, score: scoredResult.score / scoredResult.total,
+      pct: scoredResult.pct, passed: scoredResult.passed, moduleBreakdown: scoredResult.moduleBreakdown,
+      sortedModules: Object.entries(scoredResult.moduleBreakdown).filter(([, b]) => b.total > 0)
+        .sort(([, a], [, b]) => a.correct / a.total - b.correct / b.total) };
     let correct = 0;
     const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
     questions.forEach((q, i) => {
@@ -606,7 +618,7 @@ export default function MockExamShell({
       .filter(([, bd]) => bd.total > 0)
       .sort(([, a], [, b]) => (a.correct / a.total) - (b.correct / b.total));
     return { correct, score, pct, passed, moduleBreakdown, sortedModules };
-  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession]);
+  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession, scoredResult]);
   useLearningActivitySession({
     courseKey: productKey,
     activityType: "mock_exam",
@@ -877,6 +889,10 @@ export default function MockExamShell({
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
           <div role="status" aria-live="polite" style={{ marginBottom: 16 }}>
+            {!!scoredResult?.unavailableCount && <p role="status" className="mb-3 rounded bg-amber-50 p-3 text-amber-900">
+              {scoredResult.unavailableCount} question(s) became unavailable during your exam and counted as incorrect.
+              The full {scoredResult.total}-question denominator is retained. Answer explanations below reflect the questions when your exam started.
+            </p>}
             {saveStatus === "saving" && "Saving your exam result…"}
             {saveStatus === "saved" && "Exam result saved."}
             {saveStatus === "guest" && (legacyDraft ? "Your previous answers are available for review. Start a new exam to save a new result." : previewSession ? "Preview complete. Full mock exams are saved with an active course pass." : "Your result is shown below. Sign in before your next exam to save results to your history.")}

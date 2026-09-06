@@ -8,10 +8,11 @@ import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
 import { resolveLearningIdentity } from "../_core/learningIdentity";
-import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users } from "../../drizzle/schema";
-import { and, eq, desc, sql, gte } from "drizzle-orm";
+import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users, bookmarks } from "../../drizzle/schema";
+import { and, eq, desc, sql, gte, inArray, notInArray, or } from "drizzle-orm";
 import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope } from "../courseActivityScope";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 
 export const OIT_PREVIEW_LIMITS = {
@@ -181,6 +182,21 @@ export const learnerQuestionColumns = {
   cognitiveLevel: questions.cognitiveLevel,
 };
 
+/** Parse before sampling, so malformed rows cannot shorten an issued exam. */
+export function parseLearnerQuestions(rows: (typeof questions.$inferSelect | Pick<typeof questions.$inferSelect, keyof typeof learnerQuestionColumns>)[]) {
+  return rows.flatMap(r => {
+    try {
+      const options = JSON.parse(r.options) as string[];
+      if (!Array.isArray(options) || options.length !== 4 || !options.every(o => typeof o === "string")
+        || r.correctIndex < 0 || r.correctIndex >= options.length) return [];
+      return [{ id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
+        options, correctIndex: r.correctIndex, explanation: r.explanation,
+        steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
+        tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined }];
+    } catch { return []; }
+  });
+}
+
 export const quizRouter = router({
   /**
    * getQuestions — fetch a bounded, module-balanced working set.
@@ -256,78 +272,64 @@ export const quizRouter = router({
       return { questions: parsed, locked: !hasAccess, total, trialLimit: previewLimit };
     }),
 
-  /**
-   * getRandomQuestions — fetch a small random batch of questions for instant quiz start.
-   * Returns only the session-sized working set needed by practice mode.
-   */
-    getRandomQuestions: publicProcedure
+  /** Bounded pages from the requested slice, including identity-scoped review. */
+  getRandomQuestions: publicProcedure
     .input(z.object({
       bankKey: z.string().min(1).max(64),
-      limit: z.number().int().min(1).max(50).default(20),
-      excludeIds: z.array(z.number().int()).max(200).default([]),
+      limit: z.number().int().min(1).max(50).default(50),
+      excludeIds: z.array(z.number().int().positive()).max(10000).default([]),
+      module: z.string().min(1).max(255).optional(),
+      calcOnly: z.boolean().default(false),
+      difficulty: z.enum(["all", "easy", "medium", "hard"]).default("all"),
+      reviewMode: z.enum(["standard", "missed", "bookmarked", "low-confidence"]).default("standard"),
       accessToken: z.string().optional(),
     }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-            const examType = bankKeyToExamType(input.bankKey);
-      const hasAccess = await resolveAccessForRequest(ctx, examType, {
-        accessToken: input.accessToken,
-      });
-      const excludeClause = input.excludeIds.length > 0
-        ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`
-        : sql``;
-
-      if (hasAccess) {
-        // Full access: random from entire bank
-        const rows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus NOT IN ('in_review', 'rejected')${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
-        );
-        const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
-          try {
-            return [{
-              id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
-              options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
-              steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-              tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
-            }];
-          } catch { return []; }
-        });
-        return { questions: list, locked: false };
-      } else {
-        // Trial: sample across modules (round-robin first question from each module)
-        // to give a representative experience instead of all from one module.
-        const allRows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus NOT IN ('in_review', 'rejected')${excludeClause} ORDER BY module, questionNum`
-        );
-        const allList = allRows[0] as unknown as any[];
-        const sampleLimit = Math.min(FREE_TRIAL_LIMIT, input.limit);
-        const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
-          ? Math.min(OIT_PREVIEW_CALC_MINIMUMS.practice, sampleLimit)
-          : 0;
-        const sampled = buildPreviewSample(
-          previewRowsForBank(allList, input.bankKey),
-          sampleLimit,
-          "practice",
-          minimumCalculations,
-        );
-        // Shuffle the sampled array for randomness
-        for (let i = sampled.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [sampled[i], sampled[j]] = [sampled[j], sampled[i]];
-        }
-        const list = sampled.flatMap((r: any) => {
-          try {
-            return [{
-              id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
-              options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
-              steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-              tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
-            }];
-          } catch { return []; }
-        });
-        return { questions: list, locked: true };
+      const { course, keys } = courseActivityScope(input.bankKey);
+      const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, { accessToken: input.accessToken });
+      const identity = await resolveLearningIdentity(ctx);
+      const identified = Boolean(identity.userId || identity.studentEmail);
+      if (input.reviewMode !== "standard" && !identified) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in to review your saved questions." });
       }
+      const filters = [eq(questions.bankKey, course.questionBankKey), learnerVisibleQuestionFilter()];
+      // A preview is fixed BEFORE applying filters/exclusions. Paging must never
+      // turn the free preview into a way to enumerate the paid bank.
+      if (!hasAccess) {
+        const rows = await db.select(learnerQuestionColumns).from(questions)
+          .where(and(...filters)).orderBy(questions.questionNum);
+        const sampled = buildPreviewSample(previewRowsForBank(rows, course.questionBankKey),
+          FREE_TRIAL_LIMIT, "practice", course.track === "oit" ? OIT_PREVIEW_CALC_MINIMUMS.practice : 0);
+        if (!sampled.length) return { questions: [], locked: true, total: 0, hasMore: false };
+        filters.push(inArray(questions.questionNum, sampled.map(q => q.questionNum)));
+      }
+      if (input.module) filters.push(eq(questions.module, input.module));
+      if (input.calcOnly) filters.push(eq(questions.isCalc, "yes"));
+      if (input.difficulty !== "all") filters.push(eq(questions.difficulty, input.difficulty));
+      let priority = sql`0`;
+      if (identified) {
+        const attemptScope = and(attemptIdentityFilter(identity.userId, identity.studentEmail),
+          attemptCourseFilter(course.courseKey), eq(questionAttempts.questionId, questions.questionNum));
+        const latestCorrect = sql`(SELECT ${questionAttempts.correct} FROM ${questionAttempts}
+          WHERE ${attemptScope} ORDER BY ${questionAttempts.createdAt} DESC, ${questionAttempts.id} DESC LIMIT 1)`;
+        // Prefer unseen or still-missed questions without guessing mastery from
+        // a random browser sample. Reviewed questions remain available to repeat.
+        priority = sql`CASE WHEN ${latestCorrect} = 'yes' THEN 1 ELSE 0 END`;
+        if (input.reviewMode === "missed") filters.push(sql`${latestCorrect} = 'no'`);
+        if (input.reviewMode === "low-confidence") filters.push(sql`(SELECT ${questionAttempts.confidence} FROM ${questionAttempts}
+          WHERE ${attemptScope} ORDER BY ${questionAttempts.createdAt} DESC, ${questionAttempts.id} DESC LIMIT 1) = 'low'`);
+        if (input.reviewMode === "bookmarked") filters.push(sql`EXISTS (SELECT 1 FROM ${bookmarks} WHERE ${and(
+          or(identity.userId ? eq(bookmarks.userId, identity.userId) : undefined,
+            identity.studentEmail ? eq(bookmarks.studentEmail, identity.studentEmail) : undefined),
+          inArray(bookmarks.bankKey, keys), eq(bookmarks.questionId, questions.questionNum))})`);
+      }
+      const [counts] = await db.select({ total: sql<number>`COUNT(*)` }).from(questions).where(and(...filters));
+      if (input.excludeIds.length) filters.push(notInArray(questions.questionNum, input.excludeIds));
+      const rows = await db.select(learnerQuestionColumns).from(questions).where(and(...filters))
+        .orderBy(...(identified ? [priority, sql`RAND()`] : [sql`RAND()`])).limit(input.limit);
+      return { questions: parseLearnerQuestions(rows), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit };
     }),
 
   /**
@@ -470,7 +472,7 @@ export const quizRouter = router({
           .select({ correctIndex: questions.correctIndex, topic: questions.topic, difficulty: questions.difficulty, module: questions.module })
           .from(questions)
           .where(and(
-            eq(questions.bankKey, input.bankKey),
+            eq(questions.bankKey, resolveCourseKey(input.bankKey)?.questionBankKey ?? input.bankKey),
             eq(questions.questionNum, input.questionId),
             learnerVisibleQuestionFilter(),
           ))
@@ -503,7 +505,7 @@ export const quizRouter = router({
           bookmarked: input.bookmarked ? "yes" : "no",
           selectedIndex: input.selectedIndex,
           bankKey: input.bankKey,
-          courseKey: input.bankKey,
+          courseKey: resolveCourseKey(input.bankKey)?.courseKey ?? input.bankKey,
           orgId,
           organizationMemberId,
         });

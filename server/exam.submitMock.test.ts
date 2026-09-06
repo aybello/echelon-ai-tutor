@@ -69,9 +69,18 @@ describe("issued mock submission", () => {
     expect(await appRouter.createCaller(ctx).exam.submitMock(data)).toMatchObject({ score: 69, total: 100, persisted: true });
     expect(insertValues).not.toHaveBeenCalled();
   });
-  it("rejects unavailable questions without shrinking the saved denominator", async () => {
-    makeDb(QUESTIONS.slice(0, 99));
-    await expect(appRouter.createCaller(ctx).exam.submitMock(input())).rejects.toThrow("no longer available");
+  it("saves a retired question as incorrect without shrinking the denominator", async () => {
+    const { insertValues } = makeDb(QUESTIONS.slice(0, 99));
+    expect(await appRouter.createCaller(ctx).exam.submitMock(input(100))).toMatchObject({
+      score: 99, total: 100, unavailableCount: 1, persisted: true,
+    });
+    expect(insertValues.mock.calls[1][0]).toHaveLength(100);
+    expect(insertValues.mock.calls[1][0][99]).toMatchObject({ questionId: 100, correct: "no" });
+  });
+  it("reports honestly when zero questions can be scored and writes nothing", async () => {
+    const { insertValues } = makeDb([]);
+    await expect(appRouter.createCaller(ctx).exam.submitMock(input())).rejects.toThrow("No result was saved");
+    expect(insertValues).not.toHaveBeenCalled();
   });
   it("does not persist or mark an OIT preview as a full mock pass", async () => {
     const { insertValues } = makeDb(QUESTIONS.slice(0, 30)); const spec = mockSpecification("oit");

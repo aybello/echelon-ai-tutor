@@ -157,6 +157,19 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await operatorPage.reload();
   await expect(operatorPage.locator('.mes-option-btn[aria-pressed="true"]')).toHaveCount(1);
 
+  // Retire the answered item while the Ontario exam is active. The attempt
+  // must save, show the server-adjusted score, and retain that score on refresh.
+  let retiredQuestion: number | undefined;
+  if (prefix === "reporting") {
+    retiredQuestion = await operatorPage.evaluate(() => {
+      const key = Object.keys(sessionStorage).find(k => k.startsWith("echelon.mock."))!;
+      return JSON.parse(sessionStorage.getItem(key)!).questions[0].id;
+    });
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try { await db.execute("UPDATE questions SET reviewStatus = 'in_review' WHERE bankKey = ? AND questionNum = ?", ["class4-wastewater", retiredQuestion]); }
+    finally { await db.end(); }
+  }
+  const expectedScore = prefix === "reporting" ? 0 : 1;
   // A lost request must leave answers recoverable and offer an explicit retry.
   await operatorPage.route("**/api/trpc/*exam.submitMock*", route => route.abort());
   operatorPage.once("dialog", dialog => dialog.accept());
@@ -165,9 +178,17 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await operatorPage.unroute("**/api/trpc/*exam.submitMock*");
   await operatorPage.getByRole("button", { name: "Retry saving result" }).click();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
-  await expect(operatorPage.locator(".mes-results-hero").getByText("1%", { exact: true })).toBeVisible();
+  await expect(operatorPage.locator(".mes-results-hero").getByText(`${expectedScore}%`, { exact: true })).toBeVisible();
+  if (retiredQuestion) {
+    await expect(operatorPage.getByText(/1 question\(s\) became unavailable/)).toBeVisible();
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try { await db.execute("UPDATE questions SET reviewStatus = 'approved' WHERE bankKey = ? AND questionNum = ?", ["class4-wastewater", retiredQuestion]); }
+    finally { await db.end(); }
+  }
   await operatorPage.reload();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
+  await expect(operatorPage.locator(".mes-results-hero").getByText(`${expectedScore}%`, { exact: true })).toBeVisible();
+  if (retiredQuestion) await expect(operatorPage.getByText(/1 question\(s\) became unavailable/)).toBeVisible();
 
   await expect(operatorPage.getByText("Your Score History", { exact: false })).toBeVisible();
   await expect(operatorPage.getByText(/Last 1 attempt/)).toBeVisible();
@@ -179,7 +200,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   });
   const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
   await expect(progressRow.locator("td").nth(3)).toHaveText("100");
-  await expect(progressRow.locator("td").nth(4)).toContainText("1%");
+  await expect(progressRow.locator("td").nth(4)).toContainText(`${expectedScore}%`);
   await expect(progressRow.locator("td").nth(5)).not.toContainText("Not started");
 
   if (prefix === "reporting") {
@@ -219,7 +240,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
       "SELECT score, total, passed FROM exam_results WHERE studentEmail = ? AND bankKey = ?",
       [OPERATOR_EMAIL, COURSE_KEY],
     );
-    expect(examRows).toEqual([expect.objectContaining({ score: 1, total: 100, passed: "no" })]);
+    expect(examRows).toEqual([expect.objectContaining({ score: expectedScore, total: 100, passed: "no" })]);
     const [attemptRows] = await connection.execute(
       "SELECT id FROM question_attempts WHERE studentEmail = ? AND bankKey = ? AND quizMode = 'mock'",
       [OPERATOR_EMAIL, COURSE_KEY],
@@ -240,3 +261,55 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 });
 
 }
+
+test("paid practice continues past 50 questions and loads saved review slices", async ({ page }) => {
+  test.setTimeout(180_000);
+  const db = await mysql.createConnection(process.env.DATABASE_URL!);
+  const email = "practice-e2e-learner@echelon.test";
+  const bankKey = "class3-water-dist";
+  try {
+    await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
+    await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Paging module", "Rare module"])]);
+    for (let i = 0; i < 85; i++) {
+      await db.execute("INSERT INTO questions (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, reviewStatus, isCalc) VALUES (?, ?, ?, 'hard', ?, ?, 0, 'Browser practice QA.', 'approved', 'yes')", [
+        bankKey, 960001 + i, i < 75 ? "Paging module" : "Rare module", `Browser practice item ${i + 1}`, '["Correct practice answer","Wrong B","Wrong C","Wrong D"]',
+      ]);
+    }
+    await db.execute("INSERT INTO bookmarks (studentEmail, bankKey, questionId) VALUES (?, ?, 960081)", [email, bankKey]);
+    await db.execute("INSERT INTO question_attempts (studentEmail, examType, bankKey, courseKey, questionId, topic, correct, confidence) VALUES (?, ?, ?, ?, 960082, 'Rare module', 'no', 'low')", [email, bankKey, bankKey, bankKey]);
+    await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.30" });
+    await signInWithOtp(page, email, `/${bankKey}`);
+    await page.waitForURL(`**/${bankKey}`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    await page.getByRole("button", { name: /Paging module/ }).click();
+    await page.getByRole("button", { name: /Quiz Settings/ }).click();
+    await page.getByRole("button", { name: "50 Qs", exact: true }).click();
+    await page.getByRole("button", { name: "Apply Settings →" }).click();
+    const seen = new Set<string>();
+    for (let i = 0; i < 52; i++) {
+      await expect(page.getByTestId("practice-question")).toBeVisible();
+      const id = (await page.getByTestId("practice-question").getAttribute("data-question-id"))!;
+      expect(seen.has(id)).toBe(false);
+      expect(Number(id)).toBeLessThan(960076);
+      seen.add(id);
+      await page.getByRole("button", { name: /^A\. Correct practice answer/ }).click();
+      await page.getByRole("button", { name: "✓ Sure", exact: true }).click();
+      await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
+      await page.getByRole("button", { name: "Next Question →", exact: true }).click();
+      if (i === 49) {
+        await expect(page.getByText("Session Complete!", { exact: true })).toBeVisible();
+        await page.getByRole("button", { name: "Skip feedback", exact: true }).click();
+        await page.getByRole("button", { name: /New Session/ }).click();
+      }
+    }
+    expect(seen.size).toBe(52);
+    // These are outside the selected module and initial 50-item working set.
+    for (const [mode, question] of [["bookmarked", "960081"], ["missed", "960082"], ["low-confidence", "960082"]]) {
+      await page.goto(`/${bankKey}?mode=${mode}`);
+      await expect(page.getByTestId("practice-question")).toHaveAttribute("data-question-id", question);
+    }
+    await page.goto(`/${bankKey}?topic=${encodeURIComponent("Rare module")}&calcOnly=true`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
+  } finally { await db.end(); }
+});

@@ -29,4 +29,10 @@ describe("mock session authority", () => {
     expect(sample).toHaveLength(100); expect(new Set(sample.map(q => q.id)).size).toBe(100);
     expect(sample.filter(q => q.module === "A")).toHaveLength(40);
   });
+  it("fills sparse module weights from the eligible bank without shortening the exam", () => {
+    const pool = Array.from({ length: 110 }, (_, i) => ({ id: i + 1, module: i < 2 ? "Rare" : "Common" }));
+    expect(selectMockQuestions(pool, { Rare: 80, Common: 20 }, 100)).toHaveLength(100);
+    expect(selectMockQuestions(pool.slice(0, 99), { Rare: 80, Common: 20 }, 100)).toHaveLength(99);
+  });
+
 });

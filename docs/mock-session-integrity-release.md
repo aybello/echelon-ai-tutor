@@ -25,3 +25,31 @@ History now uses the verified learner identity consistently across OTP and OAuth
 Validation includes an isolated database reporting stage after the existing integration tests (avoiding concurrent fixture mutations in the same banks), plus Ontario and WPI browser journeys covering learner history and manager progress. The Ontario browser case also submits from the combined Class 1 Wastewater page and the dedicated route, and verifies both results appear in the same history. This correction requires no additional migration. After the complete Quality Gate passes, deploy the client and server together; verify these routes with synthetic learners and managers before calling the release complete.
 
 The expanded browser journeys also exposed an OTP input focus race: a delayed focus callback could move focus during rapid code entry and leave a digit blank. Focus now occurs when the code inputs mount, before paint, and failed-code retries focus immediately. The tests continue entering digits directly without artificial delays. Authentication and OTP verification rules are unchanged.
+
+
+## Practice paging and questions retired during a mock
+
+Practice now requests at most 50 questions from the selected module, calculation,
+difficulty or saved-review slice. The queue tops up below 10, excludes consumed
+questions across consecutive sessions, and never downloads or caches a whole
+paid bank. Review uses the learner's latest attempt and verified identity, with
+course aliases resolved to the physical bank. Free previews are selected before
+filters/exclusions, so pagination cannot expand their fixed set. Loading and
+retry states preserve the session and do not masquerade as completion.
+
+Full mock selection uses the eligible bank on the server, bypassing the old
+200-question intermediate sample. Only the issued 50/100 questions reach the
+browser. Sparse module targets are filled from other eligible questions; a bank
+with fewer than the required count still cannot issue a shortened full exam.
+
+If an issued question becomes unavailable, it counts as incorrect and stays in
+the denominator and persisted attempts. The result and history disclose the
+unavailable count, retained in the existing module breakdown (no schema change).
+The results screen uses the server score and retrieves the same result on refresh.
+Zero scorable questions remains a hard failure with an accurate no-save message.
+Partial, duplicate, changed-course and altered-session requests remain rejected.
+
+Release verification must include the practice paging database stage, the paid
+practice browser journey beyond 50 questions, and the Ontario mock browser case
+that retires an answered question before submission and checks score/replay.
+No additional migration, secret or production data correction is required.

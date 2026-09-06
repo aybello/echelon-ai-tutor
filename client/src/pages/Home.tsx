@@ -32,7 +32,7 @@ export default function Home() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "full", "practice");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "lazy", "practice");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;
@@ -74,6 +74,9 @@ export default function Home() {
       calcOnly={session.calcOnly}
       noCalcQuestions={session.noCalcQuestions}
       onCalcOnlyToggle={session.handleCalcOnlyToggle}
+      questionStatus={session.questionStatus}
+      questionError={session.questionError}
+      onRetryQuestions={session.retryQuestions}
       current={session.current}
       selected={session.selected}
       confidence={session.confidence}
@@ -126,7 +129,7 @@ export default function Home() {
               settings={session.quizSettings}
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
-              totalQuestions={allQuestions.length}
+              totalQuestions={session.availableQuestionCount}
               trialUnlocked={session.trialUnlocked}
             />
           )}
