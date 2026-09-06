@@ -1,3 +1,4 @@
+import { examCourseFilter } from "./courseActivityScope";
 import { issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { COOKIE_NAME } from "@shared/const";
@@ -341,25 +342,17 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) return [];
 
-        // Prefer user identity (persistent) over sessionId (ephemeral)
-        const userId = ctx.user?.id ?? null;
-        const studentEmail: string | null = (() => {
-          const otpEmail = (ctx as Record<string, unknown>).otpEmail as string | undefined;
-          if (otpEmail) return otpEmail;
-          const purchaseEmail = (ctx as Record<string, unknown>).purchaseEmail as string | undefined;
-          if (purchaseEmail) return purchaseEmail;
-          return ctx.user?.email ?? null;
-        })();
-        // Build identity condition: match by userId OR email OR sessionId (fallback for anonymous)
-        const identityCondition = userId
-          ? eq(examResults.userId, userId)
-          : studentEmail
-            ? eq(examResults.studentEmail, studentEmail)
-            : eq(examResults.sessionId, input.sessionId);
+        const { userId, studentEmail } = await resolveLearningIdentity(ctx);
+        const identityCondition = userId || studentEmail
+          ? or(
+              userId ? eq(examResults.userId, userId) : undefined,
+              studentEmail ? eq(examResults.studentEmail, studentEmail) : undefined,
+            )!
+          : eq(examResults.sessionId, input.sessionId);
 
         const conditions = [
           identityCondition,
-          eq(examResults.examType, input.examType),
+          examCourseFilter(input.examType, input.stream),
         ];
         if (input.stream) {
           conditions.push(eq(examResults.stream, input.stream));
@@ -431,7 +424,7 @@ export const appRouter = router({
         }
         const questionRows = input.bankKey === "electrician-309a"
           ? await db.select({ questionNum: certificationQuestions.bankItemNumber,
-              correctIndex: certificationQuestions.correctIndex, module: certificationQuestions.module,
+              correctIndex: certificationQuestions.correctIndex, module: certificationQuestions.module, topic: certificationQuestions.module,
               difficulty: certificationQuestions.difficulty })
             .from(certificationQuestions)
             .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
@@ -440,7 +433,7 @@ export const appRouter = router({
               eq(certificationBankVersions.active, true), inArray(certificationQuestions.bankItemNumber, questionNums),
               eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
           : await db
-          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, difficulty: questions.difficulty })
+          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, topic: questions.topic, difficulty: questions.difficulty })
           .from(questions)
           .where(and(
             eq(questions.bankKey, manifest.bankKey),
@@ -465,7 +458,7 @@ export const appRouter = router({
           if (isCorrect) moduleBreakdown[mod].correct++;
           return {
             userId: identity.userId, studentEmail: identity.studentEmail,
-            examType: input.examType, topic: mod, questionId: answer.questionNum,
+            examType: input.examType, topic: q.topic?.trim() || mod, questionId: answer.questionNum,
             correct: isCorrect ? "yes" as const : "no" as const,
             difficulty: q.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
             selectedIndex: answer.selectedIndex, bankKey: input.bankKey, courseKey: input.bankKey,

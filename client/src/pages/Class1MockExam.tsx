@@ -72,7 +72,7 @@ export default function Class1MockExam() {
     },
     {
       productKey:    "class1-ww",
-      scoreExamType: "class1",
+      scoreExamType: "class1-ww",
       stream:        "wastewater",
       label:         "Wastewater Class 1",
       icon:          "♻️",

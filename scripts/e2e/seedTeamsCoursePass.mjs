@@ -3,10 +3,13 @@ import mysql from "mysql2/promise";
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error("DATABASE_URL is required");
 
-export const E2E_MANAGER_EMAIL = "teams-e2e-manager@echelon.test";
-export const E2E_OPERATOR_EMAIL = "teams-e2e-operator@echelon.test";
-export const E2E_ORG_NAME = "Echelon Teams Browser QA";
-export const E2E_COURSE_KEY = "wpi-class4-wastewater";
+for (const [prefix, E2E_COURSE_KEY, databaseBank, province] of [
+  ["teams", "wpi-class4-wastewater", "wpi-class4-wastewater", "western"],
+  ["reporting", "class4-ww", "class4-wastewater", "ontario"],
+]) {
+const E2E_MANAGER_EMAIL = `${prefix}-e2e-manager@echelon.test`;
+const E2E_OPERATOR_EMAIL = `${prefix}-e2e-operator@echelon.test`;
+const E2E_ORG_NAME = `Echelon ${prefix} Browser QA`;
 
 const connection = await mysql.createConnection(databaseUrl);
 const now = new Date();
@@ -55,8 +58,8 @@ try {
   const [organizationResult] = await connection.execute(
     `INSERT INTO organizations
       (name, province, tier, seatsTotal, managerEmail, termStart, termEnd, billingType, status)
-     VALUES (?, 'western', 'all-access', 0, ?, ?, ?, 'invoice', 'active')`,
-    [E2E_ORG_NAME, E2E_MANAGER_EMAIL, termStart, termEnd],
+     VALUES (?, ?, 'all-access', 0, ?, ?, ?, 'invoice', 'active')`,
+    [E2E_ORG_NAME, province, E2E_MANAGER_EMAIL, termStart, termEnd],
   );
   const organizationId = Number(organizationResult.insertId);
 
@@ -77,8 +80,8 @@ try {
     `INSERT INTO team_flex_order_items
       (orderId, courseKey, examFamily, pricingBand, courseLevel, termMonths,
        quantity, listUnitPriceCents, discountRate, discountedUnitPriceCents, lineTotalCents)
-     VALUES (?, ?, 'western', 'class4', 4, 12, 1, 29900, '0', 29900, 29900)`,
-    [orderId, E2E_COURSE_KEY],
+     VALUES (?, ?, ?, 'class4', 4, 12, 1, 29900, '0', 29900, 29900)`,
+    [orderId, E2E_COURSE_KEY, province],
   );
   const orderItemId = Number(itemResult.insertId);
 
@@ -95,8 +98,29 @@ try {
       `INSERT INTO questions (bankKey, questionNum, module, topic, question, options, correctIndex, explanation, reviewStatus)
        VALUES (?, ?, 'Safety & Admin', 'Safety & Admin', ?, ?, 0, 'Synthetic browser fixture.', 'approved')
        ON DUPLICATE KEY UPDATE question = VALUES(question)`,
-      [E2E_COURSE_KEY, number, `Browser QA question ${number}`, JSON.stringify(['Correct QA answer', 'Second QA answer', 'Third QA answer', 'Fourth QA answer'])],
+      [databaseBank, number, `Browser QA question ${number}`, JSON.stringify(['Correct QA answer', 'Second QA answer', 'Third QA answer', 'Fourth QA answer'])],
     );
+  }
+  if (prefix === "reporting") {
+    for (const productKey of ["class1-water", "class1-ww"]) {
+      await connection.execute(
+        `INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId)
+         VALUES (?, ?, 'Synthetic reporting QA', 9900, ?) ON DUPLICATE KEY UPDATE email = VALUES(email)`,
+        [E2E_OPERATOR_EMAIL, productKey, `cs_e2e_reporting_${productKey}`],
+      );
+    }
+    for (const bank of ["class1", "class1-water", "class1-wastewater"]) {
+      for (let number = 990001; number <= 990100; number++) {
+        const module = bank === "class1-wastewater" || (bank === "class1" && number > 990050)
+          ? "Wastewater Treatment" : "Water Treatment";
+        await connection.execute(
+          `INSERT INTO questions (bankKey, questionNum, module, topic, question, options, correctIndex, explanation, reviewStatus)
+           VALUES (?, ?, ?, ?, ?, ?, 0, 'Synthetic browser fixture.', 'approved')
+           ON DUPLICATE KEY UPDATE question = VALUES(question)`,
+          [bank, number, module, module, `Class 1 QA ${number}`, JSON.stringify(['Correct', 'B', 'C', 'D'])],
+        );
+      }
+    }
   }
   await connection.commit();
   console.log(JSON.stringify({ organizationId, orderId, managerEmail: E2E_MANAGER_EMAIL }));
@@ -105,4 +129,6 @@ try {
   throw error;
 } finally {
   await connection.end();
+}
+
 }

@@ -1,11 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import mysql from "mysql2/promise";
 
-const MANAGER_EMAIL = "teams-e2e-manager@echelon.test";
-const OPERATOR_EMAIL = "teams-e2e-operator@echelon.test";
-const ORG_NAME = "Echelon Teams Browser QA";
-const COURSE_NAME = "WPI Class IV Wastewater Treatment";
-const COURSE_KEY = "wpi-class4-wastewater";
 const MAILPIT_URL = process.env.MAILPIT_URL ?? "http://127.0.0.1:8025";
 
 type MailpitMessage = {
@@ -63,7 +58,15 @@ async function signInWithOtp(page: Page, email: string, next: string) {
   await expect(page.getByRole("heading", { name: "You're signed in!" })).toBeVisible();
 }
 
-test("manager can invite an operator who claims, activates and opens the assigned Course Pass", async ({ browser, page }) => {
+for (const [prefix, COURSE_KEY, COURSE_NAME] of [
+  ["teams", "wpi-class4-wastewater", "WPI Class IV Wastewater Treatment"],
+  ["reporting", "class4-ww", "Class 4 Wastewater Treatment"],
+]) {
+const MANAGER_EMAIL = `${prefix}-e2e-manager@echelon.test`;
+const OPERATOR_EMAIL = `${prefix}-e2e-operator@echelon.test`;
+const ORG_NAME = `Echelon ${prefix} Browser QA`;
+
+test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reporting`, async ({ browser, page }) => {
   // Reproduce the path that failed for the municipal manager: OTP success is
   // sent to /account first, and /account must recognize the manager and route
   // into the team workspace instead of showing the personal-purchase empty state.
@@ -158,6 +161,41 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await operatorPage.reload();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
 
+  await expect(operatorPage.getByText("Your Score History", { exact: false })).toBeVisible();
+  await expect(operatorPage.getByText(/Last 1 attempt/)).toBeVisible();
+  // This is still the manager's authenticated browser, while the operator used
+  // a separate OTP-only session. Both screens must see the same 100 attempts.
+  await page.reload();
+  const progressTable = page.locator("table").filter({
+    has: page.getByRole("columnheader", { name: "Readiness", exact: true }),
+  });
+  const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
+  await expect(progressRow.locator("td").nth(3)).toHaveText("100");
+  await expect(progressRow.locator("td").nth(4)).toContainText("1%");
+  await expect(progressRow.locator("td").nth(5)).not.toContainText("Not started");
+
+  if (prefix === "reporting") {
+    await operatorPage.goto("/class1-mock");
+    await operatorPage.getByRole("button", { name: /Wastewater Class 1/ }).click();
+    await operatorPage.getByRole("button", { name: /Start Exam/ }).click();
+    await expect(operatorPage.locator(".mes-option-btn")).toHaveCount(4);
+    await operatorPage.locator(".mes-option-btn").first().click();
+    operatorPage.once("dialog", dialog => dialog.accept());
+    await operatorPage.getByRole("button", { name: /^Submit ✓$/ }).click();
+    await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
+    await operatorPage.reload();
+    await expect(operatorPage.getByText(/Last 1 attempt/)).toBeVisible();
+    // The dedicated wastewater route must show the same result too.
+    await operatorPage.goto("/class1-ww-mock");
+    await operatorPage.getByRole("button", { name: /Start Exam/ }).click();
+    await operatorPage.locator(".mes-option-btn").first().click();
+    operatorPage.once("dialog", dialog => dialog.accept());
+    await operatorPage.getByRole("button", { name: /^Submit ✓$/ }).click();
+    await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
+    await operatorPage.reload();
+    await expect(operatorPage.getByText(/Last 2 attempts/)).toBeVisible();
+  }
+
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) throw new Error("DATABASE_URL is required");
   const connection = await mysql.createConnection(databaseUrl);
@@ -192,3 +230,5 @@ test("manager can invite an operator who claims, activates and opens the assigne
     await operatorContext.close();
   }
 });
+
+}
