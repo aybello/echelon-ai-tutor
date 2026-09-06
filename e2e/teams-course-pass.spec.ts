@@ -1,11 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import mysql from "mysql2/promise";
 
-const MANAGER_EMAIL = "teams-e2e-manager@echelon.test";
-const OPERATOR_EMAIL = "teams-e2e-operator@echelon.test";
-const ORG_NAME = "Echelon Teams Browser QA";
-const COURSE_NAME = "WPI Class IV Wastewater Treatment";
-const COURSE_KEY = "wpi-class4-wastewater";
 const MAILPIT_URL = process.env.MAILPIT_URL ?? "http://127.0.0.1:8025";
 
 type MailpitMessage = {
@@ -63,10 +58,23 @@ async function signInWithOtp(page: Page, email: string, next: string) {
   await expect(page.getByRole("heading", { name: "You're signed in!" })).toBeVisible();
 }
 
-test("manager can invite an operator who claims, activates and opens the assigned Course Pass", async ({ browser, page }) => {
+for (const [prefix, COURSE_KEY, COURSE_NAME] of [
+  ["teams", "wpi-class4-wastewater", "WPI Class IV Wastewater Treatment"],
+  ["reporting", "class4-ww", "Class 4 Wastewater Treatment"],
+]) {
+const MANAGER_EMAIL = `${prefix}-e2e-manager@echelon.test`;
+const OPERATOR_EMAIL = `${prefix}-e2e-operator@echelon.test`;
+const ORG_NAME = `Echelon ${prefix} Browser QA`;
+
+test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reporting`, async ({ browser, page }) => {
   // Reproduce the path that failed for the municipal manager: OTP success is
   // sent to /account first, and /account must recognize the manager and route
   // into the team workspace instead of showing the personal-purchase empty state.
+  // Model independent users behind the application's trusted reverse proxy.
+  // RFC 5737 addresses keep separate fixtures from consuming one loopback IP's
+  // request budget; the real production rate limits remain enabled.
+  const addressBase = prefix === "teams" ? 10 : 20;
+  await page.setExtraHTTPHeaders({ "X-Forwarded-For": `192.0.2.${addressBase}` });
   await signInWithOtp(page, MANAGER_EMAIL, "/account");
   await page.waitForURL(/\/team$/, { timeout: 30_000 });
   await expect(page.getByText("Manager Dashboard", { exact: true })).toBeVisible();
@@ -98,7 +106,9 @@ test("manager can invite an operator who claims, activates and opens the assigne
   const claimUrl = invitationBody.match(/http:\/\/127\.0\.0\.1:3000\/course-pass\/claim\?token=[a-f0-9]{64}/i)?.[0];
   expect(claimUrl, "invitation email should contain the claim URL").toBeTruthy();
 
-  const operatorContext = await browser.newContext();
+  const operatorContext = await browser.newContext({
+    extraHTTPHeaders: { "X-Forwarded-For": `192.0.2.${addressBase + 1}` },
+  });
   const operatorPage = await operatorContext.newPage();
   await operatorPage.goto(claimUrl!);
   await expect(operatorPage.getByText(COURSE_NAME, { exact: true })).toBeVisible();
@@ -115,6 +125,7 @@ test("manager can invite an operator who claims, activates and opens the assigne
   }
 
   await operatorPage.waitForURL(/\/course-pass\/claim\?token=/, { timeout: 30_000 });
+  await expect(operatorPage.getByRole("button", { name: "Claim Course Pass" })).toBeVisible();
   await operatorPage.getByRole("button", { name: "Claim Course Pass" }).click();
   await expect(operatorPage.getByRole("button", { name: "Activate Course" })).toBeVisible();
   await operatorPage.getByRole("button", { name: "Activate Course" }).click();
@@ -125,12 +136,40 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await mockExamLink.click();
   await operatorPage.waitForURL(`**/${COURSE_KEY}-mock`);
 
+  await operatorPage.evaluate(() => {
+    const original = Storage.prototype.setItem;
+    (window as any).__mockWrites = 0;
+    Storage.prototype.setItem = function(key, value) {
+      if (key.startsWith("echelon.mock.")) (window as any).__mockWrites++;
+      return original.call(this, key, value);
+    };
+  });
   await operatorPage.getByRole("button", { name: /Start Exam/ }).click();
+  await expect(operatorPage.locator(".mes-option-btn")).toHaveCount(4);
+  // Idle clock ticks must not rewrite a full question set to synchronous storage.
+  await operatorPage.waitForTimeout(1500);
+  const writesBefore = await operatorPage.evaluate(() => (window as any).__mockWrites);
+  await operatorPage.waitForTimeout(3500);
+  expect(await operatorPage.evaluate(() => (window as any).__mockWrites)).toBe(writesBefore);
+
   await operatorPage.locator(".mes-option-btn").first().click();
   await expect(operatorPage.locator('.mes-option-btn[aria-pressed="true"]')).toHaveCount(1);
   await operatorPage.reload();
   await expect(operatorPage.locator('.mes-option-btn[aria-pressed="true"]')).toHaveCount(1);
 
+  // Retire the answered item while the Ontario exam is active. The attempt
+  // must save, show the server-adjusted score, and retain that score on refresh.
+  let retiredQuestion: number | undefined;
+  if (prefix === "reporting") {
+    retiredQuestion = await operatorPage.evaluate(() => {
+      const key = Object.keys(sessionStorage).find(k => k.startsWith("echelon.mock."))!;
+      return JSON.parse(sessionStorage.getItem(key)!).questions[0].id;
+    });
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try { await db.execute("UPDATE questions SET reviewStatus = 'in_review' WHERE bankKey = ? AND questionNum = ?", ["class4-wastewater", retiredQuestion]); }
+    finally { await db.end(); }
+  }
+  const expectedScore = prefix === "reporting" ? 0 : 1;
   // A lost request must leave answers recoverable and offer an explicit retry.
   await operatorPage.route("**/api/trpc/*exam.submitMock*", route => route.abort());
   operatorPage.once("dialog", dialog => dialog.accept());
@@ -139,9 +178,52 @@ test("manager can invite an operator who claims, activates and opens the assigne
   await operatorPage.unroute("**/api/trpc/*exam.submitMock*");
   await operatorPage.getByRole("button", { name: "Retry saving result" }).click();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
-  await expect(operatorPage.locator(".mes-results-hero").getByText("33%", { exact: true })).toBeVisible();
+  await expect(operatorPage.locator(".mes-results-hero").getByText(`${expectedScore}%`, { exact: true })).toBeVisible();
+  if (retiredQuestion) {
+    await expect(operatorPage.getByText(/1 question\(s\) became unavailable/)).toBeVisible();
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try { await db.execute("UPDATE questions SET reviewStatus = 'approved' WHERE bankKey = ? AND questionNum = ?", ["class4-wastewater", retiredQuestion]); }
+    finally { await db.end(); }
+  }
   await operatorPage.reload();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
+  await expect(operatorPage.locator(".mes-results-hero").getByText(`${expectedScore}%`, { exact: true })).toBeVisible();
+  if (retiredQuestion) await expect(operatorPage.getByText(/1 question\(s\) became unavailable/)).toBeVisible();
+
+  await expect(operatorPage.getByText("Your Score History", { exact: false })).toBeVisible();
+  await expect(operatorPage.getByText(/Last 1 attempt/)).toBeVisible();
+  // This is still the manager's authenticated browser, while the operator used
+  // a separate OTP-only session. Both screens must see the same 100 attempts.
+  await page.reload();
+  const progressTable = page.locator("table").filter({
+    has: page.locator("th").filter({ hasText: /^Readiness$/ }),
+  });
+  const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
+  await expect(progressRow.locator("td").nth(3)).toHaveText("100");
+  await expect(progressRow.locator("td").nth(4)).toContainText(`${expectedScore}%`);
+  await expect(progressRow.locator("td").nth(5)).not.toContainText("Not started");
+
+  if (prefix === "reporting") {
+    await operatorPage.goto("/class1-mock");
+    await operatorPage.getByRole("button", { name: /Wastewater Class 1/ }).click();
+    await operatorPage.getByRole("button", { name: /Start Exam/ }).click();
+    await expect(operatorPage.locator(".mes-option-btn")).toHaveCount(4);
+    await operatorPage.locator(".mes-option-btn").first().click();
+    operatorPage.once("dialog", dialog => dialog.accept());
+    await operatorPage.getByRole("button", { name: /^Submit ✓$/ }).click();
+    await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
+    await operatorPage.reload();
+    await expect(operatorPage.getByText(/Last 1 attempt/)).toBeVisible();
+    // The dedicated wastewater route must show the same result too.
+    await operatorPage.goto("/class1-ww-mock");
+    await operatorPage.getByRole("button", { name: /Start Exam/ }).click();
+    await operatorPage.locator(".mes-option-btn").first().click();
+    operatorPage.once("dialog", dialog => dialog.accept());
+    await operatorPage.getByRole("button", { name: /^Submit ✓$/ }).click();
+    await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
+    await operatorPage.reload();
+    await expect(operatorPage.getByText(/Last 2 attempts/)).toBeVisible();
+  }
 
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) throw new Error("DATABASE_URL is required");
@@ -158,12 +240,12 @@ test("manager can invite an operator who claims, activates and opens the assigne
       "SELECT score, total, passed FROM exam_results WHERE studentEmail = ? AND bankKey = ?",
       [OPERATOR_EMAIL, COURSE_KEY],
     );
-    expect(examRows).toEqual([expect.objectContaining({ score: 1, total: 3, passed: "no" })]);
+    expect(examRows).toEqual([expect.objectContaining({ score: expectedScore, total: 100, passed: "no" })]);
     const [attemptRows] = await connection.execute(
       "SELECT id FROM question_attempts WHERE studentEmail = ? AND bankKey = ? AND quizMode = 'mock'",
       [OPERATOR_EMAIL, COURSE_KEY],
     );
-    expect(attemptRows).toHaveLength(3);
+    expect(attemptRows).toHaveLength(100);
     expect(rows).toEqual([
       expect.objectContaining({
         status: "active",
@@ -176,4 +258,58 @@ test("manager can invite an operator who claims, activates and opens the assigne
     await connection.end();
     await operatorContext.close();
   }
+});
+
+}
+
+test("paid practice continues past 50 questions and loads saved review slices", async ({ page }) => {
+  test.setTimeout(180_000);
+  const db = await mysql.createConnection(process.env.DATABASE_URL!);
+  const email = "practice-e2e-learner@echelon.test";
+  const bankKey = "class3-water-dist";
+  try {
+    await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
+    await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Paging module", "Rare module"])]);
+    for (let i = 0; i < 85; i++) {
+      await db.execute("INSERT INTO questions (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, reviewStatus, isCalc) VALUES (?, ?, ?, 'hard', ?, ?, 0, 'Browser practice QA.', 'approved', 'yes')", [
+        bankKey, 960001 + i, i < 75 ? "Paging module" : "Rare module", `Browser practice item ${i + 1}`, '["Correct practice answer","Wrong B","Wrong C","Wrong D"]',
+      ]);
+    }
+    await db.execute("INSERT INTO bookmarks (studentEmail, bankKey, questionId) VALUES (?, ?, 960081)", [email, bankKey]);
+    await db.execute("INSERT INTO question_attempts (studentEmail, examType, bankKey, courseKey, questionId, topic, correct, confidence) VALUES (?, ?, ?, ?, 960082, 'Rare module', 'no', 'low')", [email, bankKey, bankKey, bankKey]);
+    await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.30" });
+    await signInWithOtp(page, email, `/${bankKey}`);
+    await page.waitForURL(`**/${bankKey}`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    await page.getByRole("button", { name: /Paging module/ }).click();
+    await page.getByRole("button", { name: /Quiz Settings/ }).click();
+    await page.getByRole("button", { name: "50 Qs", exact: true }).click();
+    await page.getByRole("button", { name: "Apply Settings →" }).click();
+    const seen = new Set<string>();
+    for (let i = 0; i < 52; i++) {
+      await expect(page.getByTestId("practice-question")).toBeVisible();
+      const id = (await page.getByTestId("practice-question").getAttribute("data-question-id"))!;
+      expect(seen.has(id)).toBe(false);
+      expect(Number(id)).toBeLessThan(960076);
+      seen.add(id);
+      await page.getByRole("button", { name: /^A\. Correct practice answer/ }).click();
+      await page.getByRole("button", { name: "✓ Sure", exact: true }).click();
+      await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
+      await page.getByRole("button", { name: "Next Question →", exact: true }).click();
+      if (i === 49) {
+        await expect(page.getByText("Session Complete!", { exact: true })).toBeVisible();
+        await page.getByRole("button", { name: "Skip feedback", exact: true }).click();
+        await page.getByRole("button", { name: /New Session/ }).click();
+      }
+    }
+    expect(seen.size).toBe(52);
+    // These are outside the selected module and initial 50-item working set.
+    for (const [mode, question] of [["bookmarked", "960081"], ["missed", "960082"], ["low-confidence", "960082"]]) {
+      await page.goto(`/${bankKey}?mode=${mode}`);
+      await expect(page.getByTestId("practice-question")).toHaveAttribute("data-question-id", question);
+    }
+    await page.goto(`/${bankKey}?topic=${encodeURIComponent("Rare module")}&calcOnly=true`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
+  } finally { await db.end(); }
 });

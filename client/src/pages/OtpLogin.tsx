@@ -5,7 +5,7 @@
  * Step 2: Enter 6-digit code → verify → redirect to /quiz or /team
  */
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
@@ -57,13 +57,17 @@ export default function OtpLogin() {
     if (cooldownRef.current) clearInterval(cooldownRef.current);
   }, []);
 
+  // Focus as the code inputs mount, before the learner can type. A delayed
+  // timer can steal focus halfway through fast entry and drop an OTP digit.
+  useLayoutEffect(() => {
+    if (step === "code") inputRefs.current[0]?.focus();
+  }, [step]);
+
   const requestOtp = trpc.emailOtp.requestOtp.useMutation({
     onSuccess: () => {
       setStep("code");
       setErrorMsg("");
       startResendCooldown();
-      // Focus first code input after transition
-      setTimeout(() => inputRefs.current[0]?.focus(), 100);
     },
     onError: (error) => {
       setErrorMsg(error.message || "We couldn't send your login code. Please try again.");
@@ -103,7 +107,7 @@ export default function OtpLogin() {
           setAttemptsLeft(left);
           setErrorMsg(`Incorrect code. ${left} attempt${left === 1 ? "" : "s"} remaining.`);
           setCode(["", "", "", "", "", ""]);
-          setTimeout(() => inputRefs.current[0]?.focus(), 50);
+          inputRefs.current[0]?.focus();
         } else {
           setErrorMsg("Verification failed. Please try again.");
         }

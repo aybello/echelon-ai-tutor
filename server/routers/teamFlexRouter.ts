@@ -1,3 +1,4 @@
+import { attemptCourseFilter, attemptIdentityFilter } from "../courseActivityScope";
 /**
  * Teams Flex Router — Production-hardened
  * All manager procedures require authenticated session + verified org membership.
@@ -487,13 +488,12 @@ export const teamFlexRouter = router({
 
       if (licences.length === 0) return [];
 
-      // For each licence with an operatorUserId, fetch their study progress
+      // Claimed operators may use verified email without an OAuth account ID.
       const results = await Promise.all(
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
-          const progressExamType = canonicalCourse?.questionBankKey ?? lic.courseKey;
           const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
-          if (!lic.operatorUserId || lic.status === "invited") {
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || lic.status === "invited") {
             return {
               licenceId: lic.id,
               courseKey: displayCourseKey,
@@ -521,8 +521,8 @@ export const teamFlexRouter = router({
             })
             .from(questionAttempts)
             .where(and(
-              eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, progressExamType),
+              attemptIdentityFilter(lic.operatorUserId, lic.invitedEmail),
+              attemptCourseFilter(displayCourseKey),
             ));
 
           const total = Number(stats?.total ?? 0);
@@ -531,7 +531,7 @@ export const teamFlexRouter = router({
           const readinessResult = await calculateReadinessSnapshot(db, {
             userId: lic.operatorUserId,
             email: lic.invitedEmail,
-            examType: progressExamType,
+            examType: displayCourseKey,
           });
 
           return {

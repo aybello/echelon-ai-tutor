@@ -26,6 +26,8 @@ interface QuizGateProps {
   examType?: string;
   /** The completed preview answers used to build a transparent diagnostic. */
   history?: Array<{ module?: string; correct?: boolean }>;
+  /** Disable score-derived diagnostics when correctness is intentionally server-held. */
+  diagnosticAvailable?: boolean;
   /** Label used in the completion headline, e.g. "mock-exam questions". */
   previewName?: string;
   /** Destination for closing the gate. Defaults to the homepage. */
@@ -75,6 +77,7 @@ export default function QuizGate({
   paidFeatures,
   examType,
   history = [],
+  diagnosticAvailable = true,
   previewName = "questions",
   backPath = "/",
 }: QuizGateProps) {
@@ -102,7 +105,7 @@ export default function QuizGate({
   const checkoutPriceLabel = product
     ? isUS ? formatPriceUSD(product.priceUSD) : formatPriceCAD(product.priceCAD)
     : priceLabel;
-  const diagnostic = buildPreviewDiagnostic(history, questionsAnswered);
+  const diagnostic = diagnosticAvailable ? buildPreviewDiagnostic(history, questionsAnswered) : null;
 
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: data => {
@@ -118,7 +121,7 @@ export default function QuizGate({
     if (
       diagnosticTracked.current ||
       !productKey ||
-      diagnostic.total === 0
+      !diagnostic || diagnostic.total === 0
     ) return;
     diagnosticTracked.current = true;
     trackDiagnostic.mutate({
@@ -218,7 +221,7 @@ export default function QuizGate({
             ✓ {questionsAnswered} questions answered
           </div>
 
-          {diagnostic.total > 0 && (
+          {diagnostic && diagnostic.total > 0 && (
             <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 14, padding: "14px 16px", marginBottom: 14, textAlign: "left" }}>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
                 <div>

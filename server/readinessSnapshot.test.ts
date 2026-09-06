@@ -5,6 +5,10 @@ function simpleQuery(result: unknown[]) {
   return { from: vi.fn(() => ({ where: vi.fn().mockResolvedValue(result) })) };
 }
 
+function coveredQuery(result: unknown[]) {
+  return { from: () => ({ innerJoin: () => ({ where: vi.fn().mockResolvedValue(result) }) }) };
+}
+
 function groupedQuery(result: unknown[]) {
   return {
     from: vi.fn(() => ({
@@ -26,7 +30,8 @@ describe("server-owned readiness snapshots", () => {
         { sessionId: "mock-2", total: 20, correct: 18 },
       ]))
       .mockImplementationOnce(() => simpleQuery([{ count: 20 }]))
-      .mockImplementationOnce(() => simpleQuery([{ count: 8 }]));
+      .mockImplementationOnce(() => simpleQuery([{ count: 8 }]))
+      .mockImplementationOnce(() => coveredQuery([{ count: 12 }]));
 
     const result = await calculateReadinessSnapshot({ select } as any, {
       userId: 42,
@@ -52,7 +57,8 @@ describe("server-owned readiness snapshots", () => {
       .mockImplementationOnce(() => simpleQuery([{ total: 0, correct: 0, activeDays: 0, distinctTopics: 0 }]))
       .mockImplementationOnce(() => groupedQuery([]))
       .mockImplementationOnce(() => simpleQuery([{ count: 11 }]))
-      .mockImplementationOnce(() => simpleQuery([{ count: 0 }]));
+      .mockImplementationOnce(() => simpleQuery([{ count: 0 }]))
+      .mockImplementationOnce(() => coveredQuery([{ count: 0 }]));
 
     const result = await calculateReadinessSnapshot({ select } as any, {
       userId: null,

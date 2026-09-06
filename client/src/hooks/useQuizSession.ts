@@ -25,6 +25,7 @@ import { setTrialUnlocked } from "@/components/QuizGate";
 import { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import type { DBQuestion } from "@/hooks/useQuestionBank";
+import { PracticeQueue } from "@/lib/practiceQueue";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -71,6 +72,10 @@ export interface UseQuizSessionReturn {
   trialDone: boolean;
   trialUnlocked: boolean;
   missedCount: number;
+  questionStatus: "loading" | "error" | "empty" | undefined;
+  questionError: string;
+  retryQuestions: () => void;
+  availableQuestionCount: number;
 
   // ── Derived ────────────────────────────────────────────────────────────────
   correctCount: number;
@@ -306,7 +311,7 @@ export function useQuizSession({
   // ── Bookmarked questions data ──────────────────────────────────────────────
   const { data: bookmarkedData } = trpc.dashboard.bookmarkedQuestions.useQuery(
     { examType },
-    { enabled: quizMode === "bookmarked", refetchOnWindowFocus: false },
+    { enabled: freeCourse && quizMode === "bookmarked", refetchOnWindowFocus: false },
   );
   const bookmarkedIds = useMemo(() => new Set((bookmarkedData ?? []).map(r => r.questionId).filter((id): id is number => id != null)), [bookmarkedData]);
 
@@ -315,31 +320,9 @@ export function useQuizSession({
   // not missedQuestions (incorrect answers) — these are distinct concepts.
   const { data: lowConfidenceData } = trpc.dashboard.lowConfidenceQuestions.useQuery(
     { examType, limit: 100 },
-    { enabled: quizMode === "low-confidence", refetchOnWindowFocus: false },
+    { enabled: freeCourse && quizMode === "low-confidence", refetchOnWindowFocus: false },
   );
   const lowConfidenceIds = useMemo(() => new Set((lowConfidenceData ?? []).map(r => r.questionId).filter((id): id is number => id != null)), [lowConfidenceData]);
-
-  // ── Progress persistence: seed usedIds from previously-mastered questions ──
-  const { data: attemptStats } = trpc.quiz.getAttemptStats.useQuery(
-    { examType },
-    { refetchOnWindowFocus: false, staleTime: 5 * 60 * 1000 }
-  );
-  // On mount, pre-seed usedIds with mastered questions (answered correctly 2+ times in 30 days)
-  // This ensures returning users don't re-see questions they've already mastered.
-  // SAFETY: only seed if enough questions remain after seeding (at least DEFAULT_SESSION_SIZE).
-  useEffect(() => {
-    if (attemptStats && attemptStats.seenIds.length > 0 && usedIds.size === 0 && history.length === 0 && allQuestions.length > 0) {
-      // Only seed mastered questions (seenIds minus missedIds)
-      const missedSet = new Set(attemptStats.missedIds);
-      const masteredSet = new Set(attemptStats.seenIds.filter(id => !missedSet.has(id)));
-      // Don't seed if it would leave fewer than DEFAULT_SESSION_SIZE questions available
-      const remainingAfterSeed = allQuestions.filter(q => !masteredSet.has(q.id)).length;
-      if (masteredSet.size > 0 && remainingAfterSeed >= DEFAULT_SESSION_SIZE) {
-        setUsedIds(masteredSet);
-      }
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [attemptStats, allQuestions.length]);
 
   // ── Derived ────────────────────────────────────────────────────────────────
   const { correctCount, wrongCount } = summarizeHistory(history);
@@ -425,9 +408,56 @@ export function useQuizSession({
     setTutorOpenState(v);
   }, [accessData?.hasAccess, analyticsMutation, examType, freeTutorPreview, tutorOpen]);
 
+  const utils = trpc.useUtils();
+  const [revision, setRevision] = useState(0);
+  const [questionStatus, setQuestionStatus] = useState<"loading" | "error" | "empty" | undefined>(freeCourse ? undefined : "loading");
+  const [questionError, setQuestionError] = useState("");
+  const [availableQuestionCount, setAvailableQuestionCount] = useState(allQuestions.length);
+  const visited = useRef(new Set<number>());
+  const fetchRef = useRef(utils.client.quiz.getRandomQuestions.query);
+  fetchRef.current = utils.client.quiz.getRandomQuestions.query;
+  const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(excludeIds =>
+    fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
+      difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
+      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }),
+    ["standard", "quick10"].includes(quizMode) ? visited.current : new Set<number>()),
+    [freeCourse, examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+  const activeQueue = useRef(queue);
+  activeQueue.current = queue;
+  const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
+  const requestNext = useCallback(async () => {
+    if (!queue || fetching.current === queue) return;
+    fetching.current = queue;
+    setQuestionStatus("loading");
+    setQuestionError("");
+    try {
+      const next = await queue.take(pool => getAdaptiveNext(history, pool, trialUnlocked));
+      if (activeQueue.current !== queue) return;
+      setAvailableQuestionCount(queue.total);
+      setCurrent(next);
+      clearUI();
+      setQuestionStatus(next ? undefined : "empty");
+      if (!next && history.length) trackQuizCompleted(history, "pool_exhausted");
+    } catch (error) {
+      if (activeQueue.current !== queue) return;
+      setQuestionError(error instanceof Error ? error.message : "Questions could not be loaded.");
+      setQuestionStatus("error");
+    } finally { if (fetching.current === queue) fetching.current = null; }
+  }, [queue, history, trialUnlocked, clearUI, trackQuizCompleted]);
+  const requestNextRef = useRef(requestNext);
+  requestNextRef.current = requestNext;
+  useEffect(() => {
+    if (!queue) return;
+    activeQueue.current = queue;
+    setInitialized(true);
+    setCurrent(null);
+    void requestNextRef.current();
+    return () => { if (activeQueue.current === queue) activeQueue.current = null; };
+  }, [queue]);
+
   // ── Initialize (call once when allQuestions loads) ──────────────────────────
   const initialize = useCallback(() => {
-    if (initialized || allQuestions.length === 0) return;
+    if (!freeCourse || initialized || allQuestions.length === 0) return;
     // Prefer medium/hard for trial phase
     const trialPool = allQuestions.filter(
       (q) => q.difficulty === "medium" || q.difficulty === "hard",
@@ -459,7 +489,7 @@ export function useQuizSession({
 
     // Map numeric confidence (0-100 from ConfidenceMeter) to 1/2/3 level
     const confLevel = confidence != null
-      ? (confidence <= 33 ? 1 : confidence <= 66 ? 2 : 3)
+      ? (confidence <= 4 ? (confidence >= 3 ? 3 : 1) : confidence <= 33 ? 1 : confidence <= 66 ? 2 : 3)
       : null;
     // Log attempt to backend
     logAttemptFn({
@@ -531,6 +561,8 @@ export function useQuizSession({
       return;
     }
 
+    if (queue) { void requestNext(); return; }
+
     // Get next question adaptively
     let next = getAdaptiveNext(history, pool, trialUnlocked);
     if (!next) {
@@ -552,7 +584,7 @@ export function useQuizSession({
     }
     setCurrent(next);
     clearUI();
-  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted]);
+  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext]);
 
   // ── Go back (undo last answer) ─────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -609,6 +641,11 @@ export function useQuizSession({
     setUsedIds(new Set());
     setTrialDone(false);
     clearUI();
+    if (queue) {
+      if (queue.exhausted && queue.size === 0) visited.current.clear();
+      setRevision(v => v + 1);
+      return;
+    }
     // Respect the currently-active filters so the fresh question matches what
     // the user is studying (module / calc-only / difficulty).
     let newPool = allQuestions;
@@ -619,7 +656,7 @@ export function useQuizSession({
       if (filtered.length > 0) newPool = filtered;
     }
     setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
-  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking]);
+  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback(
@@ -631,6 +668,7 @@ export function useQuizSession({
       setTrialDone(false);
       clearUI();
 
+      if (queue) { setRevision(v => v + 1); return; }
       if (mode === "missed") {
         const ids = missedData?.questionIds ?? [];
         setMissedIds(ids);
@@ -645,7 +683,7 @@ export function useQuizSession({
         setCurrent(pickRandom(allQuestions));
       }
     },
-    [missedData, allQuestions, clearUI, resetAnalyticsTracking],
+    [missedData, allQuestions, clearUI, resetAnalyticsTracking, queue],
   );
 
   // ── Settings apply ─────────────────────────────────────────────────────────
@@ -658,6 +696,7 @@ export function useQuizSession({
       setUsedIds(new Set());
       setTrialDone(false);
       clearUI();
+      if (queue) { setRevision(v => v + 1); return; }
       // Build a filtered pool using the NEW settings synchronously
       // (can't rely on the pool memo since setQuizSettings is async)
       let newPool = allQuestions;
@@ -669,7 +708,7 @@ export function useQuizSession({
       }
       setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
     },
-    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking],
+    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking, queue],
   );
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
@@ -680,7 +719,7 @@ export function useQuizSession({
       ? newPool.filter((q) => q.module === selectedModule)
       : newPool;
     // Guard: if toggling ON but no calc questions exist, don't toggle — keep current state
-    if (next && filtered.length === 0) {
+    if (!queue && next && filtered.length === 0) {
       setNoCalcQuestions(true);
       return;
     }
@@ -690,13 +729,15 @@ export function useQuizSession({
     setHistory([]);
     setUsedIds(new Set());
     clearUI();
+    if (queue) return;
     setCurrent(pickRandom(filtered));
-  }, [calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking]);
+  }, [calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback(
     (mod: string | null) => {
       setSelectedModule(mod);
+      if (queue) { clearUI(); return; }
       let newPool = allQuestions.filter((q) => !usedIds.has(q.id));
       if (mod) newPool = newPool.filter((q) => q.module === mod);
       if (calcOnly) newPool = newPool.filter((q) => q.isCalc === true);
@@ -705,7 +746,7 @@ export function useQuizSession({
         clearUI();
       }
     },
-    [allQuestions, usedIds, calcOnly, clearUI],
+    [allQuestions, usedIds, calcOnly, clearUI, queue],
   );
 
   // Keep the latest-value refs in sync after every render (handleNext is defined
@@ -734,7 +775,7 @@ export function useQuizSession({
     setUsedIds((s) => new Set([...Array.from(s), current.id]));
     // Map numeric confidence (1-3 scale from ConfidenceMeter) to level
     const confLevel = latestConfidence != null
-      ? (latestConfidence <= 33 ? 1 : latestConfidence <= 66 ? 2 : 3)
+      ? (latestConfidence <= 4 ? (latestConfidence >= 3 ? 3 : 1) : latestConfidence <= 33 ? 1 : latestConfidence <= 66 ? 2 : 3)
       : null;
     logAttemptFn({
       questionId: current.id,
@@ -757,10 +798,11 @@ export function useQuizSession({
     setTrialUnlockedState(true);
     setTrialDone(false);
     clearUI();
+    if (queue) { setRevision(v => v + 1); return; }
     // Resume with next question from pool
     const next = getAdaptiveNext(history, pool, true);
     if (next) setCurrent(next);
-  }, [history, pool, clearUI]);
+  }, [history, pool, clearUI, queue]);
 
   return {
     // State
@@ -780,6 +822,8 @@ export function useQuizSession({
     trialDone,
     trialUnlocked,
     missedCount,
+    questionStatus, questionError, retryQuestions: requestNext,
+    availableQuestionCount: freeCourse ? allQuestions.length : availableQuestionCount,
 
     // Derived
     correctCount,

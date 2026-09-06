@@ -123,6 +123,8 @@ jobs:
           --exclude server/webhook.integration.test.ts
           --exclude server/trainingRouter.integration.test.ts
           --exclude server/learnerReliability.integration.test.ts
+          --exclude server/courseReporting.integration.test.ts
+          --exclude server/practicePaging.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -156,6 +158,20 @@ jobs:
           REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+      - name: Database-backed learner and manager course reporting
+        run: pnpm exec vitest run server/courseReporting.integration.test.ts
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+      - name: Database-backed practice paging and mock retirement
+        run: pnpm exec vitest run server/practicePaging.integration.test.ts
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - run: pnpm build
         env:
           NODE_ENV: development
