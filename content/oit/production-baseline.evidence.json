@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-09T20:49:20.269Z",
+  "purpose": "Pre-update rollback snapshot for the checksum-gated OIT conceptual-question revision.",
+  "snapshotChecksum": "27ec3d426307ffd31b99e792e9b8fc3ef89362070836fb47aba21b65c7b008fe",
+  "baselineChecksum": "f97a14f0f416d49500096cf2f4e1ba00aa7bd3c243860395ac9717eaafb2005d",
+  "storageKey": "governed-content-backups/oit/2026-09-09/production-baseline-27ec3d426307ffd31b99e792e9b8fc3ef89362070836fb47aba21b65c7b008fe.json",
+  "storageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663824308637/9YRbBamkQDMXNb5cx5zZ4o/governed-content-backups/oit/2026-09-09/production-baseline-27ec3d426307ffd31b99e792e9b8fc3ef89362070836fb47aba21b65c7b008fe.json",
+  "banks": [
+    {
+      "bankKey": "oit",
+      "count": 489
+    },
+    {
+      "bankKey": "oit-ww",
+      "count": 483
+    }
+  ]
+}

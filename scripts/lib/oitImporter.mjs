@@ -1,4 +1,4 @@
-function sameStoredContent(row, question) {
+export function sameStoredContent(row, question) {
   const storedOptions = typeof row.options === "string" ? JSON.parse(row.options) : row.options;
   return row.module === question.module
     && row.difficulty === question.difficulty
@@ -53,6 +53,7 @@ export async function importOitPayloads({
         [payload.bankKey],
       );
       const existingByNumber = new Map(existingRows.map(row => [Number(row.questionNum), row]));
+      if (existingByNumber.size !== existingRows.length) throw new Error(`Duplicate deployed OIT question numbers in ${payload.bankKey}.`);
       let insertedForBank = 0;
       let movedToReviewForBank = 0;
 
@@ -65,15 +66,7 @@ export async function importOitPayloads({
               + "Choose a new additive question-number range instead of overwriting deployed content.",
             );
           }
-          if (existing.reviewStatus === "unreviewed") {
-            await connection.execute(
-              `UPDATE ${questionsTableSql}
-               SET reviewStatus = 'in_review', reviewedBy = NULL, reviewedAt = NULL
-               WHERE bankKey = ? AND questionNum = ?`,
-              [question.bankKey, question.questionNum],
-            );
-            movedToReviewForBank += 1;
-          }
+          // An identical replay must never withdraw already-visible content.
           continue;
         }
 

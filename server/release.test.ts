@@ -41,9 +41,10 @@ describe("public release health", () => {
         "issued-mock-session-integrity-v1",
         "mock-answer-key-protection-v1",
         "course-scoped-learner-reporting-v1",
+        "oit-exact-version-content-revision-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-09-06.mock-exam-integrity.1");
+    expect(RELEASE_ID).toBe("2026-09-09.oit-quality-revision.1");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
