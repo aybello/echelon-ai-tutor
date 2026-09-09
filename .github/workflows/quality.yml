@@ -203,7 +203,7 @@ jobs:
           SMTP_PASS: test-only-placeholder
       - name: Upload Teams browser-test evidence
         if: failure()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: teams-course-pass-browser-evidence
           path: |
