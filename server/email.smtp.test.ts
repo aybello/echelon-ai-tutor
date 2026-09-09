@@ -19,11 +19,15 @@ describe("SMTP email configuration", () => {
         user: ENV.smtpUser,
         pass: ENV.smtpPass,
       },
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
     expect(transporter).toBeDefined();
     // Verify the transport options are set correctly
     const options = transporter.options as Record<string, unknown>;
     expect(options.host).toBe("smtp.gmail.com");
     expect(options.port).toBe(587);
+    expect(options.disableFileAccess).toBe(true);
+    expect(options.disableUrlAccess).toBe(true);
   });
 });

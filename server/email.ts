@@ -27,6 +27,8 @@ function createTransporter(): nodemailer.Transporter {
         user: ENV.smtpUser,
         pass: ENV.smtpPass,
       },
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
   }
   // Fallback — should not reach here in production
