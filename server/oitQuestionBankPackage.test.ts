@@ -89,7 +89,7 @@ describe("OIT question-bank deployment package", () => {
     expect(new Set(questions.map((question: any) => question.question)).size).toBe(expectedTotal);
   });
 
-  it("keeps the package behind an individual approval gate", () => {
+  it("stages imports for exact-package batch release without individual approval", () => {
     const importer = fs.readFileSync(
       path.resolve(contentRoot, "..", "..", "scripts", "lib", "oitImporter.mjs"),
       "utf8",
@@ -97,7 +97,7 @@ describe("OIT question-bank deployment package", () => {
     expect(manifest.governance).toMatchObject({
       sourceReviewStatus: "unreviewed",
       databaseStagingStatus: "in_review",
-      activation: "individual-admin-approval-required",
+      activation: "validated-exact-package-batch-release",
     });
     expect(importer).toContain("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'in_review')");
     expect(importer).toContain("reviewStatus NOT IN ('in_review', 'rejected')");

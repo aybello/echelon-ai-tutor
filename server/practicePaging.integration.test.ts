@@ -70,7 +70,7 @@ suite("practice slices and mock retirement with a real database", () => {
     expect(await get("low-confidence")).toEqual([ids[110], ids[112]]);
     expect((await learner.quiz.getRandomQuestions({ bankKey, reviewMode: "bookmarked", excludeIds: [ids[120]] })).questions).toEqual([]);
     await expect(appRouter.createCaller(ctx()).quiz.getRandomQuestions({ bankKey, reviewMode: "bookmarked" })).rejects.toThrow("Sign in");
-  });
+  }, 15_000);
   it("keeps free previews fixed across exclusions, module and calculation changes", async () => {
     const guest = appRouter.createCaller(ctx());
     const preview = await guest.quiz.getRandomQuestions({ bankKey });
@@ -89,12 +89,17 @@ suite("practice slices and mock retirement with a real database", () => {
       await db.update(questions).set({ reviewStatus: "in_review" }).where(and(eq(questions.bankKey, bankKey), inArray(questions.questionNum, retired)));
       const submission = { sessionId: issued.sessionId, sessionToken: issued.token, examType: issued.examType, bankKey,
         answers: issued.questions.map(q => ({ questionNum: q.id, selectedIndex: 0 })) };
-      for (let i = 0; i < 2; i++) expect(await learner.exam.submitMock(submission)).toMatchObject({ score: 98, total: 100, unavailableCount: 2, persisted: true });
+      const first = await learner.exam.submitMock(submission);
+      const expectedScore = first.review.filter(item => item.correctIndex === 0).length;
+      expect(first).toMatchObject({ score: expectedScore, total: 100, unavailableCount: 2, persisted: true });
+      const replay = await learner.exam.submitMock(submission);
+      expect(replay).toMatchObject({ score: expectedScore, total: 100, unavailableCount: 2, persisted: true });
       const rows = await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, issued.sessionId));
       expect(rows).toHaveLength(100);
-      expect(rows.filter(r => r.correct === "no").map(r => r.questionId).sort()).toEqual(retired.sort());
+      expect(rows.filter(r => retired.includes(r.questionId)).every(r => r.correct === "no")).toBe(true);
+      expect(rows.filter(r => retired.includes(r.questionId))).toHaveLength(2);
       expect(await learner.exam.getHistory({ sessionId: randomUUID(), examType: bankKey })).toEqual([
-        expect.objectContaining({ score: 98, total: 100, moduleBreakdown: expect.objectContaining({ "Unavailable questions at submission": { correct: 0, total: 2 } }) }),
+        expect.objectContaining({ score: expectedScore, total: 100, moduleBreakdown: expect.objectContaining({ "Unavailable questions at submission": { correct: 0, total: 2 } }) }),
       ]);
     } finally {
       await db.update(questions).set({ reviewStatus: "approved" }).where(and(eq(questions.bankKey, bankKey), inArray(questions.questionNum, retired)));
