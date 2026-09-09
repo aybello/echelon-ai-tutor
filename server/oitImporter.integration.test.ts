@@ -234,8 +234,15 @@ integrationDescribe("OIT importer database integration", () => {
 
   it("batch release aborts when a package row is rejected", async () => {
     await importPayloads(payload());
-    await insertStoredQuestion(question({questionNum:1002}), 'rejected');
-    await expect(releaseOitPackage(releaseConnection(), payload([question(), question({questionNum:1002})]), true)).rejects.toThrow('rejected');
+    const rejectedPackageQuestion = question({
+      questionNum: 1002,
+      question: "A separate OIT release candidate question.",
+    });
+    await importPayloads(payload([rejectedPackageQuestion]));
+    await connection.execute(
+      `UPDATE \`${questionsTable}\` SET reviewStatus = 'rejected' WHERE bankKey = 'oit-test' AND questionNum = 1002`,
+    );
+    await expect(releaseOitPackage(releaseConnection(), payload([question(), rejectedPackageQuestion]), true)).rejects.toThrow('rejected');
     const [rows] = await connection.execute(`SELECT reviewStatus FROM \`${questionsTable}\` WHERE questionNum=1001`);
     expect(rows[0].reviewStatus).toBe('in_review');
   });
