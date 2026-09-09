@@ -51,7 +51,7 @@ function indexByNumber(rows, label, errors) {
  * baseline. This permits only a content revision of existing visible rows;
  * it never inserts, deletes, changes IDs, or changes review status.
  */
-export function planOitRevision(payloads, baseline, rows) {
+export function planOitRevision(payloads, baseline, rows, visibleTotals = {}) {
   const errors = [];
   const changes = [];
   const banks = [];
@@ -83,23 +83,38 @@ export function planOitRevision(payloads, baseline, rows) {
       visibleBefore += 1;
       let storedHash;
       try { storedHash = oitContentHash(stored); } catch { errors.push(`${label}: invalid stored options JSON.`); continue; }
+      const candidateHash = oitContentHash(question);
       if (oitContentHash(baselineEntry.content) !== baselineEntry.contentHash) {
         errors.push(`${label}: committed baseline content hash is invalid.`);
+      }
+      // A row already equal to the approved candidate is a successful replay,
+      // not drift. This makes post-commit verification and repeated apply runs
+      // idempotent while still rejecting any third content state.
+      if (storedHash === candidateHash) {
+        unchanged += 1;
+        continue;
       }
       if (storedHash !== baselineEntry.contentHash) {
         errors.push(`${label}: production drift since the captured baseline.`);
         continue;
       }
-      if (storedHash === oitContentHash(question)) unchanged += 1;
-      else {
-        changes.push({ bankKey: bankLabel, questionNum, content: canonicalContent(question) });
-        revisions += 1;
-      }
+      changes.push({ bankKey: bankLabel, questionNum, content: canonicalContent(question) });
+      revisions += 1;
     }
     for (const questionNum of baselineByNumber.keys()) {
       if (!payloadByNumber.has(questionNum)) errors.push(`${bankLabel}#${questionNum}: baseline item missing from candidate package.`);
     }
-    banks.push({ bankKey: bankLabel, packageCount: payloadByNumber.size, unchanged, revisions, visibleBefore, expectedVisibleAfter: visibleBefore });
+    const fullVisibleBefore = Number(visibleTotals[bankLabel] ?? visibleBefore);
+    banks.push({
+      bankKey: bankLabel,
+      packageCount: payloadByNumber.size,
+      unchanged,
+      revisions,
+      visibleBefore,
+      expectedVisibleAfter: visibleBefore,
+      fullVisibleBefore,
+      expectedFullVisibleAfter: fullVisibleBefore,
+    });
   }
   for (const bank of baselineBanks.keys()) if (!payloads.some(payload => payload.bankKey === bank)) errors.push(`${bank}: baseline bank missing from candidate payload.`);
   return { ready: errors.length === 0, errors, banks, changes, baselineChecksum: baseline?.baselineChecksum };
@@ -110,6 +125,7 @@ export async function applyOitRevision(connection, payloads, baseline, apply = f
   await connection.beginTransaction();
   try {
     const rows = [];
+    const visibleTotals = {};
     for (const payload of payloads) {
       const [meta] = await connection.execute(
         `SELECT bankKey FROM question_bank_meta WHERE bankKey = ?${apply ? " FOR UPDATE" : ""}`,
@@ -124,8 +140,16 @@ export async function applyOitRevision(connection, payloads, baseline, apply = f
         [payload.bankKey],
       );
       rows.push(...bankRows);
+      const [visibleCount] = await connection.execute(
+        "SELECT COUNT(*) AS total FROM questions WHERE bankKey = ? AND reviewStatus NOT IN ('in_review', 'rejected')",
+        [payload.bankKey],
+      );
+      if (!visibleCount[0] || !Number.isInteger(Number(visibleCount[0].total))) {
+        throw new Error(`Invalid visible count: ${payload.bankKey}`);
+      }
+      visibleTotals[payload.bankKey] = Number(visibleCount[0].total);
     }
-    const plan = planOitRevision(payloads, baseline, rows);
+    const plan = planOitRevision(payloads, baseline, rows, visibleTotals);
     if (!apply) { await connection.rollback(); return plan; }
     if (!plan.ready) throw new Error(`Exact-version OIT update blocked: ${plan.errors.join("; ")}`);
     for (const change of plan.changes) {
@@ -148,10 +172,10 @@ export async function applyOitRevision(connection, payloads, baseline, apply = f
         "SELECT COUNT(*) AS total FROM questions WHERE bankKey = ? AND reviewStatus NOT IN ('in_review', 'rejected')",
         [bank.bankKey],
       );
-      if (Number(count[0].total) !== bank.expectedVisibleAfter) throw new Error(`Visible count mismatch: ${bank.bankKey}`);
+      if (Number(count[0].total) !== bank.expectedFullVisibleAfter) throw new Error(`Visible count mismatch: ${bank.bankKey}`);
       await connection.execute(
         "UPDATE question_bank_meta SET totalQuestions = ?, contentVersion = contentVersion + 1 WHERE bankKey = ?",
-        [bank.expectedVisibleAfter, bank.bankKey],
+        [bank.expectedFullVisibleAfter, bank.bankKey],
       );
     }
     await connection.commit();

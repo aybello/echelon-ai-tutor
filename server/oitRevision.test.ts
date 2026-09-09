@@ -19,8 +19,15 @@ describe("exact-version OIT question revision", () => {
   it.each([stored({ question: "Unexpected drift?" }), stored({ reviewStatus: "in_review" }), { ...stored(), questionNum: 1002 }])("blocks drift, unsafe status, or missing IDs", row => {
     expect(planOitRevision(payloads, baseline, [row]).ready).toBe(false);
   });
+  it("recognizes an already-applied candidate row as an idempotent completed state", () => {
+    const plan = planOitRevision(payloads, baseline, [stored(candidate)]);
+    expect(plan).toMatchObject({ ready: true, changes: [], banks: [{ unchanged: 1, revisions: 0 }] });
+  });
   it("rolls back read-only reconciliation without an update", async () => {
-    const connection = { beginTransaction: vi.fn(), rollback: vi.fn(), execute: vi.fn(async (sql: string) => sql.includes("question_bank_meta") ? [[{ bankKey: "oit" }]] : [[stored()]]) };
+    const connection = { beginTransaction: vi.fn(), rollback: vi.fn(), execute: vi.fn(async (sql: string) => {
+      if (sql.includes("COUNT(*)")) return [[{ total: 1 }]];
+      return sql.includes("question_bank_meta") ? [[{ bankKey: "oit" }]] : [[stored()]];
+    }) };
     const plan = await applyOitRevision(connection, payloads, baseline);
     expect(plan.ready).toBe(true);
     expect(connection.execute.mock.calls.every(([sql]) => sql.startsWith("SELECT"))).toBe(true);
@@ -36,6 +43,18 @@ describe("exact-version OIT question revision", () => {
     const result = await applyOitRevision(connection, payloads, baseline, true);
     expect(result).toMatchObject({ ready: true, applied: true, changes: [{ bankKey: "oit", questionNum: 1001 }] });
     expect(connection.execute.mock.calls.some(([sql]) => sql.startsWith("UPDATE questions SET") && !sql.includes("reviewStatus ="))).toBe(true);
+    expect(connection.commit).toHaveBeenCalledOnce();
+  });
+  it("uses full-bank visible totals when package rows are a strict subset of an active bank", async () => {
+    const connection = { beginTransaction: vi.fn(), rollback: vi.fn(), commit: vi.fn(), execute: vi.fn(async (sql: string, _params?: unknown[]) => {
+      if (sql.startsWith("UPDATE questions")) return [{ affectedRows: 1 }];
+      if (sql.startsWith("UPDATE question_bank_meta")) return [{ affectedRows: 1 }];
+      if (sql.includes("COUNT(*)")) return [[{ total: 17 }]];
+      return sql.includes("question_bank_meta") ? [[{ bankKey: "oit" }]] : [[stored()]];
+    }) };
+    const result = await applyOitRevision(connection, payloads, baseline, true);
+    expect(result.banks[0]).toMatchObject({ packageCount: 1, visibleBefore: 1, fullVisibleBefore: 17, expectedFullVisibleAfter: 17 });
+    expect(connection.execute.mock.calls.find(([sql]) => sql.startsWith("UPDATE question_bank_meta"))?.[1]).toEqual([17, "oit"]);
     expect(connection.commit).toHaveBeenCalledOnce();
   });
 });
