@@ -22,7 +22,9 @@ console.log(JSON.stringify({ payloadChecksum, baselineChecksum: baseline.baselin
 const apply = args.includes("--apply");
 if (apply && process.env.CONFIRM_OIT_CONTENT_UPDATE !== payloadChecksum) throw new Error(`Set CONFIRM_OIT_CONTENT_UPDATE=${payloadChecksum} for this exact package.`);
 if (apply && process.env.CONFIRM_OIT_BASELINE !== baseline.baselineChecksum) throw new Error(`Set CONFIRM_OIT_BASELINE=${baseline.baselineChecksum} for the captured production baseline.`);
-if (apply && !process.env.BACKUP_EVIDENCE_ID) throw new Error("Set BACKUP_EVIDENCE_ID after verifying the recoverable pre-release snapshot.");
+if (apply && process.env.BACKUP_EVIDENCE_ID !== baseline.baselineChecksum) {
+  throw new Error(`Set BACKUP_EVIDENCE_ID=${baseline.baselineChecksum} after verifying the recoverable pre-release snapshot.`);
+}
 if (!apply && !args.includes("--database")) {
   console.log("Repository validation only. Run --database for production reconciliation.");
   process.exit(0);
