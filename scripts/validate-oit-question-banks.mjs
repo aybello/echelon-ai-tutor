@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { applyOitEditorial } from "./lib/oitEditorial.mjs";
+import { analyseOitAnswerCues } from "./lib/oitAnswerCues.mjs";
 
 const repoRoot = path.resolve(import.meta.dirname, "..");
 const contentRoot = path.join(repoRoot, "content", "oit");
@@ -87,13 +89,13 @@ function calculationPrecision(question) {
   return Number(match[1]);
 }
 
-assert.equal(manifest.version, "2026-08-29-v3", "Unexpected OIT package version.");
+assert.equal(manifest.version, "2026-09-09-v4", "Unexpected OIT package version.");
 assert.equal(manifest.importMode, "additive", "OIT package must remain additive.");
 assert.deepEqual(manifest.questionNumberRange, { start: 1001, end: 1500 });
 assert.equal(manifest.banks.length, 2, "Manifest must define exactly two OIT banks.");
 assert.equal(manifest.governance.sourceReviewStatus, "unreviewed");
 assert.equal(manifest.governance.databaseStagingStatus, "in_review");
-assert.equal(manifest.governance.activation, "individual-admin-approval-required");
+assert.equal(manifest.governance.activation, "validated-exact-package-batch-release");
 
 const globalItemIds = new Set();
 const globalStems = new Map();
@@ -151,13 +153,9 @@ for (const bank of manifest.banks) {
       assert(!/^[a-z]/.test(option), `${context}: option ${optionIndex} must start with an uppercase letter or number.`);
     });
     assert.equal(new Set(question.options.map(normalized)).size, 4, `${context}: duplicate options.`);
-    if (question.isCalc === "no") {
-      for (let left = 0; left < question.options.length; left += 1) {
-        for (let right = left + 1; right < question.options.length; right += 1) {
-          assert(jaccard(tokenSet(question.options[left]), tokenSet(question.options[right])) < 0.4, `${context}: options ${left} and ${right} are too similar to be uniquely distinguishable.`);
-        }
-      }
-    }
+    // Shared terminology is desirable in plausible distractors. Token overlap
+    // cannot establish ambiguity: 'multiply' versus 'divide' can change a key.
+    // Exact duplicates remain forbidden; authored choices are verified below.
     assert(Number.isInteger(question.correctIndex) && question.correctIndex >= 0 && question.correctIndex <= 3, `${context}: invalid correctIndex.`);
     assert.equal(question.correctAnswer, question.options[question.correctIndex], `${context}: correctAnswer does not match correctIndex.`);
     assert(!question.correctAnswer.toLowerCase().includes(question.topic.toLowerCase()), `${context}: correct answer repeats the topic supplied by the stem.`);
@@ -240,13 +238,20 @@ for (const bank of manifest.banks) {
   assert(mostRepeatedPattern <= 16, `${bank.bankKey}: one stem template is repeated ${mostRepeatedPattern} times.`);
   totalQuestions += questions.length;
 
-  console.log(`PASS ${bank.bankKey}: ${questions.length} questions, ${calculationCount} calculations, non-patterned balanced answer key.`);
+  const cues = analyseOitAnswerCues(questions);
+  assert.deepEqual(cues.longTells, [], `${bank.bankKey}: conspicuously long correct answers.`);
+  assert.deepEqual(cues.shortTells, [], `${bank.bankKey}: conspicuously short correct answers.`);
+  assert.deepEqual(cues.qualifierTells, [], `${bank.bankKey}: all three distractors signal a qualification shortcut.`);
+  assert(cues.longestRate <= 0.35, `${bank.bankKey}: correct answers systematically longest.`);
+  assert(cues.shortestRate <= 0.35, `${bank.bankKey}: correct answers systematically shortest.`);
+  console.log(`PASS ${bank.bankKey}: ${questions.length} questions, ${calculationCount} calculations, non-patterned balanced answer key; no strong length tells.`);
 }
 
 const expectedTotal = manifest.banks.reduce((sum, bank) => sum + bank.expectedCount, 0);
 assert.equal(totalQuestions, expectedTotal, "Package total must match the manifest.");
 assert.equal(globalItemIds.size, expectedTotal, "Global item IDs must be unique.");
 assert.equal(globalStems.size, expectedTotal, "Question stems must be unique.");
+assert.deepEqual(applyOitEditorial(allQuestions), allQuestions, "Generated choices must match the complete authored editorial source.");
 
 // Near-duplicate scan across non-calculation questions. Numeric variants within
 // one calculation objective are reviewed by the distinct-answer gate above.
@@ -260,4 +265,4 @@ for (let left = 0; left < nonCalculations.length; left += 1) {
   }
 }
 
-console.log(`PASS OIT package: ${manifest.banks.map(bank => `${bank.expectedCount} ${bank.bankKey}`).join(" + ")} questions with staged review governance.`);
+console.log(`PASS OIT package: ${manifest.banks.map(bank => `${bank.expectedCount} ${bank.bankKey}`).join(" + ")} questions with validated batch-release governance.`);

@@ -42,7 +42,7 @@ const mysql = await import("mysql2/promise");
 const connection = await mysql.createConnection(process.env.DATABASE_URL);
 try {
   const result = await importOitPayloads({ connection, payloads });
-  console.log(`OIT import complete: ${result.inserted} new questions staged transactionally for individual approval.`);
+  console.log(`OIT import complete: ${result.inserted} new questions staged transactionally for validated batch release.`);
 } catch (error) {
   throw error;
 } finally {

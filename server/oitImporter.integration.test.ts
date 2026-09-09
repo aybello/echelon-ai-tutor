@@ -20,6 +20,7 @@ const questionsTable = `oit_import_questions_${suffix}`;
 const metaTable = `oit_import_meta_${suffix}`;
 
 let connection: any;
+let releaseOitPackage: any;
 let importOitPayloads: (input: {
   connection: any;
   payloads: any[];
@@ -75,6 +76,8 @@ integrationDescribe("OIT importer database integration", () => {
     connection = await mysql.createConnection(process.env.DATABASE_URL!);
     // @ts-expect-error The importer service is an ESM JavaScript module intentionally used by the CLI.
     ({ importOitPayloads } = await import("../scripts/lib/oitImporter.mjs"));
+    // @ts-expect-error The release service is a CLI ESM module.
+    ({ releaseOitPackage } = await import("../scripts/lib/oitRelease.mjs"));
 
     await connection.execute(`CREATE TABLE \`${metaTable}\` (
       bankKey VARCHAR(100) PRIMARY KEY,
@@ -162,7 +165,7 @@ integrationDescribe("OIT importer database integration", () => {
     expect(meta[0].contentVersion).toBe(7);
   });
 
-  it("moves only legacy unreviewed rows to review and preserves deliberate decisions", async () => {
+  it("preserves visibility and deliberate decisions on replay", async () => {
     await insertStoredQuestion(question({ questionNum: 1001 }), "unreviewed");
     await insertStoredQuestion(question({ questionNum: 1002 }), "approved");
     await insertStoredQuestion(question({ questionNum: 1003 }), "rejected");
@@ -171,15 +174,15 @@ integrationDescribe("OIT importer database integration", () => {
       question({ questionNum: 1002 }),
       question({ questionNum: 1003 }),
     ]));
-    expect(result).toMatchObject({ inserted: 0, movedToReview: 1, identical: 2, verified: 3 });
+    expect(result).toMatchObject({ inserted: 0, movedToReview: 0, identical: 3, verified: 3 });
     const [rows] = await connection.execute(`SELECT questionNum, reviewStatus FROM \`${questionsTable}\` ORDER BY questionNum`);
     expect(rows).toEqual([
-      expect.objectContaining({ questionNum: 1001, reviewStatus: "in_review" }),
+      expect.objectContaining({ questionNum: 1001, reviewStatus: "unreviewed" }),
       expect.objectContaining({ questionNum: 1002, reviewStatus: "approved" }),
       expect.objectContaining({ questionNum: 1003, reviewStatus: "rejected" }),
     ]);
     const [meta] = await connection.execute(`SELECT totalQuestions, contentVersion FROM \`${metaTable}\` WHERE bankKey='oit-test'`);
-    expect(meta[0]).toEqual(expect.objectContaining({ totalQuestions: 1, contentVersion: 8 }));
+    expect(meta[0]).toEqual(expect.objectContaining({ totalQuestions: 0, contentVersion: 7 }));
   });
 
   it("fails safely when bank metadata is missing", async () => {
@@ -203,5 +206,37 @@ integrationDescribe("OIT importer database integration", () => {
       questionsTable: "questions; DROP TABLE questions",
       metaTable,
     })).rejects.toThrow(/Unsafe table name/);
+  });
+
+  function releaseConnection() {
+    // Exercise production SQL against isolated test tables, never application rows.
+    return {
+      beginTransaction: () => connection.beginTransaction(),
+      commit: () => connection.commit(), rollback: () => connection.rollback(),
+      query: (sql: string) => connection.query(sql),
+      execute: (sql: string, values: unknown[]) => connection.execute(
+        sql.replace(/\bquestion_bank_meta\b/g, `\`${metaTable}\``).replace(/\bquestions\b/g, `\`${questionsTable}\``), values),
+    };
+  }
+
+  it("batch release preserves other drafts, publishes exact rows and is idempotent", async () => {
+    await importPayloads(payload());
+    await insertStoredQuestion(question({questionNum: 99, question: 'Unrelated draft'}));
+    const dry = await releaseOitPackage(releaseConnection(), payload(), false);
+    expect(dry.banks[0].matchingStaged).toBe(1);
+    await releaseOitPackage(releaseConnection(), payload(), true);
+    await releaseOitPackage(releaseConnection(), payload(), true);
+    const [rows] = await connection.execute(`SELECT questionNum, reviewStatus FROM \`${questionsTable}\` ORDER BY questionNum`);
+    expect(rows.map((r:any) => [r.questionNum,r.reviewStatus])).toEqual([[99,'in_review'],[1001,'unreviewed']]);
+    const [meta] = await connection.execute(`SELECT totalQuestions, contentVersion FROM \`${metaTable}\``);
+    expect(meta[0]).toMatchObject({totalQuestions:1, contentVersion:9});
+  });
+
+  it("batch release aborts when a package row is rejected", async () => {
+    await importPayloads(payload());
+    await insertStoredQuestion(question({questionNum:1002}), 'rejected');
+    await expect(releaseOitPackage(releaseConnection(), payload([question(), question({questionNum:1002})]), true)).rejects.toThrow('rejected');
+    const [rows] = await connection.execute(`SELECT reviewStatus FROM \`${questionsTable}\` WHERE questionNum=1001`);
+    expect(rows[0].reviewStatus).toBe('in_review');
   });
 });

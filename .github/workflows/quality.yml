@@ -47,6 +47,8 @@ jobs:
       - name: Block moderate, high and critical production dependency advisories
         run: pnpm audit --prod --audit-level moderate
       - run: pnpm check
+      - name: Validate exact OIT batch-release package
+        run: node scripts/release-oit-question-banks.mjs
       - name: Validate the complete governed 309A content package
         run: |
           pnpm 309a:validate:full
@@ -160,6 +162,11 @@ jobs:
           REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+      - name: Database-backed OIT import and batch release
+        run: pnpm exec vitest run server/oitImporter.integration.test.ts
+        env:
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          REQUIRE_OIT_IMPORTER_DB: "1"
       - name: Database-backed learner and manager course reporting
         run: pnpm exec vitest run server/courseReporting.integration.test.ts
         env:
