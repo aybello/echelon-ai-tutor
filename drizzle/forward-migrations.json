@@ -108,6 +108,16 @@
       "standaloneApply": {
         "tables": ["purchase_email_outbox"]
       }
+    },
+    {
+      "version": 63,
+      "tag": "0063_question_content_snapshots",
+      "file": "drizzle/0063_question_content_snapshots.sql",
+      "sha256": "83c4bf5548fa409d1690cb9f40537bd952c3fd7ed0a0ff43d8355d3c36c62939",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": ["question_content_snapshots"]
+      }
     }
   ]
 }

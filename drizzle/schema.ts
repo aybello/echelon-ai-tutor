@@ -271,6 +271,32 @@ export const questionAttempts = mysqlTable("question_attempts", {
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
 export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
 
+/**
+ * Immutable before-images for controlled question-bank releases.
+ *
+ * The legacy attempt ledger records a question ID and selected index rather than
+ * the question content shown at attempt time. A release records the exact
+ * pre-change question payload here before an existing item is revised, allowing
+ * historical attempts to remain interpretable without modifying learner data.
+ */
+export const questionContentSnapshots = mysqlTable("question_content_snapshots", {
+  id: int("id").autoincrement().primaryKey(),
+  releaseKey: varchar("releaseKey", { length: 128 }).notNull(),
+  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+  questionId: int("questionId").notNull(),
+  questionNum: int("questionNum").notNull(),
+  sourceContentVersion: int("sourceContentVersion").notNull(),
+  contentHash: varchar("contentHash", { length: 64 }).notNull(),
+  /** JSON before-image of the educational content and governance fields only; no learner data. */
+  payload: mediumtext("payload").notNull(),
+  capturedAt: timestamp("capturedAt").defaultNow().notNull(),
+}, (t) => [
+  uniqueIndex("question_snapshot_release_question_idx").on(t.releaseKey, t.questionId),
+  index("question_snapshot_bank_question_idx").on(t.bankKey, t.questionId),
+]);
+export type QuestionContentSnapshot = typeof questionContentSnapshots.$inferSelect;
+export type InsertQuestionContentSnapshot = typeof questionContentSnapshots.$inferInsert;
+
 /** Student profiles — live topic accuracy snapshot, updated after each quiz session */
 export const studentProfiles = mysqlTable("student_profiles", {
   id: int("id").autoincrement().primaryKey(),

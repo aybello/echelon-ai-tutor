@@ -1,0 +1,27 @@
+# Project TODO
+
+- [x] Confirm the canonical project state and approved read-only database connectivity.
+- [x] Verify and document TiDB's lack of enforced read-only transaction support; constrain the export to hard-coded SELECT statements in a rolled-back consistent snapshot.
+- [x] Document TiDB's unsupported read-only transaction mode and constrain the export to hard-coded SELECT statements in a rolled-back consistent snapshot.
+- [x] Execute the supplied four-bank Class 1 select-only export without row limits or data mutations.
+- [x] Validate timestamp, bank/status counts, full question coverage, and bank metadata in the JSON output.
+- [x] Record the export-only session checkpoint in the AI Context Hub.
+- [x] Deliver the JSON export and a precise execution handoff without deploying.
+- [x] Load the WPI Class IV wastewater audit branch and verify the export-only scope.
+- [x] Run the complete WPI Class IV wastewater select-only export and preserve an immutable checksum.
+- [x] Validate complete question coverage and reconciliation for the WPI Class IV audit baseline.
+- [x] Record the WPI Class IV export session in the AI Context Hub.
+- [x] Deliver the WPI Class IV JSON export without changing questions or deploying.
+- [x] Preserve and inspect the uploaded 907-question WPI Class IV handoff archive without executing its contents.
+- [x] Reconcile declared repairs and additions against the 657-question WPI production snapshot.
+- [x] Assess the package’s factual-evidence, batch-quality, and staging controls for a future controlled release.
+- [x] Record the WPI Class IV handoff preflight in the AI Context Hub.
+- [x] Deliver the preflight findings and identify the exact authority required before any production change.
+- [x] Preserve a fresh WPI production backup and write the release contract for the authorized 907-question release.
+- [x] Complete independent batch-quality review of the repaired and new WPI Class IV question sets.
+- [x] Implement and test a checksum-gated, history-safe WPI release path with rollback support.
+- [ ] Merge the approved WPI package into the public repository after final quality approval.
+- [x] Apply the guarded WPI release: 657 verified repairs plus 250 learner-visible additions.
+- [x] Verify the published learner flow, full inventory, preservation of history, and release evidence.
+- [ ] Checkpoint, publish, and record the completed WPI release in the AI Context Hub.
+- [x] Prove the observed failed post-write invariant rolled back fully and guard the current historical-attempt read contract.
