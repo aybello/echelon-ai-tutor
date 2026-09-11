@@ -2,6 +2,7 @@
 // Full feature parity: ScoreHistory, usePageMeta, stats grid, weakest-first module sort,
 // timer colour changes, province selector, report modal, flag/review system.
 
+import { class1OptionOrder } from "@/lib/class1OptionOrder";
 import { useState, useEffect, useCallback, useRef, useMemo, type ReactNode } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
@@ -1156,7 +1157,8 @@ export default function MockExamShell({
           </div>
           {/* Options */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-            {currentQ.options.map((rawOpt, i) => {
+            {class1OptionOrder(productKey, currentQ.id, currentQ.options.length).map((i, displayIndex) => {
+              const rawOpt = currentQ.options[i];
               // Strip any baked-in letter prefix (e.g. "A. ", "B. ") to avoid doubling
               const opt = rawOpt.replace(/^[A-Da-d][.):]\s*/, "");
               const isSelected = answers[currentIdx]?.selected === i;
@@ -1175,7 +1177,7 @@ export default function MockExamShell({
                   }}
                 >
                   <span style={{ marginRight: 10, fontWeight: 800, color: isSelected ? accentColor : "#94A3B8" }}>
-                    {String.fromCharCode(65 + i)}.
+                    {String.fromCharCode(65 + displayIndex)}.
                   </span>
                   {opt}
                 </button>

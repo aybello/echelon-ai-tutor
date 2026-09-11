@@ -11,6 +11,7 @@
  *  - AI Tutor drawer + Report Error modal
  */
 
+import { class1OptionOrder, class1DisplayLetter } from "@/lib/class1OptionOrder";
 import React, { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
@@ -854,7 +855,8 @@ export default function QuizShell({
 
           {/* Answer options */}
           <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 10 }}>
-            {(current.options as string[]).map((rawOpt: string, idx: number) => {
+            {class1OptionOrder(examType, current.id, current.options.length).map((idx, displayIndex) => {
+              const rawOpt: string = current.options[idx];
               // Strip any baked-in letter prefix (e.g. "A. ", "B. ") to avoid doubling
               const opt = rawOpt.replace(/^[A-Da-d][.):]\s*/, "");
               const isSelected = selected === idx;
@@ -893,7 +895,7 @@ export default function QuizShell({
                   }}
                 >
                   <span style={{ opacity: 0.55, fontSize: 12, fontWeight: 800, flexShrink: 0, paddingTop: 1 }}>
-                    {String.fromCharCode(65 + idx)}.
+                    {String.fromCharCode(65 + displayIndex)}.
                   </span>
                   <span style={{ flex: 1 }}>{opt}</span>
                   {isCorrect && <span style={{ flexShrink: 0 }}>✓</span>}
@@ -1071,7 +1073,7 @@ export default function QuizShell({
               </div>
             ) : (
               <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>
-                The correct answer is option {String.fromCharCode(65 + correctIdx)}.
+                The correct answer is option {class1DisplayLetter(examType, current.id, current.options.length, correctIdx)}.
               </p>
             )}
 
