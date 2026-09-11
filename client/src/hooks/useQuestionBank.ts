@@ -74,6 +74,16 @@ function seedToDBQuestion(q: SeedQuestion): DBQuestion {
 
 export type QuestionBankPreviewSurface = "practice" | "flashcards" | "mock";
 
+/**
+ * Quiz pages use lazy loading: their question session is fetched separately,
+ * while this hook owns the bank metadata. Prefer the server metadata count so
+ * a deliberately empty lazy question array cannot be rendered as “0 questions”.
+ */
+export function resolveQuestionBankTotal(metadataTotal: unknown, fallbackTotal = 0): number {
+  const parsed = Number(metadataTotal);
+  return Number.isSafeInteger(parsed) && parsed >= 0 ? parsed : fallbackTotal;
+}
+
 export function useQuestionBank(
   bankKey: string,
   mode: "full" | "lazy" = "full",
@@ -222,7 +232,7 @@ export function useQuestionBank(
     modules = metaQuery.data?.modules ?? [];
     moduleTargets = metaQuery.data?.moduleTargets ?? null;
     formulaLinks = metaQuery.data?.formulaLinks ?? null;
-    totalQuestions = metaQuery.data?.totalQuestions ?? 0;
+    totalQuestions = resolveQuestionBankTotal(metaQuery.data?.totalQuestions);
     overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
   } else {
     if (fullQuery.data?.questions?.length) {
@@ -235,7 +245,7 @@ export function useQuestionBank(
     modules = metaQuery.data?.modules ?? [];
     moduleTargets = metaQuery.data?.moduleTargets ?? null;
     formulaLinks = metaQuery.data?.formulaLinks ?? null;
-    totalQuestions = metaQuery.data?.totalQuestions ?? 0;
+    totalQuestions = resolveQuestionBankTotal(metaQuery.data?.totalQuestions);
     overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
   }
 
