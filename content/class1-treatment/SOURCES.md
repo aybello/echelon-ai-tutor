@@ -1,0 +1,15 @@
+# Sources and scope
+
+References were checked on September 11, 2026. The source fields intentionally identify **supporting resource categories**, not a claim that each linked overview proves every sentence of an item. No independent external SME review is claimed.
+
+- [OWWCO exam preparation](https://owwco.ca/preparing-for-your-exam/) — candidate preparation and links to current exam resources. Candidates should confirm their examination version and allowed formula resources here; this package does not assert that formulas must be memorized or that its allocation matches official weights.
+- [WPI 2025 Need-to-Know criteria](https://gowpi.org/services/2025-need-to-know-criteria/) — treatment competency scope. The package's 200/50 conceptual/calculation split is an authoring choice, not an official weighting. Basic nutrient removal and membrane topics are supplementary operating knowledge, not a claim that every item appears on every Class I examination.
+- [WPI examination reference index](https://gowpi.org/services/abc-testing/exam-references/) — supporting treatment and laboratory study references. A reference index is not a substitute for the actual analytical method. Sampling, preservation, holding-time and instrument questions therefore defer to the applicable method rather than inventing one universal number.
+- [WPI formula/conversion resources](https://gowpi.org/services/abc-testing/formula-conversion-tables/) — mathematical study resources. Every exercise supplies the data and conversion basis needed for its answer; arithmetic was checked separately from these links.
+- [US EPA Surface Water Treatment resources](https://www.epa.gov/dwreginfo/surface-water-treatment-rules) — background resource entry point for the multiple-barrier treatment context. US regulatory requirements are not represented as Ontario requirements.
+- [US EPA Municipal Wastewater resources](https://www.epa.gov/npdes/municipal-wastewater) — background resource entry point for municipal treatment. The link is not item-specific certification of the biological troubleshooting scenarios.
+- [CCOHS health and safety resources](https://www.ccohs.ca/oshanswers/) and [hazardous-energy lockout guidance](https://www.ccohs.ca/oshanswers/hsprograms/lockout.html) — safety context. Questions direct learners to authorized site procedures and do not authorize entry, rescue, chemical transfer or equipment servicing.
+
+Ontario design-guideline pages were attempted but unavailable through the research connection. No unread document is claimed as verified support for a new numerical legal limit. The package avoids prescribing universal CT targets, chemical doses, notification deadlines, gas thresholds, effluent limits or biosolids-use permissions. Those depend on the applicable approval, process, method and jurisdiction.
+
+A future claim-level source audit can improve reference precision without changing the user's decision against mandatory individual question approval. Batch review and source honesty remain distinct from an approval gate.
