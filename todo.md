@@ -1,5 +1,6 @@
 # Echelon AI Tutor — Project TODO
 
+- [ ] Fix the Class 1 Distribution and Collection live count-rendering regression: the initial published pages resolved the dynamic `allQuestions.length` value as zero despite loading a question. The source now uses the authoritative `useQuestionBank.totalQuestions` metadata value and development rendering shows 966 Distribution / 974 Collection, but this item remains open until the correction is published and verified on both production domains without learner submission.
 - [ ] Publish the Class 1 Distribution and Collection learner-facing inventory-copy correction through a validated checkpoint and verify the custom-domain practice pages show 966 / 974 without learner submission.
 - [ ] Record post-publication verification that both custom and managed production domains serve the updated Class 1 count-copy artifact.
 - [x] Correct the stale Class 1 Distribution and Collection practice-page labels, SEO descriptions, and access-copy counts so learner-facing content reflects the promoted 966 / 974 inventories rather than the prior 500 / 300 figures. Course subtitles and gated-access copy now use the loaded live question count; SEO descriptions now state the verified bank totals.

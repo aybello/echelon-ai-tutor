@@ -20,7 +20,9 @@ Before promotion, the read-only preflight locked the full target-bank scope for 
 
 The promotion command only updated the 500 exact staged candidates, guarded each update by `reviewStatus = 'in_review'`, recomputed the learner-visible count, and guarded the corresponding metadata update with the observed `totalQuestions` and `contentVersion`. It rolled back on any candidate, metadata, or post-update reconciliation conflict.
 
-Focused package/planner tests, the isolated database promotion/rollback test, the full test suite, application and script TypeScript checks, and the production build passed. The production build has pre-existing warnings for large JavaScript chunks but completed successfully. Live Distribution and Collection practice routes loaded without an answer selection or submission. The route headers and access copy were updated to use the live loaded question count, replacing stale 500/300-question copy for these two banks.
+Focused package/planner tests, the isolated database promotion/rollback test, the full test suite, application and script TypeScript checks, and the production build passed. The production build has pre-existing warnings for large JavaScript chunks but completed successfully. Live Distribution and Collection practice routes loaded without an answer selection or submission.
+
+The first learner-copy update used `allQuestions.length`. These two practice pages intentionally use `lazy` loading, so that value is empty while the separately managed practice-session loader retrieves the question. A live post-publication check detected the resulting zero-count header before final handoff. The follow-up correction uses the authoritative `useQuestionBank.totalQuestions` metadata instead. Local rendered verification now shows **966 questions** for Distribution and **974 questions** for Collection. The corrected frontend artifact requires the follow-up publication checkpoint and live-domain verification recorded below.
 
 ## State Separation
 
@@ -29,7 +31,8 @@ Focused package/planner tests, the isolated database promotion/rollback test, th
 | Candidate package merged to repository | Completed in PR #79 / commit `d69c15ad` |
 | Database additive staging | Completed before this release |
 | Learner-visible status promotion | Completed in this release |
-| Code artifact / release marker | Pending publication checkpoint at time of this document |
-| Production runtime verification of the newly published frontend artifact | Pending checkpoint publication and cache-propagation check |
+| Initial code artifact / release marker | Published as checkpoint `94c20d50` |
+| Corrected count-rendering artifact | Validated locally; pending follow-up publication checkpoint at time of this revision |
+| Production runtime verification of corrected frontend artifact | Pending follow-up checkpoint publication and cache-propagation check |
 
 No learner answer was selected, confirmed, or submitted during release verification.

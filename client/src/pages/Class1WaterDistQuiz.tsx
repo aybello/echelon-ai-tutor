@@ -28,7 +28,7 @@ export default function Class1WaterDistQuiz() {
     description: "Practice questions for the Ontario Class 1 Water Distribution operator certification exam. 966 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water-dist", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions: bankTotal, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water-dist", "lazy");
   const allQuestions = dbQuestions;
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
     name: m,
@@ -48,7 +48,7 @@ export default function Class1WaterDistQuiz() {
       currentPath="/class1-water-dist"
       courseLabel="Ontario Class 1 · Water Distribution"
       courseTitle="Ontario Class 1 Water Distribution Quiz"
-      courseSubtitle={`${allQuestions.length.toLocaleString()} questions · Ontario Class 1 Water Distribution`}
+      courseSubtitle={`${bankTotal.toLocaleString()} questions · Ontario Class 1 Water Distribution`}
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[
@@ -129,7 +129,7 @@ export default function Class1WaterDistQuiz() {
           productName="Ontario Class 1 Water Distribution Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            `${allQuestions.length.toLocaleString()} Ontario Class 1 Water Distribution questions — unlimited attempts`,
+            `${bankTotal.toLocaleString()} Ontario Class 1 Water Distribution questions — unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",
