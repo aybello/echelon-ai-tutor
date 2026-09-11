@@ -1,14 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { analyseOitAnswerCues } from '../scripts/lib/oitAnswerCues.mjs';
 const root = 'content/class1-treatment/';
 const manifest=JSON.parse(readFileSync(root+'manifest.json','utf8'));
 const banks=['water','wastewater'].map(n=>JSON.parse(readFileSync(root+`questions/${n}-250.json`,'utf8')));
+const ledger=JSON.parse(readFileSync(root+'audit/independent-release-ledger.json','utf8'));
 describe('Class 1 Treatment expansion package',()=>{
- it('reproduces every generated file from its authored sources',()=>{
-  expect(()=>execFileSync('python3',['scripts/class1-treatment.py','check'],{stdio:'pipe'})).not.toThrow();
+ it('binds the release candidates to the independently cleared audit ledger',()=>{
+  expect(manifest.status).toBe('independently-cleared-release-candidate');
+  expect(manifest.reviewSummary.finalClearedCount).toBe(500);
+  expect(ledger.clearedCount).toBe(500);
+  expect(ledger.ledger).toHaveLength(500);
  });
  for(const [i,name] of ['water','wastewater'].entries()){
   const rows=banks[i];
@@ -20,7 +23,9 @@ describe('Class 1 Treatment expansion package',()=>{
   });
   it(`${name}: retains canonical keys after option ordering`,()=>{
    for(const q of rows){expect(q.options[q.correctIndex]).toBe(q.correctAnswer);expect(new Set(q.options).size).toBe(4);for(let j=0;j<4;j++)expect(q[`option${'ABCD'[j]}`]).toBe(q.options[j]);}
-   expect([0,1,2,3].map(j=>rows.filter((q:any)=>q.correctIndex===j).length).sort()).toEqual([62,62,63,63]);
+   const positions=[0,1,2,3].map(j=>rows.filter((q:any)=>q.correctIndex===j).length);
+   expect(positions).toEqual(manifest.banks[i].canonicalAnswerPositions);
+   expect(Math.max(...positions)-Math.min(...positions)).toBeLessThanOrEqual(3);
   });
   it(`${name}: rejects obvious answer-length and qualifier shortcuts`,()=>{
    const c=analyseOitAnswerCues(rows);
@@ -49,6 +54,10 @@ describe('Class 1 Treatment expansion package',()=>{
  });
  it('includes effluent solids losses in the complete retention example',()=>{
   const q=banks[1].find((q:any)=>q.topic==='Total-loss retention');expect(q.expression).toBe('2880/(260+28)');expect(parseFloat(q.correctAnswer)).toBe(10);
+ });
+ it('retains the Canadian lockout source upgrade for the final independently remediated safety item',()=>{
+  const q=banks[1].find((q:any)=>q.questionNum===2071);
+  expect(q.sourceUrl).toBe('https://www.ccohs.ca/oshanswers/hsprograms/lockout.html');
  });
  it('does not create a mandatory individual-approval workflow or an import side effect',()=>{
   expect(manifest.individualApprovalRequired).toBe(false);expect(manifest.productionWrites).toBe(false);

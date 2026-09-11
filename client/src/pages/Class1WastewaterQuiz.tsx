@@ -16,7 +16,7 @@ export default function Class1WastewaterQuiz() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -42,7 +42,7 @@ export default function Class1WastewaterQuiz() {
       currentPath="/class1-ww"
       courseLabel="Ontario Class 1 · Wastewater Treatment"
       courseTitle="Class 1 Wastewater Practice Quiz"
-      courseSubtitle="500 questions · Ontario Class 1 Wastewater Treatment"
+      courseSubtitle={`${totalQuestions} questions · Ontario Class 1 Wastewater Treatment`}
       headerGradient="linear-gradient(135deg, #0F766E 0%, #065F46 100%)"
       headerIcon="♻️"
       headerActions={[
@@ -123,7 +123,7 @@ export default function Class1WastewaterQuiz() {
           productName="Class 1 Wastewater Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 Class 1 Wastewater questions — unlimited attempts",
+            `${totalQuestions} Class 1 Wastewater questions — unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

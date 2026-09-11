@@ -28,7 +28,7 @@ export default function Class1WaterQuiz() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;
@@ -49,7 +49,7 @@ export default function Class1WaterQuiz() {
       currentPath="/class1-water"
       courseLabel="Ontario Class 1 · Water Treatment"
       courseTitle="Class 1 Water Practice Quiz"
-      courseSubtitle="500 questions · Ontario Class 1 Water Treatment"
+      courseSubtitle={`${totalQuestions} questions · Ontario Class 1 Water Treatment`}
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="💧"
       headerActions={[
@@ -130,7 +130,7 @@ export default function Class1WaterQuiz() {
           productName="Class 1 Water Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 Class 1 Water questions — unlimited attempts",
+            `${totalQuestions} Class 1 Water questions — unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

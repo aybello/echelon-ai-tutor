@@ -991,21 +991,21 @@
   },
   {
     "topic": "Biomass and loading",
-    "question": "A settleometer shows good compaction, but effluent solids are high. What should also be checked?",
-    "correctAnswer": "Full-scale clarifier hydraulics and solids loading",
-    "explanation": "Bench settling excludes some full-scale hydraulic effects; compare both sources of evidence.",
+    "question": "A settleometer sample compacts well, but secondary effluent solids are high. To evaluate secondary-clarifier hydraulic and solids loading, which pair of operating measures should be reviewed?",
+    "correctAnswer": "Secondary-clarifier surface overflow rate and solids loading rate",
+    "explanation": "Secondary-clarifier surface overflow rate indicates hydraulic loading, while solids loading rate indicates the applied solids load. These full-scale measures can identify clarifier overloading that a settleometer test does not reproduce.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2034,
     "itemId": "WASTEWATER-TREATMENT-L1-034",
     "module": "Wastewater Treatment",
     "options": [
-      "The certainty that all return sludge is sterile",
-      "The need to disregard the actual effluent measurement",
-      "The assumption that a jar replicates every basin condition",
-      "Full-scale clarifier hydraulics and solids loading"
+      "Secondary-clarifier surface overflow rate and solids loading rate",
+      "Aeration-basin dissolved oxygen concentration and oxygen uptake rate",
+      "Mixed-liquor sludge age and food-to-microorganism ratio",
+      "Settleometer 30-minute settled volume and supernatant clarity"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -1014,10 +1014,10 @@
     "sourceReference": "Supporting resource category: Biomass and loading. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Biomass and loading",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The certainty that all return sludge is sterile",
-    "optionB": "The need to disregard the actual effluent measurement",
-    "optionC": "The assumption that a jar replicates every basin condition",
-    "optionD": "Full-scale clarifier hydraulics and solids loading"
+    "optionA": "Secondary-clarifier surface overflow rate and solids loading rate",
+    "optionB": "Aeration-basin dissolved oxygen concentration and oxygen uptake rate",
+    "optionC": "Mixed-liquor sludge age and food-to-microorganism ratio",
+    "optionD": "Settleometer 30-minute settled volume and supernatant clarity"
   },
   {
     "topic": "Biomass and loading",
@@ -1471,19 +1471,19 @@
   },
   {
     "topic": "Phosphorus-removal assessment",
-    "question": "A phosphorus result increases after effluent TSS rises. What relationship is plausible?",
-    "correctAnswer": "Particulate phosphorus contributes to the total result",
-    "explanation": "Solids carryover can raise total phosphorus. Use fractionation and process evidence to investigate the cause.",
+    "question": "An unfiltered total phosphorus concentration rises at the same time as effluent TSS. Which follow-up finding would best support solids carryover as the cause of the phosphorus increase?",
+    "correctAnswer": "An increase in particulate phosphorus, with filtered phosphorus unchanged",
+    "explanation": "An increase in particulate phosphorus with filtered phosphorus unchanged most directly links the higher unfiltered total phosphorus concentration to phosphorus associated with suspended solids. This supports, but does not by itself prove, solids carryover as the cause.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2050,
     "itemId": "WASTEWATER-TREATMENT-L1-050",
     "module": "Wastewater Treatment",
     "options": [
-      "Higher TSS proves dissolved phosphorus is zero",
-      "Particulate phosphorus contributes to the total result",
-      "The phosphorus analyser measures only flow rate",
-      "Every TSS increase must originate in chemical overdosing"
+      "An increase in filtered phosphorus, with particulate phosphorus unchanged",
+      "An increase in particulate phosphorus, with filtered phosphorus unchanged",
+      "An increase in influent total phosphorus, with effluent particulate phosphorus unchanged",
+      "An increase in unfiltered total phosphorus that persists after effluent TSS returns to its previous level"
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -1494,10 +1494,10 @@
     "sourceReference": "Supporting resource category: Phosphorus-removal assessment. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Phosphorus-removal assessment",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Higher TSS proves dissolved phosphorus is zero",
-    "optionB": "Particulate phosphorus contributes to the total result",
-    "optionC": "The phosphorus analyser measures only flow rate",
-    "optionD": "Every TSS increase must originate in chemical overdosing"
+    "optionA": "An increase in filtered phosphorus, with particulate phosphorus unchanged",
+    "optionB": "An increase in particulate phosphorus, with filtered phosphorus unchanged",
+    "optionC": "An increase in influent total phosphorus, with effluent particulate phosphorus unchanged",
+    "optionD": "An increase in unfiltered total phosphorus that persists after effluent TSS returns to its previous level"
   },
   {
     "topic": "Secondary clarification",
@@ -1561,19 +1561,19 @@
   },
   {
     "topic": "Secondary clarification",
-    "question": "A sludge blanket is low but effluent contains pin floc. What may deserve attention?",
-    "correctAnswer": "Floc characteristics and fine-particle capture",
-    "explanation": "Small particles may escape despite a low blanket. Combine blanket measurements with settling and effluent observations.",
+    "question": "A secondary clarifier has a low sludge blanket, but pin floc is visible in the effluent. Which follow-up check most directly investigates the observed pin floc?",
+    "correctAnswer": "Assess floc size and strength and the capture of fine particles",
+    "explanation": "Assessing floc size and strength and the capture of fine particles most directly investigates pin floc escaping in the effluent. A low sludge blanket does not by itself establish that fine solids are being effectively captured.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2053,
     "itemId": "WASTEWATER-TREATMENT-L1-053",
     "module": "Wastewater Treatment",
     "options": [
-      "The assumption that a low blanket guarantees clear effluent",
-      "The need to stop every influent sampler",
-      "The certainty that all clarifier loading is acceptable",
-      "Floc characteristics and fine-particle capture"
+      "Compare the current surface overflow rate with the clarifier operating target",
+      "Verify return activated sludge withdrawal and sludge collector operation",
+      "Inspect the effluent weirs for uneven flow distribution",
+      "Assess floc size and strength and the capture of fine particles"
     ],
     "correctIndex": 3,
     "reviewStatus": "unreviewed",
@@ -1584,16 +1584,16 @@
     "sourceReference": "Supporting resource category: Secondary clarification. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Secondary clarification",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The assumption that a low blanket guarantees clear effluent",
-    "optionB": "The need to stop every influent sampler",
-    "optionC": "The certainty that all clarifier loading is acceptable",
-    "optionD": "Floc characteristics and fine-particle capture"
+    "optionA": "Compare the current surface overflow rate with the clarifier operating target",
+    "optionB": "Verify return activated sludge withdrawal and sludge collector operation",
+    "optionC": "Inspect the effluent weirs for uneven flow distribution",
+    "optionD": "Assess floc size and strength and the capture of fine particles"
   },
   {
     "topic": "Secondary clarification",
     "question": "Why inspect secondary clarifier weirs for algae and deposits?",
     "correctAnswer": "Obstructions can alter withdrawal distribution",
-    "explanation": "Uneven or obstructed withdrawal can impair hydraulic conditions and effluent quality.",
+    "explanation": "Algae and deposits on effluent weirs can obstruct or unevenly affect flow over the weir, which can alter withdrawal distribution and impair clarifier performance. Sludge blanket depth, return sludge flow, and mixed liquor solids require other checks or measurements.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2054,
@@ -1601,9 +1601,9 @@
     "module": "Wastewater Treatment",
     "options": [
       "Obstructions can alter withdrawal distribution",
-      "Deposits prove every return-sludge pump is calibrated",
-      "Algae at the weir establish aeration-tank solids age",
-      "Weir deposits guarantee improved settling efficiency"
+      "Weir condition is used to measure sludge blanket depth",
+      "Weir appearance is used to set return activated sludge flow",
+      "Deposits at the weir determine mixed liquor solids concentration"
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -1615,24 +1615,24 @@
     "blueprintObjective": "Secondary clarification",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
     "optionA": "Obstructions can alter withdrawal distribution",
-    "optionB": "Deposits prove every return-sludge pump is calibrated",
-    "optionC": "Algae at the weir establish aeration-tank solids age",
-    "optionD": "Weir deposits guarantee improved settling efficiency"
+    "optionB": "Weir condition is used to measure sludge blanket depth",
+    "optionC": "Weir appearance is used to set return activated sludge flow",
+    "optionD": "Deposits at the weir determine mixed liquor solids concentration"
   },
   {
     "topic": "Secondary clarification",
     "question": "A clarifier scraper stops during operation. What should be monitored closely?",
     "correctAnswer": "Solids accumulation and removal performance",
-    "explanation": "A failed collection mechanism can impair withdrawal and allow solids accumulation; respond under the operating procedure.",
+    "explanation": "A stopped scraper can reduce solids collection and removal, allowing solids to accumulate and potentially affecting effluent quality. Other operating parameters may still be checked as part of routine operation, but solids accumulation and removal performance are the most directly affected.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2055,
     "itemId": "WASTEWATER-TREATMENT-L1-055",
     "module": "Wastewater Treatment",
     "options": [
-      "RAS pump runtime used without checking actual solids withdrawal",
-      "Effluent clarity accepted as proof that no blanket can accumulate",
-      "Sludge age assumed constant because the drive status changed",
+      "Influent flow and hydraulic loading only",
+      "Aeration basin dissolved oxygen trend",
+      "Disinfection contact time",
       "Solids accumulation and removal performance"
     ],
     "correctIndex": 3,
@@ -1644,28 +1644,28 @@
     "sourceReference": "Supporting resource category: Secondary clarification. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Secondary clarification",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "RAS pump runtime used without checking actual solids withdrawal",
-    "optionB": "Effluent clarity accepted as proof that no blanket can accumulate",
-    "optionC": "Sludge age assumed constant because the drive status changed",
+    "optionA": "Influent flow and hydraulic loading only",
+    "optionB": "Aeration basin dissolved oxygen trend",
+    "optionC": "Disinfection contact time",
     "optionD": "Solids accumulation and removal performance"
   },
   {
     "topic": "Settling-test interpretation",
-    "question": "A diluted settling test improves settling compared with undiluted mixed liquor. What may this indicate?",
-    "correctAnswer": "Solids concentration influences the observed settling",
-    "explanation": "Dilution can help diagnose concentration effects but does not reproduce or repair the full-scale process by itself.",
+    "question": "A diluted settling test shows better settling than the undiluted mixed-liquor test. Which conclusion is best supported by this comparison alone?",
+    "correctAnswer": "The observed settling behavior varies with solids concentration",
+    "explanation": "Better settling after dilution supports the conclusion that solids concentration affects the observed settling behavior. This comparison alone does not establish filamentous growth, low dissolved oxygen, or excessive clarifier hydraulic loading; those conclusions require additional process data.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2056,
     "itemId": "WASTEWATER-TREATMENT-L1-056",
     "module": "Wastewater Treatment",
     "options": [
-      "Dilution has permanently repaired the biomass",
-      "The original sample contained no biological solids",
-      "The clarifier is guaranteed to work at any loading",
-      "Solids concentration influences the observed settling"
+      "The observed settling behavior varies with solids concentration",
+      "The mixed liquor contains excessive filamentous growth",
+      "The aeration-basin dissolved oxygen is too low",
+      "The secondary-clarifier hydraulic loading is too high"
     ],
-    "correctIndex": 3,
+    "correctIndex": 0,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -1674,10 +1674,10 @@
     "sourceReference": "Supporting resource category: Settling-test interpretation. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Settling-test interpretation",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Dilution has permanently repaired the biomass",
-    "optionB": "The original sample contained no biological solids",
-    "optionC": "The clarifier is guaranteed to work at any loading",
-    "optionD": "Solids concentration influences the observed settling"
+    "optionA": "The observed settling behavior varies with solids concentration",
+    "optionB": "The mixed liquor contains excessive filamentous growth",
+    "optionC": "The aeration-basin dissolved oxygen is too low",
+    "optionD": "The secondary-clarifier hydraulic loading is too high"
   },
   {
     "topic": "Settling-test interpretation",
@@ -1981,19 +1981,19 @@
   },
   {
     "topic": "Trickling filters",
-    "question": "A trickling-filter distributor arm slows and wets the bed unevenly. What should be checked?",
-    "correctAnswer": "Hydraulic drive, bearings and nozzle condition",
-    "explanation": "Distributor condition affects loading across the media. Compare mechanical and hydraulic evidence.",
+    "question": "A trickling-filter distributor arm slows and wets the bed unevenly. Which equipment group should be inspected first?",
+    "correctAnswer": "Hydraulic drive, bearings, and nozzle condition",
+    "explanation": "The hydraulic drive and bearings affect distributor-arm rotation, while nozzle condition affects how wastewater is spread across the filter bed. Inspecting these components addresses both the reduced rotation speed and uneven wetting.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2067,
     "itemId": "WASTEWATER-TREATMENT-L1-067",
     "module": "Wastewater Treatment",
     "options": [
-      "The assumption that total plant flow proves even wetting",
-      "The chlorine contact tank's nominal baffle factor",
-      "The laboratory BOD incubator's door seal only",
-      "Hydraulic drive, bearings and nozzle condition"
+      "Influent flow meter, recirculation valve, and dosing siphon",
+      "Filter media, underdrain openings, and ventilation ports",
+      "Effluent channel, clarifier weirs, and return-sludge line",
+      "Hydraulic drive, bearings, and nozzle condition"
     ],
     "correctIndex": 3,
     "reviewStatus": "unreviewed",
@@ -2004,10 +2004,10 @@
     "sourceReference": "Supporting resource category: Trickling filters. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Trickling filters",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The assumption that total plant flow proves even wetting",
-    "optionB": "The chlorine contact tank's nominal baffle factor",
-    "optionC": "The laboratory BOD incubator's door seal only",
-    "optionD": "Hydraulic drive, bearings and nozzle condition"
+    "optionA": "Influent flow meter, recirculation valve, and dosing siphon",
+    "optionB": "Filter media, underdrain openings, and ventilation ports",
+    "optionC": "Effluent channel, clarifier weirs, and return-sludge line",
+    "optionD": "Hydraulic drive, bearings, and nozzle condition"
   },
   {
     "topic": "Trickling filters",
@@ -2020,10 +2020,10 @@
     "itemId": "WASTEWATER-TREATMENT-L1-068",
     "module": "Wastewater Treatment",
     "options": [
-      "Complete removal of all biomass from the media",
-      "A required increase in media pore blockage",
+      "Low influent flow causing parts of the media to dry",
+      "Normal biofilm growth with open drainage paths",
       "Restricted voids or excessive hydraulic loading",
-      "A guaranteed increase in free drainage capacity"
+      "Increased free-drainage capacity after recent sloughing"
     ],
     "correctIndex": 2,
     "reviewStatus": "unreviewed",
@@ -2034,10 +2034,10 @@
     "sourceReference": "Supporting resource category: Trickling filters. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Trickling filters",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Complete removal of all biomass from the media",
-    "optionB": "A required increase in media pore blockage",
+    "optionA": "Low influent flow causing parts of the media to dry",
+    "optionB": "Normal biofilm growth with open drainage paths",
     "optionC": "Restricted voids or excessive hydraulic loading",
-    "optionD": "A guaranteed increase in free drainage capacity"
+    "optionD": "Increased free-drainage capacity after recent sloughing"
   },
   {
     "topic": "Trickling filters",
@@ -2101,33 +2101,33 @@
   },
   {
     "topic": "Rotating biological contactors",
-    "question": "An RBC drive trips while its discs are loaded with growth. What is the safe response before inspection?",
-    "correctAnswer": "Isolate the drive and assess the trip under procedure",
-    "explanation": "Moving assemblies and stored loads present hazards. Use controlled isolation and the equipment's maintenance process.",
+    "question": "An RBC drive has tripped, and an operator must inspect the drive and disc assembly. Which action should be completed before the inspection begins?",
+    "correctAnswer": "Isolate the drive through the authorized energy-control procedure and verify the isolation",
+    "explanation": "Before the inspection begins, the drive must be isolated through the site’s authorized hazardous-energy-control procedure, and the isolation must be verified to prevent unexpected energization or movement.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2071,
     "itemId": "WASTEWATER-TREATMENT-L1-071",
     "module": "Wastewater Treatment",
     "options": [
-      "Remove a guard while leaving remote start enabled",
-      "Restart repeatedly while standing beside exposed parts",
-      "Use hand force on the discs while the motor is energized",
-      "Isolate the drive and assess the trip under procedure"
+      "Select manual control at the drive panel and confirm the disc assembly has stopped",
+      "Activate the local stop control and confirm the panel shows a stopped status",
+      "Disable the automatic start command and confirm the control system shows it inhibited",
+      "Isolate the drive through the authorized energy-control procedure and verify the isolation"
     ],
     "correctIndex": 3,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
-    "sourceTitle": "US EPA: Municipal Wastewater — supporting treatment resources",
-    "sourceUrl": "https://www.epa.gov/npdes/municipal-wastewater",
-    "sourceReference": "Supporting resource category: Rotating biological contactors. See SOURCES.md: these are not claim-level verification citations.",
+    "sourceTitle": "CCOHS: Lockout/Tag out",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/lockout.html",
+    "sourceReference": "CCOHS describes lockout/de-energization, control of hazardous energy, and verifying isolation before maintenance or inspection. General Canadian safety guidance; not a specific Ontario legal duty or an RBC-specific procedure.",
     "blueprintObjective": "Rotating biological contactors",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Remove a guard while leaving remote start enabled",
-    "optionB": "Restart repeatedly while standing beside exposed parts",
-    "optionC": "Use hand force on the discs while the motor is energized",
-    "optionD": "Isolate the drive and assess the trip under procedure"
+    "optionA": "Select manual control at the drive panel and confirm the disc assembly has stopped",
+    "optionB": "Activate the local stop control and confirm the panel shows a stopped status",
+    "optionC": "Disable the automatic start command and confirm the control system shows it inhibited",
+    "optionD": "Isolate the drive through the authorized energy-control procedure and verify the isolation"
   },
   {
     "topic": "Rotating biological contactors",
@@ -2980,12 +2980,12 @@
     "itemId": "WASTEWATER-TREATMENT-L1-100",
     "module": "Wastewater Treatment",
     "options": [
-      "Its phosphorus mass per day versus the main influent load",
       "Its visual clarity used to estimate dissolved phosphorus mass",
       "Its flow percentage accepted as its phosphorus-load percentage",
+      "Its phosphorus mass per day versus the main influent load",
       "Its pump runtime compared without verifying delivered concentration"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -2994,9 +2994,9 @@
     "sourceReference": "Supporting resource category: Residuals return loads. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Residuals return loads",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Its phosphorus mass per day versus the main influent load",
-    "optionB": "Its visual clarity used to estimate dissolved phosphorus mass",
-    "optionC": "Its flow percentage accepted as its phosphorus-load percentage",
+    "optionA": "Its visual clarity used to estimate dissolved phosphorus mass",
+    "optionB": "Its flow percentage accepted as its phosphorus-load percentage",
+    "optionC": "Its phosphorus mass per day versus the main influent load",
     "optionD": "Its pump runtime compared without verifying delivered concentration"
   },
   {
@@ -3010,12 +3010,12 @@
     "itemId": "WASTEWATER-TREATMENT-L1-101",
     "module": "Wastewater Treatment",
     "options": [
-      "The measured depletion may understate total demand",
       "The result automatically equals the influent COD",
       "The sample has become a valid reagent blank",
-      "The result necessarily proves zero oxygen demand"
+      "The result necessarily proves zero oxygen demand",
+      "The measured depletion may understate total demand"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -3024,10 +3024,10 @@
     "sourceReference": "Supporting resource category: BOD method interpretation. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "BOD method interpretation",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The measured depletion may understate total demand",
-    "optionB": "The result automatically equals the influent COD",
-    "optionC": "The sample has become a valid reagent blank",
-    "optionD": "The result necessarily proves zero oxygen demand"
+    "optionA": "The result automatically equals the influent COD",
+    "optionB": "The sample has become a valid reagent blank",
+    "optionC": "The result necessarily proves zero oxygen demand",
+    "optionD": "The measured depletion may understate total demand"
   },
   {
     "topic": "BOD method interpretation",
@@ -3190,12 +3190,12 @@
     "itemId": "WASTEWATER-TREATMENT-L1-107",
     "module": "Wastewater Treatment",
     "options": [
-      "Retained dry mass must be expressed per unit volume",
       "A larger unmeasured aliquot gives the same concentration by default",
       "The retained mass is a concentration without a volume basis",
-      "The filter’s tare mass replaces the need to measure sample volume"
+      "The filter’s tare mass replaces the need to measure sample volume",
+      "Retained dry mass must be expressed per unit volume"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -3204,10 +3204,10 @@
     "sourceReference": "Supporting resource category: COD and solids analyses. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "COD and solids analyses",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Retained dry mass must be expressed per unit volume",
-    "optionB": "A larger unmeasured aliquot gives the same concentration by default",
-    "optionC": "The retained mass is a concentration without a volume basis",
-    "optionD": "The filter’s tare mass replaces the need to measure sample volume"
+    "optionA": "A larger unmeasured aliquot gives the same concentration by default",
+    "optionB": "The retained mass is a concentration without a volume basis",
+    "optionC": "The filter’s tare mass replaces the need to measure sample volume",
+    "optionD": "Retained dry mass must be expressed per unit volume"
   },
   {
     "topic": "COD and solids analyses",
@@ -3511,19 +3511,19 @@
   },
   {
     "topic": "Sampling strategy",
-    "question": "An automatic sampler's suction line blocks overnight. What must be checked?",
-    "correctAnswer": "Whether the composite is complete and representative",
-    "explanation": "Missed aliquots can bias a composite. Document and assess the collection failure.",
+    "question": "An automatic sampler’s suction line blocked overnight, and some programmed equal-volume aliquots may not have reached the composite bottle. Which comparison most directly assesses whether the planned composite collection was complete?",
+    "correctAnswer": "Recovered composite volume compared with the scheduled total from aliquot count and volume",
+    "explanation": "Multiplying the programmed aliquot count by the volume of each aliquot gives the expected composite volume. Comparing this expected total with the recovered composite volume directly indicates whether all scheduled aliquots reached the bottle.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2118,
     "itemId": "WASTEWATER-TREATMENT-L1-118",
     "module": "Wastewater Treatment",
     "options": [
-      "Whether yesterday's concentration can replace the sample",
-      "Whether the composite is complete and representative",
-      "Whether the remaining bottle volume looks sufficient",
-      "Whether the label can be changed to hide the gap"
+      "Recovered composite volume compared with the collection bottle’s documented working volume",
+      "Recovered composite volume compared with the scheduled total from aliquot count and volume",
+      "Measured composite concentration compared with the concentration in the previous day’s sample",
+      "Recorded overnight influent flow compared with the flow recorded on the previous night"
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -3534,10 +3534,10 @@
     "sourceReference": "Supporting resource category: Sampling strategy. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Sampling strategy",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Whether yesterday's concentration can replace the sample",
-    "optionB": "Whether the composite is complete and representative",
-    "optionC": "Whether the remaining bottle volume looks sufficient",
-    "optionD": "Whether the label can be changed to hide the gap"
+    "optionA": "Recovered composite volume compared with the collection bottle’s documented working volume",
+    "optionB": "Recovered composite volume compared with the scheduled total from aliquot count and volume",
+    "optionC": "Measured composite concentration compared with the concentration in the previous day’s sample",
+    "optionD": "Recorded overnight influent flow compared with the flow recorded on the previous night"
   },
   {
     "topic": "Sampling strategy",
@@ -3781,19 +3781,19 @@
   },
   {
     "topic": "Pumping and transfer",
-    "question": "A centrifugal return-sludge pump shows reduced flow and rising vibration. What should be investigated?",
-    "correctAnswer": "Suction conditions, blockage and mechanical condition",
-    "explanation": "Flow and vibration changes warrant diagnosis of hydraulics and equipment, not reliance on the nameplate.",
+    "question": "A centrifugal return-sludge pump has reduced flow and rising vibration. Which troubleshooting scope best evaluates both hydraulic causes and the pump's mechanical condition?",
+    "correctAnswer": "Evaluation of suction conditions, possible blockage, and pump mechanical condition",
+    "explanation": "Evaluating suction conditions and possible blockage addresses hydraulic causes, while assessing the pump's mechanical condition addresses potential equipment causes of rising vibration. The other scopes focus on controls, discharge hydraulics, or instrumentation without also evaluating pump mechanical condition.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2127,
     "itemId": "WASTEWATER-TREATMENT-L1-127",
     "module": "Wastewater Treatment",
     "options": [
-      "Suction conditions, blockage and mechanical condition",
-      "The assumption that rated flow never changes",
-      "The certainty that all sludge has been stabilized",
-      "The need to relabel the influent sample point"
+      "Evaluation of suction conditions, possible blockage, and pump mechanical condition",
+      "Review of the return-sludge setpoint, controller output, and recent command changes",
+      "Verification of discharge-valve position, discharge pressure, and line restrictions",
+      "Validation of flow indication, trend history, and instrument calibration"
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -3804,10 +3804,10 @@
     "sourceReference": "Supporting resource category: Pumping and transfer. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Pumping and transfer",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Suction conditions, blockage and mechanical condition",
-    "optionB": "The assumption that rated flow never changes",
-    "optionC": "The certainty that all sludge has been stabilized",
-    "optionD": "The need to relabel the influent sample point"
+    "optionA": "Evaluation of suction conditions, possible blockage, and pump mechanical condition",
+    "optionB": "Review of the return-sludge setpoint, controller output, and recent command changes",
+    "optionC": "Verification of discharge-valve position, discharge pressure, and line restrictions",
+    "optionD": "Validation of flow indication, trend history, and instrument calibration"
   },
   {
     "topic": "Pumping and transfer",
@@ -3871,9 +3871,9 @@
   },
   {
     "topic": "Pumping and transfer",
-    "question": "Why avoid clearing a ragged impeller while remote start remains available?",
+    "question": "Why should an operator avoid clearing rags from a pump impeller while remote start remains available?",
     "correctAnswer": "Unexpected movement can cause serious injury",
-    "explanation": "Control all relevant energy and verify isolation through the approved maintenance procedure.",
+    "explanation": "If remote start remains available, the impeller may move unexpectedly while someone is clearing the obstruction. Control relevant energy sources and verify isolation through the approved maintenance procedure before working on the equipment.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2130,
@@ -3991,19 +3991,19 @@
   },
   {
     "topic": "Air systems and mechanical condition",
-    "question": "An aerator's motor runs but basin mixing has diminished. What should be checked?",
-    "correctAnswer": "Actual driven equipment and mechanical connection",
-    "explanation": "The driven component may not perform as commanded. Observe actual process movement and inspect safely.",
+    "question": "An aerator motor is running, but basin mixing has diminished. Which observation most directly confirms that motor rotation is reaching the aerator?",
+    "correctAnswer": "Driven shaft beyond the mechanical coupling",
+    "explanation": "Observing the driven shaft rotating beyond the mechanical coupling directly confirms that motor rotation is being transmitted to the aerator equipment. Follow site safety procedures when inspecting operating machinery.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2134,
     "itemId": "WASTEWATER-TREATMENT-L1-134",
     "module": "Wastewater Treatment",
     "options": [
-      "The belief that all oxygen transfer is unchanged",
-      "Actual driven equipment and mechanical connection",
-      "The assumption that motor status proves normal mixing",
-      "The certainty that influent flow has stopped"
+      "Motor shaft before the mechanical coupling",
+      "Driven shaft beyond the mechanical coupling",
+      "Basin surface near the aerator assembly",
+      "Motor current on the control panel"
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -4014,10 +4014,10 @@
     "sourceReference": "Supporting resource category: Air systems and mechanical condition. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Air systems and mechanical condition",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The belief that all oxygen transfer is unchanged",
-    "optionB": "Actual driven equipment and mechanical connection",
-    "optionC": "The assumption that motor status proves normal mixing",
-    "optionD": "The certainty that influent flow has stopped"
+    "optionA": "Motor shaft before the mechanical coupling",
+    "optionB": "Driven shaft beyond the mechanical coupling",
+    "optionC": "Basin surface near the aerator assembly",
+    "optionD": "Motor current on the control panel"
   },
   {
     "topic": "Air systems and mechanical condition",
@@ -4113,16 +4113,16 @@
     "topic": "Controls and continuity",
     "question": "Why retain control-mode changes in the operating log?",
     "correctAnswer": "Manual and automatic periods affect response interpretation",
-    "explanation": "Knowing how equipment was controlled helps explain trends and supports shift continuity.",
+    "explanation": "Knowing whether equipment was in manual or automatic control helps explain operating trends and supports shift continuity. A mode-change entry does not replace other observations, prove controller failure, or make run status alone sufficient.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2138,
     "itemId": "WASTEWATER-TREATMENT-L1-138",
     "module": "Wastewater Treatment",
     "options": [
-      "Control mode is irrelevant when pumps are energized",
-      "Logging a mode change guarantees process recovery",
-      "A mode change changes the pollutant's chemical identity",
+      "To show pump run status alone fully explains the operating trend",
+      "To replace notes on related alarms or observations",
+      "To prove that switching to manual control means the controller failed",
       "Manual and automatic periods affect response interpretation"
     ],
     "correctIndex": 3,
@@ -4134,9 +4134,9 @@
     "sourceReference": "Supporting resource category: Controls and continuity. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Controls and continuity",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Control mode is irrelevant when pumps are energized",
-    "optionB": "Logging a mode change guarantees process recovery",
-    "optionC": "A mode change changes the pollutant's chemical identity",
+    "optionA": "To show pump run status alone fully explains the operating trend",
+    "optionB": "To replace notes on related alarms or observations",
+    "optionC": "To prove that switching to manual control means the controller failed",
     "optionD": "Manual and automatic periods affect response interpretation"
   },
   {
@@ -4561,21 +4561,21 @@
   },
   {
     "topic": "Integrated upset investigation",
-    "question": "Primary clarification improves, and less BOD reaches aeration. What should be reconsidered?",
-    "correctAnswer": "Biological loading and related operating balance",
-    "explanation": "Upstream removal changes the substrate reaching biology. Reassess operation rather than assuming no downstream effect.",
+    "question": "After primary clarification improves and less BOD reaches aeration, which value should be used to reassess the current food loading on the biological process?",
+    "correctAnswer": "Current primary-effluent BOD mass load entering aeration",
+    "explanation": "The current primary-effluent BOD mass load entering aeration represents the food actually reaching the biological process after primary removal. Raw-influent, historical, and design loads do not represent the current load delivered to aeration.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2153,
     "itemId": "WASTEWATER-TREATMENT-L1-153",
     "module": "Wastewater Treatment",
     "options": [
-      "The belief that influent flow must have doubled",
-      "Biological loading and related operating balance",
-      "The assumption that downstream food load is unchanged",
-      "The conclusion that all aeration can be stopped"
+      "Current primary-effluent BOD mass load entering aeration",
+      "Current raw-influent BOD mass load entering primary clarification",
+      "Historical primary-effluent BOD mass load from before the improvement",
+      "Design primary-effluent BOD mass load at rated conditions"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -4584,10 +4584,10 @@
     "sourceReference": "Supporting resource category: Integrated upset investigation. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Integrated upset investigation",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The belief that influent flow must have doubled",
-    "optionB": "Biological loading and related operating balance",
-    "optionC": "The assumption that downstream food load is unchanged",
-    "optionD": "The conclusion that all aeration can be stopped"
+    "optionA": "Current primary-effluent BOD mass load entering aeration",
+    "optionB": "Current raw-influent BOD mass load entering primary clarification",
+    "optionC": "Historical primary-effluent BOD mass load from before the improvement",
+    "optionD": "Design primary-effluent BOD mass load at rated conditions"
   },
   {
     "topic": "Integrated upset investigation",
@@ -4651,9 +4651,9 @@
   },
   {
     "topic": "Solids-age reasoning",
-    "question": "Wasting is reduced while influent and effluent solids losses remain similar. What trend may develop?",
+    "question": "In an activated sludge process, if the mass rate of sludge wasting is reduced while biological solids production and effluent suspended-solids loss remain about the same, what trend may develop?",
     "correctAnswer": "Increasing solids inventory and solids age",
-    "explanation": "Less removal can retain more solids over time. Actual response depends on growth and all losses.",
+    "explanation": "Reducing the mass of solids removed through wasting can retain more solids in the system over time. If solids production and other solids losses remain about the same, solids inventory and solids age may increase.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2156,
@@ -4711,9 +4711,9 @@
   },
   {
     "topic": "Solids-age reasoning",
-    "question": "A plant wastes from RAS rather than mixed liquor. What must the calculation use?",
+    "question": "A plant wastes from RAS rather than mixed liquor. When calculating the mass of solids removed by wasting, what concentration should be used?",
     "correctAnswer": "The concentration at the actual wasting point",
-    "explanation": "Different streams have different concentrations. Use the actual waste flow and concentration to calculate mass loss.",
+    "explanation": "Different process streams can have different solids concentrations. To calculate the mass of solids removed by wasting, use the waste flow and the solids concentration at the actual wasting point.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2158,
@@ -4801,21 +4801,21 @@
   },
   {
     "topic": "Process boundaries",
-    "question": "Influent BOD loading is calculated upstream of primary treatment for a downstream F/M assessment. What must be checked?",
-    "correctAnswer": "Whether that load represents the actual reactor feed",
-    "explanation": "A mass balance must use the intended process boundary; upstream removal may change the load reaching the reactor.",
+    "question": "Primary treatment is located between the raw-influent BOD sampling point and the aeration basin. Which BOD load best matches the process boundary for the food term in the aeration-basin F/M ratio?",
+    "correctAnswer": "The BOD load in primary effluent entering the aeration basin",
+    "explanation": "The food term must represent the BOD load entering the aeration basin. Because primary treatment may remove BOD, the raw-influent load may not represent the primary-effluent load that reaches the basin.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2161,
     "itemId": "WASTEWATER-TREATMENT-L1-161",
     "module": "Wastewater Treatment",
     "options": [
-      "Whether all influent BOD necessarily reaches aeration",
-      "Whether the ratio must use total plant water volume",
-      "Whether that load represents the actual reactor feed",
-      "Whether MLSS can replace the feed concentration"
+      "The BOD load in raw influent entering primary treatment",
+      "The BOD load in primary effluent entering the aeration basin",
+      "The BOD load in mixed liquor leaving the aeration basin",
+      "The BOD load in final effluent leaving secondary treatment"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -4824,10 +4824,10 @@
     "sourceReference": "Supporting resource category: Process boundaries. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Process boundaries",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Whether all influent BOD necessarily reaches aeration",
-    "optionB": "Whether the ratio must use total plant water volume",
-    "optionC": "Whether that load represents the actual reactor feed",
-    "optionD": "Whether MLSS can replace the feed concentration"
+    "optionA": "The BOD load in raw influent entering primary treatment",
+    "optionB": "The BOD load in primary effluent entering the aeration basin",
+    "optionC": "The BOD load in mixed liquor leaving the aeration basin",
+    "optionD": "The BOD load in final effluent leaving secondary treatment"
   },
   {
     "topic": "Process boundaries",
@@ -5341,19 +5341,19 @@
   },
   {
     "topic": "Residuals operations",
-    "question": "Why document sludge destination and handling records?",
-    "correctAnswer": "Residuals management requires traceable disposition",
-    "explanation": "The destination and applicable quality and handling conditions matter; treatment does not authorize unrestricted disposition.",
+    "question": "For operator logkeeping and troubleshooting, why would a plant record sludge destination and handling information?",
+    "correctAnswer": "To maintain a traceable operating record of residuals movement and management",
+    "explanation": "Destination and handling information creates a traceable operating record of residuals movement and management, supporting plant logkeeping and troubleshooting.",
     "isCalc": "no",
     "bankKey": "class1-wastewater",
     "questionNum": 2179,
     "itemId": "WASTEWATER-TREATMENT-L1-179",
     "module": "Wastewater Treatment",
     "options": [
-      "Cake dryness used as authorization for any disposal destination",
-      "Residuals management requires traceable disposition",
-      "A truck volume ticket substituted for residual quality records",
-      "A normal digester gas rate treated as full disposition approval"
+      "To compare sludge dewatering performance across operating shifts and equipment",
+      "To maintain a traceable operating record of residuals movement and management",
+      "To calculate polymer dosage from solids content and filtrate measurements",
+      "To evaluate digester stability using gas production and loading trends"
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -5364,10 +5364,10 @@
     "sourceReference": "Supporting resource category: Residuals operations. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Residuals operations",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Cake dryness used as authorization for any disposal destination",
-    "optionB": "Residuals management requires traceable disposition",
-    "optionC": "A truck volume ticket substituted for residual quality records",
-    "optionD": "A normal digester gas rate treated as full disposition approval"
+    "optionA": "To compare sludge dewatering performance across operating shifts and equipment",
+    "optionB": "To maintain a traceable operating record of residuals movement and management",
+    "optionC": "To calculate polymer dosage from solids content and filtrate measurements",
+    "optionD": "To evaluate digester stability using gas production and loading trends"
   },
   {
     "topic": "Residuals operations",

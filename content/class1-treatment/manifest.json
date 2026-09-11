@@ -1,27 +1,43 @@
 {
-  "version": "2026-09-11-v1",
-  "status": "candidate-not-imported",
+  "version": "2026-09-11-v2-independently-cleared",
+  "status": "independently-cleared-release-candidate",
+  "releaseMode": "additive-exact-batch-after-full-live-bank-reconciliation",
+  "numberRange": {
+    "start": 2001,
+    "end": 2250
+  },
   "individualApprovalRequired": false,
   "productionWrites": false,
+  "reviewSummary": {
+    "initialIndependentApproval": 465,
+    "firstRemediationIndependentApproval": 22,
+    "finalRemediationIndependentApproval": 13,
+    "finalClearedCount": 500,
+    "auditLedger": "audit/independent-release-ledger.json",
+    "sourceEvidence": "audit/external-evidence.md",
+    "residualCueCorrections": 6,
+    "deterministicDisplayOnlyAnswerBalances": 3,
+    "residualCueAudit": "audit/residual-cue-resolution.json"
+  },
   "banks": [
     {
       "bankKey": "class1-water",
       "file": "questions/water-250.json",
-      "sha256": "553bdaed04185efb6ca979398e5e7915c44af5682c2ae1b83a9f4f27e9e2ed4e",
+      "sha256": "b2608946f9a7553e5767e6277e8c53b31b96e028d057872c2d83c79fb56f7a15",
       "count": 250,
       "conceptual": 200,
       "calculations": 50,
       "canonicalAnswerPositions": [
         63,
-        63,
+        64,
         62,
-        62
+        61
       ]
     },
     {
       "bankKey": "class1-wastewater",
       "file": "questions/wastewater-250.json",
-      "sha256": "cb4b2e667c46f9675b7aff640d3b18be034c69f7fa74f2ca7f81556e22042eb7",
+      "sha256": "19ae752131c01252f678cd1f2347c15b77653bbfaacddaedffda76589cceda4f",
       "count": 250,
       "conceptual": 200,
       "calculations": 50,

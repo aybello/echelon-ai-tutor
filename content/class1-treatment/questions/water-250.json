@@ -1021,9 +1021,9 @@
   },
   {
     "topic": "Clarifier maintenance",
-    "question": "Clarified-water quality worsens only during sludge pumping. What is a useful investigation?",
+    "question": "Clarified-water quality worsens only while the sludge-withdrawal pump is running. Upstream water-quality changes and sample-system faults have already been checked and do not explain the event. What is the most direct clarifier-maintenance investigation?",
     "correctAnswer": "Whether withdrawal is disturbing separation",
-    "explanation": "Timing suggests a withdrawal-related hydraulic or blanket disturbance; verify actual operation rather than assuming coincidence.",
+    "explanation": "With upstream and sampling causes not explaining the timing, the remaining direct clarifier-related concern is that sludge withdrawal may be disturbing the sludge blanket or hydraulic separation.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2035,
@@ -1621,9 +1621,9 @@
   },
   {
     "topic": "Disinfection interpretation",
-    "question": "A tracer study shows early breakthrough in a chlorine contact tank. What should be reconsidered?",
+    "question": "A tracer study shows early breakthrough in a chlorine contact tank. For the contact-time part of the disinfection assessment, what should be reconsidered?",
     "correctAnswer": "The effective contact time used for assessment",
-    "explanation": "Early breakthrough can reveal short-circuiting. Nominal volume divided by flow can overstate effective contact time.",
+    "explanation": "Early breakthrough can indicate short-circuiting, so the effective contact time used in the assessment may be less than a simple nominal detention-time estimate.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2055,
@@ -1633,7 +1633,7 @@
       "The tank outlet residual accepted as proof of equal exposure",
       "The effective contact time used for assessment",
       "The average plant flow accepted as the peak contact condition",
-      "The nominal detention time assumed from design volume alone"
+      "The disinfectant strength assumed from the chemical delivery record"
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -1647,7 +1647,7 @@
     "optionA": "The tank outlet residual accepted as proof of equal exposure",
     "optionB": "The effective contact time used for assessment",
     "optionC": "The average plant flow accepted as the peak contact condition",
-    "optionD": "The nominal detention time assumed from design volume alone"
+    "optionD": "The disinfectant strength assumed from the chemical delivery record"
   },
   {
     "topic": "Disinfectant chemistry",
@@ -2283,17 +2283,17 @@
     "topic": "Membrane fundamentals",
     "question": "Why is a membrane integrity test different from a turbidity reading?",
     "correctAnswer": "It assesses a barrier characteristic directly",
-    "explanation": "Integrity tests evaluate the membrane barrier using a defined method; low turbidity alone may not establish intact separation.",
+    "explanation": "An integrity test evaluates the membrane barrier using a defined method. A low turbidity reading alone may not establish that the membrane barrier is intact.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2077,
     "itemId": "WATER-TREATMENT-L1-077",
     "module": "Water Treatment",
     "options": [
-      "It establishes every dissolved contaminant limit",
-      "It replaces all process sampling permanently",
+      "It reports particles remaining in the permeate after treatment",
+      "It trends fouling by comparing operating pressure and flow",
       "It assesses a barrier characteristic directly",
-      "It calculates feed chemical strength from pressure"
+      "It evaluates whether pretreatment chemical feed is optimized"
     ],
     "correctIndex": 2,
     "reviewStatus": "unreviewed",
@@ -2304,26 +2304,26 @@
     "sourceReference": "Supporting resource category: Membrane fundamentals. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Membrane fundamentals",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "It establishes every dissolved contaminant limit",
-    "optionB": "It replaces all process sampling permanently",
+    "optionA": "It reports particles remaining in the permeate after treatment",
+    "optionB": "It trends fouling by comparing operating pressure and flow",
     "optionC": "It assesses a barrier characteristic directly",
-    "optionD": "It calculates feed chemical strength from pressure"
+    "optionD": "It evaluates whether pretreatment chemical feed is optimized"
   },
   {
     "topic": "Membrane fundamentals",
     "question": "A fibre break is suspected in an ultrafiltration unit. What is the primary treatment concern?",
     "correctAnswer": "A pathway can bypass the intended barrier",
-    "explanation": "A breach can let material pass without normal membrane separation. Follow isolation and integrity-response procedures.",
+    "explanation": "A fibre break can create a breach that allows material to pass without normal membrane separation. Follow the applicable isolation and integrity-response procedures.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2078,
     "itemId": "WATER-TREATMENT-L1-078",
     "module": "Water Treatment",
     "options": [
-      "The unit has gained validated filtration area",
-      "The raw-water flow must have stopped",
+      "Fouling may be increasing the transmembrane pressure",
+      "A valve or air issue may be limiting flow through the unit",
       "A pathway can bypass the intended barrier",
-      "All dissolved salts must now be removed"
+      "Pretreatment conditions may be increasing particle loading"
     ],
     "correctIndex": 2,
     "reviewStatus": "unreviewed",
@@ -2334,10 +2334,10 @@
     "sourceReference": "Supporting resource category: Membrane fundamentals. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Membrane fundamentals",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "The unit has gained validated filtration area",
-    "optionB": "The raw-water flow must have stopped",
+    "optionA": "Fouling may be increasing the transmembrane pressure",
+    "optionB": "A valve or air issue may be limiting flow through the unit",
     "optionC": "A pathway can bypass the intended barrier",
-    "optionD": "All dissolved salts must now be removed"
+    "optionD": "Pretreatment conditions may be increasing particle loading"
   },
   {
     "topic": "Membrane fundamentals",
@@ -2371,9 +2371,9 @@
   },
   {
     "topic": "Membrane fundamentals",
-    "question": "A reverse-osmosis unit produces permeate and concentrate. Where does most rejected dissolved salt go?",
+    "question": "During normal operation, a reverse-osmosis unit produces permeate and concentrate. Where does most rejected dissolved salt go?",
     "correctAnswer": "Into the concentrate stream",
-    "explanation": "Rejected material is concentrated in a separate stream; separation does not destroy the salt mass.",
+    "explanation": "In the normal mass balance, rejected dissolved salts remain on the concentrate side and leave mainly in the concentrate stream. Separation does not destroy the salt mass.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2080,
@@ -2381,9 +2381,9 @@
     "module": "Water Treatment",
     "options": [
       "Into the concentrate stream",
-      "Into newly created membrane material",
-      "Into the feed-pump electrical supply",
-      "Into the permeate by definition"
+      "On the membrane surface until routine cleaning removes it",
+      "Out with small leaks, samples, or drain losses",
+      "Into the permeate because it is the main product flow"
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -2395,9 +2395,9 @@
     "blueprintObjective": "Membrane fundamentals",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
     "optionA": "Into the concentrate stream",
-    "optionB": "Into newly created membrane material",
-    "optionC": "Into the feed-pump electrical supply",
-    "optionD": "Into the permeate by definition"
+    "optionB": "On the membrane surface until routine cleaning removes it",
+    "optionC": "Out with small leaks, samples, or drain losses",
+    "optionD": "Into the permeate because it is the main product flow"
   },
   {
     "topic": "Softening and stability",
@@ -2431,9 +2431,9 @@
   },
   {
     "topic": "Softening and stability",
-    "question": "An ion-exchange softener shows hardness leakage late in a run. What should be assessed?",
+    "question": "An ion-exchange softener has acceptable effluent hardness early in a service run but shows hardness leakage late in the run. Which assessment best targets whether the softener is reaching exhaustion before regeneration?",
     "correctAnswer": "Resin capacity and regeneration performance",
-    "explanation": "Exhaustion, regeneration or operational issues can cause leakage; investigate rather than inferring success from runtime.",
+    "explanation": "Hardness leakage late in a run can indicate exhaustion, inadequate regeneration, or related operating issues. Resin capacity and regeneration performance should be assessed rather than judging success only from early-run results.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2082,
@@ -2441,9 +2441,9 @@
     "module": "Water Treatment",
     "options": [
       "Resin capacity and regeneration performance",
-      "The elimination of every dissolved ion",
-      "The certainty of complete resin sterilization",
-      "The conversion of hardness into chlorine residual"
+      "Run length only, based on the early-run samples",
+      "Downstream chlorine residual as a substitute hardness indicator",
+      "Finished-water pH adjustment before reviewing regeneration results"
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -2455,25 +2455,25 @@
     "blueprintObjective": "Softening and stability",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
     "optionA": "Resin capacity and regeneration performance",
-    "optionB": "The elimination of every dissolved ion",
-    "optionC": "The certainty of complete resin sterilization",
-    "optionD": "The conversion of hardness into chlorine residual"
+    "optionB": "Run length only, based on the early-run samples",
+    "optionC": "Downstream chlorine residual as a substitute hardness indicator",
+    "optionD": "Finished-water pH adjustment before reviewing regeneration results"
   },
   {
     "topic": "Softening and stability",
-    "question": "Why can blended softener effluent have higher hardness than the treated stream?",
+    "question": "Why can blended softener effluent have higher hardness than the fully treated stream from the softener?",
     "correctAnswer": "Bypassed water contributes remaining hardness",
-    "explanation": "The blend follows a flow-weighted mass balance when no precipitation or reaction occurs.",
+    "explanation": "When treated water is blended with bypassed water, the blended hardness reflects the flow-weighted contribution of each stream. Bypassed water can therefore raise hardness above the fully treated stream value.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2083,
     "itemId": "WATER-TREATMENT-L1-083",
     "module": "Water Treatment",
     "options": [
-      "Blending creates calcium from dissolved oxygen",
-      "Hardness must equal the smaller stream value",
+      "The softest stream controls the hardness once streams mix",
+      "Only the treated-stream result is relevant after the blending point",
       "Bypassed water contributes remaining hardness",
-      "The blending valve destroys ion-exchange resin"
+      "The blending valve changes flow but cannot change blended hardness"
     ],
     "correctIndex": 2,
     "reviewStatus": "unreviewed",
@@ -2484,10 +2484,10 @@
     "sourceReference": "Supporting resource category: Softening and stability. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Softening and stability",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Blending creates calcium from dissolved oxygen",
-    "optionB": "Hardness must equal the smaller stream value",
+    "optionA": "The softest stream controls the hardness once streams mix",
+    "optionB": "Only the treated-stream result is relevant after the blending point",
     "optionC": "Bypassed water contributes remaining hardness",
-    "optionD": "The blending valve destroys ion-exchange resin"
+    "optionD": "The blending valve changes flow but cannot change blended hardness"
   },
   {
     "topic": "Softening and stability",
@@ -2552,18 +2552,18 @@
   {
     "topic": "Turbidity measurement",
     "question": "A turbidimeter cuvette has fingerprints on its optical surface. What is the concern?",
-    "correctAnswer": "Scattering can distort the reading",
-    "explanation": "Optical contamination can affect measurement. Clean and handle the cell according to the method.",
+    "correctAnswer": "They can scatter light and bias the turbidity result.",
+    "explanation": "Fingerprints on the cuvette’s optical surface can scatter or obstruct light passing through the cell, causing a biased turbidity result. The cuvette should be cleaned and handled according to the applicable instrument or method procedure.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2086,
     "itemId": "WATER-TREATMENT-L1-086",
     "module": "Water Treatment",
     "options": [
-      "Scattering can distort the reading",
-      "The sample becomes a calibration standard",
-      "The result is corrected by increasing sample volume",
-      "Fingerprints reliably lower true water turbidity"
+      "They can scatter light and bias the turbidity result.",
+      "They can warm the sample and bias the turbidity result.",
+      "They can change the fill volume and bias the turbidity result.",
+      "They can increase particle settling and bias the turbidity result."
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -2574,26 +2574,26 @@
     "sourceReference": "Supporting resource category: Turbidity measurement. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Turbidity measurement",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Scattering can distort the reading",
-    "optionB": "The sample becomes a calibration standard",
-    "optionC": "The result is corrected by increasing sample volume",
-    "optionD": "Fingerprints reliably lower true water turbidity"
+    "optionA": "They can scatter light and bias the turbidity result.",
+    "optionB": "They can warm the sample and bias the turbidity result.",
+    "optionC": "They can change the fill volume and bias the turbidity result.",
+    "optionD": "They can increase particle settling and bias the turbidity result."
   },
   {
     "topic": "Turbidity measurement",
     "question": "Air bubbles are visible in a low-turbidity sample. What should the operator recognize?",
     "correctAnswer": "Bubbles can interfere with optical readings",
-    "explanation": "Gas bubbles scatter light. Address them using the instrument's sample-handling procedure.",
+    "explanation": "Air bubbles can scatter light and interfere with turbidity readings. They should be addressed using the applicable instrument sample-handling procedure before relying on the result.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2087,
     "itemId": "WATER-TREATMENT-L1-087",
     "module": "Water Treatment",
     "options": [
-      "Bubbles prove the filter removed every particle",
-      "Bubbles make calibration checks unnecessary",
+      "The reading is acceptable if the sample otherwise looks clear",
+      "The meter can reliably distinguish air bubbles from suspended particles",
       "Bubbles can interfere with optical readings",
-      "Bubbles always equal a fixed turbidity correction"
+      "Filling the vial to the mark removes the need to address bubbles"
     ],
     "correctIndex": 2,
     "reviewStatus": "unreviewed",
@@ -2604,28 +2604,28 @@
     "sourceReference": "Supporting resource category: Turbidity measurement. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Turbidity measurement",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Bubbles prove the filter removed every particle",
-    "optionB": "Bubbles make calibration checks unnecessary",
+    "optionA": "The reading is acceptable if the sample otherwise looks clear",
+    "optionB": "The meter can reliably distinguish air bubbles from suspended particles",
     "optionC": "Bubbles can interfere with optical readings",
-    "optionD": "Bubbles always equal a fixed turbidity correction"
+    "optionD": "Filling the vial to the mark removes the need to address bubbles"
   },
   {
     "topic": "Turbidity measurement",
-    "question": "An online turbidimeter fails its check standard. What is the sound response?",
-    "correctAnswer": "Investigate and qualify affected measurements",
-    "explanation": "A failed check raises measurement reliability concerns; identify the issue and its effect on reported data.",
+    "question": "An online turbidimeter fails its check standard, and the cause and extent of the problem have not yet been determined. What is the best initial data-status decision for potentially affected readings?",
+    "correctAnswer": "Classify them as provisional pending investigation and qualification",
+    "explanation": "Potentially affected readings should be classified as provisional pending investigation and qualification because their reliability has not yet been established. The failure alone does not support validating, mathematically correcting, or invalidating them.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2088,
     "itemId": "WATER-TREATMENT-L1-088",
     "module": "Water Treatment",
     "options": [
-      "Replace the standard with raw water for calibration",
-      "Increase coagulant until the standard passes",
-      "Assume all recent process alarms were false",
-      "Investigate and qualify affected measurements"
+      "Classify them as validated measurements",
+      "Classify them as provisional pending investigation and qualification",
+      "Classify them as corrected using the check-standard deviation",
+      "Classify them as invalid measurements"
     ],
-    "correctIndex": 3,
+    "correctIndex": 1,
     "reviewStatus": "unreviewed",
     "difficulty": "medium",
     "cognitiveLevel": "application",
@@ -2634,10 +2634,10 @@
     "sourceReference": "Supporting resource category: Turbidity measurement. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Turbidity measurement",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Replace the standard with raw water for calibration",
-    "optionB": "Increase coagulant until the standard passes",
-    "optionC": "Assume all recent process alarms were false",
-    "optionD": "Investigate and qualify affected measurements"
+    "optionA": "Classify them as validated measurements",
+    "optionB": "Classify them as provisional pending investigation and qualification",
+    "optionC": "Classify them as corrected using the check-standard deviation",
+    "optionD": "Classify them as invalid measurements"
   },
   {
     "topic": "Turbidity measurement",
@@ -2740,10 +2740,10 @@
     "itemId": "WATER-TREATMENT-L1-092",
     "module": "Water Treatment",
     "options": [
-      "A guaranteed increase in the sample's hardness",
+      "Process chemical feed settings before confirming the reading",
       "Electrode condition and measurement validity",
-      "A confirmed sudden change in reservoir volume",
-      "The assumption that all drifting values are correct"
+      "Sample temperature compensation only, with no electrode check",
+      "Buffer calibration records only, while the fouled junction remains in service"
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -2754,10 +2754,10 @@
     "sourceReference": "Supporting resource category: pH and analytical quality. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "pH and analytical quality",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "A guaranteed increase in the sample's hardness",
+    "optionA": "Process chemical feed settings before confirming the reading",
     "optionB": "Electrode condition and measurement validity",
-    "optionC": "A confirmed sudden change in reservoir volume",
-    "optionD": "The assumption that all drifting values are correct"
+    "optionC": "Sample temperature compensation only, with no electrode check",
+    "optionD": "Buffer calibration records only, while the fouled junction remains in service"
   },
   {
     "topic": "pH and analytical quality",
@@ -2771,9 +2771,9 @@
     "module": "Water Treatment",
     "options": [
       "Storage can change the sampled condition",
-      "Every parameter improves with longer storage",
-      "Elapsed time determines the sample's legal limit",
-      "Prompt testing removes the need for calibration"
+      "To let the sample reach laboratory room temperature before analysis",
+      "To allow settling before a field reading is recorded",
+      "To make laboratory transport conditions the reported condition"
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -2785,9 +2785,9 @@
     "blueprintObjective": "pH and analytical quality",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
     "optionA": "Storage can change the sampled condition",
-    "optionB": "Every parameter improves with longer storage",
-    "optionC": "Elapsed time determines the sample's legal limit",
-    "optionD": "Prompt testing removes the need for calibration"
+    "optionB": "To let the sample reach laboratory room temperature before analysis",
+    "optionC": "To allow settling before a field reading is recorded",
+    "optionD": "To make laboratory transport conditions the reported condition"
   },
   {
     "topic": "pH and analytical quality",
@@ -2800,9 +2800,9 @@
     "itemId": "WATER-TREATMENT-L1-094",
     "module": "Water Treatment",
     "options": [
-      "A successful sample preservation result",
-      "Confirmed target concentration in the plant water",
-      "Proof that no further quality control is needed",
+      "A normal instrument zero response",
+      "A sample-matrix colour from the plant water",
+      "Verification that the calibration curve has been accepted",
       "Possible contamination or reagent interference"
     ],
     "correctIndex": 3,
@@ -2814,9 +2814,9 @@
     "sourceReference": "Supporting resource category: pH and analytical quality. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "pH and analytical quality",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "A successful sample preservation result",
-    "optionB": "Confirmed target concentration in the plant water",
-    "optionC": "Proof that no further quality control is needed",
+    "optionA": "A normal instrument zero response",
+    "optionB": "A sample-matrix colour from the plant water",
+    "optionC": "Verification that the calibration curve has been accepted",
     "optionD": "Possible contamination or reagent interference"
   },
   {
@@ -2881,19 +2881,19 @@
   },
   {
     "topic": "Microbial sample handling",
-    "question": "Why avoid touching the inside of a microbial sample cap?",
-    "correctAnswer": "Contact can contaminate the sample",
-    "explanation": "Aseptic handling protects sample validity; contamination introduced during collection can misrepresent the water.",
+    "question": "Which sample-quality control is directly supported by avoiding contact with the inside of a sterile microbial sample bottle cap?",
+    "correctAnswer": "Maintaining aseptic conditions during collection",
+    "explanation": "Avoiding contact with the inside of the cap maintains aseptic conditions during collection. Touching that surface can introduce microorganisms that contaminate the sample and misrepresent the water quality.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2097,
     "itemId": "WATER-TREATMENT-L1-097",
     "module": "Water Treatment",
     "options": [
-      "Contact fixes the sample's incubation temperature",
-      "Contact removes all bacteria from the bottle",
-      "Contact increases the true disinfectant contact time",
-      "Contact can contaminate the sample"
+      "Maintaining the required holding temperature after collection",
+      "Neutralizing residual disinfectant in the sample",
+      "Documenting sample custody during transport",
+      "Maintaining aseptic conditions during collection"
     ],
     "correctIndex": 3,
     "reviewStatus": "unreviewed",
@@ -2904,10 +2904,10 @@
     "sourceReference": "Supporting resource category: Microbial sample handling. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Microbial sample handling",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Contact fixes the sample's incubation temperature",
-    "optionB": "Contact removes all bacteria from the bottle",
-    "optionC": "Contact increases the true disinfectant contact time",
-    "optionD": "Contact can contaminate the sample"
+    "optionA": "Maintaining the required holding temperature after collection",
+    "optionB": "Neutralizing residual disinfectant in the sample",
+    "optionC": "Documenting sample custody during transport",
+    "optionD": "Maintaining aseptic conditions during collection"
   },
   {
     "topic": "Microbial sample handling",
@@ -2941,19 +2941,19 @@
   },
   {
     "topic": "Microbial sample handling",
-    "question": "Why collect from an appropriate prepared sampling tap rather than a leaking hose?",
-    "correctAnswer": "To reduce unrepresentative contamination pathways",
-    "explanation": "The sampling setup can contaminate or misrepresent the sample; proper preparation supports valid evidence.",
+    "question": "What is the primary quality-control purpose of collecting a routine microbial sample from an appropriate prepared sampling tap instead of through a leaking hose?",
+    "correctAnswer": "To reduce contamination bias introduced by the sampling setup",
+    "explanation": "Using an appropriate prepared tap reduces contamination or other bias introduced by the collection setup, making the result more representative. Labeling, transport, and incubation controls address different stages of the sampling and analysis process and are not corrected by selecting the tap.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2099,
     "itemId": "WATER-TREATMENT-L1-099",
     "module": "Water Treatment",
     "options": [
-      "To reduce unrepresentative contamination pathways",
-      "To increase the plant's actual disinfectant dose",
-      "To ensure the result is always negative",
-      "To avoid recording the collection location"
+      "To reduce contamination bias introduced by the sampling setup",
+      "To reduce sample-identification errors during labeling",
+      "To reduce sample changes caused by delayed transport",
+      "To reduce analytical variation during laboratory incubation"
     ],
     "correctIndex": 0,
     "reviewStatus": "unreviewed",
@@ -2964,10 +2964,10 @@
     "sourceReference": "Supporting resource category: Microbial sample handling. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Microbial sample handling",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "To reduce unrepresentative contamination pathways",
-    "optionB": "To increase the plant's actual disinfectant dose",
-    "optionC": "To ensure the result is always negative",
-    "optionD": "To avoid recording the collection location"
+    "optionA": "To reduce contamination bias introduced by the sampling setup",
+    "optionB": "To reduce sample-identification errors during labeling",
+    "optionC": "To reduce sample changes caused by delayed transport",
+    "optionD": "To reduce analytical variation during laboratory incubation"
   },
   {
     "topic": "Microbial sample handling",
@@ -5431,19 +5431,19 @@
   },
   {
     "topic": "Operational arithmetic concepts",
-    "question": "Why must chemical purity be expressed consistently in a mass calculation?",
-    "correctAnswer": "A percentage and a decimal fraction differ by 100",
-    "explanation": "For example, 10% is 0.10 as a mass fraction; mixing representations creates a hundredfold error.",
+    "question": "An operator determines active chemical mass by multiplying the product mass by its purity fraction. If a 10% pure product is entered as 10 instead of 0.10, how does the calculated active chemical mass compare with the correct result?",
+    "correctAnswer": "The calculated mass is 100 times too large.",
+    "explanation": "For a product mass of M, the correct calculation is M × 0.10. Entering 10 gives M × 10. Because 10 ÷ 0.10 = 100, the calculated active chemical mass is 100 times too large.",
     "isCalc": "no",
     "bankKey": "class1-water",
     "questionNum": 2182,
     "itemId": "WATER-TREATMENT-L1-182",
     "module": "Water Treatment",
     "options": [
-      "Purity is always equal to delivered volume",
-      "A percentage and a decimal fraction differ by 100",
-      "All commercial chemicals are pure by definition",
-      "A decimal fraction represents density in every case"
+      "The calculated mass is 100 times too small.",
+      "The calculated mass is 100 times too large.",
+      "The calculated mass is 10 times too large.",
+      "The calculated mass is equal to the correct result."
     ],
     "correctIndex": 1,
     "reviewStatus": "unreviewed",
@@ -5454,10 +5454,10 @@
     "sourceReference": "Supporting resource category: Operational arithmetic concepts. See SOURCES.md: these are not claim-level verification citations.",
     "blueprintObjective": "Operational arithmetic concepts",
     "evidenceStatus": "original-candidate-topic-reference-not-independent-SME-certification",
-    "optionA": "Purity is always equal to delivered volume",
-    "optionB": "A percentage and a decimal fraction differ by 100",
-    "optionC": "All commercial chemicals are pure by definition",
-    "optionD": "A decimal fraction represents density in every case"
+    "optionA": "The calculated mass is 100 times too small.",
+    "optionB": "The calculated mass is 100 times too large.",
+    "optionC": "The calculated mass is 10 times too large.",
+    "optionD": "The calculated mass is equal to the correct result."
   },
   {
     "topic": "Operational arithmetic concepts",
