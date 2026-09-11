@@ -1,0 +1,36 @@
+{
+  "version": "2026-09-11-v1",
+  "status": "candidate-not-imported",
+  "individualApprovalRequired": false,
+  "productionWrites": false,
+  "banks": [
+    {
+      "bankKey": "class1-water",
+      "file": "questions/water-250.json",
+      "sha256": "553bdaed04185efb6ca979398e5e7915c44af5682c2ae1b83a9f4f27e9e2ed4e",
+      "count": 250,
+      "conceptual": 200,
+      "calculations": 50,
+      "canonicalAnswerPositions": [
+        63,
+        63,
+        62,
+        62
+      ]
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "file": "questions/wastewater-250.json",
+      "sha256": "cb4b2e667c46f9675b7aff640d3b18be034c69f7fa74f2ca7f81556e22042eb7",
+      "count": 250,
+      "conceptual": 200,
+      "calculations": 50,
+      "canonicalAnswerPositions": [
+        63,
+        63,
+        62,
+        62
+      ]
+    }
+  ]
+}
