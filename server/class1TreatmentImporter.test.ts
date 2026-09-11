@@ -60,9 +60,12 @@ describe("Class 1 Treatment guarded additive importer", () => {
     for (const payload of packageInfo.payloads) {
       for (const question of payload.questions) rows.push({ ...question, id: nextId++, options: JSON.stringify(question.options), reviewStatus: "in_review" });
     }
-    const stagedMetadata = metadata().map((row) => ({ ...row, contentVersion: row.contentVersion + 1 }));
+    const stagedMetadata = metadata().map((row) => ({ ...row, totalQuestions: Number(row.totalQuestions) + 250, contentVersion: Number(row.contentVersion) + 1 }));
     const staged = planClass1NetworksImport({ payloads: packageInfo.payloads, rows, metadata: stagedMetadata });
     expect(staged).toMatchObject({ ready: false, state: "already_staged", errors: [] });
+    for (const row of rows) if (row.questionNum >= 2001) row.reviewStatus = "unreviewed";
+    const visible = planClass1NetworksImport({ payloads: packageInfo.payloads, rows, metadata: stagedMetadata });
+    expect(visible).toMatchObject({ ready: false, state: "already_visible", errors: [] });
     const changed = rows.find((row) => row.bankKey === "class1-water" && row.questionNum === 2001)!;
     changed.explanation = "A conflicting changed explanation.";
     const conflict = planClass1NetworksImport({ payloads: packageInfo.payloads, rows, metadata: stagedMetadata });

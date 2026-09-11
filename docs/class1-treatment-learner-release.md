@@ -21,7 +21,9 @@ Before insertion, a fresh full-bank rollback baseline was captured and stored in
 | Class 1 Water Treatment | 555 | 250 | **805** |
 | Class 1 Wastewater Treatment | 565 | 250 | **815** |
 
-No existing question was deleted or modified. The newly added question rows have zero recorded learner attempts at release verification. The Water and Wastewater practice pages loaded unanswered questions in development verification; the corrected header uses authoritative bank metadata and displays 805 and 815 respectively. No answer was selected, confirmed, or submitted during verification.
+No existing question was deleted or modified. The newly added question rows have zero recorded learner attempts at release verification. The Water and Wastewater practice pages loaded unanswered questions on both the custom and managed production domains; the corrected header uses authoritative bank metadata and displays 805 and 815 respectively. No answer was selected, confirmed, or submitted during verification.
+
+The post-release importer and promotion preflights both now return `already_visible` with no errors for the exact package checksum. This confirms that the package cannot be inserted or promoted a second time while preserving a read-only replay record.
 
 ## Remaining documentation limitation
 

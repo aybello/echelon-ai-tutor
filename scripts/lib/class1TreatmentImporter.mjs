@@ -190,14 +190,16 @@ export function planClass1NetworksImport({ payloads, rows, metadata, expectedCou
       if (rowByNumber.has(number)) errors.push(`${payload.bankKey}#${number}: duplicate production question number.`);
       rowByNumber.set(number, row);
     }
-    if (bankMetadata.length !== 1) errors.push(`${payload.bankKey}: expected one metadata row, found ${bankMetadata.length}.`);
-    if (bankMetadata.length === 1 && Number(bankMetadata[0].totalQuestions) !== expectedBaselineCount) {
-      errors.push(`${payload.bankKey}: metadata totalQuestions drift (expected ${expectedBaselineCount}, found ${bankMetadata[0].totalQuestions}).`);
-    }
-
     const candidateRows = payload.questions.map((candidate) => ({ candidate, stored: rowByNumber.get(Number(candidate.questionNum)) ?? null }));
     const present = candidateRows.filter((entry) => entry.stored);
     const missing = candidateRows.filter((entry) => !entry.stored);
+    const expectedMetadataCount = present.length === payload.questions.length
+      ? expectedBaselineCount + payload.questions.length
+      : expectedBaselineCount;
+    if (bankMetadata.length !== 1) errors.push(`${payload.bankKey}: expected one metadata row, found ${bankMetadata.length}.`);
+    if (bankMetadata.length === 1 && Number(bankMetadata[0].totalQuestions) !== expectedMetadataCount) {
+      errors.push(`${payload.bankKey}: metadata totalQuestions drift (expected ${expectedMetadataCount}, found ${bankMetadata[0].totalQuestions}).`);
+    }
     const candidateNumbers = new Set(payload.questions.map((question) => Number(question.questionNum)));
     const unexpectedInRange = bankRows.filter((row) => {
       const number = Number(row.questionNum);
