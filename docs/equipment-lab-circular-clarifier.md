@@ -10,7 +10,7 @@ The module offers four equipment views: **3D**, **top**, **cutaway**, and **expl
 
 The page also includes water, solids, and flow-animation controls; four process stages; links to the wastewater process guide and Class 1 wastewater practice; and keyboard-operable SVG component controls. Motion respects the user’s reduced-motion preference.
 
-## Three.js enhancement package — 2026-09-12.equipment-lab-three.1
+## Three.js enhancement — 2026-09-12.equipment-lab-three.1
 
 The default experience now loads a dedicated **Three.js** circular-clarifier exploration model. It is a code-built educational visualization with orbit, top, cutaway, and exploded views; visible water and solids layers; optional scraper-motion controls; clickable 3D geometry for the same seven components; and the shared four-stage clarification sequence.
 
@@ -26,4 +26,4 @@ The clarifier learning data has focused unit coverage. Type checks and a product
 
 On the managed production page, all seven SVG component targets exposed `role="button"` and `tabIndex="0"`. Direct keyboard verification confirmed focus plus **Enter** changed the selection to **Surface Skimmer**, while focus plus **Space** changed it to **Effluent Weir & Launder**. The published styles also contain a `prefers-reduced-motion: reduce` override that disables the flow, sweep, and pulse animations for users who request reduced motion.
 
-For the Three.js follow-on release, all 1,335 unit tests, TypeScript checks, and the production build passed. The standalone public browser test confirmed the default 3D canvas, view controls, component-button **Enter** selection, water visibility control, four process stages, SVG diagram switch, and reduced-motion state without authentication or learner activity. Desktop and mobile previews were also inspected directly.
+For the Three.js follow-on release, all 1,335 unit tests, TypeScript checks, and the production build passed. The standalone public browser test confirmed the default 3D canvas, view controls, component-button **Enter** selection, water visibility control, four process stages, SVG diagram switch, and reduced-motion state without authentication or learner activity. Desktop and mobile previews were also inspected directly. After auto-publish propagation, the same public browser suite passed **2/2** against both the managed domain and the custom domain; no sign-in, answer selection, submission, or learner record was created.
