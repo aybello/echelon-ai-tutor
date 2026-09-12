@@ -110,7 +110,7 @@
     "sonner": "^2.0.8",
     "streamdown": "^2.6.0",
     "stripe": "^22.6.1",
-    "superjson": "^1.13.3",
+    "superjson": "^2.2.6",
     "tailwind-merge": "^3.6.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.186.0",
