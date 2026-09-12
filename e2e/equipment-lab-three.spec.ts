@@ -11,8 +11,9 @@ test("public Equipment Lab provides a controllable 3D clarifier with an accessib
 
   await page.getByRole("button", { name: "Exploded", exact: true }).click();
   await expect(page.getByRole("button", { name: "Exploded", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("canvas")).toBeVisible();
 
-  const scraperButton = page.getByRole("button", { name: "Scraper Arms", exact: true });
+  const scraperButton = page.getByRole("button", { name: /Scraper Arms/ });
   await scraperButton.focus();
   await scraperButton.press("Enter");
   await expect(page.getByRole("heading", { name: "Scraper Arms", exact: true })).toBeVisible();

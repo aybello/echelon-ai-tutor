@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { CLARIFIER_PARTS, CLARIFIER_STAGES, resolveClarifierCount } from "./clarifierLab";
+import { CLARIFIER_PARTS, CLARIFIER_STAGES, CLARIFIER_STAGE_PARTS, resolveClarifierCount } from "./clarifierLab";
 
 describe("clarifier lab learning model", () => {
   it("provides unique interactive parts and four ordered process stages", () => {
     expect(new Set(CLARIFIER_PARTS.map((part) => part.id)).size).toBe(CLARIFIER_PARTS.length);
     expect(CLARIFIER_PARTS).toHaveLength(7);
     expect(CLARIFIER_STAGES.map((stage) => stage.step)).toEqual(["01", "02", "03", "04"]);
+    expect(Object.keys(CLARIFIER_STAGE_PARTS)).toEqual(CLARIFIER_STAGES.map((stage) => stage.id));
+    expect(Object.values(CLARIFIER_STAGE_PARTS).every((partId) => CLARIFIER_PARTS.some((part) => part.id === partId))).toBe(true);
   });
 
   it("keeps valid server metadata and falls back for empty values", () => {

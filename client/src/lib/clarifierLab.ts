@@ -17,7 +17,7 @@ export interface ClarifierStage {
   accent: string;
 }
 
-export const CLARIFIER_PARTS: ClarifierPart[] = [
+export const CLARIFIER_PARTS = [
   {
     id: "feedwell",
     label: "Centre Feedwell",
@@ -74,9 +74,11 @@ export const CLARIFIER_PARTS: ClarifierPart[] = [
     operatorLens: "Verify withdrawal is occurring as expected before changing rates; use site measurements and SOPs.",
     examConnection: "In secondary clarification, settled biomass may be returned to aeration or wasted to control inventory.",
   },
-];
+] as const satisfies readonly ClarifierPart[];
 
-export const CLARIFIER_STAGES: ClarifierStage[] = [
+export type ClarifierPartId = (typeof CLARIFIER_PARTS)[number]["id"];
+
+export const CLARIFIER_STAGES = [
   {
     id: "distribute",
     step: "01",
@@ -105,7 +107,16 @@ export const CLARIFIER_STAGES: ClarifierStage[] = [
     description: "Clarified water flows evenly across the weir and into the effluent launder.",
     accent: "#34D399",
   },
-];
+] as const satisfies readonly ClarifierStage[];
+
+export type ClarifierStageId = (typeof CLARIFIER_STAGES)[number]["id"];
+
+export const CLARIFIER_STAGE_PARTS: Record<ClarifierStageId, ClarifierPartId> = {
+  distribute: "feedwell",
+  settle: "weir",
+  collect: "scrapers",
+  decant: "weir",
+};
 
 export function resolveClarifierCount(metadataCount: unknown, fallback: number): number {
   const parsed = typeof metadataCount === "number" ? metadataCount : Number(metadataCount);
