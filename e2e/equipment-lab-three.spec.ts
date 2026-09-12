@@ -3,7 +3,11 @@ import { expect, test } from "@playwright/test";
 test("public Equipment Lab provides a controllable 3D clarifier with an accessible diagram alternative", async ({ page }) => {
   await page.goto("/equipment-lab");
 
-  await expect(page.getByRole("heading", { name: "Circular clarifier" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Inside a circular clarifier", exact: true })).toBeVisible();
+  const aboutModel = page.getByRole("button", { name: "About this model", exact: true });
+  await expect(aboutModel).toHaveAttribute("aria-expanded", "false");
+  await aboutModel.click();
+  await expect(page.getByText(/generalized learning illustration, not manufacturer CAD/i)).toBeVisible();
   await expect(page.getByRole("button", { name: "3D model", exact: true })).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator("canvas")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Clarification stages", exact: true })).toBeVisible();
