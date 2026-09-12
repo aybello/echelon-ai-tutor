@@ -20,7 +20,7 @@
  *   5. Manage Billing button calls createBillingPortalSession
  */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ComponentType, type SVGProps } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -144,7 +144,7 @@ function MetricCard({
   sub,
   accent,
 }: {
-  icon: React.ElementType;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
   value: string | number;
   sub?: string;

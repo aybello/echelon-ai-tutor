@@ -1,11 +1,16 @@
+import { lazy, Suspense, useState } from "react";
 import { useLocation } from "wouter";
-import { ArrowRight, Beaker, BookOpenCheck, GraduationCap, Layers3 } from "lucide-react";
+import { ArrowRight, Beaker, BookOpenCheck, Box, GraduationCap, Layers3, Monitor, ScanLine } from "lucide-react";
 import ClarifierLab from "@/components/ClarifierLab";
+import ErrorBoundary from "@/components/ErrorBoundary";
+
+const ClarifierThreeLab = lazy(() => import("@/components/ClarifierThreeLab"));
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function EquipmentLab() {
   const [, navigate] = useLocation();
+  const [renderMode, setRenderMode] = useState<"three" | "diagram">("three");
   usePageMeta({
     title: "Equipment Lab | Echelon Institute",
     description: "Explore wastewater equipment with Echelon’s interactive circular clarifier learning lab.",
@@ -55,7 +60,20 @@ export default function EquipmentLab() {
               Wastewater process guide <ArrowRight size={15} />
             </button>
           </div>
-          <ClarifierLab onStudyLink={() => navigate("/wastewater")} />
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+            <div className="flex items-center gap-2 text-sm text-slate-600"><ScanLine size={17} className="text-sky-700" /> <span><strong className="text-slate-900">Choose your view:</strong> use the 3D model for exploration or the diagram for a schematic walkthrough.</span></div>
+            <div className="flex rounded-xl border border-slate-200 bg-slate-50 p-1" role="group" aria-label="Equipment Lab render mode">
+              <button onClick={() => setRenderMode("three")} aria-pressed={renderMode === "three"} className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold ${renderMode === "three" ? "bg-slate-900 text-white" : "text-slate-600"}`}><Box size={14} /> 3D model</button>
+              <button onClick={() => setRenderMode("diagram")} aria-pressed={renderMode === "diagram"} className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold ${renderMode === "diagram" ? "bg-slate-900 text-white" : "text-slate-600"}`}><Monitor size={14} /> Diagram view</button>
+            </div>
+          </div>
+          {renderMode === "three" ? (
+            <Suspense fallback={<div className="flex min-h-[440px] items-center justify-center rounded-3xl border border-slate-200 bg-white p-8 text-sm font-semibold text-slate-600">Preparing the interactive 3D model…</div>}>
+              <ErrorBoundary fallback={<div className="rounded-3xl border border-amber-200 bg-amber-50 p-8 text-center text-sm leading-6 text-amber-950">The interactive 3D model could not start in this browser. The accessible <strong>Diagram view</strong> remains available above.</div>}>
+                <ClarifierThreeLab onStudyLink={() => navigate("/wastewater")} />
+              </ErrorBoundary>
+            </Suspense>
+          ) : <ClarifierLab onStudyLink={() => navigate("/wastewater")} />}
         </section>
 
         <section className="border-t border-slate-200 bg-white px-4 py-10">
