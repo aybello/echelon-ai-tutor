@@ -77,6 +77,12 @@ describe("forward-only migration safety", () => {
         proposedOnly: true,
         standaloneApply: { tables: ["purchase_email_outbox"] },
       }),
+      expect.objectContaining({
+        version: 63,
+        tag: "0063_question_content_snapshots",
+        proposedOnly: true,
+        standaloneApply: { tables: ["question_content_snapshots"] },
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -508,6 +514,6 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61]);
+    ).toEqual([59, 60, 61, 63]);
   });
 });
