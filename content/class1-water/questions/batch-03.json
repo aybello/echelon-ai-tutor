@@ -1,0 +1,691 @@
+{
+  "batch": "03",
+  "title": "Class 1 Water Treatment — batch 03 (questions 1081–1120)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1081,
+      "question": "What is the principal water quality risk associated with an algal bloom in a source reservoir?",
+      "options": [
+        "It raises source water hardness, which increases coagulant demand sharply",
+        "It reduces raw water turbidity, which interferes with coagulant control",
+        "It can release toxins and taste compounds and clog filters as cells accumulate",
+        "It removes dissolved oxygen, which makes chlorine disinfection ineffective"
+      ],
+      "correctIndex": 2,
+      "explanation": "Cyanobacterial blooms can release toxins as well as taste and odour compounds that conventional treatment removes poorly. High cell counts also shorten filter runs, and cells that break during treatment can release intracellular material. Monitoring, intake depth selection, and adsorption or oxidation are the usual responses.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Algal blooms",
+      "isCalc": "no",
+      "tip": "Avoid oxidising an intact bloom hard at the intake; lysing cells releases what is inside them."
+    },
+    {
+      "questionNum": 1082,
+      "question": "What is the purpose of a sanitary seal and grout on a drilled water supply well?",
+      "options": [
+        "To support the casing against the lateral pressure of the surrounding soil",
+        "To restrict the yield of the well so that the aquifer is not over-pumped",
+        "To reduce corrosion of the casing where it passes through the water table",
+        "To prevent surface water and shallow contamination entering along the casing"
+      ],
+      "correctIndex": 3,
+      "explanation": "The annular space outside the casing would otherwise form a direct pathway from ground surface into the producing aquifer. Grouting and sealing that annulus blocks surface runoff, shallow contaminated groundwater, and insects or vermin from bypassing the natural protective layers.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Well construction",
+      "isCalc": "no",
+      "tip": "Most well contamination travels down the outside of the casing, not up through the aquifer."
+    },
+    {
+      "questionNum": 1083,
+      "question": "Which sequence correctly describes iron and manganese removal by oxidation and filtration?",
+      "options": [
+        "Filter the raw water, then oxidize the dissolved metals in the clearwell",
+        "Sequester the metals with polyphosphate, then oxidize them before filtering",
+        "Raise the pH to dissolve the metals fully, then remove them by adsorption",
+        "Oxidize the dissolved metals to insoluble particles, then filter them out"
+      ],
+      "correctIndex": 3,
+      "explanation": "Iron and manganese occur in groundwater in soluble reduced forms that pass straight through a filter. An oxidant such as chlorine, permanganate, or aeration converts them to insoluble oxides, and only then can filtration remove them. Adequate oxidation contact time before the filter is essential.",
+      "difficulty": "medium",
+      "module": "Iron & Manganese Removal",
+      "topic": "Oxidation and filtration",
+      "isCalc": "no",
+      "tip": "Dissolved metals are invisible to a filter. Oxidise first, and give the reaction time to finish."
+    },
+    {
+      "questionNum": 1084,
+      "question": "When is sequestration with polyphosphate an appropriate approach to iron and manganese?",
+      "options": [
+        "When concentrations are high and complete physical removal is required",
+        "When the water will be stored for long periods before it is distributed",
+        "When the plant needs to recover the metals for later disposal off site",
+        "When concentrations are low and the objective is preventing visible staining"
+      ],
+      "correctIndex": 3,
+      "explanation": "Sequestration binds the metals in a soluble complex so they do not oxidize and precipitate in the distribution system. Nothing is removed, so the approach only suits low concentrations where the goal is preventing discolouration and staining. The complex can break down with heat or prolonged storage, releasing the metals again.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Sequestration",
+      "isCalc": "no",
+      "tip": "Sequestration hides the metals, it does not remove them. It is unsuitable at higher concentrations."
+    },
+    {
+      "questionNum": 1085,
+      "question": "How does an ion exchange softener remove hardness from water?",
+      "options": [
+        "It precipitates calcium carbonate onto the surface of the resin beads",
+        "It filters hardness particles physically as water passes through the resin",
+        "It exchanges calcium and magnesium ions on the resin for sodium ions",
+        "It raises pH so that hardness minerals become insoluble and settle out"
+      ],
+      "correctIndex": 2,
+      "explanation": "Cation exchange resin holds sodium ions loosely and has a stronger affinity for calcium and magnesium. As hard water passes through the bed, the hardness ions are retained and sodium is released. When the resin is exhausted it is regenerated with a concentrated brine solution that reverses the exchange.",
+      "difficulty": "medium",
+      "module": "Softening",
+      "topic": "Ion exchange",
+      "isCalc": "no",
+      "tip": "Ion exchange trades hardness for sodium, which matters for customers on sodium-restricted diets."
+    },
+    {
+      "questionNum": 1086,
+      "question": "What distinguishes carbonate hardness from non-carbonate hardness?",
+      "options": [
+        "Carbonate hardness is caused by calcium while non-carbonate is caused by magnesium",
+        "Carbonate hardness is measured in the field while non-carbonate needs a laboratory",
+        "Carbonate hardness occurs in groundwater while non-carbonate occurs in surface water",
+        "Carbonate hardness is associated with alkalinity and precipitates when heated"
+      ],
+      "correctIndex": 3,
+      "explanation": "Carbonate hardness is the portion balanced by bicarbonate and carbonate alkalinity, and it precipitates as scale when the water is heated, which is why it is called temporary hardness. Non-carbonate hardness is associated with sulphate and chloride, does not precipitate on heating, and requires chemical addition to remove.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Hardness types",
+      "isCalc": "no",
+      "tip": "Temporary hardness equals carbonate hardness. If alkalinity is lower than total hardness, the difference is non-carbonate."
+    },
+    {
+      "questionNum": 1087,
+      "question": "Why does an operator perform a drawdown test on a chemical metering pump?",
+      "options": [
+        "To determine the volume remaining in the day tank before a delivery",
+        "To check the suction line for leaks that would allow air to enter",
+        "To verify the discharge pressure matches the injection point pressure",
+        "To confirm the pump is delivering the volume its setting indicates"
+      ],
+      "correctIndex": 3,
+      "explanation": "A drawdown test measures the actual volume drawn from a calibration cylinder over a timed interval and compares it with the rate the pump setting implies. Wear, fouling, back pressure changes, and valve problems all cause drift, so the dose an operator believes is being applied must be verified rather than assumed.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Pump calibration",
+      "isCalc": "no",
+      "tip": "A dial setting is an intention. Only a drawdown test proves what the pump actually delivers."
+    },
+    {
+      "questionNum": 1088,
+      "question": "Why is a plant emergency response plan exercised rather than simply kept on file?",
+      "options": [
+        "To satisfy the record-keeping requirement for operator training hours",
+        "To confirm the contact list in the document remains current and accurate",
+        "To reveal gaps in roles, access and equipment before a real event occurs",
+        "To distribute copies of the document to every agency named within it"
+      ],
+      "correctIndex": 2,
+      "explanation": "An untested plan hides its own weaknesses. Exercising it exposes unavailable equipment, unclear decision authority, keys and access that do not work, and steps that cannot be completed in the time assumed. Those gaps are cheap to fix during a drill and very costly to discover during an actual emergency.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Emergency preparedness",
+      "isCalc": "no",
+      "tip": "A plan that has never been exercised is an untested assumption, not a control."
+    },
+    {
+      "questionNum": 1089,
+      "question": "An operator will decant concentrated sodium hypochlorite from a drum into a day tank. Which personal protective equipment is appropriate?",
+      "options": [
+        "Safety glasses and nitrile gloves, with a dust mask for vapour control",
+        "Hard hat, steel-toed boots and high-visibility vest as for general plant work",
+        "A half-face respirator with organic vapour cartridges and leather gloves",
+        "Chemical splash goggles, face shield, chemical-resistant gloves and apron"
+      ],
+      "correctIndex": 3,
+      "explanation": "Decanting a corrosive liquid creates a splash hazard to the eyes, face, hands and body. Goggles combined with a face shield protect against splashes from unexpected directions, and chemical-resistant gloves and an apron protect skin. General site personal protective equipment does not address the chemical hazard.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Chemical handling PPE",
+      "isCalc": "no",
+      "tip": "Match protection to the hazard and the task. Splash risk means goggles plus a face shield, not glasses alone."
+    },
+    {
+      "questionNum": 1090,
+      "question": "Where should an operator look first to find the specific hazards and first aid measures for a treatment chemical?",
+      "options": [
+        "On the supplier invoice accompanying the most recent delivery",
+        "In the plant operations manual under the chemical feed section",
+        "On the manufacturer's website under product technical support",
+        "In the safety data sheet supplied for that product"
+      ],
+      "correctIndex": 3,
+      "explanation": "A safety data sheet is the authoritative document for a specific product, covering hazard identification, handling and storage, exposure controls, first aid, and spill response. It must be readily available to workers wherever the chemical is used or stored, and operators must be trained to interpret it.",
+      "difficulty": "easy",
+      "module": "Safety",
+      "topic": "Hazard information",
+      "isCalc": "no",
+      "tip": "The sheet is product-specific. Two chlorine products from different suppliers can differ meaningfully."
+    },
+    {
+      "questionNum": 1091,
+      "question": "Workers must enter a 2 m deep excavation to repair a watermain in sandy soil. What is required before entry?",
+      "options": [
+        "A visual inspection of the trench walls by the crew lead before descending",
+        "A ladder placed at one end of the excavation to provide a means of egress",
+        "Continuous atmospheric monitoring of the excavation during the repair work",
+        "Shoring, sloping or a trench box appropriate to the soil classification"
+      ],
+      "correctIndex": 3,
+      "explanation": "Unsupported trench walls in loose soil can collapse without warning, and a small volume of soil is heavy enough to cause fatal crushing or asphyxiation. Protection through shoring, sloping, benching or a trench box, selected for the soil type and depth, is what prevents the collapse. Ladders and inspections are additional requirements, not substitutes.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Excavation safety",
+      "isCalc": "no",
+      "tip": "Soil is far heavier than people expect. Cave-in protection is not optional at depth."
+    },
+    {
+      "questionNum": 1092,
+      "question": "Why is an emergency eyewash and safety shower installed close to a chemical handling area?",
+      "options": [
+        "To provide a water supply for diluting and neutralizing a chemical spill",
+        "To let operators rinse tools and equipment after chemical transfer work",
+        "To meet the requirement for potable water at every plant work station",
+        "To allow decontamination to begin within seconds of a chemical splash"
+      ],
+      "correctIndex": 3,
+      "explanation": "Corrosive chemicals begin damaging tissue immediately, so the interval between exposure and flushing determines the severity of injury. Equipment must be within a few seconds of travel, unobstructed, and flushed routinely so that the water is clean and available when it is needed.",
+      "difficulty": "easy",
+      "module": "Safety",
+      "topic": "Emergency equipment",
+      "isCalc": "no",
+      "tip": "Access time is the design criterion. An eyewash behind a locked door or up a ladder does not count."
+    },
+    {
+      "questionNum": 1093,
+      "question": "Which practice most directly reduces the risk of an arc flash when working on plant electrical equipment?",
+      "options": [
+        "Wearing rubber-soled footwear whenever entering the electrical room",
+        "Working with one hand only while keeping the other clear of the panel",
+        "Ensuring another worker is present in the room to summon assistance",
+        "De-energizing the equipment and verifying the absence of voltage first"
+      ],
+      "correctIndex": 3,
+      "explanation": "The reliable control is to remove the energy: isolate, lock out, and then test to confirm the circuit is genuinely dead before work begins. The other measures may reduce consequences or aid rescue, but only de-energizing and verifying removes the hazard itself.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Electrical safety",
+      "isCalc": "no",
+      "tip": "Test before you touch, and test your tester on a known live source before and after."
+    },
+    {
+      "questionNum": 1094,
+      "question": "Ammonia is stored at a plant practising chloramination. Which storage arrangement is essential?",
+      "options": [
+        "Storing it in the same room as hypochlorite to shorten the feed piping run",
+        "Storing it below the chlorine room so that any vapour drains away safely",
+        "Storing it separately from chlorine products, with independent containment",
+        "Storing it adjacent to the coagulant tanks where containment already exists"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ammonia and chlorine products must never be able to mix accidentally, because the reaction is violent and produces hazardous gases. Separate rooms or areas, independent spill containment, and clearly separated fill connections prevent a delivery error or a leak from bringing the two together.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Chemical segregation",
+      "isCalc": "no",
+      "tip": "Incompatible chemicals need separation in storage, in containment and at the fill point."
+    },
+    {
+      "questionNum": 1095,
+      "question": "An operator collects a bacteriological sample from a distribution tap. Which practice protects the validity of the result?",
+      "options": [
+        "Rinsing the sterile bottle with sample water before filling it completely",
+        "Filling the bottle to the brim so no air remains trapped above the sample",
+        "Collecting the sample from the first water drawn after the tap is opened",
+        "Removing the aerator, flushing the line, and not touching the bottle interior"
+      ],
+      "correctIndex": 3,
+      "explanation": "Aerators and fittings harbour organisms unrepresentative of the main, so they are removed and the line is flushed until fresh water from the distribution system is drawn. The bottle interior, cap and neck must not be touched or rinsed, since rinsing discards the dechlorinating agent and touching introduces contamination. Headspace is left for mixing.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Bacteriological sampling technique",
+      "isCalc": "no",
+      "tip": "Never rinse a bacteriological bottle. The preservative inside is there for a reason."
+    },
+    {
+      "questionNum": 1096,
+      "question": "What does a field blank submitted alongside routine samples demonstrate?",
+      "options": [
+        "Whether the laboratory instrument was calibrated on the day of analysis",
+        "Whether the sample was held within its permitted temperature range",
+        "Whether the sampling location is representative of the wider system",
+        "Whether contamination was introduced during collection, transport or analysis"
+      ],
+      "correctIndex": 3,
+      "explanation": "A field blank is clean water carried through the same bottles, handling, transport and analysis as the real samples. Any contaminant detected in it cannot have come from the water supply, so it must have entered through the sampling and analytical process, which flags the results as suspect.",
+      "difficulty": "hard",
+      "module": "Sampling & Laboratory",
+      "topic": "Quality control samples",
+      "isCalc": "no",
+      "tip": "Blanks test for contamination; duplicates test for precision. They answer different questions."
+    },
+    {
+      "questionNum": 1097,
+      "question": "Why must a pH meter be calibrated with buffer solutions that bracket the expected sample value?",
+      "options": [
+        "Because buffers lose their stated value quickly once a bottle is opened",
+        "Because a single-point calibration cannot detect a cracked glass electrode",
+        "Because electrode response is verified across the range being measured",
+        "Because temperature compensation only functions between two buffer points"
+      ],
+      "correctIndex": 2,
+      "explanation": "Calibration establishes the relationship between electrode millivolt output and pH. Using buffers on either side of the expected value verifies both the slope and the offset of that relationship across the range of interest, so readings are interpolated rather than extrapolated beyond verified points.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Instrument calibration",
+      "isCalc": "no",
+      "tip": "Bracket the expected value. Calibrating far from your operating range invites error."
+    },
+    {
+      "questionNum": 1098,
+      "question": "Why does each analytical parameter have a maximum holding time between collection and analysis?",
+      "options": [
+        "Because laboratory scheduling requires samples to be processed in sequence",
+        "Because sample bottles begin to leach contaminants after a fixed period",
+        "Because chain of custody documentation expires after a defined interval",
+        "Because sample constituents change over time, so late results misrepresent the water"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chemical and biological changes continue inside the bottle. Organisms multiply or die off, residuals decay, and volatile compounds escape. A result obtained after the holding time has passed describes the sample as it became, not the water as it was at the sampling point.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Holding times",
+      "isCalc": "no",
+      "tip": "Preservation slows change; holding time bounds it. Exceeding it invalidates the result."
+    },
+    {
+      "questionNum": 1099,
+      "question": "How should sampling locations for a distribution system monitoring program be selected?",
+      "options": [
+        "Concentrated near the treatment plant where water quality is most stable",
+        "At locations chosen at random each month to avoid predictable patterns",
+        "Distributed to represent the system, including dead ends and system extremities",
+        "At the largest commercial customers where consumption volumes are highest"
+      ],
+      "correctIndex": 2,
+      "explanation": "A monitoring program must describe the water people actually receive, so sites are spread across pressure zones and include locations where quality is most likely to have deteriorated, such as long residence-time areas and system extremities. Sampling only near the plant would systematically overstate quality.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Sampling plan design",
+      "isCalc": "no",
+      "tip": "Sample where problems would appear first, not where the water looks best."
+    },
+    {
+      "questionNum": 1100,
+      "question": "During a jar test, why must the same mixing sequence and timing be used for every jar?",
+      "options": [
+        "So that the coagulant has adequate time to dissolve fully in each jar",
+        "So that the settling period matches the detention time of the full-scale basin",
+        "So that the temperature of each jar remains identical throughout the test",
+        "So that differences in the result are attributable to dose rather than mixing"
+      ],
+      "correctIndex": 3,
+      "explanation": "A jar test compares doses, so every other variable must be held constant. If rapid mix energy, flocculation speed, or settling time differ between jars, the observed differences in settled turbidity cannot be attributed to the dose being tested and the conclusion is unreliable.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Jar test procedure",
+      "isCalc": "no",
+      "tip": "Change one variable at a time. That principle is what makes a jar test interpretable."
+    },
+    {
+      "questionNum": 1101,
+      "question": "What is a practical operating advantage of a magnetic flow meter in a treatment plant?",
+      "options": [
+        "It obstructs the flow path, which improves accuracy at very low flows",
+        "It functions on any liquid regardless of the conductivity of the fluid",
+        "It requires no straight pipe run upstream or downstream of the meter",
+        "It creates no headloss and has no moving parts to wear in the flow stream"
+      ],
+      "correctIndex": 3,
+      "explanation": "A magnetic flow meter measures the voltage induced as a conductive liquid passes through a magnetic field. Nothing intrudes into the flow, so there is no headloss and nothing to wear or foul. Its limitation is that the liquid must be electrically conductive, which water generally is.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Flow measurement",
+      "isCalc": "no",
+      "tip": "No moving parts and no headloss, but it needs a conductive liquid and a full pipe."
+    },
+    {
+      "questionNum": 1102,
+      "question": "Why is a chlorine residual analyser verified against a manual DPD test on a regular schedule?",
+      "options": [
+        "Because manual testing is required whenever an analyser is in service",
+        "Because the analyser cannot measure free and total chlorine separately",
+        "Because the manual test provides a faster result during normal operation",
+        "Because analyser drift would otherwise go undetected between calibrations"
+      ],
+      "correctIndex": 3,
+      "explanation": "Online analysers drift as reagents age, sample lines foul, and optics degrade. A periodic comparison against a manual test on the same water detects that drift. Without it, the plant could operate confidently on a reading that no longer reflects the true residual.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Analyser verification",
+      "isCalc": "no",
+      "tip": "Continuous monitoring is only as trustworthy as the last verification against a reference method."
+    },
+    {
+      "questionNum": 1103,
+      "question": "What is the operational value of reviewing SCADA trend data rather than only instantaneous readings?",
+      "options": [
+        "Trends record data at a higher resolution than the live display provides",
+        "Trends automatically compensate readings for temperature and pressure",
+        "Trends reveal gradual drift and developing problems before an alarm occurs",
+        "Trends eliminate the need for manual verification of plant instruments"
+      ],
+      "correctIndex": 2,
+      "explanation": "A single reading shows only the present state. A trend shows direction and rate of change, so slowly rising headloss, a creeping loss of residual, or a pump losing efficiency become visible while there is still time to intervene, rather than after an alarm threshold has been crossed.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Trend analysis",
+      "isCalc": "no",
+      "tip": "Alarms tell you a limit was crossed. Trends tell you it was going to be."
+    },
+    {
+      "questionNum": 1104,
+      "question": "A remote booster station loses telemetry communication with the main plant. What should the operator assume about the station?",
+      "options": [
+        "That the station has shut down safely on loss of the communication link",
+        "That it continues to operate normally at its last commanded setpoint",
+        "That the station has switched automatically to its local control mode",
+        "That its condition is unknown and must be confirmed by other means"
+      ],
+      "correctIndex": 3,
+      "explanation": "Loss of telemetry removes visibility, not necessarily function. The station may be running correctly, may have failed, or may have stopped, and the operator has no way to distinguish these from the plant. The safe position is to treat the status as unknown and confirm by attending the site or using an alternative communication path.",
+      "difficulty": "hard",
+      "module": "Instrumentation & Control",
+      "topic": "Telemetry failure",
+      "isCalc": "no",
+      "tip": "No data is not good news. Absence of an alarm is not evidence that all is well."
+    },
+    {
+      "questionNum": 1105,
+      "question": "A plant restarts after an extended shutdown. Why is the water produced during startup directed to waste initially?",
+      "options": [
+        "Because chemical feed pumps cannot be calibrated while flow is stabilizing",
+        "Because the clearwell must be emptied before new production is accepted",
+        "Because filters cannot achieve design flow until the media has resettled",
+        "Because standing water in basins and filters is not of distribution quality"
+      ],
+      "correctIndex": 3,
+      "explanation": "Water that has sat stagnant in basins, filters and pipework has lost disinfectant residual and may have supported growth or accumulated deposits. Processes also need time to stabilize as chemical feeds, flows and residuals reach their operating points. Wasting the initial production keeps that water out of the distribution system.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Plant startup",
+      "isCalc": "no",
+      "tip": "Treat startup water as suspect until residual, turbidity and chemical feeds are all confirmed stable."
+    },
+    {
+      "questionNum": 1106,
+      "question": "What is the primary operational risk when a treatment plant loses power without a functioning standby supply?",
+      "options": [
+        "Chemical stock in day tanks will settle and require remixing before use",
+        "Instrument calibration will be lost and require verification on restart",
+        "Distribution pressure may fall, creating a pathway for contamination to enter",
+        "Filter media will restratify incorrectly once flow through the beds stops"
+      ],
+      "correctIndex": 2,
+      "explanation": "Loss of pumping can allow system pressure to drop, and low or negative pressure can draw contaminated water into the mains through cross-connections, leaking joints, or submerged connections. That is a direct public health risk, which is why standby power, storage and pressure monitoring are treated as critical.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Power failure response",
+      "isCalc": "no",
+      "tip": "Loss of pressure is a contamination event risk, not merely a service interruption."
+    },
+    {
+      "questionNum": 1107,
+      "question": "Why is standby equipment such as a spare chemical feed pump exercised periodically rather than left idle?",
+      "options": [
+        "To distribute operating hours evenly and extend the life of both units",
+        "To keep the equipment warranty valid through documented operation",
+        "To circulate chemical through the system and prevent it from settling",
+        "To confirm it will actually start and perform when the duty unit fails"
+      ],
+      "correctIndex": 3,
+      "explanation": "Equipment that sits unused develops seized seals, drained prime, flat batteries and degraded diaphragms, and those faults are discovered at the worst moment. Periodic operation under load proves the standby unit is genuinely available and gives time to repair it if it is not.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Standby equipment",
+      "isCalc": "no",
+      "tip": "Untested redundancy is not redundancy. Alternating duty also equalises wear."
+    },
+    {
+      "questionNum": 1108,
+      "question": "What is the operational purpose of a structured shift handover?",
+      "options": [
+        "To confirm both operators hold valid certificates for the class of facility",
+        "To reconcile chemical inventory records at the close of each operating shift",
+        "To transfer knowledge of plant status, in-progress work and outstanding issues",
+        "To record the hours worked so that overtime can be calculated accurately"
+      ],
+      "correctIndex": 2,
+      "explanation": "Much of what matters at a handover is not visible on a screen: which unit is out of service and why, what was adjusted and how the plant responded, what is part-completed, and what to watch. A structured handover transfers that context so the incoming operator is not reconstructing it from instruments alone.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Shift handover",
+      "isCalc": "no",
+      "tip": "The most dangerous moment in a plant is often the first hour after a poor handover."
+    },
+    {
+      "questionNum": 1109,
+      "question": "Why does a preventive maintenance program schedule work by runtime hours as well as by calendar date?",
+      "options": [
+        "Because calendar scheduling cannot be tracked reliably in a maintenance system",
+        "Because manufacturers express all service intervals in operating hours only",
+        "Because runtime scheduling reduces the total number of maintenance tasks",
+        "Because runtime reflects actual wear, which varies with how much a unit is used"
+      ],
+      "correctIndex": 3,
+      "explanation": "A duty pump running continuously accumulates wear far faster than a standby unit that runs occasionally, so a purely calendar-based schedule would over-service one and under-service the other. Some deterioration such as rubber ageing is time-driven, so both bases are used together.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Preventive maintenance",
+      "isCalc": "no",
+      "tip": "Wear follows use; ageing follows time. A good program tracks both."
+    },
+    {
+      "questionNum": 1110,
+      "question": "What is the operational purpose of a documented quality management system at a drinking water system?",
+      "options": [
+        "To establish the treatment processes each facility is required to install",
+        "To set the concentration limits that finished water must not exceed",
+        "To determine the certification level required of the operating staff",
+        "To define consistent procedures, responsibilities and continual improvement"
+      ],
+      "correctIndex": 3,
+      "explanation": "A quality management system documents how the organisation identifies risks, assigns responsibility, follows consistent procedures, and reviews and improves its own performance. It governs how the system is managed rather than prescribing treatment technology or water quality values, which come from other instruments.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Quality management",
+      "isCalc": "no",
+      "tip": "A management system governs process and accountability, not treatment technology."
+    },
+    {
+      "questionNum": 1111,
+      "question": "What does a treatment system earn when it is granted log removal or inactivation credit for a pathogen?",
+      "options": [
+        "Recognition of the reduction that a barrier reliably achieves for that organism",
+        "Permission to reduce the frequency of routine microbiological sampling",
+        "Confirmation that the finished water contains no viable organisms at all",
+        "An allowance to exceed turbidity limits when raw water quality deteriorates"
+      ],
+      "correctIndex": 0,
+      "explanation": "Log credit quantifies the reduction a barrier achieves, so a 3-log credit represents a thousandfold reduction. Credits from filtration and disinfection combine to meet an overall requirement for each pathogen group. Credit is granted for demonstrated, monitored performance, not for the presence of equipment.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "Log removal credit",
+      "isCalc": "no",
+      "tip": "Each log is a tenfold reduction, so credits are added: 2-log plus 2-log gives 4-log overall."
+    },
+    {
+      "questionNum": 1112,
+      "question": "An operator receives a laboratory result indicating an adverse water quality condition. What is the correct first action?",
+      "options": [
+        "Collect a resample and wait for the confirmatory result before acting",
+        "Review recent operating data to determine whether the result is plausible",
+        "Initiate the required notifications and corrective actions without delay",
+        "Record the result in the plant log for review at the next scheduled meeting"
+      ],
+      "correctIndex": 2,
+      "explanation": "An adverse result triggers a defined response immediately. Notification of the required authorities and the prescribed corrective actions proceed on the result as reported. Resampling and investigating the cause happen in parallel, but they never delay the notification, because a delay extends public exposure.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Adverse result response",
+      "isCalc": "no",
+      "tip": "Notify first, investigate in parallel. Waiting for a resample before notifying is a common serious error."
+    },
+    {
+      "questionNum": 1113,
+      "question": "What does a maximum acceptable concentration for a chemical parameter represent?",
+      "options": [
+        "The concentration at which the parameter becomes detectable by taste or odour",
+        "The concentration above which treatment equipment may be damaged over time",
+        "The typical concentration found in treated water from a well-run facility",
+        "The health-based limit above which the water is not considered acceptable"
+      ],
+      "correctIndex": 3,
+      "explanation": "A maximum acceptable concentration is a health-based value derived from toxicological assessment, taking account of lifetime exposure. It defines the boundary of acceptability for that parameter. Values set for taste, odour or appearance are aesthetic objectives and serve a different purpose.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Water quality standards",
+      "isCalc": "no",
+      "tip": "Health-based limits and aesthetic objectives are separate. Exceeding an aesthetic objective is not a health exceedance."
+    },
+    {
+      "questionNum": 1114,
+      "question": "Why is operator certification tied to the classification of the facility being operated?",
+      "options": [
+        "Because larger facilities require a greater number of operators on each shift",
+        "Because certification fees are calculated from the population being served",
+        "Because equipment suppliers require certified operators for warranty coverage",
+        "Because facility complexity determines the competency an operator must hold"
+      ],
+      "correctIndex": 3,
+      "explanation": "Facility classification reflects the complexity of the processes, the population served, and the consequences of failure. Requiring certification matched to that classification ensures the person making operating decisions has demonstrated knowledge proportionate to the judgement the facility demands.",
+      "difficulty": "easy",
+      "module": "Water Quality & Regulations",
+      "topic": "Operator certification",
+      "isCalc": "no",
+      "tip": "Classification is about complexity and consequence, not simply the size of the plant."
+    },
+    {
+      "questionNum": 1115,
+      "question": "Why are operating records retained for a defined period rather than discarded once reviewed?",
+      "options": [
+        "To demonstrate compliance and allow past performance to be investigated",
+        "To provide documentation supporting future capital funding applications",
+        "To satisfy the accounting requirements associated with chemical purchasing",
+        "To supply the data needed for calibrating instruments during their service life"
+      ],
+      "correctIndex": 0,
+      "explanation": "Records are the evidence that the system operated as required and that monitoring was performed. When a water quality issue or a health investigation arises, the historical record is what allows conditions at the relevant time to be reconstructed. Retention periods exist so that evidence is available when it is needed.",
+      "difficulty": "easy",
+      "module": "Water Quality & Regulations",
+      "topic": "Record keeping",
+      "isCalc": "no",
+      "tip": "If it is not recorded, it cannot be demonstrated later. Records are the proof of compliance."
+    },
+    {
+      "questionNum": 1116,
+      "question": "What is the purpose of issuing a boil water advisory?",
+      "options": [
+        "To reduce demand on the system while repairs are completed",
+        "To notify consumers that water pressure will be interrupted for a period",
+        "To advise consumers that the water may have an unusual taste or appearance",
+        "To warn consumers to treat water before use because of a possible health risk"
+      ],
+      "correctIndex": 3,
+      "explanation": "A boil water advisory is a public health measure issued when the microbiological safety of the supply cannot be assured, whether from a positive result, a treatment failure, or a loss of pressure. Boiling inactivates the pathogens of concern, so the advisory places a barrier in the consumer's hands until the system is confirmed safe.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Public notification",
+      "isCalc": "no",
+      "tip": "Advisories address microbiological risk. Boiling does not remove chemical contaminants and can concentrate them."
+    },
+    {
+      "questionNum": 1117,
+      "question": "Why is turbidity used as an indicator of filtration performance for pathogen control?",
+      "options": [
+        "Because turbidity measurement directly counts the pathogens present in water",
+        "Because turbidity readings are required to calculate the CT value achieved",
+        "Because particle removal tracks pathogen removal and can be measured continuously",
+        "Because turbidity determines the coagulant dose applied ahead of the filters"
+      ],
+      "correctIndex": 2,
+      "explanation": "Pathogens such as protozoan cysts cannot be measured in real time, but they are removed by the same physical mechanisms that remove other particles. Turbidity is a continuous, sensitive surrogate for that particle removal, so a rise in filtered turbidity signals that the barrier may be compromised.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Turbidity as a surrogate",
+      "isCalc": "no",
+      "tip": "Turbidity is a surrogate, not a pathogen measurement. It is used because it is immediate and continuous."
+    },
+    {
+      "questionNum": 1118,
+      "question": "Why must chemical inventory be managed so that stock is rotated and delivery is planned?",
+      "options": [
+        "To reduce the storage volume required and lower the associated capital cost",
+        "To allow bulk purchasing that reduces the unit cost of each chemical",
+        "To simplify the reconciliation of chemical usage against treated water volume",
+        "To ensure chemicals are used before degrading and that supply never runs out"
+      ],
+      "correctIndex": 3,
+      "explanation": "Several treatment chemicals lose strength in storage, so older stock must be used first. At the same time, running out of a chemical that is essential to a treatment barrier is a serious operational failure. Managing inventory balances shelf life against continuity of supply.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Chemical inventory",
+      "isCalc": "no",
+      "tip": "Oldest stock first, and never let a critical chemical approach an unplanned outage."
+    },
+    {
+      "questionNum": 1119,
+      "question": "What information does a plant hydraulic profile provide to an operator?",
+      "options": [
+        "The water surface elevations and head losses through each treatment stage",
+        "The pressure rating of each pipe and valve installed in the treatment train",
+        "The detention time available in each process unit at maximum plant flow",
+        "The pumping energy required to move water through the treatment process"
+      ],
+      "correctIndex": 0,
+      "explanation": "A hydraulic profile shows the water surface elevation at each point through the plant and the head consumed by each process and connecting structure. It explains why water flows by gravity where it does, how much head remains available, and which unit will limit capacity as flows increase.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Hydraulic profile",
+      "isCalc": "no",
+      "tip": "When a plant cannot pass design flow, the hydraulic profile usually shows which structure is the constraint."
+    },
+    {
+      "questionNum": 1120,
+      "question": "Why is a written procedure used for a task an experienced operator performs routinely?",
+      "options": [
+        "To provide a record showing which operator completed the task each time",
+        "To satisfy the training requirement associated with the operator certificate",
+        "To ensure the task is performed consistently by anyone, including under pressure",
+        "To allow the task duration to be measured for maintenance planning purposes"
+      ],
+      "correctIndex": 2,
+      "explanation": "Procedures exist so that outcomes do not depend on who is on shift or on recall under stress. They preserve the correct sequence when the person performing the task is new, tired, or working through an unfamiliar situation, and they capture the reasoning behind steps that might otherwise look optional.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Standard procedures",
+      "isCalc": "no",
+      "tip": "Procedures protect against variability between people and against memory failing under pressure."
+    }
+  ]
+}

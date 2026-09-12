@@ -1,0 +1,691 @@
+{
+  "batch": "05",
+  "title": "Class 1 Water Treatment — batch 05 (questions 1161–1200)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1161,
+      "question": "A customer reports a metallic taste and rusty coloured water in the morning only. What is the most likely explanation?",
+      "options": [
+        "Corrosion products released from plumbing while water stood overnight",
+        "Insufficient chlorine residual reaching the property during low demand",
+        "Iron breakthrough occurring at the treatment plant during night operation",
+        "A cross-connection drawing contaminated water into the service line"
+      ],
+      "correctIndex": 0,
+      "explanation": "Water that stands in premise plumbing overnight has extended contact with pipe and fitting surfaces, dissolving corrosion products. The characteristic pattern is discolouration and metallic taste in the first draw that clears after flushing, which points to the plumbing rather than the distribution main.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Customer complaint investigation",
+      "isCalc": "no",
+      "tip": "First-draw only, clearing on flushing, points to premise plumbing. Persistent discolouration points to the main."
+    },
+    {
+      "questionNum": 1162,
+      "question": "Filtered water turbidity rises suddenly across all filters at once. Where should the operator look first?",
+      "options": [
+        "At the individual filter underdrains for evidence of a media failure",
+        "At the backwash sequence timing programmed into the plant controller",
+        "At the coagulation and clarification stages upstream of the filters",
+        "At the turbidimeter calibration records for each filter effluent line"
+      ],
+      "correctIndex": 2,
+      "explanation": "A single failing filter suggests a problem with that unit. A simultaneous rise across every filter points to something common to them all, which is the water they are receiving. Coagulant feed failure, a change in raw water quality, or a pH excursion in coagulation are the usual causes.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Troubleshooting logic",
+      "isCalc": "no",
+      "tip": "One unit affected means look at that unit. All units affected means look upstream."
+    },
+    {
+      "questionNum": 1163,
+      "question": "Why is negative head undesirable within a filter bed?",
+      "options": [
+        "It reverses the direction of flow through the media temporarily",
+        "It draws media downward and compacts it against the underdrain",
+        "It reduces the effective size of the media by abrasion between grains",
+        "It allows dissolved gases to come out of solution and bind the bed"
+      ],
+      "correctIndex": 3,
+      "explanation": "When accumulated headloss exceeds the depth of water above a point in the bed, pressure there falls below atmospheric. Dissolved gases then form bubbles that block flow paths, reduce output, and disrupt the media during backwash. Maintaining adequate submergence above the media prevents it.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Negative head",
+      "isCalc": "no",
+      "tip": "Negative head is the cause and air binding is the effect. Water depth above the media is the control."
+    },
+    {
+      "questionNum": 1164,
+      "question": "Why is filter media depth measured periodically as part of a filter inspection?",
+      "options": [
+        "To determine whether media has been lost and the bed needs topping up",
+        "To calculate the detention time available within the filter box",
+        "To confirm the underdrain has not shifted position beneath the media",
+        "To establish the backwash flow rate required for the current bed"
+      ],
+      "correctIndex": 0,
+      "explanation": "Media is gradually lost through backwash carryover and attrition. As the bed shallows, the depth available for particle capture falls, filter runs shorten and the risk of breakthrough rises. Periodic probing and coring reveal that loss, along with mudballs, cracking and uneven surfaces.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter inspection",
+      "isCalc": "no",
+      "tip": "Inspect a filter drained and out of service. Most defects are invisible while it is running."
+    },
+    {
+      "questionNum": 1165,
+      "question": "What condition does cracking or pulling away of media from the filter wall indicate?",
+      "options": [
+        "The media has been backwashed too frequently for the loading applied",
+        "The media has been graded too coarsely for the filtration rate in use",
+        "The media has absorbed excess coagulant and requires chemical cleaning",
+        "The media has become compacted and fouled, often with mudballs present"
+      ],
+      "correctIndex": 3,
+      "explanation": "Cracks, shrinkage away from the walls, and surface depressions indicate that the bed has become compacted and clogged with accumulated solids, commonly alongside mudball formation. Water then channels through the cracks, bypassing the media entirely, so filtered quality can deteriorate sharply.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filter bed condition",
+      "isCalc": "no",
+      "tip": "Cracks let water bypass the media. Cracking usually means backwashing has been inadequate for some time."
+    },
+    {
+      "questionNum": 1166,
+      "question": "Why is a distribution system pressure monitored continuously at representative points?",
+      "options": [
+        "To calculate the volume of water consumed within each pressure zone",
+        "To determine when storage reservoirs have reached their full level",
+        "To measure the friction factor of mains as they age in service",
+        "To detect low pressure events that create a contamination risk"
+      ],
+      "correctIndex": 3,
+      "explanation": "Sustained low or negative pressure can draw contamination into the mains through leaking joints and cross-connections, so it is a public health event rather than only a service issue. Continuous monitoring detects those excursions, supports investigation of their cause, and demonstrates that adequate pressure was maintained.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Pressure monitoring",
+      "isCalc": "no",
+      "tip": "Record pressure continuously. A transient low-pressure event may last minutes and never be seen otherwise."
+    },
+    {
+      "questionNum": 1167,
+      "question": "What is the operational significance of a sudden unexplained increase in plant production with no rise in customer demand?",
+      "options": [
+        "The finished water meter has drifted and requires prompt recalibration",
+        "The plant has become more efficient and is producing more per unit energy",
+        "There may be a significant leak or an unauthorized draw on the system",
+        "Storage reservoirs are being refilled after a period of high consumption"
+      ],
+      "correctIndex": 2,
+      "explanation": "Water produced must go somewhere. When production rises persistently while metered consumption does not, the difference indicates unaccounted-for water, most commonly a main break, a leaking reservoir, an open drain, or an unauthorized withdrawal. Investigating promptly limits loss and can reveal a break before it surfaces.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Water balance",
+      "isCalc": "no",
+      "tip": "Track production against consumption daily. A widening gap is often the first sign of a hidden break."
+    },
+    {
+      "questionNum": 1168,
+      "question": "Why is the raw water intake sometimes switched to a different depth during seasonal turnover?",
+      "options": [
+        "To reduce the total volume of water withdrawn during the turnover period",
+        "To prevent ice formation from blocking the intake during cold weather",
+        "To increase the raw water temperature entering the treatment plant",
+        "To draw from a layer with better quality as the reservoir mixes"
+      ],
+      "correctIndex": 3,
+      "explanation": "During turnover, layers that were separated through the season mix, and material accumulated in the deeper water, including iron, manganese, and taste and odour compounds, is distributed through the water column. Selecting the depth with the most treatable quality reduces the load on the plant during that period.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "Intake depth selection",
+      "isCalc": "no",
+      "tip": "Turnover is a predictable event. Increase source monitoring before it happens rather than reacting after."
+    },
+    {
+      "questionNum": 1169,
+      "question": "What is a recognised advantage of chlorine dioxide over free chlorine for primary disinfection?",
+      "options": [
+        "It provides a longer lasting residual throughout the distribution system",
+        "It can be stored in bulk on site in the same way as sodium hypochlorite",
+        "It produces no by-products that require monitoring in the finished water",
+        "Its effectiveness is largely unaffected by pH across the normal treatment range"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chlorine dioxide does not hydrolyse the way free chlorine does, so its disinfecting power holds across a wide pH band where free chlorine weakens. It also forms fewer trihalomethanes. It must be generated on site and produces chlorite and chlorate, which are monitored.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Chlorine dioxide",
+      "isCalc": "no",
+      "tip": "Chlorine dioxide is pH-tolerant, but it swaps one by-product concern for another."
+    },
+    {
+      "questionNum": 1170,
+      "question": "Why is a dechlorinating agent applied when superchlorinated water is discharged from a flushing operation?",
+      "options": [
+        "To prevent the high residual from harming aquatic life in the receiving water",
+        "To stop the chlorine from corroding the hydrant and drainage infrastructure",
+        "To allow the discharged volume to be measured accurately at the outfall",
+        "To recover chlorine from the discharge so it can be returned to the plant"
+      ],
+      "correctIndex": 0,
+      "explanation": "Chlorine is highly toxic to fish and aquatic invertebrates at concentrations far below those used for disinfection. Discharging superchlorinated water to a watercourse or storm system without neutralizing it can cause an environmental incident, so a dechlorinating agent is applied at the point of discharge.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Discharge dechlorination",
+      "isCalc": "no",
+      "tip": "Chlorine harmless to drink is still lethal to fish. Neutralize before any discharge to the environment."
+    },
+    {
+      "questionNum": 1171,
+      "question": "Why must UV lamp sleeves be cleaned on a regular schedule?",
+      "options": [
+        "Because deposits on the sleeve reduce the UV energy reaching the water",
+        "Because accumulated deposits cause the lamp to overheat and fail early",
+        "Because fouling changes the wavelength that the lamp emits into the water",
+        "Because deposits provide a surface for bacterial regrowth inside the reactor"
+      ],
+      "correctIndex": 0,
+      "explanation": "Mineral scale and biological films on the quartz sleeve absorb and scatter ultraviolet light before it reaches the passing water. The lamp may still be operating correctly while the delivered dose falls below what is required, so sleeves are cleaned mechanically or chemically and intensity is monitored.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "UV maintenance",
+      "isCalc": "no",
+      "tip": "A UV intensity sensor sees through the sleeve, so it detects fouling as well as lamp ageing."
+    },
+    {
+      "questionNum": 1172,
+      "question": "What does UV transmittance describe, and why does it matter operationally?",
+      "options": [
+        "The proportion of lamps currently energised within the reactor assembly",
+        "The rate at which UV intensity declines as a lamp approaches end of life",
+        "How readily UV light passes through the water, which affects delivered dose",
+        "The contact time water spends within the illuminated zone of the reactor"
+      ],
+      "correctIndex": 2,
+      "explanation": "UV transmittance measures how much ultraviolet light passes through the water rather than being absorbed by dissolved organics, iron, or colour. Lower transmittance means less energy reaches organisms further from the lamp, so the reactor must compensate with higher intensity or lower flow to maintain the required dose.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "UV transmittance",
+      "isCalc": "no",
+      "tip": "UV dose depends on intensity, contact time and water clarity. Transmittance is the water quality term."
+    },
+    {
+      "questionNum": 1173,
+      "question": "Why does a chloraminated system periodically convert to free chlorine for a temporary period?",
+      "options": [
+        "To reduce the formation of trihalomethanes during warm summer months",
+        "To lower operating cost by suspending the ammonia feed for a period",
+        "To restore the disinfectant residual lost through normal seasonal decay",
+        "To control nitrification by removing the free ammonia bacteria depend on"
+      ],
+      "correctIndex": 3,
+      "explanation": "A temporary conversion to free chlorine, often called a burn-out, removes the free ammonia that nitrifying bacteria use and applies a stronger oxidant against established biofilm. It is planned carefully because free chlorine increases by-product formation and can release accumulated deposits, generating complaints.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Free chlorine conversion",
+      "isCalc": "no",
+      "tip": "A burn-out is a nitrification control measure, and it needs flushing and customer communication planned around it."
+    },
+    {
+      "questionNum": 1174,
+      "question": "How does an operator know when a granular activated carbon contactor has reached the end of its service life?",
+      "options": [
+        "When headloss through the carbon bed reaches its terminal design value",
+        "When the carbon has been in service for the interval stated by the supplier",
+        "When the target contaminant begins to appear in the contactor effluent",
+        "When the backwash water from the contactor runs clear during washing"
+      ],
+      "correctIndex": 2,
+      "explanation": "Carbon exhausts when its adsorption sites are saturated, which is detected as breakthrough of the target compound in the effluent. Headloss reflects physical solids accumulation and is unrelated to adsorptive capacity, so a bed can be hydraulically clean yet completely spent.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "GAC breakthrough",
+      "isCalc": "no",
+      "tip": "Adsorption capacity and headloss are independent. Monitor the contaminant, not the pressure drop."
+    },
+    {
+      "questionNum": 1175,
+      "question": "Why must filter valves operate in a defined sequence during a backwash cycle?",
+      "options": [
+        "To ensure each valve receives equal operating hours over its service life",
+        "To keep the total backwash duration within the programmed time limit",
+        "To reduce the electrical load imposed by simultaneous valve operation",
+        "To avoid pressure surges and media disturbance from abrupt flow changes"
+      ],
+      "correctIndex": 3,
+      "explanation": "Opening or closing valves out of sequence or too quickly can send a surge through the underdrain, lift and displace media and gravel, or draw the filter box down rapidly. A controlled sequence with timed rates of change protects the bed and the underdrain structure.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash sequencing",
+      "isCalc": "no",
+      "tip": "Most gravel upset and media loss is caused by valves moving too fast, not by the wash rate itself."
+    },
+    {
+      "questionNum": 1176,
+      "question": "What is the principal water quality concern when backwash water is recovered and returned to the head of the plant?",
+      "options": [
+        "It returns concentrated solids and pathogens to the treatment process",
+        "It dilutes the raw water and reduces the effectiveness of the coagulant",
+        "It raises the temperature of the raw water entering the flocculation basin",
+        "It increases the total volume the plant must treat beyond its rated capacity"
+      ],
+      "correctIndex": 0,
+      "explanation": "Backwash water carries the concentrated solids and any pathogens that the filters removed. Returning it untreated recycles that load, and protozoan cysts in particular can accumulate. Recycle streams are therefore equalized, clarified, and returned at a controlled rate rather than in slugs.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Backwash recycle",
+      "isCalc": "no",
+      "tip": "Recycle returns exactly what the filters just removed. Treat and meter it rather than dumping it back."
+    },
+    {
+      "questionNum": 1177,
+      "question": "What distinguishes direct filtration from conventional treatment?",
+      "options": [
+        "Direct filtration applies no coagulant ahead of the filtration stage",
+        "Direct filtration uses membranes in place of granular media filters",
+        "Direct filtration operates without any requirement for disinfection",
+        "Direct filtration omits the sedimentation stage between flocculation and filters"
+      ],
+      "correctIndex": 3,
+      "explanation": "Direct filtration coagulates and flocculates but sends water straight to the filters without a sedimentation stage. It suits consistently low turbidity, low colour sources because the filters must carry the entire solids load, which makes it far less tolerant of raw water quality excursions.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Direct filtration",
+      "isCalc": "no",
+      "tip": "No clarifier means no buffer. Direct filtration plants are highly sensitive to raw water spikes."
+    },
+    {
+      "questionNum": 1178,
+      "question": "A filter is returned to service after media replacement. What must be completed before its water enters the clearwell?",
+      "options": [
+        "The filter must be disinfected, backwashed and filtered to waste until turbidity is acceptable",
+        "The filter must be operated at half its normal rate for a full production day",
+        "The filter must be inspected by a second operator to confirm media depth",
+        "The filter must be run in reverse to settle the gravel support layer evenly"
+      ],
+      "correctIndex": 0,
+      "explanation": "New media is not sterile and carries fines from handling and installation. The bed is disinfected, then backwashed to remove fines and stratify the media, then filtered to waste until effluent turbidity meets the normal operating target. Only then is the filter returned to production.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Return to service",
+      "isCalc": "no",
+      "tip": "New media introduces both fines and contamination. Wash and waste before trusting the effluent."
+    },
+    {
+      "questionNum": 1179,
+      "question": "Why is coagulation pH controlled as tightly as coagulant dose?",
+      "options": [
+        "Because pH determines the solubility of the metal hydroxide that forms floc",
+        "Because pH determines the settling velocity of floc within the clarifier",
+        "Because pH controls the rate at which coagulant dissolves in the mix chamber",
+        "Because pH determines how much alkalinity the coagulant will consume"
+      ],
+      "correctIndex": 0,
+      "explanation": "Aluminium and iron coagulants form insoluble hydroxide floc only within a specific pH band. Outside that band the metal remains partly soluble, floc formation is poor, and residual metal can carry through to the finished water. Dose and pH must be optimised together, which is why jar tests vary both.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Coagulation pH",
+      "isCalc": "no",
+      "tip": "Correct dose at the wrong pH still gives poor coagulation. The two variables are not independent."
+    },
+    {
+      "questionNum": 1180,
+      "question": "The rapid mixer fails while coagulant feed continues. What effect should the operator expect?",
+      "options": [
+        "Floc will form more slowly but reach a larger final size in the basin",
+        "Coagulant demand will fall because the chemical is consumed more slowly",
+        "Settled water pH will rise because less coagulant reaches the raw water",
+        "Coagulant will be poorly dispersed, producing weak floc and higher settled turbidity"
+      ],
+      "correctIndex": 3,
+      "explanation": "Coagulant hydrolysis is essentially instantaneous, so without vigorous dispersion the chemical reacts in localised pockets at high concentration while much of the water receives none. The result is uneven destabilization, weak or absent floc, and a sharp deterioration in settled and filtered quality.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Rapid mix failure",
+      "isCalc": "no",
+      "tip": "Rapid mix failure looks like an underdose even though the full chemical quantity is being fed."
+    },
+    {
+      "questionNum": 1181,
+      "question": "Why is flocculation commonly arranged in stages with decreasing mixing intensity?",
+      "options": [
+        "To reduce the total energy consumed by the flocculation equipment",
+        "To allow each stage to be taken out of service for maintenance in turn",
+        "To build many small collisions first, then grow floc without shearing it",
+        "To compensate for the reduction in water velocity along the basin length"
+      ],
+      "correctIndex": 2,
+      "explanation": "Higher energy in the first stage promotes frequent particle collisions while floc is still small and robust. As floc grows it becomes fragile, so mixing intensity is tapered downward to allow further growth without breaking apart what has already formed.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Tapered flocculation",
+      "isCalc": "no",
+      "tip": "Tapered energy: build collisions early, protect the floc later."
+    },
+    {
+      "questionNum": 1182,
+      "question": "What is an operational advantage of polyaluminium chloride compared with conventional alum?",
+      "options": [
+        "It consumes less alkalinity, so pH depression is smaller for the same treatment",
+        "It performs better in warm water than alum but poorly in cold conditions",
+        "It requires no rapid mixing because it disperses spontaneously in water",
+        "It removes hardness in addition to turbidity and natural organic matter"
+      ],
+      "correctIndex": 0,
+      "explanation": "Polyaluminium chloride is partially pre-hydrolysed, so it consumes less alkalinity and depresses pH less than alum for equivalent coagulation. It often performs better in cold water and produces less sludge, though it typically costs more per unit of treatment.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Coagulant comparison",
+      "isCalc": "no",
+      "tip": "Pre-hydrolysed coagulants are useful in poorly buffered or cold waters where alum struggles."
+    },
+    {
+      "questionNum": 1183,
+      "question": "An operator observes floc in the flocculation basin that is small, dispersed and slow to form. What should be checked first?",
+      "options": [
+        "The sludge withdrawal rate from the downstream sedimentation basin",
+        "The effluent weir level across the length of the sedimentation basin",
+        "The backwash frequency currently applied to the downstream filters",
+        "The coagulant dose and the coagulation pH against jar test results"
+      ],
+      "correctIndex": 3,
+      "explanation": "Floc appearance is a direct visual indicator of coagulation performance. Small, dispersed floc that will not grow points to inadequate destabilization, which is governed by coagulant dose and coagulation pH. Downstream settings cannot compensate for a coagulation problem.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Floc observation",
+      "isCalc": "no",
+      "tip": "Experienced operators read floc size, shape and settling speed as a real-time process indicator."
+    },
+    {
+      "questionNum": 1184,
+      "question": "What does the solids loading rate on a clarifier describe?",
+      "options": [
+        "The volume of sludge withdrawn from the basin over a given period",
+        "The proportion of influent solids that are captured within the basin",
+        "The depth of the sludge blanket maintained on the basin floor",
+        "The mass of solids applied per unit of basin surface area per day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Solids loading rate expresses the mass of suspended solids applied per unit of surface area per unit time. Where surface overflow rate governs whether particles have time to settle, solids loading governs whether the basin and its collection equipment can physically handle the mass of sludge produced.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Solids loading",
+      "isCalc": "no",
+      "tip": "Surface overflow rate is a hydraulic limit; solids loading is a mass limit. Either can control."
+    },
+    {
+      "questionNum": 1185,
+      "question": "Why are sedimentation basin effluent launders cleaned periodically?",
+      "options": [
+        "To remove algae and deposits that affect water quality and weir flow distribution",
+        "To restore the design detention time that deposits have gradually reduced",
+        "To prevent the launders from corroding through prolonged submergence",
+        "To confirm the launder supports remain structurally sound under load"
+      ],
+      "correctIndex": 0,
+      "explanation": "Launders exposed to light grow algae, and solids accumulate along the weir plates. That growth releases material into otherwise settled water and disturbs even flow distribution over the weir, which can cause localised high velocity and draw floc upward from the settling zone.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Launder maintenance",
+      "isCalc": "no",
+      "tip": "Uneven weirs create local high velocity. Level weirs and clean launders protect settled quality."
+    },
+    {
+      "questionNum": 1186,
+      "question": "What is the function of an altitude valve on a distribution storage reservoir?",
+      "options": [
+        "It maintains constant pressure at the outlet as the reservoir level changes",
+        "It regulates the rate at which the reservoir can be drawn down during demand",
+        "It releases accumulated air from the high point of the reservoir inlet main",
+        "It closes to prevent the reservoir from overflowing once it reaches full level"
+      ],
+      "correctIndex": 3,
+      "explanation": "An altitude valve senses reservoir level and closes the inlet when the tank reaches its full level, preventing overflow, while allowing flow out of the tank when the system draws on storage. It protects against wasting treated water and against the flooding an overflow would cause.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Altitude valves",
+      "isCalc": "no",
+      "tip": "An altitude valve stops filling; it does not control pressure. That is a pressure reducing valve's job."
+    },
+    {
+      "questionNum": 1187,
+      "question": "Why are air release valves installed at high points along a transmission main?",
+      "options": [
+        "To allow the main to be drained for maintenance from its highest elevation",
+        "To provide access points for inserting inspection equipment into the main",
+        "To vent accumulated air that would otherwise restrict flow and cause surges",
+        "To relieve excess pressure that develops when a downstream valve closes"
+      ],
+      "correctIndex": 2,
+      "explanation": "Air comes out of solution and collects at high points, forming pockets that reduce the effective cross-section, increase headloss, and can cause damaging surges when they move or collapse. Air release valves vent that accumulation continuously while the main remains under pressure.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Air valves",
+      "isCalc": "no",
+      "tip": "Trapped air can throttle a main severely. Unexplained headloss on a transmission main is often an air pocket."
+    },
+    {
+      "questionNum": 1188,
+      "question": "Why is a water meter's accuracy of operational interest beyond billing?",
+      "options": [
+        "Because meter readings are used to calculate the chlorine dose applied",
+        "Because meters must be verified before a service connection can be approved",
+        "Because meter accuracy determines the pressure available at the property",
+        "Because inaccurate meters distort the water balance used to detect leakage"
+      ],
+      "correctIndex": 3,
+      "explanation": "Comparing water produced against water metered is the basic method for identifying unaccounted-for water. Meters that under-register with age make real losses appear larger and can mask or exaggerate leakage, so meter accuracy testing and replacement programs support loss control as well as revenue.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Meter accuracy",
+      "isCalc": "no",
+      "tip": "Meters almost always under-register as they age, so apparent losses grow even if the network is sound."
+    },
+    {
+      "questionNum": 1189,
+      "question": "What should be confirmed before a distribution storage reservoir is returned to service after an internal inspection?",
+      "options": [
+        "That the reservoir has been disinfected and bacteriological results are acceptable",
+        "That the reservoir has been refilled completely to its normal operating level",
+        "That the inspection report has been reviewed and filed by the supervisor",
+        "That the reservoir hatches have been resealed and the vents left unobstructed"
+      ],
+      "correctIndex": 0,
+      "explanation": "An entered reservoir has been exposed to people, equipment and the atmosphere, so it is treated as contaminated. It is disinfected, drained or neutralized as appropriate, refilled, and sampled, with acceptable bacteriological results confirmed before the stored water is allowed to reach consumers.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Reservoir return to service",
+      "isCalc": "no",
+      "tip": "Any structure people have entered is contaminated until sampling proves otherwise."
+    },
+    {
+      "questionNum": 1190,
+      "question": "Why does a pressure reducing valve require periodic inspection and adjustment?",
+      "options": [
+        "Because the valve consumes energy that must be measured for reporting",
+        "Because the valve must be resized as demand in the zone increases over time",
+        "Because the valve accumulates air that must be vented from its bonnet",
+        "Because seat wear and debris cause the downstream pressure setting to drift"
+      ],
+      "correctIndex": 3,
+      "explanation": "Pressure reducing valves control by throttling against a seat, and that seat wears while debris lodges in the pilot system. The delivered downstream pressure then drifts from its setting, which can leave a zone under-pressured or expose it to pressures that increase leakage and main breaks.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Pressure reducing valves",
+      "isCalc": "no",
+      "tip": "A drifting PRV is a common hidden cause of both low-pressure complaints and elevated break rates."
+    },
+    {
+      "questionNum": 1191,
+      "question": "What is the objective of a source water protection program?",
+      "options": [
+        "To increase the volume of water that can be withdrawn from the source",
+        "To establish the treatment processes each water system is required to install",
+        "To monitor the source frequently enough to detect any contamination event",
+        "To reduce contamination reaching the source so treatment is a second barrier"
+      ],
+      "correctIndex": 3,
+      "explanation": "Source protection manages activities in the catchment or wellhead area so that contaminants are prevented from reaching the water in the first place. It is the first barrier in a multi-barrier approach, reducing the load and the risk that treatment must handle rather than replacing treatment.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Source protection",
+      "isCalc": "no",
+      "tip": "Prevention at the source is the cheapest barrier and the only one that works when treatment fails."
+    },
+    {
+      "questionNum": 1192,
+      "question": "Why does spring runoff present a particular challenge to a surface water plant?",
+      "options": [
+        "Turbidity, organic matter and microbial load can rise rapidly together",
+        "Water temperature rises quickly, which accelerates disinfectant decay",
+        "Source water alkalinity increases sharply, raising the coagulant demand",
+        "Reduced river flow concentrates contaminants in the remaining volume"
+      ],
+      "correctIndex": 0,
+      "explanation": "Snowmelt and rainfall wash soil, organic material and faecal contamination from the catchment into the source over a short period. Turbidity, natural organic matter and pathogen load can all rise together while the water remains cold, which is the least favourable condition for coagulation and disinfection.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Seasonal source variation",
+      "isCalc": "no",
+      "tip": "Cold water plus high turbidity plus high organic load is the hardest combination a plant faces."
+    },
+    {
+      "questionNum": 1193,
+      "question": "During extended drought, source water levels fall substantially. What treatment consequence should the operator anticipate?",
+      "options": [
+        "Contaminants become more concentrated as the diluting volume decreases",
+        "Raw water turbidity rises sharply because of increased bank erosion",
+        "Disinfection becomes more effective because contact time is extended",
+        "Coagulant demand falls because suspended solids settle in the low flow"
+      ],
+      "correctIndex": 0,
+      "explanation": "Lower flow means less dilution, so dissolved constituents, nutrients and any discharges to the watercourse are present at higher concentration. Warmer, more stagnant water also favours algal growth, and the intake may sit closer to bottom sediments, all of which increase the treatment challenge.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Drought conditions",
+      "isCalc": "no",
+      "tip": "Less water means less dilution. Drought usually worsens raw water quality as well as quantity."
+    },
+    {
+      "questionNum": 1194,
+      "question": "What is the purpose of a source water assessment for a drinking water system?",
+      "options": [
+        "To determine the maximum volume that may be withdrawn each year",
+        "To confirm the source meets finished water standards before treatment",
+        "To identify potential contaminant sources and the pathways to the intake",
+        "To establish the classification and staffing level required at the facility"
+      ],
+      "correctIndex": 2,
+      "explanation": "A source water assessment maps the area contributing water to the intake or well, identifies activities within it that could release contaminants, and evaluates how readily those contaminants could reach the supply. The findings direct protection measures, monitoring priorities, and contingency planning.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Source assessment",
+      "isCalc": "no",
+      "tip": "The assessment identifies threats and pathways. It is the evidence base for a protection plan."
+    },
+    {
+      "questionNum": 1195,
+      "question": "Why does a plant maintain a contingency plan for loss of a treatment chemical supply?",
+      "options": [
+        "Because chemical suppliers require a documented plan before contracting",
+        "Because chemical costs fluctuate and alternatives may become economical",
+        "Because storage tanks must be emptied periodically for internal inspection",
+        "Because a barrier that cannot be maintained is a loss of treatment capability"
+      ],
+      "correctIndex": 3,
+      "explanation": "If a coagulant or disinfectant cannot be fed, the corresponding barrier is lost and the plant may be unable to produce safe water. Planning identifies alternative products and suppliers, emergency delivery arrangements, and the reduced production or shutdown decision points before the situation arises.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Supply contingency",
+      "isCalc": "no",
+      "tip": "Know in advance which alternative chemical is acceptable and what feed changes it would require."
+    },
+    {
+      "questionNum": 1196,
+      "question": "Why are physical and cyber security measures relevant to drinking water system operation?",
+      "options": [
+        "Because insurers require documented security controls at treatment facilities",
+        "Because security systems provide the access records needed for payroll",
+        "Because restricted access reduces the wear on plant equipment over time",
+        "Because interference with process controls or chemicals could harm consumers"
+      ],
+      "correctIndex": 3,
+      "explanation": "A drinking water system is critical infrastructure. Unauthorized physical access to chemical storage, or manipulation of SCADA and control systems, could disrupt treatment or dose chemicals unsafely. Access control, network segregation, and monitoring protect the barriers that keep the supply safe.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Security",
+      "isCalc": "no",
+      "tip": "Control system security is a water quality control, not only an information technology concern."
+    },
+    {
+      "questionNum": 1197,
+      "question": "What is the purpose of a mutual aid arrangement between neighbouring water systems?",
+      "options": [
+        "To share equipment, expertise and staff during an emergency at either system",
+        "To combine chemical purchases so that both systems obtain a lower unit price",
+        "To allow one system to operate the other during periods of staff shortage",
+        "To standardize the treatment processes used across a geographic region"
+      ],
+      "correctIndex": 0,
+      "explanation": "Emergencies frequently exceed the resources of a single utility. A mutual aid arrangement establishes in advance how neighbouring systems will share pumps, generators, laboratory capacity, certified operators, and interconnections, so the response is not delayed by negotiating terms during the event.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Mutual aid",
+      "isCalc": "no",
+      "tip": "Arrangements agreed before an emergency work; those negotiated during one rarely do."
+    },
+    {
+      "questionNum": 1198,
+      "question": "Why is plant energy consumption tracked against water produced rather than in total?",
+      "options": [
+        "Because energy suppliers bill according to consumption per unit produced",
+        "Because total consumption cannot be measured accurately at a treatment plant",
+        "Because energy per unit volume reveals efficiency changes that totals conceal",
+        "Because energy use must be reported alongside chemical use in annual returns"
+      ],
+      "correctIndex": 2,
+      "explanation": "Total consumption rises and falls with production, so it cannot distinguish a busy month from a developing inefficiency. Energy per megalitre normalises for output, exposing a fouling pump, a failing motor, or an unnecessary recirculation that would otherwise be hidden within seasonal variation.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Energy management",
+      "isCalc": "no",
+      "tip": "Normalising by production turns a raw number into a performance indicator."
+    },
+    {
+      "questionNum": 1199,
+      "question": "Why is a lone worker procedure necessary for operators attending remote sites?",
+      "options": [
+        "Because remote sites usually require two operators to complete the work",
+        "Because remote sites are more likely to be subject to unauthorized entry",
+        "Because travel time to remote sites must be recorded for scheduling purposes",
+        "Because an injured worker alone may be unable to summon any assistance"
+      ],
+      "correctIndex": 3,
+      "explanation": "A worker who is incapacitated by a fall, a chemical exposure, or a medical event cannot call for help, and at a remote station may not be missed for hours. Check-in schedules, monitored communication devices, and defined escalation ensure that a failure to respond triggers a search promptly.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Working alone",
+      "isCalc": "no",
+      "tip": "The control is the check-in that is actively monitored, and the escalation when it is missed."
+    },
+    {
+      "questionNum": 1200,
+      "question": "A crew repairs a watermain in a live traffic lane. What is the primary control protecting the workers?",
+      "options": [
+        "High visibility clothing worn by every member of the working crew",
+        "A designated crew member watching for approaching vehicles at all times",
+        "A traffic control plan that separates traffic from the work area physically",
+        "Warning lights fitted to the work vehicles parked at the excavation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Personal protective equipment and warning devices help drivers notice the work, but they do not stop a vehicle entering it. A traffic control plan using signage, tapers, lane closures and physical barriers creates separation between traffic and workers, which is the control that actually prevents the contact.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Traffic control",
+      "isCalc": "no",
+      "tip": "Visibility helps drivers see you. Only physical separation stops a vehicle reaching you."
+    }
+  ]
+}

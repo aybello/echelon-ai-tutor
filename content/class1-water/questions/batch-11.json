@@ -1,0 +1,847 @@
+{
+  "batch": "11",
+  "title": "Class 1 Water Treatment — batch 11 (questions 1401–1440)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1401,
+      "question": "The clearwell level is falling steadily although the plant is producing at its normal rate and demand is unchanged. What should be investigated?",
+      "options": [
+        "Whether the finished water pumps are running faster than normal",
+        "Whether a leak, open drain or unrecorded withdrawal exists downstream",
+        "Whether the level instrument requires recalibration against a sight glass",
+        "Whether the raw water intake screens have become partially blocked"
+      ],
+      "correctIndex": 1,
+      "explanation": "If production matches normal and metered demand has not risen, water leaving the clearwell exceeds what is accounted for. An open drain or overflow, a large leak, a reservoir filling unnoticed, or an unrecorded withdrawal are the usual explanations, and the instrument is verified in parallel.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Water balance troubleshooting",
+      "isCalc": "no",
+      "tip": "Water always balances. When it does not, something is leaving that is not being measured."
+    },
+    {
+      "questionNum": 1402,
+      "question": "An operator notices the coagulant dose has been increased repeatedly over several shifts without the settled turbidity improving. What should be considered?",
+      "options": [
+        "The dose should be increased further until settled turbidity responds",
+        "Something other than dose is limiting performance, such as pH or mixing",
+        "The settled turbidity instrument is faulty and should be taken out of service",
+        "The raw water is too cold for coagulation and treatment should be suspended"
+      ],
+      "correctIndex": 1,
+      "explanation": "When more chemical produces no improvement, dose is not the limiting variable. Coagulation pH outside the effective range, failed rapid mixing, a degraded coagulant, or a feed that is not actually delivering are all consistent with the pattern, and each requires a different correction from simply adding more.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Diminishing response",
+      "isCalc": "no",
+      "tip": "If more chemical is not working, stop adding it and find the variable that actually controls the process."
+    },
+    {
+      "questionNum": 1403,
+      "question": "Two operators disagree about whether a filter should be backwashed. One cites turbidity nearing the action level, the other cites headloss still well below terminal. What is the correct basis for the decision?",
+      "options": [
+        "Headloss, because it reflects the physical condition of the filter bed",
+        "Water quality, because turbidity governs the pathogen barrier",
+        "Run time, because the filter should complete its scheduled cycle",
+        "Plant flow, because backwashing reduces the available production capacity"
+      ],
+      "correctIndex": 1,
+      "explanation": "A filter run ends on whichever criterion is reached first, and water quality takes precedence because filtered turbidity is the surrogate for pathogen removal. Continuing to operate a filter that is approaching a turbidity action level in order to reach terminal headloss inverts that priority.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash decision",
+      "isCalc": "no",
+      "tip": "Quality first. Headloss and run time are efficiency measures, not safety measures."
+    },
+    {
+      "questionNum": 1404,
+      "question": "A plant's finished water meets all quality targets, but CT records show the required value was not achieved for a two hour period overnight. How should this be treated?",
+      "options": [
+        "As acceptable, since the finished water quality results were satisfactory",
+        "As a treatment deficiency requiring investigation and required reporting",
+        "As a recording error, since quality results confirm treatment was adequate",
+        "As acceptable if the shortfall was less than ten percent of the requirement"
+      ],
+      "correctIndex": 1,
+      "explanation": "CT is the demonstration that pathogen inactivation was achieved. Turbidity and residual results do not substitute for it, because the organisms of concern would not be detected by routine sampling. A CT shortfall is a failure of a treatment barrier and follows the defined reporting and corrective action process.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "CT compliance failure",
+      "isCalc": "no",
+      "tip": "Good sample results do not retrospectively make an unmet CT acceptable. They measure different things."
+    },
+    {
+      "questionNum": 1405,
+      "question": "During a main break repair the crew reports that the excavation has filled with water and the open pipe end is submerged. What is the water quality implication?",
+      "options": [
+        "The pipe interior is contaminated and requires disinfection before service",
+        "The water in the excavation will be flushed clear when service resumes",
+        "The submerged pipe end prevents contamination from entering the main",
+        "The excavation water reduces the disinfectant demand of the repaired section"
+      ],
+      "correctIndex": 0,
+      "explanation": "A submerged open pipe end allows excavation water, which contains soil, groundwater and whatever else has entered the trench, to flow directly into the main. The affected section must be treated as contaminated, then disinfected, flushed and sampled before returning to service.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Repair contamination",
+      "isCalc": "no",
+      "tip": "Keep excavations dewatered and pipe ends capped. A submerged open end is a direct contamination path."
+    },
+    {
+      "questionNum": 1406,
+      "question": "Why should an operator be cautious about acting on a single unusual instrument reading?",
+      "options": [
+        "Because instruments are not accurate enough for operational decisions",
+        "Because a single reading may reflect an instrument fault rather than the process",
+        "Because process changes must always be approved by a supervisor first",
+        "Because instrument readings are only valid when confirmed by the laboratory"
+      ],
+      "correctIndex": 1,
+      "explanation": "A single anomalous value can come from a bubble in a sample line, electrical interference, a fouled sensor, or a communication error. Confirming it against a second instrument, a manual measurement, or a related parameter distinguishes a genuine process change from an instrument problem before a correction is made.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Reading verification",
+      "isCalc": "no",
+      "tip": "Verify before acting, but do not delay protective action when the reading indicates a safety risk."
+    },
+    {
+      "questionNum": 1407,
+      "question": "A plant operates well below its rated capacity for an extended period. What water quality issue can this create?",
+      "options": [
+        "Increased water age in basins and clearwell, with loss of residual",
+        "Increased coagulant demand because of the reduced flow velocity",
+        "Reduced filter run lengths because of the lower loading rate",
+        "Increased turbidity because settling requires a minimum throughput"
+      ],
+      "correctIndex": 0,
+      "explanation": "Low flow means long detention throughout the plant and in storage. Disinfectant residual decays over that extended time, and warm, slow-moving water in basins and reservoirs can support biological growth. Managing turnover, and sometimes reducing storage in service, addresses it.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Low flow operation",
+      "isCalc": "no",
+      "tip": "Oversized plants and reservoirs create water age problems that undersized ones never have."
+    },
+    {
+      "questionNum": 1408,
+      "question": "An operator is under pressure to return a filter to service before filter-to-waste turbidity has reached the normal target. What is the appropriate response?",
+      "options": [
+        "Return the filter to service and increase the chlorine dose to compensate",
+        "Return the filter to service and monitor the combined effluent closely",
+        "Keep the filter on waste until turbidity meets the target, and report the constraint",
+        "Return the filter to service at a reduced rate until turbidity improves"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ripening water carries the particles most likely to shield pathogens, and additional chlorine does not compensate for a physical removal shortfall, particularly for chlorine-resistant organisms. The correct action is to hold the filter on waste and communicate the capacity constraint so that a supply decision can be made properly.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Operating under pressure",
+      "isCalc": "no",
+      "tip": "Chemical disinfection cannot substitute for the physical barrier. Report the constraint rather than absorbing it."
+    },
+    {
+      "questionNum": 1409,
+      "question": "An instrument reads 4.8 mg/L when the true value is 5.0 mg/L. What is the percent error?",
+      "options": [
+        "0.2 percent",
+        "2.0 percent",
+        "4.0 percent",
+        "4.8 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Percent error is the difference divided by the true value: (5.0 − 4.8) ÷ 5.0 × 100 = 4.0 percent.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Percent error",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Difference",
+          "c": "5.0 − 4.8 = 0.2 mg/L"
+        },
+        {
+          "l": "Percentage",
+          "c": "0.2 ÷ 5.0 × 100 = 4.0%"
+        },
+        {
+          "l": "Note",
+          "c": "Divide by the true or reference value, not by the reading."
+        }
+      ],
+      "tip": "Dividing by the measured value instead of the true value is the usual error here."
+    },
+    {
+      "questionNum": 1410,
+      "question": "A conical sludge hopper has a top diameter of 6 m and a depth of 4 m. What volume does it hold?",
+      "options": [
+        "18.8 m³",
+        "37.7 m³",
+        "75.4 m³",
+        "113.1 m³"
+      ],
+      "correctIndex": 1,
+      "explanation": "The volume of a cone is one third of the base area times the height. The radius is 3 m, so the area is π × 3² = 28.3 m², and the volume is 28.3 × 4 ÷ 3 = 37.7 m³.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Hopper volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Radius",
+          "c": "6 m ÷ 2 = 3 m"
+        },
+        {
+          "l": "Base area",
+          "c": "π × 3² = 28.3 m²"
+        },
+        {
+          "l": "Volume",
+          "c": "28.3 × 4 ÷ 3 = 37.7 m³"
+        }
+      ],
+      "tip": "A cone holds one third of the cylinder that would enclose it."
+    },
+    {
+      "questionNum": 1411,
+      "question": "A plant used 400 kg of coagulant over eight days. What is the average daily usage?",
+      "options": [
+        "40 kg/d",
+        "50 kg/d",
+        "60 kg/d",
+        "80 kg/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dividing total consumption by the number of days gives 400 ÷ 8 = 50 kg/d.",
+      "difficulty": "easy",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Average usage",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Divide",
+          "c": "400 kg ÷ 8 days = 50 kg/d"
+        },
+        {
+          "l": "Use",
+          "c": "Compare against expected usage from dose and flow to detect feed problems."
+        }
+      ],
+      "tip": "Reconcile measured tank usage against calculated demand. A gap indicates a feed or leak problem."
+    },
+    {
+      "questionNum": 1412,
+      "question": "A chlorine cylinder loses 24 kg over two days while the plant treats 8 ML/d. What dose is being applied?",
+      "options": [
+        "1.5 mg/L",
+        "3.0 mg/L",
+        "6.0 mg/L",
+        "12.0 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "The feed rate is 24 kg ÷ 2 days = 12 kg/d. Dividing by the flow gives 12 ÷ 8 = 1.5 mg/L.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Dose from cylinder loss",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Daily feed",
+          "c": "24 kg ÷ 2 d = 12 kg/d"
+        },
+        {
+          "l": "Dose",
+          "c": "12 kg/d ÷ 8 ML/d = 1.5 mg/L"
+        },
+        {
+          "l": "Use",
+          "c": "Cylinder weight loss independently verifies the chlorinator setting."
+        }
+      ],
+      "tip": "Weighing cylinders is the most reliable check that a gas chlorinator is feeding what it indicates."
+    },
+    {
+      "questionNum": 1413,
+      "question": "A reservoir with a capacity of 2000 m³ currently holds 1400 m³. What percentage full is it?",
+      "options": [
+        "30 percent",
+        "60 percent",
+        "70 percent",
+        "140 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Current volume divided by capacity gives 1400 ÷ 2000 × 100 = 70 percent.",
+      "difficulty": "easy",
+      "module": "Water Distribution",
+      "topic": "Storage level",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Divide",
+          "c": "1400 m³ ÷ 2000 m³"
+        },
+        {
+          "l": "Percentage",
+          "c": "0.70 × 100 = 70 percent"
+        }
+      ],
+      "tip": "Usable storage excludes dead storage below the outlet and any dedicated fire reserve."
+    },
+    {
+      "questionNum": 1414,
+      "question": "A pressure gauge reads 60 m of head. What is this in kilopascals?",
+      "options": [
+        "60 kPa",
+        "412 kPa",
+        "588 kPa",
+        "600 kPa"
+      ],
+      "correctIndex": 2,
+      "explanation": "Each metre of water column is approximately 9.81 kPa, so 60 × 9.81 = 588 kPa.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Head to pressure",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Factor",
+          "c": "1 m of water ≈ 9.81 kPa"
+        },
+        {
+          "l": "Multiply",
+          "c": "60 m × 9.81 = 588 kPa"
+        }
+      ],
+      "tip": "The 600 kPa distractor comes from using 10 kPa per metre, which is a field approximation only."
+    },
+    {
+      "questionNum": 1415,
+      "question": "A plant must treat 15 ML/d at a filtration rate of 120 m³/(m²·d). What total filter area is required?",
+      "options": [
+        "80 m²",
+        "125 m²",
+        "180 m²",
+        "1250 m²"
+      ],
+      "correctIndex": 1,
+      "explanation": "Converting flow to 15 000 m³/d and dividing by the loading rate gives 15 000 ÷ 120 = 125 m² of filter area.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter area required",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert flow",
+          "c": "15 ML/d = 15 000 m³/d"
+        },
+        {
+          "l": "Divide",
+          "c": "15 000 ÷ 120 m³/(m²·d) = 125 m²"
+        },
+        {
+          "l": "In practice",
+          "c": "Additional area is provided so the rate is met with one filter offline."
+        }
+      ],
+      "tip": "Design area is calculated with a filter out of service, so installed area exceeds the theoretical minimum."
+    },
+    {
+      "questionNum": 1416,
+      "question": "A basin holding 800 m³ is drained at 25 L/s. Approximately how long will it take to empty?",
+      "options": [
+        "5.6 hours",
+        "8.9 hours",
+        "13.3 hours",
+        "32.0 hours"
+      ],
+      "correctIndex": 1,
+      "explanation": "25 L/s is 0.025 m³/s. Dividing the volume gives 800 ÷ 0.025 = 32 000 seconds, which is about 8.9 hours.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Drain time",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert",
+          "c": "25 L/s = 0.025 m³/s"
+        },
+        {
+          "l": "Time",
+          "c": "800 ÷ 0.025 = 32 000 s"
+        },
+        {
+          "l": "To hours",
+          "c": "32 000 ÷ 3600 = 8.9 hours"
+        }
+      ],
+      "tip": "Gravity drainage slows as level falls, so actual time usually exceeds this simple estimate."
+    },
+    {
+      "questionNum": 1417,
+      "question": "A filter is backwashed every 36 hours instead of every 24 hours after an improvement. If each wash uses 110 m³, how much backwash water is saved per week?",
+      "options": [
+        "110 m³",
+        "257 m³",
+        "330 m³",
+        "770 m³"
+      ],
+      "correctIndex": 1,
+      "explanation": "At 24 hours the filter is washed 7 times per week; at 36 hours it is washed 168 ÷ 36 = 4.67 times. The saving is 2.33 washes × 110 m³, which is about 257 m³ per week.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Backwash saving",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Washes before",
+          "c": "168 h ÷ 24 h = 7 per week"
+        },
+        {
+          "l": "Washes after",
+          "c": "168 h ÷ 36 h = 4.67 per week"
+        },
+        {
+          "l": "Difference",
+          "c": "7 − 4.67 = 2.33 washes"
+        },
+        {
+          "l": "Saving",
+          "c": "2.33 × 110 m³ ≈ 257 m³/week"
+        }
+      ],
+      "tip": "Longer filter runs save both backwash water and the energy used to produce it."
+    },
+    {
+      "questionNum": 1418,
+      "question": "A plant produces 6 ML/d and recycles 300 m³/d of backwash water to the head of the plant. What percentage of the raw water flow is recycle?",
+      "options": [
+        "0.5 percent",
+        "5.0 percent",
+        "20.0 percent",
+        "50.0 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Converting production to 6000 m³/d, the recycle stream is 300 ÷ 6000 × 100 = 5.0 percent of plant flow.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Recycle proportion",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert",
+          "c": "6 ML/d = 6000 m³/d"
+        },
+        {
+          "l": "Percentage",
+          "c": "300 ÷ 6000 × 100 = 5.0%"
+        },
+        {
+          "l": "Note",
+          "c": "Recycle is returned at a steady rate, not as a slug, to avoid loading spikes."
+        }
+      ],
+      "tip": "A recycle stream returned in slugs can overwhelm coagulation even when its daily average is small."
+    },
+    {
+      "questionNum": 1419,
+      "question": "A pump station has three identical pumps each delivering 35 L/s. What is the total output with two running?",
+      "options": [
+        "35 L/s",
+        "70 L/s",
+        "105 L/s",
+        "17.5 L/s"
+      ],
+      "correctIndex": 1,
+      "explanation": "Two identical pumps operating in parallel deliver 2 × 35 = 70 L/s, assuming system head does not change appreciably.",
+      "difficulty": "easy",
+      "module": "Pumps & Hydraulics",
+      "topic": "Parallel pumping",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Add",
+          "c": "35 L/s + 35 L/s = 70 L/s"
+        },
+        {
+          "l": "Caution",
+          "c": "Parallel pumps rarely give exactly double, because head rises with total flow."
+        }
+      ],
+      "tip": "Parallel adds flow, series adds head. Neither is exactly additive once system head is considered."
+    },
+    {
+      "questionNum": 1420,
+      "question": "A jar test uses 2 L jars and 4 mL of a coagulant solution containing 10 mg of chemical per millilitre. What dose does this represent?",
+      "options": [
+        "8 mg/L",
+        "20 mg/L",
+        "40 mg/L",
+        "80 mg/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "The chemical added is 4 mL × 10 mg/mL = 40 mg. Dividing by the 2 L jar volume gives a dose of 20 mg/L.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Jar test dose",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Chemical added",
+          "c": "4 mL × 10 mg/mL = 40 mg"
+        },
+        {
+          "l": "Dose",
+          "c": "40 mg ÷ 2 L = 20 mg/L"
+        },
+        {
+          "l": "Check",
+          "c": "The 40 distractor is the mass added, not the concentration."
+        }
+      ],
+      "tip": "Convert the volume of stock added into mass, then divide by jar volume. Do not use volume ratios directly."
+    },
+    {
+      "questionNum": 1421,
+      "question": "What causes water hammer in a distribution system?",
+      "options": [
+        "A rapid change in flow velocity generating a travelling pressure wave",
+        "Air accumulating at high points and compressing under system pressure",
+        "Excessive pump speed producing turbulence in the discharge line",
+        "Thermal expansion of water within a closed section of main"
+      ],
+      "correctIndex": 0,
+      "explanation": "Water has mass and momentum. When a valve closes quickly or a pump stops abruptly, that momentum is converted into a pressure wave that travels along the pipeline and reflects from boundaries. The resulting pressures can far exceed normal operating pressure and break mains or fittings.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Water hammer",
+      "isCalc": "no",
+      "tip": "The faster the velocity change, the larger the surge. Slow valve operation is the simplest control."
+    },
+    {
+      "questionNum": 1422,
+      "question": "What is the function of a surge tank or air chamber on a pumping main?",
+      "options": [
+        "To store water so the pump can start against a reduced head",
+        "To absorb and cushion pressure transients when flow changes suddenly",
+        "To remove dissolved air from the water before it enters the main",
+        "To maintain a constant pressure at the discharge of the pump station"
+      ],
+      "correctIndex": 1,
+      "explanation": "A surge vessel provides a compressible volume that accepts water when a pressure wave arrives and returns it as pressure falls. That cushioning limits both the high pressure peak and the low pressure trough that follows a pump trip, protecting the pipeline from damage and from column separation.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Surge protection",
+      "isCalc": "no",
+      "tip": "The negative pressure wave after a pump trip is often more damaging than the initial high pressure."
+    },
+    {
+      "questionNum": 1423,
+      "question": "Why is a pump control valve sometimes used to open and close slowly as a pump starts and stops?",
+      "options": [
+        "To allow the pump to reach full speed before flow begins moving",
+        "To reduce the electrical current the motor draws during starting",
+        "To change flow gradually so surge pressures are not generated",
+        "To prevent air from entering the pump casing during shutdown"
+      ],
+      "correctIndex": 2,
+      "explanation": "A pump starting or stopping instantly changes the velocity in the main, which generates surge. A control valve that strokes slowly, coordinated with the pump, makes the velocity change gradual so the pressure wave never develops to a damaging magnitude.",
+      "difficulty": "hard",
+      "module": "Pumps & Hydraulics",
+      "topic": "Pump control valves",
+      "isCalc": "no",
+      "tip": "Controlling the rate of change is the general principle behind all surge mitigation."
+    },
+    {
+      "questionNum": 1424,
+      "question": "Why is pH adjustment commonly used as a corrosion control measure?",
+      "options": [
+        "Raising pH reduces the solubility of lead and copper at the pipe wall",
+        "Raising pH increases the disinfectant residual available in the system",
+        "Raising pH dissolves existing scale so fresh metal can passivate",
+        "Raising pH increases water hardness, which coats the interior of pipes"
+      ],
+      "correctIndex": 0,
+      "explanation": "Metal release from pipes and fittings is strongly pH dependent. Raising pH, usually with alkalinity adjustment, lowers the solubility of lead and copper compounds and favours the formation of a stable protective film, which reduces the concentration reaching consumers.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "pH corrosion control",
+      "isCalc": "no",
+      "tip": "Corrosion control changes must be gradual. A rapid shift can destabilise existing pipe scale."
+    },
+    {
+      "questionNum": 1425,
+      "question": "Why must a change to corrosion control treatment be introduced gradually and monitored closely?",
+      "options": [
+        "Because the chemical feed equipment requires time to stabilise its output",
+        "Because rapid change can destabilise existing scale and release metals",
+        "Because regulations require a minimum period between treatment changes",
+        "Because operators need time to recalibrate the pH monitoring instruments"
+      ],
+      "correctIndex": 1,
+      "explanation": "Protective scales built up over decades are in equilibrium with the current water chemistry. A sudden change in pH, alkalinity or orthophosphate can dissolve or disrupt that layer, temporarily releasing far more metal than before the change. Gradual adjustment with tap monitoring manages that risk.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "Treatment change management",
+      "isCalc": "no",
+      "tip": "The most dangerous moment in corrosion control is shortly after a well-intentioned treatment change."
+    },
+    {
+      "questionNum": 1426,
+      "question": "Why is chlorate of interest at plants using bulk sodium hypochlorite?",
+      "options": [
+        "It forms as hypochlorite degrades and is difficult to remove once formed",
+        "It reduces the disinfecting strength of the hypochlorite in storage",
+        "It causes the hypochlorite solution to crystallize at low temperature",
+        "It reacts with coagulant and interferes with floc formation"
+      ],
+      "correctIndex": 0,
+      "explanation": "Chlorate accumulates as hypochlorite decomposes, and the rate increases with storage temperature, concentration and time. Because it is not removed by conventional treatment, control depends on managing storage conditions, rotating stock, and sometimes diluting the delivered product.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Hypochlorite by-products",
+      "isCalc": "no",
+      "tip": "Cool, dark, short storage limits chlorate. Old warm hypochlorite is both weaker and higher in chlorate."
+    },
+    {
+      "questionNum": 1427,
+      "question": "What is the purpose of the vacuum regulator mounted directly on a chlorine cylinder?",
+      "options": [
+        "To reduce cylinder pressure so gas flows at a controlled rate",
+        "To ensure the entire gas system downstream operates under vacuum",
+        "To measure the rate at which gas is withdrawn from the cylinder",
+        "To prevent moisture from entering the cylinder through the valve"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mounting the regulator at the cylinder means that everything downstream operates below atmospheric pressure. A break in a line or fitting then draws air inward and the regulator shuts, rather than releasing chlorine gas into the room. It is the fundamental safety principle of gas chlorination.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Vacuum regulator",
+      "isCalc": "no",
+      "tip": "Pressurized chlorine piping is minimised to the cylinder valve itself. Everything after is under vacuum."
+    },
+    {
+      "questionNum": 1428,
+      "question": "Why is a filter surveillance program that includes periodic media coring valuable?",
+      "options": [
+        "It confirms the filter meets its design filtration rate at current flows",
+        "It measures headloss more accurately than the installed instrumentation",
+        "It reveals bed problems such as mudballs and media loss before failure",
+        "It determines the backwash rate required to fluidize the media bed"
+      ],
+      "correctIndex": 2,
+      "explanation": "Coring and probing a drained filter exposes conditions that operating data cannot show, including mudball accumulation, uneven media depth, gravel displacement, and layer intermixing. Finding these early allows correction before they cause turbidity breakthrough or a filter rebuild.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter surveillance",
+      "isCalc": "no",
+      "tip": "Operating data shows that performance changed. Physical inspection shows why."
+    },
+    {
+      "questionNum": 1429,
+      "question": "Why is raw water storage upstream of a treatment plant operationally valuable?",
+      "options": [
+        "It allows treatment to continue if the source becomes temporarily unusable",
+        "It removes dissolved contaminants through extended natural degradation",
+        "It reduces the coagulant demand by allowing solids to settle beforehand",
+        "It raises the temperature of the raw water before it enters the plant"
+      ],
+      "correctIndex": 0,
+      "explanation": "Raw water storage buffers the plant against source events such as a spill, a turbidity spike, or an intake failure, allowing treatment to continue from stored water while the situation is assessed. Some equalisation of quality also occurs, though storage brings its own algal and stratification challenges.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Raw water storage",
+      "isCalc": "no",
+      "tip": "Storage buys decision time, which is often the most valuable thing during a source contamination event."
+    },
+    {
+      "questionNum": 1430,
+      "question": "Why does a water system maintain more than one means of drawing from its source where possible?",
+      "options": [
+        "To increase the total volume that can be withdrawn during peak demand",
+        "To avoid a single failure interrupting the supply of raw water",
+        "To allow different treatment processes to be used for each intake",
+        "To reduce the velocity at each intake and limit fish entrainment"
+      ],
+      "correctIndex": 1,
+      "explanation": "A single intake is a single point of failure for the entire system. Blockage by ice or debris, mechanical failure, or localised contamination can stop production entirely. Redundant intakes, at different depths or locations, preserve the ability to draw water when one becomes unusable.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Intake redundancy",
+      "isCalc": "no",
+      "tip": "Redundancy matters most for components whose failure stops everything downstream."
+    },
+    {
+      "questionNum": 1431,
+      "question": "Why are trihalomethane samples collected on a schedule spread through the year rather than all at once?",
+      "options": [
+        "To ensure each sampling location is visited an equal number of times",
+        "To distribute the laboratory workload evenly across the calendar year",
+        "To capture seasonal variation, since formation increases in warm months",
+        "To allow the results to be compared against the previous year's samples"
+      ],
+      "correctIndex": 2,
+      "explanation": "By-product formation depends strongly on temperature and on the organic load in the source, both of which vary seasonally. Sampling only in one season would misrepresent annual exposure, so the schedule spans the year with attention to the warm period when formation peaks.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "By-product monitoring schedule",
+      "isCalc": "no",
+      "tip": "Warm water and long residence time produce the highest by-product results."
+    },
+    {
+      "questionNum": 1432,
+      "question": "What is the purpose of an annual report to consumers on drinking water quality?",
+      "options": [
+        "To inform consumers about water quality, sources and system performance",
+        "To justify the water rates charged during the reporting period",
+        "To demonstrate to the regulator that monitoring was completed",
+        "To provide the technical basis for future capital planning decisions"
+      ],
+      "correctIndex": 0,
+      "explanation": "An annual report gives consumers a plain summary of where their water comes from, what monitoring showed, whether any exceedances occurred and what was done about them. Its purpose is public transparency and confidence, which is distinct from the technical reporting made to a regulator.",
+      "difficulty": "easy",
+      "module": "Water Quality & Regulations",
+      "topic": "Annual reporting",
+      "isCalc": "no",
+      "tip": "Write it for the consumer, not the regulator. Plain language is the point of the document."
+    },
+    {
+      "questionNum": 1433,
+      "question": "Why does a water system conduct emergency response exercises involving external agencies?",
+      "options": [
+        "To confirm the contact details held for each agency remain current",
+        "To test coordination and communication before a real event requires it",
+        "To satisfy training requirements for the operators who participate",
+        "To demonstrate the capability of the system to the local community"
+      ],
+      "correctIndex": 1,
+      "explanation": "Serious water emergencies involve public health authorities, emergency services, and often neighbouring utilities. Exercises reveal mismatched assumptions about who decides what, gaps in communication paths, and unrealistic timelines, all of which are far cheaper to discover in an exercise than during an incident.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Emergency exercises",
+      "isCalc": "no",
+      "tip": "Exercises test the seams between organisations, which is where real responses usually break down."
+    },
+    {
+      "questionNum": 1434,
+      "question": "Why is heat stress a recognised hazard for operators working in confined plant areas during summer?",
+      "options": [
+        "High temperature reduces the accuracy of portable gas detection equipment",
+        "Protective equipment and poor ventilation limit the body's ability to cool",
+        "Warm conditions accelerate the evaporation of chemicals being handled",
+        "High temperature increases the pressure inside chemical storage vessels"
+      ],
+      "correctIndex": 1,
+      "explanation": "Chemical protective clothing prevents evaporative cooling, and enclosed plant spaces often have limited air movement and heat from equipment. Heat exhaustion develops with impaired judgement before the worker recognises the problem, which is why work and rest scheduling, hydration, and monitoring are used.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Heat stress",
+      "isCalc": "no",
+      "tip": "Impaired judgement is an early heat stress symptom, so workers often cannot self-assess reliably."
+    },
+    {
+      "questionNum": 1435,
+      "question": "Why is knowledge transfer planned when an experienced operator approaches retirement?",
+      "options": [
+        "Because certification requires that experience be formally documented",
+        "Because undocumented operating knowledge is lost when the person leaves",
+        "Because retiring operators must train their replacement by regulation",
+        "Because staffing levels must be maintained at all certification classes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Much of what makes a plant run well is undocumented judgement built over years, such as how the plant responds to a particular raw water condition or which equipment has a quirk. When that knowledge leaves with the individual, the remaining team must relearn it through avoidable mistakes.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Knowledge retention",
+      "isCalc": "no",
+      "tip": "Capture the reasoning, not just the procedure. The reasoning is what transfers to novel situations."
+    },
+    {
+      "questionNum": 1436,
+      "question": "Why is a written operating procedure reviewed after an incident even when it was followed correctly?",
+      "options": [
+        "To identify whether the procedure itself contributed to the outcome",
+        "To confirm the operator involved was certified for the procedure",
+        "To record the incident in the plant's documentation for audit",
+        "To determine whether additional staff are required on each shift"
+      ],
+      "correctIndex": 0,
+      "explanation": "An incident that occurs while the procedure is being followed correctly indicates the procedure may be incomplete, based on invalid assumptions, or unclear at a critical step. Reviewing it treats the system as the subject of investigation rather than the individual, which is where the durable improvement usually lies.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Incident review",
+      "isCalc": "no",
+      "tip": "If following the procedure produced a bad outcome, the procedure is the finding."
+    },
+    {
+      "questionNum": 1437,
+      "question": "Why is equipment specified with treatment requirements in mind rather than on price alone?",
+      "options": [
+        "Because lower cost equipment always has a shorter operating life",
+        "Because equipment that cannot maintain a barrier creates a compliance risk",
+        "Because procurement rules require the highest specification to be chosen",
+        "Because higher cost equipment requires less frequent operator attention"
+      ],
+      "correctIndex": 1,
+      "explanation": "Treatment equipment exists to maintain a barrier. Equipment that cannot hold a dose accurately, lacks the turndown for low flows, or has no local supplier support creates operational and compliance problems that far outweigh the initial saving. Whole-life performance is the relevant comparison.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Equipment specification",
+      "isCalc": "no",
+      "tip": "Consider turndown, spares availability and local support, not only capital cost and rated capacity."
+    },
+    {
+      "questionNum": 1438,
+      "question": "Why is turndown capability important when selecting a chemical metering pump?",
+      "options": [
+        "It determines the maximum dose the pump is able to deliver",
+        "It determines whether the pump can dose accurately at low plant flows",
+        "It determines the pressure the pump can develop at the injection point",
+        "It determines how long the pump can operate before requiring service"
+      ],
+      "correctIndex": 1,
+      "explanation": "Plant flow varies widely between minimum night flow and peak day. A pump sized for peak may be operating at a very small fraction of its capacity at night, where metering accuracy is poor. Adequate turndown, or a second smaller pump, keeps dosing accurate across the whole operating range.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Pump turndown",
+      "isCalc": "no",
+      "tip": "A pump oversized for peak flow will dose badly at minimum flow. Check both ends of the range."
+    },
+    {
+      "questionNum": 1439,
+      "question": "Why is the injection point for a chemical selected carefully within the process?",
+      "options": [
+        "It determines the mixing available and the reactions the chemical undergoes",
+        "It determines the pressure rating required for the chemical storage tank",
+        "It determines the frequency at which the feed pump must be calibrated",
+        "It determines the maximum concentration the solution may be prepared at"
+      ],
+      "correctIndex": 0,
+      "explanation": "Where a chemical enters governs how quickly it disperses and what it contacts first. A coagulant injected without vigorous mixing reacts unevenly, and a disinfectant injected upstream of organic matter forms more by-products. Injection point is a process design decision, not merely a piping convenience.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Injection point selection",
+      "isCalc": "no",
+      "tip": "Moving an injection point can change treatment performance as much as changing the dose."
+    },
+    {
+      "questionNum": 1440,
+      "question": "Why is a chemical day tank used rather than feeding directly from bulk storage?",
+      "options": [
+        "It provides a measurable volume so usage can be verified daily",
+        "It allows the chemical to warm to ambient temperature before feeding",
+        "It reduces the pressure of the chemical before it reaches the pump",
+        "It permits chemical from two suppliers to be blended before use"
+      ],
+      "correctIndex": 0,
+      "explanation": "A day tank holds roughly a day of chemical in a vessel where level can be read accurately. That allows actual consumption to be compared against the calculated requirement, which detects feed pump drift, leaks and blocked lines that a bulk tank level would not reveal.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Day tank purpose",
+      "isCalc": "no",
+      "tip": "Reconciling day tank usage against calculated demand is one of the best routine checks available."
+    }
+  ]
+}
