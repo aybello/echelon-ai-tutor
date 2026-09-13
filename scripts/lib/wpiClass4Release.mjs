@@ -68,6 +68,20 @@ export function planWpiClass4Release({ currentRows, currentMetadata, candidateEx
   }
   if (newNumbers.size !== additions.length) errors.push("New-candidate question numbers are not unique.");
 
+  // Existing replacements need the same structural guarantees as additions.
+  for (const row of [...existing, ...additions]) {
+    try {
+      const options = JSON.parse(row.options);
+      if (!Array.isArray(options) || options.length !== 4 ||
+          options.some(option => typeof option !== "string" || !option.trim()) ||
+          new Set(options.map(option => option.normalize("NFKC").trim().toLowerCase().replace(/\s+/g, " "))).size !== 4 ||
+          !Number.isInteger(row.correctIndex) || row.correctIndex < 0 || row.correctIndex > 3) {
+        errors.push(`Invalid or indistinguishable answer options for candidate ${row.questionNum}.`);
+      }
+    } catch { errors.push(`Malformed option JSON for candidate ${row.questionNum}.`); }
+    if (typeof row.explanation !== "string" || !row.explanation.trim()) errors.push(`Missing explanation for candidate ${row.questionNum}.`);
+  }
+
   const allStems = new Map();
   for (const row of [...existing, ...additions]) {
     const stem = normaliseStem(row.question);

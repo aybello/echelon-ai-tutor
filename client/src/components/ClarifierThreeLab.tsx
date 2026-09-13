@@ -1,7 +1,7 @@
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { Billboard, OrbitControls } from "@react-three/drei";
 import { Eye, Layers3, Pause, Play, RotateCcw, Sparkles, Waves } from "lucide-react";
-import { type ComponentRef, useEffect, useMemo, useRef, useState } from "react";
+import { type ComponentRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import {
   CLARIFIER_PARTS,
@@ -14,6 +14,7 @@ import {
 
 type ThreeClarifierProps = {
   onStudyLink?: () => void;
+  onUnavailable?: () => void;
 };
 
 type Lens = "operator" | "exam";
@@ -395,7 +396,36 @@ function ClarifierScene({
   );
 }
 
-export default function ClarifierThreeLab({ onStudyLink }: ThreeClarifierProps) {
+// Observe the actual renderer, including loss of a previously working GPU context.
+function RendererHealth({ onReady, onUnavailable }: { onReady: () => void; onUnavailable?: () => void }) {
+  const gl = useThree(state => state.gl);
+  const ready = useRef(false);
+  useEffect(() => {
+    const lost = (event: Event) => { event.preventDefault(); onUnavailable?.(); };
+    gl.domElement.addEventListener("webglcontextlost", lost);
+    return () => gl.domElement.removeEventListener("webglcontextlost", lost);
+  }, [gl, onUnavailable]);
+  useFrame(({ invalidate }) => {
+    if (ready.current) return;
+    // Runs before this frame: calls > 0 proves a preceding frame drew geometry.
+    if (gl.info.render.calls > 0) {
+      ready.current = true;
+      gl.domElement.dataset.sceneReady = "true";
+      onReady();
+    } else invalidate();
+  });
+  return null;
+}
+
+export default function ClarifierThreeLab({ onStudyLink, onUnavailable }: ThreeClarifierProps) {
+  const startupTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const rendered = useRef(false);
+  const markReady = useCallback(() => { rendered.current = true; clearTimeout(startupTimer.current); }, []);
+  useEffect(() => {
+    // Covers silent/async renderer initialization failures outside a React boundary.
+    if (!rendered.current) startupTimer.current = setTimeout(() => onUnavailable?.(), 15_000);
+    return () => clearTimeout(startupTimer.current);
+  }, [onUnavailable]);
   const [activePart, setActivePart] = useState<ClarifierPartId>("feedwell");
   const [activeStage, setActiveStage] = useState<ClarifierStageId | null>(null);
   const [view, setView] = useState<ClarifierView>("isometric");
@@ -451,6 +481,7 @@ export default function ClarifierThreeLab({ onStudyLink }: ThreeClarifierProps) 
               frameloop={animated ? "always" : "demand"}
               fallback={<div className="flex h-full items-center justify-center p-8 text-center text-sm text-slate-700">3D rendering is unavailable in this browser. Use the Diagram view above.</div>}
             >
+              <RendererHealth onReady={markReady} onUnavailable={onUnavailable} />
               <ClarifierScene
                 activePart={activePart}
                 onPartSelect={selectPart}

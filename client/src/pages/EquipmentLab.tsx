@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useCallback, useState } from "react";
 import { useLocation } from "wouter";
 import { ArrowRight, Box, Info, Monitor } from "lucide-react";
 import ClarifierLab from "@/components/ClarifierLab";
@@ -6,11 +6,18 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
+import { supportsWebGL2 } from "@/lib/webglSupport";
+
 const ClarifierThreeLab = lazy(() => import("@/components/ClarifierThreeLab"));
 
 export default function EquipmentLab() {
   const [, navigate] = useLocation();
-  const [renderMode, setRenderMode] = useState<"three" | "diagram">("three");
+  const [available, setAvailable] = useState(supportsWebGL2);
+  const [renderMode, setRenderMode] = useState<"three" | "diagram">(available ? "three" : "diagram");
+  const showFallback = useCallback(() => {
+    setAvailable(false);
+    setRenderMode("diagram");
+  }, []);
   const [aboutOpen, setAboutOpen] = useState(false);
   usePageMeta({
     title: "Equipment Lab | Echelon Institute",
@@ -42,15 +49,16 @@ export default function EquipmentLab() {
               <h2 id="clarifier-heading" className="mt-1 text-lg font-semibold text-slate-900">Explore the assembly</h2>
             </div>
             <div className="flex rounded-md border border-slate-300 bg-white p-1" role="group" aria-label="Equipment Lab render mode">
-              <button onClick={() => setRenderMode("three")} aria-pressed={renderMode === "three"} className={`inline-flex min-h-9 items-center gap-1.5 rounded px-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${renderMode === "three" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100"}`}><Box size={14} aria-hidden="true" /> 3D model</button>
+              <button disabled={!available} onClick={() => setRenderMode("three")} aria-pressed={renderMode === "three"} className={`inline-flex min-h-9 items-center gap-1.5 rounded px-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${renderMode === "three" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100"}`}><Box size={14} aria-hidden="true" /> 3D model</button>
               <button onClick={() => setRenderMode("diagram")} aria-pressed={renderMode === "diagram"} className={`inline-flex min-h-9 items-center gap-1.5 rounded px-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${renderMode === "diagram" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100"}`}><Monitor size={14} aria-hidden="true" /> Diagram view</button>
             </div>
           </div>
 
+          {!available && <p role="status" className="mb-4 rounded-md bg-amber-50 p-3 text-sm text-amber-950">3D is unavailable in this browser. The interactive Diagram view is ready to use.</p>}
           {renderMode === "three" ? (
             <Suspense fallback={<div className="flex min-h-[360px] items-center justify-center rounded-xl border border-slate-300 bg-white p-8 text-sm font-semibold text-slate-600">Preparing the interactive 3D model…</div>}>
-              <ErrorBoundary fallback={<div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm leading-6 text-amber-950">The interactive 3D model could not start in this browser. Select the persistent <strong>Diagram view</strong> control above for the accessible schematic.</div>}>
-                <ClarifierThreeLab onStudyLink={() => navigate("/wastewater")} />
+              <ErrorBoundary onError={showFallback} fallback={<ClarifierLab onStudyLink={() => navigate("/wastewater")} />}>
+                <ClarifierThreeLab onUnavailable={showFallback} onStudyLink={() => navigate("/wastewater")} />
               </ErrorBoundary>
             </Suspense>
           ) : <ClarifierLab onStudyLink={() => navigate("/wastewater")} />}

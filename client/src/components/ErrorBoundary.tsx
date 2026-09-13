@@ -5,6 +5,7 @@ import { Component, ReactNode, ErrorInfo } from "react";
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;
+  onError?: (error: Error) => void;
 }
 
 interface State {
@@ -23,6 +24,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
+    this.props.onError?.(error);
     console.error("[ErrorBoundary] Uncaught render error:", error.message);
     console.error("[ErrorBoundary] Component stack:", info.componentStack);
   }

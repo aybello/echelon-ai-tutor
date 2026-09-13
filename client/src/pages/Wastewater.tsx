@@ -3,7 +3,7 @@
 // Mirrors the drinking water Process page structure exactly
 
 import { useState } from "react";
-import { WW_STEPS, WW_LABEL_INFO, type WastewaterStep } from "@/lib/wastewaterData";
+import { WW_STEPS, WW_LABEL_INFO, WW_GUIDANCE_REVIEWED, WW_GUIDANCE_SOURCES, type WastewaterStep } from "@/lib/wastewaterData";
 import { WWDiagramFor } from "@/components/WastewaterDiagrams";
 import WastewaterMap from "@/components/WastewaterMap";
 import SiteNav from "@/components/SiteNav";
@@ -15,7 +15,7 @@ function WQCard({ quality, color }: { quality: Record<string, string>; color: st
   return (
     <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "14px 16px", border: "1px solid #E5E7EB" }}>
       <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 10 }}>
-        🧪 WATER QUALITY AT THIS STAGE
+        🧪 ILLUSTRATIVE WATER QUALITY
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
         {Object.entries(quality).map(([k, v]) => (
@@ -350,7 +350,8 @@ export default function Wastewater() {
                   </div>
                   <div style={{ fontSize: 11, color: "#3B0764", lineHeight: 1.65 }}>{activeStep.regulation}</div>
                   <div style={{ fontSize: 9, color: "#64748B", lineHeight: 1.55, marginTop: 8 }}>
-                    Confirm current requirements against the official legislation and your facility procedures.
+                    Process ranges are illustrative. Confirm requirements against your facility ECA and procedures. Guidance reviewed {WW_GUIDANCE_REVIEWED}.
+                    {WW_GUIDANCE_SOURCES.map(source => <div key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="underline">{source.label}</a></div>)}
                   </div>
                 </div>
 
