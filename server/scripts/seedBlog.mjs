@@ -1,3 +1,4 @@
+import { ontarioMathGuide } from "../content/ontarioMathGuide.mjs";
 /**
  * Blog seed script — inserts 5 SEO-targeted posts for Ontario water/wastewater
  * operator certification.
@@ -236,103 +237,7 @@ const posts = [
 <p>Practice questions are the most effective preparation tool. Echelon Institute's OIT Wastewater practice bank covers all six modules with detailed explanations. The Class 1 and Class 2 Wastewater banks are also available for operators preparing for higher-level OWWCO exams.</p>
     `.trim(),
   },
-  {
-    slug: "ontario-water-operator-exam-math-formulas-cheat-sheet",
-    title: "Ontario Water Operator Exam: Essential Math Formulas and Practice Problems",
-    excerpt:
-      "Math questions account for 20% of every Ontario water operator exam. This guide covers the 15 essential formulas you must memorize, with worked examples for the most common calculation types.",
-    author: "Echelon Institute",
-    tags: "math,formulas,calculations,Ontario,water operator,OIT,Class 1,Class 2,exam prep",
-    metaTitle: "Ontario Water Operator Exam Math Formulas | Echelon Institute",
-    metaDescription:
-      "Master the math for Ontario water operator exams. Covers 15 essential formulas with worked examples: chlorine dosage, flow rates, tank volumes, pump efficiency, and chemical feed calculations.",
-    readingTimeMinutes: 10,
-    content: `
-<h2>Why Math Is Worth Mastering</h2>
-<p>Math and calculation questions account for approximately 20% of every Ontario water operator exam from OIT through Class 4. Unlike process knowledge questions that require memorizing facts, math questions reward practice. Every formula you master is a near-guaranteed correct answer on exam day.</p>
-<p>The exam does not provide a formula sheet. You must have the formulas memorized and be able to apply them quickly. The good news is that the same 15 formulas appear repeatedly across all certification levels, with increasing complexity at higher levels.</p>
-
-<h2>Unit Conversions You Must Know</h2>
-<p>Before working through the formulas, make sure you have these unit conversions memorized. Conversion errors are the most common source of mistakes on calculation questions.</p>
-
-<table>
-  <thead><tr><th>Conversion</th><th>Value</th></tr></thead>
-  <tbody>
-    <tr><td>1 m³</td><td>1,000 litres (L)</td></tr>
-    <tr><td>1 ML (megalitre)</td><td>1,000 m³ = 1,000,000 L</td></tr>
-    <tr><td>1 mg/L</td><td>1 g/m³ = 1 ppm (in water)</td></tr>
-    <tr><td>1 kg/day</td><td>1,000 g/day</td></tr>
-    <tr><td>1 L/s</td><td>86.4 m³/day</td></tr>
-    <tr><td>1 m³/s</td><td>1,000 L/s = 86,400 m³/day</td></tr>
-  </tbody>
-</table>
-
-<h2>The 15 Essential Formulas</h2>
-
-<h3>1. Chlorine Dosage</h3>
-<p><strong>Dose (mg/L) = Demand (mg/L) + Residual (mg/L)</strong></p>
-<p><em>Example:</em> Chlorine demand = 2.1 mg/L, target residual = 0.4 mg/L. Dose = 2.1 + 0.4 = <strong>2.5 mg/L</strong></p>
-
-<h3>2. Chemical Mass Required</h3>
-<p><strong>Mass (kg/day) = Flow (m³/day) × Dose (g/m³) ÷ 1,000</strong></p>
-<p><em>Example:</em> Flow = 8,000 m³/day, dose = 2.5 mg/L. Mass = 8,000 × 2.5 ÷ 1,000 = <strong>20 kg/day</strong></p>
-
-<h3>3. Volume of a Cylinder</h3>
-<p><strong>V = π × r² × h</strong> (where r = radius, h = height)</p>
-<p><em>Example:</em> Tank diameter = 10 m, depth = 4 m. r = 5 m. V = 3.14159 × 25 × 4 = <strong>314.2 m³</strong></p>
-
-<h3>4. Volume of a Rectangle</h3>
-<p><strong>V = L × W × H</strong></p>
-<p><em>Example:</em> Reservoir 20 m × 15 m × 5 m deep. V = 20 × 15 × 5 = <strong>1,500 m³</strong></p>
-
-<h3>5. Flow Rate (Velocity Method)</h3>
-<p><strong>Q = A × V</strong> (flow = cross-sectional area × velocity)</p>
-<p><em>Example:</em> Pipe diameter = 0.3 m, velocity = 1.5 m/s. A = π × (0.15)² = 0.0707 m². Q = 0.0707 × 1.5 = <strong>0.106 m³/s</strong></p>
-
-<h3>6. Hydraulic Retention Time</h3>
-<p><strong>HRT (hours) = Volume (m³) × 24 / Flow (m³/day)</strong></p>
-<p><em>Example:</em> Tank volume = 500 m³, flow = 2,000 m³/day. HRT = 500 × 24 / 2,000 = <strong>6 hours</strong></p>
-
-<h3>7. CT Value</h3>
-<p><strong>CT = C (mg/L) × T (minutes)</strong></p>
-<p><em>Example:</em> Chlorine residual = 0.8 mg/L, contact time = 25 minutes. CT = 0.8 × 25 = <strong>20 mg·min/L</strong></p>
-
-<h3>8. Percent Solution</h3>
-<p><strong>% = (mass of solute / mass of solution) × 100</strong></p>
-<p><em>Example:</em> 5 kg of alum dissolved in 95 kg of water. % = (5 / 100) × 100 = <strong>5%</strong></p>
-
-<h3>9. Pump Efficiency</h3>
-<p><strong>Efficiency (%) = (Water Power / Input Power) × 100</strong></p>
-<p>Water power (kW) = Flow (m³/s) × Head (m) × 9.81 kN/m³</p>
-
-<h3>10. Fluoride Dosage</h3>
-<p><strong>Volume of fluoride solution = (Target dose × Flow) / (Concentration of solution)</strong></p>
-<p>Same structure as chlorine dosage but applied to fluoridation chemicals.</p>
-
-<h3>11. Weir Overflow Rate</h3>
-<p><strong>Weir overflow rate (m³/m·day) = Flow (m³/day) / Weir length (m)</strong></p>
-
-<h3>12. Surface Overflow Rate</h3>
-<p><strong>SOR (m³/m²·day) = Flow (m³/day) / Surface area (m²)</strong></p>
-
-<h3>13. Sludge Volume Index (SVI)</h3>
-<p><strong>SVI = (Settled sludge volume mL/L × 1,000) / MLSS (mg/L)</strong></p>
-<p>A healthy activated sludge has an SVI between 80 and 150 mL/g.</p>
-
-<h3>14. Food-to-Microorganism Ratio</h3>
-<p><strong>F:M = BOD applied (kg/day) / MLVSS in aeration basin (kg)</strong></p>
-
-<h3>15. Percent Removal</h3>
-<p><strong>% Removal = ((Influent - Effluent) / Influent) × 100</strong></p>
-<p><em>Example:</em> Influent BOD = 250 mg/L, effluent BOD = 15 mg/L. % Removal = ((250 - 15) / 250) × 100 = <strong>94%</strong></p>
-
-<h2>Practice Problem: Full Calculation Scenario</h2>
-<p>A water treatment plant treats 12,000 m³/day. The raw water has a chlorine demand of 1.6 mg/L and the target residual at the point of entry is 0.6 mg/L. The plant uses a 12% sodium hypochlorite solution (specific gravity 1.17). How many litres of hypochlorite solution are required per day?</p>
-<p><strong>Step 1:</strong> Calculate the chlorine dose. Dose = 1.6 + 0.6 = 2.2 mg/L</p>
-<p><strong>Step 2:</strong> Calculate the mass of chlorine required. Mass = 12,000 m³/day × 2.2 g/m³ ÷ 1,000 = 26.4 kg/day</p>
-<p><strong>Step 3:</strong> Calculate the volume of hypochlorite solution. The solution is 12% by weight. Mass of solution = 26.4 kg ÷ 0.12 = 220 kg. Volume = 220 kg ÷ 1.17 kg/L = <strong>188 litres/day</strong></p>
-    `.trim(),
-  },
+  ontarioMathGuide,
   {
     slug: "water-operator-salary-canada-by-province-2025",
     title: "Water Operator Salary in Canada by Province (2025)",

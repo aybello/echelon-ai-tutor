@@ -72,4 +72,15 @@ describe("planWpiClass4Release", () => {
     const inserted = { ...candidate, id: 999999, reviewStatus: "approved" };
     expect(hashWpiNewQuestionRows([inserted])).toBe(hashWpiNewQuestionRows([{ ...candidate, reviewStatus: "approved" }]));
   });
+  it("validates repaired existing options and explanations as strictly as additions", () => {
+    for (const invalid of [
+      { options: "broken JSON" }, { options: JSON.stringify(["A", "A", "C", "D"]) },
+      { options: JSON.stringify(["A", "", "C", "D"]) }, { correctIndex: 9 }, { explanation: " " },
+    ]) {
+      const input = readyInput();
+      Object.assign(input.candidateExisting[0], invalid);
+      expect(planWpiClass4Release(input).ready).toBe(false);
+    }
+  });
+
 });

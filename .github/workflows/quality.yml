@@ -193,8 +193,8 @@ jobs:
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
       - name: Install the Teams browser-test runtime
         run: pnpm exec playwright install --with-deps chromium
-      - name: Browser-test manager invitation and operator activation
-        run: pnpm test:e2e:teams
+      - name: Browser-test Teams access and Equipment Lab recovery
+        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts
         env:
           CI: "1"
           NODE_ENV: test
