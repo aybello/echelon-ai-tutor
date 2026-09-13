@@ -79,7 +79,7 @@ test("Equipment Lab recovers when an active WebGL context is lost", async ({ pag
 });
 
 test("Equipment Lab recovers when its 3D module cannot load", async ({ page }) => {
-  await page.route("**/ClarifierThreeLab-*.js", route => route.abort());
+  await page.route(/(?:ClarifierThreeLab-[^/]+\.js|\/src\/components\/ClarifierThreeLab\.tsx)(?:\?.*)?$/, route => route.abort());
   await page.goto("/equipment-lab");
   await expect(page.getByRole("status")).toContainText("Diagram view is ready");
   await expect(page.getByRole("button", { name: /Surface Skimmer/ })).toBeVisible();
