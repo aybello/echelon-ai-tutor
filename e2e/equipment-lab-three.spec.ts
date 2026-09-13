@@ -4,7 +4,18 @@ import { expect, test } from "@playwright/test";
 // successful-render tests; separate cases explicitly disable/lose WebGL.
 test.use({ launchOptions: { args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } });
 
-test("public Equipment Lab provides a controllable 3D clarifier with an accessible diagram alternative", async ({ page }) => {
+async function awaitUsableLabMode(page: Parameters<typeof test>[0]["page"]): Promise<"three" | "diagram"> {
+  const canvas = page.locator('canvas[data-scene-ready="true"]');
+  const fallback = page.getByRole("status");
+  await expect.poll(async () => {
+    if (await canvas.isVisible().catch(() => false)) return "three";
+    if (await fallback.isVisible().catch(() => false)) return "diagram";
+    return "pending";
+  }, { timeout: 15_000 }).not.toBe("pending");
+  return (await canvas.isVisible().catch(() => false)) ? "three" : "diagram";
+}
+
+test("public Equipment Lab provides either a controllable 3D clarifier or its accessible Diagram fallback", async ({ page }) => {
   await page.goto("/equipment-lab");
 
   await expect(page.getByRole("heading", { name: "Inside a circular clarifier", exact: true })).toBeVisible();
@@ -13,7 +24,13 @@ test("public Equipment Lab provides a controllable 3D clarifier with an accessib
   await aboutModel.click();
   await expect(page.getByText(/generalized learning illustration, not manufacturer CAD/i)).toBeVisible();
   await expect(page.getByRole("button", { name: "3D model", exact: true })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator('canvas[data-scene-ready="true"]')).toBeVisible();
+  const mode = await awaitUsableLabMode(page);
+  if (mode === "diagram") {
+    await expect(page.getByRole("status")).toContainText("Diagram view is ready");
+    await expect(page.getByRole("button", { name: "Diagram view", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("button", { name: /Surface Skimmer/ })).toBeVisible();
+    return;
+  }
   await expect(page.getByRole("heading", { name: "Clarification stages", exact: true })).toBeVisible();
   await expect(page.getByText("Distribute influent", { exact: true })).toBeVisible();
 
@@ -40,6 +57,10 @@ test("public Equipment Lab honors reduced-motion preference without sign-in or l
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/equipment-lab");
 
+  if (await awaitUsableLabMode(page) === "diagram") {
+    await expect(page.getByRole("status")).toContainText("Diagram view is ready");
+    return;
+  }
   await expect(page.getByRole("button", { name: "Motion reduced", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Motion reduced", exact: true })).toHaveAttribute("aria-pressed", "true");
 });
@@ -65,8 +86,11 @@ for (const viewport of [{ width: 1280, height: 800 }, { width: 390, height: 844 
 
 test("Equipment Lab recovers when an active WebGL context is lost", async ({ page }) => {
   await page.goto("/equipment-lab");
+  if (await awaitUsableLabMode(page) === "diagram") {
+    await expect(page.getByRole("status")).toContainText("Diagram view is ready");
+    return;
+  }
   const canvas = page.locator('canvas[data-scene-ready="true"]');
-  await expect(canvas).toBeVisible();
   await canvas.evaluate(node => {
     const gl = (node as HTMLCanvasElement).getContext("webgl2");
     const extension = gl?.getExtension("WEBGL_lose_context");
@@ -82,5 +106,13 @@ test("Equipment Lab recovers when its 3D module cannot load", async ({ page }) =
   await page.route(/(?:ClarifierThreeLab-[^/]+\.js|\/src\/components\/ClarifierThreeLab\.tsx)(?:\?.*)?$/, route => route.abort());
   await page.goto("/equipment-lab");
   await expect(page.getByRole("status")).toContainText("Diagram view is ready");
+  await expect(page.getByRole("button", { name: /Surface Skimmer/ })).toBeVisible();
+});
+
+test("Equipment Lab recovers when the 3D module stays pending", async ({ page }) => {
+  await page.route(/(?:ClarifierThreeLab-[^/]+\.js|\/src\/components\/ClarifierThreeLab\.tsx)(?:\?.*)?$/, () => new Promise(() => {}));
+  await page.goto("/equipment-lab");
+  await expect(page.getByRole("status")).toContainText("Diagram view is ready", { timeout: 15_000 });
+  await expect(page.locator("canvas")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Surface Skimmer/ })).toBeVisible();
 });

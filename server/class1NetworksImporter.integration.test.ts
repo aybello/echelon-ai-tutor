@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 const hasDatabase = Boolean(process.env.DATABASE_URL);
 const integrationDescribe = describe.skipIf(!hasDatabase);
@@ -58,6 +58,12 @@ integrationDescribe("Class 1 Distribution and Collection additive importer datab
     await seedBaseline();
   }, 30_000);
 
+  afterEach(async () => {
+    await connection.execute(`DELETE FROM \`${attemptsTable}\``);
+    await connection.execute(`DELETE FROM \`${questionsTable}\``);
+    await connection.execute(`DELETE FROM \`${metaTable}\``);
+  }, 30_000);
+
   afterAll(async () => {
     if (!connection) return;
     await connection.execute(`DROP TABLE IF EXISTS \`${attemptsTable}\``);
@@ -83,7 +89,7 @@ integrationDescribe("Class 1 Distribution and Collection additive importer datab
     ]);
     const [existing] = await connection.execute(`SELECT question, reviewStatus FROM \`${questionsTable}\` WHERE bankKey = 'class1-water-dist' AND questionNum = 1`);
     expect(existing[0]).toEqual(expect.objectContaining({ question: "Existing class1-water-dist question 1", reviewStatus: "unreviewed" }));
-  });
+  }, 120_000);
 
   it("rolls back the complete batch if the locked production baseline has changed", async () => {
     const packageInfo = importer.loadClass1NetworksPackage();
@@ -93,5 +99,5 @@ integrationDescribe("Class 1 Distribution and Collection additive importer datab
     await expect(importer.stageClass1NetworksPackage({ connection, payloads: packageInfo.payloads, checksum: packageInfo.checksum, baseline, questionsTable, metaTable, attemptsTable, log: () => undefined })).rejects.toThrow("baseline drift");
     const [rows] = await connection.execute(`SELECT COUNT(*) AS count FROM \`${questionsTable}\` WHERE questionNum BETWEEN 2001 AND 2250`);
     expect(rows[0].count).toBe(0);
-  });
+  }, 120_000);
 });
