@@ -2,6 +2,16 @@
 
 This branch corrects the wastewater Process Guide, the actual math-guide seed, and Equipment Lab fallback. It needs no schema migration. It does not publish content or change production data during local validation.
 
+## Code release verification — 2026-09-13.pr81-trust-repair.1
+
+The approved code-only release is published in checkpoint `f1a3ebbb`, with the follow-up delayed-module recovery in checkpoint `734e6288`. The wastewater Process Guide now labels process values as illustrative and links its Ontario legal-scope guidance to the reviewed sources below. The Equipment Lab detects unavailable WebGL, an active context loss, a failed 3D-module download, and a module that remains pending; each condition returns the learner to the persistent interactive Diagram view instead of leaving a blank model surface.
+
+The full repository suite, both TypeScript configurations, production build, and all seven local Equipment Lab browser cases passed. After the checkpoint propagated, the identical seven-case public browser suite passed against both the managed and custom domains. These checks covered ready 3D rendering or explicit Diagram recovery, reduced motion, desktop/mobile no-WebGL fallback, context loss, failed module loading, and delayed module recovery. They did not sign in, select answers, submit learner work, or mutate learner records.
+
+The deployed `/wastewater` Step Explorer was also directly verified on both domains. It shows the `ILLUSTRATIVE WATER QUALITY` heading, explains that O. Reg. 129/04 governs sewage-works classification and operator licensing, tells learners to follow the facility ECA, applicable waste requirements, and operating procedures, and marks process ranges as illustrative. The page displays its `2026-09-13` review date and all three reviewed Ontario references: O. Reg. 129/04, the Ontario Design Guidelines for Sewage Works, and O. Reg. 267/03.
+
+The guarded math-guide script remains **unexecuted**. No production database article, question record, question visibility setting, schema, or migration was changed by this code release.
+
 ## Release
 
 1. Run TypeScript, the deterministic suite, production build and `pnpm exec playwright test e2e/equipment-lab-three.spec.ts`. CI also retains the existing Teams journey. The normal WebGL tests require a working software or hardware WebGL 2 implementation; they now require a drawn frame, not just a canvas element. Separate tests deliberately disable WebGL on desktop/mobile, lose an active context, and block the 3D module download.
@@ -52,4 +62,4 @@ The historical OIT full-bank quality review likewise requires the complete curre
 
 ## Local validation evidence
 
-September 13, 2026: both TypeScript configurations and the production build passed. The discovered deterministic suite passed 1,114 tests; 16 database-dependent cases were skipped without a database. All six Equipment Lab browser cases are discovered and included in CI. Local browser execution remains unverified: the Chromium download timed out, and the available remote browser cannot reach this workspace's localhost. Require the remote browser stage before release. No production article correction or question import was executed.
+September 13, 2026: the locally connected environment completed the full repository suite, both TypeScript configurations, and the production build. The seven Equipment Lab browser cases passed locally and then passed against both public domains. No production article correction, question import, or visibility change was executed.
