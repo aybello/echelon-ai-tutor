@@ -13,8 +13,10 @@ suite("Class IV profile activation with MySQL", () => {
   beforeAll(async () => {
     db = await mysql.createConnection(process.env.DATABASE_URL!);
     // Connection-local shadows: neither fixtures nor release code can touch real bank rows.
-    await db.execute("CREATE TEMPORARY TABLE question_bank_meta LIKE question_bank_meta");
-    await db.execute("CREATE TEMPORARY TABLE questions LIKE questions");
+    for (const table of ["question_bank_meta", "questions"]) {
+      const [definition] = await db.query<any[]>(`SHOW CREATE TABLE ${table}`);
+      await db.query(String(definition[0]["Create Table"]).replace(/^CREATE TABLE /, "CREATE TEMPORARY TABLE "));
+    }
   });
   afterAll(async () => { if (db) await db.end(); });
   beforeEach(async () => {
