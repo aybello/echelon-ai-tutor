@@ -1,3 +1,4 @@
+import { repairPublishedArticle } from "./publishedArticleRepair";
 /**
  * Server-Side Rendering for Blog Routes
  *
@@ -91,7 +92,7 @@ function buildBlogPostingJsonLd(post: {
   return JSON.stringify(schema);
 }
 
-function injectBlogPostMeta(
+export function injectBlogPostMeta(
   template: string,
   post: {
     title: string;
@@ -105,6 +106,7 @@ function injectBlogPostMeta(
     updatedAt: Date;
   }
 ): string {
+  post = repairPublishedArticle(post);
   const pageTitle = escapeHtml(post.metaTitle || post.title);
   const pageDesc = escapeHtml(post.metaDescription || post.excerpt);
   const postUrl = `${SITE_URL}/blog/${post.slug}`;

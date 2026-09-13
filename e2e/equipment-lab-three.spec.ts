@@ -116,3 +116,21 @@ test("Equipment Lab recovers when the 3D module stays pending", async ({ page })
   await expect(page.locator("canvas")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /Surface Skimmer/ })).toBeVisible();
 });
+
+for (const viewport of [{ width: 1280, height: 800 }, { width: 390, height: 844 }]) {
+  test(`3D exploded markers show their sidebar numbers at ${viewport.width}px`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    await page.goto("/equipment-lab");
+    // Unlike resilience tests, this regression requires the actual 3D scene.
+    await expect(page.locator('canvas[data-scene-ready="true"]')).toBeVisible();
+    await page.getByRole("button", { name: "Exploded", exact: true }).click();
+    for (const [id, number] of Object.entries({ feedwell: "01", weir: "02", bridge: "03", scrapers: "04", hopper: "05", scum: "06", underflow: "07" })) {
+      const marker = page.getByTestId(`clarifier-part-number-${id}`);
+      await expect(marker).toBeVisible();
+      await expect(marker).toHaveText(number);
+      await expect(marker).toHaveCSS("color", "rgb(14, 116, 144)");
+    }
+    await page.getByRole("button", { name: "Orbit", exact: true }).click();
+    await expect(page.locator('[data-testid^="clarifier-part-number-"]')).toHaveCount(0);
+  });
+}

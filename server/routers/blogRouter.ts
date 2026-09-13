@@ -1,3 +1,4 @@
+import { repairPublishedArticle } from "../publishedArticleRepair";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
@@ -38,7 +39,7 @@ export const blogRouter = router({
         .from(blogPosts)
         .where(and(eq(blogPosts.slug, input.slug), eq(blogPosts.published, 1)))
         .limit(1);
-      return post ?? null;
+      return post ? repairPublishedArticle(post) : null;
     }),
 
   /** Get 3 related posts (same tag or just latest, excluding current slug) */

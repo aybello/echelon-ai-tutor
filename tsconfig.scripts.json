@@ -5,7 +5,8 @@
     "scripts/audit-answer-length-bias.ts",
     "scripts/fix-answer-length-bias.ts",
     "server/answerLengthBias.ts",
-    "drizzle/schema.ts"
+    "drizzle/schema.ts",
+    "scripts/configure-wpi-class4-mock.ts"
   ],
   "exclude": [
     "node_modules",

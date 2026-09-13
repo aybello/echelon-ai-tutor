@@ -1,5 +1,5 @@
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-import { Billboard, OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls } from "@react-three/drei";
 import { Eye, Layers3, Pause, Play, RotateCcw, Sparkles, Waves } from "lucide-react";
 import { type ComponentRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
@@ -153,16 +153,16 @@ function CameraRig({ view, resetSignal, reducedMotion }: { view: ClarifierView; 
 function PartNumber({ id, position, visible }: { id: ClarifierPartId; position: [number, number, number]; visible: boolean }) {
   if (!visible) return null;
   return (
-    <Billboard position={position} follow>
-      <mesh>
-        <circleGeometry args={[0.18, 24]} />
-        <meshBasicMaterial color="#ffffff" />
-      </mesh>
-      <mesh position={[0, 0, 0.002]}>
-        <ringGeometry args={[0.145, 0.18, 24]} />
-        <meshBasicMaterial color="#0e7490" />
-      </mesh>
-    </Billboard>
+    <Html center position={position} zIndexRange={[10, 0]} style={{ pointerEvents: "none" }}>
+      <span
+        data-testid={`clarifier-part-number-${id}`}
+        role="img"
+        aria-label={`Part ${PART_ORDER[id]}: ${CLARIFIER_PARTS.find(part => part.id === id)?.label ?? id}`}
+        style={{ display: "grid", placeItems: "center", width: 32, height: 32, borderRadius: "50%",
+          border: "3px solid #0e7490", background: "#ffffff", color: "#0e7490",
+          font: "bold 14px system-ui, sans-serif", userSelect: "none" }}
+      >{PART_ORDER[id]}</span>
+    </Html>
   );
 }
 

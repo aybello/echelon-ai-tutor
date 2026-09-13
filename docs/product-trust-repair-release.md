@@ -63,3 +63,7 @@ The historical OIT full-bank quality review likewise requires the complete curre
 ## Local validation evidence
 
 September 13, 2026: the locally connected environment completed the full repository suite, both TypeScript configurations, and the production build. The seven Equipment Lab browser cases passed locally and then passed against both public domains. No production article correction, question import, or visibility change was executed.
+
+## Follow-up rendering correction
+
+See `docs/mock-blueprint-labels-release.md`. The follow-up serves the approved correction for the exact legacy math content through both public read paths even before the optional stored-row alignment is applied. The guarded database procedure above still preserves the historical row and aligns its stored fields.

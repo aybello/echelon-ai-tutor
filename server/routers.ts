@@ -1,3 +1,4 @@
+import { selectBlueprintQuestions, WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT, WPI_CLASS4_BLUEPRINT_VERSION } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
 import { activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
@@ -301,7 +302,8 @@ export const appRouter = router({
         const identity = await resolveLearningIdentity(ctx);
         let targets: Record<string, number> = {};
         let preview = false;
-        let pool: { id: number; module: string; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
+        let blueprintVersion = 1;
+        let pool: { id: number; module: string; isCalc?: boolean; cognitiveLevel?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
         if (spec.courseKey === "electrician-309a") {
           const result = await electricianReviewRouter.createCaller(ctx).get309ABetaPractice();
           pool = result.questions;
@@ -321,10 +323,21 @@ export const appRouter = router({
             pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
               .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
           }
-          targets = (await caller.getBankMeta({ bankKey: spec.bankKey }))?.moduleTargets ?? {};
+          const metadata = await caller.getBankMeta({ bankKey: spec.bankKey });
+          targets = metadata?.moduleTargets ?? {};
+          blueprintVersion = metadata?.blueprintVersion ?? 1;
         }
         const count = preview ? 30 : spec.count;
-        const selected = selectMockQuestions(pool, preview ? {} : targets, count);
+        let selected: typeof pool;
+        if (!preview && spec.bankKey === WPI_CLASS4_BANK && blueprintVersion === WPI_CLASS4_BLUEPRINT_VERSION) {
+          try { selected = selectBlueprintQuestions(pool, WPI_CLASS4_BLUEPRINT, count); }
+          catch (error) {
+            console.error("[startMock] Class IV blueprint unavailable", error);
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable. Practice questions remain available while we restore exam coverage." });
+          }
+        } else {
+          selected = selectMockQuestions(pool, preview ? {} : targets, count);
+        }
         if (selected.length !== count) {
           throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable. Please try again shortly." });
         }

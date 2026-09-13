@@ -1,3 +1,4 @@
+import { normalizeWpiClass4Module, WPI_CLASS4_BANK } from "../mockBlueprint";
 /**
  * Quiz Router — Handles question attempt logging and missed questions
  * Powers: Missed Question Quiz, Quick 10 mode, and the Agentic Learning Engine
@@ -189,7 +190,7 @@ export function parseLearnerQuestions(rows: (typeof questions.$inferSelect | Pic
       const options = JSON.parse(r.options) as string[];
       if (!Array.isArray(options) || options.length !== 4 || !options.every(o => typeof o === "string")
         || r.correctIndex < 0 || r.correctIndex >= options.length) return [];
-      return [{ id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
+      return [{ id: r.questionNum, module: r.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(r.module) : r.module, cognitiveLevel: r.cognitiveLevel, difficulty: r.difficulty, question: r.question,
         options, correctIndex: r.correctIndex, explanation: r.explanation,
         steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
         tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined }];
@@ -366,6 +367,17 @@ export const quizRouter = router({
         catch (err) { console.error(`[getBankMeta] malformed formulaLinks for ${row.bankKey}:`, err); }
       }
 
+      if (row.bankKey === WPI_CLASS4_BANK) {
+        modules = [...new Set(modules.map(normalizeWpiClass4Module))];
+        if (moduleTargets) {
+          const normalized: Record<string, number> = {};
+          for (const [module, target] of Object.entries(moduleTargets)) {
+            const key = normalizeWpiClass4Module(module);
+            normalized[key] = (normalized[key] ?? 0) + target;
+          }
+          moduleTargets = normalized;
+        }
+      }
       return {
         bankKey: row.bankKey,
         modules,
@@ -375,6 +387,9 @@ export const quizRouter = router({
         /** Issue L: monotonic counter incremented on admin question edits.
          *  Clients compare against their cached value and invalidate on mismatch. */
         contentVersion: row.contentVersion ?? 1,
+        blueprintVersion: row.blueprintVersion ?? 1,
+        minCalcPerMock: row.minCalcPerMock,
+        recallTargetPct: row.recallTargetPct,
       };
     }),
 
