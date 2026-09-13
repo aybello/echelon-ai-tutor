@@ -1,5 +1,12 @@
+import { drizzle } from "drizzle-orm/mysql2";
+import { getDb } from "./db";
+import { quizRouter } from "./routers/quizRouter";
+import { normalizeWpiClass4Module } from "./mockBlueprint";
+vi.mock("./db", async original => ({ ...await original<typeof import("./db")>(), getDb: vi.fn() }));
+vi.mock("./_core/accessService", async original => ({ ...await original<typeof import("./_core/accessService")>(), resolveAccessForRequest: vi.fn(async () => true) }));
+vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn(async () => ({ userId: null, studentEmail: null })) }));
 import mysql, { type Connection } from "mysql2/promise";
-import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { applyWpiBlueprintRelease, planWpiBlueprintRelease } from "./wpiBlueprintRelease";
 import { WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT } from "./mockBlueprint";
 let db: Connection;
@@ -20,6 +27,7 @@ suite("Class IV profile activation with MySQL", () => {
   });
   afterAll(async () => { if (db) await db.end(); });
   beforeEach(async () => {
+    vi.mocked(getDb).mockResolvedValue(drizzle(db) as any);
     await db.execute("DELETE FROM questions"); await db.execute("DELETE FROM question_bank_meta");
     await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions, contentVersion) VALUES (?, '[]', 800, 2)", [WPI_CLASS4_BANK]);
     const rows: unknown[][] = []; let id = 0;
@@ -51,4 +59,23 @@ suite("Class IV profile activation with MySQL", () => {
     await expect(applyWpiBlueprintRelease(db, planWpiBlueprintRelease(incomplete.metadata, incomplete.questions).sha256, async () => {})).rejects.toThrow("Insufficient");
     expect((await snapshot()).metadata.blueprintVersion).toBe(1);
   });
+  it("uses canonical practice filters with legacy SQL rows and consistent flashcard modules", async () => {
+    const synonyms = ["Equipment Operation & Maintenance", "Treatment Process", "Laboratory Analysis", "Safety & Admin"];
+    for (const [i, area] of WPI_CLASS4_BLUEPRINT.entries()) {
+      await db.execute("UPDATE questions SET module = ? WHERE module = ? AND MOD(questionNum, 2) = 0", [synonyms[i], area.module]);
+    }
+    await db.execute("UPDATE question_bank_meta SET modules = ?, moduleTargets = ?", [JSON.stringify(synonyms), JSON.stringify(Object.fromEntries(synonyms.map((name, i) => [name, WPI_CLASS4_BLUEPRINT[i].total])))]);
+    const caller = quizRouter.createCaller({ user: null, req: { headers: {} }, res: {} } as any);
+    const meta = await caller.getBankMeta({ bankKey: WPI_CLASS4_BANK });
+    expect(meta?.modules).toEqual(synonyms.map(normalizeWpiClass4Module));
+    const flashcards = await caller.getQuestions({ bankKey: WPI_CLASS4_BANK });
+    for (const area of WPI_CLASS4_BLUEPRINT) {
+      expect(flashcards.questions.some(q => q.module === area.module)).toBe(true);
+      const page = await caller.getRandomQuestions({ bankKey: WPI_CLASS4_BANK, module: area.module });
+      expect(page.total).toBe(200); // All canonical and legacy rows qualify.
+      expect(page.questions).toHaveLength(50);
+      expect(page.questions.every(q => q.module === area.module)).toBe(true);
+    }
+  });
+
 });

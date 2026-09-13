@@ -8,12 +8,16 @@ export const WPI_CLASS4_BLUEPRINT = [
   { module: "Security, Safety & Administrative Procedures", total: 15, recall: 5, calculations: 5 },
 ] as const;
 export const WPI_CLASS4_SOURCE = "https://gowpi.org/wp-content/uploads/2026/04/WastewaterTreatment-%E2%80%93-Class-4_mh-fin.pdf";
-export function normalizeWpiClass4Module(module: string): string {
-  const aliases: Record<string, string> = {
+const aliases: Record<string, string> = {
     "Treatment Process": WPI_CLASS4_BLUEPRINT[1].module,
     "Equipment Operation & Maintenance": WPI_CLASS4_BLUEPRINT[0].module,
     "Safety & Admin": WPI_CLASS4_BLUEPRINT[3].module,
-  };
+};
+export function wpiClass4StoredModuleNames(module: string): string[] {
+  const canonical = normalizeWpiClass4Module(module);
+  return [canonical, ...Object.keys(aliases).filter(key => aliases[key] === canonical)];
+}
+export function normalizeWpiClass4Module(module: string): string {
   return Object.hasOwn(aliases, module) ? aliases[module] : module;
 }
 export type BlueprintArea = { module: string; total: number; recall: number; calculations: number };

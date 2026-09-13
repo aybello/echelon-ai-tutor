@@ -1,4 +1,4 @@
-import { normalizeWpiClass4Module, WPI_CLASS4_BANK } from "../mockBlueprint";
+import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
 /**
  * Quiz Router — Handles question attempt logging and missed questions
  * Powers: Missed Question Quiz, Quick 10 mode, and the Agentic Learning Engine
@@ -253,7 +253,8 @@ export const quizRouter = router({
         try {
           return [{
             id: r.questionNum,
-            module: r.module,
+            module: r.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(r.module) : r.module,
+            cognitiveLevel: r.cognitiveLevel,
             difficulty: r.difficulty,
             question: r.question,
             options: JSON.parse(r.options) as string[],
@@ -306,7 +307,9 @@ export const quizRouter = router({
         if (!sampled.length) return { questions: [], locked: true, total: 0, hasMore: false };
         filters.push(inArray(questions.questionNum, sampled.map(q => q.questionNum)));
       }
-      if (input.module) filters.push(eq(questions.module, input.module));
+      if (input.module) filters.push(course.questionBankKey === WPI_CLASS4_BANK
+        ? inArray(questions.module, wpiClass4StoredModuleNames(input.module))
+        : eq(questions.module, input.module));
       if (input.calcOnly) filters.push(eq(questions.isCalc, "yes"));
       if (input.difficulty !== "all") filters.push(eq(questions.difficulty, input.difficulty));
       let priority = sql`0`;
@@ -376,6 +379,9 @@ export const quizRouter = router({
             normalized[key] = (normalized[key] ?? 0) + target;
           }
           moduleTargets = normalized;
+          // Old display-only metadata can contain seven unrelated chapter titles.
+          // Practice tabs must use the same topic keys as this bank's mock targets.
+          if (Object.keys(normalized).length) modules = Object.keys(normalized);
         }
       }
       return {

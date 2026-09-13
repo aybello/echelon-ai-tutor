@@ -34,3 +34,28 @@ describe("published math article repair", () => {
     expect(await caller.getPostBySlug({ slug: old.slug })).toBeNull();
   });
 });
+
+describe("legacy summaries and independent editorial changes", () => {
+  const legacyExcerpt = "Math questions account for 20% of every Ontario water operator exam. This guide covers the 15 essential formulas you must memorize, with worked examples for the most common calculation types.";
+  it("preserves a newer title, SEO description and reading time while repairing unchanged old fields", () => {
+    const post = { ...old, title: "Editor title", metaTitle: "Editor SEO title", metaDescription: "Editor description", readingTimeMinutes: 14, excerpt: legacyExcerpt };
+    expect(repairPublishedArticle(post)).toMatchObject({ title: post.title, metaTitle: post.metaTitle, metaDescription: post.metaDescription,
+      readingTimeMinutes: 14, excerpt: ontarioMathGuide.excerpt, content: ontarioMathGuide.content });
+  });
+  it("repairs actual list and related-post projections without loading full article bodies", async () => {
+    const { content: _content, ...summary } = { ...old, excerpt: legacyExcerpt };
+    const queue: unknown[][] = [[summary], [{ tags: "math" }], [summary]];
+    const db = { select: vi.fn(() => {
+      const result = queue.shift();
+      const chain: any = { from: () => chain, where: () => chain, orderBy: () => chain, limit: () => chain,
+        then: (resolve: any, reject: any) => Promise.resolve(result).then(resolve, reject) };
+      return chain;
+    }) };
+    vi.mocked(getDb).mockResolvedValue(db as any);
+    const caller = blogRouter.createCaller({ user: null, req: { headers: {} }, res: {} } as any);
+    for (const posts of [await caller.listPosts(), await caller.getRelatedPosts({ slug: "another-post", limit: 3 })]) {
+      expect(posts[0].excerpt).toBe(ontarioMathGuide.excerpt);
+      expect(posts[0]).not.toHaveProperty("content");
+    }
+  });
+});

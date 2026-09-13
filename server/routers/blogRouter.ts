@@ -25,7 +25,7 @@ export const blogRouter = router({
       .from(blogPosts)
       .where(eq(blogPosts.published, 1))
       .orderBy(desc(blogPosts.publishedAt));
-    return posts;
+    return posts.map(repairPublishedArticle);
   }),
 
   /** Get a single post by slug */
@@ -70,6 +70,6 @@ export const blogRouter = router({
         .where(and(eq(blogPosts.published, 1), ne(blogPosts.slug, input.slug)))
         .orderBy(desc(blogPosts.publishedAt))
         .limit(30);
-      return rankRelatedPosts(posts, current?.tags ?? null, input.limit);
+      return rankRelatedPosts(posts, current?.tags ?? null, input.limit).map(repairPublishedArticle);
     }),
 });
