@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useState } from "react";
+import { Suspense, useCallback, useState } from "react";
 import { useLocation } from "wouter";
 import { ArrowRight, Box, Info, Monitor } from "lucide-react";
 import ClarifierLab from "@/components/ClarifierLab";
@@ -8,16 +8,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 import { supportsWebGL2 } from "@/lib/webglSupport";
 
-const THREE_MODULE_TIMEOUT_MS = 12_000;
-
-const ClarifierThreeLab = lazy(() => {
-  let timeoutId: ReturnType<typeof setTimeout> | undefined;
-  const timeout = new Promise<never>((_, reject) => {
-    timeoutId = setTimeout(() => reject(new Error("The interactive 3D model took too long to load.")), THREE_MODULE_TIMEOUT_MS);
-  });
-
-  return Promise.race([import("@/components/ClarifierThreeLab"), timeout]).finally(() => clearTimeout(timeoutId));
-});
+import { LazyClarifierThreeLab as ClarifierThreeLab } from "@/components/LazyClarifierThreeLab";
 
 export default function EquipmentLab() {
   const [, navigate] = useLocation();
