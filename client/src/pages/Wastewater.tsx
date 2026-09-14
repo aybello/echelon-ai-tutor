@@ -7,6 +7,7 @@ import { WW_STEPS, WW_LABEL_INFO, WW_GUIDANCE_REVIEWED, WW_GUIDANCE_SOURCES, typ
 import { WWDiagramFor } from "@/components/WastewaterDiagrams";
 import WastewaterMap from "@/components/WastewaterMap";
 import SiteNav from "@/components/SiteNav";
+import GuideClarifierExplorer from "@/components/GuideClarifierExplorer";
 import GuideNav from "@/components/GuideNav";
 import { getGuideResumeStep, shouldResumeGuide } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -37,6 +38,8 @@ function FlowMap({ active, onSelect }: { active: WastewaterStep; onSelect: (s: W
           <div key={s.id} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
             <button
               onClick={() => onSelect(s)}
+              aria-label={`Explore ${s.label}`}
+              aria-pressed={active.id === s.id}
               style={{
                 flexShrink: 0,
                 width: 114,
@@ -61,6 +64,7 @@ function FlowMap({ active, onSelect }: { active: WastewaterStep; onSelect: (s: W
                 textAlign: "center", lineHeight: 1.3,
               }}>{s.label}</div>
               <div style={{ fontSize: 9, color: "#94A3B8", textAlign: "center", lineHeight: 1.3 }}>{s.shortDesc}</div>
+              {s.id === "secondary" && <span className="rounded bg-teal-50 px-2 py-0.5 text-[10px] font-bold text-teal-800">3D available</span>}
             </button>
             {i < WW_STEPS.length - 1 && (
               <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
@@ -98,6 +102,7 @@ export default function Wastewater() {
   };
 
   const handleStepSelect = (step: WastewaterStep) => {
+    setView("learn");
     setActiveStep(step);
     setActiveLabel(null);
   };
@@ -110,6 +115,9 @@ export default function Wastewater() {
         @keyframes flow    { 0%{stroke-dashoffset:30} 100%{stroke-dashoffset:0} }
         @keyframes ping    { 0%{r:8;opacity:0.8} 100%{r:18;opacity:0} }
         @keyframes fadeUp  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        @media (max-width: 900px) {
+          .ww-step-grid { grid-template-columns: 1fr !important; }
+        }
         @media (max-width: 640px) {
           .ww-main { padding: 12px 12px 60px !important; }
           .ww-step-grid { grid-template-columns: 1fr !important; }
@@ -209,7 +217,8 @@ export default function Wastewater() {
         {/* ── STEP EXPLORER ── */}
         {view === "learn" && (
           <div key={activeStep.id} style={{ animation: "fadeUp 0.35s ease both" }}>
-            <div className="ww-step-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 20 }}>
+            {activeStep.id === "secondary" && <GuideClarifierExplorer />}
+            <div className="ww-step-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 380px", gap: 20 }}>
 
               {/* LEFT */}
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
