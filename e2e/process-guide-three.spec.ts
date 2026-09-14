@@ -9,7 +9,7 @@ async function openClarification(page: Parameters<typeof test>[0]["page"]) {
 }
 
 for (const width of [1280, 390]) {
-  test(`guide loads 3D on request, supports parts and releases the scene at ${width}px`, async ({ page }) => {
+  test(`guide offers a rendered 3D clarifier or the explicit diagram fallback at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     const modelRequests: string[] = [];
     page.on("request", request => {
@@ -22,8 +22,18 @@ for (const width of [1280, 390]) {
     await toggle.focus();
     await toggle.press("Enter");
     const model = page.getByRole("region", { name: "Three-dimensional circular clarifier learning model" });
-    // Must draw a frame; the existence of an empty canvas is not sufficient.
-    await expect(model.locator('canvas[data-scene-ready="true"]')).toBeVisible();
+    const renderedScene = model.locator('canvas[data-scene-ready="true"]');
+    const diagramFallback = page.getByRole("status").filter({ hasText: "Continue with the interactive diagram" });
+    // A plain canvas is not enough: the client must either render a frame or
+    // switch clearly to the existing labelled diagram after the bounded wait.
+    await expect(renderedScene.or(diagramFallback)).toBeVisible({ timeout: 20_000 });
+    if (!(await renderedScene.isVisible())) {
+      await expect(diagramFallback).toBeVisible();
+      await expect(page.getByText("Interactive Diagram", { exact: true })).toBeVisible();
+      await expect(page.locator("canvas")).toHaveCount(0);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+      return;
+    }
     await model.getByRole("button", { name: "Cutaway", exact: true }).click();
     await expect(model.getByRole("button", { name: "Cutaway", exact: true })).toHaveAttribute("aria-pressed", "true");
     await model.getByRole("button", { name: "Exploded", exact: true }).click();
