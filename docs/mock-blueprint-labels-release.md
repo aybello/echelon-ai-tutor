@@ -1,6 +1,6 @@
 # Class IV mock balance, equipment labels and published math guidance
 
-Based on main `910573af3799f2118006c1345ee55400a6259627` after PR #81's deployment.
+Based on PR #82 code-only release checkpoint `17a30c7c` after PR #81's deployment.
 
 ## Code release
 
@@ -11,6 +11,14 @@ No schema migration. Deploy this PR after the Quality Gate succeeds. It preserve
 - The Class IV parser preserves cognitive classifications and normalizes the three documented historic module synonyms across mock, practice and flashcard responses. Canonical practice filters query all matching stored aliases. Other banks remain unchanged. Issued mocks still hide answers and require the complete signed session.
 
 Verify the public math article after deployment, including the JSON API and page source: the old no-formula-sheet and universal-20% claims must be absent. Check `/equipment-lab` in Exploded view on desktop/mobile and with WebGL disabled. Do not infer deployment from a green test alone.
+
+### Verified code-only deployment — 2026-09-14
+
+PR #82 was merged and deployed as code only in checkpoint `17a30c7c`. A TiDB-specific test setup defect was corrected by changing only the integration test's rollback-only snapshot setup from the unsupported combined SQL clause to mysql2's portable `beginTransaction()` API. No Class IV activation, stored article correction, question-content change, migration, sign-in, learner attempt, answer submission, or learner-data write was performed.
+
+The isolated Class IV integration suite passed, followed by the complete repository suite (**1,366 tests**), both TypeScript configurations, and the production build. The nine-case Equipment Lab browser resilience suite then passed locally and against both managed and custom production domains. Those public checks cover a controllable model or explicit Diagram fallback, reduced motion, desktop/mobile no-WebGL recovery, lost context, failed/pending 3D modules, and numbered exploded-view labels, without authentication or learner activity.
+
+Both public domains were directly checked for the math-guide read-time repair after deployment propagation. The guide now shows the reviewed September 13, 2026 framing and OWWCO exam-preparation reference, states that calculation content varies by certification area and level, and removes the legacy universal-20% and no-formula-sheet claims. The stored `blog_posts` row remains unchanged; the guarded stored-row correction was not run.
 
 ## Activate the Class IV exam profile only against verified live data
 
