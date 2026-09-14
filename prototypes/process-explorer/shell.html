@@ -1,0 +1,54 @@
+<div id="echelon-process-batch-one">
+<style>
+#echelon-process-batch-one{--pe-bg:light-dark(#f1f6f8,#142838);--pe-panel:light-dark(#ffffff,#1b3346);--pe-ink:light-dark(#173e4b,#e4f2f7);--pe-muted:light-dark(#567382,#b1cad6);--pe-line:light-dark(#d4e2e8,#395465);--pe-teal:light-dark(#087f8b,#6cddd5);--pe-selected:light-dark(#e2f4f3,#214d55);color-scheme:light dark;background:var(--pe-panel);color:var(--pe-ink);font-family:system-ui,sans-serif;border:1px solid var(--pe-line);border-radius:15px;overflow:hidden}
+#echelon-process-batch-one *{box-sizing:border-box}
+#echelon-process-batch-one [hidden]{display:none!important}
+#echelon-process-batch-one .pe-header{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:18px 20px 12px}
+#echelon-process-batch-one .pe-brand{font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--pe-teal);margin-bottom:6px}
+#echelon-process-batch-one .pe-title{font-size:21px;font-weight:500;letter-spacing:-.02em}
+#echelon-process-batch-one .pe-state{font-size:12px;white-space:nowrap;color:var(--pe-muted)}
+#echelon-process-batch-one .pe-state::before{content:"";display:inline-block;width:6px;height:6px;background:var(--pe-teal);border-radius:50%;margin-right:6px}
+#echelon-process-batch-one button{font:inherit;font-size:12px;font-weight:500;color:var(--pe-ink);background:var(--pe-panel);border:1px solid var(--pe-line);border-radius:7px;min-height:37px;padding:8px 11px;cursor:pointer}
+#echelon-process-batch-one button[aria-pressed=true]{background:var(--pe-selected);border-color:var(--pe-teal);color:var(--pe-teal)}
+#echelon-process-batch-one button:disabled{opacity:.55;cursor:default}
+#echelon-process-batch-one .pe-models{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 20px 12px}
+#echelon-process-batch-one .pe-models button{text-align:left;display:flex;align-items:center;gap:8px}
+#echelon-process-batch-one .pe-number{font-size:11px;color:var(--pe-muted)}
+#echelon-process-batch-one .pe-tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:0 20px 13px}
+#echelon-process-batch-one #pe-play{background:var(--pe-teal);color:light-dark(#fff,#113b40);border-color:var(--pe-teal);min-width:115px}
+#echelon-process-batch-one .pe-view{position:relative;height:535px;border-block:1px solid var(--pe-line);overflow:hidden;background:radial-gradient(ellipse at 50% 40%,light-dark(#fff,#27465a),var(--pe-bg))}
+#echelon-process-batch-one canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+#echelon-process-batch-one .pe-labels{position:absolute;inset:0;pointer-events:none}
+#echelon-process-batch-one .pe-marker{position:absolute;transform:translate(-50%,-100%);padding:0;width:35px;min-height:35px;pointer-events:auto;border-radius:50%;background:var(--pe-panel);color:var(--pe-teal);box-shadow:0 2px 7px #14344622}
+#echelon-process-batch-one .pe-marker::after{content:"";position:absolute;width:1px;height:13px;background:var(--pe-muted);left:50%;top:100%;opacity:.5}
+#echelon-process-batch-one .pe-hint{position:absolute;top:13px;left:16px;color:var(--pe-muted);font-size:11px;pointer-events:none}
+#echelon-process-batch-one .pe-legend{position:absolute;bottom:13px;left:16px;display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--pe-muted);pointer-events:none}
+#echelon-process-batch-one .pe-legend i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#2ba4ae;margin-right:5px}
+#echelon-process-batch-one .pe-legend .pe-solids{background:#b49a6d}
+#echelon-process-batch-one .pe-legend .pe-tracer{background:#d49e39}
+#echelon-process-batch-one .pe-error{position:absolute;inset:0;display:grid;place-content:center;padding:24px;background:var(--pe-bg);color:var(--pe-muted);font-size:14px;text-align:center}
+#echelon-process-batch-one[data-graphics-unavailable=true] .pe-view{height:165px}
+#echelon-process-batch-one .pe-journey{display:flex;align-items:center;gap:10px;padding:11px 20px;color:var(--pe-muted);font-size:11px}
+#echelon-process-batch-one input[type=range]{width:100%;min-width:0;height:25px;margin:0;accent-color:var(--pe-teal)}
+#echelon-process-batch-one #pe-percent{min-width:30px;text-align:right;font-variant-numeric:tabular-nums}
+#echelon-process-batch-one .pe-inspector{padding:12px 20px;background:var(--pe-bg);border-top:1px solid var(--pe-line)}
+#echelon-process-batch-one .pe-inspect-row{display:flex;gap:10px;align-items:center;color:var(--pe-muted);font-size:12px}
+#echelon-process-batch-one select{font:inherit;font-size:12px;padding:8px 10px;min-height:38px;border:1px solid var(--pe-line);border-radius:6px;background:var(--pe-panel);color:var(--pe-ink);max-width:100%;min-width:0}
+#echelon-process-batch-one .pe-detail{color:var(--pe-muted);font-size:13px;line-height:1.55;margin-top:10px}
+#echelon-process-batch-one .pe-footer{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--pe-muted);padding:11px 20px;font-size:11px}
+#echelon-process-batch-one .pe-footer a{color:var(--pe-muted);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:520px){#echelon-process-batch-one .pe-header{padding:15px 12px 12px}#echelon-process-batch-one .pe-title{font-size:19px}#echelon-process-batch-one .pe-brand{font-size:11px;letter-spacing:.09em}#echelon-process-batch-one .pe-models{grid-template-columns:repeat(2,minmax(0,1fr));margin-inline:12px}#echelon-process-batch-one .pe-tools{padding-inline:12px}#echelon-process-batch-one button{min-height:44px}#echelon-process-batch-one .pe-view{height:420px}#echelon-process-batch-one .pe-marker{width:44px;min-height:44px}#echelon-process-batch-one .pe-journey,#echelon-process-batch-one .pe-inspector,#echelon-process-batch-one .pe-footer{padding-inline:12px}#echelon-process-batch-one select{min-height:44px;font-size:16px;width:100%}#echelon-process-batch-one .pe-state{font-size:11px}#echelon-process-batch-one .pe-legend{gap:11px}#echelon-process-batch-one .pe-inspect-row{align-items:center}}
+</style>
+<div class="pe-header"><div><div class="pe-brand">ECHELON · 3D PROCESS EXPLORER</div><div id="pe-title" class="pe-title">Intake &amp; screening</div></div><span id="pe-status" class="pe-state" role="status">Ready</span></div>
+<div class="pe-models" role="group" aria-label="Choose a water treatment process">
+<button type="button" data-model="0" aria-pressed="true"><span class="pe-number">01</span>Intake</button>
+<button type="button" data-model="1" aria-pressed="false"><span class="pe-number">02</span>Coagulation</button>
+<button type="button" data-model="2" aria-pressed="false"><span class="pe-number">03</span>Flocculation</button>
+<button type="button" data-model="3" aria-pressed="false"><span class="pe-number">04</span>Sedimentation</button>
+</div>
+<div class="pe-tools" role="group" aria-label="Model controls"><button id="pe-play" type="button">Run process</button><button id="pe-cutaway" type="button" aria-pressed="true">Cutaway</button><button id="pe-explode" type="button" aria-pressed="false" hidden>Exploded view</button><button id="pe-home" type="button" aria-pressed="true">Whole process</button></div>
+<div id="pe-view" class="pe-view"><div id="pe-labels" class="pe-labels"></div><span class="pe-hint">Drag to rotate · scroll or pinch to zoom</span><div class="pe-legend"><span><i></i>Flow</span><span><i class="pe-solids"></i>Particles</span><span><i class="pe-tracer"></i>Tracked parcel</span></div><div id="pe-error" class="pe-error" role="status">Preparing the model…</div></div>
+<div class="pe-journey"><label for="pe-progress">Journey</label><input id="pe-progress" type="range" min="0" max="1000" step="1" value="0" aria-label="Position through the illustrative process"><span id="pe-percent">0%</span></div>
+<div class="pe-inspector"><div class="pe-inspect-row"><label for="pe-inspect">Inspect</label><select id="pe-inspect"><option value="-1">Whole process</option></select></div><div id="pe-detail" class="pe-detail" aria-live="polite">Screens capture debris before a low-lift pump moves raw water onward.</div></div>
+<div class="pe-footer"><span>Batch 1 · Illustrative geometry &amp; timing</span><a href="https://www.cdc.gov/drinking-water/about/how-water-treatment-works.html" target="_blank" rel="noopener noreferrer">Treatment reference</a></div>
+<script>
