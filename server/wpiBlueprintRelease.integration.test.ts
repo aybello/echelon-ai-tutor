@@ -37,7 +37,10 @@ suite("Class IV profile activation with MySQL", () => {
     await db.query("INSERT INTO questions (bankKey,questionNum,module,question,options,correctIndex,explanation,cognitiveLevel,isCalc,reviewStatus) VALUES ?", [rows]);
   });
   it("uses a consistent dry-run, commits only metadata and is idempotent", async () => {
-    await db.query("START TRANSACTION WITH CONSISTENT SNAPSHOT, READ ONLY");
+    // Use mysql2's portable transaction API. TiDB rejects the combined
+    // `WITH CONSISTENT SNAPSHOT, READ ONLY` clause even though this test only
+    // needs a rollback-only snapshot of its connection-local temporary tables.
+    await db.beginTransaction();
     const before = await snapshot();
     const plan = planWpiBlueprintRelease(before.metadata, before.questions);
     await db.rollback();
