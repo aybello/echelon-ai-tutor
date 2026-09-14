@@ -546,7 +546,7 @@ export default function ClarifierThreeLab({ onStudyLink, onUnavailable }: ThreeC
             <p role="tabpanel" className="mt-3 text-sm leading-6 text-slate-600">{lens === "operator" ? selectedPart.operatorLens : selectedPart.examConnection}</p>
           </div>
 
-          <button onClick={onStudyLink} className="mt-5 inline-flex min-h-10 items-center text-sm font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 transition-colors hover:text-teal-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700">Open wastewater study guide</button>
+          {onStudyLink && <button onClick={onStudyLink} className="mt-5 inline-flex min-h-10 items-center text-sm font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 transition-colors hover:text-teal-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700">Open wastewater study guide</button>}
         </aside>
       </div>
 
