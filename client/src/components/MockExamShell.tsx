@@ -649,10 +649,17 @@ export default function MockExamShell({
       unscoredQuestionNums: scoredResult?.unscoredQuestionNums,
     });
   }, [answers, questions, results, scoredResult]);
+  // Keep the recorder mounted while the server evaluates the submitted exam.
+  // Closing it as soon as the UI switches to results would flush before
+  // `scoredResult` supplies the authoritative Class IV 100-question total.
+  const recordMockActivity =
+    !legacyDraft &&
+    !showPreviewGate &&
+    (examState === "active" || (examState === "results" && !scoredResult));
   useLearningActivitySession({
     courseKey: productKey,
     activityType: "mock_exam",
-    enabled: examState === "active" && !showPreviewGate,
+    enabled: recordMockActivity,
     unitsCompleted: answered,
     score: results?.correct,
     total: resultStats?.total,
