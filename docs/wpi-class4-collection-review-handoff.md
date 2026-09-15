@@ -2,7 +2,24 @@
 
 Requested September 15, 2026 after the user reported a second Manitoba seat purchase. The specific order was not independently accessed. Review the collection bank, not the previously repaired Class IV wastewater treatment bank.
 
-## Manus: retrieve the current bank first
+## Export received — September 15, 2026
+
+The complete production export has now been received and its package and 503 individual row hashes verified. It contains 503 visible, unreviewed questions in the canonical bank, nine calculation flags and no cognitive classifications. The original file stays private. Its content SHA-256 is `397fc0949a31760494116d368cc69ecc465cbe84baddf7daf597ef9cce3b0bab`.
+
+This branch now contains 253 authored historical replacements, including questions 1–150 and 103 additional technical/safety corrections. They are a DRAFT checkpoint: 250 historical rows still need editorial disposition, all 250 requested additions remain to be written, and the authored questions need the final editorial/coverage pass. Do not import this checkpoint or call the bank finished. No application or production-data change is included.
+
+Ten focused checks pass, including independently calculated wet-well cycling, circular-pipe flow maxima and Manning slope. They validate specific properties; they do not prove every question has passed substantive review.
+
+Reproduce the private before/after ledger and preview with:
+
+```sh
+node --test scripts/collectionReview.test.mjs
+node scripts/build-collection-review.mjs /private/export-wpi-class4-collection-review-20260915.json /private/new-output-directory
+```
+
+The builder is offline and has no database connection. It refuses a changed baseline or row hashes and never overwrites an existing output. It preserves existing IDs, bank keys, question numbers, correct-answer positions and publication state. Rewritten wording still changes historical item meaning: retain original content/revision evidence, and do not silently regrade or reinterpret historical attempts against new wording. Metadata targets are proposed only; no strict mock profile is activated.
+
+## Original read-only export instructions
 
 Course/product/route key: `wpi-class4-water-coll`. Canonical database bank key: `wpi-class4-wastewater-coll`. The old route name says “water-coll” but the course registry identifies Wastewater Collection. The exporter reads both keys, reports them separately, and must not merge or rename rows automatically.
 
@@ -30,8 +47,8 @@ The scored collection outline uses five areas at 23/23/16/20/18, with 20 recall 
 
 Initial code inspection found this collection mock still configured for 100 questions. PR #87's 110-question simulation applies to wastewater treatment, not this collection bank. Extend the signed-session and scoring implementation deliberately after confirming the current bank's classifications and content; editing the page's question count alone is insufficient. Record this as a separate exam-configuration repair alongside the content work.
 
-## Current status
+## Remaining release work
 
-The repository seed for question 35 asks the purpose of force-main design. Its correct option is a lengthy comprehensive specification, while the alternatives say pipe only, pump only and valve only. This is a concrete answer-cue weakness in the repository sample, not confirmation of the corresponding live row. The live export must establish whether that wording still serves learners before preparing its guarded replacement.
+Complete the 250 untouched historical dispositions and final-check all 253 authored replacements. Write 250 original additions against actual gaps, then check factual accuracy, plausible distractors, duplicates, calculations and per-area cognitive coverage. The source outline supports classification but is not a factual source for every technical or legal assertion. Background references in the draft need item-level confirmation where a specific requirement is asserted.
 
-The exact course mapping, official outline and read-only export tooling are ready. The full live question audit, repairs and 250 additions are pending the export. No claim is made that repository seeds equal the live bank or that existing questions are already good. No production data has been changed.
+Current metadata still uses old targets and 50% recall; the proposed current Collection targets are 23/23/16/20/18 and 20/80 recall/application. The completed bank must support the required 16 calculations, including their area allocation, before strict generation is enabled. The final importer must compare fresh live rows, retain rollback/revision evidence and rehearse against an isolated database. No importer or production SQL is supplied with this incomplete checkpoint.

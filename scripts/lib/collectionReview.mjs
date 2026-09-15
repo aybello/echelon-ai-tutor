@@ -1,0 +1,84 @@
+import { createHash } from 'node:crypto';
+import { canonical, sha256, BANK_KEY, COURSE_KEY } from '../export-wpi-class4-collection-review.mjs';
+export const BASELINE_SHA256 = '397fc0949a31760494116d368cc69ecc465cbe84baddf7daf597ef9cce3b0bab';
+export const AREAS = {
+ E: 'Equipment Operation, Evaluation & Maintenance',
+ C: 'Collection System O&M & Restoration',
+ L: 'Lift Station Operation & Maintenance',
+ M: 'Collection System Monitoring, Evaluation & Adjustment',
+ S: 'Security, Safety & Administrative Procedures',
+};
+export const TARGETS = { E:23, C:23, L:16, M:20, S:18 };
+export const SOURCES = {
+ om: { title:'NEIWPCC: Optimizing Operation, Maintenance, and Rehabilitation of Sanitary Sewer Collection Systems', url:'https://www.epa.gov/sites/default/files/2015-10/documents/sso_optimizing_enitre_doc.pdf', note:'Technical background; original Echelon scenarios. US examples do not establish Manitoba legal requirements.' },
+ lift: { title:'US EPA: Collection Systems Technology Fact Sheet — Sewers, Lift Station', url:'https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=901U0X00.TXT', note:'Technical background; confirm equipment-specific operating requirements with the manufacturer.' },
+ force: { title:'US EPA: Wastewater Technology Fact Sheet — Sewers, Force Main', url:'https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P10099PU.TXT', note:'Technical background; no US regulatory requirement is asserted as Manitoba law.' },
+ confined: { title:'CCOHS: Confined Space — Introduction', url:'https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html', note:'General hazard-control guidance; applicable law and the site-specific procedure remain authoritative.' },
+ mbwsh: { title:'Manitoba Workplace Safety and Health Regulation, M.R. 217/2006', url:'https://web2.gov.mb.ca/laws/regs/current/_pdf-regs.php?reg=217/2006', note:'Parts 14 and 15; question 251 specifically references subsection 15.6(1). Retrieved 2026-09-15.' },
+ mb: { title:'Manitoba Water and Wastewater Facility Operators Certification Program', url:'https://www.gov.mb.ca/sd/waste_management/wastewater/wastewater_certification_program/index.html', note:'Jurisdiction/program context only; no incident-reporting deadline is inferred from this page.' },
+ math: { title:'Echelon independently derived hydraulics and dimensional analysis', url:null, note:'Use the assumptions and working printed in the item. Mathematical checks are in collectionReview.test.mjs; these are not universal regulatory design criteria.' },
+};
+export function parseCorrections(texts) {
+ const all = texts.flatMap(text => text.split(/\r?\n/).filter(line => line && !line.startsWith('#')).map(line => {
+  const fields=line.split('|');
+  if(fields.length!==10) throw new Error('INVALID_CORRECTION_COLUMNS');
+  const [number,area,cognitiveLevel,question,correct,...tail]=fields;
+  const [wrong1,wrong2,wrong3,explanation,source]=tail;
+  if(!/^\d+$/.test(number)||!AREAS[area]||!['recall','application'].includes(cognitiveLevel)||!SOURCES[source]) throw new Error('INVALID_CORRECTION_CLASSIFICATION');
+  const options=[correct,wrong1,wrong2,wrong3];
+  if(options.some(x=>!x.trim())||new Set(options.map(x=>x.toLowerCase())).size!==4||!question||!explanation) throw new Error('INVALID_CORRECTION_CONTENT');
+  return {questionNum:Number(number),area,cognitiveLevel,question,correct,wrong:[wrong1,wrong2,wrong3],explanation,source};
+ }));
+ if(new Set(all.map(x=>x.questionNum)).size!==all.length) throw new Error('DUPLICATE_CORRECTION');
+ return all.sort((a,b)=>a.questionNum-b.questionNum);
+}
+export function validateBaseline(snapshot) {
+ if(snapshot.format!=='echelon-wpi-class4-collection-review-v1'||snapshot.courseKey!==COURSE_KEY||snapshot.canonicalBankKey!==BANK_KEY) throw new Error('WRONG_EXPORT');
+ const digest=sha256({questions:snapshot.questions,metadata:snapshot.metadata,moduleOverviews:snapshot.moduleOverviews});
+ if(digest!==BASELINE_SHA256||snapshot.contentSha256!==digest) throw new Error('BASELINE_CHANGED');
+ if(snapshot.questions.length!==503||new Set(snapshot.questions.map(q=>q.id)).size!==503||new Set(snapshot.questions.map(q=>q.questionNum)).size!==503||snapshot.questions.some(q=>q.bankKey!==BANK_KEY)) throw new Error('INCOMPLETE_BASELINE');
+ const hashes=new Map(snapshot.rowHashes.map(r=>[r.id,r]));
+ if(hashes.size!==503||snapshot.rowHashes.length!==503) throw new Error('INVALID_ROW_HASHES');
+ for(const q of snapshot.questions) { const h=hashes.get(q.id); if(!h||h.bankKey!==q.bankKey||h.questionNum!==q.questionNum||h.sha256!==sha256(q)) throw new Error('ROW_HASH_MISMATCH'); }
+ return true;
+}
+const words=text=>text.match(/[\p{L}\p{N}]+/gu)?.length??0;
+export function screenQuestion(q) {
+ const findings=[];
+ let options; try {options=JSON.parse(q.options);} catch {return ['invalid_options_json'];}
+ if(!Array.isArray(options)||options.length!==4||options.some(x=>typeof x!=='string')||!Number.isInteger(q.correctIndex)||q.correctIndex<0||q.correctIndex>3) return ['invalid_options_or_key'];
+ const correct=options[q.correctIndex], wrong=options.filter((_,i)=>i!==q.correctIndex);
+ if(words(correct)>=12&&words(correct)>=1.6*Math.max(...wrong.map(words))) findings.push('long_correct_answer_candidate');
+ if(wrong.some(x=>/\bonly\b/i.test(x))) findings.push('restrictive_distractor_candidate');
+ if(/all of the above|none of the above/i.test(options.join(' '))) findings.push('combined_option_candidate');
+ if(!q.cognitiveLevel) findings.push('missing_cognitive_classification');
+ if(!q.explanation?.trim()) findings.push('missing_explanation');
+ return findings;
+}
+export function buildReview(snapshot,corrections) {
+ validateBaseline(snapshot);
+ const byNumber=new Map(snapshot.questions.map(q=>[q.questionNum,q]));
+ const replacementMap=new Map();
+ const patches=corrections.map(c=> {
+  const original=byNumber.get(c.questionNum); if(!original) throw new Error('UNKNOWN_QUESTION');
+  const options=[...c.wrong]; options.splice(original.correctIndex,0,c.correct);
+  const isCalc= new Set([51,189,228]).has(c.questionNum)?'yes':'no';
+  const source=SOURCES[c.source];
+  const after={...original,question:c.question,module:AREAS[c.area],options:JSON.stringify(options),explanation:c.explanation,steps:null,tip:null,isCalc,cognitiveLevel:c.cognitiveLevel,topic:c.question.replace(/[?]$/,''),sourceTitle:source.title,sourceUrl:source.url,sourceReference:source.note,blueprintObjective:AREAS[c.area]};
+  // Preserve id, bank, number, answer position, publication status and review timestamps.
+  replacementMap.set(original.id,after);
+  return {id:original.id,questionNum:original.questionNum,beforeSha256:sha256(original),afterSha256:sha256(after),before:original,after,disposition:'authored_replacement_pending_final_editorial_pass'};
+ });
+ const ledger=snapshot.questions.map(q=>({id:q.id,questionNum:q.questionNum,baselineSha256:sha256(q),screening:screenQuestion(q),status:replacementMap.has(q.id)?'replacement_authored':'editorial_review_remaining'}));
+ const proposed=snapshot.questions.map(q=>replacementMap.get(q.id)||q);
+ const counts={}; for(const row of ledger) counts[row.status]=(counts[row.status]||0)+1;
+ const content={baselineSha256:BASELINE_SHA256,patches,ledger};
+ return {format:'echelon-collection-review-checkpoint-v1',releaseReady:false,courseKey:COURSE_KEY,bankKey:BANK_KEY,counts,
+  blockers:['Complete editorial disposition of all 503 historical questions.','Finish and independently validate 250 additional original questions.','Verify per-area recall/application/calculation supply before activating any strict exam profile.','Complete a fresh production comparison, backup verification and database-backed import/rollback rehearsal.'],
+  proposedBlueprint:{source:'https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf',targets:Object.fromEntries(Object.entries(TARGETS).map(([a,n])=>[AREAS[a],n])),scored:100,pretest:10,recall:20,application:80,calculations:16,activated:false},
+  proposedScreening:proposed.filter(q=>replacementMap.has(q.id)).map(q=>({questionNum:q.questionNum,findings:screenQuestion(q)})),
+  contentSha256:sha256(content),...content};
+}
+export function requireCompleteRelease(review) {
+ if(review.releaseReady!==true||review.counts.editorial_review_remaining||!Array.isArray(review.newQuestions)||review.newQuestions.length!==250) throw new Error('INCOMPLETE_REVIEW_NOT_IMPORTABLE');
+}

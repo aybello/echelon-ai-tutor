@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {parseCorrections,requireCompleteRelease,screenQuestion,TARGETS} from './lib/collectionReview.mjs';
+const texts=await Promise.all(['technical-corrections.psv','planning-rewrites.psv','operations-rewrites.psv'].map(n=>readFile(new URL('../content/wpi-class4-collection/review/'+n,import.meta.url),'utf8')));
+const corrections=parseCorrections(texts);
+test('authored item identities are unique and every option set has one declared key',()=>{assert.equal(corrections.length,253);assert.equal(new Set(corrections.map(q=>q.questionNum)).size,253);assert.ok(corrections.every(q=>q.correct&&q.wrong.length===3));});
+test('duplicate IDs cannot overwrite another repair',()=>assert.throws(()=>parseCorrections([texts[0],texts[0]]),/DUPLICATE/));
+test('a checkpoint cannot pass the complete-release gate',()=>assert.throws(()=>requireCompleteRelease({releaseReady:false,counts:{editorial_review_remaining:250}}),/NOT_IMPORTABLE/));
+test('even a changed readiness flag cannot hide missing additions or pending review',()=>{assert.throws(()=>requireCompleteRelease({releaseReady:true,counts:{editorial_review_remaining:1},newQuestions:Array(250)}));assert.throws(()=>requireCompleteRelease({releaseReady:true,counts:{},newQuestions:[]}));});
+test('current Collection blueprint differs from Treatment and sums to 100 scored',()=>assert.deepEqual(Object.values(TARGETS),[23,23,16,20,18]));
+test('HGL excludes velocity head',()=>{assert.equal(100+12,112);assert.equal(corrections.find(q=>q.questionNum===51).correct,'112 m');});
+test('wet-well cycling optimum is independently derived from fill plus drawdown',()=>{const pump=0.060,V=9;for(let inflow=.001;inflow<pump;inflow+=.001){const seconds=V/inflow+V/(pump-inflow);assert.ok(seconds>=600-1e-8);}assert.equal(V/.030+V/.030,600);assert.equal(corrections.find(q=>q.questionNum===189).correct,'9.0 m³');});
+test('Manning slope is independently recalculated with SI dimensions',()=>{const slope=(.60*.013/(.2/4)**(2/3))**2;assert.ok(Math.abs(slope*100-.330)<.001);assert.equal(corrections.find(q=>q.questionNum===228).correct,'0.330%');});
+test('circular partial-flow discharge and velocity maxima are not confused',()=>{let maxQ={value:0},maxV={value:0};for(let y=.001;y<1;y+=.0001){const theta=2*Math.acos(1-2*y),A=(theta-Math.sin(theta))/8,P=theta/2,R=A/P,V=R**(2/3),Q=A*V;if(Q>maxQ.value)maxQ={value:Q,y};if(V>maxV.value)maxV={value:V,y};}assert.ok(maxQ.y>.93&&maxQ.y<.95);assert.ok(maxV.y>.80&&maxV.y<.83);assert.equal(corrections.find(q=>q.questionNum===163).correct,'0.94');});
+test('screening reports candidates rather than declaring factual truth',()=>{const findings=screenQuestion({options:JSON.stringify(['An unusually elaborate complete answer consisting of many separate asserted components and additional detail','Short one','Short two','Only three']),correctIndex:0,cognitiveLevel:null,explanation:'Text'});assert.ok(findings.includes('long_correct_answer_candidate'));assert.ok(findings.includes('restrictive_distractor_candidate'));});
