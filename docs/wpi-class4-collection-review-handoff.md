@@ -1,8 +1,12 @@
-# WPI Class IV Wastewater Collection — complete historical repair
+# WPI Class IV Wastewater Collection — historical repair handoff
 
-## Completed September 15, 2026
+## Revised September 15, 2026 after priority review
 
-The remaining 250 existing questions have been repaired. Together with the earlier 253, this branch now contains revised content for **all 503 historical questions**, numbered 1–503. The final pass also improved distractors in the earlier batch. This completes the historical content repair, not a production import. The separately requested **250 new additions have not been authored** and are not counted as repairs.
+The 25 items in the Manus/user-led priority worklist have been addressed in a follow-up revision. See [the item-by-item dispositions and source boundaries](wpi-class4-collection-priority-review.md). All 25 received wording, explanation or source changes; the other 478 proposed rows remain unchanged from PR head `b95eabac31d827a829413d96c96823c9dda1715f`.
+
+The regenerated package digest is **`3619dce31f8769ed1e9dc36ee43c08b82938606f1dbf131a68fae8f48d8a187f`**. It supersedes `6827c794bc6eb417da54449d46feabe9f7590ba6f2761496e6d03d84d6adef8b`; do not import the earlier compiled package. Regenerate from this revision and the unchanged original private export. The digest identifies the compiled content, not the ZIP container.
+
+Together with the earlier 253 replacements, this branch contains authored revisions for **all 503 historical questions**, numbered 1–503. The follow-up pass resolves the 25 priority review items. The completion flag records replacement coverage; automated checks do not certify factual accuracy, difficulty, or exam equivalence. The separately requested **250 new additions have not been authored** and are not counted as repairs.
 
 Course/product/route: `wpi-class4-water-coll`. Canonical question bank: `wpi-class4-wastewater-coll`. This is Wastewater Collection, not Wastewater Treatment.
 
@@ -58,7 +62,7 @@ The immutable original export must accompany those files in the private handoff.
 7. Invalidate relevant question caches. Verify all 503 identities and revised hashes after commit, learner-visible inventory, module filtering, practice, flashcards, and a complete signed mock through submission. Confirm existing saved attempts and bookmarks still resolve correctly, with historical revision handling as described above. Test with an isolated test learner, not the customer's account.
 8. Retain the backup, transaction evidence, package digest, resulting content version and smoke-test results. For rollback, compare current rows with `expectedCurrentSha256` before restoring the supplied original fields; refuse intervening edits. Restore the original module menu, advance the cache version beyond the failed release instead of reusing a stale version, and invalidate caches. Preserve attempts made during either version and associate their content revision correctly.
 
-`releaseReady` remains false because no production import, database-backed rehearsal, backup verification or active-session check was performed here. That flag does not mean historical questions remain unwritten. The content work is complete; controlled application and verification are the release operator's next steps.
+`releaseReady` remains false because no production import, database-backed rehearsal, backup verification or active-session check was performed here. All historical identities have authored replacements, and the 25 priority findings have dispositions. This does not authorize a merge or live import. Controlled application and verification remain separate from the content repair; no additional per-question approval workflow is introduced.
 
 ## Separate follow-up work
 
