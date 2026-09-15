@@ -322,6 +322,14 @@ test("paid practice continues past 50 questions and loads saved review slices", 
   const db = await mysql.createConnection(process.env.DATABASE_URL!);
   const email = "practice-e2e-learner@echelon.test";
   const bankKey = "class3-water-dist";
+  let apiWindowEndsAt = 0;
+  page.on("response", response => {
+    if (!response.url().includes("/api/trpc/")) return;
+    const resetSeconds = Number(response.headers()["ratelimit-reset"]);
+    if (Number.isFinite(resetSeconds) && resetSeconds > 0) {
+      apiWindowEndsAt = Date.now() + resetSeconds * 1000;
+    }
+  });
   try {
     await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
     await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Paging module", "Rare module"])]);
@@ -358,6 +366,11 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       }
     }
     expect(seen.size).toBe(52);
+    // Answering 52 questions at automation speed compresses a real study session
+    // into seconds. Respect the server's advertised request window before the
+    // next journey; keep the production limiter and every paging assertion intact.
+    const remainingWindow = apiWindowEndsAt - Date.now();
+    if (remainingWindow > 0) await page.waitForTimeout(remainingWindow + 250);
     // These are outside the selected module and initial 50-item working set.
     for (const [mode, question] of [["bookmarked", "960081"], ["missed", "960082"], ["low-confidence", "960082"]]) {
       await page.goto(`/${bankKey}?mode=${mode}`);
