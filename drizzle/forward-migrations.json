@@ -123,7 +123,7 @@
       "version": 64,
       "tag": "0064_flashcard_progress_operations",
       "file": "drizzle/0064_flashcard_progress_operations.sql",
-      "sha256": "db067860ddcf57f1aca21babaf21c1a4f2e0ae18fce4cd9c54f187fc80b7166a",
+      "sha256": "cebe081ea2d8001196ea88df6d330e38ea688d68eb28cbaafdff3d969ed1d04e",
       "proposedOnly": true,
       "standaloneApply": {
         "tables": [
