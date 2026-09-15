@@ -31,6 +31,10 @@ The bank itself is not proportioned like a single mock. Its classified supply ca
 
 This is a shared WPI preparation bank, not a Manitoba-law course. Province-dependent safety questions now use CCOHS guidance; classification uses the Canadian certification best-practice framework. Permit authorization and local obligations remain subject to the applicable authority. Sources distinguish technical background from binding local requirements. NIOSH's 100 ppm H2S IDLH is named as a NIOSH value, not a universal legal entry threshold. Heat-emergency guidance is checked against CCOHS. Mathematical answers are independently derived. The questions are original practice material; no WPI endorsement or access to actual exam questions is claimed.
 
+## Public exam-material comparison
+
+A subsequent [exam-style review](wpi-class4-collection-exam-style-review.md) inspected the official guide examples, public ABC sample material and 79 unique Echelon items. It identifies metric-only calculation presentation, weak distractors in several items, coarse task mapping and incomplete reference alignment. The separate online Collection samples could not be loaded. This is a documented comparison, not a new content revision or proof of WPI difficulty equivalence; the package digest above is unchanged.
+
 ## Reproduce and inspect
 
 ```sh
