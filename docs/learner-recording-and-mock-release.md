@@ -16,11 +16,11 @@ Checked September 15, 2026: [Manitoba's certification page](https://www.gov.mb.c
 
 ## Migration and controlled release
 
-This branch adds **only migration 0064_flashcard_progress_operations**. Before release, check current main and the production migration ledger for a numbering collision. Do not edit an already-applied migration. Do not run the unrestricted all-pending migration command.
+This release adds **only migration 0064_flashcard_progress_operations**. The Class IV client result path was also repaired so both the learner-facing Incorrect/Skipped counts and the final `learning_activity_sessions` write use the authoritative 100-question scored subset—not the 110 delivered questions.
 
-1. Run the full remote Quality Gate, including the new database-backed flashcard tests and extended Teams browser journeys. Require evidence from the actual proposed head.
-2. Verify a recoverable production backup and retain the backup reference privately.
-3. Apply only the additive migration in the authorized production release environment:
+1. The exact release head `2c02ff63fed9f66c840a9c21f290cbe93ee95985` passed GitHub Quality Gate run `35011786769`, including database-backed flashcard tests and the extended Teams browser journey.
+2. A private, checksum-verified pre-migration snapshot was captured at `2026-09-15T18:49:38.885Z` and stored under `release-backups/pr87/flashcard-0064/6205f872999aa055dd59bf9cc08c587b1c1e7f9fea4ba4ad358075027e3c0ada.json`. It preserved the 32 legacy `flashcard_progress` records and the migration ledger before the schema change. The snapshot reference is not a public artifact.
+3. Only the additive migration ran in the authorized production release environment:
 
 ```sh
 MIGRATION_APPROVED=APPLY_APPROVED_STANDALONE_MIGRATION \
@@ -29,7 +29,7 @@ MIGRATION_TARGET=0064_flashcard_progress_operations \
 node --import tsx scripts/db/migrate.ts apply-standalone
 ```
 
-Supply `DATABASE_URL` through the release environment, never the command text or repository. Verify the ledger, `flashcard_progress_state` and `flashcard_progress_operations` against the migration contract. No existing progress is deleted; legacy IDs are merged on first write. Existing losses cannot be reconstructed automatically from data already overwritten before this fix.
+The runner applied the declared checksum in 291 ms and marked version 64 `applied`. The verified target tables are `flashcard_progress_state` and `flashcard_progress_operations`; both were empty immediately after the additive DDL and the legacy table remained at 32 rows. No existing progress is deleted; legacy IDs are merged on first write. Existing losses cannot be reconstructed automatically from data already overwritten before this fix.
 
 4. Deploy the checked application and verify its release marker. With dedicated QA identities, exercise a sole WPI Class IV Course Pass through guide recording, an aborted initial tracking request, reconnect, Equipment Lab, flashcard failed save/retry/reload, and mock completion with unanswered items. Confirm manager reporting stays scoped to the operator's organization.
 5. Follow `docs/mock-blueprint-labels-release.md` to run the read-only Class IV profile preflight against the exact current bank. Retain the current Manitoba/WPI references as edition evidence. If classifications or joint quotas fail, repair the identified bank records and repeat preflight; do not activate by bypassing its checks. After a successful reviewed preflight and backup, use its guarded apply command and verify multiple 110-item mocks, checking quotas on the 100 scored subset server-side.
@@ -38,7 +38,7 @@ A code rollback leaves the additive tables intact. The old application does not 
 
 ## Verification and honest limits
 
-Local deterministic suite: 1,141 passed, 16 database-dependent cases skipped. Both TypeScript configurations and the migration manifest passed. Focused mock/recording tests prove retries, exact scored quotas, hidden pre-test identities, partial-submission rejection, final drain and legacy session compatibility. Real database tests cover concurrent first saves, union of legacy rows, independent device updates, replay, payload conflicts and account isolation. The Teams browser regression exercises course attribution and a failed tracking start, plus failed flashcard writes and reload preservation. Database/browser execution requires the isolated CI services; no production credentials or customer sessions were used during implementation.
+The corrected release head passed 1,383 local tests, both TypeScript configurations, the migration manifest, and a production build. The exact-head GitHub Quality Gate run `35011786769` also passed its isolated database and Teams browser journey. Focused mock/recording tests prove the Class IV 100-scored/10-unscored denominator, retries, exact scored quotas, hidden pre-test identities, partial-submission rejection, final drain and legacy session compatibility. Real database tests cover concurrent first saves, union of legacy rows, independent device updates, replay, payload conflicts and account isolation. The Teams browser regression exercises course attribution, a failed tracking start, failed flashcard writes/reload preservation, and the final persisted `{ score, total }` mock record. No customer credentials or customer sessions were used during implementation or migration validation.
 
 Keepalive is best-effort: a hard browser/device shutdown while offline cannot guarantee a final delivery. The UI tells learners to keep the page open during retries. Sessions expire after five minutes; unrecoverable intervals are disclosed, not credited as if saved. This is platform-recorded, interaction-sensitive study time, not a claim of verified attendance or regulatory credit.
 
