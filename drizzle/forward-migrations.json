@@ -118,6 +118,19 @@
       "standaloneApply": {
         "tables": ["question_content_snapshots"]
       }
+    },
+    {
+      "version": 64,
+      "tag": "0064_flashcard_progress_operations",
+      "file": "drizzle/0064_flashcard_progress_operations.sql",
+      "sha256": "db067860ddcf57f1aca21babaf21c1a4f2e0ae18fce4cd9c54f187fc80b7166a",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "flashcard_progress_state",
+          "flashcard_progress_operations"
+        ]
+      }
     }
   ]
 }

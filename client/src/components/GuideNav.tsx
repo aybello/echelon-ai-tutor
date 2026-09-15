@@ -10,7 +10,7 @@ import {
   type GuideLevel,
 } from "@/lib/guideRegistry";
 import { useGuideProgress } from "@/hooks/useGuideProgress";
-import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import GuideStudyRecording from "@/components/GuideStudyRecording";
 import { getAllCourses } from "@shared/courseRegistry";
 
 interface GuideNavProps {
@@ -39,13 +39,7 @@ export default function GuideNav({ guideId, currentStepId, currentStepLabel, tot
   );
   const practicePath = practiceHref.split("?")[0];
   const trackingCourse = getAllCourses().find((course) => course.quizPath === practicePath)?.courseKey ?? null;
-  useLearningActivitySession({
-    courseKey: trackingCourse ?? "",
-    activityType: "process_guide",
-    enabled: trackingCourse !== null,
-    topic: currentStepLabel,
-    unitsCompleted: progress.record.completedStepIds.length,
-  });
+
 
   const handleJurisdiction = (value: GuideJurisdiction) => progress.setJurisdiction(value);
   const visibleLevels = progress.preferences.jurisdiction === "wpi"
@@ -54,6 +48,7 @@ export default function GuideNav({ guideId, currentStepId, currentStepLabel, tot
 
   return (
     <section className="guide-nav" aria-label="Process Guides navigation">
+      <GuideStudyRecording preferredCourse={trackingCourse ?? undefined} topic={currentStepLabel} unitsCompleted={progress.record.completedStepIds.length} />
       <style>{`
         .guide-nav { position: relative; z-index: 30; font-family: 'Sora', sans-serif; }
         .guide-nav__rail { scrollbar-width: none; }

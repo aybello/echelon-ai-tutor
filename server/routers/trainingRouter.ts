@@ -78,14 +78,18 @@ async function sessionsFor(db: NonNullable<Awaited<ReturnType<typeof getDb>>>, e
 }
 
 export const trainingRouter = router({
-  start: publicProcedure.input(z.object({ sessionKey: z.string().uuid(), courseKey: z.string().min(1).max(64), activityType, topic: z.string().trim().max(128).optional() })).mutation(async ({ ctx, input }) => {
+  start: publicProcedure.input(z.object({ sessionKey: z.string().uuid(), courseKey: z.string().min(1).max(64), activityType, startedAt: z.number().int().optional(), topic: z.string().trim().max(128).optional() })).mutation(async ({ ctx, input }) => {
     const { email, userId } = requireIdentity(ctx); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
     const courseKey = canonicalCourseKey(input.courseKey); await assertAccess(ctx, courseKey);
-    const [existing] = await db.select({ email: learningActivitySessions.studentEmail }).from(learningActivitySessions).where(eq(learningActivitySessions.sessionKey, input.sessionKey)).limit(1);
-    if (existing) { if (existing.email !== email) throw new TRPCError({ code: "CONFLICT", message: "Session key is already in use." }); return { tracking: true, sessionKey: input.sessionKey }; }
+    const startedAt = input.startedAt == null ? new Date() : new Date(input.startedAt);
+    if (startedAt.getTime() > Date.now() + 5000 || Date.now() - startedAt.getTime() > SESSION_EXPIRY_MS) throw new TRPCError({ code: "BAD_REQUEST", message: "Recording could not start within five minutes. Please start a fresh session." });
     const ownership = await resolveTrainingOwnership(email, userId, courseKey);
-    await db.insert(learningActivitySessions).values({ sessionKey: input.sessionKey, userId, studentEmail: email, ...ownership, courseKey, activityType: input.activityType, topic: input.topic || null });
-    await trackEvent("training_session_started", {
+    const inserted = await db.insert(learningActivitySessions).values({ sessionKey: input.sessionKey, userId, studentEmail: email, ...ownership, courseKey, activityType: input.activityType, startedAt, topic: input.topic || null })
+      .onDuplicateKeyUpdate({ set: { sessionKey: sql`${learningActivitySessions.sessionKey}` } });
+    const [existing] = await db.select().from(learningActivitySessions).where(eq(learningActivitySessions.sessionKey, input.sessionKey)).limit(1);
+    if (existing.studentEmail !== email || existing.courseKey !== courseKey || existing.activityType !== input.activityType) throw new TRPCError({ code: "CONFLICT", message: "Session key is already in use." });
+    if (existing.status !== "active") throw new TRPCError({ code: "BAD_REQUEST", message: "This session has ended." });
+    if (affectedRows(inserted) === 1) await trackEvent("training_session_started", {
       userId: userId?.toString() ?? null,
       email,
       examType: courseKey,

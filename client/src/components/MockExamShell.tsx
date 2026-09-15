@@ -177,6 +177,7 @@ export interface ExamQuestion {
   /** 0-based index of the correct option */
   /** Present only after the server scores a finalized signed mock session. */
   correct?: number;
+  scored?: boolean;
   explanation?: string;
   diagramId?: string | null;
   diagramAlt?: string | null;
@@ -477,8 +478,8 @@ export default function MockExamShell({
       setQuestions(previous => previous.map(question => {
         const review = reviewByQuestion.get(question.id);
         return review?.correctIndex === null || !review
-          ? question
-          : { ...question, correct: review.correctIndex, explanation: review.explanation ?? undefined };
+          ? { ...question, scored: review?.scored }
+          : { ...question, scored: review.scored, correct: review.correctIndex, explanation: review.explanation ?? undefined };
       }));
       setScoredResult(result);
       resultSavedRef.current = true;
@@ -848,7 +849,7 @@ export default function MockExamShell({
                 {[
                   { icon: "📝", label: "Questions",  value: `${EXAM_QUESTIONS} MCQ` },
                   { icon: "⏱️", label: "Time Limit", value: `${Math.round(EXAM_DURATION / 3600)} Hour${EXAM_DURATION >= 7200 ? "s" : ""}` },
-                  { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * EXAM_QUESTIONS)}/${EXAM_QUESTIONS})` },
+                  { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * (productKey === "wpi-class4-wastewater" ? 100 : EXAM_QUESTIONS))}/${productKey === "wpi-class4-wastewater" ? 100 : EXAM_QUESTIONS})` },
                   { icon: "📊", label: "Modules",    value: `${moduleCount ?? Object.keys(moduleTargets).length} Topics` },
                 ].map(({ icon, label, value }) => (
                   <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
@@ -923,8 +924,9 @@ export default function MockExamShell({
             <div style={{ fontSize: 48, fontWeight: 900, marginBottom: 4 }}>{pct}%</div>
             <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{previewSession ? "PREVIEW COMPLETE" : passed ? "PASSED" : "NOT YET"}</div>
             <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 24 }}>
-              {correct} / {questions.length} correct · {previewSession ? "Practice preview — not a full mock result" : passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
+              {correct} / {scoredResult?.total ?? questions.length} scored questions correct · {previewSession ? "Practice preview — not a full mock result" : passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
             </div>
+            {scoredResult && questions.length > scoredResult.total && <p>{questions.length - scoredResult.total} unscored practice items are excluded from your result and readiness history.</p>}
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
                 disabled={startMock.isPending || saveStatus === "saving" || (saveStatus === "error" && !saveError.includes("expired"))}
@@ -1001,6 +1003,7 @@ export default function MockExamShell({
                       <span style={{ fontSize: 16, flexShrink: 0 }}>{!reviewAvailable ? "ℹ️" : wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
                     </div>
+                    {q.scored === false && <p className="mb-2 text-xs text-slate-600">Unscored practice item — excluded from your score and readiness.</p>}
                     {!reviewAvailable ? <div style={{ fontSize: 12, color: "#64748B" }}>Answer review is unavailable because this question changed after your exam was finalized.</div> : <>
                     {!wasSkipped && !isCorrect && (
                       <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
