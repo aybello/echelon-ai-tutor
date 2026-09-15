@@ -1,4 +1,11 @@
 import { sha256, BANK_KEY, COURSE_KEY } from '../export-wpi-class4-collection-review.mjs';
+import { readFileSync } from 'node:fs';
+export const TASK_MAP = JSON.parse(readFileSync(new URL('../../content/wpi-class4-collection/review/task-map.json', import.meta.url), 'utf8'));
+const objectives = new Map();
+for (const group of TASK_MAP.groups) for (const number of group.questionNums) {
+ if (objectives.has(number)) throw new Error('DUPLICATE_TASK_MAPPING');
+ objectives.set(number, group);
+}
 export const BASELINE_SHA256 = '397fc0949a31760494116d368cc69ecc465cbe84baddf7daf597ef9cce3b0bab';
 export const AREAS = {
  E: 'Equipment Operation, Evaluation & Maintenance',
@@ -13,6 +20,7 @@ export const CALCULATION_IDS = new Set([51,154,166,172,173,174,178,179,189,190,2
 export const RECALL_TARGETS = {E:5,C:4,L:3,M:5,S:3};
 export const CALCULATION_TARGETS = {E:3,C:5,L:1,M:0,S:7};
 export const SOURCES = {
+ fallEquipment: { title:'CCOHS: Fall Protection Plan — Equipment and Manufacturer Specifications', url:'https://www.ccohs.ca/oshanswers/hsprograms/fall/fall_protection_general.html', note:'Section: Who has responsibilities for fall hazards? Complete system components and use according to manufacturer specifications. Q248 supplies hypothetical component ratings; no universal capacity is asserted. Checked 2026-09-15.' },
  rigging: {"title": "CCOHS: Materials Handling — Slinging on Overhead Crane Hooks", "url": "https://www.ccohs.ca/oshanswers/safety_haz/materials_handling/hooks.html", "note": "Lift planning, load weight, appropriate rigging hardware, working load limits and equipment inspection. General lift-selection principles applied to an original spreader-bar scenario; no province-specific marking rule asserted. Checked 2026-09-15."},
  orientation: {"title": "CCOHS: Orientation for Workers — Checklist", "url": "https://www.ccohs.ca/oshanswers/hsprograms/orientation.html", "note": "Workplace-specific hazards, equipment, training, emergency procedures and worker understanding. General orientation guidance; no local operator licensing rule asserted. Checked 2026-09-15."},
  whmis: {"title": "CCOHS: WHMIS — Education and Training", "url": "https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/education_training.html", "note": "Education versus site- and job-specific training, including spills and emergencies. Canadian guidance; consult the applicable jurisdiction for detailed legal requirements. Checked 2026-09-15."},
@@ -86,7 +94,9 @@ export function buildReview(snapshot,corrections) {
   const options=[...c.wrong]; options.splice(original.correctIndex,0,c.correct);
   const isCalc= CALCULATION_IDS.has(c.questionNum)?'yes':'no';
   const source=SOURCES[c.source];
-  const after={...original,question:c.question,module:AREAS[c.area],options:JSON.stringify(options),explanation:c.explanation,steps:null,tip:null,isCalc,cognitiveLevel:c.cognitiveLevel,topic:AREAS[c.area],sourceTitle:source.title,sourceUrl:source.url,sourceReference:source.note,blueprintObjective:AREAS[c.area]};
+  const objective=objectives.get(c.questionNum);
+  if(!objective || objective.area!==c.area) throw new Error('MISSING_OR_INCONSISTENT_TASK_MAPPING');
+  const after={...original,question:c.question,module:AREAS[c.area],options:JSON.stringify(options),explanation:c.explanation,steps:null,tip:null,isCalc,cognitiveLevel:c.cognitiveLevel,topic:AREAS[c.area],sourceTitle:source.title,sourceUrl:source.url,sourceReference:source.note,blueprintObjective:`${objective.key}: ${objective.task} (guide pp. ${objective.guidePages.join(', ')})`};
   // Preserve id, bank, number, answer position, publication status and review timestamps.
   replacementMap.set(original.id,after);
   return {id:original.id,questionNum:original.questionNum,beforeSha256:sha256(original),afterSha256:sha256(after),before:original,after,disposition:'repaired'};
@@ -101,7 +111,7 @@ export function buildReview(snapshot,corrections) {
  const content={baselineSha256:BASELINE_SHA256,patches,ledger,metadataPatches,coverage};
  return {format:'echelon-collection-historical-repair-v1',historicalRepairComplete:true,releaseReady:false,courseKey:COURSE_KEY,bankKey:BANK_KEY,counts,newQuestions:[],additionalQuestionsPending:250,
   blockers:['Complete a fresh production comparison, backup verification and database-backed import/rollback rehearsal.','Confirm active mock-session handling and historical revision display before replacing published wording.'],
-  proposedBlueprint:{source:'https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf',targets:Object.fromEntries(Object.entries(TARGETS).map(([a,n])=>[AREAS[a],n])),scored:100,pretest:10,recall:20,application:80,calculations:16,activated:false},
+  proposedBlueprint:{source:'https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf',targets:Object.fromEntries(Object.entries(TARGETS).map(([a,n])=>[AREAS[a],n])),scored:100,pretest:0,maxOptionalPretest:10,recall:20,application:80,calculations:16,activated:false},
   proposedScreening:proposed.filter(q=>replacementMap.has(q.id)).map(q=>({questionNum:q.questionNum,findings:screenQuestion(q)})),
   contentSha256:sha256(content),...content};
 }

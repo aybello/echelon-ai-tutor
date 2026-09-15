@@ -4,7 +4,7 @@
 
 The 25 items in the Manus/user-led priority worklist were addressed in the first follow-up. A second follow-up removes Manitoba-specific dependencies from this shared Western Canada WPI bank. See [the item-by-item dispositions and source boundaries](wpi-class4-collection-priority-review.md). Relative to `c828e8b`, 18 questions have wording changes, 335 additional rows have source-only changes (mostly shared scope notes), and 150 rows are unchanged. All identities, answer positions, difficulty, review/publication fields, classifications and proposed metadata changes are preserved.
 
-The regenerated package digest is **`58bb4f9cb661ca7853280609ea60c8235e8ffc8397c12995cfd60986e15f77c1`**. It supersedes `3619dce31f8769ed1e9dc36ee43c08b82938606f1dbf131a68fae8f48d8a187f` and `6827c794bc6eb417da54449d46feabe9f7590ba6f2761496e6d03d84d6adef8b`; do not import the earlier compiled package. Regenerate from this revision and the unchanged original private export. The digest identifies the compiled content, not the ZIP container.
+The current package digest is **`e5aaa005de5231f58c6715a618837d2d6561d82b9a18967c12ffdb90b104268a`**. It supersedes the jurisdiction-only package `58bb4f9cb661ca7853280609ea60c8235e8ffc8397c12995cfd60986e15f77c1`. It supersedes `3619dce31f8769ed1e9dc36ee43c08b82938606f1dbf131a68fae8f48d8a187f` and `6827c794bc6eb417da54449d46feabe9f7590ba6f2761496e6d03d84d6adef8b`; do not import the earlier compiled package. Regenerate from this revision and the unchanged original private export. The digest identifies the compiled content, not the ZIP container.
 
 Together with the earlier 253 replacements, this branch contains authored revisions for **all 503 historical questions**, numbered 1–503. The follow-up pass resolves the 25 priority review items. The completion flag records replacement coverage; automated checks do not certify factual accuracy, difficulty, or exam equivalence. The separately requested **250 new additions have not been authored** and are not counted as repairs.
 
@@ -14,7 +14,7 @@ The supplied production export contains 503 questions and has content SHA-256 `3
 
 ## What changed
 
-Every historical number has one revised question, four distinct options, one declared correct answer, an explanation, a Collection area, a recall/application classification and a background reference. Repairs address unqualified legal/design limits, weak alternatives, misleading pump/hydraulic explanations and generic assertions that did not test an operational decision. The final pass removes the detected longest-answer and restrictive “only” distractor patterns. Numeric scenarios state their assumptions and units.
+Every historical number has one revised question, four distinct options, one declared correct answer, an explanation, a Collection area, a recall/application classification and a background reference. Repairs address unqualified legal/design limits, weak alternatives, misleading pump/hydraulic explanations and generic assertions that did not test an operational decision. The latest exam-style pass rewrites 21 operating/procedural items and all 20 dimensional calculation items. US and metric versions are independently solvable. All 503 items now have explicit task-family mappings with guide page references. The detected longest-answer and restrictive “only” distractor patterns are absent.
 
 The 503 repaired questions include 31 calculation items, 43 recall items and 460 application items. Every calculation has an independent arithmetic fixture. A screening pass found no exact normalized stem duplicates; the closest stem pair intentionally distinguishes maximum circular-pipe discharge from maximum mean velocity. Repeated learning objectives can still occur across different scenarios. Automated screening is not a substitute for subject-matter judgement or evidence of real-exam predictive validity.
 
@@ -27,13 +27,15 @@ The 503 repaired questions include 31 calculation items, 43 recall items and 460
 | Safety and administration | 180 | 5 | 175 | 12 |
 | **Total** | **503** | **43** | **460** | **31** |
 
-The bank itself is not proportioned like a single mock. Its classified supply can support the Collection scored blueprint: areas 23/23/16/20/18; recall 5/4/3/5/3; calculations 3/5/1/0/7; 100 scored questions overall. Supply checks reserve separate recall, calculation/application and non-calculation/application rows in every area. This does **not** establish that the deployed selector enforces those quotas. No strict profile or 110-question simulation is activated by this work.
+The bank itself is not proportioned like a single mock. Its classified supply can support the Collection scored blueprint: areas 23/23/16/20/18; recall 5/4/3/5/3; calculations 3/5/1/0/7; 100 scored questions overall. Supply checks reserve separate recall, calculation/application and non-calculation/application rows in every area. The PR now implements and tests a separate Collection selector enforcing those joint quotas after explicit `blueprintVersion = 2025` activation for the canonical bank. Tests exercise 100 seeded draws of the authored inventory and route-level activation/shortage behaviour. The deployed metadata is not changed here. The chosen format is 100 scored questions with zero optional pre-test items; no 110-question simulation is implemented.
 
 This is a shared WPI preparation bank, not a Manitoba-law course. Province-dependent safety questions now use CCOHS guidance; classification uses the Canadian certification best-practice framework. Permit authorization and local obligations remain subject to the applicable authority. Sources distinguish technical background from binding local requirements. NIOSH's 100 ppm H2S IDLH is named as a NIOSH value, not a universal legal entry threshold. Heat-emergency guidance is checked against CCOHS. Mathematical answers are independently derived. The questions are original practice material; no WPI endorsement or access to actual exam questions is claimed.
 
 ## Public exam-material comparison
 
-A subsequent [exam-style review](wpi-class4-collection-exam-style-review.md) inspected the official guide examples, public ABC sample material and 79 unique Echelon items. It identifies metric-only calculation presentation, weak distractors in several items, coarse task mapping and incomplete reference alignment. The separate online Collection samples could not be loaded. This is a documented comparison, not a new content revision or proof of WPI difficulty equivalence; the package digest above is unchanged.
+The [exam-style review and completed repairs](wpi-class4-collection-exam-style-review.md) record the public-material comparison, 41 item rewrites, paired calculations, 503-item task map and gated Collection selector. The separate online Collection samples could not be loaded, and CSUS reference books were not accessed. These limits remain explicit; no actual-exam or difficulty-equivalence claim is made.
+
+Validation: 72 content/export tests, 41 focused server tests, and both TypeScript checks pass. The content rebuild preserves all original identities, answer positions, difficulty and publication/history fields. The compiled metadata patches still change only the module menu and content cache version.
 
 ## Reproduce and inspect
 
@@ -72,7 +74,7 @@ The immutable original export must accompany those files in the private handoff.
 
 Write the additional 250 questions against the repaired bank and actual coverage gaps. The bank currently has considerable safety/administration content; prioritize useful technical depth and additional calculation variety rather than duplicating those scenarios. Deduplicate additions against both original and repaired text.
 
-Separately correct the Collection mock configuration and its server-enforced scored/unscored structure. The supplied baseline still has older topic targets and a 100-question implementation; a content repair must not be described as fixing the full exam simulation.
+Collection selection code is now implemented, but activating it remains part of a separately authorized, controlled release. After importing and verifying eligible classifications, confirm the certifying authority's edition, rehearse the metadata change and preserve a backup. The intended metadata is: the five canonical Collection module targets 23/23/16/20/18, `minCalcPerMock = 16`, `recallTargetPct = 20`, and `blueprintVersion = 2025`, with an incremented content cache version. The router uses the fixed server outline when that version is active; client weights cannot override it. Do not activate against the unrepaired bank or substitute the Treatment profile. No database activation command was run here.
 
 ## Authoritative references checked September 15, 2026
 

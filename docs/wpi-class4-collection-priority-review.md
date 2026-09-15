@@ -2,6 +2,10 @@
 
 Reviewed and revised September 15, 2026 against PR head `b95eabac31d827a829413d96c96823c9dda1715f`, with a further shared-bank jurisdiction correction against `c828e8b`.
 
+## Latest follow-up
+
+The original priority dispositions below are historical. A later user-authorized [exam-style repair](wpi-class4-collection-exam-style-review.md) further revises 41 items, gives all 503 a specific task mapping, and adds a gated Collection selector. In particular Q74, Q80, Q123, Q139 and Q250 received further distractor improvements. The handoff contains the current digest and validation counts. No live content or metadata was changed.
+
 ## Outcome
 
 All 25 flagged historical items have been addressed. Each received a content or source correction; none was removed. Database identities, answer positions, difficulty, publication/review fields and the 503-row inventory are preserved. The first priority pass left the other 478 proposed rows unchanged. The subsequent jurisdiction pass described below also updates other affected rows; the proposed module-menu/cache changes remain unchanged. The bank still contains 43 recall items, 460 application items and 31 calculation items. This is a targeted editorial/source review, not a claim of external approval or full-bank psychometric validation.

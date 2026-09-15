@@ -1,12 +1,27 @@
-# WPI Class IV Collection — public exam-material comparison
+# WPI Class IV Collection — exam-style repairs and comparison
 
 Reviewed September 15, 2026. Content checkpoint: `33fafbb91379e65da182c3f753b36ea2a90d3b56`. Compiled content digest: `58bb4f9cb661ca7853280609ea60c8235e8ffc8397c12995cfd60986e15f77c1`.
 
-## Finding
+## Repairs completed after the comparison
+
+The user requested implementation of the identified fixes. The current compiled digest is `e5aaa005de5231f58c6715a618837d2d6561d82b9a18967c12ffdb90b104268a`, superseding the checkpoint above. This follow-up changes 41 question bodies, adds explicit task mappings for all 503 items, and implements a gated Collection mock profile.
+
+- Rewrote Q1, Q28, Q74, Q80, Q86, Q99, Q106, Q111, Q123, Q137, Q139, Q142, Q248, Q250, Q298, Q407, Q445, Q460, Q495, Q502 and Q503. The original 12-item style worklist is included in these 21 operating/procedural rewrites. Alternatives now concern a defined fault, requirement or operating consequence; explanations distinguish the competing answers. Q137 and Q407 supply hypothetical requirements rather than claiming province-wide legal rules.
+- Reworked all 20 dimensional calculation items with US quantities first and metric quantities in parentheses. Each system is independently solvable from its printed inputs. Rounded exercise counterparts can differ slightly from exact conversions, as in the guide's format. The 11 currency/count/percentage calculations require no artificial conversion. Every one of the 31 calculations retains independent arithmetic checks; 20 additional checks validate both printed unit versions and rounding.
+- Re-sourced Q248 to CCOHS fall-protection equipment guidance, explicitly distinguishing manufacturer compatibility from the hypothetical ratings supplied by the question. The shared-bank jurisdiction boundary remains in place.
+- Added `content/wpi-class4-collection/review/task-map.json`: all 503 identities explicitly assigned to 43 task families, with guide page references. The builder now puts that specific task in `blueprintObjective`. These are editorial Echelon groupings, not official WPI task codes. Reading all stems for mapping is not a fresh full-source factual audit. Repeated objectives remain intentional in a practice bank; the map makes concentration visible rather than claiming unique coverage of every task.
+- Added Collection-specific server selection for 100 scored questions: area totals 23/23/16/20/18, 20 recall, 80 application and 16 calculations, satisfying each area's joint quotas. It refuses insufficient classified supply. The profile is gated on the canonical Collection bank and metadata `blueprintVersion = 2025`; no metadata is activated by this PR. Existing Treatment selection and pre-activation Collection behaviour are preserved.
+- This implementation selects zero optional pre-test items. WPI permits up to ten; a 110-item simulation is not necessary for the selected 100-scored format and is not implemented here. All issued questions continue to count toward the score.
+
+Validation: 72 content/export tests and 41 focused server tests pass. The latter include 100 seeded draws from the authored 503-item inventory, route-level Collection/Treatment activation and shortage checks, signed sessions and score submission. Both application and scripts TypeScript checks pass. The private package rebuild validates all row hashes, preserved fields and field widths with zero screening candidates. No merge, deployment, import, activation or learner session was performed.
+
+The primary-reference limitation remains: CSUS Volumes 1 and 2 were not accessed, so there are no fabricated book citations. Public examples and these tests do not establish equivalent difficulty or that a mock score predicts certification success. Learner response data and appropriately licensed reference material are needed for those stronger claims.
+
+## Original finding at checkpoint 33fafbb
 
 The repaired bank has useful original practice material, but matching WPI's topic headings and passing offline checks does not establish exam-style or difficulty equivalence. The clearest remaining issues are metric-only physical calculations, easy-to-dismiss alternatives in several inspected questions, coarse objective mapping and incomplete reference alignment. Some operational and numerical items are stronger than the generic decision questions.
 
-This review changes documentation only. It does not change the compiled package, question count, content digest, import status or mock selector.
+The comparison below records the pre-repair checkpoint. Its identified calculation, distractor, task-mapping and selector gaps are addressed by the follow-up above; reference-book and psychometric limits remain.
 
 ## What was actually inspected
 
@@ -49,9 +64,9 @@ The current WPI scored targets are shown alongside the authored inventory below.
 | Safety/administration | 180 | 35.8% | 18 |
 | Total | 503 | 100% | 100 |
 
-The bank has 43 recall (8.5%), 460 application (91.5%) and 31 calculation items (6.2%, included in application). The scored target is 20 recall, 80 application and 16 calculations. Supply checks pass, but this PR does not implement or test a selector enforcing those quotas. Do not infer compliance from an unweighted draw of 100 rows. Cognitive labels themselves still need editorial verification; a short scenario does not automatically prove application-level reasoning.
+The bank has 43 recall (8.5%), 460 application (91.5%) and 31 calculation items (6.2%, included in application). The scored target is 20 recall, 80 application and 16 calculations. At the comparison checkpoint, supply checks passed without a selector test; the follow-up now implements and tests the gated selector. Do not infer compliance from an unweighted draw of 100 rows. Cognitive labels themselves still need editorial verification; a short scenario does not automatically prove application-level reasoning.
 
-## Specific improvement worklist
+## Original improvement worklist (implementation status above)
 
 | Questions | Next improvement |
 | --- | --- |
@@ -69,4 +84,4 @@ Administration, safety and simple recall are legitimate parts of this course. Th
 
 Describe the current package as researched, original WPI-topic-aligned practice content. Do not describe it as a validated reproduction of WPI Class IV difficulty or a compliant live mock form. Public examples provide limited format evidence; neither these examples nor our test suite measure real-exam equivalence.
 
-The comparison is complete to the extent supported by accessible public materials. For a stronger benchmark, the next review should use appropriately licensed Collection-specific preparation/reference material, strengthen the identified items, and validate mock selection separately. The existing 250-addition workstream should prioritize verified operational-task gaps rather than adding more repetitions of general management advice.
+The comparison is complete to the extent supported by accessible public materials. The identified edits and mock-selection tests are now implemented. For a stronger reference benchmark, a later review needs appropriately licensed Collection-specific preparation/reference material. The existing 250-addition workstream should prioritize verified operational-task gaps rather than adding more repetitions of general management advice.

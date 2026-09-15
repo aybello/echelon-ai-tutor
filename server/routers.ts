@@ -1,4 +1,4 @@
-import { selectBlueprintQuestions, WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT, WPI_CLASS4_BLUEPRINT_VERSION } from "./mockBlueprint";
+import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
 import { activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
@@ -329,8 +329,9 @@ export const appRouter = router({
         }
         const count = preview ? 30 : spec.count;
         let selected: typeof pool;
-        if (!preview && spec.bankKey === WPI_CLASS4_BANK && blueprintVersion === WPI_CLASS4_BLUEPRINT_VERSION) {
-          try { selected = selectBlueprintQuestions(pool, WPI_CLASS4_BLUEPRINT, count); }
+        const blueprint = preview ? null : mockBlueprintForBank(spec.bankKey, blueprintVersion);
+        if (blueprint) {
+          try { selected = selectBlueprintQuestions(pool, blueprint, count); }
           catch (error) {
             console.error("[startMock] Class IV blueprint unavailable", error);
             throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable. Practice questions remain available while we restore exam coverage." });
