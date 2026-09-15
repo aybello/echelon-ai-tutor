@@ -2,9 +2,9 @@
 
 ## Revised September 15, 2026 after priority review
 
-The 25 items in the Manus/user-led priority worklist have been addressed in a follow-up revision. See [the item-by-item dispositions and source boundaries](wpi-class4-collection-priority-review.md). All 25 received wording, explanation or source changes; the other 478 proposed rows remain unchanged from PR head `b95eabac31d827a829413d96c96823c9dda1715f`.
+The 25 items in the Manus/user-led priority worklist were addressed in the first follow-up. A second follow-up removes Manitoba-specific dependencies from this shared Western Canada WPI bank. See [the item-by-item dispositions and source boundaries](wpi-class4-collection-priority-review.md). Relative to `c828e8b`, 18 questions have wording changes, 335 additional rows have source-only changes (mostly shared scope notes), and 150 rows are unchanged. All identities, answer positions, difficulty, review/publication fields, classifications and proposed metadata changes are preserved.
 
-The regenerated package digest is **`3619dce31f8769ed1e9dc36ee43c08b82938606f1dbf131a68fae8f48d8a187f`**. It supersedes `6827c794bc6eb417da54449d46feabe9f7590ba6f2761496e6d03d84d6adef8b`; do not import the earlier compiled package. Regenerate from this revision and the unchanged original private export. The digest identifies the compiled content, not the ZIP container.
+The regenerated package digest is **`58bb4f9cb661ca7853280609ea60c8235e8ffc8397c12995cfd60986e15f77c1`**. It supersedes `3619dce31f8769ed1e9dc36ee43c08b82938606f1dbf131a68fae8f48d8a187f` and `6827c794bc6eb417da54449d46feabe9f7590ba6f2761496e6d03d84d6adef8b`; do not import the earlier compiled package. Regenerate from this revision and the unchanged original private export. The digest identifies the compiled content, not the ZIP container.
 
 Together with the earlier 253 replacements, this branch contains authored revisions for **all 503 historical questions**, numbered 1–503. The follow-up pass resolves the 25 priority review items. The completion flag records replacement coverage; automated checks do not certify factual accuracy, difficulty, or exam equivalence. The separately requested **250 new additions have not been authored** and are not counted as repairs.
 
@@ -29,7 +29,7 @@ The 503 repaired questions include 31 calculation items, 43 recall items and 460
 
 The bank itself is not proportioned like a single mock. Its classified supply can support the Collection scored blueprint: areas 23/23/16/20/18; recall 5/4/3/5/3; calculations 3/5/1/0/7; 100 scored questions overall. Supply checks reserve separate recall, calculation/application and non-calculation/application rows in every area. This does **not** establish that the deployed selector enforces those quotas. No strict profile or 110-question simulation is activated by this work.
 
-Sources distinguish technical background from binding local requirements. NIOSH's 100 ppm H2S IDLH is named as a NIOSH value, not a Manitoba legal entry threshold. Heat-emergency guidance is checked against CCOHS. Mathematical answers are independently derived. The questions are original practice material; no WPI endorsement or access to actual exam questions is claimed.
+This is a shared WPI preparation bank, not a Manitoba-law course. Province-dependent safety questions now use CCOHS guidance; classification uses the Canadian certification best-practice framework. Permit authorization and local obligations remain subject to the applicable authority. Sources distinguish technical background from binding local requirements. NIOSH's 100 ppm H2S IDLH is named as a NIOSH value, not a universal legal entry threshold. Heat-emergency guidance is checked against CCOHS. Mathematical answers are independently derived. The questions are original practice material; no WPI endorsement or access to actual exam questions is claimed.
 
 ## Reproduce and inspect
 
@@ -68,7 +68,7 @@ The immutable original export must accompany those files in the private handoff.
 
 Write the additional 250 questions against the repaired bank and actual coverage gaps. The bank currently has considerable safety/administration content; prioritize useful technical depth and additional calculation variety rather than duplicating those scenarios. Deduplicate additions against both original and repaired text.
 
-Separately correct the Collection mock configuration and its server-enforced scored/unscored structure. The supplied baseline still has older topic targets and a 100-question implementation; a content repair must not be described as fixing the full Manitoba simulation.
+Separately correct the Collection mock configuration and its server-enforced scored/unscored structure. The supplied baseline still has older topic targets and a 100-question implementation; a content repair must not be described as fixing the full exam simulation.
 
 ## Authoritative references checked September 15, 2026
 
