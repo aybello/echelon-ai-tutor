@@ -83,6 +83,8 @@ describe("forward-only migration safety", () => {
         proposedOnly: true,
         standaloneApply: { tables: ["question_content_snapshots"] },
       }),
+      expect.objectContaining({ version: 64, tag: "0064_flashcard_progress_operations", proposedOnly: true,
+        standaloneApply: { tables: ["flashcard_progress_state", "flashcard_progress_operations"] } }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -514,6 +516,15 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63]);
+    ).toEqual([59, 60, 61, 63, 64]);
+  });
+});
+
+
+describe("flashcard migration execution", () => {
+  it("delivers each table as one separately executable statement", async () => {
+    const statements = splitMigrationStatements(await readFile("drizzle/0064_flashcard_progress_operations.sql", "utf8"));
+    expect(statements).toHaveLength(2);
+    for (const statement of statements) expect(statement.match(/CREATE TABLE/g)).toHaveLength(1);
   });
 });

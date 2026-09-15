@@ -45,3 +45,26 @@ describe("mock session authority", () => {
   });
 
 });
+
+describe("Class IV unscored practice items", () => {
+  beforeEach(() => { ENV.cookieSecret = "test-only-signing-key"; });
+  it("issues 110 unique items, conceals the scoring plan, and requires all answers", async () => {
+    const { scoredMockQuestionNums } = await import("./mockExamSession");
+    const spec = mockSpecification("wpi-class4-wastewater");
+    const ids = Array.from({ length: 110 }, (_, i) => i + 1);
+    const owner = mockOwner({ studentEmail: "test@example.invalid", userId: null });
+    const issued = issueMockSession({ ...spec, owner, preview: false, questionNums: ids, unscoredQuestionNums: ids.slice(100) });
+    const verified = verifyMockSession(issued.token, owner);
+    expect(scoredMockQuestionNums(verified)).toEqual(ids.slice(0, 100));
+    const decoded = JSON.parse(Buffer.from(issued.token.split(".")[0], "base64url").toString());
+    expect(decoded).not.toHaveProperty("unscoredQuestionNums");
+    expect(decoded.scoring).not.toContain(JSON.stringify(ids.slice(100)));
+    expect(() => validateMockSubmission(verified, { sessionId: verified.sessionId, examType: spec.examType, bankKey: spec.courseKey, answers: ids.slice(0, 100).map(questionNum => ({ questionNum })) })).toThrow("exactly once");
+    expect(() => issueMockSession({ ...spec, owner, preview: false, questionNums: ids, unscoredQuestionNums: Array(10).fill(101) })).toThrow("scoring");
+  });
+  it("keeps scoring of existing v1 100-item mocks", async () => {
+    const { scoredMockQuestionNums } = await import("./mockExamSession");
+    const ids = Array.from({ length: 100 }, (_, i) => i + 1);
+    expect(scoredMockQuestionNums({ version: 1, courseKey: "wpi-class4-wastewater", questionNums: ids } as any)).toEqual(ids);
+  });
+});

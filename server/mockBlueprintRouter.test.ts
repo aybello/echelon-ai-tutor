@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { appRouter } from "./routers";
 import { getDb } from "./db";
 import { questions } from "../drizzle/schema";
+import { verifyMockSession, mockOwner, scoredMockQuestionNums } from "./mockExamSession";
 import { ENV } from "./_core/env";
 import { WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT } from "./mockBlueprint";
 vi.mock("./db", async importOriginal => ({ ...await importOriginal<typeof import("./db")>(), getDb: vi.fn() }));
@@ -29,11 +30,13 @@ beforeEach(() => {
 describe("issued Class IV mock blueprint wiring", () => {
   it("issues a signed full exam with the exact joint quotas and no answer disclosure", async () => {
     const issued = await caller.exam.startMock({ courseKey: WPI_CLASS4_BANK });
-    expect(issued.questions).toHaveLength(100); expect(issued.token).toBeTruthy();
-    const selected = issued.questions.map(q => rows.find(row => row.questionNum === q.id));
+    expect(issued.questions).toHaveLength(110); expect(issued.token).toBeTruthy();
+    const scored = new Set(scoredMockQuestionNums(verifyMockSession(issued.token, mockOwner({ userId: null, studentEmail: "mock@example.test" }))));
+    const selected = issued.questions.filter(q => scored.has(q.id)).map(q => rows.find(row => row.questionNum === q.id));
+    expect(selected).toHaveLength(100);
     expect(selected.filter(q => q.isCalc === "yes")).toHaveLength(16);
     expect(selected.filter(q => q.cognitiveLevel === "recall")).toHaveLength(25);
-    expect(issued.questions.filter(q => q.module === WPI_CLASS4_BLUEPRINT[1].module)).toHaveLength(42);
+    expect(selected.filter(q => [WPI_CLASS4_BLUEPRINT[1].module, "Treatment Process"].includes(q.module))).toHaveLength(42);
     for (const q of issued.questions) { expect(q).not.toHaveProperty("correctIndex"); expect(q).not.toHaveProperty("explanation"); }
   });
   it("rejects an activated profile with missing classifications instead of silently issuing an unbalanced exam", async () => {
@@ -42,6 +45,6 @@ describe("issued Class IV mock blueprint wiring", () => {
   });
   it("keeps the current learner journey available until the verified profile is activated", async () => {
     version = 1; rows = rows.map(q => ({ ...q, cognitiveLevel: null }));
-    expect((await caller.exam.startMock({ courseKey: WPI_CLASS4_BANK })).questions).toHaveLength(100);
+    expect((await caller.exam.startMock({ courseKey: WPI_CLASS4_BANK })).questions).toHaveLength(110);
   });
 });

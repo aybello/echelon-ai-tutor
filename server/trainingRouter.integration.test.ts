@@ -296,3 +296,23 @@ describe("training records database integrity", () => {
       .rejects.toMatchObject({ code: "FORBIDDEN" });
   });
 });
+
+describe("retryable study recording", () => {
+  it("keeps the initial start timestamp and credits a replayed heartbeat only once", async () => {
+    if (!db) return;
+    const caller = appRouter.createCaller(makeCtx(OPERATOR));
+    const sessionKey = crypto.randomUUID(), startedAt = Date.now() - 60_000;
+    const start = { sessionKey, startedAt, courseKey: 'class1-water', activityType: 'process_guide' as const };
+    await Promise.all([caller.training.start(start), caller.training.start(start)]);
+    const heartbeat = { sessionKey, sequence: 1, activeSeconds: 30, unitsCompleted: 1 };
+    await caller.training.heartbeat(heartbeat); await caller.training.heartbeat(heartbeat);
+    const rows = await db.select().from(learningActivitySessions).where(eq(learningActivitySessions.sessionKey, sessionKey));
+    expect(rows).toHaveLength(1); expect(rows[0].activeSeconds).toBe(30);
+    expect(Math.abs(rows[0].startedAt.getTime() - startedAt)).toBeLessThan(1000);
+    await expect(appRouter.createCaller(makeCtx(MANAGER_B)).training.heartbeat(heartbeat)).rejects.toMatchObject({ code: 'NOT_FOUND' });
+    await caller.training.complete({ ...heartbeat, sequence: 2, activeSeconds: 10 });
+    await caller.training.complete({ ...heartbeat, sequence: 2, activeSeconds: 10 });
+    const [complete] = await db.select().from(learningActivitySessions).where(eq(learningActivitySessions.sessionKey, sessionKey));
+    expect(complete.activeSeconds).toBe(40); expect(complete.status).toBe('completed');
+  });
+});

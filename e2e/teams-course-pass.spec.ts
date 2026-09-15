@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { scoredMockQuestionNums } from "../server/mockExamSession";
 import mysql from "mysql2/promise";
 
 const MAILPIT_URL = process.env.MAILPIT_URL ?? "http://127.0.0.1:8025";
@@ -131,6 +132,31 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await operatorPage.getByRole("button", { name: "Activate Course" }).click();
   await expect(operatorPage.getByText("Course access is active")).toBeVisible();
 
+  if (prefix === "teams") {
+    await operatorPage.route("**/api/trpc/training.start*", route => route.abort());
+    await operatorPage.goto("/wastewater");
+    await expect(operatorPage.getByRole("combobox", { name: "Study-hours course" })).toHaveValue(COURSE_KEY);
+    await operatorPage.getByRole("combobox", { name: "Study-hours course" }).click();
+    await expect(operatorPage.getByText(/Connection interrupted. Unsaved time/)).toBeVisible();
+    await operatorPage.waitForTimeout(2500);
+    await operatorPage.unroute("**/api/trpc/training.start*");
+    await operatorPage.getByRole("button", { name: "Retry saving" }).click();
+    await expect(operatorPage.getByText("Recording active study time.", { exact: true })).toBeVisible();
+    await operatorPage.goto("/equipment-lab");
+    await expect(operatorPage.getByRole("combobox", { name: "Study-hours course" })).toHaveValue(COURSE_KEY);
+    await operatorPage.getByRole("combobox", { name: "Study-hours course" }).click();
+    await expect(operatorPage.getByText("Recording active study time.", { exact: true })).toBeVisible();
+    await operatorPage.waitForTimeout(1500);
+    await operatorPage.goto(claimUrl!);
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try {
+      await expect.poll(async () => {
+        const [sessions] = await db.execute<mysql.RowDataPacket[]>("SELECT courseKey, activeSeconds FROM learning_activity_sessions WHERE studentEmail = ? AND activityType = 'process_guide'", [OPERATOR_EMAIL]);
+        expect(sessions.every(s => s.courseKey === COURSE_KEY)).toBe(true);
+        return sessions.filter(s => s.activeSeconds > 0).length;
+      }).toBeGreaterThanOrEqual(2);
+    } finally { await db.end(); }
+  }
   const mockExamLink = operatorPage.getByRole("link", { name: "Take a Mock Exam" });
   await expect(mockExamLink).toHaveAttribute("href", `/${COURSE_KEY}-mock`);
   await mockExamLink.click();
@@ -169,7 +195,13 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
     try { await db.execute("UPDATE questions SET reviewStatus = 'in_review' WHERE bankKey = ? AND questionNum = ?", ["class4-wastewater", retiredQuestion]); }
     finally { await db.end(); }
   }
-  const expectedScore = prefix === "reporting" ? 0 : 1;
+  const draft = await operatorPage.evaluate(() => {
+    const key = Object.keys(sessionStorage).find(k => k.startsWith("echelon.mock."))!;
+    return JSON.parse(sessionStorage.getItem(key)!);
+  });
+  expect(draft.questions).toHaveLength(prefix === "teams" ? 110 : 100);
+  const manifest = JSON.parse(Buffer.from(draft.sessionToken.split(".")[0], "base64url").toString());
+  const expectedScore = prefix === "reporting" ? 0 : Number(scoredMockQuestionNums(manifest).includes(draft.questions[0].id));
   // A lost request must leave answers recoverable and offer an explicit retry.
   await operatorPage.route("**/api/trpc/*exam.submitMock*", route => route.abort());
   operatorPage.once("dialog", dialog => dialog.accept());
@@ -179,6 +211,24 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await operatorPage.getByRole("button", { name: "Retry saving result" }).click();
   await expect(operatorPage.getByText("Exam result saved.", { exact: true })).toBeVisible();
   await expect(operatorPage.locator(".mes-results-hero").getByText(`${expectedScore}%`, { exact: true })).toBeVisible();
+  if (prefix === "teams") {
+    const resultCards = operatorPage.locator(".mes-stats-4").locator(":scope > div");
+    await expect(resultCards.nth(0)).toHaveText(`${expectedScore}Correct`);
+    await expect(resultCards.nth(1)).toHaveText(`${1 - expectedScore}Incorrect`);
+    await expect(resultCards.nth(2)).toHaveText("99Skipped");
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try {
+      await expect.poll(async () => {
+        const [sessions] = await db.execute<mysql.RowDataPacket[]>(
+          "SELECT score, total FROM learning_activity_sessions WHERE studentEmail = ? AND activityType = 'mock_exam' ORDER BY startedAt DESC LIMIT 1",
+          [OPERATOR_EMAIL],
+        );
+        return sessions[0] ? { score: Number(sessions[0].score), total: Number(sessions[0].total) } : null;
+      }).toEqual({ score: expectedScore, total: 100 });
+    } finally {
+      await db.end();
+    }
+  }
   if (retiredQuestion) {
     await expect(operatorPage.getByText(/1 question\(s\) became unavailable/)).toBeVisible();
     const db = await mysql.createConnection(process.env.DATABASE_URL!);
@@ -192,6 +242,29 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 
   await expect(operatorPage.getByText("Your Score History", { exact: false })).toBeVisible();
   await expect(operatorPage.getByText(/Last 1 attempt/)).toBeVisible();
+  if (prefix === "teams") {
+    const db = await mysql.createConnection(process.env.DATABASE_URL!);
+    try {
+      await db.execute("INSERT INTO flashcard_progress (email, examType, knownIds, totalCards) VALUES (?, ?, ?, 907)",
+        [OPERATOR_EMAIL, COURSE_KEY, JSON.stringify(Array.from({ length: 100 }, (_, i) => String(930001 + i)))]);
+      await operatorPage.goto(`/${COURSE_KEY}-flashcards`);
+      await operatorPage.route("**/api/trpc/*flashcard.updateProgress*", route => route.abort());
+      await operatorPage.locator(".fc-inner").click();
+      await operatorPage.getByRole("button", { name: "Got It!", exact: true }).click();
+      await expect(operatorPage.getByText(/Flashcard changes are waiting to save/)).toBeVisible();
+      await expect(operatorPage.getByText(/✓ Progress saved for/)).toHaveCount(0);
+      await operatorPage.unroute("**/api/trpc/*flashcard.updateProgress*");
+      await operatorPage.getByRole("button", { name: "Retry", exact: true }).click();
+      await expect.poll(async () => {
+        const [rows] = await db.execute<mysql.RowDataPacket[]>("SELECT knownIds FROM flashcard_progress_state WHERE email = ? AND examType = ?", [OPERATOR_EMAIL, COURSE_KEY]);
+        return rows.length ? JSON.parse(rows[0].knownIds).length : 0;
+      }).toBe(101);
+      await operatorPage.reload();
+      await expect(operatorPage.locator(".fc-inner")).toBeVisible();
+      const [rows] = await db.execute<mysql.RowDataPacket[]>("SELECT knownIds FROM flashcard_progress_state WHERE email = ? AND examType = ?", [OPERATOR_EMAIL, COURSE_KEY]);
+      expect(JSON.parse(rows[0].knownIds)).toHaveLength(101);
+    } finally { await db.end(); }
+  }
   // This is still the manager's authenticated browser, while the operator used
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
@@ -267,6 +340,14 @@ test("paid practice continues past 50 questions and loads saved review slices", 
   const db = await mysql.createConnection(process.env.DATABASE_URL!);
   const email = "practice-e2e-learner@echelon.test";
   const bankKey = "class3-water-dist";
+  let apiWindowEndsAt = 0;
+  page.on("response", response => {
+    if (!response.url().includes("/api/trpc/")) return;
+    const resetSeconds = Number(response.headers()["ratelimit-reset"]);
+    if (Number.isFinite(resetSeconds) && resetSeconds > 0) {
+      apiWindowEndsAt = Date.now() + resetSeconds * 1000;
+    }
+  });
   try {
     await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
     await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Paging module", "Rare module"])]);
@@ -303,6 +384,11 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       }
     }
     expect(seen.size).toBe(52);
+    // Answering 52 questions at automation speed compresses a real study session
+    // into seconds. Respect the server's advertised request window before the
+    // next journey; keep the production limiter and every paging assertion intact.
+    const remainingWindow = apiWindowEndsAt - Date.now();
+    if (remainingWindow > 0) await page.waitForTimeout(remainingWindow + 250);
     // These are outside the selected module and initial 50-item working set.
     for (const [mode, question] of [["bookmarked", "960081"], ["missed", "960082"], ["low-confidence", "960082"]]) {
       await page.goto(`/${bankKey}?mode=${mode}`);

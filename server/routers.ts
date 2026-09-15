@@ -1,7 +1,7 @@
 import { selectBlueprintQuestions, WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT, WPI_CLASS4_BLUEPRINT_VERSION } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
-import { activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
@@ -327,7 +327,7 @@ export const appRouter = router({
           targets = metadata?.moduleTargets ?? {};
           blueprintVersion = metadata?.blueprintVersion ?? 1;
         }
-        const count = preview ? 30 : spec.count;
+        const count = preview ? 30 : spec.scoredCount;
         let selected: typeof pool;
         if (!preview && spec.bankKey === WPI_CLASS4_BANK && blueprintVersion === WPI_CLASS4_BLUEPRINT_VERSION) {
           try { selected = selectBlueprintQuestions(pool, WPI_CLASS4_BLUEPRINT, count); }
@@ -341,7 +341,13 @@ export const appRouter = router({
         if (selected.length !== count) {
           throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable. Please try again shortly." });
         }
-        const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
+        const selectedIds = new Set(selected.map(q => q.id));
+        const pretest = selectMockQuestions(pool.filter(q => !selectedIds.has(q.id)), {}, preview ? 0 : spec.count - spec.scoredCount);
+        if (selected.length + pretest.length !== (preview ? 30 : spec.count)) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable." });
+        }
+        selected = selectMockQuestions([...selected, ...pretest], {}, selected.length + pretest.length);
+        const issued = issueMockSession({ ...spec, unscoredQuestionNums: pretest.map(q => q.id), owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
         return {
           sessionId: issued.manifest.sessionId, token: issued.token,
           deadline: issued.manifest.deadline, duration: spec.duration,
@@ -429,6 +435,7 @@ export const appRouter = router({
           return existing;
         };
         const existing = hasVerifiedIdentity ? await readExisting() : null;
+        const scoredIds = new Set(scoredMockQuestionNums(manifest));
         const questionNums = input.answers.map(a => a.questionNum);
         if (new Set(questionNums).size !== questionNums.length) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Each exam question must appear exactly once." });
@@ -460,6 +467,7 @@ export const appRouter = router({
           const q = questionMap.get(answer.questionNum);
           return {
             questionNum: answer.questionNum,
+            scored: scoredIds.has(answer.questionNum),
             correctIndex: q?.correctIndex ?? null,
             explanation: q?.explanation ?? null,
           };
@@ -478,16 +486,17 @@ export const appRouter = router({
         // An idempotent retry remains available after expiry and bank changes.
         // It receives current answer review for still-visible questions only.
         if (existing) return existingResponse(existing);
-        if (questionMap.size === 0) {
+        if (![...scoredIds].some(id => questionMap.has(id))) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "None of this exam's questions are available for scoring. No result was saved. Your answers remain in this tab for review; please contact support." });
         }
         if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
         }
-        const unavailableCount = questionNums.length - questionMap.size;
+        const unavailableCount = [...scoredIds].filter(id => !questionMap.has(id)).length;
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
-        const attempts = input.answers.map(answer => {
+        const scoredAnswers = input.answers.filter(answer => scoredIds.has(answer.questionNum));
+        const attempts = scoredAnswers.map(answer => {
           const q = questionMap.get(answer.questionNum);
           const isCorrect = answer.selectedIndex !== null && answer.selectedIndex === q?.correctIndex;
           if (isCorrect) correct++;
@@ -504,7 +513,7 @@ export const appRouter = router({
             orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
           };
         });
-        const total = input.answers.length;
+        const total = scoredAnswers.length;
         const pct = Math.round((correct / total) * 100);
         const passed = !manifest.preview && correct / total >= 0.7;
         if (hasVerifiedIdentity) {

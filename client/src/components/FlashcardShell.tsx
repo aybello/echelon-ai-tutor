@@ -1,3 +1,4 @@
+import { useFlashcardPersistence } from "@/hooks/useFlashcardPersistence";
 // ECHELON AI TUTOR — FlashcardShell Component
 // Flip-card study mode derived from any question bank
 // Handles all field name variants: question/q/text, correct/correctAnswer/correctIndex
@@ -150,76 +151,16 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const verifiedEmailSession = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const email = user?.email || verifiedEmailSession.data?.email || "";
 
-  // ── Load saved progress on mount ──────────────────────────────────────────
-  const { data: savedProgress } = trpc.flashcard.getProgress.useQuery(
-    { examType },
-    {
-      enabled: !!email,
-      staleTime: Infinity,
-      retry: false,
-    }
-  );
-
-  // Reset and load the correct identity whenever the learner or course changes.
-  // Anonymous learners use local storage; signed-in learners use server progress.
+  const persistence = useFlashcardPersistence(email, examType, conceptualQuestions.length);
   useEffect(() => {
-    setKnown(new Set());
-    setProgressLoaded(false);
-    if (!email) {
-      setKnown(normalizeKnownFlashcardIds(loadGuestKnown(examType), conceptualQuestions));
-      setProgressLoaded(true);
-    }
-  }, [email, examType, conceptualQuestions]);
-
-  useEffect(() => {
-    if (email && savedProgress && !progressLoaded) {
-      setKnown(normalizeKnownFlashcardIds(savedProgress.knownIds ?? [], conceptualQuestions));
-      setProgressLoaded(true);
-    }
-  }, [email, savedProgress, progressLoaded, conceptualQuestions]);
-
-  // ── Save progress ──────────────────────────────────────────────────────────
-  // Serialize writes so rapid ratings cannot arrive out of order and overwrite
-  // a newer known/learning decision with an older snapshot.
-  const saveProgress = trpc.flashcard.saveProgress.useMutation();
-  const queuedSaveRef = useRef<{
-    examType: string;
-    knownIds: string[];
-    totalCards: number;
-  } | null>(null);
-  const saveInFlightRef = useRef(false);
-
-  const drainSaveQueue = useCallback(async () => {
-    if (saveInFlightRef.current) return;
-    saveInFlightRef.current = true;
-    try {
-      while (queuedSaveRef.current) {
-        const payload = queuedSaveRef.current;
-        queuedSaveRef.current = null;
-        try {
-          await saveProgress.mutateAsync(payload);
-        } catch {
-          // The next learner action queues the full latest state and retries it.
-          break;
-        }
-      }
-    } finally {
-      saveInFlightRef.current = false;
-    }
-  }, [saveProgress]);
-
-  const persistKnown = useCallback((nextKnown: Set<string>) => {
-    if (!email) {
-      saveGuestKnown(examType, nextKnown);
-      return;
-    }
-    queuedSaveRef.current = {
-      examType,
-      knownIds: Array.from(nextKnown),
-      totalCards: conceptualQuestions.length,
-    };
-    void drainSaveQueue();
-  }, [email, examType, conceptualQuestions.length, drainSaveQueue]);
+    if (email) setKnown(persistence.known);
+    else setKnown(new Set(loadGuestKnown(examType).map(String)));
+    setProgressLoaded(true);
+  }, [email, examType, persistence.known]);
+  const persistKnown = useCallback((nextKnown: Set<string>, id: string, value: boolean) => {
+    if (email) persistence.change(id, value);
+    else saveGuestKnown(examType, nextKnown);
+  }, [email, examType, persistence.change]);
 
   const selectedScope = useMemo(
     () => selectedModule ? conceptualQuestions.filter((question) => question.module === selectedModule) : conceptualQuestions,
@@ -304,7 +245,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const nextKnown = new Set(known);
     nextKnown.add(flashcardProgressKey(card.id));
     setKnown(nextKnown);
-    persistKnown(nextKnown);
+    persistKnown(nextKnown, flashcardProgressKey(card.id), true);
 
     if (reviewing) {
       const next = advanceReviewQueue(deck, index, "known");
@@ -322,7 +263,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const nextKnown = new Set(known);
     nextKnown.delete(flashcardProgressKey(card.id));
     setKnown(nextKnown);
-    persistKnown(nextKnown);
+    persistKnown(nextKnown, flashcardProgressKey(card.id), false);
 
     if (reviewing) {
       const next = advanceReviewQueue(deck, index, "learning");
@@ -361,6 +302,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     return (
       <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
         <SiteNav currentPath={window.location.pathname} />
+        {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 24px" }}>
         <div style={{ background: "#fff", borderRadius: "18px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", border: "1px solid var(--echelon-line)", boxShadow: "var(--echelon-shadow-md)" }}>
           <div style={{ fontSize: "56px", marginBottom: "16px" }}>🎉</div>
@@ -378,7 +320,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           </div>
           {email && (
             <p style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "16px" }}>
-              ✓ Progress saved for {email}
+              {persistence.status === "saved" ? `✓ Progress saved for ${email}` : persistence.status === "saving" ? "Saving progress…" : "Progress is not yet saved. Keep this page open and retry."}
+              {persistence.status.startsWith("error") && <button onClick={persistence.retry} className="ml-2 underline">Retry saving</button>}
             </p>
           )}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -403,6 +346,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   return (
     <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
+        {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
       <style>{`
         .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto 8px; }
         .fc-inner { position: relative; width: 100%; height: 240px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }

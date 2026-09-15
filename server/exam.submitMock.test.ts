@@ -42,6 +42,21 @@ describe("issued mock submission", () => {
     expect(attempts.filter((a: any) => a.selectedIndex === null)).toHaveLength(31);
     expect(attempts[0]).toMatchObject({ orgId: 3, organizationMemberId: 77, quizMode: "mock", bankKey: "class4-ww" });
   });
+  it.each([69, 70])("scores only the 100 scored items of a 110-question WPI exam (%i correct)", async correct => {
+    const all = Array.from({ length: 110 }, (_, i) => ({ ...QUESTIONS[0], questionNum: i + 1 }));
+    const { insertValues } = makeDb(all);
+    const spec = mockSpecification("wpi-class4-wastewater");
+    const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: false, questionNums: all.map(q => q.questionNum), unscoredQuestionNums: all.slice(100).map(q => q.questionNum) });
+    const result = await appRouter.createCaller(ctx).exam.submitMock({ sessionId: issued.manifest.sessionId, sessionToken: issued.token,
+      examType: spec.examType, bankKey: spec.courseKey, answers: all.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct || i >= 100 ? 0 : null })) });
+    expect(result).toMatchObject({ score: correct, total: 100, pct: correct, passed: correct >= 70 });
+    expect(result.review).toHaveLength(110);
+    expect(result.review.filter(q => !q.scored)).toHaveLength(10);
+    const attempts = insertValues.mock.calls[1][0];
+    expect(attempts).toHaveLength(100);
+    expect(attempts.every((a: any) => a.questionId <= 100)).toBe(true);
+    expect(Object.values(result.moduleBreakdown).reduce((n, area) => n + area.total, 0)).toBe(100);
+  });
   it("passes a complete 70/100 exam", async () => {
     makeDb(); expect(await appRouter.createCaller(ctx).exam.submitMock(input(70))).toMatchObject({ pct: 70, passed: true });
   });
@@ -49,7 +64,7 @@ describe("issued mock submission", () => {
     makeDb();
     const result = await appRouter.createCaller(ctx).exam.submitMock(input(70));
     expect(result.review).toHaveLength(100);
-    expect(result.review[0]).toEqual({ questionNum: 1, correctIndex: 0, explanation: "Explanation 1" });
+    expect(result.review[0]).toEqual({ questionNum: 1, scored: true, correctIndex: 0, explanation: "Explanation 1" });
   });
   it.each(["one-question", "duplicate", "replacement", "course", "session", "calcOnly", "signature", "missing-token"])("rejects %s tampering before writing results", async kind => {
     const { insertValues } = makeDb(); const data: any = input();

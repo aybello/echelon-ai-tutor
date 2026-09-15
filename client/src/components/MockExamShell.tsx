@@ -15,6 +15,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import FeedbackModal from "@/components/FeedbackModal";
+import { calculateMockResultStats } from "@/lib/mockExamResultStats";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
@@ -177,6 +178,7 @@ export interface ExamQuestion {
   /** 0-based index of the correct option */
   /** Present only after the server scores a finalized signed mock session. */
   correct?: number;
+  scored?: boolean;
   explanation?: string;
   diagramId?: string | null;
   diagramAlt?: string | null;
@@ -470,6 +472,7 @@ export default function MockExamShell({
   const [scoredResult, setScoredResult] = useState<{
     score: number; total: number; pct: number; passed: boolean; unavailableCount: number;
     moduleBreakdown: Record<string, { correct: number; total: number }>;
+    unscoredQuestionNums: number[];
   } | null>(null);
   const submitMock = trpc.exam.submitMock.useMutation({
     onSuccess: result => {
@@ -477,10 +480,15 @@ export default function MockExamShell({
       setQuestions(previous => previous.map(question => {
         const review = reviewByQuestion.get(question.id);
         return review?.correctIndex === null || !review
-          ? question
-          : { ...question, correct: review.correctIndex, explanation: review.explanation ?? undefined };
+          ? { ...question, scored: review?.scored }
+          : { ...question, scored: review.scored, correct: review.correctIndex, explanation: review.explanation ?? undefined };
       }));
-      setScoredResult(result);
+      setScoredResult({
+        ...result,
+        unscoredQuestionNums: result.review
+          .filter(item => item.scored === false)
+          .map(item => item.questionNum),
+      });
       resultSavedRef.current = true;
       setSaveStatus(result.persisted ? "saved" : "guest");
     },
@@ -631,13 +639,23 @@ export default function MockExamShell({
       .sort(([, a], [, b]) => (a.correct / a.total) - (b.correct / b.total));
     return { correct, score, pct, passed, moduleBreakdown, sortedModules };
   }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession, scoredResult, legacyDraft]);
+  const resultStats = useMemo(() => {
+    if (!results) return null;
+    return calculateMockResultStats({
+      questions,
+      answers,
+      correct: results.correct,
+      authoritativeTotal: scoredResult?.total,
+      unscoredQuestionNums: scoredResult?.unscoredQuestionNums,
+    });
+  }, [answers, questions, results, scoredResult]);
   useLearningActivitySession({
     courseKey: productKey,
     activityType: "mock_exam",
     enabled: examState === "active" && !showPreviewGate,
     unitsCompleted: answered,
     score: results?.correct,
-    total: results ? questions.length : undefined,
+    total: resultStats?.total,
   });
 
   const saveResult = () => {
@@ -848,7 +866,7 @@ export default function MockExamShell({
                 {[
                   { icon: "📝", label: "Questions",  value: `${EXAM_QUESTIONS} MCQ` },
                   { icon: "⏱️", label: "Time Limit", value: `${Math.round(EXAM_DURATION / 3600)} Hour${EXAM_DURATION >= 7200 ? "s" : ""}` },
-                  { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * EXAM_QUESTIONS)}/${EXAM_QUESTIONS})` },
+                  { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * (productKey === "wpi-class4-wastewater" ? 100 : EXAM_QUESTIONS))}/${productKey === "wpi-class4-wastewater" ? 100 : EXAM_QUESTIONS})` },
                   { icon: "📊", label: "Modules",    value: `${moduleCount ?? Object.keys(moduleTargets).length} Topics` },
                 ].map(({ icon, label, value }) => (
                   <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
@@ -894,8 +912,11 @@ export default function MockExamShell({
   // ── RESULTS SCREEN ──────────────────────────────────────────────────────────
   if (examState === "results" && results) {
     const { correct, pct, passed, sortedModules } = results;
-    const skipped = answers.filter(a => a.selected === null).length;
-    const incorrect = questions.length - correct - skipped;
+    const { total: scoredTotal, skipped, incorrect } = resultStats ?? {
+      total: questions.length,
+      skipped: answers.filter(answer => answer.selected === null).length,
+      incorrect: questions.length - correct - answers.filter(answer => answer.selected === null).length,
+    };
     return (
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
@@ -923,8 +944,9 @@ export default function MockExamShell({
             <div style={{ fontSize: 48, fontWeight: 900, marginBottom: 4 }}>{pct}%</div>
             <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{previewSession ? "PREVIEW COMPLETE" : passed ? "PASSED" : "NOT YET"}</div>
             <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 24 }}>
-              {correct} / {questions.length} correct · {previewSession ? "Practice preview — not a full mock result" : passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
+              {correct} / {scoredTotal} scored questions correct · {previewSession ? "Practice preview — not a full mock result" : passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
             </div>
+            {scoredResult && questions.length > scoredResult.total && <p>{questions.length - scoredResult.total} unscored practice items are excluded from your result and readiness history.</p>}
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
                 disabled={startMock.isPending || saveStatus === "saving" || (saveStatus === "error" && !saveError.includes("expired"))}
@@ -1001,6 +1023,7 @@ export default function MockExamShell({
                       <span style={{ fontSize: 16, flexShrink: 0 }}>{!reviewAvailable ? "ℹ️" : wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
                     </div>
+                    {q.scored === false && <p className="mb-2 text-xs text-slate-600">Unscored practice item — excluded from your score and readiness.</p>}
                     {!reviewAvailable ? <div style={{ fontSize: 12, color: "#64748B" }}>Answer review is unavailable because this question changed after your exam was finalized.</div> : <>
                     {!wasSkipped && !isCorrect && (
                       <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!].replace(/^[A-Da-d][.):]\s*/, "")}</div>

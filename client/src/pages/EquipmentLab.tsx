@@ -1,3 +1,4 @@
+import GuideStudyRecording from "@/components/GuideStudyRecording";
 import { Suspense, useCallback, useState } from "react";
 import { useLocation } from "wouter";
 import { ArrowRight, Box, Info, Monitor } from "lucide-react";
@@ -34,6 +35,7 @@ export default function EquipmentLab() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       <SiteNav currentPath="/equipment-lab" />
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <GuideStudyRecording topic="Equipment Lab — circular clarifier" />
         <section className="flex flex-wrap items-end justify-between gap-5 border-b border-slate-200 pb-6">
           <div className="max-w-2xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-teal-700">Equipment Lab · Module 01</p>

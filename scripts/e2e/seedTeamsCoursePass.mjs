@@ -92,8 +92,8 @@ try {
     [orderItemId, organizationId, E2E_COURSE_KEY, activationDeadline],
   );
 
-  // A complete synthetic 100-question bank exercises the real exam-size invariant.
-  for (let number = 990001; number <= 990100; number++) {
+  // Include ten additional items for the WPI Class IV pre-test simulation.
+  for (let number = 990001; number <= (prefix === "teams" ? 990110 : 990100); number++) {
     await connection.execute(
       `INSERT INTO questions (bankKey, questionNum, module, topic, question, options, correctIndex, explanation, reviewStatus)
        VALUES (?, ?, 'Safety & Admin', 'Safety & Admin', ?, ?, 0, 'Synthetic browser fixture.', 'approved')

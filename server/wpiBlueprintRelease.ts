@@ -12,6 +12,7 @@ export function planWpiBlueprintRelease(meta: Meta, rows: Row[]) {
   const visible = ordered.filter(row => row.reviewStatus !== "rejected" && row.reviewStatus !== "in_review");
   const pool = parseLearnerQuestions(visible);
   const errors: string[] = [];
+  if (pool.length < 110) errors.push("At least 110 valid visible questions are required, including ten unscored practice items.");
   try { selectBlueprintQuestions(pool, WPI_CLASS4_BLUEPRINT, 100, () => 0.5); }
   catch (error) { errors.push(error instanceof Error ? error.message : String(error)); }
   const after = { modules: JSON.stringify(WPI_CLASS4_BLUEPRINT.map(a => a.module)),

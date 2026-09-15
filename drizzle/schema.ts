@@ -1408,3 +1408,19 @@ export const purchaseEmailOutbox = mysqlTable("purchase_email_outbox", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, t => [uniqueIndex("purchase_email_session_unique_idx").on(t.stripeSessionId),
   index("purchase_email_delivery_idx").on(t.status, t.availableAt)]);
+
+/** Course-wide state, independent of the currently downloaded flashcard sample. */
+export const flashcardProgressState = mysqlTable("flashcard_progress_state", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  examType: varchar("examType", { length: 64 }).notNull(),
+  knownIds: mediumtext("knownIds").notNull(),
+  totalCards: int("totalCards").notNull().default(0),
+}, t => [uniqueIndex("flashcard_state_identity_idx").on(t.email, t.examType)]);
+export const flashcardProgressOperations = mysqlTable("flashcard_progress_operations", {
+  operationId: varchar("operationId", { length: 64 }).primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  examType: varchar("examType", { length: 64 }).notNull(),
+  payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
