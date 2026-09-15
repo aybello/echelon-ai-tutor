@@ -1,0 +1,831 @@
+{
+  "batch": "10",
+  "title": "Class 1 Water Treatment — batch 10 (questions 1361–1400)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1361,
+      "question": "Why does a plant maintain manual operating capability in addition to automatic control?",
+      "options": [
+        "Because manual operation is more accurate than automatic control",
+        "Because automatic control cannot be used during periods of low demand",
+        "Because the plant must continue operating if the control system fails",
+        "Because regulations require manual operation during each operating shift"
+      ],
+      "correctIndex": 2,
+      "explanation": "Control systems fail, through power problems, communication loss, or software faults. If a plant cannot be operated manually, that failure becomes a loss of water supply or of a treatment barrier. Retaining manual capability, and practising it, preserves the ability to keep treating water safely.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Manual operation",
+      "isCalc": "no",
+      "tip": "Practise manual operation before you need it. Discovering nobody remembers how is a common failure."
+    },
+    {
+      "questionNum": 1362,
+      "question": "Why is a chemical feed pump usually installed with a calibration cylinder?",
+      "options": [
+        "To provide surge protection for the chemical discharge piping",
+        "To allow actual delivered volume to be measured over a timed interval",
+        "To hold a reserve of chemical if the day tank runs empty unexpectedly",
+        "To allow air to be vented from the suction line before starting"
+      ],
+      "correctIndex": 1,
+      "explanation": "A calibration cylinder lets the operator isolate the pump suction from the day tank and draw from a graduated column instead. Measuring the volume drawn over a timed interval gives the actual delivery rate, which is the only reliable way to confirm the dose being applied.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Calibration cylinder",
+      "isCalc": "no",
+      "tip": "Calibrate at the setting you actually operate at. Accuracy varies across the stroke range."
+    },
+    {
+      "questionNum": 1363,
+      "question": "Why is a back pressure valve fitted in a chemical feed line?",
+      "options": [
+        "To prevent siphoning and ensure the metering pump doses accurately",
+        "To reduce the pressure of the chemical before it enters the main",
+        "To relieve pressure if the discharge line becomes blocked downstream",
+        "To allow chemical to be recirculated back to the storage tank"
+      ],
+      "correctIndex": 0,
+      "explanation": "If the injection point is at lower pressure than the day tank, chemical can siphon through continuously regardless of pump operation, causing a large overdose. A back pressure valve maintains a minimum pressure on the discharge, which stops siphoning and gives the metering pump a consistent condition to work against.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Back pressure valve",
+      "isCalc": "no",
+      "tip": "Uncontrolled siphoning can empty a day tank into the process. The back pressure valve prevents it."
+    },
+    {
+      "questionNum": 1364,
+      "question": "Why is a pressure relief valve required on the discharge of a positive displacement chemical pump?",
+      "options": [
+        "To maintain constant pressure at the chemical injection point",
+        "To prevent damaging pressure if the discharge becomes blocked",
+        "To allow the pump to be primed before it is started",
+        "To reduce pulsation in the chemical discharge line"
+      ],
+      "correctIndex": 1,
+      "explanation": "A positive displacement pump moves a fixed volume each stroke regardless of the resistance it meets. If the discharge is blocked by a closed valve or a crystallized line, pressure rises until piping, the pump, or a fitting fails. A relief valve provides a controlled path before that happens.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Relief protection",
+      "isCalc": "no",
+      "tip": "Never start a positive displacement pump against a closed discharge valve."
+    },
+    {
+      "questionNum": 1365,
+      "question": "Why should an operator investigate a filter whose run length has shortened progressively over several weeks?",
+      "options": [
+        "Shortening runs indicate the backwash rate has been set too high",
+        "Shortening runs indicate the turbidimeter requires recalibration",
+        "Shortening runs indicate a change in loading or a developing bed problem",
+        "Shortening runs indicate the filter is capturing particles more efficiently"
+      ],
+      "correctIndex": 2,
+      "explanation": "A steadily shortening run means headloss is developing faster than before. Either the filter is receiving a higher solids load because pretreatment has deteriorated, or the bed itself is fouling with mudballs or media problems. Both need investigation before filtered quality is affected.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Run length trending",
+      "isCalc": "no",
+      "tip": "Compare run length at similar flows and raw water conditions, otherwise the trend is not meaningful."
+    },
+    {
+      "questionNum": 1366,
+      "question": "Why is the chlorine residual entering the distribution system typically higher than the minimum required at the extremities?",
+      "options": [
+        "Because residual decays as water travels and ages within the system",
+        "Because the analyser at the plant reads lower than the true concentration",
+        "Because higher residual at the plant reduces by-product formation downstream",
+        "Because regulations specify a higher value for water leaving a treatment plant"
+      ],
+      "correctIndex": 0,
+      "explanation": "Chlorine is consumed continuously by reactions with pipe walls, biofilm and any organic matter present. The residual leaving the plant must be high enough that, after decay over the longest travel time in the system, an adequate residual still remains at the furthest point.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Residual decay",
+      "isCalc": "no",
+      "tip": "Setting the plant residual means working backwards from the worst-case travel time in the system."
+    },
+    {
+      "questionNum": 1367,
+      "question": "Why is the operator in charge required to be identified for a drinking water system?",
+      "options": [
+        "To establish who is accountable for operating decisions at any given time",
+        "To determine the classification that applies to the treatment facility",
+        "To record which operator collected each compliance sample",
+        "To assign responsibility for maintaining the plant equipment records"
+      ],
+      "correctIndex": 0,
+      "explanation": "Identifying an operator in charge establishes unambiguous accountability for operating decisions and for directing the response when conditions change. It ensures that at any moment there is a specific, appropriately certified person responsible rather than diffuse or assumed responsibility.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Operator in charge",
+      "isCalc": "no",
+      "tip": "Accountability must be assigned to a person, not to a role that nobody has actually been placed in."
+    },
+    {
+      "questionNum": 1368,
+      "question": "An operator on shift alone identifies a condition beyond their certification and experience. What is the appropriate action?",
+      "options": [
+        "Take the action that appears most conservative and document the reasoning",
+        "Continue normal operation until a more senior operator arrives on shift",
+        "Escalate immediately while taking any protective action within their competence",
+        "Shut the plant down completely until qualified assistance can attend"
+      ],
+      "correctIndex": 2,
+      "explanation": "Escalation is not a failure of competence; recognising the limit of one's competence is part of it. The operator takes the protective steps they are trained and authorised to take, such as stopping production of non-compliant water, while immediately bringing in the expertise the situation requires.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Escalation",
+      "isCalc": "no",
+      "tip": "Escalating early is always defensible. Acting beyond your competence rarely is."
+    },
+    {
+      "questionNum": 1369,
+      "question": "A contact tank of 1200 m³ receives 6 ML/d with a baffling factor of 0.5. If the outlet residual is 0.9 mg/L, what CT is achieved?",
+      "options": [
+        "64.8 mg·min/L",
+        "129.6 mg·min/L",
+        "259.2 mg·min/L",
+        "1080 mg·min/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "Theoretical detention is 1200 ÷ 6000 m³/d = 0.2 days, which is 288 minutes. Applying the baffling factor gives 288 × 0.5 = 144 minutes effective. CT is then 0.9 mg/L × 144 min = 129.6 mg·min/L.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Combined CT calculation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Detention",
+          "c": "1200 m³ ÷ 6000 m³/d = 0.2 d = 288 min"
+        },
+        {
+          "l": "Effective T",
+          "c": "288 min × 0.5 = 144 min"
+        },
+        {
+          "l": "CT",
+          "c": "0.9 mg/L × 144 min = 129.6 mg·min/L"
+        }
+      ],
+      "tip": "Apply the baffling factor before multiplying by residual, never after."
+    },
+    {
+      "questionNum": 1370,
+      "question": "A plant treating 8 ML/d needs a chlorine dose of 3 mg/L using 12 percent hypochlorite. How much solution is required daily?",
+      "options": [
+        "24 kg/d",
+        "96 kg/d",
+        "200 kg/d",
+        "288 kg/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Chlorine required is 3 mg/L × 8 ML/d = 24 kg/d. Dividing by the decimal strength gives 24 ÷ 0.12 = 200 kg/d of hypochlorite solution.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Two-step feed calculation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Chlorine needed",
+          "c": "3 mg/L × 8 ML/d = 24 kg/d"
+        },
+        {
+          "l": "Solution needed",
+          "c": "24 kg/d ÷ 0.12 = 200 kg/d"
+        },
+        {
+          "l": "Check",
+          "c": "The distractor 24 kg/d is the pure chlorine, not the solution."
+        }
+      ],
+      "tip": "Two-step problems trap people who stop after the first step. Read what is actually being asked."
+    },
+    {
+      "questionNum": 1371,
+      "question": "Two contact basins of 400 m³ each operate in series at a flow of 4800 m³/d. What is the total detention time?",
+      "options": [
+        "2 hours",
+        "4 hours",
+        "6 hours",
+        "8 hours"
+      ],
+      "correctIndex": 1,
+      "explanation": "Basins in series add their volumes, giving 800 m³. Dividing by flow gives 800 ÷ 4800 = 0.1667 days, which is 4 hours.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Basins in series",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Total volume",
+          "c": "400 m³ + 400 m³ = 800 m³"
+        },
+        {
+          "l": "Detention",
+          "c": "800 ÷ 4800 = 0.1667 d"
+        },
+        {
+          "l": "To hours",
+          "c": "0.1667 × 24 = 4 hours"
+        }
+      ],
+      "tip": "Series adds volume at the same flow. Parallel splits the flow through the same volume."
+    },
+    {
+      "questionNum": 1372,
+      "question": "Settled water turbidity is 8.0 NTU and filtered water is 0.4 NTU. What removal does the filter achieve?",
+      "options": [
+        "50 percent",
+        "80 percent",
+        "95 percent",
+        "99 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Removal is the change divided by the influent: (8.0 − 0.4) ÷ 8.0 × 100 = 95 percent.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter removal efficiency",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Reduction",
+          "c": "8.0 − 0.4 = 7.6 NTU"
+        },
+        {
+          "l": "Percentage",
+          "c": "7.6 ÷ 8.0 × 100 = 95%"
+        },
+        {
+          "l": "Note",
+          "c": "8.0 NTU entering a filter is high; pretreatment should be investigated."
+        }
+      ],
+      "tip": "High removal efficiency can still mean poor operation if the influent should never have been that high."
+    },
+    {
+      "questionNum": 1373,
+      "question": "A plant has five filters of 25 m² each and treats 10 000 m³/d. What is the loading rate when one filter is out of service?",
+      "options": [
+        "80 m³/(m²·d)",
+        "100 m³/(m²·d)",
+        "125 m³/(m²·d)",
+        "200 m³/(m²·d)"
+      ],
+      "correctIndex": 1,
+      "explanation": "With four filters in service the area is 4 × 25 = 100 m². Dividing the flow gives 10 000 ÷ 100 = 100 m³/(m²·d).",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Loading with unit offline",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area available",
+          "c": "4 filters × 25 m² = 100 m²"
+        },
+        {
+          "l": "Loading",
+          "c": "10 000 m³/d ÷ 100 m² = 100 m³/(m²·d)"
+        },
+        {
+          "l": "Compare",
+          "c": "With all five running the rate would be 80 m³/(m²·d)."
+        }
+      ],
+      "tip": "Design and compliance are assessed with the largest unit out of service, not with everything running."
+    },
+    {
+      "questionNum": 1374,
+      "question": "Plant flow rises from 8 ML/d to 12 ML/d while the dose is held at 2.5 mg/L. What must the feed rate become?",
+      "options": [
+        "20 kg/d",
+        "25 kg/d",
+        "30 kg/d",
+        "48 kg/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Feed rate is dose times flow: 2.5 mg/L × 12 ML/d = 30 kg/d. At the previous flow it was 2.5 × 8 = 20 kg/d.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Feed rate with flow change",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "New feed",
+          "c": "2.5 mg/L × 12 ML/d = 30 kg/d"
+        },
+        {
+          "l": "Old feed",
+          "c": "2.5 mg/L × 8 ML/d = 20 kg/d"
+        },
+        {
+          "l": "Why",
+          "c": "Without the increase, the dose would fall to 20 ÷ 12 = 1.7 mg/L."
+        }
+      ],
+      "tip": "This is exactly what flow pacing automates. Without it, dose drifts every time flow changes."
+    },
+    {
+      "questionNum": 1375,
+      "question": "Softening reduces hardness from 300 mg/L to 120 mg/L as CaCO₃ at a flow of 5 ML/d. What mass is removed daily?",
+      "options": [
+        "600 kg/d",
+        "900 kg/d",
+        "1500 kg/d",
+        "2100 kg/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "The reduction is 300 − 120 = 180 mg/L. Multiplying by flow gives 180 × 5 = 900 kg/d of hardness removed.",
+      "difficulty": "medium",
+      "module": "Softening",
+      "topic": "Hardness removal",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Reduction",
+          "c": "300 − 120 = 180 mg/L"
+        },
+        {
+          "l": "Mass",
+          "c": "180 mg/L × 5 ML/d = 900 kg/d"
+        }
+      ],
+      "tip": "This mass becomes sludge. Softening plants generate far more residuals than conventional plants."
+    },
+    {
+      "questionNum": 1376,
+      "question": "A 45 kW pump runs 18 hours per day at an electricity cost of $0.12 per kWh. What is the daily energy cost?",
+      "options": [
+        "$54.00",
+        "$97.20",
+        "$129.60",
+        "$810.00"
+      ],
+      "correctIndex": 1,
+      "explanation": "Energy used is 45 kW × 18 h = 810 kWh. At $0.12 per kWh the cost is 810 × 0.12 = $97.20 per day.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Energy cost",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Energy",
+          "c": "45 kW × 18 h = 810 kWh"
+        },
+        {
+          "l": "Cost",
+          "c": "810 kWh × $0.12 = $97.20/d"
+        },
+        {
+          "l": "Note",
+          "c": "The 810 distractor is kilowatt-hours, not dollars."
+        }
+      ],
+      "tip": "Pumping is usually the largest energy cost at a water system, so small efficiency gains compound."
+    },
+    {
+      "questionNum": 1377,
+      "question": "A reservoir falls from 2000 m³ to 1500 m³ over five hours. What is the net rate of drawdown?",
+      "options": [
+        "50 m³/h",
+        "100 m³/h",
+        "300 m³/h",
+        "400 m³/h"
+      ],
+      "correctIndex": 1,
+      "explanation": "The volume lost is 2000 − 1500 = 500 m³ over five hours, giving 500 ÷ 5 = 100 m³/h net drawdown.",
+      "difficulty": "easy",
+      "module": "Water Distribution",
+      "topic": "Drawdown rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Volume change",
+          "c": "2000 − 1500 = 500 m³"
+        },
+        {
+          "l": "Rate",
+          "c": "500 m³ ÷ 5 h = 100 m³/h"
+        },
+        {
+          "l": "Note",
+          "c": "This is net of any inflow occurring at the same time."
+        }
+      ],
+      "tip": "Net drawdown tells you how long you have before storage is exhausted at the current rate."
+    },
+    {
+      "questionNum": 1378,
+      "question": "A blend combines 700 m³ at 180 mg/L hardness with 300 m³ at 40 mg/L. What is the blended hardness?",
+      "options": [
+        "110 mg/L",
+        "126 mg/L",
+        "138 mg/L",
+        "154 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "Total mass is (700 × 180) + (300 × 40) = 126 000 + 12 000 = 138 000. Dividing by the total volume of 1000 m³ gives 138 mg/L.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Blending calculation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Mass stream 1",
+          "c": "700 × 180 = 126 000"
+        },
+        {
+          "l": "Mass stream 2",
+          "c": "300 × 40 = 12 000"
+        },
+        {
+          "l": "Blend",
+          "c": "138 000 ÷ 1000 m³ = 138 mg/L"
+        },
+        {
+          "l": "Check",
+          "c": "The result lies between 40 and 180, nearer the larger stream."
+        }
+      ],
+      "tip": "Split treatment relies on exactly this calculation to hit a target finished hardness."
+    },
+    {
+      "questionNum": 1379,
+      "question": "An operator finds settled turbidity has risen, filter runs have shortened, and the coagulant day tank level has barely moved since the previous shift. What is the most likely explanation?",
+      "options": [
+        "Raw water quality has deteriorated and requires a higher coagulant dose",
+        "The coagulant feed has failed and little or no chemical is being applied",
+        "The flocculator drive has failed, preventing floc from growing properly",
+        "The sedimentation basin sludge blanket has risen and is carrying over"
+      ],
+      "correctIndex": 1,
+      "explanation": "The unmoved day tank level is the decisive clue. It shows chemical is not being consumed, which explains the poor settled quality and the shortened filter runs. A raw water change or a flocculator failure would still show normal chemical consumption.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Integrated troubleshooting",
+      "isCalc": "no",
+      "tip": "Chemical inventory movement is an independent check on whether a feed is truly running."
+    },
+    {
+      "questionNum": 1380,
+      "question": "Filtered turbidity is acceptable, but the chlorine residual leaving the plant has fallen while the feed rate is unchanged and the plant flow is steady. What should be suspected?",
+      "options": [
+        "The chlorine demand of the water has increased",
+        "The contact chamber detention time has been reduced",
+        "The residual analyser is reading high and requires calibration",
+        "The distribution system is drawing more water than usual"
+      ],
+      "correctIndex": 0,
+      "explanation": "With feed rate and flow both constant, the applied dose is unchanged. A falling residual therefore means more chlorine is being consumed, which is an increase in demand. Raw water changes, an algal bloom, or a source switch are typical causes, and the finding should be confirmed by direct measurement.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Residual troubleshooting",
+      "isCalc": "no",
+      "tip": "Dose unchanged plus residual falling equals demand rising. Verify with a demand test."
+    },
+    {
+      "questionNum": 1381,
+      "question": "One filter of six shows turbidity consistently higher than the others at the same loading rate. What is the most likely cause?",
+      "options": [
+        "Coagulation is inadequate for the current raw water conditions",
+        "The plant is operating above its rated hydraulic capacity",
+        "That filter has a media, underdrain or backwash problem",
+        "The finished water turbidimeter requires recalibration"
+      ],
+      "correctIndex": 2,
+      "explanation": "All six filters receive the same settled water, so a problem common to the plant would affect them equally. A single filter performing worse points to something specific to that unit, such as media loss, mudballs, cracking, or uneven backwash distribution from its underdrain.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Isolating a fault",
+      "isCalc": "no",
+      "tip": "Compare units receiving the same feed. The one that differs identifies where to look."
+    },
+    {
+      "questionNum": 1382,
+      "question": "A distribution sample returns a total coliform detection, but the plant residual, turbidity and CT records for that period were all normal. What is the most appropriate interpretation?",
+      "options": [
+        "The plant records must be inaccurate, since treatment clearly failed",
+        "The result is a false positive and should be disregarded after resampling",
+        "Contamination likely entered within the distribution system rather than at the plant",
+        "The sample was collected before the disinfectant had time to act fully"
+      ],
+      "correctIndex": 2,
+      "explanation": "Normal treatment records suggest the barriers at the plant were functioning, which directs attention to the distribution system. Recent main work, a pressure loss event, a cross-connection, a storage reservoir issue, or sampling technique are all candidates, and the required notification proceeds while the investigation runs.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Contamination investigation",
+      "isCalc": "no",
+      "tip": "Where the treatment record is clean, investigate downstream. Never dismiss a positive as a false result."
+    },
+    {
+      "questionNum": 1383,
+      "question": "Following a power interruption, the plant restarts automatically. What should the operator verify first?",
+      "options": [
+        "That the finished water meter has resumed recording production",
+        "That chemical feeds and disinfection have restarted and are dosing correctly",
+        "That the SCADA historian has recovered the data lost during the outage",
+        "That the raw water pumps are drawing at their normal operating rate"
+      ],
+      "correctIndex": 1,
+      "explanation": "Water can flow through a plant while chemical feeds remain stopped, sending untreated or undisinfected water toward the clearwell. Confirming that coagulation and disinfection have genuinely restarted and are delivering the intended dose protects the barriers before anything else is addressed.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Restart verification",
+      "isCalc": "no",
+      "tip": "Flow restarting is not treatment restarting. Verify every chemical feed independently after an outage."
+    },
+    {
+      "questionNum": 1384,
+      "question": "An operator observes that headloss across a filter is rising unusually slowly and effluent turbidity is slightly elevated. What does this suggest?",
+      "options": [
+        "The filter media may be too coarse or the bed may have cracked",
+        "The filter is performing well and capturing particles efficiently",
+        "The backwash rate has been set too low for the media in use",
+        "The filter influent has an unusually low solids concentration"
+      ],
+      "correctIndex": 0,
+      "explanation": "Slow headloss development with poorer effluent quality means water is passing through the bed without particles being captured. Cracks, media that is too coarse, or short-circuiting past a failed wall seal all allow flow to bypass the filtering action, producing exactly this combination.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filter bypass diagnosis",
+      "isCalc": "no",
+      "tip": "Low headloss with poor quality is worse than high headloss with good quality. Water is escaping treatment."
+    },
+    {
+      "questionNum": 1385,
+      "question": "Customers in one area report discoloured water shortly after a crew completed hydrant flushing nearby. What is the most likely cause?",
+      "options": [
+        "The flushing introduced contamination from the hydrant into the main",
+        "The flushing velocity disturbed deposits that settled in adjacent mains",
+        "The flushing reduced pressure enough to draw in external water",
+        "The flushing removed the disinfectant residual from the affected area"
+      ],
+      "correctIndex": 1,
+      "explanation": "Flushing mobilises accumulated sediment and corrosion products. If flow is drawn from an unintended direction, or the hydrant is opened too quickly, that material travels into surrounding mains and reaches customers. Planned unidirectional flushing with slow valve operation limits the effect.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Post-flushing discolouration",
+      "isCalc": "no",
+      "tip": "Flushing complaints usually mean the deposits went somewhere other than out of the hydrant."
+    },
+    {
+      "questionNum": 1386,
+      "question": "A groundwater plant using greensand begins to show manganese in the filter effluent, although the permanganate feed rate is unchanged. What should be checked first?",
+      "options": [
+        "Whether the raw water manganese concentration has increased",
+        "Whether the filter backwash rate has been reduced recently",
+        "Whether the finished water pH has fallen below its normal range",
+        "Whether the greensand media has been in service beyond its life"
+      ],
+      "correctIndex": 0,
+      "explanation": "An unchanged oxidant feed will under-treat if the incoming load has risen. Confirming raw water manganese establishes whether the demand changed before more complex causes such as media exhaustion or pH drift are investigated. It is the simplest explanation and the fastest to verify.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Manganese breakthrough",
+      "isCalc": "no",
+      "tip": "Check whether the load changed before concluding the process has failed."
+    },
+    {
+      "questionNum": 1387,
+      "question": "Why is potassium permanganate dosing controlled carefully rather than applied generously as a margin of safety?",
+      "options": [
+        "Excess permanganate carries through and gives water a pink colour",
+        "Excess permanganate reacts with chlorine and destroys the residual",
+        "Excess permanganate lowers pH below the range for iron oxidation",
+        "Excess permanganate accumulates on media and cannot be backwashed"
+      ],
+      "correctIndex": 0,
+      "explanation": "Permanganate is intensely coloured, and any that is not consumed by the oxidation reaction passes through as visible pink water, generating immediate customer complaints. The dose is therefore matched closely to the iron and manganese present, and the filter effluent is watched for colour.",
+      "difficulty": "medium",
+      "module": "Iron & Manganese Removal",
+      "topic": "Permanganate dosing",
+      "isCalc": "no",
+      "tip": "Pink water at the tap means permanganate overdose. There is no safety margin available with this chemical."
+    },
+    {
+      "questionNum": 1388,
+      "question": "Why does an iron and manganese removal plant normally provide contact time between oxidant addition and filtration?",
+      "options": [
+        "To allow the oxidant to disperse evenly through the water",
+        "To allow the oxidation reaction to complete so particles can be filtered",
+        "To allow the water temperature to equalize before it reaches the media",
+        "To allow excess oxidant to decay before the water enters the filters"
+      ],
+      "correctIndex": 1,
+      "explanation": "Oxidation of iron and especially manganese is not instantaneous. If water reaches the filter before the reaction is complete, the metals are still partly dissolved and pass through the media, only to precipitate later in the distribution system. Adequate contact time is essential to the process working at all.",
+      "difficulty": "medium",
+      "module": "Iron & Manganese Removal",
+      "topic": "Oxidation contact time",
+      "isCalc": "no",
+      "tip": "Insufficient contact time is the most common reason a well-designed iron and manganese plant underperforms."
+    },
+    {
+      "questionNum": 1389,
+      "question": "What indicates that greensand media requires regeneration or replacement?",
+      "options": [
+        "Backwash water from the filter runs clear more quickly than usual",
+        "Headloss across the bed develops more slowly than in previous runs",
+        "Manganese appears in the effluent despite adequate oxidant and contact time",
+        "The media depth measured during inspection has increased slightly"
+      ],
+      "correctIndex": 2,
+      "explanation": "Greensand relies on a catalytic manganese dioxide coating. When that coating is depleted, or the media is fouled, manganese passes through even though the chemistry upstream is correct. Persistent breakthrough with verified oxidant dose and contact time points to the media itself.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Media exhaustion",
+      "isCalc": "no",
+      "tip": "Rule out dose and contact time first. Only then is media condition the likely explanation."
+    },
+    {
+      "questionNum": 1390,
+      "question": "Why is lime handled with particular care in a softening plant?",
+      "options": [
+        "It is caustic and generates heat and dust when it contacts moisture",
+        "It reacts violently with the chlorine used elsewhere in the plant",
+        "It releases a flammable gas when it is mixed into slurry form",
+        "It is absorbed through the skin and accumulates in body tissue"
+      ],
+      "correctIndex": 0,
+      "explanation": "Quicklime reacts exothermically with water, and lime dust is strongly alkaline, causing severe eye and respiratory irritation and chemical burns to damp skin. Dust control, eye and skin protection, and careful slaking practice are all necessary when handling it.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Lime handling",
+      "isCalc": "no",
+      "tip": "Lime burns develop slowly and painlessly at first, so exposure is often noticed late."
+    },
+    {
+      "questionNum": 1391,
+      "question": "What operational problem does scale formation cause in a lime softening plant?",
+      "options": [
+        "It reduces the alkalinity available for the softening reaction",
+        "It deposits in pipes, basins and equipment, restricting flow and function",
+        "It increases the hardness of the finished water leaving the plant",
+        "It consumes the lime before it can react with the hardness present"
+      ],
+      "correctIndex": 1,
+      "explanation": "Water leaving the softening reaction is supersaturated with calcium carbonate, which deposits on any available surface. Scale accumulates in launders, pipework, meters and instruments, progressively restricting flow and interfering with equipment, which is why recarbonation and stabilization are needed.",
+      "difficulty": "medium",
+      "module": "Softening",
+      "topic": "Scale formation",
+      "isCalc": "no",
+      "tip": "Softening creates a scaling water; recarbonation converts it back to a stable one."
+    },
+    {
+      "questionNum": 1392,
+      "question": "Why is the brine used for ion exchange regeneration prepared at a controlled concentration?",
+      "options": [
+        "Too weak a brine leaves resin partly regenerated and capacity reduced",
+        "Too strong a brine dissolves the resin beads and destroys the bed",
+        "Brine concentration determines the hardness of the finished water",
+        "Brine concentration controls the rate at which the resin bed expands"
+      ],
+      "correctIndex": 0,
+      "explanation": "Regeneration drives the exchange in reverse by overwhelming the resin with sodium ions. If the brine is too dilute, exchange sites are not fully restored and the next service run has reduced capacity and breaks through early. Excessive brine wastes salt and increases the disposal load without further benefit.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Brine regeneration",
+      "isCalc": "no",
+      "tip": "Under-regeneration shortens the next run; over-regeneration wastes salt and loads the discharge."
+    },
+    {
+      "questionNum": 1393,
+      "question": "Why is brine waste from ion exchange regeneration an operational concern?",
+      "options": [
+        "It contains resin fines that must be recovered before disposal",
+        "It contains high chloride and hardness requiring acceptable disposal",
+        "It retains disinfectant residual that must be neutralized first",
+        "It must be returned to the head of the plant for further treatment"
+      ],
+      "correctIndex": 1,
+      "explanation": "Spent regenerant carries the calcium and magnesium removed from the water plus a large excess of sodium chloride. That salinity is difficult for sewage treatment plants and receiving waters to accept, so disposal arrangements are often the limiting factor in choosing ion exchange.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Brine disposal",
+      "isCalc": "no",
+      "tip": "Salt cannot be treated out of a waste stream. Disposal must be arranged before the process is selected."
+    },
+    {
+      "questionNum": 1394,
+      "question": "An online turbidimeter shows a smooth, unchanging reading for several hours during a period when flow and coagulant dose both varied. What should the operator suspect?",
+      "options": [
+        "The plant is operating in an exceptionally stable condition",
+        "The instrument may be blocked, frozen or reporting a stale value",
+        "The coagulant dose changes were too small to affect turbidity",
+        "The turbidimeter has recently been calibrated and is now more accurate"
+      ],
+      "correctIndex": 1,
+      "explanation": "Real process measurements show small continuous variation. A perfectly flat trace usually means the sample is not reaching the instrument, the reading has frozen, or the communication link is repeating the last value. It is verified with a manual sample rather than accepted as good news.",
+      "difficulty": "hard",
+      "module": "Instrumentation & Control",
+      "topic": "Stale reading detection",
+      "isCalc": "no",
+      "tip": "A perfectly steady signal is suspicious. Genuine measurements always show some noise."
+    },
+    {
+      "questionNum": 1395,
+      "question": "Why is a sample line to an online analyser kept as short as practical?",
+      "options": [
+        "To reduce the lag between a process change and the instrument response",
+        "To reduce the volume of sample water wasted during normal operation",
+        "To lower the cost of installing and maintaining the analyser system",
+        "To keep the sample at the temperature of the surrounding process area"
+      ],
+      "correctIndex": 0,
+      "explanation": "Water must physically travel from the sampling point to the analyser, and a long line can introduce minutes of delay. The operator then sees conditions as they were, not as they are, which makes control sluggish and can cause overcorrection. Long lines also foul and allow the sample to change before analysis.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Sample line design",
+      "isCalc": "no",
+      "tip": "Know the transport delay on each analyser. It sets how quickly you can expect to see a change."
+    },
+    {
+      "questionNum": 1396,
+      "question": "What is the purpose of a high-high alarm set above the normal high alarm on a chemical storage tank?",
+      "options": [
+        "To provide a redundant signal in case the high alarm sensor fails",
+        "To indicate that a condition has escalated and needs immediate action",
+        "To trigger the routine reorder of chemical from the supplier",
+        "To record the maximum level the tank reached during a delivery"
+      ],
+      "correctIndex": 1,
+      "explanation": "A tiered alarm structure distinguishes a condition that needs attention from one that has become urgent. The high alarm prompts the operator to act, while the high-high alarm indicates the situation is progressing toward overflow and typically initiates automatic protective action such as stopping the fill.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Alarm tiers",
+      "isCalc": "no",
+      "tip": "Tiered alarms let an operator prioritise. Every alarm at the same priority is no prioritisation at all."
+    },
+    {
+      "questionNum": 1397,
+      "question": "Why is instrument calibration recorded with the as-found reading as well as the as-left reading?",
+      "options": [
+        "The as-found value shows how far the instrument had drifted before adjustment",
+        "The as-found value is required to calculate the calibration interval",
+        "The as-found value confirms the correct standard was used for the check",
+        "The as-found value demonstrates the technician performed the work correctly"
+      ],
+      "correctIndex": 0,
+      "explanation": "The as-found reading reveals the error that existed while the instrument was in service, which determines whether data recorded since the last calibration remains reliable. It also shows the rate of drift over time, which is the evidence for lengthening or shortening the calibration interval.",
+      "difficulty": "hard",
+      "module": "Instrumentation & Control",
+      "topic": "Calibration records",
+      "isCalc": "no",
+      "tip": "A large as-found error may mean previously recorded compliance data must be re-evaluated."
+    },
+    {
+      "questionNum": 1398,
+      "question": "A raw water source is switched from a river intake to a groundwater well. What treatment consequence should be anticipated?",
+      "options": [
+        "Coagulant demand will rise sharply because groundwater is more turbid",
+        "Disinfection requirements increase because groundwater carries more pathogens",
+        "The chemistry changes, and iron, manganese and hardness may now govern treatment",
+        "Chlorine demand will increase because groundwater contains more organic matter"
+      ],
+      "correctIndex": 2,
+      "explanation": "Groundwater is typically low in turbidity and organic matter but can carry dissolved iron, manganese, hardness and sometimes hydrogen sulphide. The treatment challenge shifts from particle removal and organic control toward oxidation, filtration of precipitated metals and stability, so process settings must change accordingly.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Source switching",
+      "isCalc": "no",
+      "tip": "Switching sources changes the whole treatment problem, not merely the flow entering the plant."
+    },
+    {
+      "questionNum": 1399,
+      "question": "Why is blending water from two different sources managed carefully?",
+      "options": [
+        "Blending can produce water that is chemically unstable and corrosive",
+        "Blending requires that both sources be treated by identical processes",
+        "Blending reduces the disinfectant residual below a usable concentration",
+        "Blending prevents accurate measurement of the total flow produced"
+      ],
+      "correctIndex": 0,
+      "explanation": "Two waters that are individually stable can produce a blend that is corrosive or scaling, because pH, alkalinity, hardness and dissolved solids interact. Changing blend ratios can also disturb established pipe scales, releasing metals and causing discoloured water complaints in the distribution system.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "Source blending",
+      "isCalc": "no",
+      "tip": "Changing a blend ratio can disturb decades-old pipe scale. Make such changes gradually and monitor."
+    },
+    {
+      "questionNum": 1400,
+      "question": "Why does a plant monitor raw water pH and alkalinity together rather than pH alone?",
+      "options": [
+        "Alkalinity indicates whether the pH will resist change when coagulant is added",
+        "Alkalinity is required to calculate the CT credit for the disinfection stage",
+        "Alkalinity determines the maximum flow the coagulation process can accept",
+        "Alkalinity measurement is used to verify the accuracy of the pH meter"
+      ],
+      "correctIndex": 0,
+      "explanation": "pH describes the present condition while alkalinity describes how strongly the water resists changing it. A water at acceptable pH but low alkalinity will fall out of the coagulation range as soon as an acidic coagulant is dosed, so both must be known before setting the dose.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "pH and alkalinity",
+      "isCalc": "no",
+      "tip": "pH tells you where you are; alkalinity tells you how hard it will be to stay there."
+    }
+  ]
+}
