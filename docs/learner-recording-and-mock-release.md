@@ -42,6 +42,12 @@ The corrected release head passed 1,383 local tests, both TypeScript configurati
 
 Keepalive is best-effort: a hard browser/device shutdown while offline cannot guarantee a final delivery. The UI tells learners to keep the page open during retries. Sessions expire after five minutes; unrecoverable intervals are disclosed, not credited as if saved. This is platform-recorded, interaction-sensitive study time, not a claim of verified attendance or regulatory credit.
 
+## Production verification
+
+Checkpoint `a00fe9c0` published the corrected release. After propagation, the managed and custom WPI Class IV mock routes loaded without authentication and displayed **100 MCQ** with a **70% (70/100)** pass mark. The matching flashcard routes loaded the 14-card deck and its module controls; the managed route presented the unauthenticated Exam Pass gate, while the custom route rendered the public deck surface. No mock was started, no card was rated, and no learner record was written during these smoke checks.
+
+The managed and custom Wastewater Process Guide routes both rendered the seven-stage process flow and exposed **Secondary Clarification · 3D available**. No progress, bookmark, or study-recording interaction was performed. The authenticated mocked completion, persisted `{ score, total }` contract, flashcard retry/reload behavior, and organization isolation are covered by exact-head Quality Gate run `35011786769` in its dedicated QA environment. The user explicitly accepted this automated-QA evidence instead of creating or using a production QA or customer account for repeat signed-in tests. The Class IV blueprint profile remains unactivated; no question-bank or other learner-content change was performed.
+
 ## Historical OIT: exact remaining input
 
 The 972-question expansion is already released; do not re-import it. `docs/oit-historical-approved-subset-release.md` records 62 historical corrections applied, leaving five narrower rewrites and 37 source/editorial holds. Those remaining 42 are **not repaired by this code branch**.
