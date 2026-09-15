@@ -1,54 +1,77 @@
-# WPI Class IV Wastewater Collection — live-bank review and 250 additions
+# WPI Class IV Wastewater Collection — complete historical repair
 
-Requested September 15, 2026 after the user reported a second Manitoba seat purchase. The specific order was not independently accessed. Review the collection bank, not the previously repaired Class IV wastewater treatment bank.
+## Completed September 15, 2026
 
-## Export received — September 15, 2026
+The remaining 250 existing questions have been repaired. Together with the earlier 253, this branch now contains revised content for **all 503 historical questions**, numbered 1–503. The final pass also improved distractors in the earlier batch. This completes the historical content repair, not a production import. The separately requested **250 new additions have not been authored** and are not counted as repairs.
 
-The complete production export has now been received and its package and 503 individual row hashes verified. It contains 503 visible, unreviewed questions in the canonical bank, nine calculation flags and no cognitive classifications. The original file stays private. Its content SHA-256 is `397fc0949a31760494116d368cc69ecc465cbe84baddf7daf597ef9cce3b0bab`.
+Course/product/route: `wpi-class4-water-coll`. Canonical question bank: `wpi-class4-wastewater-coll`. This is Wastewater Collection, not Wastewater Treatment.
 
-This branch now contains 253 authored historical replacements, including questions 1–150 and 103 additional technical/safety corrections. They are a DRAFT checkpoint: 250 historical rows still need editorial disposition, all 250 requested additions remain to be written, and the authored questions need the final editorial/coverage pass. Do not import this checkpoint or call the bank finished. No application or production-data change is included.
+The supplied production export contains 503 questions and has content SHA-256 `397fc0949a31760494116d368cc69ecc465cbe84baddf7daf597ef9cce3b0bab`. All original row hashes were verified. The original export and compiled before/after package remain private; the Git branch contains authored content and offline tooling.
 
-Ten focused checks pass, including independently calculated wet-well cycling, circular-pipe flow maxima and Manning slope. They validate specific properties; they do not prove every question has passed substantive review.
+## What changed
 
-Reproduce the private before/after ledger and preview with:
+Every historical number has one revised question, four distinct options, one declared correct answer, an explanation, a Collection area, a recall/application classification and a background reference. Repairs address unqualified legal/design limits, weak alternatives, misleading pump/hydraulic explanations and generic assertions that did not test an operational decision. The final pass removes the detected longest-answer and restrictive “only” distractor patterns. Numeric scenarios state their assumptions and units.
+
+The 503 repaired questions include 31 calculation items, 43 recall items and 460 application items. Every calculation has an independent arithmetic fixture. A screening pass found no exact normalized stem duplicates; the closest stem pair intentionally distinguishes maximum circular-pipe discharge from maximum mean velocity. Repeated learning objectives can still occur across different scenarios. Automated screening is not a substitute for subject-matter judgement or evidence of real-exam predictive validity.
+
+| Collection area | Total | Recall | Application | Calculations, included in application |
+|---|---:|---:|---:|---:|
+| Equipment | 65 | 9 | 56 | 5 |
+| Collection O&M and restoration | 104 | 7 | 97 | 9 |
+| Lift stations | 60 | 5 | 55 | 4 |
+| Monitoring and evaluation | 94 | 17 | 77 | 1 |
+| Safety and administration | 180 | 5 | 175 | 12 |
+| **Total** | **503** | **43** | **460** | **31** |
+
+The bank itself is not proportioned like a single mock. Its classified supply can support the Collection scored blueprint: areas 23/23/16/20/18; recall 5/4/3/5/3; calculations 3/5/1/0/7; 100 scored questions overall. Supply checks reserve separate recall, calculation/application and non-calculation/application rows in every area. This does **not** establish that the deployed selector enforces those quotas. No strict profile or 110-question simulation is activated by this work.
+
+Sources distinguish technical background from binding local requirements. NIOSH's 100 ppm H2S IDLH is named as a NIOSH value, not a Manitoba legal entry threshold. Heat-emergency guidance is checked against CCOHS. Mathematical answers are independently derived. The questions are original practice material; no WPI endorsement or access to actual exam questions is claimed.
+
+## Reproduce and inspect
 
 ```sh
-node --test scripts/collectionReview.test.mjs
+node --test scripts/collectionReview.test.mjs scripts/export-wpi-class4-collection-review.test.mjs
 node scripts/build-collection-review.mjs /private/export-wpi-class4-collection-review-20260915.json /private/new-output-directory
 ```
 
-The builder is offline and has no database connection. It refuses a changed baseline or row hashes and never overwrites an existing output. It preserves existing IDs, bank keys, question numbers, correct-answer positions and publication state. Rewritten wording still changes historical item meaning: retain original content/revision evidence, and do not silently regrade or reinterpret historical attempts against new wording. Metadata targets are proposed only; no strict mock profile is activated.
+The builder is offline: no database connection, import, approval, schema migration or application change. It rejects a changed baseline, missing historical repairs, duplicate identities, invalid hashes and incompatible field widths. It never overwrites an existing output directory's files.
 
-## Original read-only export instructions
+Outputs:
 
-Course/product/route key: `wpi-class4-water-coll`. Canonical database bank key: `wpi-class4-wastewater-coll`. The old route name says “water-coll” but the course registry identifies Wastewater Collection. The exporter reads both keys, reports them separately, and must not merge or rename rows automatically.
+- `collection-historical-repair.json`: full before/after rows, row hashes, disposition for all 503, classifications, coverage, proposed metadata changes and package digest.
+- `repaired-questions.json`: the complete revised 503-question bank.
+- `collection-repair-preview.md`: human-readable questions, answers, explanations and sources.
+- `rollback-content.json`: original content with expected post-repair hashes; data only, not executable SQL.
 
-Use the existing project database connection in the authorized release environment. Copy this branch's exporter into that environment; no application merge, deployment, migration or schema change is needed. Prefer a read-only database credential where available. Do not paste credentials into chat or the command.
+Correct-answer positions deliberately remain unchanged (A: 76, B: 152, C: 138, D: 137). Do not describe their stored distribution as balanced; any future display shuffling must retain the canonical answer mapping and be tested separately.
 
-```sh
-node scripts/export-wpi-class4-collection-review.mjs --out /tmp/export-wpi-class4-collection-review-20260915.json
-```
+The immutable original export must accompany those files in the private handoff. The old 253-question checkpoint is superseded and must not be imported.
 
-Return the complete JSON file privately to Father/Codex. It contains every question in every review status, stable IDs and question numbers, original option/step JSON, correct answers, explanations, source/classification fields, current module settings and guide overviews. It includes per-row and package SHA-256 values and checks row counts inside a read-only consistent snapshot. No learner names, emails, purchases or organization records are exported. Existing output files are never overwritten. If the database rejects read-only snapshots or a query fails, report that failure rather than modifying schema or exporting a partial sample.
+## Manus release instructions
 
-The script performs session settings, SELECTs and ROLLBACK only. It does not import, approve, reject, edit or delete questions. Local tests verify its query boundaries, count mismatch rejection, error rollback and hashes; production execution is still pending.
+1. Read this handoff and the complete package. Run the focused tests and regenerate from the supplied original export; compare the resulting digest with the handoff package. No per-question approval workflow is requested.
+2. Export the current canonical bank, metadata and module overviews using the same complete field set and canonical hashing. Compare with the supplied baseline. If any content or metadata changed, stop the import and reconcile the exact differences; do not overwrite live edits by assuming this export is still current. Use a consistent snapshot supported by the deployed database. The existing exporter uses MySQL read-only transaction syntax; TiDB deployments must use their supported equivalent rather than silently falling back to inconsistent reads.
+3. Verify a restorable production backup and rehearse the guarded update and rollback on an isolated database copy. This branch supplies validated content and rollback data, not a production-tested database importer.
+4. Verify current signed-mock behaviour before changing published questions. Drain outstanding sessions or retain versioned questions so an exam started before release can be submitted against its original content. Preserve the original question text/options and revision evidence for historical review. Keeping an ID and answer position does not make the old response an answer to the new wording; never silently regrade or reinterpret historical attempts.
+5. In one guarded transaction, compare the full current question rows with all 503 `beforeSha256` values and the metadata with its before hash. Update only the content/classification fields represented in `after`. Preserve `id`, `bankKey`, `questionNum`, `correctIndex`, `difficulty`, publication state and review timestamps. Do not touch attempts, purchases, licences, bookmarks, users or organizations. Verify 503 matched updates and the resulting content hashes before commit. No new questions are inserted.
+6. Apply the accompanying metadata change in that transaction: replace the obsolete module menu with the five supplied Collection areas and increment `contentVersion` from the verified baseline. Leave `totalQuestions` at 503. The package intentionally does not alter `moduleTargets`, `minCalcPerMock`, `recallTargetPct`, `blueprintVersion`, formula resources or Process Guide content. Module overviews remain unchanged; check that the application handles the new area menu without displaying an unrelated overview.
+7. Invalidate relevant question caches. Verify all 503 identities and revised hashes after commit, learner-visible inventory, module filtering, practice, flashcards, and a complete signed mock through submission. Confirm existing saved attempts and bookmarks still resolve correctly, with historical revision handling as described above. Test with an isolated test learner, not the customer's account.
+8. Retain the backup, transaction evidence, package digest, resulting content version and smoke-test results. For rollback, compare current rows with `expectedCurrentSha256` before restoring the supplied original fields; refuse intervening edits. Restore the original module menu, advance the cache version beyond the failed release instead of reusing a stale version, and invalidate caches. Preserve attempts made during either version and associate their content revision correctly.
 
-## Review and repair after the export arrives
+`releaseReady` remains false because no production import, database-backed rehearsal, backup verification or active-session check was performed here. That flag does not mean historical questions remain unwritten. The content work is complete; controlled application and verification are the release operator's next steps.
 
-Review the complete existing bank in batches with an explicit disposition for every row: retain, repair or replace. Preserve stable IDs wherever the learning objective remains the same, so customer history and bookmarks survive. Check one defensible answer, plausible distractors, wording/length clues, duplicates, Class IV reasoning, calculations/units/rounding, useful explanations, and traceable sources. Do not infer content quality from structural checks alone. Provincial legal claims require the applicable Manitoba source; generic Ontario limits must not be presented as Manitoba requirements.
+## Separate follow-up work
 
-Then write 250 original additional questions, using the audited bank's actual coverage gaps. Deduplicate against the complete export and repaired bank. Deliver the retained/repaired inventory, before/after hashes, 250 additions, validation results, preview and a guarded import/rollback package. Recheck live row hashes immediately before any import, since this course has an active customer. Use one validated batch release; no mandatory individual question approval workflow.
+Write the additional 250 questions against the repaired bank and actual coverage gaps. The bank currently has considerable safety/administration content; prioritize useful technical depth and additional calculation variety rather than duplicating those scenarios. Deduplicate additions against both original and repaired text.
 
-## Exam specification verified September 15, 2026
+Separately correct the Collection mock configuration and its server-enforced scored/unscored structure. The supplied baseline still has older topic targets and a 100-question implementation; a content repair must not be described as fixing the full Manitoba simulation.
 
-[Manitoba's certification program](https://www.gov.mb.ca/sd/waste_management/wastewater/wastewater_certification_program/index.html) links the latest standardized criteria and specifies 110 questions and a 70% pass mark. [WPI's current Collection Class IV outline](https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf), linked from its [2025 criteria index](https://gowpi.org/services/2025-need-to-know-criteria/), describes 100 scored questions plus up to ten unscored pre-test items.
+## Authoritative references checked September 15, 2026
 
-The scored collection outline uses five areas at 23/23/16/20/18, with 20 recall and 80 application questions overall and 16 calculation questions. These are collection-specific targets; do not reuse wastewater treatment's 28/42/15/15 and 25/75 settings. WPI presents calculation questions with US and metric units. The published outline supports planning and classification; it does not supply permission to reproduce actual certification questions.
+- [WPI Collection Class IV outline](https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf): Collection-specific scored areas, cognitive distribution and calculation allocation; up to ten unscored pre-test questions.
+- [Manitoba operator certification program](https://www.gov.mb.ca/sd/waste_management/wastewater/wastewater_certification_program/index.html): provincial exam and certification context.
+- [NIOSH hydrogen sulfide guide](https://www.cdc.gov/niosh/npg/npgd0337.html): named IDLH reference.
+- [CCOHS heat guidance](https://www.ccohs.ca/oshanswers/phys_agents/heat/heat_health.html): recognition and response for heat illness.
+- [CCOHS hierarchy of controls](https://www.ccohs.ca/oshanswers/hsprograms/hazard/hierarchy_controls.html): general control principles.
 
-Initial code inspection found this collection mock still configured for 100 questions. PR #87's 110-question simulation applies to wastewater treatment, not this collection bank. Extend the signed-session and scoring implementation deliberately after confirming the current bank's classifications and content; editing the page's question count alone is insufficient. Record this as a separate exam-configuration repair alongside the content work.
-
-## Remaining release work
-
-Complete the 250 untouched historical dispositions and final-check all 253 authored replacements. Write 250 original additions against actual gaps, then check factual accuracy, plausible distractors, duplicates, calculations and per-area cognitive coverage. The source outline supports classification but is not a factual source for every technical or legal assertion. Background references in the draft need item-level confirmation where a specific requirement is asserted.
-
-Current metadata still uses old targets and 50% recall; the proposed current Collection targets are 23/23/16/20/18 and 20/80 recall/application. The completed bank must support the required 16 calculations, including their area allocation, before strict generation is enabled. The final importer must compare fresh live rows, retain rollback/revision evidence and rehearse against an isolated database. No importer or production SQL is supplied with this incomplete checkpoint.
+Item-level background links accompany the questions. No source is presented as approving this question bank.
