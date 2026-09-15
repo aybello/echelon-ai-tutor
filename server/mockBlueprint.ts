@@ -8,6 +8,22 @@ export const WPI_CLASS4_BLUEPRINT = [
   { module: "Security, Safety & Administrative Procedures", total: 15, recall: 5, calculations: 5 },
 ] as const;
 export const WPI_CLASS4_SOURCE = "https://gowpi.org/wp-content/uploads/2026/04/WastewaterTreatment-%E2%80%93-Class-4_mh-fin.pdf";
+/** Collection is a separate exam. This profile is enabled only by reviewed bank metadata. */
+export const WPI_COLLECTION_BANK = "wpi-class4-wastewater-coll";
+export const WPI_COLLECTION_BLUEPRINT_VERSION = 2025;
+export const WPI_COLLECTION_BLUEPRINT = [
+  { module: "Equipment Operation, Evaluation & Maintenance", total: 23, recall: 5, calculations: 3 },
+  { module: "Collection System O&M & Restoration", total: 23, recall: 4, calculations: 5 },
+  { module: "Lift Station Operation & Maintenance", total: 16, recall: 3, calculations: 1 },
+  { module: "Collection System Monitoring, Evaluation & Adjustment", total: 20, recall: 5, calculations: 0 },
+  { module: "Security, Safety & Administrative Procedures", total: 18, recall: 3, calculations: 7 },
+] as const;
+export const WPI_COLLECTION_SOURCE = "https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf";
+export function mockBlueprintForBank(bankKey: string, version: number): readonly BlueprintArea[] | null {
+  if (bankKey === WPI_CLASS4_BANK && version === WPI_CLASS4_BLUEPRINT_VERSION) return WPI_CLASS4_BLUEPRINT;
+  if (bankKey === WPI_COLLECTION_BANK && version === WPI_COLLECTION_BLUEPRINT_VERSION) return WPI_COLLECTION_BLUEPRINT;
+  return null;
+}
 const aliases: Record<string, string> = {
     "Treatment Process": WPI_CLASS4_BLUEPRINT[1].module,
     "Equipment Operation & Maintenance": WPI_CLASS4_BLUEPRINT[0].module,

@@ -4,7 +4,7 @@ import { getDb } from "./db";
 import { questions } from "../drizzle/schema";
 import { verifyMockSession, mockOwner, scoredMockQuestionNums } from "./mockExamSession";
 import { ENV } from "./_core/env";
-import { WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT } from "./mockBlueprint";
+import { WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT, WPI_COLLECTION_BANK, WPI_COLLECTION_BLUEPRINT } from "./mockBlueprint";
 vi.mock("./db", async importOriginal => ({ ...await importOriginal<typeof import("./db")>(), getDb: vi.fn() }));
 vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn(async () => ({ userId: null, studentEmail: "mock@example.test" })) }));
 vi.mock("./_core/accessService", async importOriginal => ({ ...await importOriginal<typeof import("./_core/accessService")>(), resolveAccessForRequest: vi.fn(async () => true) }));
@@ -46,5 +46,39 @@ describe("issued Class IV mock blueprint wiring", () => {
   it("keeps the current learner journey available until the verified profile is activated", async () => {
     version = 1; rows = rows.map(q => ({ ...q, cognitiveLevel: null }));
     expect((await caller.exam.startMock({ courseKey: WPI_CLASS4_BANK })).questions).toHaveLength(110);
+  });
+});
+
+describe("issued Collection mock blueprint wiring", () => {
+  function collectionRows() {
+    let id = 0;
+    rows = WPI_COLLECTION_BLUEPRINT.flatMap(area => ["recall", "application"].flatMap(cognitiveLevel => ["yes", "no"].flatMap(isCalc =>
+      Array.from({ length: 30 }, () => ({ id: ++id, questionNum: id, bankKey: WPI_COLLECTION_BANK,
+        module: area.module, cognitiveLevel, isCalc, question: `Collection fixture ${id}`,
+        options: '["A","B","C","D"]', correctIndex: 0, explanation: "Fixture" })))));
+  }
+  it("uses the canonical bank behind the public Collection course key", async () => {
+    collectionRows();
+    const issued = await caller.exam.startMock({ courseKey: "wpi-class4-water-coll" });
+    expect(issued.questions).toHaveLength(100);
+    expect(issued.token).toBeTruthy();
+    const selected = issued.questions.map(q => rows.find(row => row.questionNum === q.id));
+    expect(selected.filter(q => q.isCalc === "yes")).toHaveLength(16);
+    expect(selected.filter(q => q.cognitiveLevel === "recall")).toHaveLength(20);
+    for (const area of WPI_COLLECTION_BLUEPRINT) {
+      expect(selected.filter(q => q.module === area.module)).toHaveLength(area.total);
+    }
+    for (const q of issued.questions) {
+      expect(q).not.toHaveProperty("correctIndex");
+      expect(q).not.toHaveProperty("explanation");
+    }
+  });
+  it("refuses an activated Collection profile with incomplete classification", async () => {
+    collectionRows(); rows = rows.map(q => ({ ...q, cognitiveLevel: null }));
+    await expect(caller.exam.startMock({ courseKey: "wpi-class4-water-coll" })).rejects.toThrow("balanced mock exam");
+  });
+  it("preserves the existing Collection journey before metadata activation", async () => {
+    collectionRows(); version = 1; rows = rows.map(q => ({ ...q, cognitiveLevel: null }));
+    expect((await caller.exam.startMock({ courseKey: "wpi-class4-water-coll" })).questions).toHaveLength(100);
   });
 });

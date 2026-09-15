@@ -1,0 +1,949 @@
+{
+  "format": "echelon-collection-task-map-v1",
+  "guideUrl": "https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf",
+  "reviewedAt": "2026-09-15",
+  "note": "Editorial task-family mapping, paraphrased from the cited guide pages. These are Echelon identifiers, not official WPI objective codes. Each item retains its separate technical source. Mapping establishes a reviewable relationship, not complete task coverage, source-book verification or measured exam difficulty.",
+  "groups": [
+    {
+      "key": "E.inspection",
+      "area": "E",
+      "task": "Select and evaluate sewer inspection equipment",
+      "guidePages": [
+        6,
+        7
+      ],
+      "questionNums": [
+        39,
+        65,
+        110,
+        111,
+        112,
+        125,
+        142,
+        150,
+        192,
+        196,
+        198,
+        341,
+        347,
+        415,
+        419,
+        460,
+        465,
+        466,
+        467,
+        468
+      ]
+    },
+    {
+      "key": "E.controls",
+      "area": "E",
+      "task": "Evaluate sensors, electrical equipment and control operation",
+      "guidePages": [
+        6
+      ],
+      "questionNums": [
+        55,
+        56,
+        109,
+        117,
+        127,
+        128,
+        129,
+        200,
+        279,
+        320,
+        321,
+        328,
+        330,
+        331,
+        334,
+        338,
+        446,
+        451,
+        455
+      ]
+    },
+    {
+      "key": "E.cleaning",
+      "area": "E",
+      "task": "Select and operate sewer cleaning equipment",
+      "guidePages": [
+        6,
+        7
+      ],
+      "questionNums": [
+        191,
+        224,
+        342,
+        459
+      ]
+    },
+    {
+      "key": "E.gas",
+      "area": "E",
+      "task": "Check gas instruments and ventilation equipment",
+      "guidePages": [
+        6,
+        7
+      ],
+      "questionNums": [
+        242,
+        247,
+        252
+      ]
+    },
+    {
+      "key": "E.hydraulics",
+      "area": "E",
+      "task": "Evaluate pump and pipe hydraulic performance",
+      "guidePages": [
+        6,
+        7
+      ],
+      "questionNums": [
+        151,
+        169,
+        172,
+        173,
+        174,
+        311,
+        316,
+        318,
+        445
+      ]
+    },
+    {
+      "key": "E.maintenance",
+      "area": "E",
+      "task": "Interpret equipment condition and maintenance evidence",
+      "guidePages": [
+        6,
+        7
+      ],
+      "questionNums": [
+        287,
+        292,
+        337,
+        449,
+        450,
+        498
+      ]
+    },
+    {
+      "key": "E.records",
+      "area": "E",
+      "task": "Maintain equipment records and reliable operating instructions",
+      "guidePages": [
+        6
+      ],
+      "questionNums": [
+        28,
+        431,
+        499,
+        503
+      ]
+    },
+    {
+      "key": "L.readiness",
+      "area": "L",
+      "task": "Maintain station access, standby capacity and service continuity",
+      "guidePages": [
+        9
+      ],
+      "questionNums": [
+        24,
+        34,
+        59,
+        60,
+        139,
+        187,
+        303,
+        336,
+        427,
+        452,
+        458
+      ]
+    },
+    {
+      "key": "L.control",
+      "area": "L",
+      "task": "Test station controls, alarms and operating records",
+      "guidePages": [
+        9
+      ],
+      "questionNums": [
+        46,
+        186,
+        332,
+        335
+      ]
+    },
+    {
+      "key": "L.wetwell",
+      "area": "L",
+      "task": "Evaluate wet-well levels, storage and pump cycling",
+      "guidePages": [
+        9
+      ],
+      "questionNums": [
+        53,
+        178,
+        179,
+        189,
+        277,
+        453
+      ]
+    },
+    {
+      "key": "L.pump",
+      "area": "L",
+      "task": "Interpret pump duty, efficiency and mechanical condition",
+      "guidePages": [
+        9
+      ],
+      "questionNums": [
+        54,
+        100,
+        115,
+        171,
+        175,
+        177,
+        181,
+        182,
+        183,
+        184,
+        185,
+        188,
+        190,
+        237,
+        274,
+        286,
+        326,
+        327,
+        333,
+        456,
+        501
+      ]
+    },
+    {
+      "key": "L.odour",
+      "area": "L",
+      "task": "Operate ventilation and station odour-control equipment",
+      "guidePages": [
+        9
+      ],
+      "questionNums": [
+        36,
+        116,
+        123,
+        130,
+        176,
+        180,
+        268,
+        296,
+        329,
+        340,
+        367,
+        457
+      ]
+    },
+    {
+      "key": "L.safety",
+      "area": "L",
+      "task": "Apply safe access, isolation and lifting during station maintenance",
+      "guidePages": [
+        9,
+        12
+      ],
+      "questionNums": [
+        57,
+        58,
+        339
+      ]
+    },
+    {
+      "key": "L.forcemain",
+      "area": "L",
+      "task": "Evaluate station discharge transients and flushing",
+      "guidePages": [
+        9
+      ],
+      "questionNums": [
+        368,
+        447,
+        454
+      ]
+    },
+    {
+      "key": "M.flow",
+      "area": "M",
+      "task": "Interpret catchment flow and verify monitoring data",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        27,
+        32,
+        38,
+        69,
+        107,
+        108,
+        120,
+        126,
+        147,
+        148,
+        158,
+        159,
+        168,
+        193,
+        194,
+        199,
+        270,
+        284,
+        291,
+        312,
+        314,
+        322,
+        323,
+        324,
+        325,
+        439,
+        448
+      ]
+    },
+    {
+      "key": "M.hydraulics",
+      "area": "M",
+      "task": "Interpret sewer hydraulic profiles and adjust flow",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        51,
+        68,
+        106,
+        152,
+        153,
+        155,
+        156,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        167,
+        219,
+        302,
+        313,
+        315,
+        319,
+        365,
+        440,
+        442,
+        443,
+        444
+      ]
+    },
+    {
+      "key": "M.records",
+      "area": "M",
+      "task": "Verify asset location, elevations and monitoring records",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        22,
+        118,
+        131,
+        278,
+        425
+      ]
+    },
+    {
+      "key": "M.sampling",
+      "area": "M",
+      "task": "Interpret wastewater samples and sampling limitations",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        92,
+        263,
+        264,
+        265,
+        273,
+        393,
+        396,
+        397,
+        496
+      ]
+    },
+    {
+      "key": "M.source",
+      "area": "M",
+      "task": "Evaluate wastewater characteristics and source-control requirements",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        124,
+        213,
+        214,
+        215,
+        216,
+        260,
+        261,
+        276,
+        297,
+        353,
+        354,
+        395,
+        497
+      ]
+    },
+    {
+      "key": "M.impact",
+      "area": "M",
+      "task": "Evaluate abnormal conditions and environmental consequences",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        101,
+        103,
+        266,
+        267,
+        271,
+        275,
+        394,
+        398,
+        400,
+        401,
+        413,
+        478,
+        487,
+        494,
+        500
+      ]
+    },
+    {
+      "key": "M.instrument",
+      "area": "M",
+      "task": "Verify station signals used for monitoring decisions",
+      "guidePages": [
+        10
+      ],
+      "questionNums": [
+        502
+      ]
+    },
+    {
+      "key": "C.capacity",
+      "area": "C",
+      "task": "Evaluate collection capacity, storage and flow transport",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        14,
+        18,
+        19,
+        35,
+        41,
+        67,
+        154,
+        157,
+        166,
+        170,
+        208,
+        227,
+        228,
+        230,
+        236,
+        238,
+        285,
+        290,
+        294,
+        301,
+        317,
+        372,
+        477
+      ]
+    },
+    {
+      "key": "C.rehabilitation",
+      "area": "C",
+      "task": "Select repairs for observed sewer defects and I/I sources",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        20,
+        33,
+        37,
+        70,
+        113,
+        114,
+        195,
+        197,
+        203,
+        204,
+        206,
+        207,
+        209,
+        210,
+        217,
+        269,
+        300,
+        345,
+        346,
+        348,
+        462,
+        463,
+        464,
+        479
+      ]
+    },
+    {
+      "key": "C.construction",
+      "area": "C",
+      "task": "Verify sewer installation, materials and acceptance evidence",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        31,
+        42,
+        43,
+        45,
+        47,
+        48,
+        52,
+        121,
+        122,
+        146,
+        225,
+        226,
+        229,
+        231,
+        232,
+        233,
+        234,
+        235,
+        239,
+        240,
+        355,
+        363,
+        366,
+        369,
+        370,
+        371,
+        373,
+        374,
+        375,
+        376,
+        461,
+        480,
+        481,
+        482,
+        483
+      ]
+    },
+    {
+      "key": "C.cleaning",
+      "area": "C",
+      "task": "Adjust cleaning and preventive maintenance to control recurrence",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        201,
+        202,
+        262,
+        343,
+        344,
+        404,
+        426
+      ]
+    },
+    {
+      "key": "C.response",
+      "area": "C",
+      "task": "Manage bypasses, blockages and collection-system failures",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        13,
+        17,
+        40,
+        50,
+        205,
+        272,
+        349,
+        402
+      ]
+    },
+    {
+      "key": "C.environment",
+      "area": "C",
+      "task": "Plan collection repairs around access and environmental effects",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        25,
+        44,
+        99,
+        102
+      ]
+    },
+    {
+      "key": "C.alternatives",
+      "area": "C",
+      "task": "Recognize operating principles of alternative collection systems",
+      "guidePages": [
+        8
+      ],
+      "questionNums": [
+        484,
+        485,
+        486
+      ]
+    },
+    {
+      "key": "S.budget",
+      "area": "S",
+      "task": "Prepare budgets, compare costs and plan financing",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        15,
+        16,
+        26,
+        49,
+        134,
+        149,
+        282,
+        283,
+        305,
+        308,
+        350,
+        357,
+        399,
+        416,
+        423,
+        424,
+        430
+      ]
+    },
+    {
+      "key": "S.risk",
+      "area": "S",
+      "task": "Prioritize maintenance and renewal using service consequences",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        1,
+        3,
+        11,
+        23,
+        66,
+        81,
+        84,
+        85,
+        88,
+        119,
+        144,
+        145,
+        220,
+        288,
+        289,
+        299,
+        362,
+        405,
+        421,
+        438
+      ]
+    },
+    {
+      "key": "S.performance",
+      "area": "S",
+      "task": "Evaluate service targets, work records and program performance",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        12,
+        21,
+        64,
+        82,
+        83,
+        87,
+        89,
+        104,
+        138,
+        143,
+        212,
+        280,
+        281,
+        304,
+        307,
+        351,
+        403,
+        417,
+        435,
+        436
+      ]
+    },
+    {
+      "key": "S.training",
+      "area": "S",
+      "task": "Assign competent staff and verify task-specific training",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        29,
+        62,
+        77,
+        78,
+        79,
+        98,
+        105,
+        132,
+        135,
+        221,
+        309,
+        383,
+        392,
+        411,
+        428,
+        433
+      ]
+    },
+    {
+      "key": "S.coordination",
+      "area": "S",
+      "task": "Coordinate staff, responsibilities and public service",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        30,
+        61,
+        63,
+        75,
+        76,
+        90,
+        136,
+        293,
+        310,
+        361,
+        406,
+        412,
+        420,
+        422,
+        432
+      ]
+    },
+    {
+      "key": "S.records",
+      "area": "S",
+      "task": "Control operating procedures and verify completed work",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        71,
+        73,
+        86,
+        140,
+        141,
+        218,
+        359,
+        414,
+        418,
+        434,
+        471
+      ]
+    },
+    {
+      "key": "S.compliance",
+      "area": "S",
+      "task": "Apply stated authorizations and maintain regulatory records",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        91,
+        93,
+        94,
+        96,
+        97,
+        137,
+        211,
+        222,
+        295,
+        352,
+        356,
+        358,
+        364,
+        407,
+        408,
+        409,
+        410,
+        441,
+        469,
+        470,
+        472,
+        473,
+        474,
+        475,
+        476
+      ]
+    },
+    {
+      "key": "S.procurement",
+      "area": "S",
+      "task": "Review bids, specifications and contract scope",
+      "guidePages": [
+        11
+      ],
+      "questionNums": [
+        133,
+        429
+      ]
+    },
+    {
+      "key": "S.emergency",
+      "area": "S",
+      "task": "Coordinate emergency response and exercises",
+      "guidePages": [
+        11,
+        12
+      ],
+      "questionNums": [
+        72,
+        95,
+        259,
+        306,
+        360,
+        495
+      ]
+    },
+    {
+      "key": "S.entry",
+      "area": "S",
+      "task": "Evaluate confined-space hazards, entry and rescue arrangements",
+      "guidePages": [
+        12
+      ],
+      "questionNums": [
+        223,
+        241,
+        243,
+        244,
+        245,
+        246,
+        251,
+        253,
+        377,
+        378,
+        390
+      ]
+    },
+    {
+      "key": "S.isolation",
+      "area": "S",
+      "task": "Apply isolation and safe maintenance procedures",
+      "guidePages": [
+        12
+      ],
+      "questionNums": [
+        249,
+        391,
+        437,
+        488
+      ]
+    },
+    {
+      "key": "S.traffic",
+      "area": "S",
+      "task": "Evaluate work-zone and public-access protection",
+      "guidePages": [
+        12
+      ],
+      "questionNums": [
+        74,
+        250,
+        380
+      ]
+    },
+    {
+      "key": "S.health",
+      "area": "S",
+      "task": "Plan controls for heat, noise, chemical exposure and first aid",
+      "guidePages": [
+        12
+      ],
+      "questionNums": [
+        254,
+        255,
+        257,
+        258,
+        298,
+        379,
+        382,
+        388
+      ]
+    },
+    {
+      "key": "S.fall",
+      "area": "S",
+      "task": "Select and inspect lifting and fall-protection controls",
+      "guidePages": [
+        12
+      ],
+      "questionNums": [
+        248,
+        256,
+        381,
+        386
+      ]
+    },
+    {
+      "key": "S.safety",
+      "area": "S",
+      "task": "Review hazards, near misses and corrective-action effectiveness",
+      "guidePages": [
+        11,
+        12
+      ],
+      "questionNums": [
+        80,
+        384,
+        385,
+        387,
+        389,
+        489,
+        490,
+        491,
+        492,
+        493
+      ]
+    }
+  ]
+}
