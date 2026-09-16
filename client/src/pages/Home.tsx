@@ -8,6 +8,10 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import QuizGate from "@/components/QuizGate";
+import {
+  formatQuestionBankDescription,
+  formatQuestionBankTitle,
+} from "@/lib/questionBankInventory";
 
 
 const MODULE_CONFIG: ModuleConfig[] = [
@@ -25,14 +29,16 @@ const MODULE_CONFIG: ModuleConfig[] = [
 ];
 
 export default function Home() {
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "lazy", "practice");
+  const courseTitle = formatQuestionBankTitle("OIT", totalQuestions);
+
   usePageMeta({
-    title: "OIT Practice Quiz — 551+ Questions",
-    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 551+ questions across 11 modules including Water Distribution. AI Tutor, step-by-step solutions, and confidence tracking included.",
+    title: courseTitle,
+    description: formatQuestionBankDescription("Ontario Operator-in-Training (OIT)", totalQuestions, "Water Treatment and Distribution fundamentals"),
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "lazy", "practice");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;
@@ -52,7 +58,7 @@ export default function Home() {
       examType="oit"
       currentPath="/quiz"
       courseLabel="Ontario OIT · Water Treatment"
-      courseTitle="OIT Practice Quiz — 551+ Questions"
+      courseTitle={courseTitle}
       courseSubtitle="Ontario OIT Water Exam Prep"
       headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%)"
       headerIcon="💧"
