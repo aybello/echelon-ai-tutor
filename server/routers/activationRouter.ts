@@ -221,10 +221,7 @@ export const activationRouter = router({
       const email = identity.studentEmail ?? identityEmail(resolveVerifiedIdentity(ctx));
       // Profile and reminder date commit together; a failed date write cannot leave a half-save.
       await db.transaction(async tx => {
-        const existing = await tx.select({ id: learnerOnboarding.id })
-          .from(learnerOnboarding).where(identityCourseWhere(identity, course.courseKey)).limit(1);
-        if (existing[0]) await tx.update(learnerOnboarding).set(values).where(eq(learnerOnboarding.id, existing[0].id));
-        else await tx.insert(learnerOnboarding).values(values);
+        await tx.insert(learnerOnboarding).values(values).onDuplicateKeyUpdate({ set: values });
         if (email && input.examDate) await upsertExamDate(tx, {
           email, productKey: course.courseKey, date: input.examDate,
           orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,

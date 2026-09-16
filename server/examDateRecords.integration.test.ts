@@ -100,7 +100,8 @@ suite("exam-date concurrency and reminder integrity with a real database", () =>
     const who = email("onboarding");
     const profile = { courseKey: "class1-water", examDate: "2030-06-01", studyDaysPerWeek: 3,
       sessionMinutes: 25 as const, confidence: "somewhat" as const };
-    await caller(who).activation.saveProfile(profile);
+    await Promise.all([caller(who).activation.saveProfile(profile), caller(who).activation.saveProfile(profile)]);
+    expect(await db.select().from(learnerOnboarding).where(eq(learnerOnboarding.studentEmail, who))).toHaveLength(1);
     const [first] = await getRows(who);
     await recordExamReminder(db, first, 30);
     await Promise.all([
