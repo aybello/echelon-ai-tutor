@@ -198,7 +198,7 @@ jobs:
       - name: Install the Teams browser-test runtime
         run: pnpm exec playwright install --with-deps chromium
       - name: Browser-test Teams access, Equipment Lab and Process Guide
-        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts
+        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts e2e/logout.spec.ts
         env:
           CI: "1"
           NODE_ENV: test

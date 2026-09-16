@@ -16,6 +16,7 @@
  * Entitlement is always re-resolved from live DB state before issuing an access token.
  */
 
+import { clearIdentityCookies } from "../_core/logout";
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
 import { eq, and, gt, isNull } from "drizzle-orm";
@@ -29,7 +30,6 @@ import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { hasTrainingRecord } from "./trainingRouter";
 import {
   issueVerifiedEmailSessionCookie,
-  clearVerifiedEmailSessionCookie,
   readVerifiedEmailFromRequest,
   ECHELON_SESSION_COOKIE,
 } from "../_core/emailSession";
@@ -227,7 +227,7 @@ export const dashboardAuthRouter = router({
    * logout — clears the Echelon verified email session cookie.
    */
   logout: publicProcedure.mutation(async ({ ctx }) => {
-    clearVerifiedEmailSessionCookie(ctx.res);
+    clearIdentityCookies(ctx.req, ctx.res);
     return { success: true };
   }),
 });

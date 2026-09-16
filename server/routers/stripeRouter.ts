@@ -398,7 +398,7 @@ export const stripeRouter = router({
     .query(async ({ input, ctx }) => {
       let { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
       // Fallback 1: verify signed access token + live DB re-check (PATCH 1: was JWT-only, now also re-checks DB)
-      if (!hasAccess && !ctx.user && input.accessToken) {
+      if (!hasAccess && !ctx.user && !ctx.studentEmail && input.accessToken) {
         const recheckResult = await verifyAccessTokenAndRecheckDb(input.accessToken, input.examType);
         if (recheckResult.hasAccess) {
           hasAccess = true;
@@ -411,13 +411,8 @@ export const stripeRouter = router({
         const emailResult = await resolveAccessByEmail(ctx.studentEmail, input.examType);
         if (emailResult.hasAccess) hasAccess = true;
       }
-      // Fallback 3: check by email — only allowed when caller also provides a valid
-      // access token (proves they own that email's purchase). Without this guard,
-      // any unauthenticated caller could enumerate purchase status for arbitrary emails.
-      if (!hasAccess && !ctx.user && input.email && input.accessToken) {
-        const emailResult = await resolveAccessByEmail(input.email, input.examType);
-        hasAccess = emailResult.hasAccess;
-      }
+      // The legacy email input is not proof of identity. Token access above is
+      // resolved from the signed token itself and rechecked against live entitlements.
       return { hasAccess, isOwner };
     }),
 

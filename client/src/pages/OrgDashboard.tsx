@@ -1,3 +1,4 @@
+import { useLogout } from "@/_core/hooks/useLogout";
 /**
  * OrgDashboard.tsx — Manager dashboard for Echelon for Teams.
  *
@@ -304,9 +305,7 @@ export default function OrgDashboard() {
     },
   });
 
-  const logoutMutation = trpc.dashboardAuth.logout.useMutation({
-    onSuccess: () => navigate("/account"),
-  });
+  const { logout, isPending: logoutPending } = useLogout();
 
   // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
   const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(undefined, { retry: false, enabled: isManager });
@@ -636,7 +635,8 @@ export default function OrgDashboard() {
               variant="ghost"
               size="sm"
               className="text-slate-400 hover:text-slate-700"
-              onClick={() => logoutMutation.mutate()}
+              onClick={logout}
+              disabled={logoutPending}
             >
               <LogOut className="w-4 h-4 mr-1" />
               Sign Out

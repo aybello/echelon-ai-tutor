@@ -3,8 +3,7 @@ import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
 import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
-import { COOKIE_NAME } from "@shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
+import { clearIdentityCookies } from "./_core/logout";
 import { invokeLLM } from "./_core/llm";
 import { getResourcesForProfile, formatResourcesForPrompt } from "./resourceIndex";
 import { notifyOwner } from "./_core/notification";
@@ -143,8 +142,7 @@ export const appRouter = router({
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      clearIdentityCookies(ctx.req, ctx.res);
       return {
         success: true,
       } as const;
