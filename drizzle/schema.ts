@@ -131,6 +131,52 @@ export const purchases = mysqlTable("purchases", {
 export type Purchase = typeof purchases.$inferSelect;
 export type InsertPurchase = typeof purchases.$inferInsert;
 
+/**
+ * Private evidence ledger for reconstructing historic entitlements after a
+ * database-loss event. Rows are evidence only: this table never grants access
+ * and no application code may create purchases or subscriptions from it without
+ * a separately approved, idempotent import operation.
+ */
+export const customerRecoveryEvidence = mysqlTable("customer_recovery_evidence", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Stable, non-secret evidence key, e.g. `stripe:pi_123` or an archive-row digest. */
+  sourceEvidenceKey: varchar("sourceEvidenceKey", { length: 191 }).notNull(),
+  sourceType: mysqlEnum("sourceType", ["stripe_payment", "stripe_checkout", "manual_document"]).notNull(),
+  /** Reference to a private archive manifest only, never a public file URL. */
+  sourceArchiveRef: varchar("sourceArchiveRef", { length: 191 }).notNull(),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+  customerEmail: varchar("customerEmail", { length: 320 }).notNull(),
+  normalizedEmail: varchar("normalizedEmail", { length: 320 }).notNull(),
+  customerName: varchar("customerName", { length: 128 }),
+  amountMinor: int("amountMinor").notNull(),
+  currency: varchar("currency", { length: 3 }).notNull(),
+  paymentStatus: mysqlEnum("paymentStatus", ["succeeded", "refunded", "disputed", "unknown"]).notNull(),
+  paymentCreatedAt: timestamp("paymentCreatedAt"),
+  candidateProductKey: varchar("candidateProductKey", { length: 64 }),
+  candidateAccessExpiresAt: timestamp("candidateAccessExpiresAt"),
+  /** staged → mapped → claim_verified → approved; rejected and imported are terminal. */
+  reviewStatus: mysqlEnum("reviewStatus", ["staged", "mapped", "claim_verified", "approved", "rejected", "imported"]).notNull().default("staged"),
+  claimVerifiedAt: timestamp("claimVerifiedAt"),
+  reviewedByUserId: int("reviewedByUserId"),
+  reviewedAt: timestamp("reviewedAt"),
+  reviewNote: text("reviewNote"),
+  importedPurchaseId: int("importedPurchaseId"),
+  importedAt: timestamp("importedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (t) => [
+  uniqueIndex("customer_recovery_evidence_source_key_unique").on(t.sourceEvidenceKey),
+  uniqueIndex("customer_recovery_evidence_payment_intent_unique").on(t.stripePaymentIntentId),
+  uniqueIndex("customer_recovery_evidence_checkout_session_unique").on(t.stripeCheckoutSessionId),
+  index("customer_recovery_evidence_status_idx").on(t.reviewStatus, t.createdAt),
+  index("customer_recovery_evidence_email_idx").on(t.normalizedEmail),
+]);
+
+export type CustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferSelect;
+export type InsertCustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferInsert;
+
 /** Active purchase fields; deliberately excludes the retired welcome marker. */
 export const purchaseReadColumns = {
   id: purchases.id,

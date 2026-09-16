@@ -8,7 +8,7 @@ import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, customerRecoveryEvidence } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
@@ -40,6 +40,43 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  /**
+   * Internal evidence intake view. It exposes no grant action: evidence can be
+   * reviewed, but an independently authorized, idempotent import is required
+   * before any historic learner receives an entitlement.
+   */
+  getCustomerRecoveryEvidence: adminProcedure
+    .input(z.object({
+      reviewStatus: z.enum(["staged", "mapped", "claim_verified", "approved", "rejected", "imported"]).optional(),
+      limit: z.number().int().min(1).max(100).default(50),
+    }).default({ limit: 50 }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const rows = await db.select({
+        id: customerRecoveryEvidence.id,
+        sourceType: customerRecoveryEvidence.sourceType,
+        sourceArchiveRef: customerRecoveryEvidence.sourceArchiveRef,
+        customerEmail: customerRecoveryEvidence.customerEmail,
+        amountMinor: customerRecoveryEvidence.amountMinor,
+        currency: customerRecoveryEvidence.currency,
+        paymentStatus: customerRecoveryEvidence.paymentStatus,
+        paymentCreatedAt: customerRecoveryEvidence.paymentCreatedAt,
+        candidateProductKey: customerRecoveryEvidence.candidateProductKey,
+        candidateAccessExpiresAt: customerRecoveryEvidence.candidateAccessExpiresAt,
+        reviewStatus: customerRecoveryEvidence.reviewStatus,
+        claimVerifiedAt: customerRecoveryEvidence.claimVerifiedAt,
+        reviewedAt: customerRecoveryEvidence.reviewedAt,
+        importedAt: customerRecoveryEvidence.importedAt,
+        createdAt: customerRecoveryEvidence.createdAt,
+      }).from(customerRecoveryEvidence)
+        .where(input.reviewStatus ? eq(customerRecoveryEvidence.reviewStatus, input.reviewStatus) : undefined)
+        .orderBy(desc(customerRecoveryEvidence.createdAt))
+        .limit(input.limit);
+
+      return rows;
+    }),
   purchaseEmailDelivery: adminProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
