@@ -4,9 +4,11 @@
  *     query: { gl: "US", hl: "en", q: "manus" },
  *   })
  */
+import { serviceJson, serviceFetch, requireServiceSuccess } from "./outboundHttp";
 import { ENV } from "./env";
 
 export type DataApiCallOptions = {
+  signal?: AbortSignal;
   query?: Record<string, unknown>;
   body?: Record<string, unknown>;
   pathParams?: Record<string, unknown>;
@@ -28,7 +30,7 @@ export async function callDataApi(
   const baseUrl = ENV.forgeApiUrl.endsWith("/") ? ENV.forgeApiUrl : `${ENV.forgeApiUrl}/`;
   const fullUrl = new URL("webdevtoken.v1.WebDevService/CallApi", baseUrl).toString();
 
-  const response = await fetch(fullUrl, {
+  const response = await serviceFetch(fullUrl, {
     method: "POST",
     headers: {
       accept: "application/json",
@@ -43,16 +45,12 @@ export async function callDataApi(
       path_params: options.pathParams,
       multipart_form_data: options.formData,
     }),
-  });
+    signal: options.signal,
+  }, { service: "data", timeoutMs: 15_000 });
 
-  if (!response.ok) {
-    const detail = await response.text().catch(() => "");
-    throw new Error(
-      `Data API request failed (${response.status} ${response.statusText})${detail ? `: ${detail}` : ""}`
-    );
-  }
+  requireServiceSuccess(response, "data");
 
-  const payload = await response.json().catch(() => ({}));
+  const payload = await serviceJson<any>(response, "data").catch(() => ({}));
   if (payload && typeof payload === "object" && "jsonData" in payload) {
     try {
       return JSON.parse((payload as Record<string, string>).jsonData ?? "{}");

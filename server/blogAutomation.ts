@@ -1,3 +1,4 @@
+import { serviceFetch } from "./_core/outboundHttp";
 import { desc } from "drizzle-orm";
 import { z } from "zod";
 import { blogPosts } from "../drizzle/schema";
@@ -373,14 +374,13 @@ export async function fetchOfficialSource(source: BlogSource): Promise<string> {
   if (url.protocol !== "https:" || !ALLOWED_SOURCE_HOSTS.has(url.hostname)) {
     throw new Error(`Source host is not approved: ${url.hostname}`);
   }
-  const response = await fetch(url, {
+  const response = await serviceFetch(url, {
     headers: {
       Accept: "text/html,application/xhtml+xml",
       "User-Agent":
         "EchelonInstituteEditorialBot/1.0 (+https://echeloninstitute.ca)",
     },
-    signal: AbortSignal.timeout(20_000),
-  });
+  }, { service: "editorial-source", timeoutMs: 20_000, maxResponseBytes: 2 * 1024 * 1024, retryRead: true });
   if (!response.ok)
     throw new Error(`HTTP ${response.status} for ${source.url}`);
   const html = (await response.text()).slice(0, 500_000);
@@ -469,6 +469,7 @@ async function planTopicWithLlm(input: {
   existingTitles: string[];
 }): Promise<BlogTopic> {
   const response = await invokeLLM({
+    maxTokens: 1536,
     messages: [
       {
         role: "system",
@@ -672,6 +673,7 @@ async function generateArticleWithLlm(input: {
   revision?: { previousArticle: GeneratedArticle; issues: string[] };
 }): Promise<GeneratedArticle> {
   const response = await invokeLLM({
+    maxTokens: 8192,
     messages: [
       {
         role: "system",
@@ -734,6 +736,7 @@ async function reviewArticleWithLlm(input: {
     )
     .join("\n\n");
   const response = await invokeLLM({
+    maxTokens: 2048,
     messages: [
       {
         role: "system",
