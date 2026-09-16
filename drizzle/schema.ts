@@ -225,6 +225,7 @@ export const examDates = mysqlTable("exam_dates", {
   organizationMemberId: int("organizationMemberId"),
   courseKey: varchar("courseKey", { length: 64 }),
 }, (t) => [
+  uniqueIndex("exam_dates_email_product_unique").on(t.email, t.productKey),
   index("exam_dates_org_member_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.examDate),
 ]);
 export type ExamDate = typeof examDates.$inferSelect;

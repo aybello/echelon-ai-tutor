@@ -86,6 +86,7 @@ describe("forward-only migration safety", () => {
       expect.objectContaining({ version: 64, tag: "0064_flashcard_progress_operations", proposedOnly: true,
         standaloneApply: { tables: ["flashcard_progress_state", "flashcard_progress_operations"] } }),
       expect.objectContaining({ version: 65, tag: "0065_scheduled_work", proposedOnly: true, standaloneApply: { tables: ["scheduled_work"] } }),
+      expect.objectContaining({ version: 66, tag: "0066_exam_dates_unique", proposedOnly: true, standaloneApply: { tables: ["exam_dates"] } }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -164,6 +165,9 @@ describe("forward-only migration safety", () => {
     const tables = new Map(buildExpectedSchemaContract().tables.map(table => [table.name, table]));
     expect(tables.get("exam_dates")?.indexes).toContainEqual({
       name: "exam_dates_org_member_idx", unique: false, columns: ["orgId", "organizationMemberId", "courseKey", "examDate"],
+    });
+    expect(tables.get("exam_dates")?.indexes).toContainEqual({
+      name: "exam_dates_email_product_unique", unique: true, columns: ["email", "productKey"],
     });
     expect(tables.get("exam_results")?.indexes).toEqual(expect.arrayContaining([
       { name: "exam_results_session_unique_idx", unique: true, columns: ["sessionId"] },
@@ -517,7 +521,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66]);
   });
 });
 
