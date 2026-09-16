@@ -284,8 +284,7 @@ export async function resolveAccessForRequest(
 
   // 2 & 3. Verified identity (OAuth or OTP)
   if (identity.type !== "anonymous") {
-    const ok = await hasAccessToExam(identity, examType);
-    if (ok) return true;
+    return hasAccessToExam(identity, examType);
   }
 
   // 4. Signed subscription token — verify signature AND re-check DB entitlement
