@@ -1,3 +1,6 @@
+import { and, eq } from "drizzle-orm";
+import { EXAM_REMINDER_INTERVALS, normalizeExamDateKey, parseReminderHistory, recordExamReminder } from "../examDateRecords";
+import type { Database } from "../stripe/eventLedger";
 import { deliverOnce, workKey } from "./durableWork";
 /**
  * Exam Date Reminder Job
@@ -10,13 +13,13 @@ import { examDates } from "../../drizzle/schema";
 import { ENV } from "../_core/env";
 import nodemailer from "nodemailer";
 
-const REMINDER_INTERVALS = [30, 14, 7, 1]; // days before exam
+const REMINDER_INTERVALS = EXAM_REMINDER_INTERVALS; // days before exam
 
 function getDaysUntil(examDate: Date): number {
   const now = new Date();
-  now.setHours(0, 0, 0, 0);
+  now.setUTCHours(0, 0, 0, 0);
   const exam = new Date(examDate);
-  exam.setHours(0, 0, 0, 0);
+  exam.setUTCHours(0, 0, 0, 0);
   return Math.ceil((exam.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
@@ -50,7 +53,7 @@ function getReminderHtml(
   const siteUrl = "https://echeloninstitute.ca";
   const accountUrl = `${siteUrl}/account`;
   const examDateFormatted = new Date(examDateStr).toLocaleDateString("en-CA", {
-    weekday: "long", year: "numeric", month: "long", day: "numeric",
+    weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
   });
 
   const urgencyColor = days <= 1 ? "#EF4444" : days <= 7 ? "#F59E0B" : days <= 14 ? "#3B82F6" : "#22C55E";
@@ -179,9 +182,9 @@ export async function runExamReminders(assertOwned: () => Promise<void> = async 
     // Skip past exams (more than 1 day ago)
     if (days < 0) continue;
 
-    const alreadySent: number[] = (() => {
-      try { return JSON.parse(row.remindersSent) as number[]; } catch { return []; }
-    })();
+    let alreadySent: number[];
+    try { alreadySent = parseReminderHistory(row.remindersSent); }
+    catch { errors.push(`Invalid reminder history for exam date ${row.id}`); continue; }
 
     for (const interval of REMINDER_INTERVALS) {
       if (days !== interval) continue;
@@ -191,23 +194,15 @@ export async function runExamReminders(assertOwned: () => Promise<void> = async 
 
       try {
         await assertOwned();
-        const delivered = await deliverOnce(db, workKey("exam-email", `${row.email.trim().toLowerCase()}:${row.productKey}:${row.examDate.toISOString().slice(0,10)}:${interval}`), () => transporter!.sendMail({
+        const delivered = await deliverCurrentExamReminder(db, row, interval, () => transporter!.sendMail({
           from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
           to: row.email,
           subject: getReminderSubject(interval, productLabel),
           html: getReminderHtml(row.email, productLabel, row.productKey, interval, row.examDate.toISOString()),
         }));
 
-        // Mark this interval as sent
-        const updated = [...alreadySent, interval];
-        const { eq, and } = await import("drizzle-orm");
-        await db
-          .update(examDates)
-          .set({ remindersSent: JSON.stringify(updated) })
-          .where(and(eq(examDates.email, row.email), eq(examDates.productKey, row.productKey)));
-
         if (delivered) sent++;
-        console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email.replace(/(^.{3}).+@/, '$1***@')} for ${row.productKey}`);
+        if (delivered) console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email.replace(/(^.{3}).+@/, '$1***@')} for ${row.productKey}`);
       } catch (err) {
         const msg = `Failed to send ${interval}-day reminder to ${row.email}: ${(err as Error).message}`;
         errors.push(msg);
@@ -217,4 +212,19 @@ export async function runExamReminders(assertOwned: () => Promise<void> = async 
   }
 
   return { sent, errors };
+}
+
+/** Recheck a scanned date before SMTP and fence its acknowledgement after delivery. */
+export async function deliverCurrentExamReminder(
+  db: Database, scanned: typeof examDates.$inferSelect, interval: number,
+  send: () => Promise<unknown>,
+) {
+  const [current] = await db.select().from(examDates)
+    .where(and(eq(examDates.id, scanned.id), eq(examDates.examDate, scanned.examDate))).limit(1);
+  if (!current || parseReminderHistory(current.remindersSent).includes(interval)) return false;
+  const key = normalizeExamDateKey(current.email, current.productKey);
+  const delivered = await deliverOnce(db, workKey("exam-email",
+    `${key.email}:${key.productKey}:${current.examDate.toISOString().slice(0,10)}:${interval}`), send);
+  await recordExamReminder(db, current, interval);
+  return delivered;
 }
