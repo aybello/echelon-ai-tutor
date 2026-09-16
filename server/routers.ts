@@ -1,3 +1,4 @@
+import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExamDate } from "./examDateRecords";
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
@@ -586,69 +587,54 @@ export const appRouter = router({
   // Exam Date Tracker — optional per-product exam date for countdown + reminders
   examDate: router({
     get: publicProcedure
-      .input(z.object({ email: z.string().email(), productKey: z.string() }))
+      .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64) }))
       .query(async ({ input, ctx }) => {
         // Identity check: caller must be the owner of this email record.
         // Accept either an OAuth user or a student OTP session cookie.
-        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
-        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+        const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
           return null; // Silently return null rather than leaking existence
         }
+        const key = normalizeExamDateKey(callerEmail, input.productKey);
         const db = await getDb();
         if (!db) return null;
         const rows = await db
           .select()
           .from(examDates)
-          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)))
+          .where(and(eq(examDates.email, key.email), eq(examDates.productKey, key.productKey)))
           .limit(1);
         if (!rows.length) return null;
         return { examDate: rows[0].examDate.toISOString(), productKey: rows[0].productKey };
       }),
     set: publicProcedure
-      .input(z.object({ email: z.string().email(), productKey: z.string(), examDate: z.string() }))
+      .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64), examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }))
       .mutation(async ({ input, ctx }) => {
         // Identity check: caller must own this email.
-        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
-        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+        const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
           throw new Error("Unauthorized: you may only set your own exam date");
         }
+        const key = normalizeExamDateKey(callerEmail, input.productKey);
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
-        const date = new Date(input.examDate);
-        if (isNaN(date.getTime())) throw new Error("Invalid date");
-        const existing = await db
-          .select()
-          .from(examDates)
-          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)))
-          .limit(1);
-        if (existing.length) {
-          await db
-            .update(examDates)
-            .set({ examDate: date, remindersSent: "[]" })
-            .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
-        } else {
-          await db.insert(examDates).values({
-            email: input.email,
-            productKey: input.productKey,
-            examDate: date,
-            remindersSent: "[]",
-          });
-        }
+        parseExamCalendarDate(input.examDate);
+        const identity = await resolveLearningIdentity(ctx);
+        await upsertExamDate(db, { ...key, date: input.examDate,
+          orgId: identity.orgId, organizationMemberId: identity.organizationMemberId });
         return { success: true };
       }),
     remove: publicProcedure
-      .input(z.object({ email: z.string().email(), productKey: z.string() }))
+      .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64) }))
       .mutation(async ({ input, ctx }) => {
         // Identity check: caller must own this email.
-        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
-        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+        const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
           throw new Error("Unauthorized: you may only remove your own exam date");
         }
+        const key = normalizeExamDateKey(callerEmail, input.productKey);
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
-        await db
-          .delete(examDates)
-          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
+        await removeExamDate(db, key.email, key.productKey);
         return { success: true };
       }),
   }),

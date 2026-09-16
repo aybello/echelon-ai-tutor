@@ -134,6 +134,7 @@ jobs:
           --exclude server/courseReporting.integration.test.ts
           --exclude server/practicePaging.integration.test.ts
           --exclude server/billingJobs.integration.test.ts
+          --exclude server/examDateRecords.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -163,6 +164,7 @@ jobs:
           server/learnerReliability.integration.test.ts
           server/wpiBlueprintRelease.integration.test.ts
           server/billingJobs.integration.test.ts
+          server/examDateRecords.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production

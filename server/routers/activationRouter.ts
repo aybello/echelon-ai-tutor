@@ -1,10 +1,10 @@
+import { parseExamCalendarDate, upsertExamDate, removeExamDate } from "../examDateRecords";
 import { createHash } from "node:crypto";
 import { TRPCError } from "@trpc/server";
 import { and, desc, eq, or } from "drizzle-orm";
 import { z } from "zod";
 import {
   diagnosticSessions,
-  examDates,
   learnerOnboarding,
   questionAttempts,
   questions,
@@ -205,9 +205,7 @@ export const activationRouter = router({
       requireVerified(identity);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable." });
-      const examDate = input.examDate ? new Date(`${input.examDate}T12:00:00.000Z`) : null;
-      const existing = await db.select({ id: learnerOnboarding.id })
-        .from(learnerOnboarding).where(identityCourseWhere(identity, course.courseKey)).limit(1);
+      const examDate = input.examDate ? parseExamCalendarDate(input.examDate) : null;
       const values = {
         userId: identity.userId,
         studentEmail: identity.studentEmail,
@@ -220,23 +218,19 @@ export const activationRouter = router({
         confidence: input.confidence,
         status: "profile_completed",
       };
-      if (existing[0]) await db.update(learnerOnboarding).set(values).where(eq(learnerOnboarding.id, existing[0].id));
-      else await db.insert(learnerOnboarding).values(values);
-
       const email = identity.studentEmail ?? identityEmail(resolveVerifiedIdentity(ctx));
-      if (email && examDate) {
-        const current = await db.select({ id: examDates.id }).from(examDates)
-          .where(and(eq(examDates.email, email), eq(examDates.productKey, course.courseKey))).limit(1);
-        const examValues = {
-          examDate,
-          remindersSent: "[]",
-          orgId: identity.orgId,
-          organizationMemberId: identity.organizationMemberId,
-          courseKey: course.courseKey,
-        };
-        if (current[0]) await db.update(examDates).set(examValues).where(eq(examDates.id, current[0].id));
-        else await db.insert(examDates).values({ email, productKey: course.courseKey, ...examValues });
-      }
+      // Profile and reminder date commit together; a failed date write cannot leave a half-save.
+      await db.transaction(async tx => {
+        const existing = await tx.select({ id: learnerOnboarding.id })
+          .from(learnerOnboarding).where(identityCourseWhere(identity, course.courseKey)).limit(1);
+        if (existing[0]) await tx.update(learnerOnboarding).set(values).where(eq(learnerOnboarding.id, existing[0].id));
+        else await tx.insert(learnerOnboarding).values(values);
+        if (email && input.examDate) await upsertExamDate(tx, {
+          email, productKey: course.courseKey, date: input.examDate,
+          orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+        });
+        else if (email) await removeExamDate(tx, email, course.courseKey);
+      });
       await trackEvent("onboarding_profile_completed", {
         userId: identity.userId?.toString() ?? null,
         email,

@@ -143,6 +143,18 @@
           "scheduled_work"
         ]
       }
+    },
+    {
+      "version": 66,
+      "tag": "0066_exam_dates_unique",
+      "file": "drizzle/0066_exam_dates_unique.sql",
+      "sha256": "8e3bee6d1242a4c295722631790201499539dbe9958e708ed330154f0747d465",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "exam_dates"
+        ]
+      }
     }
   ]
 }
