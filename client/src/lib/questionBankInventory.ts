@@ -20,3 +20,14 @@ export function formatQuestionBankDescription(
 
   return `Practice for the ${courseLabel} exam${count} across ${subject}. AI Tutor, step-by-step solutions, and confidence tracking included.`;
 }
+
+export function formatQuestionBankAccessFeature(
+  courseLabel: string,
+  totalQuestions: number,
+): string {
+  if (!Number.isSafeInteger(totalQuestions) || totalQuestions <= 0) {
+    return `Full ${courseLabel} question bank — unlimited attempts`;
+  }
+
+  return `${totalQuestions.toLocaleString()} ${courseLabel} questions — unlimited attempts`;
+}

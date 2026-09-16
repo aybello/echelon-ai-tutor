@@ -1,4 +1,4 @@
-// OIT Practice Quiz — 551+ Questions — Unified via useQuizSession hook
+// OIT Practice Quiz — Unified via useQuizSession hook
 import { usePageMeta } from "@/hooks/usePageMeta";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
@@ -9,6 +9,7 @@ import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import QuizGate from "@/components/QuizGate";
 import {
+  formatQuestionBankAccessFeature,
   formatQuestionBankDescription,
   formatQuestionBankTitle,
 } from "@/lib/questionBankInventory";
@@ -113,7 +114,7 @@ export default function Home() {
           productName="OIT Water Treatment Exam Pass"
           priceLabel="CA$49"
           paidFeatures={[
-            "551 OIT Water questions — unlimited attempts",
+            formatQuestionBankAccessFeature("OIT Water", totalQuestions),
             "Complete 100-question timed mock exams",
             "Full flashcard deck and saved progress",
             "Module-by-module performance tracking",
