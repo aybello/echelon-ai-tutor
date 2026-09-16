@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 /**
  * QuizModeBar — Quiz mode selector rendered inside the QuizShell header.
  * Inspired by PocketPrep: icon cards in a horizontal row, not a floating pill bar.
@@ -180,7 +181,10 @@ export default function QuizModeBar({
 
 // ─── Attempt Logger ───────────────────────────────────────────────────────────
 export function useAttemptLogger(examType: string, quizMode: QuizMode = "standard") {
-  const logAttempt = trpc.quiz.logAttempt.useMutation();
+  const logAttempt = trpc.quiz.logAttempt.useMutation({
+    onSuccess: result => { if (!result.success) toast.error("This answer could not be saved. Refresh practice to recheck your access."); },
+    onError: () => toast.error("This answer could not be saved. Check your connection before continuing."),
+  });
 
   // Issue Q: generate a stable UUID for this quiz session so all attempts
   // from the same session share a sessionId. Initialized once per hook mount
@@ -189,6 +193,7 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
 
   return function log(params: {
     questionId: number;
+    attemptToken?: string;
     selectedIndex: number;
     bankKey?: string;
     /** Confidence self-rating (1=low, 2=medium, 3=high) mapped to enum */
@@ -198,7 +203,11 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
     const confidenceMap: Record<number, "low" | "medium" | "high"> = { 1: "low", 2: "medium", 3: "high" };
     const confidence = params.confidenceLevel != null ? (confidenceMap[params.confidenceLevel] ?? null) : null;
 
+    let accessToken: string | undefined;
+    try { accessToken = localStorage.getItem("echelon_access_token") ?? undefined; } catch { /* unavailable */ }
     logAttempt.mutate({
+      accessToken,
+      attemptToken: params.attemptToken,
       examType,
       questionId: params.questionId,
       selectedIndex: params.selectedIndex,

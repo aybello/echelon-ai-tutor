@@ -494,6 +494,7 @@ export function useQuizSession({
     // Log attempt to backend
     logAttemptFn({
       questionId: current.id,
+      attemptToken: current.attemptToken,
       selectedIndex: selected ?? 0,
       bankKey: examType,
       confidenceLevel: confLevel,
@@ -779,6 +780,7 @@ export function useQuizSession({
       : null;
     logAttemptFn({
       questionId: current.id,
+      attemptToken: current.attemptToken,
       selectedIndex: effectiveSelected,
       bankKey: examType,
       confidenceLevel: confLevel,
