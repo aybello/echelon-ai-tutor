@@ -219,12 +219,15 @@ const normalizeToolChoice = (
   return toolChoice;
 };
 
-const GEMINI_CHAT_URL =
-  "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
-const assertApiKey = () => {
-  if (!ENV.geminiApiKey) throw new Error("GEMINI_API_KEY is not configured");
-  if (!/^gemini-[a-zA-Z0-9.-]+$/.test(ENV.geminiModel))
-    throw new Error("GEMINI_MODEL must name the approved Gemini model");
+const NATIVE_MODEL = "claude-opus-4-7";
+const NATIVE_MIN_OUTPUT_TOKENS = 16;
+const resolveNativeChatUrl = () =>
+  ENV.forgeApiUrl && ENV.forgeApiUrl.trim().length > 0
+    ? `${ENV.forgeApiUrl.replace(/\/$/, "")}/v1/chat/completions`
+    : "https://forge.manus.im/v1/chat/completions";
+const assertNativeProviderConfigured = () => {
+  if (!ENV.forgeApiKey)
+    throw new Error("BUILT_IN_FORGE_API_KEY is not configured");
 };
 
 const normalizeResponseFormat = ({
@@ -273,7 +276,7 @@ const normalizeResponseFormat = ({
 };
 
 export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
-  assertApiKey();
+  assertNativeProviderConfigured();
 
   const {
     messages,
@@ -287,7 +290,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   } = params;
 
   const payload: Record<string, unknown> = {
-    model: ENV.geminiModel,
+    model: NATIVE_MODEL,
     messages: messages.map(normalizeMessage),
   };
 
@@ -310,13 +313,10 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   ) {
     throw new Error("Conflicting output token limits");
   }
-  payload.max_tokens = boundedOutputTokens(
-    params.maxTokens ?? params.max_tokens,
-    2048
+  payload.max_tokens = Math.max(
+    NATIVE_MIN_OUTPUT_TOKENS,
+    boundedOutputTokens(params.maxTokens ?? params.max_tokens, 2048)
   );
-  // Disable optional thinking for legacy Flash so short summary budgets remain useful.
-  if (ENV.geminiModel.startsWith("gemini-2.5-flash"))
-    payload.reasoning_effort = "none";
 
   const normalizedResponseFormat = normalizeResponseFormat({
     responseFormat,
@@ -330,28 +330,28 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   }
 
   const response = await serviceFetch(
-    GEMINI_CHAT_URL,
+    resolveNativeChatUrl(),
     {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `Bearer ${ENV.geminiApiKey}`,
+        authorization: `Bearer ${ENV.forgeApiKey}`,
       },
       body: JSON.stringify(payload),
       signal: params.signal,
     },
-    { service: "gemini", timeoutMs: 45_000, maxResponseBytes: 2 * 1024 * 1024 }
+    { service: "forge", timeoutMs: 45_000, maxResponseBytes: 2 * 1024 * 1024 }
   );
 
-  requireServiceSuccess(response, "gemini");
-  const result = await serviceJson<InvokeResult>(response, "gemini");
+  requireServiceSuccess(response, "forge");
+  const result = await serviceJson<InvokeResult>(response, "forge");
   if (
     !Array.isArray(result?.choices) ||
     !result.choices[0]?.message ||
     (!result.choices[0].message.content &&
       !result.choices[0].message.tool_calls?.length)
   ) {
-    throw new Error("Gemini returned no usable completion");
+    throw new Error("Native AI provider returned no usable completion");
   }
   return result;
 }
