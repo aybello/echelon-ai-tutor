@@ -14,7 +14,7 @@
  *   - Multiple entitlements → deduplicated union
  *   - Manager with active org → isManager=true, hasAnyAccess=true
  *   - Manager with cancelled org → no access
- *   - Email normalisation (whitespace + uppercase)
+ *   - Email normalisation (whitespace, uppercase, and Gmail plus-addresses)
  *   - Ontario distribution/collection via subscription
  *   - Ontario distribution via direct purchase
  *   - WPI collection via western subscription
@@ -26,7 +26,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 vi.mock("../db", () => ({ getDb: vi.fn() }));
 
 import { getDb } from "../db";
-import { resolveEntitlementsByEmail } from "./access";
+import { normalizeEmail, resolveEntitlementsByEmail } from "./access";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -417,5 +417,20 @@ describe("resolveEntitlementsByEmail", () => {
     mockDb([], [sub("class2", "ontario", "cancelled", FUTURE)], []);
     const r = await resolveEntitlementsByEmail("user@example.com");
     expect(r.activeSubscriptionRows).toHaveLength(0);
+  });
+});
+
+describe("normalizeEmail", () => {
+  it("normalizes whitespace and letter case", () => {
+    expect(normalizeEmail("  CUSTOMER@EXAMPLE.COM ")).toBe("customer@example.com");
+  });
+
+  it("removes only Gmail plus tags so Google sign-in and checkout resolve to the same mailbox", () => {
+    expect(normalizeEmail("Customer+oit-pass@GMAIL.com")).toBe("customer@gmail.com");
+    expect(normalizeEmail("Customer+oit-pass@googlemail.com")).toBe("customer@googlemail.com");
+  });
+
+  it("preserves plus tags for non-Gmail providers", () => {
+    expect(normalizeEmail("customer+oit-pass@example.com")).toBe("customer+oit-pass@example.com");
   });
 });

@@ -29,9 +29,28 @@ export const FREE_EXAM_TYPES = new Set<string>(["electrician-309a"]);
  */
 export const FREE_AI_TUTOR = true;
 
-/** Canonical email form for storage AND comparison. */
+/**
+ * Canonical email form for storage AND comparison.
+ *
+ * Google sign-in returns the mailbox's base Gmail address, whereas customers
+ * sometimes enter a Gmail plus-address at checkout. Gmail delivers both forms
+ * to the same mailbox, so remove only the plus tag for Gmail-owned domains.
+ * Other providers retain their full local part because plus-address semantics
+ * are provider-specific and must not broaden entitlement matching.
+ */
 export function normalizeEmail(email: string | null | undefined): string {
-  return (email ?? "").trim().toLowerCase();
+  const normalized = (email ?? "").trim().toLowerCase();
+  const separator = normalized.lastIndexOf("@");
+  if (separator <= 0 || separator === normalized.length - 1) return normalized;
+
+  const localPart = normalized.slice(0, separator);
+  const domain = normalized.slice(separator + 1);
+  if (domain !== "gmail.com" && domain !== "googlemail.com") return normalized;
+
+  const plusIndex = localPart.indexOf("+");
+  if (plusIndex < 0) return normalized;
+
+  return `${localPart.slice(0, plusIndex)}@${domain}`;
 }
 
 /**
