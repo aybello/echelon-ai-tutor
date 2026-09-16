@@ -1,8 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 const env = vi.hoisted(() => ({
-  geminiApiKey: "test-gemini-key",
-  geminiModel: "gemini-2.5-flash",
-  forgeApiKey: "must-not-be-used",
+  forgeApiKey: "test-native-key",
   forgeApiUrl: "https://forge.invalid",
   openAiApiKey: "test-openai-key",
   openAiModel: "configured-openai-model",
@@ -31,8 +29,7 @@ const completion = () =>
 beforeEach(() => {
   fetchMock = vi.fn().mockImplementation(async () => completion());
   vi.stubGlobal("fetch", fetchMock);
-  env.geminiApiKey = "test-gemini-key";
-  env.geminiModel = "gemini-2.5-flash";
+  env.forgeApiKey = "test-native-key";
   vi.spyOn(console, "warn").mockImplementation(() => {});
 });
 afterEach(() => {
@@ -40,27 +37,26 @@ afterEach(() => {
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
 });
-describe("Gemini request contract", () => {
-  it("uses direct Google routing, a dedicated key, the configured model and caller output budget", async () => {
+describe("native AI provider request contract", () => {
+  it("uses platform-native routing, its server credential, the approved model and caller output budget", async () => {
     await invokeLLM({ messages, maxTokens: 350 });
     const [url, request] = fetchMock.mock.calls[0];
     const body = JSON.parse(request.body);
-    expect(url).toBe(
-      "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
-    );
-    expect(request.headers.authorization).toBe("Bearer test-gemini-key");
-    expect(body.model).toBe(env.geminiModel);
+    expect(url).toBe("https://forge.invalid/v1/chat/completions");
+    expect(request.headers.authorization).toBe("Bearer test-native-key");
+    expect(body.model).toBe("claude-opus-4-7");
     expect(body.max_tokens).toBe(350);
     expect(body.thinking).toBeUndefined();
-    expect(body.reasoning_effort).toBe("none");
+    expect(body.reasoning_effort).toBeUndefined();
   });
   it("supports the snake-case alias and caps excessive limits", async () => {
     await invokeLLM({ messages, max_tokens: 1536 });
     await invokeLLM({ messages, maxTokens: 100000 });
     await invokeLLM({ messages });
+    await invokeLLM({ messages, maxTokens: 1 });
     expect(
       fetchMock.mock.calls.map(([, init]) => JSON.parse(init.body).max_tokens)
-    ).toEqual([1536, 8192, 2048]);
+    ).toEqual([1536, 8192, 2048, 16]);
   });
   it("rejects invalid and conflicting budgets before calling the provider", async () => {
     for (const maxTokens of [0, -1, 1.5, NaN, Infinity])
@@ -72,12 +68,11 @@ describe("Gemini request contract", () => {
     ).rejects.toThrow("Conflicting");
     expect(fetchMock).not.toHaveBeenCalled();
   });
-  it("requires external credentials and an explicit model instead of silently falling back", async () => {
-    env.geminiApiKey = "";
-    await expect(invokeLLM({ messages })).rejects.toThrow("GEMINI_API_KEY");
-    env.geminiApiKey = "test";
-    env.geminiModel = "";
-    await expect(invokeLLM({ messages })).rejects.toThrow("GEMINI_MODEL");
+  it("requires the platform-native server credential instead of external provider configuration", async () => {
+    env.forgeApiKey = "";
+    await expect(invokeLLM({ messages })).rejects.toThrow(
+      "BUILT_IN_FORGE_API_KEY"
+    );
     expect(fetchMock).not.toHaveBeenCalled();
   });
   it("preserves structured output, tools and image parts", async () => {
@@ -115,7 +110,7 @@ describe("Gemini request contract", () => {
       new Response("PRIVATE patient@example.com", { status: 429 })
     );
     await expect(invokeLLM({ messages })).rejects.toThrow(
-      "gemini request http (429)"
+      "forge request http (429)"
     );
     fetchMock.mockResolvedValueOnce(new Response('{"choices":[]}'));
     await expect(invokeLLM({ messages })).rejects.toThrow(
@@ -126,7 +121,7 @@ describe("Gemini request contract", () => {
   it("redacts malformed provider JSON instead of propagating its response snippet", async () => {
     fetchMock.mockResolvedValue(new Response("PRIVATE prompt text"));
     await expect(invokeLLM({ messages })).rejects.toThrow(
-      "gemini request invalid_json"
+      "forge request invalid_json"
     );
   });
   it("times out an unresponsive generation once without duplicate billed requests", async () => {
