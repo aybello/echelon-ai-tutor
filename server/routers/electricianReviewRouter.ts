@@ -1,4 +1,6 @@
+import { practiceIdentity, attachPracticeReceipts } from "../practiceQuestionReceipt";
 import { router, adminProcedure, publicProcedure } from "../_core/trpc";
+import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "drizzle-orm";
 import { certificationBankVersions, certificationQuestions } from "../../drizzle/schema";
@@ -31,7 +33,7 @@ export const electricianReviewRouter = router({
    * Free beta learner delivery intentionally reads only the active beta bank.
    * Imported draft material stays invisible until the release controls below are set.
    */
-  get309ABetaPractice: publicProcedure.query(async () => {
+  get309ABetaPractice: publicProcedure.input(z.object({ accessToken: z.string().max(8192).optional() }).optional()).query(async ({ ctx, input }) => {
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
@@ -86,6 +88,7 @@ export const electricianReviewRouter = router({
         return [];
       }
     });
-    return { questions, total: questions.length };
+    const { owner } = await practiceIdentity(ctx, input?.accessToken);
+    return { questions: await attachPracticeReceipts(questions, "electrician-309a", owner, false), total: questions.length };
   }),
 });

@@ -1,3 +1,4 @@
+import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt } from "../practiceQuestionReceipt";
 import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
 /**
  * Quiz Router — Handles question attempt logging and missed questions
@@ -9,7 +10,8 @@ import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
 import { resolveLearningIdentity } from "../_core/learningIdentity";
-import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users, bookmarks } from "../../drizzle/schema";
+import { ELECTRICIAN_309A_PROGRAM_KEY } from "../../shared/certificationPrograms";
+import { questionAttempts, studentProfiles, questions, certificationQuestions, certificationBankVersions, questionBankMeta, moduleOverviews, users, bookmarks } from "../../drizzle/schema";
 import { and, eq, desc, sql, gte, inArray, notInArray, or } from "drizzle-orm";
 import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
@@ -215,7 +217,8 @@ export const quizRouter = router({
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       }
-            const examType = bankKeyToExamType(input.bankKey);
+      const { course } = courseActivityScope(input.bankKey);
+      const examType = course.courseKey;
       const hasAccess = await resolveAccessForRequest(ctx, examType, {
         accessToken: input.accessToken,
       });
@@ -223,7 +226,7 @@ export const quizRouter = router({
         .select(learnerQuestionColumns)
         .from(questions)
         .where(and(
-          eq(questions.bankKey, input.bankKey),
+          eq(questions.bankKey, course.questionBankKey),
           learnerVisibleQuestionFilter(),
         ))
         .orderBy(questions.questionNum);
@@ -271,7 +274,9 @@ export const quizRouter = router({
         }
       });
 
-      return { questions: parsed, locked: !hasAccess, total, trialLimit: previewLimit };
+      const { owner } = await practiceIdentity(ctx, input.accessToken);
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), owner, !hasAccess);
+      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
     }),
 
   /** Bounded pages from the requested slice, including identity-scoped review. */
@@ -333,7 +338,10 @@ export const quizRouter = router({
       if (input.excludeIds.length) filters.push(notInArray(questions.questionNum, input.excludeIds));
       const rows = await db.select(learnerQuestionColumns).from(questions).where(and(...filters))
         .orderBy(...(identified ? [priority, sql`RAND()`] : [sql`RAND()`])).limit(input.limit);
-      return { questions: parseLearnerQuestions(rows), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit };
+      const parsed = parseLearnerQuestions(rows);
+      const { owner } = await practiceIdentity(ctx, input.accessToken);
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), owner, !hasAccess);
+      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit };
     }),
 
   /**
@@ -460,8 +468,8 @@ export const quizRouter = router({
     }),
 
   /**
-   * logAttempt — silently logs every quiz answer for topic tracking and missed questions.
-   * Called on every confirm() in QuizShell. Fails silently if unauthenticated (guest users).
+   * Score only server-issued practice questions. Persist verified learner history
+   * under the canonical course; anonymous previews are scored without a write.
    */
   logAttempt: publicProcedure
     .input(
@@ -479,21 +487,43 @@ export const quizRouter = router({
         bookmarked: z.boolean().optional(),
         /** bankKey — needed to look up the question for server scoring */
         bankKey: z.string().min(1).max(64),
+        accessToken: z.string().max(8192).optional(),
+        attemptToken: z.string().max(16384).optional(),
       })
     )
     .mutation(async ({ input, ctx }) => {
       try {
+        const { course } = courseActivityScope(input.bankKey);
+        // Mock results have a separate server-issued session and atomic submission.
+        if (input.quizMode === "mock") return { success: false };
+        const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, { accessToken: input.accessToken });
+        const actor = await practiceIdentity(ctx, input.accessToken);
+        if (!await permitsPracticeAttempt(input.attemptToken, course.questionBankKey, input.questionId, actor.owner, hasAccess)) {
+          return { success: false };
+        }
         const db = await getDb();
         if (!db) return { success: false };
 
         // Learner clients receive questionNum as their question id. Verify it
         // inside the supplied bank so an identical number in another course
         // can never be used for scoring.
-        const [questionRow] = await db
+        const [questionRow] = course.courseKey === "electrician-309a"
+          ? await db.select({ correctIndex: certificationQuestions.correctIndex, topic: certificationQuestions.topic,
+              difficulty: certificationQuestions.difficulty, module: certificationQuestions.module })
+            .from(certificationQuestions)
+            .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+            .where(and(eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+              eq(certificationBankVersions.bankKey, course.questionBankKey),
+              eq(certificationBankVersions.releaseChannel, "beta"), eq(certificationBankVersions.active, true),
+              eq(certificationBankVersions.commercialEligibility, false), eq(certificationBankVersions.teamEligibility, false),
+              eq(certificationQuestions.bankItemNumber, input.questionId),
+              eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
+            .limit(1)
+          : await db
           .select({ correctIndex: questions.correctIndex, topic: questions.topic, difficulty: questions.difficulty, module: questions.module })
           .from(questions)
           .where(and(
-            eq(questions.bankKey, resolveCourseKey(input.bankKey)?.questionBankKey ?? input.bankKey),
+            eq(questions.bankKey, course.questionBankKey),
             eq(questions.questionNum, input.questionId),
             learnerVisibleQuestionFilter(),
           ))
@@ -505,17 +535,20 @@ export const quizRouter = router({
         }
 
         const correct = input.selectedIndex === questionRow.correctIndex;
-        const topic = questionRow.topic ?? questionRow.module ?? input.examType;
+        const topic = questionRow.topic ?? questionRow.module ?? course.courseKey;
         const difficulty = questionRow.difficulty ?? null;
 
-        const identity = await resolveLearningIdentity(ctx);
+        const identity = await resolveLearningIdentity(actor.context);
         const { userId, studentEmail, orgId, organizationMemberId } = identity;
+
+        // Guest previews are scored but never become unowned history or mastery.
+        if (!userId && !studentEmail) return { success: true, correct };
 
         await db.insert(questionAttempts).values({
           userId,
-          guestToken: input.guestToken ?? null,
+          guestToken: null,
           studentEmail,
-          examType: input.examType,
+          examType: course.courseKey,
           topic,
           questionId: input.questionId,
           correct: correct ? "yes" : "no",
@@ -525,14 +558,14 @@ export const quizRouter = router({
           confidence: input.confidence ?? null,
           bookmarked: input.bookmarked ? "yes" : "no",
           selectedIndex: input.selectedIndex,
-          bankKey: input.bankKey,
-          courseKey: resolveCourseKey(input.bankKey)?.courseKey ?? input.bankKey,
+          bankKey: course.questionBankKey,
+          courseKey: course.courseKey,
           orgId,
           organizationMemberId,
         });
 
         if (userId) {
-          await upsertStudentProfile(db, userId, null, input.examType, topic, correct);
+          await upsertStudentProfile(db, userId, null, course.courseKey, topic, correct);
         } else if (studentEmail) {
           const [existingUser] = await db
             .select({ id: users.id })
@@ -540,9 +573,9 @@ export const quizRouter = router({
             .where(eq(users.email, studentEmail))
             .limit(1);
           if (existingUser) {
-            await upsertStudentProfile(db, existingUser.id, null, input.examType, topic, correct);
+            await upsertStudentProfile(db, existingUser.id, null, course.courseKey, topic, correct);
           } else {
-            await upsertStudentProfile(db, null, studentEmail, input.examType, topic, correct);
+            await upsertStudentProfile(db, null, studentEmail, course.courseKey, topic, correct);
           }
         }
 
