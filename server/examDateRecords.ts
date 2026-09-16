@@ -31,23 +31,25 @@ export function parseReminderHistory(value: string): number[] {
   return [...new Set(parsed as number[])].sort((a, b) => b - a);
 }
 
-type Writer = Pick<Database, "insert" | "delete">;
+type Writer = Pick<Database, "execute" | "delete">;
 export async function upsertExamDate(db: Writer, input: {
   email: string; productKey: string; date: string;
   orgId: number | null; organizationMemberId: number | null;
 }) {
   const key = normalizeExamDateKey(input.email, input.productKey);
   const examDate = parseExamCalendarDate(input.date);
-  await db.insert(examDates).values({
-    ...key, examDate, remindersSent: "[]", courseKey: key.productKey,
-    orgId: input.orgId, organizationMemberId: input.organizationMemberId,
-  }).onDuplicateKeyUpdate({ set: {
-    // Evaluate against the old date BEFORE assigning the replacement date.
-    remindersSent: sql`IF(DATE(${examDates.examDate}) = ${input.date}, ${examDates.remindersSent}, '[]')`,
-    examDate, courseKey: key.productKey,
-    orgId: input.orgId, organizationMemberId: input.organizationMemberId,
-    updatedAt: sql`CURRENT_TIMESTAMP`,
-  } });
+  const storedDate = examDate.toISOString().slice(0, 19).replace("T", " ");
+  // Drizzle orders update fields by schema declaration, not object insertion order.
+  // Explicit SQL is required: inspect the OLD examDate before assigning its replacement.
+  await db.execute(sql`INSERT INTO exam_dates
+    (email, productKey, examDate, remindersSent, courseKey, orgId, organizationMemberId)
+    VALUES (${key.email}, ${key.productKey}, ${storedDate}, '[]', ${key.productKey},
+      ${input.orgId}, ${input.organizationMemberId})
+    ON DUPLICATE KEY UPDATE
+      remindersSent = IF(DATE(examDate) = ${input.date}, remindersSent, '[]'),
+      examDate = ${storedDate}, courseKey = ${key.productKey},
+      orgId = ${input.orgId}, organizationMemberId = ${input.organizationMemberId},
+      updatedAt = CURRENT_TIMESTAMP`);
 }
 
 export async function removeExamDate(db: Writer, email: string, productKey: string) {
