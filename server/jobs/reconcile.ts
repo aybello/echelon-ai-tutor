@@ -4,14 +4,12 @@ import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
  * Can be called from the admin tRPC procedure OR the scheduled cron job.
  */
 import Stripe from "stripe";
-import { withRetry } from "./retry";
 import { eq } from "drizzle-orm";
 import { getDb } from "../db";
 import { purchases, users, subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
 import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
-import { notifyOwner } from "../_core/notification";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
 
 function getStripe(): Stripe {
@@ -27,7 +25,7 @@ export interface ReconcileResult {
   errors: string[];
 }
 
-export async function runReconciliation(hoursBack: number = 48): Promise<ReconcileResult> {
+export async function runReconciliation(hoursBack: number = 48, assertOwned: () => Promise<void> = async () => {}): Promise<ReconcileResult> {
   const stripe = getStripe();
   const db = await getDb();
   if (!db) throw new Error("Database unavailable");
@@ -51,6 +49,7 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
     const page = await stripe.checkout.sessions.list(params);
 
     for (const session of page.data) {
+      await assertOwned();
       try {
         const productKey = session.metadata?.product_key;
         const email =
@@ -89,6 +88,7 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
           new Date(session.created * 1000),
         );
 
+        await assertOwned();
         await recordPurchaseWithConfirmation(db, {
           userId: userId ?? undefined,
           email,
@@ -233,44 +233,4 @@ export async function runSubscriptionReconciliation(): Promise<SubscriptionRecon
   }
 
   return { recovered: recovered.length, skipped: skipped.length, errors, details: recovered };
-}
-
-/**
- * Start the daily reconciliation cron job.
- * Runs every day at 3:00 AM server time.
- */
-export function startReconciliationJob(): void {
-  // Dynamic import to avoid bundling issues
-  import("node-cron").then(({ default: cron }) => {
-    cron.schedule("0 3 * * *", async () => {
-      console.log("[cron] Starting daily Stripe reconciliation...");
-      try {
-        const result = await withRetry(() => runReconciliation(26), "reconcile"); // 26h window to overlap with previous run
-        const msg = `Daily reconciliation complete: ${result.recovered} recovered, ${result.skipped} already present, ${result.errors.length} errors.`;
-        console.log(`[cron] ${msg}`);
-
-        if (result.recovered > 0 || result.errors.length > 0) {
-          const details = result.recovered > 0
-            ? result.details.map(d => `• ${d.email} → ${d.productKey}`).join("\n")
-            : "";
-          const errorDetails = result.errors.length > 0
-            ? `\n\nErrors:\n${result.errors.join("\n")}`
-            : "";
-          await notifyOwner({
-            title: `🔄 Daily Stripe Sync: ${result.recovered} recovered`,
-            content: `${msg}\n\n${details}${errorDetails}`,
-          }).catch((err) => { console.error("[reconcile] notifyOwner failed:", err); });
-        }
-      } catch (err: any) {
-        console.error("[cron] Reconciliation failed:", err.message);
-        await notifyOwner({
-          title: "❌ Daily Stripe Sync Failed",
-          content: `The nightly reconciliation job threw an error: ${err.message}`,
-        }).catch((err) => { console.error("[reconcile] notifyOwner failed:", err); });
-      }
-    });
-    console.log("[cron] Daily Stripe reconciliation scheduled at 3:00 AM");
-  }).catch(err => {
-    console.error("[cron] Failed to load node-cron:", err.message);
-  });
 }

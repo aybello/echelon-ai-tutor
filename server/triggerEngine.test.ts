@@ -223,7 +223,7 @@ describe("Trigger Engine — wrapEmailHtml", () => {
       "Keep it up!"
     );
     expect(html).toContain("Keep it up!");
-    expect(html).toContain("Jane, you're doing great!");
+    expect(html).toContain("Jane, you&#39;re doing great!");
     expect(html).toContain("Continue Studying");
     expect(html).toContain("echeloninstitute.ca");
     expect(html).toContain("<!DOCTYPE html>");

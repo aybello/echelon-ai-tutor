@@ -1,5 +1,5 @@
+import { registerManagedJobs, requireManagedJob } from "../jobs/managedJobs";
 import {
-  ensurePurchaseEmailHeartbeat,
   runPurchaseEmailDelivery,
 } from "../purchaseEmailOutbox";
 import "dotenv/config";
@@ -19,9 +19,6 @@ import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
 import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { trpcRateLimitDispatcher } from "../trpcRateLimit";
-import { startReconciliationJob } from "../jobs/reconcile";
-import { startExamReminderJob } from "../jobs/examReminders";
-import { startTriggerEngineJob } from "../jobs/triggerEngine";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
 import { publicReleaseHealth, RELEASE_CAPABILITIES, RELEASE_ID } from "../release";
 import {
@@ -241,6 +238,7 @@ async function startServer() {
   app.use("/api/scheduled", async (req, res, next) => {
     // Path 1: x-cron-secret header matches ENV.cronSecret (legacy/manual triggers)
     if (scheduledSecretMatches(ENV.cronSecret, req.headers["x-cron-secret"])) {
+      res.locals.scheduledAuthenticated = true;
       return next();
     }
     // Path 2: Platform Heartbeat SDK auth (cron_ session cookie with taskUid)
@@ -267,6 +265,8 @@ async function startServer() {
     }
     return res.status(401).json({ error: "Unauthorized scheduled request" });
   });
+
+  registerManagedJobs(app);
 
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
   // This endpoint is called every 5 minutes by a Manus Heartbeat cron (set up
@@ -352,6 +352,7 @@ async function startServer() {
 
   // ── Purchase confirmation delivery (Heartbeat cron, every minute) ────────
   app.post("/api/scheduled/purchase-email-delivery", async (req, res) => {
+    if (!requireManagedJob(req, res, "purchase-email-delivery")) return;
     const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
     const taskUid =
       cronUser?.taskUid ??
@@ -434,20 +435,7 @@ async function startServer() {
     await connectWithRetry();
     startDbKeepAlive();
     // Start background jobs after server is listening
-    startReconciliationJob();
-    startExamReminderJob();
-    startTriggerEngineJob();
     if (ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
-      void ensurePurchaseEmailHeartbeat()
-        .then(action =>
-          console.log(`[purchase-email] delivery Heartbeat ${action}`)
-        )
-        .catch(error =>
-          console.error(
-            "[purchase-email] could not register delivery Heartbeat",
-            error
-          )
-        );
       void ensureWeeklyBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)

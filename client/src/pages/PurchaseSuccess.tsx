@@ -137,6 +137,7 @@ export default function PurchaseSuccess() {
   const requestedProductKey = params.get("product") ?? "";
 
   const [email, setEmail] = useState<string>("");
+  const [requiresSignIn, setRequiresSignIn] = useState(true);
   const [verified, setVerified] = useState(false);
   const [verifying, setVerifying] = useState(true);
   const [referralSource, setReferralSource] = useState("");
@@ -161,6 +162,7 @@ export default function PurchaseSuccess() {
       }
       setPurchasedProductKey(data.paid ? data.productKey : "");
       setVerified(data.paid);
+      setRequiresSignIn(data.requiresSignIn);
       setVerifying(false);
       setStripeSessionId(sessionId);
       setAccessExpiresAt(data.accessExpiresAt ?? null);
@@ -257,17 +259,20 @@ export default function PurchaseSuccess() {
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
               {email ? (
                 <>
-                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} is now active for <strong>{email}</strong>.
+                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} has been recorded for <strong>{email}</strong>.
                   {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
                 </>
               ) : (
                 <>
-                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} is now active.
+                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} has been recorded.
                   {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
                 </>
               )}
             </p>
 
+            {requiresSignIn && <p style={{ color: "#334155", fontSize: 14 }}>
+              Sign in with the email used at checkout to open your course. Your payment is recorded; you do not need to purchase again.
+            </p>}
             {/* Access email reminder */}
             {email && (
               <div style={{ background: "#FFF7ED", border: "1.5px solid #FED7AA", borderRadius: 10, padding: "12px 16px", marginBottom: 16, textAlign: "left" }}>
@@ -294,7 +299,7 @@ export default function PurchaseSuccess() {
                 {[purchasedProductKey].filter(Boolean).map(pk => {
                   const courseLinks = PRODUCT_PATHS[pk] ?? [{ label: pk, path: "/quiz" }];
                   return courseLinks.map(link => (
-                    <Link key={link.path} href={link.path}>
+                    <Link key={link.path} href={requiresSignIn ? `/login/otp?next=${encodeURIComponent(link.path)}` : link.path}>
                       <div
                         style={{
                           padding: "10px 14px",
@@ -310,7 +315,7 @@ export default function PurchaseSuccess() {
                           alignItems: "center",
                         }}
                       >
-                        {link.label}
+                        {requiresSignIn ? `Sign in — ${link.label}` : link.label}
                         {pk === purchasedProductKey && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
                         <span style={{ color: "#16A34A" }}>→</span>
                       </div>

@@ -1,3 +1,4 @@
+import { checkoutIdentityMatches } from "../stripe/checkoutIdentity";
 import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
@@ -151,14 +152,9 @@ export const stripeRouter = router({
           new Date(session.created * 1000),
         );
 
-        try {
-          await issueVerifiedEmailSessionCookie(ctx.res, email);
-        } catch (e) {
-          console.error("[verifySession] Failed to issue session cookie:", e);
-        }
-
         const db = await getDb();
-        if (db) {
+        if (!db) throw new Error("Database unavailable while confirming purchase");
+        {
           const existing = await db
             .select({ id: purchases.id })
             .from(purchases)
@@ -180,19 +176,18 @@ export const stripeRouter = router({
           }
         }
 
-        const unlockedExamTypes = getAllUnlockedExamTypes([productKey]);
-        const accessToken = unlockedExamTypes.length > 0
-          ? await issueSubscriptionToken({ email, examTypes: unlockedExamTypes })
-          : null;
-
-        return { email, productKey, paid: true, unlockedExamTypes, accessToken, accessExpiresAt };
+        const identityMatches = checkoutIdentityMatches(ctx, email);
+        // Existing sessions remain unchanged. Guests prove email ownership by OTP.
+        return { email: identityMatches ? email : "", productKey, paid: true,
+          requiresSignIn: !identityMatches, unlockedExamTypes: identityMatches ? getAllUnlockedExamTypes([productKey]) : [],
+          accessToken: null, accessExpiresAt };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
           content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
         }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
-        return { email: "", productKey: "", paid: false, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null };
+        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null };
       }
     }),
 

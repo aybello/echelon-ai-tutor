@@ -1,3 +1,4 @@
+import { deliverOnce, workKey } from "./durableWork";
 /**
  * Exam Date Reminder Job
  * Runs daily at 8:00 AM UTC. Checks all exam_dates rows and sends
@@ -6,9 +7,7 @@
  */
 import { getDb } from "../db";
 import { examDates } from "../../drizzle/schema";
-import { notifyOwner } from "../_core/notification";
 import { ENV } from "../_core/env";
-import { withRetry } from "./retry";
 import nodemailer from "nodemailer";
 
 const REMINDER_INTERVALS = [30, 14, 7, 1]; // days before exam
@@ -27,6 +26,7 @@ function createTransporter(): nodemailer.Transporter {
       host: ENV.smtpHost,
       port: Number(ENV.smtpPort ?? 587),
       secure: Number(ENV.smtpPort ?? 587) === 465,
+      connectionTimeout: 10_000, greetingTimeout: 10_000, socketTimeout: 30_000,
       auth: { user: ENV.smtpUser, pass: ENV.smtpPass },
     });
   }
@@ -157,7 +157,7 @@ const PRODUCT_LABELS: Record<string, string> = {
   "wpi-class4-wastewater": "WPI Class IV Wastewater Treatment Pass",
 };
 
-export async function runExamReminders(): Promise<{ sent: number; errors: string[] }> {
+export async function runExamReminders(assertOwned: () => Promise<void> = async () => {}): Promise<{ sent: number; errors: string[] }> {
   const db = await getDb();
   if (!db) return { sent: 0, errors: ["Database unavailable"] };
 
@@ -173,6 +173,7 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
   }
 
   for (const row of allRows) {
+    await assertOwned();
     const days = getDaysUntil(row.examDate);
 
     // Skip past exams (more than 1 day ago)
@@ -189,12 +190,13 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
       const productLabel = PRODUCT_LABELS[row.productKey] ?? row.productKey;
 
       try {
-        await transporter.sendMail({
+        await assertOwned();
+        const delivered = await deliverOnce(db, workKey("exam-email", `${row.email.trim().toLowerCase()}:${row.productKey}:${row.examDate.toISOString().slice(0,10)}:${interval}`), () => transporter!.sendMail({
           from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
           to: row.email,
           subject: getReminderSubject(interval, productLabel),
           html: getReminderHtml(row.email, productLabel, row.productKey, interval, row.examDate.toISOString()),
-        });
+        }));
 
         // Mark this interval as sent
         const updated = [...alreadySent, interval];
@@ -204,7 +206,7 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
           .set({ remindersSent: JSON.stringify(updated) })
           .where(and(eq(examDates.email, row.email), eq(examDates.productKey, row.productKey)));
 
-        sent++;
+        if (delivered) sent++;
         console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email.replace(/(^.{3}).+@/, '$1***@')} for ${row.productKey}`);
       } catch (err) {
         const msg = `Failed to send ${interval}-day reminder to ${row.email}: ${(err as Error).message}`;
@@ -215,32 +217,4 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
   }
 
   return { sent, errors };
-}
-
-export function startExamReminderJob(): void {
-  import("node-cron")
-    .then(({ default: cron }) => {
-      // Run daily at 8:00 AM UTC
-      cron.schedule("0 8 * * *", async () => {
-        console.log("[ExamReminder] Running daily exam reminder check...");
-        try {
-          const result = await withRetry(() => runExamReminders(), "examReminders");
-          console.log(`[ExamReminder] Done — sent: ${result.sent}, errors: ${result.errors.length}`);
-          if (result.sent > 0 || result.errors.length > 0) {
-            await notifyOwner({
-              title: `Exam reminders: ${result.sent} sent`,
-              content: result.errors.length
-                ? `Sent: ${result.sent}\nErrors:\n${result.errors.join("\n")}`
-                : `Sent ${result.sent} exam reminder email(s) today.`,
-            }).catch((err) => { console.error("[examReminders] notifyOwner failed:", err); });
-          }
-        } catch (err) {
-          console.error("[ExamReminder] Job error:", err);
-        }
-      });
-      console.log("[ExamReminder] Cron job scheduled — daily at 8:00 AM UTC");
-    })
-    .catch((err) => {
-      console.error("[ExamReminder] Failed to load node-cron:", err.message);
-    });
 }

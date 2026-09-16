@@ -399,3 +399,18 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
   } finally { await db.end(); }
 });
+
+
+test("checkout receipt asks a guest to verify email before opening the purchased course", async ({ page }) => {
+  await page.route("**/api/trpc/stripe.verifySession*", async route => {
+    const payload = { result: { data: { json: { paid: true, email: "", productKey: "oit", requiresSignIn: true,
+      unlockedExamTypes: [], accessToken: null, accessExpiresAt: null } } } };
+    await route.fulfill({ contentType: "application/json", body: JSON.stringify(route.request().url().includes("batch=1") ? [payload] : payload) });
+  });
+  await page.goto("/purchase-success?session_id=cs_synthetic_receipt");
+  await expect(page.getByRole("heading", { name: "Payment Successful!" })).toBeVisible();
+  await expect(page.getByText("you do not need to purchase again", { exact: false })).toBeVisible();
+  const link = page.getByRole("link", { name: /Sign in — OIT Practice Quiz/ });
+  await expect(link).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
+  expect(await page.evaluate(() => localStorage.getItem("echelon_access_token"))).toBeNull();
+});

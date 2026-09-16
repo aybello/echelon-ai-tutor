@@ -1,3 +1,5 @@
+const mockProvisionIndividual = vi.hoisted(() => vi.fn());
+vi.mock("./provisionIndividualSubscription", () => ({ provisionIndividualSubscription: mockProvisionIndividual }));
 /**
  * webhook.handler.test.ts
  *
@@ -345,5 +347,38 @@ describe("Stripe webhook handler — invoice-before-org", () => {
       error: "Organization provisioning is not complete",
     });
     expect(mockProcessOrgInvoice).not.toHaveBeenCalled();
+  });
+});
+
+
+describe("individual subscription acknowledgements", () => {
+  it.each([["completed", 200], ["busy", 409], ["retryable_failure", 503]])("maps %s to HTTP %s", async (state, code) => {
+    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.created", data: { object: { id: "sub_individual" } } });
+    mockRetrieveSubscription.mockResolvedValue({ id: "sub_individual", metadata: {} });
+    mockGetDb.mockResolvedValue({}); mockProvisionIndividual.mockResolvedValue({ state });
+    const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
+    expect(res.statusCode).toBe(code);
+  });
+  it("returns a retryable response on storage exceptions", async () => {
+    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.updated", data: { object: { id: "sub_individual" } } });
+    mockRetrieveSubscription.mockResolvedValue({ id: "sub_individual", metadata: {} });
+    mockGetDb.mockResolvedValue({}); mockProvisionIndividual.mockRejectedValue(new Error("DB unavailable"));
+    const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
+    expect(res.statusCode).toBe(503);
+  });
+});
+
+describe("checkout profile updates", () => {
+  it.each([null, "", "not-a-phone"])("preserves an existing user phone when checkout provides %s", async phone => {
+    const { users } = await import("../../drizzle/schema");
+    mockConstructEvent.mockReturnValue({ id: "evt_phone", type: "checkout.session.completed", data: { object: {
+      id: "cs_phone", mode: "payment", payment_status: "paid", amount_total: 4900, created: 1780000000,
+      metadata: { product_key: "oit", user_id: "42" }, customer_details: { email: "qa@echelon.test", name: "QA Operator", phone },
+    } } });
+    const update = vi.fn(() => ({ set: vi.fn(() => ({ where: vi.fn().mockResolvedValue([]) })) }));
+    mockGetDb.mockResolvedValue({ select: vi.fn(() => ({ from: vi.fn(() => ({ where: vi.fn(() => ({ limit: vi.fn().mockResolvedValue([{ id: 42 }]) })) })) })), update });
+    const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
+    expect(res.statusCode).toBe(200);
+    expect(update).not.toHaveBeenCalledWith(users);
   });
 });

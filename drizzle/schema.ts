@@ -1424,3 +1424,16 @@ export const flashcardProgressOperations = mysqlTable("flashcard_progress_operat
   payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
+
+/** Shared managed-job leases and conservative SMTP delivery receipts. */
+export const scheduledWork = mysqlTable("scheduled_work", {
+  workKey: varchar("workKey", { length: 191 }).primaryKey(),
+  leaseVersion: int("leaseVersion").notNull().default(0),
+  status: varchar("status", { length: 16 }).notNull().default("pending"),
+  claimToken: varchar("claimToken", { length: 36 }),
+  leaseUntil: timestamp("leaseUntil"),
+  attempts: int("attempts").notNull().default(0),
+  lastError: text("lastError"),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
