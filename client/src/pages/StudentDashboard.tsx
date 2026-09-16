@@ -1,3 +1,4 @@
+import { useLogout } from "@/_core/hooks/useLogout";
 /**
  * Student Performance Dashboard
  * Surfaces study progress, accuracy trends, topic strengths/weaknesses, and streak data
@@ -109,7 +110,7 @@ export default function StudentDashboard() {
   const dashboardMe = trpc.dashboardAuth.me.useQuery();
   const sendOtp = trpc.dashboardAuth.sendOtp.useMutation();
   const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation();
-  const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
+  const { logout: handleDashboardLogout, isPending: logoutPending } = useLogout();
   const utils = trpc.useUtils();
   const [selectedCourseKey] = useState<string | undefined>(() => {
     const requested = new URLSearchParams(window.location.search).get("course");
@@ -170,26 +171,6 @@ export default function StudentDashboard() {
     } catch (e: any) {
       setOtpError(e.message ?? "Invalid code. Please try again.");
     }
-  };
-
-  const handleDashboardLogout = async () => {
-    // Clear the OTP session cookie
-    await dashboardLogout.mutateAsync();
-    await utils.dashboardAuth.me.invalidate();
-    // Clear all course access from localStorage so the session is fully ended
-    try {
-      localStorage.removeItem("echelon_trial_unlocked");
-      localStorage.removeItem("echelon_trial_email");
-      localStorage.removeItem("echelon_subscription_email");
-      localStorage.removeItem("echelon_access_token");
-      localStorage.removeItem("echelon_subscription_exam_types");
-      localStorage.removeItem("echelon_purchased_products");
-    } catch { /* ignore */ }
-    setOtpStep("email");
-    setOtpCode("");
-    setOtpSent(false);
-    // Redirect to login page
-    window.location.href = "/";
   };
 
   const overview = trpc.dashboard.overview.useQuery(selectedCourseKey ? { courseKey: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
@@ -376,10 +357,10 @@ export default function StudentDashboard() {
             </a>
             <button
               onClick={handleDashboardLogout}
-              disabled={dashboardLogout.isPending}
+              disabled={logoutPending}
               style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8, padding: "7px 14px", color: "#64748B", fontSize: 13, fontWeight: 600, cursor: "pointer" }}
             >
-              {dashboardLogout.isPending ? "Signing out…" : "Log Out"}
+              {logoutPending ? "Signing out…" : "Log Out"}
             </button>
           </div>
         </div>

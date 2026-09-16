@@ -165,20 +165,8 @@ export default function Account() {
     window.location.replace(managerAccountDestination(window.location.search));
   }, [isManager]);
 
-  const handleClearDeviceState = () => {
-    try {
-      localStorage.removeItem("echelon_trial_email");
-      localStorage.removeItem("echelon_purchased_products");
-      localStorage.removeItem("echelon_trial_unlocked");
-      localStorage.removeItem("echelon_subscription_email");
-      localStorage.removeItem("echelon_subscription_exam_types");
-      localStorage.removeItem("echelon_access_token");
-    } catch { /* ignore */ }
-    setSubmittedEmail(null);
-    setEmail("");
-    setRestored(false);
-    toast.success("Device state cleared", { description: "All saved access on this device has been removed." });
-  };
+  // Shared-device reset must end httpOnly sessions as well as cached access.
+  const handleClearDeviceState = logout;
 
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
     undefined,

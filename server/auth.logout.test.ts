@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { appRouter } from "./routers";
+import { ECHELON_SESSION_COOKIE } from "./_core/emailSession";
 import { COOKIE_NAME } from "../shared/const";
 import type { TrpcContext } from "./_core/context";
 
@@ -45,19 +46,19 @@ function createAuthContext(): { ctx: TrpcContext; clearedCookies: CookieCall[] }
 }
 
 describe("auth.logout", () => {
-  it("clears the session cookie and reports success", async () => {
+  it.each(["auth", "dashboardAuth"] as const)("%s clears both identities even when both are present", async (route) => {
     const { ctx, clearedCookies } = createAuthContext();
+    ctx.studentEmail = "otp@example.com";
     const caller = appRouter.createCaller(ctx);
 
-    const result = await caller.auth.logout();
+    const result = await caller[route].logout();
 
     expect(result).toEqual({ success: true });
-    expect(clearedCookies).toHaveLength(1);
-    expect(clearedCookies[0]?.name).toBe(COOKIE_NAME);
+    expect(clearedCookies).toHaveLength(2);
+    expect(clearedCookies.map(c => c.name)).toEqual([COOKIE_NAME, ECHELON_SESSION_COOKIE]);
     expect(clearedCookies[0]?.options).toMatchObject({
-      maxAge: -1,
       secure: true,
-      sameSite: "none",
+      sameSite: "lax",
       httpOnly: true,
       path: "/",
     });

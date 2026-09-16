@@ -7,6 +7,7 @@ import { eq, and, sql, lte, gte } from "drizzle-orm";
 import { getDb } from "../db";
 import { teamFlexLicences, organizationMembers, organizations } from "../../drizzle/schema";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { assignedAnnualCourseKeys } from "../trainingRecords";
 
 export interface FlexAccessGrant {
   source: "flex";
@@ -93,34 +94,34 @@ export async function resolveTeamAccess(
     .select({
       orgId: organizationMembers.orgId,
       courseKey: organizationMembers.courseKey,
+      courseKeys: organizationMembers.courseKeys,
       status: organizationMembers.status,
     })
     .from(organizationMembers)
     .where(and(
       eq(organizationMembers.email, emailNormalized),
-      eq(organizationMembers.status, "active"),
+      eq(organizationMembers.status, "assigned"),
     ));
 
   for (const member of annualMembers) {
-    // Check if the org is active and the member's courseKey matches (or is null = all-access)
-    const memberCourseKey = member.courseKey ? (resolveCourseKey(member.courseKey)?.courseKey ?? member.courseKey) : null;
-    if (memberCourseKey === requestedCourseKey || memberCourseKey === null) {
+    // Missing assignment is never all-access. Reuse the same canonical assignment
+    // resolution as training records, including multi-course and legacy seats.
+    if (member.status === "assigned" && assignedAnnualCourseKeys(member.courseKey, member.courseKeys).includes(requestedCourseKey)) {
       const [org] = await db
         .select({ name: organizations.name, termEnd: organizations.termEnd, status: organizations.status })
         .from(organizations)
         .where(and(
           eq(organizations.id, member.orgId),
-          eq(organizations.status, "active"),
         ))
         .limit(1);
 
-      if (org) {
+      if (org && ["active", "past_due"].includes(org.status) && org.termEnd && org.termEnd > now) {
         grants.push({
           source: "annual",
           orgId: member.orgId,
           orgName: org.name,
           courseKey: requestedCourseKey,
-          accessEndsAt: org.termEnd ?? null, // null if auto-renewing
+          accessEndsAt: org.termEnd,
         });
       }
     }
