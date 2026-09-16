@@ -359,6 +359,10 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await db.execute("INSERT INTO bookmarks (studentEmail, bankKey, questionId) VALUES (?, ?, 960081)", [email, bankKey]);
     await db.execute("INSERT INTO question_attempts (studentEmail, examType, bankKey, courseKey, questionId, topic, correct, confidence) VALUES (?, ?, ?, ?, 960082, 'Rare module', 'no', 'low')", [email, bankKey, bankKey, bankKey]);
     await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.30" });
+    await page.addInitScript(() => {
+      localStorage.setItem("echelon_qbank_class3-water-dist", JSON.stringify({ questions: [{ id: 42, question: "Legacy private cached question" }] }));
+      localStorage.setItem("practice_progress_sentinel", "keep");
+    });
     await signInWithOtp(page, email, `/${bankKey}`);
     await page.waitForURL(`**/${bankKey}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
@@ -384,6 +388,13 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       }
     }
     expect(seen.size).toBe(52);
+    await expect.poll(async () => {
+      const [rows] = await db.execute("SELECT COUNT(*) AS total FROM question_attempts WHERE studentEmail = ? AND courseKey = ? AND examType = ? AND questionId BETWEEN 960001 AND 960075 AND correct = 'yes'", [email, bankKey, bankKey]);
+      return Number((rows as Array<{ total: number }>)[0].total);
+    }).toBe(52);
+    expect(await page.evaluate(() => localStorage.getItem("echelon_qbank_class3-water-dist"))).toBeNull();
+    expect(await page.evaluate(() => localStorage.getItem("practice_progress_sentinel"))).toBe("keep");
+    await expect(page.getByText("Legacy private cached question", { exact: true })).toHaveCount(0);
     // Answering 52 questions at automation speed compresses a real study session
     // into seconds. Respect the server's advertised request window before the
     // next journey; keep the production limiter and every paging assertion intact.
@@ -399,8 +410,6 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
   } finally { await db.end(); }
 });
-
-
 test("checkout receipt asks a guest to verify email before opening the purchased course", async ({ page }) => {
   await page.route("**/api/trpc/stripe.verifySession*", async route => {
     const payload = { result: { data: { json: { paid: true, email: "", productKey: "oit", requiresSignIn: true,
@@ -413,4 +422,19 @@ test("checkout receipt asks a guest to verify email before opening the purchased
   const link = page.getByRole("link", { name: /Sign in — OIT Practice Quiz/ });
   await expect(link).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
   expect(await page.evaluate(() => localStorage.getItem("echelon_access_token"))).toBeNull();
+});
+
+test("question delivery failures show recovery without serving bundled or cached answers", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("echelon_qbank_class1-water", JSON.stringify({ questions: [{ id: 42, question: "Private offline fallback" }] }));
+  });
+  await page.route("**/api/trpc/**", async route => {
+    if (route.request().url().includes("quiz.getQuestions")) {
+      await route.fulfill({ status: 503, contentType: "application/json", body: '{"error":"Question service unavailable"}' });
+    } else await route.continue();
+  });
+  await page.goto("/class1-water-flashcards");
+  await expect(page.getByRole("button", { name: "Try Now", exact: true })).toBeVisible();
+  await expect(page.getByText("Private offline fallback", { exact: true })).toHaveCount(0);
+  expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith("echelon_qbank_")))).toEqual([]);
 });
