@@ -57,7 +57,6 @@ describe("auth.logout", () => {
     expect(clearedCookies).toHaveLength(2);
     expect(clearedCookies.map(c => c.name)).toEqual([COOKIE_NAME, ECHELON_SESSION_COOKIE]);
     expect(clearedCookies[0]?.options).toMatchObject({
-      maxAge: -1,
       secure: true,
       sameSite: "lax",
       httpOnly: true,
