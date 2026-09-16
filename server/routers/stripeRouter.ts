@@ -40,6 +40,11 @@ import {
 } from "../stripe/individualExamPass";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import {
+  getCommercialAvailability,
+  ORGANIZATION_COMMERCE_ENABLED,
+  ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+} from "../commercialAvailability";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -51,6 +56,17 @@ export const stripeRouter = router({
       priceCAD: p.priceCAD,
       examTypes: p.examTypes,
     }));
+  }),
+
+  /**
+   * The clean-database commercial release list. It is intentionally narrower
+   * than the product catalogue and returns only products whose live question
+   * bank is both explicitly released and learner-ready.
+   */
+  getCommercialAvailability: publicProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) return { products: [] };
+    return { products: await getCommercialAvailability(db, ALL_PRODUCTS) };
   }),
 
   /** Create a Stripe Checkout session for a given product key */
@@ -69,6 +85,15 @@ export const stripeRouter = router({
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
       if (!product) throw new Error("Product not found");
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Checkout is temporarily unavailable. Please try again shortly." });
+      const releasedProducts = await getCommercialAvailability(db, ALL_PRODUCTS);
+      if (!releasedProducts.some((released) => released.key === product.key)) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This course is not currently available for purchase. Join the course launch list and we will notify you when its verified question bank is ready.",
+        });
+      }
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const userEmail = ctx.user?.email ?? input.email;
@@ -493,6 +518,12 @@ export const stripeRouter = router({
       managerEmail: z.string().email(),
     }))
     .mutation(async ({ input }) => {
+      if (!ORGANIZATION_COMMERCE_ENABLED) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+        });
+      }
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       // Graduated volume pricing: Stripe applies the band arithmetic itself

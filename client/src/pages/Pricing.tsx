@@ -2,7 +2,7 @@
 // Shows all individual Practice Passes
 // Stripe Checkout integration via tRPC
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useProvince } from "@/hooks/useProvince";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { formatPriceUSD } from "@shared/products";
@@ -13,6 +13,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "@shared/refundPolicy";
 import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
+import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS } from "@shared/products";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
@@ -1248,6 +1249,7 @@ export default function Pricing() {
   const [individualModel, setIndividualModel] = useState<"course" | "allAccess" | null>(null);
   const [selectedIndividualKey, setSelectedIndividualKey] = useState("");
   const [selectedAnnualTier, setSelectedAnnualTier] = useState<SubscriptionTier | "">("");
+  const [showCourseLaunchNotify, setShowCourseLaunchNotify] = useState(false);
 
   // Active subscriptions — used to show "Your Current Plan" badge
   // Works for both OAuth users (isAuthenticated) and verified email-session users (OTP login)
@@ -1265,9 +1267,29 @@ export default function Pricing() {
   const activePlanKeys = new Set(
     activeSubs.map(s => `${s.tier}:${s.province}`)
   );
-  const relevantIndividualProducts = INDIVIDUAL.filter(product =>
-    product.available && (isWpi ? product.key.startsWith("wpi-") : !product.key.startsWith("wpi-"))
+  const commercialAvailability = trpc.stripe.getCommercialAvailability.useQuery(undefined, {
+    staleTime: 60_000,
+  });
+  const liveQuestionCounts = useMemo(
+    () => new Map((commercialAvailability.data?.products ?? []).map((product) => [product.key, product.questionCount])),
+    [commercialAvailability.data?.products],
   );
+  const liveProductKeys = useMemo(() => new Set(liveQuestionCounts.keys()), [liveQuestionCounts]);
+  const relevantIndividualProducts = INDIVIDUAL.filter(product =>
+    liveProductKeys.has(product.key) && (isWpi ? product.key.startsWith("wpi-") : !product.key.startsWith("wpi-"))
+  );
+  const liveQuestionTotal = Array.from(liveQuestionCounts.values()).reduce((total, current) => total + current, 0);
+  const liveCourseLabel = commercialAvailability.isLoading
+    ? "Checking live course availability…"
+    : liveQuestionTotal > 0
+      ? `${liveQuestionTotal.toLocaleString("en-CA")} verified questions across ${liveQuestionCounts.size} currently available OIT course${liveQuestionCounts.size === 1 ? "" : "s"}`
+      : "No course is currently open for purchase.";
+
+  useEffect(() => {
+    if (selectedIndividualKey && !liveProductKeys.has(selectedIndividualKey)) {
+      setSelectedIndividualKey("");
+    }
+  }, [liveProductKeys, selectedIndividualKey]);
   const selectedIndividualProduct = relevantIndividualProducts.find(product => product.key === selectedIndividualKey);
   const currentAnnualTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
   const selectedAnnualSubscription = currentAnnualTiers.find(tier => tier.tier === selectedAnnualTier);
@@ -1562,7 +1584,7 @@ export default function Pricing() {
         <div style={{ display: buyerType === "individual" ? "block" : "none", marginTop: 24, marginBottom: 24 }}>
           <div style={{ padding: "18px 20px", background: "#EFF6FF", border: "1.5px solid #BFDBFE", borderRadius: 12 }}>
             <div style={{ fontSize: 17, fontWeight: 850, color: "#0F172A" }}>Choose your Individual Exam Pass</div>
-            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select the course that matches your upcoming exam. One-time payment; 12 months of access from purchase.</p>
+            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select a currently available course that matches your upcoming exam. One-time payment; 12 months of access from purchase.</p>
           </div>
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
@@ -1582,13 +1604,14 @@ export default function Pricing() {
                     <option key={product.key} value={product.key}>{product.shortName} — CA${(product.priceCAD / 100).toFixed(0)}</option>
                   ))}
                 </select>
-                <p style={{ fontSize: 12, color: "#64748B", margin: "8px 0 0" }}>Your selected pass includes practice questions, mock exams, flashcards, study resources, and the AI Tutor for that course.</p>
+                <p style={{ fontSize: 12, color: "#64748B", margin: "8px 0 0" }}>{liveCourseLabel}. Your selected pass includes practice questions, mock exams, flashcards, study resources, and the AI Tutor for that course.</p>
               </div>
 
               {selectedIndividualProduct ? (
                 <div className="product-grid-1" style={{ marginBottom: 24 }}>
                   <ProductCard
                     product={selectedIndividualProduct}
+                    verifiedQuestionCount={liveQuestionCounts.get(selectedIndividualProduct.key)}
                     isWpi={isWpi}
                     wpiLabel={isWpi ? WPI_WATER_LABELS[selectedIndividualProduct.key] : undefined}
                     isUS={isUS}
@@ -1596,7 +1619,14 @@ export default function Pricing() {
                 </div>
               ) : (
                 <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>
-                  Pick your course above to see one clear price and your checkout option.
+                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : "Pick an available OIT course above to see one clear price and your checkout option."}
+                </div>
+              )}
+
+              {!commercialAvailability.isLoading && (
+                <div style={{ marginTop: 14, padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+                  <p style={{ margin: 0, color: "#475569", fontSize: 12, lineHeight: 1.5 }}>Preparing for another certification? We will only open checkout when its verified question bank is ready.</p>
+                  <button type="button" onClick={() => setShowCourseLaunchNotify(true)} style={{ border: "1px solid #BFDBFE", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 9, padding: "8px 12px", cursor: "pointer", fontFamily: "inherit", fontSize: 12, fontWeight: 800 }}>Join course launch list</button>
                 </div>
               )}
 
@@ -1765,15 +1795,15 @@ export default function Pricing() {
             Individual Exam Passes are one-time purchases with no renewal. Grandfathered annual subscriptions continue through their paid term if renewal is cancelled.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            18,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
+            {liveCourseLabel}. Canada-specific and AI-explained.
           </p>
           <div className="trust-grid">
             {[
-              { icon: "📚", label: "18,000+ Questions" },
+              { icon: "📚", label: liveQuestionTotal > 0 ? `${liveQuestionTotal.toLocaleString("en-CA")} Verified Questions` : "Verified Question Banks" },
               { icon: "🤖", label: "AI Tutor Chat" },
-              { icon: "📝", label: "Timed Mock Exam" },
-              { icon: "🃏", label: "400+ Flashcards" },
-              { icon: "📖", label: "Module Study Notes" },
+              { icon: "📝", label: "Mock Practice" },
+              { icon: "🃏", label: "Course Flashcards" },
+              { icon: "📖", label: "Study Resources" },
               { icon: "💡", label: "AI Step-by-Step Explanations" },
               { icon: "📊", label: "Score History" },
               { icon: "🎯", label: "Adaptive Difficulty" },
@@ -1922,6 +1952,13 @@ export default function Pricing() {
       >
         © 2026 Echelon Institute. All rights reserved. · Payments secured by Stripe. · <a href="/account" style={{ color: "#94A3B8" }}>My Account</a> · <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#94A3B8" }}>Support</a>
       </div>
+      {showCourseLaunchNotify && (
+        <NotifyModal
+          courseCode="ECHELON-COURSE-RELAUNCH"
+          courseTitle="the next Echelon course launch"
+          onClose={() => setShowCourseLaunchNotify(false)}
+        />
+      )}
     </div>
   );
 }
@@ -1932,11 +1969,13 @@ function ProductCard({
   isWpi = false,
   wpiLabel,
   isUS = false,
+  verifiedQuestionCount,
 }: {
   product: Product;
   isWpi?: boolean;
   wpiLabel?: { shortName: string; description: string; badge?: string };
   isUS?: boolean;
+  verifiedQuestionCount?: number;
 }) {
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
   const displayDesc = isWpi && wpiLabel ? wpiLabel.description : product.description;
@@ -1945,7 +1984,10 @@ function ProductCard({
 
   // Extract question count from first feature bullet (e.g. "400+ practice questions" → "500 Q")
   const qMatch = product.features?.[0]?.match(/(\d[\d,]+)/);
-  const questionCount = qMatch ? qMatch[1] : null;
+  const questionCount = verifiedQuestionCount?.toLocaleString("en-CA") ?? (qMatch ? qMatch[1] : null);
+  const displayFeatures = product.features?.map((feature, index) =>
+    index === 0 && verifiedQuestionCount ? `${verifiedQuestionCount.toLocaleString("en-CA")} verified practice questions` : feature,
+  );
 
   return (
     <div
@@ -2012,9 +2054,9 @@ function ProductCard({
         </p>
 
         {/* Feature pills */}
-        {product.features && product.features.length > 0 && (
+        {displayFeatures && displayFeatures.length > 0 && (
           <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 10 }}>
-            {product.features.map(f => (
+            {displayFeatures.map(f => (
               <span key={f} style={{
                 fontSize: 10, color: product.color, background: product.bg,
                 borderRadius: 20, padding: "2px 8px", fontWeight: 500,
