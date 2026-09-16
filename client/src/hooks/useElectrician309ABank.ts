@@ -76,7 +76,10 @@ export const ELECTRICIAN_309A_MODULE_TARGETS = Object.fromEntries(
 
 /** Adapts governed certification records to the standard Echelon course-bank contract. */
 export function useElectrician309ABank() {
-  const query = trpc.electricianReview.get309ABetaPractice.useQuery(undefined, {
+  const accessToken = useMemo(() => {
+    try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
+  }, []);
+  const query = trpc.electricianReview.get309ABetaPractice.useQuery({ accessToken }, {
     staleTime: 1000 * 60 * 5,
     retry: 4,
     retryDelay: 5000,
@@ -84,6 +87,7 @@ export function useElectrician309ABank() {
 
   const questions = useMemo<DBQuestion[]>(() => (query.data?.questions ?? []).map((question) => ({
     id: question.id,
+    attemptToken: question.attemptToken,
     module: ELECTRICIAN_309A_MODULE_LABELS[question.module] ?? question.module,
     difficulty: question.difficulty,
     question: question.question,
