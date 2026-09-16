@@ -1,4 +1,10 @@
 import { ENV } from "./env";
+import {
+  serviceJson,
+  serviceFetch,
+  requireServiceSuccess,
+  boundedOutputTokens,
+} from "./outboundHttp";
 
 export type Role = "system" | "user" | "assistant" | "tool" | "function";
 
@@ -19,7 +25,12 @@ export type FileContent = {
   type: "file_url";
   file_url: {
     url: string;
-    mime_type?: "audio/mpeg" | "audio/wav" | "application/pdf" | "audio/mp4" | "video/mp4" ;
+    mime_type?:
+      | "audio/mpeg"
+      | "audio/wav"
+      | "application/pdf"
+      | "audio/mp4"
+      | "video/mp4";
   };
 };
 
@@ -51,9 +62,7 @@ export type ToolChoiceExplicit = {
 };
 
 export type ToolChoice =
-  | ToolChoicePrimitive
-  | ToolChoiceByName
-  | ToolChoiceExplicit;
+  ToolChoicePrimitive | ToolChoiceByName | ToolChoiceExplicit;
 
 export type InvokeParams = {
   messages: Message[];
@@ -66,6 +75,7 @@ export type InvokeParams = {
   output_schema?: OutputSchema;
   responseFormat?: ResponseFormat;
   response_format?: ResponseFormat;
+  signal?: AbortSignal;
 };
 
 export type ToolCall = {
@@ -209,15 +219,12 @@ const normalizeToolChoice = (
   return toolChoice;
 };
 
-const resolveApiUrl = () =>
-  ENV.forgeApiUrl && ENV.forgeApiUrl.trim().length > 0
-    ? `${ENV.forgeApiUrl.replace(/\/$/, "")}/v1/chat/completions`
-    : "https://forge.manus.im/v1/chat/completions";
-
+const GEMINI_CHAT_URL =
+  "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
 const assertApiKey = () => {
-  if (!ENV.forgeApiKey) {
-    throw new Error("OPENAI_API_KEY is not configured");
-  }
+  if (!ENV.geminiApiKey) throw new Error("GEMINI_API_KEY is not configured");
+  if (!/^gemini-[a-zA-Z0-9.-]+$/.test(ENV.geminiModel))
+    throw new Error("GEMINI_MODEL must name the approved Gemini model");
 };
 
 const normalizeResponseFormat = ({
@@ -280,7 +287,7 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
   } = params;
 
   const payload: Record<string, unknown> = {
-    model: "gemini-2.5-flash",
+    model: ENV.geminiModel,
     messages: messages.map(normalizeMessage),
   };
 
@@ -296,10 +303,20 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.tool_choice = normalizedToolChoice;
   }
 
-  payload.max_tokens = 32768
-  payload.thinking = {
-    "budget_tokens": 128
+  if (
+    params.maxTokens !== undefined &&
+    params.max_tokens !== undefined &&
+    params.maxTokens !== params.max_tokens
+  ) {
+    throw new Error("Conflicting output token limits");
   }
+  payload.max_tokens = boundedOutputTokens(
+    params.maxTokens ?? params.max_tokens,
+    2048
+  );
+  // Disable optional thinking for legacy Flash so short summary budgets remain useful.
+  if (ENV.geminiModel.startsWith("gemini-2.5-flash"))
+    payload.reasoning_effort = "none";
 
   const normalizedResponseFormat = normalizeResponseFormat({
     responseFormat,
@@ -312,21 +329,29 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     payload.response_format = normalizedResponseFormat;
   }
 
-  const response = await fetch(resolveApiUrl(), {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${ENV.forgeApiKey}`,
+  const response = await serviceFetch(
+    GEMINI_CHAT_URL,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${ENV.geminiApiKey}`,
+      },
+      body: JSON.stringify(payload),
+      signal: params.signal,
     },
-    body: JSON.stringify(payload),
-  });
+    { service: "gemini", timeoutMs: 45_000, maxResponseBytes: 2 * 1024 * 1024 }
+  );
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(
-      `LLM invoke failed: ${response.status} ${response.statusText} – ${errorText}`
-    );
+  requireServiceSuccess(response, "gemini");
+  const result = await serviceJson<InvokeResult>(response, "gemini");
+  if (
+    !Array.isArray(result?.choices) ||
+    !result.choices[0]?.message ||
+    (!result.choices[0].message.content &&
+      !result.choices[0].message.tool_calls?.length)
+  ) {
+    throw new Error("Gemini returned no usable completion");
   }
-
-  return (await response.json()) as InvokeResult;
+  return result;
 }

@@ -1,4 +1,5 @@
 import { TRPCError } from "@trpc/server";
+import { serviceJson, serviceFetch } from "./outboundHttp";
 import { ENV } from "./env";
 
 export type HeartbeatJob = {
@@ -80,11 +81,11 @@ const callForge = async <T>(
 
   let response: Response;
   try {
-    response = await fetch(endpoint, {
+    response = await serviceFetch(endpoint, {
       method: "POST",
       headers,
       body: JSON.stringify(body),
-    });
+    }, { service: "heartbeat", timeoutMs: 10_000 });
   } catch (error) {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
@@ -93,10 +94,9 @@ const callForge = async <T>(
   }
 
   if (!response.ok) {
-    const detail = await response.text().catch(() => "");
-    throw mapForgeError(response, detail, rpc);
+    throw mapForgeError(response, "", rpc);
   }
-  return (await response.json()) as T;
+  return (await serviceJson<any>(response, "heartbeat")) as T;
 };
 
 const mapForgeError = (

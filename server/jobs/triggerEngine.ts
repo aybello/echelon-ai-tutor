@@ -214,6 +214,7 @@ async function generateEmailBody(
   studentName: string
 ): Promise<string> {
   const response = await invokeLLM({
+    maxTokens: 512,
     messages: [
       {
         role: "system",

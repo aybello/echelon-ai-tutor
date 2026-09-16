@@ -1,4 +1,10 @@
 import { ENV } from "./env";
+import {
+  serviceJson,
+  serviceFetch,
+  requireServiceSuccess,
+  boundedOutputTokens,
+} from "./outboundHttp";
 
 type OpenAIOutputPart = {
   type?: string;
@@ -16,6 +22,7 @@ type OpenAIResponse = {
 };
 
 export type GPT56Options = {
+  signal?: AbortSignal;
   reasoningEffort?: "low" | "medium";
   verbosity?: "low" | "medium";
   maxOutputTokens?: number;
@@ -32,7 +39,9 @@ function extractOutputText(response: OpenAIResponse): string {
 
   return (response.output ?? [])
     .flatMap(item => item.content ?? [])
-    .filter(part => part.type === "output_text" && typeof part.text === "string")
+    .filter(
+      part => part.type === "output_text" && typeof part.text === "string"
+    )
     .map(part => part.text!.trim())
     .filter(Boolean)
     .join("\n\n");
@@ -40,10 +49,13 @@ function extractOutputText(response: OpenAIResponse): string {
 
 /**
  * Small Responses API wrapper used by the Build Week incident simulator.
- * Kept separate from the legacy Forge chat-completions client so the feature
+ * Kept separate from the Gemini chat-completions client so the feature
  * has an explicit, auditable AI integration.
  */
-export async function invokeGPT56(input: string, options: GPT56Options = {}): Promise<string> {
+export async function invokeGPT56(
+  input: string,
+  options: GPT56Options = {}
+): Promise<string> {
   if (!ENV.openAiApiKey) {
     throw new Error("OPENAI_API_KEY is not configured");
   }
@@ -60,28 +72,30 @@ export async function invokeGPT56(input: string, options: GPT56Options = {}): Pr
       }
     : { verbosity: options.verbosity ?? "medium" };
 
-  const response = await fetch("https://api.openai.com/v1/responses", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${ENV.openAiApiKey}`,
+  const response = await serviceFetch(
+    "https://api.openai.com/v1/responses",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${ENV.openAiApiKey}`,
+      },
+      body: JSON.stringify({
+        model: ENV.openAiModel,
+        reasoning: { effort: options.reasoningEffort ?? "medium" },
+        text: textConfig,
+        store: false,
+        max_output_tokens: boundedOutputTokens(options.maxOutputTokens, 1200),
+        input,
+      }),
+      signal: options.signal,
     },
-    body: JSON.stringify({
-      model: ENV.openAiModel,
-      reasoning: { effort: options.reasoningEffort ?? "medium" },
-      text: textConfig,
-      store: false,
-      max_output_tokens: options.maxOutputTokens ?? 1200,
-      input,
-    }),
-  });
+    { service: "openai", timeoutMs: 45_000, maxResponseBytes: 2 * 1024 * 1024 }
+  );
 
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(`OpenAI Responses API failed: ${response.status} ${detail}`);
-  }
+  requireServiceSuccess(response, "openai");
 
-  const result = (await response.json()) as OpenAIResponse;
+  const result = (await serviceJson<any>(response, "openai")) as OpenAIResponse;
   const outputText = extractOutputText(result);
   if (!outputText) throw new Error("OpenAI returned an empty response");
   return outputText;

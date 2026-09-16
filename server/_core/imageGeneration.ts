@@ -16,9 +16,11 @@
  *   });
  */
 import { storagePut } from "server/storage";
+import { serviceJson, serviceFetch, requireServiceSuccess } from "./outboundHttp";
 import { ENV } from "./env";
 
 export type GenerateImageOptions = {
+  signal?: AbortSignal;
   prompt: string;
   originalImages?: Array<{
     url?: string;
@@ -50,7 +52,7 @@ export async function generateImage(
     baseUrl
   ).toString();
 
-  const response = await fetch(fullUrl, {
+  const response = await serviceFetch(fullUrl, {
     method: "POST",
     headers: {
       accept: "application/json",
@@ -62,16 +64,12 @@ export async function generateImage(
       prompt: options.prompt,
       original_images: options.originalImages || [],
     }),
-  });
+    signal: options.signal,
+  }, { service: "image", timeoutMs: 120_000, maxResponseBytes: 32 * 1024 * 1024 });
 
-  if (!response.ok) {
-    const detail = await response.text().catch(() => "");
-    throw new Error(
-      `Image generation request failed (${response.status} ${response.statusText})${detail ? `: ${detail}` : ""}`
-    );
-  }
+  requireServiceSuccess(response, "image");
 
-  const result = (await response.json()) as {
+  const result = (await serviceJson<any>(response, "image")) as {
     image: {
       b64Json: string;
       mimeType: string;
