@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { purchaseEmailOutbox } from "../../drizzle/schema";
 import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 /**
@@ -13,7 +14,7 @@ import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 
-import { runTriggerEngine } from "../jobs/triggerEngine";
+import { runManagedJob, managedJobHostAllowed } from "../jobs/managedJobs";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
 import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
 import { READINESS_MODEL_VERSION } from "../_core/readiness";
@@ -790,9 +791,10 @@ export const adminRouter = router({
         .limit(input.limit);
     }),
 
-  /** Manually run the trigger engine (for testing) */
-  runTriggerEngine: adminProcedure.mutation(async () => {
-    return await runTriggerEngine();
+  /** Manual execution shares production isolation and the same durable run ledger. */
+  runTriggerEngine: adminProcedure.mutation(async ({ ctx }) => {
+    if (!managedJobHostAllowed(ctx.req.headers.host)) throw new TRPCError({ code: "FORBIDDEN", message: "Study email jobs are disabled on this host" });
+    return await runManagedJob("study-triggers");
   }),
 
   /** System health check — DB, Stripe, SMTP, recent purchases */

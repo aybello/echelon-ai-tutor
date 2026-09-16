@@ -131,6 +131,18 @@
           "flashcard_progress_operations"
         ]
       }
+    },
+    {
+      "version": 65,
+      "tag": "0065_scheduled_work",
+      "file": "drizzle/0065_scheduled_work.sql",
+      "sha256": "b6486933918a082e151415161e2ca98de75d6d8c170305463599f7372b063be6",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "scheduled_work"
+        ]
+      }
     }
   ]
 }

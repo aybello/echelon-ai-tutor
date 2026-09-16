@@ -176,12 +176,25 @@ describe("stripe.verifySession", () => {
     const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
 
     expect(result.paid).toBe(true);
-    expect(result.email).toBe("buyer@example.com");
+    expect(result.email).toBe("");
+    expect(result.requiresSignIn).toBe(true);
+    expect(result.accessToken).toBeNull();
     expect(result.productKey).toBe("oit");
     expect(mockPurchases).toHaveLength(1);
     expect(mockPurchases[0]?.email).toBe("buyer@example.com");
     expect(mockPurchases[0]?.productKey).toBe("oit");
     expect(mockPurchases[0]?.amountCAD).toBe(4900);
+  });
+
+  it("does not turn a copied checkout URL into a verified email session", async () => {
+    for (const email of [null, "someone-else@example.com", "buyer@example.com"]) {
+      const ctx = { ...makeCtx(), studentEmail: email };
+      const result = await appRouter.createCaller(ctx).stripe.verifySession({ sessionId: "cs_test_abc123" });
+      expect(ctx.res.cookie).not.toHaveBeenCalled();
+      expect(result.accessToken).toBeNull();
+      expect(result.requiresSignIn).toBe(email !== "buyer@example.com");
+      expect(result.email).toBe(email === "buyer@example.com" ? email : "");
+    }
   });
 
   it("does not insert a duplicate if the session is already in DB", async () => {
@@ -215,7 +228,8 @@ describe("stripe.verifySession", () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
 
-    expect(result.email).toBe("details@example.com");
+    expect(result.email).toBe("");
+    expect(mockPurchases[0]?.email).toBe("details@example.com");
   });
 
   it("returns paid:false and does not insert for unpaid sessions", async () => {

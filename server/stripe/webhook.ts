@@ -1,3 +1,5 @@
+import { provisionIndividualSubscription } from "./provisionIndividualSubscription";
+import { validatedPhone } from "./checkoutIdentity";
 import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import type { Express, Request, Response } from "express";
 import express from "express";
@@ -5,8 +7,8 @@ import { stripe } from "./stripe";
 import { getDb } from "../db";
 import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
-import { sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
-import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct, isSubscriptionProvince, isSubscriptionTier, type OrganizationSubscriptionTier } from "./subscriptionProducts";
+import { sendSubscriptionRenewalEmail } from "../email";
+import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, type OrganizationSubscriptionTier } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
@@ -184,7 +186,7 @@ export function registerStripeWebhook(app: Express) {
 
           // Always attempt to save phone and name — runs for both new and duplicate sessions
           // This handles the case where verifySession inserted the row before the webhook fired
-          const phone = session.customer_details?.phone ?? (session.metadata?.customer_phone || null);
+          const phone = validatedPhone(session.customer_details?.phone ?? session.metadata?.customer_phone);
           const customerName = session.customer_details?.name ?? (session.metadata?.customer_name || null);
           if (phone || customerName) {
             try {
@@ -201,7 +203,7 @@ export function registerStripeWebhook(app: Express) {
                 .limit(1)
                 .then(rows => rows[0]?.id ?? null));
 
-              if (targetUserId) {
+              if (targetUserId && phone) {
                 await db
                   .update(users)
                   .set({ phone })
@@ -294,125 +296,17 @@ export function registerStripeWebhook(app: Express) {
         }
         // ── End org branch ─────────────────────────────────────────────────
 
-        // Individual subscription branch
+        // Acknowledge only after durable individual provisioning completes.
         try {
           const db = await getDb();
-          if (!db) throw new Error("Database unavailable");
-
-          // Use liveSubscription (already retrieved above) throughout the individual branch
-          const sub = liveSubscription;
-          const tierMetadata = sub.metadata?.subscription_tier;
-          const provinceMetadata = sub.metadata?.subscription_province;
-          const tier = isSubscriptionTier(tierMetadata) ? tierMetadata : undefined;
-          const province = isSubscriptionProvince(provinceMetadata) ? provinceMetadata : undefined;
-          const stripeSubscriptionId = sub.id;
-          const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
-          const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
-          const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
-
-          if (!tier || !province || !currentPeriodStart || !currentPeriodEnd) {
-            // ALERTING: Notify owner immediately so they can manually patch the subscription
-            // This is the silent failure mode that caused Matt Cooper's access issue
-            const missingFields = [!tier && 'tier', !province && 'province', !currentPeriodStart && 'currentPeriodStart', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
-            console.warn(`[Stripe Webhook] Subscription ${stripeSubscriptionId} missing required metadata: ${missingFields}`);
-            notifyOwner({
-              title: '\u26a0\ufe0f Subscription Webhook: Missing Metadata',
-              content: `Subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) was received but could NOT be saved to the database because required metadata is missing: ${missingFields}.\n\nThis means the subscriber will NOT get access automatically.\n\nAction required:\n1. Look up the subscription in Stripe Dashboard\n2. Identify the customer email\n3. Run \'Sync Stripe\' in Admin or manually insert a row in the subscriptions table\n4. Confirm the customer has access`,
-            }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
-            return res.json({ received: true });
-          }
-
-          // Resolve email from customer (normalized)
-          let email: string | null = null;
-          if (stripeCustomerId) {
-            try {
-              const customer = await stripe.customers.retrieve(stripeCustomerId) as any;
-              email = normalizeEmail(customer.email);
-            } catch (e) { /* ignore */ }
-          }
-          if (!email) {
-            console.warn(`[Stripe Webhook] Could not resolve email for subscription ${stripeSubscriptionId}`);
-            notifyOwner({
-              title: '\u26a0\ufe0f Subscription Webhook: Could Not Resolve Email',
-              content: `Subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) was received but the customer email could not be resolved from Stripe.\n\nThis means the subscriber will NOT get access automatically.\n\nAction required:\n1. Look up customer ${stripeCustomerId} in Stripe Dashboard\n2. Find their email address\n3. Run \'Sync Stripe\' in Admin or manually insert a row in the subscriptions table\n4. Confirm the customer has access`,
-            }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
-            return res.json({ received: true });
-          }
-
-          // Upsert subscription row
-          const existing = await db
-            .select({ id: subscriptions.id })
-            .from(subscriptions)
-            .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
-            .limit(1);
-
-          // Extract optional CRM fields from subscription metadata
-          const customerName = (sub.metadata?.customer_name as string | undefined) || null;
-          const customerPhone = (sub.metadata?.customer_phone as string | undefined) || null;
-          const utmSource = (sub.metadata?.utm_source as string | undefined) || null;
-          const utmMedium = (sub.metadata?.utm_medium as string | undefined) || null;
-          const utmCampaign = (sub.metadata?.utm_campaign as string | undefined) || null;
-          const referralSource = (sub.metadata?.referral_source as string | undefined) || null;
-          const userId = sub.metadata?.user_id ? parseInt(sub.metadata.user_id, 10) || null : null;
-
-          // Look up price from product catalog
-          const subProduct = getSubscriptionProduct(tier, province);
-          const subAmountCAD = subProduct?.priceCAD ?? null;
-
-          if (existing.length === 0) {
-            await db.insert(subscriptions).values({
-              email,
-              tier,
-              province,
-              stripeSubscriptionId,
-              stripeCustomerId,
-              status,
-              currentPeriodStart,
-              currentPeriodEnd,
-              customerName,
-              phone: customerPhone,
-              amountCAD: subAmountCAD,
-              utmSource,
-              utmMedium,
-              utmCampaign,
-              referralSource,
-              userId: userId ?? undefined,
-            });
-            console.log(`[Stripe Webhook] Subscription created: ${email.replace(/(^.{3}).+@/, '$1***@')} -> ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
-            await notifyOwner({
-              title: `New Subscription: ${tier} (${province})`,
-              content: `${email} subscribed to ${tier} for ${province}. Expires: ${currentPeriodEnd.toISOString()}`,
-            });
-            await trackEvent("subscription_created", {
-              userId: userId?.toString() ?? null,
-              email,
-              productKey: `${province}-${tier}`,
-              extra: { subscriptionType: "individual", tier, province },
-            });
-            // Send activation confirmation email (non-blocking)
-            const subTierLabel = TIER_LABELS[tier] ?? tier;
-            const subProvinceLabel = PROVINCE_LABELS[province] ?? province;
-            const subQuizPath = province === "western"
-              ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
-              : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");
-            sendSubscriptionConfirmationEmail({
-              email,
-              tierLabel: subTierLabel,
-              provinceLabel: subProvinceLabel,
-              currentPeriodEnd,
-              quizPath: subQuizPath,
-            }).catch(err => {
-              console.error("[Stripe Webhook] Failed to send subscription confirmation email:", err.message);
-            });
-          } else {
-            await db
-              .update(subscriptions)
-              .set({ status, currentPeriodStart, currentPeriodEnd })
-              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
-            console.log(`[Stripe Webhook] Subscription updated: ${stripeSubscriptionId} status=${status}`);
-          }
-        } catch (err: any) {
-          console.error("[Stripe Webhook] Error processing subscription event:", err.message);
+          if (!db) return res.status(503).json({ error: "Database unavailable" });
+          const result = await provisionIndividualSubscription(db, event.id, event.type, liveSubscription);
+          if (result.state === "busy") return res.status(409).json({ error: "Event already processing" });
+          if (result.state === "retryable_failure") return res.status(503).json({ error: "Subscription provisioning incomplete" });
+          return res.json({ received: true });
+        } catch (error) {
+          console.error("[Stripe Webhook] Individual subscription processing failed", error instanceof Error ? error.message : "unknown");
+          return res.status(503).json({ error: "Subscription provisioning incomplete" });
         }
       }
 
