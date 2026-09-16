@@ -1,5 +1,6 @@
 import { watchOtherTabLogout } from "@/lib/logout";
 import { trpc } from "@/lib/trpc";
+import { clearLegacyQuestionCaches } from "@/lib/clearLegacyQuestionCaches";
 import { UNAUTHED_ERR_MSG } from '@shared/const';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, TRPCClientError } from "@trpc/client";
@@ -11,6 +12,7 @@ import "./index.css";
 
 const queryClient = new QueryClient();
 watchOtherTabLogout(queryClient);
+try { clearLegacyQuestionCaches(localStorage); } catch { /* storage unavailable */ }
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;
