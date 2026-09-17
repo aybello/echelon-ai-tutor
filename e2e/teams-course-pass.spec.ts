@@ -201,7 +201,8 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   });
   expect(draft.questions).toHaveLength(prefix === "teams" ? 110 : 100);
   const manifest = JSON.parse(Buffer.from(draft.sessionToken.split(".")[0], "base64url").toString());
-  const expectedScore = prefix === "reporting" ? 0 : Number(scoredMockQuestionNums(manifest).includes(draft.questions[0].id));
+  const answeredItemIsScored = prefix === "teams" && scoredMockQuestionNums(manifest).includes(draft.questions[0].id);
+  const expectedScore = prefix === "reporting" ? 0 : Number(answeredItemIsScored);
   // A lost request must leave answers recoverable and offer an explicit retry.
   await operatorPage.route("**/api/trpc/*exam.submitMock*", route => route.abort());
   operatorPage.once("dialog", dialog => dialog.accept());
@@ -213,9 +214,11 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await expect(operatorPage.locator(".mes-results-hero").getByText(`${expectedScore}%`, { exact: true })).toBeVisible();
   if (prefix === "teams") {
     const resultCards = operatorPage.locator(".mes-stats-4").locator(":scope > div");
+    const expectedIncorrect = answeredItemIsScored ? 1 - expectedScore : 0;
+    const expectedSkipped = answeredItemIsScored ? 99 : 100;
     await expect(resultCards.nth(0)).toHaveText(`${expectedScore}Correct`);
-    await expect(resultCards.nth(1)).toHaveText(`${1 - expectedScore}Incorrect`);
-    await expect(resultCards.nth(2)).toHaveText("99Skipped");
+    await expect(resultCards.nth(1)).toHaveText(`${expectedIncorrect}Incorrect`);
+    await expect(resultCards.nth(2)).toHaveText(`${expectedSkipped}Skipped`);
     const db = await mysql.createConnection(process.env.DATABASE_URL!);
     try {
       await expect.poll(async () => {
