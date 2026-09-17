@@ -1308,7 +1308,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Choose a 12-month Individual Exam Pass for one certification course, or a Teams plan for multiple operators. Every paid pass includes unlimited practice during its term, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice during its term, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1380,15 +1380,15 @@ export default function Pricing() {
             <button
               type="button"
               onClick={() => {
-                setBuyerType("team");
                 funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team", visitorId: getAnonymousAnalyticsId() });
+                window.location.href = "/teams";
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "team" ? "linear-gradient(135deg, #F0FDFA, #ECFEFF)" : "#fff", border: buyerType === "team" ? "2px solid #0D9488" : "1.5px solid #E2E8F0", boxShadow: buyerType === "team" ? "0 10px 24px rgba(13,148,136,0.12)" : "none" }}
             >
               <div style={{ fontSize: 25, marginBottom: 10 }}>🏢</div>
               <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For my team</div>
-              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Buy targeted Course Passes or an annual training plan for operators.</p>
-              <div style={{ marginTop: 12, color: "#0D9488", fontSize: 13, fontWeight: 800 }}>Choose team access →</div>
+              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Team purchasing is in a controlled relaunch while we complete the multi-course library.</p>
+              <div style={{ marginTop: 12, color: "#0D9488", fontSize: 13, fontWeight: 800 }}>View team launch details →</div>
             </button>
           </div>
 
@@ -1849,32 +1849,11 @@ export default function Pricing() {
       >
         <div style={{ fontSize: 36 }}>🏢</div>
         <h3 style={{ fontSize: 22, fontWeight: 900, color: "#fff", margin: 0, lineHeight: 1.2 }}>
-          Training a team of operators?
+          Planning team access?
         </h3>
         <p style={{ color: "#94A3B8", fontSize: 14, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
-          Utilities, municipalities, and training departments can purchase seats for their whole team.
-          Each operator gets their own account — individual progress tracking, AI tutor access, and estimated study scores.
-          Volume discounts begin at 10 annual operator licences.
+          Team purchasing is temporarily paused while we complete the verified multi-course library and current terms. Individual Exam Passes are available now for every released course.
         </p>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 4 }}>
-          {[
-            { label: "10–24 licences", discount: "10% off" },
-            { label: "25–49 licences", discount: "15% off" },
-            { label: "50+ licences", discount: "20% off" },
-          ].map(t => (
-            <div key={t.label} style={{
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: 10,
-              padding: "8px 16px",
-              fontSize: 13,
-              color: "#E2E8F0",
-            }}>
-              <span style={{ fontWeight: 700, color: "#63B3ED" }}>{t.discount}</span>
-              {" "}{t.label}
-            </div>
-          ))}
-        </div>
         <a
           href="/teams"
           style={{
@@ -1890,7 +1869,7 @@ export default function Pricing() {
             letterSpacing: 0.2,
           }}
         >
-          View Team Plans →
+          View team launch details →
         </a>
       </div>
 
@@ -1906,7 +1885,7 @@ export default function Pricing() {
             },
             {
               q: "What if I need access for several operators or courses?",
-              a: "Choose a Teams plan. Course Passes provide one course for a named operator in 3-, 6-, or 12-month terms, while Teams All-Access covers every course for each named operator on an annual plan."
+              a: "Individual Exam Passes currently cover one course for one learner. Team purchasing is temporarily paused while Echelon completes the verified multi-course library and current team terms."
             },
             {
               q: "How do I access my passes after purchase?",
@@ -1922,7 +1901,7 @@ export default function Pricing() {
             },
             {
               q: "How do Teams / utility plans work?",
-              a: "A manager purchases a seat plan and assigns individual operators to seats. Each operator gets their own access to the included courses, plus the manager gets a team dashboard showing estimated study scores, weak topics, and activity. Estimates are not official pass predictions. Volume discounts apply automatically at checkout."
+              a: "Team checkout is temporarily unavailable while Echelon completes the verified multi-course library and current terms. You can view the team launch details or contact us about future team access."
             },
             {
               q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
