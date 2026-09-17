@@ -4,6 +4,12 @@ import { getCourseByKey } from "../shared/courseRegistry";
 import type { EchelonProduct } from "../shared/products";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
 
+/** Courses that may be learner-visible but cannot enter individual checkout. */
+export const NON_COMMERCIAL_PRODUCT_KEYS = [
+  "electrician-309a",
+] as const;
+const NON_COMMERCIAL_PRODUCT_KEY_SET = new Set<string>(NON_COMMERCIAL_PRODUCT_KEYS);
+
 /**
  * A deliberate commercial release boundary for the clean-database relaunch.
  * Adding a product here is a reviewed launch decision, not an automatic side
@@ -13,7 +19,39 @@ import { learnerVisibleQuestionFilter } from "./questionGovernance";
 export const COMMERCIAL_RELEASE_PRODUCT_KEYS = [
   "oit",
   "oit-ww",
+  "class1-water",
+  "class2-water",
+  "class3-water",
+  "class4-water",
+  "class1-ww",
+  "class2-ww",
+  "class3-ww",
+  "class4-ww",
+  "wqa",
+  "wpi-class1-water",
+  "wpi-class2-water",
+  "wpi-class3-water",
+  "wpi-class4-water",
+  "wpi-class1-wastewater",
+  "wpi-class2-wastewater",
+  "wpi-class3-wastewater",
+  "wpi-class4-wastewater",
+  "wpi-class1-water-coll",
+  "wpi-class2-water-coll",
+  "wpi-class3-water-coll",
   "wpi-class4-water-coll",
+  "class1-water-dist",
+  "class2-water-dist",
+  "class3-water-dist",
+  "class4-water-dist",
+  "class1-wastewater-coll",
+  "class2-wastewater-coll",
+  "class3-wastewater-coll",
+  "class4-wastewater-coll",
+  "wpi-class1-water-dist",
+  "wpi-class2-water-dist",
+  "wpi-class3-water-dist",
+  "wpi-class4-water-dist",
 ] as const;
 const COMMERCIAL_RELEASE_PRODUCT_KEY_SET = new Set<string>(COMMERCIAL_RELEASE_PRODUCT_KEYS);
 export const MINIMUM_LIVE_QUESTION_COUNT = 100;
@@ -39,6 +77,7 @@ export function selectCommercialAvailability(
   questionCountsByBank: ReadonlyMap<string, number>,
 ): CommercialAvailability[] {
   return products.flatMap((product) => {
+    if (NON_COMMERCIAL_PRODUCT_KEY_SET.has(product.key)) return [];
     if (!COMMERCIAL_RELEASE_PRODUCT_KEY_SET.has(product.key)) return [];
     const course = getCourseByKey(product.key);
     if (!course || !course.isActive) return [];
