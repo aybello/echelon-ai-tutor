@@ -1278,11 +1278,14 @@ export default function Pricing() {
   const relevantIndividualProducts = INDIVIDUAL.filter(product =>
     liveProductKeys.has(product.key) && (isWpi ? product.key.startsWith("wpi-") : !product.key.startsWith("wpi-"))
   );
-  const liveQuestionTotal = Array.from(liveQuestionCounts.values()).reduce((total, current) => total + current, 0);
+  const liveQuestionTotal = relevantIndividualProducts.reduce(
+    (total, product) => total + (liveQuestionCounts.get(product.key) ?? 0),
+    0,
+  );
   const liveCourseLabel = commercialAvailability.isLoading
     ? "Checking live course availability…"
     : liveQuestionTotal > 0
-      ? `${liveQuestionTotal.toLocaleString("en-CA")} verified questions across ${liveQuestionCounts.size} currently available OIT course${liveQuestionCounts.size === 1 ? "" : "s"}`
+      ? `${liveQuestionTotal.toLocaleString("en-CA")} verified questions across ${relevantIndividualProducts.length} currently available course${relevantIndividualProducts.length === 1 ? "" : "s"}`
       : "No course is currently open for purchase.";
 
   useEffect(() => {
@@ -1619,7 +1622,7 @@ export default function Pricing() {
                 </div>
               ) : (
                 <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>
-                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : "Pick an available OIT course above to see one clear price and your checkout option."}
+                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : "Pick an available course above to see one clear price and your checkout option."}
                 </div>
               )}
 
