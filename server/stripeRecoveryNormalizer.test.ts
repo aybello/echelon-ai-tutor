@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 // @ts-expect-error The guarded recovery CLI is intentionally ESM for direct Node execution.
-import { manifestFor, normalizeStripeRows } from "../scripts/recovery/normalizeStripeRecoveryExport.mjs";
+import { manifestFor, normalizeStripeRows, summarizeRecoveryCandidates } from "../scripts/recovery/normalizeStripeRecoveryExport.mjs";
 
 describe("private Stripe recovery normalizer", () => {
   const csv = [
@@ -33,5 +33,29 @@ describe("private Stripe recovery normalizer", () => {
     });
     expect(JSON.stringify(manifest)).not.toContain("learner@example.com");
     expect(JSON.stringify(manifest)).not.toContain("pi_succeeded");
+  });
+
+  it("groups only conservative product candidates without retaining customer-level details", () => {
+    const summary = summarizeRecoveryCandidates([
+      "ID,Customer Email,Description,Status,type (metadata),teamFlexOrderId (metadata),orderReference (metadata)",
+      "pi_water,learner@example.com,OIT Practice Pass,succeeded,individual,,order_water",
+      "pi_ww,wastewater@example.com,OIT Wastewater Practice Pass,succeeded,individual,,order_ww",
+      "pi_team,manager@example.com,Team access,succeeded,team,flex_123,order_team",
+      "pi_unknown,review@example.com,Legacy course,succeeded,legacy,,order_legacy",
+    ].join("\n"));
+
+    expect(summary).toMatchObject({
+      sourceRows: 4,
+      successfulRows: 4,
+      categoryCounts: {
+        oit_water_candidate: 1,
+        oit_wastewater_candidate: 1,
+        teams_flex_manual_review: 1,
+        manual_product_review: 1,
+      },
+      safety: { containsCustomerIdentifiers: false, assignsEntitlements: false },
+    });
+    expect(JSON.stringify(summary)).not.toContain("learner@example.com");
+    expect(JSON.stringify(summary)).not.toContain("OIT Practice Pass");
   });
 });

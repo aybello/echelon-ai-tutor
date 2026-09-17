@@ -25,12 +25,13 @@ import mysql from "mysql2/promise";
 const APPROVAL = "STAGE_VERIFIED_STRIPE_EXPORT";
 
 function parseArgs(argv) {
-  const args = { stage: false };
+  const args = { stage: false, summary: null };
   for (let i = 0; i < argv.length; i += 1) {
     const token = argv[i];
     if (token === "--stage") args.stage = true;
     else if (token === "--input") args.input = argv[++i];
     else if (token === "--manifest") args.manifest = argv[++i];
+    else if (token === "--summary") args.summary = argv[++i];
     else throw new Error(`Unknown argument: ${token}`);
   }
   if (!args.input || !args.manifest) throw new Error("Both --input and --manifest are required.");
@@ -168,6 +169,60 @@ export function manifestFor(records, rejectedRows, sha256) {
   };
 }
 
+function candidateCategory(hints) {
+  if (/teamflexorderid\s*[:=]?\s*[^\s,]+|teams? flex/.test(hints)) return "teams_flex_manual_review";
+  if (/teams?|organization|annual/.test(hints)) return "teams_manual_review";
+  if (/oit[-_ ]?ww|oit wastewater|operator in training wastewater/.test(hints)) return "oit_wastewater_candidate";
+  if (/\boit\b|operator in training/.test(hints)) return "oit_water_candidate";
+  return "manual_product_review";
+}
+
+/**
+ * Groups only product-level recovery candidates. It deliberately excludes
+ * customer identities, Stripe identifiers, raw descriptions, and line amounts.
+ */
+export function summarizeRecoveryCandidates(csvText) {
+  const [headerRow, ...body] = parseCsv(csvText);
+  const headers = headerRow.map(canonicalHeader);
+  const fields = {
+    description: findField(headers, ["description", "sellerdescription"]),
+    type: findField(headers, ["type", "typemetadata"]),
+    teamFlexOrderId: findField(headers, ["teamflexorderidmetadata", "teamflexorderid"]),
+    orderReference: findField(headers, ["orderreferencemetadata", "orderreference"]),
+    status: findField(headers, ["status", "paymentstatus"]),
+  };
+  const categoryCounts = Object.fromEntries([
+    "oit_water_candidate",
+    "oit_wastewater_candidate",
+    "teams_flex_manual_review",
+    "teams_manual_review",
+    "manual_product_review",
+  ].map(category => [category, 0]));
+  let successfulRows = 0;
+  for (const row of body) {
+    if (normalizeStatus(valueAt(row, fields.status)) !== "succeeded") continue;
+    successfulRows += 1;
+    const hints = [
+      valueAt(row, fields.description),
+      valueAt(row, fields.type),
+      valueAt(row, fields.teamFlexOrderId),
+      valueAt(row, fields.orderReference),
+    ].join(" ").toLowerCase();
+    categoryCounts[candidateCategory(hints)] += 1;
+  }
+  return {
+    sourceRows: body.length,
+    successfulRows,
+    categoryCounts,
+    safety: {
+      containsCustomerIdentifiers: false,
+      containsRawDescriptions: false,
+      assignsEntitlements: false,
+      requiresClaimVerificationAndApproval: true,
+    },
+  };
+}
+
 async function stageRecords(records, archiveRef) {
   if (process.env.RECOVERY_EVIDENCE_APPROVED !== APPROVAL) {
     throw new Error("Evidence staging requires RECOVERY_EVIDENCE_APPROVED=STAGE_VERIFIED_STRIPE_EXPORT.");
@@ -207,12 +262,18 @@ async function main() {
   const manifest = manifestFor(records, rejectedRows, sha256);
   await mkdir(dirname(manifestPath), { recursive: true, mode: 0o700 });
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, { mode: 0o600 });
+  let summaryPath = null;
+  if (args.summary) {
+    summaryPath = resolve(args.summary);
+    await mkdir(dirname(summaryPath), { recursive: true, mode: 0o700 });
+    await writeFile(summaryPath, `${JSON.stringify(summarizeRecoveryCandidates(csv), null, 2)}\n`, { mode: 0o600 });
+  }
   if (!args.stage) {
-    console.log(JSON.stringify({ mode: "dry-run", accepted: records.length, rejected: rejectedRows.length, manifest: manifestPath }));
+    console.log(JSON.stringify({ mode: "dry-run", accepted: records.length, rejected: rejectedRows.length, manifest: manifestPath, summary: summaryPath }));
     return;
   }
   const result = await stageRecords(records, process.env.RECOVERY_PRIVATE_ARCHIVE_REF);
-  console.log(JSON.stringify({ mode: "staged-evidence-only", accepted: records.length, rejected: rejectedRows.length, ...result, manifest: manifestPath }));
+  console.log(JSON.stringify({ mode: "staged-evidence-only", accepted: records.length, rejected: rejectedRows.length, ...result, manifest: manifestPath, summary: summaryPath }));
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
