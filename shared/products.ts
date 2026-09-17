@@ -235,7 +235,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class4-water-coll",
     shortName: "WPI Class IV Collection",
     name: "WPI Class IV Wastewater Collection Practice Pass",
-    description: "WPI Class IV Wastewater Collection — 150 questions. Aligned with WPI Class IV Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class IV Wastewater Collection — 503 original practice questions across five reviewed Collection areas. Designed around the published WPI Class IV Collection outline. Check the current exam edition and local requirements with your certifying authority. Adaptive practice, AI Tutor, score history, and unlimited attempts.",
     priceCAD: 29900,
     priceUSD: 21900,
     examTypes: ["wpi-class4-water-coll"],

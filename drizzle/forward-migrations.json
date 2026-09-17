@@ -155,6 +155,20 @@
           "exam_dates"
         ]
       }
+    },
+    {
+      "version": 67,
+      "tag": "0067_customer_recovery_evidence",
+      "file": "drizzle/0067_customer_recovery_evidence.sql",
+      "sha256": "474a0f9699c46fe8b3cf24b12cc86a9099eea00a449e5ebf03649a4bd2160845",
+      "proposedOnly": true
+    },
+    {
+      "version": 68,
+      "tag": "0068_customer_recovery_classification",
+      "file": "drizzle/0068_customer_recovery_classification.sql",
+      "sha256": "c17ff1737cf726095b7d8f012c082755a578e991ea63c32df9c1a24e316d3f19",
+      "proposedOnly": true
     }
   ]
 }

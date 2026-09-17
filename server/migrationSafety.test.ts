@@ -87,6 +87,8 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["flashcard_progress_state", "flashcard_progress_operations"] } }),
       expect.objectContaining({ version: 65, tag: "0065_scheduled_work", proposedOnly: true, standaloneApply: { tables: ["scheduled_work"] } }),
       expect.objectContaining({ version: 66, tag: "0066_exam_dates_unique", proposedOnly: true, standaloneApply: { tables: ["exam_dates"] } }),
+      expect.objectContaining({ version: 67, tag: "0067_customer_recovery_evidence", proposedOnly: true }),
+      expect.objectContaining({ version: 68, tag: "0068_customer_recovery_classification", proposedOnly: true }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -521,7 +523,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68]);
   });
 });
 

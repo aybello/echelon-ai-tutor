@@ -677,7 +677,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class4-water-coll",
     name: "WPI Class IV Wastewater Collection Practice Pass",
     shortName: "WPI Class IV Collection",
-    description: "System planning, capital improvement, utility management, and advanced regulatory compliance. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
+    description: "503 original practice questions across five reviewed Collection areas. Designed around the published WPI Class IV Collection outline. Check your current exam edition and local requirements with your certifying authority.",
     priceCAD: sharedPrice("wpi-class4-water-coll"),
     examTypes: ["wpi-class4-water-coll"],
     badge: "WPI",
@@ -686,7 +686,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#FEF2F2",
     border: "#FECACA",
     available: true,
-    features: ["500 collection questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "flashcards"],
+    features: ["503 Collection practice questions", "100-question timed mock", "AI Tutor", "Score history", "Flashcards", "Edition-aware study guidance"],
   },
 ];
 

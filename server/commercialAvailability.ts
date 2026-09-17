@@ -10,7 +10,11 @@ import { learnerVisibleQuestionFilter } from "./questionGovernance";
  * effect of content staging. The matching bank must also meet the minimum
  * live inventory requirement below before checkout can be created.
  */
-export const COMMERCIAL_RELEASE_PRODUCT_KEYS = ["oit", "oit-ww"] as const;
+export const COMMERCIAL_RELEASE_PRODUCT_KEYS = [
+  "oit",
+  "oit-ww",
+  "wpi-class4-water-coll",
+] as const;
 const COMMERCIAL_RELEASE_PRODUCT_KEY_SET = new Set<string>(COMMERCIAL_RELEASE_PRODUCT_KEYS);
 export const MINIMUM_LIVE_QUESTION_COUNT = 100;
 
