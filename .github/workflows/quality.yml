@@ -50,7 +50,7 @@ jobs:
       - name: Validate exact OIT batch-release package
         run: node scripts/release-oit-question-banks.mjs
       - name: Validate historical Class IV Collection repairs
-        run: node --test scripts/collectionReview.test.mjs scripts/export-wpi-class4-collection-review.test.mjs
+        run: node --test scripts/collectionReview.test.mjs scripts/export-wpi-class4-collection-review.test.mjs scripts/recovery/releaseWpiClass4Collection.test.mjs
       - name: Validate the complete governed 309A content package
         run: |
           pnpm 309a:validate:full
