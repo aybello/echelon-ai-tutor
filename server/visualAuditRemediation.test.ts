@@ -41,16 +41,16 @@ describe("live visual-audit remediation", () => {
     expect(us).not.toContain("const TESTIMONIALS");
   });
 
-  it("explains graduated team pricing as blended pricing", () => {
+  it("explains active graduated pricing while keeping Teams checkout paused", () => {
     const pricing = source("client/src/pages/Pricing.tsx");
     const teams = source("client/src/pages/Teams.tsx");
 
-    for (const page of [pricing, teams]) {
-      expect(page).toContain("Graduated discounts apply only to seats inside each volume band");
-      expect(page).toMatch(/Average [Pp]er [Oo]perator/);
-    }
-    expect(teams).toContain("Blended order discount:");
+    expect(pricing).toContain("Graduated discounts apply only to seats inside each volume band");
+    expect(pricing).toMatch(/Average [Pp]er [Oo]perator/);
     expect(pricing).toContain("off those seats");
+    expect(teams).toContain("organization pricing stays paused");
+    expect(teams).toContain("No checkout or payment is taken today.");
+    expect(teams).not.toContain("Blended order discount:");
   });
 
   it("does not nest buttons inside links on audited public surfaces", () => {
