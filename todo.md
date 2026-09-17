@@ -2170,3 +2170,15 @@
 - [x] Open the existing Individual Exam Pass catalogue only when each course's own bank has at least 100 learner-visible questions. No Individual Exam Pass price changed.
 - [x] Keep Teams and Flex checkout disabled. No historical learner, payment, organization, seat, entitlement, attempt, or outbound email record was created or changed.
 - [x] Create encrypted pre-release backups in protected private escrow and verify the restores before both database transactions.
+
+## 2026-09-17 — Teams and Flex clean new-sale launch
+
+- [x] Reopened **Teams Flex** for new customers with mixed 3- and 6-month, released-course-only licences. Order-wide graduated discounts use the total licence count across the complete mixed-term order.
+- [x] Reopened **Teams Annual** for new customers: CA$449 per operator per year for one stream and CA$549 per operator per year for All Streams, both with a five-seat minimum and graduated volume discounts.
+- [x] Made new **Individual Exam Passes** permanent. Existing historical records retain their stored terms.
+- [x] Added the paid 90-day **Retake Extension** path. It preserves `originalAccessEndsAt`; it starts at the original end date when purchased while active, or at verified Stripe payment time when purchased after expiry during the 30-day reporting window.
+- [x] Applied additive migration `0069_team_flex_extension_verified_email.sql` after protected pre-change backup. It supports verified-email extension purchases without creating users.
+- [x] Added Stripe safety controls: event-timestamp timing, reporting-window-bounded Checkout sessions, expired-session recovery, duplicate-payment blocking, terminal-payment review alerts, original-expiry persistence, and refund/dispute/revocation exclusion.
+- [x] Retained a server-side organization commerce kill switch and restricted Flex checkout to commercially available course banks. The free 309A beta remains excluded from paid checkout.
+- [x] Documented the manual cross-band Flex exchange procedure. Historic customer recovery is unchanged and remains evidence-only until separately authorized.
+- [x] Verified 174 focused tests, TypeScript, production build, migration-manifest validation, GPT review, and final Claude Opus 5 verification at Git commit `a075fba55d28589d10a62bfc480e417513869763`.
