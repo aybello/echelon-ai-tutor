@@ -154,6 +154,13 @@ export const customerRecoveryEvidence = mysqlTable("customer_recovery_evidence",
   currency: varchar("currency", { length: 3 }).notNull(),
   paymentStatus: mysqlEnum("paymentStatus", ["succeeded", "refunded", "disputed", "unknown"]).notNull(),
   paymentCreatedAt: timestamp("paymentCreatedAt"),
+  /** Evidence categorization only. This field never grants a product entitlement. */
+  recoverySubjectType: mysqlEnum("recoverySubjectType", ["individual", "organization_manager"]),
+  /** Private review context, not an organization record. */
+  recoveryOrganizationName: varchar("recoveryOrganizationName", { length: 128 }),
+  recoveryOrganizationGroup: mysqlEnum("recoveryOrganizationGroup", ["treatment", "distribution", "unspecified"]),
+  /** May be blank until the source seat count is reconciled. Never creates licences. */
+  recoverySeatCount: int("recoverySeatCount"),
   candidateProductKey: varchar("candidateProductKey", { length: 64 }),
   candidateAccessExpiresAt: timestamp("candidateAccessExpiresAt"),
   /** staged → mapped → claim_verified → approved; rejected and imported are terminal. */

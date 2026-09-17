@@ -11,6 +11,11 @@ import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, customerRecoveryEvidence } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
+import {
+  RECOVERY_ORGANIZATION_GROUPS,
+  RECOVERY_SUBJECT_TYPES,
+  validateRecoveryClassification,
+} from "../customerRecoveryEvidence";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 
@@ -63,10 +68,15 @@ export const adminRouter = router({
         currency: customerRecoveryEvidence.currency,
         paymentStatus: customerRecoveryEvidence.paymentStatus,
         paymentCreatedAt: customerRecoveryEvidence.paymentCreatedAt,
+        recoverySubjectType: customerRecoveryEvidence.recoverySubjectType,
+        recoveryOrganizationName: customerRecoveryEvidence.recoveryOrganizationName,
+        recoveryOrganizationGroup: customerRecoveryEvidence.recoveryOrganizationGroup,
+        recoverySeatCount: customerRecoveryEvidence.recoverySeatCount,
         candidateProductKey: customerRecoveryEvidence.candidateProductKey,
         candidateAccessExpiresAt: customerRecoveryEvidence.candidateAccessExpiresAt,
         reviewStatus: customerRecoveryEvidence.reviewStatus,
         claimVerifiedAt: customerRecoveryEvidence.claimVerifiedAt,
+        reviewNote: customerRecoveryEvidence.reviewNote,
         reviewedAt: customerRecoveryEvidence.reviewedAt,
         importedAt: customerRecoveryEvidence.importedAt,
         createdAt: customerRecoveryEvidence.createdAt,
@@ -76,6 +86,55 @@ export const adminRouter = router({
         .limit(input.limit);
 
       return rows;
+    }),
+  /**
+   * Admin-only evidence classification. It deliberately cannot approve a claim,
+   * set a product entitlement, create an organization, create licences, or import
+   * an entitlement. Those remain separate controlled recovery operations.
+   */
+  classifyCustomerRecoveryEvidence: adminProcedure
+    .input(z.object({
+      id: z.number().int().positive(),
+      subjectType: z.enum(RECOVERY_SUBJECT_TYPES),
+      organizationName: z.string().trim().min(1).max(128).nullable(),
+      organizationGroup: z.enum(RECOVERY_ORGANIZATION_GROUPS).nullable(),
+      seatCount: z.number().int().min(1).max(500).nullable(),
+      reviewNote: z.string().trim().min(3).max(1000),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      const [evidence] = await db.select({
+        paymentStatus: customerRecoveryEvidence.paymentStatus,
+        reviewStatus: customerRecoveryEvidence.reviewStatus,
+      }).from(customerRecoveryEvidence).where(eq(customerRecoveryEvidence.id, input.id)).limit(1);
+      if (!evidence) throw new Error("Recovery evidence not found");
+
+      const validationError = validateRecoveryClassification({
+        paymentStatus: evidence.paymentStatus,
+        reviewStatus: evidence.reviewStatus,
+        subjectType: input.subjectType,
+        organizationName: input.organizationName,
+        organizationGroup: input.organizationGroup,
+        seatCount: input.seatCount,
+      });
+      if (validationError) throw new Error(validationError);
+
+      const [result] = await db.update(customerRecoveryEvidence).set({
+        recoverySubjectType: input.subjectType,
+        recoveryOrganizationName: input.subjectType === "organization_manager" ? input.organizationName : null,
+        recoveryOrganizationGroup: input.subjectType === "organization_manager" ? input.organizationGroup : null,
+        recoverySeatCount: input.subjectType === "organization_manager" ? input.seatCount : null,
+        reviewNote: input.reviewNote,
+        reviewStatus: "mapped",
+        reviewedByUserId: ctx.user.id,
+        reviewedAt: new Date(),
+      }).where(and(
+        eq(customerRecoveryEvidence.id, input.id),
+        ne(customerRecoveryEvidence.reviewStatus, "imported"),
+        ne(customerRecoveryEvidence.reviewStatus, "rejected"),
+      ));
+      return { classified: result.affectedRows === 1 };
     }),
   purchaseEmailDelivery: adminProcedure.query(async () => {
     const db = await getDb();

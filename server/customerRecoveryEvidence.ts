@@ -9,6 +9,39 @@ export const RECOVERY_REVIEW_STATUSES = [
 
 export type RecoveryReviewStatus = (typeof RECOVERY_REVIEW_STATUSES)[number];
 export type RecoveryPaymentStatus = "succeeded" | "refunded" | "disputed" | "unknown";
+export const RECOVERY_SUBJECT_TYPES = ["individual", "organization_manager"] as const;
+export type RecoverySubjectType = (typeof RECOVERY_SUBJECT_TYPES)[number];
+export const RECOVERY_ORGANIZATION_GROUPS = ["treatment", "distribution", "unspecified"] as const;
+export type RecoveryOrganizationGroup = (typeof RECOVERY_ORGANIZATION_GROUPS)[number];
+
+/**
+ * A classification is review context only. Import eligibility remains governed
+ * by isEligibleForManualRecoveryImport, which independently requires product
+ * mapping, claimant verification, and explicit approval.
+ */
+export function validateRecoveryClassification(input: {
+  paymentStatus: RecoveryPaymentStatus;
+  reviewStatus: RecoveryReviewStatus;
+  subjectType: RecoverySubjectType;
+  organizationName: string | null;
+  organizationGroup: RecoveryOrganizationGroup | null;
+  seatCount: number | null;
+}): string | null {
+  if (input.paymentStatus !== "succeeded") {
+    return "Only successful payment evidence can be classified.";
+  }
+  if (input.reviewStatus === "imported" || input.reviewStatus === "rejected") {
+    return "Final recovery evidence cannot be reclassified.";
+  }
+  if (input.seatCount !== null && (!Number.isInteger(input.seatCount) || input.seatCount < 1 || input.seatCount > 500)) {
+    return "Seat count must be a whole number from 1 to 500 when provided.";
+  }
+  if (input.subjectType === "organization_manager") {
+    if (!input.organizationName?.trim()) return "Organization manager evidence requires an organization name.";
+    if (!input.organizationGroup) return "Organization manager evidence requires a group classification.";
+  }
+  return null;
+}
 
 /**
  * This pure gate makes it explicit that evidence intake is not an entitlement

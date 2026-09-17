@@ -10,7 +10,7 @@ import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
 
-type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog";
+type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
@@ -151,6 +151,10 @@ export default function Admin() {
     { limit: 100, status: reviewFilter },
     { enabled: user?.role === "admin" && activeTab === "questions" },
   );
+  const recoveryEvidenceQ = trpc.admin.getCustomerRecoveryEvidence.useQuery(
+    { limit: 100 },
+    { enabled: user?.role === "admin" && activeTab === "recovery" },
+  );
   const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
     onSuccess: (data) => {
       if (data.recovered > 0) {
@@ -193,6 +197,47 @@ export default function Admin() {
     },
     onError: (err) => alert(`Question review could not be saved: ${err.message}`),
   });
+  const classifyRecoveryEvidence = trpc.admin.classifyCustomerRecoveryEvidence.useMutation({
+    onSuccess: () => recoveryEvidenceQ.refetch(),
+    onError: (err) => alert(`Recovery classification could not be saved: ${err.message}`),
+  });
+
+  const classifyRecovery = (row: NonNullable<typeof recoveryEvidenceQ.data>[number], subjectType: "individual" | "organization_manager") => {
+    let organizationName: string | null = null;
+    let organizationGroup: "treatment" | "distribution" | "unspecified" | null = null;
+    let seatCount: number | null = null;
+    if (subjectType === "organization_manager") {
+      organizationName = window.prompt("Organization name", row.recoveryOrganizationName ?? "")?.trim() || null;
+      if (!organizationName) return;
+      const group = window.prompt("Group: treatment, distribution, or unspecified", row.recoveryOrganizationGroup ?? "unspecified");
+      if (group === null) return;
+      if (!["treatment", "distribution", "unspecified"].includes(group)) {
+        alert("Choose treatment, distribution, or unspecified.");
+        return;
+      }
+      organizationGroup = group as "treatment" | "distribution" | "unspecified";
+      const seatInput = window.prompt("Confirmed seat count, if known. Leave blank when not yet reconciled.", row.recoverySeatCount?.toString() ?? "");
+      if (seatInput === null) return;
+      if (seatInput.trim()) {
+        const parsed = Number(seatInput);
+        if (!Number.isInteger(parsed) || parsed < 1 || parsed > 500) {
+          alert("Seat count must be a whole number from 1 to 500.");
+          return;
+        }
+        seatCount = parsed;
+      }
+    }
+    const reviewNote = window.prompt("Internal evidence note. This does not grant access.", row.reviewNote ?? "");
+    if (!reviewNote?.trim() || reviewNote.trim().length < 3) return;
+    classifyRecoveryEvidence.mutate({
+      id: row.id,
+      subjectType,
+      organizationName,
+      organizationGroup,
+      seatCount,
+      reviewNote: reviewNote.trim(),
+    });
+  };
 
   const setQuestionReviewState = (row: any, reviewStatus: ReviewStatus) => {
     reviewQuestion.mutate({
@@ -330,6 +375,7 @@ export default function Admin() {
     { id: "feedback", label: "Feedback", icon: "💬" },
     { id: "health", label: "System Health", icon: "🩺" },
     { id: "orgs", label: "Organizations", icon: "🏢" },
+    { id: "recovery", label: "Recovery Review", icon: "↺" },
   ];
 
   return (
@@ -372,7 +418,7 @@ export default function Admin() {
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); }}
+            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); recoveryEvidenceQ.refetch(); }}
             style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
             ↻ Refresh
@@ -1202,6 +1248,53 @@ export default function Admin() {
                         </tr>
                       );
                     })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* -- PRIVATE RECOVERY REVIEW TAB -- */}
+        {activeTab === "recovery" && (
+          <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+              <div style={{ fontSize: 13, fontWeight: 800 }}>↺ Historical recovery evidence</div>
+              <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.5, marginTop: 5 }}>
+                Evidence review only. Classification does not send email, create an organization or seat, approve a claim, or grant course access.
+              </div>
+            </div>
+            {recoveryEvidenceQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading protected evidence…</div>}
+            {recoveryEvidenceQ.error && <div style={{ margin: 20, padding: 14, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Recovery evidence could not be loaded: {recoveryEvidenceQ.error.message}</div>}
+            {recoveryEvidenceQ.data?.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No staged recovery evidence.</div>}
+            {recoveryEvidenceQ.data && recoveryEvidenceQ.data.length > 0 && (
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+                  <thead>
+                    <tr style={{ background: "rgba(0,0,0,0.04)", textAlign: "left" }}>
+                      {['Evidence', 'Purchase email', 'Paid', 'Classification', 'Review status', 'Actions'].map((label) => (
+                        <th key={label} style={{ padding: "10px 16px", color: "#475569", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recoveryEvidenceQ.data.map((row) => (
+                      <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
+                        <td style={{ padding: "12px 16px", color: "#64748B" }}>#{row.id}<br /><span style={{ fontSize: 10 }}>{row.sourceType.replace("_", " ")}</span></td>
+                        <td style={{ padding: "12px 16px", color: "#334155", fontWeight: 600 }}>{row.customerEmail}</td>
+                        <td style={{ padding: "12px 16px", color: "#475569" }}>{row.paymentStatus}<br /><span style={{ fontSize: 10 }}>{row.paymentCreatedAt ? formatDate(row.paymentCreatedAt) : "Date unavailable"}</span></td>
+                        <td style={{ padding: "12px 16px", color: "#475569" }}>
+                          {row.recoverySubjectType === "organization_manager" ? (
+                            <><strong>{row.recoveryOrganizationName}</strong><br /><span style={{ fontSize: 10 }}>{row.recoveryOrganizationGroup}{row.recoverySeatCount ? ` · ${row.recoverySeatCount} seats` : " · seats pending"}</span></>
+                          ) : row.recoverySubjectType === "individual" ? "Individual review" : "Unclassified"}
+                        </td>
+                        <td style={{ padding: "12px 16px" }}><span style={{ padding: "3px 8px", borderRadius: 100, background: "#DBEAFE", color: "#1D4ED8", fontSize: 10, fontWeight: 700 }}>{row.reviewStatus.replace("_", " ")}</span></td>
+                        <td style={{ padding: "12px 16px", display: "flex", gap: 6, flexWrap: "wrap" }}>
+                          <button className="admin-btn" onClick={() => classifyRecovery(row, "individual")} disabled={classifyRecoveryEvidence.isPending || row.reviewStatus === "imported" || row.reviewStatus === "rejected"} style={{ padding: "5px 9px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#fff", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Individual</button>
+                          <button className="admin-btn" onClick={() => classifyRecovery(row, "organization_manager")} disabled={classifyRecoveryEvidence.isPending || row.reviewStatus === "imported" || row.reviewStatus === "rejected"} style={{ padding: "5px 9px", borderRadius: 8, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Manager</button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
