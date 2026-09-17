@@ -45,7 +45,7 @@ describe("commercial availability", () => {
     expect(result).toEqual([]);
   });
 
-  it("keeps organization checkout closed until a reviewed multi-course launch is approved", () => {
-    expect(ORGANIZATION_COMMERCE_ENABLED).toBe(false);
+  it("allows the reviewed clean-launch organization checkout", () => {
+    expect(ORGANIZATION_COMMERCE_ENABLED).toBe(true);
   });
 });

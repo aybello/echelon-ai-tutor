@@ -186,6 +186,18 @@
       "file": "drizzle/0068_customer_recovery_classification.sql",
       "sha256": "c17ff1737cf726095b7d8f012c082755a578e991ea63c32df9c1a24e316d3f19",
       "proposedOnly": true
+    },
+    {
+      "version": 69,
+      "tag": "0069_team_flex_extension_verified_email",
+      "file": "drizzle/0069_team_flex_extension_verified_email.sql",
+      "sha256": "03bc3a7fed853ab5f698963659f4284e02a2989b9e48435aa1cd02939ef9b10e",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "team_flex_extensions"
+        ]
+      }
     }
   ]
 }

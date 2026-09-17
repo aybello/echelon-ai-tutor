@@ -1419,7 +1419,8 @@ export const teamFlexExtensions = mysqlTable("team_flex_extensions", {
   id: int("id").autoincrement().primaryKey(),
   licenceId: int("licenceId").notNull(),
   organizationId: int("organizationId").notNull(),
-  purchaserUserId: int("purchaserUserId").notNull(),
+  /** OTP-verified Course Pass operators do not necessarily have an OAuth user row. */
+  purchaserUserId: int("purchaserUserId"),
   extensionDays: int("extensionDays").notNull().default(90),
   priceCents: int("priceCents").notNull(),
   stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),

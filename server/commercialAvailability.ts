@@ -57,13 +57,13 @@ const COMMERCIAL_RELEASE_PRODUCT_KEY_SET = new Set<string>(COMMERCIAL_RELEASE_PR
 export const MINIMUM_LIVE_QUESTION_COUNT = 100;
 
 /**
- * Organization plans promise multi-course access. They remain deliberately
- * unavailable until the clean database has a reviewed organization offering
- * backed by the required complete course banks.
+ * New organization sales may proceed only for the verified commercial library.
+ * Historical customer recovery remains a separate evidence-gated process and
+ * is never triggered by a new Team or Flex checkout.
  */
-export const ORGANIZATION_COMMERCE_ENABLED = false;
+export const ORGANIZATION_COMMERCE_ENABLED = true;
 export const ORGANIZATION_COMMERCE_HOLD_MESSAGE =
-  "Team checkout is temporarily unavailable while we complete the verified course-library relaunch. Please join the team launch list or contact support.";
+  "Team checkout is temporarily unavailable. Please contact abello@echeloninstitute.ca for help.";
 
 export type CommercialAvailability = {
   key: string;

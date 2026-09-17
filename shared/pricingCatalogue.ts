@@ -3,9 +3,9 @@
  *
  * CANONICAL PRICING CATALOGUE — Single source of truth for Echelon Institute.
  * Three products:
- *   1. Individual Exam Pass (12-month, per-course, one learner)
- *   2. Teams Course Pass (3/6/12-month, per-course, named operator)
- *   3. Teams All-Access (CA$399/operator/year, 5-seat minimum)
+ *   1. Individual Exam Pass (permanent, per-course, one learner)
+ *   2. Teams Flex Course Pass (3/6-month, per-course, named operator)
+ *   3. Teams Annual (one stream CA$449/operator/year or All Streams CA$549/operator/year)
  *
  * Volume discounts (graduated seat-band, NOT retroactive):
  *   Seats 1–9:   list price
@@ -13,30 +13,22 @@
  *   Seats 25–49: 15% off
  *   Seats 50+:   20% off
  *
- * Catalogue version: 2026-08-12
+ * Catalogue version: 2026-09-17
  */
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
 export type ProductType = "individual_exam_pass" | "teams_course_pass" | "teams_all_access";
-export type CoursePassTerm = 3 | 6 | 12;
+export type CoursePassTerm = 3 | 6;
 
 export interface IndividualPricing {
   courseKey: string;
   priceCentsCAD: number;
 }
 
-export interface CoursePassPricing {
-  /** Annual individual price in cents — the 12-month Course Pass matches this */
-  annualPriceCents: number;
-  threeMonthCents: number;
-  sixMonthCents: number;
-  twelveMonthCents: number;
-}
+export const CATALOGUE_VERSION = "2026-09-17";
 
-export const CATALOGUE_VERSION = "2026-08-12";
-
-// ── Individual Exam Pass Prices (12-month, one learner) ─────────────────────
+// ── Individual Exam Pass Prices (permanent, one learner) ─────────────────────
 
 export const INDIVIDUAL_PRICES_CAD: Record<string, number> = {
   // Ontario
@@ -78,39 +70,36 @@ export const INDIVIDUAL_PRICES_CAD: Record<string, number> = {
   "wpi-class4-water-coll": 29900,
 };
 
-// ── Teams Course Pass Prices (per pricing band) ─────────────────────────────
-// Derived from the spec: 12-month = same as individual annual price
-// 3-month and 6-month are discounted shorter terms
+// ── Teams Flex Course Pass Prices (per pricing band) ─────────────────────────
 
 export interface CoursePassBandPrices {
   threeMonthCents: number;
   sixMonthCents: number;
-  twelveMonthCents: number;
 }
 
 /**
  * Pricing bands by annual price tier.
  * Key = annual price in cents. Value = term prices.
  * The spec defines these tiers:
- *   CA$49 annual → 3mo: $29, 6mo: $39, 12mo: $49
- *   CA$99 annual → 3mo: $59, 6mo: $79, 12mo: $99
- *   CA$149 annual → 3mo: $89, 6mo: $119, 12mo: $149
- *   CA$199 annual → 3mo: $119, 6mo: $159, 12mo: $199
- *   CA$249 annual → 3mo: $149, 6mo: $199, 12mo: $249
- *   CA$299 annual → 3mo: $179, 6mo: $239, 12mo: $299
+ *   CA$49 permanent OIT pass → 3mo: $39, 6mo: $49
+ *   CA$99 permanent pass → 3mo: $59, 6mo: $79
+ *   CA$149 permanent pass → 3mo: $89, 6mo: $119
+ *   CA$199 permanent pass → 3mo: $119, 6mo: $159
+ *   CA$249 permanent pass → 3mo: $149, 6mo: $199
+ *   CA$299 permanent pass → 3mo: $179, 6mo: $239
  */
 export const COURSE_PASS_BAND_PRICES: Record<number, CoursePassBandPrices> = {
-  4900:  { threeMonthCents: 2900,  sixMonthCents: 3900,  twelveMonthCents: 4900 },
-  9900:  { threeMonthCents: 5900,  sixMonthCents: 7900,  twelveMonthCents: 9900 },
-  14900: { threeMonthCents: 8900,  sixMonthCents: 11900, twelveMonthCents: 14900 },
-  19900: { threeMonthCents: 11900, sixMonthCents: 15900, twelveMonthCents: 19900 },
-  24900: { threeMonthCents: 14900, sixMonthCents: 19900, twelveMonthCents: 24900 },
-  29900: { threeMonthCents: 17900, sixMonthCents: 23900, twelveMonthCents: 29900 },
+  4900:  { threeMonthCents: 3900,  sixMonthCents: 4900 },
+  9900:  { threeMonthCents: 5900,  sixMonthCents: 7900 },
+  14900: { threeMonthCents: 8900,  sixMonthCents: 11900 },
+  19900: { threeMonthCents: 11900, sixMonthCents: 15900 },
+  24900: { threeMonthCents: 14900, sixMonthCents: 19900 },
+  29900: { threeMonthCents: 17900, sixMonthCents: 23900 },
 };
 
 // ── Teams All-Access ────────────────────────────────────────────────────────
 
-export const TEAMS_ALL_ACCESS_PRICE_CENTS = 39900; // CA$399 per operator per year
+export const TEAMS_ALL_ACCESS_PRICE_CENTS = 54900; // CA$549 per operator per year
 export const TEAMS_ALL_ACCESS_MIN_SEATS = 5;
 
 // ── Volume Discount Bands (graduated, NOT retroactive) ──────────────────────
@@ -213,8 +202,7 @@ export function getCoursePassPrice(courseKey: string, termMonths: CoursePassTerm
   switch (termMonths) {
     case 3: return bandPrices.threeMonthCents;
     case 6: return bandPrices.sixMonthCents;
-    case 12: return bandPrices.twelveMonthCents;
-    default: throw new Error(`Invalid term: ${termMonths}. Must be 3, 6, or 12.`);
+    default: throw new Error(`Invalid term: ${termMonths}. Must be 3 or 6.`);
   }
 }
 
@@ -289,5 +277,5 @@ export function calculateCoursePassOrderTotal(
  * Check if a term is valid for Course Pass.
  */
 export function isValidCoursePassTerm(months: number): months is CoursePassTerm {
-  return months === 3 || months === 6 || months === 12;
+  return months === 3 || months === 6;
 }

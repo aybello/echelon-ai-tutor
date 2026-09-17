@@ -83,10 +83,7 @@ export async function runReconciliation(hoursBack: number = 48, assertOwned: () 
           ? parseInt(session.metadata.user_id)
           : null;
         const phone = (session as any).customer_details?.phone ?? null;
-        const accessExpiresAt = getIndividualExamPassExpiry(
-          session.metadata,
-          new Date(session.created * 1000),
-        );
+        const accessExpiresAt = getIndividualExamPassExpiry();
 
         await assertOwned();
         await recordPurchaseWithConfirmation(db, {

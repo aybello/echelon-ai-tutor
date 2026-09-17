@@ -23,7 +23,6 @@ import {
   getTeamEffectiveDiscountPct,
   getTeamSavingsCents,
 } from "@shared/teamPricing";
-import { TEAMS_ALL_ACCESS_PRICE_CENTS } from "@shared/pricingCatalogue";
 
 /** Helper: get the canonical CAD price from shared/products.ts by product key */
 function sharedPrice(key: string): number {
@@ -1073,7 +1072,6 @@ const PRICING_STYLES = `
 /** Seat calculator for Teams All-Access — shows graduated pricing */
 function TeamSeatCalculator() {
   const [seats, setSeats] = useState(10);
-  const BASE = TEAMS_ALL_ACCESS_PRICE_CENTS;
 
   // Delegated to the shared catalogue so this page, the Teams page and the
   // Stripe checkout can never quote three different numbers again.
@@ -1094,21 +1092,21 @@ function TeamSeatCalculator() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 12, margin: "0 auto 26px", maxWidth: 700 }}>
         <div style={{ padding: 18, borderRadius: 14, background: "rgba(20,184,166,0.12)", border: "1px solid rgba(45,212,191,0.35)" }}>
-          <div style={{ color: "#5EEAD4", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>Teams Course Pass</div>
+          <div style={{ color: "#5EEAD4", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>Teams Flex</div>
           <div style={{ marginTop: 7, fontSize: 18, fontWeight: 850 }}>One operator · one course</div>
-          <p style={{ color: "#CBD5E1", fontSize: 13, lineHeight: 1.55, margin: "8px 0 0" }}>Choose a 3-, 6-, or 12-month term for each named operator. One-time payment, no five-seat minimum, from CA$29.</p>
+          <p style={{ color: "#CBD5E1", fontSize: 13, lineHeight: 1.55, margin: "8px 0 0" }}>Choose a 3- or 6-month term for each named operator. One-time payment, no five-seat minimum, from CA$39.</p>
           <div style={{ color: "#99F6E4", fontSize: 12, fontWeight: 750, marginTop: 10 }}>Best for a specific exam or mixed certification cohort.</div>
         </div>
         <div style={{ padding: 18, borderRadius: 14, background: "rgba(59,130,246,0.14)", border: "1px solid rgba(96,165,250,0.4)" }}>
-          <div style={{ color: "#93C5FD", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>Teams All-Access</div>
-          <div style={{ marginTop: 7, fontSize: 18, fontWeight: 850 }}>One operator · every course</div>
-          <p style={{ color: "#CBD5E1", fontSize: 13, lineHeight: 1.55, margin: "8px 0 0" }}>Twelve months across every stream and level for each named operator. CA$399 per operator per year, five-seat minimum.</p>
+          <div style={{ color: "#93C5FD", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.08em" }}>Teams Annual</div>
+          <div style={{ marginTop: 7, fontSize: 18, fontWeight: 850 }}>One operator · one stream or all streams</div>
+          <p style={{ color: "#CBD5E1", fontSize: 13, lineHeight: 1.55, margin: "8px 0 0" }}>Twelve months of stream-wide access from CA$449, or All Streams for CA$549 per operator per year. Five-seat minimum.</p>
           <div style={{ color: "#BFDBFE", fontSize: 12, fontWeight: 750, marginTop: 10 }}>Best for ongoing workforce development.</div>
         </div>
       </div>
 
       <div style={{ textAlign: "center", borderTop: "1px solid rgba(148,163,184,0.25)", paddingTop: 22, marginBottom: 18 }}>
-        <h3 style={{ fontSize: 20, margin: "0 0 5px", fontWeight: 850 }}>Calculate Teams All-Access</h3>
+        <h3 style={{ fontSize: 20, margin: "0 0 5px", fontWeight: 850 }}>Estimate a Teams Annual All Streams plan</h3>
         <p style={{ margin: 0, color: "#94A3B8", fontSize: 13 }}>Graduated discounts apply only to seats inside each volume band.</p>
       </div>
 
@@ -1169,7 +1167,7 @@ function TeamSeatCalculator() {
       {/* Course Passes note + CTA */}
       <div style={{ textAlign: "center" }}>
         <p style={{ margin: "0 0 16px", color: "#94A3B8", fontSize: 13 }}>
-          Need targeted exam prep instead? <strong style={{ color: "#E2E8F0" }}>Course Passes</strong> start at CA$29/operator for 3 months.
+          Need targeted exam prep instead? <strong style={{ color: "#E2E8F0" }}>Teams Flex Course Passes</strong> start at CA$39/operator for 3 months.
         </p>
         <Link href="/teams" style={{ display: "inline-block", cursor: "pointer", fontFamily: "inherit", borderRadius: 10, padding: "13px 22px", background: "linear-gradient(135deg, #2563EB, #14B8A6)", color: "#fff", fontSize: 14, fontWeight: 800, textDecoration: "none" }}>Build a Team Plan →</Link>
       </div>
@@ -1308,7 +1306,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice during its term, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        <p>Choose a permanent Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1387,8 +1385,8 @@ export default function Pricing() {
             >
               <div style={{ fontSize: 25, marginBottom: 10 }}>🏢</div>
               <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For my team</div>
-              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Team purchasing is in a controlled relaunch while we complete the multi-course library.</p>
-              <div style={{ marginTop: 12, color: "#0D9488", fontSize: 13, fontWeight: 800 }}>View team launch details →</div>
+              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Build an annual stream plan or combine 3- and 6-month course-specific licences in one order.</p>
+              <div style={{ marginTop: 12, color: "#0D9488", fontSize: 13, fontWeight: 800 }}>Build a team plan →</div>
             </button>
           </div>
 
@@ -1881,7 +1879,7 @@ export default function Pricing() {
           {[
             {
               q: "What does an Individual Exam Pass include?",
-              a: "An Individual Exam Pass gives one learner 12 months of access to one selected certification course. It includes practice questions, AI Tutor, mock exams, flashcards, formulas, and study resources for that course."
+              a: "An Individual Exam Pass gives one learner permanent access to one selected certification course. It includes practice questions, AI Tutor, mock exams, flashcards, formulas, and study resources for that course."
             },
             {
               q: "What if I need access for several operators or courses?",
@@ -1909,7 +1907,7 @@ export default function Pricing() {
             },
             {
               q: "Can I cancel or get a refund?",
-              a: `Individual Exam Passes are one-time purchases with 12 months of access — no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. ${INDIVIDUAL_REFUND_SUMMARY} Contact ${REFUND_CONTACT_EMAIL}.`
+              a: `Individual Exam Passes are one-time purchases with permanent access and no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. ${INDIVIDUAL_REFUND_SUMMARY} Contact ${REFUND_CONTACT_EMAIL}.`
             },
           ].map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} />

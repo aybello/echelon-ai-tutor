@@ -47,16 +47,27 @@ export default function CoursePassClaim() {
   // myLicences includes invitations addressed to the signed-in email. An
   // invited row is not claimed yet and must not suppress the Claim action.
   const pass = myLicences.data?.find((item) =>
-    item.id === targetLicenceId && (item.status === "assigned" || item.status === "active"),
+    item.id === targetLicenceId && (item.status === "assigned" || item.status === "active" || item.status === "expired"),
   )
-    ?? myLicences.data?.find((item) => item.status === "assigned" || item.status === "active");
+    ?? myLicences.data?.find((item) => item.status === "assigned" || item.status === "active" || item.status === "expired");
   const nextPath = `/course-pass/claim?token=${encodeURIComponent(token)}`;
   const loginUrl = `/login/otp?next=${encodeURIComponent(nextPath)}`;
 
+  const extensionEligibility = trpc.teamFlex.getRetakeExtensionEligibility.useQuery(
+    { licenceId: pass?.id ?? 0 },
+    { enabled: !!session.data?.email && !!pass && (pass.status === "active" || pass.status === "expired"), retry: false },
+  );
+  const extensionCheckout = trpc.teamFlex.createRetakeExtensionCheckout.useMutation({
+    onSuccess: (data) => { if (data.url) window.location.href = data.url; },
+    onError: (error) => toast.error(error.message),
+  });
+
   const courseName = pass?.courseName ?? invitation.data?.courseName ?? "your assigned course";
   const termMonths = pass?.termMonths ?? invitation.data?.termMonths;
-  const isActive = pass?.status === "active";
+  const hasEnded = !!pass?.accessEndsAt && new Date(pass.accessEndsAt).getTime() <= Date.now();
+  const isActive = pass?.status === "active" && !hasEnded;
   const isAssigned = pass?.status === "assigned";
+  const isExpired = pass?.status === "expired" || (pass?.status === "active" && hasEnded);
   const isVerified = !!session.data?.email;
 
   return (
@@ -132,6 +143,25 @@ export default function CoursePassClaim() {
                   <Button asChild className="h-12 bg-teal-700 hover:bg-teal-800"><Link href={`/activate/${encodeURIComponent(pass.courseKey)}`}>Set Up My Study Plan</Link></Button>
                   <Button asChild variant="outline" className="h-12"><Link href={pass.mockExamPath}>Take a Mock Exam</Link></Button>
                 </div>
+                {extensionEligibility.data?.eligible && <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950">
+                  <p className="font-semibold">Need one more study period?</p>
+                  <p className="mt-1">A single 90-day Retake Extension starts when your original Course Pass ends. Your original expiry remains on record.</p>
+                  <Button className="mt-3 h-10 bg-blue-800 hover:bg-blue-900" disabled={extensionCheckout.isPending} onClick={() => extensionCheckout.mutate({ licenceId: pass.id })}>
+                    {extensionCheckout.isPending ? "Opening secure checkout…" : `Buy 90-day Retake Extension — CA$${(extensionEligibility.data.priceCents / 100).toFixed(2)}`}
+                  </Button>
+                </div>}
+              </div>
+            ) : null}
+
+            {isExpired ? (
+              <div className="space-y-4">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-800">
+                  <div className="mb-1 flex items-center gap-2 font-semibold"><Clock3 className="h-4 w-4" /> Course Pass has ended</div>
+                  Your study term has expired. If you are still within the 30-day reporting window, a one-time Retake Extension can restore access for 90 days from successful payment.
+                </div>
+                {extensionEligibility.data?.eligible ? <Button className="h-12 w-full bg-blue-800 text-base hover:bg-blue-900" disabled={extensionCheckout.isPending} onClick={() => extensionCheckout.mutate({ licenceId: pass.id })}>
+                  {extensionCheckout.isPending ? "Opening secure checkout…" : `Buy 90-day Retake Extension — CA$${(extensionEligibility.data.priceCents / 100).toFixed(2)}`}
+                </Button> : extensionEligibility.data?.reason ? <p className="text-center text-sm text-slate-600">{extensionEligibility.data.reason}</p> : null}
               </div>
             ) : null}
 

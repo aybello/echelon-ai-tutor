@@ -23,7 +23,7 @@ import {
   TEAM_STREAM_TIER_LABELS as SHARED_TIER_LABELS,
 } from "../../shared/teamPricing";
 import { CATALOGUE_VERSION } from "../../shared/pricingCatalogue";
-import { getOrCreateTeamAllAccessPrice } from "../stripe/teamGraduatedPrice";
+import { getOrCreateTeamAnnualPrice } from "../stripe/teamGraduatedPrice";
 import { getDb } from "../db";
 import { purchaseReadColumns, purchases, subscriptions } from "../../drizzle/schema";
 import { eq, and, gt, count } from "drizzle-orm";
@@ -35,7 +35,6 @@ import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
 import {
   INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
-  INDIVIDUAL_EXAM_PASS_TERM_MONTHS,
   getIndividualExamPassExpiry,
 } from "../stripe/individualExamPass";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
@@ -134,7 +133,6 @@ export const stripeRouter = router({
           utm_campaign: input.utmCampaign ?? "",
           currency,
           entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
-          access_term_months: String(INDIVIDUAL_EXAM_PASS_TERM_MONTHS),
           catalogue_version: CATALOGUE_VERSION,
           analytics_identity_hash: input.visitorId ? hashAnalyticsAnonymousId(input.visitorId) : "",
         },
@@ -172,10 +170,7 @@ export const stripeRouter = router({
         // Use canonical validator — never trust client-supplied productKey
         const checkout = validateOneTimeCheckout(session);
         const { email, productKey, productName, amountPaidCents: amountCAD, paymentIntentId: stripePaymentIntentId, phone, customerName } = checkout;
-        const accessExpiresAt = getIndividualExamPassExpiry(
-          session.metadata,
-          new Date(session.created * 1000),
-        );
+        const accessExpiresAt = getIndividualExamPassExpiry();
 
         const db = await getDb();
         if (!db) throw new Error("Database unavailable while confirming purchase");
@@ -527,7 +522,8 @@ export const stripeRouter = router({
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       // Graduated volume pricing: Stripe applies the band arithmetic itself
-      const priceId = await getOrCreateTeamAllAccessPrice(
+      const priceId = await getOrCreateTeamAnnualPrice(
+        input.tier as TeamStreamTier,
         getTeamBasePriceCents(input.province, input.tier as TeamStreamTier),
       );
 
@@ -582,7 +578,7 @@ export const stripeRouter = router({
    */
   updateTeamSeats: publicProcedure
     .input(z.object({
-      seats: z.number().int().min(1).max(500),
+      seats: z.number().int().min(5).max(500),
     }))
     .mutation(async ({ input, ctx }) => {
       const email = ctx.studentEmail ?? ctx.user?.email ?? null;

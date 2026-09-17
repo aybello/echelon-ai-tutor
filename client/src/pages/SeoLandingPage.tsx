@@ -78,7 +78,7 @@ function CourseCard({ course }: { course: CourseSeoPage }) {
       </p>
       <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
         <span className="font-bold text-slate-900">
-          {formatCad(course.priceCAD)} / 12 months
+          {formatCad(course.priceCAD)} · permanent access
         </span>
         <Link
           href={course.path}
@@ -363,7 +363,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
                 {formatCad(course.priceCAD)}
               </p>
               <p className="mt-1 text-sm text-slate-600">
-                One course · 12 months · one-time payment
+                One course · permanent access · one-time payment
               </p>
               <div className="mt-5 border-t border-slate-200 pt-5 text-sm leading-6 text-slate-600">
                 Need licences for a utility or municipality?{" "}

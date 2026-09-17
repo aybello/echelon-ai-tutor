@@ -39,6 +39,12 @@ import {
   listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { ALL_PRODUCTS } from "../stripe/products";
+import {
+  getCommercialAvailability,
+  ORGANIZATION_COMMERCE_ENABLED,
+  ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+} from "../commercialAvailability";
 import { calculateReadinessSnapshot } from "../readinessSnapshot";
 import {
   bulkInviteFlexOperators,
@@ -48,6 +54,10 @@ import {
 import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
 import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import { resolveOrgManager } from "./orgRouter";
+import {
+  checkExtensionEligibility,
+  createRetakeExtensionCheckout,
+} from "../teams/flexExtensionService";
 
 const flexBulkRowsSchema = z.array(z.object({
   clientRowId: z.string().min(1).max(64),
@@ -191,6 +201,21 @@ export const teamFlexRouter = router({
     return listOperatorFlexLicences(identity.email, identity.userId);
   }),
 
+  // ─── Retake Extension: a single, paid 90-day extension per Course Pass ───
+  getRetakeExtensionEligibility: publicProcedure
+    .input(z.object({ licenceId: z.number().int().positive() }))
+    .query(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return checkExtensionEligibility(input.licenceId, identity);
+    }),
+
+  createRetakeExtensionCheckout: publicProcedure
+    .input(z.object({ licenceId: z.number().int().positive() }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return createRetakeExtensionCheckout(input.licenceId, identity);
+    }),
+
   // ─── Change course (pre-activation, same band) ─────────────────────────────
   changeCourse: publicProcedure
     .input(z.object({ licenceId: z.number().int(), newCourseKey: z.string().min(1), orgId: z.number().int() }))
@@ -208,19 +233,16 @@ export const teamFlexRouter = router({
       province: z.enum(["ontario", "western"]),
       items: z.array(z.object({
         courseKey: z.string().min(1),
-        termMonths: z.union([z.literal(3), z.literal(6), z.literal(12)]),
+        termMonths: z.union([z.literal(3), z.literal(6)]),
         quantity: z.number().int().min(1).max(100),
       })).min(1).max(20),
       overlapAcknowledged: z.boolean().default(false),
     }))
     .mutation(async ({ ctx, input }) => {
-
-      // ── Checkout rule: all items must use the same duration ──────────────
-      const termSet = new Set(input.items.map(i => i.termMonths));
-      if (termSet.size > 1) {
+      if (!ORGANIZATION_COMMERCE_ENABLED) {
         throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "All Course Pass licences in one order must use the same duration.",
+          code: "PRECONDITION_FAILED",
+          message: ORGANIZATION_COMMERCE_HOLD_MESSAGE,
         });
       }
 
@@ -246,9 +268,13 @@ export const teamFlexRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
+      const releasedCourseKeys = new Set(
+        (await getCommercialAvailability(db, ALL_PRODUCTS)).map((product) => product.key),
+      );
+
       const normalizedItems = input.items.map((item) => {
         const course = resolveCourseKey(item.courseKey);
-        if (!course?.isActive || !course.teamAssignable) {
+        if (!course?.isActive || !course.teamAssignable || !releasedCourseKeys.has(course.courseKey)) {
           throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown or unavailable course: ${item.courseKey}` });
         }
         return { ...item, courseKey: course.courseKey };
@@ -285,19 +311,10 @@ export const teamFlexRouter = router({
 
       for (const item of normalizedItems) {
         if (!isValidFlexTerm(item.termMonths)) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Must be 3, 6, or 12 months.` });
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Choose 3 or 6 months.` });
         }
 
         const bandResult = getCourseKeyPricingBand(item.courseKey);
-        // Reject unknown courses — do NOT silently default to Ontario Class 1
-        if (bandResult.pricingBand === "class1" && bandResult.courseLevel === null && item.courseKey !== "oit" && item.courseKey !== "oit-ww" && item.courseKey !== "wqa") {
-          // The fallback case in getCourseKeyPricingBand returns class1/null for unknown keys
-          // Verify the course actually exists in the pricing table
-          const familyPrices = TEAM_PRICES_CAD[bandResult.examFamily];
-          if (!familyPrices || !familyPrices[bandResult.pricingBand]) {
-            throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown course: ${item.courseKey}` });
-          }
-        }
         const { examFamily, pricingBand, courseLevel } = bandResult;
 
         // Validate province/family match

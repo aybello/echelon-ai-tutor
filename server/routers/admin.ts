@@ -677,10 +677,7 @@ export const adminRouter = router({
             : null;
           const phone = (session as any).customer_details?.phone ?? (session.metadata?.customer_phone || null);
           const customerName = (session as any).customer_details?.name ?? (session.metadata?.customer_name || null);
-          const accessExpiresAt = getIndividualExamPassExpiry(
-            session.metadata,
-            new Date(session.created * 1000),
-          );
+          const accessExpiresAt = getIndividualExamPassExpiry();
 
           await recordPurchaseWithConfirmation(db, {
             userId: userId ?? undefined,

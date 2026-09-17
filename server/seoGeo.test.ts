@@ -144,7 +144,7 @@ describe("SEO and geographic landing-page contract", () => {
   it("describes Echelon accurately for answer engines", () => {
     const llms = buildLlmsTxt();
     expect(llms).toContain("Echelon Institute is independent");
-    expect(llms).toContain("one selected course and 12 months");
+    expect(llms).toContain("one selected course and permanent access");
     expect(llms).toContain("OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(llms).not.toContain("Alberta AWWOA");
     expect(llms).not.toContain("Saskatchewan SLWA");
@@ -179,9 +179,9 @@ describe("SEO and geographic landing-page contract", () => {
     const pricingSsr = STATIC_PAGE_META.find(page => page.path === "/pricing")?.bodyHtml ?? "";
 
     for (const source of [pricing, pricingSsr]) {
-      expect(source).toContain("Teams Course Pass");
-      expect(source).toContain("Teams All-Access");
-      expect(source).toMatch(/3-, 6-, or 12-month|3, 6, or 12 months/);
+      expect(source).toContain("Teams Flex");
+      expect(source).toContain("Teams Annual");
+      expect(source).toMatch(/3- or 6-month|3 or 6 months/);
       expect(source).toContain("five-seat minimum");
     }
   });

@@ -21,12 +21,12 @@ describe("crawlable pricing", () => {
     }
   });
 
-  it("distinguishes Course Pass from All-Access", () => {
-    expect(body).toContain("Teams Course Pass");
-    expect(body).toContain("Teams All-Access");
+  it("distinguishes Flex from Annual", () => {
+    expect(body).toContain("Teams Flex");
+    expect(body).toContain("Teams Annual");
     expect(body).toContain(`CA$${TEAMS_ALL_ACCESS_PRICE_CENTS / 100}`);
-    expect(body).toMatch(/requires at least 5 operators/i);
-    expect(body).toMatch(/one certification course/i);
+    expect(body).toMatch(/require at least 5 operators/i);
+    expect(body).toMatch(/one released certification course/i);
   });
 
   it("states the graduated discounts and exact refund limits", () => {
@@ -69,7 +69,7 @@ describe("Ontario OIT hub SSR", () => {
 
   it("states product scope, price, access term, and independence", () => {
     expect(body).toContain("CA$49");
-    expect(body).toMatch(/12 months of access for one named learner/i);
+    expect(body).toMatch(/permanent access for one named learner/i);
     expect(body).toMatch(/one selected OIT course/i);
     expect(body).toMatch(/OWWCO/);
     expect(body).toMatch(/independent exam-preparation provider/i);

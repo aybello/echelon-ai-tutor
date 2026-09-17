@@ -40,7 +40,7 @@ export default function OitHub() {
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
           Choose Water or Wastewater and start with 15 practice questions. No
-          account or credit card is required for the free preview. A 12-month
+          account or credit card is required for the free preview. A permanent
           pass for one selected OIT course is CA$49.
         </p>
       </section>
@@ -93,7 +93,7 @@ export default function OitHub() {
             <li>Timed 100-question mock exam with module results</li>
             <li>AI Tutor explanations for concepts and calculations</li>
             <li>Process guides, formula sheets, and math practice</li>
-            <li>12 months of access for one named learner</li>
+            <li>Permanent access for one named learner</li>
           </ul>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link

@@ -351,7 +351,7 @@ export default function PurchaseGate({
           Unlock {productName}
         </h2>
         <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-          Get 12 months of course access with one payment of {checkoutPriceLabel}
+          Get permanent course access with one payment of {checkoutPriceLabel}
         </p>
 
         {/* Feature bullets */}
@@ -394,10 +394,10 @@ export default function PurchaseGate({
                 letterSpacing: "0.01em",
               }}
             >
-              {createCheckout.isPending ? "Opening checkout…" : `Buy 12-Month Exam Pass — ${checkoutPriceLabel} →`}
+              {createCheckout.isPending ? "Opening checkout…" : `Buy Permanent Exam Pass — ${checkoutPriceLabel} →`}
             </button>
           <p style={{ fontSize: 11, color: "#64748B", margin: "0 0 4px", textAlign: "center" }}>
-            One-time payment · 12 months of access · No subscription
+            One-time payment · permanent access · No subscription
           </p>
 
           <Link href={isUS ? "/us/courses" : "/quiz"}>

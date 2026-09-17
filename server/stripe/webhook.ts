@@ -20,6 +20,7 @@ import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvo
 import type { SubscriptionProvince } from "./subscriptionProducts";
 import { getIndividualExamPassExpiry } from "./individualExamPass";
 import { processRefund } from "./processRefund";
+import { paymentTimestampFromStripeEvent } from "./paymentTimestamp";
 import {
   handleFlexDisputeClosed,
   handleFlexDisputeCreated,
@@ -84,6 +85,38 @@ export function registerStripeWebhook(app: Express) {
           const db = await getDb();
           if (!db) throw new Error("Database unavailable");
 
+          // --- Teams Flex Retake Extension fulfilment branch ---
+          if (session.metadata?.type === "team_flex_extension") {
+            const { fulfilRetakeExtension } = await import("../teams/flexExtensionService");
+            const extensionId = Number.parseInt(session.metadata.teamFlexExtensionId, 10);
+            if (!Number.isInteger(extensionId) || extensionId <= 0) {
+              console.error("[Stripe Webhook] team_flex_extension session missing extension ID");
+              return res.json({ received: true });
+            }
+            const paymentIntentId = typeof session.payment_intent === "string"
+              ? session.payment_intent
+              : session.payment_intent?.id ?? null;
+            const result = await fulfilRetakeExtension(extensionId, {
+              id: session.id,
+              paymentIntentId,
+              amountSubtotal: session.amount_subtotal ?? 0,
+              currency: session.currency ?? "",
+              paymentStatus: session.payment_status ?? "unpaid",
+            }, paymentTimestampFromStripeEvent(event.created));
+            if (!result.success) {
+              console.error(`[Stripe Webhook] Retake Extension fulfilment failed for extension #${extensionId}: ${result.error}`);
+              await notifyOwner({
+                title: "Retake Extension payment needs review",
+                content: `Extension #${extensionId} was paid but could not be applied automatically. Stripe session: ${session.id}. Reason: ${result.error ?? "unknown"}.`,
+              }).catch(() => {});
+              // The service returns non-success only for a durable mismatch.
+              // A 2xx response prevents Stripe retries from charging no new
+              // money while repeating an unrecoverable state.
+              return res.json({ received: true, reviewRequired: true });
+            }
+            return res.json({ received: true });
+          }
+
           // --- Teams Flex fulfilment branch ---
           if (session.metadata?.type === "team_flex") {
             const { fulfilFlexOrder } = await import("../teams/fulfilFlexOrder");
@@ -130,10 +163,7 @@ export function registerStripeWebhook(app: Express) {
           const amountCAD = session.amount_total ?? 0;
           const stripeSessionId = session.id;
           const stripePaymentIntentId = session.payment_intent ?? null;
-          const accessExpiresAt = getIndividualExamPassExpiry(
-            session.metadata,
-            new Date(session.created * 1000),
-          );
+          const accessExpiresAt = getIndividualExamPassExpiry();
 
           if (!productKey || !email) {
             // email is already normalized above
@@ -648,10 +678,16 @@ export function registerStripeWebhook(app: Express) {
       // ── Checkout session expired ─────────────────────────────────────────────
       if (event.type === "checkout.session.expired") {
         const session = event.data.object as any;
-        const flexOrderId = session.metadata?.teamFlexOrderId;
-        if (flexOrderId) {
+        if (session.metadata?.type === "team_flex_extension") {
+          const extensionId = Number.parseInt(session.metadata.teamFlexExtensionId, 10);
+          if (Number.isInteger(extensionId) && extensionId > 0 && typeof session.id === "string") {
+            const { releaseExpiredRetakeExtensionCheckout } = await import("../teams/flexExtensionService");
+            await releaseExpiredRetakeExtensionCheckout(extensionId, session.id);
+          }
+        } else if (session.metadata?.teamFlexOrderId) {
+          const flexOrderId = Number(session.metadata.teamFlexOrderId);
           const { handleFlexCheckoutExpired } = await import("../teams/fulfilFlexOrder");
-          await handleFlexCheckoutExpired(Number(flexOrderId));
+          await handleFlexCheckoutExpired(flexOrderId);
           console.log(`[Stripe Webhook] Flex checkout expired: order #${flexOrderId}`);
         }
       }

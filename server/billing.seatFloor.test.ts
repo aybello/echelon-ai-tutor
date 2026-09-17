@@ -65,6 +65,12 @@ function makeCtx(email = "manager@example.com"): TrpcContext {
 describe("updateTeamSeats — seat floor validation", () => {
   beforeEach(() => vi.clearAllMocks());
 
+  it("rejects a seat count below the five-seat annual minimum", async () => {
+    vi.mocked(getDb).mockResolvedValue(makeDb());
+    const caller = appRouter.createCaller(makeCtx());
+    await expect(caller.stripe.updateTeamSeats({ seats: 4 })).rejects.toThrow();
+  });
+
   it("rejects a reduction below licencesUsedThisTerm", async () => {
     vi.mocked(getDb).mockResolvedValue(makeDb({ licencesUsed: 8 }));
     const caller = appRouter.createCaller(makeCtx());
