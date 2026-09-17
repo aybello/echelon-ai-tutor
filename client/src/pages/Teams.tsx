@@ -42,18 +42,18 @@ export default function Teams() {
           <section className="rounded-2xl border border-slate-200 bg-white p-7 text-left shadow-sm">
             <p className="mb-3 text-sm font-semibold text-teal-700">CURRENTLY AVAILABLE</p>
             <h2 className="mb-3 text-2xl font-bold text-slate-900">
-              Individual OIT Water and OIT Wastewater passes are live.
+              All released Individual Exam Passes are live.
             </h2>
             <p className="mb-6 leading-relaxed text-slate-600">
-              The clean database has 972 verified OIT questions across the two available passes. Individual learners can purchase with confidence today,
-              while organization pricing stays paused until every included course is ready.
+              Individual learners can purchase any of 35 released water and wastewater courses today, backed by 19,024 learner-ready questions. The 500-question Ontario 309A bank is also available as a free beta.
+              Organization pricing stays paused until the full multi-course offering and current team terms are ready.
             </p>
             <Link
               href="/pricing"
               className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-bold text-white no-underline"
               style={{ background: "linear-gradient(135deg, #1D4ED8, #0E7490)" }}
             >
-              View individual OIT passes
+              View Individual Exam Passes
             </Link>
           </section>
 
