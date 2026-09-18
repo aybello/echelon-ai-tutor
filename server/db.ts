@@ -3,6 +3,7 @@ import { drizzle, MySql2Database } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
+import { databasePoolOptions } from "./_core/databaseTls";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let _db: MySql2Database<Record<string, never>> | null = null;
@@ -21,15 +22,14 @@ const COOLDOWN_MS = 15_000; // Don't retry for 15s after a failure (matches TiDB
  * Create a mysql2 connection pool with TiDB-friendly settings.
  */
 function createPool(): mysql.Pool {
-  return mysql.createPool({
-    uri: process.env.DATABASE_URL!,
-    connectionLimit: 5,
-    waitForConnections: true,
-    queueLimit: 0,
-    connectTimeout: 15_000,
-    enableKeepAlive: true,
-    keepAliveInitialDelay: 10_000,
-  });
+  return mysql.createPool(
+    databasePoolOptions(process.env.DATABASE_URL!, {
+      caCertificate: process.env.DATABASE_SSL_CA,
+      requireTls: process.env.DATABASE_REQUIRE_TLS === "true",
+      connectionLimit: 5,
+      connectTimeout: 15_000,
+    })
+  );
 }
 
 /**
