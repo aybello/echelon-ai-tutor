@@ -14,7 +14,7 @@ The clone utility at `scripts/migration/cloneToExternalMySql.mjs` is deliberatel
 
 ## Required pre-cutover preparation
 
-Before changing `DATABASE_URL`, create a fresh external clone from a production snapshot. The validation clone must not be treated as a final cutover copy because new learner, payment, access, or recovery records may have been written after it was created. The final cloning window needs a short maintenance period that prevents application writes while the snapshot is taken and checked.
+Before changing `DATABASE_URL`, create a fresh external clone from a production snapshot. The existing validation clone is a protected recovery artifact. **Never drop, truncate, empty, reset, reuse, or point the final clone at that database.** A separate final target must be newly provisioned and empty before preflight begins because new learner, payment, access, or recovery records may have been written after the validation clone was created. The final cloning window needs a short maintenance period that prevents application writes while the snapshot is taken and checked. The release includes a server-side write fence: when `DATABASE_CUTOVER_MODE=freeze`, every request is rejected except the explicit read-only health and cutover-status paths, before it can reach Stripe, OAuth, tRPC, scheduled jobs, or direct Express handlers. The clone utility refuses its final write unless the production `https://echeloninstitute.ca/api/cutover/status` endpoint reports the active fence twice with two fresh echoed challenges.
 
 The final cutover must use these protected project secrets, never repository files or chat messages:
 
@@ -28,9 +28,9 @@ The final cutover must use these protected project secrets, never repository fil
 
 ## Cutover sequence
 
-1. Confirm the final maintenance window and customer-facing communication plan. New logins, purchases, licence assignments, recovery actions, and other writes must pause during the final snapshot.
+1. Confirm the final maintenance window and customer-facing communication plan. Deploy the write-fence release, set `DATABASE_CUTOVER_MODE=freeze`, and restart it. Confirm twice that `https://echeloninstitute.ca/api/cutover/status` returns `{"writesFrozen":true,"mode":"freeze"}` and that the returned `challenge` is byte-identical to the UUID value sent in that request. Use a different UUID for the second request. New logins, purchases, licence assignments, recovery actions, scheduled jobs, and other writes must pause during the final snapshot.
 2. Create a verified encrypted pre-cutover backup of both the source and the existing external validation clone. Store backup keys in the business-controlled escrow location, separate from the backup artifacts.
-3. Refresh the external clone from the frozen source snapshot. Do not use the earlier validation clone as the final state without proving no later writes exist.
+3. Provision a separate, dedicated, **empty** final external target. Verify its identity and `EXTERNAL_DATABASE_URL` before preflight. Do not alter the existing validation clone in any way. Invoke the final clone with `DATABASE_CUTOVER_MODE=freeze` and the exact `ECHELON_CUTOVER_STATUS_URL=https://echeloninstitute.ca/api/cutover/status`. The script independently checks the live source application's fence twice before it permits any target write and refuses any non-empty target.
 4. Verify all source and target table digests match. Check the total table count, row totals, question-bank inventory, purchase/access resolution, subscription state, organization seats, and recovery ledger counts.
 5. Update the protected production secrets to the DigitalOcean connection string, PEM CA, and `DATABASE_REQUIRE_TLS=true`. Do not commit any credential.
 6. Restart the application, then run a live smoke check for the home page, sign-in, one existing learner entitlement, pricing availability, and a read-only organization dashboard query. Do not create a live Stripe payment for this check.

@@ -1,6 +1,6 @@
 import type { PoolOptions } from "mysql2";
 
-const TLS_MODES = new Set(["REQUIRED", "VERIFY_CA", "VERIFY_IDENTITY", "true", "1"]);
+const TLS_MODES = new Set(["REQUIRED", "VERIFY_CA", "VERIFY_IDENTITY", "TRUE", "1"]);
 const LOCAL_DATABASE_HOSTS = new Set(["localhost", "127.0.0.1", "::1"]);
 
 export function normalizePem(value: string): string {
@@ -80,10 +80,6 @@ export function databasePoolOptions(
     database: decodeURIComponent(url.pathname.replace(/^\//, "")),
     charset: "utf8mb4",
     timezone: "Z",
-    dateStrings: true,
-    supportBigNumbers: true,
-    bigNumberStrings: true,
-    decimalNumbers: false,
     connectionLimit: options.connectionLimit ?? 5,
     waitForConnections: true,
     queueLimit: 0,

@@ -41,6 +41,14 @@ test("source URLs encoded with strict ssl JSON are certificate verified", () => 
   assert.equal(config.ssl.rejectUnauthorized, true);
 });
 
+test("mixed-case ssl=true URLs remain certificate verified", () => {
+  const config = parseMySqlUrl(
+    "mysql://user:pass@source.example.com:4000/echelon?ssl=TrUe",
+    { requireTls: true }
+  );
+  assert.equal(config.ssl.rejectUnauthorized, true);
+});
+
 test("external MySQL client defaults pin certificate verification", () => {
   const defaults = mysqlClientDefaults(
     "mysql://user:pass@example.com:25060/echelon?ssl-mode=VERIFY_IDENTITY",

@@ -24,11 +24,13 @@ import {
   sortedTableNames,
   updateRowsDigest,
 } from "../lib/externalDatabaseMigration.mjs";
+import { assertLiveCutoverWriteFence } from "../lib/cutoverStatus.mjs";
 
 const APPROVAL_TOKEN = "CLONE_CURRENT_ECHELON_PRODUCTION";
 const BATCH_SIZE = 250;
 const CUTOVER_FREEZE_ENV = "DATABASE_CUTOVER_MODE";
 const CUTOVER_FREEZE_VALUE = "freeze";
+const CUTOVER_STATUS_URL_ENV = "ECHELON_CUTOVER_STATUS_URL";
 
 function usage() {
   console.error("Usage: cloneToExternalMySql.mjs <preflight|apply|verify> --report /absolute/private/report.json");
@@ -280,6 +282,7 @@ async function main() {
         throw new Error(`Refusing external database write. Set EXTERNAL_DATABASE_MIGRATION_APPROVED=${APPROVAL_TOKEN}.`);
       }
       assertFinalCutoverFreeze(command);
+      await assertLiveCutoverWriteFence(process.env[CUTOVER_STATUS_URL_ENV]);
       await targetIsEmpty(target);
       const createdTables = [];
       await source.query("START TRANSACTION");

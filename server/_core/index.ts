@@ -27,7 +27,7 @@ import {
 } from "../blogAutomation";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
-import { databaseCutoverWriteFreeze } from "./databaseCutover";
+import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -187,6 +187,20 @@ async function startServer() {
         capabilities: RELEASE_CAPABILITIES,
         ts: new Date().toISOString(),
       });
+  });
+
+  // The guarded external clone checks this status twice before it writes to a
+  // business-owned target. It is intentionally read-only and exposes only the
+  // current write-fence state, never secrets or database details.
+  app.get("/api/cutover/status", (req, res) => {
+    const challenge = cutoverStatusChallenge(req.query.challenge);
+    const writesFrozen = databaseWritesFrozen();
+    res.set("Cache-Control", "no-store");
+    return res.status(200).json({
+      writesFrozen,
+      mode: writesFrozen ? "freeze" : "normal",
+      challenge,
+    });
   });
 
   // ── FIX 4: One-click unsubscribe endpoint for reminder emails ────────────────
@@ -437,12 +451,18 @@ async function startServer() {
 
   server.listen(port, async () => {
     console.log(`Server running on http://localhost:${port}/`);
-    // Warm up the DB connection on startup so the first user request doesn't
-    // hit a cold TiDB Serverless cluster (which can take 5-10s to wake).
-    await connectWithRetry();
-    startDbKeepAlive();
-    // Start background jobs after server is listening
-    if (ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
+    // A frozen source needs to serve only the explicit status and health reads.
+    // Do not open a database pool, run local background work, or create/refresh
+    // external automation until the clone and routing decision are complete.
+    if (databaseWritesFrozen()) {
+      console.log("[cutover] database and automation startup skipped while writes are frozen");
+    } else {
+      // Warm up the DB connection on startup so the first user request doesn't
+      // hit a cold TiDB Serverless cluster (which can take 5-10s to wake).
+      await connectWithRetry();
+      startDbKeepAlive();
+    }
+    if (!databaseWritesFrozen() && ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
       void ensureWeeklyBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)

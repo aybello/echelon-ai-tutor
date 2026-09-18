@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 
 const IDENTIFIER = /^[A-Za-z0-9_]+$/;
-const TLS_MODES = new Set(["REQUIRED", "VERIFY_CA", "VERIFY_IDENTITY", "true", "1"]);
+const TLS_MODES = new Set(["REQUIRED", "VERIFY_CA", "VERIFY_IDENTITY", "TRUE", "1"]);
 
 export function assertIdentifier(value, label = "identifier") {
   if (!IDENTIFIER.test(value)) {

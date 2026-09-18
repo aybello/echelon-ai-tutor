@@ -17,16 +17,18 @@ describe("databasePoolOptions", () => {
       user: "user",
       password: "password",
       database: "echelon",
+      charset: "utf8mb4",
+      timezone: "Z",
       ssl: {
         rejectUnauthorized: true,
       },
-      dateStrings: true,
-      bigNumberStrings: true,
     });
     expect(options.ssl).toMatchObject({
       ca: "-----BEGIN CERTIFICATE-----\ncertificate-body\n-----END CERTIFICATE-----\n",
     });
     expect(options).not.toHaveProperty("uri");
+    expect(options).not.toHaveProperty("dateStrings");
+    expect(options).not.toHaveProperty("bigNumberStrings");
   });
 
   it("fails closed for unencrypted remote URLs, incomplete verification, and unsupported parameters", () => {
@@ -42,5 +44,10 @@ describe("databasePoolOptions", () => {
     );
     expect(options.ssl).toMatchObject({ rejectUnauthorized: true });
     expect(options).not.toHaveProperty("uri");
+  });
+
+  it("supports mixed-case ssl=true provider URLs without weakening verification", () => {
+    const options = databasePoolOptions("mysql://user:pass@managed.example.com/echelon?ssl=TrUe");
+    expect(options.ssl).toMatchObject({ rejectUnauthorized: true });
   });
 });

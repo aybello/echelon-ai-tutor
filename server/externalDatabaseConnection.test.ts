@@ -1,4 +1,4 @@
-import mysql, { type RowDataPacket } from "mysql2/promise";
+import mysql from "mysql2/promise";
 import { afterAll, describe, expect, it } from "vitest";
 
 const externalDatabaseUrl = process.env.EXTERNAL_DATABASE_URL;
@@ -14,10 +14,24 @@ function secureMySqlConfig(
   caCertificate: string
 ): mysql.ConnectionOptions {
   const url = new URL(connectionString);
-  const sslMode = url.searchParams.get("ssl-mode") ?? url.searchParams.get("ssl");
+  const sslModeParameter = url.searchParams.get("ssl-mode");
+  const sslParameter = url.searchParams.get("ssl");
+  if (sslModeParameter && sslParameter) {
+    throw new Error("EXTERNAL_DATABASE_URL must use only one TLS parameter");
+  }
+  const sslMode = sslModeParameter ?? sslParameter;
   const ca = normalizePem(caCertificate);
 
-  if (!["REQUIRED", "required", "true", "1"].includes(sslMode ?? "")) {
+  const scalarTlsMode = ["REQUIRED", "VERIFY_CA", "VERIFY_IDENTITY", "TRUE", "1"].includes((sslMode ?? "").toUpperCase());
+  let strictJsonTls = false;
+  if (!scalarTlsMode && sslMode) {
+    try {
+      strictJsonTls = JSON.parse(sslMode)?.rejectUnauthorized === true;
+    } catch {
+      strictJsonTls = false;
+    }
+  }
+  if (!scalarTlsMode && !strictJsonTls) {
     throw new Error("EXTERNAL_DATABASE_URL must require TLS");
   }
   if (!ca.includes("BEGIN CERTIFICATE")) {
@@ -47,12 +61,7 @@ suite("external Echelon database connection", () => {
     );
     const [pingRows] = await connection.query("SELECT 1 AS healthy");
     const [databaseRows] = await connection.query("SELECT DATABASE() AS databaseName");
-    const [tableRows] = await connection.query<RowDataPacket[]>(
-      "SELECT COUNT(*) AS tableCount FROM information_schema.tables WHERE table_schema = DATABASE()"
-    );
-
     expect(pingRows).toEqual([{ healthy: 1 }]);
     expect(databaseRows).toHaveLength(1);
-    expect(Number(tableRows[0]?.tableCount ?? 0)).toBeGreaterThanOrEqual(1);
   });
 });
