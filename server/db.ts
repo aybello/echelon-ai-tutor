@@ -17,15 +17,48 @@ let _pool: mysql.Pool | null = null;
  */
 let _lastFailedAt = 0;
 const COOLDOWN_MS = 15_000; // Don't retry for 15s after a failure (matches TiDB cold-start time)
+const EXTERNAL_CUTOVER_TARGET_ENV = "DATABASE_CUTOVER_USE_EXTERNAL_TARGET";
+const EXTERNAL_CUTOVER_DATABASE_ENV = "DATABASE_CUTOVER_TARGET_DATABASE";
+const DATABASE_NAME = /^[A-Za-z0-9_]+$/;
+
+export function activeDatabaseSettings(environment = process.env) {
+  const externalTarget = environment[EXTERNAL_CUTOVER_TARGET_ENV] === "true";
+  let connectionString = externalTarget
+    ? environment.EXTERNAL_DATABASE_URL
+    : environment.DATABASE_URL;
+  const caCertificate = externalTarget
+    ? environment.EXTERNAL_DATABASE_CA
+    : environment.DATABASE_SSL_CA;
+
+  if (externalTarget && (!connectionString || !caCertificate)) {
+    throw new Error("External database cutover requires the protected URL and CA certificate.");
+  }
+  if (externalTarget) {
+    const finalDatabaseName = environment[EXTERNAL_CUTOVER_DATABASE_ENV];
+    if (!finalDatabaseName || !DATABASE_NAME.test(finalDatabaseName)) {
+      throw new Error("External database cutover requires a safe designated final database name.");
+    }
+    const externalUrl = new URL(connectionString!);
+    externalUrl.pathname = `/${finalDatabaseName}`;
+    connectionString = externalUrl.toString();
+  }
+  return {
+    connectionString,
+    caCertificate,
+    requireTls: externalTarget || environment.DATABASE_REQUIRE_TLS === "true",
+    label: externalTarget ? "external MySQL" : "current database",
+  };
+}
 
 /**
  * Create a mysql2 connection pool with TiDB-friendly settings.
  */
 function createPool(): mysql.Pool {
+  const settings = activeDatabaseSettings();
   return mysql.createPool(
-    databasePoolOptions(process.env.DATABASE_URL!, {
-      caCertificate: process.env.DATABASE_SSL_CA,
-      requireTls: process.env.DATABASE_REQUIRE_TLS === "true",
+    databasePoolOptions(settings.connectionString!, {
+      caCertificate: settings.caCertificate,
+      requireTls: settings.requireTls,
       connectionLimit: 5,
       connectTimeout: 15_000,
     })
@@ -43,7 +76,7 @@ function createPool(): mysql.Pool {
 export async function getDb() {
   // Already connected — fast path
   if (_db) return _db;
-  if (!process.env.DATABASE_URL) return null;
+  if (!activeDatabaseSettings().connectionString) return null;
 
   // If we failed recently, don't block the request — return null immediately
   if (_lastFailedAt && Date.now() - _lastFailedAt < COOLDOWN_MS) {
@@ -56,7 +89,7 @@ export async function getDb() {
     _db = drizzle(_pool as any) as any;
     await _pool.query("SELECT 1");
     _lastFailedAt = 0; // Clear failure state
-    console.log("[Database] Connected to TiDB");
+    console.log(`[Database] Connected to ${activeDatabaseSettings().label}`);
     return _db;
   } catch (error) {
     const msg = (error as Error).message || String(error);
@@ -78,7 +111,7 @@ export async function getDb() {
  * After this, all reconnection is handled by the background keep-alive.
  */
 export async function connectWithRetry(): Promise<boolean> {
-  if (!process.env.DATABASE_URL) return false;
+  if (!activeDatabaseSettings().connectionString) return false;
 
   const MAX_RETRIES = 3;
   const BACKOFF = [3000, 6000, 12000];
@@ -90,7 +123,7 @@ export async function connectWithRetry(): Promise<boolean> {
       _db = drizzle(_pool as any) as any;
       await _pool.query("SELECT 1");
       _lastFailedAt = 0;
-      console.log(`[Database] Connected to TiDB (attempt ${i + 1})`);
+      console.log(`[Database] Connected to ${activeDatabaseSettings().label} (attempt ${i + 1})`);
       return true;
     } catch (error) {
       const msg = (error as Error).message || String(error);
