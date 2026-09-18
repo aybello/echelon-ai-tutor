@@ -55,7 +55,11 @@ export interface ForwardMigration {
    * approved standalone command when earlier proposed work remains pending.
    * The listed tables are checked against schema.ts immediately after apply.
    */
-  standaloneApply?: { tables: string[] };
+  standaloneApply?: {
+    tables: string[];
+    /** Tables that must have zero rows before this standalone migration runs. */
+    requireEmptyTables?: string[];
+  };
   /** Missing indexes that this exact proposed migration will add. */
   verifierAllowMissingIndexes?: Array<{
     table: string;

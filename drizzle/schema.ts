@@ -1,4 +1,4 @@
-import { boolean, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, datetime, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -198,6 +198,8 @@ export const customerRecoveryBatches = mysqlTable("customer_recovery_batches", {
   confirmationTokenSha256: varchar("confirmationTokenSha256", { length: 64 }).notNull(),
   scriptVersion: varchar("scriptVersion", { length: 32 }).notNull(),
   beforeSnapshotSha256: varchar("beforeSnapshotSha256", { length: 64 }).notNull(),
+  backupArtifactPath: varchar("backupArtifactPath", { length: 512 }).notNull(),
+  status: mysqlEnum("status", ["applying", "applied"]).notNull(),
   outputDigest: varchar("outputDigest", { length: 64 }),
   appliedAt: timestamp("appliedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -220,8 +222,8 @@ export const customerRecoveryImportItems = mysqlTable("customer_recovery_import_
   managerMemberId: int("managerMemberId").notNull(),
   recoveryGroup: mysqlEnum("recoveryGroup", ["treatment", "distribution"]).notNull(),
   seatCount: int("seatCount").notNull(),
-  termStart: timestamp("termStart").notNull(),
-  termEnd: timestamp("termEnd").notNull(),
+  termStart: datetime("termStart").notNull(),
+  termEnd: datetime("termEnd").notNull(),
   externalReference: varchar("externalReference", { length: 191 }).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (t) => [

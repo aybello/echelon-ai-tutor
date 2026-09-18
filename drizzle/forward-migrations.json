@@ -211,6 +211,23 @@
           "customer_recovery_import_items"
         ]
       }
+    },
+    {
+      "version": 71,
+      "tag": "0071_organization_recovery_importer_hardening",
+      "file": "drizzle/0071_organization_recovery_importer_hardening.sql",
+      "sha256": "d4b9d2100333d2746e1d527346c8869cdea5aca38e5aa145944365bcc0fd95cf",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "customer_recovery_batches",
+          "customer_recovery_import_items"
+        ],
+        "requireEmptyTables": [
+          "customer_recovery_batches",
+          "customer_recovery_import_items"
+        ]
+      }
     }
   ]
 }

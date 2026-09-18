@@ -3,12 +3,18 @@ import { createHash } from "node:crypto";
 export const UTILITIES_KINGSTON_RECOVERY_KEY = "utilities-kingston-annual-recovery-v1";
 export const UTILITIES_KINGSTON_REQUIRED_GROUPS = ["treatment", "distribution"];
 export const UTILITIES_KINGSTON_SCRIPT_VERSION = "1.0.0";
+/** Immutable digest of the owner-approved private plan. */
+export const UTILITIES_KINGSTON_APPROVED_PLAN_DIGEST = "7d94529b23b9f660e936f1ab0073b7aaf2d8269cc9e2a160c1f7de6826289143";
 
 export function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
 export function stableJson(value) {
+  if (value instanceof Date) {
+    if (Number.isNaN(value.getTime())) throw new Error("Recovery canonicalization received an invalid date.");
+    return JSON.stringify(value.toISOString());
+  }
   if (Array.isArray(value)) return `[${value.map(stableJson).join(",")}]`;
   if (value && typeof value === "object") {
     return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableJson(value[key])}`).join(",")}}`;
@@ -33,8 +39,19 @@ function daysInUtcMonth(year, monthIndex) {
  * A February 29 purchase ends February 28 in a non-leap following year.
  */
 export function deriveOneYearTerm(paymentCreatedAt) {
-  const startsAt = new Date(paymentCreatedAt);
-  if (Number.isNaN(startsAt.getTime())) throw new Error("Recovery payment timestamp is invalid.");
+  if (!(paymentCreatedAt instanceof Date) && typeof paymentCreatedAt !== "string") {
+    throw new Error("Recovery payment timestamp must be an ISO timestamp or Date.");
+  }
+  if (typeof paymentCreatedAt === "string" && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(paymentCreatedAt)) {
+    throw new Error("Recovery payment timestamp must use an ISO UTC timestamp.");
+  }
+  if (paymentCreatedAt instanceof Date && Number.isNaN(paymentCreatedAt.getTime())) {
+    throw new Error("Recovery payment timestamp is invalid.");
+  }
+  const normalizedTimestamp = paymentCreatedAt instanceof Date
+    ? paymentCreatedAt.toISOString()
+    : paymentCreatedAt;
+  const startsAt = new Date(normalizedTimestamp);
 
   const nextYear = startsAt.getUTCFullYear() + 1;
   const month = startsAt.getUTCMonth();
@@ -54,6 +71,9 @@ export function deriveOneYearTerm(paymentCreatedAt) {
 }
 
 export function recoveryExternalReference(recoveryKey, group) {
+  if (recoveryKey !== UTILITIES_KINGSTON_RECOVERY_KEY) {
+    throw new Error("Recovery key is not approved for external reference generation.");
+  }
   if (!UTILITIES_KINGSTON_REQUIRED_GROUPS.includes(group)) {
     throw new Error("Recovery group is unsupported.");
   }
@@ -85,6 +105,13 @@ export function validateUtilitiesKingstonPlan(rawPlan) {
     if (typeof item.sourceEvidenceKey !== "string" || item.sourceEvidenceKey.length < 12) {
       throw new Error("Recovery group is missing its protected evidence key.");
     }
+    const managerEmail = normalizeManagerEmail(item.managerEmail);
+    if (!/^[a-f0-9]{64}$/i.test(item.managerIdentitySha256 ?? "")) {
+      throw new Error("Recovery group is missing its verified manager identity binding.");
+    }
+    if (!/^[a-f0-9]{64}$/i.test(item.paymentIdentitySha256 ?? "")) {
+      throw new Error("Recovery group is missing its verified payment identity binding.");
+    }
     if (typeof item.organizationName !== "string" || item.organizationName.trim().length < 4 || item.organizationName.length > 200) {
       throw new Error("Recovery group organization name is invalid.");
     }
@@ -92,18 +119,31 @@ export function validateUtilitiesKingstonPlan(rawPlan) {
       group: item.group,
       seatCount: item.seatCount,
       sourceEvidenceKey: item.sourceEvidenceKey,
+      managerEmail,
+      managerIdentitySha256: item.managerIdentitySha256.toLowerCase(),
+      paymentIdentitySha256: item.paymentIdentitySha256.toLowerCase(),
       organizationName: item.organizationName.trim(),
     };
   }).sort((a, b) => a.group.localeCompare(b.group));
 
-  if (groups[0].group !== "distribution" || groups[1].group !== "treatment") {
+  const groupsByName = new Map(groups.map((group) => [group.group, group]));
+  if (groupsByName.size !== 2 || !groupsByName.has("distribution") || !groupsByName.has("treatment")) {
     throw new Error("Recovery plan must include one Treatment and one Distribution group.");
   }
-  if (groups[0].seatCount !== 10 || groups[1].seatCount !== 14) {
+  if (groupsByName.get("distribution").seatCount !== 10 || groupsByName.get("treatment").seatCount !== 14) {
     throw new Error("Recovery plan does not match the approved 14/10 seat allocation.");
   }
   if (new Set(groups.map((item) => item.sourceEvidenceKey)).size !== 2) {
     throw new Error("Recovery plan cannot reuse an evidence key.");
+  }
+  if (new Set(groups.map((item) => item.managerIdentitySha256)).size !== 2) {
+    throw new Error("Recovery plan cannot reuse a manager identity binding.");
+  }
+  if (new Set(groups.map((item) => item.managerEmail)).size !== 2) {
+    throw new Error("Recovery plan requires two distinct manager contacts.");
+  }
+  if (new Set(groups.map((item) => item.paymentIdentitySha256)).size !== 2) {
+    throw new Error("Recovery plan requires two distinct payment identity bindings.");
   }
   if (new Set(groups.map((item) => item.organizationName.toLowerCase())).size !== 2) {
     throw new Error("Recovery plan requires separate dashboard organization names.");
@@ -123,7 +163,18 @@ export function validateUtilitiesKingstonPlan(rawPlan) {
 
 export function recoveryPlanDigest(plan) {
   const validated = validateUtilitiesKingstonPlan(plan);
-  return sha256(stableJson(validated));
+  return sha256(stableJson({
+    ...validated,
+    sourceArchive: { sha256: validated.sourceArchive.sha256 },
+  }));
+}
+
+export function assertApprovedUtilitiesKingstonPlan(plan) {
+  const digest = recoveryPlanDigest(plan);
+  if (digest !== UTILITIES_KINGSTON_APPROVED_PLAN_DIGEST) {
+    throw new Error("Recovery plan does not match the owner-approved Utilities Kingston authorization.");
+  }
+  return validateUtilitiesKingstonPlan(plan);
 }
 
 export function confirmationTokenForPlan(plan) {
@@ -131,7 +182,7 @@ export function confirmationTokenForPlan(plan) {
 }
 
 export function safeRecoverySummary(plan, evidenceRows) {
-  const validated = validateUtilitiesKingstonPlan(plan);
+  const validated = assertRecoveryEvidenceRows(plan, evidenceRows);
   const evidenceByKey = new Map(evidenceRows.map((row) => [row.sourceEvidenceKey, row]));
   const groups = validated.groups.map((group) => {
     const evidence = evidenceByKey.get(group.sourceEvidenceKey);
@@ -170,20 +221,23 @@ export function assertRecoveryEvidenceRows(plan, evidenceRows) {
   }
   const evidenceByKey = new Map(evidenceRows.map((row) => [row.sourceEvidenceKey, row]));
   if (evidenceByKey.size !== 2) throw new Error("Recovery evidence keys are not unique.");
-  if (new Set(evidenceRows.map((row) => normalizeManagerEmail(row.customerEmail ?? row.normalizedEmail))).size !== 2) {
-    throw new Error("Recovery requires two distinct manager identities.");
-  }
-
   for (const group of validated.groups) {
     const evidence = evidenceByKey.get(group.sourceEvidenceKey);
     if (!evidence) throw new Error("An approved recovery evidence row is unavailable.");
     if (evidence.paymentStatus !== "succeeded") throw new Error("Recovery requires successful historical payments.");
     if (evidence.importedAt !== null && evidence.importedAt !== undefined) throw new Error("Recovery evidence was already imported.");
+    if (evidence.reviewStatus !== "approved") throw new Error("Recovery evidence requires explicit approval before import.");
     if (evidence.recoverySubjectType !== "organization_manager") throw new Error("Recovery evidence is not organization-manager evidence.");
-    if (Number(evidence.recoverySeatCount) !== group.seatCount) throw new Error("Recovery seat evidence does not match the approved allocation.");
-    if (!(evidence.customerEmail ?? evidence.normalizedEmail) || !evidence.paymentCreatedAt) throw new Error("Recovery evidence lacks a manager identity or payment timestamp.");
-    if (evidence.recoveryOrganizationGroup && evidence.recoveryOrganizationGroup !== "unspecified" && evidence.recoveryOrganizationGroup !== group.group) {
+    if (!Number.isInteger(evidence.recoverySeatCount) || evidence.recoverySeatCount !== group.seatCount) throw new Error("Recovery seat evidence does not match the approved allocation.");
+    if (!evidence.normalizedEmail || !evidence.paymentCreatedAt) throw new Error("Recovery evidence lacks a payment identity or timestamp.");
+    if (sha256(normalizeManagerEmail(evidence.normalizedEmail)) !== group.paymentIdentitySha256) {
+      throw new Error("Recovery payment identity does not match the approved evidence binding.");
+    }
+    if (evidence.recoveryOrganizationGroup !== group.group) {
       throw new Error("Recovery evidence conflicts with the approved group mapping.");
+    }
+    if (sha256(group.managerEmail) !== group.managerIdentitySha256) {
+      throw new Error("Recovery manager identity does not match the approved group binding.");
     }
   }
   return validated;

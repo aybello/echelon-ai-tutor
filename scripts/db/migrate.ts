@@ -160,12 +160,47 @@ async function assertStandaloneMigrationSchema(
       tableNames.includes(table.name)
     ),
   };
+  if (new Set(tableNames).size !== tableNames.length) {
+    throw new Error(
+      `Standalone migration ${migration.version} (${migration.tag}) has duplicate verification tables.`
+    );
+  }
+  if (expected.tables.length !== tableNames.length) {
+    throw new Error(
+      `Standalone migration ${migration.version} (${migration.tag}) references a table absent from the expected schema.`
+    );
+  }
+  if (actual.tables.length !== tableNames.length) {
+    throw new Error(
+      `Standalone migration ${migration.version} (${migration.tag}) did not create every required table.`
+    );
+  }
   const diff = diffSchemaContracts(expected, actual);
   printSchemaDiff(diff.errors, diff.warnings);
   if (diff.errors.length > 0) {
     throw new Error(
       `Standalone migration ${migration.version} (${migration.tag}) did not produce the required schema.`
     );
+  }
+}
+
+async function assertStandaloneMigrationPreconditions(
+  connection: Connection,
+  migration: ForwardMigration
+): Promise<void> {
+  const emptyTables = migration.standaloneApply?.requireEmptyTables ?? [];
+  for (const table of emptyTables) {
+    if (!/^[a-z0-9_]+$/.test(table)) {
+      throw new Error(`Standalone migration has an invalid precondition table name: ${table}`);
+    }
+    const [rows] = await connection.query<RowDataPacket[]>(
+      `SELECT COUNT(*) AS count FROM \`${table}\``
+    );
+    if (Number(rows[0]?.count ?? 0) !== 0) {
+      throw new Error(
+        `Standalone migration ${migration.version} (${migration.tag}) requires an empty ${table} table.`
+      );
+    }
   }
 }
 
@@ -391,6 +426,7 @@ async function applyStandalone(
       rows,
       targetTag
     );
+    await assertStandaloneMigrationPreconditions(connection, migration);
     const startedAt = Date.now();
     await connection.query(
       `

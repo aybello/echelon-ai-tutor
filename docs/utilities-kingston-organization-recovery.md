@@ -12,21 +12,21 @@ The importer creates exactly two active Ontario all-access organization records 
 
 ## Evidence and approval requirements
 
-The private plan must bind the two immutable Stripe evidence keys to the Treatment and Distribution groups, respectively. It must contain the checksum of the protected Stripe archive and a durable authorization reference. The importer compares the plan against both the staged evidence table and the protected archive before writing. The archive is the source of the precise historical payment timestamps.
+The private plan must bind the two immutable Stripe evidence keys and the two manager-identity hashes to the Treatment and Distribution groups, respectively. It must contain the checksum of the protected Stripe archive and a durable authorization reference. The importer compares the plan against both the staged evidence table and the protected archive before writing. The archive is the source of the precise historical payment timestamps.
 
 The plan is stored only outside the repository in protected storage. Customer names, emails, payment identifiers, amounts, and raw evidence never appear in source code, public reports, Git history, Notion, or chat.
 
 ## Safety sequence
 
-The operator first runs `preflight`. It verifies the archive checksum, evidence status, approved seat counts, separate manager identities, lack of existing recovery mapping, lack of conflicting organization records, and exact expected database baseline. The result is a private report with a digest.
+The operator first runs `preflight`. It verifies the archive checksum, evidence status, approved seat counts, separate manager identities, lack of existing recovery mapping, lack of conflicting organization records, and exact expected database baseline. It requires the recovery batch, recovery mapping, organization, and organization-member tables to be empty before the one-time import. The result is a private report whose digest includes a canonical binding of the two locked evidence rows, including their state, payment timestamps, seat counts, and import status.
 
 The operator then supplies the exact plan-derived confirmation token and a 32-byte backup key held outside the repository. Before the write, the tool creates an encrypted before-image backup, immediately decrypts it to prove restoration, takes a named database lock, uses a serializable transaction, locks the two evidence rows, and repeats every mutable precondition.
 
-Within one transaction, the tool records a recovery batch, creates the two organizations and manager memberships, persists two immutable evidence-to-output mapping rows, and marks only the two evidence rows as imported. It validates that the only permitted database deltas are the two organizations, two manager memberships, one batch, and two mapping records. Any other delta causes rollback.
+Within one serializable transaction, the tool records an applying recovery batch, creates the two organizations and manager memberships, persists two immutable evidence-to-output mapping rows, and marks only the two evidence rows as imported. Both recovered organizations have a manual invoice billing type and no Stripe customer or subscription identifier. The batch becomes applied only after the complete delta check passes. It records an encrypted pre-write backup path and checksum in the batch before commit so an interrupted report write can be reconstructed safely. The tool validates that the only permitted database deltas are the two organizations, two manager memberships, one batch, and two mapping records. Any other delta causes rollback.
 
 ## Re-run behavior
 
-The recovery key, plan digest, evidence mappings, organization mappings, manager mappings, and external references are unique. A repeat of the same completed plan returns an already-applied verification without making a second write. A changed plan or conflicting evidence fails closed.
+The recovery key, plan digest, evidence mappings, organization mappings, manager mappings, and external references are unique. A repeat of the same completed plan returns an already-applied verification without making a second write. A changed plan or conflicting evidence fails closed. The release includes an additive recovery-audit schema migration. It was applied and independently schema-verified before this importer is allowed to run. If a future standalone schema migration fails after a non-transactional DDL statement, do not retry it blindly. Preserve the failed ledger record, take a new encrypted backup, inspect the resulting schema, repair through a separately reviewed migration, and only then reconcile the ledger.
 
 ## Post-recovery boundaries
 
