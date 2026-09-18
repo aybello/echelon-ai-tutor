@@ -23,6 +23,15 @@ describe("private Stripe recovery normalizer", () => {
     expect(records[0]).not.toHaveProperty("accessExpiresAt");
   });
 
+  it("parses Stripe's Created date (UTC) export header for recovery term evidence", () => {
+    const { records } = normalizeStripeRows([
+      "id,Created date (UTC),Customer Email,Amount,Currency,Status",
+      "pi_historical,2026-06-19T15:45:00.000Z,manager@example.org,279.00,CAD,succeeded",
+    ].join("\n"));
+
+    expect(records[0]?.paymentCreatedAt?.toISOString()).toBe("2026-06-19T15:45:00.000Z");
+  });
+
   it("writes a non-sensitive manifest that cannot be mistaken for an import result", () => {
     const { records, rejectedRows } = normalizeStripeRows(csv);
     const manifest = manifestFor(records, rejectedRows, "a".repeat(64));

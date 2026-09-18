@@ -184,6 +184,56 @@ export const customerRecoveryEvidence = mysqlTable("customer_recovery_evidence",
 export type CustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferSelect;
 export type InsertCustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferInsert;
 
+/**
+ * Durable, append-only recovery batches for explicitly approved exceptional
+ * organization restoration. They bind a private source archive, owner approval,
+ * preflight plan and post-commit output without reusing live Stripe identifiers.
+ */
+export const customerRecoveryBatches = mysqlTable("customer_recovery_batches", {
+  id: int("id").autoincrement().primaryKey(),
+  recoveryKey: varchar("recoveryKey", { length: 191 }).notNull(),
+  planDigest: varchar("planDigest", { length: 64 }).notNull(),
+  archiveSha256: varchar("archiveSha256", { length: 64 }).notNull(),
+  authorizationRef: varchar("authorizationRef", { length: 255 }).notNull(),
+  confirmationTokenSha256: varchar("confirmationTokenSha256", { length: 64 }).notNull(),
+  scriptVersion: varchar("scriptVersion", { length: 32 }).notNull(),
+  beforeSnapshotSha256: varchar("beforeSnapshotSha256", { length: 64 }).notNull(),
+  outputDigest: varchar("outputDigest", { length: 64 }),
+  appliedAt: timestamp("appliedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  uniqueIndex("customer_recovery_batches_key_unique").on(t.recoveryKey),
+  uniqueIndex("customer_recovery_batches_plan_unique").on(t.planDigest),
+]);
+
+export type CustomerRecoveryBatch = typeof customerRecoveryBatches.$inferSelect;
+
+/**
+ * Immutable evidence-to-output mapping for organization recovery. This is an
+ * audit record only; organization and manager records are created separately.
+ */
+export const customerRecoveryImportItems = mysqlTable("customer_recovery_import_items", {
+  id: int("id").autoincrement().primaryKey(),
+  batchId: int("batchId").notNull(),
+  evidenceId: int("evidenceId").notNull(),
+  organizationId: int("organizationId").notNull(),
+  managerMemberId: int("managerMemberId").notNull(),
+  recoveryGroup: mysqlEnum("recoveryGroup", ["treatment", "distribution"]).notNull(),
+  seatCount: int("seatCount").notNull(),
+  termStart: timestamp("termStart").notNull(),
+  termEnd: timestamp("termEnd").notNull(),
+  externalReference: varchar("externalReference", { length: 191 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  uniqueIndex("customer_recovery_import_items_evidence_unique").on(t.evidenceId),
+  uniqueIndex("customer_recovery_import_items_organization_unique").on(t.organizationId),
+  uniqueIndex("customer_recovery_import_items_manager_unique").on(t.managerMemberId),
+  uniqueIndex("customer_recovery_import_items_reference_unique").on(t.externalReference),
+  index("customer_recovery_import_items_batch_idx").on(t.batchId),
+]);
+
+export type CustomerRecoveryImportItem = typeof customerRecoveryImportItems.$inferSelect;
+
 /** Active purchase fields; deliberately excludes the retired welcome marker. */
 export const purchaseReadColumns = {
   id: purchases.id,

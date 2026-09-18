@@ -198,6 +198,19 @@
           "team_flex_extensions"
         ]
       }
+    },
+    {
+      "version": 70,
+      "tag": "0070_organization_recovery_audit",
+      "file": "drizzle/0070_organization_recovery_audit.sql",
+      "sha256": "9fbd9dc3091f2d289621fe09dae58c78782f274c7a47600943d45c3e133139ce",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "customer_recovery_batches",
+          "customer_recovery_import_items"
+        ]
+      }
     }
   ]
 }

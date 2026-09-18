@@ -112,7 +112,7 @@ export function normalizeStripeRows(csvText) {
     amount: findField(headers, ["amount", "amountpaid", "amounttotal"]),
     currency: findField(headers, ["currency"]),
     status: findField(headers, ["status", "paymentstatus"]),
-    created: findField(headers, ["createdutc", "created", "createddate"]),
+    created: findField(headers, ["createdutc", "createddateutc", "created", "createddate"]),
   };
   if (fields.email < 0) throw new Error("The Stripe export must include a customer email column.");
   if (fields.paymentIntent < 0 && fields.checkoutSession < 0) {
