@@ -27,6 +27,7 @@ import {
 } from "../blogAutomation";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
+import { databaseCutoverWriteFreeze } from "./databaseCutover";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -83,6 +84,12 @@ async function startServer() {
       },
     })
   );
+
+  // A final external-database clone must have a stable source snapshot. When
+  // DATABASE_CUTOVER_MODE=freeze is set, this rejects every non-read request
+  // before Stripe, OAuth, tRPC, scheduled jobs, or bespoke route handlers can
+  // create a source-side write.
+  app.use(databaseCutoverWriteFreeze());
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);

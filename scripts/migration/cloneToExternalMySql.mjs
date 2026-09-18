@@ -4,6 +4,9 @@
  * Echelon-owned external MySQL database. It never changes the source database
  * and refuses to write unless the target database is empty.
  *
+ * This is a snapshot-clone utility, not a live replication system. It may be
+ * used only while application writes are frozen for the final cutover window.
+ *
  * Commands:
  *   node scripts/migration/cloneToExternalMySql.mjs preflight --report /private/report.json
  *   EXTERNAL_DATABASE_MIGRATION_APPROVED=CLONE_CURRENT_ECHELON_PRODUCTION \
@@ -16,15 +19,16 @@ import path from "node:path";
 import mysql from "mysql2/promise";
 import {
   allColumnsOrder,
-  digestRows,
   parseMySqlUrl,
   quoteIdentifier,
   sortedTableNames,
+  updateRowsDigest,
 } from "../lib/externalDatabaseMigration.mjs";
 
 const APPROVAL_TOKEN = "CLONE_CURRENT_ECHELON_PRODUCTION";
 const BATCH_SIZE = 250;
-const REPO_ROOT = path.resolve(new URL("../..", import.meta.url).pathname);
+const CUTOVER_FREEZE_ENV = "DATABASE_CUTOVER_MODE";
+const CUTOVER_FREEZE_VALUE = "freeze";
 
 function usage() {
   console.error("Usage: cloneToExternalMySql.mjs <preflight|apply|verify> --report /absolute/private/report.json");
@@ -42,10 +46,6 @@ function parseArgs(argv) {
   return { command, reportPath };
 }
 
-function normalizePem(value) {
-  return value.replace(/\\n/g, "\n").replace(/\r\n/g, "\n").trimEnd() + "\n";
-}
-
 function requireConfig() {
   const sourceUrl = process.env.DATABASE_URL;
   const targetUrl = process.env.EXTERNAL_DATABASE_URL;
@@ -53,7 +53,7 @@ function requireConfig() {
   if (!sourceUrl) throw new Error("DATABASE_URL is required for the source database.");
   if (!targetUrl) throw new Error("EXTERNAL_DATABASE_URL is required for the external target.");
   if (!targetCa) throw new Error("EXTERNAL_DATABASE_CA is required for certificate-verified target TLS.");
-  return { sourceUrl, targetUrl, targetCa: normalizePem(targetCa) };
+  return { sourceUrl, targetUrl, targetCa };
 }
 
 async function listTables(connection) {
@@ -66,30 +66,83 @@ async function listTables(connection) {
   return sortedTableNames(rows.map(row => String(row.tableName)));
 }
 
+async function assertCloneCompatibility(source) {
+  const [views] = await source.query(
+    `SELECT table_name AS tableName
+     FROM information_schema.views
+     WHERE table_schema = DATABASE()`
+  );
+  if (views.length > 0) {
+    throw new Error("Snapshot clone does not support source views. Add an explicit view migration before cutover.");
+  }
+
+  const [foreignKeys] = await source.query(
+    `SELECT table_name AS tableName
+     FROM information_schema.key_column_usage
+     WHERE table_schema = DATABASE() AND referenced_table_name IS NOT NULL
+     LIMIT 1`
+  );
+  if (foreignKeys.length > 0) {
+    throw new Error("Snapshot clone does not support foreign-key schemas. Add dependency-aware cloning before cutover.");
+  }
+}
+
 async function tableColumns(connection, tableName) {
   const [rows] = await connection.query(`SHOW COLUMNS FROM ${quoteIdentifier(tableName, "table name")}`);
   return rows.map(row => String(row.Field));
 }
 
-async function primaryColumns(connection, tableName, allColumns) {
+async function primaryColumns(connection, tableName) {
   const [rows] = await connection.query(
     `SHOW KEYS FROM ${quoteIdentifier(tableName, "table name")} WHERE Key_name = 'PRIMARY'`
   );
   const primary = rows
     .sort((left, right) => Number(left.Seq_in_index) - Number(right.Seq_in_index))
     .map(row => String(row.Column_name));
-  return primary.length > 0 ? primary : allColumns;
+  if (primary.length === 0) {
+    throw new Error(`Snapshot clone requires a primary key for ${tableName}.`);
+  }
+  return primary;
+}
+
+export function tupleAfterPredicate(columns) {
+  if (!Array.isArray(columns) || columns.length === 0) throw new Error("A primary key is required for pagination.");
+  const quoted = allColumnsOrder(columns);
+  const markers = columns.map(() => "?").join(", ");
+  return `(${quoted}) > (${markers})`;
+}
+
+async function pagedRows(connection, tableName, columns, primary, onRows) {
+  const selectColumns = allColumnsOrder(columns);
+  const orderColumns = allColumnsOrder(primary);
+  let cursor = null;
+  let total = 0;
+
+  for (;;) {
+    const where = cursor ? ` WHERE ${tupleAfterPredicate(primary)}` : "";
+    const parameters = cursor ? [...cursor, BATCH_SIZE] : [BATCH_SIZE];
+    const [rows] = await connection.query(
+      `SELECT ${selectColumns} FROM ${quoteIdentifier(tableName, "table name")}${where}
+       ORDER BY ${orderColumns} LIMIT ?`,
+      parameters
+    );
+    if (rows.length === 0) break;
+    await onRows(rows);
+    total += rows.length;
+    cursor = primary.map(column => rows[rows.length - 1][column]);
+    if (rows.length < BATCH_SIZE) break;
+  }
+  return total;
 }
 
 async function tableDigest(connection, tableName) {
   const columns = await tableColumns(connection, tableName);
-  const orderColumns = await primaryColumns(connection, tableName, columns);
-  const [rows] = await connection.query(
-    `SELECT ${allColumnsOrder(columns)}
-     FROM ${quoteIdentifier(tableName, "table name")}
-     ORDER BY ${allColumnsOrder(orderColumns)}`
-  );
-  return { rowCount: rows.length, sha256: digestRows(rows), columns };
+  const primary = await primaryColumns(connection, tableName);
+  const digest = createHash("sha256");
+  const rowCount = await pagedRows(connection, tableName, columns, primary, async rows => {
+    updateRowsDigest(digest, rows);
+  });
+  return { rowCount, sha256: digest.digest("hex"), columns, primary };
 }
 
 async function databaseInventory(connection, tableNames = null) {
@@ -99,9 +152,7 @@ async function databaseInventory(connection, tableNames = null) {
   return {
     tableCount: tables.length,
     tables: inventories,
-    aggregateSha256: createHash("sha256")
-      .update(JSON.stringify(inventories))
-      .digest("hex"),
+    aggregateSha256: createHash("sha256").update(JSON.stringify(inventories)).digest("hex"),
   };
 }
 
@@ -118,7 +169,7 @@ function normalizeCreateTable(createStatement) {
     .replace(/\s*\/\*T!\[clustered_index\]\s+NONCLUSTERED\s*\*\//g, "");
 }
 
-async function createTargetSchema(source, target, tableNames) {
+async function createTargetSchema(source, target, tableNames, createdTables) {
   for (const tableName of tableNames) {
     const [rows] = await source.query(`SHOW CREATE TABLE ${quoteIdentifier(tableName, "table name")}`);
     const statement = rows[0]?.["Create Table"];
@@ -126,45 +177,65 @@ async function createTargetSchema(source, target, tableNames) {
       throw new Error(`Could not obtain CREATE TABLE statement for ${tableName}.`);
     }
     await target.query(normalizeCreateTable(statement));
+    createdTables.push(tableName);
   }
 }
 
 async function copyTable(source, target, tableName) {
   const columns = await tableColumns(source, tableName);
+  const primary = await primaryColumns(source, tableName);
   const columnList = allColumnsOrder(columns);
-  const [rows] = await source.query(`SELECT ${columnList} FROM ${quoteIdentifier(tableName, "table name")}`);
-  for (let offset = 0; offset < rows.length; offset += BATCH_SIZE) {
-    const chunk = rows.slice(offset, offset + BATCH_SIZE).map(row => columns.map(column => row[column]));
-    const placeholders = chunk.map(() => `(${columns.map(() => "?").join(", ")})`).join(", ");
+  await pagedRows(source, tableName, columns, primary, async rows => {
+    const values = rows.map(row => columns.map(column => row[column]));
+    const placeholders = values.map(() => `(${columns.map(() => "?").join(", ")})`).join(", ");
     await target.query(
       `INSERT INTO ${quoteIdentifier(tableName, "table name")} (${columnList}) VALUES ${placeholders}`,
-      chunk.flat()
+      values.flat()
     );
-  }
+  });
 }
 
 async function copyData(source, target, tableNames) {
   for (const tableName of tableNames) await copyTable(source, target, tableName);
 }
 
+async function cleanupFailedTarget(target, createdTables) {
+  if (createdTables.length === 0) return;
+  try {
+    await target.query("SET FOREIGN_KEY_CHECKS = 0");
+    for (const tableName of [...createdTables].reverse()) {
+      await target.query(`DROP TABLE IF EXISTS ${quoteIdentifier(tableName, "table name")}`);
+    }
+  } finally {
+    await target.query("SET FOREIGN_KEY_CHECKS = 1");
+  }
+}
+
 async function createConnections() {
   const { sourceUrl, targetUrl, targetCa } = requireConfig();
-  const source = await mysql.createConnection(sourceUrl);
-  const target = await mysql.createConnection(
-    parseMySqlUrl(targetUrl, { caCertificate: targetCa, requireTls: true })
-  );
+  const source = await mysql.createConnection(parseMySqlUrl(sourceUrl, { requireTls: true }));
+  const target = await mysql.createConnection(parseMySqlUrl(targetUrl, { caCertificate: targetCa, requireTls: true }));
   return { source, target };
 }
 
 async function consistentSourceInventory(source) {
-  // TiDB's START TRANSACTION already provides snapshot isolation. Its
-  // READ ONLY modifier is intentionally unsupported, so do not enable its
-  // no-op compatibility mode. This script issues no source writes.
+  // TiDB's START TRANSACTION already establishes a consistent snapshot. Its
+  // READ ONLY modifier is unsupported, so the script itself guarantees no
+  // source writes and uses a plain snapshot transaction.
   await source.query("START TRANSACTION");
   try {
     return await databaseInventory(source);
   } finally {
     await source.query("ROLLBACK");
+  }
+}
+
+function assertFinalCutoverFreeze(command) {
+  if (command === "apply" && process.env[CUTOVER_FREEZE_ENV] !== CUTOVER_FREEZE_VALUE) {
+    throw new Error(
+      `${CUTOVER_FREEZE_ENV}=${CUTOVER_FREEZE_VALUE} is required for a final clone. ` +
+      "Freeze application writes before taking the cutover snapshot."
+    );
   }
 }
 
@@ -181,16 +252,18 @@ async function main() {
   const { command, reportPath } = parseArgs(process.argv.slice(2));
   const { source, target } = await createConnections();
   try {
+    await assertCloneCompatibility(source);
     if (command === "preflight") {
       await targetIsEmpty(target);
       const sourceInventory = await consistentSourceInventory(source);
       const report = {
-        formatVersion: 1,
+        formatVersion: 2,
         command: "preflight",
         createdAt: new Date().toISOString(),
         source: sourceInventory,
         target: { tableCount: 0 },
         approvalToken: APPROVAL_TOKEN,
+        compatibility: { views: false, foreignKeys: false, allTablesPrimaryKeyed: true },
       };
       await writeReport(reportPath, report);
       console.log(JSON.stringify({ ok: true, tableCount: sourceInventory.tableCount, aggregateSha256: sourceInventory.aggregateSha256 }));
@@ -198,17 +271,17 @@ async function main() {
     }
 
     const report = await readReport(reportPath);
-    if (report?.formatVersion !== 1 || report?.approvalToken !== APPROVAL_TOKEN) {
-      throw new Error("The supplied preflight report is invalid.");
+    if (report?.formatVersion !== 2 || report?.approvalToken !== APPROVAL_TOKEN) {
+      throw new Error("The supplied preflight report is invalid or outdated.");
     }
 
     if (command === "apply") {
       if (process.env.EXTERNAL_DATABASE_MIGRATION_APPROVED !== APPROVAL_TOKEN) {
         throw new Error(`Refusing external database write. Set EXTERNAL_DATABASE_MIGRATION_APPROVED=${APPROVAL_TOKEN}.`);
       }
+      assertFinalCutoverFreeze(command);
       await targetIsEmpty(target);
-      // See consistentSourceInventory: a plain TiDB transaction is a
-      // consistent snapshot, while READ ONLY is a rejected no-op modifier.
+      const createdTables = [];
       await source.query("START TRANSACTION");
       let sourceInventory;
       try {
@@ -217,8 +290,13 @@ async function main() {
           throw new Error("Source changed after preflight. Generate a new preflight before copying data.");
         }
         const tableNames = Object.keys(sourceInventory.tables).sort();
-        await createTargetSchema(source, target, tableNames);
+        await createTargetSchema(source, target, tableNames, createdTables);
         await copyData(source, target, tableNames);
+      } catch (error) {
+        await cleanupFailedTarget(target, createdTables).catch(cleanupError => {
+          console.error("Target cleanup failed after clone error:", cleanupError instanceof Error ? cleanupError.message : "unknown error");
+        });
+        throw error;
       } finally {
         await source.query("ROLLBACK");
       }

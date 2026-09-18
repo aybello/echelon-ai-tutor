@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 
 const IDENTIFIER = /^[A-Za-z0-9_]+$/;
+const TLS_MODES = new Set(["REQUIRED", "VERIFY_CA", "VERIFY_IDENTITY", "true", "1"]);
 
 export function assertIdentifier(value, label = "identifier") {
   if (!IDENTIFIER.test(value)) {
@@ -13,40 +14,95 @@ export function quoteIdentifier(value, label) {
   return `\`${assertIdentifier(value, label)}\``;
 }
 
-export function parseMySqlUrl(connectionString, { caCertificate = null, requireTls = false } = {}) {
-  const url = new URL(connectionString);
-  if (url.protocol !== "mysql:") {
-    throw new Error("Database URL must use the mysql: protocol.");
-  }
+export function normalizePem(value) {
+  return value.replace(/\\n/g, "\n").replace(/\r\n/g, "\n").trimEnd() + "\n";
+}
 
-  const sslMode = url.searchParams.get("ssl-mode") ?? url.searchParams.get("ssl");
-  const tlsRequested = ["REQUIRED", "required", "true", "1"].includes(sslMode ?? "");
+function redactedUrlError() {
+  return new Error("Database URL is invalid. Check the secret value without logging it.");
+}
+
+function parseUrl(connectionString) {
+  try {
+    const url = new URL(connectionString);
+    if (url.protocol !== "mysql:") {
+      throw new Error("Database URL must use the mysql: protocol.");
+    }
+    if (!url.hostname || !url.username || !url.pathname || url.pathname === "/") {
+      throw new Error("Database URL must contain a host, user, and database name.");
+    }
+    return url;
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith("Database URL must")) throw error;
+    throw redactedUrlError();
+  }
+}
+
+function tlsFromUrl(url) {
+  const sslMode = url.searchParams.get("ssl-mode");
+  const ssl = url.searchParams.get("ssl");
+  if (sslMode && ssl) {
+    throw new Error("Database URL must use only one TLS parameter: ssl-mode or ssl.");
+  }
+  if (sslMode) {
+    const mode = sslMode.toUpperCase();
+    if (!TLS_MODES.has(mode)) throw new Error("Database URL has an unsupported ssl-mode.");
+    return true;
+  }
+  if (!ssl) return false;
+  if (TLS_MODES.has(ssl.toUpperCase())) return true;
+  try {
+    const parsed = JSON.parse(ssl);
+    if (parsed && typeof parsed === "object" && parsed.rejectUnauthorized === true) return true;
+  } catch {
+    // The common platform URL encodes JSON in `ssl`; malformed values fail closed below.
+  }
+  throw new Error("Database URL has an unsupported ssl value.");
+}
+
+/**
+ * Builds a strict mysql2 connection configuration. All production migration
+ * connections are certificate-verified TLS connections. System trust roots are
+ * used only when a provider does not supply a private CA; an explicit CA is
+ * normalized and pinned when supplied.
+ */
+export function parseMySqlUrl(connectionString, { caCertificate = null, requireTls = true } = {}) {
+  const url = parseUrl(connectionString);
+  const tlsRequested = tlsFromUrl(url);
   if (requireTls && !tlsRequested) {
-    throw new Error("The external database URL must require TLS.");
+    throw new Error("Database URL must require TLS.");
   }
-  if (requireTls && !caCertificate?.includes("BEGIN CERTIFICATE")) {
-    throw new Error("A PEM CA certificate is required for external database TLS verification.");
+  if (caCertificate && !caCertificate.includes("BEGIN CERTIFICATE")) {
+    throw new Error("A PEM CA certificate is required for database TLS verification.");
   }
 
-  return {
+  const config = {
     host: url.hostname,
     port: Number(url.port || 3306),
     user: decodeURIComponent(url.username),
     password: decodeURIComponent(url.password),
     database: decodeURIComponent(url.pathname.replace(/^\//, "")),
-    ssl: tlsRequested
-      ? caCertificate
-        ? { ca: caCertificate, rejectUnauthorized: true }
-        : { rejectUnauthorized: false }
-      : undefined,
+    charset: "utf8mb4",
+    timezone: "Z",
+    dateStrings: true,
+    supportBigNumbers: true,
+    bigNumberStrings: true,
+    decimalNumbers: false,
+  };
+
+  if (!tlsRequested) return config;
+  return {
+    ...config,
+    ssl: {
+      ...(caCertificate ? { ca: normalizePem(caCertificate) } : {}),
+      rejectUnauthorized: true,
+    },
   };
 }
 
-export function mysqlClientDefaults(connectionString, { caPath = null, requireTls = false } = {}) {
-  const url = new URL(connectionString);
-  if (url.protocol !== "mysql:") throw new Error("Database URL must use mysql:.");
-  const sslMode = url.searchParams.get("ssl-mode") ?? url.searchParams.get("ssl");
-  const tlsRequested = ["REQUIRED", "required", "true", "1"].includes(sslMode ?? "");
+export function mysqlClientDefaults(connectionString, { caPath = null, requireTls = true } = {}) {
+  const url = parseUrl(connectionString);
+  const tlsRequested = tlsFromUrl(url);
   if (requireTls && !tlsRequested) throw new Error("External database client must require TLS.");
   if (requireTls && !caPath) throw new Error("External database client requires a CA certificate path.");
 
@@ -61,7 +117,7 @@ export function mysqlClientDefaults(connectionString, { caPath = null, requireTl
   ];
 
   if (tlsRequested) {
-    lines.push(`ssl-mode=${caPath ? "VERIFY_CA" : "REQUIRED"}`);
+    lines.push(`ssl-mode=${caPath ? "VERIFY_CA" : "VERIFY_IDENTITY"}`);
     if (caPath) lines.push(`ssl-ca=${caPath}`);
   }
 
@@ -84,14 +140,16 @@ export function canonicalizeValue(value) {
   return value;
 }
 
-export function digestRows(rows) {
-  const digest = createHash("sha256");
+export function updateRowsDigest(digest, rows) {
   for (const row of rows) {
-    const canonical = canonicalizeValue(row);
-    digest.update(JSON.stringify(canonical));
+    digest.update(JSON.stringify(canonicalizeValue(row)));
     digest.update("\n");
   }
-  return digest.digest("hex");
+  return digest;
+}
+
+export function digestRows(rows) {
+  return updateRowsDigest(createHash("sha256"), rows).digest("hex");
 }
 
 export function sortedTableNames(tableNames) {
