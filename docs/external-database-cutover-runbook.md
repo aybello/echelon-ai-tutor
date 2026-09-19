@@ -4,7 +4,7 @@
 
 This runbook moves the live Echelon application from the platform-managed database to an **Echelon-owned DigitalOcean Managed MySQL cluster**. The target database is independently controlled by the business and is protected with certificate-verified TLS. The process preserves the existing production database until the new connection has passed data, application, and rollback checks.
 
-> **Current state, September 18, 2026:** A protected validation clone completed successfully. The new DigitalOcean database contains the same 62 tables and a matching deterministic aggregate checksum as the then-current production snapshot. It is an independently owned recovery copy, not yet the live application database.
+> **Current state, September 18, 2026:** The authorized production cutover is complete. A fresh separate final target was cloned from a write-frozen source, verified across 62 tables with matching aggregate digest, and selected by the production application. Live status, health, database-backed public read, and a 30-minute production monitor passed. The earlier protected validation clone remains untouched. The original platform-managed source database remains unchanged as rollback protection for at least seven days after cutover. Provider PITR controls are active but are still accumulating history on the new cluster. See [the backup and PITR verification record](./digitalocean-backup-pitr-verification.md).
 
 ## Controls already in place
 
@@ -20,11 +20,12 @@ The final cutover must use these protected project secrets, never repository fil
 
 | Secret | Purpose |
 |---|---|
-| `DATABASE_URL` | DigitalOcean MySQL connection string for the live application |
-| `DATABASE_SSL_CA` | DigitalOcean PEM CA certificate |
-| `DATABASE_REQUIRE_TLS` | Literal value `true`, which makes the application fail closed when TLS is not correctly configured |
-| `EXTERNAL_DATABASE_URL` | Staging-only external connection string used by migration validation |
-| `EXTERNAL_DATABASE_CA` | Staging-only external CA certificate used by migration validation |
+| `DATABASE_URL` | Platform-provided prior source connection. It remains unchanged during the seven-day rollback retention period. |
+| `EXTERNAL_DATABASE_URL` | Protected DigitalOcean MySQL connection used by final clone verification and production external routing. |
+| `EXTERNAL_DATABASE_CA` | Protected DigitalOcean PEM CA certificate used for certificate-verified external TLS. |
+| `DATABASE_CUTOVER_USE_EXTERNAL_TARGET` | Literal value `true` enables the explicit, fail-closed production external route. |
+| `DATABASE_CUTOVER_TARGET_DATABASE` | Names the separately verified final target database. This prevents use of the validation clone. |
+| `DATABASE_CUTOVER_MODE` | `freeze` during the final clone and `normal` after post-cutover production checks pass. |
 
 ## Cutover sequence
 
@@ -32,7 +33,7 @@ The final cutover must use these protected project secrets, never repository fil
 2. Create a verified encrypted pre-cutover backup of both the source and the existing external validation clone. Store backup keys in the business-controlled escrow location, separate from the backup artifacts.
 3. Provision a separate, dedicated, **empty** final external target. Verify its identity and `EXTERNAL_DATABASE_URL` before preflight. Do not alter the existing validation clone in any way. Invoke the final clone with `DATABASE_CUTOVER_MODE=freeze` and the exact `ECHELON_CUTOVER_STATUS_URL=https://echeloninstitute.ca/api/cutover/status`. The script independently checks the live source application's fence twice before it permits any target write and refuses any non-empty target.
 4. Verify all source and target table digests match. Check the total table count, row totals, question-bank inventory, purchase/access resolution, subscription state, organization seats, and recovery ledger counts.
-5. Update the protected production secrets to the DigitalOcean connection string, PEM CA, and `DATABASE_REQUIRE_TLS=true`. Do not commit any credential.
+5. Enable the protected external route only through `DATABASE_CUTOVER_USE_EXTERNAL_TARGET=true` and the separately verified `DATABASE_CUTOVER_TARGET_DATABASE`. The application fails closed if the protected external connection, CA certificate, or safe target database name is unavailable. Do not commit any credential.
 6. Restart the application, then run a live smoke check for the home page, sign-in, one existing learner entitlement, pricing availability, and a read-only organization dashboard query. Do not create a live Stripe payment for this check.
 7. Monitor error logs and the database connection status for 30 minutes. Keep the current platform-managed database intact and unchanged for at least seven days after a clean cutover.
 8. If any verification fails, restore the old `DATABASE_URL`, remove `DATABASE_REQUIRE_TLS`, restart the application, and investigate using the protected backups. Do not attempt ad hoc table repair on the new live target.

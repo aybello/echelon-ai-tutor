@@ -1,6 +1,6 @@
 # Echelon Institute Business-Owned Data Continuity Plan
 
-**Status:** Proposed operating standard
+**Status:** Production database ownership established. Independent backup controls remain in progress.
 **Owner:** The Ay Bello Group / Echelon Institute
 **Prepared:** September 18, 2026
 
@@ -99,9 +99,13 @@ Do not change the live database connection until the new database has passed mig
 
 ## Current status and next action
 
-The historic customer data was not fully lost. The protected pre-reset archive, Stripe export, archived subscription records, and historical correspondence allowed controlled restoration of verified customer access. The current clean production database also now holds the reconstructed customer-access state. However, the original platform-owned database account was still an unacceptable single point of failure.
+The historic customer data was not fully lost. The protected pre-reset archive, Stripe export, archived subscription records, and historical correspondence allowed controlled restoration of verified customer access. The current production database now holds the reconstructed customer-access state.
 
-**Next action for Ay:** Create an Echelon-owned DigitalOcean account using an Echelon-controlled email address, add a second company owner, enable two-factor authentication, and send confirmation that the account is ready. After that, the database can be provisioned, migrated, and protected without exposing any secret in chat.
+On September 18, 2026, production was cut over to an Echelon-controlled DigitalOcean Managed MySQL cluster after a frozen-source clone, full 62-table inventory match, live health checks, a database-backed public read, and a 30-minute production monitor. The earlier DigitalOcean validation clone remains untouched. The prior platform-managed source database remains unchanged as a rollback safeguard and must be retained for at least seven days after the completed cutover.
+
+DigitalOcean provider recovery controls were reviewed without modifying production. Point-in-time restore and latest-transaction restore are available and restore only to a new cluster. The current recovery history begins at the new cluster's creation time, so the first daily provider backup and full seven-day recovery history still need confirmation. Read [the DigitalOcean backup and PITR verification record](./digitalocean-backup-pitr-verification.md) before any restore action.
+
+**Next action for Ay:** Separately authorize the first isolated provider restore drill after the first daily backup is available, then establish an independent encrypted backup destination, two named recovery owners, and a monthly restore drill. Do not delete the old source database until the post-cutover retention period and restore evidence requirements are met.
 
 ## References
 
