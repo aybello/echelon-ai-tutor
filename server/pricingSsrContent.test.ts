@@ -49,6 +49,11 @@ describe("crawlable pricing", () => {
     expect(body).not.toMatch(/spaced repetition/i);
     expect(body).toMatch(/400\+ practice questions/i);
   });
+
+  it("uses the permanent individual-pass policy consistently", () => {
+    expect(body).toMatch(/permanent access/i);
+    expect(body).not.toMatch(/12-month (?:individual )?Exam Pass/i);
+  });
 });
 
 describe("Ontario OIT hub SSR", () => {

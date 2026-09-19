@@ -153,7 +153,7 @@ function buildFaqJsonLd(): string {
         name: "How much does Echelon cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Individuals purchase one 12-month Exam Pass for a selected course with a one-time payment. Team plans are available for utilities and municipalities. Visit echeloninstitute.ca/pricing for current pricing.",
+          text: "Individuals purchase one permanent Exam Pass for a selected course with a one-time payment. Team plans are available for utilities and municipalities. Visit echeloninstitute.ca/pricing for current pricing.",
         },
       },
     ],

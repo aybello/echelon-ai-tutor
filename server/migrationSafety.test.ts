@@ -131,12 +131,27 @@ describe("forward-only migration safety", () => {
     ).toBe(true);
   });
 
-  it("removes every post-baseline training table before replaying forward migrations in CI", async () => {
+  it("resets every post-baseline object before replaying forward migrations in CI", async () => {
     const workflow = await readFile(resolveRepoPath(".github/workflows/quality.yml"), "utf8");
+    const resetSql = await readFile(
+      resolveRepoPath("scripts/db/reset-forward-migration-rehearsal.sql"),
+      "utf8"
+    );
 
-    expect(workflow).toContain("on_the_job_training_records");
-    expect(workflow).toContain("learning_activity_sessions");
-    expect(workflow).toContain("training_attestations");
+    expect(workflow.match(/reset-forward-migration-rehearsal\.sql/g)).toHaveLength(2);
+    for (const object of [
+      "on_the_job_training_records",
+      "learning_activity_sessions",
+      "training_attestations",
+      "customer_recovery_batches",
+      "customer_recovery_import_items",
+      "question_content_snapshots",
+    ]) {
+      expect(resetSql).toContain(object);
+    }
+    expect(resetSql).toMatch(
+      /team_flex_extensions[\s\S]*purchaserUserId` int NOT NULL/
+    );
   });
 
   it("exports a metadata-only baseline contract with no data rows or customer values", async () => {

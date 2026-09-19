@@ -781,13 +781,11 @@ function CheckoutButton({
   );
 }
 
-// ─── Subscription Checkout Button ──────────────────────────────────────────
-function SubscriptionCheckoutButton({
-  tier,
-  province,
+// ─── Legacy subscription redirect ─────────────────────────────────────────
+// Retained only for grandfathered-plan presentation. New individual
+// subscriptions are retired and this component can never initiate checkout.
+function LegacySubscriptionRedirect({
   label,
-  priceLabel,
-  currency = "cad",
 }: {
   tier: SubscriptionTier;
   province: SubscriptionProvince;
@@ -795,76 +793,19 @@ function SubscriptionCheckoutButton({
   priceLabel: string;
   currency?: "cad" | "usd";
 }) {
-  const [showModal, setShowModal] = useState(false);
-  const createSubscription = trpc.stripe.createSubscriptionCheckout.useMutation({
-    onSuccess: (data) => {
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    },
-    onError: (err) => {
-      console.error("[Subscription Checkout] Error:", err);
-      alert("Something went wrong. Please try again.");
-    },
-  });
-
-  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-    // Read UTM params and referral source from URL search params
-    const sp = new URLSearchParams(window.location.search);
-    const utmSource = sp.get("utm_source") ?? undefined;
-    const utmMedium = sp.get("utm_medium") ?? undefined;
-    const utmCampaign = sp.get("utm_campaign") ?? undefined;
-    const referralSource = sp.get("ref") ?? document.referrer?.split("/")[2] ?? undefined;
-      createSubscription.mutate({
-        tier,
-        province,
-        email: contact.email,
-        name: contact.name,
-        phone: contact.phone,
-        utmSource,
-        utmMedium,
-        utmCampaign,
-        referralSource,
-        currency,
-      });
-  }
-
-  // priceLabel is passed in from the parent (province-aware)
-
   return (
-    <>
-      {showModal && (
-        <CheckoutContactModal
-          productName={label}
-          priceLabel={priceLabel}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleContactSubmit}
-          onClose={() => setShowModal(false)}
-          isLoading={createSubscription.isPending}
-        />
-      )}
-      <button
-        onClick={() => setShowModal(true)}
-        disabled={createSubscription.isPending}
-        style={{
-          padding: "11px 0",
-          borderRadius: 10,
-          background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
-          color: "#fff",
-          border: "none",
-          fontSize: 13,
-          fontWeight: 700,
-          cursor: createSubscription.isPending ? "wait" : "pointer",
-          fontFamily: "inherit",
-          width: "100%",
-          opacity: createSubscription.isPending ? 0.7 : 1,
-          marginTop: "auto",
-        }}
-      >
-        {createSubscription.isPending ? "Redirecting…" : label}
-      </button>
-    </>
+    <Link
+      href="#individual-exam-passes"
+      style={{
+        display: "block", padding: "11px 0", borderRadius: 10,
+        background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff",
+        fontSize: 13, fontWeight: 700, width: "100%", marginTop: "auto",
+        textDecoration: "none", textAlign: "center",
+      }}
+      aria-label={`${label} is a legacy plan; choose a current Individual Exam Pass`}
+    >
+      Choose a Current Exam Pass →
+    </Link>
   );
 }
 
@@ -1372,7 +1313,7 @@ export default function Pricing() {
             >
               <div style={{ fontSize: 25, marginBottom: 10 }}>👤</div>
               <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For myself</div>
-              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Choose one certification course with 12 months of individual access.</p>
+              <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Choose one certification course with permanent individual access.</p>
               <div style={{ marginTop: 12, color: "#2563EB", fontSize: 13, fontWeight: 800 }}>Choose an Exam Pass →</div>
             </button>
             <button
@@ -1418,7 +1359,7 @@ export default function Pricing() {
               <tbody>
                 {[
                   ["Best for", "Operators studying several streams or levels", "One specific exam"],
-                  ["Access", "Legacy plan terms", "One course for 12 months"],
+                  ["Access", "Legacy plan terms", "Permanent access to one course"],
                   ["Billing", "Renews annually until cancelled", "Single payment"],
                   ["Cancellation", "Stop renewal anytime; access continues through paid term", "Not applicable"],
                   ["Features", "Practice, mocks, flashcards, formulas, AI Tutor", "Same features for that course"],
@@ -1443,7 +1384,7 @@ export default function Pricing() {
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
             {isUS
               ? "Subscribe annually and unlock every exam type for your class level. All four WPI tracks included: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Prices in USD."
-              : "Legacy annual plans remain active under their original terms. New individual access is available as a 12-month Exam Pass for one selected certification course."}
+              : "Legacy annual plans remain active under their original terms. New individual access is available as a permanent Exam Pass for one selected certification course."}
           </p>
 
           {/* Province toggle for subscriptions */}
@@ -1496,7 +1437,7 @@ export default function Pricing() {
                 <li>Mock exams, flashcards, formulas, and AI Tutor</li>
                 <li>12 months of access; cancel renewal anytime</li>
               </ul>
-              <SubscriptionCheckoutButton tier={selectedAnnualSubscription.tier} province={subProvince} label={`Subscribe — ${selectedAnnualSubscription.price}/year`} priceLabel={`${selectedAnnualSubscription.price}/year`} currency={isUS ? "usd" : "cad"} />
+              <LegacySubscriptionRedirect tier={selectedAnnualSubscription.tier} province={subProvince} label={`${selectedAnnualSubscription.label} legacy plan`} priceLabel={`${selectedAnnualSubscription.price}/year`} currency={isUS ? "usd" : "cad"} />
             </div>
           ) : (
             <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>Choose an annual option above to see one clear price and checkout option.</div>
@@ -1565,7 +1506,7 @@ export default function Pricing() {
                           Manage Subscription →
                         </Link>
                       ) : (
-                       <SubscriptionCheckoutButton
+                       <LegacySubscriptionRedirect
                           tier={tier.tier}
                           province={subProvince}
                           label={`Subscribe — ${tier.price}/yr`}
@@ -1585,7 +1526,7 @@ export default function Pricing() {
         <div style={{ display: buyerType === "individual" ? "block" : "none", marginTop: 24, marginBottom: 24 }}>
           <div style={{ padding: "18px 20px", background: "#EFF6FF", border: "1.5px solid #BFDBFE", borderRadius: 12 }}>
             <div style={{ fontSize: 17, fontWeight: 850, color: "#0F172A" }}>Choose your Individual Exam Pass</div>
-            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select a currently available course that matches your upcoming exam. One-time payment; 12 months of access from purchase.</p>
+            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select a currently available course that matches your upcoming exam. One-time payment; permanent access for the named learner.</p>
           </div>
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
@@ -1850,7 +1791,7 @@ export default function Pricing() {
           Planning team access?
         </h3>
         <p style={{ color: "#94A3B8", fontSize: 14, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
-          Team purchasing is temporarily paused while we complete the verified multi-course library and current terms. Individual Exam Passes are available now for every released course.
+          Choose Teams Flex for course-specific 3- or 6-month access, or an annual stream plan for ongoing workforce development. Build the order on the Teams page.
         </p>
         <a
           href="/teams"
@@ -1867,7 +1808,7 @@ export default function Pricing() {
             letterSpacing: 0.2,
           }}
         >
-          View team launch details →
+          Build a team plan →
         </a>
       </div>
 
@@ -1883,7 +1824,7 @@ export default function Pricing() {
             },
             {
               q: "What if I need access for several operators or courses?",
-              a: "Individual Exam Passes currently cover one course for one learner. Team purchasing is temporarily paused while Echelon completes the verified multi-course library and current team terms."
+              a: "Individual Exam Passes cover one course for one learner. For several operators, use Teams Flex for course-specific 3- or 6-month access or choose an annual stream plan."
             },
             {
               q: "How do I access my passes after purchase?",
@@ -1899,7 +1840,7 @@ export default function Pricing() {
             },
             {
               q: "How do Teams / utility plans work?",
-              a: "Team checkout is temporarily unavailable while Echelon completes the verified multi-course library and current terms. You can view the team launch details or contact us about future team access."
+              a: "Teams Flex supports course-specific 3- or 6-month licences for named operators. Annual stream plans provide broader access for ongoing development. Build and review the order on the Teams page before checkout."
             },
             {
               q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
@@ -2072,7 +2013,7 @@ function ProductCard({
             background: "#F8FAFC", border: "1px solid #E2E8F0",
             borderRadius: 20, padding: "2px 10px",
           whiteSpace: "nowrap",
-          }}>One-time payment · 12 months access</span>
+          }}>One-time payment · Permanent access</span>
         </div>
       </div>
 
