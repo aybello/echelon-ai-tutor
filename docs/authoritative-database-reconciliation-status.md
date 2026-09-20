@@ -1,6 +1,6 @@
 # Authoritative Database Reconciliation Status
 
-**Status:** Prepared for a final frozen-source rehearsal. **Not approved for live database routing.**
+**Status:** Final frozen-source rehearsal completed and passed. **Not approved for live database routing.**
 
 ## What this record means
 
@@ -16,7 +16,7 @@ Some historical records have already-lost organization references in the origina
 
 ## Controls that must remain in force
 
-The candidate is an **isolated rehearsal database**. It must not become the production database until a new final reconciliation is completed under an active server-side write freeze. The final process must start from a fresh candidate database and the verified original snapshot. It must not reuse this candidate by applying another reconciliation on top of it.
+The candidate is an **isolated rehearsal database**. It was rebuilt from the verified original snapshot after a confirmed production write freeze, then reconciled and validated without any production-routing change. It must not become the production database or be reused for a later routing decision. Because normal writes were restored after the rehearsal, any later routing window must start from a new candidate database and a new confirmed write freeze.
 
 The final reconciliation must use a consistent, read-only source transaction after the application write freeze is verified. It must record the source snapshot time and the full private audit output. The final validation must have no unexplained coverage failures, relationship failures, duplicate payment keys, active login tokens, or schema-contract failures.
 
@@ -26,11 +26,13 @@ The final window also requires an encrypted, restorable backup of the current pr
 
 Protected database archives, credentials, CA certificates, customer identities, payment evidence, candidate target metadata, and detailed reconciliation reports remain under private storage. They must never be committed to Git, copied into project assets, or placed in Notion. Public repository records may document process status and safeguards only.
 
+## Completed rehearsal
+
+The final rehearsal completed under a verified server-side write freeze. An encrypted current-production backup was created in protected storage, and the fresh candidate passed private coverage, integrity, payment-key, inactive-token, strict-TLS application, focused cutover, TypeScript, and production-build checks. No production routing, customer record, pricing, access, payment, scheduled work, or outbound communication was changed. Normal production writes were subsequently verified as restored.
+
 ## Current next action
 
-The next permitted action is a **final frozen-source reconciliation rehearsal**, not a production switch. It requires a separate explicit approval for the short write freeze and later a separate approval for production routing after the rehearsal passes. The final runbook in [1] governs that window.
-
-When a rehearsal ends and normal writes are reopened, its candidate becomes verification evidence only. Any later production-routing window must build a new candidate under a new confirmed write freeze before a live selector change.
+The next action requires **separate explicit approval for production routing**. That window must rebuild the candidate again under a new confirmed write freeze, repeat the final audit, then present the validation result before the protected production database selector can change. The current production database remains active and available for rollback. The final runbook in [1] governs that window.
 
 ## References
 
