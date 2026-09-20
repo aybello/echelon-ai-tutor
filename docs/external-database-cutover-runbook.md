@@ -5,6 +5,8 @@
 This runbook moves the live Echelon application from the platform-managed database to an **Echelon-owned DigitalOcean Managed MySQL cluster**. The target database is independently controlled by the business and is protected with certificate-verified TLS. The process preserves the existing production database until the new connection has passed data, application, and rollback checks.
 
 > **Current state, September 18, 2026:** The authorized production cutover is complete. A fresh separate final target was cloned from a write-frozen source, verified across 62 tables with matching aggregate digest, and selected by the production application. Live status, health, database-backed public read, and a 30-minute production monitor passed. The earlier protected validation clone remains untouched. The original platform-managed source database remains unchanged as rollback protection for at least seven days after cutover. Provider PITR controls are active but are still accumulating history on the new cluster. See [the backup and PITR verification record](./digitalocean-backup-pitr-verification.md).
+>
+> **Authoritative-data routing rule, September 20, 2026:** A later recovered historical source requires a separate final routing window. The server-side write-fence secret must be followed by a freshly published release and two public status confirmations. The final candidate must be newly rebuilt from the recovered source and the frozen production-only records. A development-server restart, a saved secret, or a previously validated candidate is not sufficient proof for the public production service or a later route change.
 
 ## Controls already in place
 
