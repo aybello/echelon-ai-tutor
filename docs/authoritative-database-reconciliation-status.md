@@ -30,6 +30,8 @@ Protected database archives, credentials, CA certificates, customer identities, 
 
 The next permitted action is a **final frozen-source reconciliation rehearsal**, not a production switch. It requires a separate explicit approval for the short write freeze and later a separate approval for production routing after the rehearsal passes. The final runbook in [1] governs that window.
 
+When a rehearsal ends and normal writes are reopened, its candidate becomes verification evidence only. Any later production-routing window must build a new candidate under a new confirmed write freeze before a live selector change.
+
 ## References
 
 [1]: ./external-database-cutover-runbook.md "Echelon Institute External Database Cutover Runbook"
