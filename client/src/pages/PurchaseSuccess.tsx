@@ -147,6 +147,7 @@ export default function PurchaseSuccess() {
   const [accessExpiresAt, setAccessExpiresAt] = useState<Date | null>(null);
   const [fulfillmentPending, setFulfillmentPending] = useState(false);
   const [fulfillmentAttempts, setFulfillmentAttempts] = useState(0);
+  const [verificationFailed, setVerificationFailed] = useState(false);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
 
@@ -154,6 +155,14 @@ export default function PurchaseSuccess() {
   // Verify the session while Stripe's signed webhook records the purchase.
   const verifySession = trpc.stripe.verifySession.useMutation({
     onSuccess: (data) => {
+      // A transient server/Stripe failure must not erase a payment already
+      // confirmed on this page or imply that the customer should pay again.
+      if (!data.paid) {
+        setVerificationFailed(true);
+        setVerifying(false);
+        return;
+      }
+      setVerificationFailed(false);
       if (data.paid && data.email) {
         setEmail(data.email);
         try {
@@ -171,6 +180,7 @@ export default function PurchaseSuccess() {
       setFulfillmentPending(data.fulfillmentPending);
     },
     onError: () => {
+      setVerificationFailed(true);
       setVerifying(false);
     },
   });
@@ -184,13 +194,27 @@ export default function PurchaseSuccess() {
   }, [sessionId]);
 
   useEffect(() => {
-    if (!fulfillmentPending || !sessionId || fulfillmentAttempts >= 5) return;
+    if (!fulfillmentPending || !sessionId || fulfillmentAttempts >= 5 || verificationFailed || verifySession.isPending) return;
     const timer = window.setTimeout(() => {
       setFulfillmentAttempts(attempt => attempt + 1);
       verifySession.mutate({ sessionId });
     }, 2_000);
     return () => window.clearTimeout(timer);
-  }, [fulfillmentPending, fulfillmentAttempts, sessionId]);
+  }, [fulfillmentPending, fulfillmentAttempts, sessionId, verificationFailed, verifySession.isPending]);
+
+  const retryVerification = () => {
+    if (!sessionId || verifySession.isPending) return;
+    setFulfillmentAttempts(0);
+    setVerificationFailed(false);
+    verifySession.mutate({ sessionId });
+  };
+  const waitingForRetry = verificationFailed || fulfillmentAttempts >= 5;
+  const retryButton = (
+    <button type="button" onClick={retryVerification} disabled={!sessionId || verifySession.isPending}
+      style={{ padding: "10px 20px", borderRadius: 8, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 14, fontWeight: 700, cursor: verifySession.isPending ? "wait" : "pointer", fontFamily: "inherit" }}>
+      {verifySession.isPending ? "Checking access…" : "Check access again"}
+    </button>
+  );
 
   return (
     <div
@@ -240,13 +264,10 @@ export default function PurchaseSuccess() {
               We couldn't confirm this purchase
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
-              No access was changed. Please return to pricing or contact us if Stripe charged your card.
+              We could not verify your payment right now. If Stripe charged your card, do not purchase again. Check again or contact us for help.
             </p>
-            <Link href="/pricing">
-              <button style={{ padding: "10px 20px", borderRadius: 8, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
-                Return to Pricing
-              </button>
-            </Link>
+            {sessionId && retryButton}
+            <p><a href="mailto:abello@echeloninstitute.ca">Contact support</a></p>
           </>
         ) : (
           <>
@@ -268,9 +289,13 @@ export default function PurchaseSuccess() {
             <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
               Payment Successful!
             </h1>
-            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
+            <p role="status" aria-live="polite" style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
               {fulfillmentPending ? (
-                <>Your payment is confirmed. We are finalizing course access through our secure payment record. This page will update automatically in a few seconds.</>
+                <>Your payment is confirmed. You do not need to purchase again. {verifySession.isPending
+                  ? "Checking whether your course access is ready…"
+                  : waitingForRetry
+                    ? "Your course access is not confirmed yet. Automatic checks have paused. Check again below, or contact support if access is still unavailable."
+                    : "We are checking for your course access automatically."}</>
               ) : email ? (
                 <>
                   Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} has been recorded for <strong>{email}</strong>.
@@ -283,6 +308,7 @@ export default function PurchaseSuccess() {
                 </>
               )}
             </p>
+            {fulfillmentPending && waitingForRetry && <div style={{ margin: "16px 0" }}>{retryButton}</div>}
 
             {requiresSignIn && !fulfillmentPending && <p style={{ color: "#334155", fontSize: 14 }}>
               Sign in with the email used at checkout to open your course. Your payment is recorded; you do not need to purchase again.
@@ -392,7 +418,7 @@ export default function PurchaseSuccess() {
             </div>
 
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
-              {purchasedProductKey && PRODUCT_PATHS[purchasedProductKey] && (
+              {!fulfillmentPending && purchasedProductKey && PRODUCT_PATHS[purchasedProductKey] && (
                 <Link href={`/activate/${encodeURIComponent(purchasedProductKey)}`}>
                   <button
                     style={{
