@@ -77,12 +77,17 @@ jobs:
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
             < /tmp/echelon-baseline.sql
 
-          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
-            -e "ALTER TABLE job_postings MODIFY COLUMN sourceType enum('rss','scraper') NOT NULL DEFAULT 'rss';"
+          # This disposable database is exported from current schema.ts, so every
+          # post-baseline object exists before the guarded reset begins.
+          # 0070 audit tables are absent from baseline 52. Drop their current
+          # forms so 0070 recreates them and 0071 adds its columns exactly once.
+          REHEARSAL_RESET_APPROVED=RESET_DISPOSABLE_REHEARSAL \
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
+            pnpm db:reset-forward-rehearsal
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
+            pnpm db:migrate:verify-baseline
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:adopt
-          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_upgrade_ci \
-            -e "DROP INDEX exam_dates_email_product_unique ON exam_dates; DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE scheduled_work, flashcard_progress_operations, flashcard_progress_state, purchase_email_outbox, customer_recovery_evidence, certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions, on_the_job_training_records, learning_activity_sessions, training_attestations; DROP INDEX analytics_anonymous_time_idx ON product_analytics_events; ALTER TABLE product_analytics_events DROP COLUMN anonymousHash;"
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
             pnpm db:migrate:apply
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_upgrade_ci \
@@ -92,12 +97,15 @@ jobs:
             -e "CREATE DATABASE echelon_standalone_ci"
           mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_standalone_ci \
             < /tmp/echelon-baseline.sql
-          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_standalone_ci \
-            -e "ALTER TABLE job_postings MODIFY COLUMN sourceType enum('rss','scraper') NOT NULL DEFAULT 'rss';"
+          # Same current-schema export precondition as the full-forward rehearsal.
+          # 0070 audit tables are absent from baseline 52 and must replay cleanly.
+          REHEARSAL_RESET_APPROVED=RESET_DISPOSABLE_REHEARSAL \
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
+            pnpm db:reset-forward-rehearsal
+          DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
+            pnpm db:migrate:verify-baseline
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
             pnpm db:migrate:adopt
-          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -proot echelon_standalone_ci \
-            -e "DROP INDEX exam_dates_email_product_unique ON exam_dates; DROP INDEX stripe_event_log_status_idx ON stripe_event_log; DROP INDEX team_flex_orders_org_status_idx ON team_flex_orders; DROP TABLE scheduled_work, flashcard_progress_operations, flashcard_progress_state, purchase_email_outbox, customer_recovery_evidence, certification_content_reviews, certification_import_runs, certification_flashcards, certification_module_notes, certification_diagrams, certification_questions, certification_blueprint_tasks, certification_sources, certification_bank_versions, on_the_job_training_records, learning_activity_sessions, training_attestations; DROP INDEX analytics_anonymous_time_idx ON product_analytics_events; ALTER TABLE product_analytics_events DROP COLUMN anonymousHash;"
           MIGRATION_APPROVED=APPLY_APPROVED_STANDALONE_MIGRATION \
           MIGRATION_BACKUP_CONFIRMED=BACKUP_VERIFIED \
           MIGRATION_TARGET=0062_purchase_email_outbox \

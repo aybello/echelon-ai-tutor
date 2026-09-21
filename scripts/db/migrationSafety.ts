@@ -16,6 +16,10 @@ export const MANIFEST_PATH = path.join(
   "drizzle/forward-migrations.json"
 );
 export const LEDGER_TABLE = "echelon_schema_migrations";
+const BASELINE_EMBEDDED_0053 = {
+  file: "drizzle/0053_question_governance.sql",
+  sha256: "10b8141bbfed9fc674116561468630e73b0911d4d018caccd1911be5c40cd03a",
+} as const;
 
 export interface SchemaColumnContract {
   name: string;
@@ -48,6 +52,8 @@ export interface ForwardMigration {
   sha256: string;
   allowDestructive?: boolean;
   adoptIfCurrentSchemaMatches?: boolean;
+  /** Historical SQL whose exact schema is already contained in the immutable baseline contract. */
+  baselineEmbedded?: boolean;
   /** Explicitly proposed but not yet applied additive schema changes. */
   proposedOnly?: boolean;
   /**
@@ -73,6 +79,15 @@ export interface ForwardMigration {
     baselineType: string;
     targetType: string;
   }>;
+}
+
+export function selectAdoptableForwardMigrations(
+  baselineIsExact: boolean,
+  adoptablePrefix: readonly ForwardMigration[]
+): ForwardMigration[] {
+  return baselineIsExact
+    ? adoptablePrefix.filter(migration => migration.baselineEmbedded)
+    : [...adoptablePrefix];
 }
 
 export interface MigrationManifest {
@@ -250,10 +265,232 @@ export function findDestructiveSql(sql: string): string[] {
 }
 
 export function splitMigrationStatements(sql: string): string[] {
-  return sql
-    .split(/^\s*-->\s*statement-breakpoint\s*$/m)
-    .map(statement => statement.trim())
-    .filter(Boolean);
+  return splitSemicolonDelimitedSql(sql);
+}
+
+function splitSemicolonDelimitedSql(source: string): string[] {
+  const statements: string[] = [];
+  let statement = "";
+  let statementHasCode = false;
+  let quote: "'" | '"' | "`" | null = null;
+  let lineComment = false;
+  let blockComment = false;
+
+  for (let index = 0; index < source.length; index += 1) {
+    const breakpointEnd = findStatementBreakpointEnd(source, index);
+    if (!quote && !lineComment && !blockComment && breakpointEnd !== null) {
+      const trimmed = statement.trim();
+      if (trimmed && statementHasCode) statements.push(trimmed);
+      statement = "";
+      statementHasCode = false;
+      index = breakpointEnd - 1;
+      continue;
+    }
+
+    const character = source[index] ?? "";
+    const next = source[index + 1] ?? "";
+    const previous = source[index - 1] ?? "";
+    statement += character;
+
+    if (lineComment) {
+      if (character === "\n") lineComment = false;
+      continue;
+    }
+    if (blockComment) {
+      if (previous === "*" && character === "/") blockComment = false;
+      continue;
+    }
+    if (quote) {
+      if (character === quote && next === quote) {
+        statement += next;
+        index += 1;
+        continue;
+      }
+      let precedingBackslashes = 0;
+      for (let cursor = index - 1; cursor >= 0 && source[cursor] === "\\"; cursor -= 1) {
+        precedingBackslashes += 1;
+      }
+      if (character === quote && precedingBackslashes % 2 === 0) quote = null;
+      continue;
+    }
+    if (
+      character === "-" &&
+      next === "-" &&
+      (source[index + 2] === undefined || /[\s\x00-\x1f]/.test(source[index + 2]))
+    ) {
+      lineComment = true;
+      continue;
+    }
+    if (character === "#") {
+      lineComment = true;
+      continue;
+    }
+    if (character === "/" && next === "*") {
+      if (source[index + 2] === "!") {
+        throw new Error("Executable MySQL comments are not supported in migration SQL.");
+      }
+      if (source[index + 2] === "/") {
+        throw new Error("Unterminated block comment in migration SQL.");
+      }
+      blockComment = true;
+      continue;
+    }
+    if (character === "'" || character === '"' || character === "`") {
+      quote = character;
+      statementHasCode = true;
+      continue;
+    }
+    if (character === ";") {
+      const trimmed = statement.trim();
+      if (trimmed && statementHasCode) statements.push(trimmed);
+      statement = "";
+      statementHasCode = false;
+      continue;
+    }
+    if (!/\s/.test(character)) statementHasCode = true;
+  }
+
+  if (quote) throw new Error("Unterminated quoted string in migration SQL.");
+  if (blockComment) throw new Error("Unterminated block comment in migration SQL.");
+  const trailingStatement = statement.trim();
+  if (trailingStatement && statementHasCode) {
+    statements.push(trailingStatement);
+  }
+  return statements;
+}
+
+function findStatementBreakpointEnd(source: string, index: number): number | null {
+  if (index > 0 && source[index - 1] !== "\n") return null;
+  const match = /^[\t \r]*-->[\t ]*statement-breakpoint[\t \r]*(?:\n|$)/.exec(
+    source.slice(index)
+  );
+  return match ? index + match[0].length : null;
+}
+
+export function validateBaselineEmbeddedMigration(
+  sql: string,
+  contract: SchemaContract,
+  file: string
+): string[] {
+  const errors: string[] = [];
+  const statements = splitMigrationStatements(sql);
+  if (statements.length !== 1) {
+    return [`${file} baselineEmbedded validation requires exactly one SQL statement.`];
+  }
+  const statement = statements[0] ?? "";
+  const tableMatch = /^\s*alter\s+table\s+`?([a-z0-9_]+)`?/i.exec(
+    statement
+  );
+  const tableName = tableMatch?.[1];
+  if (!tableName) {
+    return [`${file} baselineEmbedded validation requires an ALTER TABLE statement.`];
+  }
+  const baselineTable = contract.tables.find(table => table.name === tableName);
+  if (!baselineTable) {
+    return [`${file} modifies ${tableName}, which is absent from the baseline contract.`];
+  }
+
+  const body = statement
+    .slice((tableMatch?.[0] ?? "").length)
+    .replace(/;\s*$/, "")
+    .trim();
+  const clauses = splitTopLevelSqlCommaList(body);
+  if (clauses.length === 0) {
+    return [`${file} baselineEmbedded validation found no ALTER TABLE clauses.`];
+  }
+  for (const clause of clauses) {
+    const columnMatch = /^add\s+column\s+`?([a-z0-9_]+)`?\s+(.+)$/i.exec(clause);
+    const indexMatch = /^add\s+(unique\s+)?(?:index|key)\s+`?([a-z0-9_]+)`?\s*\((.+)\)$/i.exec(clause);
+    if (!columnMatch && !indexMatch) {
+      errors.push(`${file} contains an unrecognized baselineEmbedded ALTER clause: ${clause}.`);
+      continue;
+    }
+    if (columnMatch) {
+      const name = columnMatch[1] ?? "";
+      const definition = columnMatch[2] ?? "";
+      const type = /^([a-z]+(?:\([^)]*\))?)/i.exec(definition)?.[1];
+      const baselineColumn = baselineTable.columns.find(column => column.name === name);
+      if (!type || !baselineColumn) {
+        errors.push(`${file} baseline contract is missing added column ${tableName}.${name}.`);
+        continue;
+      }
+      if (normalizeMySqlType(type) !== baselineColumn.type) {
+        errors.push(`${file} baseline column type does not match ${tableName}.${name}.`);
+      }
+      const nullable = !/\bnot\s+null\b/i.test(definition);
+      if (nullable !== baselineColumn.nullable) {
+        errors.push(`${file} baseline column nullability does not match ${tableName}.${name}.`);
+      }
+      const remainder = definition
+        .slice(type.length)
+        .replace(/\bnot\s+null\b|\bnull\b/gi, "")
+        .trim();
+      const allowedEmbeddedDefault =
+        file === BASELINE_EMBEDDED_0053.file &&
+        tableName === "questions" &&
+        name === "reviewStatus" &&
+        remainder.toLowerCase() === "default 'unreviewed'";
+      if (remainder && !allowedEmbeddedDefault) {
+        errors.push(
+          `${file} contains unmodelled column attributes on ${tableName}.${name}: ${remainder}.`
+        );
+      }
+      continue;
+    }
+    const name = indexMatch?.[2] ?? "";
+    const unique = Boolean(indexMatch?.[1]);
+    const columns = (indexMatch?.[3] ?? "")
+      .split(",")
+      .map(column => column.trim().replace(/`/g, ""));
+    const baselineIndex = baselineTable.indexes.find(index => index.name === name);
+    if (!baselineIndex) {
+      errors.push(`${file} baseline contract is missing added index ${tableName}.${name}.`);
+      continue;
+    }
+    if (baselineIndex.unique !== unique || baselineIndex.columns.join(",") !== columns.join(",")) {
+      errors.push(`${file} baseline index metadata does not match ${tableName}.${name}.`);
+    }
+  }
+  return errors;
+}
+
+function splitTopLevelSqlCommaList(sql: string): string[] {
+  const clauses: string[] = [];
+  let clause = "";
+  let quote: "'" | '"' | "`" | null = null;
+  let parenthesisDepth = 0;
+  for (let index = 0; index < sql.length; index += 1) {
+    const character = sql[index] ?? "";
+    const next = sql[index + 1] ?? "";
+    clause += character;
+    if (quote) {
+      if (character === quote && next === quote) {
+        clause += next;
+        index += 1;
+        continue;
+      }
+      let backslashes = 0;
+      for (let cursor = index - 1; cursor >= 0 && sql[cursor] === "\\"; cursor -= 1) backslashes += 1;
+      if (character === quote && backslashes % 2 === 0) quote = null;
+      continue;
+    }
+    if (character === "'" || character === '"' || character === "`") {
+      quote = character;
+      continue;
+    }
+    if (character === "(") parenthesisDepth += 1;
+    if (character === ")") parenthesisDepth -= 1;
+    if (parenthesisDepth < 0) throw new Error("Unbalanced parentheses in ALTER TABLE SQL.");
+    if (character === "," && parenthesisDepth === 0) {
+      const trimmed = clause.slice(0, -1).trim();
+      if (trimmed) clauses.push(trimmed);
+      clause = "";
+    }
+  }
+  if (quote || parenthesisDepth !== 0) throw new Error("Unbalanced SQL in ALTER TABLE clause list.");
+  const trailing = clause.trim();
+  if (trailing) clauses.push(trailing);
+  return clauses;
 }
 
 export async function validateManifest(
@@ -334,6 +571,12 @@ export async function validateManifest(
   let expectedVersion = manifest.baseline.version + 1;
   const seenVersions = new Set<number>();
   const seenTags = new Set<string>();
+  const baselineEmbeddedMigrations = manifest.migrations.filter(
+    migration => migration.baselineEmbedded
+  );
+  if (baselineEmbeddedMigrations.length > 1) {
+    errors.push("Only one explicitly reviewed baselineEmbedded migration is permitted.");
+  }
   for (const migration of manifest.migrations) {
     if (migration.version !== expectedVersion) {
       errors.push(
@@ -384,12 +627,44 @@ export async function validateManifest(
         `${migration.file} cannot be adopted from schema state because it contains destructive SQL.`
       );
     }
-    if (splitMigrationStatements(sql).length === 0)
-      errors.push(`${migration.file} contains no SQL statements.`);
+    try {
+      if (splitMigrationStatements(sql).length === 0) {
+        errors.push(`${migration.file} contains no SQL statements.`);
+      }
+    } catch (error) {
+      errors.push(
+        `${migration.file} cannot be parsed safely: ${error instanceof Error ? error.message : String(error)}`
+      );
+    }
     if (migration.proposedOnly && migration.adoptIfCurrentSchemaMatches) {
       errors.push(
         `${migration.file} cannot be both proposedOnly and adoptIfCurrentSchemaMatches.`
       );
+    }
+    if (migration.baselineEmbedded) {
+      if (!migration.adoptIfCurrentSchemaMatches || migration.proposedOnly) {
+        errors.push(
+          `${migration.file} can be baselineEmbedded only when adoptIfCurrentSchemaMatches=true and proposedOnly is absent.`
+        );
+      }
+      if (migration.version !== manifest.baseline.version + 1) {
+        errors.push(
+          `${migration.file} can be baselineEmbedded only as the first forward migration after the baseline.`
+        );
+      }
+      if (
+        migration.file !== BASELINE_EMBEDDED_0053.file ||
+        migration.sha256 !== BASELINE_EMBEDDED_0053.sha256
+      ) {
+        errors.push(
+          `${migration.file} is not the one explicitly reviewed baseline-embedded migration.`
+        );
+      }
+      if (contract) {
+        errors.push(
+          ...validateBaselineEmbeddedMigration(sql, contract, migration.file)
+        );
+      }
     }
     if (migration.standaloneApply) {
       if (!migration.proposedOnly) {
@@ -697,6 +972,62 @@ export function diffSchemaContracts(
     }
   }
   return { errors, warnings };
+}
+
+/**
+ * Compares immutable baseline contracts without compatibility aliases. Unlike
+ * diffSchemaContracts, equivalent index definitions under a different name and
+ * every unexpected table remain fatal strict verification failures.
+ */
+export function diffExactSchemaContracts(
+  expected: SchemaContract,
+  actual: SchemaContract
+): ContractDiff {
+  const diff = diffSchemaContracts(expected, actual);
+  const errors = [...diff.errors];
+  const warnings: string[] = [];
+  for (const warning of diff.warnings) {
+    if (warning.startsWith("Unexpected column:")) {
+      errors.push(warning.replace("Unexpected column:", "Unexpected exact column:"));
+    }
+  }
+  const expectedTables = new Map(expected.tables.map(table => [table.name, table]));
+  const actualTables = new Map(actual.tables.map(table => [table.name, table]));
+
+  for (const expectedTable of expected.tables) {
+    const actualTable = actualTables.get(expectedTable.name);
+    if (!actualTable) continue;
+    const actualIndexes = new Map(actualTable.indexes.map(index => [index.name, index]));
+    const expectedIndexes = new Set(expectedTable.indexes.map(index => index.name));
+    for (const expectedIndex of expectedTable.indexes) {
+      const actualIndex = actualIndexes.get(expectedIndex.name);
+      if (!actualIndex) {
+        errors.push(`Missing exact index: ${expectedTable.name}.${expectedIndex.name}`);
+        continue;
+      }
+      const mismatch = compareIndex(expectedIndex, actualIndex);
+      if (mismatch) {
+        errors.push(`Exact index drift: ${expectedTable.name}.${expectedIndex.name} ${mismatch}`);
+      }
+    }
+    for (const actualIndex of actualTable.indexes) {
+      if (!expectedIndexes.has(actualIndex.name)) {
+        errors.push(`Unexpected exact index: ${expectedTable.name}.${actualIndex.name}`);
+      }
+    }
+  }
+  for (const actualTable of actual.tables) {
+    if (
+      !expectedTables.has(actualTable.name) &&
+      ![LEDGER_TABLE, "__drizzle_migrations"].includes(actualTable.name)
+    ) {
+      errors.push(`Unexpected exact table: ${actualTable.name}`);
+    }
+  }
+  return {
+    errors: [...new Set(errors)],
+    warnings: [...new Set(warnings)],
+  };
 }
 
 /**

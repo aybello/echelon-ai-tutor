@@ -4,6 +4,7 @@ import {
   LEDGER_TABLE,
   buildExpectedSchemaContract,
   downgradeProposedMissingIndexErrors,
+  diffExactSchemaContracts,
   diffSchemaContracts,
   fetchActualSchemaContract,
   loadManifest,
@@ -12,8 +13,11 @@ import {
   planForwardMigrations,
   resolveRepoPath,
   schemaContractChecksum,
+  selectAdoptableForwardMigrations,
   splitMigrationStatements,
+  validateBaselineEmbeddedMigration,
   validateManifest,
+  sha256,
   type ForwardMigration,
   type LedgerRow,
   type ContractDiff,
@@ -113,20 +117,74 @@ function printSchemaDiff(errors: string[], warnings: string[]): void {
   for (const error of errors) console.error(`ERROR: ${error}`);
 }
 
-async function assertBaselineSchema(
+async function verifyExactBaselineSchema(
   connection: Connection,
   manifest: MigrationManifest
-): Promise<string> {
+): Promise<void> {
+  const diff = await getExactBaselineDiff(connection, manifest);
+  printSchemaDiff(diff.errors, diff.warnings);
+  if (diff.errors.length > 0) {
+    throw new Error(
+      `Database does not exactly satisfy immutable baseline ${manifest.baseline.version}.`
+    );
+  }
+  console.log(
+    `Exact baseline ${manifest.baseline.version} (${manifest.baseline.tag}) verified.`
+  );
+}
+
+async function assertBaselineCompatibility(
+  connection: Connection,
+  manifest: MigrationManifest
+): Promise<void> {
   const expected = await loadSchemaContract(manifest.baseline.contract);
   const actual = await fetchActualSchemaContract(connection);
   const diff = diffSchemaContracts(expected, actual);
   printSchemaDiff(diff.errors, diff.warnings);
   if (diff.errors.length > 0) {
     throw new Error(
-      `Database does not satisfy immutable baseline ${manifest.baseline.version}.`
+      `Database does not satisfy immutable baseline ${manifest.baseline.version} compatibility requirements.`
     );
   }
-  return schemaContractChecksum(expected);
+}
+
+async function getExactBaselineDiff(
+  connection: Connection,
+  manifest: MigrationManifest
+): Promise<ContractDiff> {
+  const expected = await loadSchemaContract(manifest.baseline.contract);
+  const actual = await fetchActualSchemaContract(connection);
+  return diffExactSchemaContracts(expected, actual);
+}
+
+async function assertPinnedEmbeddedDatabaseEvidence(
+  connection: Connection,
+  migration: ForwardMigration
+): Promise<void> {
+  if (migration.version !== 53 || migration.tag !== "0053_question_governance") {
+    throw new Error(
+      `No runtime evidence verifier is defined for embedded migration ${migration.version} (${migration.tag}).`
+    );
+  }
+  const [rows] = await connection.query<RowDataPacket[]>(
+    `
+      SELECT column_default AS columnDefault
+      FROM information_schema.columns
+      WHERE table_schema = DATABASE()
+        AND table_name = 'questions'
+        AND column_name = 'reviewStatus'
+      LIMIT 1
+    `
+  );
+  const columnDefault = String(rows[0]?.columnDefault ?? "").replace(
+    /^'(.*)'$/,
+    "$1"
+  );
+  if (rows.length !== 1 || columnDefault !== "unreviewed") {
+    throw new Error(
+      "Immutable baseline evidence is missing questions.reviewStatus DEFAULT 'unreviewed' required to adopt 0053."
+    );
+  }
 }
 
 async function assertCurrentSchema(connection: Connection): Promise<void> {
@@ -233,28 +291,68 @@ async function adopt(
       "Migration ledger already contains records; baseline adoption is a one-time operation."
     );
 
-  const baselineChecksum = await assertBaselineSchema(connection, manifest);
+  const baselineChecksum = schemaContractChecksum(
+    await loadSchemaContract(manifest.baseline.contract)
+  );
   const adoptablePrefix = [] as MigrationManifest["migrations"];
   for (const migration of manifest.migrations) {
     if (migration.proposedOnly || !migration.adoptIfCurrentSchemaMatches) break;
     adoptablePrefix.push(migration);
   }
-  let adoptForwardMigrations = false;
-  if (adoptablePrefix.length > 0) {
-    const currentDiff = await getCurrentSchemaDiff(connection, manifest);
-    adoptForwardMigrations = currentDiff.errors.length === 0;
-    if (adoptForwardMigrations) printSchemaDiff([], currentDiff.warnings);
+  const baselineEmbeddedMigrations = adoptablePrefix.filter(
+    migration => migration.baselineEmbedded
+  );
+  const exactBaselineDiff = await getExactBaselineDiff(connection, manifest);
+  const baselineIsExact = exactBaselineDiff.errors.length === 0;
+  if (baselineIsExact && baselineEmbeddedMigrations.length > 0) {
+    const baselineContract = await loadSchemaContract(manifest.baseline.contract);
+    for (const migration of baselineEmbeddedMigrations) {
+      const sql = await readFile(resolveRepoPath(migration.file), "utf8");
+      if (sha256(sql) !== migration.sha256) {
+        throw new Error(
+          `Embedded migration ${migration.version} (${migration.tag}) checksum does not match the manifest.`
+        );
+      }
+      const errors = validateBaselineEmbeddedMigration(
+        sql,
+        baselineContract,
+        migration.file
+      );
+      if (errors.length > 0) {
+        throw new Error(
+          `Embedded migration ${migration.version} (${migration.tag}) is not proven by the immutable baseline:\n- ${errors.join("\n- ")}`
+        );
+      }
+      await assertPinnedEmbeddedDatabaseEvidence(connection, migration);
+    }
   }
+  let adoptCurrentSchemaMigrations = false;
+  if (!baselineIsExact && adoptablePrefix.length > 0) {
+    console.log(
+      "Database is not an exact baseline rehearsal target; evaluating current-schema adoption."
+    );
+    await assertBaselineCompatibility(connection, manifest);
+    const currentDiff = await getCurrentSchemaDiff(connection, manifest);
+    adoptCurrentSchemaMigrations = currentDiff.errors.length === 0;
+    if (adoptCurrentSchemaMigrations) printSchemaDiff([], currentDiff.warnings);
+  }
+  if (!baselineIsExact && !adoptCurrentSchemaMigrations) {
+    throw new Error(
+      "Database matches neither the immutable baseline nor the verified current schema; refusing migration adoption."
+    );
+  }
+  const adoptedForwardMigrations =
+    baselineIsExact || adoptCurrentSchemaMigrations
+      ? selectAdoptableForwardMigrations(baselineIsExact, adoptablePrefix)
+      : [];
   await createLedger(connection);
   const adoptedRows = [
     [manifest.baseline.version, manifest.baseline.tag, baselineChecksum],
-    ...(adoptForwardMigrations
-      ? adoptablePrefix.map(migration => [
-          migration.version,
-          migration.tag,
-          migration.sha256,
-        ])
-      : []),
+    ...adoptedForwardMigrations.map(migration => [
+      migration.version,
+      migration.tag,
+      migration.sha256,
+    ]),
   ];
   await connection.query(
     `
@@ -269,12 +367,14 @@ async function adopt(
   console.log(
     `Adopted verified baseline ${manifest.baseline.version} (${manifest.baseline.tag}).`
   );
-  if (adoptForwardMigrations) {
-    for (const migration of adoptablePrefix) {
-      console.log(
-        `Adopted existing ${migration.version} (${migration.tag}) after current-schema verification.`
-      );
-    }
+  for (const migration of adoptedForwardMigrations) {
+    const reason =
+      baselineIsExact && migration.baselineEmbedded
+        ? "immutable baseline-contract verification"
+        : "current-schema verification";
+    console.log(
+      `Adopted existing ${migration.version} (${migration.tag}) after ${reason}.`
+    );
   }
 }
 
@@ -306,6 +406,13 @@ async function status(
   for (const migration of pending)
     console.log(`- ${migration.version} ${migration.tag}`);
   if (pending.length === 0) await assertCurrentSchema(connection);
+}
+
+async function verifyBaseline(
+  connection: Connection,
+  manifest: MigrationManifest
+): Promise<void> {
+  await verifyExactBaselineSchema(connection, manifest);
 }
 
 async function apply(
@@ -474,11 +581,13 @@ async function applyStandalone(
 
 const command = process.argv[2];
 if (
-  !(["status", "adopt", "apply", "apply-standalone"] as const).includes(
+  !(["status", "verify-baseline", "adopt", "apply", "apply-standalone"] as const).includes(
     command as never
   )
 ) {
-  console.error("Usage: migrate.ts <status|adopt|apply|apply-standalone>");
+  console.error(
+    "Usage: migrate.ts <status|verify-baseline|adopt|apply|apply-standalone>"
+  );
   process.exit(1);
 }
 
@@ -488,6 +597,7 @@ const connection = await mysql.createConnection(requireDatabaseUrl());
 
 try {
   if (command === "status") await status(connection, manifest);
+  if (command === "verify-baseline") await verifyBaseline(connection, manifest);
   if (command === "adopt") await adopt(connection, manifest);
   if (command === "apply") await apply(connection, manifest);
   if (command === "apply-standalone")

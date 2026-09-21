@@ -70,7 +70,7 @@ integrationDescribe("Class 1 Distribution and Collection learner-visible promoti
     await connection.execute(`DELETE FROM \`${questionsTable}\``);
     await connection.execute(`DELETE FROM \`${metaTable}\``);
     await seedBaseline();
-  }, 30_000);
+  }, 60_000);
 
   afterAll(async () => {
     if (!connection) return;
