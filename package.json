@@ -36,7 +36,8 @@
     "309a:import:dry-run": "node scripts/import-309a-question-bank.mjs",
     "oit:generate": "node scripts/content/build-oit-question-banks.mjs",
     "oit:validate": "node scripts/validate-oit-question-banks.mjs",
-    "oit:import:dry-run": "node scripts/import-oit-question-banks.mjs"
+    "oit:import:dry-run": "node scripts/import-oit-question-banks.mjs",
+    "oit:repair-reported-items": "node --import tsx scripts/repair-reported-oit-items.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1126.0",
