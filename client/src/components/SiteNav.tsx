@@ -121,7 +121,7 @@ export default function SiteNav({
     <header className={`echelon-site-header${learningMode ? " is-learning" : ""}`}>
       <nav className="echelon-global-nav" aria-label="Global navigation">
         <Link href="/" className="echelon-brand" aria-label="Echelon Institute home">
-          <img src={LOGO_URL} alt="" width={42} height={40} />
+          <img src={LOGO_URL} alt="Echelon Institute logo" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
             <small>{course?.courseKey === "electrician-309a" ? "309A electrician exam prep" : "Operator certification prep"}</small>
