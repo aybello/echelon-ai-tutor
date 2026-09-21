@@ -133,7 +133,7 @@ export default function Teams() {
           </div>
           <aside className="space-y-5"><div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="text-lg font-bold text-slate-900">Annual plan includes</h3><ul className="mt-4 space-y-3">{FEATURES.map((feature) => <li key={feature} className="flex gap-3 text-sm leading-relaxed text-slate-600"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{feature}</li>)}</ul></div><div className="rounded-2xl border border-cyan-100 bg-cyan-50 p-6"><h3 className="text-base font-bold text-slate-900">Need a specific exam only?</h3><p className="mt-2 text-sm leading-relaxed text-slate-600">Use Teams Flex to buy 3- or 6-month Course Passes for the exact operators and courses in your cohort. Retake Extensions are available once per activated Course Pass.</p><Button variant="outline" onClick={() => setPlanType("flex")} className="mt-4 border-teal-600 text-teal-800 hover:bg-teal-100">Build a Flex order</Button></div><p className="px-1 text-xs leading-relaxed text-slate-500">Historical customer recovery is handled separately and is not changed by any new Team or Flex order.</p></aside>
         </section>}
-        <div className="mt-10 text-center text-sm text-slate-600">Buying for one learner? <Link href="/pricing" className="font-semibold text-teal-700">View permanent Individual Exam Passes</Link>.</div>
+        <div className="mt-10 text-center text-sm text-slate-600">Buying for one learner? <Link href="/pricing" className="font-semibold text-teal-700">View 12-month Individual Exam Passes</Link>.</div>
       </main>
     </div>
   );

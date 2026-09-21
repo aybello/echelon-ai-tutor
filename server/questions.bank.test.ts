@@ -6,12 +6,12 @@
  * No static TS imports from deleted client-side question files.
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { drizzle } from "drizzle-orm/mysql2";
 import { eq, sql } from "drizzle-orm";
 import { questions, questionBankMeta } from "../drizzle/schema";
+import { getDb } from "./db";
 
 // ── DB setup ──────────────────────────────────────────────────────────────────
-let db: ReturnType<typeof drizzle> | null = null;
+let db: Awaited<ReturnType<typeof getDb>> = null;
 
 type QRow = {
   id: number;
@@ -30,11 +30,11 @@ let QUESTIONS: QRow[] = [];
 let OIT_MODULES: string[] = [];
 
 beforeAll(async () => {
-  if (!process.env.DATABASE_URL) {
-    console.warn("[questions.bank] Skipping: DATABASE_URL not set");
+  db = await getDb();
+  if (!db) {
+    console.warn("[questions.bank] Skipping: active database is not configured");
     return;
   }
-  db = drizzle(process.env.DATABASE_URL);
 
   // Load all OIT questions from DB
   const rows = await db.select().from(questions).where(eq(questions.bankKey, "oit"));

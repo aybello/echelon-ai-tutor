@@ -1,11 +1,10 @@
 import { provisionIndividualSubscription } from "./provisionIndividualSubscription";
-import { validatedPhone } from "./checkoutIdentity";
 import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
-import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
+import { purchases, subscriptions, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
 import { sendSubscriptionRenewalEmail } from "../email";
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, type OrganizationSubscriptionTier } from "./subscriptionProducts";
@@ -18,9 +17,16 @@ import { ENV } from "../_core/env";
 import { provisionOrgFromWebhook } from "./provisionOrg";
 import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
 import type { SubscriptionProvince } from "./subscriptionProducts";
-import { getIndividualExamPassExpiry } from "./individualExamPass";
+import {
+  INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
+  getIndividualExamPassExpiry,
+  usesTwelveMonthIndividualExamPassPolicy,
+} from "./individualExamPass";
 import { processRefund } from "./processRefund";
-import { paymentTimestampFromStripeEvent } from "./paymentTimestamp";
+import {
+  paymentTimestampFromStripeEvent,
+  paymentTimestampFromSuccessfulPaymentIntent,
+} from "./paymentTimestamp";
 import {
   handleFlexDisputeClosed,
   handleFlexDisputeCreated,
@@ -42,6 +48,12 @@ export function parseRefundLicenceIds(metadata: Record<string, string> | null | 
   return values
     .map(value => Number(String(value).trim()))
     .filter(value => Number.isInteger(value) && value > 0);
+}
+
+function isDuplicateDatabaseKeyError(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const databaseError = error as { code?: unknown; errno?: unknown };
+  return databaseError.code === "ER_DUP_ENTRY" || databaseError.errno === 1062;
 }
 
 export function registerStripeWebhook(app: Express) {
@@ -120,8 +132,8 @@ export function registerStripeWebhook(app: Express) {
           // --- Teams Flex fulfilment branch ---
           if (session.metadata?.type === "team_flex") {
             const { fulfilFlexOrder } = await import("../teams/fulfilFlexOrder");
-            const teamFlexOrderId = parseInt(session.metadata.teamFlexOrderId);
-            if (!teamFlexOrderId || isNaN(teamFlexOrderId)) {
+            const teamFlexOrderId = Number.parseInt(session.metadata.teamFlexOrderId, 10);
+            if (!Number.isInteger(teamFlexOrderId) || teamFlexOrderId <= 0) {
               console.error("[Stripe Webhook] team_flex session missing teamFlexOrderId");
               return res.json({ received: true });
             }
@@ -142,6 +154,31 @@ export function registerStripeWebhook(app: Express) {
             return res.json({ received: true });
           }
 
+          // Subscription and Teams events use their own webhook paths. An
+          // unversioned historical session is deliberately not an entitlement
+          // writer. It requires separate evidence-bound recovery review.
+          const isIndividualExamPass =
+            session.mode === "payment" &&
+            session.metadata?.entitlement_type === INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE;
+          if (!isIndividualExamPass) return res.json({ received: true });
+
+          if (!usesTwelveMonthIndividualExamPassPolicy(session.metadata?.individual_access_policy)) {
+            console.error(`[Stripe Webhook] Individual Exam Pass session ${session.id} is missing its approved access policy`);
+            await notifyOwner({
+              title: "Individual Pass payment needs metadata review",
+              content: `Stripe session ${session.id} has Individual Pass metadata without the approved access-policy marker. No access was granted. Review the session through the evidence-bound recovery process.`,
+            }).catch((error) => {
+              console.error("[Stripe Webhook] Could not notify owner about Individual Pass metadata:", error);
+            });
+            return res.json({ received: true, reviewRequired: true });
+          }
+
+          // A Checkout completion can precede payment for delayed methods. Only
+          // the signed async success event can authorize that later fulfilment.
+          if (event.type === "checkout.session.completed" && session.payment_status !== "paid") {
+            return res.json({ received: true, pendingPayment: true });
+          }
+
           const productKey = session.metadata?.product_key;
           const productName = session.metadata?.product_name;
           const email = normalizeEmail(
@@ -149,8 +186,9 @@ export function registerStripeWebhook(app: Express) {
             session.customer_email ??
             session.metadata?.customer_email
           );
-          const userId = session.metadata?.user_id
-            ? parseInt(session.metadata.user_id)
+          const parsedUserId = Number.parseInt(session.metadata?.user_id ?? "", 10);
+          const userId = Number.isInteger(parsedUserId) && parsedUserId > 0
+            ? parsedUserId
             : null;
           // Name: prefer Stripe's customer_details, fall back to pre-checkout modal metadata
           const webhookCustomerName: string | null =
@@ -163,8 +201,6 @@ export function registerStripeWebhook(app: Express) {
           const amountCAD = session.amount_total ?? 0;
           const stripeSessionId = session.id;
           const stripePaymentIntentId = session.payment_intent ?? null;
-          const accessExpiresAt = getIndividualExamPassExpiry();
-
           if (!productKey || !email) {
             // email is already normalized above
             console.error("[Stripe Webhook] Missing product_key or email in session metadata");
@@ -181,80 +217,79 @@ export function registerStripeWebhook(app: Express) {
             .limit(1);
 
           if (existing.length === 0) {
-            await recordPurchaseWithConfirmation(db, {
-              userId: userId ?? undefined,
-              email,
-              phone: webhookPrePhone,
-              customerName: webhookCustomerName,
-              productKey,
-              productName: productName ?? productKey,
-              amountCAD,
-              stripeSessionId,
-              stripePaymentIntentId,
-              accessExpiresAt,
-            });
+            // Both immediate and delayed payment methods use the successful
+            // PaymentIntent charge time, never a Checkout snapshot or local clock.
+            const accessGrantedAt = await paymentTimestampFromSuccessfulPaymentIntent(
+              session.payment_intent,
+              (paymentIntentId) => stripe.paymentIntents.retrieve(paymentIntentId, { expand: ["latest_charge"] }),
+            );
+            const accessExpiresAt = getIndividualExamPassExpiry(
+              accessGrantedAt,
+            );
+            let createdPurchase = false;
+            try {
+              await recordPurchaseWithConfirmation(db, {
+                userId: userId ?? undefined,
+                email,
+                phone: webhookPrePhone,
+                customerName: webhookCustomerName,
+                productKey,
+                productName: productName ?? productKey,
+                amountCAD,
+                stripeSessionId,
+                stripePaymentIntentId,
+                accessExpiresAt,
+              });
+              createdPurchase = true;
 
-            console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
-            // Confirmation delivery is queued atomically with the purchase.
+              console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
+              // The purchase and confirmation-delivery intent are one transaction.
 
-            // Notify owner
-            const purchasePhone = session.customer_details?.phone ?? null;
-            await notifyOwner({
-              title: `New Purchase: ${productName ?? productKey}`,
-              content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
-            });
+              const purchasePhone = session.customer_details?.phone ?? null;
+              await notifyOwner({
+                title: `New Purchase: ${productName ?? productKey}`,
+                content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
+              }).catch((error) => {
+                console.error("[Stripe Webhook] Could not notify owner about purchase:", error);
+              });
+            } catch (error) {
+              // Concurrent deliveries are resolved by the database's unique
+              // Stripe-session key. Confirm the winning transaction committed
+              // before returning a duplicate success response.
+              if (!isDuplicateDatabaseKeyError(error)) throw error;
+              const persisted = await db
+                .select({ id: purchases.id })
+                .from(purchases)
+                .where(eq(purchases.stripeSessionId, stripeSessionId))
+                .limit(1);
+              if (persisted.length === 0) throw error;
+              console.log(`[Stripe Webhook] Concurrent duplicate session ${stripeSessionId} — verified existing purchase`);
+            }
+
+            if (createdPurchase) {
+              const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
+              await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD } })
+                .catch((error) => console.error("[Stripe Webhook] Checkout analytics failed:", error));
+              await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase" } })
+                .catch((error) => console.error("[Stripe Webhook] Access analytics failed:", error));
+            }
           } else {
             console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping insert`);
-          }
-
-          // The browser success page may create the purchase before the webhook
-          // arrives. The webhook event itself is idempotency-guarded, so record
-          // the conversion here even when the purchase row already exists.
-          const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
-          await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD } });
-          await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase" } });
-
-          // Always attempt to save phone and name — runs for both new and duplicate sessions
-          // This handles the case where verifySession inserted the row before the webhook fired
-          const phone = validatedPhone(session.customer_details?.phone ?? session.metadata?.customer_phone);
-          const customerName = session.customer_details?.name ?? (session.metadata?.customer_name || null);
-          if (phone || customerName) {
-            try {
-              await db
-                .update(purchases)
-                .set({ ...(phone ? { phone } : {}), ...(customerName ? { customerName } : {}) })
-                .where(eq(purchases.stripeSessionId, stripeSessionId));
-              console.log(`[Stripe Webhook] Phone saved/updated for session ${stripeSessionId}: ${phone}`);
-
-              const targetUserId = userId ?? (await db
-                .select({ id: users.id })
-                .from(users)
-                .where(eq(users.email, normalizeEmail(email)))
-                .limit(1)
-                .then(rows => rows[0]?.id ?? null));
-
-              if (targetUserId && phone) {
-                await db
-                  .update(users)
-                  .set({ phone })
-                  .where(eq(users.id, targetUserId));
-                console.log(`[Stripe Webhook] Phone saved to users table for user ${targetUserId}: ${phone}`);
-              }
-            } catch (phoneErr) {
-              console.error("[Stripe Webhook] Failed to save phone (dedup path):", phoneErr);
-            }
           }
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing checkout.session.completed:", err);
           // Notify owner immediately so they can manually restore access
           const sessionEmail = session?.customer_details?.email ?? session?.customer_email ?? session?.metadata?.customer_email ?? "unknown";
           const sessionProduct = session?.metadata?.product_name ?? session?.metadata?.product_key ?? "unknown";
-          await trackEvent("stripe_provisioning_failed", { email: sessionEmail, productKey: sessionProduct, extra: { error: err.message } });
+          await trackEvent("stripe_provisioning_failed", { email: sessionEmail, productKey: sessionProduct, extra: { error: err.message } })
+            .catch((trackingError) => console.error("[Stripe Webhook] Failure analytics could not be recorded:", trackingError));
           notifyOwner({
             title: "⚠️ Webhook Processing Error",
-            content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
+            content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: correct the issue, then replay the signed Stripe event. Do not create access manually without evidence-bound approval.`,
           }).catch((err) => { console.error("[webhook] notifyOwner failed:", err); });
-          return res.status(500).json({ error: "Internal error" });
+          // A non-2xx response makes a transient database or Stripe lookup
+          // failure retryable. Durable metadata mismatches return earlier with 2xx.
+          return res.status(503).json({ error: "Individual Exam Pass fulfilment is incomplete" });
         }
       }
 

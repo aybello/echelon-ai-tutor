@@ -1,6 +1,6 @@
 // Echelon Institute — Purchase Success Page
 // Shown after Stripe Checkout completes successfully
-// Verifies the Stripe session and continues into the purchased course setup.
+// Verifies the Stripe session while the signed Stripe webhook records the purchase.
 // Course access remains server-authoritative; browser storage is not an entitlement source.
 
 import { useEffect, useState } from "react";
@@ -145,11 +145,13 @@ export default function PurchaseSuccess() {
   const [stripeSessionId, setStripeSessionId] = useState("");
   const [purchasedProductKey, setPurchasedProductKey] = useState(requestedProductKey);
   const [accessExpiresAt, setAccessExpiresAt] = useState<Date | null>(null);
+  const [fulfillmentPending, setFulfillmentPending] = useState(false);
+  const [fulfillmentAttempts, setFulfillmentAttempts] = useState(0);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
 
 
-  // Verify the session with Stripe and record the purchase
+  // Verify the session while Stripe's signed webhook records the purchase.
   const verifySession = trpc.stripe.verifySession.useMutation({
     onSuccess: (data) => {
       if (data.paid && data.email) {
@@ -166,6 +168,7 @@ export default function PurchaseSuccess() {
       setVerifying(false);
       setStripeSessionId(sessionId);
       setAccessExpiresAt(data.accessExpiresAt ?? null);
+      setFulfillmentPending(data.fulfillmentPending);
     },
     onError: () => {
       setVerifying(false);
@@ -179,6 +182,15 @@ export default function PurchaseSuccess() {
       setVerifying(false);
     }
   }, [sessionId]);
+
+  useEffect(() => {
+    if (!fulfillmentPending || !sessionId || fulfillmentAttempts >= 5) return;
+    const timer = window.setTimeout(() => {
+      setFulfillmentAttempts(attempt => attempt + 1);
+      verifySession.mutate({ sessionId });
+    }, 2_000);
+    return () => window.clearTimeout(timer);
+  }, [fulfillmentPending, fulfillmentAttempts, sessionId]);
 
   return (
     <div
@@ -257,7 +269,9 @@ export default function PurchaseSuccess() {
               Payment Successful!
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
-              {email ? (
+              {fulfillmentPending ? (
+                <>Your payment is confirmed. We are finalizing course access through our secure payment record. This page will update automatically in a few seconds.</>
+              ) : email ? (
                 <>
                   Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} has been recorded for <strong>{email}</strong>.
                   {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
@@ -270,7 +284,7 @@ export default function PurchaseSuccess() {
               )}
             </p>
 
-            {requiresSignIn && <p style={{ color: "#334155", fontSize: 14 }}>
+            {requiresSignIn && !fulfillmentPending && <p style={{ color: "#334155", fontSize: 14 }}>
               Sign in with the email used at checkout to open your course. Your payment is recorded; you do not need to purchase again.
             </p>}
             {/* Access email reminder */}
@@ -281,8 +295,8 @@ export default function PurchaseSuccess() {
               </div>
             )}
 
-            {/* Your Courses - show all unlocked products */}
-            <div
+            {/* Your Courses - show only after the webhook has recorded access */}
+            {!fulfillmentPending && <div
               style={{
                 background: "#F0FDF4",
                 border: "1px solid #BBF7D0",
@@ -323,7 +337,7 @@ export default function PurchaseSuccess() {
                   ));
                 })}
               </div>
-            </div>
+            </div>}
 
             {/* How did you hear about us */}
             {!referralSubmitted ? (

@@ -93,7 +93,7 @@ export default function OitHub() {
             <li>Timed 100-question mock exam with module results</li>
             <li>AI Tutor explanations for concepts and calculations</li>
             <li>Process guides, formula sheets, and math practice</li>
-            <li>Permanent access for one named learner</li>
+            <li>12 months of access for one named learner from successful payment</li>
           </ul>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link

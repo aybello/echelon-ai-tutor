@@ -288,11 +288,11 @@ export default function QuizGate({
                       opacity: createCheckout.isPending ? 0.7 : 1,
                     }}
                   >
-                    {createCheckout.isPending ? "Opening checkout…" : `Continue with Permanent Exam Pass — ${checkoutPriceLabel} →`}
+                    {createCheckout.isPending ? "Opening checkout…" : `Continue with 12-Month Exam Pass — ${checkoutPriceLabel} →`}
                   </button>
                 {checkoutError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, marginTop: 8, textAlign: "center" }}>{checkoutError}</p>}
                 <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
-                  One-time payment · permanent access · No subscription
+                  One-time payment · 12 months of access from successful payment · No subscription
                 </p>
               </div>
 

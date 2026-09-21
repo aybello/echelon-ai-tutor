@@ -16,7 +16,7 @@ import {
 } from "../shared/pricingCatalogue";
 
 describe("Echelon pricing catalogue", () => {
-  it("keeps permanent Individual Exam Pass pricing separate from Teams Flex", () => {
+  it("keeps 12-month Individual Exam Pass pricing separate from Teams Flex", () => {
     expect(INDIVIDUAL_PRICES_CAD.oit).toBe(4_900);
     expect(getCoursePassPrice("oit", 3)).toBe(3_900);
     expect(getCoursePassPrice("oit", 6)).toBe(4_900);
@@ -49,11 +49,11 @@ describe("Echelon pricing catalogue", () => {
     expect(mixed.lineItems).toHaveLength(2);
   });
 
-  it("retains a Flex band for every permanent individual price", () => {
+  it("retains a Flex band for every individual 12-month pass price", () => {
     for (const price of new Set(Object.values(INDIVIDUAL_PRICES_CAD))) {
       expect(COURSE_PASS_BAND_PRICES[price]).toBeDefined();
     }
     expect(VOLUME_BANDS).toHaveLength(4);
-    expect(CATALOGUE_VERSION).toBe("2026-09-17");
+    expect(CATALOGUE_VERSION).toBe("2026-09-21");
   });
 });

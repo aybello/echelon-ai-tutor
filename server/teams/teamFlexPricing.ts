@@ -2,9 +2,8 @@
  * Teams Flex pricing.
  *
  * Flex is a one-time, course-specific licence for a named operator. Launch
- * terms are deliberately limited to 3 and 6 months. A permanent Individual
- * Exam Pass is a different product and is never recreated as a 12-month Flex
- * licence.
+ * terms are deliberately limited to 3 and 6 months. A 12-month Individual
+ * Exam Pass is a different product and is never recreated as a Flex licence.
  */
 import { calculateBlendedDiscount } from "../../shared/pricingCatalogue";
 

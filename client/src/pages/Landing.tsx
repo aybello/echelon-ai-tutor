@@ -2177,7 +2177,7 @@ export default function Landing() {
             {[
               {
                 q: "How does individual access work?",
-                a: "Individuals buy a permanent Exam Pass for one selected certification course. Utilities and municipalities can choose targeted Teams Flex licences for named operators or Teams Annual access. Existing individual subscriptions remain active under their original terms, but are no longer offered to new customers.",
+                a: "Individuals buy a 12-month Exam Pass for one selected certification course from successful payment. Utilities and municipalities can choose targeted Teams Flex licences for named operators or Teams Annual access. Existing individual subscriptions remain active under their original terms, but are no longer offered to new customers.",
               },
               {
                 q: "Do the practice questions match the real exam?",

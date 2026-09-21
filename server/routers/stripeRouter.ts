@@ -1,5 +1,4 @@
 import { checkoutIdentityMatches } from "../stripe/checkoutIdentity";
-import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
@@ -33,10 +32,7 @@ import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
-import {
-  INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
-  getIndividualExamPassExpiry,
-} from "../stripe/individualExamPass";
+import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import {
@@ -97,7 +93,7 @@ export const stripeRouter = router({
 
       const userEmail = ctx.user?.email ?? input.email;
       // Phone and name collected via pre-checkout modal; stored in metadata
-      // so verifySession and webhook can save them to the purchases table
+      // for the signed Stripe webhook to save with the purchase record.
       const preCheckoutPhone = input.phone ?? "";
       const preCheckoutName = input.name ?? "";
       const currency = input.currency ?? "cad";
@@ -132,9 +128,9 @@ export const stripeRouter = router({
           utm_medium: input.utmMedium ?? "",
           utm_campaign: input.utmCampaign ?? "",
           currency,
-          entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
           catalogue_version: CATALOGUE_VERSION,
           analytics_identity_hash: input.visitorId ? hashAnalyticsAnonymousId(input.visitorId) : "",
+          ...individualExamPassCheckoutMetadata(),
         },
         allow_promotion_codes: true,
         phone_number_collection: { enabled: true },
@@ -169,45 +165,33 @@ export const stripeRouter = router({
         });
         // Use canonical validator — never trust client-supplied productKey
         const checkout = validateOneTimeCheckout(session);
-        const { email, productKey, productName, amountPaidCents: amountCAD, paymentIntentId: stripePaymentIntentId, phone, customerName } = checkout;
-        const accessExpiresAt = getIndividualExamPassExpiry();
+        const { email, productKey } = checkout;
 
         const db = await getDb();
         if (!db) throw new Error("Database unavailable while confirming purchase");
-        {
-          const existing = await db
-            .select({ id: purchases.id })
-            .from(purchases)
-            .where(eq(purchases.stripeSessionId, input.sessionId))
-            .limit(1);
-          if (existing.length === 0) {
-            await recordPurchaseWithConfirmation(db, {
-              email,
-              phone,
-              customerName,
-              productKey,
-              productName,
-              amountCAD,
-              stripeSessionId: input.sessionId,
-              stripePaymentIntentId,
-              accessExpiresAt,
-            });
-            // Confirmation delivery is queued atomically with the purchase.
-          }
-        }
+        const existing = await db
+          .select({ id: purchases.id, accessExpiresAt: purchases.accessExpiresAt })
+          .from(purchases)
+          .where(eq(purchases.stripeSessionId, input.sessionId))
+          .limit(1);
+        const fulfilledPurchase = existing[0] ?? null;
+        const fulfillmentPending = !fulfilledPurchase;
+        const accessExpiresAt = fulfilledPurchase?.accessExpiresAt ?? null;
 
         const identityMatches = checkoutIdentityMatches(ctx, email);
-        // Existing sessions remain unchanged. Guests prove email ownership by OTP.
+        // Stripe's signed paid webhook is the only writer for Individual Exam
+        // Passes. Guests prove email ownership separately through OTP.
         return { email: identityMatches ? email : "", productKey, paid: true,
-          requiresSignIn: !identityMatches, unlockedExamTypes: identityMatches ? getAllUnlockedExamTypes([productKey]) : [],
-          accessToken: null, accessExpiresAt };
+          requiresSignIn: !identityMatches,
+          unlockedExamTypes: identityMatches && !fulfillmentPending ? getAllUnlockedExamTypes([productKey]) : [],
+          accessToken: null, accessExpiresAt, fulfillmentPending };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
-          content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
+          content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: check signed Stripe webhook delivery before any manual recovery.`,
         }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
-        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null };
+        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false };
       }
     }),
 
@@ -229,7 +213,7 @@ export const stripeRouter = router({
       const productKeys = rows
         .filter((row) =>
           row.status === "active" &&
-          (row.accessExpiresAt == null || row.accessExpiresAt >= now),
+          (row.accessExpiresAt == null || row.accessExpiresAt > now),
         )
         .map(r => r.productKey);
       const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);

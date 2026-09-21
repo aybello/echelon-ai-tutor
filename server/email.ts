@@ -15,6 +15,26 @@ export interface PurchaseConfirmationPayload {
   amountCAD: number; // in cents
   quizPath: string;  // e.g. "/class1-ww"
   mockPath: string;  // e.g. "/class1-ww-mock"
+  accessExpiresAt: Date | string | null;
+}
+
+export function purchaseAccessLabel(accessExpiresAt: PurchaseConfirmationPayload["accessExpiresAt"]): string {
+  if (!accessExpiresAt) return "Your recorded access term is available in your account";
+  const expiry = accessExpiresAt instanceof Date ? accessExpiresAt : new Date(accessExpiresAt);
+  if (Number.isNaN(expiry.getTime())) return "Your recorded access term is available in your account";
+  return `Access expires ${new Intl.DateTimeFormat("en-CA", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).format(expiry)} UTC`;
+}
+
+export function purchaseAccessSummary(accessExpiresAt: PurchaseConfirmationPayload["accessExpiresAt"]): string {
+  return `${purchaseAccessLabel(accessExpiresAt)}.`;
 }
 
 function createTransporter(): nodemailer.Transporter {
@@ -58,7 +78,7 @@ async function getTransporter(): Promise<nodemailer.Transporter> {
 export async function sendPurchaseConfirmationEmail(
   payload: PurchaseConfirmationPayload
 ): Promise<void> {
-  const { email, productName, productKey, amountCAD, quizPath, mockPath } = payload;
+  const { email, productName, productKey, amountCAD, quizPath, mockPath, accessExpiresAt } = payload;
 
   let transporter: nodemailer.Transporter;
 
@@ -82,6 +102,8 @@ export async function sendPurchaseConfirmationEmail(
   const quizUrl = `${siteUrl}${quizPath}`;
   const mockUrl = `${siteUrl}${mockPath}`;
   const accountUrl = `${siteUrl}/account`;
+  const accessSummary = purchaseAccessSummary(accessExpiresAt);
+  const accessLabel = purchaseAccessLabel(accessExpiresAt);
 
   const confirmationMail = {
     from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
@@ -91,6 +113,7 @@ export async function sendPurchaseConfirmationEmail(
       `You're all set!`,
       ``,
       `Thank you for purchasing the ${productName} (${amountFormatted}).`,
+      accessSummary,
       ``,
       `Start studying now:`,
       `  Practice Quiz: ${quizUrl}`,
@@ -132,7 +155,7 @@ export async function sendPurchaseConfirmationEmail(
             <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
               <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#15803D;letter-spacing:0.06em;text-transform:uppercase;">Purchase Confirmed</p>
               <p style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">${productName}</p>
-              <p style="margin:4px 0 0;font-size:14px;color:#475569;">${amountFormatted} · One-time payment · Access never expires</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#475569;">${amountFormatted} · One-time payment · ${accessLabel}</p>
             </div>
 
             <!-- Start studying CTAs -->

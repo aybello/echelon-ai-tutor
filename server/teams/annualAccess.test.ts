@@ -43,6 +43,17 @@ describe("annual team assignment access", () => {
     org.termEnd = termEnd;
     expect((await resolveTeamAccess(null, "operator@example.test", "wpi-class4-water-coll")).hasAccess).toBe(false);
   });
+  it("denies Team Annual access at the exact organization term boundary", async () => {
+    vi.useFakeTimers();
+    try {
+      const cutoff = new Date("2027-09-21T14:30:00.000Z");
+      vi.setSystemTime(cutoff);
+      org.termEnd = cutoff;
+      expect((await resolveTeamAccess(null, "operator@example.test", "wpi-class4-water-coll")).hasAccess).toBe(false);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
   it("rejects an inactive organization", async () => {
     org.status = "cancelled";
     expect((await resolveTeamAccess(null, "operator@example.test", "wpi-class4-water-coll")).hasAccess).toBe(false);

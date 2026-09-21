@@ -88,7 +88,7 @@ const faqs = [
   {
     question: "How does individual access work?",
     answer:
-      "An Individual Exam Pass is a one-time payment for one selected course with permanent access. Current course pricing is shown on the pricing page.",
+      "An Individual Exam Pass is a one-time payment for one selected course with 12 months of access from successful payment. Current course pricing is shown on the pricing page.",
   },
   {
     question: "Which certifications are supported?",

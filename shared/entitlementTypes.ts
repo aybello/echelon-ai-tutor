@@ -6,7 +6,7 @@
  */
 
 export type EntitlementType =
-  | "individual_exam_pass"   // Individual purchase, permanent, one course
+  | "individual_exam_pass"   // Individual purchase, one course, recorded term
   | "teams_course_pass"      // Teams Flex, 3/6 month, one course per operator
   | "teams_all_access"       // Teams Annual, annual stream or all-stream access
   | "legacy";                // Grandfathered: old subscriptions, bundles, etc.
@@ -38,7 +38,7 @@ export const ENTITLEMENT_RULES: Record<EntitlementType, {
     requiresCourseId: true,
     grantsAllCourses: false,
     transferable: false,
-    description: "One course, one learner, permanent access.",
+    description: "One course, one learner; access term recorded per purchase.",
   },
   teams_course_pass: {
     requiresCourseId: true,

@@ -144,7 +144,7 @@ describe("SEO and geographic landing-page contract", () => {
   it("describes Echelon accurately for answer engines", () => {
     const llms = buildLlmsTxt();
     expect(llms).toContain("Echelon Institute is independent");
-    expect(llms).toContain("one selected course and permanent access");
+    expect(llms).toContain("one selected course and 12 months of access from successful payment");
     expect(llms).toContain("OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(llms).not.toContain("Alberta AWWOA");
     expect(llms).not.toContain("Saskatchewan SLWA");

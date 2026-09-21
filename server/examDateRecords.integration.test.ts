@@ -29,7 +29,12 @@ const save = (who: string, date = "2030-06-01", productKey = "class1-water") => 
 });
 const getRows = (who: string) => db.select().from(examDates).where(eq(examDates.email, who));
 const caller = (who?: string) => appRouter.createCaller({ user: null, studentEmail: who ?? null, req: {}, res: {} } as any);
-const suite = process.env.DATABASE_URL ? describe : describe.skip;
+// This suite creates, alters, and drops schemas. It must never run merely
+// because an application database URL is present, including production.
+// Run it only with a disposable database environment and this explicit gate.
+const suite = process.env.ECHELON_RUN_ISOLATED_INTEGRATION_TESTS === "true"
+  ? describe
+  : describe.skip;
 suite("exam-date concurrency and reminder integrity with a real database", () => {
   beforeAll(async () => { db = (await getDb())!; if (!db) throw new Error("Database required"); });
   afterAll(async () => {

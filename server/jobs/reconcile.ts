@@ -1,16 +1,18 @@
-import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
 /**
  * Stripe purchase reconciliation helper.
  * Can be called from the admin tRPC procedure OR the scheduled cron job.
+ * It reports missing paid sessions but never grants learner access.
  */
 import Stripe from "stripe";
 import { eq } from "drizzle-orm";
 import { getDb } from "../db";
-import { purchases, users, subscriptions } from "../../drizzle/schema";
+import { subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
 import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
-import { getIndividualExamPassExpiry } from "../stripe/individualExamPass";
+import {
+  usesTwelveMonthIndividualExamPassPolicy,
+} from "../stripe/individualExamPass";
 
 function getStripe(): Stripe {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -27,8 +29,6 @@ export interface ReconcileResult {
 
 export async function runReconciliation(hoursBack: number = 48, assertOwned: () => Promise<void> = async () => {}): Promise<ReconcileResult> {
   const stripe = getStripe();
-  const db = await getDb();
-  if (!db) throw new Error("Database unavailable");
 
   const since = Math.floor(Date.now() / 1000) - hoursBack * 3600;
   const recovered: { email: string; productKey: string; sessionId: string }[] = [];
@@ -62,61 +62,15 @@ export async function runReconciliation(hoursBack: number = 48, assertOwned: () 
           continue;
         }
 
-        // Check if already in DB
-        const existing = await db
-          .select({ id: purchases.id })
-          .from(purchases)
-          .where(eq(purchases.stripeSessionId, session.id))
-          .limit(1);
-
-        if (existing.length > 0) {
-          skipped.push(session.id);
-          continue;
-        }
-
-        // Insert the missing purchase
-        const productName = session.metadata?.product_name ?? productKey;
-        const amountCAD = session.amount_total ?? 0;
-        const stripePaymentIntentId =
-          typeof session.payment_intent === "string" ? session.payment_intent : null;
-        const userId = session.metadata?.user_id
-          ? parseInt(session.metadata.user_id)
-          : null;
-        const phone = (session as any).customer_details?.phone ?? null;
-        const accessExpiresAt = getIndividualExamPassExpiry();
-
-        await assertOwned();
-        await recordPurchaseWithConfirmation(db, {
-          userId: userId ?? undefined,
-          email,
-          productKey,
-          productName,
-          amountCAD,
-          stripeSessionId: session.id,
-          stripePaymentIntentId,
-          phone,
-          accessExpiresAt,
-        });
-
-        // Save phone to users table if available
-        if (phone) {
-          const targetUserId =
-            userId ??
-            (await db
-              .select({ id: users.id })
-              .from(users)
-              .where(eq(users.email, email))
-              .limit(1)
-              .then(rows => rows[0]?.id ?? null));
-          if (targetUserId) {
-            await db.update(users).set({ phone }).where(eq(users.id, targetUserId));
-          }
-        }
-
-        // Confirmation delivery is queued atomically with the purchase.
-
-        recovered.push({ email, productKey, sessionId: session.id });
-        console.log(`[reconcile] Recovered missing purchase: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${session.id})`);
+        const currentPolicy = usesTwelveMonthIndividualExamPassPolicy(
+          session.metadata?.individual_access_policy,
+        );
+        const message = currentPolicy
+          ? `${session.id}: current Individual Exam Pass requires signed webhook replay`
+          : `${session.id}: historical Individual Exam Pass requires evidence-bound recovery`;
+        skipped.push(session.id);
+        errors.push(message);
+        console.error("[reconcile] " + message);
       } catch (err: any) {
         errors.push(`${session.id}: ${err.message}`);
         console.error(`[reconcile] Error processing session ${session.id}:`, err.message);

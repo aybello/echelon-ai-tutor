@@ -1306,7 +1306,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Choose a permanent Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1494,7 +1494,7 @@ export default function Pricing() {
               <ul style={{ margin: "0 0 18px", paddingLeft: 18, color: "#334155", fontSize: 13, lineHeight: 1.8 }}>
                 <li>All included certification tracks for this level</li>
                 <li>Mock exams, flashcards, formulas, and AI Tutor</li>
-                <li>12 months of access; cancel renewal anytime</li>
+                <li>Annual all-access subscription; renews yearly, cancel renewal anytime</li>
               </ul>
               <SubscriptionCheckoutButton tier={selectedAnnualSubscription.tier} province={subProvince} label={`Subscribe — ${selectedAnnualSubscription.price}/year`} priceLabel={`${selectedAnnualSubscription.price}/year`} currency={isUS ? "usd" : "cad"} />
             </div>
@@ -1585,7 +1585,7 @@ export default function Pricing() {
         <div style={{ display: buyerType === "individual" ? "block" : "none", marginTop: 24, marginBottom: 24 }}>
           <div style={{ padding: "18px 20px", background: "#EFF6FF", border: "1.5px solid #BFDBFE", borderRadius: 12 }}>
             <div style={{ fontSize: 17, fontWeight: 850, color: "#0F172A" }}>Choose your Individual Exam Pass</div>
-            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select a currently available course that matches your upcoming exam. One-time payment; 12 months of access from purchase.</p>
+            <p style={{ margin: "5px 0 0", color: "#475569", fontSize: 13 }}>Select a currently available course that matches your upcoming exam. One-time payment; 12 months of access from successful payment.</p>
           </div>
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
@@ -1850,7 +1850,7 @@ export default function Pricing() {
           Planning team access?
         </h3>
         <p style={{ color: "#94A3B8", fontSize: 14, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
-          Team purchasing is temporarily paused while we complete the verified multi-course library and current terms. Individual Exam Passes are available now for every released course.
+          Individual Exam Passes provide 12 months of course-specific access. Teams Flex and Teams Annual options are available for organizations that need named operator licences.
         </p>
         <a
           href="/teams"
@@ -1879,11 +1879,11 @@ export default function Pricing() {
           {[
             {
               q: "What does an Individual Exam Pass include?",
-              a: "An Individual Exam Pass gives one learner permanent access to one selected certification course. It includes practice questions, AI Tutor, mock exams, flashcards, formulas, and study resources for that course."
+              a: "An Individual Exam Pass gives one learner 12 months of access to one selected certification course from successful payment. It includes practice questions, AI Tutor, mock exams, flashcards, formulas, and study resources for that course."
             },
             {
               q: "What if I need access for several operators or courses?",
-              a: "Individual Exam Passes currently cover one course for one learner. Team purchasing is temporarily paused while Echelon completes the verified multi-course library and current team terms."
+              a: "Individual Exam Passes cover one course for one learner. Teams Flex supports course-specific licences for named operators, and Teams Annual supports year-round organizational access."
             },
             {
               q: "How do I access my passes after purchase?",
@@ -1899,7 +1899,7 @@ export default function Pricing() {
             },
             {
               q: "How do Teams / utility plans work?",
-              a: "Team checkout is temporarily unavailable while Echelon completes the verified multi-course library and current terms. You can view the team launch details or contact us about future team access."
+              a: "Teams Flex supports 3- or 6-month course-specific licences for named operators. Teams Annual supports year-round organizational access by stream. Visit the Teams page to build a plan."
             },
             {
               q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
@@ -1907,7 +1907,7 @@ export default function Pricing() {
             },
             {
               q: "Can I cancel or get a refund?",
-              a: `Individual Exam Passes are one-time purchases with permanent access and no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. ${INDIVIDUAL_REFUND_SUMMARY} Contact ${REFUND_CONTACT_EMAIL}.`
+              a: `Individual Exam Passes are one-time purchases with 12 months of access from successful payment and no renewal to cancel. If you have a legacy annual subscription, you can cancel renewal from your account page. ${INDIVIDUAL_REFUND_SUMMARY} Contact ${REFUND_CONTACT_EMAIL}.`
             },
           ].map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} />

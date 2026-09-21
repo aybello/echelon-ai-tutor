@@ -3,7 +3,7 @@
  *
  * CANONICAL PRICING CATALOGUE — Single source of truth for Echelon Institute.
  * Three products:
- *   1. Individual Exam Pass (permanent, per-course, one learner)
+ *   1. Individual Exam Pass (12 months, per-course, one learner)
  *   2. Teams Flex Course Pass (3/6-month, per-course, named operator)
  *   3. Teams Annual (one stream CA$449/operator/year or All Streams CA$549/operator/year)
  *
@@ -13,7 +13,7 @@
  *   Seats 25–49: 15% off
  *   Seats 50+:   20% off
  *
- * Catalogue version: 2026-09-17
+ * Catalogue version: 2026-09-21
  */
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -26,9 +26,9 @@ export interface IndividualPricing {
   priceCentsCAD: number;
 }
 
-export const CATALOGUE_VERSION = "2026-09-17";
+export const CATALOGUE_VERSION = "2026-09-21";
 
-// ── Individual Exam Pass Prices (permanent, one learner) ─────────────────────
+// ── Individual Exam Pass Prices (12 months, one learner) ─────────────────────
 
 export const INDIVIDUAL_PRICES_CAD: Record<string, number> = {
   // Ontario
@@ -81,12 +81,12 @@ export interface CoursePassBandPrices {
  * Pricing bands by annual price tier.
  * Key = annual price in cents. Value = term prices.
  * The spec defines these tiers:
- *   CA$49 permanent OIT pass → 3mo: $39, 6mo: $49
- *   CA$99 permanent pass → 3mo: $59, 6mo: $79
- *   CA$149 permanent pass → 3mo: $89, 6mo: $119
- *   CA$199 permanent pass → 3mo: $119, 6mo: $159
- *   CA$249 permanent pass → 3mo: $149, 6mo: $199
- *   CA$299 permanent pass → 3mo: $179, 6mo: $239
+ *   CA$49 individual 12-month pass → 3mo: $39, 6mo: $49
+ *   CA$99 individual 12-month pass → 3mo: $59, 6mo: $79
+ *   CA$149 individual 12-month pass → 3mo: $89, 6mo: $119
+ *   CA$199 individual 12-month pass → 3mo: $119, 6mo: $159
+ *   CA$249 individual 12-month pass → 3mo: $149, 6mo: $199
+ *   CA$299 individual 12-month pass → 3mo: $179, 6mo: $239
  */
 export const COURSE_PASS_BAND_PRICES: Record<number, CoursePassBandPrices> = {
   4900:  { threeMonthCents: 3900,  sixMonthCents: 4900 },

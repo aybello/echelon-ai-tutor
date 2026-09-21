@@ -69,7 +69,7 @@ describe("Ontario OIT hub SSR", () => {
 
   it("states product scope, price, access term, and independence", () => {
     expect(body).toContain("CA$49");
-    expect(body).toMatch(/permanent access for one named learner/i);
+    expect(body).toMatch(/12 months of access from successful payment for one named learner/i);
     expect(body).toMatch(/one selected OIT course/i);
     expect(body).toMatch(/OWWCO/);
     expect(body).toMatch(/independent exam-preparation provider/i);

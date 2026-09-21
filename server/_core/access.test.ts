@@ -189,6 +189,31 @@ describe("resolveEntitlementsByEmail", () => {
     expect(r.hasAnyAccess).toBe(false);
   });
 
+  it("denies access at the exact recorded Individual Exam Pass expiry boundary", async () => {
+    vi.useFakeTimers();
+    try {
+      const cutoff = new Date("2027-09-21T14:30:00.000Z");
+      vi.setSystemTime(cutoff);
+
+      mockDb([purchase("class2-water", "active", new Date(cutoff.getTime() + 1))], [], []);
+      await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toMatchObject({
+        unlockedExamTypes: ["class2-water"],
+      });
+
+      mockDb([purchase("class2-water", "active", cutoff)], [], []);
+      await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toMatchObject({
+        unlockedExamTypes: [],
+      });
+
+      mockDb([purchase("class2-water", "active", new Date(cutoff.getTime() - 1))], [], []);
+      await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toMatchObject({
+        unlockedExamTypes: [],
+      });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("denies access for refunded purchase", async () => {
     mockDb([purchase("class3-water", "refunded")], [], []);
     const r = await resolveEntitlementsByEmail("user@example.com");

@@ -99,12 +99,12 @@ describe("Teams Audit — Annual Licence Tests (9-14)", () => {
     expect(STREAM_COURSE_KEYS["ontario"]["stream-wastewater-coll"].length).toBeGreaterThanOrEqual(4);
   });
 
- // Test 11: TEAM_BASE_PRICE has exact national prices (Ontario = Western)
-  it("11. exact national prices: all tiers $399, Ontario = Western", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-water"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["stream-water"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(39900);
+ // Test 11: current approved national annual pricing
+  it("11. exact national prices: streams $449 and all streams $549", () => {
+    expect(TEAM_BASE_PRICE.ontario["stream-water"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.western["stream-water"]).toBe(44900);
+    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(54900);
+    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(54900);
   });
 
   // Test 12: Volume discount tiers are correctly ordered

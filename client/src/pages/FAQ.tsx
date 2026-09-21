@@ -7,7 +7,7 @@ const questions = [
   ["Which certifications are supported?", "Echelon supports Ontario operator certification courses and WPI-aligned water treatment, wastewater treatment, water distribution, and wastewater collection courses. US state coverage varies and is labelled full, partial, or limited on each state page."],
   ["Are you affiliated with a certifying authority?", "No. Echelon Institute is an independent exam-preparation provider and is not affiliated with MOECP, OWWCO, WPI, EOCP, or a US state certifying authority."],
   ["How many practice questions are available?", "The platform contains more than 18,000 practice questions across its current course catalogue. Individual course totals are shown on the pricing page."],
-  ["How long does access last?", "An Individual Exam Pass provides permanent access to one selected course. Teams Flex licences use the 3- or 6-month term displayed at checkout, subject to the activation deadline."],
+  ["How long does access last?", "An Individual Exam Pass provides 12 months of access to one selected course from successful payment. Teams Flex licences use the 3- or 6-month term displayed at checkout, subject to the activation deadline."],
   ["Can I try Echelon before paying?", "Yes. The first 15 questions on every course are available without an account or credit card so you can evaluate the experience before purchasing."],
   ["Does Echelon guarantee that I will pass?", "No exam-preparation service can guarantee an outcome. Echelon helps you practise, identify weak areas, and prepare against the applicable exam blueprint."],
   ["How do refunds work?", "Refund eligibility depends on the product and timing. Review the Refund Policy before purchase or contact abello@echeloninstitute.ca."],

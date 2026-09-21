@@ -41,16 +41,17 @@ describe("live visual-audit remediation", () => {
     expect(us).not.toContain("const TESTIMONIALS");
   });
 
-  it("explains active graduated pricing while keeping Teams checkout paused", () => {
+  it("explains active graduated pricing and approved Teams checkout", () => {
     const pricing = source("client/src/pages/Pricing.tsx");
     const teams = source("client/src/pages/Teams.tsx");
 
     expect(pricing).toContain("Graduated discounts apply only to seats inside each volume band");
     expect(pricing).toMatch(/Average [Pp]er [Oo]perator/);
     expect(pricing).toContain("off those seats");
-    expect(teams).toContain("organization pricing stays paused");
-    expect(teams).toContain("No checkout or payment is taken today.");
-    expect(teams).not.toContain("Blended order discount:");
+    expect(teams).toContain("Stripe checkout and paid invoice");
+    expect(teams).toContain("createTeamCheckout.mutate");
+    expect(teams).toContain("Combine 3- and 6-month licences in one order.");
+    expect(teams).toContain("Blended discount:");
   });
 
   it("does not nest buttons inside links on audited public surfaces", () => {

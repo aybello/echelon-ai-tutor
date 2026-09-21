@@ -10,12 +10,12 @@
  * meaningful question coverage in the OIT bank.
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { drizzle } from "drizzle-orm/mysql2";
-import { eq, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { questions } from "../drizzle/schema";
+import { getDb } from "./db";
 
 // ── DB setup ──────────────────────────────────────────────────────────────────
-let db: ReturnType<typeof drizzle> | null = null;
+let db: Awaited<ReturnType<typeof getDb>> = null;
 
 type QRow = {
   id: number;
@@ -31,11 +31,11 @@ type QRow = {
 let QUESTIONS: QRow[] = [];
 
 beforeAll(async () => {
-  if (!process.env.DATABASE_URL) {
-    console.warn("[formulas.session] Skipping: DATABASE_URL not set");
+  db = await getDb();
+  if (!db) {
+    console.warn("[formulas.session] Skipping: active database is not configured");
     return;
   }
-  db = drizzle(process.env.DATABASE_URL);
 
   const rows = await db.select().from(questions).where(eq(questions.bankKey, "oit"));
   QUESTIONS = rows.map(r => ({

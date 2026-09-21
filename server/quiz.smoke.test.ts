@@ -10,22 +10,20 @@
  * Queries the `questions` table directly via Drizzle — no static TS imports.
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { drizzle } from "drizzle-orm/mysql2";
 import { eq, sql } from "drizzle-orm";
 import { questions } from "../drizzle/schema";
+import { getDb } from "./db";
 
-let db: ReturnType<typeof drizzle> | null = null;
+let db: Awaited<ReturnType<typeof getDb>> = null;
 
-beforeAll(() => {
-  if (process.env.DATABASE_URL) {
-    db = drizzle(process.env.DATABASE_URL);
-  }
+beforeAll(async () => {
+  db = await getDb();
 });
 
 function smokeCheck(bankKey: string, minCount: number) {
   describe(`${bankKey} — smoke test`, () => {
     it(`has at least ${minCount} questions in the database`, async () => {
-      if (!db) { console.warn(`[smoke] Skipping ${bankKey}: DATABASE_URL not set`); return; }
+      if (!db) { console.warn(`[smoke] Skipping ${bankKey}: active database is not configured`); return; }
       const [row] = await db
         .select({ cnt: sql<number>`COUNT(*)` })
         .from(questions)

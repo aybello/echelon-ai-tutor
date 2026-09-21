@@ -196,7 +196,7 @@ export async function resolveEntitlementsByEmail(
   const activePurchaseKeys = purchaseRows
     .filter((r) =>
       (!r.status || PURCHASE_ACCESS_STATUSES.has(r.status)) &&
-      (r.accessExpiresAt == null || r.accessExpiresAt >= now),
+      (r.accessExpiresAt == null || r.accessExpiresAt > now),
     )
     .map((r) => r.productKey);
 

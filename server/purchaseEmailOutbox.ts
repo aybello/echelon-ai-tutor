@@ -26,7 +26,7 @@ export async function recordPurchaseWithConfirmation(db: Database, purchase: Ins
   const paths = PRODUCT_STUDY_PATHS[purchase.productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
   const payload: PurchaseConfirmationPayload = {
     email: purchase.email, productKey: purchase.productKey, productName: purchase.productName,
-    amountCAD: purchase.amountCAD, ...paths,
+    amountCAD: purchase.amountCAD, accessExpiresAt: purchase.accessExpiresAt ?? null, ...paths,
   };
   await db.transaction(async tx => {
     await tx.insert(purchases).values(purchase);

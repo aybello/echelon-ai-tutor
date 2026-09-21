@@ -47,4 +47,22 @@ describe("selectCurrentManagerOrganization", () => {
 
     expect(selectCurrentManagerOrganization(rows, NOW)).toBeNull();
   });
+
+  it("denies a Team manager at the exact organization term boundary", () => {
+    const exactBoundary = candidate(
+      70,
+      "active",
+      "2026-08-28T19:00:00.000Z",
+      NOW.toISOString(),
+    );
+    const afterBoundary = candidate(
+      71,
+      "active",
+      "2026-08-28T19:00:00.000Z",
+      new Date(NOW.getTime() + 1).toISOString(),
+    );
+
+    expect(selectCurrentManagerOrganization([exactBoundary], NOW)).toBeNull();
+    expect(selectCurrentManagerOrganization([afterBoundary], NOW)).toEqual(afterBoundary);
+  });
 });
