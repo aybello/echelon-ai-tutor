@@ -6,7 +6,7 @@
 import Stripe from "stripe";
 import { eq } from "drizzle-orm";
 import { getDb } from "../db";
-import { subscriptions } from "../../drizzle/schema";
+import { purchases, subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
 import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
@@ -29,6 +29,8 @@ export interface ReconcileResult {
 
 export async function runReconciliation(hoursBack: number = 48, assertOwned: () => Promise<void> = async () => {}): Promise<ReconcileResult> {
   const stripe = getStripe();
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable while reconciling purchases");
 
   const since = Math.floor(Date.now() / 1000) - hoursBack * 3600;
   const recovered: { email: string; productKey: string; sessionId: string }[] = [];
@@ -59,6 +61,22 @@ export async function runReconciliation(hoursBack: number = 48, assertOwned: () 
 
         if (!productKey || !email || session.payment_status !== "paid") {
           skipped.push(session.id);
+          continue;
+        }
+
+        // Reconciliation observes fulfillment; only the signed webhook (or
+        // evidence-bound historical recovery) may create a purchase. Include
+        // refunded/expired rows: replay must never restore revoked access.
+        const [existing] = await db
+          .select({ id: purchases.id, email: purchases.email, productKey: purchases.productKey })
+          .from(purchases)
+          .where(eq(purchases.stripeSessionId, session.id))
+          .limit(1);
+        if (existing) {
+          skipped.push(session.id);
+          if (normalizeEmail(existing.email) !== normalizeEmail(email) || existing.productKey !== productKey) {
+            errors.push(`${session.id}: recorded purchase does not match checkout identity/product; manual investigation required`);
+          }
           continue;
         }
 

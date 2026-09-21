@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 
-export const OIT_REPORTED_ITEM_REPAIR_VERSION = "2026-09-21-v1";
+export const OIT_REPORTED_ITEM_REPAIR_VERSION = "2026-09-21-v2";
 
 const VISIBLE_STATUSES = new Set(["approved", "unreviewed"]);
 const REPAIR_FIELDS = [
@@ -50,7 +50,7 @@ const canonicalOitReportedItemRepairs = [
       sourceReference: null,
       sourceUrl: null,
     },
-    replacement: {
+    previousContents: [{
       question: "A chlorine gas cylinder at a water treatment plant shows frost forming around the valve during operation. What is the safest interpretation and immediate action?",
       options: [
         "The cylinder is full — no action needed",
@@ -63,6 +63,20 @@ const canonicalOitReportedItemRepairs = [
       sourceTitle: null,
       sourceReference: null,
       sourceUrl: null,
+    }],
+    replacement: {
+      question: "While checking chlorine feed equipment, an operator notices frost near a cylinder valve and the room's chlorine detector alarms. The operator is not trained for leak response. What should the operator do first?",
+      options: [
+        "Check the detector with a portable meter beside the cylinder, then notify the supervisor if the readings agree.",
+        "Close the cylinder valve before leaving the room, then notify the supervisor that the suspected leak has been isolated.",
+        "Leave the affected area using the site's emergency procedure, then notify the supervisor and keep others out.",
+        "Switch to the standby cylinder before leaving the room, then notify the supervisor that chlorine dosing can continue.",
+      ],
+      correctIndex: 2,
+      explanation: "The chlorine alarm indicates a possible release. An operator who is not trained for leak response should leave the affected area, report the hazard and prevent others from entering, following the site's emergency procedure. Checking a second detector delays leaving; closing a valve or changing cylinders requires approaching potentially leaking equipment. Leak control belongs to trained, authorized responders with appropriate protection. The decision is based on the alarm and the operator's training, not on diagnosing the cause of frost.",
+      sourceTitle: "CCOHS: Chlorine",
+      sourceReference: "Incidental release measures; handling and storage practices (reviewed 2026-09-21)",
+      sourceUrl: "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/chlorine.html",
     },
   },
   {
@@ -179,6 +193,7 @@ function freezeRepairSnapshot(repair) {
     expectedId: Number(repair.expectedId),
     expected: freezeContentSnapshot(repair.expected),
     replacement: freezeContentSnapshot(repair.replacement),
+    previousContents: Object.freeze((repair.previousContents ?? []).map(freezeContentSnapshot)),
   });
 }
 
@@ -220,6 +235,7 @@ function stablePlanHash(rows, changes, metadataBefore, repairs) {
           questionNum: Number(repair.questionNum),
           expectedId: Number(repair.expectedId),
           expectedContentHash: hashReportedItemContent(repair.expected),
+          previousContentHashes: (repair.previousContents ?? []).map(hashReportedItemContent),
           replacementContentHash: hashReportedItemContent(repair.replacement),
           expectedCorrectIndex: Number(repair.expected.correctIndex),
           replacementCorrectIndex: Number(repair.replacement.correctIndex),
@@ -268,11 +284,12 @@ export function planReportedOitItemRepair(rows, metadataBefore, repairs = report
       unchanged.push({ bankKey: repair.bankKey, questionNum: repair.questionNum });
       continue;
     }
-    if (actualHash !== expectedHash) {
+    const previousHashes = (repair.previousContents ?? []).map(hashReportedItemContent);
+    if (actualHash !== expectedHash && !previousHashes.includes(actualHash)) {
       errors.push(`${key}: content drifted from the reviewed baseline`);
       continue;
     }
-    changes.push({ ...repair, expectedHash, replacementHash });
+    changes.push({ ...repair, expectedHash: actualHash, replacementHash });
   }
 
   for (const row of rowsByKey.values()) {

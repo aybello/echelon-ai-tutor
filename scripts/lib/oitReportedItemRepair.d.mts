@@ -14,6 +14,7 @@ export interface OitReportedItemRepair {
   expectedId: number;
   expected: OitReportedItemContent;
   replacement: OitReportedItemContent;
+  previousContents?: readonly OitReportedItemContent[];
 }
 
 export interface OitReportedItemRow {

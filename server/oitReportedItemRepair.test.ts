@@ -137,11 +137,41 @@ describe("reported OIT item repair contract", () => {
       expect(repair.replacement.options).toHaveLength(4);
       expect(repair.replacement.correctIndex).toBe(repair.expected.correctIndex);
       if (repair.questionNum === 6) {
-        expect(repair.replacement.options.filter((option: string, index: number) => option !== repair.expected.options[index])).toHaveLength(1);
+        expect(repair.replacement.options.filter((option: string, index: number) => option !== repair.expected.options[index])).toHaveLength(4);
       } else {
         expect(repair.replacement.options).toEqual(repair.expected.options);
       }
     }
+  });
+
+  it("balances the chlorine options and cites the alarm-response source", () => {
+    const repair = reportedOitItemRepairs[0];
+    const lengths = repair.replacement.options.map((option: string) => option.split(/\s+/).length);
+    expect(Math.max(...lengths) / Math.min(...lengths)).toBeLessThan(1.4);
+    expect(repair.replacement.options.join(" ")).not.toMatch(/open flame|no action needed|normal condensation/i);
+    expect(repair.replacement.question).toContain("detector alarms");
+    expect(repair.replacement.question).toContain("not trained");
+    expect(repair.replacement.sourceUrl).toBe("https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/chlorine.html");
+  });
+
+  it("upgrades the exact v1 repair and rejects any unreviewed variation", async () => {
+    const repair = reportedOitItemRepairs[0];
+    const rows = reportedOitItemRepairs.map((item: Repair) => rowFor(item, item.expectedId, item.replacement));
+    rows[0] = rowFor(repair, repair.expectedId, repair.previousContents![0]);
+    const plan = planReportedOitItemRepair(rows, metadata);
+    expect(plan.ready).toBe(true);
+    expect(plan.changes.map((item: Repair) => item.questionNum)).toEqual([6]);
+    const fake = createConnection({ rows });
+    await applyReportedOitItemRepair(fake.connection, {
+      apply: true, expectedPlanHash: plan.planHash, backup: async () => {},
+    });
+    expect(fake.committed).toBe(true);
+    expect(fake.contentVersionUpdates).toBe(1);
+    expect(fake.rows[0].id).toBe(repair.expectedId);
+    expect(fake.rows[0].correctIndex).toBe(repair.expected.correctIndex);
+    expect(planReportedOitItemRepair(fake.rows, { ...metadata, contentVersion: fake.contentVersion }).changes).toEqual([]);
+    rows[0].explanation += " Unreviewed change.";
+    expect(planReportedOitItemRepair(rows, metadata).ready).toBe(false);
   });
 
   it("plans only the exact reviewed question and metadata baseline", () => {
