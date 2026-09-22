@@ -35,22 +35,78 @@ const FIXES = {
   570: { question: "A pump delivers 235 L/s against 42 m total dynamic head for 24 hours. Its overall wire-to-water efficiency is 78% and electricity costs $0.11/kWh. Ignoring demand charges, what is the approximate energy cost?", answer: "$327.71", explanation: "Input power = (9.81 kN/m³ × 0.235 m³/s × 42 m)/0.78 = 124.13 kW; cost = 124.13 × 24 × $0.11 ≈ $327.71. The given efficiency is treated as overall wire-to-water efficiency." },
 };
 
-function sha(value) { return createHash("sha256").update(JSON.stringify(value)).digest("hex"); }
-function optionsOf(row) { return typeof row.options === "string" ? JSON.parse(row.options) : row.options; }
+const sha = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+export const BACKUP_EVIDENCE_MAX_AGE_MS = 60 * 60 * 1000;
+function fail(message) { throw new Error(`Class III distribution release blocked: ${message}`); }
+export function optionsOf(row) {
+  const options = typeof row.options === "string" ? JSON.parse(row.options) : row.options;
+  if (!Array.isArray(options)) fail("question options are not an array");
+  return [...options];
+}
 export function fingerprint(row) {
   return sha([row.question, optionsOf(row), Number(row.correctIndex), row.explanation, row.steps ?? null]);
 }
 function normalizedStem(s) { return s.normalize("NFKC").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
-function fail(message) { throw new Error(`Class III distribution release blocked: ${message}`); }
+
+/**
+ * Requires a fresh, operator-verified backup record tied to this exact plan.
+ * The database host owns backup recoverability, so the operator must verify it
+ * before supplying its immutable identifier and timestamp to this script.
+ */
+export function parseCurrentBackupEvidence(raw, planDigest, now = Date.now()) {
+  if (!raw?.trim()) fail("current recoverable backup evidence is required");
+  let evidence;
+  try { evidence = JSON.parse(raw); }
+  catch { fail("backup evidence must be JSON"); }
+  if (evidence?.release !== RELEASE || evidence?.planDigest !== planDigest) {
+    fail("backup evidence is not tied to this exact live plan");
+  }
+  if (typeof evidence.backupId !== "string" || !evidence.backupId.trim()) {
+    fail("backup evidence is missing its verified backup identifier");
+  }
+  if (
+    typeof evidence.backedUpAt !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(evidence.backedUpAt)
+  ) {
+    fail("backup evidence timestamp must be an ISO-8601 time with timezone");
+  }
+  const backedUpAt = Date.parse(evidence.backedUpAt);
+  if (!Number.isFinite(backedUpAt) || backedUpAt > now || now - backedUpAt > BACKUP_EVIDENCE_MAX_AGE_MS) {
+    fail("backup evidence is missing, future-dated, or older than one hour");
+  }
+  return { backupId: evidence.backupId.trim(), backedUpAt: new Date(backedUpAt).toISOString() };
+}
+
+/** Fetches only the Class 3 baseline. Locks are used only for an explicit apply. */
+export async function readLiveBaseline(connection, lockForApply) {
+  const lock = lockForApply ? " FOR UPDATE" : "";
+  const [rows] = await connection.execute(`SELECT * FROM \`questions\` WHERE \`bankKey\`=? ORDER BY \`questionNum\`${lock}`, [BANK]);
+  const [metas] = await connection.execute(`SELECT * FROM \`question_bank_meta\` WHERE \`bankKey\`=?${lock}`, [BANK]);
+  return { rows, metas };
+}
+
+/** Default plans are read-only and do not acquire row locks. */
+export async function beginReadOnlyPlanTransaction(connection) {
+  await connection.query("SET TRANSACTION READ ONLY");
+  await connection.beginTransaction();
+}
 
 export function buildPlan(live, manifest, metadata = null) {
   if (!Array.isArray(live) || live.length !== 571) fail(`expected 571 live rows, got ${live?.length}`);
   if (metadata && (metadata.bankKey !== BANK || Number(metadata.totalQuestions) !== 571)) fail("bank metadata differs from the 571-row baseline");
   if (manifest?.bankKey !== BANK || manifest?.release !== RELEASE || manifest?.targets?.length !== TARGETS.length) fail("invalid manifest");
   const current = new Map();
+  const rowIds = new Set();
   for (const row of live) {
-    if (row.bankKey !== BANK || !Number.isInteger(Number(row.questionNum)) || current.has(Number(row.questionNum))) fail("duplicate or foreign live row");
-    current.set(Number(row.questionNum), row);
+    const questionNum = Number(row.questionNum);
+    const rowId = Number(row.id);
+    if (row.bankKey !== BANK || !Number.isInteger(questionNum) || questionNum < 1 || questionNum > 571 || current.has(questionNum)) fail("duplicate, out-of-range, or foreign live row");
+    if (!Number.isInteger(rowId) || rowId <= 0 || rowIds.has(rowId)) fail("duplicate or invalid live row id");
+    current.set(questionNum, row);
+    rowIds.add(rowId);
+  }
+  for (let questionNum = 1; questionNum <= 571; questionNum++) {
+    if (!current.has(questionNum)) fail(`missing baseline question ${questionNum}`);
   }
   const additions = buildCandidateQuestions();
   const existingStems = new Set([...current.values()].map(row => normalizedStem(row.question)));
@@ -111,16 +167,17 @@ async function run() {
   if (!process.env.DATABASE_URL) fail("DATABASE_URL is required for live plan/apply");
   const mysql = await import("mysql2/promise");
   const connection = await mysql.createConnection(process.env.DATABASE_URL);
+  const apply = args.includes("--apply");
   try {
-    await connection.beginTransaction();
-    const [rows] = await connection.execute("SELECT * FROM `questions` WHERE `bankKey`=? ORDER BY `questionNum` FOR UPDATE", [BANK]);
-    const [metas] = await connection.execute("SELECT * FROM `question_bank_meta` WHERE `bankKey`=? FOR UPDATE", [BANK]);
+    if (apply) await connection.beginTransaction();
+    else await beginReadOnlyPlanTransaction(connection);
+    const { rows, metas } = await readLiveBaseline(connection, apply);
     if (metas.length !== 1) fail("expected one bank metadata row");
     const plan = buildPlan(rows, manifest, metas[0]);
-    console.log(JSON.stringify({ mode: args.includes("--apply") ? "apply-requested" : "live-plan", changes: plan.changes.length, corrected: plan.corrected, held: plan.held, additionsInReview: plan.additions.length, planDigest: plan.planDigest }, null, 2));
-    if (!args.includes("--apply")) { await connection.rollback(); return; }
+    console.log(JSON.stringify({ mode: apply ? "apply-requested" : "live-plan", changes: plan.changes.length, corrected: plan.corrected, held: plan.held, additionsInReview: plan.additions.length, planDigest: plan.planDigest }, null, 2));
+    if (!apply) { await connection.rollback(); return; }
     if (process.env.CONFIRM_CLASS3_DISTRIBUTION_REPAIR !== plan.planDigest) fail("confirmation digest does not match this exact live plan");
-    if (!process.env.CLASS3_REPAIR_BACKUP_EVIDENCE?.trim()) fail("documented production backup evidence is required");
+    parseCurrentBackupEvidence(process.env.CLASS3_REPAIR_BACKUP_EVIDENCE, plan.planDigest);
     for (const { before, after } of plan.changes) {
       const beforeImage = Object.fromEntries(["bankKey", "questionNum", "module", "difficulty", "question", "options", "correctIndex", "explanation", "steps", "tip", "isCalc", "topic", "cognitiveLevel", "sourceTitle", "sourceReference", "sourceUrl", "blueprintObjective", "reviewStatus", "reviewedBy", "reviewedAt"].map(key => [key, before[key] ?? null]));
       const [captured] = await connection.execute("INSERT INTO `question_content_snapshots` (`releaseKey`,`bankKey`,`questionId`,`questionNum`,`sourceContentVersion`,`contentHash`,`payload`) VALUES (?,?,?,?,?,?,?)", [RELEASE, BANK, before.id, before.questionNum, Number(metas[0].contentVersion), sha(beforeImage), JSON.stringify(beforeImage)]);

@@ -10,7 +10,7 @@ The [WPI 2025 Class III Need-to-Know guide](https://gowpi.org/wp-content/uploads
 
 - `content/class3-water-dist/repair-manifest-2026-09-22.json` pins the September 19 question content fingerprints and IDs of 118 targeted rows.
 - `content/class3-water-dist/new-questions-2026-09-22.mjs` authors 250 original candidate questions; `candidate-250-2026-09-22.json` is the identical reviewer-friendly export. All 250 have `reviewStatus=in_review`.
-- `scripts/recovery/class3WaterDistributionRepair.mjs` checks every targeted live row and all 571 IDs before any mutation, captures 118 before-images in `question_content_snapshots`, corrects 16 worked numerical questions, holds 116 rows, inserts the 250 drafts, and updates metadata to 821 stored rows in one transaction. The two corrected simple calculations (308 and 447) remain learner-visible as `unreviewed`, reflecting that their old approval cannot be carried over to the edited version.
+- `scripts/recovery/class3WaterDistributionRepair.mjs` validates all 571 rows belong to the expected bank, have unique positive IDs, and form the complete 1–571 sequence before any mutation. It pins IDs and content fingerprints for the 118 targeted rows, captures 118 before-images in `question_content_snapshots`, corrects 16 worked numerical questions, holds 116 rows, inserts the 250 drafts, and updates metadata to 821 stored rows in one transaction. The two corrected simple calculations (308 and 447) remain learner-visible as `unreviewed`, reflecting that their old approval cannot be carried over to the edited version.
 - `scripts/recovery/verifyClass3DistributionRepair.mjs` verifies the fixed draft JSON, numeric answer keys, uniqueness, area and key-position distribution, and rejects a modified baseline in an offline rehearsal.
 - The buyer-facing quiz and mock copy now uses the live learner-visible count, CA$249 catalog price, and the actual three-hour practice timer. Unverified Ontario regulation alignment claims were removed.
 
@@ -23,11 +23,11 @@ From the repository root:
 ```bash
 node scripts/recovery/verifyClass3DistributionRepair.mjs /private/class3-water-dist-snapshot.json
 node scripts/recovery/class3WaterDistributionRepair.mjs --manifest content/class3-water-dist/repair-manifest-2026-09-22.json --snapshot /private/class3-water-dist-snapshot.json
-# With production DATABASE_URL set, run the read-only transactional plan first:
+# With production DATABASE_URL set, run the non-locking, read-only plan first:
 node scripts/recovery/class3WaterDistributionRepair.mjs --manifest content/class3-water-dist/repair-manifest-2026-09-22.json
 ```
 
-If the live plan succeeds, record a current recoverable database backup. Applying requires `CLASS3_REPAIR_BACKUP_EVIDENCE` and `CONFIRM_CLASS3_DISTRIBUTION_REPAIR` equal to the **live** plan digest, and the `--apply` argument. The script rolls back on a changed row, missing metadata, occupied question number, duplicate stem, failed snapshot insert, or incorrect post-write count. It does not touch learners, purchases, or attempts. If a changed row blocks the plan, compare the production version with the pinned snapshot and produce a new reviewed patch; do not disable the comparison.
+If the live plan succeeds, take and verify a current recoverable database backup. Applying requires `CONFIRM_CLASS3_DISTRIBUTION_REPAIR` equal to the **live** plan digest and `--apply`. It also requires `CLASS3_REPAIR_BACKUP_EVIDENCE` to be a JSON record with `release`, the exact `planDigest`, a nonblank verified `backupId`, and an ISO `backedUpAt` timestamp no more than one hour old. For example: `{"release":"class3-water-dist-repair-2026-09-22","planDigest":"<live plan digest>","backupId":"<verified backup identifier>","backedUpAt":"2026-09-22T21:00:00Z"}`. The script locks rows only on this explicit apply path. It rolls back on a changed row, missing metadata, occupied question number, duplicate stem, failed snapshot insert, or incorrect post-write count. It does not touch learners, purchases, or attempts. If a changed row blocks the plan, compare the production version with the pinned snapshot and produce a new reviewed patch; do not disable the comparison.
 
 ## Review gates before publishing the 250
 
