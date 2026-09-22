@@ -17,6 +17,11 @@ import {
 } from "../customerRecoveryEvidence";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
+import {
+  getDataExplorerDataset,
+  publicDataExplorerCatalog,
+  readDataExplorerPage,
+} from "../dataExplorer";
 
 import { runManagedJob, managedJobHostAllowed } from "../jobs/managedJobs";
 import { runReconciliation, runSubscriptionReconciliation } from "../jobs/reconcile";
@@ -43,6 +48,35 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  /**
+   * Read-only production data catalog for the internal Data Explorer. The
+   * browser can choose only a catalog key and cannot supply a table, column,
+   * query, sort expression, or mutation.
+   */
+  getDataExplorerCatalog: adminProcedure.query(() => ({
+    datasets: publicDataExplorerCatalog(),
+    generatedAt: new Date(),
+  })),
+  /**
+   * A bounded, paginated application-table view. Sensitive operational values
+   * such as authentication hashes, write tokens, Stripe identifiers, and email
+   * payloads are removed before rows leave the server.
+   */
+  getDataExplorerPage: adminProcedure
+    .input(z.object({
+      datasetKey: z.string().trim().min(1).max(80),
+      page: z.number().int().min(1).max(100_000).default(1),
+      pageSize: z.number().int().min(10).max(100).default(50),
+    }))
+    .query(async ({ input }) => {
+      const dataset = getDataExplorerDataset(input.datasetKey);
+      if (!dataset) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown Data Explorer dataset." });
+      }
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      return readDataExplorerPage(db, dataset, input.page, input.pageSize);
+    }),
   /**
    * Internal evidence intake view. It exposes no grant action: evidence can be
    * reviewed, but an independently authorized, idempotent import is required

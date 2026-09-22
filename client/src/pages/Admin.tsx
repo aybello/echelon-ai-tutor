@@ -9,8 +9,9 @@ import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
+import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
 
-type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery";
+type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
@@ -134,6 +135,9 @@ export default function Admin() {
   const [activeTab, setActiveTab] = useState<Tab>("insights");
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
+  const [explorerDatasetKey, setExplorerDatasetKey] = useState("users");
+  const [explorerPage, setExplorerPage] = useState(1);
+  const [explorerPageSize, setExplorerPageSize] = useState(50);
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
@@ -154,6 +158,14 @@ export default function Admin() {
   const recoveryEvidenceQ = trpc.admin.getCustomerRecoveryEvidence.useQuery(
     { limit: 100 },
     { enabled: user?.role === "admin" && activeTab === "recovery" },
+  );
+  const explorerCatalogQ = trpc.admin.getDataExplorerCatalog.useQuery(
+    undefined,
+    { enabled: user?.role === "admin" && activeTab === "explorer" },
+  );
+  const explorerPageQ = trpc.admin.getDataExplorerPage.useQuery(
+    { datasetKey: explorerDatasetKey, page: explorerPage, pageSize: explorerPageSize },
+    { enabled: user?.role === "admin" && activeTab === "explorer" },
   );
   const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
     onSuccess: (data) => {
@@ -295,21 +307,19 @@ export default function Admin() {
     setTimeout(() => setCopiedEmail(null), 1500);
   };
 
+  const formatExplorerValue = (value: unknown) => {
+    if (value === null || value === undefined || value === "") return "—";
+    const text = String(value);
+    return text.length > 180 ? `${text.slice(0, 180)}…` : text;
+  };
+
+  const displayExplorerColumn = (column: string) => column
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .replace(/_/g, " ");
+
   const downloadCSV = (rows: Record<string, unknown>[], filename: string) => {
     if (!rows.length) return;
-    const headers = Object.keys(rows[0]);
-    const csvContent = [
-      headers.join(","),
-      ...rows.map(row =>
-        headers.map(h => {
-          const val = String(row[h] ?? "");
-          return val.includes(",") || val.includes('"') || val.includes("\n")
-            ? `"${val.replace(/"/g, '""')}"`
-            : val;
-        }).join(",")
-      ),
-    ].join("\n");
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const blob = new Blob([buildDataExplorerCsv(rows)], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -375,6 +385,7 @@ export default function Admin() {
     { id: "feedback", label: "Feedback", icon: "💬" },
     { id: "health", label: "System Health", icon: "🩺" },
     { id: "orgs", label: "Organizations", icon: "🏢" },
+    { id: "explorer", label: "Data Explorer", icon: "▦" },
     { id: "recovery", label: "Recovery Review", icon: "↺" },
   ];
 
@@ -418,7 +429,7 @@ export default function Admin() {
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); recoveryEvidenceQ.refetch(); }}
+            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); recoveryEvidenceQ.refetch(); explorerCatalogQ.refetch(); explorerPageQ.refetch(); }}
             style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
             ↻ Refresh
@@ -1252,6 +1263,136 @@ export default function Admin() {
                 </table>
               </div>
             )}
+          </div>
+        )}
+
+        {/* -- READ-ONLY DATA EXPLORER TAB -- */}
+        {activeTab === "explorer" && (
+          <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+            <div style={{ padding: "18px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#1E293B" }}>▦ Data Explorer</div>
+                <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.55, marginTop: 5, maxWidth: 670 }}>
+                  Read the live Echelon application database from this dashboard. This view is admin-only and read-only. It cannot run SQL or change records.
+                </div>
+              </div>
+              <div style={{ padding: "7px 10px", borderRadius: 8, background: "#EFF6FF", color: "#1D4ED8", fontSize: 10, fontWeight: 800, whiteSpace: "nowrap" }}>
+                READ-ONLY PRODUCTION VIEW
+              </div>
+            </div>
+
+            <div style={{ padding: "14px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", alignItems: "flex-end", gap: 12, flexWrap: "wrap" }}>
+              <label style={{ display: "grid", gap: 5, minWidth: 260, flex: "1 1 320px" }}>
+                <span style={{ fontSize: 10, color: "#475569", fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase" }}>Dataset</span>
+                <select
+                  aria-label="Data Explorer dataset"
+                  value={explorerDatasetKey}
+                  onChange={(event) => { setExplorerDatasetKey(event.target.value); setExplorerPage(1); }}
+                  style={{ minHeight: 38, borderRadius: 8, border: "1px solid #CBD5E1", background: "#FFFFFF", color: "#1E293B", padding: "0 10px", fontFamily: "inherit", fontSize: 12, fontWeight: 600 }}
+                >
+                  {(explorerCatalogQ.data?.datasets ?? []).reduce<string[]>((categories, dataset) => categories.includes(dataset.category) ? categories : [...categories, dataset.category], []).map(category => (
+                    <optgroup key={category} label={category}>
+                      {(explorerCatalogQ.data?.datasets ?? []).filter(dataset => dataset.category === category).map(dataset => (
+                        <option key={dataset.key} value={dataset.key}>{dataset.label} · {dataset.tableName}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </label>
+
+              <label style={{ display: "grid", gap: 5 }}>
+                <span style={{ fontSize: 10, color: "#475569", fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase" }}>Rows per page</span>
+                <select
+                  aria-label="Data Explorer rows per page"
+                  value={explorerPageSize}
+                  onChange={(event) => { setExplorerPageSize(Number(event.target.value)); setExplorerPage(1); }}
+                  style={{ minHeight: 38, borderRadius: 8, border: "1px solid #CBD5E1", background: "#FFFFFF", color: "#1E293B", padding: "0 10px", fontFamily: "inherit", fontSize: 12, fontWeight: 600 }}
+                >
+                  {[25, 50, 100].map(size => <option key={size} value={size}>{size}</option>)}
+                </select>
+              </label>
+
+              <button
+                className="admin-btn"
+                onClick={() => { explorerCatalogQ.refetch(); explorerPageQ.refetch(); }}
+                disabled={explorerPageQ.isFetching}
+                style={{ minHeight: 38, padding: "0 14px", borderRadius: 8, border: "1px solid #BFDBFE", background: "#FFFFFF", color: "#1D4ED8", fontSize: 11, fontWeight: 800, cursor: explorerPageQ.isFetching ? "wait" : "pointer", fontFamily: "inherit" }}
+              >
+                {explorerPageQ.isFetching ? "Refreshing…" : "↻ Refresh data"}
+              </button>
+              {explorerPageQ.data?.rows.length ? (
+                <button
+                  className="admin-btn"
+                  onClick={() => downloadCSV(explorerPageQ.data!.rows, `echelon-${explorerPageQ.data!.dataset.tableName}-page-${explorerPageQ.data!.page}.csv`)}
+                  style={{ minHeight: 38, padding: "0 14px", borderRadius: 8, border: "1px solid rgba(15,118,110,0.25)", background: "#F0FDFA", color: "#0F766E", fontSize: 11, fontWeight: 800, cursor: "pointer", fontFamily: "inherit" }}
+                >
+                  ↓ Download page CSV
+                </button>
+              ) : null}
+            </div>
+
+            {explorerCatalogQ.isLoading || explorerPageQ.isLoading ? (
+              <div style={{ padding: 44, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading the read-only database view…</div>
+            ) : null}
+            {explorerCatalogQ.error || explorerPageQ.error ? (
+              <div role="alert" style={{ margin: 20, padding: 14, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12, lineHeight: 1.5 }}>
+                The Data Explorer could not load this dataset: {(explorerCatalogQ.error ?? explorerPageQ.error)?.message}
+              </div>
+            ) : null}
+            {explorerPageQ.data ? (
+              <>
+                <div style={{ padding: "13px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+                  <div>
+                    <div style={{ fontSize: 13, color: "#1E293B", fontWeight: 800 }}>{explorerPageQ.data.dataset.label}</div>
+                    <div style={{ marginTop: 3, fontSize: 11, color: "#64748B" }}>{explorerPageQ.data.dataset.description} · <code style={{ color: "#1D4ED8" }}>{explorerPageQ.data.dataset.tableName}</code></div>
+                  </div>
+                  <div aria-live="polite" style={{ fontSize: 11, color: "#64748B", textAlign: "right" }}>
+                    <strong style={{ color: "#1E293B" }}>{explorerPageQ.data.total.toLocaleString()}</strong> rows · Updated {formatDate(explorerPageQ.data.generatedAt)}
+                  </div>
+                </div>
+
+                {explorerPageQ.data.dataset.restrictedColumns.length > 0 ? (
+                  <div style={{ margin: "12px 20px 0", padding: "9px 11px", borderRadius: 8, background: "#FFFBEB", color: "#92400E", fontSize: 10, lineHeight: 1.5 }}>
+                    Protected operational fields are excluded: {explorerPageQ.data.dataset.restrictedColumns.join(", ")}.
+                  </div>
+                ) : null}
+
+                {explorerPageQ.data.rows.length === 0 ? (
+                  <div style={{ padding: 44, textAlign: "center", color: "#64748B", fontSize: 13 }}>This table has no rows yet.</div>
+                ) : (
+                  <div style={{ overflowX: "auto", marginTop: 12 }}>
+                    <table style={{ width: "100%", minWidth: 760, borderCollapse: "collapse", fontSize: 12 }}>
+                      <thead>
+                        <tr style={{ background: "rgba(0,0,0,0.035)", textAlign: "left" }}>
+                          {explorerPageQ.data.columns.map(column => (
+                            <th key={column} scope="col" style={{ padding: "10px 14px", color: "#475569", fontWeight: 800, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>{displayExplorerColumn(column)}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {explorerPageQ.data.rows.map((row, index) => (
+                          <tr key={`${explorerPageQ.data!.page}-${index}`} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+                            {explorerPageQ.data!.columns.map(column => {
+                              const value = row[column];
+                              const fullValue = value === null || value === undefined ? "" : String(value);
+                              return <td key={column} title={fullValue} style={{ padding: "10px 14px", color: "#334155", maxWidth: 280, verticalAlign: "top", lineHeight: 1.45, overflowWrap: "anywhere" }}>{formatExplorerValue(value)}</td>;
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                <div style={{ padding: "14px 20px", borderTop: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                  <div style={{ fontSize: 11, color: "#64748B" }}>Page {explorerPageQ.data.page} of {explorerPageQ.data.totalPages}</div>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <button className="admin-btn" onClick={() => setExplorerPage(page => Math.max(1, page - 1))} disabled={explorerPageQ.data.page <= 1 || explorerPageQ.isFetching} style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#FFFFFF", color: "#475569", fontSize: 11, fontWeight: 700, cursor: explorerPageQ.data.page <= 1 ? "not-allowed" : "pointer", opacity: explorerPageQ.data.page <= 1 ? 0.5 : 1, fontFamily: "inherit" }}>← Previous</button>
+                    <button className="admin-btn" onClick={() => setExplorerPage(page => Math.min(explorerPageQ.data!.totalPages, page + 1))} disabled={explorerPageQ.data.page >= explorerPageQ.data.totalPages || explorerPageQ.isFetching} style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #1D4ED8", background: "#1D4ED8", color: "#FFFFFF", fontSize: 11, fontWeight: 700, cursor: explorerPageQ.data.page >= explorerPageQ.data.totalPages ? "not-allowed" : "pointer", opacity: explorerPageQ.data.page >= explorerPageQ.data.totalPages ? 0.5 : 1, fontFamily: "inherit" }}>Next →</button>
+                  </div>
+                </div>
+              </>
+            ) : null}
           </div>
         )}
 
