@@ -30,9 +30,9 @@ export const loadClarifierThreeLab = (surface: ClarifierSurface) => {
     timeoutId = setTimeout(() => reject(timeoutError), 12_000);
   });
   const retryKey = `echelon_clarifier_chunk_retry_${surface}`;
-  return Promise.race([import("./ClarifierThreeLab"), timeout])
+  return Promise.race([surface === "equipment" ? import("./EquipmentClarifierThreeLab") : import("./ClarifierThreeLab"), timeout])
     .then(module => {
-      window.sessionStorage.removeItem(retryKey);
+      try { window.sessionStorage.removeItem(retryKey); } catch { /* Storage may be disabled; the model is still usable. */ }
       return module;
     })
     .catch(error => {
