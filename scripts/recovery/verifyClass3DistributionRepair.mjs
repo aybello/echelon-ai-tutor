@@ -36,6 +36,7 @@ const amounts = AREAS.map(area => candidates.filter(q => q.module === area.modul
 assert.deepEqual(amounts.map(group => group.length), [58, 62, 62, 68]);
 assert.deepEqual(amounts.map(group => group.filter(q => q.isCalc === "yes").length), [10, 7, 10, 3]);
 const stem = q => q.question.normalize("NFKC").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const weakDistractor = /\b(paint|billing|billed|account balance|street(?:-| )name|postal code|customer (?:address|payment)|lunch schedule|tank ladder|meter-reader age)\b/i;
 assert.equal(new Set(candidates.map(stem)).size, candidates.length);
 assert.equal(repairedCheckedIn.length, 116);
 assert.deepEqual(repairedCheckedIn.map(q => q.questionNum), REPAIRED_QUESTION_NUMBERS);
@@ -64,9 +65,24 @@ for (const q of candidates) {
   assert.equal(q.options.length, 4);
   assert.equal(new Set(q.options.map(x => x.toLowerCase().trim())).size, 4);
   assert.ok(q.question.length > 25 && q.explanation.length > 25);
-  assert.ok(q.sourceReference.includes("answer-level source review pending"));
+  assert.ok(q.sourceTitle && q.sourceReference && q.sourceUrl.startsWith("https://"));
+  assert.notEqual(q.sourceTitle, "WPI 2025 Water Distribution Operator Class III Need-to-Know Criteria");
+  assert.ok(!q.sourceReference.includes("Topic-map reference only"));
+  assert.ok(!q.options.filter((_, index) => index !== q.correctIndex).some(option => weakDistractor.test(option)), `weak distractor at ${q.questionNum}`);
   const answer = q.options[q.correctIndex];
   assert.ok(!(answer.length > 80 && q.options.every((s, i) => i === q.correctIndex || answer.length > 2.5 * s.length)), `answer-length cue at ${q.questionNum}`);
+  const distractorLengths = q.options.filter((_, index) => index !== q.correctIndex).map(value => value.length).sort((a, b) => a - b);
+  const answerLengthRatio = answer.length / distractorLengths[1];
+  assert.ok(answerLengthRatio >= 0.45 && answerLengthRatio <= 2.8, `candidate option-length imbalance at ${q.questionNum}`);
+  if (q.isCalc === "yes") {
+    const steps = JSON.parse(q.steps);
+    assert.equal(steps.length, 3, `candidate calculation steps missing at ${q.questionNum}`);
+    assert.deepEqual(steps.map(step => step.l), ["Formula", "Substitution", "Result"], `candidate calculation step labels invalid at ${q.questionNum}`);
+    assert.ok(steps.every(step => typeof step.c === "string" && step.c.length >= 3), `candidate calculation step text invalid at ${q.questionNum}`);
+    assert.ok(steps.slice(0, 2).every(step => step.c.length >= 20), `candidate calculation formula detail invalid at ${q.questionNum}`);
+  } else {
+    assert.equal(q.steps, null, `non-calculation candidate has steps at ${q.questionNum}`);
+  }
 }
 if (process.argv[2]) {
   const snapshot = JSON.parse(readFileSync(process.argv[2], "utf8"));

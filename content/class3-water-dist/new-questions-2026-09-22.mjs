@@ -1,7 +1,9 @@
+import { readFileSync } from "node:fs";
+
 /** Original Class III distribution practice candidates. All are held in review.
  * The WPI guide is a topic map, not evidence for the answer to each item.
- * Technical and Ontario-specific source verification by a qualified reviewer is
- * required before approval. Case prompts are deliberately independent.
+ * Draft revisions add answer-level source mapping, while qualified Ontario SME
+ * verification remains required before any approval or learner publication.
  */
 export const AREAS = [
   { name: "Distribution System Components", module: "General", target: 58, recallBlueprintTarget: 10, calc: 10, page: 6 },
@@ -316,6 +318,40 @@ const numericalAreas = [
   ],
 ];
 
+const candidateRevisions = new Map(
+  JSON.parse(readFileSync(new URL("./candidate-250-revisions-2026-09-22.json", import.meta.url), "utf8"))
+    .map(item => [item.questionNum, item]),
+);
+
+function applyCandidateRevision(candidate) {
+  const revision = candidateRevisions.get(candidate.questionNum);
+  if (!revision) throw new Error(`missing reviewed draft revision for ${candidate.questionNum}`);
+  const options = [...candidate.options];
+  const distractors = [...revision.distractors];
+  options[candidate.correctIndex] = revision.answer;
+  for (let index = 0; index < 4; index++) {
+    if (index !== candidate.correctIndex) options[index] = distractors.shift();
+  }
+  if (options.some(value => typeof value !== "string") || new Set(options.map(value => value.trim().toLowerCase())).size !== 4) {
+    throw new Error(`invalid revised options for ${candidate.questionNum}`);
+  }
+  return {
+    ...candidate,
+    difficulty: revision.difficulty,
+    question: revision.question,
+    options,
+    explanation: revision.explanation,
+    steps: revision.steps === null ? null : JSON.stringify(revision.steps.map(step => ({ l: step.label, c: step.content }))),
+    cognitiveLevel: revision.cognitiveLevel,
+    sourceTitle: revision.sourceTitle,
+    sourceReference: revision.sourceReference,
+    sourceUrl: revision.sourceUrl,
+    reviewStatus: "in_review",
+    reviewedBy: null,
+    reviewedAt: null,
+  };
+}
+
 export function buildCandidateQuestions() {
   const groups = areaTexts.map((block, i) => parseText(block, i));
   for (const [index, line] of EXTRAS) groups[index].push(...parseText(line, index));
@@ -343,5 +379,6 @@ export function buildCandidateQuestions() {
     }
   }
   if (output.length !== 250) throw new Error(`expected 250 questions; got ${output.length}`);
-  return output;
+  if (candidateRevisions.size !== output.length) throw new Error(`expected ${output.length} candidate revisions, got ${candidateRevisions.size}`);
+  return output.map(applyCandidateRevision);
 }
