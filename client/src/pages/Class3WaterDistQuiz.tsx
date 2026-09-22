@@ -26,7 +26,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class3WaterDistQuiz() {
   usePageMeta({
     title: "Ontario Class 3 Water Distribution Practice Questions",
-    description: "Practice questions for the Ontario Class 3 Water Distribution operator certification exam, aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for Ontario Class 3 Water Distribution operators, covering hydraulics, maintenance, water quality, and system response.",
     noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water-dist", "lazy");

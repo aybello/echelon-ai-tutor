@@ -263,7 +263,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "class3-water-dist",
     shortName: "Class 3 Distribution",
     name: "Class 3 Water Distribution Practice Pass",
-    description: "Ontario Class 3 Water Distribution practice. Covers advanced hydraulics, system modelling, asset management, and distribution system planning. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "Ontario Class 3 Water Distribution practice questions covering hydraulics, system operation, water quality, safety, and asset management. Adaptive difficulty, AI Tutor, score history, and unlimited attempts.",
     priceCAD: 24900,
     priceUSD: 17900,
     examTypes: ["class3-water-dist"],
