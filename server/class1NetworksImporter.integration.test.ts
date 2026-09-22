@@ -19,11 +19,19 @@ async function seedBaseline() {
   await connection.execute(`INSERT INTO \`${metaTable}\` (bankKey, modules, totalQuestions, contentVersion, blueprintVersion) VALUES (?, '[]', ?, 7, 1)`, ["class1-water-dist", 716]);
   await connection.execute(`INSERT INTO \`${metaTable}\` (bankKey, modules, totalQuestions, contentVersion, blueprintVersion) VALUES (?, '[]', ?, 7, 1)`, ["class1-wastewater-coll", 724]);
   for (const [bankKey, count] of Object.entries(counts)) {
-    for (let number = 1; number <= count; number += 1) {
+    for (let firstQuestionNum = 1; firstQuestionNum <= count; firstQuestionNum += 250) {
+      const lastQuestionNum = Math.min(firstQuestionNum + 249, count);
+      const questionNumbers = Array.from(
+        { length: lastQuestionNum - firstQuestionNum + 1 },
+        (_, offset) => firstQuestionNum + offset,
+      );
+      const placeholders = questionNumbers
+        .map(() => "(?, ?, 'Existing', 'easy', ?, '[\"A\",\"B\",\"C\",\"D\"]', 0, 'Existing explanation.', 'no', 'Existing', 'recall', 'unreviewed')")
+        .join(", ");
       await connection.execute(
         `INSERT INTO \`${questionsTable}\` (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, isCalc, topic, cognitiveLevel, reviewStatus)
-         VALUES (?, ?, 'Existing', 'easy', ?, '["A","B","C","D"]', 0, 'Existing explanation.', 'no', 'Existing', 'recall', 'unreviewed')`,
-        [bankKey, number, `Existing ${bankKey} question ${number}`],
+         VALUES ${placeholders}`,
+        questionNumbers.flatMap(questionNum => [bankKey, questionNum, `Existing ${bankKey} question ${questionNum}`]),
       );
     }
   }

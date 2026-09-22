@@ -72,30 +72,24 @@ def check_homepage(page, base):
     except Exception as e:
         fail(name, str(e)[:200])
 
-# ── Journey 2: Pricing page loads with cards ──────────────────────────────────
+# ── Journey 2: Pricing page loads with current Individual Exam Pass picker ────
 def check_pricing(page, base):
-    name = "Pricing page — cards render"
+    name = "Pricing page — Individual Exam Pass picker renders"
     try:
         page.goto(f"{base}/pricing", timeout=TIMEOUT)
         page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
-        # First verify subscriptions section loads
-        page.wait_for_selector("text=Annual All-Access", timeout=TIMEOUT)
-        # Click the toggle to expand individual practice passes (they are collapsed by default)
-        toggle = page.locator("text=View individual practice passes").first
-        if toggle.is_visible():
-            toggle.click()
-            page.wait_for_timeout(1500)  # wait for expand animation
-        # Now check for One-time badge
-        count = page.get_by_text("One-time · no subscription", exact=True).count()
-        if count == 0:
-            count = page.locator(":text('One-time')").count()
-        if count == 0:
-            raise AssertionError("'One-time · no subscription' badge not found after expanding individual passes")
-        # Also verify at least one price is shown
+        page.wait_for_selector("#individual-course-picker", state="visible", timeout=TIMEOUT)
+        page.wait_for_selector("text=Choose your Individual Exam Pass", state="visible", timeout=TIMEOUT)
+
+        oit_option = page.locator("#individual-course-picker option[value='oit']")
+        option_text = oit_option.text_content() or ""
+        if option_text.strip() != "OIT — CA$49":
+            raise AssertionError(f"Unexpected OIT Individual Exam Pass option: {option_text!r}")
+
         price_text = page.evaluate("() => document.body.innerText")
-        if "CA$" not in price_text and "49" not in price_text:
-            raise AssertionError("No prices found on pricing page")
-        ok(name, f"{count} cards with one-time badge")
+        if "12 months of access from successful payment" not in price_text:
+            raise AssertionError("Individual Exam Pass 12-month term is not visible on pricing page")
+        ok(name, "OIT CA$49 option and 12-month term visible")
     except Exception as e:
         fail(name, str(e)[:200])
 
