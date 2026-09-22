@@ -16,4 +16,9 @@ describe("FlashcardShell action-control layout", () => {
     expect(source).toContain(".fc-actions-row { position: relative; z-index: 4;");
     expect(source).toContain('<div className="fc-actions-row">');
   });
+
+  it("exposes the rendered study card and prompt for reliable end-to-end readiness checks", () => {
+    expect(source).toContain('data-testid="flashcard-study-card"');
+    expect(source).toContain('data-testid="flashcard-prompt"');
+  });
 });

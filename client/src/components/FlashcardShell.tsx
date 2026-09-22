@@ -457,6 +457,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <button
               type="button"
               className={"fc-inner" + (flipped ? " flipped" : "")}
+              data-testid="flashcard-study-card"
               onClick={handleFlip}
               aria-pressed={flipped}
               aria-label={flipped ? "Hide answer" : "Reveal answer"}
@@ -487,7 +488,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                     {frontSupplement}
                   </div>
                 )}
-                <div style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
+                <div data-testid="flashcard-prompt" style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
                   {displayPrompt}
                 </div>
                 <div style={{ marginTop: "12px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>

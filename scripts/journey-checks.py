@@ -214,12 +214,16 @@ def check_restore_access(page, base):
                 break
         else:
             raise AssertionError("Could not find sign-in/restore button on account page")
-        # After OTP migration: clicking the button redirects to /login/otp — wait for navigation
-        try:
-            page.wait_for_url("**/login/otp**", timeout=5000)
-        except Exception:
-            pass  # May not redirect if already on the right page
-        time.sleep(1)
+        # After OTP migration the redirect must finish before reading the next screen.
+        page.wait_for_url("**/login/otp**", timeout=TIMEOUT)
+        page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
+        page.wait_for_function("""
+            () => {
+                const text = document.body.innerText.toLowerCase();
+                return text.includes('enter your email') || text.includes('6-digit') ||
+                    text.includes('sign-in code') || text.includes('verify');
+            }
+        """, timeout=TIMEOUT)
         page_text = page.inner_text("body")
         has_response = any(word in page_text.lower() for word in [
             "no purchases", "found", "pass", "access", "purchase",
@@ -238,7 +242,19 @@ def check_flashcards(page, base):
     try:
         page.goto(f"{base}/oit-water-flashcards", timeout=TIMEOUT)
         page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
-        time.sleep(3)
+        # Wait for the asynchronous question-bank query instead of assuming a
+        # fixed response time from the production database. Static marketing
+        # copy is not enough: require a visible study card with prompt content.
+        study_card = page.get_by_test_id("flashcard-study-card")
+        study_card.wait_for(state="visible", timeout=TIMEOUT)
+        page.wait_for_function(
+            "selector => Boolean(document.querySelector(selector)?.textContent?.trim())",
+            arg="[data-testid='flashcard-prompt']",
+            timeout=TIMEOUT,
+        )
+        prompt = page.get_by_test_id("flashcard-prompt").inner_text(timeout=TIMEOUT).strip()
+        if not prompt:
+            raise AssertionError("Flashcard study card rendered without prompt content")
         page_text = page.inner_text("body").lower()
         has_content = any(word in page_text for word in [
             "flashcard", "flip", "card", "oit", "disinfection", "try free", "get oit", "practice"
