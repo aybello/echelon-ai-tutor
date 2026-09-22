@@ -11,15 +11,17 @@ import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
-import { formatPriceCAD, formatPriceUSD, getProductByKey } from "@shared/products";
+import { resolvePurchaseGateOffer } from "@shared/checkoutOffer";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
 interface PurchaseGateProps {
   examType: string;       // e.g. "oit", "class1-water", "wqa"
   productKey: string;     // e.g. "oit", "class1-water", "wqa"
-  productName: string;    // e.g. "OIT Practice Pass"
-  price: number;          // in dollars, e.g. 49
+  /** Optional fallback for legacy non-catalogue offers. Catalogue names take precedence. */
+  productName?: string;
+  /** Optional fallback for legacy non-catalogue offers. Catalogue prices take precedence. */
+  price?: number;
   children: React.ReactNode;
   /** Optional feature bullets shown in the paywall */
   features?: string[];
@@ -141,10 +143,7 @@ export default function PurchaseGate({
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
-  const product = getProductByKey(productKey);
-  const checkoutPriceLabel = product
-    ? isUS ? formatPriceUSD(product.priceUSD) : formatPriceCAD(product.priceCAD)
-    : `${isUS ? "US" : "CA"}$${price}`;
+  const offer = resolvePurchaseGateOffer({ productKey, productName, price, isUS });
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: data => {
       if (data.url) window.location.href = data.url;
@@ -152,6 +151,7 @@ export default function PurchaseGate({
   });
 
   function handleCheckout(contact: { name: string; email: string; phone: string }) {
+    if (!offer.available) return;
     try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
     createCheckout.mutate({
       productKey,
@@ -348,10 +348,12 @@ export default function PurchaseGate({
             letterSpacing: "-0.5px",
           }}
         >
-          Unlock {productName}
+          Unlock {offer.productName}
         </h2>
         <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-          Get 12 months of course access from successful payment for {checkoutPriceLabel}
+          {offer.available
+            ? `Get 12 months of course access from successful payment for ${offer.priceLabel}`
+            : "Checkout is temporarily unavailable for this course."}
         </p>
 
         {/* Feature bullets */}
@@ -377,6 +379,8 @@ export default function PurchaseGate({
 
         {/* CTAs */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          {offer.available ? (
+            <>
             <button
               onClick={() => setShowCheckout(true)}
               disabled={createCheckout.isPending}
@@ -394,11 +398,32 @@ export default function PurchaseGate({
                 letterSpacing: "0.01em",
               }}
             >
-              {createCheckout.isPending ? "Opening checkout…" : `Buy 12-Month Exam Pass — ${checkoutPriceLabel} →`}
+              {createCheckout.isPending ? "Opening checkout…" : `Buy 12-Month Exam Pass - ${offer.priceLabel} →`}
             </button>
           <p style={{ fontSize: 11, color: "#64748B", margin: "0 0 4px", textAlign: "center" }}>
             One-time payment · 12 months of access from successful payment · No subscription
           </p>
+            </>
+          ) : (
+            <Link href="/pricing">
+              <button
+                style={{
+                  width: "100%",
+                  padding: "13px 0",
+                  borderRadius: 10,
+                  background: "#F8FAFC",
+                  color: "#1D4ED8",
+                  border: "1.5px solid #CBD5E1",
+                  fontSize: 15,
+                  fontWeight: 800,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                }}
+              >
+                View available Exam Passes →
+              </button>
+            </Link>
+          )}
 
           <Link href={isUS ? "/us/courses" : "/quiz"}>
             <button
@@ -449,10 +474,10 @@ export default function PurchaseGate({
             Log in to your account →
           </a>
       </div>
-      {showCheckout && (
+      {showCheckout && offer.available && offer.priceLabel && (
         <CheckoutContactModal
-          productName={productName}
-          priceLabel={checkoutPriceLabel}
+          productName={offer.productName}
+          priceLabel={offer.priceLabel}
           prefillEmail={email}
           onSubmit={handleCheckout}
           onClose={() => setShowCheckout(false)}

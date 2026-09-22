@@ -1,6 +1,7 @@
 /** Server-authorized, bounded study data. Paid questions are never bundled or persisted here. */
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
+import { resolveQuestionBankTotal } from "@shared/questionBankDisplay";
 
 export interface DBQuestion {
   id: number;
@@ -30,16 +31,6 @@ export interface ModuleOverview {
 }
 
 export type QuestionBankPreviewSurface = "practice" | "flashcards" | "mock";
-
-/**
- * Quiz pages use lazy loading: their question session is fetched separately,
- * while this hook owns the bank metadata. Prefer the server metadata count so
- * a deliberately empty lazy question array cannot be rendered as “0 questions”.
- */
-export function resolveQuestionBankTotal(metadataTotal: unknown, fallbackTotal = 0): number {
-  const parsed = Number(metadataTotal);
-  return Number.isSafeInteger(parsed) && parsed >= 0 ? parsed : fallbackTotal;
-}
 
 export function useQuestionBank(
   bankKey: string,

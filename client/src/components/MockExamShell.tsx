@@ -221,10 +221,10 @@ export interface StreamOption {
   scoreExamType?: ExamProductKey;
   /** Stream tag for ScoreHistory ("water" | "wastewater") */
   stream?: "water" | "wastewater";
-  /** Human-readable product name for paywall */
-  productName: string;
-  /** Price in USD */
-  price: number;
+  /** Optional legacy fallback. Registered product names come from the shared catalogue. */
+  productName?: string;
+  /** Optional legacy fallback. Registered product prices come from the shared catalogue. */
+  price?: number;
 }
 
 export type ExamProductKey =
@@ -265,10 +265,10 @@ export interface MockExamConfig {
   renderQuestionSupplement?: (question: ExamQuestion) => ReactNode;
   /** Stripe / PurchaseGate product key */
   productKey: ExamProductKey;
-  /** Human-readable product name for paywall */
-  productName: string;
-  /** Price in USD cents (displayed as $XX) */
-  price: number;
+  /** Optional legacy fallback. Registered product names come from the shared catalogue. */
+  productName?: string;
+  /** Optional legacy fallback. Registered product prices come from the shared catalogue. */
+  price?: number;
   /** Optional feature bullets for paywall */
   features?: string[];
   /** Deliberately free course mock; bypasses the standard purchase gate. */

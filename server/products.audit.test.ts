@@ -20,6 +20,7 @@ import {
   ALL_INDIVIDUAL_EXAM_TYPES,
   ALL_PRODUCTS,
   BUNDLES,
+  getActiveIndividualProductByKey,
   getUnlockedExamTypes,
 } from "../shared/products";
 
@@ -126,6 +127,7 @@ describe("shared/products.ts — price-change audit", () => {
     const saleKeys = new Set(ALL_PRODUCTS.map(product => product.key));
     for (const bundle of BUNDLES) {
       expect(saleKeys.has(bundle.key), `${bundle.key} must remain retired`).toBe(false);
+      expect(getActiveIndividualProductByKey(bundle.key), `${bundle.key} must not start a new individual checkout`).toBeUndefined();
     }
   });
 

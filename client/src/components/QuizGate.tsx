@@ -5,7 +5,7 @@ import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import { formatPriceCAD, formatPriceUSD, getProductByKey } from "@shared/products";
+import { resolveQuizGateOffer } from "@shared/checkoutOffer";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -16,9 +16,9 @@ interface QuizGateProps {
   onDismiss?: () => void; // optional: restart another free 15-question session
   /** If provided, the gate shows a Stripe upsell for this product key as the primary CTA */
   productKey?: string;
-  /** Human-readable product name shown in the upsell headline */
+  /** @deprecated Retained for caller compatibility. Quiz Gate accepts active catalogue products only. */
   productName?: string;
-  /** Price label shown on the Stripe CTA button, e.g. "CA$49" */
+  /** @deprecated Retained for caller compatibility. Quiz Gate accepts active catalogue products only. */
   priceLabel?: string;
   /** What the paid pass unlocks — shown as bullet points */
   paidFeatures?: string[];
@@ -72,8 +72,6 @@ export default function QuizGate({
   questionsAnswered,
   onDismiss,
   productKey,
-  productName,
-  priceLabel,
   paidFeatures,
   examType,
   history = [],
@@ -100,11 +98,7 @@ export default function QuizGate({
     };
   }, []);
 
-  const product = productKey ? getProductByKey(productKey) : undefined;
-  const hasPaidOption = Boolean(product && productName);
-  const checkoutPriceLabel = product
-    ? isUS ? formatPriceUSD(product.priceUSD) : formatPriceCAD(product.priceCAD)
-    : priceLabel;
+  const offer = resolveQuizGateOffer(productKey, isUS);
   const diagnostic = diagnosticAvailable ? buildPreviewDiagnostic(history, questionsAnswered) : null;
 
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
@@ -134,7 +128,7 @@ export default function QuizGate({
   }, [diagnostic, examType, productKey, trackDiagnostic]);
 
   function handleCheckout(contact: { name: string; email: string; phone: string }) {
-    if (!productKey) return;
+    if (!productKey || !offer.available) return;
     try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
     createCheckout.mutate({
       productKey,
@@ -249,12 +243,12 @@ export default function QuizGate({
           )}
 
           {/* ── PAID PATH (primary) — shown when productKey is provided ── */}
-          {hasPaidOption ? (
+          {offer.available && offer.productName && offer.priceLabel ? (
             <>
               <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%)", border: "2px solid #BFDBFE", borderRadius: 16, padding: "18px 18px 16px", marginBottom: 14, textAlign: "left" }}>
                 <div style={{ marginBottom: 10 }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", letterSpacing: "0.08em", marginBottom: 4 }}>UNLOCK FULL ACCESS</div>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{productName}</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{offer.productName}</div>
                 </div>
                 <ul style={{ margin: "0 0 14px", padding: "0 0 0 0", listStyle: "none" }}>
                   {(paidFeatures ?? [
@@ -288,7 +282,7 @@ export default function QuizGate({
                       opacity: createCheckout.isPending ? 0.7 : 1,
                     }}
                   >
-                    {createCheckout.isPending ? "Opening checkout…" : `Continue with 12-Month Exam Pass — ${checkoutPriceLabel} →`}
+                    {createCheckout.isPending ? "Opening checkout…" : `Continue with 12-Month Exam Pass - ${offer.priceLabel} →`}
                   </button>
                 {checkoutError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, marginTop: 8, textAlign: "center" }}>{checkoutError}</p>}
                 <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
@@ -352,10 +346,10 @@ export default function QuizGate({
   return createPortal(
     <>
       {gateContent}
-      {showCheckout && productKey && productName && (
+      {showCheckout && productKey && offer.available && offer.productName && offer.priceLabel && (
         <CheckoutContactModal
-          productName={productName}
-          priceLabel={checkoutPriceLabel}
+          productName={offer.productName}
+          priceLabel={offer.priceLabel}
           prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
           onSubmit={handleCheckout}
           onClose={() => setShowCheckout(false)}

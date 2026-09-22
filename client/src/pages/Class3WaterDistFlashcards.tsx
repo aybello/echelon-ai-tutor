@@ -19,8 +19,6 @@ export default function Class3WaterDistFlashcards() {
       <PurchaseGate
         examType="class3-water-dist"
         productKey="class3-water-dist"
-        productName="Ontario Class 3 Water Distribution Practice Pass"
-        price={99}
       >
         <FlashcardShell
           questions={questions as unknown as FlashcardQuestion[]}

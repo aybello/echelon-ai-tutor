@@ -8,6 +8,7 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import type { ModuleConfig } from "@/components/QuizShell";
+import { formatQuestionBankCount } from "@shared/questionBankDisplay";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "General":          { bg: "#FEF9C3", color: "#A16207" },
@@ -25,10 +26,11 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class3WaterDistQuiz() {
   usePageMeta({
     title: "Ontario Class 3 Water Distribution Practice Questions",
-    description: "Practice questions for the Ontario Class 3 Water Distribution operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 3 Water Distribution operator certification exam, aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water-dist", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water-dist", "lazy");
+  const questionBankCount = formatQuestionBankCount(totalQuestions);
   const allQuestions = dbQuestions;
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
     name: m,
@@ -48,7 +50,7 @@ export default function Class3WaterDistQuiz() {
       currentPath="/class3-water-dist"
       courseLabel="Ontario Class 3 · Water Distribution"
       courseTitle="Ontario Class 3 Water Distribution Quiz"
-      courseSubtitle="500 questions · Ontario Class 3 Water Distribution"
+      courseSubtitle={`${questionBankCount} · Ontario Class 3 Water Distribution`}
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[
@@ -126,11 +128,9 @@ export default function Class3WaterDistQuiz() {
           questionsAnswered={session.history.length}
           history={session.history}
           productKey="class3-water-dist"
-          productName="Ontario Class 3 Water Distribution Practice Pass"
-          priceLabel="CA$99"
           paidFeatures={[
-            "300 Ontario Class 3 Water Distribution questions — unlimited attempts",
-            "Timed mock exam (100 questions, 2 hrs)",
+            `${questionBankCount} · unlimited attempts`,
+            "Timed mock exam (100 questions, 3 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",
           ]}

@@ -263,7 +263,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "class3-water-dist",
     shortName: "Class 3 Distribution",
     name: "Class 3 Water Distribution Practice Pass",
-    description: "Ontario Class 3 Water Distribution — 500 questions. Covers advanced hydraulics, system modelling, asset management, and distribution system planning. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "Ontario Class 3 Water Distribution practice. Covers advanced hydraulics, system modelling, asset management, and distribution system planning. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
     priceUSD: 17900,
     examTypes: ["class3-water-dist"],
@@ -417,6 +417,15 @@ export function getProductByKey(key: string): EchelonProduct | EchelonBundle | u
     INDIVIDUAL_PRODUCTS.find(p => p.key === key) ??
     BUNDLES.find(b => b.key === key)
   );
+}
+
+/**
+ * Resolves products that are currently available for a new individual checkout.
+ * Historical bundles remain available through getProductByKey for entitlement
+ * resolution, but must not be offered for sale again.
+ */
+export function getActiveIndividualProductByKey(key: string): EchelonProduct | undefined {
+  return INDIVIDUAL_PRODUCTS.find(product => product.key === key);
 }
 
 export function formatPriceCAD(cents: number): string {

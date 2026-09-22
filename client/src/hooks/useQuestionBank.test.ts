@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { resolveQuestionBankTotal } from "./useQuestionBank";
+import { resolveQuestionBankTotal } from "@shared/questionBankDisplay";
 
 describe("resolveQuestionBankTotal", () => {
   it("uses the authoritative server metadata count for lazy quiz pages", () => {
