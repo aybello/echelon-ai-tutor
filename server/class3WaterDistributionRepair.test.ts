@@ -1,21 +1,27 @@
 import { describe, expect, it } from "vitest";
 // @ts-expect-error - this standalone guarded release helper is executed as ESM by Node and Vitest.
 import { BACKUP_EVIDENCE_MAX_AGE_MS, BANK, RELEASE, TARGETS, beginReadOnlyPlanTransaction, buildPlan, fingerprint, optionsOf, parseCurrentBackupEvidence, readLiveBaseline } from "../scripts/recovery/class3WaterDistributionRepair.mjs";
+// @ts-expect-error - the checked-in authoring source is executed as ESM by Node and Vitest.
+import { NUMERIC_EXPECTED_ANSWERS } from "../content/class3-water-dist/repaired-116-2026-09-22.mjs";
 
 function baselineRows() {
-  return Array.from({ length: 571 }, (_, index) => ({
+  return Array.from({ length: 571 }, (_, index) => {
+    const questionNum = index + 1;
+    const numericAnswer = NUMERIC_EXPECTED_ANSWERS[questionNum];
+    return {
     id: 200_000 + index,
     bankKey: BANK,
-    questionNum: index + 1,
+    questionNum,
     module: "Distribution fundamentals",
     difficulty: "medium",
-    question: `Baseline question ${index + 1}?`,
-    options: ["original answer", "option B", "option C", "option D"],
+    question: `Baseline question ${questionNum}?`,
+    options: numericAnswer ? [numericAnswer, "option B", "option C", "option D"] : ["original answer", "option B", "option C", "option D"],
     correctIndex: 0,
-    explanation: `Baseline explanation ${index + 1}.`,
+    explanation: `Baseline explanation ${questionNum}.`,
     steps: null,
     reviewStatus: "unreviewed",
-  }));
+    };
+  });
 }
 
 function manifestFor(rows: ReturnType<typeof baselineRows>) {

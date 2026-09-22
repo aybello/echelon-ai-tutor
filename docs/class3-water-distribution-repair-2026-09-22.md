@@ -1,4 +1,4 @@
-# Ontario Class 3 water distribution: guarded repair and 250 candidate questions
+# Ontario Class 3 water distribution: 116 repaired legacy questions and 250 candidates
 
 ## Current state and scope
 
@@ -9,12 +9,21 @@ The [WPI 2025 Class III Need-to-Know guide](https://gowpi.org/wp-content/uploads
 ## Package
 
 - `content/class3-water-dist/repair-manifest-2026-09-22.json` pins the September 19 question content fingerprints and IDs of 118 targeted rows.
-- `content/class3-water-dist/new-questions-2026-09-22.mjs` authors 250 original candidate questions; `candidate-250-2026-09-22.json` is the identical reviewer-friendly export. All 250 have `reviewStatus=in_review`.
-- `scripts/recovery/class3WaterDistributionRepair.mjs` validates all 571 rows belong to the expected bank, have unique positive IDs, and form the complete 1–571 sequence before any mutation. It pins IDs and content fingerprints for the 118 targeted rows, captures 118 before-images in `question_content_snapshots`, corrects 16 worked numerical questions, holds 116 rows, inserts the 250 drafts, and updates metadata to 821 stored rows in one transaction. The two corrected simple calculations (308 and 447) remain learner-visible as `unreviewed`, reflecting that their old approval cannot be carried over to the edited version.
-- `scripts/recovery/verifyClass3DistributionRepair.mjs` verifies the fixed draft JSON, numeric answer keys, uniqueness, area and key-position distribution, and rejects a modified baseline in an offline rehearsal.
+- `content/class3-water-dist/repaired-116-2026-09-22.mjs` contains answer-level replacements for all 45 held regulatory/technical questions and all 71 questions in the defective Q501–Q571 calculation block. `repaired-116-2026-09-22.json` is the identical reviewer-facing export. The regulatory replacements cite current Ontario, AWWA, Hydraulic Institute, EPA, or WPI primary material with a dated section reference. All 71 calculation answers were independently recomputed.
+- `content/class3-water-dist/new-questions-2026-09-22.mjs` authors 250 original candidate questions; `candidate-250-2026-09-22.json` is the identical reviewer-facing export. All 250 have `reviewStatus=in_review`.
+- `scripts/recovery/class3WaterDistributionRepair.mjs` validates the complete 1–571 baseline and unique row IDs, checks every targeted row before mutation, captures 118 before-images in `question_content_snapshots`, installs the 116 replacements as `in_review`, inserts the 250 drafts, and updates metadata to 821 stored rows in one transaction. The two corrected simple calculations (308 and 447) remain learner-visible as `unreviewed`, reflecting that their old approval cannot be carried over to edited content.
+- `scripts/recovery/verifyClass3DistributionRepair.mjs` verifies exact 116-row coverage, source metadata, four distinct choices, unique stems, checked-in/release-payload equality, all numerical answer strings, 70 independently recomputed numerical results plus the comparative-pipe item, the 250-candidate payload, and fail-closed rejection of a changed baseline. CI runs the source-independent part on every pull request.
 - The buyer-facing quiz and mock copy now uses the live learner-visible count, CA$249 catalog price, and the actual three-hour practice timer. Unverified Ontario regulation alignment claims were removed.
 
-**Expected after a successful import against the 571-row baseline:** 821 stored rows, 250 new rows in review, 116 old rows held, and 455 old rows visible if all 116 were previously visible. Existing live review states could lower that visible figure. This import does not publish any of the 250 additions to a learner.
+**Expected after a successful import against the 571-row baseline:** 821 stored rows, 116 repaired legacy rows in review, 250 new rows in review, and two corrected legacy rows left visible as unreviewed. Existing live review states can further reduce the learner-visible count. The import does not automatically publish any repaired or new in-review question.
+
+## What the 116-question repair corrects
+
+- Replaces duplicated or unsupported regulatory prompts with scenario-specific questions tied to current consolidated O. Reg. 169/03, O. Reg. 170/03, O. Reg. 128/04, and Ontario's 2020 Watermain Disinfection Procedure.
+- Corrects the lead standard to 0.010 mg/L; uses the Schedule 10 population formulas instead of invented weekly/five-day rules; distinguishes pre-service commissioning samples from drinking-water tests; and uses method-specific new-main disinfection conditions.
+- Rebuilds ambiguous hydraulic scenarios so each has one stated flow path, operating assumption, efficiency basis, or mixing model.
+- Corrects every defective answer in Q501–Q571, including TDH, pump energy, PRV dissipation, Darcy-Weisbach loss, pipe diameter, tank cycling, Hazen-Williams loss, and fire-storage depletion.
+- Removes contradictory legacy `steps` from all 116 replacements and puts the verified derivation in one explanation.
 
 ## How to plan and apply
 
@@ -29,12 +38,12 @@ node scripts/recovery/class3WaterDistributionRepair.mjs --manifest content/class
 
 If the live plan succeeds, take and verify a current recoverable database backup. Applying requires `CONFIRM_CLASS3_DISTRIBUTION_REPAIR` equal to the **live** plan digest and `--apply`. It also requires `CLASS3_REPAIR_BACKUP_EVIDENCE` to be a JSON record with `release`, the exact `planDigest`, a nonblank verified `backupId`, and an ISO `backedUpAt` timestamp no more than one hour old. For example: `{"release":"class3-water-dist-repair-2026-09-22","planDigest":"<live plan digest>","backupId":"<verified backup identifier>","backedUpAt":"2026-09-22T21:00:00Z"}`. The script locks rows only on this explicit apply path. It rolls back on a changed row, missing metadata, occupied question number, duplicate stem, failed snapshot insert, or incorrect post-write count. It does not touch learners, purchases, or attempts. If a changed row blocks the plan, compare the production version with the pinned snapshot and produce a new reviewed patch; do not disable the comparison.
 
-## Review gates before publishing the 250
+## Review gates before publishing
 
 1. Confirm which WPI/OWWCO exam blueprint Ontario currently uses. The draft has 58/62/62/68 items across the four WPI task areas and 10/7/10/3 calculations. Its 40 recall items are fewer than the approximately 82 suggested by proportionally scaling WPI's standardized cognitive split; adjust deliberately if Ontario uses that blueprint.
-2. Independently check every answer, explanation, calculation and plausible distractor with an experienced Class III operator or qualified SME. The stored WPI citation is a **topic map only**, never answer-level evidence. Add a dated technical source section and Ontario jurisdiction note before marking each item approved. In particular, the current draft still includes obvious irrelevant distractors (paint, billing, etc.) in roughly 80 items; these are editorial candidates, not release-ready exam questions.
-3. Review all 45 held legacy regulatory or unsupported technical-claim rows against current Ontario instruments and the specific AWWA edition. Review the 71 held rows 501–571 independently; 14 have prepared numerical corrections, while other items in that block have ambiguous or suspect reasoning. Do not bulk approve a whole block.
-4. Audit the remaining visible legacy bank, including the 29 calculation-flagged items before number 501. The automated screening and targeted checks have **not** certified all 571 answers.
-5. After each approved batch, read a learner-path sample to verify exact options, key, rationale and absence of held questions. The existing `in_review` filter prevents draft delivery until explicit approval.
+2. Have an experienced Ontario Class III/IV distribution operator or other qualified SME review each of the 116 replacements before approval. The package has primary-source and calculation evidence but intentionally does not impersonate independent human sign-off.
+3. Independently check every one of the 250 new candidate answers, explanations, calculations and distractors. The stored WPI citation on those candidates is a topic map only, not answer-level evidence. The candidate batch still needs the editorial distractor pass documented in the original handoff.
+4. Audit the remaining visible legacy bank, including the 29 calculation-flagged items before number 501. This targeted repair does **not** certify all other legacy answers.
+5. After each approved batch, read a learner-path sample to verify exact choices, key, rationale and absence of in-review questions. The existing `in_review` filter prevents draft delivery until explicit approval.
 
 The release script stages drafts to preserve work and make content review possible in the production admin interface; it is not a certification of their educational correctness. The metadata count is the stored inventory; the displayed practice count is based on the learner-visible query.
