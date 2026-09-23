@@ -40,7 +40,7 @@ export default function PracticeQuestionStatus({
           Your {answerCount} {answerCount === 1 ? "answer remains" : "answers remain"} in this session.
         </p>}
         <p className="mt-3 text-sm text-slate-600">
-          Choose another module{hasCalcOnly ? ", turn off Calc Only," : ""} or adjust your practice mode and difficulty below.
+          Choose another module{hasCalcOnly && calcOnly ? ", turn off Calc Only," : ""} or adjust your practice mode and difficulty below.
           {" "}Restarting keeps your current filters.
         </p>
         <button type="button" onClick={onRestart} className={`${buttonStyle} mt-4 border-slate-300 bg-white text-slate-800 hover:bg-slate-100`}>
