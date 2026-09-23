@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import {
   BACKUP_EVIDENCE_MAX_AGE_MS,
   BANK,
+  EVIDENCE_ROOT,
   LEARNER_VISIBLE_REPAIR_STATUS,
   PACKAGE_SHA256,
   RELEASE,
@@ -90,6 +91,13 @@ describe("WPI Class III Water Distribution remediation release safeguards", () =
     expect(plan.changes.every((change: { after: { reviewStatus: string } }) => change.after.reviewStatus === LEARNER_VISIBLE_REPAIR_STATUS)).toBe(true);
   });
 
+  it("allows the verified stale metadata count and plans its correction", () => {
+    const staleMetadata = { ...metadata(), totalQuestions: 590 };
+    const plan = planFor(rows(), staleMetadata);
+    expect(plan.sourceMetadataTotalQuestions).toBe(590);
+    expect(plan.expectedMetadataTotalQuestions).toBe(STORED_COUNT);
+  });
+
   it("binds the exact plan to the target, package, full bank before-image, and metadata version", () => {
     const firstRows = rows();
     const baseline = buildBaselineManifest(firstRows, metadata(), TARGET);
@@ -139,7 +147,7 @@ describe("WPI Class III Water Distribution remediation release safeguards", () =
     const baseline = planFor().baseline;
     const key = "controlled-private-evidence-key-0123456789";
     const preflightValue = { release: RELEASE, planDigest: "exact-plan", targetFingerprint: TARGET, plannedAt: "2026-09-23T07:20:00Z", storedCount: STORED_COUNT, repairCount: REPAIR_COUNT, packageSha256: PACKAGE_SHA256 };
-    const evidenceDir = `/home/ubuntu/private/echelon-authoritative-recovery/wpi-release-test-${process.pid}`;
+    const evidenceDir = `${EVIDENCE_ROOT}/wpi-release-test-${process.pid}`;
     const artifactPath = `${evidenceDir}/recovery-artifact.json`;
     mkdirSync(evidenceDir, { recursive: true, mode: 0o700 });
     const artifact = { release: RELEASE, bankKey: BANK, planDigest: "exact-plan", targetFingerprint: TARGET, backupId: "scoped-backup", baseline };
@@ -162,7 +170,7 @@ describe("WPI Class III Water Distribution remediation release safeguards", () =
     const liveRows = rows();
     const liveMetadata = metadata();
     const plan = planFor(liveRows, liveMetadata);
-    const outcome = { release: RELEASE, bankKey: BANK, planDigest: plan.planDigest, targetFingerprint: TARGET, sourceContentVersion: liveMetadata.contentVersion, expectedContentVersion: plan.expectedContentVersion, baseline: plan.baseline };
+    const outcome = { release: RELEASE, bankKey: BANK, planDigest: plan.planDigest, targetFingerprint: TARGET, sourceContentVersion: liveMetadata.contentVersion, sourceMetadataTotalQuestions: plan.sourceMetadataTotalQuestions, expectedContentVersion: plan.expectedContentVersion, expectedMetadataTotalQuestions: plan.expectedMetadataTotalQuestions, baseline: plan.baseline };
     expect(reconcileUncertainOutcome(outcome, liveRows, liveMetadata, [], TARGET)).toBe("not_committed");
     expect(() => reconcileUncertainOutcome(outcome, liveRows, liveMetadata, snapshotsFor(plan, liveMetadata.contentVersion), TARGET)).toThrow(/snapshots without a committed write/);
 

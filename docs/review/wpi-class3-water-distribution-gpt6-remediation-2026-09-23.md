@@ -28,6 +28,8 @@ A complete GPT-6 Sol review then covered all 209 staged questions. The first pas
 
 ## Publication safeguards
 
-The accompanying release script requires the exact package digest, a fresh live preflight bound to the production target, complete before-images for all 209 target rows, a scoped recovery evidence record, a matching confirmation digest, row-level post-write verification, protection of every non-target question, an increment of only the target bank metadata version, and confirmation that the 611-question learner-visible inventory is unchanged.
+The live preflight found that the bank contains 611 learner-visible questions while its metadata still claimed 590. The guarded release corrects that stale metadata count to 611 as part of the same atomic transaction. It does not add, remove, renumber, hide, or reveal any questions beyond the 209 reviewed replacements.
+
+The accompanying release script requires the exact package digest, a fresh live preflight bound to the production target, complete before-images for all 209 target rows, a verified recovery artifact, a matching confirmation digest, row-level post-write verification, exact raw-value protection of every non-target question, an increment of only the target bank metadata version, and confirmation that the 611-question learner-visible inventory is unchanged. It also prevents a second application of the same release and retains a durable retry gate if a database commit outcome is uncertain.
 
 This package contains question content only. It does not read or modify customer records, payment records, purchases, entitlements, organizations, team licences, learner attempts, or prices.

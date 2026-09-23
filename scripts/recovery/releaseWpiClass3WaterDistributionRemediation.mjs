@@ -7,6 +7,7 @@
 import { createHash, createHmac } from "node:crypto";
 import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, realpathSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
+import { tmpdir } from "node:os";
 import {
   authoritativeProductionConnectionOptions,
   beginReadOnlyTransaction,
@@ -18,9 +19,10 @@ export const BANK = "wpi-class3-water-dist";
 export const RELEASE = "wpi-class3-water-dist-gpt6-remediation-2026-09-23";
 export const STORED_COUNT = 611;
 export const REPAIR_COUNT = 209;
+export const PRE_RELEASE_METADATA_TOTAL = 590;
 export const LEARNER_VISIBLE_REPAIR_STATUS = "unreviewed";
 export const BACKUP_EVIDENCE_MAX_AGE_MS = 60 * 60 * 1000;
-export const EVIDENCE_ROOT = "/home/ubuntu/private/echelon-authoritative-recovery";
+export const EVIDENCE_ROOT = process.env.WPI_CLASS3_WATER_DIST_EVIDENCE_ROOT ?? (process.env.VITEST ? `${tmpdir()}/echelon-wpi-class3-release-evidence` : "/home/ubuntu/private/echelon-authoritative-recovery");
 export const EVIDENCE_KEY_FILE_ENV = "WPI_CLASS3_WATER_DIST_EVIDENCE_KEY_FILE";
 export const PACKAGE_SHA256 = "9a2d964640267794aca108ed1e6f45bea93d643800f6ecbefc5dde2cd932e0fb";
 const PACKAGE_PATH = new URL("../../content/wpi-class3-water-dist/repaired-critical-high-209-2026-09-23.json", import.meta.url);
@@ -80,7 +82,7 @@ export function fullRowPayload(row) {
 function snapshotPayload(row) { return { id: Number(row.id), rawHash: typeof row.__rawHash === "string" ? row.__rawHash : canonicalHash(fullRowPayload(row)), content: fullRowPayload(row) }; }
 
 function quoteIdentifier(identifier) { return `\`${String(identifier).replace(/`/g, "``")}\``; }
-async function attachRawRowHashes(connection, rows, lockForApply) {
+export async function attachRawRowHashes(connection, rows, lockForApply) {
   const [columns] = await connection.execute("SELECT `COLUMN_NAME` AS columnName FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA`=DATABASE() AND `TABLE_NAME`='questions' ORDER BY `ORDINAL_POSITION`");
   const columnNames = columns.map(column => String(column.columnName));
   if (!columnNames.includes("id") || !columnNames.includes("questionNum") || !columnNames.includes("bankKey")) fail("questions table columns cannot support raw preservation verification");
@@ -141,12 +143,12 @@ function durableWriteJSON(path, value) {
 }
 function recordUncertainOutcome(plan, sourceContentVersion) {
   const path = uncertainOutcomePath(plan.targetFingerprint);
-  durableWriteJSON(path, { release: RELEASE, bankKey: BANK, planDigest: plan.planDigest, targetFingerprint: plan.targetFingerprint, recordedAt: new Date().toISOString(), sourceContentVersion: Number(sourceContentVersion), expectedContentVersion: Number(plan.expectedContentVersion), baseline: plan.baseline });
+  durableWriteJSON(path, { release: RELEASE, bankKey: BANK, planDigest: plan.planDigest, targetFingerprint: plan.targetFingerprint, recordedAt: new Date().toISOString(), sourceContentVersion: Number(sourceContentVersion), sourceMetadataTotalQuestions: Number(plan.sourceMetadataTotalQuestions), expectedContentVersion: Number(plan.expectedContentVersion), expectedMetadataTotalQuestions: Number(plan.expectedMetadataTotalQuestions), baseline: plan.baseline });
   return path;
 }
 function recordCommittedOutcome(plan, sourceContentVersion) {
   const path = committedOutcomePath(plan.targetFingerprint);
-  durableWriteJSON(path, { release: RELEASE, bankKey: BANK, planDigest: plan.planDigest, targetFingerprint: plan.targetFingerprint, committedAt: new Date().toISOString(), sourceContentVersion: Number(sourceContentVersion), expectedContentVersion: Number(plan.expectedContentVersion), repairCount: REPAIR_COUNT, packageSha256: PACKAGE_SHA256 });
+  durableWriteJSON(path, { release: RELEASE, bankKey: BANK, planDigest: plan.planDigest, targetFingerprint: plan.targetFingerprint, committedAt: new Date().toISOString(), sourceContentVersion: Number(sourceContentVersion), sourceMetadataTotalQuestions: Number(plan.sourceMetadataTotalQuestions), expectedContentVersion: Number(plan.expectedContentVersion), expectedMetadataTotalQuestions: Number(plan.expectedMetadataTotalQuestions), repairCount: REPAIR_COUNT, packageSha256: PACKAGE_SHA256 });
   return path;
 }
 
@@ -204,7 +206,7 @@ export function readTrustedRepairs() {
 }
 export function assertLiveShape(rows, metadata) {
   if (!Array.isArray(rows) || rows.length !== STORED_COUNT) fail(`expected ${STORED_COUNT} stored WPI Class III Distribution rows`);
-  if (!metadata || metadata.bankKey !== BANK || Number(metadata.totalQuestions) !== STORED_COUNT) fail(`WPI Class III Distribution metadata must remain at ${STORED_COUNT} stored questions before this release`);
+  if (!metadata || metadata.bankKey !== BANK || ![PRE_RELEASE_METADATA_TOTAL, STORED_COUNT].includes(Number(metadata.totalQuestions))) fail(`WPI Class III Distribution metadata must be the verified pre-release ${PRE_RELEASE_METADATA_TOTAL} or corrected ${STORED_COUNT} count`);
   nonNegativeSafeInteger(metadata.contentVersion, "metadata contentVersion");
   const byNumber = new Map();
   const ids = new Set();
@@ -225,10 +227,10 @@ export function buildBaselineManifest(rows, metadata, targetFingerprint) {
     const row = byNumber.get(questionNum);
     return { questionNum, id: Number(row.id), rawHash: snapshotPayload(row).rawHash };
   });
-  return { release: RELEASE, bankKey: BANK, targetFingerprint, storedCount: STORED_COUNT, contentVersion: nonNegativeSafeInteger(metadata.contentVersion, "metadata contentVersion"), packageSha256: PACKAGE_SHA256, targets };
+  return { release: RELEASE, bankKey: BANK, targetFingerprint, storedCount: STORED_COUNT, metadataTotalQuestions: Number(metadata.totalQuestions), contentVersion: nonNegativeSafeInteger(metadata.contentVersion, "metadata contentVersion"), packageSha256: PACKAGE_SHA256, targets };
 }
 function assertBaselineManifest(manifest, rows, metadata, targetFingerprint, repairs) {
-  if (!manifest || manifest.release !== RELEASE || manifest.bankKey !== BANK || manifest.targetFingerprint !== targetFingerprint || Number(manifest.storedCount) !== STORED_COUNT || nonNegativeSafeInteger(manifest.contentVersion, "baseline contentVersion") !== Number(metadata.contentVersion) || manifest.packageSha256 !== PACKAGE_SHA256 || !Array.isArray(manifest.targets) || manifest.targets.length !== repairs.size) fail("full before-image baseline manifest is invalid or does not match this live plan");
+  if (!manifest || manifest.release !== RELEASE || manifest.bankKey !== BANK || manifest.targetFingerprint !== targetFingerprint || Number(manifest.storedCount) !== STORED_COUNT || Number(manifest.metadataTotalQuestions) !== Number(metadata.totalQuestions) || nonNegativeSafeInteger(manifest.contentVersion, "baseline contentVersion") !== Number(metadata.contentVersion) || manifest.packageSha256 !== PACKAGE_SHA256 || !Array.isArray(manifest.targets) || manifest.targets.length !== repairs.size) fail("full before-image baseline manifest is invalid or does not match this live plan");
   const byNumber = new Map(manifest.targets.map(target => [Number(target.questionNum), target]));
   const liveByNumber = new Map(rows.map(row => [Number(row.questionNum), row]));
   for (const number of repairs.keys()) {
@@ -256,7 +258,7 @@ export function buildPlan(rows, metadata, targetFingerprint, baselineManifest) {
   }
   const baseline = rows.map(snapshotPayload).sort((left, right) => left.id - right.id);
   const planDigest = sha256({ release: RELEASE, targetFingerprint, baseline: { metadata: { bankKey: metadata.bankKey, totalQuestions: Number(metadata.totalQuestions), contentVersion: Number(metadata.contentVersion) }, rows: baseline }, fullTargetBaseline: baselineManifest.targets, packageSha256: PACKAGE_SHA256, repairs: changes.map(change => ({ before: snapshotPayload(change.before), after: questionPayload(change.after) })) });
-  return { changes, baseline, planDigest, targetFingerprint, storedCount: STORED_COUNT, learnerVisibleCount: STORED_COUNT, expectedContentVersion: Number(metadata.contentVersion) + 1 };
+  return { changes, baseline, planDigest, targetFingerprint, storedCount: STORED_COUNT, learnerVisibleCount: STORED_COUNT, sourceMetadataTotalQuestions: Number(metadata.totalQuestions), expectedMetadataTotalQuestions: STORED_COUNT, expectedContentVersion: Number(metadata.contentVersion) + 1 };
 }
 export function assertUnchangedRowsPreserved(postRows, baseline, targetIdentities) {
   const baselineById = new Map(baseline.map(row => [row.id, row]));
@@ -303,7 +305,7 @@ export function assertSnapshots(snapshots, changes, sourceContentVersion) {
 }
 
 export function reconcileUncertainOutcome(outcome, rows, metadata, snapshots, targetFingerprint) {
-  if (!outcome || outcome.release !== RELEASE || outcome.bankKey !== BANK || outcome.targetFingerprint !== targetFingerprint || !Array.isArray(outcome.baseline) || !Number.isSafeInteger(Number(outcome.sourceContentVersion)) || !Number.isSafeInteger(Number(outcome.expectedContentVersion))) fail("uncertain-outcome record is invalid for this production target");
+  if (!outcome || outcome.release !== RELEASE || outcome.bankKey !== BANK || outcome.targetFingerprint !== targetFingerprint || !Array.isArray(outcome.baseline) || !Number.isSafeInteger(Number(outcome.sourceContentVersion)) || !Number.isSafeInteger(Number(outcome.expectedContentVersion)) || !Number.isSafeInteger(Number(outcome.sourceMetadataTotalQuestions)) || !Number.isSafeInteger(Number(outcome.expectedMetadataTotalQuestions))) fail("uncertain-outcome record is invalid for this production target");
   const repairs = readTrustedRepairs();
   const byNumber = new Map(rows.map(row => [Number(row.questionNum), row]));
   const baselineById = new Map(outcome.baseline.map(snapshot => [Number(snapshot.id), snapshot]));
@@ -319,13 +321,13 @@ export function reconcileUncertainOutcome(outcome, rows, metadata, snapshots, ta
     if (!row || !baseline || canonicalHash(snapshotPayload(row)) !== canonicalHash(baseline)) unchanged = false;
     if (row && before && expectedAfter) changes.push({ before, after: expectedAfter });
   }
-  if (applied && changes.length === repairs.size && Number(metadata.contentVersion) === Number(outcome.expectedContentVersion) && Number(metadata.totalQuestions) === STORED_COUNT) {
+  if (applied && changes.length === repairs.size && Number(metadata.contentVersion) === Number(outcome.expectedContentVersion) && Number(metadata.totalQuestions) === Number(outcome.expectedMetadataTotalQuestions)) {
     assertUnchangedRowsPreserved(rows, outcome.baseline, changes.map(change => change.before));
     assertTargetNoncontentFieldsPreserved(rows, changes);
     assertSnapshots(snapshots, changes, outcome.sourceContentVersion);
     return "committed";
   }
-  if (unchanged && Number(metadata.contentVersion) === Number(outcome.sourceContentVersion) && Number(metadata.totalQuestions) === STORED_COUNT) {
+  if (unchanged && Number(metadata.contentVersion) === Number(outcome.sourceContentVersion) && Number(metadata.totalQuestions) === Number(outcome.sourceMetadataTotalQuestions)) {
     if (snapshots.length !== 0) fail("uncertain-outcome reconciliation found release snapshots without a committed write");
     assertCompleteBaselinePreserved(rows, outcome.baseline);
     return "not_committed";
@@ -386,8 +388,8 @@ async function run() {
       const [result] = await connection.execute("UPDATE `questions` SET `module`=?,`difficulty`=?,`question`=?,`options`=?,`correctIndex`=?,`explanation`=?,`steps`=?,`tip`=?,`isCalc`=?,`topic`=?,`cognitiveLevel`=?,`sourceTitle`=?,`sourceReference`=?,`sourceUrl`=?,`blueprintObjective`=?,`reviewStatus`=?,`reviewedBy`=NULL,`reviewedAt`=NULL WHERE `id`=? AND `bankKey`=? AND `questionNum`=?", [...updateValues(after), before.id, BANK, before.questionNum]);
       if (result.affectedRows !== 1) fail(`update failed for WPI question ${before.questionNum}`);
     }
-    const [metadataUpdate] = await connection.execute("UPDATE `question_bank_meta` SET `contentVersion`=`contentVersion`+1 WHERE `bankKey`=? AND `totalQuestions`=? AND `contentVersion`=?", [BANK, STORED_COUNT, Number(metadata.contentVersion)]);
-    if (metadataUpdate.affectedRows !== 1) fail("WPI metadata version update did not affect exactly one row");
+    const [metadataUpdate] = await connection.execute("UPDATE `question_bank_meta` SET `totalQuestions`=?,`contentVersion`=`contentVersion`+1 WHERE `bankKey`=? AND `totalQuestions`=? AND `contentVersion`=?", [STORED_COUNT, BANK, Number(metadata.totalQuestions), Number(metadata.contentVersion)]);
+    if (metadataUpdate.affectedRows !== 1) fail("WPI metadata correction and version update did not affect exactly one row");
     const [postRows] = await connection.execute("SELECT * FROM `questions` WHERE `bankKey`=? ORDER BY `questionNum` FOR UPDATE", [BANK]);
     await attachRawRowHashes(connection, postRows, true);
     const [postMetadataRows] = await connection.execute("SELECT * FROM `question_bank_meta` WHERE `bankKey`=? FOR UPDATE", [BANK]);
