@@ -24,7 +24,7 @@ export const LEARNER_VISIBLE_REPAIR_STATUS = "unreviewed";
 export const BACKUP_EVIDENCE_MAX_AGE_MS = 60 * 60 * 1000;
 export const EVIDENCE_ROOT = process.env.WPI_CLASS3_WATER_DIST_EVIDENCE_ROOT ?? (process.env.VITEST ? `${tmpdir()}/echelon-wpi-class3-release-evidence` : "/home/ubuntu/private/echelon-authoritative-recovery");
 export const EVIDENCE_KEY_FILE_ENV = "WPI_CLASS3_WATER_DIST_EVIDENCE_KEY_FILE";
-export const PACKAGE_SHA256 = "9a2d964640267794aca108ed1e6f45bea93d643800f6ecbefc5dde2cd932e0fb";
+export const PACKAGE_SHA256 = "1d3441b78a0fb5743757b8379cc03e208357bd8b46164a0cf2b9d0f11c776db4";
 const PACKAGE_PATH = new URL("../../content/wpi-class3-water-dist/repaired-critical-high-209-2026-09-23.json", import.meta.url);
 const QUESTION_FIELDS = [
   "bankKey", "questionNum", "module", "difficulty", "question", "options", "correctIndex",
@@ -197,6 +197,7 @@ export function readTrustedRepairs() {
     const source = packageData.sourcePack[repair.sourceKey];
     const options = parseOptions(repair.options);
     if (!repair.question?.trim() || !repair.explanation?.trim() || !repair.sourceReference?.trim() || !repair.blueprintObjective?.trim() || repair.sourceTitle !== source.title || repair.sourceUrl !== source.url || options.length !== 4 || new Set(options.map(option => String(option).trim().toLowerCase())).size !== 4 || !Number.isInteger(repair.correctIndex) || repair.correctIndex < 0 || repair.correctIndex > 3) fail(`repair question ${number} has invalid educational content`);
+    if (!["recall", "application"].includes(repair.cognitiveLevel)) fail(`repair question ${number} has an unsupported cognitive level for the production schema`);
     if (repair.isCalc === "yes" && (!Array.isArray(repair.steps) || repair.steps.length < 2)) fail(`calculation repair question ${number} lacks checked steps`);
     if (repair.isCalc === "no" && repair.steps !== null) fail(`non-calculation repair question ${number} has unexpected steps`);
     repairs.set(number, { ...repair, options });

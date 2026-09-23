@@ -76,6 +76,7 @@ describe("WPI Class III Water Distribution remediation release safeguards", () =
     expect(REPAIR_COUNT).toBe(209);
     expect(PACKAGE_SHA256).toHaveLength(64);
     expect([...repairs.values()].every(item => item.reviewStatus === "in_review" && item.sourceTitle && item.sourceReference && item.sourceUrl.startsWith("https://"))).toBe(true);
+    expect([...repairs.values()].every(item => ["recall", "application"].includes(item.cognitiveLevel))).toBe(true);
     expect([...repairs.keys()].every(number => number >= 1 && number <= STORED_COUNT)).toBe(true);
   });
 

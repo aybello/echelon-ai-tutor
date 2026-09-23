@@ -8,7 +8,7 @@
 **Learner-visible bank inventory at audit:** 611 questions
 **Repair scope:** 209 critical or high findings
 **Package file:** `content/wpi-class3-water-dist/repaired-critical-high-209-2026-09-23.json`
-**Package SHA-256:** `9a2d964640267794aca108ed1e6f45bea93d643800f6ecbefc5dde2cd932e0fb`
+**Package SHA-256:** `1d3441b78a0fb5743757b8379cc03e208357bd8b46164a0cf2b9d0f11c776db4`
 
 ## Why this repair was prepared
 
@@ -16,7 +16,7 @@ The full learner-bank audit identified 209 critical or high risk items in WPI Cl
 
 ## Controlled authoring approach
 
-The repaired questions use a restricted source pack. General operational items map to the 2025 WPI Class III Water Distribution competency framework. Calculations use WPI water formula and conversion conventions. Detailed water-main disinfection and repair questions stay within the publicly available scope of AWWA C651-23 and avoid unsupported doses, contact times, sample counts, test pressures, durations, and acceptance thresholds. Health Canada material is treated as guidance unless a named provincial authority supports a regulatory claim.
+The repaired questions use a restricted source pack. General operational items map to the 2025 WPI Class III Water Distribution competency framework. Calculations use WPI water formula and conversion conventions. Detailed water-main disinfection and repair questions stay within the publicly available scope of AWWA C651-23 and avoid unsupported doses, contact times, sample counts, test pressures, durations, and acceptance thresholds. Health Canada material is treated as guidance unless a named provincial authority supports a regulatory claim. Cognitive-level metadata is normalized to the two values supported by the production schema: `recall` and `application`.
 
 Where the legacy question relied on an unnamed provincial duty, local approval, numeric design requirement, or safety protocol, the repair either identifies the required context or reframes the item as a jurisdiction-neutral operational competency. The package does not claim that a single provincial rule applies across Alberta, British Columbia, Saskatchewan, and Manitoba.
 
