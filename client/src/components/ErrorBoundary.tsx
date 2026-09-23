@@ -20,6 +20,10 @@ class ErrorBoundary extends Component<Props, State> {
     return /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module/i.test(error.message);
   }
 
+  private static isStalePreviewChunk(error: Error) {
+    return ErrorBoundary.isChunkLoadError(error) && /\/assets\/Class1WastewaterQuiz-[^\s]+\.js/i.test(error.message);
+  }
+
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false, error: null };
@@ -34,7 +38,7 @@ class ErrorBoundary extends Component<Props, State> {
     console.error("[ErrorBoundary] Uncaught render error:", error.message);
     console.error("[ErrorBoundary] Component stack:", info.componentStack);
 
-    if (ErrorBoundary.isChunkLoadError(error)) {
+    if (ErrorBoundary.isStalePreviewChunk(error)) {
       try {
         const lastRetry = Number(sessionStorage.getItem(ErrorBoundary.chunkRetryKey));
         if (!Number.isFinite(lastRetry) || Date.now() - lastRetry > 60_000) {
