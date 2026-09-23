@@ -75,10 +75,27 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // HTML must be revalidated after a release. Otherwise a cached app shell can
+  // request lazy chunks from the previous build after those files are removed.
+  app.use(
+    express.static(distPath, {
+      setHeaders(res, filePath) {
+        if (filePath.endsWith(".html")) {
+          res.setHeader("Cache-Control", "no-cache, must-revalidate");
+        }
+      },
+    })
+  );
+
+  // An obsolete hashed chunk is genuinely missing. Do not answer a JS request
+  // with index.html; the browser would get an HTML document as a module.
+  app.use("/assets", (_req, res) => {
+    res.status(404).set("Cache-Control", "no-store").end();
+  });
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
+    res.set("Cache-Control", "no-cache, must-revalidate");
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }
