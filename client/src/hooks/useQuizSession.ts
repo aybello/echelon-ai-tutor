@@ -147,6 +147,19 @@ export function summarizeHistory(history: HistoryEntry[]): {
   return { correctCount, wrongCount: history.length - correctCount };
 }
 
+/**
+ * A locked preview is a fixed, small sample. Applying module or calculation
+ * filters to that sample can leave a learner with no question even though the
+ * paid course bank has questions in that category. Keep those filters for
+ * active passes and deliberately free courses only.
+ */
+export function canUsePracticeFilters(
+  freeCourse: boolean,
+  trialUnlocked: boolean,
+): boolean {
+  return freeCourse || trialUnlocked;
+}
+
 // ─── Adaptive next-question selection ────────────────────────────────────────
 export function getAdaptiveNext(
   history: HistoryEntry[],
@@ -335,6 +348,18 @@ export function useQuizSession({
       : !trialUnlocked
       ? DEFAULT_SESSION_SIZE
       : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
+
+  const practiceFiltersEnabled = canUsePracticeFilters(freeCourse, trialUnlocked);
+
+  // A topic link or an older in-browser session can carry a paid-only filter
+  // into a locked preview. Clear it before the question queue can report a
+  // misleading empty practice selection.
+  useEffect(() => {
+    if (practiceFiltersEnabled || (!selectedModule && !calcOnly)) return;
+    setSelectedModule(null);
+    setCalcOnly(false);
+  }, [practiceFiltersEnabled, selectedModule, calcOnly]);
+
   useLearningActivitySession({
     courseKey: examType,
     activityType: "quiz",
@@ -714,6 +739,12 @@ export function useQuizSession({
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
+    if (!practiceFiltersEnabled && !calcOnly) {
+      toast("Calculation-only practice is included with an active course pass", {
+        description: "The free preview uses a balanced fixed sample of this course.",
+      });
+      return;
+    }
     const next = !calcOnly;
     const newPool = allQuestions.filter((q) => !next || q.isCalc);
     const filtered = selectedModule
@@ -732,11 +763,17 @@ export function useQuizSession({
     clearUI();
     if (queue) return;
     setCurrent(pickRandom(filtered));
-  }, [calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue]);
+  }, [practiceFiltersEnabled, calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback(
     (mod: string | null) => {
+      if (mod !== null && !practiceFiltersEnabled) {
+        toast("Module practice is included with an active course pass", {
+          description: "The free preview uses a balanced fixed sample of this course.",
+        });
+        return;
+      }
       setSelectedModule(mod);
       if (queue) { clearUI(); return; }
       let newPool = allQuestions.filter((q) => !usedIds.has(q.id));
@@ -747,7 +784,7 @@ export function useQuizSession({
         clearUI();
       }
     },
-    [allQuestions, usedIds, calcOnly, clearUI, queue],
+    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue],
   );
 
   // Keep the latest-value refs in sync after every render (handleNext is defined

@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import type { DBQuestion } from "./useQuestionBank";
 import {
+  canUsePracticeFilters,
   createHistoryEntry,
   getAdaptiveNext,
   summarizeHistory,
@@ -56,5 +57,16 @@ describe("quiz session answer history", () => {
       true,
     );
     expect(next?.module).toBe("Pumps");
+  });
+});
+
+describe("locked preview filters", () => {
+  it("keeps a fixed preview sample from being exhausted by paid-only filters", () => {
+    expect(canUsePracticeFilters(false, false)).toBe(false);
+  });
+
+  it("preserves module and calculation filters for an active pass or a free course", () => {
+    expect(canUsePracticeFilters(false, true)).toBe(true);
+    expect(canUsePracticeFilters(true, false)).toBe(true);
   });
 });
