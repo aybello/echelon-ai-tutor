@@ -46,6 +46,10 @@ function parseOptions(value) {
   }
   return Array.isArray(value) ? [...value] : value;
 }
+function parseSteps(value) {
+  if (typeof value !== "string") return value;
+  try { return JSON.parse(value); } catch { return value; }
+}
 function databaseValue(value) { return value === null || value === undefined ? null : (Array.isArray(value) || typeof value === "object" ? JSON.stringify(value) : value); }
 function canonicalize(value) {
   if (Array.isArray(value)) return value.map(canonicalize);
@@ -72,7 +76,7 @@ function validTimestamp(value, now, label) {
 export function questionPayload(row) {
   if (!row) return null;
   const payload = {};
-  for (const field of QUESTION_FIELDS) payload[field] = field === "options" ? parseOptions(row.options) : iso(row[field]);
+  for (const field of QUESTION_FIELDS) payload[field] = field === "options" ? parseOptions(row.options) : field === "steps" ? parseSteps(row.steps) : iso(row[field]);
   return payload;
 }
 export function fullRowPayload(row) {

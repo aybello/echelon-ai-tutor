@@ -19,6 +19,7 @@ import {
   fullRowPayload,
   parseBackupEvidence,
   parsePreflightEvidence,
+  questionPayload,
   reconcileUncertainOutcome,
   readTrustedRepairs,
   // @ts-ignore - standalone guarded release helper executes as ESM by Node and Vitest.
@@ -78,6 +79,13 @@ describe("WPI Class III Water Distribution remediation release safeguards", () =
     expect([...repairs.values()].every(item => item.reviewStatus === "in_review" && item.sourceTitle && item.sourceReference && item.sourceUrl.startsWith("https://"))).toBe(true);
     expect([...repairs.values()].every(item => ["recall", "application"].includes(item.cognitiveLevel))).toBe(true);
     expect([...repairs.keys()].every(number => number >= 1 && number <= STORED_COUNT)).toBe(true);
+  });
+
+  it("compares JSON-encoded calculation steps the same way as the staged repair object", () => {
+    const calculation = [...readTrustedRepairs().values()].find(item => item.isCalc === "yes");
+    expect(calculation).toBeDefined();
+    const databaseRow = { ...calculation!, steps: JSON.stringify(calculation!.steps) };
+    expect(questionPayload(databaseRow)).toEqual(questionPayload(calculation));
   });
 
   it("plans exactly 209 learner-visible replacements while preserving the 611-question inventory", () => {
