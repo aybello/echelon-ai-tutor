@@ -160,6 +160,24 @@ export function canUsePracticeFilters(
   return freeCourse || trialUnlocked;
 }
 
+/**
+ * Preserve a deep-linked paid filter until the server has finished deciding
+ * whether the learner has a pass. Clearing it before that decision can make a
+ * paid learner lose a valid bookmarked, topic, or calculation selection.
+ */
+export function shouldClearLockedPreviewFilters(input: {
+  accessSettled: boolean;
+  freeCourse: boolean;
+  trialUnlocked: boolean;
+  selectedModule: string | null;
+  calcOnly: boolean;
+}): boolean {
+  if (!input.accessSettled || canUsePracticeFilters(input.freeCourse, input.trialUnlocked)) {
+    return false;
+  }
+  return input.selectedModule !== null || input.calcOnly;
+}
+
 // ─── Adaptive next-question selection ────────────────────────────────────────
 export function getAdaptiveNext(
   history: HistoryEntry[],
@@ -259,7 +277,11 @@ export function useQuizSession({
   const [storedAccessTokenForAccess] = useState<string | undefined>(() => {
     try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
   });
-  const { data: accessData } = trpc.stripe.checkAccess.useQuery(
+  const {
+    data: accessData,
+    isFetched: accessCheckResolved,
+    isFetching: accessCheckFetching,
+  } = trpc.stripe.checkAccess.useQuery(
     { examType, email: storedEmailForAccess, accessToken: storedAccessTokenForAccess },
     {
       staleTime: 5 * 60 * 1000,
@@ -355,10 +377,16 @@ export function useQuizSession({
   // into a locked preview. Clear it before the question queue can report a
   // misleading empty practice selection.
   useEffect(() => {
-    if (practiceFiltersEnabled || (!selectedModule && !calcOnly)) return;
+    if (!shouldClearLockedPreviewFilters({
+      accessSettled: freeCourse || (accessCheckResolved && !accessCheckFetching),
+      freeCourse,
+      trialUnlocked,
+      selectedModule,
+      calcOnly,
+    })) return;
     setSelectedModule(null);
     setCalcOnly(false);
-  }, [practiceFiltersEnabled, selectedModule, calcOnly]);
+  }, [accessCheckResolved, accessCheckFetching, freeCourse, trialUnlocked, selectedModule, calcOnly]);
 
   useLearningActivitySession({
     courseKey: examType,

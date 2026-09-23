@@ -4,6 +4,7 @@ import {
   canUsePracticeFilters,
   createHistoryEntry,
   getAdaptiveNext,
+  shouldClearLockedPreviewFilters,
   summarizeHistory,
   type HistoryEntry,
 } from "./useQuizSession";
@@ -68,5 +69,18 @@ describe("locked preview filters", () => {
   it("preserves module and calculation filters for an active pass or a free course", () => {
     expect(canUsePracticeFilters(false, true)).toBe(true);
     expect(canUsePracticeFilters(true, false)).toBe(true);
+  });
+
+  it("waits for access to settle before clearing a deep-linked paid filter", () => {
+    const pendingPaidAccess = {
+      accessSettled: false,
+      freeCourse: false,
+      trialUnlocked: false,
+      selectedModule: "Rare module",
+      calcOnly: true,
+    };
+    expect(shouldClearLockedPreviewFilters(pendingPaidAccess)).toBe(false);
+    expect(shouldClearLockedPreviewFilters({ ...pendingPaidAccess, accessSettled: true })).toBe(true);
+    expect(shouldClearLockedPreviewFilters({ ...pendingPaidAccess, accessSettled: true, trialUnlocked: true })).toBe(false);
   });
 });
