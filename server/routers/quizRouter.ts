@@ -17,6 +17,7 @@ import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope } from "../courseActivityScope";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
+import { reconcileLearnerBankModules } from "../../shared/learnerBankModules";
 
 export const OIT_PREVIEW_LIMITS = {
   practice: 15,
@@ -366,6 +367,20 @@ export const quizRouter = router({
       try { modules = JSON.parse(row.modules) as string[]; }
       catch (err) { console.error(`[getBankMeta] malformed modules for ${row.bankKey}:`, err); }
 
+      // Do not advertise a module filter that cannot return a learner-visible
+      // question. This prevents stale metadata from creating a blank practice
+      // screen after a bank import or content repair.
+      const storedModuleRows = await db
+        .select({ module: questions.module })
+        .from(questions)
+        .where(and(
+          eq(questions.bankKey, row.bankKey),
+          learnerVisibleQuestionFilter(),
+        ));
+      const storedModules = storedModuleRows.map(({ module }) =>
+        row.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(module) : module,
+      );
+
       let moduleTargets: Record<string, number> | null = null;
       if (row.moduleTargets) {
         try { moduleTargets = JSON.parse(row.moduleTargets) as Record<string, number>; }
@@ -392,6 +407,8 @@ export const quizRouter = router({
           if (Object.keys(normalized).length) modules = Object.keys(normalized);
         }
       }
+
+      modules = reconcileLearnerBankModules(modules, storedModules);
       return {
         bankKey: row.bankKey,
         modules,
