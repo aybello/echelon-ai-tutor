@@ -454,8 +454,9 @@ export default function QuizShell({
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
-        /* Keep study controls visible without allowing the header to consume the question viewport. */
-        .qs-module-pills-row { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 3px; }
+        /* Keep every module available. A hidden horizontal overflow made the
+           final module buttons look cut off on laptops and tablets. */
+        .qs-module-pills-row { flex-wrap: wrap !important; overflow-x: visible !important; row-gap: 5px; padding-bottom: 3px; }
         .qs-module-pills-row::-webkit-scrollbar, .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
         .qs-mode-bar-wrap { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding-bottom: 3px; scrollbar-width: none; }
         .qs-mode-card { min-width: 0 !important; padding: 6px 10px !important; }
@@ -490,8 +491,8 @@ export default function QuizShell({
           .qs-stats-only { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.20) !important; border-radius: 10px !important; overflow: hidden !important; margin-top: 10px !important; width: 100% !important; }
           .qs-stats-only > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; background: transparent !important; border-radius: 0 !important; }
           .qs-stats-only > div:last-child { border-right: none !important; }
-          /* Scrollable module pills row */
-          .qs-module-pills-row { display: flex !important; gap: 5px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; scrollbar-width: none !important; margin-top: 8px !important; width: 100% !important; }
+          /* Module pills wrap into readable rows instead of clipping off-screen. */
+          .qs-module-pills-row { display: flex !important; gap: 5px !important; overflow-x: visible !important; flex-wrap: wrap !important; row-gap: 5px !important; padding-bottom: 4px !important; margin-top: 8px !important; width: 100% !important; }
           .qs-module-pills-row::-webkit-scrollbar { display: none !important; }
           .qs-module-pills-row button { font-size: 10px !important; padding: 4px 9px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
           /* Compact mode cards on mobile */

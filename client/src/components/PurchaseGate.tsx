@@ -12,6 +12,8 @@ import { isPreviewModeActive } from "@/lib/previewMode";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { resolvePurchaseGateOffer } from "@shared/checkoutOffer";
+import { resolveCourseKey } from "@shared/courseRegistry";
+import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -64,55 +66,46 @@ function isSubscriptionCovered(examType: string): boolean {
 
 const DEFAULT_FEATURES: Record<string, string[]> = {
   "wqa": [
-    "475-question WQA bank — unlimited attempts",
     "Timed WQA mock exam (100 questions, 2 hrs)",
     "WQA formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],
   "class4-water": [
-    "500 Class 4 Water questions — unlimited attempts",
     "Timed Class 4 Water mock exam",
     "Class 4 Water formula sheet (37 formulas)",
     "AI Tutor explanations on every question",
   ],
   "class3-water": [
-    "400+ Class 3 Water questions — unlimited attempts",
     "Timed Class 3 Water mock exam",
     "Class 3 Water formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class3-ww": [
-    "502 Class 3 WW questions — unlimited attempts",
     "Timed Class 3 WW mock exam",
     "WW3 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class4-ww": [
-    "500 Class 4 WW questions — unlimited attempts",
     "Timed Class 4 WW mock exam (100 questions, 2 hrs)",
     "Class 4 WW formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],
   "class2-water": [
-    "400+ Class 2 Water questions — unlimited attempts",
     "Timed Class 2 Water mock exam",
     "Water2 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class2-ww": [
-    "400+ Class 2 WW questions — unlimited attempts",
     "Timed Class 2 WW mock exam",
     "WW2 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class1-water": [
-    "400+ Class 1 Water questions — unlimited attempts",
     "Timed Class 1 Water mock exam",
     "Water1 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class1-ww": [
-    "400+ Class 1 WW questions — unlimited attempts",
     "Timed Class 1 WW mock exam",
     "WW1 formula sheet",
     "AI Tutor explanations on every question",
@@ -144,6 +137,12 @@ export default function PurchaseGate({
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
   const offer = resolvePurchaseGateOffer({ productKey, productName, price, isUS });
+  const course = resolveCourseKey(productKey);
+  const bankKey = course?.questionBankKey;
+  const bankMeta = trpc.quiz.getBankMeta.useQuery(
+    { bankKey: bankKey ?? "unknown-course" },
+    { enabled: Boolean(bankKey), staleTime: 60_000, retry: 1 },
+  );
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: data => {
       if (data.url) window.location.href = data.url;
@@ -209,7 +208,11 @@ export default function PurchaseGate({
     return <>{children}</>;
   }
 
-  const featureList = features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES;
+  const featureList = buildAuthoritativeOfferFeatures({
+    courseLabel: course?.displayName ?? offer.productName,
+    totalQuestions: bankMeta.data?.totalQuestions,
+    suppliedFeatures: features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES,
+  });
 
   // No access — show paywall with blurred preview of actual content behind it
   return (

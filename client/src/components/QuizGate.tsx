@@ -6,7 +6,9 @@ import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { resolveQuizGateOffer } from "@shared/checkoutOffer";
+import { resolveCourseKey } from "@shared/courseRegistry";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
+import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -99,6 +101,17 @@ export default function QuizGate({
   }, []);
 
   const offer = resolveQuizGateOffer(productKey, isUS);
+  const course = productKey ? resolveCourseKey(productKey) : undefined;
+  const bankKey = course?.questionBankKey;
+  const bankMeta = trpc.quiz.getBankMeta.useQuery(
+    { bankKey: bankKey ?? "unknown-course" },
+    { enabled: Boolean(bankKey), staleTime: 60_000, retry: 1 },
+  );
+  const offerFeatures = buildAuthoritativeOfferFeatures({
+    courseLabel: course?.displayName ?? offer.productName,
+    totalQuestions: bankMeta.data?.totalQuestions,
+    suppliedFeatures: paidFeatures,
+  });
   const diagnostic = diagnosticAvailable ? buildPreviewDiagnostic(history, questionsAnswered) : null;
 
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
@@ -251,12 +264,7 @@ export default function QuizGate({
                   <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{offer.productName}</div>
                 </div>
                 <ul style={{ margin: "0 0 14px", padding: "0 0 0 0", listStyle: "none" }}>
-                  {(paidFeatures ?? [
-                    "Full question bank — unlimited attempts",
-                    "Timed mock exam",
-                    "AI Tutor explanations on every question",
-                    "Score history & module breakdown",
-                  ]).map((f) => (
+                  {offerFeatures.map((f) => (
                     <li key={f} style={{ fontSize: 13, color: "#1E3A5F", marginBottom: 5, display: "flex", alignItems: "flex-start", gap: 8 }}>
                       <span style={{ color: "#059669", fontWeight: 700, flexShrink: 0 }}>✓</span>
                       <span>{f}</span>
