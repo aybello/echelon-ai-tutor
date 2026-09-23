@@ -24,6 +24,7 @@ import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
+import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -319,25 +320,17 @@ export default function QuizShell({
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
 
-  //  // ── Session complete screen ──────────────────────────────────────────
+  // Loading and empty selections are separate from a completed quiz session.
   if (questionStatus) {
-    return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-2xl p-6">
+    return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
       <h1 className="text-xl font-bold">{courseTitle}</h1>
-      <div role={questionStatus === "error" ? "alert" : "status"} className="my-6">
-        {questionStatus === "loading" ? "Loading practice questions…" : questionStatus === "error" ? questionError : "No more questions match this practice selection."}
-      </div>
-      {questionStatus === "error" && <button onClick={onRetryQuestions} className="rounded border p-3">Retry loading questions</button>}
-      {questionStatus === "empty" && <>
-        <p>Your {history.length} answers remain in this session. Change your filters or start another session.</p>
-        <button onClick={onResetSession} className="m-2 rounded border p-3">Start another session</button>
-      </>}
-      <div className="my-4 flex flex-wrap gap-2">
-        <button onClick={() => onModuleChange(null)} className="rounded border p-2">All modules</button>
-        {modules.map(m => <button key={m.name} onClick={() => onModuleChange(m.name)} className="rounded border p-2">{m.name}</button>)}
-        {hasCalcOnly && <button onClick={onCalcOnlyToggle} className="rounded border p-2">{calcOnly ? "Turn off Calc Only" : "Calc Only"}</button>}
-      </div>
-      {headerExtra}
-    </main></>;
+      <PracticeQuestionStatus status={questionStatus} error={questionError} answerCount={history.length}
+        modules={modules} selectedModule={selectedModule} calcOnly={calcOnly} hasCalcOnly={hasCalcOnly}
+        onModuleChange={onModuleChange} onCalcOnlyToggle={onCalcOnlyToggle}
+        onRetry={onRetryQuestions} onRestart={onResetSession}>
+        {headerExtra}
+      </PracticeQuestionStatus>
+    </main>{gate}</>;
   }
 
   if (!current && history.length > 0) {
