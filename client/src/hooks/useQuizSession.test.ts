@@ -4,7 +4,7 @@ import {
   canUsePracticeFilters,
   createHistoryEntry,
   getAdaptiveNext,
-  isPracticeAccessCheckSettled,
+  shouldApplyPracticePageResult,
   shouldClearLockedPreviewFilters,
   summarizeHistory,
   type HistoryEntry,
@@ -72,42 +72,36 @@ describe("locked preview filters", () => {
     expect(canUsePracticeFilters(true, false)).toBe(true);
   });
 
-  it("waits for access to settle before clearing a deep-linked paid filter", () => {
-    const pendingPaidAccess = {
-      accessSettled: false,
-      freeCourse: false,
-      trialUnlocked: false,
+  it("keeps a paid deep-link when the paged endpoint confirms access", () => {
+    expect(shouldClearLockedPreviewFilters({
+      pageLocked: false,
+      pageQuestionCount: 50,
+      selectedModule: "Rare module",
+      calcOnly: true,
+    })).toBe(false);
+  });
+
+  it("keeps a locked preview filter when its fixed preview still has questions", () => {
+    expect(shouldClearLockedPreviewFilters({
+      pageLocked: true,
+      pageQuestionCount: 2,
+      selectedModule: "Disinfection",
+      calcOnly: true,
+    })).toBe(false);
+  });
+
+  it("clears only an empty locked-preview deep-link after the paged endpoint confirms it", () => {
+    const emptyLockedPreview = {
+      pageLocked: true,
+      pageQuestionCount: 0,
       selectedModule: "Rare module",
       calcOnly: true,
     };
-    expect(shouldClearLockedPreviewFilters(pendingPaidAccess)).toBe(false);
-    expect(shouldClearLockedPreviewFilters({ ...pendingPaidAccess, accessSettled: true })).toBe(true);
-    expect(shouldClearLockedPreviewFilters({ ...pendingPaidAccess, accessSettled: true, trialUnlocked: true })).toBe(false);
+    expect(shouldClearLockedPreviewFilters(emptyLockedPreview)).toBe(true);
   });
 
-  it("does not settle paid filters during either initial loading or an access refetch", () => {
-    expect(isPracticeAccessCheckSettled({
-      freeCourse: false,
-      isFetched: false,
-      isFetching: true,
-    })).toBe(false);
-    expect(isPracticeAccessCheckSettled({
-      freeCourse: false,
-      isFetched: true,
-      isFetching: true,
-    })).toBe(false);
-  });
-
-  it("settles a denied or failed paid access check only after network work is idle", () => {
-    expect(isPracticeAccessCheckSettled({
-      freeCourse: false,
-      isFetched: true,
-      isFetching: false,
-    })).toBe(true);
-    expect(isPracticeAccessCheckSettled({
-      freeCourse: true,
-      isFetched: false,
-      isFetching: true,
-    })).toBe(true);
+  it("ignores a late response from an earlier queue even after returning to the same filter", () => {
+    expect(shouldApplyPracticePageResult(3, 3)).toBe(true);
+    expect(shouldApplyPracticePageResult(1, 3)).toBe(false);
   });
 });

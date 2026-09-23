@@ -166,29 +166,23 @@ export function canUsePracticeFilters(
  * paid learner lose a valid bookmarked, topic, or calculation selection.
  */
 export function shouldClearLockedPreviewFilters(input: {
-  accessSettled: boolean;
-  freeCourse: boolean;
-  trialUnlocked: boolean;
+  pageLocked: boolean;
+  pageQuestionCount: number;
   selectedModule: string | null;
   calcOnly: boolean;
 }): boolean {
-  if (!input.accessSettled || canUsePracticeFilters(input.freeCourse, input.trialUnlocked)) {
+  if (!input.pageLocked || input.pageQuestionCount > 0) {
     return false;
   }
   return input.selectedModule !== null || input.calcOnly;
 }
 
-/**
- * A cached denied response is not a final access decision while the access
- * query is refetching. Treat only an idle fetched query as settled so a recent
- * purchase cannot erase a valid deep-linked paid filter mid-check.
- */
-export function isPracticeAccessCheckSettled(input: {
-  freeCourse: boolean;
-  isFetched: boolean;
-  isFetching: boolean;
-}): boolean {
-  return input.freeCourse || (input.isFetched && !input.isFetching);
+/** Only the request made for the currently rendered practice queue may update UI state. */
+export function shouldApplyPracticePageResult(
+  requestGeneration: number,
+  activeGeneration: number,
+): boolean {
+  return requestGeneration === activeGeneration;
 }
 
 // ─── Adaptive next-question selection ────────────────────────────────────────
@@ -290,11 +284,7 @@ export function useQuizSession({
   const [storedAccessTokenForAccess] = useState<string | undefined>(() => {
     try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
   });
-  const {
-    data: accessData,
-    isFetched: accessCheckResolved,
-    isFetching: accessCheckFetching,
-  } = trpc.stripe.checkAccess.useQuery(
+  const { data: accessData } = trpc.stripe.checkAccess.useQuery(
     { examType, email: storedEmailForAccess, accessToken: storedAccessTokenForAccess },
     {
       staleTime: 5 * 60 * 1000,
@@ -386,25 +376,6 @@ export function useQuizSession({
 
   const practiceFiltersEnabled = canUsePracticeFilters(freeCourse, trialUnlocked);
 
-  // A topic link or an older in-browser session can carry a paid-only filter
-  // into a locked preview. Clear it before the question queue can report a
-  // misleading empty practice selection.
-  useEffect(() => {
-    if (!shouldClearLockedPreviewFilters({
-      accessSettled: isPracticeAccessCheckSettled({
-        freeCourse,
-        isFetched: accessCheckResolved,
-        isFetching: accessCheckFetching,
-      }),
-      freeCourse,
-      trialUnlocked,
-      selectedModule,
-      calcOnly,
-    })) return;
-    setSelectedModule(null);
-    setCalcOnly(false);
-  }, [accessCheckResolved, accessCheckFetching, freeCourse, trialUnlocked, selectedModule, calcOnly]);
-
   useLearningActivitySession({
     courseKey: examType,
     activityType: "quiz",
@@ -486,12 +457,45 @@ export function useQuizSession({
   const visited = useRef(new Set<number>());
   const fetchRef = useRef(utils.client.quiz.getRandomQuestions.query);
   fetchRef.current = utils.client.quiz.getRandomQuestions.query;
-  const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(excludeIds =>
-    fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
+  const practiceQueueScope = useMemo(() => JSON.stringify({
+    examType,
+    selectedModule,
+    calcOnly,
+    difficulty: quizSettings.difficulty,
+    quizMode,
+    revision,
+    accessToken: storedAccessTokenForAccess ?? null,
+  }), [examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+  const practiceQueueGenerationRef = useRef(0);
+  const practiceQueueGeneration = useMemo(() => {
+    practiceQueueGenerationRef.current += 1;
+    return practiceQueueGenerationRef.current;
+  }, [practiceQueueScope]);
+  const activePracticeQueueGeneration = useRef(practiceQueueGeneration);
+  activePracticeQueueGeneration.current = practiceQueueGeneration;
+  const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(async excludeIds => {
+    const page = await fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
       difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
-      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }),
+      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess });
+    if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
+      return page;
+    }
+    if (page.locked === false) {
+      setTrialUnlockedState(true);
+      setTrialUnlocked();
+    } else if (shouldClearLockedPreviewFilters({
+      pageLocked: page.locked === true,
+      pageQuestionCount: page.questions.length,
+      selectedModule,
+      calcOnly,
+    })) {
+      setSelectedModule(null);
+      setCalcOnly(false);
+    }
+    return page;
+  },
     ["standard", "quick10"].includes(quizMode) ? visited.current : new Set<number>()),
-    [freeCourse, examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+    [freeCourse, examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
   const activeQueue = useRef(queue);
   activeQueue.current = queue;
   const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
