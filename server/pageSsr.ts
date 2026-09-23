@@ -1162,7 +1162,10 @@ export function registerPageSsrRoutes(
               : seoHtml;
           res
             .status(200)
-            .set({ "Content-Type": "text/html; charset=utf-8" })
+            .set({
+              "Content-Type": "text/html; charset=utf-8",
+              "Cache-Control": "no-cache, must-revalidate",
+            })
             .end(html);
         } catch (err) {
           console.error(`[pageSsr] Error rendering ${pagePath}:`, err);
