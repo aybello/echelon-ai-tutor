@@ -17,7 +17,7 @@ export const HELD_REGULATORY = [5, 23, 29, 37, 44, 58, 64, 85, 103, 106, 114, 12
 export const HELD_NUMERIC = Array.from({ length: 71 }, (_, i) => 501 + i);
 export const TARGETS = [...new Set([...HELD_REGULATORY, ...HELD_NUMERIC, 308, 447])].sort((a, b) => a - b);
 
-const FIXES = {
+export const CORRECTED_LEGACY_FIXES = {
   308: { correctIndex: 1, explanation: "Pipe volume = π × (0.300 m / 2)² × 500 m = 35.3429 m³ = 35,343 L. The target residual is irrelevant to the requested pipe volume." },
   447: { correctIndex: 1, explanation: "Average daily demand = 15,000,000 L ÷ 30 days ÷ 1,000 L/m³ = 500 m³/day." },
 };
@@ -129,7 +129,7 @@ export function buildPlan(live, manifest, metadata = null) {
     if (!row || !pinned || Number(row.id) !== pinned.id || fingerprint(row) !== pinned.fingerprint) fail(`live row ${num} differs from September 19 baseline; reconcile before applying`);
     if (row.reviewStatus === "rejected") fail(`target row ${num} is rejected in live state; reconcile before applying`);
     let next = { ...row };
-    const fix = FIXES[num];
+    const fix = CORRECTED_LEGACY_FIXES[num];
     if (fix) {
       if (fix.question) next.question = fix.question;
       if (fix.correctIndex !== undefined) next.correctIndex = fix.correctIndex;
@@ -157,7 +157,7 @@ export function buildPlan(live, manifest, metadata = null) {
     changes.push({ before: row, after: next });
   }
   const planDigest = sha({ release: RELEASE, metaVersion: metadata?.contentVersion ?? null, baseline: changes.map(x => [x.before.id, fingerprint(x.before), x.before.reviewStatus]), repairs: repaired.map(x => [x.questionNum, x.question, x.options, x.correctIndex, x.explanation, x.sourceReference]), additions: additions.map(x => [x.questionNum, x.question, x.options, x.correctIndex]) });
-  return { changes, additions, planDigest, repaired: repaired.length, held: repaired.length, correctedVisible: Object.keys(FIXES).length };
+  return { changes, additions, planDigest, repaired: repaired.length, held: repaired.length, correctedVisible: Object.keys(CORRECTED_LEGACY_FIXES).length };
 }
 
 async function run() {

@@ -1,5 +1,6 @@
 import { notInArray } from "drizzle-orm";
 import { questions } from "../drizzle/schema";
+import { HIDDEN_LEARNER_REVIEW_STATUSES } from "../shared/questionVisibility.mjs";
 
 /**
  * Legacy `unreviewed` questions remain visible while the existing banks are
@@ -8,5 +9,5 @@ import { questions } from "../drizzle/schema";
  * Rejected questions remain hidden permanently unless an admin changes them.
  */
 export function learnerVisibleQuestionFilter() {
-  return notInArray(questions.reviewStatus, ["in_review", "rejected"]);
+  return notInArray(questions.reviewStatus, [...HIDDEN_LEARNER_REVIEW_STATUSES]);
 }
