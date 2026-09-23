@@ -16,6 +16,7 @@ describe("empty practice selection recovery", () => {
     expect(html).toContain("No questions are available for this practice selection.");
     expect(html).not.toMatch(/Session Complete|Your 0 answers|No more questions/);
     expect(html).toContain("Restarting keeps your current filters.");
+    expect(html).not.toContain("turn off Calc Only");
   });
 
   it("shows a stale selected category while offering the current category and All modules", () => {
@@ -30,6 +31,7 @@ describe("empty practice selection recovery", () => {
     const html = render({ selectedModule: "Wastewater Treatment", calcOnly: true });
     expect(html).toMatch(/<button[^>]*aria-pressed="true"[^>]*>Wastewater Treatment<\/button>/);
     expect(html).toMatch(/<button[^>]*aria-pressed="true"[^>]*>Turn off Calc Only<\/button>/);
+    expect(html).toContain("Choose another module, turn off Calc Only, or adjust");
   });
 
   it("keeps completed answers visible without promising a successful server save", () => {
