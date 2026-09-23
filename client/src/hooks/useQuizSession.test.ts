@@ -4,6 +4,8 @@ import {
   canUsePracticeFilters,
   createHistoryEntry,
   getAdaptiveNext,
+  isPracticeAccessCheckSettled,
+  shouldClearLockedPreviewFilters,
   summarizeHistory,
   type HistoryEntry,
 } from "./useQuizSession";
@@ -68,5 +70,44 @@ describe("locked preview filters", () => {
   it("preserves module and calculation filters for an active pass or a free course", () => {
     expect(canUsePracticeFilters(false, true)).toBe(true);
     expect(canUsePracticeFilters(true, false)).toBe(true);
+  });
+
+  it("waits for access to settle before clearing a deep-linked paid filter", () => {
+    const pendingPaidAccess = {
+      accessSettled: false,
+      freeCourse: false,
+      trialUnlocked: false,
+      selectedModule: "Rare module",
+      calcOnly: true,
+    };
+    expect(shouldClearLockedPreviewFilters(pendingPaidAccess)).toBe(false);
+    expect(shouldClearLockedPreviewFilters({ ...pendingPaidAccess, accessSettled: true })).toBe(true);
+    expect(shouldClearLockedPreviewFilters({ ...pendingPaidAccess, accessSettled: true, trialUnlocked: true })).toBe(false);
+  });
+
+  it("does not settle paid filters during either initial loading or an access refetch", () => {
+    expect(isPracticeAccessCheckSettled({
+      freeCourse: false,
+      isFetched: false,
+      isFetching: true,
+    })).toBe(false);
+    expect(isPracticeAccessCheckSettled({
+      freeCourse: false,
+      isFetched: true,
+      isFetching: true,
+    })).toBe(false);
+  });
+
+  it("settles a denied or failed paid access check only after network work is idle", () => {
+    expect(isPracticeAccessCheckSettled({
+      freeCourse: false,
+      isFetched: true,
+      isFetching: false,
+    })).toBe(true);
+    expect(isPracticeAccessCheckSettled({
+      freeCourse: true,
+      isFetched: false,
+      isFetching: true,
+    })).toBe(true);
   });
 });
