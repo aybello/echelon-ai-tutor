@@ -1,0 +1,69 @@
+.admin-portal .admin-eyebrow,
+.admin-portal .admin-section-label,
+.admin-portal .admin-nav-label {
+  color: #376c74;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.admin-portal .admin-section-label { margin: 0 0 12px 3px; }
+.admin-portal .admin-stat-card {
+  background: #fff;
+  border: 1px solid #dce7ea;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(22, 56, 72, .035);
+  cursor: pointer;
+  font-family: inherit;
+  padding: 19px 22px;
+  text-align: left;
+  transition: transform .15s, box-shadow .15s;
+}
+.admin-portal .admin-stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(22, 56, 72, .09); }
+.admin-portal .admin-metric-note { color: #526779; font-size: 10px; line-height: 1.5; margin: -15px 0 24px 2px; }
+.admin-portal .admin-navigation {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: #fff;
+  border: 1px solid #dce7ea;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+.admin-portal .admin-nav-group { min-width: 0; }
+.admin-portal .admin-nav-label { display: block; margin: 0 0 10px 10px; }
+.admin-portal .admin-nav-items { display: flex; flex-direction: column; gap: 4px; }
+.admin-portal .admin-nav-button {
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: #465c6b;
+  cursor: pointer;
+  font: 600 12px 'Sora', sans-serif;
+  padding: 10px 12px;
+  text-align: left;
+  width: 100%;
+}
+.admin-portal .admin-nav-button:hover { background: #ecf5f5; color: #173a4c; }
+.admin-portal .admin-nav-button[aria-current="page"] { background: #dff5ef; color: #115b50; font-weight: 800; }
+.admin-portal .admin-nav-button:focus-visible, .admin-portal .admin-stat-card:focus-visible { outline: 3px solid #149888; outline-offset: 2px; }
+.admin-portal .admin-review-card { background: #fff; border-top: 1px solid #dce7ea; padding: 22px; }
+.admin-portal .admin-review-card:hover { background: #f9fcfc; }
+.admin-portal .admin-review-options { display: grid; gap: 7px; list-style: none; padding: 0; margin: 16px 0; }
+.admin-portal .admin-review-option { background: #f4f8f9; border: 1px solid #e2ebee; border-radius: 8px; padding: 10px 12px; font-size: 12px; line-height: 1.55; }
+.admin-portal .admin-review-option[data-correct="true"] { background: #e5f7ee; border-color: #9bdabb; color: #14553d; font-weight: 700; }
+.admin-portal .admin-review-detail { background: #f4f8f9; padding: 13px 15px; border-radius: 8px; margin: 10px 0; line-height: 1.6; font-size: 12px; color: #344c5b; }
+.admin-portal .admin-review-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; background: #f0f8f7; border: 1px solid #cce7df; border-radius: 10px; padding: 16px; }
+.admin-portal .admin-review-form label { display: grid; gap: 6px; font-size: 11px; font-weight: 700; color: #26485b; }
+.admin-portal .admin-review-form input { width: 100%; box-sizing: border-box; border: 1px solid #aac8ce; border-radius: 7px; padding: 10px; font: 12px 'Sora', sans-serif; }
+.admin-portal .admin-review-form-actions { grid-column: 1 / -1; display: flex; gap: 8px; justify-content: flex-end; }
+.admin-portal .admin-review-form-actions button { border: 1px solid #96b7b9; border-radius: 7px; cursor: pointer; font: 700 11px 'Sora', sans-serif; padding: 10px 14px; background: #fff; color: #1b4855; }
+.admin-portal .admin-review-form-actions button[type="submit"] { border-color: #08775e; background: #08775e; color: white; }
+@media (max-width: 900px) { .admin-portal .admin-navigation { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .admin-portal .admin-navigation { grid-template-columns: 1fr; padding: 14px; }
+  .admin-portal .admin-nav-items { flex-direction: row; flex-wrap: wrap; }
+  .admin-portal .admin-nav-button { width: auto; }
+  .admin-portal .admin-review-form { grid-template-columns: 1fr; }
+}

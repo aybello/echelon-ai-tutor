@@ -387,19 +387,30 @@ export const adminRouter = router({
     .input(z.object({
       bankKey: z.string().trim().min(1).max(64).optional(),
       status: z.enum(["unreviewed", "in_review", "approved", "rejected"]).optional(),
-      limit: z.number().int().min(1).max(200).default(100),
+      limit: z.number().int().min(1).max(100).default(25),
+      page: z.number().int().min(1).max(100_000).default(1),
     }))
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
 
-      return db
+      const filter = and(
+        input.bankKey ? eq(questions.bankKey, input.bankKey) : undefined,
+        input.status ? eq(questions.reviewStatus, input.status) : undefined,
+      );
+      const [rows, totals] = await Promise.all([db
         .select({
           id: questions.id,
           bankKey: questions.bankKey,
           questionNum: questions.questionNum,
           module: questions.module,
           question: questions.question,
+          options: questions.options,
+          correctIndex: questions.correctIndex,
+          explanation: questions.explanation,
+          steps: questions.steps,
+          isCalc: questions.isCalc,
+          difficulty: questions.difficulty,
           sourceTitle: questions.sourceTitle,
           sourceReference: questions.sourceReference,
           sourceUrl: questions.sourceUrl,
@@ -409,13 +420,21 @@ export const adminRouter = router({
           reviewedAt: questions.reviewedAt,
         })
         .from(questions)
-        .where(and(
-          input.bankKey ? eq(questions.bankKey, input.bankKey) : undefined,
-          input.status ? eq(questions.reviewStatus, input.status) : undefined,
-        ))
-        .orderBy(questions.bankKey, questions.questionNum)
-        .limit(input.limit);
+        .where(filter)
+        .orderBy(questions.bankKey, questions.questionNum, questions.id)
+        .limit(input.limit)
+        .offset((input.page - 1) * input.limit),
+        db.select({ total: count() }).from(questions).where(filter),
+      ]);
+      return { rows, total: Number(totals[0]?.total ?? 0), page: input.page, pageSize: input.limit };
     }),
+
+  getQuestionGovernanceBanks: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+    return db.select({ bankKey: questions.bankKey, total: count() })
+      .from(questions).groupBy(questions.bankKey).orderBy(questions.bankKey);
+  }),
 
   /** Persist one question's citation and review decision with server-owned reviewer identity. */
   reviewQuestion: adminProcedure
@@ -440,11 +459,18 @@ export const adminRouter = router({
       if (!db) throw new Error("Database unavailable");
 
       const [existing] = await db
-        .select({ bankKey: questions.bankKey })
+        .select({ bankKey: questions.bankKey, options: questions.options, correctIndex: questions.correctIndex, explanation: questions.explanation })
         .from(questions)
         .where(eq(questions.id, input.id))
         .limit(1);
       if (!existing) throw new Error("Question not found");
+      if (input.reviewStatus === "approved") {
+        let parsed: unknown;
+        try { parsed = JSON.parse(existing.options); } catch { parsed = null; }
+        if (!Array.isArray(parsed) || parsed.length !== 4 || !parsed.every(option => typeof option === "string" && option.trim()) || existing.correctIndex < 0 || existing.correctIndex >= 4 || !existing.explanation.trim()) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "Question needs four valid answer options, a valid keyed answer and a rationale before approval." });
+        }
+      }
 
       const reviewer = normalizeEmail(ctx.user.email ?? "") || ctx.user.name || `user:${ctx.user.id}`;
       const reviewed = input.reviewStatus !== "unreviewed";
