@@ -353,7 +353,9 @@ test("paid practice continues past 50 questions and loads saved review slices", 
   });
   try {
     await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
-    await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Paging module", "Rare module"])]);
+    // Reproduce metadata left behind by an import: the advertised topic no
+    // longer exists on any visible question. Only actual modules should appear.
+    await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Retired module"])]);
     for (let i = 0; i < 85; i++) {
       await db.execute("INSERT INTO questions (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, reviewStatus, isCalc) VALUES (?, ?, ?, 'hard', ?, ?, 0, 'Browser practice QA.', 'approved', 'yes')", [
         bankKey, 960001 + i, i < 75 ? "Paging module" : "Rare module", `Browser practice item ${i + 1}`, '["Correct practice answer","Wrong B","Wrong C","Wrong D"]',
@@ -369,6 +371,8 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await signInWithOtp(page, email, `/${bankKey}`);
     await page.waitForURL(`**/${bankKey}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
+    await expect(page.getByRole("button", { name: /Retired module/ })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: /Rare module/ })).toBeVisible();
     await page.getByRole("button", { name: /Paging module/ }).click();
     await page.getByRole("button", { name: /Quiz Settings/ }).click();
     await page.getByRole("button", { name: "50 Qs", exact: true }).click();
@@ -409,6 +413,20 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       await expect(page.getByTestId("practice-question")).toHaveAttribute("data-question-id", question);
     }
     await page.goto(`/${bankKey}?topic=${encodeURIComponent("Rare module")}&calcOnly=true`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
+
+    // A bookmarked obsolete topic can still reach the empty screen. Preserve
+    // the paid selection, explain it, and let the learner recover without login
+    // or a page refresh. No answer should have to be submitted to escape it.
+    await page.goto(`/${bankKey}?topic=${encodeURIComponent("Retired module")}`);
+    await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toBeVisible();
+    await expect(page.getByText("Selected module: Retired module", { exact: true })).toBeVisible();
+    await expect(page.getByText("Your 0 answers", { exact: false })).toHaveCount(0);
+    const controls = page.getByRole("region", { name: "Practice mode and settings" });
+    await expect(controls.getByRole("button", { name: /Quiz Settings/ })).toBeVisible();
+    await expect(controls).toHaveCSS("background-color", "rgb(15, 23, 42)");
+    await page.getByRole("button", { name: "Rare module", exact: true }).click();
     await expect(page.getByTestId("practice-question")).toBeVisible();
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
   } finally { await db.end(); }
