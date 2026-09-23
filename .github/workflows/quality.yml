@@ -151,6 +151,7 @@ jobs:
           --exclude server/wpiBlueprintRelease.integration.test.ts
           --exclude server/courseReporting.integration.test.ts
           --exclude server/practicePaging.integration.test.ts
+          --exclude server/learnerBankModules.integration.test.ts
           --exclude server/billingJobs.integration.test.ts
           --exclude server/examDateRecords.integration.test.ts
         env:
@@ -202,8 +203,8 @@ jobs:
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
-      - name: Database-backed practice paging and mock retirement
-        run: pnpm exec vitest run server/practicePaging.integration.test.ts
+      - name: Database-backed practice paging, module filters and mock retirement
+        run: pnpm exec vitest run server/practicePaging.integration.test.ts server/learnerBankModules.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
