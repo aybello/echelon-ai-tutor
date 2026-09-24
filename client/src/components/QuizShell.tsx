@@ -141,6 +141,20 @@ export interface QuizShellProps {
   freeLimit?: number;
 }
 
+/**
+ * A saved topic URL can outlive a bank import or question repair. Once the
+ * current learner-visible module list is loaded, fall back to All Modules
+ * instead of issuing a filter that cannot return a question.
+ */
+export function shouldClearUnavailableSelectedModule(
+  selectedModule: string | null,
+  modules: readonly ModuleConfig[],
+): boolean {
+  return selectedModule !== null
+    && modules.length > 0
+    && !modules.some((module) => module.name === selectedModule);
+}
+
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const DIFF_COLOR: Record<string, string> = {
@@ -208,6 +222,12 @@ export default function QuizShell({
   isFreePreview = false,
   freeLimit = 15,
 }: QuizShellProps) {
+  useEffect(() => {
+    if (shouldClearUnavailableSelectedModule(selectedModule, modules)) {
+      onModuleChange(null);
+    }
+  }, [modules, onModuleChange, selectedModule]);
+
   // Show toast when calc-only has no questions available
   useEffect(() => {
     if (noCalcQuestions) {
