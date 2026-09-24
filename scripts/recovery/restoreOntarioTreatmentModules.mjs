@@ -238,8 +238,8 @@ async function run() {
         );
         if (snapshot.affectedRows !== 1) fail(`Before-image capture failed for ${plan.bankKey}/${change.questionNum}.`);
         const [update] = await connection.execute(
-          "UPDATE `questions` SET `module`=? WHERE `id`=? AND `bankKey`=? AND `questionNum`=? AND `module`=? AND COALESCE(`reviewStatus`, 'approved')=?",
-          [change.afterModule, before.id, plan.bankKey, before.questionNum, change.beforeModule, before.reviewStatus ?? "approved"],
+          "UPDATE `questions` SET `module`=? WHERE `id`=? AND `bankKey`=? AND `questionNum`=? AND `module`=? AND `reviewStatus` <=> ?",
+          [change.afterModule, before.id, plan.bankKey, before.questionNum, change.beforeModule, before.reviewStatus],
         );
         if (update.affectedRows !== 1) fail(`Module update failed for ${plan.bankKey}/${change.questionNum}.`);
       }
@@ -261,6 +261,7 @@ async function run() {
       if (postPlan.metadata.beforeContentVersion !== priorPlan.metadata.afterContentVersion) fail(`${postPlan.bankKey} post-write content version mismatch.`);
     }
     const beforeById = new Map(states.flatMap(({ rows }) => rows.map((row) => [Number(row.id), row])));
+    const changedQuestionIds = new Set(plans.flatMap((plan) => plan.questionChanges.map((change) => change.id)));
     for (const { rows } of postStates) {
       for (const postRow of rows) {
         const before = beforeById.get(Number(postRow.id));
@@ -275,7 +276,9 @@ async function run() {
     if (snapshotRows.length !== expectedSnapshotCount) fail("Before-image snapshot count mismatch.");
     const snapshotByQuestionId = new Map(snapshotRows.map((snapshot) => [Number(snapshot.questionId), snapshot]));
     if (snapshotByQuestionId.size !== expectedSnapshotCount) fail("Before-image snapshots are not unique by question.");
-    for (const [questionId, before] of beforeById) {
+    for (const questionId of changedQuestionIds) {
+      const before = beforeById.get(questionId);
+      if (!before) fail(`Before-image source is missing for question ${questionId}.`);
       const snapshot = snapshotByQuestionId.get(questionId);
       if (!snapshot) fail(`Before-image snapshot is missing for question ${questionId}.`);
       if (snapshot.contentHash !== sourceHash(before)) fail(`Before-image snapshot hash mismatch for question ${questionId}.`);

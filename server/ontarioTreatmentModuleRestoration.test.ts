@@ -147,7 +147,8 @@ describe("Ontario treatment module restoration plan", () => {
     expect(releaseSource).toContain('CONFIRM_ONTARIO_TREATMENT_MODULE_RESTORATION');
     expect(releaseSource).toContain('question_content_snapshots');
     expect(releaseSource).toContain('sourceHashExceptModule');
-    expect(releaseSource).toContain("COALESCE(`reviewStatus`, 'approved')=?");
+    expect(releaseSource).toContain('`reviewStatus` <=> ?');
+    expect(releaseSource).toContain('changedQuestionIds');
     expect(releaseSource).toContain('Before-image snapshot payload mismatch');
     expect(releaseSource).toContain('A partial or duplicate multi-bank release is not permitted.');
     expect(releaseSource).not.toContain('mysql.createConnection(process.env.DATABASE_URL)');
