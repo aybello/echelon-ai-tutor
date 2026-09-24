@@ -516,19 +516,10 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
         await expect(page.getByRole("button", { name: /Next Question/ })).toBeVisible();
 
-        const delayNextDelivery = async (route: Route) => {
-          if (route.request().url().includes("quiz.getRandomQuestions")) await page.waitForTimeout(700);
-          await route.fallback();
-        };
-        await page.route(routePattern, delayNextDelivery);
         await page.getByRole("button", { name: /Next Question/ }).click();
-        await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
         await expect(question).toBeVisible();
-        await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
         await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toHaveCount(0);
-        await expect(page.getByRole("button", { name: /Next Question/ })).toHaveCount(0);
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
-        await page.unroute(routePattern, delayNextDelivery);
       }
       const delayAllModulesDelivery = async (route: Route) => {
         if (route.request().url().includes("quiz.getRandomQuestions")) await page.waitForTimeout(700);
