@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Page, type Route } from "@playwright/test";
 import { scoredMockQuestionNums } from "../server/mockExamSession";
 import mysql from "mysql2/promise";
 
@@ -456,13 +456,17 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
       const filters = page.getByRole("group", { name: "Filter questions by module" });
       await expect(filters.getByRole("button", { name: /Coagulation & Flocculation/ })).toHaveCount(0);
       for (const [index, module] of modules.entries()) {
+        const routePattern = "**/api/trpc/**";
+        const exerciseTimeoutRecovery = bankKey === "class1-water" && index === 0;
+        let delayRandomQuestionDelivery: ((route: Route) => Promise<void>) | null = null;
         if (index === 0) {
-          await page.route("**/api/trpc/**", async route => {
+          delayRandomQuestionDelivery = async route => {
             if (route.request().url().includes("quiz.getRandomQuestions")) {
-              await page.waitForTimeout(700);
+              await page.waitForTimeout(exerciseTimeoutRecovery ? 15_250 : 700);
             }
-            await route.continue();
-          });
+            await route.fallback();
+          };
+          await page.route(routePattern, delayRandomQuestionDelivery);
         }
         await filters.getByRole("button", { name: module, exact: true }).click();
         const question = page.getByTestId("practice-question");
@@ -471,6 +475,11 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
           await expect(loadingOverlay).toBeVisible();
           await expect(question).toBeVisible();
           await expect(page.getByRole("button", { name: "Confirm Answer", exact: true })).toBeDisabled();
+          if (exerciseTimeoutRecovery) {
+            await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toBeVisible({ timeout: 20_000 });
+            await page.unroute(routePattern, delayRandomQuestionDelivery!);
+            await page.getByRole("button", { name: "Retry loading questions", exact: true }).click();
+          }
         }
         await expect(question).toContainText(`Module QA ${bankKey}`);
         await expect.poll(async () => Number(await question.getAttribute("data-question-id")))
@@ -480,7 +489,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
         if (index === 0) {
           await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
-          await page.unroute("**/api/trpc/**");
+          if (!exerciseTimeoutRecovery) await page.unroute(routePattern, delayRandomQuestionDelivery!);
         }
         expect(new URL(page.url()).pathname).toBe(path);
       }
