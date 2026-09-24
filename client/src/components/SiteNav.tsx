@@ -23,6 +23,7 @@ export const NAV_LINKS = [
 ];
 
 const RESOURCE_LINKS = [
+  { label: "Continuing education", href: "/continuing-education", description: "Ontario operator learning paths" },
   { label: "Study guides", href: "/guides", description: "Water and wastewater process guides" },
   { label: "Equipment Lab", href: "/equipment-lab", description: "Explore equipment and process flow" },
   { label: "Formula library", href: "/formulas", description: "Operator formulas and calculations" },
