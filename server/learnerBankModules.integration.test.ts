@@ -29,7 +29,7 @@ suite("learner bank module metadata", () => {
     await db.execute("DELETE FROM question_bank_meta");
   });
 
-  it("does not expose stale Class 1 Wastewater module labels that cannot return a learner-visible question", async () => {
+  it("does not expose stale Class 1 Wastewater module labels or stale question totals", async () => {
     const bankKey = "class1-wastewater";
     const staleMetadata = [
       "Wastewater Characteristics & Preliminary Treatment",
@@ -50,6 +50,7 @@ suite("learner bank module metadata", () => {
     const meta = await caller.getBankMeta({ bankKey });
 
     expect(meta?.modules).toEqual(["Wastewater Treatment"]);
+    expect(meta?.totalQuestions).toBe(1);
   });
 
   it("keeps a curated module ordering only when each displayed label has learner-visible questions", async () => {

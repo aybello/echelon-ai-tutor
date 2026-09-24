@@ -380,6 +380,10 @@ export const quizRouter = router({
       const storedModules = storedModuleRows.map(({ module }) =>
         row.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(module) : module,
       );
+      // The row count is the learner-facing inventory. Bank metadata can lag
+      // behind a controlled import or remediation, which would otherwise make
+      // course pages understate the questions a learner can actually study.
+      const learnerVisibleQuestionCount = storedModuleRows.length;
 
       let moduleTargets: Record<string, number> | null = null;
       if (row.moduleTargets) {
@@ -414,7 +418,7 @@ export const quizRouter = router({
         modules,
         moduleTargets,
         formulaLinks,
-        totalQuestions: row.totalQuestions,
+        totalQuestions: learnerVisibleQuestionCount,
         /** Issue L: monotonic counter incremented on admin question edits.
          *  Clients compare against their cached value and invalidate on mismatch. */
         contentVersion: row.contentVersion ?? 1,
