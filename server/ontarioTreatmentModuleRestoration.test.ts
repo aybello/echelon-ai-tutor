@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 // @ts-ignore Standalone governed release planner written in ESM.
 import { ONTARIO_TREATMENT_MODULE_PROFILES, isOntarioTreatmentModuleRestored, planOntarioTreatmentModuleRestoration, preservedRowHash } from "../scripts/lib/ontarioTreatmentModuleRestoration.mjs";
 
@@ -107,5 +109,17 @@ describe("Ontario treatment module restoration plan", () => {
     expect(plan.ready).toBe(true);
     expect(plan.questionChanges).toHaveLength(0);
     expect(isOntarioTreatmentModuleRestored(plan)).toBe(true);
+  });
+
+  it("uses the authoritative target and requires an exact multi-bank release confirmation", () => {
+    const releaseSource = readFileSync(resolve(import.meta.dirname, "../scripts/recovery/restoreOntarioTreatmentModules.mjs"), "utf8");
+
+    expect(releaseSource).toContain('authoritativeProductionConnectionOptions');
+    expect(releaseSource).toContain('mysql.createConnection(authoritativeProductionConnectionOptions())');
+    expect(releaseSource).toContain('SELECT DATABASE() AS databaseName');
+    expect(releaseSource).toContain('CONFIRM_ONTARIO_TREATMENT_MODULE_RESTORATION');
+    expect(releaseSource).toContain('question_content_snapshots');
+    expect(releaseSource).toContain('A partial or duplicate multi-bank release is not permitted.');
+    expect(releaseSource).not.toContain('mysql.createConnection(process.env.DATABASE_URL)');
   });
 });
