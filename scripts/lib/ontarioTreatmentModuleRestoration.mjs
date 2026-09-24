@@ -115,13 +115,31 @@ function canonicalRow(row) {
 }
 
 /**
- * Stable fingerprint of all protected question content. `module` is excluded so
- * the same classification package can prove the completed release is idempotent.
+ * Stable fingerprint of the question fields seen by the classifier. `module` is
+ * excluded so a matching package stays valid through the controlled module-only
+ * update. The release separately compares the complete locked rows before and
+ * after the update, so non-classifier fields remain protected at write time.
  */
 export function preservedRowHash(row) {
-  const value = canonicalRow(row);
-  delete value.module;
-  return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+  const value = {
+    id: row.id,
+    bankKey: row.bankKey,
+    questionNum: row.questionNum,
+    difficulty: row.difficulty,
+    question: row.question,
+    options: row.options,
+    correctIndex: row.correctIndex,
+    explanation: row.explanation,
+    steps: row.steps,
+    isCalc: row.isCalc,
+    cognitiveLevel: row.cognitiveLevel,
+    reviewStatus: row.reviewStatus,
+  };
+  if (typeof value.options === "string") {
+    try { value.options = JSON.parse(value.options); }
+    catch { throw new Error(`Question ${row.questionNum} has malformed options.`); }
+  }
+  return createHash("sha256").update(JSON.stringify(stable(value))).digest("hex");
 }
 
 function parseMetadataModules(value) {

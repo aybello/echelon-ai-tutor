@@ -78,6 +78,20 @@ describe("Ontario treatment module restoration plan", () => {
     expect(plan.errors.join(" ")).toContain("changed after classification");
   });
 
+  it("keeps the classifier hash stable when a release-only database field is present", () => {
+    const sourceRow = rows()[0];
+    const withReleaseOnlyFields = {
+      ...sourceRow,
+      topic: "release-only metadata",
+      tip: "release-only guidance",
+      sourceTitle: "release-only source",
+      reviewedBy: "reviewer@example.test",
+      reviewedAt: new Date("2026-09-24T00:00:00.000Z"),
+    };
+
+    expect(preservedRowHash(withReleaseOnlyFields)).toBe(preservedRowHash(sourceRow));
+  });
+
   it("fails closed when the approved metadata menu is changed or incomplete", () => {
     const sourceRows = rows();
     const incomplete = classifications(sourceRows).slice(1);

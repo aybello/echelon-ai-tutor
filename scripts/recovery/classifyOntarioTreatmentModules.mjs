@@ -4,7 +4,7 @@
  * Wastewater Treatment modules. It never writes to the database.
  *
  * Usage:
- *   node scripts/recovery/classifyOntarioTreatmentModules.mjs [--bank <bankKey>] [--sample <count>]
+ *   node scripts/recovery/classifyOntarioTreatmentModules.mjs [--bank <bankKey>] [--sample <count>] [--review-low-confidence]
  */
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -24,14 +24,16 @@ const OUTPUT_PATH = `${PRIVATE_ROOT}/ontario-treatment-module-classification.jso
 const BATCH_SIZE = 25;
 const SAMPLE_ARG = process.argv.indexOf("--sample");
 const BANK_ARG = process.argv.indexOf("--bank");
+const reviewLowConfidence = process.argv.includes("--review-low-confidence");
 const sampleCount = SAMPLE_ARG === -1 ? null : Number(process.argv[SAMPLE_ARG + 1]);
 const requestedBank = BANK_ARG === -1 ? null : process.argv[BANK_ARG + 1];
 
 if ((SAMPLE_ARG !== -1 && (!Number.isInteger(sampleCount) || sampleCount < 1 || sampleCount > BATCH_SIZE))
   || (BANK_ARG !== -1 && !requestedBank)
+  || (reviewLowConfidence && sampleCount)
   || process.argv.some((arg, index) => arg === "--sample" && index === SAMPLE_ARG && index + 1 >= process.argv.length)
   || process.argv.some((arg, index) => arg === "--bank" && index === BANK_ARG && index + 1 >= process.argv.length)) {
-  throw new Error("Usage: node scripts/recovery/classifyOntarioTreatmentModules.mjs [--bank <bankKey>] [--sample <1-25>]");
+  throw new Error("Usage: node scripts/recovery/classifyOntarioTreatmentModules.mjs [--bank <bankKey>] [--sample <1-25>] [--review-low-confidence]");
 }
 if (requestedBank && !ONTARIO_TREATMENT_BANK_KEYS.includes(requestedBank)) {
   throw new Error(`Unsupported treatment bank ${JSON.stringify(requestedBank)}.`);
@@ -325,27 +327,32 @@ async function main() {
       const selectedQuestions = sampleCount ? questions.slice(0, sampleCount) : questions;
       const existing = sampleCount ? [] : (packageData.banks[bankKey]?.classifications ?? []);
       const existingByQuestionNum = new Map(existing.map((classification) => [Number(classification.questionNum), classification]));
+      if (reviewLowConfidence && existingByQuestionNum.size !== questions.length) {
+        fail(`${bankKey} cannot review low-confidence rows until its full classification package is complete.`);
+      }
       for (const question of selectedQuestions) {
         const saved = existingByQuestionNum.get(Number(question.questionNum));
         if (saved && saved.sourceHash !== preservedRowHash(question)) {
           fail(`${bankKey} question ${question.questionNum} changed after its saved classification.`);
         }
       }
-      const remaining = selectedQuestions.filter((question) => !existingByQuestionNum.has(Number(question.questionNum)));
-      const classified = [...existing];
+      const remaining = reviewLowConfidence
+        ? selectedQuestions.filter((question) => Number(existingByQuestionNum.get(Number(question.questionNum))?.confidence) < 80)
+        : selectedQuestions.filter((question) => !existingByQuestionNum.has(Number(question.questionNum)));
       for (let offset = 0; offset < remaining.length; offset += BATCH_SIZE) {
         const batch = remaining.slice(offset, offset + BATCH_SIZE);
-        process.stdout.write(`${bankKey}: classifying ${existing.length + offset + 1}-${existing.length + offset + batch.length} of ${selectedQuestions.length}... `);
+        const action = reviewLowConfidence ? "reviewing" : "classifying";
+        process.stdout.write(`${bankKey}: ${action} ${offset + 1}-${offset + batch.length} of ${remaining.length} selected rows... `);
         const result = await classifyBatch(bankKey, profile.modules, batch);
         const validated = validateBatch(batch, profile.modules, result);
         for (const question of batch) {
           const classification = validated.get(Number(question.questionNum));
-          classified.push({
+          existingByQuestionNum.set(Number(question.questionNum), {
             ...classification,
             sourceHash: preservedRowHash(question),
           });
         }
-        classified.sort((left, right) => left.questionNum - right.questionNum);
+        const classified = [...existingByQuestionNum.values()].sort((left, right) => left.questionNum - right.questionNum);
         if (!sampleCount) {
           const inProgress = summarize(bankKey, profile.modules, classified);
           packageData.banks[bankKey] = {
@@ -365,6 +372,7 @@ async function main() {
         console.log("ok");
       }
 
+      const classified = [...existingByQuestionNum.values()].sort((left, right) => left.questionNum - right.questionNum);
       const summary = summarize(bankKey, profile.modules, classified);
       if (sampleCount) {
         console.log(JSON.stringify({ model: MODEL, sample: summary, classifications: classified }, null, 2));
