@@ -416,19 +416,18 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await expect(page.getByTestId("practice-question")).toBeVisible();
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
 
-    // A bookmarked obsolete topic can still reach the empty screen. Preserve
-    // the paid selection, explain it, and let the learner recover without login
-    // or a page refresh. No answer should have to be submitted to escape it.
+    // A bookmarked obsolete topic is reconciled to All Modules once the current
+    // learner-visible bank metadata loads. A learner must not reach an empty
+    // screen or need to make a second selection to resume studying.
     await page.goto(`/${bankKey}?topic=${encodeURIComponent("Retired module")}`);
-    await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toBeVisible();
-    await expect(page.getByText("Selected module: Retired module", { exact: true })).toBeVisible();
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
+    await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toHaveCount(0);
+    await expect(page.getByText("Selected module: Retired module", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Your 0 answers", { exact: false })).toHaveCount(0);
     const controls = page.getByRole("region", { name: "Practice mode and settings" });
     await expect(controls.getByRole("button", { name: /Quiz Settings/ })).toBeVisible();
     await expect(controls).toHaveCSS("background-color", "rgb(15, 23, 42)");
-    await page.getByRole("button", { name: "Rare module", exact: true }).click();
-    await expect(page.getByTestId("practice-question")).toBeVisible();
-    expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
   } finally { await db.end(); }
 });
 test("paid Water and OIT pages use current bank modules and keep filtering in the quiz", async ({ page }) => {
