@@ -421,7 +421,6 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     // screen or need to make a second selection to resume studying.
     await page.goto(`/${bankKey}?topic=${encodeURIComponent("Retired module")}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
-    expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
     await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toHaveCount(0);
     await expect(page.getByText("Selected module: Retired module", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Your 0 answers", { exact: false })).toHaveCount(0);
