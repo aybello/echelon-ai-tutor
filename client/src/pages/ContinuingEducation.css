@@ -209,3 +209,81 @@
   .ceu-regulatory-note { margin-bottom: 55px; padding: 25px; border-radius: 14px; }
   .ceu-modal { padding: 31px 22px 24px; }
 }
+
+
+/* ── Echelon CEU visual system ────────────────────────────────────────────
+   Course discovery uses the same navy, blue, and white hierarchy as the rest
+   of Echelon. Teal now communicates positive or approved learning states. */
+.ceu-page {
+  --ceu-navy: var(--echelon-navy);
+  --ceu-blue: var(--echelon-blue);
+  --ceu-blue-bright: var(--echelon-blue-bright);
+  --ceu-teal: var(--echelon-teal);
+  --ceu-ink: var(--echelon-ink);
+  --ceu-copy: var(--echelon-copy);
+  --ceu-muted: var(--echelon-muted);
+  --ceu-line: var(--echelon-line);
+  color: var(--ceu-ink);
+  background:
+    radial-gradient(circle at 88% 0%, rgba(37, 99, 235, 0.15), transparent 29rem),
+    linear-gradient(180deg, #f8fbff 0%, var(--echelon-canvas) 38rem, #f8fbff 100%);
+}
+.ceu-eyebrow { color: var(--ceu-blue); }
+.ceu-hero h1,
+.ceu-section-heading h2,
+.ceu-regulatory-note h2,
+.ceu-course-heading h2,
+.ceu-modal h2 { color: var(--ceu-navy); }
+.ceu-hero-summary,
+.ceu-section-heading > p:last-child,
+.ceu-course-heading p,
+.ceu-note-copy,
+.ceu-modal > p:not(.ceu-eyebrow) { color: var(--ceu-copy); }
+.ceu-hero-facts span { border-color: #dbeafe; color: var(--ceu-copy); background: rgba(255, 255, 255, 0.84); }
+.ceu-hero-panel { border-color: rgba(37, 99, 235, 0.38); background: var(--ceu-navy); box-shadow: var(--echelon-shadow-md); }
+.ceu-hero-panel p { color: #93c5fd; }
+.ceu-hero-panel span { color: #cbd5e1; }
+.ceu-course-card { border-color: var(--ceu-line); background: rgba(255, 255, 255, 0.94); box-shadow: var(--echelon-shadow-sm); }
+.ceu-course-card.is-wastewater { border-color: #bfdbfe; }
+.ceu-course-topline { color: var(--ceu-muted); }
+.ceu-course-topline span:last-child { color: var(--ceu-blue); }
+.ceu-approval-badge { border-color: #a7d9c8; color: #145c4c; background: #f0fdf7; }
+.ceu-course-status { border-left-color: var(--ceu-blue); color: var(--ceu-copy); }
+.ceu-preview-link { border-color: var(--ceu-blue); background: var(--ceu-blue); }
+.ceu-interest-button { border-color: var(--ceu-navy); background: var(--ceu-navy); }
+.ceu-outline-button { border-color: #bfdbfe; color: var(--ceu-blue); }
+.ceu-outline-button:hover,
+.ceu-interest-button:hover,
+.ceu-preview-link:hover { box-shadow: 0 6px 15px rgba(29, 78, 216, 0.22); }
+.ceu-outline { border-color: var(--ceu-line); }
+.ceu-outline-label { color: var(--ceu-blue); }
+.ceu-check-list li,
+.ceu-modules li p { color: var(--ceu-copy); }
+.ceu-check-list svg { color: var(--ceu-teal); }
+.ceu-modules li { border-color: #e2e8f0; }
+.ceu-modules li span { color: var(--ceu-blue); }
+.ceu-modules li strong { color: var(--ceu-navy); }
+.ceu-modules li time { color: var(--ceu-muted); }
+.ceu-completion { border-color: #a7d9c8; background: #f0fdf7; }
+.ceu-completion > div { color: var(--ceu-teal); }
+.ceu-completion ul { color: var(--ceu-copy); }
+.ceu-delivery-cards article { border-top-color: var(--ceu-blue); background: var(--ceu-navy); }
+.ceu-delivery-cards article:nth-child(2) { border-color: #3b82f6; background: #123862; }
+.ceu-delivery-cards article:nth-child(3) { border-color: #60a5fa; background: #173f67; }
+.ceu-delivery-cards svg { color: #93c5fd; }
+.ceu-delivery-cards p { color: #cbd5e1; }
+.ceu-regulatory-note { background: #eff6ff; }
+.ceu-note-copy a { color: var(--ceu-blue); }
+.ceu-modal-backdrop { background: rgba(11, 31, 58, 0.72); }
+.ceu-modal { box-shadow: 0 30px 90px rgba(11, 31, 58, 0.38); }
+.ceu-modal-close { color: var(--ceu-copy); }
+.ceu-modal label { color: var(--ceu-navy); }
+.ceu-modal input { border-color: #bfdbfe; color: var(--ceu-ink); }
+.ceu-modal form button { background: var(--ceu-blue); }
+.ceu-form-message { color: #145c4c; background: #f0fdf7; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ceu-outline-button,
+  .ceu-interest-button,
+  .ceu-preview-link { transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1); }
+}

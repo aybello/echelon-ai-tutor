@@ -286,3 +286,126 @@
   .ceu-preview-module-footer { display: grid; grid-template-columns: 1fr; }
   .ceu-preview-module-footer button { justify-content: center; }
 }
+
+
+/* ── Echelon CEU visual system ────────────────────────────────────────────
+   Aligns the course workspace with the core product: navy, Echelon blue,
+   white surfaces, and restrained teal reserved for successful learning states. */
+.ceu-preview-page {
+  --ceu-navy: var(--echelon-navy);
+  --ceu-blue: var(--echelon-blue);
+  --ceu-blue-bright: var(--echelon-blue-bright);
+  --ceu-teal: var(--echelon-teal);
+  --ceu-ink: var(--echelon-ink);
+  --ceu-copy: var(--echelon-copy);
+  --ceu-muted: var(--echelon-muted);
+  --ceu-line: var(--echelon-line);
+  color: var(--ceu-ink);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(37, 99, 235, 0.13), transparent 28rem),
+    linear-gradient(180deg, #f8fbff 0%, var(--echelon-canvas) 42rem, #f8fbff 100%);
+}
+.ceu-preview-back,
+.ceu-preview-eyebrow,
+.ceu-preview-panel-label { color: var(--ceu-blue); }
+.ceu-preview-back:hover { color: var(--ceu-navy); }
+.ceu-preview-header h1,
+.ceu-preview-module h2,
+.ceu-preview-assessment h2,
+.ceu-preview-scenario-title h3,
+.ceu-preview-knowledge-check h3,
+.ceu-preview-final-question h3,
+.ceu-preview-not-found h1 { color: var(--ceu-navy); }
+.ceu-preview-header-grid > div > p:last-child,
+.ceu-preview-lead { color: var(--ceu-copy); }
+.ceu-preview-header aside {
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #fff;
+  background: var(--ceu-navy);
+  box-shadow: var(--echelon-shadow-sm);
+}
+.ceu-preview-header aside svg { color: #93c5fd; }
+.ceu-preview-header aside span { color: #cbd5e1; }
+.ceu-preview-sidebar,
+.ceu-preview-module,
+.ceu-preview-assessment {
+  border-color: var(--ceu-line);
+  background: var(--echelon-surface);
+  box-shadow: var(--echelon-shadow-sm);
+}
+.ceu-preview-progress { border-color: var(--ceu-line); }
+.ceu-preview-progress > span,
+.ceu-preview-progress strong,
+.ceu-preview-nav > p { color: var(--ceu-muted); }
+.ceu-preview-progress > div { background: #dbeafe; }
+.ceu-preview-progress i { background: linear-gradient(90deg, var(--ceu-blue), var(--ceu-blue-bright)); }
+.ceu-preview-nav button { color: var(--ceu-copy); }
+.ceu-preview-nav button:hover { color: var(--ceu-blue); background: #eff6ff; }
+.ceu-preview-nav button.is-active { color: var(--ceu-blue); background: #eff6ff; }
+.ceu-preview-nav button > span { border-color: #bfdbfe; color: var(--ceu-blue); }
+.ceu-preview-nav button.is-active > span { border-color: var(--ceu-blue); color: var(--ceu-blue); background: #fff; }
+.ceu-preview-nav button span svg { color: var(--ceu-teal); }
+.ceu-preview-assessment-link {
+  border-color: #bfdbfe;
+  color: var(--ceu-navy);
+  background: #f8fbff;
+}
+.ceu-preview-assessment-link:hover,
+.ceu-preview-assessment-link.is-active { border-color: var(--ceu-blue); color: #fff; background: var(--ceu-blue); }
+.ceu-preview-module-topline { color: var(--ceu-blue); }
+.ceu-preview-module-topline span:last-child { color: var(--ceu-muted); }
+.ceu-preview-learning-points > div:first-child { border-color: #bfdbfe; background: #eff6ff; }
+.ceu-preview-learning-points li { color: var(--ceu-copy); }
+.ceu-preview-learning-points li svg { color: var(--ceu-teal); }
+.ceu-preview-scenario { border-color: #bfdbfe; background: linear-gradient(135deg, #eff6ff, #f8fbff); }
+.ceu-preview-scenario-title > span { color: var(--ceu-blue); }
+.ceu-preview-scenario > p,
+.ceu-preview-scenario-prompt p,
+.ceu-preview-scenario details p { color: var(--ceu-copy); }
+.ceu-preview-scenario-prompt { border-left-color: var(--ceu-blue); }
+.ceu-preview-scenario-prompt strong,
+.ceu-preview-scenario summary { color: var(--ceu-blue); }
+.ceu-preview-knowledge-check { border-color: var(--ceu-line); background: #fbfdff; }
+.ceu-preview-check-heading svg { color: var(--ceu-blue); }
+.ceu-preview-choice { border-color: #cbd5e1; color: var(--ceu-copy); }
+.ceu-preview-choice:hover { border-color: #93c5fd; }
+.ceu-preview-choice > span { color: var(--ceu-blue); background: #eff6ff; }
+.ceu-preview-choice.is-selected { border-color: var(--ceu-blue); background: #eff6ff; }
+.ceu-preview-choice.is-selected > span { background: var(--ceu-blue); }
+.ceu-preview-choice.is-correct { border-color: #34a37b; background: #f0fdf7; }
+.ceu-preview-choice.is-correct > span { background: var(--ceu-teal); }
+.ceu-preview-choice.is-correct svg { color: var(--ceu-teal); }
+.ceu-preview-explanation { border-left-color: var(--ceu-teal); color: var(--ceu-copy); background: #f0fdf7; }
+.ceu-preview-explanation strong { color: var(--ceu-teal); }
+.ceu-preview-check-button,
+.ceu-preview-submit-button,
+.ceu-preview-reset-button,
+.ceu-preview-module-footer button:last-child,
+.ceu-preview-primary-link { background: var(--ceu-blue); }
+.ceu-preview-check-button:hover,
+.ceu-preview-submit-button:hover,
+.ceu-preview-reset-button:hover { box-shadow: 0 8px 18px rgba(29, 78, 216, 0.22); }
+.ceu-preview-module-footer { border-color: var(--ceu-line); }
+.ceu-preview-module-footer button { border-color: #bfdbfe; color: var(--ceu-blue); }
+.ceu-preview-module-footer button:last-child { border-color: var(--ceu-blue); }
+.ceu-preview-assessment-facts span { border-color: #bfdbfe; color: var(--ceu-copy); background: #f8fbff; }
+.ceu-preview-assessment-facts svg { color: var(--ceu-blue); }
+.ceu-preview-score { border-color: #bfdbfe; color: #1e3a8a; background: #eff6ff; }
+.ceu-preview-score.is-passing { border-color: #a7d9c8; color: #145c4c; background: #f0fdf7; }
+.ceu-preview-score small { color: var(--ceu-copy); }
+.ceu-preview-final-question { border-top-color: var(--ceu-blue); background: #f8fbff; }
+.ceu-preview-final-question > p { color: var(--ceu-blue); }
+.ceu-preview-assessment-footer p { color: var(--ceu-muted); }
+.ceu-preview-reset-button { border-color: #bfdbfe; color: var(--ceu-blue); background: #fff; }
+.ceu-preview-not-found > svg { color: var(--ceu-blue); }
+.ceu-preview-not-found > p:not(.ceu-preview-eyebrow) { color: var(--ceu-copy); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ceu-preview-nav button,
+  .ceu-preview-assessment-link,
+  .ceu-preview-choice,
+  .ceu-preview-check-button,
+  .ceu-preview-submit-button,
+  .ceu-preview-reset-button,
+  .ceu-preview-module-footer button { transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1); }
+}
