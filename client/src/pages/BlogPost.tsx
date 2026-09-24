@@ -3,6 +3,7 @@ import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 import { useMemo } from "react";
 
 // Configure marked for safe, clean output
@@ -15,10 +16,11 @@ function isMarkdown(content: string): boolean {
 }
 
 function renderContent(content: string): string {
-  if (isMarkdown(content)) {
-    return marked.parse(content) as string;
-  }
-  return content;
+  const html = isMarkdown(content) ? (marked.parse(content) as string) : content;
+  // Blog content includes AI-generated posts: never render it unsanitized.
+  // DOMPurify strips scripts, event handlers, and javascript: URLs while
+  // preserving class attributes used by the prose styling above.
+  return DOMPurify.sanitize(html);
 }
 
 function formatDate(d: Date | string) {
