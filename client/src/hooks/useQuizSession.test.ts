@@ -5,6 +5,7 @@ import {
   createHistoryEntry,
   getAdaptiveNext,
   shouldApplyPracticePageResult,
+  shouldApplyPracticeQueueResult,
   shouldClearLockedPreviewFilters,
   summarizeHistory,
   withPracticeQuestionTimeout,
@@ -104,6 +105,13 @@ describe("locked preview filters", () => {
   it("ignores a late response from an earlier queue even after returning to the same filter", () => {
     expect(shouldApplyPracticePageResult(3, 3)).toBe(true);
     expect(shouldApplyPracticePageResult(1, 3)).toBe(false);
+  });
+
+  it("does not let an obsolete queue timeout overwrite the active queue state", () => {
+    const obsoleteQueue = {};
+    const activeQueue = {};
+    expect(shouldApplyPracticeQueueResult(obsoleteQueue, activeQueue)).toBe(false);
+    expect(shouldApplyPracticeQueueResult(activeQueue, activeQueue)).toBe(true);
   });
 });
 

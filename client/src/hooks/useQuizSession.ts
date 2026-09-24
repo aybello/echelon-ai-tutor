@@ -206,6 +206,14 @@ export function shouldApplyPracticePageResult(
   return requestGeneration === activeGeneration;
 }
 
+/** Only the currently rendered queue may update the learner-facing state. */
+export function shouldApplyPracticeQueueResult(
+  requestQueue: unknown,
+  activeQueue: unknown,
+): boolean {
+  return requestQueue === activeQueue;
+}
+
 // ─── Adaptive next-question selection ────────────────────────────────────────
 export function getAdaptiveNext(
   history: HistoryEntry[],
@@ -527,14 +535,14 @@ export function useQuizSession({
     setQuestionError("");
     try {
       const next = await queue.take(pool => getAdaptiveNext(history, pool, trialUnlocked));
-      if (activeQueue.current !== queue) return;
+      if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setAvailableQuestionCount(queue.total);
       setCurrent(next);
       clearUI();
       setQuestionStatus(next ? undefined : "empty");
       if (!next && history.length) trackQuizCompleted(history, "pool_exhausted");
     } catch (error) {
-      if (activeQueue.current !== queue) return;
+      if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setQuestionError(error instanceof Error ? error.message : "Questions could not be loaded.");
       setQuestionStatus("error");
     } finally { if (fetching.current === queue) fetching.current = null; }

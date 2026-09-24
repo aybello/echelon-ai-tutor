@@ -456,13 +456,32 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
       const filters = page.getByRole("group", { name: "Filter questions by module" });
       await expect(filters.getByRole("button", { name: /Coagulation & Flocculation/ })).toHaveCount(0);
       for (const [index, module] of modules.entries()) {
+        if (index === 0) {
+          await page.route("**/api/trpc/**", async route => {
+            if (route.request().url().includes("quiz.getRandomQuestions")) {
+              await page.waitForTimeout(700);
+            }
+            await route.continue();
+          });
+        }
         await filters.getByRole("button", { name: module, exact: true }).click();
         const question = page.getByTestId("practice-question");
+        if (index === 0) {
+          const loadingOverlay = page.getByRole("status").filter({ hasText: "Loading your next question" });
+          await expect(loadingOverlay).toBeVisible();
+          await expect(question).toBeVisible();
+          await expect(page.getByRole("button", { name: "Confirm Answer", exact: true })).toBeDisabled();
+        }
         await expect(question).toContainText(`Module QA ${bankKey}`);
+        await expect.poll(async () => Number(await question.getAttribute("data-question-id")))
+          .toBeGreaterThanOrEqual(970001 + index * 6);
         const id = Number(await question.getAttribute("data-question-id"));
-        expect(id).toBeGreaterThanOrEqual(970001 + index * 6);
         expect(id).toBeLessThan(970007 + index * 6);
         await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
+        if (index === 0) {
+          await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
+          await page.unroute("**/api/trpc/**");
+        }
         expect(new URL(page.url()).pathname).toBe(path);
       }
       await filters.getByRole("button", { name: "All Modules", exact: true }).click();

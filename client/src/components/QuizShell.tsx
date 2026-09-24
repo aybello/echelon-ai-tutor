@@ -865,6 +865,7 @@ export default function QuizShell({
               Loading your next question…
             </div>
           )}
+          <div inert={isQuestionLoading} aria-busy={isQuestionLoading || undefined}>
           {/* Badges row */}
           <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8, alignItems: "center" }}>
             {current.module && (
@@ -1086,8 +1087,10 @@ export default function QuizShell({
               </div>
             )}
           </div>
+          </div>
         </div>
 
+        <div inert={isQuestionLoading}>
         {/* ── Explanation box ── */}
         {confirmed && (
           <div style={{
@@ -1210,6 +1213,7 @@ export default function QuizShell({
 
         {/* ── Extra content slot ── */}
         {extraContent}
+        </div>
         {/* Close the !gate fragment */}
         </>)}
       </div>
