@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 // @ts-ignore The guarded restoration planner is a standalone ESM module.
 import { CLASS1_WATER_BANK, CLASS1_WATER_MODULE_ORDER, isClass1WaterModuleRestored, planClass1WaterModuleRestoration } from "../scripts/lib/class1WaterModuleRestoration.mjs";
 
@@ -100,5 +102,13 @@ describe("Class 1 Water module restoration plan", () => {
     expect(plan.ready).toBe(true);
     expect(plan.questionChanges).toHaveLength(0);
     expect(isClass1WaterModuleRestored(plan)).toBe(true);
+  });
+
+  it("uses the active external cutover target rather than a generic database URL", () => {
+    const releaseSource = readFileSync(resolve(import.meta.dirname, "../scripts/recovery/restoreClass1WaterModules.mjs"), "utf8");
+
+    expect(releaseSource).toContain('authoritativeProductionConnectionOptions');
+    expect(releaseSource).toContain('mysql.createConnection(authoritativeProductionConnectionOptions())');
+    expect(releaseSource).not.toContain('mysql.createConnection(process.env.DATABASE_URL)');
   });
 });

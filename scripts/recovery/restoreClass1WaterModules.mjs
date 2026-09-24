@@ -17,17 +17,16 @@ import {
   isClass1WaterModuleRestored,
   planClass1WaterModuleRestoration,
 } from "../lib/class1WaterModuleRestoration.mjs";
+import { authoritativeProductionConnectionOptions } from "./releaseClass3ApprovedCandidates.mjs";
 
 const RELEASE_KEY = "class1-water-module-restoration-2026-09-24";
-const PRIVATE_ROOT = "/home/ubuntu/private/echelon-authoritative-recovery/class1-water-module-restoration-2026-09-24";
+const PRIVATE_ROOT = "/home/ubuntu/private/echelon-authoritative-recovery/class1-water-authoritative-module-restoration-2026-09-24";
 const DEFAULT_CLASSIFICATION_PATH = `${PRIVATE_ROOT}/class1-water-module-classification.json`;
 const mode = process.argv[2] ?? "plan";
 
 if (!new Set(["plan", "apply"]).has(mode) || process.argv.length !== 3) {
   throw new Error("Usage: node scripts/recovery/restoreClass1WaterModules.mjs [plan|apply]");
 }
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required.");
-
 function fail(message) {
   throw new Error(`Class 1 Water module restoration blocked: ${message}`);
 }
@@ -120,7 +119,7 @@ async function persistEvidence(name, value) {
 
 async function run() {
   const { filePath, classifications, classificationDigest } = await readClassifications();
-  const connection = await mysql.createConnection(process.env.DATABASE_URL);
+  const connection = await mysql.createConnection(authoritativeProductionConnectionOptions());
   let committed = false;
   let commitAttempted = false;
   try {
