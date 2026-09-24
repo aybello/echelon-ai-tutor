@@ -36,7 +36,7 @@ function metadata() {
   return [{
     bankKey: BANK,
     modules: JSON.stringify(PROFILE.modules),
-    totalQuestions: 503,
+    totalQuestions: PROFILE.modules.length,
     contentVersion: 1,
   }];
 }
@@ -57,7 +57,7 @@ describe("Ontario treatment module restoration plan", () => {
     expect(plan.questionChanges).toHaveLength(PROFILE.modules.length);
     expect(plan.counts).toEqual(Object.fromEntries(PROFILE.modules.map((module: string) => [module, 1])));
     expect(plan.metadata).toMatchObject({
-      beforeTotalQuestions: 503,
+      beforeTotalQuestions: PROFILE.modules.length,
       afterTotalQuestions: PROFILE.modules.length,
       beforeContentVersion: 1,
       afterContentVersion: 2,
@@ -76,6 +76,19 @@ describe("Ontario treatment module restoration plan", () => {
 
     expect(plan.ready).toBe(false);
     expect(plan.errors.join(" ")).toContain("changed after classification");
+  });
+
+  it("fails closed when metadata inventory does not match the learner-visible row count", () => {
+    const sourceRows = rows();
+    const plan = planOntarioTreatmentModuleRestoration({
+      bankKey: BANK,
+      rows: sourceRows,
+      metadata: [{ ...metadata()[0], totalQuestions: 503 }],
+      classifications: classifications(sourceRows),
+    });
+
+    expect(plan.ready).toBe(false);
+    expect(plan.errors.join(" ")).toContain("metadata question count does not match");
   });
 
   it("keeps the classifier hash stable when a release-only database field is present", () => {
@@ -133,6 +146,9 @@ describe("Ontario treatment module restoration plan", () => {
     expect(releaseSource).toContain('SELECT DATABASE() AS databaseName');
     expect(releaseSource).toContain('CONFIRM_ONTARIO_TREATMENT_MODULE_RESTORATION');
     expect(releaseSource).toContain('question_content_snapshots');
+    expect(releaseSource).toContain('sourceHashExceptModule');
+    expect(releaseSource).toContain("COALESCE(`reviewStatus`, 'approved')=?");
+    expect(releaseSource).toContain('Before-image snapshot payload mismatch');
     expect(releaseSource).toContain('A partial or duplicate multi-bank release is not permitted.');
     expect(releaseSource).not.toContain('mysql.createConnection(process.env.DATABASE_URL)');
   });

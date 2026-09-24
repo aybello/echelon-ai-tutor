@@ -17,7 +17,6 @@ import {
   isOntarioTreatmentModuleRestored,
   ONTARIO_TREATMENT_BANK_KEYS,
   planOntarioTreatmentModuleRestoration,
-  preservedRowHash,
 } from "../lib/ontarioTreatmentModuleRestoration.mjs";
 import { authoritativeProductionConnectionOptions } from "./releaseClass3ApprovedCandidates.mjs";
 
@@ -50,6 +49,12 @@ function canonicalRow(row) {
 
 function sourceHash(row) {
   return createHash("sha256").update(JSON.stringify(canonicalRow(row))).digest("hex");
+}
+
+function sourceHashExceptModule(row) {
+  const value = canonicalRow(row);
+  delete value.module;
+  return createHash("sha256").update(JSON.stringify(value)).digest("hex");
 }
 
 function liveFingerprint(states) {
@@ -233,8 +238,8 @@ async function run() {
         );
         if (snapshot.affectedRows !== 1) fail(`Before-image capture failed for ${plan.bankKey}/${change.questionNum}.`);
         const [update] = await connection.execute(
-          "UPDATE `questions` SET `module`=? WHERE `id`=? AND `bankKey`=? AND `questionNum`=? AND `module`=? AND `reviewStatus`=?",
-          [change.afterModule, before.id, plan.bankKey, before.questionNum, change.beforeModule, before.reviewStatus],
+          "UPDATE `questions` SET `module`=? WHERE `id`=? AND `bankKey`=? AND `questionNum`=? AND `module`=? AND COALESCE(`reviewStatus`, 'approved')=?",
+          [change.afterModule, before.id, plan.bankKey, before.questionNum, change.beforeModule, before.reviewStatus ?? "approved"],
         );
         if (update.affectedRows !== 1) fail(`Module update failed for ${plan.bankKey}/${change.questionNum}.`);
       }
@@ -260,14 +265,22 @@ async function run() {
       for (const postRow of rows) {
         const before = beforeById.get(Number(postRow.id));
         if (!before) fail(`Post-write question ${postRow.questionNum} was not present before release.`);
-        if (preservedRowHash(postRow) !== preservedRowHash(before)) fail(`Unexpected non-module mutation for question ${postRow.bankKey}/${postRow.questionNum}.`);
+        if (sourceHashExceptModule(postRow) !== sourceHashExceptModule(before)) fail(`Unexpected non-module mutation for question ${postRow.bankKey}/${postRow.questionNum}.`);
       }
     }
-    const [snapshotCountRows] = await connection.execute(
-      "SELECT COUNT(*) AS count FROM `question_content_snapshots` WHERE `releaseKey`=?",
+    const [snapshotRows] = await connection.execute(
+      "SELECT `questionId`, `contentHash`, `payload` FROM `question_content_snapshots` WHERE `releaseKey`=?",
       [RELEASE_KEY],
     );
-    if (Number(snapshotCountRows[0]?.count) !== expectedSnapshotCount) fail("Before-image snapshot count mismatch.");
+    if (snapshotRows.length !== expectedSnapshotCount) fail("Before-image snapshot count mismatch.");
+    const snapshotByQuestionId = new Map(snapshotRows.map((snapshot) => [Number(snapshot.questionId), snapshot]));
+    if (snapshotByQuestionId.size !== expectedSnapshotCount) fail("Before-image snapshots are not unique by question.");
+    for (const [questionId, before] of beforeById) {
+      const snapshot = snapshotByQuestionId.get(questionId);
+      if (!snapshot) fail(`Before-image snapshot is missing for question ${questionId}.`);
+      if (snapshot.contentHash !== sourceHash(before)) fail(`Before-image snapshot hash mismatch for question ${questionId}.`);
+      if (snapshot.payload !== JSON.stringify(canonicalRow(before))) fail(`Before-image snapshot payload mismatch for question ${questionId}.`);
+    }
 
     commitAttempted = true;
     await connection.commit();

@@ -174,6 +174,9 @@ export function planOntarioTreatmentModuleRestoration({ bankKey, rows, metadata,
   if (metadataRow && JSON.stringify(parseMetadataModules(metadataRow.modules)) !== JSON.stringify(profile.modules)) {
     errors.push(`${bankKey} metadata modules do not match the approved detailed module profile.`);
   }
+  if (metadataRow && Number(metadataRow.totalQuestions) !== bankRows.length) {
+    errors.push(`${bankKey} metadata question count does not match the supplied learner-visible question count.`);
+  }
 
   const duplicateQuestions = new Set();
   const seenQuestionNums = new Set();
@@ -267,7 +270,7 @@ export function planOntarioTreatmentModuleRestoration({ bankKey, rows, metadata,
       beforeTotalQuestions: Number(metadataRow.totalQuestions),
       beforeContentVersion: Number(metadataRow.contentVersion ?? 1),
       afterModules: [...profile.modules],
-      afterTotalQuestions: bankRows.length,
+      afterTotalQuestions: Number(metadataRow.totalQuestions),
       afterContentVersion: Number(metadataRow.contentVersion ?? 1) + 1,
       moduleMenuChanged: JSON.stringify(parseMetadataModules(metadataRow.modules)) !== JSON.stringify(profile.modules),
     } : null,
