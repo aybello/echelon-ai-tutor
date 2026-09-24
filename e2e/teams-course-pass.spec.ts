@@ -462,7 +462,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         if (index === 0) {
           delayRandomQuestionDelivery = async route => {
             if (route.request().url().includes("quiz.getRandomQuestions")) {
-              await page.waitForTimeout(exerciseTimeoutRecovery ? 15_250 : 700);
+              await page.waitForTimeout(exerciseTimeoutRecovery ? 17_000 : 700);
             }
             await route.fallback();
           };
@@ -492,6 +492,39 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
           if (!exerciseTimeoutRecovery) await page.unroute(routePattern, delayRandomQuestionDelivery!);
         }
         expect(new URL(page.url()).pathname).toBe(path);
+      }
+      if (bankKey === "class1-water") {
+        const question = page.getByTestId("practice-question");
+        const routePattern = "**/api/trpc/**";
+
+        const delayModeDelivery = async (route: Route) => {
+          if (route.request().url().includes("quiz.getRandomQuestions")) await page.waitForTimeout(700);
+          await route.fallback();
+        };
+        await page.route(routePattern, delayModeDelivery);
+        await page.getByRole("button", { name: /Quick 10/ }).click();
+        await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
+        await expect(question).toBeVisible();
+        await expect(page.getByRole("button", { name: "Confirm Answer", exact: true })).toBeDisabled();
+        await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
+        await page.unroute(routePattern, delayModeDelivery);
+
+        await page.getByRole("button", { name: /^A\./ }).click();
+        await page.getByRole("button", { name: /Not Sure/ }).click();
+        await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
+        await expect(page.getByRole("button", { name: /Next Question/ })).toBeVisible();
+
+        const delayNextDelivery = async (route: Route) => {
+          if (route.request().url().includes("quiz.getRandomQuestions")) await page.waitForTimeout(700);
+          await route.fallback();
+        };
+        await page.route(routePattern, delayNextDelivery);
+        await page.getByRole("button", { name: /Next Question/ }).click();
+        await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
+        await expect(question).toBeVisible();
+        await expect(page.getByRole("button", { name: /Next Question/ })).toHaveCount(0);
+        await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
+        await page.unroute(routePattern, delayNextDelivery);
       }
       await filters.getByRole("button", { name: "All Modules", exact: true }).click();
       await expect(page.getByTestId("practice-question")).toBeVisible();

@@ -119,10 +119,12 @@ describe("practice delivery resilience", () => {
   it("converts a stalled question request into a retryable error", async () => {
     vi.useFakeTimers();
     try {
-      const stalled = new Promise<never>(() => {});
+      let resolveLateResponse: ((value: string) => void) | undefined;
+      const stalled = new Promise<string>((resolve) => { resolveLateResponse = resolve; });
       const request = withPracticeQuestionTimeout(stalled, 25);
       const expectedTimeout = expect(request).rejects.toThrow("Question delivery is taking too long. Please retry.");
       await vi.advanceTimersByTimeAsync(25);
+      resolveLateResponse?.("late question page");
       await expectedTimeout;
     } finally {
       vi.useRealTimers();
