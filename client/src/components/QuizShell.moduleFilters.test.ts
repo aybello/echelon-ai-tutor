@@ -19,4 +19,9 @@ describe("shouldClearUnavailableSelectedModule", () => {
   it("does not change an all-modules selection", () => {
     expect(shouldClearUnavailableSelectedModule(null, liveModules)).toBe(false);
   });
+
+  it("treats an empty selected value as all modules", () => {
+    expect(shouldClearUnavailableSelectedModule("", liveModules)).toBe(false);
+    expect(shouldClearUnavailableSelectedModule("   ", liveModules)).toBe(false);
+  });
 });

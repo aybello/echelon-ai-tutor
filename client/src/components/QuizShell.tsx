@@ -150,7 +150,7 @@ export function shouldClearUnavailableSelectedModule(
   selectedModule: string | null,
   modules: readonly ModuleConfig[],
 ): boolean {
-  return selectedModule !== null
+  return Boolean(selectedModule?.trim())
     && modules.length > 0
     && !modules.some((module) => module.name === selectedModule);
 }
@@ -222,8 +222,15 @@ export default function QuizShell({
   isFreePreview = false,
   freeLimit = 15,
 }: QuizShellProps) {
+  const clearedUnavailableModuleRef = useRef<string | null>(null);
+
   useEffect(() => {
-    if (shouldClearUnavailableSelectedModule(selectedModule, modules)) {
+    if (!shouldClearUnavailableSelectedModule(selectedModule, modules)) {
+      clearedUnavailableModuleRef.current = null;
+      return;
+    }
+    if (clearedUnavailableModuleRef.current !== selectedModule) {
+      clearedUnavailableModuleRef.current = selectedModule;
       onModuleChange(null);
     }
   }, [modules, onModuleChange, selectedModule]);
