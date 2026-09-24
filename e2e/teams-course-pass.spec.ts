@@ -475,6 +475,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
           await expect(loadingOverlay).toBeVisible();
           await expect(question).toBeVisible();
           await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
+          await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toHaveCount(0);
           if (exerciseTimeoutRecovery) {
             await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toBeVisible({ timeout: 20_000 });
             await page.unroute(routePattern, delayRandomQuestionDelivery!);
@@ -506,6 +507,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
         await expect(question).toBeVisible();
         await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
+        await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toHaveCount(0);
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
         await page.unroute(routePattern, delayModeDelivery);
 
@@ -523,6 +525,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
         await expect(question).toBeVisible();
         await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
+        await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toHaveCount(0);
         await expect(page.getByRole("button", { name: /Next Question/ })).toHaveCount(0);
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
         await page.unroute(routePattern, delayNextDelivery);
@@ -536,6 +539,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
       await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
       await expect(page.getByTestId("practice-question")).toBeVisible();
       await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
+      await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toHaveCount(0);
       await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
       await page.unroute("**/api/trpc/**", delayAllModulesDelivery);
     }
