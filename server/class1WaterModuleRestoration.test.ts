@@ -109,6 +109,8 @@ describe("Class 1 Water module restoration plan", () => {
 
     expect(releaseSource).toContain('authoritativeProductionConnectionOptions');
     expect(releaseSource).toContain('mysql.createConnection(authoritativeProductionConnectionOptions())');
+    expect(releaseSource).toContain('SELECT DATABASE() AS databaseName');
+    expect(releaseSource).toContain('Connected database does not match the configured authoritative external cutover target.');
     expect(releaseSource).not.toContain('mysql.createConnection(process.env.DATABASE_URL)');
   });
 });

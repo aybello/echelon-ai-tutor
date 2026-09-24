@@ -72,6 +72,14 @@ function liveFingerprint(rows, metadata) {
   });
 }
 
+async function assertAuthoritativeTarget(connection) {
+  const [identityRows] = await connection.execute("SELECT DATABASE() AS databaseName");
+  const connectedDatabase = String(identityRows[0]?.databaseName ?? "");
+  if (!connectedDatabase || connectedDatabase !== process.env.DATABASE_CUTOVER_TARGET_DATABASE) {
+    fail("Connected database does not match the configured authoritative external cutover target.");
+  }
+}
+
 function planDigest(plan, targetFingerprint, classificationDigest) {
   return digest({
     releaseKey: RELEASE_KEY,
@@ -123,6 +131,7 @@ async function run() {
   let committed = false;
   let commitAttempted = false;
   try {
+    await assertAuthoritativeTarget(connection);
     // TiDB does not implement MySQL's SET TRANSACTION READ ONLY. A regular
     // transaction is used for the plan path and always rolled back without
     // issuing any mutating statement.
