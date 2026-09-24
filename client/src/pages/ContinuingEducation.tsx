@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "wouter";
 import { Check, ChevronDown, ClipboardCheck, Clock3, FileCheck2, GraduationCap, ShieldCheck } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
@@ -65,6 +66,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
       </div>
       <p className="ceu-course-status">{course.statusDescription}</p>
       <div className="ceu-course-actions">
+        <Link href={`/continuing-education/${course.key}`} className="ceu-preview-link">Open working course preview</Link>
         <button type="button" className="ceu-outline-button" aria-expanded={selected} onClick={onSelect}>
           {selected ? "Hide course outline" : "Review course outline"}
           <ChevronDown size={17} aria-hidden="true" className={selected ? "is-open" : ""} />

@@ -125,10 +125,12 @@
 .ceu-course-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
 .ceu-outline-button,
 .ceu-interest-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 43px; padding: 0 15px; border-radius: 8px; font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease; }
+.ceu-preview-link { display: inline-flex; align-items: center; justify-content: center; min-height: 43px; padding: 0 15px; border: 1px solid #087c79; border-radius: 8px; color: #fff; background: #087c79; font-size: 13px; font-weight: 800; text-decoration: none; transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease; }
 .ceu-outline-button { border: 1px solid #b6c9d1; color: #163951; background: #fff; }
 .ceu-interest-button { border: 1px solid #0d5d75; color: #fff; background: #0d5d75; }
 .ceu-outline-button:hover,
-.ceu-interest-button:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(18, 66, 85, 0.16); }
+.ceu-interest-button:hover,
+.ceu-preview-link:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(18, 66, 85, 0.16); }
 .ceu-outline-button svg { transition: transform 150ms ease; }
 .ceu-outline-button svg.is-open { transform: rotate(180deg); }
 
@@ -202,7 +204,8 @@
   .ceu-course-topline { align-items: flex-start; flex-direction: column; }
   .ceu-course-actions { display: grid; grid-template-columns: 1fr; }
   .ceu-outline-button,
-  .ceu-interest-button { width: 100%; }
+  .ceu-interest-button,
+  .ceu-preview-link { width: 100%; }
   .ceu-regulatory-note { margin-bottom: 55px; padding: 25px; border-radius: 14px; }
   .ceu-modal { padding: 31px 22px 24px; }
 }
