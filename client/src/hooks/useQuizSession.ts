@@ -31,6 +31,27 @@ import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 // ─── Constants ───────────────────────────────────────────────────────────────
 // Default/fallback session size; actual size comes from quizSettings.sessionSize
 const DEFAULT_SESSION_SIZE = 15;
+export const PRACTICE_QUESTION_REQUEST_TIMEOUT_MS = 15_000;
+
+/**
+ * A network request must never strand a learner on a permanent loading state.
+ * The underlying tRPC request may complete later, but the active queue treats a
+ * timed-out request as failed and offers the learner a deliberate retry.
+ */
+export function withPracticeQuestionTimeout<T>(
+  request: Promise<T>,
+  timeoutMs = PRACTICE_QUESTION_REQUEST_TIMEOUT_MS,
+): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error("Question delivery is taking too long. Please retry."));
+    }, timeoutMs);
+    request.then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 export interface HistoryEntry {
@@ -474,9 +495,9 @@ export function useQuizSession({
   const activePracticeQueueGeneration = useRef(practiceQueueGeneration);
   activePracticeQueueGeneration.current = practiceQueueGeneration;
   const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(async excludeIds => {
-    const page = await fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
+    const page = await withPracticeQuestionTimeout(fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
       difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
-      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess });
+      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }));
     if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
       return page;
     }
@@ -524,7 +545,6 @@ export function useQuizSession({
     if (!queue) return;
     activeQueue.current = queue;
     setInitialized(true);
-    setCurrent(null);
     void requestNextRef.current();
     return () => { if (activeQueue.current === queue) activeQueue.current = null; };
   }, [queue]);

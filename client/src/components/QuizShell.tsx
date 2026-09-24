@@ -25,6 +25,7 @@ import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markA
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -153,6 +154,14 @@ export function shouldClearUnavailableSelectedModule(
   return Boolean(selectedModule?.trim())
     && modules.length > 0
     && !modules.some((module) => module.name === selectedModule);
+}
+
+/** The recovery panel is for a real delivery failure or an empty valid slice.
+ * A normal in-flight request must keep the familiar quiz workspace visible. */
+export function shouldShowPracticeQuestionStatus(
+  questionStatus: QuizShellProps["questionStatus"],
+): questionStatus is "error" | "empty" {
+  return questionStatus === "error" || questionStatus === "empty";
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -347,8 +356,9 @@ export default function QuizShell({
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
 
-  // Loading and empty selections are separate from a completed quiz session.
-  if (questionStatus) {
+  // Delivery failures and genuinely empty selections are separate from a
+  // completed quiz session. Normal loading stays in the quiz workspace.
+  if (shouldShowPracticeQuestionStatus(questionStatus)) {
     return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
       <h1 className="text-xl font-bold">{courseTitle}</h1>
       <PracticeQuestionStatus status={questionStatus} error={questionError} answerCount={history.length}
@@ -457,8 +467,14 @@ export default function QuizShell({
     );
   }
 
-  if (!current) return null;
+  // The initial request has no prior question to keep on screen. Subsequent
+  // module changes retain their current question while the next slice arrives.
+  if (!current) {
+    if (questionStatus === "loading") return <QuizSkeleton />;
+    return null;
+  }
 
+  const isQuestionLoading = questionStatus === "loading";
   const correctIdx = current.correctAnswer ?? current.correct ?? (current as any).correctIndex ?? 0;
   const moduleConfig = modules.find(m => m.name === current.module);
   const moduleBg = moduleConfig?.bg ?? "#F1F5F9";
@@ -829,7 +845,26 @@ export default function QuizShell({
           boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
           marginBottom: 10,
           animation: "fadeUp 0.2s ease",
+          position: "relative",
         }}>
+          {isQuestionLoading && (
+            <div role="status" aria-live="polite" style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 14,
+              background: "rgba(248,250,252,0.86)",
+              color: "#334155",
+              fontSize: 13,
+              fontWeight: 700,
+              backdropFilter: "blur(1px)",
+            }}>
+              Loading your next question…
+            </div>
+          )}
           {/* Badges row */}
           <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8, alignItems: "center" }}>
             {current.module && (
@@ -895,8 +930,8 @@ export default function QuizShell({
               return (
                 <button
                   key={idx}
-                  onClick={() => !confirmed && onSelect(idx)}
-                  disabled={confirmed}
+                  onClick={() => !confirmed && !isQuestionLoading && onSelect(idx)}
+                  disabled={confirmed || isQuestionLoading}
                   style={{
                     padding: "10px 14px",
                     borderRadius: 10,
@@ -958,7 +993,7 @@ export default function QuizShell({
               {!confirmed ? (
                 <button
                   onClick={onConfirm}
-                  disabled={selected === null || confidence === null}
+                  disabled={isQuestionLoading || selected === null || confidence === null}
                   style={{
                     flex: 1,
                     padding: "9px 18px",

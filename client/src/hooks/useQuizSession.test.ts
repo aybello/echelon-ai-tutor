@@ -7,6 +7,7 @@ import {
   shouldApplyPracticePageResult,
   shouldClearLockedPreviewFilters,
   summarizeHistory,
+  withPracticeQuestionTimeout,
   type HistoryEntry,
 } from "./useQuizSession";
 
@@ -103,5 +104,20 @@ describe("locked preview filters", () => {
   it("ignores a late response from an earlier queue even after returning to the same filter", () => {
     expect(shouldApplyPracticePageResult(3, 3)).toBe(true);
     expect(shouldApplyPracticePageResult(1, 3)).toBe(false);
+  });
+});
+
+describe("practice delivery resilience", () => {
+  it("converts a stalled question request into a retryable error", async () => {
+    vi.useFakeTimers();
+    try {
+      const stalled = new Promise<never>(() => {});
+      const request = withPracticeQuestionTimeout(stalled, 25);
+      const expectedTimeout = expect(request).rejects.toThrow("Question delivery is taking too long. Please retry.");
+      await vi.advanceTimersByTimeAsync(25);
+      await expectedTimeout;
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

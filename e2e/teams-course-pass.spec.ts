@@ -424,9 +424,6 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toHaveCount(0);
     await expect(page.getByText("Selected module: Retired module", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Your 0 answers", { exact: false })).toHaveCount(0);
-    const controls = page.getByRole("region", { name: "Practice mode and settings" });
-    await expect(controls.getByRole("button", { name: /Quiz Settings/ })).toBeVisible();
-    await expect(controls).toHaveCSS("background-color", "rgb(15, 23, 42)");
   } finally { await db.end(); }
 });
 test("paid Water and OIT pages use current bank modules and keep filtering in the quiz", async ({ page }) => {

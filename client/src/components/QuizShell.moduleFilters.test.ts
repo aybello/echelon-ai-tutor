@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shouldClearUnavailableSelectedModule } from "./QuizShell";
+import { shouldClearUnavailableSelectedModule, shouldShowPracticeQuestionStatus } from "./QuizShell";
 
 describe("shouldClearUnavailableSelectedModule", () => {
   const liveModules = [{ name: "Water Treatment" }];
@@ -23,5 +23,17 @@ describe("shouldClearUnavailableSelectedModule", () => {
   it("treats an empty selected value as all modules", () => {
     expect(shouldClearUnavailableSelectedModule("", liveModules)).toBe(false);
     expect(shouldClearUnavailableSelectedModule("   ", liveModules)).toBe(false);
+  });
+});
+
+describe("practice delivery status presentation", () => {
+  it("keeps normal loading out of the recovery panel", () => {
+    expect(shouldShowPracticeQuestionStatus("loading")).toBe(false);
+    expect(shouldShowPracticeQuestionStatus(undefined)).toBe(false);
+  });
+
+  it("keeps recovery controls for a real error or empty valid selection", () => {
+    expect(shouldShowPracticeQuestionStatus("error")).toBe(true);
+    expect(shouldShowPracticeQuestionStatus("empty")).toBe(true);
   });
 });
