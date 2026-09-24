@@ -233,7 +233,7 @@
 .ceu-section-heading h2,
 .ceu-regulatory-note h2,
 .ceu-course-heading h2,
-.ceu-modal h2 { color: var(--ceu-navy); }
+.ceu-modal h2 { color: #000; }
 .ceu-hero-summary,
 .ceu-section-heading > p:last-child,
 .ceu-course-heading p,
