@@ -474,7 +474,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
           const loadingOverlay = page.getByRole("status").filter({ hasText: "Loading your next question" });
           await expect(loadingOverlay).toBeVisible();
           await expect(question).toBeVisible();
-          await expect(page.getByRole("button", { name: "Confirm Answer", exact: true })).toBeDisabled();
+          await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
           if (exerciseTimeoutRecovery) {
             await expect(page.getByRole("alert").filter({ hasText: "Question delivery is taking too long" })).toBeVisible({ timeout: 20_000 });
             await page.unroute(routePattern, delayRandomQuestionDelivery!);
@@ -505,7 +505,7 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await page.getByRole("button", { name: /Quick 10/ }).click();
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
         await expect(question).toBeVisible();
-        await expect(page.getByRole("button", { name: "Confirm Answer", exact: true })).toBeDisabled();
+        await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
         await page.unroute(routePattern, delayModeDelivery);
 
@@ -522,12 +522,22 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await page.getByRole("button", { name: /Next Question/ }).click();
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
         await expect(question).toBeVisible();
+        await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
         await expect(page.getByRole("button", { name: /Next Question/ })).toHaveCount(0);
         await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
         await page.unroute(routePattern, delayNextDelivery);
       }
+      const delayAllModulesDelivery = async (route: Route) => {
+        if (route.request().url().includes("quiz.getRandomQuestions")) await page.waitForTimeout(700);
+        await route.fallback();
+      };
+      await page.route("**/api/trpc/**", delayAllModulesDelivery);
       await filters.getByRole("button", { name: "All Modules", exact: true }).click();
+      await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toBeVisible();
       await expect(page.getByTestId("practice-question")).toBeVisible();
+      await expect(page.getByTestId("retained-question-workspace")).toHaveAttribute("inert", "");
+      await expect(page.getByRole("status").filter({ hasText: "Loading your next question" })).toHaveCount(0);
+      await page.unroute("**/api/trpc/**", delayAllModulesDelivery);
     }
   } finally { await db.end(); }
 });

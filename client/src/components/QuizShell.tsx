@@ -865,7 +865,7 @@ export default function QuizShell({
               Loading your next question…
             </div>
           )}
-          <div inert={isQuestionLoading} aria-busy={isQuestionLoading || undefined}>
+          <div data-testid="retained-question-workspace" inert={isQuestionLoading} aria-busy={isQuestionLoading || undefined}>
           {/* Badges row */}
           <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8, alignItems: "center" }}>
             {current.module && (
