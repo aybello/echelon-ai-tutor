@@ -33,6 +33,7 @@ function ChoiceList({
   correctIndex,
   explanation,
   reveal,
+  disabled = false,
 }: {
   choices: readonly string[];
   selectedIndex: number | null;
@@ -40,6 +41,7 @@ function ChoiceList({
   correctIndex: number;
   explanation: string;
   reveal: boolean;
+  disabled?: boolean;
 }) {
   return (
     <div className="ceu-preview-choice-group">
@@ -62,6 +64,7 @@ function ChoiceList({
               className={`ceu-preview-choice ${state}`}
               onClick={() => onSelect(index)}
               aria-pressed={selected}
+              disabled={disabled}
             >
               <span>{String.fromCharCode(65 + index)}</span>
               <strong>{choice}</strong>
@@ -282,6 +285,7 @@ export default function ContinuingEducationCourse() {
                         correctIndex={question.correctIndex}
                         explanation={question.explanation}
                         reveal={examSubmitted}
+                        disabled={examSubmitted}
                       />
                     </section>
                   ))}

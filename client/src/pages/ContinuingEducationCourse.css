@@ -211,6 +211,7 @@
 .ceu-preview-choice strong { font-size: 13px; font-weight: 700; line-height: 1.42; }
 .ceu-preview-choice.is-selected { border-color: #16838a; background: #ecf7f6; }
 .ceu-preview-choice.is-selected > span { color: #fff; background: #117c84; }
+.ceu-preview-choice:disabled { cursor: default; transform: none; }
 .ceu-preview-choice.is-correct { border-color: #19a07c; background: #ecfbf5; }
 .ceu-preview-choice.is-correct > span { color: #fff; background: #119c75; }
 .ceu-preview-choice.is-correct svg { color: #12966f; }
