@@ -431,6 +431,51 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
   } finally { await db.end(); }
 });
+test("paid Water and OIT pages use current bank modules and keep filtering in the quiz", async ({ page }) => {
+  test.setTimeout(180_000);
+  const db = await mysql.createConnection(process.env.DATABASE_URL!);
+  const email = "water-modules-e2e@echelon.test";
+  const courses = [
+    ["class1-water", "/class1-water"], ["class2-water", "/class2-water"],
+    ["class3-water", "/class3-water"], ["class4-water", "/class4-water"], ["oit", "/quiz"],
+  ] as const;
+  const modules = ["Imported treatment process", "Imported treatment monitoring"];
+  try {
+    for (const [bankKey] of courses) {
+      await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Module browser QA', 9900, ?)",
+        [email, bankKey, `cs_water_modules_${bankKey}`]);
+      // Reproduce the live import mismatch, including the exact broken button.
+      await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 12) ON DUPLICATE KEY UPDATE modules = VALUES(modules)",
+        [bankKey, JSON.stringify(["Coagulation & Flocculation"])]);
+      for (let i = 0; i < 12; i++) {
+        await db.execute("INSERT INTO questions (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, reviewStatus, isCalc) VALUES (?, ?, ?, 'medium', ?, ?, 0, 'Module filter browser QA.', 'approved', 'no')",
+          [bankKey, 970001 + i, modules[i < 6 ? 0 : 1], `Module QA ${bankKey} item ${i + 1}`, '["Correct","B","C","D"]']);
+      }
+    }
+    await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.35" });
+    await signInWithOtp(page, email, "/class1-water");
+    await page.waitForURL("**/class1-water");
+    for (const [bankKey, path] of courses) {
+      await page.goto(path);
+      await expect(page.getByTestId("practice-question")).toBeVisible();
+      const filters = page.getByRole("group", { name: "Filter questions by module" });
+      await expect(filters.getByRole("button", { name: /Coagulation & Flocculation/ })).toHaveCount(0);
+      for (const [index, module] of modules.entries()) {
+        await filters.getByRole("button", { name: module, exact: true }).click();
+        const question = page.getByTestId("practice-question");
+        await expect(question).toContainText(`Module QA ${bankKey}`);
+        const id = Number(await question.getAttribute("data-question-id"));
+        expect(id).toBeGreaterThanOrEqual(970001 + index * 6);
+        expect(id).toBeLessThan(970007 + index * 6);
+        await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
+        expect(new URL(page.url()).pathname).toBe(path);
+      }
+      await filters.getByRole("button", { name: "All Modules", exact: true }).click();
+      await expect(page.getByTestId("practice-question")).toBeVisible();
+    }
+  } finally { await db.end(); }
+});
+
 test("checkout receipt asks a guest to verify email before opening the purchased course", async ({ page }) => {
   await page.route("**/api/trpc/stripe.verifySession*", async route => {
     const payload = { result: { data: { json: { paid: true, email: "", productKey: "oit", requiresSignIn: true,
