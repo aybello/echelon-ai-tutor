@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Investigate water age, residual trends, pressure events and repair records using a fictional North Ridge distribution zone. Produce a prioritized monitoring and verification plan.",
   "plannedMinutes": 180,
-  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "storage-turnover",
@@ -44,7 +44,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -119,7 +119,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -195,7 +195,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -244,7 +244,7 @@
         "Integrate hydraulic and water-quality evidence.",
         "Define measurable follow-up and closure criteria."
       ],
-      "lesson": "### Prioritize by decision consequence and uncertainty\nAn investigation plan should separate immediate procedure-driven response from longer-term optimization. An unresolved repair verification may need action now, while storage turnover improvement requires a planned review. Do not let a promising optimization idea delay the applicable response to an active integrity concern.\n\nFor each issue, write the current evidence, plausible explanation, next discriminating check, responsible role and decision deadline. Choose checks that can change the next decision. “Collect more data” is weaker than naming the location, operating state, method and question.\n\nDefine closure evidence in advance. For a repair, use the applicable procedure and authorized decision. For a turnover study, use a supported hydraulic basis and repeated quality observations. For a sampling-path concern, document the qualified comparison and corrective work if required. One issue's closure does not automatically close another.\n\nDuring the debrief, explain which finding would cause you to reprioritize. Good handovers make uncertainty visible and let the next operator continue the investigation without repeating assumptions.",
+      "lesson": "### Prioritize by decision consequence and uncertainty\nAn investigation plan should separate immediate procedure-driven response from longer-term optimization. An unresolved repair verification may need action now, while storage turnover improvement requires a planned review. Do not let a promising optimization idea delay the applicable response to an active integrity concern.\n\nFor each issue, write the current evidence, plausible explanation, next discriminating check, responsible role and decision deadline. Choose checks that can change the next decision. “Collect more data” is weaker than naming the location, operating state, method and question.\n\nDefine closure evidence in advance. For a repair, use the applicable procedure and authorized decision. For a turnover study, use a supported hydraulic basis and repeated quality observations. For a sampling-path concern, document the qualified comparison and corrective work if required. One issue's closure does not automatically close another.\n\nIn a self-check, explain which finding would cause you to reprioritize. Good handovers make uncertainty visible and let the next operator continue the investigation without repeating assumptions.",
       "evidence": "**N7 — manager request**\n“Reduce tank storage immediately, announce the low residual was caused by age, and close the repair because pressure recovered.”\n\nUseN1–N6. No storage approval, additional quality observations, repair classification or final laboratory result has arrived. The next shift needs a plan with separate workstreams and evidence owners.",
       "assignment": "Write a 500–750-word plan and handover. Include the turnover calculations, residual trend table, repair evidence gaps, prioritized actions and separate closure criteria. Explain which parts of N7 need revision and why. Present the plan to the instructor, revise it, then complete assessment and evaluation.",
       "rubric": [
@@ -272,12 +272,12 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
           "minutes": 15,
-          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
         }
       ],
       "sourceIds": [

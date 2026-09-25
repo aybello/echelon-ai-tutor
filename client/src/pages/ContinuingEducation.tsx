@@ -125,11 +125,11 @@ export default function ContinuingEducation() {
           <div className="ceu-hero-copy">
             <p className="ceu-eyebrow">Echelon Institute professional learning</p>
             <h1>Structured learning paths for the operators who keep systems running.</h1>
-            <p className="ceu-hero-summary">Ten pilot courses combine practical operating cases, calculations, written reflection and reviewed learning records. Three flagship courses are planned for ten hours each; focused courses are planned for three or four hours.</p>
+            <p className="ceu-hero-summary">Ten self-paced pilot courses combine practical operating cases, calculations, automatic exercise feedback and saved learning records. Three flagship courses are planned for ten hours each; focused courses are planned for three or four hours.</p>
             <div className="ceu-hero-facts">
               <span><Clock3 size={17} aria-hidden="true" /> 3–10 planned learning hours</span>
               <span><GraduationCap size={17} aria-hidden="true" /> 4–6 practical modules per course</span>
-              <span><FileCheck2 size={17} aria-hidden="true" /> Saved work and instructor review</span>
+              <span><FileCheck2 size={17} aria-hidden="true" /> Saved work and automatic completion</span>
             </div>
           </div>
           <aside className="ceu-hero-panel">
@@ -143,7 +143,7 @@ export default function ContinuingEducation() {
           <div className="ceu-section-heading">
             <p className="ceu-eyebrow">Course catalogue</p>
             <h2 id="ceu-catalogue-title">Choose the operational capability you want to strengthen.</h2>
-            <p>Every course uses fictional scenarios and general operating principles. Self-paced delivery includes asynchronous instructor review, verified active learning time, assessment and a course evaluation. Reading a page alone does not complete a course.</p>
+            <p>Every course uses fictional scenarios and general operating principles. Self-paced delivery includes server-graded case exercises, active-time tracking and a final assessment. An optional evaluation helps improve the pilot. Reading a page alone does not complete a course.</p>
           </div>
           <div className="ceu-course-list">
             {CEU_COURSES.map((course) => (
@@ -164,8 +164,8 @@ export default function ContinuingEducation() {
             <h2 id="ceu-delivery-title">A course is more than a recording.</h2>
           </div>
           <div className="ceu-delivery-cards">
-            <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Active learning</h3><p>Applied data work, scenarios, knowledge checks, and written reflection create evidence beyond passive viewing.</p></article>
-            <article><FileCheck2 size={22} aria-hidden="true" /><h3>Completion evidence</h3><p>Saved practical work, assessment results, instructor feedback and verified participation form the pilot learning record.</p></article>
+            <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Active learning</h3><p>Applied cases, calculations, scored checks and optional notes support learning beyond passive viewing.</p></article>
+            <article><FileCheck2 size={22} aria-hidden="true" /><h3>Completion evidence</h3><p>Passed case exercises, final results and recorded active time issue a non-credit pilot learning record automatically.</p></article>
             <article><ShieldCheck size={22} aria-hidden="true" /><h3>Approval discipline</h3><p>Drinking-water courses follow the Director-approval route. Wastewater courses follow the OWWCO course-value review route.</p></article>
           </div>
         </section>

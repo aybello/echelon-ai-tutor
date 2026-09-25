@@ -7,7 +7,7 @@
   "prerequisites": "Working familiarity with a treatment train, laboratory reports and metric units. A calculator and access to the linked readings are required.",
   "introduction": "Work a fictional Millhaven shift from incoming load through biological treatment, clarification, nutrient control and solids handling. Build calculations and a defensible handover from imperfect evidence.",
   "plannedMinutes": 600,
-  "delivery": "Self-paced online pilot: complete 6 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 6 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "process-map",
@@ -44,7 +44,7 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -120,7 +120,7 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -196,7 +196,7 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -272,7 +272,7 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -348,7 +348,7 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -396,7 +396,7 @@
         "Prioritize actions from conflicting process evidence.",
         "Produce a handover with explicit owners and verification."
       ],
-      "lesson": "### Close the decision loop\nA useful handover tells the next operator what is happening, what is known, what remains uncertain, what has been done, and what must happen next. A list of readings without interpretation transfers the analysis burden to the next shift. An overconfident diagnosis hides alternatives and can lock the next operator into a poor response.\n\nStart with conditions that may require immediate response under the current facility procedure. Then distinguish checks that can quickly change the decision from slower investigations. Assign an owner and a time or event for each check. Record an action as completed only when there is evidence of execution; a request or a command is not completion.\n\nUse calculations as bounded evidence. Daily averages may understate the incoming peak, an SRT estimate may omit clarifier inventory, and a result timestamp may follow the actual collection time by many hours. State the boundary alongside the number so another operator can reproduce it. Avoid changing several interacting controls without a monitored plan and the appropriate authority.\n\nDuring the debrief, defend an alternative hypothesis and identify what observation would change your priority. Good process control is not stubbornness: it is a traceable response that can be revised when new evidence arrives. The final assessment checks the concepts; the practical is separately reviewed against every acceptance criterion.",
+      "lesson": "### Close the decision loop\nA useful handover tells the next operator what is happening, what is known, what remains uncertain, what has been done, and what must happen next. A list of readings without interpretation transfers the analysis burden to the next shift. An overconfident diagnosis hides alternatives and can lock the next operator into a poor response.\n\nStart with conditions that may require immediate response under the current facility procedure. Then distinguish checks that can quickly change the decision from slower investigations. Assign an owner and a time or event for each check. Record an action as completed only when there is evidence of execution; a request or a command is not completion.\n\nUse calculations as bounded evidence. Daily averages may understate the incoming peak, an SRT estimate may omit clarifier inventory, and a result timestamp may follow the actual collection time by many hours. State the boundary alongside the number so another operator can reproduce it. Avoid changing several interacting controls without a monitored plan and the appropriate authority.\n\nIn a self-check, defend an alternative hypothesis and identify what observation would change your priority. Good process control is not stubbornness: it is a traceable response that can be revised when new evidence arrives. The final assessment checks the concepts; the practical is separately reviewed against every acceptance criterion.",
       "evidence": "**M13 — 07:00 handover packet**\n\nUse M6–M12. At 07:10, maintenance verifies RAS actual flow 160 m³/h with an independent method; command remains 260. At 07:20, a checked portable probe at the basin-end sampling point reads 0.9 mg/L versus online 0.8. At 07:30, the lab reports yesterday's composite ammonia-N6 mg/L; yesterday's reference was 2 mg/L. Today's composite is not complete.\n\nM14: OIC requests a written priority plan by 08:00. No approval to change return schedule or wasting has been issued. Maintenance has acknowledged the RAS work request; restoration is not yet documented.\n\nM15: By 08:00, forward flow falls from 650 to 500 m³/h. Blanket depth remains 1.6 m. There is no later ammonia result.",
       "assignment": "Prepare an 800–1,200-word operational case file: evidence timeline, calculation appendix using M8 and M10, ranked first-hour actions, two competing explanations, approval requests, stopping/escalation conditions and next-shift handover. Distinguish requests from completed actions. Update your interpretation for M15 without declaring the event closed. Discuss the case with the instructor, revise your submission and complete the final assessment and evaluation.",
       "rubric": [
@@ -425,12 +425,12 @@
         {
           "kind": "exercise",
           "minutes": 10,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
           "minutes": 35,
-          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
         }
       ],
       "sourceIds": [

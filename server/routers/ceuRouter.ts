@@ -1,18 +1,24 @@
 import { TRPCError } from "@trpc/server";
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
-import { ceuLearningRecords } from "../../drizzle/schema";
+import { ceuLearningDailyTime, ceuLearningRecords } from "../../drizzle/schema";
 import { ceuReadiness, type CeuLearningRecord } from "../../shared/ceuLearning";
 import { identityEmail, resolveVerifiedIdentity } from "../_core/accessService";
-import { adminProcedure, publicProcedure, router } from "../_core/trpc";
+import { publicProcedure, router } from "../_core/trpc";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
 import { ceuCourse, publicCeuCourse } from "../ceu/catalogue";
 import {
-  instructorAction,
+  exerciseFor,
+  gradeExercise,
+  publicExercise,
+} from "../ceu/exerciseBank";
+import {
   learnerAction,
   newCeuRecord,
+  torontoDate,
   transitionCeu,
+  type LearnerAction,
 } from "../ceu/learningState";
 
 const courseInput = z.object({ courseKey: z.string().min(1).max(80) });
@@ -51,8 +57,8 @@ function parseRecord(json: string): CeuLearningRecord {
   return JSON.parse(json);
 }
 async function readRecord(email: string, key: string) {
-  const course = courseFor(key);
-  const db = await dbFor();
+  const course = courseFor(key),
+    db = await dbFor();
   const [row] = await db
     .select()
     .from(ceuLearningRecords)
@@ -63,13 +69,12 @@ async function readRecord(email: string, key: string) {
 async function mutateRecord(
   email: string,
   key: string,
-  revision: number,
-  action: z.infer<typeof learnerAction> | z.infer<typeof instructorAction>,
-  actor: string,
-  instructor = false
+  revision: number | null,
+  action: LearnerAction,
+  actor: string
 ) {
-  const course = courseFor(key);
-  const db = await dbFor();
+  const course = courseFor(key),
+    db = await dbFor();
   return db.transaction(async tx => {
     const [row] = await tx
       .select()
@@ -82,39 +87,130 @@ async function mutateRecord(
         message: "Start the course before saving work.",
       });
     const current = parseRecord(row.stateJson);
-    if (action.type === "exam") {
-      const previous = current.attempts.find(a => a.id === action.attemptId);
+    if (action.type === "exam" || action.type === "submitExercise") {
+      const previous =
+        action.type === "exam"
+          ? current.attempts.find(a => a.id === action.attemptId)
+          : current.modules[action.moduleId]?.exerciseAttempts.find(
+              a => a.id === action.attemptId
+            );
       if (previous) {
         if (JSON.stringify(previous.answers) !== JSON.stringify(action.answers))
           throw new TRPCError({
             code: "CONFLICT",
-            message:
-              "This attempt was already submitted with different answers. Reload the saved record before starting another attempt.",
+            message: "This attempt was submitted with different answers.",
           });
-        return current;
+        return { record: current, feedback: undefined };
       }
     }
-    if (current.revision !== revision)
+    if (revision !== null && current.revision !== revision)
       throw new TRPCError({
         code: "CONFLICT",
         message:
-          "This course changed in another tab. Reload the saved record before trying again; keep a copy of unsaved text.",
+          "This course changed in another tab. Reload your saved record before trying again.",
       });
     let next: CeuLearningRecord;
+    let feedback:
+      ReturnType<typeof gradeExercise>["feedback"] | string | undefined;
     try {
-      next = transitionCeu(course, current, action, actor, instructor);
-    } catch (e) {
+      if (action.type === "submitExercise") {
+        const mod = current.modules[action.moduleId];
+        if (!mod) throw Error("Unknown course module.");
+        feedback = gradeExercise(
+          exerciseFor(
+            key,
+            action.moduleId,
+            mod.exerciseSeed,
+            mod.exerciseAttempts.length
+          ),
+          action.answers
+        ).feedback;
+      }
+      next = transitionCeu(course, current, action, actor);
+      if (action.type === "check")
+        feedback = course.modules
+          .flatMap(m => m.checks)
+          .find(q => q.id === action.questionId)?.explanation;
+    } catch (error) {
       throw new TRPCError({
         code: "BAD_REQUEST",
         message:
-          e instanceof Error ? e.message : "The update was not accepted.",
+          error instanceof Error
+            ? error.message
+            : "The update was not accepted.",
       });
+    }
+    if (action.type === "heartbeat") {
+      const date = torontoDate(next.updatedAt);
+      let credited =
+        (next.dailySeconds[date] ?? 0) - (current.dailySeconds[date] ?? 0);
+      if (credited > 0) {
+        await tx
+          .insert(ceuLearningDailyTime)
+          .values({ studentEmail: email, localDate: date, seconds: 0 })
+          .onDuplicateKeyUpdate({
+            set: { seconds: sql`${ceuLearningDailyTime.seconds}` },
+          });
+        const [total] = await tx
+          .select()
+          .from(ceuLearningDailyTime)
+          .where(
+            and(
+              eq(ceuLearningDailyTime.studentEmail, email),
+              eq(ceuLearningDailyTime.localDate, date)
+            )
+          )
+          .for("update");
+        // Concurrent tabs/courses share one clock: overlapping seconds are credited once.
+        if (total.lastCreditedAt) {
+          const available = Math.max(
+            0,
+            Math.floor(
+              (Date.parse(next.updatedAt) - total.lastCreditedAt.getTime()) /
+                1000
+            )
+          );
+          if (available < credited) {
+            const overlap = credited - available;
+            next.modules[action.moduleId].activeSeconds -= overlap;
+            next.dailySeconds[date] -= overlap;
+            credited = available;
+          }
+        }
+        if (total.seconds + credited > 7 * 3600)
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message:
+              "The seven-hour daily learning-time limit has been reached across courses.",
+          });
+        await tx
+          .update(ceuLearningDailyTime)
+          .set({
+            seconds: total.seconds + credited,
+            lastCreditedAt: new Date(next.updatedAt),
+          })
+          .where(
+            and(
+              eq(ceuLearningDailyTime.studentEmail, email),
+              eq(ceuLearningDailyTime.localDate, date)
+            )
+          );
+      }
     }
     await tx
       .update(ceuLearningRecords)
-      .set({ stateJson: JSON.stringify(next), revision: next.revision })
+      .set({
+        stateJson: JSON.stringify(next),
+        revision: next.revision,
+        operatorNumber: next.operatorNumber,
+        activeSeconds: ceuReadiness(course, next).recordedSeconds,
+        exerciseAttempts: Object.values(next.modules).reduce(
+          (s, m) => s + m.exerciseAttempts.length,
+          0
+        ),
+      })
       .where(eq(ceuLearningRecords.id, row.id));
-    return next;
+    return { record: next, feedback };
   });
 }
 export const ceuRouter = router({
@@ -123,29 +219,49 @@ export const ceuRouter = router({
     .query(({ input }) => publicCeuCourse(courseFor(input.courseKey))),
   identity: publicProcedure.query(({ ctx }) => ({
     signedIn: !!identityEmail(resolveVerifiedIdentity(ctx)),
-    reviewer: ctx.user?.role === "admin",
   })),
   myRecord: publicProcedure
     .input(courseInput)
     .query(({ ctx, input }) => readRecord(emailFor(ctx), input.courseKey)),
-  start: publicProcedure.input(courseInput).mutation(async ({ ctx, input }) => {
-    const email = emailFor(ctx),
-      course = courseFor(input.courseKey),
-      db = await dbFor();
-    await db
-      .insert(ceuLearningRecords)
-      .values({
-        studentEmail: email,
-        courseKey: course.key,
-        courseVersion: course.version,
-        stateJson: JSON.stringify(newCeuRecord(course)),
-        revision: 0,
+  start: publicProcedure
+    .input(
+      courseInput.extend({
+        learnerName: z.string().trim().min(2).max(150),
+        operatorNumber: z
+          .string()
+          .trim()
+          .regex(
+            /^[A-Za-z0-9][A-Za-z0-9-]{2,31}$/,
+            "Enter a valid operator ID."
+          ),
       })
-      .onDuplicateKeyUpdate({
-        set: { revision: sql`${ceuLearningRecords.revision}` },
-      });
-    return readRecord(email, course.key);
-  }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const email = emailFor(ctx),
+        course = courseFor(input.courseKey),
+        db = await dbFor();
+      const record = newCeuRecord(
+        course,
+        input.learnerName,
+        input.operatorNumber
+      );
+      await db
+        .insert(ceuLearningRecords)
+        .values({
+          studentEmail: email,
+          courseKey: course.key,
+          courseVersion: course.version,
+          operatorNumber: record.operatorNumber,
+          activeSeconds: 0,
+          exerciseAttempts: 0,
+          stateJson: JSON.stringify(record),
+          revision: 0,
+        })
+        .onDuplicateKeyUpdate({
+          set: { revision: sql`${ceuLearningRecords.revision}` },
+        });
+      return readRecord(email, course.key);
+    }),
   save: publicProcedure
     .input(
       courseInput.extend({
@@ -153,26 +269,59 @@ export const ceuRouter = router({
         action: learnerAction,
       })
     )
-    .mutation(async ({ ctx, input }) => {
-      const email = emailFor(ctx);
-      const record = await mutateRecord(
-        email,
+    .mutation(({ ctx, input }) =>
+      mutateRecord(
+        emailFor(ctx),
         input.courseKey,
         input.revision,
         input.action,
-        email
+        emailFor(ctx)
+      )
+    ),
+  heartbeat: publicProcedure
+    .input(
+      courseInput.extend({
+        moduleId: z.string().max(80),
+        activityAt: z.string().datetime(),
+      })
+    )
+    .mutation(({ ctx, input }) =>
+      mutateRecord(
+        emailFor(ctx),
+        input.courseKey,
+        null,
+        {
+          type: "heartbeat",
+          moduleId: input.moduleId,
+          activityAt: input.activityAt,
+        },
+        emailFor(ctx)
+      )
+    ),
+  exercise: publicProcedure
+    .input(courseInput.extend({ moduleId: z.string().max(80) }))
+    .query(async ({ ctx, input }) => {
+      const course = courseFor(input.courseKey),
+        record = await readRecord(emailFor(ctx), course.key);
+      if (!record)
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Start this course first.",
+        });
+      const mod = record.modules[input.moduleId];
+      if (!mod)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Module not found.",
+        });
+      return publicExercise(
+        exerciseFor(
+          course.key,
+          input.moduleId,
+          mod.exerciseSeed,
+          mod.exerciseAttempts.length
+        )
       );
-      // Formative feedback is returned only for the chosen check; final keys stay server-side.
-      const feedback =
-        input.action.type === "check"
-          ? courseFor(input.courseKey)
-              .modules.flatMap(m => m.checks)
-              .find(
-                q =>
-                  q.id === (input.action as { questionId: string }).questionId
-              )?.explanation
-          : undefined;
-      return { record, feedback };
     }),
   assessment: publicProcedure
     .input(courseInput)
@@ -185,55 +334,14 @@ export const ceuRouter = router({
           message: "Start this course first.",
         });
       const ready = ceuReadiness(course, record);
-      if (!ready.checksPassed || !ready.exercisesSubmitted)
+      if (!ready.checksPassed || !ready.exercisesPassed || !ready.timeMet)
         throw new TRPCError({
           code: "FORBIDDEN",
           message:
-            "Complete module checks and submit the practical work to unlock assessment.",
+            "Pass module checks and case exercises and meet the course-time minimum to unlock the final.",
         });
       return course.finalAssessment.map(
         ({ correctIndex, explanation, ...q }) => q
-      );
-    }),
-  reviewQueue: adminProcedure.query(async () => {
-    const db = await dbFor();
-    const rows = await db
-      .select()
-      .from(ceuLearningRecords)
-      .orderBy(desc(ceuLearningRecords.updatedAt))
-      .limit(100);
-    return rows.map(r => ({
-      email: r.studentEmail,
-      courseKey: r.courseKey,
-      courseVersion: r.courseVersion,
-      record: parseRecord(r.stateJson),
-    }));
-  }),
-  instructorMaterial: adminProcedure
-    .input(courseInput)
-    .query(({ input }) => courseFor(input.courseKey)),
-  review: adminProcedure
-    .input(
-      courseInput.extend({
-        email: z.string().email().max(320),
-        revision: z.number().int().min(0),
-        action: instructorAction,
-      })
-    )
-    .mutation(({ ctx, input }) => {
-      if (input.email.toLowerCase() === emailFor(ctx))
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message:
-            "Another authorized instructor must review and attest your own learning.",
-        });
-      return mutateRecord(
-        input.email.toLowerCase(),
-        input.courseKey,
-        input.revision,
-        input.action,
-        `admin:${ctx.user.id}`,
-        true
       );
     }),
 });

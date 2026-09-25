@@ -2,9 +2,11 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import {
   ceuReadiness,
+  moduleMinimumMinutes,
   type CeuCurriculum,
   type CeuLearningRecord,
 } from "../../shared/ceuLearning";
+import { exerciseFor, gradeExercise } from "./exerciseBank";
 
 export const learnerAction = z.discriminatedUnion("type", [
   z.object({ type: z.literal("resume"), moduleId: z.string().max(80) }),
@@ -14,9 +16,22 @@ export const learnerAction = z.discriminatedUnion("type", [
     text: z.string().max(20000),
   }),
   z.object({
+    type: z.literal("heartbeat"),
+    moduleId: z.string().max(80),
+    activityAt: z.string().datetime(),
+  }),
+  z.object({
     type: z.literal("submitExercise"),
     moduleId: z.string().max(80),
-    text: z.string().trim().min(100).max(20000),
+    attemptId: z.string().uuid(),
+    answers: z
+      .array(
+        z.union([
+          z.number().finite(),
+          z.array(z.number().int().min(0).max(20)).max(20),
+        ])
+      )
+      .max(30),
   }),
   z.object({
     type: z.literal("check"),
@@ -41,39 +56,19 @@ export const learnerAction = z.discriminatedUnion("type", [
     improve: z.string().trim().min(10).max(2000),
   }),
 ]);
-export const instructorAction = z.discriminatedUnion("type", [
-  z.object({
-    type: z.literal("authorizeReassessment"),
-    reason: z.string().trim().min(20).max(2000),
-  }),
-  z.object({
-    type: z.literal("review"),
-    moduleId: z.string().max(80),
-    passed: z.boolean(),
-    feedback: z.string().trim().min(20).max(4000),
-  }),
-  z.object({
-    type: z.literal("participation"),
-    instructor: z.string().trim().min(3).max(200),
-    instructorQualifications: z.string().trim().min(20).max(2000),
-    sessions: z
-      .array(
-        z.object({
-          date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-          minutes: z.number().int().min(1).max(420),
-          evidence: z.string().trim().min(20).max(2000),
-        })
-      )
-      .min(1)
-      .max(60),
-  }),
-  z.object({
-    type: z.literal("complete"),
-    name: z.string().trim().min(2).max(150),
-  }),
-]);
+export type LearnerAction = z.infer<typeof learnerAction>;
+export function torontoDate(now: string) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Toronto",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(now));
+}
 export function newCeuRecord(
   course: CeuCurriculum,
+  learnerName: string,
+  operatorNumber: string,
   now = new Date().toISOString()
 ): CeuLearningRecord {
   return {
@@ -82,7 +77,21 @@ export function newCeuRecord(
     startedAt: now,
     updatedAt: now,
     currentModule: course.modules[0].id,
-    modules: {},
+    learnerName,
+    operatorNumber,
+    modules: Object.fromEntries(
+      course.modules.map(m => [
+        m.id,
+        {
+          draft: "",
+          checks: {},
+          exerciseSeed: randomUUID(),
+          exerciseAttempts: [],
+          activeSeconds: 0,
+        },
+      ])
+    ),
+    dailySeconds: {},
     attempts: [],
     audit: [],
   };
@@ -90,9 +99,8 @@ export function newCeuRecord(
 export function transitionCeu(
   course: CeuCurriculum,
   original: CeuLearningRecord,
-  action: z.infer<typeof learnerAction> | z.infer<typeof instructorAction>,
+  action: LearnerAction,
   actor: string,
-  instructor = false,
   now = new Date().toISOString()
 ) {
   if (original.courseVersion !== course.version)
@@ -105,37 +113,67 @@ export function transitionCeu(
     ? course.modules.find(m => m.id === moduleId)
     : undefined;
   if (moduleId && !lesson) throw new Error("Unknown course module.");
-  const mod = moduleId
-    ? (state.modules[moduleId] ??= { draft: "", checks: {} })
-    : undefined;
-  if (
-    ["review", "participation", "complete", "authorizeReassessment"].includes(
-      action.type
-    ) &&
-    !instructor
-  )
-    throw new Error("Instructor review is required.");
+  const mod = moduleId ? state.modules[moduleId] : undefined;
+  if (moduleId && !mod) throw new Error("Course module state is missing.");
   switch (action.type) {
     case "resume":
       state.currentModule = action.moduleId;
       break;
     case "draft":
-    case "submitExercise":
-      if (mod!.review?.passed)
-        throw new Error(
-          "Accepted work cannot be edited. Ask the instructor to return it first."
-        );
-      if (mod!.submittedAt)
-        (mod!.history ??= []).push({
-          text: mod!.draft,
-          submittedAt: mod!.submittedAt,
-          review: mod!.review,
-        });
+      if (mod!.exerciseAttempts.some(a => a.passed))
+        throw new Error("A passed exercise is immutable.");
       mod!.draft = action.text;
-      mod!.review = undefined;
-      mod!.submittedAt = action.type === "submitExercise" ? now : undefined;
       state.currentModule = action.moduleId;
       break;
+    case "heartbeat": {
+      const received = Date.parse(now),
+        activity = Date.parse(action.activityAt);
+      if (
+        !Number.isFinite(activity) ||
+        activity > received + 5000 ||
+        activity < received - 300000
+      )
+        throw new Error("Activity signal is stale or invalid.");
+      const last = mod!.lastHeartbeatAt ? Date.parse(mod!.lastHeartbeatAt) : 0;
+      const elapsed = last ? Math.floor((received - last) / 1000) : 0;
+      // A missing/late heartbeat restarts the interval; elapsed time cannot be claimed retroactively.
+      const seconds = elapsed >= 1 && elapsed <= 60 ? elapsed : 0;
+      const date = torontoDate(now);
+      const previous = state.dailySeconds[date] ?? 0;
+      if (previous + seconds > 7 * 3600)
+        throw new Error(
+          "The seven-hour daily learning-time limit has been reached."
+        );
+      mod!.activeSeconds += seconds;
+      state.dailySeconds[date] = previous + seconds;
+      mod!.lastHeartbeatAt = now;
+      mod!.lastActivityAt = action.activityAt;
+      break;
+    }
+    case "submitExercise": {
+      if (mod!.exerciseAttempts.some(a => a.passed))
+        throw new Error("This exercise is already passed.");
+      if (mod!.activeSeconds < moduleMinimumMinutes(lesson!) * 60)
+        throw new Error(
+          "Complete the module's minimum active learning time before submitting."
+        );
+      const exercise = exerciseFor(
+        course.key,
+        lesson!.id,
+        mod!.exerciseSeed,
+        mod!.exerciseAttempts.length
+      );
+      const result = gradeExercise(exercise, action.answers);
+      mod!.exerciseAttempts.push({
+        id: action.attemptId,
+        answers: action.answers,
+        score: result.score,
+        total: result.total,
+        passed: result.score / result.total >= 0.7,
+        at: now,
+      });
+      break;
+    }
     case "check": {
       const question = lesson!.checks.find(q => q.id === action.questionId);
       if (!question || action.choice >= question.choices.length)
@@ -161,16 +199,12 @@ export function transitionCeu(
         );
       }
       const ready = ceuReadiness(course, state);
-      if (!ready.checksPassed || !ready.exercisesSubmitted)
+      if (!ready.checksPassed || !ready.exercisesPassed || !ready.timeMet)
         throw new Error(
-          "Pass all module checks and submit each practical assignment first."
+          "Pass all module checks and case exercises, and meet the recorded course-time minimum first."
         );
       if (state.attempts.some(a => a.passed))
         throw new Error("A passing assessment is already recorded.");
-      if (state.attempts.length >= 3 + (state.additionalAttempts ?? 0))
-        throw new Error(
-          "Available attempts used. Contact the instructor for a supervised reassessment."
-        );
       if (action.answers.length !== course.finalAssessment.length)
         throw new Error("Answer every assessment question.");
       if (action.type === "examDraft") {
@@ -202,108 +236,42 @@ export function transitionCeu(
         at: now,
       };
       break;
-    case "authorizeReassessment":
-      if (
-        state.attempts.some(a => a.passed) ||
-        state.attempts.length < 3 + (state.additionalAttempts ?? 0)
-      )
-        throw new Error(
-          "Reassessment review is available only after unsuccessful attempts are exhausted."
-        );
-      if ((state.additionalAttempts ?? 0) >= 3)
-        throw new Error(
-          "The pilot allows at most three instructor-authorized additional attempts."
-        );
-      state.additionalAttempts = (state.additionalAttempts ?? 0) + 1;
-      break;
-    case "review":
-      if (!mod!.submittedAt)
-        throw new Error("The learner has not submitted this exercise.");
-      mod!.review = {
-        passed: action.passed,
-        feedback: action.feedback,
-        reviewer: actor,
-        at: now,
-      };
-      break;
-    case "participation": {
-      const totals = new Map<string, number>();
-      for (const session of action.sessions) {
-        if (
-          !Number.isFinite(Date.parse(`${session.date}T12:00:00Z`)) ||
-          new Date(`${session.date}T12:00:00Z`).toISOString().slice(0, 10) !==
-            session.date ||
-          session.date > now.slice(0, 10) ||
-          session.date < state.startedAt.slice(0, 10)
-        )
-          throw new Error(
-            "Use valid completed session dates on or after enrollment."
-          );
-        totals.set(
-          session.date,
-          (totals.get(session.date) ?? 0) + session.minutes
-        );
-      }
-      if ([...totals.values()].some(m => m > 420))
-        throw new Error(
-          "A day may contain at most seven contact hours, excluding breaks."
-        );
-      state.participation = {
-        sessions: action.sessions,
-        instructor: action.instructor,
-        instructorQualifications: action.instructorQualifications,
-        attestedBy: actor,
-        at: now,
-      };
-      break;
-    }
-    case "complete":
-      if (!ceuReadiness(course, state).ready)
-        throw new Error(
-          "Practical review, assessment, evaluation and verified participation must all be complete."
-        );
-      state.completion = {
-        id: randomUUID(),
-        at: now,
-        name: action.name,
-        reviewer: actor,
-        statement:
-          "Echelon Institute pilot learning record. No approved CEUs, operator qualification or regulatory recognition awarded.",
-      };
-      break;
   }
   if (state.audit.length >= 2500)
     throw new Error(
-      "This record needs administrator review before further updates."
+      "This record needs archival review before further updates."
     );
-  state.revision++;
+  // Heartbeats are commutative time updates and should not invalidate a learner's open draft.
+  if (action.type !== "heartbeat") state.revision++;
   state.updatedAt = now;
-  if (
-    action.type !== "resume" &&
-    action.type !== "draft" &&
-    action.type !== "examDraft"
-  )
+  if (!["resume", "draft", "examDraft", "heartbeat"].includes(action.type))
     state.audit.push({
       at: now,
       actor,
       action: action.type,
       ...(moduleId ? { moduleId } : {}),
-      ...("reason" in action ? { detail: action.reason } : {}),
-      ...(action.type === "review"
-        ? {
-            detail: JSON.stringify({
-              passed: action.passed,
-              feedback: action.feedback,
-            }),
-          }
-        : {}),
-      ...(action.type === "participation"
-        ? { detail: JSON.stringify(state.participation) }
-        : {}),
     });
+  if (!state.completion && ceuReadiness(course, state).ready) {
+    const final = state.attempts.find(a => a.passed)!;
+    state.completion = {
+      id: randomUUID(),
+      at: now,
+      name: state.learnerName,
+      operatorNumber: state.operatorNumber,
+      courseId: course.key,
+      recordedMinutes: Math.floor(
+        ceuReadiness(course, state).recordedSeconds / 60
+      ),
+      finalScore: final.score,
+      finalTotal: final.total,
+      statement:
+        "Echelon Institute pilot learning record. No approved CEUs, operator qualification or regulatory recognition awarded.",
+    };
+    state.audit.push({ at: now, actor: "system", action: "complete" });
+  }
   if (Buffer.byteLength(JSON.stringify(state)) > 4_000_000)
     throw new Error(
-      "This record needs administrator archival review before further updates."
+      "This record needs archival review before further updates."
     );
   return state;
 }

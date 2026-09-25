@@ -1,31 +1,59 @@
 import { randomUUID } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { ceuCourse } from "./catalogue";
+import { exerciseFor, gradeExercise, publicExercise } from "./exerciseBank";
 import {
   learnerAction,
-  instructorAction,
   newCeuRecord,
+  torontoDate,
   transitionCeu,
 } from "./learningState";
-import { ceuReadiness, type CeuLearningRecord } from "../../shared/ceuLearning";
-const course = ceuCourse("ceu-sampling-data-quality")!;
-const now = "2026-09-25T15:00:00.000Z";
-const text = "Evidence-based practical response ".repeat(10);
-const act = (r: CeuLearningRecord, a: any, admin = false) =>
-  transitionCeu(
+import {
+  ceuReadiness,
+  moduleMinimumMinutes,
+  type CeuCurriculum,
+  type CeuLearningRecord,
+} from "../../shared/ceuLearning";
+
+const short = ceuCourse("ceu-sampling-data-quality")!;
+const flagship = ceuCourse("ceu-water-treatment-process-control")!;
+const t0 = "2026-09-25T15:00:00.000Z";
+function act(
+  course: CeuCurriculum,
+  r: CeuLearningRecord,
+  action: any,
+  now = t0
+) {
+  return transitionCeu(
     course,
     r,
-    a,
-    admin ? "admin:2" : "learner@example.test",
-    admin,
+    learnerAction.parse(action),
+    "learner@example.test",
     now
   );
-function submitted() {
-  let r = newCeuRecord(course, now);
+}
+function answers(course: CeuCurriculum, r: CeuLearningRecord, id: string) {
+  const mod = r.modules[id];
+  return exerciseFor(
+    course.key,
+    id,
+    mod.exerciseSeed,
+    mod.exerciseAttempts.length
+  ).map(q => q.correct);
+}
+function completeModules(course: CeuCurriculum) {
+  let r = newCeuRecord(course, "Example Learner", "90000064", t0);
   for (const m of course.modules) {
-    r = act(r, { type: "submitExercise", moduleId: m.id, text });
+    r.modules[m.id].activeSeconds = moduleMinimumMinutes(m) * 60;
+    const a = answers(course, r, m.id);
+    r = act(course, r, {
+      type: "submitExercise",
+      moduleId: m.id,
+      attemptId: randomUUID(),
+      answers: a,
+    });
     for (const q of m.checks)
-      r = act(r, {
+      r = act(course, r, {
         type: "check",
         moduleId: m.id,
         questionId: q.id,
@@ -34,231 +62,195 @@ function submitted() {
   }
   return r;
 }
-const exam = (answers = course.finalAssessment.map(q => q.correctIndex)) => ({
-  type: "exam" as const,
-  attemptId: randomUUID(),
-  answers,
-});
-describe("CEU server learning decisions", () => {
-  it("rejects forged completion, score and instructor actions at the learner schema", () => {
+describe("fully self-paced CEU decisions", () => {
+  it("has one keyed item for every case rubric criterion in all ten courses", () => {
+    for (const key of [
+      "ceu-activated-sludge-troubleshooting",
+      "ceu-coagulation-filtration",
+      "ceu-collection-wet-weather",
+      "ceu-disinfection-ct",
+      "ceu-distribution-water-quality",
+      "ceu-drinking-water-compliance",
+      "ceu-instrumentation-scada",
+      "ceu-sampling-data-quality",
+      "ceu-wastewater-treatment-process-control",
+      "ceu-water-treatment-process-control",
+    ]) {
+      const course = ceuCourse(key)!;
+      for (const m of course.modules) {
+        const items = exerciseFor(key, m.id, "fixture");
+        expect(
+          m.rubric.every((_, i) => items.some(x => x.criterion === i))
+        ).toBe(true);
+        expect(publicExercise(items)).not.toHaveProperty("correct");
+        expect(JSON.stringify(publicExercise(items))).not.toContain(
+          '"correct"'
+        );
+      }
+    }
+  });
+  it("grades numeric tolerance, multiple select and ordering, with keys absent from public items", () => {
+    const ct = exerciseFor("ceu-disinfection-ct", "hydraulics", "fixture");
+    expect(ct.some(q => q.type === "number")).toBe(true);
+    expect(ct.some(q => q.type === "order")).toBe(true);
     expect(
-      learnerAction.safeParse({ type: "complete", name: "Learner" }).success
+      gradeExercise(
+        ct,
+        ct.map(q => q.correct)
+      ).score
+    ).toBe(ct.length);
+    const numeric = ct.find(q => q.type === "number")!;
+    const retry = exerciseFor(
+      "ceu-disinfection-ct",
+      "hydraulics",
+      "fixture",
+      1
+    );
+    expect(retry.find(q => q.id === numeric.id)?.correct).not.toBe(
+      numeric.correct
+    );
+    const perturbed = ct.map(q => q.correct);
+    perturbed[ct.indexOf(numeric)] =
+      (numeric.correct as number) + (numeric.tolerance ?? 0) / 2;
+    expect(gradeExercise(ct, perturbed).score).toBe(ct.length);
+    const multi = exerciseFor(short.key, "sample-design", "fixture").find(
+      q => q.type === "multiple"
+    )!;
+    expect(gradeExercise([multi], [multi.correct]).score).toBe(1);
+  });
+  it("requires module active time, reshuffles options on retry and allows unlimited attempts", () => {
+    let r = newCeuRecord(short, "Example Learner", "90000064", t0);
+    const id = short.modules[0].id;
+    const first = exerciseFor(short.key, id, r.modules[id].exerciseSeed, 0);
+    expect(() =>
+      act(short, r, {
+        type: "submitExercise",
+        moduleId: id,
+        attemptId: randomUUID(),
+        answers: first.map(q => q.correct),
+      })
+    ).toThrow("minimum active");
+    r.modules[id].activeSeconds = moduleMinimumMinutes(short.modules[0]) * 60;
+    const wrong = first.map(q =>
+      q.type === "number"
+        ? 99999
+        : q.type === "single"
+          ? ((q.correct as number) + 1) % 3
+          : []
+    );
+    r = act(short, r, {
+      type: "submitExercise",
+      moduleId: id,
+      attemptId: randomUUID(),
+      answers: wrong,
+    });
+    expect(r.modules[id].exerciseAttempts[0].passed).toBe(false);
+    const next = exerciseFor(short.key, id, r.modules[id].exerciseSeed, 1);
+    expect(next[0].choices).not.toEqual(first[0].choices);
+    r = act(short, r, {
+      type: "submitExercise",
+      moduleId: id,
+      attemptId: randomUUID(),
+      answers: next.map(q => q.correct),
+    });
+    expect(r.modules[id].exerciseAttempts[1].passed).toBe(true);
+  });
+  it("counts only live heartbeat intervals and enforces the Toronto seven-hour day", () => {
+    let r = newCeuRecord(short, "Example Learner", "90000064", t0);
+    const id = short.modules[0].id;
+    r = act(short, r, { type: "heartbeat", moduleId: id, activityAt: t0 }, t0);
+    expect(r.modules[id].activeSeconds).toBe(0);
+    const next = "2026-09-25T15:00:30.000Z";
+    r = act(
+      short,
+      r,
+      { type: "heartbeat", moduleId: id, activityAt: next },
+      next
+    );
+    expect(r.modules[id].activeSeconds).toBe(30);
+    expect(r.revision).toBe(0);
+    const late = "2026-09-25T15:10:30.000Z";
+    expect(() =>
+      act(short, r, { type: "heartbeat", moduleId: id, activityAt: t0 }, late)
+    ).toThrow("stale");
+    r = act(
+      short,
+      r,
+      { type: "heartbeat", moduleId: id, activityAt: late },
+      late
+    );
+    expect(r.modules[id].activeSeconds).toBe(30);
+    const date = torontoDate(late);
+    r.dailySeconds[date] = 7 * 3600 - 10;
+    expect(() =>
+      act(
+        short,
+        r,
+        {
+          type: "heartbeat",
+          moduleId: id,
+          activityAt: "2026-09-25T15:11:00.000Z",
+        },
+        "2026-09-25T15:11:00.000Z"
+      )
+    ).toThrow("seven-hour");
+  });
+  for (const course of [short, flagship]) {
+    it(`completes ${course.key} with no instructor action and freezes the record`, () => {
+      let r = completeModules(course);
+      expect(ceuReadiness(course, r).exercisesPassed).toBe(true);
+      // Planned hours may exceed the sum of module activity estimates.
+      const sum = ceuReadiness(course, r).recordedSeconds;
+      expect(() =>
+        act(
+          course,
+          {
+            ...r,
+            modules: Object.fromEntries(
+              Object.entries(r.modules).map(([id, mod]) => [
+                id,
+                { ...mod, activeSeconds: 0 },
+              ])
+            ),
+          },
+          {
+            type: "exam",
+            attemptId: randomUUID(),
+            answers: course.finalAssessment.map(q => q.correctIndex),
+          }
+        )
+      ).toThrow("course-time");
+      if (sum < course.plannedMinutes * 60)
+        r.modules[course.modules.at(-1)!.id].activeSeconds +=
+          course.plannedMinutes * 60 - sum;
+      expect(ceuReadiness(course, r).timeMet).toBe(true);
+      r = act(course, r, {
+        type: "exam",
+        attemptId: randomUUID(),
+        answers: course.finalAssessment.map(q => q.correctIndex),
+      });
+      expect(r.completion).toMatchObject({
+        name: "Example Learner",
+        operatorNumber: "90000064",
+        courseId: course.key,
+        finalScore: course.finalAssessment.length,
+      });
+      expect(r.completion?.statement).toContain("No approved CEUs");
+      expect(() =>
+        act(course, r, { type: "resume", moduleId: course.modules[0].id })
+      ).toThrow("immutable");
+    });
+  }
+  it("does not expose a completion or reviewer action on the learner input schema", () => {
+    expect(
+      learnerAction.safeParse({ type: "complete", name: "forged" }).success
     ).toBe(false);
     expect(
       learnerAction.safeParse({
         type: "review",
         moduleId: "sample-design",
         passed: true,
-        feedback: text,
       }).success
     ).toBe(false);
-    expect(
-      learnerAction.parse({ ...exam(), score: 100, passed: true })
-    ).not.toHaveProperty("score");
-    expect(() =>
-      act(newCeuRecord(course, now), { type: "complete", name: "Learner" })
-    ).toThrow("Instructor");
-  });
-  it("blocks final assessment and completion before evidence exists", () => {
-    const r = newCeuRecord(course, now);
-    expect(() => act(r, exam())).toThrow("module checks");
-    expect(() => act(r, { type: "complete", name: "Learner" }, true)).toThrow(
-      "must all be complete"
-    );
-    expect(ceuReadiness(course, r).ready).toBe(false);
-  });
-  it("preserves submitted versions and feedback across returned work", () => {
-    let r = submitted();
-    const id = course.modules[0].id;
-    r = act(
-      r,
-      {
-        type: "review",
-        moduleId: id,
-        passed: false,
-        feedback: "Explain the sampling boundary more precisely.",
-      },
-      true
-    );
-    r = act(r, { type: "draft", moduleId: id, text: "Revised " + text });
-    expect(r.modules[id].submittedAt).toBeUndefined();
-    expect(r.modules[id].review).toBeUndefined();
-    expect(r.modules[id].history?.[0]).toMatchObject({
-      text,
-      review: { passed: false },
-    });
-    expect(ceuReadiness(course, r).exercisesSubmitted).toBe(false);
-  });
-  it("keeps accepted practical work locked until returned by an instructor", () => {
-    let r = submitted();
-    const moduleId = course.modules[0].id;
-    r = act(
-      r,
-      {
-        type: "review",
-        moduleId,
-        passed: true,
-        feedback: "All marking criteria verified against the evidence.",
-      },
-      true
-    );
-    expect(() => act(r, { type: "draft", moduleId, text })).toThrow(
-      "Accepted work"
-    );
-    r = act(
-      r,
-      {
-        type: "review",
-        moduleId,
-        passed: false,
-        feedback: "Return this work for a documented correction.",
-      },
-      true
-    );
-    expect(
-      act(r, { type: "draft", moduleId, text }).modules[moduleId].review
-    ).toBeUndefined();
-  });
-  it("grades the 80 percent boundary on the server and retains failed attempts", () => {
-    let r = submitted();
-    const answers = course.finalAssessment.map(q => q.correctIndex);
-    const twoWrong = answers.map((a, i) => (i < 2 ? (a + 1) % 4 : a));
-    r = act(r, exam(twoWrong));
-    expect(r.attempts[0]).toMatchObject({ score: 6, total: 8, passed: false });
-    const oneWrong = answers.map((a, i) => (i === 0 ? (a + 1) % 4 : a));
-    r = act(r, exam(oneWrong));
-    expect(r.attempts[1]).toMatchObject({ score: 7, total: 8, passed: true });
-    expect(() => act(r, exam())).toThrow("passing assessment");
-  });
-  it("persists an interrupted assessment draft and clears it after submission", () => {
-    let r = submitted();
-    const attempt = exam();
-    const answers = attempt.answers.map((a, i) => (i < 2 ? a : null));
-    r = act(r, { type: "examDraft", attemptId: attempt.attemptId, answers });
-    expect(JSON.parse(JSON.stringify(r)).assessmentDraft).toEqual({
-      attemptId: attempt.attemptId,
-      answers,
-    });
-    r = act(r, attempt);
-    expect(r.assessmentDraft).toBeUndefined();
-    expect(r.attempts).toHaveLength(1);
-    expect(act(r, attempt)).toBe(r);
-    expect(() =>
-      act(r, { ...attempt, answers: attempt.answers.map(a => (a + 1) % 4) })
-    ).toThrow("already been submitted");
-    expect(() =>
-      act(r, {
-        type: "examDraft",
-        attemptId: attempt.attemptId,
-        answers: attempt.answers,
-      })
-    ).toThrow("already been submitted");
-  });
-  it("requires documented instructor reassessment after three failed attempts", () => {
-    let r = submitted();
-    const wrong = course.finalAssessment.map(q => (q.correctIndex + 1) % 4);
-    for (let i = 0; i < 3; i++) r = act(r, exam(wrong));
-    expect(() => act(r, exam())).toThrow("Available attempts");
-    expect(() =>
-      act(r, { type: "authorizeReassessment", reason: text })
-    ).toThrow("Instructor");
-    r = act(
-      r,
-      {
-        type: "authorizeReassessment",
-        reason:
-          "Remedial exercises reviewed; supervised reassessment arranged.",
-      },
-      true
-    );
-    expect(r.audit.at(-1)?.detail).toContain("Remedial");
-    expect(act(r, exam()).attempts).toHaveLength(4);
-  });
-  it("rejects future, impossible, pre-enrollment and over-seven-hour days", () => {
-    const r = newCeuRecord(course, "2026-09-24T00:00:00Z");
-    const participation = (date: string, minutes = 180) => ({
-      type: "participation",
-      instructor: "Qualified Instructor",
-      instructorQualifications: text,
-      sessions: [{ date, minutes, evidence: text }],
-    });
-    for (const date of ["2026-09-26", "2026-02-30", "2026-09-23"])
-      expect(() => act(r, participation(date), true)).toThrow(
-        "valid completed"
-      );
-    expect(() =>
-      act(
-        r,
-        {
-          ...participation("2026-09-24"),
-          sessions: [
-            { date: "2026-09-24", minutes: 300, evidence: text },
-            { date: "2026-09-24", minutes: 200, evidence: text },
-          ],
-        },
-        true
-      )
-    ).toThrow("seven contact");
-    expect(
-      instructorAction.safeParse(participation("2026-09-24", 421)).success
-    ).toBe(false);
-  });
-  it("requires practical acceptance, assessment, participation and evaluation, then freezes completion", () => {
-    let r = act(submitted(), exam());
-    for (const m of course.modules)
-      r = act(
-        r,
-        {
-          type: "review",
-          moduleId: m.id,
-          passed: true,
-          feedback:
-            "Every criterion verified with correct evidence and reasoning.",
-        },
-        true
-      );
-    r = act(
-      r,
-      {
-        type: "participation",
-        instructor: "Instructor Example",
-        instructorQualifications: text,
-        sessions: [{ date: "2026-09-25", minutes: 180, evidence: text }],
-      },
-      true
-    );
-    expect(ceuReadiness(course, r).ready).toBe(false);
-    r = act(r, {
-      type: "evaluation",
-      rating: 4,
-      useful: "Worked cases clarified the method.",
-      improve: "Allow more time for the debrief.",
-    });
-    expect(ceuReadiness(course, r).ready).toBe(true);
-    r = act(r, { type: "complete", name: "Example Learner" }, true);
-    expect(r.completion?.statement).toContain("No approved CEUs");
-    expect(() =>
-      act(r, { type: "resume", moduleId: course.modules[0].id })
-    ).toThrow("immutable");
-  });
-  it("rejects unknown modules, foreign checks and a changed course edition", () => {
-    const r = newCeuRecord(course, now);
-    expect(() => act(r, { type: "resume", moduleId: "foreign" })).toThrow(
-      "Unknown"
-    );
-    expect(() =>
-      act(r, {
-        type: "check",
-        moduleId: course.modules[0].id,
-        questionId: "foreign",
-        choice: 0,
-      })
-    ).toThrow("Unknown");
-    expect(() =>
-      act(
-        { ...r, courseVersion: "old" },
-        { type: "resume", moduleId: course.modules[0].id }
-      )
-    ).toThrow("different course edition");
   });
 });

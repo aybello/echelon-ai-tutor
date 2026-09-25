@@ -1,11 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useRoute } from "wouter";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
+import type {
+  CeuExerciseAnswer,
+  CeuExerciseQuestion,
+  CeuLearningRecord,
+  CeuQuestion,
+} from "@shared/ceuLearning";
 import "./ContinuingEducationCourse.css";
 import "./CeuLearning.css";
 
@@ -47,6 +52,96 @@ function Choices({
     </fieldset>
   );
 }
+function ExerciseItem({
+  item,
+  value,
+  onChange,
+  disabled,
+}: {
+  item: CeuExerciseQuestion;
+  value?: CeuExerciseAnswer;
+  onChange: (v: CeuExerciseAnswer) => void;
+  disabled: boolean;
+}) {
+  if (item.type === "number")
+    return (
+      <label className="ceu-field">
+        {item.prompt} ({item.unit})
+        <input
+          aria-label={item.prompt}
+          type="number"
+          step="any"
+          disabled={disabled}
+          value={typeof value === "number" ? value : ""}
+          onChange={e => onChange(Number(e.target.value))}
+        />
+      </label>
+    );
+  if (item.type === "order")
+    return (
+      <fieldset className="ceu-question">
+        <legend>{item.prompt}</legend>
+        {item.choices?.map((_, position) => (
+          <label key={position}>
+            Step {position + 1}
+            <select
+              aria-label={`${item.prompt} step ${position + 1}`}
+              disabled={disabled}
+              value={Array.isArray(value) ? (value[position] ?? "") : ""}
+              onChange={e => {
+                const next = Array.isArray(value) ? [...value] : [];
+                next[position] = Number(e.target.value);
+                onChange(next);
+              }}
+            >
+              <option value="">Choose a step</option>
+              {item.choices?.map((choice, i) => (
+                <option key={i} value={i}>
+                  {choice}
+                </option>
+              ))}
+            </select>
+          </label>
+        ))}
+      </fieldset>
+    );
+  if (item.type === "multiple")
+    return (
+      <fieldset className="ceu-question">
+        <legend>{item.prompt} (select all that apply)</legend>
+        {item.choices?.map((choice, i) => (
+          <label key={i}>
+            <input
+              type="checkbox"
+              disabled={disabled}
+              checked={Array.isArray(value) && value.includes(i)}
+              onChange={e =>
+                onChange(
+                  e.target.checked
+                    ? [...(Array.isArray(value) ? value : []), i]
+                    : (Array.isArray(value) ? value : []).filter(n => n !== i)
+                )
+              }
+            />
+            {choice}
+          </label>
+        ))}
+      </fieldset>
+    );
+  return (
+    <Choices
+      question={{
+        id: item.id,
+        objective: "",
+        prompt: item.prompt,
+        choices: item.choices ?? [],
+      }}
+      value={typeof value === "number" ? value : undefined}
+      onChange={onChange}
+      disabled={disabled}
+    />
+  );
+}
 export default function ContinuingEducationCourse() {
   const [, params] = useRoute("/continuing-education/:courseKey");
   return (
@@ -75,27 +170,52 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const [view, setView] = useState<"lesson" | "assessment" | "record">(
     "lesson"
   );
+  const [learnerName, setLearnerName] = useState("");
+  const [operatorNumber, setOperatorNumber] = useState("");
   const [draft, setDraft] = useState("");
   const [dirty, setDirty] = useState(false);
   const [message, setMessage] = useState("");
-  const [feedback, setFeedback] = useState<Record<string, string>>({});
   const [checkChoices, setCheckChoices] = useState<Record<string, number>>({});
+  const [feedback, setFeedback] = useState<Record<string, string>>({});
+  const [exerciseAnswers, setExerciseAnswers] = useState<
+    Record<string, CeuExerciseAnswer>
+  >({});
+  const [exerciseFeedback, setExerciseFeedback] = useState<
+    {
+      id: string;
+      correct: boolean;
+      explanation: string;
+      correctAnswer: string | number | (string | number)[];
+    }[]
+  >([]);
+  const [exerciseAttemptId, setExerciseAttemptId] = useState<string>(() =>
+    crypto.randomUUID()
+  );
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [examDirty, setExamDirty] = useState(false);
+  const [attemptId, setAttemptId] = useState<string>(() => crypto.randomUUID());
   const [rating, setRating] = useState(5),
     [useful, setUseful] = useState(""),
     [improve, setImprove] = useState("");
-  const [attemptId, setAttemptId] = useState<string>(() => crypto.randomUUID());
+  const lastActivity = useRef(Date.now());
   const course = courseQuery.data,
     record = recordQuery.data;
   const lesson =
     course?.modules.find(m => m.id === active) ?? course?.modules[0];
   const moduleRecord = lesson ? record?.modules[lesson.id] : undefined;
   const locked = !!record?.completion;
+  const exercise = trpc.ceu.exercise.useQuery(
+    { courseKey, moduleId: lesson?.id ?? "" },
+    {
+      enabled: !!record && !!lesson && !locked,
+      retry: false,
+      refetchOnWindowFocus: false,
+    }
+  );
   const exams = trpc.ceu.assessment.useQuery(
     { courseKey },
     {
-      enabled: view === "assessment" && !!record,
+      enabled: view === "assessment" && !!record && !locked,
       retry: false,
       refetchOnWindowFocus: false,
     }
@@ -109,42 +229,55 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     },
     onError: e => setMessage(e.message),
   });
+  const heartbeat = trpc.ceu.heartbeat.useMutation({
+    onSuccess: ({ record: r }) => cache(r),
+    onError: e => setMessage(e.message),
+  });
   const save = trpc.ceu.save.useMutation({
     onSuccess: ({ record: r, feedback: f }, variables) => {
       cache(r);
-      if (
-        variables.action.type === "draft" ||
-        variables.action.type === "submitExercise"
-      )
-        setDirty(false);
-      if (variables.action.type === "check" && f) {
+      if (variables.action.type === "draft") setDirty(false);
+      if (variables.action.type === "check" && typeof f === "string") {
         const questionId = variables.action.questionId;
         setFeedback(p => ({ ...p, [questionId]: f }));
       }
-      if (
-        variables.action.type === "exam" ||
-        variables.action.type === "examDraft"
-      )
-        setExamDirty(false);
-      if (variables.action.type === "exam") {
-        setAttemptId(crypto.randomUUID());
-        setMessage("Assessment saved.");
-      } else
+      if (variables.action.type === "submitExercise") {
+        setExerciseFeedback(Array.isArray(f) ? f : []);
+        setExerciseAnswers({});
+        setExerciseAttemptId(crypto.randomUUID());
+        utils.ceu.exercise.invalidate({
+          courseKey,
+          moduleId: variables.action.moduleId,
+        });
         setMessage(
-          variables.action.type === "resume"
-            ? ""
-            : "Saved to your course record."
+          r.modules[variables.action.moduleId]?.exerciseAttempts.at(-1)?.passed
+            ? "Case exercise passed."
+            : "Review the item feedback and retry with a new option order."
         );
+      } else if (variables.action.type === "exam") {
+        setExamDirty(false);
+        setAttemptId(crypto.randomUUID());
+        setMessage(
+          r.completion
+            ? "Course completed. Your record is ready."
+            : "Assessment saved."
+        );
+        if (r.completion) setView("record");
+      } else if (variables.action.type === "examDraft") {
+        setExamDirty(false);
+        setMessage("Assessment draft saved.");
+      } else if (variables.action.type !== "resume")
+        setMessage("Saved to your course record.");
     },
     onError: e => setMessage(e.message),
   });
-  const pending = save.isPending || start.isPending;
+  const pending = start.isPending || save.isPending;
   usePageMeta({
     title: course
       ? `${course.shortTitle} | Echelon Institute`
       : "Continuing education | Echelon Institute",
     description:
-      "Applied operator learning, practical assignments and reviewed learning records.",
+      "Self-paced case exercises and automatically issued pilot learning records.",
     noindex: true,
   });
   useEffect(() => {
@@ -177,16 +310,48 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
       setAttemptId(record.assessmentDraft.attemptId);
     }
   }, [record?.assessmentDraft, exams.data, examDirty]);
+  useEffect(() => {
+    const activity = () => {
+      lastActivity.current = Date.now();
+    };
+    for (const event of ["pointermove", "keydown", "scroll", "touchstart"])
+      window.addEventListener(event, activity, { passive: true });
+    return () => {
+      for (const event of ["pointermove", "keydown", "scroll", "touchstart"])
+        window.removeEventListener(event, activity);
+    };
+  }, []);
+  useEffect(() => {
+    if (!record || !lesson || locked) return;
+    lastActivity.current = Date.now();
+    const send = () => {
+      if (
+        document.visibilityState !== "visible" ||
+        Date.now() - lastActivity.current >= 300000 ||
+        save.isPending ||
+        heartbeat.isPending
+      )
+        return;
+      heartbeat.mutate({
+        courseKey,
+        moduleId: lesson.id,
+        activityAt: new Date(lastActivity.current).toISOString(),
+      });
+    };
+    send();
+    const timer = window.setInterval(send, 30000);
+    return () => window.clearInterval(timer);
+  }, [!!record, lesson?.id, locked, courseKey]);
   function navigate(moduleId: string) {
     if (
       dirty &&
-      !window.confirm(
-        "This exercise has unsaved changes. Leave without saving?"
-      )
+      !window.confirm("Your notes have unsaved changes. Leave without saving?")
     )
       return;
     setDirty(false);
     setDraft(record?.modules[moduleId]?.draft ?? "");
+    setExerciseFeedback([]);
+    setExerciseAnswers({});
     setActive(moduleId);
     setView("lesson");
     setMessage("");
@@ -212,35 +377,27 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const checked = course.modules.filter(m =>
     m.checks.every(q => record?.modules[m.id]?.checks[q.id]?.correct)
   ).length;
-  const submitted = course.modules.filter(
-    m => record?.modules[m.id]?.submittedAt
+  const passed = course.modules.filter(m =>
+    record?.modules[m.id]?.exerciseAttempts.some(a => a.passed)
   ).length;
-  const reviewed = course.modules.filter(
-    m => record?.modules[m.id]?.review?.passed
-  ).length;
+  const seconds = course.modules.reduce(
+    (s, m) => s + (record?.modules[m.id]?.activeSeconds ?? 0),
+    0
+  );
+  const timeMet =
+    seconds >= course.plannedMinutes * 60 &&
+    course.modules.every(
+      m =>
+        (record?.modules[m.id]?.activeSeconds ?? 0) >=
+        m.activities.reduce((s, a) => s + a.minutes, 0) * 60
+    );
   const lastAttempt = record?.attempts.at(-1);
   return (
     <div className="ceu-preview-page">
       <SiteNav currentPath="/continuing-education" variant="marketing" />
       <main className="ceu-learning">
-        <header className="ceu-learning-header">
-          <Link
-            href="/continuing-education"
-            onClick={e => {
-              if (
-                (dirty || examDirty) &&
-                !window.confirm(
-                  "Leave with unsaved work? Save your drafts first to resume later."
-                )
-              )
-                e.preventDefault();
-            }}
-          >
-            ← Course catalogue
-          </Link>
-          <p className="ceu-eyebrow">
-            Operator professional learning · pilot edition
-          </p>
+        <header>
+          <Link href="/continuing-education">← Course catalogue</Link>
           <h1>{course.title}</h1>
           <p>{course.introduction}</p>
           <p className="ceu-note">
@@ -252,17 +409,12 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <p>{course.delivery}</p>
             <p>{course.prerequisites}</p>
           </details>
-          {identity.data?.reviewer && (
-            <Link href="/continuing-education-review">
-              Instructor review workspace
-            </Link>
-          )}
         </header>
         {!identity.data?.signedIn ? (
           <aside className="ceu-status">
             <p>
-              Read the lessons freely. Sign in to save practical work and take
-              the assessed course.
+              Read the lessons freely. Sign in to save work and take the
+              assessed course.
             </p>
             <Link
               href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}
@@ -282,12 +434,38 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
         ) : !record ? (
           <aside className="ceu-status">
             <p>
-              This pilot course does not award approved CEUs. Your practical
-              submissions are reviewed by Echelon's authorized instructor team.
+              Enroll for self-paced case exercises and an automatic non-credit
+              completion record.
+            </p>
+            <label className="ceu-field">
+              Your full name{" "}
+              <input
+                value={learnerName}
+                maxLength={150}
+                onChange={e => setLearnerName(e.target.value)}
+              />
+            </label>
+            <label className="ceu-field">
+              WWOCS operator ID{" "}
+              <input
+                value={operatorNumber}
+                maxLength={32}
+                onChange={e => setOperatorNumber(e.target.value)}
+              />
+            </label>
+            <p>
+              Your name and operator ID will appear on your completion record.
+              Confirm them before enrolling.
             </p>
             <button
-              disabled={pending}
-              onClick={() => start.mutate({ courseKey })}
+              disabled={
+                pending ||
+                learnerName.trim().length < 2 ||
+                operatorNumber.trim().length < 3
+              }
+              onClick={() =>
+                start.mutate({ courseKey, learnerName, operatorNumber })
+              }
             >
               Start and save my learning
             </button>
@@ -298,7 +476,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             {message}{" "}
             {save.error?.data?.code === "CONFLICT" && (
               <button onClick={() => recordQuery.refetch()}>
-                Reload saved record (keep my unsaved text)
+                Reload saved record
               </button>
             )}
           </p>
@@ -306,10 +484,14 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
         <div className="ceu-learning-grid">
           <aside className="ceu-learning-nav">
             <p>
-              {checked}/{course.modules.length} modules: checks passed
+              {checked}/{course.modules.length} module checks passed
             </p>
             <p>
-              {reviewed}/{course.modules.length} practicals accepted
+              {passed}/{course.modules.length} case exercises passed
+            </p>
+            <p>
+              {Math.floor(seconds / 60)}/{course.plannedMinutes} active minutes
+              recorded
             </p>
             <nav aria-label="Course modules">
               {course.modules.map((m, i) => (
@@ -325,17 +507,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                 </button>
               ))}
             </nav>
-            <button
-              onClick={() => {
-                if (
-                  !dirty ||
-                  window.confirm(
-                    "Your exercise has unsaved changes. Open the assessment?"
-                  )
-                )
-                  setView("assessment");
-              }}
-            >
+            <button onClick={() => setView("assessment")}>
               Final assessment
             </button>
             <button onClick={() => setView("record")}>
@@ -364,119 +536,144 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                       </li>
                     ))}
                   </ol>
-                  <p>
-                    These are self-paced activity estimates, not automatically
-                    earned contact hours.
-                  </p>
                 </details>
+                <p className="ceu-note">
+                  This module:{" "}
+                  {Math.floor((moduleRecord?.activeSeconds ?? 0) / 60)} active
+                  minutes recorded. The timer pauses after five minutes without
+                  activity or when the tab is hidden. You need{" "}
+                  {lesson.activities.reduce((s, a) => s + a.minutes, 0)} minutes
+                  before submitting the case exercise.
+                </p>
                 <LessonMarkdown text={lesson.lesson} />
                 <section className="ceu-case">
                   <h2>Evidence pack</h2>
                   <p>
-                    All facility names, records and numerical operating
-                    conditions in this case are fictional.
+                    Facility names, records and numerical conditions are
+                    fictional.
                   </p>
                   <LessonMarkdown text={lesson.evidence} />
                 </section>
                 <section>
-                  <h2>Practical assignment</h2>
-                  <LessonMarkdown text={lesson.assignment} />
-                  <h3>Acceptance criteria</h3>
-                  <ul>
-                    {lesson.rubric.map(r => (
-                      <li key={r}>{r}</li>
-                    ))}
-                  </ul>
-                  <label className="ceu-field">
-                    Your analysis
-                    <textarea
-                      rows={12}
-                      value={draft}
-                      maxLength={20000}
+                  <h2>Case exercise</h2>
+                  <p>
+                    Use the evidence pack to answer each item. Pass mark: 70%.
+                    After submitting, review the explanations and retry as often
+                    as needed. Choice order changes on retry.
+                  </p>
+                  {exercise.isError ? (
+                    <p role="alert">{exercise.error.message}</p>
+                  ) : exercise.isLoading && record ? (
+                    <p>Loading case exercise…</p>
+                  ) : null}
+                  {exercise.data?.map(item => (
+                    <ExerciseItem
+                      key={item.id}
+                      item={item}
+                      value={exerciseAnswers[item.id]}
                       disabled={
                         !record ||
-                        locked ||
                         pending ||
-                        moduleRecord?.review?.passed
+                        locked ||
+                        !!moduleRecord?.exerciseAttempts.some(a => a.passed)
                       }
+                      onChange={v =>
+                        setExerciseAnswers(p => ({ ...p, [item.id]: v }))
+                      }
+                    />
+                  ))}
+                  <button
+                    disabled={
+                      !record ||
+                      pending ||
+                      locked ||
+                      !!moduleRecord?.exerciseAttempts.some(a => a.passed) ||
+                      !exercise.data?.every(
+                        item =>
+                          exerciseAnswers[item.id] !== undefined &&
+                          (item.type !== "order" ||
+                            (Array.isArray(exerciseAnswers[item.id]) &&
+                              (exerciseAnswers[item.id] as number[]).length ===
+                                item.choices?.length))
+                      ) ||
+                      (moduleRecord?.activeSeconds ?? 0) <
+                        lesson.activities.reduce((s, a) => s + a.minutes, 0) *
+                          60
+                    }
+                    onClick={() =>
+                      record &&
+                      exercise.data &&
+                      save.mutate({
+                        courseKey,
+                        revision: record.revision,
+                        action: {
+                          type: "submitExercise",
+                          moduleId: lesson.id,
+                          attemptId: exerciseAttemptId,
+                          answers: exercise.data.map(
+                            item => exerciseAnswers[item.id]
+                          ),
+                        },
+                      })
+                    }
+                  >
+                    Submit case exercise
+                  </button>
+                  {moduleRecord?.exerciseAttempts.at(-1) && (
+                    <p role="status">
+                      Latest score:{" "}
+                      {moduleRecord.exerciseAttempts.at(-1)!.score}/
+                      {moduleRecord.exerciseAttempts.at(-1)!.total}
+                      {moduleRecord.exerciseAttempts.at(-1)!.passed
+                        ? " · passed"
+                        : " · retry available"}
+                    </p>
+                  )}
+                  {exerciseFeedback.map(f => (
+                    <p key={f.id} role="status">
+                      {f.correct ? "Correct" : "Review"}: {f.explanation}{" "}
+                      Answer:{" "}
+                      {Array.isArray(f.correctAnswer)
+                        ? f.correctAnswer.join(" → ")
+                        : f.correctAnswer}
+                    </p>
+                  ))}
+                  <label className="ceu-field">
+                    Optional private notes{" "}
+                    <textarea
+                      rows={5}
+                      maxLength={20000}
+                      value={draft}
+                      disabled={!record || pending || locked}
                       onChange={e => {
                         setDraft(e.target.value);
                         setDirty(true);
                       }}
-                      placeholder="Use the evidence IDs, show calculations and distinguish facts from assumptions. Do not include confidential workplace records."
+                      placeholder="Record your reasoning without confidential workplace information."
                     />
                   </label>
-                  <div className="ceu-actions">
-                    <button
-                      disabled={
-                        !record ||
-                        pending ||
-                        locked ||
-                        moduleRecord?.review?.passed
-                      }
-                      onClick={() =>
-                        record &&
-                        save.mutate({
-                          courseKey,
-                          revision: record.revision,
-                          action: {
-                            type: "draft",
-                            moduleId: lesson.id,
-                            text: draft,
-                          },
-                        })
-                      }
-                    >
-                      Save draft
-                    </button>
-                    <button
-                      disabled={
-                        !record ||
-                        pending ||
-                        locked ||
-                        draft.trim().length < 100 ||
-                        moduleRecord?.review?.passed
-                      }
-                      onClick={() =>
-                        record &&
-                        save.mutate({
-                          courseKey,
-                          revision: record.revision,
-                          action: {
-                            type: "submitExercise",
-                            moduleId: lesson.id,
-                            text: draft,
-                          },
-                        })
-                      }
-                    >
-                      Submit for instructor review
-                    </button>
-                    <span>
-                      {dirty
-                        ? "Unsaved changes"
-                        : moduleRecord?.submittedAt
-                          ? "Submitted for review"
-                          : "Draft workspace"}
-                    </span>
-                  </div>
-                  {moduleRecord?.review && (
-                    <div className="ceu-status">
-                      <strong>
-                        {moduleRecord.review.passed
-                          ? "Accepted"
-                          : "Revision requested"}
-                      </strong>
-                      <p>{moduleRecord.review.feedback}</p>
-                    </div>
-                  )}
+                  <button
+                    disabled={!record || pending || locked || !dirty}
+                    onClick={() =>
+                      record &&
+                      save.mutate({
+                        courseKey,
+                        revision: record.revision,
+                        action: {
+                          type: "draft",
+                          moduleId: lesson.id,
+                          text: draft,
+                        },
+                      })
+                    }
+                  >
+                    Save notes
+                  </button>
+                  {dirty && <span> Unsaved notes</span>}
                 </section>
                 <section>
                   <h2>Module checks</h2>
-                  <p>
-                    These checks provide learning feedback. Pass each check
-                    before the final assessment.
-                  </p>
+                  <p>Pass each check before the final assessment.</p>
                   {lesson.checks.map(q => (
                     <div key={q.id}>
                       <Choices
@@ -530,11 +727,6 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                 </section>
                 <section>
                   <h2>Source reading</h2>
-                  <p>
-                    Use the indicated sections; Ontario sources establish local
-                    requirements. US references support technical learning and
-                    do not establish Ontario legal obligations.
-                  </p>
                   <ul>
                     {course.sources
                       .filter(s => lesson.sourceIds.includes(s.id))
@@ -551,65 +743,29 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                       ))}
                   </ul>
                 </section>
-                <div className="ceu-actions">
-                  {course.modules.findIndex(m => m.id === lesson.id) > 0 && (
-                    <button
-                      disabled={pending}
-                      onClick={() =>
-                        navigate(
-                          course.modules[
-                            course.modules.findIndex(m => m.id === lesson.id) -
-                              1
-                          ].id
-                        )
-                      }
-                    >
-                      Previous module
-                    </button>
-                  )}
-                  {course.modules.findIndex(m => m.id === lesson.id) <
-                    course.modules.length - 1 && (
-                    <button
-                      disabled={pending}
-                      onClick={() =>
-                        navigate(
-                          course.modules[
-                            course.modules.findIndex(m => m.id === lesson.id) +
-                              1
-                          ].id
-                        )
-                      }
-                    >
-                      Next module
-                    </button>
-                  )}
-                </div>
               </article>
             ) : view === "assessment" ? (
               <article>
                 <h2>Final assessment</h2>
                 <p>
-                  Pass mark: 80%. Three attempts are available before instructor
-                  reassessment review. Submitted attempts are retained.
-                  Practical acceptance and verified participation are separate
-                  completion requirements.
+                  Pass mark: 80%. You may retry after reviewing the lessons and
+                  feedback. The final unlocks after all module checks and case
+                  exercises pass and the full active-time minimum is met.
                 </p>
                 {lastAttempt && (
-                  <div className="ceu-status" role="status">
-                    Last result: {lastAttempt.score}/{lastAttempt.total} (
-                    {Math.round((lastAttempt.score / lastAttempt.total) * 100)}
-                    %).{" "}
-                    {lastAttempt.passed
-                      ? "Passed."
-                      : "Review the learning objectives before another attempt."}
-                  </div>
+                  <p className="ceu-status" role="status">
+                    Last result: {lastAttempt.score}/{lastAttempt.total}
+                    {lastAttempt.passed ? " · passed" : " · review and retry"}
+                  </p>
                 )}
                 {!record ||
                 checked !== course.modules.length ||
-                submitted !== course.modules.length ? (
+                passed !== course.modules.length ||
+                !timeMet ? (
                   <p>
-                    Pass all module checks and submit all practical assignments
-                    to unlock the final assessment.
+                    Pass all module checks and case exercises and record{" "}
+                    {course.plannedMinutes} active minutes, including each
+                    module's minimum, to unlock the final assessment.
                   </p>
                 ) : exams.isError ? (
                   <p role="alert">{exams.error.message}</p>
@@ -617,22 +773,12 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                   <p>Loading assessment…</p>
                 ) : (
                   <>
-                    <p>
-                      {exams.data?.length} questions · {record.attempts.length}{" "}
-                      attempts recorded
-                    </p>
                     {exams.data?.map(q => (
                       <Choices
                         key={q.id}
                         question={q}
                         value={answers[q.id]}
-                        disabled={
-                          pending ||
-                          locked ||
-                          !!lastAttempt?.passed ||
-                          record.attempts.length >=
-                            3 + (record.additionalAttempts ?? 0)
-                        }
+                        disabled={pending || locked || !!lastAttempt?.passed}
                         onChange={n => {
                           setAnswers(p => ({ ...p, [q.id]: n }));
                           setExamDirty(true);
@@ -644,12 +790,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                         pending ||
                         locked ||
                         !!lastAttempt?.passed ||
-                        record.attempts.length >=
-                          3 + (record.additionalAttempts ?? 0) ||
                         !exams.data?.every(q => answers[q.id] !== undefined)
                       }
                       onClick={() =>
                         exams.data &&
+                        record &&
                         save.mutate({
                           courseKey,
                           revision: record.revision,
@@ -664,11 +809,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                       Submit assessment
                     </button>
                     <button
-                      disabled={
-                        pending || locked || !!lastAttempt?.passed || !examDirty
-                      }
+                      disabled={pending || locked || !examDirty}
                       onClick={() =>
                         exams.data &&
+                        record &&
                         save.mutate({
                           courseKey,
                           revision: record.revision,
@@ -694,7 +838,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <article className="ceu-print-record">
                 <h2>My learning record</h2>
                 {!record ? (
-                  <p>Start this course to create a saved record.</p>
+                  <p>Start the course to create a saved record.</p>
                 ) : (
                   <>
                     <dl>
@@ -704,40 +848,27 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                       <dd>Echelon Institute</dd>
                       <dt>Course edition</dt>
                       <dd>{record.courseVersion}</dd>
+                      <dt>Learner</dt>
+                      <dd>{record.learnerName}</dd>
+                      <dt>Operator ID</dt>
+                      <dd>{record.operatorNumber}</dd>
                       <dt>Started</dt>
                       <dd>{new Date(record.startedAt).toLocaleString()}</dd>
-                      <dt>Practical submissions</dt>
+                      <dt>Case exercises</dt>
                       <dd>
-                        {submitted}/{course.modules.length} submitted ·{" "}
-                        {reviewed} accepted
+                        {passed}/{course.modules.length} passed
                       </dd>
-                      <dt>Assessment</dt>
+                      <dt>Active time</dt>
+                      <dd>
+                        {Math.floor(seconds / 60)}/{course.plannedMinutes}{" "}
+                        minutes recorded
+                      </dd>
+                      <dt>Final</dt>
                       <dd>
                         {record.attempts.some(a => a.passed)
                           ? "Passed"
                           : "Not yet passed"}
                       </dd>
-                      <dt>Participation</dt>
-                      <dd>
-                        {record.participation
-                          ? `${record.participation.sessions.reduce((s, a) => s + a.minutes, 0)} instructor-verified minutes`
-                          : "Awaiting instructor verification"}
-                      </dd>
-                      {record.participation && (
-                        <>
-                          <dt>Instructor</dt>
-                          <dd>{record.participation.instructor}</dd>
-                          <dt>Verified learning dates</dt>
-                          <dd>
-                            {record.participation.sessions.map((session, i) => (
-                              <p key={i}>
-                                {session.date} · {session.minutes} contact
-                                minutes
-                              </p>
-                            ))}
-                          </dd>
-                        </>
-                      )}
                     </dl>
                     <h3>Assessment history</h3>
                     {record.attempts.map((a, i) => (
@@ -750,11 +881,17 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                     {record.completion ? (
                       <section className="ceu-status">
                         <h3>Pilot learning completed</h3>
-                        <p>{record.completion.name}</p>
+                        <p>
+                          {record.completion.name} · Operator ID{" "}
+                          {record.completion.operatorNumber}
+                        </p>
                         <p>{record.completion.statement}</p>
                         <p>
                           Record {record.completion.id} ·{" "}
-                          {new Date(record.completion.at).toLocaleDateString()}
+                          {new Date(record.completion.at).toLocaleDateString()}{" "}
+                          · {record.completion.recordedMinutes} minutes · final{" "}
+                          {record.completion.finalScore}/
+                          {record.completion.finalTotal}
                         </p>
                         <button
                           className="ceu-no-print"
@@ -765,75 +902,67 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                       </section>
                     ) : (
                       <p>
-                        Completion is recorded after all practical work is
-                        accepted, the assessment is passed, participation is
-                        verified and your evaluation is received. No approved
-                        CEU certificate is issued by this pilot.
+                        The non-credit record is issued automatically after all
+                        exercises, checks, recorded time and the final are
+                        complete.
                       </p>
                     )}
-                    <h3>Course evaluation</h3>
+                    <h3>Optional course evaluation</h3>
                     {record.evaluation ? (
-                      <p>
-                        Evaluation received. Thank you for helping improve the
-                        course.
-                      </p>
+                      <p>Evaluation received. Thank you.</p>
                     ) : (
-                      <form
-                        onSubmit={e => {
-                          e.preventDefault();
-                          save.mutate({
-                            courseKey,
-                            revision: record.revision,
-                            action: {
-                              type: "evaluation",
-                              rating,
-                              useful,
-                              improve,
-                            },
-                          });
-                        }}
-                      >
-                        <p>
-                          Your evaluation is linked to this pilot record and
-                          visible to the instructor team.
-                        </p>
-                        <label className="ceu-field">
-                          How useful was the course?
-                          <select
-                            value={rating}
-                            onChange={e => setRating(Number(e.target.value))}
-                          >
-                            {[5, 4, 3, 2, 1].map(n => (
-                              <option key={n} value={n}>
-                                {n} / 5
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                        <label className="ceu-field">
-                          What helped you learn?
-                          <textarea
-                            required
-                            minLength={10}
-                            maxLength={2000}
-                            value={useful}
-                            onChange={e => setUseful(e.target.value)}
-                          />
-                        </label>
-                        <label className="ceu-field">
-                          What should improve?
-                          <textarea
-                            required
-                            minLength={10}
-                            maxLength={2000}
-                            value={improve}
-                            onChange={e => setImprove(e.target.value)}
-                          />
-                        </label>
-                        <button disabled={pending || locked}>
-                          Send evaluation
-                        </button>
-                      </form>
+                      !locked && (
+                        <form
+                          onSubmit={e => {
+                            e.preventDefault();
+                            save.mutate({
+                              courseKey,
+                              revision: record.revision,
+                              action: {
+                                type: "evaluation",
+                                rating,
+                                useful,
+                                improve,
+                              },
+                            });
+                          }}
+                        >
+                          <label className="ceu-field">
+                            How useful was the course?
+                            <select
+                              value={rating}
+                              onChange={e => setRating(Number(e.target.value))}
+                            >
+                              {[5, 4, 3, 2, 1].map(n => (
+                                <option key={n} value={n}>
+                                  {n} / 5
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <label className="ceu-field">
+                            What helped you learn?
+                            <textarea
+                              required
+                              minLength={10}
+                              maxLength={2000}
+                              value={useful}
+                              onChange={e => setUseful(e.target.value)}
+                            />
+                          </label>
+                          <label className="ceu-field">
+                            What should improve?
+                            <textarea
+                              required
+                              minLength={10}
+                              maxLength={2000}
+                              value={improve}
+                              onChange={e => setImprove(e.target.value)}
+                            />
+                          </label>
+                          <button disabled={pending}>Send evaluation</button>
+                        </form>
+                      )
                     )}
                   </>
                 )}

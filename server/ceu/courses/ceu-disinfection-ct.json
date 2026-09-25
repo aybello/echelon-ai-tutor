@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Audit a fictional disinfection calculation, segment by segment. Reconcile effective volume, flow, residual location, timing and the conditions attached to a required CT value.",
   "plannedMinutes": 240,
-  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "hydraulics",
@@ -39,12 +39,12 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Prepare the evidence-based submission."
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
         },
         {
           "kind": "exercise",
           "minutes": 10,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -114,12 +114,12 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Prepare the evidence-based submission."
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
         },
         {
           "kind": "exercise",
           "minutes": 10,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -190,12 +190,12 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Prepare the evidence-based submission."
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
         },
         {
           "kind": "exercise",
           "minutes": 10,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -243,7 +243,7 @@
         "Audit a complete worksheet and its evidence.",
         "Define response and closure evidence without overstating certainty."
       ],
-      "lesson": "### A reviewable calculation is more than a number\nA verification dossier contains the hydraulic configuration, approved calculation method, input register, calculations, time coverage, exceptions and response record. The reviewer should be able to reproduce the result and see where a conclusion stops.\n\nSeparate three statements: the arithmetic is correct; the inputs are supported; the applicable treatment requirement is met. The first does not imply the second or third. A spreadsheet can be mathematically flawless while using the wrong level, analyte, time or required-CT condition.\n\nWhen the evidence is incomplete or the fictional comparison falls below its criterion, record the condition and follow the authorized response process. Specify which role owns the next decision and what evidence will show restoration. A changed setting is not restoration evidence; verified performance under the relevant conditions is required.\n\nFor the practical, include a correction log that preserves the original worksheet. Explain the effect of each correction and mark unresolved inputs. In your written reflection, challenge one assumption and explain its effect. Respond to asynchronous instructor feedback by revising the conclusion honestly, without forcing a passing ratio.",
+      "lesson": "### A reviewable calculation is more than a number\nA verification dossier contains the hydraulic configuration, approved calculation method, input register, calculations, time coverage, exceptions and response record. The reviewer should be able to reproduce the result and see where a conclusion stops.\n\nSeparate three statements: the arithmetic is correct; the inputs are supported; the applicable treatment requirement is met. The first does not imply the second or third. A spreadsheet can be mathematically flawless while using the wrong level, analyte, time or required-CT condition.\n\nWhen the evidence is incomplete or the fictional comparison falls below its criterion, record the condition and follow the authorized response process. Specify which role owns the next decision and what evidence will show restoration. A changed setting is not restoration evidence; verified performance under the relevant conditions is required.\n\nFor the practical, include a correction log that preserves the original worksheet. Explain the effect of each correction and mark unresolved inputs. In an optional note, challenge one assumption and explain its effect. Use the automatic exercise feedback to revise the conclusion honestly, without forcing a passing ratio.",
       "evidence": "**D7 — audit cover sheet**\n“Volume 900 m³; factor 0.70; flow 400 m³/hour; residual 1.10 mg/L; requiredCT 30. CT 103.95, ratio 3.465. Applies all day including low level and 7°C. No further evidence needed.”\n\nUseD1–D6. The original cover sheet is retained as version 1. No new factor, cold-water requirement or missing residual has been supplied. Operations asks for a corrected dossier and a list of unresolved conditions.",
       "assignment": "Create a 600–900-word dossier with corrected 10:00 calculation, segment-method example, timestamp coverage table, correction log and action/closure register. Quantify the effect of the incorrect original inputs. Identify decisions that cannot yet be made. Defend the dossier to the instructor, revise it, then complete the assessment and evaluation.",
       "rubric": [
@@ -266,17 +266,17 @@
         {
           "kind": "exercise",
           "minutes": 20,
-          "instruction": "Prepare the evidence-based submission."
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
         },
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
           "minutes": 20,
-          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
         }
       ],
       "sourceIds": [

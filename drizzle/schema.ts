@@ -1551,8 +1551,19 @@ export const ceuLearningRecords = mysqlTable('ceu_learning_records', {
   studentEmail: varchar('studentEmail', {length:320}).notNull(),
   courseKey: varchar('courseKey', {length:80}).notNull(),
   courseVersion: varchar('courseVersion', {length:32}).notNull(),
+  operatorNumber: varchar('operatorNumber', {length:32}).notNull(),
+  activeSeconds: int('activeSeconds').notNull().default(0),
+  exerciseAttempts: int('exerciseAttempts').notNull().default(0),
   revision: int('revision').notNull().default(0),
   stateJson: mediumtext('stateJson').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().onUpdateNow().notNull(),
 }, table => [uniqueIndex('ceu_learner_course_edition').on(table.studentEmail,table.courseKey,table.courseVersion)]);
+
+/** Atomic time reservations enforce the seven-hour limit across all CEU courses. */
+export const ceuLearningDailyTime = mysqlTable('ceu_learning_daily_time', {
+  studentEmail: varchar('studentEmail', {length:320}).notNull(),
+  localDate: varchar('localDate', {length:10}).notNull(),
+  seconds: int('seconds').notNull().default(0),
+  lastCreditedAt: timestamp('lastCreditedAt'),
+}, table => [uniqueIndex('ceu_learning_daily_time_pk').on(table.studentEmail, table.localDate)]);

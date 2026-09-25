@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Analyse a fictional lift station and sewer catchment during rainfall. Calculate storage time, distinguish inflow from infiltration evidence, and prepare an incident record with honest volume uncertainty.",
   "plannedMinutes": 180,
-  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "wet-weather",
@@ -44,7 +44,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -120,7 +120,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -196,7 +196,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -244,7 +244,7 @@
         "Prioritize capacity, evidence and communication tasks.",
         "Define verified recovery and longer-term investigation."
       ],
-      "lesson": "### Recovery is an evidence-based milestone\nA falling level can show improvement at a wet well while other parts of the catchment remain stressed. A pump running again does not prove its delivered flow, and a stopped release does not complete every reporting or follow-up duty. Define each recovery milestone and the evidence needed to mark it complete.\n\nStructure the plan by immediate response, verification and longer-term investigation. Immediate work follows authorized incident procedures. Verification confirms delivered pumping, level trend, affected locations and cessation where relevant. Longer-term work examines rainfall response, defects, capacity and operational changes using the records preserved during the event.\n\nGive each task an owner and a next decision point. Do not combine “requested,” “in progress” and “verified complete” into one checkbox. A clear register lets the next shift see where support is needed and prevents assumed closure.\n\nThe debrief should test the plan under a change in inflow or equipment availability. Recalculate the conditional storage time, revise priorities and state what remains uncertain. A good plan adapts without hiding its earlier assumptions.",
+      "lesson": "### Recovery is an evidence-based milestone\nA falling level can show improvement at a wet well while other parts of the catchment remain stressed. A pump running again does not prove its delivered flow, and a stopped release does not complete every reporting or follow-up duty. Define each recovery milestone and the evidence needed to mark it complete.\n\nStructure the plan by immediate response, verification and longer-term investigation. Immediate work follows authorized incident procedures. Verification confirms delivered pumping, level trend, affected locations and cessation where relevant. Longer-term work examines rainfall response, defects, capacity and operational changes using the records preserved during the event.\n\nGive each task an owner and a next decision point. Do not combine “requested,” “in progress” and “verified complete” into one checkbox. A clear register lets the next shift see where support is needed and prevents assumed closure.\n\nThe case exercise should test the plan under a change in inflow or equipment availability. Recalculate the conditional storage time, revise priorities and state what remains uncertain. A good plan adapts without hiding its earlier assumptions.",
       "evidence": "**C7 — handover at 11:35**\nRelease cessation at 11:30 verified as inC5. Wet-well level falling at the last two readings; current verified outflow 340 m³/hour and inflow 300. Backup pump availability still unconfirmed. No downstream inspection completion record. The release-volume report still containsC6's original estimate.\n\nC8: Manager asks to close all work orders because the level is falling.",
       "assignment": "Prepare a 500–750-word handover with calculation appendix, immediate/recovery/investigation task register, owners and closure evidence. Correct the volume estimate, explain what C7 establishes, and respond to C8 without treating all tasks as equivalent. Discuss a scenario where inflow rises to 380 m³/hour, then complete the assessment and evaluation.",
       "rubric": [
@@ -272,12 +272,12 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
           "minutes": 15,
-          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
         }
       ],
       "sourceIds": [

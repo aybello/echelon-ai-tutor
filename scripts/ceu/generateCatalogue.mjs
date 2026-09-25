@@ -64,12 +64,12 @@ const data = curricula.map((c, i) => ({
     summary: m.objectives.join(" "),
   })),
   completionRequirements: [
-    `Complete all ${c.modules.length} modules at your own pace with instructor-verified activity logs and practical work; ${c.plannedMinutes / 60} learning hours are planned, pending a timed pilot.`,
-    "Pass each module check and submit every practical assignment for acceptance against all marking criteria.",
-    `Score at least 80% on the ${c.finalAssessment.length}-question final assessment. Three attempts are available before instructor reassessment review.`,
-    "Submit a course evaluation. An authorized instructor verifies completion and issues a non-credit pilot learning record.",
+    `Complete all ${c.modules.length} modules at your own pace with recorded active time and server-graded case exercises; ${c.plannedMinutes / 60} learning hours are planned, pending a timed pilot.`,
+    "Pass every module check and score at least 70% on each automatically graded case exercise.",
+    `Score at least 80% on the ${c.finalAssessment.length}-question final assessment. Failed attempts can be retried after reviewing feedback.`,
+    "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional.",
   ],
-  publicDisclosure: `Duration is a planning estimate, not earned credit. ${c.plannedMinutes > 420 ? "Self-paced study is spread across at least two dates under the pilot's seven-hour daily recording limit; breaks and review turnaround are excluded. " : ""}No approved CEUs or regulatory recognition are awarded. ${c.stream === "wastewater" ? "Wastewater-only courses are not Director approved for drinking-water renewal. " : "Director approval is required before any approved drinking-water CEU claim. "}Use current facility procedures and applicable requirements for operational decisions.`,
+  publicDisclosure: `Duration is a planning estimate, not earned credit. ${c.plannedMinutes > 420 ? "Self-paced study is spread across at least two dates under the pilot's seven-hour daily recording limit; breaks are excluded. " : ""}No approved CEUs or regulatory recognition are awarded. ${c.stream === "wastewater" ? "Wastewater-only courses are not Director approved for drinking-water renewal. " : "Director approval is required before any approved drinking-water CEU claim. "}Use current facility procedures and applicable requirements for operational decisions.`,
   ctaLabel: "Request course and review updates",
 }));
 const path = resolve(root, "shared/ceuCatalogueData.json");

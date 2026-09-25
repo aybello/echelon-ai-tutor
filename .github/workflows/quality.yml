@@ -192,7 +192,7 @@ jobs:
           REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
-      - name: Database-backed CEU learning and instructor completion
+      - name: Database-backed CEU self-paced completion
         run: pnpm exec vitest run server/ceuLearning.integration.test.ts
         env:
           NODE_ENV: test

@@ -1,77 +1,53 @@
-# Echelon continuing education pilot: delivery and review guide
+# Echelon continuing education pilot: self-paced delivery and review
 
-Edition: 2026-09-24.1. Status: authored pilot curriculum and proposed learning-platform implementation. Not a regulator-approved course package, verified contact-hour award, operator qualification or production deployment.
+Edition: 2026-09-24.1. Course developer: Ayoola Bello. Status: ten pilot curricula and proposed self-paced delivery. None is an approved CEU course, validated contact-hour award, operator qualification or production deployment.
 
 ## Course inventory
 
-| Course | Planned hours | Modules | Module checks | Final questions |
-|---|---:|---:|---:|---:|
-| Drinking Water Operations and Regulatory Compliance | 10 | 6 | 12 | 12 |
-| Water Treatment Process Control and Optimization | 10 | 6 | 12 | 12 |
-| Wastewater Treatment Operations and Process Control | 10 | 6 | 12 | 12 |
-| Sampling, Laboratory Results and Data Quality | 3 | 4 | 8 | 8 |
-| Disinfection Verification and CT Calculations | 4 | 4 | 8 | 8 |
-| Coagulation, Filtration and Controlled Optimization | 4 | 4 | 8 | 8 |
-| Instrumentation, SCADA and Operational Data Integrity | 3 | 4 | 8 | 8 |
-| Distribution Water Quality and System Integrity | 3 | 4 | 8 | 8 |
-| Collection Systems and Wet-Weather Response | 3 | 4 | 8 | 8 |
-| Activated Sludge Troubleshooting and Solids Control | 4 | 4 | 8 | 8 |
+| Course                                                | Planned hours | Modules | Module checks | Final questions |
+| ----------------------------------------------------- | ------------: | ------: | ------------: | --------------: |
+| Drinking Water Operations and Regulatory Compliance   |            10 |       6 |            12 |              12 |
+| Water Treatment Process Control and Optimization      |            10 |       6 |            12 |              12 |
+| Wastewater Treatment Operations and Process Control   |            10 |       6 |            12 |              12 |
+| Sampling, Laboratory Results and Data Quality         |             3 |       4 |             8 |               8 |
+| Disinfection Verification and CT Calculations         |             4 |       4 |             8 |               8 |
+| Coagulation, Filtration and Controlled Optimization   |             4 |       4 |             8 |               8 |
+| Instrumentation, SCADA and Operational Data Integrity |             3 |       4 |             8 |               8 |
+| Distribution Water Quality and System Integrity       |             3 |       4 |             8 |               8 |
+| Collection Systems and Wet-Weather Response           |             3 |       4 |             8 |               8 |
+| Activated Sludge Troubleshooting and Solids Control   |             4 |       4 |             8 |               8 |
 
-The 54-hour sum is a planning inventory across separate courses, not an earned credit claim or a schedule for one learner. Do not credit the same learning activity twice across courses.
+The 54-hour sum is an inventory of separate courses, not an earned-credit claim.
 
-## Delivery model and timetable
+## Self-paced learner journey
 
-These are self-paced online courses. Learners progress through modules on their own schedule. The planned hours include source reading, calculations, written practical work, learner reflection and revision, and assessment. Reading length alone does not substantiate those hours. Each module contains a minute-by-minute activity allocation in its curriculum record. Final assessment and evaluation time is included in the last module, not added to the advertised total.
+The learner enrolls with a name and operator ID. The supplied name and ID are displayed on the completion record; enrollment is not an independent identity verification. Modules contain lessons, source readings, fictional case evidence, server-graded case exercises and formative checks. Each module's rubric criteria have keyed exercise items, including numeric, single-choice, multiple-select or ordering questions where appropriate. A learner must pass each case exercise at 70% and every module check. Explanations are shown after submission; retries are unlimited, and choice order changes on retry. Answer keys and authoring guides remain on the server.
 
-Learners keep dated activity logs with minutes and evidence and include them in practical submissions. An instructor checks this evidence and manually records verified minutes. There is no automatic active-time tracker. The application limits recorded minutes to seven hours within a course per day; reviewers must also check combined activity across courses. Ten-hour courses therefore require at least two study dates, with no fixed daily schedule. For each ten-hour flagship, the six modules are each 100 minutes of planned activity; the four-module focused courses use 45- or 60-minute modules within the 180- or 240-minute total. Learners take breaks outside those contact minutes. Practical submissions receive asynchronous instructor review with targeted feedback; there are no scheduled live sessions.
+The client sends heartbeats while the learner is in a visible tab and has interacted within the preceding five minutes. A server heartbeat credits only the elapsed time since a preceding timely heartbeat, at most 60 seconds; it does not credit time during a gap, an idle period or a hidden tab. Module minimums are currently the sum of the planned activity minutes. The final remains locked until every module meets its minimum and total recorded time meets the planned duration. An atomic per-learner, per-Toronto-date counter limits time credited across courses to seven hours daily. These are engagement signals, not proof of attentive study; representative timed pilots must establish appropriate minimums. Breaks do not count, and a ten-hour course spans at least two dates.
 
-Before launch, run a timed pilot with representative learners. Record actual learner time separately for source reading, practical work, reflection, revision and assessment. Track breaks and instructor review turnaround separately and exclude both from learner contact minutes. Record where learners needed additional explanation, whether the final allocation was sufficient, and whether learning outcomes were achieved. Revise duration and activities from this evidence; do not pad a course to preserve a planned number. A shorter validated duration requires corresponding catalogue and approval-package changes.
+The final is server graded at 80% (at least 7/8 or 10/12). Failed attempts may be retried after studying feedback. A submitted passing final, passed case exercises and checks, and recorded minimum time cause the server to issue a unique immutable non-credit completion record immediately in the same transaction. No instructor or administrator action is required. The record includes learner name, operator ID, Echelon course key, completion time, recorded minutes and final score. An optional evaluation can be submitted before completion but does not gate it.
 
-## Instructor preparation and technical review
+The curriculum's original assignments, rubrics and facilitator guides remain in server-only source files as authoring and approval materials. They are not part of the learner endpoint or an ongoing marking process. Free-text learner notes are optional and ungraded.
 
-The curriculum JSON files under `server/ceu/courses/` contain objectives, learner lessons, original fictional evidence packs, assignments, acceptance criteria, facilitator guides, source references and keyed assessments. Public endpoints omit marking guides and assessed answer keys. The administrator-only instructor workspace exposes the complete material and learner evidence.
+## Course approval and content quality
 
-Before delivering a course, appoint a named reviewing instructor with documented subject expertise, relevant experience and teaching capability. Record qualifications and authorization evidence. The reviewer provides asynchronous feedback on practical work; there are no scheduled live teaching sessions. A technical reviewer must independently check calculations, units, scenario realism, applicability of references and local requirements. The repository's arithmetic and structural checks assist this work; they do not replace subject-matter review.
+Ayoola Bello is the course developer for the one-time application materials. Before public credit claims, independently check calculations, units, case realism, source currency, assessment quality, accessibility and local requirements. Run timed pilots with representative learners; revise module allocations and advertised hours to reflect observed active learning rather than padding time. The current case exercise bank maps every rubric criterion, but its distractors require a dedicated technical and editorial review before a regulated-credit submission.
 
-Read each source's specified section and verify that the linked version is the applicable current one. Some Ontario pages restricted automated retrieval during authoring; indexed official material was available. A legal/procedural review of the full current text remains required before delivery. US EPA resources support technical concepts and do not establish Ontario legal duties. Fictional thresholds, CT requirements, operating bands and response arrangements are case assumptions, never universal operating instructions.
-
-Give learners the prerequisites and self-paced study guidance before enrollment. Check access to a calculator, the source readings and an accessible means of submitting written work. Provide an equivalent accessible exercise or reasonable timing accommodation where needed, documenting the arrangement without lowering the learning standard. Platform controls use native labels and keyboard-operable inputs; an accessibility review with actual learners remains part of the pilot.
-
-## Practical review and successful completion
-
-Each practical must satisfy every listed acceptance criterion. A character-count minimum merely prevents an empty submission; it is not a quality score. Review the reasoning, calculations, evidence references, uncertainty and authority boundaries. Use the facilitator guide to check expected results and acceptable alternatives. Return work with specific feedback when any criterion is unmet. Do not approve a submission merely because it repeats an answer choice or reaches a plausible final number.
-
-The learner may revise returned work. Previous submitted versions and their feedback are retained. Accepted work cannot be edited until an instructor returns it. Review actions are attributed and logged. Instructors cannot attest their own records.
-
-Learners must pass every formative check and submit every practical before opening the final. The final is graded on the server at a minimum of 80%: at least 7/8 or 10/12, as applicable. Three attempts are initially available. After three unsuccessful attempts, an instructor reviews remedial work and the reassessment arrangement, records a reason and may authorize one additional attempt at a time, up to three additional pilot attempts. Final keys are not returned to learner endpoints; instructors may provide targeted remediation without distributing the full key.
-
-A passing final alone is insufficient. Completion also requires accepted practicals, verified active learning time for the validated course duration, and a course evaluation. Learning records must identify active learning minutes excluding breaks, submitted practicals with instructor feedback, and engagement evidence; page-open time alone is not participation evidence. The application prevents more than seven contact hours within one course on one day; reviewers should also check the learner's combined schedule across courses and external activities. Do not double-count overlapping activity logs or count the instructor's review time as learner time.
-
-An authorized administrator acting as an instructor verifies the complete record. The pilot issues only a named non-credit learning record with a unique identifier and explicit statement that no approved CEUs, operator qualification or regulatory recognition are awarded. Completed records are immutable through the learning API. Any later correction requires a documented administrative process preserving the original; there is no silent completion-edit action.
-
-## Approval package still to complete
-
-The owner must complete the applicable Ontario/OWWCO process before making an approval or assessed-value claim. The authored objectives, module timetable, content, exercises, assessment policy, marking guides, source list and evaluation mechanism support that package. Outstanding items include named provider/instructor details, qualifications, independent technical sign-off, timed-pilot evidence, the final delivery and participation-verification procedure, the regulator's current application requirements and any required written approval/review outcome.
-
-Drinking-water and wastewater review paths differ. Do not describe a wastewater-only course as Director approved for drinking-water renewal. Do not equate planned contact hours with an already-assessed CEU value. The current application deliberately has no approved-course identifier or approved-credit certificate template.
-
-Official review references:
+Drinking-water courses require the applicable Director approval; wastewater-only courses may be assessed for CEU value but cannot be called Director approved for drinking-water renewal. Do not equate pilot records or planned hours with an assessed CEU value. The current application has no approved WWOCS course ID and issues no approved-credit certificate. Follow the current Ontario and OWWCO application instructions, including the course developer's qualifications, the completion policy, evaluation mechanism and other supporting materials.
 
 - https://www.ontario.ca/page/director-approved-drinking-water-continuing-education-guide-training-providers
 - https://owwco.ca/training-providers/
 
-## Records, access and operation
+## Records and WWOCS export
 
-The proposed `ceu_learning_records` table stores one record per verified email, course and edition. Learner identity comes from the existing verified OAuth/email-session context, never an input email. Writes use a database transaction and row lock with revision checks. Retried final submissions use an attempt identifier to avoid duplicate attempts. Practical drafts and optional assessment drafts are explicitly saved; unsaved work remains marked in the browser. A failed request is not reported as saved.
+One record belongs to a verified email, course and edition. The course starts only after authenticated enrollment. Writes use a row lock, revision checks, and attempt IDs for retry-safe submissions. Completed records reject later mutations. Module active seconds, attempt counts, operator ID and the daily cross-course time ledger are persisted alongside the versioned state. All course content and keys must be edition-pinned before actual learners use a release; replacing a released question requires archived-edition retrieval.
 
-Instructor access currently requires the existing administrator role. Organization managers do not automatically gain access to these learner records. The review selector shows the latest 100 records; larger delivery cohorts need pagination/filtering before this interface is relied on at scale. Review access should be limited to authorized personnel; no instructor accounts or production permissions are provisioned by this change.
+The server-only formatter `server/ceu/wwocsExport.ts` prepares CRLF-terminated `.txt` rows in the OWWCO format `WWOCS operator ID;WWOCS course ID;YYYYMMDD`. It refuses an absent approved course ID or an incomplete/nonnumeric operator record. The application provides no upload action or bulk export endpoint until a real WWOCS course ID and operational authorization exist. The internal Echelon course key is never substituted for that ID. Upload is a manual provider operation after applicable approval or assessed value.
 
-Practical submissions should use the supplied fictional data. Do not upload confidential workplace records or unnecessary personal information. Before collecting real pilot records, confirm the provider's retention, backup, privacy, access-review and correction procedures. No new universal retention period is invented here. Define and publish the applicable policy through the provider's governance process.
+Use fictional case data in learner work; do not upload confidential workplace records. Confirm retention, privacy, correction and backup procedures before real pilots. Heartbeat activity can be simulated by a client and is not independent proof that a learner read the page; approval materials must accurately describe this limitation.
 
-The edition is frozen once used by learners. For a future revision, preserve the original curriculum and keyed order, implement explicit archived-edition retrieval before replacing the current registry, and test that old records remain reviewable. This initial release rejects cross-edition mutation; it does not yet provide an archive browser. Do not overwrite a released edition to change a question's meaning or answer position.
+## Release
 
-## Deployment and rollback
+Migration `0072_ceu_learning_records.sql` remains proposed-only and has not run in production. Its checksum and manifest were updated in this branch to add the learning record and atomic daily time ledger. Rehearse it against a disposable database, run schema verification and CEU lifecycle/browser tests, then apply it through the guarded production process only after Ay's explicit go-ahead. Do not use `drizzle-kit push`.
 
-This branch does not apply a production migration. The additive migration `0072_ceu_learning_records.sql` is registered with a checksum and the repository's guarded forward-migration process. Rehearse it against a disposable database and run schema verification and the database-backed CEU tests. Apply it in the approved production release process after backup verification, then deploy the compatible application. Never use `drizzle-kit push` as a shortcut.
-
-If the application needs rollback, restore the prior application version while preserving the new table and learner records. Do not drop collected learning evidence. The old preview is replaced in the new application; after rollout, verify the catalogue, sign-in, draft recovery, grading, instructor review and non-credit completion on a controlled pilot account before announcing availability.
+If the application rolls back, preserve the new tables and learning records. Verify enrollment, save/resume, case grading, heartbeat pause and daily cap, final unlock, automatic non-credit completion and print output on controlled pilot accounts before availability is announced.

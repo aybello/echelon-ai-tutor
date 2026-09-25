@@ -29,10 +29,12 @@ export function publicCeuCourse(course: CeuCurriculum) {
   const { finalAssessment, ...publicFields } = course;
   return {
     ...publicFields,
-    modules: course.modules.map(({ facilitatorGuide, checks, ...lesson }) => ({
-      ...lesson,
-      checks: checks.map(({ correctIndex, explanation, ...q }) => q),
-    })),
+    modules: course.modules.map(
+      ({ facilitatorGuide, assignment, rubric, checks, ...lesson }) => ({
+        ...lesson,
+        checks: checks.map(({ correctIndex, explanation, ...q }) => q),
+      })
+    ),
     finalQuestionCount: finalAssessment.length,
   };
 }

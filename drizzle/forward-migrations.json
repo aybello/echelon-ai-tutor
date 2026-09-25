@@ -234,11 +234,12 @@
       "version": 72,
       "tag": "0072_ceu_learning_records",
       "file": "drizzle/0072_ceu_learning_records.sql",
-      "sha256": "ea1c26d2584c7af8375f67fabf9ddc0d21383c708eec0f57d26f016cd54e8f9e",
+      "sha256": "e3ec1ef8f488cb0536a231adfb824bdd58844cc8ebaa3596119e693af315f119",
       "proposedOnly": true,
       "standaloneApply": {
         "tables": [
-          "ceu_learning_records"
+          "ceu_learning_records",
+          "ceu_learning_daily_time"
         ]
       }
     }

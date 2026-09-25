@@ -1,4 +1,4 @@
-/** Public contracts only. Assessed answer keys live in server/ceu. */
+/** Public contracts only. Answer keys and marking material live in server/ceu. */
 export interface CeuQuestion {
   id: string;
   objective: string;
@@ -50,24 +50,33 @@ export interface CeuCurriculum {
   modules: CeuLesson[];
   finalAssessment: CeuQuestionKey[];
 }
+export interface CeuExerciseQuestion {
+  id: string;
+  prompt: string;
+  type: "single" | "multiple" | "number" | "order";
+  choices?: string[];
+  unit?: string;
+}
+export type CeuExerciseAnswer = number | number[];
+export interface CeuExerciseAttempt {
+  id: string;
+  answers: CeuExerciseAnswer[];
+  score: number;
+  total: number;
+  passed: boolean;
+  at: string;
+}
 export interface CeuModuleRecord {
   draft: string;
-  submittedAt?: string;
   checks: Record<
     string,
     { selectedIndex: number; correct: boolean; answeredAt: string }
   >;
-  review?: { passed: boolean; feedback: string; reviewer: string; at: string };
-  history?: {
-    text: string;
-    submittedAt: string;
-    review?: {
-      passed: boolean;
-      feedback: string;
-      reviewer: string;
-      at: string;
-    };
-  }[];
+  exerciseSeed: string;
+  exerciseAttempts: CeuExerciseAttempt[];
+  activeSeconds: number;
+  lastHeartbeatAt?: string;
+  lastActivityAt?: string;
 }
 export interface CeuAttempt {
   id: string;
@@ -83,23 +92,22 @@ export interface CeuLearningRecord {
   startedAt: string;
   updatedAt: string;
   currentModule: string;
+  learnerName: string;
+  operatorNumber: string;
   modules: Record<string, CeuModuleRecord>;
+  dailySeconds: Record<string, number>;
   attempts: CeuAttempt[];
-  additionalAttempts?: number;
   assessmentDraft?: { attemptId: string; answers: (number | null)[] };
   evaluation?: { rating: number; useful: string; improve: string; at: string };
-  participation?: {
-    sessions: { date: string; minutes: number; evidence: string }[];
-    instructor: string;
-    instructorQualifications: string;
-    attestedBy: string;
-    at: string;
-  };
   completion?: {
     id: string;
     at: string;
     name: string;
-    reviewer: string;
+    operatorNumber: string;
+    courseId: string;
+    recordedMinutes: number;
+    finalScore: number;
+    finalTotal: number;
     statement: string;
   };
   audit: {
@@ -110,6 +118,9 @@ export interface CeuLearningRecord {
     detail?: string;
   }[];
 }
+export function moduleMinimumMinutes(module: Pick<CeuLesson, "activities">) {
+  return module.activities.reduce((sum, a) => sum + a.minutes, 0);
+}
 export function ceuReadiness(
   course: Pick<CeuCurriculum, "modules" | "plannedMinutes">,
   record: CeuLearningRecord
@@ -117,28 +128,27 @@ export function ceuReadiness(
   const checksPassed = course.modules.every(m =>
     m.checks.every(q => record.modules[m.id]?.checks[q.id]?.correct)
   );
-  const exercisesSubmitted = course.modules.every(
-    m => !!record.modules[m.id]?.submittedAt
+  const exercisesPassed = course.modules.every(m =>
+    record.modules[m.id]?.exerciseAttempts.some(a => a.passed)
   );
-  const exercisesReviewed = course.modules.every(
-    m => record.modules[m.id]?.review?.passed === true
+  const moduleTimeMet = course.modules.every(
+    m =>
+      (record.modules[m.id]?.activeSeconds ?? 0) >= moduleMinimumMinutes(m) * 60
   );
+  const recordedSeconds = course.modules.reduce(
+    (sum, m) => sum + (record.modules[m.id]?.activeSeconds ?? 0),
+    0
+  );
+  const timeMet =
+    moduleTimeMet && recordedSeconds >= course.plannedMinutes * 60;
   const assessmentPassed = record.attempts.some(a => a.passed);
-  const participationVerified =
-    (record.participation?.sessions.reduce((sum, s) => sum + s.minutes, 0) ??
-      0) >= course.plannedMinutes;
   return {
     checksPassed,
-    exercisesSubmitted,
-    exercisesReviewed,
+    exercisesPassed,
+    moduleTimeMet,
+    recordedSeconds,
+    timeMet,
     assessmentPassed,
-    participationVerified,
-    evaluationReceived: !!record.evaluation,
-    ready:
-      checksPassed &&
-      exercisesReviewed &&
-      assessmentPassed &&
-      participationVerified &&
-      !!record.evaluation,
+    ready: checksPassed && exercisesPassed && timeMet && assessmentPassed,
   };
 }

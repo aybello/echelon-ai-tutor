@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Build a sampling and result-review package for a fictional reservoir investigation. Practise representativeness, traceability, quality-control interpretation and qualified reporting.",
   "plannedMinutes": 180,
-  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "sample-design",
@@ -44,7 +44,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -120,7 +120,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -196,7 +196,7 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
@@ -244,7 +244,7 @@
         "Separate findings, limitations and next actions.",
         "Prevent unsupported claims from entering a public summary."
       ],
-      "lesson": "### Report what the evidence can support\nA result summary should answer the operational question and show the strength of that answer. Organize it into findings, limitations, actions and owners. Keep raw evidence identifiers beside conclusions so a reviewer can reconstruct the reasoning.\n\nA useful statement is specific: “AtR2 on three mornings, the low-residual observations occurred during the recorded low-turnover state; other operating states have not yet been sampled.” It is stronger than “water age caused the problem,” because the latter claims a mechanism not isolated by the data. Association can guide the next investigation without becoming a causal conclusion.\n\nSeparate analytical qualifications from operational risk. A custody discrepancy, blank detection or duplicate concern may limit interpretation while an operating condition still requires response. Escalate through the current procedure and state the evidence gap. Do not call water safe, unsafe or compliant solely from the narrow fictional dataset.\n\nThe final report must also be usable by the next shift. Assign each unresolved question to a role, specify the expected evidence and give a follow-up time or event. In your written reflection, explain what new evidence would reverse your leading interpretation. Revise the report to reflect the critique rather than adding a generic disclaimer.",
+      "lesson": "### Report what the evidence can support\nA result summary should answer the operational question and show the strength of that answer. Organize it into findings, limitations, actions and owners. Keep raw evidence identifiers beside conclusions so a reviewer can reconstruct the reasoning.\n\nA useful statement is specific: “AtR2 on three mornings, the low-residual observations occurred during the recorded low-turnover state; other operating states have not yet been sampled.” It is stronger than “water age caused the problem,” because the latter claims a mechanism not isolated by the data. Association can guide the next investigation without becoming a causal conclusion.\n\nSeparate analytical qualifications from operational risk. A custody discrepancy, blank detection or duplicate concern may limit interpretation while an operating condition still requires response. Escalate through the current procedure and state the evidence gap. Do not call water safe, unsafe or compliant solely from the narrow fictional dataset.\n\nThe final report must also be usable by the next shift. Assign each unresolved question to a role, specify the expected evidence and give a follow-up time or event. In an optional note, explain what new evidence would reverse your leading interpretation. Revise the report to reflect the critique rather than adding a generic disclaimer.",
       "evidence": "**Q6 — proposed management statement**\n“Five tests prove the entire reservoir is stable. The laboratory’s R7 label is a typo, so we corrected the PDF. The blank was only 0.04, which we subtracted. All samples meet holding time. No follow-up is needed.”\n\nUseQ1–Q5. No additional sampling has occurred; no amended laboratory report or method-specific timing rule has arrived. Operations requests a defensible one-page status update.",
       "assignment": "Replace Q6 with a 450–650-word decision memo. Reference at least five evidence IDs or records, include a limitations table and a follow-up register with owners. Explain each removed claim and propose a targeted next sampling round. Present the memo to the instructor, revise it and complete the final assessment and evaluation.",
       "rubric": [
@@ -272,12 +272,12 @@
         {
           "kind": "exercise",
           "minutes": 5,
-          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
           "minutes": 15,
-          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
         }
       ],
       "sourceIds": [

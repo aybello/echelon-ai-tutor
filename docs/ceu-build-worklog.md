@@ -1,5 +1,9 @@
 # CEU build checkpoint
 
+## September 24 owner decision: fully self-paced
+
+Ay directed that no instructor, reviewer or administrator action may stand between enrollment and completion. This branch now replaces written practical review with server-graded case exercises, uses in-app active-time heartbeats and a seven-hour daily ledger across courses, and issues the immutable non-credit record automatically when module checks, exercises, time and the final are complete. Failed exercises and finals may be retried. Optional private notes and evaluation do not gate completion. The administrator review route and procedures were removed. Migration 0072 remains proposed-only and has been revised before production use. The approved WWOCS upload ID is not available; only a server-side text formatter is prepared. The older implementation notes below document the superseded review model.
+
 Base: `b862837aa72f2c272197b9ce9e13d29577971a57` (main). Branch: `codex/ceu-ten-course-learning`.
 
 Authorized scope: build ten applied continuing-education pilot courses and replace the session-only preview with saved learning, server grading and instructor-reviewed completion. Preserve current Manus visual changes. Production deployment and migration have not been performed.
