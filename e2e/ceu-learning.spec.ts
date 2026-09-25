@@ -2,7 +2,17 @@ import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import { SignJWT } from "jose";
 import { randomUUID } from "node:crypto";
 import mysql from "mysql2/promise";
-import course from "../server/ceu/courses/ceu-sampling-data-quality.json";
+import { readFileSync } from "node:fs";
+import type { CeuCurriculum } from "../shared/ceuLearning";
+const course = JSON.parse(
+  readFileSync(
+    new URL(
+      "../server/ceu/courses/ceu-sampling-data-quality.json",
+      import.meta.url
+    ),
+    "utf8"
+  )
+) as CeuCurriculum;
 const base = process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000";
 const path = `/continuing-education/${course.key}`;
 const prefix = `ceu-browser-${randomUUID()}`;
