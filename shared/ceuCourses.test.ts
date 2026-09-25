@@ -1,36 +1,24 @@
 import { describe, expect, it } from "vitest";
 import { CEU_COURSES, plannedCourseMinutes } from "./ceuCourses";
-
-describe("CEU course catalogue", () => {
-  it("keeps exactly three approval-ready courses", () => {
-    expect(CEU_COURSES).toHaveLength(3);
-    expect(CEU_COURSES.map((course) => course.key)).toEqual([
-      "ceu-drinking-water-compliance",
-      "ceu-water-treatment-process-control",
-      "ceu-wastewater-treatment-process-control",
-    ]);
-  });
-
-  it("keeps every course within Ontario's planned one-day contact-hour ceiling", () => {
-    for (const course of CEU_COURSES) {
-      expect(course.plannedContactHours).toBe(7);
-      expect(plannedCourseMinutes(course)).toBe(420);
-      expect(course.modules).toHaveLength(6);
+describe("CEU public catalogue", () => {
+  it("has ten courses and interest codes that fit the existing waitlist field", () => {
+    expect(CEU_COURSES).toHaveLength(10);
+    expect(new Set(CEU_COURSES.map(c => c.interestCode)).size).toBe(10);
+    for (const c of CEU_COURSES) {
+      expect(c.interestCode.length).toBeLessThanOrEqual(32);
+      expect(plannedCourseMinutes(c)).toBe(c.plannedContactHours * 60);
     }
   });
-
-  it("does not make an unapproved CEU or accreditation claim", () => {
-    for (const course of CEU_COURSES) {
-      const publicCopy = `${course.statusDescription} ${course.publicDisclosure}`.toLowerCase();
-      expect(publicCopy).toContain("required");
-      expect(publicCopy).toContain("not");
-      expect(publicCopy).not.toContain("director approved continuing education");
+  it("keeps planned duration distinct from approval and earned credit", () => {
+    for (const c of CEU_COURSES) {
+      expect(c.publicDisclosure).toContain("No approved CEUs");
+      expect(c.completionRequirements.join(" ")).toContain("timed pilot");
+      if (c.plannedContactHours === 10)
+        expect(c.publicDisclosure).toContain("two five-hour days");
+      if (c.stream === "wastewater") {
+        expect(c.approvalStatus).toBe("ceu_value_review_required");
+        expect(c.publicDisclosure).toContain("not Director approved");
+      }
     }
-  });
-
-  it("keeps wastewater courses out of the Director-approved route", () => {
-    const wastewaterCourse = CEU_COURSES.find((course) => course.stream === "wastewater");
-    expect(wastewaterCourse?.approvalStatus).toBe("ceu_value_review_required");
-    expect(wastewaterCourse?.publicDisclosure).toContain("not Director approved");
   });
 });

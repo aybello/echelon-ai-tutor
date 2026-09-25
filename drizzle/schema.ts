@@ -1544,3 +1544,15 @@ export const scheduledWork = mysqlTable("scheduled_work", {
   completedAt: timestamp("completedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
+
+/** Separate pilot learning records; never treated as exam-pass entitlements or approved CEUs. */
+export const ceuLearningRecords = mysqlTable('ceu_learning_records', {
+  id: int('id').autoincrement().primaryKey(),
+  studentEmail: varchar('studentEmail', {length:320}).notNull(),
+  courseKey: varchar('courseKey', {length:80}).notNull(),
+  courseVersion: varchar('courseVersion', {length:32}).notNull(),
+  revision: int('revision').notNull().default(0),
+  stateJson: mediumtext('stateJson').notNull(),
+  createdAt: timestamp('createdAt').defaultNow().notNull(),
+  updatedAt: timestamp('updatedAt').defaultNow().onUpdateNow().notNull(),
+}, table => [uniqueIndex('ceu_learner_course_edition').on(table.studentEmail,table.courseKey,table.courseVersion)]);

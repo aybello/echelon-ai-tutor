@@ -1,306 +1,823 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useRoute } from "wouter";
-import {
-  ArrowLeft,
-  ArrowRight,
-  BookOpenCheck,
-  Check,
-  CheckCircle2,
-  ChevronRight,
-  CircleAlert,
-  ClipboardCheck,
-  FileQuestion,
-  GraduationCap,
-  ListChecks,
-  LockKeyhole,
-  PlayCircle,
-  RotateCcw,
-  ShieldAlert,
-} from "lucide-react";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { getCeuCourseByKey } from "@shared/ceuCourses";
-import { getCeuPreviewCourse } from "@shared/ceuCoursePreviewCurriculum";
-import { calculateCeuPreviewScore } from "@shared/ceuCoursePreviewContent";
+import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
 import "./ContinuingEducationCourse.css";
+import "./CeuLearning.css";
 
-type PreviewView = "module" | "assessment";
-
-function ChoiceList({
-  choices,
-  selectedIndex,
-  onSelect,
-  correctIndex,
-  explanation,
-  reveal,
-  disabled = false,
+export function LessonMarkdown({ text }: { text: string }) {
+  const html = useMemo(
+    () => DOMPurify.sanitize(marked.parse(text, { async: false }) as string),
+    [text]
+  );
+  return (
+    <div className="ceu-reading" dangerouslySetInnerHTML={{ __html: html }} />
+  );
+}
+function Choices({
+  question,
+  value,
+  onChange,
+  disabled,
 }: {
-  choices: readonly string[];
-  selectedIndex: number | null;
-  onSelect: (index: number) => void;
-  correctIndex: number;
-  explanation: string;
-  reveal: boolean;
+  question: CeuQuestion;
+  value?: number;
+  onChange: (n: number) => void;
   disabled?: boolean;
 }) {
   return (
-    <div className="ceu-preview-choice-group">
-      <div className="ceu-preview-choice-list" role="radiogroup">
-        {choices.map((choice, index) => {
-          const selected = selectedIndex === index;
-          const state = reveal
-            ? index === correctIndex
-              ? "is-correct"
-              : selected
-                ? "is-incorrect"
-                : ""
-            : selected
-              ? "is-selected"
-              : "";
-          return (
-            <button
-              key={choice}
-              type="button"
-              className={`ceu-preview-choice ${state}`}
-              onClick={() => onSelect(index)}
-              aria-pressed={selected}
-              disabled={disabled}
-            >
-              <span>{String.fromCharCode(65 + index)}</span>
-              <strong>{choice}</strong>
-              {reveal && index === correctIndex && <CheckCircle2 size={19} aria-label="Correct answer" />}
-            </button>
-          );
-        })}
-      </div>
-      {reveal && (
-        <div className="ceu-preview-explanation" role="status">
-          <strong>Why this is the best answer</strong>
-          <p>{explanation}</p>
-        </div>
-      )}
-    </div>
+    <fieldset className="ceu-question">
+      <legend>{question.prompt}</legend>
+      {question.choices.map((choice, i) => (
+        <label key={i} className={value === i ? "selected" : ""}>
+          <input
+            type="radio"
+            name={question.id}
+            checked={value === i}
+            disabled={disabled}
+            onChange={() => onChange(i)}
+          />
+          <span>{choice}</span>
+        </label>
+      ))}
+    </fieldset>
   );
 }
-
-function CourseNotFound() {
-  return (
-    <div className="ceu-preview-page">
-      <SiteNav currentPath="/continuing-education" variant="marketing" />
-      <main className="ceu-preview-not-found">
-        <CircleAlert size={34} aria-hidden="true" />
-        <p className="ceu-preview-eyebrow">Course preview</p>
-        <h1>This course preview is not available.</h1>
-        <p>Choose a learning path from the continuing-education catalogue.</p>
-        <Link href="/continuing-education" className="ceu-preview-primary-link">Return to course catalogue</Link>
-      </main>
-    </div>
-  );
-}
-
 export default function ContinuingEducationCourse() {
   const [, params] = useRoute("/continuing-education/:courseKey");
-  const courseKey = params?.courseKey ?? "";
-  const course = getCeuCourseByKey(courseKey);
-  const previewCourse = getCeuPreviewCourse(courseKey);
-  const [view, setView] = useState<PreviewView>("module");
-  const [activeModuleNumber, setActiveModuleNumber] = useState(1);
-  const [moduleAnswers, setModuleAnswers] = useState<Record<number, number>>({});
-  const [moduleReveals, setModuleReveals] = useState<Record<number, boolean>>({});
-  const [examAnswers, setExamAnswers] = useState<number[]>(() => previewCourse ? Array(previewCourse.finalAssessment.questions.length).fill(-1) : []);
-  const [examSubmitted, setExamSubmitted] = useState(false);
-
-  const activeModule = previewCourse?.modules.find((module) => module.number === activeModuleNumber);
-  const completedModuleCount = useMemo(
-    () => previewCourse?.modules.filter((module) => moduleReveals[module.number]).length ?? 0,
-    [moduleReveals, previewCourse],
+  return (
+    <CourseWorkspace
+      key={params?.courseKey}
+      courseKey={params?.courseKey ?? ""}
+    />
   );
-  const answeredExamCount = examAnswers.filter((answer) => answer >= 0).length;
-  const examScore = previewCourse && examSubmitted
-    ? calculateCeuPreviewScore(previewCourse.finalAssessment.questions, examAnswers)
-    : null;
-
+}
+function CourseWorkspace({ courseKey }: { courseKey: string }) {
+  const identity = trpc.ceu.identity.useQuery(undefined, {
+    retry: false,
+    staleTime: 0,
+  });
+  const courseQuery = trpc.ceu.course.useQuery({ courseKey }, { retry: false });
+  const recordQuery = trpc.ceu.myRecord.useQuery(
+    { courseKey },
+    {
+      enabled: identity.data?.signedIn === true,
+      retry: false,
+      refetchOnWindowFocus: false,
+    }
+  );
+  const utils = trpc.useUtils();
+  const [active, setActive] = useState("");
+  const [view, setView] = useState<"lesson" | "assessment" | "record">(
+    "lesson"
+  );
+  const [draft, setDraft] = useState("");
+  const [dirty, setDirty] = useState(false);
+  const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState<Record<string, string>>({});
+  const [checkChoices, setCheckChoices] = useState<Record<string, number>>({});
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [examDirty, setExamDirty] = useState(false);
+  const [rating, setRating] = useState(5),
+    [useful, setUseful] = useState(""),
+    [improve, setImprove] = useState("");
+  const [attemptId, setAttemptId] = useState<string>(() => crypto.randomUUID());
+  const course = courseQuery.data,
+    record = recordQuery.data;
+  const lesson =
+    course?.modules.find(m => m.id === active) ?? course?.modules[0];
+  const moduleRecord = lesson ? record?.modules[lesson.id] : undefined;
+  const locked = !!record?.completion;
+  const exams = trpc.ceu.assessment.useQuery(
+    { courseKey },
+    {
+      enabled: view === "assessment" && !!record,
+      retry: false,
+      refetchOnWindowFocus: false,
+    }
+  );
+  const cache = (r: CeuLearningRecord | null) =>
+    utils.ceu.myRecord.setData({ courseKey }, r);
+  const start = trpc.ceu.start.useMutation({
+    onSuccess: r => {
+      cache(r);
+      setMessage("Your course record is ready.");
+    },
+    onError: e => setMessage(e.message),
+  });
+  const save = trpc.ceu.save.useMutation({
+    onSuccess: ({ record: r, feedback: f }, variables) => {
+      cache(r);
+      if (
+        variables.action.type === "draft" ||
+        variables.action.type === "submitExercise"
+      )
+        setDirty(false);
+      if (variables.action.type === "check" && f) {
+        const questionId = variables.action.questionId;
+        setFeedback(p => ({ ...p, [questionId]: f }));
+      }
+      if (
+        variables.action.type === "exam" ||
+        variables.action.type === "examDraft"
+      )
+        setExamDirty(false);
+      if (variables.action.type === "exam") {
+        setAttemptId(crypto.randomUUID());
+        setMessage("Assessment saved.");
+      } else
+        setMessage(
+          variables.action.type === "resume"
+            ? ""
+            : "Saved to your course record."
+        );
+    },
+    onError: e => setMessage(e.message),
+  });
+  const pending = save.isPending || start.isPending;
   usePageMeta({
-    title: course ? `${course.shortTitle} Course Preview | Echelon Institute` : "CEU Course Preview | Echelon Institute",
-    description: course ? `Explore Echelon Institute's internal learning preview for ${course.title}.` : "Explore Echelon Institute course previews.",
+    title: course
+      ? `${course.shortTitle} | Echelon Institute`
+      : "Continuing education | Echelon Institute",
+    description:
+      "Applied operator learning, practical assignments and reviewed learning records.",
     noindex: true,
   });
-
-  if (!course || !previewCourse || !activeModule) return <CourseNotFound />;
-
-  function selectModule(moduleNumber: number) {
-    setView("module");
-    setActiveModuleNumber(moduleNumber);
+  useEffect(() => {
+    if (record && !active) setActive(record.currentModule);
+  }, [record, active]);
+  useEffect(() => {
+    if (!dirty) setDraft(moduleRecord?.draft ?? "");
+  }, [lesson?.id, moduleRecord?.draft, dirty]);
+  useEffect(() => {
+    const warn = (e: BeforeUnloadEvent) => {
+      if (dirty || examDirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", warn);
+    return () => window.removeEventListener("beforeunload", warn);
+  }, [dirty, examDirty]);
+  useEffect(() => {
+    if (!examDirty && record?.assessmentDraft && exams.data) {
+      setAnswers(
+        Object.fromEntries(
+          exams.data.flatMap((q, i) =>
+            record.assessmentDraft!.answers[i] === null
+              ? []
+              : [[q.id, record.assessmentDraft!.answers[i]!]]
+          )
+        )
+      );
+      setAttemptId(record.assessmentDraft.attemptId);
+    }
+  }, [record?.assessmentDraft, exams.data, examDirty]);
+  function navigate(moduleId: string) {
+    if (
+      dirty &&
+      !window.confirm(
+        "This exercise has unsaved changes. Leave without saving?"
+      )
+    )
+      return;
+    setDirty(false);
+    setDraft(record?.modules[moduleId]?.draft ?? "");
+    setActive(moduleId);
+    setView("lesson");
+    setMessage("");
+    if (record && !locked && !pending)
+      save.mutate({
+        courseKey,
+        revision: record.revision,
+        action: { type: "resume", moduleId },
+      });
   }
-
-  function resetAssessment() {
-    if (!previewCourse) return;
-    setExamAnswers(Array(previewCourse.finalAssessment.questions.length).fill(-1));
-    setExamSubmitted(false);
-  }
-
+  if (courseQuery.isLoading)
+    return <main className="ceu-learning">Loading course…</main>;
+  if (!course || !lesson)
+    return (
+      <main className="ceu-learning">
+        <h1>Course unavailable</h1>
+        <p>
+          {courseQuery.error?.message ?? "Choose a course from the catalogue."}
+        </p>
+        <Link href="/continuing-education">Course catalogue</Link>
+      </main>
+    );
+  const checked = course.modules.filter(m =>
+    m.checks.every(q => record?.modules[m.id]?.checks[q.id]?.correct)
+  ).length;
+  const submitted = course.modules.filter(
+    m => record?.modules[m.id]?.submittedAt
+  ).length;
+  const reviewed = course.modules.filter(
+    m => record?.modules[m.id]?.review?.passed
+  ).length;
+  const lastAttempt = record?.attempts.at(-1);
   return (
     <div className="ceu-preview-page">
       <SiteNav currentPath="/continuing-education" variant="marketing" />
-      <main className="ceu-preview-shell">
-        <header className="ceu-preview-header">
-          <Link href="/continuing-education" className="ceu-preview-back"><ArrowLeft size={16} aria-hidden="true" /> Continuing education catalogue</Link>
-          <div className="ceu-preview-header-grid">
-            <div>
-              <p className="ceu-preview-eyebrow">Internal learning preview</p>
-              <h1>{course.title}</h1>
-              <p>{course.audience}</p>
-            </div>
-            <aside>
-              <ShieldAlert size={19} aria-hidden="true" />
-              <strong>Preview only</strong>
-              <span>Not an approved CEU course, credential, completion record, or operating instruction.</span>
-            </aside>
-          </div>
+      <main className="ceu-learning">
+        <header className="ceu-learning-header">
+          <Link
+            href="/continuing-education"
+            onClick={e => {
+              if (
+                (dirty || examDirty) &&
+                !window.confirm(
+                  "Leave with unsaved work? Save your drafts first to resume later."
+                )
+              )
+                e.preventDefault();
+            }}
+          >
+            ← Course catalogue
+          </Link>
+          <p className="ceu-eyebrow">
+            Operator professional learning · pilot edition
+          </p>
+          <h1>{course.title}</h1>
+          <p>{course.introduction}</p>
+          <p className="ceu-note">
+            {course.plannedMinutes / 60} planned learning hours · duration
+            pending timed pilot · no approved CEUs awarded
+          </p>
+          <details>
+            <summary>Delivery and prerequisites</summary>
+            <p>{course.delivery}</p>
+            <p>{course.prerequisites}</p>
+          </details>
+          {identity.data?.reviewer && (
+            <Link href="/continuing-education-review">
+              Instructor review workspace
+            </Link>
+          )}
         </header>
-
-        <div className="ceu-preview-layout">
-          <aside className="ceu-preview-sidebar" aria-label="Course navigation">
-            <div className="ceu-preview-progress">
-              <span>Learning progress</span>
-              <strong>{completedModuleCount} of {previewCourse.modules.length} knowledge checks reviewed</strong>
-              <div aria-hidden="true"><i style={{ width: `${(completedModuleCount / previewCourse.modules.length) * 100}%` }} /></div>
-            </div>
-            <nav className="ceu-preview-nav">
-              <p>Modules</p>
-              {previewCourse.modules.map((module) => (
+        {!identity.data?.signedIn ? (
+          <aside className="ceu-status">
+            <p>
+              Read the lessons freely. Sign in to save practical work and take
+              the assessed course.
+            </p>
+            <Link
+              href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}
+            >
+              Sign in to save learning
+            </Link>
+          </aside>
+        ) : recordQuery.isError ? (
+          <aside className="ceu-status" role="alert">
+            <p>{recordQuery.error.message}</p>
+            <button onClick={() => recordQuery.refetch()}>
+              Retry loading record
+            </button>
+          </aside>
+        ) : recordQuery.isLoading ? (
+          <p>Loading saved work…</p>
+        ) : !record ? (
+          <aside className="ceu-status">
+            <p>
+              This pilot course does not award approved CEUs. Your practical
+              submissions are reviewed by Echelon's authorized instructor team.
+            </p>
+            <button
+              disabled={pending}
+              onClick={() => start.mutate({ courseKey })}
+            >
+              Start and save my learning
+            </button>
+          </aside>
+        ) : null}
+        {message && (
+          <p className="ceu-status" role="status">
+            {message}{" "}
+            {save.error?.data?.code === "CONFLICT" && (
+              <button onClick={() => recordQuery.refetch()}>
+                Reload saved record (keep my unsaved text)
+              </button>
+            )}
+          </p>
+        )}
+        <div className="ceu-learning-grid">
+          <aside className="ceu-learning-nav">
+            <p>
+              {checked}/{course.modules.length} modules: checks passed
+            </p>
+            <p>
+              {reviewed}/{course.modules.length} practicals accepted
+            </p>
+            <nav aria-label="Course modules">
+              {course.modules.map((m, i) => (
                 <button
-                  key={module.number}
-                  type="button"
-                  className={view === "module" && activeModule.number === module.number ? "is-active" : ""}
-                  onClick={() => selectModule(module.number)}
+                  key={m.id}
+                  aria-current={
+                    view === "lesson" && lesson.id === m.id ? "step" : undefined
+                  }
+                  disabled={pending}
+                  onClick={() => navigate(m.id)}
                 >
-                  <span>{moduleReveals[module.number] ? <CheckCircle2 size={16} aria-hidden="true" /> : module.number}</span>
-                  <strong>{module.title}</strong>
+                  {i + 1}. {m.title}
                 </button>
               ))}
             </nav>
-            <button type="button" className={`ceu-preview-assessment-link ${view === "assessment" ? "is-active" : ""}`} onClick={() => setView("assessment")}>
-              <FileQuestion size={17} aria-hidden="true" />
-              <span><strong>Final knowledge check</strong><small>{answeredExamCount} of {previewCourse.finalAssessment.questions.length} answered</small></span>
-              <ChevronRight size={16} aria-hidden="true" />
+            <button
+              onClick={() => {
+                if (
+                  !dirty ||
+                  window.confirm(
+                    "Your exercise has unsaved changes. Open the assessment?"
+                  )
+                )
+                  setView("assessment");
+              }}
+            >
+              Final assessment
+            </button>
+            <button onClick={() => setView("record")}>
+              My learning record
             </button>
           </aside>
-
-          <section className="ceu-preview-workspace">
-            {view === "module" ? (
-              <article className="ceu-preview-module" key={activeModule.number}>
-                <div className="ceu-preview-module-topline">
-                  <span>Module {activeModule.number} of {previewCourse.modules.length}</span>
-                  <span><BookOpenCheck size={16} aria-hidden="true" /> Applied learning</span>
-                </div>
-                <h2>{activeModule.title}</h2>
-                <p className="ceu-preview-lead">{activeModule.overview}</p>
-
-                <section className="ceu-preview-learning-points" aria-labelledby="learning-points-title">
-                  <div>
-                    <p className="ceu-preview-panel-label" id="learning-points-title">What this module develops</p>
-                    <ul>
-                      {activeModule.learningPoints.map((point) => <li key={point}><Check size={16} aria-hidden="true" />{point}</li>)}
-                    </ul>
-                  </div>
-                  <div className="ceu-preview-disclaimer"><LockKeyhole size={18} aria-hidden="true" />{previewCourse.learningDisclaimer}</div>
+          <section className="ceu-learning-main">
+            {view === "lesson" ? (
+              <article>
+                <h2>{lesson.title}</h2>
+                <ul>
+                  {lesson.objectives.map(o => (
+                    <li key={o}>{o}</li>
+                  ))}
+                </ul>
+                <details>
+                  <summary>
+                    Learning activities ·{" "}
+                    {lesson.activities.reduce((s, a) => s + a.minutes, 0)}{" "}
+                    planned minutes
+                  </summary>
+                  <ol>
+                    {lesson.activities.map((a, i) => (
+                      <li key={i}>
+                        <strong>{a.minutes} minutes:</strong> {a.instruction}
+                      </li>
+                    ))}
+                  </ol>
+                  <p>
+                    These are facilitated activity estimates, not automatically
+                    earned contact hours.
+                  </p>
+                </details>
+                <LessonMarkdown text={lesson.lesson} />
+                <section className="ceu-case">
+                  <h2>Evidence pack</h2>
+                  <p>
+                    All facility names, records and numerical operating
+                    conditions in this case are fictional.
+                  </p>
+                  <LessonMarkdown text={lesson.evidence} />
                 </section>
-
-                <section className="ceu-preview-scenario" aria-labelledby="scenario-title">
-                  <div className="ceu-preview-scenario-title">
-                    <span><PlayCircle size={19} aria-hidden="true" /> Fictional operator scenario</span>
-                    <h3 id="scenario-title">{activeModule.scenario.title}</h3>
-                  </div>
-                  <p>{activeModule.scenario.brief}</p>
-                  <div className="ceu-preview-scenario-prompt"><strong>Discussion prompt</strong><p>{activeModule.scenario.prompt}</p></div>
-                  <details>
-                    <summary>Review a model reasoning sequence</summary>
-                    <p>{activeModule.scenario.modelAnswer}</p>
-                  </details>
-                </section>
-
-                <section className="ceu-preview-knowledge-check" aria-labelledby="check-title">
-                  <div className="ceu-preview-check-heading">
-                    <div><p className="ceu-preview-panel-label">Knowledge check</p><h3 id="check-title">{activeModule.knowledgeCheck.question}</h3></div>
-                    <ClipboardCheck size={24} aria-hidden="true" />
-                  </div>
-                  <ChoiceList
-                    choices={activeModule.knowledgeCheck.choices}
-                    selectedIndex={moduleAnswers[activeModule.number] ?? null}
-                    onSelect={(index) => setModuleAnswers((current) => ({ ...current, [activeModule.number]: index }))}
-                    correctIndex={activeModule.knowledgeCheck.correctIndex}
-                    explanation={activeModule.knowledgeCheck.explanation}
-                    reveal={Boolean(moduleReveals[activeModule.number])}
-                  />
-                  {!moduleReveals[activeModule.number] && (
+                <section>
+                  <h2>Practical assignment</h2>
+                  <LessonMarkdown text={lesson.assignment} />
+                  <h3>Acceptance criteria</h3>
+                  <ul>
+                    {lesson.rubric.map(r => (
+                      <li key={r}>{r}</li>
+                    ))}
+                  </ul>
+                  <label className="ceu-field">
+                    Your analysis
+                    <textarea
+                      rows={12}
+                      value={draft}
+                      maxLength={20000}
+                      disabled={
+                        !record ||
+                        locked ||
+                        pending ||
+                        moduleRecord?.review?.passed
+                      }
+                      onChange={e => {
+                        setDraft(e.target.value);
+                        setDirty(true);
+                      }}
+                      placeholder="Use the evidence IDs, show calculations and distinguish facts from assumptions. Do not include confidential workplace records."
+                    />
+                  </label>
+                  <div className="ceu-actions">
                     <button
-                      type="button"
-                      className="ceu-preview-check-button"
-                      disabled={moduleAnswers[activeModule.number] === undefined}
-                      onClick={() => setModuleReveals((current) => ({ ...current, [activeModule.number]: true }))}
+                      disabled={
+                        !record ||
+                        pending ||
+                        locked ||
+                        moduleRecord?.review?.passed
+                      }
+                      onClick={() =>
+                        record &&
+                        save.mutate({
+                          courseKey,
+                          revision: record.revision,
+                          action: {
+                            type: "draft",
+                            moduleId: lesson.id,
+                            text: draft,
+                          },
+                        })
+                      }
                     >
-                      Review answer <ArrowRight size={16} aria-hidden="true" />
+                      Save draft
+                    </button>
+                    <button
+                      disabled={
+                        !record ||
+                        pending ||
+                        locked ||
+                        draft.trim().length < 100 ||
+                        moduleRecord?.review?.passed
+                      }
+                      onClick={() =>
+                        record &&
+                        save.mutate({
+                          courseKey,
+                          revision: record.revision,
+                          action: {
+                            type: "submitExercise",
+                            moduleId: lesson.id,
+                            text: draft,
+                          },
+                        })
+                      }
+                    >
+                      Submit for instructor review
+                    </button>
+                    <span>
+                      {dirty
+                        ? "Unsaved changes"
+                        : moduleRecord?.submittedAt
+                          ? "Submitted for review"
+                          : "Draft workspace"}
+                    </span>
+                  </div>
+                  {moduleRecord?.review && (
+                    <div className="ceu-status">
+                      <strong>
+                        {moduleRecord.review.passed
+                          ? "Accepted"
+                          : "Revision requested"}
+                      </strong>
+                      <p>{moduleRecord.review.feedback}</p>
+                    </div>
+                  )}
+                </section>
+                <section>
+                  <h2>Module checks</h2>
+                  <p>
+                    These checks provide learning feedback. Pass each check
+                    before the final assessment.
+                  </p>
+                  {lesson.checks.map(q => (
+                    <div key={q.id}>
+                      <Choices
+                        question={q}
+                        value={
+                          checkChoices[q.id] ??
+                          moduleRecord?.checks[q.id]?.selectedIndex
+                        }
+                        disabled={!record || pending || locked}
+                        onChange={n =>
+                          setCheckChoices(p => ({ ...p, [q.id]: n }))
+                        }
+                      />
+                      <button
+                        disabled={
+                          !record ||
+                          pending ||
+                          locked ||
+                          (checkChoices[q.id] ??
+                            moduleRecord?.checks[q.id]?.selectedIndex) ===
+                            undefined
+                        }
+                        onClick={() =>
+                          record &&
+                          save.mutate({
+                            courseKey,
+                            revision: record.revision,
+                            action: {
+                              type: "check",
+                              moduleId: lesson.id,
+                              questionId: q.id,
+                              choice:
+                                checkChoices[q.id] ??
+                                moduleRecord!.checks[q.id].selectedIndex,
+                            },
+                          })
+                        }
+                      >
+                        Check answer
+                      </button>
+                      {moduleRecord?.checks[q.id] && (
+                        <p role="status">
+                          {moduleRecord.checks[q.id].correct
+                            ? "Correct."
+                            : "Review the lesson and try again."}{" "}
+                          {feedback[q.id]}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </section>
+                <section>
+                  <h2>Source reading</h2>
+                  <p>
+                    Use the indicated sections; Ontario sources establish local
+                    requirements. US references support technical learning and
+                    do not establish Ontario legal obligations.
+                  </p>
+                  <ul>
+                    {course.sources
+                      .filter(s => lesson.sourceIds.includes(s.id))
+                      .map(s => (
+                        <li key={s.id}>
+                          <a href={s.url} target="_blank" rel="noreferrer">
+                            {s.title}
+                          </a>
+                          <p>
+                            {s.section} · {s.jurisdiction} · reviewed{" "}
+                            {s.accessed}
+                          </p>
+                        </li>
+                      ))}
+                  </ul>
+                </section>
+                <div className="ceu-actions">
+                  {course.modules.findIndex(m => m.id === lesson.id) > 0 && (
+                    <button
+                      disabled={pending}
+                      onClick={() =>
+                        navigate(
+                          course.modules[
+                            course.modules.findIndex(m => m.id === lesson.id) -
+                              1
+                          ].id
+                        )
+                      }
+                    >
+                      Previous module
                     </button>
                   )}
-                </section>
-
-                <footer className="ceu-preview-module-footer">
-                  <button type="button" disabled={activeModule.number === 1} onClick={() => selectModule(activeModule.number - 1)}><ArrowLeft size={16} aria-hidden="true" /> Previous module</button>
-                  {activeModule.number < previewCourse.modules.length ? (
-                    <button type="button" onClick={() => selectModule(activeModule.number + 1)}>Next module <ArrowRight size={16} aria-hidden="true" /></button>
-                  ) : (
-                    <button type="button" onClick={() => setView("assessment")}>Open final knowledge check <ArrowRight size={16} aria-hidden="true" /></button>
+                  {course.modules.findIndex(m => m.id === lesson.id) <
+                    course.modules.length - 1 && (
+                    <button
+                      disabled={pending}
+                      onClick={() =>
+                        navigate(
+                          course.modules[
+                            course.modules.findIndex(m => m.id === lesson.id) +
+                              1
+                          ].id
+                        )
+                      }
+                    >
+                      Next module
+                    </button>
                   )}
-                </footer>
-              </article>
-            ) : (
-              <article className="ceu-preview-assessment">
-                <div className="ceu-preview-module-topline"><span>Assessment preview</span><span><GraduationCap size={16} aria-hidden="true" /> No credential issued</span></div>
-                <h2>{previewCourse.finalAssessment.title}</h2>
-                <p className="ceu-preview-lead">{previewCourse.finalAssessment.instructions}</p>
-                <div className="ceu-preview-assessment-facts">
-                  <span><ListChecks size={17} aria-hidden="true" /> {previewCourse.finalAssessment.questions.length} questions</span>
-                  <span><CheckCircle2 size={17} aria-hidden="true" /> Preview benchmark: {previewCourse.finalAssessment.passingScore}%</span>
-                  <span><LockKeyhole size={17} aria-hidden="true" /> No course record created</span>
                 </div>
-
-                {examSubmitted && examScore !== null && (
-                  <div className={`ceu-preview-score ${examScore.percentage >= previewCourse.finalAssessment.passingScore ? "is-passing" : ""}`} role="status">
-                    <div><span>Preview score</span><strong>{examScore.correct} / {previewCourse.finalAssessment.questions.length}</strong></div>
-                    <p>{examScore.percentage}% correct. {examScore.percentage >= previewCourse.finalAssessment.passingScore ? "You met the preview benchmark." : "Review the explanations and try the assessment again."}</p>
-                    <small>This result is private to this browser session. It does not issue a CEU, credential, certificate, attendance record, or course completion.</small>
+              </article>
+            ) : view === "assessment" ? (
+              <article>
+                <h2>Final assessment</h2>
+                <p>
+                  Pass mark: 80%. Three attempts are available before instructor
+                  reassessment review. Submitted attempts are retained.
+                  Practical acceptance and verified participation are separate
+                  completion requirements.
+                </p>
+                {lastAttempt && (
+                  <div className="ceu-status" role="status">
+                    Last result: {lastAttempt.score}/{lastAttempt.total} (
+                    {Math.round((lastAttempt.score / lastAttempt.total) * 100)}
+                    %).{" "}
+                    {lastAttempt.passed
+                      ? "Passed."
+                      : "Review the learning objectives before another attempt."}
                   </div>
                 )}
-
-                <div className="ceu-preview-final-questions">
-                  {previewCourse.finalAssessment.questions.map((question, questionIndex) => (
-                    <section className="ceu-preview-final-question" key={question.question}>
-                      <p>Question {questionIndex + 1} of {previewCourse.finalAssessment.questions.length}</p>
-                      <h3>{question.question}</h3>
-                      <ChoiceList
-                        choices={question.choices}
-                        selectedIndex={examAnswers[questionIndex] >= 0 ? examAnswers[questionIndex] : null}
-                        onSelect={(choiceIndex) => setExamAnswers((current) => current.map((answer, index) => index === questionIndex ? choiceIndex : answer))}
-                        correctIndex={question.correctIndex}
-                        explanation={question.explanation}
-                        reveal={examSubmitted}
-                        disabled={examSubmitted}
+                {!record ||
+                checked !== course.modules.length ||
+                submitted !== course.modules.length ? (
+                  <p>
+                    Pass all module checks and submit all practical assignments
+                    to unlock the final assessment.
+                  </p>
+                ) : exams.isError ? (
+                  <p role="alert">{exams.error.message}</p>
+                ) : exams.isLoading ? (
+                  <p>Loading assessment…</p>
+                ) : (
+                  <>
+                    <p>
+                      {exams.data?.length} questions · {record.attempts.length}{" "}
+                      attempts recorded
+                    </p>
+                    {exams.data?.map(q => (
+                      <Choices
+                        key={q.id}
+                        question={q}
+                        value={answers[q.id]}
+                        disabled={
+                          pending ||
+                          locked ||
+                          !!lastAttempt?.passed ||
+                          record.attempts.length >=
+                            3 + (record.additionalAttempts ?? 0)
+                        }
+                        onChange={n => {
+                          setAnswers(p => ({ ...p, [q.id]: n }));
+                          setExamDirty(true);
+                        }}
                       />
-                    </section>
-                  ))}
-                </div>
-
-                <footer className="ceu-preview-assessment-footer">
-                  {examSubmitted ? (
-                    <button type="button" className="ceu-preview-reset-button" onClick={resetAssessment}><RotateCcw size={16} aria-hidden="true" /> Try again</button>
-                  ) : (
-                    <button type="button" className="ceu-preview-submit-button" disabled={answeredExamCount !== previewCourse.finalAssessment.questions.length} onClick={() => setExamSubmitted(true)}>
-                      Submit preview assessment <ArrowRight size={16} aria-hidden="true" />
+                    ))}
+                    <button
+                      disabled={
+                        pending ||
+                        locked ||
+                        !!lastAttempt?.passed ||
+                        record.attempts.length >=
+                          3 + (record.additionalAttempts ?? 0) ||
+                        !exams.data?.every(q => answers[q.id] !== undefined)
+                      }
+                      onClick={() =>
+                        exams.data &&
+                        save.mutate({
+                          courseKey,
+                          revision: record.revision,
+                          action: {
+                            type: "exam",
+                            attemptId,
+                            answers: exams.data.map(q => answers[q.id]),
+                          },
+                        })
+                      }
+                    >
+                      Submit assessment
                     </button>
-                  )}
-                  {answeredExamCount !== previewCourse.finalAssessment.questions.length && !examSubmitted && <p>Answer every question to review your result.</p>}
-                </footer>
+                    <button
+                      disabled={
+                        pending || locked || !!lastAttempt?.passed || !examDirty
+                      }
+                      onClick={() =>
+                        exams.data &&
+                        save.mutate({
+                          courseKey,
+                          revision: record.revision,
+                          action: {
+                            type: "examDraft",
+                            attemptId,
+                            answers: exams.data.map(q => answers[q.id] ?? null),
+                          },
+                        })
+                      }
+                    >
+                      Save assessment draft
+                    </button>
+                    <p>
+                      {examDirty
+                        ? "Assessment has unsaved changes."
+                        : "Saved assessment work is retained in your record."}
+                    </p>
+                  </>
+                )}
+              </article>
+            ) : (
+              <article className="ceu-print-record">
+                <h2>My learning record</h2>
+                {!record ? (
+                  <p>Start this course to create a saved record.</p>
+                ) : (
+                  <>
+                    <dl>
+                      <dt>Course edition</dt>
+                      <dd>{record.courseVersion}</dd>
+                      <dt>Started</dt>
+                      <dd>{new Date(record.startedAt).toLocaleString()}</dd>
+                      <dt>Practical submissions</dt>
+                      <dd>
+                        {submitted}/{course.modules.length} submitted ·{" "}
+                        {reviewed} accepted
+                      </dd>
+                      <dt>Assessment</dt>
+                      <dd>
+                        {record.attempts.some(a => a.passed)
+                          ? "Passed"
+                          : "Not yet passed"}
+                      </dd>
+                      <dt>Participation</dt>
+                      <dd>
+                        {record.participation
+                          ? `${record.participation.sessions.reduce((s, a) => s + a.minutes, 0)} instructor-verified minutes`
+                          : "Awaiting instructor verification"}
+                      </dd>
+                    </dl>
+                    <h3>Assessment history</h3>
+                    {record.attempts.map((a, i) => (
+                      <p key={a.id}>
+                        Attempt {i + 1}: {a.score}/{a.total} ·{" "}
+                        {a.passed ? "passed" : "not passed"} ·{" "}
+                        {new Date(a.at).toLocaleString()}
+                      </p>
+                    ))}
+                    {record.completion ? (
+                      <section className="ceu-status">
+                        <h3>Pilot learning completed</h3>
+                        <p>{record.completion.name}</p>
+                        <p>{record.completion.statement}</p>
+                        <p>
+                          Record {record.completion.id} ·{" "}
+                          {new Date(record.completion.at).toLocaleDateString()}
+                        </p>
+                        <button
+                          className="ceu-no-print"
+                          onClick={() => window.print()}
+                        >
+                          Print learning record
+                        </button>
+                      </section>
+                    ) : (
+                      <p>
+                        Completion is recorded after all practical work is
+                        accepted, the assessment is passed, participation is
+                        verified and your evaluation is received. No approved
+                        CEU certificate is issued by this pilot.
+                      </p>
+                    )}
+                    <h3>Course evaluation</h3>
+                    {record.evaluation ? (
+                      <p>
+                        Evaluation received. Thank you for helping improve the
+                        course.
+                      </p>
+                    ) : (
+                      <form
+                        onSubmit={e => {
+                          e.preventDefault();
+                          save.mutate({
+                            courseKey,
+                            revision: record.revision,
+                            action: {
+                              type: "evaluation",
+                              rating,
+                              useful,
+                              improve,
+                            },
+                          });
+                        }}
+                      >
+                        <p>
+                          Your evaluation is linked to this pilot record and
+                          visible to the instructor team.
+                        </p>
+                        <label className="ceu-field">
+                          How useful was the course?
+                          <select
+                            value={rating}
+                            onChange={e => setRating(Number(e.target.value))}
+                          >
+                            {[5, 4, 3, 2, 1].map(n => (
+                              <option key={n} value={n}>
+                                {n} / 5
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <label className="ceu-field">
+                          What helped you learn?
+                          <textarea
+                            required
+                            minLength={10}
+                            maxLength={2000}
+                            value={useful}
+                            onChange={e => setUseful(e.target.value)}
+                          />
+                        </label>
+                        <label className="ceu-field">
+                          What should improve?
+                          <textarea
+                            required
+                            minLength={10}
+                            maxLength={2000}
+                            value={improve}
+                            onChange={e => setImprove(e.target.value)}
+                          />
+                        </label>
+                        <button disabled={pending || locked}>
+                          Send evaluation
+                        </button>
+                      </form>
+                    )}
+                  </>
+                )}
               </article>
             )}
           </section>

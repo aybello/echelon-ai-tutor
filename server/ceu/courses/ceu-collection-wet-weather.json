@@ -1,0 +1,450 @@
+{
+  "key": "ceu-collection-wet-weather",
+  "title": "Collection Systems and Wet-Weather Response",
+  "shortTitle": "Collection Systems",
+  "stream": "wastewater",
+  "audience": "Practising wastewater operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Analyse a fictional lift station and sewer catchment during rainfall. Calculate storage time, distinguish inflow from infiltration evidence, and prepare an incident record with honest volume uncertainty.",
+  "plannedMinutes": 180,
+  "delivery": "Facilitated pilot with four practical modules, source reading, instructor discussion, a final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "wet-weather",
+      "title": "Wet-weather patterns and catchment evidence",
+      "objectives": [
+        "Calculate peak and daily flow changes.",
+        "Distinguish plausible inflow/infiltration patterns from proof."
+      ],
+      "lesson": "### A hydrograph suggests where to investigate\nCollection-system flow can include sanitary wastewater, infiltration through defects and inflow through direct connections. A rapid response to rainfall can suggest direct inflow; a sustained delayed response can suggest infiltration or storage effects. These are investigation clues, not definitive source identifications. Catchment travel time, pumping and rainfall distribution can alter the pattern.\n\nCompare a wet period with a representative dry baseline. Peak ratio is wet peak divided by dry peak, while excess daily volume is wet daily volume minus the selected dry baseline. These quantities answer different questions. A brief peak may challenge capacity without dominating daily volume.\n\nA baseline should account for weekday/weekend demand, seasonal groundwater, known industrial discharges and meter quality. Subtracting a convenient low-flow day can overstate rainfall-related volume. Preserve the rationale and test sensitivity to plausible baselines.\n\nUse the pattern to target records review, authorized inspection and monitoring. The course does not direct entry into manholes, confined spaces or traffic zones. Physical investigation requires the appropriate trained crew and site procedures.",
+      "evidence": "**C1 — South Branch catchment**\nDry comparable daily volume 2,400 m³; dry peak 180 m³/hour. Rain-day volume 3,600 m³; peak 420 m³/hour beginning 20 minutes after intense rain. Flow remains above baseline for 18 hours. A second plausible dry baseline is 2,600 m³/day. Rain gauge is 5 km from the catchment.\n\nC2: No property connection testing or defect inspection has been completed. Flow meter quality checks are current but rainfall spatial coverage is uncertain.",
+      "assignment": "Calculate peak ratio and excess volume for both baselines. Prepare a 350–500-word investigation brief separating rapid and sustained response hypotheses. Rank three evidence requests, explain baseline and rainfall limitations, and assign field work to authorized personnel rather than prescribing unsafe access.",
+      "rubric": [
+        "Peak ratio 2.33 and excess 1,200/1,000 m³.",
+        "Does not identify a source from timing alone.",
+        "Uses baseline sensitivity and targeted evidence requests."
+      ],
+      "facilitatorGuide": "420/180=2.333. Excess volumes are 1,200 and 1,000 m³; the alternative baseline changes the estimate by 200 m³. Both rapid and sustained components may be present, but pumping/storage and rainfall coverage remain alternatives. Strong requests include time-aligned rain/flow, pump operations and authorized asset/connection investigations. No definitive illegal-connection claim is supported.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "collection",
+        "ww"
+      ],
+      "checks": [
+        {
+          "id": "cw1",
+          "objective": "wet-weather",
+          "prompt": "Wet peak 360 and dry peak 150 m³/hour give a ratio of:",
+          "choices": [
+            "2.4",
+            "0.417",
+            "210",
+            "5.4"
+          ],
+          "correctIndex": 0,
+          "explanation": "Using the stated units and calculation: 360/150=2.4."
+        },
+        {
+          "id": "cw2",
+          "objective": "wet-weather",
+          "prompt": "A rapid rain response is best treated as:",
+          "choices": [
+            "Proof of one specific illegal connection",
+            "Proof that infiltration cannot occur",
+            "A clue for targeted inflow investigation",
+            "A reason to ignore meter quality"
+          ],
+          "correctIndex": 2,
+          "explanation": "The pattern guides investigation but does not identify a source by itself."
+        }
+      ]
+    },
+    {
+      "id": "storage-capacity",
+      "title": "Wet-well storage and time to a trigger",
+      "objectives": [
+        "Calculate net accumulation and conditional time remaining.",
+        "Explain why rated pump capacity may differ from actual delivery."
+      ],
+      "lesson": "### Time remaining depends on the net rate\nWhen inflow exceeds delivered outflow, stored volume increases at the difference. Conditional time to a stated level is available volume divided by net accumulation. If 90 m³ remains and inflow exceeds outflow by 30 m³/hour, the simple estimate is 3 hours. If inflow changes, the estimate changes; it is not a guaranteed response window.\n\nUse actual delivered pumping at the current condition when supported. A pump's nameplate rating or command does not establish its current flow. Head, equipment condition, blockage and parallel operation can change delivery. Two nominal capacities do not necessarily add to the actual combined duty point.\n\nIf level data are used to infer storage, the level-to-volume relation must match the wet-well geometry. A constant area assumption works only over the stated range. Dead volume below the operating level is not available buffer above it.\n\nUse the calculation to support escalation and resource planning under the authorized response procedure. Do not deliberately operate to the last calculated minute. Include uncertainty, trend updates and contingency ownership; do not propose unauthorized bypassing or equipment isolation.",
+      "evidence": "**C3 — fictional lift station at 10:00**\nAvailable volume to the supplied operational trigger 120 m³. Inflow 310 m³/hour; verified combined pump delivery 270 m³/hour. Nameplates suggest 320 m³/hour. At 10:30, cumulative stored volume has increased 25 m³; updated inflow 330 and delivery 280 m³/hour. The available-volume calculation is valid for this level range.\n\nC4: Backup equipment availability is unconfirmed; no bypass authorization is supplied.",
+      "assignment": "Calculate the 10:00 conditional time and updated 10:30 time using the observed storage increase and new rates. Explain the error from using nameplate capacity. Draft a 300–450-word escalation note with assumptions, immediate evidence requests, trend update intervals and assigned contingency decisions.",
+      "rubric": [
+        "Initial 3 hours; updated 95/50=1.9 hours.",
+        "Uses actual storage change rather than assuming the first rate stayed constant.",
+        "Treats times as conditional and preserves authority boundaries."
+      ],
+      "facilitatorGuide": "Initial net 40 m³/hour gives 3 hours. At 10:30 remaining 95 m³; net 50 gives 1.9 hours from 10:30, or nominal 12:24 if constant. Nameplate 320 would incorrectly imply no accumulation at the initial 310 inflow. Require prompt procedure-based escalation, verification of backup readiness and ongoing monitoring; no promise that 12:24 is safe or exact.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "collection",
+        "wwroles"
+      ],
+      "checks": [
+        {
+          "id": "cc1",
+          "objective": "storage-capacity",
+          "prompt": "90 m³ remaining with inflow 250 and outflow 220 m³/hour gives:",
+          "choices": [
+            "0.33 hour",
+            "3 hours",
+            "30 hours",
+            "470 hours"
+          ],
+          "correctIndex": 1,
+          "explanation": "90/(250−220)=3 hours."
+        },
+        {
+          "id": "cc2",
+          "objective": "storage-capacity",
+          "prompt": "Two pumps’ nameplate capacities establish:",
+          "choices": [
+            "Their exact combined delivery now",
+            "The wet well’s available storage",
+            "The actual current inflow",
+            "Ratings that need operating-condition verification"
+          ],
+          "correctIndex": 3,
+          "explanation": "Actual combined delivery depends on the operating system and equipment."
+        }
+      ]
+    },
+    {
+      "id": "incident-volume",
+      "title": "Incident timelines and uncertain volumes",
+      "objectives": [
+        "Estimate volume using stated interval assumptions.",
+        "Separate detection time from event onset."
+      ],
+      "lesson": "### A volume estimate needs an evidence boundary\nAn incident may begin before it is detected. Record first evidence, detection, notification, observed conditions, actions and verified end separately. If onset is unknown, do not backfill it with the first alarm time and call it exact.\n\nFor a constant assumed rate, volume is rate multiplied by duration. For changing rates with discrete observations, an interval method such as trapezoidal integration can provide an estimate: average adjacent rates times the interval. State the interpolation assumption and any gaps. A calculated decimal does not make sparse observations precise.\n\nBounds may be more honest than one number. If an unobserved 15-minute interval plausibly ranged 0–20 m³/hour, that interval contributes 0–5 m³ under the supplied bound. Add it as a range, not as a fabricated measurement. These bounds are training assumptions; real estimates require defensible field evidence and the applicable reporting process.\n\nPreserve initial estimates and subsequent revisions with time, author and reason. Reporting an updated estimate should not erase what was known when the first notification was made. Apply Ontario and facility-specific reporting requirements through the responsible role; the US reference supplies technical context, not local legal thresholds.",
+      "evidence": "**C5 — fictional release-rate observations**\n11:00 rate 20 m³/hour;11:15 rate 40;11:30 rate 0 with verified cessation at 11:30. For the observed interval, the case permits linear interpolation. Prior interval 10:45–11:00 is unobserved; supplied credible rate bound 0–20 m³/hour. Onset before 10:45 is excluded by a verified dry inspection at 10:45.\n\nC6: First alarm 11:05; supervisor notified 11:10. An initial report says “Started 11:05, total 10 m³ exactly.”",
+      "assignment": "Calculate the observed interval volume and total range including the prior gap. Produce a timeline and a 400–550-word correction note to C6. Separate detection from onset, state interpolation/bound assumptions, preserve the original estimate and identify the reporting owner and missing evidence.",
+      "rubric": [
+        "Observed 12.5 m³ and total 12.5–17.5 m³.",
+        "Does not use 11:05 as known onset.",
+        "Preserves estimates and discloses method uncertainty."
+      ],
+      "facilitatorGuide": "11:00–11:15 mean 30×.25=7.5 m³; next mean 20×.25=5; observed 12.5. Prior interval adds 0–5, total 12.5–17.5. The alarm is detection evidence, not onset. Reject “exact” volume language and invented Ontario reporting thresholds. Ask what additional records could narrow the prior interval and who updates the formal report.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "collection",
+        "wwroles"
+      ],
+      "checks": [
+        {
+          "id": "cv1",
+          "objective": "incident-volume",
+          "prompt": "Average rate 30 m³/hour for 15 minutes yields:",
+          "choices": [
+            "450 m³",
+            "2 m³",
+            "7.5 m³",
+            "30 m³"
+          ],
+          "correctIndex": 2,
+          "explanation": "15 minutes=.25 hour;30×.25=7.5."
+        },
+        {
+          "id": "cv2",
+          "objective": "incident-volume",
+          "prompt": "The first alarm timestamp necessarily identifies:",
+          "choices": [
+            "When that alarm was recorded",
+            "The exact start of the physical event",
+            "The total released volume",
+            "The time all response duties were completed"
+          ],
+          "correctIndex": 0,
+          "explanation": "Alarm timing has a narrower meaning than event onset or completion."
+        }
+      ]
+    },
+    {
+      "id": "response-plan",
+      "title": "Collection-system response and recovery plan",
+      "objectives": [
+        "Prioritize capacity, evidence and communication tasks.",
+        "Define verified recovery and longer-term investigation."
+      ],
+      "lesson": "### Recovery is an evidence-based milestone\nA falling level can show improvement at a wet well while other parts of the catchment remain stressed. A pump running again does not prove its delivered flow, and a stopped release does not complete every reporting or follow-up duty. Define each recovery milestone and the evidence needed to mark it complete.\n\nStructure the plan by immediate response, verification and longer-term investigation. Immediate work follows authorized incident procedures. Verification confirms delivered pumping, level trend, affected locations and cessation where relevant. Longer-term work examines rainfall response, defects, capacity and operational changes using the records preserved during the event.\n\nGive each task an owner and a next decision point. Do not combine “requested,” “in progress” and “verified complete” into one checkbox. A clear register lets the next shift see where support is needed and prevents assumed closure.\n\nThe debrief should test the plan under a change in inflow or equipment availability. Recalculate the conditional storage time, revise priorities and state what remains uncertain. A good plan adapts without hiding its earlier assumptions.",
+      "evidence": "**C7 — handover at 11:35**\nRelease cessation at 11:30 verified as inC5. Wet-well level falling at the last two readings; current verified outflow 340 m³/hour and inflow 300. Backup pump availability still unconfirmed. No downstream inspection completion record. The release-volume report still containsC6's original estimate.\n\nC8: Manager asks to close all work orders because the level is falling.",
+      "assignment": "Prepare a 500–750-word handover with calculation appendix, immediate/recovery/investigation task register, owners and closure evidence. Correct the volume estimate, explain what C7 establishes, and respond to C8 without treating all tasks as equivalent. Discuss a scenario where inflow rises to 380 m³/hour, then complete the assessment and evaluation.",
+      "rubric": [
+        "Separates cessation, hydraulic recovery, reporting and investigation.",
+        "Corrects volume and recalculates net accumulation under the changed inflow.",
+        "Uses owners and verification rather than blanket closure."
+      ],
+      "facilitatorGuide": "Current net draining 40 m³/hour supports local improvement. At 380 inflow with 340 outflow, accumulation resumes at 40 m³/hour; time to trigger cannot be calculated without current available volume. Cessation is verified, but report revision, downstream evidence and backup readiness remain open. Require a defensible incident record and procedure-based follow-up, not an invented legal determination.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 5,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 15,
+          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "collection",
+        "wwroles"
+      ],
+      "checks": [
+        {
+          "id": "cr1",
+          "objective": "response-plan",
+          "prompt": "Inflow 380 and outflow 340 m³/hour mean storage is:",
+          "choices": [
+            "Falling 40 m³/hour",
+            "Rising 40 m³/hour",
+            "Unchanged",
+            "Falling 720 m³/hour"
+          ],
+          "correctIndex": 1,
+          "explanation": "Net inflow is 40 m³/hour."
+        },
+        {
+          "id": "cr2",
+          "objective": "response-plan",
+          "prompt": "Verified cessation of a release closes:",
+          "choices": [
+            "Every reporting duty automatically",
+            "Every asset investigation automatically",
+            "All downstream verification automatically",
+            "The cessation milestone, with other tasks reviewed separately"
+          ],
+          "correctIndex": 3,
+          "explanation": "Distinct response duties require their own evidence."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "collection-wet-weather-f1",
+      "objective": "wet-weather",
+      "prompt": "Wet volume 4,000 and comparable dry volume 2,800 m³ give excess:",
+      "choices": [
+        "1,200 m³",
+        "6,800 m³",
+        "1.43 m³",
+        "2,800 m³"
+      ],
+      "correctIndex": 0,
+      "explanation": "Subtract the stated baseline."
+    },
+    {
+      "id": "collection-wet-weather-f2",
+      "objective": "wet-weather",
+      "prompt": "A delayed sustained rainfall response is:",
+      "choices": [
+        "Proof of direct inflow at one property",
+        "A confirmed pipe defect",
+        "Evidence excluding storage effects",
+        "A pattern requiring corroboration"
+      ],
+      "correctIndex": 3,
+      "explanation": "It suggests hypotheses but needs corroboration."
+    },
+    {
+      "id": "collection-wet-weather-f3",
+      "objective": "storage-capacity",
+      "prompt": "80 m³ buffer with net accumulation 20 m³/hour gives:",
+      "choices": [
+        "4 hours",
+        "0.25 hour",
+        "100 hours",
+        "1,600 hours"
+      ],
+      "correctIndex": 0,
+      "explanation": "80/20=4 hours if the net rate remains constant."
+    },
+    {
+      "id": "collection-wet-weather-f4",
+      "objective": "storage-capacity",
+      "prompt": "After inflow increases, a previous time-to-trigger estimate:",
+      "choices": [
+        "Becomes conservative when a pump starts",
+        "Remains valid until its original deadline",
+        "Needs current storage and flow measurements",
+        "Replaces further level measurements"
+      ],
+      "correctIndex": 2,
+      "explanation": "The estimate depends on the current conditions."
+    },
+    {
+      "id": "collection-wet-weather-f5",
+      "objective": "incident-volume",
+      "prompt": "Rates 10 and 30 m³/hour 15 minutes apart give trapezoidal volume:",
+      "choices": [
+        "40 m³",
+        "10 m³",
+        "20 m³",
+        "5 m³"
+      ],
+      "correctIndex": 3,
+      "explanation": "Using the stated units and calculation: Mean 20×.25=5 m³."
+    },
+    {
+      "id": "collection-wet-weather-f6",
+      "objective": "incident-volume",
+      "prompt": "An unobserved interval should be:",
+      "choices": [
+        "Filled from the nearest point without qualification",
+        "Set to zero",
+        "Bounded or qualified with evidence",
+        "Assigned the first alarm rate throughout"
+      ],
+      "correctIndex": 2,
+      "explanation": "Disclose uncertainty and the basis of any estimate."
+    },
+    {
+      "id": "collection-wet-weather-f7",
+      "objective": "response-plan",
+      "prompt": "A pump command changes toRUN. What remains to verify?",
+      "choices": [
+        "Controller state",
+        "Actual operation and delivered flow",
+        "The most recent nameplate rating",
+        "The original dry-weather design inflow"
+      ],
+      "correctIndex": 1,
+      "explanation": "A command is not evidence of physical delivery."
+    },
+    {
+      "id": "collection-wet-weather-f8",
+      "objective": "response-plan",
+      "prompt": "A strong recovery register distinguishes:",
+      "choices": [
+        "Shift ownership",
+        "Requests, execution and verification",
+        "Wet versus dry weather records",
+        "Urgency without execution status"
+      ],
+      "correctIndex": 1,
+      "explanation": "The distinctions prevent assumed completion."
+    }
+  ],
+  "sources": [
+    {
+      "id": "collection",
+      "title": "US EPA: Sanitary sewer overflows",
+      "url": "https://www.epa.gov/npdes/sanitary-sewer-overflows-ssos",
+      "section": "Collection capacity, blockages, infiltration and inflow",
+      "jurisdiction": "US technical guidance; Ontario reporting is governed locally",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "ww",
+      "title": "US EPA: Municipal wastewater",
+      "url": "https://www.epa.gov/npdes/municipal-wastewater",
+      "section": "Primer for municipal treatment, collection systems and peak flows",
+      "jurisdiction": "US process guidance; not Ontario legal requirements",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "wwroles",
+      "title": "Ontario: Licensing guide for wastewater operators",
+      "url": "https://www.ontario.ca/page/licensing-guide-wastewater-operators",
+      "section": "Operator-in-charge responsibilities and operating records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

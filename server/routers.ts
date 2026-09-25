@@ -42,6 +42,7 @@ import { changelogRouter } from "./routers/changelogRouter";
 import { activationRouter } from "./routers/activationRouter";
 import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
+import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
@@ -140,6 +141,7 @@ export const appRouter = router({
   funnelAnalytics: funnelAnalyticsRouter,
   electricianReview: electricianReviewRouter,
   training: trainingRouter,
+  ceu: ceuRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

@@ -1,0 +1,440 @@
+{
+  "key": "ceu-instrumentation-scada",
+  "title": "Instrumentation, SCADA and Operational Data Integrity",
+  "shortTitle": "Instrumentation and SCADA",
+  "stream": "drinking_water",
+  "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Trace fictional operating signals from sensor to historian. Diagnose scaling errors, stale data, clock offsets and alarm records without confusing a display with verified process evidence.",
+  "plannedMinutes": 180,
+  "delivery": "Facilitated pilot with four practical modules, source reading, instructor discussion, a final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "signal-scaling",
+      "title": "From electrical signal to engineering units",
+      "objectives": [
+        "Convert a linear 4–20 mA signal to engineering units.",
+        "Identify mismatched configured ranges."
+      ],
+      "lesson": "### Each link can change the meaning\nThe measurement chain runs from the process through the sensor/transmitter, input channel, controller, display and historian. Each stage needs the correct range, units and quality interpretation. A plausible screen value can still be wrong if one range is mismatched.\n\nFor a linear 4–20 mA signal, fraction of span=(mA−4)/16. Engineering value=lower range+fraction×(upper−lower range). A12 mA signal is halfway through the span. On a 0–10 m range it represents 5 m, not 7.5 m and not 12 m. If the receiving system is configured 0–8 m, it will display 4 m for the same signal.\n\nA4 mA signal represents the lower calibrated endpoint in this model, not automatically instrument failure. Fault handling outside the normal range is device- and configuration-specific. Do not clamp a suspicious signal to zero and erase the fault state. Preserve raw value and quality flags for diagnosis.\n\nThis course uses supplied test records; it does not instruct learners to inject signals into live controls. Any physical testing, isolation or control change must use authorized procedures and qualified personnel. First identify the configuration mismatch and its consequences, then request a controlled verification.",
+      "evidence": "**I1 — fictional level channel**\nTransmitter range 0–6 m. Receiver configured 0–8 m. Recorded input 10 mA. Local verified level 2.25 m. Historian tag displays 3.00 m with “good” communications quality. The alarm threshold is a fictional displayed 4.00 m; its intended physical level is 3.00 m.\n\nI2: No configuration change has been authorized. A diagnostic report is requested.",
+      "assignment": "Show signal conversion for both ranges. Explain why the displayed alarm threshold may appear correct at one level while the scaling remains wrong. Produce a 300–450-word change request with affected displays, historian interpretation, alarm review, rollback and post-change verification responsibilities.",
+      "rubric": [
+        "Calculates the physical and displayed levels correctly.",
+        "Distinguishes communications status from measurement validity.",
+        "Includes controlled verification and historical-data qualification."
+      ],
+      "facilitatorGuide": "The signal fraction is (10−4)/16=0.375. The transmitter range gives 2.25 m; the receiver range gives 3.00 m. Under the incorrect scale, a displayed 4.00 m corresponds to a physical 3.00 m. Correcting the scale therefore also requires reviewing the alarm threshold. Require a traceable configuration review, historical qualification and authorized verification; do not accept live changes made without authorization.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "is1",
+          "objective": "signal-scaling",
+          "prompt": "12 mA on a 0–6 m range represents:",
+          "choices": [
+            "4.5 m",
+            "3 m",
+            "2 m",
+            "12 m"
+          ],
+          "correctIndex": 1,
+          "explanation": "Half of the 6 m span is 3 m."
+        },
+        {
+          "id": "is2",
+          "objective": "signal-scaling",
+          "prompt": "“Good” communications quality proves:",
+          "choices": [
+            "Calibration is current",
+            "The range is correct",
+            "The reported communications state is good",
+            "The process is within every limit"
+          ],
+          "correctIndex": 2,
+          "explanation": "Communications status does not validate the range, calibration or process condition."
+        }
+      ]
+    },
+    {
+      "id": "time-quality",
+      "title": "Clock offsets, stale values and missing samples",
+      "objectives": [
+        "Normalize timestamps using a documented offset.",
+        "Distinguish last-known values from current measurements."
+      ],
+      "lesson": "### A value has both a time and a status\nA historian may store event time, receipt time or both. A delayed message can arrive now while describing an earlier process condition. A display that holds the last value during a communication failure may look calm while providing no new measurement.\n\nState a clock relationship before correcting a timeline. If controller time is two minutes behind the reference clock, controller 08:10 corresponds to reference 08:12. Preserve the original timestamp and record the correction method. Do not overwrite raw events or apply the same offset to a device whose clock was not checked.\n\nA stale interval is not a stable process interval. If the last valid residual was 0.80 at 08:00 and communication was lost until 08:15, fifteen minutes of repeated 0.80 values may be display persistence. They do not prove residual remained 0.80. A gap also does not prove a value of zero.\n\nWhen aligning trends, compare measurement time, sample transport delay, data quality and logging interval. A graphical line joins points; it does not create measurements between them. Use the applicable operational method for gaps and escalation, and label conclusions that cannot be supported.",
+      "evidence": "**I3 — time records**\nController clock verified 2 minutes behind reference throughout this interval. Controller event 08:10: pump stop. Historian receipt reference 08:13. Independent pressure logger reference 08:12:30: pressure decline.\n\nI4: Residual tag last valid sample reference 08:00=0.80 mg/L. Communications flagbad 08:01–08:15; dashboard repeats 0.80 everyminute. First restored valid sample 08:16=0.65 mg/L. Pressure logger clock was independently verified; no correction is required.",
+      "assignment": "Build a normalized timeline with original time, corrected event time, receipt time and quality. Calculate pump-stop-to-pressure-decline lag and delivery delay. Write a gap statement for I4 and two conclusions that the held-value interval cannot support. Identify records needed for an authorized operational assessment.",
+      "rubric": [
+        "Corrects the pump event to 08:12 and calculates the two delays.",
+        "Preserves raw timestamps and the independent logger clock basis.",
+        "Labels held values as stale rather than stable or zero."
+      ],
+      "facilitatorGuide": "Separate clock offset from message latency. Controller 08:10 corresponds to reference 08:12. Receipt at 08:13 is one minute later; the pressure decline at 08:12:30 is 30 seconds after the corrected pump event. Do not apply the controller offset to the independently checked pressure logger. Sequence alone does not prove causation, and held residual values do not describe the gap. Require raw timestamps, quality flags and valid sample coverage.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "it1",
+          "objective": "time-quality",
+          "prompt": "A clock is 3 minutes behind. Its 09:20 event occurred at reference:",
+          "choices": [
+            "09:17",
+            "09:20",
+            "09:23",
+            "09:26"
+          ],
+          "correctIndex": 2,
+          "explanation": "Add the known three-minute lag to obtain reference time."
+        },
+        {
+          "id": "it2",
+          "objective": "time-quality",
+          "prompt": "A held value during bad communications is:",
+          "choices": [
+            "The last reported value",
+            "A new independent measurement",
+            "Proof the process stayed stable",
+            "Proof the process fell to zero"
+          ],
+          "correctIndex": 0,
+          "explanation": "Holding a value preserves a display, not a new process measurement."
+        }
+      ]
+    },
+    {
+      "id": "alarm-evidence",
+      "title": "Alarm occurrence, acknowledgement and response",
+      "objectives": [
+        "Distinguish an alarm acknowledgement from restoration.",
+        "Reconstruct a response from event and action records."
+      ],
+      "lesson": "### An acknowledgement is an interaction, not a repair\nAlarm records describe several events: condition onset, annunciation, acknowledgement, return to normal and any suppression or shelving. Their meanings depend on configuration. Acknowledgement usually records that a person interacted with the alarm; it does not prove the cause was corrected or the required response completed.\n\nAn alarm can chatter around a threshold, generating many events from one underlying condition. Count unique conditions and response coverage rather than assuming twenty notifications mean twenty independent failures. Hysteresis and delay settings may affect event patterns; changing them requires a controlled review so meaningful warnings are not hidden.\n\nFor a response audit, connect each significant condition to the applicable procedure, responsible role, action evidence and verification. “Called maintenance” is a request; “maintenance verified restored flow at 09:10” is a different level of evidence. If an alarm was shelved, record who authorized it, why, its duration and alternative monitoring.\n\nDo not solve a nuisance alarm by simply removing it from view. Establish measurement quality, process significance and configuration intent. The assignment asks for a review proposal, not instructions to disable safeguards.",
+      "evidence": "**I5 — alarm/event extract**\n09:00 high filter turbidity alarm;09:01 acknowledged by operator;09:03 maintenance work request;09:05 alarm returns normal;09:06 alarm repeats;09:07 shelved for 60 minutes. No shelving authorization or alternative monitoring record is attached.09:10 independent sample collection logged;result pending.09:12 work request acknowledged;repair not recorded.\n\nI6: Dashboard summary says “Resolved 09:01.”",
+      "assignment": "Replace I6 with a 350–500-word response audit. Distinguish event states, identify missing evidence and assign follow-up ownership. Propose a controlled alarm-review agenda addressing repeated alarms, data quality and temporary monitoring. Explain what would be needed before marking the incident resolved.",
+      "rubric": [
+        "Does not mistake acknowledgement for resolution.",
+        "Identifies authorization and alternative-monitoring gaps.",
+        "Requires verified outcomes and preserves repeat events."
+      ],
+      "facilitatorGuide": "The 09:01 acknowledgement is not resolution. The 09:05 normal state is followed by recurrence at 09:06. Shelving at 09:07 lacks attached authorization and alternative-monitoring evidence. The 09:10 sample has no result yet; the 09:12 maintenance acknowledgement is not a repair. Require procedure-based escalation and verification. Return proposals that disable alarms or claim closure from one brief normal state.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "roles"
+      ],
+      "checks": [
+        {
+          "id": "ia1",
+          "objective": "alarm-evidence",
+          "prompt": "An acknowledged work request establishes:",
+          "choices": [
+            "Repair complete",
+            "Request received",
+            "Process restored",
+            "Alarm correctly configured"
+          ],
+          "correctIndex": 1,
+          "explanation": "Acknowledgement establishes receipt, not execution."
+        },
+        {
+          "id": "ia2",
+          "objective": "alarm-evidence",
+          "prompt": "A shelved alarm review should include:",
+          "choices": [
+            "Only the operator’s preferred screen colour",
+            "Only the total daily alarm count",
+            "Only the original installation year",
+            "Authorization, duration and alternative monitoring"
+          ],
+          "correctIndex": 3,
+          "explanation": "Temporary shelving needs documented authorization, duration and alternative monitoring."
+        }
+      ]
+    },
+    {
+      "id": "data-audit",
+      "title": "Operational data audit and change verification",
+      "objectives": [
+        "Assemble an auditable signal-quality report.",
+        "Define post-change verification across the whole measurement chain."
+      ],
+      "lesson": "### Verify the chain after a correction\nA configuration correction may fix the live display while leaving a historian transform, alarm threshold or report calculation inconsistent. Define the verification path before changing anything: raw signal, engineering conversion, quality flag, timestamp, display, stored value and downstream calculation.\n\nKeep an immutable copy of the original evidence and record the change ticket, authorized reviewer, implementation time and results. Historical data affected by a scaling error should be qualified. Reprocessing may be appropriate under a controlled method, but a corrected series must remain distinguishable from the original observations.\n\nSeparate investigation from implementation. An audit can identify a likely mismatch and quantify its effect without granting access to change a controller. The responsible technical team reviews the change, tests it under the authorized procedure and documents rollback conditions.\n\nA successful review should leave the next operator with fewer hidden assumptions. State what is verified, what remains provisional and which decisions are affected. Avoid a blanket “all SCADA data reliable” claim after repairing only one channel.",
+      "evidence": "**I7 — draft closeout**\n“Level fixed because communications showgood. Pump stopped 08:10 and pressure fell 08:12:30. Residual stayed 0.80 throughout. Alarmresolved 09:01. No historical qualification needed.”\n\nUseI1–I6. No actual configuration repair, independent residual reconstruction or final sample result has been supplied.",
+      "assignment": "Write a 500–700-word corrected audit and a post-change verification checklist. Quantify the scaling and timestamp corrections, identify stale-data and alarm-response limitations, and assign evidence owners. Include a versioned historical-data note and rollback criterion. Present to the instructor before assessment and evaluation.",
+      "rubric": [
+        "Corrects all five unsupported claims in I7.",
+        "Covers the transmitter, display, historian, reports and alarms.",
+        "Makes no implementation or closure claim without evidence."
+      ],
+      "facilitatorGuide": "Expected corrections: physical level 2.25 m versus displayed 3.00 m; reference pump stop 08:12 with a 30-second pressure lag; a stale residual interval; acknowledgement rather than resolution; historical qualification still required. Preserve originals. The checklist should verify known points, quality flags and time handling under authorized procedures, including alarm thresholds after scaling correction. No live control manipulation is part of this course.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 5,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "discussion",
+          "minutes": 5,
+          "instruction": "Defend one decision during instructor discussion."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 15,
+          "instruction": "Complete the module checks, final assessment and course evaluation. Use the instructor debrief to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "roles"
+      ],
+      "checks": [
+        {
+          "id": "id1",
+          "objective": "data-audit",
+          "prompt": "After correcting a display range, what else needs review?",
+          "choices": [
+            "Only the display font",
+            "Only the course score",
+            "Alarm thresholds and stored/report values",
+            "Nothing if communications are good"
+          ],
+          "correctIndex": 2,
+          "explanation": "Downstream configuration may remain inconsistent after a display correction."
+        },
+        {
+          "id": "id2",
+          "objective": "data-audit",
+          "prompt": "How should affected historical values be handled?",
+          "choices": [
+            "Retain originals and document qualifications",
+            "Silently replace every original entry",
+            "Delete the affected interval without a record",
+            "Declare all old values correct"
+          ],
+          "correctIndex": 0,
+          "explanation": "Traceable qualification preserves the original evidence and the interpretation."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "instrumentation-scada-f1",
+      "objective": "signal-scaling",
+      "prompt": "8 mA on a 0–12 m range represents:",
+      "choices": [
+        "6 m",
+        "3 m",
+        "8 m",
+        "12 m"
+      ],
+      "correctIndex": 1,
+      "explanation": "A quarter of the 12 m span is 3 m."
+    },
+    {
+      "id": "instrumentation-scada-f2",
+      "objective": "signal-scaling",
+      "prompt": "A receiver range differs from the transmitter range. First establish:",
+      "choices": [
+        "The threshold with the fewest notifications",
+        "Display precision",
+        "The value closest to the expected daily mean",
+        "Configuration records and a physical check"
+      ],
+      "correctIndex": 3,
+      "explanation": "Verify the documented measurement chain before changing it."
+    },
+    {
+      "id": "instrumentation-scada-f3",
+      "objective": "time-quality",
+      "prompt": "A clock 2 minutes ahead reports 10:12. Reference time is:",
+      "choices": [
+        "10:14",
+        "10:10",
+        "10:12",
+        "10:08"
+      ],
+      "correctIndex": 1,
+      "explanation": "Subtract the known two-minute lead."
+    },
+    {
+      "id": "instrumentation-scada-f4",
+      "objective": "time-quality",
+      "prompt": "A line joining two valid trend points proves:",
+      "choices": [
+        "Continuous movement along the plotted line",
+        "A constant process",
+        "Only the plotted points are recorded measurements",
+        "The last value held until the next point"
+      ],
+      "correctIndex": 2,
+      "explanation": "Drawing a line does not create intermediate observations."
+    },
+    {
+      "id": "instrumentation-scada-f5",
+      "objective": "alarm-evidence",
+      "prompt": "An alarm acknowledged at 11:00 is:",
+      "choices": [
+        "Necessarily a false alarm",
+        "Necessarily repaired at 11:00",
+        "Acknowledged at 11:00",
+        "Proof of restored water quality"
+      ],
+      "correctIndex": 2,
+      "explanation": "Acknowledgement has a narrower meaning than physical restoration."
+    },
+    {
+      "id": "instrumentation-scada-f6",
+      "objective": "alarm-evidence",
+      "prompt": "A one-minute normal state followed by recurrence suggests:",
+      "choices": [
+        "The condition needs continued review",
+        "Permanent restoration",
+        "Closure after acknowledgement",
+        "Removal of the original event from the log"
+      ],
+      "correctIndex": 0,
+      "explanation": "A brief normal state does not close a recurring condition."
+    },
+    {
+      "id": "instrumentation-scada-f7",
+      "objective": "data-audit",
+      "prompt": "A corrected historical series should be:",
+      "choices": [
+        "Indistinguishable from raw data",
+        "Used to delete the source records",
+        "Labelled as the original measurement",
+        "Versioned with a documented method"
+      ],
+      "correctIndex": 3,
+      "explanation": "Keep original and derived series distinguishable and traceable."
+    },
+    {
+      "id": "instrumentation-scada-f8",
+      "objective": "data-audit",
+      "prompt": "Which closeout is strongest?",
+      "choices": [
+        "Documented checks across the full affected chain",
+        "Normal screen values",
+        "A correctly commanded setting",
+        "Acknowledgement of the work request"
+      ],
+      "correctIndex": 0,
+      "explanation": "Documented checks across the affected chain support closeout."
+    }
+  ],
+  "sources": [
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "roles",
+      "title": "Ontario: O. Reg. 128/04",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "section": "Sections 23, 25–27: designation, duties and records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}
