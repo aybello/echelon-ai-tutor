@@ -82,11 +82,18 @@ async function mutateRecord(
         message: "Start the course before saving work.",
       });
     const current = parseRecord(row.stateJson);
-    if (
-      action.type === "exam" &&
-      current.attempts.some(a => a.id === action.attemptId)
-    )
-      return current;
+    if (action.type === "exam") {
+      const previous = current.attempts.find(a => a.id === action.attemptId);
+      if (previous) {
+        if (JSON.stringify(previous.answers) !== JSON.stringify(action.answers))
+          throw new TRPCError({
+            code: "CONFLICT",
+            message:
+              "This attempt was already submitted with different answers. Reload the saved record before starting another attempt.",
+          });
+        return current;
+      }
+    }
     if (current.revision !== revision)
       throw new TRPCError({
         code: "CONFLICT",

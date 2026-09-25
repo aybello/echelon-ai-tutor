@@ -50,6 +50,7 @@ export const DATA_EXPLORER_DATASETS: readonly DataExplorerDataset[] = [
   { key: "training-attestations", tableName: "training_attestations", label: "Training attestations", description: "Signed training review records", category: "Teams", orderBy: "signedAt" },
   { key: "exam-outcomes", tableName: "exam_outcomes", label: "Exam outcomes", description: "Reported certification outcomes", category: "Teams", orderBy: "recordedAt" },
 
+  { key: "ceu-learning-records", tableName: "ceu_learning_records", label: "CEU record metadata", description: "Pilot course editions and revisions; private work is available only in instructor review", category: "Learning", orderBy: "updatedAt" },
   { key: "learning-activity-sessions", tableName: "learning_activity_sessions", label: "Learning activity sessions", description: "Platform-recorded study activity", category: "Learning", orderBy: "createdAt" },
   { key: "question-attempts", tableName: "question_attempts", label: "Question attempts", description: "Learner answer attempts", category: "Learning", orderBy: "createdAt" },
   { key: "exam-results", tableName: "exam_results", label: "Mock exam results", description: "Completed mock exam outcomes", category: "Learning", orderBy: "createdAt" },

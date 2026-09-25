@@ -143,6 +143,16 @@ describe("CEU server learning decisions", () => {
     expect(r.assessmentDraft).toBeUndefined();
     expect(r.attempts).toHaveLength(1);
     expect(act(r, attempt)).toBe(r);
+    expect(() =>
+      act(r, { ...attempt, answers: attempt.answers.map(a => (a + 1) % 4) })
+    ).toThrow("already been submitted");
+    expect(() =>
+      act(r, {
+        type: "examDraft",
+        attemptId: attempt.attemptId,
+        answers: attempt.answers,
+      })
+    ).toThrow("already been submitted");
   });
   it("requires documented instructor reassessment after three failed attempts", () => {
     let r = submitted();

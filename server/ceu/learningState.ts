@@ -149,11 +149,17 @@ export function transitionCeu(
     }
     case "examDraft":
     case "exam": {
-      if (
-        action.type === "exam" &&
-        state.attempts.some(a => a.id === action.attemptId)
-      )
-        return original;
+      const previous = state.attempts.find(a => a.id === action.attemptId);
+      if (previous) {
+        if (
+          action.type === "exam" &&
+          JSON.stringify(previous.answers) === JSON.stringify(action.answers)
+        )
+          return original;
+        throw new Error(
+          "This attempt identifier has already been submitted. Start a new attempt."
+        );
+      }
       const ready = ceuReadiness(course, state);
       if (!ready.checksPassed || !ready.exercisesSubmitted)
         throw new Error(

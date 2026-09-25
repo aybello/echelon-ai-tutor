@@ -121,6 +121,13 @@ describe.skipIf(!enabled)("CEU database-backed learner lifecycle", () => {
       action,
     });
     expect(retried.record).toEqual(r);
+    await expect(
+      learner.save({
+        courseKey,
+        revision: oldRevision,
+        action: { ...action, answers: action.answers.map(a => (a + 1) % 4) },
+      })
+    ).rejects.toMatchObject({ code: "CONFLICT" });
     expect(r.attempts).toHaveLength(1);
     await expect(
       reviewer.review({
