@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Investigate water age, residual trends, pressure events and repair records using a fictional North Ridge distribution zone. Produce a prioritized monitoring and verification plan.",
   "plannedMinutes": 180,
-  "delivery": "Facilitated pilot with four practical modules, source reading, instructor discussion, a final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot with four practical modules, source reading, asynchronous instructor review of written work, a server-graded final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "storage-turnover",

@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Diagnose a fictional biological-treatment upset using consistent solids balances, settling tests, spatial oxygen observations and a monitored recovery plan. Practise distinguishing biomass loss from a change in process kinetics.",
   "plannedMinutes": 240,
-  "delivery": "Facilitated pilot with four practical modules, source reading, instructor discussion, a final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot with four practical modules, source reading, asynchronous instructor review of written work, a server-graded final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "inventory-boundary",

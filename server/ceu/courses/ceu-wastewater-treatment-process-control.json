@@ -7,7 +7,7 @@
   "prerequisites": "Working familiarity with a treatment train, laboratory reports and metric units. A calculator and access to the linked readings are required.",
   "introduction": "Work a fictional Millhaven shift from incoming load through biological treatment, clarification, nutrient control and solids handling. Build calculations and a defensible handover from imperfect evidence.",
   "plannedMinutes": 600,
-  "delivery": "Facilitated pilot: two five-hour learning days, excluding breaks. Complete source reading, calculations, practical submissions, instructor discussion and final assessment. Duration must be validated in a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete source reading, calculations, practical submissions and final assessment on your own schedule; the application records active learning time and caps it at seven contact hours per day, excluding breaks. Practical work receives asynchronous instructor review. Duration must be validated in a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "process-map",

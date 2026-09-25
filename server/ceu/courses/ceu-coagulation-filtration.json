@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Evaluate replicated jar tests, chemical-feed calibration, individual filter performance and a controlled trial at fictional Pine Creek Waterworks.",
   "plannedMinutes": 240,
-  "delivery": "Facilitated pilot with four practical modules, source reading, instructor discussion, a final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot with four practical modules, source reading, asynchronous instructor review of written work, a server-graded final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "jar-design",

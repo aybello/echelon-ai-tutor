@@ -365,7 +365,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                     ))}
                   </ol>
                   <p>
-                    These are facilitated activity estimates, not automatically
+                    These are self-paced activity estimates, not automatically
                     earned contact hours.
                   </p>
                 </details>

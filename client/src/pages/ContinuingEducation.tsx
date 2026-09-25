@@ -143,7 +143,7 @@ export default function ContinuingEducation() {
           <div className="ceu-section-heading">
             <p className="ceu-eyebrow">Course catalogue</p>
             <h2 id="ceu-catalogue-title">Choose the operational capability you want to strengthen.</h2>
-            <p>Every course uses fictional scenarios and general operating principles. Facilitated delivery includes instructor engagement, verified participation, assessment and a course evaluation. Reading a page alone does not complete a course.</p>
+            <p>Every course uses fictional scenarios and general operating principles. Self-paced delivery includes asynchronous instructor review, verified active learning time, assessment and a course evaluation. Reading a page alone does not complete a course.</p>
           </div>
           <div className="ceu-course-list">
             {CEU_COURSES.map((course) => (

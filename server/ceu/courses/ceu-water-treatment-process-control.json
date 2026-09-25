@@ -7,7 +7,7 @@
   "prerequisites": "Basic treatment-process knowledge; ability to convert litres, cubic metres, minutes and days. A calculator is useful.",
   "introduction": "Follow a raw-water change through coagulation, clarification, filtration and disinfection. Use supplied operating data to calculate loads, compare competing explanations and design an authorized trial with measurable acceptance and stop criteria.",
   "plannedMinutes": 600,
-  "delivery": "Two facilitated five-hour learning days, excluding breaks, with individual data work and instructor-led case discussion. Ten hours is a design estimate pending a timed pilot, not an approved CEU value.",
+  "delivery": "Self-paced online pilot with individual data work and asynchronous instructor review of practical submissions. The application records active learning time and caps it at seven contact hours per day, excluding breaks. Ten hours is a design estimate pending a timed pilot, not an approved CEU value.",
   "modules": [
     {
       "id": "water-balance",
