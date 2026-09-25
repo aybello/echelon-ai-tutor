@@ -287,3 +287,412 @@
   .ceu-interest-button,
   .ceu-preview-link { transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1); }
 }
+
+
+/* Dense public catalogue: course choice first, supporting detail on demand. */
+.ceu-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 310px);
+  gap: 38px;
+  padding-block: 30px 24px;
+  align-items: center;
+}
+
+.ceu-hero h1 {
+  max-width: 700px;
+  font-size: clamp(38px, 4.2vw, 58px);
+  line-height: 1.01;
+}
+
+.ceu-hero-summary {
+  max-width: 710px;
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.ceu-hero-facts {
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.ceu-hero-facts span {
+  padding: 7px 9px;
+  font-size: 11px;
+}
+
+.ceu-hero-panel {
+  padding: 21px;
+  border-radius: 14px;
+}
+
+.ceu-hero-panel p {
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+.ceu-hero-panel strong {
+  font-size: 22px;
+}
+
+.ceu-hero-panel span {
+  margin-top: 11px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.ceu-catalogue {
+  padding-block: 20px 64px;
+}
+
+.ceu-section-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: end;
+  max-width: none;
+}
+
+.ceu-section-heading .ceu-eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: 7px;
+}
+
+.ceu-section-heading h2 {
+  font-size: clamp(28px, 3vw, 39px);
+}
+
+.ceu-section-heading > p:last-child {
+  max-width: 460px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ceu-course-list {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.ceu-course-card {
+  display: flex;
+  min-width: 0;
+  min-height: 184px;
+  flex-direction: column;
+  padding: 18px;
+  border-radius: 13px;
+}
+
+.ceu-course-card.is-expanded {
+  grid-column: span 3;
+  min-height: 0;
+}
+
+.ceu-course-topline {
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+}
+
+.ceu-course-topline .ceu-course-stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ceu-blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.ceu-course-heading {
+  margin-top: 12px;
+}
+
+.ceu-course-heading h2 {
+  max-width: none;
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1.12;
+}
+
+.ceu-course-audience {
+  display: none;
+}
+
+.ceu-course-card.is-expanded .ceu-course-audience {
+  display: block;
+  max-width: 760px;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ceu-course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-top: 13px;
+  color: var(--ceu-copy);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ceu-course-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ceu-course-meta svg {
+  color: var(--ceu-blue);
+}
+
+.ceu-course-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.ceu-preview-link,
+.ceu-outline-button {
+  min-height: 36px;
+  padding: 0 10px;
+  font-size: 11px;
+}
+
+.ceu-outline-button {
+  min-width: 112px;
+}
+
+.ceu-course-card.is-expanded .ceu-course-actions {
+  max-width: 390px;
+  margin-top: 4px;
+}
+
+.ceu-course-card.is-expanded .ceu-outline {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.ceu-course-card.is-expanded .ceu-interest-button {
+  grid-column: 1 / -1;
+  width: fit-content;
+  min-height: 40px;
+  margin-top: 4px;
+  padding-inline: 15px;
+}
+
+@media (max-width: 1120px) {
+  .ceu-course-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ceu-course-card.is-expanded {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 830px) {
+  .ceu-hero {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 26px;
+  }
+
+  .ceu-hero-panel {
+    max-width: none;
+  }
+
+  .ceu-section-heading {
+    display: block;
+  }
+
+  .ceu-section-heading > p:last-child {
+    margin-top: 9px;
+  }
+
+  .ceu-course-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ceu-course-card.is-expanded {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 580px) {
+  .ceu-hero {
+    padding-bottom: 16px;
+  }
+
+  .ceu-hero h1 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .ceu-hero-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ceu-hero-facts span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .ceu-catalogue {
+    padding-top: 16px;
+  }
+
+  .ceu-course-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ceu-course-card {
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .ceu-course-card.is-expanded {
+    grid-column: auto;
+  }
+
+  .ceu-course-heading h2 {
+    font-size: 20px;
+  }
+
+  .ceu-course-actions {
+    margin-top: 14px;
+    padding-top: 0;
+  }
+
+  .ceu-course-card.is-expanded .ceu-outline {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Keep the ten-course choice set above the fold on desktop. */
+.ceu-hero {
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 30px;
+  padding-block: 22px 16px;
+}
+
+.ceu-hero h1 {
+  max-width: 650px;
+  font-size: clamp(34px, 3.65vw, 50px);
+}
+
+.ceu-hero-summary {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.ceu-hero-panel {
+  padding: 16px 18px;
+}
+
+.ceu-hero-panel p {
+  margin-bottom: 7px;
+}
+
+.ceu-hero-panel strong {
+  font-size: 18px;
+}
+
+.ceu-hero-panel span {
+  margin-top: 7px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.ceu-catalogue {
+  padding-block: 12px 64px;
+}
+
+.ceu-section-heading h2 {
+  font-size: clamp(25px, 2.5vw, 34px);
+}
+
+.ceu-section-heading > p:last-child {
+  font-size: 13px;
+}
+
+.ceu-course-list {
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.ceu-course-card {
+  min-height: 0;
+  padding: 14px;
+  border-radius: 11px;
+}
+
+.ceu-course-topline {
+  font-size: 8px;
+}
+
+.ceu-course-topline .ceu-course-stage {
+  font-size: 8px;
+}
+
+.ceu-course-heading {
+  margin-top: 9px;
+}
+
+.ceu-course-heading h2 {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.05;
+}
+
+.ceu-course-meta {
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 10px;
+}
+
+.ceu-course-actions {
+  gap: 6px;
+  padding-top: 10px;
+}
+
+.ceu-preview-link,
+.ceu-outline-button {
+  min-height: 31px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+.ceu-outline-button {
+  min-width: 66px;
+}
+
+@media (max-width: 830px) {
+  .ceu-hero {
+    padding-block: 24px 12px;
+  }
+
+  .ceu-hero h1 {
+    font-size: clamp(34px, 9.6vw, 44px);
+  }
+
+  .ceu-hero-summary {
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 830px) {
+  .ceu-hero {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

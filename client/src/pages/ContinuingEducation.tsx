@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "wouter";
-import { Check, ChevronDown, ClipboardCheck, Clock3, FileCheck2, GraduationCap, ShieldCheck } from "lucide-react";
+import { Check, ChevronDown, ClipboardCheck, Clock3, FileCheck2, ShieldCheck } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -55,26 +55,27 @@ function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: (
 function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: CeuCourse; selected: boolean; onSelect: () => void; onRequestUpdates: () => void }) {
   const streamLabel = course.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater";
   return (
-    <article className={`ceu-course-card ${course.stream === "wastewater" ? "is-wastewater" : ""}`}>
+    <article className={`ceu-course-card ${course.stream === "wastewater" ? "is-wastewater" : ""}${selected ? " is-expanded" : ""}`}>
       <div className="ceu-course-topline">
         <span>{streamLabel}</span>
-        <span><Clock3 size={15} aria-hidden="true" /> Planned {course.plannedContactHours} contact hours</span>
+        <span className="ceu-course-stage"><ShieldCheck size={14} aria-hidden="true" /> Pilot course</span>
       </div>
       <div className="ceu-course-heading">
         <div>
           <h2>{course.title}</h2>
-          <p>{course.audience}</p>
+          <p className="ceu-course-audience">{course.audience}</p>
         </div>
-        <div className="ceu-approval-badge"><ShieldCheck size={16} aria-hidden="true" /> {course.statusLabel}</div>
       </div>
-      <p className="ceu-course-status">{course.statusDescription}</p>
+      <div className="ceu-course-meta">
+        <span><Clock3 size={15} aria-hidden="true" /> {course.plannedContactHours} planned hours</span>
+        <span>{course.modules.length} modules</span>
+      </div>
       <div className="ceu-course-actions">
-        <Link href={`/continuing-education/${course.key}`} className="ceu-preview-link">Open pilot course</Link>
-        <button type="button" className="ceu-outline-button" aria-expanded={selected} onClick={onSelect}>
-          {selected ? "Hide course outline" : "Review course outline"}
+        <Link href={`/continuing-education/${course.key}`} className="ceu-preview-link" aria-label="Open pilot course">Open</Link>
+        <button type="button" className="ceu-outline-button" aria-label={selected ? "Hide course outline" : "Review course outline"} aria-expanded={selected} onClick={onSelect}>
+          {selected ? "Hide" : "Outline"}
           <ChevronDown size={17} aria-hidden="true" className={selected ? "is-open" : ""} />
         </button>
-        <button type="button" className="ceu-interest-button" onClick={onRequestUpdates}>{course.ctaLabel}</button>
       </div>
       {selected && (
         <div className="ceu-outline" aria-label={`${course.title} course outline`}>
@@ -101,6 +102,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
             <ul>{course.completionRequirements.map((requirement) => <li key={requirement}>{requirement}</li>)}</ul>
           </div>
           <p className="ceu-disclosure">{course.publicDisclosure}</p>
+          <button type="button" className="ceu-interest-button" onClick={onRequestUpdates}>{course.ctaLabel}</button>
         </div>
       )}
     </article>
@@ -112,7 +114,7 @@ export default function ContinuingEducation() {
     title: "Ontario Operator Continuing Education Courses | Echelon Institute",
     description: "Explore Echelon Institute's applied pilot courses for Ontario drinking-water and wastewater operators.",
   });
-  const [selectedCourseKey, setSelectedCourseKey] = useState<string>(CEU_COURSES[0].key);
+  const [selectedCourseKey, setSelectedCourseKey] = useState<string>("");
   const [interestCourseKey, setInterestCourseKey] = useState<string | null>(null);
   const selectedCourse = useMemo(() => CEU_COURSES.find((course) => course.key === selectedCourseKey), [selectedCourseKey]);
   const interestCourse = useMemo(() => CEU_COURSES.find((course) => course.key === interestCourseKey), [interestCourseKey]);
@@ -124,26 +126,21 @@ export default function ContinuingEducation() {
         <section className="ceu-hero">
           <div className="ceu-hero-copy">
             <p className="ceu-eyebrow">Echelon Institute professional learning</p>
-            <h1>Structured learning paths for the operators who keep systems running.</h1>
-            <p className="ceu-hero-summary">Ten self-paced pilot courses combine practical operating cases, calculations, automatic exercise feedback and saved learning records. Three flagship courses are planned for ten hours each; focused courses are planned for three or four hours.</p>
-            <div className="ceu-hero-facts">
-              <span><Clock3 size={17} aria-hidden="true" /> 3–10 planned learning hours</span>
-              <span><GraduationCap size={17} aria-hidden="true" /> 4–6 practical modules per course</span>
-              <span><FileCheck2 size={17} aria-hidden="true" /> Saved work and automatic completion</span>
-            </div>
+            <h1>Ten operator courses. One place to explore.</h1>
+            <p className="ceu-hero-summary">Self-paced pilot lessons, saved progress and final assessments for Ontario water and wastewater operators.</p>
           </div>
           <aside className="ceu-hero-panel">
             <p>Public status</p>
-            <strong>Pilot curriculum · review pending</strong>
-            <span>Duration requires a timed pilot. These courses do not award approved CEUs, accreditation or regulatory recognition.</span>
+            <strong>Non-credit pilot</strong>
+            <span>Explore every course now. No approved CEUs, accreditation or regulatory recognition are awarded.</span>
           </aside>
         </section>
 
         <section className="ceu-catalogue" aria-labelledby="ceu-catalogue-title">
           <div className="ceu-section-heading">
             <p className="ceu-eyebrow">Course catalogue</p>
-            <h2 id="ceu-catalogue-title">Choose the operational capability you want to strengthen.</h2>
-            <p>Every course uses fictional scenarios and general operating principles. Self-paced delivery includes server-graded case exercises, active-time tracking and a final assessment. An optional evaluation helps improve the pilot. Reading a page alone does not complete a course.</p>
+            <h2 id="ceu-catalogue-title">All 10 operator courses</h2>
+            <p>Open any course to preview its lessons. Expand an outline only when you want the detail.</p>
           </div>
           <div className="ceu-course-list">
             {CEU_COURSES.map((course) => (
