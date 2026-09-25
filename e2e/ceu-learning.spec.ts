@@ -265,7 +265,7 @@ test("ten public courses, private answers and mobile layout", async ({
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Submit case exercise" })
-  ).toHaveCount(0);
+  ).toBeDisabled();
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
     await page.locator("body").evaluate(el => el.scrollWidth)
@@ -295,6 +295,9 @@ test("ten-hour flagship finishes without an admin", async ({
   page,
   context,
 }) => {
+  // Both learner journeys share one loopback IP in CI. Let the 100/minute
+  // general API limiter's window expire before this rapid, scripted journey.
+  await page.waitForTimeout(61_000);
   await loginFixture(context, emails[1]);
   await journey(page, flagship, emails[1]);
 });
