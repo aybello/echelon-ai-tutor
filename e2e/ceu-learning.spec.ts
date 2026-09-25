@@ -169,6 +169,11 @@ test("learner drafts, module checks, assessment recovery and account isolation",
     draftButton.click(),
   ]);
   await expect(draftButton).toBeDisabled();
+  await expect(
+    page.getByText("Saved assessment work is retained in your record.", {
+      exact: true,
+    })
+  ).toBeVisible();
   await page.reload();
   await page
     .getByRole("button", { name: "Final assessment", exact: true })
@@ -197,6 +202,16 @@ test("learner drafts, module checks, assessment recovery and account isolation",
   await expect(
     page.getByRole("heading", { name: "Pilot learning completed", exact: true })
   ).toHaveCount(0);
+  await page.emulateMedia({ media: "print" });
+  await expect(
+    page.locator(".ceu-print-record").getByText(course.title, { exact: true })
+  ).toBeVisible();
+  await expect(
+    page
+      .locator(".ceu-print-record")
+      .getByText("Echelon Institute", { exact: true })
+  ).toBeVisible();
+  await page.emulateMedia({ media: "screen" });
   const other = await browser.newContext();
   await loginFixture(other, emails[1]);
   const otherPage = await other.newPage();

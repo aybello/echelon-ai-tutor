@@ -698,6 +698,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                 ) : (
                   <>
                     <dl>
+                      <dt>Course</dt>
+                      <dd>{course.title}</dd>
+                      <dt>Provider</dt>
+                      <dd>Echelon Institute</dd>
                       <dt>Course edition</dt>
                       <dd>{record.courseVersion}</dd>
                       <dt>Started</dt>
@@ -719,6 +723,21 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                           ? `${record.participation.sessions.reduce((s, a) => s + a.minutes, 0)} instructor-verified minutes`
                           : "Awaiting instructor verification"}
                       </dd>
+                      {record.participation && (
+                        <>
+                          <dt>Instructor</dt>
+                          <dd>{record.participation.instructor}</dd>
+                          <dt>Verified sessions</dt>
+                          <dd>
+                            {record.participation.sessions.map((session, i) => (
+                              <p key={i}>
+                                {session.date} · {session.minutes} contact
+                                minutes
+                              </p>
+                            ))}
+                          </dd>
+                        </>
+                      )}
                     </dl>
                     <h3>Assessment history</h3>
                     {record.attempts.map((a, i) => (
