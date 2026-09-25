@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import SiteNav from "@/components/SiteNav";
 import { ceuModuleSlides } from "@shared/ceuSlides";
 import { ceuFinalEntry } from "@shared/ceuFinalEntry";
 import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
@@ -54,15 +55,6 @@ function displayMinutes(minutes: number) {
 
 function coursePresentationIntro(title: string) {
   return `${title} is a self-paced operator learning pilot built around focused lessons, worked scenarios and a protected final exam. Progress is saved securely when you sign in.`;
-}
-
-function initials(value: string) {
-  return value
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map(part => part[0]?.toUpperCase())
-    .join("") || "EI";
 }
 
 function ChoiceList({
@@ -344,6 +336,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     return !examDirty || window.confirm("Your latest final-exam answer has not saved. Leave and discard it?");
   }
 
+  function changeView(nextView: CourseView) {
+    if (nextView === view || confirmDiscardUnsavedExam()) setView(nextView);
+  }
+
   if (courseQuery.isLoading) return <main className="ceu-loading">Loading course…</main>;
   if (!course || !activeModule || !activeSlide) {
     return (
@@ -363,31 +359,32 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
 
   return (
     <div className="ceu-screen">
-      <header className="ceu-app-header">
-        <Link href="/continuing-education" className="ceu-app-brand" aria-label="Back to continuing education" onClick={event => {
-          if (!confirmDiscardUnsavedExam()) event.preventDefault();
-        }}>
-          <span className="ceu-brand-mark">E</span>
-          <strong>Echelon</strong>
-          <span>Continuing Education</span>
-        </Link>
-        <nav className="ceu-app-links" aria-label="Continuing education navigation">
-          <Link href="/continuing-education" className={view === "overview" ? "is-active" : ""} onClick={event => {
-            if (!confirmDiscardUnsavedExam()) event.preventDefault();
-          }}>My courses</Link>
-          <button type="button" onClick={() => {
-            if (confirmDiscardUnsavedExam()) setView(record?.completion ? "certificate" : "overview");
-          }}>Certificates</button>
-          <a href="mailto:info@echeloninstitute.ca?subject=Continuing%20Education%20Help">Help</a>
-        </nav>
-        <div className="ceu-header-actions">
-          {status && <span className="ceu-save-status"><CheckCircle2 size={16} aria-hidden="true" /> {status}</span>}
-          {signedIn && <span className="ceu-avatar" aria-label="Signed-in learner">{initials(record?.learnerName ?? "Echelon learner")}</span>}
-          {view !== "overview" && <button type="button" className="ceu-exit-button" onClick={() => {
-            if (confirmDiscardUnsavedExam()) setView("overview");
-          }}>Exit to course</button>}
+      <SiteNav currentPath={`/continuing-education/${courseKey}`} variant="marketing" />
+      <section className="ceu-course-context" aria-label="Continuing education course workspace">
+        <div className="ceu-course-context-inner">
+          <div className="ceu-course-context-identity">
+            <Link href="/continuing-education" onClick={event => {
+              if (!confirmDiscardUnsavedExam()) event.preventDefault();
+            }}>
+              <span>Continuing education</span>
+              <strong>{course.shortTitle}</strong>
+            </Link>
+            <small>{course.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater"} · Pilot learning</small>
+          </div>
+          <nav className="ceu-course-context-tabs" aria-label="Course workspace navigation">
+            <button type="button" className={view === "overview" ? "is-active" : ""} onClick={() => changeView("overview")}>Overview</button>
+            <button type="button" className={view === "lesson" ? "is-active" : ""} onClick={() => changeView("lesson")}>Lessons</button>
+            <button type="button" className={view === "exam" || view === "results" ? "is-active" : ""} disabled={!record || !allModulesComplete} onClick={() => {
+              if (confirmDiscardUnsavedExam()) openFinal();
+            }}>Assessment</button>
+            <button type="button" className={view === "certificate" ? "is-active" : ""} disabled={!record?.completion} onClick={() => changeView("certificate")}>Certificate</button>
+          </nav>
+          <div className="ceu-course-context-actions">
+            {status && <span className="ceu-save-status" role="status"><CheckCircle2 size={15} aria-hidden="true" /> {status}</span>}
+            {view !== "overview" && <button type="button" className="ceu-exit-button" onClick={() => changeView("overview")}>Course overview</button>}
+          </div>
         </div>
-      </header>
+      </section>
 
       {view === "overview" && (
         <main className="ceu-overview-shell">
@@ -413,7 +410,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             ) : recordQuery.isLoading ? (
               <section className="ceu-enrol-card"><p>Loading your saved course…</p></section>
             ) : recordQuery.isError ? (
-              <section className="ceu-enrol-card" role="alert"><p>{recordQuery.error.message}</p><button type="button" onClick={() => recordQuery.refetch()}>Retry</button></section>
+              <section className="ceu-enrol-card" role="alert"><p>We could not load your saved course right now. Your learning record has not been changed.</p><button type="button" onClick={() => recordQuery.refetch()}>Retry</button></section>
             ) : !record ? (
               <section className="ceu-enrol-card ceu-enrol-form">
                 <div>

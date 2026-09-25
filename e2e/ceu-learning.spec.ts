@@ -160,7 +160,7 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   await expect(page.getByRole("heading", { name: "You have completed the course.", exact: true })).toBeVisible();
   await page.getByRole("button", { name: "View certificate", exact: true }).click();
   await expect(page.locator("#ceu-certificate")).toContainText("90000064");
-  await expect(page.locator("#ceu-certificate")).toContainText("Non-credit pilot");
+  await expect(page.locator("#ceu-certificate")).toContainText("No approved CEUs, operator qualification or regulatory recognition awarded.");
 
   const other = await browser.newContext();
   try {
