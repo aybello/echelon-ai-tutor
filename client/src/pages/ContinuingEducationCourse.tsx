@@ -727,7 +727,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                         <>
                           <dt>Instructor</dt>
                           <dd>{record.participation.instructor}</dd>
-                          <dt>Verified sessions</dt>
+                          <dt>Verified learning dates</dt>
                           <dd>
                             {record.participation.sessions.map((session, i) => (
                               <p key={i}>

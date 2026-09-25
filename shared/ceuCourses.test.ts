@@ -14,7 +14,9 @@ describe("CEU public catalogue", () => {
       expect(c.publicDisclosure).toContain("No approved CEUs");
       expect(c.completionRequirements.join(" ")).toContain("timed pilot");
       if (c.plannedContactHours === 10)
-        expect(c.publicDisclosure).toContain("two five-hour days");
+        expect(c.publicDisclosure).toContain(
+          "Self-paced study is spread across at least two dates"
+        );
       if (c.stream === "wastewater") {
         expect(c.approvalStatus).toBe("ceu_value_review_required");
         expect(c.publicDisclosure).toContain("not Director approved");

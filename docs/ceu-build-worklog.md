@@ -11,3 +11,5 @@ Implemented: public catalogue and reading, authenticated practical and assessmen
 Review materials: `docs/ceu-delivery-and-review.md` and `docs/ceu-authored-edition-audit.md`. Curriculum keys and marking guides live under `server/ceu/courses/`; public metadata is generated with `node scripts/ceu/generateCatalogue.mjs`.
 
 Validation: local TypeScript, 19 focused tests, production client/server builds and migration manifest checks passed. Database and browser journeys are configured for the disposable CI environment. Review remote results before merging. No actual learners, instructor accounts, production permissions or CEU approvals were created.
+
+Self-paced reconciliation: preserved concurrent delivery update e7f332a. Replaced live discussion allocations with written reflection and revision, removed the fixed two-day timetable, and clarified manual instructor verification of learner activity logs. There is no automatic active-time tracker; breaks and review turnaround never count toward learner minutes.

@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Trace fictional operating signals from sensor to historian. Diagnose scaling errors, stale data, clock offsets and alarm records without confusing a display with verified process evidence.",
   "plannedMinutes": 180,
-  "delivery": "Self-paced online pilot with four practical modules, source reading, asynchronous instructor review of written work, a server-graded final assessment and evaluation. Breaks are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "signal-scaling",
@@ -42,9 +42,9 @@
           "instruction": "Complete the evidence-based assignment."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 5,
-          "instruction": "Defend one decision during instructor discussion."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -117,9 +117,9 @@
           "instruction": "Complete the evidence-based assignment."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 5,
-          "instruction": "Defend one decision during instructor discussion."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -192,9 +192,9 @@
           "instruction": "Complete the evidence-based assignment."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 5,
-          "instruction": "Defend one decision during instructor discussion."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -268,9 +268,9 @@
           "instruction": "Complete the evidence-based assignment."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 5,
-          "instruction": "Defend one decision during instructor discussion."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",

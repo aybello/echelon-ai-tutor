@@ -7,7 +7,7 @@
   "prerequisites": "Working familiarity with a treatment train, laboratory reports and metric units. A calculator and access to the linked readings are required.",
   "introduction": "Work a fictional Millhaven shift from incoming load through biological treatment, clarification, nutrient control and solids handling. Build calculations and a defensible handover from imperfect evidence.",
   "plannedMinutes": 600,
-  "delivery": "Self-paced online pilot: complete source reading, calculations, practical submissions and final assessment on your own schedule; the application records active learning time and caps it at seven contact hours per day, excluding breaks. Practical work receives asynchronous instructor review. Duration must be validated in a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced online pilot: complete 6 modules on your own schedule, with source reading, practical submissions, asynchronous instructor feedback, assessment and evaluation. Keep a dated activity log with minutes and evidence of completed work; include it with your practical submissions for instructor verification. Exclude breaks and time waiting for feedback. The pilot limits recorded time to seven hours per course per day. Planned duration requires a timed pilot; no approved CEUs are awarded.",
   "modules": [
     {
       "id": "process-map",
@@ -42,9 +42,9 @@
           "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 20,
-          "instruction": "Explain your reasoning to the instructor or cohort. Compare an alternative interpretation and revise your submission."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -118,9 +118,9 @@
           "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 20,
-          "instruction": "Explain your reasoning to the instructor or cohort. Compare an alternative interpretation and revise your submission."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -194,9 +194,9 @@
           "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 20,
-          "instruction": "Explain your reasoning to the instructor or cohort. Compare an alternative interpretation and revise your submission."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -270,9 +270,9 @@
           "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 20,
-          "instruction": "Explain your reasoning to the instructor or cohort. Compare an alternative interpretation and revise your submission."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -346,9 +346,9 @@
           "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 20,
-          "instruction": "Explain your reasoning to the instructor or cohort. Compare an alternative interpretation and revise your submission."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",
@@ -423,9 +423,9 @@
           "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
-          "kind": "discussion",
+          "kind": "exercise",
           "minutes": 10,
-          "instruction": "Explain your reasoning to the instructor or cohort. Compare an alternative interpretation and revise your submission."
+          "instruction": "Write a reflection defending one decision, compare an alternative interpretation and revise your submission using the acceptance criteria. Respond to instructor feedback when received; count only your active work, excluding review turnaround."
         },
         {
           "kind": "assessment",

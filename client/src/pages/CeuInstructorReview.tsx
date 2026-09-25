@@ -44,7 +44,7 @@ export default function CeuInstructorReview() {
             </label>
             <p>
               Latest 100 course records. Practical acceptance requires every
-              criterion; participation must be supported by attendance and
+              criterion; participation must be supported by activity logs and
               engagement evidence.
             </p>
             {item && (
@@ -200,10 +200,10 @@ function Review({
           })}
           <h3>Verify participation</h3>
           <p>
-            Record actual completed sessions, excluding breaks. Dates and
-            supporting evidence are mandatory; the same activity must not be
-            credited to more than one course. Page-open time is not proof of
-            attendance.
+            Record verified learner activity, excluding breaks and review
+            turnaround. Dates and supporting evidence are mandatory; the same
+            activity must not be credited to more than one course. Page-open
+            time is not proof of active learning.
           </p>
           <label className="ceu-field">
             Instructor name
@@ -252,7 +252,7 @@ function Review({
                 />
               </label>
               <label>
-                Attendance and engagement evidence
+                Activity log and engagement evidence
                 <textarea
                   value={s.evidence}
                   onChange={e =>
@@ -272,7 +272,7 @@ function Review({
                 setSessions(v => [...v, { date: "", minutes: 0, evidence: "" }])
               }
             >
-              Add session
+              Add activity record
             </button>
             <button
               disabled={review.isPending}
