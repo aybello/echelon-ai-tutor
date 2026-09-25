@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import SiteNav from "@/components/SiteNav";
+import SiteNav, { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { ceuModuleSlides } from "@shared/ceuSlides";
 import { ceuFinalEntry } from "@shared/ceuFinalEntry";
 import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
@@ -157,7 +157,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
       setStatus("Your course is ready. Progress saves as you learn.");
       setView("lesson");
     },
-    onError: error => setStatus(error.message),
+    onError: () => setStatus("We could not create your learning record right now. Please try again."),
   });
   const save = trpc.ceu.save.useMutation({
     onSuccess: ({ record: next, feedback }, variables) => {
@@ -191,12 +191,12 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
         utils.ceu.results.invalidate({ courseKey, attemptId: variables.action.attemptId });
       }
     },
-    onError: (error, variables) => {
+    onError: (_error, variables) => {
       if (variables.action.type === "examDraft") {
         setStatus("Your latest final-exam change did not save. Retry before leaving this page.");
         return;
       }
-      setStatus(error.message);
+      setStatus("We could not save that change right now. Please try again.");
     },
   });
 
@@ -345,7 +345,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     return (
       <main className="ceu-loading">
         <h1>Course unavailable</h1>
-        <p>{courseQuery.error?.message ?? "Choose a course from the catalogue."}</p>
+        <p>We could not load this course. Please return to the catalogue or try again.</p>
         <Link href="/continuing-education">Course catalogue</Link>
       </main>
     );
@@ -525,7 +525,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           <section className="ceu-exam-main">
             <div className="ceu-exam-status"><strong>Question {currentQuestionIndex + 1} of {assessment.data?.length ?? course.finalQuestionCount}</strong><span>{Object.keys(answers).length} answered</span></div>
             <div className="ceu-progress-track ceu-exam-track"><span style={{ width: `${assessment.data?.length ? ((currentQuestionIndex + 1) / assessment.data.length) * 100 : 0}%` }} /></div>
-            {!record ? <section className="ceu-empty-state"><h1>Sign in to take the final exam</h1><Link href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}>Sign in</Link></section> : !allModulesComplete ? <section className="ceu-empty-state"><h1>Complete every module first</h1><p>The final exam unlocks after the final slide of each module.</p><button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Return to course</button></section> : assessment.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam…</h1></section> : assessment.isError ? <section className="ceu-empty-state"><h1>Final exam unavailable</h1><p>{assessment.error.message}</p><button type="button" onClick={() => assessment.refetch()}>Retry</button></section> : question ? <>
+            {!record ? <section className="ceu-empty-state"><h1>Sign in to take the final exam</h1><Link href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}>Sign in</Link></section> : !allModulesComplete ? <section className="ceu-empty-state"><h1>Complete every module first</h1><p>The final exam unlocks after the final slide of each module.</p><button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Return to course</button></section> : assessment.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam…</h1></section> : assessment.isError ? <section className="ceu-empty-state"><h1>Final exam unavailable</h1><p>The final exam is temporarily unavailable. Your saved learning has not changed.</p><button type="button" onClick={() => assessment.refetch()}>Retry</button></section> : question ? <>
               <article className="ceu-exam-question-card">
                 <div className="ceu-question-top"><span>Choose one answer.</span><button type="button" className={`ceu-flag-button${flags.includes(currentQuestionIndex) ? " is-flagged" : ""}`} disabled={pending} onClick={() => toggleFlag(currentQuestionIndex)}><Flag size={17} /> {flags.includes(currentQuestionIndex) ? "Flagged for review" : "Flag for review"}</button></div>
                 <h1>{question.prompt}</h1>
@@ -546,7 +546,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
 
       {view === "results" && (
         <main className="ceu-results-shell">
-          {results.isLoading ? <section className="ceu-empty-state"><h1>Loading your results…</h1></section> : results.isError ? <section className="ceu-empty-state"><h1>Results unavailable</h1><p>{results.error.message}</p></section> : results.data ? <>
+          {results.isLoading ? <section className="ceu-empty-state"><h1>Loading your results…</h1></section> : results.isError ? <section className="ceu-empty-state"><h1>Results unavailable</h1><p>We could not retrieve this completed final result. Please retry from the course overview.</p></section> : results.data ? <>
             <section className="ceu-result-hero">
               <div className={`ceu-score-orb${results.data.passed ? " is-passed" : ""}`}><strong>{Math.round((results.data.score / results.data.total) * 100)}%</strong><span>{results.data.score} of {results.data.total}</span></div>
               <div><p className={results.data.passed ? "ceu-pass-label" : "ceu-review-label"}>{results.data.passed ? "Passed · pass mark 80%" : "Review needed · pass mark 80%"}</p><h1>{results.data.passed ? "You have completed the course." : "You are close. Review and try again."}</h1><p>{results.data.passed ? "Your non-credit pilot certificate is ready now." : "Review the missed answers, revisit the related lessons and retake the final when you are ready."}</p><div className="ceu-inline-actions">{results.data.passed ? <button type="button" className="ceu-primary-button" onClick={() => setView("certificate")}><FileDown size={18} /> View certificate</button> : <button type="button" className="ceu-primary-button" onClick={resetForRetake}><RotateCcw size={18} /> Retake final exam</button>}<button type="button" className="ceu-secondary-button" onClick={() => setView("overview")}>Back to my course</button></div></div>
@@ -559,7 +559,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
       {view === "certificate" && (
         <main className="ceu-certificate-page">
           {record?.completion ? <article className="ceu-certificate" id="ceu-certificate">
-            <div className="ceu-certificate-top"><span className="ceu-brand-mark">E</span><strong>Echelon Institute</strong></div>
+            <div className="ceu-certificate-top"><img src={ECHELON_LOGO_URL} alt="Echelon Institute" width={40} height={40} /><strong>Echelon Institute</strong></div>
             <p className="ceu-certificate-eyebrow">Certificate of completion</p>
             <p>This certifies that</p>
             <h1>{record.completion.name}</h1>

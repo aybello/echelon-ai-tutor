@@ -10,7 +10,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
+export const ECHELON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
 export const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
@@ -122,7 +122,7 @@ export default function SiteNav({
     <header className={`echelon-site-header${learningMode ? " is-learning" : ""}`}>
       <nav className="echelon-global-nav" aria-label="Global navigation">
         <Link href="/" className="echelon-brand" aria-label="Echelon Institute home">
-          <img src={LOGO_URL} alt="Echelon Institute logo" width={42} height={40} />
+          <img src={ECHELON_LOGO_URL} alt="Echelon Institute logo" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
             <small>{course?.courseKey === "electrician-309a" ? "309A electrician exam prep" : "Operator certification prep"}</small>

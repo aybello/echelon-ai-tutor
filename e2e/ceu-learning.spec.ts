@@ -78,7 +78,7 @@ async function saveClick(page: Page, control: Locator) {
 }
 
 test.afterAll(async () => {
-  if (!process.env.DATABASE_URL) return;
+  if (!process.env.DATABASE_URL || !['127.0.0.1', 'localhost'].includes(new URL(base).hostname)) return;
   const db = await connection();
   try {
     await db.execute("DELETE FROM ceu_learning_daily_time WHERE studentEmail IN (?,?)", emails);
@@ -98,6 +98,9 @@ test("public CEU courses preview a real lesson and keep final exams locked", asy
   await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(10);
 
   await page.goto(`/continuing-education/${short.key}`);
+  await expect(page.getByRole("navigation", { name: "Global navigation" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Echelon Institute home" })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Course workspace navigation" })).toBeVisible();
   await expect(page.getByRole("heading", { name: short.title, exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Sign in to start", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: /Final exam/ })).toBeDisabled();
