@@ -1,0 +1,564 @@
+[
+  {
+    "key": "ceu-drinking-water-compliance",
+    "interestCode": "ceu-compliance",
+    "title": "Drinking Water Operations and Regulatory Compliance",
+    "shortTitle": "Drinking Water Compliance",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 10,
+    "audience": "Ontario drinking-water operators and supervisors preparing, reviewing or handing over operational evidence.",
+    "outcomes": [
+      "Distinguish a legal requirement, a system authorization, a procedure and an observation.",
+      "Classify targets, alarms and applicable requirements without conflating them.",
+      "Reconcile sample identifiers across field, transfer and laboratory records.",
+      "Distinguish internal escalation from applicable external reporting.",
+      "Make an attributable correction while preserving the original observation.",
+      "Combine source applicability, data review and task ownership in one decision record."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Build the compliance and responsibility map",
+        "durationMinutes": 100,
+        "summary": "Distinguish a legal requirement, a system authorization, a procedure and an observation. Assign a case task to a verified role and identify unresolved authority. Create a source register that another operator can independently check."
+      },
+      {
+        "number": 2,
+        "title": "Interpret control limits and conflicting measurements",
+        "durationMinutes": 100,
+        "summary": "Classify targets, alarms and applicable requirements without conflating them. Align observations by time, place, method and hydraulic context. Quantify missing evidence while maintaining a parallel protective response."
+      },
+      {
+        "number": 3,
+        "title": "Reconstruct sample identity and result history",
+        "durationMinutes": 100,
+        "summary": "Reconcile sample identifiers across field, transfer and laboratory records. Distinguish a report amendment from evidence that the original result was invalid. Document sampling uncertainty without suppressing potentially significant results."
+      },
+      {
+        "number": 4,
+        "title": "Manage reporting, corrective action and closure as separate tasks",
+        "durationMinutes": 100,
+        "summary": "Distinguish internal escalation from applicable external reporting. Build a communication record showing attempts, contacts and directions. Specify evidence-based closure criteria and accountable follow-up."
+      },
+      {
+        "number": 5,
+        "title": "Correct records and reconstruct an audit trail",
+        "durationMinutes": 100,
+        "summary": "Make an attributable correction while preserving the original observation. Distinguish event time, entry time, instrument time and receipt time. Produce a coherent evidence index and identify misleading summaries."
+      },
+      {
+        "number": 6,
+        "title": "Defend a complete incident file",
+        "durationMinutes": 100,
+        "summary": "Combine source applicability, data review and task ownership in one decision record. Revise a conclusion when new evidence arrives without rewriting the past. Defend a proportionate closure recommendation using an explicit rubric."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 6 modules at your own pace with recorded active time and server-graded case exercises; 10 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 12-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. Self-paced study is spread across at least two dates under the pilot's seven-hour daily recording limit; breaks are excluded. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-water-treatment-process-control",
+    "interestCode": "ceu-water-process",
+    "title": "Water Treatment Process Control and Optimization",
+    "shortTitle": "Water Treatment Process Control",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 10,
+    "audience": "Operators interpreting conventional treatment performance and preparing controlled optimization trials.",
+    "outcomes": [
+      "Convert flow, concentration and mass loading consistently.",
+      "Interpret turbidity with temperature, alkalinity and organic indicators.",
+      "Convert product feed to active dose using an explicit density and strength.",
+      "Calculate unit filtration loading and compare like run stages.",
+      "Calculate CT from a defined residual and effective contact time.",
+      "Define success and stop criteria before a trial."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Follow water and mass through the treatment train",
+        "durationMinutes": 100,
+        "summary": "Convert flow, concentration and mass loading consistently. Align samples with hydraulic travel and sampling delay. Distinguish an operating target from a validated treatment requirement."
+      },
+      {
+        "number": 2,
+        "title": "Characterize a changing source and set test priorities",
+        "durationMinutes": 100,
+        "summary": "Interpret turbidity with temperature, alkalinity and organic indicators. Select representative sampling and comparison periods. Prioritize evidence that discriminates between competing explanations."
+      },
+      {
+        "number": 3,
+        "title": "Evaluate a jar test and chemical-feed basis",
+        "durationMinutes": 100,
+        "summary": "Convert product feed to active dose using an explicit density and strength. Evaluate jar-test replicates against multiple criteria. Design a bounded full-scale trial proposal."
+      },
+      {
+        "number": 4,
+        "title": "Read individual filter performance",
+        "durationMinutes": 100,
+        "summary": "Calculate unit filtration loading and compare like run stages. Distinguish upstream effects from filter-specific evidence. Preserve short-duration events and data-quality flags."
+      },
+      {
+        "number": 5,
+        "title": "Check disinfection calculations and their limits",
+        "durationMinutes": 100,
+        "summary": "Calculate CT from a defined residual and effective contact time. Distinguish nominal detention time from T10. Evaluate changing flow, level and chemistry against a supplied criterion."
+      },
+      {
+        "number": 6,
+        "title": "Design and defend an optimization trial",
+        "durationMinutes": 100,
+        "summary": "Define success and stop criteria before a trial. Separate observed improvement from causal attribution. Prepare a cross-barrier review and handover."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 6 modules at your own pace with recorded active time and server-graded case exercises; 10 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 12-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. Self-paced study is spread across at least two dates under the pilot's seven-hour daily recording limit; breaks are excluded. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-wastewater-treatment-process-control",
+    "interestCode": "ceu-wastewater-process",
+    "title": "Wastewater Treatment Operations and Process Control",
+    "shortTitle": "Wastewater Process Control",
+    "stream": "wastewater",
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 10,
+    "audience": "Experienced municipal wastewater operators and shift supervisors.",
+    "outcomes": [
+      "Draw a control boundary that identifies recycle streams.",
+      "Match concentration and flow periods.",
+      "Separate hydraulic, biological and settling evidence.",
+      "Calculate inventory and solids losses on a stated boundary.",
+      "Calculate a sidestream nitrogen load.",
+      "Prioritize actions from conflicting process evidence."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Process boundaries and incoming load",
+        "durationMinutes": 100,
+        "summary": "Draw a control boundary that identifies recycle streams. Distinguish concentration, flow and daily mass loading."
+      },
+      {
+        "number": 2,
+        "title": "Build a trustworthy process dataset",
+        "durationMinutes": 100,
+        "summary": "Match concentration and flow periods. Calculate removal and identify uncertainty in a comparison."
+      },
+      {
+        "number": 3,
+        "title": "Biomass, oxygen and clarification",
+        "durationMinutes": 100,
+        "summary": "Separate hydraulic, biological and settling evidence. Calculate SVI and distinguish an observation from a diagnosis."
+      },
+      {
+        "number": 4,
+        "title": "Solids inventory, SRT and F/M",
+        "durationMinutes": 100,
+        "summary": "Calculate inventory and solids losses on a stated boundary. Distinguish solids age from hydraulic residence time."
+      },
+      {
+        "number": 5,
+        "title": "Nutrients, sidestreams and final treatment",
+        "durationMinutes": 100,
+        "summary": "Calculate a sidestream nitrogen load. Identify cross-process consequences of an adjustment."
+      },
+      {
+        "number": 6,
+        "title": "Integrated shift and defensible handover",
+        "durationMinutes": 100,
+        "summary": "Prioritize actions from conflicting process evidence. Produce a handover with explicit owners and verification."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 6 modules at your own pace with recorded active time and server-graded case exercises; 10 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 12-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. Self-paced study is spread across at least two dates under the pilot's seven-hour daily recording limit; breaks are excluded. No approved CEUs or regulatory recognition are awarded. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-sampling-data-quality",
+    "interestCode": "ceu-sampling",
+    "title": "Sampling, Laboratory Results and Data Quality",
+    "shortTitle": "Sampling and Data Quality",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 3,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Align location and timing with a stated decision.",
+      "Reconstruct a custody timeline.",
+      "Calculate relative percent difference.",
+      "Separate findings, limitations and next actions."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Design a sample that answers the question",
+        "durationMinutes": 45,
+        "summary": "Align location and timing with a stated decision. Distinguish independent sampling from repeat analysis."
+      },
+      {
+        "number": 2,
+        "title": "Trace samples and preserve corrections",
+        "durationMinutes": 45,
+        "summary": "Reconstruct a custody timeline. Resolve conflicting identifiers without overwriting originals."
+      },
+      {
+        "number": 3,
+        "title": "Interpret blanks, duplicates and reporting limits",
+        "durationMinutes": 45,
+        "summary": "Calculate relative percent difference. Separate contamination evidence from sample representativeness."
+      },
+      {
+        "number": 4,
+        "title": "Write a decision-ready result summary",
+        "durationMinutes": 45,
+        "summary": "Separate findings, limitations and next actions. Prevent unsupported claims from entering a public summary."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 3 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-disinfection-ct",
+    "interestCode": "ceu-disinfection",
+    "title": "Disinfection Verification and CT Calculations",
+    "shortTitle": "Disinfection and CT",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate nominal time and T10 with consistent units.",
+      "Calculate achieved CT and a comparison ratio.",
+      "Combine segment ratios only under an explicitly allowed method.",
+      "Audit a complete worksheet and its evidence."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Nominal residence time and effective contact",
+        "durationMinutes": 60,
+        "summary": "Calculate nominal time and T10 with consistent units. Identify evidence required to use a baffling factor."
+      },
+      {
+        "number": 2,
+        "title": "Residual, required CT and calculation boundaries",
+        "durationMinutes": 60,
+        "summary": "Calculate achieved CT and a comparison ratio. Match residual and required CT to the correct conditions."
+      },
+      {
+        "number": 3,
+        "title": "Segment calculations and time alignment",
+        "durationMinutes": 60,
+        "summary": "Combine segment ratios only under an explicitly allowed method. Avoid pairing noncontemporaneous favourable inputs."
+      },
+      {
+        "number": 4,
+        "title": "Disinfection verification dossier",
+        "durationMinutes": 60,
+        "summary": "Audit a complete worksheet and its evidence. Define response and closure evidence without overstating certainty."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 4 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-coagulation-filtration",
+    "interestCode": "ceu-filtration",
+    "title": "Coagulation, Filtration and Controlled Optimization",
+    "shortTitle": "Coagulation and Filtration",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Compare candidate doses within stated constraints.",
+      "Convert solution delivery to active chemical dose.",
+      "Calculate individual hydraulic loading and headloss trends.",
+      "Define a fair comparison and stopping criteria."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Replicated jar tests and treatment constraints",
+        "durationMinutes": 60,
+        "summary": "Compare candidate doses within stated constraints. Separate repeatability from a causal treatment conclusion."
+      },
+      {
+        "number": 2,
+        "title": "Chemical mass and actual feed delivery",
+        "durationMinutes": 60,
+        "summary": "Convert solution delivery to active chemical dose. Reconcile pump indication with a measured delivery check."
+      },
+      {
+        "number": 3,
+        "title": "Individual filters and measurement quality",
+        "durationMinutes": 60,
+        "summary": "Calculate individual hydraulic loading and headloss trends. Recognize how combined data conceal unit behaviour."
+      },
+      {
+        "number": 4,
+        "title": "Design and evaluate a controlled trial",
+        "durationMinutes": 60,
+        "summary": "Define a fair comparison and stopping criteria. Calculate normalized resource use before claiming savings."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 4 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-instrumentation-scada",
+    "interestCode": "ceu-scada",
+    "title": "Instrumentation, SCADA and Operational Data Integrity",
+    "shortTitle": "Instrumentation and SCADA",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 3,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Convert a linear 4–20 mA signal to engineering units.",
+      "Normalize timestamps using a documented offset.",
+      "Distinguish an alarm acknowledgement from restoration.",
+      "Assemble an auditable signal-quality report."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "From electrical signal to engineering units",
+        "durationMinutes": 45,
+        "summary": "Convert a linear 4–20 mA signal to engineering units. Identify mismatched configured ranges."
+      },
+      {
+        "number": 2,
+        "title": "Clock offsets, stale values and missing samples",
+        "durationMinutes": 45,
+        "summary": "Normalize timestamps using a documented offset. Distinguish last-known values from current measurements."
+      },
+      {
+        "number": 3,
+        "title": "Alarm occurrence, acknowledgement and response",
+        "durationMinutes": 45,
+        "summary": "Distinguish an alarm acknowledgement from restoration. Reconstruct a response from event and action records."
+      },
+      {
+        "number": 4,
+        "title": "Operational data audit and change verification",
+        "durationMinutes": 45,
+        "summary": "Assemble an auditable signal-quality report. Define post-change verification across the whole measurement chain."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 3 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-distribution-water-quality",
+    "interestCode": "ceu-distribution",
+    "title": "Distribution Water Quality and System Integrity",
+    "shortTitle": "Distribution Water Quality",
+    "stream": "drinking_water",
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 3,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate a nominal storage turnover indicator.",
+      "Compare matched locations and operating periods.",
+      "Reconstruct an integrity-event timeline.",
+      "Integrate hydraulic and water-quality evidence."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Storage turnover and water-age screening",
+        "durationMinutes": 45,
+        "summary": "Calculate a nominal storage turnover indicator. Explain why an average does not describe the oldest water."
+      },
+      {
+        "number": 2,
+        "title": "Spatial residual patterns and investigation design",
+        "durationMinutes": 45,
+        "summary": "Compare matched locations and operating periods. Distinguish a pattern from proof of its cause."
+      },
+      {
+        "number": 3,
+        "title": "Pressure events and repair verification",
+        "durationMinutes": 45,
+        "summary": "Reconstruct an integrity-event timeline. Identify the records needed to apply the current repair procedure."
+      },
+      {
+        "number": 4,
+        "title": "Prioritized zone investigation and handover",
+        "durationMinutes": 45,
+        "summary": "Integrate hydraulic and water-quality evidence. Define measurable follow-up and closure criteria."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 3 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Director approval is required before any approved drinking-water CEU claim. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-collection-wet-weather",
+    "interestCode": "ceu-collection",
+    "title": "Collection Systems and Wet-Weather Response",
+    "shortTitle": "Collection Systems",
+    "stream": "wastewater",
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 3,
+    "audience": "Practising wastewater operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate peak and daily flow changes.",
+      "Calculate net accumulation and conditional time remaining.",
+      "Estimate volume using stated interval assumptions.",
+      "Prioritize capacity, evidence and communication tasks."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Wet-weather patterns and catchment evidence",
+        "durationMinutes": 45,
+        "summary": "Calculate peak and daily flow changes. Distinguish plausible inflow/infiltration patterns from proof."
+      },
+      {
+        "number": 2,
+        "title": "Wet-well storage and time to a trigger",
+        "durationMinutes": 45,
+        "summary": "Calculate net accumulation and conditional time remaining. Explain why rated pump capacity may differ from actual delivery."
+      },
+      {
+        "number": 3,
+        "title": "Incident timelines and uncertain volumes",
+        "durationMinutes": 45,
+        "summary": "Estimate volume using stated interval assumptions. Separate detection time from event onset."
+      },
+      {
+        "number": 4,
+        "title": "Collection-system response and recovery plan",
+        "durationMinutes": 45,
+        "summary": "Prioritize capacity, evidence and communication tasks. Define verified recovery and longer-term investigation."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 3 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-activated-sludge-troubleshooting",
+    "interestCode": "ceu-activated-sludge",
+    "title": "Activated Sludge Troubleshooting and Solids Control",
+    "shortTitle": "Activated Sludge Troubleshooting",
+    "stream": "wastewater",
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Practising wastewater operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate SRT with aeration and clarifier inventory.",
+      "Calculate SVI and a stated clarifier solids-loading measure.",
+      "Calculate a theoretical alkalinity demand using a supplied factor.",
+      "Design a controlled response with measurable outcomes."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Solids inventory and retention boundaries",
+        "durationMinutes": 60,
+        "summary": "Calculate SRT with aeration and clarifier inventory. Compare like-for-like solids bases and external losses."
+      },
+      {
+        "number": 2,
+        "title": "Settling, solids loading and competing mechanisms",
+        "durationMinutes": 60,
+        "summary": "Calculate SVI and a stated clarifier solids-loading measure. Differentiate poor settling from hydraulic and return-flow effects."
+      },
+      {
+        "number": 3,
+        "title": "Ammonia, oxygen and alkalinity evidence",
+        "durationMinutes": 60,
+        "summary": "Calculate a theoretical alkalinity demand using a supplied factor. Rank competing explanations for an ammonia increase."
+      },
+      {
+        "number": 4,
+        "title": "Monitored recovery and reassessment",
+        "durationMinutes": 60,
+        "summary": "Design a controlled response with measurable outcomes. Revise a diagnosis as verified evidence arrives."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace with recorded active time and server-graded case exercises; 4 learning hours are planned, pending a timed pilot.",
+      "Pass every module check and score at least 70% on each automatically graded case exercise.",
+      "Score at least 80% on the 8-question final assessment. Failed attempts can be retried after reviewing feedback.",
+      "After all exercises, checks, recorded time and the final are complete, a non-credit pilot learning record is issued automatically. Course evaluation is optional."
+    ],
+    "publicDisclosure": "Duration is a planning estimate, not earned credit. No approved CEUs or regulatory recognition are awarded. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  }
+]

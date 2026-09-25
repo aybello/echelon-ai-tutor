@@ -1,0 +1,459 @@
+{
+  "key": "ceu-sampling-data-quality",
+  "title": "Sampling, Laboratory Results and Data Quality",
+  "shortTitle": "Sampling and Data Quality",
+  "stream": "drinking_water",
+  "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Build a sampling and result-review package for a fictional reservoir investigation. Practise representativeness, traceability, quality-control interpretation and qualified reporting.",
+  "plannedMinutes": 180,
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "sample-design",
+      "title": "Design a sample that answers the question",
+      "objectives": [
+        "Align location and timing with a stated decision.",
+        "Distinguish independent sampling from repeat analysis."
+      ],
+      "lesson": "### Define the decision first\n“Take more samples” is not a sampling plan. State the question, decision boundary, locations, times, sample types, analytical method and responsibilities. A sample at a treatment outlet answers a different question from one at a distant reservoir outlet. Repeated measurements of one bottle describe analytical repeatability; they do not create independent evidence about spatial variability.\n\nSuppose a reservoir outlet has a low-residual complaint at 07:00. A treatment-plant grab at 14:00 cannot establish the reservoir condition at 07:00. It may still help characterize the source feeding the system. Pairing time-stamped upstream and downstream observations, with travel-time and mixing limitations documented, is more informative than treating two unrelated grabs as the same water parcel.\n\nA field duplicate is collected to examine variability introduced by sampling and measurement under the stated procedure. A laboratory duplicate examines a different part of the measurement chain. Neither automatically proves that the sample represented the whole system. Document whether samples were sequential, split or independently collected.\n\nRequired compliance sampling remains governed by the applicable current requirements and approved sampling arrangements. The investigation in this lesson is supplemental and cannot silently replace them. Use the source to identify handling and quality controls, then record the locally applicable method rather than inventing a universal holding time.",
+      "evidence": "**Reservoir investigation Q1**\nComplaint at outletR2 at 07:00. SourceS1 is 4 km upstream. Approximate travel time varies 2–6 hours; the reservoir mixes inflow with stored water. Existing required samples remain scheduled under the facility plan.\n\n| Proposal | Sampling |\n|---|---|\n| A | Five repeat readings of one S1 bottle at 14:00 |\n| B | R2 observations at 06:30,07:00,07:30 plus paired S1 observations and operating records |\n| C | One R2 sample next Friday at noon |\n\nQ2: The question is whether recurrent early-morning outlet conditions coincide with a particular reservoir operating state, not whether one bottle can be measured precisely.",
+      "assignment": "Draft a 350–500-word supplemental sampling plan. Select and improve one proposal; justify locations and times; specify independent sampling versus repeat readings, chain-of-custody responsibilities and records of reservoir operation. Explain two limits on interpreting “paired” samples and how required sampling is preserved.",
+      "rubric": [
+        "Decision, locations and times align.",
+        "Distinguishes spatial evidence from repeat measurement.",
+        "Preserves required sampling and names method/handling verification."
+      ],
+      "facilitatorGuide": "B best addresses the recurrent time window, but not conclusively after one morning. Strong plans repeat across relevant operating states and document levels, inflow/outflow and sampling methods. A measures one bottle repeatedly; C misses the stated window. Do not accept 2–6 hours as an exact lag or a claim that S1/R2 samples are necessarily the same parcel. Require independent observations and local method verification.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "distribution"
+      ],
+      "checks": [
+        {
+          "id": "sd1",
+          "objective": "sample-design",
+          "prompt": "Five readings of one bottle primarily assess what?",
+          "choices": [
+            "Spatial variability",
+            "Analytical repeatability",
+            "Daily representativeness",
+            "Reservoir mixing"
+          ],
+          "correctIndex": 1,
+          "explanation": "The bottle is unchanged; repeat readings do not sample more locations."
+        },
+        {
+          "id": "sd2",
+          "objective": "sample-design",
+          "prompt": "Which record helps relate an outlet sample to reservoir operation?",
+          "choices": [
+            "Only the analyst’s initials",
+            "Only the bottle purchase date",
+            "Level and inflow/outflow history",
+            "Only the laboratory invoice"
+          ],
+          "correctIndex": 2,
+          "explanation": "Operating history provides the hydraulic context."
+        }
+      ]
+    },
+    {
+      "id": "custody",
+      "title": "Trace samples and preserve corrections",
+      "objectives": [
+        "Reconstruct a custody timeline.",
+        "Resolve conflicting identifiers without overwriting originals."
+      ],
+      "lesson": "### The result must remain connected to the sample\nTraceability links the sampling plan, field identifier, bottle, custody record, laboratory accession and reported result. A mismatch can break that chain even when the numerical analysis is correct. Resolve it through documented evidence; do not choose the most convenient location and rewrite the original record.\n\nA useful correction preserves the original entry, identifies who corrected it and when, states the reason and cites supporting evidence. A field recollection made later is weaker than a contemporaneous location scan, but it may still be relevant. Record uncertainty when evidence is insufficient. The laboratory controls its own report amendments; the operator should request clarification through the approved channel rather than edit a laboratory PDF.\n\nElapsed time is calculated from actual collection to the required event, using the method-specific rule. Receipt and analysis are different events. A sample received promptly may still be analysed late. Conversely, a transcription error in a receipt time requires investigation before declaring the sample invalid. Preserve the dates and time zones, especially across midnight.\n\nWhere a result triggers a protective or reporting response, an identifier discrepancy does not itself cancel the applicable obligation. Follow the current procedure while resolving identity. This lesson supplies no universal preservation, temperature or holding-time requirement: those come from the applicable method and laboratory instructions.",
+      "evidence": "**Q3 — custody records**\nBottle label R2-091, collection September 12 at 23:40. Field form saysR2; barcode location scan at 23:39 saysR2. Custody destination line saysR7. Courier collection September 13 at 00:10; laboratory receipt 01:25; analysis begins 08:05. Laboratory accessionL491 referencesR2-091 but report locationR7.\n\nQ4: Technician writes at 10:00, “I believe I copied yesterday’s R7 line.” The laboratory has not issued an amended report. No method-specific holding-time limit is supplied.",
+      "assignment": "Prepare a timeline with elapsed collection-to-receipt and collection-to-analysis times. Draft a correction request that preserves both conflicting location entries, cites evidence and asks the laboratory to confirm the mapping. State what is known, what remains unconfirmed and what information is required before deciding whether the timing meets the method.",
+      "rubric": [
+        "Calculates across midnight correctly.",
+        "Preserves original IDs and routes report amendment appropriately.",
+        "Does not infer a method limit or cancel a response automatically."
+      ],
+      "facilitatorGuide": "Receipt elapsed 1 h 45 m; analysis 8 h 25 m. Contemporary barcode and form supportR2; the lab report remainsR7 until clarified. Require an auditable amendment request, not an editedPDF or assertion of validity. The analyst must obtain the applicable method limit and event definition; neither elapsed time alone proves acceptable handling. Discuss how urgent reporting and identity resolution can proceed together.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "adverse"
+      ],
+      "checks": [
+        {
+          "id": "cu1",
+          "objective": "custody",
+          "prompt": "Collection 23:40, next-day receipt 01:25: elapsed time?",
+          "choices": [
+            "2 h 15 m",
+            "1 h 25 m",
+            "25 h 45 m",
+            "1 h 45 m"
+          ],
+          "correctIndex": 3,
+          "explanation": "20 minutes to midnight plus 85 minutes after midnight."
+        },
+        {
+          "id": "cu2",
+          "objective": "custody",
+          "prompt": "Who should issue a correction to the laboratory report?",
+          "choices": [
+            "The laboratory through its amendment process",
+            "The courier by changing the bottle label",
+            "The operator by editing the original PDF",
+            "The learner by selecting the likely location"
+          ],
+          "correctIndex": 0,
+          "explanation": "Preserve the original report and request an authorized amendment."
+        }
+      ]
+    },
+    {
+      "id": "quality-control",
+      "title": "Interpret blanks, duplicates and reporting limits",
+      "objectives": [
+        "Calculate relative percent difference.",
+        "Separate contamination evidence from sample representativeness."
+      ],
+      "lesson": "### Quality controls diagnose parts of the chain\nA blank can reveal contamination introduced by materials, transport, handling or analysis, depending on how that blank was prepared. It cannot identify the source by itself. A field blank and laboratory blank cover different processes. Investigate the relevant chain rather than subtracting a blank result from every sample without an approved method.\n\nRelative percent difference (RPD) is **absolute difference ÷ pair mean ×100**. Results 0.40 and 0.50 mg/L have a mean 0.45 and RPD22.2%. Their absolute difference is 0.10 mg/L. Close to a method's reporting limit, a small absolute difference may create a large percentage; interpretation requires the method's criteria, concentration range and sample matrix.\n\nFor this exercise only, the fictional duplicate rule is RPD≤20% when both results are at least 0.20 mg/L; below that range, the method uses a separate absolute-difference rule that is not supplied. Do not export this rule to real operations. A failed duplicate criterion calls for documented review; it does not automatically identify which result is wrong.\n\nA “less than” result is censored information, not a zero and not an exact value at the limit. Keep that notation in the dataset. If a calculation requires substitution, the authorized analytical plan must define and disclose it. Never silently replace qualified data to make a trend look cleaner.",
+      "evidence": "**Q5 — fictional analytical batch**\n| Pair | Results mg/L | Other evidence |\n|---|---|---|\n| D1 |0.40,0.50|Same field-duplicate procedure |\n| D2 |0.03,0.05|Both below 0.20 applicability boundary |\n| B1 field blank |0.04|Lab blank<0.01 |\n| S1 sample |<0.02|Reporting limit 0.02 |\n\nThe 20% criterion applies only under the condition in the lesson. The low-range criterion and blank-action rule must be requested from the laboratory.",
+      "assignment": "Calculate D1 and D2 RPD and absolute differences. Prepare a qualified batch review: apply the supplied rule only where valid, state what the blank comparison suggests without assigning a source, and preserve S1's reporting notation. Draft three precise questions to the laboratory that would resolve the missing criteria.",
+      "rubric": [
+        "Correct RPD values and applicability boundary.",
+        "Does not subtract the blank or select a “true” duplicate result.",
+        "Retains censored notation and identifies missing rules."
+      ],
+      "facilitatorGuide": "D1RPD22.22%, difference 0.10: fails supplied 20% criterion. D2 mean 0.04,RPD50%,difference 0.02; no accept/reject conclusion under the unavailable low-range rule. Field blank detection with lab blank below 0.01 points to investigation beyond laboratory blank contamination, not proof of a specific field source. S1 mustremain<0.02. Return categorical acceptance/rejection unsupported by criteria.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "qc1",
+          "objective": "quality-control",
+          "prompt": "Results 0.30 and 0.36 mg/L have approximately what RPD?",
+          "choices": [
+            "18.2%",
+            "6.0%",
+            "20.0%",
+            "9.1%"
+          ],
+          "correctIndex": 0,
+          "explanation": "0.06/0.33×100=18.18%."
+        },
+        {
+          "id": "qc2",
+          "objective": "quality-control",
+          "prompt": "A field blank is detected; the lab blank is not. What follows?",
+          "choices": [
+            "Subtract the field blank from all results",
+            "Assign contamination to the laboratory",
+            "Investigate the field/transport chain",
+            "Declare every sample concentration zero"
+          ],
+          "correctIndex": 2,
+          "explanation": "The controls help locate an investigation; they do not prescribe an unsupported correction."
+        }
+      ]
+    },
+    {
+      "id": "qualified-report",
+      "title": "Write a decision-ready result summary",
+      "objectives": [
+        "Separate findings, limitations and next actions.",
+        "Prevent unsupported claims from entering a public summary."
+      ],
+      "lesson": "### Report what the evidence can support\nA result summary should answer the operational question and show the strength of that answer. Organize it into findings, limitations, actions and owners. Keep raw evidence identifiers beside conclusions so a reviewer can reconstruct the reasoning.\n\nA useful statement is specific: “AtR2 on three mornings, the low-residual observations occurred during the recorded low-turnover state; other operating states have not yet been sampled.” It is stronger than “water age caused the problem,” because the latter claims a mechanism not isolated by the data. Association can guide the next investigation without becoming a causal conclusion.\n\nSeparate analytical qualifications from operational risk. A custody discrepancy, blank detection or duplicate concern may limit interpretation while an operating condition still requires response. Escalate through the current procedure and state the evidence gap. Do not call water safe, unsafe or compliant solely from the narrow fictional dataset.\n\nThe final report must also be usable by the next shift. Assign each unresolved question to a role, specify the expected evidence and give a follow-up time or event. In an optional note, explain what new evidence would reverse your leading interpretation. Revise the report to reflect the critique rather than adding a generic disclaimer.",
+      "evidence": "**Q6 — proposed management statement**\n“Five tests prove the entire reservoir is stable. The laboratory’s R7 label is a typo, so we corrected the PDF. The blank was only 0.04, which we subtracted. All samples meet holding time. No follow-up is needed.”\n\nUseQ1–Q5. No additional sampling has occurred; no amended laboratory report or method-specific timing rule has arrived. Operations requests a defensible one-page status update.",
+      "assignment": "Replace Q6 with a 450–650-word decision memo. Reference at least five evidence IDs or records, include a limitations table and a follow-up register with owners. Explain each removed claim and propose a targeted next sampling round. Present the memo to the instructor, revise it and complete the final assessment and evaluation.",
+      "rubric": [
+        "Corrects all five unsupported claims in Q6.",
+        "Uses a clear evidence trail and specific follow-up requests.",
+        "Keeps operational response and analytical review connected without declaring compliance."
+      ],
+      "facilitatorGuide": "Expected corrections: five repeat readings are not system coverage;R7 amendment is pending;blank subtraction is unsupported;holding-time rule missing;follow-up remains needed. Accept concise tables within the word target. Ask learner which missing evidence most changes the operational decision. Return any memo quietly retaining an edited lab report or blanket safety statement. Final assessment and evaluation fit the revised last-module timetable.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 5,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 15,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "adverse",
+        "distribution"
+      ],
+      "checks": [
+        {
+          "id": "qr1",
+          "objective": "qualified-report",
+          "prompt": "Which claim is supported by five readings of one bottle?",
+          "choices": [
+            "The whole reservoir is uniform",
+            "The same bottle gave repeat results",
+            "All sampling locations are equivalent",
+            "Every operating state was sampled"
+          ],
+          "correctIndex": 1,
+          "explanation": "The evidence is limited to the measured bottle."
+        },
+        {
+          "id": "qr2",
+          "objective": "qualified-report",
+          "prompt": "Which follow-up entry is most actionable?",
+          "choices": [
+            "Investigate soon",
+            "Check everything",
+            "Ask someone later",
+            "Lab liaison: obtain amended location report by next handover"
+          ],
+          "correctIndex": 3,
+          "explanation": "An owner, specific evidence and follow-up point make the action traceable."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "sampling-data-quality-f1",
+      "objective": "sample-design",
+      "prompt": "Which design addresses an early-morning outlet complaint?",
+      "choices": [
+        "Noon source grabs",
+        "Timed outlet samples with operating records",
+        "Repeated readings from one source bottle",
+        "Weekly totals paired with an unrelated outlet grab"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sample the relevant location/time and document its operating state."
+    },
+    {
+      "id": "sampling-data-quality-f2",
+      "objective": "sample-design",
+      "prompt": "A laboratory duplicate primarily adds evidence about:",
+      "choices": [
+        "Tank residence-time distribution",
+        "Spatial coverage",
+        "Analytical repeatability",
+        "Unrecorded overnight operating changes"
+      ],
+      "correctIndex": 2,
+      "explanation": "It examines the analytical portion of the chain."
+    },
+    {
+      "id": "sampling-data-quality-f3",
+      "objective": "custody",
+      "prompt": "Collection 22:50, analysis next day 06:20: elapsed time?",
+      "choices": [
+        "8 h 30 m",
+        "7 h 20 m",
+        "6 h 20 m",
+        "7 h 30 m"
+      ],
+      "correctIndex": 3,
+      "explanation": "1 h 10 m before midnight plus 6 h 20 m after."
+    },
+    {
+      "id": "sampling-data-quality-f4",
+      "objective": "custody",
+      "prompt": "A location discrepancy is unresolved. What should be retained?",
+      "choices": [
+        "A rewritten form without its original version",
+        "The preferred entry",
+        "The invoice and the preferred location",
+        "Both original entries and a documented correction trail"
+      ],
+      "correctIndex": 3,
+      "explanation": "Preserve originals while documenting resolution."
+    },
+    {
+      "id": "sampling-data-quality-f5",
+      "objective": "quality-control",
+      "prompt": "Results 0.80 and 1.00 have what RPD?",
+      "choices": [
+        "11.1%",
+        "20.0%",
+        "22.2%",
+        "25.0%"
+      ],
+      "correctIndex": 2,
+      "explanation": "0.20/0.90×100=22.22%."
+    },
+    {
+      "id": "sampling-data-quality-f6",
+      "objective": "quality-control",
+      "prompt": "A result<0.05 mg/L means:",
+      "choices": [
+        "It is reported below that limit",
+        "The concentration is exactly 0.05",
+        "The concentration is exactly zero",
+        "It is above the stated reporting limit"
+      ],
+      "correctIndex": 0,
+      "explanation": "The notation is a bound, not an exact value."
+    },
+    {
+      "id": "sampling-data-quality-f7",
+      "objective": "qualified-report",
+      "prompt": "Which statement best respects a one-location dataset?",
+      "choices": [
+        "Every site is stable",
+        "Findings apply to sampled conditions",
+        "Repeat readings prove spatial uniformity",
+        "The best result represents the full sampling period"
+      ],
+      "correctIndex": 1,
+      "explanation": "Scope conclusions to the evidence."
+    },
+    {
+      "id": "sampling-data-quality-f8",
+      "objective": "qualified-report",
+      "prompt": "Which unresolved item needs method-specific evidence?",
+      "choices": [
+        "Whether handling time meets the applicable method",
+        "Date rollover",
+        "Whether the identifier is on the form",
+        "Whether the location names match"
+      ],
+      "correctIndex": 0,
+      "explanation": "Acceptability depends on the relevant method rule."
+    }
+  ],
+  "sources": [
+    {
+      "id": "field",
+      "title": "US EPA: Field turbidity measurement",
+      "url": "https://www.epa.gov/quality/field-turbidity-measurement",
+      "section": "Field measurement procedure and quality control",
+      "jurisdiction": "US technical guidance; laboratory/site methods govern local use",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "distribution",
+      "title": "US EPA: Drinking Water Distribution System Tools and Resources",
+      "url": "https://www.epa.gov/dwreginfo/drinking-water-distribution-system-tools-and-resources",
+      "section": "Water age, storage, pressure management and distribution-system integrity resources",
+      "jurisdiction": "US technical guidance; not Ontario requirements",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "adverse",
+      "title": "Ontario: adverse drinking water results technical bulletin",
+      "url": "https://www.ontario.ca/page/technical-bulletin-adverse-drinking-water-test-results-reporting-requirements-and-exemptions",
+      "section": "Reporting requirements and exemptions; check the applicable current regulation",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

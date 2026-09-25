@@ -229,6 +229,19 @@
           "customer_recovery_import_items"
         ]
       }
+    },
+    {
+      "version": 72,
+      "tag": "0072_ceu_learning_records",
+      "file": "drizzle/0072_ceu_learning_records.sql",
+      "sha256": "e3ec1ef8f488cb0536a231adfb824bdd58844cc8ebaa3596119e693af315f119",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "ceu_learning_records",
+          "ceu_learning_daily_time"
+        ]
+      }
     }
   ]
 }

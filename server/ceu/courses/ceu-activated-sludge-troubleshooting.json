@@ -1,0 +1,451 @@
+{
+  "key": "ceu-activated-sludge-troubleshooting",
+  "title": "Activated Sludge Troubleshooting and Solids Control",
+  "shortTitle": "Activated Sludge Troubleshooting",
+  "stream": "wastewater",
+  "audience": "Practising wastewater operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Diagnose a fictional biological-treatment upset using consistent solids balances, settling tests, spatial oxygen observations and a monitored recovery plan. Practise distinguishing biomass loss from a change in process kinetics.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "inventory-boundary",
+      "title": "Solids inventory and retention boundaries",
+      "objectives": [
+        "Calculate SRT with aeration and clarifier inventory.",
+        "Compare like-for-like solids bases and external losses."
+      ],
+      "lesson": "### The boundary changes the calculated age\nSRT is solids inventory divided by daily solids leaving the selected system. A complete estimate may include aeration and clarifier inventories when supported by measurements. If one day includes clarifier solids and another does not, an apparent change can be a bookkeeping change rather than process behaviour.\n\nFor a layered clarifier estimate, calculate each layer's volume times concentration and add the masses. Concentration inmg/L converts tokg/m³ by dividing by 1,000. A100 m³ layer at 4,000 mg/L contains 400 kg. A blanket depth alone does not establish mass without geometry and concentration distribution.\n\nDaily losses include waste solids and effluent solids on the chosen basis. Internal RAS flow redistributes inventory and is not an external loss. If waste is taken from a different location, use that location's concentration and the matching flow period. Do not multiply a mixed-liquor concentration by a concentrated waste-sludge flow unless they actually correspond.\n\nInterpret SRT alongside treatment goals, temperature, sampling quality and time trends. A calculated value is not an automatic wasting setpoint. The purpose of this module is to make the estimate reproducible and expose the consequence of omitted inventory or loss terms.",
+      "evidence": "**A1 — fictional Elm Basin daily balance**\nAeration volume 3,000 m³ atMLSS 3,000 mg/L. Clarifier lower layer 150 m³ at 6,000 mg/L; upper layer 300 m³ at 500 mg/L. Waste 100 m³/day at 6,000 mg/L. Effluent 12,000 m³/day at 15 mg/LTSS. RAS6,000 m³/day at 6,000 mg/L stays internal.\n\nA2: Yesterday's worksheet omitted clarifier inventory but otherwise used the same values. All supplied averages are assumed representative for this training calculation.",
+      "assignment": "Calculate aeration and both clarifier inventories, total inventory, waste/effluent losses and full-boundary SRT. Compare with A2 and quantify the percentage understatement relative to the full-boundary estimate. Write a 300–450-word data request for improving the real-world estimate and explain why RAS is excluded from losses.",
+      "rubric": [
+        "Total inventory 10,050 kg and losses 780 kg/day.",
+        "SRT 12.885 days versus 11.538 days without clarifier inventory.",
+        "States boundary and representativeness assumptions."
+      ],
+      "facilitatorGuide": "Aeration 9,000 kg; lower 900; upper 150; total 10,050. Waste 600 kg/day, effluent 180, total 780. Full SRT 12.8846 days; omitted-inventory estimate 11.5385,10.45% lower relative to full estimate. Internal RAS36,000 kg/day is not a system loss. Require clarifier geometry/concentration profile and matched flow/concentration records. Reject a wasting prescription based only on this number.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "biological",
+        "nutrients"
+      ],
+      "checks": [
+        {
+          "id": "ai1",
+          "objective": "inventory-boundary",
+          "prompt": "200 m³ at 5,000 mg/L contains:",
+          "choices": [
+            "100 kg",
+            "1,000 kg",
+            "10,000 kg",
+            "25 kg"
+          ],
+          "correctIndex": 1,
+          "explanation": "200×5,000/1,000=1,000 kg."
+        },
+        {
+          "id": "ai2",
+          "objective": "inventory-boundary",
+          "prompt": "Omitting a positive clarifier inventory while keeping losses fixed makes SRT:",
+          "choices": [
+            "Higher",
+            "Unchanged",
+            "Lower",
+            "A hydraulic residence time"
+          ],
+          "correctIndex": 2,
+          "explanation": "The numerator is smaller, so the calculated SRT falls."
+        }
+      ]
+    },
+    {
+      "id": "settling-diagnosis",
+      "title": "Settling, solids loading and competing mechanisms",
+      "objectives": [
+        "Calculate SVI and a stated clarifier solids-loading measure.",
+        "Differentiate poor settling from hydraulic and return-flow effects."
+      ],
+      "lesson": "### Keep the test and the clarifier separate\nA settling cylinder is a controlled test; a clarifier is a flowing separation process. Poor cylinder settling can support a settling concern, while a rising clarifier blanket can also reflect hydraulic loading, solids distribution or RAS delivery. Neither observation alone identifies a microbiological cause.\n\nSVI equals 30-minute settled volumemL/L divided by MLSSg/L. For 450 mL/L and 3 g/L, SVI is 150 mL/g. Record whether the sample was diluted and whether the method was consistent. A diluted test and an undiluted test may need different interpretation; do not compare them without documenting the procedure.\n\nFor this module's explicitly defined clarifier feed-solids loading, use(Q+QRAS)×MLSS divided by surface area, with unitskg/(m²·day). This convention describes the solids entering the clarifier. It differs from a forward-flow-only hydraulic loading. Always state the convention before comparing values.\n\nA hypothesis table should include a discriminating observation. Filament-related settling concerns may require qualified microscopy and broader process evidence; a RAS shortfall requires verified flow and equipment evidence. Do not prescribe a chemical treatment from a photograph or one SVI value.",
+      "evidence": "**A3 — two daily records, same settling method**\n| Measure | Day 1 | Day 2 |\n|---|---:|---:|\n|MLSS,mg/L|3,000|3,200|\n|Settled volume,mL/L|300|512|\n|Forward flow,m³/day|12,000|15,000|\n|RAS flow,m³/day|6,000|5,000|\n|Clarifier area,m²|600|600|\n|Blanket depth,m|0.9|1.7|\n\nA4: RAS readings have current verification. No microscopy is available. Day 2 peak flow was much higher than its daily average.",
+      "assignment": "Calculate both SVI values and daily feed-solids loadings using the stated convention. Construct a three-mechanism troubleshooting table with supporting, missing and discriminating evidence. Explain why the daily loading does not capture the peak and why neither SVI nor blanket depth proves a specific organism is responsible.",
+      "rubric": [
+        "SVI 100 and 160 mL/g.",
+        "Feed-solids loadings 90 and 106.67 kg/(m²·day).",
+        "Separates settling, hydraulic and solids-return mechanisms."
+      ],
+      "facilitatorGuide": "Day 1(18,000×3)/600=90; Day 2(20,000×3.2)/600=106.667. SVI 300/3=100 and 512/3.2=160. All are evidence of changed conditions, not a unique cause. Require peak-flow/solids profile, standardized settling verification, qualified microscopy where appropriate and review of RAS distribution. No universal loading or SVI limit is supplied.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "biological",
+        "nutrients"
+      ],
+      "checks": [
+        {
+          "id": "as1",
+          "objective": "settling-diagnosis",
+          "prompt": "480 mL/L divided by 3.2 g/L gives SVI:",
+          "choices": [
+            "1,536 mL/g",
+            "15 mL/g",
+            "150 mL/g",
+            "6.67 mL/g"
+          ],
+          "correctIndex": 2,
+          "explanation": "Using the stated units and calculation: 480/3.2=150."
+        },
+        {
+          "id": "as2",
+          "objective": "settling-diagnosis",
+          "prompt": "A daily average solids loading may conceal:",
+          "choices": [
+            "Short-duration loading peaks",
+            "The definition of a kilogram",
+            "The number of minutes in an hour",
+            "The stated clarifier surface area"
+          ],
+          "correctIndex": 0,
+          "explanation": "Averaging can hide brief high-load conditions."
+        }
+      ]
+    },
+    {
+      "id": "nitrogen-diagnosis",
+      "title": "Ammonia, oxygen and alkalinity evidence",
+      "objectives": [
+        "Calculate a theoretical alkalinity demand using a supplied factor.",
+        "Rank competing explanations for an ammonia increase."
+      ],
+      "lesson": "### Diagnose conditions, not just one result\nAn ammonia increase can reflect load, temperature, oxygen availability, biomass retention, inhibition or measurement issues. Review their timing and spatial coverage. A basin-end DO result does not establish the oxygen profile throughout the basin, and a daily ammonia composite may describe conditions before an operational change.\n\nFor this training calculation, use a supplied theoretical nitrification alkalinity consumption factor of 7.14 mg asCaCO3 per mg ammonia-N oxidized. Oxidizing 20 mg/L therefore corresponds to 142.8 mg/L alkalinity consumption before accounting for other gains/losses. This stoichiometric screening estimate is not a prediction of finalpH, nor a chemical dosing instruction. Denitrification, incoming alkalinity and other processes can alter the balance.\n\nNitrogen species must share a consistent basis. A result reported asN cannot be added directly to a concentration reported as the full chemical species without conversion. Here all ammonia and nitrate values are explicitly reported asN.\n\nUse the calculation to ask better questions: is alkalinity supply plausibly limiting, are oxygen measurements representative, did solids retention change, and is the sample period aligned? A strong diagnosis ranks explanations and identifies what evidence would distinguish them without declaring one proven prematurely.",
+      "evidence": "**A5 — process evidence**\nInfluent alkalinity 180 mg/L asCaCO3. Ammonia-N entering the evaluated stage 24 mg/L; outlet 4 mg/L. Supplied theoretical consumption factor 7.14. No alkalinity recovery or other demand is included in the simplified case.\n\nA6: Temperature fell 18 to 12°C over a week. Basin DO profile at three verified locations is 0.6,1.2,2.0 mg/L. Effluent ammonia-N rose 2 to 4 mg/L on daily composites. A1's full SRTestimate is current; no prior comparable SRT is supplied. No inhibition test is available.",
+      "assignment": "Calculate ammonia-N oxidized, theoretical alkalinity consumption and simplified remaining alkalinity. Build a ranked four-hypothesis table for A6 with the next discriminating evidence for each. Explain why the arithmetic does not determinepH or prove a dosing requirement, and why the available SRT cannot establish a downward trend.",
+      "rubric": [
+        "Consumption 142.8 mg/L and simplified remainder 37.2 mg/L.",
+        "Considers spatial DO, temperature, retention and inhibition/data alternatives.",
+        "Avoids pH prediction and an unsupported SRT trend."
+      ],
+      "facilitatorGuide": "24−4=20 mgN/L;×7.14=142.8;180−142.8=37.2 mg/L asCaCO3 under the case assumptions. This is not measured effluent alkalinity orpH. Temperature and DO evidence deserve attention; a single current SRT cannot show a trend. Accept different rankings when justified and paired with discriminating checks. Reject an immediate unapproved alkalinity dose or a proven-inhibition claim.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "nutrients",
+        "biological"
+      ],
+      "checks": [
+        {
+          "id": "an1",
+          "objective": "nitrogen-diagnosis",
+          "prompt": "Oxidizing 10 mg/L ammonia-N at the supplied 7.14 factor consumes theoretically:",
+          "choices": [
+            "7.14 mg/L",
+            "71.4 mg/L",
+            "714 mg/L",
+            "1.40 mg/L"
+          ],
+          "correctIndex": 1,
+          "explanation": "10×7.14=71.4 mg/L asCaCO3."
+        },
+        {
+          "id": "an2",
+          "objective": "nitrogen-diagnosis",
+          "prompt": "A single current SRT estimate establishes:",
+          "choices": [
+            "That SRT has fallen for a week",
+            "That temperature has no effect",
+            "That inhibition is proven",
+            "A current estimate on its stated boundary"
+          ],
+          "correctIndex": 3,
+          "explanation": "A trend requires comparable observations over time."
+        }
+      ]
+    },
+    {
+      "id": "recovery-trial",
+      "title": "Monitored recovery and reassessment",
+      "objectives": [
+        "Design a controlled response with measurable outcomes.",
+        "Revise a diagnosis as verified evidence arrives."
+      ],
+      "lesson": "### Recovery takes more than one favourable observation\nA monitored response defines the issue, authorized action, expected mechanism, observation schedule and stopping/escalation criteria. Biological responses can lag behind equipment changes; a restored air flow or pump delivery does not instantly establish recovered treatment. Keep immediate equipment verification and longer-term process outcomes separate.\n\nAvoid several untracked changes at once. If oxygen distribution, wasting and return flows all change together, a later improvement may be difficult to attribute. Some urgent responses may still require coordinated changes under the operating procedure; document why, what changed, who authorized it and how consequences will be monitored.\n\nUse leading and outcome measures. Verified equipment delivery and spatial DO can show an immediate condition change. Matched ammonia results, solids inventory, settling and effluent solids provide process outcomes over suitable periods. No single metric should stand in for the whole treatment train.\n\nA revised hypothesis is a sign of evidence use, not failure. Record which new fact changed the ranking. Keep unresolved alternatives visible and carry them into the next shift with owners and review times. Completion of this course requires that the practical reasoning meets the rubric as well as a passing final assessment.",
+      "evidence": "**A7 — new evidence at handover**\nAuthorized maintenance restores an air-distribution fault. Verified DO profile becomes 1.5,1.7,2.0 mg/L. No new daily composite ammonia result is available. Blanket remains 1.7 m; SVI remains 160 mL/g on the same method. A supervisor proposes: “Oxygen fixed; reduce wasting immediately and declare recovery.” No wasting change is authorized.\n\nUseA1–A6 for the remaining process evidence.",
+      "assignment": "Prepare a 600–850-word recovery plan with calculation appendix, updated hypothesis ranking, authorized-action register, immediate and delayed outcome measures and next-shift handover. Respond to the supervisor's proposal. Explain what evidence would justify revising wasting and what would demonstrate sustained recovery. Present, revise, assess and evaluate.",
+      "rubric": [
+        "Uses verified DO improvement without claiming ammonia/settling recovery.",
+        "Includes correct inventory, SRT, SVI and alkalinity calculations.",
+        "Defines controlled decisions, ownership and outcome verification."
+      ],
+      "facilitatorGuide": "The air fault and improved profile support an oxygen-distribution contribution. They do not eliminate temperature, retention or settling concerns. No new ammonia composite exists; blanket and SVI have not improved. Require a review of consistent inventory/loss trends before any authorized wasting change, plus matched outcome monitoring. Reject blanket recovery claims or a universal wasting prescription. Every criterion must be met before accepting the practical.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 20,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "nutrients",
+        "biological",
+        "wwroles"
+      ],
+      "checks": [
+        {
+          "id": "ar1",
+          "objective": "recovery-trial",
+          "prompt": "After DO improves but ammonia results are pending, what is established?",
+          "choices": [
+            "Nitrification is fully recovered",
+            "Every settling problem is solved",
+            "The measured oxygen profile improved",
+            "Wasting must immediately decrease"
+          ],
+          "correctIndex": 2,
+          "explanation": "Only the verified change is established."
+        },
+        {
+          "id": "ar2",
+          "objective": "recovery-trial",
+          "prompt": "Which design best supports learning from an authorized response?",
+          "choices": [
+            "Document changes and track predicted outcomes",
+            "Change every control without a record",
+            "Use only the most favourable later result",
+            "Declare success when maintenance is called"
+          ],
+          "correctIndex": 0,
+          "explanation": "Traceable changes and planned outcomes support interpretation."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "activated-sludge-troubleshooting-f1",
+      "objective": "inventory-boundary",
+      "prompt": "Inventory 10,000 kg and total loss 800 kg/day give SRT:",
+      "choices": [
+        "12.5 days",
+        "8 days",
+        "0.08 day",
+        "18 days"
+      ],
+      "correctIndex": 0,
+      "explanation": "10,000/800=12.5 days."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f2",
+      "objective": "inventory-boundary",
+      "prompt": "RAS within the chosen system boundary is:",
+      "choices": [
+        "An additional external solids loss",
+        "Always the same as waste sludge",
+        "A substitute for effluent TSS",
+        "Internal solids transfer"
+      ],
+      "correctIndex": 3,
+      "explanation": "Internal recycling is not a system loss."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f3",
+      "objective": "settling-diagnosis",
+      "prompt": "Settled volume 420 mL/L and MLSS 2.8 g/L give SVI:",
+      "choices": [
+        "117.6 mL/g",
+        "150 mL/g",
+        "15 mL/g",
+        "1,176 mL/g"
+      ],
+      "correctIndex": 1,
+      "explanation": "Using the stated units and calculation: 420/2.8=150."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f4",
+      "objective": "settling-diagnosis",
+      "prompt": "A specific filamentous cause requires more than:",
+      "choices": [
+        "A qualified investigation",
+        "Consistent method records",
+        "A process evidence review",
+        "One elevated SVI value"
+      ],
+      "correctIndex": 3,
+      "explanation": "SVI alone does not identify an organism or mechanism."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f5",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "At 7.14 mg/mg,15 mg/L ammonia-N oxidation has theoretical demand:",
+      "choices": [
+        "7.14 mg/L",
+        "10.71 mg/L",
+        "107.1 mg/L",
+        "2.10 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "15×7.14=107.1 mg/L asCaCO3."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f6",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "A calculated remaining alkalinity is not directly:",
+      "choices": [
+        "A measured finalpH",
+        "A result dependent on assumptions",
+        "A value with concentration units",
+        "A screening balance result"
+      ],
+      "correctIndex": 0,
+      "explanation": "Alkalinity andpH are related but not interchangeable."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f7",
+      "objective": "recovery-trial",
+      "prompt": "Verified air delivery restoration should be followed by:",
+      "choices": [
+        "Immediate blanket closure of all issues",
+        "Deletion of the original fault record",
+        "Matched process-outcome monitoring",
+        "An unrecorded change to every control"
+      ],
+      "correctIndex": 2,
+      "explanation": "Equipment restoration and process recovery are separate verification steps."
+    },
+    {
+      "id": "activated-sludge-troubleshooting-f8",
+      "objective": "recovery-trial",
+      "prompt": "A wasting decision should use:",
+      "choices": [
+        "The highest DO result obtained after maintenance",
+        "Consistent solids evidence and authorized review",
+        "A desired SRT without a consistent inventory boundary",
+        "The current waste-pump command without a flow check"
+      ],
+      "correctIndex": 1,
+      "explanation": "The decision needs a supported process basis and proper authority."
+    }
+  ],
+  "sources": [
+    {
+      "id": "biological",
+      "title": "US EPA: Process Control Manual, Aerobic Biological Wastewater Treatment Facilities",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=9100NX8X.TXT",
+      "section": "Activated-sludge process observations, tests and interpretation; historic technical reference",
+      "jurisdiction": "US historic technical guidance; check current facility practice",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "nutrients",
+      "title": "US EPA: Nutrient Control Design Manual",
+      "url": "https://www.epa.gov/sustainable-water-infrastructure/nutrient-control-design-manual",
+      "section": "Biological nutrient removal, chemical phosphorus removal and filtration",
+      "jurisdiction": "US technical guidance; not Ontario permit limits",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "wwroles",
+      "title": "Ontario: Licensing guide for wastewater operators",
+      "url": "https://www.ontario.ca/page/licensing-guide-wastewater-operators",
+      "section": "Operator-in-charge responsibilities and operating records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

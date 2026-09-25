@@ -18,11 +18,12 @@ function minutesToHours(minutes: number) {
 function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: () => void }) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
   const joinWaitlist = trpc.waitlist.join.useMutation({
     onSuccess: (result) => {
       setMessage(result.alreadyRegistered ? "This email is already registered for updates." : "You are on the course update list.");
     },
-    onError: (error) => setMessage(error.message || "We could not save your request. Please try again."),
+    onError: (error) => setError(error.message || "We could not save your request. Please try again."),
   });
 
   return (
@@ -37,8 +38,10 @@ function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: (
         ) : (
           <form onSubmit={(event) => {
             event.preventDefault();
-            joinWaitlist.mutate({ email: email.trim(), courseCode: course.key, courseTitle: course.title });
+            setError("");
+            joinWaitlist.mutate({ email: email.trim(), courseCode: course.interestCode, courseTitle: course.title });
           }}>
+            {error && <p role="alert">{error}</p>}
             <label htmlFor={`ceu-email-${course.key}`}>Work email</label>
             <input id={`ceu-email-${course.key}`} type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="operator@example.ca" />
             <button type="submit" disabled={joinWaitlist.isPending}>{joinWaitlist.isPending ? "Saving request" : "Request updates"}</button>
@@ -66,7 +69,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
       </div>
       <p className="ceu-course-status">{course.statusDescription}</p>
       <div className="ceu-course-actions">
-        <Link href={`/continuing-education/${course.key}`} className="ceu-preview-link">Open working course preview</Link>
+        <Link href={`/continuing-education/${course.key}`} className="ceu-preview-link">Open pilot course</Link>
         <button type="button" className="ceu-outline-button" aria-expanded={selected} onClick={onSelect}>
           {selected ? "Hide course outline" : "Review course outline"}
           <ChevronDown size={17} aria-hidden="true" className={selected ? "is-open" : ""} />
@@ -82,7 +85,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
             </ul>
           </div>
           <div className="ceu-outline-column ceu-modules">
-            <p className="ceu-outline-label">Six-module timetable</p>
+            <p className="ceu-outline-label">{course.modules.length}-module timetable</p>
             <ol>
               {course.modules.map((module) => (
                 <li key={module.number}>
@@ -107,7 +110,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
 export default function ContinuingEducation() {
   usePageMeta({
     title: "Ontario Operator Continuing Education Courses | Echelon Institute",
-    description: "Explore Echelon Institute's approval-ready online learning paths for Ontario drinking-water and wastewater operators.",
+    description: "Explore Echelon Institute's applied pilot courses for Ontario drinking-water and wastewater operators.",
   });
   const [selectedCourseKey, setSelectedCourseKey] = useState<string>(CEU_COURSES[0].key);
   const [interestCourseKey, setInterestCourseKey] = useState<string | null>(null);
@@ -122,17 +125,17 @@ export default function ContinuingEducation() {
           <div className="ceu-hero-copy">
             <p className="ceu-eyebrow">Echelon Institute professional learning</p>
             <h1>Structured learning paths for the operators who keep systems running.</h1>
-            <p className="ceu-hero-summary">Three online course blueprints are being prepared for Ontario operator professional development. Each is designed around active participation, evidence of learning, and a clear course-completion record.</p>
+            <p className="ceu-hero-summary">Ten self-paced pilot courses combine practical operating cases, calculations, automatic exercise feedback and saved learning records. Three flagship courses are planned for ten hours each; focused courses are planned for three or four hours.</p>
             <div className="ceu-hero-facts">
-              <span><Clock3 size={17} aria-hidden="true" /> 7 planned contact hours per course</span>
-              <span><GraduationCap size={17} aria-hidden="true" /> 6 applied learning modules</span>
-              <span><FileCheck2 size={17} aria-hidden="true" /> Assessment and course record planned</span>
+              <span><Clock3 size={17} aria-hidden="true" /> 3–10 planned learning hours</span>
+              <span><GraduationCap size={17} aria-hidden="true" /> 4–6 practical modules per course</span>
+              <span><FileCheck2 size={17} aria-hidden="true" /> Saved work and automatic completion</span>
             </div>
           </div>
           <aside className="ceu-hero-panel">
             <p>Public status</p>
-            <strong>Approval-ready curriculum</strong>
-            <span>These are proposed learning paths. They are not advertised as Director approved, accredited, or assigned a CEU value.</span>
+            <strong>Pilot curriculum · review pending</strong>
+            <span>Duration requires a timed pilot. These courses do not award approved CEUs, accreditation or regulatory recognition.</span>
           </aside>
         </section>
 
@@ -140,7 +143,7 @@ export default function ContinuingEducation() {
           <div className="ceu-section-heading">
             <p className="ceu-eyebrow">Course catalogue</p>
             <h2 id="ceu-catalogue-title">Choose the operational capability you want to strengthen.</h2>
-            <p>Every course uses fictional scenarios and general operating principles. The final delivery version will include instructor engagement, verified participation, assessment, and a course evaluation.</p>
+            <p>Every course uses fictional scenarios and general operating principles. Self-paced delivery includes server-graded case exercises, active-time tracking and a final assessment. An optional evaluation helps improve the pilot. Reading a page alone does not complete a course.</p>
           </div>
           <div className="ceu-course-list">
             {CEU_COURSES.map((course) => (
@@ -161,8 +164,8 @@ export default function ContinuingEducation() {
             <h2 id="ceu-delivery-title">A course is more than a recording.</h2>
           </div>
           <div className="ceu-delivery-cards">
-            <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Active learning</h3><p>Applied data work, scenarios, knowledge checks, and instructor-led discussion create evidence beyond passive viewing.</p></article>
-            <article><FileCheck2 size={22} aria-hidden="true" /><h3>Completion evidence</h3><p>Attendance, assessment, feedback, and a course evaluation are planned as part of the delivery record.</p></article>
+            <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Active learning</h3><p>Applied cases, calculations, scored checks and optional notes support learning beyond passive viewing.</p></article>
+            <article><FileCheck2 size={22} aria-hidden="true" /><h3>Completion evidence</h3><p>Passed case exercises, final results and recorded active time issue a non-credit pilot learning record automatically.</p></article>
             <article><ShieldCheck size={22} aria-hidden="true" /><h3>Approval discipline</h3><p>Drinking-water courses follow the Director-approval route. Wastewater courses follow the OWWCO course-value review route.</p></article>
           </div>
         </section>

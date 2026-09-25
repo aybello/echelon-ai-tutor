@@ -1,0 +1,664 @@
+{
+  "key": "ceu-wastewater-treatment-process-control",
+  "title": "Wastewater Treatment Operations and Process Control",
+  "shortTitle": "Wastewater Process Control",
+  "stream": "wastewater",
+  "audience": "Experienced municipal wastewater operators and shift supervisors.",
+  "prerequisites": "Working familiarity with a treatment train, laboratory reports and metric units. A calculator and access to the linked readings are required.",
+  "introduction": "Work a fictional Millhaven shift from incoming load through biological treatment, clarification, nutrient control and solids handling. Build calculations and a defensible handover from imperfect evidence.",
+  "plannedMinutes": 600,
+  "delivery": "Self-paced online pilot: complete 6 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "process-map",
+      "title": "Process boundaries and incoming load",
+      "objectives": [
+        "Draw a control boundary that identifies recycle streams.",
+        "Distinguish concentration, flow and daily mass loading."
+      ],
+      "lesson": "### Follow the material, not just the pipe\nA wastewater treatment train transfers and transforms material. Screening removes gross solids; biological treatment transfers part of the incoming organic material into biomass; clarification separates suspended material; sludge handling concentrates the captured solids. A clear effluent concentration alone does not describe the mass leaving a plant. Flow and concentration must represent the same period and sampling boundary.\n\nFor a daily load, **kg/day = m³/day × mg/L ÷ 1,000**. At 8,000 m³/day and 180 mg/L, the incoming load is 1,440 kg/day. If wet-weather flow doubles while concentration falls to 110 mg/L, load becomes 1,760 kg/day. Dilution has reduced concentration while increasing mass. Neither concentration nor daily mass describes every short-duration peak.\n\nDraw the measurement boundary before adding streams. A headworks flow meter upstream of a sidestream return does not measure that return. A downstream meter may already include it. Adding the same return twice creates a fictitious load. Similarly, an internal return-activated-sludge flow circulates material; it is not an external solids loss when calculating whole-system solids retention time.\n\nProcess decisions also have authority boundaries. An operator can identify a risk and make an authorized response; the exercise does not authorize bypassing treatment, entering confined spaces, defeating interlocks or changing approval conditions. Record the responsible role and controlling facility procedure. Use the Ontario operator guide for role context and the EPA primer for treatment concepts, keeping jurisdiction separate.",
+      "evidence": "**Millhaven evidence M1 — training records**\n\n| Item | Dry day | Rain day |\n|---|---:|---:|\n| Headworks flow upstream of centrate, m³/day | 8,000 | 16,000 |\n| Matched headworks composite BOD, mg/L | 180 | 110 |\n| Centrate return, m³/day | 120 | 120 |\n| Centrate BOD, mg/L | 700 | 700 |\n\nM2: Both headworks concentrations are flow-proportional daily composites. The centrate sample is a grab at 10:00; daily stability has not been established.\n\nM3: The shift checklist assigns incident coordination to the OIC and equipment isolation to authorized maintenance staff. No bypass authorization is supplied.",
+      "assignment": "Prepare a 400–600-word shift briefing with a simple textual stream map. Calculate both headworks loads and the indicative centrate load. Calculate the percentage load change and explain why the centrate estimate has weaker support. Mark the meter boundary and identify two decisions requiring the facility's authorized procedures. Include one measurement that would improve the daily estimate.",
+      "rubric": [
+        "Correct daily loads and percentage change with units.",
+        "Separates upstream headworks from centrate and internal recycle.",
+        "Qualifies grab-based extrapolation and assigns decision ownership."
+      ],
+      "facilitatorGuide": "Expected headworks loads: 1,440 and 1,760 kg/day, a 22.2% increase. Indicative centrate load 84 kg/day; combined estimates 1,524 and 1,844 kg/day only if the grab is representative. Do not accept a claim that rainfall improved treatment solely because concentration fell. Ask the learner where each meter sits and what an already-inclusive downstream flow would change. Return work that treats RAS as a new incoming load or proposes an unauthorized bypass.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "ww",
+        "wwroles"
+      ],
+      "checks": [
+        {
+          "id": "m1a",
+          "objective": "process-map",
+          "prompt": "Flow doubles while concentration falls by 40%. What happens to daily mass?",
+          "choices": [
+            "Falls 40%",
+            "Stays constant",
+            "Rises 20%",
+            "Doubles"
+          ],
+          "correctIndex": 2,
+          "explanation": "2 × 0.60 = 1.20 times the original load."
+        },
+        {
+          "id": "m1b",
+          "objective": "process-map",
+          "prompt": "What is missing when a centrate grab is used for a daily load?",
+          "choices": [
+            "Evidence of daily representativeness",
+            "The numerical conversion factor",
+            "The upstream pipe diameter",
+            "The final clarifier surface area"
+          ],
+          "correctIndex": 0,
+          "explanation": "A single concentration does not establish the time-weighted daily concentration."
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "title": "Build a trustworthy process dataset",
+      "objectives": [
+        "Match concentration and flow periods.",
+        "Calculate removal and identify uncertainty in a comparison."
+      ],
+      "lesson": "### A precise calculation can answer the wrong question\nA laboratory result has an identity: location, collection time, sample type, method, result basis and any qualification. The apparent precision of a number does not remove these attributes. A morning grab and a 24-hour composite do not necessarily describe the same wastewater. A downstream result may reflect a different parcel because of hydraulic travel and mixing.\n\nFor comparable daily boundaries, estimated removal is (incoming mass − outgoing mass) ÷ incoming mass × 100. With 1,500 kg/day entering and 75 kg/day leaving, estimated removal is 95%. If incoming and outgoing flows differ, use each flow separately. An unqualified concentration-only percentage assumes equal flows and representative matching periods.\n\nBelow a reporting limit is not zero. A result of less than 2 mg/L at 10,000 m³/day supports an outgoing load below 20 kg/day under the stated sampling assumptions; substituting zero would overstate certainty. Likewise, a field probe marked overdue is neither automatically false nor automatically usable for every decision. Seek a documented independent check and retain the original result with its qualification.\n\nBuild a data-quality table before diagnosing the process. Mark each value as usable for the intended comparison, provisional or unsuitable, and say why. That decision is specific to the question: an instantaneous alarm may justify urgent verification even though it cannot establish the daily average.",
+      "evidence": "**M4 — laboratory and field extract**\n\n| Record | Period/type | Flow basis | Result |\n|---|---|---|---|\n| IN-21 | Tuesday 00:00–24:00 composite | 10,000 m³/day | BOD 150 mg/L |\n| OUT-21 | Tuesday 00:00–24:00 composite | 9,800 m³/day | BOD 8 mg/L |\n| OUT-22 | Wednesday 07:00 grab | Tuesday flow copied | BOD 4 mg/L |\n| TP-21 | Tuesday composite | 9,800 m³/day | TP <0.05 mg/L |\n\nM5: Dissolved oxygen probe reads 0.7 mg/L at 07:05. Maintenance record shows a missed scheduled check. A portable comparison has been requested but is not yet available.",
+      "assignment": "Create a five-row data-quality decision table and a 300–500-word interpretation. Calculate Tuesday incoming and outgoing BOD mass and estimated removal. Bound the reported TP load without treating it as zero. Explain why OUT-22 cannot establish improvement over Tuesday and how you would respond to M5 while verification is pending.",
+      "rubric": [
+        "Matches the Tuesday flows to their samples.",
+        "Reports the TP bound and avoids a zero substitution.",
+        "Keeps urgent process verification separate from unsupported daily conclusions."
+      ],
+      "facilitatorGuide": "Tuesday BOD: 1,500 kg/day in, 78.4 out, 94.773% estimated removal (94.8% acceptable). TP <0.49 kg/day, not zero. OUT-22 differs in sampling basis and day; its copied flow is unsuitable. A missed probe check calls for prompt confirmation, maintenance review and response under the operating procedure; it does not license ignoring an alarm. Ask what evidence would make the two BOD days comparable.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "ww",
+        "biological"
+      ],
+      "checks": [
+        {
+          "id": "m2a",
+          "objective": "monitoring",
+          "prompt": "At 9,000 m³/day, a representative result <2 mg/L implies which daily load?",
+          "choices": [
+            "Exactly 18 kg",
+            "Below 18 kg",
+            "Exactly zero",
+            "Above 18 kg"
+          ],
+          "correctIndex": 1,
+          "explanation": "9,000 × 2 / 1,000 = 18; the result is below that bound."
+        },
+        {
+          "id": "m2b",
+          "objective": "monitoring",
+          "prompt": "Which comparison best estimates a daily mass change?",
+          "choices": [
+            "Two differently timed grabs",
+            "Only the lowest daily reading",
+            "An unverified probe maximum",
+            "Matched composites and flows"
+          ],
+          "correctIndex": 3,
+          "explanation": "Matched representative periods and separate flow bases support the comparison."
+        }
+      ]
+    },
+    {
+      "id": "biological",
+      "title": "Biomass, oxygen and clarification",
+      "objectives": [
+        "Separate hydraulic, biological and settling evidence.",
+        "Calculate SVI and distinguish an observation from a diagnosis."
+      ],
+      "lesson": "### One symptom can have several causes\nAn increasing secondary sludge blanket may reflect a solids inventory problem, poor settling, changing hydraulic load or a return-sludge equipment problem. Increasing the return flow is not a universal remedy: it changes clarifier hydraulics and redistribution of solids and must be evaluated within the facility's operating envelope.\n\nThe sludge volume index is **SVI (mL/g) = 30-minute settled volume (mL/L) × 1,000 ÷ MLSS (mg/L)**. At a settled volume of 300 mL/L and MLSS of 3,000 mg/L, SVI is 100 mL/g. A changed index is evidence about the standardized settling test, not proof of a particular organism or a universal pass/fail limit. Record test procedure, sample mixing, timing and concentration. Diluted tests must be identified and cannot be compared casually with undiluted results.\n\nDissolved oxygen is local and time dependent. A reading at one basin end does not establish conditions throughout the basin. A falling value, increased ammonia and a rising load are consistent with oxygen limitation, but probe performance, temperature, solids age, inhibition and sampling delays remain alternative explanations. Some responses require immediate authorized attention while slower laboratory evidence is collected.\n\nUse an evidence ladder: observation, plausible mechanisms, discriminating checks, authorized action, verification. A mechanism becomes more credible when a predicted independent observation is found. Avoid making several large changes together: the resulting response may not identify which change mattered.",
+      "evidence": "**M6 — same-method trend at Millhaven**\n\n| Measure | Monday | Tuesday |\n|---|---:|---:|\n| MLSS, mg/L | 3,000 | 3,200 |\n| 30-minute settled volume, mL/L | 300 | 480 |\n| Clarifier blanket depth, m | 0.8 | 1.6 |\n| Peak forward flow, m³/h | 420 | 650 |\n| RAS actual flow, m³/h | 260 | 160 |\n| RAS command, m³/h | 260 | 260 |\n\nM7: The RAS flow indication has not been independently verified. Basin-end DO reads 0.8 mg/L; a second location reads 1.8 mg/L. No microscopy or inhibition test is available.",
+      "assignment": "Calculate both SVI values. Build a hypothesis table with at least three mechanisms, a supporting observation, a conflicting or missing observation and a discriminating check for each. Rank actions for the first hour and next shift. Explain why the RAS command is not evidence of delivered flow and define observations that would show improvement.",
+      "rubric": [
+        "SVI calculations preserve mL/g units.",
+        "Considers hydraulic load, settling and RAS delivery separately.",
+        "Avoids a single-cause diagnosis and specifies verification."
+      ],
+      "facilitatorGuide": "SVI is 100 then 150 mL/g. Both hydraulic and solids-return changes could contribute; standardized test deterioration adds a settling concern. Strong work checks actual RAS delivery through authorized methods, reviews blanket/trend reliability and compares spatial DO without treating one point as the whole basin. Reject automatic pump-speed commands or a definitive filamentous-bulking diagnosis unsupported by microscopy and broader evidence. Require measurable follow-up, such as verified RAS delivery and blanket trend under comparable flow.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "biological",
+        "nutrients"
+      ],
+      "checks": [
+        {
+          "id": "m3a",
+          "objective": "biological",
+          "prompt": "A 450 mL/L settled volume and 3,000 mg/L MLSS give what SVI?",
+          "choices": [
+            "6.7 mL/g",
+            "15 mL/g",
+            "1,350 mL/g",
+            "150 mL/g"
+          ],
+          "correctIndex": 3,
+          "explanation": "450 × 1,000 / 3,000 = 150 mL/g."
+        },
+        {
+          "id": "m3b",
+          "objective": "biological",
+          "prompt": "Which record most directly checks a command-to-delivery discrepancy?",
+          "choices": [
+            "An independently verified RAS flow",
+            "The unchanged pump setpoint",
+            "Yesterday’s daily influent BOD",
+            "The basin design volume"
+          ],
+          "correctIndex": 0,
+          "explanation": "Delivered flow must be checked rather than inferred from the command."
+        }
+      ]
+    },
+    {
+      "id": "solids-age",
+      "title": "Solids inventory, SRT and F/M",
+      "objectives": [
+        "Calculate inventory and solids losses on a stated boundary.",
+        "Distinguish solids age from hydraulic residence time."
+      ],
+      "lesson": "### State the mass basis before dividing\nSolids retention time (SRT) is an inventory divided by a daily solids loss on a consistent boundary. It is not the hydraulic retention time. For this exercise, the defined inventory includes only aeration MLSS; clarifier inventory is explicitly omitted. That simplification must remain visible in the result.\n\nA 2,000 m³ basin at 3,000 mg/L contains 6,000 kg MLSS. If waste sludge removes 400 kg/day and effluent removes 100 kg/day, the simplified SRT is 6,000 / 500 = 12 days. Ignoring the effluent loss would give 15 days and overstate this calculated age. RAS circulates inside the boundary and is not an additional external loss.\n\nFood-to-microorganism ratio uses a stated organic loading basis and a biomass basis. Here **F/M = incoming BOD kg/day ÷ aeration MLVSS kg**. If BOD load is 1,200 kg/day and MLVSS inventory is 4,000 kg, F/M is 0.30 kg BOD/(kg MLVSS·day). Substituting MLSS changes the denominator and the meaning. Do not compare ratios from different conventions without reconciling them.\n\nAn estimated SRT describes the selected inventory and losses; it is not a direct instruction to set wasting. The current process condition, temperature, desired treatment, actual solids distribution and authorized operating plan determine how it should be interpreted. A measured high effluent solids loss can reduce retention even when the waste pump setting has not changed.",
+      "evidence": "**M8 — daily solids worksheet**\n\nAeration volume 2,500 m³; MLSS 3,200 mg/L; MLVSS 2,400 mg/L. Waste flow 60 m³/day at 8,000 mg/L TSS. Effluent flow 10,000 m³/day at 12 mg/L TSS. Influent flow 10,000 m³/day at BOD 180 mg/L. RAS is 5,000 m³/day at 8,000 mg/L; it stays inside the selected system boundary.\n\nM9: Clarifier solids inventory is unavailable. A sensitivity case doubles effluent TSS to 24 mg/L while holding other inputs fixed. All values are training averages, not approved targets.",
+      "assignment": "Submit a calculation sheet with MLSS inventory, MLVSS inventory, waste and effluent losses, simplified SRT and F/M. Recalculate SRT for M9. Explain the effect of excluding clarifier inventory and of incorrectly counting RAS as a loss. End with a 200-word request for the additional data needed before changing wasting.",
+      "rubric": [
+        "Correct inventory and loss units and consistent bases.",
+        "Sensitivity calculation includes effluent solids loss.",
+        "Clearly labels the simplified SRT boundary and avoids prescribing a universal target."
+      ],
+      "facilitatorGuide": "Inventory 8,000 kg MLSS and 6,000 kg MLVSS. Waste 480 kg/day, effluent 120, total 600: SRT 13.333 days. BOD 1,800 kg/day: F/M0.30. At 24 mg/L effluent loss 240 and SRT 8,000/720=11.111 days. Adding omitted clarifier inventory to this same boundary would increase calculated SRT if losses stay fixed. RAS40,000 kg/day is internal recycling, not an external loss. Ask for actual solids distribution, calibrated flows, concentration timing, temperature and operating objectives before a wasting decision.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "biological",
+        "nutrients"
+      ],
+      "checks": [
+        {
+          "id": "m4a",
+          "objective": "solids-age",
+          "prompt": "An inventory of 7,200 kg loses 500 kg/day in waste and 100 in effluent. What is SRT?",
+          "choices": [
+            "14.4 days",
+            "12 days",
+            "72 days",
+            "0.083 days"
+          ],
+          "correctIndex": 1,
+          "explanation": "7,200 / (500 + 100) = 12 days."
+        },
+        {
+          "id": "m4b",
+          "objective": "solids-age",
+          "prompt": "Which denominator matches a BOD/MLVSS F/M calculation?",
+          "choices": [
+            "Daily RAS flow",
+            "Aeration MLSS concentration",
+            "Aeration MLVSS inventory",
+            "Daily effluent TSS loss"
+          ],
+          "correctIndex": 2,
+          "explanation": "The selected microorganism proxy is an inventory of volatile suspended solids."
+        }
+      ]
+    },
+    {
+      "id": "nutrients-solids",
+      "title": "Nutrients, sidestreams and final treatment",
+      "objectives": [
+        "Calculate a sidestream nitrogen load.",
+        "Identify cross-process consequences of an adjustment."
+      ],
+      "lesson": "### A small stream can carry a large load\nA centrate or filtrate flow may be a small fraction of plant flow but carry concentrated ammonia or solids. Its effect depends on both mass and timing. For example, 100 m³/day at 500 mg/L ammonia-N contributes 50 kg N/day. If the return is delivered in four hours, its average return-period load is 12.5 kg N/hour, not the 2.08 kg/hour suggested by spreading it across a full day.\n\nNitrification transforms ammonia to oxidized nitrogen; denitrification removes oxidized nitrogen through a different biological pathway. A decline in ammonia does not by itself prove total nitrogen removal. Review ammonia, nitrate/nitrite and the relevant nitrogen basis together. Oxygen conditions, alkalinity, temperature, available carbon and biomass retention interact; none should be inferred from a single daily number.\n\nChemical phosphorus treatment transfers phosphorus to solids that must then be separated and handled. A lower soluble phosphorus result can coexist with a higher particulate load if solids escape clarification or filtration. Compare dissolved and total measurements on compatible samples before declaring the final effluent improved.\n\nWrite a change-impact map before modifying a return schedule or chemical dose. List the intended benefit, load redistribution, monitoring needs, equipment and storage constraints, authorization and stopping conditions. This is a decision-support exercise, not a chemical-handling or equipment-isolation instruction.",
+      "evidence": "**M10 — solids return proposal**\n\nCentrate: 160 m³/day at ammonia-N 600 mg/L. Currently returned over 4 hours; proposal spreads the same daily volume over 12 hours. Main influent: 10,000 m³/day at ammonia-N 25 mg/L.\n\nM11: Final effluent paired sample before a chemical trial: soluble P0.30, total P0.50 mg/L, TSS 6 mg/L. After trial: soluble P0.10, total P0.65 mg/L, TSS 18 mg/L. No flow change is recorded. These are two grabs, not a controlled trial.\n\nM12: Equalization capacity and return-pump minimum stable flow have not been confirmed.",
+      "assignment": "Calculate centrate and main influent nitrogen loads, the centrate share of their combined load, and return-period kg/hour before and after the proposal. Write a change-impact map and a separate interpretation of M11. Identify two missing facts that could block the proposed schedule and a monitoring plan that separates soluble removal from solids escape.",
+      "rubric": [
+        "Correct daily and hourly load calculations.",
+        "Distinguishes nitrogen transformation from total removal.",
+        "Explains soluble versus total P without claiming causation from two grabs."
+      ],
+      "facilitatorGuide": "Centrate 96 kg/day, main 250, combined 346; centrate 27.75%. Return-period 24 kg/hour versus 8 kg/hour. Daily nitrogen load does not change. Capacity, pump range and operating authority must be checked. M11 suggests more particulate P (0.20 to 0.55 mg/L by difference) with higher TSS; it does not prove the chemical caused carryover. Ask for matched sampling, flow, clarifier/filter evidence and reproducibility. No credit for claiming 66.7% total-P improvement from soluble P alone.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "nutrients",
+        "ww"
+      ],
+      "checks": [
+        {
+          "id": "m5a",
+          "objective": "nutrients-solids",
+          "prompt": "Spreading the same return volume and concentration over more hours changes which quantity?",
+          "choices": [
+            "Daily nitrogen mass",
+            "Nitrogen mass per return hour",
+            "Ammonia laboratory units",
+            "Mainstream daily volume"
+          ],
+          "correctIndex": 1,
+          "explanation": "The daily mass stays constant but is delivered at a lower hourly rate."
+        },
+        {
+          "id": "m5b",
+          "objective": "nutrients-solids",
+          "prompt": "Soluble P falls while total P rises. Which check is most relevant?",
+          "choices": [
+            "Only the soluble-P percentage",
+            "Only the new chemical price",
+            "The previous week’s air temperature",
+            "Paired solids and particulate-P evidence"
+          ],
+          "correctIndex": 3,
+          "explanation": "The dissolved fraction alone cannot establish total-P improvement."
+        }
+      ]
+    },
+    {
+      "id": "virtual-shift",
+      "title": "Integrated shift and defensible handover",
+      "objectives": [
+        "Prioritize actions from conflicting process evidence.",
+        "Produce a handover with explicit owners and verification."
+      ],
+      "lesson": "### Close the decision loop\nA useful handover tells the next operator what is happening, what is known, what remains uncertain, what has been done, and what must happen next. A list of readings without interpretation transfers the analysis burden to the next shift. An overconfident diagnosis hides alternatives and can lock the next operator into a poor response.\n\nStart with conditions that may require immediate response under the current facility procedure. Then distinguish checks that can quickly change the decision from slower investigations. Assign an owner and a time or event for each check. Record an action as completed only when there is evidence of execution; a request or a command is not completion.\n\nUse calculations as bounded evidence. Daily averages may understate the incoming peak, an SRT estimate may omit clarifier inventory, and a result timestamp may follow the actual collection time by many hours. State the boundary alongside the number so another operator can reproduce it. Avoid changing several interacting controls without a monitored plan and the appropriate authority.\n\nIn a self-check, defend an alternative hypothesis and identify what observation would change your priority. Good process control is not stubbornness: it is a traceable response that can be revised when new evidence arrives. The final assessment checks the concepts; the practical is separately reviewed against every acceptance criterion.",
+      "evidence": "**M13 — 07:00 handover packet**\n\nUse M6–M12. At 07:10, maintenance verifies RAS actual flow 160 m³/h with an independent method; command remains 260. At 07:20, a checked portable probe at the basin-end sampling point reads 0.9 mg/L versus online 0.8. At 07:30, the lab reports yesterday's composite ammonia-N6 mg/L; yesterday's reference was 2 mg/L. Today's composite is not complete.\n\nM14: OIC requests a written priority plan by 08:00. No approval to change return schedule or wasting has been issued. Maintenance has acknowledged the RAS work request; restoration is not yet documented.\n\nM15: By 08:00, forward flow falls from 650 to 500 m³/h. Blanket depth remains 1.6 m. There is no later ammonia result.",
+      "assignment": "Prepare an 800–1,200-word operational case file: evidence timeline, calculation appendix using M8 and M10, ranked first-hour actions, two competing explanations, approval requests, stopping/escalation conditions and next-shift handover. Distinguish requests from completed actions. Update your interpretation for M15 without declaring the event closed. Discuss the case with the instructor, revise your submission and complete the final assessment and evaluation.",
+      "rubric": [
+        "Uses the new verified RAS and DO evidence accurately.",
+        "Includes correct SRT, F/M and sidestream calculations with limits.",
+        "Assigns owners and verifiable next steps without unauthorized operating commands.",
+        "Does not equate falling flow with restored biological performance."
+      ],
+      "facilitatorGuide": "Accept a range of priorities if the learner explains the risk and follows the fictional authority boundary. Expected calculations: SRT 13.33 d simplified, F/M0.30, centrate 96 kgN/day and 24 kg/hour current return. RAS delivery discrepancy is now confirmed; maintenance completion is not. Portable DO supports the local reading but not every basin zone. Yesterday's ammonia cannot establish today's condition. M15 reduces one hydraulic stress but blanket and biological recovery remain unresolved. Return any case that declares compliance, approves bypassing, counts a maintenance request as repair, or omits the next owner. Allocate the last module assessment block to the final and evaluation as shown in the delivery plan.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 30,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 35,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "wwroles",
+        "biological",
+        "nutrients"
+      ],
+      "checks": [
+        {
+          "id": "m6a",
+          "objective": "virtual-shift",
+          "prompt": "Which item demonstrates completed restoration of RAS delivery?",
+          "choices": [
+            "An acknowledged work order",
+            "A repeated command of 260",
+            "Verified post-repair flow",
+            "A lower forward-flow trend"
+          ],
+          "correctIndex": 2,
+          "explanation": "Completion needs evidence of actual restored delivery."
+        },
+        {
+          "id": "m6b",
+          "objective": "virtual-shift",
+          "prompt": "At 08:00, what does falling forward flow establish?",
+          "choices": [
+            "One hydraulic stress has decreased",
+            "Nitrification is fully restored",
+            "The clarifier blanket has fallen",
+            "Yesterday’s ammonia is invalid"
+          ],
+          "correctIndex": 0,
+          "explanation": "The flow change is known; the other outcomes are not demonstrated."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ww-final-1",
+      "objective": "process-map",
+      "prompt": "A flow of 12,000 m³/day at 140 mg/L BOD carries what load?",
+      "choices": [
+        "1,680 kg/day",
+        "168 kg/day",
+        "16,800 kg/day",
+        "85.7 kg/day"
+      ],
+      "correctIndex": 0,
+      "explanation": "12,000 ×140 /1,000 =1,680."
+    },
+    {
+      "id": "ww-final-2",
+      "objective": "process-map",
+      "prompt": "A downstream meter already includes centrate. How should total flow be calculated?",
+      "choices": [
+        "Use the inclusive flow once",
+        "Subtract the full centrate load",
+        "Add centrate twice",
+        "Replace it with RAS flow"
+      ],
+      "correctIndex": 0,
+      "explanation": "Do not double-count a stream already inside the measurement."
+    },
+    {
+      "id": "ww-final-3",
+      "objective": "monitoring",
+      "prompt": "A24-hour effluent composite is compared with a single influent grab. What is the main limitation?",
+      "choices": [
+        "No unit conversion exists",
+        "The sampling periods differ",
+        "BOD cannot be expressed as a daily mass",
+        "Both daily flows must be identical"
+      ],
+      "correctIndex": 1,
+      "explanation": "The samples may not represent comparable daily conditions."
+    },
+    {
+      "id": "ww-final-4",
+      "objective": "monitoring",
+      "prompt": "An effluent result is<1 mg/L at 8,000 m³/day. Which statement follows?",
+      "choices": [
+        "The load is exactly 8 kg/day",
+        "The load is below 8 kg/day",
+        "The load is greater than 8 kg/day",
+        "The load is exactly 0 kg/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "The reported concentration defines an upper bound, subject to representativeness."
+    },
+    {
+      "id": "ww-final-5",
+      "objective": "biological",
+      "prompt": "SVI rises from 90 to 150 mL/g using the same method. What is established?",
+      "choices": [
+        "The applicable effluent limit was exceeded",
+        "A filament is identified",
+        "The RAS equipment has lost capacity",
+        "Settling-test behaviour changed"
+      ],
+      "correctIndex": 3,
+      "explanation": "The test changed; the mechanism and regulatory status need separate evidence."
+    },
+    {
+      "id": "ww-final-6",
+      "objective": "biological",
+      "prompt": "Which pair most directly supports a RAS delivery problem?",
+      "choices": [
+        "Higher temperature and lower influent BOD",
+        "High pH, low alkalinity",
+        "Stable command and verified low flow",
+        "Low local DO with stable basin MLSS"
+      ],
+      "correctIndex": 2,
+      "explanation": "The verified mismatch separates requested and actual delivery."
+    },
+    {
+      "id": "ww-final-7",
+      "objective": "solids-age",
+      "prompt": "Inventory 9,000 kg; waste 600 kg/day; effluent 150 kg/day. SRT is:",
+      "choices": [
+        "15 days",
+        "60 days",
+        "12 days",
+        "0.083 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "9,000 /750 =12 days."
+    },
+    {
+      "id": "ww-final-8",
+      "objective": "solids-age",
+      "prompt": "BOD load 1,500 kg/day and MLVSS inventory 5,000 kg give F/M:",
+      "choices": [
+        "3.33 per day",
+        "7.50 per day",
+        "0.03 per day",
+        "0.30 per day"
+      ],
+      "correctIndex": 3,
+      "explanation": "1,500/5,000=0.30 on the specified BOD/MLVSS basis."
+    },
+    {
+      "id": "ww-final-9",
+      "objective": "nutrients-solids",
+      "prompt": "A100 m³/day return at 400 mg/L ammonia-N contains:",
+      "choices": [
+        "4 kgN/day",
+        "400 kgN/day",
+        "40 kgN/day",
+        "4,000 kgN/day"
+      ],
+      "correctIndex": 2,
+      "explanation": "100×400/1,000=40."
+    },
+    {
+      "id": "ww-final-10",
+      "objective": "nutrients-solids",
+      "prompt": "Ammonia falls and nitrate rises by a similar nitrogen mass. What is best supported?",
+      "choices": [
+        "Nitrogen transformation",
+        "Complete phosphorus removal",
+        "Complete nitrogen removal",
+        "A lower daily influent flow"
+      ],
+      "correctIndex": 0,
+      "explanation": "Conversion to oxidized nitrogen does not itself show total nitrogen removal."
+    },
+    {
+      "id": "ww-final-11",
+      "objective": "virtual-shift",
+      "prompt": "A work request is acknowledged. How should the repair appear in the handover?",
+      "choices": [
+        "Repair verified",
+        "Pending execution/verification",
+        "Equipment permanently restored",
+        "Fault diagnosis disproved"
+      ],
+      "correctIndex": 1,
+      "explanation": "Acknowledgement is distinct from execution and performance verification."
+    },
+    {
+      "id": "ww-final-12",
+      "objective": "virtual-shift",
+      "prompt": "Which evidence best supports closing a process response?",
+      "choices": [
+        "A control restored to its previous setting",
+        "Shift end",
+        "A lower instantaneous flow",
+        "Verified outcomes against defined closure criteria"
+      ],
+      "correctIndex": 3,
+      "explanation": "Closure needs the planned verification evidence, not a proxy for it."
+    }
+  ],
+  "sources": [
+    {
+      "id": "ww",
+      "title": "US EPA: Municipal wastewater",
+      "url": "https://www.epa.gov/npdes/municipal-wastewater",
+      "section": "Primer for municipal treatment, collection systems and peak flows",
+      "jurisdiction": "US process guidance; not Ontario legal requirements",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "wwroles",
+      "title": "Ontario: Licensing guide for wastewater operators",
+      "url": "https://www.ontario.ca/page/licensing-guide-wastewater-operators",
+      "section": "Operator-in-charge responsibilities and operating records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "biological",
+      "title": "US EPA: Process Control Manual, Aerobic Biological Wastewater Treatment Facilities",
+      "url": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=9100NX8X.TXT",
+      "section": "Activated-sludge process observations, tests and interpretation; historic technical reference",
+      "jurisdiction": "US historic technical guidance; check current facility practice",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "nutrients",
+      "title": "US EPA: Nutrient Control Design Manual",
+      "url": "https://www.epa.gov/sustainable-water-infrastructure/nutrient-control-design-manual",
+      "section": "Biological nutrient removal, chemical phosphorus removal and filtration",
+      "jurisdiction": "US technical guidance; not Ontario permit limits",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

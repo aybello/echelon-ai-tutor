@@ -1,0 +1,459 @@
+{
+  "key": "ceu-distribution-water-quality",
+  "title": "Distribution Water Quality and System Integrity",
+  "shortTitle": "Distribution Water Quality",
+  "stream": "drinking_water",
+  "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Investigate water age, residual trends, pressure events and repair records using a fictional North Ridge distribution zone. Produce a prioritized monitoring and verification plan.",
+  "plannedMinutes": 180,
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "storage-turnover",
+      "title": "Storage turnover and water-age screening",
+      "objectives": [
+        "Calculate a nominal storage turnover indicator.",
+        "Explain why an average does not describe the oldest water."
+      ],
+      "lesson": "### Storage has an operating pattern\nA simple turnover indicator divides active storage volume by representative daily throughput. At 1,200 m³ and 400 m³/day, the quotient is 3 days. This is a screening calculation, not a measured maximum water age. Mixing, inlet/outlet arrangement, operating levels, short-circuiting and demand patterns can produce a distribution of ages.\n\nUse active volume and define the throughput boundary. A flow that circulates through a loop and returns may not represent fresh exchange. A meter total at the zone boundary may include demand that never passes through the tank. Inspect the system configuration before assigning it to a storage calculation.\n\nCompare operating conditions. If throughput falls while the active volume remains high, the nominal indicator increases. Reducing an operating volume might improve exchange but can affect pressure, emergency storage and other requirements. An operator learning exercise cannot authorize that trade-off. Prepare a review request with the constraints and decision owner.\n\nWater age can help organize a water-quality investigation, but it is not a standalone compliance test. Pair hydraulic screening with representative residual, temperature and other relevant quality observations and the current facility requirements.",
+      "evidence": "**N1 — tank screening data**\nNorth tank active volume 1,500 m³. Verified fresh throughput averages 500 m³/day on weekdays and 250 m³/day on a representative weekend condition. Zone meter shows 800 m³/day on weekdays, including 300 m³/day that bypasses the tank. Proposed active volume 1,000 m³; emergency storage review is outstanding.\n\nN2: No tracer study or validated hydraulic age model is supplied.",
+      "assignment": "Calculate weekday and weekend nominal indicators at the current volume and conditional indicators at 1,000 m³. Explain the zone-meter error and why none of the results establishes maximum age. Write a 300–450-word review request covering water quality, storage constraints, operating authority and further evidence.",
+      "rubric": [
+        "Correct indicators 3/6 days and conditional 2/4 days.",
+        "Excludes bypass demand from tank throughput.",
+        "Keeps maximum age and authorized volume change unresolved."
+      ],
+      "facilitatorGuide": "Current indicators are 1,500/500=3 days and 1,500/250=6 days. Proposed values are 2 and 4 days. Using the zone meter incorrectly gives 1.875 days. Require explicit mixing and operating-state limitations. The proposed reduction needs engineering/operational review of storage obligations and pressure. Do not accept a statement that all water is replaced in exactly the calculated time.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "distribution"
+      ],
+      "checks": [
+        {
+          "id": "nt1",
+          "objective": "storage-turnover",
+          "prompt": "1,200 m³ divided by 300 m³/day gives:",
+          "choices": [
+            "0.25 day",
+            "4 days",
+            "900 days",
+            "3.6 days"
+          ],
+          "correctIndex": 1,
+          "explanation": "The nominal turnover indicator is 4 days."
+        },
+        {
+          "id": "nt2",
+          "objective": "storage-turnover",
+          "prompt": "A nominal turnover indicator determines:",
+          "choices": [
+            "The exact oldest water age",
+            "Every parcel’s residence time",
+            "A screening average under stated assumptions",
+            "The approved emergency storage volume"
+          ],
+          "correctIndex": 2,
+          "explanation": "It is a simplified screening measure, not a full age distribution."
+        }
+      ]
+    },
+    {
+      "id": "residual-patterns",
+      "title": "Spatial residual patterns and investigation design",
+      "objectives": [
+        "Compare matched locations and operating periods.",
+        "Distinguish a pattern from proof of its cause."
+      ],
+      "lesson": "### Map observations before naming the mechanism\nA residual trend needs location, time, analyte, method and operating context. A low result at a distal point may relate to water age, local demand, source variation, sampling conditions or measurement error. A pattern becomes more persuasive when repeated under comparable conditions and supported by hydraulic evidence.\n\nDo not compare free chlorine with total chlorine as though they were identical. Do not treat samples collected hours apart as one instantaneous profile. Record the travel and mixing limitations, and verify questionable measurements using the applicable method.\n\nA simple residual change can be described as an absolute difference or percentage relative to a stated baseline. From 0.80 to 0.50 mg/L is a 0.30 mg/L decrease, or 37.5% of 0.80. This descriptive change is not a disinfection credit calculation or proof of a specific reaction rate. Estimating a decay coefficient would require justified kinetic and hydraulic assumptions.\n\nBuild a next-sampling plan that can discriminate hypotheses. If low turnover is suspected, compare similar locations across different documented turnover states while controlling measurement method and source conditions. If a local sample tap is suspected, investigate that sampling path without dismissing the broader concern.",
+      "evidence": "**N3 — same-method free-chlorine observations**\n| Location | Weekday 07:00 | Weekend 07:00 |\n|---|---:|---:|\n|Tank inlet|0.90|0.88|\n|Tank outlet|0.70|0.45|\n|DistalD4|0.55|0.30|\n\nN4: Temperature increased from 14 to 19°C; weekend throughput is lower as inN1. DistalD4's sampling tap has no recent condition record. Each entry is one grab. No regulatory threshold is supplied.",
+      "assignment": "Calculate the outlet and distal absolute and percentage changes. Build a three-hypothesis evidence table and a repeated sampling plan. Explain which differences could reflect source, hydraulic, temperature or sampling effects and why a single mechanism cannot yet be isolated. Specify how results will be compared without making an unsupported compliance declaration.",
+      "rubric": [
+        "Correct changes and baseline for percentages.",
+        "Considers confounding temperature and sample-path condition.",
+        "Proposes repeated comparable observations and clear boundaries."
+      ],
+      "facilitatorGuide": "Outlet falls 0.25 mg/L or 35.714%; distal falls 0.25 or 45.455%. Inlet falls 0.02, so source variation alone may not explain the larger downstream pattern, but two grabs cannot isolate cause. Temperature and turnover changed together. Tap condition is unknown, not proven faulty. Require matched methods, repeated operating states and hydraulic/context records.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "distribution",
+        "field"
+      ],
+      "checks": [
+        {
+          "id": "nr1",
+          "objective": "residual-patterns",
+          "prompt": "A fall from 0.80 to 0.60 mg/L is what percentage of the initial value?",
+          "choices": [
+            "20%",
+            "33.3%",
+            "25%",
+            "75%"
+          ],
+          "correctIndex": 2,
+          "explanation": "0.20/0.80×100=25%."
+        },
+        {
+          "id": "nr2",
+          "objective": "residual-patterns",
+          "prompt": "Temperature and turnover both change between two grabs. Causation is:",
+          "choices": [
+            "Not isolated by that comparison",
+            "Proven to be temperature alone",
+            "Proven to be turnover alone",
+            "Irrelevant to interpretation"
+          ],
+          "correctIndex": 0,
+          "explanation": "The comparison is confounded and needs further evidence."
+        }
+      ]
+    },
+    {
+      "id": "pressure-repair",
+      "title": "Pressure events and repair verification",
+      "objectives": [
+        "Reconstruct an integrity-event timeline.",
+        "Identify the records needed to apply the current repair procedure."
+      ],
+      "lesson": "### A pressure trace is one part of an integrity assessment\nA pressure decline may indicate loss of hydraulic margin, but its meaning depends on location, duration, instrument quality, system configuration and surrounding conditions. A single logger cannot establish the minimum pressure everywhere. Missing data cannot prove there was no adverse interval.\n\nFor a repair or pressure event, assemble the physical-work record, isolation status, pressure observations, contamination observations, flushing/disinfection documentation, sampling results and authorization to return to service as required by the applicable procedure. Different repair conditions can require different responses. Use Ontario's current watermain disinfection procedure and the facility's authorized process; do not invent a universal clearance checklist from a brief case.\n\nMaintain event order. Work completed, sample collected, result received and service authorized are separate events. A result pending is not a satisfactory result. An unsigned record may be a documentation gap rather than proof that the work was omitted; it still must be resolved.\n\nCommunications should state affected scope and uncertainty accurately. Avoid saying “all clear” based solely on restored pressure if the required integrity and water-quality verification is incomplete.",
+      "evidence": "**N5 — fictional main repair**\n06:40 break reported;06:50 isolation recorded;07:05 loggerL2 stops transmitting;07:20 excavation record says “water present, source not classified”;08:00 repair mechanically complete;08:10L2 restored at 320 kPa;08:20 sample collected;09:00 lab receipt. Flushing record lacks a verifier. No laboratory result or return-to-service authorization is attached.\n\nN6: Draft status message says “Pressure normal, therefore repair cleared.”",
+      "assignment": "Prepare a chronological evidence register and a 400–550-word review of N6. List the specific missing facts needed to classify the repair under the current procedure, identify owners for each record and distinguish mechanical completion from service authorization. Include a status message that is accurate while verification is pending.",
+      "rubric": [
+        "Retains the pressure-data gap and unclassified excavation water.",
+        "Distinguishes collection, receipt, result and authorization.",
+        "Uses the current procedure without inventing a clearance rule."
+      ],
+      "facilitatorGuide": "Do not infer conditions during 07:05–08:10 from the restored 320 kPa. The excavation observation needs classification by the responsible team using applicable procedure evidence. Mechanical completion does not establish water-quality clearance. Require the actual flushing verification, analytical status and authorized return decision. A good interim message reports repair status and pending verification without claiming safety or universal contamination.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "watermain",
+        "roles",
+        "distribution"
+      ],
+      "checks": [
+        {
+          "id": "np1",
+          "objective": "pressure-repair",
+          "prompt": "A sample received by the laboratory means:",
+          "choices": [
+            "It met all analytical criteria",
+            "Receipt is recorded; results may still be pending",
+            "The repair is authorized for service",
+            "Every affected location has been sampled"
+          ],
+          "correctIndex": 1,
+          "explanation": "Receipt and analytical outcome are distinct events."
+        },
+        {
+          "id": "np2",
+          "objective": "pressure-repair",
+          "prompt": "Restored pressure alone establishes:",
+          "choices": [
+            "Every repair requirement is complete",
+            "The missing interval was normal",
+            "All samples are satisfactory",
+            "Pressure is restored at the observed point"
+          ],
+          "correctIndex": 3,
+          "explanation": "Its conclusion is limited to the verified observation."
+        }
+      ]
+    },
+    {
+      "id": "zone-plan",
+      "title": "Prioritized zone investigation and handover",
+      "objectives": [
+        "Integrate hydraulic and water-quality evidence.",
+        "Define measurable follow-up and closure criteria."
+      ],
+      "lesson": "### Prioritize by decision consequence and uncertainty\nAn investigation plan should separate immediate procedure-driven response from longer-term optimization. An unresolved repair verification may need action now, while storage turnover improvement requires a planned review. Do not let a promising optimization idea delay the applicable response to an active integrity concern.\n\nFor each issue, write the current evidence, plausible explanation, next discriminating check, responsible role and decision deadline. Choose checks that can change the next decision. “Collect more data” is weaker than naming the location, operating state, method and question.\n\nDefine closure evidence in advance. For a repair, use the applicable procedure and authorized decision. For a turnover study, use a supported hydraulic basis and repeated quality observations. For a sampling-path concern, document the qualified comparison and corrective work if required. One issue's closure does not automatically close another.\n\nIn a self-check, explain which finding would cause you to reprioritize. Good handovers make uncertainty visible and let the next operator continue the investigation without repeating assumptions.",
+      "evidence": "**N7 — manager request**\n“Reduce tank storage immediately, announce the low residual was caused by age, and close the repair because pressure recovered.”\n\nUseN1–N6. No storage approval, additional quality observations, repair classification or final laboratory result has arrived. The next shift needs a plan with separate workstreams and evidence owners.",
+      "assignment": "Write a 500–750-word plan and handover. Include the turnover calculations, residual trend table, repair evidence gaps, prioritized actions and separate closure criteria. Explain which parts of N7 need revision and why. Present the plan to the instructor, revise it, then complete assessment and evaluation.",
+      "rubric": [
+        "Keeps repair response and optimization review distinct.",
+        "Uses calculations as bounded evidence, not causal proof.",
+        "Names owners, decision points and separate closure evidence."
+      ],
+      "facilitatorGuide": "A strong plan addresses current repair verification through the authorized process, investigates residual patterns and routes storage changes for review. Expected calculations remain 3/6 days and outlet/distal declines 35.7/45.5%. Reject immediate unauthorized storage reduction, a proven-age claim or repair clearance from pressure alone. Require an actionable next-shift register rather than generic caution.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 5,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 15,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "distribution",
+        "watermain",
+        "roles"
+      ],
+      "checks": [
+        {
+          "id": "nz1",
+          "objective": "zone-plan",
+          "prompt": "Which issue needs its own closure evidence?",
+          "choices": [
+            "Only the issue with the largest number",
+            "Only the oldest work order",
+            "Each distinct repair or quality investigation",
+            "Only the proposed storage optimization"
+          ],
+          "correctIndex": 2,
+          "explanation": "Different issues have different criteria and owners."
+        },
+        {
+          "id": "nz2",
+          "objective": "zone-plan",
+          "prompt": "A useful next sampling action names:",
+          "choices": [
+            "Location, time, method, question and owner",
+            "Only the total desired number of bottles",
+            "Only the preferred conclusion",
+            "Only the previous operator’s opinion"
+          ],
+          "correctIndex": 0,
+          "explanation": "Specific design and ownership make the action usable."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "distribution-water-quality-f1",
+      "objective": "storage-turnover",
+      "prompt": "900 m³ at 300 m³/day gives a nominal indicator of:",
+      "choices": [
+        "3 days",
+        "0.33 day",
+        "600 days",
+        "2.7 days"
+      ],
+      "correctIndex": 0,
+      "explanation": "Volume divided by throughput is 3 days."
+    },
+    {
+      "id": "distribution-water-quality-f2",
+      "objective": "storage-turnover",
+      "prompt": "A zone meter includes tank bypass flow. Using all of it as tank throughput:",
+      "choices": [
+        "Can understate the tank indicator",
+        "Gives maximum age",
+        "Overstates the tank indicator",
+        "Leaves the indicator unchanged because units match"
+      ],
+      "correctIndex": 0,
+      "explanation": "An inflated denominator reduces the calculated indicator."
+    },
+    {
+      "id": "distribution-water-quality-f3",
+      "objective": "residual-patterns",
+      "prompt": "Residual 0.75 to 0.50 mg/L falls by approximately:",
+      "choices": [
+        "25%",
+        "33.3%",
+        "50%",
+        "66.7%"
+      ],
+      "correctIndex": 1,
+      "explanation": "0.25/0.75×100=33.3%."
+    },
+    {
+      "id": "distribution-water-quality-f4",
+      "objective": "residual-patterns",
+      "prompt": "Which additional evidence best tests a turnover hypothesis?",
+      "choices": [
+        "One later grab without its operating record",
+        "Annual production totals",
+        "Different analytes with no operating context",
+        "Repeated matched samples across known operating states"
+      ],
+      "correctIndex": 3,
+      "explanation": "Repeated context-linked observations discriminate the hypothesis."
+    },
+    {
+      "id": "distribution-water-quality-f5",
+      "objective": "pressure-repair",
+      "prompt": "A logger gap should be recorded as:",
+      "choices": [
+        "An automatically acceptable interval",
+        "Proof of normal pressure",
+        "Proof of zero pressure",
+        "Unknown coverage needing assessment"
+      ],
+      "correctIndex": 3,
+      "explanation": "No value can be inferred solely from a gap."
+    },
+    {
+      "id": "distribution-water-quality-f6",
+      "objective": "pressure-repair",
+      "prompt": "Mechanical repair completion and service authorization are:",
+      "choices": [
+        "Interchangeable after pressure restoration",
+        "Equivalent events",
+        "Separate evidence-based milestones",
+        "Combined once the laboratory receives a sample"
+      ],
+      "correctIndex": 2,
+      "explanation": "The applicable verification process must be completed."
+    },
+    {
+      "id": "distribution-water-quality-f7",
+      "objective": "zone-plan",
+      "prompt": "Which statement is defensible from the supplied two-grab pattern?",
+      "choices": [
+        "Temperature effects are excluded",
+        "Age is proven",
+        "The pattern warrants investigation",
+        "Sampling-path effects have been disproved"
+      ],
+      "correctIndex": 2,
+      "explanation": "The pattern supports investigation, not a definitive causal or compliance claim."
+    },
+    {
+      "id": "distribution-water-quality-f8",
+      "objective": "zone-plan",
+      "prompt": "A storage optimization proposal should include:",
+      "choices": [
+        "Minimum possible volume",
+        "Quality, storage constraints and authorization",
+        "A residual target without capacity review",
+        "A new level based on one favourable grab"
+      ],
+      "correctIndex": 1,
+      "explanation": "The proposal must account for interacting operational requirements."
+    }
+  ],
+  "sources": [
+    {
+      "id": "distribution",
+      "title": "US EPA: Drinking Water Distribution System Tools and Resources",
+      "url": "https://www.epa.gov/dwreginfo/drinking-water-distribution-system-tools-and-resources",
+      "section": "Water age, storage, pressure management and distribution-system integrity resources",
+      "jurisdiction": "US technical guidance; not Ontario requirements",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "field",
+      "title": "US EPA: Field turbidity measurement",
+      "url": "https://www.epa.gov/quality/field-turbidity-measurement",
+      "section": "Field measurement procedure and quality control",
+      "jurisdiction": "US technical guidance; laboratory/site methods govern local use",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "watermain",
+      "title": "Ontario: Watermain disinfection procedure",
+      "url": "https://www.ontario.ca/page/water-main-disinfection-procedure",
+      "section": "Planned work, repairs and contamination classification; use current applicable edition",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "roles",
+      "title": "Ontario: O. Reg. 128/04",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "section": "Sections 23, 25–27: designation, duties and records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

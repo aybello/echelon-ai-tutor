@@ -1,0 +1,458 @@
+{
+  "key": "ceu-coagulation-filtration",
+  "title": "Coagulation, Filtration and Controlled Optimization",
+  "shortTitle": "Coagulation and Filtration",
+  "stream": "drinking_water",
+  "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Evaluate replicated jar tests, chemical-feed calibration, individual filter performance and a controlled trial at fictional Pine Creek Waterworks.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "jar-design",
+      "title": "Replicated jar tests and treatment constraints",
+      "objectives": [
+        "Compare candidate doses within stated constraints.",
+        "Separate repeatability from a causal treatment conclusion."
+      ],
+      "lesson": "### Compare candidates on more than one outcome\nA jar test is a controlled bench comparison, not permission to change full-scale operation. Record sample identity, temperature, dose basis, mixing and settling conditions, analytical method and replication. If these vary with dose, the apparent dose effect may be confounded.\n\nCalculate the mean of replicate results, but keep the individual values visible. A mean of 0.60 NTU from 0.55 and 0.65 is different evidence from the same mean obtained from 0.10 and 1.10. With only two replicates, a narrow spread is encouraging but does not establish reliable performance across source-water conditions.\n\nThe lowest settled turbidity is not automatically the best candidate. A dose may violate a supplied pH constraint, increase residual chemical concerns, consume alkalinity or impair downstream performance. Select a candidate against all stated criteria and identify what remains to be tested.\n\nIn the example below, the pH band and turbidity screening value are fictional trial criteria, not regulatory limits. A bench candidate that meets them still requires an authorized scale-up protocol. Report “candidate for further evaluation,” not “optimal dose proven.”",
+      "evidence": "**F1 — identical bench procedure, same source sample**\n| Dose,mg/L active | Settled turbidity replicates,NTU | Final pH |\n|---:|---|---:|\n|8|1.4,1.6|7.1|\n|12|0.6,0.8|6.8|\n|16|0.4,0.5|6.2|\n\nFictional screening criteria: mean settled turbidity≤0.8 NTU and finalpH 6.5–7.5. No filtered-water or residual chemical results are available. F2: a second source-water batch is colder and has lower alkalinity; it has not been tested.",
+      "assignment": "Calculate means and ranges, select a defensible next-test candidate and explain rejected alternatives. Draft a 300–450-word bench-to-pilot plan identifying controlled variables, replication, downstream checks and authorization. Explain why F2 requires new evidence and why the word “optimal” would overstate F1.",
+      "rubric": [
+        "Calculates the replicate means and screening decisions correctly.",
+        "Uses pH and turbidity together.",
+        "Identifies missing downstream and new-source evidence."
+      ],
+      "facilitatorGuide": "Means are 1.50, 0.70 and 0.45 NTU; ranges are 0.20, 0.20 and 0.10 NTU. The 12 mg/L candidate alone meets both supplied criteria. The 16 mg/L candidate fails the pH criterion despite lower turbidity; 8 mg/L fails the turbidity criterion. Require testing under F2 conditions and downstream verification. Do not accept these fictional values as universal limits or two replicates as proof of full-scale benefit.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "disinfection"
+      ],
+      "checks": [
+        {
+          "id": "fj1",
+          "objective": "jar-design",
+          "prompt": "Results 0.6 and 0.8 have a mean of:",
+          "choices": [
+            "0.2",
+            "0.7",
+            "1.4",
+            "0.48"
+          ],
+          "correctIndex": 1,
+          "explanation": "Add the two results and divide by two: 0.70 NTU."
+        },
+        {
+          "id": "fj2",
+          "objective": "jar-design",
+          "prompt": "The lowest turbidity candidate violates the supplied pH criterion. It is:",
+          "choices": [
+            "Automatically preferred",
+            "Ready for unrestricted scale-up",
+            "Outside the stated screening constraints",
+            "Evidence that pH can be ignored"
+          ],
+          "correctIndex": 2,
+          "explanation": "The candidate must meet every stated screening constraint."
+        }
+      ]
+    },
+    {
+      "id": "feed-calibration",
+      "title": "Chemical mass and actual feed delivery",
+      "objectives": [
+        "Convert solution delivery to active chemical dose.",
+        "Reconcile pump indication with a measured delivery check."
+      ],
+      "lesson": "### Name the chemical basis\nA dose can refer to product mass, active ingredient or another equivalent basis. State it. For a solution specified by mass fraction, active mass delivery is solution flowL/hour × densitykg/L × active mass fraction. Dividekg/hour by water flowm³/hour and multiply by 1,000 to obtainmg/L active dose.\n\nFor 10 L/hour of solution with density 1.20 kg/L and active fraction 0.10, delivery is 1.20 kg/hour. At 100 m³/hour of water, the dose is 12 mg/L active. Treating 10% as 10 rather than 0.10 creates a hundredfold error. Assuming a density of 1 when it is 1.20 changes the result by 20% relative to that assumed-density estimate.\n\nA controller setpoint is not a measurement of delivered solution. A documented calibration or authorized drawdown test can reveal the difference. Measurement uncertainty, pulsation, line condition, solution concentration and instrument scaling may affect the comparison. The calculation does not authorize opening chemical lines or conducting a test outside the site safety procedure.\n\nDocument the lot/concentration basis and the calibration conditions. A correct pump curve for yesterday's product may not establish today's active dose if concentration changed. Verify each term before changing a setpoint.",
+      "evidence": "**F3 — authorized test results already collected**\nController indicates 15 L/hour. Calibration vessel volume falls 0.90 L over 4 minutes. Product density 1.15 kg/L; active fraction 0.12 by mass. Water flow 180 m³/hour. The fictional trial target is 11 mg/L active.\n\nF4: A proposed replacement product is 10% active with the same stated density. No pump adjustment or use has been authorized.",
+      "assignment": "Calculate measuredL/hour, activekg/hour and actualmg/L. Compare with the indicated-delivery estimate and target. Calculate the theoreticalL/hour needed for 11 mg/L using each product concentration, clearly labelled as a calculation rather than an operating instruction. Write a verification request identifying the evidence needed before any adjustment.",
+      "rubric": [
+        "Calculates measured delivery and active dose with units.",
+        "Uses density and the correct mass fraction.",
+        "Separates a theoretical setting from authorized verified delivery."
+      ],
+      "facilitatorGuide": "Measured delivery is 0.90/4×60=13.5 L/hour. Active delivery is 1.863 kg/hour and dose is 10.35 mg/L. The indicated 15 L/hour would imply 11.5 mg/L. An 11 mg/L dose at 180 m³/hour requires 1.98 kg/hour active, or 14.35 L/hour at 12% and 17.22 L/hour at 10%, with the stated density. Require lot strength, measurement quality, pump capacity and authorization checks. A controller indication is not proof of delivered dose.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "roles"
+      ],
+      "checks": [
+        {
+          "id": "ff1",
+          "objective": "feed-calibration",
+          "prompt": "0.80 L delivered in 4 minutes is:",
+          "choices": [
+            "0.20 L/hour",
+            "3.2 L/hour",
+            "48 L/hour",
+            "12 L/hour"
+          ],
+          "correctIndex": 3,
+          "explanation": "0.80/4×60=12 L/hour."
+        },
+        {
+          "id": "ff2",
+          "objective": "feed-calibration",
+          "prompt": "Which factor converts product mass to active mass for 12% by weight?",
+          "choices": [
+            "0.12",
+            "12",
+            "1.12",
+            "0.012"
+          ],
+          "correctIndex": 0,
+          "explanation": "Twelve percent expressed as a fraction is 0.12."
+        }
+      ]
+    },
+    {
+      "id": "filter-record",
+      "title": "Individual filters and measurement quality",
+      "objectives": [
+        "Calculate individual hydraulic loading and headloss trends.",
+        "Recognize how combined data conceal unit behaviour."
+      ],
+      "lesson": "### The average can hide the unit needing attention\nHydraulic loading is flow divided by active filter surface area. Unitsm³/hour divided bym² reduce tom/hour. Two filters of equal area may have different loading if their flows differ. A combined turbidity result also depends on flow weighting; an arithmetic average is not generally the mixed-stream value.\n\nFor flows 100 and 200 m³/hour with turbidities 0.05 and 0.20 NTU, the simplified flow-weighted value is(100×0.05+200×0.20)/300=0.15 NTU. This mixing calculation is a training approximation, not permission to replace required individual-filter monitoring. It illustrates why a problematic unit can be obscured by aggregate reporting.\n\nHeadloss rate describes change over a stated interval. It is useful alongside run age, loading, turbidity and backwash history. A faster rise may suggest more retained material or another hydraulic issue, but it does not identify the cause by itself. Compare similar operating conditions and verify instrument quality.\n\nThe measurement chain includes sample point, sample transport, analyser and data system. A low-flow sample line can delay a response; a dirty optical surface can distort a reading. Preserve the alarm, verify under the approved procedure and document both process and instrument evidence before declaring a false alarm.",
+      "evidence": "**F5 — two filters, each 25 m²**\n| Unit | Flow,m³/h | Turbidity,NTU | Headloss 08:00/11:00,m |\n|---|---:|---:|---|\n|A|100|0.05|0.6/0.9|\n|B|150|0.25|0.7/1.6|\n\nF6: B's sample flow alarm occurred 10:40–10:50. Its last backwash checklist has an unsigned rinse verification. No independent turbidity result is yet available. Combined outlet indication is 0.17 NTU.",
+      "assignment": "Calculate each loading rate, headloss rise per hour and simplified flow-weighted turbidity. Write a 350–500-word troubleshooting plan that separates filter process hypotheses from measurement-chain hypotheses. Identify the evidence needed to resolve the unsigned record, and explain why a combined result cannot clear an individual unit concern.",
+      "rubric": [
+        "Calculates loading rates of 4 and 6 m/hour.",
+        "Calculates headloss rates and the weighted 0.17 NTU value.",
+        "Investigates instrument and process evidence without dismissing alarms."
+      ],
+      "facilitatorGuide": "Weighted turbidity is (100×0.05+150×0.25)/250=0.17 NTU. B has higher loading, turbidity and headloss rise, but none alone proves a cause. Its sample-flow alarm may affect reliability or timing. An unsigned rinse verification is a missing record, not proof that rinsing was omitted. Require qualified independent checks, backwash-record resolution and individual-unit monitoring. No universal backwash trigger is supplied.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "field"
+      ],
+      "checks": [
+        {
+          "id": "ft1",
+          "objective": "filter-record",
+          "prompt": "150 m³/hour over 25 m² gives:",
+          "choices": [
+            "0.167 m/hour",
+            "6 m/hour",
+            "3,750 m/hour",
+            "125 m/hour"
+          ],
+          "correctIndex": 1,
+          "explanation": "Hydraulic loading is flow divided by active surface area."
+        },
+        {
+          "id": "ft2",
+          "objective": "filter-record",
+          "prompt": "An unsigned rinse record proves:",
+          "choices": [
+            "The rinse was omitted",
+            "The filter is fully restored",
+            "Documented verification is missing",
+            "The turbidity analyser is faulty"
+          ],
+          "correctIndex": 2,
+          "explanation": "Missing documentation does not by itself establish whether the action occurred."
+        }
+      ]
+    },
+    {
+      "id": "trial-design",
+      "title": "Design and evaluate a controlled trial",
+      "objectives": [
+        "Define a fair comparison and stopping criteria.",
+        "Calculate normalized resource use before claiming savings."
+      ],
+      "lesson": "### Normalize before attributing improvement\nA lower chemical mass does not necessarily mean a lower dose or better efficiency. Ifwater flow falls in the same proportion, dose is unchanged. Similarly, reduced electricity use may reflect reduced throughput rather than better treatment per unit water.\n\nA trial plan states the hypothesis, authorized change, baseline, comparison period, controlled variables, outcome measures and stopping rules. Keep source-water condition and flow visible; if they change, document the limitation or use a more suitable comparison. Repeated observations across comparable conditions are stronger than a single before-and-after pair.\n\nInclude trade-offs. Reduced chemical use may increase filter loading or degrade residuals; a better settled turbidity may coincide with unacceptablepH. Define acceptance across the treatment train, not only the metric expected to improve. A stop condition should name an observable trigger and the role authorized to respond, using the current facility requirements.\n\nClose a pilot only after the planned evidence has been reviewed. A trial can be inconclusive and still be useful: it may reveal a measurement gap or show that a proposed improvement is explained by changing flow. Report that finding without turning it into a marketing claim.",
+      "evidence": "**F7 — proposed success statement**\n“Chemical use fell 25%, so the new dose saves 25%.” Baseline: water 240 m³/hour, activechemical 3.6 kg/hour. Trial: water 180 m³/hour, activechemical 2.7 kg/hour. Baseline raw turbidity 20 NTU;trial 12 NTU. Trial duration 2 hours; no matched repeat. FilterBdataareF5/F6.\n\nF8: No authorization to adopt the trial permanently has been issued.",
+      "assignment": "Produce a 600–800-word trial protocol and critique of F7. Calculate both doses, identify confounders, specify repeated comparison periods, downstream outcomes, instrumentation checks, stopping/escalation criteria and sign-off responsibilities. Include a table of claims supported now versus evidence still required. Discuss and revise before final assessment and evaluation.",
+      "rubric": [
+        "Shows that both conditions have a 15 mg/L active dose.",
+        "Accounts for changing raw-water conditions and short duration.",
+        "Defines measurable outcomes across the treatment train and authorization."
+      ],
+      "facilitatorGuide": "Both 3.6/240×1,000 and 2.7/180×1,000 equal 15 mg/L. Chemical mass and water flow fell 25%; no normalized dose saving is demonstrated. Raw turbidity also changed, confounding the effectiveness comparison. Resolve Filter B concerns before making a broad improvement claim. A strong protocol states controlled variables, monitoring, response owners and stopping conditions. Do not require invented legal thresholds.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 20,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "roles"
+      ],
+      "checks": [
+        {
+          "id": "fo1",
+          "objective": "trial-design",
+          "prompt": "Mass and water flow both fall 20%. The dose:",
+          "choices": [
+            "Falls 40%",
+            "Rises 20%",
+            "Falls 20%",
+            "Stays unchanged"
+          ],
+          "correctIndex": 3,
+          "explanation": "The mass-to-flow ratio is unchanged."
+        },
+        {
+          "id": "fo2",
+          "objective": "trial-design",
+          "prompt": "Which trial conclusion fits a confounded two-hour comparison?",
+          "choices": [
+            "Further controlled evidence is needed",
+            "Permanent optimization is proven",
+            "Every downstream effect is known",
+            "The new setting is approved"
+          ],
+          "correctIndex": 0,
+          "explanation": "The confounded, short comparison requires further controlled evidence."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "coagulation-filtration-f1",
+      "objective": "jar-design",
+      "prompt": "A candidate meets turbidity but fails the supplied pH band. It:",
+      "choices": [
+        "Must be used at full scale",
+        "Passes because turbidity matters alone",
+        "Proves the band is unnecessary",
+        "Fails the combined screen"
+      ],
+      "correctIndex": 3,
+      "explanation": "Every specified constraint applies."
+    },
+    {
+      "id": "coagulation-filtration-f2",
+      "objective": "jar-design",
+      "prompt": "Replicates 0.3 and 0.7 have a mean and range of:",
+      "choices": [
+        "0.4 and 0.5",
+        "1.0 and 0.4",
+        "0.5 and 1.0",
+        "0.5 and 0.4"
+      ],
+      "correctIndex": 3,
+      "explanation": "The mean is 0.50 and the range is 0.40."
+    },
+    {
+      "id": "coagulation-filtration-f3",
+      "objective": "feed-calibration",
+      "prompt": "10 L/hour×1.2 kg/L×10% active delivers:",
+      "choices": [
+        "12 kg/hour",
+        "120 kg/hour",
+        "1.2 kg/hour",
+        "0.12 kg/hour"
+      ],
+      "correctIndex": 2,
+      "explanation": "10×1.2×0.10=1.2 kg/hour."
+    },
+    {
+      "id": "coagulation-filtration-f4",
+      "objective": "feed-calibration",
+      "prompt": "1.2 kg/hour active at 100 m³/hour is:",
+      "choices": [
+        "12 mg/L",
+        "1.2 mg/L",
+        "120 mg/L",
+        "0.12 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "1.2/100×1,000=12 mg/L."
+    },
+    {
+      "id": "coagulation-filtration-f5",
+      "objective": "filter-record",
+      "prompt": "Headloss rises 0.6 m in 3 hours. Rate is:",
+      "choices": [
+        "1.8 m/hour",
+        "0.2 m/hour",
+        "5 m/hour",
+        "0.6 m/hour"
+      ],
+      "correctIndex": 1,
+      "explanation": "0.6/3=0.2 m/hour."
+    },
+    {
+      "id": "coagulation-filtration-f6",
+      "objective": "filter-record",
+      "prompt": "Which evidence best resolves an analyser-versus-process question?",
+      "choices": [
+        "A combined average over a longer reporting period",
+        "A qualified matched independent check",
+        "The original controller setpoint and alarm threshold",
+        "A daily minimum selected from the same analyser"
+      ],
+      "correctIndex": 1,
+      "explanation": "A qualified matched check tests measurement agreement."
+    },
+    {
+      "id": "coagulation-filtration-f7",
+      "objective": "trial-design",
+      "prompt": "Chemical 2 kg/hour at 200 m³/hour and 1 kg/hour at 100 m³/hour show:",
+      "choices": [
+        "A50% dose reduction",
+        "A doubled dose",
+        "The same 10 mg/L dose",
+        "A proven treatment improvement"
+      ],
+      "correctIndex": 2,
+      "explanation": "Both mass-to-flow ratios give 10 mg/L."
+    },
+    {
+      "id": "coagulation-filtration-f8",
+      "objective": "trial-design",
+      "prompt": "A trial’s stopping criteria should be:",
+      "choices": [
+        "Defined beforehand with a response owner",
+        "Set from chemical cost with quality reviewed later",
+        "Left unchanged despite a different source-water condition",
+        "Selected from the best result after the trial ends"
+      ],
+      "correctIndex": 0,
+      "explanation": "Predefined criteria and owners support controlled execution."
+    }
+  ],
+  "sources": [
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "disinfection",
+      "title": "Ontario: Procedure for Disinfection of Drinking Water",
+      "url": "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario",
+      "section": "CT concept, T10 and disinfectant-specific treatment requirements",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "roles",
+      "title": "Ontario: O. Reg. 128/04",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "section": "Sections 23, 25–27: designation, duties and records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "field",
+      "title": "US EPA: Field turbidity measurement",
+      "url": "https://www.epa.gov/quality/field-turbidity-measurement",
+      "section": "Field measurement procedure and quality control",
+      "jurisdiction": "US technical guidance; laboratory/site methods govern local use",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

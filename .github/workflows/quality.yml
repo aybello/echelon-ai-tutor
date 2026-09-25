@@ -154,6 +154,7 @@ jobs:
           --exclude server/learnerBankModules.integration.test.ts
           --exclude server/billingJobs.integration.test.ts
           --exclude server/examDateRecords.integration.test.ts
+          --exclude server/ceuLearning.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -191,6 +192,13 @@ jobs:
           REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+      - name: Database-backed CEU self-paced completion
+        run: pnpm exec vitest run server/ceuLearning.integration.test.ts
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          CEU_INTEGRATION_TEST_DB: "1"
       - name: Database-backed OIT import and batch release
         run: pnpm exec vitest run server/oitImporter.integration.test.ts
         env:
@@ -223,7 +231,7 @@ jobs:
       - name: Install the Teams browser-test runtime
         run: pnpm exec playwright install --with-deps chromium
       - name: Browser-test Teams access, purchase confirmation, Equipment Lab and Process Guide
-        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts
+        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/ceu-learning.spec.ts
         env:
           CI: "1"
           NODE_ENV: test

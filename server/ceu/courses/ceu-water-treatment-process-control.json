@@ -1,0 +1,660 @@
+{
+  "key": "ceu-water-treatment-process-control",
+  "title": "Water Treatment Process Control and Optimization",
+  "shortTitle": "Water Treatment Process Control",
+  "stream": "drinking_water",
+  "audience": "Operators interpreting conventional treatment performance and preparing controlled optimization trials.",
+  "prerequisites": "Basic treatment-process knowledge; ability to convert litres, cubic metres, minutes and days. A calculator is useful.",
+  "introduction": "Follow a raw-water change through coagulation, clarification, filtration and disinfection. Use supplied operating data to calculate loads, compare competing explanations and design an authorized trial with measurable acceptance and stop criteria.",
+  "plannedMinutes": 600,
+  "delivery": "Self-paced online pilot: complete 6 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "water-balance",
+      "title": "Follow water and mass through the treatment train",
+      "objectives": [
+        "Convert flow, concentration and mass loading consistently.",
+        "Align samples with hydraulic travel and sampling delay.",
+        "Distinguish an operating target from a validated treatment requirement."
+      ],
+      "lesson": "## Begin with a defined boundary\nA treatment-train analysis needs a boundary. For a chemical feed calculation, the boundary may be the water receiving the dose. For a clarification analysis, it may include the basin and its sludge withdrawal. For a filter loading calculation, it is the active filter area receiving flow. A number can be arithmetically correct and still answer the wrong question if its boundary is wrong.\n\nWrite the flow path before calculating: source → chemical addition and rapid mixing → flocculation → clarification → filtration → disinfection contact → storage. This is a conceptual conventional train, not a requirement that every facility use these processes. Mark sampling points and recycle connections. An observation upstream of a recycle is not automatically representative downstream of it.\n\n## Use dimensional analysis\nFor water-like flows, concentration in mg/L multiplied by flow in m³/day gives a mass rate after the conversion factor 0.001. Thus 8,000 m³/day at 25 mg/L corresponds to 200 kg/day. The factor exists because one cubic metre contains 1,000 litres and one kilogram contains 1,000,000 milligrams. Showing those units is more reliable than memorizing a button sequence. Convert L/s to m³/day by multiplying by 86.4. At 100 L/s, flow is 8,640 m³/day.\n\nThis calculation expresses the mass associated with the stated concentration basis. For chemical products, active chemical, product mass and delivered solution volume are different quantities. A supplier label of 10% by mass cannot be treated as 10% by volume without the relevant density relationship. Keep the basis beside the result.\n\n### Worked example: contact in the wrong units\nA 900 m³ basin receives 75 L/s. Convert the flow to 4.5 m³/min, then divide 900 by 4.5: nominal detention time is 200 minutes. Dividing 900 directly by 75 gives 12 with incompatible units; labeling that result minutes is wrong. Nominal detention time describes volume divided by flow. It is not automatically the effective contact time used for a disinfection assessment.\n\n## Align water parcels before assigning cause\nAn upstream disturbance appears downstream after hydraulic and measurement delays. In a simplified plug-flow exercise, a flow change can shorten travel time. In real basins, mixing and short-circuiting distribute travel times. A raw-water sample at 09:00 and clarified-water sample at 09:00 may represent different source-water conditions. A sample line adds another delay between the process and analyzer display.\n\nUse a timeline that separates process travel from sample transport. If the exercise specifies 40 minutes from intake to clarification and 5 minutes in the clarified-water sample line, the first expected display response to a 09:00 intake change is approximately 09:45 under those assumptions. A flat 09:10 trend does not yet test the changed water. Record that the estimate depends on the supplied flow and configuration; it is not a validated tracer result.\n\n## Baselines make trends interpretable\nCompare like operating periods: active units, production rate, raw-water conditions and recent backwash or maintenance state. A plant-wide average can hide one poorly performing unit. Draw individual trends before averaging, preserve missing data and distinguish a point from a sustained pattern. The objective is to identify a question that an observation can answer, rather than ask every number to prove the whole plant is safe.\n\nDiscuss why a lower chemical mass per day may coexist with a higher dose if flow falls. This is a useful transfer test: mass rate, concentration and total daily volume describe related but different operating facts.",
+      "evidence": "### Data pack WT-1 — flow and timing\n| Item | Value | Basis |\n|---|---:|---|\n| Current production | 100 L/s | Verified flow meter |\n| Previous production | 80 L/s | Comparable configuration |\n| Candidate active dose | 25 mg/L | Training calculation only |\n| Basin working volume | 900 m³ | At stated operating level |\n| Separate detention-time exercise flow | 75 L/s | Use only for the basin example |\n| Intake-to-clarifier travel estimate | 40 min | Simplified exercise assumption |\n| Clarified-water sample line delay | 5 min | Measured for this exercise |\n| Source-water change | 09:00 | Intake observation |\n| Downstream comparison | 09:10 | No visible response yet |\n\nNo regulatory treatment threshold or approved full-scale chemical setting is supplied.",
+      "assignment": "Draw the process boundary and sampling points. Calculate current daily volume and active mass at 25 mg/L; calculate the mass at the previous flow if dose stays the same. Reproduce the basin detention-time example with units. Annotate when the source change might first appear on the downstream display and explain two reasons the real response could differ from the simplified estimate. Submit a calculation sheet and a 200-word interpretation.",
+      "rubric": [
+        "Obtains 8,640 m³/day and 216 kg/day currently; 6,912 m³/day and 172.8 kg/day previously.",
+        "Obtains 200 minutes for the separate basin exercise and distinguishes nominal from effective contact time.",
+        "Aligns simplified downstream timing to 09:45 and states configuration/mixing assumptions."
+      ],
+      "facilitatorGuide": "Check boundaries: 75 L/s belongs only to the basin example; using it for the chemical mass problem mixes datasets. A good interpretation explains that unchanged dose produces greater daily chemical mass at greater flow. Return answers that label volume/flow as validated CT contact time or treat the 09:10 flat trend as proof of no source impact.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "disinfection",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "wb1",
+          "objective": "water-balance",
+          "prompt": "What is 100 L/s expressed as daily volume?",
+          "choices": [
+            "864 m³/day",
+            "8,640 m³/day",
+            "86,400 m³/day",
+            "100,000 m³/day"
+          ],
+          "correctIndex": 1,
+          "explanation": "100 × 86.4 = 8,640 m³/day."
+        },
+        {
+          "id": "wb2",
+          "objective": "water-balance",
+          "prompt": "Under the supplied timing assumptions, when would a 09:00 intake change first be expected on the clarified-water display?",
+          "choices": [
+            "09:05",
+            "09:10",
+            "09:40",
+            "09:45"
+          ],
+          "correctIndex": 3,
+          "explanation": "Add 40 minutes of process travel and 5 minutes of sample transport. This is a simplified expectation, not a guaranteed real response."
+        }
+      ]
+    },
+    {
+      "id": "raw-water",
+      "title": "Characterize a changing source and set test priorities",
+      "objectives": [
+        "Interpret turbidity with temperature, alkalinity and organic indicators.",
+        "Select representative sampling and comparison periods.",
+        "Prioritize evidence that discriminates between competing explanations."
+      ],
+      "lesson": "## One measurement cannot characterize every treatment challenge\nTurbidity is an optical response associated with particles. Two samples with equal turbidity can differ in particle size distribution, surface chemistry and organic content. Color or an organic-carbon measurement addresses another part of the water's character. Alkalinity describes buffering capacity, while pH describes the current acid-base condition. Temperature affects reaction and separation behavior. Treat these as complementary observations.\n\nBuild a source-change profile before recommending a trial. Include source location, weather or blending context, flow and a consistent set of water-quality measurements. Record whether samples represent the intake, a shoreline or a different depth. A dramatic shoreline observation may justify investigation without quantitatively representing the water entering the plant.\n\n## Compare conditions rather than labels\nA previous “storm event” is not a chemical recipe. The storm may have produced different temperature, particle characteristics, alkalinity and organic loading. Identify the properties that mattered in the previous event and ask which are known now. This turns experience into testable context rather than an automatic adjustment.\n\nA useful hypothesis states a mechanism and a discriminating observation. For example, increased organic demand could be examined with representative organic indicators and controlled testing, while a sample-line artifact could be examined with independent comparable measurements. “The river changed” is an observation too broad to choose a response. “The coagulant is wrong” is a conclusion that needs a test design.\n\n### Worked example: similar turbidity, different buffering\nThe training table gives A and B similar turbidity, but B has lower alkalinity and colder temperature. That makes equal turbidity an inadequate basis for declaring equal coagulation conditions. The table does not, by itself, determine a preferred dose or prove that the plant's current operating point is unacceptable. It identifies what should be represented in bench testing and which constraints should be checked.\n\nSuppose a test condition consumes 12 mg/L of alkalinity in a simplified exercise. Starting from 45 leaves 33 mg/L by subtraction; starting from 18 leaves 6 mg/L. These are arithmetic balances under the supplied assumption, not predictions of final pH. A pH prediction would need a chemical model and the relevant water/chemical characteristics. Operators should avoid replacing a measured final pH with an unsupported inference from the alkalinity balance.\n\n## Turn uncertainty into a sampling plan\nPrioritize measurements by the decisions they change. If the question is whether intake water changed, obtain a representative intake sample. If it is whether the changed water has affected filters, align downstream timing and unit data. If the issue is chemical-feed delivery, an organic measurement alone will not verify a pump calibration. Each proposed sample should state its location, time basis, parameter, quality check and decision purpose.\n\nDo not sample indefinitely while ignoring an applicable response trigger. Evidence collection and protective evaluation remain parallel tasks. The operational constraints and authority for actual changes come from the site's approved framework. In this course, learners prepare an evidence-based proposal for review.\n\n## Interpret the result of a new measurement\nImagine the next representative intake sample confirms B's lower alkalinity but not the shoreline color. Revise only the affected hypotheses. The confirmed buffering change deserves attention; the shoreline color remains a separate observation with limited representativeness. A good analyst can narrow a conclusion without pretending that the earlier observation never happened.",
+      "evidence": "### Data pack WT-2 — source profiles\n| Sample | Point/time | Turbidity NTU | Temperature °C | Alkalinity mg/L as CaCO₃ | DOC mg/L |\n|---|---|---:|---:|---:|---:|\n| A | Intake, previous day 09:00 | 12 | 14 | 45 | 3.0 |\n| B | Intake, current day 09:00 | 13 | 7 | 18 | 5.5 |\n| C | Shoreline, current day 09:05 | 28 | 8 | not measured | not measured |\n\nA and B used the same accepted analytical methods. C was an informal observation sample. A simplified exercise assumes 12 mg/L alkalinity consumption under one hypothetical test condition; this is not a product-specific stoichiometric factor.\n\n**Manager's question:** “The turbidity is almost unchanged. Can we just repeat last month's storm setting?”",
+      "assignment": "Write a source-change profile and a three-row hypothesis/evidence table. Calculate the simplified remaining alkalinity for A and B and state why it does not establish final pH. Design a minimal representative test plan with a decision purpose for each measurement. Respond to the manager in 150 words using the data rather than a generic caution.",
+      "rubric": [
+        "Identifies colder, less buffered and higher-DOC intake water despite similar turbidity.",
+        "Calculates 33 and 6 mg/L under the stated assumption and does not equate these with pH predictions.",
+        "Separates shoreline representativeness from intake data and proposes tests linked to specific decisions."
+      ],
+      "facilitatorGuide": "Ask the learner which single new observation would most affect the test plan. Require a reason, not a long shopping list. Accept different priorities if supported by the case. Reject reuse of an old setting solely on the word storm, or a claim that DOC alone proves the required chemical dose.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "disinfection"
+      ],
+      "checks": [
+        {
+          "id": "rw1",
+          "objective": "raw-water",
+          "prompt": "Which comparison most weakens the claim that samples A and B pose identical coagulation conditions?",
+          "choices": [
+            "Their collection hours are equal",
+            "Their turbidity values differ by one",
+            "Their alkalinity and temperatures differ",
+            "Their labels each contain one letter"
+          ],
+          "correctIndex": 2,
+          "explanation": "Different buffering and temperature can change the evaluation even when turbidity is similar."
+        },
+        {
+          "id": "rw2",
+          "objective": "raw-water",
+          "prompt": "Under the stated subtraction exercise, B retains how much alkalinity?",
+          "choices": [
+            "6 mg/L as CaCO₃",
+            "12 mg/L as CaCO₃",
+            "18 mg/L as CaCO₃",
+            "30 mg/L as CaCO₃"
+          ],
+          "correctIndex": 0,
+          "explanation": "18 − 12 = 6. The simplified balance is not a pH prediction."
+        }
+      ]
+    },
+    {
+      "id": "coagulation",
+      "title": "Evaluate a jar test and chemical-feed basis",
+      "objectives": [
+        "Convert product feed to active dose using an explicit density and strength.",
+        "Evaluate jar-test replicates against multiple criteria.",
+        "Design a bounded full-scale trial proposal."
+      ],
+      "lesson": "## A jar test is a controlled comparison\nJar testing can compare treatment responses under specified bench conditions. Its value depends on representative water, known chemical preparation, repeatable mixing and observation methods, and a clearly defined dose basis. Label every jar with the product, concentration, added amount, relevant water condition and observation time. A clean-looking jar without these records is weak evidence.\n\nBench equipment does not reproduce every plant hydraulic and solids condition. Use a favorable bench result to support a candidate for authorized evaluation, not as a universal instruction to change a feed pump. The proposal should identify the difference between bench and plant conditions and how downstream performance will be checked.\n\n## Product percentage is not delivered dose\nFor a liquid product specified by mass fraction, active mass rate equals solution volume rate × solution density × active mass fraction. Divide active mass rate by the water flow using consistent units to obtain the active dose. A pump-speed percentage is only a control signal; actual delivered flow depends on calibration and operating conditions.\n\n### Worked example\nA fictional solution is 12% active by mass and has density 1.10 kg/L. Delivered solution is 20 L/h. Active mass is 20 × 1.10 × 0.12 = 2.64 kg/h. At a water flow of 200 m³/h, the dose is 2.64/200 = 0.0132 kg/m³, or 13.2 mg/L. If the product changes to 10% at the same density and volumetric feed, active mass becomes 2.20 kg/h and dose 11.0 mg/L. Equal pump delivery does not preserve active dose when strength changes.\n\nKeep the product basis explicit: a manufacturer may report concentration on a different chemical basis than the one used in a bench comparison. A conversion must be justified from the actual specification. Do not silently compare “as product” with “as active constituent.”\n\n## Choose across constraints\nIn the supplied jars, condition C gives the lowest settled turbidity but crosses the exercise's lower pH constraint. Condition B gives a larger turbidity reduction than A while staying within the supplied pH range. This supports investigating B; it does not prove B is optimal in every respect. Filter behavior, residual chemical effects, sludge production, measurement variability and plant constraints are not established by settled turbidity alone.\n\nCompare replicates. A difference smaller than ordinary repeatability may not justify a confident ranking. Look for consistent patterns and document ambiguous results. Avoid choosing a winner first and then discarding the replicate that weakens the story.\n\n## Write the trial before observing its outcome\nA trial proposal states its question, authorized scope, baseline, candidate condition, constraints, measurement plan, hydraulic settling period, acceptance criteria and stop/escalation rules. Change only what the design can interpret. If raw water and production flow also change, document the confounding factors and qualify any causal claim.\n\nSuccess must include downstream barriers. Improving settled water while degrading filter performance is not necessarily an acceptable improvement. The exercise's numerical criteria are fictional decision rules for this case; they must not be copied into a real operating procedure.",
+      "evidence": "### Data pack WT-3 — jars and product delivery\n| Condition | Replicate settled turbidity, NTU | Final pH | Active dose basis |\n|---|---|---:|---|\n| A | 1.9, 2.1 | 7.0 | 10 mg/L |\n| B | 0.9, 1.1 | 6.7 | 15 mg/L |\n| C | 0.5, 0.6 | 6.1 | 20 mg/L |\n\n**Fictional trial rule:** candidate final pH must remain 6.5–7.5 in this exercise. Downstream filter observations must be included before declaring a successful plant trial. These numbers are not Ontario operating limits.\n\n**Feed calculation:** 12% active by mass; 1.10 kg/L; 20 L/h delivered; water flow 200 m³/h. Alternative delivery is 10% by mass at the same density and delivered volume.",
+      "assignment": "Reproduce both feed calculations. Rank the jar candidates against the supplied criteria and explain why the clearest jar is not automatically selected. Write a trial protocol containing a baseline, measurement schedule, authorization point, downstream checks and stop criteria. Identify two confounders and how you would record them. Include a comparison table rather than only a narrative recommendation.",
+      "rubric": [
+        "Calculates 13.2 and 11.0 mg/L on the stated active basis.",
+        "Identifies C as outside the fictional pH constraint and B as a candidate requiring downstream verification.",
+        "Defines the trial prospectively with measurable criteria and avoids claiming the bench test authorizes a plant change."
+      ],
+      "facilitatorGuide": "Check density and percent-by-mass use. Do not accept an answer that treats 12% as 12 kg/L. Require the learner to identify what the current data cannot establish about filtration and solids handling. Ask how they would report a trial if source conditions changed halfway through.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "disinfection"
+      ],
+      "checks": [
+        {
+          "id": "cg1",
+          "objective": "coagulation",
+          "prompt": "What active mass does the 12% solution deliver each hour?",
+          "choices": [
+            "0.264 kg/h",
+            "2.40 kg/h",
+            "2.64 kg/h",
+            "26.4 kg/h"
+          ],
+          "correctIndex": 2,
+          "explanation": "20 L/h × 1.10 kg/L × 0.12 = 2.64 kg/h."
+        },
+        {
+          "id": "cg2",
+          "objective": "coagulation",
+          "prompt": "Which jar is excluded by the exercise pH rule despite the lowest settled turbidity?",
+          "choices": [
+            "Condition A",
+            "Condition B",
+            "Both A and B",
+            "Condition C"
+          ],
+          "correctIndex": 3,
+          "explanation": "C ends at pH 6.1, below the fictional lower constraint of 6.5. This is a case-specific rule, not a regulatory threshold."
+        }
+      ]
+    },
+    {
+      "id": "filters",
+      "title": "Read individual filter performance",
+      "objectives": [
+        "Calculate unit filtration loading and compare like run stages.",
+        "Distinguish upstream effects from filter-specific evidence.",
+        "Preserve short-duration events and data-quality flags."
+      ],
+      "lesson": "## Combined water can conceal individual behavior\nA combined filtered-water measurement is influenced by the contribution from each filter. A smaller poorly performing filter can be diluted by other units. Review individual flow, turbidity, headloss, run stage and backwash history before concluding that the combined result describes every unit equally well.\n\nFiltration loading is flow divided by active area. Express it with compatible units, commonly m³/(m²·h), equivalent to m/h. Use active area, not installed area that includes a unit out of service. At 120 m³/h through 30 m², loading is 4 m/h. If an identical filter takes 180 m³/h, its loading is 6 m/h. Equal geometry does not imply equal hydraulic duty.\n\n## Interpret headloss as a trend with context\nHeadloss can increase as material accumulates within a filter, but its meaning depends on flow, media condition, run stage and other factors. Compare the rate of increase over aligned intervals rather than just the final value. If flow changes, a headloss change is not attributable solely to solids accumulation. Backwash history and recovery observations help identify unit-specific contributors.\n\n### Worked example: a misleading plant average\nFilter 1 operates at 120 m³/h and Filter 2 at 180 m³/h. Both have 30 m² area, so average plant loading across 60 m² is 5 m/h. Reporting only that average hides the 4 versus 6 m/h split. In the supplied trend, Filter 2 also has faster headloss growth. That combination supports investigation of loading and unit condition, but does not uniquely diagnose a media or backwash fault.\n\nThe headloss rise from 0.8 to 1.7 m over three hours is 0.9/3 = 0.30 m/h. The other unit rises from 0.8 to 1.1 m, or 0.10 m/h. State both the rate and the interval. These are observations for comparison, not universal stop values.\n\n## Do not average away an event\nA historian may store averages, maxima, snapshots or substituted values. A five-minute average can obscure a shorter peak. Confirm what the historian actually stores and how invalid or out-of-range values are handled. Preserve quality flags and data gaps. A flat trend after communications work may represent stale data rather than stable water.\n\nThe EPA turbidity-data guidance treats the instrument, sample system, transmission and historian as one evidence chain. Use it to inspect where information could be altered or lost. It is technical guidance, not a replacement for Ontario monitoring requirements or the facility's approved configuration.\n\n## Develop a discriminating inspection plan\nStart with observations that separate common upstream influences from unit-specific ones: aligned clarified-water condition, individual loading, run duration, turbidity trend, backwash sequence record and instrument verification. If two units receive the same water but differ in loading and recent maintenance, the plan should examine those differences before assigning a single shared cause.\n\nA review proposal can identify an inspection need without authorizing unsafe access or changes. Maintenance isolation, work authorization and site procedures govern actual intervention. Your submission should state which evidence can be obtained from records and which needs appropriately authorized field work.",
+      "evidence": "### Data pack WT-4 — individual filters\n| Item | Filter 1 | Filter 2 |\n|---|---:|---:|\n| Active area | 30 m² | 30 m² |\n| Flow | 120 m³/h | 180 m³/h |\n| Headloss at 10:00 | 0.8 m | 0.8 m |\n| Headloss at 13:00 | 1.1 m | 1.7 m |\n| Turbidity at 13:00 | 0.06 NTU | 0.14 NTU |\n| Current run age | 8 h | 8 h |\n| Latest backwash record | Complete | Air-scour confirmation missing |\n\nThe clarified-water feed is common. No media inspection, full turbidity time series or validated stop limit is supplied. The combined display reads 0.10 NTU after rounding and is an observation, not a declared compliance result.",
+      "assignment": "Calculate each filter's loading and headloss growth rate, plus the plant average loading. Explain what the average hides. Produce a five-row investigation plan pairing each hypothesis with discriminating evidence. Include a request for the historian aggregation/quality settings and state why the missing backwash entry is a lead rather than proof of cause.",
+      "rubric": [
+        "Obtains 4 and 6 m/h, plant average 5 m/h, headloss growth 0.10 and 0.30 m/h.",
+        "Avoids using combined turbidity or missing paperwork to prove every unit is satisfactory or diagnose a fault.",
+        "Proposes aligned unit-level observations and separates records review from authorized field work."
+      ],
+      "facilitatorGuide": "Ask which comparisons would change if Filter 2 had twice the run age; the learner should identify the confounding run stage. The current case controls that variable at eight hours. Accept several hypotheses but require an evidence discriminator for each.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "field"
+      ],
+      "checks": [
+        {
+          "id": "fl1",
+          "objective": "filters",
+          "prompt": "What is Filter 2 loading?",
+          "choices": [
+            "4 m/h",
+            "5 m/h",
+            "6 m/h",
+            "10 m/h"
+          ],
+          "correctIndex": 2,
+          "explanation": "180 m³/h ÷ 30 m² = 6 m/h."
+        },
+        {
+          "id": "fl2",
+          "objective": "filters",
+          "prompt": "Which supplied observation most directly distinguishes a unit-specific contributor?",
+          "choices": [
+            "Both filters share clarified water",
+            "Both filters have the same area",
+            "Both filters have eight-hour runs",
+            "Only Filter 2 lacks air-scour confirmation"
+          ],
+          "correctIndex": 3,
+          "explanation": "The missing confirmation is specific to Filter 2 and warrants investigation; it is not proof the air scour failed."
+        }
+      ]
+    },
+    {
+      "id": "ct",
+      "title": "Check disinfection calculations and their limits",
+      "objectives": [
+        "Calculate CT from a defined residual and effective contact time.",
+        "Distinguish nominal detention time from T10.",
+        "Evaluate changing flow, level and chemistry against a supplied criterion."
+      ],
+      "lesson": "## CT joins concentration with effective time\nFor a chemical disinfectant, a simplified CT calculation multiplies a relevant residual concentration C by effective contact time T. Units are typically mg·min/L. Ontario's disinfection procedure explains the CT concept and use of T10. T10 represents the time associated with the early portion of the flow-through distribution; it is not simply tank volume divided by flow.\n\nThe appropriate residual, treatment segment, temperature, pH, disinfectant species and target organism matter. A required CT cannot be selected from a convenient table row without matching its conditions. This course uses an explicitly fictional required CT so the arithmetic can be learned without presenting a universal operating target.\n\n## Separate nominal volume from hydraulic evidence\nNominal detention time is working volume divided by flow. An effective-time estimate may use a supported baffling factor or tracer-based relationship under the relevant configuration. Working volume changes with water level; a tank's nameplate capacity may not equal its current volume. Parallel compartments, bypasses and operating configuration affect the hydraulic interpretation.\n\n### Worked example\nA training contactor holds 600 m³ and receives 300 m³/h. Nominal time is 2 h, or 120 min. For this exercise only, a supported factor of 0.50 gives T10 = 60 min. With relevant outlet residual 0.80 mg/L, CT = 48 mg·min/L. Against the supplied required value 40, the ratio is 48/40 = 1.20. That is a comparison under the exercise assumptions, not a declaration that a real plant is compliant.\n\nIf flow rises to 400 m³/h while volume and the exercise factor remain unchanged, nominal time becomes 90 min, T10 45 min and CT 36. A stable residual does not preserve CT when time changes. The ratio is 0.90. In real review, also verify whether the same factor remains valid at the changed flow and configuration; the exercise deliberately holds it constant for arithmetic.\n\n## Use the limiting conditions that actually apply\nAverages can obscure the relevant operating condition. A residual measured later at lower flow may not describe the earlier higher-flow interval. Align residual, flow, level and chemistry to the same assessment period and segment. Do not compensate for missing evidence by selecting the most favorable measurement from each time.\n\nMeasurement quality matters too. A sample line's transport delay may misalign the displayed residual with the process interval. The analyzer's measurement species must match the method used in the calculation. Dose at the chemical-feed point is not automatically the residual used for CT.\n\n## State the scope of a conclusion\nA calculation can be arithmetically sound but unsupported because its volume, factor or required criterion is wrong. Review the inputs before interpreting the ratio. A ratio below the supplied training criterion demonstrates that the exercise criterion is unmet; it does not authorize an equipment adjustment. A ratio above it does not independently establish upstream removal credits, distribution protection or every other treatment requirement.\n\nYour response should identify the applicable verification and escalation pathway, preserve the time window and state which inputs need authoritative confirmation. Self-check both the arithmetic and the boundary of the claim you can make from it.",
+      "evidence": "### Data pack WT-5 — simplified CT exercise\n| Input | Baseline | Higher-flow interval |\n|---|---:|---:|\n| Working volume | 600 m³ | 600 m³ |\n| Flow | 300 m³/h | 400 m³/h |\n| Exercise baffling factor | 0.50 | 0.50 |\n| Relevant residual | 0.80 mg/L | 0.80 mg/L |\n| Fictional required CT | 40 mg·min/L | 40 mg·min/L |\n\nThe factor and required CT are supplied solely for this numerical exercise. They must not be used for a real facility. The original worksheet incorrectly divides m³ by m³/h and labels the result minutes without multiplying by 60.",
+      "assignment": "Prepare a two-column calculation showing nominal time, T10, CT and ratio for each interval. Correct the worksheet's time-unit error. Write an input-verification checklist and explain why stable residual does not demonstrate an unchanged disinfection margin. Then identify two facts needed before transferring this calculation to a real treatment segment.",
+      "rubric": [
+        "Obtains baseline 120 min, 60 min, 48 and 1.20; higher-flow 90 min, 45 min, 36 and 0.90.",
+        "Uses minutes consistently and distinguishes dose, residual, nominal time and effective contact.",
+        "Treats supplied CT/factor as fictional exercise inputs and identifies real validation/chemistry needs."
+      ],
+      "facilitatorGuide": "Have the learner recompute at a lower working volume to demonstrate sensitivity. Accept a clear below-criterion conclusion for the exercise without a plant operating prescription. Reject arbitrary selection of a different required CT merely to make the ratio exceed one.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "disinfection",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "ct1",
+          "objective": "ct",
+          "prompt": "What is the higher-flow CT under the supplied assumptions?",
+          "choices": [
+            "24 mg·min/L",
+            "36 mg·min/L",
+            "40 mg·min/L",
+            "48 mg·min/L"
+          ],
+          "correctIndex": 1,
+          "explanation": "600/400 × 60 × 0.50 × 0.80 = 36 mg·min/L."
+        },
+        {
+          "id": "ct2",
+          "objective": "ct",
+          "prompt": "Which input converts nominal detention time to T10 in this exercise?",
+          "choices": [
+            "The supplied factor of 0.50",
+            "The dose at the feed pump",
+            "The final turbidity reading",
+            "The number of active filters"
+          ],
+          "correctIndex": 0,
+          "explanation": "The exercise supplies a supported factor for its simplified calculation. Real use requires the applicable hydraulic basis."
+        }
+      ]
+    },
+    {
+      "id": "trial",
+      "title": "Design and defend an optimization trial",
+      "objectives": [
+        "Define success and stop criteria before a trial.",
+        "Separate observed improvement from causal attribution.",
+        "Prepare a cross-barrier review and handover."
+      ],
+      "lesson": "## Optimization is a structured comparison\nAn optimization claim should identify the baseline, proposed change, outcome measures, constraints and uncertainty. “The water looked better” is an observation. “The trial caused better performance without unacceptable trade-offs” is a broader conclusion requiring a controlled comparison and downstream evidence.\n\nStart with one testable question. For example: does candidate B improve settled-water performance under the current representative source conditions while maintaining the supplied pH constraint and acceptable downstream behavior? Define how each part will be measured. A trial that changes several conditions at once may still yield useful operational information, but its causal interpretation must reflect the confounding changes.\n\n## Write prospective decision criteria\nAcceptance criteria say what evidence would support adopting or further evaluating the candidate. Stop criteria say when the trial must end or escalate under the authorized procedure. Neither should be rewritten after observing the result merely to preserve a positive story. Include the expected response lag, sampling schedule, measurement quality checks, responsibility and authorization.\n\nA baseline is a set of comparable observations, not necessarily the previous single reading. Consider variability and the period needed to see a downstream effect. If the process has not reached the new water parcel, an early unchanged result is inconclusive. If the trial begins during a source transition, the plan should explain how that transition affects comparison.\n\n### Worked example: a selective success claim\nThe integrated data show lower settled turbidity during the candidate interval, but source temperature rose and production flow fell. Filter 2 headloss growth remains high, and the CT review uses a different interval. A defensible report can say settled turbidity improved. It cannot attribute the entire improvement to the candidate or claim that all barriers improved. The record needs aligned conditions, independent downstream assessment and the predetermined criteria.\n\n## Consider practical and ethical constraints\nA learning exercise can propose a trial protocol; actual plant trials require the site's authorization and protection framework. The proposal should state who reviews it, what is outside the operator's delegated authority and how normal response procedures apply if conditions deteriorate. Do not make hazardous access or disabling safeguards a data-collection step.\n\nResource use can be included after treatment effectiveness and constraints are addressed. Chemical mass per day and dose must be compared at their correct flow basis. Lower daily chemical use during lower production does not independently demonstrate improved efficiency. Report normalized quantities and the remaining uncertainty.\n\n## Close the learning loop\nA useful review identifies what was learned, what was not learned and what should change next. A trial may be inconclusive yet reveal a missing instrument check or a poor data-collection design. That is a legitimate outcome. Record the reason rather than force a pass/fail label on an inadequately designed comparison.\n\nPrepare a concise handover containing the trial status, current operating evidence, constraints, unresolved hypotheses, responsible personnel and next review point. Retain the raw data and original criteria. Use the case exercise and its feedback to test your understanding of the whole train rather than selecting the most favorable indicator.",
+      "evidence": "### Data pack WT-6 — integrated review\n| Measure | Baseline | Candidate interval |\n|---|---:|---:|\n| Raw-water temperature | 7°C | 10°C |\n| Plant flow | 300 m³/h | 240 m³/h |\n| Active chemical mass | 4.5 kg/h | 3.6 kg/h |\n| Settled turbidity | 1.8 NTU | 1.0 NTU |\n| Filter 2 headloss growth | 0.30 m/h | 0.28 m/h |\n| Filter 1 headloss growth | 0.10 m/h | 0.10 m/h |\n| Final pH | 6.8 | 6.7 |\n\nThe trial memo omits start time and hydraulic response delay. The fictional pH constraint remains 6.5–7.5. The team's draft claims “20% lower chemical use proves 20% better treatment efficiency; all filters optimized.” No final treatment acceptance criterion or complete CT time series is supplied.",
+      "assignment": "Produce a trial review containing a normalized dose comparison, a cross-barrier evidence table and a critique of the draft claim. Design the next controlled comparison with baseline, source characterization, response lag, sampling plan, authorization, acceptance criteria and stop/escalation rules. Submit an 800–1,200-word protocol and handover plus calculations. Defend one alternative explanation in the instructor debrief.",
+      "rubric": [
+        "Calculates 15 mg/L in both intervals; lower mass rate tracks lower flow and does not establish lower dose.",
+        "Separates observed settled-water improvement from temperature/flow confounding and unresolved Filter 2 behavior.",
+        "Provides prospective whole-train criteria, timing, authority and evidence retention; avoids unsupported all-barriers success."
+      ],
+      "facilitatorGuide": "Expected dose 4.5/300 × 1000 = 15 and 3.6/240 × 1000 = 15 mg/L. The claimed efficiency conclusion is unsupported. Require a meaningful proposal for aligning conditions and observing downstream response. Ask what would justify an inconclusive result; do not reward a learner solely for naming a preferred candidate.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 30,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 35,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "disinfection"
+      ],
+      "checks": [
+        {
+          "id": "tr1",
+          "objective": "trial",
+          "prompt": "How did active dose change between the two intervals?",
+          "choices": [
+            "It fell from 15 to 12 mg/L",
+            "It rose from 12 to 15 mg/L",
+            "It remained at 15 mg/L",
+            "It remained at 20 mg/L"
+          ],
+          "correctIndex": 2,
+          "explanation": "Both mass and water flow decrease proportionally, giving 15 mg/L in each interval."
+        },
+        {
+          "id": "tr2",
+          "objective": "trial",
+          "prompt": "Which conclusion can the supplied review support directly?",
+          "choices": [
+            "The trial caused all observed improvement",
+            "Settled turbidity was lower during the interval",
+            "Both filters reached their optimum condition",
+            "Every treatment requirement was demonstrated"
+          ],
+          "correctIndex": 1,
+          "explanation": "The observed turbidity difference is documented. Causation, optimum unit performance and complete treatment assurance require additional evidence."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "wf1",
+      "objective": "water-balance",
+      "prompt": "A flow of 50 L/s equals which daily volume?",
+      "choices": [
+        "4,320 m³/day",
+        "432 m³/day",
+        "43,200 m³/day",
+        "50,000 m³/day"
+      ],
+      "correctIndex": 0,
+      "explanation": "50 × 86.4 = 4,320 m³/day."
+    },
+    {
+      "id": "wf2",
+      "objective": "water-balance",
+      "prompt": "At 4,000 m³/day and 20 mg/L, what is the corresponding active mass?",
+      "choices": [
+        "8 kg/day",
+        "80 kg/day",
+        "20 kg/day",
+        "800 kg/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "4,000 × 20 × 0.001 = 80 kg/day."
+    },
+    {
+      "id": "wf3",
+      "objective": "raw-water",
+      "prompt": "Two samples have similar turbidity but very different alkalinity. What should the trial design include?",
+      "choices": [
+        "Turbidity alone",
+        "Matched tests of both water conditions",
+        "Averaged alkalinity used to label both jars",
+        "A comparison excluding final pH"
+      ],
+      "correctIndex": 1,
+      "explanation": "Representative testing preserves the buffering difference rather than assuming optical similarity means identical treatment response."
+    },
+    {
+      "id": "wf4",
+      "objective": "raw-water",
+      "prompt": "An intake change has not reached the downstream sampler. What does an unchanged downstream value show?",
+      "choices": [
+        "The raw-water observation is invalid",
+        "Treatment is complete",
+        "Earlier water still appears similar",
+        "The chemical dose is already optimal"
+      ],
+      "correctIndex": 2,
+      "explanation": "The observation may concern earlier water and cannot yet establish response to the new intake condition."
+    },
+    {
+      "id": "wf5",
+      "objective": "coagulation",
+      "prompt": "A solution at 10% by mass, density 1.20 kg/L and feed 5 L/h supplies what active mass?",
+      "choices": [
+        "0.50 kg/h",
+        "0.60 kg/h",
+        "5.00 kg/h",
+        "6.00 kg/h"
+      ],
+      "correctIndex": 1,
+      "explanation": "5 × 1.20 × 0.10 = 0.60 kg/h."
+    },
+    {
+      "id": "wf6",
+      "objective": "coagulation",
+      "prompt": "A jar has excellent clarity but violates a supplied pH constraint. How should it be classified?",
+      "choices": [
+        "Acceptable with a clear jar photograph",
+        "Preferred for plant use",
+        "Outside the current trial criteria",
+        "Equivalent to any jar receiving the same dose"
+      ],
+      "correctIndex": 2,
+      "explanation": "A favorable indicator does not override another applicable trial constraint."
+    },
+    {
+      "id": "wf7",
+      "objective": "filters",
+      "prompt": "A filter receives 150 m³/h over 25 m². What is its loading?",
+      "choices": [
+        "60 m/h",
+        "15 m/h",
+        "25 m/h",
+        "6 m/h"
+      ],
+      "correctIndex": 3,
+      "explanation": "Using the stated units and calculation: 150/25 = 6 m/h."
+    },
+    {
+      "id": "wf8",
+      "objective": "filters",
+      "prompt": "Which comparison best reveals uneven loading between filters?",
+      "choices": [
+        "Annual chemical use divided by daily production",
+        "Installed filter count",
+        "Combined outlet temperature",
+        "Individual flow divided by active area"
+      ],
+      "correctIndex": 3,
+      "explanation": "Unit flow and active area establish individual hydraulic loading."
+    },
+    {
+      "id": "wf9",
+      "objective": "ct",
+      "prompt": "A segment has relevant residual 0.6 mg/L and validated T10 of 30 min. What is CT?",
+      "choices": [
+        "5 mg·min/L",
+        "30.6 mg·min/L",
+        "18 mg·min/L",
+        "50 mg·min/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "0.6 × 30 = 18 mg·min/L; a requirement comparison still needs the applicable target."
+    },
+    {
+      "id": "wf10",
+      "objective": "ct",
+      "prompt": "A tank volume/flow calculation yields two hours. Which conversion gives nominal minutes?",
+      "choices": [
+        "Multiply two by 60",
+        "Multiply two by 24",
+        "Divide two by 60",
+        "Divide two by 24"
+      ],
+      "correctIndex": 0,
+      "explanation": "Two hours equals 120 minutes. Effective contact time requires the appropriate hydraulic basis."
+    },
+    {
+      "id": "wf11",
+      "objective": "trial",
+      "prompt": "Mass feed and water flow both decrease by 25%. What happens to their dose ratio?",
+      "choices": [
+        "Reduced to zero",
+        "Reduced by 25 percent",
+        "Increased by 25 percent",
+        "Unchanged"
+      ],
+      "correctIndex": 3,
+      "explanation": "The numerator and denominator change by the same factor, leaving the ratio unchanged."
+    },
+    {
+      "id": "wf12",
+      "objective": "trial",
+      "prompt": "Which practice most weakens causal interpretation of a trial?",
+      "choices": [
+        "Changing several conditions together",
+        "Recording the expected delay between change and response",
+        "Defining comparison criteria before starting the trial",
+        "Preserving the original observations from every instrument"
+      ],
+      "correctIndex": 0,
+      "explanation": "Simultaneous changes can confound attribution even when an outcome improves."
+    }
+  ],
+  "sources": [
+    {
+      "id": "disinfection",
+      "title": "Ontario: Procedure for Disinfection of Drinking Water",
+      "url": "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario",
+      "section": "CT concept, T10 and disinfectant-specific treatment requirements",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "field",
+      "title": "US EPA: Field turbidity measurement",
+      "url": "https://www.epa.gov/quality/field-turbidity-measurement",
+      "section": "Field measurement procedure and quality control",
+      "jurisdiction": "US technical guidance; laboratory/site methods govern local use",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}

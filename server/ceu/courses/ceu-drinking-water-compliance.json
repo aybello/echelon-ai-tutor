@@ -1,0 +1,681 @@
+{
+  "key": "ceu-drinking-water-compliance",
+  "title": "Drinking Water Operations and Regulatory Compliance",
+  "shortTitle": "Drinking Water Compliance",
+  "stream": "drinking_water",
+  "audience": "Ontario drinking-water operators and supervisors preparing, reviewing or handing over operational evidence.",
+  "prerequisites": "Working familiarity with a drinking-water treatment or distribution system and basic operational records. This course does not confer an operator designation.",
+  "introduction": "Build an auditable response to a changing drinking-water event. You will work with a supplied fictional document register, sampling records, laboratory messages and shift log, complete six automatically graded case exercises and test your reasoning against the supplied evidence. The focus is municipal Ontario systems; applicability must be established before transferring a requirement to another system category.",
+  "plannedMinutes": 600,
+  "delivery": "Self-paced online pilot: complete 6 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "modules": [
+    {
+      "id": "compliance-map",
+      "title": "Build the compliance and responsibility map",
+      "objectives": [
+        "Distinguish a legal requirement, a system authorization, a procedure and an observation.",
+        "Assign a case task to a verified role and identify unresolved authority.",
+        "Create a source register that another operator can independently check."
+      ],
+      "lesson": "## Start with the system, then the requirement\nA compliance question has four coordinates: which system, which activity, which date, and which responsible person. A rule copied from another plant may be accurate yet inapplicable. Begin a review by recording the system's category, source and treatment arrangement, relevant authorizations and current controlled-document register. The answer to “what must happen?” should be traceable to that context.\n\nUse a hierarchy of evidence rather than a hierarchy of job titles. Legislation and regulations establish legal duties. System-specific instruments establish requirements or permissions for the particular system. Controlled operating procedures translate those duties and the plant's design into repeatable work. A log records what actually happened. A log entry cannot amend a procedure, and a procedure cannot override a legal duty. When two documents appear to conflict, preserve both versions, state the conflict and seek an authorized resolution.\n\n### The four-column source register\nBuild a register with **decision**, **source and section**, **applicability**, and **evidence of performance**. For a question about operator responsibilities, O. Reg. 128/04 and verified designations are starting points. For an adverse result, the Safe Drinking Water Act and applicable reporting provisions are relevant. The evidence column is different: a designation record, communication record or dated log demonstrates that a person or action was actually in place. A source reference alone does not demonstrate performance.\n\n### Separate designation from seniority\nAn overall responsible operator and an operator-in-charge are designated roles with different functions. The overall responsible operator provides overall operational responsibility; operator-in-charge duties relate to the operations and processes assigned to that person. A manager's organizational title does not by itself prove either designation. Conversely, operational responsibility cannot simply be reassigned by changing the contact number at the top of a binder. Read the current role provisions and record who made the designation, its scope, the effective period and the evidence available in the exercise.\n\nA responsibility matrix should name a primary person, an alternate, the trigger for escalation and the record used to establish that contact occurred. “Tell management” is not an adequate matrix entry: it leaves responsibility and confirmation unclear. The matrix should also identify responsibilities retained by the owner or operating authority. Delegating a task is not the same thing as transferring every legal duty associated with an event.\n\n## Worked example: conflict in the relief binder\nThe supplied binder assigns all incidents to Morgan. The current register names Lee as the designated ORO and lists Amira as the shift OIC. The defensible conclusion is not that Morgan is unqualified; qualifications are not supplied. The conclusion is that the binder's assignment is unsupported by the current controlled records. Mark it for reconciliation, use the current authorized escalation procedure for the exercise, and assign an owner to update the obsolete copy. Keep the old copy attached to the event file because it explains why the relief operator was initially confused.\n\nThe same discipline applies to missing information. If the alternate's designation is absent, write “alternate designation not established from supplied evidence.” Do not invent a certificate class, signature or delegation. An explicit evidence gap is useful: it identifies what must be obtained before a real role decision could be accepted.\n\n## Practise the transfer\nChoose one task from your workplace without copying confidential information. Identify the *kind* of source that establishes it, the *kind* of record that proves completion and the role that checks it. If you cannot identify all three, the learning need may be document access or role clarification rather than a new procedure. Use the case exercise to test that distinction.",
+      "evidence": "### Cedar Reach case pack A — fictional documents\n| Document | Revision/effective date | Supplied extract |\n|---|---|---|\n| System profile | 2026-09-01 | Municipal residential surface-water system; treatment and distribution operated by Cedar Reach Utility. |\n| Controlled register CR-01 | Rev 8, 2026-09-01 | RESP-04 rev 5 and EVENT-02 rev 7 are current. Binder B3 is an uncontrolled convenience copy. |\n| RESP-04 | Rev 5, 2026-09-01 | Designated ORO: Lee Chen. Shift OIC: Amira Cole, 07:00–19:00. Incident coordinator: Morgan Reed. Lee is contactable through the duty channel. |\n| Binder B3 | Printed 2024-02-12 | For all operational/compliance matters call Morgan. No document owner or revision status shown. |\n| EVENT-02 | Rev 7, 2026-09-01 | Shift OIC owns the event file until an explicit handover is accepted. Internal escalation does not replace applicable external reporting. Record unsuccessful calls and use the authorized alternate contact route. |\n| Shift note | 2026-09-24 07:05 | Residual warning from previous shift remains open. “Next shift to follow up.” No named recipient. |\n\nThese extracts are training artifacts, not approved instructions for any operating facility. No alternate designation or certificate record has been supplied.",
+      "assignment": "Prepare a four-row source register addressing role designation, incident ownership, reporting applicability and record correction. Then produce a responsibility matrix for this shift. Identify two conflicts or missing pieces of evidence, name the task owner supported by the case and explain what you cannot conclude. Add a 100-word handover that explicitly accepts or declines each open task with a reason.",
+      "rubric": [
+        "Links each proposed duty to a relevant source category and a supplied record; does not treat a job title as a designation.",
+        "Uses current register and RESP-04; identifies the obsolete binder and missing alternate evidence without inventing credentials.",
+        "Assigns the open event to the documented shift role and provides a traceable handover/escalation path."
+      ],
+      "facilitatorGuide": "Expected map: current RESP-04 supports Lee/Amira role entries; EVENT-02 makes the shift OIC the event-file owner pending accepted handover. Morgan coordinates incidents but is not established as ORO/OIC. The older binder needs correction through document control, not deletion from evidence. Ask the learner to distinguish a source proving a duty from a record proving it was discharged. Return submissions that assign every duty to Morgan or invent alternate qualifications. Accept different register layouts if source, applicability and evidence remain separate.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "roles",
+        "sdwa",
+        "adverse"
+      ],
+      "checks": [
+        {
+          "id": "cm-1",
+          "objective": "compliance-map",
+          "prompt": "Which supplied document establishes the current shift OIC assignment?",
+          "choices": [
+            "Binder B3, printed in February 2024",
+            "RESP-04 rev 5, effective September 2026",
+            "The 07:05 unresolved-warning shift note",
+            "The system profile identifying the source"
+          ],
+          "correctIndex": 1,
+          "explanation": "RESP-04 contains the current designation in the exercise. The other documents establish different facts: contact history, event status and system context."
+        },
+        {
+          "id": "cm-2",
+          "objective": "compliance-map",
+          "prompt": "Morgan is listed as incident coordinator. Which additional evidence would establish that Morgan may act as ORO?",
+          "choices": [
+            "The number of incidents Morgan coordinated",
+            "The age of the current incident binder",
+            "The relevant current designation and qualifications",
+            "The number of staff reporting directly to Morgan"
+          ],
+          "correctIndex": 2,
+          "explanation": "Coordination and management seniority do not establish an ORO designation. The applicable designation and qualification evidence must be checked."
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "title": "Interpret control limits and conflicting measurements",
+      "objectives": [
+        "Classify targets, alarms and applicable requirements without conflating them.",
+        "Align observations by time, place, method and hydraulic context.",
+        "Quantify missing evidence while maintaining a parallel protective response."
+      ],
+      "lesson": "## A limit needs a label and a source\nA target describes a desired operating condition. An alarm is an engineered notification condition. An action level initiates a specified response. A regulatory or authorization limit is a requirement with a defined scope and measurement basis. The numerical values can overlap, but the categories are not interchangeable. A displayed alarm does not by itself prove a statutory exceedance; a value inside an internal target does not prove that every applicable condition is satisfied.\n\nCreate a limit register before interpreting a trend. Record the parameter, units, location, comparison rule, averaging or persistence period, governing document and required response. “Residual limit 0.8” is incomplete. Is it free or total chlorine? Where is it measured? Is 0.8 an internal warning or a requirement? Does the comparison use an instantaneous value, a minimum or a validated process calculation? Without these details, apparently precise numbers can support a wrong conclusion.\n\n## Measurements are claims about particular water\nWhen an online result differs from a field result, first compare their identities. Collection time and analyzer display time may not describe the same water parcel because the sample line introduces delay. A grab from a nearby tap may be upstream of the online point or use a different disinfectant method. Precision to two decimal places does not resolve these differences.\n\nUse the four-part comparison: location, time, method and quality status. Include sample transport delay, instrument verification and relevant maintenance. A maintenance flag creates a question about reliability; it does not prove the process was safe. A clean verification check strengthens the measurement at that time; it does not retroactively certify an entire earlier period.\n\n### Worked example: unknown intervals\nIn the supplied five-minute series, the residual is below the **fictional internal warning** at 08:10 and 08:15. The missing 08:20 value is not zero, and it is not the previous value. State that two recorded observations are below the warning and that there is one missing interval. It would be unsupported to declare that the process was below the warning for exactly ten minutes: the crossing time between observations is unknown. If the exercise assumes linear interpolation for a graph, label that assumption and do not convert the interpolated plot into a regulatory record.\n\nThe field value at 08:14 is higher, but its sheet omits location and free-versus-total method. It cannot invalidate the online free-residual readings. Ask for the missing location and method and examine the original field record. If the method proves to be total chlorine, comparison with free chlorine needs appropriate interpretation; they are not substitute numbers.\n\n## Verification and protection proceed together\nA weak response says, “We cannot determine the cause, so wait.” A stronger response identifies the uncertainty and the applicable protective/escalation pathway at the same time. The exercise is not asking you to choose a universal chemical adjustment. It asks what evidence would justify a conclusion, who can authorize a response and which questions are too important to defer. Cause identification, exposure assessment and response obligations are related but different workstreams.\n\nWrite a decision log with separate columns for observation, interpretation, confidence and next evidence. “Analyzer low” is an observation. “Sample-line blockage caused it” is a hypothesis. “No affected water left the plant” is a much broader conclusion requiring hydraulic and process evidence. Keeping these separate protects later reviewers from mistaking an early theory for an established fact.\n\n## Communicate without false precision\nUse statements such as “two low observations, one missing interval; comparison field sample unresolved.” Avoid “ten-minute compliance failure” unless the applicable requirement and valid time series actually support it. Use the case exercise to test whether your uncertainty statement guides useful action rather than becoming a vague disclaimer.",
+      "evidence": "### Case pack B — residual and limit records\n**Training-only warning:** CR-W1 triggers internal review when the outlet free-chlorine observation is below 0.80 mg/L. It is not presented as an Ontario regulatory limit. Approved CT criteria and exposure assessment are not supplied.\n\n| Time | Outlet free chlorine, mg/L | Flow, L/s | Quality flag |\n|---|---:|---:|---|\n| 08:00 | 0.92 | 70 | good |\n| 08:05 | 0.86 | 70 | good |\n| 08:10 | 0.74 | 85 | good |\n| 08:15 | 0.70 | 85 | maintenance pending |\n| 08:20 | — | 85 | no data |\n| 08:25 | 0.88 | 80 | good |\n\n**Field sheet F17:** value 1.02 mg/L at 08:14; location blank; method field blank; analyst initials AC; meter check recorded as passed at 07:30.\n\n**Maintenance M09:** sample-line work started 08:16; return-to-service verification recorded 08:24. No transport-delay measurement in the file.\n\n**Draft conclusion:** “Field value proves analyzer failure; ten-minute low interval is harmless; event closed.”",
+      "assignment": "Annotate the time series and identify every unsupported statement in the draft conclusion. Build a comparison checklist for F17. Write an evidence request covering instrument quality, sample identity and treatment significance, then a 150–250-word event update with separate facts, hypotheses and unresolved risks. Do not invent a CT requirement or prescribe a chemical setting.",
+      "rubric": [
+        "Correctly identifies two below-warning observations and the missing interval without inventing exact exposure duration.",
+        "Checks field/online location, time, method and maintenance context; does not treat the field value as automatic invalidation.",
+        "Runs verification and applicable response review in parallel and distinguishes the internal warning from a legal threshold."
+      ],
+      "facilitatorGuide": "Expected criticisms: field location/method unverified, analyzer cause not established, exact duration unsupported, harmlessness and closure unproven. Ask whether the 08:24 verification settles the 08:10 reading; it does not. For the graph, accept gaps or clearly marked interpolation but require original missingness to remain visible. No pass if an invented CT threshold or unqualified dosing change replaces the evidence analysis.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "quality",
+        "disinfection",
+        "adverse"
+      ],
+      "checks": [
+        {
+          "id": "lim-1",
+          "objective": "limits",
+          "prompt": "What does the missing 08:20 observation establish?",
+          "choices": [
+            "Residual remained at the 08:15 value",
+            "Residual fell below the instrument range",
+            "Residual recovered before 08:25",
+            "The interval lacks a recorded residual"
+          ],
+          "correctIndex": 3,
+          "explanation": "A missing value is an evidence gap. Carry-forward, zero and interpolation would be additional assumptions, not observations."
+        },
+        {
+          "id": "lim-2",
+          "objective": "limits",
+          "prompt": "Which comparison must be resolved before using F17 to challenge the outlet free-residual trend?",
+          "choices": [
+            "Whether its location and chlorine method match",
+            "Whether its number has more decimal places",
+            "Whether its result is higher than the warning",
+            "Whether its analyst worked the preceding shift"
+          ],
+          "correctIndex": 0,
+          "explanation": "Location and disinfectant method determine whether the values describe comparable measurements; timing and quality also need review."
+        }
+      ]
+    },
+    {
+      "id": "sampling",
+      "title": "Reconstruct sample identity and result history",
+      "objectives": [
+        "Reconcile sample identifiers across field, transfer and laboratory records.",
+        "Distinguish a report amendment from evidence that the original result was invalid.",
+        "Document sampling uncertainty without suppressing potentially significant results."
+      ],
+      "lesson": "## Follow the sample, not the filename\nA sample record connects a physical collection to a reported result. Its identity includes the system, location, collection date and time, sampler, requested analysis and laboratory identifier. Transport and receipt records provide additional context. An emailed file named “final” is not enough to establish this chain. The original report and each amendment must remain associated with the decision record so the reviewer can reconstruct what was known at each point.\n\nConsider three different problems. A wrong location identifier is a traceability problem. An inappropriate collection or handling condition is a representativeness or integrity problem. A transcription mistake in a summary is a reporting problem. All can affect interpretation, but their remedies differ. Asking the laboratory to clarify the location does not fix an unsuitable sample, and rewriting a summary does not change the laboratory's finding.\n\n## Quality assurance is evidence, not decoration\nA sampling plan defines why the sample is collected and the required method. The collector follows the applicable laboratory and site instructions for the parameter. Bottle type, preservative, holding time and temperature are method-specific; this course deliberately does not offer one universal rule for every analysis. An operator reviewing a result should be able to retrieve those instructions and check actual collection and receipt evidence against them. A signed checklist is helpful only if its entries refer to the correct sample and method.\n\nQuality-control observations need context. A blank can reveal contamination associated with its particular preparation or handling pathway. A duplicate informs precision under its collection and analytical conditions. Neither automatically explains away a different sample result. Write what the control represents before drawing a conclusion from it. Where a control is outside its specified acceptance criterion, document the laboratory's qualification and the implications for the decision; do not invent an acceptance rule after seeing the result.\n\n### Worked example: one bottle, two locations\nThe field sheet identifies D-07, the transfer form identifies D-07 and the first laboratory report identifies D-70. All three share bottle B104. The agreement on bottle identity supports a location-transcription hypothesis, but the operator should obtain an attributable laboratory clarification. An amended report can correct the laboratory's location label while retaining the original report's receipt time and result history. It does not make the initial receipt disappear.\n\nIf the laboratory confirms that the analytical result is unchanged, the location correction cannot be described as a negative resample or evidence that the event never occurred. This distinction matters when reconstructing reporting: when a result was first received may be different from when its location label was corrected.\n\n## Build a reconciliation table\nUse one row for each field: bottle ID, laboratory ID, location, collection time, parameter, value, units and report status. Add columns for each source, discrepancy, clarification owner and resolution evidence. The table makes partial agreement visible. It also prevents the familiar error of accepting the entire newest document because one field is corrected.\n\nThe decision record should include the unresolved applicability question and the current response pathway. The Ontario adverse-result bulletin distinguishes reporting requirements and exemptions; learners must use the actual applicable provision rather than assume every laboratory discrepancy suspends reporting. In this fictional case, the document mismatch is a parallel investigation task.\n\n## Peer review exercise\nAsk another learner to reconstruct the sample using only your reconciliation table. If they need your memory to identify the bottle or the first receipt time, improve the table. If they cannot tell whether a field is confirmed or inferred, add a status column. The test of a useful record is independent reconstruction, not how tidy the final page looks.",
+      "evidence": "### Case pack C — sample B104\n| Record | Time/identifier | Content |\n|---|---|---|\n| Field sheet FS-24 | Collected Sept 24, 09:10 | B104; location D-07; sampler AC; requested bacteriological analysis; method/handling instructions referenced as LAB-MIC-02. |\n| Transfer form TF-24 | Laboratory receipt 10:00 | B104; D-07; laboratory ID L8821; condition accepted; no exception recorded. |\n| Laboratory R1 | Received Sept 25, 08:40 | L8821/B104; D-70; E. coli detected; report status authorized. |\n| Operator note | Sept 25, 08:44 | Location differs. Asked laboratory to check transcription. Event opened under EVENT-02. |\n| Laboratory R2 | Received Sept 25, 09:05 | L8821/B104; D-07; E. coli detected; authorized amendment correcting location only. |\n| Clarification email | Sept 25, 09:06 | Laboratory confirms location-entry correction; analytical result unchanged; R1 retained in laboratory history. |\n| Draft shift summary | Sept 25, 09:15 | “First report replaced, therefore first result invalid. No event remains.” |\n\nNo additional sample or negative result is supplied. LAB-MIC-02 is a fictional method reference; handling details must be obtained from the actual laboratory in real practice.",
+      "assignment": "Create the reconciliation table and an ordered report chronology. Rewrite the draft summary in 120–180 words. Explain which fact R2 changes and which facts it does not change. Identify the relevant Ontario source for reviewing the reporting pathway and list the communication evidence still needed; do not claim that the laboratory has fulfilled the operating authority's separate duties.",
+      "rubric": [
+        "Links B104 and L8821 across records and distinguishes location correction from analytical change.",
+        "Preserves R1, first receipt time, R2 and attributable clarification; does not invent a resample.",
+        "Identifies an active response/reporting review and the missing evidence of notifications without assuming the amendment cancels it."
+      ],
+      "facilitatorGuide": "The first authorized report arrived 08:40, amendment 09:05, clarification 09:06. R2 corrects D-70 to D-07; E. coli detection remains. A passing learner does not declare compliance resolved or external notifications completed from these documents. Ask what evidence would be required to say a recipient was reached. Use this case to distinguish the analytical record from the operational response record.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "adverse",
+        "sdwa"
+      ],
+      "checks": [
+        {
+          "id": "sam-1",
+          "objective": "sampling",
+          "prompt": "What changed between laboratory reports R1 and R2?",
+          "choices": [
+            "The analytical finding became negative",
+            "The laboratory location label was corrected",
+            "The bottle was replaced by a new sample",
+            "The initial receipt time moved to 09:05"
+          ],
+          "correctIndex": 1,
+          "explanation": "The amendment changes the location label only. No analytical reversal, resampling or change in original receipt time is supported."
+        },
+        {
+          "id": "sam-2",
+          "objective": "sampling",
+          "prompt": "Which identifier pair most directly links the field sample to both reports?",
+          "choices": [
+            "D-70 and the 09:15 summary time",
+            "AC and the laboratory email subject",
+            "B104 and laboratory identifier L8821",
+            "D-07 and the phrase authorized amendment"
+          ],
+          "correctIndex": 2,
+          "explanation": "Bottle B104 and laboratory ID L8821 link the physical sample and analytical record. Location labels alone contain the discrepancy under investigation."
+        }
+      ]
+    },
+    {
+      "id": "response",
+      "title": "Manage reporting, corrective action and closure as separate tasks",
+      "objectives": [
+        "Distinguish internal escalation from applicable external reporting.",
+        "Build a communication record showing attempts, contacts and directions.",
+        "Specify evidence-based closure criteria and accountable follow-up."
+      ],
+      "lesson": "## One event, several responsibilities\nAn event can require investigation, operational protection, internal escalation, external reporting and corrective action at the same time. These tasks may have different owners and completion evidence. Treating them as a single checkbox creates a failure mode: someone calls a supervisor and marks “reported,” while no one has verified the required external pathway.\n\nFor Ontario drinking-water systems, reporting duties are established in the Safe Drinking Water Act and applicable regulation. The Ministry's adverse-result guidance identifies the relevant provisions and exceptions. A training answer should name the source and establish applicability. It should not invent a general deadline from memory or assume an internal approval chain allows a statutory duty to wait. Current requirements and instructions from the appropriate authority govern real events.\n\n## Make the communication record explicit\nA useful contact log records event identifier, recipient or agency, channel, time, person reached, information provided, reference number, direction received and follow-up owner. Distinguish an attempted call from a completed communication. Voicemail to a supervisor establishes an attempt, not necessarily acknowledgment. A reference number can support a communication record but does not itself prove every recipient was contacted or every direction implemented.\n\nProtective actions need a corresponding action log. Record the authorized decision, who executed it, when, what evidence verified the result and what remained unresolved. Do not copy a model response from another facility into real operations. A pump shutdown or isolation may have different hydraulic and public-health consequences in different systems. In this course, you evaluate the decision evidence and authority rather than prescribe a plant setting.\n\n### Worked example: progress is not closure\nThe exercise file contains an internal acknowledgment at 10:08 and a laboratory clarification at 10:20. These are completed tasks. The external-contact evidence remains absent and verification sample results are pending. The correct status is partially progressed with specific open items. It is not “nothing done,” and it is not “resolved.” An accurate summary names both the completed and incomplete work so the next shift can act without repeating everything.\n\nA single later value inside an operating target may demonstrate a later condition. It does not reconstruct the earlier exposure period, establish the cause or prove that corrective requirements are complete. Closure criteria should be identified from the applicable instructions before a reassuring result arrives. Otherwise the team may unconsciously redefine success around the result it happens to have.\n\n## Use a task-and-evidence matrix\nEach row should contain a required or proposed task, its basis, accountable role, status, evidence reference and next decision point. Use statuses such as not started, attempted, confirmed and awaiting verification. Avoid a generic percentage complete: an event with nine administrative tasks done and one critical protective task open is not safely described as 90% resolved.\n\nThe matrix also supports escalation when the planned person is unavailable. State the authorized alternate route and record attempts; do not assume silence means consent. If authority or instructions are unclear, that uncertainty belongs in the event record and should be brought to the responsible personnel promptly.\n\n## Test the reasoning, not the luck\nA later favorable result does not retroactively make an unsupported decision sound. In an optional note, identify which decisions were reasonable using the evidence available at the time. Then explain how new evidence would change the decision. This avoids hindsight bias and creates lessons that transfer to the next event rather than simply rewarding the group that guessed the eventual cause.",
+      "evidence": "### Case pack D — event E26-14 action ledger\n| Time | Entry | Evidence status |\n|---|---|---|\n| 10:02 | OIC left voicemail for incident coordinator | Call attempt recorded; no acknowledgment yet |\n| 10:08 | Coordinator acknowledged; asked OIC to preserve all reports | Email attached |\n| 10:12 | Draft log says “all parties notified” | No recipient list or external communication records attached |\n| 10:20 | Laboratory confirmed location correction | Attributable email attached; analytical finding unchanged |\n| 10:35 | Authorized verification sampling completed | Sample forms attached; results pending |\n| 10:40 | One process reading returned to usual range | One observation; cause and earlier conditions unresolved |\n| 10:45 | Draft handover says “close incident” | No closure authorization or completed corrective-action review |\n\nFor this exercise, EVENT-02 requires an accepted handover, traceable notification review, action verification and named closure authority. Applicable external duties must be checked in the cited Ontario sources; this local exercise rule does not replace them.",
+      "assignment": "Produce a task-and-evidence matrix with at least six rows and a proposed handover. Identify exactly what the 10:08 acknowledgment proves. Describe the evidence required before accepting “all parties notified” and “close incident.” In your written response, explain how the plan would change if the next laboratory result were favorable and how it would change if it confirmed the original concern.",
+      "rubric": [
+        "Distinguishes call attempt, acknowledgment, external notification evidence and implementation of directions.",
+        "Keeps pending results and unresolved event significance visible; does not use the later normal value as automatic closure.",
+        "Assigns task owners and closure evidence, with an applicable-source check instead of an invented reporting deadline."
+      ],
+      "facilitatorGuide": "Expected matrix separates laboratory clarification, internal coordination, external reporting review, verification sampling, results review and authorized closure. “All parties notified” remains unsupported, not proved false. Ask the learner to state the difference. A favorable next result may inform recovery but does not erase communication obligations or the original chronology. All rubric criteria must be met; return any answer that allows convenience or supervisor silence to substitute for applicable reporting duties.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "adverse",
+        "sdwa"
+      ],
+      "checks": [
+        {
+          "id": "res-1",
+          "objective": "response",
+          "prompt": "What does the 10:08 email directly establish?",
+          "choices": [
+            "Acknowledgment by the incident coordinator",
+            "Receipt of every required external report",
+            "Completion of the verification sample analysis",
+            "Authorization to close the incident file"
+          ],
+          "correctIndex": 0,
+          "explanation": "The email establishes the coordinator acknowledged the event and requested preservation. It cannot prove communications or decisions not recorded in it."
+        },
+        {
+          "id": "res-2",
+          "objective": "response",
+          "prompt": "Which evidence is still missing from the proposed closure at 10:45?",
+          "choices": [
+            "A new filename for the laboratory amendment",
+            "A restatement of the 10:02 call attempt",
+            "A copy of the already attached sample form",
+            "Verified follow-up and authorized closure"
+          ],
+          "correctIndex": 3,
+          "explanation": "Verification results and completion of the applicable response/closure pathway are unresolved. Reorganizing existing documents does not supply that evidence."
+        }
+      ]
+    },
+    {
+      "id": "records",
+      "title": "Correct records and reconstruct an audit trail",
+      "objectives": [
+        "Make an attributable correction while preserving the original observation.",
+        "Distinguish event time, entry time, instrument time and receipt time.",
+        "Produce a coherent evidence index and identify misleading summaries."
+      ],
+      "lesson": "## Records need provenance\nA record has content and provenance. Content is the number or statement. Provenance identifies who recorded it, when, from which source and under what conditions. A trend screenshot with no time axis may preserve a shape while losing the context needed to interpret it. A summary may contain the right final value yet obscure what the operator knew earlier. Good recordkeeping protects both dimensions.\n\nOntario operator requirements address operational records and who may make entries. Consult the current applicable provisions and the site's authorized correction process. In training, the durable principle is transparent attribution: retain the original, identify the correction, state the reason and link the evidence. A silent overwrite makes independent reconstruction harder even when the replacement is accurate.\n\n## Four clocks in one event\nEvent time is when something occurred. Entry time is when someone documented it. Instrument time is the clock applied by a device or historian. Receipt time is when information reached the recipient. These may differ legitimately. An operator can make a late entry without pretending it was contemporaneous; record both times and explain the source used to reconstruct the event. An instrument clock offset should be documented rather than silently shifting every original timestamp.\n\n### Worked example: corrected identifier\nAt 11:00 an operator discovers that an 08:14 entry named D-17 instead of D-07. The sample sheet and collector clarification support D-07. The correction should retain the original entry and identify the author, correction time, corrected identifier, reason and supporting references. Do not backdate the correction to 08:14. Do not change the original laboratory report locally; obtain an authorized amendment where appropriate.\n\nIf a field is unresolved, preserve uncertainty rather than manufacture completeness. A blank collection time may be clarified by an attributable contemporaneous source. A guess made several hours later should not become an apparently precise original collection timestamp. The quality of the record depends on the truth of its provenance, not the absence of blanks.\n\n## Build an evidence index that supports decisions\nAssign stable identifiers to source records. Use a table containing record ID, description, source, relevant period, version, location in the package and linked decision. Keep original reports and amended versions connected. The index should help the reviewer find the evidence supporting a claim such as “laboratory corrected location” or “OIC accepted handover.” A large folder with no links between claims and evidence can be as difficult to review as an incomplete file.\n\nFor exported electronic data, preserve units, parameter names, quality flags, time basis and export method. Keep the source data where the authorized system retains it. Screenshots can illustrate a point but should not be the only evidence if a retrievable data export is available. A spreadsheet formula deserves review too: a copied formula may omit the latest row, hide missing values or turn text into zero.\n\n## Test the summary against the source\nRead each sentence of the summary and ask which record supports it. “All results normal” conflicts with a file containing a flagged result and no documented resolution. “Instrument issue suspected” may be appropriately cautious if supported by maintenance evidence, while “instrument issue confirmed” needs stronger proof. Identify omissions that change interpretation, not merely stylistic differences.\n\nDuring peer review, give another learner your package without explaining it aloud. Ask them to identify the earliest concern, the first decision, the latest confirmed condition and every unresolved item. The exercise is successful when the package supports those answers without relying on your memory.",
+      "evidence": "### Case pack E — correction and historian export\n| Item | Supplied record |\n|---|---|\n| Original entry L17 | Entered 08:20 by AC: “08:14 field sample D-17, chlorine 1.02 mg/L.” Method not recorded. |\n| Collector clarification C17 | Received 11:00 from AC: “Location was D-07. I cannot confirm free-versus-total from memory; consult meter export.” |\n| Meter export M17 | Identifies instrument and operator; method field available in full export, which is not yet attached. |\n| Historian note H17 | Device clock was two minutes slow; offset identified at 12:00. Original data retained. |\n| Draft correction | Original L17 overwritten as “08:14 D-07 free chlorine 1.02,” with no correction time or author. |\n| Draft summary | “All measurements agree; no missing evidence.” |\n\n**Index starter:** L17 original log; C17 signed clarification; H17 clock note; M17 export request. Use these identifiers in your submission.",
+      "assignment": "Write a replacement correction record that preserves L17, then build the four-item evidence index. Explain how you would display the clock correction while retaining original timestamps. Identify two statements the draft summary cannot support and name the evidence needed to resolve each. Include a short late-entry example distinguishing event and entry times.",
+      "rubric": [
+        "Preserves L17 and attributes location correction to C17 at 11:00; leaves chlorine method unresolved.",
+        "Distinguishes original instrument timestamps from adjusted display time with a documented offset.",
+        "Connects each corrected or unresolved claim to a stable evidence identifier and an owner for missing M17."
+      ],
+      "facilitatorGuide": "The correction can establish D-07, but not free chlorine. Accept an annotated timeline with original and adjusted timestamps side by side. Reject silent backdating, local alteration of laboratory originals or invented method information. Discuss why a later recollection can support one field while remaining inadequate for another.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 20,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 15,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 35,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 10,
+          "instruction": "Complete the module checks and respond to the feedback."
+        }
+      ],
+      "sourceIds": [
+        "roles",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "rec-1",
+          "objective": "records",
+          "prompt": "Which field can C17 support correcting now?",
+          "choices": [
+            "The chlorine measurement method",
+            "The collection location identifier",
+            "The original instrument calibration",
+            "The original entry timestamp"
+          ],
+          "correctIndex": 1,
+          "explanation": "The collector specifically clarifies location D-07 and declines to establish the method. Treat fields separately."
+        },
+        {
+          "id": "rec-2",
+          "objective": "records",
+          "prompt": "How should the two-minute historian offset be handled in the case timeline?",
+          "choices": [
+            "Replace every original timestamp permanently",
+            "Use device time without mentioning the offset",
+            "Show the correction basis alongside source time",
+            "Assign all readings to the 12:00 discovery time"
+          ],
+          "correctIndex": 2,
+          "explanation": "Preserve the original time and document the offset used for comparison. The discovery time and event time have different meanings."
+        }
+      ]
+    },
+    {
+      "id": "practicum",
+      "title": "Defend a complete incident file",
+      "objectives": [
+        "Combine source applicability, data review and task ownership in one decision record.",
+        "Revise a conclusion when new evidence arrives without rewriting the past.",
+        "Defend a proportionate closure recommendation using an explicit rubric."
+      ],
+      "lesson": "## The case file is a decision product\nA strong incident file is more than a collection of documents. It explains how evidence led to decisions, what authority supported those decisions and what remains unknown. In this practicum you will integrate the earlier methods: source register, responsibility matrix, comparison checklist, communication ledger, correction record and evidence index. Each should support the others. If the handover calls an issue closed while the ledger still lists verification pending, the package is internally inconsistent.\n\nBegin with a concise event statement containing time, place, observation and significance under review. Do not lead with a preferred cause. Then identify the applicable system and source documents. Build the chronology from original records and label corrected or reconstructed times. List facts separately from hypotheses. Only then compare the available response evidence with the applicable task and closure requirements.\n\n## Use alternative explanations productively\nA hypothesis should identify evidence that could support or weaken it. “Bad instrument” is too broad to test. “The sample line was obstructed during the low-reading interval” is more specific and would need maintenance and measurement evidence. A valid instrument problem may coexist with a process issue, so do not assume every case has exactly one cause. The purpose of alternative hypotheses is to guide evidence gathering, not to produce a long unranked list.\n\n### Worked reasoning: a corrected label and a remaining event\nA location amendment resolves a traceability discrepancy. It does not resolve the analytical concern. Similarly, a later favorable operating trend may improve confidence in present conditions while leaving historical significance and reporting questions open. State these as separate findings. Check that each claim is no broader than its supporting evidence.\n\n## Make the handover usable under time pressure\nThe incoming operator needs the current confirmed condition, the principal unresolved risks, actions already taken, directions received, pending evidence, named task owners and the next review point. A handover should identify which items the receiving person has accepted. A long attachment without a clear open-task list can hide the very information the next shift most needs.\n\nUse a short top-level summary backed by the evidence index. Put detailed calculations and source reconciliation in appendices. Concision means making the decision easier to find, not deleting adverse evidence. Avoid unexplained acronyms and distinguish training assumptions from verified system facts.\n\n## Reassess the conclusion when evidence changes\nThe case evidence includes a later fact for reconsideration. You must record what changed, which interpretation changes and which obligations remain. This is a test of reasoning under uncertainty. The best response may be to narrow a claim rather than reverse every conclusion. Keep your original reasoning in your private notes if you want to compare how the new evidence affects your conclusion.\n\nThe practical standard is criterion-based. Each rubric criterion is represented in the scored exercise; review any missed item before retrying. Do not fabricate evidence or omit unresolved protective issues. The case exercise gives immediate feedback and may be retried. Knowledge-test performance is a separate requirement, and neither it nor time on a webpage substitutes for demonstrated practical work.\n\n## Final assessment and reflection\nAfter reviewing the six modules, complete the final assessment independently. Then write a brief reflection identifying one change you would make to your own documentation practice and one question you would take to your employer's authorized personnel. The course evaluation asks whether the exercises supported the objectives and what needs improvement. Pilot feedback and observed task times will determine whether the proposed ten-hour timetable is realistic before a final delivery claim is made.",
+      "evidence": "### Case pack F — integrated shift\n| Time | Record | Information |\n|---|---|---|\n| Day 1 08:10 | H31 | Online residual below fictional warning; quality flag good. |\n| Day 1 08:14 | F31 | Higher field result; location and method incomplete. |\n| Day 1 08:16 | M31 | Sample-line maintenance begins. |\n| Day 1 08:24 | M32 | Instrument verification recorded after maintenance. |\n| Day 2 08:40 | R31 | Authorized laboratory report: bottle B104, D-70, E. coli detected. |\n| Day 2 08:44 | L31 | Event E26-14 opened; laboratory clarification requested. |\n| Day 2 09:05 | R32 | Authorized amendment: D-07; analytical result unchanged. |\n| Day 2 09:08 | C31 | Coordinator acknowledges event; external reporting evidence not in supplied pack. |\n| Day 2 09:20 | S31 | Verification samples collected; results pending. |\n| Day 2 09:30 | D31 | Draft handover: “Analyzer repaired; lab label corrected; all clear.” |\n\nUse RESP-04 and EVENT-02 from case pack A. No evidence establishes that the day-1 instrument issue caused the day-2 laboratory finding. The two concerns may require separate analysis.\n\n**Additional case evidence for reassessment:** the field-meter export identifies F31 as total chlorine collected upstream of the online free-chlorine point. No verification laboratory results have arrived.",
+      "assignment": "Submit an integrated file with: (1) an executive event statement; (2) a source-linked chronology; (3) responsibility and communication matrix; (4) evidence comparison and at least two bounded hypotheses; (5) correction/index appendix; (6) an accepted-task handover; and (7) a justified current closure recommendation. After the instructor supplies the inject, add a dated revision explaining exactly which conclusions change. Aim for 800–1,200 words plus tables; substance, not word count, determines acceptance.",
+      "rubric": [
+        "Connects day-1 and day-2 records without claiming an unsupported common cause; preserves report history.",
+        "Identifies responsibility, applicable-source review, missing communication evidence and pending verification results.",
+        "Uses the inject to reject direct field/online comparability while preserving unresolved laboratory concerns.",
+        "Provides a usable handover and evidence-based closure recommendation without fabricated authority or results."
+      ],
+      "facilitatorGuide": "Expected closure recommendation: current evidence is insufficient for closure; record partial progress and specific outstanding tasks. The inject establishes a method/location mismatch and weakens the original field comparison, not the laboratory result. Require a source-linked chronology and retained first draft. Ask the learner to defend which single missing record would most change their assessment and why. Return any submission that manufactures completed external reporting, replaces detected with negative, or presents sample-line maintenance as proof of the laboratory cause. Debrief against each criterion, then administer the independent final assessment.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 30,
+          "instruction": "Analyse the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 35,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "roles",
+        "sdwa",
+        "adverse",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "prac-1",
+          "objective": "practicum",
+          "prompt": "The inject identifies F31 as upstream total chlorine. Which interpretation changes most directly?",
+          "choices": [
+            "Whether F31 is a like-for-like check of the online result",
+            "Whether the laboratory location amendment was authorized",
+            "Whether verification samples have been collected",
+            "Whether the coordinator acknowledged the event"
+          ],
+          "correctIndex": 0,
+          "explanation": "The inject changes comparability of F31 and the online free-chlorine measurement. It supplies no new fact about the laboratory response or notifications."
+        },
+        {
+          "id": "prac-2",
+          "objective": "practicum",
+          "prompt": "Which statement is supported by the integrated file at 09:30?",
+          "choices": [
+            "Maintenance explains both events conclusively",
+            "Verification results establish successful closure",
+            "All external recipients have acknowledged receipt",
+            "The laboratory concern remains unresolved"
+          ],
+          "correctIndex": 3,
+          "explanation": "The analytical finding remains and verification results are pending. The file does not establish a shared cause, completed notifications or closure."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "cf-01",
+      "objective": "compliance-map",
+      "prompt": "A current designation names the shift OIC, but an old contact sheet names a supervisor. Which record should anchor the role assignment in the exercise?",
+      "choices": [
+        "The current designation record",
+        "The last incident email thread",
+        "The oldest signed contact sheet",
+        "The supervisor reporting chart"
+      ],
+      "correctIndex": 0,
+      "explanation": "Use the current designation; then reconcile the obsolete contact sheet rather than letting it redefine authority."
+    },
+    {
+      "id": "cf-02",
+      "objective": "compliance-map",
+      "prompt": "Which entry belongs in the evidence-of-performance column of a source register?",
+      "choices": [
+        "The title of the applicable regulation",
+        "The section describing a reporting duty",
+        "The current communication acknowledgment",
+        "The category of drinking-water system"
+      ],
+      "correctIndex": 2,
+      "explanation": "The acknowledgment is evidence that a particular communication occurred. The other entries identify context or requirements."
+    },
+    {
+      "id": "cf-03",
+      "objective": "limits",
+      "prompt": "A historian contains four good observations and two missing intervals. What should a summary retain?",
+      "choices": [
+        "Only the four valid observations",
+        "Four observations and both gaps",
+        "Six values with gaps filled as zero",
+        "Six values with the last value repeated"
+      ],
+      "correctIndex": 1,
+      "explanation": "Preserve both observations and missingness. Filling gaps without labeling assumptions changes the evidentiary meaning."
+    },
+    {
+      "id": "cf-04",
+      "objective": "limits",
+      "prompt": "Two chlorine readings disagree. Which pair of fields is essential for determining whether they measure the same kind of result?",
+      "choices": [
+        "Operator tenure and shift length",
+        "File size and display precision",
+        "Alarm color and instrument brand",
+        "Sampling location and analytical method"
+      ],
+      "correctIndex": 3,
+      "explanation": "Method and location establish comparability together with time and quality. Administrative details cannot resolve that relationship."
+    },
+    {
+      "id": "cf-05",
+      "objective": "sampling",
+      "prompt": "An authorized amendment changes a sample address but retains its analytical result. Which conclusion follows?",
+      "choices": [
+        "The sample was collected again",
+        "The first receipt time is irrelevant",
+        "The location record changed",
+        "The analytical concern disappeared"
+      ],
+      "correctIndex": 2,
+      "explanation": "An amendment must be interpreted field by field. A location correction is not a negative resample or analytical reversal."
+    },
+    {
+      "id": "cf-06",
+      "objective": "sampling",
+      "prompt": "Which evidence would best resolve a bottle-to-report identity mismatch?",
+      "choices": [
+        "Matched bottle and laboratory accession records",
+        "A lower value from a different collection day",
+        "A summary written after the incident ended",
+        "A screenshot with the location field cropped"
+      ],
+      "correctIndex": 0,
+      "explanation": "Matched collection/accession evidence addresses identity directly. An unrelated result or cropped summary does not."
+    },
+    {
+      "id": "cf-07",
+      "objective": "response",
+      "prompt": "A call log shows an unanswered call to the coordinator. Which status is accurate?",
+      "choices": [
+        "All relevant reporting confirmed",
+        "Corrective action verified complete",
+        "Coordinator direction implemented",
+        "Internal contact attempted"
+      ],
+      "correctIndex": 3,
+      "explanation": "An unanswered call records an attempt. It does not establish acknowledgment, directions or external reporting."
+    },
+    {
+      "id": "cf-08",
+      "objective": "response",
+      "prompt": "One favorable reading follows an unresolved event. Which task remains necessary before closure?",
+      "choices": [
+        "Rename the event folder as resolved",
+        "Review the applicable closure evidence",
+        "Discard superseded laboratory reports",
+        "Replace the original warning in the log"
+      ],
+      "correctIndex": 1,
+      "explanation": "Closure depends on the applicable response evidence, outstanding issues and authority; one later observation does not supply all of these."
+    },
+    {
+      "id": "cf-09",
+      "objective": "records",
+      "prompt": "An operator corrects an earlier sample identifier at 13:00. Which time belongs beside the correction signature?",
+      "choices": [
+        "The 13:00 correction time",
+        "The earlier sample collection time",
+        "The next scheduled shift-change time",
+        "The laboratory report authorization time"
+      ],
+      "correctIndex": 0,
+      "explanation": "The correction needs its actual attribution/time while retaining the separate original event time."
+    },
+    {
+      "id": "cf-10",
+      "objective": "records",
+      "prompt": "The device clock was three minutes slow. What preserves a reviewable timeline?",
+      "choices": [
+        "Deleting the device timestamps",
+        "Assigning the discovery time to all rows",
+        "Showing original time and documented offset",
+        "Rounding every timestamp to the nearest hour"
+      ],
+      "correctIndex": 2,
+      "explanation": "Retain the source timestamp and explicit adjustment so the comparison can be reconstructed."
+    },
+    {
+      "id": "cf-11",
+      "objective": "practicum",
+      "prompt": "Which handover item most directly prevents an unresolved task from being lost between shifts?",
+      "choices": [
+        "The overall page count of the incident file",
+        "A named recipient accepting the follow-up",
+        "The total number of favorable observations",
+        "A statement that attachments were uploaded"
+      ],
+      "correctIndex": 1,
+      "explanation": "Explicit task ownership and acceptance support continuity. File size and upload status do not establish who will act."
+    },
+    {
+      "id": "cf-12",
+      "objective": "practicum",
+      "prompt": "A new document resolves instrument comparability but leaves laboratory verification pending. How should the event assessment change?",
+      "choices": [
+        "Close every issue under the common event ID",
+        "Remove the original instrument observations",
+        "Classify the pending result as favorable",
+        "Update the resolved issue and retain the open one"
+      ],
+      "correctIndex": 3,
+      "explanation": "Resolve claims only as far as new evidence supports them; separate issues can have different statuses."
+    }
+  ],
+  "sources": [
+    {
+      "id": "roles",
+      "title": "Ontario: O. Reg. 128/04",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "section": "Sections 23, 25–27: designation, duties and records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "sdwa",
+      "title": "Ontario: Safe Drinking Water Act, 2002",
+      "url": "https://www.ontario.ca/laws/statute/02s32",
+      "section": "Section 18: adverse-result reporting duties",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "adverse",
+      "title": "Ontario: adverse drinking water results technical bulletin",
+      "url": "https://www.ontario.ca/page/technical-bulletin-adverse-drinking-water-test-results-reporting-requirements-and-exemptions",
+      "section": "Reporting requirements and exemptions; check the applicable current regulation",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "disinfection",
+      "title": "Ontario: Procedure for Disinfection of Drinking Water",
+      "url": "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario",
+      "section": "CT concept, T10 and disinfectant-specific treatment requirements",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1"
+}
