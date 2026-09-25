@@ -14,6 +14,7 @@ import {
   type CeuCurriculum,
   type CeuLearningRecord,
 } from "../../shared/ceuLearning";
+import { ceuModuleSlideCount } from "../../shared/ceuSlides";
 
 const short = ceuCourse("ceu-sampling-data-quality")!;
 const flagship = ceuCourse("ceu-water-treatment-process-control")!;
@@ -44,21 +45,17 @@ function answers(course: CeuCurriculum, r: CeuLearningRecord, id: string) {
 function completeModules(course: CeuCurriculum) {
   let r = newCeuRecord(course, "Example Learner", "90000064", t0);
   for (const m of course.modules) {
-    r.modules[m.id].activeSeconds = moduleMinimumMinutes(m) * 60;
-    const a = answers(course, r, m.id);
-    r = act(course, r, {
-      type: "submitExercise",
-      moduleId: m.id,
-      attemptId: randomUUID(),
-      answers: a,
-    });
-    for (const q of m.checks)
+    for (let slideIndex = 1; slideIndex < ceuModuleSlideCount(m) - 1; slideIndex++)
       r = act(course, r, {
-        type: "check",
+        type: "slideProgress",
         moduleId: m.id,
-        questionId: q.id,
-        choice: q.correctIndex,
+        slideIndex,
       });
+    r = act(course, r, {
+      type: "completeModule",
+      moduleId: m.id,
+      slideIndex: ceuModuleSlideCount(m) - 1,
+    });
   }
   return r;
 }
@@ -195,35 +192,21 @@ describe("fully self-paced CEU decisions", () => {
       )
     ).toThrow("seven-hour");
   });
+  it("does not let a learner skip straight to a final module slide", () => {
+    const r = newCeuRecord(short, "Example Learner", "90000064", t0);
+    expect(() =>
+      act(short, r, {
+        type: "slideProgress",
+        moduleId: short.modules[0].id,
+        slideIndex: ceuModuleSlideCount(short.modules[0]) - 2,
+      })
+    ).toThrow("in order");
+  });
   for (const course of [short, flagship]) {
-    it(`completes ${course.key} with no instructor action and freezes the record`, () => {
+    it(`completes ${course.key} after module slides, without time or case gates`, () => {
       let r = completeModules(course);
-      expect(ceuReadiness(course, r).exercisesPassed).toBe(true);
-      // Planned hours may exceed the sum of module activity estimates.
-      const sum = ceuReadiness(course, r).recordedSeconds;
-      expect(() =>
-        act(
-          course,
-          {
-            ...r,
-            modules: Object.fromEntries(
-              Object.entries(r.modules).map(([id, mod]) => [
-                id,
-                { ...mod, activeSeconds: 0 },
-              ])
-            ),
-          },
-          {
-            type: "exam",
-            attemptId: randomUUID(),
-            answers: course.finalAssessment.map(q => q.correctIndex),
-          }
-        )
-      ).toThrow("course-time");
-      if (sum < course.plannedMinutes * 60)
-        r.modules[course.modules.at(-1)!.id].activeSeconds +=
-          course.plannedMinutes * 60 - sum;
-      expect(ceuReadiness(course, r).timeMet).toBe(true);
+      expect(ceuReadiness(course, r).modulesCompleted).toBe(true);
+      expect(ceuReadiness(course, r).recordedSeconds).toBe(0);
       r = act(course, r, {
         type: "exam",
         attemptId: randomUUID(),

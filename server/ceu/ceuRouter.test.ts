@@ -39,6 +39,9 @@ describe("CEU public API boundary", () => {
     await expect(caller.assessment({ courseKey })).rejects.toMatchObject({
       code: "UNAUTHORIZED",
     });
+    await expect(caller.results({ courseKey })).rejects.toMatchObject({
+      code: "UNAUTHORIZED",
+    });
   });
   it("has no reviewer, attendance attestation or manual completion procedures", () => {
     const procedures = Object.keys(ceuRouter._def.procedures);

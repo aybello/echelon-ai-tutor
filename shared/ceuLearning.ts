@@ -77,6 +77,9 @@ export interface CeuModuleRecord {
   activeSeconds: number;
   lastHeartbeatAt?: string;
   lastActivityAt?: string;
+  /** Additive presentation state for the simplified pilot lesson player. */
+  slideIndex?: number;
+  completedAt?: string;
 }
 export interface CeuAttempt {
   id: string;
@@ -97,7 +100,11 @@ export interface CeuLearningRecord {
   modules: Record<string, CeuModuleRecord>;
   dailySeconds: Record<string, number>;
   attempts: CeuAttempt[];
-  assessmentDraft?: { attemptId: string; answers: (number | null)[] };
+  assessmentDraft?: {
+    attemptId: string;
+    answers: (number | null)[];
+    flaggedQuestionIndexes?: number[];
+  };
   evaluation?: { rating: number; useful: string; improve: string; at: string };
   completion?: {
     id: string;
@@ -121,6 +128,18 @@ export interface CeuLearningRecord {
 export function moduleMinimumMinutes(module: Pick<CeuLesson, "activities">) {
   return module.activities.reduce((sum, a) => sum + a.minutes, 0);
 }
+
+/** A passed legacy case exercise counts as completed learning in the simpler pilot flow. */
+export function isCeuModuleComplete(
+  record: CeuLearningRecord,
+  moduleId: string
+) {
+  const module = record.modules[moduleId];
+  return Boolean(
+    module?.completedAt || module?.exerciseAttempts.some(attempt => attempt.passed)
+  );
+}
+
 export function ceuReadiness(
   course: Pick<CeuCurriculum, "modules" | "plannedMinutes">,
   record: CeuLearningRecord
@@ -130,6 +149,9 @@ export function ceuReadiness(
   );
   const exercisesPassed = course.modules.every(m =>
     record.modules[m.id]?.exerciseAttempts.some(a => a.passed)
+  );
+  const modulesCompleted = course.modules.every(module =>
+    isCeuModuleComplete(record, module.id)
   );
   const moduleTimeMet = course.modules.every(
     m =>
@@ -145,10 +167,11 @@ export function ceuReadiness(
   return {
     checksPassed,
     exercisesPassed,
+    modulesCompleted,
     moduleTimeMet,
     recordedSeconds,
     timeMet,
     assessmentPassed,
-    ready: checksPassed && exercisesPassed && timeMet && assessmentPassed,
+    ready: modulesCompleted && assessmentPassed,
   };
 }

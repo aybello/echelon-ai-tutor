@@ -6,10 +6,21 @@ import {
   type CeuCurriculum,
   type CeuLearningRecord,
 } from "../../shared/ceuLearning";
+import { ceuModuleSlideCount } from "../../shared/ceuSlides";
 import { exerciseFor, gradeExercise } from "./exerciseBank";
 
 export const learnerAction = z.discriminatedUnion("type", [
   z.object({ type: z.literal("resume"), moduleId: z.string().max(80) }),
+  z.object({
+    type: z.literal("slideProgress"),
+    moduleId: z.string().max(80),
+    slideIndex: z.number().int().min(0).max(20),
+  }),
+  z.object({
+    type: z.literal("completeModule"),
+    moduleId: z.string().max(80),
+    slideIndex: z.number().int().min(0).max(20),
+  }),
   z.object({
     type: z.literal("draft"),
     moduleId: z.string().max(80),
@@ -48,6 +59,7 @@ export const learnerAction = z.discriminatedUnion("type", [
     type: z.literal("examDraft"),
     attemptId: z.string().uuid(),
     answers: z.array(z.number().int().min(0).max(3).nullable()).max(100),
+    flaggedQuestionIndexes: z.array(z.number().int().min(0).max(100)).max(100),
   }),
   z.object({
     type: z.literal("evaluation"),
@@ -119,6 +131,27 @@ export function transitionCeu(
     case "resume":
       state.currentModule = action.moduleId;
       break;
+    case "slideProgress": {
+      const finalSlideIndex = ceuModuleSlideCount(lesson!) - 1;
+      const currentSlideIndex = mod!.slideIndex ?? 0;
+      if (action.slideIndex > finalSlideIndex)
+        throw new Error("Unknown lesson slide.");
+      if (action.slideIndex > currentSlideIndex + 1)
+        throw new Error("Complete the lesson slides in order.");
+      mod!.slideIndex = Math.max(currentSlideIndex, action.slideIndex);
+      state.currentModule = action.moduleId;
+      break;
+    }
+    case "completeModule": {
+      const finalSlideIndex = ceuModuleSlideCount(lesson!) - 1;
+      const currentSlideIndex = mod!.slideIndex ?? 0;
+      if (action.slideIndex !== finalSlideIndex || currentSlideIndex < finalSlideIndex - 1)
+        throw new Error("Reach the final lesson slide before completing this module.");
+      mod!.slideIndex = finalSlideIndex;
+      mod!.completedAt ??= now;
+      state.currentModule = action.moduleId;
+      break;
+    }
     case "draft":
       if (mod!.exerciseAttempts.some(a => a.passed))
         throw new Error("A passed exercise is immutable.");
@@ -199,18 +232,27 @@ export function transitionCeu(
         );
       }
       const ready = ceuReadiness(course, state);
-      if (!ready.checksPassed || !ready.exercisesPassed || !ready.timeMet)
+      if (!ready.modulesCompleted)
         throw new Error(
-          "Pass all module checks and case exercises, and meet the recorded course-time minimum first."
+          "Complete every course module before opening the final assessment."
         );
       if (state.attempts.some(a => a.passed))
         throw new Error("A passing assessment is already recorded.");
       if (action.answers.length !== course.finalAssessment.length)
         throw new Error("Answer every assessment question.");
+      if (
+        action.type === "exam" &&
+        action.answers.some(
+          (answer, index) =>
+            answer < 0 || answer >= course.finalAssessment[index].choices.length
+        )
+      )
+        throw new Error("An assessment answer is outside the available choices.");
       if (action.type === "examDraft") {
         state.assessmentDraft = {
           attemptId: action.attemptId,
           answers: action.answers,
+          flaggedQuestionIndexes: [...new Set(action.flaggedQuestionIndexes)],
         };
         break;
       }

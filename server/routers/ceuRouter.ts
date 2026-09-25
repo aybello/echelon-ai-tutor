@@ -334,14 +334,53 @@ export const ceuRouter = router({
           message: "Start this course first.",
         });
       const ready = ceuReadiness(course, record);
-      if (!ready.checksPassed || !ready.exercisesPassed || !ready.timeMet)
+      if (!ready.modulesCompleted)
         throw new TRPCError({
           code: "FORBIDDEN",
           message:
-            "Pass module checks and case exercises and meet the course-time minimum to unlock the final.",
+            "Complete every course module to unlock the final assessment.",
         });
       return course.finalAssessment.map(
         ({ correctIndex, explanation, ...q }) => q
       );
+    }),
+  results: publicProcedure
+    .input(
+      courseInput.extend({ attemptId: z.string().uuid().optional() })
+    )
+    .query(async ({ ctx, input }) => {
+      const course = courseFor(input.courseKey);
+      const record = await readRecord(emailFor(ctx), course.key);
+      if (!record)
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Start this course first.",
+        });
+      const attempt = input.attemptId
+        ? record.attempts.find(item => item.id === input.attemptId)
+        : record.attempts.at(-1);
+      if (!attempt)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "No submitted assessment is available.",
+        });
+      return {
+        id: attempt.id,
+        score: attempt.score,
+        total: attempt.total,
+        passed: attempt.passed,
+        at: attempt.at,
+        review: course.finalAssessment
+          .map((question, index) => ({
+            id: question.id,
+            objective: question.objective,
+            prompt: question.prompt,
+            choices: question.choices,
+            selectedIndex: attempt.answers[index],
+            correctIndex: question.correctIndex,
+            explanation: question.explanation,
+          }))
+          .filter(question => question.selectedIndex !== question.correctIndex),
+      };
     }),
 });
