@@ -121,6 +121,7 @@ const FormulasWW4 = lazy(() => import("./pages/FormulasWW4"));
 const FormulasWQA = lazy(() => import("./pages/FormulasWQA"));
 const ContinuingEducation = lazy(() => import("./pages/ContinuingEducation"));
 const ContinuingEducationCourse = lazy(() => import("./pages/ContinuingEducationCourse"));
+const CeuOperatorLessonDemo = lazy(() => import("./pages/CeuOperatorLessonDemo"));
 // WPI Class 1
 const WpiClass1WaterQuiz = lazy(() => import("./pages/WpiClass1WaterQuiz"));
 const WpiClass1WaterMockExam = lazy(() => import("./pages/WpiClass1WaterMockExam"));
@@ -405,6 +406,7 @@ function Router() {
         <Route path={"/electrician-309a-flashcards"} component={Electrician309AFlashcards} />
         <Route path={"/admin"} component={Admin} />
         <Route path={"/pricing"} component={Pricing} />
+        <Route path={"/continuing-education-demo"} component={CeuOperatorLessonDemo} />
         <Route path={"/continuing-education/:courseKey"} component={ContinuingEducationCourse} />
         <Route path={"/continuing-education"} component={ContinuingEducation} />
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
