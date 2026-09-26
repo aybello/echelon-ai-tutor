@@ -145,6 +145,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     { courseKey },
     { enabled: view === "exam" && !!record && allModulesComplete && !record.completion, retry: false, refetchOnWindowFocus: false }
   );
+  const finalPreview = trpc.ceu.finalPreview.useQuery(
+    { courseKey },
+    { enabled: view === "exam" && (!record || !allModulesComplete), retry: false, refetchOnWindowFocus: false }
+  );
   const results = trpc.ceu.results.useQuery(
     { courseKey, attemptId: submittedAttemptId },
     { enabled: view === "results" && !!record && !!submittedAttemptId, retry: false, refetchOnWindowFocus: false }
@@ -351,11 +355,13 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     );
   }
 
-  const question = assessment.data?.[currentQuestionIndex];
-  const assessmentQuestions = assessment.data ?? [];
+  const finalPreviewMode = !record || !allModulesComplete;
+  const assessmentQuestions = finalPreviewMode ? (finalPreview.data ?? []) : (assessment.data ?? []);
+  const question = assessmentQuestions[currentQuestionIndex];
   const signedIn = identity.data?.signedIn === true;
   const activeModuleIndex = course.modules.findIndex(module => module.id === activeModule.id);
   const activeModuleRecord = record?.modules[activeModule.id];
+  const nextModule = course.modules[activeModuleIndex + 1];
 
   return (
     <div className="ceu-screen">
@@ -374,7 +380,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           <nav className="ceu-course-context-tabs" aria-label="Course workspace navigation">
             <button type="button" className={view === "overview" ? "is-active" : ""} onClick={() => changeView("overview")}>Overview</button>
             <button type="button" className={view === "lesson" ? "is-active" : ""} onClick={() => changeView("lesson")}>Lessons</button>
-            <button type="button" className={view === "exam" || view === "results" ? "is-active" : ""} disabled={!record || !allModulesComplete} onClick={() => {
+            <button type="button" className={view === "exam" || view === "results" ? "is-active" : ""} onClick={() => {
               if (confirmDiscardUnsavedExam()) openFinal();
             }}>Assessment</button>
             <button type="button" className={view === "certificate" ? "is-active" : ""} disabled={!record?.completion} onClick={() => changeView("certificate")}>Certificate</button>
@@ -402,12 +408,12 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             {!signedIn ? (
               <section className="ceu-enrol-card">
                 <div>
-                  <h2>Inspect this course</h2>
-                  <p>Browse every lesson slide and quick check without an account. Sign in only when you want to save progress, take the final exam and receive a non-credit pilot certificate.</p>
+                  <h2>Open course inspection</h2>
+                  <p>Browse every lesson slide, optional quick check and final-exam question without an account. Sign in only to save progress, submit a graded final exam and receive a non-credit pilot certificate.</p>
                 </div>
                 <div className="ceu-enrol-actions">
-                  <button type="button" className="ceu-secondary-button" onClick={() => setView("lesson")}>Open lesson preview <ArrowRight size={18} /></button>
-                  <Link className="ceu-primary-button" href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}>Sign in to save and take final <ChevronRight size={18} /></Link>
+                  <button type="button" className="ceu-secondary-button" onClick={() => setView("lesson")}>Open all lessons <ArrowRight size={18} /></button>
+                  <button type="button" className="ceu-primary-button" onClick={openFinal}>Preview final exam <ArrowRight size={18} /></button>
                 </div>
               </section>
             ) : recordQuery.isLoading ? (
@@ -459,11 +465,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                   </button>
                 );
               })}
-              <button className="ceu-module-row ceu-final-row" type="button" disabled={!record || !allModulesComplete} onClick={openFinal}>
-                <span className="ceu-module-marker"><LockKeyhole size={17} /></span>
-                <span className="ceu-module-row-title"><small>Final exam</small><strong>{finalEntry.view === "results" ? "View latest results" : `${course.finalQuestionCount} questions, 80% to pass`}</strong></span>
+              <button className="ceu-module-row ceu-final-row" type="button" onClick={openFinal}>
+                <span className="ceu-module-marker">{finalPreviewMode ? <CircleHelp size={17} /> : <LockKeyhole size={17} />}</span>
+                <span className="ceu-module-row-title"><small>Final exam</small><strong>{finalPreviewMode ? `${course.finalQuestionCount} questions, read-only preview` : finalEntry.view === "results" ? "View latest results" : `${course.finalQuestionCount} questions, 80% to pass`}</strong></span>
                 <span className="ceu-module-duration">No timer</span>
-                <span className="ceu-module-status">{allModulesComplete ? finalEntry.view === "results" ? "Results available" : "Available" : "After modules"}</span>
+                <span className="ceu-module-status">{finalPreviewMode ? "Open to inspect" : finalEntry.view === "results" ? "Results available" : "Available"}</span>
               </button>
             </section>
           </section>
@@ -490,10 +496,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                   <button type="button" className={`${active ? "is-active" : ""}${done ? " is-complete" : ""}`} onClick={() => chooseModule(module.id)} disabled={pending}>
                     <span>{done ? <Check size={17} /> : index + 1}</span><strong>{module.title}</strong>
                   </button>
-                  {active && <ol>{slides.map((slide, index) => <li key={slide.id}><button type="button" className={index === activeSlideIndex ? "is-current" : ""} disabled={pending || index > (activeModuleRecord?.slideIndex ?? 0)} onClick={() => { setActiveSlideIndex(index); setDrawerOpen(false); }}><small>{index + 1}</small>{slide.kind === "quick_check" ? "Quick check" : slide.kind === "takeaways" ? "Key takeaways" : slide.title}</button></li>)}</ol>}
+                  {active && <ol>{slides.map((slide, index) => <li key={slide.id}><button type="button" className={index === activeSlideIndex ? "is-current" : ""} disabled={pending} onClick={() => { setActiveSlideIndex(index); setDrawerOpen(false); }}><small>{index + 1}</small>{slide.kind === "quick_check" ? "Quick check" : slide.kind === "takeaways" ? "Key takeaways" : slide.title}</button></li>)}</ol>}
                 </div>;
               })}
-              <button className="ceu-sidebar-final" type="button" disabled={!record || !allModulesComplete} onClick={() => { openFinal(); setDrawerOpen(false); }}><LockKeyhole size={16} /> {finalEntry.view === "results" ? "View latest results" : "Final exam"}</button>
+              <button className="ceu-sidebar-final" type="button" onClick={() => { openFinal(); setDrawerOpen(false); }}>{finalPreviewMode ? <CircleHelp size={16} /> : <LockKeyhole size={16} />} {finalPreviewMode ? "Preview final exam" : finalEntry.view === "results" ? "View latest results" : "Final exam"}</button>
             </nav>
           </aside>
           <section className="ceu-lesson-stage">
@@ -506,8 +512,8 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                 <section className="ceu-quick-check">
                   <p>Optional and ungraded</p>
                   <h2>{activeModule.checks[0].prompt}</h2>
-                  <ChoiceList question={activeModule.checks[0]} value={quickCheckChoice ?? activeModuleRecord?.checks[activeModule.checks[0].id]?.selectedIndex} disabled={!record || pending || !!record?.completion} onChange={choice => { setQuickCheckChoice(choice); setQuickCheckFeedback(""); }} />
-                  <div className="ceu-inline-actions"><button type="button" className="ceu-secondary-button" disabled={!record || pending || (quickCheckChoice ?? activeModuleRecord?.checks[activeModule.checks[0].id]?.selectedIndex) === undefined} onClick={() => record && save.mutate({ courseKey, revision: record.revision, action: { type: "check", moduleId: activeModule.id, questionId: activeModule.checks[0].id, choice: quickCheckChoice ?? activeModuleRecord!.checks[activeModule.checks[0].id].selectedIndex } })}>Check answer</button>{quickCheckFeedback && <span className="ceu-feedback"><CheckCircle2 size={16} /> {quickCheckFeedback}</span>}</div>
+                  <ChoiceList question={activeModule.checks[0]} value={quickCheckChoice ?? activeModuleRecord?.checks[activeModule.checks[0].id]?.selectedIndex} disabled={pending || !!record?.completion} onChange={choice => { setQuickCheckChoice(choice); setQuickCheckFeedback(""); }} />
+                  <div className="ceu-inline-actions">{record ? <button type="button" className="ceu-secondary-button" disabled={pending || (quickCheckChoice ?? activeModuleRecord?.checks[activeModule.checks[0].id]?.selectedIndex) === undefined} onClick={() => save.mutate({ courseKey, revision: record.revision, action: { type: "check", moduleId: activeModule.id, questionId: activeModule.checks[0].id, choice: quickCheckChoice ?? activeModuleRecord!.checks[activeModule.checks[0].id].selectedIndex } })}>Check answer</button> : <span className="ceu-preview-note">Read-only inspection: answer feedback is available in a saved learning record.</span>}{quickCheckFeedback && <span className="ceu-feedback"><CheckCircle2 size={16} /> {quickCheckFeedback}</span>}</div>
                 </section>
               )}
               {activeSlide.kind === "evidence" && <p className="ceu-fictional-note">All facility names, records, values and scenarios in this lesson are fictional training material.</p>}
@@ -516,7 +522,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <footer className="ceu-lesson-footer">
               <button type="button" className="ceu-back-button" disabled={pending || activeSlideIndex === 0} onClick={() => setActiveSlideIndex(index => Math.max(0, index - 1))}><ArrowLeft size={18} /> Back</button>
               <div className="ceu-slide-dots" aria-label={`Slide ${activeSlideIndex + 1} of ${slides.length}`}>{slides.map((slide, index) => <span key={slide.id} className={index === activeSlideIndex ? "is-active" : ""} />)}</div>
-              {activeSlideIndex === slides.length - 1 ? <button type="button" className="ceu-primary-button" disabled={!record || pending || moduleComplete(record, activeModule.id)} onClick={completeCurrentModule}>{moduleComplete(record, activeModule.id) ? "Module complete" : "Complete module"} <Check size={18} /></button> : <button type="button" className="ceu-primary-button" disabled={pending} onClick={() => saveSlide(activeSlideIndex + 1)}>Next <ArrowRight size={18} /></button>}
+              {activeSlideIndex === slides.length - 1 ? record ? <button type="button" className="ceu-primary-button" disabled={pending || moduleComplete(record, activeModule.id)} onClick={completeCurrentModule}>{moduleComplete(record, activeModule.id) ? "Module complete" : "Complete module"} <Check size={18} /></button> : nextModule ? <button type="button" className="ceu-primary-button" onClick={() => chooseModule(nextModule.id)}>Next module <ArrowRight size={18} /></button> : <button type="button" className="ceu-primary-button" onClick={openFinal}>Preview final exam <ArrowRight size={18} /></button> : <button type="button" className="ceu-primary-button" disabled={pending} onClick={() => saveSlide(activeSlideIndex + 1)}>Next <ArrowRight size={18} /></button>}
             </footer>
             {!record && <p className="ceu-signin-note">Sign in to save slide progress and complete this module.</p>}
           </section>
@@ -526,23 +532,29 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
       {view === "exam" && (
         <main className="ceu-exam-shell">
           <section className="ceu-exam-main">
-            <div className="ceu-exam-status"><strong>Question {currentQuestionIndex + 1} of {assessment.data?.length ?? course.finalQuestionCount}</strong><span>{Object.keys(answers).length} answered</span></div>
-            <div className="ceu-progress-track ceu-exam-track"><span style={{ width: `${assessment.data?.length ? ((currentQuestionIndex + 1) / assessment.data.length) * 100 : 0}%` }} /></div>
-            {!record ? <section className="ceu-empty-state"><h1>Sign in to take the final exam</h1><Link href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}>Sign in</Link></section> : !allModulesComplete ? <section className="ceu-empty-state"><h1>Complete every module first</h1><p>The final exam unlocks after the final slide of each module.</p><button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Return to course</button></section> : assessment.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam…</h1></section> : assessment.isError ? <section className="ceu-empty-state"><h1>Final exam unavailable</h1><p>The final exam is temporarily unavailable. Your saved learning has not changed.</p><button type="button" onClick={() => assessment.refetch()}>Retry</button></section> : question ? <>
+            <div className="ceu-exam-status"><strong>Question {currentQuestionIndex + 1} of {assessmentQuestions.length || course.finalQuestionCount}</strong><span>{finalPreviewMode ? "Read-only inspection" : `${Object.keys(answers).length} answered`}</span></div>
+            <div className="ceu-progress-track ceu-exam-track"><span style={{ width: `${assessmentQuestions.length ? ((currentQuestionIndex + 1) / assessmentQuestions.length) * 100 : 0}%` }} /></div>
+            {finalPreviewMode ? finalPreview.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam preview…</h1></section> : finalPreview.isError ? <section className="ceu-empty-state"><h1>Final exam preview unavailable</h1><p>We could not load the read-only question set right now. Your saved learning has not changed.</p><button type="button" onClick={() => finalPreview.refetch()}>Retry</button></section> : question ? <>
+              <article className="ceu-exam-question-card">
+                <div className="ceu-question-top"><span>Read-only inspection. Answers and scoring are unavailable in preview.</span></div>
+                <h1>{question.prompt}</h1>
+                <ChoiceList question={question} disabled onChange={() => undefined} />
+              </article>
+              <footer className="ceu-exam-footer"><button type="button" className="ceu-back-button" disabled={currentQuestionIndex === 0} onClick={() => setCurrentQuestionIndex(index => index - 1)}><ArrowLeft size={18} /> Previous</button>{currentQuestionIndex === assessmentQuestions.length - 1 ? <button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Return to course</button> : <button type="button" className="ceu-primary-button" onClick={() => setCurrentQuestionIndex(index => index + 1)}>Next question <ArrowRight size={18} /></button>}</footer>
+            </> : null : assessment.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam…</h1></section> : assessment.isError ? <section className="ceu-empty-state"><h1>Final exam unavailable</h1><p>The final exam is temporarily unavailable. Your saved learning has not changed.</p><button type="button" onClick={() => assessment.refetch()}>Retry</button></section> : question ? <>
               <article className="ceu-exam-question-card">
                 <div className="ceu-question-top"><span>Choose one answer.</span><button type="button" className={`ceu-flag-button${flags.includes(currentQuestionIndex) ? " is-flagged" : ""}`} disabled={pending} onClick={() => toggleFlag(currentQuestionIndex)}><Flag size={17} /> {flags.includes(currentQuestionIndex) ? "Flagged for review" : "Flag for review"}</button></div>
                 <h1>{question.prompt}</h1>
                 <ChoiceList question={question} value={answers[question.id]} disabled={pending} onChange={choice => answerExam(question.id, choice)} />
               </article>
               {examDirty && <p className="ceu-exam-save-warning" role="alert">Your latest change has not saved. <button type="button" onClick={() => saveExam(answers, flags)} disabled={pending}>Retry save</button></p>}
-              <footer className="ceu-exam-footer"><button type="button" className="ceu-back-button" disabled={pending || currentQuestionIndex === 0} onClick={() => setCurrentQuestionIndex(index => index - 1)}><ArrowLeft size={18} /> Previous</button>{currentQuestionIndex === assessmentQuestions.length - 1 ? <button type="button" className="ceu-primary-button" disabled={pending || examDirty || !assessmentQuestions.every(item => answers[item.id] !== undefined)} onClick={() => { if (window.confirm("Submit your final exam? You can review your results after submission.")) save.mutate({ courseKey, revision: record.revision, action: { type: "exam", attemptId, answers: assessmentQuestions.map(item => answers[item.id]), } }); }}>Submit exam</button> : <button type="button" className="ceu-primary-button" disabled={pending} onClick={() => setCurrentQuestionIndex(index => index + 1)}>Next question <ArrowRight size={18} /></button>}</footer>
+              <footer className="ceu-exam-footer"><button type="button" className="ceu-back-button" disabled={pending || currentQuestionIndex === 0} onClick={() => setCurrentQuestionIndex(index => index - 1)}><ArrowLeft size={18} /> Previous</button>{currentQuestionIndex === assessmentQuestions.length - 1 ? <button type="button" className="ceu-primary-button" disabled={pending || examDirty || !assessmentQuestions.every(item => answers[item.id] !== undefined)} onClick={() => { if (window.confirm("Submit your final exam? You can review your results after submission.")) save.mutate({ courseKey, revision: record!.revision, action: { type: "exam", attemptId, answers: assessmentQuestions.map(item => answers[item.id]), } }); }}>Submit exam</button> : <button type="button" className="ceu-primary-button" disabled={pending} onClick={() => setCurrentQuestionIndex(index => index + 1)}>Next question <ArrowRight size={18} /></button>}</footer>
             </> : null}
           </section>
           <aside className="ceu-exam-sidebar">
             <h2>Questions</h2>
-            <div className="ceu-question-grid">{assessment.data?.map((item, index) => <button type="button" key={item.id} onClick={() => setCurrentQuestionIndex(index)} className={`${answers[item.id] !== undefined ? "is-answered" : ""}${index === currentQuestionIndex ? " is-current" : ""}${flags.includes(index) ? " is-flagged" : ""}`} aria-label={`Question ${index + 1}${answers[item.id] !== undefined ? ", answered" : ""}${flags.includes(index) ? ", flagged" : ""}`}>{index + 1}</button>)}</div>
-            <div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div>
-            <section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil((assessment.data?.length ?? course.finalQuestionCount) * 0.8)} of {assessment.data?.length ?? course.finalQuestionCount} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section>
+            <div className="ceu-question-grid">{assessmentQuestions.map((item, index) => <button type="button" key={item.id} onClick={() => setCurrentQuestionIndex(index)} className={`${!finalPreviewMode && answers[item.id] !== undefined ? "is-answered" : ""}${index === currentQuestionIndex ? " is-current" : ""}${!finalPreviewMode && flags.includes(index) ? " is-flagged" : ""}`} aria-label={`Question ${index + 1}${!finalPreviewMode && answers[item.id] !== undefined ? ", answered" : ""}${!finalPreviewMode && flags.includes(index) ? ", flagged" : ""}`}>{index + 1}</button>)}</div>
+            {finalPreviewMode ? <section className="ceu-exam-note"><h3>Open for inspection</h3><p>Every final-exam question is visible here so you can review the course content before starting a saved learning record.</p><p>Answer keys, explanations, scoring and submission stay protected until you sign in and complete the course.</p><PilotDisclosure /></section> : <><div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div><section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil(assessmentQuestions.length * 0.8)} of {assessmentQuestions.length} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section></>}
           </aside>
         </main>
       )}

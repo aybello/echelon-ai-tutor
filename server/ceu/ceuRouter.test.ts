@@ -14,6 +14,17 @@ describe("CEU public API boundary", () => {
     expect(JSON.stringify(c)).not.toContain('"rubric"');
     expect(JSON.stringify(c)).not.toContain('"assignment"');
   });
+  it("serves read-only final-preview questions without answer keys or explanations", async () => {
+    const preview = await ceuRouter.createCaller(ctx()).finalPreview({ courseKey });
+    expect(preview).toHaveLength(8);
+    expect(preview[0]).toMatchObject({
+      id: expect.any(String),
+      prompt: expect.any(String),
+      choices: expect.any(Array),
+    });
+    expect(JSON.stringify(preview)).not.toContain('"correctIndex"');
+    expect(JSON.stringify(preview)).not.toContain('"explanation"');
+  });
   it("rejects anonymous enrollment, record, exercise, heartbeat and final access", async () => {
     const caller = ceuRouter.createCaller(ctx());
     await expect(caller.myRecord({ courseKey })).rejects.toMatchObject({

@@ -93,7 +93,7 @@ test.afterAll(async () => {
   }
 });
 
-test("public CEU courses preview a real lesson and keep final exams locked", async ({ page }, testInfo) => {
+test("public CEU courses open all lesson and final content for inspection", async ({ page }, testInfo) => {
   await page.goto("/continuing-education");
   await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(10);
 
@@ -102,11 +102,16 @@ test("public CEU courses preview a real lesson and keep final exams locked", asy
   await expect(page.getByRole("link", { name: "Echelon Institute home" })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Course workspace navigation" })).toBeVisible();
   await expect(page.getByRole("heading", { name: short.title, exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Open lesson preview", exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Sign in to save and take final", exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: /Final exam/ })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Open all lessons", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Preview final exam", exact: true })).toBeVisible();
 
-  await page.getByRole("button", { name: "Open lesson preview", exact: true }).click();
+  await page.getByRole("button", { name: "Preview final exam", exact: true }).click();
+  await expect(page.getByText("Read-only inspection", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: short.finalAssessment[0].prompt, exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Submit exam", exact: true })).toHaveCount(0);
+  await page.getByRole("button", { name: "Course overview", exact: true }).click();
+
+  await page.getByRole("button", { name: "Open all lessons", exact: true }).click();
   await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await expect(page.getByText("Slide 2 of 7", { exact: true })).toBeVisible();

@@ -217,6 +217,14 @@ export const ceuRouter = router({
   course: publicProcedure
     .input(courseInput)
     .query(({ input }) => publicCeuCourse(courseFor(input.courseKey))),
+  /** Public inspection only. Answer keys, explanations and submission remain server-held. */
+  finalPreview: publicProcedure
+    .input(courseInput)
+    .query(({ input }) =>
+      courseFor(input.courseKey).finalAssessment.map(
+        ({ correctIndex, explanation, ...question }) => question
+      )
+    ),
   identity: publicProcedure.query(({ ctx }) => ({
     signedIn: !!identityEmail(resolveVerifiedIdentity(ctx)),
   })),
