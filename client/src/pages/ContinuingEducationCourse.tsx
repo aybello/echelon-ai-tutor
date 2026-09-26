@@ -402,10 +402,13 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             {!signedIn ? (
               <section className="ceu-enrol-card">
                 <div>
-                  <h2>Start learning</h2>
-                  <p>Read the course freely. Sign in to save progress, take the final exam and receive a non-credit pilot certificate.</p>
+                  <h2>Inspect this course</h2>
+                  <p>Browse every lesson slide and quick check without an account. Sign in only when you want to save progress, take the final exam and receive a non-credit pilot certificate.</p>
                 </div>
-                <Link className="ceu-primary-button" href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}>Sign in to start <ChevronRight size={18} /></Link>
+                <div className="ceu-enrol-actions">
+                  <button type="button" className="ceu-secondary-button" onClick={() => setView("lesson")}>Open lesson preview <ArrowRight size={18} /></button>
+                  <Link className="ceu-primary-button" href={`/account?next=${encodeURIComponent(`/continuing-education/${courseKey}`)}`}>Sign in to save and take final <ChevronRight size={18} /></Link>
+                </div>
               </section>
             ) : recordQuery.isLoading ? (
               <section className="ceu-enrol-card"><p>Loading your saved course…</p></section>

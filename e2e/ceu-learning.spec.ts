@@ -102,10 +102,11 @@ test("public CEU courses preview a real lesson and keep final exams locked", asy
   await expect(page.getByRole("link", { name: "Echelon Institute home" })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Course workspace navigation" })).toBeVisible();
   await expect(page.getByRole("heading", { name: short.title, exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Sign in to start", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Open lesson preview", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Sign in to save and take final", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: /Final exam/ })).toBeDisabled();
 
-  await page.getByRole("button", { name: new RegExp(`1.*${short.modules[0].title}`) }).click();
+  await page.getByRole("button", { name: "Open lesson preview", exact: true }).click();
   await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await expect(page.getByText("Slide 2 of 7", { exact: true })).toBeVisible();
