@@ -1,10 +1,12 @@
 import { TRPCError } from "@trpc/server";
 import { purchaseEmailOutbox } from "../../drizzle/schema";
+import { ceuLearningRecords } from "../../drizzle/schema";
+import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
 /**
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sql, count, ne, and, gte } from "drizzle-orm";
+import { desc, eq, sql, count, ne, and, gte, gt, asc } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, customerRecoveryEvidence } from "../../drizzle/schema";
@@ -48,6 +50,23 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  getCeuKpis: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+    const since = new Date(Date.now() - 30 * 86400000);
+    const totals = emptyCeuMetrics();
+    let cursor = 0;
+    // Keyset pages: no silent row limit and no learner identities leave this endpoint.
+    for (;;) {
+      const rows = await db.select({ id: ceuLearningRecords.id, stateJson: ceuLearningRecords.stateJson })
+        .from(ceuLearningRecords).where(and(gte(ceuLearningRecords.createdAt, since), gt(ceuLearningRecords.id, cursor)))
+        .orderBy(asc(ceuLearningRecords.id)).limit(500);
+      for (const row of rows) countCeuRecord(totals, JSON.parse(row.stateJson));
+      if (rows.length < 500) break;
+      cursor = rows.at(-1)!.id;
+    }
+    return { ...totals, since: since.toISOString(), averageRating: totals.evaluations ? Math.round(totals.ratingSum / totals.evaluations * 10) / 10 : null };
+  }),
   /**
    * Read-only production data catalog for the internal Data Explorer. The
    * browser can choose only a catalog key and cannot supply a table, column,

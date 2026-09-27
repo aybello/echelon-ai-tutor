@@ -319,7 +319,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "CT = 0.8 × 25",
           answer: "20 mg·min/L",
         },
-        tip: "Ontario Reg. 170/03 requires CT ≥ 6 mg·min/L for Giardia inactivation (2-log) at 15°C, pH 7. Required CT increases at lower temperatures.",
+        tip: "Required CT must come from the applicable disinfectant and organism table, matched to temperature, pH, residual and required inactivation credit. A value of 6 mg·min/L is not a universal Giardia requirement.",
       },
       {
         name: "Chlorine Dose",

@@ -1,3 +1,4 @@
+import FormulaSourceNotes from "@/components/FormulaSourceNotes";
 // ECHELON AI TUTOR — WQA Formula Sheet
 // Covers: Unit Conversions, Dilution & Standards, Alkalinity & Hardness,
 //         CT Values & Disinfection, Langelier Saturation Index, QA/QC Calculations,
@@ -251,7 +252,7 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "C", desc: "Disinfectant residual concentration (mg/L) — measured at the outlet of the contact chamber" },
           { sym: "T", desc: "Contact time (min) — use T₁₀ (time for 10% of flow to pass through)" },
         ],
-        tip: "T₁₀ = Baffling factor × HRT. Baffling factors: excellent = 0.7, good = 0.5, average = 0.3, poor = 0.1. Always use T₁₀, not HRT, in CT calculations.",
+        tip: "T₁₀ may be estimated from a supported baffling factor × nominal detention time where the applicable method permits. Use a factor justified for the actual configuration, level and flow; do not choose one simply to obtain a passing CT.",
         example: {
           problem: "A chlorine contact chamber has a residual of 1.5 mg/L and a T₁₀ of 45 minutes. What is the CT?",
           solution: "CT = 1.5 mg/L × 45 min = 67.5 mg·min/L",
@@ -259,14 +260,14 @@ const CATEGORIES: FormulaCategory[] = [
         },
       },
       {
-        name: "CT Required for Giardia (Free Chlorine, 10°C)",
-        formula: "CT_required = 165 mg·min/L (for 4-log / 99.99% inactivation at 10°C, pH 7–8)",
-        tip: "Ontario's Procedure for Disinfection requires 4-log (99.99%) Giardia inactivation. CT requirements increase at lower temperatures and higher pH. At 5°C the CT requirement is approximately 235 mg·min/L. UV can also achieve Giardia credit at 40 mJ/cm² for 4-log.",
+        name: "Selecting Required CT for Giardia",
+        formula: "CT ratio = achieved CT ÷ required CT for the evaluated conditions",
+        tip: "Select the governing table for the disinfectant, temperature, pH, residual range and required log inactivation. Ontario’s overall surface-water/GUDI treatment minimum is 3-log Giardia, not universally 4-log disinfection. Filtration credits and required disinfection credits must be evaluated separately.",
       },
       {
-        name: "CT Required for Viruses (Free Chlorine, 10°C)",
-        formula: "CT_required = 6 mg·min/L (for 4-log / 99.99% inactivation at 10°C, pH 6–9)",
-        tip: "Viruses require much less CT than Giardia because free chlorine is highly effective against viruses. UV at 40 mJ/cm² also achieves 4-log virus inactivation credit in Ontario.",
+        name: "Selecting Required CT for Viruses",
+        formula: "Use the virus table and the required log inactivation, not a Giardia table.",
+        tip: "Free-chlorine CT requirements for viruses differ from those for Giardia. UV credits depend on the organism, validated reactor performance and approved operating conditions; 40 mJ/cm² does not automatically establish 4-log virus credit.",
       },
       {
         name: "Log Inactivation Credit",
@@ -275,11 +276,11 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "N₀", desc: "Initial organism concentration" },
           { sym: "N", desc: "Final organism concentration after disinfection" },
         ],
-        tip: "1-log = 90% removal; 2-log = 99%; 3-log = 99.9%; 4-log = 99.99%. Ontario requires 4-log for both Giardia and viruses from combined treatment and disinfection.",
+        tip: "1-log = 90% reduction; 2-log = 99%; 3-log = 99.9%; 4-log = 99.99%. For Ontario surface-water/GUDI supplies, the overall treatment minimum includes 2-log Cryptosporidium, 3-log Giardia and 4-log viruses. Verify approved credits and any stricter facility requirements.",
         example: {
           problem: "A system achieves 2-log removal through filtration and 2-log inactivation through disinfection. What is the total log credit for Giardia?",
-          solution: "Total log credit = 2 + 2 = 4-log (99.99% inactivation)",
-          answer: "4-log — meets Ontario's minimum requirement",
+          solution: "Total supported reduction = 2 + 2 = 4-log (99.99% combined removal/inactivation)",
+          answer: "4-log combined reduction, if both credits are valid for the organism and operating conditions",
         },
       },
       {
@@ -300,7 +301,7 @@ const CATEGORIES: FormulaCategory[] = [
       {
         name: "UV Dose",
         formula: "UV Dose (mJ/cm²) = UV Intensity (mW/cm²) × Exposure Time (s)",
-        tip: "Ontario requires 40 mJ/cm² for 4-log Giardia and 4-log virus inactivation credit. UV dose must be validated at the lowest transmittance (UVT) and highest flow rate expected in operation.",
+        tip: "This intensity × time example illustrates units only. Real UV treatment credit comes from validated reactor performance for the target organism and operating envelope; a sensor reading multiplied by nominal time is not proof of that credit.",
         example: {
           problem: "A UV reactor delivers 8 mW/cm² at the required flow rate. How many seconds of exposure are needed for a 40 mJ/cm² dose?",
           solution: "Time = 40 mJ/cm² ÷ 8 mW/cm² = 5 seconds",
@@ -432,7 +433,7 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "Fluoride", desc: "MAC = 1.5 mg/L; AO = 1.0 mg/L (optimal 0.7 mg/L)" },
           { sym: "Lead", desc: "MAC = 0.010 mg/L (10 µg/L)" },
           { sym: "Arsenic", desc: "MAC = 0.010 mg/L (10 µg/L)" },
-          { sym: "Turbidity (treated)", desc: "MAC = 1.0 NTU; operational trigger = 0.3 NTU (conventional filtration)" },
+          { sym: "Turbidity (treated)", desc: "Process-specific filtration criteria, alarms and adverse-result rules; consult the disinfection procedure and O. Reg. 170/03" },
           { sym: "E. coli", desc: "MAC = 0 CFU/100 mL (zero tolerance)" },
           { sym: "Total Coliforms", desc: "MAC = 0 CFU/100 mL in treated water" },
           { sym: "THMs (total)", desc: "MAC = 0.100 mg/L (100 µg/L)" },
@@ -442,17 +443,17 @@ const CATEGORIES: FormulaCategory[] = [
       {
         name: "Chlorine Residual Requirements — O. Reg. 170/03",
         formula: "Minimum free Cl₂ residual = 0.05 mg/L at all points in distribution system",
-        tip: "The 0.05 mg/L minimum is the regulatory floor — not a target. Most systems aim for 0.2 mg/L at extremities. Maximum residual is not specified in O. Reg. 170/03 but Health Canada's aesthetic objective for chlorine is 0.6 mg/L (taste/odour threshold).",
+        tip: "For applicable chlorinated distribution systems, use the procedure’s 0.05 mg/L free or 0.25 mg/L combined chlorine minimum and the facility’s operating targets. Do not confuse distribution residuals with primary-disinfection CT or invent a universal aesthetic ceiling.",
       },
       {
         name: "Adverse Test Result Notification",
-        formula: "Notify MOH: immediately and no later than 24 hours after becoming aware",
-        tip: "Under O. Reg. 170/03 s.18, an adverse test result (E. coli, total coliforms, turbidity exceedance, or MAC exceedance) requires immediate notification to the local Medical Officer of Health. The 24-hour clock starts when the owner becomes aware — not when the lab reports.",
+        formula: "Immediate verbal report, then written notice within 24 hours of the verbal report",
+        tip: "For reportable adverse results and problems, follow O. Reg. 170/03 Schedule 16 and Safe Drinking Water Act section 18. Immediately notify the Spills Action Centre and local medical officer of health, and the owner where required. The written follow-up deadline does not allow delaying the initial call.",
       },
       {
         name: "Record Retention",
-        formula: "Operational records must be retained for a minimum of 10 years (O. Reg. 170/03)",
-        tip: "This includes test results, maintenance logs, calibration records, and operator logs. The 10-year requirement applies to all records. Some records (e.g., design drawings) must be kept indefinitely.",
+        formula: "Retention depends on the record category and applicable regulation.",
+        tip: "Consult O. Reg. 170/03 Schedule 6 for applicable test-result and report retention periods, and O. Reg. 128/04 for operating records. Do not apply one ten-year period to every document.",
       },
     ],
   },
@@ -537,6 +538,7 @@ export default function FormulasWQA() {
         </div>
       </div>
 
+      <FormulaSourceNotes />
       {/* ── CONTENT ── */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "28px 16px 80px" }}>
         {/* Search */}

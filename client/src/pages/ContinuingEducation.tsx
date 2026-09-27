@@ -67,7 +67,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
         </div>
       </div>
       <div className="ceu-course-meta">
-        <span><Clock3 size={15} aria-hidden="true" /> {course.plannedContactHours} planned hours</span>
+        <span><Clock3 size={15} aria-hidden="true" /> Self-paced · duration being validated</span>
         <span>{course.modules.length} modules</span>
       </div>
       <div className="ceu-course-actions">
@@ -86,12 +86,12 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
             </ul>
           </div>
           <div className="ceu-outline-column ceu-modules">
-            <p className="ceu-outline-label">{course.modules.length}-module timetable</p>
+            <p className="ceu-outline-label">{course.modules.length}-module outline</p>
             <ol>
               {course.modules.map((module) => (
                 <li key={module.number}>
                   <div><span>Module {module.number}</span><strong>{module.title}</strong></div>
-                  <time>{minutesToHours(module.durationMinutes)}</time>
+                  <span>Self-paced</span>
                   <p>{module.summary}</p>
                 </li>
               ))}

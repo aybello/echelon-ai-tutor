@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { describe, expect, it } from "vitest";
+import { ceuExamQuestions } from "./assessment";
 import { ceuCourse } from "./catalogue";
 import { exerciseFor, gradeExercise, publicExercise } from "./exerciseBank";
 import {
@@ -45,7 +46,7 @@ function answers(course: CeuCurriculum, r: CeuLearningRecord, id: string) {
 function completeModules(course: CeuCurriculum) {
   let r = newCeuRecord(course, "Example Learner", "90000064", t0);
   for (const m of course.modules) {
-    for (let slideIndex = 1; slideIndex < ceuModuleSlideCount(m) - 1; slideIndex++)
+    for (let slideIndex = 1; slideIndex < ceuModuleSlideCount(m); slideIndex++)
       r = act(course, r, {
         type: "slideProgress",
         moduleId: m.id,
@@ -207,10 +208,11 @@ describe("fully self-paced CEU decisions", () => {
       let r = completeModules(course);
       expect(ceuReadiness(course, r).modulesCompleted).toBe(true);
       expect(ceuReadiness(course, r).recordedSeconds).toBe(0);
+      r = act(course, r, { type: "beginExam" });
       r = act(course, r, {
         type: "exam",
-        attemptId: randomUUID(),
-        answers: course.finalAssessment.map(q => q.correctIndex),
+        attemptId: r.assessmentDraft!.attemptId,
+        answers: ceuExamQuestions(course, r.assessmentDraft!.manifest).map(q => q.correctIndex),
       });
       expect(r.completion).toMatchObject({
         name: "Example Learner",
@@ -224,6 +226,46 @@ describe("fully self-paced CEU decisions", () => {
       ).toThrow("immutable");
     });
   }
+  it("saves a backward review cursor without erasing the visited frontier", () => {
+    let r = completeModules(short);
+    const id = short.modules[0].id;
+    r = act(short, r, { type: "slideProgress", moduleId: id, slideIndex: 2 });
+    expect(r.modules[id].resumeSlideIndex).toBe(2);
+    expect(r.modules[id].slideIndex).toBe(6);
+  });
+  it("requires a server-issued attempt, resumes it, rejects replaced IDs and preserves legacy drafts", () => {
+    let r = completeModules(short);
+    expect(() => act(short, r, { type: "exam", attemptId: randomUUID(), answers: short.finalAssessment.map(q => q.correctIndex) })).toThrow("Open your saved");
+    r = act(short, r, { type: "beginExam" });
+    expect(act(short, r, { type: "beginExam" })).toEqual(r);
+    expect(() => act(short, r, { type: "examDraft", attemptId: randomUUID(), answers: r.assessmentDraft!.answers, flaggedQuestionIndexes: [] })).toThrow("Open your saved");
+    const legacy = completeModules(short);
+    legacy.assessmentDraft = { attemptId: randomUUID(), answers: short.finalAssessment.map(() => null) };
+    const result = act(short, legacy, { type: "exam", attemptId: legacy.assessmentDraft.attemptId, answers: short.finalAssessment.map(q => q.correctIndex) });
+    expect(result.completion?.finalScore).toBe(short.finalAssessment.length);
+    const completion = result.completion;
+    const rated = act(short, result, { type: "evaluation", rating: 4, useful: "", improve: "" });
+    expect(rated.completion).toEqual(completion);
+    const viewed = act(short, rated, { type: "certificateViewed" });
+    expect(act(short, viewed, { type: "certificateViewed" })).toEqual(viewed);
+  });
+  it("grades shuffled drafts and retakes against their own manifests", () => {
+    let r = act(short, completeModules(short), { type: "beginExam" });
+    const firstId = r.assessmentDraft!.attemptId;
+    const firstManifest = r.assessmentDraft!.manifest;
+    const questions = ceuExamQuestions(short, firstManifest);
+    r = act(short, r, { type: "examDraft", attemptId: firstId, answers: questions.map(() => null), flaggedQuestionIndexes: [0] });
+    expect(r.assessmentDraft!.manifest).toEqual(firstManifest);
+    expect(() => act(short, r, { type: "examDraft", attemptId: firstId, answers: questions.map(() => null), flaggedQuestionIndexes: [100] })).toThrow("Unknown flagged");
+    r = act(short, r, { type: "exam", attemptId: firstId, answers: questions.map(q => (q.correctIndex + 1) % 4) });
+    expect(r.attempts[0].score).toBe(0);
+    expect(r.attempts[0].manifest).toEqual(firstManifest);
+    r = act(short, r, { type: "beginExam" });
+    expect(r.assessmentDraft!.attemptId).not.toBe(firstId);
+    r = act(short, r, { type: "exam", attemptId: r.assessmentDraft!.attemptId, answers: ceuExamQuestions(short, r.assessmentDraft!.manifest).map(q => q.correctIndex) });
+    expect(r.completion?.finalScore).toBe(8);
+    expect(ceuExamQuestions(short, r.attempts[0].manifest)).toEqual(questions);
+  });
   it("does not expose a completion or reviewer action on the learner input schema", () => {
     expect(
       learnerAction.safeParse({ type: "complete", name: "forged" }).success

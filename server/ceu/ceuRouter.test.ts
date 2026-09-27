@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { ceuCourse } from "./catalogue";
 import { ceuRouter } from "../routers/ceuRouter";
 import type { TrpcContext } from "../_core/context";
 const ctx = (studentEmail: string | null = null) =>
@@ -14,9 +15,10 @@ describe("CEU public API boundary", () => {
     expect(JSON.stringify(c)).not.toContain('"rubric"');
     expect(JSON.stringify(c)).not.toContain('"assignment"');
   });
-  it("serves read-only final-preview questions without answer keys or explanations", async () => {
+  it("serves separate read-only sample questions without answer keys or explanations", async () => {
     const preview = await ceuRouter.createCaller(ctx()).finalPreview({ courseKey });
-    expect(preview).toHaveLength(8);
+    expect(preview).toHaveLength(4);
+    for (const q of ceuCourse(courseKey)!.finalAssessment) expect(preview.some(p => p.id === q.id || p.prompt === q.prompt)).toBe(false);
     expect(preview[0]).toMatchObject({
       id: expect.any(String),
       prompt: expect.any(String),

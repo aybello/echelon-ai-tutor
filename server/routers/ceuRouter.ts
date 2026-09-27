@@ -8,6 +8,7 @@ import { publicProcedure, router } from "../_core/trpc";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
 import { ceuCourse, publicCeuCourse } from "../ceu/catalogue";
+import { ceuExamQuestions, ceuSampleQuestions } from "../ceu/assessment";
 import {
   exerciseFor,
   gradeExercise,
@@ -15,6 +16,7 @@ import {
 } from "../ceu/exerciseBank";
 import {
   learnerAction,
+  ceuActionAlreadySaved,
   newCeuRecord,
   torontoDate,
   transitionCeu,
@@ -87,6 +89,7 @@ async function mutateRecord(
         message: "Start the course before saving work.",
       });
     const current = parseRecord(row.stateJson);
+    if (ceuActionAlreadySaved(current, action)) return { record: current, feedback: undefined };
     if (action.type === "exam" || action.type === "submitExercise") {
       const previous =
         action.type === "exam"
@@ -221,9 +224,7 @@ export const ceuRouter = router({
   finalPreview: publicProcedure
     .input(courseInput)
     .query(({ input }) =>
-      courseFor(input.courseKey).finalAssessment.map(
-        ({ correctIndex, explanation, ...question }) => question
-      )
+      ceuSampleQuestions(courseFor(input.courseKey))
     ),
   identity: publicProcedure.query(({ ctx }) => ({
     signedIn: !!identityEmail(resolveVerifiedIdentity(ctx)),
@@ -332,7 +333,7 @@ export const ceuRouter = router({
       );
     }),
   assessment: publicProcedure
-    .input(courseInput)
+    .input(courseInput.extend({ attemptId: z.string().uuid().optional() }))
     .query(async ({ ctx, input }) => {
       const course = courseFor(input.courseKey),
         record = await readRecord(emailFor(ctx), course.key);
@@ -348,7 +349,11 @@ export const ceuRouter = router({
           message:
             "Complete every course module to unlock the final assessment.",
         });
-      return course.finalAssessment.map(
+      if (!record.assessmentDraft)
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Open your saved final assessment first." });
+      if (input.attemptId && input.attemptId !== record.assessmentDraft.attemptId)
+        throw new TRPCError({ code: "CONFLICT", message: "This final assessment has changed. Reload your saved course." });
+      return ceuExamQuestions(course, record.assessmentDraft.manifest).map(
         ({ correctIndex, explanation, ...q }) => q
       );
     }),
@@ -378,7 +383,7 @@ export const ceuRouter = router({
         total: attempt.total,
         passed: attempt.passed,
         at: attempt.at,
-        review: course.finalAssessment
+        review: ceuExamQuestions(course, attempt.manifest)
           .map((question, index) => ({
             id: question.id,
             objective: question.objective,

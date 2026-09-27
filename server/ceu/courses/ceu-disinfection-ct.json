@@ -16,8 +16,8 @@
         "Calculate nominal time and T10 with consistent units.",
         "Identify evidence required to use a baffling factor."
       ],
-      "lesson": "### Volume divided by flow is a starting point\nNominal detention time is volume divided by flow. With volume in m³ and flow in m³/hour, the quotient is hours; multiply by 60 for minutes. A600 m³ chamber at 300 m³/hour has a nominal time of 120 minutes. It does not establish that all water remains for 120 minutes.\n\nShort-circuiting and mixing affect the residence-time distribution. In this training model, a supported T10 factor of 0.50 gives 60 minutes. The factor is a supplied case assumption, not a value selected because it produces a passing result. Actual creditable time must follow the applicable approved method, configuration and operating conditions. A factor supported for one level or flow range may not apply after a configuration change.\n\nUse active water volume for the stated condition. A drawing's full structural volume may include freeboard or an isolated compartment. If only 450 m³ is active at the same flow and factor, T10 becomes 45 minutes. The structural shell has not changed, but the hydraulic condition has.\n\nCreate an input register: value, units, location, source, validity range and uncertainty. Retain the derivation beside the calculation. A precise spreadsheet output cannot make an unsupported volume or factor valid.",
-      "evidence": "**D1 — fictional contact chamber**\nDrawing volume 900 m³. CompartmentC, volume 300 m³, is isolated. Active level corresponds to 600 m³ in the operating compartments. Verified flow 400 m³/hour. Training factor 0.40 applies only to this active configuration and level. A previous worksheet uses 900 m³ and factor 0.70 from an unlabelled note.\n\nD2: A proposed low-level condition would reduce active volume to 480 m³. The 0.40 factor has not been verified for that condition.",
+      "lesson": "### Volume divided by flow is a starting point\nNominal detention time is volume divided by flow. With volume in m³ and flow in m³/hour, the quotient is hours; multiply by 60 for minutes. A 600 m³ chamber at 300 m³/hour has a nominal time of 120 minutes. It does not establish that all water remains for 120 minutes.\n\nShort-circuiting and mixing affect the residence-time distribution. In this training model, a supported T10 factor of 0.50 gives 60 minutes. The factor is a supplied case assumption, not a value selected because it produces a passing result. Actual creditable time must follow the applicable approved method, configuration and operating conditions. A factor supported for one level or flow range may not apply after a configuration change.\n\nUse active water volume for the stated condition. A drawing's full structural volume may include freeboard or an isolated compartment. If only 450 m³ is active at the same flow and factor, T10 becomes 45 minutes. The structural shell has not changed, but the hydraulic condition has.\n\nCreate an input register: value, units, location, source, validity range and uncertainty. Retain the derivation beside the calculation. A precise spreadsheet output cannot make an unsupported volume or factor valid.\n\n### Work through a flow change\nKeep the units on every line. At 600 m³ active volume and 400 m³/h, nominal time = 600 ÷ 400 = 1.5 h = 90 min. With the supplied, supported factor 0.40, T10 = 90 × 0.40 = 36 min. If flow rises to 500 m³/h while volume and the validity of the factor remain unchanged, nominal time falls to 72 min and T10 to 28.8 min. The factor is dimensionless; it cannot convert hours into minutes.\n\n### Check your input register\n| Input | Value used | Evidence to retain |\n|---|---:|---|\n| Active volume | 600 m³ | Operating level and compartments in service |\n| Flow | 400 m³/h | Verified measurement for the evaluated interval |\n| T10 factor | 0.40 | Approved hydraulic basis for this configuration |\n| Calculated T10 | 36 min | Unit conversion and calculation |\n\nTry it: an active volume of 480 m³ at 400 m³/h has a nominal time of 72 min. A conditional factor of 0.40 would give 28.8 min. That last value is a sensitivity calculation until the factor is supported for the lower level. Do not substitute structural volume to increase the result.",
+      "evidence": "**D1 — fictional contact chamber**\nDrawing volume 900 m³. Compartment C, volume 300 m³, is isolated. Active level corresponds to 600 m³ in the operating compartments. Verified flow 400 m³/hour. Training factor 0.40 applies only to this active configuration and level. A previous worksheet uses 900 m³ and factor 0.70 from an unlabelled note.\n\nD2: A proposed low-level condition would reduce active volume to 480 m³. The 0.40 factor has not been verified for that condition.\n\n**Worked solution:** D1 nominal time = 600 ÷ 400 × 60 = 90 min; T10 = 90 × 0.40 = 36 min. The old worksheet gives 94.5 min using unsupported inputs. D2 gives a conditional 28.8 min; its factor still needs validation.",
       "assignment": "Produce an input register and calculation audit. Calculate nominal time and T10 for D1, compare with the old worksheet, and calculate a clearly conditional sensitivity for D2 using 0.40. Explain why that sensitivity is not an authorized CT determination. List the evidence needed to approve a revised hydraulic basis.",
       "rubric": [
         "Uses 600 m³ and converts hours to minutes.",
@@ -91,8 +91,8 @@
         "Calculate achieved CT and a comparison ratio.",
         "Match residual and required CT to the correct conditions."
       ],
-      "lesson": "### CT has a location and a condition\nIn the simplified single-segment exercise, achieved CT is residual concentrationC in mg/L multiplied by supported T10 in minutes. The result is mg·min/L. At 0.70 mg/L and 36 minutes, achieved CT is 25.2 mg·min/L. A comparison ratio divides achieved by the applicable required CT; a ratio at least 1 meets that numerical comparison only if all inputs and conditions are valid.\n\nRequired CT is not a universal constant. Its selection depends on the applicable treatment objective, disinfectant and prescribed conditions such as temperature and pH. Use the current governing procedure and facility requirements. The numerical requirement supplied below is fictional and must never be copied as an Ontario table value.\n\nResidual readings are not interchangeable merely because their units match. Free and total chlorine differ; upstream and downstream locations can have different concentrations; a grab taken later may not represent the evaluated interval. The approved calculation method establishes which measurement is acceptable. Do not substitute an upstream peak because it yields a higher CT.\n\nAn invalid input is not repaired by a large margin. Report the numerical calculation and its validity separately. If the required value is not established for the actual conditions, the correct outcome is an unresolved determination and an authorized response, not a guessed table lookup.",
-      "evidence": "**D3 — training comparison**\nSupported T10 36 min. Segment-end free chlorine 0.70 mg/L at 10:00; upstream total chlorine 1.10 mg/L at 10:00. The case-authorized required CT is 30 mg·min/L for the stated training condition. A previous worksheet used 1.10×36.\n\nD4: At 10:30 temperature changes from 10°C to 7°C. The supplied requirement applies only to the 10°C condition; no 7°C requirement is provided. Segment-end free chlorine remains 0.70 mg/L.",
+      "lesson": "### CT has a location and a condition\nIn the simplified single-segment exercise, achieved CT is residual concentration C in mg/L multiplied by supported T10 in minutes. The result is mg·min/L. At 0.70 mg/L and 36 minutes, achieved CT is 25.2 mg·min/L. A comparison ratio divides achieved by the applicable required CT; a ratio at least 1 meets that numerical comparison only if all inputs and conditions are valid.\n\nRequired CT is not a universal constant. Its selection depends on the applicable treatment objective, disinfectant and prescribed conditions such as temperature and pH. Use the current governing procedure and facility requirements. The numerical requirement supplied below is fictional and must never be copied as an Ontario table value.\n\nResidual readings are not interchangeable merely because their units match. Free and total chlorine differ; upstream and downstream locations can have different concentrations; a grab taken later may not represent the evaluated interval. The approved calculation method establishes which measurement is acceptable. Do not substitute an upstream peak because it yields a higher CT.\n\nAn invalid input is not repaired by a large margin. Report the numerical calculation and its validity separately. If the required value is not established for the actual conditions, the correct outcome is an unresolved determination and an authorized response, not a guessed table lookup.\n\n### Practise a real table lookup\nThe following two values are from Health Canada Appendix A, Table A.4. They concern **3-log Giardia inactivation by free chlorine at 15°C with a residual of 0.8 mg/L**. This is a table-reading exercise, not a statement of the disinfection credit required at every Ontario plant.\n\n| pH | Required CT in this table, mg·min/L |\n|---|---:|\n| 7.0 | 73 |\n| 8.0 | 105 |\n\nAt T10 = 100 min, achieved CT = 0.8 × 100 = 80 mg·min/L. The comparison is 80 ÷ 73 = 1.10 at pH 7.0, but 80 ÷ 105 = 0.76 at pH 8.0. The same achieved CT can therefore satisfy one table condition and fail another. Round only after the calculation; retain enough precision to avoid turning a ratio below one into an apparent pass.\n\nUse this lookup sequence: establish organism and required disinfection credit; select disinfectant and table; match temperature, pH and residual; calculate achieved CT using supported T10; compare and document applicability. Between table entries, use the governing method's prescribed selection or interpolation rule. Never improvise interpolation. A colder interval, changed pH or different residual range requires reassessment.\n\n### Keep primary and secondary disinfection separate\nA chlorine residual in distribution helps protect water after treatment. It does not replace the required pathogen treatment before the first consumer. Likewise, passing a CT comparison does not prove that every distribution location has an adequate residual. Evaluate the two duties separately under the applicable procedure and facility requirements.",
+      "evidence": "**D3 — training comparison**\nSupported T10 36 min. Segment-end free chlorine 0.70 mg/L at 10:00; upstream total chlorine 1.10 mg/L at 10:00. The case-authorized required CT is 30 mg·min/L for the stated training condition. A previous worksheet used 1.10×36.\n\nD4: At 10:30 temperature changes from 10°C to 7°C. The supplied requirement applies only to the 10°C condition; no 7°C requirement is provided. Segment-end free chlorine remains 0.70 mg/L.\n\n**Worked solution:** D3 achieved CT = 0.70 × 36 = 25.2 mg·min/L; ratio = 25.2 ÷ 30 = 0.84. The old worksheet gives 1.32 using upstream total chlorine. D4 has no valid supplied required CT at 7°C, so its compliance determination is unresolved.",
       "assignment": "Calculate the valid 10:00 achieved CT and ratio, compare the old worksheet and write an action/uncertainty note. Explain which inputs must be verified at 10:30 and why the unchanged residual does not establish an unchanged required CT. Include the units and the limits of the fictional requirement.",
       "rubric": [
         "Calculates achieved CT 25.2 and ratio 0.84.",
@@ -129,7 +129,8 @@
       ],
       "sourceIds": [
         "disinfection",
-        "roles"
+        "roles",
+        "ct-table"
       ],
       "checks": [
         {
@@ -167,8 +168,8 @@
         "Combine segment ratios only under an explicitly allowed method.",
         "Avoid pairing noncontemporaneous favourable inputs."
       ],
-      "lesson": "### Keep each segment intact\nA multi-segment calculation requires an applicable method that permits the combination and defines the conditions. Do not add contact times from unrelated paths or multiply the highest residual by the total time. This lesson supplies a fictional authorized ratio-summation method solely for practice: calculate each segment's achieved CT divided by its own required CT, then sum the ratios.\n\nSuppose segmentA has achieved CT 12 and required CT 20, whileB has achieved CT 15 and required CT 30. The ratios are 0.60 and 0.50; their sum is 1.10 under the supplied rule. Simply adding achieved CT to 27 and dividing by either 20 or 30 loses the separate requirements. The rule is not transferable to another treatment objective without authority.\n\nTime alignment matters just as much. A peak flow can reduce contact time while a low residual reducesC. A daily worksheet that combines a morning high residual with an afternoon low flow may describe a condition that never existed. Evaluate the required operating interval using the applicable method, data resolution and conservative treatment of gaps.\n\nMissing data should remain visible. Interpolating a gap is a modelling choice requiring an authorized rule and defensible assumptions. A straight line on a trend display does not prove a measurement occurred.",
-      "evidence": "**D5 — fictional method permits sum of these ratios**\n| Segment | T10,min | End residual,mg/L | Required CT,mg·min/L |\n|---|---:|---:|---:|\n| A |20|0.60|20|\n| B |30|0.50|30|\n\nD6: For a separate single-segment interval,09:00 hasT10 40 min,C0.80;12:00 hasT10 30 min,C0.60. The required CT is 24 for both supplied conditions. The 09:30 residual is missing. A manager's worksheet combines 40 minwith 0.80 and labels it “all day.”",
+      "lesson": "### Keep each segment intact\nA multi-segment calculation requires an applicable method that permits the combination and defines the conditions. Do not add contact times from unrelated paths or multiply the highest residual by the total time. This lesson supplies a fictional authorized ratio-summation method solely for practice: calculate each segment's achieved CT divided by its own required CT, then sum the ratios.\n\nSuppose segment A has achieved CT 12 and required CT 20, while B has achieved CT 15 and required CT 30. The ratios are 0.60 and 0.50; their sum is 1.10 under the supplied rule. Simply adding achieved CT to 27 and dividing by either 20 or 30 loses the separate requirements. The rule is not transferable to another treatment objective without authority.\n\nTime alignment matters just as much. A peak flow can reduce contact time while a low residual reduces C. A daily worksheet that combines a morning high residual with an afternoon low flow may describe a condition that never existed. Evaluate the required operating interval using the applicable method, data resolution and conservative treatment of gaps.\n\nMissing data should remain visible. Interpolating a gap is a modelling choice requiring an authorized rule and defensible assumptions. A straight line on a trend display does not prove a measurement occurred.\n\n### Follow the water, not the highest number\nFor the supplied series path, water passes through segment A before segment B. Keep each segment's own end residual, supported contact time and required CT together. In D5, segment A gives 0.60 × 20 = 12 mg·min/L, then 12 ÷ 20 = 0.60. Segment B gives 0.50 × 30 = 15, then 15 ÷ 30 = 0.50. The permitted ratio sum is 1.10.\n\nA tempting shortcut takes the higher residual, 0.60 mg/L, across all 50 minutes: it gives 30 mg·min/L but discards the lower residual in B and the two different required values. That shortcut has no valid comparison denominator in this case. Two parallel paths must also be assessed using their actual hydraulic arrangement; they are not consecutive contact zones.\n\n### Diagnose the deteriorating interval\nAt 09:00 in D6, 0.80 × 40 = 32 and 32 ÷ 24 = 1.33. At 12:00, 0.60 × 30 = 18 and 18 ÷ 24 = 0.75. Both lower residual and shorter contact time reduce the margin. The earlier result cannot certify the later interval. The 09:30 gap requires raw data and the applicable handling rule; a plotted connecting line is not a replacement measurement.",
+      "evidence": "**D5 — fictional method permits sum of these ratios**\n| Segment | T10,min | End residual,mg/L | Required CT,mg·min/L |\n|---|---:|---:|---:|\n| A |20|0.60|20|\n| B |30|0.50|30|\n\nD6: For a separate single-segment interval,09:00 has T10 40 min, C 0.80;12:00 has T10 30 min, C 0.60. The required CT is 24 for both supplied conditions. The 09:30 residual is missing. A manager's worksheet combines 40 min with 0.80 and labels it “all day.”\n\n**Worked solution:** D5 ratios are 0.60 and 0.50, summing to 1.10 under the expressly permitted method. D6 ratios are 1.33 at 09:00 and 0.75 at 12:00. Neither establishes the missing 09:30 condition.",
       "assignment": "Show D5's segment ratios and total under the supplied rule. Calculate both D6 point-in-time ratios, explain the limitation of the all-day label and prepare a gap register for 09:30. Describe what method-specific evidence is needed to assess intervals between recorded points. Include one prohibited shortcut and its numerical consequence.",
       "rubric": [
         "Calculates D5 ratios 0.60 and 0.50, total 1.10.",
@@ -243,8 +244,8 @@
         "Audit a complete worksheet and its evidence.",
         "Define response and closure evidence without overstating certainty."
       ],
-      "lesson": "### A reviewable calculation is more than a number\nA verification dossier contains the hydraulic configuration, approved calculation method, input register, calculations, time coverage, exceptions and response record. The reviewer should be able to reproduce the result and see where a conclusion stops.\n\nSeparate three statements: the arithmetic is correct; the inputs are supported; the applicable treatment requirement is met. The first does not imply the second or third. A spreadsheet can be mathematically flawless while using the wrong level, analyte, time or required-CT condition.\n\nWhen the evidence is incomplete or the fictional comparison falls below its criterion, record the condition and follow the authorized response process. Specify which role owns the next decision and what evidence will show restoration. A changed setting is not restoration evidence; verified performance under the relevant conditions is required.\n\nFor the practical, include a correction log that preserves the original worksheet. Explain the effect of each correction and mark unresolved inputs. In an optional note, challenge one assumption and explain its effect. Use the automatic exercise feedback to revise the conclusion honestly, without forcing a passing ratio.",
-      "evidence": "**D7 — audit cover sheet**\n“Volume 900 m³; factor 0.70; flow 400 m³/hour; residual 1.10 mg/L; requiredCT 30. CT 103.95, ratio 3.465. Applies all day including low level and 7°C. No further evidence needed.”\n\nUseD1–D6. The original cover sheet is retained as version 1. No new factor, cold-water requirement or missing residual has been supplied. Operations asks for a corrected dossier and a list of unresolved conditions.",
+      "lesson": "### A reviewable calculation is more than a number\nA verification dossier contains the hydraulic configuration, approved calculation method, input register, calculations, time coverage, exceptions and response record. The reviewer should be able to reproduce the result and see where a conclusion stops.\n\nSeparate three statements: the arithmetic is correct; the inputs are supported; the applicable treatment requirement is met. The first does not imply the second or third. A spreadsheet can be mathematically flawless while using the wrong level, analyte, time or required-CT condition.\n\nWhen the evidence is incomplete or the fictional comparison falls below its criterion, record the condition and follow the authorized response process. Specify which role owns the next decision and what evidence will show restoration. A changed setting is not restoration evidence; verified performance under the relevant conditions is required.\n\nFor the practical, include a correction log that preserves the original worksheet. Explain the effect of each correction and mark unresolved inputs. In an optional note, challenge one assumption and explain its effect. Use the automatic exercise feedback to revise the conclusion honestly, without forcing a passing ratio.\n\n### Write a useful handover\nA concise handover can state: “At 10:00, active volume 600 m³, flow 400 m³/h and supported factor 0.40 give T10 36 min. Segment-end free chlorine 0.70 mg/L gives achieved CT 25.2 mg·min/L. Against the supplied training requirement of 30, the ratio is 0.84. The original worksheet used structural volume, an unsupported factor and upstream total chlorine. Its ratio 3.465 does not represent this operating condition.”\n\nThen identify the open items: the low-level factor, the colder-water requirement and the missing residual interval. Record who is responsible for obtaining each item and which authorized response procedure is in use. An operator should follow the facility's response and escalation arrangements rather than wait for a polished worksheet while a potentially adverse condition continues.\n\n### Separate the response from its verification\nDo not prescribe a universal dose change: raising dose may affect residuals, by-products and other operating constraints. Record the authorized action actually taken, its time and responsible person. Restoration evidence must establish valid inputs and performance for the affected condition. Keep the original record, mark the corrected version and explain the difference. Reportable events require their applicable notifications independently of internal review.\n\nBefore leaving the lesson, explain the error in your own words: correct arithmetic applied to the wrong inputs can produce a confident but unsafe conclusion. The final exam tests both calculation and that operating judgement.",
+      "evidence": "**D7 — audit cover sheet**\n“Volume 900 m³; factor 0.70; flow 400 m³/hour; residual 1.10 mg/L; required CT 30. CT 103.95, ratio 3.465. Applies all day including low level and 7°C. No further evidence needed.”\n\nUse D1–D6. The original cover sheet is retained as version 1. No new factor, cold-water requirement or missing residual has been supplied. Operations asks for a corrected dossier and a list of unresolved conditions.\n\n**Worked solution:** Correct D7 to the D1/D3 operating condition: T10 36 min, CT 25.2 mg·min/L, ratio 0.84. Preserve version 1, record each correction and leave low-level, cold-water and missing-data conditions open. D5 is a separate example and cannot be used to make D3 pass.",
       "assignment": "Create a 600–900-word dossier with corrected 10:00 calculation, segment-method example, timestamp coverage table, correction log and action/closure register. Quantify the effect of the incorrect original inputs. Identify decisions that cannot yet be made. Defend the dossier to the instructor, revise it, then complete the assessment and evaluation.",
       "rubric": [
         "Corrects the inflated ratio to 0.84 for the D3 condition.",
@@ -444,7 +445,121 @@
       "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
       "jurisdiction": "US technical guidance; not Ontario law",
       "accessed": "2026-09-24"
+    },
+    {
+      "id": "ct-table",
+      "title": "Health Canada: Giardia CT tables, Appendix A",
+      "url": "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidelines-canadian-drinking-water-quality-guideline-technical-document-enteric-protozoa-giardia-cryptosporidium/page-11-guidelines-canadian-drinking-water-quality-guideline-technical-document-enteric-protozoa-giardia-cryptosporidium.html",
+      "section": "Table A.4: free chlorine, 3-log Giardia, 15°C; technical lookup example, not a facility authorization",
+      "jurisdiction": "Canadian technical guidance; verify governing Ontario method",
+      "accessed": "2026-09-27"
     }
   ],
-  "version": "2026-09-24.1"
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "disinfection-ct-alt1",
+      "objective": "hydraulics",
+      "prompt": "A chamber has 720 m³ active volume, flow 360 m³/h and a supported T10 factor of 0.35. What is T10?",
+      "choices": [
+        "42 min",
+        "2 min",
+        "120 min",
+        "343 min"
+      ],
+      "correctIndex": 0,
+      "explanation": "720 ÷ 360 = 2 h = 120 min; multiplying by 0.35 gives 42 min. Division by the factor would overstate contact time."
+    },
+    {
+      "id": "disinfection-ct-alt2",
+      "objective": "hydraulics",
+      "prompt": "Flow rises from 300 to 450 m³/h while active volume is 600 m³. A factor of 0.50 is supported across both conditions. How does T10 change?",
+      "choices": [
+        "From 60 to 90 min",
+        "From 60 to 40 min",
+        "From 120 to 80 min",
+        "From 40 to 60 min"
+      ],
+      "correctIndex": 1,
+      "explanation": "T10 falls from (600/300)×60×0.50 = 60 min to (600/450)×60×0.50 = 40 min. The 120 and 80 min values are nominal times."
+    },
+    {
+      "id": "disinfection-ct-alt3",
+      "objective": "ct-inputs",
+      "prompt": "For a training lookup, Table A.4 gives required CT 105 mg·min/L at 15°C, pH 8.0 and free chlorine 0.8 mg/L for 3-log Giardia. T10 is 100 min. What is the comparison ratio?",
+      "choices": [
+        "1.31",
+        "1.10",
+        "0.76",
+        "80.0"
+      ],
+      "correctIndex": 2,
+      "explanation": "Achieved CT is 0.8×100 = 80 mg·min/L. Dividing by 105 gives 0.76. The 1.10 ratio would use the pH 7.0 value of 73 instead."
+    },
+    {
+      "id": "disinfection-ct-alt4",
+      "objective": "ct-inputs",
+      "prompt": "A training calculation requires segment-end free chlorine at 10:00. Which measurement matches that input?",
+      "choices": [
+        "10:00 upstream free chlorine, 0.90 mg/L",
+        "10:00 segment-end total chlorine, 0.90 mg/L",
+        "09:00 segment-end free chlorine, 0.90 mg/L",
+        "10:00 segment-end free chlorine, 0.70 mg/L"
+      ],
+      "correctIndex": 3,
+      "explanation": "The accepted result must match location, analyte and time. Matching units alone cannot justify substituting another result."
+    },
+    {
+      "id": "disinfection-ct-alt5",
+      "objective": "segments",
+      "prompt": "An expressly permitted ratio-sum method uses A: C=0.6, T10=20, required CT=24; B: C=0.5, T10=30, required CT=30. What total ratio follows?",
+      "choices": [
+        "1.00",
+        "0.50",
+        "1.125",
+        "2.00"
+      ],
+      "correctIndex": 0,
+      "explanation": "A contributes 12/24 = 0.50 and B contributes 15/30 = 0.50. The sum is 1.00 under the supplied method. Adding achieved CT and dividing by just one requirement loses the segment conditions."
+    },
+    {
+      "id": "disinfection-ct-alt6",
+      "objective": "segments",
+      "prompt": "At 08:00, C=0.8 mg/L and T10=40 min. At 12:00, C=0.6 mg/L and T10=30 min. Required CT is 24 in both training conditions. Which pair of ratios is correct?",
+      "choices": [
+        "08:00: 0.75; 12:00: 1.33",
+        "08:00: 1.33; 12:00: 0.75",
+        "08:00: 1.00; 12:00: 1.00",
+        "08:00: 1.33; 12:00: 1.33"
+      ],
+      "correctIndex": 1,
+      "explanation": "The point-in-time ratios are 0.8×40/24 = 1.33 and 0.6×30/24 = 0.75. A daily passing maximum does not establish every interval."
+    },
+    {
+      "id": "disinfection-ct-alt7",
+      "objective": "ct-audit",
+      "prompt": "A worksheet uses a factor from an undocumented configuration and returns a ratio of 1.20. How should the calculation be recorded?",
+      "choices": [
+        "Verified primary disinfection because 1.20 exceeds 1",
+        "Acceptable if the previous shift used that factor",
+        "Numerical ratio 1.20; hydraulic validity unresolved",
+        "Failed disinfection because all undocumented factors are zero"
+      ],
+      "correctIndex": 2,
+      "explanation": "Retain the numerical result and explicitly identify the unsupported hydraulic input. A ratio alone neither proves compliance nor justifies substituting zero. Follow the authorized response process."
+    },
+    {
+      "id": "disinfection-ct-alt8",
+      "objective": "ct-audit",
+      "prompt": "An authorized response changes a chlorine setting after a low CT result. Which evidence supports closing the performance issue?",
+      "choices": [
+        "The setting-change timestamp and operator initials",
+        "The previous passing worksheet and unchanged flow",
+        "The new setting and a normal-looking trend screenshot",
+        "Matched post-response residual, hydraulics and applicable CT comparison"
+      ],
+      "correctIndex": 3,
+      "explanation": "Closure requires verified performance under the relevant conditions. Recording the action is necessary, but is separate from demonstrating that the treatment condition has been restored."
+    }
+  ]
 }

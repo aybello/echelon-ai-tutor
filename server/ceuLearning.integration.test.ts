@@ -4,6 +4,7 @@ import { inArray, and, eq } from "drizzle-orm";
 import { ceuLearningDailyTime, ceuLearningRecords } from "../drizzle/schema";
 import { getDb } from "./db";
 import { ceuRouter } from "./routers/ceuRouter";
+import { ceuExamQuestions } from "./ceu/assessment";
 import { ceuCourse } from "./ceu/catalogue";
 import { exerciseFor } from "./ceu/exerciseBank";
 import {
@@ -179,12 +180,13 @@ describe.skipIf(!enabled)("CEU database-backed self-paced lifecycle", () => {
       );
       r = (await learner.myRecord({ courseKey }))!;
     }
+    r = (await learner.save({ courseKey, revision: r.revision, action: { type: "beginExam" } })).record;
     const questions = await learner.assessment({ courseKey });
     expect(JSON.stringify(questions)).not.toContain("correctIndex");
     const action = {
       type: "exam" as const,
-      attemptId: randomUUID(),
-      answers: course.finalAssessment.map(q => q.correctIndex),
+      attemptId: r.assessmentDraft!.attemptId,
+      answers: ceuExamQuestions(course, r.assessmentDraft!.manifest).map(q => q.correctIndex),
     };
     const before = r.revision;
     r = (await learner.save({ courseKey, revision: r.revision, action }))

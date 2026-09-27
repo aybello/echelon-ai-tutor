@@ -253,10 +253,10 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Reportable Adverse Result — Notification Timeline",
-        formula: "Notification to MOH and Director within 24 hours of discovery",
+        formula: "Ontario example: immediate verbal report; written follow-up within 24 hours",
         units: "hours",
-        example: "E. coli detected at 3:00 PM → notify MOH and Director by 3:00 PM next day at latest",
-        notes: "Under Ontario O. Reg. 170/03 and equivalent provincial regulations. The clock starts at discovery, not at confirmation. Issue public advisory if required by the Medical Officer of Health.",
+        example: "Reportable Ontario result received at 3:00 PM → make the required immediate calls; do not wait until the following day.",
+        notes: "For the Ontario example, use O. Reg. 170/03 Schedule 16: notify the Spills Action Centre and medical officer of health, with owner notification where required. Other WPI jurisdictions have their own contacts and rules; do not transfer Ontario deadlines automatically.",
       },
       {
         name: "Lead and Copper Rule — 90th Percentile",
@@ -513,7 +513,7 @@ export default function FormulasWpiClass4() {
                   ["Lead MAC", "10 μg/L (90th %ile)", "Health Canada GCDWQ", "First-draw samples"],
                   ["Fluoride optimal", "0.7 mg/L", "Health Canada", "MAC = 1.5 mg/L"],
                   ["Chlorine residual (distribution)", "≥0.05 mg/L free Cl₂", "Provincial regulations", "Minimum at all points"],
-                  ["Notification of adverse result", "Within 24 hours", "O. Reg. 170/03", "To MOH and Director"],
+                  ["Ontario adverse-result notification", "Immediate verbal; written within 24 hours", "O. Reg. 170/03 Schedule 16", "Spills Action Centre and local MOH; owner where required"],
                   ["Baffling factor (poor)", "0.1", "CT Guidance", "Unbaffled tanks"],
                   ["Baffling factor (excellent)", "0.7–1.0", "CT Guidance", "Plug flow / serpentine"],
                   ["Membrane flux (UF typical)", "20–80 LMH", "Manufacturer guidance", "Monitor for fouling"],
