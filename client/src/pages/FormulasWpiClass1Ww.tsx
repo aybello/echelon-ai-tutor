@@ -229,7 +229,7 @@ const SECTIONS: FormulaSection[] = [
           { symbol: "Irradiance", meaning: "UV intensity (mW/cm²)" },
           { symbol: "Exposure Time", meaning: "Contact time (seconds)" },
         ],
-        notes: "Minimum UV dose for 4-log virus inactivation: 186 mJ/cm²",
+        notes: "Wastewater UV targets depend on the effluent permit, validated reactor and target organism; do not use one dose as a universal requirement",
       },
     ],
   },

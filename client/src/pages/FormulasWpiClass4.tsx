@@ -32,7 +32,7 @@ const CATEGORIES: FormulaCategory[] = [
         formula: "CT = C × T",
         units: "mg/L · min",
         example: "Cl₂ residual = 1.5 mg/L, contact time = 40 min → CT = 60 mg/L·min",
-        notes: "C = disinfectant residual (mg/L) at the outlet; T = theoretical detention time (min). For chlorine at pH 7 and 15°C, CT = 60 achieves 3-log Giardia inactivation.",
+        notes: "C is the supported disinfectant residual at the evaluation point. Use T₁₀, not nominal detention time, and select the required CT from the governing table for the organism, disinfectant, temperature, pH and target credit.",
       },
       {
         name: "Effective CT (Baffling Factor)",
@@ -50,16 +50,16 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Ozone CT for Giardia (3-log)",
-        formula: "CT_O₃ = 0.63 mg/L·min (at 15°C, pH 7)",
+        formula: "CT_O₃ = select from the governing condition-specific table",
         units: "mg/L · min",
         example: "Ozone residual = 0.3 mg/L, T₁₀ = 3 min → CT = 0.9 > 0.63 ✓",
-        notes: "Ozone is far more effective than chlorine. At 15°C, only 0.63 mg/L·min achieves 3-log Giardia inactivation vs. 60 mg/L·min for chlorine at pH 7.",
+        notes: "Select ozone and chlorine CT values from the governing condition-specific tables. Relative performance varies with disinfectant, organism, temperature, pH and residual.",
       },
       {
         name: "UV Dose for Giardia (3-log)",
         formula: "UV Dose = E × t (mJ/cm²)",
         units: "mJ/cm²",
-        example: "3-log Giardia requires ≥5.8 mJ/cm²; 4-log Cryptosporidium requires ≥22 mJ/cm²",
+        example: "Use the validated reactor performance and governing approval to establish organism-specific UV credit",
         notes: "UV dose = irradiance (mW/cm²) × exposure time (s). UV provides no residual — must be combined with chemical disinfection for distribution system protection.",
       },
       {
@@ -241,7 +241,7 @@ const CATEGORIES: FormulaCategory[] = [
         name: "Log Removal Credit Calculation",
         formula: "Total log credit = Treatment credit + Disinfection credit ≥ Required log removal",
         units: "log",
-        example: "Required: 4-log Giardia. Filtration credit: 2.5 log. Disinfection needed: ≥1.5 log",
+        example: "Required log credit and approved barrier allocation are jurisdiction- and facility-specific. Confirm the source-water target and credited process performance.",
         notes: "Regulatory frameworks specify required log removals for Giardia, Cryptosporidium, and viruses. Treatment processes receive credit; remaining removal must come from disinfection CT.",
       },
       {
@@ -503,10 +503,10 @@ export default function FormulasWpiClass4() {
               </thead>
               <tbody>
                 {[
-                  ["Giardia CT (Cl₂, 15°C, pH 7)", "60 mg/L·min (3-log)", "GUDI / Surface Water Regs", "Use T₁₀ with baffling factor"],
-                  ["Ozone CT (Giardia, 3-log)", "0.63 mg/L·min", "GUDI", "Far more efficient than Cl₂"],
-                  ["UV Dose (Giardia, 3-log)", "5.8 mJ/cm²", "UV Disinfection Guidance", "No residual — combine with Cl₂"],
-                  ["UV Dose (Crypto, 4-log)", "22 mJ/cm²", "UV Disinfection Guidance", "Crypto resistant to Cl₂"],
+                  ["Giardia CT (chlorine)", "Use governing table", "Source-water treatment requirements", "Use supported T₁₀"],
+                  ["Ozone CT", "Use governing table", "Source-water treatment requirements", "Match organism and conditions"],
+                  ["UV treatment credit", "Use validated reactor", "Governing approval", "No residual protection in distribution"],
+                  ["Cryptosporidium credit", "Use validated reactor", "Governing approval", "Confirm target organism credit"],
                   ["Filtered turbidity (95th %ile)", "≤0.3 NTU", "O. Reg. 170/03 / Prov. Regs", "No single reading >1.0 NTU"],
                   ["THM MAC (RAA)", "100 μg/L", "Health Canada GCDWQ", "Running annual average"],
                   ["HAA MAC (RAA)", "80 μg/L", "Health Canada GCDWQ", "Running annual average"],

@@ -157,7 +157,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Removal = [(25 − 0.2) ÷ 25] × 100 = (24.8 ÷ 25) × 100",
           answer: "99.2%",
         },
-        tip: "O. Reg. 170/03: treated turbidity must be ≤ 1 NTU at all times and ≤ 0.3 NTU in 95% of samples each month.",
+        tip: "Turbidity performance, alarms and reporting thresholds depend on the filtration process, approval and applicable procedure. Use the criteria assigned to the facility rather than one generic limit.",
       },
       {
         name: "Chlorine Demand",
@@ -343,7 +343,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "SUVA = (0.18 × 100) ÷ 4.5 = 18 ÷ 4.5",
           answer: "4.0 L/mg·m",
         },
-        tip: "SUVA < 2 → low humic content, coagulation less effective. SUVA 2–4 → moderate NOM. SUVA > 4 → high humic, enhanced coagulation recommended (O. Reg. 170/03 Schedule 6).",
+        tip: "SUVA helps characterize NOM and inform treatability work. Use jar testing, source-water data and the approved treatment approach rather than treating a SUVA band as a universal Ontario trigger.",
       },
       {
         name: "Disinfection By-Product Formation Potential",
@@ -357,7 +357,7 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Jar Test — Optimal Coagulant Dose",
-        formula: "Optimal dose = lowest coagulant concentration achieving turbidity ≤ 0.3 NTU at pH 6.5–7.5",
+        formula: "Optimal dose = the lowest coagulant concentration that meets the site’s treated-water and operational targets",
         tip: "Jar test procedure: 6 jars, rapid mix 1 min at 200 rpm, slow mix 20 min at 30 rpm, settle 30 min, measure turbidity and pH. Vary coagulant dose across jars.",
       },
     ],
@@ -444,8 +444,8 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Chlorine Residual Requirements (O. Reg. 170/03)",
-        formula: "Minimum free Cl₂: ≥ 0.05 mg/L at all points in distribution · Target entry point: ≥ 0.2 mg/L",
-        tip: "Maximum residual: 4.0 mg/L (aesthetic objective). Chloramine systems: maintain combined residual ≥ 0.25 mg/L. Boil water advisories triggered when residual drops to 0.",
+        formula: "For applicable chlorinated systems: ≥ 0.05 mg/L free chlorine in distribution · Set entry targets in the approved operating plan",
+        tip: "For applicable chloraminated systems, use the combined-chlorine and free-chlorine criteria in the governing procedure. Do not treat a 4.0 mg/L value or a single low residual as a universal Ontario action threshold. Follow the facility plan and required adverse-result process.",
       },
       {
         name: "Sampling Frequency (O. Reg. 170/03 Schedule 10)",

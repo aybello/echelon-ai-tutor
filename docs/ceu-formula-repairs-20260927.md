@@ -25,6 +25,13 @@ Reviewed source guidance on 27 September 2026:
 
 This is a targeted correction of the identified errors and their duplicates, not certification of every formula or question bank.
 
+## Expanded formula-sheet safety correction — 28 September 2026
+
+- Extended the same protection to the Ontario Class 1–4 water and wastewater formula sheets and the related Western Canada water and wastewater sheets. The review removed unsupported universal values for CT, UV dose, turbidity, residuals, log credits, biosolids controls, effluent limits, and operator coverage.
+- Drinking-water sheets now direct learners to the applicable procedure, source-water category, approved treatment credit, facility approval, and condition-specific table. Wastewater sheets now direct learners to the Environmental Compliance Approval or permit instead of importing drinking-water limits or inferring a limit from plant class.
+- The Ontario adverse-result wording now consistently distinguishes immediate calls from the written notice due within 24 hours after the immediate report. The regression test scans all corrected sheets for the known unsafe phrases and cross-domain limit mixing.
+- The repair deliberately preserves unit-conversion and calculation practice. It removes only claims that could cause a learner to treat an unverified number as a universal regulatory requirement.
+
 ## Measurement
 
 Admin Insights now exposes a separate CEU panel using persisted course records for enrollments, lesson starts, completed modules, finals opened/submitted, retakes, passes, certificate views and ratings. The cohort is course editions enrolled in the last 30 days; it is not a unique-person count. Counts are read with keyset pagination rather than a silently truncated sample. No learner names, operator IDs or comments leave the aggregate endpoint.

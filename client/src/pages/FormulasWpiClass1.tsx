@@ -59,7 +59,7 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "CT_required", desc: "From WPI/Health Canada tables based on pH, temp, and log inactivation target" },
           { sym: "CT_achieved", desc: "C × T₁₀ calculated from plant measurements" },
         ],
-        tip: "For Giardia: 3-log inactivation required. For viruses: 4-log. CT_required increases at lower temperatures and higher pH.",
+        tip: "Required log credits and CT tables depend on the governing province, source water, treatment train and facility approval. Select the table that applies to the evaluated organism, disinfectant, temperature, pH and residual.",
       },
       {
         name: "Log Inactivation",
@@ -488,7 +488,7 @@ const CATEGORIES: FormulaCategory[] = [
       {
         name: "Temperature Effect on Chlorine",
         formula: "Higher temp → faster reaction, lower CT required",
-        tip: "At 5°C, CT required for Giardia inactivation is ~3× higher than at 25°C. Always use temperature-corrected CT tables.",
+        tip: "Temperature affects CT requirements, but the factor depends on the disinfectant, organism, residual and pH. Always use the governing condition-specific table.",
       },
       {
         name: "Iron and Manganese Removal",
@@ -497,8 +497,8 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Chlorine Residual Targets (Health Canada)",
-        formula: "Free Cl₂ residual: 0.2–4.0 mg/L at point of entry; ≥ 0.05 mg/L at extremities",
-        tip: "Maximum residual disinfectant level (MRDL): 4.0 mg/L free Cl₂. Chloramine systems: 3.0 mg/L total chloramine.",
+        formula: "Set entry and distribution residuals under the governing provincial regulation and the facility operating plan",
+        tip: "Do not transfer residual limits or chloramine targets between provinces. Use the jurisdictional rule and facility operating plan.",
       },
     ],
   },
@@ -787,9 +787,9 @@ export default function FormulasWpiClass1() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
             {[
               { label: "Turbidity target", value: "≤ 0.3 NTU (95% of samples)" },
-              { label: "Free Cl₂ residual", value: "0.2–4.0 mg/L at entry" },
-              { label: "Giardia inactivation", value: "3-log (99.9%)" },
-              { label: "Virus inactivation", value: "4-log (99.99%)" },
+              { label: "Residual target", value: "Use provincial rule and facility plan" },
+              { label: "Giardia treatment credit", value: "Use governing source-water target" },
+              { label: "Virus treatment credit", value: "Use governing source-water target" },
               { label: "Fluoride target", value: "0.7 mg/L (Health Canada)" },
               { label: "pH range (drinking water)", value: "7.0–8.5" },
               { label: "Alum optimal pH", value: "6.5–7.5" },

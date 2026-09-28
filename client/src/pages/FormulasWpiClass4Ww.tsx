@@ -251,7 +251,7 @@ const SECTIONS: FormulaSection[] = [
         variables: ["Cl₂ applied: Chlorine dose added (mg/L)", "Cl₂ residual: Remaining free chlorine after contact (mg/L)"],
         example: "Cl₂ applied = 8 mg/L, Cl₂ residual = 0.5 mg/L",
         result: "Cl₂ demand = 8 − 0.5 = 7.5 mg/L",
-        notes: "Emergency disinfection target: ≥ 0.5 mg/L free chlorine residual after 30 min.",
+        notes: "Emergency disinfection targets must follow the incident plan, effluent permit and direction from the responsible authority.",
       },
       {
         title: "Pump Station Wet Well Volume",
