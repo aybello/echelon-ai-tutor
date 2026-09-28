@@ -141,6 +141,7 @@ export default function Admin() {
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
+  const ceuKpisQ = trpc.admin.getCeuKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
@@ -489,6 +490,15 @@ export default function Admin() {
             </div>
 
             {kpisQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Calculating product metrics…</div>}
+            <section style={{ padding: 16 }} aria-label="Continuing education pilot metrics">
+              <h3>Continuing education pilot</h3>
+              <p>Courses enrolled in the last 30 days, counted once per learner and course edition. Derived from saved learning records.</p>
+              {ceuKpisQ.isLoading && <p>Loading course metrics…</p>}
+              {ceuKpisQ.error && <p role="alert">Course metrics could not be loaded. <button onClick={() => ceuKpisQ.refetch()}>Retry</button></p>}
+              {ceuKpisQ.data && <div style={{ overflowX: "auto" }}><table><thead><tr><th>Enrolled</th><th>Started lessons</th><th>Modules completed</th><th>Final opened</th><th>Final submitted</th><th>Retakes</th><th>Passed</th><th>Certificate opened</th><th>Feedback</th></tr></thead><tbody><tr>
+                {[ceuKpisQ.data.enrollments, ceuKpisQ.data.learningStarted, ceuKpisQ.data.modulesCompleted, ceuKpisQ.data.finalStarted, ceuKpisQ.data.finalSubmitted, ceuKpisQ.data.retries, ceuKpisQ.data.completed, ceuKpisQ.data.certificatesViewed, `${ceuKpisQ.data.evaluations} ratings (${ceuKpisQ.data.averageRating ?? "—"}/5)`].map((value, index) => <td key={index} style={{ padding: 10 }}>{value}</td>)}
+              </tr></tbody></table><p>Certificate views are measured from this release onward. Passing this pilot does not award CEUs. Public views and failed network saves are not included in these record-based counts.</p></div>}
+            </section>
             {kpisQ.error && <div style={{ padding: 18, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Metrics could not be loaded: {kpisQ.error.message}</div>}
             {kpisQ.data && (
               <>

@@ -382,7 +382,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "CT = 1.2 × 25",
           answer: "30 mg·min/L",
         },
-        tip: "Ontario requires CT ≥ 6 mg·min/L for Giardia inactivation (2-log) at pH 6–9 and ≥ 0°C. Higher CT required at lower temperatures and higher pH.",
+        tip: "Required CT varies with organism, disinfectant, temperature, pH, residual and required log inactivation. Select the applicable table and facility requirements; 6 mg·min/L is not a universal Giardia criterion.",
       },
       {
         name: "Log Inactivation",
@@ -397,7 +397,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Log = log₁₀(10,000 ÷ 10) = log₁₀(1,000)",
           answer: "3-log (99.9% removal)",
         },
-        tip: "O. Reg. 170/03 requires 3-log removal/inactivation of Giardia and 4-log for viruses. Filtration credits: 2-log Giardia, 2-log virus. Remaining must come from disinfection.",
+        tip: "For applicable Ontario surface-water/GUDI supplies, overall minimum treatment includes 2-log Cryptosporidium, 3-log Giardia and 4-log viruses. Filtration credits depend on process and performance; verify the remaining disinfection requirement under the procedure and facility approvals.",
       },
       {
         name: "Chlorine Dose for Breakpoint",

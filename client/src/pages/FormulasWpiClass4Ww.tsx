@@ -189,7 +189,7 @@ const SECTIONS: FormulaSection[] = [
         variables: ["Concentration: Free chlorine residual (mg/L)", "Contact time: T₁₀ (min) — time for 10% of water to pass"],
         example: "Cl₂ = 1.5 mg/L, T₁₀ = 30 min",
         result: "CT = 1.5 × 30 = 45 mg·min/L",
-        notes: "CT for 4-log Giardia inactivation at 15°C, pH 7: ~65 mg·min/L.",
+        notes: "Wastewater disinfection targets depend on the effluent permit and process. Do not use a drinking-water Giardia CT constant as a universal effluent requirement.",
       },
     ],
   },

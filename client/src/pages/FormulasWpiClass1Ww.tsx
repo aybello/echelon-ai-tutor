@@ -209,7 +209,7 @@ const SECTIONS: FormulaSection[] = [
           { symbol: "T", meaning: "Contact time (minutes)" },
         ],
         example: "C = 2 mg/L, T = 30 min → CT = 60 mg·min/L",
-        notes: "Required CT for 4-log Giardia inactivation at 15°C: ~170 mg·min/L for free chlorine",
+        notes: "Select wastewater disinfection targets and evaluation methods from the effluent permit and facility requirements; a drinking-water Giardia CT value is not a universal wastewater requirement.",
       },
       {
         title: "Chlorine Feed Rate",

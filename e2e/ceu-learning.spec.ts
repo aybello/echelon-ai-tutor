@@ -93,7 +93,7 @@ test.afterAll(async () => {
   }
 });
 
-test("public CEU courses open all lesson and final content for inspection", async ({ page }, testInfo) => {
+test("public CEU courses offer lessons and separate sample questions", async ({ page }, testInfo) => {
   await page.goto("/continuing-education");
   await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(10);
 
@@ -103,11 +103,11 @@ test("public CEU courses open all lesson and final content for inspection", asyn
   await expect(page.getByRole("navigation", { name: "Course workspace navigation" })).toBeVisible();
   await expect(page.getByRole("heading", { name: short.title, exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Open all lessons", exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Preview final exam", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Preview sample questions", exact: true })).toBeVisible();
 
-  await page.getByRole("button", { name: "Preview final exam", exact: true }).click();
+  await page.getByRole("button", { name: "Preview sample questions", exact: true }).click();
   await expect(page.getByText("Read-only inspection", { exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: short.finalAssessment[0].prompt, exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: short.modules[0].checks[0].prompt, exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Submit exam", exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Course overview", exact: true }).click();
 
@@ -139,6 +139,11 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   ]);
 
   await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
+  await expect(page.locator(".ceu-sidebar-module ol button").nth(6)).toBeDisabled();
+  await page.route("**/api/trpc/ceu.save**", route => route.abort("failed"), { times: 1 });
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText("could not save");
+  await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
   for (let index = 2; index <= 7; index++) {
     await saveClick(page, page.getByRole("button", { name: "Next", exact: true }));
     await expect(page.getByText(`Slide ${index} of 7`, { exact: true })).toBeVisible();
@@ -149,20 +154,26 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   await markRemainingModulesComplete(emails[0], short);
   await page.reload();
   await page.getByRole("button", { name: /Final exam/ }).click();
-  await expect(page.getByRole("heading", { name: short.finalAssessment[0].prompt, exact: true })).toBeVisible();
+  await expect(page.locator(".ceu-exam-question-card h1")).toBeVisible();
 
-  await page.route("**/api/trpc/ceu.save**", route => route.abort("failed"), { times: 1 });
-  const firstQuestion = short.finalAssessment[0];
-  const firstGroup = page.getByRole("group", { name: firstQuestion.prompt, exact: true });
-  await firstGroup.getByRole("radio", { name: firstQuestion.choices[firstQuestion.correctIndex], exact: true }).click();
-  await expect(page.getByRole("alert")).toContainText("has not saved");
-  await saveClick(page, page.getByRole("button", { name: "Retry save", exact: true }));
-  await expect(page.getByRole("alert")).toHaveCount(0);
-
-  for (const question of short.finalAssessment.slice(1)) {
-    await page.getByRole("button", { name: "Next question", exact: true }).click();
-    const group = page.getByRole("group", { name: question.prompt, exact: true });
-    await saveClick(page, group.getByRole("radio", { name: question.choices[question.correctIndex], exact: true }));
+  // Order is issued by the server. Select by the rendered prompt and answer text,
+  // not an assumed item/option index.
+  for (let index = 0; index < short.finalAssessment.length; index++) {
+    const prompt = await page.locator(".ceu-exam-question-card h1").innerText();
+    const question = short.finalAssessment.find(q => q.prompt === prompt)!;
+    expect(question).toBeTruthy();
+    const group = page.getByRole("group", { name: prompt, exact: true });
+    if (index === 0) {
+      await page.route("**/api/trpc/ceu.save**", route => route.abort("failed"), { times: 1 });
+      await group.getByRole("radio", { name: question.choices[question.correctIndex], exact: true }).click();
+      await expect(page.getByRole("alert")).toContainText("has not saved");
+      await saveClick(page, page.getByRole("button", { name: "Retry save", exact: true }));
+      await expect(page.getByRole("alert")).toHaveCount(0);
+    } else {
+      await saveClick(page, group.getByRole("radio", { name: question.choices[question.correctIndex], exact: true }));
+    }
+    if (index < short.finalAssessment.length - 1)
+      await page.getByRole("button", { name: "Next question", exact: true }).click();
   }
   page.once("dialog", dialog => dialog.accept());
   await saveClick(page, page.getByRole("button", { name: "Submit exam", exact: true }));

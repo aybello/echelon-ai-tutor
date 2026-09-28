@@ -155,9 +155,9 @@ const SECTIONS: Section[] = [
         variables: [
           "UV Intensity = measured at the sensor (mW/cm²)",
           "Contact Time = hydraulic residence time in UV reactor (s)",
-          "Dose ≥ 40 mJ/cm² for 4-log Cryptosporidium inactivation",
-          "Dose ≥ 186 mJ/cm² for 4-log Giardia inactivation (UV less effective)",
-          "Dose ≥ 40 mJ/cm² for 4-log virus inactivation (with 254 nm)",
+          "The target organism and required log credit determine the dose basis",
+          "Giardia and viruses have different UV dose-response relationships",
+          "Use validated reactor performance; 40 mJ/cm² does not establish universal 4-log virus credit",
         ],
         example: "Intensity = 20 mW/cm², contact time = 5 s → UV Dose = 20 × 5 = 100 mJ/cm²",
         examTip: "UV dose is reduced by turbidity and UVT (UV transmittance). Always use validated dose-response curves. UV does not provide residual disinfection.",

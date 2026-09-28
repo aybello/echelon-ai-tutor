@@ -49,6 +49,8 @@ export interface CeuCurriculum {
   sources: CeuSource[];
   modules: CeuLesson[];
   finalAssessment: CeuQuestionKey[];
+  /** Additional private items; original items remain stable for historical attempts. */
+  alternateFinalAssessment?: CeuQuestionKey[];
 }
 export interface CeuExerciseQuestion {
   id: string;
@@ -79,6 +81,7 @@ export interface CeuModuleRecord {
   lastActivityAt?: string;
   /** Additive presentation state for the simplified pilot lesson player. */
   slideIndex?: number;
+  resumeSlideIndex?: number;
   completedAt?: string;
 }
 export interface CeuAttempt {
@@ -88,6 +91,12 @@ export interface CeuAttempt {
   total: number;
   passed: boolean;
   at: string;
+  manifest?: CeuExamItem[];
+}
+/** Server-issued item and option order. Contains no answer keys. */
+export interface CeuExamItem {
+  questionId: string;
+  choiceOrder: number[];
 }
 export interface CeuLearningRecord {
   revision: number;
@@ -104,6 +113,7 @@ export interface CeuLearningRecord {
     attemptId: string;
     answers: (number | null)[];
     flaggedQuestionIndexes?: number[];
+    manifest?: CeuExamItem[];
   };
   evaluation?: { rating: number; useful: string; improve: string; at: string };
   completion?: {
