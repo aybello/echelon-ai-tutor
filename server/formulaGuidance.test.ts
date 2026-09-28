@@ -18,6 +18,8 @@ const auditedFormulaPages = [
   "FormulasWpiClass3",
   "FormulasWpiClass4",
   "FormulasWpiClass4Ww",
+  "FormulasWpiClass2Ww",
+  "FormulasWpiClass3Ww",
 ];
 
 it("keeps Ontario initial reporting immediate and distinguishes the written follow-up", () => {
@@ -65,4 +67,33 @@ it("labels solution concentration, mass, volume and pump power consistently", ()
   expect(s).toContain("250 ÷ 1.20 = 208.3 L/d");
   expect(15000 * 2 / 1000 / .12 / 1.2).toBeCloseTo(208.333, 2);
   expect(s).toContain("P (kW) = ρgQH ÷ (1000η)");
+});
+
+it("keeps WPI Class II wastewater examples calculation-focused and approval-bound", () => {
+  const s = page("FormulasWpiClass2Ww");
+  expect(s).toContain("Study examples only.");
+  expect(s).toMatch(/facility's validated procedure, approval or permit/i);
+  expect(s).toContain("O₃ Dose = 5,000 ÷ 500 = 10 g/m³ = 10 mg/L");
+  expect(s).not.toContain("Effluent BOD limit (Ontario ECA)");
+  expect(s).not.toContain("Wastewater effluent CT for 2-log E. coli reduction");
+  expect(s).not.toContain("Typical Class B biosolids available N");
+  expect(s).not.toContain("Class A reuse: ≥100 mJ/cm²");
+  expect(s).not.toContain("O₃ Applied (g/h) ÷ Flow (m³/h) × 1,000");
+  expect(s).toContain("Mixing ratio = (10 + 0.1) ÷ 0.1 = 101:1");
+});
+
+it("keeps WPI Class III wastewater arithmetic correct and regulatory claims source-bound", () => {
+  const s = page("FormulasWpiClass3Ww");
+  expect(s).toContain("Study examples only.");
+  expect(s).toContain("SDNR = (20−5) × 10,000 / (2,000 × 2,500) = 150,000 / 5,000,000 = 0.03");
+  expect(s).toContain("F/M = (10,000 × 200) / (4,000 × 2,200) = 2,000,000 / 8,800,000 = 0.23");
+  expect(s).not.toContain("× 1/1,000 = 2,000,000 / 8,800,000");
+  expect(s).not.toContain("Class B biosolids require VSR");
+  expect(s).not.toContain("Setback distances: 30 m from watercourses");
+  expect(s).not.toContain("IU_limit = POTW_limit");
+  expect(s).not.toContain("WSER requires LC50 > 100%");
+  expect(s).not.toContain("IPCC default EF for direct N₂O");
+  expect(s).toMatch(/approved sewer-use by-law or permit/i);
+  expect(s).toMatch(/accredited-lab testing of 100% effluent/i);
+  expect(s).toContain("P removed (kg/d) = (P_in − P_eff) × Q ÷ 1,000");
 });
