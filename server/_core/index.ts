@@ -28,6 +28,7 @@ import {
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
+import { frameAncestorsForEnvironment } from "../previewSecurity";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -77,7 +78,7 @@ async function startServer() {
           objectSrc: ["'none'"],
           baseUri: ["'self'"],
           formAction: ["'self'", "https://checkout.stripe.com"],
-          frameAncestors: ["'none'"],
+          frameAncestors: frameAncestorsForEnvironment(process.env.NODE_ENV),
           upgradeInsecureRequests:
             process.env.NODE_ENV === "production" ? [] : null,
         },
