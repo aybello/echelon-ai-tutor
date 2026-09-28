@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useRoute } from "wouter";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
@@ -46,13 +46,6 @@ function moduleComplete(record: CeuLearningRecord | null | undefined, moduleId: 
   return Boolean(module?.completedAt || module?.exerciseAttempts.some(attempt => attempt.passed));
 }
 
-function displayMinutes(minutes: number) {
-  const hours = Math.floor(minutes / 60);
-  const remainder = minutes % 60;
-  if (!hours) return `${minutes} min`;
-  return remainder ? `${hours}h ${remainder}m` : `${hours} ${hours === 1 ? "hour" : "hours"}`;
-}
-
 function coursePresentationIntro(title: string) {
   return `${title} is a self-paced operator learning pilot built around focused lessons, worked scenarios and a protected final exam. Progress is saved securely when you sign in.`;
 }
@@ -91,6 +84,21 @@ function ChoiceList({
   );
 }
 
+function QuickCheck({ question, savedChoice, disabled, signedIn, onCheck }: {
+  question: CeuQuestion; savedChoice?: number; disabled: boolean; signedIn: boolean;
+  onCheck: (choice: number) => Promise<string>;
+}) {
+  const [choice, setChoice] = useState<number | undefined>(savedChoice);
+  const [feedback, setFeedback] = useState("");
+  return <section className="ceu-quick-check"><p>Optional and ungraded</p><h2>{question.prompt}</h2>
+    <ChoiceList question={question} value={choice} disabled={disabled} onChange={value => { setChoice(value); setFeedback(""); }} />
+    {signedIn ? <button type="button" className="ceu-secondary-button" disabled={disabled || choice === undefined}
+      onClick={() => { if (choice !== undefined) onCheck(choice).then(setFeedback).catch(() => setFeedback("Not saved. Please retry.")); }}>Check answer</button>
+      : <p>Sign in to save your answer and see feedback.</p>}
+    {feedback && <p role="status">{feedback}</p>}
+  </section>;
+}
+
 function PilotDisclosure() {
   return (
     <p className="ceu-pilot-disclosure">
@@ -120,8 +128,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const [operatorNumber, setOperatorNumber] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [status, setStatus] = useState("");
-  const [quickCheckChoice, setQuickCheckChoice] = useState<number | undefined>();
-  const [quickCheckFeedback, setQuickCheckFeedback] = useState("");
+  const [saveFailed, setSaveFailed] = useState(false);
+  const certificateTracked = useRef(false);
+  const restoredSavedPosition = useRef(false);
+  const [rating, setRating] = useState(0);
+  const [courseFeedback, setCourseFeedback] = useState("");
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [flags, setFlags] = useState<number[]>([]);
   const [examDirty, setExamDirty] = useState(false);
@@ -142,8 +153,8 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const finalEntry = ceuFinalEntry(record);
 
   const assessment = trpc.ceu.assessment.useQuery(
-    { courseKey },
-    { enabled: view === "exam" && !!record && allModulesComplete && !record.completion, retry: false, refetchOnWindowFocus: false }
+    { courseKey, attemptId: record?.assessmentDraft?.attemptId },
+    { enabled: view === "exam" && !!record?.assessmentDraft && allModulesComplete && !record.completion, retry: false, refetchOnWindowFocus: false }
   );
   const finalPreview = trpc.ceu.finalPreview.useQuery(
     { courseKey },
@@ -166,8 +177,21 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const save = trpc.ceu.save.useMutation({
     onSuccess: ({ record: next, feedback }, variables) => {
       cache(next);
-      if (variables.action.type === "check" && typeof feedback === "string") {
-        setQuickCheckFeedback(feedback);
+      setSaveFailed(false);
+      if (variables.action.type === "resume") {
+        const moduleId = variables.action.moduleId;
+        setActiveModuleId(moduleId);
+        setActiveSlideIndex(next.modules[moduleId]?.resumeSlideIndex ?? next.modules[moduleId]?.slideIndex ?? 0);
+        setDrawerOpen(false);
+        setView("lesson");
+        setStatus("Progress saved");
+      } else if (variables.action.type === "beginExam") {
+        setAttemptId(next.assessmentDraft!.attemptId);
+        setAnswers({});
+        setCurrentQuestionIndex(0);
+        utils.ceu.assessment.invalidate({ courseKey });
+        setStatus("Final exam ready");
+      } else if (variables.action.type === "check" && typeof feedback === "string") {
         setStatus("Quick check saved. This does not affect your final exam.");
       } else if (variables.action.type === "slideProgress") {
         setActiveSlideIndex(variables.action.slideIndex);
@@ -179,12 +203,12 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
         setStatus("Module completed. Your progress is saved.");
         if (nextModule) {
           setActiveModuleId(nextModule.id);
-          setActiveSlideIndex(next.modules[nextModule.id]?.slideIndex ?? 0);
-          setQuickCheckChoice(undefined);
-          setQuickCheckFeedback("");
+          setActiveSlideIndex(next.modules[nextModule.id]?.resumeSlideIndex ?? next.modules[nextModule.id]?.slideIndex ?? 0);
         } else {
           setView("overview");
         }
+      } else if (variables.action.type === "evaluation") {
+        setStatus("Thank you. Your course feedback is saved.");
       } else if (variables.action.type === "examDraft") {
         setExamDirty(false);
         setStatus("Answers saved");
@@ -195,7 +219,9 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
         utils.ceu.results.invalidate({ courseKey, attemptId: variables.action.attemptId });
       }
     },
-    onError: (_error, variables) => {
+    onError: (error, variables) => {
+      setSaveFailed(true);
+      if (error.data?.code === "CONFLICT" && !["exam", "examDraft"].includes(variables.action.type)) recordQuery.refetch();
       if (variables.action.type === "examDraft") {
         setStatus("Your latest final-exam change did not save. Retry before leaving this page.");
         return;
@@ -212,12 +238,19 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   });
 
   useEffect(() => {
+    if (view !== "certificate" || !record?.completion || pending || certificateTracked.current || record.audit.some(a => a.action === "certificateViewed")) return;
+    certificateTracked.current = true;
+    save.mutate({ courseKey, revision: record.revision, action: { type: "certificateViewed" } });
+  }, [view, record, pending, courseKey]);
+
+  useEffect(() => {
     if (!course) return;
     const nextModuleId = record?.currentModule ?? course.modules[0]?.id ?? "";
     const module = course.modules.find(item => item.id === nextModuleId) ?? course.modules[0];
-    if (!activeModuleId && module) {
+    if (module && (!activeModuleId || (record && !restoredSavedPosition.current))) {
+      if (record) restoredSavedPosition.current = true;
       setActiveModuleId(module.id);
-      setActiveSlideIndex(record?.modules[module.id]?.slideIndex ?? 0);
+      setActiveSlideIndex(record?.modules[module.id]?.resumeSlideIndex ?? record?.modules[module.id]?.slideIndex ?? 0);
     }
   }, [course, record, activeModuleId]);
 
@@ -247,24 +280,27 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   }, [examDirty]);
 
   function chooseModule(moduleId: string) {
-    if (!course) return;
+    if (!course || pending) return;
     const module = course.modules.find(item => item.id === moduleId);
     if (!module) return;
+    if (record && !record.completion) {
+      setStatus("Saving progress…");
+      save.mutate({ courseKey, revision: record.revision, action: { type: "resume", moduleId } });
+      return;
+    }
     setActiveModuleId(moduleId);
-    setActiveSlideIndex(record?.modules[moduleId]?.slideIndex ?? 0);
-    setQuickCheckChoice(undefined);
-    setQuickCheckFeedback("");
+    setActiveSlideIndex(record?.modules[moduleId]?.resumeSlideIndex ?? record?.modules[moduleId]?.slideIndex ?? 0);
     setDrawerOpen(false);
     setView("lesson");
-    if (record && !record.completion && !pending) {
-      save.mutate({ courseKey, revision: record.revision, action: { type: "resume", moduleId } });
-    }
   }
 
   function saveSlide(nextIndex: number) {
     if (pending) return;
-    setActiveSlideIndex(nextIndex);
-    if (!record || !activeModule) return;
+    if (!record || record.completion || !activeModule) {
+      setActiveSlideIndex(nextIndex);
+      return;
+    }
+    setStatus("Saving progress…");
     save.mutate({
       courseKey,
       revision: record.revision,
@@ -319,10 +355,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     setSubmittedAttemptId(undefined);
     setExamDirty(false);
     setView("exam");
-    setStatus("New final exam attempt ready.");
+    save.mutate({ courseKey, revision: record!.revision, action: { type: "beginExam" } });
   }
 
   function openFinal() {
+    if (pending) return;
     const entry = ceuFinalEntry(record);
     if (entry.view === "results") {
       setSubmittedAttemptId(entry.attemptId);
@@ -333,7 +370,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
       setView("certificate");
       return;
     }
+    setCurrentQuestionIndex(0);
     setView("exam");
+    if (record && allModulesComplete && !record.assessmentDraft && !pending) {
+      save.mutate({ courseKey, revision: record.revision, action: { type: "beginExam" } });
+    }
   }
 
   function confirmDiscardUnsavedExam() {
@@ -341,7 +382,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   }
 
   function changeView(nextView: CourseView) {
-    if (nextView === view || confirmDiscardUnsavedExam()) setView(nextView);
+    if (!pending && (nextView === view || confirmDiscardUnsavedExam())) setView(nextView);
   }
 
   if (courseQuery.isLoading) return <main className="ceu-loading">Loading course…</main>;
@@ -386,7 +427,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <button type="button" className={view === "certificate" ? "is-active" : ""} disabled={!record?.completion} onClick={() => changeView("certificate")}>Certificate</button>
           </nav>
           <div className="ceu-course-context-actions">
-            {status && <span className="ceu-save-status" role="status"><CheckCircle2 size={15} aria-hidden="true" /> {status}</span>}
+            {status && <span className="ceu-save-status" role="status">{saveFailed ? <CircleHelp size={15} aria-hidden="true" /> : null} {status}</span>}
             {view !== "overview" && <button type="button" className="ceu-exit-button" onClick={() => changeView("overview")}>Course overview</button>}
           </div>
         </div>
@@ -400,7 +441,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <h1>{course.title}</h1>
             <p className="ceu-course-intro">{coursePresentationIntro(course.title)}</p>
             <div className="ceu-course-facts">
-              <span><Clock3 size={19} /> {displayMinutes(course.plannedMinutes)} planned duration</span>
+              <span><Clock3 size={19} /> Self-paced · duration being validated</span>
               <span><FileDown size={19} /> {course.modules.length} modules</span>
               <span><Award size={19} /> Final exam, {course.finalQuestionCount} questions</span>
             </div>
@@ -409,11 +450,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <section className="ceu-enrol-card">
                 <div>
                   <h2>Open course inspection</h2>
-                  <p>Browse every lesson slide, optional quick check and final-exam question without an account. Sign in only to save progress, submit a graded final exam and receive a non-credit pilot certificate.</p>
+                  <p>Browse every lesson slide and sample question without an account. Sign in only to save progress, submit a graded final exam and receive a non-credit pilot certificate.</p>
                 </div>
                 <div className="ceu-enrol-actions">
                   <button type="button" className="ceu-secondary-button" onClick={() => setView("lesson")}>Open all lessons <ArrowRight size={18} /></button>
-                  <button type="button" className="ceu-primary-button" onClick={openFinal}>Preview final exam <ArrowRight size={18} /></button>
+                  <button type="button" className="ceu-primary-button" onClick={openFinal}>Preview sample questions <ArrowRight size={18} /></button>
                 </div>
               </section>
             ) : recordQuery.isLoading ? (
@@ -457,17 +498,17 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                 const done = moduleComplete(record, module.id);
                 const current = module.id === activeModule.id && !done;
                 return (
-                  <button className={`ceu-module-row${current ? " is-current" : ""}`} type="button" key={module.id} onClick={() => { setActiveModuleId(module.id); setActiveSlideIndex(record?.modules[module.id]?.slideIndex ?? 0); setView("lesson"); }}>
+                  <button className={`ceu-module-row${current ? " is-current" : ""}`} type="button" key={module.id} disabled={pending} onClick={() => chooseModule(module.id)}>
                     <span className={`ceu-module-marker${done ? " is-done" : ""}`}>{done ? <Check size={18} /> : index + 1}</span>
                     <span className="ceu-module-row-title"><small>Module {index + 1}</small><strong>{module.title}</strong></span>
-                    <span className="ceu-module-duration">{displayMinutes(module.activities.reduce((sum, activity) => sum + activity.minutes, 0))}</span>
+                    <span className="ceu-module-duration">Self-paced</span>
                     <span className={`ceu-module-status${done ? " is-done" : ""}`}>{done ? "Complete" : current ? "In progress" : "Not started"}</span>
                   </button>
                 );
               })}
               <button className="ceu-module-row ceu-final-row" type="button" onClick={openFinal}>
                 <span className="ceu-module-marker">{finalPreviewMode ? <CircleHelp size={17} /> : <LockKeyhole size={17} />}</span>
-                <span className="ceu-module-row-title"><small>Final exam</small><strong>{finalPreviewMode ? `${course.finalQuestionCount} questions, read-only preview` : finalEntry.view === "results" ? "View latest results" : `${course.finalQuestionCount} questions, 80% to pass`}</strong></span>
+                <span className="ceu-module-row-title"><small>Final exam</small><strong>{finalPreviewMode ? "Sample questions, read-only preview" : finalEntry.view === "results" ? "View latest results" : `${course.finalQuestionCount} questions, 80% to pass`}</strong></span>
                 <span className="ceu-module-duration">No timer</span>
                 <span className="ceu-module-status">{finalPreviewMode ? "Open to inspect" : finalEntry.view === "results" ? "Results available" : "Available"}</span>
               </button>
@@ -496,10 +537,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                   <button type="button" className={`${active ? "is-active" : ""}${done ? " is-complete" : ""}`} onClick={() => chooseModule(module.id)} disabled={pending}>
                     <span>{done ? <Check size={17} /> : index + 1}</span><strong>{module.title}</strong>
                   </button>
-                  {active && <ol>{slides.map((slide, index) => <li key={slide.id}><button type="button" className={index === activeSlideIndex ? "is-current" : ""} disabled={pending} onClick={() => { setActiveSlideIndex(index); setDrawerOpen(false); }}><small>{index + 1}</small>{slide.kind === "quick_check" ? "Quick check" : slide.kind === "takeaways" ? "Key takeaways" : slide.title}</button></li>)}</ol>}
+                  {active && <ol>{slides.map((slide, index) => <li key={slide.id}><button type="button" className={index === activeSlideIndex ? "is-current" : ""} disabled={pending || (!!record && !record.completion && index > (record.modules[module.id]?.slideIndex ?? 0) + 1)} onClick={() => { saveSlide(index); setDrawerOpen(false); }}><small>{index + 1}</small>{slide.kind === "quick_check" ? "Quick check" : slide.kind === "takeaways" ? "Key takeaways" : slide.title}</button></li>)}</ol>}
                 </div>;
               })}
-              <button className="ceu-sidebar-final" type="button" onClick={() => { openFinal(); setDrawerOpen(false); }}>{finalPreviewMode ? <CircleHelp size={16} /> : <LockKeyhole size={16} />} {finalPreviewMode ? "Preview final exam" : finalEntry.view === "results" ? "View latest results" : "Final exam"}</button>
+              <button className="ceu-sidebar-final" type="button" onClick={() => { openFinal(); setDrawerOpen(false); }}>{finalPreviewMode ? <CircleHelp size={16} /> : <LockKeyhole size={16} />} {finalPreviewMode ? "Preview sample questions" : finalEntry.view === "results" ? "View latest results" : "Final exam"}</button>
             </nav>
           </aside>
           <section className="ceu-lesson-stage">
@@ -508,21 +549,21 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <p className="ceu-slide-eyebrow">{activeSlide.eyebrow}</p>
               <h1>{activeSlide.title}</h1>
               <LessonMarkdown text={activeSlide.body} />
-              {activeSlide.kind === "quick_check" && activeModule.checks[0] && (
-                <section className="ceu-quick-check">
-                  <p>Optional and ungraded</p>
-                  <h2>{activeModule.checks[0].prompt}</h2>
-                  <ChoiceList question={activeModule.checks[0]} value={quickCheckChoice ?? activeModuleRecord?.checks[activeModule.checks[0].id]?.selectedIndex} disabled={pending || !!record?.completion} onChange={choice => { setQuickCheckChoice(choice); setQuickCheckFeedback(""); }} />
-                  <div className="ceu-inline-actions">{record ? <button type="button" className="ceu-secondary-button" disabled={pending || (quickCheckChoice ?? activeModuleRecord?.checks[activeModule.checks[0].id]?.selectedIndex) === undefined} onClick={() => save.mutate({ courseKey, revision: record.revision, action: { type: "check", moduleId: activeModule.id, questionId: activeModule.checks[0].id, choice: quickCheckChoice ?? activeModuleRecord!.checks[activeModule.checks[0].id].selectedIndex } })}>Check answer</button> : <span className="ceu-preview-note">Read-only inspection: answer feedback is available in a saved learning record.</span>}{quickCheckFeedback && <span className="ceu-feedback"><CheckCircle2 size={16} /> {quickCheckFeedback}</span>}</div>
-                </section>
-              )}
+              {activeSlide.kind === "quick_check" && activeModule.checks.map(check => (
+                <QuickCheck key={`${activeModule.id}-${check.id}`} question={check}
+                  savedChoice={activeModuleRecord?.checks[check.id]?.selectedIndex}
+                  disabled={pending || !!record?.completion} signedIn={!!record}
+                  onCheck={choice => save.mutateAsync({ courseKey, revision: record!.revision,
+                    action: { type: "check", moduleId: activeModule.id, questionId: check.id, choice }
+                  }).then(result => typeof result.feedback === "string" ? result.feedback : "Answer saved")} />
+              ))}
               {activeSlide.kind === "evidence" && <p className="ceu-fictional-note">All facility names, records, values and scenarios in this lesson are fictional training material.</p>}
             </article>
             <section className="ceu-source-strip"><strong>Sources for this module</strong>{course.sources.filter(source => activeModule.sourceIds.includes(source.id)).map(source => <a key={source.id} href={source.url} target="_blank" rel="noreferrer">{source.title} <ArrowRight size={14} /></a>)}</section>
             <footer className="ceu-lesson-footer">
-              <button type="button" className="ceu-back-button" disabled={pending || activeSlideIndex === 0} onClick={() => setActiveSlideIndex(index => Math.max(0, index - 1))}><ArrowLeft size={18} /> Back</button>
+              <button type="button" className="ceu-back-button" disabled={pending || activeSlideIndex === 0} onClick={() => saveSlide(Math.max(0, activeSlideIndex - 1))}><ArrowLeft size={18} /> Back</button>
               <div className="ceu-slide-dots" aria-label={`Slide ${activeSlideIndex + 1} of ${slides.length}`}>{slides.map((slide, index) => <span key={slide.id} className={index === activeSlideIndex ? "is-active" : ""} />)}</div>
-              {activeSlideIndex === slides.length - 1 ? record ? <button type="button" className="ceu-primary-button" disabled={pending || moduleComplete(record, activeModule.id)} onClick={completeCurrentModule}>{moduleComplete(record, activeModule.id) ? "Module complete" : "Complete module"} <Check size={18} /></button> : nextModule ? <button type="button" className="ceu-primary-button" onClick={() => chooseModule(nextModule.id)}>Next module <ArrowRight size={18} /></button> : <button type="button" className="ceu-primary-button" onClick={openFinal}>Preview final exam <ArrowRight size={18} /></button> : <button type="button" className="ceu-primary-button" disabled={pending} onClick={() => saveSlide(activeSlideIndex + 1)}>Next <ArrowRight size={18} /></button>}
+              {activeSlideIndex === slides.length - 1 ? record ? <button type="button" className="ceu-primary-button" disabled={pending || moduleComplete(record, activeModule.id)} onClick={completeCurrentModule}>{moduleComplete(record, activeModule.id) ? "Module complete" : "Complete module"} <Check size={18} /></button> : nextModule ? <button type="button" className="ceu-primary-button" onClick={() => chooseModule(nextModule.id)}>Next module <ArrowRight size={18} /></button> : <button type="button" className="ceu-primary-button" onClick={openFinal}>Preview sample questions <ArrowRight size={18} /></button> : <button type="button" className="ceu-primary-button" disabled={pending} onClick={() => saveSlide(activeSlideIndex + 1)}>Next <ArrowRight size={18} /></button>}
             </footer>
             {!record && <p className="ceu-signin-note">Sign in to save slide progress and complete this module.</p>}
           </section>
@@ -534,14 +575,14 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           <section className="ceu-exam-main">
             <div className="ceu-exam-status"><strong>Question {currentQuestionIndex + 1} of {assessmentQuestions.length || course.finalQuestionCount}</strong><span>{finalPreviewMode ? "Read-only inspection" : `${Object.keys(answers).length} answered`}</span></div>
             <div className="ceu-progress-track ceu-exam-track"><span style={{ width: `${assessmentQuestions.length ? ((currentQuestionIndex + 1) / assessmentQuestions.length) * 100 : 0}%` }} /></div>
-            {finalPreviewMode ? finalPreview.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam preview…</h1></section> : finalPreview.isError ? <section className="ceu-empty-state"><h1>Final exam preview unavailable</h1><p>We could not load the read-only question set right now. Your saved learning has not changed.</p><button type="button" onClick={() => finalPreview.refetch()}>Retry</button></section> : question ? <>
+            {finalPreviewMode ? finalPreview.isLoading ? <section className="ceu-empty-state"><h1>Loading sample questions…</h1></section> : finalPreview.isError ? <section className="ceu-empty-state"><h1>Sample questions unavailable</h1><p>We could not load the read-only question set right now. Your saved learning has not changed.</p><button type="button" onClick={() => finalPreview.refetch()}>Retry</button></section> : question ? <>
               <article className="ceu-exam-question-card">
                 <div className="ceu-question-top"><span>Read-only inspection. Answers and scoring are unavailable in preview.</span></div>
                 <h1>{question.prompt}</h1>
                 <ChoiceList question={question} disabled onChange={() => undefined} />
               </article>
               <footer className="ceu-exam-footer"><button type="button" className="ceu-back-button" disabled={currentQuestionIndex === 0} onClick={() => setCurrentQuestionIndex(index => index - 1)}><ArrowLeft size={18} /> Previous</button>{currentQuestionIndex === assessmentQuestions.length - 1 ? <button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Return to course</button> : <button type="button" className="ceu-primary-button" onClick={() => setCurrentQuestionIndex(index => index + 1)}>Next question <ArrowRight size={18} /></button>}</footer>
-            </> : null : assessment.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam…</h1></section> : assessment.isError ? <section className="ceu-empty-state"><h1>Final exam unavailable</h1><p>The final exam is temporarily unavailable. Your saved learning has not changed.</p><button type="button" onClick={() => assessment.refetch()}>Retry</button></section> : question ? <>
+            </> : null : !record?.assessmentDraft ? <section className="ceu-empty-state"><h1>{pending ? "Preparing your final exam…" : "Open your final exam"}</h1><button type="button" disabled={pending} onClick={openFinal}>Open final exam</button></section> : assessment.isLoading ? <section className="ceu-empty-state"><h1>Loading final exam…</h1></section> : assessment.isError ? <section className="ceu-empty-state"><h1>Final exam unavailable</h1><p>The final exam is temporarily unavailable. Your saved learning has not changed.</p><button type="button" onClick={() => assessment.refetch()}>Retry</button></section> : question ? <>
               <article className="ceu-exam-question-card">
                 <div className="ceu-question-top"><span>Choose one answer.</span><button type="button" className={`ceu-flag-button${flags.includes(currentQuestionIndex) ? " is-flagged" : ""}`} disabled={pending} onClick={() => toggleFlag(currentQuestionIndex)}><Flag size={17} /> {flags.includes(currentQuestionIndex) ? "Flagged for review" : "Flag for review"}</button></div>
                 <h1>{question.prompt}</h1>
@@ -554,7 +595,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           <aside className="ceu-exam-sidebar">
             <h2>Questions</h2>
             <div className="ceu-question-grid">{assessmentQuestions.map((item, index) => <button type="button" key={item.id} onClick={() => setCurrentQuestionIndex(index)} className={`${!finalPreviewMode && answers[item.id] !== undefined ? "is-answered" : ""}${index === currentQuestionIndex ? " is-current" : ""}${!finalPreviewMode && flags.includes(index) ? " is-flagged" : ""}`} aria-label={`Question ${index + 1}${!finalPreviewMode && answers[item.id] !== undefined ? ", answered" : ""}${!finalPreviewMode && flags.includes(index) ? ", flagged" : ""}`}>{index + 1}</button>)}</div>
-            {finalPreviewMode ? <section className="ceu-exam-note"><h3>Open for inspection</h3><p>Every final-exam question is visible here so you can review the course content before starting a saved learning record.</p><p>Answer keys, explanations, scoring and submission stay protected until you sign in and complete the course.</p><PilotDisclosure /></section> : <><div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div><section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil(assessmentQuestions.length * 0.8)} of {assessmentQuestions.length} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section></>}
+            {finalPreviewMode ? <section className="ceu-exam-note"><h3>Open for inspection</h3><p>These samples come from lesson checks. Your graded final uses a separate server-issued question and answer order.</p><p>Sign in and complete the modules to take the final exam. Samples do not count toward a certificate.</p><PilotDisclosure /></section> : <><div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div><section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil(assessmentQuestions.length * 0.8)} of {assessmentQuestions.length} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section></>}
           </aside>
         </main>
       )}
@@ -567,6 +608,13 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <div><p className={results.data.passed ? "ceu-pass-label" : "ceu-review-label"}>{results.data.passed ? "Passed · pass mark 80%" : "Review needed · pass mark 80%"}</p><h1>{results.data.passed ? "You have completed the course." : "You are close. Review and try again."}</h1><p>{results.data.passed ? "Your non-credit pilot certificate is ready now." : "Review the missed answers, revisit the related lessons and retake the final when you are ready."}</p><div className="ceu-inline-actions">{results.data.passed ? <button type="button" className="ceu-primary-button" onClick={() => setView("certificate")}><FileDown size={18} /> View certificate</button> : <button type="button" className="ceu-primary-button" onClick={resetForRetake}><RotateCcw size={18} /> Retake final exam</button>}<button type="button" className="ceu-secondary-button" onClick={() => setView("overview")}>Back to my course</button></div></div>
             </section>
             <section className="ceu-results-review"><div className="ceu-section-row"><h2>Review your answers</h2><span>{results.data.review.length ? `${results.data.review.length} to review` : "All answers correct"}</span></div>{results.data.review.length ? results.data.review.map((item, index) => <article key={item.id} className="ceu-missed-answer"><p className="ceu-missed-eyebrow">Question {index + 1} · review</p><h3>{item.prompt}</h3><div className="ceu-answer-compare"><div><small>Your answer</small><strong>{item.choices[item.selectedIndex] ?? "No answer"}</strong></div><div><small>Correct answer</small><strong>{item.choices[item.correctIndex]}</strong></div></div><p>{item.explanation}</p><button type="button" className="ceu-text-link" onClick={() => { const module = course.modules.find(module => module.id === item.objective); if (module) { setActiveModuleId(module.id); setActiveSlideIndex(0); setView("lesson"); } }}>Revisit this lesson <ArrowRight size={15} /></button></article>) : <p className="ceu-all-correct"><CheckCircle2 size={20} /> Excellent work. Every final-exam answer was correct.</p>}</section>
+            <section className="ceu-info-card"><h2>How useful was this course?</h2>
+              {record?.evaluation ? <p>Thank you. Your feedback has been saved.</p> : <>
+                <label>Rating <select value={rating} onChange={event => setRating(Number(event.target.value))}><option value={0} disabled>Choose a rating</option>{[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n} out of 5</option>)}</select></label>
+                <label>What would help you at work? (optional)<textarea value={courseFeedback} maxLength={2000} onChange={event => setCourseFeedback(event.target.value)} /></label>
+                <button type="button" className="ceu-secondary-button" disabled={pending || rating < 1} onClick={() => save.mutate({ courseKey, revision: record!.revision, action: { type: "evaluation", rating, useful: courseFeedback, improve: "" } })}>Send feedback</button>
+              </>}
+            </section>
           </> : null}
         </main>
       )}
@@ -581,7 +629,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <p className="ceu-certificate-operator">Operator ID: {record.completion.operatorNumber}</p>
             <p>has successfully completed the self-paced online pilot course</p>
             <h2>{course.title}</h2>
-            <div className="ceu-certificate-stats"><div><small>Planned duration</small><strong>{displayMinutes(course.plannedMinutes)}</strong></div><div><small>Final exam score</small><strong>{Math.round((record.completion.finalScore / record.completion.finalTotal) * 100)}%</strong></div><div><small>Date completed</small><strong>{new Date(record.completion.at).toLocaleDateString("en-CA")}</strong></div><div><small>Certificate ID</small><strong>{record.completion.id.slice(0, 8).toUpperCase()}</strong></div></div>
+            <div className="ceu-certificate-stats"><div><small>Completion</small><strong>Self-paced pilot</strong></div><div><small>Final exam score</small><strong>{Math.round((record.completion.finalScore / record.completion.finalTotal) * 100)}%</strong></div><div><small>Date completed</small><strong>{new Date(record.completion.at).toLocaleDateString("en-CA")}</strong></div><div><small>Certificate ID</small><strong>{record.completion.id.slice(0, 8).toUpperCase()}</strong></div></div>
             <div className="ceu-certificate-footer"><div><span>Ayoola Bello</span><strong>Ayoola Bello</strong><small>Founder and CEO, Echelon Institute</small></div><p>{record.completion.statement}</p></div>
           </article> : <section className="ceu-empty-state"><h1>Your certificate will be ready after a passing final exam.</h1><button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Back to course</button></section>}
           {record?.completion && <div className="ceu-certificate-actions"><button type="button" className="ceu-primary-button" onClick={() => window.print()}><FileDown size={18} /> Print certificate</button><button type="button" className="ceu-secondary-button" onClick={() => setView("overview")}>Back to my courses</button></div>}

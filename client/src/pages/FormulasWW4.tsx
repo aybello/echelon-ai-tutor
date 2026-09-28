@@ -181,7 +181,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "UV Dose = 30 × 10 = 300 mJ/cm²",
           answer: "300 mJ/cm²",
         },
-        tip: "Ontario Reg. 170/03 requires UV dose ≥ 40 mJ/cm² for drinking water. For wastewater reuse, target ≥ 100 mJ/cm². UV transmittance (UVT) < 55% requires dose correction. Clean lamps regularly.",
+        tip: "Wastewater UV performance is governed by the facility permit and validated reactor operating envelope. UVT, flow, lamp condition and sensor validation affect delivered dose; do not use one drinking-water or reuse number as a universal requirement.",
       },
       {
         name: "UV Transmittance (UVT)",
@@ -327,7 +327,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "VSR = (5,000 − 2,750) ÷ 5,000 × 100 = 2,250 ÷ 5,000 × 100 = 45%",
           answer: "45%",
         },
-        tip: "Ontario Reg. 267/03 requires VSR ≥ 38% for Class B biosolids via anaerobic digestion. Class A (EQ) requires additional pathogen reduction (e.g., thermophilic digestion, lime stabilization).",
+        tip: "Biosolids stabilization and pathogen-reduction requirements depend on the applicable regulation, approved treatment process and end-use pathway. Confirm the facility’s approved requirements.",
       },
       {
         name: "Biosolids — Specific Gravity Correction for Dry Tonnes",
@@ -354,7 +354,7 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "TKN", desc: "Total Kjeldahl nitrogen in biosolids (kg N/tonne DS)" },
           { sym: "Availability Factor", desc: "Fraction of TKN available to crop (0.3–0.8 depending on form)" },
         ],
-        tip: "Ontario Reg. 267/03 limits land application based on agronomic nitrogen need. Phosphorus accumulation in soil may be the limiting factor on some fields. Maintain 100 m setback from water bodies.",
+        tip: "Land-application controls, including nutrient balance and setbacks, depend on the applicable regulation, site plan and receiving environment. Use the approved biosolids management plan.",
       },
       {
         name: "Pathogen Reduction — Log Reduction",
@@ -406,7 +406,7 @@ const CATEGORIES: FormulaCategory[] = [
         name: "Permit Compliance Rate",
         formula: "Compliance Rate (%) = (Compliant Samples ÷ Total Samples) × 100",
         units: "%",
-        tip: "Ontario ECA requires 100% compliance with effluent limits. Exceedances must be reported to MECP within 2 hours (acute) or 2 days (chronic). Root cause analysis and corrective action required for all exceedances.",
+        tip: "Compliance and notification timelines are defined by the facility’s Environmental Compliance Approval, permit and incident procedure. Follow the approval-specific reporting path for an exceedance.",
       },
       {
         name: "Confined Space — Atmospheric Testing Order",
@@ -420,8 +420,8 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Staffing Level — Ontario Reg. 128/04",
-        formula: "Class 4 WW plant requires: Operator-in-Charge (OIC) holding Class 4 WW licence + sufficient licensed operators for continuous coverage",
-        tip: "OIC is responsible for overall plant operation and compliance. Operator of Record (OOR) is responsible for day-to-day operations. Class 4 plants must have a Class 4 OIC on call 24/7. Document all OIC decisions.",
+        formula: "Operator designation, certification and staffing requirements follow the applicable regulation, subsystem class and facility operating plan",
+        tip: "Operator roles and coverage requirements depend on the governing regulation, designation and facility plan. Keep required operational records and follow the system’s approved staffing arrangements.",
       },
     ],
   },

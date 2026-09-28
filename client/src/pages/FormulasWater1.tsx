@@ -49,7 +49,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "E = [(40 − 0.1) ÷ 40] × 100 = (39.9 ÷ 40) × 100",
           answer: "99.75%",
         },
-        tip: "Ontario Regulation 170/03 requires treated water turbidity ≤ 1 NTU at all times and ≤ 0.3 NTU in 95% of samples per month.",
+        tip: "Turbidity performance, alarms and reporting thresholds depend on the filtration process, approval and applicable procedure. Use the criteria assigned to the facility rather than one generic limit.",
       },
       {
         name: "Flow Rate Conversion",
@@ -319,7 +319,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "CT = 0.8 × 25",
           answer: "20 mg·min/L",
         },
-        tip: "Ontario Reg. 170/03 requires CT ≥ 6 mg·min/L for Giardia inactivation (2-log) at 15°C, pH 7. Required CT increases at lower temperatures.",
+        tip: "Required CT must come from the applicable disinfectant and organism table, matched to temperature, pH, residual and required inactivation credit. A value of 6 mg·min/L is not a universal Giardia requirement.",
       },
       {
         name: "Chlorine Dose",
@@ -335,7 +335,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Dose = 1.5 + 0.5",
           answer: "2.0 mg/L",
         },
-        tip: "Ontario requires a minimum free chlorine residual of 0.2 mg/L throughout the distribution system at all times.",
+        tip: "For applicable Ontario chlorinated distribution systems, use the 0.05 mg/L free-chlorine minimum and the approved operating target. Chloraminated systems have separate combined-chlorine criteria. A site target is not a universal regulatory constant.",
       },
       {
         name: "Chlorine Feed Rate",
@@ -365,7 +365,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Log Inactivation = log₁₀(1,000 ÷ 1) = log₁₀(1,000)",
           answer: "3-log (99.9% removal)",
         },
-        tip: "Ontario requires 3-log (99.9%) removal/inactivation of Giardia and 4-log (99.99%) for viruses through combined filtration and disinfection.",
+        tip: "For applicable Ontario surface-water and GUDI supplies, overall treatment must provide 2-log Cryptosporidium, 3-log Giardia and 4-log viruses. Confirm the required disinfection portion and credited barriers in the applicable procedure and facility approval.",
       },
     ],
   },
@@ -558,8 +558,8 @@ const CATEGORIES: FormulaCategory[] = [
 
 // ── REGULATORY LIMITS ─────────────────────────────────────────────────────────
 const REGULATORY_LIMITS = [
-  { parameter: "Turbidity (treated)", limit: "≤ 1 NTU (all times); ≤ 0.3 NTU (95% of samples/month)", regulation: "O. Reg. 170/03" },
-  { parameter: "Free Chlorine Residual", limit: "≥ 0.2 mg/L in distribution system", regulation: "O. Reg. 170/03" },
+  { parameter: "Turbidity (treated)", limit: "Use the criteria assigned to the treatment process and facility", regulation: "O. Reg. 170/03" },
+  { parameter: "Free Chlorine Residual", limit: "For chlorinated systems: ≥ 0.05 mg/L free chlorine; apply separate criteria for chloramination", regulation: "O. Reg. 170/03" },
   { parameter: "Fluoride", limit: "Optimal: 0.7 mg/L; MAC: 1.5 mg/L", regulation: "Health Canada / O. Reg. 169/03" },
   { parameter: "Iron (aesthetic)", limit: "≤ 0.3 mg/L", regulation: "O. Reg. 169/03" },
   { parameter: "Manganese (health)", limit: "≤ 0.05 mg/L", regulation: "O. Reg. 169/03" },
@@ -569,8 +569,8 @@ const REGULATORY_LIMITS = [
   { parameter: "Haloacetic Acids (HAAs)", limit: "≤ 0.08 mg/L", regulation: "O. Reg. 169/03" },
   { parameter: "E. coli", limit: "Not detected in any 100 mL sample", regulation: "O. Reg. 170/03" },
   { parameter: "Total Coliforms", limit: "Not detected in ≥ 90% of samples/month", regulation: "O. Reg. 170/03" },
-  { parameter: "Giardia (log removal)", limit: "≥ 3-log (99.9%) removal/inactivation", regulation: "O. Reg. 170/03" },
-  { parameter: "Viruses (log removal)", limit: "≥ 4-log (99.99%) removal/inactivation", regulation: "O. Reg. 170/03" },
+  { parameter: "Giardia (log removal)", limit: "Applicable surface/GUDI overall target: 3-log; confirm process credits", regulation: "O. Reg. 170/03" },
+  { parameter: "Viruses (log removal)", limit: "Applicable surface/GUDI overall target: 4-log; confirm process credits", regulation: "O. Reg. 170/03" },
 ];
 
 // ── RENDER ────────────────────────────────────────────────────────────────────

@@ -8,8 +8,11 @@ import {
 } from "../../shared/ceuLearning";
 import { ceuModuleSlideCount } from "../../shared/ceuSlides";
 import { exerciseFor, gradeExercise } from "./exerciseBank";
+import { ceuExamQuestions, issueCeuExam } from "./assessment";
 
 export const learnerAction = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("beginExam") }),
+  z.object({ type: z.literal("certificateViewed") }),
   z.object({ type: z.literal("resume"), moduleId: z.string().max(80) }),
   z.object({
     type: z.literal("slideProgress"),
@@ -64,11 +67,23 @@ export const learnerAction = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("evaluation"),
     rating: z.number().int().min(1).max(5),
-    useful: z.string().trim().min(10).max(2000),
-    improve: z.string().trim().min(10).max(2000),
+    useful: z.string().trim().max(2000).default(""),
+    improve: z.string().trim().max(2000).default(""),
   }),
 ]);
 export type LearnerAction = z.infer<typeof learnerAction>;
+/** Recover safely when the database committed but its acknowledgement was lost. */
+export function ceuActionAlreadySaved(record: CeuLearningRecord, action: LearnerAction) {
+  if (action.type === "resume") return record.currentModule === action.moduleId;
+  if (action.type === "beginExam") return !!record.assessmentDraft;
+  if (action.type === "certificateViewed") return record.audit.some(a => a.action === "certificateViewed");
+  if (action.type === "slideProgress") return record.currentModule === action.moduleId && record.modules[action.moduleId]?.resumeSlideIndex === action.slideIndex;
+  if (action.type === "completeModule") return !!record.modules[action.moduleId]?.completedAt;
+  if (action.type === "examDraft") return record.assessmentDraft?.attemptId === action.attemptId &&
+    JSON.stringify(record.assessmentDraft.answers) === JSON.stringify(action.answers) &&
+    JSON.stringify(record.assessmentDraft.flaggedQuestionIndexes ?? []) === JSON.stringify([...new Set(action.flaggedQuestionIndexes)]);
+  return false;
+}
 export function torontoDate(now: string) {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Toronto",
@@ -117,7 +132,7 @@ export function transitionCeu(
 ) {
   if (original.courseVersion !== course.version)
     throw new Error("This record belongs to a different course edition.");
-  if (original.completion)
+  if (original.completion && !["evaluation", "certificateViewed"].includes(action.type))
     throw new Error("The completed learning record is immutable.");
   const state = structuredClone(original);
   const moduleId = "moduleId" in action ? action.moduleId : undefined;
@@ -128,6 +143,10 @@ export function transitionCeu(
   const mod = moduleId ? state.modules[moduleId] : undefined;
   if (moduleId && !mod) throw new Error("Course module state is missing.");
   switch (action.type) {
+    case "certificateViewed":
+      if (!state.completion) throw new Error("Pass the course before opening a certificate.");
+      if (state.audit.some(event => event.action === "certificateViewed")) return original;
+      break;
     case "resume":
       state.currentModule = action.moduleId;
       break;
@@ -139,17 +158,19 @@ export function transitionCeu(
       if (action.slideIndex > currentSlideIndex + 1)
         throw new Error("Complete the lesson slides in order.");
       mod!.slideIndex = Math.max(currentSlideIndex, action.slideIndex);
+      mod!.resumeSlideIndex = action.slideIndex;
       state.currentModule = action.moduleId;
       break;
     }
     case "completeModule": {
       const finalSlideIndex = ceuModuleSlideCount(lesson!) - 1;
       const currentSlideIndex = mod!.slideIndex ?? 0;
-      if (action.slideIndex !== finalSlideIndex || currentSlideIndex < finalSlideIndex - 1)
+      if (action.slideIndex !== finalSlideIndex || currentSlideIndex < finalSlideIndex)
         throw new Error("Reach the final lesson slide before completing this module.");
       mod!.slideIndex = finalSlideIndex;
+      mod!.resumeSlideIndex = finalSlideIndex;
       mod!.completedAt ??= now;
-      state.currentModule = action.moduleId;
+      state.currentModule = course.modules[course.modules.findIndex(m => m.id === action.moduleId) + 1]?.id ?? action.moduleId;
       break;
     }
     case "draft":
@@ -218,6 +239,14 @@ export function transitionCeu(
       };
       break;
     }
+    case "beginExam": {
+      if (!ceuReadiness(course, state).modulesCompleted)
+        throw new Error("Complete every course module before opening the final assessment.");
+      if (state.assessmentDraft) return original;
+      const manifest = issueCeuExam(course);
+      state.assessmentDraft = { attemptId: randomUUID(), manifest, answers: manifest.map(() => null), flaggedQuestionIndexes: [] };
+      break;
+    }
     case "examDraft":
     case "exam": {
       const previous = state.attempts.find(a => a.id === action.attemptId);
@@ -238,33 +267,39 @@ export function transitionCeu(
         );
       if (state.attempts.some(a => a.passed))
         throw new Error("A passing assessment is already recorded.");
-      if (action.answers.length !== course.finalAssessment.length)
+      if (!state.assessmentDraft || state.assessmentDraft.attemptId !== action.attemptId)
+        throw new Error("Open your saved final assessment before answering.");
+      const questions = ceuExamQuestions(course, state.assessmentDraft.manifest);
+      if (action.answers.length !== questions.length)
         throw new Error("Answer every assessment question.");
       if (
-        action.type === "exam" &&
         action.answers.some(
           (answer, index) =>
-            answer < 0 || answer >= course.finalAssessment[index].choices.length
+            answer !== null && (answer < 0 || answer >= questions[index].choices.length)
         )
       )
         throw new Error("An assessment answer is outside the available choices.");
       if (action.type === "examDraft") {
+        if (action.flaggedQuestionIndexes.some(i => i >= questions.length))
+          throw new Error("Unknown flagged question.");
         state.assessmentDraft = {
+          manifest: state.assessmentDraft.manifest,
           attemptId: action.attemptId,
           answers: action.answers,
           flaggedQuestionIndexes: [...new Set(action.flaggedQuestionIndexes)],
         };
         break;
       }
-      const score = course.finalAssessment.filter(
+      const score = questions.filter(
         (q, i) => q.correctIndex === action.answers[i]
       ).length;
       state.attempts.push({
         id: action.attemptId,
+        manifest: state.assessmentDraft.manifest,
         answers: action.answers,
         score,
-        total: course.finalAssessment.length,
-        passed: score / course.finalAssessment.length >= 0.8,
+        total: questions.length,
+        passed: score / questions.length >= 0.8,
         at: now,
       });
       state.assessmentDraft = undefined;

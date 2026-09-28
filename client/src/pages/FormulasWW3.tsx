@@ -124,7 +124,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "TN_removal = (38 − 8) ÷ 38 × 100 = 30 ÷ 38 × 100 = 78.9%",
           answer: "78.9%",
         },
-        tip: "Ontario Class 3 facilities often have TN effluent limits of 10–15 mg/L. BNR processes (MLE, A²O, Bardenpho) are required to meet these limits.",
+        tip: "Total nitrogen limits and treatment requirements are set by the facility permit and receiving-water conditions. Select BNR configuration from the approved design and operating strategy.",
       },
       {
         name: "Phosphorus Removal — Enhanced Biological (EBPR)",
@@ -191,7 +191,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "HRT = 3,500 ÷ 175 = 20 days",
           answer: "20 days",
         },
-        tip: "Minimum HRT for mesophilic digestion (35°C) = 15–20 days. Thermophilic (55°C) = 10–12 days. HRT < 10 days risks washout of methanogens. Ontario typically requires HRT ≥ 15 days.",
+        tip: "Digester HRT is selected for the feedstock, temperature, solids retention, process objective and approved design. Use the facility’s operating envelope rather than a universal Ontario minimum.",
       },
       {
         name: "Volatile Solids Reduction (VSR)",
@@ -285,7 +285,7 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "Biosolids TKN", desc: "Total Kjeldahl nitrogen in biosolids (kg N/t dry)" },
           { sym: "Availability factor", desc: "Fraction of N available to crop (0.5–0.7 for Class B)" },
         ],
-        tip: "Ontario O. Reg. 267/03 governs biosolids land application. Class A biosolids have fewer restrictions than Class B. Application rates are limited by agronomic N need, P loading, and setback distances.",
+        tip: "Biosolids land application is governed by the applicable regulation, site conditions and approved plan. Confirm nutrient, pathogen, setback and record requirements for the specific project.",
       },
       {
         name: "Polymer Dose",
@@ -330,7 +330,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "UV dose = 12 × 8 = 96 mJ/cm²",
           answer: "96 mJ/cm²",
         },
-        tip: "Ontario O. Reg. 170/03 requires UV dose ≥ 40 mJ/cm² for drinking water. For wastewater reuse, higher doses (80–120 mJ/cm²) are typical. Transmittance (UVT) must be monitored — low UVT reduces effective dose.",
+        tip: "Wastewater UV performance is governed by the facility permit and validated reactor operating envelope. UVT, flow, lamp condition and sensor validation affect delivered dose; do not use one drinking-water or reuse number as a universal requirement.",
       },
       {
         name: "Membrane Flux (MBR)",
@@ -406,7 +406,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Log reduction = log₁₀(10,000,000 ÷ 200) = log₁₀(50,000) = 4.7",
           answer: "4.7 log reduction",
         },
-        tip: "Ontario requires ≥ 4-log reduction of fecal coliforms for Class IV effluent. UV and chlorination both achieve this. E. coli < 200 CFU/100 mL is a common effluent limit.",
+        tip: "Effluent microbiological limits and required reductions vary by Environmental Compliance Approval, receiving water and reuse context. Use the facility’s stated limits and validated disinfection process.",
       },
     ],
   },

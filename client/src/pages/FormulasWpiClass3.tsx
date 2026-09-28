@@ -32,14 +32,14 @@ const SECTIONS: Section[] = [
         formula: "CT = C × T",
         variables: ["CT = CT value (mg·min/L)", "C = ozone residual concentration (mg/L)", "T = contact time (min) — use T₁₀ (time for 10% of water to pass through)"],
         example: "C = 0.5 mg/L, T₁₀ = 4 min → CT = 0.5 × 4 = 2.0 mg·min/L",
-        notes: "Ozone CT requirements for Giardia: 0.5 mg·min/L (1-log), 1.0 mg·min/L (2-log), 2.0 mg·min/L (3-log) at 25°C. CT increases at lower temperatures."
+        notes: "Select ozone CT from the governing table for the organism, target log credit, temperature, pH and residual. Do not use a single temperature table as a universal requirement."
       },
       {
         name: "UV Dose (Fluence)",
         formula: "UV Dose = E × t",
         variables: ["UV Dose = fluence (mJ/cm²)", "E = UV irradiance (mW/cm²)", "t = exposure time (s)"],
         example: "E = 5 mW/cm², t = 8 s → UV Dose = 5 × 8 = 40 mJ/cm²",
-        notes: "Regulatory minimum: 40 mJ/cm² for 4-log Cryptosporidium inactivation (GCDWQ). UV dose validated by bioassay challenge testing."
+        notes: "UV treatment credit depends on the validated reactor, target organism and governing approval. Bioassay validation is part of demonstrating that credit; a single dose number does not apply to every system."
       },
       {
         name: "UV Transmittance (UVT)",
@@ -179,7 +179,7 @@ const SECTIONS: Section[] = [
         formula: "Log Inactivation = log₁₀(N₀ / N)",
         variables: ["Log Inactivation (log units)", "N₀ = influent pathogen concentration", "N = effluent pathogen concentration"],
         example: "N₀ = 10,000 organisms/L, N = 10 organisms/L → Log Inactivation = log₁₀(10,000/10) = log₁₀(1000) = 3-log",
-        notes: "GCDWQ requires: Giardia: 3-log removal/inactivation; Cryptosporidium: 3-log; Viruses: 4-log. Credit is assigned for filtration (typically 2-log Giardia, 2.5-log Crypto) + disinfection."
+        notes: "Required treatment credits and barrier allocations depend on the governing province, source water and facility approval. Combine only credits that are recognized for the organism and operating conditions."
       },
       {
         name: "Running Annual Average (RAA)",
@@ -235,8 +235,8 @@ const SECTIONS: Section[] = [
 ];
 
 const QUICK_REF = [
-  { label: "Ozone CT (3-log Giardia, 25°C)", value: "2.0 mg·min/L" },
-  { label: "UV Dose (4-log Crypto)", value: "40 mJ/cm²" },
+  { label: "Ozone CT", value: "Use governing condition-specific table" },
+  { label: "UV treatment credit", value: "Use validated reactor performance" },
   { label: "MF/UF Typical Flux", value: "20–80 LMH" },
   { label: "RO Typical Recovery", value: "70–85%" },
   { label: "Rapid Mix G", value: "300–1000 s⁻¹" },
@@ -245,9 +245,9 @@ const QUICK_REF = [
   { label: "Sedimentation SOR (conventional)", value: "20–40 m/d" },
   { label: "TTHM MAC (RAA)", value: "0.100 mg/L" },
   { label: "HAA5 MAC (RAA)", value: "0.080 mg/L" },
-  { label: "Giardia log removal (filtration credit)", value: "2-log" },
-  { label: "Cryptosporidium log removal (filtration credit)", value: "2.5-log" },
-  { label: "Virus log removal (filtration credit)", value: "2-log" },
+  { label: "Giardia barrier credit", value: "Use governing approval" },
+  { label: "Cryptosporidium barrier credit", value: "Use governing approval" },
+  { label: "Virus barrier credit", value: "Use governing approval" },
   { label: "Alum alkalinity consumption", value: "0.5 mg CaCO₃ per mg alum" },
   { label: "Minimum residual alkalinity (coagulation)", value: "> 30 mg/L as CaCO₃" },
 ];

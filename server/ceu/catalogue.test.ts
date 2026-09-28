@@ -24,7 +24,7 @@ describe("CEU curriculum release integrity", () => {
       expect(c.finalAssessment).toHaveLength(c.modules.length * 2);
       const ids = c.modules
         .flatMap(m => m.checks)
-        .concat(c.finalAssessment)
+        .concat(c.finalAssessment, c.alternateFinalAssessment ?? [])
         .map(q => q.id);
       expect(new Set(ids).size).toBe(ids.length);
       for (const m of c.modules) {
@@ -42,7 +42,7 @@ describe("CEU curriculum release integrity", () => {
       }
       for (const q of c.modules
         .flatMap(m => m.checks)
-        .concat(c.finalAssessment)) {
+        .concat(c.finalAssessment, c.alternateFinalAssessment ?? [])) {
         expect(q.choices).toHaveLength(4);
         expect(new Set(q.choices).size).toBe(4);
         expect(q.correctIndex).toBeGreaterThanOrEqual(0);
@@ -61,13 +61,13 @@ describe("CEU curriculum release integrity", () => {
       expect(text).not.toContain("facilitatorGuide");
       expect(text).not.toContain("finalAssessment");
       expect(text).not.toContain('"explanation":');
-      for (const q of c.finalAssessment)
+      for (const q of [...c.finalAssessment, ...(c.alternateFinalAssessment ?? [])])
         expect(text).not.toContain(JSON.stringify(q.prompt));
     }
   });
   it("does not reward a fixed answer position or longest/shortest-choice shortcut", () => {
     for (const c of ceuCurricula) {
-      const questions = c.finalAssessment;
+      const questions = [...c.finalAssessment, ...(c.alternateFinalAssessment ?? [])];
       for (let position = 0; position < 4; position++)
         expect(
           questions.filter(q => q.correctIndex === position).length /

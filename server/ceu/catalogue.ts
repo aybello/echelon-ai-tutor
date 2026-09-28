@@ -26,11 +26,12 @@ export function ceuCourse(key: string) {
 }
 /** Only this representation may cross the public course endpoint. */
 export function publicCeuCourse(course: CeuCurriculum) {
-  const { finalAssessment, ...publicFields } = course;
+  const { finalAssessment, alternateFinalAssessment, plannedMinutes, ...publicFields } = course;
   return {
     ...publicFields,
+    delivery: "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
     modules: course.modules.map(
-      ({ facilitatorGuide, assignment, rubric, checks, ...lesson }) => ({
+      ({ facilitatorGuide, assignment, rubric, activities, checks, ...lesson }) => ({
         ...lesson,
         checks: checks.map(({ correctIndex, explanation, ...q }) => q),
       })
