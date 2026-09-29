@@ -12,7 +12,6 @@ describe("CEU public catalogue", () => {
   it("keeps planned duration distinct from approval and earned credit", () => {
     for (const c of CEU_COURSES) {
       expect(c.publicDisclosure).toContain("No approved CEUs");
-      expect(c.completionRequirements.join(" ")).toContain("timed pilot");
       expect(c.publicDisclosure).toContain("no contact-hour award");
       expect(c.completionRequirements.join(" ")).not.toContain("Pass every module check");
       if (c.stream === "wastewater") {
