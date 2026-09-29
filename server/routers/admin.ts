@@ -32,6 +32,7 @@ import {
   buildJourneyIdentityResolver,
   cohortConversion,
   comparableQuizGain,
+  learningReturnRate,
   medianTimeToFirstQuizMinutes,
   percentage,
 } from "../productKpis";
@@ -211,9 +212,11 @@ export const adminRouter = router({
     const now = new Date();
     const since30 = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
     const since7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const since60 = new Date(now.getTime() - 60 * 24 * 60 * 60 * 1000);
 
-    const [events, exactTrainingEventCounts, outcomes, recentPurchases, [seatCapacity], [assignedSeats], [coursePassSeats]] = await Promise.all([
+    const [events, retentionEvents, exactTrainingEventCounts, outcomes, recentPurchases, [seatCapacity], [assignedSeats], [coursePassSeats]] = await Promise.all([
       getAllProductKpiJourneyEvents(db, since30),
+      getAllProductKpiJourneyEvents(db, since60),
       getExactAnalyticsEventCounts(db, since30),
       db.select({
         result: examOutcomes.result,
@@ -283,6 +286,8 @@ export const adminRouter = router({
       new Set(["quiz_started"]),
       new Set(["quiz_completed"]),
     );
+    const sevenDayReturn = learningReturnRate(retentionEvents, now, 7);
+    const thirtyDayReturn = learningReturnRate(retentionEvents, now, 30);
 
     // Calibration averages must never combine scores produced by different formulas.
     // The headline figures use only the current learner model; other versions stay
@@ -324,6 +329,12 @@ export const adminRouter = router({
       },
       engagement: {
         weeklyActiveLearners,
+        sevenDayReturnRate: sevenDayReturn.rate,
+        sevenDayReturnCohort: sevenDayReturn.eligibleLearners,
+        sevenDayReturners: sevenDayReturn.returnedLearners,
+        thirtyDayReturnRate: thirtyDayReturn.rate,
+        thirtyDayReturnCohort: thirtyDayReturn.eligibleLearners,
+        thirtyDayReturners: thirtyDayReturn.returnedLearners,
         medianMinutesToFirstQuiz: medianTimeToFirstQuizMinutes(events),
         quizImprovementPercentagePoints: quizImprovement.percentagePoints,
         quizImprovementSampleSize: quizImprovement.sampleSize,

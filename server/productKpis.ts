@@ -82,6 +82,12 @@ export interface CohortConversion {
   converted: number;
 }
 
+export interface ReturnRate {
+  rate: number | null;
+  eligibleLearners: number;
+  returnedLearners: number;
+}
+
 /** Conversion among entrants to the named source cohort, never all target events. */
 export function cohortConversion(
   events: JourneyEvent[],
@@ -116,6 +122,49 @@ export function cohortConversion(
     cohortSize: firstSourceAt.size,
     converted,
   };
+}
+
+/**
+ * Share of learners who return to a learning activity on or after the chosen
+ * number of days from their first recorded activity. The denominator includes
+ * only learners whose first activity is old enough to observe.
+ */
+export function learningReturnRate(
+  events: JourneyEvent[],
+  now: Date,
+  afterDays: number,
+): ReturnRate {
+  const resolveIdentity = buildJourneyIdentityResolver(events);
+  const learningEvents = new Set([
+    "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
+    "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
+    "training_session_started", "training_session_completed",
+  ]);
+  const firstLearningAt = new Map<string, number>();
+  const activityByIdentity = new Map<string, number[]>();
+
+  for (const event of events) {
+    if (!learningEvents.has(event.eventName)) continue;
+    const identity = resolveIdentity(event);
+    if (!identity) continue;
+    const at = event.occurredAt.getTime();
+    firstLearningAt.set(identity, Math.min(firstLearningAt.get(identity) ?? at, at));
+    const activity = activityByIdentity.get(identity) ?? [];
+    activity.push(at);
+    activityByIdentity.set(identity, activity);
+  }
+
+  const thresholdMs = afterDays * 24 * 60 * 60 * 1000;
+  let eligibleLearners = 0;
+  let returnedLearners = 0;
+  for (const [identity, firstAt] of firstLearningAt) {
+    if (now.getTime() - firstAt < thresholdMs) continue;
+    eligibleLearners += 1;
+    if ((activityByIdentity.get(identity) ?? []).some(at => at >= firstAt + thresholdMs)) {
+      returnedLearners += 1;
+    }
+  }
+  return { rate: percentage(returnedLearners, eligibleLearners), eligibleLearners, returnedLearners };
 }
 
 /** Median elapsed minutes from signup/access activation to the first quiz start. */

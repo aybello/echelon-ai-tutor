@@ -5,9 +5,15 @@ import { getAllCourses } from "../shared/courseRegistry";
 import { INDIVIDUAL_PRODUCTS } from "../shared/products";
 import { COURSE_SEO_PAGES, REGION_SEO_PAGES } from "../shared/seoCatalog";
 import { buildDynamicSitemap } from "./blogSsr";
-import { buildLlmsTxt, STATIC_PAGE_META } from "./pageSsr";
+import { buildLlmsTxt, PUBLIC_SSR_CACHE_CONTROL, STATIC_PAGE_META } from "./pageSsr";
 
 describe("SEO and geographic landing-page contract", () => {
+  it("uses short edge caching only for static public SSR pages", () => {
+    expect(PUBLIC_SSR_CACHE_CONTROL).toContain("s-maxage=300");
+    expect(PUBLIC_SSR_CACHE_CONTROL).toContain("stale-while-revalidate");
+    expect(PUBLIC_SSR_CACHE_CONTROL).not.toContain("private");
+  });
+
   it("publishes one accurate landing page for every purchasable active course", () => {
     const productByKey = new Map(
       INDIVIDUAL_PRODUCTS.map(product => [product.key, product])

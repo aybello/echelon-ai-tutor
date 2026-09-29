@@ -41,6 +41,8 @@ import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } 
 import { getStudyUtilityPageMeta } from "./studyUtilityPageMeta";
 
 const SITE_URL = "https://echeloninstitute.ca";
+/** Public SEO pages have no account or purchase data, so they can be safely edge-cached. */
+export const PUBLIC_SSR_CACHE_CONTROL = "public, max-age=0, s-maxage=300, stale-while-revalidate=86400";
 const DEFAULT_OG_IMAGE =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/og-image-new-NPyJfV6kq45KpTXHZ5UW8N.png";
 const PUBLISHER_LOGO =
@@ -1164,7 +1166,7 @@ export function registerPageSsrRoutes(
             .status(200)
             .set({
               "Content-Type": "text/html; charset=utf-8",
-              "Cache-Control": "no-cache, must-revalidate",
+              "Cache-Control": isDev ? "no-cache, must-revalidate" : PUBLIC_SSR_CACHE_CONTROL,
             })
             .end(html);
         } catch (err) {

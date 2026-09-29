@@ -6,7 +6,6 @@
 
 import { Link } from "wouter";
 import { useState, useRef, useEffect } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -1372,6 +1371,13 @@ export default function Landing() {
           .landing-hero-section { padding: 28px 16px 30px !important; }
           .landing-hero-section h1 { font-size: clamp(24px, 7vw, 40px) !important; }
           .landing-hero-section p { font-size: 14px !important; }
+          .landing-hero-reveal { opacity: 0; transform: translate3d(0, 16px, 0); animation: landingHeroReveal 420ms cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+          .landing-hero-reveal-1 { animation-delay: 80ms; }
+          .landing-hero-reveal-2 { animation-delay: 150ms; }
+          .landing-hero-reveal-3 { animation-delay: 220ms; }
+          .landing-hero-reveal-4 { animation-delay: 300ms; }
+          @keyframes landingHeroReveal { to { opacity: 1; transform: translate3d(0, 0, 0); } }
+          @media (prefers-reduced-motion: reduce) { .landing-hero-reveal { opacity: 1; transform: none; animation: none; } }
           .landing-province-banner { padding: 10px 12px !important; }
           .landing-province-banner button { font-size: 11px !important; padding: 5px 8px !important; }
         }
@@ -1401,10 +1407,8 @@ export default function Landing() {
         }} />
 
         <div style={{ position: "relative", maxWidth: 800, margin: "0 auto" }}>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          <h1
+            className="landing-hero-reveal landing-hero-reveal-1"
             style={{
               fontSize: "clamp(28px, 4.4vw, 50px)",
               fontWeight: 800,
@@ -1418,12 +1422,10 @@ export default function Landing() {
             <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Advance Your Career.
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.2 }}
+          <p
+            className="landing-hero-reveal landing-hero-reveal-2"
             style={{
               fontSize: "clamp(14px, 1.6vw, 17px)",
               color: "rgba(255,255,255,0.75)",
@@ -1433,14 +1435,11 @@ export default function Landing() {
             }}
           >
             Practice questions, timed mocks, study notes, and AI-powered explanations for Canadian water and wastewater certification.
-          </motion.p>
+          </p>
 
           {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-            className="landing-hero-btns" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+          <div
+            className="landing-hero-btns landing-hero-reveal landing-hero-reveal-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
             <button
               type="button"
               className="btn-pulse"
@@ -1501,15 +1500,13 @@ export default function Landing() {
                 </div>
               </div>
             )}
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.45 }}
+          </div>
+          <p
+            className="landing-hero-reveal landing-hero-reveal-4"
             style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
           >
             🎁 Free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and 3 AI Tutor messages
-          </motion.p>
+          </p>
         </div>
       </section>
 

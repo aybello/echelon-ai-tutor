@@ -4,6 +4,7 @@ import {
   buildJourneyIdentityResolver,
   cohortConversion,
   comparableQuizGain,
+  learningReturnRate,
   medianTimeToFirstQuizMinutes,
   percentage,
 } from "./productKpis";
@@ -55,6 +56,19 @@ describe("product KPI calculations", () => {
       { eventName: "quiz_started", occurredAt: at(30), userId: "2", emailHash: null },
       { eventName: "quiz_started", occurredAt: at(5), userId: null, emailHash: null },
     ])).toBe(20);
+  });
+
+  it("measures return rates only for learners old enough to observe", () => {
+    const now = new Date("2026-09-30T12:00:00Z");
+    const daysAgo = (days: number) => new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
+    const events = [
+      { eventName: "quiz_started", occurredAt: daysAgo(40), userId: "returner", emailHash: null },
+      { eventName: "quiz_completed", occurredAt: daysAgo(7), userId: "returner", emailHash: null },
+      { eventName: "diagnostic_completed", occurredAt: daysAgo(40), userId: "non-returner", emailHash: null },
+      { eventName: "quiz_started", occurredAt: daysAgo(4), userId: "too-new", emailHash: null },
+    ];
+    expect(learningReturnRate(events, now, 7)).toEqual({ rate: 50, eligibleLearners: 2, returnedLearners: 1 });
+    expect(learningReturnRate(events, now, 30)).toEqual({ rate: 50, eligibleLearners: 2, returnedLearners: 1 });
   });
 
   it("measures only comparable standard quiz improvement", () => {

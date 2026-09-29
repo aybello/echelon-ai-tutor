@@ -610,6 +610,53 @@ export default function StudentDashboard() {
           </div>
         )}
 
+        {studyPlan.data && (() => {
+          const hasDiagnostic = Boolean(activation.data?.diagnostic);
+          const hasBaseline = hasDiagnostic || studyPlan.data.hasData;
+          const hasMock = Boolean(studyPlan.data.latestMock);
+          const courseKey = studyPlan.data.examType ?? selectedCourseKey;
+          const activationHref = courseKey ? `/activate/${courseKey}` : studyFocus.data?.quizPath ?? "/quiz";
+          const quizHref = studyFocus.data?.quizPath ?? "/quiz";
+          const mockHref = studyFocus.data?.mockExamPath ?? "/mock-exam";
+          const steps = [
+            { number: "01", title: "Set a baseline", detail: hasDiagnostic ? "Diagnostic complete. Your plan now uses your real topic results." : hasBaseline ? "You already have study data. A diagnostic can sharpen your starting point." : "Take the short diagnostic before choosing what to study.", href: hasBaseline ? quizHref : activationHref, action: hasDiagnostic ? "View plan" : hasBaseline ? "Continue practice" : "Take diagnostic", state: hasBaseline ? "complete" : "current" },
+            { number: "02", title: "Run a focused block", detail: studyPlan.data.totalMissed > 0 ? `${studyPlan.data.totalMissed} missed question${studyPlan.data.totalMissed === 1 ? "" : "s"} are ready for targeted review.` : "Practice the next priority topic, then review what you miss.", href: `${quizHref}?mode=${studyPlan.data.totalMissed > 0 ? "missed" : "standard"}`, action: "Practice now", state: hasBaseline && !hasMock ? "current" : hasBaseline ? "complete" : "upcoming" },
+            { number: "03", title: "Validate with a mock", detail: hasMock ? `Latest mock: ${Math.round((studyPlan.data.latestMock!.score / studyPlan.data.latestMock!.total) * 100)}%. Use it to decide what to revisit.` : "When you have enough practice data, use a timed mock to pressure-test the plan.", href: mockHref, action: hasMock ? "Retake mock" : "Start mock", state: hasMock ? "complete" : hasBaseline ? "current" : "upcoming" },
+            { number: "04", title: "Close the loop", detail: hasMock ? "Review mock misses, repeat the focused block, then validate again." : "Your next mock will create the next focused review block.", href: `${quizHref}?mode=missed`, action: "Review misses", state: hasMock ? "current" : "upcoming" },
+          ] as const;
+          return (
+            <section aria-label="Your repeatable study loop" style={{ background: "#F8FAFC", border: "1px solid #DCE7F5", borderRadius: 14, padding: "18px", marginBottom: 20 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start", flexWrap: "wrap", marginBottom: 14 }}>
+                <div>
+                  <div style={{ color: "#0F172A", fontSize: 15, fontWeight: 850 }}>Your repeatable study loop</div>
+                  <p style={{ color: "#64748B", fontSize: 12, lineHeight: 1.5, margin: "4px 0 0" }}>Baseline → targeted practice → mock → review. Each pass gives you a clearer next block.</p>
+                </div>
+                <span style={{ color: "#0F766E", background: "#CCFBF1", borderRadius: 999, padding: "5px 9px", fontSize: 10, fontWeight: 800 }}>Course-focused</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 10 }}>
+                {steps.map((step) => {
+                  const palette = step.state === "complete"
+                    ? { bg: "#F0FDFA", line: "#99F6E4", accent: "#0F766E", label: "Complete" }
+                    : step.state === "current"
+                      ? { bg: "#EFF6FF", line: "#BFDBFE", accent: "#1D4ED8", label: "Current step" }
+                      : { bg: "#FFFFFF", line: "#E2E8F0", accent: "#64748B", label: "Up next" };
+                  return (
+                    <div key={step.number} style={{ background: palette.bg, border: `1px solid ${palette.line}`, borderRadius: 11, padding: "13px", minHeight: 150, display: "flex", flexDirection: "column" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 9 }}>
+                        <span style={{ color: palette.accent, fontSize: 11, fontWeight: 900, letterSpacing: "0.08em" }}>{step.number}</span>
+                        <span style={{ color: palette.accent, fontSize: 10, fontWeight: 750 }}>{palette.label}</span>
+                      </div>
+                      <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 850, marginBottom: 5 }}>{step.title}</div>
+                      <p style={{ color: "#64748B", fontSize: 11, lineHeight: 1.45, margin: "0 0 12px" }}>{step.detail}</p>
+                      <a href={step.href} style={{ marginTop: "auto", color: palette.accent, fontSize: 11, fontWeight: 800, textDecoration: "none" }}>{step.action} →</a>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
+
         <div style={{
           background: "#fff", border: "1px solid #E2E8F0", borderRadius: 14,
           padding: "16px 18px", marginBottom: 20,

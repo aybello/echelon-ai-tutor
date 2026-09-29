@@ -505,6 +505,8 @@ export default function Admin() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 12 }}>
                   {[
                     { label: "Weekly active learners", value: kpisQ.data.engagement.weeklyActiveLearners, note: "Distinct learner or anonymous-browser identities in 7 days" },
+                    { label: "7-day learner return", value: kpisQ.data.engagement.sevenDayReturnRate == null ? "—" : `${kpisQ.data.engagement.sevenDayReturnRate}%`, note: `${kpisQ.data.engagement.sevenDayReturners} of ${kpisQ.data.engagement.sevenDayReturnCohort} learners returned at least 7 days after their first activity` },
+                    { label: "30-day learner return", value: kpisQ.data.engagement.thirtyDayReturnRate == null ? "—" : `${kpisQ.data.engagement.thirtyDayReturnRate}%`, note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} learners returned at least 30 days after their first activity` },
                     { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started platform-recorded sessions in 30 days" },
                     { label: "Training records", value: kpisQ.data.engagement.trainingRecordsAttested, note: `${kpisQ.data.engagement.trainingHoursExports} training-hours exports in 30 days` },
                     { label: "Time to first quiz", value: kpisQ.data.engagement.medianMinutesToFirstQuiz == null ? "—" : `${kpisQ.data.engagement.medianMinutesToFirstQuiz} min`, note: "Median after signup or activation" },

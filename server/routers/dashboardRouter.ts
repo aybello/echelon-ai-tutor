@@ -9,7 +9,7 @@
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import { READINESS_MODEL_VERSION } from "../_core/readiness";
-import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes, examResults } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
@@ -19,6 +19,7 @@ import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
 import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { calculateReadinessSnapshot } from "../readinessSnapshot";
+import { attemptCourseFilter, examCourseFilter } from "../courseActivityScope";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -728,44 +729,41 @@ export const dashboardRouter = router({
       examTypeFilter = focus.examType;
     }
 
+    const focusedCourse = examTypeFilter ? resolveCourseKey(examTypeFilter) : undefined;
+    const focusedCourseKey = focusedCourse?.courseKey ?? null;
     let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
     let weakTopics: string[] = [];
 
-    // Use the same verified identity and selected-course scope for every login method.
-    const identityWhere = userId && email
-      ? or(eq(questionAttempts.userId, userId), eq(questionAttempts.studentEmail, email))
-      : userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+    // Keep course history separated even where older rows use a bank key or legacy Class 1 stream.
+    const identityWhere = attemptsWhere(userId, email);
+    const focusedAttemptWhere = focusedCourseKey ? attemptCourseFilter(focusedCourseKey) : undefined;
     const rows = await db.select({
       topic: questionAttempts.topic, total: sql<number>`COUNT(*)`,
       correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-    }).from(questionAttempts).where(and(identityWhere,
-      examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
-    )).groupBy(questionAttempts.topic);
+    }).from(questionAttempts).where(and(identityWhere, focusedAttemptWhere)).groupBy(questionAttempts.topic);
     for (const row of rows) {
       topicAccuracyMap[row.topic] = { correct: Number(row.correct), total: Number(row.total) };
       if (Number(row.total) >= 5 && Number(row.correct) / Number(row.total) < 0.65) weakTopics.push(row.topic);
     }
 
-    const examTypeWhere = examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined;
-
     const [missedRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
       .from(questionAttempts)
-      .where(and(identityWhere, examTypeWhere, eq(questionAttempts.correct, "no")));
+      .where(and(identityWhere, focusedAttemptWhere, eq(questionAttempts.correct, "no")));
     const totalMissed = Number(missedRow?.count ?? 0);
 
     const [lowConfRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
       .from(questionAttempts)
-      .where(and(identityWhere, examTypeWhere, eq(questionAttempts.confidence, "low")));
+      .where(and(identityWhere, focusedAttemptWhere, eq(questionAttempts.confidence, "low")));
     const totalLowConf = Number(lowConfRow?.count ?? 0);
 
     // Count bookmarks scoped to the current focus exam type (via bankKey prefix)
     const bmIdentityWhere = userId
       ? eq(bookmarks.userId, userId)
       : eq(bookmarks.studentEmail, email!);
-    const bmWhere = examTypeFilter
-      ? and(bmIdentityWhere, eq(bookmarks.bankKey, examTypeFilter))
+    const bmWhere = focusedCourse
+      ? and(bmIdentityWhere, eq(bookmarks.bankKey, focusedCourse.questionBankKey))
       : bmIdentityWhere;
     const [bookmarkRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
@@ -782,12 +780,25 @@ export const dashboardRouter = router({
     const mockBase = examTypeFilter
       ? (getCourseByKey(examTypeFilter)?.mockExamPath ?? "/quiz?mode=mock")
       : "/quiz?mode=mock";
+    const resultIdentityWhere = userId && email
+      ? or(eq(examResults.userId, userId), eq(examResults.studentEmail, email))
+      : userId ? eq(examResults.userId, userId) : eq(examResults.studentEmail, email!);
+    const [latestMock] = await db.select({
+      score: examResults.score,
+      total: examResults.total,
+      createdAt: examResults.createdAt,
+    }).from(examResults).where(and(
+      resultIdentityWhere,
+      focusedCourseKey ? examCourseFilter(focusedCourseKey) : undefined,
+      eq(examResults.calcOnly, "no"),
+    )).orderBy(desc(examResults.createdAt)).limit(1);
 
     type RecType = "weak_topic" | "missed_review" | "low_confidence" | "bookmarked" | "mock_exam" | "start_practicing";
     const recommendations: Array<{ type: RecType; title: string; description: string; action: string; actionHref: string; priority: number }> = [];
 
     if (totalAttempts === 0) {
-      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", actionHref: quizBase, priority: 1 });
+      const activationPath = focusedCourseKey ? `/activate/${focusedCourseKey}` : quizBase;
+      recommendations.push({ type: "start_practicing", title: "Start with your diagnostic", description: "Set a baseline first, then Echelon can direct your next study block.", action: "Set my baseline", actionHref: activationPath, priority: 1 });
     } else {
       const weakWithData = weakTopics
         .map((t) => ({ topic: t, ...(topicAccuracyMap[t] ?? { correct: 0, total: 0 }) }))
@@ -803,11 +814,19 @@ export const dashboardRouter = router({
       if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 3 });
       if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", actionHref: `${quizBase}?mode=low-confidence`, priority: 4 });
       if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", actionHref: `${quizBase}?mode=bookmarked`, priority: 5 });
-      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", actionHref: mockBase, priority: 6 });
+      if (totalAttempts >= 50 && weakWithData.length === 0 && !latestMock) recommendations.push({ type: "mock_exam", title: "Validate with a Mock Exam", description: "You have enough practice data. Use a full mock to check how your study plan is working.", action: "Start mock exam", actionHref: mockBase, priority: 6 });
+      if (latestMock) {
+        const score = Math.round((latestMock.score / latestMock.total) * 100);
+        recommendations.push({ type: "missed_review", title: "Turn your mock into the next study block", description: `Your latest mock was ${score}%. Review the missed areas, then retest after focused practice.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 1 });
+      }
     }
 
     recommendations.sort((a, b) => a.priority - b.priority);
-    return { recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked, hasData: totalAttempts > 0, examType: examTypeFilter };
+    return {
+      recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked,
+      hasData: totalAttempts > 0, examType: focusedCourseKey ?? examTypeFilter,
+      latestMock: latestMock ? { score: latestMock.score, total: latestMock.total, createdAt: latestMock.createdAt } : null,
+    };
   }),
 
   /**
