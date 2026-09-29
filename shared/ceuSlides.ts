@@ -116,7 +116,7 @@ export function ceuModuleSlides(module: SlideLesson): CeuSlide[] {
       return {
         id: `${module.id}:concept-${index + 1}`,
         kind: "lesson" as const,
-        eyebrow: `Core concept ${index + 1} of ${lessonGroups.length}`,
+        eyebrow: `Lesson step ${index + 1} of ${lessonGroups.length}`,
         title:
           heading === undefined
             ? index === 0

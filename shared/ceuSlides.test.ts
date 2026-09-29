@@ -50,6 +50,7 @@ describe("CEU module slide decks", () => {
         // No single teaching slide should become an unreadable wall of text.
         for (const slide of concepts)
           expect(slide.body.split(/\s+/).length).toBeLessThanOrEqual(520);
+        expect(concepts.every(slide => slide.eyebrow.startsWith("Lesson step"))).toBe(true);
       }
     }
   });
