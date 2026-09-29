@@ -8,12 +8,12 @@ interface AnimProps {
 }
 
 function prefersReducedMotion() {
-  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  return typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 }
 
 function useReveal(once: boolean, margin = "-60px") {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(() => typeof window === "undefined" || prefersReducedMotion());
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (prefersReducedMotion()) {
@@ -22,10 +22,14 @@ function useReveal(once: boolean, margin = "-60px") {
     }
     const element = ref.current;
     if (!element) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry?.isIntersecting) return;
+    if (!("IntersectionObserver" in window)) {
       setVisible(true);
-      if (once) observer.disconnect();
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      const inView = Boolean(entry?.isIntersecting);
+      setVisible(inView);
+      if (inView && once) observer.disconnect();
     }, { rootMargin: margin });
     observer.observe(element);
     return () => observer.disconnect();
@@ -46,7 +50,7 @@ function revealStyle(visible: boolean, delay: number, transform: string, kind: "
 
 function Reveal({ children, delay = 0, className, once = true, transform, kind = "slide" }: AnimProps & { transform: string; kind?: "fade" | "slide" }) {
   const { ref, visible } = useReveal(once);
-  return <div ref={ref} className={className} style={revealStyle(visible, delay * 1000, transform, kind)}>{children}</div>;
+  return <div ref={ref} data-echelon-reveal className={className} style={revealStyle(visible, delay * 1000, transform, kind)}>{children}</div>;
 }
 
 /** Native CSS and IntersectionObserver replaces Framer Motion on public routes. */
@@ -75,7 +79,7 @@ interface StaggerContainerProps {
 
 export function StaggerContainer({ children, className, once = true, style }: StaggerContainerProps) {
   const { ref, visible } = useReveal(once);
-  return <div ref={ref} className={className} style={{ ...style, opacity: visible ? 1 : 0, transition: "opacity 180ms ease-out" }}>{children}</div>;
+  return <div ref={ref} data-echelon-reveal className={className} style={{ ...style, opacity: visible ? 1 : 0, transition: "opacity 180ms ease-out" }}>{children}</div>;
 }
 
 export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {

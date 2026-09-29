@@ -58,13 +58,19 @@ describe("product KPI calculations", () => {
     ])).toBe(20);
   });
 
-  it("measures return rates only for learners old enough to observe", () => {
+  it("measures rolling return cohorts without treating a truncated window as first activity", () => {
     const now = new Date("2026-09-30T12:00:00Z");
     const daysAgo = (days: number) => new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
     const events = [
-      { eventName: "quiz_started", occurredAt: daysAgo(40), userId: "returner", emailHash: null },
-      { eventName: "quiz_completed", occurredAt: daysAgo(7), userId: "returner", emailHash: null },
-      { eventName: "diagnostic_completed", occurredAt: daysAgo(40), userId: "non-returner", emailHash: null },
+      // 30-day cohort: active 40 days ago, then active again 20 days ago.
+      { eventName: "quiz_started", occurredAt: daysAgo(40), userId: "monthly-returner", emailHash: null },
+      { eventName: "quiz_completed", occurredAt: daysAgo(20), userId: "monthly-returner", emailHash: null },
+      { eventName: "diagnostic_completed", occurredAt: daysAgo(40), userId: "monthly-non-returner", emailHash: null },
+      // 7-day cohort: the anonymous browser is linked to the later account event.
+      { eventName: "quiz_started", occurredAt: daysAgo(12), userId: null, emailHash: null, anonymousHash: "browser-1" },
+      { eventName: "quiz_completed", occurredAt: daysAgo(6), userId: "weekly-returner", emailHash: null, anonymousHash: "browser-1" },
+      { eventName: "quiz_started", occurredAt: daysAgo(12), userId: "weekly-non-returner", emailHash: null },
+      // Fresh activity alone never enters an earlier cohort.
       { eventName: "quiz_started", occurredAt: daysAgo(4), userId: "too-new", emailHash: null },
     ];
     expect(learningReturnRate(events, now, 7)).toEqual({ rate: 50, eligibleLearners: 2, returnedLearners: 1 });

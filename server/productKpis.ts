@@ -125,9 +125,12 @@ export function cohortConversion(
 }
 
 /**
- * Share of learners who return to a learning activity on or after the chosen
- * number of days from their first recorded activity. The denominator includes
- * only learners whose first activity is old enough to observe.
+ * Repeat activity over two adjacent windows of equal length. Learners enter
+ * the cohort only when active in the earlier window, then count as returned
+ * when active again in the most recent window.
+ *
+ * This rolling-cohort definition works with the bounded owner KPI query. It
+ * must not be presented as lifetime retention from a learner's first event.
  */
 export function learningReturnRate(
   events: JourneyEvent[],
@@ -140,30 +143,23 @@ export function learningReturnRate(
     "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
     "training_session_started", "training_session_completed",
   ]);
-  const firstLearningAt = new Map<string, number>();
-  const activityByIdentity = new Map<string, number[]>();
+  const cohort = new Set<string>();
+  const returned = new Set<string>();
+  const periodMs = afterDays * 24 * 60 * 60 * 1000;
+  const recentStart = now.getTime() - periodMs;
+  const cohortStart = recentStart - periodMs;
 
   for (const event of events) {
     if (!learningEvents.has(event.eventName)) continue;
     const identity = resolveIdentity(event);
     if (!identity) continue;
     const at = event.occurredAt.getTime();
-    firstLearningAt.set(identity, Math.min(firstLearningAt.get(identity) ?? at, at));
-    const activity = activityByIdentity.get(identity) ?? [];
-    activity.push(at);
-    activityByIdentity.set(identity, activity);
+    if (at >= cohortStart && at < recentStart) cohort.add(identity);
+    if (at >= recentStart && at <= now.getTime()) returned.add(identity);
   }
 
-  const thresholdMs = afterDays * 24 * 60 * 60 * 1000;
-  let eligibleLearners = 0;
-  let returnedLearners = 0;
-  for (const [identity, firstAt] of firstLearningAt) {
-    if (now.getTime() - firstAt < thresholdMs) continue;
-    eligibleLearners += 1;
-    if ((activityByIdentity.get(identity) ?? []).some(at => at >= firstAt + thresholdMs)) {
-      returnedLearners += 1;
-    }
-  }
+  const eligibleLearners = cohort.size;
+  const returnedLearners = [...cohort].filter(identity => returned.has(identity)).length;
   return { rate: percentage(returnedLearners, eligibleLearners), eligibleLearners, returnedLearners };
 }
 

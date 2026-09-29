@@ -7,12 +7,17 @@ export function useCountUp(end: number, duration: number = 1800) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (typeof window === "undefined" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setInView(true);
+    if (typeof window === "undefined") return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      setCount(end);
       return;
     }
     const element = ref.current;
     if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry?.isIntersecting) return;
       setInView(true);
@@ -20,7 +25,7 @@ export function useCountUp(end: number, duration: number = 1800) {
     }, { rootMargin: "-80px" });
     observer.observe(element);
     return () => observer.disconnect();
-  }, []);
+  }, [end]);
 
   useEffect(() => {
     if (!inView) return;

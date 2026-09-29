@@ -730,6 +730,9 @@ export const dashboardRouter = router({
     }
 
     const focusedCourse = examTypeFilter ? resolveCourseKey(examTypeFilter) : undefined;
+    if (examTypeFilter && !focusedCourse) {
+      throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown study course." });
+    }
     const focusedCourseKey = focusedCourse?.courseKey ?? null;
     let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
     let weakTopics: string[] = [];
