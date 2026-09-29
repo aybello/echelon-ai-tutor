@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 import { ENV } from "./_core/env";
 
 export interface ContactEmailPayload {
@@ -37,7 +37,7 @@ export function purchaseAccessSummary(accessExpiresAt: PurchaseConfirmationPaylo
   return `${purchaseAccessLabel(accessExpiresAt)}.`;
 }
 
-function createTransporter(): nodemailer.Transporter {
+function createTransporter(): Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
       host: ENV.smtpHost,
@@ -55,7 +55,7 @@ function createTransporter(): nodemailer.Transporter {
   throw new Error("SMTP not configured");
 }
 
-async function getTransporter(): Promise<nodemailer.Transporter> {
+async function getTransporter(): Promise<Transporter> {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return createTransporter();
   }
@@ -80,7 +80,7 @@ export async function sendPurchaseConfirmationEmail(
 ): Promise<void> {
   const { email, productName, productKey, amountCAD, quizPath, mockPath, accessExpiresAt } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
 
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
@@ -244,7 +244,7 @@ export async function sendSubscriptionConfirmationEmail(
 ): Promise<void> {
   const { email, tierLabel, provinceLabel, currentPeriodEnd, quizPath } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -355,7 +355,7 @@ export async function sendSubscriptionRenewalEmail(
 ): Promise<void> {
   const { email, tierLabel, provinceLabel, currentPeriodEnd, quizPath } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -462,7 +462,7 @@ export async function sendSubscriptionRenewalEmail(
 export async function sendContactEmail(payload: ContactEmailPayload): Promise<void> {
   const { name, email, subject, message } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
 
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
@@ -577,7 +577,7 @@ export async function sendMagicLinkEmail(
 ): Promise<void> {
   const { email, magicLinkUrl, expiresInMinutes } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -912,7 +912,7 @@ export async function sendTeamEnrollmentEmail(
   const { email, orgName, managerEmail, loginUrl, courseName, unsubscribeUrl } = payload;
   const courseLabel = courseName ?? "All-Access (all certification levels)";
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -1140,7 +1140,7 @@ export async function sendOperatorStudyReminderEmail(
         : `You have ${daysUntilExam} days until your exam. Keep your momentum going.`
     : "Your manager wants to make sure you're on track for your upcoming exam.";
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -1156,7 +1156,7 @@ export async function sendOperatorStudyReminderEmail(
     return;
   }
 
-  const mail: nodemailer.SendMailOptions = {
+  const mail: SendMailOptions = {
     from: `"Echelon Institute" <${ENV.smtpUser ?? "noreply@echeloninstitute.ca"}>`,
     to: email,
     subject: `📚 Study reminder from ${orgName} — keep up the great work`,
@@ -1233,7 +1233,7 @@ export interface OtpEmailPayload {
 export async function sendOtpEmail(payload: OtpEmailPayload): Promise<void> {
   const { email, code, expiresInMinutes } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
