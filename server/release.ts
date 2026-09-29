@@ -2,10 +2,13 @@
  * Public release marker used to verify that the serving application—not only
  * the database or a scheduled script—has reached the intended deployment.
  *
- * Bump RELEASE_ID whenever a production release changes a capability listed
- * below. The values are deliberately non-secret and safe for /api/health.
+ * The build stamps the actual source commit. A dirty checkout is labelled;
+ * source archives without a supplied commit explicitly report "unknown".
+ * The values are deliberately non-secret and safe for /api/health.
  */
-export const RELEASE_ID = "2026-09-09.oit-quality-revision.1";
+declare const __BUILD_RELEASE_ID__: string;
+export const RELEASE_ID =
+  typeof __BUILD_RELEASE_ID__ === "string" ? __BUILD_RELEASE_ID__ : "unknown";
 
 export const RELEASE_CAPABILITIES = [
   "course-pass-order-scoped-refunds-v1",

@@ -44,7 +44,8 @@ describe("public release health", () => {
         "oit-exact-version-content-revision-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-09-09.oit-quality-revision.1");
+    // Direct source execution has no build stamp; it must not claim a release.
+    expect(RELEASE_ID).toBe("unknown");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });
