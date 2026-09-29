@@ -195,7 +195,7 @@ describe.skipIf(!enabled)("CEU database-backed self-paced lifecycle", () => {
       name: "Example Learner",
       operatorNumber: "90000064",
       courseId: courseKey,
-      finalScore: 8,
+      finalScore: course.finalAssessment.length,
     });
     expect(
       (await learner.save({ courseKey, revision: before, action })).record
