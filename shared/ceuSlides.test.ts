@@ -68,4 +68,19 @@ describe("CEU module slide decks", () => {
       }
     }
   });
+
+  it("formats the compliance role lesson as skimmable operator guidance", () => {
+    const module = ceuCourse("ceu-drinking-water-compliance")!.modules[0]!;
+    const slide = ceuModuleSlides(module).find(
+      item => item.title === "Match the task to a documented role"
+    );
+
+    expect(slide).toBeDefined();
+    expect(slide?.body).toContain("## The rule");
+    expect(slide?.body).toContain("## Follow this sequence");
+    expect(slide?.body).toContain("## Do not use these as proof");
+    expect(slide?.body).toContain("## What to record at handover");
+    expect(slide?.body).toContain("1. **Name the task.**");
+    expect(slide?.body).toContain("- **Supervisor title:**");
+  });
 });
