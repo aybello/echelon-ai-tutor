@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import mysql from "mysql2/promise";
 import { readFileSync } from "node:fs";
 import type { CeuCurriculum } from "../shared/ceuLearning";
+import { ceuModuleSlideCount } from "../shared/ceuSlides";
 
 const short = JSON.parse(
   readFileSync(
@@ -12,6 +13,7 @@ const short = JSON.parse(
   )
 ) as CeuCurriculum;
 
+const firstSlideCount = ceuModuleSlideCount(short.modules[0]);
 const base = process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000";
 const prefix = `ceu-browser-${randomUUID()}`;
 const emails = [`${prefix}-learner@example.test`, `${prefix}-other@example.test`];
@@ -55,7 +57,7 @@ async function markRemainingModulesComplete(email: string, course: CeuCurriculum
     const record = JSON.parse(rows[0].stateJson);
     const at = new Date().toISOString();
     for (const module of course.modules.slice(1)) {
-      record.modules[module.id].slideIndex = 6;
+      record.modules[module.id].slideIndex = ceuModuleSlideCount(module) - 1;
       record.modules[module.id].completedAt = at;
     }
     record.currentModule = course.modules.at(-1)!.id;
@@ -112,9 +114,9 @@ test("public CEU courses offer lessons and separate sample questions", async ({ 
   await page.getByRole("button", { name: "Course overview", exact: true }).click();
 
   await page.getByRole("button", { name: "Open all lessons", exact: true }).click();
-  await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
+  await expect(page.getByText(`Slide 1 of ${firstSlideCount}`, { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Next", exact: true }).click();
-  await expect(page.getByText("Slide 2 of 7", { exact: true })).toBeVisible();
+  await expect(page.getByText(`Slide 2 of ${firstSlideCount}`, { exact: true })).toBeVisible();
 
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.locator("body").evaluate(element => element.scrollWidth)).toBeLessThanOrEqual(390);
@@ -138,15 +140,15 @@ test("signed-in learner completes a lesson, passes the protected final and recei
     page.getByRole("button", { name: "Start and save my learning" }).click(),
   ]);
 
-  await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
+  await expect(page.getByText(`Slide 1 of ${firstSlideCount}`, { exact: true })).toBeVisible();
   await expect(page.locator(".ceu-sidebar-module ol button").nth(6)).toBeDisabled();
   await page.route("**/api/trpc/ceu.save**", route => route.abort("failed"), { times: 1 });
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("could not save");
-  await expect(page.getByText("Slide 1 of 7", { exact: true })).toBeVisible();
-  for (let index = 2; index <= 7; index++) {
+  await expect(page.getByText(`Slide 1 of ${firstSlideCount}`, { exact: true })).toBeVisible();
+  for (let index = 2; index <= firstSlideCount; index++) {
     await saveClick(page, page.getByRole("button", { name: "Next", exact: true }));
-    await expect(page.getByText(`Slide ${index} of 7`, { exact: true })).toBeVisible();
+    await expect(page.getByText(`Slide ${index} of ${firstSlideCount}`, { exact: true })).toBeVisible();
   }
   await saveClick(page, page.getByRole("button", { name: "Complete module" }));
   await expect(page.getByRole("heading", { name: short.modules[1].title, exact: true })).toBeVisible();
@@ -160,7 +162,7 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   // not an assumed item/option index.
   for (let index = 0; index < short.finalAssessment.length; index++) {
     const prompt = await page.locator(".ceu-exam-question-card h1").innerText();
-    const question = short.finalAssessment.find(q => q.prompt === prompt)!;
+    const question = [...short.finalAssessment, ...(short.alternateFinalAssessment ?? [])].find(q => q.prompt === prompt)!;
     expect(question).toBeTruthy();
     const group = page.getByRole("group", { name: prompt, exact: true });
     if (index === 0) {

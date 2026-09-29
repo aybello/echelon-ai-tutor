@@ -231,7 +231,7 @@ describe("fully self-paced CEU decisions", () => {
     const id = short.modules[0].id;
     r = act(short, r, { type: "slideProgress", moduleId: id, slideIndex: 2 });
     expect(r.modules[id].resumeSlideIndex).toBe(2);
-    expect(r.modules[id].slideIndex).toBe(6);
+    expect(r.modules[id].slideIndex).toBe(ceuModuleSlideCount(short.modules[0]) - 1);
   });
   it("requires a server-issued attempt, resumes it, rejects replaced IDs and preserves legacy drafts", () => {
     let r = completeModules(short);
@@ -240,9 +240,10 @@ describe("fully self-paced CEU decisions", () => {
     expect(act(short, r, { type: "beginExam" })).toEqual(r);
     expect(() => act(short, r, { type: "examDraft", attemptId: randomUUID(), answers: r.assessmentDraft!.answers, flaggedQuestionIndexes: [] })).toThrow("Open your saved");
     const legacy = completeModules(short);
-    legacy.assessmentDraft = { attemptId: randomUUID(), answers: short.finalAssessment.map(() => null) };
-    const result = act(short, legacy, { type: "exam", attemptId: legacy.assessmentDraft.attemptId, answers: short.finalAssessment.map(q => q.correctIndex) });
-    expect(result.completion?.finalScore).toBe(short.finalAssessment.length);
+    const legacyQuestions = ceuExamQuestions(short);
+    legacy.assessmentDraft = { attemptId: randomUUID(), answers: legacyQuestions.map(() => null) };
+    const result = act(short, legacy, { type: "exam", attemptId: legacy.assessmentDraft.attemptId, answers: legacyQuestions.map(q => q.correctIndex) });
+    expect(result.completion?.finalScore).toBe(legacyQuestions.length);
     const completion = result.completion;
     const rated = act(short, result, { type: "evaluation", rating: 4, useful: "", improve: "" });
     expect(rated.completion).toEqual(completion);
@@ -263,7 +264,7 @@ describe("fully self-paced CEU decisions", () => {
     r = act(short, r, { type: "beginExam" });
     expect(r.assessmentDraft!.attemptId).not.toBe(firstId);
     r = act(short, r, { type: "exam", attemptId: r.assessmentDraft!.attemptId, answers: ceuExamQuestions(short, r.assessmentDraft!.manifest).map(q => q.correctIndex) });
-    expect(r.completion?.finalScore).toBe(8);
+    expect(r.completion?.finalScore).toBe(short.finalAssessment.length);
     expect(ceuExamQuestions(short, r.attempts[0].manifest)).toEqual(questions);
   });
   it("does not expose a completion or reviewer action on the learner input schema", () => {

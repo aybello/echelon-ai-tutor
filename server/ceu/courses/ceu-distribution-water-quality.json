@@ -16,8 +16,8 @@
         "Calculate a nominal storage turnover indicator.",
         "Explain why an average does not describe the oldest water."
       ],
-      "lesson": "### Storage has an operating pattern\nA simple turnover indicator divides active storage volume by representative daily throughput. At 1,200 m³ and 400 m³/day, the quotient is 3 days. This is a screening calculation, not a measured maximum water age. Mixing, inlet/outlet arrangement, operating levels, short-circuiting and demand patterns can produce a distribution of ages.\n\nUse active volume and define the throughput boundary. A flow that circulates through a loop and returns may not represent fresh exchange. A meter total at the zone boundary may include demand that never passes through the tank. Inspect the system configuration before assigning it to a storage calculation.\n\nCompare operating conditions. If throughput falls while the active volume remains high, the nominal indicator increases. Reducing an operating volume might improve exchange but can affect pressure, emergency storage and other requirements. An operator learning exercise cannot authorize that trade-off. Prepare a review request with the constraints and decision owner.\n\nWater age can help organize a water-quality investigation, but it is not a standalone compliance test. Pair hydraulic screening with representative residual, temperature and other relevant quality observations and the current facility requirements.",
-      "evidence": "**N1 — tank screening data**\nNorth tank active volume 1,500 m³. Verified fresh throughput averages 500 m³/day on weekdays and 250 m³/day on a representative weekend condition. Zone meter shows 800 m³/day on weekdays, including 300 m³/day that bypasses the tank. Proposed active volume 1,000 m³; emergency storage review is outstanding.\n\nN2: No tracer study or validated hydraulic age model is supplied.",
+      "lesson": "### What a turnover indicator actually tells you\n\nA storage turnover indicator is a single quotient: a volume divided by a rate. It answers one narrow question, which is how long the tank would take to pass a volume of water equal to some chosen part of its contents, if the tank behaved like a simple flow-through vessel. It does not measure water age. It does not measure the age of the oldest parcel of water in the tank. It does not tell you whether the tank stratifies, short-circuits between a shared inlet and outlet, or holds a cold dead layer under a warm surface in August.\n\nTreat the number as a screening flag that ranks your storage facilities against each other and against their own history. A reservoir whose indicator moves from roughly three days in winter to roughly nine days in a low-demand shoulder season is telling you that the hydraulic conditions changed, and that residual decay, nitrification in chloraminated systems, disinfection by-product formation and taste and odour complaints are all more likely in that zone. The US EPA Drinking Water Distribution System Tools and Resources material discusses water age, storage and pressure management as interrelated distribution integrity issues. That is United States technical guidance. It is useful for the physics and for investigation structure, and it is not an Ontario requirement. What binds you in Ontario is your Environmental Compliance Approval, your drinking water works permit, your operational plan and the duties and record obligations that flow from O. Reg. 128/04, including sections 23 and 25 to 27 covering designation of overall responsible operator and operator in charge, operator duties and records.\n\n### Defining active volume and the throughput boundary\n\nMost bad turnover numbers come from the two inputs, not from the arithmetic.\n\nActive volume is the volume that actually cycles between the routine low operating level and the routine high operating level. It is not the volume to overflow, and it is not the nameplate capacity on the asset register. Volume below the low operating level is carried continuously and is exactly the water that ages. Volume above the routine high control point is only used during fire flow or upset. If you divide total volume by demand you will overstate the residence time of the water that moves, and if you divide active volume by demand you will understate the residence time of the water that sits. Both numbers are useful. Report both, and label which is which.\n\nThroughput must be the flow that actually exchanges through that tank. Common boundary errors include using a zone master meter that includes a large industrial service teed in upstream of the tank tie-in, using a pumping station total that recirculates through a loop and returns to the same main without passing the tank, and using annual average day demand when you are trying to explain a July problem or an April problem. Choose a representative period that matches the question you are answering, and write down which period you used.\n\nIf the tank is a floating reservoir on a single inlet and outlet pipe, recognize that the pipe carries flow in both directions and the tank only exchanges the drawdown and refill volume each cycle. If the tank has a dedicated inlet with an altitude valve and a separate outlet, exchange is generally better but you still need the operating band.\n\n### Worked example 1: nominal turnover on active and total volume\n\nCase assumptions supplied for this example only. Fictional ground reservoir, cylindrical, internal diameter 18.0 m. Recorded routine operating band is 3.2 m to 7.4 m of water depth. Overflow is at 7.6 m. Zone master meter recorded 3,010 m3 over 7 days. A metered bulk customer taps the main upstream of the reservoir tie-in and is recorded at 45 m3/d. These are teaching values, not authorized values.\n\nStep 1, plan area.\nArea = 0.7854 x (18.0 m)^2\nArea = 0.7854 x 324.0 m2\nArea = 254.5 m2\n\nStep 2, active depth.\nActive depth = 7.4 m minus 3.2 m\nActive depth = 4.2 m\n\nStep 3, active volume.\nActive volume = 254.5 m2 x 4.2 m\nActive volume = 1,068.9 m3\n\nStep 4, volume at routine high level.\nVolume at high level = 254.5 m2 x 7.4 m\nVolume at high level = 1,883.3 m3\n\nStep 5, average daily throughput at the meter.\nMeter average = 3,010 m3 divided by 7 d\nMeter average = 430.0 m3/d\n\nStep 6, correct the boundary.\nExchanging throughput = 430.0 m3/d minus 45 m3/d\nExchanging throughput = 385.0 m3/d\n\nStep 7, nominal turnover on active volume.\nTurnover (active) = 1,068.9 m3 divided by 385.0 m3/d\nTurnover (active) = 2.78 d\n\nStep 8, nominal turnover on volume held at high level.\nTurnover (held) = 1,883.3 m3 divided by 385.0 m3/d\nTurnover (held) = 4.89 d\n\nAnswer: the nominal active turnover indicator is 2.8 days and the nominal turnover on the full held volume is 4.9 days. If you had used the uncorrected meter total and the full volume you would have reported 1,883.3 m3 divided by 430.0 m3/d, which is 4.38 d, and if you had used active volume with the uncorrected meter you would have reported 2.49 d. The spread between 2.5 d and 4.9 d comes entirely from input definitions.\n\n### Worked example 2: why the average hides the oldest water\n\nSame fictional reservoir. Case assumption: SCADA trends show one fill and draw cycle per day, with the level falling from 7.4 m to 6.1 m overnight before refill.\n\nStep 1, drawdown depth per cycle.\nDrawdown = 7.4 m minus 6.1 m\nDrawdown = 1.3 m\n\nStep 2, drawdown volume per cycle.\nDrawdown volume = 254.5 m2 x 1.3 m\nDrawdown volume = 330.9 m3\n\nStep 3, exchange fraction per cycle, referenced to the volume held at high level.\nExchange fraction = 330.9 m3 divided by 1,883.3 m3\nExchange fraction = 0.176, that is 17.6 percent per cycle\n\nStep 4, fraction of original water remaining after n cycles, assuming complete mixing during each cycle.\nRemaining fraction = (1 minus 0.176)^n\nRemaining fraction = (0.824)^n\n\nStep 5, cycles required to leave 10 percent of the original water.\nn = ln(0.10) divided by ln(0.824)\nn = (-2.303) divided by (-0.1936)\nn = 11.9 cycles\n\nStep 6, convert cycles to days at one cycle per day.\nTime to 90 percent replacement = 11.9 cycles x 1.0 d/cycle\nTime to 90 percent replacement = 11.9 d\n\nStep 7, cross-check using the continuously stirred tank approximation.\nMean residence time = 1,883.3 m3 divided by 385.0 m3/d = 4.89 d\nTime to 90 percent replacement = 2.303 x 4.89 d = 11.3 d\n\nAnswer: the nominal active turnover indicator is 2.8 days, the mean residence time is about 4.9 days, and roughly 11 to 12 days are needed before only 10 percent of the original water remains. The oldest 10 percent of the water in that tank is four times older than the headline screening number. That gap is the entire reason an average does not describe the oldest water. If mixing is poor and the tank stratifies, the real tail is worse than either model, because the exchanged volume recirculates near the inlet and the lower or upper dead zone never participates.\n\n### Input register and interpretation matrix\n\nUse a fixed register so two operators calculating the same tank get the same answer.\n\n| Input | Source you must name | Value used | Why it can be wrong |\n|---|---|---|---|\n| Plan area or volume curve | As-built drawing or calibrated strap chart | 254.5 m2 | Asset register nameplate volume is often the overflow volume |\n| Routine low operating level | SCADA setpoint list, current revision | 3.2 m | Seasonal setpoint changes not carried into the calculation |\n| Routine high operating level | SCADA setpoint list, current revision | 7.4 m | Altitude valve or control band changed after commissioning |\n| Throughput period | Meter totalizer log, dated | 7 d ending on a stated date | Annual average used to explain a seasonal event |\n| Upstream or bypass deductions | Zone schematic and customer meter reads | 45 m3/d | Bulk service teed in upstream of the tank tie-in |\n| Cycle count per day | SCADA level trend | 1 cycle/d | Multiple partial cycles counted as one |\n| Outlet water quality | Sample record with field QC | residual, temperature, turbidity | Sample drawn from the fill line, not the aged volume |\n\n| Screening result | Supporting observation | Reasonable operator response |\n|---|---|---|\n| Indicator stable, residual stable at tank outlet | No complaints, temperature normal | Record and continue routine monitoring |\n| Indicator rising, residual falling at tank outlet | Low-demand season | Increase outlet sampling frequency, trend temperature, raise with the overall responsible operator |\n| Indicator stable, residual falling | Possible nitrification or demand in the main | Investigate the main and the tank separately, sample at both |\n| Indicator very low, residual falling | Recent main break or repair upstream | Check the disinfection and return to service records for that work |\n| Indicator unavailable because inputs conflict | Setpoints and drawings disagree | Do not publish a number, escalate to verify the record |\n\n### Judgment: what changes the answer\n\nChange the operating band and everything moves. Lowering the high control point by one metre in this example removes 254.5 m3 of held volume and shortens the mean residence time, but it also removes emergency and fire storage, changes system pressure and may conflict with the approval for the works. An operator screening exercise never authorizes that change. The correct output is a written review request that states the constraint, the calculated indicator, the supporting observations and the decision owner.\n\nChange the season and the meaning changes. The same 4.9 day mean residence at 4 degrees Celsius and at 22 degrees Celsius are not the same risk, because chlorine decay, nitrification and biofilm activity all accelerate with temperature.\n\nChange the sampling point and the evidence changes. A sample from the inlet or from the tank drain during a fill does not represent the aged water. If you are testing whether the tail is real, draw from the outlet late in a drawdown, and if you are using field turbidity as part of the picture, follow the instrument and laboratory quality control expectations in your procedure. The US EPA Field turbidity measurement material describes field measurement procedure and quality control practice, and it is US technical guidance. Your own sampling plan and the applicable Ontario regulation govern what counts.\n\nIf a distribution sample returns an adverse result, the hydraulic screening does not change your reporting duty. In Ontario an immediate verbal report is required, followed by written notice within 24 hours after that report, in accordance with the applicable regulation.\n\n### Common errors\n\nFirst, dividing overflow volume by annual average day demand and calling the result the water age. This overstates exchange for the moving volume and understates the tail, and it has no defensible basis when the tank rarely reaches overflow.\n\nSecond, using a zone master meter without checking the schematic. If a bulk user, a pressure zone feed or a recirculation loop sits on the wrong side of the tank tie-in, the throughput is not exchanging water in that tank. In worked example 1 this single error moved the indicator by about 11 percent, and in systems with a large upstream industrial account it can move it by half.\n\nThird, reporting the nominal indicator as if it were the maximum age. A 2.8 day indicator alongside an 11.9 day time to 90 percent replacement is the same tank. Reporting only the first number will get water quality complaints dismissed that should have been investigated.\n\nFourth, recalculating after a setpoint change but leaving the old number in the operating record. Records under O. Reg. 128/04 need to show what was done and when. An undated indicator with no named inputs cannot be defended later.\n\n### What to verify before you act\n\nVerify the tank volume curve or strap chart against the as-built drawing, not against the asset spreadsheet. Verify the current low and high control setpoints in the controlling SCADA configuration and note the revision date. Verify the zone schematic to confirm which metered flows actually pass the tank tie-in. Verify the facility Environmental Compliance Approval and drinking water works permit for any constraint on operating levels, storage volume or pressure before proposing an operating band change, and confirm the change path in your operational plan. Verify your sampling plan for the required distribution sampling points and frequencies, and the instrument quality control requirements in your procedure before using field turbidity or residual results as evidence. If the tank has recently been out of service, or if upstream watermain work occurred, verify the return to service records against the applicable edition of the Ontario watermain disinfection procedure, including how that work was classified as planned work, repair or contamination. Confirm the designated overall responsible operator and operator in charge for the subsystem, consistent with O. Reg. 128/04 sections 23 and 25 to 27, and confirm who owns the decision you are recommending.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are used for training only. No value here is an authorized setpoint or requirement.\n\nSetting: Township of Marnock, Zone 2 standpipe, fictional. Internal diameter 12.0 m. As-built volume curve confirms a uniform cylinder. SCADA setpoint list, revision dated in the current year, shows a routine operating band of 14.5 m to 19.5 m of water depth. Zone master meter totalizer log shows 2,380 m3 over 7 days. The zone schematic shows a bulk agricultural service teed in upstream of the standpipe tie-in, metered at 85 m3/d.\n\nRecords supplied to the learner:\n1. SCADA setpoint list, band 14.5 m to 19.5 m, dated.\n2. Meter totalizer log, 2,380 m3 over 7 d, dated.\n3. Asset spreadsheet listing active volume as 1,131 m3, undated, no source.\n4. Maintenance note stating the standpipe is fully turned over every 2.2 days with no stagnation risk, no level data attached.\n\nRecords to reject: items 3 and 4. The spreadsheet value of 1,131 m3 corresponds to a 10.0 m band, since 113.1 m2 x 10.0 m equals 1,131 m3, which contradicts the dated 5.0 m operating band. The maintenance note asserts full turnover from a nominal indicator and attaches no drawdown or cycle data, so it cannot support a stagnation conclusion.\n\nWorked solution:\nArea = 0.7854 x (12.0 m)^2 = 0.7854 x 144.0 m2 = 113.1 m2\nActive depth = 19.5 m minus 14.5 m = 5.0 m\nActive volume = 113.1 m2 x 5.0 m = 565.5 m3\nVolume at high level = 113.1 m2 x 19.5 m = 2,205.5 m3\nMeter average = 2,380 m3 divided by 7 d = 340.0 m3/d\nExchanging throughput = 340.0 m3/d minus 85 m3/d = 255.0 m3/d\nTurnover (active) = 565.5 m3 divided by 255.0 m3/d = 2.22 d\nMean residence time = 2,205.5 m3 divided by 255.0 m3/d = 8.65 d\nTime to 90 percent replacement = 2.303 x 8.65 d = 19.9 d\n\nConclusion to record: the 2.2 day figure is a nominal active turnover indicator only. The mean residence time is about 8.7 days and roughly 20 days are needed to replace 90 percent of the stored volume. Escalate to the overall responsible operator with the dated inputs, request outlet residual and temperature trending, and do not alter the operating band without confirming the approval and the decision owner.",
       "assignment": "Calculate weekday and weekend nominal indicators at the current volume and conditional indicators at 1,000 m³. Explain the zone-meter error and why none of the results establishes maximum age. Write a 300–450-word review request covering water quality, storage constraints, operating authority and further evidence.",
       "rubric": [
         "Correct indicators 3/6 days and conditional 2/4 days.",
@@ -57,30 +57,82 @@
       ],
       "checks": [
         {
-          "id": "nt1",
+          "id": "ceu-distribution-water-quality-storage-turnover-c1",
           "objective": "storage-turnover",
-          "prompt": "1,200 m³ divided by 300 m³/day gives:",
+          "prompt": "A fictional cylindrical ground reservoir has an internal diameter of 15.0 m. Using the plan area method for a nominal turnover calculation, what plan area should be used?",
           "choices": [
-            "0.25 day",
-            "4 days",
-            "900 days",
-            "3.6 days"
+            "176.7 m2",
+            "706.9 m2",
+            "225.0 m2",
+            "47.1 m2"
           ],
-          "correctIndex": 1,
-          "explanation": "The nominal turnover indicator is 4 days."
+          "correctIndex": 0,
+          "explanation": "Plan area is 0.7854 x (15.0 m)^2, which is 176.7 m2. The 706.9 m2 figure comes from wrongly treating the diameter as a radius, and 47.1 m2 is the circumference value, not an area."
         },
         {
-          "id": "nt2",
+          "id": "ceu-distribution-water-quality-storage-turnover-c2",
           "objective": "storage-turnover",
-          "prompt": "A nominal turnover indicator determines:",
+          "prompt": "A nominal storage turnover indicator is a single volume divided by a rate. What question does that quotient actually answer for a distribution storage facility?",
           "choices": [
-            "The exact oldest water age",
-            "Every parcel’s residence time",
-            "A screening average under stated assumptions",
-            "The approved emergency storage volume"
+            "The measured age of the oldest parcel of water held in the tank",
+            "The time to pass a chosen volume if the tank behaved as flow-through",
+            "The degree of thermal stratification present in the tank in August",
+            "The confirmed disinfection by-product formation potential in the zone"
+          ],
+          "correctIndex": 1,
+          "explanation": "The indicator only estimates how long it would take to pass a chosen volume in an idealized flow-through vessel, so it is a screening flag. It does not measure the oldest parcel, stratification or by-product formation, which is why the oldest water answer is wrong."
+        },
+        {
+          "id": "ceu-distribution-water-quality-storage-turnover-c3",
+          "objective": "storage-turnover",
+          "prompt": "In a turnover screening calculation, which volume is described as active volume?",
+          "choices": [
+            "The nameplate capacity listed on the asset register record",
+            "The volume between the low level and the overflow elevation",
+            "The volume that cycles between routine low and high levels",
+            "The volume carried below the routine low operating level"
           ],
           "correctIndex": 2,
-          "explanation": "It is a simplified screening measure, not a full age distribution."
+          "explanation": "Active volume is the band that actually cycles between routine low and routine high operating levels. Nameplate or to-overflow volumes include water that is only used in fire flow or upset, so they overstate the residence time of moving water."
+        },
+        {
+          "id": "ceu-distribution-water-quality-storage-turnover-c4",
+          "objective": "storage-turnover",
+          "prompt": "A zone master meter reads 4,200 m3 over 7 days, but a metered bulk customer taking 60 m3/d is teed into the main upstream of the tank tie-in. What throughput should be used for that tank?",
+          "choices": [
+            "60 m3/d, using only the metered bulk customer consumption",
+            "600 m3/d, since the master meter total is the zone record",
+            "660 m3/d, adding the bulk service to the meter average",
+            "540 m3/d, deducting flow that never exchanges through the tank"
+          ],
+          "correctIndex": 3,
+          "explanation": "The meter average is 600 m3/d, and the 60 m3/d bulk service never passes the tank, so exchanging throughput is 540 m3/d. Using the uncorrected 600 m3/d overstates exchange and shortens the reported turnover indicator."
+        },
+        {
+          "id": "ceu-distribution-water-quality-storage-turnover-c5",
+          "objective": "storage-turnover",
+          "prompt": "United States EPA distribution system tools and resources material discusses water age, storage and pressure management together. How should an Ontario operator treat that material?",
+          "choices": [
+            "As useful technical guidance that is not an Ontario requirement",
+            "As a replacement for the operational plan sampling provisions",
+            "As the governing document for drinking water works permits",
+            "As enforceable Ontario limits for storage facility water age"
+          ],
+          "correctIndex": 0,
+          "explanation": "The US material is helpful for the physics and investigation structure but carries no Ontario legal force. Ontario duties come from the Environmental Compliance Approval, drinking water works permit, operational plan and O. Reg. 128/04, so calling it enforceable is wrong."
+        },
+        {
+          "id": "ceu-distribution-water-quality-storage-turnover-c6",
+          "objective": "storage-turnover",
+          "prompt": "An operator finds that the SCADA setpoint list and the as-built volume curve disagree about the routine high operating level of a reservoir. What is the appropriate next step for the turnover screening?",
+          "choices": [
+            "Substitute nameplate volume until the drawings are reissued",
+            "Withhold the number and escalate to verify the record first",
+            "Publish the number using the higher of the two level records",
+            "Average the two records and note the uncertainty in the log"
+          ],
+          "correctIndex": 1,
+          "explanation": "When inputs conflict, publishing any figure creates a false record that other operators will reuse, so the value should be withheld and the record verified. Averaging or using the higher level simply hides the conflict inside a number that looks defensible."
         }
       ]
     },
@@ -91,8 +143,8 @@
         "Compare matched locations and operating periods.",
         "Distinguish a pattern from proof of its cause."
       ],
-      "lesson": "### Map observations before naming the mechanism\nA residual trend needs location, time, analyte, method and operating context. A low result at a distal point may relate to water age, local demand, source variation, sampling conditions or measurement error. A pattern becomes more persuasive when repeated under comparable conditions and supported by hydraulic evidence.\n\nDo not compare free chlorine with total chlorine as though they were identical. Do not treat samples collected hours apart as one instantaneous profile. Record the travel and mixing limitations, and verify questionable measurements using the applicable method.\n\nA simple residual change can be described as an absolute difference or percentage relative to a stated baseline. From 0.80 to 0.50 mg/L is a 0.30 mg/L decrease, or 37.5% of 0.80. This descriptive change is not a disinfection credit calculation or proof of a specific reaction rate. Estimating a decay coefficient would require justified kinetic and hydraulic assumptions.\n\nBuild a next-sampling plan that can discriminate hypotheses. If low turnover is suspected, compare similar locations across different documented turnover states while controlling measurement method and source conditions. If a local sample tap is suspected, investigate that sampling path without dismissing the broader concern.",
-      "evidence": "**N3 — same-method free-chlorine observations**\n| Location | Weekday 07:00 | Weekend 07:00 |\n|---|---:|---:|\n|Tank inlet|0.90|0.88|\n|Tank outlet|0.70|0.45|\n|DistalD4|0.55|0.30|\n\nN4: Temperature increased from 14 to 19°C; weekend throughput is lower as inN1. DistalD4's sampling tap has no recent condition record. Each entry is one grab. No regulatory threshold is supplied.",
+      "lesson": "### What a residual reading is evidence of\n\nA chlorine residual reading is a measurement of one water parcel, at one tap, at one instant, by one method, on one instrument. It is not a property of the pipe, the zone or the neighbourhood. Everything you later claim about the distribution system is an inference built on top of that single parcel, and the inference is only as strong as the conditions you documented around it.\n\nThat matters because residual investigations almost always begin with a pattern: three low results in the same subdivision, a downward drift at one distal station, a difference between the north and south sides of a pressure zone. A pattern is a reason to investigate. It is not proof of a mechanism. The same spatial pattern of declining free chlorine can be produced by long detention time in an under-turned reservoir, by a dead-end with almost no demand, by nitrification in a chloraminated zone, by a private-side plumbing issue at the sample tap, by a closed or partly closed valve that has redirected flow, by a source or blend change upstream, by biofilm and corroded unlined cast iron exerting wall demand, or by an analytical error such as an expired reagent or an uncleaned sample cell. Several of these can be true at once.\n\nThe operator's job in this module is narrow and demanding: build a comparison that can actually separate those explanations, and be honest in writing about what the comparison can and cannot support. The US EPA resource Drinking Water Distribution System Tools and Resources is useful background on water age, storage turnover and pressure management as drivers of distribution water quality, but it is United States technical guidance. It does not set Ontario requirements. Your residual expectations, sampling locations, frequencies and response actions come from the applicable Ontario regulation, your system's Drinking Water Works Permit and Municipal Drinking Water Licence, your Environmental Compliance Approval where applicable, and your documented operational procedures.\n\n### Matching: the four things that must line up\n\nA comparison is matched when the only meaningful thing that differs between the two data sets is the factor you are testing. In distribution work, four dimensions have to line up before a difference means anything.\n\nLocation matching. Compare a distal dead-end to another distal dead-end of similar pipe material, diameter, length and service density, not to a sample station on a transmission main. Compare the same tap, same fixture, same flush protocol.\n\nOperating period matching. Sample under a documented operating state: which source or blend is in service, reservoir level and direction of travel, booster pump status, pressure reducing valve setpoints, any valve that is out of its normal position, hydrant flushing or construction in the area, and demand condition. Two samples taken at 09:00 on different days are not matched if one day the reservoir was filling and the other day it was draining.\n\nAnalyte and method matching. Free chlorine and total chlorine are different measurements. Combined chlorine is total minus free. A grab sample analysed by a field colorimeter and a continuous analyser reading are different data streams with different drift and different response times. Field turbidity has its own quality control requirements, and the US EPA field turbidity measurement guidance describes the field procedure and quality control elements such as cell cleanliness, condensation, indexed cells and verification standards. Your local laboratory and site methods govern which method is acceptable for your records.\n\nRecord matching. Every field record must be attributable. O. Reg. 128/04 addresses operator designation, operator duties and records, including the requirement that operators record what they did and what they observed. A residual investigation that cannot name the operator, the instrument and the time is not evidence.\n\nUse a single register so the matching fields are collected every time rather than reconstructed afterwards.\n\n| Field | Entry | Why it is needed |\n|---|---|---|\n| Site ID and tap type | e.g. DS-14, dedicated sample station | Fixes location comparability |\n| Date and clock time | 24 h local | Pairs sample to operating state |\n| Flush time and flow | minutes, approximate L/min | Removes premise or riser water |\n| Free Cl2 (mg/L) | to 0.01 mg/L | Primary analyte |\n| Total Cl2 (mg/L) | to 0.01 mg/L | Enables combined chlorine check |\n| Method and instrument ID | DPD colorimeter serial | Traceability and drift review |\n| Reagent lot and expiry | lot number, date | Common invalidation cause |\n| Verification check result | standard or blank result | Shows instrument was fit for use |\n| Water temperature | degrees C | Affects decay and nitrification risk |\n| Turbidity (NTU) and method | field or lab | Supports disturbance hypotheses |\n| Operating state | source, blend, tank level and direction, pumps, valves, flushing | The matching variable |\n| Operator name and licence | printed and signed | Record duty under O. Reg. 128/04 |\n| Comments | odour, colour, works nearby | Context that dies if unwritten |\n\n### Worked example 1: matched pair and difference in differences\n\nAll values below are supplied case assumptions for teaching. They are not authorized values for any real system.\n\nSite A is a distal dead-end sample station. Site M is a matched distal dead-end of similar pipe material and length on the same pressure zone, used as a control. Both are sampled with the same colorimeter, same reagent lot, same flush protocol.\n\nStep 1. Baseline free chlorine at Site A, six readings collected over three weeks under the documented normal operating state:\n0.84 mg/L + 0.80 mg/L + 0.83 mg/L + 0.79 mg/L + 0.85 mg/L + 0.81 mg/L = 4.92 mg/L\n4.92 mg/L / 6 = 0.82 mg/L\n\nStep 2. Current free chlorine at Site A, three readings in one week under the same documented operating state:\n0.52 mg/L + 0.50 mg/L + 0.51 mg/L = 1.53 mg/L\n1.53 mg/L / 3 = 0.51 mg/L\n\nStep 3. Absolute change at Site A:\n0.82 mg/L - 0.51 mg/L = 0.31 mg/L decrease\n\nStep 4. Relative change at Site A, stated against the baseline:\n0.31 mg/L / 0.82 mg/L x 100 = 37.8 percent decrease\n\nStep 5. The control site over the same two periods:\nbaseline mean = 0.79 mg/L, current mean = 0.76 mg/L\n0.79 mg/L - 0.76 mg/L = 0.03 mg/L decrease\n\nStep 6. Difference in differences, which is the number that isolates Site A from a system-wide shift:\n0.31 mg/L - 0.03 mg/L = 0.28 mg/L\n\nStep 7. Is 0.28 mg/L bigger than the measurement noise? Assume a supplied expanded uncertainty of plus or minus 0.03 mg/L on each mean. For a comparison built from four means:\nsquare root of (4 x (0.03 mg/L)^2) = square root of (0.0036 (mg/L)^2) = 0.06 mg/L\n0.28 mg/L / 0.06 mg/L = 4.7 times the combined uncertainty\n\nStep 8. Free versus total, same sampling events:\nbaseline: total 0.88 mg/L - free 0.82 mg/L = combined 0.06 mg/L\ncurrent: total 0.69 mg/L - free 0.51 mg/L = combined 0.18 mg/L\nfree as a fraction of total, baseline: 0.82 / 0.88 x 100 = 93.2 percent\nfree as a fraction of total, current: 0.51 / 0.69 x 100 = 73.9 percent\n\nAnswer. Site A shows a 0.31 mg/L decrease, 37.8 percent of its own baseline, and 0.28 mg/L of that change is specific to Site A rather than shared with the matched control. The change is roughly 4.7 times the combined measurement uncertainty, so it is unlikely to be instrument noise. The combined chlorine tripled from 0.06 mg/L to 0.18 mg/L, which points toward increased demand or ammonia-related reactions at that location rather than a simple dilution. That is a localized, measurable, real pattern. It is still not a cause.\n\n### Worked example 2: travel time sets the sampling window\n\nSuppose the feed to Site A is a single 150 mm main, 1,850 m long, from a known junction. Supplied case values.\n\nStep 1. Cross-sectional area:\nA = 3.1416 / 4 x (0.150 m)^2 = 0.7854 x 0.0225 m^2 = 0.01767 m^2\n\nStep 2. Segment volume:\nV = 0.01767 m^2 x 1,850 m = 32.69 m^3\n\nStep 3. Daytime flow of 4.2 L/s converted:\n4.2 L/s / 1,000 L/m^3 = 0.0042 m^3/s\n\nStep 4. Daytime travel time:\nt = 32.69 m^3 / 0.0042 m^3/s = 7,783 s\n7,783 s / 3,600 s/h = 2.16 h\n\nStep 5. Night flow of 0.9 L/s:\n0.9 L/s / 1,000 L/m^3 = 0.0009 m^3/s\nt = 32.69 m^3 / 0.0009 m^3/s = 36,322 s\n36,322 s / 3,600 s/h = 10.09 h\n\nStep 6. Ratio of the two travel times:\n10.09 h / 2.16 h = 4.67 times longer at night\n\nStep 7. Descriptive first-order decay using the daytime travel time, junction residual 0.82 mg/L and Site A residual 0.51 mg/L:\nln(0.82 mg/L / 0.51 mg/L) = ln(1.608) = 0.475\nk = 0.475 / 2.16 h = 0.220 per hour\n\nStep 8. The same two residuals using the night travel time:\nk = 0.475 / 10.09 h = 0.047 per hour\n\nAnswer. Travel time in this segment ranges from about 2.16 h to about 10.09 h depending on demand, so a downstream grab taken at the same clock time as the upstream grab is not sampling the same water. The paired downstream sample must be offset by the travel time applicable to that operating period. The decay coefficient derived from the same two residuals differs by a factor of 4.7 depending only on the hydraulic assumption. Report the coefficient as a descriptive estimate with its assumptions stated, never as a measured system property, and never as a disinfection credit. Plug flow with no blending, no storage contribution and steady demand are idealisations that rarely hold in a looped network.\n\n### Designing the next round to discriminate hypotheses\n\nA sampling round that cannot change your mind is a waste of reagent. Before you write the plan, state for each hypothesis what result would support it and what result would kill it.\n\n| Hypothesis | Discriminating observation | Main confounder | Next action |\n|---|---|---|---|\n| Long detention in the zone | Residual improves after documented turnover increase, control site unchanged | Turnover change coincides with a source change | Sample under two documented turnover states, same source |\n| Local sample tap or premise issue | Residual normal at the nearest hydrant or adjacent service, low only at that tap | Hydrant flush changes local hydraulics | Sample tap, adjacent service and hydrant in one round |\n| Valve out of normal position | Pressure or flow pattern inconsistent with records, residual boundary follows a hydraulic line | Recent flushing programme | Field valve verification, compare to valve records |\n| Nitrification in chloraminated zone | Rising combined chlorine loss, nitrite trend, temperature elevated | Analytical interference | Add nitrite and ammonia to the round, check temperature record |\n| Upstream source or blend change | Change appears at the zone inlet and at the control site as well | Simultaneous demand shift | Compare inlet, control and suspect site in the same window |\n| Analytical error | Difference disappears on a second instrument, or verification standard fails | Two instruments share a bad reagent lot | Duplicate with second verified instrument and fresh lot |\n| Recent repair or new main | Pattern starts at a work site date, turbidity elevated | Seasonal demand shift | Review disinfection and commissioning records for that work |\n\nWhere recent watermain work is in scope, the Ontario watermain disinfection procedure is the reference for planned work, repairs and the classification of contamination, and you must use the current applicable edition. If your investigation touches a repair or a new main, pull the disinfection, flushing, sampling and return to service records for that work before you theorize.\n\nOne more design rule. Decide the response before you see the result. If a confirmatory round returns a residual below what the applicable regulation and your approval require, you are no longer in an investigation, you are in a response with defined notification steps. In Ontario, an adverse drinking water test result requires an immediate verbal report to the specified parties, followed by written notice within 24 hours after that verbal report. Know that path before you send anyone into the field.\n\n### Common errors\n\nComparing free chlorine to total chlorine across periods. An operator sees 0.82 mg/L last month and 0.69 mg/L today and reports a decline, without noticing that last month's value was free and today's was total. The apparent decline is smaller than reality, because free dropped from 0.82 mg/L to 0.51 mg/L. Any total reading lower than the free reading from the same sample is physically impossible and invalidates the record.\n\nCalling a route a profile. Samples collected along a main over three hours in a truck are not a snapshot. Demand, tank level and source blend all moved during the route, and the water at the last site left the junction hours before the first sample was drawn. Presenting them as a single instantaneous gradient overstates the spatial trend and hides the temporal one.\n\nDropping the control site once the suspect site looks interesting. Without the matched control, you cannot tell a site-specific problem from a zone-wide or plant-side shift. Example 1 collapses entirely if the control data are missing, because the whole 0.31 mg/L could have been system-wide.\n\nInconsistent flushing at the tap. Thirty seconds one day and five minutes the next changes what you are measuring from premise and riser water to main water. Record the flush time every time and keep it constant.\n\nTreating a fitted decay coefficient as a measured fact. As shown in example 2, the same residual pair yields 0.220 per hour or 0.047 per hour depending purely on the assumed travel time. Publishing one figure without the hydraulic assumption misleads everyone downstream of the report.\n\n### What to verify before you act\n\nVerify your system's Drinking Water Works Permit, Municipal Drinking Water Licence and any applicable Environmental Compliance Approval for the sampling locations, residual expectations and operational requirements that apply to your system specifically. Do not import a number from a textbook, a neighbouring utility or United States guidance.\n\nVerify the applicable Ontario regulation for sampling, analysis and reporting, including the notification path for an adverse result, and confirm the current version rather than a printout in a binder.\n\nVerify operator designation, duties and record requirements under O. Reg. 128/04, sections 23 and 25 to 27, so that the people collecting and interpreting the data are authorized to do so and the records satisfy the duty to record.\n\nVerify the current applicable edition of the Ontario watermain disinfection procedure if any part of the pattern coincides with planned work, a repair, or a suspected contamination event, and read the classification guidance before deciding what the work means for your zone.\n\nVerify the instrument record: last verification, reagent lot and expiry, cell condition, and whether the same instrument produced both the baseline and the current data. Verify the field turbidity procedure and its quality control steps against your local method, using the US EPA field turbidity measurement guidance only as technical background.\n\nVerify the operating record: SCADA trends for reservoir level, source in service, booster pump run times, pressure, and any valve, flushing or construction activity in the window. If the operating record and the field log disagree, resolve the conflict in writing before you draw a conclusion. Retain the field register, instrument verification records, SCADA extracts, valve and work orders, and the written rationale for each hypothesis you kept and each one you rejected. That retained set, not the conclusion, is what defends the decision later.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are used only for training. No value here is an authorized limit or setpoint.\n\nHarbourview Distribution System, Zone 3. Two matched distal dead-ends, DE-7 and DE-9, similar diameter, material and service density, both sampled at dedicated stations with a five minute flush.\n\nSupplied records:\n\n| Record | Site | Date and time | Free Cl2 mg/L | Total Cl2 mg/L | Instrument ID |\n|---|---|---|---|---|---|\n| 1 | DE-7 | Tue 09:30 | 0.74 | 0.79 | CL-102 |\n| 2 | DE-9 | Tue 09:55 | 0.71 | 0.77 | CL-102 |\n| 3 | DE-7 | Thu 09:35 | 0.38 | 0.30 | CL-102 |\n| 4 | DE-9 | Thu 10:00 | 0.66 | 0.72 | CL-102 |\n| 5 | DE-7 | Thu 09:40 | 0.70 | not recorded | blank |\n\nDE-7 is fed by 1,200 m of 200 mm main from the Zone 3 inlet. Thursday daytime flow in that main is 2.5 L/s.\n\nRecords you must reject. Record 5 has no instrument ID, and the instrument log shows CL-102 was out for verification from 08:00 to 11:15 Thursday, so nothing at DE-7 on Thursday morning could have come from a verified unit other than the entries already attributed. An unattributed 0.70 mg/L that contradicts a verified 0.38 mg/L cannot be used. Record 3 also fails an internal check: total chlorine must be equal to or greater than free chlorine.\n0.30 mg/L - 0.38 mg/L = -0.08 mg/L combined, which is impossible.\nThe free value may still be usable, but the total is void and must be reflagged and recollected.\n\nMatched comparison using the verified free values:\nTuesday difference between sites: 0.74 mg/L - 0.71 mg/L = 0.03 mg/L\nThursday difference between sites: 0.66 mg/L - 0.38 mg/L = 0.28 mg/L\nChange in the site-to-site difference: 0.28 mg/L - 0.03 mg/L = 0.25 mg/L\nDE-9 own change: 0.71 mg/L - 0.66 mg/L = 0.05 mg/L, which is 7.0 percent of 0.71 mg/L\nDE-7 own change: 0.74 mg/L - 0.38 mg/L = 0.36 mg/L, which is 48.6 percent of 0.74 mg/L\n\nTravel time to DE-7 for the paired upstream sample:\nA = 0.7854 x (0.200 m)^2 = 0.03142 m^2\nV = 0.03142 m^2 x 1,200 m = 37.70 m^3\nQ = 2.5 L/s / 1,000 L/m^3 = 0.0025 m^3/s\nt = 37.70 m^3 / 0.0025 m^3/s = 15,080 s = 4.19 h\n\nConclusion. The loss is specific to DE-7, not zone wide. The next round pairs a Zone 3 inlet sample with a DE-7 sample offset by about 4.2 h, adds the adjacent hydrant and one service, recollects total chlorine on a verified instrument, and pulls valve and repair records for the DE-7 branch. The pattern is real. The cause is not yet established.",
       "assignment": "Calculate the outlet and distal absolute and percentage changes. Build a three-hypothesis evidence table and a repeated sampling plan. Explain which differences could reflect source, hydraulic, temperature or sampling effects and why a single mechanism cannot yet be isolated. Specify how results will be compared without making an unsupported compliance declaration.",
       "rubric": [
         "Correct changes and baseline for percentages.",
@@ -133,30 +185,82 @@
       ],
       "checks": [
         {
-          "id": "nr1",
+          "id": "ceu-distribution-water-quality-residual-patterns-c1",
           "objective": "residual-patterns",
-          "prompt": "A fall from 0.80 to 0.60 mg/L is what percentage of the initial value?",
+          "prompt": "A single free chlorine grab result taken at a distribution sample station is best described as evidence of what?",
           "choices": [
-            "20%",
-            "33.3%",
-            "25%",
-            "75%"
-          ],
-          "correctIndex": 2,
-          "explanation": "0.20/0.80×100=25%."
-        },
-        {
-          "id": "nr2",
-          "objective": "residual-patterns",
-          "prompt": "Temperature and turnover both change between two grabs. Causation is:",
-          "choices": [
-            "Not isolated by that comparison",
-            "Proven to be temperature alone",
-            "Proven to be turnover alone",
-            "Irrelevant to interpretation"
+            "The condition of one water parcel at that tap and time",
+            "The average residual in the pipe serving that street",
+            "The performance of the whole pressure zone that day",
+            "The residual received by downstream customers all day"
           ],
           "correctIndex": 0,
-          "explanation": "The comparison is confounded and needs further evidence."
+          "explanation": "A residual reading measures one parcel of water, at one tap, at one instant, by one method on one instrument. Claiming it represents the whole zone that day is the common over-reach, because zone behaviour varies with water age, tank turnover and demand at every other point."
+        },
+        {
+          "id": "ceu-distribution-water-quality-residual-patterns-c2",
+          "objective": "residual-patterns",
+          "prompt": "In a matched residual comparison, which set of dimensions must line up before a difference between two data sets means anything?",
+          "choices": [
+            "Operating period, tank coating type, meter size, customer billing class",
+            "Location, operating period, analyte and method, record attribution",
+            "Location, pipe age, customer complaint count, outdoor temperature",
+            "Clock time, operator preference, sample bottle size, sample volume"
+          ],
+          "correctIndex": 1,
+          "explanation": "Matching requires comparable locations, a documented operating state, the same analyte and method, and attributable records. Pipe age and complaint counts are useful context but they do not control the variables that create the difference you are testing."
+        },
+        {
+          "id": "ceu-distribution-water-quality-residual-patterns-c3",
+          "objective": "residual-patterns",
+          "prompt": "Supplied case assumption for this teaching example: a sample at station DS-7 reads total chlorine 0.86 mg/L and free chlorine 0.62 mg/L. What is the combined chlorine?",
+          "choices": [
+            "0.86 mg/L",
+            "1.48 mg/L",
+            "0.24 mg/L",
+            "0.62 mg/L"
+          ],
+          "correctIndex": 2,
+          "explanation": "Combined chlorine is total minus free, so 0.86 mg/L minus 0.62 mg/L equals 0.24 mg/L. Choosing 1.48 mg/L adds the two values, which double counts the free fraction because free chlorine is already included inside the total."
+        },
+        {
+          "id": "ceu-distribution-water-quality-residual-patterns-c4",
+          "objective": "residual-patterns",
+          "prompt": "Three low free chlorine results turn up in the same fictional subdivision during one week. What has that spatial pattern established on its own?",
+          "choices": [
+            "Proof that long detention time in the area caused the drop",
+            "Proof that nitrification is under way in that subdivision",
+            "Proof that the sample taps have private plumbing problems",
+            "A reason to investigate, with the mechanism still unknown"
+          ],
+          "correctIndex": 3,
+          "explanation": "A pattern justifies an investigation but does not identify a mechanism. Detention time, a throttled valve, wall demand, nitrification, premise plumbing and analytical error can all produce the same shape, and more than one can be true at once."
+        },
+        {
+          "id": "ceu-distribution-water-quality-residual-patterns-c5",
+          "objective": "residual-patterns",
+          "prompt": "Which feature makes a field residual record usable as evidence in a later investigation, consistent with the operator record duties addressed in O. Reg. 128/04?",
+          "choices": [
+            "It names the operator, the instrument and the time of sampling",
+            "It reports the result to two decimal places on a clean form",
+            "It is transcribed into the monthly summary spreadsheet promptly",
+            "It is initialled by the supervisor at the end of the work week"
+          ],
+          "correctIndex": 0,
+          "explanation": "Attribution is what makes a record evidence: who sampled, with what instrument, and when. Extra decimal places look precise but an unattributable reading cannot be tied to an operating state, an instrument verification or a reagent lot."
+        },
+        {
+          "id": "ceu-distribution-water-quality-residual-patterns-c6",
+          "objective": "residual-patterns",
+          "prompt": "How should the US EPA resource Drinking Water Distribution System Tools and Resources be used by an Ontario distribution operator?",
+          "choices": [
+            "As the authority that fixes sampling frequencies in Ontario systems",
+            "As background technical guidance that does not set Ontario requirements",
+            "As the governing standard for residual limits in Ontario systems",
+            "As a replacement for the operational procedures written for the system"
+          ],
+          "correctIndex": 1,
+          "explanation": "The EPA material is United States technical guidance on water age, storage turnover and pressure management. Ontario expectations, locations, frequencies and response actions come from the applicable Ontario regulation, the Drinking Water Works Permit and Municipal Drinking Water Licence, any Environmental Compliance Approval, and documented procedures."
         }
       ]
     },
@@ -167,8 +271,8 @@
         "Reconstruct an integrity-event timeline.",
         "Identify the records needed to apply the current repair procedure."
       ],
-      "lesson": "### A pressure trace is one part of an integrity assessment\nA pressure decline may indicate loss of hydraulic margin, but its meaning depends on location, duration, instrument quality, system configuration and surrounding conditions. A single logger cannot establish the minimum pressure everywhere. Missing data cannot prove there was no adverse interval.\n\nFor a repair or pressure event, assemble the physical-work record, isolation status, pressure observations, contamination observations, flushing/disinfection documentation, sampling results and authorization to return to service as required by the applicable procedure. Different repair conditions can require different responses. Use Ontario's current watermain disinfection procedure and the facility's authorized process; do not invent a universal clearance checklist from a brief case.\n\nMaintain event order. Work completed, sample collected, result received and service authorized are separate events. A result pending is not a satisfactory result. An unsigned record may be a documentation gap rather than proof that the work was omitted; it still must be resolved.\n\nCommunications should state affected scope and uncertainty accurately. Avoid saying “all clear” based solely on restored pressure if the required integrity and water-quality verification is incomplete.",
-      "evidence": "**N5 — fictional main repair**\n06:40 break reported;06:50 isolation recorded;07:05 loggerL2 stops transmitting;07:20 excavation record says “water present, source not classified”;08:00 repair mechanically complete;08:10L2 restored at 320 kPa;08:20 sample collected;09:00 lab receipt. Flushing record lacks a verifier. No laboratory result or return-to-service authorization is attached.\n\nN6: Draft status message says “Pressure normal, therefore repair cleared.”",
+      "lesson": "### What a pressure reading proves and what it cannot\n\nA pressure logger tells you the pressure at one gauge, at one elevation, at the instants it sampled. It does not tell you the pressure at the top of the zone, at the customer service on the hill, or at the repair excavation itself. When you reconstruct an integrity event, you are building an inference from sparse point data toward a statement about a volume of pipe. Every step in that inference either holds up on the record or it does not.\n\nThree separate questions get confused in the field. First, was hydraulic margin lost, and where. Second, was the pipe interior exposed to a contamination pathway, which is a physical and observational question rather than a pressure question. Third, has the work been verified and authorized for return to service under the applicable procedure. A restored pressure trace answers only part of the first question. It is not evidence about the second or third. The Ontario watermain disinfection procedure, current applicable edition, is the document that sorts repair and contamination conditions into classifications and sets out what each classification requires. Your facility's authorized operating procedures and its approval sit on top of that. Nothing in this module authorizes a clearance decision.\n\nThe US EPA resource Drinking Water Distribution System Tools and Resources is useful background on pressure management, water age and integrity concepts, and it is United States technical guidance. It is not an Ontario requirement and should never be quoted as one in your event file.\n\n### Timeline reconstruction: clocks, intervals and event order\n\nAn integrity-event timeline is a defensible ordering of discrete events with a stated uncertainty for each. The events that must be kept separate are: pressure excursion observed, cause identified, isolation achieved, excavation exposed, break or cut condition observed, repair physically complete, disinfection step performed, flushing performed, sample collected, laboratory result received, and authorization to return to service given. Collapsing any two of these is the most common failure in an event reconstruction. \"Sample collected\" is not \"result received.\" \"Result received\" is not \"authorized to return to service.\" A result pending is not a satisfactory result.\n\nThree data-quality problems recur.\n\nClock offset. Loggers, SCADA historians, laptop-generated repair logs and cell-phone photographs each carry their own clock. If the logger clock is fast, corrected timestamps move earlier, and the apparent order of the excursion relative to a valve closure can reverse. Record the offset you measured, the reference clock you used, and the direction of the correction.\n\nSampling interval. A logger on a five minute interval cannot resolve a two minute transient and cannot prove one did not occur. The interval sets a floor on your resolution and it also sets the uncertainty band on any duration you report.\n\nMissing data. A gap is not a period of normal pressure. If the logger was not deployed, was in fault, or the memory wrapped, the honest entry is \"no data\" and the affected interval is unresolved.\n\nO. Reg. 128/04, in the portions dealing with designation, operator duties and records, is the reason your entries matter beyond the incident file. Records made by operators are the evidence that duties were carried out, and an unsigned or undated entry weakens that evidence even if the work was done correctly.\n\n### Worked example 1: elevation-corrected pressure at the critical node\n\nAll values below are supplied case assumptions for this teaching example at a fictional facility. They are not authorized values.\n\nSupplied: logger L-7 is on a hydrant port, gauge datum elevation 148.30 m. Its lowest recorded sample during the event is 312 kPa. The critical service in the affected area is at elevation 163.85 m and lies 420 m of 150 mm main downstream of the logger. A model run supplied for the event gives a hydraulic gradient of 4.2 m per 1000 m at the flows present. Unit weight of water is taken as 9.804 kPa per metre of head.\n\nStep 1. Elevation difference.\n163.85 m minus 148.30 m = 15.55 m of elevation rise.\n\nStep 2. Convert elevation rise to pressure loss.\n15.55 m x 9.804 kPa/m = 152.4 kPa.\n\nStep 3. Friction loss over 420 m.\n420 m x 4.2 m per 1000 m = 420 m x 0.0042 m/m = 1.764 m of head.\n1.764 m x 9.804 kPa/m = 17.3 kPa.\n\nStep 4. Estimated pressure at the critical service.\n312 kPa minus 152.4 kPa minus 17.3 kPa = 142.3 kPa.\nExpressed as head: 142.3 kPa divided by 9.804 kPa/m = 14.5 m of head.\n\nStep 5. Apply instrument and datum uncertainty.\nGauge accuracy supplied as plus or minus 0.25 percent of a 1000 kPa span: 0.0025 x 1000 kPa = 2.5 kPa.\nSurvey datum uncertainty supplied as plus or minus 0.15 m: 0.15 m x 9.804 kPa/m = 1.5 kPa.\nWorst case low: 142.3 kPa minus 2.5 kPa minus 1.5 kPa = 138.3 kPa.\n\nAnswer: the estimated minimum pressure at the critical service during the recorded event is about 142 kPa, with a defensible lower bound near 138 kPa, or roughly 14.1 to 14.5 m of head. Report the range, the datum, and the gradient source. Reporting \"312 kPa, no issue\" would be wrong by more than 170 kPa at the point that matters.\n\n### Worked example 2: bounding the excursion, then sizing the flush\n\nSupplied case values, fictional. Logger interval 300 s. Corrected for a verified logger clock offset of 3 min 20 s fast, the samples read: 02:06:40 at 265 kPa, 02:11:40 at 41 kPa, 02:16:40 at 33 kPa, 02:21:40 at 58 kPa, 02:26:40 at 214 kPa. The facility procedure for this example uses a review trigger of 140 kPa at the node.\n\nStep 1. Count samples below the trigger.\nSamples below 140 kPa: 3 samples.\n\nStep 2. Measured duration between first and last low sample.\n02:21:40 minus 02:11:40 = 10 min. This is the lower bound, because the excursion may have begun just before the first low sample and ended just after the last.\n\nStep 3. Upper bound from interval geometry.\nThe excursion cannot have started before the last normal sample or ended after the next normal sample.\n02:26:40 minus 02:06:40 = 20 min. Upper bound is 20 min.\nEquivalently, (3 samples minus 1) x 5 min = 10 min lower bound, and (3 samples plus 1) x 5 min = 20 min upper bound.\n\nStep 4. State the result honestly.\nAnswer: the low-pressure interval was between 10 and 20 minutes, centred near 15 minutes. The single figure 15 min is a point estimate, not a maximum.\n\nStep 5. Volume of the isolated section for flushing.\nSupplied: 268 m of 150 mm main and 42 m of 200 mm main between closed valves.\nArea 150 mm: (pi divided by 4) x (0.150 m)^2 = 0.01767 m2.\nVolume: 0.01767 m2 x 268 m = 4.736 m3 = 4736 L.\nArea 200 mm: (pi divided by 4) x (0.200 m)^2 = 0.03142 m2.\nVolume: 0.03142 m2 x 42 m = 1.319 m3 = 1319 L.\nTotal: 4736 L plus 1319 L = 6055 L = 6.055 m3.\n\nStep 6. Flush duration at the measured discharge.\nSupplied hydrant discharge 22 L/s.\nOne section volume: 6055 L divided by 22 L/s = 275 s = 4.6 min.\nThree section volumes, as assumed by the facility procedure in this example: 3 x 4.6 min = 13.8 min, say 14 min.\nWater used: 3 x 6.055 m3 = 18.2 m3.\n\nStep 7. Check scouring velocity in the smaller pipe.\n22 L/s = 0.022 m3/s.\n0.022 m3/s divided by 0.01767 m2 = 1.24 m/s.\n\nAnswer: about 14 minutes and 18.2 m3 to move three section volumes, at roughly 1.24 m/s in the 150 mm main. Volume turnover is a planning number only. Clearance depends on the requirements of the current Ontario watermain disinfection procedure for the applicable repair or contamination classification, including any disinfection, stabilisation and sampling steps, plus your own approval and procedures. Field turbidity used to judge stabilisation must follow the method and quality-control practice your laboratory or site method requires; the US EPA field turbidity measurement guidance describes calibration verification, cell handling, bubble exclusion and blank checks that make a field reading usable at all.\n\n### The record register for applying the current repair procedure\n\nBuild this register before you attempt to classify the event, not after. If a row is blank, the classification rests on an assumption and you must say so in writing.\n\n| Record | Custodian or source | What it establishes | What invalidates or weakens it | Timeline field it fills |\n|---|---|---|---|---|\n| Pressure logger export, raw | Logger download, unedited file | Point pressure, interval, gaps | Edited file, no clock check, wrapped memory | Excursion start and end bounds |\n| SCADA trend for zone inlet and tower level | Historian | Zone-wide behaviour, refill timing | Tag out of calibration, poll rate coarser than event | Cause and recovery |\n| Gauge or logger calibration record | Instrument file | Usable accuracy band | Expired verification, no serial number match | Uncertainty on every pressure figure |\n| Valve operation log | Operating staff | Isolation achieved and released | Times estimated after the fact, no operator name | Isolation and de-isolation |\n| Excavation and condition observations, with photographs | Crew and supervisor | Pathway exposure, submergence, sewage proximity, pipe condition | Photos with no timestamp, condition described only verbally | Contamination classification inputs |\n| Repair work record | Crew lead | Materials, fittings, method, completion time | Unsigned, undated, no materials listed | Repair complete |\n| Disinfection and flushing record | Operator performing work | Steps actually performed, volumes, discharge point | Volumes back-calculated from an assumed hydrant flow | Disinfection and flushing steps |\n| Field chlorine residual and turbidity readings | Operator, with QC log | Stabilisation trend at the sampling point | Meter not verified, no blank or standard check, no sample point identified | Stabilisation before sampling |\n| Sample collection record and chain of custody | Sampler and laboratory | Time, point, sampler, preservation | Missing collection time, wrong bottle, no custody signature | Sample collected |\n| Laboratory report, licensed laboratory | Laboratory | Result and method | Verbal result with no written report to follow, wrong sample point | Result received |\n| Authorization to return to service | Overall responsible operator or designate per facility procedure | Who decided, on what basis, when | Decision recorded before the governing results existed | Return to service |\n| Notification log | Operator in charge | Who was told, when, what was said | Message content not recorded | Communications |\n\nRetain the raw logger file, not just the graph you pasted into a report. Retain the calibration records that bracket the event date. Retain the field QC log for any meter whose reading you relied on. Under O. Reg. 128/04, in the portions on operator designation, duties and records, the identity and designation of the person who made each decision matter as much as the decision itself.\n\n### When a condition changes, the decision changes\n\nA pressure event with no excavation, no dewatering and no open pipe is a different problem from a break repair in a wet trench beside a sanitary sewer. The classification in the current Ontario watermain disinfection procedure drives the required response, and the inputs to that classification come from observation at the excavation, not from the pressure trace. Common condition changes that alter what you must do include: whether the main was fully depressurized or held a positive pressure throughout, whether the trench was dewatered before the pipe was opened, whether the interior was submerged or contacted soil or sewage, whether the repair was a clamp on an unopened pipe or a cut-in of new pipe and fittings, whether a cross connection or backflow pathway existed on an affected service, and whether the affected area includes a hospital, food plant or other high-consequence customer.\n\nWater quality signals shift the picture as well. Loss of residual at a downstream monitoring point, a turbidity rise that does not clear with continued flushing, or customer complaints of odour or discolouration in an unexpected area all widen the affected zone beyond the isolated section. If a drinking water test result is adverse, Ontario requires an immediate verbal report to the parties named in the applicable regulation, followed by written notice within 24 hours after that verbal report. Do not wait for a second confirming sample before making the verbal report.\n\nIf you cannot bound the excursion because data are missing, treat the unresolved interval as unresolved and escalate under your procedure. Manufacturing a number to close a box is worse than an honest gap.\n\n### Common errors\n\nUsing the logger reading as the system minimum. The logger sits where it was convenient, usually low in the zone. Elevation alone moved the figure by 152 kPa in Worked example 1. Any statement about minimum pressure in the affected area must be elevation corrected and must name the datum used.\n\nReporting a point duration as a maximum. Counting three low samples on a five minute logger and writing \"15 minute excursion\" understates the possible duration by a third. The defensible statement is a bounded range with the logging interval stated.\n\nTreating a data gap as a pass. A logger in fault, a wrapped memory or a SCADA tag outage produces no evidence of normal pressure. Writing \"no low pressure recorded\" when nothing was recorded at all is a false statement in the event file.\n\nCollapsing sampling and authorization. Signing a return to service at the time the sample was collected, with the laboratory report arriving later, creates a record that cannot be defended. Also avoid announcing \"all clear\" to customers or to management on the strength of restored pressure while integrity and water quality verification is still open.\n\nBack-calculating flush volumes from an assumed hydrant flow. If the discharge was never measured, the flush volume in your record is an estimate and must be labelled as one. A diffuser with no flow measurement gives you a duration, not a volume.\n\n### What to verify before you act\n\nConsult, in this order: your facility's Environmental Compliance Approval or drinking water works permit and the operational plan procedures issued under your quality management system; the current applicable edition of the Ontario watermain disinfection procedure for the repair and contamination classification that fits what the crew actually observed; and O. Reg. 128/04 in the portions covering operator designation, duties and records, to confirm who may make and record the decision you are about to make. Verify that the person authorizing return to service holds the designation your procedure requires, that the sampling plan and sample points you are using are the ones named in the approved documents, and that every instrument whose reading you are relying on has a current verification record. Confirm the laboratory is licensed for the parameters requested and that you have written results in hand, not a verbal indication. If any of those checks fails, the correct action is to keep the section isolated or under restriction and escalate, not to proceed and document afterward.",
+      "evidence": "### Fictional worked scenario: Maplecrest Water System, event file IE-2026-014\n\nAll facilities, operators, records and readings below are fictional and are supplied only for this teaching exercise. No value here is an authorized setpoint or requirement.\n\nSupplied records. A 200 mm main break was reported on Kildare Road. Logger LG-3 sits on a hydrant at datum elevation 152.40 m. Corrected for a verified clock offset of 2 min 10 s slow, LG-3 recorded at a 300 s interval: 03:12:10 at 341 kPa, 03:17:10 at 62 kPa, 03:22:10 at 48 kPa, 03:27:10 at 288 kPa. The highest service in the affected area is at elevation 168.05 m, and the supplied model gradient for the event is 3.6 m per 1000 m over 300 m of main. Crew log entries: \"valves closed 03:31\", \"pipe cut and sleeve installed, trench held about 300 mm of water, pipe interior submerged, 05:40\", \"flushed, 06:10\", \"samples taken 06:20\", \"system returned to service 06:25, all clear\". A separate typed summary states \"minimum pressure 341 kPa, no low pressure event, no contamination pathway.\" The laboratory report for the 06:20 samples is dated the following afternoon. The flushing record shows 12 minutes of hydrant discharge with no flow measurement.\n\nRecord the learner must reject. The typed summary. It contradicts the raw logger file, which shows two samples below 70 kPa, and it contradicts the crew observation of a submerged open pipe interior. It also conflicts with the return to service entry, which precedes the laboratory report by roughly one day. The 12 minute flush cannot be converted to a volume because no discharge was measured.\n\nWorked solution.\n\nElevation difference: 168.05 m minus 152.40 m = 15.65 m.\n15.65 m x 9.804 kPa/m = 153.4 kPa.\nFriction: 300 m x 0.0036 m/m = 1.08 m; 1.08 m x 9.804 kPa/m = 10.6 kPa.\nNode pressure at the 48 kPa sample: 48 kPa minus 153.4 kPa minus 10.6 kPa = minus 116 kPa, that is, no pressure and negative head potential at that elevation.\n\nExcursion bounds: low samples 2.\nLower bound (2 minus 1) x 5 min = 5 min.\nUpper bound (2 plus 1) x 5 min = 15 min.\n\nDefensible findings: an unresolved excursion of 5 to 15 minutes with zero pressure at the high service, an observed submerged open pipe interior, an unquantified flush, and an authorization recorded before results existed. The classification and required response must be taken from the current Ontario watermain disinfection procedure and the facility procedures, not from the \"all clear\" entry.",
       "assignment": "Prepare a chronological evidence register and a 400–550-word review of N6. List the specific missing facts needed to classify the repair under the current procedure, identify owners for each record and distinguish mechanical completion from service authorization. Include a status message that is accurate while verification is pending.",
       "rubric": [
         "Retains the pressure-data gap and unclassified excavation water.",
@@ -210,30 +314,82 @@
       ],
       "checks": [
         {
-          "id": "np1",
+          "id": "ceu-distribution-water-quality-pressure-repair-c1",
           "objective": "pressure-repair",
-          "prompt": "A sample received by the laboratory means:",
+          "prompt": "A pressure logger on a hydrant port records a minimum of 285 kPa during an integrity event. What does that single figure actually establish?",
           "choices": [
-            "It met all analytical criteria",
-            "Receipt is recorded; results may still be pending",
-            "The repair is authorized for service",
-            "Every affected location has been sampled"
+            "Pressure at that gauge datum at the instants it sampled",
+            "Minimum pressure anywhere in the affected pressure zone",
+            "Pressure inside the open repair excavation at that time",
+            "Proof that no shorter transient occurred between samples"
           ],
-          "correctIndex": 1,
-          "explanation": "Receipt and analytical outcome are distinct events."
+          "correctIndex": 0,
+          "explanation": "A logger reports point pressure at one elevation at discrete sample instants. It says nothing about the top of the zone or the excavation, and it cannot prove that no transient occurred between samples, so the zone-wide reading choice is a common overreach."
         },
         {
-          "id": "np2",
+          "id": "ceu-distribution-water-quality-pressure-repair-c2",
           "objective": "pressure-repair",
-          "prompt": "Restored pressure alone establishes:",
+          "prompt": "A logger set to a 300 s interval covers an event in which a suspected 2 minute transient occurred. What can the record support?",
           "choices": [
-            "Every repair requirement is complete",
-            "The missing interval was normal",
-            "All samples are satisfactory",
-            "Pressure is restored at the observed point"
+            "It proves that no transient occurred, since no low sample was recorded",
+            "It cannot resolve the transient, and cannot prove one did not occur",
+            "It proves the transient was shorter than one full logging interval",
+            "It can be interpolated to a 60 s interval to recover the transient"
+          ],
+          "correctIndex": 1,
+          "explanation": "The sampling interval sets a floor on resolution, so a 300 s interval neither captures nor disproves a 2 minute event. Claiming the transient did not occur treats absence of a low sample as evidence, which the interval geometry does not support."
+        },
+        {
+          "id": "ceu-distribution-water-quality-pressure-repair-c3",
+          "objective": "pressure-repair",
+          "prompt": "Logger memory wrapped and 40 minutes inside the event window is blank. How should that interval be entered in the event file?",
+          "choices": [
+            "As a pressure excursion of unknown magnitude here",
+            "As normal pressure, since no low value was logged",
+            "As no data, with the interval flagged unresolved",
+            "As the average of the samples before and after it"
+          ],
+          "correctIndex": 2,
+          "explanation": "A gap is not a period of normal pressure and it is not evidence of an excursion either. The honest entry is no data with the interval marked unresolved; recording it as normal invents data the logger never captured."
+        },
+        {
+          "id": "ceu-distribution-water-quality-pressure-repair-c4",
+          "objective": "pressure-repair",
+          "prompt": "A crew collected a sample at 09:40 and returned the main to service at 10:15 while the laboratory result was still pending. Which statement about the timeline is correct?",
+          "choices": [
+            "A pending result may be treated as satisfactory once flushing is done",
+            "Sample collection time can stand as the authorization timestamp here",
+            "Result received and return to service may share a single timestamp entry",
+            "Sample collected, result received and authorization are distinct events"
           ],
           "correctIndex": 3,
-          "explanation": "Its conclusion is limited to the verified observation."
+          "explanation": "Collapsing sample collected, result received and authorization to return to service is the most common reconstruction failure. A result pending is not a satisfactory result, so treating it as satisfactory after flushing misstates the record."
+        },
+        {
+          "id": "ceu-distribution-water-quality-pressure-repair-c5",
+          "objective": "pressure-repair",
+          "prompt": "Using 9.804 kPa per metre of head, roughly how much pressure does a 9.8 m elevation rise account for between a hydrant gauge and an uphill service?",
+          "choices": [
+            "About 96 kPa of added head loss uphill",
+            "About 9.8 kPa of added head loss uphill",
+            "About 48 kPa of added head loss uphill",
+            "About 960 kPa of added head loss uphill"
+          ],
+          "correctIndex": 0,
+          "explanation": "9.8 m multiplied by 9.804 kPa/m is about 96 kPa. Reporting 9.8 kPa confuses metres of head with kilopascals, an error that understates the elevation effect by about a factor of ten at the point that matters."
+        },
+        {
+          "id": "ceu-distribution-water-quality-pressure-repair-c6",
+          "objective": "pressure-repair",
+          "prompt": "What is the correct status of the US EPA resource Drinking Water Distribution System Tools and Resources when cited in an Ontario integrity-event file?",
+          "choices": [
+            "An Ontario requirement referenced by the disinfection procedure",
+            "United States technical guidance, not an Ontario requirement",
+            "A legal substitute for the facility operating procedures on site",
+            "A binding standard once it is cited in an Ontario event file"
+          ],
+          "correctIndex": 1,
+          "explanation": "The EPA material is useful background on pressure management and water age, but it is United States guidance. Ontario repair and contamination classifications come from the current applicable Ontario watermain disinfection procedure plus the facility approval and procedures."
         }
       ]
     },
@@ -244,8 +400,8 @@
         "Integrate hydraulic and water-quality evidence.",
         "Define measurable follow-up and closure criteria."
       ],
-      "lesson": "### Prioritize by decision consequence and uncertainty\nAn investigation plan should separate immediate procedure-driven response from longer-term optimization. An unresolved repair verification may need action now, while storage turnover improvement requires a planned review. Do not let a promising optimization idea delay the applicable response to an active integrity concern.\n\nFor each issue, write the current evidence, plausible explanation, next discriminating check, responsible role and decision deadline. Choose checks that can change the next decision. “Collect more data” is weaker than naming the location, operating state, method and question.\n\nDefine closure evidence in advance. For a repair, use the applicable procedure and authorized decision. For a turnover study, use a supported hydraulic basis and repeated quality observations. For a sampling-path concern, document the qualified comparison and corrective work if required. One issue's closure does not automatically close another.\n\nIn a self-check, explain which finding would cause you to reprioritize. Good handovers make uncertainty visible and let the next operator continue the investigation without repeating assumptions.",
-      "evidence": "**N7 — manager request**\n“Reduce tank storage immediately, announce the low residual was caused by age, and close the repair because pressure recovered.”\n\nUseN1–N6. No storage approval, additional quality observations, repair classification or final laboratory result has arrived. The next shift needs a plan with separate workstreams and evidence owners.",
+      "lesson": "### Why a zone plan exists and what it must separate\n\nA prioritized zone investigation plan is a working document that holds every open water quality or integrity question in one distribution zone, states what is known, states what is only suspected, and names the single next check that would change a decision. It exists because distribution problems arrive mixed together. A repair, a customer complaint about taste, a low residual at a dead end and a tank that never seems to turn over can all appear in the same week in the same pressure zone, and they can share a cause or share nothing at all.\n\nThe first split in the plan is between procedure driven response and optimization. Response items are those where an applicable procedure, the facility's Drinking Water Works Permit and Municipal Drinking Water Licence, the system's own operating procedures, or the current applicable edition of the Ontario watermain disinfection procedure already tell you what must happen and in what order. A repair that has not been cleared for return to service, a positive or unexplained microbiological result, or a suspected loss of integrity belongs here. Optimization items are those where you are trying to make the system better, such as improving storage turnover, revising a flushing program, relocating a sampling station or reducing water age at a subdivision extremity.\n\nThe rule that matters for judgment is directional. An optimization item never delays a response item, and a promising theory about water age never substitutes for the applicable response to an active integrity concern. In the other direction, closing a response item does not close the optimization item that shares the same street. Operators lose more credibility by quietly merging these than by leaving an item open with an honest date on it.\n\nIn Ontario, reporting obligations sit outside the plan and outrank it. Where a result or observation triggers an adverse drinking water quality reporting obligation, an immediate verbal report is required, followed by written notice within 24 hours after that report. The investigation plan documents the technical follow-up. It does not set the reporting timeline and it never delays it.\n\n### Building one evidence set from hydraulic and water quality data\n\nHydraulic evidence and water quality evidence are only useful together when they are tied to the same operating state at the same time. A residual of 0.22 mg/L at a hydrant means one thing if the zone was on normal pumping and the tank was filling, and something quite different if a boundary valve was closed for a repair and the zone was being fed backwards.\n\nFor each observation, record six things: location with a permanent identifier, date and time, the operating state at that moment, the measurement method, the person, and the instrument identity with its last calibration verification. Without the operating state, the reading cannot be reproduced and cannot be defended later.\n\nThe hydraulic side of the file should include pump run and flow records, tank level traces with the control band in use, valve status including any valve turned during the period, hydrant flow test results with the gauge used, and pressure logging. Pressure logging deserves attention. A logger averaging over 15 minute intervals will smooth out the short low pressure and negative pressure transients that matter for intrusion risk. If the question is integrity, the logging interval has to be fast enough to see the event. The US EPA Drinking Water Distribution System Tools and Resources material on water age, storage, pressure management and distribution system integrity is useful background for framing these questions, but it is United States technical guidance and it does not set Ontario requirements. Ontario requirements come from the regulations, the permit and licence, and the approved procedures for that system.\n\nThe water quality side should include free and total chlorine residuals with the analyser or comparator used, temperature, field turbidity, microbiological results with sample point and purge time, and complaint records with the customer's plumbing described. For field turbidity, follow the quality control practice in the US EPA field turbidity measurement guidance as background and the laboratory or site method that actually governs your work: verify calibration on the schedule in your procedure, keep cuvettes clean and indexed, remove bubbles, and record the verification result beside the sample value. A field turbidity reading with no calibration verification record beside it is not evidence. It is an anecdote.\n\n### Worked example 1: storage turnover, water age and expected residual\n\nAll values below are supplied case assumptions for this teaching example. They are not authorized values and they are not targets for any real system.\n\nA fictional Zone 4 is fed through an elevated tank. Supplied assumptions:\n\n- Tank operating volume between the normal control levels: 1 200 m3\n- Average daily flow passing through the tank: 450 m3/d\n- Estimated travel time from the tank to the zone extremity: 0.8 d\n- Free chlorine leaving the treatment plant into the zone: 0.95 mg/L\n- Bulk plus wall decay coefficient from a previous seasonal study: 0.35 /d\n- Measured free chlorine at the extremity sample station: 0.18 mg/L\n\nStep 1. Tank turnover time.\n1 200 m3 divided by 450 m3/d = 2.667 d\n\nStep 2. Total nominal water age at the extremity.\n2.667 d + 0.8 d = 3.467 d\n\nStep 3. Predicted residual using first order decay, C = C0 times e raised to the power of negative k times t.\nk times t = 0.35 /d times 3.467 d = 1.2135 (dimensionless)\ne raised to the power of negative 1.2135 = 0.2972\nC = 0.95 mg/L times 0.2972 = 0.282 mg/L\n\nStep 4. Compare with the measurement.\nMeasured 0.18 mg/L divided by predicted 0.282 mg/L = 0.64, that is 64 percent of predicted\nDeficit = 0.282 mg/L minus 0.18 mg/L = 0.102 mg/L\n\nStep 5. Back calculate the apparent decay coefficient the field data implies.\n0.18 mg/L divided by 0.95 mg/L = 0.1895\nnatural log of 0.1895 = negative 1.664\napparent k = 1.664 divided by 3.467 d = 0.48 /d\n\nAnswer: predicted residual 0.28 mg/L, measured 0.18 mg/L, apparent decay coefficient 0.48 /d against a study value of 0.35 /d.\n\nWhat the number means. The zone is consuming chlorine faster than the seasonal study predicts, or the water is older than 3.467 d, or both. Those are two different investigations. The discriminating check is not more residual readings. It is a travel time measurement or a tank turnover verification, because that separates an age problem from a demand problem.\n\nWhat makes this calculation invalid. The turnover figure collapses if the tank is not actually exchanging its full operating volume, if a bypass is open, if the control band was narrowed, or if the 450 m3/d is total zone demand rather than flow that genuinely passes through the tank. The decay coefficient collapses if it was derived at a different water temperature or before a source change. Carry those caveats into the plan in writing.\n\n### Worked example 2: flushing volume, velocity and a measurable closure test\n\nSupplied case assumptions for this teaching example only.\n\n- Watermain to be flushed: 150 mm nominal diameter, 620 m long\n- Procedure in the fictional system's flushing program calls for 3 pipe volumes and a scouring velocity of 1.5 m/s\n- Measured hydrant discharge using a pitot and diffuser: 22 L/s\n\nStep 1. Pipe cross sectional area.\nA = 3.1416 divided by 4, times (0.150 m) squared = 0.7854 times 0.0225 m2 = 0.01767 m2\n\nStep 2. Pipe volume.\nV = 0.01767 m2 times 620 m = 10.96 m3\n\nStep 3. Target flush volume at 3 pipe volumes.\n3 times 10.96 m3 = 32.87 m3\n\nStep 4. Flow in consistent units.\n22 L/s divided by 1 000 L/m3 = 0.022 m3/s\n\nStep 5. Flush duration.\n32.87 m3 divided by 0.022 m3/s = 1 494 s\n1 494 s divided by 60 s/min = 24.9 min\n\nStep 6. Achieved velocity check.\nv = 0.022 m3/s divided by 0.01767 m2 = 1.25 m/s\n\nStep 7. Flow needed to reach the program velocity.\nQ = 1.5 m/s times 0.01767 m2 = 0.0265 m3/s = 26.5 L/s\nShortfall = 26.5 L/s minus 22 L/s = 4.5 L/s\n\nAnswer: 24.9 min of flushing delivers 3 pipe volumes, but at 1.25 m/s the run does not meet the 1.5 m/s scouring velocity in this example program. It needs a second outlet, a different valve configuration or a revised expectation recorded in the plan.\n\nThe judgment point is that volume and velocity are separate acceptance conditions. Meeting one does not satisfy the other, and a flush logged as complete on time alone tells the next operator nothing about whether deposits were mobilized.\n\n### The register and the triage table\n\nKeep one register per zone. Every row must name a discriminating check, not an intention to gather data. Facility, names and readings below are fictional.\n\n| ID | Evidence held | Leading hypothesis | Discriminating check: location, operating state, method, question | Owner | Decision date | Closure criterion |\n|---|---|---|---|---|---|---|\n| ZP-01 | Repair at Maple St 12 Mar, trench wet, no return to service package on file | Repair not cleared under the applicable classification | Confirm classification and completed disinfection and clearance records against the current applicable edition of the Ontario watermain disinfection procedure and system procedure | ORO | 19 Mar | Signed clearance record by the authorized decision maker, filed |\n| ZP-02 | Extremity free chlorine 0.18 mg/L, predicted 0.28 mg/L | Excess water age or elevated demand | Travel time check at Larkin Ct under normal pumping, timed residual step after tank turnover change | OIC days | 26 Mar | Three consecutive weekly profiles at the agreed operating state, documented |\n| ZP-03 | Tank turnover 2.67 d at current control band | Storage operating strategy adds age | Trial revised control band, log tank levels and zone residuals, same season | Supervisor | 30 Apr | Recalculated turnover with supported hydraulic basis plus repeated quality observations |\n| ZP-04 | Sample station residual 0.15 mg/L lower than adjacent hydrant | Sampling path artefact, long service or stagnant tap | Paired sample, station versus hydrant, same hour, same instrument, after stated purge | OIC afternoons | 22 Mar | Qualified paired comparison within the agreed tolerance, or corrective plumbing work completed |\n\nTriage when time is short:\n\n| Consequence if the hypothesis is true | Evidence strong | Evidence weak |\n|---|---|---|\n| Possible loss of integrity or unresolved repair | Act now under the applicable procedure, notify as required | Act now on the precautionary path, run the discriminating check in parallel |\n| Persistent low residual or recurring complaints | Schedule within days, define the closure test first | Run one discriminating check before committing resources |\n| Efficiency or optimization only | Plan it, do not let it consume response capacity | Park it with a review date and the reason |\n\n### Writing closure criteria that can actually be met\n\nA closure criterion is written before the work, not after. It must state the measurement, the location, the operating state, the number of repeats, who accepts it and where the record goes. \"Residual improved\" is not a criterion. \"Free chlorine measured at station D-14 on three consecutive weekly rounds under normal pumping with the tank on the standard control band, by the same bench method, accepted by the overall responsible operator\" is a criterion.\n\nFor repair related items, the closure evidence is defined by the classification of the work and the clearance path in the current applicable edition of the Ontario watermain disinfection procedure together with the system's own procedures and its permit and licence. The operator does not invent an alternative test. For optimization items, closure needs a supported hydraulic basis plus repeated water quality observations across a representative period, because a single good week proves nothing about a seasonal effect.\n\nRecord keeping and designations are regulatory, not discretionary. O. Reg. 128/04 addresses designation of the overall responsible operator and operators in charge, their duties, and the records that must be kept, in sections 23 and 25 to 27. Handover notes, valve operations, sampling and the decisions made in this plan sit inside that record framework. Write entries so a person who was not there can reconstruct the state of the system.\n\n### Common errors\n\n1. Logging a flush by duration only. Twenty minutes at an unmeasured hydrant flow proves nothing. Without the discharge measurement you cannot state pipe volumes or velocity, so the run cannot be used as closure evidence for a discoloured water item.\n2. Treating tank turnover as if it equals the tank volume divided by total zone demand. If part of the zone is fed directly and bypasses the tank, the true exchange is smaller and the water age is longer than calculated. The error always flatters the system.\n3. Comparing residuals taken at different operating states and calling the difference a trend. A reading taken while a boundary valve was closed for a repair is not comparable to a reading under normal pumping, and stacking them produces a false decay curve.\n4. Closing several items on one piece of evidence. A successful flush does not close an outstanding repair clearance, and a good microbiological result does not close a pressure transient investigation.\n5. Recording a field turbidity value with no calibration verification entry. The number cannot be defended and it will be struck from the file during any review.\n\n### What to verify before you act\n\nBefore you change an operating state, open a hydrant or declare an item closed, check the following in this order. The system's Drinking Water Works Permit and Municipal Drinking Water Licence, and any Environmental Compliance Approval conditions that apply to the works, because they set what the system is authorized to do. The system's own approved operating, flushing, sampling and disinfection procedures, since they carry the site specific detail. The current applicable edition of the Ontario watermain disinfection procedure for planned work, repairs and contamination classification, which drives the return to service evidence. O. Reg. 128/04 for designation, duties and records, so the right person makes the decision and it is recorded properly. The applicable Ontario adverse result reporting obligations, remembering that an immediate verbal report is required and written notice follows within 24 hours after that report. Finally, the instrument calibration and verification records for every meter whose readings you are about to rely on. If any one of those cannot be produced, say so in the register rather than proceeding on assumption.",
+      "evidence": "### Fictional worked scenario: Township of Marlbrook, Zone 4\n\nAll facilities, operators, records and readings below are fictional and are used only for training.\n\nSupplied records for the week of 10 March:\n\n- Watermain on Larkin Court: 150 mm diameter, 620 m long, single feed, dead end.\n- Flushing program in the fictional system procedure: 3 pipe volumes and 1.5 m/s scouring velocity.\n- Logbook entry by fictional operator R. Danby, 11 March: \"Flushed Larkin Ct hydrant H-212, 15 minutes, 3 pipe volumes achieved, item closed.\"\n- SCADA hydrant flow record for H-212 on 11 March: steady discharge 9 L/s for the duration of the run.\n- Field turbidity recorded at H-212 end of flush: 1.4 NTU, no calibration verification entry on the sheet or in the instrument log.\n- Free chlorine at the Larkin Court station after the flush: 0.21 mg/L, taken with the zone boundary valve V-18 closed for an unrelated repair.\n\nStep 1. Pipe cross sectional area.\nA = 0.7854 times (0.150 m) squared = 0.01767 m2\n\nStep 2. Pipe volume.\nV = 0.01767 m2 times 620 m = 10.96 m3\n\nStep 3. Volume actually discharged.\n9 L/s divided by 1 000 L/m3 = 0.009 m3/s\n15 min times 60 s/min = 900 s\n0.009 m3/s times 900 s = 8.10 m3\n\nStep 4. Pipe volumes achieved.\n8.10 m3 divided by 10.96 m3 = 0.74 pipe volumes\n\nStep 5. Velocity achieved.\nv = 0.009 m3/s divided by 0.01767 m2 = 0.51 m/s\n\nRecords to reject. The logbook claim of 3 pipe volumes is unsupported and conflicts with the flow record. The run delivered 0.74 pipe volumes at 0.51 m/s, well short of both program conditions, so the item cannot be closed. The 1.4 NTU turbidity value must also be set aside, because there is no calibration verification record beside it, which is the basic quality control practice described in the US EPA field turbidity measurement guidance and required by the site method in use. The 0.21 mg/L residual is not comparable to the normal operating state, since V-18 was closed and the zone was being fed abnormally.\n\nAction. Reopen the register item, schedule a measured flush at a configuration capable of at least 26.5 L/s, repeat the residual at the same station under normal pumping with V-18 open, and record the instrument verification. Closure requires the measured volume, the measured velocity and two comparable residual results accepted by the overall responsible operator.",
       "assignment": "Write a 500–750-word plan and handover. Include the turnover calculations, residual trend table, repair evidence gaps, prioritized actions and separate closure criteria. Explain which parts of N7 need revision and why. Present the plan to the instructor, revise it, then complete assessment and evaluation.",
       "rubric": [
         "Keeps repair response and optimization review distinct.",
@@ -287,138 +443,346 @@
       ],
       "checks": [
         {
-          "id": "nz1",
+          "id": "ceu-distribution-water-quality-zone-plan-c1",
           "objective": "zone-plan",
-          "prompt": "Which issue needs its own closure evidence?",
+          "prompt": "In a prioritized zone investigation plan, which item belongs in the procedure driven response group rather than the optimization group?",
           "choices": [
-            "Only the issue with the largest number",
-            "Only the oldest work order",
-            "Each distinct repair or quality investigation",
-            "Only the proposed storage optimization"
-          ],
-          "correctIndex": 2,
-          "explanation": "Different issues have different criteria and owners."
-        },
-        {
-          "id": "nz2",
-          "objective": "zone-plan",
-          "prompt": "A useful next sampling action names:",
-          "choices": [
-            "Location, time, method, question and owner",
-            "Only the total desired number of bottles",
-            "Only the preferred conclusion",
-            "Only the previous operator’s opinion"
+            "A repair on a watermain that has not been cleared for return to service",
+            "A proposal to relocate a zone sampling station nearer a busier service area",
+            "A plan to widen the tank control band so storage turnover improves",
+            "A seasonal revision of the flushing route to lower water age at ends"
           ],
           "correctIndex": 0,
-          "explanation": "Specific design and ownership make the action usable."
+          "explanation": "An uncleared repair is governed by the system operating procedures, the Drinking Water Works Permit and Municipal Drinking Water Licence, and the applicable edition of the Ontario watermain disinfection procedure, so the required steps and their order are already set. Relocating a sampling station is a valid improvement idea, but it is optimization and it never delays a response item."
+        },
+        {
+          "id": "ceu-distribution-water-quality-zone-plan-c2",
+          "objective": "zone-plan",
+          "prompt": "A distribution result triggers an adverse drinking water quality reporting obligation in Ontario. How does the zone investigation plan interact with that obligation?",
+          "choices": [
+            "The plan sets the reporting timeline because it holds the zone evidence",
+            "An immediate verbal report is made, with written notice within 24 hours after it",
+            "Reporting may be held until the discriminating check named in the register is done",
+            "Reporting waits for the zone owner to sign the register at the decision date"
+          ],
+          "correctIndex": 1,
+          "explanation": "In Ontario the reporting obligation sits outside the investigation plan and outranks it: an immediate verbal report is required, followed by written notice within 24 hours after that report. Holding reporting until a discriminating check is completed is wrong because the plan documents technical follow up only and never sets or delays the reporting timeline."
+        },
+        {
+          "id": "ceu-distribution-water-quality-zone-plan-c3",
+          "objective": "zone-plan",
+          "prompt": "Why must the operating state at the moment of sampling be recorded with every distribution observation in the zone file?",
+          "choices": [
+            "It allows field turbidity to be reported without any cuvette checks",
+            "It lets one operator sign for readings that other staff actually took",
+            "The same reading means different things under different zone operating states",
+            "Recording it removes the need to log the instrument calibration verification"
+          ],
+          "correctIndex": 2,
+          "explanation": "A residual taken on normal pumping with the tank filling is not comparable to the same number taken with a boundary valve closed and the zone fed backwards, so without the operating state the reading cannot be reproduced or defended. The calibration verification is a separate required entry and the operating state does not replace it."
+        },
+        {
+          "id": "ceu-distribution-water-quality-zone-plan-c4",
+          "objective": "zone-plan",
+          "prompt": "A pressure logger records 15 minute averages in a zone being investigated for possible intrusion risk. What is the main limitation of that record?",
+          "choices": [
+            "Average pressure readings drift high whenever the tank is filling fast",
+            "The logger cannot be tied to a permanent location identifier in the file",
+            "Averaging prevents the data from being paired with chlorine residuals",
+            "Short low pressure and negative transients are smoothed out of the record"
+          ],
+          "correctIndex": 3,
+          "explanation": "Averaging over 15 minutes hides the brief low and negative pressure events that matter for integrity questions, so the logging interval must be fast enough to see the event. The logger can still be tied to a permanent identifier and to residual data, so those options describe recording practice rather than the sampling rate problem."
+        },
+        {
+          "id": "ceu-distribution-water-quality-zone-plan-c5",
+          "objective": "zone-plan",
+          "prompt": "A field turbidity value appears in the zone file with no calibration verification recorded beside it. How should that value be treated in the evidence set?",
+          "choices": [
+            "As an anecdote rather than evidence until verification is documented",
+            "As valid evidence because the instrument is used across the system",
+            "As evidence once a second operator repeats the reading by memory",
+            "As a confirmed result that closes the turbidity question for the zone"
+          ],
+          "correctIndex": 0,
+          "explanation": "Verification on the schedule in the governing procedure, clean indexed cuvettes and bubble removal are what make a field turbidity number defensible, and the verification result belongs beside the sample value. Accepting it because the meter is widely used ignores that the record, not the instrument's reputation, supports the reading."
+        },
+        {
+          "id": "ceu-distribution-water-quality-zone-plan-c6",
+          "objective": "zone-plan",
+          "prompt": "A unidirectional flush delivers the three pipe volumes required by the system flushing program but reaches only 1.1 m/s against a 1.5 m/s scouring target in that program. How should the run be logged?",
+          "choices": [
+            "Failed outright, so the volume delivered should not be recorded at all",
+            "Volume met and velocity not met, recorded as two separate conditions",
+            "Complete, because three pipe volumes is the governing acceptance test",
+            "Complete on time, with velocity noted only if a complaint is received"
+          ],
+          "correctIndex": 1,
+          "explanation": "Volume and velocity are separate acceptance conditions, and meeting one does not satisfy the other, so both results belong in the record along with the configuration change needed to reach the velocity. Logging the run as complete on volume alone tells the next operator nothing about whether deposits were mobilized."
         }
       ]
     }
   ],
   "finalAssessment": [
     {
-      "id": "distribution-water-quality-f1",
+      "id": "ceu-distribution-water-quality-storage-turnover-f1",
       "objective": "storage-turnover",
-      "prompt": "900 m³ at 300 m³/day gives a nominal indicator of:",
+      "prompt": "Fictional reservoir, internal diameter 20.0 m, routine band 2.5 m to 6.5 m. Zone meter recorded 9,100 m3 over 14 days. A bulk customer metered at 50 m3/d taps the main upstream of the tank tie-in. What is the nominal active turnover indicator?",
       "choices": [
-        "3 days",
-        "0.33 day",
-        "600 days",
-        "2.7 days"
+        "About 2.1 days",
+        "About 3.1 days",
+        "About 3.4 days",
+        "About 1.9 days"
       ],
       "correctIndex": 0,
-      "explanation": "Volume divided by throughput is 3 days."
+      "explanation": "Area is 314.2 m2, active depth 4.0 m, active volume 1,256.6 m3. Throughput is 650 m3/d minus 50 m3/d, so 600 m3/d, giving 2.09 d. The 1.9 d answer uses the uncorrected meter average and understates residence time. Teaching values only."
     },
     {
-      "id": "distribution-water-quality-f2",
+      "id": "ceu-distribution-water-quality-storage-turnover-f2",
       "objective": "storage-turnover",
-      "prompt": "A zone meter includes tank bypass flow. Using all of it as tank throughput:",
+      "prompt": "A fictional tank is screened with a continuously stirred approximation and a mean residence time of 5.0 days. Assuming complete mixing, roughly how long until only 10 percent of the water originally in the tank remains?",
       "choices": [
-        "Can understate the tank indicator",
-        "Gives maximum age",
-        "Overstates the tank indicator",
-        "Leaves the indicator unchanged because units match"
+        "About 7.5 days",
+        "About 11.5 days",
+        "About 23.0 days",
+        "About 5.0 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Time to 90 percent replacement is 2.303 x 5.0 d, about 11.5 d. Choosing 5.0 d treats the mean residence time as if all water left at once, which is exactly the averaging error the screening method warns about."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-f3",
+      "objective": "storage-turnover",
+      "prompt": "Fictional reservoir with plan area 314.2 m2. Level falls from 6.5 m to 5.5 m overnight then refills once daily. Referenced to the volume held at the routine high level of 6.5 m, what is the exchange fraction per cycle?",
+      "choices": [
+        "About 18.2 percent per cycle",
+        "About 25.0 percent per cycle",
+        "About 15.4 percent per cycle",
+        "About 10.0 percent per cycle"
+      ],
+      "correctIndex": 2,
+      "explanation": "Drawdown volume is 314.2 m3 and held volume at 6.5 m is 2,042.3 m3, giving 0.154. The 25.0 percent answer references the drawdown to the active band only, which overstates how much of the standing contents is actually exchanged each cycle."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-f4",
+      "objective": "storage-turnover",
+      "prompt": "In a fictional chloraminated zone, a reservoir turnover indicator rises from about 3 days in winter to about 9 days in a low-demand shoulder season while the tank outlet residual falls. What is the most defensible operator response?",
+      "choices": [
+        "Replace the indicator with the annual average day demand figure",
+        "Confirm nitrification and raise the chloramine dose across the zone",
+        "Report the tank as compliant because the indicator is only a screen",
+        "Increase outlet sampling and trending, and raise it with the ORO"
+      ],
+      "correctIndex": 3,
+      "explanation": "A rising indicator with a falling outlet residual is a flag to sample and trend more closely and to escalate to the overall responsible operator under the operational plan. Declaring nitrification confirmed skips the investigation and changes chemistry on an assumption."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-f5",
+      "objective": "storage-turnover",
+      "prompt": "Two operators screen the same fictional reservoir for the same week and report 2.5 days and 4.9 days. Both arithmetic sets check out. What is the most defensible way to publish the result?",
+      "choices": [
+        "Publish both values labelled by volume basis, period and sources",
+        "Publish the nameplate volume result so records stay consistent",
+        "Publish the mean of the two values as the zone screening figure",
+        "Publish the lower value because moving water sets the exposure"
       ],
       "correctIndex": 0,
-      "explanation": "An inflated denominator reduces the calculated indicator."
+      "explanation": "The spread comes from volume basis and throughput boundary definitions, so both the active and held volume indicators should be reported with named inputs and the dated period. Averaging them creates a figure that matches no defined volume at all."
     },
     {
-      "id": "distribution-water-quality-f3",
+      "id": "ceu-distribution-water-quality-residual-patterns-f1",
       "objective": "residual-patterns",
-      "prompt": "Residual 0.75 to 0.50 mg/L falls by approximately:",
+      "prompt": "Supplied case data, fictional system. Site B free chlorine: baseline mean 0.94 mg/L, current mean 0.61 mg/L. Matched control: baseline mean 0.88 mg/L, current mean 0.80 mg/L. What is the difference in differences?",
       "choices": [
-        "25%",
-        "33.3%",
-        "50%",
-        "66.7%"
+        "0.41 mg/L",
+        "0.25 mg/L",
+        "0.08 mg/L",
+        "0.33 mg/L"
       ],
       "correctIndex": 1,
-      "explanation": "0.25/0.75×100=33.3%."
+      "explanation": "Site B fell 0.33 mg/L and the control fell 0.08 mg/L, so 0.33 minus 0.08 equals 0.25 mg/L specific to Site B. Reporting 0.33 mg/L ignores the system-wide shift already visible at the control and overstates the local effect."
     },
     {
-      "id": "distribution-water-quality-f4",
+      "id": "ceu-distribution-water-quality-residual-patterns-f2",
       "objective": "residual-patterns",
-      "prompt": "Which additional evidence best tests a turnover hypothesis?",
+      "prompt": "Supplied case values: a 200 mm diameter main, 1,200 m long, carries a steady 6.0 L/s to a downstream sample station. What is the approximate travel time in that segment?",
       "choices": [
-        "One later grab without its operating record",
-        "Annual production totals",
-        "Different analytes with no operating context",
-        "Repeated matched samples across known operating states"
-      ],
-      "correctIndex": 3,
-      "explanation": "Repeated context-linked observations discriminate the hypothesis."
-    },
-    {
-      "id": "distribution-water-quality-f5",
-      "objective": "pressure-repair",
-      "prompt": "A logger gap should be recorded as:",
-      "choices": [
-        "An automatically acceptable interval",
-        "Proof of normal pressure",
-        "Proof of zero pressure",
-        "Unknown coverage needing assessment"
-      ],
-      "correctIndex": 3,
-      "explanation": "No value can be inferred solely from a gap."
-    },
-    {
-      "id": "distribution-water-quality-f6",
-      "objective": "pressure-repair",
-      "prompt": "Mechanical repair completion and service authorization are:",
-      "choices": [
-        "Interchangeable after pressure restoration",
-        "Equivalent events",
-        "Separate evidence-based milestones",
-        "Combined once the laboratory receives a sample"
+        "2.22 h",
+        "3.49 h",
+        "1.75 h",
+        "0.87 h"
       ],
       "correctIndex": 2,
-      "explanation": "The applicable verification process must be completed."
+      "explanation": "Area is 0.7854 x 0.200^2 = 0.03142 m2, volume is 37.7 m3, flow is 0.0060 m3/s, so t = 6,283 s = 1.75 h. The 2.22 h answer comes from using diameter squared without the 0.7854 factor, which inflates the pipe volume by about 27 percent."
     },
     {
-      "id": "distribution-water-quality-f7",
-      "objective": "zone-plan",
-      "prompt": "Which statement is defensible from the supplied two-grab pattern?",
+      "id": "ceu-distribution-water-quality-residual-patterns-f3",
+      "objective": "residual-patterns",
+      "prompt": "Supplied case data: a distal station has a documented baseline mean free chlorine of 0.76 mg/L and a current mean of 0.49 mg/L under the same operating state. What is the relative change stated against the baseline?",
       "choices": [
-        "Temperature effects are excluded",
-        "Age is proven",
-        "The pattern warrants investigation",
-        "Sampling-path effects have been disproved"
+        "27.0 percent decrease",
+        "55.1 percent decrease",
+        "64.5 percent decrease",
+        "35.5 percent decrease"
       ],
-      "correctIndex": 2,
-      "explanation": "The pattern supports investigation, not a definitive causal or compliance claim."
+      "correctIndex": 3,
+      "explanation": "The drop is 0.27 mg/L and 0.27 divided by 0.76 is 35.5 percent of the baseline. The 55.1 percent figure divides by the current value instead of the baseline, which is the wrong denominator and exaggerates the change."
     },
     {
-      "id": "distribution-water-quality-f8",
-      "objective": "zone-plan",
-      "prompt": "A storage optimization proposal should include:",
+      "id": "ceu-distribution-water-quality-residual-patterns-f4",
+      "objective": "residual-patterns",
+      "prompt": "In a fictional investigation, the study site and its matched control both show a 0.30 mg/L free chlorine decrease between the two documented operating periods. Which conclusion does that comparison best support?",
       "choices": [
-        "Minimum possible volume",
-        "Quality, storage constraints and authorization",
-        "A residual target without capacity review",
-        "A new level based on one favourable grab"
+        "The change is shared, so look upstream at source, blend or storage",
+        "The change is local, so a throttled valve near the study site is likely",
+        "The control site is unsuitable and must be dropped from the study",
+        "The study site has developed wall demand from corroded unlined pipe"
+      ],
+      "correctIndex": 0,
+      "explanation": "A difference in differences near zero means the shift is system-wide, so upstream factors such as a source or blend change, or reservoir turnover, are the better place to look. Claiming a local throttled valve ignores that the control moved by the same amount."
+    },
+    {
+      "id": "ceu-distribution-water-quality-residual-patterns-f5",
+      "objective": "residual-patterns",
+      "prompt": "Supplied case assumptions: a difference in differences of 0.24 mg/L is built from four means, each with an expanded uncertainty of plus or minus 0.04 mg/L. How many times the combined uncertainty is the result?",
+      "choices": [
+        "About 6.0 times",
+        "About 3.0 times",
+        "About 1.5 times",
+        "About 2.4 times"
       ],
       "correctIndex": 1,
-      "explanation": "The proposal must account for interacting operational requirements."
+      "explanation": "Combined uncertainty is the square root of (4 x 0.04^2) = square root of 0.0064 = 0.08 mg/L, and 0.24 divided by 0.08 is 3.0. The 6.0 answer divides by a single mean uncertainty of 0.04 mg/L and ignores that four means contribute to the comparison."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-f1",
+      "objective": "pressure-repair",
+      "prompt": "Logger L-3 sits at datum elevation 132.40 m and its lowest sample is 340 kPa. The critical service is at 145.10 m, 300 m downstream, with a supplied gradient of 5.0 m per 1000 m. Using 9.804 kPa/m, estimate the pressure at that service. Values are fictional case assumptions.",
+      "choices": [
+        "About 325 kPa at the critical service",
+        "About 340 kPa at the critical service",
+        "About 201 kPa at the critical service",
+        "About 216 kPa at the critical service"
+      ],
+      "correctIndex": 2,
+      "explanation": "Elevation rise 12.70 m gives 124.5 kPa, friction 300 m x 0.005 = 1.5 m gives 14.7 kPa, so 340 minus 124.5 minus 14.7 is about 201 kPa. The 216 kPa answer applies the elevation term only and omits the friction loss along the 300 m of main."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-f2",
+      "objective": "pressure-repair",
+      "prompt": "A logger on a 120 s interval shows four consecutive samples below the facility review trigger, with normal samples immediately before and after. What excursion duration is defensible from interval geometry alone?",
+      "choices": [
+        "Exactly 8 minutes, the measured low-sample span",
+        "Between 2 and 6 minutes, based on the interval",
+        "At least 10 minutes, with no defensible upper bound",
+        "Between 6 and 10 minutes, centred near 8 minutes"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lower bound is (4 minus 1) x 2 min = 6 min and upper bound is (4 plus 1) x 2 min = 10 min. Reporting exactly 8 minutes states a point estimate as though it were measured, and it hides the uncertainty the sampling interval imposes."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-f3",
+      "objective": "pressure-repair",
+      "prompt": "An isolated section holds 180 m of 200 mm main and 60 m of 300 mm main. Measured hydrant discharge is 25 L/s. How long to move two section volumes, as a planning figure only?",
+      "choices": [
+        "About 13.2 minutes of flushing time",
+        "About 6.6 minutes of flushing time",
+        "About 19.8 minutes of flushing time",
+        "About 3.8 minutes of flushing time"
+      ],
+      "correctIndex": 0,
+      "explanation": "Volumes are 0.03142 m2 x 180 m = 5.66 m3 and 0.07069 m2 x 60 m = 4.24 m3, total about 9.90 m3. Two volumes is 19 792 L divided by 25 L/s = 792 s, about 13.2 min. The 6.6 min answer covers only one section volume. Clearance still depends on the current Ontario watermain disinfection procedure and the facility approval."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-f4",
+      "objective": "pressure-repair",
+      "prompt": "A verified clock check shows a logger running 4 min 10 s slow against the SCADA reference. The raw logger timestamp of the first low sample is 03:22:00. What corrected timestamp belongs in the timeline?",
+      "choices": [
+        "03:26:00, rounding the offset to whole minutes",
+        "03:26:10, with the offset and reference recorded",
+        "03:17:50, with the offset and reference recorded",
+        "03:22:00, because offsets under five minutes are ignored"
+      ],
+      "correctIndex": 1,
+      "explanation": "A slow clock reads earlier than true time, so corrected timestamps move later by the measured offset, giving 03:26:10. Subtracting to 03:17:50 applies the correction in the wrong direction and can reverse the apparent order of the excursion and a valve closure."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-f5",
+      "objective": "pressure-repair",
+      "prompt": "Every pressure figure in an integrity-event file carries an uncertainty band. Which register row establishes that band, and what weakens that row?",
+      "choices": [
+        "SCADA zone trend; a poll rate coarser than the event window",
+        "Valve operation log; times estimated after the fact, no name",
+        "Calibration record; expired verification or serial mismatch",
+        "Raw logger export; an edited file, or a wrapped memory gap"
+      ],
+      "correctIndex": 2,
+      "explanation": "The instrument calibration or verification record is what makes an accuracy band defensible, and expired verification or a serial number that does not match the deployed logger destroys it. The raw export fixes bounds and gaps, but it carries no accuracy statement of its own."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-f1",
+      "objective": "zone-plan",
+      "prompt": "Fictional teaching case, supplied assumptions only: tank operating volume between normal control levels 900 m3, average daily flow genuinely passing through the tank 360 m3/d, travel time from tank to zone extremity 0.6 d. What is the nominal water age at the extremity?",
+      "choices": [
+        "2.5 days",
+        "1.9 days",
+        "3.6 days",
+        "3.1 days"
+      ],
+      "correctIndex": 3,
+      "explanation": "Turnover is 900 m3 divided by 360 m3/d, which is 2.5 d, and adding the 0.6 d travel time gives 3.1 d. Answering 2.5 d stops at turnover and ignores the transport time from the tank to the extremity, which is where the sample was taken."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-f2",
+      "objective": "zone-plan",
+      "prompt": "Same fictional case, supplied assumptions only: free chlorine entering the zone 1.10 mg/L, combined bulk and wall decay coefficient 0.30 /d, water age 3.0 d. Using C = C0 times e raised to the power of negative k times t, what is the predicted residual?",
+      "choices": [
+        "About 0.45 mg/L",
+        "About 0.33 mg/L",
+        "About 0.77 mg/L",
+        "About 0.20 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "k times t is 0.30 /d times 3.0 d, which is 0.9, and e raised to the power of negative 0.9 is 0.4066, so C is 1.10 mg/L times 0.4066, or about 0.45 mg/L. The 0.77 mg/L answer comes from subtracting a linear loss instead of applying first order decay."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-f3",
+      "objective": "zone-plan",
+      "prompt": "Fictional flushing case, supplied assumptions only: 200 mm nominal diameter main, measured hydrant discharge 30 L/s, program scouring velocity 1.2 m/s. What flow is required and what is the shortfall?",
+      "choices": [
+        "About 62.8 L/s is needed, a shortfall of roughly 32.8 L/s",
+        "About 37.7 L/s is needed, a shortfall of roughly 7.7 L/s",
+        "About 24.0 L/s is needed, so the velocity target is met",
+        "About 18.8 L/s is needed, so no configuration change is needed"
+      ],
+      "correctIndex": 1,
+      "explanation": "Area is 0.7854 times 0.200 m squared, or 0.031416 m2, so the flow needed is 1.2 m/s times 0.031416 m2, which is 0.0377 m3/s or 37.7 L/s, leaving a shortfall of 7.7 L/s against the measured 30 L/s. The 18.8 L/s answer uses half the correct area and wrongly suggests the target is already satisfied."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-f4",
+      "objective": "zone-plan",
+      "prompt": "In a fictional zone the measured extremity residual is 64 percent of the value predicted from the decay study. Which single next check best separates an older than expected water problem from a higher than expected chlorine demand problem?",
+      "choices": [
+        "Raise the plant chlorine dose until the extremity reading rises",
+        "Repeat the decay study using the same seasonal coefficient value",
+        "Verify tank turnover or measure travel time to the extremity",
+        "Collect more residual readings at the same station each week"
+      ],
+      "correctIndex": 2,
+      "explanation": "Only a turnover verification or a travel time measurement distinguishes an age explanation from a demand explanation, because both explanations produce the same low residual. More residual readings at the same station repeat the observation without discriminating between the two hypotheses."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-f5",
+      "objective": "zone-plan",
+      "prompt": "A zone register holds an uncleared repair awaiting return to service and a proposal to widen a tank control band for turnover. Crew time is limited this week. What does the directional rule in the plan require?",
+      "choices": [
+        "Both items are merged into one register row so the zone shows a single action",
+        "The storage optimization proceeds first because it addresses the shared root cause",
+        "Closing the repair item also closes the storage optimization on that street",
+        "The repair response proceeds first and the storage item keeps an honest open date"
+      ],
+      "correctIndex": 3,
+      "explanation": "An optimization item never delays a response item, and leaving the storage row open with a real date is more defensible than hiding it. Merging the rows or letting the repair closure close the storage item destroys the separation the plan exists to maintain."
     }
   ],
   "sources": [
@@ -455,5 +819,267 @@
       "accessed": "2026-09-24"
     }
   ],
-  "version": "2026-09-24.1"
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-a1",
+      "objective": "storage-turnover",
+      "prompt": "Fictional reservoir, internal diameter 12.0 m, routine band 3.0 m to 8.0 m. Meter totalizer shows 4,200 m3 over 10 days, and a 20 m3/d bulk service is teed upstream of the tank tie-in. What is the nominal turnover on the volume held at the routine high level?",
+      "choices": [
+        "About 2.3 days",
+        "About 3.0 days",
+        "About 1.4 days",
+        "About 2.2 days"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area is 113.1 m2 and held volume at 8.0 m is 904.8 m3. Throughput is 420 m3/d minus 20 m3/d, so 400 m3/d, giving 2.26 d. The 1.4 d answer uses active volume of 565.5 m3, which answers a different question. Teaching values only."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-a2",
+      "objective": "storage-turnover",
+      "prompt": "A fictional storage facility is screened with a continuously stirred approximation and a mean residence time of 3.5 days. Assuming complete mixing, roughly how long until 90 percent of the original contents has been replaced?",
+      "choices": [
+        "About 5.3 days",
+        "About 8.1 days",
+        "About 10.5 days",
+        "About 3.5 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Replacement of 90 percent takes 2.303 x 3.5 d, about 8.1 d. The 3.5 d option reports the mean only, and an average cannot describe the aged tail that decays residual and drives taste and odour complaints."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-a3",
+      "objective": "storage-turnover",
+      "prompt": "A fictional tank exchanges 20 percent of its held volume per fill and draw cycle and completes 2 cycles per day. Assuming complete mixing each cycle, about how many days until only 10 percent of the original water remains?",
+      "choices": [
+        "About 10.3 days",
+        "About 2.6 days",
+        "About 5.2 days",
+        "About 7.5 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "n equals ln(0.10) divided by ln(0.80), about 10.3 cycles, and at 2 cycles per day that is roughly 5.2 d. The 10.3 answer reports cycles as if they were days and doubles the apparent time to replacement."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-a4",
+      "objective": "storage-turnover",
+      "prompt": "You are explaining a July taste and odour complaint in a fictional pressure zone fed by one reservoir. Which throughput basis best supports the storage turnover screening for that investigation?",
+      "choices": [
+        "Annual average day demand taken from the asset register summary",
+        "Total plant production for the calendar year divided by 365 days",
+        "Pump station totalizer including the recirculation loop returns",
+        "Dated July exchange flow for that tank with upstream deductions"
+      ],
+      "correctIndex": 3,
+      "explanation": "The period must match the question, so a dated July flow corrected for services that bypass the tank is the right basis. Annual averages smooth out the low-demand condition that created the complaint, and loop recirculation never exchanges through the tank."
+    },
+    {
+      "id": "ceu-distribution-water-quality-storage-turnover-a5",
+      "objective": "storage-turnover",
+      "prompt": "An operator writes in the log that a 2.8 day active turnover indicator is the water age at a fictional reservoir outlet. What is the best correction to that entry?",
+      "choices": [
+        "The value is a nominal quotient, and the aged tail runs far longer",
+        "The value is conservative, so outlet water age is under 2.8 days",
+        "The value should be doubled to convert a quotient into water age",
+        "The value only applies once a tracer study confirms the mixing"
+      ],
+      "correctIndex": 0,
+      "explanation": "The indicator is a screening quotient from an idealized flow-through assumption, and the oldest fraction can be several times that figure, worse again if the tank stratifies. Calling it conservative reverses the error, because it understates rather than overstates age."
+    },
+    {
+      "id": "ceu-distribution-water-quality-residual-patterns-a1",
+      "objective": "residual-patterns",
+      "prompt": "Supplied case data, fictional system. Site C free chlorine: baseline mean 0.90 mg/L, current mean 0.55 mg/L. Matched control: baseline mean 0.86 mg/L, current mean 0.74 mg/L. What change is specific to Site C?",
+      "choices": [
+        "0.47 mg/L",
+        "0.23 mg/L",
+        "0.12 mg/L",
+        "0.35 mg/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "Site C fell 0.35 mg/L, the control fell 0.12 mg/L, so the site-specific portion is 0.23 mg/L. Quoting 0.35 mg/L treats the whole drop as local even though part of it also appeared at the matched control."
+    },
+    {
+      "id": "ceu-distribution-water-quality-residual-patterns-a2",
+      "objective": "residual-patterns",
+      "prompt": "Supplied case values: a 150 mm diameter main, 900 m long, carries a steady night flow of 1.2 L/s. What is the approximate travel time in that segment?",
+      "choices": [
+        "2.45 h",
+        "4.69 h",
+        "3.68 h",
+        "1.84 h"
+      ],
+      "correctIndex": 2,
+      "explanation": "Area is 0.7854 x 0.150^2 = 0.01767 m2, volume is 15.9 m3, flow is 0.0012 m3/s, so t = 13,254 s = 3.68 h. The 4.69 h answer drops the 0.7854 factor and uses diameter squared as the area, which overstates the stored volume."
+    },
+    {
+      "id": "ceu-distribution-water-quality-residual-patterns-a3",
+      "objective": "residual-patterns",
+      "prompt": "Supplied case data at one station: baseline total 0.95 mg/L with free 0.88 mg/L; current total 0.72 mg/L with free 0.48 mg/L. How much has the combined chlorine increased?",
+      "choices": [
+        "0.07 mg/L increase",
+        "0.24 mg/L increase",
+        "0.40 mg/L increase",
+        "0.17 mg/L increase"
+      ],
+      "correctIndex": 3,
+      "explanation": "Baseline combined is 0.95 minus 0.88 = 0.07 mg/L and current combined is 0.72 minus 0.48 = 0.24 mg/L, an increase of 0.17 mg/L. Answering 0.24 mg/L reports the current combined value rather than the change from baseline."
+    },
+    {
+      "id": "ceu-distribution-water-quality-residual-patterns-a4",
+      "objective": "residual-patterns",
+      "prompt": "Two grab samples were taken at the same fictional dead-end station at 09:00 on different days. On day one the reservoir was filling; on day two it was draining. Why is this pair not matched?",
+      "choices": [
+        "The documented operating state differs between the two samples",
+        "The clock times are identical, so the samples duplicate each other",
+        "Dead-end stations cannot be resampled within the same month",
+        "Grab results are only comparable if taken by the same operator"
+      ],
+      "correctIndex": 0,
+      "explanation": "Reservoir level and direction of travel change flow paths and water age, so the operating state is not the same even at identical clock times. Having the same operator helps attribution but it does not make two different operating states comparable."
+    },
+    {
+      "id": "ceu-distribution-water-quality-residual-patterns-a5",
+      "objective": "residual-patterns",
+      "prompt": "Supplied case values: junction free chlorine 0.90 mg/L, downstream station 0.54 mg/L, and the travel time applicable to that operating period is 3.0 h. What descriptive first-order decay coefficient does this give?",
+      "choices": [
+        "About 0.51 per hour",
+        "About 0.17 per hour",
+        "About 0.12 per hour",
+        "About 0.24 per hour"
+      ],
+      "correctIndex": 1,
+      "explanation": "ln(0.90 divided by 0.54) = ln(1.667) = 0.511, and 0.511 divided by 3.0 h is about 0.17 per hour. The 0.51 per hour answer reports the natural log itself without dividing by travel time, so it is not a rate."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-a1",
+      "objective": "pressure-repair",
+      "prompt": "A logger at datum 96.50 m records a low of 415 kPa. The critical service is at 108.20 m, 550 m along the main, with a supplied gradient of 3.6 m per 1000 m. Using 9.804 kPa/m, estimate the pressure there. Values are fictional case assumptions.",
+      "choices": [
+        "About 396 kPa at that service point",
+        "About 415 kPa at that service point",
+        "About 281 kPa at that service point",
+        "About 300 kPa at that service point"
+      ],
+      "correctIndex": 2,
+      "explanation": "Elevation rise 11.70 m gives 114.7 kPa and friction 550 m x 0.0036 = 1.98 m gives 19.4 kPa, so 415 minus 114.7 minus 19.4 is about 281 kPa. The 396 kPa answer subtracts friction only and ignores the 11.70 m of elevation, the larger term by far."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-a2",
+      "objective": "pressure-repair",
+      "prompt": "A logger on a 600 s interval records two consecutive samples below the review trigger used in the facility procedure, with normal samples on either side. What duration range is defensible?",
+      "choices": [
+        "Exactly 20 minutes, taken from the low-sample spacing",
+        "Between 10 and 20 minutes, from the two samples",
+        "Between 20 and 30 minutes, from the interval count",
+        "Between 10 and 30 minutes, centred near 20 minutes"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lower bound is (2 minus 1) x 10 min = 10 min and upper bound is (2 plus 1) x 10 min = 30 min. Quoting exactly 20 minutes turns a point estimate into a measured value and discards the uncertainty the coarse interval creates."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-a3",
+      "objective": "pressure-repair",
+      "prompt": "A flush discharges 31 L/s through a 250 mm diameter main during repair verification. What is the approximate velocity in that main?",
+      "choices": [
+        "About 0.63 m/s in the 250 mm main",
+        "About 0.99 m/s in the 250 mm main",
+        "About 0.44 m/s in the 250 mm main",
+        "About 1.58 m/s in the 250 mm main"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area is (pi/4) x 0.250 m squared = 0.04909 m2, and 0.031 m3/s divided by 0.04909 m2 gives about 0.63 m/s. The 1.58 m/s answer comes from using the radius instead of the diameter in the area calculation, which understates the area by a factor of four."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-a4",
+      "objective": "pressure-repair",
+      "prompt": "A field photograph and the logger disagree on event order. The logger clock is verified 2 min 45 s fast against the reference clock. The raw logger timestamp for the excursion start is 14:08:30. What corrected time is entered?",
+      "choices": [
+        "14:05:30, after rounding the offset to minutes",
+        "14:05:45, with the correction direction noted",
+        "14:11:15, with the correction direction noted",
+        "14:08:30, because photo clocks are unreliable"
+      ],
+      "correctIndex": 1,
+      "explanation": "A fast clock reads later than true time, so corrected timestamps move earlier by 2 min 45 s, giving 14:05:45. Adding the offset to 14:11:15 reverses the correction and can wrongly place the excursion after an isolation step."
+    },
+    {
+      "id": "ceu-distribution-water-quality-pressure-repair-a5",
+      "objective": "pressure-repair",
+      "prompt": "Which record primarily fills the isolation achieved and released field of an integrity-event timeline, and what most weakens that record?",
+      "choices": [
+        "Raw logger export; a memory wrap during the isolation period",
+        "Watermain repair photograph set; a camera clock never verified",
+        "Valve operation log; times estimated later, no operator name",
+        "SCADA inlet trend; a tag that is out of calibration range"
+      ],
+      "correctIndex": 2,
+      "explanation": "The valve operation log made by operating staff establishes when isolation was achieved and released, and times written from memory afterwards with no operator name weaken it, which matters under the record and duty provisions of O. Reg. 128/04. The SCADA inlet trend shows zone behaviour and recovery, not the valve actions themselves."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-a1",
+      "objective": "zone-plan",
+      "prompt": "Fictional teaching case, supplied assumptions only: tank operating volume between control levels 1 500 m3, flow genuinely passing through the tank 500 m3/d, travel time from tank to extremity 0.5 d. What nominal water age applies at the extremity?",
+      "choices": [
+        "3.0 days",
+        "0.8 days",
+        "4.5 days",
+        "3.5 days"
+      ],
+      "correctIndex": 3,
+      "explanation": "Turnover is 1 500 m3 divided by 500 m3/d, which is 3.0 d, and adding 0.5 d of travel gives 3.5 d. The 0.8 day answer inverts the turnover calculation by dividing flow by volume before adding travel time."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-a2",
+      "objective": "zone-plan",
+      "prompt": "Fictional case, supplied assumptions only: free chlorine entering the zone 1.00 mg/L, measured free chlorine at the extremity 0.25 mg/L, nominal water age 3.0 d. What apparent first order decay coefficient does the field data imply?",
+      "choices": [
+        "About 0.46 /d",
+        "About 0.25 /d",
+        "About 1.39 /d",
+        "About 0.12 /d"
+      ],
+      "correctIndex": 0,
+      "explanation": "The ratio is 0.25 divided by 1.00, or 0.25, and the natural log of 0.25 is negative 1.386, so the apparent k is 1.386 divided by 3.0 d, which is about 0.46 /d. The 1.39 /d answer forgets to divide by the elapsed water age."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-a3",
+      "objective": "zone-plan",
+      "prompt": "Fictional flushing case, supplied assumptions only: 150 mm nominal diameter main 500 m long, program requires 3 pipe volumes, measured hydrant discharge 18 L/s. How long must the run last to deliver the required volume?",
+      "choices": [
+        "About 16 minutes",
+        "About 24.5 minutes",
+        "About 8.2 minutes",
+        "About 44 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Area is 0.01767 m2, so one pipe volume is 8.84 m3 and three volumes are 26.5 m3, and 26.5 m3 divided by 0.018 m3/s is 1 473 s, or about 24.5 minutes. The 8.2 minute answer delivers only one pipe volume instead of the three the program requires."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-a4",
+      "objective": "zone-plan",
+      "prompt": "A hydrant free chlorine reading of 0.22 mg/L was taken while a boundary valve was closed for a repair and the zone was being fed backwards. How should that value be handled in the zone evidence set?",
+      "choices": [
+        "Discarded from the file because the zone was not in its normal operating state",
+        "Treated as the zone baseline because it is the lowest residual on record",
+        "Recorded with that operating state noted, not compared with normal pumping data",
+        "Averaged together with the normal pumping readings to smooth short term variation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Hydraulic and water quality evidence are only comparable when tied to the same operating state at the same time, so the reading is kept with its state described and compared only with data from a matching state. Averaging it with normal pumping readings blends two different systems and hides the effect of the closed valve."
+    },
+    {
+      "id": "ceu-distribution-water-quality-zone-plan-a5",
+      "objective": "zone-plan",
+      "prompt": "Which register entry states an acceptable closure criterion for a low residual item in a prioritized zone plan?",
+      "choices": [
+        "Operations staff keep monitoring the dead end area and report anything that looks unusual to the shift supervisor",
+        "The flushing crew returns to the area when workload allows and records the time the hydrant was opened that day",
+        "The zone lead reviews the residual trend at some point after the next seasonal change in demand",
+        "Free chlorine at station D-14 meets the procedure value on three consecutive weekly checks under normal pumping"
+      ],
+      "correctIndex": 3,
+      "explanation": "A closure criterion must be measurable and tied to a named location, a stated operating state and a defined number of results, which the station D-14 entry provides. Continuing to monitor and report anything unusual states an intention rather than a testable condition, so the item could never be closed on evidence."
+    }
+  ]
 }

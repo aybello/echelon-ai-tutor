@@ -16,8 +16,8 @@
         "Calculate peak and daily flow changes.",
         "Distinguish plausible inflow/infiltration patterns from proof."
       ],
-      "lesson": "### A hydrograph suggests where to investigate\nCollection-system flow can include sanitary wastewater, infiltration through defects and inflow through direct connections. A rapid response to rainfall can suggest direct inflow; a sustained delayed response can suggest infiltration or storage effects. These are investigation clues, not definitive source identifications. Catchment travel time, pumping and rainfall distribution can alter the pattern.\n\nCompare a wet period with a representative dry baseline. Peak ratio is wet peak divided by dry peak, while excess daily volume is wet daily volume minus the selected dry baseline. These quantities answer different questions. A brief peak may challenge capacity without dominating daily volume.\n\nA baseline should account for weekday/weekend demand, seasonal groundwater, known industrial discharges and meter quality. Subtracting a convenient low-flow day can overstate rainfall-related volume. Preserve the rationale and test sensitivity to plausible baselines.\n\nUse the pattern to target records review, authorized inspection and monitoring. The course does not direct entry into manholes, confined spaces or traffic zones. Physical investigation requires the appropriate trained crew and site procedures.",
-      "evidence": "**C1 — South Branch catchment**\nDry comparable daily volume 2,400 m³; dry peak 180 m³/hour. Rain-day volume 3,600 m³; peak 420 m³/hour beginning 20 minutes after intense rain. Flow remains above baseline for 18 hours. A second plausible dry baseline is 2,600 m³/day. Rain gauge is 5 km from the catchment.\n\nC2: No property connection testing or defect inspection has been completed. Flow meter quality checks are current but rainfall spatial coverage is uncertain.",
+      "lesson": "### What a wet-weather hydrograph actually shows\n\nA collection-system flow record is a mixed signal. It contains sanitary base flow from households and businesses, groundwater infiltration through cracked pipe, defective joints, failed service laterals and leaking maintenance holes, and direct inflow from roof leaders, foundation drains, cross connections, catch basins and maintenance hole covers in ponded areas. Meter output does not separate these. It gives you one number per interval, and the separation is an interpretation you build and defend.\n\nTwo features of the curve carry most of the diagnostic weight. The first is response timing. A sharp rise that begins within minutes of rainfall starting, peaks near the rainfall peak and recedes quickly once rain stops is consistent with direct inflow from surfaces hydraulically connected to the sewer. The second is recession length. A slow rise that continues after rainfall stops, peaks hours later and decays over days is consistent with rainfall-derived infiltration, where water must move through soil before entering the pipe. The US EPA guidance on sanitary sewer overflows describes this split between infiltration and inflow and the reasons each behaves differently, and the US EPA municipal wastewater primer covers why peak flows, not average flows, are what limit collection and treatment capacity. Both are United States technical guidance. They inform the hydraulics. They do not set Ontario obligations, which come from your Environmental Compliance Approval and applicable Ontario regulation.\n\nThe critical judgment point is this: the pattern is a hypothesis generator. It narrows where to look. It is not proof of a source. Travel time from the far end of a large catchment, pump station on and off cycling, storage in surcharged trunks, an upstream flow-control gate, and rainfall that falls unevenly across the sewershed can all produce a delayed peak in a catchment whose real problem is direct inflow, or a sharp peak in a catchment dominated by infiltration. Proof requires locating the defect or connection through records review and authorized field investigation such as smoke testing, dyed water testing, CCTV inspection and flow isolation. This module does not direct entry into maintenance holes, confined spaces or live traffic zones. That work belongs to a trained crew operating under site procedures.\n\n### Building a dry-weather baseline you can defend\n\nEvery wet-weather number you calculate is a difference from a baseline, so the baseline controls the answer. A careless baseline is the single most common way a wet-weather analysis becomes worthless.\n\nA defensible baseline has four properties. It matches the day type, meaning weekday flows are compared with weekday flows and weekend with weekend, because sanitary patterns differ. It matches the season, because groundwater infiltration in a spring high-water-table period is genuinely different from late summer, and using a September baseline against an April event attributes seasonal infiltration to the storm. It excludes days contaminated by known events such as a large industrial discharge, a hydrant flushing programme, a bypass, a station out of service or a statutory holiday. And it uses more than one day, so that a single anomalous day cannot swing the result.\n\nThe practical method is to select three to five qualifying dry days, verify no measurable rainfall on those days and for a stated antecedent period, average them, and record the selection rule you used. Then test sensitivity. Recalculate the excess using the highest qualifying dry day and the lowest qualifying dry day. If the conclusion holds across that range, the conclusion is robust. If the conclusion flips, you do not have a finding yet, you have a data problem, and you say so.\n\nSeparate two different questions before you calculate anything. Peak ratio answers whether the system has a capacity problem during the storm. Excess daily volume answers whether the system is carrying a large quantity of clean water that costs money to convey and treat. A short intense inflow event can produce a high peak ratio and a modest excess volume. A long infiltration recession can produce a modest peak ratio and a very large excess volume. The two findings send you to different corrective work and different budget lines.\n\n### Worked example 1: peak ratio, peaking factor and excess daily volume\n\nSupplied case assumptions for this teaching example only. Fictional catchment with one permanent flow meter at the outlet.\n\nDry-weekday daily volumes on three qualifying days: 9 120 m3/d, 8 980 m3/d, 9 260 m3/d.\nDry-weekday instantaneous peak flow, averaged over those days: 152 L/s.\nWet day daily volume: 15 840 m3/d.\nWet day instantaneous peak flow: 438 L/s.\nCatchment sanitary sewer length: 42.6 km.\n\nStep 1. Dry baseline daily volume.\n(9 120 m3/d + 8 980 m3/d + 9 260 m3/d) = 27 360 m3/d\n27 360 m3/d divided by 3 days of record = 9 120 m3/d\n\nStep 2. Convert the dry peak to daily-rate units so it can be compared with volumes.\n152 L/s x 86 400 s/d = 13 132 800 L/d\n13 132 800 L/d divided by 1 000 L/m3 = 13 132.8 m3/d\n\nStep 3. Dry-weather peaking factor.\n13 132.8 m3/d divided by 9 120 m3/d = 1.44 (dimensionless)\n\nStep 4. Convert the wet peak the same way.\n438 L/s x 86 400 s/d = 37 843 200 L/d\n37 843 200 L/d divided by 1 000 L/m3 = 37 843.2 m3/d\n\nStep 5. Wet-day peaking factor.\n37 843.2 m3/d divided by 15 840 m3/d = 2.39 (dimensionless)\n\nStep 6. Peak ratio, wet peak over dry peak.\n438 L/s divided by 152 L/s = 2.88 (dimensionless)\n\nStep 7. Excess daily volume.\n15 840 m3/d minus 9 120 m3/d = 6 720 m3/d\n\nStep 8. Excess expressed per kilometre of sewer, for comparison between catchments.\n6 720 m3/d divided by 42.6 km = 157.7 m3/d per km\n6 720 m3/d divided by 86.4 (m3/d per L/s) = 77.8 L/s\n77.8 L/s divided by 42.6 km = 1.83 L/s per km\n\nAnswer. On the supplied values the wet day carried 6 720 m3 of excess flow, equal to 157.7 m3/d per km of sewer or 1.83 L/s per km, with a peak ratio of 2.88 and the instantaneous peaking factor rising from 1.44 dry to 2.39 wet. The rise in peaking factor, not just the rise in volume, is what indicates a storm-driven capacity concern. Whether that peak is acceptable depends on the rated capacity of the downstream station, trunk and plant as set out in the facility Environmental Compliance Approval and design records, not on any general rule of thumb.\n\n### Worked example 2: turning excess volume into catchment evidence\n\nSupplied case assumptions for this teaching example only, continuing the same fictional catchment.\n\nEvent rainfall total at the catchment gauge: 24.5 mm.\nSewershed tributary area: 148 ha.\nExcess volume day 1: 6 720 m3. Day 2: 2 980 m3. Day 3: 1 140 m3. Day 4 returns to baseline.\n\nStep 1. Total rainfall-derived excess for the event.\n6 720 m3 + 2 980 m3 + 1 140 m3 = 10 840 m3\n\nStep 2. Convert catchment area to square metres.\n148 ha x 10 000 m2/ha = 1 480 000 m2\n\nStep 3. Convert rainfall depth to metres.\n24.5 mm divided by 1 000 mm/m = 0.0245 m\n\nStep 4. Volume of rain falling on the catchment.\n0.0245 m x 1 480 000 m2 = 36 260 m3\n\nStep 5. Capture fraction, sometimes called the R value.\n10 840 m3 divided by 36 260 m3 = 0.299, or 29.9 percent\n\nStep 6. Express the excess as an equivalent depth over the catchment.\n10 840 m3 divided by 1 480 000 m2 = 0.00732 m\n0.00732 m x 1 000 mm/m = 7.32 mm\n\nStep 7. Check the shape of the recession.\nDay 2 divided by day 1 = 2 980 m3 divided by 6 720 m3 = 0.443\nDay 3 divided by day 2 = 1 140 m3 divided by 2 980 m3 = 0.383\n\nAnswer. On the supplied values, 29.9 percent of the rain falling on the tributary area appeared as excess flow, equivalent to 7.32 mm of depth over the catchment. A capture fraction near thirty percent is far larger than the paved area that could plausibly be connected by accident, which points toward a deliberate or structural connection such as foundation drains or a cross connection, combined with infiltration. The multi-day recession with roughly forty percent day-over-day decay is inconsistent with pure direct inflow, which would end with the rain. Read together, the two features suggest a mixed source. That is a targeting conclusion. It tells you to pull service connection records and plan isolation monitoring. It does not tell you which properties are responsible.\n\n### From pattern to proof\n\n| Observed pattern | Plausible cause | What would strengthen it | What would disprove or weaken it |\n|---|---|---|---|\n| Peak within 15 to 30 min of rain onset, recession ends with rain | Direct inflow, connected surfaces | Sharp peak repeats with every rain regardless of season; smoke test finds connections | Small catchment travel time makes timing meaningless; peak actually coincides with a pump station restart |\n| Peak 4 to 12 h after rain, recession over 2 to 4 days | Rainfall-derived infiltration | Response scales with antecedent moisture; wet-season events far larger than dry-season events of equal depth | Upstream storage or gate throttling is delaying an inflow peak |\n| Elevated baseline all spring, no storm shape | Groundwater infiltration | Correlates with monitored water table; disappears in late summer | A continuous unmetered discharge or a meter zero drift |\n| Excess volume large, peak ratio near 1 | Distributed infiltration, no acute capacity issue | Confirmed by night-flow minimum rising | Meter clipping at high flow hides the true peak |\n| Peak ratio high, excess volume small | Localized inflow, acute capacity issue | Overflow or surcharge alarms align with the peak | Rainfall fell on only part of the catchment |\n| Step change on one date, no rain | Instrument or configuration change | Calibration record, firmware or scaling change log | Genuine new connection commissioned that date |\n\n### Data validity and the event input register\n\nBefore any of the arithmetic means anything, the inputs must be defensible. Fill this register for every event you intend to report on, and keep it with the calculation.\n\n| Input | Value and units | Source record | Validity check | Accept or reject |\n|---|---|---|---|---|\n| Event rainfall depth | mm | Named gauge, gauge ID | Compared against a second gauge; difference explained | |\n| Rainfall timing | start and end, local time | Gauge log | Clock synchronised with flow meter clock | |\n| Antecedent dry period | days | Gauge log | Confirms baseline days had no rain | |\n| Dry baseline days | dates, day type | SCADA daily totals | Same day type and season, no known upsets | |\n| Dry baseline volume | m3/d | SCADA | Mean of three or more qualifying days recorded | |\n| Wet day volume | m3/d | SCADA | Meter not in surcharge or reverse flow | |\n| Peak instantaneous flow | L/s and timestamp | SCADA trend | Below meter full-scale, not clipped | |\n| Meter calibration | date, result | Calibration record | Within the interval set by the maintenance procedure | |\n| Level and velocity raw signals | m and m/s | Meter log | Level below pipe crown, velocity positive and stable | |\n| Tributary area | ha | GIS or as-built | Boundary matches the metered point | |\n| Sewer length in catchment | km | Asset register | Excludes forcemain and non-tributary mains | |\n| Known discharges in period | m3 | Industrial or hauled waste log | Subtracted or noted | |\n\nThe most frequent invalidator is surcharge. An area-velocity meter measuring in a pipe that has surcharged above the crown can under-report or over-report badly, and a velocity sensor in reversing flow can report nonsense. If level exceeded the pipe crown during the peak, the peak is provisional until you review the depth and velocity scattergraph and confirm the meter behaviour. The second most frequent invalidator is rainfall that is not representative. One gauge 6 km away does not describe a convective summer cell. If gauges disagree materially, the capture fraction you calculate is not a real number.\n\nOntario expectations for records sit with the operator-in-charge. The Ontario licensing guide for wastewater operators sets out operator-in-charge responsibilities and the requirement to make and keep accurate operating records. Your wet-weather file should contain the raw flow and rainfall data, the baseline selection rule and the days used, the calculation sheet with units shown, the validity register above, and a dated note on any data you rejected and why. A rejected reading that is quietly deleted looks like concealment. A rejected reading that is documented with a reason is good practice.\n\n### Common errors\n\nUsing a convenient low day as the baseline. Picking the lowest flow day in the month, often a holiday or a day when a large industrial customer was shut down, inflates the excess volume. In the worked example, dropping the baseline by 1 000 m3/d would raise the reported excess by roughly fifteen percent without any change in the sewer. Use a rule, apply it before you see the answer, and record it.\n\nTreating a delayed peak as proof of infiltration. Delay can come from catchment travel time, in-system storage, pump cycling or throttling at a control structure. The hydrograph shape is a clue that directs investigation. Only field investigation and records review identify a source.\n\nMixing units or reusing the 86.4 factor incorrectly. The conversion is 1 L/s equals 86.4 m3/d. Operators routinely divide when they should multiply, or apply a daily conversion to an hourly peak. Carry units on every line. If the units do not cancel to the answer you want, the line is wrong.\n\nReporting a peak taken from a meter in surcharge. A peak read from a level sensor once the pipe is flowing full is not a flow measurement. Flag it as provisional and validate it before it goes into a report or a capacity assessment.\n\nComparing catchments using raw volume. A 6 720 m3/d excess in a 42.6 km catchment and the same excess in a 9 km catchment are entirely different findings. Normalize by sewer length or by tributary area before you rank catchments for capital work.\n\n### What to verify before you act\n\nVerify the Environmental Compliance Approval for the sewage works, which states the rated and peak capacities, any approved bypass or overflow conditions, monitoring points and reporting expectations for the facility. General figures from any textbook or from United States guidance do not override it.\n\nVerify your facility notification and reporting procedure for overflows, bypasses and spills, including who must be contacted and within what time, as directed by the applicable Ontario requirements and your own operating procedures. The US EPA sanitary sewer overflow material is technical background and does not establish Ontario reporting duties.\n\nVerify the flow meter calibration and maintenance record for the meter that produced the data, including the last verification date and any scaling or firmware change during the period analysed.\n\nVerify the rain gauge record, gauge identity and clock synchronisation with the SCADA historian, and check a second gauge where available.\n\nVerify the catchment boundary and asset data in GIS or as-built drawings so the area and sewer length you divide by are the area and length actually tributary to the meter.\n\nVerify the operating record and logbook entries for the analysis period for known discharges, hauled waste receipts, station outages, flushing programmes and construction dewatering that could explain flow without rainfall.\n\nVerify the confined space entry, traffic protection and lockout procedures before any field follow-up, and confirm that the crew and the work are authorized. Analysis at the desk never authorizes entry.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are supplied only as assumptions for this exercise. They are not authorized values and not a compliance benchmark.\n\nMaple Hollow Water Pollution Control Plant, Catchment 5A, permanent area-velocity meter MH5A-01.\n\nSupplied values:\n- Dry weekday daily volumes, three qualifying days in the same month: 4 180 m3/d, 4 240 m3/d, 4 120 m3/d.\n- Dry weekday instantaneous peak, averaged: 63 L/s.\n- Event day daily volume: 7 960 m3/d.\n- Event day instantaneous peak recorded by SCADA: 214 L/s at 15:40.\n- Event rainfall at the catchment gauge: 18.0 mm. Second gauge 2 km away: 17.4 mm.\n- Tributary area from GIS: 96 ha.\n- Meter log note: level exceeded pipe crown from 15:25 to 16:10.\n- Operator logbook entry from a relief operator: \"Use 3 050 m3/d as dry baseline, that was the quietest day this year.\" That day was the Sunday of the August long weekend, during a scheduled shutdown at the dairy processor on Mill Street.\n\nRecord to reject: the 3 050 m3/d baseline. It is a weekend holiday, it falls in a different season from the event, and a known industrial contributor was offline. It fails the day-type, season and known-upset tests. Reject it in writing and keep the entry in the file with the reason.\n\nWorked solution:\n\nBaseline = (4 180 m3/d + 4 240 m3/d + 4 120 m3/d) = 12 540 m3/d\n12 540 m3/d divided by 3 = 4 180 m3/d\n\nExcess = 7 960 m3/d minus 4 180 m3/d = 3 780 m3/d\n\nEffect of the rejected baseline:\n7 960 m3/d minus 3 050 m3/d = 4 910 m3/d\n4 910 m3/d minus 3 780 m3/d = 1 130 m3/d overstatement\n1 130 m3/d divided by 3 780 m3/d = 0.299, a 29.9 percent overstatement\n\nPeak ratio = 214 L/s divided by 63 L/s = 3.40\n\nRain volume = 18.0 mm divided by 1 000 mm/m = 0.0180 m\n96 ha x 10 000 m2/ha = 960 000 m2\n0.0180 m x 960 000 m2 = 17 280 m3\n\nCapture fraction = 3 780 m3 divided by 17 280 m3 = 0.219, or 21.9 percent\n\nFinding: excess 3 780 m3 on the event day, capture fraction about 22 percent, peak ratio 3.40 flagged as provisional because the meter was surcharged across the recorded peak. Next steps are scattergraph review of MH5A-01, then targeted records review and authorized field investigation.",
       "assignment": "Calculate peak ratio and excess volume for both baselines. Prepare a 350–500-word investigation brief separating rapid and sustained response hypotheses. Rank three evidence requests, explain baseline and rainfall limitations, and assign field work to authorized personnel rather than prescribing unsafe access.",
       "rubric": [
         "Peak ratio 2.33 and excess 1,200/1,000 m³.",
@@ -58,30 +58,82 @@
       ],
       "checks": [
         {
-          "id": "cw1",
+          "id": "ceu-collection-wet-weather-wet-weather-c1",
           "objective": "wet-weather",
-          "prompt": "Wet peak 360 and dry peak 150 m³/hour give a ratio of:",
+          "prompt": "A catchment hydrograph rises within about 10 minutes of rain starting, peaks near the rainfall peak, and returns to baseline shortly after the rain stops. Which source is this timing most consistent with?",
           "choices": [
-            "2.4",
-            "0.417",
-            "210",
-            "5.4"
+            "Direct inflow from surfaces hydraulically connected to the sewer",
+            "Rainfall-derived infiltration moving slowly through soil",
+            "Seasonal groundwater rise through cracked pipe and joints",
+            "Industrial batch discharge unrelated to the rainfall event"
           ],
           "correctIndex": 0,
-          "explanation": "Using the stated units and calculation: 360/150=2.4."
+          "explanation": "A near-instant rise and a recession that ends with the rain point to surfaces piped straight into the sewer, such as roof leaders or catch basins. Rainfall-derived infiltration is wrong here because soil travel delays the peak and stretches the recession over days."
         },
         {
-          "id": "cw2",
+          "id": "ceu-collection-wet-weather-wet-weather-c2",
           "objective": "wet-weather",
-          "prompt": "A rapid rain response is best treated as:",
+          "prompt": "A flow record shows a slow rise that continues after rain stops, a peak about 8 hours later, and decay over roughly 3 days. Which interpretation best fits this shape?",
           "choices": [
-            "Proof of one specific illegal connection",
-            "Proof that infiltration cannot occur",
-            "A clue for targeted inflow investigation",
-            "A reason to ignore meter quality"
+            "A cross connection carrying street drainage straight to the sewer",
+            "Rainfall-derived infiltration entering through defective pipe and joints",
+            "A metering error caused by debris across the flume throat",
+            "Normal weekday sanitary diurnal pattern with no rainfall effect"
+          ],
+          "correctIndex": 1,
+          "explanation": "Delayed peaking and a multi-day recession are typical of water that must move through soil before entering the pipe, which is rainfall-derived infiltration. A direct cross connection is wrong because that response would end quickly once rainfall ended."
+        },
+        {
+          "id": "ceu-collection-wet-weather-wet-weather-c3",
+          "objective": "wet-weather",
+          "prompt": "Which dry-weather baseline is the most defensible for evaluating a wet-weather event that occurred on a Tuesday in April?",
+          "choices": [
+            "The single lowest flow day recorded anywhere in the past year",
+            "One recent Sunday with no rain and stable flow readings",
+            "Average of four rain-free April weekdays with no known events",
+            "Average of six September weekdays chosen from archived records"
           ],
           "correctIndex": 2,
-          "explanation": "The pattern guides investigation but does not identify a source by itself."
+          "explanation": "A defensible baseline matches day type and season, excludes contaminated days, and uses several days so one anomaly cannot swing the result. A September baseline is wrong for an April event because it attributes seasonal high-water-table infiltration to the storm."
+        },
+        {
+          "id": "ceu-collection-wet-weather-wet-weather-c4",
+          "objective": "wet-weather",
+          "prompt": "A meter reports a steady flow of 95 L/s. Expressed as a daily rate, what volume does this represent?",
+          "choices": [
+            "136 800 m3/d",
+            "820.8 m3/d",
+            "5 700 m3/d",
+            "8 208 m3/d"
+          ],
+          "correctIndex": 3,
+          "explanation": "95 L/s multiplied by 86 400 s/d gives 8 208 000 L/d, and dividing by 1 000 L/m3 gives 8 208 m3/d. The 5 700 m3/d choice comes from multiplying by 60 seconds only, which converts to a per-minute rate rather than a daily rate."
+        },
+        {
+          "id": "ceu-collection-wet-weather-wet-weather-c5",
+          "objective": "wet-weather",
+          "prompt": "A catchment shows a modest peak ratio but a very large excess daily volume over a four-day recession. Which statement best describes what these two findings tell you?",
+          "choices": [
+            "Quantity of clean water conveyed is the dominant concern here",
+            "The flow meter is reading high and should be recalibrated first",
+            "Capacity is the limiting concern and conveyance cost is minor",
+            "Both metrics always move together, so only one is needed"
+          ],
+          "correctIndex": 0,
+          "explanation": "Peak ratio answers the capacity question and excess volume answers the cost of conveying and treating clean water. Saying both metrics always move together is wrong because a short intense inflow event can spike the peak while adding little volume."
+        },
+        {
+          "id": "ceu-collection-wet-weather-wet-weather-c6",
+          "objective": "wet-weather",
+          "prompt": "How should United States EPA guidance on sanitary sewer overflows and peak flows be used by an Ontario collection system operator?",
+          "choices": [
+            "As enforceable Ontario limits once adopted by the municipality",
+            "As technical background only, with obligations set by the ECA",
+            "As a replacement for the facility approval during storm events",
+            "As proof that a catchment has an illegal connection present"
+          ],
+          "correctIndex": 1,
+          "explanation": "US EPA material explains the hydraulics of infiltration and inflow but does not create Ontario obligations, which come from the Environmental Compliance Approval and applicable Ontario regulation. Treating it as enforceable Ontario limits confuses technical guidance with legal requirements."
         }
       ]
     },
@@ -92,8 +144,8 @@
         "Calculate net accumulation and conditional time remaining.",
         "Explain why rated pump capacity may differ from actual delivery."
       ],
-      "lesson": "### Time remaining depends on the net rate\nWhen inflow exceeds delivered outflow, stored volume increases at the difference. Conditional time to a stated level is available volume divided by net accumulation. If 90 m³ remains and inflow exceeds outflow by 30 m³/hour, the simple estimate is 3 hours. If inflow changes, the estimate changes; it is not a guaranteed response window.\n\nUse actual delivered pumping at the current condition when supported. A pump's nameplate rating or command does not establish its current flow. Head, equipment condition, blockage and parallel operation can change delivery. Two nominal capacities do not necessarily add to the actual combined duty point.\n\nIf level data are used to infer storage, the level-to-volume relation must match the wet-well geometry. A constant area assumption works only over the stated range. Dead volume below the operating level is not available buffer above it.\n\nUse the calculation to support escalation and resource planning under the authorized response procedure. Do not deliberately operate to the last calculated minute. Include uncertainty, trend updates and contingency ownership; do not propose unauthorized bypassing or equipment isolation.",
-      "evidence": "**C3 — fictional lift station at 10:00**\nAvailable volume to the supplied operational trigger 120 m³. Inflow 310 m³/hour; verified combined pump delivery 270 m³/hour. Nameplates suggest 320 m³/hour. At 10:30, cumulative stored volume has increased 25 m³; updated inflow 330 and delivery 280 m³/hour. The available-volume calculation is valid for this level range.\n\nC4: Backup equipment availability is unconfirmed; no bypass authorization is supplied.",
+      "lesson": "### What \"time to a trigger\" actually is\n\nA time to trigger calculation answers one narrow question: if the wet well keeps filling at the rate it is filling right now, how long until the level reaches a stated elevation. It is a planning number for escalation, resourcing and sequencing. It is not a permission slip to wait, and it is not a prediction.\n\nThe \"trigger\" must be a level that someone with authority has defined. Depending on the station, that could be the high level alarm setpoint, the level at which a standby crew or portable pump must be mobilized, the level at which the supervisor and the owner's on call contact are notified, or the elevation of the lowest overflow or backup path such as an upstream basement connection or a manhole rim. All of those elevations come from the station's approved operating manual, the Environmental Compliance Approval for the sewage works, the alarm setpoint list, or the authorized wet weather response procedure. They are not chosen at the console. Every number in this lesson is a supplied case assumption for teaching arithmetic, not an authorized value for any real station.\n\nThe arithmetic rests on three quantities: available volume between the current level and the trigger level, inflow into the wet well, and delivered outflow from the pumps. The net accumulation rate is inflow minus delivered outflow. Time remaining is available volume divided by net accumulation.\n\nThe word \"conditional\" carries the weight. During a wet weather event, inflow is on a rising hydrograph driven by rainfall, infiltration and inflow. The US EPA guidance on sanitary sewer overflows, in its treatment of collection capacity, blockages, infiltration and inflow, describes how rainfall dependent infiltration and inflow can lift collection system flows well above dry weather patterns. That is a US technical source, and Ontario reporting and approval requirements are set locally, but the hydraulic behaviour it describes is exactly what invalidates a static estimate. A number calculated at 02:10 can be wrong by 02:25. Recalculate on a fixed interval and record each recalculation.\n\n### Getting available volume right: level to volume\n\nAvailable volume is not the volume of the wet well. It is the volume between the current water surface and the trigger elevation, on the same vertical datum the level instrument reports.\n\nFor a prismatic section, volume equals plan area multiplied by the depth interval. That holds only over the depth range where the area is actually constant. Many wet wells are benched, have sloped fillets at the bottom, widen into an influent channel or screen chamber near the top, or connect hydraulically to the incoming sewer so that the upstream pipe begins to store water once the level rises above the sewer invert. Above the invert, the effective storage per metre can increase substantially, and the level to volume relationship becomes piecewise. Use the as built level to volume table if the station has one. If it does not, build the relationship from as built drawings and have it checked and filed, not carried in someone's memory.\n\nDead volume below the pump off elevation is not available buffer above it. It is already occupied. Similarly, storage above the trigger is not yours to use in the calculation, because the calculation ends at the trigger.\n\nThe level signal itself must be trustworthy. Ultrasonic transducers can read foam, grease mats and steam as the water surface. Submersible pressure transducers drift and can be affected by a plugged sensing port. Float trees hang up on rags. If the level reading does not agree with a manual check such as a dipped tape or a sight glass, the storage number is invalid and so is everything downstream of it. Record the cross check.\n\n### Delivered outflow is measured, not declared\n\nRated capacity is a nameplate statement of what a pump produced on a test stand at a particular head. Delivered flow is what the pump moves right now against the actual system head, in its actual condition, through the actual discharge valving.\n\nDelivered flow falls below rated capacity for reasons that all appear during wet weather: higher static lift if the receiving manhole or forcemain is surcharged, higher friction losses if multiple stations pump into a common forcemain at the same time, a partially closed or seized discharge valve, a ragged or worn impeller, worn wear rings, air entrainment from a low suction level or vortexing, a check valve held partly shut by debris, and reduced speed on a variable frequency drive that is limiting for temperature or current.\n\nParallel pumps do not add. Two pumps rated at the same duty point will move less than twice one pump's flow, because adding flow to a shared forcemain raises system head and shifts the operating point back along the pump curve. The US EPA municipal wastewater primer, in its material on collection systems and peak flows, is a useful background reference on how collection and pumping capacity interacts with peak flow, again as US process guidance rather than Ontario legal requirement.\n\nTwo field methods produce a defensible delivered flow at the current condition.\n\nFill test, pumps off for a short controlled interval where the procedure permits it:\n\nInflow rate equals plan area multiplied by rate of level rise.\n\nDrawdown test, pump running while inflow continues:\n\nDelivered flow equals plan area multiplied by rate of level fall, plus the inflow rate measured in the fill test.\n\nBoth tests must occur entirely within a depth range of known constant area, and both must be timed with a watch, not estimated.\n\n### Worked example 1: fill test, drawdown test, and time to the escalation level\n\nSupplied case assumptions for this teaching example, at a fictional station. Wet well plan dimensions in the operating range: 4.5 m by 3.6 m. Level instrument verified against a dipped tape within 0.02 m.\n\nStep 1. Plan area.\nArea = 4.5 m x 3.6 m = 16.2 m^2\n\nStep 2. Fill test, both pumps off, timed interval.\nLevel rise = 0.28 m in 2.0 min\nVolume accumulated = 16.2 m^2 x 0.28 m = 4.536 m^3\nInflow = 4.536 m^3 / 2.0 min = 2.268 m^3/min\nInflow = 2.268 m^3/min x 60 min/h = 136.1 m^3/h\nInflow = 2.268 m^3/min x 1000 L/m^3 / 60 s/min = 37.8 L/s\n\nStep 3. Drawdown test, Pump 1 only, inflow continuing.\nLevel fall = 0.41 m in 3.0 min\nNet removal = 16.2 m^2 x 0.41 m = 6.642 m^3 in 3.0 min\nNet removal = 6.642 m^3 / 3.0 min = 2.214 m^3/min\nDelivered flow = 2.214 m^3/min + 2.268 m^3/min = 4.482 m^3/min\nDelivered flow = 4.482 m^3/min x 1000 L/m^3 / 60 s/min = 74.7 L/s\n\nThe nameplate for this fictional pump says 85 L/s. The measured delivery is 74.7 L/s, about 88 percent of nameplate. Use the measured value.\n\nStep 4. Two hours later, rainfall driven inflow has risen. Station influent meter reads 88 L/s, confirmed by a second fill test within 4 percent. Pump 1 only is available, Pump 2 is locked out for a mechanical seal repair.\nInflow = 88 L/s x 60 s/min / 1000 L/m^3 = 5.28 m^3/min\nNet accumulation = 5.28 m^3/min - 4.482 m^3/min = 0.798 m^3/min\n\nStep 5. Available volume. Current level 1.10 m, trigger level for supervisor notification and standby pump mobilization 1.95 m per the station response procedure. Area constant over that range.\nDepth available = 1.95 m - 1.10 m = 0.85 m\nAvailable volume = 16.2 m^2 x 0.85 m = 13.77 m^3\n\nStep 6. Conditional time remaining.\nTime = 13.77 m^3 / 0.798 m^3/min = 17.3 min\n\nAnswer: approximately 17 minutes at the present inflow, with one pump delivering 74.7 L/s. Record the time of calculation, all inputs and the source of each.\n\n### Worked example 2: stepped geometry, parallel pumps, and a sensitivity band\n\nSupplied case assumptions, same fictional station later in the event, Pump 2 returned to service.\n\nLevel to volume from the as built table: from 1.20 m to 1.60 m the area is 16.2 m^2. Above 1.60 m the influent channel is in communication with the wet well and the effective area is 22.0 m^2 up to 2.10 m.\n\nStep 1. Available volume from current level 1.25 m to trigger 2.05 m.\nLower segment = (1.60 m - 1.25 m) x 16.2 m^2 = 0.35 m x 16.2 m^2 = 5.67 m^3\nUpper segment = (2.05 m - 1.60 m) x 22.0 m^2 = 0.45 m x 22.0 m^2 = 9.90 m^3\nAvailable volume = 5.67 m^3 + 9.90 m^3 = 15.57 m^3\n\nStep 2. Combined delivered flow, measured by drawdown with both pumps running and inflow known.\nMeasured combined delivery = 108 L/s\nCheck against naive addition: 2 x 74.7 L/s = 149.4 L/s\nRatio = 108 L/s / 149.4 L/s = 0.72, so the second pump adds about 45 percent, not 100 percent\n\nStep 3. Net accumulation at measured inflow of 130 L/s.\nNet = 130 L/s - 108 L/s = 22 L/s\nNet = 22 L/s x 3600 s/h / 1000 L/m^3 = 79.2 m^3/h\nNet = 79.2 m^3/h / 60 min/h = 1.32 m^3/min\n\nStep 4. Conditional time remaining.\nTime = 15.57 m^3 / 1.32 m^3/min = 11.8 min\n\nAnswer: approximately 12 minutes at 130 L/s inflow with both pumps delivering 108 L/s.\n\nStep 5. Sensitivity. Inflow on a rising limb increases by 10 percent to 143 L/s.\nNet = 143 L/s - 108 L/s = 35 L/s = 2.10 m^3/min\nTime = 15.57 m^3 / 2.10 m^3/min = 7.4 min\n\nA 10 percent inflow error cuts the window by about 37 percent, because the net is a small difference between two large numbers. Report a band, for example 7 to 12 minutes, and escalate on the low end.\n\nStep 6. The error you must avoid. If the naive 149.4 L/s had been used:\nNet = 130 L/s - 149.4 L/s = negative 19.4 L/s\nThat result says the level is falling, so no action is needed. The level is in fact rising and the trigger is minutes away. That single substitution converts a correct escalation into no escalation.\n\n### The input register and an escalation decision table\n\nUse a register so that every input has a named source and a timestamp. Blank source fields are the warning sign.\n\n| Input | Symbol | Acceptable source | Recorded value | Time | Verified by | Makes it invalid |\n|---|---|---|---|---|---|---|\n| Plan area or level to volume | A | As built drawing or filed level to volume table | 16.2 m^2 at 1.20 to 1.60 m | 02:10 | OIC initials | Range crosses a bench or channel invert |\n| Current level | h | SCADA plus manual cross check | 1.25 m | 02:10 | OIC initials | No cross check, foam or grease, sensor alarm |\n| Trigger level | h_t | Approved response procedure or alarm setpoint list | 2.05 m | 02:10 | OIC initials | Level chosen informally at the console |\n| Inflow | Q_in | Influent meter or timed fill test | 130 L/s | 02:08 | OIC initials | Older than the recalculation interval |\n| Delivered outflow | Q_out | Timed drawdown test at current condition | 108 L/s | 01:52 | OIC initials | Nameplate, VFD command or summed ratings |\n| Pump availability | n | Lockout log and control status | 2 of 2 | 02:10 | OIC initials | Standby unavailable and not accounted for |\n\nThe next table is a sample structure only. The bands and the actions for your station come from the authorized wet weather response procedure, not from this lesson.\n\n| Conditional time to trigger | Confidence in inputs | Sample structure of action |\n|---|---|---|\n| Long, and net accumulation is near zero | Delivered flow measured this shift | Continue monitoring, recalculate on the set interval, log trend |\n| Moderate, inflow still rising | Delivered flow measured, inflow updating | Notify per procedure, begin mobilizing standby resources, prepare upstream monitoring |\n| Short, or net accumulation increasing between recalculations | Any input unverified | Escalate immediately at the low end of the band, request additional pumping capacity through the authorized contact, position spill containment resources per procedure |\n| Trigger reached or level above trigger | Not applicable | Follow the facility notification and reporting procedure without delay, continue records |\n\nNothing in this calculation authorizes bypassing, throttling a forcemain, overriding an alarm setpoint or isolating equipment. Those are approval and procedure matters.\n\n### Common errors\n\nUsing nameplate or summed ratings as delivered flow. This is the most consequential error, as Example 2 shows, because the net is a small difference between two large numbers and an optimistic outflow can flip the sign of the net. A VFD speed command is also not a flow measurement.\n\nApplying one plan area across a benched or channel connected depth range. If the area changes above a bench or above the incoming sewer invert, a single area either overstates or understates available volume. Overstating it produces a long, comforting and wrong window. Counting dead volume below the pump off level is the same error in a different place.\n\nFreezing the inflow value. Operators commonly calculate once at the start of an event and keep quoting that number for an hour. On a rising limb, inflow is the fastest changing input. Recalculate on a stated interval, keep each result, and watch whether the time remaining is shrinking faster than the clock is running, which is the signal that inflow is accelerating.\n\nTreating the result as a guaranteed response window. Consuming the full calculated time leaves nothing for travel, access, hookup, generator transfer or a pump that clogs on arrival. Escalate on the low end of the band.\n\nUsing pump hour meters and nameplate flow to reconstruct volume pumped, then presenting that as delivered flow. Hour meters record run time only. Multiplying them by an unverified capacity reproduces the first error with a longer audit trail.\n\n### What to verify before you act\n\nConsult the Environmental Compliance Approval and the station operating manual for the sewage works to confirm the defined levels, the alarm setpoints and any conditions attached to pumping station operation and overflow locations. Confirm the trigger elevation and the required notifications against the authorized wet weather response procedure and the current on call contact list, not from memory.\n\nConfirm the level to volume basis against the as built drawing or the filed level to volume table, including the elevation where the area changes. Confirm the level instrument calibration record and perform a manual cross check before relying on the reading. Confirm the most recent drawdown test record and its date, the pump and forcemain condition notes, valve positions, and the lockout log for any unit you are counting on.\n\nOn records and accountability, the Ontario licensing guide for wastewater operators sets out operator in charge responsibilities and operating record expectations. Retain the inputs, their sources, the timestamps, each recalculation, who was notified and when, and what action followed. A time to trigger number without its inputs and timestamps is not evidence of anything. With them, it demonstrates that the decision to escalate was made on measured information at a known time.\n\nFinally, if the level reaches or exceeds a level associated with an overflow or a backup, follow the facility notification and reporting procedure for the jurisdiction immediately. Do not rely on any general timeline you have heard. The obligations for your works are the ones written in your approval and your procedure.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are used only for teaching arithmetic. No value here is an authorized setpoint.\n\nFictional station: Birchvale Pumping Station No. 3. Fictional operator: OIC R. Whalen, night shift, 02:10 during a rainfall event.\n\nSupplied values:\n- As built level to volume table: area 18.0 m^2 from 1.40 m to 1.90 m, then 24.0 m^2 from 1.90 m to 2.30 m where the influent channel comes into communication with the wet well.\n- Current level 1.40 m, confirmed by dipped tape within 0.02 m at 02:09.\n- Trigger level 2.30 m, the mobilization and notification level in the fictional station response procedure.\n- Station influent meter: 96 L/s, steady across the last 15 minutes.\n- Drawdown test at 23:40 the same shift, Pump 1 only, corrected for inflow: delivered 71 L/s.\n- Pump 2 locked out at 21:15 for a mechanical seal repair, confirmed in the lockout log.\n\nRecords the learner must reject:\n- A maintenance sheet noting \"Pump 1 nameplate 95 L/s, assume 95 L/s delivered.\" Nameplate is not delivery, and a measured drawdown value from the same shift exists.\n- A laminated card at the console stating \"1 m equals 18 m^3 throughout.\" The as built table shows the area changes at 1.90 m, so a single area is unsupported over this range.\n\nWorked solution:\n\nLower segment = (1.90 m - 1.40 m) x 18.0 m^2 = 0.50 m x 18.0 m^2 = 9.0 m^3\nUpper segment = (2.30 m - 1.90 m) x 24.0 m^2 = 0.40 m x 24.0 m^2 = 9.6 m^3\nAvailable volume = 9.0 m^3 + 9.6 m^3 = 18.6 m^3\n\nNet accumulation = 96 L/s - 71 L/s = 25 L/s\nNet = 25 L/s x 3600 s/h / 1000 L/m^3 = 90 m^3/h = 1.5 m^3/min\n\nTime to trigger = 18.6 m^3 / 1.5 m^3/min = 12.4 min\n\nAnswer: approximately 12 minutes at present conditions, one pump available.\n\nEffect of the rejected records. Using 95 L/s: net = 96 - 95 = 1 L/s = 0.06 m^3/min, time = 18.6 / 0.06 = 310 min. That is a 25 fold overstatement and would have suppressed escalation. Using the uniform card: 0.90 m x 18.0 m^2 = 16.2 m^3, time = 16.2 / 1.5 = 10.8 min, understating volume by 2.4 m^3.\n\nAction recorded: escalate at 02:11 per procedure on the 12 minute figure, request standby pumping through the authorized contact, recalculate at 02:16 and 02:21, and file all inputs with sources, timestamps and initials.",
       "assignment": "Calculate the 10:00 conditional time and updated 10:30 time using the observed storage increase and new rates. Explain the error from using nameplate capacity. Draft a 300–450-word escalation note with assumptions, immediate evidence requests, trend update intervals and assigned contingency decisions.",
       "rubric": [
         "Initial 3 hours; updated 95/50=1.9 hours.",
@@ -134,30 +186,82 @@
       ],
       "checks": [
         {
-          "id": "cc1",
+          "id": "ceu-collection-wet-weather-storage-capacity-c1",
           "objective": "storage-capacity",
-          "prompt": "90 m³ remaining with inflow 250 and outflow 220 m³/hour gives:",
+          "prompt": "In the context of a wet well during a wet weather event, what does a conditional time to trigger figure actually tell the operator?",
           "choices": [
-            "0.33 hour",
-            "3 hours",
-            "30 hours",
-            "470 hours"
+            "How long until the stated level is reached if the present filling rate holds",
+            "The guaranteed interval available before any overflow or basement backup occurs",
+            "The length of time an operator is permitted to wait before notifying anyone",
+            "The predicted clock time at which the rainfall peak will reach the station"
           ],
-          "correctIndex": 1,
-          "explanation": "90/(250−220)=3 hours."
+          "correctIndex": 0,
+          "explanation": "The calculation only extrapolates the filling rate observed right now to a defined elevation, so it is a planning and escalation number. It is not a guarantee of safe waiting time, because inflow on a rising hydrograph can change the answer within minutes."
         },
         {
-          "id": "cc2",
+          "id": "ceu-collection-wet-weather-storage-capacity-c2",
           "objective": "storage-capacity",
-          "prompt": "Two pumps’ nameplate capacities establish:",
+          "prompt": "Teaching case, fictional station. Wet well plan area is constant at 12.0 m^2. Pump off elevation is 0.40 m, current level is 0.80 m, and the defined trigger level is 1.70 m. What volume should be used as available volume?",
           "choices": [
-            "Their exact combined delivery now",
-            "The wet well’s available storage",
-            "The actual current inflow",
-            "Ratings that need operating-condition verification"
+            "9.6 m^3",
+            "10.8 m^3",
+            "15.6 m^3",
+            "20.4 m^3"
+          ],
+          "correctIndex": 1,
+          "explanation": "Available volume is only the volume between the current surface and the trigger, so (1.70 m minus 0.80 m) times 12.0 m^2 equals 10.8 m^3. Using 15.6 m^3 wrongly counts dead volume from the pump off elevation upward, which is already occupied by water."
+        },
+        {
+          "id": "ceu-collection-wet-weather-storage-capacity-c3",
+          "objective": "storage-capacity",
+          "prompt": "Teaching case. With both pumps off for a timed fill test, a wet well of constant 20.0 m^2 plan area rises 0.30 m in 2.5 minutes. What is the inflow rate in L/s?",
+          "choices": [
+            "144 L/s",
+            "24 L/s",
+            "40 L/s",
+            "80 L/s"
+          ],
+          "correctIndex": 2,
+          "explanation": "Volume gained is 20.0 m^2 times 0.30 m, which is 6.0 m^3 in 2.5 min, so 2.4 m^3/min, and 2.4 times 1000 divided by 60 gives 40 L/s. The 144 figure is the same flow expressed in m^3/h, a common unit slip when reporting to a supervisor."
+        },
+        {
+          "id": "ceu-collection-wet-weather-storage-capacity-c4",
+          "objective": "storage-capacity",
+          "prompt": "Why can a pump deliver noticeably less than its nameplate capacity during a wet weather event at a collection system pumping station?",
+          "choices": [
+            "Nameplate flow is always measured at zero discharge head on the test stand",
+            "Wet weather inflow raises delivery above the nameplate flow at every station",
+            "A drive at full speed always delivers the nameplate flow to the forcemain",
+            "Higher system head from a surcharged forcemain shifts the operating point back"
           ],
           "correctIndex": 3,
-          "explanation": "Actual combined delivery depends on the operating system and equipment."
+          "explanation": "Nameplate flow is a test stand value at one duty point, and a surcharged receiving manhole or forcemain raises static lift and friction so the pump rides back along its curve. The claim about zero head is wrong, since the rating is tied to a stated head, not to no head at all."
+        },
+        {
+          "id": "ceu-collection-wet-weather-storage-capacity-c5",
+          "objective": "storage-capacity",
+          "prompt": "Two identical pumps each measure about 75 L/s when run alone into a shared forcemain. What should an operator expect when both run together, for use in a time to trigger calculation?",
+          "choices": [
+            "Less than 150 L/s, so the combined delivery has to be measured directly",
+            "About 75 L/s, because the two pumps simply share one flow path evenly",
+            "Exactly 150 L/s, because identical parallel pumps add their rated flows",
+            "More than 150 L/s, because the pumps boost each other in a common line"
+          ],
+          "correctIndex": 0,
+          "explanation": "Adding flow to a shared forcemain raises friction head, so each pump shifts back on its curve and the pair delivers less than double one pump. Assuming an exact 150 L/s sum overstates outflow and makes the time to trigger look longer than it is."
+        },
+        {
+          "id": "ceu-collection-wet-weather-storage-capacity-c6",
+          "objective": "storage-capacity",
+          "prompt": "An ultrasonic level transducer reads 1.30 m while a dipped tape in the same wet well reads 1.62 m during heavy foam. What is the appropriate handling of the storage calculation?",
+          "choices": [
+            "Average the two readings and use 1.46 m for the remaining calculations",
+            "Treat the storage number as invalid until the level reading is verified",
+            "Continue with the instrument value because it is the calibrated device",
+            "Enter a permanent 0.32 m offset in the controller and carry on working"
+          ],
+          "correctIndex": 1,
+          "explanation": "Every downstream figure depends on level, so a disagreement with a manual check invalidates the storage and time estimate until it is resolved and the cross check is recorded. Averaging two readings that disagree simply hides the fault and produces a number no one can defend."
         }
       ]
     },
@@ -168,8 +272,8 @@
         "Estimate volume using stated interval assumptions.",
         "Separate detection time from event onset."
       ],
-      "lesson": "### A volume estimate needs an evidence boundary\nAn incident may begin before it is detected. Record first evidence, detection, notification, observed conditions, actions and verified end separately. If onset is unknown, do not backfill it with the first alarm time and call it exact.\n\nFor a constant assumed rate, volume is rate multiplied by duration. For changing rates with discrete observations, an interval method such as trapezoidal integration can provide an estimate: average adjacent rates times the interval. State the interpolation assumption and any gaps. A calculated decimal does not make sparse observations precise.\n\nBounds may be more honest than one number. If an unobserved 15-minute interval plausibly ranged 0–20 m³/hour, that interval contributes 0–5 m³ under the supplied bound. Add it as a range, not as a fabricated measurement. These bounds are training assumptions; real estimates require defensible field evidence and the applicable reporting process.\n\nPreserve initial estimates and subsequent revisions with time, author and reason. Reporting an updated estimate should not erase what was known when the first notification was made. Apply Ontario and facility-specific reporting requirements through the responsible role; the US reference supplies technical context, not local legal thresholds.",
-      "evidence": "**C5 — fictional release-rate observations**\n11:00 rate 20 m³/hour;11:15 rate 40;11:30 rate 0 with verified cessation at 11:30. For the observed interval, the case permits linear interpolation. Prior interval 10:45–11:00 is unobserved; supplied credible rate bound 0–20 m³/hour. Onset before 10:45 is excluded by a verified dry inspection at 10:45.\n\nC6: First alarm 11:05; supervisor notified 11:10. An initial report says “Started 11:05, total 10 m³ exactly.”",
+      "lesson": "### Why the timeline decides the volume\n\nIn a collection system incident the number everyone asks for is cubic metres. That number is almost never measured. It is built from two things: an assumed or observed discharge rate, and a duration. Of those two, duration is usually where most of the error lives, because a sanitary sewer overflow can begin quietly at a maintenance hole in a field or a back lot at 02:00 and not be seen until a morning patrol or a resident call. The US EPA guidance on sanitary sewer overflows, in its treatment of collection capacity, blockages, infiltration and inflow, is clear that overflows are commonly the end result of a slow blockage or a wet-weather surcharge that builds over hours. That is technical context, not Ontario law, but it matters for estimating: if the mechanism builds slowly, the onset is almost always earlier than detection.\n\nSo the operator discipline is this. Do not collapse the timeline into one event time. Record separate, individually sourced times: last verified clear evidence, estimated onset, first evidence available to you, detection, notification, first containment action, rate observations, and verified end. Each of those gets a source. If you cannot source it, it does not go in the record as fact.\n\n### The five timeline anchors and what each one is worth\n\n**Last verified clear evidence.** A time when you can show the discharge was not occurring. Examples: a documented patrol of the maintenance hole, a SCADA upstream level trend below the overflow elevation, a CCTV pass, a level logger record, a photograph with a verified timestamp. This anchor sets the earliest possible onset. It is the single most valuable record you can create, and most facilities create it by accident rather than on purpose.\n\n**Estimated onset.** A reasoned time between last verified clear evidence and first evidence. It may be derived from a level inflection, a pump station run-time anomaly, a rainfall hyetograph, or a resident statement. It is always labelled as an estimate with its basis written beside it.\n\n**First evidence.** The earliest indication that existed, whether or not anyone acted on it. A high-level alarm that annunciated and was acknowledged without dispatch is first evidence. A call logged by the after-hours answering service is first evidence. This is often earlier than detection, and the gap between them is an operational finding worth reporting internally.\n\n**Detection.** When a person with responsibility recognised an overflow was occurring. This is not the onset. Writing the alarm time into the onset field is the single most common falsification in incident records, and it is usually unintentional.\n\n**Verified end.** Not when the crew believed flow stopped, but when someone confirmed it, with a stated observation. Standing water draining back down a road gutter after the blockage clears is not discharge, and counting it inflates the volume.\n\n### Incident input register\n\nBuild this register while the incident is running, not from memory afterwards. The Ontario licensing guide for wastewater operators, in its material on operator-in-charge responsibilities and operating records, puts the obligation for complete and accurate operating records squarely on the person in the role. The register is how that obligation gets met under pressure.\n\n| Field | Source type required | Example entry (fictional) | Fails if |\n| --- | --- | --- | --- |\n| Last verified clear evidence | Instrument trend, patrol log, photo | 02:10, SCADA MH-217 level 0.9 m, below lid soffit 1.6 m | Based on \"nobody called\" |\n| First evidence | Alarm history, call log | 05:55, high-level alarm acknowledged, no dispatch | Reconstructed later without printout |\n| Detection | Operator statement, time-stamped | 06:40, Operator A on site, flow from lid vent | Backdated to alarm time |\n| Estimated onset | Reasoned, basis written | 04:55, level trend inflection | Left blank or set equal to detection |\n| Rate observation 1 | Method named | 06:40, 12 L/s, 300 mm pipe partial-flow chart | Method not named |\n| Rate observation 2 | Method named | 07:10, 58 m³/h, manhole weir-plate reading | \"About the same\" |\n| Containment start | Crew log | 06:52, vac truck on suction | No time recorded |\n| Verified end | Observation statement | 08:25, no flow at lid, level 1.1 m | Crew \"believes\" it stopped |\n| Receiving feature | Field observation, map | Roadside ditch to Mill Creek, 40 m | Assumed from desktop only |\n| Estimator and revision | Name, time, reason | Estimate v1 09:10 Operator A; v2 14:30 Supervisor B, added logger data | Overwrites v1 |\n\n### Worked example 1: constant assumed rate with a bounded onset\n\nAll values below are supplied case assumptions for this training example at a fictional station. They are not authorised values for any facility.\n\nSupplied: discharge estimated at 12 L/s from a partial-flow observation at the overflowing maintenance hole. Verified end 08:25. Detection 06:40. Last verified clear evidence 02:10 from an upstream level trend. A level inflection consistent with surcharge appears at 04:55.\n\nStep 1, convert the rate to working units.\n12 L/s x 3600 s/h = 43 200 L/h\n43 200 L/h / 1000 L/m3 = 43.2 m3/h\n\nStep 2, lower bound duration, detection to verified end.\n06:40 to 08:25 = 1 h 45 min\n1 h 45 min = 1.75 h\n\nStep 3, lower bound volume.\n43.2 m3/h x 1.75 h = 75.6 m3\n\nStep 4, upper bound duration, last verified clear evidence to verified end.\n02:10 to 08:25 = 6 h 15 min = 6.25 h\n\nStep 5, upper bound volume.\n43.2 m3/h x 6.25 h = 270.0 m3\n\nStep 6, working estimate using the level inflection as estimated onset.\n04:55 to 08:25 = 3 h 30 min = 3.5 h\n43.2 m3/h x 3.5 h = 151.2 m3\n\n**Answer:** bounded estimate 76 m3 to 270 m3, working estimate approximately 150 m3 based on an estimated onset of 04:55 from the upstream level inflection, assuming a constant 43.2 m3/h rate. Report the range and the basis together. Reporting 151.2 m3 alone implies a precision the evidence does not support.\n\n### Worked example 2: interval method with a data gap\n\nSame fictional incident, now with discrete rate observations after detection, plus a 30 minute window where the crew was clearing the blockage and nobody was observing the discharge point.\n\nSupplied observations: 06:40 = 43.2 m3/h; 07:10 = 58.0 m3/h; 07:40 = 36.0 m3/h; no observation 07:40 to 08:10; 08:10 = 12.0 m3/h; 08:25 = 0 m3/h.\n\nStep 1, segment 06:40 to 07:10, trapezoidal average.\n(43.2 m3/h + 58.0 m3/h) / 2 = 50.6 m3/h\n50.6 m3/h x 0.50 h = 25.30 m3\n\nStep 2, segment 07:10 to 07:40.\n(58.0 m3/h + 36.0 m3/h) / 2 = 47.0 m3/h\n47.0 m3/h x 0.50 h = 23.50 m3\n\nStep 3, the gap 07:40 to 08:10. Do not interpolate silently. Bound it with the bracketing observations.\nLow case: 12.0 m3/h x 0.50 h = 6.00 m3\nLinear case: (36.0 m3/h + 12.0 m3/h) / 2 = 24.0 m3/h; 24.0 m3/h x 0.50 h = 12.00 m3\nHigh case: 36.0 m3/h x 0.50 h = 18.00 m3\n\nStep 4, segment 08:10 to 08:25.\n(12.0 m3/h + 0 m3/h) / 2 = 6.0 m3/h\n6.0 m3/h x 0.25 h = 1.50 m3\n\nStep 5, post-detection totals.\nLow: 25.30 + 23.50 + 6.00 + 1.50 = 56.30 m3\nLinear: 25.30 + 23.50 + 12.00 + 1.50 = 62.30 m3\nHigh: 25.30 + 23.50 + 18.00 + 1.50 = 68.30 m3\n\nStep 6, pre-detection block, 02:10 to 06:40, unobserved.\nDuration = 4 h 30 min = 4.50 h\nLow bound rate 0 m3/h: 0 m3/h x 4.50 h = 0 m3\nHigh bound rate 43.2 m3/h (the first measured rate): 43.2 m3/h x 4.50 h = 194.4 m3\n\nStep 7, combine.\nTotal low = 56.30 m3 + 0 m3 = 56.3 m3\nTotal high = 68.30 m3 + 194.4 m3 = 262.7 m3\n\n**Answer:** 56 m3 to 263 m3. Using the 04:55 estimated onset instead, the pre-detection block becomes 1 h 45 min = 1.75 h at a ramping rate averaging roughly 22 m3/h, giving 22 m3/h x 1.75 h = 38.5 m3, and a working estimate of about 62 + 39 = 101 m3.\n\nThe teaching point is in the arithmetic. The careful trapezoidal work over the observed period spans only 12 m3 of uncertainty. The unobserved onset window spans 194 m3. Effort spent refining the interval method while leaving the onset undefended is misdirected effort.\n\n### Choosing and defending the rate basis\n\n| Available evidence | Rate method | Strength | What invalidates it |\n| --- | --- | --- | --- |\n| Pump station with known duty curve | Run-time deficit versus inflow balance | Strong if curve is current | Worn impeller, wet well level not logged |\n| Overflow through a known opening | Partial-flow or orifice estimate | Moderate | Submerged outlet, debris, guessed head |\n| Upstream and downstream flow meters | Differential of continuous flows | Strong | Meters not calibrated, different logging intervals |\n| Visual only | Bucket-and-stopwatch or visual comparison chart | Weak | Single observation applied to whole event |\n| Ponded volume recovered | Measured vac truck loads plus ponded geometry | Strong for what was captured | Ignores what already ran to the ditch |\n\nWet weather changes the method. During a rainfall-driven surcharge the rate is not constant and the US EPA municipal wastewater primer material on collection systems and peak flows is a reasonable reminder that peak inflow tracks the storm, not the clock. In a wet-weather event, tie your rate observations to the rainfall record and use more, shorter intervals over the storm peak.\n\n### Common errors\n\n**Setting onset equal to the alarm or the call.** This converts an unknown into a fabricated fact and always biases the volume low. If onset is unknown, state it as unknown and give a bounded range anchored on last verified clear evidence.\n\n**Applying one rate observation to the entire duration.** A blockage overflow usually ramps up and then falls once clearing starts. A single mid-event reading multiplied across six hours can be off by a factor of two in either direction. Take at least three rate observations, spaced, with the method named each time.\n\n**Reporting false precision.** \"262.734 m3\" from observations that were eyeballed to the nearest 10 L/s is not an estimate, it is a claim you cannot defend. Round to the precision your weakest input supports and carry the range.\n\n**Overwriting the first estimate.** Revision is expected and good. Deleting the original is not. Keep version, time, author and the reason the number changed.\n\n**Counting drain-back as discharge.** Water receding from a ponded area after the blockage clears is not new discharge. Ending the event when the surface looks dry instead of when flow stopped inflates the duration.\n\n### What to verify before you act\n\nBefore you release a volume figure or make a notification, check the facility Environmental Compliance Approval and the notification and spill response procedure it references, because who is told, in what order, and on what timing is set there and in the applicable Ontario legislation, not by any general figure in a course. Confirm the operator-in-charge for the period and that the operating record entries carry that person's name, consistent with the Ontario licensing guide for wastewater operators and its treatment of operator-in-charge responsibilities and records. Pull the raw SCADA alarm and trend export rather than a screenshot, and note the logging interval, since a 15 minute scan cannot resolve a 6 minute event. Verify the last calibration record for any meter used in a differential. Check the pump curve revision date if you use run-time methods. Confirm the receiving feature by field observation, not by map. Retain rainfall records, photographs with timestamps, vac truck load tickets, field notes, the alarm history export and every version of the estimate. If a value in any of these conflicts with another, record both and say which one you relied on and why.",
+      "evidence": "### Fictional worked scenario\n\n**All facilities, operators, records and readings below are fictional and are used only for training. No value here is an authorised operating figure.**\n\nMaple Row Sewage Pumping Station, fictional municipality. A blockage causes discharge from maintenance hole MH-217 to a roadside ditch.\n\nSupplied records:\n- SCADA trend, MH-217 level logger, 15 minute scan: level below lid soffit through 05:12, rising above soffit at the 05:12 sample.\n- Alarm history: high-level alarm at 05:21, acknowledged, no dispatch.\n- Operator A field log: on site 05:48, flow observed from lid vent, partial-flow estimate 9 L/s.\n- Crew log: blockage cleared 06:55, no flow confirmed at lid 07:03, level 1.0 m.\n- Operator A handwritten note: \"overflow started approx 03:00.\"\n- Contractor ticket: \"rate confirmed by meter at 15 L/s.\"\n\nRecords the learner must reject. The 03:00 onset has no source. The level logger shows the level below the soffit through 05:12, which directly contradicts it. The contractor ticket claims a meter reading, but no flow meter exists at MH-217 and no calibration record is attached, so \"confirmed by meter\" is unsupported and cannot displace the operator's stated partial-flow method.\n\nWorked solution using the defensible inputs.\n\nStep 1, convert rate.\n9 L/s x 3600 s/h = 32 400 L/h\n32 400 L/h / 1000 L/m3 = 32.4 m3/h\n\nStep 2, lower bound duration, detection to verified end.\n05:48 to 07:03 = 1 h 15 min = 1.25 h\n32.4 m3/h x 1.25 h = 40.5 m3\n\nStep 3, upper bound duration, last verified clear evidence to verified end.\n05:12 to 07:03 = 1 h 51 min = 1.85 h\n32.4 m3/h x 1.85 h = 59.9 m3\n\nStep 4, test the rejected onset for contrast only.\n03:00 to 07:03 = 4 h 3 min = 4.05 h\n32.4 m3/h x 4.05 h = 131.2 m3\n\n**Reported result:** 41 m3 to 60 m3, based on a partial-flow rate estimate of 9 L/s assumed constant, onset bounded by the 05:12 level logger sample. Note in the record that the 15 minute scan interval means onset could precede 05:12 by up to 15 minutes, adding up to 32.4 m3/h x 0.25 h = 8.1 m3. Record the rejected 03:00 note and the rejected contractor rate, with the reason each was not used, and keep the estimate versioned.",
       "assignment": "Calculate the observed interval volume and total range including the prior gap. Produce a timeline and a 400–550-word correction note to C6. Separate detection from onset, state interpolation/bound assumptions, preserve the original estimate and identify the reporting owner and missing evidence.",
       "rubric": [
         "Observed 12.5 m³ and total 12.5–17.5 m³.",
@@ -210,30 +314,82 @@
       ],
       "checks": [
         {
-          "id": "cv1",
+          "id": "ceu-collection-wet-weather-incident-volume-c1",
           "objective": "incident-volume",
-          "prompt": "Average rate 30 m³/hour for 15 minutes yields:",
+          "prompt": "In a collection system incident record, which anchor sets the earliest possible onset of the discharge?",
           "choices": [
-            "450 m³",
-            "2 m³",
-            "7.5 m³",
-            "30 m³"
-          ],
-          "correctIndex": 2,
-          "explanation": "15 minutes=.25 hour;30×.25=7.5."
-        },
-        {
-          "id": "cv2",
-          "objective": "incident-volume",
-          "prompt": "The first alarm timestamp necessarily identifies:",
-          "choices": [
-            "When that alarm was recorded",
-            "The exact start of the physical event",
-            "The total released volume",
-            "The time all response duties were completed"
+            "Last verified clear evidence, such as a patrol log or level trend",
+            "Detection, when a responsible person recognised the overflow",
+            "First evidence, such as an alarm nobody acted upon at the time",
+            "Containment start, when the vacuum truck began suction work"
           ],
           "correctIndex": 0,
-          "explanation": "Alarm timing has a narrower meaning than event onset or completion."
+          "explanation": "Last verified clear evidence is a sourced time showing discharge was not yet occurring, so onset cannot be earlier than it. Detection only tells you when someone noticed, which is normally well after a slow blockage or surcharge began."
+        },
+        {
+          "id": "ceu-collection-wet-weather-incident-volume-c2",
+          "objective": "incident-volume",
+          "prompt": "At a fictional station a high-level alarm annunciated at 05:55 and was acknowledged with no crew dispatched. An operator arrived and saw flow from the lid vent at 06:40. Into which register field does 05:55 belong?",
+          "choices": [
+            "Estimated onset, since the alarm proves flow had started",
+            "First evidence, an indication that existed before detection",
+            "Detection, because an operator acknowledged the alarm",
+            "Verified end, once the alarm cleared later in the shift"
+          ],
+          "correctIndex": 1,
+          "explanation": "An acknowledged alarm with no dispatch is first evidence, an indication that existed whether or not anyone acted. It is not detection, because no responsible person had yet recognised an overflow was occurring, and it is not proof of the onset time."
+        },
+        {
+          "id": "ceu-collection-wet-weather-incident-volume-c3",
+          "objective": "incident-volume",
+          "prompt": "Convert an assumed discharge rate of 15 L/s to cubic metres per hour for volume estimating work.",
+          "choices": [
+            "0.9 m3/h",
+            "5.4 m3/h",
+            "54 m3/h",
+            "900 m3/h"
+          ],
+          "correctIndex": 2,
+          "explanation": "15 L/s x 3600 s/h = 54 000 L/h, and 54 000 L/h divided by 1000 L/m3 gives 54 m3/h. The 0.9 figure is the common slip of stopping at litres per minute converted to cubic metres per minute rather than per hour."
+        },
+        {
+          "id": "ceu-collection-wet-weather-incident-volume-c4",
+          "objective": "incident-volume",
+          "prompt": "Which entry properly satisfies the verified end field for a sanitary sewer overflow incident record?",
+          "choices": [
+            "Crew believes discharge stopped shortly after clearing blockage",
+            "Road gutter still draining, so discharge treated as ongoing",
+            "Alarm reset on SCADA, so overflow assumed finished at that time",
+            "08:25, no flow observed at lid, maintenance hole level 1.1 m"
+          ],
+          "correctIndex": 3,
+          "explanation": "Verified end requires a time-stamped observation statement by someone who confirmed flow had stopped. A crew belief is not a confirmation, and gutter drain-back is standing water returning, not discharge, so counting it inflates the estimated volume."
+        },
+        {
+          "id": "ceu-collection-wet-weather-incident-volume-c5",
+          "objective": "incident-volume",
+          "prompt": "Why does good practice report an overflow volume as a bounded range with its basis rather than as a single figure such as 151.2 m3?",
+          "choices": [
+            "A single figure implies precision the timeline evidence cannot support",
+            "Ranges are required for all overflow volumes in every jurisdiction",
+            "Decimal figures are never permitted in wastewater operating records",
+            "A range removes the need to record the rate observation method"
+          ],
+          "correctIndex": 0,
+          "explanation": "The duration is usually assumed rather than measured, so a single decimal figure overstates confidence. Claiming a range is universally mandated is wrong, since reporting form follows the applicable regulation and the facility Environmental Compliance Approval."
+        },
+        {
+          "id": "ceu-collection-wet-weather-incident-volume-c6",
+          "objective": "incident-volume",
+          "prompt": "During an incident no one observed the discharge point for 30 minutes while the crew cleared a blockage. How should that gap be handled in an interval volume estimate?",
+          "choices": [
+            "Assume zero flow because nobody witnessed any discharge",
+            "Bound the gap using the observations on each side of it",
+            "Carry the first rate of the event across the entire gap",
+            "Omit the gap entirely so only measured flow is counted"
+          ],
+          "correctIndex": 1,
+          "explanation": "A gap is bounded with low, linear and high cases from the bracketing observations so the uncertainty stays visible. Assuming zero flow silently deletes real volume, and omitting the gap does the same while hiding that a gap existed."
         }
       ]
     },
@@ -244,8 +400,8 @@
         "Prioritize capacity, evidence and communication tasks.",
         "Define verified recovery and longer-term investigation."
       ],
-      "lesson": "### Recovery is an evidence-based milestone\nA falling level can show improvement at a wet well while other parts of the catchment remain stressed. A pump running again does not prove its delivered flow, and a stopped release does not complete every reporting or follow-up duty. Define each recovery milestone and the evidence needed to mark it complete.\n\nStructure the plan by immediate response, verification and longer-term investigation. Immediate work follows authorized incident procedures. Verification confirms delivered pumping, level trend, affected locations and cessation where relevant. Longer-term work examines rainfall response, defects, capacity and operational changes using the records preserved during the event.\n\nGive each task an owner and a next decision point. Do not combine “requested,” “in progress” and “verified complete” into one checkbox. A clear register lets the next shift see where support is needed and prevents assumed closure.\n\nThe case exercise should test the plan under a change in inflow or equipment availability. Recalculate the conditional storage time, revise priorities and state what remains uncertain. A good plan adapts without hiding its earlier assumptions.",
-      "evidence": "**C7 — handover at 11:35**\nRelease cessation at 11:30 verified as inC5. Wet-well level falling at the last two readings; current verified outflow 340 m³/hour and inflow 300. Backup pump availability still unconfirmed. No downstream inspection completion record. The release-volume report still containsC6's original estimate.\n\nC8: Manager asks to close all work orders because the level is falling.",
+      "lesson": "### What the plan has to produce in the first hour\n\nA collection-system response plan is not a binder of general advice. During a wet-weather event it has to produce four concrete outputs, and every task in the plan should trace to one of them.\n\nFirst, a current capacity number. Not a nameplate, not a design figure, but a measured or reasonably estimated delivered pumping rate and a conditional time before the next constraint is reached. Second, a preserved evidence set: levels, runtimes, starts, alarms, rainfall, photographs, field observations, the times they were taken and who took them. Third, a notification set built from facts that have been checked, issued to the parties named in your facility approval and municipal procedure. Fourth, an assignment record showing who owns each task and what the next decision point is.\n\nSeparate incident response from recovery from investigation. Incident response acts on the authorized procedures you already have. Recovery is the stage where you prove, with evidence, that the abnormal condition has ended and that normal operating control has been restored. Investigation is the slower work that uses the preserved records to explain why the event behaved the way it did.\n\nThe Ontario licensing guide for wastewater operators is direct about operator-in-charge responsibilities and operating records. The person in charge is accountable for the accuracy and completeness of what goes into the operating record. During wet weather that accountability is easy to lose, because people are moving, radios are busy, and half the observations never reach paper. Build the record capture into the response tasks themselves rather than treating it as cleanup afterward.\n\n### Priority order: capacity, evidence, communication\n\nThese three run in parallel, but they are not equal when you are short of people.\n\nCapacity actions come first because they are the only actions that change the outcome. Restoring a pump, opening an authorized alternate route, deploying portable pumping, clearing a blockage, or reducing an avoidable inflow source all change how much liquid the system can carry before it fails. Everything else records or reports what happened.\n\nEvidence tasks come second, but they cannot be deferred to the end of the shift because most of the evidence is perishable. A high-water mark on a manhole wall dries and washes. A surcharged street clears. A SCADA trend may be retained at a coarse resolution after a rollover. Sandbags get moved. Assign at least one person whose task is capture: timestamped photographs, manhole observations, level readings written at fixed intervals, and the exact time any release started or stopped if a release occurred.\n\nCommunication comes third in effort but not in importance, and it is governed, not discretionary. Ontario sewage works operate under the specific terms of their own Environmental Compliance Approval, and the notification triggers, contacts and timing for overflows, bypasses and equipment failures come from that approval together with your municipal spills and emergency procedures. Do not rely on a number you remember from a course or from United States material. The US EPA guidance on sanitary sewer overflows is useful for understanding causes such as capacity limits, blockages and infiltration and inflow, but it does not set Ontario reporting duties. Communicate observed facts with times and sources, and state explicitly what is still unverified.\n\n### Worked example 1: verifying delivered pumping instead of assuming it\n\nSupplied case assumptions for this teaching example only. These are fictional values for a fictional station and are not authorized values for any real site.\n\nStation: fictional Kettle Lane Pumping Station. Wet well is rectangular, internal plan dimensions 3.20 m by 2.50 m, straight walls over the working range. Station record lists the pump duty point as 48 L/s. You want the delivered rate today.\n\nStep 1. Wet well plan area.\nArea = 3.20 m × 2.50 m = 8.00 m²\n\nStep 2. Measure inflow with pumps stopped (fill test).\nLevel rise = 0.30 m in 5 min 00 s\nTime = 5 min × 60 s/min = 300 s\nVolume gained = 8.00 m² × 0.30 m = 2.40 m³\nInflow = 2.40 m³ ÷ 300 s = 0.00800 m³/s\nInflow = 0.00800 m³/s × 1000 L/m³ = 8.0 L/s\n\nStep 3. Measure drawdown with the duty pump running alone.\nLevel fall = 0.90 m in 4 min 10 s\nTime = (4 min × 60 s/min) + 10 s = 250 s\nVolume removed from storage = 8.00 m² × 0.90 m = 7.20 m³\nNet removal rate = 7.20 m³ ÷ 250 s = 0.02880 m³/s = 28.8 L/s\n\nStep 4. Correct for inflow arriving during the drawdown.\nDelivered pumping rate = net removal rate + inflow rate\nDelivered = 28.8 L/s + 8.0 L/s = 36.8 L/s\n\nStep 5. Compare to the station record.\nRatio = 36.8 L/s ÷ 48 L/s = 0.767 = 76.7 percent of the recorded duty point\n\nAnswer: the duty pump delivers about 36.8 L/s, roughly 77 percent of the 48 L/s in the station record.\n\nWhat the number means. A pump that starts, runs and draws the level down is not the same as a pump meeting its duty point. A shortfall of this size can come from a partially blocked impeller, a worn wear ring, a closing discharge valve, air in the column, or a higher system head than the record assumed because the receiving sewer is surcharged. During a storm the last cause matters most, because the delivered rate you measure at low tailwater will fall further as downstream levels rise.\n\nWhat makes this measurement invalid. Inflow changing between the fill test and the drawdown test. A non-prismatic wet well or benching inside the measured range, which breaks the constant area assumption. A level sensor reading in a turbulent zone. A second pump cutting in partway through the drawdown. Record which pump ran, the start and stop times, the two level readings, the inflow test values, and the tailwater or forcemain pressure if available.\n\n### Worked example 2: conditional storage time and how it changes\n\nSame fictional station. Supplied case assumptions for this example only.\n\nInflow during the storm peak, measured by upstream flow monitor: 62 L/s.\nDelivered pumping with the duty pump alone, from Example 1: 36.8 L/s.\nWet well storage between the current alarm level and the critical level: 0.60 m of depth over 8.00 m² of area.\nUpstream in-sewer storage available below the critical level, from the station drawing: 26.0 m³.\n\nStep 1. Wet well storage volume in the remaining range.\nVolume = 8.00 m² × 0.60 m = 4.80 m³\n\nStep 2. Total conditional storage.\nTotal = 4.80 m³ + 26.0 m³ = 30.8 m³\n\nStep 3. Net fill rate with one pump running.\nNet = 62 L/s − 36.8 L/s = 25.2 L/s\nNet = 25.2 L/s ÷ 1000 L/m³ = 0.0252 m³/s\n\nStep 4. Time to the critical level.\nTime = 30.8 m³ ÷ 0.0252 m³/s = 1222 s\nTime = 1222 s ÷ 60 s/min = 20.4 min\n\nAnswer: about 20 minutes at the stated inflow, with one pump delivering 36.8 L/s.\n\nNow change one condition. The duty pump trips on high motor temperature and no standby is available.\n\nStep 5. Net fill rate with no pumping.\nNet = 62 L/s − 0 L/s = 62 L/s = 0.0620 m³/s\nTime = 30.8 m³ ÷ 0.0620 m³/s = 497 s\nTime = 497 s ÷ 60 s/min = 8.3 min\n\nAnswer: about 8 minutes. The loss of one pump cut the available decision window by roughly 12 minutes, which is shorter than most callout and setup times for portable pumping. That is the operational point. The storage time is not a status indicator, it is a scheduling number that tells you whether a planned action can arrive before the constraint does.\n\nNow change a second condition. A portable pump rated at 30 L/s is set up and confirmed running by drawdown at 27 L/s delivered.\n\nStep 6. Net rate with portable pumping only.\nNet = 62 L/s − 27 L/s = 35 L/s filling, still positive\nTime = 30.8 m³ ÷ 0.0350 m³/s = 880 s = 14.7 min\n\nThe portable pump buys time but does not stabilize the station. State that plainly in the log rather than recording \"portable pump deployed\" and letting the next shift assume the problem is solved.\n\nEvery one of these numbers is conditional. They assume inflow holds steady, that the upstream storage volume on the drawing is actually available and not already occupied, that the critical level is where the record says, and that the delivered rate does not fall as downstream levels rise. Write the assumptions beside the answer. A storage time with no stated assumptions is not evidence.\n\n### The task and recovery register\n\nThe single most common plan failure is a checkbox that merges \"requested\", \"in progress\" and \"verified complete\". Use three states and require named evidence to reach the third. Example register format, fictional entries:\n\n| ID | Task | Owner | Status | Evidence that closes it | Next decision point |\n| --- | --- | --- | --- | --- | --- |\n| C1 | Confirm delivered rate, duty pump | OIC | Verified 03:40 | Fill test 8.0 L/s, drawdown 28.8 L/s, delivered 36.8 L/s, logged | Recheck if tailwater rises 0.3 m |\n| C2 | Portable pump to station | Lead hand | In progress 03:52 | Drawdown test result, not arrival time | 04:20 go or no go on second unit |\n| C3 | CCTV or flushing crew to trunk MH 114 | Supervisor | Requested 03:15 | Crew log plus photo of cleared section | 04:00 escalate if not on site |\n| E1 | Timestamped level readings every 10 min | Operator 2 | In progress | Field sheet with initials and times | Continue until level below alarm 60 min |\n| E2 | Photograph MH 114 and MH 118, note high-water marks | Operator 2 | Verified 03:30 | Photos with metadata, sketch of mark height | Re-photograph after recession |\n| N1 | Internal notification per municipal procedure | OIC | Verified 03:10 | Call log, name, time, facts stated | Update on any status change |\n| N2 | External notification if triggered by the ECA | OIC | Pending assessment | Written record of trigger assessment | Reassess each 30 min |\n| R1 | Confirm recovery criteria met | OIC | Not started | All recovery items below satisfied | Shift change handover |\n\nThe \"evidence that closes it\" column is the part that does the work. \"Portable pump arrived\" is not closure. \"Portable pump delivering 27 L/s by drawdown at 04:05\" is closure.\n\n### Defining verified recovery and the longer-term investigation\n\nRecovery is a milestone with criteria, not a feeling that things look better. Write the criteria before the event, and state each one as something a person can check and sign.\n\nA workable set for a pumping station, to be adapted to your own approval and procedures, would include: level below the alarm setpoint and falling or stable for a defined observation period; delivered pumping confirmed by a drawdown test rather than by run status; all alarms cleared or documented as accepted with a work order; any release confirmed stopped with the time recorded and the affected locations identified; site cleanup and any public safety measures addressed; the operating record complete for the event period, including gaps and their reasons; and all register tasks in either verified or formally transferred state.\n\nNote the difference between a falling level at the station and recovery of the catchment. Levels at a downstream station can fall while an upstream branch is still surcharged, because the constraint moved. Before declaring recovery, check the locations that were affected, not only the one you are standing in.\n\nThe longer-term investigation uses the preserved records to answer questions the event raised. Compare rainfall depth and intensity against the flow response to characterize infiltration and inflow behaviour, which the US EPA sanitary sewer overflow material treats as a primary driver alongside blockages and capacity limits. Look at whether the response curve is fast, suggesting direct inflow such as cross connections, roof leaders or manhole cover inflow, or slow and prolonged, suggesting groundwater infiltration. The US EPA municipal wastewater primer is useful background on how peak flows move through collection systems and arrive at the treatment works, but remember it is United States process guidance and not an Ontario legal requirement.\n\nInvestigation also covers the equipment shortfall. A pump at 77 percent of its recorded duty point is a finding that belongs in a work order with the measurement attached. If wet-weather flow reached the treatment works and affected effluent quality, the assessment ties back to the facility approval, and any acute lethality determination under the federal Wastewater Systems Effluent Regulations means more than 50 percent mortality of rainbow trout in undiluted effluent over 96 hours, determined by an accredited laboratory test method. Ontario effluent requirements are receiving-water based and can be more stringent than any general figure.\n\n### Common errors\n\nTreating run status as delivered flow. SCADA showing a pump running proves the contactor closed. It does not prove the impeller is passing liquid, that the check valve opened, or that the discharge is not throttled. Every capacity decision built on run status alone is built on an unmeasured number.\n\nUsing nameplate or design capacity in storage time arithmetic. Nameplate is a manufacturer rating at a stated head. Real delivered flow changes with head, wear and blockage, and during wet weather the head usually rises. Using 48 L/s instead of a measured 36.8 L/s in Example 2 would have produced a storage time of 30.8 m³ ÷ 0.014 m³/s = 2200 s = 36.7 min, almost double the real 20.4 min. That error would have justified a slower callout.\n\nCounting upstream storage that is already occupied. The volume on the drawing is the geometric volume of the pipe. If the trunk is already surcharged from a downstream constraint, that storage is not available to you, and your storage time is optimistic by exactly the amount you double counted.\n\nWriting the log after the event. Reconstructed times drift, and a reconstructed record is weaker evidence than a contemporaneous one. If you must reconstruct, label it as reconstructed and state the source you used.\n\nDeclaring recovery on a single indicator. A falling wet well level with an upstream street still surcharged is a relocated problem, not a recovered system.\n\n### What to verify before you act\n\nBefore acting on any of this material at your own site, verify the following against your own documents rather than against this lesson.\n\nYour Environmental Compliance Approval for the collection system and the associated works, for the specific conditions covering bypasses, overflows, equipment failure, sampling and notification. The terms of your own approval govern.\n\nYour municipal or utility spills and emergency response procedure, for the notification contacts, escalation ladder and who is authorized to make external notifications.\n\nYour station operating and maintenance manual and the station drawing, for the wet well geometry, alarm and critical levels, the upstream storage assumption, the alternate routing arrangements and any authorized operating modes.\n\nThe operating record requirements and operator-in-charge duties described in the Ontario licensing guide for wastewater operators, so that the record you create during the event meets the expectation for accuracy, completeness and identification of who made each entry.\n\nYour instrumentation calibration and verification records, because a storage time calculated from an uncalibrated level sensor carries the sensor error straight into the decision.\n\nYour standby and mutual aid arrangements, including realistic mobilization times for portable pumping and vacuum or flushing units, so that the storage time you calculate can actually be compared against an arrival time.",
+      "evidence": "### Fictional worked scenario: Bellrock Avenue Pumping Station\n\nAll facilities, operators, records and readings below are fictional and are used for training only. None of the values are authorized values for any real site.\n\n**Supplied values.** Wet well internal plan dimensions 2.40 m by 2.00 m, straight walls over the working range. Station record lists the pump duty point as 40 L/s. Pump 1 is out of service on a mechanical seal work order. Storm inflow measured at the upstream flow monitor: 38 L/s. Wet well depth remaining from current level to the critical level: 0.50 m. Upstream in-sewer storage below the critical level, from the station drawing and confirmed by a manhole check as not yet surcharged: 11.6 m³.\n\n**Records provided.** SCADA shows Pump 2 running, 42 minutes runtime this hour. A shift note from the previous operator reads: \"Pump 2 verified at 40 L/s, nameplate confirmed.\" A maintenance entry from last month says \"pump checked, satisfactory\" with no measurement recorded.\n\n**Record the learner must reject.** The shift note. A nameplate check is not a verification of delivered flow, and \"checked, satisfactory\" with no value is not evidence of capacity. Neither record supports 40 L/s.\n\n**Field verification.**\nArea = 2.40 m × 2.00 m = 4.80 m²\nFill test, pumps stopped: level rose 0.25 m in 4 min 00 s = 240 s\nVolume = 4.80 m² × 0.25 m = 1.20 m³\nInflow = 1.20 m³ ÷ 240 s = 0.00500 m³/s = 5.0 L/s\nDrawdown, Pump 2 alone: level fell 0.75 m in 3 min 20 s = 200 s\nVolume = 4.80 m² × 0.75 m = 3.60 m³\nNet removal = 3.60 m³ ÷ 200 s = 0.0180 m³/s = 18.0 L/s\nDelivered = 18.0 L/s + 5.0 L/s = 23.0 L/s\nRatio = 23.0 L/s ÷ 40 L/s = 0.575 = 57.5 percent of the recorded duty point\n\n**Storage time at the storm inflow.**\nWet well volume = 4.80 m² × 0.50 m = 2.40 m³\nTotal storage = 2.40 m³ + 11.6 m³ = 14.0 m³\nNet fill = 38 L/s − 23.0 L/s = 15.0 L/s = 0.0150 m³/s\nTime = 14.0 m³ ÷ 0.0150 m³/s = 933 s = 15.6 min\n\n**Answer and action.** About 15.6 minutes, not the 37.3 minutes that the rejected 40 L/s record would have produced (14.0 m³ ÷ 0.0170 m³/s). Escalate portable pumping now, log the drawdown test values and times, raise a work order on Pump 2 with the measurement attached, and assess notification triggers against the facility approval rather than any remembered figure.",
       "assignment": "Prepare a 500–750-word handover with calculation appendix, immediate/recovery/investigation task register, owners and closure evidence. Correct the volume estimate, explain what C7 establishes, and respond to C8 without treating all tasks as equivalent. Discuss a scenario where inflow rises to 380 m³/hour, then complete the assessment and evaluation.",
       "rubric": [
         "Separates cessation, hydraulic recovery, reporting and investigation.",
@@ -286,138 +442,346 @@
       ],
       "checks": [
         {
-          "id": "cr1",
+          "id": "ceu-collection-wet-weather-response-plan-c1",
           "objective": "response-plan",
-          "prompt": "Inflow 380 and outflow 340 m³/hour mean storage is:",
+          "prompt": "A collection-system response plan should produce four concrete outputs within the first hour of a wet-weather event. Which of the following is NOT one of those four first-hour outputs?",
           "choices": [
-            "Falling 40 m³/hour",
-            "Rising 40 m³/hour",
-            "Unchanged",
-            "Falling 720 m³/hour"
+            "A completed root cause analysis explaining why the event behaved the way it did",
+            "A preserved evidence set of levels, runtimes, alarms, rainfall and timed field observations",
+            "An assignment record naming who owns each task and what the next decision point is",
+            "A current measured or estimated delivered pumping rate with a conditional time to the next constraint"
           ],
-          "correctIndex": 1,
-          "explanation": "Net inflow is 40 m³/hour."
+          "correctIndex": 0,
+          "explanation": "Root cause analysis belongs to investigation, the slower work done later using preserved records. The other three, plus a checked notification set, are the first-hour outputs. Choosing the delivered rate is tempting but that measured capacity number is exactly what the first hour must deliver."
         },
         {
-          "id": "cr2",
+          "id": "ceu-collection-wet-weather-response-plan-c2",
           "objective": "response-plan",
-          "prompt": "Verified cessation of a release closes:",
+          "prompt": "Evidence capture ranks second behind capacity actions during a wet-weather event. Why can evidence tasks still not be pushed to the end of the shift?",
           "choices": [
-            "Every reporting duty automatically",
-            "Every asset investigation automatically",
-            "All downstream verification automatically",
-            "The cessation milestone, with other tasks reviewed separately"
+            "Municipal procedures normally forbid any logging while a storm is in progress",
+            "Much of the evidence is perishable, such as high-water marks, surcharged streets and coarse SCADA trends",
+            "Evidence collected late is automatically treated as an unverified assumption by the ministry",
+            "Written notes lose legal standing if they are not signed before shift change"
+          ],
+          "correctIndex": 1,
+          "explanation": "High-water marks dry and wash, streets clear, and trend data may be retained at coarse resolution after rollover, so the observation is simply gone. The claim about signatures before shift change is a plausible sounding rule but it is not the reason evidence is time critical."
+        },
+        {
+          "id": "ceu-collection-wet-weather-response-plan-c3",
+          "objective": "response-plan",
+          "prompt": "During a storm your crew is short of people. The plan places capacity actions ahead of evidence and communication tasks. What is the stated reason for that ordering?",
+          "choices": [
+            "Evidence and notification duties are optional once an overflow has started",
+            "Capacity work is easier to document afterward than field observations are",
+            "Capacity actions are the only tasks that change the outcome of the event",
+            "Capacity actions are the only tasks an operator-in-charge may personally assign"
+          ],
+          "correctIndex": 2,
+          "explanation": "Restoring a pump, opening an authorized alternate route or deploying portable pumping changes how much liquid the system can carry. Evidence and communication record or report what happened. Saying notification is optional is wrong, because notification duties are governed by the facility approval and municipal procedure."
+        },
+        {
+          "id": "ceu-collection-wet-weather-response-plan-c4",
+          "objective": "response-plan",
+          "prompt": "Fictional teaching example. A rectangular wet well has internal plan dimensions 3.00 m by 2.00 m with straight walls. With all pumps stopped the level rises 0.24 m in 4 min 00 s. What is the inflow rate?",
+          "choices": [
+            "21.6 L/s",
+            "0.36 L/s",
+            "1.0 L/s",
+            "6.0 L/s"
           ],
           "correctIndex": 3,
-          "explanation": "Distinct response duties require their own evidence."
+          "explanation": "Area is 6.00 m squared, volume gained is 6.00 x 0.24 = 1.44 cubic metres, and 1.44 divided by 240 s is 0.00600 cubic metres per second, which is 6.0 L/s. The 21.6 figure is the same result expressed in cubic metres per hour and then mislabelled as litres per second."
+        },
+        {
+          "id": "ceu-collection-wet-weather-response-plan-c5",
+          "objective": "response-plan",
+          "prompt": "An operator wants to know the notification triggers, contacts and timing for an overflow at an Ontario sewage works. Which source governs those duties?",
+          "choices": [
+            "The facility Environmental Compliance Approval with the municipal spills and emergency procedures",
+            "United States EPA sanitary sewer overflow guidance documents",
+            "The station operations manual issued by the pump supplier",
+            "A notification timeline memorized from a previous training course"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ontario sewage works operate under the specific terms of their own Environmental Compliance Approval, read together with municipal spills and emergency procedures. US EPA material is useful for understanding causes such as capacity limits, blockages and infiltration and inflow, but it does not set Ontario reporting duties."
+        },
+        {
+          "id": "ceu-collection-wet-weather-response-plan-c6",
+          "objective": "response-plan",
+          "prompt": "The task and recovery register uses three task states rather than one completion checkbox. What problem is that design meant to prevent?",
+          "choices": [
+            "Field staff recording clock times that differ from the SCADA server time",
+            "Requested, in progress and verified complete being merged into one ambiguous status",
+            "Two operators being assigned ownership of the same numbered task",
+            "Tasks being entered in the register before the incident has been declared"
+          ],
+          "correctIndex": 1,
+          "explanation": "The most common plan failure is a single checkbox that hides whether a task was merely requested, is under way, or has been verified with named evidence. Duplicate ownership is a real nuisance but the three-state design exists to separate requested from verified, not to control ownership."
         }
       ]
     }
   ],
   "finalAssessment": [
     {
-      "id": "collection-wet-weather-f1",
+      "id": "ceu-collection-wet-weather-wet-weather-f1",
       "objective": "wet-weather",
-      "prompt": "Wet volume 4,000 and comparable dry volume 2,800 m³ give excess:",
+      "prompt": "Fictional catchment. Qualifying dry weekdays: 6 450, 6 610, 6 380 and 6 520 m3/d. Wet day volume is 11 230 m3/d. Using the averaged baseline, what is the excess daily volume?",
       "choices": [
-        "1,200 m³",
-        "6,800 m³",
-        "1.43 m³",
-        "2,800 m³"
+        "4 740 m3/d",
+        "4 850 m3/d",
+        "5 020 m3/d",
+        "4 620 m3/d"
       ],
       "correctIndex": 0,
-      "explanation": "Subtract the stated baseline."
+      "explanation": "The four dry days total 25 960 m3/d, so the baseline is 6 490 m3/d and 11 230 minus 6 490 equals 4 740 m3/d. The 4 620 m3/d choice uses only the highest single dry day as the baseline, which discards the averaging rule."
     },
     {
-      "id": "collection-wet-weather-f2",
+      "id": "ceu-collection-wet-weather-wet-weather-f2",
       "objective": "wet-weather",
-      "prompt": "A delayed sustained rainfall response is:",
+      "prompt": "Fictional record. Wet day instantaneous peak is 312 L/s and the wet day volume is 14 040 m3/d. What is the wet day instantaneous peaking factor, to two decimals?",
       "choices": [
-        "Proof of direct inflow at one property",
-        "A confirmed pipe defect",
-        "Evidence excluding storage effects",
-        "A pattern requiring corroboration"
+        "1.44",
+        "1.92",
+        "2.39",
+        "0.52"
+      ],
+      "correctIndex": 1,
+      "explanation": "312 L/s times 86.4 gives 26 956.8 m3/d, and dividing by 14 040 m3/d gives 1.92. The 0.52 choice inverts the ratio by dividing the daily volume by the peak expressed as a daily rate."
+    },
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-f3",
+      "objective": "wet-weather",
+      "prompt": "Fictional event. Total rainfall-derived excess is 5 400 m3, event rainfall is 21 mm and the tributary area is 120 ha. What capture fraction does this represent?",
+      "choices": [
+        "2.1 percent",
+        "4.7 percent",
+        "21.4 percent",
+        "42.9 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Rain volume is 0.021 m times 1 200 000 m2, or 25 200 m3, and 5 400 divided by 25 200 gives 0.214. The 2.1 percent choice comes from treating 21 mm as 0.21 m, a decimal error that inflates the rainfall volume tenfold."
+    },
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-f4",
+      "objective": "wet-weather",
+      "prompt": "You recalculate wet-weather excess using the highest and then the lowest qualifying dry day. One version shows a large excess, the other shows almost none. What is the correct reporting response?",
+      "choices": [
+        "Report the highest excess value to support rehabilitation budgeting",
+        "Report the averaged result, since averaging cancels the spread",
+        "Report the lowest excess value as the conservative estimate",
+        "Report that the baseline is not robust and no finding is supported yet"
       ],
       "correctIndex": 3,
-      "explanation": "It suggests hypotheses but needs corroboration."
+      "explanation": "When the conclusion flips across the sensitivity range you have a data problem, not a finding, and the honest step is to say so and gather more qualifying dry days. Reporting the averaged result is wrong because averaging hides the instability rather than resolving it."
     },
     {
-      "id": "collection-wet-weather-f3",
-      "objective": "storage-capacity",
-      "prompt": "80 m³ buffer with net accumulation 20 m³/hour gives:",
+      "id": "ceu-collection-wet-weather-wet-weather-f5",
+      "objective": "wet-weather",
+      "prompt": "A catchment peaks about 7 hours after rainfall ends and recedes over 3 days, and staff conclude rainfall-derived infiltration. Which observation would most weaken that conclusion?",
       "choices": [
-        "4 hours",
-        "0.25 hour",
-        "100 hours",
-        "1,600 hours"
+        "An upstream control gate was throttled and released after the storm",
+        "Response magnitude scales with antecedent soil moisture conditions",
+        "CCTV inspection found cracked joints in several trunk segments",
+        "Wet season events exceed dry season events of equal rain depth"
       ],
       "correctIndex": 0,
-      "explanation": "80/20=4 hours if the net rate remains constant."
+      "explanation": "A throttled gate stores flow and releases it later, which can manufacture a delayed peak in a catchment whose real problem is direct inflow, so it undercuts the timing evidence. Scaling with antecedent moisture is wrong as a weakener because that behaviour supports the infiltration hypothesis."
     },
     {
-      "id": "collection-wet-weather-f4",
+      "id": "ceu-collection-wet-weather-storage-capacity-f1",
       "objective": "storage-capacity",
-      "prompt": "After inflow increases, a previous time-to-trigger estimate:",
+      "prompt": "Teaching case, fictional station. Wet well plan area is 5.0 m by 4.0 m, constant over the test range. Pumps off, level rises 0.24 m in 2.0 min. Pump 1 then runs and level falls 0.36 m in 3.0 min with inflow continuing. What is Pump 1 delivered flow?",
       "choices": [
-        "Becomes conservative when a pump starts",
-        "Remains valid until its original deadline",
-        "Needs current storage and flow measurements",
-        "Replaces further level measurements"
+        "About 40 L/s",
+        "About 80 L/s",
+        "About 100 L/s",
+        "About 120 L/s"
+      ],
+      "correctIndex": 1,
+      "explanation": "Area is 20.0 m^2, so inflow is 20.0 times 0.24 divided by 2.0, which is 2.4 m^3/min, and net removal is 20.0 times 0.36 divided by 3.0, also 2.4 m^3/min. Delivered flow is 2.4 plus 2.4, which is 4.8 m^3/min or 80 L/s. Reporting 40 L/s uses the rate of fall alone and ignores the inflow still arriving."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-f2",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case. The as built level to volume table gives 18.0 m^2 from 1.00 m to 1.50 m and 24.0 m^2 from 1.50 m to 2.20 m. Current level is 1.15 m and the defined trigger is 1.90 m. What is the available volume?",
+      "choices": [
+        "13.5 m^3",
+        "15.6 m^3",
+        "15.9 m^3",
+        "18.0 m^3"
       ],
       "correctIndex": 2,
-      "explanation": "The estimate depends on the current conditions."
+      "explanation": "The interval is piecewise, so 0.35 m times 18.0 m^2 gives 6.3 m^3 and 0.45 m times 24.0 m^2 gives 9.6 m^3, for 15.9 m^3 total. Using 13.5 m^3 applies the lower area over the whole 0.75 m and understates the storage gained once the influent channel comes into communication."
     },
     {
-      "id": "collection-wet-weather-f5",
-      "objective": "incident-volume",
-      "prompt": "Rates 10 and 30 m³/hour 15 minutes apart give trapezoidal volume:",
+      "id": "ceu-collection-wet-weather-storage-capacity-f3",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case. Available volume between the current level and the trigger is 14.4 m^3. Measured inflow is 120 L/s and measured combined delivered outflow is 96 L/s. What is the conditional time remaining?",
       "choices": [
-        "40 m³",
-        "10 m³",
-        "20 m³",
-        "5 m³"
+        "About 15 minutes",
+        "About 2.0 minutes",
+        "About 2.5 minutes",
+        "About 10 minutes"
       ],
       "correctIndex": 3,
-      "explanation": "Using the stated units and calculation: Mean 20×.25=5 m³."
+      "explanation": "Net accumulation is 120 minus 96, which is 24 L/s or 1.44 m^3/min, and 14.4 divided by 1.44 gives 10 minutes. The 2.0 minute answer divides by inflow alone and ignores that the pumps are removing most of what arrives."
     },
     {
-      "id": "collection-wet-weather-f6",
-      "objective": "incident-volume",
-      "prompt": "An unobserved interval should be:",
+      "id": "ceu-collection-wet-weather-storage-capacity-f4",
+      "objective": "storage-capacity",
+      "prompt": "Fictional scenario. Pump 1 alone is measured by drawdown at 70 L/s. Pump 2 is started and the measured combined delivery into the shared forcemain is 100 L/s. What is the most reasonable interpretation?",
       "choices": [
-        "Filled from the nearest point without qualification",
-        "Set to zero",
-        "Bounded or qualified with evidence",
-        "Assigned the first alarm rate throughout"
+        "This is expected parallel behaviour, since added flow raises system head",
+        "Pump 2 must be air bound, because parallel pumps should total 140 L/s",
+        "The level instrument is faulty, since combined flow cannot be below 140 L/s",
+        "Pump 1 has a seized discharge valve that opened when Pump 2 was started"
+      ],
+      "correctIndex": 0,
+      "explanation": "A second pump on a common forcemain raises friction head and both units shift back on the curve, so roughly 43 percent added flow is normal rather than a fault. Calling it an air bound pump assumes flows add arithmetically, which parallel pumping does not do."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-f5",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case. Available volume to the trigger is 12.6 m^3, delivered outflow holds at 90 L/s, and inflow is 110 L/s. If inflow rises 10 percent to 121 L/s, what is the new conditional time remaining?",
+      "choices": [
+        "About 5.6 minutes",
+        "About 6.8 minutes",
+        "About 9.5 minutes",
+        "About 10.5 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Net accumulation becomes 121 minus 90, which is 31 L/s or 1.86 m^3/min, and 12.6 divided by 1.86 gives about 6.8 minutes, down from 10.5 minutes. The 9.5 minute answer wrongly cuts the original time by 10 percent, but time responds to the change in the net rate, not the inflow."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-f1",
+      "objective": "incident-volume",
+      "prompt": "Fictional case assumptions: constant discharge 9 L/s; last verified clear evidence 23:40; estimated onset 01:20; detection 03:05; verified end 04:50. What is the upper bound volume?",
+      "choices": [
+        "About 57 m3",
+        "About 113 m3",
+        "About 167 m3",
+        "About 194 m3"
       ],
       "correctIndex": 2,
-      "explanation": "Disclose uncertainty and the basis of any estimate."
+      "explanation": "9 L/s is 32.4 m3/h, and the upper bound runs from last verified clear evidence 23:40 to 04:50, which is 5 h 10 min or 5.167 h, giving about 167 m3. The 113 m3 answer uses the estimated onset, which is the working estimate rather than the upper bound."
     },
     {
-      "id": "collection-wet-weather-f7",
-      "objective": "response-plan",
-      "prompt": "A pump command changes toRUN. What remains to verify?",
+      "id": "ceu-collection-wet-weather-incident-volume-f2",
+      "objective": "incident-volume",
+      "prompt": "Fictional observations at an overflowing maintenance hole: 09:00 rate 30.0 m3/h; 09:45 rate 50.0 m3/h. Using the trapezoidal interval method, what volume is credited to that segment?",
       "choices": [
-        "Controller state",
-        "Actual operation and delivered flow",
-        "The most recent nameplate rating",
-        "The original dry-weather design inflow"
+        "37.5 m3",
+        "60.0 m3",
+        "22.5 m3",
+        "30.0 m3"
       ],
-      "correctIndex": 1,
-      "explanation": "A command is not evidence of physical delivery."
+      "correctIndex": 3,
+      "explanation": "The average of 30.0 and 50.0 m3/h is 40.0 m3/h, applied over 0.75 h, giving 30.0 m3. The 37.5 m3 answer applies the later, higher rate across the whole segment, which overstates volume during a rising ramp."
     },
     {
-      "id": "collection-wet-weather-f8",
-      "objective": "response-plan",
-      "prompt": "A strong recovery register distinguishes:",
+      "id": "ceu-collection-wet-weather-incident-volume-f3",
+      "objective": "incident-volume",
+      "prompt": "A fictional incident record lists estimated onset 06:40, detection 06:40, first evidence 05:55 alarm, last verified clear evidence 02:10. What is the main defect in this record?",
       "choices": [
-        "Shift ownership",
-        "Requests, execution and verification",
-        "Wet versus dry weather records",
-        "Urgency without execution status"
+        "Onset was set equal to detection, ignoring earlier evidence",
+        "Detection should have been backdated to the alarm annunciation",
+        "First evidence should never be earlier than the detection entry",
+        "Last verified clear evidence is too old to be used at all"
+      ],
+      "correctIndex": 0,
+      "explanation": "Setting onset equal to detection is the most common unintentional falsification, and here evidence at 05:55 and 02:10 shows onset was earlier. Backdating detection to the alarm is also wrong, because detection means a responsible person recognised the overflow."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-f4",
+      "objective": "incident-volume",
+      "prompt": "Fictional data: observed rate 24.0 m3/h at 10:00, then no observation until 08 m3/h... correction, 8.0 m3/h at 10:30. What is the high case volume for the unobserved 30 minute gap?",
+      "choices": [
+        "8.0 m3",
+        "12.0 m3",
+        "16.0 m3",
+        "4.0 m3"
       ],
       "correctIndex": 1,
-      "explanation": "The distinctions prevent assumed completion."
+      "explanation": "The high case holds the earlier, larger rate across the gap: 24.0 m3/h x 0.5 h = 12.0 m3. The 8.0 m3 answer is the linear case using the 16.0 m3/h average, which is a reasonable working value but is not the upper bound."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-f5",
+      "objective": "incident-volume",
+      "prompt": "For a fictional overflow, the post-detection interval work gives 48 to 55 m3, while the unobserved pre-detection block gives 0 to 180 m3. Which action best reduces total estimate uncertainty?",
+      "choices": [
+        "Recompute the trapezoids using shorter interval steps",
+        "Average the two ranges and report a single midpoint value",
+        "Retrieve level logger and alarm history to bound the onset",
+        "Add more rate observations to the post-detection period"
+      ],
+      "correctIndex": 2,
+      "explanation": "The onset window carries 180 m3 of spread against 7 m3 after detection, so evidence that narrows onset does far more than refining the observed period. Shorter trapezoid steps only polish the small part of the uncertainty and leave the large part untouched."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-f1",
+      "objective": "response-plan",
+      "prompt": "Fictional station. Rectangular wet well 4.00 m by 2.40 m, straight walls. Pumps off: level rises 0.25 m in 6 min 00 s. Duty pump alone: level falls 1.00 m in 5 min 00 s. What is the delivered pumping rate?",
+      "choices": [
+        "44.8 L/s",
+        "25.3 L/s",
+        "32.0 L/s",
+        "38.7 L/s"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area 9.60 m squared. Inflow is 9.60 x 0.25 = 2.40 cubic metres over 360 s, or 6.7 L/s. Net removal is 9.60 x 1.00 = 9.60 cubic metres over 300 s, or 32.0 L/s. Delivered equals net removal plus inflow, 38.7 L/s. Answering 32.0 ignores the inflow that keeps arriving during the drawdown."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-f2",
+      "objective": "response-plan",
+      "prompt": "Fictional station record lists the duty pump at 52 L/s. A valid fill and drawdown test during dry weather gives a delivered rate of 38.7 L/s. Which conclusion is best supported?",
+      "choices": [
+        "The pump is delivering about 74 percent of the recorded duty point and the shortfall needs a cause",
+        "The pump is delivering about 84 percent of the recorded duty point, which is within normal test error",
+        "The test is invalid because a running pump cannot deliver less than its duty point",
+        "The record should be edited to 38.7 L/s since the measured value replaces the design value"
+      ],
+      "correctIndex": 0,
+      "explanation": "38.7 divided by 52 is 0.744, so roughly 74 percent, and causes such as a fouled impeller, worn wear ring, a partly closed valve or higher system head should be investigated. Editing the record to match one test is wrong because the measured rate is a conditional observation, not a new duty point."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-f3",
+      "objective": "response-plan",
+      "prompt": "Fictional event. Upstream monitor shows inflow 70 L/s. One pump delivers 41 L/s. Wet well storage below the critical level is 0.50 m over 7.50 m squared, plus 20.0 cubic metres of in-sewer storage. How long until the critical level?",
+      "choices": [
+        "9.7 min",
+        "13.6 min",
+        "2.2 min",
+        "5.7 min"
+      ],
+      "correctIndex": 1,
+      "explanation": "Wet well volume is 7.50 x 0.50 = 3.75 cubic metres, total storage 23.75 cubic metres. Net fill is 70 minus 41 = 29 L/s or 0.0290 cubic metres per second, so 23.75 divided by 0.0290 is 819 s, about 13.6 min. The 5.7 min answer uses raw inflow and ignores the pump that is running."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-f4",
+      "objective": "response-plan",
+      "prompt": "Fictional register. Task C4 reads portable pump deployed 04:10. A drawdown test confirms 27 L/s delivered while measured inflow is 62 L/s and the station has no other pumping. Which register entry is correct?",
+      "choices": [
+        "Requested, pending confirmation that the rated capacity is 30 L/s or more",
+        "Verified complete, evidence is the 04:10 arrival and setup time of the unit",
+        "In progress, net fill still about 35 L/s, next decision point is a second unit",
+        "Verified complete, evidence is the drawdown test showing 27 L/s delivered"
+      ],
+      "correctIndex": 2,
+      "explanation": "The portable unit buys time but the station is still filling at 62 minus 27 = 35 L/s, so the abnormal condition has not ended and the task cannot close. Marking it verified on the drawdown result is tempting, since the test is good evidence, but the evidence shows the problem is not solved."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-f5",
+      "objective": "response-plan",
+      "prompt": "A wet-weather event has ended and the lead hand wants to declare recovery. What must be true before recovery is recorded as verified rather than assumed?",
+      "choices": [
+        "The rainfall total for the event has been confirmed against the nearest climate station",
+        "The cause of the event has been identified and a corrective work order issued",
+        "All callout staff have been released and the portable pumping has been removed",
+        "Evidence shows the abnormal condition has ended and normal operating control is restored"
+      ],
+      "correctIndex": 3,
+      "explanation": "Recovery is the stage where evidence proves the abnormal condition is over and normal control is back. Identifying the cause belongs to investigation, which is slower work using the preserved records, and waiting for it would leave the response stage open long after the system is stable."
     }
   ],
   "sources": [
@@ -446,5 +810,267 @@
       "accessed": "2026-09-24"
     }
   ],
-  "version": "2026-09-24.1"
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-a1",
+      "objective": "wet-weather",
+      "prompt": "Fictional catchment. Qualifying dry weekdays: 4 820, 5 060 and 4 940 m3/d. The wet day volume is 9 410 m3/d. Using the averaged baseline, what is the excess daily volume?",
+      "choices": [
+        "4 470 m3/d",
+        "4 590 m3/d",
+        "4 705 m3/d",
+        "4 350 m3/d"
+      ],
+      "correctIndex": 0,
+      "explanation": "The three dry days total 14 820 m3/d, giving a baseline of 4 940 m3/d, and 9 410 minus 4 940 equals 4 470 m3/d. The 4 590 m3/d choice subtracts only the lowest dry day, which is a sensitivity case rather than the reported baseline result."
+    },
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-a2",
+      "objective": "wet-weather",
+      "prompt": "Fictional record. The wet day instantaneous peak is 351 L/s and the averaged dry day instantaneous peak is 135 L/s. What is the peak ratio, to two decimals?",
+      "choices": [
+        "1.60",
+        "2.60",
+        "3.60",
+        "0.38"
+      ],
+      "correctIndex": 1,
+      "explanation": "Peak ratio is wet peak divided by dry peak, so 351 divided by 135 gives 2.60. The 1.60 choice comes from dividing the peak difference of 216 L/s by 135 L/s, which reports the increase rather than the ratio."
+    },
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-a3",
+      "objective": "wet-weather",
+      "prompt": "Fictional event. Total rainfall-derived excess is 9 600 m3 over a tributary area of 160 ha. Expressed as an equivalent depth over the catchment, what is this excess?",
+      "choices": [
+        "60.0 mm",
+        "0.6 mm",
+        "6.0 mm",
+        "16.7 mm"
+      ],
+      "correctIndex": 2,
+      "explanation": "160 ha equals 1 600 000 m2, so 9 600 m3 divided by that area gives 0.006 m, which is 6.0 mm. The 60.0 mm choice results from converting metres to millimetres with the wrong factor, inflating the depth by ten."
+    },
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-a4",
+      "objective": "wet-weather",
+      "prompt": "Fictional comparison. Catchment A carries 5 040 m3/d of excess across 28.0 km of sewer. Catchment B carries 3 600 m3/d across 15.0 km. Which catchment has the higher normalized excess?",
+      "choices": [
+        "Both are equal once sewer length is accounted for",
+        "Cannot be ranked without each catchment rainfall depth",
+        "Catchment A, at about 180 m3/d per km of sewer",
+        "Catchment B, at about 240 m3/d per km of sewer"
+      ],
+      "correctIndex": 3,
+      "explanation": "Normalizing gives A at 5 040 divided by 28.0 equals 180 m3/d per km and B at 3 600 divided by 15.0 equals 240 m3/d per km, so B is worse per kilometre. Choosing A relies on the larger total volume and ignores the much greater pipe length carrying it."
+    },
+    {
+      "id": "ceu-collection-wet-weather-wet-weather-a5",
+      "objective": "wet-weather",
+      "prompt": "A small catchment with roughly 10 minutes of travel time peaks 20 minutes after rain onset, and staff conclude direct inflow. Which finding would most weaken that conclusion?",
+      "choices": [
+        "The peak coincides with a pump station restart after a power loss",
+        "The rain gauge sits about 200 m from the catchment boundary",
+        "Smoke testing located roof leaders connected to the sanitary sewer",
+        "The sharp response repeats at every rain event in all seasons"
+      ],
+      "correctIndex": 0,
+      "explanation": "A station restart can produce a sharp flow spike that mimics inflow timing, so the peak may reflect pumping behaviour rather than connected surfaces. Smoke testing results are wrong as a weakener because locating connected roof leaders strengthens the inflow hypothesis."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-a1",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case, fictional station. Wet well plan area is 4.0 m by 3.5 m, constant over the test range. With pumps off the level rises 0.30 m in 2.0 min. Pump 1 then runs and the level falls 0.45 m in 3.0 min with inflow continuing. What is Pump 1 delivered flow?",
+      "choices": [
+        "About 53 L/s",
+        "About 70 L/s",
+        "About 105 L/s",
+        "About 35 L/s"
+      ],
+      "correctIndex": 1,
+      "explanation": "Area is 14.0 m^2, so inflow is 14.0 times 0.30 divided by 2.0, which is 2.1 m^3/min, and net removal is 14.0 times 0.45 divided by 3.0, also 2.1 m^3/min. Delivered flow is 4.2 m^3/min or 70 L/s. The 35 L/s option reports only the rate of fall and ignores continuing inflow."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-a2",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case. The as built level to volume table gives 15.0 m^2 from 0.90 m to 1.40 m and 20.0 m^2 from 1.40 m to 2.00 m. Current level is 1.05 m and the defined trigger is 1.85 m. What is the available volume?",
+      "choices": [
+        "12.0 m^3",
+        "13.75 m^3",
+        "14.25 m^3",
+        "16.0 m^3"
+      ],
+      "correctIndex": 2,
+      "explanation": "Split the interval, so 0.35 m times 15.0 m^2 gives 5.25 m^3 and 0.45 m times 20.0 m^2 gives 9.0 m^3, for 14.25 m^3 total. The 16.0 m^3 answer applies the larger upper area over the full 0.80 m and overstates buffer in the lower, narrower section."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-a3",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case. Available volume between the current level and the defined trigger is 16.2 m^3. Measured inflow is 140 L/s and measured combined delivered outflow is 110 L/s. What is the conditional time remaining?",
+      "choices": [
+        "About 13.5 minutes",
+        "About 1.9 minutes",
+        "About 2.5 minutes",
+        "About 9.0 minutes"
+      ],
+      "correctIndex": 3,
+      "explanation": "Net accumulation is 140 minus 110, which is 30 L/s or 1.8 m^3/min, and 16.2 divided by 1.8 equals 9.0 minutes. The 1.9 minute answer divides the volume by the full inflow and treats the running pumps as if they moved nothing."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-a4",
+      "objective": "storage-capacity",
+      "prompt": "A fictional pump has a nameplate rating of 95 L/s. During a surcharged forcemain condition a timed drawdown test, corrected for inflow, gives 78 L/s. Which value belongs in the time to trigger calculation?",
+      "choices": [
+        "Use the measured 78 L/s, since it reflects head and condition now",
+        "Use the nameplate 95 L/s, since it came from a manufacturer test",
+        "Use 86.5 L/s, the average of nameplate and measured drawdown flow",
+        "Use 85.5 L/s, the nameplate reduced by a standard ten percent factor"
+      ],
+      "correctIndex": 0,
+      "explanation": "Delivered flow is what the pump moves against actual system head in its present condition, so the measured value is the defensible input. Using nameplate overstates outflow, understates net accumulation and makes the conditional time look longer than it truly is."
+    },
+    {
+      "id": "ceu-collection-wet-weather-storage-capacity-a5",
+      "objective": "storage-capacity",
+      "prompt": "Teaching case. Available volume to the trigger is 18.0 m^3, combined delivered outflow holds at 95 L/s, and inflow is 120 L/s. If inflow rises 15 percent to 138 L/s, what is the new conditional time remaining?",
+      "choices": [
+        "About 4.2 minutes",
+        "About 7.0 minutes",
+        "About 10.4 minutes",
+        "About 12.0 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Net accumulation becomes 138 minus 95, which is 43 L/s or 2.58 m^3/min, and 18.0 divided by 2.58 is about 7.0 minutes, down from 12.0 minutes. The 10.4 minute answer reduces the original time by 15 percent, which ignores that only the net rate drives the result."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-a1",
+      "objective": "incident-volume",
+      "prompt": "Fictional case assumptions: constant discharge 18 L/s; last verified clear evidence 21:15; estimated onset 23:00; detection 00:30; verified end 02:45. What is the upper bound volume?",
+      "choices": [
+        "About 146 m3",
+        "About 243 m3",
+        "About 356 m3",
+        "About 389 m3"
+      ],
+      "correctIndex": 2,
+      "explanation": "18 L/s equals 64.8 m3/h, and 21:15 to 02:45 is 5.5 h, so the upper bound is 64.8 x 5.5 = 356.4 m3. The 146 m3 answer uses detection to verified end, which is only the lower bound and understates an event that built slowly."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-a2",
+      "objective": "incident-volume",
+      "prompt": "Fictional observations during a rising surcharge: 13:00 rate 18.0 m3/h; 13:30 rate 42.0 m3/h. Using the trapezoidal interval method, what volume is credited to that segment?",
+      "choices": [
+        "21.0 m3",
+        "30.0 m3",
+        "9.0 m3",
+        "15.0 m3"
+      ],
+      "correctIndex": 3,
+      "explanation": "The segment average is (18.0 + 42.0) / 2 = 30.0 m3/h over 0.5 h, giving 15.0 m3. The 30.0 m3 choice mistakes the average rate for a volume, and 9.0 m3 applies only the starting rate across a period when flow was clearly increasing."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-a3",
+      "objective": "incident-volume",
+      "prompt": "Fictional timeline: after-hours answering service logs a resident call at 03:12; crew dispatched 04:00; operator confirms flow from the lid at 04:25. Which time is recorded as detection?",
+      "choices": [
+        "04:25, when the responsible operator confirmed the overflow",
+        "02:00, the last hour with no calls on the service log",
+        "03:12, because the resident described sewage on the road",
+        "04:00, because the dispatch decision commits the utility"
+      ],
+      "correctIndex": 0,
+      "explanation": "Detection is when a person with responsibility recognised an overflow was occurring, which is 04:25 here. The 03:12 call is first evidence, and an hour with no calls is not last verified clear evidence because absence of calls proves nothing."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-a4",
+      "objective": "incident-volume",
+      "prompt": "A crew clears a blockage at 08:05 and reports the overflow over. Water continues draining from the road gutter toward a ditch until 08:40. How should the verified end be recorded?",
+      "choices": [
+        "08:05, the moment the blockage was cleared by the crew",
+        "Time of the confirmed no-flow observation at the maintenance hole",
+        "Midpoint of 08:05 and 08:40, splitting the difference fairly",
+        "08:40, when all visible water movement toward the ditch ceased"
+      ],
+      "correctIndex": 1,
+      "explanation": "Verified end needs a sourced observation that discharge from the structure has stopped. Using 08:40 counts gutter drain-back as discharge and inflates volume, while 08:05 is a crew belief about the blockage rather than a confirmed no-flow observation."
+    },
+    {
+      "id": "ceu-collection-wet-weather-incident-volume-a5",
+      "objective": "incident-volume",
+      "prompt": "Fictional estimate: post-detection interval work totals 45.0 m3 (linear case). Estimated onset is 1.5 h before detection, with a ramping rate averaging about 16 m3/h over that window. What is the working estimate?",
+      "choices": [
+        "About 45 m3",
+        "About 61 m3",
+        "About 69 m3",
+        "About 93 m3"
+      ],
+      "correctIndex": 2,
+      "explanation": "The pre-detection block is 16 m3/h x 1.5 h = 24 m3, added to 45.0 m3 for about 69 m3. Reporting 45 m3 ignores everything before detection, which is exactly the error that arises when onset is collapsed into the detection time."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-a1",
+      "objective": "response-plan",
+      "prompt": "Fictional station. Rectangular wet well 3.50 m by 2.00 m, straight walls. Pumps off: level rises 0.36 m in 4 min 00 s. Duty pump alone: level falls 1.20 m in 5 min 00 s. What is the delivered pumping rate?",
+      "choices": [
+        "46.9 L/s",
+        "17.5 L/s",
+        "28.0 L/s",
+        "38.5 L/s"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area 7.00 m squared. Inflow is 7.00 x 0.36 = 2.52 cubic metres over 240 s, or 10.5 L/s. Net removal is 7.00 x 1.20 = 8.40 cubic metres over 300 s, or 28.0 L/s. Delivered is 28.0 plus 10.5 = 38.5 L/s. The 17.5 answer subtracts the inflow instead of adding it."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-a2",
+      "objective": "response-plan",
+      "prompt": "Fictional station record lists the duty pump at 55 L/s and a valid test gives 38.5 L/s delivered at low downstream level. Which statement about this result during a rising storm is most defensible?",
+      "choices": [
+        "About 70 percent of the record, and the delivered rate may fall further as tailwater rises",
+        "About 70 percent of the record, so the pump will hold this rate for the rest of the event",
+        "About 78 percent of the record, so no further capacity action needs to be considered",
+        "About 143 percent of the record, so the station record understates the installed capacity"
+      ],
+      "correctIndex": 0,
+      "explanation": "38.5 divided by 55 is 0.70, and a rate measured at low tailwater typically drops as the receiving sewer surcharges and system head rises. Assuming the rate will hold for the event is the common error, because it turns a conditional measurement into a status guarantee."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-a3",
+      "objective": "response-plan",
+      "prompt": "Fictional event. Inflow measured at 58 L/s. The duty pump is out of service and a portable unit delivers 24 L/s by drawdown test. Storage below the critical level is 0.45 m over 6.00 m squared plus 15.5 cubic metres in-sewer. Time to critical level?",
+      "choices": [
+        "5.2 min",
+        "8.9 min",
+        "12.6 min",
+        "1.3 min"
+      ],
+      "correctIndex": 1,
+      "explanation": "Wet well volume is 6.00 x 0.45 = 2.70 cubic metres, total 18.2 cubic metres. Net fill is 58 minus 24 = 34 L/s or 0.0340 cubic metres per second, giving 535 s or about 8.9 min. The 12.6 min answer divides the storage by the pump rate rather than by the net fill rate."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-a4",
+      "objective": "response-plan",
+      "prompt": "Two operators are available at a fictional station where one of two pumps has tripped and the wet well is climbing. Which task should be started first under the plan priority order?",
+      "choices": [
+        "Photograph the manhole surcharge two blocks upstream with timestamps",
+        "Draft the notification package for the contacts named in the approval",
+        "Attempt an authorized restart or bring the standby pump into service",
+        "Record fixed-interval level readings in the operating log for the trend"
+      ],
+      "correctIndex": 2,
+      "explanation": "Capacity actions come first because only they change how much liquid the system can carry before it fails. The photographs are genuinely perishable evidence and must be assigned next, but taking them first while nobody is restoring pumping leaves the outcome unchanged."
+    },
+    {
+      "id": "ceu-collection-wet-weather-response-plan-a5",
+      "objective": "response-plan",
+      "prompt": "You are preparing an update for the parties named in the facility approval while a storm is still running and some field reports are unconfirmed. What should the update contain?",
+      "choices": [
+        "A best estimate of total overflow volume so the receiving parties have a single number",
+        "A summary of likely causes drawn from United States sanitary sewer overflow guidance",
+        "Only information that has been fully confirmed, with unverified items left out entirely",
+        "Checked facts with times and sources, and an explicit statement of what is still unverified"
+      ],
+      "correctIndex": 3,
+      "explanation": "Communication is governed, not discretionary, and it should carry observed facts with times and sources while flagging what has not been verified. Omitting unverified items entirely is tempting but it hides live information the receiving parties need to plan around."
+    }
+  ]
 }

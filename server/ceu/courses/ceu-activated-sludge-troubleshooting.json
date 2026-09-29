@@ -16,8 +16,8 @@
         "Calculate SRT with aeration and clarifier inventory.",
         "Compare like-for-like solids bases and external losses."
       ],
-      "lesson": "### The boundary changes the calculated age\nSRT is solids inventory divided by daily solids leaving the selected system. A complete estimate may include aeration and clarifier inventories when supported by measurements. If one day includes clarifier solids and another does not, an apparent change can be a bookkeeping change rather than process behaviour.\n\nFor a layered clarifier estimate, calculate each layer's volume times concentration and add the masses. Concentration inmg/L converts tokg/m³ by dividing by 1,000. A100 m³ layer at 4,000 mg/L contains 400 kg. A blanket depth alone does not establish mass without geometry and concentration distribution.\n\nDaily losses include waste solids and effluent solids on the chosen basis. Internal RAS flow redistributes inventory and is not an external loss. If waste is taken from a different location, use that location's concentration and the matching flow period. Do not multiply a mixed-liquor concentration by a concentrated waste-sludge flow unless they actually correspond.\n\nInterpret SRT alongside treatment goals, temperature, sampling quality and time trends. A calculated value is not an automatic wasting setpoint. The purpose of this module is to make the estimate reproducible and expose the consequence of omitted inventory or loss terms.",
-      "evidence": "**A1 — fictional Elm Basin daily balance**\nAeration volume 3,000 m³ atMLSS 3,000 mg/L. Clarifier lower layer 150 m³ at 6,000 mg/L; upper layer 300 m³ at 500 mg/L. Waste 100 m³/day at 6,000 mg/L. Effluent 12,000 m³/day at 15 mg/LTSS. RAS6,000 m³/day at 6,000 mg/L stays internal.\n\nA2: Yesterday's worksheet omitted clarifier inventory but otherwise used the same values. All supplied averages are assumed representative for this training calculation.",
+      "lesson": "### Why the boundary defines the number\n\nSolids retention time is a mass balance statement, not a meter reading. You choose a control volume, you count the active solids mass held inside it, and you divide by the mass of solids leaving that volume every day by routes that actually remove solids from the system. Written plainly:\n\nSRT (days) = solids mass inside the chosen boundary (kg) divided by solids mass leaving that boundary per day (kg/d)\n\nEvery argument about SRT on a plant floor is really an argument about the boundary. Two operators can measure the same tanks on the same day and report 15 days and 18 days, and both can be arithmetically correct, because one drew the boundary around the aeration basins only and the other included the clarifier sludge blanket. Neither number is wrong. What is wrong is comparing them to each other, or plotting them on the same trend line, as though the process changed.\n\nThe US EPA Process Control Manual for Aerobic Biological Wastewater Treatment Facilities, in its discussion of activated-sludge process observations, tests and interpretation, treats sludge age and retention time as interpretive tools that depend on consistent measurement practice. That is the core discipline here. A reproducible boundary that is slightly simplified beats a theoretically complete boundary that you compute differently every Tuesday.\n\nThe practical rule: write the boundary down, define it once in your standard operating procedure, and apply it every single calculation day. If you change it, mark the change date on the trend and keep both bases running in parallel for long enough to see the offset.\n\n### What belongs inside the boundary and what does not\n\nInside the boundary, for a conventional activated sludge train, you normally have the aeration basin liquid volume, any anoxic or anaerobic selector zones that hold mixed liquor, and the secondary clarifier sludge blanket. Return activated sludge piping holds a small mass that most plants ignore, which is defensible if you ignore it consistently.\n\nThe returns are the part operators get wrong. Return activated sludge moves mass from the clarifier back to the aeration basin. It does not remove anything. A high return rate changes where the inventory sits, shifting mass out of the blanket and into the mixed liquor, which changes your measured MLSS without changing total inventory at all. That is exactly why an aeration-only boundary can make a return rate change look like a process change.\n\nExternal losses are the routes that carry solids out of the secondary system for good:\n\n- Waste activated sludge to digestion, thickening or haulage.\n- Secondary effluent suspended solids over the clarifier weirs.\n- Surface foam or scum wasted to a digester or to a solids handling process, if that route exists and is used.\n- Clarifier washout during a hydraulic event, which is an unplanned loss and must be noted, not smoothed over.\n\nSidestreams returned to the headworks or to the plant influent are not losses from the plant, but they may be losses from the secondary boundary depending on where they re-enter. Trace the actual piping before you decide.\n\n### The input register\n\nBuild the calculation from a fixed register so that a second operator can reproduce your number from the records alone. The table below is the working form. Values shown are placeholders for format only.\n\n| Item | Source record | Units | Basis check | Common failure |\n|---|---|---|---|---|\n| Aeration liquid volume at operating level | As-built drawing or tank calibration record | m3 | Volume at actual weir or level, not tank top | Using full structural volume with a basin off line |\n| MLSS concentration | Composite or grab, lab bench sheet | mg/L | Same basis as loss terms (TSS or VSS) | Averaging a settled sample |\n| Clarifier surface area | As-built drawing | m2 | Number of clarifiers in service that day | Counting a unit that is drained |\n| Blanket depth by layer | Sludge judge or blanket detector log | m | Depth measured at a defined location and time | One reading at the weir taken as plant-wide |\n| Blanket concentration by layer | Core sample or RAS concentration proxy | mg/L | Stated as measured or as assumed | Assuming RAS concentration for the whole blanket |\n| WAS volume | Meter totaliser, or pump run hours with drawdown-verified rate | m3/d | Matches the same 24 hour period as concentrations | Logbook estimate with no supporting record |\n| WAS concentration | Sample taken at the actual waste withdrawal point | mg/L | Point matches the flow used | Using MLSS for a RAS-line waste |\n| Effluent flow | Final effluent meter | m3/d | Same day, same period | Using influent flow when a bypass occurred |\n| Effluent TSS | Lab bench sheet | mg/L | Compliance sample or process sample, stated | Substituting turbidity without a validated correlation |\n\nRetain the bench sheets, the meter totaliser readings, the blanket log, and the calculation sheet itself. Under the Ontario Licensing guide for wastewater operators, in the material on operator-in-charge responsibilities and operating records, the operating record is the durable evidence of what was measured and what was decided. A process decision supported only by memory is not supported.\n\n### Worked example 1: the same day, two boundaries\n\nAll values below are supplied case assumptions for this teaching example at a fictional plant. They are not authorized values and are not targets.\n\nGiven:\n- Two aeration basins in service, each 1,800 m3 at operating level.\n- MLSS = 3,200 mg/L.\n- Two clarifiers in service, each 16.0 m diameter.\n- Blanket layered: upper 0.50 m at 4,500 mg/L, lower 0.40 m at 7,000 mg/L.\n- WAS from the RAS line: 95 m3/d at 7,000 mg/L.\n- Final effluent: 7,400 m3/d at 12 mg/L TSS.\n- All concentrations on a total suspended solids basis.\n\nStep 1, aeration volume:\n2 basins x 1,800 m3/basin = 3,600 m3\n\nStep 2, aeration mass. Note that 1 mg/L = 1 g/m3:\n3,600 m3 x 3,200 g/m3 = 11,520,000 g = 11,520 kg\n\nStep 3, clarifier area:\nArea per unit = 0.7854 x (16.0 m)^2 = 0.7854 x 256 m2 = 201.1 m2\n2 units x 201.1 m2/unit = 402.2 m2\n\nStep 4, upper blanket layer:\n402.2 m2 x 0.50 m = 201.1 m3\n201.1 m3 x 4,500 g/m3 = 904,950 g = 905 kg\n\nStep 5, lower blanket layer:\n402.2 m2 x 0.40 m = 160.9 m3\n160.9 m3 x 7,000 g/m3 = 1,126,300 g = 1,126 kg\n\nStep 6, total clarifier inventory:\n905 kg + 1,126 kg = 2,031 kg\n\nStep 7, total system inventory:\n11,520 kg + 2,031 kg = 13,551 kg\n\nStep 8, daily losses:\nWAS: 95 m3/d x 7,000 g/m3 = 665,000 g/d = 665 kg/d\nEffluent: 7,400 m3/d x 12 g/m3 = 88,800 g/d = 88.8 kg/d\nTotal = 665 kg/d + 88.8 kg/d = 753.8 kg/d\n\nStep 9, SRT on each boundary:\nAeration only: 11,520 kg divided by 753.8 kg/d = 15.3 d\nAeration plus clarifier: 13,551 kg divided by 753.8 kg/d = 18.0 d\n\nAnswer: 15.3 days on an aeration-only basis and 18.0 days on a full secondary-system basis, from identical measurements. The gap is 2.7 days, about 18 percent.\n\nNow look at a common shortcut. If you use aeration inventory only and count only WAS as the loss:\n11,520 kg divided by 665 kg/d = 17.3 d\n\nThat is close to the full 18.0 day answer, but for the wrong reason. Two omissions, missing blanket mass and missing effluent solids, partly cancelled. On a day when the clarifier blanket climbs or effluent TSS deteriorates, the cancellation breaks and the shortcut drifts without warning.\n\n### Worked example 2: mismatched bases\n\nSame plant, same day, same inventory of 13,551 kg on a TSS basis. Supplied case assumptions again.\n\nError A, mixed liquor concentration applied to a waste sludge flow. WAS is drawn from the RAS line at 7,100 mg/L, volume 88 m3/d, but the operator multiplies the flow by MLSS:\nIncorrect WAS mass = 88 m3/d x 3,200 g/m3 = 281,600 g/d = 281.6 kg/d\nIncorrect total loss = 281.6 kg/d + 88.8 kg/d = 370.4 kg/d\nIncorrect SRT = 13,551 kg divided by 370.4 kg/d = 36.6 d\n\nCorrect, using the concentration at the actual withdrawal point:\nWAS mass = 88 m3/d x 7,100 g/m3 = 624,800 g/d = 624.8 kg/d\nTotal loss = 624.8 kg/d + 88.8 kg/d = 713.6 kg/d\nSRT = 13,551 kg divided by 713.6 kg/d = 19.0 d\n\nAnswer: 19.0 days correct against 36.6 days from the mismatch. The error nearly doubles the reported SRT and would push an operator toward reducing wasting on a system that is already long.\n\nError B, volatile inventory against total losses. Suppose MLVSS divided by MLSS = 0.72 and the operator computes inventory on a VSS basis while leaving the loss terms on TSS:\nVSS inventory = 13,551 kg x 0.72 = 9,757 kg\nMixed-basis SRT = 9,757 kg divided by 713.6 kg/d = 13.7 d\n\nAnswer: 13.7 days from mixed bases against 19.0 days like-for-like, an understatement of about 28 percent. A volatile basis is perfectly legitimate, and it is the more meaningful basis where inert solids loading is high or where nitrifier inventory matters, as discussed in the US EPA Nutrient Control Design Manual material on biological nutrient removal. It is legitimate only when both the numerator and the denominator are on that same basis.\n\n### Reading the number and reading the change\n\n| Observation | Likely explanation to test first | Evidence to pull | What not to do |\n|---|---|---|---|\n| SRT jumps up overnight with no wasting change | Boundary or basis changed, or blanket concentration assumption changed | Prior calculation sheet, blanket log, bench sheets | Do not increase wasting on one data point |\n| SRT stable but MLSS falling | Inventory shifting into the blanket, or effluent solids loss rising | Blanket depth trend, effluent TSS trend | Do not chase MLSS with a return rate change alone |\n| SRT drops sharply after a storm | Real washout loss over the weirs | Flow record, effluent TSS, clarifier observations | Do not treat the low value as the new steady state |\n| SRT very long and nitrification fine, effluent solids poor | Possible dispersed growth or old sludge settling issues | Settleability test, microscopic observation | Do not assume long SRT is inherently safe |\n| Calculated SRT disagrees with observed settleability and clarity | Suspect the inputs, especially WAS volume | Meter totaliser, pump run hours, drawdown check | Do not adjust the process to make the arithmetic agree |\n\nWhat makes the number invalid: a WAS volume that is a guess; a clarifier mass built on a blanket concentration that was never measured and never labelled as assumed; concentrations and flows from different days; a unit counted as in service when it was drained; a mixed TSS and VSS calculation; and an effluent solids term omitted on a day when the clarifiers were struggling.\n\nSRT is a trend instrument. One value tells you very little. Seven consecutive values on an unchanged boundary, read beside temperature, settleability and effluent quality, tell you a great deal.\n\n### Common errors\n\n1. Counting return activated sludge as a loss. RAS is internal recirculation. Including it in the denominator inflates the daily loss enormously and collapses the calculated SRT to a meaningless small number. The only solids leaving through the return line are the ones diverted to waste.\n2. Multiplying a waste flow by the wrong concentration. Waste sludge drawn from a RAS line or a thickener underflow is far more concentrated than mixed liquor. Using MLSS with that flow understates the mass wasted and overstates SRT, as shown in Example 2. Sample at the actual withdrawal point, over the actual wasting period.\n3. Turning a blanket depth into a mass without geometry or concentration. A depth reading alone is not inventory. You need surface area, the number of units in service, and a concentration for each layer. If a layer concentration is assumed rather than measured, write the word assumed on the calculation sheet so the next operator can weigh it.\n4. Silently changing the boundary. Adding clarifier inventory partway through a month creates a step change in the trend that looks like process drift. Date the change and keep the old basis in parallel.\n5. Treating a calculated SRT as a wasting setpoint. The calculation describes the system. Wasting decisions belong to your facility procedure, your approval conditions and your judgment about temperature, nitrification and clarifier capacity.\n\n### What to verify before you act\n\nBefore you change wasting on the strength of an SRT calculation, consult the following. Do not substitute a general figure from any manual, including United States technical guidance, for the documents that actually govern your plant.\n\n- The facility Environmental Compliance Approval for the sewage works, which sets the effluent requirements and operating conditions that apply to your site. Ontario effluent requirements are receiving-water based and can be more stringent than any general figure quoted in a textbook or a design manual.\n- Your plant standard operating procedure for solids inventory and SRT, specifically the defined boundary, the sampling locations, the basis, TSS or VSS, and the calculation form.\n- The tank calibration or as-built volume record, and the current unit status log confirming which basins and clarifiers were in service for the day in question.\n- The WAS flow verification record. A meter with a current calibration record, or pump run hours combined with a documented drawdown test, is evidence. A logbook estimate is not.\n- The sampling and analysis plan and the laboratory bench sheets, including any quality control flags on the MLSS, WAS and effluent TSS results.\n- The operating record requirements described in the Ontario Licensing guide for wastewater operators under operator-in-charge responsibilities and operating records, so that your inputs, your calculation and your decision are all documented and attributable.\n\nIf any input fails verification, fix the input before you touch the process. Record what you rejected and why. An SRT you can defend from the records is worth more than a precise-looking number nobody can reproduce.",
+      "evidence": "### Fictional worked scenario\n\nAll facility names, operators, records and readings below are fictional and are supplied for this teaching example only. None of the values are authorized limits, targets or setpoints.\n\n**Setting.** Kettle Creek Water Pollution Control Plant, fictional, conventional activated sludge. The night operator, fictional, must report an SRT on the plant's defined boundary, which is aeration basins plus secondary clarifier blanket, total suspended solids basis.\n\n**Supplied records for 14 March.**\n- Aeration: two basins in service, 1,500 m3 each at operating level. MLSS 2,850 mg/L.\n- Clarifiers: two in service, 14.0 m diameter each. Blanket 0.60 m at an average measured core concentration of 6,200 mg/L.\n- WAS pump: rated 9.2 L/s, drawdown verified last month. Run time counter 2.6 h for the day. Sample at the WAS withdrawal point 6,400 mg/L.\n- Day shift logbook entry: \"WAS 120 m3/d, as usual.\" No meter totaliser reading, no run-hour support.\n- Final effluent: 6,100 m3/d, TSS 9 mg/L.\n\n**Record to reject.** The logbook entry of 120 m3/d is an unsupported estimate. The verified pump rate and run-hour counter give a defensible volume, so the logbook figure is rejected and the rejection is noted on the calculation sheet.\n\n**Solution.**\n\nAeration mass:\n2 x 1,500 m3 = 3,000 m3\n3,000 m3 x 2,850 g/m3 = 8,550,000 g = 8,550 kg\n\nClarifier mass:\nArea each = 0.7854 x (14.0 m)^2 = 153.9 m2; two units = 307.8 m2\n307.8 m2 x 0.60 m = 184.7 m3\n184.7 m3 x 6,200 g/m3 = 1,145,140 g = 1,145 kg\n\nInventory:\n8,550 kg + 1,145 kg = 9,695 kg\n\nWAS volume from verified data:\n9.2 L/s x 3,600 s/h x 2.6 h = 86,112 L = 86.1 m3/d\nWAS mass = 86.1 m3/d x 6,400 g/m3 = 551,040 g/d = 551 kg/d\n\nEffluent mass:\n6,100 m3/d x 9 g/m3 = 54,900 g/d = 54.9 kg/d\n\nTotal loss = 551 kg/d + 54.9 kg/d = 605.9 kg/d\nSRT = 9,695 kg divided by 605.9 kg/d = 16.0 d\n\n**Effect of the rejected record.** Using 120 m3/d: 120 m3/d x 6,400 g/m3 = 768 kg/d; total loss 822.9 kg/d; SRT = 9,695 divided by 822.9 = 11.8 d. The unsupported entry would have understated SRT by 4.2 days and could have prompted an unnecessary cut in wasting.\n\n**Reported.** SRT 16.0 days on the defined boundary. Retain the bench sheets, run-hour reading, blanket log and the note rejecting the logbook estimate.",
       "assignment": "Calculate aeration and both clarifier inventories, total inventory, waste/effluent losses and full-boundary SRT. Compare with A2 and quantify the percentage understatement relative to the full-boundary estimate. Write a 300–450-word data request for improving the real-world estimate and explain why RAS is excluded from losses.",
       "rubric": [
         "Total inventory 10,050 kg and losses 780 kg/day.",
@@ -58,30 +58,82 @@
       ],
       "checks": [
         {
-          "id": "ai1",
+          "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-c1",
           "objective": "inventory-boundary",
-          "prompt": "200 m³ at 5,000 mg/L contains:",
+          "prompt": "Two operators measure the same fictional activated sludge train on the same day and report SRT values of 15.3 d and 18.0 d. Both sets of arithmetic check out. What is the most likely explanation?",
           "choices": [
-            "100 kg",
-            "1,000 kg",
-            "10,000 kg",
-            "25 kg"
+            "One drew the control boundary around aeration only, the other included the clarifier blanket",
+            "One used the influent flow meter while the other used the final effluent flow meter reading",
+            "One sampled MLSS in the morning and the other sampled the same basin late in the afternoon",
+            "One reported sludge volume index while the other reported the food to microorganism ratio"
           ],
-          "correctIndex": 1,
-          "explanation": "200×5,000/1,000=1,000 kg."
+          "correctIndex": 0,
+          "explanation": "SRT is a mass balance over a chosen control volume, so including or excluding blanket mass shifts the answer without any process change. Sample timing can nudge MLSS slightly but would not usually create a gap of roughly 18 percent between two correct calculations."
         },
         {
-          "id": "ai2",
+          "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-c2",
           "objective": "inventory-boundary",
-          "prompt": "Omitting a positive clarifier inventory while keeping losses fixed makes SRT:",
+          "prompt": "Return activated sludge carries solids from the secondary clarifier back to the head of the aeration basin. How should the RAS stream be treated when computing SRT for the secondary system?",
           "choices": [
-            "Higher",
-            "Unchanged",
-            "Lower",
-            "A hydraulic residence time"
+            "As a loss term, since solids physically leave the clarifier each day",
+            "Not as a loss, since it only moves inventory inside the boundary",
+            "As half a loss term, since roughly half the solids settle out again",
+            "As a loss only when the RAS rate exceeds the plant influent flow"
+          ],
+          "correctIndex": 1,
+          "explanation": "RAS redistributes mass between the blanket and the mixed liquor but removes nothing from the secondary system, so it never belongs in the denominator. Treating it as a loss would make a simple pumping change look like a large process change."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-c3",
+          "objective": "inventory-boundary",
+          "prompt": "Which of the following is an external loss of solids from the secondary treatment boundary?",
+          "choices": [
+            "Mixed liquor recycled from the aerobic zone back to the anoxic zone",
+            "Return activated sludge pumped from the clarifier hopper to the basin",
+            "Waste activated sludge pumped from the RAS line to sludge thickening",
+            "Solids settling from the mixed liquor into the clarifier sludge blanket"
           ],
           "correctIndex": 2,
-          "explanation": "The numerator is smaller, so the calculated SRT falls."
+          "explanation": "Wasting to thickening carries solids out of the secondary system for good, so it belongs in the daily loss term. Internal recycles and settling only move mass from one part of the boundary to another and must not be counted as losses."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-c4",
+          "objective": "inventory-boundary",
+          "prompt": "Supplied case assumption at a fictional plant: two aeration basins are in service, each holding 1,750 m3 at operating level, and MLSS is 2,600 mg/L. What is the aeration basin solids inventory?",
+          "choices": [
+            "91,000 kg of suspended solids",
+            "910 kg of suspended solids",
+            "4,550 kg of suspended solids",
+            "9,100 kg of suspended solids"
+          ],
+          "correctIndex": 3,
+          "explanation": "Total volume is 3,500 m3 and 1 mg/L equals 1 g/m3, so 3,500 x 2,600 = 9,100,000 g, which is 9,100 kg. The 4,550 kg answer comes from counting only one basin, and the other two answers are decimal slips in the gram to kilogram conversion."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-c5",
+          "objective": "inventory-boundary",
+          "prompt": "An operator calculates secondary inventory from MLVSS but leaves the waste sludge and effluent loss terms on a total suspended solids basis. What is the effect on the reported SRT?",
+          "choices": [
+            "It is understated, because a volatile numerator is divided by total losses",
+            "It is overstated, because volatile solids are more active than inert solids",
+            "It is unaffected, because the volatile fraction cancels out of the ratio",
+            "It is unaffected, provided the volatile fraction stays above 70 percent"
+          ],
+          "correctIndex": 0,
+          "explanation": "The volatile numerator is smaller than the total solids numerator while the denominator is unchanged, so the quotient drops. A volatile basis is legitimate, but only when both the inventory and every loss term are expressed on that same basis."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-c6",
+          "objective": "inventory-boundary",
+          "prompt": "A plant wants any second operator to reproduce the daily SRT number from the operating records alone. Which practice most directly supports that goal?",
+          "choices": [
+            "Average the aeration-only result and the full secondary result before logging",
+            "Define one boundary in the standard operating procedure and apply it daily",
+            "Log turbidity in place of effluent TSS to shorten the laboratory turnaround",
+            "Recalculate with the most theoretically complete boundary available each day"
+          ],
+          "correctIndex": 1,
+          "explanation": "A written, fixed boundary applied every calculation day makes the trend reproducible and comparable over time. Rebuilding the boundary daily or blending two bases produces a number that no one else can reconstruct from the records."
         }
       ]
     },
@@ -92,8 +144,8 @@
         "Calculate SVI and a stated clarifier solids-loading measure.",
         "Differentiate poor settling from hydraulic and return-flow effects."
       ],
-      "lesson": "### Keep the test and the clarifier separate\nA settling cylinder is a controlled test; a clarifier is a flowing separation process. Poor cylinder settling can support a settling concern, while a rising clarifier blanket can also reflect hydraulic loading, solids distribution or RAS delivery. Neither observation alone identifies a microbiological cause.\n\nSVI equals 30-minute settled volumemL/L divided by MLSSg/L. For 450 mL/L and 3 g/L, SVI is 150 mL/g. Record whether the sample was diluted and whether the method was consistent. A diluted test and an undiluted test may need different interpretation; do not compare them without documenting the procedure.\n\nFor this module's explicitly defined clarifier feed-solids loading, use(Q+QRAS)×MLSS divided by surface area, with unitskg/(m²·day). This convention describes the solids entering the clarifier. It differs from a forward-flow-only hydraulic loading. Always state the convention before comparing values.\n\nA hypothesis table should include a discriminating observation. Filament-related settling concerns may require qualified microscopy and broader process evidence; a RAS shortfall requires verified flow and equipment evidence. Do not prescribe a chemical treatment from a photograph or one SVI value.",
-      "evidence": "**A3 — two daily records, same settling method**\n| Measure | Day 1 | Day 2 |\n|---|---:|---:|\n|MLSS,mg/L|3,000|3,200|\n|Settled volume,mL/L|300|512|\n|Forward flow,m³/day|12,000|15,000|\n|RAS flow,m³/day|6,000|5,000|\n|Clarifier area,m²|600|600|\n|Blanket depth,m|0.9|1.7|\n\nA4: RAS readings have current verification. No microscopy is available. Day 2 peak flow was much higher than its daily average.",
+      "lesson": "### The cylinder and the clarifier are two different experiments\n\nA settleometer or graduated cylinder holds a fixed mass of mixed liquor in still water for a fixed time. Nothing enters, nothing leaves, and there is no upflow velocity, no inlet energy, no wind shear, no density current and no sludge withdrawal. A secondary clarifier is a continuously fed thickener and separator. Solids arrive with the mixed liquor, water leaves over the weirs, and solids leave through the return and waste lines. The clarifier fails when the rate of solids arriving exceeds the rate at which the sludge can settle and be removed, and that can happen with sludge that settles perfectly well in a cylinder.\n\nThis is why a single Sludge Volume Index value cannot diagnose a rising blanket. The US EPA Process Control Manual for Aerobic Biological Wastewater Treatment Facilities treats settling observations as one input among several, to be read together with microscopic examination, process loading, sludge age and clarifier performance. Use the same discipline. The cylinder tells you about the character of the sludge. The clarifier mass balance tells you whether the tank is being asked to do more than it can. Most contested troubleshooting calls come from mixing those two statements together.\n\nA practical framing for your shift: settleability is a property of the biomass, solids loading is a property of the operation, and blanket depth is the outcome of both plus whatever the return sludge pumps actually delivered. Measure all three before you change anything.\n\n### Calculating SVI so the number survives review\n\nSVI is the volume in millilitres occupied by one gram of suspended solids after a stated settling period, normally 30 minutes, in a stated vessel. The formula requires consistent units:\n\nSVI, mL/g = (settled sludge volume at 30 min, mL/L) ÷ (MLSS, g/L)\n\nThe two most common ways to produce a wrong SVI are leaving MLSS in mg/L and comparing a diluted result with an undiluted result. Both are shown below.\n\n**Worked example 1 (supplied case assumptions, fictional plant data).**\n\nSupplied values: settled sludge volume after 30 minutes in a 1 L graduated cylinder, SSV30 = 720 mL/L. MLSS from the same grab sample = 3,850 mg/L. A parallel test was run on a 1:1 dilution of the same mixed liquor with filtered final effluent, giving SSV30 = 310 mL/L on the diluted cylinder.\n\nStep 1, convert MLSS to g/L:\n3,850 mg/L ÷ 1,000 mg/g = 3.85 g/L\n\nStep 2, undiluted SVI:\nSVI = 720 mL/L ÷ 3.85 g/L\nSVI = 187.0 mL/g\n\nStep 3, the solids concentration in the diluted cylinder:\n3.85 g/L × (1 part mixed liquor ÷ 2 parts total) = 1.925 g/L\n\nStep 4, diluted SVI:\nSVI(diluted) = 310 mL/L ÷ 1.925 g/L\nSVI(diluted) = 161.0 mL/g\n\n**Answer: undiluted SVI is 187 mL/g and the 1:1 diluted SVI is 161 mL/g on the same sludge, on the same day.**\n\nThe 26 mL/g gap is not an error. It is hindered settling and wall effect. When the settled volume at 30 minutes is a large fraction of the cylinder, the blanket compresses against itself and the cylinder wall, which inflates the undiluted index. That is exactly why a facility that trends undiluted SVI must keep trending undiluted SVI, with the same cylinder, the same mixing, the same settling time and the same temperature handling. Switching to a diluted method mid-trend creates a step change in the data that looks like a process improvement and is not.\n\nAlso record the sludge blanket interface behaviour, not only the final number. Note the time to first clear interface, whether the interface is sharp or diffuse, whether solids pin-floc off the top, and the clarity of the supernatant. A sludge at 187 mL/g with a sharp interface and clear supernatant is a different operating problem from 187 mL/g with a cloudy, straggler-laden supernatant.\n\n### Solids loading on the clarifier\n\nSolids loading rate, as used in this module, is the mass of suspended solids applied to the clarifier surface per unit time, based on the total feed to the tank, which is forward flow plus return activated sludge flow. State this convention in writing every time you report a value, because a forward-flow-only convention produces a smaller number for the same tank and the two are routinely confused in shift logs.\n\nSLR, kg/(m²·d) = [(Q + Q_RAS), m³/d × MLSS, kg/m³] ÷ (clarifier surface area in service, m²)\n\nNote that 1 mg/L equals 1 g/m³ equals 0.001 kg/m³, so MLSS of 3,850 mg/L is 3.85 kg/m³.\n\n**Worked example 2 (supplied case assumptions, fictional plant data).**\n\nSupplied values: average daily forward flow Q = 9,600 m³/d. RAS flow Q_RAS = 6,720 m³/d, taken from a magnetic flow meter calibrated within the facility programme. MLSS = 3,850 mg/L. Two circular secondary clarifiers, each 18.0 m diameter, both in service.\n\nStep 1, surface area of one clarifier:\nA = π ÷ 4 × (18.0 m)²\nA = 0.7854 × 324.0 m²\nA = 254.5 m²\n\nStep 2, total area in service:\n254.5 m² × 2 = 509.0 m²\n\nStep 3, total feed flow:\n9,600 m³/d + 6,720 m³/d = 16,320 m³/d\n\nStep 4, solids mass applied per day:\n16,320 m³/d × 3.85 kg/m³ = 62,832 kg/d\n\nStep 5, solids loading rate:\nSLR = 62,832 kg/d ÷ 509.0 m²\nSLR = 123.4 kg/(m²·d)\n\nStep 6, express per hour if your reference basis uses hours:\n123.4 kg/(m²·d) ÷ 24 h/d = 5.14 kg/(m²·h)\n\nStep 7, the separate hydraulic measure, surface overflow rate on forward flow only:\nSOR = 9,600 m³/d ÷ 509.0 m²\nSOR = 18.9 m³/(m²·d)\n\n**Answer: 123.4 kg/(m²·d), or 5.14 kg/(m²·h), with a forward-flow surface overflow rate of 18.9 m³/(m²·d).**\n\nNow change one condition. Take clarifier 2 out of service for weir repair and hold everything else constant:\n\nSLR = 62,832 kg/d ÷ 254.5 m²\nSLR = 246.9 kg/(m²·d)\n\nThe loading doubles instantly. The sludge did not change, the SVI did not change, and the microscopy would not change. If the blanket climbs that afternoon, settleability is not the cause. This is the single most useful judgment in the module: before you attribute a blanket to sludge quality, recompute the loading for the actual area, actual flow and actual RAS rate in service at the time.\n\n### The return sludge mass balance as a lie detector\n\nUnder steady conditions, the solids entering the clarifier leave in the underflow, so the expected RAS concentration follows from a simple balance:\n\nExpected RAS TSS, kg/m³ = MLSS, kg/m³ × [(Q + Q_RAS) ÷ Q_RAS]\n\nUsing the example 2 values:\nRatio = 16,320 m³/d ÷ 6,720 m³/d = 2.429\nExpected RAS TSS = 3.85 kg/m³ × 2.429 = 9.35 kg/m³ = 9,350 mg/L\n\nIf the laboratory reports RAS TSS at 5,200 mg/L while the meter says 6,720 m³/d, the two records cannot both be right at steady state. Either the RAS flow is higher than logged, the sample was taken from a line that was not pumping, the blanket is inventorying solids rather than passing them through, or the meter is out of calibration. Rework the balance for the measured RAS TSS:\n\nImplied Q_RAS = (Q × MLSS) ÷ (RAS TSS − MLSS)\nImplied Q_RAS = (9,600 m³/d × 3.85 kg/m³) ÷ (5.20 kg/m³ − 3.85 kg/m³)\nImplied Q_RAS = 36,960 kg/d ÷ 1.35 kg/m³\nImplied Q_RAS = 27,378 m³/d\n\nThat implied return rate is far above the logged value, which tells you the recorded pair is inconsistent rather than telling you the true answer. Treat it as a data integrity finding and go verify the meter, the sample point and the pump status before you touch the process.\n\n### Discriminating observations\n\n| Observation pattern | Settleability driven | Hydraulic or loading driven | Return flow or equipment driven |\n|---|---|---|---|\n| SVI trend over 7 to 14 days | Rising steadily on consistent method | Flat | Flat |\n| Blanket depth versus time of day | Elevated all day | Peaks with diurnal or wet weather peak, recovers overnight | Steps at pump start or stop |\n| SLR recomputed for area actually in service | Within facility normal range | Elevated, often after a unit is removed from service | Normal |\n| Measured RAS TSS versus mass balance expectation | Close agreement | Close agreement | Large unexplained gap |\n| Effluent TSS character | Dispersed fines or filamentous carryover | Sheeting or washout at peak flow | Sudden carryover on one tank only |\n| Supernatant in the cylinder | Cloudy or ashy | Clear | Clear |\n| Response to a controlled RAS rate change | Little short term change | Little change | Blanket responds within hours |\n\nUse the table as a sorting tool, not a verdict. A confirmed filament diagnosis requires qualified microscopic examination with documented method and observer, plus supporting process history such as sludge age, dissolved oxygen profile, septicity and nutrient conditions. A photograph and one SVI value are not a diagnosis. Chemical interventions of any kind, including selective oxidant addition to a return line, must be checked against the facility Environmental Compliance Approval and written operating procedures before they are even proposed.\n\n### Input register for the settling and loading calculation\n\n| Input | Units | Source of record | Validity check | Reject if |\n|---|---|---|---|---|\n| SSV30 | mL/L | Settling test sheet | Same cylinder, same 30 min, dilution noted | Dilution not recorded |\n| MLSS | mg/L | Laboratory bench sheet | Same grab, same time as settling test | Sample time differs by shift |\n| Forward flow Q | m³/d | Plant flow record | Meter within calibration programme | Calibration overdue or meter flagged |\n| RAS flow | m³/d | RAS meter or pump curve | Cross-check against mass balance | Balance gap unexplained |\n| RAS TSS | mg/L | Laboratory bench sheet | Sampled while pump running | Line idle at sampling |\n| Clarifier area in service | m² | Operating log plus maintenance record | Units confirmed in service that day | Log conflicts with work order |\n| Blanket depth | m | Blanket finder or core | Same location and depth reference | Reference point changed |\n\n### Common errors\n\n**Dividing millilitres per litre by milligrams per litre.** Entering 720 mL/L ÷ 3,850 mg/L gives 0.187 and some operators then record 0.19 or, worse, move the decimal and record 19 mL/g. MLSS must be converted to grams per litre first. Any SVI below about 10 or above several hundred should trigger a unit check before it is trended.\n\n**Using nameplate clarifier area when a tank is out of service.** The loading calculation in worked example 2 doubled from 123.4 to 246.9 kg/(m²·d) purely from area. Operators who pull the area from a design drawing rather than from the day's operating log will report a normal loading during an overload and will then go looking for a microbiological cause that does not exist.\n\n**Comparing a diluted SVI to an undiluted historical baseline.** Worked example 1 gave 187 mL/g undiluted and 161 mL/g diluted on the same sludge. A methodology change reads as a 14 percent improvement. Document the method on every test sheet and note the change date prominently in the trend record.\n\n**Sampling RAS from an idle line or a sample tap with settled solids in it.** The resulting concentration is meaningless, and it will corrupt the mass balance that you need to separate return flow problems from sludge quality problems.\n\n**Acting on a single day's value.** Settling tests carry real variability from mixing, temperature and sample point. Two or three consistent days with the same method, read against loading and blanket data, support a decision. One reading supports another reading.\n\n### What to verify before you act\n\nBefore changing RAS rate, wasting rate, clarifier units in service or any chemical addition, confirm the following records. First, the facility Environmental Compliance Approval and the operational plan or standard operating procedures, which define the units, flows, chemical additions and any performance conditions that apply to your works. Ontario sewage works operate to the specific terms of their own approval and the receiving water drives the effluent requirements, so no general figure from any manual overrides what your approval says. Second, the operating log and maintenance work orders for the day in question, to confirm which clarifiers, RAS pumps and meters were actually in service. Third, the calibration records for the flow meters used in the loading and mass balance calculations. Fourth, the laboratory bench sheets and chain of custody for MLSS and RAS TSS, including sample time and location. Fifth, the internal notification and authorisation pathway for any process change that touches an approval condition.\n\nOn record keeping and accountability, the Ontario licensing guide for wastewater operators sets out operator-in-charge responsibilities and operating record expectations. Your calculation is part of that record. Retain the raw inputs, the stated convention used for the loading measure, the dilution status of the settling test, the area in service, the arithmetic and the name of the person who performed it. For US technical framing, the US EPA Process Control Manual provides the interpretive background for settling observations, and the US EPA Nutrient Control Design Manual is useful for nutrient related process context, but both are United States technical guidance rather than Ontario requirements and neither sets your limits.",
+      "evidence": "### Fictional worked scenario\n\n**All facility names, operators, records and readings below are fictional and are supplied only as case assumptions for this teaching example. They are not authorized values for any real works.**\n\nMaplecross Water Pollution Control Plant, conventional activated sludge, two circular secondary clarifiers each 20.0 m diameter. Night shift reports a rising blanket in clarifier 1 and high effluent turbidity.\n\nSupplied records for 14 March:\n- Forward flow, Q = 12,400 m³/d (meter calibrated 2 months prior)\n- RAS flow logged = 9,300 m³/d\n- MLSS = 2,900 mg/L\n- SSV30, undiluted 1 L cylinder = 800 mL/L\n- RAS TSS reported by lab = 3,100 mg/L\n- Day shift log entry: \"both clarifiers in service, SLR normal at 100 kg/(m²·d)\"\n- Maintenance work order 4471: clarifier 2 drained and isolated for weir repair, 12 to 16 March\n- Day shift log entry: \"filamentous bulking confirmed, recommend oxidant to RAS\" with no microscopy sheet attached\n\n**Records to reject.** The log claim that both clarifiers were in service conflicts with work order 4471. The maintenance record is the controlling evidence, so the SLR of 100 kg/(m²·d) is wrong. The \"filamentous bulking confirmed\" entry is unsupported: there is no microscopic examination sheet, observer or method, so it cannot be used, and no oxidant addition can be considered without checking the Environmental Compliance Approval and facility procedures.\n\n**Worked solution.**\n\nArea of one clarifier:\nA = 0.7854 × (20.0 m)² = 314.2 m²\n\nTotal feed:\n12,400 m³/d + 9,300 m³/d = 21,700 m³/d\n\nMLSS in mass units:\n2,900 mg/L = 2.90 kg/m³\n\nSolids applied:\n21,700 m³/d × 2.90 kg/m³ = 62,930 kg/d\n\nSLR on the area actually in service:\n62,930 kg/d ÷ 314.2 m² = 200.3 kg/(m²·d)\n\nSVI:\n800 mL/L ÷ 2.90 g/L = 275.9 mL/g\n\nRAS mass balance check:\nExpected RAS TSS = 2.90 kg/m³ × (21,700 ÷ 9,300) = 2.90 × 2.333 = 6.77 kg/m³ = 6,770 mg/L\nReported 3,100 mg/L does not reconcile, so the RAS flow record, sample point or pump status must be verified.\n\n**Conclusion.** Loading is double what the log stated, driven by area out of service, and the return sludge record is internally inconsistent. The elevated SVI is real and worth trending on a consistent method, but the immediate defensible actions are to verify the RAS meter and sample point and to review the loading against the approval and procedures, not to dose a chemical on an unsupported diagnosis.",
       "assignment": "Calculate both SVI values and daily feed-solids loadings using the stated convention. Construct a three-mechanism troubleshooting table with supporting, missing and discriminating evidence. Explain why the daily loading does not capture the peak and why neither SVI nor blanket depth proves a specific organism is responsible.",
       "rubric": [
         "SVI 100 and 160 mL/g.",
@@ -134,30 +186,82 @@
       ],
       "checks": [
         {
-          "id": "as1",
+          "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-c1",
           "objective": "settling-diagnosis",
-          "prompt": "480 mL/L divided by 3.2 g/L gives SVI:",
+          "prompt": "Why can mixed liquor that settles well in a 1 L graduated cylinder still allow a rising blanket in a secondary clarifier?",
           "choices": [
-            "1,536 mL/g",
-            "15 mL/g",
-            "150 mL/g",
-            "6.67 mL/g"
-          ],
-          "correctIndex": 2,
-          "explanation": "Using the stated units and calculation: 480/3.2=150."
-        },
-        {
-          "id": "as2",
-          "objective": "settling-diagnosis",
-          "prompt": "A daily average solids loading may conceal:",
-          "choices": [
-            "Short-duration loading peaks",
-            "The definition of a kilogram",
-            "The number of minutes in an hour",
-            "The stated clarifier surface area"
+            "The clarifier is continuously fed and must settle and withdraw solids at the same time",
+            "The cylinder test always uses a warmer sample than the clarifier contents",
+            "Settled volume in a cylinder is measured in millilitres instead of litres",
+            "Clarifier weirs remove dissolved solids that the cylinder test cannot show"
           ],
           "correctIndex": 0,
-          "explanation": "Averaging can hide brief high-load conditions."
+          "explanation": "The cylinder is a still batch test with no inflow, upflow or underflow withdrawal, while the clarifier fails when solids arrive faster than they can settle and be pumped out. Temperature can shift results slightly, but it is not the reason a good settling sludge can still overload a tank."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-c2",
+          "objective": "settling-diagnosis",
+          "prompt": "An operator divides SSV30 of 640 mL/L by an MLSS value of 3,200 mg/L without converting units. What is wrong with the reported SVI?",
+          "choices": [
+            "MLSS must be corrected to volatile solids before any SVI is calculated",
+            "MLSS must be expressed in grams per litre, so 3.2 g/L is the correct divisor",
+            "SSV30 must first be converted to litres per litre before the division",
+            "SVI requires a 60 minute settling period rather than a 30 minute period"
+          ],
+          "correctIndex": 1,
+          "explanation": "SVI is millilitres per gram, so MLSS in mg/L must be divided by 1,000 to give g/L, here 3.2 g/L for an SVI of 200 mL/g. Using volatile solids is a different index and is not part of the stated SVI convention."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-c3",
+          "objective": "settling-diagnosis",
+          "prompt": "A facility that has trended undiluted SVI for two years switches to a 1:1 diluted settling method with no other change. What should the operator expect in the trend data?",
+          "choices": [
+            "No change at all, since dilution cancels out in the SVI calculation",
+            "A gradual drift upward over several weeks as the biomass adapts",
+            "A step change to lower index values that does not represent a process improvement",
+            "A step change to higher index values caused by removal of wall effect"
+          ],
+          "correctIndex": 2,
+          "explanation": "Diluting relieves hindered settling and wall compression, so the diluted index reads lower on the same sludge, as in the worked example where 187 mL/g became 161 mL/g. Dilution does not cancel out, because both the settled volume and the solids concentration change but not in the same proportion."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-c4",
+          "objective": "settling-diagnosis",
+          "prompt": "In this module, which flow basis is used when a clarifier solids loading rate is calculated and reported?",
+          "choices": [
+            "Forward flow only, since return sludge never crosses the weirs",
+            "Return activated sludge flow only, since it carries the settled solids",
+            "Forward flow plus waste sludge flow measured at the wasting pump",
+            "Forward flow plus return activated sludge flow applied to the tank"
+          ],
+          "correctIndex": 3,
+          "explanation": "Solids loading here uses total feed, meaning forward flow plus RAS flow, and the convention must be stated in writing on every report. A forward-flow-only basis gives a smaller number for the same tank and is the most common source of confusion in shift logs."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-c5",
+          "objective": "settling-diagnosis",
+          "prompt": "At a fictional plant the blanket climbs during the afternoon peak and recovers overnight, SVI has been flat for two weeks, and measured RAS TSS agrees with the mass balance. Which category does this pattern best fit?",
+          "choices": [
+            "Hydraulic and loading driven behaviour linked to peak flow",
+            "Settleability driven behaviour caused by filament growth",
+            "Return flow driven behaviour caused by a failing RAS pump",
+            "Laboratory error in the daily mixed liquor solids result"
+          ],
+          "correctIndex": 0,
+          "explanation": "A blanket that peaks with flow and recovers overnight, with a flat SVI and an agreeing RAS balance, points to loading and hydraulics. A filament problem would show a rising SVI trend and an elevated blanket through the whole day, not overnight recovery."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-c6",
+          "objective": "settling-diagnosis",
+          "prompt": "Supplied case assumption at a fictional plant: SSV30 is 260 mL/L and MLSS from the same grab sample is 2,600 mg/L. What is the SVI?",
+          "choices": [
+            "About 1,000 mL/g",
+            "About 100 mL/g",
+            "About 10 mL/g",
+            "About 0.1 mL/g"
+          ],
+          "correctIndex": 1,
+          "explanation": "MLSS of 2,600 mg/L is 2.6 g/L, and 260 mL/L divided by 2.6 g/L gives 100 mL/g. The 0.1 mL/g answer comes from leaving MLSS in mg/L, which is the classic unit error in this calculation."
         }
       ]
     },
@@ -168,8 +272,8 @@
         "Calculate a theoretical alkalinity demand using a supplied factor.",
         "Rank competing explanations for an ammonia increase."
       ],
-      "lesson": "### Diagnose conditions, not just one result\nAn ammonia increase can reflect load, temperature, oxygen availability, biomass retention, inhibition or measurement issues. Review their timing and spatial coverage. A basin-end DO result does not establish the oxygen profile throughout the basin, and a daily ammonia composite may describe conditions before an operational change.\n\nFor this training calculation, use a supplied theoretical nitrification alkalinity consumption factor of 7.14 mg asCaCO3 per mg ammonia-N oxidized. Oxidizing 20 mg/L therefore corresponds to 142.8 mg/L alkalinity consumption before accounting for other gains/losses. This stoichiometric screening estimate is not a prediction of finalpH, nor a chemical dosing instruction. Denitrification, incoming alkalinity and other processes can alter the balance.\n\nNitrogen species must share a consistent basis. A result reported asN cannot be added directly to a concentration reported as the full chemical species without conversion. Here all ammonia and nitrate values are explicitly reported asN.\n\nUse the calculation to ask better questions: is alkalinity supply plausibly limiting, are oxygen measurements representative, did solids retention change, and is the sample period aligned? A strong diagnosis ranks explanations and identifies what evidence would distinguish them without declaring one proven prematurely.",
-      "evidence": "**A5 — process evidence**\nInfluent alkalinity 180 mg/L asCaCO3. Ammonia-N entering the evaluated stage 24 mg/L; outlet 4 mg/L. Supplied theoretical consumption factor 7.14. No alkalinity recovery or other demand is included in the simplified case.\n\nA6: Temperature fell 18 to 12°C over a week. Basin DO profile at three verified locations is 0.6,1.2,2.0 mg/L. Effluent ammonia-N rose 2 to 4 mg/L on daily composites. A1's full SRTestimate is current; no prior comparable SRT is supplied. No inhibition test is available.",
+      "lesson": "### What an ammonia result actually tells you\n\nAn effluent or final-cell ammonia number is a single point in space and time. It reports the residual left after whatever nitrifying population was present, at whatever temperature existed, with whatever oxygen and alkalinity were available, acting on whatever load arrived during the sampled period. It does not tell you which of those factors moved. Treat a rising ammonia result as a question, not a finding.\n\nStart by separating the three things that can change an ammonia residual:\n\n1. The nitrogen load arriving changed (mass, not just concentration).\n2. The capacity of the biomass to oxidize that load changed (aerobic solids inventory, aerobic solids retention time, temperature, pH and alkalinity, dissolved oxygen availability, inhibition, or loss of biomass to the clarifier or to washout).\n3. Nothing in the process changed and the number is wrong (sampling point, preservation, holding time, dilution, calibration, interference, or a composite that spans a period different from the one you are trying to explain).\n\nThe third category is not rare. US EPA's Process Control Manual for Aerobic Biological Wastewater Treatment Facilities, in its material on activated sludge observations, tests and interpretation, is blunt that interpretation depends on whether the test was representative. Before you change aeration, wasting or chemical addition, you should be able to say why you believe the number.\n\nSpatial coverage matters as much as timing. A dissolved oxygen reading at the end of an aeration basin tells you about the end of the basin. In a plug-flow train the front third can be oxygen limited while the discharge end reads comfortably, because oxygen uptake is highest where load enters. If your only oxygen evidence is one probe at one location, you have not measured the oxygen profile and you cannot rank oxygen limitation against the other explanations.\n\n### Keeping the basis consistent: as N, as CaCO3, as O2\n\nMost nitrogen diagnosis errors are unit errors, not process errors. Three separate bases are in play in this module and they are not interchangeable.\n\n- Nitrogen species are reported either as N or as the full chemical species. Ammonia reported as NH3 is roughly 1.22 times the same sample reported as NH3-N. Nitrate reported as NO3 is roughly 4.43 times the same sample reported as NO3-N. You cannot add or subtract species reported on different bases. In this module every ammonia and nitrate value is explicitly reported as N.\n- Alkalinity is normally reported as mg/L as CaCO3. The nitrification stoichiometric factor used here is a supplied teaching factor of 7.14 mg alkalinity as CaCO3 consumed per mg of ammonia-N oxidized. The paired denitrification recovery factor used here is a supplied teaching factor of 3.57 mg alkalinity as CaCO3 returned per mg of nitrate-N reduced. These are theoretical screening factors for this example only. They are not site values and they are not dosing instructions.\n- Oxygen demand for nitrification uses a supplied teaching factor of 4.57 mg O2 per mg of ammonia-N oxidized. Real oxygen requirement at your plant depends on synthesis yield, endogenous demand, carbonaceous load, alpha and beta factors, diffuser condition and basin geometry.\n\nThe stoichiometric result is a screening estimate of whether a mechanism is even plausible. It is not a prediction of final pH, and it is not a replacement for measured alkalinity and pH data.\n\n### Worked example 1: theoretical alkalinity demand and residual screening\n\nSupplied case assumptions for this teaching example only. Fictional plant, fictional readings.\n\n- Plant flow: 6,800 m3/d\n- Influent alkalinity: 220 mg/L as CaCO3\n- Ammonia-N oxidized across the train: 22 mg/L as N\n- Nitrate-N reduced in the anoxic zone: 8 mg/L as N\n- Supplied nitrification factor: 7.14 mg CaCO3 per mg NH3-N oxidized\n- Supplied denitrification recovery factor: 3.57 mg CaCO3 per mg NO3-N reduced\n\nStep 1. Alkalinity consumed by nitrification, on a concentration basis.\n\n22 mg NH3-N/L x 7.14 mg CaCO3 per mg NH3-N = 157.1 mg/L as CaCO3\n\nStep 2. Alkalinity returned by denitrification, on a concentration basis.\n\n8 mg NO3-N/L x 3.57 mg CaCO3 per mg NO3-N = 28.6 mg/L as CaCO3\n\nStep 3. Net theoretical alkalinity change.\n\n157.1 mg/L as CaCO3 consumed - 28.6 mg/L as CaCO3 returned = 128.5 mg/L as CaCO3 net consumption\n\nStep 4. Theoretical residual alkalinity before other gains and losses.\n\n220 mg/L as CaCO3 - 128.5 mg/L as CaCO3 = 91.5 mg/L as CaCO3\n\nStep 5. Express the net demand as a daily mass, which is the form you need if chemical supplementation is ever evaluated under your approval.\n\n128.5 g CaCO3/m3 x 6,800 m3/d = 873,800 g/d = 873.8 kg/d as CaCO3\n\nStated answer: the theoretical nitrification demand is 157.1 mg/L as CaCO3, net demand after the supplied denitrification credit is 128.5 mg/L as CaCO3, equal to 873.8 kg/d as CaCO3, leaving a theoretical residual of about 91.5 mg/L as CaCO3.\n\nWhat the number means. A residual near 90 mg/L as CaCO3 in this example does not by itself indicate alkalinity limitation, so alkalinity would drop down the ranked list of explanations. What would move it back up the list is measured evidence: a measured mixed liquor alkalinity far below the calculated residual, or a measured pH depression in the aeration basin that tracks the ammonia increase. The US EPA Nutrient Control Design Manual, in its treatment of biological nutrient removal, discusses alkalinity and pH as design and operating considerations, but it is United States technical guidance and does not set Ontario requirements.\n\nWhat makes this calculation invalid. If the ammonia-N oxidized figure was taken as the difference between an influent grab and an effluent composite, the 22 mg/L is not a real difference. If the anoxic zone nitrate reduction was assumed rather than measured, the 28.6 mg/L credit is fabricated and the net demand is understated. If influent alkalinity was reported as mg/L as HCO3 rather than as CaCO3, every line above is wrong by a factor of about 1.22.\n\n### Worked example 2: aerobic solids retention time, oxygen demand and the load check\n\nSupplied case assumptions for this teaching example only. Fictional plant, fictional readings.\n\n- Two aeration cells, each 1,250 m3, total aerobic volume 2,500 m3\n- Mixed liquor suspended solids in the aerobic cells this week: 2,900 mg/L\n- Mixed liquor suspended solids two weeks ago: 3,600 mg/L\n- Waste activated sludge: 95 m3/d at 7,200 mg/L\n- Final effluent: 6,800 m3/d at 12 mg/L TSS\n- Mixed liquor temperature fell from 18 degrees C to 12 degrees C over three weeks\n- Influent ammonia-N: 28 mg/L as N at 6,800 m3/d\n\nStep 1. Aerobic solids inventory this week.\n\n2,500 m3 x 2,900 g/m3 = 7,250,000 g = 7,250 kg\n\nStep 2. Solids leaving the system per day.\n\nWaste: 95 m3/d x 7.2 kg/m3 = 684 kg/d\nEffluent: 6,800 m3/d x 0.012 kg/m3 = 81.6 kg/d\nTotal: 684 kg/d + 81.6 kg/d = 765.6 kg/d\n\nStep 3. Aerobic solids retention time this week.\n\n7,250 kg / 765.6 kg/d = 9.47 d\n\nStep 4. Aerobic solids retention time two weeks ago, same wasting.\n\n2,500 m3 x 3,600 g/m3 = 9,000,000 g = 9,000 kg\n9,000 kg / 765.6 kg/d = 11.76 d\n\nStep 5. Change.\n\n11.76 d - 9.47 d = 2.29 d lost, a reduction of about 19 percent\n\nStep 6. Nitrogen mass load and theoretical nitrification oxygen demand.\n\n28 g N/m3 x 6,800 m3/d = 190,400 g N/d = 190.4 kg N/d\n190.4 kg N/d x 4.57 kg O2 per kg N = 870.1 kg O2/d for nitrification alone\n\nStated answer: aerobic solids retention time fell from 11.76 d to 9.47 d while mixed liquor temperature fell 6 degrees C, and nitrification alone accounts for about 870 kg O2/d at the stated load.\n\nJudgment. Two conditions moved in the same unfavourable direction at once. Colder mixed liquor slows nitrifier growth rate, so the aerobic solids retention time needed to hold a nitrifying population rises exactly when your calculated value is falling. That combination is a far stronger explanation for rising ammonia than a single low dissolved oxygen reading. Note also that the 870 kg O2/d is nitrification only and sits on top of carbonaceous demand, so an aeration system that was adequate in summer may be at its limit in winter.\n\n### Ranking competing explanations\n\nRank, do not declare. For each candidate explanation, write down the evidence that would confirm it and the evidence that would rule it out. Use this matrix as the working record.\n\n| Candidate explanation | Supporting evidence to look for | Evidence that rules it out | Distinguishing test |\n| --- | --- | --- | --- |\n| Load increase | Influent ammonia-N mass up on a flow-weighted basis, hauled waste or industrial discharge received | Influent mass steady, flow steady | Recalculate kg N/d, not mg/L, over 7 to 10 days |\n| Aerobic SRT loss | Falling MLSS, higher wasting, solids in effluent, clarifier upset | SRT stable within 10 percent | Aerobic solids inventory divided by total solids out |\n| Temperature | Mixed liquor temperature falling, seasonal timing | Temperature flat | Plot ammonia against mixed liquor temperature |\n| Oxygen limitation | Low DO at the inlet third, blower at maximum, fouled diffusers | DO profile adequate across full basin length | Multi-point DO profile at peak load, plus off-gas or blower amp trend |\n| Alkalinity or pH limitation | Measured aeration basin alkalinity low, pH depressed and tracking ammonia | Residual alkalinity comfortable, pH stable | Measured alkalinity plus the Example 1 screening calculation |\n| Inhibition or toxicity | Sudden onset, respiration rate drop, unusual upstream discharge | Gradual onset, normal respiration | Oxygen uptake rate comparison, upstream source check |\n| Analytical or sampling error | Result inconsistent with nitrate and pH, no corroboration | Duplicate and second method agree | Resample, re-run, check calibration and holding time |\n\nA useful ranking has one explanation clearly first, a second that is still live, and a named test that separates them. If three explanations are tied, you do not yet have enough evidence to act on anything other than the test.\n\n### Common errors\n\n1. Comparing concentrations instead of mass. Influent ammonia that rises from 24 mg/L to 28 mg/L during a dry spell with falling flow may be the same or less nitrogen load. Only kg N/d tells you whether load moved.\n2. Taking the sludge age from the plant spreadsheet without checking what volume it uses. A total-system solids retention time that includes clarifier and digester inventory can be several days longer than the aerobic value that governs nitrification. Using the wrong one hides a washout.\n3. Adding nitrogen values on different bases. Subtracting an effluent ammonia reported as N from an influent TKN reported as the full species, or comparing a nitrate reported as NO3 to one reported as NO3-N, produces differences that look like process failures.\n4. Treating the 7.14 factor as a dosing instruction. It is a theoretical screening ratio. It ignores carbon dioxide stripping, sidestream returns, chemical addition upstream, and any alkalinity generated or consumed elsewhere in the works.\n5. Using one end-of-basin DO reading to eliminate oxygen limitation, and doing it at 10:00 when the diurnal peak load arrives at 13:00.\n\n### What to verify before you act\n\nVerify the Environmental Compliance Approval for the sewage works and any operating manual or standard operating procedure written under it. Effluent requirements in Ontario are set in the approval for that specific works and are receiving-water based, so they can be more stringent than any general figure you read in a manual. Nothing in this module is a limit or a setpoint.\n\nBefore changing wasting, aeration or any chemical addition, confirm: the sampling plan and sample type for each value you are relying on, including location, composite period and preservation; the laboratory method and whether the result is reported as N or as the full species; the calibration and verification records for the dissolved oxygen and pH instruments used; whether any chemical addition is permitted by the approval and within the approved rate and point of addition; and the operating manual procedure for wasting rate changes. Where the Ontario licensing guide for wastewater operators addresses operator-in-charge responsibilities and operating records, the expectation is that the person making the adjustment is authorized to do so and that the record shows it.\n\n### Records and evidence to retain\n\nRetain the raw inputs, not only the conclusion. The defensible file for a nitrogen diagnosis contains: flow and ammonia-N results with sample type and time; the aerobic volume used and where that figure came from; MLSS and WAS concentrations with sample times; effluent TSS; mixed liquor temperature and pH; the dissolved oxygen profile with probe identification and calibration date; measured alkalinity; the arithmetic for each calculation with units shown; the ranking matrix with the rejected explanations and the reason each was rejected; and the operator-in-charge entry recording what was changed, when, by whom and under which procedure. A calculation without its inputs cannot be audited, and an adjustment without a recorded reason cannot be defended later.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are used for training only. No value here is an authorized limit or setpoint.\n\nThe fictional Cedar Hollow Water Pollution Control Plant, a conventional activated sludge works, records rising final effluent ammonia over twelve days. Operator-in-charge B. Nantel assembles the file.\n\nSupplied values:\n\n- Average daily flow: 5,400 m3/d\n- Influent ammonia-N: 26 mg/L as N (24 hour flow-weighted composite)\n- Influent alkalinity: 190 mg/L as CaCO3\n- Aerobic volume: 2,000 m3\n- MLSS in aerobic cells: 2,150 mg/L\n- WAS: 78 m3/d at 6,400 mg/L\n- Effluent TSS: 15 mg/L\n- Mixed liquor temperature: 11.5 degrees C, down from 17 degrees C four weeks ago\n- Measured aeration basin alkalinity: 84 mg/L as CaCO3\n- Nitrate-N reduced in the anoxic zone: not measured\n- Supplied factors for this example: 7.14 mg CaCO3 per mg NH3-N oxidized; 3.57 mg CaCO3 per mg NO3-N reduced\n\nRecord to reject: a shift log entry states \"sludge age 14 days, nitrification capacity adequate, no action.\" The spreadsheet behind that entry divides total plant solids inventory, including clarifier and aerobic digester, by WAS mass only, and it omits effluent solids. It is unsupported for a nitrification question. A second log entry claims \"anoxic zone returning 30 mg/L alkalinity\" with no nitrate data behind it, so that credit is also rejected.\n\nWorked solution:\n\nAerobic inventory: 2,000 m3 x 2,150 g/m3 = 4,300,000 g = 4,300 kg\nWAS solids: 78 m3/d x 6.4 kg/m3 = 499.2 kg/d\nEffluent solids: 5,400 m3/d x 0.015 kg/m3 = 81.0 kg/d\nTotal out: 499.2 kg/d + 81.0 kg/d = 580.2 kg/d\nAerobic SRT: 4,300 kg / 580.2 kg/d = 7.41 d, not 14 d\n\nNitrogen load: 26 g N/m3 x 5,400 m3/d = 140,400 g N/d = 140.4 kg N/d\nTheoretical alkalinity demand: 26 mg/L x 7.14 = 185.6 mg/L as CaCO3\nTheoretical residual: 190 mg/L - 185.6 mg/L = 4.4 mg/L as CaCO3, with no verified denitrification credit\n\nRanking: measured basin alkalinity of 84 mg/L as CaCO3 is well above the 4.4 mg/L screening residual, which means unmeasured recovery or return alkalinity exists, so the calculation is a flag rather than proof. Two explanations lead: aerobic SRT of 7.41 d against an 11.5 degrees C mixed liquor, and possible alkalinity or pH stress. Distinguishing tests: measure anoxic zone nitrate-N and basin pH on the same shift, and trend alkalinity daily for one week before any wasting change is made under the approved procedure.",
       "assignment": "Calculate ammonia-N oxidized, theoretical alkalinity consumption and simplified remaining alkalinity. Build a ranked four-hypothesis table for A6 with the next discriminating evidence for each. Explain why the arithmetic does not determinepH or prove a dosing requirement, and why the available SRT cannot establish a downward trend.",
       "rubric": [
         "Consumption 142.8 mg/L and simplified remainder 37.2 mg/L.",
@@ -210,30 +314,82 @@
       ],
       "checks": [
         {
-          "id": "an1",
+          "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-c1",
           "objective": "nitrogen-diagnosis",
-          "prompt": "Oxidizing 10 mg/L ammonia-N at the supplied 7.14 factor consumes theoretically:",
+          "prompt": "A fictional teaching example uses the supplied factor of 7.14 mg alkalinity as CaCO3 consumed per mg ammonia-N oxidized. If 15 mg/L as N is oxidized, what is the theoretical alkalinity consumed?",
           "choices": [
-            "7.14 mg/L",
-            "71.4 mg/L",
-            "714 mg/L",
-            "1.40 mg/L"
+            "107.1 mg/L as CaCO3",
+            "68.6 mg/L as CaCO3",
+            "214.2 mg/L as CaCO3",
+            "53.6 mg/L as CaCO3"
           ],
-          "correctIndex": 1,
-          "explanation": "10×7.14=71.4 mg/L asCaCO3."
+          "correctIndex": 0,
+          "explanation": "15 mg/L as N x 7.14 = 107.1 mg/L as CaCO3. The 68.6 answer comes from applying the supplied oxygen factor of 4.57 mg O2 per mg N, which answers a different question and is not an alkalinity factor."
         },
         {
-          "id": "an2",
+          "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-c2",
           "objective": "nitrogen-diagnosis",
-          "prompt": "A single current SRT estimate establishes:",
+          "prompt": "In this module, what does the supplied teaching factor of 3.57 mg CaCO3 per mg nitrate-N reduced represent?",
           "choices": [
-            "That SRT has fallen for a week",
-            "That temperature has no effect",
-            "That inhibition is proven",
-            "A current estimate on its stated boundary"
+            "Oxygen required per mg of nitrate-N produced in aeration",
+            "Alkalinity returned to the liquid when nitrate-N is reduced",
+            "Alkalinity required per mg of phosphorus removed chemically",
+            "Alkalinity consumed when ammonia-N is oxidized to nitrite"
+          ],
+          "correctIndex": 1,
+          "explanation": "Denitrification returns roughly half of the nitrification alkalinity demand, shown here as a supplied screening factor of 3.57 mg CaCO3 per mg NO3-N reduced. The nitrification consumption factor is 7.14, so choosing the consumption description reverses the direction of the alkalinity change."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-c3",
+          "objective": "nitrogen-diagnosis",
+          "prompt": "A rising ammonia-N result in the final cell of a fictional plant is best treated in what way before any process change is made?",
+          "choices": [
+            "As proof the nitrifier population has been lost",
+            "As proof that alkalinity supplementation is needed",
+            "As a question about load, capacity or the test itself",
+            "As proof that aeration must be increased at once"
+          ],
+          "correctIndex": 2,
+          "explanation": "An ammonia residual is one point in space and time and does not say which factor moved. Jumping to increased aeration assumes oxygen limitation that has not been demonstrated by a basin oxygen profile or by load and solids data."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-c4",
+          "objective": "nitrogen-diagnosis",
+          "prompt": "A plug-flow aeration train has one dissolved oxygen probe at the discharge end reading 2.4 mg/L. What is the main limitation of using only that reading to rank oxygen limitation?",
+          "choices": [
+            "Dissolved oxygen probes cannot be trusted below 3.0 mg/L",
+            "Oxygen readings are meaningless unless temperature is above 15 C",
+            "Probes at the discharge end always read low in plug flow",
+            "Oxygen uptake is highest where load enters, so the front may be limited"
           ],
           "correctIndex": 3,
-          "explanation": "A trend requires comparable observations over time."
+          "explanation": "Uptake peaks near the head of the train, so the front third can be oxygen limited while the discharge end reads comfortably. The claim that probes are untrustworthy below 3.0 mg/L confuses instrument care with spatial coverage of the measurement."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-c5",
+          "objective": "nitrogen-diagnosis",
+          "prompt": "A laboratory sheet from a fictional plant reports nitrate as NO3 rather than as NO3-N. Approximately what factor separates the two reported bases for the same sample?",
+          "choices": [
+            "About 4.43 times",
+            "About 7.14 times",
+            "About 1.22 times",
+            "About 3.57 times"
+          ],
+          "correctIndex": 0,
+          "explanation": "Nitrate reported as NO3 is roughly 4.43 times the same sample reported as NO3-N. The 1.22 factor belongs to ammonia reported as NH3 versus NH3-N, so using it here would understate the nitrate basis difference badly."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-c6",
+          "objective": "nitrogen-diagnosis",
+          "prompt": "Operators at a fictional plant suspect an increased nitrogen load is behind higher effluent ammonia-N. Which check best distinguishes that explanation from the others?",
+          "choices": [
+            "Compare influent ammonia-N concentration on two grab samples",
+            "Recalculate influent nitrogen as kg N/d over 7 to 10 days",
+            "Raise the aeration blower setpoint and watch ammonia respond",
+            "Compare clarifier sludge blanket depth against last month"
+          ],
+          "correctIndex": 1,
+          "explanation": "Load is a mass question, so flow-weighted kg N/d over a week or more separates a real load increase from dilution or concentration noise. Two grab concentrations can move purely with flow and prove nothing about mass arriving."
         }
       ]
     },
@@ -244,8 +400,8 @@
         "Design a controlled response with measurable outcomes.",
         "Revise a diagnosis as verified evidence arrives."
       ],
-      "lesson": "### Recovery takes more than one favourable observation\nA monitored response defines the issue, authorized action, expected mechanism, observation schedule and stopping/escalation criteria. Biological responses can lag behind equipment changes; a restored air flow or pump delivery does not instantly establish recovered treatment. Keep immediate equipment verification and longer-term process outcomes separate.\n\nAvoid several untracked changes at once. If oxygen distribution, wasting and return flows all change together, a later improvement may be difficult to attribute. Some urgent responses may still require coordinated changes under the operating procedure; document why, what changed, who authorized it and how consequences will be monitored.\n\nUse leading and outcome measures. Verified equipment delivery and spatial DO can show an immediate condition change. Matched ammonia results, solids inventory, settling and effluent solids provide process outcomes over suitable periods. No single metric should stand in for the whole treatment train.\n\nA revised hypothesis is a sign of evidence use, not failure. Record which new fact changed the ranking. Keep unresolved alternatives visible and carry them into the next shift with owners and review times. Completion of this course requires that the practical reasoning meets the rubric as well as a passing final assessment.",
-      "evidence": "**A7 — new evidence at handover**\nAuthorized maintenance restores an air-distribution fault. Verified DO profile becomes 1.5,1.7,2.0 mg/L. No new daily composite ammonia result is available. Blanket remains 1.7 m; SVI remains 160 mL/g on the same method. A supervisor proposes: “Oxygen fixed; reduce wasting immediately and declare recovery.” No wasting change is authorized.\n\nUseA1–A6 for the remaining process evidence.",
+      "lesson": "### What a monitored recovery actually is\n\nA monitored recovery is a bounded experiment run on a live plant. It has five parts, and if any one is missing you do not have a trial, you have a change.\n\n1. A written statement of the problem as currently understood, including the ranked hypotheses.\n2. One authorized action, with the mechanism you expect it to work through.\n3. A prediction stated in numbers and direction, with a time frame. \"MLSS should fall about 90 mg/L per day and reach roughly 2,300 mg/L in about 10 days\" is a prediction. \"Settling should improve\" is not.\n4. An observation schedule that separates leading indicators from outcome indicators.\n5. Stop criteria and escalation criteria decided before you start, not after the numbers get uncomfortable.\n\nThe reason for the discipline is that activated sludge responds on a biological clock, not an equipment clock. A blower that resumes full delivery within two minutes does not restore nitrification within two minutes. As the US EPA Process Control Manual for Aerobic Biological Wastewater Treatment Facilities sets out in its treatment of process observations and interpretation, sludge age driven changes generally express themselves over a period comparable to the solids retention time itself. If your SRT is around 12 days, expect to wait a substantial fraction of that before the inventory and the settling behaviour tell you anything trustworthy.\n\nAll numbers in this lesson are supplied case assumptions for teaching arithmetic. They are not targets, limits or authorized settings for any plant. Effluent requirements in Ontario come from the facility Environmental Compliance Approval and are receiving water based, so they can be more stringent than any general figure you have seen elsewhere.\n\n### Designing the trial: one variable, stated mechanism, bounded duration\n\nChange one thing at a time whenever the situation allows it. If wasting rate, RAS rate and aeration setpoint all move on the same shift, a later improvement cannot be attributed, and neither can a later deterioration. Attribution is not an academic nicety. It determines whether you repeat the action next time a similar event occurs.\n\nThere are legitimate exceptions. An urgent response to protect the works or the receiver may require coordinated changes under the operating procedure. When that happens, record what changed, the time of each change, who authorized it, and how the consequences will be watched. Under the Ontario Licensing guide for wastewater operators, the overall responsible operator and the operator in charge carry defined duties for operating records and for the direction of adjustments, so the record is part of the job, not paperwork added to it.\n\nBound the duration. A trial without an end date drifts into being the new normal setting, and nobody ever formally decides it worked.\n\n### Worked example 1: sizing a wasting change and projecting the solids trajectory\n\nFictional plant, supplied case assumptions. Conventional activated sludge, single train.\n\nGiven:\n- Aeration tank volume = 4,000 m3\n- MLSS = 3,200 mg/L = 3.20 kg/m3\n- MLVSS fraction = 0.75\n- Plant flow = 9,000 m3/d\n- Influent BOD = 180 mg/L = 0.180 kg/m3\n- BOD removal across the process = 95 percent\n- Observed yield assumption = 0.60 kg TSS produced per kg BOD removed\n- WAS flow = 120 m3/d at WAS TSS = 7,000 mg/L = 7.00 kg/m3\n- Effluent TSS = 12 mg/L = 0.012 kg/m3\n- Clarifier blanket inventory excluded from the SRT calculation by facility procedure\n\nStep 1. Aeration solids inventory.\n4,000 m3 x 3.20 kg/m3 = 12,800 kg TSS\n\nStep 2. Solids leaving in waste sludge.\n120 m3/d x 7.00 kg/m3 = 840 kg/d\n\nStep 3. Solids leaving in effluent.\n9,000 m3/d x 0.012 kg/m3 = 108 kg/d\n\nStep 4. Total solids removal rate.\n840 kg/d + 108 kg/d = 948 kg/d\n\nStep 5. Current SRT.\n12,800 kg / 948 kg/d = 13.5 d\n\nStep 6. Independent check using solids production.\nBOD load = 9,000 m3/d x 0.180 kg/m3 = 1,620 kg/d\nBOD removed = 1,620 kg/d x 0.95 = 1,539 kg/d\nSolids produced = 1,539 kg/d x 0.60 kg TSS/kg BOD = 923 kg/d\nProduction 923 kg/d against removal 948 kg/d is within about 3 percent, so the inventory is close to steady and the two records corroborate each other.\n\nStep 7. Target condition. The ranked hypothesis in this case is low food to microorganism filamentous bulking, and the chosen action is a controlled reduction of SRT to about 10 d.\nTarget inventory = 10 d x 923 kg/d = 9,230 kg\nTarget MLSS = 9,230 kg / 4,000 m3 = 2.31 kg/m3 = 2,310 mg/L\n\nStep 8. Required wasting.\nRequired total removal = 12,800 kg / 10 d = 1,280 kg/d\nRequired WAS mass = 1,280 kg/d - 108 kg/d = 1,172 kg/d\nRequired WAS flow = 1,172 kg/d / 7.00 kg/m3 = 167.4 m3/d\n\nStep 9. Predicted rate of change, which is the number you will actually verify.\nNet change = production - removal = 923 kg/d - 1,280 kg/d = -357 kg/d\nMLSS change = -357 kg/d / 4,000 m3 = -0.089 kg/m3 per day = -89 mg/L per day\nTime to target = (3,200 mg/L - 2,310 mg/L) / 89 mg/L per day = 10.0 d\n\nStep 10. F/M check at both ends.\nCurrent MLVSS = 12,800 kg x 0.75 = 9,600 kg; F/M = 1,620 kg BOD/d / 9,600 kg = 0.169 kg BOD per kg MLVSS per day\nTarget MLVSS = 9,230 kg x 0.75 = 6,923 kg; F/M = 1,620 kg BOD/d / 6,923 kg = 0.234 kg BOD per kg MLVSS per day\n\n**Answer: raise WAS from 120 m3/d to about 167 m3/d, expect MLSS to fall roughly 89 mg/L per day, reach about 2,310 mg/L in about 10 days, and F/M to rise from about 0.17 to about 0.23 kg BOD per kg MLVSS per day.** Before committing, confirm that nitrification can be held at the shorter SRT at the current mixed liquor temperature, and confirm that thickening and digestion can accept an extra 332 kg/d of solids.\n\n### Worked example 2: reconciling the mass balance to prove the change happened\n\nFour days into the trial, the WAS pump log shows 167 m3/d every day and the sludge record shows WAS TSS of 7,000 mg/L from one grab. MLSS has gone from 3,200 mg/L to 3,240 mg/L, which is the wrong direction.\n\nStep 1. Measured net inventory change.\n(3.240 kg/m3 - 3.200 kg/m3) x 4,000 m3 = 160 kg over 4 d = +40 kg/d\n\nStep 2. Removal rate implied by the measured inventory and the production estimate.\nRemoval = production - net change = 923 kg/d - 40 kg/d = 883 kg/d\n\nStep 3. WAS mass implied.\n883 kg/d - 108 kg/d effluent = 775 kg/d in waste sludge\n\nStep 4. WAS concentration implied by the balance.\n775 kg/d / 167 m3/d = 4.64 kg/m3 = 4,640 mg/L\n\nStep 5. Actual SRT achieved.\n12,800 kg / 883 kg/d = 14.5 d\n\n**Answer: the trial did not reduce SRT, it raised it from 13.5 d to about 14.5 d, because the waste sludge is running near 4,640 mg/L, not the 7,000 mg/L carried in the log.** The single grab is unsupported by the balance and must be rejected until repeat composites confirm a value. The most common physical explanations are a lower clarifier blanket, a changed RAS rate diluting the draw, or a solids sample taken at a different point in the pump cycle.\n\nStep 6. Corrected wasting at the verified concentration.\n1,172 kg/d / 4.64 kg/m3 = 252.6 m3/d\n\nThat is a 51 percent increase over the flow you thought you were already running. Check pump curve and run time capacity, and check whether the downstream solids train can take it, before you authorize it.\n\n### The trial register and the escalation decision\n\n| Item | Measure | Frequency | Expected direction | Confirms what | Stop or escalate trigger |\n|---|---|---|---|---|---|\n| Leading | WAS flow totalized, m3/d | Each shift | Matches setpoint within 10 percent | Equipment delivered the change | Two shifts off setpoint |\n| Leading | WAS TSS, composite | Daily | Stable, reconciles with balance | The mass, not just the volume | Balance error over 20 percent |\n| Leading | Spatial DO, mg/L at 3 points | Each shift | Within procedure range | Aeration distribution | Persistent low zone |\n| Outcome | MLSS, mg/L | Daily, same time and point | Falls about 90 mg/L per day | SRT is actually moving | Flat for 3 consecutive days |\n| Outcome | SSV30 and SVI, mL/g | Daily | SVI trends down after day 5 | Settling response | SVI rising after day 7 |\n| Outcome | Filament abundance, microscopy | Twice weekly | Abundance score falls | Mechanism was correct | No change by day 10 |\n| Outcome | Effluent TSS, mg/L | Per sampling plan | No sustained rise | Clarifier not being overloaded | Rise toward ECA limit |\n| Outcome | Effluent ammonia, matched samples | Per sampling plan | No sustained rise | Nitrification retained | Two consecutive rises |\n| Outcome | Blanket depth, m | Each shift | Falls or holds | Inventory location | Rising while MLSS falls |\n\nThe left column matters. Leading indicators tell you the action occurred. Outcome indicators tell you the action worked. Operators routinely confuse the two and declare recovery on the basis of a leading indicator, which is really only a statement that the pump ran.\n\n### Reassessment: changing your mind on evidence\n\nRevising a diagnosis is not a failure of the first diagnosis. It is the point of collecting data. What makes a revision defensible is naming the specific fact that changed the ranking. In Example 2 the fact was a mass balance that could not be reconciled with the logged WAS concentration. That single fact demoted the hypothesis \"we reduced SRT and the sludge is not responding\" and promoted \"we never reduced SRT.\"\n\nWhen you revise, carry the unresolved alternatives forward in writing with an owner and a review time. If low dissolved oxygen filaments and septic influent sulphide were both live hypotheses at the start, and the SRT trial is now suspect, both remain live. Closing them silently is how a plant relearns the same lesson three winters in a row.\n\nIf the trial touches nutrient performance, be aware that phosphorus and nitrogen responses have their own time constants and their own confounders. The US EPA Nutrient Control Design Manual, in its treatment of biological nutrient removal and chemical phosphorus removal, is useful background on why an SRT change can move phosphorus release and uptake in ways the operator did not intend. It is United States design guidance, not an Ontario approval document, so use it to understand mechanism and then work to your own ECA and your own procedures.\n\n### Common errors\n\n**Trusting a single WAS grab sample.** WAS concentration varies through the pump cycle and with blanket depth. One grab multiplied by a daily flow can be off by 30 to 50 percent, which corrupts every SRT number that depends on it. Always reconcile against the inventory balance, as in Example 2.\n\n**Declaring recovery on a leading indicator.** \"Air flow restored and DO is back up\" is equipment verification. Nitrification recovery after an SRT washout or a toxic event may take days, and settling recovery after severe filamentous growth typically takes on the order of the sludge age. Publishing a recovery based on the DO trace commits the plant to a conclusion the biology has not reached.\n\n**Stacking changes during the trial.** Increasing wasting on Monday, raising RAS on Tuesday, and adding a chemical on Wednesday guarantees that the Friday result cannot be attributed. If a second change becomes necessary, say so, restart the clock, and note that attribution is now limited.\n\n**Moving the MLSS sample point or time.** Comparing a post aeration grab today against a channel grab yesterday produces a trend that exists only in the record sheet. Fix point, time and method for the duration of the trial.\n\n**Ignoring the downstream solids train.** A wasting increase that the thickener or digester cannot accept comes straight back as recycle load, and the recycle load can undo the trial.\n\n### What to verify before you act\n\n- The facility Environmental Compliance Approval, for the effluent requirements, monitoring and reporting obligations that constrain how far the trial may be allowed to move effluent quality.\n- The plant operating procedure or standard operating practice for wasting changes, including any maximum permitted rate of change per day and any required authorization level.\n- The sampling and analysis plan, for sample points, sample type, hold times and the laboratory used, so that the trial data are comparable to the historic record.\n- Instrument calibration records for DO probes, MLSS analysers and flow meters used as trial evidence. An uncalibrated instrument produces an unsupported record.\n- Solids handling capacity records, including thickener and digester loading and available haulage or storage.\n- The operating record and log book requirements described in the Ontario Licensing guide for wastewater operators, including operator in charge responsibilities for recording adjustments and the reasons for them.\n- If effluent quality is at risk, the applicable federal Wastewater Systems Effluent Regulations obligations. Acute lethality there means more than 50 percent mortality of rainbow trout in undiluted effluent over 96 hours, determined by an accredited laboratory test method, so a deteriorating trial is not only an internal process matter.\n\nRetain, for every trial: the written hypothesis and prediction, the authorization, the daily register above, raw laboratory reports, calibration records, and a closing note stating what the evidence supported, what it rejected, and what remains open.",
+      "evidence": "### Fictional worked scenario\n\n**All facility names, operators, records and readings below are fictional and are used for training only. None of the figures are authorized values for any real plant.**\n\nThe Mapleridge Creek Water Resource Recovery Facility, a fictional conventional activated sludge plant, has run four days of a monitored recovery trial after SVI climbed and effluent TSS drifted upward. Supplied case assumptions:\n\n- Aeration volume 3,000 m3\n- Day 0 MLSS 3,600 mg/L, Day 4 MLSS 3,660 mg/L, both from the same post aeration point at 09:00\n- Plant flow 6,500 m3/d, influent BOD 200 mg/L, 95 percent BOD removal, yield assumption 0.60 kg TSS per kg BOD removed\n- Effluent TSS 15 mg/L\n- WAS pump log: 150 m3/d each day of the trial\n- Sludge record: WAS TSS 6,800 mg/L, from one grab taken on Day 1 at pump start\n- Shift note, Day 3: \"SVI improved, recovery confirmed, return to normal wasting\"\n\n**Records to reject.** The Day 3 shift note is an unsupported conclusion. SVI moved within one day, the MLSS trend contradicts it, and no microscopy was repeated. The single Day 1 WAS grab is also unsupported, as shown below.\n\n**Solution.**\n\nInventory Day 0 = 3,000 m3 x 3.60 kg/m3 = 10,800 kg\nInventory Day 4 = 3,000 m3 x 3.66 kg/m3 = 10,980 kg\nNet change = 180 kg over 4 d = +45 kg/d\n\nBOD load = 6,500 m3/d x 0.200 kg/m3 = 1,300 kg/d\nBOD removed = 1,300 kg/d x 0.95 = 1,235 kg/d\nSolids produced = 1,235 kg/d x 0.60 = 741 kg/d\n\nRemoval implied = 741 kg/d - 45 kg/d = 696 kg/d\nEffluent solids = 6,500 m3/d x 0.015 kg/m3 = 98 kg/d\nWAS mass implied = 696 kg/d - 98 kg/d = 598 kg/d\nWAS TSS implied = 598 kg/d / 150 m3/d = 3.99 kg/m3 = 3,990 mg/L\n\nThe logged 6,800 mg/L would give 150 m3/d x 6.80 kg/m3 = 1,020 kg/d, a 70 percent overstatement. Actual SRT = 10,800 kg / 696 kg/d = 15.5 d, not the 10.6 d the log implies.\n\n**Revised finding.** The trial never reduced SRT. Repeat composite WAS sampling over a full pump cycle, verify blanket depth and RAS rate, then recalculate the required WAS flow at the verified concentration before any further change. Reopen the filamentous hypothesis rather than close it.",
       "assignment": "Prepare a 600–850-word recovery plan with calculation appendix, updated hypothesis ranking, authorized-action register, immediate and delayed outcome measures and next-shift handover. Respond to the supervisor's proposal. Explain what evidence would justify revising wasting and what would demonstrate sustained recovery. Present, revise, assess and evaluate.",
       "rubric": [
         "Uses verified DO improvement without claiming ammonia/settling recovery.",
@@ -287,138 +443,346 @@
       ],
       "checks": [
         {
-          "id": "ar1",
+          "id": "ceu-activated-sludge-troubleshooting-recovery-trial-c1",
           "objective": "recovery-trial",
-          "prompt": "After DO improves but ammonia results are pending, what is established?",
+          "prompt": "A monitored recovery trial on a live activated sludge plant is distinguished from an ordinary setpoint change mainly by which feature?",
           "choices": [
-            "Nitrification is fully recovered",
-            "Every settling problem is solved",
-            "The measured oxygen profile improved",
-            "Wasting must immediately decrease"
-          ],
-          "correctIndex": 2,
-          "explanation": "Only the verified change is established."
-        },
-        {
-          "id": "ar2",
-          "objective": "recovery-trial",
-          "prompt": "Which design best supports learning from an authorized response?",
-          "choices": [
-            "Document changes and track predicted outcomes",
-            "Change every control without a record",
-            "Use only the most favourable later result",
-            "Declare success when maintenance is called"
+            "Stop and escalation criteria agreed before the action starts",
+            "A verbal note to the incoming shift about the new setpoint value",
+            "Increased sampling started only once results begin to look poor",
+            "Written agreement from the laboratory on the new setpoint value"
           ],
           "correctIndex": 0,
-          "explanation": "Traceable changes and planned outcomes support interpretation."
+          "explanation": "A trial is bounded: problem statement, one authorized action with a mechanism, a numeric prediction, an observation schedule, and stop or escalation criteria fixed in advance. A shift verbal note records the change but sets no limits, so the adjustment simply drifts into becoming the new normal."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-recovery-trial-c2",
+          "objective": "recovery-trial",
+          "prompt": "Which statement qualifies as a usable trial prediction for a wasting change?",
+          "choices": [
+            "SVI should return toward a more normal range fairly soon after the change",
+            "MLSS falls about 90 mg/L per day to roughly 2,300 mg/L within 10 days",
+            "Settling will improve noticeably once the new wasting rate takes hold here",
+            "Sludge quality is expected to recover within a reasonable period of time"
+          ],
+          "correctIndex": 1,
+          "explanation": "A prediction needs a number, a direction and a time frame so it can be falsified by the record. The settling statement gives direction only, so any result can be argued as consistent with it and nothing is actually tested."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-recovery-trial-c3",
+          "objective": "recovery-trial",
+          "prompt": "In a trial register, which measure is a leading indicator confirming the action was actually delivered rather than an outcome indicator?",
+          "choices": [
+            "Mixed liquor suspended solids sampled daily at the same location",
+            "Filament abundance scored by microscopy twice weekly during trial",
+            "Totalized WAS flow each shift compared against the trial setpoint",
+            "Sludge volume index trended daily through the week of the trial"
+          ],
+          "correctIndex": 2,
+          "explanation": "Leading indicators show the equipment did what was asked, such as WAS flow matching setpoint. SVI, MLSS and filament scores are outcome indicators of biological response. Declaring recovery from a leading indicator only states that the pump ran."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-recovery-trial-c4",
+          "objective": "recovery-trial",
+          "prompt": "Fictional plant, supplied case values. Aeration volume 3,000 m3, MLSS 2,800 mg/L, WAS 100 m3/d at 6,000 mg/L, plant flow 7,000 m3/d, effluent TSS 10 mg/L, blanket excluded by procedure. What is the SRT?",
+          "choices": [
+            "About 14.0 days",
+            "About 10.5 days",
+            "About 15.6 days",
+            "About 12.5 days"
+          ],
+          "correctIndex": 3,
+          "explanation": "Inventory is 3,000 x 2.8 = 8,400 kg. Removal is 100 x 6.0 = 600 kg/d plus 7,000 x 0.010 = 70 kg/d, giving 670 kg/d, so 8,400 / 670 = 12.5 d. The 14.0 d answer comes from omitting effluent solids, a common error that overstates SRT."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-recovery-trial-c5",
+          "objective": "recovery-trial",
+          "prompt": "Fictional case values. Aeration volume 5,000 m3. Estimated solids production is 1,050 kg/d and planned total solids removal is 1,350 kg/d. What daily MLSS change should the trial predict?",
+          "choices": [
+            "A fall of about 60 mg/L per day",
+            "A fall of about 300 mg/L per day",
+            "A fall of about 270 mg/L per day",
+            "A fall of about 30 mg/L per day"
+          ],
+          "correctIndex": 0,
+          "explanation": "Net change is 1,050 minus 1,350 = -300 kg/d, divided by 5,000 m3 gives -0.06 kg/m3/d, which is -60 mg/L per day. The 300 mg/L answer reports the mass imbalance without dividing by tank volume, so the units are wrong."
+        },
+        {
+          "id": "ceu-activated-sludge-troubleshooting-recovery-trial-c6",
+          "objective": "recovery-trial",
+          "prompt": "An urgent coordinated response changes wasting, RAS and aeration setpoints on the same shift under the operating procedure. What must the operating record capture?",
+          "choices": [
+            "The equipment supplier service report attached to the daily log sheet",
+            "Each change, its time, who authorized it, and the follow-up watch plan",
+            "A month end summary of the affected setpoints prepared by the overall responsible operator",
+            "A single shift note confirming that the operating procedure was followed"
+          ],
+          "correctIndex": 1,
+          "explanation": "When one variable at a time is not possible, attribution is preserved only by recording what changed, when, on whose authority, and how consequences will be watched. A month end summary is written far too late to support attribution or a later decision to repeat the action."
         }
       ]
     }
   ],
   "finalAssessment": [
     {
-      "id": "activated-sludge-troubleshooting-f1",
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-f1",
       "objective": "inventory-boundary",
-      "prompt": "Inventory 10,000 kg and total loss 800 kg/day give SRT:",
+      "prompt": "Supplied case values at a fictional plant: one secondary clarifier in service, 20.0 m diameter, blanket layered as an upper 0.60 m at 5,000 mg/L over a lower 0.30 m at 8,000 mg/L. What is the clarifier solids inventory on a TSS basis?",
       "choices": [
-        "12.5 days",
-        "8 days",
-        "0.08 day",
-        "18 days"
+        "About 1,697 kg held in the sludge blanket",
+        "About 1,838 kg held in the sludge blanket",
+        "About 2,262 kg held in the sludge blanket",
+        "About 1,414 kg held in the sludge blanket"
       ],
       "correctIndex": 0,
-      "explanation": "10,000/800=12.5 days."
+      "explanation": "Area is 0.7854 x 400 = 314.2 m2, so the layers give 188.5 m3 x 5,000 g/m3 = 943 kg plus 94.25 m3 x 8,000 g/m3 = 754 kg, totalling 1,697 kg. The 1,838 kg answer comes from averaging the two layer concentrations, which overweights the thinner, denser bottom layer."
     },
     {
-      "id": "activated-sludge-troubleshooting-f2",
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-f2",
       "objective": "inventory-boundary",
-      "prompt": "RAS within the chosen system boundary is:",
+      "prompt": "Supplied case values, fictional plant, all on a TSS basis: two aeration basins each 2,000 m3 at MLSS 2,800 mg/L; clarifier blanket inventory 1,600 kg; WAS 120 m3/d at 6,500 mg/L; final effluent 9,000 m3/d at 15 mg/L. What is SRT on the full secondary boundary?",
       "choices": [
-        "An additional external solids loss",
-        "Always the same as waste sludge",
-        "A substitute for effluent TSS",
-        "Internal solids transfer"
-      ],
-      "correctIndex": 3,
-      "explanation": "Internal recycling is not a system loss."
-    },
-    {
-      "id": "activated-sludge-troubleshooting-f3",
-      "objective": "settling-diagnosis",
-      "prompt": "Settled volume 420 mL/L and MLSS 2.8 g/L give SVI:",
-      "choices": [
-        "117.6 mL/g",
-        "150 mL/g",
-        "15 mL/g",
-        "1,176 mL/g"
+        "About 12.2 days of solids retention time",
+        "About 14.0 days of solids retention time",
+        "About 14.4 days of solids retention time",
+        "About 16.4 days of solids retention time"
       ],
       "correctIndex": 1,
-      "explanation": "Using the stated units and calculation: 420/2.8=150."
+      "explanation": "Inventory is 11,200 kg plus 1,600 kg = 12,800 kg, and losses are 780 kg/d WAS plus 135 kg/d effluent = 915 kg/d, giving 14.0 d. The 16.4 d answer keeps the blanket in the numerator but drops effluent solids from the denominator."
     },
     {
-      "id": "activated-sludge-troubleshooting-f4",
-      "objective": "settling-diagnosis",
-      "prompt": "A specific filamentous cause requires more than:",
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-f3",
+      "objective": "inventory-boundary",
+      "prompt": "Supplied case values, fictional plant: secondary inventory 13,000 kg TSS, MLVSS divided by MLSS is 0.70, and total solids leaving the boundary are 800 kg/d on a TSS basis. The operator computes inventory on a VSS basis but leaves the loss terms on TSS. Which comparison is correct?",
       "choices": [
-        "A qualified investigation",
-        "Consistent method records",
-        "A process evidence review",
-        "One elevated SVI value"
-      ],
-      "correctIndex": 3,
-      "explanation": "SVI alone does not identify an organism or mechanism."
-    },
-    {
-      "id": "activated-sludge-troubleshooting-f5",
-      "objective": "nitrogen-diagnosis",
-      "prompt": "At 7.14 mg/mg,15 mg/L ammonia-N oxidation has theoretical demand:",
-      "choices": [
-        "7.14 mg/L",
-        "10.71 mg/L",
-        "107.1 mg/L",
-        "2.10 mg/L"
+        "Mixed basis gives 16.3 d; the like-for-like VSS value is 11.4 d",
+        "Mixed basis gives 11.4 d; the like-for-like TSS value is 11.4 d",
+        "Mixed basis gives 11.4 d; the like-for-like TSS value is 16.3 d",
+        "Mixed basis gives 23.2 d; the like-for-like TSS value is 16.3 d"
       ],
       "correctIndex": 2,
-      "explanation": "15×7.14=107.1 mg/L asCaCO3."
+      "explanation": "VSS inventory is 13,000 x 0.70 = 9,100 kg, so 9,100 divided by 800 is 11.4 d, against 13,000 divided by 800 equals 16.3 d like-for-like. The 23.2 d option comes from dividing by 0.70 instead of multiplying, which inflates the inventory rather than reducing it."
     },
     {
-      "id": "activated-sludge-troubleshooting-f6",
-      "objective": "nitrogen-diagnosis",
-      "prompt": "A calculated remaining alkalinity is not directly:",
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-f4",
+      "objective": "inventory-boundary",
+      "prompt": "At a fictional plant, RAS flow is increased sharply for three days. MLSS rises and the clarifier blanket thins. Daily WAS mass and effluent solids load are unchanged. What happens to SRT on an aeration-only boundary compared with the full secondary boundary?",
       "choices": [
-        "A measured finalpH",
-        "A result dependent on assumptions",
-        "A value with concentration units",
-        "A screening balance result"
+        "Aeration-only SRT falls while full-boundary SRT rises along with MLSS",
+        "Both rise, because the higher return rate adds inventory to the system",
+        "Both fall, because faster return pumping shortens the settling period",
+        "Aeration-only SRT rises while full-boundary SRT is essentially unchanged"
+      ],
+      "correctIndex": 3,
+      "explanation": "Higher RAS flow moves mass from the blanket into the mixed liquor, so aeration-only inventory and its SRT climb while total secondary inventory and losses are unchanged. RAS adds no solids to the system, so it cannot raise the full-boundary value."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-f5",
+      "objective": "inventory-boundary",
+      "prompt": "A fictional plant decides to switch its logged SRT from an aeration-only boundary to a full secondary boundary. What is the best way to handle the change in the operating record?",
+      "choices": [
+        "Mark the change date and run both bases in parallel long enough to see the offset",
+        "Plot both bases on one unlabelled trend line so the shift is easy to spot",
+        "Adjust the new results downward until they match the historical trend level",
+        "Recalculate the past two years of data so the trend stays on one basis"
       ],
       "correctIndex": 0,
-      "explanation": "Alkalinity andpH are related but not interchangeable."
+      "explanation": "Dating the change and running both bases side by side lets operators judge the offset without mistaking it for a process change. Blending the two bases on one unlabelled line, or shaving the new numbers to match history, destroys the meaning of the trend."
     },
     {
-      "id": "activated-sludge-troubleshooting-f7",
-      "objective": "recovery-trial",
-      "prompt": "Verified air delivery restoration should be followed by:",
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-f1",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant: forward flow 12,000 m3/d, RAS flow 7,200 m3/d, MLSS 3,200 mg/L, one circular clarifier 20.0 m diameter in service. Using the total feed convention, what is the solids loading rate?",
       "choices": [
-        "Immediate blanket closure of all issues",
-        "Deletion of the original fault record",
-        "Matched process-outcome monitoring",
-        "An unrecorded change to every control"
-      ],
-      "correctIndex": 2,
-      "explanation": "Equipment restoration and process recovery are separate verification steps."
-    },
-    {
-      "id": "activated-sludge-troubleshooting-f8",
-      "objective": "recovery-trial",
-      "prompt": "A wasting decision should use:",
-      "choices": [
-        "The highest DO result obtained after maintenance",
-        "Consistent solids evidence and authorized review",
-        "A desired SRT without a consistent inventory boundary",
-        "The current waste-pump command without a flow check"
+        "About 8.2 kg/(m2·d)",
+        "About 196 kg/(m2·d)",
+        "About 122 kg/(m2·d)",
+        "About 98 kg/(m2·d)"
       ],
       "correctIndex": 1,
-      "explanation": "The decision needs a supported process basis and proper authority."
+      "explanation": "Area is 0.7854 x 400 = 314.2 m2, total feed is 19,200 m3/d, solids are 19,200 x 3.2 = 61,440 kg/d, and 61,440 divided by 314.2 gives about 196 kg/(m2·d). The 122 value uses forward flow only, which is a different convention and understates the applied solids."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-f2",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant at steady state: MLSS 3,000 mg/L, forward flow 8,000 m3/d, RAS flow 4,000 m3/d. What RAS TSS does the mass balance predict?",
+      "choices": [
+        "About 4,500 mg/L",
+        "About 12,000 mg/L",
+        "About 9,000 mg/L",
+        "About 6,000 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "Expected RAS TSS equals MLSS times (Q + Q_RAS) divided by Q_RAS, so 3.0 kg/m3 x 12,000/4,000 = 9.0 kg/m3 or 9,000 mg/L. The 6,000 answer comes from doubling MLSS using a Q to Q_RAS ratio of 2 instead of the correct total feed ratio of 3."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-f3",
+      "objective": "settling-diagnosis",
+      "prompt": "A fictional plant has two clarifiers of 16.0 m diameter. One is taken out for weir repair with flow, MLSS and RAS rate unchanged. The blanket climbs that afternoon and SVI has been flat for 10 days. What is the most defensible first conclusion?",
+      "choices": [
+        "Filamentous bulking developed rapidly and now controls the blanket depth",
+        "The return sludge pump lost capacity at the same time as the outage",
+        "Mixed liquor dissolved oxygen fell and caused a sudden settling failure",
+        "Solids loading on the remaining tank doubled when the area in service was halved"
+      ],
+      "correctIndex": 3,
+      "explanation": "Halving the surface area with identical solids mass doubles the loading rate immediately, which explains a same day blanket rise while SVI stays flat. A filament problem would show a rising SVI trend over days to weeks, not an instant step tied to a unit outage."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-f4",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant: forward flow 10,000 m3/d, MLSS 3,500 mg/L, laboratory RAS TSS 7,000 mg/L, logged RAS flow 4,000 m3/d. What RAS flow does the mass balance imply, and what should the operator do?",
+      "choices": [
+        "About 10,000 m3/d, so verify the meter, sample point and pump status",
+        "About 4,000 m3/d, so the logged data pair is fully consistent",
+        "About 20,000 m3/d, so increase wasting to lower the blanket depth",
+        "About 5,000 m3/d, so reduce the return rate to thicken the underflow"
+      ],
+      "correctIndex": 0,
+      "explanation": "Implied Q_RAS is (10,000 x 3.5) divided by (7.0 minus 3.5), which is 35,000 divided by 3.5 or 10,000 m3/d, far above the logged 4,000 m3/d, so the records are inconsistent and must be verified before any process change. Accepting the logged value as consistent ignores that the two records cannot both be correct at steady state."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-f5",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant: forward flow 14,400 m3/d, RAS flow 8,000 m3/d, clarifier area in service 600 m2. What is the surface overflow rate on the stated forward flow basis?",
+      "choices": [
+        "About 48.0 m3/(m2·d)",
+        "About 24.0 m3/(m2·d)",
+        "About 37.3 m3/(m2·d)",
+        "About 13.3 m3/(m2·d)"
+      ],
+      "correctIndex": 1,
+      "explanation": "Surface overflow rate uses forward flow only, so 14,400 divided by 600 gives 24.0 m3/(m2·d). The 37.3 value adds RAS flow, which belongs in the solids loading calculation and not in the hydraulic overflow measure."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-f1",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant, supplied teaching values. Flow 5,200 m3/d, ammonia-N oxidized 20 mg/L as N, nitrate-N reduced 6 mg/L as N. Using 7.14 and 3.57 mg CaCO3 per mg N, what is the net theoretical alkalinity demand in kg/d as CaCO3?",
+      "choices": [
+        "148.5 kg/d as CaCO3",
+        "742.6 kg/d as CaCO3",
+        "631.2 kg/d as CaCO3",
+        "853.9 kg/d as CaCO3"
+      ],
+      "correctIndex": 2,
+      "explanation": "Demand is 20 x 7.14 = 142.8 mg/L, credit is 6 x 3.57 = 21.4 mg/L, net 121.4 mg/L x 5,200 m3/d = about 631 kg/d. The 742.6 answer ignores the denitrification credit entirely and overstates the theoretical demand."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-f2",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Aerobic volume 3,000 m3 at MLSS 3,100 mg/L, waste activated sludge 80 m3/d at 6,800 mg/L, final effluent 7,500 m3/d at 15 mg/L TSS. What is the aerobic solids retention time?",
+      "choices": [
+        "About 11.9 days",
+        "About 5.6 days",
+        "About 17.1 days",
+        "About 14.2 days"
+      ],
+      "correctIndex": 3,
+      "explanation": "Inventory is 9,300 kg, solids out are 544 kg/d wasted plus 112.5 kg/d in effluent, giving 9,300 / 656.5 = about 14.2 d. The 17.1 answer drops effluent solids from the denominator and flatters the retention time."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-f3",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Influent ammonia-N is 26 mg/L as N at 9,400 m3/d. Using the supplied teaching factor of 4.57 mg O2 per mg ammonia-N oxidized, what is the theoretical nitrification oxygen demand?",
+      "choices": [
+        "About 1,117 kg O2/d",
+        "About 119 kg O2/d",
+        "About 244 kg O2/d",
+        "About 1,745 kg O2/d"
+      ],
+      "correctIndex": 0,
+      "explanation": "Load is 26 g/m3 x 9,400 m3/d = 244.4 kg N/d, and 244.4 x 4.57 = about 1,117 kg O2/d for nitrification alone. The 1,745 answer applies the 7.14 alkalinity factor to an oxygen question and mixes two different bases."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-f4",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Over three weeks effluent ammonia-N rose steadily, influent kg N/d was flat, aerobic SRT fell from 11.8 d to 9.5 d, mixed liquor cooled from 18 C to 12 C, and one end-of-basin DO grab read 1.6 mg/L. Which explanation ranks highest?",
+      "choices": [
+        "Influent nitrogen load increased and overwhelmed the nitrifiers",
+        "Combined loss of aerobic SRT while nitrifier growth slowed with cooling",
+        "Oxygen limitation proven by the single end-of-basin DO grab",
+        "Sample handling error because ammonia-N cannot rise in winter"
+      ],
+      "correctIndex": 1,
+      "explanation": "Two factors moved unfavourably together: required SRT rises as mixed liquor cools while the calculated SRT fell about 19 percent. A single end-of-basin DO grab is not an oxygen profile and cannot outrank that paired trend."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-f5",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "A fictional plant screens alkalinity using the supplied factors. Which condition would make the screening result unreliable rather than simply approximate?",
+      "choices": [
+        "Effluent ammonia-N was measured by an accredited laboratory",
+        "Flow was averaged from daily totalizer readings over the week",
+        "Influent alkalinity was reported as mg/L as HCO3, not as CaCO3",
+        "Mixed liquor temperature varied by 2 C during the sampled week"
+      ],
+      "correctIndex": 2,
+      "explanation": "A basis mismatch shifts every alkalinity line by roughly a factor of 1.22, so the screening estimate is simply wrong. A 2 C temperature swing affects nitrification kinetics but does not invalidate the stoichiometric alkalinity arithmetic."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-f1",
+      "objective": "recovery-trial",
+      "prompt": "Fictional case values. Aeration volume 5,000 m3, MLSS 3,000 mg/L, plant flow 10,000 m3/d, effluent TSS 15 mg/L, WAS TSS 6,500 mg/L. Target SRT is 12 days with blanket excluded. What WAS flow is required?",
+      "choices": [
+        "About 192 m3/d",
+        "About 154 m3/d",
+        "About 231 m3/d",
+        "About 169 m3/d"
+      ],
+      "correctIndex": 3,
+      "explanation": "Inventory is 15,000 kg, so total removal must be 15,000 / 12 = 1,250 kg/d. Effluent carries 10,000 x 0.015 = 150 kg/d, leaving 1,100 kg/d in WAS, and 1,100 / 6.5 = 169 m3/d. The 192 m3/d answer ignores effluent solids and would overwaste."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-f2",
+      "objective": "recovery-trial",
+      "prompt": "Fictional trial, day 3. Aeration volume 4,000 m3, MLSS rose 2,900 to 2,960 mg/L, WAS logged 180 m3/d at 6,200 mg/L, estimated production 900 kg/d, effluent solids 100 kg/d. What WAS TSS does the mass balance imply?",
+      "choices": [
+        "About 4,000 mg/L",
+        "About 6,200 mg/L",
+        "About 5,400 mg/L",
+        "About 3,100 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "Inventory gained 60 mg/L x 4,000 m3 = 240 kg over 3 d, so +80 kg/d. Removal equals 900 minus 80 = 820 kg/d, less 100 kg/d effluent gives 720 kg/d in WAS, and 720 / 180 = 4.0 kg/m3. Accepting the logged 6,200 mg/L from one grab would credit mass that never left the system."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-f3",
+      "objective": "recovery-trial",
+      "prompt": "Fictional case values. Aeration volume 6,000 m3, MLSS 3,400 mg/L, solids production 1,100 kg/d, new total removal 1,580 kg/d. Roughly how long should the trial run before MLSS reaches 2,600 mg/L?",
+      "choices": [
+        "About 25 days",
+        "About 10 days",
+        "About 5 days",
+        "About 17 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Net loss is 480 kg/d over 6,000 m3, which is 80 mg/L per day, and the gap of 800 mg/L divided by 80 gives 10 days. The 5 day answer assumes the full removal rate acts on inventory and ignores ongoing solids production."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-f4",
+      "objective": "recovery-trial",
+      "prompt": "Six days into a wasting trial the WAS pump log matches setpoint every shift, but MLSS has been flat for three consecutive days. What is the most defensible next step?",
+      "choices": [
+        "Raise RAS flow immediately to push the clarifier blanket back into aeration",
+        "Extend the trial another 10 days at the same setpoint without any checking",
+        "Verify WAS TSS by repeat composites and reconcile the solids balance",
+        "Declare the recovery successful because the pump met its trial setpoint"
+      ],
+      "correctIndex": 2,
+      "explanation": "Flat MLSS against an on-setpoint pump is a stop trigger showing volume moved but mass may not have. WAS concentration must be verified before anything else. Declaring success on the pump log confuses a leading indicator with an outcome indicator."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-f5",
+      "objective": "recovery-trial",
+      "prompt": "By day 10 of a trial for suspected low F/M filamentous bulking, microscopy shows filament abundance unchanged and SVI is still rising. What is the appropriate reassessment?",
+      "choices": [
+        "Keep increasing wasting well past the plan until SVI finally starts to fall",
+        "Record filamentous bulking as confirmed and continue the present trial setting",
+        "Begin continuous polymer feed permanently to settle the mixed liquor faster",
+        "Restate the hypothesis against other causes and design a new bounded trial"
+      ],
+      "correctIndex": 3,
+      "explanation": "The mechanism was tested and the outcome indicators did not respond, which meets the no change by day 10 escalation trigger, so the diagnosis should be revised on the evidence. Wasting harder past the plan removes the bound on the trial and risks losing nitrification with no supporting evidence."
     }
   ],
   "sources": [
@@ -447,5 +811,267 @@
       "accessed": "2026-09-24"
     }
   ],
-  "version": "2026-09-24.1"
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-a1",
+      "objective": "inventory-boundary",
+      "prompt": "Supplied case values, fictional plant: two secondary clarifiers in service, each 14.0 m diameter, blanket layered as an upper 0.50 m at 4,000 mg/L over a lower 0.30 m at 7,500 mg/L. What is the total clarifier solids inventory on a TSS basis?",
+      "choices": [
+        "About 1,309 kg held in the sludge blankets",
+        "About 1,416 kg held in the sludge blankets",
+        "About 1,847 kg held in the sludge blankets",
+        "About 655 kg held in the sludge blankets"
+      ],
+      "correctIndex": 0,
+      "explanation": "Combined area is 2 x 153.9 = 307.9 m2, giving 153.9 m3 x 4,000 g/m3 = 616 kg plus 92.4 m3 x 7,500 g/m3 = 693 kg, or 1,309 kg. The 655 kg answer counts only one of the two clarifiers in service that day."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-a2",
+      "objective": "inventory-boundary",
+      "prompt": "Supplied case values, fictional plant, all on a TSS basis: three aeration basins each 1,500 m3 at MLSS 3,000 mg/L; clarifier blanket inventory 2,200 kg; WAS 140 m3/d at 6,000 mg/L; final effluent 8,000 m3/d at 18 mg/L. What is SRT on the full secondary boundary?",
+      "choices": [
+        "About 13.7 days of solids retention time",
+        "About 16.0 days of solids retention time",
+        "About 18.7 days of solids retention time",
+        "About 27.8 days of solids retention time"
+      ],
+      "correctIndex": 1,
+      "explanation": "Inventory is 13,500 kg plus 2,200 kg = 15,700 kg and losses are 840 kg/d plus 144 kg/d = 984 kg/d, giving 16.0 d. The 13.7 d answer leaves the blanket mass out of the numerator while keeping both loss terms in the denominator."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-a3",
+      "objective": "inventory-boundary",
+      "prompt": "Supplied case values, fictional plant: secondary inventory 15,700 kg TSS, effluent solids loss 100 kg/d, WAS 100 m3/d drawn from the RAS line at 7,200 mg/L, MLSS 3,000 mg/L. The operator multiplies the WAS flow by MLSS instead. What does the error produce?",
+      "choices": [
+        "A reported 21.8 d against a correct value of 19.1 d",
+        "A reported 39.3 d against a correct value of 21.8 d",
+        "A reported 39.3 d against a correct value of 19.1 d",
+        "A reported 19.1 d against a correct value of 39.3 d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Correct waste mass is 100 x 7,200 g/m3 = 720 kg/d, so losses are 820 kg/d and SRT is 19.1 d, while the MLSS mismatch gives 400 kg/d and 39.3 d. The 21.8 d option drops the effluent solids term rather than fixing the concentration mismatch."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-a4",
+      "objective": "inventory-boundary",
+      "prompt": "At a fictional plant, RAS flow is cut back and MLSS falls roughly 15 percent over two days while the clarifier blanket deepens. WAS mass and effluent solids load are unchanged. Which interpretation of the SRT trend is correct?",
+      "choices": [
+        "Total secondary inventory has dropped, so the full-boundary SRT drops with it",
+        "The settled blanket is inert, so the volatile inventory has fallen by 15 percent",
+        "Solids have been lost from the secondary system, so wasting should be reduced",
+        "Total secondary inventory is about the same, so only the aeration-only value drops"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lower RAS flow parks mass in the blanket rather than removing it, so full-boundary inventory and SRT hold steady while the aeration-only figure falls with MLSS. Reacting by cutting wasting would lengthen a system that has not actually lost solids."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-inventory-boundary-a5",
+      "objective": "inventory-boundary",
+      "prompt": "An operator reviewing a quarterly SRT trend finds an unexplained step change halfway through the record with no matching change in wasting, MLSS or effluent TSS. What is the most appropriate first action?",
+      "choices": [
+        "Check whether the control boundary or basis used in the calculation changed",
+        "Delete the pre-step data and restart the trend from the step change date",
+        "Increase waste sludge flow until the trend returns to its earlier level",
+        "Smooth the step with a rolling average so the trend reads continuously"
+      ],
+      "correctIndex": 0,
+      "explanation": "A step with no supporting process change usually means the boundary or the solids basis shifted, so the calculation sheets and the SOP are the place to look first. Wasting more to chase the old number would change the process to correct a bookkeeping difference."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-a1",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant: forward flow 7,200 m3/d, RAS flow 5,400 m3/d, MLSS 2,800 mg/L, two circular clarifiers of 15.0 m diameter both in service. Using the total feed convention, what is the solids loading rate?",
+      "choices": [
+        "About 4.2 kg/(m2·d)",
+        "About 100 kg/(m2·d)",
+        "About 57 kg/(m2·d)",
+        "About 200 kg/(m2·d)"
+      ],
+      "correctIndex": 1,
+      "explanation": "Each tank is 176.7 m2 for 353.4 m2 total, total feed is 12,600 m3/d, solids are 12,600 x 2.8 = 35,280 kg/d, and dividing gives about 100 kg/(m2·d). The 200 value uses only one clarifier area, which would apply if the second tank were out of service."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-a2",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant at steady state: MLSS 2,400 mg/L, forward flow 9,000 m3/d, RAS flow 3,600 m3/d. What RAS TSS should the mass balance predict?",
+      "choices": [
+        "About 7,200 mg/L",
+        "About 9,600 mg/L",
+        "About 8,400 mg/L",
+        "About 6,000 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "Total feed is 12,600 m3/d, the ratio to RAS flow is 3.5, and 2.4 kg/m3 x 3.5 gives 8.4 kg/m3 or 8,400 mg/L. The 6,000 answer uses a forward to return ratio of 2.5 and omits the return flow from the numerator."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-a3",
+      "objective": "settling-diagnosis",
+      "prompt": "At a fictional plant the blanket steps up and down within hours of RAS pump starts and stops, SVI is flat over 14 days, and the recomputed solids loading is within the facility normal range. Which category fits best?",
+      "choices": [
+        "Settleability driven behaviour from a developing filament population",
+        "Hydraulic driven behaviour from a sustained wet weather flow peak",
+        "Analytical error in the daily settled sludge volume measurement",
+        "Return flow or equipment driven behaviour at the underflow pumps"
+      ],
+      "correctIndex": 3,
+      "explanation": "A blanket that responds within hours to pump starts, with flat SVI and normal loading, indicates the return and withdrawal equipment. Settleability problems respond little in the short term to a controlled RAS rate change, so a filament explanation does not fit this pattern."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-a4",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant: forward flow 12,000 m3/d, MLSS 3,000 mg/L, laboratory RAS TSS 4,500 mg/L, logged RAS flow 6,000 m3/d. What does the mass balance show?",
+      "choices": [
+        "Implied return of about 24,000 m3/d, so the record pair is inconsistent",
+        "Implied return of about 6,000 m3/d, so both records can be accepted",
+        "Implied return of about 8,000 m3/d, so the meter reads slightly low",
+        "Implied return of about 12,000 m3/d, so the blanket must be rising"
+      ],
+      "correctIndex": 0,
+      "explanation": "Implied Q_RAS is (12,000 x 3.0) divided by (4.5 minus 3.0), which is 36,000 divided by 1.5 or 24,000 m3/d, four times the logged value, so this is a data integrity finding to be verified before any process change. Treating the logged 6,000 m3/d as confirmed ignores the contradiction between the flow and the solids result."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-settling-diagnosis-a5",
+      "objective": "settling-diagnosis",
+      "prompt": "Supplied case assumptions, fictional plant: MLSS 4,000 mg/L, a 1:1 dilution with filtered final effluent settles to 300 mL/L at 30 minutes in a 1 L cylinder. What is the diluted SVI?",
+      "choices": [
+        "About 187 mL/g",
+        "About 150 mL/g",
+        "About 75 mL/g",
+        "About 300 mL/g"
+      ],
+      "correctIndex": 1,
+      "explanation": "The diluted cylinder holds 4.0 g/L divided by 2, or 2.0 g/L, so 300 mL/L divided by 2.0 g/L gives 150 mL/g. The 75 mL/g answer uses the undiluted 4.0 g/L and forgets that the dilution halves the solids concentration in the cylinder."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-a1",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant, supplied teaching values. Flow 9,000 m3/d, ammonia-N oxidized 25 mg/L as N, nitrate-N reduced 10 mg/L as N. Using 7.14 and 3.57 mg CaCO3 per mg N, what is the net theoretical alkalinity demand in kg/d as CaCO3?",
+      "choices": [
+        "1,606.5 kg/d as CaCO3",
+        "160.7 kg/d as CaCO3",
+        "1,285.2 kg/d as CaCO3",
+        "1,927.8 kg/d as CaCO3"
+      ],
+      "correctIndex": 2,
+      "explanation": "Demand 25 x 7.14 = 178.5 mg/L, credit 10 x 3.57 = 35.7 mg/L, net 142.8 mg/L x 9,000 m3/d = 1,285.2 kg/d. The 1,927.8 answer adds the denitrification credit to the demand instead of subtracting it."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-a2",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Influent alkalinity 165 mg/L as CaCO3, ammonia-N oxidized 16 mg/L as N, nitrate-N reduced 5 mg/L as N, using the supplied 7.14 and 3.57 factors. What is the theoretical residual alkalinity?",
+      "choices": [
+        "About 50.8 mg/L as CaCO3",
+        "About 32.9 mg/L as CaCO3",
+        "About 96.4 mg/L as CaCO3",
+        "About 68.6 mg/L as CaCO3"
+      ],
+      "correctIndex": 3,
+      "explanation": "Net consumption is 114.24 minus 17.85 = 96.39 mg/L, so residual is 165 - 96.4 = about 68.6 mg/L as CaCO3. The 50.8 answer omits the denitrification credit and understates the residual left for the process."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-a3",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Aerobic volume 2,400 m3 at MLSS 3,400 mg/L, waste sludge 70 m3/d at 8,000 mg/L, final effluent 5,600 m3/d at 18 mg/L TSS. What is the aerobic solids retention time?",
+      "choices": [
+        "About 12.4 days",
+        "About 9.8 days",
+        "About 6.3 days",
+        "About 14.6 days"
+      ],
+      "correctIndex": 0,
+      "explanation": "Inventory 8,160 kg divided by 560 kg/d wasted plus 100.8 kg/d in effluent gives 8,160 / 660.8 = about 12.4 d. The 14.6 answer ignores solids carried out in the effluent, a common overstatement of retention time."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-a4",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Influent ammonia-N is 31 mg/L as N at 4,600 m3/d. Using the supplied teaching factor of 4.57 mg O2 per mg ammonia-N oxidized, what is the theoretical nitrification oxygen demand?",
+      "choices": [
+        "About 509 kg O2/d",
+        "About 652 kg O2/d",
+        "About 143 kg O2/d",
+        "About 1,018 kg O2/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "Load is 31 g/m3 x 4,600 m3/d = 142.6 kg N/d, and 142.6 x 4.57 = about 652 kg O2/d for nitrification only, on top of carbonaceous demand. The 509 answer applies the 3.57 alkalinity recovery factor to an oxygen calculation."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-nitrogen-diagnosis-a5",
+      "objective": "nitrogen-diagnosis",
+      "prompt": "Fictional plant. Effluent ammonia-N doubled in four days. Influent kg N/d is flat, aerobic SRT is within 5 percent of last month, mixed liquor is steady at 17 C, and a new operator began collecting the sample from a different channel. Which action ranks first?",
+      "choices": [
+        "Begin soda ash addition to protect alkalinity in the aeration basin",
+        "Raise blower output until the ammonia result returns to normal",
+        "Verify the sampling point, handling and holding time before changing anything",
+        "Increase wasting to build a younger, faster nitrifying population"
+      ],
+      "correctIndex": 2,
+      "explanation": "Load, SRT and temperature evidence are all stable while the sampling practice changed, so a non-representative result ranks first and must be verified. Raising blower output would chase a number that may not reflect basin conditions at all."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-a1",
+      "objective": "recovery-trial",
+      "prompt": "Fictional case values. Aeration volume 3,500 m3, MLSS 3,600 mg/L, plant flow 8,000 m3/d, effluent TSS 11 mg/L, WAS TSS 7,500 mg/L. Target SRT is 9 days with blanket excluded. What WAS flow is required?",
+      "choices": [
+        "About 187 m3/d",
+        "About 160 m3/d",
+        "About 210 m3/d",
+        "About 175 m3/d"
+      ],
+      "correctIndex": 3,
+      "explanation": "Inventory is 12,600 kg, so removal must be 1,400 kg/d. Effluent carries 8,000 x 0.011 = 88 kg/d, leaving 1,312 kg/d in WAS, and 1,312 / 7.5 = 175 m3/d. The 187 m3/d answer omits effluent solids from the balance and overstates required wasting."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-a2",
+      "objective": "recovery-trial",
+      "prompt": "Fictional trial, day 4. Aeration volume 5,000 m3, MLSS fell 3,100 to 3,020 mg/L, WAS logged 140 m3/d at 5,600 mg/L, estimated production 1,000 kg/d, effluent solids 120 kg/d. What WAS TSS does the balance imply?",
+      "choices": [
+        "About 7,000 mg/L",
+        "About 5,600 mg/L",
+        "About 4,300 mg/L",
+        "About 8,800 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "Inventory fell 80 mg/L x 5,000 m3 = 400 kg over 4 d, which is -100 kg/d. Removal is 1,000 plus 100 = 1,100 kg/d, less 120 kg/d effluent leaves 980 kg/d, and 980 / 140 = 7.0 kg/m3. Trusting the logged 5,600 mg/L would understate the mass actually leaving."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-a3",
+      "objective": "recovery-trial",
+      "prompt": "Fictional case values. Aeration volume 4,500 m3, MLSS 3,150 mg/L, solids production 950 kg/d, planned total removal 1,355 kg/d. Roughly how long until MLSS reaches 2,700 mg/L?",
+      "choices": [
+        "About 15 days",
+        "About 5 days",
+        "About 2 days",
+        "About 9 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Net loss is 405 kg/d over 4,500 m3, which equals 90 mg/L per day, and 450 mg/L divided by 90 gives 5 days. The 2 day answer uses the removal rate alone and ignores that biomass keeps being produced each day."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-a4",
+      "objective": "recovery-trial",
+      "prompt": "During a wasting trial the clarifier blanket depth rises each shift while MLSS in the aeration tank falls on schedule. How should this combination be read?",
+      "choices": [
+        "Effluent quality is certain to stay stable while the blanket continues rising",
+        "Sampling error in the MLSS test is the only credible cause of this pattern",
+        "Inventory is relocating to the clarifier, so true SRT may not be falling",
+        "The trial is working well because aeration tank solids track the prediction"
+      ],
+      "correctIndex": 2,
+      "explanation": "A rising blanket with falling MLSS is a register trigger: solids have moved rather than left, so the calculated SRT overstates removal and effluent TSS is at risk. Calling the trial successful uses the aeration tank number alone and ignores where the mass actually went."
+    },
+    {
+      "id": "ceu-activated-sludge-troubleshooting-recovery-trial-a5",
+      "objective": "recovery-trial",
+      "prompt": "What best supports a defensible revision of the working diagnosis partway through a monitored recovery?",
+      "choices": [
+        "A single grab sample result that fits the preferred explanation of events",
+        "Consensus among the shift crew that the sludge simply looks better today",
+        "The fact that the original hypothesis was ranked first at the trial start",
+        "Repeat verified measurements that reconcile with the solids mass balance"
+      ],
+      "correctIndex": 3,
+      "explanation": "Revision is defensible when it rests on verified repeat data that reconcile with the mass balance and are recorded with times. A single grab that happens to agree with the preferred story is exactly the unsupported evidence the balance check exists to reject."
+    }
+  ]
 }

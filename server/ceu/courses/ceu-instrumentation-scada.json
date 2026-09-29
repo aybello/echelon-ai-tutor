@@ -16,8 +16,8 @@
         "Convert a linear 4–20 mA signal to engineering units.",
         "Identify mismatched configured ranges."
       ],
-      "lesson": "### Each link can change the meaning\nThe measurement chain runs from the process through the sensor/transmitter, input channel, controller, display and historian. Each stage needs the correct range, units and quality interpretation. A plausible screen value can still be wrong if one range is mismatched.\n\nFor a linear 4–20 mA signal, fraction of span=(mA−4)/16. Engineering value=lower range+fraction×(upper−lower range). A12 mA signal is halfway through the span. On a 0–10 m range it represents 5 m, not 7.5 m and not 12 m. If the receiving system is configured 0–8 m, it will display 4 m for the same signal.\n\nA4 mA signal represents the lower calibrated endpoint in this model, not automatically instrument failure. Fault handling outside the normal range is device- and configuration-specific. Do not clamp a suspicious signal to zero and erase the fault state. Preserve raw value and quality flags for diagnosis.\n\nThis course uses supplied test records; it does not instruct learners to inject signals into live controls. Any physical testing, isolation or control change must use authorized procedures and qualified personnel. First identify the configuration mismatch and its consequences, then request a controlled verification.",
-      "evidence": "**I1 — fictional level channel**\nTransmitter range 0–6 m. Receiver configured 0–8 m. Recorded input 10 mA. Local verified level 2.25 m. Historian tag displays 3.00 m with “good” communications quality. The alarm threshold is a fictional displayed 4.00 m; its intended physical level is 3.00 m.\n\nI2: No configuration change has been authorized. A diagnostic report is requested.",
+      "lesson": "### Where meaning is assigned in the measurement chain\n\nA number on a screen is not a measurement. It is the end product of a chain, and every link can change what the number means without changing how it looks. The chain in a typical drinking water plant runs: process water, sensor, transmitter electronics, analogue output circuit, field wiring and any isolators or repeaters, analogue input card, controller scaling block, HMI display object, historian tag, then the report or spreadsheet that someone signs.\n\nScaling is assigned in at least three of those places, and they do not automatically agree. The transmitter holds a lower range value and an upper range value. The controller holds its own raw count to engineering unit conversion. The historian holds an engineering unit label and sometimes a second scaling factor. Agreement between them is a configuration outcome, not a law of physics. When one link disagrees, the display stays smooth, stays in a plausible range, trends normally and alarms normally. That is what makes scaling faults dangerous. A dead transmitter announces itself. A mis-scaled transmitter does not.\n\nThe US EPA guidance \"Generating high-quality turbidity data\" (EPA 815-B-19-010) treats the measurement chain and the SCADA data path as part of data quality, not as a separate electrical topic. That framing is United States technical guidance rather than Ontario law, but the logic applies directly here: the recorded value is only as trustworthy as the weakest configured link between the sensor and the record. In Ontario, the duties and record obligations that sit on certified operators and operators in charge come from O. Reg. 128/04, sections 23 and 25 to 27, covering designation, duties and records. Those duties are what convert a scaling discovery into required action.\n\n### The linear 4 to 20 mA model, stated precisely\n\nFor a device whose output is configured as linear, the current is a proportional representation of position within the configured range, not of the measured quantity itself.\n\nForward conversion, signal to engineering units:\n\nfraction of span = (I measured in mA minus 4.00 mA) divided by 16.00 mA\n\nengineering value = LRV + fraction of span multiplied by (URV minus LRV)\n\nReverse conversion, engineering units to expected signal:\n\nI expected in mA = 4.00 mA + 16.00 mA multiplied by (value minus LRV) divided by (URV minus LRV)\n\nThree points deserve emphasis. First, 4.00 mA means the configured lower range value, which is often zero but is not required to be zero. A level transmitter configured 2.00 m to 12.00 m outputs 4.00 mA at 2.00 m, not at an empty tank. Second, live zero is a diagnostic feature, not a failure indicator by itself. A reading sitting at exactly 4.00 mA may be a true bottom of range, a saturated under-range condition, or a device holding a configured fault output. The distinction is device specific and configuration specific and must be read from the device manual and the loop drawing, not assumed. Third, many transmitters can be configured for square root extraction, custom curves or bi-directional output. Applying the linear formula to a square root output produces a confident, wrong answer.\n\nA short illustration of that last point, using supplied case assumptions for this example only: a differential pressure flow transmitter with square root extraction enabled and a full scale of 400.0 L/s at 20.00 mA. At 12.00 mA the fraction of span is (12.00 mA minus 4.00 mA) divided by 16.00 mA, which equals 0.5000. Linear reading would be 0.5000 multiplied by 400.0 L/s, which equals 200.0 L/s. Square root reading is the square root of 0.5000, which is 0.7071, multiplied by 400.0 L/s, which equals 282.8 L/s. The difference is 82.8 L/s on one signal, and it flows straight into totalized volume and into any per-unit calculation built on flow.\n\n### Worked example 1: forward conversion and a mismatched receiver\n\nSupplied case assumptions for this teaching example, all fictional: an ultrasonic level transmitter on a clearwell, device configured linear with LRV 0.00 m and URV 10.00 m. A calibrated loop meter at the controller input test point reads 12.00 mA. The controller scaling block for the same tag is configured 0.00 m to 8.00 m. The clearwell plan area is a supplied value of 250 m squared.\n\nStep 1, current span: 20.00 mA minus 4.00 mA equals 16.00 mA.\n\nStep 2, signal above live zero: 12.00 mA minus 4.00 mA equals 8.00 mA.\n\nStep 3, fraction of span: 8.00 mA divided by 16.00 mA equals 0.5000, dimensionless.\n\nStep 4, engineering span as configured in the device: 10.00 m minus 0.00 m equals 10.00 m.\n\nStep 5, true engineering value: 0.00 m plus 0.5000 multiplied by 10.00 m equals 5.00 m.\n\nStep 6, value as the controller will compute it: 0.00 m plus 0.5000 multiplied by (8.00 m minus 0.00 m) equals 4.00 m.\n\nStep 7, error at this signal: 4.00 m minus 5.00 m equals minus 1.00 m.\n\nStep 8, error as a percentage of the true value: minus 1.00 m divided by 5.00 m multiplied by 100 percent equals minus 20.0 percent.\n\nStep 9, stored volume implication: 1.00 m multiplied by 250 m squared equals 250 m cubed of water that exists in the tank but not in the record.\n\nAnswer: the true level is 5.00 m, the screen shows 4.00 m, and the display is 20.0 percent low at this point.\n\nThe judgment content is in the shape of the error. At 4.00 mA both scalings give 0.00 m and agree perfectly. At 20.00 mA the device says 10.00 m and the controller says 8.00 m, an error of 2.00 m. A span mismatch with a matching zero produces an error that is zero at the bottom and largest at the top. If the commissioning check was done on a low tank, or if the plant normally runs in the lower third of the range, the fault can sit undetected for years and only expose itself during high level events, which is exactly when level based interlocks matter.\n\n### Worked example 2: back-calculation to expose the configured range\n\nSupplied case assumptions, fictional: a chlorine residual analyser transmitting a linear 4 to 20 mA signal. The device configuration printout shows 0.00 mg/L to 5.00 mg/L. The HMI faceplate for the same tag reads 0.48 mg/L. A bench grab sample taken at the same sample point at the same time reads 1.18 mg/L. The SCADA tag properties show an engineering range of 0.00 mg/L to 2.00 mg/L.\n\nStep 1, fraction of span implied by the HMI: (0.48 mg/L minus 0.00 mg/L) divided by (2.00 mg/L minus 0.00 mg/L) equals 0.2400.\n\nStep 2, current that must be present on the loop: 4.00 mA plus 0.2400 multiplied by 16.00 mA equals 4.00 mA plus 3.84 mA equals 7.84 mA.\n\nStep 3, value that current represents under the device configuration: 0.00 mg/L plus 0.2400 multiplied by (5.00 mg/L minus 0.00 mg/L) equals 1.20 mg/L.\n\nStep 4, ratio check: 5.00 mg/L divided by 2.00 mg/L equals 2.500, and 0.48 mg/L multiplied by 2.500 equals 1.20 mg/L, which confirms step 3.\n\nStep 5, comparison to the independent bench result: 1.20 mg/L minus 1.18 mg/L equals 0.02 mg/L difference, which supports the device scaling and contradicts the SCADA scaling.\n\nAnswer: the loop is carrying 7.84 mA, the process value is about 1.20 mg/L, and the HMI is under-reading by a factor of 2.5 because the receiving range is configured at 2.00 mg/L full scale against a device configured at 5.00 mg/L full scale.\n\nNow apply the same method to a non-zero lower range, because this is where operators most often slip. Supplied assumption: a level transmitter configured 2.00 m to 12.00 m, measured current 9.20 mA. Fraction of span is (9.20 mA minus 4.00 mA) divided by 16.00 mA, which equals 0.3250. Correct value is 2.00 m plus 0.3250 multiplied by (12.00 m minus 2.00 m), which equals 2.00 m plus 3.25 m, which equals 5.25 m. The common wrong method, treating the range as zero based, gives 0.3250 multiplied by 12.00 m, which equals 3.90 m, an error of minus 1.35 m. Answer: 5.25 m, and the zero-based shortcut is wrong by 1.35 m at this signal.\n\nNotice what an under-reading residual display does to decision making. It can drive an operator or a control loop toward more chemical than the process needs, it can mask a real low residual event in the opposite direction, and it corrupts the residual term used in any contact time calculation. Contact time credit is condition specific in every case, depending on disinfectant, temperature, pH, residual and the approved hydraulic basis for that specific configuration, so a corrupted residual invalidates the input rather than simply shifting the answer.\n\n### Scaling verification register and troubleshooting matrix\n\nUse a register like this when you compare configuration across the chain. Fill it from primary records, not from memory, and record the source document for each column.\n\n| Tag | Device LRV / URV | Device output type | Controller raw counts at 4 / 20 mA | Controller EU LRV / URV | HMI display range and decimals | Historian EU label | Configured fault output | Source record checked | Verified by and date |\n|---|---|---|---|---|---|---|---|---|---|\n| LIT-201 | 0.00 / 10.00 m | Linear | 3277 / 16384 | 0.00 / 8.00 m | 0.0 to 8.0 m | m | 3.6 mA under-range | Device config printout, PLC export | |\n| AIT-330 | 0.00 / 5.00 mg/L | Linear | 3277 / 16384 | 0.00 / 2.00 mg/L | 0.00 to 2.00 mg/L | mg/L | Hold last value | Analyser menu screenshot, tag properties | |\n| FIT-110 | 0.0 / 400.0 L/s | Square root at device | 3277 / 16384 | 0.0 / 400.0 L/s | 0 to 400 L/s | L/s | 21.0 mA over-range | Loop sheet, PLC export | |\n\nThe fault output column matters as much as the range columns. A tag configured to hold last value during a fault will present a stale number that looks alive on a trend. A tag configured to drive to a low current will present a plausible low reading. Neither is a measurement, and both must be preserved with their quality flag rather than cleaned up.\n\n| Symptom | Likely cause | First check, no field change |\n|---|---|---|\n| Display agrees at low end, diverges at high end | Span mismatch, zeros agree | Compare device URV to controller URV |\n| Display offset by a constant amount across the range | LRV mismatch or zero shift | Compare device LRV to controller LRV |\n| Display reads high at mid range on a flow tag | Square root applied twice or not at all | Check extraction setting at device and in controller |\n| Reading frozen while process is changing | Hold last value on fault, or stalled scan | Check quality flag and loop current directly |\n| Reading exactly at full scale and stuck | Saturation, wiring fault, or over-range clamp | Check loop current and device diagnostics |\n| Historian value differs from HMI value | Second scaling or unit conversion in the historian | Compare tag properties to controller export |\n\n### Common errors\n\nAssuming the lower range value is zero. Operators divide the displayed value by the full scale to back out a percentage, which only works when the LRV is zero. On a 2.00 m to 12.00 m range that shortcut produced a 1.35 m error in the example above. Always carry both LRV and URV through the arithmetic.\n\nTreating 4.00 mA as proof of a failed instrument, or treating a plausible number as proof of a healthy one. Four milliamps is the bottom of the configured range and may be entirely correct. A smooth mid-scale number proves only that a circuit is intact. Verification requires a comparison against an independent reference, such as a bench or grab measurement, or a controlled loop check performed under an authorized procedure.\n\nCorrecting the wrong link. When the HMI disagrees with a bench result, the fastest fix is often to bias or re-zero the display so it matches. That hides the real defect, breaks the traceability between the device and the record, and leaves the historian carrying a value that no calibration record supports. Correct the link that is actually mis-configured, and document which link changed.\n\nOverwriting or clamping raw data. Suppressing an out-of-range value to zero, or deleting a suspect period from a trend, destroys the evidence needed to bound the affected time window. Preserve the raw value, the quality flag and the timestamps, and annotate rather than erase.\n\nAssuming one corrected tag fixes the reports. Scaled errors propagate into totalizers, averages, daily summaries and any spreadsheet that pulls from the historian. Correcting the live tag does not correct history that has already been written and signed.\n\n### What to verify before you act\n\nVerify the device configuration from the instrument itself or its configuration printout, including LRV, URV, output type, damping and fault output behaviour. Verify the controller scaling from the current program export, not from a drawing that may predate the last change. Verify the HMI tag properties and the historian tag properties separately, because either can apply its own conversion. Verify against the loop drawing and the calibration record for that tag, including the date, the reference standard used and who performed it.\n\nVerify what the facility is approved and required to do. Drinking water monitoring, recording and reporting obligations come from the applicable Ontario legislation, the facility drinking water works permit and municipal drinking water licence, and the plant operational plan and standard operating procedures. Certified operator duties and record requirements are set out in O. Reg. 128/04, sections 23 and 25 to 27, covering designation, duties and records. Nothing in this module authorizes a configuration change, a loop injection or a control action. Identify the mismatch, quantify it, notify the operator in charge or overall responsible operator, and request a controlled verification through the authorized maintenance and change process by qualified personnel.\n\nVerify the consequence window before you close the issue. Determine when the mismatch was introduced, which records it touched, and whether any monitoring result, alarm setpoint or reported value was affected. If the corrected data indicates an adverse drinking water test result, Ontario requires an immediate verbal report to the parties specified in the applicable regulation, followed by written notice within 24 hours after that verbal report. Retain the loop current readings, the configuration exports before and after, the independent reference result, the trend with quality flags intact, and a dated note of who authorized the correction.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are supplied for training only. They are not authorized values and must not be applied to any real plant.\n\n**Setting.** Redbank Township Water Treatment Plant, Filter No. 3 effluent turbidimeter, tag AIT-303. Operator C. Nadeau, day shift.\n\n**Supplied values.**\n- Analyser configuration printout, dated 14 March: linear output, LRV 0.00 NTU at 4.00 mA, URV 10.00 NTU at 20.00 mA.\n- Calibrated loop meter at the controller input test point: 4.32 mA.\n- HMI faceplate for AIT-303 at the same moment: 0.10 NTU.\n- PLC program export, dated 2 September: AIT-303 engineering range 0.00 NTU to 5.00 NTU.\n- Bench turbidimeter on a grab sample from the same sample line, same minute: 0.19 NTU.\n- Maintenance record, dated 11 August, claims a three point loop check at 4.00, 12.00 and 20.00 mA with HMI readings recorded as 0.00, 5.00 and 10.00 NTU, signed as passed.\n\n**Record the learner must reject.** The 11 August maintenance record. With the controller configured 0.00 NTU to 5.00 NTU, a 20.00 mA input cannot display 10.00 NTU. Check: fraction of span equals (20.00 mA minus 4.00 mA) divided by 16.00 mA, which equals 1.0000, and 0.00 NTU plus 1.0000 multiplied by 5.00 NTU equals 5.00 NTU, not 10.00 NTU. The record is internally impossible, carries no raw current values for the mid point, and conflicts with the later program export. It cannot be used as evidence that the chain was verified.\n\n**Worked solution.**\n\nStep 1, fraction of span: (4.32 mA minus 4.00 mA) divided by 16.00 mA equals 0.32 mA divided by 16.00 mA equals 0.0200.\n\nStep 2, value under the device configuration: 0.00 NTU plus 0.0200 multiplied by (10.00 NTU minus 0.00 NTU) equals 0.20 NTU.\n\nStep 3, value the controller computes: 0.00 NTU plus 0.0200 multiplied by (5.00 NTU minus 0.00 NTU) equals 0.10 NTU, which matches the HMI.\n\nStep 4, independent check: bench 0.19 NTU against device-scaled 0.20 NTU, difference 0.01 NTU. The device scaling is supported; the controller scaling is not.\n\nStep 5, error factor: 10.00 NTU divided by 5.00 NTU equals 2.00. Every recorded AIT-303 value since the mismatch was introduced reads half of the process value.\n\n**Action.** Do not adjust the loop or the tag. Report to the operator in charge, request a controlled verification under the authorized maintenance procedure, preserve the raw trend and quality flags, and determine the affected date range so the operational plan and the applicable Ontario reporting requirements, including any adverse result notification, can be assessed by the responsible person.",
       "assignment": "Show signal conversion for both ranges. Explain why the displayed alarm threshold may appear correct at one level while the scaling remains wrong. Produce a 300–450-word change request with affected displays, historian interpretation, alarm review, rollback and post-change verification responsibilities.",
       "rubric": [
         "Calculates the physical and displayed levels correctly.",
@@ -57,30 +57,82 @@
       ],
       "checks": [
         {
-          "id": "is1",
+          "id": "ceu-instrumentation-scada-signal-scaling-c1",
           "objective": "signal-scaling",
-          "prompt": "12 mA on a 0–6 m range represents:",
+          "prompt": "Fictional example. A linear 4 to 20 mA level transmitter is configured LRV 0.00 m and URV 6.00 m. A calibrated loop meter reads 16.00 mA. What level does this signal represent?",
           "choices": [
-            "4.5 m",
-            "3 m",
-            "2 m",
-            "12 m"
+            "4.50 m",
+            "4.80 m",
+            "5.00 m",
+            "3.75 m"
           ],
-          "correctIndex": 1,
-          "explanation": "Half of the 6 m span is 3 m."
+          "correctIndex": 0,
+          "explanation": "Fraction of span is (16.00 - 4.00) / 16.00 = 0.7500, so the value is 0.00 + 0.7500 x 6.00 m = 4.50 m. The 4.80 m distractor comes from dividing 16.00 mA by 20.00 mA and ignoring the live zero, which overstates the reading."
         },
         {
-          "id": "is2",
+          "id": "ceu-instrumentation-scada-signal-scaling-c2",
           "objective": "signal-scaling",
-          "prompt": "“Good” communications quality proves:",
+          "prompt": "Fictional example. A linear transmitter is configured LRV 1.00 m and URV 6.00 m. The loop current is 8.00 mA. What is the correct engineering value?",
           "choices": [
-            "Calibration is current",
-            "The range is correct",
-            "The reported communications state is good",
-            "The process is within every limit"
+            "1.50 m",
+            "2.25 m",
+            "2.50 m",
+            "1.25 m"
+          ],
+          "correctIndex": 1,
+          "explanation": "Fraction of span is (8.00 - 4.00) / 16.00 = 0.2500, and the span is 6.00 - 1.00 = 5.00 m, so the value is 1.00 + 1.25 = 2.25 m. The 1.50 m answer is the zero-based shortcut (0.2500 x 6.00 m) that ignores the non-zero lower range value."
+        },
+        {
+          "id": "ceu-instrumentation-scada-signal-scaling-c3",
+          "objective": "signal-scaling",
+          "prompt": "Fictional example. A chlorine residual analyser transmits a linear signal configured 0.00 mg/L to 4.00 mg/L. The true process residual is 1.50 mg/L. What current should the loop carry?",
+          "choices": [
+            "7.00 mA",
+            "9.00 mA",
+            "10.00 mA",
+            "10.50 mA"
           ],
           "correctIndex": 2,
-          "explanation": "Communications status does not validate the range, calibration or process condition."
+          "explanation": "Reverse conversion gives 4.00 mA + 16.00 mA x (1.50 / 4.00) = 4.00 + 6.00 = 10.00 mA. The 7.50 to 9.00 mA style answers arise from scaling 20.00 mA directly by the fraction, which omits the 4.00 mA live zero offset."
+        },
+        {
+          "id": "ceu-instrumentation-scada-signal-scaling-c4",
+          "objective": "signal-scaling",
+          "prompt": "A drinking water plant HMI tag has been sitting at exactly 4.00 mA for several hours. What is the most defensible interpretation of that observation alone?",
+          "choices": [
+            "It shows the analogue input card lost its raw count scaling",
+            "It confirms the transmitter has failed and must be replaced",
+            "It proves the process variable is truly at absolute zero",
+            "It could be bottom of range, under-range or a fault output"
+          ],
+          "correctIndex": 3,
+          "explanation": "A 4.00 mA reading equals the configured lower range value, a saturated under-range condition, or a configured fault output, and the device manual plus loop drawing decide which. Assuming outright transmitter failure is a common error because live zero is a diagnostic feature, not proof of failure."
+        },
+        {
+          "id": "ceu-instrumentation-scada-signal-scaling-c5",
+          "objective": "signal-scaling",
+          "prompt": "Supplied case assumptions for this example only. A differential pressure flow transmitter has square root extraction enabled, with 300.0 L/s at 20.00 mA. The loop reads 8.00 mA. What flow does the signal represent?",
+          "choices": [
+            "150.0 L/s",
+            "212.1 L/s",
+            "75.0 L/s",
+            "106.1 L/s"
+          ],
+          "correctIndex": 0,
+          "explanation": "Fraction of span is 0.2500, and the square root of 0.2500 is 0.5000, so flow is 0.5000 x 300.0 L/s = 150.0 L/s. The 75.0 L/s distractor applies the linear formula to a square root output, which gives a confident but wrong number."
+        },
+        {
+          "id": "ceu-instrumentation-scada-signal-scaling-c6",
+          "objective": "signal-scaling",
+          "prompt": "A level tag has matching zeros but the device URV is 10.00 m while the controller engineering upper range is 8.00 m. What error pattern should an operator expect across the operating range?",
+          "choices": [
+            "Constant offset of the same size at every signal level",
+            "Zero error at the bottom and largest error near the top",
+            "Largest error at the bottom, shrinking toward full scale",
+            "Random error that changes sign as the tank level cycles"
+          ],
+          "correctIndex": 1,
+          "explanation": "With zeros agreeing, both scalings give the same value at 4.00 mA and diverge as current rises, so the error is largest at full scale. A constant offset is what a lower range value mismatch with equal spans produces, not a span mismatch."
         }
       ]
     },
@@ -91,8 +143,8 @@
         "Normalize timestamps using a documented offset.",
         "Distinguish last-known values from current measurements."
       ],
-      "lesson": "### A value has both a time and a status\nA historian may store event time, receipt time or both. A delayed message can arrive now while describing an earlier process condition. A display that holds the last value during a communication failure may look calm while providing no new measurement.\n\nState a clock relationship before correcting a timeline. If controller time is two minutes behind the reference clock, controller 08:10 corresponds to reference 08:12. Preserve the original timestamp and record the correction method. Do not overwrite raw events or apply the same offset to a device whose clock was not checked.\n\nA stale interval is not a stable process interval. If the last valid residual was 0.80 at 08:00 and communication was lost until 08:15, fifteen minutes of repeated 0.80 values may be display persistence. They do not prove residual remained 0.80. A gap also does not prove a value of zero.\n\nWhen aligning trends, compare measurement time, sample transport delay, data quality and logging interval. A graphical line joins points; it does not create measurements between them. Use the applicable operational method for gaps and escalation, and label conclusions that cannot be supported.",
-      "evidence": "**I3 — time records**\nController clock verified 2 minutes behind reference throughout this interval. Controller event 08:10: pump stop. Historian receipt reference 08:13. Independent pressure logger reference 08:12:30: pressure decline.\n\nI4: Residual tag last valid sample reference 08:00=0.80 mg/L. Communications flagbad 08:01–08:15; dashboard repeats 0.80 everyminute. First restored valid sample 08:16=0.65 mg/L. Pressure logger clock was independently verified; no correction is required.",
+      "lesson": "### A stored value carries three things, not one\n\nEvery point in a historian is a triple: a value, a time, and a quality status. Operators are trained to read the value and trust the time. The time is the part that most often lies, and the quality status is the part that most often gets thrown away before anyone looks at it.\n\nThere are at least three different times attached to a single reading:\n\n- **Process time.** The moment the water being measured was actually in the process at the sample point.\n- **Measurement time.** The moment the analyser or transmitter produced the reading. This is later than process time by the sample transport lag plus the instrument response time.\n- **Record time.** The timestamp written into the log. This may be the device clock at measurement, the PLC scan clock, the SCADA server clock at receipt, or the historian clock at insertion, depending entirely on how the system was configured.\n\nWhen a communication link stalls and then recovers, a burst of records can arrive at the server in one second while describing fifteen minutes of process history. If the historian stamps on receipt, fifteen minutes of process collapse into one instant and the preceding fifteen minutes show nothing. If the historian stamps on event time from the device, and that device clock is wrong, the whole block lands in the wrong place on the trend.\n\nQuality status is the other half. Most modern systems carry a status alongside the value, using categories such as Good, Uncertain, Bad, Substituted, Manual entry, or Out of service. The US EPA guidance titled Generating high-quality turbidity data treats the measurement chain, including the data handling and SCADA layer, as part of the instrument, not as a separate administrative matter. That is United States technical guidance rather than Ontario law, but the principle transfers cleanly: a number that arrives with a Bad or Uncertain status is not a measurement, and averaging it into a daily figure contaminates the figure.\n\nIn Ontario, the records themselves are regulated. O. Reg. 128/04 addresses operator designation, the duties of the overall responsible operator and operator in charge, and record requirements. The practical consequence is that when you adjust, annotate or reject a logged value you are working on a record with legal standing. You do not delete. You annotate, and you keep the original.\n\n### Establishing and documenting a clock offset\n\nAn offset is a measured relationship between two clocks at a stated moment, not a permanent property of a device. Write it as a signed correction that converts device time to reference time:\n\n`reference time = device time + offset`\n\nIf the device clock reads earlier than the reference clock, the device is slow and the offset is positive. If the device reads later, the device is fast and the offset is negative.\n\nCheck the offset by reading both clocks at the same instant, ideally by forcing an event that both systems log. Record who checked it, against which reference, and how. The reference must itself be traceable. A wristwatch is not a reference. A plant master clock disciplined by a network time source, with its own check record, is.\n\nClocks drift. Two checks separated in time give you a drift rate, which lets you estimate the offset for a date between checks. An estimated offset is labelled as estimated and is never presented as a measured value.\n\n**Clock offset register (the record you keep)**\n\n| Field | Example entry | Why it matters |\n|---|---|---|\n| Device / tag | PLC-3, filter gallery | Offsets are per device, never per plant |\n| Reference clock used | Plant master clock, NTP disciplined | An untraceable reference invalidates the offset |\n| Date and time of check | 2 March, 09:00 reference | Offset applies from this check forward |\n| Device reading at that instant | 08:59:20 | Raw observation, not the conclusion |\n| Offset (device to reference) | +40 s | Sign convention stated on the form |\n| Method of check | Forced event logged in both systems | Distinguishes measured from assumed |\n| Drift since last check | +110 s over 30 days | Supports interpolation between checks |\n| Checked by | Operator initials and certificate class | Ties to O. Reg. 128/04 duties and records |\n| Devices NOT checked | PLC-7, raw water | Prevents offset being applied where it was never measured |\n\nThe last row is the one people forget. An offset measured on one controller says nothing about a second controller on the same network.\n\n### Worked example 1: normalizing an event timeline\n\nAll values below are supplied case assumptions for this teaching example at a fictional plant. They are not authorized values and not real records.\n\n**Given:**\n- Clock check on 2 March: reference 09:00:00, PLC-3 reads 08:59:20.\n- Clock check on 1 April: reference 09:00:00, PLC-3 reads 08:57:30.\n- A turbidity step change is logged by the filter effluent turbidimeter through PLC-3 at PLC-3 time 14:22:10 on 17 March.\n- The analyser sample line is 4.2 m of 6 mm internal diameter tubing at a flow of 0.35 L/min.\n- Analyser internal response time from the manufacturer manual: 12 s to reach a stable reading.\n- A valve limit switch on PLC-7 logs a filter valve movement at PLC-7 time 14:24:32. PLC-7 was checked on 17 March and its offset was 0 s.\n\n**Step 1. Offset on 2 March.**\nOffset = 09:00:00 reference minus 08:59:20 device = +40 s.\n\n**Step 2. Offset on 1 April.**\nOffset = 09:00:00 reference minus 08:57:30 device = +150 s.\n\n**Step 3. Drift rate.**\nChange in offset = 150 s minus 40 s = 110 s.\nElapsed time = 2 March to 1 April = 30 days.\nDrift rate = 110 s / 30 days = 3.67 s/day.\n\n**Step 4. Estimated offset on 17 March.**\nDays since 2 March = 15 days.\nDrift accumulated = 3.67 s/day x 15 days = 55 s.\nEstimated offset = 40 s + 55 s = 95 s. Label as estimated.\n\n**Step 5. Convert the turbidity record to reference time.**\nReference time = 14:22:10 + 95 s = 14:23:45.\n\n**Step 6. Sample line volume.**\nInternal radius = 6 mm / 2 = 3 mm = 0.003 m.\nCross sectional area = 3.1416 x (0.003 m)^2 = 2.827 x 10^-5 m^2.\nVolume = 2.827 x 10^-5 m^2 x 4.2 m = 1.187 x 10^-4 m^3.\nConvert: 1.187 x 10^-4 m^3 x 1000 L/m^3 = 0.1187 L = 118.7 mL.\n\n**Step 7. Sample transport lag.**\nLag = 118.7 mL / 350 mL/min = 0.339 min.\n0.339 min x 60 s/min = 20.4 s.\n\n**Step 8. Total measurement lag.**\nTotal lag = 20.4 s transport + 12 s instrument response = 32.4 s, round to 32 s.\n\n**Step 9. Process time of the turbidity change.**\nProcess time = 14:23:45 minus 32 s = 14:23:13 reference time.\n\n**Step 10. Compare with the valve event.**\nValve event reference time = 14:24:32 + 0 s = 14:24:32.\nDifference = 14:24:32 minus 14:23:13 = 79 s.\n\n**Answer:** On the normalized timeline the turbidity change occurred about 79 s **before** the valve moved, not after it as the raw trend suggested. The valve is therefore not the cause, and the investigation moves upstream. The raw PLC-3 timestamp of 14:22:10 is retained unaltered, with the correction, the estimated offset and the lag calculation recorded as an annotation.\n\n### Stale values: calm display, no measurement\n\nA frozen value is the most dangerous failure mode in SCADA because it looks like good news. A flat line at a comfortable number reads as a stable process. It is equally consistent with a dead communication link, a stopped analyser sample pump, a plugged sample line, a controller holding its last value, or a display configured to persist rather than blank.\n\nThree tests distinguish a real flat line from a frozen one:\n\n1. **Noise test.** A live analogue measurement always has some jitter at the resolution of the instrument. Bit for bit identical values over many consecutive scans indicate a held value, not a stable process.\n2. **Companion test.** Check an independent signal that should move: sample line flow or pressure, analyser status contact, raw water turbidity, plant flow. If everything on one controller froze at the same instant, the fault is the link.\n3. **Physical test.** Go and look. Sample flow at the analyser, bubbles, sample cup level, reagent, and the instrument's own local display versus the SCADA value.\n\nA gap is also not a zero. If the historian holds no record between 02:14 and 05:02, the correct statement is that no valid measurement exists for that interval. The correct statement is not that the residual was zero, and it is not that the residual held.\n\n### Worked example 2: what a frozen block does to a reported figure\n\nSupplied case assumptions for this teaching example only, at a fictional plant.\n\n**Given:** Chlorine residual logged every 15 min from 06:00 to 17:45, which is 48 records. The sum of all 48 logged values is 45.60 mg/L. Records from 10:00 to 12:30 inclusive are bit for bit identical at 1.04 mg/L, and the sample line flow switch shows no flow for that entire interval.\n\n**Step 1. Count the suspect records.**\nDuration = 12:30 minus 10:00 = 2.5 h = 150 min.\nIntervals = 150 min / 15 min = 10 intervals.\nRecords = 10 + 1 = 11 records.\n\n**Step 2. Contribution of the frozen block.**\nFrozen sum = 11 records x 1.04 mg/L = 11.44 mg/L.\n\n**Step 3. Raw average as the system reports it.**\nRaw average = 45.60 mg/L / 48 records = 0.950 mg/L.\n\n**Step 4. Valid record count and sum.**\nValid records = 48 minus 11 = 37 records.\nValid sum = 45.60 mg/L minus 11.44 mg/L = 34.16 mg/L.\n\n**Step 5. Average of valid data only.**\nValid average = 34.16 mg/L / 37 records = 0.9232 mg/L, reported as 0.92 mg/L.\n\n**Step 6. Data coverage.**\nCoverage = 37 records / 48 records = 0.771 = 77.1 %.\n\n**Answer:** The system reported 0.950 mg/L. The defensible figure from valid data is 0.92 mg/L over 77.1 % coverage, with a 2 h 30 min interval of no measurement. The difference of 0.03 mg/L is not the real issue. The real issue is that 2.5 h of the operating day has no measurement at all, and whether that is acceptable, what grab sampling was required during the outage, and what reporting follows are determined by the facility's Drinking Water Works Permit and Municipal Drinking Water Licence, the applicable regulation for continuous monitoring equipment failure, and the approved operational procedure. Look those up. Do not assume a figure.\n\n### Data quality triage table\n\n| Observed pattern | Most likely cause | Confirming test | Flag to apply | Action |\n|---|---|---|---|---|\n| Identical value, many scans, other tags on same PLC also flat | Communication loss, held last value | Compare PLC heartbeat or watchdog tag | Bad, held value | Treat interval as no data, follow outage procedure |\n| Identical value, one tag only, others moving | Analyser sample flow loss or plugged line | Sample flow switch, local instrument display | Bad, instrument fault | Grab sample per approved procedure, tag out, service |\n| Value updating but slowly stepping | Long sample line or damped configuration | Compute transport lag, check damping setting | Uncertain | Correct the lag before drawing timing conclusions |\n| Burst of records arriving at one instant | Store and forward recovery | Compare event time to receipt time | Good with late arrival | Re-plot on event time, note the recovery |\n| Trend shifted relative to a second controller | Clock offset or drift | Forced event logged in both systems | Good, offset applied | Normalize, annotate, record estimate basis |\n| Gap with no records | Logging stopped or historian outage | Historian service log | No data | State as no data, never as zero |\n| Value changed after the fact | Manual edit or back-fill | Historian audit trail | Substituted or manual | Investigate, retain original, document who and why |\n\n### Common errors\n\n**Applying one offset to the whole plant.** An offset measured on the filter gallery controller is evidence about that controller only. Applying it to the raw water controller silently shifts events that were never mis-stamped, and can invent a cause and effect relationship that does not exist.\n\n**Overwriting the raw timestamp.** Correcting the original entry destroys the evidence that the correction was needed and makes the correction unverifiable. O. Reg. 128/04 addresses the duties and records expected of designated operators. Annotate and retain. Keep the raw value, the offset, the method and the corrected value together.\n\n**Treating a held value as a measurement.** Fifteen identical residual readings during a comms outage are one reading repeated fifteen times, and even that one reading is only valid up to the moment the link failed. Averaging them, or stating that the residual was maintained, is an unsupported claim.\n\n**Reading interpolation as data.** Trend software draws a straight line between two points. That line is a drawing convention. It is not evidence about what happened in between. Set trend displays to stepped or to break on bad quality so that gaps look like gaps.\n\n**Ignoring sample transport lag when assigning cause.** A 30 s lag is enough to reverse the apparent order of two events that are 20 s apart. If you are building a cause and effect timeline, you must correct for lag or state that you did not.\n\n### What to verify before you act\n\nBefore you change a timestamp, reject a value, or report a corrected figure, consult the following and name them in your entry:\n\n- The facility's **Drinking Water Works Permit and Municipal Drinking Water Licence**, and any **Environmental Compliance Approval** terms, for what monitoring is required, at what location, and with what equipment.\n- The **applicable Ontario drinking water regulation** for continuous monitoring equipment, including what is required when monitoring equipment fails and what grab sampling regime applies. Confirm the current wording rather than relying on memory of a frequency.\n- **O. Reg. 128/04** for operator designation, the duties of the overall responsible operator and the operator in charge, and record obligations, since a data correction is an act performed under those duties.\n- The plant's **approved operational procedure or standard operating procedure** for data validation, flagging, substitution and back-filling, including who is authorized to annotate historian data.\n- The **clock offset register and the historian audit trail**, to confirm the offset was measured and not assumed, and to confirm no prior edit exists.\n- The **instrument manual** for response time, damping settings and diagnostic status contacts, and the calibration and verification records for the instrument in question. The US EPA guidance Generating high-quality turbidity data is useful background on the measurement chain, but it is United States technical guidance and does not replace Ontario requirements.\n\nIf, after normalization, the corrected record shows a result that meets the definition of an adverse drinking water test result or a reportable condition under the applicable Ontario requirements, the reporting obligation is triggered by the corrected finding. An immediate verbal report is required, followed by written notice within 24 hours after that verbal report. Do not delay the verbal report while you finish the arithmetic.\n\nFinally, state the limits of what you concluded. \"Filter effluent turbidity rose at 14:23:13 reference time, based on an estimated clock offset of 95 s and a computed 32 s measurement lag\" is a defensible sentence. \"Turbidity rose at 14:22\" is not, once you know the clock was wrong.",
+      "evidence": "### Fictional worked scenario\n\n**All details below are fictional. Harrowgate Water Treatment Plant, its operators, instruments, records and readings do not exist and are used only for training. No value here is an authorized limit or setpoint.**\n\n**Supplied records, 11 October:**\n\n- Plant master clock is the stated reference, checked against a network time source that morning.\n- Clock offset register: PLC-2 (filter gallery) checked at 07:00, device read 06:56:40, offset recorded as +00:03:20. PLC-5 (backwash valves) checked at 07:05, offset 0 s.\n- Filter 3 effluent turbidimeter, logged through PLC-2, steps from 0.08 NTU to 0.42 NTU at PLC-2 time 15:41:10.\n- Analyser sample line lag plus instrument response, from the plant instrument file: 35 s total.\n- PLC-5 logs Filter 4 backwash valve travel at 15:43:52.\n- Raw water turbidimeter log shows 2.31 NTU, identical to two decimals, for every one minute record from 15:20 to 16:05.\n- Operator logbook entry, unsigned: \"Filter 3 spike at 15:41 caused by raw water turbidity change beginning 15:39.\"\n\n**Step 1. Normalize the turbidimeter record.**\nReference time = 15:41:10 + 00:03:20 = 15:44:30.\n\n**Step 2. Back out the measurement lag to get process time.**\nProcess time = 15:44:30 minus 35 s = 15:43:55.\n\n**Step 3. Compare with the valve event.**\nPLC-5 offset is 0 s, so valve reference time = 15:43:52.\nDifference = 15:43:55 minus 15:43:52 = 3 s.\nThe turbidity change at the sample point occurred 3 s after the valve moved, which is consistent with a hydraulic disturbance from the adjacent backwash.\n\n**Step 4. Test the raw water record before accepting the logbook claim.**\nIdentical one minute records from 15:20 to 16:05 inclusive:\nDuration = 45 min, intervals = 45, records = 45 + 1 = 46 records.\nIdentical to two decimals across 46 consecutive records is a held value, not a stable process.\nValid coverage for the 15:20 to 16:20 hour = (60 minus 46) / 60 = 14 / 60 = 0.233 = 23.3 %.\n\n**Record to reject.** The logbook entry blaming a raw water change beginning at 15:39 is unsupported and must be rejected. The raw water instrument produced no valid measurement across that entire window, so it cannot evidence any change. The entry is also unsigned, which conflicts with the record and duty expectations set out in O. Reg. 128/04.\n\n**Defensible conclusion.** Filter 3 effluent turbidity rose at approximately 15:43:55 reference time, 3 s after the Filter 4 backwash valve travelled, based on a measured PLC-2 offset of +00:03:20 and a 35 s measurement lag. Raw water turbidity is unknown from 15:20 to 16:05. Raw timestamps retained; correction method annotated; raw water interval flagged as no data and a grab sample and instrument service requested under the plant's approved procedure.",
       "assignment": "Build a normalized timeline with original time, corrected event time, receipt time and quality. Calculate pump-stop-to-pressure-decline lag and delivery delay. Write a gap statement for I4 and two conclusions that the held-value interval cannot support. Identify records needed for an authorized operational assessment.",
       "rubric": [
         "Corrects the pump event to 08:12 and calculates the two delays.",
@@ -132,30 +184,82 @@
       ],
       "checks": [
         {
-          "id": "it1",
+          "id": "ceu-instrumentation-scada-time-quality-c1",
           "objective": "time-quality",
-          "prompt": "A clock is 3 minutes behind. Its 09:20 event occurred at reference:",
+          "prompt": "At a fictional plant a clock check records the plant reference clock at 10:00:00 while PLC-2 reads 10:01:20 at the same instant. Using reference time = device time + offset, what is the offset for PLC-2?",
           "choices": [
-            "09:17",
-            "09:20",
-            "09:23",
-            "09:26"
-          ],
-          "correctIndex": 2,
-          "explanation": "Add the known three-minute lag to obtain reference time."
-        },
-        {
-          "id": "it2",
-          "objective": "time-quality",
-          "prompt": "A held value during bad communications is:",
-          "choices": [
-            "The last reported value",
-            "A new independent measurement",
-            "Proof the process stayed stable",
-            "Proof the process fell to zero"
+            "Minus 80 s, since the device clock is running fast",
+            "Plus 20 s, since the device clock is running slow",
+            "Minus 120 s, since the device clock is running fast",
+            "Plus 80 s, since the device clock is running slow"
           ],
           "correctIndex": 0,
-          "explanation": "Holding a value preserves a display, not a new process measurement."
+          "explanation": "Offset = reference minus device = 10:00:00 minus 10:01:20 = minus 80 s, so the device reads later than reference and is fast. Plus 80 s reverses the sign convention and would push every device record further ahead on the timeline, compounding the error instead of correcting it."
+        },
+        {
+          "id": "ceu-instrumentation-scada-time-quality-c2",
+          "objective": "time-quality",
+          "prompt": "A filter effluent turbidity trend at a fictional plant shows bit for bit identical values for 40 consecutive scans. Which observation most strongly supports the conclusion that the value is being held rather than genuinely stable?",
+          "choices": [
+            "Raw water turbidity has been steady over the same block of hours",
+            "The sample line flow switch shows no flow over the same period",
+            "The displayed value sits a little below the usual operating range",
+            "The same trend also looked flat during the previous operating shift"
+          ],
+          "correctIndex": 1,
+          "explanation": "An independent companion signal showing no sample flow means the analyser could not have been measuring, which explains identical values. Steady raw water turbidity is weak evidence because a stable source is exactly what a frozen display would also look like."
+        },
+        {
+          "id": "ceu-instrumentation-scada-time-quality-c3",
+          "objective": "time-quality",
+          "prompt": "A historian at a fictional plant holds no chlorine residual records between 02:14 and 05:02. How should that interval be described in the operating record?",
+          "choices": [
+            "The residual held at the last logged value until records resumed",
+            "The residual was zero for the interval because nothing was logged",
+            "No valid measurement exists for that interval, and the gap is annotated",
+            "The interval is filled by averaging the values on each side of it"
+          ],
+          "correctIndex": 2,
+          "explanation": "A gap means absence of evidence, so the honest record states that no valid measurement exists and annotates the gap. Claiming the residual held invents data, since a stalled link or stopped sample pump gives no information about what the water was actually doing."
+        },
+        {
+          "id": "ceu-instrumentation-scada-time-quality-c4",
+          "objective": "time-quality",
+          "prompt": "Which statement correctly distinguishes process time, measurement time and record time for a single logged analyser reading?",
+          "choices": [
+            "Measurement time equals process time whenever the sample line is kept short",
+            "All three times match whenever the device clock is disciplined by a time source",
+            "Record time is earliest because the PLC scan happens before the analyser reads",
+            "Process time is earliest, and record time depends on where the stamp is applied"
+          ],
+          "correctIndex": 3,
+          "explanation": "Process time comes first, measurement time follows after transport and response lag, and record time depends on whether the device, PLC, server or historian applied the stamp. A short sample line shortens transport lag but never removes instrument response time, so measurement time still lags process time."
+        },
+        {
+          "id": "ceu-instrumentation-scada-time-quality-c5",
+          "objective": "time-quality",
+          "prompt": "A daily average of filter effluent turbidity is being compiled at a fictional plant. Several records in the block carry an Uncertain quality status. What is the sound handling of those records?",
+          "choices": [
+            "Exclude them from the average and annotate the reason for exclusion",
+            "Include them, since the value column still holds a usable number",
+            "Delete them from the historian so that the average computes cleanly",
+            "Replace each one with the last Good value logged before the block"
+          ],
+          "correctIndex": 0,
+          "explanation": "A value carrying Uncertain or Bad status is not a measurement, so it is excluded and the exclusion is annotated. Deleting records is wrong because logged values are regulated records under Ontario record requirements such as those addressed in O. Reg. 128/04; you annotate and keep the original."
+        },
+        {
+          "id": "ceu-instrumentation-scada-time-quality-c6",
+          "objective": "time-quality",
+          "prompt": "Chlorine residual is logged every 5 minutes at a fictional plant. The records from 03:20 to 04:05 inclusive are bit for bit identical. How many logged records fall inside that suspect block?",
+          "choices": [
+            "9 records, because only the intervals between stamps count",
+            "10 records, because both end points are counted",
+            "11 records, because one extra scan is added",
+            "12 records, because the block spans 60 minutes"
+          ],
+          "correctIndex": 1,
+          "explanation": "The span is 45 min, giving 45 / 5 = 9 intervals, and records equal intervals plus one, so 10 records. Answering 9 counts intervals only and understates how many logged values must be reviewed and annotated."
         }
       ]
     },
@@ -166,8 +270,8 @@
         "Distinguish an alarm acknowledgement from restoration.",
         "Reconstruct a response from event and action records."
       ],
-      "lesson": "### An acknowledgement is an interaction, not a repair\nAlarm records describe several events: condition onset, annunciation, acknowledgement, return to normal and any suppression or shelving. Their meanings depend on configuration. Acknowledgement usually records that a person interacted with the alarm; it does not prove the cause was corrected or the required response completed.\n\nAn alarm can chatter around a threshold, generating many events from one underlying condition. Count unique conditions and response coverage rather than assuming twenty notifications mean twenty independent failures. Hysteresis and delay settings may affect event patterns; changing them requires a controlled review so meaningful warnings are not hidden.\n\nFor a response audit, connect each significant condition to the applicable procedure, responsible role, action evidence and verification. “Called maintenance” is a request; “maintenance verified restored flow at 09:10” is a different level of evidence. If an alarm was shelved, record who authorized it, why, its duration and alternative monitoring.\n\nDo not solve a nuisance alarm by simply removing it from view. Establish measurement quality, process significance and configuration intent. The assignment asks for a review proposal, not instructions to disable safeguards.",
-      "evidence": "**I5 — alarm/event extract**\n09:00 high filter turbidity alarm;09:01 acknowledged by operator;09:03 maintenance work request;09:05 alarm returns normal;09:06 alarm repeats;09:07 shelved for 60 minutes. No shelving authorization or alternative monitoring record is attached.09:10 independent sample collection logged;result pending.09:12 work request acknowledged;repair not recorded.\n\nI6: Dashboard summary says “Resolved 09:01.”",
+      "lesson": "### What each alarm event field actually means\n\nAn alarm record is a sequence of distinct events about one condition, and each event answers a different question. Treat them separately or you will build a response reconstruction that cannot survive review.\n\n**Occurrence (onset).** The measured or calculated value crossed the configured alarm condition and any on-delay expired. This is a statement about the signal, not about the process. A fouled sensor, a drained sample cup, an air bubble or a dead 4 to 20 mA loop can all produce a true occurrence record from an untrue process condition.\n\n**Annunciation.** The alarm was presented to a person: horn, banner, page, autodialler. Occurrence and annunciation are the same instant on most simple systems, but they diverge whenever notification depends on a separate autodialler, a callout escalation tree or a suppressed display group. If your callout system has its own log, pull it. It is the only record that shows the alarm actually reached a human.\n\n**Acknowledgement.** Someone pressed acknowledge at a workstation, a panel or a phone keypad. That is all it proves. It proves an interaction, not a diagnosis, not a correction, and often not even attention. Acknowledgement on many systems silences the audible and changes the banner colour, which is exactly why it gets pressed reflexively during an alarm flood.\n\n**Return to normal (RTN).** The signal came back inside the configured condition, including any off-delay and deadband. RTN is a statement about the signal, same as occurrence. Water can be isolated, the filter offline and the process fully corrected while the alarm stays active because the analyser is still reading old water or is genuinely fouled. The reverse also happens: chatter produces an RTN every twenty seconds while the underlying problem never changed.\n\n**Suppression, shelving, cutout, out of service.** These are configuration states that stop annunciation. They must be logged with who, when, why, duration and what alternative monitoring was put in place.\n\n| Event field | What it proves | What it does not prove | Evidence weight |\n|---|---|---|---|\n| Occurrence | Signal crossed the configured condition | That the process actually changed | Low on its own |\n| Annunciation / callout | Alarm was presented or dialled out | That anyone received it | Medium |\n| Acknowledgement | A person interacted with the alarm | Cause identified, response started, or condition corrected | Low |\n| Operator action entry | A person states an action was taken | That the action had the intended effect | Medium |\n| Independent process confirmation | Valve feedback, flow change, second analyser, grab sample | Nothing about who decided it | High |\n| Return to normal | Signal is back inside the condition | That the cause was corrected | Medium |\n\nThe last row is the one that gets misread most often in post-event reviews. Restoration is proven by independent process evidence, not by a colour change on a screen.\n\n### Time is the evidence: clocks, scan rates and historian compression\n\nEvery reconstruction you write is an arithmetic statement about timestamps. If the clocks are wrong, the arithmetic is wrong and the conclusion is wrong.\n\nCheck four things before you subtract anything:\n\n1. **Source of time.** PLC, HMI workstation, historian server, autodialler and the analyser itself may each stamp events. If they are not all disciplined to the same time source, differences of seconds to minutes are normal and meaningless. Record which device stamped each row.\n2. **Time zone and daylight saving handling.** Historians commonly store in UTC and display in local time. A log exported by one person and a log exported by another can differ by exactly one hour and both be internally consistent.\n3. **Scan rate and logging rate.** An analyser updating every second, a PLC scanning every 100 ms and a historian logging on change with a 0.02 NTU compression deadband produce three different pictures of the same excursion. US EPA guidance on generating high quality turbidity data, EPA 815-B-19-010, discusses the measurement chain and SCADA data quality in exactly this sense. It is United States technical guidance and not Ontario law, but the measurement chain logic applies anywhere: the recorded number inherits every limitation of the sensor, the sample line, the signal path and the logging configuration.\n4. **Historian compression.** Swinging door or deadband compression discards intermediate points. A peak value you never see in the trend may still have existed. If you need the true peak, pull the alarm event value or the raw logger, not the compressed trend.\n\nWhere timestamps disagree, do not average them and do not pick the convenient one. State the offset, state how you established it, and carry the corrected value forward.\n\n### Worked example 1: separating chatter from unique conditions and sizing the fix\n\nSupplied case assumptions for this teaching example only. Fictional facility, fictional readings. Filter 3 effluent turbidimeter, tag AIT-3041. The site procedure for this fictional plant specifies a high alarm at 0.20 NTU with no deadband and no on-delay configured. These are example values, not authorized values for any real plant. Your own alarm values come from your approval and site procedures.\n\nGiven:\n- Review window: 2.0 h\n- Alarm occurrences logged: 172 occurrences\n- Returns to normal logged: 171 RTN\n- Signal noise observed on the raw trend: plus or minus 0.015 NTU about the mean\n- Noise period: about 20 s per cycle\n- Filter 3 flow during the window: 42 L/s, constant\n\nStep 1. Raw alarm rate.\n172 occurrences / 2.0 h = 86 occurrences/h\n\nStep 2. How many noise cycles were available to cause crossings.\n2.0 h x 3600 s/h = 7200 s\n7200 s / 20 s per cycle = 360 cycles\n\nStep 3. Compare.\n172 occurrences / 360 cycles = 0.48 occurrences per cycle\nInterpretation: roughly half the noise cycles produced a crossing, which is what you expect when the process mean is drifting slowly through the setpoint band. This is one condition, not 172 conditions.\n\nStep 4. Peak to peak noise.\n2 x 0.015 NTU = 0.030 NTU peak to peak\n\nStep 5. Deadband test.\nTo stop crossings by deadband alone, deadband must exceed peak to peak noise:\nrequired deadband > 0.030 NTU\nClear point would become 0.20 NTU - 0.030 NTU = 0.17 NTU\nJudgment check: the observed process baseline in this example is 0.18 NTU, which is above 0.17 NTU, so the alarm would latch in and never clear during normal operation. Deadband alone is the wrong tool here.\n\nStep 6. On-delay test.\nEach noise excursion above setpoint lasts roughly half a cycle:\n20 s / 2 = 10 s above setpoint per cycle\nChoose on-delay = 30 s, which is longer than 10 s, so noise alone cannot annunciate.\n\nStep 7. Price the delay in water.\n30 s x 42 L/s = 1260 L\n1260 L / 1000 L/m3 = 1.26 m3\n\n**Answer.** The 172 events represent one drifting condition sampled 172 times. A 30 s on-delay with a small 0.010 NTU deadband is the defensible proposal, and it carries an accepted detection delay of 1.26 m3 of filtered water per event at 42 L/s. That trade is a change to a safeguard. It goes through the facility change process and gets documented, tested and approved before anyone types it into the PLC.\n\n### Worked example 2: reconstructing a response and testing the explanation\n\nSupplied case assumptions for this teaching example only. Fictional readings.\n\n| Time (local) | Source | Event |\n|---|---|---|\n| 02:14:06 | PLC alarm log | AIT-3041 HI occurrence, 0.34 NTU |\n| 02:21:30 | HMI | Acknowledged, badge OP-14 |\n| 02:26:00 | Operator log | \"Called on-call maintenance\" |\n| 02:33:40 | Valve position feedback | Filter 3 effluent valve closed, filter isolated |\n| 03:05:12 | PLC alarm log | AIT-3041 RTN, 0.19 NTU |\n\nStep 1. Time to acknowledge.\n02:21:30 - 02:14:06 = 7 min 24 s\n(7 min x 60 s/min) + 24 s = 444 s\n\nStep 2. Time to effective action, taken as isolation confirmed by valve feedback.\n02:33:40 - 02:14:06 = 19 min 34 s\n(19 min x 60 s/min) + 34 s = 1174 s\n\nStep 3. Total alarm active duration.\n03:05:12 - 02:14:06 = 51 min 06 s\n(51 min x 60 s/min) + 6 s = 3066 s\n\nStep 4. Water exposed, onset to isolation, at a supplied constant 62 L/s.\n1174 s x 62 L/s = 72 788 L\n72 788 L / 1000 L/m3 = 72.8 m3\n\nStep 5. Alarm remained active after isolation.\n03:05:12 - 02:33:40 = 31 min 32 s\n(31 min x 60 s/min) + 32 s = 1892 s\n\nStep 6. Test the offered explanation, \"sample line lag\". Supplied sample line: 12 m of 6 mm internal diameter tubing at 500 mL/min sample flow.\nCross sectional area = (pi / 4) x (0.006 m)^2 = 0.7854 x 0.000036 m2 = 2.827 x 10^-5 m2\nVolume = 2.827 x 10^-5 m2 x 12 m = 3.393 x 10^-4 m3\n3.393 x 10^-4 m3 x 1000 L/m3 = 0.339 L = 339 mL\nTurnover time = 339 mL / 500 mL/min = 0.68 min\n0.68 min x 60 s/min = 41 s\n\n**Answer.** Time to acknowledge was 444 s, time to confirmed isolation was 1174 s, and 72.8 m3 passed the filter before isolation. Sample line lag is about 41 s, so it explains under 1 minute of the 1892 s the alarm stayed active after isolation. The \"sample line lag\" explanation must be rejected. The remaining candidates are a fouled or bubbled analyser, a passing isolation valve, or an analyser reading a stagnant sample. Each of those is checkable, and the check result becomes part of the record.\n\n### Building the response reconstruction record\n\nUse a fixed register so the same fields get captured every time and gaps are visible instead of invisible.\n\n| Field | Entry | Why it matters |\n|---|---|---|\n| Tag and description | AIT-3041 Filter 3 effluent turbidity | Identifies the measurement chain to verify |\n| Configured condition and delays | Value, deadband, on/off delay, as-found | Explains the event pattern |\n| Occurrence timestamp and source device | PLC or HMI or analyser | Anchors the arithmetic |\n| Annunciation / callout evidence | Autodialler log, page receipt | Shows the alarm reached a person |\n| Acknowledgement time, station, user | Badge or login | Interaction only |\n| Corroborating process evidence | Valve feedback, flow, second analyser, grab sample | Proves the process, not the screen |\n| Action taken and by whom | Role and name | Ties to duty and authority |\n| Verification of restoration | Independent measurement after action | Closes the loop |\n| Notification decision | Trigger assessed, who was notified, when | Separate obligation from alarm handling |\n| Suppression or shelving | Who authorized, reason, duration, alternative monitoring | Prevents hidden safeguards |\n| Records retained | File names, export dates, clock offsets applied | Makes the reconstruction repeatable |\n\nWrite actions in verifiable language. \"Called maintenance at 02:26\" is a request. \"Maintenance confirmed effluent valve seated, filter-to-waste started 02:41, confirmed by flow FIT-3042\" is evidence.\n\n### Suppression, shelving and the nuisance alarm trap\n\nA nuisance alarm is a real problem and deleting it is a real hazard. Before any configuration change, settle three questions in writing: is the measurement valid, is the condition process significant, and what was the original configuration intended to protect. If the measurement is invalid, fix the measurement chain. If the condition is significant, fix the process. Only if the configuration is genuinely mismatched to signal behaviour do you change delays or deadband, and then through the approved change process with a before and after alarm count.\n\nShelving is a temporary, time limited, logged state with compensating monitoring, for example an hourly grab reading recorded on a form while an analyser is out for service. If a shelved alarm has no expiry and no compensating measure, it is a removed safeguard.\n\n### Common errors\n\n**Treating acknowledgement as closure.** A ten second acknowledgement and an eleven hour active alarm is a normal pattern in a flood and proves nothing about response. Report time to acknowledge and time to verified corrective action as two separate numbers, always.\n\n**Counting events instead of conditions.** Reporting \"172 turbidity alarms\" when one filter drifted through setpoint for two hours overstates failures, buries the real cause and invites the wrong fix. Consolidate by condition and show the consolidation arithmetic.\n\n**Subtracting timestamps from different clocks without checking.** Mixing an HMI timestamp with an autodialler timestamp can produce a negative time to acknowledge, which is a clear sign of clock drift rather than time travel. Establish the offset first, apply it, and state it in the record.\n\n**Accepting a plausible explanation without quantifying it.** Sample line lag, instrument warm-up and analyser response time are all real, and all are measurable. Calculate them. If the numbers do not cover the gap, the explanation fails.\n\n**Using compressed trend data to claim a peak never happened.** Historian compression discards points by design. Pull the alarm event value or raw log before stating a maximum.\n\n### What to verify before you act\n\nConsult, in this order, before you change anything or sign a reconstruction:\n\n- Your facility's drinking water works approval, municipal drinking water licence and permit conditions, which govern the monitoring and the values that apply at your site. Alarm values in this lesson are example assumptions only.\n- The operational plan and the specific standard operating procedure for that alarm, including the assigned responding role and the required verification step.\n- O. Reg. 128/04, which addresses operator certification matters including designation, duties and records at sections 23 and 25 to 27. Confirm who was the designated overall responsible operator and the operator-in-charge during the event window, because the reconstruction must name the correct role, and confirm the record obligations that apply to your entries.\n- The applicable Ontario drinking water regulation and your site procedure for reporting triggers. If the event meets an adverse drinking water test result trigger, the reporting duty is an immediate verbal report followed by written notice within 24 hours after that report. Alarm handling and reporting are separate obligations, and satisfying one does not satisfy the other.\n- Calibration, verification and maintenance records for the instrument, plus the as-found and as-left alarm configuration, before you accept any reading as valid.\n- The management of change record and any prior alarm rationalization documentation before proposing delay, deadband or suppression changes.\n\nIf any of these cannot be located, say so in the record. A stated gap is usable evidence. A silent gap is not.",
+      "evidence": "### Fictional worked scenario: Maplecrest Water Treatment Plant\n\nAll facility details, operators, records and readings below are fictional and are used for training only. The alarm values are supplied case assumptions for this exercise, not authorized values for any real plant.\n\n**Supplied records (night shift, Filter 2 effluent turbidimeter AIT-2011):**\n\n| Time (as shown) | Source device | Entry |\n|---|---|---|\n| 23:47:05 | PLC alarm log | HI occurrence, 0.41 NTU |\n| 23:46:52 | HMI Workstation 2 | Acknowledged, user OP-31 |\n| 23:58:10 | Operator logbook | \"Alarm cleared by 23:50, no further action\" |\n| 00:41:30 | PLC alarm log | RTN, 0.17 NTU |\n\nOther supplied values: Filter 2 flow constant at 88 L/s. A maintenance ticket dated the next morning records that HMI Workstation 2 was found running 3 minutes fast against the plant time server and was resynchronized. The PLC and historian were confirmed synchronized.\n\n**Records that must be rejected.** The acknowledgement timestamp of 23:46:52 precedes the occurrence at 23:47:05, which is impossible, so the raw acknowledgement time cannot be used as written. The logbook claim that the alarm cleared by 23:50 is contradicted by the PLC alarm log, which shows the alarm active until 00:41:30. The logbook entry is an unsupported assertion and does not override the event log.\n\n**Worked solution.**\n\nCorrect the workstation clock offset:\n23:46:52 + 3 min = 23:49:52\n\nTime to acknowledge:\n23:49:52 - 23:47:05 = 2 min 47 s\n(2 min x 60 s/min) + 47 s = 167 s\n\nAlarm active duration:\n00:41:30 - 23:47:05 = 54 min 25 s\n(54 min x 60 s/min) + 25 s = 3265 s\n\nWater passed during the active alarm, at the supplied constant flow:\n3265 s x 88 L/s = 287 320 L\n287 320 L / 1000 L/m3 = 287.3 m3\n\n**Conclusion for the record.** Acknowledgement occurred 167 s after onset, which shows only that OP-31 interacted with the alarm. No corroborating process evidence exists: no valve feedback, no filter-to-waste start, no grab sample. The reconstruction therefore reports a verified acknowledgement, an unverified response, an active condition of 3265 s covering 287.3 m3, a rejected logbook entry and a documented 3 minute clock offset applied to all Workstation 2 timestamps.",
       "assignment": "Replace I6 with a 350–500-word response audit. Distinguish event states, identify missing evidence and assign follow-up ownership. Propose a controlled alarm-review agenda addressing repeated alarms, data quality and temporary monitoring. Explain what would be needed before marking the incident resolved.",
       "rubric": [
         "Does not mistake acknowledgement for resolution.",
@@ -208,30 +312,82 @@
       ],
       "checks": [
         {
-          "id": "ia1",
+          "id": "ceu-instrumentation-scada-alarm-evidence-c1",
           "objective": "alarm-evidence",
-          "prompt": "An acknowledged work request establishes:",
+          "prompt": "An HMI record shows a high turbidity alarm was acknowledged by badge OP-14. Taken alone, what does that acknowledgement entry prove?",
           "choices": [
-            "Repair complete",
-            "Request received",
-            "Process restored",
-            "Alarm correctly configured"
+            "That a person interacted with the alarm at a device",
+            "That the process condition was corrected on site",
+            "That the signal returned inside the alarm condition",
+            "That the cause of the alarm was correctly diagnosed"
           ],
-          "correctIndex": 1,
-          "explanation": "Acknowledgement establishes receipt, not execution."
+          "correctIndex": 0,
+          "explanation": "Acknowledgement proves an interaction only, often just silencing the audible and changing the banner. It does not prove diagnosis or correction, which is why the 'cause diagnosed' option is a common review error."
         },
         {
-          "id": "ia2",
+          "id": "ceu-instrumentation-scada-alarm-evidence-c2",
           "objective": "alarm-evidence",
-          "prompt": "A shelved alarm review should include:",
+          "prompt": "A PLC log shows AIT-3041 RTN at 0.19 NTU. In an evidence review, what does the return to normal entry establish on its own?",
           "choices": [
-            "Only the operator’s preferred screen colour",
-            "Only the total daily alarm count",
-            "Only the original installation year",
-            "Authorization, duration and alternative monitoring"
+            "That the filter has been returned to service",
+            "That the measured signal is inside the condition",
+            "That the operator response was timely and adequate",
+            "That the underlying cause has been corrected"
+          ],
+          "correctIndex": 1,
+          "explanation": "RTN is a statement about the signal, including deadband and off-delay. Assuming the cause was corrected is the classic misreading, since chatter can produce repeated RTNs while nothing about the process changed."
+        },
+        {
+          "id": "ceu-instrumentation-scada-alarm-evidence-c3",
+          "objective": "alarm-evidence",
+          "prompt": "Fictional log entries: alarm occurrence stamped 04:02:18 and acknowledgement stamped 04:09:45, both from the same clock source. What is the time to acknowledge in seconds?",
+          "choices": [
+            "363 s",
+            "427 s",
+            "447 s",
+            "507 s"
+          ],
+          "correctIndex": 2,
+          "explanation": "The difference is 7 min 27 s, and (7 x 60) + 27 = 447 s. The 427 s option comes from converting 7 min 27 s as 7 x 60 plus 7, a frequent arithmetic slip during reconstructions."
+        },
+        {
+          "id": "ceu-instrumentation-scada-alarm-evidence-c4",
+          "objective": "alarm-evidence",
+          "prompt": "In a post-event review of a fictional drinking water plant, which record carries the highest evidence weight that the process condition was actually restored?",
+          "choices": [
+            "The return to normal event stored in the PLC log",
+            "The banner colour change on the operator display",
+            "The acknowledgement timestamp from the workstation",
+            "Grab sample results agreeing with a second analyser"
           ],
           "correctIndex": 3,
-          "explanation": "Temporary shelving needs documented authorization, duration and alternative monitoring."
+          "explanation": "Independent process confirmation such as grab samples, a second analyser or valve feedback is high weight evidence. The RTN event is only medium weight because the analyser may be reading isolated or old water."
+        },
+        {
+          "id": "ceu-instrumentation-scada-alarm-evidence-c5",
+          "objective": "alarm-evidence",
+          "prompt": "A historian logs turbidity on change with a compression deadband configured at 0.02 NTU for this fictional example. What does that mean when you pull a trend for an excursion review?",
+          "choices": [
+            "Intermediate points, including a true peak, may be discarded",
+            "Compression raises the accuracy of the stored values",
+            "The trend records exactly what the analyser displayed",
+            "Every scanned value is preserved in the trend"
+          ],
+          "correctIndex": 0,
+          "explanation": "Swinging door or deadband compression discards points inside the deadband, so a real peak can be missing from the trend. If the peak matters, pull the alarm event value or the raw logger instead."
+        },
+        {
+          "id": "ceu-instrumentation-scada-alarm-evidence-c6",
+          "objective": "alarm-evidence",
+          "prompt": "An operator shelves a nuisance alarm during a fictional maintenance activity. For the record to be defensible, what should the entry contain?",
+          "choices": [
+            "The alarm setpoint value before and after the change",
+            "Who, when, why, duration and alternative monitoring used",
+            "Only the tag name and the shelving duration in minutes",
+            "A supervisor signature added at the end of the shift"
+          ],
+          "correctIndex": 1,
+          "explanation": "Suppression, shelving, cutout and out of service states stop annunciation, so they need who, when, why, duration and the alternative monitoring in place. A tag and duration alone leaves no evidence that coverage continued."
         }
       ]
     },
@@ -242,8 +398,8 @@
         "Assemble an auditable signal-quality report.",
         "Define post-change verification across the whole measurement chain."
       ],
-      "lesson": "### Verify the chain after a correction\nA configuration correction may fix the live display while leaving a historian transform, alarm threshold or report calculation inconsistent. Define the verification path before changing anything: raw signal, engineering conversion, quality flag, timestamp, display, stored value and downstream calculation.\n\nKeep an immutable copy of the original evidence and record the change ticket, authorized reviewer, implementation time and results. Historical data affected by a scaling error should be qualified. Reprocessing may be appropriate under a controlled method, but a corrected series must remain distinguishable from the original observations.\n\nSeparate investigation from implementation. An audit can identify a likely mismatch and quantify its effect without granting access to change a controller. The responsible technical team reviews the change, tests it under the authorized procedure and documents rollback conditions.\n\nA successful review should leave the next operator with fewer hidden assumptions. State what is verified, what remains provisional and which decisions are affected. Avoid a blanket “all SCADA data reliable” claim after repairing only one channel.",
-      "evidence": "**I7 — draft closeout**\n“Level fixed because communications showgood. Pump stopped 08:10 and pressure fell 08:12:30. Residual stayed 0.80 throughout. Alarmresolved 09:01. No historical qualification needed.”\n\nUseI1–I6. No actual configuration repair, independent residual reconstruction or final sample result has been supplied.",
+      "lesson": "### What a data audit is and what it can prove\n\nAn operational data audit answers one narrow question for each tag you examine: does the stored number mean what the person reading it thinks it means? It is not a calibration, it is not a repair, and it is not a blanket certification of the SCADA system. It is a documented comparison between an independent reference and every stage of the measurement chain, plus a written statement of what remains unverified.\n\nThe chain for a typical drinking water analyser has seven stages: the process sample or sensing element, the analyser and its local display, the transmitted signal (commonly a 4 to 20 mA loop or a digital protocol), the PLC or RTU input scaling, the historian tag configuration including any transform or compression, the operator display and alarm logic, and the report or compliance calculation that reads from the historian. A fault at any one stage can leave the other six looking healthy. That is why a single agreeing comparison at the operator screen proves almost nothing about the archived record.\n\nA useful audit produces three outputs. First, a quantified deviation for each checked tag with the reference method named. Second, a quality flag for each tag and a stated period of applicability. Third, a list of decisions that depend on the tag, so the supervisor can judge what is at risk while the tag is provisional. The US EPA guidance document Generating high-quality turbidity data (EPA 815-B-19-010) is useful US technical guidance on measurement chain thinking and data quality for turbidity instruments. It is not Ontario law and it does not set Ontario requirements. Your legal duties around who may make operating decisions and what records must be kept come from the regulations that apply to your system, including O. Reg. 128/04, which covers designation, the duties of operators and overall responsible operators, and records.\n\n### The signal-quality report and its input register\n\nBuild the report from a register, not from memory. One row per tag, filled in before you draw any conclusion. If a cell cannot be filled, that is itself a finding.\n\n| Field | What goes in it | Why it matters |\n| --- | --- | --- |\n| Tag and description | Exact historian tag name and plain description | Similar tags are the most common source of a wrong conclusion |\n| Source device | Make, model, serial, location | Ties evidence to a physical asset, not a screen |\n| Analyser engineering range | Range configured in the device itself | Half of scaling faults are a device range and input range mismatch |\n| PLC input scaling | Raw counts or mA range and the engineering span | Where the mismatch usually lives |\n| Historian transform | Averaging, compression deadband, unit conversion, offsets | A correct live value can still archive wrong |\n| Reference method used | Bench instrument, certified standard, portable meter, manual totalizer read | An audit without an independent reference is an opinion |\n| Reference value and time | Value with units and the clock time to the minute | Timestamp errors are invisible without this |\n| SCADA value at same time | Live value and historian value, recorded separately | Live and archived can differ |\n| Deviation | Absolute and percent of reading | Drives the quality flag |\n| Quality flag | Verified, provisional, suspect, rejected | The output the next operator actually uses |\n| Downstream uses | Alarms, reports, dose control, compliance calculation | Defines the consequence of the fault |\n| Evidence reference | Photo, printout, log page, file name | Makes the finding auditable later |\n\nRecord the live value and the historian value as two separate entries at the same minute. When they differ, you have isolated the fault to the historian side without touching the field device.\n\n### Worked example 1: a span mismatch and its effect on the record\n\nSupplied case assumptions for this teaching example, from a fictional plant. A filter effluent turbidimeter transmits 4 to 20 mA. The analyser is configured for 0 to 5 NTU. The PLC input block is configured for 0 to 10 NTU. A calibrated clamp meter reads the loop current at 6.40 mA at 09:14. A bench turbidimeter reads a grab sample at 0.76 NTU.\n\nStep 1. Convert loop current to percent of span.\n\n(6.40 mA - 4.00 mA) / (20.00 mA - 4.00 mA) = 2.40 mA / 16.00 mA = 0.1500, which is 15.00 percent of span.\n\nStep 2. Apply the analyser range.\n\n0.1500 x (5.00 NTU - 0.00 NTU) = 0.750 NTU. Analyser intent is 0.750 NTU.\n\nStep 3. Apply the PLC range.\n\n0.1500 x (10.00 NTU - 0.00 NTU) = 1.500 NTU. SCADA displays and archives 1.500 NTU.\n\nStep 4. Compare with the reference.\n\nBench reading 0.76 NTU. Analyser intent 0.750 NTU. Deviation = 0.76 NTU - 0.750 NTU = 0.01 NTU, which is 1.3 percent of reading. The analyser and the loop are sound.\n\nStep 5. Quantify the SCADA error.\n\n1.500 NTU / 0.750 NTU = 2.00. SCADA overstates by a factor of 2.00 across the entire range. Absolute error at this point = 1.500 NTU - 0.750 NTU = 0.750 NTU.\n\nStep 6. Express the correction for archived data.\n\nCorrected value = archived value / 2.00. For an archived reading of 0.36 NTU: 0.36 NTU / 2.00 = 0.18 NTU. For an archived reading of 1.04 NTU: 1.04 NTU / 2.00 = 0.52 NTU.\n\nAnswer: the field instrument is reading correctly within 0.01 NTU of the bench reference, and the SCADA input scaling doubles every value. Archived filter effluent turbidity for this tag is overstated by a factor of two for as long as the mismatch existed.\n\nNote the direction of the error. It is conservative for alarming, because it triggers early, and it is not conservative for anything that uses the record to demonstrate performance trends, because it makes the filter look worse than it was. Either way the record is wrong and must be qualified. The turbidity limits and monitoring requirements that apply to that filter come from O. Reg. 170/03 and the system's approval, so the compliance significance of a corrected series is decided against those documents, not against a rule of thumb.\n\n### Worked example 2: a unit conversion error found by mass balance\n\nSupplied case assumptions for this teaching example, from the same fictional plant. A raw water magnetic flow meter outputs flow in litres per second. A historian daily total tag was configured by multiplying the hourly average by 24, on the assumption the tag was in cubic metres per hour. Average flow for the day is steady at 62.0 L/s. The hypochlorite day tank log shows 67.0 L used, and the supplier certificate states 120 g available chlorine per litre of product.\n\nStep 1. True daily volume from the instantaneous flow.\n\n62.0 L/s x 86 400 s/d = 5 356 800 L/d.\n5 356 800 L/d / 1000 L/m3 = 5356.8 m3/d.\n\nStep 2. Value produced by the faulty historian calculation.\n\n62.0 (treated as m3/h) x 24 h/d = 1488 m3/d.\n\nStep 3. Discrepancy factor.\n\n5356.8 m3/d / 1488 m3/d = 3.60. This is exactly 3600 s/h divided by 1000 L/m3, which confirms the fault is a litres per second to cubic metres per hour conversion, not a meter problem.\n\nStep 4. Chlorine mass fed.\n\n67.0 L/d x 120 g/L = 8040 g/d = 8.040 kg/d.\n\nStep 5. Calculated dose using the true volume.\n\n8040 g/d / 5356.8 m3/d = 1.501 g/m3 = 1.50 mg/L.\n\nStep 6. Calculated dose using the faulty historian volume.\n\n8040 g/d / 1488 m3/d = 5.403 g/m3 = 5.40 mg/L.\n\nStep 7. Cross-check against measured residual. Treated water residual measured by the on-line analyser and confirmed by a portable colorimeter on a grab sample is 0.95 mg/L, and raw water chlorine demand at this plant has historically run near 0.5 to 0.6 mg/L.\n\n1.50 mg/L applied minus 0.95 mg/L measured = 0.55 mg/L apparent demand, consistent with history.\n5.40 mg/L applied minus 0.95 mg/L measured = 4.45 mg/L apparent demand, not consistent with any operating experience at this plant.\n\nAnswer: the daily volume tag is low by a factor of 3.60 because of a unit conversion error in the historian calculation, and every derived dose reported from that tag is high by the same factor. The mass balance, not the screen, is what proved it.\n\n### Defining post-change verification across the whole chain\n\nA correction that fixes the live display can leave the historian transform, the alarm block and the monthly report calculation inconsistent. Write the verification path before anyone edits a configuration, and test each stage with a value that is not zero and not full scale, because a mid-scale value exposes span errors that an at-zero check hides.\n\n| Chain stage | Post-change test | Acceptable evidence | Failure you are hunting |\n| --- | --- | --- | --- |\n| Sensor and sample | Grab sample or certified standard at mid-range | Bench result with time and analyst initials | Fouling, air lock, sample line lag |\n| Analyser | Local display against reference | Photo of display with reference value | Wrong device range, offset left in |\n| Signal path | Loop current measured at two points | Clamp meter readings in mA | Drift, ground loop, partial break |\n| PLC scaling | Simulated or measured mid-scale input | Value at controller compared with calculation | Span mismatch, wrong raw count range |\n| Historian tag | Same minute compared with live value | Trend export showing both | Transform, compression, wrong tag mapped |\n| Timestamp | Compare device, PLC and historian clocks | Clock readings to the second | Time zone and daylight time offsets |\n| Alarm logic | Force a test value through the configured setpoint | Alarm log entry | Alarm reading a different tag than the display |\n| Report and calculation | Recalculate one day by hand | Hand calculation sheet filed | Report pulling a stale or duplicate tag |\n\nSeparate investigation from implementation. An audit can identify the mismatch and quantify its effect without anyone holding change access to a controller. The responsible technical group makes the change under the authorized work procedure, with rollback conditions written down before the edit, and the operator-in-charge confirms the process condition is safe for the test. Keep an immutable copy of the original data export before any reprocessing, and make sure a corrected series stays visibly distinguishable from the original observations.\n\n### Common errors\n\nChecking only at zero. A span error produces zero deviation at zero flow or in clean water. Example 1 would have passed a zero check perfectly while doubling every operating value. Always verify at a mid-range point that reflects normal operation.\n\nComparing the live display to the reference and then declaring the archive correct. The historian can average, compress or transform the value after the display has already shown the right number. Record the live value and the archived value separately at the same minute.\n\nClearing the alarm and calling that verification. Silencing or acknowledging an alarm changes nothing about the measurement chain. An alarm that stops repeating after a configuration edit may simply be reading a tag that is now frozen.\n\nCorrecting history quietly. Overwriting archived values so the trend looks clean destroys the evidence and misrepresents what operators saw at the time. Qualify the affected period, keep the original, and document the method used for any reprocessing.\n\nDeclaring the whole system sound after fixing one channel. Write what was verified, over what period, by what reference, and what is still provisional.\n\n### What to verify before you act\n\nConsult the Drinking Water Works Permit and Municipal Drinking Water Licence, and the approval conditions that define continuous monitoring, recording and alarm requirements for the affected process, before changing anything that feeds a required record. Check O. Reg. 170/03 and the system's sampling and monitoring plan for what the tag is used to demonstrate. Check O. Reg. 128/04 for designation and duties, so you know who may direct the change, who may place the process in a test condition and what records of operator activity must be kept. Check the facility operations manual and the site change control or work order procedure for the authorized method, approvals, and rollback conditions. Check the instrument manufacturer's manual for the device range and the verification method it supports. Check the maintenance and calibration records for the device history, and check the standard operating procedure for reporting a result that turns out to be adverse.\n\nIf the audit shows that a corrected value would have been an adverse drinking water test result, follow the reporting duties that apply to your system. In Ontario that means an immediate verbal report to the parties named in the regulation, followed by written notice within 24 hours after that verbal report. Do not wait for the technical investigation to conclude before making the verbal report.\n\n### Qualifying historical data and handover\n\nEvery audit finding needs a period of applicability. Establish the start of the affected period from a dated artefact such as a commissioning record, a firmware change log, a work order or the first trend discontinuity, and say plainly if the start date is inferred rather than documented. Flag the affected period in the historian if the system supports quality codes, and if it does not, record the qualification in the operating log and in the monthly report notes.\n\nClose with a statement the next operator can use without interpretation: tag name, what was verified, the reference used, the deviation, the period affected, the correction factor, what was changed, who approved it, and which decisions remain provisional until the next verification. That statement, with the evidence files attached, is what makes the audit auditable.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are used only for training. No value here is an authorized setpoint or limit.\n\n**Scenario.** At the fictional Harrowgate Springs Water Treatment Plant, an operator reviewing Filter 2 effluent turbidity notices the trend sits higher than Filters 1 and 3 on the same raw water. Supplied records for the audit:\n\n- Filter 2 turbidimeter analyser range, read from the device menu on site: 0 to 5 NTU.\n- PLC analog input block scaling for tag FIT2_TURB: 0 to 10 NTU.\n- Loop current measured at the marshalling panel at 10:22 with a calibrated clamp meter: 7.20 mA.\n- Bench turbidimeter result on a Filter 2 effluent grab sample collected at 10:22: 0.97 NTU.\n- Historian value for FIT2_TURB at 10:22: 2.00 NTU.\n- Maintenance log entry dated three months earlier: \"Filter 2 turb loop verified OK, all good.\" No reference value, no reference instrument, no standard used, initials only.\n- Site alarm setpoint used in this example, taken from the fictional plant procedure: 1.00 NTU high alarm on FIT2_TURB.\n\n**Record to reject.** The \"verified OK\" maintenance entry cannot support any conclusion. It names no reference instrument, records no reference value and no engineering value, and it contradicts the measured evidence. Treat it as an unverified assertion and note it as a finding, not as calibration history.\n\n**Worked solution.**\n\nPercent of span: (7.20 mA - 4.00 mA) / (20.00 mA - 4.00 mA) = 3.20 mA / 16.00 mA = 0.2000, or 20.00 percent.\n\nAnalyser intent: 0.2000 x 5.00 NTU = 1.000 NTU.\n\nPLC and historian result: 0.2000 x 10.00 NTU = 2.000 NTU.\n\nReference comparison: bench 0.97 NTU against analyser intent 1.000 NTU gives a deviation of 0.03 NTU, which is 3.1 percent of reading. Sensor, analyser and loop are sound.\n\nScaling error factor: 2.000 NTU / 1.000 NTU = 2.00. Archived values are double.\n\nEffect on alarms: the true value 1.000 NTU sits at the example setpoint, while the archived 2.000 NTU sits well above it. Every archived value above 0.50 NTU true would have alarmed.\n\n**Conclusion.** Flag FIT2_TURB as suspect from the earliest dated evidence of the mismatch, export and preserve the original series before any edit, route the scaling correction through the site change procedure, then re-verify at mid-range across analyser, PLC, historian, alarm and report before restoring the tag to verified status.",
       "assignment": "Write a 500–700-word corrected audit and a post-change verification checklist. Quantify the scaling and timestamp corrections, identify stale-data and alarm-response limitations, and assign evidence owners. Include a versioned historical-data note and rollback criterion. Present to the instructor before assessment and evaluation.",
       "rubric": [
         "Corrects all five unsupported claims in I7.",
@@ -284,138 +440,346 @@
       ],
       "checks": [
         {
-          "id": "id1",
+          "id": "ceu-instrumentation-scada-data-audit-c1",
           "objective": "data-audit",
-          "prompt": "After correcting a display range, what else needs review?",
+          "prompt": "An operator compares the live filter effluent turbidity on the operator display with a bench turbidimeter reading and the two agree. What does this single comparison prove about the seven-stage measurement chain?",
           "choices": [
-            "Only the display font",
-            "Only the course score",
-            "Alarm thresholds and stored/report values",
-            "Nothing if communications are good"
-          ],
-          "correctIndex": 2,
-          "explanation": "Downstream configuration may remain inconsistent after a display correction."
-        },
-        {
-          "id": "id2",
-          "objective": "data-audit",
-          "prompt": "How should affected historical values be handled?",
-          "choices": [
-            "Retain originals and document qualifications",
-            "Silently replace every original entry",
-            "Delete the affected interval without a record",
-            "Declare all old values correct"
+            "Only the stages up to the display, not the historian transform or the report",
+            "The sensor, the loop and the alarm logic are all confirmed as fault free",
+            "The PLC input scaling and the historian compression deadband are correct",
+            "The stored record and the report calculation are also verified for that period"
           ],
           "correctIndex": 0,
-          "explanation": "Traceable qualification preserves the original evidence and the interpretation."
+          "explanation": "An agreeing screen comparison supports the sample, analyser, loop and display stages only. The historian transform, alarm logic and report calculation sit downstream and can still be wrong, so claiming the archived record is verified is the common error in this distractor set."
+        },
+        {
+          "id": "ceu-instrumentation-scada-data-audit-c2",
+          "objective": "data-audit",
+          "prompt": "Why does the signal-quality register require the live SCADA value and the historian value to be entered as two separate entries taken at the same minute?",
+          "choices": [
+            "It confirms the analyser engineering range matches the device nameplate",
+            "It isolates a historian-side fault without touching the field device",
+            "It doubles the sample count so the percent deviation is more reliable",
+            "It removes the need for an independent reference value in the register"
+          ],
+          "correctIndex": 1,
+          "explanation": "If live and archived values differ at the same minute, the fault is downstream of the field device, which points to the transform, compression or unit conversion. Extra entries do not improve statistics and never substitute for an independent reference method."
+        },
+        {
+          "id": "ceu-instrumentation-scada-data-audit-c3",
+          "objective": "data-audit",
+          "prompt": "In a fictional teaching example a turbidimeter transmits on a 4 to 20 mA loop and the analyser is configured for 0 to 5.00 NTU. A calibrated clamp meter reads 12.80 mA. What turbidity value is the analyser intending to transmit?",
+          "choices": [
+            "1.60 NTU",
+            "2.56 NTU",
+            "2.75 NTU",
+            "3.20 NTU"
+          ],
+          "correctIndex": 2,
+          "explanation": "Percent of span is (12.80 minus 4.00) divided by 16.00, which is 0.5500, and 0.5500 times 5.00 NTU gives 2.75 NTU. The 3.20 NTU distractor comes from treating the signal as 0 to 20 mA and ignoring the 4 mA live zero."
+        },
+        {
+          "id": "ceu-instrumentation-scada-data-audit-c4",
+          "objective": "data-audit",
+          "prompt": "When defining post-change verification for a measurement chain, why is the test value chosen at mid-range rather than at zero?",
+          "choices": [
+            "A full-scale value is the only way to confirm the alarm block responds",
+            "A zero check is enough because offsets cause all scaling faults",
+            "A mid-range value shortens the loop response time during the test",
+            "A mid-range value exposes span errors that a check at zero hides"
+          ],
+          "correctIndex": 3,
+          "explanation": "A range or span mismatch produces zero error at zero, so a single at-zero check can pass while every operating value is wrong. Offsets are only one failure mode, and test value choice does not change loop response time."
+        },
+        {
+          "id": "ceu-instrumentation-scada-data-audit-c5",
+          "objective": "data-audit",
+          "prompt": "Which set of outputs should a useful operational data audit produce for each tag it examines?",
+          "choices": [
+            "A quantified deviation with the reference named, a quality flag and affected decisions",
+            "A trend printout, an operator comment and an estimated instrument service date",
+            "A raw count table, a wiring diagram and a supplier quotation for replacement",
+            "A calibration certificate, a repair order and a signed system certification"
+          ],
+          "correctIndex": 0,
+          "explanation": "The audit reports a quantified deviation against a named reference, a quality flag with a stated period of applicability, and the decisions that depend on the tag. An audit is not a calibration or a repair, so certification and work order outputs are the wrong deliverables."
+        },
+        {
+          "id": "ceu-instrumentation-scada-data-audit-c6",
+          "objective": "data-audit",
+          "prompt": "The US EPA document Generating high-quality turbidity data (EPA 815-B-19-010) is cited in this module. What is its status for an Ontario drinking water system?",
+          "choices": [
+            "It sets the Ontario record keeping duties for turbidity historians",
+            "It is US technical guidance and does not set Ontario requirements",
+            "It is adopted directly as the Ontario turbidity monitoring standard",
+            "It overrides the system approval where turbidity data is concerned"
+          ],
+          "correctIndex": 1,
+          "explanation": "The EPA document is useful US technical guidance on measurement chain thinking. Ontario duties for monitoring and records come from the regulations that apply to the system, including O. Reg. 170/03 and O. Reg. 128/04, plus the system approval, so no US document replaces them."
         }
       ]
     }
   ],
   "finalAssessment": [
     {
-      "id": "instrumentation-scada-f1",
+      "id": "ceu-instrumentation-scada-signal-scaling-f1",
       "objective": "signal-scaling",
-      "prompt": "8 mA on a 0–12 m range represents:",
+      "prompt": "Fictional plant. A clearwell level transmitter is configured 0.00 m to 15.00 m linear. The controller engineering range for the same tag is 0.00 m to 12.00 m. A calibrated loop meter at the input test point reads 16.00 mA. What is the display error at this signal?",
       "choices": [
-        "6 m",
-        "3 m",
-        "8 m",
-        "12 m"
-      ],
-      "correctIndex": 1,
-      "explanation": "A quarter of the 12 m span is 3 m."
-    },
-    {
-      "id": "instrumentation-scada-f2",
-      "objective": "signal-scaling",
-      "prompt": "A receiver range differs from the transmitter range. First establish:",
-      "choices": [
-        "The threshold with the fewest notifications",
-        "Display precision",
-        "The value closest to the expected daily mean",
-        "Configuration records and a physical check"
-      ],
-      "correctIndex": 3,
-      "explanation": "Verify the documented measurement chain before changing it."
-    },
-    {
-      "id": "instrumentation-scada-f3",
-      "objective": "time-quality",
-      "prompt": "A clock 2 minutes ahead reports 10:12. Reference time is:",
-      "choices": [
-        "10:14",
-        "10:10",
-        "10:12",
-        "10:08"
-      ],
-      "correctIndex": 1,
-      "explanation": "Subtract the known two-minute lead."
-    },
-    {
-      "id": "instrumentation-scada-f4",
-      "objective": "time-quality",
-      "prompt": "A line joining two valid trend points proves:",
-      "choices": [
-        "Continuous movement along the plotted line",
-        "A constant process",
-        "Only the plotted points are recorded measurements",
-        "The last value held until the next point"
-      ],
-      "correctIndex": 2,
-      "explanation": "Drawing a line does not create intermediate observations."
-    },
-    {
-      "id": "instrumentation-scada-f5",
-      "objective": "alarm-evidence",
-      "prompt": "An alarm acknowledged at 11:00 is:",
-      "choices": [
-        "Necessarily a false alarm",
-        "Necessarily repaired at 11:00",
-        "Acknowledged at 11:00",
-        "Proof of restored water quality"
-      ],
-      "correctIndex": 2,
-      "explanation": "Acknowledgement has a narrower meaning than physical restoration."
-    },
-    {
-      "id": "instrumentation-scada-f6",
-      "objective": "alarm-evidence",
-      "prompt": "A one-minute normal state followed by recurrence suggests:",
-      "choices": [
-        "The condition needs continued review",
-        "Permanent restoration",
-        "Closure after acknowledgement",
-        "Removal of the original event from the log"
+        "The display reads 2.25 m low at this signal",
+        "The display reads 2.25 m high at this signal",
+        "The display reads 3.00 m low at this signal",
+        "The display reads 1.80 m high at this signal"
       ],
       "correctIndex": 0,
-      "explanation": "A brief normal state does not close a recurring condition."
+      "explanation": "Fraction of span is 0.7500, so true level is 11.25 m and the controller computes 9.00 m, an error of minus 2.25 m. The 3.00 m answer is the full scale difference between the two ranges, which only applies at 20.00 mA, not at 16.00 mA."
     },
     {
-      "id": "instrumentation-scada-f7",
-      "objective": "data-audit",
-      "prompt": "A corrected historical series should be:",
+      "id": "ceu-instrumentation-scada-signal-scaling-f2",
+      "objective": "signal-scaling",
+      "prompt": "Fictional records. An HMI residual faceplate reads 0.90 mg/L. The SCADA tag engineering range is 0.00 mg/L to 3.00 mg/L, while the analyser configuration printout shows 0.00 mg/L to 5.00 mg/L linear. What process value and loop current are implied?",
       "choices": [
-        "Indistinguishable from raw data",
-        "Used to delete the source records",
-        "Labelled as the original measurement",
-        "Versioned with a documented method"
+        "2.50 mg/L present on the loop at 9.60 mA",
+        "1.50 mg/L present on the loop at 8.80 mA",
+        "0.54 mg/L present on the loop at 8.80 mA",
+        "1.50 mg/L present on the loop at 7.60 mA"
+      ],
+      "correctIndex": 1,
+      "explanation": "The HMI fraction of span is 0.90 / 3.00 = 0.3000, giving 4.00 + 0.3000 x 16.00 = 8.80 mA, and under the device range that current is 0.3000 x 5.00 = 1.50 mg/L. The 0.54 mg/L option applies the ratio backwards and understates the true residual."
+    },
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-f3",
+      "objective": "signal-scaling",
+      "prompt": "Fictional example. A reservoir level transmitter is configured LRV 5.00 m and URV 25.00 m linear. A calibrated loop meter reads 14.00 mA. What is the correct level, and what does the common zero-based shortcut give?",
+      "choices": [
+        "Correct 12.50 m, while the shortcut gives 15.63 m",
+        "Correct 17.50 m, while the shortcut gives 20.00 m",
+        "Correct 17.50 m, while the shortcut gives 15.63 m",
+        "Correct 15.63 m, while the shortcut gives 17.50 m"
+      ],
+      "correctIndex": 2,
+      "explanation": "Fraction of span is 0.6250 and the span is 20.00 m, so level is 5.00 + 12.50 = 17.50 m. Treating the range as zero based gives 0.6250 x 25.00 = 15.63 m, which is the classic error when the lower range value is not zero."
+    },
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-f4",
+      "objective": "signal-scaling",
+      "prompt": "Fictional plant. A level display is smooth and plausible, but a calibrated loop meter reads 12.00 mA while the device printout shows LRV 0.00 m and URV 15.00 m. Which step best isolates which link in the chain is mis-scaled?",
+      "choices": [
+        "Replace the level transmitter and recommission the loop at span",
+        "Change the HMI decimal places so the trend matches operator estimates",
+        "Restart the HMI server and watch whether the level value shifts",
+        "Compare the device range printout with the controller scaling block"
       ],
       "correctIndex": 3,
-      "explanation": "Keep original and derived series distinguishable and traceable."
+      "explanation": "Scaling is assigned in the device, the controller and the historian, so comparing primary configuration records for the same tag against the measured current locates the disagreement. Restarting the HMI changes nothing because the mis-scaling is stored configuration, not a transient display fault."
     },
     {
-      "id": "instrumentation-scada-f8",
-      "objective": "data-audit",
-      "prompt": "Which closeout is strongest?",
+      "id": "ceu-instrumentation-scada-signal-scaling-f5",
+      "objective": "signal-scaling",
+      "prompt": "A certified operator at a fictional Ontario drinking water system finds that a residual tag has been recorded through a mismatched receiving range for months. Which response best fits the duties and record obligations under O. Reg. 128/04, sections 23 and 25 to 27?",
       "choices": [
-        "Documented checks across the full affected chain",
-        "Normal screen values",
-        "A correctly commanded setting",
-        "Acknowledgement of the work request"
+        "Document the finding, inform the operator in charge and follow procedures",
+        "Delete the suspect historian data so reports show only clean values",
+        "Quietly edit the HMI range and leave the previous records unchanged",
+        "Wait for the next scheduled calibration visit before doing anything"
       ],
       "correctIndex": 0,
-      "explanation": "Documented checks across the affected chain support closeout."
+      "explanation": "The regulation places designation, duty and record obligations on certified operators and the operator in charge, so the discovery must be documented and escalated and handled under the facility procedures and approval. Deleting historian data destroys the record evidence and does not address the configuration fault."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-f1",
+      "objective": "time-quality",
+      "prompt": "At a fictional plant, PLC-5 reads 07:59:30 when the reference clock reads 08:00:00 on 1 June, and reads 07:57:00 when the reference reads 08:00:00 on 1 July. Assuming linear drift, what offset applies to a record dated 11 June?",
+      "choices": [
+        "Plus 180 s, labelled as a measured offset",
+        "Plus 80 s, labelled as an estimated offset",
+        "Plus 50 s, labelled as an estimated offset",
+        "Plus 105 s, labelled as a measured offset"
+      ],
+      "correctIndex": 1,
+      "explanation": "Offsets are plus 30 s and plus 180 s, so drift is 150 s over 30 days, or 5 s/day. Ten days after 1 June gives 30 + 50 = 80 s, labelled estimated. Plus 50 s is only the accumulated drift and forgets the starting measured offset of 30 s."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-f2",
+      "objective": "time-quality",
+      "prompt": "An event is logged on PLC-5 at device time 13:10:00, and the documented estimated offset for that date is plus 80 s. Using reference time = device time + offset, what is the reference time of the event?",
+      "choices": [
+        "13:12:40, since the offset is applied twice over",
+        "13:08:40, since the offset is taken off the device time",
+        "13:11:20, since the offset is added to the device time",
+        "13:10:00, since offsets apply only to the reference clock"
+      ],
+      "correctIndex": 2,
+      "explanation": "A positive offset means the device clock is slow, so reference time is later: 13:10:00 plus 80 s is 13:11:20. Subtracting the offset moves the event the wrong way and would place it before unrelated upstream events on the normalized trend."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-f3",
+      "objective": "time-quality",
+      "prompt": "A fictional plant analyser draws sample through 3.0 m of 4 mm internal diameter tubing at 0.25 L/min. The manual states a 15 s instrument response time. What is the total measurement lag, transport plus response?",
+      "choices": [
+        "About 38 s, from a transport lag of 23 s plus response",
+        "About 9 s, as transport lag is the whole delay",
+        "About 15 s, as the response time dominates it",
+        "About 24 s, transport of 9 s plus 15 s response"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 3.1416 x (0.002 m)^2 = 1.257 x 10^-5 m^2; volume = 3.77 x 10^-5 m^3 = 37.7 mL; transport = 37.7 / 250 mL per min = 0.151 min = about 9 s; plus 15 s response gives about 24 s. Using 15 s alone ignores the water still travelling in the sample line."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-f4",
+      "objective": "time-quality",
+      "prompt": "At a fictional plant, 24 hourly chlorine residual records sum to 33.60 mg/L. Six of them are bit for bit identical at 1.30 mg/L while the sample line flow switch shows no flow. What mean should be reported for the valid records?",
+      "choices": [
+        "1.43 mg/L, averaging only the 18 valid records",
+        "1.35 mg/L, averaging valid records and half of the block",
+        "1.30 mg/L, using the held value to stand for the whole day",
+        "1.40 mg/L, averaging all 24 logged records"
+      ],
+      "correctIndex": 0,
+      "explanation": "Remove 6 x 1.30 = 7.80 mg/L, leaving 25.80 mg/L over 18 valid records, which is 1.43 mg/L. The 1.40 mg/L answer averages all 24 and lets values recorded with no sample flow contaminate the reported figure."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-f5",
+      "objective": "time-quality",
+      "prompt": "A documented plus 95 s offset was measured on PLC-3 on 17 March at a fictional plant. An investigator now wants to place a PLC-7 valve event on the same normalized timeline. What is the defensible next step?",
+      "choices": [
+        "Apply the PLC-3 offset, as both controllers share one network",
+        "Check PLC-7 against the reference clock and record the result",
+        "Assume PLC-7 is accurate because its trend looks consistent",
+        "Use the SCADA server receipt time for both of the event records"
+      ],
+      "correctIndex": 1,
+      "explanation": "Offsets are a per device measurement at a stated moment, so PLC-7 needs its own check against a traceable reference before any correction is applied. Borrowing the PLC-3 offset assumes a relationship that was never measured, which is why the register lists devices not checked."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-f1",
+      "objective": "alarm-evidence",
+      "prompt": "Fictional review of one turbidimeter tag over a 3.0 h window: 210 alarm occurrences logged. Raw trend noise has a period of about 15 s per cycle. Calculate the occurrence rate per hour and the occurrences per available noise cycle.",
+      "choices": [
+        "105 occurrences/h, about 0.29 crossings per noise cycle",
+        "63 occurrences/h, about 0.35 crossings per noise cycle",
+        "70 occurrences/h, about 0.29 crossings per noise cycle",
+        "70 occurrences/h, about 0.49 crossings per noise cycle"
+      ],
+      "correctIndex": 2,
+      "explanation": "210 / 3.0 h = 70 per hour. Cycles available are 3.0 x 3600 = 10 800 s divided by 15 s = 720, so 210 / 720 = 0.29 per cycle. The 0.49 figure comes from using a 25 s cycle and overstates how often noise crossed the condition."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-f2",
+      "objective": "alarm-evidence",
+      "prompt": "Supplied case values for a fictional plant: sample line is 8 m of 4 mm internal diameter tubing at a sample flow of 400 mL/min. Calculate the sample line turnover time.",
+      "choices": [
+        "About 60 s of sample line turnover time",
+        "About 6 s of sample line turnover time",
+        "About 25 s of sample line turnover time",
+        "About 15 s of sample line turnover time"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 0.7854 x (0.004 m)^2 = 1.257 x 10^-5 m2; volume = x 8 m = 1.005 x 10^-4 m3 = 100.5 mL; 100.5 / 400 mL/min = 0.25 min = about 15 s. The 60 s answer comes from treating 4 mm as a radius, which quadruples the volume."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-f3",
+      "objective": "alarm-evidence",
+      "prompt": "Fictional records: HI occurrence 01:48:12, acknowledged 01:55:00, valve feedback confirms filter isolated 02:07:42. Filter flow is constant at 55 L/s in this example. How much filtered water passed from onset to confirmed isolation?",
+      "choices": [
+        "64.4 m3 of filtered water passed",
+        "22.4 m3 of filtered water passed",
+        "41.9 m3 of filtered water passed",
+        "70.1 m3 of filtered water passed"
+      ],
+      "correctIndex": 0,
+      "explanation": "Onset to isolation is 19 min 30 s = 1170 s; 1170 x 55 = 64 350 L = 64.4 m3. The 22.4 m3 option uses onset to acknowledgement, which measures interaction rather than effective action confirmed by valve feedback."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-f4",
+      "objective": "alarm-evidence",
+      "prompt": "In a fictional reconstruction, the PLC stamps one event at 02:14:06 while the autodialler stamps the same event at 02:12:51. The devices are not disciplined to a common time source. What is the defensible way to proceed?",
+      "choices": [
+        "Use the earlier stamp because it is more conservative",
+        "State the offset, how it was established, and carry it forward",
+        "Discard the autodialler row and rely on the PLC log only",
+        "Average the two stamps and report the mean time"
+      ],
+      "correctIndex": 1,
+      "explanation": "Where timestamps disagree you record which device stamped each row, state the measured offset and the method used, then carry corrected values forward. Averaging invents a time that no device recorded and cannot survive review."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-f5",
+      "objective": "alarm-evidence",
+      "prompt": "In a fictional event, the filter was isolated at 02:33:40 with valve feedback, but the turbidity alarm stayed active until 03:05:12. Calculated sample line turnover is 41 s. What conclusion is supported?",
+      "choices": [
+        "The RTN timestamp should be corrected back to the isolation time",
+        "Sample line lag accounts for the full 31 min 32 s period",
+        "Lag explains under a minute, so another cause must be evidenced",
+        "The isolation clearly failed and the valve feedback is wrong"
+      ],
+      "correctIndex": 2,
+      "explanation": "41 s of turnover cannot explain 1892 s of continued alarm, so fouling, stagnant sample water or an analyser fault must be investigated with independent evidence. Editing the RTN stamp to match isolation falsifies the record."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-f1",
+      "objective": "data-audit",
+      "prompt": "Fictional example. A turbidimeter is configured for 0 to 4.00 NTU and the PLC input block for the same 4 to 20 mA loop is set 0 to 5.00 NTU. The bench reference agrees with the analyser. An archived value reads 0.45 NTU. What is the corrected value?",
+      "choices": [
+        "0.45 NTU, because input scaling does not affect archived data",
+        "0.56 NTU, because the archive understates by a factor of 1.25",
+        "0.29 NTU, because the archive understates by a factor of 1.56",
+        "0.36 NTU, because the archive overstates by a factor of 1.25"
+      ],
+      "correctIndex": 3,
+      "explanation": "The PLC span is 5.00 divided by 4.00, so archived values are 1.25 times the analyser intent, and 0.45 divided by 1.25 gives 0.36 NTU. The 0.56 NTU choice multiplies instead of dividing, which reverses the direction of a known overstating error."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-f2",
+      "objective": "data-audit",
+      "prompt": "Fictional example. Steady raw water flow measured in litres per second is 48.0 L/s. A historian daily total tag multiplies the hourly average by 24, assuming the tag is in cubic metres per hour. What is the true daily volume and the discrepancy factor?",
+      "choices": [
+        "4147.2 m3/d true, historian low by a factor of 3.60",
+        "1152.0 m3/d true, historian high by a factor of 3.60",
+        "4147.2 m3/d true, historian low by a factor of 24.0",
+        "2880.0 m3/d true, historian low by a factor of 2.50"
+      ],
+      "correctIndex": 0,
+      "explanation": "48.0 L/s times 86 400 s/d divided by 1000 L/m3 gives 4147.2 m3/d, while the faulty calculation gives 1152.0 m3/d, a ratio of 3.60, which equals 3600 divided by 1000. Calling 1152.0 m3/d the true volume accepts the historian output as the reference, which is the fault under audit."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-f3",
+      "objective": "data-audit",
+      "prompt": "Fictional example. Using a corrected daily volume of 4147.2 m3/d, a day tank log showing 55.0 L of hypochlorite used, and a supplier certificate of 130 g available chlorine per litre, what is the calculated applied chlorine dose?",
+      "choices": [
+        "0.58 mg/L",
+        "1.72 mg/L",
+        "2.15 mg/L",
+        "6.21 mg/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "Chlorine fed is 55.0 L times 130 g/L, which is 7150 g/d, and 7150 g/d divided by 4147.2 m3/d gives 1.72 g/m3 or 1.72 mg/L. The 6.21 mg/L result comes from dividing by the faulty 1152.0 m3/d volume, which is the error the audit is meant to catch."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-f4",
+      "objective": "data-audit",
+      "prompt": "Fictional records. At 10:22 a bench turbidimeter reads 0.42 NTU and the live SCADA value reads 0.43 NTU, but the historian trend for 10:22 shows 0.25 NTU. Where does this evidence place the fault?",
+      "choices": [
+        "PLC input scaling span mismatch between device and input block",
+        "Loop current drift or a partial break in the 4 to 20 mA wiring",
+        "Historian side, such as a transform, compression deadband or offset",
+        "Sensor fouling or an air lock in the analyser sample line"
+      ],
+      "correctIndex": 2,
+      "explanation": "The reference and the live value agree within 0.01 NTU, so everything up to the display is sound and only the archived number disagrees, which points to the historian configuration. A PLC scaling mismatch would also distort the live value, so that distractor is ruled out by the agreeing live reading."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-f5",
+      "objective": "data-audit",
+      "prompt": "A PLC input scaling error on a chlorine residual tag has been corrected at a fictional plant. Which post-change verification path best matches the module guidance before the tag is flagged verified?",
+      "choices": [
+        "Zero and full-scale simulation at the PLC, then release the tag as verified",
+        "Operator screen comparison at one point, with the historian left unchecked",
+        "Bench grab sample only, with the report calculation reviewed next quarter",
+        "Mid-range reference check, then live value, archived value, alarm and report checks"
+      ],
+      "correctIndex": 3,
+      "explanation": "Verification must follow the whole chain with a mid-range value, confirming the live value, the archived value, alarm response and the report or compliance calculation. A zero and full-scale simulation can pass while mid-range archived values and the report calculation remain inconsistent."
     }
   ],
   "sources": [
@@ -436,5 +800,267 @@
       "accessed": "2026-09-24"
     }
   ],
-  "version": "2026-09-24.1"
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-a1",
+      "objective": "signal-scaling",
+      "prompt": "Fictional plant. A tank level transmitter is configured 0.00 m to 8.00 m linear, but the controller engineering range is 0.00 m to 10.00 m. The loop reads 14.00 mA. With a supplied plan area of 200 m squared, what volume error does the record carry?",
+      "choices": [
+        "About 250 m cubed recorded but not actually stored",
+        "About 250 m cubed stored but missing from the record",
+        "About 400 m cubed recorded but not actually stored",
+        "About 125 m cubed stored but missing from the record"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fraction of span is 0.6250, so the true level is 5.00 m while the controller computes 6.25 m, an over-reading of 1.25 m, and 1.25 m x 200 m squared is 250 m cubed. The reverse direction answer misreads which range is larger, since the receiver span exceeds the device span here."
+    },
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-a2",
+      "objective": "signal-scaling",
+      "prompt": "Fictional records. An HMI reads 2.75 mg/L for a residual tag whose SCADA engineering range is 0.00 mg/L to 5.00 mg/L, while the analyser is configured 0.00 mg/L to 2.00 mg/L linear. What is the true residual at that moment?",
+      "choices": [
+        "0.44 mg/L",
+        "1.10 mg/L",
+        "2.75 mg/L",
+        "6.88 mg/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "The HMI fraction of span is 2.75 / 5.00 = 0.5500, which corresponds to 12.80 mA, and under the device range that is 0.5500 x 2.00 = 1.10 mg/L. The 6.88 mg/L option multiplies instead of dividing by the range ratio and exceeds the device span, which should flag the method as wrong."
+    },
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-a3",
+      "objective": "signal-scaling",
+      "prompt": "Fictional example. A well level transmitter is configured LRV 1.50 m and URV 9.50 m linear. A calibrated loop meter reads 17.20 mA. What is the correct level?",
+      "choices": [
+        "6.60 m",
+        "7.84 m",
+        "8.10 m",
+        "8.25 m"
+      ],
+      "correctIndex": 2,
+      "explanation": "Fraction of span is (17.20 - 4.00) / 16.00 = 0.8250, and 1.50 + 0.8250 x 8.00 = 8.10 m. The 7.84 m answer comes from the zero-based shortcut 0.8250 x 9.50, which ignores the 1.50 m lower range value."
+    },
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-a4",
+      "objective": "signal-scaling",
+      "prompt": "Fictional tag audit. A device is configured 0.00 m to 10.00 m while the controller engineering range is 1.00 m to 11.00 m. How will the recorded level compare with the true level across the loop range?",
+      "choices": [
+        "Reads correctly at 4.00 mA and 1.00 m high at 20.00 mA",
+        "Reads 1.00 m low at the bottom and correctly at the top",
+        "Reads high by a growing percentage as the level increases",
+        "Reads 1.00 m high by the same amount at every current"
+      ],
+      "correctIndex": 3,
+      "explanation": "Both spans are 10.00 m, so only the zero differs and the offset is a constant plus 1.00 m at every signal, including 4.00 mA and 20.00 mA. The growing error patterns belong to span mismatches, where the two scalings agree at one end and diverge at the other."
+    },
+    {
+      "id": "ceu-instrumentation-scada-signal-scaling-a5",
+      "objective": "signal-scaling",
+      "prompt": "At a fictional Ontario plant, the residual used in a contact time calculation came from a tag whose receiving range did not match the analyser configuration. What is the sound way to treat the affected calculations?",
+      "choices": [
+        "Treat the residual input as invalid and recompute from verified data",
+        "Ignore the issue because contact time depends mainly on temperature",
+        "Multiply the earlier results by the range ratio and refile them",
+        "Accept them since the trend shape and alarms looked normal"
+      ],
+      "correctIndex": 0,
+      "explanation": "A corrupted residual invalidates an input rather than simply shifting a result, and contact time credit is condition specific, depending on disinfectant, temperature, pH, residual and the approved hydraulic basis, so the work must be redone with verified values. Scaling the old answers assumes a simple proportionality that does not hold."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-a1",
+      "objective": "time-quality",
+      "prompt": "At a fictional plant, PLC-9 reads 14:00:45 when the reference clock reads 14:00:00 on 1 March, and reads 14:02:15 when the reference reads 14:00:00 on 31 March. Assuming linear drift, what offset applies to a record dated 21 March?",
+      "choices": [
+        "Minus 60 s, recorded as an estimated offset",
+        "Minus 105 s, recorded as an estimated offset",
+        "Minus 90 s, recorded as a measured offset",
+        "Plus 105 s, recorded as an estimated offset"
+      ],
+      "correctIndex": 1,
+      "explanation": "Offsets are minus 45 s and minus 135 s, so drift is minus 90 s over 30 days, or minus 3 s/day. Twenty days on gives minus 45 plus minus 60 = minus 105 s, labelled estimated. Minus 60 s reports only the drift and drops the measured starting offset."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-a2",
+      "objective": "time-quality",
+      "prompt": "A PLC-9 alarm is logged at device time 09:30:00, and the documented estimated offset for that date is minus 105 s. Using reference time = device time + offset, what is the alarm time on the reference timeline?",
+      "choices": [
+        "09:28:55, since only one minute is removed",
+        "09:31:45, since a negative offset is subtracted",
+        "09:28:15, since the negative offset is added on",
+        "09:30:00, since offsets apply to trends only"
+      ],
+      "correctIndex": 2,
+      "explanation": "Adding minus 105 s to 09:30:00 gives 09:28:15, because the device clock is fast and reads later than the reference. Subtracting the negative value moves the alarm ahead by 105 s and can wrongly place it after a downstream event."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-a3",
+      "objective": "time-quality",
+      "prompt": "An analyser at a fictional plant draws sample through 5.0 m of 6 mm internal diameter tubing at 0.40 L/min, with a stated 10 s instrument response time. What is the total measurement lag from sample point to reading?",
+      "choices": [
+        "About 10 s, since transport is not significant",
+        "About 41 s, from 31 s of transport plus response",
+        "About 21 s, the transport time on its own",
+        "About 31 s, 21 s transport plus 10 s response"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 3.1416 x (0.003 m)^2 = 2.827 x 10^-5 m^2; volume = 1.414 x 10^-4 m^3 = 141.4 mL; transport = 141.4 / 400 mL per min = 0.353 min = about 21 s; plus 10 s response gives about 31 s. Reporting 21 s omits the analyser settling time."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-a4",
+      "objective": "time-quality",
+      "prompt": "At a fictional plant, 36 chlorine residual records logged every 20 minutes sum to 68.40 mg/L. Nine consecutive records are identical at 1.95 mg/L while the analyser status contact reads fault. What mean should be reported for the valid records?",
+      "choices": [
+        "1.88 mg/L, averaging only the 27 valid records",
+        "1.95 mg/L, taking the held value as the daily figure",
+        "1.41 mg/L, dividing the valid sum by all 36 records",
+        "1.90 mg/L, averaging all 36 of the logged records"
+      ],
+      "correctIndex": 0,
+      "explanation": "Remove 9 x 1.95 = 17.55 mg/L, leaving 50.85 mg/L over 27 valid records, which is 1.88 mg/L. The 1.41 mg/L answer divides the reduced sum by the original record count, which double penalizes the data and understates the true mean."
+    },
+    {
+      "id": "ceu-instrumentation-scada-time-quality-a5",
+      "objective": "time-quality",
+      "prompt": "A communication link at a fictional plant stalls for 15 minutes, then recovers and delivers a burst of records that the historian stamps on receipt. What does the trend now show, and what should be recorded?",
+      "choices": [
+        "A steady value across the stall, which needs no further comment",
+        "Fifteen minutes of history collapsed to one point, annotated as such",
+        "A genuine process excursion at the moment the burst arrived",
+        "Correct process times, because the device clock stamped each record"
+      ],
+      "correctIndex": 1,
+      "explanation": "Stamping on receipt compresses 15 minutes of process history into one instant and leaves the preceding interval blank, so the block is annotated and the originals kept. Reading the burst as a real excursion misattributes a communications artefact to the process."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-a1",
+      "objective": "alarm-evidence",
+      "prompt": "Fictional review of one analyser tag over a 2.5 h window: 135 alarm occurrences logged. Raw trend noise has a period of about 25 s per cycle. Calculate the occurrence rate per hour and the occurrences per available noise cycle.",
+      "choices": [
+        "67 occurrences/h, about 0.38 crossings per noise cycle",
+        "45 occurrences/h, about 0.25 crossings per noise cycle",
+        "54 occurrences/h, about 0.38 crossings per noise cycle",
+        "54 occurrences/h, about 0.56 crossings per noise cycle"
+      ],
+      "correctIndex": 2,
+      "explanation": "135 / 2.5 h = 54 per hour. Cycles are 2.5 x 3600 = 9000 s divided by 25 s = 360, so 135 / 360 = 0.38 per cycle. The 0.56 value comes from using 240 cycles and would overstate the share of cycles that crossed the setpoint."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-a2",
+      "objective": "alarm-evidence",
+      "prompt": "Supplied example values for a fictional filter: noise is plus or minus 0.012 NTU with a 24 s period, baseline 0.185 NTU, high alarm 0.20 NTU, flow 38 L/s. A 30 s on-delay is proposed. What detection delay volume is accepted per event?",
+      "choices": [
+        "2.28 m3 of filtered water per event",
+        "11.4 m3 of filtered water per event",
+        "0.57 m3 of filtered water per event",
+        "1.14 m3 of filtered water per event"
+      ],
+      "correctIndex": 3,
+      "explanation": "30 s x 38 L/s = 1140 L = 1.14 m3. The 0.57 m3 option uses 15 s, half the delay. Any such change to a safeguard goes through the facility change process and is documented and approved before it is entered in the PLC."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-a3",
+      "objective": "alarm-evidence",
+      "prompt": "Supplied case values for a fictional plant: sample line is 15 m of 6 mm internal diameter tubing at a sample flow of 600 mL/min. Calculate the sample line turnover time.",
+      "choices": [
+        "About 42 s of sample line turnover time",
+        "About 170 s of sample line turnover time",
+        "About 21 s of sample line turnover time",
+        "About 85 s of sample line turnover time"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area = 0.7854 x (0.006 m)^2 = 2.827 x 10^-5 m2; volume = x 15 m = 4.24 x 10^-4 m3 = 424 mL; 424 / 600 = 0.71 min = about 42 s. The 170 s answer results from using 6 mm as a radius rather than the internal diameter."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-a4",
+      "objective": "alarm-evidence",
+      "prompt": "Two staff export the same fictional alarm log from the historian. One export shows onset at 23:41 and the other shows 22:41, and both files are internally consistent. What is the most likely explanation?",
+      "choices": [
+        "The PLC scan rate shifted the stamp by a full hour",
+        "One export applied a different time zone or DST display",
+        "The historian compression deadband removed an hour of data",
+        "The alarm occurred twice and one occurrence was dropped"
+      ],
+      "correctIndex": 1,
+      "explanation": "Historians commonly store in UTC and render in local time, so an exact one hour difference points to the display setting. Compression discards values inside a deadband and never shifts timestamps by an hour."
+    },
+    {
+      "id": "ceu-instrumentation-scada-alarm-evidence-a5",
+      "objective": "alarm-evidence",
+      "prompt": "A fictional log shows 96 HI occurrences and 95 RTN events on one turbidimeter tag within 40 minutes, with observed trend noise of about 25 s per cycle. What is the most defensible reading of this record?",
+      "choices": [
+        "An analyser failure because occurrences exceed RTN events",
+        "Ninety six separate process excursions each needing action",
+        "One condition crossing the setpoint repeatedly, still active",
+        "Ninety five corrections proven by the logged RTN events"
+      ],
+      "correctIndex": 2,
+      "explanation": "One occurrence more than RTN events means the condition was still active at the window end, and the pattern matches a mean drifting through the setpoint with noise. Treating each RTN as a correction misreads a signal event as process evidence."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-a1",
+      "objective": "data-audit",
+      "prompt": "Fictional example. A chlorine residual analyser is ranged 0 to 5.00 mg/L on a 4 to 20 mA loop, while the PLC input block is set 0 to 4.00 mg/L. A calibrated clamp meter reads 11.20 mA. What does SCADA archive and what is the archived to true ratio?",
+      "choices": [
+        "2.25 mg/L archived, ratio of 1.00 compared with analyser intent",
+        "2.81 mg/L archived, ratio of 1.25 compared with analyser intent",
+        "1.44 mg/L archived, ratio of 0.64 compared with analyser intent",
+        "1.80 mg/L archived, ratio of 0.80 compared with analyser intent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Percent of span is (11.20 minus 4.00) divided by 16.00, which is 0.4500. The analyser intends 0.4500 times 5.00 equals 2.25 mg/L, while the PLC produces 0.4500 times 4.00 equals 1.80 mg/L, a ratio of 0.80. The 2.25 mg/L choice assumes the two ranges match, which is the fault present."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-a2",
+      "objective": "data-audit",
+      "prompt": "Fictional example. Steady raw water flow is 90.0 L/s but the historian daily total tag reads 2160 m3/d. The day tank log shows 100 L of hypochlorite used at 120 g available chlorine per litre. What is the applied dose using the true daily volume?",
+      "choices": [
+        "1.54 mg/L",
+        "3.86 mg/L",
+        "5.56 mg/L",
+        "0.43 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "True volume is 90.0 L/s times 86 400 s/d divided by 1000, which is 7776 m3/d, and 12 000 g/d divided by 7776 m3/d gives 1.54 mg/L. The 5.56 mg/L figure uses the faulty 2160 m3/d tag and is high by the same factor of 3.60 as the volume error."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-a3",
+      "objective": "data-audit",
+      "prompt": "Fictional plant data. Applied dose calculated from a suspect daily volume tag is 5.56 mg/L, the measured treated residual confirmed by portable colorimeter is 0.90 mg/L, and plant history shows raw water demand near 0.5 to 0.7 mg/L. What is best supported?",
+      "choices": [
+        "The day tank log volume is wrong, so re-measure the tank level and reset it",
+        "The volume tag reads low, so the derived dose is overstated; check the conversion",
+        "Raw water demand has risen sharply, so increase the hypochlorite feed rate now",
+        "The residual analyser reads low, so recalibrate it before any other checking"
+      ],
+      "correctIndex": 1,
+      "explanation": "An apparent demand of 4.66 mg/L is inconsistent with all operating experience at that plant, while the residual was confirmed by a second independent method, so the volume tag and its unit conversion are the suspect stage. Raising the feed rate acts on a number that the mass balance has already contradicted."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-a4",
+      "objective": "data-audit",
+      "prompt": "A historian averaging and compression setting on a raw water flow tag was edited at a fictional plant. Which test gives auditable evidence that the archive now represents the process?",
+      "choices": [
+        "Confirm that the PLC raw counts match the flow meter nameplate range values",
+        "Re-zero the flow meter and accept the archived values that follow the edit",
+        "Compare the archived value against an independent reference at a stated minute",
+        "Watch the operator trend for a visible step change for one hour after the edit"
+      ],
+      "correctIndex": 2,
+      "explanation": "Only a recorded comparison of the archived value against a named independent reference, with the clock time and evidence reference, is auditable later. Watching a trend produces an impression with no reference value and no record tying the finding to a physical asset."
+    },
+    {
+      "id": "ceu-instrumentation-scada-data-audit-a5",
+      "objective": "data-audit",
+      "prompt": "A data audit at a fictional plant examined four of eleven turbidity tags. What must the signal-quality report state about the seven tags that were not examined?",
+      "choices": [
+        "They are provisional until the next scheduled instrument calibration date",
+        "They need no entry because only tags that were checked belong in a report",
+        "They inherit the verified flag of the four tags checked on the same day",
+        "They remain unverified, and the report must say so with the flags used"
+      ],
+      "correctIndex": 3,
+      "explanation": "An audit must include a written statement of what remains unverified, with the quality flags and the period of applicability. Assigning a flag by inheritance or by a future calibration date attaches a confidence level that no reference measurement supports."
+    }
+  ]
 }

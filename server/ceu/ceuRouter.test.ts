@@ -9,7 +9,7 @@ describe("CEU public API boundary", () => {
   it("serves public lessons without case or final answer keys and hides authored marking notes", async () => {
     const c = await ceuRouter.createCaller(ctx()).course({ courseKey });
     expect(c.modules).toHaveLength(4);
-    expect(c.finalQuestionCount).toBe(8);
+    expect(c.finalQuestionCount).toBe(20);
     expect(JSON.stringify(c)).not.toContain('"correctIndex"');
     expect(JSON.stringify(c)).not.toContain('"facilitatorGuide"');
     expect(JSON.stringify(c)).not.toContain('"rubric"');

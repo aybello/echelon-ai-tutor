@@ -16,8 +16,8 @@
         "Compare candidate doses within stated constraints.",
         "Separate repeatability from a causal treatment conclusion."
       ],
-      "lesson": "### Compare candidates on more than one outcome\nA jar test is a controlled bench comparison, not permission to change full-scale operation. Record sample identity, temperature, dose basis, mixing and settling conditions, analytical method and replication. If these vary with dose, the apparent dose effect may be confounded.\n\nCalculate the mean of replicate results, but keep the individual values visible. A mean of 0.60 NTU from 0.55 and 0.65 is different evidence from the same mean obtained from 0.10 and 1.10. With only two replicates, a narrow spread is encouraging but does not establish reliable performance across source-water conditions.\n\nThe lowest settled turbidity is not automatically the best candidate. A dose may violate a supplied pH constraint, increase residual chemical concerns, consume alkalinity or impair downstream performance. Select a candidate against all stated criteria and identify what remains to be tested.\n\nIn the example below, the pH band and turbidity screening value are fictional trial criteria, not regulatory limits. A bench candidate that meets them still requires an authorized scale-up protocol. Report “candidate for further evaluation,” not “optimal dose proven.”",
-      "evidence": "**F1 — identical bench procedure, same source sample**\n| Dose,mg/L active | Settled turbidity replicates,NTU | Final pH |\n|---:|---|---:|\n|8|1.4,1.6|7.1|\n|12|0.6,0.8|6.8|\n|16|0.4,0.5|6.2|\n\nFictional screening criteria: mean settled turbidity≤0.8 NTU and finalpH 6.5–7.5. No filtered-water or residual chemical results are available. F2: a second source-water batch is colder and has lower alkalinity; it has not been tested.",
+      "lesson": "### What a replicated jar test can and cannot prove\n\nA jar test is a small, tightly controlled bench comparison run on one grab sample of raw water under one set of mixing and settling conditions. It produces a ranking of candidate doses for that water, on that day, measured on that turbidimeter, by that operator. It does not produce an authorized full-scale dose, and on its own it does not establish that the dose caused the difference you observed.\n\nTwo separate questions get confused constantly. The first is repeatability: if I run the same dose three times in the same session, how much do the answers scatter? The second is causation: is the gap between Dose A and Dose B larger than that scatter, and does it persist when the raw water, temperature and operator change? Replication answers the first question directly. It only contributes to the second question when the replicates are true replicates, meaning independently dosed jars rather than three readings from one jar or three readings of one cuvette.\n\nThree readings of the same cuvette measure instrument noise. Three readings of three aliquots from one jar measure instrument noise plus sampling noise. Three independently dosed and independently settled jars measure instrument noise plus sampling noise plus dosing and mixing variability. Only the third one tells you whether the bench method can actually distinguish two doses. Label which kind of replication you ran on the bench sheet, because a reviewer cannot tell afterward and the three kinds give very different spreads.\n\nAlso be honest about what the response variable is. Settled supernatant turbidity is a proxy for floc formation and settleability. It is not filtered water turbidity, it is not filter run length, it is not residual aluminium, and it is not disinfection performance. A dose that wins on settled turbidity can lose on every one of those.\n\n### Controlling everything except the dose\n\nIf anything other than dose varies systematically across jars, the apparent dose effect is confounded and the run is not interpretable. Fix and record the following for the whole run: raw water sample identity, time and location of collection, sample temperature at the time of dosing, raw turbidity, raw pH, raw alkalinity, coagulant product and lot, stock solution strength and preparation date, order and timing of chemical addition, rapid mix speed and duration, flocculation speed and duration, settling time, sampling depth for the supernatant, and the turbidimeter identifier with its last calibration and verification.\n\nTemperature deserves particular attention. Cold water slows flocculation kinetics and raises viscosity, so a fixed settling time penalises a dose more at 3 degrees Celsius than at 18 degrees Celsius. If your jars warm up under the lamp over a two hour session, the last jars are not comparable to the first. Randomise or reverse the dose order across jars so that any drift in time, temperature or operator technique does not line up with dose order.\n\nThe measurement chain matters as much as the chemistry. The US EPA guidance on generating high-quality turbidity data treats the sensor, the sample path, the calibration record and the data system as one chain, where the weakest element sets the usable resolution. The US EPA field turbidity measurement guidance sets out the practical quality control: calibration verification with a check standard before the run, matched and indexed sample cells, clean and scratch-free glass, degassing or careful pouring to avoid bubbles, and consistent time between pour and read. These are United States technical references. Your own laboratory or site procedure and your approved analytical method govern what you actually do in Ontario.\n\nHere is a register that works as the live bench sheet.\n\n| Jar | Target dose (mg/L as alum) | Stock strength (mg/mL) | Stock volume added (mL) | Delivered dose corrected for volume (mg/L) | pH after rapid mix | Settled turbidity, replicate set (NTU) | Mean (NTU) | Range (NTU) | Constraint flags |\n|---|---|---|---|---|---|---|---|---|---|\n| 1 | 18.0 | 6.45 | 5.58 | 17.95 | 6.92 | 1.02 / 1.11 / 0.98 | 1.04 | 0.13 | pass pH |\n| 2 | 22.0 | 6.45 | 6.82 | 21.93 | 6.81 | 0.74 / 0.69 / 0.78 | 0.74 | 0.09 | pass pH |\n| 3 | 26.0 | 6.45 | 8.06 | 25.90 | 6.70 | 0.62 / 0.71 / 0.66 | 0.66 | 0.09 | pass pH |\n| 4 | 30.0 | 6.45 | 9.30 | 29.86 | 6.55 | 0.58 / 0.61 / 0.57 | 0.59 | 0.04 | pass pH |\n| 5 | 34.0 | 6.45 | 10.54 | 33.82 | 6.21 | 0.48 / 0.59 / 0.52 | 0.53 | 0.11 | fails trial pH floor |\n| 6 | 38.0 | 6.45 | 11.78 | 37.78 | 5.98 | 0.44 / 0.51 / 0.47 | 0.47 | 0.07 | fails trial pH floor |\n\n### Worked example 1: from drum strength to delivered dose\n\nSupplied case assumptions for this teaching example only, all fictional: liquid aluminium sulphate as delivered has a density of 1.330 g/mL and is 48.5 percent by mass as alum, Al2(SO4)3 with 14 waters of hydration. Raw water alkalinity is 42 mg/L as CaCO3. Jar volume is 2.00 L. Target dose is 30.0 mg/L expressed as alum product.\n\nStep 1, mass of alum per litre of neat product:\n1.000 L product x 1000 mL/L = 1000 mL product\n1000 mL x 1.330 g/mL = 1330 g product\n1330 g product x 0.485 g alum/g product = 645.0 g alum per litre of product\n\nStep 2, prepare the bench stock by diluting 10.0 mL of neat product to 1.000 L:\n645.0 g alum/L x 0.0100 L = 6.450 g alum\n6.450 g alum / 1.000 L = 6.450 g/L = 6450 mg/L = 6.45 mg/mL\n\nStep 3, mass of alum required in the jar:\n30.0 mg/L x 2.00 L = 60.0 mg alum\n\nStep 4, stock volume to pipette:\n60.0 mg / 6.45 mg/mL = 9.30 mL of stock\n\nStep 5, correct for the volume you just added:\nfinal volume = 2.000 L + 0.00930 L = 2.0093 L\ndelivered dose = 60.0 mg / 2.0093 L = 29.86 mg/L as alum\nerror against target = (30.0 - 29.86) / 30.0 x 100 = 0.47 percent\n\nStep 6, restate the dose on the aluminium basis, because plant records and supplier data sheets often differ:\nmolar mass of Al2(SO4)3 with 14 waters = 594.4 g/mol\nmass of Al per mole = 2 x 26.98 g/mol = 53.96 g/mol\nAl fraction = 53.96 / 594.4 = 0.0908 g Al per g alum\n29.86 mg/L as alum x 0.0908 = 2.71 mg/L as Al\n\nStep 7, estimate alkalinity consumption using the textbook stoichiometric factor for this hydrate, 0.505 mg alkalinity as CaCO3 consumed per mg of alum:\n29.86 mg/L x 0.505 = 15.1 mg/L as CaCO3 consumed\n42 mg/L - 15.1 mg/L = 26.9 mg/L as CaCO3 remaining\n\nAnswer: pipette 9.30 mL of 6.45 mg/mL stock into a 2.00 L jar to deliver 29.86 mg/L as alum, equal to 2.71 mg/L as Al, with an estimated residual alkalinity of about 26.9 mg/L as CaCO3 in this fictional case.\n\nThe judgment point is step 5 and step 6. A 0.47 percent volume error is trivial. If you had used a weak 500 mg/L stock you would have added 120 mL to a 2.00 L jar, a 6 percent dilution of the raw water itself, which changes raw turbidity and alkalinity across jars in proportion to dose. That is a confounded run. Conversely, a very strong stock forces you to pipette under 1 mL, where pipette error becomes the dominant variability. Choose a stock strength that keeps additions in roughly the 2 mL to 15 mL range for a 2 L jar, and record it.\n\n### Worked example 2: is the difference between two doses bigger than the bench noise\n\nSupplied case assumptions, fictional day 1 run: raw water 8.4 NTU at 6 degrees Celsius. Dose A is 26 mg/L as alum with independently dosed triplicate jars reading 0.62, 0.71 and 0.66 NTU settled. Dose B is 34 mg/L with triplicate jars reading 0.48, 0.59 and 0.52 NTU settled.\n\nStep 1, means:\nA: (0.62 + 0.71 + 0.66) NTU / 3 = 1.99 NTU / 3 = 0.6633 NTU\nB: (0.48 + 0.59 + 0.52) NTU / 3 = 1.59 NTU / 3 = 0.5300 NTU\ndifference = 0.6633 NTU - 0.5300 NTU = 0.1333 NTU\n\nStep 2, sample variance for A:\ndeviations = -0.0433, +0.0467, -0.0033 NTU\nsquares = 0.001875 + 0.002178 + 0.000011 = 0.004064 NTU squared\nvariance = 0.004064 / (3 - 1) = 0.002032 NTU squared\nstandard deviation = 0.0451 NTU\n\nStep 3, sample variance for B:\ndeviations = -0.0500, +0.0600, -0.0100 NTU\nsquares = 0.002500 + 0.003600 + 0.000100 = 0.006200 NTU squared\nvariance = 0.006200 / 2 = 0.003100 NTU squared\nstandard deviation = 0.0557 NTU\n\nStep 4, pooled repeatability standard deviation:\npooled variance = (0.002032 + 0.003100) / 2 = 0.002566 NTU squared\npooled standard deviation = 0.0507 NTU\n\nStep 5, standard error of the difference:\n0.0507 NTU x square root of (1/3 + 1/3) = 0.0507 x 0.8165 = 0.0414 NTU\n\nStep 6, least significant difference at 95 percent confidence with 4 degrees of freedom, t = 2.776:\n2.776 x 0.0414 NTU = 0.115 NTU\n\nStep 7, compare:\nobserved difference 0.1333 NTU is greater than 0.115 NTU\n\nAnswer for day 1: the 0.133 NTU improvement from Dose A to Dose B is larger than the run repeatability can explain at 95 percent confidence in this fictional data set.\n\nNow the second half of the judgment. Supplied fictional day 2 run, raw water 4.1 NTU at 9 degrees Celsius, same procedure: Dose A reads 0.55, 0.60 and 0.58 NTU, mean = 1.73 / 3 = 0.5767 NTU. Dose B reads 0.56, 0.62 and 0.57 NTU, mean = 1.75 / 3 = 0.5833 NTU. Difference = 0.5767 - 0.5833 = -0.0067 NTU, which is far inside the pooled repeatability computed above.\n\nSo the day 1 result was repeatable within the session and did not reproduce across sessions. The correct written conclusion is that the benefit of the higher dose appears conditional on higher raw turbidity and colder water in this fictional pair of runs, and that a causal treatment conclusion is not supported by two runs on two waters. One more caution: 0.115 NTU is close to the practical resolution of many bench turbidimeters near 0.5 NTU. If your check standard tolerance and cell to cell bias, documented per your site procedure and consistent with the US EPA field turbidity measurement guidance, are wider than the least significant difference, the statistics are describing instrument behaviour, not coagulation.\n\n### Screening candidates against the stated constraints\n\nLowest settled turbidity does not win by default. Score every candidate against every stated criterion and record the criterion source beside it. The criteria below are fictional trial screening values chosen for this example, not regulatory limits and not authorized setpoints.\n\n| Criterion (fictional trial value) | Basis in this example | Dose 26 mg/L | Dose 30 mg/L | Dose 34 mg/L |\n|---|---|---|---|---|\n| Settled turbidity at or below 0.80 NTU | bench screening target | 0.66, pass | 0.59, pass | 0.53, pass |\n| Coagulation pH 6.3 to 6.8 after rapid mix | plant validated operating band | 6.70, pass | 6.55, pass | 6.21, fail |\n| Residual alkalinity at or above 20 mg/L as CaCO3 | finished water stability target | 28.9, pass | 26.9, pass | 24.8, pass |\n| Estimated Al carryover acceptable | plant historical correlation | pass | pass | not assessed |\n| No change required to downstream pH correction | run constraint | pass | pass | fail, caustic required |\n| Overall | | candidate | preferred candidate | rejected under stated constraints |\n\nDose 34 mg/L gave the lowest settled turbidity and is still rejected, because it breaches the stated pH band and would only work with an added base dose that was not part of the tested condition. Adding caustic creates a different experiment that must be run as such, with the base dose recorded as its own variable.\n\nThe pH consequence reaches further than the clarifier. Coagulation pH shifts the pH of water arriving at the disinfection contactor. The Ontario Procedure for Disinfection of Drinking Water treats CT as condition specific, depending on the disinfectant, temperature, pH, measured residual and the approved hydraulic basis such as T10 for the specific contactor configuration. A coagulation change that moves pH therefore touches disinfection performance and must be evaluated against the facility approval and the approved CT basis, not assumed to be an improvement because free chlorine is generally more effective at lower pH.\n\n### Common errors\n\nFirst error: calling three readings of one jar a triplicate. This understates variability, sometimes by a factor of three or more, which makes the least significant difference artificially small and lets you declare a dose difference that does not exist. Independently dosed jars or nothing.\n\nSecond error: reporting only the mean. A mean of 0.60 NTU from 0.55 and 0.65 NTU is evidence of a settled, controlled bench method. The same mean from 0.10 and 1.10 NTU is evidence that something in the procedure is out of control, most often floc disturbance while sampling the supernatant or an uncontrolled settling time. Always carry the individual values and the range beside the mean.\n\nThird error: using a weak stock solution so that high-dose jars receive a much larger volume of dilution water than low-dose jars. Dose and dilution then move together and you cannot separate them. Check the added volume as a percentage of jar volume and keep it small and roughly similar across jars.\n\nFourth error: skipping the calibration verification because the instrument \"was fine yesterday\", then reporting differences of 0.1 NTU. Without a pre-run check standard result on the bench sheet, the numbers cannot be defended.\n\nFifth error: writing \"optimum dose\" on the sheet. Bench work identifies a candidate for further evaluation. Anything stronger invites someone to change the plant on the strength of six jars.\n\n### What to verify before you act\n\nBefore a bench candidate influences anything at full scale, check these specific documents and records, not memory. The facility Drinking Water Works Permit and Municipal Drinking Water Licence, including the approved process description and any chemical or dose conditions. The Environmental Compliance Approval or equivalent approval instrument that governs the treatment train. The plant operational plan and the documented procedure for coagulant dose changes, including who may authorize a change, the required monitoring during the change and the rollback trigger. The approved CT basis and the Ontario Procedure for Disinfection of Drinking Water for anything that shifts pH, temperature effects or contact conditions. The laboratory or site analytical procedure and calibration records for the turbidimeter used, consistent with the quality control expectations described in the US EPA field turbidity measurement guidance and the US EPA guidance on generating high-quality turbidity data, both of which are United States technical references rather than Ontario law. Finally, confirm your own authority under O. Reg. 128/04, which sets out operator designation, duties and record requirements at sections 23 and 25 to 27. A bench result never overrides the designation and authorization structure.\n\n### Records, wording and scale-up\n\nRetain the raw bench sheet with individual replicate values, not a typed summary. Retain the stock preparation record including product lot, density or assay used, dilution made and date prepared, because stock strength drift is a common hidden cause of a run that will not reproduce. Retain the pre-run and post-run calibration verification results and the instrument identifier. Retain raw water characterisation at the time of sampling: turbidity, pH, alkalinity, temperature and any relevant organics indicator. Retain the mixing and settling parameters used. If any jar was disturbed, spilled, mis-dosed or read late, record it and keep the value with a note instead of deleting it.\n\nWord the conclusion so it survives review. A defensible sentence looks like this: \"Under the stated bench conditions on the fictional dates shown, 30 mg/L as alum is a candidate for further evaluation. It met the trial pH band and the settled turbidity screening value, with a replicate range of 0.04 NTU. The higher 34 mg/L candidate produced lower settled turbidity but fell outside the trial pH band and is rejected without a paired base dose trial. The dose effect observed at high raw turbidity did not reproduce at lower raw turbidity, so no causal treatment conclusion is drawn. Scale-up requires authorization under the facility approval and an approved trial protocol with defined monitoring and rollback.\"\n\nWhen a condition changes, the decision changes. Colder water usually needs longer flocculation before settled turbidity means anything, so a fixed 20 minute settling time may misrank doses in winter. Higher raw organics shift the dose needed for charge neutralisation upward and pull coagulation pH down harder. A coagulant product change, even the same chemical from a different supplier, changes the density and assay and therefore the stock strength calculation in worked example 1. A turbidimeter swap changes the resolution assumption in worked example 2. In each case, rerun the bench comparison rather than reusing the old conclusion.",
+      "evidence": "### Fictional worked scenario\n\nAll facilities, operators, records and readings below are fictional and are used only for training. No value here is an authorized setpoint or a regulatory limit.\n\n**Setting.** Maple Hollow Water Treatment Plant, fictional. Operator M. Trudel runs a six-jar comparison on 14 February. Raw water: 9.6 NTU, pH 7.68, alkalinity 44 mg/L as CaCO3, 4 degrees Celsius. Bench stock recorded as 6450 mg/L as alum, that is 6.45 mg/mL. Jar volume 2.00 L. Fictional trial screening criteria for this run: settled turbidity at or below 0.80 NTU and coagulation pH between 6.3 and 6.8.\n\n**Supplied bench sheet.**\n\n| Jar | Recorded dose (mg/L) | Stock added (mL) | pH after mix | Settled turbidity (NTU) |\n|---|---|---|---|---|\n| A | 22.0 | 6.82 | 6.79 | 0.74 / 0.69 / 0.78 |\n| B | 30.0 | 9.30 | 6.55 | 0.58 / 0.61 / 0.57 |\n| C | 38.0 | 6.00 | not recorded | 0.21 (single jar) |\n\nHandwritten note on the sheet: \"38 mg/L confirmed optimum, set full scale to 38.\"\n\n**Solution.**\n\nCheck Jar C against the stock record:\n6.00 mL x 6.45 mg/mL = 38.7 mg alum\n38.7 mg / 2.00 L = 19.35 mg/L as alum\n\nThe recorded 38.0 mg/L is unsupported. The jar actually received about 19.4 mg/L, roughly half the labelled dose. The 0.21 NTU result also breaks the trend set by Jars A and B, where turbidity falls as dose rises, which is a second independent flag that the jar or the reading is wrong. Jar C has no replicate and no pH entry, so it cannot be screened against the pH criterion at all. Reject Jar C and the handwritten conclusion.\n\nVerify the two usable jars:\nJar A: (0.74 + 0.69 + 0.78) / 3 = 2.21 / 3 = 0.7367 NTU, range 0.09 NTU\nJar B: (0.58 + 0.61 + 0.57) / 3 = 1.76 / 3 = 0.5867 NTU, range 0.04 NTU\ndifference = 0.7367 - 0.5867 = 0.1500 NTU\n\nAlkalinity check on Jar B using the stoichiometric factor 0.505 mg as CaCO3 per mg alum:\n30.0 mg/L x 0.505 = 15.2 mg/L as CaCO3\n44 - 15.2 = 28.8 mg/L as CaCO3 remaining\n\n**Conclusion to record.** Jar B at 30.0 mg/L as alum is a candidate for further evaluation: it met both fictional trial criteria with a replicate range of 0.04 NTU. Jar C is void and must be rerun with correct stock volume, triplicate jars and a pH reading. No dose change may be made at full scale on this evidence.",
       "assignment": "Calculate means and ranges, select a defensible next-test candidate and explain rejected alternatives. Draft a 300–450-word bench-to-pilot plan identifying controlled variables, replication, downstream checks and authorization. Explain why F2 requires new evidence and why the word “optimal” would overstate F1.",
       "rubric": [
         "Calculates the replicate means and screening decisions correctly.",
@@ -58,30 +58,82 @@
       ],
       "checks": [
         {
-          "id": "fj1",
+          "id": "ceu-coagulation-filtration-jar-design-c1",
           "objective": "jar-design",
-          "prompt": "Results 0.6 and 0.8 have a mean of:",
+          "prompt": "In a bench jar session, an operator reads the same cuvette three times and logs the three values as replicates. What does that spread actually measure?",
           "choices": [
-            "0.2",
-            "0.7",
-            "1.4",
-            "0.48"
+            "Instrument noise alone, without sampling or dosing variability",
+            "Instrument noise plus sampling noise from separate aliquots",
+            "Instrument noise plus dosing and mixing variability combined",
+            "True jar to jar variability of the bench coagulation procedure"
           ],
-          "correctIndex": 1,
-          "explanation": "Add the two results and divide by two: 0.70 NTU."
+          "correctIndex": 0,
+          "explanation": "Re-reading one cuvette only repeats the measurement step, so it captures turbidimeter noise. Three aliquots from one jar would add sampling noise, and only independently dosed and independently settled jars add dosing and mixing variability, so the jar to jar option overstates what this spread can show."
         },
         {
-          "id": "fj2",
+          "id": "ceu-coagulation-filtration-jar-design-c2",
           "objective": "jar-design",
-          "prompt": "The lowest turbidity candidate violates the supplied pH criterion. It is:",
+          "prompt": "A jar test ranks candidate doses using settled supernatant turbidity. Which statement best describes what that response variable does and does not represent?",
           "choices": [
-            "Automatically preferred",
-            "Ready for unrestricted scale-up",
-            "Outside the stated screening constraints",
-            "Evidence that pH can be ignored"
+            "It indicates disinfection performance because turbidity shields pathogens",
+            "It proxies floc formation and settleability, not filtered water turbidity",
+            "It predicts filter run length once bench floc strength looks adequate",
+            "It measures residual aluminium carried through the settled supernatant"
+          ],
+          "correctIndex": 1,
+          "explanation": "Settled turbidity is a proxy for floc formation and settling under one fixed bench condition. Filter run length, residual aluminium and disinfection performance are separate response variables, so the filter run length option treats a bench proxy as if it predicted plant filter behaviour."
+        },
+        {
+          "id": "ceu-coagulation-filtration-jar-design-c3",
+          "objective": "jar-design",
+          "prompt": "Jars are dosed lowest to highest over a two hour session under a bench lamp, and sample temperature rises from 7 to 12 degrees Celsius. Why is reversing or randomising dose order recommended?",
+          "choices": [
+            "So the turbidimeter can be calibrated between each dosed jar",
+            "So warmer jars flocculate faster and mask the lowest dose result",
+            "So time and temperature drift does not line up with dose order",
+            "So the highest dose always gets the longest settling period"
           ],
           "correctIndex": 2,
-          "explanation": "The candidate must meet every stated screening constraint."
+          "explanation": "If drift in time, temperature or technique follows dose order, the apparent dose effect is confounded with that drift. Deliberately giving the highest dose the longest settling period would itself create a systematic difference other than dose, which is exactly what must be avoided."
+        },
+        {
+          "id": "ceu-coagulation-filtration-jar-design-c4",
+          "objective": "jar-design",
+          "prompt": "For a 2.00 L jar test with target doses from 18 to 38 mg/L as alum, which bench stock choice best limits both dilution of the raw water and pipette error?",
+          "choices": [
+            "A 500 mg/L stock needing about 120 mL of addition per jar",
+            "A very strong stock needing under 1 mL of addition per jar",
+            "Neat product added directly by drops so no dilution occurs at all",
+            "A stock needing roughly 2 to 15 mL of addition per 2.00 L jar"
+          ],
+          "correctIndex": 3,
+          "explanation": "Additions in the range of a few millilitres keep the raw water dilution negligible while staying above the volume where pipette error dominates. A 120 mL addition dilutes the raw water by about 6 percent in proportion to dose, which confounds raw turbidity and alkalinity across the jars."
+        },
+        {
+          "id": "ceu-coagulation-filtration-jar-design-c5",
+          "objective": "jar-design",
+          "prompt": "In a fictional bench register, mean settled turbidity falls from 1.04 NTU at 18 mg/L to 0.47 NTU at 38 mg/L as alum, but the 34 and 38 mg/L jars are flagged as failing the trial pH floor. Which candidate dose is best within the stated constraints?",
+          "choices": [
+            "30 mg/L, the lowest turbidity among jars passing the pH check",
+            "38 mg/L, since it gave the lowest settled turbidity of the run",
+            "34 mg/L, since its pH flag is only marginally below the floor",
+            "18 mg/L, since the lowest dose is safest for alkalinity margin"
+          ],
+          "correctIndex": 0,
+          "explanation": "Candidate doses are compared only within the stated constraints, so flagged jars are out of contention no matter how low their turbidity reads. Choosing 38 mg/L ranks on turbidity alone and ignores the pH constraint that the trial itself defined for this fictional exercise."
+        },
+        {
+          "id": "ceu-coagulation-filtration-jar-design-c6",
+          "objective": "jar-design",
+          "prompt": "Two fictional jar runs use identical procedure and a fixed 20 minute settling time, one at 3 degrees Celsius and one at 18 degrees Celsius. How should the colder run be interpreted?",
+          "choices": [
+            "The colder run can be compared directly if raw turbidity values match",
+            "Slower kinetics and higher viscosity penalise doses at fixed settling",
+            "Cold water floc settles faster, so the results overstate dose performance",
+            "Temperature has no effect once rapid mix energy and time are matched"
+          ],
+          "correctIndex": 1,
+          "explanation": "Cold water slows flocculation kinetics and raises viscosity, so a fixed settling time makes every dose look worse at 3 degrees Celsius. Claiming faster settling in cold water reverses the physics, and matching raw turbidity alone does not remove the temperature confounder."
         }
       ]
     },
@@ -92,8 +144,8 @@
         "Convert solution delivery to active chemical dose.",
         "Reconcile pump indication with a measured delivery check."
       ],
-      "lesson": "### Name the chemical basis\nA dose can refer to product mass, active ingredient or another equivalent basis. State it. For a solution specified by mass fraction, active mass delivery is solution flowL/hour × densitykg/L × active mass fraction. Dividekg/hour by water flowm³/hour and multiply by 1,000 to obtainmg/L active dose.\n\nFor 10 L/hour of solution with density 1.20 kg/L and active fraction 0.10, delivery is 1.20 kg/hour. At 100 m³/hour of water, the dose is 12 mg/L active. Treating 10% as 10 rather than 0.10 creates a hundredfold error. Assuming a density of 1 when it is 1.20 changes the result by 20% relative to that assumed-density estimate.\n\nA controller setpoint is not a measurement of delivered solution. A documented calibration or authorized drawdown test can reveal the difference. Measurement uncertainty, pulsation, line condition, solution concentration and instrument scaling may affect the comparison. The calculation does not authorize opening chemical lines or conducting a test outside the site safety procedure.\n\nDocument the lot/concentration basis and the calibration conditions. A correct pump curve for yesterday's product may not establish today's active dose if concentration changed. Verify each term before changing a setpoint.",
-      "evidence": "**F3 — authorized test results already collected**\nController indicates 15 L/hour. Calibration vessel volume falls 0.90 L over 4 minutes. Product density 1.15 kg/L; active fraction 0.12 by mass. Water flow 180 m³/hour. The fictional trial target is 11 mg/L active.\n\nF4: A proposed replacement product is 10% active with the same stated density. No pump adjustment or use has been authorized.",
+      "lesson": "### The dose basis question comes before any arithmetic\n\nA chemical dose is meaningless until you say what it is a dose *of*. The same alum pump running at the same speed can be correctly described as 38 mg/L, 6.6 mg/L or 3.5 mg/L, and all three numbers can be right at the same time. They differ only in basis: as-supplied product, as an oxide equivalent, or as the metal. Jar test results, plant historians, coagulant cost tracking and optimization trials all collapse into nonsense when the basis is not stated and carried forward.\n\nThe bases you will meet in an Ontario drinking-water plant are these. Product basis, sometimes called as-delivered or as-supplied, is the mass of the commercial liquid or solid per volume of water treated. Active or dry-equivalent basis is the mass of the named compound in that product. Elemental or oxide basis expresses the same feed as aluminum, as Al2O3, as iron, or as available chlorine. Solution basis applies when a dry product is made down on site and reported as the diluted solution rather than the dry chemical.\n\nThe operational rule is simple. Write the basis into the same field as the number, every time, in every log, jar test sheet and trend tag. A tag named ALUM_DOSE tells the next operator nothing. A tag named ALUM_DOSE_MG_L_AS_PRODUCT does. The US EPA guidance titled Generating high-quality turbidity data makes the same point about the measurement chain for turbidity instruments: the number a control system displays is only as trustworthy as the documented chain of scaling, units and calibration behind it. That logic transfers directly to chemical feed tags.\n\n### The core equation, with units carried\n\nFor a liquid chemical delivered by a metering pump into a known water flow:\n\nActive mass rate (kg/h) = Solution flow (L/h) x Solution density (kg/L) x Active mass fraction (dimensionless)\n\nDose (mg/L) = [Active mass rate (kg/h) / Water flow (m3/h)] x 1000\n\nThe 1000 factor is not magic. 1 kg per 1 m3 equals 1 000 000 mg per 1 000 L, which is 1000 mg/L. Carry the units on every line and the factor appears on its own.\n\nFour terms, four places to be wrong.\n\nSolution flow must be an actual delivered volume, not a setpoint or a stroke percentage. Density must be the density of that lot at roughly the temperature in the day tank, taken from the certificate of analysis or the supplier data sheet, not assumed to be 1.00 kg/L. Active mass fraction must be a decimal, and you must know whether the supplier quoted it as weight per weight or weight per volume. Water flow must be the flow actually passing the injection point, not total plant production, and not raw flow when the chemical is dosed on a filtered side stream.\n\nThe weight per weight versus weight per volume trap is worst with sodium hypochlorite. A product sold as 12 percent available chlorine by volume contains about 120 g/L of available chlorine, and at a density near 1.20 kg/L that is roughly 10 percent by weight. If you multiply 1.20 kg/L by 0.12 you get 0.144 kg/L, which overstates the active content by about 20 percent relative to the 0.120 kg/L the product actually contains. Use the grams per litre figure when the supplier gives one, because it removes the density step entirely.\n\n### Worked example 1: solution feed converted to three valid dose bases\n\nSupplied case assumptions for this teaching example only. These are not authorized values for any plant.\n\nFictional plant, liquid aluminum sulphate. Certificate of analysis for lot 24-118 states 48.5 percent w/w alum as Al2(SO4)3 with 14 waters, 8.30 percent w/w as Al2O3, density 1.33 kg/L at 20 degrees C. Metering pump indication 12.5 L/h. Flow at the rapid mix point 210 m3/h.\n\nStep 1, solution mass rate:\n12.5 L/h x 1.33 kg/L = 16.625 kg/h of product\n\nStep 2, active mass rate on product basis (the alum compound itself):\n16.625 kg/h x 0.485 = 8.063 kg/h as Al2(SO4)3 . 14H2O\n\nStep 3, dose on that basis:\n8.063 kg/h / 210 m3/h = 0.03840 kg/m3\n0.03840 kg/m3 x 1000 = 38.4 mg/L as dry alum\n\nStep 4, same feed on the Al2O3 basis:\n16.625 kg/h x 0.0830 = 1.380 kg/h as Al2O3\n1.380 kg/h / 210 m3/h = 0.006571 kg/m3\n0.006571 kg/m3 x 1000 = 6.57 mg/L as Al2O3\n\nStep 5, same feed on the elemental aluminum basis. Al2O3 has a molar mass of 101.96 g/mol and contains 2 x 26.98 g/mol = 53.96 g/mol of aluminum, so the mass fraction of Al in Al2O3 is 53.96 / 101.96 = 0.5292.\n6.57 mg/L x 0.5292 = 3.48 mg/L as Al\n\nAnswer: one pump setting, three correct numbers. 38.4 mg/L as dry alum, 6.57 mg/L as Al2O3, 3.48 mg/L as Al. If a jar test was run and reported as mg/L as Al and an operator enters it as mg/L as product, the plant runs at roughly one eleventh of the intended coagulant dose.\n\n### The drawdown check: converting pump indication into measured delivery\n\nA controller setpoint, a stroke percentage and a SCADA totaliser are all indications. None of them is a measurement of what left the pump. Diaphragm wear, air binding, a fouled foot valve, back pressure change, a partially closed isolation valve, viscosity change with tank temperature, and a scaling error in the analog output can all put indication and delivery far apart while the trend line stays perfectly smooth.\n\nA drawdown check measures delivery directly. A graduated calibration column on the suction side is isolated from the day tank, the pump draws only from the column, and you time the fall in level. The arithmetic is:\n\nMeasured delivery (L/h) = [Volume drawn (mL) / Time (min)] x [60 min/h] / [1000 mL/L]\n\nDeviation (%) = [(Measured L/h minus Indicated L/h) / Indicated L/h] x 100\n\nDiscipline matters more than the equation. Run the pump long enough that the timing error is small compared with the reading error. Read the meniscus at eye level. Run at least three consecutive draws at the same setpoint and report the mean and the spread, because a single draw cannot distinguish a real bias from a one-off air slug. Record tank temperature, suction and discharge pressure, stroke length and speed, and the lot number on the day tank. Do the same check at a low, mid and high setpoint if you intend to trust the pump across a range, because a pump can be accurate at 50 percent and badly off at 20 percent.\n\nThe quality-control habits described in the US EPA guidance on field turbidity measurement apply here without modification: a check is only evidence if the conditions, the instrument identity, the time and the operator are recorded with the result.\n\n### Worked example 2: reconciliation, uncertainty and the corrected setpoint\n\nContinuing the same fictional plant and the same lot 24-118 assumptions.\n\nIndicated feed: 12.5 L/h. Calibration column graduated in 10 mL divisions, readable to about plus or minus 5 mL. Stopwatch resolution 1 s.\n\nDraw 1: start 980 mL, end 224 mL, elapsed 4.00 min\nVolume drawn = 980 mL minus 224 mL = 756 mL\nDraw 2: 752 mL in 4.00 min\nDraw 3: 754 mL in 4.00 min\nMean volume = (756 + 752 + 754) mL / 3 = 754 mL\n\nStep 1, measured delivery:\n754 mL / 4.00 min = 188.5 mL/min\n188.5 mL/min x 60 min/h = 11 310 mL/h\n11 310 mL/h / 1000 mL/L = 11.31 L/h\n\nStep 2, deviation from indication:\n(11.31 L/h minus 12.5 L/h) = -1.19 L/h\n-1.19 L/h / 12.5 L/h x 100 = -9.5 percent\n\nStep 3, is the deviation bigger than the measurement noise?\nVolume reading uncertainty: 5 mL / 754 mL = 0.66 percent\nTiming uncertainty: 1 s / 240 s = 0.42 percent\nCombined by root sum of squares: square root of (0.66 squared plus 0.42 squared) = square root of (0.4356 + 0.1764) = square root of 0.6120 = 0.78 percent\nSpread of the three draws: (756 minus 752) mL / 754 mL x 100 = 0.53 percent\nA 9.5 percent deviation is more than ten times the combined uncertainty, so it is a real bias, not scatter.\n\nStep 4, the dose actually being delivered:\n11.31 L/h x 1.33 kg/L = 15.04 kg/h of product\n15.04 kg/h x 0.485 = 7.296 kg/h as dry alum\n7.296 kg/h / 210 m3/h = 0.03474 kg/m3\n0.03474 kg/m3 x 1000 = 34.7 mg/L as dry alum\n\nStep 5, the shortfall against what the operator believed:\n38.4 mg/L minus 34.7 mg/L = 3.7 mg/L as dry alum, a 9.5 percent shortfall.\n\nStep 6, indication required to actually deliver 12.5 L/h, if the site procedure permits a setpoint correction rather than a mechanical repair:\nCorrection factor = 12.5 L/h indicated / 11.31 L/h measured = 1.105\n12.5 L/h x 1.105 = 13.81 L/h indicated\n\nAnswer: the pump is delivering 11.31 L/h against an indication of 12.5 L/h, a bias of -9.5 percent, giving an actual dose of 34.7 mg/L as dry alum instead of the assumed 38.4 mg/L. An indicated 13.8 L/h would restore the intended delivery, but only if the resulting dose stays inside the range the plant is approved and validated to run, and only if the root cause has been identified and recorded rather than masked.\n\n### Input register and deviation decision table\n\nUse a register like this before any dose calculation. Every value needs a named source and a date, or it does not get used.\n\n| Term | Value used | Units | Source of value | Verified by and date | Expires or recheck when |\n|---|---|---|---|---|---|\n| Product name and lot | Liquid alum, lot 24-118 | text | Bill of lading, day tank label | Operator, delivery date | New delivery to day tank |\n| Density | 1.33 | kg/L at 20 C | Certificate of analysis | Operator, delivery date | Lot change or tank temp shift |\n| Active fraction, product basis | 0.485 | w/w | Certificate of analysis | Operator, delivery date | Lot change |\n| Active fraction, Al2O3 basis | 0.0830 | w/w | Certificate of analysis | Operator, delivery date | Lot change |\n| Indicated feed | 12.5 | L/h | SCADA tag and local display | Operator, shift | Each shift reading |\n| Measured feed | 11.31 | L/h | Drawdown, 3 draws, 4.00 min | Operator, test date | Per site calibration frequency |\n| Water flow at injection | 210 | m3/h | Flow meter, last calibration on file | Operator, shift | Meter calibration interval |\n| Dose basis reported | as dry alum | text | Site procedure | Supervisor | Procedure revision |\n\nThe acceptance bands below are an example drawn from a fictional site calibration procedure. They are not a general standard. Your own approval, operations manual and calibration procedure set the bands that apply to you.\n\n| Measured versus indicated deviation | Interpretation | Example action under the fictional site procedure |\n|---|---|---|\n| Within the combined measurement uncertainty | No detectable bias | Record result, no change |\n| Small but repeatable bias, consistent across three draws | Real bias, drift or scaling offset | Record, notify the overall responsible operator, schedule correction |\n| Large bias, or measured delivery near zero | Suspect air lock, foot valve, diaphragm or closed valve | Do not chase it with setpoint changes, investigate mechanically, verify residual or turbidity response |\n| Measured exceeds indicated | Suspect siphoning, low back pressure, or scaling error | Check discharge back pressure and anti-siphon device before adjusting |\n| Draws disagree with each other by more than the spread the procedure allows | Test is not valid | Repeat after purging air and re-verifying isolation |\n\n### Common errors\n\nTreating a percentage as a whole number. Entering 48.5 instead of 0.485 inflates the answer one hundredfold. The check is a sanity comparison: a coagulant dose of 3840 mg/L is not a plausible drinking-water number, and the operator who does not pause at that result has stopped reading their own output.\n\nAssuming density 1.00 kg/L. Liquid alum near 1.33 kg/L, ferric chloride near 1.4 kg/L and 12 percent hypochlorite near 1.2 kg/L are all significantly denser than water. Using 1.00 understates alum active mass by roughly 25 percent relative to the correct calculation. The density belongs to the lot and to the temperature, so a cold day tank in February is not the same as the 20 degrees C figure on the certificate.\n\nUsing a pump curve or calibration result from a different product or a different concentration. A curve relates stroke and speed to volumetric delivery for a given fluid. It says nothing about active mass if the concentration changed at the last delivery, and it may not even hold volumetrically if the new product has a different viscosity.\n\nCalling one drawdown a calibration. A single draw cannot separate a genuine bias from an air slug or a misread meniscus. Three draws with the spread recorded is the minimum that lets you defend the number.\n\nMixing the flow basis. Dividing by total plant flow when the chemical is injected into one of two parallel trains overstates the water being dosed and understates the true dose in that train.\n\n### What to verify before you act\n\nVerify the Drinking Water Works Permit and the Municipal Drinking Water Licence, and the Environmental Compliance Approval terms that apply to your works, for the chemicals approved for use, the approved points of application and any dose or feed constraints written into those instruments. A calculation never authorizes a chemical, a feed point or a dose range.\n\nVerify the site operations manual and the standard operating procedure for calibration column drawdown, including isolation, personal protective equipment, spill response, venting and the requirement for a second person. The arithmetic in this module does not authorize opening a chemical line. If the procedure does not cover the test you intend to run, you do not run it.\n\nVerify the certificate of analysis for the lot currently in the day tank, not the previous one, and confirm whether the active fraction is quoted weight per weight, weight per volume or grams per litre.\n\nVerify your authority under O. Reg. 128/04, sections 23 and 25 to 27, which deal with designation, operator duties and records. Adjusting a chemical feed is an operating decision that must be made by a person with the authority to make it, communicated to the overall responsible operator, and recorded.\n\nWhere the chemical is a primary disinfectant, verify the Ontario Procedure for Disinfection of Drinking Water and the disinfection requirements in your approval before changing feed. CT is condition specific. It depends on the disinfectant, temperature, pH, measured residual and the approved hydraulic basis for that contactor, so a feed change is never a standalone decision.\n\nRetain as evidence: the raw drawdown sheet with start and end volumes, times, number of draws and operator initials; the indicated setpoint and stroke settings; the water flow and its source; the certificate of analysis; the tank temperature; the calculation with units shown; the deviation and the conclusion; and the notification made to the overall responsible operator. A corrected setpoint with no retained calculation is an undocumented change.",
+      "evidence": "### Fictional worked scenario\n\n**All facilities, operators, records and readings below are fictional and are used for training only. None of the values are authorized operating values for any real plant.**\n\nMapleford Water Treatment Plant, fictional, conventional filtration, single train. Coagulant is liquid alum. Day tank filled from delivery lot 25-042.\n\nSupplied records:\n- Certificate of analysis, lot 25-042: 49.2 percent w/w alum, density 1.335 kg/L at 20 degrees C.\n- SCADA indication for coagulant pump P-201: 15.0 L/h at 62 percent stroke.\n- Plant flow at rapid mix: 185 m3/h, meter calibrated within the interval on file.\n- Laminated pump curve taped to the panel, undated, marked \"62 percent equals 15.0 L/h\", issued for a previous product.\n- Handwritten note in the shift binder, unsigned: \"alum is 10 percent, density 1.0, just use 1.5 kg/h.\"\n- Drawdown check by the operator, calibration column isolated per the site procedure, three draws: 916 mL, 918 mL and 920 mL, each over 5.00 min.\n\nRecords the learner must reject: the unsigned handwritten note, because it contradicts the certificate of analysis for the lot in the tank and has no source or signature; and the undated pump curve, because it was issued for a different product and is superseded by the measured drawdown.\n\nSolution:\n\nMean volume drawn = (916 + 918 + 920) mL / 3 = 918 mL\n918 mL / 5.00 min = 183.6 mL/min\n183.6 mL/min x 60 min/h = 11 016 mL/h\n11 016 mL/h / 1000 mL/L = 11.02 L/h measured\n\nDeviation = (11.02 L/h minus 15.0 L/h) / 15.0 L/h x 100 = -26.5 percent\nSpread of draws = (920 minus 916) mL / 918 mL x 100 = 0.44 percent, so the bias is real.\n\nActual dose:\n11.02 L/h x 1.335 kg/L = 14.71 kg/h product\n14.71 kg/h x 0.492 = 7.238 kg/h as dry alum\n7.238 kg/h / 185 m3/h = 0.03913 kg/m3 = 39.1 mg/L as dry alum\n\nDose the operator believed was being fed:\n15.0 L/h x 1.335 kg/L x 0.492 = 9.854 kg/h\n9.854 kg/h / 185 m3/h = 0.05327 kg/m3 = 53.3 mg/L as dry alum\nShortfall = 53.3 minus 39.1 = 14.2 mg/L as dry alum.\n\nThe rejected note would have given 15.0 L/h x 1.0 kg/L x 0.10 = 1.5 kg/h, or 8.1 mg/L, which is wrong by a factor of about five against the measured delivery.\n\nAction: report the measured bias to the overall responsible operator, record the drawdown sheet, certificate of analysis, flow source and calculation, remove the superseded pump curve and the unsigned note from the panel and binder, and treat the pump as requiring mechanical investigation rather than a setpoint correction until the cause is identified. Any dose change must stay within the plant approval and the site procedure.",
       "assignment": "Calculate measuredL/hour, activekg/hour and actualmg/L. Compare with the indicated-delivery estimate and target. Calculate the theoreticalL/hour needed for 11 mg/L using each product concentration, clearly labelled as a calculation rather than an operating instruction. Write a verification request identifying the evidence needed before any adjustment.",
       "rubric": [
         "Calculates measured delivery and active dose with units.",
@@ -134,30 +186,82 @@
       ],
       "checks": [
         {
-          "id": "ff1",
+          "id": "ceu-coagulation-filtration-feed-calibration-c1",
           "objective": "feed-calibration",
-          "prompt": "0.80 L delivered in 4 minutes is:",
+          "prompt": "At a fictional plant, one alum metering pump setting is logged as 38.4 mg/L, 6.57 mg/L and 3.48 mg/L on the same shift. What makes all three numbers correct at the same time?",
           "choices": [
-            "0.20 L/hour",
-            "3.2 L/hour",
-            "48 L/hour",
-            "12 L/hour"
-          ],
-          "correctIndex": 3,
-          "explanation": "0.80/4×60=12 L/hour."
-        },
-        {
-          "id": "ff2",
-          "objective": "feed-calibration",
-          "prompt": "Which factor converts product mass to active mass for 12% by weight?",
-          "choices": [
-            "0.12",
-            "12",
-            "1.12",
-            "0.012"
+            "All three state the same feed on product, oxide and metal bases.",
+            "The pump drifted between three readings taken during that shift.",
+            "Three different water flow values were used in the dose equation.",
+            "Density was corrected for tank temperature in only one of them."
           ],
           "correctIndex": 0,
-          "explanation": "Twelve percent expressed as a fraction is 0.12."
+          "explanation": "One feed rate can be expressed as dry alum product, as Al2O3, or as elemental Al, so the basis must be written beside the number. Pump drift is a tempting answer but drift would not produce a fixed ratio between the three values, and these three are related only by mass fractions."
+        },
+        {
+          "id": "ceu-coagulation-filtration-feed-calibration-c2",
+          "objective": "feed-calibration",
+          "prompt": "Supplied case assumptions for practice only: a pump delivers 10.0 L/h of coagulant, density 1.30 kg/L, 50.0 percent w/w active, into 200 m3/h measured at the injection point. What is the dose on the active basis?",
+          "choices": [
+            "3.25 mg/L as active chemical",
+            "32.5 mg/L as active chemical",
+            "25.0 mg/L as active chemical",
+            "65.0 mg/L as active chemical"
+          ],
+          "correctIndex": 1,
+          "explanation": "10.0 L/h x 1.30 kg/L = 13.0 kg/h product, x 0.500 = 6.50 kg/h active, divided by 200 m3/h = 0.0325 kg/m3, x 1000 = 32.5 mg/L. The 25.0 mg/L answer comes from skipping density and assuming 1.00 kg/L, which understates the true feed."
+        },
+        {
+          "id": "ceu-coagulation-filtration-feed-calibration-c3",
+          "objective": "feed-calibration",
+          "prompt": "A dose calculation for a fictional plant used 1.00 kg/L for a liquid alum whose certificate of analysis states 1.33 kg/L at 20 degrees C. What is the effect on the calculated dose?",
+          "choices": [
+            "It has no effect because density cancels in the equation.",
+            "It changes the reported basis but not the dose value.",
+            "It understates the delivered dose by roughly 25 percent.",
+            "It overstates the delivered dose by roughly 33 percent."
+          ],
+          "correctIndex": 2,
+          "explanation": "The calculated mass rate is scaled by 1.00/1.33 = 0.752, so the figure is about 25 percent low and the plant is actually feeding more than the log shows. Density does not cancel, because solution flow is volumetric while dose depends on mass of active chemical."
+        },
+        {
+          "id": "ceu-coagulation-filtration-feed-calibration-c4",
+          "objective": "feed-calibration",
+          "prompt": "A sodium hypochlorite drum is labelled 12 percent available chlorine by volume and the supplier data sheet lists density 1.20 kg/L. Which active content figure should the dose calculation use?",
+          "choices": [
+            "Use 0.144 kg/L, found as 1.20 kg/L times 0.12.",
+            "Use 0.132 kg/L, the average of the two available figures.",
+            "Use 0.100 kg/L, because weight percent is always lower.",
+            "Use 120 g/L, which is the labelled volumetric strength."
+          ],
+          "correctIndex": 3,
+          "explanation": "A volumetric percentage already includes the volume, so 12 percent by volume is about 120 g/L and no density step is needed. Multiplying 1.20 kg/L by 0.12 treats a weight per volume figure as weight per weight and overstates active content by roughly 20 percent."
+        },
+        {
+          "id": "ceu-coagulation-filtration-feed-calibration-c5",
+          "objective": "feed-calibration",
+          "prompt": "During a drawdown check at a fictional plant, the calibration column level falls 600 mL in 3.00 min while the pump indicates 13.0 L/h. What is the measured delivery and the deviation from indication?",
+          "choices": [
+            "12.0 L/h measured, deviation about -7.7 percent",
+            "12.0 L/h measured, deviation about -8.3 percent",
+            "12.0 L/h measured, deviation about -1.0 percent",
+            "0.20 L/h measured, deviation about -98 percent"
+          ],
+          "correctIndex": 0,
+          "explanation": "600 mL / 3.00 min = 200 mL/min, x 60 = 12 000 mL/h = 12.0 L/h. Deviation is (12.0 minus 13.0) / 13.0 x 100 = -7.7 percent. The -8.3 percent option divides by the measured value instead of the indicated value, which is the wrong denominator for deviation from indication."
+        },
+        {
+          "id": "ceu-coagulation-filtration-feed-calibration-c6",
+          "objective": "feed-calibration",
+          "prompt": "Why does a defensible drawdown procedure call for at least three consecutive draws at the same setpoint, with tank temperature, suction and discharge pressure, stroke settings and day tank lot number recorded?",
+          "choices": [
+            "It is required because the column cannot be refilled between draws.",
+            "It separates a real bias from one-off scatter and documents conditions.",
+            "It guarantees that averaging removes any diaphragm pump bias entirely.",
+            "It is needed because a single draw always reads low on a metering pump."
+          ],
+          "correctIndex": 1,
+          "explanation": "Repeat draws give a spread that can be compared with the deviation, and recorded conditions make the result usable evidence later. Averaging does not remove bias; it only reduces random scatter, so a biased pump stays biased no matter how many draws are averaged."
         }
       ]
     },
@@ -168,8 +272,8 @@
         "Calculate individual hydraulic loading and headloss trends.",
         "Recognize how combined data conceal unit behaviour."
       ],
-      "lesson": "### The average can hide the unit needing attention\nHydraulic loading is flow divided by active filter surface area. Unitsm³/hour divided bym² reduce tom/hour. Two filters of equal area may have different loading if their flows differ. A combined turbidity result also depends on flow weighting; an arithmetic average is not generally the mixed-stream value.\n\nFor flows 100 and 200 m³/hour with turbidities 0.05 and 0.20 NTU, the simplified flow-weighted value is(100×0.05+200×0.20)/300=0.15 NTU. This mixing calculation is a training approximation, not permission to replace required individual-filter monitoring. It illustrates why a problematic unit can be obscured by aggregate reporting.\n\nHeadloss rate describes change over a stated interval. It is useful alongside run age, loading, turbidity and backwash history. A faster rise may suggest more retained material or another hydraulic issue, but it does not identify the cause by itself. Compare similar operating conditions and verify instrument quality.\n\nThe measurement chain includes sample point, sample transport, analyser and data system. A low-flow sample line can delay a response; a dirty optical surface can distort a reading. Preserve the alarm, verify under the approved procedure and document both process and instrument evidence before declaring a false alarm.",
-      "evidence": "**F5 — two filters, each 25 m²**\n| Unit | Flow,m³/h | Turbidity,NTU | Headloss 08:00/11:00,m |\n|---|---:|---:|---|\n|A|100|0.05|0.6/0.9|\n|B|150|0.25|0.7/1.6|\n\nF6: B's sample flow alarm occurred 10:40–10:50. Its last backwash checklist has an unsigned rinse verification. No independent turbidity result is yet available. Combined outlet indication is 0.17 NTU.",
+      "lesson": "### What the individual filter record is for\n\nAn individual filter record exists so that each unit can be judged on its own behaviour. A plant-wide number tells you what the system produced. A per-unit number tells you which unit produced it, and whether that unit is drifting, media-fouled, hydraulically starved, over-loaded, or simply being measured badly. Those are different problems with different corrective actions, and you cannot separate them from a combined value.\n\nFour data streams make the record useful, and they are only useful together: filtrate flow, effective filter area, headloss, and filtered water turbidity, each time-stamped and each tied to run age and backwash history. Add the instrument verification history and you can defend a decision. Drop any one of them and you are guessing.\n\nOntario Regulation 128/04 deals with designation of the overall responsible operator and operators in charge, the duties attached to those roles, and record keeping duties in sections 23 and 25 to 27. Read the current text of those sections for your own system rather than working from memory, because they define who is permitted to make and direct operating adjustments and what has to be written down. Your facility drinking water works permit, Environmental Compliance Approval and approved operating procedures define the monitoring locations, performance criteria, alarm setpoints and reporting pathways. This module teaches how to calculate and interpret. It does not set any limit for your plant.\n\n### Hydraulic loading rate, calculated per unit\n\nHydraulic loading rate is filtrate flow divided by the effective filter area of that unit:\n\nLoading rate (m/h) = flow (m³/h) ÷ effective area (m²)\n\nThe units reduce cleanly. m³/h ÷ m² gives m³/(m²·h), which is m/h. Some design documents and United States technical guidance use L/(m²·s) or gpm/ft², so confirm which basis your approval and design drawings use before you compare a calculated value to a design figure.\n\nEffective area is the wetted plan area of the media, taken from the as-built drawings, not from a nominal box dimension and not from a logsheet header that nobody has verified. Wall thickness, launder footprint and any partition change the number. If two filters in the same gallery are recorded with the same area and the drawings disagree, the drawings win until an engineering record says otherwise.\n\n### Worked example 1: unequal split and the loss of the plant average\n\nSupplied case assumptions for this example only. Fictional plant, four declining rate filters, each with effective media area of 4.0 m by 6.0 m taken from the as-built drawings. Total filtered water production is 320 m³/h. Individual filtrate flow meters read F1 95 m³/h, F2 92 m³/h, F3 48 m³/h, F4 85 m³/h.\n\nStep 1. Effective area of one filter.\nArea = 4.0 m × 6.0 m = 24.0 m²\n\nStep 2. Total area in service.\nTotal area = 4 filters × 24.0 m²/filter = 96.0 m²\n\nStep 3. Plant average loading rate.\nAverage loading = 320 m³/h ÷ 96.0 m² = 3.33 m³/(m²·h) = 3.33 m/h\n\nStep 4. Individual loading rates.\nF1 = 95 m³/h ÷ 24.0 m² = 3.96 m/h\nF2 = 92 m³/h ÷ 24.0 m² = 3.83 m/h\nF3 = 48 m³/h ÷ 24.0 m² = 2.00 m/h\nF4 = 85 m³/h ÷ 24.0 m² = 3.54 m/h\n\nStep 5. Check the sum.\n95 + 92 + 48 + 85 = 320 m³/h, which matches plant production, so the individual meters are at least internally consistent with the total.\n\nStep 6. Express F1 in an alternative unit for comparison to a design sheet.\n3.96 m³/(m²·h) × 1000 L/m³ ÷ 3600 s/h = 1.10 L/(m²·s)\n\nAnswer. Plant average loading is 3.33 m/h, but the four units are running between 2.00 m/h and 3.96 m/h. F1 is carrying 19 percent more loading than the average, and F3 is carrying 40 percent less.\n\nStep 7. What changes when a condition changes. Take F3 out of service for backwash while production is held at 320 m³/h.\nArea in service = 3 filters × 24.0 m² = 72.0 m²\nAverage loading = 320 m³/h ÷ 72.0 m² = 4.44 m/h\nIf the split stays proportional to the previous flows of the three remaining units (95 + 92 + 85 = 272 m³/h), F1 receives:\nF1 flow = 320 m³/h × (95 ÷ 272) = 111.8 m³/h\nF1 loading = 111.8 m³/h ÷ 24.0 m² = 4.66 m/h\n\nThat is a 18 percent step increase on a single unit, applied at the same moment that a freshly backwashed filter is about to return in its ripening phase. Whether 4.66 m/h is acceptable depends entirely on the loading basis in your design documents, drinking water works permit and approved procedures. The operator judgment point is that the increase is real, it lands unevenly, and it is invisible in the plant average.\n\nRemoving a filter from service also changes flow through downstream contact chambers. The Ontario Procedure for Disinfection of Drinking Water explains that CT is condition specific and depends on disinfectant, temperature, pH, residual and the approved hydraulic basis, including the T10 value used for that configuration. If a filter outage forces a production change, confirm the disinfection calculation against the approved basis for the configuration you are actually running.\n\n### Headloss trend, normalized headloss, and unit filter run volume\n\nHeadloss on its own is a number. Headloss rate is a trend, and trends are what let you compare units.\n\nHeadloss rate (m/h) = (headloss now − headloss at run start) ÷ elapsed run time (h)\n\nA raw rate is not comparable between filters running at different loadings, because a filter taking more water collects more solids per hour. Normalize it:\n\nSpecific headloss development (m per m of applied water) = headloss rate (m/h) ÷ loading rate (m/h)\n\nThe units divide out to metres of headloss per metre of water applied, which is a clean basis for comparing units, and for comparing this run to the same unit last month at a different flow.\n\nUnit filter run volume is the other comparison that survives a loading change:\n\nUFRV (m³/m²) = loading rate (m/h) × run length (h)\n\n### Worked example 2: two filters, opposite conclusions\n\nSupplied case assumptions for this example only, same fictional plant. F1 headloss was 0.35 m at 02:00 at run start and 0.98 m at 14:00. F3 headloss was 0.30 m at 02:00 and 0.66 m at 14:00. Loading rates are the values from Example 1. The plant operating procedure for this fictional facility uses a terminal headloss assumption of 2.40 m and a maximum run length assumption of 96 h.\n\nStep 1. Elapsed run time for both units.\nElapsed = 14:00 − 02:00 = 12 h\n\nStep 2. F1 headloss rate.\nΔ headloss = 0.98 m − 0.35 m = 0.63 m\nRate = 0.63 m ÷ 12 h = 0.0525 m/h\n\nStep 3. F3 headloss rate.\nΔ headloss = 0.66 m − 0.30 m = 0.36 m\nRate = 0.36 m ÷ 12 h = 0.0300 m/h\n\nStep 4. Normalize each to its loading.\nF1 = 0.0525 m/h ÷ 3.96 m/h = 0.0133 m per m applied\nF3 = 0.0300 m/h ÷ 2.00 m/h = 0.0150 m per m applied\n\nStep 5. Interpret. The raw rates say F1 is clogging 75 percent faster. The normalized values say F3 is collecting about 13 percent more headloss per unit volume of water filtered. F1 is busier. F3 is dirtier per litre. If you were ranking units for a media inspection, the raw rate points at the wrong filter.\n\nStep 6. Project F1 to the terminal headloss assumption.\nAvailable headloss = 2.40 m − 0.98 m = 1.42 m\nTime remaining = 1.42 m ÷ 0.0525 m/h = 27.0 h\nProjected total run = 12 h + 27.0 h = 39.0 h\n\nStep 7. F1 unit filter run volume at that projected run length.\nUFRV = 3.96 m/h × 39.0 h = 154 m³/m²\n\nAnswer. F1 is projected to reach the assumed terminal headloss at about 39 h of run age, well inside the 96 h maximum run assumption, at a unit filter run volume near 154 m³/m². F3 normalizes worse and should be flagged for media and underdrain review even though its headloss trend looks gentler.\n\nStep 8. What invalidates the projection. Linear projection assumes stable loading, stable coagulant dose and stable raw water. If the split changes, if coagulant dose or polymer changes, if raw water turbidity or temperature moves, or if the filter is rate-controlled and the valve position shifts, the projection is void and you recalculate from a fresh baseline. Record the reason for the reset.\n\n### How combined data conceal unit behaviour\n\nA combined filtered water value is a mixed stream. Mixing is flow weighted, not arithmetic:\n\nCombined value = Σ (flow × value) ÷ Σ flow\n\nSupplied case assumptions for this example only. Same four flows. Individual filtered turbidities read F1 0.06 NTU, F2 0.08 NTU, F3 0.35 NTU, F4 0.07 NTU.\n\nNumerator terms:\n95 m³/h × 0.06 NTU = 5.70 m³·NTU/h\n92 m³/h × 0.08 NTU = 7.36 m³·NTU/h\n48 m³/h × 0.35 NTU = 16.80 m³·NTU/h\n85 m³/h × 0.07 NTU = 5.95 m³·NTU/h\nSum = 35.81 m³·NTU/h\nCombined = 35.81 m³·NTU/h ÷ 320 m³/h = 0.112 NTU, which rounds to 0.11 NTU\nArithmetic average = (0.06 + 0.08 + 0.35 + 0.07) NTU ÷ 4 = 0.56 NTU ÷ 4 = 0.14 NTU\n\nAnswer. The combined stream is near 0.11 NTU while one unit sits at 0.35 NTU. The arithmetic average of 0.14 NTU is not the mixed value, and in this case it happens to be higher than the true mix because the poor performer is also the low flow unit. Reverse the flows and the same arithmetic average would understate the mix. This is a training approximation that explains dilution. It is not a substitute for the individual filter monitoring your approval and the applicable regulation require, and it is never a basis for reporting.\n\n### Daily individual filter register and troubleshooting matrix\n\nUse a register that forces every comparison to be made on the same page. Blank cells are the signal that a judgment was made without data.\n\n| Filter | Effective area (m²) | Filtrate flow (m³/h) | Loading (m/h) | HL start (m) | HL now (m) | Run age (h) | HL rate (m/h) | Specific HL (m/m) | Turbidity (NTU) | Ripening peak (NTU) and duration | Analyser verified (date) | Flag |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| F1 | 24.0 | 95 | 3.96 | 0.35 | 0.98 | 12 | 0.0525 | 0.0133 | 0.06 | 0.18 / 9 min | 2 days ago | none |\n| F2 | 24.0 | 92 | 3.83 | 0.33 | 0.90 | 12 | 0.0475 | 0.0124 | 0.08 | 0.21 / 11 min | 2 days ago | none |\n| F3 | 24.0 | 48 | 2.00 | 0.30 | 0.66 | 12 | 0.0300 | 0.0150 | 0.35 | 0.62 / 34 min | 26 days ago | review |\n| F4 | 24.0 | 85 | 3.54 | 0.31 | 0.84 | 12 | 0.0442 | 0.0125 | 0.07 | 0.19 / 8 min | 2 days ago | none |\n\n| Observed pattern | Process causes to test | Measurement causes to test | First checks | Evidence to retain |\n|---|---|---|---|---|\n| One unit high turbidity, normal headloss trend | Short circuiting, media loss, underdrain or gravel disturbance, cracked media bed | Fouled optics, air bubbles, low sample line flow, calibration drift | Sample line flow rate, bubble trap, grab sample by approved bench method, visual bed inspection at backwash | Grab comparison result, verification record, photos, bed profile notes |\n| Headloss trend flat while turbidity rises | Bed cracking or mudball formation with wall short circuit | Transmitter stuck, SCADA hold or frozen tag, failed scaling | Compare transmitter to local gauge, check tag update timestamp | Trend export, local gauge reading, instrument work order |\n| All units drift up together | Coagulation upset, dose or pH out of range, raw water change | Common reference standard or bench instrument error | Jar test, raw water parameters, streaming current or zeta trend | Jar test sheet, dose records, raw water log |\n| Headloss rate doubles with no turbidity change | Loading step after unit removal, overdose, polymer change | Flow meter drift changing the loading denominator | Recalculate loading from verified flow, confirm valve position | Flow verification, valve log, dose change log |\n| Long or high ripening peak on one unit | Inadequate backwash, media fines, filter to waste too short | Analyser lag, sample transport delay | Backwash flow and duration records, transport time estimate | Backwash record, ripening trend, analyser response check |\n\n### Measurement chain and data quality\n\nThe reading you act on is the output of a chain: sample tap location, sample line, flow through the line, bubble removal, the analyser optics and light source, the calibration and verification history, the signal scaling, and the data historian. United States technical guidance in Generating high-quality turbidity data and in Field turbidity measurement describes this chain and the quality control steps that protect it, including verification against reference material, control of stray light and bubbles, sample handling and documentation of corrective action. Those documents are technical guidance, not Ontario law. Your bench or on-line method must be the one named in your approved procedure and sampling plan.\n\nInvalidating conditions you should be able to name on the spot: sample line flow outside the analyser manufacturer stated range, air entrainment, biofilm or scale on the optical window, a verification that is overdue under your procedure, a scaling mismatch between transmitter and historian, a stuck tag with an unchanged timestamp, and a sample point that is not the one named in your approval.\n\nNever clear an alarm because it is inconvenient. Preserve it, verify under the approved procedure, and document both the process evidence and the instrument evidence. A false alarm is a conclusion supported by records, not an opinion.\n\n### Common errors\n\nUsing nominal box dimensions instead of drawing area. A filter recorded as 25 m² when the drawings show 24.0 m² produces a loading rate about 4 percent low. That is enough to hide a unit that has crossed a design basis, and it corrupts every normalized comparison built on it.\n\nComparing raw headloss rates between units at different flows. As Example 2 shows, the raw rate can rank the wrong filter first. Normalize by loading before you decide which unit gets the inspection.\n\nAveraging turbidity arithmetically and treating it as the combined value. Mixing is flow weighted. An arithmetic mean can be higher or lower than the true mix depending on which unit carries the flow, and it is not a reportable value in any case.\n\nResetting a headloss baseline without recording the reason. A projection built across a coagulant change, a valve reposition or a filter outage is not a trend, and nobody reviewing the record later can tell it apart from a valid one.\n\nDeclaring an instrument fault before verifying the process. If you call it a sensor problem and skip the grab check, bed inspection and sample line flow check, you have no evidence and the finding will not stand up.\n\n### What to verify before you act\n\nConfirm effective filter area against the as-built drawings, not the logsheet header. Confirm the loading basis, terminal headloss assumption, maximum run length and filter to waste practice in your approved operating procedures and design documents. Confirm monitoring locations, performance criteria, alarm setpoints and any reporting pathway in your drinking water works permit, Environmental Compliance Approval and the applicable regulation. Confirm the analyser verification and calibration records, and the bench method named in your sampling plan and approved procedure.\n\nConfirm who may authorize the adjustment. Ontario Regulation 128/04, in sections 23 and 25 to 27, addresses designation of the overall responsible operator and operators in charge, their duties, and record keeping duties. Read the current text for your system.\n\nFor any change that alters plant flow or the number of units in service, confirm the disinfection basis against the Ontario Procedure for Disinfection of Drinking Water and your approved configuration, remembering that CT depends on disinfectant, temperature, pH, residual and the approved hydraulic basis such as T10. If an adverse drinking water test result arises, follow your approved notification procedure: an immediate verbal report is required, followed by written notice within 24 hours after that report.",
+      "evidence": "### Fictional worked scenario: Northbrook WTP, individual filter review\n\nEverything below is fictional. The facility, operators, instruments, records and readings do not exist and are supplied only for practice. No value here is an authorized limit or setpoint.\n\n**Supplied values, 18:00 shift review.** Four filters. As-built drawings show F1, F2 and F4 media area of 4.0 m by 4.5 m each; F3 is out of service on backwash. The filter logsheet header for F4 has been hand-edited to read 20.0 m² with no drawing or engineering reference attached. Flows: F1 70 m³/h, F2 62 m³/h, F3 0 m³/h, F4 72 m³/h. Individual filtered turbidity: F1 0.05 NTU, F2 0.06 NTU, F4 0.19 NTU. Combined filtered water analyser reads 0.10 NTU. F4 headloss 0.42 m at 06:00 run start and 1.26 m at 18:00. F2 headloss 0.28 m at 06:00 and 0.76 m at 18:00. F4 analyser verification column reads \"N/A, reading looked fine\".\n\n**Records to reject.** The hand-edited 20.0 m² area for F4 is unsupported and conflicts with the drawings, so use 18.0 m². The \"N/A, reading looked fine\" entry is not a verification and cannot support any conclusion about the F4 reading.\n\n**Solution.**\nF4 area = 4.0 m × 4.5 m = 18.0 m²\nF4 loading = 72 m³/h ÷ 18.0 m² = 4.00 m/h\nUsing the rejected 20.0 m²: 72 m³/h ÷ 20.0 m² = 3.60 m/h, an 11 percent understatement.\nF2 loading = 62 m³/h ÷ 18.0 m² = 3.44 m/h\nF4 headloss rate = (1.26 m − 0.42 m) ÷ 12 h = 0.84 m ÷ 12 h = 0.0700 m/h\nF2 headloss rate = (0.76 m − 0.28 m) ÷ 12 h = 0.48 m ÷ 12 h = 0.0400 m/h\nF4 specific headloss = 0.0700 m/h ÷ 4.00 m/h = 0.0175 m per m applied\nF2 specific headloss = 0.0400 m/h ÷ 3.44 m/h = 0.0116 m per m applied\nFlow-weighted combined turbidity = (70 × 0.05 + 62 × 0.06 + 72 × 0.19) ÷ (70 + 62 + 72)\n= (3.50 + 3.72 + 13.68) m³·NTU/h ÷ 204 m³/h = 20.90 ÷ 204 = 0.102 NTU\n\n**Finding.** The combined reading of 0.10 NTU is consistent with the mix and conceals F4 at 0.19 NTU. F4 carries the highest loading and 51 percent more headloss per metre of water applied than F2. Action: grab check F4 by the approved bench method, verify sample line flow and optics, hold F4 loading down by rebalancing while F3 returns, and raise a work order. Retain the grab result, verification record, trend export and the corrected area reference.",
       "assignment": "Calculate each loading rate, headloss rise per hour and simplified flow-weighted turbidity. Write a 350–500-word troubleshooting plan that separates filter process hypotheses from measurement-chain hypotheses. Identify the evidence needed to resolve the unsigned record, and explain why a combined result cannot clear an individual unit concern.",
       "rubric": [
         "Calculates loading rates of 4 and 6 m/hour.",
@@ -210,30 +314,82 @@
       ],
       "checks": [
         {
-          "id": "ft1",
+          "id": "ceu-coagulation-filtration-filter-record-c1",
           "objective": "filter-record",
-          "prompt": "150 m³/hour over 25 m² gives:",
+          "prompt": "A declining rate filter has an effective media area of 5.0 m by 5.5 m on the as-built drawings, and its filtrate meter reads 110 m3/h. What is the hydraulic loading rate for that unit?",
           "choices": [
-            "0.167 m/hour",
-            "6 m/hour",
-            "3,750 m/hour",
-            "125 m/hour"
+            "4.00 m/h",
+            "3.67 m/h",
+            "22.0 m/h",
+            "0.25 m/h"
           ],
-          "correctIndex": 1,
-          "explanation": "Hydraulic loading is flow divided by active surface area."
+          "correctIndex": 0,
+          "explanation": "Effective area is 5.0 m x 5.5 m = 27.5 m2, so 110 m3/h divided by 27.5 m2 gives 4.00 m3/(m2.h), which is 4.00 m/h. The 3.67 m/h answer comes from using a nominal 30 m2 box area instead of the drawing area, and 0.25 m/h is the calculation inverted."
         },
         {
-          "id": "ft2",
+          "id": "ceu-coagulation-filtration-filter-record-c2",
           "objective": "filter-record",
-          "prompt": "An unsigned rinse record proves:",
+          "prompt": "A filter logsheet header lists 30.0 m2 of area, while the as-built drawings show 27.0 m2 after launder footprint and a partition are deducted. Which value should be used to calculate that unit's loading rate?",
           "choices": [
-            "The rinse was omitted",
-            "The filter is fully restored",
-            "Documented verification is missing",
-            "The turbidity analyser is faulty"
+            "The 30.0 m2 header value for consistency with past logs",
+            "The 27.0 m2 as-built value until an engineering record changes it",
+            "The average of the two values while the discrepancy is reviewed",
+            "The nominal basin dimensions measured at the operating floor"
+          ],
+          "correctIndex": 1,
+          "explanation": "Effective area is the wetted plan area of the media taken from as-built drawings, so the drawings govern until an engineering record says otherwise. Keeping the header value for consistency simply carries a known error into every loading calculation."
+        },
+        {
+          "id": "ceu-coagulation-filtration-filter-record-c3",
+          "objective": "filter-record",
+          "prompt": "A design sheet expresses filter loading in L/(m2.s). A unit is calculated at 3.60 m/h. What is the equivalent value in L/(m2.s)?",
+          "choices": [
+            "3.60 L/(m2.s)",
+            "0.06 L/(m2.s)",
+            "1.00 L/(m2.s)",
+            "60.0 L/(m2.s)"
           ],
           "correctIndex": 2,
-          "explanation": "Missing documentation does not by itself establish whether the action occurred."
+          "explanation": "3.60 m3/(m2.h) x 1000 L/m3 divided by 3600 s/h equals 1.00 L/(m2.s). The 60.0 value comes from dividing by 60 s instead of 3600 s, which converts to a per minute basis rather than a per second basis."
+        },
+        {
+          "id": "ceu-coagulation-filtration-filter-record-c4",
+          "objective": "filter-record",
+          "prompt": "Several filters discharge to a common filtered water header. How is the combined filtered water turbidity correctly determined from the individual unit readings?",
+          "choices": [
+            "Average the individual unit readings with equal weight",
+            "Report the highest individual unit reading as combined",
+            "Use the unit with the largest flow as the combined value",
+            "Flow weight each unit reading and divide by total flow"
+          ],
+          "correctIndex": 3,
+          "explanation": "Mixing is flow weighted, so combined value equals the sum of flow times value divided by total flow. An equal weight arithmetic average ignores that a low flow unit contributes less water to the mixed stream and can give a value that no instrument ever reads."
+        },
+        {
+          "id": "ceu-coagulation-filtration-filter-record-c5",
+          "objective": "filter-record",
+          "prompt": "A filter run started with headloss of 0.40 m. Nine hours later the headloss reads 1.12 m with steady loading. What is the headloss rate for that run so far?",
+          "choices": [
+            "0.080 m/h",
+            "0.124 m/h",
+            "0.720 m/h",
+            "0.045 m/h"
+          ],
+          "correctIndex": 0,
+          "explanation": "Headloss rate is the change in headloss divided by elapsed time, so (1.12 m minus 0.40 m) divided by 9 h equals 0.080 m/h. The 0.124 m/h answer divides the current reading by time and ignores the headloss present at run start."
+        },
+        {
+          "id": "ceu-coagulation-filtration-filter-record-c6",
+          "objective": "filter-record",
+          "prompt": "A linear projection of headloss to a terminal assumption was made at hour 12 of a filter run. Which event most clearly voids the projection and requires a fresh baseline with the reason recorded?",
+          "choices": [
+            "The operator in charge changed at the routine shift turnover",
+            "Coagulant dose was raised after raw water turbidity increased",
+            "The filtered water sample tap was flushed before a grab sample",
+            "A finished water discharge pressure gauge was replaced in kind"
+          ],
+          "correctIndex": 1,
+          "explanation": "Linear projection assumes stable loading, stable coagulant dose and stable raw water, so a coagulant dose change alters solids capture and voids the trend. A shift turnover is a staffing record event and does not change the hydraulics or the solids loading on the media."
         }
       ]
     },
@@ -244,8 +400,8 @@
         "Define a fair comparison and stopping criteria.",
         "Calculate normalized resource use before claiming savings."
       ],
-      "lesson": "### Normalize before attributing improvement\nA lower chemical mass does not necessarily mean a lower dose or better efficiency. Ifwater flow falls in the same proportion, dose is unchanged. Similarly, reduced electricity use may reflect reduced throughput rather than better treatment per unit water.\n\nA trial plan states the hypothesis, authorized change, baseline, comparison period, controlled variables, outcome measures and stopping rules. Keep source-water condition and flow visible; if they change, document the limitation or use a more suitable comparison. Repeated observations across comparable conditions are stronger than a single before-and-after pair.\n\nInclude trade-offs. Reduced chemical use may increase filter loading or degrade residuals; a better settled turbidity may coincide with unacceptablepH. Define acceptance across the treatment train, not only the metric expected to improve. A stop condition should name an observable trigger and the role authorized to respond, using the current facility requirements.\n\nClose a pilot only after the planned evidence has been reviewed. A trial can be inconclusive and still be useful: it may reveal a measurement gap or show that a proposed improvement is explained by changing flow. Report that finding without turning it into a marketing claim.",
-      "evidence": "**F7 — proposed success statement**\n“Chemical use fell 25%, so the new dose saves 25%.” Baseline: water 240 m³/hour, activechemical 3.6 kg/hour. Trial: water 180 m³/hour, activechemical 2.7 kg/hour. Baseline raw turbidity 20 NTU;trial 12 NTU. Trial duration 2 hours; no matched repeat. FilterBdataareF5/F6.\n\nF8: No authorization to adopt the trial permanently has been issued.",
+      "lesson": "### Define the claim and the fair comparison\n\nThis is study and training material for a non-credit pilot, not operating or compliance instruction. All facilities, operators, records and readings in the examples are fictional. Numerical values are supplied case assumptions for teaching, not authorised operating values. Actual changes depend on the facility’s approvals, validated procedures and assigned authority.\n\nA controlled trial asks whether a defined change produces a useful result without weakening treatment. Write the claim narrowly enough to test: changing the coagulant feed strategy reduces chemical use per unit of treated water under comparable source-water conditions, while the treatment performance specified in the trial plan is maintained. “The plant used less chemical” is not an adequate claim because production may simply have fallen.\n\nSeparate three questions:\n\n- Did the intended change actually occur?\n- Did treatment remain acceptable against the applicable facility requirements and trial criteria?\n- Did resource use improve after accounting for production and relevant operating conditions?\n\nAnswering the last question does not answer the others. A lower dose is not automatically a better result. It may coincide with shorter filter runs, greater backwash demand, poorer particle removal or additional downstream chemical demand.\n\nDefine the comparison boundary before collecting results. Chemical consumption can mean purchased product, product fed or active ingredient fed. Water production can mean raw water processed, filtered water or net treated water delivered across a defined boundary. Energy can include only a treatment process or the entire facility. Different boundaries answer different questions.\n\nRecord the hypothesis, permitted adjustment, baseline method, measurement boundary, acceptance criteria, stopping criteria and review authority in the trial plan. Identify who can authorise the trial and who reviews the findings. Consult Ontario: O. Reg. 128/04 for the Ontario framework concerning operator designation, duties and records. A trial spreadsheet does not replace those responsibilities or the facility’s operating procedures.\n\n### Build a comparison that can survive scrutiny\n\nCompare periods that represent similar treatment challenges. Relevant conditions include source-water turbidity, temperature, pH, alkalinity, organic matter indicators, flow, filter availability and the stage of each filter run. Similar raw turbidity alone does not establish comparability. Water with similar turbidity can have different coagulation demand because its chemistry or particle characteristics differ.\n\nChange one planned factor where practicable. If both coagulant dose and pH adjustment change, the result evaluates the combined strategy, not the separate effect of either adjustment. Record unavoidable changes rather than hiding them in an average.\n\nChoose the comparison design deliberately. Repeated baseline and trial periods can reveal whether a result persists. Parallel treatment trains can provide useful comparisons only if their influent, hydraulics, equipment condition and instrumentation are sufficiently comparable. Alternating settings may be unsuitable when treatment has long carryover effects. Trial sequencing must remain within the authorised plan.\n\nAllow for transport time and process stabilisation using the facility’s validated understanding of the treatment train. A feed change does not immediately affect every downstream instrument. Predetermine how transition data will be identified and assessed. Do not remove poor results afterwards merely because they weaken the preferred conclusion.\n\nUse a register such as this before starting data review:\n\n| Input or condition | Record to retain | Why it matters | Consequence of a gap |\n|---|---|---|---|\n| Chemical identity and concentration | Product certificate, batch identification and feed record | Distinguishes product mass from active mass | Active-dose comparison may be unsupported |\n| Water volume and boundary | Totaliser export, meter identification and start/end times | Establishes the normalising denominator | Savings calculation may be invalid |\n| Source-water condition | Time-matched analytical and process records | Tests whether treatment challenge changed | Restrict the conclusion or repeat comparison |\n| Turbidity measurement chain | Instrument checks, maintenance, sample arrangement and SCADA status | Separates process changes from measurement faults | Quarantine affected data pending review |\n| Filter condition | Run history, backwash events and availability | Exposes downstream costs and unequal operating states | Compare appropriate run segments or complete cycles |\n| Energy boundary | Meter records and equipment included | Prevents selective accounting | Recalculate on a consistent boundary |\n\nA missing record can make a trial inconclusive even when every displayed trend looks favourable. That is an evidence limitation, not proof that treatment failed.\n\n### Establish trustworthy measurements\n\nUS EPA: Generating high-quality turbidity data is United States technical guidance, not Ontario law. Its measurement-chain and SCADA data-quality guidance is relevant because a displayed value depends on more than the analyser. Sample delivery, instrument condition, signal handling, time stamps and data storage all affect interpretation.\n\nConfirm that the signal represents the intended water at the intended time. A blocked sample line, air bubbles or sample transport delay can create an apparent treatment response unrelated to the trial. Check whether stored values are instantaneous readings, averages or another statistic. An average can conceal short excursions. A flat trend may indicate stable water, but it can also indicate a held or substituted signal.\n\nRetain instrument status alongside the measurements. Document calibration or verification checks, maintenance, sample-line work and periods marked invalid. US EPA: Field turbidity measurement provides United States technical guidance on field measurement and quality control. Local laboratory and site methods govern its use at the facility; it does not establish Ontario operating requirements.\n\nApply equivalent discipline to chemical and flow records. Tank deliveries, transfers and changing inventory can make delivery mass differ from consumption. Pump command percentage is not measured feed mass unless a validated relationship supports that conversion. A solution-volume calculation needs the appropriate density and concentration basis. Do not treat a mass fraction as though it were a volume fraction.\n\nAlign numerator and denominator times. Chemical fed during one reporting interval cannot fairly be divided by water produced during a different interval. Address totaliser resets, missing exports and clock differences before calculating performance.\n\nFinally, consider measurement uncertainty. A small apparent improvement may be indistinguishable from meter uncertainty, inventory estimation error or ordinary process variation. Repeated comparable observations are stronger evidence than additional decimal places. Keep the original data, the corrected dataset and the reason for every correction so another reviewer can reproduce the result.\n\n### Worked example: lower chemical mass without lower dose\n\nAll records and readings in this example are fictional supplied case assumptions. The baseline and trial use the same coagulant product with a supplied active mass fraction of 0.40 kg active ingredient/kg product. Matched records show baseline product consumption of 240 kg across 12,000 m³ of treated water, and trial consumption of 180 kg across 9,000 m³. Assume the consumption measurements account for inventory changes and cover the same boundary as the water volumes.\n\nFirst calculate the change in total product mass:\n\n- Product mass reduction = 240 kg − 180 kg = 60 kg.\n- Relative product mass reduction = (60 kg ÷ 240 kg) × 100% = 25%.\n\nThat is a valid statement about total mass, but not yet about efficiency. Calculate product dose using the corresponding water volumes:\n\n- Baseline product dose = 240 kg ÷ 12,000 m³ = 0.020 kg/m³.\n- Baseline product dose = 0.020 kg/m³ × 1,000,000 mg/kg ÷ 1,000 L/m³ = 20 mg/L.\n- Trial product dose = 180 kg ÷ 9,000 m³ = 0.020 kg/m³.\n- Trial product dose = 0.020 kg/m³ × 1,000,000 mg/kg ÷ 1,000 L/m³ = 20 mg/L.\n- Normalised dose reduction = [(20 mg/L − 20 mg/L) ÷ 20 mg/L] × 100% = 0%.\n\nCheck whether the reduction in throughput explains the reduced mass:\n\n- Water-volume reduction = 12,000 m³ − 9,000 m³ = 3,000 m³.\n- Relative water-volume reduction = (3,000 m³ ÷ 12,000 m³) × 100% = 25%.\n\nFor an active-ingredient comparison, apply the supplied mass fraction consistently:\n\n- Baseline active mass = 240 kg product × 0.40 kg active/kg product = 96 kg active.\n- Baseline active dose = 96 kg active ÷ 12,000 m³ = 0.008 kg active/m³.\n- Baseline active dose = 0.008 kg active/m³ × 1,000,000 mg/kg ÷ 1,000 L/m³ = 8 mg active/L.\n- Trial active mass = 180 kg product × 0.40 kg active/kg product = 72 kg active.\n- Trial active dose = 72 kg active ÷ 9,000 m³ = 0.008 kg active/m³.\n- Trial active dose = 0.008 kg active/m³ × 1,000,000 mg/kg ÷ 1,000 L/m³ = 8 mg active/L.\n\n**Answer:** total product consumption fell by 25%, but both product dose and active dose were unchanged. The records do not demonstrate a normalised chemical saving.\n\nThis does not establish that the trial had no value. It may have maintained treatment under different conditions, but that requires separate evidence. If product concentration changed between periods, the equal product doses would no longer establish equal active doses. Retain the product certificates and batch records before making that comparison.\n\n### Worked example: energy savings disappear at the delivery boundary\n\nAll values below are fictional supplied case assumptions. The selected energy meter covers the same treatment equipment in both periods. Baseline energy is 3,600 kWh and trial energy is 3,300 kWh. Gross treated production is 12,000 m³ and 11,000 m³ respectively. Backwash consumes 600 m³ and 880 m³ of that treated water. For this simplified example only, assume no other water losses, net storage changes or recovered backwash returns cross the selected boundary.\n\nStart with the apparent total energy saving:\n\n- Energy reduction = 3,600 kWh − 3,300 kWh = 300 kWh.\n- Relative energy reduction = (300 kWh ÷ 3,600 kWh) × 100% = 8.33%.\n\nNormalise to gross treated production:\n\n- Baseline gross energy intensity = 3,600 kWh ÷ 12,000 m³ = 0.300 kWh/m³.\n- Trial gross energy intensity = 3,300 kWh ÷ 11,000 m³ = 0.300 kWh/m³.\n\nThere is no improvement on that boundary. Now account for treated water consumed by backwashing:\n\n- Baseline net delivered volume = 12,000 m³ − 600 m³ = 11,400 m³.\n- Trial net delivered volume = 11,000 m³ − 880 m³ = 10,120 m³.\n- Baseline net energy intensity = 3,600 kWh ÷ 11,400 m³ = 0.315789 kWh/m³.\n- Trial net energy intensity = 3,300 kWh ÷ 10,120 m³ = 0.326087 kWh/m³.\n- Increase in net energy intensity = 0.326087 kWh/m³ − 0.315789 kWh/m³ = 0.010298 kWh/m³.\n- Relative increase = (0.010298 kWh/m³ ÷ 0.315789 kWh/m³) × 100% = approximately 3.26%.\n\nCheck the backwash share:\n\n- Baseline backwash share = (600 m³ ÷ 12,000 m³) × 100% = 5.00%.\n- Trial backwash share = (880 m³ ÷ 11,000 m³) × 100% = 8.00%.\n\n**Answer:** total energy fell by 8.33%, energy per gross treated volume was unchanged, and energy per net delivered volume increased by approximately 3.26%. The selected delivery-boundary metric became worse.\n\nDo not immediately attribute the additional backwash consumption to the trial. Examine filter-run histories, source-water changes, scheduled cleaning and event timing. A short interval containing several backwashes may be unrepresentative. Compare appropriately matched periods or complete cycles as specified in the plan.\n\nIf actual storage changed or washwater was recovered, the simplified subtraction would be insufficient. Use the facility’s documented water balance. If extra equipment operated outside the selected energy meter, the energy comparison would also be incomplete. Arithmetic cannot repair an incorrectly drawn boundary.\n\n### Set stopping criteria and interpret changed conditions\n\nDefine stopping criteria before observing the result. Each criterion should identify the monitored condition, governing source, responsible role, required notification and facility-approved response. Criteria may address treatment performance, loss of reliable monitoring, equipment failure, movement outside the authorised trial envelope or inability to maintain required disinfection conditions. Do not wait for a formal limit exceedance if the authorised trial plan calls for an earlier stop.\n\nDistinguish a treatment stop condition from an analytical exclusion. Unreliable turbidity data may make a comparison unusable, but it must also be assessed under the facility’s procedures for monitoring failure. Excluding the data from a graph does not resolve the operational issue. Likewise, stopping a trial does not erase results collected before the stop.\n\nA change in source-water temperature, pH or organic characteristics can change the treatment challenge. Decide whether the changed condition remains inside the planned comparison range. If not, report the comparison as limited or inconclusive rather than treating normalisation as a cure. Dividing by volume corrects for throughput, not for every difference in water quality.\n\nDownstream disinfection needs explicit attention. Ontario: Procedure for Disinfection of Drinking Water addresses CT concepts, T10 and disinfectant-specific treatment requirements. CT is condition specific and depends on disinfectant, temperature, pH, residual and the approved hydraulic basis for the configuration. A change in flow or treatment chemistry cannot be assumed harmless merely because filtered turbidity improves. Verify the applicable disinfection assessment rather than transferring a CT value from another condition.\n\nAt review, classify the result as supported, unsupported or inconclusive against the predefined claim. Report adverse trade-offs alongside resource metrics. Retain unfavourable observations and state the conditions over which the conclusion is defensible. A supported result still requires the facility’s authorisation process before adoption as routine practice.\n\n### Common errors\n\n- **Calling lower total consumption a saving in efficiency.** Production may have fallen equally or faster. Divide by the matched volume before making a normalised claim.\n- **Mixing product dose and active dose.** Different formulations can deliver different active masses at the same product dose. Preserve the concentration basis and units.\n- **Comparing unlike filter states.** A freshly washed filter and a filter near the end of its run are not interchangeable observations. Retain run history and compare on the planned basis.\n- **Deleting inconvenient excursions.** Unplanned exclusions bias the result and may conceal an important treatment response. Apply documented validity rules and preserve the original record.\n- **Treating unchanged average turbidity as sufficient acceptance.** Averages can hide excursions, while other treatment conditions may deteriorate. Review the full acceptance set and relevant time-resolved records.\n- **Claiming more precision than the measurements support.** Extra spreadsheet digits do not remove meter uncertainty or poor inventory accounting. Report a defensible level of precision and explain limitations.\n\n### What to verify before you act\n\nConsult the facility’s current Municipal Drinking Water Licence, Drinking Water Works Permit and applicable conditions, together with the authorised trial plan and validated operating procedures. Check whether the proposed adjustment, equipment configuration and monitoring arrangements are permitted. Identify the responsible operator and supervisory authorisation through the facility’s designation records and Ontario: O. Reg. 128/04.\n\nVerify the chemical feed calibration, product certificate, flow-meter status, turbidity quality-control records, SCADA configuration, sampling plan and matched operating logs. Review the filter backwash procedure, water-balance method and energy-meter boundary before accepting normalised resource figures.\n\nWhere the change could affect disinfection, consult the facility’s approved disinfection calculations and hydraulic basis alongside Ontario: Procedure for Disinfection of Drinking Water. Check the facility’s alarm-response, abnormal-operation and notification procedures rather than deriving actions from this training example.\n\nThe retained trial package should contain the authorised plan, original records, instrument checks, event log, calculation workbook, exclusions with reasons, treatment-performance review and signed decision record required by the facility. Another reviewer should be able to reconstruct the comparison, identify its limitations and understand why the proposed claim was accepted, rejected or left unresolved.",
+      "evidence": "### Fictional worked scenario: reject the unsupported denominator\n\n**The facility, operators, records and readings are fictional. All numerical values are supplied case assumptions for this training example, not authorised operating values.** This is a non-credit study exercise, not operating or compliance instruction.\n\nAt fictional Cedar Inlet Water Treatment Plant, a trial summary claims a chemical-efficiency improvement because coagulant product consumption fell from 300 kg during baseline to 240 kg during trial. The verified baseline flow-totaliser difference is 15,000 m³. The verified trial difference is 10,000 m³. Chemical consumption records account for inventory movements and match the flow-record intervals. Both periods used the same product.\n\nA supervisor’s draft spreadsheet instead uses 12,000 m³ for trial production. Its note says “copied from production forecast”. There is no measured record supporting that denominator. The learner must reject it for the performance calculation, preserve the draft and document the correction.\n\nThe worked calculation is:\n\n- Total product reduction = 300 kg − 240 kg = 60 kg.\n- Relative total reduction = (60 kg ÷ 300 kg) × 100% = 20%.\n- Baseline dose = 300 kg ÷ 15,000 m³ = 0.020 kg/m³.\n- Baseline dose = 0.020 kg/m³ × 1,000,000 mg/kg ÷ 1,000 L/m³ = 20 mg/L.\n- Trial dose = 240 kg ÷ 10,000 m³ = 0.024 kg/m³.\n- Trial dose = 0.024 kg/m³ × 1,000,000 mg/kg ÷ 1,000 L/m³ = 24 mg/L.\n- Relative dose increase = [(24 mg/L − 20 mg/L) ÷ 20 mg/L] × 100% = 20%.\n\n**Answer:** total product consumption decreased by 20%, but product use per unit water increased by 20%. The efficiency claim is unsupported.\n\nThe fictional source-water log also records a change in raw-water condition during the trial. Therefore, the increased dose cannot be attributed solely to the changed feed strategy. Retain the totaliser exports, matched consumption records, corrected workbook and source-water log. Review treatment performance separately against the authorised trial criteria. Consistent with the measurement-chain emphasis in US EPA: Generating high-quality turbidity data, verify supporting measurement quality before interpreting trends. That source is United States technical guidance, not Ontario law.",
       "assignment": "Produce a 600–800-word trial protocol and critique of F7. Calculate both doses, identify confounders, specify repeated comparison periods, downstream outcomes, instrumentation checks, stopping/escalation criteria and sign-off responsibilities. Include a table of claims supported now versus evidence still required. Discuss and revise before final assessment and evaluation.",
       "rubric": [
         "Shows that both conditions have a 15 mg/L active dose.",
@@ -286,138 +442,346 @@
       ],
       "checks": [
         {
-          "id": "fo1",
+          "id": "ceu-coagulation-filtration-trial-design-c1",
           "objective": "trial-design",
-          "prompt": "Mass and water flow both fall 20%. The dose:",
+          "prompt": "For this non-credit study, not operating or compliance instruction, which claim best defines a controlled coagulant trial?",
           "choices": [
-            "Falls 40%",
-            "Rises 20%",
-            "Falls 20%",
-            "Stays unchanged"
-          ],
-          "correctIndex": 3,
-          "explanation": "The mass-to-flow ratio is unchanged."
-        },
-        {
-          "id": "fo2",
-          "objective": "trial-design",
-          "prompt": "Which trial conclusion fits a confounded two-hour comparison?",
-          "choices": [
-            "Further controlled evidence is needed",
-            "Permanent optimization is proven",
-            "Every downstream effect is known",
-            "The new setting is approved"
+            "Reduce chemical use per treated volume under matched conditions while meeting trial performance criteria.",
+            "Reduce the displayed pump setting while maintaining the same scheduled daily production target.",
+            "Reduce average chemical expenditure across the entire reporting period while retaining the existing purchasing and inventory arrangements.",
+            "Reduce total chemical purchases during the selected trial period."
           ],
           "correctIndex": 0,
-          "explanation": "The confounded, short comparison requires further controlled evidence."
+          "explanation": "The claim must connect normalised resource use, comparable treatment challenges and maintained performance. Lower purchases alone may reflect inventory changes or reduced production. Source: supplied module, 'Define the claim and the fair comparison'."
+        },
+        {
+          "id": "ceu-coagulation-filtration-trial-design-c2",
+          "objective": "trial-design",
+          "prompt": "A fictional training trial compares baseline chemical deliveries with trial chemical fed. Both are divided by net treated volume. What is the main comparison problem?",
+          "choices": [
+            "The water denominator should instead use raw-water volume.",
+            "The chemical numerator changes its measurement boundary.",
+            "The trial period needs additional decimal places in its reported results.",
+            "The chemical totals should exclude opening inventory."
+          ],
+          "correctIndex": 1,
+          "explanation": "Deliveries and chemical fed are different boundaries because storage and transfers can separate purchases from consumption. Changing the water denominator would not repair this mismatch. Source: supplied module, 'Define the claim and the fair comparison' and 'Establish trustworthy measurements'."
+        },
+        {
+          "id": "ceu-coagulation-filtration-trial-design-c3",
+          "objective": "trial-design",
+          "prompt": "In a fictional training comparison, baseline and trial raw-water turbidity are similar, but water temperature and alkalinity differ. Which interpretation is strongest?",
+          "choices": [
+            "Matched turbidity supports attributing the dose difference to the trial.",
+            "Different chemistry means the trial necessarily weakened treatment.",
+            "Changed conditions limit attribution until their effects are assessed.",
+            "Matching the production totals would fully resolve the source-water differences."
+          ],
+          "correctIndex": 2,
+          "explanation": "Temperature and alkalinity can affect coagulation demand even when turbidity is similar. Matching production does not establish an equivalent treatment challenge. Source: supplied module, 'Build a comparison that can survive scrutiny'."
+        },
+        {
+          "id": "ceu-coagulation-filtration-trial-design-c4",
+          "objective": "trial-design",
+          "prompt": "Which stopping-criteria approach belongs in a controlled-trial plan used for study and training?",
+          "choices": [
+            "Select triggers after reviewing whether the trial produces savings.",
+            "Use the same generic trigger for every facility using that coagulant.",
+            "Leave triggers to the reviewer once the complete dataset is available.",
+            "Predefine facility-specific triggers and the authorised response."
+          ],
+          "correctIndex": 3,
+          "explanation": "Stopping criteria and the authorised response belong in the plan before results are reviewed, with actual requirements tied to facility approvals and validated procedures. Choosing triggers after seeing savings introduces bias. Source: supplied module, 'Define the claim and the fair comparison'."
+        },
+        {
+          "id": "ceu-coagulation-filtration-trial-design-c5",
+          "objective": "trial-design",
+          "prompt": "A fictional training record shows a perfectly flat turbidity trend after sample-line maintenance. What evidence best supports deciding whether the trend represents treatment?",
+          "choices": [
+            "The analyser status, sample-delivery checks and stored-signal details.",
+            "The monthly trend average and the operator's summary of overall plant performance.",
+            "The pump command history and the scheduled production target.",
+            "The daily chemical total and the corresponding purchasing record."
+          ],
+          "correctIndex": 0,
+          "explanation": "A flat trend may represent stable water or a held signal, so the measurement chain needs review. A monthly average cannot establish whether the underlying signal was valid. Sources: supplied module, 'Establish trustworthy measurements'; US EPA, 'Generating high-quality turbidity data', United States technical guidance, not Ontario law."
+        },
+        {
+          "id": "ceu-coagulation-filtration-trial-design-c6",
+          "objective": "trial-design",
+          "prompt": "Fictional training case, supplied assumptions: 150 kg of product was fed during production of 10,000 m³ of treated water, with matched times and boundaries. What was the product use per volume?",
+          "choices": [
+            "1.5 mg/L of product.",
+            "15 mg/L of product fed.",
+            "150 mg/L of active ingredient.",
+            "0.015 mg/L of product."
+          ],
+          "correctIndex": 1,
+          "explanation": "150 kg ÷ 10,000 m³ = 0.015 kg/m³ = 15 mg/L. The 0.015 mg/L option incorrectly retains the numerical value after changing units. Active dose also requires a concentration basis. These are supplied teaching assumptions, not authorised operating values. Source: supplied module, worked example."
         }
       ]
     }
   ],
   "finalAssessment": [
     {
-      "id": "coagulation-filtration-f1",
+      "id": "ceu-coagulation-filtration-jar-design-f1",
       "objective": "jar-design",
-      "prompt": "A candidate meets turbidity but fails the supplied pH band. It:",
+      "prompt": "Fictional teaching case: liquid aluminium sulphate has a density of 1.245 g/mL and is 49.0 percent by mass as alum. You dilute 10.0 mL of neat product to a final volume of 1.000 L. What is the bench stock strength as alum?",
       "choices": [
-        "Must be used at full scale",
-        "Passes because turbidity matters alone",
-        "Proves the band is unnecessary",
-        "Fails the combined screen"
-      ],
-      "correctIndex": 3,
-      "explanation": "Every specified constraint applies."
-    },
-    {
-      "id": "coagulation-filtration-f2",
-      "objective": "jar-design",
-      "prompt": "Replicates 0.3 and 0.7 have a mean and range of:",
-      "choices": [
-        "0.4 and 0.5",
-        "1.0 and 0.4",
-        "0.5 and 1.0",
-        "0.5 and 0.4"
-      ],
-      "correctIndex": 3,
-      "explanation": "The mean is 0.50 and the range is 0.40."
-    },
-    {
-      "id": "coagulation-filtration-f3",
-      "objective": "feed-calibration",
-      "prompt": "10 L/hour×1.2 kg/L×10% active delivers:",
-      "choices": [
-        "12 kg/hour",
-        "120 kg/hour",
-        "1.2 kg/hour",
-        "0.12 kg/hour"
-      ],
-      "correctIndex": 2,
-      "explanation": "10×1.2×0.10=1.2 kg/hour."
-    },
-    {
-      "id": "coagulation-filtration-f4",
-      "objective": "feed-calibration",
-      "prompt": "1.2 kg/hour active at 100 m³/hour is:",
-      "choices": [
-        "12 mg/L",
-        "1.2 mg/L",
-        "120 mg/L",
-        "0.12 mg/L"
+        "6.10 mg/mL",
+        "4.90 mg/mL",
+        "12.45 mg/mL",
+        "61.0 mg/mL"
       ],
       "correctIndex": 0,
-      "explanation": "1.2/100×1,000=12 mg/L."
+      "explanation": "1.245 g/mL times 1000 mL times 0.490 gives 610 g alum per litre of neat product, and 10.0 mL of that product supplies 6.10 g into 1.000 L, so 6.10 mg/mL. The 61.0 mg/mL answer comes from forgetting the 100 fold dilution of 10.0 mL into 1.000 L."
     },
     {
-      "id": "coagulation-filtration-f5",
-      "objective": "filter-record",
-      "prompt": "Headloss rises 0.6 m in 3 hours. Rate is:",
+      "id": "ceu-coagulation-filtration-jar-design-f2",
+      "objective": "jar-design",
+      "prompt": "Fictional case: a 1.50 L jar, bench stock of 5.00 mg/mL as alum, target 24.0 mg/L as alum. What stock volume is needed, and what dose is delivered after correcting for the volume added?",
       "choices": [
-        "1.8 m/hour",
-        "0.2 m/hour",
-        "5 m/hour",
-        "0.6 m/hour"
+        "14.4 mL of stock, delivering about 23.8 mg/L",
+        "7.20 mL of stock, delivering about 23.9 mg/L as alum",
+        "7.20 mL of stock, delivering the full 24.0 mg/L as alum",
+        "4.80 mL of stock, delivering about 23.9 mg/L"
       ],
       "correctIndex": 1,
-      "explanation": "0.6/3=0.2 m/hour."
+      "explanation": "24.0 mg/L times 1.50 L is 36.0 mg, and 36.0 mg divided by 5.00 mg/mL is 7.20 mL. Final volume becomes 1.5072 L, so the delivered dose is 36.0 mg divided by 1.5072 L, about 23.9 mg/L. Reporting the full 24.0 mg/L ignores the volume correction step."
     },
     {
-      "id": "coagulation-filtration-f6",
-      "objective": "filter-record",
-      "prompt": "Which evidence best resolves an analyser-versus-process question?",
+      "id": "ceu-coagulation-filtration-jar-design-f3",
+      "objective": "jar-design",
+      "prompt": "Fictional case: delivered dose 25.9 mg/L as alum, textbook factor 0.505 mg alkalinity as CaCO3 consumed per mg of alum, raw alkalinity 38 mg/L as CaCO3. What is the estimated remaining alkalinity?",
       "choices": [
-        "A combined average over a longer reporting period",
-        "A qualified matched independent check",
-        "The original controller setpoint and alarm threshold",
-        "A daily minimum selected from the same analyser"
-      ],
-      "correctIndex": 1,
-      "explanation": "A qualified matched check tests measurement agreement."
-    },
-    {
-      "id": "coagulation-filtration-f7",
-      "objective": "trial-design",
-      "prompt": "Chemical 2 kg/hour at 200 m³/hour and 1 kg/hour at 100 m³/hour show:",
-      "choices": [
-        "A50% dose reduction",
-        "A doubled dose",
-        "The same 10 mg/L dose",
-        "A proven treatment improvement"
+        "About 13.1 mg/L as CaCO3 remaining",
+        "About 32.5 mg/L as CaCO3 remaining",
+        "About 24.9 mg/L as CaCO3 remaining",
+        "About 12.1 mg/L as CaCO3 remaining"
       ],
       "correctIndex": 2,
-      "explanation": "Both mass-to-flow ratios give 10 mg/L."
+      "explanation": "25.9 mg/L times 0.505 is about 13.1 mg/L as CaCO3 consumed, and 38 minus 13.1 leaves about 24.9 mg/L as CaCO3. The 13.1 mg/L option reports the consumption itself rather than what remains in the water."
     },
     {
-      "id": "coagulation-filtration-f8",
-      "objective": "trial-design",
-      "prompt": "A trial’s stopping criteria should be:",
+      "id": "ceu-coagulation-filtration-jar-design-f4",
+      "objective": "jar-design",
+      "prompt": "Fictional run with independently dosed triplicate jars per dose. Pooled repeatability standard deviation is 0.060 NTU, n = 3 per dose, and t = 2.776 at 4 degrees of freedom. The two dose means differ by 0.11 NTU settled. What does this support?",
       "choices": [
-        "Defined beforehand with a response owner",
-        "Set from chemical cost with quality reviewed later",
-        "Left unchanged despite a different source-water condition",
-        "Selected from the best result after the trial ends"
+        "The gap is above the 0.098 NTU least significant difference, so it is dose driven",
+        "The gap is meaningful because triplicate jars remove instrument noise fully",
+        "The gap proves the higher dose will also lower filtered water turbidity",
+        "The gap is below the 0.136 NTU least significant difference, within run noise"
+      ],
+      "correctIndex": 3,
+      "explanation": "Standard error of the difference is 0.060 times the square root of two thirds, about 0.049 NTU, and 2.776 times 0.049 gives a least significant difference near 0.136 NTU, which exceeds the observed 0.11 NTU. The 0.098 NTU figure omits the multiplier for two means and wrongly declares a difference."
+    },
+    {
+      "id": "ceu-coagulation-filtration-jar-design-f5",
+      "objective": "jar-design",
+      "prompt": "Fictional runs: on day 1 the gap between two doses exceeded that run's least significant difference, while on day 2, with different raw water and temperature, the same two doses differed by less than the run noise. What conclusion is defensible?",
+      "choices": [
+        "Repeatability was adequate, yet a persistent dose effect is not established",
+        "Day 1 proves causation, so the higher dose can be set at the plant now",
+        "Day 2 was invalid because the earlier significant result already settled it",
+        "The two doses are equivalent, so the lower dose should be adopted permanently"
       ],
       "correctIndex": 0,
-      "explanation": "Predefined criteria and owners support controlled execution."
+      "explanation": "Replication shows the bench method could resolve differences, but a result that does not persist across raw water and temperature changes does not support a causal or transferable conclusion. Treating day 1 as proof and setting a plant dose skips both further runs and the facility approval and procedure that govern any full scale change."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-f1",
+      "objective": "feed-calibration",
+      "prompt": "Fictional lot data supplied for this item: 49.0 percent w/w as dry alum, 8.20 percent w/w as Al2O3, density 1.32 kg/L. The pump delivers 15.0 L/h into 260 m3/h measured at the injection point. What is the dose expressed as Al2O3?",
+      "choices": [
+        "8.2 mg/L as Al2O3",
+        "6.2 mg/L as Al2O3",
+        "37.3 mg/L as Al2O3",
+        "3.3 mg/L as Al2O3"
+      ],
+      "correctIndex": 1,
+      "explanation": "15.0 L/h x 1.32 kg/L = 19.8 kg/h product, x 0.0820 = 1.624 kg/h as Al2O3, divided by 260 m3/h = 0.006246 kg/m3, x 1000 = 6.2 mg/L. The 37.3 mg/L figure is the same feed on the dry alum product basis, which is a different basis and not what was asked."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-f2",
+      "objective": "feed-calibration",
+      "prompt": "At a fictional plant the pump indicates 20.0 L/h. Three draws average 1140 mL over 4.00 min each. If the site procedure permits a setpoint correction, what indicated rate would deliver 20.0 L/h actual?",
+      "choices": [
+        "22.9 L/h indicated",
+        "20.0 L/h indicated",
+        "23.4 L/h indicated",
+        "17.1 L/h indicated"
+      ],
+      "correctIndex": 2,
+      "explanation": "1140 mL / 4.00 min x 60 / 1000 = 17.1 L/h measured. Correction factor is 20.0 / 17.1 = 1.1696, so 20.0 x 1.1696 = 23.4 L/h indicated. The 22.9 L/h option adds the 14.5 percent deviation instead of dividing by the ratio. Any corrected setpoint must keep the dose inside the range the plant is approved and validated to run, and the root cause still needs investigation."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-f3",
+      "objective": "feed-calibration",
+      "prompt": "Fictional check: indication 14.0 L/h, draws of 705, 698 and 702 mL each over 3.00 min, combined reading and timing uncertainty about 1.0 percent. What is the defensible conclusion?",
+      "choices": [
+        "About 14.0 L/h measured, so a 1.0 percent low bias is proven",
+        "About 42.1 L/h measured, so the pump is grossly over feeding",
+        "About 0.23 L/h measured, so the pump has very nearly stalled",
+        "About 14.0 L/h measured, deviation inside noise, no bias shown"
+      ],
+      "correctIndex": 3,
+      "explanation": "Mean draw is 701.7 mL, giving 701.7 / 3.00 x 60 / 1000 = 14.03 L/h and a deviation of about +0.2 percent, which is smaller than both the 1.0 percent uncertainty and the draw spread, so no bias is demonstrated and the result is simply recorded. Calling a 0.2 percent difference a proven bias treats scatter as a real trend."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-f4",
+      "objective": "feed-calibration",
+      "prompt": "Supplied case assumptions: hypochlorite labelled 120 g/L available chlorine, density 1.20 kg/L, fed at 4.0 L/h into 300 m3/h at the injection point. What is the dose as available chlorine?",
+      "choices": [
+        "1.6 mg/L as available chlorine",
+        "1.9 mg/L as available chlorine",
+        "0.5 mg/L as available chlorine",
+        "13.3 mg/L as available chlorine"
+      ],
+      "correctIndex": 0,
+      "explanation": "4.0 L/h x 120 g/L = 480 g/h = 0.48 kg/h, divided by 300 m3/h = 0.0016 kg/m3, x 1000 = 1.6 mg/L. The 1.9 mg/L answer comes from multiplying 1.20 kg/L by 0.12, mixing weight per volume with weight per weight and overstating active chlorine by about 20 percent. Actual residual targets are set by the facility approval, not by this example."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-f5",
+      "objective": "feed-calibration",
+      "prompt": "At a fictional plant, coagulant is injected at a rapid mix basin receiving 180 m3/h, while total production across two trains is 300 m3/h. The pump delivers 10.0 L/h of product at 1.30 kg/L and 48.0 percent w/w active. What dose reaches the injection point?",
+      "choices": [
+        "13.0 mg/L as active chemical",
+        "34.7 mg/L as active chemical",
+        "20.8 mg/L as active chemical",
+        "26.0 mg/L as active chemical"
+      ],
+      "correctIndex": 1,
+      "explanation": "Active mass rate is 10.0 x 1.30 x 0.480 = 6.24 kg/h, and the correct denominator is the 180 m3/h actually passing the injection point, giving 6.24 / 180 x 1000 = 34.7 mg/L. The 20.8 mg/L option uses total plant production of 300 m3/h and understates the dose that the water at that basin really receives."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-f1",
+      "objective": "filter-record",
+      "prompt": "Filter A shows a headloss rate of 0.060 m/h at a loading rate of 4.00 m/h. Filter B shows 0.045 m/h at 2.50 m/h. Which unit develops more headloss per metre of water applied, and by about how much?",
+      "choices": [
+        "Filter B, by about 50 percent",
+        "Filter A, by about 75 percent",
+        "Filter B, by about 20 percent",
+        "Filter A, by about 33 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Specific headloss development is headloss rate divided by loading rate. Filter A gives 0.0150 and Filter B gives 0.0180 m per m applied, so B is about 20 percent higher. Ranking on the raw rate alone points at Filter A, which is only busier, not dirtier per litre filtered."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-f2",
+      "objective": "filter-record",
+      "prompt": "A fictional plant holds production at 500 m3/h with five filters of 25.0 m2 each. Flows are F1 140, F2 120, F3 110, F4 80 and F5 50 m3/h. F5 goes to backwash and the split stays proportional among the other four. What is the new F1 loading rate?",
+      "choices": [
+        "5.60 m/h",
+        "5.00 m/h",
+        "4.44 m/h",
+        "6.22 m/h"
+      ],
+      "correctIndex": 3,
+      "explanation": "The four remaining units previously carried 450 m3/h, so F1 takes 500 x (140 divided by 450) = 155.6 m3/h, and 155.6 divided by 25.0 m2 is 6.22 m/h. The 5.00 m/h answer is the plant average over the area still in service and hides the step increase landing on F1."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-f3",
+      "objective": "filter-record",
+      "prompt": "Four filters discharge to a common header. Flows are 80, 80, 40 and 100 m3/h with filtered turbidities of 0.05, 0.06, 0.30 and 0.07 NTU in that order. What is the combined filtered water turbidity?",
+      "choices": [
+        "0.09 NTU",
+        "0.12 NTU",
+        "0.15 NTU",
+        "0.30 NTU"
+      ],
+      "correctIndex": 0,
+      "explanation": "Flow weighted numerator is 4.0 + 4.8 + 12.0 + 7.0 = 27.8 m3.NTU/h, divided by 300 m3/h gives 0.093 NTU, reported as about 0.09 NTU. The 0.12 NTU choice is the equal weight arithmetic average, which is not the mixed value of the header."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-f4",
+      "objective": "filter-record",
+      "prompt": "A filter run began at 02:00 with headloss 0.30 m. At 12:00 headloss reads 1.05 m under steady loading. The fictional plant procedure uses a terminal headloss assumption of 2.55 m and a maximum run assumption of 96 h. What is the projected total run length?",
+      "choices": [
+        "About 96 h of total run",
+        "About 30 h of total run",
+        "About 20 h of total run",
+        "About 34 h of total run"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rate is (1.05 minus 0.30) divided by 10 h = 0.075 m/h. Remaining headloss of 1.50 m divided by 0.075 m/h is 20 h, added to the 10 h already run gives about 30 h. The 34 h answer divides the full terminal assumption by the rate and ignores the 10 h already elapsed."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-f5",
+      "objective": "filter-record",
+      "prompt": "Combined filtered water turbidity reads 0.10 NTU and satisfies the facility performance criterion, while individual filter F3 reads 0.32 NTU and rising. F3 carries the lowest flow of four units. What is the most defensible next step?",
+      "choices": [
+        "Report the arithmetic average of the four units instead of the mix",
+        "Accept the combined value because it satisfies the plant criterion",
+        "Verify the F3 turbidimeter and flow record, then act per procedure",
+        "Increase F3 flow so its turbidity is diluted in the combined stream"
+      ],
+      "correctIndex": 2,
+      "explanation": "A per unit reading identifies which unit produced the result, so the measurement quality and the unit condition are checked first and the approved operating procedure and facility approval govern the response. Accepting the combined value lets a low flow unit hide behind dilution."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-f1",
+      "objective": "trial-design",
+      "prompt": "Fictional training case, supplied assumptions: baseline fed 300 kg product at active mass fraction 0.40 across 12,000 m³; trial fed 240 kg at 0.50 across 15,000 m³. Times and boundaries match. What is the active-dose reduction?",
+      "choices": [
+        "A 36% reduction in active ingredient dose.",
+        "A 25% reduction in active chemical dose.",
+        "A 0% reduction in active dose.",
+        "A 20% reduction in active dose."
+      ],
+      "correctIndex": 3,
+      "explanation": "Baseline active dose is 300 × 0.40 ÷ 12,000 × 1,000 = 10 mg/L. Trial active dose is 240 × 0.50 ÷ 15,000 × 1,000 = 8 mg/L, a 20% reduction. The tempting 36% result compares product dose without accounting for the different active fractions. These supplied assumptions establish a calculation, not acceptable treatment or authorised values. Source: supplied module, measurement boundaries and worked example."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-f2",
+      "objective": "trial-design",
+      "prompt": "Fictional training case, supplied assumptions: matched process-energy records show baseline 12,000 kWh for 10,000 m³ net treated water and trial 10,800 kWh for 8,000 m³. What happened to energy use per net treated volume?",
+      "choices": [
+        "It rose by 12.5% per net treated volume.",
+        "It fell by 20% across the defined net treated-water boundary.",
+        "It fell by 10% per net treated volume.",
+        "It stayed unchanged per net treated volume."
+      ],
+      "correctIndex": 0,
+      "explanation": "Baseline intensity is 1.20 kWh/m³ and trial intensity is 1.35 kWh/m³. The increase is (1.35 − 1.20) ÷ 1.20 × 100% = 12.5%. Total energy fell by 10%, but output fell more, so that total does not demonstrate efficiency savings. All values are supplied teaching assumptions. Source: supplied module, normalisation and energy-boundary discussion."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-f3",
+      "objective": "trial-design",
+      "prompt": "Fictional training case: the authorised study plan pauses the trial if reliable filter-effluent monitoring is lost. Chemical use falls, but SCADA repeats a stored value while the analyser is faulted. Which evaluation follows the plan?",
+      "choices": [
+        "End the evaluation and classify the analyser fault as treatment failure.",
+        "Pause under the plan, flag affected data and seek the designated review.",
+        "Continue the trial and use the repeated value as evidence of stable treatment.",
+        "Continue the trial while replacing fault-period values with the preceding daily average."
+      ],
+      "correctIndex": 1,
+      "explanation": "The scenario's predefined stopping condition has been met, and the unreliable readings cannot establish maintained performance. Continuing because chemical use fell confuses resource savings with treatment evidence. An instrument fault alone also does not prove treatment failure. This is evaluation of a fictional plan, not operating instruction. Source: supplied module, trial planning and measurement-chain discussion."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-f4",
+      "objective": "trial-design",
+      "prompt": "Fictional training case: a claim attributes savings solely to coagulant feed strategy. During the trial, pH adjustment also changes and results improve. Which reviewer conclusion best fits the evidence?",
+      "choices": [
+        "Attribute the improvement to feed strategy because it was the stated hypothesis.",
+        "Attribute the improvement to pH adjustment because coagulation depends on chemistry.",
+        "Treat the result as evidence about the combined strategy, subject to other trial checks.",
+        "Separate the effects by assigning the entire chemical saving to feed strategy and the entire treatment improvement to pH."
+      ],
+      "correctIndex": 2,
+      "explanation": "Changing feed strategy and pH adjustment together prevents separate attribution without further evidence. The original hypothesis does not establish causation. A later comparison intended to separate effects would need an authorised design. Source: supplied module, 'Build a comparison that can survive scrutiny'. Ontario O. Reg. 128/04 provides the relevant operator designation, duties and records framework, not automatic trial authorisation."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-f5",
+      "objective": "trial-design",
+      "prompt": "Fictional training case: chemical feed totals and water totals cover different shifts, with clock offsets not yet resolved. Treatment records are valid and favourable. How should a reviewer classify a spreadsheet's apparent resource saving?",
+      "choices": [
+        "Conservative, because clock differences generally reduce the calculated saving.",
+        "Evidence of treatment failure, requiring rejection of all otherwise valid process records.",
+        "Demonstrated, because favourable treatment records validate the normalisation.",
+        "Unsupported until numerator and denominator intervals are reconciled."
+      ],
+      "correctIndex": 3,
+      "explanation": "Normalisation requires chemical and water quantities from aligned intervals. Valid treatment records answer a different question and cannot repair mismatched resource accounting. The gap makes the saving unsupported, not proof of treatment failure. Source: supplied module, 'Establish trustworthy measurements'."
     }
   ],
   "sources": [
@@ -454,5 +818,267 @@
       "accessed": "2026-09-24"
     }
   ],
-  "version": "2026-09-24.1"
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-coagulation-filtration-jar-design-a1",
+      "objective": "jar-design",
+      "prompt": "Fictional teaching case: liquid alum has a density of 1.300 g/mL and is 47.0 percent by mass as alum. You dilute 12.0 mL of the neat product to a final volume of 1.000 L. What is the resulting bench stock strength as alum?",
+      "choices": [
+        "7.33 mg/mL",
+        "5.64 mg/mL",
+        "15.6 mg/mL",
+        "6.11 mg/mL"
+      ],
+      "correctIndex": 0,
+      "explanation": "1.300 g/mL times 1000 mL times 0.470 gives 611 g alum per litre of product, and 12.0 mL supplies 7.33 g into 1.000 L, so 7.33 mg/mL. The 6.11 mg/mL answer assumes a 10.0 mL aliquot instead of the 12.0 mL actually diluted."
+    },
+    {
+      "id": "ceu-coagulation-filtration-jar-design-a2",
+      "objective": "jar-design",
+      "prompt": "Fictional case: a 2.00 L jar, bench stock of 6.00 mg/mL as alum, target 28.0 mg/L as alum. What stock volume is required, and what dose is delivered once the added volume is accounted for?",
+      "choices": [
+        "18.7 mL of stock, delivering about 27.7 mg/L",
+        "9.33 mL of stock, delivering about 27.9 mg/L as alum",
+        "9.33 mL of stock, delivering the full 28.0 mg/L as alum",
+        "4.67 mL of stock, delivering about 27.9 mg/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "28.0 mg/L times 2.00 L is 56.0 mg, divided by 6.00 mg/mL gives 9.33 mL. Final volume is 2.00933 L, so the delivered dose is about 27.9 mg/L as alum. Stating the full 28.0 mg/L skips the volume correction that the bench sheet should record."
+    },
+    {
+      "id": "ceu-coagulation-filtration-jar-design-a3",
+      "objective": "jar-design",
+      "prompt": "Fictional case: a jar received a delivered dose of 27.9 mg/L as alum, and the aluminium fraction for this hydrate is 0.0908 g Al per g of alum. What is the dose expressed on the aluminium basis?",
+      "choices": [
+        "About 5.06 mg/L as Al",
+        "About 12.5 mg/L as Al",
+        "About 2.53 mg/L as Al",
+        "About 0.25 mg/L as Al"
+      ],
+      "correctIndex": 2,
+      "explanation": "27.9 mg/L times 0.0908 gives about 2.53 mg/L as Al, which matters because plant records and supplier sheets may use different bases. The 0.25 mg/L answer is a decimal slip of a factor of ten and would badly understate the aluminium applied."
+    },
+    {
+      "id": "ceu-coagulation-filtration-jar-design-a4",
+      "objective": "jar-design",
+      "prompt": "Fictional run with independently dosed triplicate jars per dose. Pooled repeatability standard deviation is 0.040 NTU, n = 3 per dose, t = 2.776 at 4 degrees of freedom, and the dose means differ by 0.12 NTU settled. What does this support?",
+      "choices": [
+        "0.12 NTU is below the 0.111 NTU least significant difference for this run",
+        "0.12 NTU confirms the dose effect will hold across other raw water temperatures",
+        "0.12 NTU is meaningless because triplicates cannot detect gaps under 0.2 NTU",
+        "0.12 NTU exceeds the 0.091 NTU least significant difference for this run"
+      ],
+      "correctIndex": 3,
+      "explanation": "Standard error of the difference is 0.040 times 0.8165, about 0.0327 NTU, and 2.776 times that gives about 0.091 NTU, which the 0.12 NTU gap exceeds for this run only. Claiming the effect will hold at other temperatures moves from repeatability to a causal claim that one run cannot support."
+    },
+    {
+      "id": "ceu-coagulation-filtration-jar-design-a5",
+      "objective": "jar-design",
+      "prompt": "Fictional run: a 500 mg/L stock is used for doses of 18 to 38 mg/L as alum in 2.00 L jars, requiring roughly 72 to 152 mL of stock per jar. Why is this run not interpretable as a dose comparison?",
+      "choices": [
+        "Raw water is diluted in proportion to dose, so the run is confounded",
+        "Pipette error dominates because the additions are far too small",
+        "The stock will not dissolve at 500 mg/L, so dosing is inaccurate",
+        "Settling time must be extended whenever the added volume exceeds 50 mL"
+      ],
+      "correctIndex": 0,
+      "explanation": "Adding 72 to 152 mL to a 2.00 L jar dilutes raw turbidity and alkalinity by several percent, and the dilution grows with dose, so dose and dilution vary together. Pipette error is the opposite problem and applies when additions fall below about 1 mL."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-a1",
+      "objective": "feed-calibration",
+      "prompt": "Fictional case: a jar test optimum is reported as 3.0 mg/L as Al. Product is 8.40 percent w/w as Al2O3, density 1.34 kg/L, and flow at the injection point is 250 m3/h. Al is 0.5292 of Al2O3 by mass. What solution feed rate is needed?",
+      "choices": [
+        "3.5 L/h of product",
+        "12.6 L/h of product",
+        "6.7 L/h of product",
+        "16.9 L/h of product"
+      ],
+      "correctIndex": 1,
+      "explanation": "3.0 mg/L as Al divided by 0.5292 = 5.67 mg/L as Al2O3; x 250 m3/h = 1.417 kg/h as Al2O3; divided by 0.0840 = 16.87 kg/h product; divided by 1.34 kg/L = 12.6 L/h. The 6.7 L/h answer treats the Al figure as if it were already an Al2O3 figure, so the plant would feed far less coagulant than the jar test called for."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-a2",
+      "objective": "feed-calibration",
+      "prompt": "Fictional drawdown record: indication 9.0 L/h, draws of 420, 428 and 424 mL each over 3.00 min. What are the measured delivery and the deviation from indication?",
+      "choices": [
+        "8.48 L/h measured, about -0.5 percent deviation",
+        "14.1 L/h measured, about +57 percent deviation",
+        "8.48 L/h measured, about -5.8 percent deviation",
+        "8.48 L/h measured, about -6.1 percent deviation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mean draw is 424 mL, so 424 / 3.00 x 60 / 1000 = 8.48 L/h, and (8.48 minus 9.0) / 9.0 x 100 = -5.8 percent. The -6.1 percent option divides the 0.52 L/h difference by the measured rate rather than the indicated rate, which is not the deviation from indication."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-a3",
+      "objective": "feed-calibration",
+      "prompt": "Fictional plant: indication 16.0 L/h but verified delivery is 14.4 L/h. Lot data are density 1.33 kg/L and 48.5 percent w/w dry alum, with 200 m3/h at the injection point. What dose is actually being delivered?",
+      "choices": [
+        "51.6 mg/L as dry alum",
+        "95.8 mg/L as dry alum",
+        "34.9 mg/L as dry alum",
+        "46.4 mg/L as dry alum"
+      ],
+      "correctIndex": 3,
+      "explanation": "14.4 x 1.33 = 19.15 kg/h product, x 0.485 = 9.29 kg/h dry alum, divided by 200 m3/h x 1000 = 46.4 mg/L. The 51.6 mg/L answer uses the 16.0 L/h indication, which is exactly the error the drawdown check exists to catch, since indication is not a measurement of delivery."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-a4",
+      "objective": "feed-calibration",
+      "prompt": "A hypochlorite data sheet for a fictional lot lists 150 g/L available chlorine and density 1.21 kg/L, with the label stating 15 percent by volume. At a verified 5.0 L/h, what is the available chlorine mass rate?",
+      "choices": [
+        "0.75 kg/h of available chlorine",
+        "0.91 kg/h of available chlorine",
+        "0.62 kg/h of available chlorine",
+        "6.05 kg/h of available chlorine"
+      ],
+      "correctIndex": 0,
+      "explanation": "5.0 L/h x 150 g/L = 750 g/h = 0.75 kg/h, and the grams per litre figure needs no density step. The 0.91 kg/h option multiplies 5.0 L/h by 1.21 kg/L and 0.15, applying a volumetric percentage as though it were weight per weight and overstating the feed."
+    },
+    {
+      "id": "ceu-coagulation-filtration-feed-calibration-a5",
+      "objective": "feed-calibration",
+      "prompt": "A drawdown series at a fictional plant shows the pump within 1 percent of indication at a 60 percent setpoint but 18 percent low at a 20 percent setpoint. What does this best support?",
+      "choices": [
+        "A setpoint correction alone resolves the low end error permanently.",
+        "Delivery must be verified at each setpoint band actually used in service.",
+        "The 60 percent result can be extended across the whole pump range.",
+        "The low setpoint draw should be discarded as a timing outlier."
+      ],
+      "correctIndex": 1,
+      "explanation": "A pump can be accurate at mid range and badly off at low stroke, so linearity has to be demonstrated rather than assumed, and each band used in service needs its own verified result. Discarding the low setpoint draw assumes the outcome, and at 18 percent the deviation is far larger than normal reading and timing uncertainty."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-a1",
+      "objective": "filter-record",
+      "prompt": "A filter logsheet header lists 30.0 m2, but the as-built drawings give an effective media area of 4.5 m by 6.0 m. The filtrate meter reads 108 m3/h. What loading rate should be recorded for that unit?",
+      "choices": [
+        "18.0 m/h",
+        "0.25 m/h",
+        "4.00 m/h",
+        "3.60 m/h"
+      ],
+      "correctIndex": 2,
+      "explanation": "The drawings give 4.5 m x 6.0 m = 27.0 m2, so 108 m3/h divided by 27.0 m2 is 4.00 m/h. The 3.60 m/h result uses the unverified 30.0 m2 header value and understates how hard the unit is actually working."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-a2",
+      "objective": "filter-record",
+      "prompt": "A filter began its run at headloss 0.25 m and reads 0.97 m after 16 h at a steady loading rate of 3.00 m/h. What is the specific headloss development for that run?",
+      "choices": [
+        "0.0450 m per m applied",
+        "0.0202 m per m applied",
+        "0.0180 m per m applied",
+        "0.0150 m per m applied"
+      ],
+      "correctIndex": 3,
+      "explanation": "Headloss rate is (0.97 minus 0.25) divided by 16 h = 0.045 m/h, and dividing by the 3.00 m/h loading gives 0.0150 m per m applied. The 0.0450 answer is the raw rate left unnormalized, which cannot be compared fairly between units at different loadings."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-a3",
+      "objective": "filter-record",
+      "prompt": "A filter operated at a steady loading rate of 3.75 m/h and was backwashed after a run length of 42 h. What unit filter run volume did that run achieve?",
+      "choices": [
+        "158 m3/m2",
+        "90.0 m3/m2",
+        "11.2 m3/m2",
+        "360 m3/m2"
+      ],
+      "correctIndex": 0,
+      "explanation": "UFRV equals loading rate times run length, so 3.75 m/h x 42 h = 157.5, reported as about 158 m3/m2. The 360 m3/m2 answer applies the 96 h maximum run assumption rather than the run length actually achieved."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-a4",
+      "objective": "filter-record",
+      "prompt": "Four filters feed one header. Flows are 150, 60, 60 and 30 m3/h with filtered turbidities of 0.28, 0.06, 0.05 and 0.07 NTU in that order. What combined filtered water turbidity results from this split?",
+      "choices": [
+        "0.09 NTU",
+        "0.17 NTU",
+        "0.12 NTU",
+        "0.28 NTU"
+      ],
+      "correctIndex": 1,
+      "explanation": "Numerator is 42.0 + 3.6 + 3.0 + 2.1 = 50.7 m3.NTU/h over 300 m3/h, giving about 0.17 NTU. The 0.12 NTU choice is the equal weight average, which understates the mix here because the poorest performing unit is also the highest flow unit."
+    },
+    {
+      "id": "ceu-coagulation-filtration-filter-record-a5",
+      "objective": "filter-record",
+      "prompt": "Taking one filter out of service changes the flow through the downstream contact chamber at a fictional plant. What is the correct approach to the disinfection calculation for the configuration now running?",
+      "choices": [
+        "Rely on combined filter effluent turbidity to support the log credit",
+        "Assume CT holds because the chlorine residual setpoint was unchanged",
+        "Recalculate CT on the approved hydraulic basis for that configuration",
+        "Apply the most favourable temperature recorded during the past year"
+      ],
+      "correctIndex": 2,
+      "explanation": "CT is condition specific and depends on disinfectant, temperature, pH, residual and the approved hydraulic basis, including the T10 used for that configuration, so it is recalculated against the approved basis. An unchanged residual setpoint says nothing about the altered contact time."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-a1",
+      "objective": "trial-design",
+      "prompt": "Fictional training case, supplied assumptions: a baseline used 400 kg product containing 0.30 kg active/kg across 12,000 m³. A trial used 300 kg containing 0.40 kg active/kg across 16,000 m³. Records are aligned. How much did active dose decrease?",
+      "choices": [
+        "By 33.3% on an active ingredient dose basis.",
+        "By 43.75% on an active chemical dose basis.",
+        "By 0% on an active dose basis.",
+        "By 25% on an active dose basis."
+      ],
+      "correctIndex": 3,
+      "explanation": "Both periods used 120 kg of active ingredient, but baseline dose was 10 mg/L and trial dose was 7.5 mg/L. The decrease is 25%. Unchanged active mass does not mean unchanged dose when production changes. The 43.75% option compares product dose rather than active dose. Values are supplied teaching assumptions only. Source: supplied module, measurement boundaries and worked example."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-a2",
+      "objective": "trial-design",
+      "prompt": "Fictional training case, supplied assumptions: a treatment-process meter recorded 15,000 kWh for 10,000 m³ net delivery before a trial, then 13,500 kWh for 7,500 m³. Intervals and boundaries match. Which normalised energy conclusion is correct?",
+      "choices": [
+        "Energy intensity rose by 20% per net volume.",
+        "Energy intensity fell by 10%.",
+        "Energy intensity fell by 25% per net delivered volume.",
+        "Energy intensity remained unchanged per net delivered volume."
+      ],
+      "correctIndex": 0,
+      "explanation": "Baseline energy intensity is 1.50 kWh/m³ and trial intensity is 1.80 kWh/m³, an increase of 20%. The 10% decrease describes total energy, not energy per net delivered volume. These supplied assumptions are not authorised operating values. Source: supplied module, normalisation and consistent energy boundaries."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-a3",
+      "objective": "trial-design",
+      "prompt": "Fictional training case: a study plan requires a pause at its filter-performance trigger. Valid records show that trigger was reached, although the daily average is favourable and chemical use is lower. Which review decision respects the plan?",
+      "choices": [
+        "Continue because the daily average shows acceptable overall performance.",
+        "Apply the planned pause, retain the event and refer it for authorised review.",
+        "Remove the event as unrepresentative and assess the remaining trial records for savings.",
+        "Revise the trigger afterwards to match the favourable average."
+      ],
+      "correctIndex": 1,
+      "explanation": "A favourable average does not cancel a valid event that meets the fictional plan's stopping criterion. Removing the event or revising the trigger after seeing results biases the evaluation. Actual criteria and responses depend on facility approvals and validated procedures. Source: supplied module, trial planning, transition-data handling and measurement interpretation."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-a4",
+      "objective": "trial-design",
+      "prompt": "Fictional training case: parallel trains receive the same influent, but the trial train has refurbished filters and different hydraulics. Its chemical use is lower. What conclusion best addresses attribution to the tested feed strategy?",
+      "choices": [
+        "The shared influent proves that feed strategy caused the lower use.",
+        "The train differences prevent any valid calculation of chemical use per volume.",
+        "The strategy's separate effect is unresolved because the trains may not be comparable.",
+        "The filter refurbishment can be ignored once both trains have valid instruments and their chemical records cover identical reporting intervals."
+      ],
+      "correctIndex": 2,
+      "explanation": "Parallel trains support causal comparison only when relevant hydraulics, equipment and other conditions are sufficiently comparable. Shared influent alone is insufficient. Normalised chemical use may still be calculable, but attributing its difference to feed strategy remains unresolved. Source: supplied module, 'Build a comparison that can survive scrutiny'."
+    },
+    {
+      "id": "ceu-coagulation-filtration-trial-design-a5",
+      "objective": "trial-design",
+      "prompt": "Fictional training case: a trial's spreadsheet divides chemical received by treated volume. Deliveries are recorded, but opening inventory, closing inventory and transfers are missing. Treatment evidence is sound. What resource conclusion is justified?",
+      "choices": [
+        "Consumption savings are demonstrated because all chemical deliveries were recorded.",
+        "Consumption savings are conservative because stored chemical always increases during a trial.",
+        "Consumption savings can be confirmed by adding more decimal places to the delivery-based result.",
+        "Consumption savings remain unsupported until inventory and transfer gaps are resolved."
+      ],
+      "correctIndex": 3,
+      "explanation": "Receipts do not establish consumption without accounting for inventory changes and transfers. Sound treatment evidence cannot supply the missing chemical balance, and greater numerical precision cannot repair missing records. The limitation concerns the resource claim rather than proving treatment failure. Source: supplied module, evidence register and 'Establish trustworthy measurements'."
+    }
+  ]
 }

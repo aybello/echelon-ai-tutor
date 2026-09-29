@@ -21,22 +21,38 @@ describe("CEU curriculum release integrity", () => {
         c.modules.map(m => m.title)
       );
       expect(c.modules).toHaveLength(c.plannedMinutes === 600 ? 6 : 4);
-      expect(c.finalAssessment).toHaveLength(c.modules.length * 2);
+      expect(c.finalAssessment).toHaveLength(c.modules.length * 5);
+      expect(c.alternateFinalAssessment).toHaveLength(c.modules.length * 5);
       const ids = c.modules
         .flatMap(m => m.checks)
         .concat(c.finalAssessment, c.alternateFinalAssessment ?? [])
         .map(q => q.id);
       expect(new Set(ids).size).toBe(ids.length);
+      const prompts = c.modules
+        .flatMap(m => m.checks)
+        .concat(c.finalAssessment, c.alternateFinalAssessment ?? [])
+        .map(q => q.prompt.toLowerCase().replace(/\W+/g, " ").trim());
+      expect(new Set(prompts).size).toBe(prompts.length);
       for (const m of c.modules) {
-        expect(m.lesson.length).toBeGreaterThan(900);
+        expect(m.lesson.length).toBeGreaterThan(7000);
+        expect(m.lesson.split(/\s+/).length).toBeGreaterThan(1200);
+        expect(m.lesson).toContain("###");
+        expect(m.lesson).toContain("|");
+        expect(m.lesson).toContain("### Common errors");
+        expect(m.lesson).toContain("### What to verify before you act");
+        expect((m.lesson.match(/Worked example/gi) ?? []).length).toBeGreaterThanOrEqual(2);
         expect(m.evidence.length).toBeGreaterThan(200);
+        expect(m.evidence.toLowerCase()).toContain("fictional");
         expect(m.assignment.length).toBeGreaterThan(180);
         expect(m.facilitatorGuide.length).toBeGreaterThan(200);
         expect(m.rubric.length).toBeGreaterThanOrEqual(3);
-        expect(m.checks).toHaveLength(2);
+        expect(m.checks).toHaveLength(6);
         expect(
           c.finalAssessment.filter(q => q.objective === m.id)
-        ).toHaveLength(2);
+        ).toHaveLength(5);
+        expect(
+          (c.alternateFinalAssessment ?? []).filter(q => q.objective === m.id)
+        ).toHaveLength(5);
         for (const source of m.sourceIds)
           expect(c.sources.some(s => s.id === source)).toBe(true);
       }
@@ -48,6 +64,7 @@ describe("CEU curriculum release integrity", () => {
         expect(q.correctIndex).toBeGreaterThanOrEqual(0);
         expect(q.correctIndex).toBeLessThan(4);
         expect(q.explanation.length).toBeGreaterThan(15);
+        expect(`${q.prompt} ${q.choices.join(" ")} ${q.explanation}`).not.toContain("—");
       }
       expect(c.modules.at(-1)?.activities.at(-1)?.instruction).toContain(
         "final assessment"

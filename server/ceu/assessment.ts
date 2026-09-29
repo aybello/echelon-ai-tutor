@@ -1,5 +1,11 @@
 import { randomInt } from "node:crypto";
 import type { CeuCurriculum, CeuExamItem } from "../../shared/ceuLearning";
+import legacyData from "./legacyAssessments.json";
+
+const legacy = legacyData as Record<string, {
+  primary: CeuCurriculum["finalAssessment"];
+  alternate: CeuCurriculum["finalAssessment"];
+}>;
 
 function shuffle<T>(values: T[]): T[] {
   const result = [...values];
@@ -21,8 +27,10 @@ export function issueCeuExam(course: CeuCurriculum): CeuExamItem[] {
 
 /** Missing manifests belong to legacy drafts/results and retain their original ordering. */
 export function ceuExamQuestions(course: CeuCurriculum, manifest?: CeuExamItem[]) {
-  if (!manifest) return course.finalAssessment;
-  const pool = [...course.finalAssessment, ...(course.alternateFinalAssessment ?? [])];
+  const archived = legacy[course.key];
+  if (!manifest) return archived?.primary ?? course.finalAssessment;
+  const pool = [...course.finalAssessment, ...(course.alternateFinalAssessment ?? []),
+    ...(archived?.primary ?? []), ...(archived?.alternate ?? [])];
   return manifest.map(item => {
     const q = pool.find(question => question.id === item.questionId);
     if (!q || item.choiceOrder.length !== q.choices.length ||
