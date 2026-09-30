@@ -1517,8 +1517,8 @@ export default function Landing() {
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
             Choose Your Certification Track
           </h2>
-          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
-            Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Every course includes 400+ practice questions and full AI Tutor access.
+          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 620, margin: "0 auto 32px" }}>
+            Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Choose a track, then get a complete study system: 500+ practice questions in core certification banks, full-length mock exams, flashcards, study notes, formula sheets where relevant, progress tracking, and AI Tutor support.
           </p>
 
           {/* Track Tree — accordion-style vertical selector */}
