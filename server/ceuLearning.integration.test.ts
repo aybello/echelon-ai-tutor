@@ -12,10 +12,15 @@ import {
   type CeuLearningRecord,
 } from "../shared/ceuLearning";
 import { torontoDate } from "./ceu/learningState";
+import { ceuModuleSlideCount } from "../shared/ceuSlides";
 import type { TrpcContext } from "./_core/context";
 const enabled = process.env.CEU_INTEGRATION_TEST_DB === "1";
 const prefix = `ceu-${randomUUID()}`;
-const emails = [`${prefix}-a@example.test`, `${prefix}-b@example.test`];
+const emails = [
+  `${prefix}-a@example.test`,
+  `${prefix}-b@example.test`,
+  `${prefix}-slides@example.test`,
+];
 const ctx = (email: string) =>
   ({ studentEmail: email, user: null, req: {}, res: {} }) as TrpcContext;
 const learner = ceuRouter.createCaller(ctx(emails[0])),
@@ -209,6 +214,70 @@ describe.skipIf(!enabled)("CEU database-backed self-paced lifecycle", () => {
       })
     ).rejects.toMatchObject({ code: "BAD_REQUEST" });
     expect((await other.myRecord({ courseKey }))?.completion).toBeUndefined();
+  }, 30000);
+  it("issues a certificate at 80% after saved slides, without practice, evaluation or time gates", async () => {
+    const currentLearner = ceuRouter.createCaller(ctx(emails[2]));
+    let r = (
+      await currentLearner.start({
+        courseKey,
+        learnerName: "Slide Learner",
+        operatorNumber: "90000642",
+      })
+    )!;
+    const update = async (action: Parameters<typeof currentLearner.save>[0]["action"]) => {
+      r = (
+        await currentLearner.save({ courseKey, revision: r.revision, action })
+      ).record;
+    };
+    for (const module of course.modules) {
+      const lastSlide = ceuModuleSlideCount(module) - 1;
+      for (let slideIndex = 1; slideIndex <= lastSlide; slideIndex++)
+        await update({ type: "slideProgress", moduleId: module.id, slideIndex });
+      await update({
+        type: "completeModule",
+        moduleId: module.id,
+        slideIndex: lastSlide,
+      });
+    }
+    expect((await currentLearner.myRecord({ courseKey }))?.modules).toEqual(r.modules);
+    expect(
+      Object.values(r.modules).every(
+        m => m.activeSeconds === 0 && m.exerciseAttempts.length === 0 && Object.keys(m.checks).length === 0
+      )
+    ).toBe(true);
+    expect(r.evaluation).toBeUndefined();
+
+    // A failed final cannot issue a certificate; retry creates a new issued draft.
+    await update({ type: "beginExam" });
+    const firstAttemptId = r.assessmentDraft!.attemptId;
+    let questions = ceuExamQuestions(course, r.assessmentDraft!.manifest);
+    const passingCount = Math.ceil(questions.length * 0.8);
+    await update({
+      type: "exam",
+      attemptId: firstAttemptId,
+      answers: questions.map((q, i) =>
+        i < passingCount - 1 ? q.correctIndex : (q.correctIndex + 1) % q.choices.length
+      ),
+    });
+    expect(r.attempts.at(-1)?.passed).toBe(false);
+    expect(r.completion).toBeUndefined();
+    await update({ type: "beginExam" });
+    expect(r.assessmentDraft!.attemptId).not.toBe(firstAttemptId);
+    questions = ceuExamQuestions(course, r.assessmentDraft!.manifest);
+    await update({
+      type: "exam",
+      attemptId: r.assessmentDraft!.attemptId,
+      answers: questions.map((q, i) =>
+        i < passingCount ? q.correctIndex : (q.correctIndex + 1) % q.choices.length
+      ),
+    });
+    expect(r.completion).toMatchObject({
+      name: "Slide Learner",
+      finalScore: passingCount,
+      finalTotal: questions.length,
+      recordedMinutes: 0,
+    });
+    expect((await currentLearner.myRecord({ courseKey }))?.completion).toEqual(r.completion);
   }, 30000);
   it("enforces one daily time budget across different courses", async () => {
     const second = ceuCourse("ceu-instrumentation-scada")!;

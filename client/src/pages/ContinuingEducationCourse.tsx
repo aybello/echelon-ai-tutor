@@ -385,14 +385,14 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     if (!pending && (nextView === view || confirmDiscardUnsavedExam())) setView(nextView);
   }
 
-  if (courseQuery.isLoading) return <main className="ceu-loading">Loading course…</main>;
+  if (courseQuery.isLoading) return <div className="ceu-loading">Loading course…</div>;
   if (!course || !activeModule || !activeSlide) {
     return (
-      <main className="ceu-loading">
+      <div className="ceu-loading">
         <h1>Course unavailable</h1>
         <p>We could not load this course. Please return to the catalogue or try again.</p>
         <Link href="/continuing-education">Course catalogue</Link>
-      </main>
+      </div>
     );
   }
 
@@ -434,7 +434,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
       </section>
 
       {view === "overview" && (
-        <main className="ceu-overview-shell">
+        <div className="ceu-overview-shell">
           <section className="ceu-overview-main">
             <p className="ceu-breadcrumb"><Link href="/continuing-education">My courses</Link> / {course.stream === "drinking_water" ? "Drinking water" : "Wastewater"}</p>
             <div className="ceu-pills"><span>Self-paced</span><span>Non-credit pilot</span></div>
@@ -521,11 +521,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <section className="ceu-reminder-card"><CircleCheck size={20} /><span>Your place is saved after each completed lesson slide and exam answer.</span></section>
             <PilotDisclosure />
           </aside>
-        </main>
+        </div>
       )}
 
       {view === "lesson" && (
-        <main className="ceu-player-shell">
+        <div className="ceu-player-shell">
           <button className="ceu-module-drawer-trigger" type="button" onClick={() => setDrawerOpen(open => !open)} aria-expanded={drawerOpen}><Menu size={18} /> Course modules</button>
           <aside className={`ceu-player-sidebar${drawerOpen ? " is-open" : ""}`} aria-label="Course progress">
             <div className="ceu-sidebar-progress"><div><strong>Course progress</strong><span>{Math.round((completedModules / course.modules.length) * 100)}%</span></div><div className="ceu-progress-track"><span style={{ width: `${(completedModules / course.modules.length) * 100}%` }} /></div></div>
@@ -567,11 +567,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             </footer>
             {!record && <p className="ceu-signin-note">Sign in to save slide progress and complete this module.</p>}
           </section>
-        </main>
+        </div>
       )}
 
       {view === "exam" && (
-        <main className="ceu-exam-shell">
+        <div className="ceu-exam-shell">
           <section className="ceu-exam-main">
             <div className="ceu-exam-status"><strong>Question {currentQuestionIndex + 1} of {assessmentQuestions.length || course.finalQuestionCount}</strong><span>{finalPreviewMode ? "Read-only inspection" : `${Object.keys(answers).length} answered`}</span></div>
             <div className="ceu-progress-track ceu-exam-track"><span style={{ width: `${assessmentQuestions.length ? ((currentQuestionIndex + 1) / assessmentQuestions.length) * 100 : 0}%` }} /></div>
@@ -597,11 +597,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <div className="ceu-question-grid">{assessmentQuestions.map((item, index) => <button type="button" key={item.id} onClick={() => setCurrentQuestionIndex(index)} className={`${!finalPreviewMode && answers[item.id] !== undefined ? "is-answered" : ""}${index === currentQuestionIndex ? " is-current" : ""}${!finalPreviewMode && flags.includes(index) ? " is-flagged" : ""}`} aria-label={`Question ${index + 1}${!finalPreviewMode && answers[item.id] !== undefined ? ", answered" : ""}${!finalPreviewMode && flags.includes(index) ? ", flagged" : ""}`}>{index + 1}</button>)}</div>
             {finalPreviewMode ? <section className="ceu-exam-note"><h3>Open for inspection</h3><p>These samples come from lesson checks. Your graded final uses a separate server-issued question and answer order.</p><p>Sign in and complete the modules to take the final exam. Samples do not count toward a certificate.</p><PilotDisclosure /></section> : <><div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div><section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil(assessmentQuestions.length * 0.8)} of {assessmentQuestions.length} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section></>}
           </aside>
-        </main>
+        </div>
       )}
 
       {view === "results" && (
-        <main className="ceu-results-shell">
+        <div className="ceu-results-shell">
           {results.isLoading ? <section className="ceu-empty-state"><h1>Loading your results…</h1></section> : results.isError ? <section className="ceu-empty-state"><h1>Results unavailable</h1><p>We could not retrieve this completed final result. Please retry from the course overview.</p></section> : results.data ? <>
             <section className="ceu-result-hero">
               <div className={`ceu-score-orb${results.data.passed ? " is-passed" : ""}`}><strong>{Math.round((results.data.score / results.data.total) * 100)}%</strong><span>{results.data.score} of {results.data.total}</span></div>
@@ -616,11 +616,11 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               </>}
             </section>
           </> : null}
-        </main>
+        </div>
       )}
 
       {view === "certificate" && (
-        <main className="ceu-certificate-page">
+        <div className="ceu-certificate-page">
           {record?.completion ? <article className="ceu-certificate" id="ceu-certificate">
             <div className="ceu-certificate-top"><img src={ECHELON_LOGO_URL} alt="Echelon Institute" width={40} height={40} /><strong>Echelon Institute</strong></div>
             <p className="ceu-certificate-eyebrow">Certificate of completion</p>
@@ -633,7 +633,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <div className="ceu-certificate-footer"><div><span>Ayoola Bello</span><strong>Ayoola Bello</strong><small>Founder and CEO, Echelon Institute</small></div><p>{record.completion.statement}</p></div>
           </article> : <section className="ceu-empty-state"><h1>Your certificate will be ready after a passing final exam.</h1><button type="button" className="ceu-primary-button" onClick={() => setView("overview")}>Back to course</button></section>}
           {record?.completion && <div className="ceu-certificate-actions"><button type="button" className="ceu-primary-button" onClick={() => window.print()}><FileDown size={18} /> Print certificate</button><button type="button" className="ceu-secondary-button" onClick={() => setView("overview")}>Back to my courses</button></div>}
-        </main>
+        </div>
       )}
     </div>
   );

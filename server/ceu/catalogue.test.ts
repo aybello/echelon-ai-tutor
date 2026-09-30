@@ -23,6 +23,11 @@ describe("CEU curriculum release integrity", () => {
       expect(c.modules).toHaveLength(c.plannedMinutes === 600 ? 6 : 4);
       expect(c.finalAssessment).toHaveLength(c.modules.length * 5);
       expect(c.alternateFinalAssessment).toHaveLength(c.modules.length * 5);
+      // The course endpoint owns the changing exam length. Public outline copy
+      // must not retain the old 8/12-item counts after an assessment expansion.
+      expect(publicCeuCourse(c).finalQuestionCount).toBe(c.finalAssessment.length);
+      expect(publicCourse.completionRequirements.join(" ")).not.toMatch(/\d+-question/);
+      expect(c.delivery).toBe(publicCeuCourse(c).delivery);
       const ids = c.modules
         .flatMap(m => m.checks)
         .concat(c.finalAssessment, c.alternateFinalAssessment ?? [])

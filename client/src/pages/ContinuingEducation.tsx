@@ -7,14 +7,6 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { CEU_COURSES, type CeuCourse } from "@shared/ceuCourses";
 import "./ContinuingEducation.css";
 
-function minutesToHours(minutes: number) {
-  const hours = Math.floor(minutes / 60);
-  const remainingMinutes = minutes % 60;
-  if (hours === 0) return `${remainingMinutes} min`;
-  if (remainingMinutes === 0) return `${hours} ${hours === 1 ? "hour" : "hours"}`;
-  return `${hours} ${hours === 1 ? "hour" : "hours"} ${remainingMinutes} min`;
-}
-
 function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: () => void }) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -98,7 +90,7 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
             </ol>
           </div>
           <div className="ceu-completion">
-            <div><ClipboardCheck size={20} aria-hidden="true" /><p className="ceu-outline-label">Planned completion evidence</p></div>
+            <div><ClipboardCheck size={20} aria-hidden="true" /><p className="ceu-outline-label">How to complete this pilot</p></div>
             <ul>{course.completionRequirements.map((requirement) => <li key={requirement}>{requirement}</li>)}</ul>
           </div>
           <p className="ceu-disclosure">{course.publicDisclosure}</p>
@@ -122,7 +114,7 @@ export default function ContinuingEducation() {
   return (
     <div className="ceu-page">
       <SiteNav currentPath="/continuing-education" variant="marketing" />
-      <main>
+      <div className="ceu-catalogue-content">
         <section className="ceu-hero">
           <div className="ceu-hero-copy">
             <p className="ceu-eyebrow">Echelon Institute professional learning</p>
@@ -157,12 +149,12 @@ export default function ContinuingEducation() {
 
         <section className="ceu-delivery-grid" aria-labelledby="ceu-delivery-title">
           <div className="ceu-section-heading">
-            <p className="ceu-eyebrow">Built for documented delivery</p>
-            <h2 id="ceu-delivery-title">A course is more than a recording.</h2>
+            <p className="ceu-eyebrow">Learn at your own pace</p>
+            <h2 id="ceu-delivery-title">Lessons, final exam, certificate.</h2>
           </div>
           <div className="ceu-delivery-cards">
-            <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Active learning</h3><p>Applied cases, calculations, scored checks and optional notes support learning beyond passive viewing.</p></article>
-            <article><FileCheck2 size={22} aria-hidden="true" /><h3>Completion evidence</h3><p>Passed case exercises, final results and recorded active time issue a non-credit pilot learning record automatically.</p></article>
+            <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Work through the lessons</h3><p>Complete the modules one slide at a time. Your progress is saved, and quick checks are optional practice.</p></article>
+            <article><FileCheck2 size={22} aria-hidden="true" /><h3>Pass and receive your certificate</h3><p>Complete every module and score at least 80% on the final exam to receive your non-credit pilot certificate automatically. Review your results and retry if needed.</p></article>
             <article><ShieldCheck size={22} aria-hidden="true" /><h3>Approval discipline</h3><p>Drinking-water courses follow the Director-approval route. Wastewater courses follow the OWWCO course-value review route.</p></article>
           </div>
         </section>
@@ -177,7 +169,7 @@ export default function ContinuingEducation() {
             <p><a href="https://www.ontario.ca/page/director-approved-drinking-water-continuing-education-guide-training-providers" target="_blank" rel="noreferrer">Read the Ontario training-provider guide</a><span aria-hidden="true"> · </span><a href="https://owwco.ca/training-providers/" target="_blank" rel="noreferrer">Read OWWCO training-provider requirements</a></p>
           </div>
         </section>
-      </main>
+      </div>
       {interestCourse && <CourseInterestForm course={interestCourse} onClose={() => setInterestCourseKey(null)} />}
     </div>
   );

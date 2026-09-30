@@ -97,13 +97,19 @@ test.afterAll(async () => {
 
 test("public CEU courses offer lessons and separate sample questions", async ({ page }, testInfo) => {
   await page.goto("/continuing-education");
+  await expect(page.getByRole("main")).toHaveCount(1);
   await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(10);
+  await expect(page.getByRole("heading", { name: "Lessons, final exam, certificate.", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Review course outline", exact: true }).first().click();
+  await expect(page.locator(".ceu-completion")).toContainText("Score at least 80% on the final exam");
+  await expect(page.locator(".ceu-completion")).toContainText("optional quick checks");
 
   await page.goto(`/continuing-education/${short.key}`);
   await expect(page.getByRole("navigation", { name: "Global navigation" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Echelon Institute home" })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Course workspace navigation" })).toBeVisible();
   await expect(page.getByRole("heading", { name: short.title, exact: true })).toBeVisible();
+  await expect(page.getByRole("main")).toHaveCount(1);
   await expect(page.getByRole("button", { name: "Open all lessons", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Preview sample questions", exact: true })).toBeVisible();
 
@@ -114,6 +120,7 @@ test("public CEU courses offer lessons and separate sample questions", async ({ 
   await page.getByRole("button", { name: "Course overview", exact: true }).click();
 
   await page.getByRole("button", { name: "Open all lessons", exact: true }).click();
+  await expect(page.getByRole("main")).toHaveCount(1);
   await expect(page.getByText(`Slide 1 of ${firstSlideCount}`, { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await expect(page.getByText(`Slide 2 of ${firstSlideCount}`, { exact: true })).toBeVisible();
@@ -146,7 +153,12 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("could not save");
   await expect(page.getByText(`Slide 1 of ${firstSlideCount}`, { exact: true })).toBeVisible();
-  for (let index = 2; index <= firstSlideCount; index++) {
+  await saveClick(page, page.getByRole("button", { name: "Next", exact: true }));
+  await expect(page.getByText(`Slide 2 of ${firstSlideCount}`, { exact: true })).toBeVisible();
+  await page.reload();
+  await page.getByRole("button", { name: "Continue learning", exact: true }).click();
+  await expect(page.getByText(`Slide 2 of ${firstSlideCount}`, { exact: true })).toBeVisible();
+  for (let index = 3; index <= firstSlideCount; index++) {
     await saveClick(page, page.getByRole("button", { name: "Next", exact: true }));
     await expect(page.getByText(`Slide ${index} of ${firstSlideCount}`, { exact: true })).toBeVisible();
   }
@@ -157,6 +169,7 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   await page.reload();
   await page.getByRole("button", { name: /Final exam/ }).click();
   await expect(page.locator(".ceu-exam-question-card h1")).toBeVisible();
+  await expect(page.getByRole("main")).toHaveCount(1);
 
   // Order is issued by the server. Select by the rendered prompt and answer text,
   // not an assumed item/option index.
@@ -171,6 +184,10 @@ test("signed-in learner completes a lesson, passes the protected final and recei
       await expect(page.getByRole("alert")).toContainText("has not saved");
       await saveClick(page, page.getByRole("button", { name: "Retry save", exact: true }));
       await expect(page.getByRole("alert")).toHaveCount(0);
+      await page.reload();
+      await page.getByRole("button", { name: /Final exam/ }).click();
+      await expect(page.locator(".ceu-exam-question-card h1")).toHaveText(prompt);
+      await expect(page.getByRole("radio", { name: question.choices[question.correctIndex], exact: true })).toBeChecked();
     } else {
       await saveClick(page, group.getByRole("radio", { name: question.choices[question.correctIndex], exact: true }));
     }
@@ -180,8 +197,14 @@ test("signed-in learner completes a lesson, passes the protected final and recei
   page.once("dialog", dialog => dialog.accept());
   await saveClick(page, page.getByRole("button", { name: "Submit exam", exact: true }));
   await expect(page.getByRole("heading", { name: "You have completed the course.", exact: true })).toBeVisible();
+  await expect(page.getByRole("main")).toHaveCount(1);
   await page.getByRole("button", { name: "View certificate", exact: true }).click();
   await expect(page.locator("#ceu-certificate")).toContainText("90000064");
+  await expect(page.getByRole("main")).toHaveCount(1);
+  await expect(page.locator("#ceu-certificate")).toContainText("Example Learner");
+  await expect(page.locator("#ceu-certificate")).toContainText(short.title);
+  await expect(page.locator("#ceu-certificate")).toContainText("100%");
+  await expect(page.locator("#ceu-certificate")).not.toContainText(/contact hours|recorded minutes|0 minutes/i);
   await expect(page.locator("#ceu-certificate")).toContainText("No approved CEUs, operator qualification or regulatory recognition awarded.");
 
   const other = await browser.newContext();

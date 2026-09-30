@@ -7,7 +7,7 @@
   "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
   "introduction": "Audit a fictional disinfection calculation, segment by segment. Reconcile effective volume, flow, residual location, timing and the conditions attached to a required CT value.",
   "plannedMinutes": 240,
-  "delivery": "Self-paced online pilot: complete 4 modules on your own schedule with case exercises graded automatically, source reading, active-time tracking and a server-graded final assessment. A non-credit pilot learning record is issued automatically after all requirements are met. The seven-hour daily recording limit applies across courses. Breaks and idle periods are excluded. Planned duration requires a timed pilot; no approved CEUs are awarded.",
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
   "modules": [
     {
       "id": "hydraulics",
