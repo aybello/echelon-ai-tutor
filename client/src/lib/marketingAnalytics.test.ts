@@ -4,6 +4,7 @@ import {
   getMarketingAttribution,
   marketingDeviceForWidth,
   marketingProvinceForPath,
+  resolveSessionMarketingSource,
 } from "./marketingAnalytics";
 
 describe("marketing attribution", () => {
@@ -38,5 +39,17 @@ describe("marketing attribution", () => {
       device: "desktop",
       province: "ontario",
     });
+  });
+
+  it("keeps the original acquisition source through direct internal navigation", () => {
+    expect(resolveSessionMarketingSource("direct", "organic")).toBe("organic");
+    expect(resolveSessionMarketingSource("direct", "social")).toBe("social");
+    expect(resolveSessionMarketingSource("campaign", "organic")).toBe("campaign");
+    expect(resolveSessionMarketingSource("organic", null)).toBe("organic");
+  });
+
+  it("recognizes full search hostnames instead of accidental partial matches", () => {
+    expect(deriveMarketingAttribution({ path: "/pricing", referrer: "https://evilgoogle.com/" }).source).toBe("referral");
+    expect(deriveMarketingAttribution({ path: "/pricing", referrer: "https://maps.google.com/" }).source).toBe("organic");
   });
 });

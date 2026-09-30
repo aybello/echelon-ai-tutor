@@ -41,6 +41,8 @@ describe("activation journey security invariants", () => {
     expect(funnelSource).toContain("const knownProductKey");
     expect(funnelSource).toContain("ALL_PRODUCTS.some");
     expect(funnelSource).toContain('z.enum(["campaign", "direct", "organic", "referral", "social"])');
+    expect(funnelSource).toContain("const marketingPage = z.enum");
+    expect(funnelSource).toContain("page: marketingPage");
     expect(funnelSource).not.toContain("referrer:");
     expect(funnelSource).not.toContain("search:");
   });

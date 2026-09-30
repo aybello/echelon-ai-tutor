@@ -4,6 +4,20 @@ import { trackEvent } from "../analytics";
 import { ALL_PRODUCTS } from "../../shared/products";
 
 const visitorId = z.string().min(16).max(128);
+const marketingPage = z.enum([
+  "home",
+  "pricing",
+  "teams",
+  "courses",
+  "wpi",
+  "us",
+  "us-courses",
+  "continuing-education",
+  "partnerships",
+  "careers",
+  "course-detail",
+  "canada-course-detail",
+]);
 const marketingContext = z.object({
   source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
   device: z.enum(["desktop", "mobile", "tablet"]),
@@ -25,7 +39,7 @@ export const funnelAnalyticsRouter = router({
     .input(z.discriminatedUnion("event", [
       z.object({
         event: z.literal("marketing_page_viewed"),
-        page: z.string().regex(/^\/[a-z0-9/_-]*$/i).max(160),
+        page: marketingPage,
         visitorId,
       }).merge(marketingContext),
       z.object({ event: z.literal("pricing_viewed"), visitorId }).merge(marketingContext.partial()),

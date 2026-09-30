@@ -148,15 +148,17 @@ export const stripeRouter = router({
         extra: {
           currency,
           amountCents: unitAmount,
-          source: input.analyticsContext?.source ?? (input.utmSource ? "campaign" : "unknown"),
+          source: input.analyticsContext?.source ?? "unknown",
           device: input.analyticsContext?.device ?? "unknown",
           province: input.analyticsContext?.province ?? "unknown",
           surface: input.analyticsContext?.surface ?? "unknown",
         },
       };
-      await trackEvent("checkout_started", checkoutAnalytics);
+      // Checkout creation is the source of truth. Analytics remains best-effort
+      // and must never withhold a Stripe URL after the session already exists.
+      void trackEvent("checkout_started", checkoutAnalytics);
       if (input.utmSource === "quiz-diagnostic") {
-        await trackEvent("diagnostic_checkout_started", checkoutAnalytics);
+        void trackEvent("diagnostic_checkout_started", checkoutAnalytics);
       }
 
       return { url: session.url };
@@ -577,7 +579,9 @@ export const stripeRouter = router({
         cancel_url: `${appBaseUrl}/teams`,
       });
 
-      await trackEvent("checkout_started", {
+      // Never allow a best-effort measurement write to affect a created Stripe
+      // Checkout session. The saved Stripe metadata still bridges completion.
+      void trackEvent("checkout_started", {
         email: input.managerEmail,
         identityHash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : null,
         productKey: "teams-annual",

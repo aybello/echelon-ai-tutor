@@ -16,11 +16,28 @@ export interface MarketingAttribution {
   province: MarketingProvince;
 }
 
-const SEARCH_HOSTS = ["google.", "bing.com", "duckduckgo.com", "search.brave.com", "yahoo."];
-const SOCIAL_HOSTS = ["facebook.com", "instagram.com", "linkedin.com", "tiktok.com", "x.com", "twitter.com", "youtube.com"];
+const MARKETING_SOURCE_SESSION_KEY = "echelon:marketing-source";
+const SEARCH_HOSTS = [
+  "google.com",
+  "google.ca",
+  "bing.com",
+  "duckduckgo.com",
+  "search.brave.com",
+  "yahoo.com",
+] as const;
+const SOCIAL_HOSTS = [
+  "facebook.com",
+  "instagram.com",
+  "linkedin.com",
+  "tiktok.com",
+  "x.com",
+  "twitter.com",
+  "youtube.com",
+] as const;
 
 function isKnownHost(hostname: string, knownHosts: readonly string[]) {
-  return knownHosts.some((host) => hostname === host || hostname.endsWith(`.${host}`) || hostname.includes(host));
+  const normalizedHost = hostname.trim().toLowerCase().replace(/\.$/, "");
+  return knownHosts.some((host) => normalizedHost === host || normalizedHost.endsWith(`.${host}`));
 }
 
 export function marketingProvinceForPath(path: string): MarketingProvince {
@@ -50,8 +67,6 @@ export function deriveMarketingAttribution({
 }): MarketingAttribution {
   const params = new URLSearchParams(search);
   const utmSource = params.get("utm_source")?.trim() || undefined;
-  const utmMedium = params.get("utm_medium")?.trim() || undefined;
-  const utmCampaign = params.get("utm_campaign")?.trim() || undefined;
 
   let source: MarketingSource = utmSource ? "campaign" : "direct";
   if (!utmSource && referrer) {
@@ -76,16 +91,41 @@ export function deriveMarketingAttribution({
   };
 }
 
-/** Browser-only wrapper. It returns coarse categories only, never a URL or referrer. */
+export function resolveSessionMarketingSource(
+  derivedSource: MarketingSource,
+  storedSource: string | null | undefined,
+): MarketingSource {
+  const priorSource = MARKETING_SOURCES.includes(storedSource as MarketingSource)
+    ? storedSource as MarketingSource
+    : null;
+  // A genuine campaign, search, social, or referral entry point starts a new
+  // acquisition label. Internal navigation is direct and must not erase it.
+  return derivedSource === "direct" && priorSource ? priorSource : derivedSource;
+}
+
+/** Browser-only wrapper. It stores only a five-value acquisition label per browser session. */
 export function getMarketingAttribution(path?: string): MarketingAttribution {
   if (typeof window === "undefined") {
     return deriveMarketingAttribution({ path: path ?? "/" });
   }
-  return deriveMarketingAttribution({
+
+  const attribution = deriveMarketingAttribution({
     path: path ?? window.location.pathname,
     search: window.location.search,
     referrer: document.referrer,
     viewportWidth: window.innerWidth,
     origin: window.location.origin,
   });
+
+  try {
+    const source = resolveSessionMarketingSource(
+      attribution.source,
+      sessionStorage.getItem(MARKETING_SOURCE_SESSION_KEY),
+    );
+    sessionStorage.setItem(MARKETING_SOURCE_SESSION_KEY, source);
+    return { ...attribution, source };
+  } catch {
+    // Private browsing storage failures should not affect the buyer path.
+    return attribution;
+  }
 }

@@ -350,33 +350,9 @@ export function registerStripeWebhook(app: Express) {
           });
 
           if (result.state === "completed" || result.state === "already_completed") {
-            if (result.state === "completed" && event.type === "customer.subscription.created") {
-              const analyticsContext = {
-                source: liveSubscription.metadata?.analytics_source || "unknown",
-                device: liveSubscription.metadata?.analytics_device || "unknown",
-                province: liveSubscription.metadata?.analytics_province || province,
-                surface: liveSubscription.metadata?.analytics_surface || "teams",
-              };
-              const analyticsIdentityHash = liveSubscription.metadata?.analytics_identity_hash || null;
-              await trackEvent("subscription_created", {
-                email: managerEmail,
-                productKey: "teams-all-access",
-                identityHash: analyticsIdentityHash,
-                extra: { subscriptionType: "organization", tier, seats, ...analyticsContext },
-              });
-              await trackEvent("checkout_completed", {
-                email: managerEmail,
-                productKey: "teams-annual",
-                identityHash: analyticsIdentityHash,
-                extra: { subscriptionType: "organization", tier, seats, ...analyticsContext },
-              });
-              await trackEvent("access_activated", {
-                email: managerEmail,
-                productKey: "teams-annual",
-                identityHash: analyticsIdentityHash,
-                extra: { activationType: "organization_subscription", tier, seats, ...analyticsContext },
-              });
-            }
+            // Team conversion events are emitted only from the first successful
+            // paid invoice below. Provisioning can precede payment and must not
+            // be interpreted as a completed purchase.
             return res.json({ received: true });
           }
           if (result.state === "busy") {
@@ -510,8 +486,41 @@ export function registerStripeWebhook(app: Express) {
                 organization: org,
               });
               if (result.state === "completed" || result.state === "already_completed") {
+                const analyticsContext = {
+                  source: liveSub.metadata?.analytics_source || "unknown",
+                  device: liveSub.metadata?.analytics_device || "unknown",
+                  province: liveSub.metadata?.analytics_province || "unknown",
+                  surface: liveSub.metadata?.analytics_surface || "teams",
+                };
+                const analyticsIdentityHash = liveSub.metadata?.analytics_identity_hash || null;
+                if (result.state === "completed" && invoice.billing_reason === "subscription_create") {
+                  // processOrgInvoice durably claims this Stripe event. A retry
+                  // returns already_completed, so this first paid conversion is
+                  // not counted twice.
+                  void trackEvent("subscription_created", {
+                    email: org.managerEmail,
+                    orgId: org.id,
+                    productKey: "teams-all-access",
+                    identityHash: analyticsIdentityHash,
+                    extra: { subscriptionType: "organization", tier: org.tier, seats: org.seatsTotal, paymentStatus: "paid", ...analyticsContext },
+                  });
+                  void trackEvent("checkout_completed", {
+                    email: org.managerEmail,
+                    orgId: org.id,
+                    productKey: "teams-annual",
+                    identityHash: analyticsIdentityHash,
+                    extra: { subscriptionType: "organization", tier: org.tier, seats: org.seatsTotal, paymentStatus: "paid", ...analyticsContext },
+                  });
+                  void trackEvent("access_activated", {
+                    email: org.managerEmail,
+                    orgId: org.id,
+                    productKey: "teams-annual",
+                    identityHash: analyticsIdentityHash,
+                    extra: { activationType: "organization_subscription", tier: org.tier, seats: org.seatsTotal, paymentStatus: "paid", ...analyticsContext },
+                  });
+                }
                 if (result.state === "completed" && invoice.billing_reason === "subscription_cycle") {
-                  await trackEvent("subscription_renewed", {
+                  void trackEvent("subscription_renewed", {
                     orgId: org.id,
                     productKey: "teams-all-access",
                     extra: { subscriptionType: "organization" },
