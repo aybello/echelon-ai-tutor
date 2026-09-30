@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "scripts/db/**/*.ts",
+    "scripts/buildServer.ts",
     "scripts/audit-answer-length-bias.ts",
     "scripts/fix-answer-length-bias.ts",
     "server/answerLengthBias.ts",
