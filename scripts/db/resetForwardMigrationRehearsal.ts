@@ -121,6 +121,56 @@ export function createdTablesFromMigrationSql(sql: string): string[] {
   return [...tables].sort();
 }
 
+export function addedColumnsFromMigrationSql(
+  sql: string
+): Array<{ table: string; column: string }> {
+  const columns = new Map<string, { table: string; column: string }>();
+  for (const statement of splitMigrationStatements(sql)) {
+    const tableMatch =
+      /^(?:(?:\s+)|(?:--(?=[\s\x00-\x1f]|$)[^\n]*(?:\n|$))|(?:#[^\n]*(?:\n|$))|(?:\/\*[\s\S]*?\*\/))*ALTER\s+TABLE\s+`?([a-z0-9_]+)`?/i.exec(
+        statement
+      );
+    const table = tableMatch?.[1];
+    if (!table) continue;
+
+    const clauses = statement.slice(tableMatch[0].length);
+    for (const match of clauses.matchAll(
+      /(?:^|,)\s*ADD\s+COLUMN\s+`?([a-z0-9_]+)`?/gi
+    )) {
+      const column = match[1];
+      if (!column) continue;
+      columns.set(`${table}\0${column}`, { table, column });
+    }
+  }
+  return [...columns.values()].sort(
+    (left, right) =>
+      left.table.localeCompare(right.table) || left.column.localeCompare(right.column)
+  );
+}
+
+export async function postBaselineColumns(): Promise<
+  Array<{ table: string; column: string }>
+> {
+  const manifest = await loadManifest();
+  const columns = new Map<string, { table: string; column: string }>();
+  for (const migration of manifest.migrations) {
+    if (
+      migration.version <= manifest.baseline.version ||
+      migration.baselineEmbedded
+    ) {
+      continue;
+    }
+    const sql = await readFile(resolveRepoPath(migration.file), "utf8");
+    for (const column of addedColumnsFromMigrationSql(sql)) {
+      columns.set(`${column.table}\0${column.column}`, column);
+    }
+  }
+  return [...columns.values()].sort(
+    (left, right) =>
+      left.table.localeCompare(right.table) || left.column.localeCompare(right.column)
+  );
+}
+
 async function run(): Promise<void> {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) throw new Error("DATABASE_URL is required.");
@@ -143,19 +193,6 @@ async function run(): Promise<void> {
         await connection.query(`DROP INDEX \`${index}\` ON \`${table}\``);
       }
     }
-
-    const tables = await postBaselineTables();
-    await connection.query("SET FOREIGN_KEY_CHECKS=0");
-    try {
-      if (tables.length > 0) {
-        await connection.query(
-          `DROP TABLE IF EXISTS ${tables.map(table => `\`${table}\``).join(", ")}`
-        );
-      }
-    } finally {
-      await connection.query("SET FOREIGN_KEY_CHECKS=1");
-    }
-
     if (
       await indexExists(
         connection,
@@ -167,10 +204,28 @@ async function run(): Promise<void> {
         `DROP INDEX \`${ANALYTICS_ANONYMOUS_TIME_INDEX.index}\` ON \`${ANALYTICS_ANONYMOUS_TIME_INDEX.table}\``
       );
     }
-    if (await columnExists(connection, "product_analytics_events", "anonymousHash")) {
-      await connection.query(
-        "ALTER TABLE product_analytics_events DROP COLUMN anonymousHash"
-      );
+
+    // The source is a fresh export of schema.ts, so remove every declared
+    // forward-added column before proving the immutable baseline exactly.
+    // This runs only against the guarded disposable rehearsal databases.
+    for (const { table, column } of await postBaselineColumns()) {
+      if (await columnExists(connection, table, column)) {
+        await connection.query(
+          `ALTER TABLE \`${table}\` DROP COLUMN \`${column}\``
+        );
+      }
+    }
+
+    const tables = await postBaselineTables();
+    await connection.query("SET FOREIGN_KEY_CHECKS=0");
+    try {
+      if (tables.length > 0) {
+        await connection.query(
+          `DROP TABLE IF EXISTS ${tables.map(table => `\`${table}\``).join(", ")}`
+        );
+      }
+    } finally {
+      await connection.query("SET FOREIGN_KEY_CHECKS=1");
     }
   } finally {
     await connection.end();

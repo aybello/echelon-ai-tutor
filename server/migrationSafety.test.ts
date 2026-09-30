@@ -24,8 +24,10 @@ import {
   type SchemaContract,
 } from "../scripts/db/migrationSafety";
 import {
+  addedColumnsFromMigrationSql,
   assertDisposableResetTarget,
   createdTablesFromMigrationSql,
+  postBaselineColumns,
   postBaselineTables,
 } from "../scripts/db/resetForwardMigrationRehearsal";
 
@@ -238,8 +240,10 @@ describe("forward-only migration safety", () => {
     expect(resetHelper).toContain("Refusing reset outside an approved disposable rehearsal database");
     expect(resetHelper).toContain("migration.version <= manifest.baseline.version");
     expect(resetHelper).toContain("createdTablesFromMigrationSql(sql)");
+    expect(resetHelper).toContain("addedColumnsFromMigrationSql(sql)");
     expect(resetHelper).toContain("splitMigrationStatements(sql)");
     expect(resetHelper).toContain("DROP TABLE IF EXISTS ${tables.map");
+    expect(resetHelper).toContain("DROP COLUMN");
     expect(resetHelper).toContain("purchaserUserId int NOT NULL");
     expect(resetHelper).toContain("SET FOREIGN_KEY_CHECKS=0");
     expect(resetHelper).toContain("SET FOREIGN_KEY_CHECKS=1");
@@ -268,6 +272,10 @@ describe("forward-only migration safety", () => {
       "customer_recovery_batches",
       "customer_recovery_import_items",
       "purchase_email_outbox",
+    ]));
+    await expect(postBaselineColumns()).resolves.toEqual(expect.arrayContaining([
+      { table: "product_analytics_events", column: "anonymousHash" },
+      { table: "stripe_event_log", column: "analyticsProcessed" },
     ]));
   });
 
@@ -938,6 +946,17 @@ describe("migration statement execution", () => {
         "-- CREATE TABLE comment_target (id int);\nSELECT 'CREATE TABLE literal_target (id int)';\nCREATE TABLE real_target (id int);"
       )
     ).toEqual(["real_target"]);
+  });
+
+  it("finds every ADD COLUMN clause from a forward ALTER without reading comments", () => {
+    expect(
+      addedColumnsFromMigrationSql(
+        "-- ADD COLUMN ignored text;\nALTER TABLE `orders` ADD COLUMN `first` int, ADD COLUMN `second` varchar(32);\n--> statement-breakpoint\nSELECT 'ADD COLUMN literal';"
+      )
+    ).toEqual([
+      { table: "orders", column: "first" },
+      { table: "orders", column: "second" },
+    ]);
   });
 
   it("does not split semicolons inside valid MySQL literals or comments", () => {
