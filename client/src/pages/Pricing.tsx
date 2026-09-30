@@ -1716,7 +1716,7 @@ export default function Pricing() {
               <span className="section-badge" style={{ background: "#ECFEFF", color: "#0E7490", borderColor: "#A5F3FC" }}>✓ Live</span>
             </div>
             <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-              WPI standardized exams recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).
+              Independent preparation aligned with published WPI Need-to-Know Criteria. Confirm your authority's current requirements.
             </p>
             {/* WPI Water row */}
             <div style={{ marginBottom: 16 }}>

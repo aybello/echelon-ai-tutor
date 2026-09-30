@@ -288,14 +288,14 @@ export default function WpiLanding() {
         </div>
       </section>
 
-      {/* ── Province Recognition ───────────────────────────────────────── */}
+      {/* ── WPI exam framework ─────────────────────────────────────────── */}
       <section style={{ background: "#FFFFFF", padding: "40px 20px", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 680, margin: "0 auto" }}>
           <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 18, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 6 }}>
-            Recognized Across Western Canada
+            WPI Exam Framework Across Western Canada
           </h2>
           <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 20 }}>
-            WPI certifications are administered by provincial bodies in 4 provinces.
+            Echelon provides independent preparation aligned with published WPI Need-to-Know Criteria. Confirm the current requirements with your provincial authority.
           </p>
           <div className="wpi-province-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
             {PROVINCES.map(p => (
