@@ -154,8 +154,9 @@ export const stripeRouter = router({
           surface: input.analyticsContext?.surface ?? "unknown",
         },
       };
-      // Checkout creation is the source of truth. Analytics remains best-effort
-      // and must never withhold a Stripe URL after the session already exists.
+      // The Stripe session is already created. Do not wait for telemetry before
+      // returning its URL, because an analytics database stall must not turn a
+      // valid checkout into a client-visible failure.
       void trackEvent("checkout_started", checkoutAnalytics);
       if (input.utmSource === "quiz-diagnostic") {
         void trackEvent("diagnostic_checkout_started", checkoutAnalytics);
@@ -579,8 +580,9 @@ export const stripeRouter = router({
         cancel_url: `${appBaseUrl}/teams`,
       });
 
-      // Never allow a best-effort measurement write to affect a created Stripe
-      // Checkout session. The saved Stripe metadata still bridges completion.
+      // The Stripe session is already created. Do not wait for telemetry before
+      // returning its URL, because an analytics database stall must not turn a
+      // valid checkout into a client-visible failure.
       void trackEvent("checkout_started", {
         email: input.managerEmail,
         identityHash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : null,

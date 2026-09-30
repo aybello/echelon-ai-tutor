@@ -41,10 +41,10 @@ describe("marketing attribution", () => {
     });
   });
 
-  it("keeps the original acquisition source through direct internal navigation", () => {
-    expect(resolveSessionMarketingSource("direct", "organic")).toBe("organic");
-    expect(resolveSessionMarketingSource("direct", "social")).toBe("social");
-    expect(resolveSessionMarketingSource("campaign", "organic")).toBe("campaign");
+  it("keeps the first-touch acquisition source through SPA navigation", () => {
+    expect(resolveSessionMarketingSource("organic", "campaign")).toBe("campaign");
+    expect(resolveSessionMarketingSource("organic", "social")).toBe("social");
+    expect(resolveSessionMarketingSource("campaign", "organic", true)).toBe("campaign");
     expect(resolveSessionMarketingSource("organic", null)).toBe("organic");
   });
 

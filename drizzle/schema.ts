@@ -1276,6 +1276,8 @@ export const stripeEventLog = mysqlTable("stripe_event_log", {
   status: varchar("status", { length: 40 }).notNull().default("pending"),
   dbProcessed: boolean("dbProcessed").notNull().default(false),
   emailDelivered: boolean("emailDelivered").notNull().default(false),
+  /** Paid invoice conversion events have been persisted to product analytics. */
+  analyticsProcessed: boolean("analyticsProcessed").notNull().default(false),
   attemptCount: int("attemptCount").notNull().default(0),
   processingToken: varchar("processingToken", { length: 64 }),
   processingStartedAt: timestamp("processingStartedAt"),

@@ -94,13 +94,15 @@ export function deriveMarketingAttribution({
 export function resolveSessionMarketingSource(
   derivedSource: MarketingSource,
   storedSource: string | null | undefined,
+  hasCampaignParameters = false,
 ): MarketingSource {
   const priorSource = MARKETING_SOURCES.includes(storedSource as MarketingSource)
     ? storedSource as MarketingSource
     : null;
-  // A genuine campaign, search, social, or referral entry point starts a new
-  // acquisition label. Internal navigation is direct and must not erase it.
-  return derivedSource === "direct" && priorSource ? priorSource : derivedSource;
+  // document.referrer remains the original document referrer during SPA
+  // navigation. Once a session source exists, retain it unless an explicit
+  // campaign URL establishes a new source.
+  return hasCampaignParameters ? "campaign" : priorSource ?? derivedSource;
 }
 
 /** Browser-only wrapper. It stores only a five-value acquisition label per browser session. */
@@ -118,9 +120,13 @@ export function getMarketingAttribution(path?: string): MarketingAttribution {
   });
 
   try {
+    const hasCampaignParameters = Boolean(
+      new URLSearchParams(window.location.search).get("utm_source")?.trim(),
+    );
     const source = resolveSessionMarketingSource(
       attribution.source,
       sessionStorage.getItem(MARKETING_SOURCE_SESSION_KEY),
+      hasCampaignParameters,
     );
     sessionStorage.setItem(MARKETING_SOURCE_SESSION_KEY, source);
     return { ...attribution, source };

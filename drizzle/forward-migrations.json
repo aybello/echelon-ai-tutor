@@ -198,7 +198,15 @@
         "tables": [
           "team_flex_extensions"
         ]
-      }
+      },
+      "verifierAllowPendingColumnNullability": [
+        {
+          "table": "team_flex_extensions",
+          "column": "purchaserUserId",
+          "baselineNullable": false,
+          "targetNullable": true
+        }
+      ]
     },
     {
       "version": 70,
@@ -241,7 +249,33 @@
           "ceu_learning_records",
           "ceu_learning_daily_time"
         ]
-      }
+      },
+      "verifierAllowMissingTables": [
+        "ceu_learning_records",
+        "ceu_learning_daily_time"
+      ]
+    },
+    {
+      "version": 73,
+      "tag": "0073_stripe_event_analytics",
+      "file": "drizzle/0073_stripe_event_analytics.sql",
+      "sha256": "63ead4de91a9a2c7f5664bb1b773211d47737d1ce601594bca9eef6f4345543c",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "stripe_event_log"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "stripe_event_log",
+          "column": "analyticsProcessed",
+          "targetType": "tinyint(1)",
+          "targetNullable": false,
+          "sqlType": "boolean",
+          "defaultSql": "default false"
+        }
+      ]
     }
   ]
 }

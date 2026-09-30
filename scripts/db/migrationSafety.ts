@@ -79,6 +79,24 @@ export interface ForwardMigration {
     baselineType: string;
     targetType: string;
   }>;
+  /** Exact pending nullability transition allowed during baseline adoption. */
+  verifierAllowPendingColumnNullability?: Array<{
+    table: string;
+    column: string;
+    baselineNullable: boolean;
+    targetNullable: boolean;
+  }>;
+  /** Exact additive column permitted to remain pending until standalone apply. */
+  verifierAllowMissingColumns?: Array<{
+    table: string;
+    column: string;
+    targetType: string;
+    targetNullable: boolean;
+    sqlType: string;
+    defaultSql?: string;
+  }>;
+  /** Explicit standalone tables that may remain pending during ledger adoption. */
+  verifierAllowMissingTables?: string[];
 }
 
 export function selectAdoptableForwardMigrations(
@@ -767,6 +785,105 @@ export async function validateManifest(
         );
       }
     }
+    for (const allowedNullability of
+      migration.verifierAllowPendingColumnNullability ?? []) {
+      if (!migration.proposedOnly) {
+        errors.push(
+          `${migration.file} permits pending nullability drift but is not proposedOnly.`
+        );
+      }
+      const expectedColumn = buildExpectedSchemaContract().tables
+        .find(table => table.name === allowedNullability.table)
+        ?.columns.find(column => column.name === allowedNullability.column);
+      const baselineColumn = contract?.tables
+        .find(table => table.name === allowedNullability.table)
+        ?.columns.find(column => column.name === allowedNullability.column);
+      if (
+        !expectedColumn ||
+        expectedColumn.nullable !== allowedNullability.targetNullable
+      ) {
+        errors.push(
+          `${migration.file} has an incorrect target nullability for ${allowedNullability.table}.${allowedNullability.column}.`
+        );
+      }
+      if (
+        !baselineColumn ||
+        baselineColumn.nullable !== allowedNullability.baselineNullable
+      ) {
+        errors.push(
+          `${migration.file} has an incorrect baseline nullability for ${allowedNullability.table}.${allowedNullability.column}.`
+        );
+      }
+      if (!expectedColumn) continue;
+      const normalizedSql = sql.toLowerCase().replace(/[\s`]/g, "");
+      const requiredStatement =
+        `altertable${allowedNullability.table.toLowerCase()}modifycolumn${allowedNullability.column.toLowerCase()}` +
+        `${normalizeMySqlType(expectedColumn.type)}${allowedNullability.targetNullable ? "null" : "notnull"}`;
+      if (!normalizedSql.includes(requiredStatement)) {
+        errors.push(
+          `${migration.file} does not apply the declared nullability transition for ${allowedNullability.table}.${allowedNullability.column}.`
+        );
+      }
+    }
+    for (const allowedColumn of migration.verifierAllowMissingColumns ?? []) {
+      if (!migration.proposedOnly || !migration.standaloneApply) {
+        errors.push(
+          `${migration.file} permits a pending column but is not a proposed standalone migration.`
+        );
+      }
+      if (!migration.standaloneApply?.tables.includes(allowedColumn.table)) {
+        errors.push(
+          `${migration.file} permits a pending column outside its standalone verification tables.`
+        );
+      }
+      const expectedColumn = buildExpectedSchemaContract().tables
+        .find(table => table.name === allowedColumn.table)
+        ?.columns.find(column => column.name === allowedColumn.column);
+      if (
+        !expectedColumn ||
+        normalizeMySqlType(expectedColumn.type) !==
+          normalizeMySqlType(allowedColumn.targetType) ||
+        expectedColumn.nullable !== allowedColumn.targetNullable
+      ) {
+        errors.push(
+          `${migration.file} has incorrect expected metadata for ${allowedColumn.table}.${allowedColumn.column}.`
+        );
+      }
+      const normalizedSql = sql.toLowerCase().replace(/[\s`]/g, "");
+      const requiredStatement =
+        `altertable${allowedColumn.table.toLowerCase()}addcolumn${allowedColumn.column.toLowerCase()}` +
+        `${allowedColumn.sqlType.toLowerCase().replace(/\s/g, "")}` +
+        `${allowedColumn.targetNullable ? "null" : "notnull"}` +
+        (allowedColumn.defaultSql
+          ? allowedColumn.defaultSql.toLowerCase().replace(/\s/g, "")
+          : "");
+      if (!normalizedSql.includes(requiredStatement)) {
+        errors.push(
+          `${migration.file} does not add the declared pending column ${allowedColumn.table}.${allowedColumn.column}.`
+        );
+      }
+    }
+    for (const tableName of migration.verifierAllowMissingTables ?? []) {
+      if (!migration.proposedOnly || !migration.standaloneApply) {
+        errors.push(
+          `${migration.file} permits a pending table but is not a proposed standalone migration.`
+        );
+      }
+      if (!migration.standaloneApply?.tables.includes(tableName)) {
+        errors.push(
+          `${migration.file} permits a pending table outside its standalone verification tables.`
+        );
+      }
+      if (!buildExpectedSchemaContract().tables.some(table => table.name === tableName)) {
+        errors.push(`${migration.file} permits an unknown pending table ${tableName}.`);
+      }
+      const normalizedSql = sql.toLowerCase().replace(/[\s`]/g, "");
+      if (!normalizedSql.includes(`createtable${tableName.toLowerCase()}`)) {
+        errors.push(
+          `${migration.file} does not create the declared pending table ${tableName}.`
+        );
+      }
+    }
   }
 
   for (const file of declaredFiles) {
@@ -1043,6 +1160,12 @@ export function downgradeProposedMissingIndexErrors(
     string,
     { migration: ForwardMigration; baselineType: string; targetType: string }
   >();
+  const proposedColumnNullability = new Map<
+    string,
+    { migration: ForwardMigration; baselineNullable: boolean; targetNullable: boolean }
+  >();
+  const proposedColumns = new Map<string, ForwardMigration>();
+  const proposedTables = new Map<string, ForwardMigration>();
   for (const migration of manifest.migrations) {
     if (!migration.proposedOnly) continue;
     for (const index of migration.verifierAllowMissingIndexes ?? []) {
@@ -1054,6 +1177,19 @@ export function downgradeProposedMissingIndexErrors(
         baselineType: normalizeMySqlType(column.baselineType),
         targetType: normalizeMySqlType(column.targetType),
       });
+    }
+    for (const column of migration.verifierAllowPendingColumnNullability ?? []) {
+      proposedColumnNullability.set(`${column.table}.${column.column}`, {
+        migration,
+        baselineNullable: column.baselineNullable,
+        targetNullable: column.targetNullable,
+      });
+    }
+    for (const column of migration.verifierAllowMissingColumns ?? []) {
+      proposedColumns.set(`${column.table}.${column.column}`, migration);
+    }
+    for (const tableName of migration.verifierAllowMissingTables ?? []) {
+      proposedTables.set(tableName, migration);
     }
   }
 
@@ -1078,13 +1214,118 @@ export function downgradeProposedMissingIndexErrors(
       normalizeMySqlType(typeMatch[4]) === allowedType.targetType
         ? allowedType.migration
         : undefined;
-    const migration = indexMigration ?? typeMigration;
+    const nullabilityMatch =
+      /^Column nullability drift: ([^.]+)\.([^ ]+) nullable=(true|false), expected (true|false)$/.exec(
+        error
+      );
+    const allowedNullability = nullabilityMatch
+      ? proposedColumnNullability.get(`${nullabilityMatch[1]}.${nullabilityMatch[2]}`)
+      : undefined;
+    const nullabilityMigration =
+      nullabilityMatch &&
+      allowedNullability &&
+      (nullabilityMatch[3] === "true") === allowedNullability.baselineNullable &&
+      (nullabilityMatch[4] === "true") === allowedNullability.targetNullable
+        ? allowedNullability.migration
+        : undefined;
+    const columnMatch = /^Missing column: ([^.]+)\.([^ ]+)$/.exec(error);
+    const columnMigration = columnMatch
+      ? proposedColumns.get(`${columnMatch[1]}.${columnMatch[2]}`)
+      : undefined;
+    const tableMatch = /^Missing table: (.+)$/.exec(error);
+    const tableMigration = tableMatch
+      ? proposedTables.get(tableMatch[1] ?? "")
+      : undefined;
+    const migration =
+      indexMigration ??
+      typeMigration ??
+      nullabilityMigration ??
+      columnMigration ??
+      tableMigration;
     if (!migration) {
       errors.push(error);
       continue;
     }
     warnings.push(
       `Pending proposed migration ${migration.version} (${migration.tag}): ${error}`
+    );
+  }
+  return { errors, warnings };
+}
+
+/**
+ * During one-time ledger adoption, production can legitimately be ahead of the
+ * immutable baseline by a declared proposed migration. This permits only the
+ * exact forward type and nullability transitions declared in the manifest.
+ */
+export function downgradeForwardSchemaCompatibilityErrors(
+  diff: ContractDiff,
+  manifest: MigrationManifest
+): ContractDiff {
+  const forwardTypes = new Map<
+    string,
+    { migration: ForwardMigration; baselineType: string; targetType: string }
+  >();
+  const forwardNullability = new Map<
+    string,
+    { migration: ForwardMigration; baselineNullable: boolean; targetNullable: boolean }
+  >();
+  for (const migration of manifest.migrations) {
+    if (!migration.proposedOnly) continue;
+    for (const column of migration.verifierAllowPendingColumnTypes ?? []) {
+      forwardTypes.set(`${column.table}.${column.column}`, {
+        migration,
+        baselineType: normalizeMySqlType(column.baselineType),
+        targetType: normalizeMySqlType(column.targetType),
+      });
+    }
+    for (const column of migration.verifierAllowPendingColumnNullability ?? []) {
+      forwardNullability.set(`${column.table}.${column.column}`, {
+        migration,
+        baselineNullable: column.baselineNullable,
+        targetNullable: column.targetNullable,
+      });
+    }
+  }
+
+  const errors: string[] = [];
+  const warnings = [...diff.warnings];
+  for (const error of diff.errors) {
+    const typeMatch =
+      /^Column type drift: ([^.]+)\.([^ ]+) is (.+), expected (.+)$/.exec(
+        error
+      );
+    const allowedType = typeMatch
+      ? forwardTypes.get(`${typeMatch[1]}.${typeMatch[2]}`)
+      : undefined;
+    const typeMigration =
+      typeMatch &&
+      allowedType &&
+      normalizeMySqlType(typeMatch[3]) === allowedType.targetType &&
+      normalizeMySqlType(typeMatch[4]) === allowedType.baselineType
+        ? allowedType.migration
+        : undefined;
+    const nullabilityMatch =
+      /^Column nullability drift: ([^.]+)\.([^ ]+) nullable=(true|false), expected (true|false)$/.exec(
+        error
+      );
+    const allowedNullability = nullabilityMatch
+      ? forwardNullability.get(`${nullabilityMatch[1]}.${nullabilityMatch[2]}`)
+      : undefined;
+    const nullabilityMigration =
+      nullabilityMatch &&
+      allowedNullability &&
+      (nullabilityMatch[3] === "true") === allowedNullability.targetNullable &&
+      (nullabilityMatch[4] === "true") === allowedNullability.baselineNullable
+        ? allowedNullability.migration
+        : undefined;
+    const migration = typeMigration ?? nullabilityMigration;
+    if (!migration) {
+      errors.push(error);
+      continue;
+    }
+    warnings.push(
+      `Production is ahead of baseline through pending proposed migration ${migration.version} (${migration.tag}): ${error}`
     );
   }
   return { errors, warnings };

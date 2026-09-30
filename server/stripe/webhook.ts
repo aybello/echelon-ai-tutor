@@ -16,6 +16,7 @@ import { trackEvent } from "../analytics";
 import { ENV } from "../_core/env";
 import { provisionOrgFromWebhook } from "./provisionOrg";
 import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
+import { recordOrganizationInvoiceConversion } from "./recordOrgInvoiceAnalytics";
 import type { SubscriptionProvince } from "./subscriptionProducts";
 import {
   INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
@@ -493,34 +494,19 @@ export function registerStripeWebhook(app: Express) {
                   surface: liveSub.metadata?.analytics_surface || "teams",
                 };
                 const analyticsIdentityHash = liveSub.metadata?.analytics_identity_hash || null;
-                if (result.state === "completed" && invoice.billing_reason === "subscription_create") {
-                  // processOrgInvoice durably claims this Stripe event. A retry
-                  // returns already_completed, so this first paid conversion is
-                  // not counted twice.
-                  void trackEvent("subscription_created", {
-                    email: org.managerEmail,
-                    orgId: org.id,
-                    productKey: "teams-all-access",
+                if (invoice.billing_reason === "subscription_create") {
+                  // The event ledger keeps this write retryable. A crash after
+                  // payment processing but before analytics commit is repaired
+                  // by Stripe replay without duplicating conversion records.
+                  await recordOrganizationInvoiceConversion(db, {
+                    stripeEventId: event.id,
+                    org,
                     identityHash: analyticsIdentityHash,
-                    extra: { subscriptionType: "organization", tier: org.tier, seats: org.seatsTotal, paymentStatus: "paid", ...analyticsContext },
-                  });
-                  void trackEvent("checkout_completed", {
-                    email: org.managerEmail,
-                    orgId: org.id,
-                    productKey: "teams-annual",
-                    identityHash: analyticsIdentityHash,
-                    extra: { subscriptionType: "organization", tier: org.tier, seats: org.seatsTotal, paymentStatus: "paid", ...analyticsContext },
-                  });
-                  void trackEvent("access_activated", {
-                    email: org.managerEmail,
-                    orgId: org.id,
-                    productKey: "teams-annual",
-                    identityHash: analyticsIdentityHash,
-                    extra: { activationType: "organization_subscription", tier: org.tier, seats: org.seatsTotal, paymentStatus: "paid", ...analyticsContext },
+                    attribution: analyticsContext,
                   });
                 }
                 if (result.state === "completed" && invoice.billing_reason === "subscription_cycle") {
-                  void trackEvent("subscription_renewed", {
+                  await trackEvent("subscription_renewed", {
                     orgId: org.id,
                     productKey: "teams-all-access",
                     extra: { subscriptionType: "organization" },

@@ -3,6 +3,7 @@ import mysql, { type Connection, type RowDataPacket } from "mysql2/promise";
 import {
   LEDGER_TABLE,
   buildExpectedSchemaContract,
+  downgradeForwardSchemaCompatibilityErrors,
   downgradeProposedMissingIndexErrors,
   diffExactSchemaContracts,
   diffSchemaContracts,
@@ -24,6 +25,7 @@ import {
   type MigrationManifest,
   type SchemaContract,
 } from "./migrationSafety.ts";
+import { databasePoolOptions } from "../../server/_core/databaseTls.ts";
 
 const APPROVAL_TOKEN = "APPLY_FORWARD_MIGRATIONS";
 const STANDALONE_APPROVAL_TOKEN = "APPLY_APPROVED_STANDALONE_MIGRATION";
@@ -139,7 +141,10 @@ async function assertBaselineCompatibility(
 ): Promise<void> {
   const expected = await loadSchemaContract(manifest.baseline.contract);
   const actual = await fetchActualSchemaContract(connection);
-  const diff = diffSchemaContracts(expected, actual);
+  const diff = downgradeForwardSchemaCompatibilityErrors(
+    diffSchemaContracts(expected, actual),
+    manifest
+  );
   printSchemaDiff(diff.errors, diff.warnings);
   if (diff.errors.length > 0) {
     throw new Error(
@@ -593,7 +598,13 @@ if (
 
 const manifest = await loadManifest();
 await validateRepository(manifest);
-const connection = await mysql.createConnection(requireDatabaseUrl());
+const connection = await mysql.createConnection(
+  databasePoolOptions(requireDatabaseUrl(), {
+    caCertificate: process.env.DATABASE_SSL_CA,
+    requireTls: process.env.DATABASE_REQUIRE_TLS === "true",
+    connectionLimit: 1,
+  }),
+);
 
 try {
   if (command === "status") await status(connection, manifest);
