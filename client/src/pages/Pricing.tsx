@@ -696,19 +696,14 @@ function CheckoutButton({
   label,
   disabled,
   style,
-  productName,
-  priceLabel,
   currency = "cad",
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
-  productName?: string;
-  priceLabel?: string;
   currency?: "cad" | "usd";
 }) {
-  const [showModal, setShowModal] = useState(false);
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: (data) => {
       if (data.url) {
@@ -723,61 +718,40 @@ function CheckoutButton({
 
   function handleClick() {
     if (disabled) return;
-    setShowModal(true);
-  }
-
-  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
-    // Save email to localStorage for access restoration
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-      createSession.mutate({
-        productKey,
-        email: contact.email,
-        name: contact.name,
-        phone: contact.phone,
-        currency,
-        visitorId: getAnonymousAnalyticsId(),
-      });
+    createSession.mutate({
+      productKey,
+      currency,
+      visitorId: getAnonymousAnalyticsId(),
+    });
   }
 
   return (
-    <>
-      {showModal && (
-        <CheckoutContactModal
-          productName={productName ?? label}
-          priceLabel={priceLabel}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleContactSubmit}
-          onClose={() => setShowModal(false)}
-          isLoading={createSession.isPending}
-        />
-      )}
-      <button
-        onClick={handleClick}
-        disabled={disabled || createSession.isPending}
-        style={{
-          padding: "11px 0",
-          borderRadius: 10,
-          background: disabled
-            ? "#E2E8F0"
-            : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-          color: disabled ? "#94A3B8" : "#fff",
-          border: "none",
-          fontSize: 13,
-          fontWeight: 700,
-          cursor: disabled ? "not-allowed" : "pointer",
-          fontFamily: "inherit",
-          width: "100%",
-          transition: "opacity 0.15s",
-          opacity: createSession.isPending ? 0.7 : 1,
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          ...style,
-        }}
-      >
-        {createSession.isPending ? "Redirecting…" : disabled ? "Coming Soon" : label}
-      </button>
-    </>
+    <button
+      onClick={handleClick}
+      disabled={disabled || createSession.isPending}
+      style={{
+        padding: "11px 0",
+        borderRadius: 10,
+        background: disabled
+          ? "#E2E8F0"
+          : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+        color: disabled ? "#94A3B8" : "#fff",
+        border: "none",
+        fontSize: 13,
+        fontWeight: 700,
+        cursor: disabled ? "not-allowed" : "pointer",
+        fontFamily: "inherit",
+        width: "100%",
+        transition: "opacity 0.15s",
+        opacity: createSession.isPending ? 0.7 : 1,
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        ...style,
+      }}
+    >
+      {createSession.isPending ? "Opening secure checkout…" : disabled ? "Coming Soon" : label}
+    </button>
   );
 }
 
@@ -2082,8 +2056,6 @@ function ProductCard({
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
-          productName={product.name}
-          priceLabel={isUS ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}` : `CA$${(product.priceCAD / 100).toFixed(0)}`}
           currency={isUS ? "usd" : "cad"}
         />
         {product.available && QUIZ_ROUTES[product.key] && (

@@ -10,10 +10,18 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { resolvePurchaseGateOffer } from "@shared/checkoutOffer";
 import { resolveCourseKey } from "@shared/courseRegistry";
 import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
+
+/** Read the email stored after a completed purchase or sign-in for access lookup. */
+function getStoredEmail(): string {
+  try {
+    return localStorage.getItem("echelon_trial_email") ?? "";
+  } catch {
+    return "";
+  }
+}
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -31,15 +39,6 @@ interface PurchaseGateProps {
   backPath?: string;
   /** Deliberately free course surface; bypasses purchase access checks. */
   freeAccess?: boolean;
-}
-
-/** Read email from localStorage (set during QuizGate or PurchaseSuccess) */
-function getStoredEmail(): string {
-  try {
-    return localStorage.getItem("echelon_trial_email") ?? "";
-  } catch {
-    return "";
-  }
 }
 
 /** Check if a product key is in the locally stored purchased products list */
@@ -132,7 +131,6 @@ export default function PurchaseGate({
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
-  const [showCheckout, setShowCheckout] = useState(false);
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
@@ -149,14 +147,10 @@ export default function PurchaseGate({
     },
   });
 
-  function handleCheckout(contact: { name: string; email: string; phone: string }) {
+  function handleCheckout() {
     if (!offer.available) return;
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
     createCheckout.mutate({
       productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
       currency: isUS ? "usd" : "cad",
       utmSource: "purchase-gate",
       visitorId: getAnonymousAnalyticsId(),
@@ -385,7 +379,7 @@ export default function PurchaseGate({
           {offer.available ? (
             <>
             <button
-              onClick={() => setShowCheckout(true)}
+              onClick={handleCheckout}
               disabled={createCheckout.isPending}
               style={{
                 width: "100%",
@@ -477,16 +471,6 @@ export default function PurchaseGate({
             Log in to your account →
           </a>
       </div>
-      {showCheckout && offer.available && offer.priceLabel && (
-        <CheckoutContactModal
-          productName={offer.productName}
-          priceLabel={offer.priceLabel}
-          prefillEmail={email}
-          onSubmit={handleCheckout}
-          onClose={() => setShowCheckout(false)}
-          isLoading={createCheckout.isPending}
-        />
-      )}
     </div>
 
       {/* Back link at bottom */}

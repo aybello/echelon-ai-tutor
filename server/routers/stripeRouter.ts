@@ -69,8 +69,6 @@ export const stripeRouter = router({
     .input(z.object({
       productKey: z.string(),
       email: z.string().email().optional(),
-      name: z.string().max(128).optional(),
-      phone: z.string().max(32).optional(),
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
@@ -92,10 +90,6 @@ export const stripeRouter = router({
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const userEmail = ctx.user?.email ?? input.email;
-      // Phone and name collected via pre-checkout modal; stored in metadata
-      // for the signed Stripe webhook to save with the purchase record.
-      const preCheckoutPhone = input.phone ?? "";
-      const preCheckoutName = input.name ?? "";
       const currency = input.currency ?? "cad";
       const unitAmount = currency === "usd" ? product.priceUSD : product.priceCAD;
 
@@ -122,8 +116,6 @@ export const stripeRouter = router({
           product_name: product.name,
           user_id: ctx.user?.id?.toString() ?? "",
           customer_email: userEmail ?? "",
-          customer_name: preCheckoutName,
-          customer_phone: preCheckoutPhone,
           utm_source: input.utmSource ?? "",
           utm_medium: input.utmMedium ?? "",
           utm_campaign: input.utmCampaign ?? "",
@@ -133,7 +125,6 @@ export const stripeRouter = router({
           ...individualExamPassCheckoutMetadata(),
         },
         allow_promotion_codes: true,
-        phone_number_collection: { enabled: true },
         success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${appBaseUrl}/pricing`,
       });

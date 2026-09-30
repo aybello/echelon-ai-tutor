@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { resolveQuizGateOffer } from "@shared/checkoutOffer";
 import { resolveCourseKey } from "@shared/courseRegistry";
@@ -85,7 +84,6 @@ export default function QuizGate({
   const { isUS } = useGeoRegion();
   const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [showCheckout, setShowCheckout] = useState(false);
   const diagnosticTracked = useRef(false);
 
   // Ensure portal target is available (SSR-safe)
@@ -140,14 +138,10 @@ export default function QuizGate({
     });
   }, [diagnostic, examType, productKey, trackDiagnostic]);
 
-  function handleCheckout(contact: { name: string; email: string; phone: string }) {
+  function handleCheckout() {
     if (!productKey || !offer.available) return;
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
     createCheckout.mutate({
       productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
       currency: isUS ? "usd" : "cad",
       utmSource: "quiz-diagnostic",
       visitorId: getAnonymousAnalyticsId(),
@@ -272,7 +266,7 @@ export default function QuizGate({
                   ))}
                 </ul>
                 <button
-                    onClick={() => setShowCheckout(true)}
+                    onClick={handleCheckout}
                     disabled={createCheckout.isPending}
                     style={{
                       width: "100%",
@@ -354,16 +348,6 @@ export default function QuizGate({
   return createPortal(
     <>
       {gateContent}
-      {showCheckout && productKey && offer.available && offer.productName && offer.priceLabel && (
-        <CheckoutContactModal
-          productName={offer.productName}
-          priceLabel={offer.priceLabel}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleCheckout}
-          onClose={() => setShowCheckout(false)}
-          isLoading={createCheckout.isPending}
-        />
-      )}
     </>,
     document.body,
   );
