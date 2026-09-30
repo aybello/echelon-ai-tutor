@@ -13,6 +13,9 @@ function source(relativePath: string) {
   return readFileSync(new URL(relativePath, ROOT), "utf8");
 }
 
+const unsupportedAuthorityClaim =
+  /\b(?:recognized|endorsed|approved|accredited)\s+(?:by|across|with)\b[^\n]{0,180}\b(?:EOCP|AWWOA|SAHO|MWWA)\b|\b(?:EOCP|AWWOA|SAHO|MWWA)\b[^\n]{0,180}\b(?:recognizes?|endorses?|approves?|accredits?)\b/i;
+
 describe("public WPI marketing claims", () => {
   it("keeps WPI product descriptions factual and independent", () => {
     const wpiProducts = INDIVIDUAL_PRODUCTS.filter(product =>
@@ -28,9 +31,7 @@ describe("public WPI marketing claims", () => {
       expect(product.description).toMatch(
         /(?:independent preparation provider|confirm (?:your |the )?current.*requirements)/i,
       );
-      expect(product.description).not.toMatch(
-        /recognized by.*(?:EOCP|AWWOA|SAHO|MWWA)/i,
-      );
+      expect(product.description).not.toMatch(unsupportedAuthorityClaim);
     }
   });
 
@@ -38,9 +39,7 @@ describe("public WPI marketing claims", () => {
     for (const relativePath of PUBLIC_WPI_COPY_FILES) {
       const content = source(relativePath);
 
-      expect(content).not.toMatch(
-        /recognized by.*(?:EOCP|AWWOA|SAHO|MWWA)/i,
-      );
+      expect(content).not.toMatch(unsupportedAuthorityClaim);
       expect(content).not.toMatch(/recognized across western canada/i);
     }
 
