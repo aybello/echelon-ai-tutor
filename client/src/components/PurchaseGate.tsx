@@ -23,6 +23,15 @@ function getStoredEmail(): string {
   }
 }
 
+/** Read the signed post-login token. The server still re-checks live access. */
+function getStoredAccessToken(): string | undefined {
+  try {
+    return localStorage.getItem("echelon_access_token") ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
 interface PurchaseGateProps {
@@ -130,6 +139,7 @@ export default function PurchaseGate({
 }: PurchaseGateProps) {
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
+  const [accessToken] = useState(getStoredAccessToken);
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
@@ -180,7 +190,7 @@ export default function PurchaseGate({
   // Server-side access check — ALWAYS runs when user has email or is authenticated.
   // localAccess (localStorage) is only used to show content optimistically while the server responds.
   const { data: accessData, isLoading } = trpc.stripe.checkAccess.useQuery(
-    { examType, email: email || undefined },
+    { examType, email: email || undefined, accessToken },
     {
       enabled: !!isAuthenticated || !!email,
       staleTime: 5 * 60 * 1000,
