@@ -15,6 +15,8 @@ import {
   getTeamVolumeTier,
 } from "@shared/teamPricing";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -80,6 +82,11 @@ export default function Teams() {
       tier,
       seats,
       managerEmail: managerEmail.trim().toLowerCase(),
+      analyticsContext: {
+        ...getMarketingAttribution("/teams"),
+        province: region === "ontario" ? "ontario" : "western",
+        visitorId: getAnonymousAnalyticsId(),
+      },
     });
   };
 

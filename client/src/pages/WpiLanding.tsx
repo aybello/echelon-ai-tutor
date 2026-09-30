@@ -8,6 +8,9 @@ import LandingNav from "@/components/LandingNav";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
+import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -188,6 +191,7 @@ export default function WpiLanding() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [, navigate] = useLocation();
   const { showPrompt, setProvince, dismiss } = useProvince();
+  const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
 
   const handleProvinceSelect = (id: ProvinceId) => {
     setProvince(id);
@@ -434,7 +438,16 @@ export default function WpiLanding() {
 
                   {/* CTA pinned to bottom */}
                   <div style={{ padding: "0 16px 16px", marginTop: "auto" }}>
-                    <Link href={cls.quizHref}>
+                    <Link
+                      href={cls.quizHref}
+                      onClick={() => trackCourseSelection.mutate({
+                        event: "product_selected",
+                        productKey: cls.quizHref.slice(1),
+                        visitorId: getAnonymousAnalyticsId(),
+                        ...getMarketingAttribution("/wpi"),
+                        province: "western",
+                      })}
+                    >
                       <button style={{
                         width: "100%", background: cls.color, color: "#FFFFFF",
                         border: "none", borderRadius: 8, padding: "11px",

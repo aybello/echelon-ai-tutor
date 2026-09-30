@@ -505,6 +505,9 @@ export default function Admin() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 12 }}>
                   {[
                     { label: "Weekly active learners", value: kpisQ.data.engagement.weeklyActiveLearners, note: "Distinct learner or anonymous-browser identities in 7 days" },
+                    { label: "Marketing page views", value: kpisQ.data.funnel.marketingPageViews, note: "Privacy-safe public buyer-page views in 30 days" },
+                    { label: "Course choices", value: kpisQ.data.funnel.productSelections, note: `${kpisQ.data.funnel.buyerPathSelections} individual or team path selections` },
+                    { label: "Checkout starts", value: kpisQ.data.funnel.checkoutStarts, note: `${kpisQ.data.funnel.checkoutCompletions} completed purchases or team plans` },
                     { label: "7-day learner return", value: kpisQ.data.engagement.sevenDayReturnRate == null ? "—" : `${kpisQ.data.engagement.sevenDayReturnRate}%`, note: `${kpisQ.data.engagement.sevenDayReturners} of ${kpisQ.data.engagement.sevenDayReturnCohort} active learners returned in the next 7-day window` },
                     { label: "30-day learner return", value: kpisQ.data.engagement.thirtyDayReturnRate == null ? "—" : `${kpisQ.data.engagement.thirtyDayReturnRate}%`, note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} active learners returned in the next 30-day window` },
                     { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started platform-recorded sessions in 30 days" },

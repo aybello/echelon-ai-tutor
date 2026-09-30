@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { resolveQuizGateOffer } from "@shared/checkoutOffer";
 import { resolveCourseKey } from "@shared/courseRegistry";
@@ -145,6 +146,11 @@ export default function QuizGate({
       currency: isUS ? "usd" : "cad",
       utmSource: "quiz-diagnostic",
       visitorId: getAnonymousAnalyticsId(),
+      analyticsContext: {
+        ...getMarketingAttribution(window.location.pathname),
+        province: isUS ? "western" : "ontario",
+        surface: "quiz-gate",
+      },
     });
   }
 

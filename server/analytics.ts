@@ -17,6 +17,7 @@ export type AnalyticsEventName =
   | "restore_access_requested"
   | "restore_access_completed"
   | "pricing_viewed"
+  | "marketing_page_viewed"
   | "buyer_path_selected"
   | "product_selected"
   | "checkout_started"

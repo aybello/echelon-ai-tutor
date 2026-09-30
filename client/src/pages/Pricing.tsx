@@ -9,6 +9,7 @@ import { formatPriceUSD } from "@shared/products";
 import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "@shared/refundPolicy";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -697,13 +698,16 @@ function CheckoutButton({
   disabled,
   style,
   currency = "cad",
+  province,
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
   currency?: "cad" | "usd";
+  province?: "ontario" | "western" | "unknown";
 }) {
+  const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: (data) => {
       if (data.url) {
@@ -718,10 +722,24 @@ function CheckoutButton({
 
   function handleClick() {
     if (disabled) return;
+    const attribution = {
+      ...getMarketingAttribution("/pricing"),
+      province: province ?? (currency === "usd" ? "western" : "ontario"),
+    };
+    trackProductSelection.mutate({
+      event: "product_selected",
+      productKey,
+      visitorId: getAnonymousAnalyticsId(),
+      ...attribution,
+    });
     createSession.mutate({
       productKey,
       currency,
       visitorId: getAnonymousAnalyticsId(),
+      analyticsContext: {
+        ...attribution,
+        surface: "pricing",
+      },
     });
   }
 
@@ -1152,6 +1170,10 @@ function TeamSeatCalculator() {
 export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
   const funnelAnalytics = trpc.funnelAnalytics.track.useMutation();
+  const pricingAttribution = {
+    ...getMarketingAttribution("/pricing"),
+    province: isUS ? ("unknown" as const) : ("ontario" as const),
+  };
   usePageMeta({
     title: "Pricing — Echelon Institute",
     description: isUS
@@ -1197,7 +1219,7 @@ export default function Pricing() {
   }, []);
 
   useEffect(() => {
-    funnelAnalytics.mutate({ event: "pricing_viewed", visitorId: getAnonymousAnalyticsId() });
+    funnelAnalytics.mutate({ event: "pricing_viewed", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
   // A single page-view event is intentional; mutation identity is not a dependency.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -1340,7 +1362,7 @@ export default function Pricing() {
               type="button"
               onClick={() => {
                 setBuyerType("individual");
-                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual", visitorId: getAnonymousAnalyticsId() });
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "individual" ? "linear-gradient(135deg, #EFF6FF, #ECFEFF)" : "#fff", border: buyerType === "individual" ? "2px solid #2563EB" : "1.5px solid #E2E8F0", boxShadow: buyerType === "individual" ? "0 10px 24px rgba(37,99,235,0.12)" : "none" }}
             >
@@ -1352,7 +1374,7 @@ export default function Pricing() {
             <button
               type="button"
               onClick={() => {
-                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team", visitorId: getAnonymousAnalyticsId() });
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                 window.location.href = "/teams";
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "team" ? "linear-gradient(135deg, #F0FDFA, #ECFEFF)" : "#fff", border: buyerType === "team" ? "2px solid #0D9488" : "1.5px solid #E2E8F0", boxShadow: buyerType === "team" ? "0 10px 24px rgba(13,148,136,0.12)" : "none" }}
@@ -1570,7 +1592,7 @@ export default function Pricing() {
                   value={selectedIndividualKey}
                   onChange={e => {
                     setSelectedIndividualKey(e.target.value);
-                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId() });
+                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                   }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
                 >
@@ -2057,6 +2079,7 @@ function ProductCard({
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
           currency={isUS ? "usd" : "cad"}
+          province={isUS ? "unknown" : "ontario"}
         />
         {product.available && QUIZ_ROUTES[product.key] && (
           <Link href={QUIZ_ROUTES[product.key]} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>

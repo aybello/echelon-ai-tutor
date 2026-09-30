@@ -36,4 +36,14 @@ describe("individual checkout flow", () => {
     expect(oneTimeCheckout).not.toContain("customer_phone:");
     expect(oneTimeCheckout).not.toContain("phone: z.string().max");
   });
+
+  it("counts every payment entry as a checkout start", () => {
+    const oneTimeCheckout = stripeRouter.slice(
+      stripeRouter.indexOf("createCheckoutSession: publicProcedure"),
+      stripeRouter.indexOf("verifySession: publicProcedure"),
+    );
+
+    expect(oneTimeCheckout).toContain('trackEvent("checkout_started", checkoutAnalytics)');
+    expect(oneTimeCheckout).toContain('trackEvent("diagnostic_checkout_started", checkoutAnalytics)');
+  });
 });

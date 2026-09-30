@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
@@ -164,6 +165,11 @@ export default function PurchaseGate({
       currency: isUS ? "usd" : "cad",
       utmSource: "purchase-gate",
       visitorId: getAnonymousAnalyticsId(),
+      analyticsContext: {
+        ...getMarketingAttribution(window.location.pathname),
+        province: isUS ? "western" : "ontario",
+        surface: "purchase-gate",
+      },
     });
   }
 

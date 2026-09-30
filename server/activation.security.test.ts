@@ -36,6 +36,15 @@ describe("activation journey security invariants", () => {
     expect(publicInputSchema).not.toContain("metadata:");
   });
 
+  it("allows only coarse public attribution fields and canonical product keys", () => {
+    expect(funnelSource).toContain('event: z.literal("marketing_page_viewed")');
+    expect(funnelSource).toContain("const knownProductKey");
+    expect(funnelSource).toContain("ALL_PRODUCTS.some");
+    expect(funnelSource).toContain('z.enum(["campaign", "direct", "organic", "referral", "social"])');
+    expect(funnelSource).not.toContain("referrer:");
+    expect(funnelSource).not.toContain("search:");
+  });
+
   it("renders an entitlement recovery state before retaining the activation loading screen", () => {
     const errorState = activationPageSource.indexOf("if (status.error)");
     const loadingFallback = activationPageSource.indexOf('if (step === "loading")');

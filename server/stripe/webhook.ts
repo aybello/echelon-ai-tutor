@@ -268,9 +268,15 @@ export function registerStripeWebhook(app: Express) {
 
             if (createdPurchase) {
               const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
-              await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD } })
+              const analyticsContext = {
+                source: session.metadata?.analytics_source || "unknown",
+                device: session.metadata?.analytics_device || "unknown",
+                province: session.metadata?.analytics_province || "unknown",
+                surface: session.metadata?.analytics_surface || "unknown",
+              };
+              await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD, ...analyticsContext } })
                 .catch((error) => console.error("[Stripe Webhook] Checkout analytics failed:", error));
-              await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase" } })
+              await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase", ...analyticsContext } })
                 .catch((error) => console.error("[Stripe Webhook] Access analytics failed:", error));
             }
           } else {
@@ -345,10 +351,30 @@ export function registerStripeWebhook(app: Express) {
 
           if (result.state === "completed" || result.state === "already_completed") {
             if (result.state === "completed" && event.type === "customer.subscription.created") {
+              const analyticsContext = {
+                source: liveSubscription.metadata?.analytics_source || "unknown",
+                device: liveSubscription.metadata?.analytics_device || "unknown",
+                province: liveSubscription.metadata?.analytics_province || province,
+                surface: liveSubscription.metadata?.analytics_surface || "teams",
+              };
+              const analyticsIdentityHash = liveSubscription.metadata?.analytics_identity_hash || null;
               await trackEvent("subscription_created", {
                 email: managerEmail,
                 productKey: "teams-all-access",
-                extra: { subscriptionType: "organization", tier, seats },
+                identityHash: analyticsIdentityHash,
+                extra: { subscriptionType: "organization", tier, seats, ...analyticsContext },
+              });
+              await trackEvent("checkout_completed", {
+                email: managerEmail,
+                productKey: "teams-annual",
+                identityHash: analyticsIdentityHash,
+                extra: { subscriptionType: "organization", tier, seats, ...analyticsContext },
+              });
+              await trackEvent("access_activated", {
+                email: managerEmail,
+                productKey: "teams-annual",
+                identityHash: analyticsIdentityHash,
+                extra: { activationType: "organization_subscription", tier, seats, ...analyticsContext },
               });
             }
             return res.json({ received: true });

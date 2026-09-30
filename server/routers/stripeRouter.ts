@@ -74,6 +74,12 @@ export const stripeRouter = router({
       utmCampaign: z.string().max(128).optional(),
       currency: z.enum(["cad", "usd"]).default("cad"),
       visitorId: z.string().min(16).max(128).optional(),
+      analyticsContext: z.object({
+        source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
+        device: z.enum(["desktop", "mobile", "tablet"]),
+        province: z.enum(["ontario", "western", "unknown"]),
+        surface: z.enum(["pricing", "purchase-gate", "quiz-gate"]),
+      }).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
@@ -122,6 +128,10 @@ export const stripeRouter = router({
           currency,
           catalogue_version: CATALOGUE_VERSION,
           analytics_identity_hash: input.visitorId ? hashAnalyticsAnonymousId(input.visitorId) : "",
+          analytics_source: input.analyticsContext?.source ?? "unknown",
+          analytics_device: input.analyticsContext?.device ?? "unknown",
+          analytics_province: input.analyticsContext?.province ?? "unknown",
+          analytics_surface: input.analyticsContext?.surface ?? "unknown",
           ...individualExamPassCheckoutMetadata(),
         },
         allow_promotion_codes: true,
@@ -129,17 +139,25 @@ export const stripeRouter = router({
         cancel_url: `${appBaseUrl}/pricing`,
       });
 
-      await trackEvent(
-        input.utmSource === "quiz-diagnostic" ? "diagnostic_checkout_started" : "checkout_started",
-        {
-          userId: ctx.user?.id?.toString() ?? null,
-          email: userEmail ?? null,
-          examType: product.examTypes[0] ?? null,
-          productKey: product.key,
-          anonymousId: input.visitorId ?? null,
-          extra: { currency, amountCents: unitAmount, source: input.utmSource ?? "pricing" },
+      const checkoutAnalytics = {
+        userId: ctx.user?.id?.toString() ?? null,
+        email: userEmail ?? null,
+        examType: product.examTypes[0] ?? null,
+        productKey: product.key,
+        anonymousId: input.visitorId ?? null,
+        extra: {
+          currency,
+          amountCents: unitAmount,
+          source: input.analyticsContext?.source ?? (input.utmSource ? "campaign" : "unknown"),
+          device: input.analyticsContext?.device ?? "unknown",
+          province: input.analyticsContext?.province ?? "unknown",
+          surface: input.analyticsContext?.surface ?? "unknown",
         },
-      );
+      };
+      await trackEvent("checkout_started", checkoutAnalytics);
+      if (input.utmSource === "quiz-diagnostic") {
+        await trackEvent("diagnostic_checkout_started", checkoutAnalytics);
+      }
 
       return { url: session.url };
     }),
@@ -486,6 +504,12 @@ export const stripeRouter = router({
       tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
       seats: z.number().int().min(5).max(500),
       managerEmail: z.string().email(),
+      analyticsContext: z.object({
+        source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
+        device: z.enum(["desktop", "mobile", "tablet"]),
+        province: z.enum(["ontario", "western", "unknown"]),
+        visitorId: z.string().min(16).max(128),
+      }).optional(),
     }))
     .mutation(async ({ input }) => {
       if (!ORGANIZATION_COMMERCE_ENABLED) {
@@ -524,6 +548,11 @@ export const stripeRouter = router({
           pricing_model: "graduated",
           catalogue_version: CATALOGUE_VERSION,
           expected_total_cents: String(expectedTotalCents),
+          analytics_identity_hash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : "",
+          analytics_source: input.analyticsContext?.source ?? "unknown",
+          analytics_device: input.analyticsContext?.device ?? "unknown",
+          analytics_province: input.analyticsContext?.province ?? input.province,
+          analytics_surface: "teams",
         },
         subscription_data: {
           metadata: {
@@ -535,12 +564,31 @@ export const stripeRouter = router({
             seats: String(input.seats),
             pricing_model: "graduated",
             catalogue_version: CATALOGUE_VERSION,
+            analytics_identity_hash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : "",
+            analytics_source: input.analyticsContext?.source ?? "unknown",
+            analytics_device: input.analyticsContext?.device ?? "unknown",
+            analytics_province: input.analyticsContext?.province ?? input.province,
+            analytics_surface: "teams",
           },
         },
         phone_number_collection: { enabled: true },
         allow_promotion_codes: true,
         success_url: `${appBaseUrl}/team?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${appBaseUrl}/teams`,
+      });
+
+      await trackEvent("checkout_started", {
+        email: input.managerEmail,
+        identityHash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : null,
+        productKey: "teams-annual",
+        extra: {
+          source: input.analyticsContext?.source ?? "unknown",
+          device: input.analyticsContext?.device ?? "unknown",
+          province: input.analyticsContext?.province ?? input.province,
+          surface: "teams",
+          seats: input.seats,
+          tier: input.tier,
+        },
       });
 
       return { url: session.url };

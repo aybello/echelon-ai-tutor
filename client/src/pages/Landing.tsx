@@ -13,6 +13,8 @@ import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundP
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -1105,6 +1107,7 @@ type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[n
 
 function CourseCard({ course }: { course: CourseType }) {
   const [notifyOpen, setNotifyOpen] = useState(false);
+  const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
   const quizHref = (course as any).quizHref ?? (
     course.code === "OIT-WW" ? "/oit-ww" :
     course.code === "CL1-WW" ? "/class1-ww" :
@@ -1121,6 +1124,17 @@ function CourseCard({ course }: { course: CourseType }) {
   const passPrice = Number((course as any).price);
   const passPriceLabel = Number.isFinite(passPrice) ? `CA$${passPrice}` : "See pricing";
   const pricingHref = isWpiCourse ? "/pricing?tab=western" : "/pricing";
+  const recordCourseSelection = () => {
+    const productKey = (course as any).productKey as string | undefined;
+    if (!productKey) return;
+    trackCourseSelection.mutate({
+      event: "product_selected",
+      productKey,
+      visitorId: getAnonymousAnalyticsId(),
+      ...getMarketingAttribution("/"),
+      province: isWpiCourse ? "western" : "ontario",
+    });
+  };
   return (
     <>
       <div
@@ -1238,11 +1252,11 @@ function CourseCard({ course }: { course: CourseType }) {
             </button>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <Link href={quizHref} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+              <Link onClick={recordCourseSelection} href={quizHref} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                 Start Studying →
               </Link>
               {(course as any).productKey && (
-                <Link href={pricingHref} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                <Link onClick={recordCourseSelection} href={pricingHref} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                   View Plans →
                 </Link>
               )}

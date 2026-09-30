@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
+import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
 import Landing from "./pages/Landing";
@@ -242,6 +243,7 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Suspense fallback={<PageLoader />}>
+      <MarketingPageViewTracker />
       <Switch>
         <Route path={"/"} component={Landing} />
         <Route path={"/quiz"} component={Home} />
