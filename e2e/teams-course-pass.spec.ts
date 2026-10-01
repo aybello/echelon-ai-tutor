@@ -271,6 +271,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // This is still the manager's authenticated browser, while the operator used
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
+  await page.getByRole("button", { name: "Reports and outcomes", exact: true }).click();
   const progressTable = page.locator("table").filter({
     has: page.locator("th").filter({ hasText: /^Readiness$/ }),
   });
