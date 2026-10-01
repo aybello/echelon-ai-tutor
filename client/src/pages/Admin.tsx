@@ -12,6 +12,7 @@ import ChangelogManager from "@/components/ChangelogManager";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
 import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
+import { formatAdminCurrency, formatAdminPercent, rateFromCounts } from "@/lib/adminDashboard";
 import {
   Activity,
   Building2,
@@ -29,7 +30,6 @@ import {
   ShieldCheck,
   TriangleAlert,
   UsersRound,
-  WalletCards,
   X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -507,13 +507,51 @@ export default function Admin() {
     );
   }
 
-  // ── Dashboard ──
-  const statItems = [
-    { label: "Recorded order value", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: WalletCards, tab: "revenue" as Tab },
-    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: CreditCard, tab: "revenue" as Tab },
-    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", icon: Repeat2, tab: "subscriptions" as Tab },
-    { label: "Trial signups", value: stats.data?.trialCount ?? "—", icon: Mail, tab: "trials" as Tab },
-    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (${stats.data.avgRating}/5)` : "—", icon: MessageSquare, tab: "feedback" as Tab },
+  // ── Founder dashboard ──
+  const checkoutCompletionRate = rateFromCounts(
+    kpisQ.data?.funnel?.checkoutCompletions,
+    kpisQ.data?.funnel?.checkoutStarts,
+  );
+  const founderLedgerRows = [
+    {
+      label: "Recorded order value",
+      value: formatAdminCurrency(stats.data?.totalRevenueCAD),
+      definition: "Stored purchase and subscription amounts. It is not net revenue after refunds, disputes, or fees.",
+      action: "Review purchases",
+      tab: "revenue" as Tab,
+    },
+    {
+      label: "Checkout event ratio",
+      value: formatAdminPercent(checkoutCompletionRate),
+      definition: kpisQ.data?.funnel
+        ? `${kpisQ.data.funnel.checkoutCompletions} recorded completed events / ${kpisQ.data.funnel.checkoutStarts} recorded starts in the last 30 days. This is an event-count ratio, not a matched conversion cohort.`
+        : "Recorded completed checkout events divided by recorded starts in the last 30 days. This is an event-count ratio, not a matched conversion cohort.",
+      action: "Inspect checkouts",
+      tab: "revenue" as Tab,
+    },
+    {
+      label: "7-day learner return",
+      value: formatAdminPercent(kpisQ.data?.engagement?.sevenDayReturnRate),
+      definition: kpisQ.data?.engagement
+        ? `${kpisQ.data.engagement.sevenDayReturners} of ${kpisQ.data.engagement.sevenDayReturnCohort} eligible learners returned to a learning activity within seven days.`
+        : "Eligible learners who returned to a learning activity within seven days.",
+      action: "Review learning",
+      tab: "scores" as Tab,
+    },
+  ];
+  const founderActions = [
+    { number: "01", title: "Inspect paid conversion", detail: "Review purchase records and use the guarded Stripe check when a stored record needs verification.", status: "Revenue", action: "Review", tab: "revenue" as Tab },
+    { number: "02", title: "Check team-seat health", detail: "Confirm available seats and active organization access without changing member assignments from this overview.", status: "Teams", action: "Open", tab: "orgs" as Tab },
+    { number: "03", title: "Review question release queue", detail: "Validate sources and rationales before any question becomes learner-visible.", status: "Content", action: "Review", tab: "questions" as Tab },
+  ];
+  const operatingMetrics = [
+    { label: "Purchase records", value: stats.data?.purchaseCount ?? "—", note: "All stored purchase records", tab: "revenue" as Tab },
+    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", note: "Current stored subscription records", tab: "subscriptions" as Tab },
+    { label: "Trial signups", value: stats.data?.trialCount ?? "—", note: "All stored trial-signup records", tab: "trials" as Tab },
+    { label: "Weekly active learners", value: kpisQ.data?.engagement?.weeklyActiveLearners ?? "—", note: "Recorded learning activity in 7 days", tab: "scores" as Tab },
+    { label: "Learning activation", value: formatAdminPercent(kpisQ.data?.commercial?.learningActivationRate), note: kpisQ.data?.commercial ? `${kpisQ.data.commercial.learningActivated} of ${kpisQ.data.commercial.accessCohortSize} new activations in 30 days` : "Newly activated learners who started learning in 30 days", tab: "scores" as Tab },
+    { label: "Team seats used", value: kpisQ.data?.teams ? `${kpisQ.data.teams.assignedSeats}/${kpisQ.data.teams.totalSeats}` : "—", note: "Current allocation across active team plans", tab: "orgs" as Tab },
+    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} · ${stats.data.avgRating}/5` : "—", note: "All submitted learner feedback", tab: "feedback" as Tab },
   ];
   const activeSection = ADMIN_NAVIGATION.flatMap(group => group.tabs).find(tab => tab.id === activeTab);
   const activeDescription: Record<Tab, string> = {
@@ -587,103 +625,182 @@ export default function Admin() {
           </div>
           <div className="admin-content-inner">
         {/* Page header */}
-        <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 26, gap: 16 }}>
-          <div>
-            <div className="admin-eyebrow">Echelon / administration</div>
-            <h1 style={{ fontSize: "clamp(27px, 3vw, 38px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
-            <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
-          </div>
-          <button
-            className="admin-btn"
-            onClick={refreshActiveSection}
-            style={{ padding: "10px 16px", borderRadius: 9, border: "1px solid #C5D6DC", background: "#fff", color: "#173A4C", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
-          >
-            Refresh
-          </button>
-        </div>
-
-        {/* Stats cards */}
-        {activeTab === "insights" && <>
-          <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 26 }}>
-          {statItems.map(({ icon: Icon, ...stat }) => (
-            <button
-              key={stat.label}
-              onClick={() => selectSection(stat.tab)}
-              className="admin-stat-card"
-              style={{ borderColor: activeTab === stat.tab ? "#46B7A3" : "#DCE7EA" }}
-            >
-              <Icon className="admin-stat-icon" size={19} aria-hidden="true" />
-              <div style={{ fontSize: 26, fontWeight: 800, color: "#173A4C", marginBottom: 4 }}>
-                {stats.isLoading ? "…" : String(stat.value)}
+        {activeTab === "insights" ? (
+          <section className="admin-founder-header" aria-labelledby="admin-founder-title">
+            <div className="admin-founder-topline">
+              <div className="admin-eyebrow">Founder view <span aria-hidden="true">/</span> All Echelon</div>
+              <div className="admin-founder-controls">
+                <span className="admin-founder-period">Mixed reporting windows</span>
+                <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection} disabled={stats.isFetching || kpisQ.isFetching}>
+                  {stats.isFetching || kpisQ.isFetching ? "Refreshing…" : "Refresh view"}
+                </button>
               </div>
-              <div style={{ fontSize: 12, color: "#526779", fontWeight: 700 }}>{stat.label}</div>
-            </button>
-          ))}
-        </div>
-        <p className="admin-metric-note">Recorded order value sums stored purchase and subscription amounts; it is not net revenue after refunds, disputes or fees.</p>
-        </>}
-
-        {/* -- PRODUCT KPI TAB -- */}
-        {activeTab === "insights" && (
-          <div style={{ background: "#F8FAFC", borderRadius: 16, border: "1px solid rgba(0,0,0,0.07)", padding: 20 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, marginBottom: 18, flexWrap: "wrap" }}>
+            </div>
+            <div className="admin-founder-title-row">
               <div>
-                <div style={{ fontSize: 14, fontWeight: 800, color: "#1E293B" }}>📈 Product scorecard</div>
-                <div style={{ fontSize: 11, color: "#64748B", marginTop: 4 }}>Last 30 days unless stated otherwise. A dash means the denominator or outcome sample does not exist yet.</div>
+                <p className="admin-section-label">Founder decision surface</p>
+                <h1 id="admin-founder-title">Make the <em>next right move</em>,<br />with evidence.</h1>
               </div>
-              {kpisQ.data && <div style={{ fontSize: 10, color: "#94A3B8" }}>Updated {formatDate(kpisQ.data.generatedAt)}</div>}
+              <div className="admin-founder-purpose">
+                <strong>Purpose of this screen</strong>
+                <p>Show the few revenue, learner, and operations decisions that deserve attention before opening a full report.</p>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 26, gap: 16 }}>
+            <div>
+              <div className="admin-eyebrow">Echelon / administration</div>
+              <h1 style={{ fontSize: "clamp(27px, 3vw, 38px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
+              <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
+            </div>
+            <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection}>Refresh</button>
+          </div>
+        )}
+
+        {activeTab === "insights" && (
+          <>
+            <div className="admin-founder-layout">
+              <section className="admin-ledger-card" aria-labelledby="decision-ledger-title">
+                <div className="admin-panel-heading">
+                  <div>
+                    <p className="admin-section-label">Decision ledger</p>
+                    <h2 id="decision-ledger-title">What needs a founder decision?</h2>
+                    <p>Each measure shows a defined source, an honest current value, and its fastest useful next step.</p>
+                  </div>
+                  <span className="admin-live-marker">{kpisQ.isFetching || stats.isFetching ? "UPDATING" : kpisQ.error || stats.error ? "REFRESH NEEDED" : "STORED RECORDS"}</span>
+                </div>
+                <div className="admin-ledger-table-wrap" role="region" aria-label="Founder decision ledger" tabIndex={0}>
+                  <table className="admin-ledger-table">
+                    <thead>
+                      <tr><th scope="col">Measure</th><th scope="col">Current</th><th scope="col">Meaning</th><th scope="col">Next action</th></tr>
+                    </thead>
+                    <tbody>
+                      {founderLedgerRows.map((row) => (
+                        <tr key={row.label}>
+                          <th scope="row">{row.label}</th>
+                          <td className="admin-ledger-value">{stats.isLoading || kpisQ.isLoading ? "…" : row.value}</td>
+                          <td>{row.definition}</td>
+                          <td><button type="button" className="admin-text-action" onClick={() => selectSection(row.tab)}>{row.action}</button></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <aside className="admin-founder-aside" aria-label="Founder operating principles">
+                <section className="admin-trust-panel">
+                  <p className="admin-section-label">Trust layer</p>
+                  <h2>No metric without a trail.</h2>
+                  <p>Every decision stays tied to a period, a definition, and a source you can inspect.</p>
+                  <ol>
+                    <li><strong>Period and denominator</strong><span>Percentages state who is counted and which time window applies.</span></li>
+                    <li><strong>Source and freshness</strong><span>Consequential numbers come from stored operational records, not copied figures.</span></li>
+                    <li><strong>Human action</strong><span>Recommendations never quietly change money, access, or learner records.</span></li>
+                  </ol>
+                  <button type="button" className="admin-trust-link" onClick={() => selectSection("explorer")}>Open Data Explorer</button>
+                </section>
+
+                <section className="admin-operating-health" aria-labelledby="operating-health-title">
+                  <div className="admin-operating-heading"><h2 id="operating-health-title">Operating health</h2><span>Mixed windows</span></div>
+                  <div className="admin-operating-grid">
+                    {operatingMetrics.map((metric) => (
+                      <button key={metric.label} type="button" className="admin-operating-metric" onClick={() => selectSection(metric.tab)}>
+                        <span>{metric.label}</span>
+                        <strong>{kpisQ.isLoading || stats.isLoading ? "…" : metric.value}</strong>
+                        <small>{metric.note}</small>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              </aside>
             </div>
 
-            {kpisQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Calculating product metrics…</div>}
-            <section style={{ padding: 16 }} aria-label="Continuing education pilot metrics">
-              <h3>Continuing education pilot</h3>
-              <p>Courses enrolled in the last 30 days, counted once per learner and course edition. Derived from saved learning records.</p>
-              {ceuKpisQ.isLoading && <p>Loading course metrics…</p>}
-              {ceuKpisQ.error && <p role="alert">Course metrics could not be loaded. <button onClick={() => ceuKpisQ.refetch()}>Retry</button></p>}
-              {ceuKpisQ.data && <div style={{ overflowX: "auto" }}><table><thead><tr><th>Enrolled</th><th>Started lessons</th><th>Modules completed</th><th>Final opened</th><th>Final submitted</th><th>Retakes</th><th>Passed</th><th>Certificate opened</th><th>Feedback</th></tr></thead><tbody><tr>
-                {[ceuKpisQ.data.enrollments, ceuKpisQ.data.learningStarted, ceuKpisQ.data.modulesCompleted, ceuKpisQ.data.finalStarted, ceuKpisQ.data.finalSubmitted, ceuKpisQ.data.retries, ceuKpisQ.data.completed, ceuKpisQ.data.certificatesViewed, `${ceuKpisQ.data.evaluations} ratings (${ceuKpisQ.data.averageRating ?? "—"}/5)`].map((value, index) => <td key={index} style={{ padding: 10 }}>{value}</td>)}
-              </tr></tbody></table><p>Certificate views are measured from this release onward. Passing this pilot does not award CEUs. Public views and failed network saves are not included in these record-based counts.</p></div>}
+            <section className="admin-priority-card" aria-labelledby="priority-title">
+              <div className="admin-panel-heading admin-priority-heading">
+                <div>
+                  <p className="admin-section-label">Needs attention</p>
+                  <h2 id="priority-title">The work that changes the next outcome.</h2>
+                  <p>These are deliberate entry points, not an unfiltered alert feed.</p>
+                </div>
+                <span className="admin-priority-count">{founderActions.length} FOCUS AREAS</span>
+              </div>
+              <div className="admin-priority-list">
+                {founderActions.map((item) => (
+                  <button key={item.number} type="button" className="admin-priority-item" onClick={() => selectSection(item.tab)}>
+                    <span className="admin-priority-number">{item.number}</span>
+                    <span className="admin-priority-copy"><strong>{item.title}</strong><small>{item.detail}</small></span>
+                    <span className="admin-priority-meta"><small>{item.status}</small><b>{item.action}</b></span>
+                  </button>
+                ))}
+              </div>
+              <div className="admin-priority-note">
+                <span>REVENUE / NEXT STEP</span>
+                <strong>Use the source and denominator before treating a rate as a decision signal.</strong>
+                <p>Checkout event ratios show recorded event counts. A matched conversion cohort needs identity and timing rules before it can guide a decision.</p>
+              </div>
             </section>
-            {kpisQ.error && <div style={{ padding: 18, borderRadius: 10, background: "#FEF2F2", color: "#B91C1C", fontSize: 12 }}>Metrics could not be loaded: {kpisQ.error.message}</div>}
-            {kpisQ.data && (
-              <>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 12 }}>
-                  {[
-                    { label: "Weekly active learners", value: kpisQ.data.engagement.weeklyActiveLearners, note: "Distinct learner or anonymous-browser identities in 7 days" },
-                    { label: "Marketing page views", value: kpisQ.data.funnel.marketingPageViews, note: "Privacy-safe public buyer-page views in 30 days" },
-                    { label: "Course choices", value: kpisQ.data.funnel.productSelections, note: `${kpisQ.data.funnel.buyerPathSelections} individual or team path selections` },
-                    { label: "Checkout starts", value: kpisQ.data.funnel.checkoutStarts, note: `${kpisQ.data.funnel.checkoutCompletions} completed purchases or team plans` },
-                    { label: "7-day learner return", value: kpisQ.data.engagement.sevenDayReturnRate == null ? "—" : `${kpisQ.data.engagement.sevenDayReturnRate}%`, note: `${kpisQ.data.engagement.sevenDayReturners} of ${kpisQ.data.engagement.sevenDayReturnCohort} active learners returned in the next 7-day window` },
-                    { label: "30-day learner return", value: kpisQ.data.engagement.thirtyDayReturnRate == null ? "—" : `${kpisQ.data.engagement.thirtyDayReturnRate}%`, note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} active learners returned in the next 30-day window` },
-                    { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started platform-recorded sessions in 30 days" },
-                    { label: "Training records", value: kpisQ.data.engagement.trainingRecordsAttested, note: `${kpisQ.data.engagement.trainingHoursExports} training-hours exports in 30 days` },
-                    { label: "Time to first quiz", value: kpisQ.data.engagement.medianMinutesToFirstQuiz == null ? "—" : `${kpisQ.data.engagement.medianMinutesToFirstQuiz} min`, note: "Median after signup or activation" },
-                    { label: "Comparable quiz improvement", value: kpisQ.data.engagement.quizImprovementPercentagePoints == null ? "—" : `${kpisQ.data.engagement.quizImprovementPercentagePoints >= 0 ? "+" : ""}${kpisQ.data.engagement.quizImprovementPercentagePoints} pts`, note: `${kpisQ.data.engagement.quizImprovementSampleSize} repeat standard-quiz series with the same course and length` },
-                    { label: "Learning activation", value: kpisQ.data.commercial.learningActivationRate == null ? "—" : `${kpisQ.data.commercial.learningActivationRate}%`, note: `${kpisQ.data.commercial.learningActivated} of ${kpisQ.data.commercial.accessCohortSize} newly activated learners started a learning activity` },
-                    { label: "Quiz completion", value: kpisQ.data.commercial.quizCompletionRate == null ? "—" : `${kpisQ.data.commercial.quizCompletionRate}%`, note: `${kpisQ.data.commercial.quizCompleters} of ${kpisQ.data.commercial.quizStarterCohortSize} identified quiz starters completed` },
-                    { label: "Pricing → checkout", value: kpisQ.data.commercial.pricingToCheckoutRate == null ? "—" : `${kpisQ.data.commercial.pricingToCheckoutRate}%`, note: `${kpisQ.data.commercial.attributedCheckouts} of ${kpisQ.data.commercial.pricingCohortSize} identified pricing visitors purchased` },
-                    { label: "Team seat utilization", value: kpisQ.data.teams.utilizationRate == null ? "—" : `${kpisQ.data.teams.utilizationRate}%`, note: `${kpisQ.data.teams.assignedSeats} allocated / ${kpisQ.data.teams.totalSeats} purchased (All-Access + Course Pass)` },
-                    { label: "Reported exam pass rate", value: kpisQ.data.outcomes.passRate == null ? "—" : `${kpisQ.data.outcomes.passRate}%`, note: `${kpisQ.data.outcomes.passed} passed / ${kpisQ.data.outcomes.failed} failed` },
-                    { label: "Refund rate", value: kpisQ.data.commercial.refundRate == null ? "—" : `${kpisQ.data.commercial.refundRate}%`, note: "Individual purchases created in period" },
-                    { label: "Renewals / cancellations", value: `${kpisQ.data.commercial.renewals} / ${kpisQ.data.commercial.cancellations}`, note: "Tracked lifecycle events" },
-                  ].map(metric => (
-                    <div key={metric.label} style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: 16 }}>
-                      <div style={{ fontSize: 11, color: "#64748B", fontWeight: 700, marginBottom: 6 }}>{metric.label}</div>
-                      <div style={{ fontSize: 24, color: "#0F766E", fontWeight: 900 }}>{metric.value}</div>
-                      <div style={{ fontSize: 10, color: "#94A3B8", lineHeight: 1.45, marginTop: 5 }}>{metric.note}</div>
-                    </div>
-                  ))}
-                </div>
 
-                <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: "#EFF6FF", border: "1px solid #BFDBFE", color: "#1E3A8A", fontSize: 11, lineHeight: 1.6 }}>
-                  Readiness calibration: learners who passed averaged <strong>{kpisQ.data.outcomes.averageReadinessPassed ?? "—"}</strong>; learners who failed averaged <strong>{kpisQ.data.outcomes.averageReadinessFailed ?? "—"}</strong>. Diagnostic completions: <strong>{kpisQ.data.funnel.diagnosticCompletions}</strong>. Mock exams completed: <strong>{kpisQ.data.funnel.mockExamCompletions}</strong>.
+            <section className="admin-product-scorecard" aria-labelledby="product-scorecard-title">
+              <div className="admin-product-scorecard-header">
+                <div>
+                  <p className="admin-section-label">Product scorecard</p>
+                  <h2 id="product-scorecard-title">Deeper operating signals</h2>
+                  <p>Last 30 days unless stated otherwise. A dash means the denominator or outcome sample does not exist yet.</p>
                 </div>
-                <div style={{ marginTop: 10, padding: 14, borderRadius: 12, background: "#F0FDFA", border: "1px solid #99F6E4", color: "#115E59", fontSize: 11, lineHeight: 1.6 }}>
-                  Team breakdown: All-Access <strong>{kpisQ.data.teams.allAccess.assignedSeats}/{kpisQ.data.teams.allAccess.totalSeats}</strong> assigned; Course Pass <strong>{kpisQ.data.teams.coursePass.allocatedLicences}/{kpisQ.data.teams.coursePass.totalLicences}</strong> allocated and <strong>{kpisQ.data.teams.coursePass.activatedLicences}</strong> activated.
-                </div>
-              </>
-            )}
-          </div>
+                {kpisQ.data && <span className="admin-scorecard-updated">Updated {formatDate(kpisQ.data.generatedAt)}</span>}
+              </div>
+
+              {kpisQ.isLoading && <div className="admin-panel-loading">Calculating product metrics…</div>}
+              {kpisQ.error && <div className="admin-panel-error" role="alert">Metrics could not be loaded: {kpisQ.error.message}</div>}
+              {kpisQ.data && (
+                <>
+                  <div className="admin-product-metrics">
+                    {[
+                      { label: "Marketing page views", value: kpisQ.data.funnel.marketingPageViews, note: "Privacy-safe public buyer-page views" },
+                      { label: "Course choices", value: kpisQ.data.funnel.productSelections, note: `${kpisQ.data.funnel.buyerPathSelections} individual or team path selections` },
+                      { label: "Checkout starts", value: kpisQ.data.funnel.checkoutStarts, note: `${kpisQ.data.funnel.checkoutCompletions} paid completions` },
+                      { label: "30-day learner return", value: formatAdminPercent(kpisQ.data.engagement.thirtyDayReturnRate), note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} returned` },
+                      { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started sessions" },
+                      { label: "Training records", value: kpisQ.data.engagement.trainingRecordsAttested, note: `${kpisQ.data.engagement.trainingHoursExports} training-hour exports` },
+                      { label: "Time to first quiz", value: kpisQ.data.engagement.medianMinutesToFirstQuiz == null ? "—" : `${kpisQ.data.engagement.medianMinutesToFirstQuiz} min`, note: "Median after signup or activation" },
+                      { label: "Comparable quiz improvement", value: kpisQ.data.engagement.quizImprovementPercentagePoints == null ? "—" : `${kpisQ.data.engagement.quizImprovementPercentagePoints >= 0 ? "+" : ""}${kpisQ.data.engagement.quizImprovementPercentagePoints} pts`, note: `${kpisQ.data.engagement.quizImprovementSampleSize} repeat standard-quiz series with the same course and length` },
+                      { label: "Quiz completion", value: formatAdminPercent(kpisQ.data.commercial.quizCompletionRate), note: `${kpisQ.data.commercial.quizCompleters} of ${kpisQ.data.commercial.quizStarterCohortSize} identified starters` },
+                      { label: "Pricing to checkout", value: formatAdminPercent(kpisQ.data.commercial.pricingToCheckoutRate), note: `${kpisQ.data.commercial.attributedCheckouts} of ${kpisQ.data.commercial.pricingCohortSize} pricing visitors` },
+                      { label: "Team seat utilization", value: formatAdminPercent(kpisQ.data.teams.utilizationRate), note: `${kpisQ.data.teams.assignedSeats} allocated / ${kpisQ.data.teams.totalSeats} purchased` },
+                      { label: "Reported exam pass rate", value: formatAdminPercent(kpisQ.data.outcomes.passRate), note: `${kpisQ.data.outcomes.passed} passed / ${kpisQ.data.outcomes.failed} failed` },
+                      { label: "Refund rate", value: formatAdminPercent(kpisQ.data.commercial.refundRate), note: "Individual purchases created in period" },
+                      { label: "Renewals / cancellations", value: `${kpisQ.data.commercial.renewals} / ${kpisQ.data.commercial.cancellations}`, note: "Tracked lifecycle events" },
+                    ].map(metric => (
+                      <div key={metric.label} className="admin-product-metric">
+                        <div>{metric.label}</div>
+                        <strong>{metric.value}</strong>
+                        <small>{metric.note}</small>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="admin-scorecard-notes">
+                    <p><strong>Readiness calibration:</strong> learners who passed averaged <b>{kpisQ.data.outcomes.averageReadinessPassed ?? "—"}</b>; learners who failed averaged <b>{kpisQ.data.outcomes.averageReadinessFailed ?? "—"}</b>. Diagnostic completions: <b>{kpisQ.data.funnel.diagnosticCompletions}</b>. Mock exams completed: <b>{kpisQ.data.funnel.mockExamCompletions}</b>.</p>
+                    <p><strong>Team breakdown:</strong> All-Access <b>{kpisQ.data.teams.allAccess.assignedSeats}/{kpisQ.data.teams.allAccess.totalSeats}</b> assigned; Course Pass <b>{kpisQ.data.teams.coursePass.allocatedLicences}/{kpisQ.data.teams.coursePass.totalLicences}</b> allocated and <b>{kpisQ.data.teams.coursePass.activatedLicences}</b> activated.</p>
+                  </div>
+                </>
+              )}
+            </section>
+
+            <section className="admin-ceu-summary" aria-labelledby="ceu-summary-title">
+              <div>
+                <p className="admin-section-label">Continuing education pilot</p>
+                <h2 id="ceu-summary-title">Learning records at a glance</h2>
+                <p>Courses enrolled in the last 30 days, counted once per learner and course edition. Passing this pilot does not award CEUs.</p>
+              </div>
+              {ceuKpisQ.isLoading && <p className="admin-panel-loading">Loading course metrics…</p>}
+              {ceuKpisQ.error && <p className="admin-panel-error" role="alert">Course metrics could not be loaded. <button type="button" className="admin-text-action" onClick={() => ceuKpisQ.refetch()}>Retry</button></p>}
+              {ceuKpisQ.data && <div className="admin-ceu-table-wrap" role="region" aria-label="Continuing education pilot metrics" tabIndex={0}><table className="admin-ceu-table"><thead><tr><th>Enrolled</th><th>Started lessons</th><th>Modules completed</th><th>Final opened</th><th>Final submitted</th><th>Retakes</th><th>Passed</th><th>Certificate opened</th><th>Feedback</th></tr></thead><tbody><tr>
+                {[ceuKpisQ.data.enrollments, ceuKpisQ.data.learningStarted, ceuKpisQ.data.modulesCompleted, ceuKpisQ.data.finalStarted, ceuKpisQ.data.finalSubmitted, ceuKpisQ.data.retries, ceuKpisQ.data.completed, ceuKpisQ.data.certificatesViewed, `${ceuKpisQ.data.evaluations} ratings (${ceuKpisQ.data.averageRating ?? "—"}/5)`].map((value, index) => <td key={index}>{value}</td>)}
+              </tr></tbody></table><p className="admin-ceu-disclosure">Certificate views are measured from this release onward. Public views and failed network saves are not included in these record-based counts.</p></div>}
+            </section>
+          </>
         )}
 
         {/* ── TRIAL EMAILS TAB ── */}
