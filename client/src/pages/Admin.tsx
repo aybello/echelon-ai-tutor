@@ -2,19 +2,78 @@ import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
 // Gated to role === 'admin'. Shows trial emails, waitlist signups, and error reports.
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
+import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
 import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
+import {
+  Activity,
+  Building2,
+  ChartNoAxesCombined,
+  CircleCheck,
+  ClipboardList,
+  CreditCard,
+  Database,
+  FileText,
+  LayoutDashboard,
+  Mail,
+  Menu,
+  MessageSquare,
+  Repeat2,
+  ShieldCheck,
+  TriangleAlert,
+  UsersRound,
+  WalletCards,
+  X,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import "./admin.css";
 
 type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
+
+type AdminNavigationGroup = {
+  label: string;
+  tabs: { id: Tab; label: string; icon: LucideIcon }[];
+};
+
+const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
+  { label: "Overview", tabs: [{ id: "insights", label: "Business overview", icon: LayoutDashboard }] },
+  {
+    label: "Customers & sales",
+    tabs: [
+      { id: "revenue", label: "Purchases", icon: CreditCard },
+      { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
+      { id: "orgs", label: "Organizations", icon: Building2 },
+      { id: "trials", label: "Trial signups", icon: Mail },
+      { id: "waitlist", label: "Waitlist", icon: ClipboardList },
+    ],
+  },
+  {
+    label: "Learning & content",
+    tabs: [
+      { id: "questions", label: "Question review", icon: CircleCheck },
+      { id: "scores", label: "Score history", icon: ChartNoAxesCombined },
+      { id: "feedback", label: "Feedback", icon: MessageSquare },
+      { id: "changelog", label: "Changelog", icon: FileText },
+    ],
+  },
+  {
+    label: "Operations & data",
+    tabs: [
+      { id: "errors", label: "Error reports", icon: TriangleAlert },
+      { id: "health", label: "System health", icon: Activity },
+      { id: "recovery", label: "Recovery review", icon: ShieldCheck },
+      { id: "explorer", label: "Data explorer", icon: Database },
+    ],
+  },
+];
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   // OIT
@@ -139,6 +198,8 @@ export default function Admin() {
 
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>("insights");
+  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [isMobileNavigation, setIsMobileNavigation] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches);
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
@@ -148,6 +209,8 @@ export default function Admin() {
   const [explorerDatasetKey, setExplorerDatasetKey] = useState("users");
   const [explorerPage, setExplorerPage] = useState(1);
   const [explorerPageSize, setExplorerPageSize] = useState(50);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const navigationPanelRef = useRef<HTMLElement>(null);
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
@@ -300,6 +363,83 @@ export default function Admin() {
     onSuccess: () => { utils.admin.getFeedback.invalidate(); utils.admin.stats.invalidate(); },
   });
 
+  const selectSection = (section: Tab) => {
+    setActiveTab(section);
+    setNavigationOpen(false);
+  };
+
+  const refreshActiveSection = () => {
+    stats.refetch();
+    if (activeTab === "insights") {
+      kpisQ.refetch();
+      ceuKpisQ.refetch();
+    }
+    if (activeTab === "trials") trialsQ.refetch();
+    if (activeTab === "waitlist") waitlistQ.refetch();
+    if (activeTab === "errors") errorsQ.refetch();
+    if (activeTab === "scores") scoresQ.refetch();
+    if (activeTab === "revenue") purchasesQ.refetch();
+    if (activeTab === "subscriptions") subscriptionsQ.refetch();
+    if (activeTab === "health") healthQ.refetch();
+    if (activeTab === "feedback") feedbackQ.refetch();
+    if (activeTab === "orgs") orgsQ.refetch();
+    if (activeTab === "questions") {
+      governanceStatsQ.refetch();
+      governanceBanksQ.refetch();
+      governanceQueueQ.refetch();
+    }
+    if (activeTab === "recovery") recoveryEvidenceQ.refetch();
+    if (activeTab === "explorer") {
+      explorerCatalogQ.refetch();
+      explorerPageQ.refetch();
+    }
+  };
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 1023px)");
+    const syncViewport = () => setIsMobileNavigation(media.matches);
+    syncViewport();
+    media.addEventListener("change", syncViewport);
+    return () => media.removeEventListener("change", syncViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileNavigation) setNavigationOpen(false);
+  }, [isMobileNavigation]);
+
+  useEffect(() => {
+    if (!navigationOpen || !isMobileNavigation) return;
+    const previousOverflow = document.body.style.overflow;
+    const panel = navigationPanelRef.current;
+    const firstFocusable = panel?.querySelector<HTMLElement>("button, a[href]");
+    document.body.style.overflow = "hidden";
+    firstFocusable?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setNavigationOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !panel) return;
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]"));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      menuButtonRef.current?.focus();
+    };
+  }, [isMobileNavigation, navigationOpen]);
+
   const copyEmail = (email: string) => {
     navigator.clipboard.writeText(email);
     setCopiedEmail(email);
@@ -346,9 +486,9 @@ export default function Admin() {
     return (
       <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#173A4C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Sign in required</div>
-          <a href={getLoginUrl()} style={{ color: "#38BDF8", fontSize: 14 }}>Sign in →</a>
+          <button type="button" onClick={() => { window.location.href = getLoginUrl(); }} style={{ background: "transparent", border: 0, color: "#38BDF8", cursor: "pointer", fontFamily: "inherit", fontSize: 14, padding: 8 }}>Sign in</button>
         </div>
       </div>
     );
@@ -358,10 +498,10 @@ export default function Admin() {
     return (
       <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>⛔</div>
+          <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#B91C1C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Admin access only</div>
           <div style={{ color: "#64748B", fontSize: 13, marginBottom: 20 }}>Your account ({user.email ?? user.name}) does not have admin privileges.</div>
-          <Link href="/"><button style={{ padding: "10px 24px", borderRadius: 20, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>← Back to Home</button></Link>
+          <Link href="/" style={{ display: "inline-block", padding: "10px 24px", borderRadius: 20, background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit", textDecoration: "none" }}>Back to home</Link>
         </div>
       </div>
     );
@@ -369,102 +509,119 @@ export default function Admin() {
 
   // ── Dashboard ──
   const statItems = [
-    { label: "Recorded order value", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: "💰", color: "#34D399", tab: "revenue" as Tab },
-    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
-    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", icon: "🔄", color: "#F472B6", tab: "subscriptions" as Tab },
-    { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#A78BFA", tab: "trials" as Tab },
-    { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
-    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (★${stats.data.avgRating})` : "—", icon: "💬", color: "#FBBF24", tab: "feedback" as Tab },
+    { label: "Recorded order value", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: WalletCards, tab: "revenue" as Tab },
+    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: CreditCard, tab: "revenue" as Tab },
+    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", icon: Repeat2, tab: "subscriptions" as Tab },
+    { label: "Trial signups", value: stats.data?.trialCount ?? "—", icon: Mail, tab: "trials" as Tab },
+    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (${stats.data.avgRating}/5)` : "—", icon: MessageSquare, tab: "feedback" as Tab },
   ];
-
-  const tabGroups: { label: string; tabs: { id: Tab; label: string }[] }[] = [
-    { label: "Overview", tabs: [{ id: "insights", label: "Product KPIs" }, { id: "health", label: "System Health" }] },
-    { label: "Commercial", tabs: [{ id: "revenue", label: "Purchases" }, { id: "subscriptions", label: "Subscriptions" }, { id: "trials", label: "Trial Emails" }, { id: "waitlist", label: "Waitlist" }] },
-    { label: "Learning & content", tabs: [{ id: "questions", label: "Question Review" }, { id: "scores", label: "Score History" }, { id: "feedback", label: "Feedback" }, { id: "changelog", label: "Changelog" }] },
-    { label: "Operations", tabs: [{ id: "errors", label: "Error Reports" }, { id: "orgs", label: "Organizations" }, { id: "recovery", label: "Recovery Review" }, { id: "explorer", label: "Data Explorer" }] },
-  ];
-  const activeLabel = tabGroups.flatMap(group => group.tabs).find(tab => tab.id === activeTab)?.label;
+  const activeSection = ADMIN_NAVIGATION.flatMap(group => group.tabs).find(tab => tab.id === activeTab);
+  const activeDescription: Record<Tab, string> = {
+    insights: "A clear view of revenue signals, learner activity and open work.",
+    revenue: "Review stored purchase records and check Stripe for missing records.",
+    subscriptions: "Review subscription records and their current lifecycle state.",
+    trials: "Review people who requested trial access or product updates.",
+    waitlist: "Review people waiting for future course availability.",
+    questions: "Review learner-visible questions against their source material.",
+    scores: "Review learner performance and study outcomes across courses.",
+    feedback: "Read learner ratings and resolve submitted feedback.",
+    changelog: "Document product changes and customer-facing release notes.",
+    errors: "Review reported product errors and close resolved issues.",
+    health: "Check live application health and operational dependencies.",
+    orgs: "Review team organizations, seats and manager access.",
+    recovery: "Classify recovery evidence without granting access automatically.",
+    explorer: "Browse approved datasets with protected fields and audit boundaries.",
+  };
 
   return (
     <div className="admin-portal" style={{ minHeight: "100vh", background: "#F3F7F9", fontFamily: "'Sora', sans-serif", color: "#15283A" }}>
+      <a className="admin-skip-link" href="#admin-main-content">Skip to content</a>
       <style>{`
         .admin-row:hover { background: rgba(0,0,0,0.04) !important; }
         .admin-btn:hover { opacity: 0.8; }
         @media (max-width: 640px) {
           .admin-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .admin-header { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-          .admin-tab-bar { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
-          .admin-tab-bar::-webkit-scrollbar { display: none !important; }
-          .admin-tab-bar button { white-space: nowrap !important; flex-shrink: 0 !important; flex: 0 0 auto !important; font-size: 11px !important; padding: 8px 10px !important; }
-          .admin-top-bar { padding: 10px 14px !important; }
-          .admin-signed-in { display: none !important; }
         }
       `}</style>
 
-      {/* Top bar */}
-      <div className="admin-top-bar" style={{ background: "#102C3C", borderBottom: "1px solid #235066", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 36, height: 36, borderRadius: 10, background: "#54CDB5", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 900, color: "#102C3C" }}>E</div>
-          <div>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#F5FCFD", letterSpacing: ".05em" }}>ECHELON</div>
-            <div style={{ fontSize: 10, color: "#A7D3D8" }}>Administration</div>
+      <div className="admin-shell">
+        {navigationOpen && <button className="admin-drawer-backdrop" aria-label="Close navigation" type="button" onClick={() => setNavigationOpen(false)} />}
+        <aside
+          id="admin-navigation"
+          className={`admin-sidebar${navigationOpen ? " is-open" : ""}`}
+          ref={navigationPanelRef}
+          aria-label="Echelon administration navigation"
+          aria-hidden={isMobileNavigation && !navigationOpen ? true : undefined}
+          aria-modal={isMobileNavigation && navigationOpen ? true : undefined}
+          inert={isMobileNavigation && !navigationOpen ? true : undefined}
+          role={isMobileNavigation && navigationOpen ? "dialog" : undefined}
+        >
+          <div className="admin-sidebar-brand">
+            <img src={ECHELON_LOGO_URL} alt="Echelon Institute" width={44} height={42} />
+            <div><strong>Echelon Institute</strong><span>Administration</span></div>
+            <button type="button" className="admin-sidebar-close" aria-label="Close navigation" onClick={() => setNavigationOpen(false)}><X size={20} aria-hidden="true" /></button>
           </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <span className="admin-signed-in" style={{ fontSize: 12, color: "#A7D3D8" }}>Signed in as <strong style={{ color: "#F5FCFD" }}>{user.name ?? user.email}</strong></span>
-          <Link href="/"><button className="admin-btn" style={{ padding: "7px 14px", borderRadius: 9, border: "1px solid #4B7784", background: "transparent", color: "#F5FCFD", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>← Site</button></Link>
-        </div>
-      </div>
+          <nav className="admin-sidebar-navigation" aria-label="Admin sections">
+            {ADMIN_NAVIGATION.map(group => (
+              <section className="admin-sidebar-group" key={group.label} aria-label={group.label}>
+                <h2>{group.label}</h2>
+                {group.tabs.map(tab => {
+                  const Icon = tab.icon;
+                  return <button className="admin-sidebar-button" aria-current={activeTab === tab.id ? "page" : undefined} key={tab.id} type="button" onClick={() => selectSection(tab.id)}><Icon size={17} aria-hidden="true" /><span>{tab.label}</span></button>;
+                })}
+              </section>
+            ))}
+          </nav>
+          <div className="admin-sidebar-footer">
+            <div className="admin-sidebar-user"><UsersRound size={17} aria-hidden="true" /><span>{user.name ?? user.email}</span></div>
+            <Link href="/" className="admin-back-to-site">Back to website</Link>
+          </div>
+        </aside>
 
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "32px 24px 80px" }}>
+        <main id="admin-main-content" className="admin-content" tabIndex={-1} aria-hidden={isMobileNavigation && navigationOpen ? true : undefined} inert={isMobileNavigation && navigationOpen ? true : undefined}>
+          <div className="admin-mobile-header">
+            <button ref={menuButtonRef} className="admin-menu-trigger" type="button" aria-label="Open navigation" aria-controls="admin-navigation" aria-expanded={navigationOpen} onClick={() => setNavigationOpen(true)}><Menu size={20} aria-hidden="true" /></button>
+            <span>{activeSection?.label}</span>
+            <Link href="/" className="admin-mobile-site-link">Site</Link>
+          </div>
+          <div className="admin-content-inner">
         {/* Page header */}
         <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 26, gap: 16 }}>
           <div>
-            <div className="admin-eyebrow">WORKSPACE / ADMIN</div>
-            <h1 style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 800, margin: "5px 0 6px" }}>Operations overview</h1>
-            <p style={{ fontSize: 13, color: "#526779", margin: 0 }}>Product performance, learner progress and content decisions in one place.</p>
+            <div className="admin-eyebrow">Echelon / administration</div>
+            <h1 style={{ fontSize: "clamp(27px, 3vw, 38px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
+            <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); recoveryEvidenceQ.refetch(); explorerCatalogQ.refetch(); explorerPageQ.refetch(); }}
+            onClick={refreshActiveSection}
             style={{ padding: "10px 16px", borderRadius: 9, border: "1px solid #C5D6DC", background: "#fff", color: "#173A4C", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
-            ↻ Refresh
+            Refresh
           </button>
         </div>
 
         {/* Stats cards */}
-        <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 26 }}>
-          {statItems.map(s => (
+        {activeTab === "insights" && <>
+          <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 26 }}>
+          {statItems.map(({ icon: Icon, ...stat }) => (
             <button
-              key={s.label}
-              onClick={() => setActiveTab(s.tab)}
+              key={stat.label}
+              onClick={() => selectSection(stat.tab)}
               className="admin-stat-card"
-              style={{ borderColor: activeTab === s.tab ? "#46B7A3" : "#DCE7EA" }}
+              style={{ borderColor: activeTab === stat.tab ? "#46B7A3" : "#DCE7EA" }}
             >
-              <div style={{ fontSize: 19, marginBottom: 8 }} aria-hidden="true">{s.icon}</div>
+              <Icon className="admin-stat-icon" size={19} aria-hidden="true" />
               <div style={{ fontSize: 26, fontWeight: 800, color: "#173A4C", marginBottom: 4 }}>
-                {stats.isLoading ? "…" : String(s.value)}
+                {stats.isLoading ? "…" : String(stat.value)}
               </div>
-              <div style={{ fontSize: 11, color: "#526779", fontWeight: 700 }}>{s.label}</div>
+              <div style={{ fontSize: 12, color: "#526779", fontWeight: 700 }}>{stat.label}</div>
             </button>
           ))}
         </div>
         <p className="admin-metric-note">Recorded order value sums stored purchase and subscription amounts; it is not net revenue after refunds, disputes or fees.</p>
-
-        <nav className="admin-navigation" aria-label="Admin sections">
-          {tabGroups.map(group => (
-            <div className="admin-nav-group" key={group.label}>
-              <span className="admin-nav-label">{group.label}</span>
-              <div className="admin-nav-items">
-                {group.tabs.map(tab => (
-                  <button className="admin-nav-button" aria-current={activeTab === tab.id ? "page" : undefined} key={tab.id} onClick={() => setActiveTab(tab.id)}>{tab.label}</button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </nav>
-        <div className="admin-section-label">{activeLabel}</div>
+        </>}
 
         {/* -- PRODUCT KPI TAB -- */}
         {activeTab === "insights" && (
@@ -1471,6 +1628,8 @@ export default function Admin() {
             )}
           </div>
         )}
+          </div>
+        </main>
       </div>
     </div>
   );
