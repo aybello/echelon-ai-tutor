@@ -16,7 +16,6 @@ describe("Class 3 Water Distribution offer", () => {
     expect(product).toMatchObject({
       name: "Class 3 Water Distribution Practice Pass",
       priceCAD: 24_900,
-      priceUSD: 17_900,
     });
     expect(product?.description).not.toMatch(/\b500\b|\b571\b/);
   });
@@ -36,31 +35,17 @@ describe("Class 3 Water Distribution offer", () => {
     });
   });
 
-  it("uses the catalogue offer regardless of conflicting legacy props in either currency", () => {
+  it("uses the CAD catalogue offer regardless of conflicting legacy props", () => {
     expect(
       resolvePurchaseGateOffer({
         productKey: "class3-water-dist",
         productName: "Wrong legacy name",
         price: 99,
-        isUS: false,
       })
     ).toEqual({
       available: true,
       productName: "Class 3 Water Distribution Practice Pass",
       priceLabel: "CA$249",
-    });
-
-    expect(
-      resolvePurchaseGateOffer({
-        productKey: "class3-water-dist",
-        productName: "Wrong legacy name",
-        price: 99,
-        isUS: true,
-      })
-    ).toEqual({
-      available: true,
-      productName: "Class 3 Water Distribution Practice Pass",
-      priceLabel: "US$179",
     });
   });
 
@@ -70,7 +55,6 @@ describe("Class 3 Water Distribution offer", () => {
         productKey: "legacy-course",
         productName: "Legacy course",
         price: 49,
-        isUS: false,
       })
     ).toEqual({
       available: true,
@@ -82,7 +66,6 @@ describe("Class 3 Water Distribution offer", () => {
       resolvePurchaseGateOffer({
         productKey: "legacy-course",
         productName: "Legacy course",
-        isUS: false,
       })
     ).toEqual({
       available: false,
@@ -94,7 +77,6 @@ describe("Class 3 Water Distribution offer", () => {
         productKey: "bundle-all-access",
         productName: "Historical bundle",
         price: 349,
-        isUS: false,
       })
     ).toEqual({
       available: false,
@@ -107,7 +89,6 @@ describe("Class 3 Water Distribution offer", () => {
           productKey: "legacy-course",
           productName: "Legacy course",
           price,
-          isUS: false,
         })
       ).toEqual({
         available: false,
@@ -120,7 +101,6 @@ describe("Class 3 Water Distribution offer", () => {
         productKey: "legacy-course",
         productName: "   ",
         price: 49,
-        isUS: false,
       })
     ).toEqual({
       available: false,
@@ -129,21 +109,16 @@ describe("Class 3 Water Distribution offer", () => {
   });
 
   it("allows Quiz Gate checkout only for a registered catalogue product", () => {
-    expect(resolveQuizGateOffer("class3-water-dist", false)).toEqual({
+    expect(resolveQuizGateOffer("class3-water-dist")).toEqual({
       available: true,
       productName: "Class 3 Water Distribution Practice Pass",
       priceLabel: "CA$249",
     });
-    expect(resolveQuizGateOffer("class3-water-dist", true)).toEqual({
-      available: true,
-      productName: "Class 3 Water Distribution Practice Pass",
-      priceLabel: "US$179",
-    });
-    expect(resolveQuizGateOffer("retired-course", false)).toEqual({
+    expect(resolveQuizGateOffer("retired-course")).toEqual({
       available: false,
       productName: "this course",
     });
-    expect(resolveQuizGateOffer("bundle-all-access", false)).toEqual({
+    expect(resolveQuizGateOffer("bundle-all-access")).toEqual({
       available: false,
       productName: "this course",
     });

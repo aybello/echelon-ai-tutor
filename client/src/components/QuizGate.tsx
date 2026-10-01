@@ -99,7 +99,7 @@ export default function QuizGate({
     };
   }, []);
 
-  const offer = resolveQuizGateOffer(productKey, isUS);
+  const offer = resolveQuizGateOffer(productKey);
   const course = productKey ? resolveCourseKey(productKey) : undefined;
   const bankKey = course?.questionBankKey;
   const bankMeta = trpc.quiz.getBankMeta.useQuery(
@@ -143,7 +143,7 @@ export default function QuizGate({
     if (!productKey || !offer.available) return;
     createCheckout.mutate({
       productKey,
-      currency: isUS ? "usd" : "cad",
+      currency: "cad",
       utmSource: "quiz-diagnostic",
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
