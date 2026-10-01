@@ -130,12 +130,14 @@ export default function SiteNav({
         </Link>
 
         <div className="echelon-desktop-links">
+          {learningMode ? <Link href="/account" className="echelon-nav-link">My courses</Link> : <>
           <Link href="/#courses" className={`echelon-nav-link${isPathActive(currentPath, "/") ? " is-active" : ""}`}>Courses</Link>
           <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
           <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
           <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
           <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
           <ResourcesMenu currentPath={currentPath} />
+          </>}
         </div>
 
         <div className="echelon-nav-actions">

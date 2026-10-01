@@ -23,6 +23,7 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import React from "react";
 import LandingNav from "@/components/LandingNav";
+import CourseFinder from "@/components/CourseFinder";
 
 // Animated stat component using count-up hook
 function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
@@ -1454,9 +1455,10 @@ export default function Landing() {
           {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
           <div
             className="landing-hero-btns landing-hero-reveal landing-hero-reveal-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+            <a href="#find-course" className="workspace-primary">Find my course →</a>
             <button
               type="button"
-              className="btn-pulse"
+              className="landing-oit-secondary"
               aria-expanded={showOitPreviewChoice}
               aria-controls="oit-preview-choice"
               onClick={() => setShowOitPreviewChoice(open => !open)}
@@ -1523,16 +1525,20 @@ export default function Landing() {
           </p>
         </div>
       </section>
+      <div id="find-course" style={{ maxWidth: 1040, margin: "28px auto 0", padding: "0 16px", scrollMarginTop: 80 }}>
+        <CourseFinder initialProvince={province} />
+      </div>
+
 
       {/* ── Course Catalogue ── */}
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <FadeUp>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
-            Choose Your Certification Track
+            Browse all courses
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 620, margin: "0 auto 32px" }}>
-            Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Choose a track, then get a complete study system: 500+ practice questions in core certification banks, full-length mock exams, flashcards, study notes, formula sheets where relevant, progress tracking, and AI Tutor support.
+            Explore Ontario and WPI certification courses. Each course brings practice questions, mock exams and its study tools together in one workspace.
           </p>
 
           {/* Track Tree — accordion-style vertical selector */}

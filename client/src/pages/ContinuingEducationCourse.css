@@ -264,3 +264,15 @@
 @media (max-width: 640px) {
   .ceu-screen { --ceu-shell-offset: 142px; }
 }
+/* The learning surface keeps course controls near the lesson. */
+.ceu-screen button { min-height:44px; }
+.ceu-screen button:focus-visible, .ceu-screen a:focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
+.ceu-lesson-card { line-height:1.75; }
+.ceu-lesson-card p, .ceu-lesson-card li { font-size:16px; }
+.ceu-lesson-footer { position:sticky; bottom:0; z-index:5; background:#f4f7fb; padding:16px 0; border-top:1px solid #d9e3ef; }
+.ceu-save-status { color:#334155; font-size:14px; }
+@media (max-width:680px) { .ceu-lesson-footer { gap:12px; }.ceu-slide-dots { display:none; }.ceu-lesson-footer button { min-width:100px; }.ceu-course-context-actions { width:100%; justify-content:space-between; } }
+@media (prefers-reduced-motion:reduce) { .ceu-screen *, .ceu-screen *::before, .ceu-screen *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+
+.ceu-course-context .ceu-save-status { color:#c0ebd0; }
+.ceu-course-context button:disabled { color:#a1b2c8; }

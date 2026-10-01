@@ -26,6 +26,9 @@ import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import PracticeOptions from "@/components/PracticeOptions";
+import { getPracticeGuidePath } from "@/lib/practiceResources";
+import "./StudyWorkspace.css";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -373,7 +376,7 @@ export default function QuizShell({
   if (!current && history.length > 0) {
     const pct = Math.round((correctCount / history.length) * 100);
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="practice-page" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
         {showSessionFeedback && examType && (
           <FeedbackModal
@@ -486,7 +489,7 @@ export default function QuizShell({
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
+    <div className="practice-page" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
@@ -553,213 +556,25 @@ export default function QuizShell({
 
       <SiteNav currentPath={currentPath} />
 
-      {/* ── Header ── */}
-      <div className="qs-course-header" style={{ background: headerGradient, color: "#fff", padding: "10px 16px 8px" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-
-          {/* Top row: title + action buttons */}
-          <div className="qs-header-title-row" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              {headerIcon && (
-                <div style={{
-                  background: "rgba(255,255,255,0.2)",
-                  borderRadius: 8,
-                  padding: "6px 8px",
-                  fontSize: 16,
-                  lineHeight: 1,
-                }}>
-                  {headerIcon}
-                </div>
-              )}
-              <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", opacity: 0.75, textTransform: "uppercase", marginBottom: 2 }}>
-                  {courseLabel}
-                </div>
-                <h1 style={{ margin: 0, fontSize: "clamp(15px, 2.5vw, 18px)", fontWeight: 900, letterSpacing: "-0.3px" }}>
-                  {courseTitle}
-                </h1>
-                {courseSubtitle && (
-                  <div className="qs-course-subtitle" style={{ fontSize: 12, opacity: 0.8, marginTop: 3 }}>
-                    {courseSubtitle}
-                    {accuracy !== null && (
-                      <span style={{ fontWeight: 700, opacity: 1 }}> · {accuracy}% accuracy</span>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Action buttons */}
-            <div className="qs-header-actions" style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-              {/* Study Notes button — shown when moduleOverviews are available */}
-              {moduleOverviews && Object.keys(moduleOverviews).length > 0 && (
-                <button
-                  onClick={() => {
-                    setStudyNotesModule(selectedModule);
-                    setStudyNotesOpen(true);
-                  }}
-                  style={{
-                    padding: "5px 10px",
-                    background: "rgba(255,255,255,0.22)",
-                    color: "#fff",
-                    border: "1.5px solid rgba(255,255,255,0.6)",
-                    borderRadius: 8,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 5,
-                  }}
-                >
-                  📖 Study Notes
-                </button>
-              )}
-              {headerActions.map(a => (
-                <Link key={a.href} href={a.href} style={{ padding: "5px 10px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-                  {a.label}
-                </Link>
-              ))}
-            </div>
+      <section className="practice-header" aria-label="Practice session">
+        <div className="practice-header-inner">
+          <div className="practice-title-row"><div>
+            <span className="workspace-eyebrow">{courseLabel}</span>
+            <h1>{courseTitle}</h1>
+            {courseSubtitle && <p>{courseSubtitle}</p>}
+          </div></div>
+          <div className="practice-session-stats" aria-live="polite">
+            <span><strong>{confirmed ? history.length : history.length + 1}{sessionSize ? ` / ${sessionSize}` : ""}</strong> questions</span>
+            <span><strong>{correctCount}</strong> correct</span>
+            {accuracy !== null && <span><strong>{accuracy}%</strong> accuracy</span>}
           </div>
-
-          {/* Stats row — compact inline bar */}
-          <div className="qs-stats-only" style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap", alignItems: "center" }}>
-            {/* Session progress tracker — Q{n}/{sessionSize} */}
-            <div style={{
-              background: "rgba(255,255,255,0.22)",
-              border: "1.5px solid rgba(255,255,255,0.5)",
-              borderRadius: 8,
-              padding: "3px 10px",
-              textAlign: "center",
-              minWidth: 56,
-            }}>
-              <div style={{ fontSize: 14, fontWeight: 800 }}>Q{confirmed ? history.length : history.length + 1}<span style={{ fontSize: 11, fontWeight: 600, opacity: 0.75 }}>/{sessionSize}</span></div>
-              <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>Question</div>
-            </div>
-            {[
-              { label: "Correct", value: correctCount },
-              { label: "Accuracy", value: `${accuracy ?? 0}%` },
-            ].map(s => (
-              <div key={s.label} style={{
-                background: "rgba(255,255,255,0.15)",
-                borderRadius: 8,
-                padding: "3px 10px",
-                textAlign: "center",
-                minWidth: 48,
-              }}>
-                <div style={{ fontSize: 14, fontWeight: 800 }}>{s.value}</div>
-                <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Free preview indicator — shown when user has not unlocked */}
-          {isFreePreview && (
-            <div style={{ marginTop: 8, padding: "6px 12px", background: "rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span>Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions</span>
-              <span style={{ opacity: 0.8 }}>
-                {Math.max(0, freeLimit - history.length)} left before unlock
-              </span>
-            </div>
-          )}
-
-          {/* Module pills + Calc Only — scrollable row on mobile via .qs-module-pills-row CSS */}
-          {(modules.length > 0 || hasCalcOnly) && (
-            <div className="qs-module-pills-row" role="group" aria-label="Filter questions by module" style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
-              {modules.length > 0 && (
-                <button
-                  onClick={() => onModuleChange(null)}
-                  style={{
-                    padding: "4px 10px",
-                    borderRadius: 20,
-                    border: "1.5px solid",
-                    borderColor: selectedModule === null ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
-                    background: selectedModule === null ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    flexShrink: 0,
-                  }}
-                >
-                  All Modules
-                </button>
-              )}
-              {modules.map((m, idx) => {
-                const isDistColl = /distrib|collect/i.test(m.name);
-                // Insert a subtle divider before the Distribution/Collection pill
-                const prevIsDistColl = idx > 0 && /distrib|collect/i.test(modules[idx-1].name);
-                const needsDivider = isDistColl && idx > 0;
-                return (
-                  <React.Fragment key={m.name}>
-                    {needsDivider && (
-                      <span style={{ display: "flex", alignItems: "center", color: "rgba(255,255,255,0.35)", fontSize: 10, flexShrink: 0, userSelect: "none" }}>|</span>
-                    )}
-                    <button
-                      onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
-                      style={{
-                        padding: isDistColl ? "4px 11px" : "4px 10px",
-                        borderRadius: 20,
-                        border: isDistColl ? "2px solid" : "1.5px solid",
-                        borderColor: selectedModule === m.name
-                          ? "rgba(255,255,255,0.95)"
-                          : isDistColl
-                          ? "rgba(255,220,100,0.75)"
-                          : "rgba(255,255,255,0.3)",
-                        background: selectedModule === m.name
-                          ? "rgba(255,255,255,0.28)"
-                          : isDistColl
-                          ? "rgba(255,200,50,0.18)"
-                          : "rgba(255,255,255,0.1)",
-                        color: "#fff",
-                        fontSize: 11,
-                        fontWeight: isDistColl ? 700 : 600,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                        flexShrink: 0,
-                      }}
-                    >
-                      {m.icon && <span style={{ marginRight: 4 }}>{m.icon}</span>}
-                      {m.name}
-                      {isDistColl && <span style={{ marginLeft: 4, fontSize: 9, opacity: 0.85, fontWeight: 800, letterSpacing: "0.03em", background: "rgba(255,200,50,0.35)", borderRadius: 4, padding: "1px 4px" }}>NEW</span>}
-                    </button>
-                  </React.Fragment>
-                );
-              })}
-              {hasCalcOnly && (
-                <button
-                  onClick={onCalcOnlyToggle}
-                  style={{
-                    padding: "4px 10px",
-                    borderRadius: 20,
-                    border: "1.5px solid",
-                    borderColor: calcOnly ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.3)",
-                    background: calcOnly ? "rgba(167,139,250,0.35)" : "rgba(255,255,255,0.1)",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    flexShrink: 0,
-                  }}
-                >
-                  🧮 Calc Only
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Optional extra header content (e.g. quiz mode selector) */}
-          {headerExtra && (
-            <div style={{ marginTop: 8 }}>
-              {headerExtra}
-            </div>
-          )}
+          {isFreePreview && <p className="practice-preview">Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions used</p>}
+          <PracticeOptions modules={modules} selectedModule={selectedModule} onModuleChange={onModuleChange}
+            hasCalcOnly={hasCalcOnly} calcOnly={calcOnly} onCalcOnlyToggle={onCalcOnlyToggle}>
+            {headerExtra}
+          </PracticeOptions>
         </div>
-      </div>
+      </section>
 
        {/* ── Progress bar ── */}
       {sessionSize && (
@@ -803,7 +618,7 @@ export default function QuizShell({
         </div>
       )}
       {/* ── Body ── */}
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "12px 16px 24px" }}>
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px 16px 40px" }}>
 
         {/* Ticket 12: Gate skeleton — when gate is active, render a blurred placeholder instead of the full quiz content.
              This prevents locked question text and answer options from being sent to the DOM. */}
@@ -931,6 +746,7 @@ export default function QuizShell({
               return (
                 <button
                   key={idx}
+                  aria-pressed={isSelected}
                   onClick={() => !confirmed && !isQuestionLoading && onSelect(idx)}
                   disabled={confirmed || isQuestionLoading}
                   style={{
@@ -964,7 +780,9 @@ export default function QuizShell({
 
           {/* Confidence meter */}
           {selected !== null && !confirmed && (
-            <ConfidenceMeter value={confidence} onChange={onConfidenceChange} />
+            <details className="practice-confidence"><summary>Optional: how sure are you?</summary>
+              <ConfidenceMeter value={confidence} onChange={onConfidenceChange} />
+            </details>
           )}
 
           {/* Action buttons */}
@@ -994,19 +812,19 @@ export default function QuizShell({
               {!confirmed ? (
                 <button
                   onClick={onConfirm}
-                  disabled={isQuestionLoading || selected === null || confidence === null}
+                  disabled={isQuestionLoading || selected === null}
                   style={{
                     flex: 1,
                     padding: "9px 18px",
                     borderRadius: 10,
-                    background: selected !== null && confidence !== null
+                    background: selected !== null
                       ? headerGradient
                       : "#E2E8F0",
-                    color: selected !== null && confidence !== null ? "#fff" : "#94A3B8",
+                    color: selected !== null ? "#fff" : "#94A3B8",
                     fontWeight: 800,
                     fontSize: 14,
                     border: "none",
-                    cursor: selected !== null && confidence !== null ? "pointer" : "not-allowed",
+                    cursor: selected !== null ? "pointer" : "not-allowed",
                     fontFamily: "inherit",
                     minWidth: 0,
                   }}
@@ -1037,55 +855,7 @@ export default function QuizShell({
                 </button>
               )}
             </div>
-            {/* Secondary row: Show Steps + AI Tutor (only after confirming) */}
-            {confirmed && (
-              <div className="qs-action-row-secondary" style={{ display: "flex", gap: 8 }}>
-                {current.steps && current.steps.length > 0 && (
-                  <button
-                    onClick={onToggleSteps}
-                    style={{
-                      flex: 1,
-                      padding: "9px 12px",
-                      borderRadius: 10,
-                      border: "1.5px solid #E2E8F0",
-                      background: showSteps ? "#EFF6FF" : "#fff",
-                      color: showSteps ? "#0369A1" : "#64748B",
-                      fontWeight: 700,
-                      fontSize: 13,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      minWidth: 0,
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {showSteps ? "Hide Steps" : "Show Steps"}
-                  </button>
-                )}
-                <button
-                  onClick={onTutorOpen}
-                  style={{
-                    flex: 1,
-                    padding: "9px 12px",
-                    borderRadius: 10,
-                    border: "1.5px solid #E2E8F0",
-                    background: "#fff",
-                    color: "#0F172A",
-                    fontWeight: 600,
-                    fontSize: 13,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    minWidth: 0,
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  🤖 AI Tutor
-                </button>
-              </div>
-            )}
+            {confirmed && current.steps && current.steps.length > 0 && <button type="button" className="practice-steps-toggle" onClick={onToggleSteps}>{showSteps ? "Hide worked solution" : "Show worked solution"}</button>}
           </div>
           </div>
         </div>
@@ -1093,7 +863,7 @@ export default function QuizShell({
         <div inert={isQuestionLoading}>
         {/* ── Explanation box ── */}
         {confirmed && (
-          <div style={{
+          <div className="practice-explanation" style={{
             background: selected === correctIdx ? "#F0FDF4" : "#FFF7ED",
             border: `1px solid ${selected === correctIdx ? "#BBF7D0" : "#FED7AA"}`,
             borderRadius: 12,
@@ -1113,7 +883,7 @@ export default function QuizShell({
             </div>
 
             {current.explanation ? (
-              <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.7 }}>
+              <div className="practice-explanation-content" style={{ fontSize: 15, color: "#374151", lineHeight: 1.7 }}>
                 {current.explanation.split("\n").map((line: string, i: number) => {
                   const isBold = /^\*\*Step \d+/.test(line) || /^\*\*/.test(line);
                   if (!line.trim()) return <div key={i} style={{ height: 6 }} />;
@@ -1156,6 +926,12 @@ export default function QuizShell({
               </a>
             )}
 
+            <div className="practice-resource-actions">
+              {moduleOverviews && current.module && moduleOverviews[current.module] && <button type="button" onClick={() => { setStudyNotesModule(current.module); setStudyNotesOpen(true); }}>Read topic notes</button>}
+              <button type="button" onClick={onTutorOpen}>Ask the Tutor about this question</button>
+              {getPracticeGuidePath(currentPath) && <a href={getPracticeGuidePath(currentPath)!}>Explore the process guide</a>}
+              {getPracticeGuidePath(currentPath) && /clarif|sediment/i.test(current.module ?? "") && <a href="/equipment-lab">Explore equipment</a>}
+            </div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
               <button
                 onClick={() => setReportModalOpen(true)}

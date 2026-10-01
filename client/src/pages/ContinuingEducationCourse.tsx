@@ -406,7 +406,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
 
   return (
     <div className="ceu-screen">
-      <SiteNav currentPath={`/continuing-education/${courseKey}`} variant="marketing" />
+      {view === "overview" && <SiteNav currentPath={`/continuing-education/${courseKey}`} variant="marketing" />}
       <section className="ceu-course-context" aria-label="Continuing education course workspace">
         <div className="ceu-course-context-inner">
           <div className="ceu-course-context-identity">
@@ -419,15 +419,15 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <small>{course.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater"} · Pilot learning</small>
           </div>
           <nav className="ceu-course-context-tabs" aria-label="Course workspace navigation">
-            <button type="button" className={view === "overview" ? "is-active" : ""} onClick={() => changeView("overview")}>Overview</button>
-            <button type="button" className={view === "lesson" ? "is-active" : ""} onClick={() => changeView("lesson")}>Lessons</button>
-            <button type="button" className={view === "exam" || view === "results" ? "is-active" : ""} onClick={() => {
+            <button type="button" aria-current={view === "overview" ? "page" : undefined} className={view === "overview" ? "is-active" : ""} onClick={() => changeView("overview")}>Overview</button>
+            <button type="button" aria-current={view === "lesson" ? "page" : undefined} className={view === "lesson" ? "is-active" : ""} onClick={() => changeView("lesson")}>Lessons</button>
+            <button type="button" aria-current={view === "exam" || view === "results" ? "page" : undefined} className={view === "exam" || view === "results" ? "is-active" : ""} onClick={() => {
               if (confirmDiscardUnsavedExam()) openFinal();
-            }}>Assessment</button>
-            <button type="button" className={view === "certificate" ? "is-active" : ""} disabled={!record?.completion} onClick={() => changeView("certificate")}>Certificate</button>
+            }}>Final exam</button>
+            <button type="button" aria-current={view === "certificate" ? "page" : undefined} className={view === "certificate" ? "is-active" : ""} disabled={!record?.completion} onClick={() => changeView("certificate")}>Certificate</button>
           </nav>
           <div className="ceu-course-context-actions">
-            {status && <span className="ceu-save-status" role="status">{saveFailed ? <CircleHelp size={15} aria-hidden="true" /> : null} {status}</span>}
+            {(pending || status) && <span className="ceu-save-status" role="status">{saveFailed ? <CircleHelp size={15} aria-hidden="true" /> : null} {pending ? "Saving…" : status}</span>}
             {view !== "overview" && <button type="button" className="ceu-exit-button" onClick={() => changeView("overview")}>Course overview</button>}
           </div>
         </div>
@@ -516,9 +516,9 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           </section>
 
           <aside className="ceu-overview-side">
-            <section className="ceu-info-card"><h2>How this course works</h2><ol><li><b>1</b><span>Work through the lesson slides at your own pace.</span></li><li><b>2</b><span>Use optional quick checks to reinforce the ideas.</span></li><li><b>3</b><span>Pass the server-graded final exam with 80% or higher.</span></li><li><b>4</b><span>Download your non-credit pilot certificate after you pass.</span></li></ol></section>
+            <section className="ceu-info-card"><h2>How this course works</h2><ol><li><b>1</b><span>Work through the lesson slides at your own pace.</span></li><li><b>2</b><span>Use optional quick checks to reinforce the ideas.</span></li><li><b>3</b><span>Pass the final exam with 80% or higher.</span></li><li><b>4</b><span>Download your non-credit pilot certificate after you pass.</span></li></ol></section>
             <section className="ceu-info-card"><h2>What you will be able to do</h2><ul>{course.modules.flatMap(module => module.objectives).slice(0, 5).map(objective => <li key={objective}><Check size={17} />{objective}</li>)}</ul></section>
-            <section className="ceu-reminder-card"><CircleCheck size={20} /><span>Your place is saved after each completed lesson slide and exam answer.</span></section>
+            <section className="ceu-reminder-card"><CircleCheck size={20} /><span>Your place saves as you learn. Check the saving status before you leave.</span></section>
             <PilotDisclosure />
           </aside>
         </div>
@@ -537,7 +537,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                   <button type="button" className={`${active ? "is-active" : ""}${done ? " is-complete" : ""}`} onClick={() => chooseModule(module.id)} disabled={pending}>
                     <span>{done ? <Check size={17} /> : index + 1}</span><strong>{module.title}</strong>
                   </button>
-                  {active && <ol>{slides.map((slide, index) => <li key={slide.id}><button type="button" className={index === activeSlideIndex ? "is-current" : ""} disabled={pending || (!!record && !record.completion && index > (record.modules[module.id]?.slideIndex ?? 0) + 1)} onClick={() => { saveSlide(index); setDrawerOpen(false); }}><small>{index + 1}</small>{slide.kind === "quick_check" ? "Quick check" : slide.kind === "takeaways" ? "Key takeaways" : slide.title}</button></li>)}</ol>}
+                  {active && <ol>{slides.map((slide, index) => <li key={slide.id}><button type="button" aria-current={index === activeSlideIndex ? "step" : undefined} className={index === activeSlideIndex ? "is-current" : ""} disabled={pending || (!!record && !record.completion && index > (record.modules[module.id]?.slideIndex ?? 0) + 1)} onClick={() => { saveSlide(index); setDrawerOpen(false); }}><small>{index + 1}</small>{slide.kind === "quick_check" ? "Quick check" : slide.kind === "takeaways" ? "Key takeaways" : slide.title}</button></li>)}</ol>}
                 </div>;
               })}
               <button className="ceu-sidebar-final" type="button" onClick={() => { openFinal(); setDrawerOpen(false); }}>{finalPreviewMode ? <CircleHelp size={16} /> : <LockKeyhole size={16} />} {finalPreviewMode ? "Preview sample questions" : finalEntry.view === "results" ? "View latest results" : "Final exam"}</button>
@@ -594,8 +594,8 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           </section>
           <aside className="ceu-exam-sidebar">
             <h2>Questions</h2>
-            <div className="ceu-question-grid">{assessmentQuestions.map((item, index) => <button type="button" key={item.id} onClick={() => setCurrentQuestionIndex(index)} className={`${!finalPreviewMode && answers[item.id] !== undefined ? "is-answered" : ""}${index === currentQuestionIndex ? " is-current" : ""}${!finalPreviewMode && flags.includes(index) ? " is-flagged" : ""}`} aria-label={`Question ${index + 1}${!finalPreviewMode && answers[item.id] !== undefined ? ", answered" : ""}${!finalPreviewMode && flags.includes(index) ? ", flagged" : ""}`}>{index + 1}</button>)}</div>
-            {finalPreviewMode ? <section className="ceu-exam-note"><h3>Open for inspection</h3><p>These samples come from lesson checks. Your graded final uses a separate server-issued question and answer order.</p><p>Sign in and complete the modules to take the final exam. Samples do not count toward a certificate.</p><PilotDisclosure /></section> : <><div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div><section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil(assessmentQuestions.length * 0.8)} of {assessmentQuestions.length} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section></>}
+            <div className="ceu-question-grid">{assessmentQuestions.map((item, index) => <button type="button" key={item.id} onClick={() => setCurrentQuestionIndex(index)} aria-current={index === currentQuestionIndex ? "step" : undefined} className={`${!finalPreviewMode && answers[item.id] !== undefined ? "is-answered" : ""}${index === currentQuestionIndex ? " is-current" : ""}${!finalPreviewMode && flags.includes(index) ? " is-flagged" : ""}`} aria-label={`Question ${index + 1}${!finalPreviewMode && answers[item.id] !== undefined ? ", answered" : ""}${!finalPreviewMode && flags.includes(index) ? ", flagged" : ""}`}>{index + 1}</button>)}</div>
+            {finalPreviewMode ? <section className="ceu-exam-note"><h3>Open for inspection</h3><p>These samples come from lesson checks. Your graded final uses a separate server-issued question and answer order.</p><p>Sign in and complete the modules to take the final exam. Samples do not count toward a certificate.</p><PilotDisclosure /></section> : <><div className="ceu-exam-legend"><span><i className="is-answered" /> Answered</span><span><i className="is-current" /> Current question</span><span><i className="is-flagged" /> Flagged for review</span></div><section className="ceu-exam-note"><h3>Before you submit</h3><p>You need {Math.ceil((assessmentQuestions.length || course.finalQuestionCount) * 0.8)} of {assessmentQuestions.length || course.finalQuestionCount} to pass.</p><p>There is no timer. Your answers save as you go.</p><p>If you do not pass, review the course and try again.</p><PilotDisclosure /></section></>}
           </aside>
         </div>
       )}

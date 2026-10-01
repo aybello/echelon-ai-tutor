@@ -577,7 +577,7 @@ export function useQuizSession({
 
   // ── Confirm answer (step 1: lock answer, show explanation) ─────────────────
   const handleConfirm = useCallback(() => {
-    if (selected === null || confidence === null || !current) return;
+    if (selected === null || !current || confirmed) return;
     const correctIdx = current.correctIndex ?? 0;
     const isCorrect = selected === correctIdx;
 
@@ -628,6 +628,7 @@ export function useQuizSession({
   }, [
     selected,
     confidence,
+    confirmed,
     current,
     history,
     trialUnlocked,
