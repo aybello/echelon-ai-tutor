@@ -5,7 +5,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useProvince } from "@/hooks/useProvince";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import { formatPriceUSD } from "@shared/products";
 import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
@@ -28,10 +27,6 @@ import {
 /** Helper: get the canonical CAD price from shared/products.ts by product key */
 function sharedPrice(key: string): number {
   return SHARED_PRODUCTS.find(p => p.key === key)?.priceCAD ?? 0;
-}
-/** Helper: get the canonical USD price from shared/products.ts by product key */
-function sharedPriceUSD(key: string): number {
-  return SHARED_PRODUCTS.find(p => p.key === key)?.priceUSD ?? 0;
 }
 
 type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
@@ -697,14 +692,12 @@ function CheckoutButton({
   label,
   disabled,
   style,
-  currency = "cad",
   province,
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
-  currency?: "cad" | "usd";
   province?: "ontario" | "western" | "unknown";
 }) {
   const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
@@ -724,7 +717,7 @@ function CheckoutButton({
     if (disabled) return;
     const attribution = {
       ...getMarketingAttribution("/pricing"),
-      province: province ?? (currency === "usd" ? "western" : "ontario"),
+      province: province ?? "ontario",
     };
     trackProductSelection.mutate({
       event: "product_selected",
@@ -734,7 +727,7 @@ function CheckoutButton({
     });
     createSession.mutate({
       productKey,
-      currency,
+      currency: "cad",
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...attribution,
@@ -2050,9 +2043,7 @@ function ProductCard({
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
             <span style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-              {isUS
-                ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}`
-                : `CA$${(product.priceCAD / 100).toFixed(0)}`}
+              {`CA$${(product.priceCAD / 100).toFixed(0)}`}
             </span>
             {product.available && (
               <span style={{
@@ -2078,7 +2069,6 @@ function ProductCard({
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
-          currency={isUS ? "usd" : "cad"}
           province={isUS ? "unknown" : "ontario"}
         />
         {product.available && QUIZ_ROUTES[product.key] && (

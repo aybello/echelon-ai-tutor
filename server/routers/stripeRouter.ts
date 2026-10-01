@@ -72,7 +72,9 @@ export const stripeRouter = router({
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
-      currency: z.enum(["cad", "usd"]).default("cad"),
+      // Individual Exam Passes are priced in CAD. Keeping this input optional
+      // preserves older clients while preventing geographic currency selection.
+      currency: z.literal("cad").optional().default("cad"),
       visitorId: z.string().min(16).max(128).optional(),
       analyticsContext: z.object({
         source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
@@ -96,8 +98,8 @@ export const stripeRouter = router({
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const userEmail = ctx.user?.email ?? input.email;
-      const currency = input.currency ?? "cad";
-      const unitAmount = currency === "usd" ? product.priceUSD : product.priceCAD;
+      const currency = "cad" as const;
+      const unitAmount = product.priceCAD;
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],

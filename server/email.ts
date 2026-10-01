@@ -12,7 +12,10 @@ export interface PurchaseConfirmationPayload {
   email: string;
   productName: string;
   productKey: string;
+  // Existing purchase rows use the historic `amountCAD` column. New Individual
+  // Exam Passes are CAD-only, while old queued receipts can carry USD safely.
   amountCAD: number; // in cents
+  paymentCurrency?: "cad" | "usd";
   quizPath: string;  // e.g. "/class1-ww"
   mockPath: string;  // e.g. "/class1-ww-mock"
   accessExpiresAt: Date | string | null;
@@ -35,6 +38,14 @@ export function purchaseAccessLabel(accessExpiresAt: PurchaseConfirmationPayload
 
 export function purchaseAccessSummary(accessExpiresAt: PurchaseConfirmationPayload["accessExpiresAt"]): string {
   return `${purchaseAccessLabel(accessExpiresAt)}.`;
+}
+
+export function formatPurchasePaymentAmount(
+  amountCents: number,
+  currency: PurchaseConfirmationPayload["paymentCurrency"] = "cad",
+): string {
+  const prefix = currency === "usd" ? "US$" : "CA$";
+  return `${prefix}${(amountCents / 100).toFixed(2)}`;
 }
 
 function createTransporter(): Transporter {
@@ -78,7 +89,7 @@ async function getTransporter(): Promise<Transporter> {
 export async function sendPurchaseConfirmationEmail(
   payload: PurchaseConfirmationPayload
 ): Promise<void> {
-  const { email, productName, productKey, amountCAD, quizPath, mockPath, accessExpiresAt } = payload;
+  const { email, productName, productKey, amountCAD, paymentCurrency, quizPath, mockPath, accessExpiresAt } = payload;
 
   let transporter: Transporter;
 
@@ -98,7 +109,7 @@ export async function sendPurchaseConfirmationEmail(
   }
 
   const siteUrl = "https://echeloninstitute.ca";
-  const amountFormatted = `CA$${(amountCAD / 100).toFixed(2)}`;
+  const amountFormatted = formatPurchasePaymentAmount(amountCAD, paymentCurrency);
   const quizUrl = `${siteUrl}${quizPath}`;
   const mockUrl = `${siteUrl}${mockPath}`;
   const accountUrl = `${siteUrl}/account`;

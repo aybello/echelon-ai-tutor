@@ -35,6 +35,9 @@ describe("individual checkout flow", () => {
     expect(oneTimeCheckout).not.toContain("customer_name:");
     expect(oneTimeCheckout).not.toContain("customer_phone:");
     expect(oneTimeCheckout).not.toContain("phone: z.string().max");
+    expect(oneTimeCheckout).toContain('currency: z.literal("cad").optional().default("cad")');
+    expect(oneTimeCheckout).toContain('const currency = "cad" as const;');
+    expect(oneTimeCheckout).not.toContain('z.enum(["cad", "usd"])');
   });
 
   it("counts every payment entry as a checkout start", () => {

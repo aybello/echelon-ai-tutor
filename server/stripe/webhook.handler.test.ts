@@ -455,6 +455,49 @@ describe("Individual Exam Pass fulfillment", () => {
     expect(response.body).toEqual({ received: true });
   });
 
+  it("preserves USD in the receipt payload and owner notification for a valid historical checkout", async () => {
+    const handler = captureWebhookHandler();
+    const response = makeResponse();
+    mockGetDb.mockResolvedValue(dbWithNoOrganization());
+    mockRecordPurchase.mockResolvedValue(undefined);
+    mockConstructEvent.mockReturnValue({
+      id: "evt_historical_usd",
+      type: "checkout.session.completed",
+      data: {
+        object: {
+          id: "cs_historical_usd",
+          mode: "payment",
+          payment_status: "paid",
+          currency: "usd",
+          amount_total: 17_900,
+          payment_intent: "pi_historical_usd",
+          metadata: {
+            product_key: "class3-water-dist",
+            product_name: "Class 3 Water Distribution Practice Pass",
+            entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
+            individual_access_policy: INDIVIDUAL_EXAM_PASS_POLICY_VERSION,
+          },
+          customer_details: { email: "legacy@example.com", phone: null, name: null },
+        },
+      },
+    });
+
+    await handler(makeRequest(), response);
+
+    expect(mockRecordPurchase).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
+      amountCAD: 17_900,
+      paymentCurrency: "usd",
+      accessExpiresAt: new Date("2027-09-17T22:36:40.000Z"),
+    }));
+    expect(mockNotifyOwner).toHaveBeenCalledWith(expect.objectContaining({
+      content: expect.stringContaining("US$179.00"),
+    }));
+    expect(mockTrackEvent).toHaveBeenCalledWith("checkout_completed", expect.objectContaining({
+      extra: expect.objectContaining({ amountCAD: 17_900, currency: "usd" }),
+    }));
+    expect(response.statusCode).toBe(200);
+  });
+
   it("keeps a fulfilled pass terminal when analytics and owner notification fail", async () => {
     mockGetDb.mockResolvedValue(dbWithNoOrganization());
     mockRecordPurchase.mockResolvedValue(undefined);

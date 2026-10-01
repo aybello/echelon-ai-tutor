@@ -199,7 +199,15 @@ export function registerStripeWebhook(app: Express) {
           const webhookPrePhone: string | null =
             session.customer_details?.phone ??
             (session.metadata?.customer_phone || null);
-          const amountCAD = session.amount_total ?? 0;
+          // Stripe supplies currency for live Checkout Sessions. CAD is the
+          // safe compatibility default for older internal fixtures and records
+          // that predate this receipt metadata, since new sales are CAD-only.
+          const paymentCurrency = session.currency?.toLowerCase() ?? "cad";
+          if (paymentCurrency !== "cad" && paymentCurrency !== "usd") {
+            throw new Error("Unsupported individual Checkout currency");
+          }
+          const amountPaidCents = session.amount_total ?? 0;
+          const paymentAmountLabel = `${paymentCurrency === "usd" ? "US$" : "CA$"}${(amountPaidCents / 100).toFixed(2)}`;
           const stripeSessionId = session.id;
           const stripePaymentIntentId = session.payment_intent ?? null;
           if (!productKey || !email) {
@@ -236,20 +244,24 @@ export function registerStripeWebhook(app: Express) {
                 customerName: webhookCustomerName,
                 productKey,
                 productName: productName ?? productKey,
-                amountCAD,
+                // The existing database column is named amountCAD. New
+                // checkouts are CAD-only; retain actual currency in the
+                // immutable receipt payload for any pre-cutover USD session.
+                amountCAD: amountPaidCents,
+                paymentCurrency,
                 stripeSessionId,
                 stripePaymentIntentId,
                 accessExpiresAt,
               });
               createdPurchase = true;
 
-              console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
+              console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${paymentAmountLabel})`);
               // The purchase and confirmation-delivery intent are one transaction.
 
               const purchasePhone = session.customer_details?.phone ?? null;
               await notifyOwner({
                 title: `New Purchase: ${productName ?? productKey}`,
-                content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
+                content: `${email} purchased ${productName ?? productKey} for ${paymentAmountLabel}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
               }).catch((error) => {
                 console.error("[Stripe Webhook] Could not notify owner about purchase:", error);
               });
@@ -275,7 +287,7 @@ export function registerStripeWebhook(app: Express) {
                 province: session.metadata?.analytics_province || "unknown",
                 surface: session.metadata?.analytics_surface || "unknown",
               };
-              await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD, ...analyticsContext } })
+              await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD: amountPaidCents, currency: paymentCurrency, ...analyticsContext } })
                 .catch((error) => console.error("[Stripe Webhook] Checkout analytics failed:", error));
               await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase", ...analyticsContext } })
                 .catch((error) => console.error("[Stripe Webhook] Access analytics failed:", error));

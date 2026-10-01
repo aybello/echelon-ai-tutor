@@ -145,7 +145,7 @@ export default function PurchaseGate({
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
-  const offer = resolvePurchaseGateOffer({ productKey, productName, price, isUS });
+  const offer = resolvePurchaseGateOffer({ productKey, productName, price });
   const course = resolveCourseKey(productKey);
   const bankKey = course?.questionBankKey;
   const bankMeta = trpc.quiz.getBankMeta.useQuery(
@@ -162,7 +162,7 @@ export default function PurchaseGate({
     if (!offer.available) return;
     createCheckout.mutate({
       productKey,
-      currency: isUS ? "usd" : "cad",
+      currency: "cad",
       utmSource: "purchase-gate",
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {

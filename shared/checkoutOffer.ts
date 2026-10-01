@@ -1,6 +1,5 @@
 import {
   formatPriceCAD,
-  formatPriceUSD,
   getActiveIndividualProductByKey,
   getProductByKey,
 } from "./products";
@@ -21,16 +20,13 @@ export function resolvePurchaseGateOffer(input: {
   productKey: string;
   productName?: string;
   price?: number;
-  isUS: boolean;
 }): CheckoutOffer {
   const product = getActiveIndividualProductByKey(input.productKey);
   if (product) {
     return {
       available: true,
       productName: product.name,
-      priceLabel: input.isUS
-        ? formatPriceUSD(product.priceUSD)
-        : formatPriceCAD(product.priceCAD),
+      priceLabel: formatPriceCAD(product.priceCAD),
     };
   }
 
@@ -52,14 +48,13 @@ export function resolvePurchaseGateOffer(input: {
   return {
     available: true,
     productName: fallbackName,
-    priceLabel: `${input.isUS ? "US" : "CA"}$${fallbackPrice}`,
+    priceLabel: `CA$${fallbackPrice}`,
   };
 }
 
 /** Quiz Gate accepts checkout only for a current individual catalogue product. */
 export function resolveQuizGateOffer(
   productKey: string | undefined,
-  isUS: boolean
 ): CheckoutOffer {
   const product = productKey
     ? getActiveIndividualProductByKey(productKey)
@@ -69,8 +64,6 @@ export function resolveQuizGateOffer(
   return {
     available: true,
     productName: product.name,
-    priceLabel: isUS
-      ? formatPriceUSD(product.priceUSD)
-      : formatPriceCAD(product.priceCAD),
+    priceLabel: formatPriceCAD(product.priceCAD),
   };
 }
