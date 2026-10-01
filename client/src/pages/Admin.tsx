@@ -2,17 +2,78 @@ import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
 // Gated to role === 'admin'. Shows trial emails, waitlist signups, and error reports.
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
+import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
+import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
+import {
+  Activity,
+  Building2,
+  ChartNoAxesCombined,
+  CircleCheck,
+  ClipboardList,
+  CreditCard,
+  Database,
+  FileText,
+  LayoutDashboard,
+  Mail,
+  Menu,
+  MessageSquare,
+  Repeat2,
+  ShieldCheck,
+  TriangleAlert,
+  UsersRound,
+  WalletCards,
+  X,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import "./admin.css";
 
 type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
+
+type AdminNavigationGroup = {
+  label: string;
+  tabs: { id: Tab; label: string; icon: LucideIcon }[];
+};
+
+const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
+  { label: "Overview", tabs: [{ id: "insights", label: "Business overview", icon: LayoutDashboard }] },
+  {
+    label: "Customers & sales",
+    tabs: [
+      { id: "revenue", label: "Purchases", icon: CreditCard },
+      { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
+      { id: "orgs", label: "Organizations", icon: Building2 },
+      { id: "trials", label: "Trial signups", icon: Mail },
+      { id: "waitlist", label: "Waitlist", icon: ClipboardList },
+    ],
+  },
+  {
+    label: "Learning & content",
+    tabs: [
+      { id: "questions", label: "Question review", icon: CircleCheck },
+      { id: "scores", label: "Score history", icon: ChartNoAxesCombined },
+      { id: "feedback", label: "Feedback", icon: MessageSquare },
+      { id: "changelog", label: "Changelog", icon: FileText },
+    ],
+  },
+  {
+    label: "Operations & data",
+    tabs: [
+      { id: "errors", label: "Error reports", icon: TriangleAlert },
+      { id: "health", label: "System health", icon: Activity },
+      { id: "recovery", label: "Recovery review", icon: ShieldCheck },
+      { id: "explorer", label: "Data explorer", icon: Database },
+    ],
+  },
+];
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   // OIT
@@ -21,6 +82,7 @@ const EXAM_TYPE_LABELS: Record<string, string> = {
   // Ontario Class 1–4 Water
   "class1-water": "Class 1 Water",
   "class2-water": "Class 2 Water",
+  "class2-wastewater": "Class 2 Wastewater",
   "class3-water": "Class 3 Water",
   "class4-water": "Class 4 Water",
   // Ontario Class 1–4 Wastewater
@@ -60,6 +122,7 @@ const EXAM_TYPE_LABELS: Record<string, string> = {
   // WPI Collection
   "wpi-class1-water-coll": "WPI Class I Collection",
   "wpi-class2-water-coll": "WPI Class II Collection",
+  "wpi-class2-wastewater-coll": "WPI Class II Collection",
   "wpi-class3-water-coll": "WPI Class III Collection",
   "wpi-class4-water-coll": "WPI Class IV Collection",
 };
@@ -69,6 +132,7 @@ const EXAM_TYPE_COLORS: Record<string, { bg: string; color: string }> = {
   "oit-ww": { bg: "#CCFBF1", color: "#0F766E" },
   "class1-water": { bg: "#DCFCE7", color: "#15803D" },
   "class2-water": { bg: "#DCFCE7", color: "#15803D" },
+  "class2-wastewater": { bg: "#CCFBF1", color: "#0F766E" },
   "class3-water": { bg: "#DCFCE7", color: "#15803D" },
   "class4-water": { bg: "#DCFCE7", color: "#15803D" },
   "class1-ww": { bg: "#CCFBF1", color: "#0F766E" },
@@ -99,6 +163,7 @@ const EXAM_TYPE_COLORS: Record<string, { bg: string; color: string }> = {
   "wpi-class4-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
   "wpi-class1-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
   "wpi-class2-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "wpi-class2-wastewater-coll": { bg: "#FEE2E2", color: "#B91C1C" },
   "wpi-class3-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
   "wpi-class4-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
 };
@@ -133,11 +198,19 @@ export default function Admin() {
 
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>("insights");
+  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [isMobileNavigation, setIsMobileNavigation] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches);
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
+  const [reviewBank, setReviewBank] = useState("");
+  const [reviewPage, setReviewPage] = useState(1);
+  const [reviewingQuestionId, setReviewingQuestionId] = useState<number | null>(null);
+  const [reviewDraft, setReviewDraft] = useState({ sourceTitle: "", sourceReference: "", sourceUrl: "", blueprintObjective: "" });
   const [explorerDatasetKey, setExplorerDatasetKey] = useState("users");
   const [explorerPage, setExplorerPage] = useState(1);
   const [explorerPageSize, setExplorerPageSize] = useState(50);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const navigationPanelRef = useRef<HTMLElement>(null);
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
@@ -152,8 +225,9 @@ export default function Admin() {
   const orgsQ = trpc.admin.listOrganizations.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "orgs" });
   const subscriptionsQ = trpc.admin.getSubscriptions.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "subscriptions" });
   const governanceStatsQ = trpc.admin.getQuestionGovernanceStats.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "questions" });
+  const governanceBanksQ = trpc.admin.getQuestionGovernanceBanks.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "questions" });
   const governanceQueueQ = trpc.admin.getQuestionGovernanceQueue.useQuery(
-    { limit: 100, status: reviewFilter },
+    { limit: 25, page: reviewPage, status: reviewFilter, bankKey: reviewBank || undefined },
     { enabled: user?.role === "admin" && activeTab === "questions" },
   );
   const recoveryEvidenceQ = trpc.admin.getCustomerRecoveryEvidence.useQuery(
@@ -192,11 +266,7 @@ export default function Admin() {
   const reconcile = trpc.admin.reconcilePurchases.useMutation({
     onSuccess: (data) => {
       purchasesQ.refetch();
-      if (data.recovered > 0) {
-        alert(`Reconciliation complete. Recovered ${data.recovered} missing purchase(s): ${data.details.map((d: any) => `${d.email} -> ${d.productKey}`).join(", ")}`);
-      } else {
-        alert("All purchases are already in sync. No missing records found.");
-      }
+      alert(describePurchaseCheck(data));
     },
     onError: (err) => alert(`Reconciliation failed: ${err.message}`),
   });
@@ -207,6 +277,7 @@ export default function Admin() {
     onSuccess: () => {
       utils.admin.getQuestionGovernanceStats.invalidate();
       utils.admin.getQuestionGovernanceQueue.invalidate();
+      setReviewingQuestionId(null);
     },
     onError: (err) => alert(`Question review could not be saved: ${err.message}`),
   });
@@ -264,24 +335,20 @@ export default function Admin() {
   };
 
   const sourceAndApproveQuestion = (row: any) => {
-    const sourceTitle = window.prompt("Source title (required)", row.sourceTitle ?? "");
-    if (sourceTitle === null) return;
-    const sourceReference = window.prompt("Precise section, page, table, or objective reference (required)", row.sourceReference ?? "");
-    if (sourceReference === null) return;
-    if (!sourceTitle.trim() || !sourceReference.trim()) {
+    if (!reviewDraft.sourceTitle.trim() || !reviewDraft.sourceReference.trim()) {
       alert("Approval requires both a source title and a precise source reference.");
       return;
     }
-    const sourceUrl = window.prompt("Source URL (optional)", row.sourceUrl ?? "");
-    if (sourceUrl === null) return;
-    const blueprintObjective = window.prompt("Certification blueprint objective (optional)", row.blueprintObjective ?? "");
-    if (blueprintObjective === null) return;
+    if (reviewDraft.sourceUrl.trim()) {
+      try { new URL(reviewDraft.sourceUrl.trim()); } catch { alert("Enter a valid source URL or leave it blank."); return; }
+    }
+    if (!window.confirm(`Publish ${row.bankKey} #${row.questionNum} to learners? Confirm the keyed answer, rationale, distractors and source against the cited primary material.`)) return;
     reviewQuestion.mutate({
       id: row.id,
-      sourceTitle: sourceTitle.trim(),
-      sourceReference: sourceReference.trim(),
-      sourceUrl: sourceUrl.trim() || null,
-      blueprintObjective: blueprintObjective.trim() || null,
+      sourceTitle: reviewDraft.sourceTitle.trim(),
+      sourceReference: reviewDraft.sourceReference.trim(),
+      sourceUrl: reviewDraft.sourceUrl.trim() || null,
+      blueprintObjective: reviewDraft.blueprintObjective.trim() || null,
       reviewStatus: "approved",
     });
   };
@@ -295,6 +362,83 @@ export default function Admin() {
   const dismissFeedback = trpc.admin.dismissFeedback.useMutation({
     onSuccess: () => { utils.admin.getFeedback.invalidate(); utils.admin.stats.invalidate(); },
   });
+
+  const selectSection = (section: Tab) => {
+    setActiveTab(section);
+    setNavigationOpen(false);
+  };
+
+  const refreshActiveSection = () => {
+    stats.refetch();
+    if (activeTab === "insights") {
+      kpisQ.refetch();
+      ceuKpisQ.refetch();
+    }
+    if (activeTab === "trials") trialsQ.refetch();
+    if (activeTab === "waitlist") waitlistQ.refetch();
+    if (activeTab === "errors") errorsQ.refetch();
+    if (activeTab === "scores") scoresQ.refetch();
+    if (activeTab === "revenue") purchasesQ.refetch();
+    if (activeTab === "subscriptions") subscriptionsQ.refetch();
+    if (activeTab === "health") healthQ.refetch();
+    if (activeTab === "feedback") feedbackQ.refetch();
+    if (activeTab === "orgs") orgsQ.refetch();
+    if (activeTab === "questions") {
+      governanceStatsQ.refetch();
+      governanceBanksQ.refetch();
+      governanceQueueQ.refetch();
+    }
+    if (activeTab === "recovery") recoveryEvidenceQ.refetch();
+    if (activeTab === "explorer") {
+      explorerCatalogQ.refetch();
+      explorerPageQ.refetch();
+    }
+  };
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 1023px)");
+    const syncViewport = () => setIsMobileNavigation(media.matches);
+    syncViewport();
+    media.addEventListener("change", syncViewport);
+    return () => media.removeEventListener("change", syncViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileNavigation) setNavigationOpen(false);
+  }, [isMobileNavigation]);
+
+  useEffect(() => {
+    if (!navigationOpen || !isMobileNavigation) return;
+    const previousOverflow = document.body.style.overflow;
+    const panel = navigationPanelRef.current;
+    const firstFocusable = panel?.querySelector<HTMLElement>("button, a[href]");
+    document.body.style.overflow = "hidden";
+    firstFocusable?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setNavigationOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !panel) return;
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]"));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      menuButtonRef.current?.focus();
+    };
+  }, [isMobileNavigation, navigationOpen]);
 
   const copyEmail = (email: string) => {
     navigator.clipboard.writeText(email);
@@ -342,9 +486,9 @@ export default function Admin() {
     return (
       <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🔒</div>
+          <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#173A4C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Sign in required</div>
-          <a href={getLoginUrl()} style={{ color: "#38BDF8", fontSize: 14 }}>Sign in →</a>
+          <button type="button" onClick={() => { window.location.href = getLoginUrl(); }} style={{ background: "transparent", border: 0, color: "#38BDF8", cursor: "pointer", fontFamily: "inherit", fontSize: 14, padding: 8 }}>Sign in</button>
         </div>
       </div>
     );
@@ -354,10 +498,10 @@ export default function Admin() {
     return (
       <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>⛔</div>
+          <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#B91C1C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Admin access only</div>
           <div style={{ color: "#64748B", fontSize: 13, marginBottom: 20 }}>Your account ({user.email ?? user.name}) does not have admin privileges.</div>
-          <Link href="/"><button style={{ padding: "10px 24px", borderRadius: 20, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>← Back to Home</button></Link>
+          <Link href="/" style={{ display: "inline-block", padding: "10px 24px", borderRadius: 20, background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit", textDecoration: "none" }}>Back to home</Link>
         </div>
       </div>
     );
@@ -365,118 +509,119 @@ export default function Admin() {
 
   // ── Dashboard ──
   const statItems = [
-    { label: "Total Revenue", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: "💰", color: "#34D399", tab: "revenue" as Tab },
-    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
-    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", icon: "🔄", color: "#F472B6", tab: "subscriptions" as Tab },
-    { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#A78BFA", tab: "trials" as Tab },
-    { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
-    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (★${stats.data.avgRating})` : "—", icon: "💬", color: "#FBBF24", tab: "feedback" as Tab },
+    { label: "Recorded order value", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: WalletCards, tab: "revenue" as Tab },
+    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: CreditCard, tab: "revenue" as Tab },
+    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", icon: Repeat2, tab: "subscriptions" as Tab },
+    { label: "Trial signups", value: stats.data?.trialCount ?? "—", icon: Mail, tab: "trials" as Tab },
+    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (${stats.data.avgRating}/5)` : "—", icon: MessageSquare, tab: "feedback" as Tab },
   ];
-
-  const TABS: { id: Tab; label: string; icon: string }[] = [
-    { id: "insights", label: "Product KPIs", icon: "📈" },
-    { id: "revenue", label: "Revenue", icon: "💰" },
-    { id: "subscriptions", label: "Subscriptions", icon: "🔄" },
-    { id: "trials", label: "Trial Emails", icon: "📧" },
-    { id: "waitlist", label: "Waitlist", icon: "📋" },
-    { id: "errors", label: "Error Reports", icon: "🐛" },
-    { id: "questions", label: "Question Review", icon: "✓" },
-    { id: "changelog", label: "Changelog", icon: "📝" },
-    { id: "scores", label: "Score History", icon: "📊" },
-    { id: "feedback", label: "Feedback", icon: "💬" },
-    { id: "health", label: "System Health", icon: "🩺" },
-    { id: "orgs", label: "Organizations", icon: "🏢" },
-    { id: "explorer", label: "Data Explorer", icon: "▦" },
-    { id: "recovery", label: "Recovery Review", icon: "↺" },
-  ];
+  const activeSection = ADMIN_NAVIGATION.flatMap(group => group.tabs).find(tab => tab.id === activeTab);
+  const activeDescription: Record<Tab, string> = {
+    insights: "A clear view of revenue signals, learner activity and open work.",
+    revenue: "Review stored purchase records and check Stripe for missing records.",
+    subscriptions: "Review subscription records and their current lifecycle state.",
+    trials: "Review people who requested trial access or product updates.",
+    waitlist: "Review people waiting for future course availability.",
+    questions: "Review learner-visible questions against their source material.",
+    scores: "Review learner performance and study outcomes across courses.",
+    feedback: "Read learner ratings and resolve submitted feedback.",
+    changelog: "Document product changes and customer-facing release notes.",
+    errors: "Review reported product errors and close resolved issues.",
+    health: "Check live application health and operational dependencies.",
+    orgs: "Review team organizations, seats and manager access.",
+    recovery: "Classify recovery evidence without granting access automatically.",
+    explorer: "Browse approved datasets with protected fields and audit boundaries.",
+  };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif", color: "#1E293B" }}>
+    <div className="admin-portal" style={{ minHeight: "100vh", background: "#F3F7F9", fontFamily: "'Sora', sans-serif", color: "#15283A" }}>
+      <a className="admin-skip-link" href="#admin-main-content">Skip to content</a>
       <style>{`
         .admin-row:hover { background: rgba(0,0,0,0.04) !important; }
         .admin-btn:hover { opacity: 0.8; }
         @media (max-width: 640px) {
           .admin-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .admin-header { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
-          .admin-tab-bar { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
-          .admin-tab-bar::-webkit-scrollbar { display: none !important; }
-          .admin-tab-bar button { white-space: nowrap !important; flex-shrink: 0 !important; flex: 0 0 auto !important; font-size: 11px !important; padding: 8px 10px !important; }
-          .admin-top-bar { padding: 10px 14px !important; }
-          .admin-signed-in { display: none !important; }
         }
       `}</style>
 
-      {/* Top bar */}
-      <div className="admin-top-bar" style={{ background: "#F8FAFC", borderBottom: "1px solid rgba(0,0,0,0.07)", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800 }}>E</div>
-          <div>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#1E293B" }}>ECHELON ADMIN</div>
-            <div style={{ fontSize: 10, color: "#64748B" }}>Internal dashboard</div>
+      <div className="admin-shell">
+        {navigationOpen && <button className="admin-drawer-backdrop" aria-label="Close navigation" type="button" onClick={() => setNavigationOpen(false)} />}
+        <aside
+          id="admin-navigation"
+          className={`admin-sidebar${navigationOpen ? " is-open" : ""}`}
+          ref={navigationPanelRef}
+          aria-label="Echelon administration navigation"
+          aria-hidden={isMobileNavigation && !navigationOpen ? true : undefined}
+          aria-modal={isMobileNavigation && navigationOpen ? true : undefined}
+          inert={isMobileNavigation && !navigationOpen ? true : undefined}
+          role={isMobileNavigation && navigationOpen ? "dialog" : undefined}
+        >
+          <div className="admin-sidebar-brand">
+            <img src={ECHELON_LOGO_URL} alt="Echelon Institute" width={44} height={42} />
+            <div><strong>Echelon Institute</strong><span>Administration</span></div>
+            <button type="button" className="admin-sidebar-close" aria-label="Close navigation" onClick={() => setNavigationOpen(false)}><X size={20} aria-hidden="true" /></button>
           </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <span className="admin-signed-in" style={{ fontSize: 12, color: "#64748B" }}>Signed in as <strong style={{ color: "#64748B" }}>{user.name ?? user.email}</strong></span>
-          <Link href="/"><button className="admin-btn" style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>← Site</button></Link>
-        </div>
-      </div>
+          <nav className="admin-sidebar-navigation" aria-label="Admin sections">
+            {ADMIN_NAVIGATION.map(group => (
+              <section className="admin-sidebar-group" key={group.label} aria-label={group.label}>
+                <h2>{group.label}</h2>
+                {group.tabs.map(tab => {
+                  const Icon = tab.icon;
+                  return <button className="admin-sidebar-button" aria-current={activeTab === tab.id ? "page" : undefined} key={tab.id} type="button" onClick={() => selectSection(tab.id)}><Icon size={17} aria-hidden="true" /><span>{tab.label}</span></button>;
+                })}
+              </section>
+            ))}
+          </nav>
+          <div className="admin-sidebar-footer">
+            <div className="admin-sidebar-user"><UsersRound size={17} aria-hidden="true" /><span>{user.name ?? user.email}</span></div>
+            <Link href="/" className="admin-back-to-site">Back to website</Link>
+          </div>
+        </aside>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "28px 20px 80px" }}>
+        <main id="admin-main-content" className="admin-content" tabIndex={-1} aria-hidden={isMobileNavigation && navigationOpen ? true : undefined} inert={isMobileNavigation && navigationOpen ? true : undefined}>
+          <div className="admin-mobile-header">
+            <button ref={menuButtonRef} className="admin-menu-trigger" type="button" aria-label="Open navigation" aria-controls="admin-navigation" aria-expanded={navigationOpen} onClick={() => setNavigationOpen(true)}><Menu size={20} aria-hidden="true" /></button>
+            <span>{activeSection?.label}</span>
+            <Link href="/" className="admin-mobile-site-link">Site</Link>
+          </div>
+          <div className="admin-content-inner">
         {/* Page header */}
-        <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+        <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 26, gap: 16 }}>
           <div>
-            <h1 style={{ fontSize: 22, fontWeight: 800, margin: 0, marginBottom: 4 }}>Admin Dashboard</h1>
-            <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>Product performance, revenue, learner outcomes, and content quality</p>
+            <div className="admin-eyebrow">Echelon / administration</div>
+            <h1 style={{ fontSize: "clamp(27px, 3vw, 38px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
+            <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); kpisQ.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); governanceStatsQ.refetch(); governanceQueueQ.refetch(); recoveryEvidenceQ.refetch(); explorerCatalogQ.refetch(); explorerPageQ.refetch(); }}
-            style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+            onClick={refreshActiveSection}
+            style={{ padding: "10px 16px", borderRadius: 9, border: "1px solid #C5D6DC", background: "#fff", color: "#173A4C", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
-            ↻ Refresh
+            Refresh
           </button>
         </div>
 
         {/* Stats cards */}
-        <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 28 }}>
-          {statItems.map(s => (
+        {activeTab === "insights" && <>
+          <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 26 }}>
+          {statItems.map(({ icon: Icon, ...stat }) => (
             <button
-              key={s.label}
-              onClick={() => setActiveTab(s.tab)}
-              style={{
-                background: activeTab === s.tab ? "rgba(0,0,0,0.07)" : "#F8FAFC",
-                border: `1.5px solid ${activeTab === s.tab ? s.color + "60" : "rgba(0,0,0,0.07)"}`,
-                borderRadius: 16, padding: "20px 24px", textAlign: "left",
-                cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s",
-              }}
+              key={stat.label}
+              onClick={() => selectSection(stat.tab)}
+              className="admin-stat-card"
+              style={{ borderColor: activeTab === stat.tab ? "#46B7A3" : "#DCE7EA" }}
             >
-              <div style={{ fontSize: 24, marginBottom: 8 }}>{s.icon}</div>
-              <div style={{ fontSize: 28, fontWeight: 900, color: s.color, marginBottom: 2 }}>
-                {stats.isLoading ? "…" : String(s.value)}
+              <Icon className="admin-stat-icon" size={19} aria-hidden="true" />
+              <div style={{ fontSize: 26, fontWeight: 800, color: "#173A4C", marginBottom: 4 }}>
+                {stats.isLoading ? "…" : String(stat.value)}
               </div>
-              <div style={{ fontSize: 12, color: "#64748B", fontWeight: 600 }}>{s.label}</div>
+              <div style={{ fontSize: 12, color: "#526779", fontWeight: 700 }}>{stat.label}</div>
             </button>
           ))}
         </div>
-
-        {/* Tab bar */}
-        <div className="admin-tab-bar" style={{ display: "flex", gap: 4, marginBottom: 16, background: "#F8FAFC", borderRadius: 12, padding: 4 }}>
-          {TABS.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              style={{
-                flex: 1, padding: "9px 12px", borderRadius: 8, border: "none",
-                background: activeTab === tab.id ? "#E2E8F0" : "transparent",
-                color: activeTab === tab.id ? "#0F172A" : "#64748B",
-                fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}
-            >
-              {tab.icon} {tab.label}
-            </button>
-          ))}
-        </div>
+        <p className="admin-metric-note">Recorded order value sums stored purchase and subscription amounts; it is not net revenue after refunds, disputes or fees.</p>
+        </>}
 
         {/* -- PRODUCT KPI TAB -- */}
         {activeTab === "insights" && (
@@ -780,17 +925,17 @@ export default function Admin() {
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 {purchasesQ.data && purchasesQ.data.length > 0 && (
                   <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
-                    Total: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
+                    Listed order value: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
                   </div>
                 )}
                 <button
                   className="admin-btn"
                   onClick={() => reconcile.mutate({ hoursBack: 48 })}
                   disabled={reconcile.isPending}
-                  title="Check Stripe for any paid sessions in the last 48h that are missing from our database and insert them"
-                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(99,102,241,0.4)", background: "rgba(99,102,241,0.15)", color: "#A5B4FC", cursor: reconcile.isPending ? "not-allowed" : "pointer", opacity: reconcile.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+                  title="Check Stripe for missing paid purchase records. This is read-only and will not grant access."
+                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid #A5C8D1", background: "#E7F2F4", color: "#115368", cursor: reconcile.isPending ? "not-allowed" : "pointer", opacity: reconcile.isPending ? 0.6 : 1, fontFamily: "inherit" }}
                 >
-                  {reconcile.isPending ? "Syncing..." : "Sync Stripe (48h)"}
+                  {reconcile.isPending ? "Checking..." : "Check Stripe (48h)"}
                 </button>
                 <button
                   className="admin-btn"
@@ -1142,7 +1287,7 @@ export default function Admin() {
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
               <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 6 }}>✓ Question sourcing and review</div>
               <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.5 }}>
-                A question can only be approved after its source title and exact reference are recorded. Reviewer identity and review time are added by the server.
+                Review the answer, rationale and distractors against a primary source. Publishing an approval makes the question learner-visible. Reviewer identity and time are recorded by the server.
               </div>
             </div>
             {governanceStatsQ.data && (
@@ -1161,12 +1306,12 @@ export default function Admin() {
                 ))}
               </div>
             )}
-            <div style={{ padding: "12px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", gap: 8, alignItems: "center" }}>
+            <div style={{ padding: "12px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
               <label htmlFor="question-review-filter" style={{ fontSize: 11, fontWeight: 700, color: "#475569" }}>Queue:</label>
               <select
                 id="question-review-filter"
                 value={reviewFilter}
-                onChange={(event) => setReviewFilter(event.target.value as ReviewStatus)}
+                onChange={(event) => { setReviewFilter(event.target.value as ReviewStatus); setReviewPage(1); setReviewingQuestionId(null); }}
                 style={{ padding: "7px 10px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#fff", fontFamily: "inherit", fontSize: 11 }}
               >
                 <option value="unreviewed">Unreviewed</option>
@@ -1174,12 +1319,21 @@ export default function Admin() {
                 <option value="approved">Approved</option>
                 <option value="rejected">Rejected</option>
               </select>
-              <span style={{ fontSize: 10, color: "#94A3B8" }}>Showing up to 100 questions</span>
+              <label htmlFor="question-review-bank" style={{ fontSize: 11, fontWeight: 700, color: "#475569" }}>Bank:</label>
+              <select id="question-review-bank" value={reviewBank} onChange={event => { setReviewBank(event.target.value); setReviewPage(1); setReviewingQuestionId(null); }} style={{ maxWidth: "min(100%, 330px)", padding: "7px 10px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#fff", fontFamily: "inherit", fontSize: 11 }}>
+                <option value="">All banks</option>
+                {governanceBanksQ.data?.map(bank => <option value={bank.bankKey} key={bank.bankKey}>{EXAM_TYPE_LABELS[bank.bankKey] || bank.bankKey} ({bank.total})</option>)}
+              </select>
+              {governanceQueueQ.data && <span style={{ fontSize: 11, color: "#526779" }}>{governanceQueueQ.data.total} matching questions</span>}
             </div>
             {governanceQueueQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading review queue…</div>}
-            {governanceQueueQ.data?.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No questions in this review state.</div>}
-            {governanceQueueQ.data?.map((row) => (
-              <div key={row.id} className="admin-row" style={{ padding: "16px 20px", borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+            {governanceQueueQ.error && <div role="alert" style={{ padding: 20, color: "#B91C1C" }}>Question review could not be loaded: {governanceQueueQ.error.message}</div>}
+            {governanceQueueQ.data?.rows.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No questions in this review state.</div>}
+            {governanceQueueQ.data?.rows.map((row) => {
+              const options = parseReviewOptions(row.options);
+              const answerValid = !!options && row.correctIndex >= 0 && row.correctIndex < 4;
+              return (
+              <div key={row.id} className="admin-review-card">
                 <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start", flexWrap: "wrap" }}>
                   <div style={{ flex: "1 1 580px" }}>
                     <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8, flexWrap: "wrap" }}>
@@ -1187,10 +1341,15 @@ export default function Admin() {
                       <span style={{ fontSize: 10, color: "#64748B" }}>{row.module}</span>
                       <span style={{ fontSize: 10, color: "#64748B", textTransform: "capitalize" }}>{row.reviewStatus.replace("_", " ")}</span>
                     </div>
-                    <div style={{ fontSize: 13, color: "#1E293B", lineHeight: 1.55, fontWeight: 600 }}>{row.question}</div>
+                    <div style={{ fontSize: 14, color: "#15283A", lineHeight: 1.6, fontWeight: 700 }}>{row.question}</div>
+                    {answerValid ? <ol className="admin-review-options">{options!.map((option, index) => <li className="admin-review-option" data-correct={index === row.correctIndex} key={index}><strong>{String.fromCharCode(65 + index)}.</strong> {option} {index === row.correctIndex && <span> · Keyed answer</span>}</li>)}</ol>
+                      : <div role="alert" className="admin-review-detail" style={{ color: "#B91C1C" }}>Answer options or keyed answer are invalid. Fix the source data before approving.</div>}
+                    <div className="admin-review-detail"><strong>Rationale:</strong> {row.explanation || "Missing explanation"}</div>
+                    {row.steps && <div className="admin-review-detail"><strong>Calculation steps:</strong><ol style={{ margin: "8px 0 0", paddingLeft: 20 }}>{formatReviewSteps(row.steps).map((step, index) => <li key={index}>{step}</li>)}</ol></div>}
+                    <div style={{ fontSize: 11, color: "#526779" }}>Difficulty: {row.difficulty || "not set"} · Calculation: {row.isCalc === "yes" ? "yes" : "no"}</div>
                     {(row.sourceTitle || row.sourceReference) && (
                       <div style={{ marginTop: 8, fontSize: 11, color: "#64748B", lineHeight: 1.5 }}>
-                        Source: {row.sourceTitle || "—"}{row.sourceReference ? ` — ${row.sourceReference}` : ""}
+                        Source: {row.sourceTitle || "—"}{row.sourceReference ? ` — ${row.sourceReference}` : ""}{row.sourceUrl && <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 8, color: "#036B71" }}>Open source ↗</a>}
                         {row.reviewedBy ? ` · Reviewed by ${row.reviewedBy}` : ""}
                         {row.reviewedAt ? ` on ${formatDate(row.reviewedAt)}` : ""}
                       </div>
@@ -1200,14 +1359,26 @@ export default function Admin() {
                     {row.reviewStatus === "unreviewed" && (
                       <button className="admin-btn" onClick={() => setQuestionReviewState(row, "in_review")} disabled={reviewQuestion.isPending} style={{ padding: "7px 12px", borderRadius: 20, border: "1px solid #CBD5E1", background: "#fff", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Start review</button>
                     )}
-                    <button className="admin-btn" onClick={() => sourceAndApproveQuestion(row)} disabled={reviewQuestion.isPending} style={{ padding: "7px 12px", borderRadius: 20, border: "none", background: "#059669", color: "#fff", fontSize: 10, fontWeight: 800, cursor: "pointer" }}>Source & approve</button>
+                    {row.reviewStatus !== "approved" && <button className="admin-btn" onClick={() => { setReviewingQuestionId(row.id); setReviewDraft({ sourceTitle: row.sourceTitle || "", sourceReference: row.sourceReference || "", sourceUrl: row.sourceUrl || "", blueprintObjective: row.blueprintObjective || "" }); }} disabled={reviewQuestion.isPending || !answerValid || !row.explanation} style={{ padding: "7px 12px", borderRadius: 8, border: "none", background: "#08775e", color: "#fff", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>Review source and publish</button>}
                     {row.reviewStatus !== "rejected" && (
                       <button className="admin-btn" onClick={() => setQuestionReviewState(row, "rejected")} disabled={reviewQuestion.isPending} style={{ padding: "7px 12px", borderRadius: 20, border: "1px solid rgba(239,68,68,0.3)", background: "transparent", color: "#DC2626", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Reject</button>
                     )}
                   </div>
                 </div>
+                {reviewingQuestionId === row.id && <form className="admin-review-form" onSubmit={event => { event.preventDefault(); sourceAndApproveQuestion(row); }}>
+                  <label>Primary source title *<input required maxLength={255} value={reviewDraft.sourceTitle} onChange={event => setReviewDraft({ ...reviewDraft, sourceTitle: event.target.value })} /></label>
+                  <label>Exact section, page or table *<input required maxLength={512} value={reviewDraft.sourceReference} onChange={event => setReviewDraft({ ...reviewDraft, sourceReference: event.target.value })} /></label>
+                  <label>Source URL<input type="url" maxLength={1024} value={reviewDraft.sourceUrl} onChange={event => setReviewDraft({ ...reviewDraft, sourceUrl: event.target.value })} /></label>
+                  <label>Blueprint objective<input maxLength={255} value={reviewDraft.blueprintObjective} onChange={event => setReviewDraft({ ...reviewDraft, blueprintObjective: event.target.value })} /></label>
+                  <div className="admin-review-form-actions"><button type="button" onClick={() => setReviewingQuestionId(null)}>Cancel</button><button type="submit" disabled={reviewQuestion.isPending}>Approve and publish</button></div>
+                </form>}
               </div>
-            ))}
+            );})}
+            {governanceQueueQ.data && governanceQueueQ.data.total > 0 && <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 20px", borderTop: "1px solid #DCE7EA", gap: 12 }}>
+              <button className="admin-btn" disabled={reviewPage <= 1 || governanceQueueQ.isFetching} onClick={() => { setReviewPage(page => page - 1); setReviewingQuestionId(null); }}>← Previous</button>
+              <span style={{ fontSize: 11, color: "#526779" }}>Page {reviewPage} of {Math.ceil(governanceQueueQ.data.total / governanceQueueQ.data.pageSize)}</span>
+              <button className="admin-btn" disabled={reviewPage * governanceQueueQ.data.pageSize >= governanceQueueQ.data.total || governanceQueueQ.isFetching} onClick={() => { setReviewPage(page => page + 1); setReviewingQuestionId(null); }}>Next →</button>
+            </div>}
           </div>
         )}
 
@@ -1457,6 +1628,8 @@ export default function Admin() {
             )}
           </div>
         )}
+          </div>
+        </main>
       </div>
     </div>
   );
