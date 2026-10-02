@@ -10,8 +10,9 @@ test("real homepage keeps the approved branding and both free OIT entry points o
   await page.getByRole("button",{name:"Try 15 OIT Questions Free →",exact:true}).click();
   await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Water OIT Recommended/})).toHaveAttribute("href",/^#?\/quiz$/);
   await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Wastewater OIT Start free/})).toHaveAttribute("href",/^#?\/oit-ww$/);
-  await page.getByRole("link",{name:"Find my course →",exact:true}).click();
-  await expect(page.locator("#find-course")).toBeInViewport();
+  await expect(page.getByRole("link",{name:"Find my course →",exact:true})).toHaveCount(0);
+  await expect(page.locator("#find-course").getByRole("heading",{name:"Find your course",exact:true})).toBeVisible();
+  await expect(page.locator("#find-course").getByLabel("1. Province")).toBeEnabled();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({path:"test-results/ui-workspace/homepage-mobile.png",fullPage:true});
 });

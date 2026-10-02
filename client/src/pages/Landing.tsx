@@ -1409,7 +1409,6 @@ export default function Landing() {
           {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
           <div
             className="landing-hero-btns landing-hero-reveal landing-hero-reveal-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-            <a href="#find-course" className="workspace-primary">Find my course →</a>
             <button
               type="button"
               className="landing-oit-secondary"
