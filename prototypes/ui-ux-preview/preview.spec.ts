@@ -190,6 +190,59 @@ test("quiz settings contain keyboard focus and return it on Escape", async ({pag
   await expect(opener).toBeFocused();
 });
 
+test("flashcard options retain module filters, shuffle and learning decisions", async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("/#/flashcards");
+  const options=page.locator(".fc-options");
+  await expect(page.getByTestId("flashcard-study-card")).toBeVisible();
+  await expect(options).not.toHaveAttribute("open", "");
+  await options.locator("summary").click();
+  await page.getByRole("button", {name:"Sedimentation",exact:true}).click();
+  await expect(page.getByTestId("flashcard-prompt")).toContainText("clarifier");
+  await page.getByRole("button", {name:"Shuffle",exact:true}).click();
+  await expect(page.getByTestId("flashcard-prompt")).toContainText("clarifier");
+  await options.locator("summary").click();
+  await page.getByRole("button", {name:"Reveal answer",exact:true}).click();
+  await expect(page.getByRole("button", {name:"Still Learning",exact:true})).toBeVisible();
+  await expect(page.getByRole("button", {name:"Got It!",exact:true})).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.screenshot({path:"test-results/ui-workspace/flashcards-mobile.png",fullPage:true});
+});
+
+test("formula and account screens retain their original functions and shared type", async ({page}) => {
+  await page.goto("/#/formulas-water1");
+  await expect(page.getByRole("heading", {name:/Class 1 Water Treatment/})).toBeVisible();
+  await page.getByPlaceholder("Search formulas, variables, or topics…").fill("CT Value");
+  await expect(page.getByText("CT (mg·min/L) = C (mg/L) × T (min)", {exact:false})).toBeVisible();
+  await expect(page.getByText("Turbidity Removal Efficiency", {exact:true})).toHaveCount(0);
+  await page.getByRole("button", {name:"Account",exact:true}).first().click();
+  await expect(page.getByRole("heading", {name:"My Account",exact:true})).toBeVisible();
+  await expect(page.locator(".account-page")).toHaveCSS("font-family", /Sora/);
+});
+
+test("admin keeps all fourteen sections and a keyboard-accessible mobile drawer", async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("/#/admin");
+  await expect(page.locator("#admin-founder-title")).toBeVisible();
+  await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Sora/);
+  await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(244, 247, 251)");
+  await expect(page.locator(".admin-ledger-table")).toContainText("CA$1980.00");
+  const trigger=page.getByRole("button", {name:"Open navigation",exact:true});
+  await trigger.click();
+  const drawer=page.getByRole("dialog", {name:"Echelon administration navigation"});
+  await expect(drawer).toBeVisible();
+  await expect(drawer.locator(".admin-sidebar-button")).toHaveCount(14);
+  await page.keyboard.press("Escape");
+  await expect(drawer).toHaveCount(0);
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await page.locator(".admin-sidebar-button").filter({hasText:"Feedback"}).click();
+  await expect(page.getByRole("heading", {name:"Feedback",exact:true})).toBeVisible();
+  await expect(page.locator(".admin-sidebar")).toHaveAttribute("inert", "");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.screenshot({path:"test-results/ui-workspace/admin-mobile.png",fullPage:true});
+});
+
 test("CEU final saves answers, shows results and presents the certificate", async ({page}) => {
   await page.goto(`/#/continuing-education/${course.key}`);
   await page.getByRole("button", {name:"Preview final exam with completed sample modules"}).click();

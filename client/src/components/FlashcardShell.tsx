@@ -344,7 +344,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
+    <div className="flashcard-page" style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
         {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
       <style>{`
@@ -363,6 +363,16 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-nav-btn { background: #fff; border: 1px solid var(--echelon-line); color: var(--echelon-ink); border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 650; cursor: pointer; transition: all 0.15s; }
         .fc-nav-btn:hover { border-color: #AFC5E3; background: #EEF4FB; color: #1E3A5F; }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .fc-options { max-width: 880px; margin: 16px auto; background: #fff; border: 1px solid var(--echelon-line); border-radius: 14px; }
+        .fc-options > summary { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 12px 16px; cursor: pointer; color: var(--echelon-ink); font-size: 14px; font-weight: 700; }
+        .fc-options > summary::after { content: '+'; margin-left: auto; font-size: 20px; color: var(--echelon-blue); }
+        .fc-options[open] > summary::after { content: '−'; }
+        .fc-options > summary span { color: var(--echelon-copy); font-size: 12px; font-weight: 400; }
+        .fc-options-controls { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 16px 12px; }
+        .fc-options .fc-mod-tab { min-height: 44px; white-space: normal; text-align: left; }
+        .flashcard-page .fc-nav-btn { min-height: 44px; }
+        .flashcard-page :is(button, a, summary):focus-visible { outline: 3px solid var(--echelon-focus); outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { .fc-inner { transition: none; } }
         @media (max-width: 640px) {
           .fc-inner { height: 220px; }
           .fc-face { padding: 20px 18px; }
@@ -371,7 +381,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           .fc-header { padding: 12px 16px !important; }
           .fc-header-title { font-size: 14px !important; }
           .fc-header-sub { font-size: 11px !important; }
-          .fc-module-row { padding: 8px 16px !important; flex-wrap: nowrap !important; overflow-x: auto !important; scrollbar-width: thin; scrollbar-color: #94A3B8 transparent; -webkit-overflow-scrolling: touch; }
+          .fc-options { margin: 12px 16px; }
+          .fc-options > summary { flex-wrap: wrap; gap: 8px; }
+          .fc-module-row { padding: 8px 16px !important; }
           .fc-progress-row { padding: 0 16px 6px !important; }
           .fc-card-area { padding: 12px 16px 6px !important; }
           .fc-actions-row { padding: 12px 16px 20px !important; }
@@ -394,19 +406,19 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span style={{ color: "#22c55e", fontWeight: 700 }}>{scopeSummary.gotIt}</span> got it · {scopeSummary.stillLearning} still learning
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
-          <button onClick={handleShuffle} style={{ background: "#EEF4FB", border: "1px solid #B8CAE2", color: "#1E3A5F", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
-            Shuffle
-          </button>
         </div>
       </div>
 
-      <div style={{ padding: "10px 24px", background: "#F8FAFC", borderBottom: "1px solid var(--echelon-line)", display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
+      <details className="fc-options">
+        <summary>Flashcard options <span>{selectedModule ?? "All modules"} · {reviewing ? "Reviewing still-learning cards" : "Study deck"}</span></summary>
+      <div className="fc-options-controls">
         <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E5EFF9" : "#fff", color: !reviewing ? "#1E3A5F" : undefined }}>
           Study deck
         </button>
         <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={scopeSummary.stillLearning === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
           Review {scopeSummary.stillLearning} still-learning
         </button>
+        <button className="fc-nav-btn" onClick={handleShuffle}>Shuffle</button>
       </div>
 
       {/* Module Filter */}
@@ -433,6 +445,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           ))}
         </div>
       )}
+      </details>
 
       {/* Progress bar */}
       <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>

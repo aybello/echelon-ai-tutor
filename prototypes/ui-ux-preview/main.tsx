@@ -22,6 +22,10 @@ import OrgDashboard from "@/pages/OrgDashboard";
 import ContinuingEducationCourse from "@/pages/ContinuingEducationCourse";
 import Landing from "@/pages/Landing";
 import Pricing from "@/pages/Pricing";
+import Admin from "@/pages/Admin";
+import Account from "@/pages/Account";
+import FormulasWater1 from "@/pages/FormulasWater1";
+import FlashcardShell from "@/components/FlashcardShell";
 import { course, practiceQuestions, previewResult, resetPreviewCourse } from "./fixtures";
 import "@/index.css";
 import "./preview.css";
@@ -29,13 +33,16 @@ import "./restoration-fonts.css";
 import { restorationLogo } from "./restoration-brand";
 
 // Self-contained review branding; no external image host is required.
-const localizePreviewImages = () => document.querySelectorAll<HTMLImageElement>('.echelon-brand img').forEach(image => { if (image.src !== restorationLogo) image.src = restorationLogo; });
+const localizePreviewImages = () => document.querySelectorAll<HTMLImageElement>('.echelon-brand img, .admin-sidebar-brand img').forEach(image => { if (image.src !== restorationLogo) image.src = restorationLogo; });
 new MutationObserver(localizePreviewImages).observe(document.documentElement,{childList:true,subtree:true});
 
+// Shared learning recorders use a separate transport. Keep the review artifact
+// isolated even if it is served on an application origin or downloaded offline.
+window.fetch = async () => new Response("Preview only. Network requests are disabled.", { status: 403 });
 const queryClient = new QueryClient({defaultOptions:{ queries:{ retry:false } }});
 const client = trpc.createClient({links:[() => ({op}) => observable(observer => {
   const timer = setTimeout(() => { try {
-    if (op.path.startsWith("stripe.create")) throw new Error("Preview only. Payments are disabled.");
+    if (op.type === "mutation" && !["ceu.save", "quiz.logAttempt", "flashcard.updateProgress", "exam.startMock"].includes(op.path)) throw new Error("Preview only. External actions are disabled.");
     observer.next({result:{data:previewResult(op.path,op.input)}}); observer.complete();
   } catch(error) { observer.error(error as any); } }, 90);
   return () => clearTimeout(timer);
@@ -55,13 +62,15 @@ function PracticePreview() {
     headerExtra={<><QuizModeBar currentMode={quiz.quizMode} onModeChange={quiz.handleModeChange} examType="class1-water" onSettingsOpen={() => quiz.setSettingsOpen(true)} missedCount={quiz.missedCount} />{quiz.settingsOpen && <QuizSettingsDrawer totalQuestions={questions.length} onClose={() => quiz.setSettingsOpen(false)} settings={quiz.quizSettings} onApply={quiz.handleSettingsApply} />}</>}
   />;
 }
-const routes=[ ["/homepage","Homepage"], ["/pricing","Pricing"], ["/class1-water","Practice"], ["/", "Course finder"], ["/dashboard","Learner dashboard"], ["/team","Manager dashboard"], ["/mock","Mock exam"], [`/continuing-education/${course.key}`,"CEU course"] ];
+const routes=[ ["/homepage","Homepage"], ["/pricing","Pricing"], ["/class1-water","Practice"], ["/flashcards","Flashcards"], ["/formulas-water1","Formulas"], ["/account","Account"], ["/", "Course finder"], ["/dashboard","Learner dashboard"], ["/team","Manager dashboard"], ["/admin","Admin"], ["/mock","Mock exam"], [`/continuing-education/${course.key}`,"CEU course"] ];
 function scrollPreviewSection(id: string) {
   const element = document.getElementById(id);
   if(element) window.scrollTo({top:element.getBoundingClientRect().top + window.scrollY - 90,behavior:"instant"});
 }
 function Preview() {
   const [path,navigate] = useLocation();
+  const view = path.split("?")[0];
+  useEffect(() => { void queryClient.invalidateQueries({queryKey:[["auth", "me"]]}); }, [view]);
   useEffect(() => {
     const section = new URLSearchParams(path.split("?")[1] ?? "").get("previewSection");
     if(!section) return;
@@ -89,17 +98,22 @@ function Preview() {
       else if(href.startsWith("/dashboard")) navigate("/dashboard");
       else if(href.startsWith("/team")) navigate("/team");
       else if(href.startsWith("/pricing")) navigate("/pricing");
+      else if(href.startsWith("/admin")) navigate("/admin");
+      else if(href.includes("flashcard")) navigate("/flashcards");
+      else if(href.includes("formula")) navigate("/formulas-water1");
+      else if(href === "/account") navigate("/account");
       else if(href.includes("?panel=notes")) { navigate("/class1-water?panel=notes"); }
-      else if(href === "/" || href === "/account") navigate("/");
+      else if(href === "/") navigate("/");
       else navigate("/class1-water");
     };
     document.addEventListener("click",onLink); return () => document.removeEventListener("click",onLink);
   },[navigate]);
-  const view = path.split("?")[0];
   return <>
     <header className="preview-review-bar"><div><strong>Echelon · Old branding, simpler study flow</strong><span>Unpublished draft. Fictional sample data. No payments or customer records.</span></div><nav aria-label="Preview screens">{routes.map(([href,label]) => <button key={href} type="button" aria-pressed={view===href} onClick={() => navigate(href)}>{label}</button>)}</nav></header>
     <ErrorBoundary key={view}>{view === "/" ? <div className="marketing-workspace"><SiteNav currentPath="/" /><section className="landing-hero-section"><CoursePathHero /></section><main className="preview-course-surface"><CourseFinder /></main></div>
     :view === "/homepage" ? <Landing /> :view === "/pricing" ? <Pricing /> :view === "/dashboard" ? <StudentDashboard /> : view === "/team" ? <OrgDashboard />
+    :view === "/admin" ? <Admin /> :view === "/account" ? <Account /> :view === "/formulas-water1" ? <FormulasWater1 />
+    :view === "/flashcards" ? <FlashcardShell questions={questions} examName="Class 1 Water Treatment" examType="class1-water" backPath="/class1-water" modules={["Coagulation & Flocculation", "Sedimentation"]} />
     :view.startsWith("/continuing-education/") ? <><div className="preview-ceu-tools"><button onClick={() => { resetPreviewCourse(); void queryClient.invalidateQueries(); }}>Preview final exam with completed sample modules</button></div><ContinuingEducationCourse /></>
     :view === "/mock" ? <MockExamShell title="Class 1 Water · Mock exam preview" badge="ONTARIO CLASS 1" examQuestions={10} examDuration={3600} passThreshold={.7} moduleTargets={{"Coagulation & Flocculation":10}} moduleColors={{"Coagulation & Flocculation":{bg:"#eff6ff",color:"#1d4ed8"}}} questionPool={[]} productKey="class1-water" currentPath="/class1-water-exam" practicePath="/class1-water" practiceLabel="Return to practice" freeAccess />
     :<PracticePreview />}</ErrorBoundary>
