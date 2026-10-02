@@ -13,7 +13,7 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof
 function readinessLabel(score: number): string {
   if (score >= 80) return "Estimated Ready";
   if (score >= 60) return "Progressing";
-  return score > 0 ? "Needs Focus" : "Not Started";
+  return "Needs Focus";
 }
 
 function readinessColor(score: number): string {
@@ -50,6 +50,10 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
   });
 
   const data = progressQuery.data ?? [];
+
+  if (progressQuery.isError) {
+    return <p role="alert" className="mt-6 text-sm text-amber-800">Course Pass progress could not load. <button type="button" className="workspace-text-link" onClick={() => { void progressQuery.refetch(); }}>Retry progress</button></p>;
+  }
 
   if (data.length === 0) {
     return null; // No Flex licences to show progress for
@@ -98,7 +102,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
 
         {/* Per-operator progress table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm" aria-label="Course Pass study progress">
             <thead>
               <tr className="border-b text-left text-muted-foreground">
                 <th className="pb-2 pr-4">Operator</th>

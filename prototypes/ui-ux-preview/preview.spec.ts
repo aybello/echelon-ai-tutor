@@ -70,7 +70,13 @@ test("manager can find a learner and inspect study details without a second acti
   await page.screenshot({path:"test-results/ui-workspace/manager-dashboard.png",fullPage:true});
   await page.getByRole("button",{name:"Reports and outcomes",exact:true}).click();
   await expect(page.locator(".team-outcomes-report")).toBeVisible();
+  const coursePassProgress=page.getByRole("table",{name:"Course Pass study progress"});
+  await expect(coursePassProgress).toBeVisible();
+  await expect(coursePassProgress.getByRole("row").filter({hasText:"taylor@example.test"})).toContainText("100");
+  await expect(coursePassProgress.getByRole("row").filter({hasText:"taylor@example.test"})).toContainText("73%");
   await expect(page.getByRole("heading",{name:"Your operators"})).toHaveCount(0);
+  await page.getByRole("button",{name:"Operators and access",exact:true}).click();
+  await expect(coursePassProgress).toBeHidden();
 });
 
 test("CEU remains a self-paced lesson, final exam and certificate flow", async ({page}) => {

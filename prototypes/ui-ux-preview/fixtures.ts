@@ -38,7 +38,8 @@ export function previewResult(path: string, input: any): any {
     case "orgIntel.getOperatorReadiness": return { operators: members.map(member => ({ ...member, memberStatus: member.status, readinessScore: member.totalAttempts ? 68 : 0, weakestTopic: member.totalAttempts ? "Process troubleshooting" : null, recentMockScores: member.totalAttempts ? [{score:73,total:100}] : [], daysUntilExam: null, examRisk: "none", mockExamsCompleted: member.totalAttempts ? 1 : 0 })) };
     case "orgIntel.sendOperatorReminder": return { email: input.email };
     case "orgIntel.exportTeamCSV": return { orgName: "Sample team", csv: "Operator,Answers\nJordan,184\nLee,0" };
-    case "teamFlex.listLicences": case "teamFlex.getFlexProgress": return [];
+    case "teamFlex.listLicences": return [];
+    case "teamFlex.getFlexProgress": return [{ licenceId: 101, operatorEmail: "taylor@example.test", courseKey: "wpi-class4-water-coll", status: "active", totalAttempts: 100, accuracy: 73, readinessScore: 58, accessEndsAt: "2027-06-01T18:00:00.000Z" }];
     case "ceu.identity": return { signedIn: true, email: "jordan@example.test" };
     case "ceu.course": return clone({ ...course, modules: course.modules.map(module => ({ ...module, checks: module.checks.map(({correctIndex, explanation, ...question}) => question) })), finalQuestionCount: course.finalAssessment.length, finalAssessment: undefined, alternateFinalAssessment: undefined });
     case "ceu.myRecord": return clone(record);

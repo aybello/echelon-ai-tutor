@@ -1066,13 +1066,13 @@ export default function OrgDashboard() {
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
         {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
-        {overview.orgId && <FlexProgressDashboard orgId={overview.orgId} />}
 
         </section>}
 
         {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
 
         <section className="team-outcomes-report" data-view-active={managerView === "reports"}>
+        {overview.orgId && <FlexProgressDashboard orgId={overview.orgId} />}
         <div className="team-print-header">
           <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Echelon Institute</div>
           <h1 className="text-2xl font-bold text-slate-900 mt-1">{overview.orgName} — Learning Outcomes Report</h1>

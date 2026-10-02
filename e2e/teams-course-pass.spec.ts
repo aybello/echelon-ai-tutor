@@ -272,7 +272,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
   await page.getByRole("button", { name: "Reports and outcomes", exact: true }).click();
-  const progressTable = page.getByRole("table", { name: "Operator study progress" });
+  const progressTable = page.getByRole("table", { name: "Course Pass study progress" });
   await expect(progressTable).toBeVisible();
   const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
   await expect(progressRow).toHaveCount(1);
@@ -283,8 +283,9 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
     return progressRow.getByRole("cell").nth(index);
   };
   await expect(progressCell("Questions")).toHaveText("100");
-  await expect(progressCell("Mock Scores")).toContainText(`${expectedScore}%`);
-  await expect(progressCell("Status")).not.toContainText(/Not started/i);
+  await expect(progressCell("Accuracy")).toContainText(`${expectedScore}%`);
+  await expect(progressCell("Status")).toContainText("Studying");
+  await expect(progressCell("Readiness")).not.toContainText(/Not started/i);
 
   if (prefix === "reporting") {
     await operatorPage.goto("/class1-mock");
