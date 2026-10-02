@@ -71,7 +71,7 @@ export default function USStatePage() {
 
   if (!state) {
     return (
-      <div style={{ background: "#0F172A", minHeight: "100vh", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ background: "#0F172A", minHeight: "100vh", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
         <div style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: 24, fontWeight: 800, marginBottom: 16 }}>State Not Found</h1>
           <Link href="/us/states">
@@ -87,7 +87,7 @@ export default function USStatePage() {
   // ── Limited coverage ────────────────────────────────────────────────────────
   if (state.coverage === "limited") {
     return (
-      <div style={{ background: "#0F172A", minHeight: "100vh", color: "#fff", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ background: "#0F172A", minHeight: "100vh", color: "#fff", fontFamily: "'Sora', sans-serif" }}>
         <USNav />
         <div style={{ maxWidth: 720, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
           <FadeUp>
@@ -137,7 +137,7 @@ export default function USStatePage() {
   const isPartial = state.coverage === "partial";
 
   return (
-    <div style={{ background: "#0F172A", minHeight: "100vh", color: "#fff", fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ background: "#0F172A", minHeight: "100vh", color: "#fff", fontFamily: "'Sora', sans-serif" }}>
       <USNav />
 
       {/* Hero */}

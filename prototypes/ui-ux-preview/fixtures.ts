@@ -21,14 +21,33 @@ let record: CeuLearningRecord = {
 const clone = <T,>(data: T): T => structuredClone(data);
 export function previewResult(path: string, input: any): any {
   switch(path) {
-    case "auth.me": return { id: 1, name: "Jordan Mercer", email: "jordan@example.test", role: "user", openId: "preview" };
+    case "auth.me": return { id: 1, name: "Jordan Mercer", email: "jordan@example.test", role: window.location.hash.startsWith("#/admin") ? "admin" : "user", openId: "preview" };
     case "dashboardAuth.me": return { email: "jordan@example.test" };
+    case "access.auditMyEntitlements": return { isManager:false, accessibleCourses:[] };
+    case "stripe.getMyPurchases": return { purchases:[], unlockedExamTypes:[] };
+    case "stripe.getMySubscriptions": return { subscriptions:[], unlockedExamTypes:[] };
+    case "flashcard.getProgress": return { knownIds:[], totalCards:practiceQuestions.length };
+    case "flashcard.getAllProgress": return { progress:{} };
+    case "flashcard.updateProgress": return { success:true, knownIds:input.changes.filter((change: any) => change.known).map((change: any) => change.id) };
+    case "admin.stats": return { totalRevenueCAD:1980, purchaseCount:20, subscriptionCount:0, trialCount:12, feedbackCount:8, avgRating:4.8 };
+    case "admin.getCeuKpis": return { enrollments:0, learningStarted:0, modulesCompleted:0, finalStarted:0, finalSubmitted:0, retries:0, completed:0, certificatesViewed:0, evaluations:0, averageRating:null };
+    case "admin.getProductKpis": return {
+      generatedAt:now, periodDays:30,
+      funnel:{marketingPageViews:300, productSelections:50, buyerPathSelections:60, checkoutStarts:30, checkoutCompletions:20, diagnosticCompletions:10, mockExamCompletions:8},
+      engagement:{weeklyActiveLearners:12, sevenDayReturnRate:60, sevenDayReturnCohort:10, sevenDayReturners:6, thirtyDayReturnRate:50, thirtyDayReturnCohort:8, thirtyDayReturners:4, recordedStudySessionCompletions:30, recordedStudySessionStarts:35, trainingRecordsAttested:0, trainingHoursExports:0, medianMinutesToFirstQuiz:4, quizImprovementPercentagePoints:5, quizImprovementSampleSize:3},
+      commercial:{learningActivationRate:80, learningActivated:8, accessCohortSize:10, quizCompletionRate:80, quizCompleters:8, quizStarterCohortSize:10, pricingToCheckoutRate:20, attributedCheckouts:10, pricingCohortSize:50, refundRate:0, renewals:0, cancellations:0},
+      teams:{assignedSeats:2, totalSeats:5, utilizationRate:40, allAccess:{assignedSeats:2,totalSeats:5}, coursePass:{allocatedLicences:0,totalLicences:0,activatedLicences:0}},
+      outcomes:{passRate:null, passed:0, failed:0, averageReadinessPassed:null, averageReadinessFailed:null},
+    };
+    case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": case "admin.getCustomerRecoveryEvidence": return [];
+    case "admin.getDataExplorerCatalog": return {datasets:[]};
+    case "admin.getDataExplorerPage": return {rows:[], total:0, columns:[], page:1, pageSize:50};
     case "stripe.checkAccess": return { hasAccess: true };
     case "stripe.getCommercialAvailability": return { products: [
       { key: "class1-water", questionCount: 500 },
       { key: "class1-wastewater", questionCount: 800 },
     ] };
-    case "stripe.getMySubscriptions": case "stripe.getMySubscriptionsForEmailSession": return { subscriptions: [] };
+    case "stripe.getMySubscriptionsForEmailSession": return { subscriptions: [] };
     case "dashboard.overview": return { totalAttempts: 184, totalSessions: 9, overallAccuracy: 76, currentStreak: 3 };
     case "dashboard.studyFocus": return { courseKey: "class1-water", courseLabel: "Class 1 Water Treatment", quizPath: "/class1-water", mockExamPath: "/class1-water-exam" };
     case "activation.status": return { status: "completed", course: { courseKey: "class1-water" }, profile: { weeklyQuestionGoal: 60 } };

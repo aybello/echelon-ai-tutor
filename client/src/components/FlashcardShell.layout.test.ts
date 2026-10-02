@@ -21,4 +21,15 @@ describe("FlashcardShell action-control layout", () => {
     expect(source).toContain('data-testid="flashcard-study-card"');
     expect(source).toContain('data-testid="flashcard-prompt"');
   });
+
+  it("groups secondary controls without removing module or mastery actions", () => {
+    expect(source).toContain('<details className="fc-options">');
+    expect(source).toContain("Flashcard options");
+    expect(source).toContain('aria-label="Filter flashcards by module"');
+    expect(source).toContain("onClick={handleShuffle}");
+    expect(source).toContain("onClick={handleStudyDeck}");
+    expect(source).toContain("onClick={handleReviewUnknown}");
+    expect(source).toContain("markKnown();");
+    expect(source).toContain("markUnknown();");
+  });
 });

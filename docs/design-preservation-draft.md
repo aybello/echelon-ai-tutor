@@ -37,3 +37,18 @@ The founder-admin redesign predates PR #120. Its functions and sidebar must not 
 Show a viewable unpublished draft using actual React components and clearly labelled fictional fixture data before a wider release. No production records, publishing or checkout operations in this draft. Do not claim the entire site has been redesigned or production restored from this early preview.
 
 The comparison should include the restored homepage, simplified practice page, and the existing pricing page so father can judge visual continuity. Other fixture-backed learning screens can be inspected in the same preview.
+
+## Approved completion
+
+Father approved the restored-brand preview on October 2, 2026. The completion pass uses current main `24f44c944a190a884bcbcf3d2b691a202b3ef304`, not an older application snapshot.
+
+- Homepage and shared learning navigation use the original Echelon icon, Sora and navy/blue/teal identity.
+- Practice, mocks, learner and manager dashboards, and CEU views retain the useful simplified layout introduced by PR #120. The competing decorative skin is removed rather than undoing those controls.
+- Administration keeps its fourteen sections, sidebar, real metrics, approval controls, Data Explorer and access checks. Its canvas, surfaces, accents and display type now share the existing site tokens.
+- All shared flashcard pages group module filtering, shuffle and review mode under Flashcard options. Reveal, next/previous, mastery recording and payment gates remain unchanged.
+- Four regional US page families use Sora for body text as well as headings. Their content, coverage boundaries and destinations are untouched.
+- Pricing, account, formula sheets and other existing page families already use the original brand. They remain in that system rather than receiving replacement layouts. Formula calculations, printing and product prices are not rewritten.
+- The retired DM Serif Display font request is removed. Monospace remains appropriate for formulas and technical values.
+- The isolated review includes actual admin, account, formula and flashcard components, clearly fictional records and disabled external actions. It is not a live admin environment.
+
+No server, schema, purchase catalogue, checkout, authentication or customer records are changed by the completion pass. A production release must be distinguished from a verified GitHub commit and a saved WebDev checkpoint.
