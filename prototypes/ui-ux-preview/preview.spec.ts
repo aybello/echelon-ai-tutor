@@ -94,6 +94,60 @@ test("CEU remains a self-paced lesson, final exam and certificate flow", async (
   await page.screenshot({path:"test-results/ui-workspace/ceu-lesson.png",fullPage:true});
 });
 
+for (const width of [390, 720, 760, 1280]) {
+  test(`CEU rendered headers leave lesson controls accessible at ${width}px`, async ({page}) => {
+    await page.setViewportSize({width, height:844});
+    await page.goto(`/#/continuing-education/${course.key}`);
+    // Remove only the fixture review toolbar, not application shell elements.
+    await page.addStyleTag({content:".preview-review-bar, .preview-ceu-tools { display:none; }"});
+    const context = page.getByRole("region", {name:"Continuing education course workspace"});
+    const siteHeader = page.locator(".ceu-screen > .echelon-site-header");
+    await expect(siteHeader).toBeVisible();
+    await expect.poll(async () => context.evaluate(element => {
+      const header = element.parentElement!.querySelector(".echelon-site-header")!;
+      return Math.abs(element.getBoundingClientRect().top - header.getBoundingClientRect().bottom) < 1;
+    })).toBe(true);
+
+    await page.getByRole("button", {name:"Continue learning"}).click();
+    await expect(siteHeader).toHaveCount(0);
+    await expect.poll(() => context.evaluate(element => element.getBoundingClientRect().top)).toBe(0);
+    if (width <= 760) {
+      const trigger = page.getByRole("button", {name:"Course modules", exact:true});
+      await expect(trigger).toBeVisible();
+      expect(await trigger.evaluate(element => {
+        const rect = element.getBoundingClientRect();
+        const header = document.querySelector(".ceu-course-context")!.getBoundingClientRect();
+        return rect.top >= header.bottom && element.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2));
+      })).toBe(true);
+      await trigger.click();
+      const drawer = page.getByRole("complementary", {name:"Course progress"});
+      await expect(drawer).toHaveClass(/is-open/);
+      await expect.poll(() => drawer.evaluate(element => {
+        const header = document.querySelector(".ceu-course-context")!.getBoundingClientRect();
+        return Math.abs(element.getBoundingClientRect().top - header.bottom) < 1;
+      })).toBe(true);
+      // Resize the real context to exercise wrapped text/status clearance.
+      await context.locator(".ceu-course-context-inner").evaluate(element => {
+        (element as HTMLElement).style.paddingBlock = "24px";
+      });
+      await expect.poll(() => drawer.evaluate(element => {
+        const header = document.querySelector(".ceu-course-context")!.getBoundingClientRect();
+        return Math.abs(element.getBoundingClientRect().top - header.bottom) < 1;
+      })).toBe(true);
+      await drawer.locator(".ceu-sidebar-module > button").first().click();
+      await expect(drawer).not.toHaveClass(/is-open/);
+    }
+    await page.evaluate(() => window.scrollTo(0, 320));
+    await expect.poll(() => context.evaluate(element => element.getBoundingClientRect().top)).toBe(0);
+    await page.getByRole("button", {name:"Course overview", exact:true}).click();
+    await expect(siteHeader).toBeVisible();
+    await expect.poll(async () => context.evaluate(element => {
+      const header = element.parentElement!.querySelector(".echelon-site-header")!;
+      return element.getBoundingClientRect().top >= header.getBoundingClientRect().bottom - 1;
+    })).toBe(true);
+  });
+}
+
 test("active mock fits a phone and question navigation is available", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/mock");

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, useRoute } from "wouter";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
@@ -26,6 +26,7 @@ import {
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav, { ECHELON_LOGO_URL } from "@/components/SiteNav";
+import { observeCeuShellLayout } from "@/lib/ceuShellLayout";
 import { ceuModuleSlides } from "@shared/ceuSlides";
 import { ceuFinalEntry } from "@shared/ceuFinalEntry";
 import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
@@ -129,6 +130,8 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [saveFailed, setSaveFailed] = useState(false);
+  const shellRef = useRef<HTMLDivElement>(null);
+  const contextRef = useRef<HTMLElement>(null);
   const certificateTracked = useRef(false);
   const restoredSavedPosition = useRef(false);
   const [rating, setRating] = useState(0);
@@ -242,6 +245,16 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     certificateTracked.current = true;
     save.mutate({ courseKey, revision: record.revision, action: { type: "certificateViewed" } });
   }, [view, record, pending, courseKey]);
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [view]);
+
+  useLayoutEffect(() => {
+    if (shellRef.current && contextRef.current) {
+      return observeCeuShellLayout(shellRef.current, contextRef.current);
+    }
+  }, [view, course]);
 
   useEffect(() => {
     if (!course) return;
@@ -405,9 +418,9 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const nextModule = course.modules[activeModuleIndex + 1];
 
   return (
-    <div className="ceu-screen">
+    <div className="ceu-screen" ref={shellRef} data-site-header={view === "overview" ? "visible" : "hidden"}>
       {view === "overview" && <SiteNav currentPath={`/continuing-education/${courseKey}`} variant="marketing" />}
-      <section className="ceu-course-context" aria-label="Continuing education course workspace">
+      <section className="ceu-course-context" ref={contextRef} aria-label="Continuing education course workspace">
         <div className="ceu-course-context-inner">
           <div className="ceu-course-context-identity">
             <Link href="/continuing-education" onClick={event => {

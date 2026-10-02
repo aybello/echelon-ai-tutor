@@ -249,21 +249,21 @@
   .ceu-exit-button { transition: none; }
 }
 
-.ceu-screen { --ceu-shell-offset: 122px; }
-.ceu-course-context { position: sticky; top: 64px; }
-.ceu-player-shell { min-height: calc(100vh - var(--ceu-shell-offset)); }
-
-@media (max-width: 720px) {
-  .ceu-course-context { top: 58px; }
+.ceu-screen {
+  --ceu-site-header-height: 0px;
+  --ceu-shell-offset: 58px;
 }
+/* Keep horizontal clipping without creating a non-scrolling sticky ancestor. */
+@supports (overflow-x: clip) {
+  html:has(.ceu-screen), body:has(.ceu-screen) { overflow-x: clip; }
+}
+.ceu-course-context { position: sticky; top: var(--ceu-site-header-height); }
+.ceu-player-shell { min-height: calc(100vh - var(--ceu-shell-offset)); }
 
 @media (max-width: 760px) {
   .ceu-player-sidebar { top: var(--ceu-shell-offset); }
 }
 
-@media (max-width: 640px) {
-  .ceu-screen { --ceu-shell-offset: 142px; }
-}
 /* The learning surface keeps course controls near the lesson. */
 .ceu-screen button { min-height:44px; }
 .ceu-screen button:focus-visible, .ceu-screen a:focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
