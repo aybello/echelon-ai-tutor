@@ -271,13 +271,21 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // This is still the manager's authenticated browser, while the operator used
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
-  const progressTable = page.locator("table").filter({
-    has: page.locator("th").filter({ hasText: /^Readiness$/ }),
-  });
+  await page.getByRole("button", { name: "Reports and outcomes", exact: true }).click();
+  const progressTable = page.getByRole("table", { name: "Course Pass study progress" });
+  await expect(progressTable).toBeVisible();
   const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
-  await expect(progressRow.locator("td").nth(3)).toHaveText("100");
-  await expect(progressRow.locator("td").nth(4)).toContainText(`${expectedScore}%`);
-  await expect(progressRow.locator("td").nth(5)).not.toContainText("Not started");
+  await expect(progressRow).toHaveCount(1);
+  const progressHeaders = await progressTable.getByRole("columnheader").allTextContents();
+  const progressCell = (header: string) => {
+    const index = progressHeaders.findIndex(text => text.trim() === header);
+    expect(index, `The progress report must include ${header}`).toBeGreaterThanOrEqual(0);
+    return progressRow.getByRole("cell").nth(index);
+  };
+  await expect(progressCell("Questions")).toHaveText("100");
+  await expect(progressCell("Accuracy")).toContainText(`${expectedScore}%`);
+  await expect(progressCell("Status")).toContainText("Studying");
+  await expect(progressCell("Readiness")).not.toContainText(/Not started/i);
 
   if (prefix === "reporting") {
     await operatorPage.goto("/class1-mock");
@@ -371,12 +379,15 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await signInWithOtp(page, email, `/${bankKey}`);
     await page.waitForURL(`**/${bankKey}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
-    await expect(page.getByRole("button", { name: /Retired module/ })).toHaveCount(0);
-    await expect(page.getByRole("button", { name: /Rare module/ })).toBeVisible();
-    await page.getByRole("button", { name: /Paging module/ }).click();
+    await page.locator(".practice-options summary").click();
+    const moduleFilter = page.getByRole("combobox", { name: "Module", exact: true });
+    await expect(moduleFilter.getByRole("option", { name: "Retired module", exact: true })).toHaveCount(0);
+    await expect(moduleFilter.getByRole("option", { name: "Rare module", exact: true })).toHaveCount(1);
+    await moduleFilter.selectOption({ label: "Paging module" });
     await page.getByRole("button", { name: /Quiz Settings/ }).click();
     await page.getByRole("button", { name: "50 Qs", exact: true }).click();
     await page.getByRole("button", { name: "Apply Settings →" }).click();
+    await page.locator(".practice-options summary").click();
     const seen = new Set<string>();
     for (let i = 0; i < 52; i++) {
       await expect(page.getByTestId("practice-question")).toBeVisible();
@@ -385,7 +396,7 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       expect(Number(id)).toBeLessThan(960076);
       seen.add(id);
       await page.getByRole("button", { name: /^A\. Correct practice answer/ }).click();
-      await page.getByRole("button", { name: "✓ Sure", exact: true }).click();
+      // A confidence rating is optional; do not manufacture one for these answers.
       await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
       await page.getByRole("button", { name: "Next Question →", exact: true }).click();
       if (i === 49) {
@@ -399,6 +410,8 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       const [rows] = await db.execute("SELECT COUNT(*) AS total FROM question_attempts WHERE studentEmail = ? AND courseKey = ? AND examType = ? AND questionId BETWEEN 960001 AND 960075 AND correct = 'yes'", [email, bankKey, bankKey]);
       return Number((rows as Array<{ total: number }>)[0].total);
     }).toBe(52);
+    const [unratedRows] = await db.execute("SELECT COUNT(*) AS total FROM question_attempts WHERE studentEmail = ? AND courseKey = ? AND examType = ? AND questionId BETWEEN 960001 AND 960075 AND correct = 'yes' AND confidence IS NULL", [email, bankKey, bankKey]);
+    expect(Number((unratedRows as Array<{ total: number }>)[0].total)).toBe(52);
     expect(await page.evaluate(() => localStorage.getItem("echelon_qbank_class3-water-dist"))).toBeNull();
     expect(await page.evaluate(() => localStorage.getItem("practice_progress_sentinel"))).toBe("keep");
     await expect(page.getByText("Legacy private cached question", { exact: true })).toHaveCount(0);
@@ -453,10 +466,11 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
     for (const [bankKey, path] of courses) {
       await page.goto(path);
       await expect(page.getByTestId("practice-question")).toBeVisible();
-      const filters = page.getByRole("group", { name: "Filter questions by module" });
-      await expect(filters.getByRole("button", { name: /Coagulation & Flocculation/ })).toHaveCount(0);
+      await page.locator(".practice-options summary").click();
+      const filters = page.getByRole("combobox", { name: "Module", exact: true });
+      await expect(filters.getByRole("option", { name: "Coagulation & Flocculation", exact: true })).toHaveCount(0);
       for (const [index, module] of modules.entries()) {
-        await filters.getByRole("button", { name: module, exact: true }).click();
+        await filters.selectOption({ label: module });
         const question = page.getByTestId("practice-question");
         await expect(question).toContainText(`Module QA ${bankKey}`);
         await expect.poll(async () => {
@@ -466,7 +480,8 @@ test("paid Water and OIT pages use current bank modules and keep filtering in th
         await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
         expect(new URL(page.url()).pathname).toBe(path);
       }
-      await filters.getByRole("button", { name: "All Modules", exact: true }).click();
+      await filters.selectOption("");
+      await page.locator(".practice-options summary").click();
       await expect(page.getByTestId("practice-question")).toBeVisible();
     }
   } finally { await db.end(); }

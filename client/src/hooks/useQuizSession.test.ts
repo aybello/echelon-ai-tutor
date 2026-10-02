@@ -30,6 +30,9 @@ const question = (
 });
 
 describe("quiz session answer history", () => {
+  it("preserves an unrated confirmed answer without inventing confidence", () => {
+    expect(createHistoryEntry(question(1, "Disinfection"), 2, null)).toMatchObject({ correct: true, confidence: null, selectedOption: 2 });
+  });
   it("stores correctness for a confirmed answer", () => {
     expect(createHistoryEntry(question(1, "Disinfection"), 2, 75)).toMatchObject({
       questionId: 1,

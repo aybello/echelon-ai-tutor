@@ -77,6 +77,7 @@ export default function QuizModeBar({
             key={card.id}
             onClick={() => !card.disabled && onModeChange(card.id)}
             disabled={card.disabled}
+            aria-pressed={active}
             title={card.description}
             className="qs-mode-card"
             style={{

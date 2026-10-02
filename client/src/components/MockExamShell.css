@@ -1,0 +1,47 @@
+
+        @media (max-width: 768px) {
+          .mes-active-grid { grid-template-columns: 1fr !important; }
+          .mes-navigator { position: static !important; order: -1; }
+          .mes-mobile-progress { display: block !important; }
+        }
+        @media (max-width: 640px) {
+          .mes-results-hero-btns { flex-direction: column !important; }
+          .mes-results-hero-btns button, .mes-results-hero-btns a { width: 100% !important; min-height: 48px !important; }
+          .mes-stats-4 { grid-template-columns: repeat(2, 1fr) !important; }
+          /* Larger touch targets for answer options in active exam */
+          .mes-option-btn {
+            min-height: 52px !important;
+            padding: 14px 16px !important;
+            touch-action: manipulation;
+          }
+          /* Nav buttons full-width on mobile */
+          .mes-nav-btns { display: grid!important; grid-template-columns: 1fr 1fr; gap: 10px!important; }
+          .mes-nav-btns button:first-child { order:1; }.mes-nav-btns button:last-child { order:2; }.mes-nav-btns button:nth-child(2) { order:3; }.mes-nav-btns button:nth-child(3) { order:4; }
+          .mes-nav-btns button { width: 100% !important; min-height: 48px !important; }
+          /* Scroll to top on question change */
+          .mes-question-area { scroll-margin-top: 70px; }
+        }
+        @media (max-width: 480px) {
+          .mes-intro-card { padding: 28px 18px !important; }
+          .mes-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .mes-results-hero { padding: 24px 16px !important; }
+          .mes-active-header { flex-wrap: wrap !important; gap: 8px !important; }
+          .mes-active-header-right { flex-wrap: wrap !important; gap: 8px !important; }
+        }
+
+.mes-navigator summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; justify-content: space-between; color: #33465f; font-size: 14px; font-weight: 700; list-style: none; }
+.mes-navigator summary::-webkit-details-marker { display: none; }
+.mes-navigator summary::after { content: "▾"; }
+.mes-navigator[open] summary::after { content: "▴"; }
+.mes-navigator[open] summary { margin-bottom: 12px; }
+.mes-navigator button { min-height: 36px; }
+.mes-option-btn:focus-visible, .mes-navigator summary:focus-visible { outline: 3px solid #397ce0; outline-offset: 3px; }
+.mes-question-card { min-width: 0; }
+@media(max-width:768px) {
+  .mes-active-grid { padding: 16px 16px 72px!important; gap: 14px!important; }
+  .mes-question-card { padding: 22px 18px!important; }
+  .mes-navigator { padding: 10px 16px!important; }
+  .mes-navigator button { min-height: 44px; }
+  .mes-nav-btns { position: sticky; bottom: 0; background: white; padding: 10px 0; z-index: 2; }
+}
+@media(prefers-reduced-motion:reduce) { .mes-active-grid * { animation: none!important; transition: none!important; } }

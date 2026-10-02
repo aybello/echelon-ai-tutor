@@ -10,7 +10,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
 
-export const ECHELON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
+export const ECHELON_LOGO_URL = "/echelon-logo.webp";
 
 export const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
@@ -130,12 +130,14 @@ export default function SiteNav({
         </Link>
 
         <div className="echelon-desktop-links">
+          {learningMode ? <Link href="/account" className="echelon-nav-link">My courses</Link> : <>
           <Link href="/#courses" className={`echelon-nav-link${isPathActive(currentPath, "/") ? " is-active" : ""}`}>Courses</Link>
           <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
           <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
           <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
           <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
           <ResourcesMenu currentPath={currentPath} />
+          </>}
         </div>
 
         <div className="echelon-nav-actions">

@@ -118,3 +118,6 @@ client/public/__manus__/version.json
 .project-config.json
 deliverables/*.docx
 deliverables/*.pptx
+
+# Isolated, fictional UI preview output
+.ui-preview-build/

@@ -167,7 +167,7 @@ test("signed-in learner completes a lesson, passes the protected final and recei
 
   await markRemainingModulesComplete(emails[0], short);
   await page.reload();
-  await page.getByRole("button", { name: /Final exam/ }).click();
+  await page.getByRole("navigation", { name: "Course workspace navigation" }).getByRole("button", { name: "Final exam", exact: true }).click();
   await expect(page.locator(".ceu-exam-question-card h1")).toBeVisible();
   await expect(page.getByRole("main")).toHaveCount(1);
 
@@ -185,7 +185,7 @@ test("signed-in learner completes a lesson, passes the protected final and recei
       await saveClick(page, page.getByRole("button", { name: "Retry save", exact: true }));
       await expect(page.getByRole("alert")).toHaveCount(0);
       await page.reload();
-      await page.getByRole("button", { name: /Final exam/ }).click();
+      await page.getByRole("navigation", { name: "Course workspace navigation" }).getByRole("button", { name: "Final exam", exact: true }).click();
       await expect(page.locator(".ceu-exam-question-card h1")).toHaveText(prompt);
       await expect(page.getByRole("radio", { name: question.choices[question.correctIndex], exact: true })).toBeChecked();
     } else {

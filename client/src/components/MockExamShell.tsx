@@ -1,3 +1,4 @@
+import "./MockExamShell.css";
 // MockExamShell — unified mock exam UI shared by all Ontario and WPI exam pages.
 // Full feature parity: ScoreHistory, usePageMeta, stats grid, weakest-first module sort,
 // timer colour changes, province selector, report modal, flag/review system.
@@ -389,6 +390,13 @@ export default function MockExamShell({
   renderQuestionSupplement,
 }: MockExamConfig) {
   const { user, loading: authLoading } = useAuth();
+  const [navigatorOpen, setNavigatorOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 769px)").matches);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 769px)");
+    const sync = () => setNavigatorOpen(media.matches);
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
   const [storedEmailForAccess] = useState<string | undefined>(() => {
     try {
       return localStorage.getItem("echelon_subscription_email")
@@ -715,7 +723,7 @@ export default function MockExamShell({
         freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 640, margin: "0 auto", padding: "48px 20px 80px" }}>
             {/* Header */}
@@ -785,36 +793,7 @@ export default function MockExamShell({
   if (examState === "intro") {
     return (
       <>
-      <style>{`
-        @media (max-width: 768px) {
-          .mes-active-grid { grid-template-columns: 1fr !important; }
-          .mes-navigator { display: none !important; }
-          .mes-mobile-progress { display: block !important; }
-        }
-        @media (max-width: 640px) {
-          .mes-results-hero-btns { flex-direction: column !important; }
-          .mes-results-hero-btns button, .mes-results-hero-btns a { width: 100% !important; min-height: 48px !important; }
-          .mes-stats-4 { grid-template-columns: repeat(2, 1fr) !important; }
-          /* Larger touch targets for answer options in active exam */
-          .mes-option-btn {
-            min-height: 52px !important;
-            padding: 14px 16px !important;
-            touch-action: manipulation;
-          }
-          /* Nav buttons full-width on mobile */
-          .mes-nav-btns { flex-direction: column !important; gap: 10px !important; }
-          .mes-nav-btns button { width: 100% !important; min-height: 48px !important; }
-          /* Scroll to top on question change */
-          .mes-question-area { scroll-margin-top: 70px; }
-        }
-        @media (max-width: 480px) {
-          .mes-intro-card { padding: 28px 18px !important; }
-          .mes-stats-grid { grid-template-columns: 1fr 1fr !important; }
-          .mes-results-hero { padding: 24px 16px !important; }
-          .mes-active-header { flex-wrap: wrap !important; gap: 8px !important; }
-          .mes-active-header-right { flex-wrap: wrap !important; gap: 8px !important; }
-        }
-      `}</style>
+
       <PurchaseGate
         examType={productKey}
         productKey={productKey}
@@ -824,7 +803,7 @@ export default function MockExamShell({
         freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px 80px" }}>
             <div className="mes-intro-card" style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
@@ -897,6 +876,7 @@ export default function MockExamShell({
               </div>
 
               <button
+                className="mes-start-button"
                 disabled={startMock.isPending}
                 onClick={() => startExam()}
                 style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${resolvedAccent}, ${resolvedAccent2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
@@ -925,7 +905,7 @@ export default function MockExamShell({
       incorrect: questions.length - correct - answers.filter(answer => answer.selected === null).length,
     };
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
             {!!scoredResult?.unavailableCount && <p role="status" className="mb-3 rounded bg-amber-50 p-3 text-amber-900">
@@ -1079,7 +1059,7 @@ export default function MockExamShell({
 
   if (examState === "results") {
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "72px 20px" }}>
           <div style={{ background: "#fff", borderRadius: 20, padding: "36px", textAlign: "center", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
@@ -1100,7 +1080,7 @@ export default function MockExamShell({
   const isLastQ = currentIdx === questions.length - 1;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
       <SiteNav currentPath={currentPath} />
       {/* Sticky header */}
       <div style={{ position: "sticky", top: 0, zIndex: 100, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px" }}>
@@ -1175,7 +1155,7 @@ export default function MockExamShell({
 
       <div className="mes-active-grid" style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 220px", gap: 20, alignItems: "start" }}>
         {/* Question card */}
-        <div style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+        <div className="mes-question-card" style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
           {/* Module badge */}
           <div style={{ display: "inline-block", padding: "3px 10px", borderRadius: 20, background: moduleColors[currentQ.module]?.bg ?? "#E0F2FE", color: moduleColors[currentQ.module]?.color ?? accentColor, fontSize: 11, fontWeight: 700, marginBottom: 16 }}>
             {currentQ.module}
@@ -1225,16 +1205,17 @@ export default function MockExamShell({
             </button>
             <button
               onClick={toggleFlag}
+              aria-pressed={isFlagged}
               style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#E2E8F0"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
             >
-              {isFlagged ? "🚩 Flagged" : "🚩 Flag"}
+              {isFlagged ? "Flagged for review" : "Flag for review"}
             </button>
             <button
               onClick={() => setReportModal({ id: currentQ.id, text: currentQ.question, module: currentQ.module })}
               style={{ padding: "12px 14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#94A3B8", fontWeight: 600, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}
               title="Report an error"
             >
-              ⚑
+              Report question
             </button>
             {isLastQ ? (
               <button
@@ -1255,8 +1236,8 @@ export default function MockExamShell({
         </div>
 
         {/* Question navigator */}
-        <div className="mes-navigator" style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
+        <details className="mes-navigator" open={navigatorOpen} onToggle={event => setNavigatorOpen(event.currentTarget.open)} style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
+          <summary>Questions · {answered} of {questions.length} answered</summary>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {
               const isAnswered = answers[i]?.selected !== null;
@@ -1265,7 +1246,9 @@ export default function MockExamShell({
               return (
                 <button
                   key={i}
-                  onClick={() => setCurrentIdx(i)}
+                  onClick={() => { setCurrentIdx(i); if (!window.matchMedia("(min-width: 769px)").matches) setNavigatorOpen(false); }}
+                  aria-label={`Question ${i + 1}${isFlaggedQ ? ", flagged" : ""}${isAnswered ? ", answered" : ", unanswered"}`}
+                  aria-current={isCurrent ? "step" : undefined}
                   style={{
                     padding: "6px 0", borderRadius: 6,
                     border: isCurrent ? `2px solid ${accentColor}` : "1px solid #E2E8F0",
@@ -1297,7 +1280,7 @@ export default function MockExamShell({
           >
             Submit Exam ✓
           </button>
-        </div>
+        </details>
       </div>
 
       {showPreviewGate && (

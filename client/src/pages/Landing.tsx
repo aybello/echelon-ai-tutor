@@ -23,6 +23,8 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import React from "react";
 import LandingNav from "@/components/LandingNav";
+import CoursePathHero from "@/components/CoursePathHero";
+import CourseFinder from "@/components/CourseFinder";
 
 // Animated stat component using count-up hook
 function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
@@ -1348,7 +1350,7 @@ export default function Landing() {
   };
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div className="marketing-workspace" style={{ minHeight: "100vh" }}>
       {nationalWaitlistOpen && (
         <NationalWaitlistModal
           defaultProvince={nationalWaitlistProvince}
@@ -1382,9 +1384,6 @@ export default function Landing() {
           .contact-form-grid { grid-template-columns: 1fr !important; }
           .landing-teams-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .landing-course-section { padding: 48px 16px !important; }
-          .landing-hero-section { padding: 28px 16px 30px !important; }
-          .landing-hero-section h1 { font-size: clamp(24px, 7vw, 40px) !important; }
-          .landing-hero-section p { font-size: 14px !important; }
           .landing-hero-reveal { opacity: 0; transform: translate3d(0, 16px, 0); animation: landingHeroReveal 420ms cubic-bezier(0.23, 1, 0.32, 1) forwards; }
           .landing-hero-reveal-1 { animation-delay: 80ms; }
           .landing-hero-reveal-2 { animation-delay: 150ms; }
@@ -1405,58 +1404,15 @@ export default function Landing() {
       )}
 
       {/* ── Hero ── */}
-      <section className="landing-hero-section" style={{
-        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
-        padding: "40px 24px 46px",
-        textAlign: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        {/* Background grid pattern */}
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-          pointerEvents: "none",
-        }} />
-
-        <div style={{ position: "relative", maxWidth: 800, margin: "0 auto" }}>
-          <h1
-            className="landing-hero-reveal landing-hero-reveal-1"
-            style={{
-              fontSize: "clamp(28px, 4.4vw, 50px)",
-              fontWeight: 800,
-              color: "#FFFFFF",
-              lineHeight: 1.15,
-              letterSpacing: "-0.03em",
-              margin: "0 0 12px 0",
-            }}
-          >
-            Pass Your Operator Exam.<br />
-            <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Advance Your Career.
-            </span>
-          </h1>
-
-          <p
-            className="landing-hero-reveal landing-hero-reveal-2"
-            style={{
-              fontSize: "clamp(14px, 1.6vw, 17px)",
-              color: "rgba(255,255,255,0.75)",
-              lineHeight: 1.55,
-              maxWidth: 620,
-              margin: "0 auto 22px",
-            }}
-          >
-            Practice questions, timed mocks, study notes, and AI-powered explanations for Canadian water and wastewater certification.
-          </p>
-
+      <section className="landing-hero-section">
+        <CoursePathHero>
           {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
           <div
             className="landing-hero-btns landing-hero-reveal landing-hero-reveal-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+            <a href="#find-course" className="workspace-primary">Find my course →</a>
             <button
               type="button"
-              className="btn-pulse"
+              className="landing-oit-secondary"
               aria-expanded={showOitPreviewChoice}
               aria-controls="oit-preview-choice"
               onClick={() => setShowOitPreviewChoice(open => !open)}
@@ -1516,23 +1472,26 @@ export default function Landing() {
             )}
           </div>
           <p
-            className="landing-hero-reveal landing-hero-reveal-4"
+            className="landing-free-preview-note"
             style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
           >
             🎁 Free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and 3 AI Tutor messages
           </p>
-        </div>
+        </CoursePathHero>
       </section>
+      <div id="find-course" className="course-finder-container">
+        <CourseFinder initialProvince={province} />
+      </div>
 
       {/* ── Course Catalogue ── */}
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <FadeUp>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
-            Choose Your Certification Track
+            Browse all courses
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 620, margin: "0 auto 32px" }}>
-            Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Choose a track, then get a complete study system: 500+ practice questions in core certification banks, full-length mock exams, flashcards, study notes, formula sheets where relevant, progress tracking, and AI Tutor support.
+            Explore Ontario and WPI certification courses. Each course brings practice questions, mock exams and its study tools together in one workspace.
           </p>
 
           {/* Track Tree — accordion-style vertical selector */}
