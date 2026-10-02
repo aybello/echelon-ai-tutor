@@ -24,6 +24,11 @@ export function previewResult(path: string, input: any): any {
     case "auth.me": return { id: 1, name: "Jordan Mercer", email: "jordan@example.test", role: "user", openId: "preview" };
     case "dashboardAuth.me": return { email: "jordan@example.test" };
     case "stripe.checkAccess": return { hasAccess: true };
+    case "stripe.getCommercialAvailability": return { products: [
+      { key: "class1-water", questionCount: 500 },
+      { key: "class1-wastewater", questionCount: 800 },
+    ] };
+    case "stripe.getMySubscriptions": case "stripe.getMySubscriptionsForEmailSession": return { subscriptions: [] };
     case "dashboard.overview": return { totalAttempts: 184, totalSessions: 9, overallAccuracy: 76, currentStreak: 3 };
     case "dashboard.studyFocus": return { courseKey: "class1-water", courseLabel: "Class 1 Water Treatment", quizPath: "/class1-water", mockExamPath: "/class1-water-exam" };
     case "activation.status": return { status: "completed", course: { courseKey: "class1-water" }, profile: { weeklyQuestionGoal: 60 } };

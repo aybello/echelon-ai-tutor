@@ -1,4 +1,4 @@
-body { margin:0; font-family: Inter, system-ui, sans-serif; background:#f4f7fb; }
+body { margin:0; font-family: 'Sora', sans-serif; background:#f4f7fb; }
 .preview-review-bar { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; padding:14px 22px; color:white; background:#10243d; }
 .preview-review-bar >div { display:grid; gap:4px; }.preview-review-bar strong { font-size:15px; }.preview-review-bar span { font-size:12px; color:#bcd1e7; }
 .preview-review-bar nav { display:flex; flex-wrap:wrap; gap:6px; }.preview-review-bar button { min-height:40px; background:transparent; border:1px solid #5a718d; padding:8px 12px; border-radius:8px; color:white; font-size:13px; cursor:pointer; }.preview-review-bar button[aria-pressed=true] { background:white; color:#10243d; border-color:white; }

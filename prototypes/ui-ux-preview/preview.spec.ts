@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 test("real homepage keeps the approved branding and both free OIT entry points on a phone", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/homepage");
-  await expect(page.getByRole("heading",{name:"Confidence starts with understanding."})).toBeVisible();
+  await expect(page.getByRole("heading",{name:"Pass Your Operator Exam. Advance Your Career."})).toBeVisible();
   await expect.poll(() => page.locator(".echelon-brand img").evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
   await page.getByRole("button",{name:"Try 15 OIT Questions Free →",exact:true}).click();
   await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Water OIT Recommended/})).toHaveAttribute("href",/^#?\/quiz$/);
