@@ -430,7 +430,9 @@ export async function activateFlexLicence(
     throw new TRPCError({ code: "BAD_REQUEST", message: "This Course Pass passed its activation deadline. Contact your manager." });
   }
 
-  const now = new Date();
+  // TIMESTAMP(0) rounds fractional seconds. Floor before writing so an
+  // immediate access check cannot see a future start and cache a denial.
+  const now = new Date(Math.floor(Date.now() / 1000) * 1000);
   const accessEndsAt = addUtcCalendarMonths(now, licence.termMonths);
 
   const reportingEndsAt = new Date(accessEndsAt);

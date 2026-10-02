@@ -112,10 +112,25 @@ describe("Team Flex Course Pass lifecycle", () => {
       expect.objectContaining({ id: licenceId, status: "assigned", invitedEmail: OPERATOR }),
     ]));
 
-    const activated = await operator.teamFlex.activateLicence({ licenceId });
-    expect(activated).toMatchObject({ licenceId, courseKey: "class4-wastewater" });
-    expect(activated.accessEndsAt.getTime()).toBeGreaterThan(activated.startsAt.getTime());
-    expect(activated.reportingEndsAt.getTime()).toBeGreaterThan(activated.accessEndsAt.getTime());
+    // Keep the clock beyond the rounding boundary while the actual database
+    // stores TIMESTAMP(0), so network latency cannot hide a future-start bug.
+    const activationTime = new Date(Math.floor(Date.now() / 1000) * 1000 + 750);
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(activationTime);
+    try {
+      const activated = await operator.teamFlex.activateLicence({ licenceId });
+      expect(activated).toMatchObject({ licenceId, courseKey: "class4-wastewater" });
+      expect(activated.startsAt.getTime()).toBeLessThanOrEqual(activationTime.getTime());
+      expect(activated.startsAt.getUTCMilliseconds()).toBe(0);
+      expect(activated.accessEndsAt.getTime()).toBeGreaterThan(activated.startsAt.getTime());
+      expect(activated.reportingEndsAt.getTime()).toBeGreaterThan(activated.accessEndsAt.getTime());
+      await expect(operator.stripe.checkAccess({ examType: "class4-ww" }))
+        .resolves.toMatchObject({ hasAccess: true });
+      const repeated = await operator.teamFlex.activateLicence({ licenceId });
+      expect(repeated).toEqual(activated);
+    } finally {
+      vi.useRealTimers();
+    }
 
     const finalOperatorAccess = await operator.teamFlex.myLicences();
     expect(finalOperatorAccess).toEqual(expect.arrayContaining([
