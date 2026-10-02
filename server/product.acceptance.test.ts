@@ -114,7 +114,7 @@ describe("pricing model — product catalog integrity", () => {
     for (const p of ALL_PRODUCTS) {
       expect(p.key, `key missing`).toBeTruthy();
       expect(p.priceCAD, `priceCAD missing for ${p.key}`).toBeGreaterThan(0);
-      expect(p.priceUSD, `priceUSD missing for ${p.key}`).toBeGreaterThan(0);
+      expect(Object.hasOwn(p, "priceUSD"), `USD price must not exist for ${p.key}`).toBe(false);
     }
   });
 

@@ -723,7 +723,7 @@ export default function MockExamShell({
         freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 640, margin: "0 auto", padding: "48px 20px 80px" }}>
             {/* Header */}
@@ -803,7 +803,7 @@ export default function MockExamShell({
         freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px 80px" }}>
             <div className="mes-intro-card" style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
@@ -876,6 +876,7 @@ export default function MockExamShell({
               </div>
 
               <button
+                className="mes-start-button"
                 disabled={startMock.isPending}
                 onClick={() => startExam()}
                 style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${resolvedAccent}, ${resolvedAccent2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
@@ -904,7 +905,7 @@ export default function MockExamShell({
       incorrect: questions.length - correct - answers.filter(answer => answer.selected === null).length,
     };
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
             {!!scoredResult?.unavailableCount && <p role="status" className="mb-3 rounded bg-amber-50 p-3 text-amber-900">
@@ -1058,7 +1059,7 @@ export default function MockExamShell({
 
   if (examState === "results") {
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "72px 20px" }}>
           <div style={{ background: "#fff", borderRadius: 20, padding: "36px", textAlign: "center", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
@@ -1079,7 +1080,7 @@ export default function MockExamShell({
   const isLastQ = currentIdx === questions.length - 1;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="study-mock-workspace" style={{ minHeight: "100vh" }}>
       <SiteNav currentPath={currentPath} />
       {/* Sticky header */}
       <div style={{ position: "sticky", top: 0, zIndex: 100, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px" }}>

@@ -1,6 +1,6 @@
 # Coordinated UI and UX workspace update
 
-This branch updates the shared learning surfaces. It is a design-review branch; production deployment is pending review of the working preview.
+This branch updates the shared learning surfaces using the navy, ivory, sage and serif design approved on October 2, 2026. Production deployment remains subject to the complete release checks and verification of the code actually serving the site.
 
 ## User experience
 
@@ -11,6 +11,7 @@ This branch updates the shared learning surfaces. It is a design-review branch; 
 - The manager dashboard separates Operators and access from Reports and outcomes. The roster includes per-course progress, expandable study details, name/email search and study-activity filtering. Assigned access is distinguished from recorded practice; invitation delivery or sign-in is not inferred from missing evidence. Existing Course Pass, Flex, billing, annual-licence rules, exports, reminders and confirmation dialogs remain.
 - Continuing education keeps overview → self-paced lessons → final exam → results → certificate. Course-only navigation is used while learning. Save feedback reflects pending and acknowledged writes. Existing 80% passing rule and non-credit pilot status remain.
 - Settings are a labelled keyboard dialog with Escape, focus containment and focus restoration. Primary controls are larger and reduced-motion preferences are respected.
+- The original droplet logo and licensed Inter/Fraunces fonts are served with the app. The new homepage illustration is decorative; it does not replace an instructional process diagram.
 
 No pricing, question-bank content, database migrations, authentication authority, Stripe logic or entitlement rules are changed. Existing process-guide content and equipment models are preserved.
 
@@ -30,4 +31,6 @@ Review desktop and phone layouts before merge. Run the complete Quality Gate on 
 
 ## Local validation
 
-Application, script and preview TypeScript checks pass, as do the production build and 1,454 deterministic tests (19 suite-defined skips). Ten browser journeys cover course selection, module filtering, optional confidence, learner and manager views, phone layouts, settings keyboard focus, CEU save/resume and exam-to-certificate flow, plus the downloaded HTML with the browser offline. Preview fixtures do not certify production purchasing or database writes.
+Application, script and preview TypeScript checks pass, as do the production build and 1,454 deterministic tests (19 suite-defined skips). Eleven browser journeys cover the real homepage's branding and OIT entry points, course selection, module filtering, optional confidence, learner and manager views, phone layouts, settings keyboard focus, CEU save/resume and exam-to-certificate flow, plus the downloaded HTML with the browser offline. Preview fixtures do not certify production purchasing or database writes.
+
+The existing database-backed Teams tests select the named operator progress report and verify saved question counts, mock scores and started status by their column headings. The CEU test targets the exact final-exam control within course navigation, while retaining failure, retry and resume checks. Neither journey's assessment, persistence or access assertions are removed.

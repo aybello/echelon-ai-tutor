@@ -10,6 +10,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CourseFinder from "@/components/CourseFinder";
+import CoursePathHero from "@/components/CoursePathHero";
 import SiteNav from "@/components/SiteNav";
 import QuizShell from "@/components/QuizShell";
 import MockExamShell from "@/components/MockExamShell";
@@ -19,13 +20,15 @@ import { useQuizSession } from "@/hooks/useQuizSession";
 import StudentDashboard from "@/pages/StudentDashboard";
 import OrgDashboard from "@/pages/OrgDashboard";
 import ContinuingEducationCourse from "@/pages/ContinuingEducationCourse";
+import Landing from "@/pages/Landing";
 import { course, practiceQuestions, previewResult, resetPreviewCourse } from "./fixtures";
 import "@/index.css";
 import "./preview.css";
+import "./review-fonts.css";
+import { reviewLogo } from "./review-brand";
 
 // Self-contained review branding; no external image host is required.
-const previewLogo = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="42" height="40" viewBox="0 0 42 40"><rect width="40" height="40" rx="9" fill="#112b50"/><text x="20" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="white">E</text></svg>')}`;
-const localizePreviewImages = () => document.querySelectorAll<HTMLImageElement>('img[src^="https://d2xsxph8kpxj0f.cloudfront.net/"]').forEach(image => { image.src = previewLogo; });
+const localizePreviewImages = () => document.querySelectorAll<HTMLImageElement>('img[src="/echelon-logo.webp"]').forEach(image => { image.src = reviewLogo; });
 new MutationObserver(localizePreviewImages).observe(document.documentElement,{childList:true,subtree:true});
 
 const queryClient = new QueryClient({defaultOptions:{ queries:{ retry:false } }});
@@ -48,14 +51,16 @@ function PracticePreview() {
     headerExtra={<><QuizModeBar currentMode={quiz.quizMode} onModeChange={quiz.handleModeChange} examType="class1-water" onSettingsOpen={() => quiz.setSettingsOpen(true)} missedCount={quiz.missedCount} />{quiz.settingsOpen && <QuizSettingsDrawer totalQuestions={questions.length} onClose={() => quiz.setSettingsOpen(false)} settings={quiz.quizSettings} onApply={quiz.handleSettingsApply} />}</>}
   />;
 }
-const routes=[ ["/", "Course finder"], ["/class1-water","Practice"], ["/dashboard","Learner dashboard"], ["/team","Manager dashboard"], ["/mock","Mock exam"], [`/continuing-education/${course.key}`,"CEU course"] ];
+const routes=[ ["/", "Course finder"], ["/homepage","Homepage"], ["/class1-water","Practice"], ["/dashboard","Learner dashboard"], ["/team","Manager dashboard"], ["/mock","Mock exam"], [`/continuing-education/${course.key}`,"CEU course"] ];
 function Preview() {
   const [path,navigate] = useLocation();
   useEffect(() => {
     const onLink = (event: MouseEvent) => {
       const target = (event.target as Element).closest("a"); if(!target) return;
-      const href=target.getAttribute("href"); if(!href || href.startsWith("https:")) return;
+      const rawHref=target.getAttribute("href"); if(!rawHref || rawHref.startsWith("https:")) return;
+      const href=rawHref.startsWith("#/") ? rawHref.slice(1) : rawHref;
       event.preventDefault();
+      if(href.startsWith("#")) { document.getElementById(href.slice(1))?.scrollIntoView({behavior:"instant"}); return; }
       if(href.includes("-exam") || href.includes("mock")) navigate("/mock");
       else if(href.startsWith("/continuing-education")) navigate(`/continuing-education/${course.key}`);
       else if(href.startsWith("/dashboard")) navigate("/dashboard");
@@ -69,8 +74,8 @@ function Preview() {
   const view = path.split("?")[0];
   return <>
     <header className="preview-review-bar"><div><strong>Echelon · Design review</strong><span>Sample data. Changes stay in this preview.</span></div><nav aria-label="Preview screens">{routes.map(([href,label]) => <button key={href} type="button" aria-pressed={view===href} onClick={() => navigate(href)}>{label}</button>)}</nav></header>
-    <ErrorBoundary key={view}>{view === "/" ? <><SiteNav currentPath="/" /><main className="preview-course-surface"><p className="workspace-eyebrow">Start with the right exam</p><h1>Build your confidence, one study session at a time.</h1><p>Choose your certification path and try a question before you buy.</p><CourseFinder /></main></>
-    :view === "/dashboard" ? <StudentDashboard /> : view === "/team" ? <OrgDashboard />
+    <ErrorBoundary key={view}>{view === "/" ? <div className="marketing-workspace"><SiteNav currentPath="/" /><main className="preview-course-surface"><CoursePathHero /><CourseFinder /></main></div>
+    :view === "/homepage" ? <Landing /> :view === "/dashboard" ? <StudentDashboard /> : view === "/team" ? <OrgDashboard />
     :view.startsWith("/continuing-education/") ? <><div className="preview-ceu-tools"><button onClick={() => { resetPreviewCourse(); void queryClient.invalidateQueries(); }}>Preview final exam with completed sample modules</button></div><ContinuingEducationCourse /></>
     :view === "/mock" ? <MockExamShell title="Class 1 Water · Mock exam preview" badge="ONTARIO CLASS 1" examQuestions={10} examDuration={3600} passThreshold={.7} moduleTargets={{"Coagulation & Flocculation":10}} moduleColors={{"Coagulation & Flocculation":{bg:"#eff6ff",color:"#1d4ed8"}}} questionPool={[]} productKey="class1-water" currentPath="/class1-water-exam" practicePath="/class1-water" practiceLabel="Return to practice" freeAccess />
     :<PracticePreview />}</ErrorBoundary>

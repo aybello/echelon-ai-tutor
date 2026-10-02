@@ -331,14 +331,14 @@ export default function StudentDashboard() {
     <div className="study-dashboard" style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{DASHBOARD_RESPONSIVE_STYLES}</style>
       <SiteNav currentPath="/dashboard" />
-      <div style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>
+      <div className="study-dashboard-content" style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>
 
         {/* ═══════════════════════════════════════════════════
             TOP SECTION: Welcome · Readiness · Countdown · Next Step
         ═══════════════════════════════════════════════════ */}
 
         {/* Header row */}
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
+        <div className="study-welcome" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
           <div>
             <h1 style={{ color: "#0F172A", fontSize: 26, fontWeight: 900, margin: 0, letterSpacing: "-0.03em" }}>
               Welcome back{displayName ? `, ${displayName.split(" ")[0]}` : ""}
@@ -356,7 +356,7 @@ export default function StudentDashboard() {
               <BookOpen size={14} style={{ display: "inline", marginRight: 6, verticalAlign: -2 }} aria-hidden="true" />
               My Courses
             </a>
-            <a href="/training-hours" style={{
+            <a className="study-training-link" href="/training-hours" style={{
               background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 8,
               padding: "7px 14px", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer",
               textDecoration: "none", display: "inline-block",

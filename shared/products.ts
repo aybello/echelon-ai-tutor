@@ -7,8 +7,9 @@
  *
  * Prices:
  *   priceCAD — Canadian dollars, in cents (e.g. 4900 = CA$49.00)
- *   priceUSD — US dollars, in cents (e.g. 3500 = US$35.00)
- *             USD prices are ~20-25% cheaper than CAD to win US customers.
+ *
+ * New individual checkout is CAD-only. Historical pre-cutover USD Stripe
+ * sessions are validated in a private server-side compatibility allowlist.
  */
 
 export interface EchelonProduct {
@@ -17,7 +18,6 @@ export interface EchelonProduct {
   shortName: string;
   description: string;
   priceCAD: number; // cents
-  priceUSD: number; // cents
   examTypes: string[];
   badge?: string;
   highlight?: boolean;
@@ -37,7 +37,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "OIT Practice Pass",
     description: "Full OIT (Operator-in-Training) question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 4900,
-    priceUSD: 3500,
     examTypes: ["oit"],
   },
   {
@@ -46,7 +45,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "OIT Wastewater Practice Pass",
     description: "Full OIT Wastewater question bank — 400+ questions covering wastewater collection, treatment principles, and Ontario O. Reg. 129/04. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 4900,
-    priceUSD: 3500,
     examTypes: ["oit-ww"],
   },
   {
@@ -55,7 +53,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Water Treatment Practice Pass",
     description: "Full Class 1 Water Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
-    priceUSD: 6900,
     examTypes: ["class1-water"],
   },
   {
@@ -64,7 +61,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Water Treatment Practice Pass",
     description: "Full Class 2 Water Treatment question bank — 500 questions across 5 modules, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["class2-water"],
   },
   {
@@ -73,7 +69,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Water Treatment Practice Pass",
     description: "Full Class 3 Water Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["class3-water"],
   },
   {
@@ -82,7 +77,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Water Treatment Practice Pass",
     description: "Full Class 4 Water Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["class4-water"],
   },
   {
@@ -91,7 +85,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Wastewater Treatment Practice Pass",
     description: "Full Class 1 Wastewater Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
-    priceUSD: 6900,
     examTypes: ["class1-ww"],
   },
   {
@@ -100,7 +93,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Wastewater Treatment Practice Pass",
     description: "Full Class 2 Wastewater Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["class2-ww"],
   },
   {
@@ -109,7 +101,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Wastewater Treatment Practice Pass",
     description: "Full Class 3 Wastewater Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["class3-ww"],
   },
   {
@@ -118,7 +109,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Wastewater Treatment Practice Pass",
     description: "Full Class 4 Wastewater Treatment question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["class4-ww"],
   },
   {
@@ -127,7 +117,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WQA Practice Pass",
     description: "Full Water Quality Analyst question bank — 400+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["wqa"],
   },
   // ── WPI (BC / AB / SK / MB / US) ─────────────────────────────────────────
@@ -137,7 +126,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class I Water Treatment Practice Pass",
     description: "WPI Class I Water Treatment — 502 questions across 5 modules. Aligned with WPI Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["wpi-class1-water"],
   },
   {
@@ -146,7 +134,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class II Water Treatment Practice Pass",
     description: "WPI Class II Water Treatment — 501 questions across 5 advanced modules. Aligned with WPI Class II Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
-    priceUSD: 14900,
     examTypes: ["wpi-class2-water"],
   },
   {
@@ -155,7 +142,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class III Water Treatment Practice Pass",
     description: "WPI Class III Water Treatment — 502 questions across 5 advanced modules. Aligned with WPI Class III Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["wpi-class3-water"],
   },
   {
@@ -164,7 +150,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class IV Water Treatment Practice Pass",
     description: "WPI Class IV Water Treatment — 501 questions across 6 chief-operator modules. Aligned with WPI Class IV Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["wpi-class4-water"],
   },
   {
@@ -173,7 +158,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class I Wastewater Treatment Practice Pass",
     description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules. Aligned with WPI Class I Wastewater Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["wpi-class1-wastewater"],
   },
   {
@@ -182,7 +166,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class II Wastewater Treatment Practice Pass",
     description: "WPI Class II Wastewater Treatment — 501 questions across 5 advanced modules. Aligned with WPI Class II Wastewater Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
-    priceUSD: 14900,
     examTypes: ["wpi-class2-wastewater"],
   },
   {
@@ -191,7 +174,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class III Wastewater Treatment Practice Pass",
     description: "WPI Class III Wastewater Treatment — 501 questions across 8 senior-operator modules. Aligned with WPI Class III Wastewater Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["wpi-class3-wastewater"],
   },
   {
@@ -200,7 +182,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class IV Wastewater Treatment Practice Pass",
     description: "WPI Class IV Wastewater Treatment — 502 questions across 7 chief-operator modules. Aligned with WPI Class IV Wastewater Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["wpi-class4-wastewater"],
   },
   // ── WPI Wastewater Collection ─────────────────────────────────────────────
@@ -210,7 +191,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class I Wastewater Collection Practice Pass",
     description: "WPI Class I Wastewater Collection — 150 questions. Aligned with WPI Class I Wastewater Collection Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["wpi-class1-water-coll"],
   },
   {
@@ -219,7 +199,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class II Wastewater Collection Practice Pass",
     description: "WPI Class II Wastewater Collection — 150 questions. Aligned with WPI Class II Wastewater Collection Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
-    priceUSD: 14900,
     examTypes: ["wpi-class2-water-coll"],
   },
   {
@@ -228,7 +207,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class III Wastewater Collection Practice Pass",
     description: "WPI Class III Wastewater Collection — 150 questions. Aligned with WPI Class III Wastewater Collection Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["wpi-class3-water-coll"],
   },
   {
@@ -237,7 +215,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class IV Wastewater Collection Practice Pass",
     description: "WPI Class IV Wastewater Collection — 503 original practice questions across five reviewed Collection areas. Designed around the WPI Class IV Collection outline. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive practice, AI Tutor, score history, and unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["wpi-class4-water-coll"],
   },
   // ── Ontario Water Distribution sub-courses ─────────────────────────────────
@@ -247,7 +224,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Water Distribution Practice Pass",
     description: "Ontario Class 1 Water Distribution — 500 questions. Covers pipe materials, valve operation, hydrant maintenance, and pressure management. Aligned with OWWCO Class 1 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
-    priceUSD: 6900,
     examTypes: ["class1-water-dist"],
   },
   {
@@ -256,7 +232,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Water Distribution Practice Pass",
     description: "Ontario Class 2 Water Distribution — 500 questions. Covers system design, water main installation, cross-connection control, and distribution operations. Aligned with OWWCO Class 2 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["class2-water-dist"],
   },
   {
@@ -265,7 +240,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Water Distribution Practice Pass",
     description: "Ontario Class 3 Water Distribution practice questions covering hydraulics, system operation, water quality, safety, and asset management. Adaptive difficulty, AI Tutor, score history, and unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["class3-water-dist"],
   },
   {
@@ -274,7 +248,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Water Distribution Practice Pass",
     description: "Ontario Class 4 Water Distribution — 500 questions. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance. Aligned with OWWCO Class 4 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["class4-water-dist"],
   },
   // ── Ontario Wastewater Collection sub-courses ─────────────────────────────
@@ -284,7 +257,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Wastewater Collection Practice Pass",
     description: "Ontario Class 1 Wastewater Collection — 500 questions. Covers collection system basics, I/I identification, manhole inspection, and O. Reg. 129/04. Aligned with OWWCO Class 1 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
-    priceUSD: 6900,
     examTypes: ["class1-wastewater-coll"],
   },
   {
@@ -293,7 +265,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Wastewater Collection Practice Pass",
     description: "Ontario Class 2 Wastewater Collection — 500 questions. Covers collection system design, sewer rehabilitation, pump station operations, and CSO management. Aligned with OWWCO Class 2 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["class2-wastewater-coll"],
   },
   {
@@ -302,7 +273,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Wastewater Collection Practice Pass",
     description: "Ontario Class 3 Wastewater Collection — 500 questions. Covers advanced collection system hydraulics, CCTV inspection, force main design, and Long-Term Control Plans. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["class3-wastewater-coll"],
   },
   {
@@ -311,7 +281,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Wastewater Collection Practice Pass",
     description: "Ontario Class 4 Wastewater Collection — 500 questions. Covers strategic collection system management, lifecycle cost optimization, green infrastructure, and regulatory compliance. Aligned with OWWCO Class 4 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["class4-wastewater-coll"],
   },
   // ── WPI Water Distribution ────────────────────────────────────────────────
@@ -321,7 +290,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class I Water Distribution Practice Pass",
     description: "WPI Class I Water Distribution — 150 questions. Aligned with WPI Class I Water Distribution Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
-    priceUSD: 10900,
     examTypes: ["wpi-class1-water-dist"],
   },
   {
@@ -330,7 +298,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class II Water Distribution Practice Pass",
     description: "WPI Class II Water Distribution — 150 questions. Aligned with WPI Class II Water Distribution Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
-    priceUSD: 14900,
     examTypes: ["wpi-class2-water-dist"],
   },
   {
@@ -339,7 +306,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class III Water Distribution Practice Pass",
     description: "WPI Class III Water Distribution — 150 questions. Aligned with WPI Class III Water Distribution Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
-    priceUSD: 17900,
     examTypes: ["wpi-class3-water-dist"],
   },
   {
@@ -348,7 +314,6 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WPI Class IV Water Distribution Practice Pass",
     description: "WPI Class IV Water Distribution — 150 questions. Aligned with WPI Class IV Water Distribution Need-to-Know Criteria. Echelon is an independent preparation provider. Confirm your authority's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
-    priceUSD: 21900,
     examTypes: ["wpi-class4-water-dist"],
   },
 ];
@@ -361,7 +326,6 @@ export interface EchelonBundle {
   shortName: string;
   description: string;
   priceCAD: number; // cents
-  priceUSD: number; // cents
   examTypes: string[];
   badge?: string;
   highlight?: boolean;
@@ -380,7 +344,6 @@ export const BUNDLES: EchelonBundle[] = [
     name: "Water Treatment Bundle",
     description: "All 4 Water Treatment levels (Class 1–4 / WPI I–IV) — 2,000+ questions, AI Tutor, mock exams, and formula sheets for every level.",
     priceCAD: 69900,
-    priceUSD: 49900,
     examTypes: ["class1-water", "class2-water", "class3-water", "class4-water"],
     badge: "Save 30%",
   },
@@ -390,7 +353,6 @@ export const BUNDLES: EchelonBundle[] = [
     name: "Wastewater Treatment Bundle",
     description: "All 4 Wastewater Treatment levels (Class 1–4 / WPI I–IV) — 2,000+ questions, AI Tutor, mock exams, and formula sheets for every level.",
     priceCAD: 69900,
-    priceUSD: 49900,
     examTypes: ["class1-ww", "class2-ww", "class3-ww", "class4-ww"],
     badge: "Save 30%",
   },
@@ -400,7 +362,6 @@ export const BUNDLES: EchelonBundle[] = [
     name: "All-Access Pass",
     description: "Every course on the platform — all 4 streams, all 4 levels, WPI and Ontario. 18,000+ questions, AI Tutor, mock exams, formula sheets, and unlimited attempts.",
     priceCAD: 34900,
-    priceUSD: 24900,
     // Populated below from the canonical individual catalogue. Keeping this
     // mapping explicit in the entitlement layer preserves historical access
     // without putting retired bundles back on sale.
@@ -430,10 +391,6 @@ export function getActiveIndividualProductByKey(key: string): EchelonProduct | u
 
 export function formatPriceCAD(cents: number): string {
   return `CA$${(cents / 100).toFixed(0)}`;
-}
-
-export function formatPriceUSD(cents: number): string {
-  return `US$${(cents / 100).toFixed(0)}`;
 }
 
 // ── Backward-compatible flat list ─────────────────────────────────────────────

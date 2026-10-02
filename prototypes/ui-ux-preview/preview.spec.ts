@@ -2,6 +2,20 @@ import { expect, test } from "@playwright/test";
 import { course } from "./fixtures";
 import { pathToFileURL } from "node:url";
 
+test("real homepage keeps the approved branding and both free OIT entry points on a phone", async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("/#/homepage");
+  await expect(page.getByRole("heading",{name:"Confidence starts with understanding."})).toBeVisible();
+  await expect.poll(() => page.locator(".echelon-brand img").evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
+  await page.getByRole("button",{name:"Try 15 OIT Questions Free →",exact:true}).click();
+  await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Water OIT Recommended/})).toHaveAttribute("href",/^#?\/quiz$/);
+  await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Wastewater OIT Start free/})).toHaveAttribute("href",/^#?\/oit-ww$/);
+  await page.getByRole("link",{name:"Find my course →",exact:true}).click();
+  await expect(page.locator("#find-course")).toBeInViewport();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.screenshot({path:"test-results/ui-workspace/homepage-mobile.png",fullPage:true});
+});
+
 test("finder keeps province, system and level aligned, and resets dependent choices", async ({page}) => {
   await page.goto("/");
   await page.getByLabel("1. Province").selectOption("mb");

@@ -272,13 +272,19 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
   await page.getByRole("button", { name: "Reports and outcomes", exact: true }).click();
-  const progressTable = page.locator("table").filter({
-    has: page.locator("th").filter({ hasText: /^Readiness$/ }),
-  });
+  const progressTable = page.getByRole("table", { name: "Operator study progress" });
+  await expect(progressTable).toBeVisible();
   const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
-  await expect(progressRow.locator("td").nth(3)).toHaveText("100");
-  await expect(progressRow.locator("td").nth(4)).toContainText(`${expectedScore}%`);
-  await expect(progressRow.locator("td").nth(5)).not.toContainText("Not started");
+  await expect(progressRow).toHaveCount(1);
+  const progressHeaders = await progressTable.getByRole("columnheader").allTextContents();
+  const progressCell = (header: string) => {
+    const index = progressHeaders.findIndex(text => text.trim() === header);
+    expect(index, `The progress report must include ${header}`).toBeGreaterThanOrEqual(0);
+    return progressRow.getByRole("cell").nth(index);
+  };
+  await expect(progressCell("Questions")).toHaveText("100");
+  await expect(progressCell("Mock Scores")).toContainText(`${expectedScore}%`);
+  await expect(progressCell("Status")).not.toContainText(/Not started/i);
 
   if (prefix === "reporting") {
     await operatorPage.goto("/class1-mock");

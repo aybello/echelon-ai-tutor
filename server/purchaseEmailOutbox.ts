@@ -21,15 +21,18 @@ const PURCHASE_EMAIL_HEARTBEAT = {
     "Deliver queued individual purchase confirmation emails every minute.",
 };
 
+type PurchaseRecordInput = InsertPurchase & { paymentCurrency?: "cad" | "usd" };
+
 /** Purchase and delivery intent commit together. No historical email backfill. */
-export async function recordPurchaseWithConfirmation(db: Database, purchase: InsertPurchase) {
+export async function recordPurchaseWithConfirmation(db: Database, purchase: PurchaseRecordInput) {
+  const { paymentCurrency = "cad", ...purchaseValues } = purchase;
   const paths = PRODUCT_STUDY_PATHS[purchase.productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
   const payload: PurchaseConfirmationPayload = {
     email: purchase.email, productKey: purchase.productKey, productName: purchase.productName,
-    amountCAD: purchase.amountCAD, accessExpiresAt: purchase.accessExpiresAt ?? null, ...paths,
+    amountCAD: purchase.amountCAD, paymentCurrency, accessExpiresAt: purchase.accessExpiresAt ?? null, ...paths,
   };
   await db.transaction(async tx => {
-    await tx.insert(purchases).values(purchase);
+    await tx.insert(purchases).values(purchaseValues);
     await tx.insert(purchaseEmailOutbox).values({ stripeSessionId: purchase.stripeSessionId, payload: JSON.stringify(payload) });
   });
 }

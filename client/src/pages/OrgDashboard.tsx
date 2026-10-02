@@ -154,12 +154,12 @@ function MetricCard({
   accent?: string;
 }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+    <div className="manager-metric-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
       <div className="flex items-center gap-2 text-slate-500 text-sm mb-3">
         <Icon className="w-4 h-4" />
         {label}
       </div>
-      <div className={`text-3xl font-bold ${accent ?? "text-slate-900"}`}>{value}</div>
+      <div className={`manager-metric-value text-3xl font-bold ${accent ?? "text-slate-900"}`}>{value}</div>
       {sub && <div className="text-xs text-slate-400 mt-1">{sub}</div>}
     </div>
   );
@@ -568,7 +568,7 @@ export default function OrgDashboard() {
       <header className="bg-white border-b border-slate-200 px-4 sm:px-6 py-4 shadow-sm">
         <div className="max-w-6xl mx-auto flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+            <div className="manager-organization-icon w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
               <Building2 className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -654,7 +654,7 @@ export default function OrgDashboard() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
 
         {/* Metric cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="manager-summary-grid grid grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard
             icon={Users}
             label="Licences Used This Term"
@@ -832,7 +832,7 @@ export default function OrgDashboard() {
             </div>
           ) : (
             <div className="manager-roster bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-sm" aria-label="Operator access and activity">
                 <thead>
                   <tr className="border-b border-slate-100 text-slate-400 text-xs uppercase tracking-wider bg-slate-50">
                     <th className="text-left px-4 py-3">Operator</th>
@@ -1247,7 +1247,7 @@ export default function OrgDashboard() {
               </div>
             </div>
             <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-sm" aria-label="Operator study progress">
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50">
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Operator</th>
