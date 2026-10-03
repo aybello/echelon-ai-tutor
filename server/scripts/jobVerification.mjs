@@ -2,7 +2,9 @@ import { execFile } from "node:child_process";
 import { createRequire } from "node:module";
 import { dirname, resolve as resolvePath } from "node:path";
 import { fileURLToPath } from "node:url";
-import { decodeHtmlEntities, normalizeJobIdentityText } from "./jobUtils.mjs";
+import { decodeHtmlEntities } from "./jobUtils.mjs";
+import { fetchPostingResponse, postingDestination } from "./jobPostingTransport.mjs";
+import { matchPostingEvidence } from "./jobPostingEvidence.mjs";
 
 export function plainJobText(value = "") {
   return decodeHtmlEntities(value.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
@@ -81,39 +83,54 @@ export async function pdfToText(bytes) {
     }
   });
 }
-function fetchableUrl(raw) {
-  const url = new URL(raw);
-  if (url.protocol !== "https:" || url.username || url.password || /^(localhost|.*\.local|.*\.internal|\d+(?:\.\d+){3}|\[.*\])$/i.test(url.hostname)) throw new Error("Unapproved posting destination");
-  const drive = url.hostname === "drive.google.com" && url.pathname.match(/^\/file\/d\/([a-zA-Z0-9_-]+)\//);
-  return drive ? `https://drive.google.com/uc?export=download&id=${drive[1]}` : url.toString();
-}
-export async function fetchJobDocument(url, deps = { fetch, pdfToText }) {
-  let destination = fetchableUrl(url);
+export async function fetchJobDocument(url, deps = {}) {
+  // A legacy fake-fetch seam cannot pin Node's actual socket lookup. Refuse it
+  // explicitly (also preventing stale fixtures from falling through to DNS).
+  if (deps.fetch) throw new Error("Legacy fetch injection unavailable; use pinned lookup/get fixtures");
+  let destination = postingDestination(url);
   const signal = AbortSignal.timeout(8000);
   let response;
   for (let redirects = 0; redirects <= 3; redirects++) {
-    response = await deps.fetch(destination, { redirect: "manual", signal });
+    // The built-in HTTPS transport validates all DNS answers and pins its
+    // lookup per hop. A default/global fetch would reintroduce DNS rebinding.
+    response = await fetchPostingResponse(destination, { signal, lookup: deps.lookup, get: deps.get });
     if (![301, 302, 303, 307, 308].includes(response.status)) break;
     const next = response.headers.get("location");
+    await response.body?.cancel();
     if (!next || redirects === 3) throw new Error("Posting redirect unavailable");
-    destination = fetchableUrl(new URL(next, destination).toString());
+    if (next.includes("\\")) throw new Error("Unapproved posting destination");
+    // Validate absolute raw Locations first: URL serialization erases empty
+    // userinfo. Resolve relative Locations only after inspecting their authority.
+    if (/^https:/i.test(next.trim())) destination = postingDestination(next.trim());
+    else {
+      if (/^(?:\/\/|\\\\)[^/?#]*@/.test(next.trim())) throw new Error("Unapproved posting destination");
+      destination = postingDestination(new URL(next, destination).toString());
+    }
   }
-  if ([404, 410].includes(response.status)) return { missing: true, text: "" };
-  if (!response.ok) throw new Error("Posting verification temporarily unavailable");
+  const contentType = response.headers.get("content-type") ?? "";
+  if ([404, 410].includes(response.status)) {
+    await response.body?.cancel();
+    return { missing: true, text: "", raw: "", finalUrl: destination, contentType };
+  }
+  if (!response.ok) {
+    await response.body?.cancel();
+    throw new Error("Posting verification temporarily unavailable");
+  }
   // Stream with a hard cap rather than reading an unbounded employer response.
   const chunks = []; let length = 0;
-  for await (const chunk of response.body) {
+  for await (const chunk of response.body ?? []) {
     length += chunk.length;
     if (length > 5_000_000) throw new Error("Posting document exceeds verification limit");
     chunks.push(Buffer.from(chunk));
   }
   const bytes = Buffer.concat(chunks);
   const isPdf = bytes.subarray(0, 5).toString() === "%PDF-";
-  const raw = isPdf ? await deps.pdfToText(bytes) : bytes.toString("utf8");
+  const raw = isPdf ? await (deps.pdfToText ?? pdfToText)(bytes) : bytes.toString("utf8");
   const text = plainJobText(raw);
-  if (!text || /(?:just a moment|checking your browser|verify you are human|cf-chl-|captcha)/i.test(raw))
+  // A metadata-only JobPosting can still be matched by the record evaluator.
+  if ((!text && !/application\/ld\+json/i.test(raw)) || /(?:just a moment|checking your browser|verify you are human|cf-chl-|captcha)/i.test(raw))
     throw new Error("Posting content verification unavailable");
-  return { missing: false, text };
+  return { missing: false, text, raw, isPdf, finalUrl: destination, contentType: isPdf ? "application/pdf" : contentType };
 }
 export async function verifyJob(job, options = {}) {
   const now = options.now ?? new Date();
@@ -124,15 +141,19 @@ export async function verifyJob(job, options = {}) {
   try {
     const document = await (options.fetchDocument ?? fetchJobDocument)(job.sourceUrl);
     if (document.missing) return { status: "missing", closingAt, postedAt };
-    if (!plainJobText(document.text)) return { status: "unavailable", closingAt, postedAt };
-    const targetDates = parseJobDates(document.text);
+    // Insufficient identity evidence is unavailable, not unverified/missing:
+    // the refresh must not deactivate inventory or advance its seen timestamp.
+    const evidence = matchPostingEvidence(job, document, { plainJobText, parseJobDates });
+    if (!evidence) return { status: "unavailable", closingAt, postedAt };
+    const recordDates = parseJobDates(evidence.text);
+    // Schema.org validThrough may be date-only or a precise timestamp. Date-only
+    // deadlines retain the existing end-of-day policy, not midnight expiry.
+    const structuredClosing = /^\d{4}-\d{2}-\d{2}$/.test(evidence.closingAt ?? "") ? parseJobDates(`Closing: ${evidence.closingAt}`).closingAt : sourceDate(evidence.closingAt);
+    if (evidence.closingAt && !structuredClosing) return { status: "unavailable", closingAt, postedAt };
+    const targetDates = { postedAt: sourceDate(evidence.postedAt) ?? recordDates.postedAt, closingAt: structuredClosing ?? recordDates.closingAt };
     closingAt = targetDates.closingAt ?? closingAt;
     if (closingAt && closingAt < now) return { status: "expired", closingAt, postedAt: postedAt ?? targetDates.postedAt };
-    const title = normalizeJobIdentityText(job.title).replace(/[^\p{L}\p{N}]+/gu, " ").trim();
-    const text = normalizeJobIdentityText(document.text).replace(/[^\p{L}\p{N}]+/gu, " ");
-    // A generic employer board is not a matching vacancy merely because it returns 200.
-    if (!title || !text.includes(title)) return { status: "unverified", closingAt, postedAt };
-    if (/\b(?:position (?:has been )?filled|posting (?:has )?expired|job (?:is )?no longer available)\b/i.test(document.text) && text.length < 4000) return { status: "missing", closingAt, postedAt };
+    if (/\b(?:position (?:has been )?filled|posting (?:has )?expired|job (?:is )?no longer available)\b/i.test(evidence.text) && evidence.text.length < 4000) return { status: "missing", closingAt, postedAt };
     return { status: "verified", closingAt, postedAt: postedAt ?? targetDates.postedAt };
   } catch {
     return { status: "unavailable", closingAt, postedAt };

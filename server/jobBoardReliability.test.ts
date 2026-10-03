@@ -2,8 +2,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { verifyJob, parseJobDates, fetchJobDocument, pdfToText } from "./scripts/jobVerification.mjs";
 import { fetchAndIngest } from "./scripts/fetchJobs.mjs";
 import { assertJobStateKey, jobSourceStateKey, vacancyStateKey, mergeSourceOutcomes, summarizeJobHealth, JOB_HEALTH_KEY, type JobRefreshHealth } from "./jobBoardState";
+import { htmlPostingFixture, pdfPostingFixture, postingTransportFixture, type FetchDocumentForFixture } from "./jobPostingFixtures";
 const now = new Date("2026-10-03T09:00:00Z");
-const job = { title: "Source Water Hydrogeologist", sourceUrl: "https://employer.example.test/job-opportunities/", sourceName: "CWRA", location: "Ontario", province: "ON" };
+const job = { title: "Source Water Hydrogeologist", company: "Fixture Water Authority", sourceUrl: "https://employer.example.test/job-opportunities/", sourceName: "CWRA", location: "Ontario", province: "ON" };
+const retrieveDocument = fetchJobDocument as FetchDocumentForFixture;
 const verified = async (input: any) => ({ status: "verified" as const, closingAt: null, postedAt: input.postedAt ?? null });
 const empty = async () => ({ errors: [], totalFetched: 0, successfulSources: 0, failedSources: 0, sourceOutcomes: [] });
 function connection(previous?: JobRefreshHealth) {
@@ -23,16 +25,16 @@ function tier(province: string, status = "success") {
 afterEach(() => { vi.restoreAllMocks(); vi.unstubAllGlobals(); });
 describe("vacancy truth", () => {
   it("excludes the audited August 3 PDF deadline using parsed content, not a blacklist", async () => {
-    const result = await verifyJob({ ...job, title: "Operations Manager" }, { now, fetchDocument: async () => ({ missing: false, text: "Operations Manager Application Deadline: August 3, 2026 Start Date: September 8, 2026" }) });
+    const result = await verifyJob({ ...job, title: "Operations Manager" }, { now, fetchDocument: async () => pdfPostingFixture(`${job.company} Operations Manager Application Deadline: August 3, 2026 Start Date: September 8, 2026`) });
     expect(result.status).toBe("expired");
     expect(result.closingAt?.toISOString()).toBe("2026-08-03T23:59:59.999Z");
   });
-  it("quarantines the generic GRCA-style board with no matching role despite successful retrieval", async () => {
-    expect((await verifyJob(job, { now, fetchDocument: async () => ({ missing: false, text: "Current opportunities No current vacancies. Careers" }) })).status).toBe("unverified");
+  it("retains inventory when a generic GRCA-style board has no matching vacancy evidence", async () => {
+    expect((await verifyJob(job, { now, fetchDocument: async () => htmlPostingFixture("<h1>Current opportunities</h1><p>No current vacancies. Careers</p>") })).status).toBe("unavailable");
   });
   it("retains future and open-until-filled postings and source dates", async () => {
     for (const deadline of ["Application Deadline: October 18, 2026", "Open until filled"]) {
-      const result = await verifyJob(job, { now, fetchDocument: async () => ({ missing: false, text: `${job.title} Posted: July 2, 2026 ${deadline}` }) });
+      const result = await verifyJob(job, { now, fetchDocument: async () => pdfPostingFixture(`${job.company} ${job.title} Posted: July 2, 2026 ${deadline}`) });
       expect(result.status).toBe("verified");
       expect(result.postedAt?.toISOString()).toBe("2026-07-02T00:00:00.000Z");
     }
@@ -44,16 +46,17 @@ describe("vacancy truth", () => {
   });
   it("routes bounded PDF bytes to the document parser", async () => {
     const extract = vi.fn().mockResolvedValue("Application Deadline: August 3, 2026");
-    const result = await fetchJobDocument("https://employer.example.test/posting.pdf", { fetch: vi.fn().mockResolvedValue(new Response("%PDF-fixture")) as any, pdfToText: extract });
+    const result = await retrieveDocument("https://employer.example.test/posting.pdf", { ...postingTransportFixture([{ body: "%PDF-fixture" }]), pdfToText: extract });
     expect(extract).toHaveBeenCalledOnce();
     expect(parseJobDates(result.text).closingAt?.getUTCMonth()).toBe(7);
+    expect(result).toMatchObject({ isPdf: true, contentType: "application/pdf", finalUrl: "https://employer.example.test/posting.pdf", raw: "Application Deadline: August 3, 2026" });
   });
   it("does not quarantine PDFs for a missing parser or empty OCR text", async () => {
     for (const extract of [async () => { throw Error("missing runtime binary"); }, async () => ""]) {
-      const fetchDocument = (url: string) => fetchJobDocument(url, { fetch: vi.fn().mockResolvedValue(new Response("%PDF-fixture")) as any, pdfToText: extract });
+      const fetchDocument = (url: string) => retrieveDocument(url, { ...postingTransportFixture([{ body: "%PDF-fixture" }]), pdfToText: extract });
       expect((await verifyJob(job, { now, fetchDocument })).status).toBe("unavailable");
     }
-    await expect(fetchJobDocument(job.sourceUrl, { fetch: vi.fn().mockResolvedValue(new Response("<title>Just a moment</title>")) as any, pdfToText })).rejects.toThrow("unavailable");
+    await expect(retrieveDocument(job.sourceUrl, { ...postingTransportFixture([{ body: "<title>Just a moment</title>" }]), pdfToText })).rejects.toThrow("unavailable");
   });
 });
 describe("durable refresh health", () => {
@@ -83,6 +86,19 @@ describe("durable refresh health", () => {
   it("does not change retained inventory, seen time or verification state on temporary destination failure", async () => {
     const conn = connection();
     await fetchAndIngest({ databaseUrl: "fixture", createConnection: async () => conn, now: () => now, verifyJob: async () => ({ status: "unavailable", closingAt: null, postedAt: null }), ingestRss: tier("ON"), ingestAssociations: empty, ingestMunicipal: empty });
+    expect(conn.execute.mock.calls.some(([query]) => /UPDATE job_postings|INSERT INTO job_postings/.test(query))).toBe(false);
+    expect(conn.execute.mock.calls.filter(([query, params]) => query.includes("scheduled_work") && params?.[0]?.startsWith("job-board:vacancy:"))).toHaveLength(0);
+  });
+  it("does not mutate retained employer records or verification when a generic board repeats the role", async () => {
+    const conn = connection();
+    const ingest = async (upsert: (input: unknown) => Promise<void>) => {
+      await upsert(job);
+      return { errors: [], totalFetched: 1, successfulSources: 1, failedSources: 0, sourceOutcomes: [{ source: "CWRA", status: "success", count: 1 }] };
+    };
+    const result = await fetchAndIngest({ databaseUrl: "fixture", createConnection: async () => conn, now: () => now,
+      verifyJob: (input: any) => verifyJob(input, { now, fetchDocument: async () => htmlPostingFixture(`<h1>Careers at ${job.company}</h1><p>${job.title} Closing: November 1, 2026</p>`) }),
+      ingestRss: ingest, ingestAssociations: empty, ingestMunicipal: empty });
+    expect(result.ok).toBe(false);
     expect(conn.execute.mock.calls.some(([query]) => /UPDATE job_postings|INSERT INTO job_postings/.test(query))).toBe(false);
     expect(conn.execute.mock.calls.filter(([query, params]) => query.includes("scheduled_work") && params?.[0]?.startsWith("job-board:vacancy:"))).toHaveLength(0);
   });
