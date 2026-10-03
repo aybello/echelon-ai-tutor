@@ -1,4 +1,7 @@
 import { execFile } from "node:child_process";
+import { createRequire } from "node:module";
+import { dirname, resolve as resolvePath } from "node:path";
+import { fileURLToPath } from "node:url";
 import { decodeHtmlEntities, normalizeJobIdentityText } from "./jobUtils.mjs";
 
 export function plainJobText(value = "") {
@@ -20,12 +23,62 @@ export function parseJobDates(text) {
   const closing = parse("application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before)");
   return { postedAt: parse("posted|published|posting"), closingAt: closing ? new Date(Date.UTC(closing.getUTCFullYear(), closing.getUTCMonth(), closing.getUTCDate(), 23, 59, 59, 999)) : null };
 }
-/** pdfToText uses the established Poppler parser. Missing binary is an unavailable verification, never availability proof. */
-export async function pdfToText(bytes) {
-  return new Promise((resolve, reject) => {
-    const child = execFile("pdftotext", ["-", "-"], { timeout: 8000, maxBuffer: 2_000_000 }, (error, stdout) => error ? reject(new Error("PDF text extraction unavailable")) : resolve(stdout));
+const PDF_TIMEOUT_MS = 8000;
+const PDF_INPUT_LIMIT = 5_000_000;
+const PDF_OUTPUT_LIMIT = 2_000_000;
+const PDF_QUEUE_LIMIT = 8;
+let pdfChildActive = false;
+const pdfQueue = [];
+const pdfUnavailable = () => new Error("PDF text extraction unavailable");
+
+function startPdfExtraction(task) {
+  clearTimeout(task.timer);
+  const remaining = Math.ceil(task.deadline - performance.now());
+  if (remaining <= 0) { task.reject(pdfUnavailable()); return; }
+  pdfChildActive = true;
+  const complete = (error, stdout) => {
+    pdfChildActive = false; // execFile callback runs after the child closes.
+    if (error || !stdout?.trim()) task.reject(pdfUnavailable());
+    else task.resolve(stdout);
+    while (!pdfChildActive && pdfQueue.length) startPdfExtraction(pdfQueue.shift());
+  };
+  try {
+    const pdfModule = createRequire(import.meta.url).resolve("pdfjs-dist/legacy/build/pdf.mjs");
+    const pdfRoot = resolvePath(dirname(pdfModule), "../..");
+    // esbuild bundles this module into dist/index.js. The build copies only the
+    // child helper to dist/scripts; source execution uses its sibling helper.
+    const helper = fileURLToPath(new URL(import.meta.url.endsWith("/jobVerification.mjs") ? "./jobPdfText.mjs" : "./scripts/jobPdfText.mjs", import.meta.url));
+    const child = execFile(process.execPath, [
+      "--max-old-space-size=96", "--max-semi-space-size=4",
+      "--disallow-code-generation-from-strings", "--no-addons", "--permission",
+      `--allow-fs-read=${helper}`, `--allow-fs-read=${pdfRoot}`,
+      helper, pdfModule,
+    ], {
+      timeout: remaining, killSignal: "SIGKILL", maxBuffer: PDF_OUTPUT_LIMIT,
+      encoding: "utf8", env: { LANG: "C.UTF-8" },
+    }, complete);
     child.stdin.on("error", () => {});
-    child.stdin.end(bytes);
+    child.stdin.end(task.bytes);
+    task.bytes = undefined;
+  } catch { complete(pdfUnavailable()); }
+}
+
+/** Portable PDF.js parser. Failures/scanned PDFs remain unavailable, never proof of an open or missing vacancy. */
+export async function pdfToText(bytes) {
+  if (!(bytes instanceof Uint8Array) || !bytes.byteLength || bytes.byteLength > PDF_INPUT_LIMIT || (pdfChildActive && pdfQueue.length >= PDF_QUEUE_LIMIT)) throw pdfUnavailable();
+  return new Promise((resolve, reject) => {
+    const task = { bytes, resolve, reject, deadline: performance.now() + PDF_TIMEOUT_MS, timer: undefined };
+    if (!pdfChildActive) startPdfExtraction(task);
+    else {
+      // Queue wait counts toward the same eight-second budget, so concurrent
+      // verification cannot spawn eight parsers on the 512 MiB production host.
+      task.timer = setTimeout(() => {
+        const index = pdfQueue.indexOf(task);
+        if (index !== -1) pdfQueue.splice(index, 1);
+        reject(pdfUnavailable());
+      }, PDF_TIMEOUT_MS);
+      pdfQueue.push(task);
+    }
   });
 }
 function fetchableUrl(raw) {
