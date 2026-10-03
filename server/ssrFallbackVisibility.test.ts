@@ -14,6 +14,6 @@ describe("SSR first-content shell", () => {
   });
   it("keeps Sora identity without making the remote font sheet block first content", () => {
     expect(template).toContain('rel="preload" as="style"'); expect(template).toContain("family=Sora");
-    expect(template).toContain("this.rel='stylesheet'"); expect(template).toMatch(/<noscript>[\s\S]*rel="stylesheet"/);
+    expect(template).not.toMatch(/\son[a-z]+\s*=/i); expect(template).toContain('id="echelon-font-style"'); expect(template).toMatch(/<noscript>[\s\S]*rel="stylesheet"/);
   });
 });

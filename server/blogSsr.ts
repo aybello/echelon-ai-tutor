@@ -1,4 +1,5 @@
 import { repairPublishedArticle } from "./publishedArticleRepair";
+import { replaceAppRoot } from "./replaceAppRoot";
 /**
  * Server-Side Rendering for Blog Routes
  *
@@ -188,10 +189,7 @@ export function injectBlogPostMeta(
 
   // Replace the complete mount node, including its useful nested loading shell.
   // Function replacement preserves literal dollar sequences in article copy.
-  html = html.replace(
-    /<div id="root">[\s\S]*?<\/div>(?=\s*<script)/,
-    () => `<div id="root">${articleHtml}</div>`
-  );
+  html = replaceAppRoot(html, articleHtml);
 
   return html;
 }

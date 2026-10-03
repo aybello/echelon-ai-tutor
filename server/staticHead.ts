@@ -1,3 +1,4 @@
+import { replaceAppRoot } from "./replaceAppRoot";
 import { classifyAppRoute } from "../shared/appRoutes";
 
 export function escapeHtml(value: string): string {
@@ -39,7 +40,6 @@ export function prepareAppFallback(template: string, url: string): { html: strin
   const body = brandedShell(missing
     ? `<h1>Page Not Found</h1><p>The page you are looking for does not exist.</p><p><a href="/">Return home</a> or choose a course below.</p>`
     : `<h1>${privatePage ? "Your Echelon workspace" : "Prepare for your operator exam"}</h1><p role="status">Loading your study workspace. Course links and resources are available below.</p><p><a href="/oit">Start Ontario OIT practice</a> or <a href="/wpi">browse WPI-aligned preparation</a>.</p>`);
-  const html = replaceStaticHead(template, head, title)
-    .replace(/<div id="root">[\s\S]*?<\/div>(?=\s*<script)/, () => `<div id="root">${body}</div>`);
+  const html = replaceAppRoot(replaceStaticHead(template, head, title), body);
   return { html, status: missing ? 404 : 200 };
 }

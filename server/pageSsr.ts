@@ -1,3 +1,4 @@
+import { replaceAppRoot } from "./replaceAppRoot";
 /**
  * Server-Side Rendering for Static Public Pages
  *
@@ -1006,9 +1007,8 @@ export function injectSeoIntoTemplate(template: string, meta: PageMeta): string 
     // Remove all Twitter Card meta tags from the template (SSR will inject correct ones)
     .replace(/<meta name="twitter:[^"]+"[^>]*>/g, "")
     // Inject all SEO tags before </head>
-    .replace("</head>", () => `${seoHead}\n</head>`)
-    // Inject SSR body shell right after <div id="root">
-    .replace(/<div id="root">[\s\S]*?<\/div>(?=\s*<script)/, () => `<div id="root">${ssrBody}</div>`);
+    .replace("</head>", () => `${seoHead}\n</head>`);
+  html = replaceAppRoot(html, ssrBody);
 
   return html;
 }

@@ -46,8 +46,8 @@ describe("public WPI marketing claims", () => {
     expect(source("client/src/pages/Pricing.tsx")).toContain(
       "Independent preparation aligned with published WPI Need-to-Know Criteria.",
     );
-    expect(source("client/src/pages/WpiLanding.tsx")).toContain(
-      "Echelon provides independent preparation aligned with published WPI Need-to-Know Criteria.",
-    );
+    expect(source("client/src/pages/WpiLanding.tsx")).toContain("WPI_PAGE_COPY");
+    expect(source("shared/wpiContent.ts")).toContain("Echelon provides independent preparation");
+    expect(source("shared/wpiContent.ts")).toContain("not affiliated with or endorsed by WPI");
   });
 });
