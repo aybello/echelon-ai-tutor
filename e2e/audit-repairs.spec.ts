@@ -51,7 +51,9 @@ test('partnership errors retain fields and retries reuse a receipt key',async({p
   await expect(page.getByRole('button',{name:'Retry inquiry'})).toBeVisible();
   await expect(page.getByPlaceholder('Jane Smith')).toHaveValue('Synthetic Inquiry');
   await page.getByRole('button',{name:'Retry inquiry'}).click();
-  await expect(page.locator('body')).toContainText('saved');
+  await expect.poll(()=>inputs.length).toBe(2);
+  await expect(page.getByText('Inquiry received',{exact:true})).toBeVisible();
+  await expect(page.getByRole('alert')).toHaveCount(0);
   const key=(x:any)=>x?.['0']?.json?.requestKey??x?.json?.requestKey??x?.requestKey;
   expect(inputs).toHaveLength(2);expect(key(inputs[0])).toBeTruthy();expect(key(inputs[1])).toBe(key(inputs[0]));
 });
