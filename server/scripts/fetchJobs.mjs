@@ -3,9 +3,9 @@
  * Runs all RSS tiers, owns the single upsert + expiry logic, prints summary.
  *
  * Usage (manual run):
- *   cd /home/ubuntu/echelon-ai-tutor && node server/scripts/fetchJobs.mjs
+ *   node --import tsx server/scripts/fetchJobs.mjs
  *
- * Also called by the Heartbeat scheduled handler at /api/scheduled/fetchJobs
+ * Also called by the Heartbeat scheduled handler at /api/scheduled/fetch-jobs
  */
 
 import "dotenv/config";
@@ -32,21 +32,21 @@ const VALID_SOURCE_TYPES = new Set(["rss", "scraper", "association"]);
  * database has already closed.
  */
 export async function fetchAndIngest(options = {}) {
-  const databaseUrl = options.databaseUrl ?? process.env.DATABASE_URL;
-  if (!databaseUrl) {
-    throw new Error("DATABASE_URL not set");
-  }
-
+  // Explicit databaseUrl is a test dependency only. Production and the CLI
+  // resolve the same active target, TLS policy, and maintenance fence as the app.
+  const connectionOptions = options.databaseUrl ??
+    (await import("../jobBoardDatabase.ts")).jobBoardConnectionOptions();
   const createConnection = options.createConnection ?? mysql.createConnection;
   const ingestRssFn = options.ingestRss ?? ingestRss;
   const ingestAssociationsFn = options.ingestAssociations ?? ingestAssociations;
   const ingestMunicipalFn = options.ingestMunicipal ?? ingestMunicipal;
   const now = options.now ?? (() => new Date());
-  const conn = await createConnection(databaseUrl);
+  const conn = await createConnection(connectionOptions);
 
   let newCount = 0;
   let seenCount = 0;
   let failedUpsertCount = 0;
+  let expiryFailed = false;
   let expiredCount = 0;
   let deduplicatedCount = 0;
   let duplicateInputCount = 0;
@@ -190,16 +190,20 @@ export async function fetchAndIngest(options = {}) {
   }
 
   try {
-    console.log("\u2192 Tier 1: RSS ingestion (Job Bank Canada + OWWA)");
-    const rss = await ingestRssFn(upsertJob);
+    console.log("[fetch-jobs] Refreshing RSS, association and municipal sources");
+    // Wait for all tiers, including on unexpected parser rejection, before
+    // closing their shared connection. Independent sources need not wait for
+    // another tier's network timeout before they can contribute fresh jobs.
+    const tiers = await Promise.allSettled([
+      ingestRssFn(upsertJob),
+      ingestAssociationsFn(upsertJob),
+      ingestMunicipalFn(upsertJob),
+    ]);
+    const rejected = tiers.find(result => result.status === "rejected");
+    if (rejected) throw rejected.reason;
+    const [rss, associations, municipal] = tiers.map(result => result.value);
     allErrors.push(...rss.errors);
-
-    console.log("\n\u2192 Tier 2: Canadian water-sector association boards");
-    const associations = await ingestAssociationsFn(upsertJob);
     allErrors.push(...associations.errors);
-
-    console.log("\n\u2192 Tier 3: Municipal careers page scrapers");
-    const municipal = await ingestMunicipalFn(upsertJob);
     allErrors.push(...municipal.errors);
 
     const successfulSources =
@@ -222,7 +226,7 @@ export async function fetchAndIngest(options = {}) {
 
     // Never age out national inventory during a partial-source refresh. At
     // least two independent tiers and provinces must contribute current jobs.
-    if (hasNationalCoverage) {
+    if (hasNationalCoverage && failedUpsertCount === 0 && options.skipExpiry !== true) {
       const staleCutoff = new Date(
         runStart.getTime() - 14 * 24 * 60 * 60 * 1000
       );
@@ -233,9 +237,10 @@ export async function fetchAndIngest(options = {}) {
         );
         expiredCount = res.affectedRows ?? 0;
       } catch (err) {
+        expiryFailed = true;
         allErrors.push(`Expiry step: ${err.message}`);
       }
-    } else {
+    } else if (!hasNationalCoverage) {
       allErrors.push(
         `Expiry skipped because national coverage was incomplete (${productiveTiers} productive tiers, ${provinceCount} provinces); existing jobs were preserved`
       );
@@ -249,6 +254,7 @@ export async function fetchAndIngest(options = {}) {
       totalFetched > 0 &&
       processedCount > 0 &&
       failedUpsertCount === 0 &&
+      !expiryFailed &&
       hasNationalCoverage;
 
     console.log(`\n\u2705 Ingestion complete:`);

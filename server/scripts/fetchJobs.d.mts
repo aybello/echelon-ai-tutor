@@ -1,3 +1,5 @@
+import type { ConnectionOptions } from "mysql2";
+
 export type JobIngestionResult = {
   ok: boolean;
   runStartedAt: string;
@@ -19,7 +21,9 @@ export type JobIngestionResult = {
 
 export type JobIngestionOptions = {
   databaseUrl?: string;
-  createConnection?: (databaseUrl: string) => Promise<unknown>;
+  createConnection?: (settings: string | ConnectionOptions) => Promise<unknown>;
+  /** Recovery runs may refresh source-confirmed jobs without bulk expiry. */
+  skipExpiry?: boolean;
   ingestRss?: (upsertJob: (job: unknown) => Promise<void>) => Promise<unknown>;
   ingestAssociations?: (
     upsertJob: (job: unknown) => Promise<void>

@@ -359,7 +359,7 @@ export default function Careers() {
               <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
               <span>
                 Job updates are temporarily delayed. Older unverified listings
-                have been hidden while the next refresh completes.
+                are hidden. Please verify availability on the employer's site.
               </span>
             </div>
           )}
@@ -420,7 +420,7 @@ export default function Careers() {
             </p>
             <p className="text-sm mt-1 max-w-sm mx-auto">
               {stats?.isStale
-                ? "The automatic job feeds are refreshing. Please check back shortly."
+                ? "Job updates are delayed. Please check back later or visit the source job boards linked below."
                 : province
                   ? `No active postings in ${PROVINCES.find(p => p.value === province)?.label} right now. Try "All Provinces" or check back soon.`
                   : "No active postings right now. New verified listings will appear automatically."}
