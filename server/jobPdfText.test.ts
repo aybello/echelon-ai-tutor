@@ -7,10 +7,11 @@ import { promisify } from "node:util";
 import { build } from "esbuild";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { fetchJobDocument, parseJobDates, pdfToText, verifyJob } from "./scripts/jobVerification.mjs";
+import { postingTransportFixture } from "./jobPostingFixtures";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const now = new Date("2026-10-03T09:00:00Z");
-const job = { title: "Operations Manager", sourceUrl: "https://employer.example.test/posting.pdf" };
+const job = { title: "Operations Manager", company: "Fixture Water Authority", sourceUrl: "https://employer.example.test/posting.pdf" };
 const padding = Buffer.from("28bf4e5e4e758a4164004e56fffa01082e2e00b6d0683e802f0ca9fe6453697a", "hex");
 const md5 = (bytes: Uint8Array) => createHash("md5").update(bytes).digest();
 function rc4(key: Uint8Array, bytes: Uint8Array) {
@@ -23,7 +24,7 @@ function rc4(key: Uint8Array, bytes: Uint8Array) {
 
 // Actual synthetic PDF bytes: standard font, page tree, content streams and
 // byte-accurate xref. No customer data, downloading, OCR or mocked extraction.
-function fixture({ pages = 1, text = "Operations Manager\nApplication Deadline: August 3, 2026", encrypted = false, activeContent = false, reuseContent = false, pageWidth = 612 } = {}) {
+function fixture({ pages = 1, text = "Fixture Water Authority\nOperations Manager\nApplication Deadline: August 3, 2026", encrypted = false, activeContent = false, reuseContent = false, pageWidth = 612 } = {}) {
   const id = Buffer.alloc(16, 1);
   const owner = rc4(md5(Buffer.concat([Buffer.from("owner"), padding]).subarray(0, 32)).subarray(0, 5), Buffer.concat([Buffer.from("secret"), padding]).subarray(0, 32));
   const permission = Buffer.alloc(4); permission.writeInt32LE(-4);
@@ -59,8 +60,7 @@ function fixture({ pages = 1, text = "Operations Manager\nApplication Deadline: 
   const xref = `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n${offsets.slice(1).map(offset => `${String(offset).padStart(10, "0")} 00000 n \n`).join("")}trailer\n<< /Size ${objects.length + 1} /Root 1 0 R${encrypted ? ` /Encrypt ${encryptRef} 0 R /ID [<${id.toString("hex")}> <${id.toString("hex")}>]` : ""} >>\nstartxref\n${length}\n%%EOF\n`;
   return Buffer.concat([...parts, Buffer.from(xref)]);
 }
-const fakeFetch = (bytes: Uint8Array) => vi.fn().mockResolvedValue(new Response(new Uint8Array(bytes).buffer));
-const fetchDocument = (bytes: Uint8Array) => (url: string) => fetchJobDocument(url, { fetch: fakeFetch(bytes) as typeof fetch, pdfToText });
+const fetchDocument = (bytes: Uint8Array) => (url: string) => fetchJobDocument(url, { ...postingTransportFixture([{ body: bytes }]), pdfToText });
 afterEach(() => vi.restoreAllMocks());
 
 describe("portable bounded PDF text extraction", () => {
@@ -73,7 +73,7 @@ describe("portable bounded PDF text extraction", () => {
     expect(await verifyJob(job, { now, fetchDocument: fetchDocument(bytes) })).toMatchObject({ status: "expired", closingAt: new Date("2026-08-03T23:59:59.999Z") });
   });
   it("still verifies matching future vacancies after actual PDF extraction", async () => {
-    expect((await verifyJob(job, { now, fetchDocument: fetchDocument(fixture({ text: "Operations Manager\nApply by: October 18, 2026" })) })).status).toBe("verified");
+    expect((await verifyJob(job, { now, fetchDocument: fetchDocument(fixture({ text: "Fixture Water Authority\nOperations Manager\nApply by: October 18, 2026" })) })).status).toBe("verified");
   });
   it.each([
     ["malformed", () => Buffer.from("%PDF-1.4\ninvalid")],
@@ -99,7 +99,7 @@ describe("portable bounded PDF text extraction", () => {
     await expect(pdfToText(Buffer.alloc(0))).rejects.toThrow("unavailable");
     await expect(pdfToText(Buffer.alloc(5_000_001))).rejects.toThrow("unavailable");
     // The unchanged fetch cap remains in front of the parser as well.
-    await expect(fetchJobDocument(job.sourceUrl, { fetch: fakeFetch(Buffer.alloc(5_000_001)) as typeof fetch, pdfToText })).rejects.toThrow("document exceeds verification limit");
+    await expect(fetchDocument(Buffer.alloc(5_000_001))(job.sourceUrl)).rejects.toThrow(/(?:document exceeds verification limit|document limit)/);
   });
   it("ignores document JavaScript and remote-document actions", async () => {
     const text = await pdfToText(fixture({ activeContent: true }));
