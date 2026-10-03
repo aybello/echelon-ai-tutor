@@ -39,7 +39,6 @@ test('partnership errors retain fields and retries reuse a receipt key',async({p
   await page.route('**/api/trpc/contact.partnership*',async route=>{
     const j=route.request().postDataJSON();inputs.push(j);
     if(fail){fail=false;await route.fulfill({status:503,contentType:'application/json',body:JSON.stringify([{error:{json:{message:'Inquiry could not be saved. Please retry.',code:-32603,data:{code:'SERVICE_UNAVAILABLE',httpStatus:503,path:'contact.partnership'}}}}])});return;}
-    const arg=j?.['0']?.json??j?.json??j;
     await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify([{result:{data:{json:{success:true,receiptId:1}}}}])});
   });
   await page.goto('/partnerships');
@@ -58,7 +57,7 @@ test('partnership errors retain fields and retries reuse a receipt key',async({p
 });
 
 test('actual vendor script emits only rebuilt public events and no sensitive URLs',async({page})=>{
-  const script=fs.readFileSync('/home/ubuntu/pr-review/analytics-vendor-audit.js','utf8');
+  const script=fs.readFileSync(new URL('./fixtures/analytics-vendor.js', import.meta.url),'utf8');
   const sends:string[]=[];
   await page.route('https://analytics.example.test/**',route=>{
     if(route.request().url().endsWith('/umami'))return route.fulfill({status:200,contentType:'application/javascript',body:script});
