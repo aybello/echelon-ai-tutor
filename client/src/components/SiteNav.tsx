@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import {
   BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical,
   Gauge, GraduationCap, LayoutDashboard, Menu, MessageCircleQuestion,
@@ -8,6 +8,7 @@ import {
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
+import { buildPricingHref, courseProvinceHref, signInHref } from "@shared/funnelNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
 
 export const ECHELON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -100,13 +101,17 @@ export default function SiteNav({
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const { isAuthenticated } = useAuth({ lazy: true });
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
-  const progressCourseKey = currentPath.split("?")[0] === "/dashboard" && typeof window !== "undefined"
-    ? new URLSearchParams(window.location.search).get("course")
-    : null;
+  const search = useSearch();
+  const progressCourseKey = currentPath.split("?")[0] === "/dashboard" ? new URLSearchParams(search).get("course") : null;
   const course = getCourseForPath(currentPath) ?? (progressCourseKey ? resolveCourseKey(progressCourseKey) : undefined);
   const learningMode = variant === "learning" || (variant === "auto" && !!course);
   const isSignedIn = authenticatedOverride ?? (isAuthenticated || !!dashboardMe.data?.email);
-  const workspaceTabs = course ? getCourseWorkspaceTabs(course) : [];
+  const destination = `${currentPath.split("?")[0]}${search ? `?${search}` : ""}`;
+  const accountHref = isSignedIn ? "/account" : signInHref(destination);
+  const courseProvince = new URLSearchParams(search).get("province");
+  const dashboardHref = course ? courseProvinceHref(`/dashboard?course=${encodeURIComponent(course.courseKey)}`, course.courseKey, courseProvince) : "/dashboard";
+  const pricingHref = course ? buildPricingHref(course.courseKey, new URLSearchParams(search).get("province")) : "/pricing";
+  const workspaceTabs = course ? getCourseWorkspaceTabs(course).map(tab => ({ ...tab, href: courseProvinceHref(tab.href, course.courseKey, courseProvince) })) : [];
   const { primaryTabs: mobilePrimaryTabs, secondaryTabs: mobileSecondaryTabs } = getMobileWorkspaceTabs(workspaceTabs);
   const activeTab = course ? getActiveWorkspaceTab(currentPath, course) : null;
 
@@ -137,7 +142,7 @@ export default function SiteNav({
           <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
           <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
           <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
-          <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
+          <Link href={pricingHref} className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
           <ResourcesMenu currentPath={currentPath} />
           </>}
           <Link href="/jobs" className={`echelon-nav-link${isPathActive(currentPath, "/jobs") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/jobs") ? "page" : undefined}>Jobs</Link>
@@ -146,11 +151,11 @@ export default function SiteNav({
 
         <div className="echelon-nav-actions">
           {rightSlot}
-          <Link href="/dashboard" className="echelon-dashboard-link">
+          <Link href={dashboardHref} className="echelon-dashboard-link">
             <LayoutDashboard size={16} aria-hidden="true" />
             <span>Dashboard</span>
           </Link>
-          <Link href="/account" className="echelon-account-link">
+          <Link href={accountHref} className="echelon-account-link">
             <CircleUserRound size={17} aria-hidden="true" />
             <span>{isSignedIn ? "My account" : "Sign in"}</span>
           </Link>
@@ -229,7 +234,7 @@ export default function SiteNav({
             </div>
             <div className="echelon-mobile-links">
               {NAV_LINKS.map((item) => (
-                <a key={item.href} href={item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""}>{item.label}</a>
+                <a key={item.href} href={item.href === "/pricing" ? pricingHref : item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""}>{item.label}</a>
               ))}
             </div>
             <div className="echelon-mobile-resources">
@@ -237,8 +242,8 @@ export default function SiteNav({
               {RESOURCE_LINKS.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
             </div>
             <div className="echelon-mobile-actions">
-              <Link href="/dashboard"><LayoutDashboard size={17} /> Dashboard</Link>
-              <Link href="/account"><CircleUserRound size={17} /> {isSignedIn ? "My account" : "Sign in"}</Link>
+              <Link href={dashboardHref}><LayoutDashboard size={17} /> Dashboard</Link>
+              <Link href={accountHref}><CircleUserRound size={17} /> {isSignedIn ? "My account" : "Sign in"}</Link>
             </div>
           </div>
         </>

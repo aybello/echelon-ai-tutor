@@ -1,4 +1,6 @@
 import { resolveAttemptAttribution, validateIssuedAttribution } from "./teams/attemptAttribution";
+import { persistedPartnershipInquiry } from "./partnershipInquiry";
+import { partnershipInquirySchema } from "../shared/partnershipInquiry";
 import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExamDate } from "./examDateRecords";
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
@@ -577,19 +579,42 @@ export const appRouter = router({
 
   // Contact form — sends email to abello@echeloninstitute.ca
   contact: router({
+    partnership: publicProcedure
+      .input(partnershipInquirySchema)
+      .mutation(({ input }) => persistedPartnershipInquiry(input)),
+    // Owner-only searchable receipts, including pending/failed secondary notifications.
+    partnershipInbox: protectedProcedure
+      .input(z.object({ search: z.string().max(128).optional(), followUpStatus: z.enum(["new", "contacted", "closed"]).optional() }).optional())
+      .query(async ({ input, ctx }) => {
+        if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Inquiry inbox unavailable." });
+        const search = input?.search?.trim();
+        return db.select().from(contactSubmissions).where(and(
+          sql`${contactSubmissions.requestKey} IS NOT NULL`,
+          input?.followUpStatus ? eq(contactSubmissions.followUpStatus, input.followUpStatus) : undefined,
+          search ? or(
+            sql`${contactSubmissions.organization} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.email} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.partnershipType} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.message} LIKE ${`%${search}%`}`,
+          ) : undefined,
+        )).orderBy(desc(contactSubmissions.createdAt)).limit(100);
+      }),
     send: publicProcedure
       .input(
         z.object({
           name: z.string().min(1, "Name is required").max(100),
-          email: z.string().email("Please enter a valid email address"),
-          subject: z.string().min(1, "Subject is required").max(200),
+          email: z.string().email("Please enter a valid email address").max(320),
+          subject: z.string().min(1, "Subject is required").max(128),
           message: z.string().min(10, "Message must be at least 10 characters").max(2000),
         })
       )
       .mutation(async ({ input }) => {
         const db = await getDb();
         // 1. Save to database first (always, even if email fails)
-        if (db) await db.insert(contactSubmissions).values({
+        if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Your message could not be saved. Please retry." });
+        await db.insert(contactSubmissions).values({
           name: input.name,
           email: input.email,
           subject: input.subject,
@@ -599,14 +624,14 @@ export const appRouter = router({
         try {
           await sendContactEmail(input);
         } catch (err) {
-          console.error("[Contact] Email send failed (submission still saved):", err);
+          console.error("[Contact] Email notification failed; saved message retained.");
           // Don't throw — submission is already saved, user gets success
         }
         // 3. Notify owner via Manus notification system as backup
         notifyOwner({
           title: `Contact form: ${input.subject}`,
           content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
-        }).catch((err) => { console.error("[contact] notifyOwner failed:", err); }); // non-blocking
+        }).catch((err) => { console.error("[Contact] Owner notification failed; saved message retained."); }); // non-blocking
         return { success: true };
       }),
   }),

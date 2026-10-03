@@ -1,7 +1,9 @@
 // Echelon Institute — Partnerships Page
 // For utility managers, training coordinators, and institutional partners
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { trpc } from "@/lib/trpc";
+import type { PartnershipInquiryInput } from "@shared/partnershipInquiry";
 import LandingNav from "@/components/LandingNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -46,17 +48,34 @@ export default function Partnerships() {
   const [form, setForm] = useState({ name: "", org: "", email: "", type: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [website, setWebsite] = useState("");
+  const submittingRef = useRef(false);
+  const inquiryRef = useRef<PartnershipInquiryInput | null>(null);
+  const sendInquiry = trpc.contact.partnership.useMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submittingRef.current) return;
+    submittingRef.current = true;
     setSubmitting(true);
+    setSubmitError("");
+    inquiryRef.current ??= {
+      requestKey: crypto.randomUUID(), name: form.name, email: form.email,
+      organization: form.org, partnershipType: form.type as PartnershipInquiryInput["partnershipType"],
+      message: form.message, website,
+    };
     try {
-      await fetch(`mailto:abello@echeloninstitute.ca?subject=Partnership Inquiry from ${encodeURIComponent(form.org)}&body=${encodeURIComponent(`Name: ${form.name}\nOrganization: ${form.org}\nEmail: ${form.email}\nType: ${form.type}\n\n${form.message}`)}`);
-    } catch { /* ignore */ }
-    // Send via mailto as fallback
-    window.location.href = `mailto:abello@echeloninstitute.ca?subject=${encodeURIComponent(`Partnership Inquiry — ${form.org}`)}&body=${encodeURIComponent(`Name: ${form.name}\nOrganization: ${form.org}\nEmail: ${form.email}\nPartnership type: ${form.type}\n\nMessage:\n${form.message}`)}`;
-    setSubmitted(true);
-    setSubmitting(false);
+      await sendInquiry.mutateAsync(inquiryRef.current);
+      setSubmitted(true);
+    } catch (error) {
+      const invalidInput = (error as { data?: { code?: string } }).data?.code === "BAD_REQUEST";
+      if (invalidInput) inquiryRef.current = null;
+      setSubmitError(invalidInput ? "Please check your form fields. Name, organization and a message of at least 10 characters are required." : "We could not confirm that your inquiry was saved. Retry safely below; your original form has been kept.");
+    } finally {
+      submittingRef.current = false;
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -229,14 +248,17 @@ export default function Partnerships() {
             textAlign: "center",
           }}>
             <div style={{ fontSize: 40, marginBottom: 16 }}>✅</div>
-            <div style={{ fontSize: 18, fontWeight: 700, color: "#15803D", marginBottom: 8 }}>Message sent</div>
+            <div style={{ fontSize: 18, fontWeight: 700, color: "#15803D", marginBottom: 8 }}>Inquiry received</div>
             <p style={{ fontSize: 14, color: "#166534", margin: 0 }}>
-              Your email client should have opened with a pre-filled message. If not, email us directly at{" "}
-              <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#15803D" }}>abello@echeloninstitute.ca</a>.
+              Your inquiry has been saved for follow-up. No email application is required. Our team will review your organization and partnership request.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+          <form onSubmit={handleSubmit} aria-busy={submitting} style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+            <label style={{ position: "absolute", left: -10000 }} aria-hidden="true">
+              Website <input name="website" value={website} onChange={e => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" />
+            </label>
+            {submitError && <p role="alert" style={{ color: "#B91C1C", fontSize: 13, margin: 0 }}>{submitError}</p>}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div>
                 <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>
@@ -244,6 +266,8 @@ export default function Partnerships() {
                 </label>
                 <input
                   required
+                  maxLength={100}
+                  disabled={submitting || !!inquiryRef.current}
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -261,6 +285,8 @@ export default function Partnerships() {
                 </label>
                 <input
                   required
+                  maxLength={128}
+                  disabled={submitting || !!inquiryRef.current}
                   type="text"
                   value={form.org}
                   onChange={(e) => setForm({ ...form, org: e.target.value })}
@@ -279,6 +305,8 @@ export default function Partnerships() {
               </label>
               <input
                 required
+                maxLength={320}
+                disabled={submitting || !!inquiryRef.current}
                 type="email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -295,6 +323,7 @@ export default function Partnerships() {
                 Partnership Type
               </label>
               <select
+                disabled={submitting || !!inquiryRef.current}
                 value={form.type}
                 onChange={(e) => setForm({ ...form, type: e.target.value })}
                 style={{
@@ -317,6 +346,9 @@ export default function Partnerships() {
               </label>
               <textarea
                 required
+                minLength={10}
+                maxLength={2000}
+                disabled={submitting || !!inquiryRef.current}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Tell us about your team size, certification goals, and what you are looking for in a partnership…"
@@ -343,7 +375,7 @@ export default function Partnerships() {
                 opacity: submitting ? 0.7 : 1,
               }}
             >
-              {submitting ? "Sending…" : "Send Partnership Inquiry"}
+              {submitting ? "Saving…" : submitError ? "Retry inquiry" : "Send Partnership Inquiry"}
             </button>
             <p style={{ fontSize: 12, color: "#9CA3AF", margin: 0, textAlign: "center" as const }}>
               Or email us directly at{" "}

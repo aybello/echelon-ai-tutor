@@ -71,6 +71,8 @@ export interface ForwardMigration {
     table: string;
     index: string;
     columns: string[];
+    /** Omitted means nonunique, preserving the historical allowance contract. */
+    unique?: boolean;
   }>;
   /** Exact pending column-type transition allowed during baseline adoption. */
   verifierAllowPendingColumnTypes?: Array<{
@@ -716,6 +718,9 @@ export async function validateManifest(
       const expectedTable = buildExpectedSchemaContract().tables.find(
         table => table.name === allowedIndex.table
       );
+      if (allowedIndex.unique && (!migration.proposedOnly || !migration.standaloneApply?.tables.includes(allowedIndex.table))) {
+        errors.push(`${migration.file} permits a pending unique index outside a proposed standalone verification table.`);
+      }
       const expectedIndex = expectedTable?.indexes.find(
         index => index.name === allowedIndex.index
       );
@@ -727,14 +732,14 @@ export async function validateManifest(
       }
       if (
         expectedIndex.columns.join(",") !== allowedIndex.columns.join(",") ||
-        expectedIndex.unique
+        expectedIndex.unique !== (allowedIndex.unique ?? false)
       ) {
         errors.push(
           `${migration.file} has incorrect expected metadata for ${allowedIndex.table}.${allowedIndex.index}.`
         );
       }
       const normalizedSql = sql.toLowerCase().replace(/[\s`]/g, "");
-      const requiredStatement = `createindex${allowedIndex.index.toLowerCase()}on${allowedIndex.table.toLowerCase()}(${allowedIndex.columns.join(",").toLowerCase()})`;
+      const requiredStatement = `create${allowedIndex.unique ? "unique" : ""}index${allowedIndex.index.toLowerCase()}on${allowedIndex.table.toLowerCase()}(${allowedIndex.columns.join(",").toLowerCase()})`;
       if (!normalizedSql.includes(requiredStatement)) {
         errors.push(
           `${migration.file} does not create declared pending index ${allowedIndex.table}.${allowedIndex.index}.`

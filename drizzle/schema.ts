@@ -298,8 +298,14 @@ export const contactSubmissions = mysqlTable("contact_submissions", {
   email: varchar("email", { length: 320 }).notNull(),
   subject: varchar("subject", { length: 128 }).notNull(),
   message: text("message").notNull(),
+  // Nullable additive fields preserve every historical general-contact row.
+  requestKey: varchar("requestKey", { length: 36 }),
+  organization: varchar("organization", { length: 128 }),
+  partnershipType: varchar("partnershipType", { length: 64 }),
+  followUpStatus: varchar("followUpStatus", { length: 16 }).default("new").notNull(),
+  notificationStatus: varchar("notificationStatus", { length: 16 }).default("pending").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, table => [uniqueIndex("contact_request_key_unique").on(table.requestKey)]);
 
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type InsertContactSubmission = typeof contactSubmissions.$inferInsert;

@@ -322,6 +322,67 @@
           ]
         }
       ]
+    },
+    {
+      "version": 76,
+      "tag": "0076_contact_partnership_receipts",
+      "file": "drizzle/0076_contact_partnership_receipts.sql",
+      "sha256": "86165265ef10519f5eb69ef27469d77d95f2f0b37b1ad019d6e71680050db436",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "contact_submissions"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "contact_submissions",
+          "column": "requestKey",
+          "targetType": "varchar(36)",
+          "targetNullable": true,
+          "sqlType": "varchar(36)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "organization",
+          "targetType": "varchar(128)",
+          "targetNullable": true,
+          "sqlType": "varchar(128)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "partnershipType",
+          "targetType": "varchar(64)",
+          "targetNullable": true,
+          "sqlType": "varchar(64)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "followUpStatus",
+          "targetType": "varchar(16)",
+          "targetNullable": false,
+          "sqlType": "varchar(16)",
+          "defaultSql": "default 'new'"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "notificationStatus",
+          "targetType": "varchar(16)",
+          "targetNullable": false,
+          "sqlType": "varchar(16)",
+          "defaultSql": "default 'pending'"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "contact_submissions",
+          "index": "contact_request_key_unique",
+          "unique": true,
+          "columns": [
+            "requestKey"
+          ]
+        }
+      ]
     }
   ]
 }

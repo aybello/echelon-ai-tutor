@@ -135,6 +135,13 @@ describe("forward-only migration safety", () => {
         verifierAllowMissingTables: ["blog_automation_runs"],
       }),
       expect.objectContaining({
+        version: 76,
+        tag: "0076_contact_partnership_receipts",
+        proposedOnly: true,
+        standaloneApply: { tables: ["contact_submissions"] },
+        verifierAllowMissingIndexes: [{ table: "contact_submissions", index: "contact_request_key_unique", columns: ["requestKey"], unique: true }],
+      }),
+      expect.objectContaining({
         version: 75,
         tag: "0075_team_flex_attempt_attribution",
         proposedOnly: true,

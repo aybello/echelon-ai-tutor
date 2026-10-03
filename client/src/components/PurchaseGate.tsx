@@ -8,7 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { loginWithReturnPath } from "@/const";
+import { buildPricingHref, courseCatalogueHref, signInHref } from "@shared/funnelNavigation";
 import { isPreviewModeActive } from "@/lib/previewMode";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { resolvePurchaseGateOffer } from "@shared/checkoutOffer";
@@ -418,7 +418,7 @@ export default function PurchaseGate({
           </p>
             </>
           ) : (
-            <Link href="/pricing">
+            <Link href={buildPricingHref(productKey, new URLSearchParams(window.location.search).get("province"))}>
               <button
                 style={{
                   width: "100%",
@@ -438,7 +438,7 @@ export default function PurchaseGate({
             </Link>
           )}
 
-          <Link href={isUS ? "/us/courses" : "/quiz"}>
+          <Link href={courseCatalogueHref(isUS)}>
             <button
               style={{
                 width: "100%",
@@ -460,7 +460,7 @@ export default function PurchaseGate({
 
         <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #E2E8F0" }}>
           <a
-            href="/account"
+            href={signInHref(`${window.location.pathname}${window.location.search}`)}
             style={{
               display: "flex",
               alignItems: "center",
@@ -480,8 +480,7 @@ export default function PurchaseGate({
             🎫 Already purchased? Restore access →
           </a>
           <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); loginWithReturnPath(window.location.pathname); }}
+            href={signInHref(`${window.location.pathname}${window.location.search}`)}
             style={{ display: "block", textAlign: "center", color: "#94A3B8", fontWeight: 500, fontSize: 11 }}
           >
             Log in to your account →

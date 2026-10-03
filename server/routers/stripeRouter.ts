@@ -139,7 +139,7 @@ export const stripeRouter = router({
         },
         allow_promotion_codes: true,
         success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${appBaseUrl}/pricing`,
+        cancel_url: `${appBaseUrl}${(await import("../../shared/funnelNavigation")).individualCheckoutCancelPath(product.key, ctx.req.headers.referer, appBaseUrl)}`,
       });
 
       const checkoutAnalytics = {

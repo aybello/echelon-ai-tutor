@@ -6,6 +6,8 @@ import { useLogout } from "@/_core/hooks/useLogout";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useSearch } from "wouter";
+import { signInHref } from "@shared/funnelNavigation";
 import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
 import "@/components/StudyWorkspace.css";
@@ -114,10 +116,10 @@ export default function StudentDashboard() {
   const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation();
   const { logout: handleDashboardLogout, isPending: logoutPending } = useLogout();
   const utils = trpc.useUtils();
-  const [selectedCourseKey] = useState<string | undefined>(() => {
-    const requested = new URLSearchParams(window.location.search).get("course");
-    return requested ? resolveCourseKey(requested)?.courseKey : undefined;
-  });
+  const dashboardSearch = useSearch();
+  const requestedCourse = new URLSearchParams(dashboardSearch).get("course");
+  const selectedCourseKey = requestedCourse ? resolveCourseKey(requestedCourse)?.courseKey : undefined;
+  const dashboardDestination = `/dashboard${dashboardSearch ? `?${dashboardSearch}` : ""}`;
 
   const [dashboardView, setDashboardView] = useState<"study" | "progress">("study");
   const [otpEmail, setOtpEmail] = useState("");
@@ -289,9 +291,9 @@ export default function StudentDashboard() {
   const authResolved = !authLoading && !dashboardMe.isLoading;
   useEffect(() => {
     if (authResolved && !hasAccess) {
-      window.location.replace("/account?next=/dashboard");
+      window.location.replace(signInHref(dashboardDestination));
     }
-  }, [authResolved, hasAccess]);
+  }, [authResolved, hasAccess, dashboardDestination]);
 
   /* ── Loading state ── */
   if (authLoading || dashboardMe.isLoading) {

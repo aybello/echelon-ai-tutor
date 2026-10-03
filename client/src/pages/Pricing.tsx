@@ -3,9 +3,8 @@
 // Stripe Checkout integration via tRPC
 
 import { useState, useEffect, useMemo } from "react";
-import { useProvince } from "@/hooks/useProvince";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import { Link, useSearch } from "wouter";
+import { Link, useSearch, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
@@ -15,7 +14,8 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
-import { ALL_PRODUCTS as SHARED_PRODUCTS } from "@shared/products";
+import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/products";
+import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 import {
   getTeamTotalPriceCents,
@@ -79,45 +79,6 @@ interface Product {
   available: boolean;
   features?: string[]; // optional highlight bullets shown on the card
 }
-
-/** Maps product key → flashcard page path */
-const QUIZ_ROUTES: Record<string, string> = {
-  "oit": "/quiz",
-  "oit-ww": "/oit-ww-quiz",
-  "class1-water": "/class1-water-quiz",
-  "class1-ww": "/class1-ww-quiz",
-  "class2-water": "/class2-water-quiz",
-  "class2-ww": "/class2-ww-quiz",
-  "class3-water": "/class3-water-quiz",
-  "class3-ww": "/class3-ww-quiz",
-  "class4-water": "/class4-water-quiz",
-  "class4-ww": "/class4-ww-quiz",
-  "class1-water-dist": "/class1-water-dist",
-  "class2-water-dist": "/class2-water-dist",
-  "class3-water-dist": "/class3-water-dist",
-  "class4-water-dist": "/class4-water-dist",
-  "class1-wastewater-coll": "/class1-wastewater-coll",
-  "class2-wastewater-coll": "/class2-wastewater-coll",
-  "class3-wastewater-coll": "/class3-wastewater-coll",
-  "class4-wastewater-coll": "/class4-wastewater-coll",
-  "wqa": "/wqa-quiz",
-  "wpi-class1-water": "/wpi-class1-water",
-  "wpi-class2-water": "/wpi-class2-water",
-  "wpi-class3-water": "/wpi-class3-water",
-  "wpi-class4-water": "/wpi-class4-water",
-  "wpi-class1-wastewater": "/wpi-class1-wastewater",
-  "wpi-class2-wastewater": "/wpi-class2-wastewater",
-  "wpi-class3-wastewater": "/wpi-class3-wastewater",
-  "wpi-class4-wastewater": "/wpi-class4-wastewater",
-  "wpi-class1-water-dist": "/wpi-class1-water-dist",
-  "wpi-class2-water-dist": "/wpi-class2-water-dist",
-  "wpi-class3-water-dist": "/wpi-class3-water-dist",
-  "wpi-class4-water-dist": "/wpi-class4-water-dist",
-  "wpi-class1-water-coll": "/wpi-class1-water-coll",
-  "wpi-class2-water-coll": "/wpi-class2-water-coll",
-  "wpi-class3-water-coll": "/wpi-class3-water-coll",
-  "wpi-class4-water-coll": "/wpi-class4-water-coll",
-};
 
 const FLASHCARD_ROUTES: Record<string, string> = {
   "oit": "/oit-water-flashcards",
@@ -1174,42 +1135,16 @@ export default function Pricing() {
       : "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
   });
 
-  // Sync with the global province selector (useProvince hook)
-  const { province: globalProvince } = useProvince();
-
-  // Derive province code from global hook (used for syncing after user changes province)
-  const globalProvinceCode: ProvinceCode =
-    globalProvince === "bc" ? "BC"
-    : globalProvince === "ab" ? "AB"
-    : globalProvince === "sk" ? "SK"
-    : globalProvince === "mb" ? "MB"
-    : "ON";
-
-  // /pricing always defaults to Ontario regardless of stored province.
-  // Only ?tab=western or an explicit user click on the province selector switches to western.
-  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
+  // The validated URL is authoritative, including reload and browser Back.
+  const searchString = useSearch();
+  const [, navigate] = useLocation();
+  const pricingSelection = readPricingSelection(searchString);
+  const selectedProvince = pricingSelection.province;
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
-
-  // Read ?tab=western from URL to pre-select the Western Canada subscription tab
-  const searchString = useSearch();
-  const tabParam = new URLSearchParams(searchString).get("tab") as SubscriptionProvince | null;
-
-  // Derive subProvince from selectedProvince (Ontario → "ontario", WPI → "western")
-  // Allow manual override via setSubProvince
-  const derivedSubProvince: SubscriptionProvince = selectedProvince === "ON" ? "ontario" : "western";
-  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(
-    tabParam === "western" ? "western" : null
-  );
-  const subProvince: SubscriptionProvince = subProvinceOverride ?? derivedSubProvince;
-
-  // If ?tab=western is in the URL, pre-select BC so individual cards show WPI
-  useEffect(() => {
-    if (tabParam === "western") {
-      setSelectedProvince("BC");
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const derivedSubProvince: SubscriptionProvince = isWpi ? "western" : "ontario";
+  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(null);
+  const subProvince = subProvinceOverride ?? derivedSubProvince;
 
   useEffect(() => {
     funnelAnalytics.mutate({ event: "pricing_viewed", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
@@ -1217,24 +1152,20 @@ export default function Pricing() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // When the user picks a province in the top selector, clear any manual override
   const handleProvinceSelect = (code: ProvinceCode) => {
-    setSelectedProvince(code);
-    setSubProvinceOverride(null); // let it re-derive from the new province
+    const requested = pricingSelection.requestedProductKey;
+    const sameFamily = (selectedProvince === "ON") === (code === "ON");
+    navigate(buildPricingHref(sameFamily ? requested : "", code));
+    setSubProvinceOverride(null);
   };
 
-  // When the user manually clicks the subscription toggle, record the override
   const handleSubProvinceSelect = (p: SubscriptionProvince) => {
     setSubProvinceOverride(p);
   };
 
-  // Do NOT sync selectedProvince from globalProvince on mount or change.
-  // /pricing defaults to Ontario; only ?tab=western or explicit user action changes it.
-
   const [showIndividual, setShowIndividual] = useState(true);
   const [buyerType, setBuyerType] = useState<"individual" | "team">("individual");
   const [individualModel, setIndividualModel] = useState<"course" | "allAccess" | null>(null);
-  const [selectedIndividualKey, setSelectedIndividualKey] = useState("");
   const [selectedAnnualTier, setSelectedAnnualTier] = useState<SubscriptionTier | "">("");
   const [showCourseLaunchNotify, setShowCourseLaunchNotify] = useState(false);
 
@@ -1275,11 +1206,9 @@ export default function Pricing() {
       ? `${liveQuestionTotal.toLocaleString("en-CA")} verified questions across ${relevantIndividualProducts.length} currently available course${relevantIndividualProducts.length === 1 ? "" : "s"}`
       : "No course is currently open for purchase.";
 
-  useEffect(() => {
-    if (selectedIndividualKey && !liveProductKeys.has(selectedIndividualKey)) {
-      setSelectedIndividualKey("");
-    }
-  }, [liveProductKeys, selectedIndividualKey]);
+  const { selectedProductKey: selectedIndividualKey } = availablePricingSelection(
+    searchString, commercialAvailability.data ? liveProductKeys : undefined,
+  );
   const selectedIndividualProduct = relevantIndividualProducts.find(product => product.key === selectedIndividualKey);
   const currentAnnualTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
   const selectedAnnualSubscription = currentAnnualTiers.find(tier => tier.tier === selectedAnnualTier);
@@ -1584,7 +1513,7 @@ export default function Pricing() {
                   id="individual-course-picker"
                   value={selectedIndividualKey}
                   onChange={e => {
-                    setSelectedIndividualKey(e.target.value);
+                    navigate(buildPricingHref(e.target.value, selectedProvince));
                     if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                   }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
@@ -1609,7 +1538,7 @@ export default function Pricing() {
                 </div>
               ) : (
                 <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>
-                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : "Pick an available course above to see one clear price and your checkout option."}
+                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : commercialAvailability.isError ? "We could not check course availability. Please reload to retry." : pricingSelection.requestedProductKey ? "Your requested course is not currently open for purchase. Choose another course explicitly or join the course launch list." : "Pick an available course above to see one clear price and your checkout option."}
                 </div>
               )}
 
@@ -2071,8 +2000,8 @@ function ProductCard({
           disabled={!product.available}
           province={isUS ? "unknown" : "ontario"}
         />
-        {product.available && QUIZ_ROUTES[product.key] && (
-          <Link href={QUIZ_ROUTES[product.key]} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+        {product.available && PRODUCT_STUDY_PATHS[product.key]?.quizPath && (
+          <Link href={courseProvinceHref(PRODUCT_STUDY_PATHS[product.key].quizPath, product.key, typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("province") : null)} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
             Try Free →
           </Link>
         )}

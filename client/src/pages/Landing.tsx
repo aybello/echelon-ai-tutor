@@ -5,6 +5,7 @@
 // Geo-aware: hero CTA and course section header adapt to CA vs US visitors
 
 import { Link } from "wouter";
+import { buildPricingHref, courseProvinceHref } from "@shared/funnelNavigation";
 import { useState, useRef, useEffect } from "react";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
@@ -1107,7 +1108,7 @@ const STATS = [
 
 type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number] | (typeof ONTARIO_WATER_DIST_COURSES)[number] | (typeof ONTARIO_WASTEWATER_COLL_COURSES)[number];
 
-function CourseCard({ course }: { course: CourseType }) {
+function CourseCard({ course, province }: { course: CourseType; province: ProvinceId | null }) {
   const [notifyOpen, setNotifyOpen] = useState(false);
   const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
   const quizHref = (course as any).quizHref ?? (
@@ -1125,7 +1126,7 @@ function CourseCard({ course }: { course: CourseType }) {
   const isWpiCourse = (course as any).province === "wpi";
   const passPrice = Number((course as any).price);
   const passPriceLabel = Number.isFinite(passPrice) ? `CA$${passPrice}` : "See pricing";
-  const pricingHref = isWpiCourse ? "/pricing?tab=western" : "/pricing";
+  const pricingHref = buildPricingHref((course as any).productKey, isWpiCourse ? province : "ON");
   const recordCourseSelection = () => {
     const productKey = (course as any).productKey as string | undefined;
     if (!productKey) return;
@@ -1254,7 +1255,7 @@ function CourseCard({ course }: { course: CourseType }) {
             </button>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <Link onClick={recordCourseSelection} href={quizHref} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+              <Link onClick={recordCourseSelection} href={courseProvinceHref(quizHref, (course as any).productKey, isWpiCourse ? province : "ON")} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                 Start Studying →
               </Link>
               {(course as any).productKey && (
@@ -1658,7 +1659,7 @@ export default function Landing() {
           gap: 24,
         }}>
           {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).map(course => (
-            <CourseCard key={course.code} course={course} />
+            <CourseCard key={course.code} course={course} province={province} />
           ))}
         </div>
       </section>

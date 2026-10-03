@@ -10,6 +10,7 @@ vi.mock("@/_core/hooks/useAuth", () => ({
   useAuth: () => ({ isAuthenticated: false }),
 }));
 vi.mock("wouter", () => ({
+  useSearch: () => "",
   Link: ({ children, ...props }: { children: React.ReactNode; href: string }) => createElement("a", props, children),
 }));
 
