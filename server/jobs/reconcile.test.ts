@@ -8,6 +8,8 @@ const {
   mockWhere,
   mockInsert,
   mockUpdate,
+  mockPaymentState,
+  mockRetrievePaymentIntent,
 } = vi.hoisted(() => ({
   mockGetDb: vi.fn(),
   mockListSessions: vi.fn(),
@@ -16,16 +18,19 @@ const {
   mockWhere: vi.fn(),
   mockInsert: vi.fn(),
   mockUpdate: vi.fn(),
+  mockPaymentState: vi.fn(),
+  mockRetrievePaymentIntent: vi.fn(),
 }));
 
 vi.mock("../db", () => ({ getDb: mockGetDb }));
+vi.mock("../stripe/paymentState", () => ({ readPaymentState: mockPaymentState }));
 vi.mock("../purchaseEmailOutbox", () => ({
   recordPurchaseWithConfirmation: mockRecordPurchase,
 }));
 vi.mock("stripe", () => ({
   default: vi.fn().mockImplementation(() => ({
     checkout: { sessions: { list: mockListSessions } },
-    paymentIntents: { retrieve: vi.fn() },
+    paymentIntents: { retrieve: mockRetrievePaymentIntent },
   })),
 }));
 
@@ -38,6 +43,8 @@ describe("runReconciliation", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     process.env.STRIPE_SECRET_KEY = "sk_test_reconciliation";
+    mockPaymentState.mockResolvedValue("clear");
+    mockRetrievePaymentIntent.mockResolvedValue({ status: "succeeded", latest_charge: { created: 1789684600, paid: true } });
     mockLookup.mockReset().mockResolvedValue([]);
     mockWhere.mockImplementation(() => ({ limit: mockLookup }));
     mockGetDb.mockResolvedValue({
@@ -73,6 +80,47 @@ describe("runReconciliation", () => {
     expect(result.errors).toEqual([
       "cs_current_individual: current Individual Exam Pass requires signed webhook replay",
     ]);
+  });
+
+  it.each(["full_refund", "partial_refund", "disputed"])("reports active access conflicting with durable %s state", async state => {
+    mockListSessions.mockResolvedValue({ data: [{
+      id: "cs_revoked", payment_intent: "pi_revoked", payment_status: "paid",
+      customer_email: "learner@example.test", metadata: { product_key: "oit" },
+    }], has_more: false });
+    mockLookup.mockResolvedValue([{ id: 1, email: "learner@example.test", productKey: "oit", status: "active" }]);
+    mockPaymentState.mockResolvedValue(state);
+    const result = await runReconciliation();
+    expect(result.errors).toEqual([`cs_revoked: active access conflicts with ${state} payment state; signed event replay and owner review required`]);
+    expect(mockRetrievePaymentIntent).not.toHaveBeenCalled();
+    expect(mockInsert).not.toHaveBeenCalled();
+    expect(mockUpdate).not.toHaveBeenCalled();
+  });
+
+  it("checks live charge state before skipping an active purchase", async () => {
+    mockListSessions.mockResolvedValue({ data: [{
+      id: "cs_live_refunded", payment_intent: "pi_live_refunded", payment_status: "paid",
+      customer_email: "learner@example.test", metadata: { product_key: "oit" },
+    }], has_more: false });
+    mockLookup.mockResolvedValue([{ id: 1, email: "learner@example.test", productKey: "oit", status: "active" }]);
+    mockRetrievePaymentIntent.mockResolvedValue({ status: "succeeded", latest_charge: { paid: true, refunded: true } });
+    expect((await runReconciliation()).errors).toEqual([
+      "cs_live_refunded: active access conflicts with full_refund payment state; signed event replay and owner review required",
+    ]);
+    expect(mockRetrievePaymentIntent).toHaveBeenCalledWith("pi_live_refunded", { expand: ["latest_charge"] });
+    expect(mockUpdate).not.toHaveBeenCalled();
+  });
+
+  it("does not recommend granting access for an unmatched refunded payment", async () => {
+    mockListSessions.mockResolvedValue({ data: [{
+      id: "cs_refund_first", payment_intent: "pi_refund_first", payment_status: "paid",
+      customer_email: "learner@example.test", metadata: { product_key: "oit" },
+    }], has_more: false });
+    mockPaymentState.mockResolvedValue("full_refund");
+    expect((await runReconciliation()).errors).toEqual([
+      "cs_refund_first: full_refund payment must not grant access; no recovery permitted",
+    ]);
+    expect(mockRecordPurchase).not.toHaveBeenCalled();
+    expect(mockInsert).not.toHaveBeenCalled();
   });
 
   it("does not create an unversioned historical pass outside evidence-bound recovery", async () => {

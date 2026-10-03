@@ -1,5 +1,6 @@
 import { provisionIndividualSubscription } from "./provisionIndividualSubscription";
-import { recordPurchaseWithConfirmation } from "../purchaseEmailOutbox";
+import { fulfilIndividualPurchase } from "./fulfilIndividualPurchase";
+import { processIndividualDispute } from "./paymentState";
 import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
@@ -20,13 +21,12 @@ import { recordOrganizationInvoiceConversion } from "./recordOrgInvoiceAnalytics
 import type { SubscriptionProvince } from "./subscriptionProducts";
 import {
   INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
-  getIndividualExamPassExpiry,
   usesTwelveMonthIndividualExamPassPolicy,
 } from "./individualExamPass";
 import { processRefund } from "./processRefund";
 import {
+  normalizePaymentIntentId,
   paymentTimestampFromStripeEvent,
-  paymentTimestampFromSuccessfulPaymentIntent,
 } from "./paymentTimestamp";
 import {
   handleFlexDisputeClosed,
@@ -49,12 +49,6 @@ export function parseRefundLicenceIds(metadata: Record<string, string> | null | 
   return values
     .map(value => Number(String(value).trim()))
     .filter(value => Number.isInteger(value) && value > 0);
-}
-
-function isDuplicateDatabaseKeyError(error: unknown): boolean {
-  if (!error || typeof error !== "object") return false;
-  const databaseError = error as { code?: unknown; errno?: unknown };
-  return databaseError.code === "ER_DUP_ENTRY" || databaseError.errno === 1062;
 }
 
 export function registerStripeWebhook(app: Express) {
@@ -209,91 +203,41 @@ export function registerStripeWebhook(app: Express) {
           const amountPaidCents = session.amount_total ?? 0;
           const paymentAmountLabel = `${paymentCurrency === "usd" ? "US$" : "CA$"}${(amountPaidCents / 100).toFixed(2)}`;
           const stripeSessionId = session.id;
-          const stripePaymentIntentId = session.payment_intent ?? null;
+          const stripePaymentIntentId = normalizePaymentIntentId(session.payment_intent);
           if (!productKey || !email) {
             // email is already normalized above
             console.error("[Stripe Webhook] Missing product_key or email in session metadata");
             return res.json({ received: true });
           }
 
-          // Upsert — avoid duplicate on webhook retry
-          const existing = await db
-            .select({ id: purchases.id })
-            .from(purchases)
-            .where(
-              eq(purchases.stripeSessionId, stripeSessionId)
-            )
-            .limit(1);
-
-          if (existing.length === 0) {
-            // Both immediate and delayed payment methods use the successful
-            // PaymentIntent charge time, never a Checkout snapshot or local clock.
-            const accessGrantedAt = await paymentTimestampFromSuccessfulPaymentIntent(
-              session.payment_intent,
-              (paymentIntentId) => stripe.paymentIntents.retrieve(paymentIntentId, { expand: ["latest_charge"] }),
-            );
-            const accessExpiresAt = getIndividualExamPassExpiry(
-              accessGrantedAt,
-            );
-            let createdPurchase = false;
-            try {
-              await recordPurchaseWithConfirmation(db, {
-                userId: userId ?? undefined,
-                email,
-                phone: webhookPrePhone,
-                customerName: webhookCustomerName,
-                productKey,
-                productName: productName ?? productKey,
-                // The existing database column is named amountCAD. New
-                // checkouts are CAD-only; retain actual currency in the
-                // immutable receipt payload for any pre-cutover USD session.
-                amountCAD: amountPaidCents,
-                paymentCurrency,
-                stripeSessionId,
-                stripePaymentIntentId,
-                accessExpiresAt,
-              });
-              createdPurchase = true;
-
-              console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${paymentAmountLabel})`);
-              // The purchase and confirmation-delivery intent are one transaction.
-
-              const purchasePhone = session.customer_details?.phone ?? null;
-              await notifyOwner({
-                title: `New Purchase: ${productName ?? productKey}`,
-                content: `${email} purchased ${productName ?? productKey} for ${paymentAmountLabel}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
-              }).catch((error) => {
-                console.error("[Stripe Webhook] Could not notify owner about purchase:", error);
-              });
-            } catch (error) {
-              // Concurrent deliveries are resolved by the database's unique
-              // Stripe-session key. Confirm the winning transaction committed
-              // before returning a duplicate success response.
-              if (!isDuplicateDatabaseKeyError(error)) throw error;
-              const persisted = await db
-                .select({ id: purchases.id })
-                .from(purchases)
-                .where(eq(purchases.stripeSessionId, stripeSessionId))
-                .limit(1);
-              if (persisted.length === 0) throw error;
-              console.log(`[Stripe Webhook] Concurrent duplicate session ${stripeSessionId} — verified existing purchase`);
-            }
-
-            if (createdPurchase) {
-              const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
-              const analyticsContext = {
-                source: session.metadata?.analytics_source || "unknown",
-                device: session.metadata?.analytics_device || "unknown",
-                province: session.metadata?.analytics_province || "unknown",
-                surface: session.metadata?.analytics_surface || "unknown",
-              };
-              await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD: amountPaidCents, currency: paymentCurrency, ...analyticsContext } })
-                .catch((error) => console.error("[Stripe Webhook] Checkout analytics failed:", error));
-              await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase", ...analyticsContext } })
-                .catch((error) => console.error("[Stripe Webhook] Access analytics failed:", error));
-            }
-          } else {
-            console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping insert`);
+          // Fulfillment, refunds and disputes acquire the same payment guard.
+          // Live charge state is checked inside that transaction, even on replay.
+          const fulfilled = await fulfilIndividualPurchase(db, {
+            userId: userId ?? undefined, email, phone: webhookPrePhone,
+            customerName: webhookCustomerName, productKey, productName: productName ?? productKey,
+            // New checkouts remain CAD-only; preserve historical USD receipt currency.
+            amountCAD: amountPaidCents, paymentCurrency, stripeSessionId, stripePaymentIntentId,
+          }, paymentIntentId => stripe.paymentIntents.retrieve(paymentIntentId, { expand: ["latest_charge"] }));
+          if (fulfilled.state === "blocked") {
+            return res.json({ received: true, accessBlocked: fulfilled.reason });
+          }
+          if (fulfilled.state === "created") {
+            const purchasePhone = session.customer_details?.phone ?? null;
+            await notifyOwner({
+              title: `New Purchase: ${productName ?? productKey}`,
+              content: `${email} purchased ${productName ?? productKey} for ${paymentAmountLabel}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
+            }).catch(error => console.error("[Stripe Webhook] Could not notify owner about purchase:", error));
+            const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
+            const analyticsContext = {
+              source: session.metadata?.analytics_source || "unknown",
+              device: session.metadata?.analytics_device || "unknown",
+              province: session.metadata?.analytics_province || "unknown",
+              surface: session.metadata?.analytics_surface || "unknown",
+            };
+            await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD: amountPaidCents, currency: paymentCurrency, ...analyticsContext } })
+              .catch(error => console.error("[Stripe Webhook] Checkout analytics failed:", error));
+            await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase", ...analyticsContext } })
+              .catch(error => console.error("[Stripe Webhook] Access analytics failed:", error));
           }
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing checkout.session.completed:", err);
@@ -685,6 +629,7 @@ export function registerStripeWebhook(app: Express) {
               stripeEventId: event.id,
               stripePaymentIntentId: pi,
               stripeChargeId: charge.id ?? null,
+              refundKind: amount > 0 && amountRefunded >= amount ? "full_refund" : "partial_refund",
             });
             if (result.state === "busy") {
               return res.status(503).json({ error: "Refund event is already being processed" });
@@ -720,7 +665,7 @@ export function registerStripeWebhook(app: Express) {
             }
             const db = await getDb();
             if (!db) return res.status(503).json({ error: "Database unavailable" });
-            await db.update(purchases).set({ status: "disputed" }).where(eq(purchases.stripePaymentIntentId, pi));
+            await processIndividualDispute(db, pi);
             await notifyOwner({ title: "⚠️ Dispute opened", content: `Chargeback for PI ${pi}. Review in Stripe.` });
           } catch (err: any) {
             console.error("[Stripe Webhook] dispute.created:", err.message);

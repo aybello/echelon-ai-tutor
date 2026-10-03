@@ -13,6 +13,8 @@ import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST
 import {
   usesTwelveMonthIndividualExamPassPolicy,
 } from "../stripe/individualExamPass";
+import { readPaymentState } from "../stripe/paymentState";
+import { normalizePaymentIntentId, PaymentAccessBlockedError, paymentTimestampFromSuccessfulPaymentIntent } from "../stripe/paymentTimestamp";
 
 function getStripe(): Stripe {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -68,10 +70,34 @@ export async function runReconciliation(hoursBack: number = 48, assertOwned: () 
         // evidence-bound historical recovery) may create a purchase. Include
         // refunded/expired rows: replay must never restore revoked access.
         const [existing] = await db
-          .select({ id: purchases.id, email: purchases.email, productKey: purchases.productKey })
+          .select({ id: purchases.id, email: purchases.email, productKey: purchases.productKey, status: purchases.status })
           .from(purchases)
           .where(eq(purchases.stripeSessionId, session.id))
           .limit(1);
+        let blocked: string | null = null;
+        if (session.payment_intent) {
+          const paymentIntentId = normalizePaymentIntentId(session.payment_intent);
+          const state = await readPaymentState(db, paymentIntentId);
+          if (state !== "clear") blocked = state;
+          else {
+            try {
+              await paymentTimestampFromSuccessfulPaymentIntent(paymentIntentId,
+                id => stripe.paymentIntents.retrieve(id, { expand: ["latest_charge"] }));
+            } catch (error) {
+              if (!(error instanceof PaymentAccessBlockedError)) throw error;
+              blocked = error.reason;
+            }
+          }
+        }
+        if (blocked) {
+          skipped.push(session.id);
+          if (existing?.status === "active") {
+            errors.push(`${session.id}: active access conflicts with ${blocked} payment state; signed event replay and owner review required`);
+          } else if (!existing) {
+            errors.push(`${session.id}: ${blocked} payment must not grant access; no recovery permitted`);
+          }
+          continue;
+        }
         if (existing) {
           skipped.push(session.id);
           if (normalizeEmail(existing.email) !== normalizeEmail(email) || existing.productKey !== productKey) {

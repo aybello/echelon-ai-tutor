@@ -6,6 +6,17 @@ import {
 } from "./paymentTimestamp";
 
 describe("paymentTimestampFromStripeEvent", () => {
+  it.each([
+    [{ refunded: true }, "full_refund"],
+    [{ amount: 4900, amount_refunded: 4900, refunded: false }, "full_refund"],
+    [{ amount: 4900, amount_refunded: 1000, refunded: false }, "partial_refund"],
+    [{ disputed: true }, "disputed"],
+  ])("rejects successful charges whose access is blocked: %j", async (state, reason) => {
+    await expect(paymentTimestampFromSuccessfulPaymentIntent("pi_test", async () => ({
+      status: "succeeded", latest_charge: { created: 1_789_684_600, paid: true, ...state },
+    }))).rejects.toMatchObject({ reason });
+  });
+
   it("uses Stripe's event timestamp rather than local processing time", () => {
     expect(paymentTimestampFromStripeEvent(1_789_684_600).toISOString()).toBe("2026-09-17T22:36:40.000Z");
   });

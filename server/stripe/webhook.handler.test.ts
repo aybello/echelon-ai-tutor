@@ -2,6 +2,12 @@ const mockProvisionIndividual = vi.hoisted(() => vi.fn());
 vi.mock("./provisionIndividualSubscription", () => ({ provisionIndividualSubscription: mockProvisionIndividual }));
 const mockRecordPurchase = vi.hoisted(() => vi.fn());
 vi.mock("../purchaseEmailOutbox", () => ({ recordPurchaseWithConfirmation: mockRecordPurchase }));
+// Handler unit fixtures do not emulate database locking. The dedicated payment
+// integration suite invokes this boundary against an isolated loopback database.
+vi.mock("./paymentState", () => ({
+  withPaymentState: (_db: unknown, _pi: string, work: (tx: unknown, state: string) => unknown) => work(_db, "clear"),
+  revokePaymentState: vi.fn(), revokeIndividualPurchases: vi.fn(), processIndividualDispute: vi.fn(),
+}));
 const mockNotifyOwner = vi.hoisted(() => vi.fn());
 const mockTrackEvent = vi.hoisted(() => vi.fn());
 /**
@@ -168,7 +174,7 @@ function dbWithNoOrganization() {
     select: vi.fn(() => ({
       from: vi.fn(() => ({
         where: vi.fn(() => ({
-          limit: vi.fn().mockResolvedValue([]),
+          limit: vi.fn(() => ({ for: vi.fn().mockResolvedValue([]) })),
         })),
       })),
     })),
@@ -176,8 +182,9 @@ function dbWithNoOrganization() {
 }
 
 function dbWithPurchaseLookupSequence(...rows: Array<Array<{ id: number }>>) {
-  const limit = vi.fn();
-  for (const result of rows) limit.mockResolvedValueOnce(result);
+  const lock = vi.fn();
+  for (const result of rows) lock.mockResolvedValueOnce(result);
+  const limit = vi.fn(() => ({ for: lock }));
   return {
     select: vi.fn(() => ({
       from: vi.fn(() => ({
@@ -189,6 +196,7 @@ function dbWithPurchaseLookupSequence(...rows: Array<Array<{ id: number }>>) {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mockRecordPurchase.mockReset().mockResolvedValue(undefined);
   process.env.STRIPE_WEBHOOK_SECRET = "whsec_test";
   mockFlexFullRefund.mockResolvedValue(false);
   mockFlexPartialRefund.mockResolvedValue(false);
@@ -316,8 +324,8 @@ describe("Stripe webhook handler — org provisioning delegation", () => {
       items: { data: [{ quantity: 25 }] },
       metadata: {
         type: "org",
-        manager_email: "brian.hull@winnipeg.ca",
-        org_name: "City of Winnipeg",
+        manager_email: "manager@example.test",
+        org_name: "Synthetic Organization",
         subscription_province: "western",
         subscription_tier: "stream-wastewater-coll",
       },
@@ -337,8 +345,8 @@ describe("Stripe webhook handler — org provisioning delegation", () => {
       expect.objectContaining({
         stripeEventId: "evt_team_created",
         stripeSubscriptionId: "sub_team_123",
-        managerEmail: "brian.hull@winnipeg.ca",
-        orgName: "City of Winnipeg",
+        managerEmail: "manager@example.test",
+        orgName: "Synthetic Organization",
         seats: 25,
       }),
     );
@@ -531,12 +539,8 @@ describe("Individual Exam Pass fulfillment", () => {
     expect(response.body).toEqual({ received: true });
   });
 
-  it("treats a concurrent unique-key collision as a verified duplicate", async () => {
-    mockGetDb.mockResolvedValue(dbWithPurchaseLookupSequence([], [{ id: 19 }]));
-    mockRecordPurchase.mockRejectedValue(Object.assign(new Error("Duplicate Stripe session"), {
-      code: "ER_DUP_ENTRY",
-      errno: 1062,
-    }));
+  it("acknowledges a recorded session without inserting or notifying again", async () => {
+    mockGetDb.mockResolvedValue(dbWithPurchaseLookupSequence([{ id: 19 }]));
     mockConstructEvent.mockReturnValue({
       id: "evt_concurrent_duplicate",
       type: "checkout.session.completed",
@@ -560,7 +564,7 @@ describe("Individual Exam Pass fulfillment", () => {
     const response = makeResponse();
     await captureWebhookHandler()(makeRequest(), response);
 
-    expect(mockRecordPurchase).toHaveBeenCalledTimes(1);
+    expect(mockRecordPurchase).not.toHaveBeenCalled();
     expect(mockNotifyOwner).not.toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ received: true });
@@ -630,7 +634,7 @@ describe("Individual Exam Pass fulfillment", () => {
       select: vi.fn(() => ({
         from: vi.fn(() => ({
           where: vi.fn(() => ({
-            limit: vi.fn().mockImplementation(async () => recorded.size ? [{ id: 1 }] : []),
+            limit: vi.fn(() => ({ for: vi.fn().mockImplementation(async () => recorded.size ? [{ id: 1 }] : []) })),
           })),
         })),
       })),
@@ -664,7 +668,7 @@ describe("Individual Exam Pass fulfillment", () => {
     await captureWebhookHandler()(makeRequest(), retryResponse);
 
     expect(mockRecordPurchase).toHaveBeenCalledTimes(1);
-    expect(mockRetrievePaymentIntent).toHaveBeenCalledTimes(1);
+    expect(mockRetrievePaymentIntent).toHaveBeenCalledTimes(2);
     expect(mockTrackEvent).toHaveBeenCalledTimes(2);
     expect(retryResponse.statusCode).toBe(200);
     expect(retryResponse.body).toEqual({ received: true });
