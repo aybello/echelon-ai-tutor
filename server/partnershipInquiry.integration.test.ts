@@ -14,6 +14,7 @@ import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 import type { PartnershipInquiryInput } from "../shared/partnershipInquiry";
 import { splitMigrationStatements } from "../scripts/db/migrationSafety";
+import { assertAuditIntegrationDatabaseTarget } from "./auditIntegrationGuard";
 
 // Only secondary delivery is mocked: database helpers, Drizzle, MySQL uniqueness,
 // persisted receipt lookup, and tRPC authorization all execute normally.
@@ -52,19 +53,17 @@ const caller = (role?: "admin" | "user") => appRouter.createCaller({
 suite("partnership receipts with real isolated MySQL and Drizzle", () => {
   beforeAll(async () => {
     // Never enable this suite using only the presence of an application DB URL.
-    // Even the explicit gate cannot select another audit DB, a cutover, or TLS target.
-    const url = new URL(process.env.DATABASE_URL ?? "");
-    if (url.protocol !== "mysql:" || url.hostname !== "127.0.0.1" || url.port !== "3311" ||
-        url.pathname !== "/echelon_audit_funnel" || url.username !== "root" || url.password || url.search ||
-        process.env.DATABASE_CUTOVER_USE_EXTERNAL_TARGET === "true" || process.env.EXTERNAL_DATABASE_URL) {
-      throw new Error("Receipt integration requires exactly the assigned disposable loopback database");
-    }
+    // The sandbox remains exact; CI uses only its pinned synthetic service.
+    const url = assertAuditIntegrationDatabaseTarget(process.env.DATABASE_URL,
+      target => target.hostname === "127.0.0.1" && target.port === "3311"
+        && target.pathname === "/echelon_audit_funnel"
+        && target.username === "root" && !target.password);
     vi.stubGlobal("fetch", vi.fn(() => Promise.reject(new Error("External HTTP forbidden in receipt tests"))));
     db = (await getDb())!;
     if (!db) throw new Error("Assigned disposable receipt database unavailable");
     connection = await mysql.createConnection(url.toString());
     const [rows] = await connection.query<mysql.RowDataPacket[]>("SELECT DATABASE() AS name");
-    if (rows[0]?.name !== "echelon_audit_funnel") throw new Error("Unexpected disposable database");
+    if (rows[0]?.name !== url.pathname.slice(1)) throw new Error("Unexpected disposable database");
   });
 
   beforeEach(() => {

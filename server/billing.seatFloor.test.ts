@@ -5,6 +5,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
+import { organizations, organizationTermUsage } from "../drizzle/schema";
 
 vi.mock("./db", () => ({ getDb: vi.fn() }));
 
@@ -15,6 +16,8 @@ const ORG = {
   id: 1,
   name: "Test Org",
   seatsTotal: 10,
+  managerEmail: "manager@example.com",
+  createdAt: new Date("2026-01-01"),
   stripeSubscriptionId: "sub_test_abc",
   termStart: new Date("2026-01-01"),
   termEnd: new Date("2027-01-01"),
@@ -27,25 +30,13 @@ function makeDb(opts: {
   licencesUsed?: number;
 } = {}) {
   const { managerOrgId = 1, org = ORG, licencesUsed = 5 } = opts;
-  let call = 0;
   const db: any = {
     select: vi.fn().mockImplementation(() => ({
-      from: vi.fn().mockImplementation(() => ({
-        where: vi.fn().mockImplementation(() => ({
-          limit: vi.fn().mockImplementation(() => ({
-            then: (fn: (r: any[]) => any) => {
-              call++;
-              if (call === 1) return Promise.resolve(fn(managerOrgId ? [{ orgId: managerOrgId }] : []));
-              if (call === 2) return Promise.resolve(fn(org ? [org] : []));
-              return Promise.resolve(fn([]));
-            },
-          })),
-          then: (fn: (r: any[]) => any) => {
-            call++;
-            if (call === 3) return Promise.resolve(fn([{ cnt: licencesUsed }]));
-            return Promise.resolve(fn([]));
-          },
-        })),
+      from: vi.fn().mockImplementation((table: unknown) => ({
+        where: vi.fn().mockImplementation(() => Promise.resolve(
+          table === organizations ? (managerOrgId && org ? [org] : [])
+            : table === organizationTermUsage ? [{ cnt: licencesUsed }] : [],
+        )),
       })),
     })),
     update: vi.fn().mockReturnValue({ set: vi.fn().mockReturnValue({ where: vi.fn().mockResolvedValue([]) }) }),

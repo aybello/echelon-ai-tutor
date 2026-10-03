@@ -9,6 +9,7 @@ import { fetchAndIngest } from "./scripts/fetchJobs.mjs";
 import { JOB_HEALTH_KEY, JOB_REFRESH_LOCK_KEY, jobSourceStateKey, vacancyStateKey, readJobRefreshHealth } from "./jobBoardState";
 import { jobsRouter } from "./routers/jobsRouter";
 import { claimWork } from "./jobs/durableWork";
+import { assertAuditIntegrationDatabaseTarget } from "./auditIntegrationGuard";
 
 // A flag alone is insufficient: refuse every non-designated or non-loopback target.
 const suite = process.env.AUDIT_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
@@ -38,8 +39,10 @@ async function writeVacancy(url: string, status: string, value: unknown) {
 }
 suite("Jobs real SQL durable state in a disposable database", () => {
   beforeAll(async () => {
-    const url = new URL(process.env.DATABASE_URL!);
-    if (url.protocol !== "mysql:" || !["127.0.0.1", "localhost"].includes(url.hostname) || !["/echelon_audit_reliability", "/echelon_ci"].includes(url.pathname)) throw new Error("Jobs SQL tests require the designated disposable loopback database");
+    const url = assertAuditIntegrationDatabaseTarget(process.env.DATABASE_URL,
+      target => target.port === "3311"
+        && ["/echelon_audit_reliability", "/echelon_audit_full"].includes(target.pathname)
+        && target.username === "root" && !target.password);
     pool = mysql.createPool({ uri: url.toString(), connectionLimit: 6, timezone: "Z" });
     state.db = drizzle(pool);
     await pool.execute("SELECT workKey FROM scheduled_work LIMIT 1");

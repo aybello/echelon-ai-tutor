@@ -133,7 +133,8 @@ jobs:
             pnpm db:migrate:status
       - name: Deterministic unit and acceptance tests
         run: >-
-          pnpm exec vitest run
+          pnpm exec vitest run --maxWorkers 2 --minWorkers 1
+          --exclude '**/*.integration.test.ts'
           --exclude server/_core/access.test.ts
           --exclude server/accessService.test.ts
           --exclude server/emailOtp.test.ts
@@ -169,7 +170,7 @@ jobs:
           SMTP_PASS: test-only-placeholder
       - name: Database-backed access, OTP and Stripe lifecycle tests
         run: >-
-          pnpm exec vitest run
+          pnpm exec vitest run --maxWorkers 2 --minWorkers 1
           server/_core/access.test.ts
           server/accessService.test.ts
           server/emailOtp.test.ts
@@ -189,46 +190,67 @@ jobs:
           server/wpiBlueprintRelease.integration.test.ts
           server/billingJobs.integration.test.ts
           server/examDateRecords.integration.test.ts
+          server/teamFlexLifecycle.integration.test.ts
+          server/class1NetworksImporter.integration.test.ts
+          server/class1NetworksRelease.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
+          ECHELON_RUN_ISOLATED_INTEGRATION_TESTS: "true"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
       - name: Database-backed CEU self-paced completion
-        run: pnpm exec vitest run server/ceuLearning.integration.test.ts
+        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/ceuLearning.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           CEU_INTEGRATION_TEST_DB: "1"
       - name: Database-backed durable blog recovery and atomic publication
-        run: pnpm exec vitest run server/blogWorkflow.integration.test.ts
+        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/blogWorkflow.integration.test.ts
         env:
+          CI: "1"
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           BLOG_INTEGRATION_TEST_DB: "1"
-      - name: Database-backed Jobs state, vacancy filters and concurrent ownership
-        run: pnpm exec vitest run server/jobBoardReliability.integration.test.ts
+      - name: Database-backed audit auth, payment, Teams and partnership invariants
+        run: >-
+          pnpm exec vitest run --maxWorkers 2 --minWorkers 1
+          server/auth.atomicVerification.integration.test.ts
+          server/stripe/paymentInvariant.integration.test.ts
+          server/teams/auditTeams.integration.test.ts
+          server/partnershipInquiry.integration.test.ts
         env:
+          CI: "1"
+          NODE_ENV: test
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          AUDIT_INTEGRATION_TEST_DB: "1"
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+      - name: Database-backed Jobs state, vacancy filters and concurrent ownership
+        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/jobBoardReliability.integration.test.ts
+        env:
+          CI: "1"
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           AUDIT_INTEGRATION_TEST_DB: "1"
       - name: Database-backed OIT import and batch release
-        run: pnpm exec vitest run server/oitImporter.integration.test.ts
+        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/oitImporter.integration.test.ts
         env:
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           REQUIRE_OIT_IMPORTER_DB: "1"
       - name: Database-backed learner and manager course reporting
-        run: pnpm exec vitest run server/courseReporting.integration.test.ts
+        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/courseReporting.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - name: Database-backed practice paging, module filters and mock retirement
-        run: pnpm exec vitest run server/practicePaging.integration.test.ts server/learnerBankModules.integration.test.ts
+        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/practicePaging.integration.test.ts server/learnerBankModules.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -239,15 +261,16 @@ jobs:
         run: |
           set -euo pipefail
           test -z "$(git status --porcelain --untracked-files=no)"
-          export EXPECTED_RELEASE="$(git rev-parse --verify HEAD)"
+          export SOURCE_FINGERPRINT_TOOL="$GITHUB_WORKSPACE/scripts/sourceFingerprint.ts"
+          export EXPECTED_SOURCE="$(pnpm exec tsx -e 'import(process.env.SOURCE_FINGERPRINT_TOOL).then(({computeSourceFingerprint}) => console.log(computeSourceFingerprint()))')"
           archive="$(mktemp -d "$RUNNER_TEMP/echelon-source.XXXXXX")"
           trap 'rm -rf "$archive"' EXIT
           git archive HEAD | tar -x -C "$archive"
-          printf '{"version":1,"commit":"%s","clean":true}\n' "$EXPECTED_RELEASE" > "$archive/release.json"
           export RELEASE_VERIFIER="$GITHUB_WORKSPACE/scripts/buildServer.ts"
           cd "$archive"
-          # The archive contains committed source only. A runner SHA alone is not approval.
-          "$GITHUB_WORKSPACE/node_modules/.bin/tsx" -e 'import(process.env.RELEASE_VERIFIER).then(({buildReleaseId}) => { if (buildReleaseId() !== process.env.EXPECTED_RELEASE) throw Error("Archive release identity mismatch"); })'
+          # Managed publishing receives committed source only, with no .git or
+          # out-of-band release.json. Do not manufacture evidence absent there.
+          "$GITHUB_WORKSPACE/node_modules/.bin/tsx" -e 'import(process.env.RELEASE_VERIFIER).then(({buildReleaseIdentity}) => { const identity = buildReleaseIdentity(); if (identity.releaseKind !== "source-sha256" || identity.release !== process.env.EXPECTED_SOURCE) throw Error("Managed archive functional source identity mismatch"); })'
       - name: Build the exact clean tracked checkout (not a labelled development artifact)
         run: pnpm build
         env:
@@ -255,6 +278,8 @@ jobs:
           JWT_SECRET: test-only-not-for-production
           VITE_APP_ID: echelon-browser-test
           VITE_OAUTH_PORTAL_URL: https://oauth.echelon.test
+          VITE_ANALYTICS_ENDPOINT: https://analytics.example.test
+          VITE_ANALYTICS_WEBSITE_ID: 11111111-1111-4111-8111-111111111111
       - name: Seed the Teams Course Pass browser journey
         run: node scripts/e2e/seedTeamsCoursePass.mjs
         env:
@@ -262,7 +287,7 @@ jobs:
       - name: Install the Teams browser-test runtime
         run: pnpm exec playwright install --with-deps chromium
       - name: Browser-test Teams access, purchase confirmation, Equipment Lab and Process Guide
-        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/ceu-learning.spec.ts
+        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/ceu-learning.spec.ts e2e/audit-repairs.spec.ts
         env:
           CI: "1"
           NODE_ENV: test

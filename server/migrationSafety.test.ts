@@ -135,19 +135,19 @@ describe("forward-only migration safety", () => {
         verifierAllowMissingTables: ["blog_automation_runs"],
       }),
       expect.objectContaining({
-        version: 76,
-        tag: "0076_contact_partnership_receipts",
-        proposedOnly: true,
-        standaloneApply: { tables: ["contact_submissions"] },
-        verifierAllowMissingIndexes: [{ table: "contact_submissions", index: "contact_request_key_unique", columns: ["requestKey"], unique: true }],
-      }),
-      expect.objectContaining({
         version: 75,
         tag: "0075_team_flex_attempt_attribution",
         proposedOnly: true,
         standaloneApply: { tables: ["question_attempts"] },
         verifierAllowMissingColumns: [{ table: "question_attempts", column: "flexLicenceId", targetType: "int", targetNullable: true, sqlType: "int" }],
         verifierAllowMissingIndexes: [{ table: "question_attempts", index: "qa_flex_licence_created_idx", columns: ["flexLicenceId", "createdAt"] }],
+      }),
+      expect.objectContaining({
+        version: 76,
+        tag: "0076_contact_partnership_receipts",
+        proposedOnly: true,
+        standaloneApply: { tables: ["contact_submissions"] },
+        verifierAllowMissingIndexes: [{ table: "contact_submissions", index: "contact_request_key_unique", columns: ["requestKey"], unique: true }],
       }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
@@ -298,6 +298,12 @@ describe("forward-only migration safety", () => {
     await expect(postBaselineColumns()).resolves.toEqual(expect.arrayContaining([
       { table: "product_analytics_events", column: "anonymousHash" },
       { table: "stripe_event_log", column: "analyticsProcessed" },
+      { table: "question_attempts", column: "flexLicenceId" },
+      { table: "contact_submissions", column: "requestKey" },
+      { table: "contact_submissions", column: "organization" },
+      { table: "contact_submissions", column: "partnershipType" },
+      { table: "contact_submissions", column: "followUpStatus" },
+      { table: "contact_submissions", column: "notificationStatus" },
     ]));
   });
 
@@ -888,7 +894,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]);
   });
 });
 

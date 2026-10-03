@@ -7,6 +7,7 @@ import { drizzle } from "drizzle-orm/mysql2";
 import { and, eq, inArray, like } from "drizzle-orm";
 import { productAnalyticsEvents, purchaseEmailOutbox, purchases, stripeEventLog } from "../../drizzle/schema";
 import type { Database } from "./eventLedger";
+import { assertAuditIntegrationDatabaseTarget } from "../auditIntegrationGuard";
 
 const mocks = vi.hoisted(() => ({ getDb: vi.fn(), retrieve: vi.fn(), notify: vi.fn(), track: vi.fn() }));
 vi.mock("../db", () => ({ getDb: mocks.getDb }));
@@ -39,11 +40,8 @@ import { INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE, INDIVIDUAL_EXAM_PASS_POLICY_VERS
 const enabled = process.env.AUDIT_INTEGRATION_TEST_DB === "1";
 const rawUrl = process.env.DATABASE_URL;
 if (enabled) {
-  if (!rawUrl) throw new Error("Isolated audit database URL is required");
-  const url = new URL(rawUrl);
-  if (url.protocol !== "mysql:" || !["localhost", "127.0.0.1"].includes(url.hostname) || !url.pathname.startsWith("/echelon_audit_")) {
-    throw new Error("Payment tests require an explicit disposable loopback audit database");
-  }
+  assertAuditIntegrationDatabaseTarget(rawUrl,
+    url => /^\/echelon_audit_[a-z0-9_]+$/.test(url.pathname));
 }
 const databaseSuite = describe.skipIf(!enabled);
 const runId = `pay_${randomUUID().replaceAll("-", "")}`;

@@ -22,6 +22,9 @@ const POST_BASELINE_BASELINE_TABLE_INDEXES: ReadonlyArray<{
   { table: "exam_dates", index: "exam_dates_email_product_unique" },
   { table: "stripe_event_log", index: "stripe_event_log_status_idx" },
   { table: "team_flex_orders", index: "team_flex_orders_org_status_idx" },
+  // MySQL otherwise keeps the createdAt suffix after flexLicenceId is dropped.
+  { table: "question_attempts", index: "qa_flex_licence_created_idx" },
+  { table: "contact_submissions", index: "contact_request_key_unique" },
 ];
 
 const ANALYTICS_ANONYMOUS_TIME_INDEX = {
@@ -36,6 +39,9 @@ export function assertDisposableResetTarget(databaseUrl: string): void {
     );
   }
   const url = new URL(databaseUrl);
+  if (url.protocol !== "mysql:" || url.search || url.hash) {
+    throw new Error("Disposable reset requires an unambiguous MySQL URL.");
+  }
   if (!new Set(["127.0.0.1", "localhost", "::1"]).has(url.hostname)) {
     throw new Error("Disposable reset requires a loopback MySQL host.");
   }

@@ -6,6 +6,7 @@ import { getDb } from "./db";
 import { examResults, questionAttempts, questions, purchases, organizations, teamFlexLicences } from "../drizzle/schema";
 import { calculateReadinessSnapshot } from "./readinessSnapshot";
 import type { TrpcContext } from "./_core/context";
+import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
 
 const suffix = randomUUID();
 const email = `reporting-${suffix}@echelon.test`;
@@ -23,19 +24,26 @@ suite("course reporting from issued mock to learner history and manager readines
   beforeAll(async () => {
     const connection = await getDb(); if (!connection) throw new Error("Test database required"); db = connection;
     for (const bankKey of banks) {
+      const profile = ontarioWastewaterMockProfile(bankKey);
+      const reviewedAreas = profile ? Object.entries(profile.targets)
+        .flatMap(([area, quota]) => Array.from({ length: quota }, () => area)) : [];
       await db.insert(questions).values(ids.map((questionNum, i) => ({ bankKey, questionNum,
-        module: "Safety", topic: i % 2 ? "Hydraulics" : "Disinfection", question: `Reporting QA ${questionNum}`,
+        module: reviewedAreas[i] ?? "Safety", blueprintObjective: reviewedAreas[i] ?? null,
+        topic: i % 2 ? "Hydraulics" : "Disinfection", question: `Reporting QA ${questionNum}`,
         options: '["A","B","C","D"]', correctIndex: 0, explanation: "Synthetic reporting QA.", reviewStatus: "approved" as const,
       })));
     }
-    for (const productKey of ["class4-ww", "class1-ww", "class1-water"]) {
+    // Class IV is a team-only grant: a personal overlap deliberately remains
+    // learner-owned and would correctly be excluded from employer reporting.
+    for (const productKey of ["class1-ww", "class1-water"]) {
       await db.insert(purchases).values({ email, productKey, productName: "Reporting QA", amountCAD: 29900, stripeSessionId: `cs_${randomUUID()}` });
     }
     const ends = new Date(Date.now() + 86400_000);
+    const started = new Date(Date.now() - 86400_000);
     const [org] = await db.insert(organizations).values({ name: `Reporting QA ${suffix}`, province: "ontario", seatsTotal: 0, managerEmail, termEnd: ends, status: "active" });
     orgId = Number(org.insertId);
     await db.insert(teamFlexLicences).values({ organizationId: orgId, orderItemId: 0, courseKey: "class4-ww", termMonths: 12,
-      status: "active", invitedEmail: email, operatorUserId: null, activatedAt: new Date(), accessEndsAt: ends, activationDeadline: ends });
+      status: "active", invitedEmail: email, operatorUserId: null, activatedAt: started, startsAt: started, accessEndsAt: ends, activationDeadline: ends });
   });
   afterAll(async () => {
     if (!db) return;

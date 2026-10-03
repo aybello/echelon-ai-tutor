@@ -5,18 +5,19 @@ import { createPool } from "mysql2/promise";
 import { getTableConfig } from "drizzle-orm/mysql-core";
 import { is, Table } from "drizzle-orm";
 import * as schema from "../../drizzle/schema";
+import { assertAuditIntegrationDatabaseTarget } from "../auditIntegrationGuard";
 
 /** Real-router coverage uses MySQL only when the safe runner explicitly selects
  * this worker's disposable database. Never accept inherited production selectors. */
 export async function createIsolatedAuditDatabase() {
-  if (!process.env.DATABASE_URL) return createAuditSqlDatabase();
-  const url = new URL(process.env.DATABASE_URL);
-  if (process.env.AUDIT_INTEGRATION_TEST_DB !== "1" || url.protocol !== "mysql:" ||
-      url.hostname !== "127.0.0.1" || url.port !== "3311" || url.pathname !== "/echelon_audit_teams" ||
-      url.username !== "root" || url.password || url.search || url.hash) {
-    throw new Error("Teams audit tests require the assigned disposable loopback database and safe runner.");
+  if (!process.env.DATABASE_URL && process.env.AUDIT_INTEGRATION_TEST_DB !== "1") {
+    return createAuditSqlDatabase();
   }
-  const pool = createPool({ host: "127.0.0.1", port: 3311, user: "root", database: "echelon_audit_teams", timezone: "Z" });
+  const url = assertAuditIntegrationDatabaseTarget(process.env.DATABASE_URL,
+    target => target.hostname === "127.0.0.1" && target.port === "3311"
+      && ["/echelon_audit_teams", "/echelon_audit_full"].includes(target.pathname)
+      && target.username === "root" && !target.password);
+  const pool = createPool({ uri: url.toString(), timezone: "Z" });
   const db = mysqlDrizzle(pool, { schema, mode: "default" });
   console.info("[Teams audit] MySQL mode: assigned synthetic database only");
   return { db, close: () => pool.end() };

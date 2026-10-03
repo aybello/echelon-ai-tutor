@@ -18,7 +18,15 @@ const approved = { phase: "publish", topic, article: {}, research: [], revision:
 suite("durable blog with an explicitly disposable database", () => {
   beforeAll(async () => {
     const url = new URL(process.env.DATABASE_URL!);
-    if (!["127.0.0.1", "localhost"].includes(url.hostname) || !["/echelon_blog_test", "/echelon_ci"].includes(url.pathname))
+    const assignedAudit = url.hostname === "127.0.0.1" && url.port === "3311"
+      && url.pathname === "/echelon_audit_full" && url.username === "root" && !url.password
+      && process.env.AUDIT_INTEGRATION_TEST_DB === "1";
+    const syntheticCi = process.env.CI === "1" && url.port === "3306"
+      && url.pathname === "/echelon_ci" && url.username === "root" && url.password === "root";
+    if (url.protocol !== "mysql:" || !["127.0.0.1", "localhost"].includes(url.hostname)
+      || url.search || url.hash || process.env.DATABASE_CUTOVER_USE_EXTERNAL_TARGET === "true"
+      || process.env.EXTERNAL_DATABASE_URL
+      || (!assignedAudit && !syntheticCi && url.pathname !== "/echelon_blog_test"))
       throw new Error("Blog lifecycle tests require a designated local disposable database");
     pool = mysql.createPool({ uri: url.toString(), connectionLimit: 4, timezone: "Z" });
     state.db = drizzle(pool);

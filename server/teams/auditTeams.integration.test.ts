@@ -29,7 +29,7 @@ const course = "class3-water-dist";
 const now = new Date();
 const past = new Date(now.getTime() - 5 * 86400000), future = new Date(now.getTime() + 90 * 86400000);
 const ctx = (email: string | null, userId?: number): TrpcContext => ({ user: userId ? { id: userId, email, openId: `audit-${userId}`, role: "user" } : null, studentEmail: userId ? null : email, req: { headers: {}, cookies: {} }, res: { cookie: vi.fn() } }) as any;
-const suite = describe;
+const suite = process.env.AUDIT_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
 let close: () => void | Promise<void>;
 let db: NonNullable<Awaited<ReturnType<typeof getDb>>>;
 let orgId: number, lapsedId: number, memberId: number, revokedId: number, licenceId: number;

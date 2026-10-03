@@ -7,6 +7,7 @@ import { dashboardOtps, emailOtpCodes, magicLinks } from "../drizzle/schema";
 import type { TrpcContext } from "./_core/context";
 import { ECHELON_SESSION_COOKIE, readVerifiedEmailFromRequest } from "./_core/emailSession";
 import { verifySubscriptionToken } from "./_core/subscriptionToken";
+import { assertAuditIntegrationDatabaseTarget } from "./auditIntegrationGuard";
 
 const state = vi.hoisted(() => ({
   db: null as MySql2Database<Record<string, never>> | null,
@@ -114,16 +115,11 @@ async function assertSession(ctx: TrpcContext, email: string) {
 describe.skipIf(!enabled)("EC-04 disposable-database router concurrency", () => {
   beforeAll(async () => {
     // Validate before any connection, even if this test is launched outside the
-    // safe runner. Never accept a production selector or a non-audit database.
+    // safe runner. CI is limited to its pinned synthetic MySQL service.
     const rawUrl = process.env.DATABASE_URL;
-    if (!rawUrl) throw new Error("Explicit disposable auth database required");
-    const url = new URL(rawUrl);
-    if (url.protocol !== "mysql:" || !["localhost", "127.0.0.1"].includes(url.hostname)
-      || !/^\/echelon_audit_[a-z0-9_]+$/.test(url.pathname)
-      || process.env.DATABASE_CUTOVER_USE_EXTERNAL_TARGET === "true") {
-      throw new Error("Only an isolated loopback audit database is allowed");
-    }
-    pool = mysql.createPool({ uri: rawUrl, connectionLimit: 12 });
+    const url = assertAuditIntegrationDatabaseTarget(rawUrl,
+      target => /^\/echelon_audit_[a-z0-9_]+$/.test(target.pathname));
+    pool = mysql.createPool({ uri: url.toString(), connectionLimit: 12 });
     state.db = drizzle(pool);
     await pool.query("SELECT 1");
   });
