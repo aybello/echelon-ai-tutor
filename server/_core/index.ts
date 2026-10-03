@@ -22,10 +22,8 @@ import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
 import { ensureJobBoardHeartbeat } from "../jobBoardSchedule";
 import { publicReleaseHealth, RELEASE_CAPABILITIES, RELEASE_ID } from "../release";
-import {
-  ensureWeeklyBlogHeartbeat,
-  generateWeeklyBlogPost,
-} from "../blogAutomation";
+import { ensureDurableBlogHeartbeat } from "../blogSchedule";
+import { registerBlogAutomationRoutes } from "../blogScheduler";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
@@ -344,34 +342,7 @@ async function startServer() {
     }
   });
 
-  // ── Weekly researched blog article (Heartbeat cron) ─────────────────────
-  app.post("/api/scheduled/generate-blog", async (req, res) => {
-    try {
-      const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
-      const taskUid =
-        cronUser?.taskUid ??
-        (req.headers["x-manus-cron-task-uid"] as string | undefined);
-      const result = await generateWeeklyBlogPost();
-      console.log(
-        `[blog-automation] ${result.action} slug=${result.slug ?? "none"} | ` +
-          `taskUid=${taskUid ?? "manual"}`
-      );
-      return res
-        .status(result.action === "article_published" ? 201 : 200)
-        .json({
-          ...result,
-          published: result.action === "article_published",
-          ts: new Date().toISOString(),
-        });
-    } catch (error) {
-      console.error("[blog-automation] scheduled article failed", error);
-      return res.status(503).json({
-        ok: false,
-        error: error instanceof Error ? error.message : String(error),
-        ts: new Date().toISOString(),
-      });
-    }
-  });
+  registerBlogAutomationRoutes(app);
 
   // ── Purchase confirmation delivery (Heartbeat cron, every minute) ────────
   app.post("/api/scheduled/purchase-email-delivery", async (req, res) => {
@@ -468,7 +439,7 @@ async function startServer() {
       void ensureJobBoardHeartbeat()
         .then(action => console.log(`[fetch-jobs] six-hour Heartbeat ${action}`))
         .catch(error => console.error("[fetch-jobs] could not register Heartbeat", error));
-      void ensureWeeklyBlogHeartbeat()
+      void ensureDurableBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)
         )

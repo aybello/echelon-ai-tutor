@@ -91,6 +91,7 @@ export const DATA_EXPLORER_DATASETS: readonly DataExplorerDataset[] = [
   { key: "product-analytics-events", tableName: "product_analytics_events", label: "Product analytics", description: "Privacy-preserving product event log", category: "Operations", orderBy: "occurredAt" },
   { key: "trigger-logs", tableName: "trigger_logs", label: "Trigger logs", description: "Proactive learner email delivery log", category: "Operations", orderBy: "sentAt" },
   { key: "scheduled-work", tableName: "scheduled_work", label: "Scheduled work", description: "Managed job and delivery ledger", category: "Operations", orderBy: "createdAt" },
+  { key: "blog-automation-runs", tableName: "blog_automation_runs", label: "Blog automation runs", description: "Weekly editorial progress status without drafts or provider identifiers", category: "Operations", orderBy: "updatedAt" },
   { key: "command-drill-queue", tableName: "command_drill_queue", label: "Command drill queue", description: "Incident command drill work queue", category: "Operations", orderBy: "queuedAt" },
   { key: "command-run-history", tableName: "command_run_history", label: "Command run history", description: "Incident command execution history", category: "Operations", orderBy: "completedAt" },
 

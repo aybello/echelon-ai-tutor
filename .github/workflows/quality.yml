@@ -157,6 +157,7 @@ jobs:
           --exclude server/billingJobs.integration.test.ts
           --exclude server/examDateRecords.integration.test.ts
           --exclude server/ceuLearning.integration.test.ts
+          --exclude server/blogWorkflow.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -201,6 +202,12 @@ jobs:
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           CEU_INTEGRATION_TEST_DB: "1"
+      - name: Database-backed durable blog recovery and atomic publication
+        run: pnpm exec vitest run server/blogWorkflow.integration.test.ts
+        env:
+          NODE_ENV: test
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          BLOG_INTEGRATION_TEST_DB: "1"
       - name: Database-backed OIT import and batch release
         run: pnpm exec vitest run server/oitImporter.integration.test.ts
         env:

@@ -1569,3 +1569,22 @@ export const ceuLearningDailyTime = mysqlTable('ceu_learning_daily_time', {
   seconds: int('seconds').notNull().default(0),
   lastCreditedAt: timestamp('lastCreditedAt'),
 }, table => [uniqueIndex('ceu_learning_daily_time_pk').on(table.studentEmail, table.localDate)]);
+
+/** Restart-safe editorial state. Draft/source payload and provider IDs are never public. */
+export const blogAutomationRuns = mysqlTable("blog_automation_runs", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  runKey: varchar("runKey", { length: 32 }).notNull(),
+  status: varchar("status", { length: 16 }).notNull(),
+  progress: mediumtext("progress").notNull(),
+  weeklyTaskUid: varchar("weeklyTaskUid", { length: 65 }),
+  workerTaskUid: varchar("workerTaskUid", { length: 65 }),
+  claimToken: varchar("claimToken", { length: 64 }),
+  leaseUntil: timestamp("leaseUntil"),
+  attempts: int("attempts").notNull().default(0),
+  lastError: varchar("lastError", { length: 500 }),
+  startedAt: timestamp("startedAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, table => [
+  index("blog_weekly_task_idx").on(table.weeklyTaskUid),
+  index("blog_worker_task_idx").on(table.workerTaskUid),
+]);

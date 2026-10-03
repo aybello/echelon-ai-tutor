@@ -276,6 +276,21 @@
           "defaultSql": "default false"
         }
       ]
+    },
+    {
+      "version": 74,
+      "tag": "0074_blog_automation_runs",
+      "file": "drizzle/0074_blog_automation_runs.sql",
+      "sha256": "8d208524c805c406aedbafa5372e1c2d50775f0da2a05b4171eebd230cd7530f",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "blog_automation_runs"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "blog_automation_runs"
+      ]
     }
   ]
 }
