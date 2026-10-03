@@ -466,7 +466,7 @@ function PhoneGate() {
 
 function App() {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary recoverModuleErrors>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />

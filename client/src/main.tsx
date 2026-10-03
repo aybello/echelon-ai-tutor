@@ -3,6 +3,7 @@ import { enableFontStylesheet } from "@/lib/fontStylesheet";
 import { watchOtherTabLogout } from "@/lib/logout";
 import { trpc } from "@/lib/trpc";
 import { clearLegacyQuestionCaches } from "@/lib/clearLegacyQuestionCaches";
+import { installChunkLoadRecovery } from "@/lib/chunkRecovery";
 import { UNAUTHED_ERR_MSG } from '@shared/const';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, TRPCClientError } from "@trpc/client";
@@ -12,6 +13,7 @@ import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
 
+installChunkLoadRecovery(window);
 startPrivacyAnalytics(window, document);
 enableFontStylesheet(document);
 
