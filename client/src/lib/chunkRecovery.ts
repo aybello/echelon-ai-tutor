@@ -14,7 +14,7 @@ type RecoveryBrowser = {
   location: { reload(): void };
 };
 
-/** One shared controller is used by Vite and React, so one failure cannot reload twice. */
+/** One shared controller is used by unhandled failures and React, preventing duplicate reloads. */
 export function createChunkRecovery(browser: RecoveryBrowser, now = Date.now) {
   let reloading = false;
   return (error: unknown): boolean => {
@@ -43,13 +43,14 @@ export function recoverChunkLoad(error: unknown): boolean {
   return recover(error);
 }
 
-/** Vite emits this for route JS and shared dependency/CSS download failures. */
-export function installChunkLoadRecovery(target: Window) {
+/** Locally caught optional imports retain their own fallback without losing the lesson. */
+export function installChunkLoadRecovery(target: Window, attemptRecovery = recoverChunkLoad) {
   const onFailure = (event: Event) => {
-    const payload = (event as Event & { payload?: unknown }).payload;
-    if (recoverChunkLoad(payload)) event.preventDefault();
-    // Without a safe retry, leave the rejection intact for the visible error boundary.
+    const reason = (event as PromiseRejectionEvent).reason;
+    if (attemptRecovery(reason)) event.preventDefault();
+    // React lazy route failures reach the root ErrorBoundary. Only truly unhandled
+    // imports arrive here, after optional component fallbacks had a chance to catch.
   };
-  target.addEventListener("vite:preloadError", onFailure);
-  return () => target.removeEventListener("vite:preloadError", onFailure);
+  target.addEventListener("unhandledrejection", onFailure);
+  return () => target.removeEventListener("unhandledrejection", onFailure);
 }

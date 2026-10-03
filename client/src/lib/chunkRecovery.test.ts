@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
-import { CHUNK_RETRY_COOLDOWN_MS, CHUNK_RETRY_KEY, createChunkRecovery, isChunkLoadError } from "./chunkRecovery";
+import { CHUNK_RETRY_COOLDOWN_MS, CHUNK_RETRY_KEY, createChunkRecovery, isChunkLoadError, installChunkLoadRecovery } from "./chunkRecovery";
 
 function fixture() {
   const data = new Map<string, string>();
@@ -40,7 +40,7 @@ describe("shared module recovery", () => {
     expect(createChunkRecovery(browser)(error)).toBe(false);
     expect(browser.location.reload).not.toHaveBeenCalled();
   });
-  it("stores the attempt before reload and suppresses the same Vite/React failure", () => {
+  it("stores the attempt before reload and suppresses duplicate unhandled/React failures", () => {
     const { browser, data } = fixture();
     browser.location.reload.mockImplementation(() => expect(data.get(CHUNK_RETRY_KEY)).toBe("1000000"));
     const recover = createChunkRecovery(browser, () => 1_000_000);
@@ -78,5 +78,27 @@ describe("shared module recovery", () => {
     data.set(CHUNK_RETRY_KEY, "bad-value");
     expect(createChunkRecovery(browser, () => 1_000_000)(missing())).toBe(true);
     expect(createChunkRecovery(browser, () => 900_000)(missing())).toBe(false);
+  });
+  it("preserves locally caught optional preload fallbacks and recovers only unhandled failures", () => {
+    const target = new EventTarget();
+    const attempt = vi.fn(() => true);
+    const cleanup = installChunkLoadRecovery(target as unknown as Window, attempt);
+    target.dispatchEvent(Object.assign(new Event("vite:preloadError", { cancelable: true }), { payload: missing("ClarifierThreeLab") }));
+    expect(attempt).not.toHaveBeenCalled();
+    const failure = Object.assign(new Event("unhandledrejection", { cancelable: true }), { reason: missing() });
+    target.dispatchEvent(failure);
+    expect(attempt).toHaveBeenCalledWith(failure.reason);
+    expect(failure.defaultPrevented).toBe(true);
+    cleanup();
+    target.dispatchEvent(failure);
+    expect(attempt).toHaveBeenCalledTimes(1);
+  });
+  it("leaves unhandled errors visible when no safe recovery is possible", () => {
+    const target = new EventTarget();
+    const cleanup = installChunkLoadRecovery(target as unknown as Window, () => false);
+    const failure = Object.assign(new Event("unhandledrejection", { cancelable: true }), { reason: missing() });
+    target.dispatchEvent(failure);
+    expect(failure.defaultPrevented).toBe(false);
+    cleanup();
   });
 });
