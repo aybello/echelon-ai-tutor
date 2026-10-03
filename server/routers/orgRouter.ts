@@ -41,7 +41,7 @@ import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 import { allowedCourseKeysForOrg, isSubscriptionProvince, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
-import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
+import { listManagedOrganizations, managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -94,90 +94,16 @@ function resolveTermStart(org: { termStart: Date | null; termEnd: Date }): Date 
 export async function resolveOrgManager(ctx: {
   user: { id: number; email?: string | null } | null;
   studentEmail?: string | null;
-}): Promise<{ orgId: number; managerEmail: string }> {
-  const email = ctx.studentEmail ?? ctx.user?.email ?? null;
-  if (!email) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "Please sign in to access the team dashboard.",
-    });
-  }
-
-  const db = await getDb();
-  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-  const normalised = normalizeEmail(email);
-
-  // The organization managerEmail is the checkout and OTP authority. Keep it
-  // as the primary source so a missing legacy membership row cannot let OTP
-  // succeed while the same manager is rejected by the dashboard.
-  const directRows = await db
-    .select({
-      id: organizations.id,
-      orgId: organizations.id,
-      status: organizations.status,
-      termEnd: organizations.termEnd,
-      createdAt: organizations.createdAt,
-    })
-    .from(organizations)
-    .where(eq(organizations.managerEmail, normalised));
-
-  // Preserve explicit manager memberships as a backwards-compatible source.
-  // A previous checkout or contract can leave an older row behind, so all
-  // candidates are evaluated before the current organization is chosen.
-  const membershipRows = await db
-    .select({
-      id: organizations.id,
-      orgId: organizationMembers.orgId,
-      status: organizations.status,
-      termEnd: organizations.termEnd,
-      createdAt: organizations.createdAt,
-    })
-    .from(organizationMembers)
-    .innerJoin(organizations, eq(organizationMembers.orgId, organizations.id))
-    .where(
-      and(
-        eq(organizationMembers.email, normalised),
-        eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
-    );
-
-  const rows = [...new Map(
-    [...directRows, ...membershipRows].map((row) => [row.orgId, row]),
-  ).values()];
-
-  if (rows.length === 0) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "No manager account found for this email.",
-    });
-  }
-
-  const org = selectCurrentManagerOrganization(rows);
-
-  // Lifecycle gate: manager access must expire on exactly the same terms as
-  // operator access in _core/access.ts, which requires an eligible status AND
-  // termEnd in the future. Without both checks a cancelled or lapsed account
-  // could still assign seats, export the full team roster and send reminder
-  // emails to operators who have themselves already lost access.
-  //
-  // Billing is deliberately not gated here: stripe.createBillingPortalSession
-  // is reachable from /account, so a lapsed manager can always still renew.
-  if (!org) {
-    const hasEligibleStatus = rows.some((row) =>
-      row.status === "active" || row.status === "past_due",
-    );
-    throw new TRPCError({
-      code: "FORBIDDEN",
-      message: hasEligibleStatus
-        ? "This team contract term has ended. Renew from your account page to regain access to the team dashboard."
-        : "This team subscription is no longer active. Renew from your account page to regain access to the team dashboard.",
-    });
-  }
-
-  return { orgId: org.orgId, managerEmail: normalised };
+  selectedOrganizationId?: number;
+}, orgId = ctx.selectedOrganizationId): Promise<{ orgId: number; managerEmail: string }> {
+  const org = await resolveManagedOrganization(ctx, { orgId });
+  return { orgId: org!.id, managerEmail: managerEmailForContext(ctx) };
 }
+
+// Selection is request-scoped, never an identity or membership grant.
+const teamProcedure = publicProcedure
+  .input(z.object({ orgId: z.number().int().positive().optional() }).optional())
+  .use(({ ctx, input, next }) => next({ ctx: { ...ctx, selectedOrganizationId: input?.orgId } }));
 
 // ── Seat lifecycle helpers ────────────────────────────────────────────────────
 
@@ -449,11 +375,15 @@ async function consumeOrReuseAnnualLicence(
 // ── Router ────────────────────────────────────────────────────────────────────
 
 export const orgRouter = router({
+  listManagedOrganizations: publicProcedure.query(async ({ ctx }) =>
+    (await listManagedOrganizations(ctx)).map(org => ({
+      id: org.id, name: org.name, status: org.status, termEnd: org.termEnd,
+    }))),
   /**
    * getOrgOverview — four summary numbers for the dashboard header cards.
    * Seats assigned, active this week, average study indicator, strong indicators.
    */
-  getOrgOverview: publicProcedure.query(async ({ ctx }) => {
+  getOrgOverview: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -527,14 +457,14 @@ export const orgRouter = router({
           lastActive: sql<Date | null>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.orgId, orgId))
+        .where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(questionAttempts.organizationMemberId),
       db
         .select({ memberId: questionAttempts.organizationMemberId })
         .from(questionAttempts)
         .where(
           and(
-            eq(questionAttempts.orgId, orgId),
+            and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))),
             gte(questionAttempts.createdAt, oneWeekAgo),
           ),
         )
@@ -545,7 +475,7 @@ export const orgRouter = router({
           count: sql<number>`COUNT(*)`,
         })
         .from(examResults)
-        .where(eq(examResults.orgId, orgId))
+        .where(and(eq(examResults.orgId, orgId), inArray(examResults.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(examResults.organizationMemberId),
     ]);
 
@@ -607,7 +537,7 @@ export const orgRouter = router({
   /**
    * listMembers — full operator roster with per-member stats.
    */
-  listMembers: publicProcedure.query(async ({ ctx }) => {
+  listMembers: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -747,7 +677,7 @@ export const orgRouter = router({
   /**
    * getAttention — early-warning list: at-risk-before-exam and stalled operators.
    */
-  getAttention: publicProcedure.query(async ({ ctx }) => {
+  getAttention: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -871,7 +801,7 @@ export const orgRouter = router({
    * Enforces seat cap: active operators must be < seatsTotal.
    * Supports multiple courses via courseKeys array.
    */
-  assignSeat: publicProcedure
+  assignSeat: teamProcedure
     .input(z.object({
       email: z.string().email(),
       name: z.string().max(200).optional(),
@@ -914,7 +844,7 @@ export const orgRouter = router({
    * Replaces all existing org-managed subscriptions for this operator with new ones.
    * Does NOT reset the term expiry — the year started at assignment.
    */
-  updateSeatCourse: publicProcedure
+  updateSeatCourse: teamProcedure
     .input(z.object({
       email: z.string().email(),
       courseKey: z.string().max(64).optional(),
@@ -1050,7 +980,7 @@ export const orgRouter = router({
    * assignSeats — bulk assign seats to a list of operator emails.
    * Enforces seat cap across the entire batch before assigning any.
    */
-  assignSeats: publicProcedure
+  assignSeats: teamProcedure
     .input(z.object({
       emails: z.array(z.string().email()).min(1).max(100),
       courseKeys: z.array(z.string().max(64)).min(1).max(10),
@@ -1099,7 +1029,7 @@ export const orgRouter = router({
    * revokeSeat — revoke a seat from an operator.
    * Sets member status = revoked and subscription status = expired.
    */
-  revokeSeat: publicProcedure
+  revokeSeat: teamProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input, ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
@@ -1113,7 +1043,7 @@ export const orgRouter = router({
   /**
    * recordExamOutcome — manager records a pass/fail/no_show for an operator.
    */
-  recordExamOutcome: publicProcedure
+  recordExamOutcome: teamProcedure
     .input(z.object({
       memberEmail: z.string().email(),
       courseKey: z.string().min(1).max(64),
@@ -1220,7 +1150,7 @@ export const orgRouter = router({
   /**
    * getExamOutcomes — return all recorded outcomes for this org.
    */
-  getExamOutcomes: publicProcedure
+  getExamOutcomes: teamProcedure
     .query(async ({ ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -1236,7 +1166,7 @@ export const orgRouter = router({
   /**
    * getPassRateSummary — first-time pass rate for the current term.
    */
-  getPassRateSummary: publicProcedure
+  getPassRateSummary: teamProcedure
     .query(async ({ ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -1280,7 +1210,7 @@ export const orgIntelRouter = router({
    * getTeamReadinessSummary — enhanced overview with readiness breakdown,
    * exam-ready count, at-risk count, inactive count, and top weak topics.
    */
-  getTeamReadinessSummary: publicProcedure.query(async ({ ctx }) => {
+  getTeamReadinessSummary: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1312,34 +1242,34 @@ export const orgIntelRouter = router({
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
-      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
+      }).from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id)))).groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId }).from(questionAttempts)
-        .where(and(eq(questionAttempts.orgId, orgId), gte(questionAttempts.createdAt, oneWeekAgo)))
+        .where(and(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))), gte(questionAttempts.createdAt, oneWeekAgo)))
         .groupBy(questionAttempts.organizationMemberId),
       db.select({
         topic: questionAttempts.topic,
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId))
+      }).from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`),
       db.select({
         memberId: examResults.organizationMemberId,
         count: sql<number>`COUNT(*)`,
-      }).from(examResults).where(eq(examResults.orgId, orgId))
+      }).from(examResults).where(and(eq(examResults.orgId, orgId), inArray(examResults.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(examResults.organizationMemberId),
       db.select({ memberId: learnerOnboarding.organizationMemberId })
         .from(learnerOnboarding)
-        .where(eq(learnerOnboarding.orgId, orgId))
+        .where(and(eq(learnerOnboarding.orgId, orgId), inArray(learnerOnboarding.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(learnerOnboarding.organizationMemberId),
       db.select({
         memberId: diagnosticSessions.organizationMemberId,
         score: sql<number>`MAX(${diagnosticSessions.score})`,
       }).from(diagnosticSessions)
-        .where(eq(diagnosticSessions.orgId, orgId))
+        .where(and(eq(diagnosticSessions.orgId, orgId), inArray(diagnosticSessions.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(diagnosticSessions.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId })
         .from(questionAttempts)
-        .where(and(eq(questionAttempts.orgId, orgId), gte(questionAttempts.createdAt, thirtyDaysAgo)))
+        .where(and(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))), gte(questionAttempts.createdAt, thirtyDaysAgo)))
         .groupBy(questionAttempts.organizationMemberId),
       db.select({
         memberId: questionAttempts.organizationMemberId,
@@ -1347,7 +1277,7 @@ export const orgIntelRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       }).from(questionAttempts)
         .where(and(
-          eq(questionAttempts.orgId, orgId),
+          and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))),
           sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
         ))
         .groupBy(questionAttempts.organizationMemberId),
@@ -1456,11 +1386,11 @@ export const orgIntelRouter = router({
   /**
    * getTeamWeakTopics — aggregate weak topics across all active operators.
    */
-  getTeamWeakTopics: publicProcedure.query(async ({ ctx }) => {
+  getTeamWeakTopics: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-    const activeMembers = await db.select({ email: organizationMembers.email }).from(organizationMembers)
+    const activeMembers = await db.select({ id: organizationMembers.id, email: organizationMembers.email }).from(organizationMembers)
       .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
     if (activeMembers.length === 0) return { topics: [] };
     const memberEmails = activeMembers.map(m => m.email);
@@ -1469,7 +1399,7 @@ export const orgIntelRouter = router({
       total: sql<number>`COUNT(*)`,
       correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       operatorCount: sql<number>`COUNT(DISTINCT ${questionAttempts.studentEmail})`,
-    }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId))
+    }).from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))))
       .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`);
     const topics = topicRows
       .map(r => ({
@@ -1485,7 +1415,7 @@ export const orgIntelRouter = router({
   /**
    * getOperatorReadiness — per-operator readiness scores for the progress table.
    */
-  getOperatorReadiness: publicProcedure.query(async ({ ctx }) => {
+  getOperatorReadiness: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1599,7 +1529,7 @@ export const orgIntelRouter = router({
   /**
    * exportTeamCSV — export team progress as CSV string.
    */
-  exportTeamCSV: publicProcedure.query(async ({ ctx }) => {
+  exportTeamCSV: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1707,7 +1637,7 @@ export const orgIntelRouter = router({
   /**
    * sendOperatorReminder — send a reminder email to an inactive operator.
    */
-  sendOperatorReminder: publicProcedure
+  sendOperatorReminder: teamProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input, ctx }) => {
       const { orgId, managerEmail } = await resolveOrgManager(ctx);
@@ -1754,7 +1684,7 @@ export const orgIntelRouter = router({
   /**
    * sendBulkReminders — send reminders to all inactive operators in the org.
    */
-  sendBulkReminders: publicProcedure.mutation(async ({ ctx }) => {
+  sendBulkReminders: teamProcedure.mutation(async ({ ctx }) => {
     const { orgId, managerEmail } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1799,7 +1729,7 @@ export const orgIntelRouter = router({
    * getCommandCohortSummary — aggregate Command Centre performance across org operators.
    * Returns: per-scenario completion counts, average scores, and most-missed steps.
    */
-  getCommandCohortSummary: publicProcedure.query(async ({ ctx }) => {
+  getCommandCohortSummary: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });

@@ -1,4 +1,4 @@
-import { attemptCourseFilter, attemptIdentityFilter } from "../courseActivityScope";
+import { attemptCourseFilter, attemptIdentityFilter, flexActivityFilter } from "../courseActivityScope";
 /**
  * Teams Flex Router — Production-hardened
  * All manager procedures require authenticated session + verified org membership.
@@ -54,6 +54,8 @@ import {
 import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
 import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import { resolveOrgManager } from "./orgRouter";
+import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
+import { normalizeEmail } from "../_core/access";
 import {
   checkExtensionEligibility,
   createRetakeExtensionCheckout,
@@ -71,7 +73,7 @@ async function requireManagerOfOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
   orgId: number,
 ): Promise<{ managerEmail: string }> {
-  const manager = await resolveOrgManager(ctx);
+  const manager = await resolveOrgManager(ctx, orgId);
   if (manager.orgId !== orgId) {
     throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." });
   }
@@ -97,6 +99,7 @@ function requireVerifiedOperator(
 
 // ── Router ───────────────────────────────────────────────────────────────────
 export const teamFlexRouter = router({
+  checkoutIdentity: publicProcedure.query(({ ctx }) => ({ managerEmail: managerEmailForContext(ctx) || null })),
   // ─── Pricing info (public, no auth needed) ─────────────────────────────────
   getFlexPricing: publicProcedure
     .input(z.object({ province: z.enum(["ontario", "western"]) }))
@@ -228,6 +231,7 @@ export const teamFlexRouter = router({
   createOrder: publicProcedure
     .input(z.object({
       organizationName: z.string().trim().min(2).max(200),
+      orgId: z.number().int().positive().optional(),
       managerEmail: z.string().email().optional(),
       billingEmail: z.string().email().optional(),
       province: z.enum(["ontario", "western"]),
@@ -246,24 +250,18 @@ export const teamFlexRouter = router({
         });
       }
 
-      // ── Auth: accept OAuth, email-code session, OR input.managerEmail ──
-      let purchaserUserId: number | null = null;
-      let managerEmail: string;
-      let orgId: number | null = null;
-      const ctxEmail = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
-      if (ctxEmail) {
-        purchaserUserId = ctx.user?.id ?? null;
-        managerEmail = ctxEmail;
-        try {
-          const mgr = await resolveManagerOrg(ctx);
-          orgId = mgr.orgId;
-        } catch { /* new manager, no org yet */ }
-      } else if (input.managerEmail) {
-        managerEmail = input.managerEmail.toLowerCase().trim();
-      } else {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your email address." });
+      const ctxEmail = managerEmailForContext(ctx);
+      const namedManager = normalizeEmail(input.managerEmail);
+      if (ctxEmail && namedManager && namedManager !== ctxEmail) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Signed-in checkout must use your verified email as manager. To buy for a different manager, sign out and use guest procurement checkout. Existing organization ownership cannot be transferred here." });
       }
-      const billingEmail = (input.billingEmail ?? managerEmail).toLowerCase().trim();
+      if (!ctxEmail && input.orgId) throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in as the organization manager to add licences to an existing team." });
+      const purchaserUserId = ctx.user?.id ?? null;
+      const managerEmail = ctxEmail || namedManager;
+      if (!managerEmail) throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your manager email address." });
+      const ownedOrganization = ctxEmail ? await resolveManagedOrganization(ctx, { orgId: input.orgId, allowMissing: true }) : null;
+      const orgId = ownedOrganization?.id ?? null;
+      const billingEmail = normalizeEmail(input.billingEmail ?? managerEmail);
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -352,37 +350,21 @@ export const teamFlexRouter = router({
       // That can violate foreign keys immediately and would attach paid licences
       // to a non-existent organization. A provisional organization is safe: it
       // has no manager membership or course access until Stripe confirms payment.
+      if (ownedOrganization && ownedOrganization.province !== input.province) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Choose the region of the selected organization." });
+      }
       let orderId: number;
       try {
         orderId = await db.transaction(async (tx) => {
           let checkoutOrgId = orgId;
 
           if (!checkoutOrgId) {
-            const existingOrganizations = await tx
-              .select({ id: organizations.id })
-              .from(organizations)
-              .where(and(
-                eq(organizations.managerEmail, managerEmail),
-                eq(organizations.province, input.province),
-                eq(organizations.status, "active"),
-              ))
-              .limit(2);
-
-            // Reuse an unambiguous existing manager organization. If the same
-            // email manages multiple organizations, create a separate Course
-            // Pass organization instead of guessing which one owns the order.
-            if (existingOrganizations.length === 1) {
-              checkoutOrgId = existingOrganizations[0].id;
-            } else {
-              const [organizationResult] = await tx.insert(organizations).values(
-                buildProvisionalCoursePassOrganization({
-                  organizationName: input.organizationName,
-                  managerEmail,
-                  province: input.province,
-                }),
-              );
-              checkoutOrgId = Number(organizationResult.insertId);
-            }
+            // Guest procurement creates an access-free new organization. An
+            // unverified form never attaches an order to an existing employer.
+            const [organizationResult] = await tx.insert(organizations).values(
+              buildProvisionalCoursePassOrganization({ organizationName: input.organizationName, managerEmail, province: input.province }),
+            );
+            checkoutOrgId = Number(organizationResult.insertId);
           }
 
           if (!checkoutOrgId || checkoutOrgId <= 0) {
@@ -510,13 +492,14 @@ export const teamFlexRouter = router({
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
           const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
-          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || lic.status === "invited") {
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || lic.status !== "active" || !lic.activatedAt || !lic.startsAt || !lic.accessEndsAt) {
             return {
               licenceId: lic.id,
               courseKey: displayCourseKey,
               termMonths: lic.termMonths,
               status: lic.status,
               operatorEmail: lic.invitedEmail,
+              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
               activatedAt: lic.activatedAt,
               accessEndsAt: lic.accessEndsAt,
               totalAttempts: 0,
@@ -528,7 +511,8 @@ export const teamFlexRouter = router({
             };
           }
 
-          // Fetch attempts for this operator on this course
+          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: lic.startsAt!, endsAt: lic.accessEndsAt! };
+          // Fetch only attributable activity under this licence interval
           const [stats] = await db
             .select({
               total: sql<number>`COUNT(*)`,
@@ -540,6 +524,7 @@ export const teamFlexRouter = router({
             .where(and(
               attemptIdentityFilter(lic.operatorUserId, lic.invitedEmail),
               attemptCourseFilter(displayCourseKey),
+              flexActivityFilter(flexScope),
             ));
 
           const total = Number(stats?.total ?? 0);
@@ -549,6 +534,7 @@ export const teamFlexRouter = router({
             userId: lic.operatorUserId,
             email: lic.invitedEmail,
             examType: displayCourseKey,
+            flexScope,
           });
 
           return {
@@ -557,6 +543,7 @@ export const teamFlexRouter = router({
             termMonths: lic.termMonths,
             status: lic.status,
             operatorEmail: lic.invitedEmail,
+            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
             activatedAt: lic.activatedAt,
             accessEndsAt: lic.accessEndsAt,
             totalAttempts: total,

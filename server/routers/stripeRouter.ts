@@ -1,3 +1,4 @@
+import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { checkoutIdentityMatches } from "../stripe/checkoutIdentity";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
@@ -333,9 +334,9 @@ export const stripeRouter = router({
    * needing to contact support.
    */
   createBillingPortalSession: publicProcedure
-    .input(z.object({}))
-    .mutation(async ({ ctx }) => {
-      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+    .input(z.object({ orgId: z.number().int().positive().optional() }))
+    .mutation(async ({ ctx, input }) => {
+      const email = managerEmailForContext(ctx);
       if (!email) {
         throw new TRPCError({
           code: "UNAUTHORIZED",
@@ -350,47 +351,17 @@ export const stripeRouter = router({
       if (!db) throw new Error("Database unavailable");
 
       const { normalizeEmail: normEmail } = await import("../_core/access");
-      const { organizationMembers: membersTable, organizations: orgsTable } = await import("../../drizzle/schema");
-      const { isNull, desc, inArray } = await import("drizzle-orm");
+      const { isNull, desc } = await import("drizzle-orm");
       const normalisedEmail = normEmail(email);
-      const now = new Date();
-
-      // Lookup order per spec:
-      // 1. Active manager membership joined to an active organization → use org.stripeCustomerId
-      // 2. Otherwise, most recent direct subscription row where orgId IS NULL
+      const managerOrg = await resolveManagedOrganization(ctx, { orgId: input.orgId, purpose: "billing", allowMissing: true });
       let stripeCustomerId: string | null | undefined;
-
-      const managerOrgRow = await db
-        .select({ stripeCustomerId: orgsTable.stripeCustomerId })
-        .from(membersTable)
-        .innerJoin(orgsTable, eq(membersTable.orgId, orgsTable.id))
-        .where(
-          and(
-            eq(membersTable.email, normalisedEmail),
-            eq(membersTable.role, "manager"),
-            eq(membersTable.status, "assigned"),
-            inArray(orgsTable.status, ["active", "past_due"]),
-            gt(orgsTable.termEnd, now),
-          ),
-        )
-        .limit(1)
-        .then(r => r[0]);
-
-      if (managerOrgRow?.stripeCustomerId) {
-        stripeCustomerId = managerOrgRow.stripeCustomerId;
+      if (managerOrg) {
+        stripeCustomerId = managerOrg.stripeCustomerId;
+        if (!stripeCustomerId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This organization uses invoice billing or has no billing customer. Contact support to recover team billing." });
       } else {
-        // Individual subscriber — find direct subscription
-        const rows = await db
-          .select({ stripeCustomerId: subscriptions.stripeCustomerId })
-          .from(subscriptions)
-          .where(
-            and(
-              eq(subscriptions.email, normalisedEmail),
-              isNull(subscriptions.orgId),
-            ),
-          )
-          .orderBy(desc(subscriptions.createdAt))
-          .limit(5);
+        const rows = await db.select({ stripeCustomerId: subscriptions.stripeCustomerId })
+          .from(subscriptions).where(and(eq(subscriptions.email, normalisedEmail), isNull(subscriptions.orgId)))
+          .orderBy(desc(subscriptions.createdAt)).limit(5);
         stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
       }
       if (!stripeCustomerId) {
@@ -399,7 +370,7 @@ export const stripeRouter = router({
 
       const portalSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerId,
-        return_url: isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
+        return_url: managerOrg || isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
       });
 
       return { url: portalSession.url };
@@ -610,39 +581,16 @@ export const stripeRouter = router({
   updateTeamSeats: publicProcedure
     .input(z.object({
       seats: z.number().int().min(5).max(500),
+      orgId: z.number().int().positive().optional(),
     }))
     .mutation(async ({ input, ctx }) => {
-      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+      const email = managerEmailForContext(ctx);
       if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in." });
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-      const { organizations: orgsTable, organizationMembers: membersTable } = await import("../../drizzle/schema");
-      const { normalizeEmail: norm } = await import("../_core/access");
-
-      const normEmail = norm(email);
-      const managerRow = await db
-        .select({ orgId: membersTable.orgId })
-        .from(membersTable)
-        .where(
-          and(
-            eq(membersTable.email, normEmail),
-            eq(membersTable.role, "manager"),
-            eq(membersTable.status, "assigned"),
-          ),
-        )
-        .limit(1)
-        .then(r => r[0]);
-
-      if (!managerRow) throw new TRPCError({ code: "UNAUTHORIZED", message: "No manager account found." });
-
-      const org = await db
-        .select()
-        .from(orgsTable)
-        .where(eq(orgsTable.id, managerRow.orgId))
-        .limit(1)
-        .then(r => r[0]);
+      const org = await resolveManagedOrganization(ctx, { orgId: input.orgId });
 
       if (!org?.stripeSubscriptionId) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });

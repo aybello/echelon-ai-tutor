@@ -10,6 +10,7 @@ const manifestSchema = z.object({
   courseKey: z.string(), bankKey: z.string(), examType: z.string(),
   questionNums: z.array(z.number().int().positive()).min(1).max(110),
   scoring: z.string().optional(),
+  attribution: z.object({ orgId: z.number().int().positive().nullable(), organizationMemberId: z.number().int().positive().nullable(), flexLicenceId: z.number().int().positive().nullable() }).optional(),
   preview: z.boolean(), startedAt: z.number(), deadline: z.number(),
 });
 export type MockManifest = z.infer<typeof manifestSchema>;

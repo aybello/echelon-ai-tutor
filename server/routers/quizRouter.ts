@@ -1,4 +1,5 @@
-import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt } from "../practiceQuestionReceipt";
+import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
+import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt, practiceReceiptAttribution } from "../practiceQuestionReceipt";
 import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
 /**
  * Quiz Router — Handles question attempt logging and missed questions
@@ -276,8 +277,10 @@ export const quizRouter = router({
         }
       });
 
-      const { owner } = await practiceIdentity(ctx, input.accessToken);
-      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), owner, !hasAccess);
+      const actor = await practiceIdentity(ctx, input.accessToken);
+      const issuedIdentity = await resolveLearningIdentity(actor.context);
+      const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
       return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
     }),
 
@@ -341,8 +344,10 @@ export const quizRouter = router({
       const rows = await db.select(learnerQuestionColumns).from(questions).where(and(...filters))
         .orderBy(...(identified ? [priority, sql`RAND()`] : [sql`RAND()`])).limit(input.limit);
       const parsed = parseLearnerQuestions(rows);
-      const { owner } = await practiceIdentity(ctx, input.accessToken);
-      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), owner, !hasAccess);
+      const actor = await practiceIdentity(ctx, input.accessToken);
+      const issuedIdentity = await resolveLearningIdentity(actor.context);
+      const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
       return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit };
     }),
 
@@ -564,7 +569,9 @@ export const quizRouter = router({
         const difficulty = questionRow.difficulty ?? null;
 
         const identity = await resolveLearningIdentity(actor.context);
-        const { userId, studentEmail, orgId, organizationMemberId } = identity;
+        const { userId, studentEmail } = identity;
+        const { orgId, organizationMemberId, flexLicenceId } = await validateIssuedAttribution(identity, course.courseKey,
+          await practiceReceiptAttribution(input.attemptToken!));
 
         // Guest previews are scored but never become unowned history or mastery.
         if (!userId && !studentEmail) return { success: true, correct };
@@ -587,6 +594,7 @@ export const quizRouter = router({
           courseKey: course.courseKey,
           orgId,
           organizationMemberId,
+          flexLicenceId,
         });
 
         if (userId) {

@@ -134,6 +134,14 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["blog_automation_runs"] },
         verifierAllowMissingTables: ["blog_automation_runs"],
       }),
+      expect.objectContaining({
+        version: 75,
+        tag: "0075_team_flex_attempt_attribution",
+        proposedOnly: true,
+        standaloneApply: { tables: ["question_attempts"] },
+        verifierAllowMissingColumns: [{ table: "question_attempts", column: "flexLicenceId", targetType: "int", targetNullable: true, sqlType: "int" }],
+        verifierAllowMissingIndexes: [{ table: "question_attempts", index: "qa_flex_licence_created_idx", columns: ["flexLicenceId", "createdAt"] }],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -873,7 +881,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]);
   });
 });
 

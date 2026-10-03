@@ -365,12 +365,15 @@ export const questionAttempts = mysqlTable("question_attempts", {
   orgId: int("orgId"),
   /** Organization member ID for team plan operators — null for individual learners. */
   organizationMemberId: int("organizationMemberId"),
+  /** Server-issued Flex membership; null for individual, Annual and legacy study. */
+  flexLicenceId: int("flexLicenceId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (t) => [
   // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern
   index("qa_userid_createdat_idx").on(t.userId, t.createdAt),
   index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
   // Issue Q: index for GROUP BY sessionId queries in recentSessions
+  index("qa_flex_licence_created_idx").on(t.flexLicenceId, t.createdAt),
   index("qa_sessionid_idx").on(t.sessionId),
   index("qa_org_member_course_created_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.createdAt),
 ]);

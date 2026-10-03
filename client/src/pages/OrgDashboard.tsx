@@ -198,10 +198,20 @@ export default function OrgDashboard() {
 
   const utils = trpc.useUtils();
 
+  const [selectedOrgId, setSelectedOrgId] = useState<number | undefined>();
+  const organizationQuery = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false });
+  const orgInput = { orgId: selectedOrgId };
+  const orgChooser = organizationQuery.data && organizationQuery.data.length > 1 ? (
+    <div className="space-y-2"><Label>Organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={value => setSelectedOrgId(Number(value))}>
+      <SelectTrigger className="min-w-[220px]"><SelectValue placeholder="Choose an organization" /></SelectTrigger>
+      <SelectContent>{organizationQuery.data.map(org => <SelectItem key={org.id} value={String(org.id)}>{org.name} ({org.status})</SelectItem>)}</SelectContent>
+    </Select></div>
+  ) : null;
+
   // Queries
   // P2b fix: when arriving post-purchase, retry up to 6 times (every 3s = 18s window)
   // to give the Stripe webhook time to provision the org before showing an error.
-  const overviewQuery = trpc.org.getOrgOverview.useQuery(undefined, {
+  const overviewQuery = trpc.org.getOrgOverview.useQuery(orgInput, {
     retry: (failureCount, error) => {
       if (isPostPurchase && failureCount < 6) return true;
       return false;
@@ -209,9 +219,9 @@ export default function OrgDashboard() {
     retryDelay: 3000,
   });
   const isManager = !!overviewQuery.data;
-  const membersQuery = trpc.org.listMembers.useQuery(undefined, { retry: false, enabled: isManager });
-  const attentionQuery = trpc.org.getAttention.useQuery(undefined, { retry: false, enabled: isManager });
-  const passRateQuery = trpc.org.getPassRateSummary.useQuery(undefined, { retry: false, enabled: isManager });
+  const membersQuery = trpc.org.listMembers.useQuery(orgInput, { retry: false, enabled: isManager });
+  const attentionQuery = trpc.org.getAttention.useQuery(orgInput, { retry: false, enabled: isManager });
+  const passRateQuery = trpc.org.getPassRateSummary.useQuery(orgInput, { retry: false, enabled: isManager });
 
   // Handle ?session_id= param — show welcome banner after Stripe checkout
   useEffect(() => {
@@ -313,11 +323,11 @@ export default function OrgDashboard() {
   const { logout, isPending: logoutPending } = useLogout();
 
   // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
-  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(undefined, { retry: false, enabled: isManager });
-  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(undefined, { retry: false, enabled: isManager });
-  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(undefined, { retry: false, enabled: isManager });
-  const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(undefined, { enabled: false });
-  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(undefined, { retry: false, enabled: isManager });
+  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(orgInput, { retry: false, enabled: isManager });
+  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(orgInput, { retry: false, enabled: isManager });
+  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(orgInput, { retry: false, enabled: isManager });
+  const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(orgInput, { enabled: false });
+  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(orgInput, { retry: false, enabled: isManager });
 
   const [intelSortKey, setIntelSortKey] = useState<"readinessScore" | "accuracy" | "totalAttempts" | "lastActive">("readinessScore");
   const [intelSortDir, setIntelSortDir] = useState<"asc" | "desc">("desc");
@@ -408,6 +418,8 @@ export default function OrgDashboard() {
             ? "Please sign in with your manager email to access the team dashboard."
             : msg}
         </p>
+        {orgChooser}
+        {!isUnauth && <Button className="bg-blue-600 text-white" onClick={() => billingPortal.mutate(orgInput)} disabled={billingPortal.isPending}>Manage team billing</Button>}
         <Link href="/account">
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Sign In
@@ -464,13 +476,13 @@ export default function OrgDashboard() {
         toast.error("Select at least one course before bulk-assigning operators.");
         return;
       }
-      assignSeats.mutate({ emails, courseKeys: assignCourseKeys });
+      assignSeats.mutate({ ...orgInput, emails, courseKeys: assignCourseKeys });
     } else {
       if (!assignEmail.trim() || !assignEmail.includes("@")) {
         toast.error("Please enter a valid email address.");
         return;
       }
-      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKeys: assignCourseKeys.length > 0 ? assignCourseKeys : undefined });
+      assignSeat.mutate({ ...orgInput, email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKeys: assignCourseKeys.length > 0 ? assignCourseKeys : undefined });
     }
   };
 
@@ -600,6 +612,7 @@ export default function OrgDashboard() {
             >
               {overview.status === "active" ? "Active" : overview.status === "past_due" ? "Past Due" : "Cancelled"}
             </Badge>
+            {orgChooser}
             {/* Bug fix: Manage Seats button wired to updateTeamSeats */}
             {hasStripe && (
               <Button
@@ -621,7 +634,7 @@ export default function OrgDashboard() {
                 variant="outline"
                 size="sm"
                 className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
-                onClick={() => billingPortal.mutate({})}
+                onClick={() => billingPortal.mutate({ orgId: overview.orgId })}
                 disabled={billingPortal.isPending}
               >
                 <CreditCard className="w-4 h-4 mr-1.5" />
@@ -890,7 +903,7 @@ export default function OrgDashboard() {
                                       toast.error("Please select at least one course.");
                                       return;
                                     }
-                                    updateSeatCourse.mutate({ email: m.email, courseKeys: editCourseKeys });
+                                    updateSeatCourse.mutate({ ...orgInput, email: m.email, courseKeys: editCourseKeys });
                                     setEditCourseTarget(null);
                                   }}
                                 >
@@ -995,7 +1008,7 @@ export default function OrgDashboard() {
                                 <p>Focus topic: {intel.weakestTopic ?? "Not enough evidence yet"}</p>
                                 <p>Recent mocks: {intel.recentMockScores?.length ? intel.recentMockScores.map(score => score.total ? `${Math.round(score.score / score.total * 100)}%` : "Not scored").join(", ") : "None recorded"}</p>
                                 <p>Exam date: {intel.examDate ? formatDate(intel.examDate) : "Not set"}</p>
-                                <button type="button" className="manager-reminder" disabled={sendReminder.isPending || reminderSent.has(m.email)} onClick={() => sendReminder.mutate({ email: m.email })}>{reminderSent.has(m.email) ? "Reminder sent" : "Send study reminder"}</button>
+                                <button type="button" className="manager-reminder" disabled={sendReminder.isPending || reminderSent.has(m.email)} onClick={() => sendReminder.mutate({ ...orgInput, email: m.email })}>{reminderSent.has(m.email) ? "Reminder sent" : "Send study reminder"}</button>
                               </> : <p>No additional study details are available yet.</p>}
                             </div>
                           </details>
@@ -1114,7 +1127,7 @@ export default function OrgDashboard() {
                 <Button
                   size="sm" variant="outline"
                   className="text-xs gap-1.5 text-amber-700 border-amber-200 hover:bg-amber-50 flex-1 sm:flex-none whitespace-nowrap"
-                  onClick={() => sendBulkReminders.mutate()}
+                  onClick={() => sendBulkReminders.mutate(orgInput)}
                   disabled={sendBulkReminders.isPending}
                 >
                   <BellRing className="w-3.5 h-3.5" />
@@ -1364,7 +1377,7 @@ export default function OrgDashboard() {
                           <td className="px-4 py-3">
                             {op.memberStatus === "assigned" && (
                               <button
-                                onClick={() => sendReminder.mutate({ email: op.email })}
+                                onClick={() => sendReminder.mutate({ ...orgInput, email: op.email })}
                                 disabled={sendReminder.isPending || reminderSent.has(op.email)}
                                 className={`text-xs px-2.5 py-1 rounded-lg border transition-colors flex items-center gap-1 ${
                                   reminderSent.has(op.email)
@@ -1706,7 +1719,7 @@ export default function OrgDashboard() {
               Cancel
             </Button>
             <Button
-              onClick={() => updateSeats.mutate({ seats: newSeatCount})}
+              onClick={() => updateSeats.mutate({ orgId: overview.orgId, seats: newSeatCount})}
               disabled={updateSeats.isPending || newSeatCount === overview.seatsTotal || newSeatCount < licencesUsedThisTerm}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >
@@ -1737,7 +1750,7 @@ export default function OrgDashboard() {
               Cancel
             </Button>
             <Button
-              onClick={() => revokeTarget && revokeSeat.mutate({ email: revokeTarget })}
+              onClick={() => revokeTarget && revokeSeat.mutate({ ...orgInput, email: revokeTarget })}
               disabled={revokeSeat.isPending}
               className="bg-red-600 hover:bg-red-700 text-white"
             >
@@ -1792,6 +1805,7 @@ export default function OrgDashboard() {
             </Button>
             <Button
               onClick={() => outcomeTarget && recordExamOutcome.mutate({
+                  ...orgInput,
                 memberEmail: outcomeTarget.email,
                 courseKey: outcomeTarget.courseKey,
                 result: outcomeResult,

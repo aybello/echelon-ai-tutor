@@ -8,7 +8,10 @@ vi.mock("./db", () => ({ getDb: vi.fn() }));
 vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn().mockResolvedValue({
   userId: 5, studentEmail: "operator@example.com", orgId: 3, organizationMemberId: 77,
 }) }));
+vi.mock("./teams/attemptAttribution", () => ({ resolveAttemptAttribution: vi.fn(), validateIssuedAttribution: vi.fn() }));
+vi.mock("./analytics", () => ({ trackEvent: vi.fn().mockResolvedValue(undefined) }));
 import { getDb } from "./db";
+import { validateIssuedAttribution, type AttemptAttribution } from "./teams/attemptAttribution";
 const identity = { userId: 5, studentEmail: "operator@example.com" };
 const QUESTIONS = Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: 0, module: "Safety", difficulty: "easy", explanation: `Explanation ${i + 1}` }));
 function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
@@ -24,23 +27,40 @@ function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
   return { db, insertValues };
 }
 const ctx = { user: null, studentEmail: null, req: { headers: {} }, res: {} } as TrpcContext;
-function input(correct = 69, now = Date.now()) {
+function input(correct = 69, now = Date.now(), attribution?: AttemptAttribution) {
   const spec = mockSpecification("class4-ww");
-  const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: false, questionNums: QUESTIONS.map(q => q.questionNum) }, now);
+  const issued = issueMockSession({ ...spec, attribution, owner: mockOwner(identity), preview: false, questionNums: QUESTIONS.map(q => q.questionNum) }, now);
   return { sessionId: issued.manifest.sessionId, sessionToken: issued.token, examType: spec.examType, bankKey: spec.courseKey,
     answers: QUESTIONS.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct ? 0 : null })) };
 }
 describe("issued mock submission", () => {
-  beforeEach(() => { vi.clearAllMocks(); ENV.cookieSecret = "unit-test-secret-not-production"; });
+  beforeEach(() => {
+    vi.clearAllMocks(); ENV.cookieSecret = "unit-test-secret-not-production";
+    vi.mocked(validateIssuedAttribution).mockImplementation(async (_identity, _key, issued) => issued ?? { orgId: null, organizationMemberId: null, flexLicenceId: null });
+  });
   it("saves 69/100 as a fail, including all unanswered items and organization attribution", async () => {
     const { insertValues } = makeDb();
-    const result = await appRouter.createCaller(ctx).exam.submitMock(input());
+    const attribution = { orgId: 3, organizationMemberId: 77, flexLicenceId: null };
+    const result = await appRouter.createCaller(ctx).exam.submitMock(input(69, Date.now(), attribution));
     expect(result).toMatchObject({ score: 69, total: 100, passed: false, persisted: true });
     expect(insertValues.mock.calls[0][0]).toMatchObject({ score: 69, total: 100, passed: "no" });
     const attempts = insertValues.mock.calls[1][0];
     expect(attempts).toHaveLength(100);
     expect(attempts.filter((a: any) => a.selectedIndex === null)).toHaveLength(31);
-    expect(attempts[0]).toMatchObject({ orgId: 3, organizationMemberId: 77, quizMode: "mock", bankKey: "class4-ww" });
+    expect(attempts[0]).toMatchObject({ ...attribution, quizMode: "mock", bankKey: "class4-ww" });
+    expect(validateIssuedAttribution).toHaveBeenCalledWith(expect.objectContaining(identity), "class4-ww", attribution);
+  });
+  it("preserves legacy signed results as learner history without guessing a current employer", async () => {
+    const { insertValues } = makeDb();
+    await appRouter.createCaller(ctx).exam.submitMock(input());
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ orgId: null, organizationMemberId: null });
+    expect(insertValues.mock.calls[1][0][0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+  });
+  it("uses revalidated attribution rather than stamping revoked issued membership", async () => {
+    const { insertValues } = makeDb();
+    vi.mocked(validateIssuedAttribution).mockResolvedValue({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+    await appRouter.createCaller(ctx).exam.submitMock(input(69, Date.now(), { orgId: 3, organizationMemberId: 77, flexLicenceId: null }));
+    expect(insertValues.mock.calls[1][0][0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
   });
   it.each([69, 70])("scores only the 100 scored items of a 110-question WPI exam (%i correct)", async correct => {
     const all = Array.from({ length: 110 }, (_, i) => ({ ...QUESTIONS[0], questionNum: i + 1 }));
@@ -89,6 +109,7 @@ describe("issued mock submission", () => {
     const { insertValues } = makeDb([], [{ userId: 5, studentEmail: identity.studentEmail, examType: data.examType, bankKey: data.bankKey, score: 69, total: 100, passed: "no", moduleBreakdown: "{}" }]);
     expect(await appRouter.createCaller(ctx).exam.submitMock(data)).toMatchObject({ score: 69, total: 100, persisted: true, review: Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: null, explanation: null })) });
     expect(insertValues).not.toHaveBeenCalled();
+    expect(validateIssuedAttribution).not.toHaveBeenCalled();
   });
   it("saves a retired question as incorrect without shrinking the denominator", async () => {
     const { insertValues } = makeDb(QUESTIONS.slice(0, 99));

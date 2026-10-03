@@ -20,9 +20,11 @@ vi.mock("./_core/learningIdentity", () => ({
     organizationMemberId: 99,
   }),
 }));
+vi.mock("./teams/attemptAttribution", () => ({ resolveAttemptAttribution: vi.fn(), validateIssuedAttribution: vi.fn() }));
 
 import { getDb } from "./db";
 import { resolveLearningIdentity } from "./_core/learningIdentity";
+import { validateIssuedAttribution } from "./teams/attemptAttribution";
 
 // Minimal question row returned by DB lookup
 const QUESTION_ROW = { correctIndex: 2, topic: "Disinfection", difficulty: "medium", module: "Water Treatment" };
@@ -67,6 +69,7 @@ describe("quiz.logAttempt — server scoring", () => {
     vi.clearAllMocks();
     vi.mocked(resolveAccessForRequest).mockResolvedValue(true);
     vi.mocked(resolveLearningIdentity).mockResolvedValue({ userId: 42, studentEmail: "operator@example.com", orgId: 7, organizationMemberId: 99 });
+    vi.mocked(validateIssuedAttribution).mockImplementation(async (_identity, _key, issued) => issued ?? { orgId: null, organizationMemberId: null, flexLicenceId: null });
     const { owner } = await practiceIdentity(makeCtx());
     BASE_INPUT.attemptToken = await issuePracticeReceipt("class1-water", [101], owner, false);
   });
@@ -142,14 +145,34 @@ describe("quiz.logAttempt — server scoring", () => {
     expect(result).toEqual({ success: true, correct: false });
   });
 
-  it("persists orgId and organizationMemberId from resolveLearningIdentity", async () => {
+  it("persists only the server-signed, revalidated membership attribution", async () => {
     const { db, insertValues } = makeDb();
     vi.mocked(getDb).mockResolvedValue(db);
+    const attribution = { orgId: 7, organizationMemberId: 99, flexLicenceId: null };
+    const { owner } = await practiceIdentity(makeCtx());
+    const attemptToken = await issuePracticeReceipt("class1-water", [101], owner, false, attribution);
     const caller = appRouter.createCaller(makeCtx());
-    await caller.quiz.logAttempt(BASE_INPUT);
+    await caller.quiz.logAttempt({ ...BASE_INPUT, attemptToken });
     const insertedRow = insertValues.mock.calls[0][0];
-    expect(insertedRow.orgId).toBe(7);
-    expect(insertedRow.organizationMemberId).toBe(99);
+    expect(insertedRow).toMatchObject(attribution);
+    expect(validateIssuedAttribution).toHaveBeenCalledWith(expect.objectContaining({ userId: 42 }), "class1-water", attribution);
+  });
+
+  it("keeps legacy receipts unreported even when current learning identity has a membership", async () => {
+    const { db, insertValues } = makeDb();
+    vi.mocked(getDb).mockResolvedValue(db);
+    await appRouter.createCaller(makeCtx()).quiz.logAttempt(BASE_INPUT);
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+  });
+
+  it("does not persist stale attribution after the membership validator rejects it", async () => {
+    const { db, insertValues } = makeDb();
+    vi.mocked(getDb).mockResolvedValue(db);
+    vi.mocked(validateIssuedAttribution).mockResolvedValue({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+    const { owner } = await practiceIdentity(makeCtx());
+    const attemptToken = await issuePracticeReceipt("class1-water", [101], owner, false, { orgId: 7, organizationMemberId: 99, flexLicenceId: null });
+    await appRouter.createCaller(makeCtx()).quiz.logAttempt({ ...BASE_INPUT, attemptToken });
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
   });
 
   it("persists the canonical bankKey", async () => {

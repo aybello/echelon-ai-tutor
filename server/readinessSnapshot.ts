@@ -3,7 +3,7 @@ import { questionAttempts, questions } from "../drizzle/schema";
 import { getDb } from "./db";
 import { computeReadiness } from "./_core/readiness";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
-import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope } from "./courseActivityScope";
+import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope, flexActivityFilter, type FlexActivityScope } from "./courseActivityScope";
 
 type Database = NonNullable<Awaited<ReturnType<typeof getDb>>>;
 
@@ -12,6 +12,7 @@ export interface ReadinessSnapshotInput {
   email: string | null;
   examType: string;
   now?: Date;
+  flexScope?: FlexActivityScope;
 }
 
 /**
@@ -20,7 +21,7 @@ export interface ReadinessSnapshotInput {
  * submit or alter the score paired with an official result.
  */
 export async function calculateReadinessSnapshot(db: Database, input: ReadinessSnapshotInput) {
-  const identityWhere = attemptIdentityFilter(input.userId, input.email);
+  const identityWhere = and(attemptIdentityFilter(input.userId, input.email), input.flexScope ? flexActivityFilter(input.flexScope) : undefined);
   const courseWhere = attemptCourseFilter(input.examType);
   const { course } = courseActivityScope(input.examType);
 

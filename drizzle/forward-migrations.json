@@ -291,6 +291,37 @@
       "verifierAllowMissingTables": [
         "blog_automation_runs"
       ]
+    },
+    {
+      "version": 75,
+      "tag": "0075_team_flex_attempt_attribution",
+      "file": "drizzle/0075_team_flex_attempt_attribution.sql",
+      "sha256": "f5d5dc22046679e9933910741b5a0fed4dac6e1778e3825c8cd1ab99ecd898ec",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "question_attempts"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "question_attempts",
+          "column": "flexLicenceId",
+          "targetType": "int",
+          "targetNullable": true,
+          "sqlType": "int"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "question_attempts",
+          "index": "qa_flex_licence_created_idx",
+          "columns": [
+            "flexLicenceId",
+            "createdAt"
+          ]
+        }
+      ]
     }
   ]
 }

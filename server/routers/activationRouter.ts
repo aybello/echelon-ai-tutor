@@ -161,7 +161,7 @@ export const activationRouter = router({
     .input(z.object({ courseKey: z.string().min(1).max(64).optional() }).optional())
     .query(async ({ ctx, input }) => {
       const course = await resolveCourseForRequest(ctx, input?.courseKey);
-      const identity = await resolveLearningIdentity(ctx);
+      const identity = await resolveLearningIdentity(ctx, course.courseKey);
       requireVerified(identity);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable." });
@@ -201,7 +201,7 @@ export const activationRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       const course = await resolveCourseForRequest(ctx, input.courseKey);
-      const identity = await resolveLearningIdentity(ctx);
+      const identity = await resolveLearningIdentity(ctx, course.courseKey);
       requireVerified(identity);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable." });
@@ -242,7 +242,7 @@ export const activationRouter = router({
     .input(z.object({ courseKey: z.string().min(1).max(64) }))
     .query(async ({ ctx, input }) => {
       const course = await resolveCourseForRequest(ctx, input.courseKey);
-      const identity = await resolveLearningIdentity(ctx);
+      const identity = await resolveLearningIdentity(ctx, course.courseKey);
       requireVerified(identity);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable." });
@@ -297,7 +297,7 @@ export const activationRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       const course = await resolveCourseForRequest(ctx, input.courseKey);
-      const identity = await resolveLearningIdentity(ctx);
+      const identity = await resolveLearningIdentity(ctx, course.courseKey);
       requireVerified(identity);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable." });

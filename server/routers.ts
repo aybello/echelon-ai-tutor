@@ -1,3 +1,4 @@
+import { resolveAttemptAttribution, validateIssuedAttribution } from "./teams/attemptAttribution";
 import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExamDate } from "./examDateRecords";
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
@@ -370,7 +371,8 @@ export const appRouter = router({
           throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable." });
         }
         selected = selectMockQuestions([...selected, ...pretest], {}, selected.length + pretest.length);
-        const issued = issueMockSession({ ...spec, unscoredQuestionNums: pretest.map(q => q.id), owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
+        const attribution = preview ? undefined : await resolveAttemptAttribution(identity, spec.courseKey);
+        const issued = issueMockSession({ ...spec, attribution, unscoredQuestionNums: pretest.map(q => q.id), owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
         return {
           sessionId: issued.manifest.sessionId, token: issued.token,
           deadline: issued.manifest.deadline, duration: spec.duration,
@@ -515,6 +517,7 @@ export const appRouter = router({
         if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
         }
+        const attribution = await validateIssuedAttribution(identity, manifest.courseKey, manifest.attribution);
         const unavailableCount = [...scoredIds].filter(id => !questionMap.has(id)).length;
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
@@ -531,9 +534,10 @@ export const appRouter = router({
             userId: identity.userId, studentEmail: identity.studentEmail,
             examType: input.examType, topic: q?.topic?.trim() || mod, questionId: answer.questionNum,
             correct: isCorrect ? "yes" as const : "no" as const,
+            flexLicenceId: attribution.flexLicenceId,
             difficulty: q?.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
             selectedIndex: answer.selectedIndex, bankKey: input.bankKey, courseKey: input.bankKey,
-            orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+            orgId: attribution.orgId, organizationMemberId: attribution.organizationMemberId,
           };
         });
         const total = scoredAnswers.length;
@@ -550,7 +554,7 @@ export const appRouter = router({
                 passed: passed ? "yes" : "no", timeTakenSeconds: Math.floor((Math.min(Date.now(), manifest.deadline) - manifest.startedAt) / 1000),
                 moduleBreakdown: JSON.stringify(moduleBreakdown), calcOnly: input.calcOnly ? "yes" : "no",
                 bankKey: input.bankKey, courseKey: input.bankKey,
-                orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+                orgId: attribution.orgId, organizationMemberId: attribution.organizationMemberId,
               });
               await tx.insert(questionAttempts).values(attempts);
             });
@@ -562,7 +566,7 @@ export const appRouter = router({
           if (!input.calcOnly) {
             await trackEvent("mock_exam_completed", {
               userId: identity.userId?.toString() ?? null, email: identity.studentEmail,
-              examType: input.examType, orgId: identity.orgId, extra: { passed, totalQuestions: total },
+              examType: input.examType, orgId: attribution.orgId, extra: { passed, totalQuestions: total },
             }).catch(error => console.error("[submitMock] Analytics failed after save", error));
           }
         }
@@ -641,7 +645,7 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
         parseExamCalendarDate(input.examDate);
-        const identity = await resolveLearningIdentity(ctx);
+        const identity = await resolveLearningIdentity(ctx, key.productKey);
         await upsertExamDate(db, { ...key, date: input.examDate,
           orgId: identity.orgId, organizationMemberId: identity.organizationMemberId });
         return { success: true };
