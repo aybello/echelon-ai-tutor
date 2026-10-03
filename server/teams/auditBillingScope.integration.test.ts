@@ -25,10 +25,10 @@ let dualOrg: number, invoiceOrg: number, pendingOrg: number, otherOrg: number;
 
 suite("billing scope in designated echelon_audit_teams MySQL (synthetic fixtures only)", () => {
   beforeAll(async () => {
-    // Require this task's named database even though the shared harness permits
-    // the full-audit database for unrelated suites.
+    // Local runs use this task's named database. The shared harness independently
+    // validates the exact loopback credentials/port of GitHub's disposable CI DB.
     const target = new URL(process.env.DATABASE_URL ?? "mysql://invalid");
-    if (target.pathname !== "/echelon_audit_teams") throw new Error("Billing fixtures require the designated echelon_audit_teams database");
+    if (target.pathname !== "/echelon_audit_teams" && !(process.env.CI === '1' && target.pathname === '/echelon_ci')) throw new Error("Billing fixtures require the designated audit or pinned CI database");
     const database = await createIsolatedAuditDatabase();
     isolated.db = database.db; close = database.close;
     for (const [email, status, billingType, customer] of [
