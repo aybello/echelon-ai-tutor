@@ -13,6 +13,8 @@ The weekly publishing callback performed research, article generation, editorial
 - A thirty-minute run limit stops stalled work.
 - Database-time leases allow only one worker to own a step and reject expired workers.
 - Submission intent is saved before any paid model request. An uncertain submission is stopped for inspection rather than resubmitted and billed again.
+- A returned provider response ID is saved before deadline checks and retained through a recoverable persistence failure. Recovery polls that response instead of submitting again.
+- Temporary source HTTP failures and safe-read deadline cancellation preserve the phase for another callback, within the thirty-minute run limit.
 - Existing HTML, article-length, heading, internal-link, duplication and editorial-review checks remain. One revision is allowed. A failed review, refused output or incomplete response cannot publish.
 - The article insert and run completion commit together. Replayed callbacks cannot publish the article twice.
 - The existing owner notice runs after publication commits. Notice failure cannot undo or repeat publication.
@@ -32,7 +34,7 @@ The automated tests cover:
 - provider request shape, background submission, retrieval, refusal and missing keys;
 - schedule creation, unchanged schedules, paused schedule repair and missing schema;
 - callback task authorization and truthful responses;
-- saved phase transitions, one revision, uncertain submissions, deadlines and safe polling retries;
+- saved phase transitions, one revision, uncertain submissions, returned-response recovery after deadline/write failures, actual source HTTP 500/503 recovery and safe polling retries;
 - real disposable-database enqueue deduplication, competing replicas, expired lease rejection, restart recovery, atomic publication, duplicate articles and rollback on a completion failure.
 
 Existing published articles were not changed. No article was generated or published to production during this repair. A minimal harmless API capability test verified that the requested model supports background submission and retrieval.

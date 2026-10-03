@@ -5,6 +5,7 @@ import {
   type BlogPostInsert, type BlogSource, type BlogTopic, type ExistingBlogPost, type GeneratedArticle,
 } from "./blogAutomation";
 import { blogResponseText, type BlogModelRequest, type BlogModelResponse } from "./blogModel";
+import { OutboundError } from "./_core/outboundHttp";
 
 export type BlogPhase = "topic" | "plan-submit" | "plan-poll" | "research" | "draft-submit" | "draft-poll" | "review-submit" | "review-poll" | "publish";
 export type BlogProgress = {
@@ -24,8 +25,8 @@ export interface BlogClaim {
   checkpoint(progress: BlogProgress): Promise<void>;
   save(progress: BlogProgress): Promise<void>;
   complete(reason: string): Promise<void>;
-  fail(reason: string): Promise<void>;
-  retry(): Promise<void>;
+  fail(reason: string, progress?: BlogProgress): Promise<void>;
+  retry(progress?: BlogProgress): Promise<void>;
   publish(post: BlogPostInsert): Promise<"published" | "already_published" | "recent_article">;
 }
 export type BlogWorkflowDependencies = {
@@ -66,6 +67,8 @@ export async function advanceBlogWorkflow(deps: BlogWorkflowDependencies) {
   if (!claim) { clearTimeout(deadline); return { ok: true, action: "idle" }; }
   const { run } = claim;
   const p = structuredClone(run.progress);
+  const safeReadPhase = p.phase === "research" || p.phase.endsWith("-poll");
+  let receivedResponseProgress: BlogProgress | undefined;
   try {
     if (p.submissionPending) throw new Error("Previous blog submission is uncertain; inspect before retrying");
     if (deps.now().getTime() - run.startedAt.getTime() > RUN_MAX_AGE_MS) {
@@ -96,6 +99,10 @@ export async function advanceBlogWorkflow(deps: BlogWorkflowDependencies) {
       p.responseId = response.id;
       p.phase = p.phase.replace("-submit", "-poll") as BlogPhase;
       delete p.submissionPending;
+      // The provider returned an ID. Persist it before any deadline/error path;
+      // recovery can then poll the same response rather than lose or rebill it.
+      receivedResponseProgress = structuredClone(p);
+      await claim.checkpoint(receivedResponseProgress);
     } else if (p.phase.endsWith("-poll")) {
       if (!p.responseId) throw new Error("Missing pending blog response");
       const response = await deps.retrieve(p.responseId, controller.signal);
@@ -130,18 +137,18 @@ export async function advanceBlogWorkflow(deps: BlogWorkflowDependencies) {
       }
       return { ok: true, action: result === "published" ? "article_published" : result, slug: p.topic!.slug };
     } else throw new Error("Unknown blog workflow phase");
-    if (controller.signal.aborted) throw new Error("Blog callback deadline exceeded");
+    if (controller.signal.aborted) throw new OutboundError("editorial-source", "cancelled");
     await claim.save(p);
     return { ok: true, action: "progress_saved", phase: p.phase };
   } catch (error) {
     // Submission uncertainty must never start another paid response blindly.
     // Polling and source reads are safe to retry; failed submissions require inspection.
-    const retryable = !p.phase.endsWith("-submit") &&
-      (error as { name?: string }).name === "OutboundError" &&
-      ["timeout", "network", "http"].includes((error as { kind?: string }).kind ?? "") &&
-      (!(error as { status?: number }).status || [429, 500, 502, 503, 504].includes((error as { status: number }).status));
-    if (retryable) await claim.retry();
-    else await claim.fail("Blog step failed; inspect editorial or provider logs before retrying");
+    const retryable = Boolean(receivedResponseProgress) || (safeReadPhase &&
+      error instanceof OutboundError &&
+      ["timeout", "cancelled", "network", "http"].includes(error.kind) &&
+      (!error.status || [429, 500, 502, 503, 504].includes(error.status)));
+    if (retryable) await claim.retry(receivedResponseProgress);
+    else await claim.fail("Blog step failed; inspect editorial or provider logs before retrying", receivedResponseProgress);
     console.warn("[blog-workflow]", { phase: p.phase, retryable });
     return { ok: false, action: retryable ? "retry_pending" : "failed", phase: p.phase };
   } finally { clearTimeout(deadline); }

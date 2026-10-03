@@ -64,6 +64,16 @@ suite("durable blog with an explicitly disposable database", () => {
     await restarted.fail("fixture_uncertain");
     expect((await enqueueWeeklyBlog(NOW)).action).toBe("failed_requires_inspection");
   });
+  it("retains returned model identifiers through retry and a new worker claim", async () => {
+    await enqueueWeeklyBlog(NOW);
+    const first = (await claimBlogStep())!;
+    await first.checkpoint({ phase: "draft-submit", topic, revision: 0, submissionPending: true });
+    await first.retry({ phase: "draft-poll", topic, revision: 0, responseId: "resp_fixture_returned" });
+    const restarted = (await claimBlogStep())!;
+    expect(restarted.run.progress).toMatchObject({ phase: "draft-poll", responseId: "resp_fixture_returned" });
+    expect(restarted.run.progress.submissionPending).toBeUndefined();
+    await restarted.complete("fixture_response_preserved");
+  });
   it("publishes and completes in one transaction, rejecting completed replays", async () => {
     await enqueueWeeklyBlog(NOW); const step = (await claimBlogStep())!;
     await step.save(approved); const publisher = (await claimBlogStep())!;

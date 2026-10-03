@@ -1,4 +1,4 @@
-import { serviceFetch } from "./_core/outboundHttp";
+import { requireServiceSuccess, serviceFetch } from "./_core/outboundHttp";
 import { z } from "zod";
 import {
   createHeartbeatJob,
@@ -379,8 +379,7 @@ export async function fetchOfficialSource(source: BlogSource, signal?: AbortSign
         "EchelonInstituteEditorialBot/1.0 (+https://echeloninstitute.ca)",
     },
   }, { service: "editorial-source", timeoutMs: 20_000, maxResponseBytes: 2 * 1024 * 1024, retryRead: true });
-  if (!response.ok)
-    throw new Error(`HTTP ${response.status} for ${source.url}`);
+  requireServiceSuccess(response, "editorial-source");
   const html = (await response.text()).slice(0, 500_000);
   const text = stripHtmlForResearch(html);
   if (text.length < 500)

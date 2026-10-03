@@ -46,8 +46,8 @@ export async function claimBlogStep(): Promise<BlogClaim | null> {
     },
     save: progress => finish("pending", null, progress),
     complete: reason => finish("completed", reason),
-    fail: reason => finish("failed", reason),
-    retry: () => finish("pending", "Retryable source or provider read failure"),
+    fail: (reason, progress) => finish("failed", reason, progress),
+    retry: progress => finish("pending", "Retryable source or provider read failure", progress),
     publish: post => publishClaimedBlog(db, token, post),
   };
 }

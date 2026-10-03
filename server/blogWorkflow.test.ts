@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { OutboundError } from "./_core/outboundHttp";
-import { BLOG_TOPICS, type GeneratedArticle } from "./blogAutomation";
+import { BLOG_TOPICS, fetchOfficialSource, type GeneratedArticle } from "./blogAutomation";
 import { advanceBlogWorkflow, blogRunKey, buildPublication, type BlogClaim, type BlogProgress, type BlogWorkflowDependencies } from "./blogWorkflow";
 const NOW = new Date("2026-10-05T14:00:00Z");
 const topic = BLOG_TOPICS[0];
@@ -20,7 +20,8 @@ function harness(initial: BlogProgress = { phase: "topic", revision: 0 }) {
     checkpoint: vi.fn(async p => { progress = structuredClone(p); }),
     save: vi.fn(async p => { progress = structuredClone(p); }),
     complete: vi.fn(async () => { ended = true; }),
-    fail: vi.fn(async () => { ended = true; }), retry: vi.fn(async () => {}),
+    fail: vi.fn(async (_reason, p) => { if (p) progress = structuredClone(p); ended = true; }),
+    retry: vi.fn(async p => { if (p) progress = structuredClone(p); }),
     publish: vi.fn(async () => { ended = true; return "published" as const; }),
   };
   const deps: BlogWorkflowDependencies = {
@@ -32,7 +33,7 @@ function harness(initial: BlogProgress = { phase: "topic", revision: 0 }) {
   };
   return { deps, claim, get progress() { return progress; } };
 }
-afterEach(() => { vi.useRealTimers(); vi.restoreAllMocks(); });
+afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 describe("durable blog workflow", () => {
   it("saves one step per callback, resumes generation/review and publishes only after approval", async () => {
     const h = harness();
@@ -98,6 +99,47 @@ describe("durable blog workflow", () => {
     expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
     expect(h.claim.retry).not.toHaveBeenCalled(); expect(h.progress.submissionPending).toBe(true);
   });
+  it("preserves a returned response even when the callback deadline expires", async () => {
+    vi.useFakeTimers();
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    let resolve!: (value: { id: string; status: "queued" }) => void;
+    vi.mocked(h.deps.submit).mockImplementation(() => new Promise(done => { resolve = done; }));
+    const work = advanceBlogWorkflow(h.deps);
+    await vi.advanceTimersByTimeAsync(23_001);
+    resolve({ id: "resp_returned", status: "queued" });
+    expect(await work).toMatchObject({ action: "retry_pending" });
+    expect(h.progress).toMatchObject({ phase: "draft-poll", responseId: "resp_returned" });
+    expect(h.progress.submissionPending).toBeUndefined();
+    vi.mocked(h.deps.retrieve).mockResolvedValue({ id: "resp_returned", status: "in_progress" });
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "waiting_for_model" });
+    expect(h.deps.submit).toHaveBeenCalledOnce();
+    expect(h.deps.retrieve).toHaveBeenCalledWith("resp_returned", expect.any(AbortSignal));
+  });
+  it.each(["save", "checkpoint"] as const)("recovers a returned ID after one %s write failure without resubmitting", async method => {
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    if (method === "save") vi.mocked(h.claim.save).mockRejectedValueOnce(new Error("Temporary persistence failure"));
+    else vi.mocked(h.claim.checkpoint).mockImplementationOnce(async p => { h.claim.run.progress = structuredClone(p); })
+      .mockRejectedValueOnce(new Error("Temporary persistence failure"));
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "retry_pending" });
+    expect(h.progress).toMatchObject({ phase: "draft-poll", responseId: "resp_test" });
+    expect(h.progress.submissionPending).toBeUndefined();
+    vi.mocked(h.deps.retrieve).mockResolvedValue({ id: "resp_test", status: "in_progress" });
+    await advanceBlogWorkflow(h.deps);
+    expect(h.deps.submit).toHaveBeenCalledOnce();
+    expect(h.deps.retrieve).toHaveBeenCalledOnce();
+  });
+  it.each([500, 503])("resumes research after the official source returns HTTP %s", async status => {
+    const h = harness({ phase: "research", topic, revision: 0 });
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(async () => new Response("Temporarily unavailable", { status })));
+    h.deps.fetchSource = fetchOfficialSource;
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "retry_pending" });
+    expect(h.progress.phase).toBe("research");
+    expect(h.claim.fail).not.toHaveBeenCalled();
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(async () => new Response("Official guidance ".repeat(80))));
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "progress_saved", phase: "draft-submit" });
+    expect(h.progress.research).toHaveLength(topic.sources.length);
+    expect(h.deps.submit).not.toHaveBeenCalled();
+  });
   it("safely retries provider polling outages without replacing the response", async () => {
     const h = harness({ phase: "draft-poll", revision: 0, topic, research, responseId: "resp_test" });
     vi.mocked(h.deps.retrieve).mockRejectedValue(new OutboundError("openai", "http", 503));
@@ -112,7 +154,11 @@ describe("durable blog workflow", () => {
     vi.useFakeTimers(); const h = harness({ phase: "research", topic, revision: 0 });
     vi.mocked(h.deps.fetchSource).mockImplementation((_source, signal) => new Promise((_resolve, reject) => signal.addEventListener("abort", () => reject(new OutboundError("editorial-source", "cancelled")), { once: true })));
     const run = advanceBlogWorkflow(h.deps); await vi.advanceTimersByTimeAsync(23_001);
-    expect(await run).toMatchObject({ ok: false }); expect(h.claim.publish).not.toHaveBeenCalled();
+    expect(await run).toMatchObject({ ok: false, action: "retry_pending" });
+    expect(h.claim.publish).not.toHaveBeenCalled(); expect(h.claim.fail).not.toHaveBeenCalled();
+    expect(h.progress.phase).toBe("research");
+    vi.mocked(h.deps.fetchSource).mockResolvedValue("Official source text ".repeat(60));
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "progress_saved", phase: "draft-submit" });
   });
   it("rechecks existing automated articles before starting any model call", async () => {
     const h = harness(); vi.mocked(h.deps.listPosts).mockResolvedValue([{ slug: "already-live", title: "Existing guide", tags: "Automated Article", createdAt: NOW }]);
