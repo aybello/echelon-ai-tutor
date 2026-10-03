@@ -24,7 +24,7 @@ function rc4(key: Uint8Array, bytes: Uint8Array) {
 
 // Actual synthetic PDF bytes: standard font, page tree, content streams and
 // byte-accurate xref. No customer data, downloading, OCR or mocked extraction.
-function fixture({ pages = 1, text = "Fixture Water Authority\nOperations Manager\nApplication Deadline: August 3, 2026", encrypted = false, activeContent = false, reuseContent = false, pageWidth = 612 } = {}) {
+function fixture({ pages = 1, text = "Fixture Water Authority\nJob Title: Operations Manager\nApplication Deadline: August 3, 2026", encrypted = false, activeContent = false, reuseContent = false, pageWidth = 612 } = {}) {
   const id = Buffer.alloc(16, 1);
   const owner = rc4(md5(Buffer.concat([Buffer.from("owner"), padding]).subarray(0, 32)).subarray(0, 5), Buffer.concat([Buffer.from("secret"), padding]).subarray(0, 32));
   const permission = Buffer.alloc(4); permission.writeInt32LE(-4);
@@ -73,7 +73,7 @@ describe("portable bounded PDF text extraction", () => {
     expect(await verifyJob(job, { now, fetchDocument: fetchDocument(bytes) })).toMatchObject({ status: "expired", closingAt: new Date("2026-08-03T23:59:59.999Z") });
   });
   it("still verifies matching future vacancies after actual PDF extraction", async () => {
-    expect((await verifyJob(job, { now, fetchDocument: fetchDocument(fixture({ text: "Fixture Water Authority\nOperations Manager\nApply by: October 18, 2026" })) })).status).toBe("verified");
+    expect((await verifyJob(job, { now, fetchDocument: fetchDocument(fixture({ text: "Fixture Water Authority\nJob Title: Operations Manager\nApply by: October 18, 2026" })) })).status).toBe("verified");
   });
   it.each([
     ["malformed", () => Buffer.from("%PDF-1.4\ninvalid")],

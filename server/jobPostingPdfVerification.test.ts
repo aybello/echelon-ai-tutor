@@ -34,14 +34,14 @@ const retrievePdf = (bytes: Uint8Array) => (url: string) => retrieveDocument(url
 
 describe("specific PDF evidence with real bounded extraction", () => {
   it("verifies role-plus-employer after actual PDF extraction", async () => {
-    const bytes = syntheticPdf(`${job.company} ${job.title} Apply by: October 18, 2026`);
+    const bytes = syntheticPdf(`${job.company} Job Title: ${job.title} Apply by: October 18, 2026`);
     const document = await retrievePdf(bytes)(job.sourceUrl);
     expect(document).toMatchObject({ isPdf: true, finalUrl: job.sourceUrl, contentType: "application/pdf" });
     expect(document.text).toContain(job.company);
     expect(await verifyJob(job, { now, fetchDocument: async () => document })).toMatchObject({ status: "verified", closingAt: new Date("2026-10-18T23:59:59.999Z") });
   });
   it("expires the specific August deadline rather than its future start date", async () => {
-    const bytes = syntheticPdf(`${job.company} ${job.title} Application Deadline: August 3, 2026 Start Date: November 18, 2026`);
+    const bytes = syntheticPdf(`${job.company} Job Title: ${job.title} Application Deadline: August 3, 2026 Start Date: November 18, 2026`);
     expect(await verifyJob(job, { now, fetchDocument: retrievePdf(bytes) })).toMatchObject({ status: "expired", closingAt: new Date("2026-08-03T23:59:59.999Z") });
   });
   it("does not grandfather employer-free or malformed PDFs as verified/missing", async () => {

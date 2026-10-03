@@ -102,9 +102,12 @@ export function matchPostingEvidence(job, document, { plainJobText, parseJobDate
   // The transport sets isPdf from the bytes, not an untrusted Content-Type.
   const isPdf = document.isPdf === true;
   if (isPdf) {
-    // A PDF is already a vacancy-specific document, but a role alone still does
-    // not identify its employer. Never read a board's unrelated date for it.
+    // Format alone does not prove a single vacancy. Require one explicit title
+    // header; unknown layouts and recruitment bulletins remain unavailable.
     if (!employer || !hasIdentity(document.text, job.title) || !hasIdentity(document.text, employer)) return null;
+    const titles = [...document.text.matchAll(/(?:^|\n|\s)(?:job title|position title|position|vacancy title|role title)\s*:\s*([^\n]+?)(?=\s+(?:job title|position title|position|vacancy title|role title|application deadline|apply by|closing(?: date)?|posted(?: date)?)\s*:|\s+open until filled\b|\n|$)/gi)]
+      .map(match => identity(match[1]));
+    if (titles.length !== 1 || titles[0] !== title || /\b(?:vacancies|multiple positions|recruitment bulletin|positions available|current openings)\b/i.test(document.text)) return null;
     const dates = closingDates(document.text, parseJobDates);
     if (dates.size > 1) return null;
     return { text: document.text };
@@ -115,7 +118,8 @@ export function matchPostingEvidence(job, document, { plainJobText, parseJobDate
     if (!hasIdentity(text, employer)) return false;
     const headings = [...record.matchAll(/<(?:h[1-6]|dt)\b[^>]*>([\s\S]*?)<\/(?:h[1-6]|dt)\s*>/gi)].map(match => identity(plainJobText(match[1])));
     const roleHeading = headings.includes(title);
-    const roleHeadings = headings.filter(heading => heading !== identity(employer));
+    const sectionHeading = /^(?:responsibilities|qualifications|requirements|duties|key duties|key responsibilities|essential qualifications|preferred qualifications|education|experience|skills|benefits|salary|compensation|working conditions|job description|about (?:us|the (?:role|position|organization))|how to apply|application process|equal opportunity|employment equity|contact(?: us)?|location|hours|schedule)$/;
+    const roleHeadings = headings.filter(heading => heading !== identity(employer) && !sectionHeading.test(heading));
     // Multiple role headings without separate containers cannot scope a date.
     if (new Set(roleHeadings).size > 1 || closingDates(text, parseJobDates).size > 1) return false;
     const links = anchorEntries(record);

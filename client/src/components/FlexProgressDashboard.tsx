@@ -1,4 +1,4 @@
-import { summarizeFlexProgress } from "@/lib/flexProgressMetrics";
+import { summarizeFlexProgress, flexRowIsStudying } from "@/lib/flexProgressMetrics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -111,7 +111,9 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
             </thead>
             <tbody>
               {data.map((row) => {
-                const config = STATUS_CONFIG[row.status] ?? STATUS_CONFIG.invited;
+                const config = flexRowIsStudying(row)
+                  ? { ...STATUS_CONFIG.active, label: "Studying" }
+                  : STATUS_CONFIG[row.status] ?? STATUS_CONFIG.invited;
                 const remaining = daysRemaining(row.accessEndsAt);
                 const Icon = config.icon;
                 return (

@@ -32,10 +32,21 @@ describe("specific vacancy evidence, not title-only success", () => {
   });
   it("allows a specific PDF with the role and employer, including open-until-filled", async () => {
     for (const deadline of ["Application Deadline: October 18, 2026", "Open until filled"]) {
-      expect((await evaluate(pdfPostingFixture(`${job.company} ${job.title} ${deadline}`))).status).toBe("verified");
+      expect((await evaluate(pdfPostingFixture(`${job.company} Job Title: ${job.title} ${deadline}`))).status).toBe("verified");
     }
     expect((await evaluate(pdfPostingFixture(`${job.title} Open until filled`))).status).toBe("unavailable");
     expect((await evaluate(pdfPostingFixture(`Wrong Water Authority ${job.title} Open until filled`))).status).toBe("unavailable");
+  });
+  it("does not attribute a bulletin's single deadline to another role", async () => {
+    for (const text of [
+      `${job.company} Current openings ${job.title} Wastewater Operator Closing: November 18, 2026`,
+      `${job.company} Job Title: ${job.title} Job Title: Wastewater Operator Closing: August 3, 2026`,
+    ]) expect(await evaluate(pdfPostingFixture(text))).toMatchObject({status: "unavailable", closingAt: null});
+  });
+  it("accepts ordinary descriptive headings inside one specific vacancy", async () => {
+    const raw = `<article class="job-details"><h1>${job.title}</h1><p>${job.company}</p><a href="/jobs/hydrogeologist">${job.title}</a><p>Closing: November 18, 2026</p><h2>Responsibilities</h2><p>Sample duties.</p><h2>Qualifications</h2><p>Sample requirements.</p><h2>How to apply</h2><p>Sample application.</p></article>`;
+    expect(await evaluate(htmlPostingFixture(raw))).toMatchObject({status: "verified", closingAt: new Date("2026-11-18T23:59:59.999Z")});
+    expect((await evaluate(htmlPostingFixture(raw.replace('<h2>Responsibilities</h2>', '<h2>Wastewater Operator</h2>')))).status).toBe("unavailable");
   });
   it("does not believe a PDF content-type on a generic HTML page", async () => {
     const document = htmlPostingFixture(`<h1>${job.company} Careers</h1><p>${job.title}</p>`);

@@ -25,7 +25,7 @@ function tier(province: string, status = "success") {
 afterEach(() => { vi.restoreAllMocks(); vi.unstubAllGlobals(); });
 describe("vacancy truth", () => {
   it("excludes the audited August 3 PDF deadline using parsed content, not a blacklist", async () => {
-    const result = await verifyJob({ ...job, title: "Operations Manager" }, { now, fetchDocument: async () => pdfPostingFixture(`${job.company} Operations Manager Application Deadline: August 3, 2026 Start Date: September 8, 2026`) });
+    const result = await verifyJob({ ...job, title: "Operations Manager" }, { now, fetchDocument: async () => pdfPostingFixture(`${job.company} Job Title: Operations Manager Application Deadline: August 3, 2026 Start Date: September 8, 2026`) });
     expect(result.status).toBe("expired");
     expect(result.closingAt?.toISOString()).toBe("2026-08-03T23:59:59.999Z");
   });
@@ -34,7 +34,7 @@ describe("vacancy truth", () => {
   });
   it("retains future and open-until-filled postings and source dates", async () => {
     for (const deadline of ["Application Deadline: October 18, 2026", "Open until filled"]) {
-      const result = await verifyJob(job, { now, fetchDocument: async () => pdfPostingFixture(`${job.company} ${job.title} Posted: July 2, 2026 ${deadline}`) });
+      const result = await verifyJob(job, { now, fetchDocument: async () => pdfPostingFixture(`${job.company} Job Title: ${job.title} Posted: July 2, 2026 ${deadline}`) });
       expect(result.status).toBe("verified");
       expect(result.postedAt?.toISOString()).toBe("2026-07-02T00:00:00.000Z");
     }
