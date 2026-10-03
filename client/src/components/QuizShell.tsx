@@ -28,6 +28,8 @@ import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
+import StudyNotesTopics from "@/components/StudyNotesTopics";
+import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
 import "./StudyWorkspace.css";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -257,7 +259,16 @@ export default function QuizShell({
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
+  const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+
+  const openStudyNotes = useCallback((practiceModule: string | null) => {
+    const courseKey = examType ?? currentPath.slice(1);
+    const resolution = resolveStudyNotesTopics(courseKey, practiceModule, Object.keys(moduleOverviews ?? {}));
+    setStudyNotesPracticeModule(practiceModule);
+    setStudyNotesModule(resolution.initialTopic);
+    setStudyNotesOpen(true);
+  }, [currentPath, examType, moduleOverviews]);
 
   const dismissTutor = useCallback(() => {
     onTutorClose();
@@ -278,9 +289,8 @@ export default function QuizShell({
   useEffect(() => {
     const panel = new URLSearchParams(window.location.search).get("panel");
     if (panel === "notes") {
-      if (moduleOverviews && Object.keys(moduleOverviews).length > 0) {
-        setStudyNotesModule(selectedModule);
-        setStudyNotesOpen(true);
+      if (moduleOverviews) {
+        openStudyNotes(selectedModule);
       }
     }
     if (panel === "tutor") onTutorOpen();
@@ -927,7 +937,7 @@ export default function QuizShell({
             )}
 
             <div className="practice-resource-actions">
-              {moduleOverviews && current.module && moduleOverviews[current.module] && <button type="button" onClick={() => { setStudyNotesModule(current.module); setStudyNotesOpen(true); }}>Read topic notes</button>}
+              {moduleOverviews && <button type="button" onClick={() => openStudyNotes(current.module ?? null)}>Read topic notes</button>}
               <button type="button" onClick={onTutorOpen}>Ask the Tutor about this question</button>
               {getPracticeGuidePath(currentPath) && <a href={getPracticeGuidePath(currentPath)!}>Explore the process guide</a>}
               {getPracticeGuidePath(currentPath) && /clarif|sediment/i.test(current.module ?? "") && <a href="/equipment-lab">Explore equipment</a>}
@@ -1040,7 +1050,7 @@ export default function QuizShell({
             }}>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 800 }}>📖 Study Notes</div>
-                <div style={{ fontSize: 12, opacity: 0.7, marginTop: 2 }}>Select a module to read its overview</div>
+                <div style={{ fontSize: 12, opacity: 0.7, marginTop: 2 }}>Select a note topic to read its overview</div>
               </div>
               <button
                 onClick={() => setStudyNotesOpen(false)}
@@ -1048,64 +1058,15 @@ export default function QuizShell({
               >✕</button>
             </div>
 
-            {/* Module picker — shown when no module selected in modal */}
-            {!studyNotesModule && (
-              <div style={{ padding: "20px 22px" }}>
-                <div style={{ fontSize: 13, color: "#64748B", marginBottom: 14 }}>Choose a module:</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
-                  {Object.keys(moduleOverviews).map(modName => {
-                    const mod = modules.find(m => m.name === modName);
-                    return (
-                      <button
-                        key={modName}
-                        onClick={() => setStudyNotesModule(modName)}
-                        style={{
-                          padding: "12px 14px",
-                          background: mod?.bg ?? "#DBEAFE",
-                          color: mod?.color ?? "#1D4ED8",
-                          border: `1.5px solid ${mod?.color ?? "#1D4ED8"}33`,
-                          borderRadius: 10,
-                          fontSize: 12,
-                          fontWeight: 700,
-                          cursor: "pointer",
-                          fontFamily: "inherit",
-                          textAlign: "left",
-                        }}
-                      >
-                        {mod?.icon && <span style={{ marginRight: 6 }}>{mod.icon}</span>}
-                        {modName}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Overview content — shown when a module is selected in modal */}
-            {studyNotesModule && moduleOverviews[studyNotesModule] && (
-              <div style={{ padding: "0 22px 22px" }}>
-                <button
-                  onClick={() => setStudyNotesModule(null)}
-                  style={{
-                    background: "none", border: "none", color: "#0369A1",
-                    fontSize: 12, fontWeight: 700, cursor: "pointer",
-                    padding: "14px 0 10px", fontFamily: "inherit",
-                    display: "flex", alignItems: "center", gap: 4,
-                  }}
-                >← All modules</button>
-                <ModuleOverviewPanel
-                  key={studyNotesModule + "-modal"}
-                  overview={moduleOverviews[studyNotesModule]}
-                  moduleName={studyNotesModule}
-                  moduleColor={modules.find(m => m.name === studyNotesModule)?.color}
-                  moduleBg={modules.find(m => m.name === studyNotesModule)?.bg}
-                  moduleIcon={modules.find(m => m.name === studyNotesModule)?.icon}
-                  defaultExpanded={true}
-                >
-                  {renderModuleSupplement?.(studyNotesModule)}
-                </ModuleOverviewPanel>
-              </div>
-            )}
+            <StudyNotesTopics
+              courseKey={examType ?? currentPath.slice(1)}
+              practiceModule={studyNotesPracticeModule}
+              selectedTopic={studyNotesModule}
+              overviews={moduleOverviews}
+              modules={modules}
+              onSelect={setStudyNotesModule}
+              renderSupplement={renderModuleSupplement}
+            />
           </div>
         </div>
       )}

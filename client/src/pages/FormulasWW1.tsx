@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import { PRIMARY_SLUDGE_FORMULA } from "@/lib/primarySludge";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -154,23 +155,7 @@ const CATEGORIES: FormulaCategory[] = [
         },
         tip: "Typical WOR limit: < 125 m³/m·d for primary, < 186 m³/m·d for secondary.",
       },
-      {
-        name: "Sludge Volume (Primary)",
-        formula: "Sludge Volume (m³/d) = [Q × SS_removed (mg/L)] ÷ [ρ_sludge × %solids × 10⁶]",
-        units: "m³/d",
-        variables: [
-          { sym: "Q", desc: "Flow rate (m³/d)" },
-          { sym: "SS_removed", desc: "Suspended solids removed (mg/L)" },
-          { sym: "ρ_sludge", desc: "Sludge density (≈ 1,000 kg/m³ for dilute sludge)" },
-          { sym: "%solids", desc: "Sludge solids content (decimal, e.g. 0.04 for 4%)" },
-        ],
-        example: {
-          problem: "Q = 5,000 m³/d, SS removed = 150 mg/L, sludge is 4% solids. What volume of sludge is produced?",
-          solution: "Sludge = (5,000 × 150) ÷ (1,000 × 0.04 × 10⁶) = 750,000 ÷ 40,000,000",
-          answer: "18.75 m³/d",
-        },
-        tip: "Primary sludge is typically 3–8% solids. Raw primary sludge has high putrescibility — pump frequently.",
-      },
+      PRIMARY_SLUDGE_FORMULA,
     ],
   },
   {

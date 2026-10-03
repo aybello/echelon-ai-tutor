@@ -18,6 +18,7 @@ import { resolveCourseKey } from "../../shared/courseRegistry";
 import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope } from "../courseActivityScope";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { reconcileLearnerBankModules } from "../../shared/learnerBankModules";
+import { ontarioWastewaterMockProfile } from "../../shared/ontarioWastewaterMock";
 
 export const OIT_PREVIEW_LIMITS = {
   practice: 15,
@@ -413,6 +414,9 @@ export const quizRouter = router({
       }
 
       modules = reconcileLearnerBankModules(modules, storedModules);
+      // Study chapters remain unchanged. The same reviewed area quotas feed the
+      // mock gate and server sampler, even if old metadata uses chapter names.
+      moduleTargets = ontarioWastewaterMockProfile(row.bankKey)?.targets ?? moduleTargets;
       return {
         bankKey: row.bankKey,
         modules,

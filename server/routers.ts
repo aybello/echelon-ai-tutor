@@ -2,7 +2,8 @@ import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExam
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
-import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, selectMappedMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { ontarioWastewaterMockProfile, reviewedWastewaterMockArea } from "../shared/ontarioWastewaterMock";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { clearIdentityCookies } from "./_core/logout";
 import { invokeLLM } from "./_core/llm";
@@ -304,7 +305,7 @@ export const appRouter = router({
         let targets: Record<string, number> = {};
         let preview = false;
         let blueprintVersion = 1;
-        let pool: { id: number; module: string; isCalc?: boolean; cognitiveLevel?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
+        let pool: { id: number; module: string; blueprintObjective?: string | null; reviewStatus?: string | null; isCalc?: boolean; cognitiveLevel?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
         if (spec.courseKey === "electrician-309a") {
           const result = await electricianReviewRouter.createCaller(ctx).get309ABetaPractice();
           pool = result.questions;
@@ -321,8 +322,20 @@ export const appRouter = router({
           } else {
             const db = await getDb();
             if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-            pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
-              .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
+            if (ontarioWastewaterMockProfile(spec.bankKey)) {
+              // Existing governance columns are read only for this mock path.
+              // They are never returned in active questions or practice payloads.
+              const rows = await db.select({ ...learnerQuestionColumns, blueprintObjective: questions.blueprintObjective, reviewStatus: questions.reviewStatus }).from(questions)
+                .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter()));
+              const byNumber = new Map(rows.map(row => [row.questionNum, row]));
+              pool = parseLearnerQuestions(rows).map(question => ({ ...question,
+                blueprintObjective: byNumber.get(question.id)?.blueprintObjective,
+                reviewStatus: byNumber.get(question.id)?.reviewStatus,
+              }));
+            } else {
+              pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
+                .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
+            }
           }
           const metadata = await caller.getBankMeta({ bankKey: spec.bankKey });
           targets = metadata?.moduleTargets ?? {};
@@ -331,7 +344,15 @@ export const appRouter = router({
         const count = preview ? 30 : spec.scoredCount;
         let selected: typeof pool;
         const blueprint = preview ? null : mockBlueprintForBank(spec.bankKey, blueprintVersion);
-        if (blueprint) {
+        const wastewaterProfile = preview ? null : ontarioWastewaterMockProfile(spec.bankKey);
+        if (wastewaterProfile) {
+          try {
+            selected = selectMappedMockQuestions(pool, wastewaterProfile.targets, count,
+              question => reviewedWastewaterMockArea(spec.bankKey, question));
+          } catch {
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable because some exam areas need reviewed question coverage. Practice remains available. Please use practice or contact support for help with mock access." });
+          }
+        } else if (blueprint) {
           try { selected = selectBlueprintQuestions(pool, blueprint, count); }
           catch (error) {
             console.error("[startMock] Class IV blueprint unavailable", error);
