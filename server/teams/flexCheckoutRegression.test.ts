@@ -9,14 +9,14 @@ describe("Course Pass guest checkout organization", () => {
   it("creates an access-free provisional organization with a real lifecycle", () => {
     const organization = buildProvisionalCoursePassOrganization({
       organizationName: "  City of Winnipeg  ",
-      managerEmail: "STattersall@Winnipeg.ca ",
+      managerEmail: "FIXTURE-10@EXAMPLE.COM ",
       province: "western",
       now: new Date("2026-08-13T12:00:00.000Z"),
     });
 
     expect(organization).toMatchObject({
       name: "City of Winnipeg",
-      managerEmail: "stattersall@winnipeg.ca",
+      managerEmail: "fixture-10@example.com",
       province: "western",
       tier: "course-pass",
       billingType: "course-pass",

@@ -248,7 +248,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                   <td className="py-2">
                     {licence.status === "unused" && (invitingId === licence.id ? (
                       <div className="flex items-center gap-1">
-                        <Input type="email" placeholder="operator@email.com" className="h-7 w-44 text-xs" value={inviteEmail[licence.id] ?? ""} onChange={(event) => setInviteEmail((current) => ({ ...current, [licence.id]: event.target.value }))} />
+                        <Input type="email" placeholder="fixture-83@example.com" className="h-7 w-44 text-xs" value={inviteEmail[licence.id] ?? ""} onChange={(event) => setInviteEmail((current) => ({ ...current, [licence.id]: event.target.value }))} />
                         <Button size="sm" className="h-7 text-xs" disabled={!inviteEmail[licence.id] || inviteMutation.isPending} onClick={() => reviewSingleInvitation(licence.id, courseKeyToLabel(licence.courseKey), licence.termMonths)}>Review</Button>
                         <Button size="sm" variant="ghost" className="h-7 text-xs" onClick={() => setInvitingId(null)}>Cancel</Button>
                       </div>
@@ -293,7 +293,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
 
           <div className="space-y-5 py-2">
             <div className="grid gap-3 lg:grid-cols-[1fr_auto]">
-              <Textarea value={bulkText} onChange={(event) => setBulkText(event.target.value)} placeholder={"operator1@utility.ca,wpi-class1-water-coll\noperator2@utility.ca,wpi-class2-water-coll"} rows={4} className="min-w-0 resize-none" />
+              <Textarea value={bulkText} onChange={(event) => setBulkText(event.target.value)} placeholder={"fixture-82@example.com,wpi-class1-water-coll\fixture-71@example.com,wpi-class2-water-coll"} rows={4} className="min-w-0 resize-none" />
               <div className="flex flex-wrap content-start gap-2 lg:w-52 lg:flex-col">
                 <Button variant="outline" onClick={() => importText(bulkText)} disabled={!bulkText.trim()}><Plus className="mr-1.5 h-4 w-4" />Import pasted rows</Button>
                 <Button variant="outline" onClick={() => fileInputRef.current?.click()}><Upload className="mr-1.5 h-4 w-4" />Upload CSV</Button>
@@ -314,7 +314,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                   const sendResult = sendBulkMutation.data?.results.find((result) => result.clientRowId === row.clientRowId);
                   return <tr key={row.clientRowId} className="border-t border-slate-100 align-top">
                     <td className="p-3 text-slate-400">{index + 1}</td>
-                    <td className="p-3"><Input type="email" value={row.operatorEmail} onChange={(event) => updateBulkRow(row.clientRowId, { operatorEmail: event.target.value })} placeholder="operator@utility.ca" className="min-w-56" /></td>
+                    <td className="p-3"><Input type="email" value={row.operatorEmail} onChange={(event) => updateBulkRow(row.clientRowId, { operatorEmail: event.target.value })} placeholder="fixture-7@example.com" className="min-w-56" /></td>
                     <td className="p-3"><select value={row.courseKey} onChange={(event) => updateBulkRow(row.clientRowId, { courseKey: event.target.value })} className="h-9 min-w-64 rounded-md border border-input bg-transparent px-3 text-sm">
                       <option value="">Select course</option>{courseOptions.map((option) => <option key={option.key} value={option.key}>{option.label}</option>)}
                     </select></td>

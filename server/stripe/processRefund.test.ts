@@ -4,7 +4,7 @@ import { processRefund, type RefundPurchase } from "./processRefund";
 const purchase: RefundPurchase = {
   id: 77,
   userId: 11,
-  email: "operator@example.ca",
+  email: "fixture-84@example.com",
   productKey: "class1-water",
 };
 

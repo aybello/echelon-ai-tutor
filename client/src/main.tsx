@@ -1,3 +1,4 @@
+import { startPrivacyAnalytics } from "@/lib/privacyAnalytics";
 import { watchOtherTabLogout } from "@/lib/logout";
 import { trpc } from "@/lib/trpc";
 import { clearLegacyQuestionCaches } from "@/lib/clearLegacyQuestionCaches";
@@ -9,6 +10,8 @@ import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
+
+startPrivacyAnalytics(window, document);
 
 const queryClient = new QueryClient();
 watchOtherTabLogout(queryClient);

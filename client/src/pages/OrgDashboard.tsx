@@ -299,13 +299,13 @@ export default function OrgDashboard() {
         // Open in same tab to avoid popup blockers
         window.location.href = data.url;
       } else {
-        toast.error("Billing portal is not available for your account type. Contact support@echeloninstitute.ca.");
+        toast.error("Billing portal is not available for your account type. Contact abello@echeloninstitute.ca.");
       }
     },
     onError: (err) => {
       const msg = err.message?.includes("invoice") || err.message?.includes("billing")
-        ? "Your organization uses invoice billing. Contact support@echeloninstitute.ca to manage your subscription."
-        : "Could not open billing portal. Please try again or contact support@echeloninstitute.ca.";
+        ? "Your organization uses invoice billing. Contact abello@echeloninstitute.ca to manage your subscription."
+        : "Could not open billing portal. Please try again or contact abello@echeloninstitute.ca.";
       toast.error(msg, { duration: 6000 });
     },
   });
@@ -1588,7 +1588,7 @@ export default function OrgDashboard() {
                   <Label className="text-slate-700">Operator name <span className="text-slate-400 font-normal">(optional)</span></Label>
                   <Input
                     type="text"
-                    placeholder="e.g. James Smith"
+                    placeholder="e.g. Sample Learner 3"
                     value={assignName}
                     onChange={e => setAssignName(e.target.value)}
                     className="border-slate-200 text-slate-900 placeholder:text-slate-400"
@@ -1598,7 +1598,7 @@ export default function OrgDashboard() {
                   <Label className="text-slate-700">Operator email</Label>
                   <Input
                     type="email"
-                    placeholder="operator@utility.ca"
+                    placeholder="fixture-7@example.com"
                     value={assignEmail}
                     onChange={e => setAssignEmail(e.target.value)}
                     className="border-slate-200 text-slate-900 placeholder:text-slate-400"
@@ -1610,7 +1610,7 @@ export default function OrgDashboard() {
               <div className="space-y-2">
                 <Label className="text-slate-700">Paste emails (one per line, or comma-separated)</Label>
                 <Textarea
-                  placeholder={"operator1@utility.ca\noperator2@utility.ca"}
+                  placeholder={"operator1@example.com\noperator2@example.com"}
                   value={bulkEmails}
                   onChange={e => setBulkEmails(e.target.value)}
                   rows={6}

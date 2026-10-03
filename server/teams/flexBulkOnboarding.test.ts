@@ -49,7 +49,7 @@ function row(id: number, email: string, courseKey: string): FlexBulkRowInput {
 describe("Course Pass bulk onboarding planner", () => {
   it("allocates the oldest-expiring paid licence first", () => {
     const plan = planFlexBulkOnboarding(
-      [row(1, "first@winnipeg.ca", "wpi-class1-water-coll"), row(2, "second@winnipeg.ca", "wpi-class1-water-coll")],
+      [row(1, "fixture-45@example.com", "wpi-class1-water-coll"), row(2, "fixture-101@example.com", "wpi-class1-water-coll")],
       [
         licence(20, "wpi-class1-water-coll", "2027-08-11T12:00:00Z"),
         licence(10, "wpi-class1-water-coll", "2027-01-11T12:00:00Z"),
@@ -62,7 +62,7 @@ describe("Course Pass bulk onboarding planner", () => {
 
   it("matches legacy collection aliases to canonical inventory", () => {
     const plan = planFlexBulkOnboarding(
-      [row(1, "operator@winnipeg.ca", "wpi-class1-water-coll")],
+      [row(1, "fixture-8@example.com", "wpi-class1-water-coll")],
       [licence(1, "wpi-class1-wastewater-coll", "2027-08-11T12:00:00Z")],
       now,
     );
@@ -72,7 +72,7 @@ describe("Course Pass bulk onboarding planner", () => {
 
   it("rejects duplicate operator and course rows before reserving inventory", () => {
     const plan = planFlexBulkOnboarding(
-      [row(1, "operator@winnipeg.ca", "wpi-class1-water-coll"), row(2, "OPERATOR@winnipeg.ca", "wpi-class1-wastewater-coll")],
+      [row(1, "fixture-8@example.com", "wpi-class1-water-coll"), row(2, "FIXTURE-8@EXAMPLE.COM", "wpi-class1-wastewater-coll")],
       [
         licence(1, "wpi-class1-water-coll", "2027-08-11T12:00:00Z"),
         licence(2, "wpi-class1-water-coll", "2027-08-11T12:00:00Z"),
@@ -85,9 +85,9 @@ describe("Course Pass bulk onboarding planner", () => {
 
   it("rejects an operator who already has the same canonical course", () => {
     const plan = planFlexBulkOnboarding(
-      [row(1, "operator@winnipeg.ca", "wpi-class1-water-coll")],
+      [row(1, "fixture-8@example.com", "wpi-class1-water-coll")],
       [
-        licence(1, "wpi-class1-wastewater-coll", "2027-08-11T12:00:00Z", "invited", "operator@winnipeg.ca"),
+        licence(1, "wpi-class1-wastewater-coll", "2027-08-11T12:00:00Z", "invited", "fixture-8@example.com"),
         licence(2, "wpi-class1-water-coll", "2027-08-11T12:00:00Z"),
       ],
       now,
@@ -98,7 +98,7 @@ describe("Course Pass bulk onboarding planner", () => {
 
   it("rejects over-allocation without assigning any invalid row", () => {
     const plan = planFlexBulkOnboarding(
-      [row(1, "one@winnipeg.ca", "wpi-class2-water-coll"), row(2, "two@winnipeg.ca", "wpi-class2-water-coll")],
+      [row(1, "fixture-72@example.com", "wpi-class2-water-coll"), row(2, "fixture-114@example.com", "wpi-class2-water-coll")],
       [licence(1, "wpi-class2-water-coll", "2027-08-11T12:00:00Z")],
       now,
     );

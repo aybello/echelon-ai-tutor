@@ -104,7 +104,7 @@ describe("SEO and geographic landing-page contract", () => {
     expect(landing).toContain("Example Municipality");
     expect(landing).toContain("{passPriceLabel}");
     expect(landing).not.toContain('from CA$49');
-    expect(landing).not.toContain('{ name: "Alex Thompson"');
+    expect(landing).not.toContain('{ name: "Sample Learner 11"');
   });
 
   it("uses the shared account action only once on the Teams page", () => {

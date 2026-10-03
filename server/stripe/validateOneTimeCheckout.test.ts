@@ -124,7 +124,7 @@ describe("validateOneTimeCheckout", () => {
       },
       metadata: {
         product_key: PRODUCT.key,
-        customer_email: "attacker@evil.com", // should be ignored
+        customer_email: "fixture-18@example.com", // should be ignored
       },
     });
     const result = validateOneTimeCheckout(session);

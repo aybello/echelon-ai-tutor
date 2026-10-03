@@ -5,12 +5,12 @@ describe("single Course Pass invitation preview", () => {
   it("prepares a one-recipient confirmation preview with a normalized email", () => {
     expect(prepareSingleInvitePreview({
       licenceId: 42,
-      operatorEmail: "  Operator@Utility.ca ",
+      operatorEmail: "  FIXTURE-7@EXAMPLE.COM ",
       courseName: "Class 4 Wastewater Practice Pass",
       termMonths: 6,
     })).toEqual({
       licenceId: 42,
-      operatorEmail: "operator@utility.ca",
+      operatorEmail: "fixture-7@example.com",
       courseName: "Class 4 Wastewater Practice Pass",
       termMonths: 6,
     });

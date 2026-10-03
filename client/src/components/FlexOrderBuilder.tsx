@@ -172,7 +172,7 @@ export function FlexOrderBuilder() {
 
         <div className="space-y-1.5">
           <Label className="font-medium text-gray-700">Billing email</Label>
-          <Input type="email" value={billingEmail} onChange={(event) => setBillingEmail(event.target.value)} placeholder="billing@yourorg.com" />
+          <Input type="email" value={billingEmail} onChange={(event) => setBillingEmail(event.target.value)} placeholder="fixture-25@example.com" />
           <p className="text-xs text-gray-400">Stripe sends the receipt and paid invoice to this address.</p>
         </div>
 
@@ -181,7 +181,7 @@ export function FlexOrderBuilder() {
             <input type="checkbox" checked={sameEmail} onChange={(event) => setSameEmail(event.target.checked)} className="rounded border-gray-300" />
             Manager email is the same as billing email
           </label>
-          {!sameEmail && <div className="mt-2"><Label className="font-medium text-gray-700">Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="manager@yourorg.com" className="mt-1" /><p className="mt-1 text-xs text-gray-400">This person manages operator licences and the team dashboard.</p></div>}
+          {!sameEmail && <div className="mt-2"><Label className="font-medium text-gray-700">Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="fixture-64@example.com" className="mt-1" /><p className="mt-1 text-xs text-gray-400">This person manages operator licences and the team dashboard.</p></div>}
         </div>
 
         <div className="space-y-3">

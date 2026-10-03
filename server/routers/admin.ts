@@ -42,7 +42,7 @@ import {
   type TrainingMetricEventName,
 } from "../analyticsAggregates";
 
-const OWNER_EMAIL = "belllo.ayoola@gmail.com";
+const OWNER_EMAIL = process.env.OWNER_EMAIL?.trim().toLowerCase() ?? "";
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;

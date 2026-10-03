@@ -26,7 +26,7 @@ describe("private Stripe recovery normalizer", () => {
   it("parses Stripe's Created date (UTC) export header for recovery term evidence", () => {
     const { records } = normalizeStripeRows([
       "id,Created date (UTC),Customer Email,Amount,Currency,Status",
-      "pi_historical,2026-06-19T15:45:00.000Z,manager@example.org,279.00,CAD,succeeded",
+      "pi_fixture_1,2026-06-19T15:45:00.000Z,manager@example.org,279.00,CAD,succeeded",
     ].join("\n"));
 
     expect(records[0]?.paymentCreatedAt?.toISOString()).toBe("2026-06-19T15:45:00.000Z");

@@ -265,7 +265,7 @@ describe("forward-only migration safety", () => {
         assertDisposableResetTarget("mysql://user:pass@127.0.0.1:3306/echelon_upgrade_ci")
       ).not.toThrow();
       expect(() =>
-        assertDisposableResetTarget("mysql://user:pass@example.com:3306/echelon_upgrade_ci")
+        assertDisposableResetTarget("mysql://user:pass@fixture-db-1.test:3306/echelon_upgrade_ci")
       ).toThrow("loopback MySQL host");
       expect(() =>
         assertDisposableResetTarget("mysql://user:pass@127.0.0.1:3306/echelon_production")

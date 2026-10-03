@@ -392,15 +392,15 @@ describe("Stripe webhook handler — invoice-before-org", () => {
 
 describe("individual subscription acknowledgements", () => {
   it.each([["completed", 200], ["busy", 409], ["retryable_failure", 503]])("maps %s to HTTP %s", async (state, code) => {
-    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.created", data: { object: { id: "sub_individual" } } });
-    mockRetrieveSubscription.mockResolvedValue({ id: "sub_individual", metadata: {} });
+    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.created", data: { object: { id: "sub_fixture_1" } } });
+    mockRetrieveSubscription.mockResolvedValue({ id: "sub_fixture_1", metadata: {} });
     mockGetDb.mockResolvedValue({}); mockProvisionIndividual.mockResolvedValue({ state });
     const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
     expect(res.statusCode).toBe(code);
   });
   it("returns a retryable response on storage exceptions", async () => {
-    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.updated", data: { object: { id: "sub_individual" } } });
-    mockRetrieveSubscription.mockResolvedValue({ id: "sub_individual", metadata: {} });
+    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.updated", data: { object: { id: "sub_fixture_1" } } });
+    mockRetrieveSubscription.mockResolvedValue({ id: "sub_fixture_1", metadata: {} });
     mockGetDb.mockResolvedValue({}); mockProvisionIndividual.mockRejectedValue(new Error("DB unavailable"));
     const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
     expect(res.statusCode).toBe(503);

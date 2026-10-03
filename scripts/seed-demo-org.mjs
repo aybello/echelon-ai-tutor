@@ -3,20 +3,24 @@
  * Creates a demo org (Utilities Kingston) with a manager and 8 operators,
  * each with realistic quiz history, so the OrgDashboard can be previewed.
  *
- * Run: node scripts/seed-demo-org.mjs
- * Outputs: the manager email and a signed JWT cookie value to paste into the browser.
+ * Requires explicit approval and a named disposable loopback database.
+ * Does not issue or print authentication tokens; use the normal local sign-in flow.
  */
 
 import { createConnection } from "mysql2/promise";
-import { SignJWT } from "jose";
-import dotenv from "dotenv";
 import { createHash } from "crypto";
 
-dotenv.config({ path: ".env" });
+let DEMO_TARGET;
+try { DEMO_TARGET = new URL(process.env.DATABASE_URL ?? "mysql://invalid"); }
+catch { throw new Error("Demo fixtures require a valid disposable database URL."); }
+if (process.env.DEMO_FIXTURE_APPROVED !== "ISOLATED_DEMO_FIXTURES"
+  || DEMO_TARGET.protocol !== "mysql:"
+  || !["127.0.0.1", "localhost", "[::1]"].includes(DEMO_TARGET.hostname)
+  || !/^\/echelon_(?:audit|demo)_[a-z0-9_]+$/i.test(DEMO_TARGET.pathname)) {
+  throw new Error("Demo fixtures require explicit approval and a named disposable loopback database.");
+}
 
 const DB_URL = process.env.DATABASE_URL;
-const JWT_SECRET_RAW = process.env.JWT_SECRET ?? "dev-secret";
-const JWT_SECRET = new TextEncoder().encode(JWT_SECRET_RAW);
 
 if (!DB_URL) {
   console.error("DATABASE_URL not set");
@@ -36,18 +40,18 @@ function parseDbUrl(url) {
   };
 }
 
-const MANAGER_EMAIL = "carl.demo@utilitieskingston.ca";
+const MANAGER_EMAIL = "fixture-34@example.com";
 const ORG_NAME = "Utilities Kingston";
 
 const OPERATORS = [
-  { email: "j.smith@utilitieskingston.ca",   name: "James Smith",   examType: "class1-water",    sessions: 12, accuracy: 78 },
-  { email: "m.jones@utilitieskingston.ca",   name: "Maria Jones",   examType: "class2-water",    sessions: 8,  accuracy: 65 },
-  { email: "r.patel@utilitieskingston.ca",   name: "Raj Patel",     examType: "class1-ww",       sessions: 15, accuracy: 84 },
-  { email: "s.chen@utilitieskingston.ca",    name: "Sarah Chen",    examType: "class3-water",    sessions: 5,  accuracy: 52 },
-  { email: "t.brown@utilitieskingston.ca",   name: "Tyler Brown",   examType: "oit",             sessions: 20, accuracy: 91 },
-  { email: "a.wilson@utilitieskingston.ca",  name: "Alex Wilson",   examType: "class1-water",    sessions: 3,  accuracy: 61 },
-  { email: "d.garcia@utilitieskingston.ca",  name: "Diego Garcia",  examType: "class2-ww",       sessions: 9,  accuracy: 73 },
-  { email: "l.nguyen@utilitieskingston.ca",  name: "Linh Nguyen",   examType: "class4-water",    sessions: 0,  accuracy: 0  },
+  { email: "fixture-50@example.com",   name: "Sample Learner 3",   examType: "class1-water",    sessions: 12, accuracy: 78 },
+  { email: "fixture-59@example.com",   name: "Sample Learner 4",   examType: "class2-water",    sessions: 8,  accuracy: 65 },
+  { email: "fixture-96@example.com",   name: "Sample Learner 5",     examType: "class1-ww",       sessions: 15, accuracy: 84 },
+  { email: "fixture-100@example.com",    name: "Sample Learner 6",    examType: "class3-water",    sessions: 5,  accuracy: 52 },
+  { email: "fixture-106@example.com",   name: "Sample Learner 7",   examType: "oit",             sessions: 20, accuracy: 91 },
+  { email: "fixture-11@example.com",  name: "Sample Learner 8",   examType: "class1-water",    sessions: 3,  accuracy: 61 },
+  { email: "fixture-42@example.com",  name: "Sample Learner 9",  examType: "class2-ww",       sessions: 9,  accuracy: 73 },
+  { email: "fixture-56@example.com",  name: "Sample Learner 10",   examType: "class4-water",    sessions: 0,  accuracy: 0  },
 ];
 
 const TOPICS_BY_EXAM = {
@@ -186,32 +190,15 @@ async function main() {
       ]
     );
 
-    console.log(`  Seeded operator: ${op.email} (${op.sessions} sessions, ${op.accuracy}% accuracy)`);
+    console.log(`  Seeded synthetic operator (${op.sessions} sessions, ${op.accuracy}% accuracy)`);
   }
 
-  // ── 6. Issue a signed JWT for the manager ────────────────────────────────────
-  const token = await new SignJWT({ email: MANAGER_EMAIL, type: "dashboard" })
-    .setProtectedHeader({ alg: "HS256" })
-    .setIssuedAt()
-    .setExpirationTime("24h")
-    .sign(JWT_SECRET);
-
-  console.log("\n✅ Done! To view the dashboard:\n");
-  console.log("1. Open the browser dev tools → Application → Cookies");
-  console.log(`2. Add a cookie named: echelon_dashboard_session`);
-  console.log(`   Value: ${token}`);
-  console.log(`   Domain: 3000-i4wlpeu9riou8qduhkoqr-28efefea.us2.manus.computer`);
-  console.log(`   Path: /`);
-  console.log(`   HttpOnly: true`);
-  console.log("\nOR run this in the browser console:");
-  console.log(`document.cookie = "echelon_dashboard_session=${token}; path=/; max-age=86400";`);
-  console.log(`\nThen navigate to: /team`);
-  console.log(`\nManager email: ${MANAGER_EMAIL}`);
+  console.log("Synthetic demo fixtures created. Use the normal local sign-in flow to preview /team.");
 
   await conn.end();
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
+main().catch(() => {
+  console.error("Synthetic demo seeding failed; no connection or account details are logged.");
+  process.exitCode = 1;
 });

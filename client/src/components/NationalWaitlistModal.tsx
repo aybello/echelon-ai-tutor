@@ -186,7 +186,7 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
                 <input
                   id="waitlist-email-input"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="fixture-117@example.com"
                   value={email}
                   onChange={e => { setEmail(e.target.value); if (emailError) setEmailError(""); }}
                   style={{

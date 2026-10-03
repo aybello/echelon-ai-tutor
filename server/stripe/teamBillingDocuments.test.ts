@@ -14,14 +14,14 @@ describe("Teams billing document checkout options", () => {
 
   it("guarantees a receipt email and enables a paid invoice for Flex payments", () => {
     const options = buildTeamFlexBillingDocumentOptions({
-      billingEmail: " Billing@Winnipeg.ca ",
+      billingEmail: " FIXTURE-2@EXAMPLE.COM ",
       organizationName: "City of Winnipeg",
       orderId: 247,
     });
 
-    expect(options.customer_email).toBe("billing@winnipeg.ca");
+    expect(options.customer_email).toBe("fixture-2@example.com");
     expect(options.payment_intent_data.receipt_email).toBe(
-      "billing@winnipeg.ca"
+      "fixture-2@example.com"
     );
     expect(options.invoice_creation.enabled).toBe(true);
     expect(options.invoice_creation.invoice_data.metadata).toMatchObject({
@@ -39,7 +39,7 @@ describe("Teams billing document checkout options", () => {
 
   it("keeps invoice custom fields inside Stripe's 140-character limit", () => {
     const options = buildTeamFlexBillingDocumentOptions({
-      billingEmail: "billing@example.ca",
+      billingEmail: "fixture-23@example.com",
       organizationName: "A".repeat(200),
       orderId: 1,
     });

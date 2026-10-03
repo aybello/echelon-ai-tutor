@@ -35,7 +35,7 @@ function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: (
           }}>
             {error && <p role="alert">{error}</p>}
             <label htmlFor={`ceu-email-${course.key}`}>Work email</label>
-            <input id={`ceu-email-${course.key}`} type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="operator@example.ca" />
+            <input id={`ceu-email-${course.key}`} type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="fixture-84@example.com" />
             <button type="submit" disabled={joinWaitlist.isPending}>{joinWaitlist.isPending ? "Saving request" : "Request updates"}</button>
           </form>
         )}

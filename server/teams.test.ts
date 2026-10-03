@@ -39,7 +39,7 @@ function makeOrg(overrides: Partial<{
     province: "ontario",
     tier: "all-access",
     seatsTotal: 10,
-    managerEmail: "carl@utilities.ca",
+    managerEmail: "fixture-3@example.com",
     stripeSubscriptionId: "sub_test_001",
     stripeCustomerId: "cus_test_001",
     termEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
@@ -110,7 +110,7 @@ describe("grantSeat", () => {
 
     // Simulate grantSeat logic directly (extracted from orgRouter.ts)
     const org = makeOrg();
-    const email = "operator1@utilities.ca";
+    const email = "fixture-81@example.com";
     const role = "operator";
 
     // Member row
@@ -145,7 +145,7 @@ describe("grantSeat", () => {
 
   it("grants access: resolveAccessByEmail returns true for assigned operator", () => {
     const org = makeOrg();
-    const email = "operator1@utilities.ca";
+    const email = "fixture-81@example.com";
 
     // Simulate the subscription row that grantSeat creates
     const sub = {
@@ -166,7 +166,7 @@ describe("grantSeat", () => {
 describe("revokeSeat", () => {
   it("sets member status=revoked and subscription status=expired", () => {
     const org = makeOrg();
-    const email = "operator1@utilities.ca";
+    const email = "fixture-81@example.com";
 
     const member = {
       orgId: org.id,
@@ -198,7 +198,7 @@ describe("revokeSeat", () => {
 
   it("removes access after revoke: resolveAccessByEmail returns false", () => {
     const sub = {
-      email: "operator1@utilities.ca",
+      email: "fixture-81@example.com",
       status: "expired",
       currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
     };
@@ -239,7 +239,7 @@ describe("seat cap", () => {
 describe("duplicate seat assignment", () => {
   it("idempotent: assigning same email twice does not create two active subscriptions", () => {
     const org = makeOrg();
-    const email = "operator1@utilities.ca";
+    const email = "fixture-81@example.com";
 
     const subs: any[] = [];
 
@@ -262,7 +262,7 @@ describe("cross-org denial", () => {
     const orgA = makeOrg({ id: 1, name: "Org A" });
     const orgB = makeOrg({ id: 2, name: "Org B" });
 
-    const operatorAEmail = "op-a@utilities.ca";
+    const operatorAEmail = "fixture-73@example.com";
     const members = [
       { orgId: 1, email: operatorAEmail, role: "operator", status: "assigned" },
     ];
@@ -289,7 +289,7 @@ describe("webhook org provisioning", () => {
       metadata: {
         type: "org",
         org_name: "Utilities Kingston",
-        manager_email: "carl@utilities.ca",
+        manager_email: "fixture-3@example.com",
         subscription_province: "ontario",
         seats: "15",
       },
@@ -315,7 +315,7 @@ describe("webhook org provisioning", () => {
     expect(orgs).toHaveLength(1);
     expect(orgs[0].name).toBe("Utilities Kingston");
     expect(orgs[0].seatsTotal).toBe(15);
-    expect(orgs[0].managerEmail).toBe("carl@utilities.ca");
+    expect(orgs[0].managerEmail).toBe("fixture-3@example.com");
     expect(orgs[0].billingType).toBe("stripe");
   });
 
@@ -341,8 +341,8 @@ describe("webhook org provisioning", () => {
     const newPeriodEnd = new Date(Date.now() + 730 * 24 * 60 * 60 * 1000); // +2 years
     const orgId = 1;
     const subs = [
-      { email: "active-op@utilities.ca",  orgId, status: "active",  currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) },
-      { email: "revoked-op@utilities.ca", orgId, status: "expired", currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) },
+      { email: "fixture-14@example.com",  orgId, status: "active",  currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) },
+      { email: "fixture-97@example.com", orgId, status: "expired", currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) },
     ];
 
     // Simulate the fixed webhook logic: only extend already-active rows
@@ -355,8 +355,8 @@ describe("webhook org provisioning", () => {
       subs.filter(s => s.orgId === orgId).forEach(s => { s.status = "expired"; });
     }
 
-    const activeSub  = subs.find(s => s.email === "active-op@utilities.ca")!;
-    const revokedSub = subs.find(s => s.email === "revoked-op@utilities.ca")!;
+    const activeSub  = subs.find(s => s.email === "fixture-14@example.com")!;
+    const revokedSub = subs.find(s => s.email === "fixture-97@example.com")!;
 
     expect(activeSub.currentPeriodEnd).toBe(newPeriodEnd);   // extended
     expect(revokedSub.status).toBe("expired");                // still expired — NOT resurrected
@@ -370,7 +370,7 @@ describe("webhook org provisioning", () => {
       metadata: {
         type: "org",
         org_name: "City of Calgary",
-        manager_email: "mgr@calgary.ca",
+        manager_email: "fixture-66@example.com",
         subscription_province: "western",
         subscription_tier: "class2", // buyer chose class2, not all-access
         seats: "5",
@@ -395,12 +395,12 @@ describe("webhook org provisioning", () => {
   it("subscription.deleted with type=org sets org status=cancelled and expires all seats", () => {
     const org = { ...makeOrg(), status: "active" };
     const subs = [
-      { email: "op1@utilities.ca", orgId: 1, status: "active" },
-      { email: "op2@utilities.ca", orgId: 1, status: "active" },
+      { email: "fixture-77@example.com", orgId: 1, status: "active" },
+      { email: "fixture-80@example.com", orgId: 1, status: "active" },
     ];
     const members = [
-      { email: "op1@utilities.ca", orgId: 1, status: "assigned", revokedAt: null as Date | null },
-      { email: "op2@utilities.ca", orgId: 1, status: "assigned", revokedAt: null as Date | null },
+      { email: "fixture-77@example.com", orgId: 1, status: "assigned", revokedAt: null as Date | null },
+      { email: "fixture-80@example.com", orgId: 1, status: "assigned", revokedAt: null as Date | null },
     ];
 
     // Simulate cancellation
@@ -418,15 +418,15 @@ describe("normalizeEmail", () => {
   it("lowercases and trims email before matching", () => {
     const normalize = (e: string) => e.trim().toLowerCase();
 
-    expect(normalize("Carl@Utilities.CA")).toBe("carl@utilities.ca");
-    expect(normalize("  OPERATOR@UTILITY.CA  ")).toBe("operator@utility.ca");
-    expect(normalize("mixed.Case+tag@Domain.Com")).toBe("mixed.case+tag@domain.com");
+    expect(normalize("FIXTURE-3@EXAMPLE.COM")).toBe("fixture-3@example.com");
+    expect(normalize("  FIXTURE-7@EXAMPLE.COM  ")).toBe("fixture-7@example.com");
+    expect(normalize("FIXTURE-67@EXAMPLE.COM")).toBe("fixture-67@example.com");
   });
 
   it("two emails that differ only in case are treated as the same seat", () => {
     const normalize = (e: string) => e.trim().toLowerCase();
-    const email1 = normalize("Carl@Utilities.CA");
-    const email2 = normalize("carl@utilities.ca");
+    const email1 = normalize("FIXTURE-3@EXAMPLE.COM");
+    const email2 = normalize("fixture-3@example.com");
     expect(email1).toBe(email2);
   });
 });

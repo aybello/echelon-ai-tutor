@@ -72,9 +72,17 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Block all sends until the allowlisted privacy boundary is installed. -->
+    <script>window.echelonAnalyticsBeforeSend = function () { return false; };</script>
     <script
+      id="echelon-analytics"
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-auto-track="false"
+      data-exclude-search="true"
+      data-exclude-hash="true"
+      data-do-not-track="true"
+      data-before-send="echelonAnalyticsBeforeSend"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>

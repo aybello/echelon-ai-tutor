@@ -24,7 +24,7 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 28, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 3, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -82,8 +82,9 @@ export default function Privacy() {
           <p>To exercise a right or make a privacy complaint, email <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Request" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>. We may need to verify your identity. If you are not satisfied with our response, you may contact the Office of the Privacy Commissioner of Canada or the applicable provincial/state regulator.</p>
         </LegalSection>
 
-        <LegalSection title="8. Cookies">
-          <p>Echelon uses cookies to maintain your session after signing in. We do not use advertising or tracking cookies. You can clear cookies at any time from your browser settings or from the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a>.</p>
+        <LegalSection title="8. Cookies and Analytics Storage">
+          <p>Echelon uses cookies to maintain your session after signing in. First-party product reporting also stores a persistent pseudonymous browser identifier in local storage; the server hashes this identifier before storing events. Acquisition categories are stored for the browser session. We do not use advertising cookies. You can clear cookies and local storage from your browser settings; the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a> also provides sign-out controls.</p>
+          <p>Third-party analytics receives only allowlisted public page paths and categories, with dynamic values replaced by route templates. We do not send URL query strings, fragments, referrers, personal page titles, or arbitrary event fields. Authentication, invitation, claim, activation, purchase-confirmation and private learner pages are excluded.</p>
         </LegalSection>
 
         <LegalSection title="9. Service Providers, Retention, and Transfers">

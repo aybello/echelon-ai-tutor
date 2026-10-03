@@ -282,7 +282,7 @@ export default function Partnerships() {
                 type="email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="jane@utility.ca"
+                placeholder="fixture-51@example.com"
                 style={{
                   width: "100%", padding: "10px 14px", borderRadius: 8,
                   border: "1px solid #D1D5DB", fontSize: 14, outline: "none",

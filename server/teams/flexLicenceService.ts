@@ -373,7 +373,7 @@ export async function changeFlexLicenceCourse(
   if (currentBand.examFamily !== newBand.examFamily || currentBand.pricingBand !== newBand.pricingBand) {
     throw new TRPCError({
       code: "BAD_REQUEST",
-      message: "Cross-band course changes require manual support. Contact support@echeloninstitute.ca for assistance.",
+      message: "Cross-band course changes require manual support. Contact abello@echeloninstitute.ca for assistance.",
     });
   }
 
