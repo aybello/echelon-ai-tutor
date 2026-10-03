@@ -4,26 +4,39 @@ A merge, a build, a deployment, and a successful scheduled callback are differen
 
 ## Build identity
 
-`pnpm build` bakes the actual full **tracked-clean checkout HEAD** into the server bundle, ignoring stale environment SHA labels when Git is present. Tracked staged/unstaged changes fail ordinary release builds. Untracked test outputs are not source approval and do not dirty this tracked check. Production startup rejects `unknown`, dirty markers and unversioned development artifacts. Runtime environment changes cannot relabel a previously built bundle.
+The normal automatic `pnpm build` stamps immutable **`release` and `releaseKind`** into the server bundle. No Dockerfile, infrastructure, secret or runtime filesystem change is needed. Production startup rejects `unknown`, missing/invalid kinds, dirty markers and unversioned development artifacts. Runtime environment changes cannot relabel a previously built bundle.
 
-For a managed source archive without `.git`, its approved clean release exporter must include **`release.json`** at archive root:
+- **Clean Git checkout:** the actual full checkout HEAD is stamped with `releaseKind: "git-commit"`. Tracked staged/unstaged changes and untracked functional source fail ordinary release builds. Untracked root test outputs and excluded local/platform metadata do not dirty the source check. Stale _valid_ environment commit labels do not override HEAD; malformed supplied commit labels fail. A broken/unborn checkout is not treated as a source archive.
+- **Actual managed archive:** publishing receives committed source equivalent to `git archive HEAD`, without `.git`, installed dependencies, ignored output or environment files. The managed exporter does **not** supply `release.json`. In this normal manifest-free case, the build computes the full deterministic functional-source SHA256 and stamps `releaseKind: "source-sha256"`. `LAST_COMMIT_HASH` is an opaque checkpoint label (it can be nonhexadecimal and five characters), not a Git commit; it is never used for release identity. Valid `BUILD_COMMIT_SHA`/`GITHUB_SHA` labels alone cannot make an archive claim Git identity. Malformed supplied commit labels still fail.
+- **Optional explicit manifest:** an existing trusted release exporter may continue to supply **`release.json`** at archive root:
 
 ```json
-{"version":1,"commit":"FULL_APPROVED_COMMIT_SHA","clean":true}
+{ "version": 1, "commit": "FULL_APPROVED_COMMIT_SHA", "clean": true }
 ```
 
-Replace the placeholder with the actual full 40- or 64-character hexadecimal commit exported, not a checkpoint label or an earlier branch revision. Generate this metadata alongside `git archive HEAD` from the tracked-clean approved checkout, **outside that checkout**, so generated/untracked files are excluded and metadata generation does not dirty the source. The build reads `release.json` by default; an approved exporter may provide `BUILD_RELEASE_FILE` for another durable path. A supplied build-time `BUILD_COMMIT_SHA` or trusted runner `GITHUB_SHA` must agree exactly with the archive manifest; it cannot replace that manifest. Malformed, mismatched or absent provenance fails an ordinary release build. A manifest is trusted exporter metadata, not a cryptographic signature; an untrusted/self-authored archive is not approved merely by setting `clean: true`.
+The optional manifest uses the actual full 40- or 64-character hexadecimal commit, not a checkpoint label or an earlier branch revision, and yields `releaseKind: "git-commit"`. If used, generate it alongside the approved export **outside the checkout**. Every supplied `BUILD_COMMIT_SHA` and `GITHUB_SHA` must match the manifest exactly (case-insensitively). A malformed manifest, mismatched SHA, unreadable manifest, or missing explicitly configured `BUILD_RELEASE_FILE` fails instead of silently switching to a fingerprint. A manifest is trusted exporter metadata, not a signature; self-authored `clean: true` is not approval. Do not manufacture a manifest for the actual managed export.
 
-The Quality Gate checks tracked cleanliness, exports only committed source to a temporary archive, writes its exact HEAD manifest outside the checkout, and verifies archive identity before building the checkout without a development-artifact override. This policy is committed for CI; the worker did not run GitHub Actions or approve a deploy artifact. Any managed exporter that cannot provide approved clean source metadata remains blocked rather than receiving a fabricated SHA.
+### Functional-source fingerprint contract
+
+`scripts/sourceFingerprint.ts` exports `computeSourceFingerprint(root = process.cwd())`, `sourceFingerprintFiles(root)` and `isSourceFingerprintPath(path)`. The same functional source in a clean checkout and its `git archive HEAD` extraction hashes identically. The build calls the fingerprint once and embeds only its digest/kind; runtime health imports no Git/filesystem/hash implementation.
+
+The versioned contract includes all regular files under **`client`, `server`, `shared`, `scripts`, `drizzle`, `patches`, `config`, `configs`, `content`, `attached_assets`, `public`, and `vendor`** when present. It includes dependency pins (`package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`), `components.json`, root JS/TS/HTML/CSS/SCSS build inputs, every `tsconfig*.json` and `*.config.{js,ts,mjs,cjs,mts,cts,json,yaml,yml}` (also plain `config.*`), and relevant package/compiler config dotfiles (`.npmrc`, `.pnpmfile.cjs`, `.nvmrc`, `.node-version`, `.browserslistrc`, `.babelrc` variants, `.swcrc`, `.postcssrc` variants). Functional assets and source tests inside those directories are deliberately included. Required package/lock/client HTML/server entry/build script and nonempty client/server/shared/scripts source prevent empty or unknown archives from obtaining an identity.
+
+Excluded at any depth: `node_modules`, `.git`, `dist`, `build`, coverage/test/Playwright output, `.env`/`.env.*`, private `.project-config.json`, `.manus`/`.manus-logs`/`__manus__`/`.webdev`, caches, logs, temporary directories, secret directories and private key material. Unrelated root documentation/research/test artifacts are outside the functional contract. Root paths and exclusion rules are fixed in the helper, not supplied by the environment. Every included symlink is rejected, even if its target is in-root; source escapes and host-dependent link targets cannot contribute bytes.
+
+Canonical encoding is **SHA256** over UTF-8 `echelon-functional-source-sha256-v1` followed by a NUL byte, then for each bytewise-sorted POSIX relative path: unsigned 64-bit big-endian path-byte length, UTF-8 relative path, unsigned 64-bit big-endian content-byte length, and raw file bytes. Paths/bytes are framed unambiguously. Absolute paths, timestamps and directory iteration order are not included. Dependency _source pins_, not installed dependency trees, are fingerprinted. This is source-code identity, not a hash of generated bundles, build-time secret values or external/database state.
+
+The fingerprint is **not an approval statement or a remote Git commit**. Exact agreement with an independently exported approved integrated commit supplies the release-code comparison. The parent/CI must export that approved commit into a temporary directory, compute its expected source fingerprint, and compare all 64 characters to the managed artifact's release. Do not infer a commit from `LAST_COMMIT_HASH`, a shortened value, or the digest itself. Git SHA256 can also be 64 characters, so the explicit injected `__BUILD_RELEASE_KIND__`—never string length—distinguishes kinds.
 
 The parent CI may explicitly use `BUILD_ARTIFACT_MODE=development` for an unversioned or dirty **development/test artifact**. This flag is rejected when building for production, and the resulting dirty or `development-unversioned` artifact cannot start in production. It is not a release workaround.
 
 After authorized deployment, compare **exact equality**:
 
-- `EXPECTED_RELEASE`: the approved clean final merged commit SHA actually built/exported.
-- `GET https://echeloninstitute.ca/api/health` JSON `release`.
+- For `releaseKind: "git-commit"`, compare the full approved clean integrated commit SHA to health `release`.
+- For `releaseKind: "source-sha256"`, compare `computeSourceFingerprint(approvedArchiveRoot)` from **`git archive APPROVED_INTEGRATED_SHA`** to health `release`.
+- Require the expected kind as well as HTTP 200, `status: "ok"`, and exact full `release` equality in `GET https://echeloninstitute.ca/api/health`.
 
-Require HTTP 200, `status: "ok"`, and `release === EXPECTED_RELEASE`. A capability list, another branch's SHA, a checkpoint ID, or `unknown` does not satisfy this comparison. A local clean-branch build verifies only that branch artifact, not the eventual integrated release. The worker did not deploy or test the live release.
+A capability list, another branch's SHA, a checkpoint ID, or `unknown` does not satisfy this comparison. Tests use synthetic temporary Git repositories/archives, source mutations, isolated production server builds and health evaluation; no provider, database or browser actions occur. Focused tests/typechecking pass through the sanitized safe wrapper. The concurrently edited working checkout was **not** claimed clean or built as a release; final integrated clean-checkout/archive comparison, full build and authorized deployment remain parent/CI gates. The worker did not run GitHub Actions, deploy or test live health.
 
 ## Publishing pause and callback readiness
 
