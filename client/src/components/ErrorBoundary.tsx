@@ -7,6 +7,7 @@ interface Props {
   children: ReactNode;
   fallback?: ReactNode;
   onError?: (error: Error) => void;
+  recoverModuleErrors?: boolean;
 }
 
 interface State {
@@ -29,7 +30,7 @@ class ErrorBoundary extends Component<Props, State> {
     console.error("[ErrorBoundary] Uncaught render error:", error.message);
     console.error("[ErrorBoundary] Component stack:", info.componentStack);
 
-    recoverChunkLoad(error);
+    if (this.props.recoverModuleErrors) recoverChunkLoad(error);
   }
 
   handleReset = () => {
