@@ -14,6 +14,7 @@
 import { class1OptionOrder, class1DisplayLetter } from "@/lib/class1OptionOrder";
 import React, { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { toast } from "sonner";
+import { TutorPanelPlacement } from "./TutorPanelPlacement";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
 import type { ModuleOverview } from "@/lib/questionTypes";
@@ -499,7 +500,7 @@ export default function QuizShell({
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
   return (
-    <div className="practice-page" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
+    <div className={`practice-page practice-screen${tutorOpen && renderAITutor ? " has-tutor" : ""}`} style={{ background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
@@ -566,6 +567,7 @@ export default function QuizShell({
 
       <SiteNav currentPath={currentPath} />
 
+      <div className="practice-screen-main">
       <section className="practice-header" aria-label="Practice session">
         <div className="practice-header-inner">
           <div className="practice-title-row"><div>
@@ -628,7 +630,7 @@ export default function QuizShell({
         </div>
       )}
       {/* ── Body ── */}
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px 16px 40px" }}>
+      <div className="practice-content" tabIndex={0} role="region" aria-label="Practice question and explanation">
 
         {/* Ticket 12: Gate skeleton — when gate is active, render a blurred placeholder instead of the full quiz content.
              This prevents locked question text and answer options from being sent to the DOM. */}
@@ -796,7 +798,7 @@ export default function QuizShell({
           )}
 
           {/* Action buttons */}
-          <div className="qs-action-row" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
+          <div className="qs-action-row practice-primary-actions" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
             {/* Primary row: Prev + Confirm/Next */}
             <div style={{ display: "flex", gap: 8, flexWrap: "nowrap" }}>
               {history.length > 0 && (
@@ -843,7 +845,10 @@ export default function QuizShell({
                 </button>
               ) : (
                 <button
-                  onClick={() => { window.scrollTo({ top: 0, behavior: 'instant' }); onNext(); }}
+                  onClick={() => {
+                    document.querySelector(".practice-content")?.scrollTo({ top: 0, behavior: "instant" });
+                    onNext();
+                  }}
                   style={{
                     flex: 1,
                     padding: "9px 18px",
@@ -1004,8 +1009,13 @@ export default function QuizShell({
         </>)}
       </div>
 
-      {/* ── AI Tutor drawer ── */}
-      {tutorOpen && renderAITutor && renderAITutor(dismissTutor)}
+      </div>
+      {/* Same shared panel and context for every course, in its own screen slot. */}
+      {tutorOpen && renderAITutor && (
+        <TutorPanelPlacement.Provider value="workspace">
+          <div className="practice-tutor-slot">{renderAITutor(dismissTutor)}</div>
+        </TutorPanelPlacement.Provider>
+      )}
 
       {/* ── Report Error modal ── */}
       {reportModalOpen && current && (

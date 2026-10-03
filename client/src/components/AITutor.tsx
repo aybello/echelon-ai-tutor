@@ -2,11 +2,14 @@
 // Design: Slide-in right panel with gradient header, chat bubbles, quick prompts
 // Philosophy: Professional SaaS — Clean Dark-Accent
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useContext } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
 import { getTutorFailureMessage, isTutorDismissKey, withoutTutorErrors } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { createPortal } from "react-dom";
+import { TutorPanelPlacement } from "./TutorPanelPlacement";
+import "./AITutor.css";
 import { Streamdown } from "streamdown";
 import { AI_TUTOR_MARKDOWN_PLUGINS } from "@/components/AIChatBox";
 
@@ -27,6 +30,7 @@ export default function AITutor({
   onClose,
   examType,
 }: Props) {
+  const placement = useContext(TutorPanelPlacement);
   const [sessionStartMs] = useState(() => Date.now());
   const saveSessionMutation = trpc.tutor.saveSession.useMutation();
   // Support both OAuth and verified email session users for session saving
@@ -209,36 +213,10 @@ export default function AITutor({
     ? "linear-gradient(135deg, #B45309, #92400E)"
     : "linear-gradient(135deg, #1D4ED8, #0F766E)";
 
-  return (
-    <>
-      {/* Mobile backdrop */}
-      <style>{`
-        @media (max-width: 640px) {
-          .ai-tutor-panel {
-            width: 100% !important;
-            left: 0 !important;
-            top: 56px !important;
-            border-left: none !important;
-            border-top: 1px solid #E5E7EB !important;
-          }
-        }
-      `}</style>
-    <div
-      className="ai-tutor-panel"
-      style={{
-        position: "fixed",
-        right: 0,
-        top: 0,
-        bottom: 0,
-        width: 420,
-        background: "#fff",
-        borderLeft: "1px solid #E5E7EB",
-        display: "flex",
-        flexDirection: "column",
-        zIndex: 100,
-        boxShadow: "-8px 0 32px rgba(0,0,0,0.12)",
-        animation: "slideIn 0.3s ease both",
-      }}
+  const panel = (
+    <aside
+      className={`ai-tutor-panel ai-tutor-panel--${placement}`}
+      aria-label="AI Tutor"
     >
       {/* Header */}
       <div
@@ -322,7 +300,7 @@ export default function AITutor({
 
       {/* Context strip */}
       {!patternMode && question && (
-        <div
+        <div className="ai-tutor-context"
           style={{
             padding: "12px 18px",
             background: "#F8FAFC",
@@ -373,6 +351,9 @@ export default function AITutor({
 
       {/* Chat messages */}
       <div
+        className="ai-tutor-messages"
+        role="log"
+        aria-label="Tutor conversation"
         ref={chatRef}
         style={{
           flex: 1,
@@ -513,24 +494,24 @@ export default function AITutor({
       </div>
 
       {/* Quick prompts */}
-      <div
+      <details className="ai-tutor-prompts"
         style={{
           padding: "10px 16px",
           borderTop: "1px solid #F1F5F9",
           flexShrink: 0,
         }}
       >
-        <div
+        <summary
           style={{
-            fontSize: 9,
+            fontSize: 10,
             fontWeight: 700,
             color: "#CBD5E1",
             letterSpacing: "0.1em",
             marginBottom: 6,
           }}
         >
-          QUICK PROMPTS
-        </div>
+          Quick prompts
+        </summary>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
           {QUICK.map((q) => (
             <button
@@ -555,10 +536,10 @@ export default function AITutor({
             </button>
           ))}
         </div>
-      </div>
+      </details>
 
       {/* Input area */}
-      <div
+      <div className="ai-tutor-composer"
         style={{
           padding: "12px 16px",
           borderTop: "1px solid #E5E7EB",
@@ -573,6 +554,7 @@ export default function AITutor({
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) sendMessage(input);
           }}
+          aria-label="Ask the AI Tutor"
           placeholder="Ask anything..."
           disabled={loading}
           style={{
@@ -606,7 +588,8 @@ export default function AITutor({
           Send
         </button>
       </div>
-    </div>
-    </>
+    </aside>
   );
+  // A body portal avoids transformed page wrappers trapping a fixed drawer.
+  return placement === "workspace" ? panel : createPortal(panel, document.body);
 }

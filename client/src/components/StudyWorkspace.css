@@ -113,3 +113,57 @@
 .team-outcomes-report[data-view-active=false] { display:none; }
 @media print { .team-outcomes-report[data-view-active=false] { display:block; }.workspace-view-tabs,.manager-operators { display:none; } }
 @media (max-width:680px) { .manager-roster-filters label,.manager-roster-filters input,.manager-roster-filters select { width:100%; }.manager-roster td:first-child { display:block!important; }.manager-roster td:last-child { display:block!important; }.manager-roster td:last-child::before { content:none; } }
+
+/* Screen-fit study workspace. Only long question/solution/chat content scrolls. */
+.practice-screen {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template: auto minmax(0, 1fr) / minmax(0, 1fr);
+}
+.practice-screen > .echelon-site-header { grid-column: 1 / -1; }
+.practice-screen.has-tutor { grid-template-columns: minmax(0, 1fr) clamp(320px, 30vw, 420px); }
+.practice-screen-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; }
+.practice-screen .practice-header { padding: 10px 16px; flex-shrink: 0; max-height: 45%; overflow-y: auto; }
+.practice-screen .practice-header-inner { max-width: 800px; }
+.practice-screen .practice-title-row h1 { font-size: clamp(18px, 2vw, 23px); margin: 3px 0; }
+.practice-screen .practice-title-row p { font-size: 11px; }
+.practice-screen .workspace-eyebrow { font-size: 10px; }
+.practice-screen .practice-session-stats { font-size: 11px; margin: 5px 0; }
+.practice-screen .practice-preview { margin-top: 4px; font-size: 11px; }
+.practice-screen .practice-options { margin-top: 5px; }
+.practice-screen .practice-options summary { min-height: 32px; padding: 5px 10px; font-size: 11px; }
+.practice-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px max(12px, calc((100% - 800px) / 2)) 20px;
+}
+.practice-tutor-slot { min-width: 0; min-height: 0; overflow: hidden; }
+.practice-screen .qs-question-card { padding: 16px !important; }
+.practice-screen [data-testid=practice-question] { font-size: 15px !important; line-height: 1.5 !important; margin-bottom: 12px !important; }
+.practice-screen .qs-question-card button { min-height: 40px; font-size: 13px !important; line-height: 1.45 !important; }
+.practice-screen .practice-primary-actions { position: sticky; bottom: -1px; z-index: 3; background: #fff; padding: 6px 0 0; }
+.practice-screen .practice-explanation { padding: 14px !important; }
+.practice-screen .practice-explanation-content { font-size: 13px !important; line-height: 1.65 !important; }
+.practice-screen .practice-resource-actions { margin-top: 10px; padding-top: 8px; gap: 6px; }
+.practice-screen .practice-resource-actions :is(button,a) { min-height: 36px; padding: 6px 8px; font-size: 11px; }
+@media (max-width: 720px) {
+  .practice-screen.has-tutor { grid-template: auto minmax(0, 1fr) minmax(0, 1fr) / minmax(0, 1fr); }
+  .practice-screen.has-tutor .practice-header .workspace-eyebrow,
+  .practice-screen.has-tutor .practice-title-row p,
+  .practice-screen.has-tutor .practice-preview { display: none; }
+  .practice-screen.has-tutor .practice-title-row h1 { font-size: 15px; }
+  .practice-screen .practice-header { padding: 6px 12px; }
+  .practice-screen.has-tutor .practice-session-stats { display: none; }
+  .practice-screen .practice-content { padding: 8px 10px 12px; }
+  .practice-screen .qs-question-card { padding: 12px !important; }
+  .practice-screen [data-testid=practice-question] { font-size: 14px !important; }
+}
+/* A screen-sized workspace must not retain a transformed page containing block. */
+.page-enter:has(.practice-screen) { animation: none; transform: none; }
