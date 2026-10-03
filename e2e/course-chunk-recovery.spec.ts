@@ -8,7 +8,9 @@ async function mockStudy(page: Page) {
     const results = paths.map(path => {
       let value: unknown = { success: true };
       if (path === "auth.me" || path === "dashboardAuth.me") value = null;
+      else if (path === "blog.listPosts") value = [];
       else if (path === "stripe.checkAccess") value = { hasAccess: true, unlockedExamTypes: ["oit", "class2-water", "wpi-class3-water", "electrician-309a"] };
+      else if (path === "electricianReview.get309ABetaPractice") value = { questions: Array.from({ length: 20 }, (_, i) => ({ id: i + 1, module: "A", difficulty: "medium", question: "Synthetic 309A question for a deployment recovery test.", options: ["A", "B", "C", "D"], correctIndex: 0, explanation: "Synthetic test only.", isCalc: false })), total: 20 };
       else if (path === "quiz.getBankMeta") value = { modules: ["Math & Calculations"], totalQuestions: 20 };
       else if (path === "quiz.getModuleOverviews") value = {};
       else if (path === "quiz.getMissedQuestions") value = { questions: [], total: 0 };
