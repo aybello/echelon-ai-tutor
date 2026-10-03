@@ -3,11 +3,12 @@ import { test, expect, type Page, type Locator } from "@playwright/test";
 const explanation = Array.from({ length: 18 }, (_, i) => `Step ${i + 1}: Keep units consistent and verify the calculation.`).join("\n");
 const reply = "## Given\nFlow is 120 L/min.\n\n## Formula and why\nMultiply flow by time.\n\n## Substitute\n$120 \\times 60 = 7200$ L.\n\n## Check\n" + "The units and order of magnitude agree.\n\n".repeat(55);
 
-async function mockStudy(page: Page) {
+async function mockStudy(page: Page, waitForBank?: () => Promise<void>) {
   await page.route("https://analytics.example.test/**", route => route.fulfill({ body: "" }));
   await page.route("**/api/trpc/**", async route => {
     const url = new URL(route.request().url());
     const paths = decodeURIComponent(url.pathname.split("/api/trpc/")[1]).split(",");
+    if (paths.includes("quiz.getBankMeta")) await waitForBank?.();
     const results = paths.map(path => {
       let value: unknown = { success: true };
       if (path === "auth.me" || path === "dashboardAuth.me") value = null;
@@ -102,4 +103,53 @@ test("mobile resize keeps the tutor composer in the smaller viewport", async ({ 
   await fits(page);
   await page.getByRole("textbox", { name: "Ask the AI Tutor" }).fill("Still visible");
   await inScreen(page, page.getByRole("button", { name: "Send", exact: true }));
+});
+
+test("slow quiz startup never flashes a separate study-workspace page", async ({ page }) => {
+  let releaseBoot!: () => void;
+  let releaseQuiz!: () => void;
+  let releaseBank!: () => void;
+  let markQuizRequested!: () => void;
+  const boot = new Promise<void>(resolve => { releaseBoot = resolve; });
+  const quiz = new Promise<void>(resolve => { releaseQuiz = resolve; });
+  const bank = new Promise<void>(resolve => { releaseBank = resolve; });
+  const quizRequested = new Promise<void>(resolve => { markQuizRequested = resolve; });
+  await mockStudy(page, () => bank);
+  await page.addInitScript(() => {
+    (window as any).__sawStudyInterstitial = false;
+    new MutationObserver(() => {
+      const text = document.body?.innerText ?? "";
+      if (/Prepare for your operator exam|Your operator study workspace|Course links and resources are available below/.test(text)) {
+        (window as any).__sawStudyInterstitial = true;
+      }
+    }).observe(document, { childList: true, subtree: true, characterData: true });
+  });
+  await page.route("**/*", async route => {
+    const path = new URL(route.request().url()).pathname;
+    if (/\/(?:src\/main\.tsx|assets\/index-[^/]+\.js)$/.test(path)) await boot;
+    if (/\/(?:src\/pages\/Home\.tsx|assets\/Home-[^/]+\.js)$/.test(path)) {
+      markQuizRequested();
+      await quiz;
+    }
+    await route.fallback();
+  });
+  try {
+    await page.goto("/quiz?panel=tutor", { waitUntil: "commit" });
+    await expect(page.getByRole("status", { name: "Loading page" })).toBeVisible();
+    await expect(page.locator(".ssr-content, .ssr-nav")).toHaveCount(0);
+    releaseBoot();
+    await quizRequested;
+    await expect(page.getByRole("status", { name: "Loading page" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Loading page navigation" })).toHaveCount(0);
+    releaseQuiz();
+    await expect(page.getByText("Loading questions…", { exact: true })).toBeVisible();
+    releaseBank();
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    await expect(page.getByRole("textbox", { name: "Ask the AI Tutor" })).toBeVisible();
+    expect(await page.evaluate(() => (window as any).__sawStudyInterstitial)).toBe(false);
+  } finally {
+    releaseBoot();
+    releaseQuiz();
+    releaseBank();
+  }
 });

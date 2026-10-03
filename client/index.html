@@ -44,8 +44,12 @@
     <meta name="twitter:description" content="Canadian water and wastewater operator exam preparation with course-specific practice and a free 15-question preview." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/og-image-new-NPyJfV6kq45KpTXHZ5UW8N.png" />
 
-    <!-- Useful branded first shell remains visible until React replaces the root. -->
+    <!-- Public server-rendered pages keep their content; app boot uses a quiet indicator. -->
     <style>
+      .app-loading { min-height:100vh; min-height:100dvh; display:grid; place-items:center; background:#f8fafc; }
+      .app-loading-spinner { width:24px; height:24px; border:2px solid #e2e8f0; border-top-color:#2563eb; border-radius:50%; }
+      @media (prefers-reduced-motion:no-preference) { .app-loading-spinner { animation:app-loading-spin .8s linear infinite; } }
+      @keyframes app-loading-spin { to { transform:rotate(360deg); } }
       [data-ssr-fallback="true"] { display:block; max-width:72rem; margin:0 auto; padding:1.5rem; color:#0f172a; font-family:'Sora',system-ui,sans-serif; line-height:1.7; }
       .ssr-brand { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0; }
       .ssr-brand>a { color:#0c4a6e; font-size:1.4rem; font-weight:800; text-decoration:none; }
@@ -67,7 +71,7 @@
     </noscript>
   </head>
   <body>
-    <div id="root"><div data-ssr-fallback="true"><header class="ssr-brand"><a href="/">Echelon Institute</a><span>Water &amp; wastewater operator exam preparation</span></header><div class="ssr-content"><h1>Prepare for your operator exam</h1><p role="status">Loading your study workspace. Start with the course links below.</p></div><nav class="ssr-nav" aria-label="Site navigation"><a href="/oit">Ontario OIT</a><a href="/canada/ontario">Ontario courses</a><a href="/wpi">WPI-aligned courses</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a></nav></div></div>
+    <div id="root"><div class="app-loading" role="status" aria-label="Loading page"><span class="app-loading-spinner" aria-hidden="true"></span></div><noscript><p>JavaScript is needed to open the study tools. <a href="/">Return home</a>.</p></noscript></div>
     <script type="module" src="/src/main.tsx"></script>
     <!-- Block all sends until the allowlisted privacy boundary is installed. -->
     <script>window.echelonAnalyticsBeforeSend = function () { return false; };</script>
