@@ -34,6 +34,7 @@ import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
 import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass";
+import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import {
@@ -89,6 +90,16 @@ export const stripeRouter = router({
       if (!product) throw new Error("Product not found");
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Checkout is temporarily unavailable. Please try again shortly." });
+      try {
+        await assertIndividualPaymentSchemaReady(db);
+      } catch {
+        // This runs before the remote Stripe write. No learner can pay while the
+        // signed webhook would be unable to record the access and receipt.
+        throw new TRPCError({
+          code: "SERVICE_UNAVAILABLE",
+          message: "Checkout is temporarily unavailable. Please try again shortly.",
+        });
+      }
       const releasedProducts = await getCommercialAvailability(db, ALL_PRODUCTS);
       if (!releasedProducts.some((released) => released.key === product.key)) {
         throw new TRPCError({

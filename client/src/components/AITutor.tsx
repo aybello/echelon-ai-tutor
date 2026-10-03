@@ -5,8 +5,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
-import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
+import { getTutorFailureMessage, isTutorDismissKey, withoutTutorErrors } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { Streamdown } from "streamdown";
+import { AI_TUTOR_MARKDOWN_PLUGINS } from "@/components/AIChatBox";
 
 interface Props {
   question: Question | null;
@@ -15,21 +17,6 @@ interface Props {
   patternMode: boolean;
   onClose: () => void;
   examType: string; // canonical course key for server-owned tutor context
-}
-
-function renderMsg(text: string) {
-  return text.split("\n").map((line, i, arr) => (
-    <span key={i}>
-      {line.split(/(\*\*[^*]+\*\*)/g).map((p, j) =>
-        p.startsWith("**") && p.endsWith("**") ? (
-          <strong key={j}>{p.slice(2, -2)}</strong>
-        ) : (
-          p
-        )
-      )}
-      {i < arr.length - 1 && <br />}
-    </span>
-  ));
 }
 
 export default function AITutor({
@@ -156,11 +143,14 @@ export default function AITutor({
 
   const chatMutation = trpc.tutor.chat.useMutation();
 
-  const sendMessage = async (userMsg: string) => {
+  const sendMessage = async (
+    userMsg: string,
+    priorMessages: { role: "user" | "assistant"; content: string }[] = messages,
+  ) => {
     if (!userMsg.trim() || loading) return;
     setInput("");
     const newMessages = [
-      ...messages,
+      ...priorMessages,
       { role: "user" as const, content: userMsg },
     ];
     setMessages(newMessages);
@@ -196,8 +186,9 @@ export default function AITutor({
           content: `__ERROR__:${message}`,
         },
       ]);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const QUICK = patternMode
@@ -208,7 +199,7 @@ export default function AITutor({
         "Show me a worked example from scratch",
       ]
     : [
-        "Walk me through step by step",
+        "Show the full calculation: Given, Formula and why, Substitute, Answer and Check",
         "Why exactly was I wrong?",
         "Give me a similar question",
         "How does this apply on the job?",
@@ -372,6 +363,11 @@ export default function AITutor({
               {(question as any).formula}
             </div>
           )}
+          {(question as any).isCalc && (
+            <div style={{ fontSize: 10, color: "#475569", marginTop: 6, lineHeight: 1.45 }}>
+              Ask for a full solution to see the formula, units, substitution and a final check.
+            </div>
+          )}
         </div>
       )}
 
@@ -425,7 +421,7 @@ export default function AITutor({
                   m.role === "user"
                     ? "14px 14px 4px 14px"
                     : "14px 14px 14px 4px",
-                background: m.role === "user" ? "#1D4ED8" : (m.content === "__ERROR__" ? "#FEF2F2" : "#F1F5F9"),
+                background: m.role === "user" ? "#1D4ED8" : (m.content.startsWith("__ERROR__:") ? "#FEF2F2" : "#F1F5F9"),
                 color: m.role === "user" ? "#fff" : "#1E293B",
                 fontSize: 12,
                 lineHeight: 1.65,
@@ -437,8 +433,9 @@ export default function AITutor({
                   {lastUserMsg && i === messages.length - 1 && (
                     <button
                       onClick={() => {
-                        setMessages(prev => prev.slice(0, -1));
-                        sendMessage(lastUserMsg);
+                        const retryHistory = withoutTutorErrors(messages);
+                        setMessages(retryHistory);
+                        void sendMessage(lastUserMsg, retryHistory);
                       }}
                       style={{
                         padding: "6px 12px",
@@ -457,7 +454,15 @@ export default function AITutor({
                     </button>
                   )}
                 </div>
-              ) : renderMsg(m.content)}
+              ) : m.role === "assistant" ? (
+                <div className="prose prose-sm max-w-none break-words [&_h1]:text-base [&_h2]:mt-3 [&_h2]:text-sm [&_h3]:text-xs [&_ol]:my-2 [&_ul]:my-2 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0">
+                  <Streamdown plugins={AI_TUTOR_MARKDOWN_PLUGINS}>
+                    {m.content}
+                  </Streamdown>
+                </div>
+              ) : (
+                <span style={{ whiteSpace: "pre-wrap" }}>{m.content}</span>
+              )}
             </div>
           </div>
         ))}

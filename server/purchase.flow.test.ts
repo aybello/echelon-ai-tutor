@@ -22,9 +22,13 @@ import { getDb } from "./db";
 
 const mockCreateCheckoutSession = vi.hoisted(() => vi.fn());
 const mockGetCommercialAvailability = vi.hoisted(() => vi.fn());
+const mockPaymentSchemaReady = vi.hoisted(() => vi.fn());
 
 vi.mock("./commercialAvailability", () => ({
   getCommercialAvailability: mockGetCommercialAvailability,
+}));
+vi.mock("./stripe/paymentSchemaReadiness", () => ({
+  assertIndividualPaymentSchemaReady: mockPaymentSchemaReady,
 }));
 
 // ── Shared mutable Stripe session state ──────────────────────────────────────
@@ -185,6 +189,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockCreateCheckoutSession.mockResolvedValue({ url: "https://checkout.stripe.test/cad" });
   mockGetCommercialAvailability.mockResolvedValue([{ key: "oit", questionCount: 400 }]);
+  mockPaymentSchemaReady.mockResolvedValue(undefined);
   // Reset to default paid session
   setSession({});
 });
@@ -204,6 +209,13 @@ describe("stripe.createCheckoutSession", () => {
         price_data: expect.objectContaining({ currency: "cad", unit_amount: 4_900 }),
       })],
     }));
+  });
+
+  it("blocks checkout before Stripe when paid access cannot be durably recorded", async () => {
+    mockPaymentSchemaReady.mockRejectedValueOnce(new Error("schema unavailable"));
+    await expect(appRouter.createCaller(makeCtx()).stripe.createCheckoutSession({ productKey: "oit" }))
+      .rejects.toMatchObject({ code: "SERVICE_UNAVAILABLE" });
+    expect(mockCreateCheckoutSession).not.toHaveBeenCalled();
   });
 
   it("rejects a crafted USD currency payload before Stripe session creation", async () => {
