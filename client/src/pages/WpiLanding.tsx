@@ -1,7 +1,8 @@
-// WPI Landing Page — BC / AB / SK / MB water & wastewater operator exam prep
+// WPI Landing Page - BC / AB / SK / MB water & wastewater operator exam prep
 // Rebuilt: Hero → Province table → Tabbed track selector → FAQ → Footer CTA
 
 import { useState } from "react";
+import { WPI_PAGE_COPY, WPI_OFFICIAL_SOURCES } from "@shared/wpiContent";
 import { Link, useLocation } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
@@ -62,7 +63,7 @@ const TRACKS: Track[] = [
       },
       {
         label: "Class IV", code: "WPI-W4", questions: 592, price: "CA$299", color: "#7C3AED",
-        quizHref: "/wpi-class4-water", badge: "👑 Chief Operator",
+        quizHref: "/wpi-class4-water", badge: "Class IV preparation",
         topics: ["Full system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
     ],
@@ -89,7 +90,7 @@ const TRACKS: Track[] = [
       },
       {
         label: "Class IV", code: "WPI-WW4", questions: 606, price: "CA$299", color: "#6D28D9",
-        quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator",
+        quizHref: "/wpi-class4-wastewater", badge: "Class IV preparation",
         topics: ["Utility management & leadership", "Advanced process engineering", "Environmental compliance", "Capital planning & asset management", "Emerging technologies"],
       },
     ],
@@ -116,7 +117,7 @@ const TRACKS: Track[] = [
       },
       {
         label: "Class IV", code: "WPI-D4", questions: 500, price: "CA$299", color: "#4C1D95",
-        quizHref: "/wpi-class4-water-dist", badge: "👑 Chief Operator",
+        quizHref: "/wpi-class4-water-dist", badge: "Class IV preparation",
         topics: ["Large-scale system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
     ],
@@ -143,7 +144,7 @@ const TRACKS: Track[] = [
       },
       {
         label: "Class IV", code: "WPI-C4", questions: 504, price: "CA$299", color: "#7F1D1D",
-        quizHref: "/wpi-class4-water-coll", badge: "👑 Chief Operator",
+        quizHref: "/wpi-class4-water-coll", badge: "Class IV preparation",
         topics: ["System planning & capital improvement", "Advanced engineering & design", "Utility management & leadership", "Advanced regulatory & environmental management", "Emerging technologies & innovation"],
       },
     ],
@@ -152,16 +153,16 @@ const TRACKS: Track[] = [
 
 const FAQS = [
   {
-    q: "What is the WPI certification program?",
-    a: "WPI stands for Water Professionals International. Through ABC Testing, WPI develops standardized operator examinations and Need-to-Know Criteria. Your provincial or regional certifying authority determines which exam applies to you. Certification levels range from Class I (entry-level) to Class IV (chief operator).",
+    q: "What is Water Professionals International?",
+    a: WPI_PAGE_COPY.identity,
   },
   {
-    q: "How is WPI different from Ontario's OWWCO?",
-    a: "WPI exams are used in western Canadian provinces (BC, AB, SK, MB), while OWWCO administers Ontario's certification program. The exam content, class structure, and certifying bodies are different — Echelon has separate question banks for each.",
+    q: "Does Ontario also use WPI examinations?",
+    a: `${WPI_PAGE_COPY.ontario} ${WPI_PAGE_COPY.version}`,
   },
   {
     q: "Can I try before I buy?",
-    a: "Yes — the first 15 questions of every course are free with no account required. You'll see the full question format, difficulty, and explanation style before purchasing.",
+    a: "Yes - the first 15 questions of every course are free with no account required. You'll see the full question format, difficulty, and explanation style before purchasing.",
   },
   {
     q: "What's included in a practice pass?",
@@ -178,9 +179,8 @@ const FAQS = [
 export default function WpiLanding() {
   const { isAuthenticated } = useAuth({ lazy: true });
   usePageMeta({
-    title: "WPI-Aligned Water & Wastewater Exam Prep | Echelon Institute",
-    description:
-      "Prepare with WPI-aligned Class I–IV practice for Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection in Western Canada. Confirm current requirements with your provincial authority.",
+    title: WPI_PAGE_COPY.title,
+    description: WPI_PAGE_COPY.description,
     path: "/wpi",
     keywords:
       "WPI exam prep, BC EOCP water treatment, Alberta water operator exam prep, Saskatchewan water operator exam prep, Manitoba water operator exam prep, WPI Class I practice questions, WPI Class II practice questions",
@@ -195,11 +195,11 @@ export default function WpiLanding() {
 
   const handleProvinceSelect = (id: ProvinceId) => {
     setProvince(id);
-    // Ontario users belong on the main homepage (OIT/OWWCO content)
+    // Keep Ontario visitors on the Ontario-specific catalogue.
     if (id === "on") {
-      navigate("/");
+      navigate("/canada/ontario");
     }
-    // WPI provinces stay on this page
+    // Other listed jurisdictions remain on this catalogue.
   };
 
   const track = TRACKS.find(t => t.id === activeTrack)!;
@@ -207,7 +207,6 @@ export default function WpiLanding() {
   return (
     <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&display=swap');
         .wpi-track-tab { transition: background 0.15s, color 0.15s, border-color 0.15s; }
         .wpi-track-tab:hover { background: #EFF6FF !important; color: #1D4ED8 !important; }
         .wpi-class-card { transition: box-shadow 0.15s, transform 0.15s; }
@@ -242,7 +241,7 @@ export default function WpiLanding() {
             borderRadius: 100, padding: "6px 16px", marginBottom: 24,
           }}>
             <span style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", fontWeight: 600 }}>
-              🌊 WPI Exam Prep — BC · AB · SK · MB
+              🌊 WPI Exam Prep - BC · AB · SK · MB
             </span>
           </div>
           <h1 style={{
@@ -251,14 +250,13 @@ export default function WpiLanding() {
             fontWeight: 800, color: "#FFFFFF", lineHeight: 1.15,
             marginBottom: 20, letterSpacing: "-0.02em",
           }}>
-            Pass Your WPI Water &amp; Wastewater Exam
+            {WPI_PAGE_COPY.heading}
           </h1>
           <p style={{
             fontSize: "clamp(15px, 2vw, 17px)", color: "rgba(255,255,255,0.8)",
             lineHeight: 1.7, marginBottom: 32, maxWidth: 560, margin: "0 auto 32px",
           }}>
-            Canada's only AI-powered exam prep platform built for WPI-certified operators.
-            400+ adaptive questions per class, mock exams, flashcards, and an AI tutor — available 24/7.
+            Independent preparation with course-specific practice questions, mock exams, flashcards and an AI tutor. Your certifying authority determines the examination and eligibility requirements.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/wpi-class1-water">
@@ -267,7 +265,7 @@ export default function WpiLanding() {
                 borderRadius: 10, padding: "13px 28px", fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",
               }}>
-                Try Free — Class I Water →
+                Try Free - Class I Water →
               </button>
             </Link>
             <a href="#pricing">
@@ -296,10 +294,10 @@ export default function WpiLanding() {
       <section style={{ background: "#FFFFFF", padding: "40px 20px", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 680, margin: "0 auto" }}>
           <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 18, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 6 }}>
-            WPI Exam Framework Across Western Canada
+            WPI Exam Framework and Provincial Requirements
           </h2>
           <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 20 }}>
-            Echelon provides independent preparation aligned with published WPI Need-to-Know Criteria. Confirm the current requirements with your provincial authority.
+            {WPI_PAGE_COPY.identity}
           </p>
           <div className="wpi-province-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
             {PROVINCES.map(p => (
@@ -401,7 +399,7 @@ export default function WpiLanding() {
                     <div style={{ fontSize: 11, color: "#64748B", marginBottom: 12 }}>One-time payment · 12 months from successful payment</div>
 
                     {/* Free trial */}
-                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 12 }}>✓ 15 questions free — no account needed</div>
+                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 12 }}>✓ 15 questions free - no account needed</div>
 
                     {/* Topics toggle */}
                     <button
@@ -471,28 +469,28 @@ export default function WpiLanding() {
       <section style={{ background: "#FFFFFF", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
           <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
-            WPI vs. OWWCO — Which Exam Do You Need?
+            Confirm Your Jurisdiction and Exam Version
           </h2>
           <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 28 }}>
-            Two separate certification systems serve different provinces. Make sure you're studying for the right one.
+            {WPI_PAGE_COPY.ontario}
           </p>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
               <thead>
                 <tr style={{ background: "#F8FAFC" }}>
                   <th style={{ padding: "10px 16px", textAlign: "left", fontWeight: 700, color: "#0F172A", borderBottom: "2px solid #E2E8F0" }}>Feature</th>
-                  <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#0E7490", borderBottom: "2px solid #E2E8F0" }}>WPI (Western)</th>
+                  <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#0E7490", borderBottom: "2px solid #E2E8F0" }}>BC and other jurisdictions</th>
                   <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#1D4ED8", borderBottom: "2px solid #E2E8F0" }}>OWWCO (Ontario)</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Provinces",        "BC, AB, SK, MB",                              "Ontario only"],
-                  ["Certifying authority", "EOCP or applicable provincial authority", "OWWCO"],
+                  ["Jurisdiction", "BC, AB, SK, MB: confirm locally", "Ontario"],
+                  ["Certification", "EOCP or applicable provincial authority", "MECP program, administered by OWWCO"],
                   ["Class levels",     "Class I – IV",                                "OIT, Class 1 – 4"],
-                  ["Tracks",           "Water, Wastewater, Distribution, Collection",  "Water & Wastewater"],
-                  ["Exam format",      "Multiple choice, written",                    "Multiple choice"],
-                  ["Echelon coverage", "✅ All 16 class levels",                       "✅ All 10 courses"],
+                  ["Class I to IV / 1 to 4 exams", "WPI adoption and version vary", "WPI standardized exams in all four streams"],
+                  ["Entry / other exams", "OIT and small systems have separate requirements", "OIT, WQA and limited systems use Ontario content"],
+                  ["Choose preparation", "Match authority criteria to your stream and level", "Use the Ontario course catalogue"],
                 ].map(([feature, wpi, owwco], i) => (
                   <tr key={feature} style={{ background: i % 2 === 0 ? "#FFFFFF" : "#F8FAFC" }}>
                     <td style={{ padding: "10px 16px", color: "#475569", fontWeight: 600, borderBottom: "1px solid #F1F5F9" }}>{feature}</td>
@@ -503,6 +501,9 @@ export default function WpiLanding() {
               </tbody>
             </table>
           </div>
+          <p style={{ fontSize: 13, color: "#475569", marginTop: 20 }}>{WPI_PAGE_COPY.version}</p>
+          <p style={{ fontSize: 13, color: "#475569", marginTop: 12 }}>{WPI_PAGE_COPY.independence}</p>
+          <p style={{ fontSize: 13, marginTop: 12 }}><a href={WPI_OFFICIAL_SOURCES.ontario}>OWWCO exam preparation</a> · <a href={WPI_OFFICIAL_SOURCES.criteria}>WPI exam criteria</a> · <a href={WPI_OFFICIAL_SOURCES.eocp}>EOCP exam update</a> · <Link href="/canada/ontario">Ontario courses</Link></p>
         </div>
       </section>
 
@@ -550,7 +551,7 @@ export default function WpiLanding() {
             Ready to start studying?
           </h2>
           <p style={{ fontSize: 14, color: "#94A3B8", marginBottom: 28, lineHeight: 1.7 }}>
-            First 15 questions are free on every course — no account or credit card needed.
+            First 15 questions are free on every course - no account or credit card needed.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/wpi-class1-water">

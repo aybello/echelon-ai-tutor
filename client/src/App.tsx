@@ -230,10 +230,16 @@ const Class4WastewaterCollFlashcards = lazy(() => import("./pages/Class4Wastewat
 // ── Page loading fallback ─────────────────────────────────────────────────────
 function PageLoader() {
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-        <p className="text-sm text-slate-500 font-medium">Loading…</p>
+    <div className="min-h-screen bg-slate-50 px-6 py-8 font-sans">
+      <div className="max-w-5xl mx-auto">
+        <p className="text-xl font-bold text-sky-900 mb-8">Echelon Institute</p>
+        <div className="rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-8">
+          <h1 className="text-2xl font-bold text-sky-900">Your operator study workspace</h1>
+          <p role="status" className="text-slate-600 mt-3">Loading your selected page. Course links and resources are available below.</p>
+        </div>
+        <nav aria-label="Loading page navigation" className="flex flex-wrap gap-5 mt-6 text-sky-800">
+          <a href="/oit">Ontario OIT</a><a href="/canada/ontario">Ontario courses</a><a href="/wpi">WPI-aligned courses</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a>
+        </nav>
       </div>
     </div>
   );

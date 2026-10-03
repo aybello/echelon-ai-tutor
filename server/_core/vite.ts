@@ -8,6 +8,7 @@ import {
   type ViteDevServer,
 } from "vite";
 import viteConfig from "../../vite.config";
+import { prepareAppFallback } from "../staticHead";
 
 export async function createViteRenderer(server: Server): Promise<ViteDevServer> {
   const serverOptions = {
@@ -16,8 +17,11 @@ export async function createViteRenderer(server: Server): Promise<ViteDevServer>
     allowedHosts: true as const,
   };
 
+  const config = typeof viteConfig === "function"
+    ? await viteConfig({ command: "serve", mode: "development", isSsrBuild: false, isPreview: false })
+    : viteConfig;
   const vite = await createViteServer({
-    ...viteConfig,
+    ...config,
     configFile: false,
     server: serverOptions,
     appType: "custom",
@@ -47,8 +51,10 @@ export function registerViteFallback(app: Express, vite: ViteDevServer) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
-      const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const fallback = prepareAppFallback(template, url);
+      const page = await vite.transformIndexHtml(url, fallback.html);
+      res.set("Cache-Control", "no-store");
+      res.status(fallback.status).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);
@@ -79,6 +85,8 @@ export function serveStatic(app: Express) {
   // request lazy chunks from the previous build after those files are removed.
   app.use(
     express.static(distPath, {
+      index: false,
+      redirect: false,
       setHeaders(res, filePath) {
         if (filePath.endsWith(".html")) {
           res.setHeader("Cache-Control", "no-cache, must-revalidate");
@@ -94,8 +102,11 @@ export function serveStatic(app: Express) {
   });
 
   // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.set("Cache-Control", "no-cache, must-revalidate");
-    res.sendFile(path.resolve(distPath, "index.html"));
+  app.use("*", (req, res, next) => {
+    try {
+      const template = fs.readFileSync(path.resolve(distPath, "index.html"), "utf8");
+      const fallback = prepareAppFallback(template, req.originalUrl);
+      res.status(fallback.status).set({ "Cache-Control": "no-store", "Content-Type": "text/html; charset=utf-8" }).end(fallback.html);
+    } catch (error) { next(error); }
   });
 }

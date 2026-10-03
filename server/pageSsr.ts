@@ -22,6 +22,9 @@
  * /llms.txt is served here for AI model discoverability.
  */
 import type { Express, Request, Response } from "express";
+import { WPI_PAGE_COPY, WPI_OFFICIAL_SOURCES } from "../shared/wpiContent";
+import { brandedShell } from "./staticHead";
+import { boundedPublicBlogLinks, renderPublicBlogLinks, type PublicBlogLink } from "./publicBlogIndex";
 import fs from "fs";
 import path from "path";
 import {
@@ -554,29 +557,19 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
   },
   {
     path: "/wpi",
-    title: "WPI Water Professionals International | Echelon Institute",
-    description:
-      "Explore WPI-aligned Class I–IV water treatment, wastewater treatment, distribution, and collection exam preparation for Western Canadian operators.",
-    h1: "WPI — Water Professionals International",
-    jsonLd: buildWebPageJsonLd({
-      path: "/wpi",
-      title: "WPI Water Professionals International | Echelon Institute",
-      description:
-        "Interactive process guide for Canadian water and wastewater operators.",
-      h1: "WPI — Water Professionals International",
-    }),
+    title: WPI_PAGE_COPY.title,
+    description: WPI_PAGE_COPY.description,
+    h1: WPI_PAGE_COPY.heading,
     bodyHtml: `
-      <h2>Interactive Process Guides for Water Operators</h2>
-      <p>WPI (Water Professionals International) is Echelon Institute's interactive reference guide for Canadian water and wastewater operators. It covers the full treatment process from source water intake to distribution, as well as wastewater collection and treatment systems.</p>
-
-      <h2>What WPI Covers</h2>
-      <p>WPI includes detailed explanations of coagulation and flocculation, sedimentation, filtration, disinfection (chlorination, UV, ozone), chemical feed and dosing, iron and manganese removal, water quality regulations, pump operation, and more. Wastewater content covers primary and secondary treatment, biological processes, sludge handling, and collection system maintenance.</p>
-
-      <h2>Province-Specific Content</h2>
-      <p>Echelon's Western Canadian courses follow WPI-aligned operator topics. Certification rules remain province-specific; candidates should confirm the current exam blueprint, eligibility, and permitted references with EOCP or the applicable provincial authority.</p>
-
-      <h2>Use WPI Alongside Your Practice Questions</h2>
-      <p>WPI is designed to complement Echelon's practice question bank. When you encounter a topic you are unsure about in a practice question, WPI provides the conceptual background and regulatory context to help you understand the correct answer. <a href="${SITE_URL}/">Start practising</a> or <a href="${SITE_URL}/pricing">view Individual Exam Passes</a>.</p>
+      <h2>Water Professionals International</h2><p>${escapeHtml(WPI_PAGE_COPY.identity)}</p>
+      <h2>Ontario Also Uses WPI Examinations</h2><p>${escapeHtml(WPI_PAGE_COPY.ontario)}</p>
+      <h2>Confirm Your Jurisdiction and Exam Version</h2><p>${escapeHtml(WPI_PAGE_COPY.version)}</p>
+      <p><a href="${WPI_OFFICIAL_SOURCES.wpi}">WPI ABC Testing</a> · <a href="${WPI_OFFICIAL_SOURCES.ontario}">OWWCO exam preparation</a> · <a href="${WPI_OFFICIAL_SOURCES.criteria}">WPI exam criteria</a> · <a href="${WPI_OFFICIAL_SOURCES.eocp}">EOCP exam update</a></p>
+      <h2>Choose an Echelon Preparation Course</h2>
+      <p>Browse Water Treatment, Wastewater Treatment, Water Distribution and Wastewater Collection at Class I to IV. Every course offers 15 free practice questions. A selected Individual Exam Pass provides 12 months from successful payment.</p>
+      <ul>${COURSE_SEO_PAGES.filter(course => course.regionPath === "/wpi").map(course => `<li><a href="${course.quizPath}">${escapeHtml(course.displayName)}</a></li>`).join("")}</ul>
+      <p><a href="/canada/ontario">Ontario course catalogue</a> · <a href="/pricing">Individual Exam Passes</a></p>
+      <h2>Independent Preparation</h2><p>${escapeHtml(WPI_PAGE_COPY.independence)}</p>
     `,
   },
   {
@@ -986,43 +979,22 @@ function buildSeoHead(meta: PageMeta): string {
     <meta name="twitter:title" content="${titleEsc}" />
     <meta name="twitter:description" content="${descEsc}" />
     <meta name="twitter:image" content="${DEFAULT_OG_IMAGE}" />
-    <script type="application/ld+json">${jsonLd}</script>`;
+    <script type="application/ld+json">${jsonLd.replace(/</g, "\\u003c")}</script>`;
 }
 
 /** Rich crawlable HTML body shell with H1, H2s, body copy, and internal links */
 function buildSsrBody(meta: PageMeta): string {
-  const h1Esc = escapeHtml(meta.h1);
-  const bodyContent = meta.bodyHtml ?? "";
-  return `
-<div id="ssr-page-shell" data-ssr-fallback="true">
-  <h1>${h1Esc}</h1>
-  ${bodyContent}
-  <nav aria-label="Site navigation">
-    <a href="${SITE_URL}/">Home</a>
-    <a href="${SITE_URL}/guides">Process Guides</a>
-    <a href="${SITE_URL}/pricing">Pricing</a>
-    <a href="${SITE_URL}/teams">Teams</a>
-    <a href="${SITE_URL}/canada/ontario">Ontario Courses</a>
-    <a href="${SITE_URL}/canada/british-columbia">Western Canada Courses</a>
-    <a href="${SITE_URL}/about">About</a>
-    <a href="${SITE_URL}/blog">Blog</a>
-    <a href="${SITE_URL}/faq">FAQ</a>
-    <a href="${SITE_URL}/jobs">Jobs</a>
-    <a href="${SITE_URL}/wpi">WPI</a>
-    <a href="${SITE_URL}/privacy">Privacy</a>
-    <a href="${SITE_URL}/terms">Terms</a>
-  </nav>
-</div>`;
+  return brandedShell(`<h1>${escapeHtml(meta.h1)}</h1>${meta.bodyHtml ?? ""}`);
 }
 
-function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
+export function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
   const titleTag = `<title>${escapeHtml(meta.title)}</title>`;
   const seoHead = buildSeoHead(meta);
   const ssrBody = buildSsrBody(meta);
 
   let html = template
     // Replace the default <title>
-    .replace(/<title>[^<]*<\/title>/, titleTag)
+    .replace(/<title>[^<]*<\/title>/, () => titleTag)
     // Remove default <meta name="description"> to avoid duplicates
     .replace(/<meta name="description"[^>]*>/, "")
     // Remove default canonical to avoid duplicates
@@ -1034,9 +1006,9 @@ function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
     // Remove all Twitter Card meta tags from the template (SSR will inject correct ones)
     .replace(/<meta name="twitter:[^"]+"[^>]*>/g, "")
     // Inject all SEO tags before </head>
-    .replace("</head>", `${seoHead}\n</head>`)
+    .replace("</head>", () => `${seoHead}\n</head>`)
     // Inject SSR body shell right after <div id="root">
-    .replace('<div id="root"></div>', `<div id="root">${ssrBody}</div>`);
+    .replace(/<div id="root">[\s\S]*?<\/div>(?=\s*<script)/, () => `<div id="root">${ssrBody}</div>`);
 
   return html;
 }
@@ -1079,7 +1051,7 @@ Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO
 - About: ${SITE_URL}/about
 - FAQ: ${SITE_URL}/faq
 - Blog: ${SITE_URL}/blog
-- WPI Process Guides: ${SITE_URL}/wpi
+- WPI-Aligned Exam Preparation: ${SITE_URL}/wpi
 - Jobs Board: ${SITE_URL}/jobs
 
 ## Course Detail Pages
@@ -1118,7 +1090,8 @@ ${COURSE_SEO_PAGES.map(course => `- ${course.displayName}: ${SITE_URL}${course.p
 export function registerPageSsrRoutes(
   app: Express,
   isDev: boolean,
-  vite?: { transformIndexHtml: (url: string, html: string) => Promise<string> }
+  vite?: { transformIndexHtml: (url: string, html: string) => Promise<string> },
+  loadBlogLinks: () => Promise<PublicBlogLink[]> = boundedPublicBlogLinks
 ): void {
   // Serve llms.txt for AI model discoverability
   app.get("/llms.txt", (_req: Request, res: Response) => {
@@ -1148,14 +1121,26 @@ export function registerPageSsrRoutes(
   for (const pagePath of staticPaths) {
     app.get(
       pagePath === "/" ? "/" : pagePath,
-      async (req: Request, res: Response) => {
+      async (req: Request, res: Response, next) => {
         // Only handle exact path match (no query string confusion)
         const meta = META_MAP.get(pagePath);
         if (!meta) return res.status(404).send("Not found");
 
         try {
           const template = getIndexHtml(isDev);
-          const seoHtml = injectSeoIntoTemplate(template, meta);
+          let renderMeta = meta;
+          let blogUnavailable = false;
+          if (pagePath === "/blog") {
+            try {
+              const posts = await loadBlogLinks();
+              const body = (meta.bodyHtml ?? "").replace(/<h2>Featured Articles<\/h2>[\s\S]*?<\/ul>/, () => renderPublicBlogLinks(posts));
+              renderMeta = { ...meta, bodyHtml: body };
+            } catch {
+              blogUnavailable = true;
+              renderMeta = { ...meta, bodyHtml: (meta.bodyHtml ?? "").replace(/<h2>Featured Articles<\/h2>[\s\S]*?<\/ul>/, "<h2>Published Articles</h2><p>Articles are temporarily unavailable. Please reload or use the interactive blog when it is ready.</p>") };
+            }
+          }
+          const seoHtml = injectSeoIntoTemplate(template, renderMeta);
           // In dev mode, run Vite's transformIndexHtml so it injects @vite/client
           // and HMR scripts — without this, React never mounts on SSR-served pages.
           const html =
@@ -1166,13 +1151,13 @@ export function registerPageSsrRoutes(
             .status(200)
             .set({
               "Content-Type": "text/html; charset=utf-8",
-              "Cache-Control": isDev ? "no-cache, must-revalidate" : PUBLIC_SSR_CACHE_CONTROL,
+              "Cache-Control": isDev || blogUnavailable ? "no-store" : PUBLIC_SSR_CACHE_CONTROL,
             })
             .end(html);
         } catch (err) {
-          console.error(`[pageSsr] Error rendering ${pagePath}:`, err);
-          // Fall through to SPA catch-all on error
-          res.status(500).send("Internal server error");
+          console.error("[pageSsr] Public render unavailable");
+          // Known routes keep the SPA shell on transient rendering failures.
+          next();
         }
       }
     );

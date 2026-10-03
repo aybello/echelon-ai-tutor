@@ -1,15 +1,19 @@
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-
-const template = readFileSync(resolve(process.cwd(), "client/index.html"), "utf8");
-
-describe("SSR fallback visibility", () => {
-  it("hides crawl fallback content before React can replace the root", () => {
-    expect(template).toMatch(/\[data-ssr-fallback="true"\]\s*\{[\s\S]*?display:\s*none;/);
+import { injectSeoIntoTemplate, META_MAP } from "./pageSsr";
+import { prepareAppFallback } from "./staticHead";
+const template = readFileSync("client/index.html", "utf8");
+describe("SSR first-content shell", () => {
+  it("provides immediate useful branded navigation on static and app routes", () => {
+    for (const html of [template, injectSeoIntoTemplate(template, META_MAP.get("/")!), prepareAppFallback(template, "/class3-water").html]) {
+      expect(html).toContain('data-ssr-fallback="true"'); expect(html).toContain("Echelon Institute");
+      expect(html).toContain('href="/wpi"'); expect(html).toContain('href="/oit"');
+      expect(html).not.toMatch(/data-ssr-fallback[^}]*display:\s*none/);
+      expect(html.match(/<div id="root">/g)).toHaveLength(1);
+    }
   });
-
-  it("keeps the fallback available for visitors without JavaScript", () => {
-    expect(template).toContain('<style>[data-ssr-fallback="true"] { display: block !important; }</style>');
+  it("keeps Sora identity without making the remote font sheet block first content", () => {
+    expect(template).toContain('rel="preload" as="style"'); expect(template).toContain("family=Sora");
+    expect(template).toContain("this.rel='stylesheet'"); expect(template).toMatch(/<noscript>[\s\S]*rel="stylesheet"/);
   });
 });

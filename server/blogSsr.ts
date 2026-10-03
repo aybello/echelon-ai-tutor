@@ -186,18 +186,12 @@ export function injectBlogPostMeta(
       ${post.content}
     </article>`;
 
+  // Replace the complete mount node, including its useful nested loading shell.
+  // Function replacement preserves literal dollar sequences in article copy.
   html = html.replace(
-    /(<div id="root">[\s\S]*?<\/h1>[\s\S]*?<\/div>)/,
-    `<div id="root">\n      ${articleHtml}\n    </div>`
+    /<div id="root">[\s\S]*?<\/div>(?=\s*<script)/,
+    () => `<div id="root">${articleHtml}</div>`
   );
-
-  // Fallback: if the above regex didn't match, inject after <div id="root">
-  if (!html.includes('id="ssr-blog-content"')) {
-    html = html.replace(
-      '<div id="root">',
-      `<div id="root">\n      ${articleHtml}`
-    );
-  }
 
   return html;
 }
