@@ -12,6 +12,9 @@ describe("proposed BC editorial corrections, never applied on read", () => {
     const html = injectBlogPostMeta(template, { ...post, author: "Echelon Institute", publishedAt: new Date("2026-05-20"), updatedAt: new Date("2026-10-03") });
     expect(html).toContain(`<h1>${post.title}</h1>`); expect(html).toContain(post.metaTitle);
     expect(html).toContain(`https://echeloninstitute.ca/blog/${post.slug}`); expect(html).toContain(`"headline":"${post.title}"`);
+    expect(post.metaTitle.length).toBeLessThanOrEqual(60);
+    expect(post.metaDescription.length).toBeGreaterThanOrEqual(120);
+    expect(post.metaDescription.length).toBeLessThanOrEqual(155);
     expect([post.title, post.excerpt, post.metaTitle, post.metaDescription, post.content].join(" ")).not.toMatch(/Classes?\s*[DA]\b|D.to.A|Water & Process Industry|—|guaranteed|retirement statistics/i);
     expect(post.content).toContain("Levels I"); expect(post.content).toContain("small-system"); expect(post.content).toContain("https://eocp.ca/certified-operators/drc-requirements/");
     for (const match of post.content.matchAll(/href="(\/[^"#]*)"/g)) expect(classifyAppRoute(match[1]).kind, match[1]).toBe("public");
