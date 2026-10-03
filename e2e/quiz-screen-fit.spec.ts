@@ -52,7 +52,7 @@ for (const [name, width, height, path] of [
   ["phone", 390, 844, "/quiz"],
   ["short phone", 375, 667, "/oit-ww"],
 ] as const) {
-  test(`${name}: quiz and tutor stay in the viewport`, async ({ page }) => {
+  test(`${name}: quiz and tutor stay in the viewport`, async ({ page }, testInfo) => {
     await page.setViewportSize({ width, height });
     await mockStudy(page);
     await page.goto(`${path}?panel=tutor&province=ON`);
@@ -72,7 +72,7 @@ for (const [name, width, height, path] of [
       const tutor = await page.locator(".practice-tutor-slot").boundingBox();
       expect(quiz!.x + quiz!.width).toBeLessThanOrEqual(tutor!.x + 1);
     }
-    if (width === 1440) await page.screenshot({ path: "/home/ubuntu/outputs/echelon-screen-fit-2026-10-03/laptop-screen-fit.png" });
+    if (width === 1440) await page.screenshot({ path: testInfo.outputPath("laptop-screen-fit.png") });
     await page.getByRole("textbox", { name: "Ask the AI Tutor" }).fill("Explain the calculation");
     await page.getByRole("button", { name: "Send", exact: true }).click();
     await expect(page.locator(".ai-tutor-messages")).toContainText("Formula and why");
