@@ -221,6 +221,7 @@ jobs:
           server/auth.atomicVerification.integration.test.ts
           server/stripe/paymentInvariant.integration.test.ts
           server/teams/auditTeams.integration.test.ts
+          server/teams/auditBillingScope.integration.test.ts
           server/partnershipInquiry.integration.test.ts
         env:
           CI: "1"
