@@ -232,15 +232,18 @@ describe.skipIf(!enabled)("EC-04 disposable-database router concurrency", () => 
 
     it("rejects a code that expires while verification waits for its real database row lock", async () => {
       const email = fixtureEmail();
-      await seedOtp(kind, email, { expiresAt: new Date(Date.now() + 1_000) });
+      await seedOtp(kind, email, { expiresAt: new Date(Date.now() + 2_500) });
       const row = await otpRow(kind, email);
       const locker = await pool!.getConnection();
       const tableName = kind === "emailOtp" ? "email_otp_codes" : "dashboard_otps";
       try {
         await locker.beginTransaction();
         await locker.query(`SELECT id FROM ${tableName} WHERE id = ? FOR UPDATE`, [row.id]);
+        expect(row.expiresAt.getTime()).toBeGreaterThan(Date.now());
         const waiting = verify(kind, email, code);
-        await new Promise(resolve => setTimeout(resolve, 1_200));
+        // MySQL TIMESTAMP(0) may round the inserted expiry to the next second.
+        // Hold the real row lock past the stored expiry, not an assumed delay.
+        await new Promise(resolve => setTimeout(resolve, Math.max(0, row.expiresAt.getTime() - Date.now()) + 250));
         await locker.commit();
         const result = await waiting;
         expect(result.success).toBe(false);
