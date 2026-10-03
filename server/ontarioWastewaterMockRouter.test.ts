@@ -9,13 +9,18 @@ import { ontarioWastewaterMockProfile, reviewedWastewaterMockArea, WASTEWATER_MO
 vi.mock("./db", async original => ({ ...await original<typeof import("./db")>(), getDb: vi.fn() }));
 vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn(async () => ({ userId: null, studentEmail: "learner@example.invalid" })) }));
 vi.mock("./_core/accessService", async original => ({ ...await original<typeof import("./_core/accessService")>(), resolveAccessForRequest: vi.fn(async () => true) }));
+vi.mock("./teams/attemptAttribution", async original => {
+  const actual = await original<typeof import("./teams/attemptAttribution")>();
+  return { ...actual, resolveAttemptAttribution: vi.fn(async () => ({ ...actual.PERSONAL_ATTRIBUTION })) };
+});
 const caller = appRouter.createCaller({ user: null, studentEmail: "learner@example.invalid", req: { headers: {}, cookies: {} }, res: {} } as any);
 let bank: string;
 let rows: any[];
 let metadata: any;
 function setupBank(key: string, explicitClassifications = false) {
   bank = key;
-  let id = 0;
+  // Legacy fallback fixtures must not impersonate hash-bound snapshot IDs.
+  let id = 900000;
   const modules = bank === "class1-wastewater"
     ? ["Primary Treatment", "Secondary Treatment", "Disinfection", "Regulations, Safety & Operations"]
     : ["Equipment O&M", "Treatment Process", "Laboratory Analysis", "Safety & Administration"];
@@ -74,7 +79,7 @@ describe("Ontario wastewater mock issuance", () => {
   });
   it("preserves valid legacy Class I area-labelled banks and exam settings", async () => {
     setupBank("class1-wastewater");
-    rows = rows.map(row => ({ ...row, module: Object.values(areas)[Math.floor((row.questionNum - 1) / 65)] }));
+    rows = rows.map((row, index) => ({ ...row, module: Object.values(areas)[Math.floor(index / 65)] }));
     const issued = await caller.exam.startMock({ courseKey: "class1-ww" });
     expect(issued).toMatchObject({ duration: 10800, preview: false });
     expect(issued.questions).toHaveLength(100);

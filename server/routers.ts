@@ -6,7 +6,8 @@ import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint"
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
 import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, selectMappedMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
-import { ontarioWastewaterMockProfile, reviewedWastewaterMockArea } from "../shared/ontarioWastewaterMock";
+import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
+import { resolveWastewaterMockArea } from "./wastewaterMockAreaResolver";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { clearIdentityCookies } from "./_core/logout";
 import { invokeLLM } from "./_core/llm";
@@ -351,7 +352,7 @@ export const appRouter = router({
         if (wastewaterProfile) {
           try {
             selected = selectMappedMockQuestions(pool, wastewaterProfile.targets, count,
-              question => reviewedWastewaterMockArea(spec.bankKey, question));
+              question => resolveWastewaterMockArea(spec.bankKey, question));
           } catch {
             throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable because some exam areas need reviewed question coverage. Practice remains available. Please use practice or contact support for help with mock access." });
           }
