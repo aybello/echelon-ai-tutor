@@ -3,10 +3,11 @@ import { stripeRouter } from "./routers/stripeRouter";
 import type { TrpcContext } from "./_core/context";
 import { ALL_PRODUCTS } from "../shared/products";
 
-const mocks = vi.hoisted(() => ({ create: vi.fn(), getDb: vi.fn(), availability: vi.fn(), track: vi.fn() }));
+const mocks = vi.hoisted(() => ({ create: vi.fn(), getDb: vi.fn(), availability: vi.fn(), track: vi.fn(), paymentSchemaReady: vi.fn() }));
 vi.mock("./stripe/stripe", () => ({ stripe: { checkout: { sessions: { create: mocks.create } } } }));
 vi.mock("./db", () => ({ getDb: mocks.getDb }));
 vi.mock("./commercialAvailability", () => ({ getCommercialAvailability: mocks.availability, ORGANIZATION_COMMERCE_ENABLED: true }));
+vi.mock("./stripe/paymentSchemaReadiness", () => ({ assertIndividualPaymentSchemaReady: mocks.paymentSchemaReady }));
 vi.mock("./analytics", () => ({ trackEvent: mocks.track, hashAnalyticsAnonymousId: vi.fn() }));
 vi.mock("./_core/notification", () => ({ notifyOwner: vi.fn() }));
 vi.mock("./_core/env", () => ({ ENV: {
@@ -26,6 +27,7 @@ beforeEach(() => {
   mocks.create.mockResolvedValue({ url: "https://checkout.example.test/synthetic-session" });
   mocks.getDb.mockResolvedValue({});
   mocks.availability.mockResolvedValue(ALL_PRODUCTS.map(product => ({ key: product.key, questionCount: 400 })));
+  mocks.paymentSchemaReady.mockResolvedValue(undefined);
   mocks.track.mockResolvedValue(undefined);
 });
 

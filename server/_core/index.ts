@@ -29,6 +29,7 @@ import { ENV } from "./env";
 import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
 import { frameAncestorsForEnvironment } from "../previewSecurity";
 import { analyticsCspOrigin } from "../analyticsCsp";
+import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -145,8 +146,22 @@ async function startServer() {
       const db = await getDb();
       checks.db = !!db;
       if (!db) overallOk = false;
+      if (db) {
+        try {
+          await assertIndividualPaymentSchemaReady(db);
+          checks.individualPaymentSchema = true;
+        } catch {
+          // Keep schema details private. A protected health caller can see the
+          // failed check; checkout itself will also refuse before Stripe.
+          checks.individualPaymentSchema = false;
+          overallOk = false;
+        }
+      } else {
+        checks.individualPaymentSchema = false;
+      }
     } catch {
       checks.db = false;
+      checks.individualPaymentSchema = false;
       overallOk = false;
     }
 

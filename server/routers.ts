@@ -943,8 +943,10 @@ export const appRouter = router({
             messages: [{ role: "system", content: systemPrompt }, ...input.messages],
             maxTokens: 1536,
           });
-          const reply = response?.choices?.[0]?.message?.content ??
-            "I'm having trouble connecting right now — please try again.";
+          const reply = response?.choices?.[0]?.message?.content;
+          if (typeof reply !== "string" || !reply.trim()) {
+            throw new Error("Tutor provider returned no usable explanation");
+          }
           await trackEvent("ai_tutor_message", {
             userId: resolvedUserId,
             email: resolvedEmail,
@@ -954,9 +956,12 @@ export const appRouter = router({
             extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
           });
           return { reply };
-        } catch (err) {
-          console.error("[AI Tutor] LLM error:", err);
-          return { reply: "Connection issue — please try again in a moment." };
+        } catch {
+          console.error("[AI Tutor] Response unavailable");
+          throw new TRPCError({
+            code: "SERVICE_UNAVAILABLE",
+            message: "The AI Tutor could not finish the explanation. Please retry. Your question is still here.",
+          });
         }
       }),
 

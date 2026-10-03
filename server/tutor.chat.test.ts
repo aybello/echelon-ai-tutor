@@ -178,16 +178,16 @@ describe("tutor.chat", () => {
     expect(mocks.invokeLLM).not.toHaveBeenCalled();
   });
 
-  it("returns a safe fallback when the LLM provider fails", async () => {
+  it("returns a retryable error rather than a fake successful explanation when the provider fails", async () => {
     mocks.invokeLLM.mockRejectedValueOnce(new Error("API timeout"));
     const caller = appRouter.createCaller(createPaidContext());
-    const result = await caller.tutor.chat({
+    await expect(caller.tutor.chat({
       examType: "class1-water",
       questionNum: 42,
       messages: [{ role: "user", content: "What is turbidity?" }],
       patternMode: false,
       recentPerformance: [],
-    });
-    expect(result.reply).toContain("Connection issue");
+    })).rejects.toMatchObject({ code: "SERVICE_UNAVAILABLE" });
+    expect(mocks.trackEvent).not.toHaveBeenCalled();
   });
 });
