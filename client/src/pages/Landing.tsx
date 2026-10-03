@@ -608,11 +608,11 @@ const WPI_WATER_COURSES = [
 const ONTARIO_WATER_DIST_COURSES = [
   {
     code: "ON-D1",
-    title: "Class 1 Water Distribution",
-    subtitle: "Ontario Class 1 — Water Distribution",
+    title: "Class 1 Water Distribution and Supply",
+    subtitle: "Ontario Class 1 — Water Distribution and Supply",
     duration: "3–4 weeks",
     questions: 500,
-    description: "Ontario Class 1 Water Distribution prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
+    description: "Ontario Class 1 Water Distribution and Supply prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
     topics: ["Pipe Materials & Fittings", "Valve & Hydrant Operation", "Pressure Management", "Chlorine Residual", "O. Reg. 170/03"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -628,11 +628,11 @@ const ONTARIO_WATER_DIST_COURSES = [
   },
   {
     code: "ON-D2",
-    title: "Class 2 Water Distribution",
-    subtitle: "Ontario Class 2 — Water Distribution",
+    title: "Class 2 Water Distribution and Supply",
+    subtitle: "Ontario Class 2 — Water Distribution and Supply",
     duration: "4–6 weeks",
     questions: 500,
-    description: "Ontario Class 2 Water Distribution prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
+    description: "Ontario Class 2 Water Distribution and Supply prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
     topics: ["System Design", "Water Main Installation", "Cross-Connection Control", "Hydraulics", "Regulatory Compliance"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -648,11 +648,11 @@ const ONTARIO_WATER_DIST_COURSES = [
   },
   {
     code: "ON-D3",
-    title: "Class 3 Water Distribution",
-    subtitle: "Ontario Class 3 — Water Distribution",
+    title: "Class 3 Water Distribution and Supply",
+    subtitle: "Ontario Class 3 — Water Distribution and Supply",
     duration: "6–8 weeks",
     questions: 500,
-    description: "Ontario Class 3 Water Distribution prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
+    description: "Ontario Class 3 Water Distribution and Supply prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
     topics: ["Advanced Hydraulics", "System Modelling", "Asset Management", "Distribution Planning", "SCADA & Automation"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -668,11 +668,11 @@ const ONTARIO_WATER_DIST_COURSES = [
   },
   {
     code: "ON-D4",
-    title: "Class 4 Water Distribution",
-    subtitle: "Ontario Class 4 — Water Distribution",
+    title: "Class 4 Water Distribution and Supply",
+    subtitle: "Ontario Class 4 — Water Distribution and Supply",
     duration: "8–10 weeks",
     questions: 500,
-    description: "Ontario Class 4 Water Distribution prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
+    description: "Ontario Class 4 Water Distribution and Supply prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
     topics: ["Strategic Asset Management", "Risk-Based Frameworks", "KPIs & Performance", "Capital Planning", "Regulatory Leadership"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -1534,7 +1534,7 @@ export default function Landing() {
                       color: activeTrack === "ontario-dist" ? "#fff" : "#0369A1",
                       fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                     }}
-                  >🚰 Distribution</button>
+                  >🚰 Distribution & Supply</button>
                 </div>
               )}
             </div>

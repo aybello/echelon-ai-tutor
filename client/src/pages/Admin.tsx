@@ -91,10 +91,10 @@ const EXAM_TYPE_LABELS: Record<string, string> = {
   "class3-ww": "Class 3 Wastewater",
   "class4-ww": "Class 4 Wastewater",
   // Ontario Class 1–4 Water Distribution
-  "class1-water-dist": "Class 1 Water Dist",
-  "class2-water-dist": "Class 2 Water Dist",
-  "class3-water-dist": "Class 3 Water Dist",
-  "class4-water-dist": "Class 4 Water Dist",
+  "class1-water-dist": "Class 1 Distribution & Supply",
+  "class2-water-dist": "Class 2 Distribution & Supply",
+  "class3-water-dist": "Class 3 Distribution & Supply",
+  "class4-water-dist": "Class 4 Distribution & Supply",
   // Ontario Class 1–4 Wastewater Collection
   "class1-wastewater-coll": "Class 1 WW Coll",
   "class2-wastewater-coll": "Class 2 WW Coll",

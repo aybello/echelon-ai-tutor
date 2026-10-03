@@ -31,7 +31,7 @@ export const REGION_SEO_PAGES: RegionSeoPage[] = [
       "Prepare for Ontario OIT and Class 1–4 water and wastewater operator exams with course-specific practice, mock exams, flashcards, process guides, and an AI tutor.",
     heading: "Ontario Water and Wastewater Operator Exam Prep",
     summary:
-      "Echelon provides Ontario-specific preparation for OIT, Water Quality Analyst, Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection candidates.",
+      "Echelon provides Ontario-specific preparation for OIT, Water Quality Analyst, Water Treatment, Water Distribution and Supply, Wastewater Treatment, and Wastewater Collection candidates.",
     frameworkNote:
       "Ontario candidates should use the current OWWCO exam information and need-to-know material as the authority for eligibility, registration, permitted references, and exam requirements.",
     courseFamily: "ontario",
@@ -157,7 +157,9 @@ export const COURSE_SEO_PAGES: CourseSeoPage[] = getAllCourses()
     const jurisdictionLabel = isOntario
       ? "Ontario"
       : "WPI-aligned jurisdictions";
-    const trackLabel = TRACK_LABELS[course.track];
+    const trackLabel = isOntario && course.track === "water-distribution"
+      ? "Water Distribution and Supply"
+      : TRACK_LABELS[course.track];
     const level = levelLabel(course);
     return {
       courseKey: course.courseKey,

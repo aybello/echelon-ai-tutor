@@ -24,8 +24,8 @@ const MODULE_ICONS: Record<string, string> = {
 
 export default function Class2WaterDistQuiz() {
   usePageMeta({
-    title: "Ontario Class 2 Water Distribution Practice Questions",
-    description: "Practice questions for the Ontario Class 2 Water Distribution operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    title: "Ontario Class 2 Water Distribution and Supply Practice Questions",
+    description: "Practice questions for the Ontario Class 2 Water Distribution and Supply operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-water-dist", "lazy");
@@ -46,9 +46,9 @@ export default function Class2WaterDistQuiz() {
     <QuizShell
       examType="class2-water-dist"
       currentPath="/class2-water-dist"
-      courseLabel="Ontario Class 2 · Water Distribution"
-      courseTitle="Ontario Class 2 Water Distribution Quiz"
-      courseSubtitle="500 questions · Ontario Class 2 Water Distribution"
+      courseLabel="Ontario Class 2 · Water Distribution and Supply"
+      courseTitle="Ontario Class 2 Water Distribution and Supply Quiz"
+      courseSubtitle="500 questions · Ontario Class 2 Water Distribution and Supply"
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[
@@ -126,10 +126,10 @@ export default function Class2WaterDistQuiz() {
           questionsAnswered={session.history.length}
           history={session.history}
           productKey="class2-water-dist"
-          productName="Ontario Class 2 Water Distribution Practice Pass"
+          productName="Ontario Class 2 Water Distribution and Supply Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "300 Ontario Class 2 Water Distribution questions — unlimited attempts",
+            "300 Ontario Class 2 Water Distribution and Supply questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

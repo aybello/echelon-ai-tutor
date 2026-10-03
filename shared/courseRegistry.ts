@@ -308,8 +308,8 @@ const REGISTRY: CourseEntry[] = [
   // ── Ontario Water Distribution ────────────────────────────────────────────
   {
     courseKey: "class1-water-dist",
-    displayName: "Class 1 Water Distribution",
-    shortName: "Class 1 Distribution",
+    displayName: "Class 1 Water Distribution and Supply",
+    shortName: "Class 1 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -327,8 +327,8 @@ const REGISTRY: CourseEntry[] = [
   },
   {
     courseKey: "class2-water-dist",
-    displayName: "Class 2 Water Distribution",
-    shortName: "Class 2 Distribution",
+    displayName: "Class 2 Water Distribution and Supply",
+    shortName: "Class 2 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -346,8 +346,8 @@ const REGISTRY: CourseEntry[] = [
   },
   {
     courseKey: "class3-water-dist",
-    displayName: "Class 3 Water Distribution",
-    shortName: "Class 3 Distribution",
+    displayName: "Class 3 Water Distribution and Supply",
+    shortName: "Class 3 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -365,8 +365,8 @@ const REGISTRY: CourseEntry[] = [
   },
   {
     courseKey: "class4-water-dist",
-    displayName: "Class 4 Water Distribution",
-    shortName: "Class 4 Distribution",
+    displayName: "Class 4 Water Distribution and Supply",
+    shortName: "Class 4 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
