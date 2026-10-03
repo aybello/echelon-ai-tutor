@@ -873,7 +873,7 @@ type HeartbeatDependencies = {
 
 /**
  * Idempotently register the weekly publisher with Manus Heartbeat. Calling this
- * on every production boot repairs a paused or stale schedule without creating
+ * on every production boot repairs stale configuration without resuming pauses,
  * duplicate jobs or requiring a separate manual setup step.
  */
 export async function ensureWeeklyBlogHeartbeat(
@@ -881,10 +881,13 @@ export async function ensureWeeklyBlogHeartbeat(
     list: listHeartbeatJobs,
     create: createHeartbeatJob,
     update: updateHeartbeatJob,
-  }
+  },
+  boundTaskUid?: string | null
 ): Promise<"created" | "updated" | "unchanged"> {
   const { jobs } = await dependencies.list("", { page: 1, pageSize: 100 });
-  const existing = jobs.find(job => job.name === WEEKLY_BLOG_HEARTBEAT.name);
+  const matches = jobs.filter(job => boundTaskUid ? job.taskUid === boundTaskUid : job.name === WEEKLY_BLOG_HEARTBEAT.name);
+  if (matches.length > 1 || (boundTaskUid && !matches.length)) throw new Error("Bound weekly blog task is missing or ambiguous");
+  const existing = matches[0];
   if (!existing) {
     await dependencies.create(WEEKLY_BLOG_HEARTBEAT, "");
     return "created";
@@ -893,8 +896,7 @@ export async function ensureWeeklyBlogHeartbeat(
     existing.cronExpression === WEEKLY_BLOG_HEARTBEAT.cron &&
     existing.callbackPath === WEEKLY_BLOG_HEARTBEAT.path &&
     existing.callbackMethod.toUpperCase() === WEEKLY_BLOG_HEARTBEAT.method &&
-    existing.description === WEEKLY_BLOG_HEARTBEAT.description &&
-    existing.isEnable;
+    existing.description === WEEKLY_BLOG_HEARTBEAT.description;
   if (isCurrent) return "unchanged";
   await dependencies.update(
     existing.taskUid,
@@ -903,7 +905,6 @@ export async function ensureWeeklyBlogHeartbeat(
       path: WEEKLY_BLOG_HEARTBEAT.path,
       method: WEEKLY_BLOG_HEARTBEAT.method,
       description: WEEKLY_BLOG_HEARTBEAT.description,
-      enable: true,
     },
     ""
   );

@@ -7,6 +7,7 @@
  * excluded.
  */
 
+import { parseJobDates } from "./jobVerification.mjs";
 import {
   decodeHtmlEntities,
   detectJobType,
@@ -61,6 +62,7 @@ export function parseAwwOA(html) {
       location: location || "Alberta",
       province: detectProvince(location || "Alberta"),
       sourceUrl: absoluteUrl(link[1], "https://www.awwoa.ca"),
+      ...parseJobDates(block),
       description: truncate(cleanText(block)),
       jobType: detectJobType(block),
     });
@@ -105,6 +107,7 @@ export function parseSwwa(html) {
       location: location || "Saskatchewan",
       province: detectProvince(location || "Saskatchewan"),
       sourceUrl: absoluteUrl(link[1], "https://www.swwa.ca"),
+      ...parseJobDates(block),
       description: truncate(cleanText(block)),
       jobType: detectJobType(block),
     });
@@ -164,6 +167,7 @@ export function parseCwra(html) {
       location,
       province: detectProvince(location),
       sourceUrl: absoluteUrl(applyLink[1], "https://cwra.org"),
+      ...parseJobDates(remainder),
       description: truncate(cleanText(remainder)),
       jobType: detectJobType(remainder),
     });
@@ -206,6 +210,7 @@ export async function ingestAssociations(upsertJob) {
     })
   );
   const errors = [];
+  const sourceOutcomes = [];
   let totalFetched = 0;
   let successfulSources = 0;
   let failedSources = 0;
@@ -213,6 +218,7 @@ export async function ingestAssociations(upsertJob) {
   for (const { source, jobs, error } of results) {
     if (error) {
       failedSources++;
+      sourceOutcomes.push({ source: source.name, status: "failed", count: 0 });
       errors.push(
         `Association fetch failed (${source.name}): ${error.message}`
       );
@@ -220,13 +226,13 @@ export async function ingestAssociations(upsertJob) {
       continue;
     }
     successfulSources++;
+    sourceOutcomes.push({ source: source.name, status: "success", count: jobs.length });
     for (const job of jobs) {
       try {
         await upsertJob({
           ...job,
           sourceName: source.name,
           sourceType: "association",
-          postedAt: new Date(),
         });
         totalFetched++;
       } catch (upsertError) {
@@ -240,5 +246,5 @@ export async function ingestAssociations(upsertJob) {
     );
   }
 
-  return { errors, totalFetched, successfulSources, failedSources };
+  return { errors, totalFetched, successfulSources, failedSources, sourceOutcomes };
 }

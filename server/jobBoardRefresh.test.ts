@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fetchAndIngest } from "./scripts/fetchJobs.mjs";
+import { fetchAndIngest as realFetchAndIngest, type JobIngestionOptions } from "./scripts/fetchJobs.mjs";
+const fetchAndIngest = (options: JobIngestionOptions) => realFetchAndIngest({ ...options, verifyJob: async job => ({ status: "verified", postedAt: job.postedAt ? new Date(job.postedAt) : null, closingAt: null }) });
 import {
   parseAwwOA,
   parseCwra,
@@ -19,6 +20,7 @@ const FIXED_NOW = new Date("2026-08-24T12:00:00.000Z");
 function makeConnection(existingUrls: string[] = []) {
   const existing = new Set(existingUrls);
   const execute = vi.fn(async (query: string, params: unknown[] = []) => {
+    if (query.startsWith("SELECT lastError")) return [[]];
     if (query.startsWith("SELECT id")) {
       return [existing.has(String(params[0])) ? [{ id: 42 }] : []];
     }
@@ -131,12 +133,12 @@ describe("job board ingestion", () => {
     expect(
       connection.execute.mock.calls.some(
         ([query, params]) =>
-          String(query).includes("company = COALESCE") && params?.at(-1) === 42
+          String(query).includes("company = COALESCE") && params?.at(-3) === 42
       )
     ).toBe(true);
     expect(connection.execute).toHaveBeenCalledWith(
       expect.stringContaining("lastSeenAt <"),
-      [new Date("2026-08-10T12:00:00.000Z")]
+      [new Date("2026-08-10T12:00:00.000Z"), "job-board:refresh-lock", expect.any(String)]
     );
     expect(connection.end).toHaveBeenCalledOnce();
   });
@@ -583,7 +585,7 @@ describe("stable job identity", () => {
     });
     expect(execute).toHaveBeenCalledWith(
       expect.stringContaining("WHERE id IN (?)"),
-      [FIXED_NOW, 34]
+      [FIXED_NOW, 34, "job-board:refresh-lock", expect.any(String)]
     );
   });
 });

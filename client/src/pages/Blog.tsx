@@ -29,7 +29,7 @@ export default function Blog() {
       "water operator certification, wastewater operator exam, OIT exam, WPI exam prep, municipal operator training, utility workforce readiness",
   });
 
-  const { data: posts, isLoading } = trpc.blog.listPosts.useQuery();
+  const { data: posts, isLoading, isError, isFetching, refetch } = trpc.blog.listPosts.useQuery(undefined, { retry: 1 });
   const [category, setCategory] = useState("All");
   const [query, setQuery] = useState("");
   const categories = [
@@ -117,7 +117,15 @@ export default function Blog() {
           </div>
         )}
 
-        {!isLoading && visiblePosts.length === 0 && (
+        {isError && (
+          <div role="alert" className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-900">
+            <p className="font-semibold">Articles are temporarily unavailable</p>
+            <p className="mt-1 text-sm">{posts?.length ? "Showing previously loaded articles. The latest list could not be checked." : "We could not load articles. Please retry rather than changing your search."}</p>
+            <button type="button" disabled={isFetching} onClick={() => void refetch()} className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">{isFetching ? "Retrying..." : "Retry"}</button>
+          </div>
+        )}
+
+        {!isLoading && !isError && posts && visiblePosts.length === 0 && (
           <div className="text-center py-20 text-slate-500">
             <div className="text-4xl mb-4">📝</div>
             <p className="text-lg font-medium">No matching articles</p>

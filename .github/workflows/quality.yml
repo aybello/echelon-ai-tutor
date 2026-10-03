@@ -158,6 +158,7 @@ jobs:
           --exclude server/examDateRecords.integration.test.ts
           --exclude server/ceuLearning.integration.test.ts
           --exclude server/blogWorkflow.integration.test.ts
+          --exclude server/jobBoardReliability.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -208,6 +209,12 @@ jobs:
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           BLOG_INTEGRATION_TEST_DB: "1"
+      - name: Database-backed Jobs state, vacancy filters and concurrent ownership
+        run: pnpm exec vitest run server/jobBoardReliability.integration.test.ts
+        env:
+          NODE_ENV: test
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          AUDIT_INTEGRATION_TEST_DB: "1"
       - name: Database-backed OIT import and batch release
         run: pnpm exec vitest run server/oitImporter.integration.test.ts
         env:
@@ -227,7 +234,22 @@ jobs:
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
-      - run: pnpm build
+      - name: Verify clean tracked release and exported source archive identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain --untracked-files=no)"
+          export EXPECTED_RELEASE="$(git rev-parse --verify HEAD)"
+          archive="$(mktemp -d "$RUNNER_TEMP/echelon-source.XXXXXX")"
+          trap 'rm -rf "$archive"' EXIT
+          git archive HEAD | tar -x -C "$archive"
+          printf '{"version":1,"commit":"%s","clean":true}\n' "$EXPECTED_RELEASE" > "$archive/release.json"
+          export RELEASE_VERIFIER="$GITHUB_WORKSPACE/scripts/buildServer.ts"
+          cd "$archive"
+          # The archive contains committed source only. A runner SHA alone is not approval.
+          "$GITHUB_WORKSPACE/node_modules/.bin/tsx" -e 'import(process.env.RELEASE_VERIFIER).then(({buildReleaseId}) => { if (buildReleaseId() !== process.env.EXPECTED_RELEASE) throw Error("Archive release identity mismatch"); })'
+      - name: Build the exact clean tracked checkout (not a labelled development artifact)
+        run: pnpm build
         env:
           NODE_ENV: development
           JWT_SECRET: test-only-not-for-production

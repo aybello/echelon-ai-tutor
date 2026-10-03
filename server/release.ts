@@ -2,13 +2,19 @@
  * Public release marker used to verify that the serving application—not only
  * the database or a scheduled script—has reached the intended deployment.
  *
- * The build stamps the actual source commit. A dirty checkout is labelled;
- * source archives without a supplied commit explicitly report "unknown".
+ * Production builds and startup require the actual approved clean commit.
+ * Unversioned source execution is available only outside production.
  * The values are deliberately non-secret and safe for /api/health.
  */
 declare const __BUILD_RELEASE_ID__: string;
 export const RELEASE_ID =
   typeof __BUILD_RELEASE_ID__ === "string" ? __BUILD_RELEASE_ID__ : "unknown";
+
+export function assertProductionRelease(release: string, env: NodeJS.ProcessEnv = process.env) {
+  if ((env.NODE_ENV === "production" || env.DEPLOYMENT_ENV === "production") && !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/i.test(release))
+    throw new Error("Production requires a clean, approved built commit");
+}
+assertProductionRelease(RELEASE_ID);
 
 export const RELEASE_CAPABILITIES = [
   "course-pass-order-scoped-refunds-v1",

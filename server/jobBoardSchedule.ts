@@ -22,13 +22,11 @@ export async function ensureJobBoardHeartbeat(dependencies = {
   }
   if (existing.cronExpression === JOB_BOARD_HEARTBEAT.cron &&
       existing.callbackPath === JOB_BOARD_HEARTBEAT.path &&
-      existing.callbackMethod.toUpperCase() === JOB_BOARD_HEARTBEAT.method &&
-      existing.isEnable) return "unchanged";
+      existing.callbackMethod.toUpperCase() === JOB_BOARD_HEARTBEAT.method) return "unchanged";
   await dependencies.update(existing.taskUid, {
     cron: JOB_BOARD_HEARTBEAT.cron,
     path: JOB_BOARD_HEARTBEAT.path,
     method: JOB_BOARD_HEARTBEAT.method,
-    enable: true,
   }, "");
   return "updated";
 }
