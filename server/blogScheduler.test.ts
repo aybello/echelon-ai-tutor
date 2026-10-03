@@ -62,4 +62,36 @@ describe("short durable blog callbacks", () => {
     vi.stubEnv("DEPLOYMENT_ENV", "preview");
     expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
   });
+  it("accepts a bound platform task header only after shared middleware authenticates its secret", async () => {
+    vi.stubEnv("NODE_ENV", "production"); vi.stubEnv("DEPLOYMENT_ENV", "production");
+    const req = { headers: { host: "echeloninstitute.ca", "x-manus-cron-task-uid": "bound-worker" } } as unknown as Request;
+    const res = { locals: {} } as unknown as Response;
+    authorized.mockResolvedValue(true);
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+    expect(authorized).not.toHaveBeenCalled();
+    res.locals.scheduledAuthenticated = true;
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(true);
+    expect(authorized).toHaveBeenLastCalledWith("bound-worker", "worker");
+    authorized.mockResolvedValue(false);
+    expect(await authorizeBlogCallback(req, res, "weekly")).toBe(false);
+    expect(authorized).toHaveBeenLastCalledWith("bound-worker", "weekly");
+    req.headers["x-manus-cron-task-uid"] = ["bound-worker", "other-task"];
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+    delete req.headers["x-manus-cron-task-uid"];
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+  });
+  it("never lets a header override an authenticated SDK task, even when secret authentication also succeeded", async () => {
+    vi.stubEnv("NODE_ENV", "production"); vi.stubEnv("DEPLOYMENT_ENV", "production");
+    const req = { headers: { host: "echeloninstitute.manus.space", "x-manus-cron-task-uid": "bound-worker" } } as unknown as Request;
+    const res = { locals: { scheduledAuthenticated: true, cronUser: { isCron: true, taskUid: "wrong-sdk-task" } } } as unknown as Response;
+    authorized.mockResolvedValue(false);
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+    expect(authorized).toHaveBeenLastCalledWith("wrong-sdk-task", "worker");
+    res.locals.cronUser = { isCron: true };
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+    res.locals = { scheduledAuthenticated: true };
+    req.headers.host = "3000-preview.manus.computer";
+    authorized.mockResolvedValue(true);
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+  });
 });
