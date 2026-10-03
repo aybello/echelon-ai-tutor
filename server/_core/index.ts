@@ -28,6 +28,7 @@ import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
 import { frameAncestorsForEnvironment } from "../previewSecurity";
+import { analyticsCspOrigin } from "../analyticsCsp";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -51,6 +52,7 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  const analyticsOrigins = analyticsCspOrigin(process.env.VITE_ANALYTICS_ENDPOINT);
 
   // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
   app.set("trust proxy", 1);
@@ -60,7 +62,7 @@ async function startServer() {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com", ...analyticsOrigins],
           styleSrc: [
             "'self'",
             "'unsafe-inline'",
@@ -72,6 +74,7 @@ async function startServer() {
             "'self'",
             "https://api.stripe.com",
             "https://*.oaiusercontent.com",
+            ...analyticsOrigins,
           ],
           frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
           objectSrc: ["'none'"],

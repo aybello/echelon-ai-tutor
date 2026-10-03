@@ -104,7 +104,9 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 
   const invitationMessage = await waitForMessage(OPERATOR_EMAIL, `invited you to ${COURSE_NAME}`);
   const invitationBody = await messageBody(invitationMessage.ID);
-  const claimUrl = invitationBody.match(/http:\/\/127\.0\.0\.1:3000\/course-pass\/claim\?token=[a-f0-9]{64}/i)?.[0];
+  const fixtureOrigin = (process.env.APP_BASE_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
+  const claimUrl = (invitationBody.match(/https?:\/\/[^\s"<>]+\/course-pass\/claim\?token=[a-f0-9]{64}/ig) ?? [])
+    .find(url => new URL(url).origin === fixtureOrigin);
   expect(claimUrl, "invitation email should contain the claim URL").toBeTruthy();
 
   const operatorContext = await browser.newContext({
