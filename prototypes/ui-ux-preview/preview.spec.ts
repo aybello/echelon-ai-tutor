@@ -26,6 +26,13 @@ test("finder keeps province, system and level aligned, and resets dependent choi
   await page.getByLabel("1. Province").selectOption("on");
   await expect(page.getByLabel("2. System")).toHaveValue("");
   await expect(page.getByLabel("3. Level")).toBeDisabled();
+  await expect(page.getByLabel("2. System").locator('option[value="water-distribution"]')).toHaveText("Water distribution and supply");
+  await page.getByLabel("2. System").selectOption("water-distribution");
+  await page.getByLabel("3. Level").selectOption("class3-water-dist");
+  await expect(page.locator(".course-finder-result")).toContainText("Class 3 Water Distribution and Supply");
+  await expect(page.getByRole("link", {name:"Try this course"})).toHaveAttribute("href", "/class3-water-dist");
+  await page.getByLabel("1. Province").selectOption("mb");
+  await expect(page.getByLabel("2. System").locator('option[value="water-distribution"]')).toHaveText("Water distribution");
   await page.screenshot({path:"test-results/ui-workspace/course-finder.png",fullPage:true});
 });
 

@@ -44,11 +44,11 @@ interface SubTier {
 }
 
 const SUB_TIERS_ONTARIO: SubTier[] = [
-  { tier: "class1",     label: "Class 1",    price: "$99",  priceNum: 9900,  tagline: "OIT + Class 1 — all 4 tracks",         features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "Class 1 Water Distribution", "Class 1 Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "class2",     label: "Class 2",    price: "$149", priceNum: 14900, tagline: "Class 2 — all 4 tracks",              features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "Class 2 Water Distribution", "Class 2 Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "class3",     label: "Class 3",    price: "$199", priceNum: 19900, tagline: "Class 3 — all 4 tracks",              features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "Class 3 Water Distribution", "Class 3 Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "class4",     label: "Class 4",    price: "$249", priceNum: 24900, tagline: "Class 4 — all 4 tracks + WQA",        features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "Class 4 Water Distribution", "Class 4 Wastewater Collection", "WQA Exam Prep", "AI Tutor & Flashcards"] },
-  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every Ontario exam type — all classes", features: ["All classes (1 through 4)", "All 4 tracks: Water Treatment, Wastewater Treatment, Distribution & Collection", "WQA Exam Prep", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
+  { tier: "class1",     label: "Class 1",    price: "$99",  priceNum: 9900,  tagline: "OIT + Class 1 — all 4 tracks",         features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "Class 1 Water Distribution and Supply", "Class 1 Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class2",     label: "Class 2",    price: "$149", priceNum: 14900, tagline: "Class 2 — all 4 tracks",              features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "Class 2 Water Distribution and Supply", "Class 2 Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class3",     label: "Class 3",    price: "$199", priceNum: 19900, tagline: "Class 3 — all 4 tracks",              features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "Class 3 Water Distribution and Supply", "Class 3 Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class4",     label: "Class 4",    price: "$249", priceNum: 24900, tagline: "Class 4 — all 4 tracks + WQA",        features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "Class 4 Water Distribution and Supply", "Class 4 Wastewater Collection", "WQA Exam Prep", "AI Tutor & Flashcards"] },
+  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every Ontario exam type — all classes", features: ["All classes (1 through 4)", "All 4 tracks: Water Treatment, Wastewater Treatment, Water Distribution and Supply, Wastewater Collection", "WQA Exam Prep", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
 ];
 
 const SUB_TIERS_WPI: SubTier[] = [
@@ -310,8 +310,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class1-water-dist",
-    name: "Class 1 Water Distribution Practice Pass",
-    shortName: "Class 1 Distribution",
+    name: "Class 1 Water Distribution and Supply Practice Pass",
+    shortName: "Class 1 Distribution & Supply",
     description: "Pipe materials, valve operation, hydrant maintenance, and pressure management. OWWCO Class 1 aligned.",
     priceCAD: sharedPrice("class1-water-dist"),
     examTypes: ["class1-water-dist"],
@@ -325,8 +325,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class2-water-dist",
-    name: "Class 2 Water Distribution Practice Pass",
-    shortName: "Class 2 Distribution",
+    name: "Class 2 Water Distribution and Supply Practice Pass",
+    shortName: "Class 2 Distribution & Supply",
     description: "System design, water main installation, cross-connection control, and distribution operations. OWWCO Class 2 aligned.",
     priceCAD: sharedPrice("class2-water-dist"),
     examTypes: ["class2-water-dist"],
@@ -340,8 +340,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class3-water-dist",
-    name: "Class 3 Water Distribution Practice Pass",
-    shortName: "Class 3 Distribution",
+    name: "Class 3 Water Distribution and Supply Practice Pass",
+    shortName: "Class 3 Distribution & Supply",
     description: "Advanced hydraulics, system modelling, asset management, and distribution system planning. OWWCO Class 3 aligned.",
     priceCAD: sharedPrice("class3-water-dist"),
     examTypes: ["class3-water-dist"],
@@ -355,8 +355,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class4-water-dist",
-    name: "Class 4 Water Distribution Practice Pass",
-    shortName: "Class 4 Distribution",
+    name: "Class 4 Water Distribution and Supply Practice Pass",
+    shortName: "Class 4 Distribution & Supply",
     description: "Strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance. OWWCO Class 4 aligned.",
     priceCAD: sharedPrice("class4-water-dist"),
     examTypes: ["class4-water-dist"],
@@ -1544,7 +1544,7 @@ export default function Pricing() {
                       </div>
                       <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.8 }}>
                         <li style={{ color: "#334155" }}>Water Treatment &amp; Wastewater Treatment</li>
-                        <li style={{ color: "#334155" }}>Water Distribution &amp; Wastewater Collection</li>
+                        <li style={{ color: "#334155" }}>{subProvince === "ontario" ? "Water Distribution and Supply" : "Water Distribution"} &amp; Wastewater Collection</li>
                         {tier.tier === "class4" && subProvince === "ontario" && <li style={{ color: "#334155" }}>Water Quality Analyst (WQA)</li>}
                         {tier.tier === "all-access" && <li style={{ color: "#334155" }}>All classes — OIT through Class 4</li>}
                         <li style={{ color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards &amp; Mock Exams</li>

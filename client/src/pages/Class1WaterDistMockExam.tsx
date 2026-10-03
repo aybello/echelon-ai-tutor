@@ -12,8 +12,8 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 
 export default function Class1WaterDistMockExam() {
   usePageMeta({
-    title: "Ontario Class 1 Water Distribution Mock Exam",
-    description: "100-question timed mock exam for the Ontario Class 1 Water Distribution certification. 2-hour timer, 70% pass threshold.",
+    title: "Ontario Class 1 Water Distribution and Supply Mock Exam",
+    description: "100-question timed mock exam for the Ontario Class 1 Water Distribution and Supply certification. 2-hour timer, 70% pass threshold.",
     noindex: true
   });
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water-dist");
@@ -28,10 +28,10 @@ export default function Class1WaterDistMockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
   return (
     <MockExamShell
-      title="Ontario Class 1 Water Distribution Mock Exam"
-      badge="ONTARIO CLASS 1 · WATER DISTRIBUTION"
-      metaDescription="100-question timed mock exam for Ontario Class 1 Water Distribution certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="Ontario Class 1 Water Distribution mock exam, Ontario operator certification"
+      title="Ontario Class 1 Water Distribution and Supply Mock Exam"
+      badge="ONTARIO CLASS 1 · WATER DISTRIBUTION AND SUPPLY"
+      metaDescription="100-question timed mock exam for Ontario Class 1 Water Distribution and Supply certification. 2-hour timer, 70% pass threshold."
+      metaKeywords="Ontario Class 1 Water Distribution and Supply mock exam, Ontario operator certification"
       examQuestions={100}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
@@ -39,14 +39,14 @@ export default function Class1WaterDistMockExam() {
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="class1-water-dist"
-      productName="Ontario Class 1 Water Distribution Practice Pass"
+      productName="Ontario Class 1 Water Distribution and Supply Practice Pass"
       price={99}
       backPath="/class1-water"
       practicePath="/class1-water-dist"
-      practiceLabel="Class 1 Water Distribution Practice"
+      practiceLabel="Class 1 Water Distribution and Supply Practice"
       showProvinceSelector={false}
       currentPath="/class1-water-dist-mock"
-      infoLine={`${POOL.length} questions · Ontario Class 1 Water Distribution`}
+      infoLine={`${POOL.length} questions · Ontario Class 1 Water Distribution and Supply`}
       stream="water"
       accentColor="#0369A1"
     />

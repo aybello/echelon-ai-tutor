@@ -9,12 +9,12 @@ import { mockSpecification } from "../server/mockExamSession";
 import { formatQuestionBankCount } from "../shared/questionBankDisplay";
 import { getProductByKey } from "../shared/products";
 
-describe("Class 3 Water Distribution offer", () => {
+describe("Class 3 Water Distribution and Supply offer", () => {
   it("uses the authoritative catalogue price and avoids a stale count in its catalogue description", () => {
     const product = getProductByKey("class3-water-dist");
 
     expect(product).toMatchObject({
-      name: "Class 3 Water Distribution Practice Pass",
+      name: "Class 3 Water Distribution and Supply Practice Pass",
       priceCAD: 24_900,
     });
     expect(product?.description).not.toMatch(/\b500\b|\b571\b/);
@@ -44,7 +44,7 @@ describe("Class 3 Water Distribution offer", () => {
       })
     ).toEqual({
       available: true,
-      productName: "Class 3 Water Distribution Practice Pass",
+      productName: "Class 3 Water Distribution and Supply Practice Pass",
       priceLabel: "CA$249",
     });
   });
@@ -111,7 +111,7 @@ describe("Class 3 Water Distribution offer", () => {
   it("allows Quiz Gate checkout only for a registered catalogue product", () => {
     expect(resolveQuizGateOffer("class3-water-dist")).toEqual({
       available: true,
-      productName: "Class 3 Water Distribution Practice Pass",
+      productName: "Class 3 Water Distribution and Supply Practice Pass",
       priceLabel: "CA$249",
     });
     expect(resolveQuizGateOffer("retired-course")).toEqual({
@@ -124,7 +124,7 @@ describe("Class 3 Water Distribution offer", () => {
     });
   });
 
-  it("removes stale Class 3 Distribution claims from every study surface", () => {
+  it("removes stale Class 3 Distribution & Supply claims from every study surface", () => {
     const source = (relativePath: string) =>
       readFileSync(resolve(process.cwd(), relativePath), "utf8");
     const quiz = source("client/src/pages/Class3WaterDistQuiz.tsx");

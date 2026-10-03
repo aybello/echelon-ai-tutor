@@ -24,8 +24,8 @@ const MODULE_ICONS: Record<string, string> = {
 
 export default function Class1WaterDistQuiz() {
   usePageMeta({
-    title: "Ontario Class 1 Water Distribution Practice Questions",
-    description: "Practice questions for the Ontario Class 1 Water Distribution operator certification exam. 966 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    title: "Ontario Class 1 Water Distribution and Supply Practice Questions",
+    description: "Practice questions for the Ontario Class 1 Water Distribution and Supply operator certification exam. 966 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions: bankTotal, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water-dist", "lazy");
@@ -46,9 +46,9 @@ export default function Class1WaterDistQuiz() {
     <QuizShell
       examType="class1-water-dist"
       currentPath="/class1-water-dist"
-      courseLabel="Ontario Class 1 · Water Distribution"
-      courseTitle="Ontario Class 1 Water Distribution Quiz"
-      courseSubtitle={`${bankTotal.toLocaleString()} questions · Ontario Class 1 Water Distribution`}
+      courseLabel="Ontario Class 1 · Water Distribution and Supply"
+      courseTitle="Ontario Class 1 Water Distribution and Supply Quiz"
+      courseSubtitle={`${bankTotal.toLocaleString()} questions · Ontario Class 1 Water Distribution and Supply`}
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[
@@ -126,10 +126,10 @@ export default function Class1WaterDistQuiz() {
           questionsAnswered={session.history.length}
           history={session.history}
           productKey="class1-water-dist"
-          productName="Ontario Class 1 Water Distribution Practice Pass"
+          productName="Ontario Class 1 Water Distribution and Supply Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            `${bankTotal.toLocaleString()} Ontario Class 1 Water Distribution questions — unlimited attempts`,
+            `${bankTotal.toLocaleString()} Ontario Class 1 Water Distribution and Supply questions — unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

@@ -21,6 +21,7 @@ export {
 import {
   type TeamStreamTier,
   TEAM_STREAM_TIER_LABELS,
+  getTeamStreamLabel,
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
 } from "../../shared/teamPricing";
@@ -331,9 +332,11 @@ export const TIER_LABELS: Record<SubscriptionTier, string> = {
   "all-access": "All-Access Pass",
 };
 
-export function getOrganizationTierLabel(tier: string): string {
+export function getOrganizationTierLabel(tier: string, province?: string): string {
+  if (Object.prototype.hasOwnProperty.call(TEAM_STREAM_TIER_LABELS, tier)) {
+    return getTeamStreamLabel(province ?? "western", tier as TeamStreamTier);
+  }
   return (
-    TEAM_STREAM_TIER_LABELS[tier as TeamStreamTier] ??
     TIER_LABELS[tier as SubscriptionTier] ??
     tier
   );

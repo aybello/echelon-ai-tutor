@@ -1,6 +1,6 @@
 import { useEffect, useId, useState } from "react";
 import { ArrowRight, BookOpen, MapPin } from "lucide-react";
-import { FINDER_PROVINCES, FINDER_TRACKS, getFinderCourses, getFinderLevelLabel } from "@/lib/courseFinder";
+import { FINDER_PROVINCES, FINDER_TRACKS, getFinderCourses, getFinderLevelLabel, getFinderTrackLabel } from "@/lib/courseFinder";
 import "./StudyWorkspace.css";
 
 export default function CourseFinder({ initialProvince }: { initialProvince?: string | null }) {
@@ -20,7 +20,7 @@ export default function CourseFinder({ initialProvince }: { initialProvince?: st
         <option value="">Select your province</option>{FINDER_PROVINCES.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
       </select></label>
       <label htmlFor={`${id}-track`}><span>2. System</span><select id={`${id}-track`} value={track} disabled={!province} onChange={event => { setTrack(event.target.value); setCourseKey(""); }}>
-        <option value="">Select your system</option>{availableTracks.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
+        <option value="">Select your system</option>{availableTracks.map(item => <option key={item.id} value={item.id}>{getFinderTrackLabel(province, item.id)}</option>)}
       </select></label>
       <label htmlFor={`${id}-course`}><span>3. Level</span><select id={`${id}-course`} value={courseKey} disabled={!track} onChange={event => setCourseKey(event.target.value)}>
         <option value="">Select your level</option>{courses.map(item => <option key={item.courseKey} value={item.courseKey}>{getFinderLevelLabel(item)}</option>)}

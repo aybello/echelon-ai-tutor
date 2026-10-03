@@ -14,6 +14,12 @@ export const FINDER_TRACKS = [
   { id: "water-quality", label: "Water quality analyst" },
 ] as const;
 
+/** Ontario uses the full certification category; Western/WPI keeps its own name. */
+export function getFinderTrackLabel(province: string, track: string): string {
+  if (province === "on" && track === "water-distribution") return "Water distribution and supply";
+  return FINDER_TRACKS.find(item => item.id === track)?.label ?? track;
+}
+
 /** Match only supported, active registry entries. Never silently switch province or stream. */
 export function getFinderCourses(province: string, track: string): CourseEntry[] {
   if (!FINDER_PROVINCES.some(item => item.id === province)) return [];

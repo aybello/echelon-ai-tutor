@@ -235,7 +235,7 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       <p>Every Echelon course includes 400+ practice questions organized by module and difficulty, 400+ concept flashcards, comprehensive study notes, timed mock exams that simulate the real test format, and an AI tutor for active course-pass holders that explains concepts and calculations in plain language.</p>
 
       <h2>Courses Available</h2>
-      <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
+      <p>Echelon covers Ontario OIT and Class 1–4 Water Treatment, Water Distribution and Supply, Wastewater Treatment, and Wastewater Collection. WPI-aligned Class I–IV preparation is also available for Western Canadian candidates. Provincial authorities control eligibility, exam content, and certification requirements.</p>
 
       <h2>Free to Start</h2>
       <p>Every course includes 15 free practice questions. OIT learners can also try 50 flashcards, 30 mock-exam questions, and three AI Tutor messages — no account or credit card required. Experience the complete study system before purchasing a 12-month Exam Pass.</p>
@@ -1051,7 +1051,7 @@ Echelon Institute provides course-specific practice questions, mock exams, flash
 Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO, MOECP, EOCP, WPI, or a provincial or US state certifying authority. Official authority documents control eligibility, exam content, permitted references, and certification decisions.
 
 ## Canadian Course Coverage
-- Ontario-specific OIT, Water Quality Analyst, and Class 1–4 preparation for water treatment, water distribution, wastewater treatment, and wastewater collection
+- Ontario-specific OIT, Water Quality Analyst, and Class 1–4 preparation for water treatment, water distribution and supply, wastewater treatment, and wastewater collection
 - WPI-aligned Class I–IV preparation for water treatment, wastewater treatment, water distribution, and wastewater collection
 - Province guides for British Columbia, Alberta, Saskatchewan, and Manitoba explain where to confirm current requirements
 

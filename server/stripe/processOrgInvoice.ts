@@ -42,6 +42,7 @@ export interface ProcessOrgInvoiceInput {
     name: string;
     managerEmail: string;
     tier: string;
+    province?: string;
     seatsTotal: number;
     status: string;
   };
@@ -146,7 +147,7 @@ export async function processOrgInvoice(
       managerEmail: input.organization.managerEmail,
       orgName: input.organization.name,
       seats: input.organization.seatsTotal,
-      tierLabel: getOrganizationTierLabel(input.organization.tier),
+      tierLabel: getOrganizationTierLabel(input.organization.tier, input.organization.province),
       amountFormatted,
       periodEnd: currentPeriodEnd,
       hostedInvoiceUrl: input.hostedInvoiceUrl,
