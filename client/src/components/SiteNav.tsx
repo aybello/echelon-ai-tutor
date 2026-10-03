@@ -19,6 +19,8 @@ export const NAV_LINKS = [
   { label: "WPI", href: "/wpi" },
   { label: "US", href: "/us" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Jobs", href: "/jobs" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
 ];
 
@@ -138,6 +140,8 @@ export default function SiteNav({
           <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
           <ResourcesMenu currentPath={currentPath} />
           </>}
+          <Link href="/jobs" className={`echelon-nav-link${isPathActive(currentPath, "/jobs") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/jobs") ? "page" : undefined}>Jobs</Link>
+          <Link href="/blog" className={`echelon-nav-link${isPathActive(currentPath, "/blog") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/blog") ? "page" : undefined}>Blog</Link>
         </div>
 
         <div className="echelon-nav-actions">

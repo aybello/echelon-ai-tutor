@@ -7,6 +7,10 @@ test("real homepage keeps the approved branding and both free OIT entry points o
   await page.goto("/#/homepage");
   await expect(page.getByRole("heading",{name:"Pass Your Operator Exam. Advance Your Career."})).toBeVisible();
   await expect.poll(() => page.locator(".echelon-brand img").evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
+  await page.getByRole("button", {name:"Open navigation menu", exact:true}).click();
+  await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Jobs", exact:true})).toHaveAttribute("href", "/jobs");
+  await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Blog", exact:true})).toHaveAttribute("href", "/blog");
+  await page.getByRole("button", {name:"Close navigation menu", exact:true}).first().click();
   await page.getByRole("button",{name:"Try 15 OIT Questions Free →",exact:true}).click();
   await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Water OIT Recommended/})).toHaveAttribute("href",/^#?\/quiz$/);
   await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Wastewater OIT Start free/})).toHaveAttribute("href",/^#?\/oit-ww$/);
@@ -15,6 +19,30 @@ test("real homepage keeps the approved branding and both free OIT entry points o
   await expect(page.locator("#find-course").getByLabel("1. Province")).toBeEnabled();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({path:"test-results/ui-workspace/homepage-mobile.png",fullPage:true});
+});
+
+test("Jobs and Blog stay directly accessible in public and learning desktop navigation", async ({page}) => {
+  await page.setViewportSize({width:1280,height:844});
+  for (const route of ["/homepage", "/class1-water"]) {
+    await page.goto(`/#${route}`);
+    for (const {label, href} of [{label:"Jobs", href:/^#?\/jobs$/}, {label:"Blog", href:/^#?\/blog$/}]) {
+      const link = page.locator(".echelon-desktop-links").getByRole("link", {name:label, exact:true});
+      await expect(link).toBeVisible();
+      await expect(link).toHaveAttribute("href", href);
+    }
+  }
+});
+
+test("restored navigation keeps account controls on screen on a narrow laptop", async ({page}) => {
+  await page.setViewportSize({width:1100,height:844});
+  await page.goto("/#/homepage");
+  const trigger = page.getByRole("button", {name:"Open navigation menu", exact:true});
+  await expect(trigger).toBeVisible();
+  expect(await page.locator(".echelon-nav-actions").evaluate(element => element.getBoundingClientRect().right <= window.innerWidth)).toBe(true);
+  await trigger.click();
+  for (const name of ["Jobs", "Blog"]) {
+    await expect(page.locator(".echelon-mobile-links").getByRole("link", {name, exact:true})).toBeVisible();
+  }
 });
 
 test("finder keeps province, system and level aligned, and resets dependent choices", async ({page}) => {
