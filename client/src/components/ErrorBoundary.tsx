@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { AlertTriangle, RotateCcw, Home } from "lucide-react";
 import { Component, ReactNode, ErrorInfo } from "react";
+import { isChunkLoadError, recoverChunkLoad } from "@/lib/chunkRecovery";
 
 interface Props {
   children: ReactNode;
@@ -14,16 +15,6 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  private static readonly chunkRetryKey = "echelon:chunk-retry";
-
-  private static isChunkLoadError(error: Error) {
-    return /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module/i.test(error.message);
-  }
-
-  private static isStalePreviewChunk(error: Error) {
-    return ErrorBoundary.isChunkLoadError(error) && /\/assets\/Class1WastewaterQuiz-[^\s]+\.js/i.test(error.message);
-  }
-
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false, error: null };
@@ -38,21 +29,11 @@ class ErrorBoundary extends Component<Props, State> {
     console.error("[ErrorBoundary] Uncaught render error:", error.message);
     console.error("[ErrorBoundary] Component stack:", info.componentStack);
 
-    if (ErrorBoundary.isStalePreviewChunk(error)) {
-      try {
-        const lastRetry = Number(sessionStorage.getItem(ErrorBoundary.chunkRetryKey));
-        if (!Number.isFinite(lastRetry) || Date.now() - lastRetry > 60_000) {
-          sessionStorage.setItem(ErrorBoundary.chunkRetryKey, String(Date.now()));
-          window.location.reload();
-        }
-      } catch {
-        // Storage may be disabled. Keep the visible error instead of looping.
-      }
-    }
+    recoverChunkLoad(error);
   }
 
   handleReset = () => {
-    if (this.state.error && ErrorBoundary.isChunkLoadError(this.state.error)) {
+    if (isChunkLoadError(this.state.error)) {
       window.location.reload();
       return;
     }
@@ -62,6 +43,7 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) return this.props.fallback;
+      const moduleError = isChunkLoadError(this.state.error);
 
       return (
         <div
@@ -108,7 +90,7 @@ class ErrorBoundary extends Component<Props, State> {
                 margin: "0 0 10px",
               }}
             >
-              Something went wrong
+              {moduleError ? "This page could not finish loading" : "Something went wrong"}
             </h1>
             <p
               style={{
@@ -118,8 +100,9 @@ class ErrorBoundary extends Component<Props, State> {
                 margin: "0 0 24px",
               }}
             >
-              An unexpected error occurred. Try refreshing the page or go back to
-              the homepage. If the problem persists, contact{" "}
+              {moduleError
+                ? "The site may have updated, or your connection was interrupted. Check your connection, then reload this page. If the problem persists, contact "
+                : "An unexpected error occurred. Try refreshing the page or go back to the homepage. If the problem persists, contact "}
               <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>
                 abello@echeloninstitute.ca
               </a>
@@ -166,7 +149,7 @@ class ErrorBoundary extends Component<Props, State> {
                 }}
               >
                 <RotateCcw size={14} />
-                Try Again
+                {moduleError ? "Reload page" : "Try Again"}
               </button>
               <a
                 href="/"
