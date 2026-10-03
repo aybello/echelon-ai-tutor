@@ -37,9 +37,9 @@ export function prepareAppFallback(template: string, url: string): { html: strin
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     ${canonical ? `<link rel="canonical" href="${escapeHtml(canonical)}" /><meta property="og:url" content="${escapeHtml(canonical)}" />` : ""}`;
-  const body = brandedShell(missing
-    ? `<h1>Page Not Found</h1><p>The page you are looking for does not exist.</p><p><a href="/">Return home</a> or choose a course below.</p>`
-    : `<h1>${privatePage ? "Your Echelon workspace" : "Prepare for your operator exam"}</h1><p role="status">Loading your study workspace. Course links and resources are available below.</p><p><a href="/oit">Start Ontario OIT practice</a> or <a href="/wpi">browse WPI-aligned preparation</a>.</p>`);
+  const body = missing
+    ? brandedShell(`<h1>Page Not Found</h1><p>The page you are looking for does not exist.</p><p><a href="/">Return home</a> or choose a course below.</p>`)
+    : `<div class="app-loading" role="status" aria-label="Loading page"><span class="app-loading-spinner" aria-hidden="true"></span></div><noscript><p>JavaScript is needed to open the study tools. <a href="/">Return home</a>.</p></noscript>`;
   const html = replaceAppRoot(replaceStaticHead(template, head, title), body);
   return { html, status: missing ? 404 : 200 };
 }
