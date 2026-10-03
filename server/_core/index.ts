@@ -20,6 +20,7 @@ import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
+import { ensureJobBoardHeartbeat } from "../jobBoardSchedule";
 import { publicReleaseHealth, RELEASE_CAPABILITIES, RELEASE_ID } from "../release";
 import {
   ensureWeeklyBlogHeartbeat,
@@ -464,6 +465,9 @@ async function startServer() {
       startDbKeepAlive();
     }
     if (!databaseWritesFrozen() && ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
+      void ensureJobBoardHeartbeat()
+        .then(action => console.log(`[fetch-jobs] six-hour Heartbeat ${action}`))
+        .catch(error => console.error("[fetch-jobs] could not register Heartbeat", error));
       void ensureWeeklyBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)
