@@ -19,7 +19,7 @@
 import { clearIdentityCookies } from "../_core/logout";
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
-import { eq, and, gt, isNull } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
@@ -33,9 +33,9 @@ import {
   readVerifiedEmailFromRequest,
   ECHELON_SESSION_COOKIE,
 } from "../_core/emailSession";
+import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
 const OTP_TTL_MS = 10 * 60 * 1000; // 10 minutes
-const MAX_ATTEMPTS = 5;
 
 function hashCode(code: string): string {
   return createHash("sha256").update(code).digest("hex");
@@ -150,44 +150,17 @@ export const dashboardAuthRouter = router({
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
 
-      const now = new Date();
-      const rows = await db
-        .select()
-        .from(dashboardOtps)
-        .where(
-          and(
-            eq(dashboardOtps.email, email),
-            gt(dashboardOtps.expiresAt, now),
-            isNull(dashboardOtps.usedAt), // Prevent replay: reject already-used codes
-          ),
-        )
-        .limit(1);
-
-      if (rows.length === 0) {
+      const verification = await verifyAndConsumeOtp(db, dashboardOtps, email, hashCode(input.code));
+      if (!verification.valid) {
+        if (verification.reason === "too_many_attempts") {
+          throw new Error("Too many incorrect attempts. Please request a new code.");
+        }
+        if (verification.reason === "wrong_code") {
+          const remaining = verification.attemptsRemaining;
+          throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
+        }
         throw new Error("Code expired or not found. Please request a new code.");
       }
-
-      const otp = rows[0];
-
-      if (otp.attempts >= MAX_ATTEMPTS) {
-        throw new Error("Too many incorrect attempts. Please request a new code.");
-      }
-
-      if (otp.codeHash !== hashCode(input.code)) {
-        // Increment attempt counter
-        await db
-          .update(dashboardOtps)
-          .set({ attempts: otp.attempts + 1 })
-          .where(eq(dashboardOtps.id, otp.id));
-        const remaining = MAX_ATTEMPTS - otp.attempts - 1;
-        throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
-      }
-
-      // Mark OTP as used — prevents replay within the 10-min window
-      await db
-        .update(dashboardOtps)
-        .set({ usedAt: now })
-        .where(eq(dashboardOtps.id, otp.id));
 
       // Issue the shared verified Echelon session cookie (24 hours)
       await issueVerifiedEmailSessionCookie(ctx.res, email);
