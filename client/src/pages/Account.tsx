@@ -2,9 +2,12 @@
 // Design: Light theme — white cards, #F1F5F9 background, slate text (matches site)
 import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { managerAccountDestination } from "@/lib/managerAccountRoute";
+import { getAllUnlockedExamTypes } from "@shared/products";
+// Pure catalogue mapping; this module has no Stripe SDK or server dependencies.
+import { getAllSubscriptionExamTypes } from "../../../server/stripe/subscriptionProducts";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ExamDateTracker from "@/components/ExamDateTracker";
@@ -142,6 +145,9 @@ export default function Account() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [portalLoading, setPortalLoading] = useState(false);
 
+  const search = useSearch();
+  const managerDestination = managerAccountDestination(search);
+  const isPersonalBilling = managerDestination === null;
   const { isAuthenticated, logout } = useAuth();
 
   // FIX 3: Detect verified email session (OTP/magic-link users who are not OAuth-authenticated)
@@ -161,9 +167,9 @@ export default function Account() {
   // pass. Sending them through the individual empty state incorrectly says
   // their purchase is missing. Route active managers to their team workspace.
   useEffect(() => {
-    if (!isManager) return;
-    window.location.replace(managerAccountDestination(window.location.search));
-  }, [isManager]);
+    if (!isManager || managerDestination === null) return;
+    window.location.replace(managerDestination);
+  }, [isManager, managerDestination]);
 
   // Shared-device reset must end httpOnly sessions as well as cached access.
   const handleClearDeviceState = logout;
@@ -177,6 +183,14 @@ export default function Account() {
     undefined,
     { enabled: !!isAuthenticated, retry: false } // OAuth only — entitlementsQuery covers email sessions
   );
+  const getEmailSubscriptions = trpc.stripe.getMySubscriptionsForEmailSession.useQuery(
+    undefined,
+    { enabled: !isAuthenticated && !!emailSession, retry: false }
+  );
+  const personalSubscriptions = (isAuthenticated
+    ? getSubscriptions.data?.subscriptions
+    : getEmailSubscriptions.data?.subscriptions
+  )?.filter(sub => sub.orgId == null) ?? [];
 
   const createBillingPortal = trpc.stripe.createBillingPortalSession.useMutation({
     onSuccess: (data) => {
@@ -190,7 +204,7 @@ export default function Account() {
   const handleManageSubscription = () => {
     setPortalLoading(true);
     createBillingPortal.mutate(
-      {},
+      { scope: "personal" },
       { onSettled: () => setPortalLoading(false) }
     );
   };
@@ -224,7 +238,7 @@ export default function Account() {
     }
     // Redirect to OTP login with email pre-filled
     // Forward the ?next= param if it is a safe same-application relative path
-    const rawNext = new URLSearchParams(window.location.search).get("next") ?? "";
+    const rawNext = isPersonalBilling ? "/account?billing=personal" : new URLSearchParams(search).get("next") ?? "";
     const safeNext = /^\/[^/]/.test(rawNext) && !/^\/\//.test(rawNext) && !rawNext.includes(":") ? rawNext : "";
     setOtpRedirecting(true);
     window.location.href = `/login/otp?email=${encodeURIComponent(trimmed)}${safeNext ? `&next=${encodeURIComponent(safeNext)}` : ""}`;
@@ -232,7 +246,11 @@ export default function Account() {
 
   // FIX 4: Prefer live entitlements as primary source; fall back to legacy purchase queries for OAuth users
   const entitlementCourses = entitlementsQuery.data?.accessibleCourses ?? [];
-  const unlockedExamTypes = entitlementCourses.length > 0
+  const personalExamTypes = [
+    ...getAllUnlockedExamTypes(entitlementsQuery.data?.purchasedProductKeys ?? []),
+    ...getAllSubscriptionExamTypes(personalSubscriptions),
+  ].filter((v, i, a) => a.indexOf(v) === i);
+  const unlockedExamTypes = isPersonalBilling ? personalExamTypes : entitlementCourses.length > 0
     ? entitlementCourses.map((c: { courseKey: string }) => c.courseKey)
     : [
         ...(getPurchases.data?.unlockedExamTypes ?? []),
@@ -241,7 +259,7 @@ export default function Account() {
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;
 
-  if (isManager) {
+  if (isManager && !isPersonalBilling) {
     return (
       <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
         <p style={{ color: "#475569", fontWeight: 700 }}>Opening your team dashboard…</p>
@@ -285,15 +303,22 @@ export default function Account() {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
-            {isAnyAuthenticated ? "My Account" : "Restore Access"}
+            {isAnyAuthenticated ? (isPersonalBilling ? "Individual Billing & Passes" : "My Account") : "Restore Access"}
           </h1>
           <p style={{ fontSize: 15, color: "#64748B", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
-            {isAuthenticated
+            {isPersonalBilling && isAnyAuthenticated
+              ? "Manage your separate individual subscription and practice passes here. Team billing and licences stay in your team dashboard; nothing is transferred."
+              : isAuthenticated
               ? "View your active passes, subscriptions, and team seats. Manage your account below."
               : emailSession
               ? `Signed in as ${emailSession}. Your active passes are shown below.`
               : "Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone."}
           </p>
+          {isPersonalBilling && isAnyAuthenticated && (
+            <Link href="/team" style={{ display: "inline-block", marginTop: 12, color: "#1D4ED8", fontSize: 13, fontWeight: 700 }}>
+              Return to team dashboard →
+            </Link>
+          )}
         </div>
 
         {/* How it works */}
@@ -379,7 +404,7 @@ export default function Account() {
         )}
 
         {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
-        {isAnyAuthenticated && !(getPurchases.isFetching || entitlementsQuery.isFetching) && (
+        {isAnyAuthenticated && !(getPurchases.isFetching || entitlementsQuery.isFetching || getSubscriptions.isFetching || getEmailSubscriptions.isFetching) && (
           <>
             {hasPurchases ? (
               <>
@@ -416,13 +441,13 @@ export default function Account() {
                 <OtpAccessSection email={submittedEmail ?? ""} />
 
                 {/* Active Subscriptions */}
-                {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (
+                {personalSubscriptions.length > 0 && (
                   <div style={{ marginBottom: 24 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
-                      🔄 Active Annual Subscriptions
+                      🔄 Active Individual Subscriptions
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
-                      {(getSubscriptions.data?.subscriptions ?? []).map((sub) => {
+                      {personalSubscriptions.map((sub) => {
                         const renewalDate = new Date(sub.currentPeriodEnd).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
                         const tierLabel = {
                           "class1": "Class 1 All-Access",
@@ -666,13 +691,15 @@ export default function Account() {
               /* No purchases found */
               <div className="account-card" style={{ padding: 36, textAlign: "center" }}>
                 <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#F1F5F9", border: "2px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
-                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>No purchases found</h2>
+                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>{isPersonalBilling ? "No active individual passes or subscriptions" : "No purchases found"}</h2>
                 <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
-                  We couldn't find any purchases for{" "}
+                  {isPersonalBilling ? "No active individual access was found for " : "We couldn't find any purchases for "}
                   <span style={{ color: "#334155", fontWeight: 700 }}>{submittedEmail}</span>.
                 </p>
                 <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
-                  Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address.
+                  {isPersonalBilling
+                    ? "Team licences and billing are separate and remain in your team dashboard. Check the email on your individual receipt if you expected a personal purchase."
+                    : "Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address."}
                 </p>
 
                 <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left", border: "1px solid #E2E8F0" }}>

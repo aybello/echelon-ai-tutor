@@ -419,7 +419,8 @@ export default function OrgDashboard() {
             : msg}
         </p>
         {orgChooser}
-        {!isUnauth && <Button className="bg-blue-600 text-white" onClick={() => billingPortal.mutate(orgInput)} disabled={billingPortal.isPending}>Manage team billing</Button>}
+        {!isUnauth && <Button className="bg-blue-600 text-white" onClick={() => billingPortal.mutate({ ...orgInput, scope: "team" })} disabled={billingPortal.isPending}>Manage team billing</Button>}
+        {!isUnauth && <Link href="/account?billing=personal" className="text-sm text-blue-700 underline">Individual billing &amp; passes</Link>}
         <Link href="/account">
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Sign In
@@ -634,13 +635,16 @@ export default function OrgDashboard() {
                 variant="outline"
                 size="sm"
                 className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
-                onClick={() => billingPortal.mutate({ orgId: overview.orgId })}
+                onClick={() => billingPortal.mutate({ scope: "team", orgId: overview.orgId })}
                 disabled={billingPortal.isPending}
               >
                 <CreditCard className="w-4 h-4 mr-1.5" />
                 {billingPortal.isPending ? "Opening..." : "Manage Billing"}
               </Button>
             )}
+            <Link href="/account?billing=personal" className="text-xs font-medium text-blue-700 underline px-2 py-2">
+              Individual billing &amp; passes
+            </Link>
             <Button
               variant="outline"
               size="sm"

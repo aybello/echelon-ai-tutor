@@ -334,7 +334,13 @@ export const stripeRouter = router({
    * needing to contact support.
    */
   createBillingPortalSession: publicProcedure
-    .input(z.object({ orgId: z.number().int().positive().optional() }))
+    .input(z.object({
+      scope: z.enum(["personal", "team"]).optional(),
+      orgId: z.number().int().positive().optional(),
+    }).refine(input => input.scope !== "personal" || input.orgId === undefined, {
+      message: "Personal billing cannot select an organization.",
+      path: ["orgId"],
+    }).default({}))
     .mutation(async ({ ctx, input }) => {
       const email = managerEmailForContext(ctx);
       if (!email) {
@@ -353,11 +359,18 @@ export const stripeRouter = router({
       const { normalizeEmail: normEmail } = await import("../_core/access");
       const { isNull, desc } = await import("drizzle-orm");
       const normalisedEmail = normEmail(email);
-      const managerOrg = await resolveManagedOrganization(ctx, { orgId: input.orgId, purpose: "billing", allowMissing: true });
+      // Explicit personal billing must not inspect or depend on team ownership,
+      // including pending checkouts and invoice-billed organizations. Omitted
+      // scope retains the safe legacy team-first behavior for older clients.
+      const managerOrg = input.scope === "personal" ? null : await resolveManagedOrganization(ctx, {
+        orgId: input.orgId,
+        purpose: "billing",
+        allowMissing: input.scope !== "team",
+      });
       let stripeCustomerId: string | null | undefined;
       if (managerOrg) {
         stripeCustomerId = managerOrg.stripeCustomerId;
-        if (!stripeCustomerId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This organization uses invoice billing or has no billing customer. Contact support to recover team billing." });
+        if (managerOrg.billingType === "invoice" || !stripeCustomerId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This organization uses invoice billing or has no billing customer. Contact support to recover team billing." });
       } else {
         const rows = await db.select({ stripeCustomerId: subscriptions.stripeCustomerId })
           .from(subscriptions).where(and(eq(subscriptions.email, normalisedEmail), isNull(subscriptions.orgId)))
@@ -370,7 +383,9 @@ export const stripeRouter = router({
 
       const portalSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerId,
-        return_url: managerOrg || isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
+        // Preserve the explicit personal view when a manager returns from Stripe.
+        return_url: input.scope === "personal" ? `${appBaseUrl}/account?billing=personal`
+          : managerOrg || isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
       });
 
       return { url: portalSession.url };
