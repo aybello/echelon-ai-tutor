@@ -57,16 +57,16 @@ export default function USLanding() {
   return (
     <div style={{ background: "#0F172A", minHeight: "100vh", fontFamily: "'Sora', sans-serif", color: "#fff" }}>
       {/* Nav */}
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(15,23,42,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "0 24px", height: 56, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(15,23,42,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "10px 24px", minHeight: 56, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
         <Link href="/us">
           <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
             <img src={LOGO_URL} alt="Echelon" width={28} height={28} style={{ filter: "brightness(0) invert(1)", height: 28, width: 28 }} />
             <span style={{ fontSize: 15, fontWeight: 800, color: "#fff", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Echelon US</span>
           </div>
         </Link>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <Link href="/us/courses"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Shared Courses</span></Link>
-          <Link href="/pricing"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Pricing</span></Link>
+          <Link href="/pricing?country=US"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Pricing</span></Link>
           <Link href="/us/states" style={{ padding: "8px 18px", borderRadius: 8, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
             Find Your State →
           </Link>
@@ -253,7 +253,7 @@ export default function USLanding() {
                 Browse Shared Courses
               </Link>
             </div>
-            <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>Individual Exam Passes provide 12 months of access to one selected course from successful payment. Prices are in Canadian dollars (CAD). <Link href="/pricing" style={{ color: "#60A5FA" }}>Review pricing and access details</Link>.</p>
+            <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>Individual Exam Passes provide 12 months of access to one selected course from successful payment. Prices are in Canadian dollars (CAD). <Link href="/pricing?country=US" style={{ color: "#60A5FA" }}>Review pricing and access details</Link>.</p>
           </FadeUp>
         </div>
       </section>
@@ -265,7 +265,7 @@ export default function USLanding() {
             © {new Date().getFullYear()} Echelon Institute. Independent preparation. Not affiliated with or endorsed by ABC, WPI, or any state certifying authority.
           </div>
           <div style={{ display: "flex", gap: 24 }}>
-            {[{ label: "Canada", href: "/" }, { label: "Pricing", href: "/pricing" }, { label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }].map(link => (
+            {[{ label: "Canada", href: "/" }, { label: "Pricing", href: "/pricing?country=US" }, { label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }].map(link => (
               <Link key={link.label} href={link.href}>
                 <span style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>{link.label}</span>
               </Link>

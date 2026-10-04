@@ -129,6 +129,8 @@ describe("US landing copy and original presentation", () => {
     expect(landing).toContain('href="/us/courses"');
     expect(landing).toContain("one selected course from successful payment");
     expect(landing).toContain("Canadian dollars (CAD)");
+    expect(landing).toContain('href="/pricing?country=US"');
+    expect(landing).not.toContain('href="/pricing"');
   });
 
   it("preserves the current logo, Sora type, dark rounded blue-teal design, and unnested link controls", () => {
