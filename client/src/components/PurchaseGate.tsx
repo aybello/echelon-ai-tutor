@@ -3,7 +3,7 @@
 // Usage: wrap the quiz content in <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={49} />
 
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
@@ -143,6 +143,7 @@ export default function PurchaseGate({
   const [accessToken] = useState(getStoredAccessToken);
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
+  const searchString = useSearch();
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
   const offer = resolvePurchaseGateOffer({ productKey, productName, price });
@@ -418,7 +419,7 @@ export default function PurchaseGate({
           </p>
             </>
           ) : (
-            <Link href={buildPricingHref(productKey, new URLSearchParams(window.location.search).get("province"))}>
+            <Link href={buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString)}>
               <button
                 style={{
                   width: "100%",

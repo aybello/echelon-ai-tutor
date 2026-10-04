@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
@@ -9,6 +9,7 @@ import { resolveQuizGateOffer } from "@shared/checkoutOffer";
 import { resolveCourseKey } from "@shared/courseRegistry";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
+import { buildPricingHref } from "@shared/funnelNavigation";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -82,6 +83,8 @@ export default function QuizGate({
   backPath = "/",
 }: QuizGateProps) {
   const [, navigate] = useLocation();
+  const searchString = useSearch();
+  const pricingHref = buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString);
   const { isUS } = useGeoRegion();
   const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -308,7 +311,7 @@ export default function QuizGate({
                     🔄 Try Another {questionsAnswered} Free Questions
                   </button>
                 )}
-                <Link href="/pricing">
+                <Link href={pricingHref}>
                   <button
                     style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
@@ -334,7 +337,7 @@ export default function QuizGate({
             <div role="alert" style={{ color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
               Checkout is temporarily unavailable for this course. Please choose
               the exact Exam Pass from the pricing page or contact support.
-              <Link href="/pricing">
+              <Link href={pricingHref}>
                 <button style={{ width: "100%", marginTop: 14, padding: "11px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                   View Exam Passes →
                 </button>
