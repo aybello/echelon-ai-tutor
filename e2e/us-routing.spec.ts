@@ -104,7 +104,7 @@ test("all 50 states remain searchable with no mobile horizontal clipping", async
   await page.screenshot({path:testInfo.outputPath("us-state-mobile.png"),fullPage:false});
 });
 
-test("US landing stays in bounds on phones and opens US pricing context", async ({page}) => {
+test("US landing stays in bounds on phones and opens US pricing context", async ({page},testInfo) => {
   await page.setViewportSize({width:390,height:844});
   await mockServices(page);
   await page.goto("/us");
