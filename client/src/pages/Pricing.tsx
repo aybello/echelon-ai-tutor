@@ -1249,7 +1249,7 @@ export default function Pricing() {
           <div className="province-selector" style={{ marginTop: 24 }}>
             <div className="province-selector-label">US shared WPI preparation</div>
             <div className="province-wpi-note" style={{ maxWidth: 640, lineHeight: 1.6, textAlign: "left" }}>
-              <strong>{usStudyContext.state ? `Study context: ${usStudyContext.state.name}` : "US study context — no valid state selected"}</strong>
+              <strong>{usStudyContext.state ? `Study context: ${usStudyContext.state.name}` : "US study context: no valid state selected"}</strong>
               {invalidUSState && <div role="alert">State not recognized. No state exam match is confirmed.</div>}
               <div>Not a dedicated state exam course. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
               <div style={{ marginTop: 8 }}><strong>All prices and checkout charges are in Canadian dollars (CAD).</strong></div>

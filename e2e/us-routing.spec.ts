@@ -38,16 +38,16 @@ test("state and stream selections survive reload and Back and expose only confir
   expect(state).toBeDefined();
   await mockServices(page);
   await page.goto(`/us/courses?state=${state.code}`);
-  await expect(page.getByLabel("State",{exact:true})).toHaveValue(state.code);
+  await expect(page.getByRole("combobox",{name:"State",exact:true})).toHaveValue(state.code);
   await expect(page.locator(".us-card[data-course-key]")).toHaveCount(matchedUSCourses(state).length);
   const course=matchedUSCourses(state)[0];
-  await page.getByLabel("Certification stream").selectOption(course.track);
+  await page.getByRole("combobox",{name:"Certification stream",exact:true}).selectOption(course.track);
   await expect(page).toHaveURL(new RegExp(`state=${state.code}.*stream=${course.track}`));
   await page.reload();
-  await expect(page.getByLabel("Certification stream")).toHaveValue(course.track);
+  await expect(page.getByRole("combobox",{name:"Certification stream",exact:true})).toHaveValue(course.track);
   await expect(page.locator(".us-card[data-course-key]")).toHaveCount(matchedUSCourses(state,course.track).length);
   await page.goBack();
-  await expect(page.getByLabel("Certification stream")).toHaveValue("");
+  await expect(page.getByRole("combobox",{name:"Certification stream",exact:true})).toHaveValue("");
 });
 
 test("unrecognized states do not silently show a full matching catalogue", async ({page}) => {

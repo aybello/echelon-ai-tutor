@@ -77,7 +77,7 @@ describe("explicit US study context on existing individual pricing", () => {
     setSearch(`product=wpi-class3-water&country=US&state=${invalid}`);
     const html = render();
     expect(html).toContain("State not recognized. No state exam match is confirmed");
-    expect(html).toContain("US study context — no valid state selected");
+    expect(html).toContain("US study context: no valid state selected");
     expect(html).toContain('href="/wpi-class3-water?country=US"');
     expect(html).not.toContain("Study context: Washington");
   });
@@ -85,7 +85,7 @@ describe("explicit US study context on existing individual pricing", () => {
   it("accepts optional state without asserting any local exam match", () => {
     setSearch("product=wpi-class3-water&country=US");
     const html = render();
-    expect(html).toContain("US study context — no valid state selected");
+    expect(html).toContain("US study context: no valid state selected");
     expect(html).not.toContain("State not recognized");
     expect(html).toContain('href="/wpi-class3-water?country=US"');
   });
