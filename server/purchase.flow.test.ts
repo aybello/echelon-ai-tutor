@@ -1,4 +1,5 @@
 import { purchaseEmailOutbox } from "../drizzle/schema";
+import { ALL_PRODUCTS } from "./stripe/products";
 /**
  * Purchase Flow Integration Tests
  * ─────────────────────────────────────────────────────────────────────────────
@@ -208,6 +209,16 @@ describe("stripe.createCheckoutSession", () => {
       line_items: [expect.objectContaining({
         price_data: expect.objectContaining({ currency: "cad", unit_amount: 4_900 }),
       })],
+    }));
+  });
+
+  it.each(ALL_PRODUCTS.map(product => [product.key, product.priceCAD]))("requires Stripe phone collection for %s without changing its CAD price", async (key, price) => {
+    mockGetCommercialAvailability.mockResolvedValueOnce([{ key, questionCount: 400 }]);
+    await appRouter.createCaller(makeCtx()).stripe.createCheckoutSession({ productKey: key });
+    expect(mockCreateCheckoutSession).toHaveBeenCalledWith(expect.objectContaining({
+      phone_number_collection: { enabled: true },
+      mode: "payment",
+      line_items: [expect.objectContaining({ price_data: expect.objectContaining({ currency: "cad", unit_amount: price }) })],
     }));
   });
 

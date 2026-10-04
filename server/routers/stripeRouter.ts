@@ -149,6 +149,9 @@ export const stripeRouter = router({
           ...individualExamPassCheckoutMetadata(),
         },
         allow_promotion_codes: true,
+        // Stripe requires the phone field when collection is enabled. Collect it
+        // here for every individual pass, including accelerated wallet checkouts.
+        phone_number_collection: { enabled: true },
         success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${appBaseUrl}${(await import("../../shared/funnelNavigation")).individualCheckoutCancelPath(product.key, ctx.req.headers.referer, appBaseUrl)}`,
       });
