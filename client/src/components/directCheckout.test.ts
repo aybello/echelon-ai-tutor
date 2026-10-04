@@ -25,13 +25,13 @@ describe("individual checkout flow", () => {
     expect(purchaseGate).toContain("onClick={handleCheckout}");
   });
 
-  it("leaves name and phone collection to Stripe only when Stripe needs it", () => {
+  it("requires phone collection within Stripe without a redundant contact form", () => {
     const oneTimeCheckout = stripeRouter.slice(
       stripeRouter.indexOf("createCheckoutSession: publicProcedure"),
       stripeRouter.indexOf("verifySession: publicProcedure"),
     );
 
-    expect(oneTimeCheckout).not.toContain("phone_number_collection");
+    expect(oneTimeCheckout).toContain("phone_number_collection: { enabled: true }");
     expect(oneTimeCheckout).not.toContain("customer_name:");
     expect(oneTimeCheckout).not.toContain("customer_phone:");
     expect(oneTimeCheckout).not.toContain("phone: z.string().max");

@@ -445,7 +445,7 @@ describe("Individual Exam Pass fulfillment", () => {
             entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
             individual_access_policy: INDIVIDUAL_EXAM_PASS_POLICY_VERSION,
           },
-          customer_details: { email: "learner@example.com", phone: null, name: null },
+          customer_details: { email: "learner@example.com", phone: "+16135550109", name: null },
         },
       },
     });
@@ -456,6 +456,7 @@ describe("Individual Exam Pass fulfillment", () => {
     expect(mockRecordPurchase).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
       email: "learner@example.com",
       productKey: "oit",
+      phone: "+16135550109",
       stripeSessionId: "cs_paid",
       accessExpiresAt: new Date("2027-09-17T22:36:40.000Z"),
     }));
