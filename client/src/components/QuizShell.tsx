@@ -23,7 +23,9 @@ import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
+import { readUSStudyContext, withUSStudyContext } from "@shared/usStudyContext";
+import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
 import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 import QuizSkeleton from "@/components/QuizSkeleton";
@@ -237,6 +239,12 @@ export default function QuizShell({
   isFreePreview = false,
   freeLimit = 15,
 }: QuizShellProps) {
+  const search = useSearch();
+  const usContext = readUSStudyContext(search);
+  const canonicalCourse = resolveCourseKey(examType ?? currentPath.slice(1));
+  const displaySubtitle = canonicalCourse?.examFamily === "western" && usContext.isUS
+    ? `${usContext.state?.name ?? "US"} · Shared WPI preparation · Confirm your local exam requirements`
+    : courseSubtitle;
   const clearedUnavailableModuleRef = useRef<string | null>(null);
 
   useEffect(() => {
@@ -470,7 +478,7 @@ export default function QuizShell({
                 🔄 New Session
               </button>
               {mockExamHref && (
-                <Link href={mockExamHref} style={{ flex: 1, width: "100%", padding: "14px 20px", borderRadius: 12, background: "#fff", color: "#0369A1", fontWeight: 700, fontSize: 15, border: "1.5px solid #0369A1", cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                <Link href={withUSStudyContext(mockExamHref, canonicalCourse?.courseKey, search)} style={{ flex: 1, width: "100%", padding: "14px 20px", borderRadius: 12, background: "#fff", color: "#0369A1", fontWeight: 700, fontSize: 15, border: "1.5px solid #0369A1", cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                   📝 Mock Exam
                 </Link>
               )}
@@ -573,7 +581,7 @@ export default function QuizShell({
           <div className="practice-title-row"><div>
             <span className="workspace-eyebrow">{courseLabel}</span>
             <h1>{courseTitle}</h1>
-            {courseSubtitle && <p>{courseSubtitle}</p>}
+            {displaySubtitle && <p>{displaySubtitle}</p>}
           </div></div>
           <div className="practice-session-stats" aria-live="polite">
             <span><strong>{confirmed ? history.length : history.length + 1}{sessionSize ? ` / ${sessionSize}` : ""}</strong> questions</span>

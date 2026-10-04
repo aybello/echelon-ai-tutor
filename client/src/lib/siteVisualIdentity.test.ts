@@ -29,12 +29,18 @@ describe("original Echelon visual identity", () => {
   });
 
   it("uses the same type in regional pages without removing regional content", () => {
+    const sharedLayout = read("client/src/components/USPageLayout.tsx");
+    const sharedCss = read("client/src/components/USPageLayout.css");
+    expect(sharedLayout).toContain('import "./USPageLayout.css"');
+    expect(sharedCss).toContain("font-family: 'Sora', sans-serif");
+    expect(sharedLayout).toContain('href="/us/courses"');
     for (const name of ["USCourses", "USLanding", "USStatePage", "USStates"]) {
       const page = read(`client/src/pages/${name}.tsx`);
-      expect(page).toContain(`fontFamily: "'Sora', sans-serif"`);
+      if (name === "USLanding") expect(page).toContain(`fontFamily: "'Sora', sans-serif"`);
+      else expect(page).toContain('from "@/components/USPageLayout"');
       expect(page).not.toContain('fontFamily: "system-ui, sans-serif"');
       expect(page).toContain("usePageMeta");
-      expect(page).toContain("/pricing");
+      expect(page).toContain("/us/");
     }
   });
 });

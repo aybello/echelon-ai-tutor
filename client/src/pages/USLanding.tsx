@@ -4,20 +4,18 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { useCountUp } from "@/hooks/useCountUp";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/animations";
-import { US_STATE_CONFIGS, FEATURED_US_STATES, type USStateCode } from "@/lib/stateConfig";
+import { US_STATE_NAMES } from "../../../shared/usStateNames";
 import React from "react";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
-function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
-  const { ref, count } = useCountUp(value, 1600);
+function ScopeStat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <span ref={ref} style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>
-        {count.toLocaleString()}{suffix}
+      <span style={{ fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>
+        {value}
       </span>
       <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>{label}</div>
     </div>
@@ -32,46 +30,45 @@ const STREAMS = [
 ];
 
 const FEATURES = [
-  { icon: "🎯", title: "Aligned to ABC/WPI 2025 Blueprints", body: "Every question maps to the official Need-to-Know Criteria published by the Association of Boards of Certification (ABC) and Water Professionals International (WPI)." },
-  { icon: "🤖", title: "AI Tutor Explains Every Answer", body: "The AI Tutor identifies your weak modules and adapts the session to focus where you need it most." },
-  { icon: "📋", title: "100-Question Timed Mock Exams", body: "Simulate the real exam experience with full-length 100-question timed exams matching the exact content area weightings from the WPI exam blueprints." },
+  { icon: "🎯", title: "Topic-Based Practice", body: "Work through practice questions and explanations by topic in your selected course." },
+  { icon: "🤖", title: "AI Tutor Study Support", body: "Ask the AI Tutor to explain concepts and work through calculations in your selected course. Available with an active course pass." },
+  { icon: "📋", title: "Timed Mock Exams", body: "Practise pacing and review missed topics with timed mock exams. Confirm your state's exam format with the certifying authority." },
   { icon: "🃏", title: "Flashcard Review Mode", body: "Reinforce key concepts with topic-organized flashcards covering treatment processes, equipment O&M, lab analysis, and safety procedures." },
-  { icon: "📐", title: "Formula Reference Sheets", body: "Comprehensive formula sheets covering flow calculations, chemical dosing, hydraulics, and all math topics tested on the WPI exam." },
-  { icon: "📊", title: "Progress Dashboard", body: "Track your accuracy by module, monitor your study streak, and see exactly where you stand before exam day." },
+  { icon: "📐", title: "Formula Reference Sheets", body: "Review flow calculations, chemical dosing, and hydraulics. Check your authority's rules for references permitted during the exam." },
+  { icon: "📊", title: "Progress Dashboard", body: "Review practice results and topic accuracy to plan your next study session. Practice scores are not a guarantee of an exam result." },
 ];
 
 export default function USLanding() {
   usePageMeta({
-    title: "US Water Operator Exam Prep — ABC/WPI Certification | Echelon Institute",
-    description: "AI-powered exam prep for US water and wastewater operators. Aligned to the official 2025 WPI Need-to-Know Criteria for all four streams and all four class levels.",
+    title: "US Water Operator Exam Prep | Shared WPI Study | Echelon Institute",
+    description: "Find your state's operator certification requirements, then compare shared WPI preparation for four water and wastewater streams at Class I to IV.",
   });
 
   const [stateSearch, setStateSearch] = useState("");
   const searchTrimmed = stateSearch.trim().toLowerCase();
   const searchResults = searchTrimmed
-    ? Object.values(US_STATE_CONFIGS).filter(s =>
+    ? US_STATE_NAMES.filter(s =>
         s.name.toLowerCase().includes(searchTrimmed) ||
-        s.code.toLowerCase().includes(searchTrimmed) ||
-        (s.certBodyAbbr?.toLowerCase() ?? "").includes(searchTrimmed)
+        s.code.toLowerCase().includes(searchTrimmed)
       )
     : null;
-  const featuredStates = FEATURED_US_STATES.map(code => US_STATE_CONFIGS[code as USStateCode]);
+  const featuredStates = US_STATE_NAMES.slice(0, 15);
 
   return (
     <div style={{ background: "#0F172A", minHeight: "100vh", fontFamily: "'Sora', sans-serif", color: "#fff" }}>
       {/* Nav */}
-      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(15,23,42,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "0 24px", height: 56, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(15,23,42,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "10px 24px", minHeight: 56, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
         <Link href="/us">
           <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
             <img src={LOGO_URL} alt="Echelon" width={28} height={28} style={{ filter: "brightness(0) invert(1)", height: 28, width: 28 }} />
             <span style={{ fontSize: 15, fontWeight: 800, color: "#fff", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Echelon US</span>
           </div>
         </Link>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <Link href="/us/courses"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>All Courses</span></Link>
-          <Link href="/pricing"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Pricing</span></Link>
-          <Link href="/us/courses" style={{ padding: "8px 18px", borderRadius: 8, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-            Start Free →
+        <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <Link href="/us/courses"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Shared Courses</span></Link>
+          <Link href="/pricing?country=US"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Pricing</span></Link>
+          <Link href="/us/states" style={{ padding: "8px 18px", borderRadius: 8, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+            Find Your State →
           </Link>
         </div>
       </nav>
@@ -85,48 +82,38 @@ export default function USLanding() {
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", borderRadius: 20, padding: "6px 16px", marginBottom: 24, border: "1px solid rgba(255,255,255,0.15)" }}>
             <span style={{ fontSize: 12 }}>🇺🇸</span>
-            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>Now Available for US Operators</span>
+            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>Study Support for US Operators</span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }} style={{ fontSize: "clamp(28px, 5vw, 56px)", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.15, letterSpacing: "-0.03em", margin: "0 0 20px 0", fontFamily: "Sora, sans-serif" }}>
-            Pass Your{" "}
-            <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>ABC/WPI Exam</span>
-            <br />on the First Try
+            Prepare for Your{" "}
+            <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Operator Exam</span>
+            <br />Start With Your State
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: "easeOut", delay: 0.55 }} style={{ fontSize: "clamp(14px, 2vw, 18px)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto 36px" }}>
-            AI-powered exam prep for US water and wastewater operators. Aligned to the official 2025 WPI Need-to-Know Criteria for all four streams and all four class levels.
+            Shared WPI preparation for water treatment, wastewater treatment, distribution, and collection at Class I to IV. Check your state's exam and course scope before you choose.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }} style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/us/courses" className="btn-pulse" style={{ padding: "14px 32px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
-              Start Studying Free →
+            <Link href="/us/states" className="btn-pulse" style={{ padding: "14px 32px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
+              Find Your State →
             </Link>
-            <Link href="/us/states" style={{ padding: "14px 32px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-              Find Your State
+            <Link href="/us/courses" style={{ padding: "14px 32px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+              Browse Shared Courses
             </Link>
           </motion.div>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.9 }} style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.5)", marginTop: 12 }}>
-            Free practice included · No credit card required
+            Review each course's free preview and access details before purchasing.
           </motion.p>
         </div>
       </section>
 
       {/* Stats Bar */}
       <section style={{ background: "#F1F5F9", borderBottom: "1px solid #E2E8F0", padding: "20px 24px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, textAlign: "center" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 24, textAlign: "center" }}>
           <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
-            <StaggerItem><AnimatedStat value={132400} suffix="+" label="US Operators Employed" /></StaggerItem>
-            <StaggerItem><AnimatedStat value={10700} label="Annual Job Openings" /></StaggerItem>
-            <StaggerItem>
-              <div>
-                <span style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>$58,260</span>
-                <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>Median Annual Salary</div>
-              </div>
-            </StaggerItem>
-            <StaggerItem>
-              <div>
-                <span style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>4 Streams</span>
-                <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>Water, Wastewater, Distribution, Collection</div>
-              </div>
-            </StaggerItem>
+            <StaggerItem><ScopeStat value="4 Streams" label="Treatment, Distribution, Collection" /></StaggerItem>
+            <StaggerItem><ScopeStat value="Class I-IV" label="WPI course levels" /></StaggerItem>
+            <StaggerItem><ScopeStat value="Shared Prep" label="Not a dedicated state exam course" /></StaggerItem>
+            <StaggerItem><ScopeStat value="State Rules" label="Confirm your exam and course scope" /></StaggerItem>
           </StaggerContainer>
         </div>
       </section>
@@ -136,9 +123,9 @@ export default function USLanding() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeUp>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>ALL FOUR CERTIFICATION STREAMS</div>
+              <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>FOUR SHARED WPI STUDY STREAMS</div>
               <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>
-                Whether you're pursuing water treatment, wastewater treatment,<br />distribution, or collection certification, Echelon has you covered for all four class levels.
+                Explore shared preparation by stream,<br />then check the match for your state and exam level.
               </h2>
             </div>
           </FadeUp>
@@ -159,7 +146,7 @@ export default function USLanding() {
                         <span key={cls} style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 20, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.12)" }}>{cls}</span>
                       ))}
                     </div>
-                    <div style={{ fontSize: 13, color: "#38BDF8", fontWeight: 600 }}>View Courses →</div>
+                    <div style={{ fontSize: 13, color: "#38BDF8", fontWeight: 600 }}>View Shared Courses →</div>
                   </div>
                 </Link>
               </FadeUp>
@@ -175,12 +162,13 @@ export default function USLanding() {
             <div style={{ textAlign: "center", marginBottom: 40 }}>
               <div style={{ display: "inline-block", background: "rgba(29,78,216,0.15)", color: "#60A5FA", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16, border: "1px solid rgba(96,165,250,0.2)" }}>FIND YOUR STATE</div>
               <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>
-                Echelon provides full, partial, or limited WPI-aligned coverage depending on the state. Select your state to review the certifying authority, coverage level, and exam requirements before purchasing.
+                Start with your state's requirements
               </h2>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: "0 auto", maxWidth: 700 }}>Exam providers, classifications, and requirements can differ by stream and level. Shared WPI preparation is not a dedicated state exam course. Your certifying authority controls eligibility, exam content, permitted references, and certification.</p>
             </div>
           </FadeUp>
           <div style={{ maxWidth: 480, margin: "0 auto 32px" }}>
-            <input type="text" placeholder="Search by state name or abbreviation..." value={stateSearch} onChange={e => setStateSearch(e.target.value)}
+            <input type="text" aria-label="Search states by name or abbreviation" placeholder="Search by state name or abbreviation..." value={stateSearch} onChange={e => setStateSearch(e.target.value)}
               style={{ width: "100%", padding: "12px 18px", borderRadius: 10, background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
           {searchResults ? (
@@ -214,7 +202,7 @@ export default function USLanding() {
               </div>
               <div style={{ textAlign: "center" }}>
                 <Link href="/us/states" style={{ display: "inline-block", padding: "10px 24px", borderRadius: 8, background: "transparent", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-                  Check your state coverage →
+                  Browse all states →
                 </Link>
               </div>
             </>
@@ -227,9 +215,9 @@ export default function USLanding() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeUp>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>EVERYTHING YOU NEED TO PASS</div>
+              <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>TOOLS FOR YOUR STUDY PLAN</div>
               <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>
-                Built specifically for the ABC/WPI exam format,<br />with content aligned to the 2025 Need-to-Know Criteria for every stream and class level.
+                Practise, review, and build understanding<br />with tools in your selected course.
               </h2>
             </div>
           </FadeUp>
@@ -253,19 +241,19 @@ export default function USLanding() {
         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <FadeUp>
             <h2 style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 800, color: "#fff", margin: "0 0 20px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.03em" }}>
-              Ready to Pass Your{" "}
-              <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Operator Exam?</span>
+              Choose Your{" "}
+              <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Study Path</span>
             </h2>
-            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", margin: "0 0 40px", lineHeight: 1.6 }}>Start with free practice questions today. No account required to begin.</p>
+            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", margin: "0 0 40px", lineHeight: 1.6 }}>Check your state's requirements first, then review the shared course catalogue and each course's free preview.</p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/us/courses" className="btn-pulse" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
-                Start Free Practice →
+              <Link href="/us/states" className="btn-pulse" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
+                Find Your State →
               </Link>
-              <Link href="/pricing" style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-                View Pricing
+              <Link href="/us/courses" style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+                Browse Shared Courses
               </Link>
             </div>
-            <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.35)" }}>Aligned to 2025 ABC/WPI Need-to-Know Criteria · Not affiliated with ABC or WPI</p>
+            <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>Individual Exam Passes provide 12 months of access to one selected course from successful payment. Prices are in Canadian dollars (CAD). <Link href="/pricing?country=US" style={{ color: "#60A5FA" }}>Review pricing and access details</Link>.</p>
           </FadeUp>
         </div>
       </section>
@@ -274,10 +262,10 @@ export default function USLanding() {
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.08)", padding: "32px 24px", background: "#0A0F1E" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
-            © {new Date().getFullYear()} Echelon Institute. Not affiliated with ABC, WPI, or any state certifying authority.
+            © {new Date().getFullYear()} Echelon Institute. Independent preparation. Not affiliated with or endorsed by ABC, WPI, or any state certifying authority.
           </div>
           <div style={{ display: "flex", gap: 24 }}>
-            {[{ label: "Canada", href: "/" }, { label: "Pricing", href: "/pricing" }, { label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }].map(link => (
+            {[{ label: "Canada", href: "/" }, { label: "Pricing", href: "/pricing?country=US" }, { label: "Privacy", href: "/privacy" }, { label: "Terms", href: "/terms" }].map(link => (
               <Link key={link.label} href={link.href}>
                 <span style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>{link.label}</span>
               </Link>

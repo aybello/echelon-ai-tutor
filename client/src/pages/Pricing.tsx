@@ -16,6 +16,7 @@ import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/products";
 import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
+import { readUSStudyContext } from "@shared/usStudyContext";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 import {
   getTeamTotalPriceCents,
@@ -1123,6 +1124,17 @@ function TeamSeatCalculator() {
 
 export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
+  // The validated URL is authoritative, including reload and browser Back.
+  const searchString = useSearch();
+  const [, navigate] = useLocation();
+  const pricingSelection = readPricingSelection(searchString);
+  const selectedProvince = pricingSelection.province;
+  const isWpi = selectedProvince !== "ON";
+  const usStudyContext = readUSStudyContext(searchString);
+  const isUSPreparation = usStudyContext.isUS && isWpi;
+  const invalidUSState = isUSPreparation && new URLSearchParams(searchString).has("state") && !usStudyContext.state;
+  // BC is a legacy WPI routing default, not a US learner's certifying authority.
+  const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
   const funnelAnalytics = trpc.funnelAnalytics.track.useMutation();
   const pricingAttribution = {
     ...getMarketingAttribution("/pricing"),
@@ -1130,18 +1142,13 @@ export default function Pricing() {
   };
   usePageMeta({
     title: "Pricing — Echelon Institute",
-    description: isUS
+    description: isUSPreparation
+      ? "US shared WPI preparation. Confirm your local exam and requirements before purchase. Individual Exam Pass prices and checkout are in CAD."
+      : isUS
       ? "Affordable Practice Passes for US water and wastewater operators. WPI Class I–IV, all 4 streams. Start free."
       : "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
   });
 
-  // The validated URL is authoritative, including reload and browser Back.
-  const searchString = useSearch();
-  const [, navigate] = useLocation();
-  const pricingSelection = readPricingSelection(searchString);
-  const selectedProvince = pricingSelection.province;
-  const isWpi = selectedProvince !== "ON";
-  const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
   const derivedSubProvince: SubscriptionProvince = isWpi ? "western" : "ontario";
   const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(null);
   const subProvince = subProvinceOverride ?? derivedSubProvince;
@@ -1155,7 +1162,7 @@ export default function Pricing() {
   const handleProvinceSelect = (code: ProvinceCode) => {
     const requested = pricingSelection.requestedProductKey;
     const sameFamily = (selectedProvince === "ON") === (code === "ON");
-    navigate(buildPricingHref(sameFamily ? requested : "", code));
+    navigate(buildPricingHref(sameFamily ? requested : "", code, searchString));
     setSubProvinceOverride(null);
   };
 
@@ -1222,19 +1229,34 @@ export default function Pricing() {
 
       {/* ── Hero ── */}
       <div className="pricing-hero">
-        <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
-        <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        <div className="pricing-hero-badge">{isUSPreparation ? "US shared WPI preparation" : isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
+        <h1>{isUSPreparation ? <>Choose Your Shared WPI<br />Preparation.</> : <>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</>}</h1>
+        {isUSPreparation ? (
+          <p>Choose an existing shared WPI course for one stream and class. Every Individual Exam Pass includes 12 months of access from successful payment, unlimited practice, the AI Tutor, and step-by-step solutions.</p>
+        ) : (
+          <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        )}
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
           borderRadius: 10, padding: "10px 18px", marginTop: 12, marginBottom: 4,
         }}>
           <span style={{ fontSize: 16 }}>🎁</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages.</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>{isUSPreparation ? "Try 15 free practice questions before choosing a shared WPI course." : "Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages."}</span>
         </div>
 
-        {/* Province selector */}
+        {isUSPreparation ? (
+          <div className="province-selector" style={{ marginTop: 24 }}>
+            <div className="province-selector-label">US shared WPI preparation</div>
+            <div className="province-wpi-note" style={{ maxWidth: 640, lineHeight: 1.6, textAlign: "left" }}>
+              <strong>{usStudyContext.state ? `Study context: ${usStudyContext.state.name}` : "US study context: no valid state selected"}</strong>
+              {invalidUSState && <div role="alert">State not recognized. No state exam match is confirmed.</div>}
+              <div>Not a dedicated state exam course. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
+              <div style={{ marginTop: 8 }}><strong>All prices and checkout charges are in Canadian dollars (CAD).</strong></div>
+            </div>
+          </div>
+        ) : (
+        /* Canadian province selector */
         <div className="province-selector">
           <div className="province-selector-label">Select Your Province</div>
           <div className="province-pills">
@@ -1268,6 +1290,7 @@ export default function Pricing() {
             </div>
           )}
         </div>
+        )}
       </div>
 
       {/* ── Content ── */}
@@ -1359,12 +1382,13 @@ export default function Pricing() {
             <span className="section-badge" style={{ background: "#F5F3FF", color: "#7C3AED", borderColor: "#C4B5FD" }}>New</span>
           </div>
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-            {isUS
+            {isUS && !isUSPreparation
               ? "Subscribe annually and unlock every exam type for your class level. All four WPI tracks included: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Prices in USD."
               : "Legacy annual plans remain active under their original terms. New individual access is available as a 12-month Exam Pass for one selected certification course."}
           </p>
 
           {/* Province toggle for subscriptions */}
+          {!isUSPreparation && (
           <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
             <button
               onClick={() => handleSubProvinceSelect("ontario")}
@@ -1389,6 +1413,7 @@ export default function Pricing() {
               🏔️ Western Canada (WPI — BC, AB, SK, MB)
             </button>
           </div>
+          )}
 
           <div style={{ marginBottom: 24 }}>
             <label htmlFor="annual-tier-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>Choose the level of all-access you need</label>
@@ -1508,12 +1533,12 @@ export default function Pricing() {
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
               <div style={{ margin: "20px 0 24px" }}>
-                <label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>Select your jurisdiction, stream, and certification level</label>
+                <label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>{isUSPreparation ? "Select a shared WPI stream and class" : "Select your jurisdiction, stream, and certification level"}</label>
                 <select
                   id="individual-course-picker"
                   value={selectedIndividualKey}
                   onChange={e => {
-                    navigate(buildPricingHref(e.target.value, selectedProvince));
+                    navigate(buildPricingHref(e.target.value, selectedProvince, searchString));
                     if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                   }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
@@ -1549,6 +1574,7 @@ export default function Pricing() {
                 </div>
               )}
 
+              {!isUSPreparation && (
               <div style={{ display: "none" }} aria-hidden="true">
         {/* Ontario header */}
         {!isWpi && (
@@ -1690,6 +1716,7 @@ export default function Pricing() {
         )}
 
               </div>
+              )}
 
             </div>
           )}
@@ -1714,7 +1741,7 @@ export default function Pricing() {
             Individual Exam Passes are one-time purchases with no renewal. Grandfathered annual subscriptions continue through their paid term if renewal is cancelled.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            {liveCourseLabel}. Canada-specific and AI-explained.
+            {liveCourseLabel}. {isUSPreparation ? "Shared WPI preparation with AI explanations; confirm your local exam requirements." : "Canada-specific and AI-explained."}
           </p>
           <div className="trust-grid">
             {[
@@ -1820,8 +1847,10 @@ export default function Pricing() {
               a: "Teams Flex supports 3- or 6-month course-specific licences for named operators. Teams Annual supports year-round organizational access by stream. Visit the Teams page to build a plan."
             },
             {
-              q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
-              a: "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
+              q: isUSPreparation ? "Is Echelon affiliated with WPI or my state certifying authority?" : "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
+              a: isUSPreparation
+                ? "No. Echelon Institute is an independent preparation provider, not affiliated with or endorsed by WPI or your certifying authority. Shared WPI preparation is not a dedicated state exam course. Confirm your local exam and requirements before purchase; checkout is in CAD."
+                : "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
             },
             {
               q: "Can I cancel or get a refund?",
@@ -1875,8 +1904,12 @@ function ProductCard({
   isUS?: boolean;
   verifiedQuestionCount?: number;
 }) {
+  const searchString = useSearch();
+  const isUSPreparation = readUSStudyContext(searchString).isUS && product.key.startsWith("wpi-");
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
-  const displayDesc = isWpi && wpiLabel ? wpiLabel.description : product.description;
+  const displayDesc = isUSPreparation
+    ? SHARED_PRODUCTS.find(item => item.key === product.key)!.description
+    : isWpi && wpiLabel ? wpiLabel.description : product.description;
   const displayBadge = isWpi && wpiLabel?.badge ? wpiLabel.badge : product.badge;
   const displayBadgeColor = isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8");
 
@@ -1884,7 +1917,9 @@ function ProductCard({
   const qMatch = product.features?.[0]?.match(/(\d[\d,]+)/);
   const questionCount = verifiedQuestionCount?.toLocaleString("en-CA") ?? (qMatch ? qMatch[1] : null);
   const displayFeatures = product.features?.map((feature, index) =>
-    index === 0 && verifiedQuestionCount ? `${verifiedQuestionCount.toLocaleString("en-CA")} verified practice questions` : feature,
+    index === 0 && verifiedQuestionCount
+      ? `${verifiedQuestionCount.toLocaleString("en-CA")} verified practice questions`
+      : isUSPreparation && feature === "BC / AB / SK / MB" ? "Shared WPI preparation" : feature,
   );
 
   return (
@@ -2001,12 +2036,12 @@ function ProductCard({
           province={isUS ? "unknown" : "ontario"}
         />
         {product.available && PRODUCT_STUDY_PATHS[product.key]?.quizPath && (
-          <Link href={courseProvinceHref(PRODUCT_STUDY_PATHS[product.key].quizPath, product.key, typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("province") : null)} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+          <Link href={courseProvinceHref(PRODUCT_STUDY_PATHS[product.key].quizPath, product.key, new URLSearchParams(searchString).get("province"), searchString)} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
             Try Free →
           </Link>
         )}
         {FLASHCARD_ROUTES[product.key] && (
-          <Link href={FLASHCARD_ROUTES[product.key]}>
+          <Link href={courseProvinceHref(FLASHCARD_ROUTES[product.key], product.key, new URLSearchParams(searchString).get("province"), searchString)}>
             <span style={{
               display: "block", textAlign: "center", fontSize: 12, fontWeight: 600,
               color: product.color, textDecoration: "none", padding: "2px 0",
