@@ -24,6 +24,8 @@ import { replaceAppRoot } from "./replaceAppRoot";
  */
 import type { Express, Request, Response } from "express";
 import { WPI_PAGE_COPY, WPI_OFFICIAL_SOURCES } from "../shared/wpiContent";
+import { US_STATE_NAMES } from "../shared/usStateNames";
+import { US_STATE_CONFIGS, US_STREAMS, US_RESEARCH_CHECKED_DATE, matchedUSCourses, usCourseHref, usProgramLabel, type USStateConfig } from "../shared/usExamRouting";
 import { brandedShell } from "./staticHead";
 import { boundedPublicBlogLinks, renderPublicBlogLinks, type PublicBlogLink } from "./publicBlogIndex";
 import fs from "fs";
@@ -668,16 +670,16 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
   {
     path: "/us",
     title:
-      "US Water Operator Exam Prep | ABC/WPI Certification Study — Echelon Institute",
+      "US Water Operator Exam Prep | Shared WPI Study | Echelon Institute",
     description:
-      "AI-powered exam prep for US water and wastewater operators. Aligned to the 2025 ABC/WPI Need-to-Know Criteria for all 4 streams (water treatment, wastewater treatment, distribution, collection) and all 4 class levels.",
-    h1: "US Water Operator Exam Prep — Pass Your ABC/WPI Certification",
+      "Find your state's operator certification requirements, then compare shared WPI preparation for four water and wastewater streams at Class I to IV.",
+    h1: "US Water Operator Exam Prep: Start With Your State",
     jsonLd: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: "US Water Operator Exam Prep | Echelon Institute",
       description:
-        "AI-powered ABC/WPI exam prep for US water and wastewater operators.",
+        "State-first course selection and shared WPI preparation for US water and wastewater operators.",
       url: `${SITE_URL}/us`,
       inLanguage: "en-US",
       isPartOf: {
@@ -687,96 +689,82 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
       },
     }),
     bodyHtml: `
-      <h2>ABC/WPI Exam Prep for US Water Operators</h2>
-      <p>Echelon Institute provides AI-powered exam preparation for US water and wastewater operators pursuing ABC/WPI certification. All content is aligned to the official 2025 WPI Need-to-Know Criteria published by Water Professionals International (WPI) and the Association of Boards of Certification (ABC).</p>
+      <h2>Start With Your State's Requirements</h2>
+      <p><a href="${SITE_URL}/us/states">Find your state</a> before choosing preparation. Exam providers, classifications, and requirements can differ by stream and level. Your certifying authority controls eligibility, exam content, permitted references, and certification.</p>
 
-      <h2>All Four Certification Streams</h2>
-      <p>Echelon covers all four operator certification streams: <a href="${SITE_URL}/wpi-class1-water">Water Treatment</a>, <a href="${SITE_URL}/wpi-class1-wastewater">Wastewater Treatment</a>, <a href="${SITE_URL}/wpi-class1-water-dist">Water Distribution</a>, and <a href="${SITE_URL}/wpi-class1-water-coll">Wastewater Collection</a>. Each stream is available for Class I through Class IV.</p>
+      <h2>Four Shared WPI Study Streams</h2>
+      <p>Echelon's shared WPI catalogue includes Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection at Class I to IV. These are shared preparation courses, not dedicated state exam courses. A state listing does not mean every exam uses WPI or that a shared course covers its requirements. <a href="${SITE_URL}/us/courses">Browse the shared course catalogue</a>.</p>
 
-      <h2>45 States Covered</h2>
-      <p>Approximately 45 US states use the ABC/WPI standardized exam system. Echelon covers operators in Iowa, Colorado, Oregon, Ohio, Michigan, Wisconsin, Minnesota, Indiana, Virginia, North Carolina, Georgia, Maryland, Massachusetts, Washington, Pennsylvania, and all other WPI states. <a href="${SITE_URL}/us/states">Find your state</a>.</p>
+      <h2>Study Tools in Your Selected Course</h2>
+      <p>Use topic-based practice and explanations, flashcards, formula references, timed mock exams, and progress tracking. Active course-pass holders can use the AI Tutor for concepts and calculations. Practice scores and mock exams are study tools, not a guarantee of an exam result or an exact copy of your state's test.</p>
 
-      <h2>What the WPI Exam Covers</h2>
-      <p>The WPI exam consists of 100 multiple-choice questions covering treatment processes, laboratory analysis, equipment operation and maintenance, source water quality, and safety and security. Calculation questions make up 10–16% of the exam. The passing score is 70%.</p>
+      <h2>Free Preview and Individual Exam Passes</h2>
+      <p>Review the selected course's free preview and access details before purchasing. An Individual Exam Pass is for one named learner, one selected course, and 12 months of access from successful payment. Prices are in Canadian dollars (CAD); applicable taxes are added at checkout. <a href="${SITE_URL}/pricing">Review current pricing</a>.</p>
 
-      <h2>AI-Powered Study Tools</h2>
-      <p>Echelon's AI tutor explains every answer in detail, identifies your weak modules, and adapts the session to focus where you need it most. Practice with 400+ questions per level, take full-length 100-question timed mock exams, and review key concepts with organized flashcards.</p>
-
-      <h2>Pricing for US Operators</h2>
-      <p>Individuals can purchase a 12-month Exam Pass for one selected course. Utilities can choose targeted Teams Flex licences or Teams Annual access. <a href="${SITE_URL}/pricing">View current pricing</a>. The first 15 questions in every course are free.</p>
-
-      <h2>Start Preparing Today</h2>
-      <p>Select your stream and class level to begin: <a href="${SITE_URL}/us/courses">browse all 16 courses</a> or <a href="${SITE_URL}/us/states">find your state</a> for state-specific certification information.</p>
+      <h2>Independent Preparation</h2>
+      <p>Echelon Institute is independent and is not affiliated with or endorsed by ABC, WPI, or any state certifying authority. The authority's current documents control. Confirm your exam version, passing score, and registration rules with that authority.</p>
     `,
   },
   {
     path: "/us/courses",
     title:
-      "US Water Operator Courses | All 4 Streams & 4 Levels — Echelon Institute",
+      "Shared WPI Courses for US Operators | Echelon Institute",
     description:
-      "Browse all 16 ABC/WPI water operator certification prep courses. Water treatment, wastewater treatment, distribution, and collection — Class I through Class IV. AI-powered practice questions, mock exams, and flashcards.",
-    h1: "US Water Operator Certification Courses — All Streams & Levels",
+      "Compare shared WPI preparation for water treatment, wastewater treatment, distribution, and collection at Class I to IV. Confirm your state and exam before choosing.",
+    h1: "Shared WPI Preparation Courses for US Operators",
     jsonLd: buildWebPageJsonLd({
       path: "/us/courses",
-      title: "US Water Operator Courses | Echelon Institute",
-      description: "All 16 ABC/WPI water operator certification prep courses.",
-      h1: "US Water Operator Certification Courses",
+      title: "Shared WPI Courses for US Operators | Echelon Institute",
+      description: "Shared WPI preparation at Class I to IV. Check your state's exam and course scope before purchasing.",
+      h1: "Shared WPI Preparation Courses for US Operators",
     }),
     bodyHtml: `
-      <h2>16 Courses for US Water and Wastewater Operators</h2>
-      <p>Echelon Institute offers 16 certification prep courses covering all four ABC/WPI streams and all four class levels. Each course includes 400+ practice questions, a 100-question timed mock exam, and organized flashcards aligned to the 2025 WPI Need-to-Know Criteria.</p>
+      <h2>Check Your State and Exam First</h2>
+      <p><a href="${SITE_URL}/us/states">Find your state</a> and confirm your certification stream, class, exam provider, and exam version with the certifying authority. The courses below use the existing shared WPI study routes. They are not dedicated state exam courses and do not replace state-specific regulations or authority study material.</p>
 
-      <h2>Water Treatment — Class I through Class IV</h2>
-      <p>Water treatment operator courses cover coagulation, flocculation, sedimentation, filtration, disinfection, chemical feed, source water quality, and regulatory compliance. <a href="${SITE_URL}/wpi-class1-water">Start with Class I Water Treatment</a>.</p>
+      <h2>Four Streams at Class I to IV</h2>
+      <p>Choose from Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Course names describe the shared WPI study level, not an automatic match to a state's classification.</p>
+      <ul>${COURSE_SEO_PAGES.filter(course => course.regionPath === "/wpi").map(course => `<li><a href="${SITE_URL}${course.quizPath}?country=US">${escapeHtml(course.displayName)}</a>: ${formatCad(course.priceCAD)} for one selected course with 12 months of access from successful payment.</li>`).join("")}</ul>
 
-      <h2>Wastewater Treatment — Class I through Class IV</h2>
-      <p>Wastewater treatment courses cover primary, secondary, and tertiary treatment, activated sludge, nutrient removal, biosolids management, laboratory analysis, and equipment operation. <a href="${SITE_URL}/wpi-class1-wastewater">Start with Class I Wastewater Treatment</a>.</p>
+      <h2>Review the Course Before Purchasing</h2>
+      <p>Open the selected course to review its free preview and access details. Course study tools include practice and explanations, flashcards, formula references, timed mock exams, progress tracking, and AI Tutor support for active course-pass holders. Mock exams are practice tools, not an exact reproduction of an authority's exam.</p>
 
-      <h2>Water Distribution — Class I through Class IV</h2>
-      <p>Distribution system courses cover pipe materials, pressure zones, cross-connection control, water quality monitoring, hydrant maintenance, and system hydraulics. <a href="${SITE_URL}/wpi-class1-water-dist">Start with Class I Water Distribution</a>.</p>
+      <h2>Individual Access and CAD Pricing</h2>
+      <p>Each Individual Exam Pass is for one named learner and one selected course. Prices are in Canadian dollars (CAD); applicable taxes are added at checkout. <a href="${SITE_URL}/pricing">Review pricing and access terms</a>.</p>
 
-      <h2>Wastewater Collection — Class I through Class IV</h2>
-      <p>Collection system courses cover gravity sewers, force mains, lift stations, infiltration and inflow, CCTV inspection, cleaning equipment, and confined space safety. <a href="${SITE_URL}/wpi-class1-water-coll">Start with Class I Wastewater Collection</a>.</p>
-
-      <h2>Free Trial Available</h2>
-      <p>The first 15 questions on every course are free — no account or credit card required. <a href="${SITE_URL}/pricing">View pricing</a> for full access.</p>
+      <h2>Independent Preparation</h2>
+      <p>Echelon Institute is independent and is not affiliated with or endorsed by ABC, WPI, or any state certifying authority. Your certifying authority controls eligibility, exam content, permitted references, and certification. The authority's current documents control.</p>
     `,
   },
   {
     path: "/us/states",
     title:
-      "US Water Operator Certification by State | ABC/WPI Exam Prep — Echelon Institute",
+      "US Water Operator Certification by State | Echelon Institute",
     description:
-      "Find water and wastewater operator certification exam prep for your state. Echelon labels each state as full, partial, or limited coverage so candidates can confirm fit before purchasing.",
+      "Choose your state to review operator certification requirements and course scope. Shared WPI preparation is not a dedicated state exam course.",
     h1: "US Water Operator Certification by State",
     jsonLd: buildWebPageJsonLd({
       path: "/us/states",
       title: "US Water Operator Certification by State | Echelon Institute",
       description:
-        "State-by-state WPI-aligned exam preparation with full, partial, or limited coverage labels.",
+        "State directory for operator certification requirements and shared WPI course scope, without blanket exam coverage claims.",
       h1: "US Water Operator Certification by State",
     }),
     bodyHtml: `
-      <h2>45 States Using the ABC/WPI Standardized Exam</h2>
-      <p>Approximately 45 US states use the ABC/WPI standardized exam for water and wastewater operator certification. Echelon Institute covers operators in all of these states with content aligned to the 2025 WPI Need-to-Know Criteria.</p>
+      <h2>Choose Your State</h2>
+      <p>This directory includes all 50 states so you can start with your jurisdiction. A listing does not mean every stream or level uses WPI exams or has a dedicated Echelon course. Check the state page's course scope and the authority's current requirements before purchasing.</p>
+      <ul>${US_STATE_NAMES.map(state => `<li><a href="${SITE_URL}/us/states/${state.slug}">${escapeHtml(state.name)}</a></li>`).join("")}</ul>
 
-      <h2>Midwest States</h2>
-      <p>Iowa (Iowa DNR), Minnesota (MDH), Wisconsin (WI DNR), Michigan (EGLE), Indiana (IDEM), Ohio (Ohio EPA), Missouri (MO DNR), North Dakota (NDDEQ), South Dakota (SD DANR), Nebraska (NDEE), Kansas (KDHE).</p>
+      <h2>Confirm the Stream, Level, and Exam Version</h2>
+      <p>Water treatment, wastewater treatment, distribution, and collection can follow different certification rules in the same state. Your certifying authority controls eligibility, exam content, permitted references, passing scores, and certification. The authority's current documents control.</p>
 
-      <h2>Northeast States</h2>
-      <p>Maine (Maine DWP), New Hampshire (NHDES), Vermont (VT DEC), Massachusetts (MassDEP), Rhode Island (RIDOH), Connecticut (CT DPH), New Jersey (NJDEP), Delaware (DNREC), Maryland (MDE), Pennsylvania (PA DEP), West Virginia (WV BPH).</p>
+      <h2>Shared Preparation Is Not a State Exam Course</h2>
+      <p>The <a href="${SITE_URL}/us/courses">shared WPI course catalogue</a> provides preparation across four streams at Class I to IV. It does not replace state-specific study material or guarantee a match to your exam. Review the selected course's free preview and access details.</p>
 
-      <h2>Southern States</h2>
-      <p>Virginia (VDH), North Carolina (NC DWR), South Carolina (SCDHEC), Georgia (Georgia EPD), Alabama (ADEM), Mississippi (MSDH), Arkansas (ADH), Oklahoma (Oklahoma DEQ), Louisiana (LDH), Kentucky (KY DOW), Tennessee (TDEC).</p>
+      <h2>Independent Preparation</h2>
+      <p>Echelon Institute is independent and is not affiliated with or endorsed by ABC, WPI, or any state certifying authority. Certification decisions belong to the authority, not Echelon.</p>
 
-      <h2>Western States</h2>
-      <p>Washington (WA DOH), Oregon (OHA), Idaho (Idaho DEQ), Montana (Montana DEQ), Wyoming (Wyoming DEQ), Colorado (CDPHE), Utah (Utah DDW), Nevada (NDEP), Arizona (ADEQ), New Mexico (NMED), Alaska (Alaska DEC), Hawaii (Hawaii DOH).</p>
-
-      <h2>States Not Covered</h2>
-      <p>California (SWRCB), Texas (TCEQ), Florida (FDEP), and New York (NYSDOH) use their own state-specific exam systems rather than the ABC/WPI standardized exam. Echelon does not currently offer prep for these state-specific exams.</p>
-
-      <h2>Start Practicing</h2>
-      <p><a href="${SITE_URL}/us/courses">Browse all courses</a> or <a href="${SITE_URL}/us">return to the US overview</a>.</p>
+      <p><a href="${SITE_URL}/us">Return to the US overview</a> or <a href="${SITE_URL}/pricing">review Individual Exam Pass terms and Canadian dollar (CAD) pricing</a>.</p>
     `,
   },
 ];
@@ -873,6 +861,28 @@ function buildCoursePageMeta(course: CourseSeoPage): PageMeta {
   };
 }
 
+function buildUSStatePageMeta(state: USStateConfig): PageMeta {
+  const body = US_STREAMS.map(stream => {
+    const program = state.programs.find(item => item.stream === stream.key)!;
+    const courses = matchedUSCourses(state, stream.key);
+    const choices = courses.length ? `<ul>${courses.map(course => `<li>${escapeHtml(course.displayName)}: <a href="${escapeHtml(usCourseHref(course, "practice", state.code)!)}">Practice</a> | <a href="${escapeHtml(usCourseHref(course, "mock", state.code)!)}">Mock exam</a> | <a href="${escapeHtml(usCourseHref(course, "flashcards", state.code)!)}">Flashcards</a></li>`).join("")}</ul>` : `<p>No state-matched course is linked for this stream yet.</p>`;
+    return `<section><h2>${escapeHtml(stream.label)}</h2><p>${escapeHtml(usProgramLabel(program))}</p>
+      <p><strong>Program authority:</strong> ${escapeHtml(program.authorityName || "Not confirmed")}</p>
+      <p><strong>Local levels:</strong> ${escapeHtml(program.localLevels)}</p><p>${escapeHtml(program.note)}</p>
+      ${program.authorityUrl ? `<p><a href="${escapeHtml(program.authorityUrl)}">Official program information</a></p>` : ""}
+      ${choices}${program.sources.length ? `<h3>Sources and exam scope</h3><ul>${program.sources.map(source => `<li><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a><p>${escapeHtml(source.evidence)}</p></li>`).join("")}</ul>` : ""}</section>`;
+  }).join("");
+  return {
+    path: `/us/states/${state.slug}`, title: `${state.name} Operator Exam Routes | Echelon Institute`,
+    description: `Check ${state.name} water and wastewater exam programs, official sources and confirmed shared WPI course matches. State-specific courses are listed separately.`,
+    h1: `${state.name} operator exam preparation`, changefreq: "monthly", priority: "0.6",
+    bodyHtml: `<p>Source check: ${US_RESEARCH_CHECKED_DATE}. Shared WPI courses are linked only where the standardized exam and class match are confirmed. Local grades may not equal WPI class numbers. Your authority's current documents control.</p>${body}
+      ${state.dedicatedCourseNeeds.length ? `<h2>Dedicated course research</h2><p>Dedicated prep is not available or being sold yet.</p><ul>${state.dedicatedCourseNeeds.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul>` : ""}
+      ${state.limits.length ? `<h2>What still needs confirmation</h2><ul>${state.limits.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul>` : ""}
+      <p><a href="/us/courses?state=${state.code}">View confirmed shared courses</a> or <a href="/us/states">view all states</a>.</p>`,
+  };
+}
+
 export const STATIC_PAGE_META: PageMeta[] = [
   ...BASE_STATIC_PAGE_META,
   ...getStudyUtilityPageMeta(),
@@ -896,6 +906,7 @@ export const STATIC_PAGE_META: PageMeta[] = [
   },
   ...REGION_SEO_PAGES.map(buildRegionPageMeta),
   ...COURSE_SEO_PAGES.map(buildCoursePageMeta),
+  ...Object.values(US_STATE_CONFIGS).map(buildUSStatePageMeta),
 ];
 
 /** Build a map for O(1) lookup */
@@ -1032,7 +1043,9 @@ Echelon Institute is independent. It is not affiliated with or endorsed by OWWCO
 - Wastewater Treatment — Class I, II, III, IV
 - Water Distribution — Class I, II, III, IV
 - Wastewater Collection — Class I, II, III, IV
-- Coverage varies by state and is labelled full, partial, or limited. Candidates should confirm fit with their state authority before purchasing.
+- Shared WPI preparation is linked per state, stream and confirmed WPI class. A state listing is not complete exam coverage.
+- Customized, mixed and unique state exams require separate research and dedicated courses. Those courses are not yet offered or sold.
+- Local grade names can differ from WPI class numbers. Candidates must confirm their exam version and local requirements with the authority.
 
 ## Key Pages
 - Homepage: ${SITE_URL}/

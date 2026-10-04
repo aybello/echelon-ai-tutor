@@ -10,6 +10,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
 import { buildPricingHref, courseProvinceHref, signInHref } from "@shared/funnelNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
+import { readUSStudyContext, usCatalogueHref } from "@shared/usStudyContext";
 
 export const ECHELON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -109,9 +110,11 @@ export default function SiteNav({
   const destination = `${currentPath.split("?")[0]}${search ? `?${search}` : ""}`;
   const accountHref = isSignedIn ? "/account" : signInHref(destination);
   const courseProvince = new URLSearchParams(search).get("province");
-  const dashboardHref = course ? courseProvinceHref(`/dashboard?course=${encodeURIComponent(course.courseKey)}`, course.courseKey, courseProvince) : "/dashboard";
-  const pricingHref = course ? buildPricingHref(course.courseKey, new URLSearchParams(search).get("province")) : "/pricing";
-  const workspaceTabs = course ? getCourseWorkspaceTabs(course).map(tab => ({ ...tab, href: courseProvinceHref(tab.href, course.courseKey, courseProvince) })) : [];
+  const usContext = readUSStudyContext(search);
+  const isUSCourse = course?.examFamily === "western" && usContext.isUS;
+  const dashboardHref = course ? courseProvinceHref(`/dashboard?course=${encodeURIComponent(course.courseKey)}`, course.courseKey, courseProvince, search) : "/dashboard";
+  const pricingHref = course ? buildPricingHref(course.courseKey, courseProvince, search) : "/pricing";
+  const workspaceTabs = course ? getCourseWorkspaceTabs(course).map(tab => ({ ...tab, href: courseProvinceHref(tab.href, course.courseKey, courseProvince, search) })) : [];
   const { primaryTabs: mobilePrimaryTabs, secondaryTabs: mobileSecondaryTabs } = getMobileWorkspaceTabs(workspaceTabs);
   const activeTab = course ? getActiveWorkspaceTab(currentPath, course) : null;
 
@@ -128,7 +131,7 @@ export default function SiteNav({
   return (
     <header className={`echelon-site-header${learningMode ? " is-learning" : ""}`}>
       <nav className="echelon-global-nav" aria-label="Global navigation">
-        <Link href="/" className="echelon-brand" aria-label="Echelon Institute home">
+        <Link href={isUSCourse ? "/us" : "/"} className="echelon-brand" aria-label="Echelon Institute home">
           <img src={ECHELON_LOGO_URL} alt="Echelon Institute logo" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
@@ -170,7 +173,7 @@ export default function SiteNav({
           <div className="echelon-course-identity">
             {course.courseKey === "electrician-309a" ? <Zap size={16} aria-hidden="true" /> : <FlaskConical size={16} aria-hidden="true" />}
             <span>{course.shortName}</span>
-            <small>{course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
+            <small>{isUSCourse ? `${usContext.state?.name ?? "US"} / Shared WPI` : course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
           </div>
           <nav className="echelon-course-tabs echelon-course-tabs-desktop" aria-label={`${course.displayName} study tools`}>
             {workspaceTabs.map((tab) => {
@@ -234,7 +237,7 @@ export default function SiteNav({
             </div>
             <div className="echelon-mobile-links">
               {NAV_LINKS.map((item) => (
-                <a key={item.href} href={item.href === "/pricing" ? pricingHref : item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""}>{item.label}</a>
+                <a key={item.href} href={item.href === "/pricing" ? pricingHref : item.href === "/#courses" && isUSCourse ? usCatalogueHref(usContext.state?.code) : item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""}>{item.label}</a>
               ))}
             </div>
             <div className="echelon-mobile-resources">

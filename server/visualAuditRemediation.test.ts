@@ -36,8 +36,12 @@ describe("live visual-audit remediation", () => {
     expect(about).toContain("15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(about).not.toContain("FDEP exam in Florida");
     expect(about).not.toContain("Master's student");
-    expect(us).toContain("value={132400}");
-    expect(us).toContain("value={10700}");
+    expect(us).toContain('value="4 Streams"');
+    expect(us).toContain('value="Class I-IV"');
+    expect(us).toContain('value="Shared Prep"');
+    expect(us).toContain('value="State Rules"');
+    expect(us).toContain("Not a dedicated state exam course");
+    expect(us).not.toMatch(/132400|10700|58,260/);
     expect(us).not.toContain("const TESTIMONIALS");
   });
 
