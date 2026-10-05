@@ -95,13 +95,13 @@ export function createGoogleAdsMeasurement(browser: AdsWindow, doc: Document) {
   }
 
   function update() {
+    if (browser.location.pathname !== "/purchase-success") pending = null;
     if (!canSend()) return;
     const url = googleAdsPage(browser.location.href);
     if (!url) {
       lastPage = null;
       // No private page event. Reset the global context before any explicit conversion.
       if (initialized) browser.gtag!("set", safeContext());
-      if (browser.location.pathname !== "/purchase-success") pending = null;
       flushPurchase();
       return;
     }

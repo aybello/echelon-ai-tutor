@@ -75,6 +75,13 @@ describe("optional Google Ads boundary", () => {
     h.browser.location = new URL("https://echeloninstitute.ca/pricing"); h.measurement.recordPurchase(conversion);
     expect(h.calls()).toEqual([]);
   });
+  it("discards a held verified purchase when navigation leaves confirmation before consent", () => {
+    const h = harness("/purchase-success"); h.measurement.recordPurchase(conversion);
+    h.browser.location = new URL("https://echeloninstitute.ca/pricing"); h.measurement.update();
+    h.browser.location = new URL("https://echeloninstitute.ca/purchase-success");
+    h.saved.set(ADS_CHOICE_KEY, "allowed"); h.measurement.update();
+    expect(h.calls()).toEqual([]);
+  });
   it("retains duplicate prevention across a fresh page instance and falls back to stable transaction ID when storage fails", () => {
     const h = harness("/purchase-success", "allowed"); h.measurement.recordPurchase(conversion);
     const second = createGoogleAdsMeasurement(h.browser as unknown as Window, { createElement: () => ({}), head: { appendChild: () => {} } } as unknown as Document);
