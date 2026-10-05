@@ -7,3 +7,12 @@ export function analyticsCspOrigin(value: string | undefined): string[] {
     return [url.origin];
   } catch { return []; }
 }
+
+// Named Google Ads endpoints only, not a broad google.com script wildcard.
+export const GOOGLE_ADS_SCRIPT_ORIGINS = ["https://www.googletagmanager.com", "https://www.googleadservices.com"];
+export const GOOGLE_ADS_CONNECT_ORIGINS = [
+  "https://www.googletagmanager.com", "https://www.googleadservices.com",
+  "https://googleads.g.doubleclick.net", "https://pagead2.googlesyndication.com",
+  "https://www.google.com", "https://www.google.ca",
+];
+export const GOOGLE_ADS_FRAME_ORIGINS = ["https://www.googletagmanager.com"];

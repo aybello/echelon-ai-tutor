@@ -621,6 +621,9 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
     bodyHtml: `
       <h2>Your Privacy Matters</h2>
       <p>Echelon Institute is committed to protecting your personal information in compliance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and applicable Canadian provincial privacy laws.</p>
+      <h2 id="advertising-measurement">Optional Google Ads Measurement</h2>
+      <p>We use optional advertising cookies only after you allow ad measurement. They help measure which ads lead to public visits and confirmed purchases. You can continue without tracking or change the choice in this page's browser controls without losing study access. Browser privacy opt-out signals are respected.</p>
+      <p>Google may receive browser, device and network information, including an IP address, and process data outside Canada. Our event payloads exclude customer contact details, access tokens, raw payment-session URLs and private learner activity. Public URLs retain only approved route templates and bounded Google ad-click identifiers. Configured purchase measurement contains the actual amount, currency and a non-personal one-way order identifier. We do not enable enhanced conversions or personalized advertising. Read <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
       <h2>Contact</h2>
       <p>For privacy-related inquiries, contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. Return to the <a href="${SITE_URL}/">homepage</a> or read the <a href="${SITE_URL}/terms">terms of service</a>.</p>
     `,

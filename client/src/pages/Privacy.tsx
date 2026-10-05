@@ -2,6 +2,7 @@
 // Phase 9: Trust, Credibility, and Enterprise Polish
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { PrivacyAdsControls } from "@/components/GoogleAdsNotice";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -24,7 +25,7 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 3, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 5, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -83,8 +84,12 @@ export default function Privacy() {
         </LegalSection>
 
         <LegalSection title="8. Cookies and Analytics Storage">
-          <p>Echelon uses cookies to maintain your session after signing in. First-party product reporting also stores a persistent pseudonymous browser identifier in local storage; the server hashes this identifier before storing events. Acquisition categories are stored for the browser session. We do not use advertising cookies. You can clear cookies and local storage from your browser settings; the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a> also provides sign-out controls.</p>
-          <p>Third-party analytics receives only allowlisted public page paths and categories, with dynamic values replaced by route templates. We do not send URL query strings, fragments, referrers, personal page titles, or arbitrary event fields. Authentication, invitation, claim, activation, purchase-confirmation and private learner pages are excluded.</p>
+          <p>Echelon uses cookies to maintain your session after signing in. First-party product reporting also stores a persistent pseudonymous browser identifier in local storage; the server hashes this identifier before storing events. Acquisition categories are stored for the browser session. You can clear cookies and local storage from your browser settings; the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a> also provides sign-out controls.</p>
+          <p>Our existing public analytics receives only allowlisted page paths and categories, with dynamic values replaced by route templates. It does not receive query strings, fragments, referrers, personal page titles or arbitrary event fields. Authentication, invitation, claim, activation, purchase-confirmation and private learner pages are excluded from page reporting.</p>
+          <p>If you allow optional ad measurement, Google Ads uses advertising cookies and ad-click identifiers to measure which ads lead to public visits and confirmed purchases. Google may receive browser, device and network information, including your IP address, and process data outside Canada. Public landing URLs include only approved paths and bounded Google ad-click identifiers. General URL queries, fragments, emails, phones, access tokens and private learner activity are not sent in our measurement payloads.</p>
+          <p>Confirmed-purchase measurement, when configured, contains the actual amount, payment currency and a one-way order identifier for duplicate prevention. It does not include your Stripe session ID or contact details. We do not enable enhanced conversions, personalized advertising or remarketing audiences. No optional Google tag loads before you allow measurement. Rejecting or turning it off does not affect study access. Turning it off clears its first-party attribution cookies and refreshes the page. Browser Global Privacy Control and Do Not Track opt-out signals are respected.</p>
+          <p>Your choice and non-personal duplicate-prevention markers are saved in this browser's local storage. You can change the choice below or clear browser storage. Google's <a href="https://policies.google.com/privacy" style={{ color: "#3B82F6" }}>Privacy Policy</a> explains its processing.</p>
+          <PrivacyAdsControls />
         </LegalSection>
 
         <LegalSection title="9. Service Providers, Retention, and Transfers">

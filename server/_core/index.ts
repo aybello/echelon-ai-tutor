@@ -28,7 +28,7 @@ import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
 import { frameAncestorsForEnvironment } from "../previewSecurity";
-import { analyticsCspOrigin } from "../analyticsCsp";
+import { analyticsCspOrigin, GOOGLE_ADS_SCRIPT_ORIGINS, GOOGLE_ADS_CONNECT_ORIGINS, GOOGLE_ADS_FRAME_ORIGINS } from "../analyticsCsp";
 import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -63,7 +63,7 @@ async function startServer() {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com", ...analyticsOrigins],
+          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com", ...analyticsOrigins, ...GOOGLE_ADS_SCRIPT_ORIGINS],
           styleSrc: [
             "'self'",
             "'unsafe-inline'",
@@ -76,8 +76,9 @@ async function startServer() {
             "https://api.stripe.com",
             "https://*.oaiusercontent.com",
             ...analyticsOrigins,
+            ...GOOGLE_ADS_CONNECT_ORIGINS,
           ],
-          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
+          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com", ...GOOGLE_ADS_FRAME_ORIGINS],
           objectSrc: ["'none'"],
           baseUri: ["'self'"],
           formAction: ["'self'", "https://checkout.stripe.com"],

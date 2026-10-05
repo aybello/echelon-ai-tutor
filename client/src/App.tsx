@@ -6,6 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
 import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
+import GoogleAdsNotice from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
 import Landing from "./pages/Landing";
@@ -470,6 +471,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <GoogleAdsNotice />
           <div className="page-enter">
             {/* <main> landmark for accessibility — required by WCAG 2.1 */}
             <main>
