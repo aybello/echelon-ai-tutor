@@ -72,6 +72,8 @@ function setSession(overrides: Record<string, unknown>) {
     amount_subtotal: 4900,
     amount_total: 4900,
     payment_intent: "pi_test_xyz",
+    livemode: false,
+    created: 0,
     ...overrides,
   });
 }
@@ -240,6 +242,37 @@ describe("stripe.createCheckoutSession", () => {
 });
 
 describe("stripe.verifySession", () => {
+  it("returns only actual paid amount/currency and opaque order ID after signed fulfillment when purchase measurement is configured", async () => {
+    const originalLabel = process.env.GOOGLE_ADS_PURCHASE_LABEL;
+    const originalStart = process.env.GOOGLE_ADS_PURCHASE_START_AT;
+    process.env.GOOGLE_ADS_PURCHASE_LABEL = "SyntheticPurchase_123";
+    process.env.GOOGLE_ADS_PURCHASE_START_AT = "2026-10-05T20:00:00Z";
+    try {
+      setSession({ livemode: true, created: Date.parse("2026-10-06T12:00:00Z") / 1000, amount_total: 3920 });
+      const caller = appRouter.createCaller(makeCtx());
+      const pending = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
+      expect(pending.adsConversion).toBeNull();
+      expect(mockPurchases).toHaveLength(0);
+      mockPurchases.push({
+        id: 1, userId: null, email: "buyer@example.com", productKey: "oit", productName: "OIT",
+        amountCAD: 3920, stripeSessionId: "cs_test_abc123", stripePaymentIntentId: "pi_test_xyz",
+        phone: "+16135550100", referralSource: null, accessExpiresAt: new Date("2027-10-06"), createdAt: new Date(),
+      });
+      const ready = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
+      expect(ready.adsConversion).toEqual({ sendTo: "AW-18491909141/SyntheticPurchase_123", value: 39.2, currency: "CAD", transactionId: expect.stringMatching(/^echelon_[a-f0-9]{64}$/) });
+      expect(JSON.stringify(ready.adsConversion)).not.toMatch(/buyer|16135550100|cs_test|pi_test/);
+      expect(ready.accessToken).toBeNull(); expect(ready.email).toBe("");
+      expect(mockPurchases).toHaveLength(1); expect(queuedEmails).toHaveLength(0);
+      delete process.env.GOOGLE_ADS_PURCHASE_LABEL;
+      expect((await caller.stripe.verifySession({ sessionId: "cs_test_abc123" })).adsConversion).toBeNull();
+    } finally {
+      if (originalLabel === undefined) delete process.env.GOOGLE_ADS_PURCHASE_LABEL;
+      else process.env.GOOGLE_ADS_PURCHASE_LABEL = originalLabel;
+      if (originalStart === undefined) delete process.env.GOOGLE_ADS_PURCHASE_START_AT;
+      else process.env.GOOGLE_ADS_PURCHASE_START_AT = originalStart;
+    }
+  });
+
   it("waits for the signed webhook to record a new paid purchase", async () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });

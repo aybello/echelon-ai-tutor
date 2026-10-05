@@ -34,6 +34,7 @@ import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
 import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass";
+import { googleAdsPurchaseConversion } from "../stripe/googleAdsPurchase";
 import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
@@ -213,14 +214,15 @@ export const stripeRouter = router({
         return { email: identityMatches ? email : "", productKey, paid: true,
           requiresSignIn: !identityMatches,
           unlockedExamTypes: identityMatches && !fulfillmentPending ? getAllUnlockedExamTypes([productKey]) : [],
-          accessToken: null, accessExpiresAt, fulfillmentPending };
+          accessToken: null, accessExpiresAt, fulfillmentPending,
+          adsConversion: googleAdsPurchaseConversion(checkout, session, !fulfillmentPending) };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
           content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: check signed Stripe webhook delivery before any manual recovery.`,
         }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
-        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false };
+        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false, adsConversion: null };
       }
     }),
 
