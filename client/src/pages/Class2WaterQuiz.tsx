@@ -8,6 +8,7 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { formatQuestionBankCount } from "@shared/questionBankDisplay";
 
 const MODULE_CONFIG: ModuleConfig[] = [
   { name: "Advanced Water Treatment", icon: "🧪", bg: "#DBEAFE", color: "#1D4ED8" },
@@ -27,7 +28,7 @@ export default function Class2WaterQuiz() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-water", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-water", "lazy");
   const allQuestions = dbQuestions;
 
   // Bank categories determine filters; the local catalogue supplies styling only.
@@ -51,7 +52,7 @@ export default function Class2WaterQuiz() {
       currentPath="/class2-water"
       courseLabel="Ontario Class 2 · Water Treatment"
       courseTitle="Class 2 Water Practice Quiz"
-      courseSubtitle="500 questions · Ontario Class 2 Water Treatment"
+      courseSubtitle={`${formatQuestionBankCount(totalQuestions)} · Ontario Class 2 Water Treatment`}
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="💧"
       headerActions={[
@@ -132,7 +133,7 @@ export default function Class2WaterQuiz() {
           productName="Class 2 Water Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 Class 2 Water questions — unlimited attempts",
+            `${formatQuestionBankCount(totalQuestions)} · unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",
