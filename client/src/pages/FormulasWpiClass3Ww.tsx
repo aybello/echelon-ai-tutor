@@ -19,6 +19,8 @@ interface FormulaSection {
   cards: FormulaCard[];
 }
 
+const FORMULA_USE_NOTICE = "Study examples only. For operational, compliance or reporting decisions, use the facility's validated procedure, approval or permit, sampling plan, and the current rules that apply to the system.";
+
 const SECTIONS: FormulaSection[] = [
   {
     category: "Biological Nutrient Removal (BNR)",
@@ -59,7 +61,7 @@ const SECTIONS: FormulaSection[] = [
           "Typical SDNR: 0.03–0.11 kg NO₃-N/kg MLVSS·d",
         ],
         example: "NO₃_in = 20 mg/L; NO₃_out = 5 mg/L; Q = 10,000 m³/d; V = 2,000 m³; MLVSS = 2,500 mg/L",
-        result: "SDNR = (20−5) × 10,000 / (2,000 × 2,500) × 1,000 = 150,000 / 5,000,000 × 1,000 = 0.03 kg/kg·d",
+        result: "SDNR = (20−5) × 10,000 / (2,000 × 2,500) = 150,000 / 5,000,000 = 0.03 kg NO₃-N/kg MLVSS·d",
       },
       {
         title: "Internal Recycle (IR) Rate for Denitrification",
@@ -76,7 +78,7 @@ const SECTIONS: FormulaSection[] = [
       },
       {
         title: "Phosphorus Removal — EBPR",
-        formula: "P_removed = P_in − P_eff (mg/L) or P_in × Q × 1/1,000 (kg/d)",
+        formula: "P removed (kg/d) = (P_in − P_eff) × Q ÷ 1,000",
         variables: [
           "EBPR requires anaerobic zone (P release) followed by aerobic zone (P uptake)",
           "PAOs store phosphorus as polyphosphate (poly-P) granules",
@@ -130,7 +132,7 @@ const SECTIONS: FormulaSection[] = [
           "Typical F/M: 0.05–0.15 (extended aeration), 0.2–0.4 (conventional), 0.4–1.5 (high-rate)",
         ],
         example: "Q = 10,000 m³/d; BOD_in = 200 mg/L; V = 4,000 m³; MLVSS = 2,200 mg/L",
-        result: "F/M = (10,000 × 200) / (4,000 × 2,200) × 1/1,000 = 2,000,000 / 8,800,000 = 0.23 kg/kg·d",
+        result: "F/M = (10,000 × 200) / (4,000 × 2,200) = 2,000,000 / 8,800,000 = 0.23 kg BOD/kg MLVSS·d",
       },
       {
         title: "Sludge Volume Index (SVI)",
@@ -242,12 +244,11 @@ const SECTIONS: FormulaSection[] = [
         variables: [
           "VS_in = volatile solids entering digester (kg/d or %)",
           "VS_out = volatile solids leaving digester (kg/d or %)",
-          "Typical VSR: 50–60% (mesophilic AD), 55–65% (thermophilic AD)",
-          "Class B biosolids require VSR ≥ 38% or PSRP",
-          "Class A biosolids require additional pathogen reduction (PFRP)",
+          "Interpret VSR with the facility's process objective, feed characteristics and validated operating procedure",
+          "Pathogen reduction, vector attraction and biosolids use requirements are set by the governing jurisdiction and approved management plan",
         ],
         example: "VS_in = 1,000 kg/d; VS_out = 420 kg/d",
-        result: "VSR = (1,000 − 420) / 1,000 × 100 = 58% (good mesophilic AD performance)",
+        result: "VSR = (1,000 − 420) / 1,000 × 100 = 58% for this operating example",
       },
       {
         title: "Biogas Production Rate",
@@ -266,13 +267,12 @@ const SECTIONS: FormulaSection[] = [
         title: "Biosolids Land Application Rate (Agronomic Rate)",
         formula: "Application rate (dry t/ha) = Crop N requirement / Available N in biosolids",
         variables: [
-          "Available N = (Mineral N × 1.0) + (Organic N × mineralization rate)",
-          "Mineralization rate: 20–30% in year 1 for Class B biosolids",
-          "Maximum application rate limited by N, P, or metals (whichever is most restrictive)",
-          "Setback distances: 30 m from watercourses, 100 m from wells",
+          "Available nutrient is determined from laboratory analysis and the jurisdiction-approved availability method",
+          "The approved plan must account for nutrient, metal, pathogen, site and setback constraints",
+          "Use the most restrictive approved constraint for the receiving site",
         ],
-        example: "Crop N requirement = 150 kg N/ha; Biosolids: 3% TN, 60% available N",
-        result: "Rate = 150 / (30,000 mg/kg × 0.60 × 10⁻³) = 150 / 18 = 8.3 dry t/ha",
+        example: "Crop N requirement = 150 kg N/ha; approved available N = 18 kg/t dry biosolids",
+        result: "Planning calculation = 150 ÷ 18 = 8.3 dry t/ha; confirm the approved site limit before application",
       },
       {
         title: "Sludge Dewatering — Cake Solids Content",
@@ -287,16 +287,15 @@ const SECTIONS: FormulaSection[] = [
         result: "Solids recovery = (0.4 × 22) / (10 × 3) × 100 = 8.8 / 30 × 100 = 29% (low — check polymer dose)",
       },
       {
-        title: "Alkalinity Requirement for Anaerobic Digestion",
-        formula: "Alkalinity (mg/L as CaCO₃) should be 2,000–5,000 mg/L for stable AD",
+        title: "Anaerobic Digestion Alkalinity Trend",
+        formula: "Alkalinity trend = current result − prior result, interpreted with VFA, pH, gas production and the facility procedure",
         variables: [
-          "VFA/Alkalinity ratio < 0.3 indicates stable digester",
-          "VFA/Alkalinity ratio > 0.5 indicates potential souring",
-          "Lime addition to raise alkalinity: CaO dose = (target − current alkalinity) × 0.74",
-          "Bicarbonate alkalinity (TA) is the key buffer in AD",
+          "VFA and alkalinity trends are process indicators, not stand-alone dosing instructions",
+          "Stable operating ranges vary with feed, temperature, retention time and the treatment train",
+          "Determine any chemical dose using product assay, stoichiometry, actual volume and an operator-approved procedure",
         ],
-        example: "Current alkalinity = 1,500 mg/L; Target = 3,000 mg/L; Digester volume = 1,000 m³",
-        result: "CaO needed = (3,000 − 1,500) × 0.74 × 1,000 m³ × 1,000 L/m³ / 10⁶ = 1,110 kg CaO",
+        example: "Current alkalinity = 1,500 mg/L as CaCO₃; prior result = 1,900 mg/L as CaCO₃",
+        result: "Trend = 1,500 − 1,900 = −400 mg/L as CaCO₃; investigate under the facility procedure before dosing",
       },
     ],
   },
@@ -306,31 +305,28 @@ const SECTIONS: FormulaSection[] = [
     color: "#B91C1C",
     cards: [
       {
-        title: "Industrial User Permit Limit (IU Limit)",
-        formula: "IU_limit = POTW_limit × (Q_POTW / Q_IU) × (1 − removal_efficiency)",
+        title: "Industrial User Limit Framework",
+        formula: "Site-specific local limit = approved sewer-use by-law or permit, supported by headworks and receiving-system analysis",
         variables: [
-          "POTW_limit = POTW effluent permit limit for the pollutant (mg/L)",
-          "Q_POTW = POTW design flow (m³/d)",
-          "Q_IU = industrial user flow (m³/d)",
-          "removal_efficiency = POTW removal efficiency for the pollutant (decimal)",
-          "IU limit must also consider pass-through and interference criteria",
+          "A facility effluent limit does not determine an industrial-user limit by itself",
+          "Limit development can require headworks capacity, treatment performance, pass-through, interference and receiving-system analysis",
+          "Use the municipality's approved local limit or permit and document the applicable basis",
         ],
-        example: "POTW limit = 1 mg/L Pb; Q_POTW = 10,000 m³/d; Q_IU = 500 m³/d; POTW removal = 80%",
-        result: "IU_limit = 1 × (10,000/500) × (1/0.20) = 1 × 20 × 5 = 100 mg/L Pb (simplified)",
-        notes: "Actual IU limits use more complex calculations including headworks analysis and local limits.",
+        example: "Identify the pollutant, approved local limit, industrial flow and the municipality's current permit conditions",
+        result: "No universal IU-limit calculation applies. Confirm the approved local limit or permit before evaluating compliance.",
+        notes: "The former simplified formula and 100 mg/L lead example were removed because they could produce an unsafe limit.",
       },
       {
-        title: "Toxic Unit (TU) — Effluent Toxicity",
-        formula: "TU = 100 / LC50 (%) or TU = 1 / (EC50 / 100)",
+        title: "Toxicity Screening Calculation",
+        formula: "TU = 100 ÷ LC50 (%)",
         variables: [
-          "TU = toxic units (dimensionless)",
-          "LC50 = concentration (% effluent) causing 50% mortality in 96-hr test",
-          "EC50 = concentration causing 50% effect in chronic test",
-          "WSER requires LC50 > 100% (i.e., TU < 1) for acute lethality",
-          "TU > 1 means the effluent is acutely lethal at 100% concentration",
+          "TU is a screening value; it is not a substitute for the governing compliance test",
+          "LC50 is the concentration causing 50% mortality under the stated test method",
+          "For systems subject to Canadian WSER, acute lethality is determined by accredited-lab testing of 100% effluent with rainbow trout over 96 hours",
+          "Confirm current federal, provincial and facility-specific monitoring and response requirements",
         ],
-        example: "LC50 = 45% effluent (in 96-hr rainbow trout test)",
-        result: "TU = 100 / 45 = 2.2 TU (FAILS — effluent is acutely lethal; must investigate cause)",
+        example: "LC50 = 45% effluent in a stated 96-hour rainbow trout test",
+        result: "TU = 100 ÷ 45 = 2.2. Treat this as a screening result and follow the governing test and response procedure.",
       },
       {
         title: "Equalization Basin Volume",
@@ -377,28 +373,26 @@ const SECTIONS: FormulaSection[] = [
         result: "DF = (1.5 + 0.15) / 0.15 = 11×; C_mix = 10 × 0.15 / 1.65 = 0.91 mg/L",
       },
       {
-        title: "Greenhouse Gas Emissions — N₂O",
-        formula: "N₂O emissions (kg N₂O/yr) = TN_load (kg N/yr) × EF_N₂O",
+        title: "Greenhouse Gas Reporting Framework",
+        formula: "CO₂e = activity data × the emission factor and global-warming potential required by the current reporting method",
         variables: [
-          "EF_N₂O = emission factor for N₂O from treatment (0.005 kg N₂O-N/kg N for BNR)",
-          "GWP of N₂O = 298 (100-year global warming potential vs CO₂)",
-          "CO₂e = N₂O emissions × 298",
-          "IPCC default EF for direct N₂O from WWTP: 0.0032 kg N₂O-N/kg N influent",
+          "Select the applicable reporting program, year, boundary and activity data before calculating",
+          "Emission factors and global-warming potentials change by methodology and reporting year",
+          "Do not use a generic factor or GWP for compliance, inventory reporting or public claims",
         ],
-        example: "TN load = 200,000 kg N/yr; EF = 0.005 kg N₂O-N/kg N",
-        result: "N₂O = 200,000 × 0.005 × 44/28 = 1,571 kg N₂O/yr; CO₂e = 1,571 × 298 = 468,000 kg CO₂e/yr",
+        example: "Confirm the current reporting protocol and its required N₂O factor before applying the calculation",
+        result: "Calculate only with the factor, conversion and GWP required by the applicable reporting method",
       },
       {
         title: "Biosolids Metal Loading Rate",
         formula: "Annual loading (kg/ha·yr) = Application rate (dry t/ha) × Metal concentration (mg/kg) / 1,000",
         variables: [
-          "Cumulative loading limits (CCME): Pb 150 kg/ha, Cd 4 kg/ha, Cu 150 kg/ha, Zn 300 kg/ha",
-          "Annual loading limits: Pb 15 kg/ha·yr, Cd 0.5 kg/ha·yr",
           "Metal concentration in biosolids (mg/kg dry weight)",
           "Application rate (dry tonnes/ha)",
+          "Use the approved management plan and governing jurisdiction for any acceptance or cumulative-loading criterion",
         ],
-        example: "Biosolids Zn = 1,200 mg/kg; Application rate = 5 dry t/ha",
-        result: "Annual Zn loading = 5 × 1,200 / 1,000 = 6 kg Zn/ha·yr (< 30 kg/ha·yr annual limit)",
+        example: "Biosolids Zn = 1,200 mg/kg; application rate = 5 dry t/ha",
+        result: "Annual Zn loading = 5 × 1,200 ÷ 1,000 = 6 kg Zn/ha·yr; compare it only with the approved site criterion",
       },
     ],
   },
@@ -513,6 +507,10 @@ export default function FormulasWpiClass3Ww() {
             BNR kinetics · SRT/F/M · MBR flux · biosolids · industrial pretreatment · regulatory calculations
           </p>
         </div>
+
+        <aside aria-label="Formula sheet use notice" style={{ marginBottom: 20, padding: "14px 16px", borderRadius: 10, background: "#eff6ff", border: "1px solid #bfdbfe", color: "#334155", fontSize: 13, lineHeight: 1.6 }}>
+          <strong style={{ color: "#1d4ed8" }}>Use this sheet safely.</strong> {FORMULA_USE_NOTICE} For Canadian acute-lethality requirements, consult <a href="https://www.canada.ca/en/environment-climate-change/services/wastewater/system-effluent-regulations-reporting/overview/acute-lethality.html" target="_blank" rel="noreferrer" style={{ color: "#0f766e" }}>Environment and Climate Change Canada</a> and the facility documents.
+        </aside>
 
         {/* Search */}
         <div style={{ marginBottom: 20 }}>

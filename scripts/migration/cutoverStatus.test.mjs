@@ -47,7 +47,7 @@ test("rejects anything except the exact approved production endpoint", () => {
     "https://echeloninstitute.ca/api/cutover/status?x=1",
     "https://echeloninstitute.ca/api/cutover/status/",
     "https://echeloninstitute.ca/api/cutover/status#fragment",
-    "https://name:password@echeloninstitute.ca/api/cutover/status",
+    "https://name:fixture-93@example.com/api/cutover/status",
   ]) {
     assert.throws(() => approvedCutoverStatusUrl(value), /approved production cutover status endpoint|required/);
   }

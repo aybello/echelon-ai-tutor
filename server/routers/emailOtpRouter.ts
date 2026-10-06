@@ -20,7 +20,7 @@
 
 import crypto from "crypto";
 import { TRPCError } from "@trpc/server";
-import { and, desc, eq, gt, isNull } from "drizzle-orm";
+import { and, eq, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
@@ -31,9 +31,9 @@ import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
+import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
 const OTP_EXPIRY_MINUTES = 10;
-const OTP_MAX_ATTEMPTS = 5;
 
 function generateOtpCode(): string {
   // Cryptographically random 6-digit code (000000–999999)
@@ -119,49 +119,10 @@ export const emailOtpRouter = router({
     .mutation(async ({ input, ctx }) => {
       const email = normalizeEmail(input.email);
       const db = await getDb();
-      if (!db) return { valid: false as const, reason: "server_error" };
+      if (!db) return { valid: false as const, reason: "server_error" as const };
 
-      const now = new Date();
-      const incomingHash = hashCode(input.code);
-
-      // Find the most recent unused, unexpired code for this email
-      const [otpRow] = await db
-        .select()
-        .from(emailOtpCodes)
-        .where(
-          and(
-            eq(emailOtpCodes.email, email),
-            isNull(emailOtpCodes.usedAt),
-            gt(emailOtpCodes.expiresAt, now),
-          )
-        )
-        .orderBy(desc(emailOtpCodes.createdAt), desc(emailOtpCodes.id))
-        .limit(1);
-
-      if (!otpRow) {
-        return { valid: false as const, reason: "expired" };
-      }
-
-      // Check attempt count
-      if (otpRow.attempts >= OTP_MAX_ATTEMPTS) {
-        return { valid: false as const, reason: "too_many_attempts" };
-      }
-
-      // Wrong code — increment attempts
-      if (otpRow.codeHash !== incomingHash) {
-        await db
-          .update(emailOtpCodes)
-          .set({ attempts: otpRow.attempts + 1 })
-          .where(eq(emailOtpCodes.id, otpRow.id));
-        const remaining = OTP_MAX_ATTEMPTS - otpRow.attempts - 1;
-        return { valid: false as const, reason: "wrong_code", attemptsRemaining: remaining };
-      }
-
-      // Correct code — mark as used
-      await db
-        .update(emailOtpCodes)
-        .set({ usedAt: now })
-        .where(eq(emailOtpCodes.id, otpRow.id));
+      const verification = await verifyAndConsumeOtp(db, emailOtpCodes, email, hashCode(input.code));
+      if (!verification.valid) return verification;
 
       // Resolve live entitlements
       const entitlements = await resolveEntitlementsByEmail(email);

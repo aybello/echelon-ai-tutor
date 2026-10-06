@@ -1,3 +1,6 @@
+import type { verifyJob } from "./jobVerification.mjs";
+import type { ConnectionOptions } from "mysql2";
+
 export type JobIngestionResult = {
   ok: boolean;
   runStartedAt: string;
@@ -14,12 +17,17 @@ export type JobIngestionResult = {
   productiveTiers: number;
   provinceCount: number;
   provinces: string[];
+  verificationUnavailable: number;
+  quarantinedCount: number;
   errors: string[];
 };
 
 export type JobIngestionOptions = {
   databaseUrl?: string;
-  createConnection?: (databaseUrl: string) => Promise<unknown>;
+  createConnection?: (settings: string | ConnectionOptions) => Promise<unknown>;
+  /** Recovery runs may refresh source-confirmed jobs without bulk expiry. */
+  skipExpiry?: boolean;
+  verifyJob?: typeof verifyJob;
   ingestRss?: (upsertJob: (job: unknown) => Promise<void>) => Promise<unknown>;
   ingestAssociations?: (
     upsertJob: (job: unknown) => Promise<void>

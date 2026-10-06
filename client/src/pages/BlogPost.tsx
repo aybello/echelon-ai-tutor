@@ -3,6 +3,7 @@ import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 import { useMemo } from "react";
 
 // Configure marked for safe, clean output
@@ -15,10 +16,11 @@ function isMarkdown(content: string): boolean {
 }
 
 function renderContent(content: string): string {
-  if (isMarkdown(content)) {
-    return marked.parse(content) as string;
-  }
-  return content;
+  const html = isMarkdown(content) ? (marked.parse(content) as string) : content;
+  // Blog content includes AI-generated posts: never render it unsanitized.
+  // DOMPurify strips scripts, event handlers, and javascript: URLs while
+  // preserving class attributes used by the prose styling above.
+  return DOMPurify.sanitize(html);
 }
 
 function formatDate(d: Date | string) {
@@ -41,13 +43,13 @@ export default function BlogPost() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug ?? "";
 
-  const { data: post, isLoading } = trpc.blog.getPostBySlug.useQuery(
+  const { data: post, isLoading, isError, isFetching, refetch } = trpc.blog.getPostBySlug.useQuery(
     { slug },
-    { enabled: !!slug }
+    { enabled: !!slug, retry: 1 }
   );
   const { data: related } = trpc.blog.getRelatedPosts.useQuery(
     { slug, limit: 3 },
-    { enabled: !!slug }
+    { enabled: !!slug, retry: 1 }
   );
 
   usePageMeta({
@@ -77,6 +79,19 @@ export default function BlogPost() {
               <div key={i} className="h-4 bg-slate-200 rounded w-full" />
             ))}
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        <SiteNav currentPath={`/blog/${slug}`} />
+        <div role="alert" className="max-w-3xl mx-auto px-4 py-20 text-center">
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">Article temporarily unavailable</h1>
+          <p className="text-slate-500 mb-6">We could not check this article. This does not mean it was removed.</p>
+          <button type="button" disabled={isFetching} onClick={() => void refetch()} className="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg disabled:opacity-50">{isFetching ? "Retrying..." : "Retry"}</button>
         </div>
       </div>
     );

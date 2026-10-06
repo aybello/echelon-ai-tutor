@@ -42,7 +42,10 @@ export default function Home() {
 
   const allQuestions = dbQuestions;
 
-  const MODULES = MODULE_CONFIG;
+  // Bank categories determine filters; the local catalogue supplies styling only.
+  const MODULES: ModuleConfig[] = dbModules.map(name =>
+    MODULE_CONFIG.find(module => module.name === name) ?? { name },
+  );
 
   const session = useQuizSession({ examType: "oit", allQuestions, freeTutorPreview: true });
 

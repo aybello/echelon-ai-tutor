@@ -3,19 +3,20 @@
 // Stripe Checkout integration via tRPC
 
 import { useState, useEffect, useMemo } from "react";
-import { useProvince } from "@/hooks/useProvince";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import { formatPriceUSD } from "@shared/products";
-import { Link, useSearch } from "wouter";
+import { Link, useSearch, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "@shared/refundPolicy";
 import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
-import { ALL_PRODUCTS as SHARED_PRODUCTS } from "@shared/products";
+import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/products";
+import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
+import { readUSStudyContext } from "@shared/usStudyContext";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 import {
   getTeamTotalPriceCents,
@@ -27,10 +28,6 @@ import {
 /** Helper: get the canonical CAD price from shared/products.ts by product key */
 function sharedPrice(key: string): number {
   return SHARED_PRODUCTS.find(p => p.key === key)?.priceCAD ?? 0;
-}
-/** Helper: get the canonical USD price from shared/products.ts by product key */
-function sharedPriceUSD(key: string): number {
-  return SHARED_PRODUCTS.find(p => p.key === key)?.priceUSD ?? 0;
 }
 
 type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
@@ -48,11 +45,11 @@ interface SubTier {
 }
 
 const SUB_TIERS_ONTARIO: SubTier[] = [
-  { tier: "class1",     label: "Class 1",    price: "$99",  priceNum: 9900,  tagline: "OIT + Class 1 — all 4 tracks",         features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "Class 1 Water Distribution", "Class 1 Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "class2",     label: "Class 2",    price: "$149", priceNum: 14900, tagline: "Class 2 — all 4 tracks",              features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "Class 2 Water Distribution", "Class 2 Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "class3",     label: "Class 3",    price: "$199", priceNum: 19900, tagline: "Class 3 — all 4 tracks",              features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "Class 3 Water Distribution", "Class 3 Wastewater Collection", "AI Tutor & Flashcards"] },
-  { tier: "class4",     label: "Class 4",    price: "$249", priceNum: 24900, tagline: "Class 4 — all 4 tracks + WQA",        features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "Class 4 Water Distribution", "Class 4 Wastewater Collection", "WQA Exam Prep", "AI Tutor & Flashcards"] },
-  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every Ontario exam type — all classes", features: ["All classes (1 through 4)", "All 4 tracks: Water Treatment, Wastewater Treatment, Distribution & Collection", "WQA Exam Prep", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
+  { tier: "class1",     label: "Class 1",    price: "$99",  priceNum: 9900,  tagline: "OIT + Class 1 — all 4 tracks",         features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "Class 1 Water Distribution and Supply", "Class 1 Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class2",     label: "Class 2",    price: "$149", priceNum: 14900, tagline: "Class 2 — all 4 tracks",              features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "Class 2 Water Distribution and Supply", "Class 2 Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class3",     label: "Class 3",    price: "$199", priceNum: 19900, tagline: "Class 3 — all 4 tracks",              features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "Class 3 Water Distribution and Supply", "Class 3 Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class4",     label: "Class 4",    price: "$249", priceNum: 24900, tagline: "Class 4 — all 4 tracks + WQA",        features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "Class 4 Water Distribution and Supply", "Class 4 Wastewater Collection", "WQA Exam Prep", "AI Tutor & Flashcards"] },
+  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every Ontario exam type — all classes", features: ["All classes (1 through 4)", "All 4 tracks: Water Treatment, Wastewater Treatment, Water Distribution and Supply, Wastewater Collection", "WQA Exam Prep", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
 ];
 
 const SUB_TIERS_WPI: SubTier[] = [
@@ -83,45 +80,6 @@ interface Product {
   available: boolean;
   features?: string[]; // optional highlight bullets shown on the card
 }
-
-/** Maps product key → flashcard page path */
-const QUIZ_ROUTES: Record<string, string> = {
-  "oit": "/quiz",
-  "oit-ww": "/oit-ww-quiz",
-  "class1-water": "/class1-water-quiz",
-  "class1-ww": "/class1-ww-quiz",
-  "class2-water": "/class2-water-quiz",
-  "class2-ww": "/class2-ww-quiz",
-  "class3-water": "/class3-water-quiz",
-  "class3-ww": "/class3-ww-quiz",
-  "class4-water": "/class4-water-quiz",
-  "class4-ww": "/class4-ww-quiz",
-  "class1-water-dist": "/class1-water-dist",
-  "class2-water-dist": "/class2-water-dist",
-  "class3-water-dist": "/class3-water-dist",
-  "class4-water-dist": "/class4-water-dist",
-  "class1-wastewater-coll": "/class1-wastewater-coll",
-  "class2-wastewater-coll": "/class2-wastewater-coll",
-  "class3-wastewater-coll": "/class3-wastewater-coll",
-  "class4-wastewater-coll": "/class4-wastewater-coll",
-  "wqa": "/wqa-quiz",
-  "wpi-class1-water": "/wpi-class1-water",
-  "wpi-class2-water": "/wpi-class2-water",
-  "wpi-class3-water": "/wpi-class3-water",
-  "wpi-class4-water": "/wpi-class4-water",
-  "wpi-class1-wastewater": "/wpi-class1-wastewater",
-  "wpi-class2-wastewater": "/wpi-class2-wastewater",
-  "wpi-class3-wastewater": "/wpi-class3-wastewater",
-  "wpi-class4-wastewater": "/wpi-class4-wastewater",
-  "wpi-class1-water-dist": "/wpi-class1-water-dist",
-  "wpi-class2-water-dist": "/wpi-class2-water-dist",
-  "wpi-class3-water-dist": "/wpi-class3-water-dist",
-  "wpi-class4-water-dist": "/wpi-class4-water-dist",
-  "wpi-class1-water-coll": "/wpi-class1-water-coll",
-  "wpi-class2-water-coll": "/wpi-class2-water-coll",
-  "wpi-class3-water-coll": "/wpi-class3-water-coll",
-  "wpi-class4-water-coll": "/wpi-class4-water-coll",
-};
 
 const FLASHCARD_ROUTES: Record<string, string> = {
   "oit": "/oit-water-flashcards",
@@ -314,8 +272,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class1-water-dist",
-    name: "Class 1 Water Distribution Practice Pass",
-    shortName: "Class 1 Distribution",
+    name: "Class 1 Water Distribution and Supply Practice Pass",
+    shortName: "Class 1 Distribution & Supply",
     description: "Pipe materials, valve operation, hydrant maintenance, and pressure management. OWWCO Class 1 aligned.",
     priceCAD: sharedPrice("class1-water-dist"),
     examTypes: ["class1-water-dist"],
@@ -329,8 +287,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class2-water-dist",
-    name: "Class 2 Water Distribution Practice Pass",
-    shortName: "Class 2 Distribution",
+    name: "Class 2 Water Distribution and Supply Practice Pass",
+    shortName: "Class 2 Distribution & Supply",
     description: "System design, water main installation, cross-connection control, and distribution operations. OWWCO Class 2 aligned.",
     priceCAD: sharedPrice("class2-water-dist"),
     examTypes: ["class2-water-dist"],
@@ -344,8 +302,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class3-water-dist",
-    name: "Class 3 Water Distribution Practice Pass",
-    shortName: "Class 3 Distribution",
+    name: "Class 3 Water Distribution and Supply Practice Pass",
+    shortName: "Class 3 Distribution & Supply",
     description: "Advanced hydraulics, system modelling, asset management, and distribution system planning. OWWCO Class 3 aligned.",
     priceCAD: sharedPrice("class3-water-dist"),
     examTypes: ["class3-water-dist"],
@@ -359,8 +317,8 @@ const INDIVIDUAL: Product[] = [
   },
   {
     key: "class4-water-dist",
-    name: "Class 4 Water Distribution Practice Pass",
-    shortName: "Class 4 Distribution",
+    name: "Class 4 Water Distribution and Supply Practice Pass",
+    shortName: "Class 4 Distribution & Supply",
     description: "Strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance. OWWCO Class 4 aligned.",
     priceCAD: sharedPrice("class4-water-dist"),
     examTypes: ["class4-water-dist"],
@@ -696,19 +654,15 @@ function CheckoutButton({
   label,
   disabled,
   style,
-  productName,
-  priceLabel,
-  currency = "cad",
+  province,
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
-  productName?: string;
-  priceLabel?: string;
-  currency?: "cad" | "usd";
+  province?: "ontario" | "western" | "unknown";
 }) {
-  const [showModal, setShowModal] = useState(false);
+  const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: (data) => {
       if (data.url) {
@@ -723,61 +677,54 @@ function CheckoutButton({
 
   function handleClick() {
     if (disabled) return;
-    setShowModal(true);
-  }
-
-  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
-    // Save email to localStorage for access restoration
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-      createSession.mutate({
-        productKey,
-        email: contact.email,
-        name: contact.name,
-        phone: contact.phone,
-        currency,
-        visitorId: getAnonymousAnalyticsId(),
-      });
+    const attribution = {
+      ...getMarketingAttribution("/pricing"),
+      province: province ?? "ontario",
+    };
+    trackProductSelection.mutate({
+      event: "product_selected",
+      productKey,
+      visitorId: getAnonymousAnalyticsId(),
+      ...attribution,
+    });
+    createSession.mutate({
+      productKey,
+      currency: "cad",
+      visitorId: getAnonymousAnalyticsId(),
+      analyticsContext: {
+        ...attribution,
+        surface: "pricing",
+      },
+    });
   }
 
   return (
-    <>
-      {showModal && (
-        <CheckoutContactModal
-          productName={productName ?? label}
-          priceLabel={priceLabel}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleContactSubmit}
-          onClose={() => setShowModal(false)}
-          isLoading={createSession.isPending}
-        />
-      )}
-      <button
-        onClick={handleClick}
-        disabled={disabled || createSession.isPending}
-        style={{
-          padding: "11px 0",
-          borderRadius: 10,
-          background: disabled
-            ? "#E2E8F0"
-            : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-          color: disabled ? "#94A3B8" : "#fff",
-          border: "none",
-          fontSize: 13,
-          fontWeight: 700,
-          cursor: disabled ? "not-allowed" : "pointer",
-          fontFamily: "inherit",
-          width: "100%",
-          transition: "opacity 0.15s",
-          opacity: createSession.isPending ? 0.7 : 1,
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          ...style,
-        }}
-      >
-        {createSession.isPending ? "Redirecting…" : disabled ? "Coming Soon" : label}
-      </button>
-    </>
+    <button
+      onClick={handleClick}
+      disabled={disabled || createSession.isPending}
+      style={{
+        padding: "11px 0",
+        borderRadius: 10,
+        background: disabled
+          ? "#E2E8F0"
+          : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+        color: disabled ? "#94A3B8" : "#fff",
+        border: "none",
+        fontSize: 13,
+        fontWeight: 700,
+        cursor: disabled ? "not-allowed" : "pointer",
+        fontFamily: "inherit",
+        width: "100%",
+        transition: "opacity 0.15s",
+        opacity: createSession.isPending ? 0.7 : 1,
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        ...style,
+      }}
+    >
+      {createSession.isPending ? "Opening secure checkout…" : disabled ? "Coming Soon" : label}
+    </button>
   );
 }
 
@@ -1177,75 +1124,55 @@ function TeamSeatCalculator() {
 
 export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
+  // The validated URL is authoritative, including reload and browser Back.
+  const searchString = useSearch();
+  const [, navigate] = useLocation();
+  const pricingSelection = readPricingSelection(searchString);
+  const selectedProvince = pricingSelection.province;
+  const isWpi = selectedProvince !== "ON";
+  const usStudyContext = readUSStudyContext(searchString);
+  const isUSPreparation = usStudyContext.isUS && isWpi;
+  const invalidUSState = isUSPreparation && new URLSearchParams(searchString).has("state") && !usStudyContext.state;
+  // BC is a legacy WPI routing default, not a US learner's certifying authority.
+  const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
   const funnelAnalytics = trpc.funnelAnalytics.track.useMutation();
+  const pricingAttribution = {
+    ...getMarketingAttribution("/pricing"),
+    province: isUS ? ("unknown" as const) : ("ontario" as const),
+  };
   usePageMeta({
     title: "Pricing — Echelon Institute",
-    description: isUS
+    description: isUSPreparation
+      ? "US shared WPI preparation. Confirm your local exam and requirements before purchase. Individual Exam Pass prices and checkout are in CAD."
+      : isUS
       ? "Affordable Practice Passes for US water and wastewater operators. WPI Class I–IV, all 4 streams. Start free."
       : "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
   });
 
-  // Sync with the global province selector (useProvince hook)
-  const { province: globalProvince } = useProvince();
-
-  // Derive province code from global hook (used for syncing after user changes province)
-  const globalProvinceCode: ProvinceCode =
-    globalProvince === "bc" ? "BC"
-    : globalProvince === "ab" ? "AB"
-    : globalProvince === "sk" ? "SK"
-    : globalProvince === "mb" ? "MB"
-    : "ON";
-
-  // /pricing always defaults to Ontario regardless of stored province.
-  // Only ?tab=western or an explicit user click on the province selector switches to western.
-  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
-  const isWpi = selectedProvince !== "ON";
-  const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
-
-  // Read ?tab=western from URL to pre-select the Western Canada subscription tab
-  const searchString = useSearch();
-  const tabParam = new URLSearchParams(searchString).get("tab") as SubscriptionProvince | null;
-
-  // Derive subProvince from selectedProvince (Ontario → "ontario", WPI → "western")
-  // Allow manual override via setSubProvince
-  const derivedSubProvince: SubscriptionProvince = selectedProvince === "ON" ? "ontario" : "western";
-  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(
-    tabParam === "western" ? "western" : null
-  );
-  const subProvince: SubscriptionProvince = subProvinceOverride ?? derivedSubProvince;
-
-  // If ?tab=western is in the URL, pre-select BC so individual cards show WPI
-  useEffect(() => {
-    if (tabParam === "western") {
-      setSelectedProvince("BC");
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const derivedSubProvince: SubscriptionProvince = isWpi ? "western" : "ontario";
+  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(null);
+  const subProvince = subProvinceOverride ?? derivedSubProvince;
 
   useEffect(() => {
-    funnelAnalytics.mutate({ event: "pricing_viewed", visitorId: getAnonymousAnalyticsId() });
+    funnelAnalytics.mutate({ event: "pricing_viewed", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
   // A single page-view event is intentional; mutation identity is not a dependency.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // When the user picks a province in the top selector, clear any manual override
   const handleProvinceSelect = (code: ProvinceCode) => {
-    setSelectedProvince(code);
-    setSubProvinceOverride(null); // let it re-derive from the new province
+    const requested = pricingSelection.requestedProductKey;
+    const sameFamily = (selectedProvince === "ON") === (code === "ON");
+    navigate(buildPricingHref(sameFamily ? requested : "", code, searchString));
+    setSubProvinceOverride(null);
   };
 
-  // When the user manually clicks the subscription toggle, record the override
   const handleSubProvinceSelect = (p: SubscriptionProvince) => {
     setSubProvinceOverride(p);
   };
 
-  // Do NOT sync selectedProvince from globalProvince on mount or change.
-  // /pricing defaults to Ontario; only ?tab=western or explicit user action changes it.
-
   const [showIndividual, setShowIndividual] = useState(true);
   const [buyerType, setBuyerType] = useState<"individual" | "team">("individual");
   const [individualModel, setIndividualModel] = useState<"course" | "allAccess" | null>(null);
-  const [selectedIndividualKey, setSelectedIndividualKey] = useState("");
   const [selectedAnnualTier, setSelectedAnnualTier] = useState<SubscriptionTier | "">("");
   const [showCourseLaunchNotify, setShowCourseLaunchNotify] = useState(false);
 
@@ -1286,11 +1213,9 @@ export default function Pricing() {
       ? `${liveQuestionTotal.toLocaleString("en-CA")} verified questions across ${relevantIndividualProducts.length} currently available course${relevantIndividualProducts.length === 1 ? "" : "s"}`
       : "No course is currently open for purchase.";
 
-  useEffect(() => {
-    if (selectedIndividualKey && !liveProductKeys.has(selectedIndividualKey)) {
-      setSelectedIndividualKey("");
-    }
-  }, [liveProductKeys, selectedIndividualKey]);
+  const { selectedProductKey: selectedIndividualKey } = availablePricingSelection(
+    searchString, commercialAvailability.data ? liveProductKeys : undefined,
+  );
   const selectedIndividualProduct = relevantIndividualProducts.find(product => product.key === selectedIndividualKey);
   const currentAnnualTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
   const selectedAnnualSubscription = currentAnnualTiers.find(tier => tier.tier === selectedAnnualTier);
@@ -1304,19 +1229,34 @@ export default function Pricing() {
 
       {/* ── Hero ── */}
       <div className="pricing-hero">
-        <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
-        <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        <div className="pricing-hero-badge">{isUSPreparation ? "US shared WPI preparation" : isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
+        <h1>{isUSPreparation ? <>Choose Your Shared WPI<br />Preparation.</> : <>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</>}</h1>
+        {isUSPreparation ? (
+          <p>Choose an existing shared WPI course for one stream and class. Every Individual Exam Pass includes 12 months of access from successful payment, unlimited practice, the AI Tutor, and step-by-step solutions.</p>
+        ) : (
+          <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
+        )}
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
           borderRadius: 10, padding: "10px 18px", marginTop: 12, marginBottom: 4,
         }}>
           <span style={{ fontSize: 16 }}>🎁</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages.</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>{isUSPreparation ? "Try 15 free practice questions before choosing a shared WPI course." : "Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages."}</span>
         </div>
 
-        {/* Province selector */}
+        {isUSPreparation ? (
+          <div className="province-selector" style={{ marginTop: 24 }}>
+            <div className="province-selector-label">US shared WPI preparation</div>
+            <div className="province-wpi-note" style={{ maxWidth: 640, lineHeight: 1.6, textAlign: "left" }}>
+              <strong>{usStudyContext.state ? `Study context: ${usStudyContext.state.name}` : "US study context: no valid state selected"}</strong>
+              {invalidUSState && <div role="alert">State not recognized. No state exam match is confirmed.</div>}
+              <div>Not a dedicated state exam course. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
+              <div style={{ marginTop: 8 }}><strong>All prices and checkout charges are in Canadian dollars (CAD).</strong></div>
+            </div>
+          </div>
+        ) : (
+        /* Canadian province selector */
         <div className="province-selector">
           <div className="province-selector-label">Select Your Province</div>
           <div className="province-pills">
@@ -1350,6 +1290,7 @@ export default function Pricing() {
             </div>
           )}
         </div>
+        )}
       </div>
 
       {/* ── Content ── */}
@@ -1366,7 +1307,7 @@ export default function Pricing() {
               type="button"
               onClick={() => {
                 setBuyerType("individual");
-                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual", visitorId: getAnonymousAnalyticsId() });
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "individual", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "individual" ? "linear-gradient(135deg, #EFF6FF, #ECFEFF)" : "#fff", border: buyerType === "individual" ? "2px solid #2563EB" : "1.5px solid #E2E8F0", boxShadow: buyerType === "individual" ? "0 10px 24px rgba(37,99,235,0.12)" : "none" }}
             >
@@ -1378,7 +1319,7 @@ export default function Pricing() {
             <button
               type="button"
               onClick={() => {
-                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team", visitorId: getAnonymousAnalyticsId() });
+                funnelAnalytics.mutate({ event: "buyer_path_selected", buyerType: "team", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                 window.location.href = "/teams";
               }}
               style={{ textAlign: "left", cursor: "pointer", fontFamily: "inherit", padding: 22, borderRadius: 16, background: buyerType === "team" ? "linear-gradient(135deg, #F0FDFA, #ECFEFF)" : "#fff", border: buyerType === "team" ? "2px solid #0D9488" : "1.5px solid #E2E8F0", boxShadow: buyerType === "team" ? "0 10px 24px rgba(13,148,136,0.12)" : "none" }}
@@ -1441,12 +1382,13 @@ export default function Pricing() {
             <span className="section-badge" style={{ background: "#F5F3FF", color: "#7C3AED", borderColor: "#C4B5FD" }}>New</span>
           </div>
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-            {isUS
+            {isUS && !isUSPreparation
               ? "Subscribe annually and unlock every exam type for your class level. All four WPI tracks included: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Prices in USD."
               : "Legacy annual plans remain active under their original terms. New individual access is available as a 12-month Exam Pass for one selected certification course."}
           </p>
 
           {/* Province toggle for subscriptions */}
+          {!isUSPreparation && (
           <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
             <button
               onClick={() => handleSubProvinceSelect("ontario")}
@@ -1471,6 +1413,7 @@ export default function Pricing() {
               🏔️ Western Canada (WPI — BC, AB, SK, MB)
             </button>
           </div>
+          )}
 
           <div style={{ marginBottom: 24 }}>
             <label htmlFor="annual-tier-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>Choose the level of all-access you need</label>
@@ -1555,7 +1498,7 @@ export default function Pricing() {
                       </div>
                       <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.8 }}>
                         <li style={{ color: "#334155" }}>Water Treatment &amp; Wastewater Treatment</li>
-                        <li style={{ color: "#334155" }}>Water Distribution &amp; Wastewater Collection</li>
+                        <li style={{ color: "#334155" }}>{subProvince === "ontario" ? "Water Distribution and Supply" : "Water Distribution"} &amp; Wastewater Collection</li>
                         {tier.tier === "class4" && subProvince === "ontario" && <li style={{ color: "#334155" }}>Water Quality Analyst (WQA)</li>}
                         {tier.tier === "all-access" && <li style={{ color: "#334155" }}>All classes — OIT through Class 4</li>}
                         <li style={{ color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards &amp; Mock Exams</li>
@@ -1590,13 +1533,13 @@ export default function Pricing() {
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
               <div style={{ margin: "20px 0 24px" }}>
-                <label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>Select your jurisdiction, stream, and certification level</label>
+                <label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>{isUSPreparation ? "Select a shared WPI stream and class" : "Select your jurisdiction, stream, and certification level"}</label>
                 <select
                   id="individual-course-picker"
                   value={selectedIndividualKey}
                   onChange={e => {
-                    setSelectedIndividualKey(e.target.value);
-                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId() });
+                    navigate(buildPricingHref(e.target.value, selectedProvince, searchString));
+                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                   }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
                 >
@@ -1620,7 +1563,7 @@ export default function Pricing() {
                 </div>
               ) : (
                 <div style={{ padding: "24px", textAlign: "center", color: "#64748B", border: "1px dashed #CBD5E1", borderRadius: 12, background: "#F8FAFC" }}>
-                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : "Pick an available course above to see one clear price and your checkout option."}
+                  {commercialAvailability.isLoading ? "Checking the verified question banks available for purchase…" : commercialAvailability.isError ? "We could not check course availability. Please reload to retry." : pricingSelection.requestedProductKey ? "Your requested course is not currently open for purchase. Choose another course explicitly or join the course launch list." : "Pick an available course above to see one clear price and your checkout option."}
                 </div>
               )}
 
@@ -1631,6 +1574,7 @@ export default function Pricing() {
                 </div>
               )}
 
+              {!isUSPreparation && (
               <div style={{ display: "none" }} aria-hidden="true">
         {/* Ontario header */}
         {!isWpi && (
@@ -1742,7 +1686,7 @@ export default function Pricing() {
               <span className="section-badge" style={{ background: "#ECFEFF", color: "#0E7490", borderColor: "#A5F3FC" }}>✓ Live</span>
             </div>
             <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-              WPI standardized exams recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).
+              Independent preparation aligned with published WPI Need-to-Know Criteria. Confirm your authority's current requirements.
             </p>
             {/* WPI Water row */}
             <div style={{ marginBottom: 16 }}>
@@ -1772,6 +1716,7 @@ export default function Pricing() {
         )}
 
               </div>
+              )}
 
             </div>
           )}
@@ -1796,7 +1741,7 @@ export default function Pricing() {
             Individual Exam Passes are one-time purchases with no renewal. Grandfathered annual subscriptions continue through their paid term if renewal is cancelled.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            {liveCourseLabel}. Canada-specific and AI-explained.
+            {liveCourseLabel}. {isUSPreparation ? "Shared WPI preparation with AI explanations; confirm your local exam requirements." : "Canada-specific and AI-explained."}
           </p>
           <div className="trust-grid">
             {[
@@ -1902,8 +1847,10 @@ export default function Pricing() {
               a: "Teams Flex supports 3- or 6-month course-specific licences for named operators. Teams Annual supports year-round organizational access by stream. Visit the Teams page to build a plan."
             },
             {
-              q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
-              a: "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
+              q: isUSPreparation ? "Is Echelon affiliated with WPI or my state certifying authority?" : "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
+              a: isUSPreparation
+                ? "No. Echelon Institute is an independent preparation provider, not affiliated with or endorsed by WPI or your certifying authority. Shared WPI preparation is not a dedicated state exam course. Confirm your local exam and requirements before purchase; checkout is in CAD."
+                : "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
             },
             {
               q: "Can I cancel or get a refund?",
@@ -1957,8 +1904,12 @@ function ProductCard({
   isUS?: boolean;
   verifiedQuestionCount?: number;
 }) {
+  const searchString = useSearch();
+  const isUSPreparation = readUSStudyContext(searchString).isUS && product.key.startsWith("wpi-");
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
-  const displayDesc = isWpi && wpiLabel ? wpiLabel.description : product.description;
+  const displayDesc = isUSPreparation
+    ? SHARED_PRODUCTS.find(item => item.key === product.key)!.description
+    : isWpi && wpiLabel ? wpiLabel.description : product.description;
   const displayBadge = isWpi && wpiLabel?.badge ? wpiLabel.badge : product.badge;
   const displayBadgeColor = isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8");
 
@@ -1966,7 +1917,9 @@ function ProductCard({
   const qMatch = product.features?.[0]?.match(/(\d[\d,]+)/);
   const questionCount = verifiedQuestionCount?.toLocaleString("en-CA") ?? (qMatch ? qMatch[1] : null);
   const displayFeatures = product.features?.map((feature, index) =>
-    index === 0 && verifiedQuestionCount ? `${verifiedQuestionCount.toLocaleString("en-CA")} verified practice questions` : feature,
+    index === 0 && verifiedQuestionCount
+      ? `${verifiedQuestionCount.toLocaleString("en-CA")} verified practice questions`
+      : isUSPreparation && feature === "BC / AB / SK / MB" ? "Shared WPI preparation" : feature,
   );
 
   return (
@@ -2054,9 +2007,7 @@ function ProductCard({
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
             <span style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-              {isUS
-                ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}`
-                : `CA$${(product.priceCAD / 100).toFixed(0)}`}
+              {`CA$${(product.priceCAD / 100).toFixed(0)}`}
             </span>
             {product.available && (
               <span style={{
@@ -2082,17 +2033,15 @@ function ProductCard({
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
-          productName={product.name}
-          priceLabel={isUS ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}` : `CA$${(product.priceCAD / 100).toFixed(0)}`}
-          currency={isUS ? "usd" : "cad"}
+          province={isUS ? "unknown" : "ontario"}
         />
-        {product.available && QUIZ_ROUTES[product.key] && (
-          <Link href={QUIZ_ROUTES[product.key]} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+        {product.available && PRODUCT_STUDY_PATHS[product.key]?.quizPath && (
+          <Link href={courseProvinceHref(PRODUCT_STUDY_PATHS[product.key].quizPath, product.key, new URLSearchParams(searchString).get("province"), searchString)} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
             Try Free →
           </Link>
         )}
         {FLASHCARD_ROUTES[product.key] && (
-          <Link href={FLASHCARD_ROUTES[product.key]}>
+          <Link href={courseProvinceHref(FLASHCARD_ROUTES[product.key], product.key, new URLSearchParams(searchString).get("province"), searchString)}>
             <span style={{
               display: "block", textAlign: "center", fontSize: 12, fontWeight: 600,
               color: product.color, textDecoration: "none", padding: "2px 0",

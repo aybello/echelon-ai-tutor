@@ -298,8 +298,14 @@ export const contactSubmissions = mysqlTable("contact_submissions", {
   email: varchar("email", { length: 320 }).notNull(),
   subject: varchar("subject", { length: 128 }).notNull(),
   message: text("message").notNull(),
+  // Nullable additive fields preserve every historical general-contact row.
+  requestKey: varchar("requestKey", { length: 36 }),
+  organization: varchar("organization", { length: 128 }),
+  partnershipType: varchar("partnershipType", { length: 64 }),
+  followUpStatus: varchar("followUpStatus", { length: 16 }).default("new").notNull(),
+  notificationStatus: varchar("notificationStatus", { length: 16 }).default("pending").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, table => [uniqueIndex("contact_request_key_unique").on(table.requestKey)]);
 
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type InsertContactSubmission = typeof contactSubmissions.$inferInsert;
@@ -365,12 +371,15 @@ export const questionAttempts = mysqlTable("question_attempts", {
   orgId: int("orgId"),
   /** Organization member ID for team plan operators — null for individual learners. */
   organizationMemberId: int("organizationMemberId"),
+  /** Server-issued Flex membership; null for individual, Annual and legacy study. */
+  flexLicenceId: int("flexLicenceId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (t) => [
   // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern
   index("qa_userid_createdat_idx").on(t.userId, t.createdAt),
   index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
   // Issue Q: index for GROUP BY sessionId queries in recentSessions
+  index("qa_flex_licence_created_idx").on(t.flexLicenceId, t.createdAt),
   index("qa_sessionid_idx").on(t.sessionId),
   index("qa_org_member_course_created_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.createdAt),
 ]);
@@ -1276,6 +1285,8 @@ export const stripeEventLog = mysqlTable("stripe_event_log", {
   status: varchar("status", { length: 40 }).notNull().default("pending"),
   dbProcessed: boolean("dbProcessed").notNull().default(false),
   emailDelivered: boolean("emailDelivered").notNull().default(false),
+  /** Paid invoice conversion events have been persisted to product analytics. */
+  analyticsProcessed: boolean("analyticsProcessed").notNull().default(false),
   attemptCount: int("attemptCount").notNull().default(0),
   processingToken: varchar("processingToken", { length: 64 }),
   processingStartedAt: timestamp("processingStartedAt"),
@@ -1544,3 +1555,45 @@ export const scheduledWork = mysqlTable("scheduled_work", {
   completedAt: timestamp("completedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
+
+/** Separate pilot learning records; never treated as exam-pass entitlements or approved CEUs. */
+export const ceuLearningRecords = mysqlTable('ceu_learning_records', {
+  id: int('id').autoincrement().primaryKey(),
+  studentEmail: varchar('studentEmail', {length:320}).notNull(),
+  courseKey: varchar('courseKey', {length:80}).notNull(),
+  courseVersion: varchar('courseVersion', {length:32}).notNull(),
+  operatorNumber: varchar('operatorNumber', {length:32}).notNull(),
+  activeSeconds: int('activeSeconds').notNull().default(0),
+  exerciseAttempts: int('exerciseAttempts').notNull().default(0),
+  revision: int('revision').notNull().default(0),
+  stateJson: mediumtext('stateJson').notNull(),
+  createdAt: timestamp('createdAt').defaultNow().notNull(),
+  updatedAt: timestamp('updatedAt').defaultNow().onUpdateNow().notNull(),
+}, table => [uniqueIndex('ceu_learner_course_edition').on(table.studentEmail,table.courseKey,table.courseVersion)]);
+
+/** Atomic time reservations enforce the seven-hour limit across all CEU courses. */
+export const ceuLearningDailyTime = mysqlTable('ceu_learning_daily_time', {
+  studentEmail: varchar('studentEmail', {length:320}).notNull(),
+  localDate: varchar('localDate', {length:10}).notNull(),
+  seconds: int('seconds').notNull().default(0),
+  lastCreditedAt: timestamp('lastCreditedAt'),
+}, table => [uniqueIndex('ceu_learning_daily_time_pk').on(table.studentEmail, table.localDate)]);
+
+/** Restart-safe editorial state. Draft/source payload and provider IDs are never public. */
+export const blogAutomationRuns = mysqlTable("blog_automation_runs", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  runKey: varchar("runKey", { length: 32 }).notNull(),
+  status: varchar("status", { length: 16 }).notNull(),
+  progress: mediumtext("progress").notNull(),
+  weeklyTaskUid: varchar("weeklyTaskUid", { length: 65 }),
+  workerTaskUid: varchar("workerTaskUid", { length: 65 }),
+  claimToken: varchar("claimToken", { length: 64 }),
+  leaseUntil: timestamp("leaseUntil"),
+  attempts: int("attempts").notNull().default(0),
+  lastError: varchar("lastError", { length: 500 }),
+  startedAt: timestamp("startedAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, table => [
+  index("blog_weekly_task_idx").on(table.weeklyTaskUid),
+  index("blog_worker_task_idx").on(table.workerTaskUid),
+]);

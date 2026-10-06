@@ -26,7 +26,7 @@ import { invokeLLM } from "../_core/llm";
 import { ENV } from "../_core/env";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 
 // ── Trigger Definitions ──────────────────────────────────────────────────────
 
@@ -297,7 +297,7 @@ function wrapEmailHtml(body: string, subject: string): string {
 
 // ── SMTP Helper ─────────────────────────────────────────────────────────────
 
-function createTransporter(): nodemailer.Transporter {
+function createTransporter(): Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
       host: ENV.smtpHost,
@@ -390,7 +390,7 @@ export async function runTriggerEngine(assertOwned: () => Promise<void> = async 
   const db = await getDb();
   if (!db) return { evaluated: 0, triggered: 0, sent: 0, skippedCooldown: 0, errors: ["Database unavailable"] };
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   try {
     transporter = createTransporter();
   } catch {

@@ -221,7 +221,7 @@ export async function provisionOrgFromWebhook(
         managerEmail: organization.managerEmail,
         orgName: organization.name,
         seats: organization.seatsTotal,
-        tierLabel: getOrganizationTierLabel(organization.tier),
+        tierLabel: getOrganizationTierLabel(organization.tier, organization.province),
         dashboardUrl: `${ENV.appBaseUrl}/account?next=/team`,
       });
 

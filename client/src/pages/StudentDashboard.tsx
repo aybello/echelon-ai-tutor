@@ -6,7 +6,11 @@ import { useLogout } from "@/_core/hooks/useLogout";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useSearch } from "wouter";
+import { signInHref } from "@shared/funnelNavigation";
 import SiteNav from "@/components/SiteNav";
+import StudyHomeCard from "@/components/StudyHomeCard";
+import "@/components/StudyWorkspace.css";
 import { useMemo, useState, useEffect } from "react";
 import {
   Chart as ChartJS,
@@ -82,7 +86,7 @@ const DASHBOARD_RESPONSIVE_STYLES = `
   .dashboard-metrics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 20px; }
   .dashboard-two-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
   .dashboard-two-one { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
-  .dashboard-action-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .dashboard-action-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 24px; }
   .dashboard-action-card { transition: transform 160ms ease, box-shadow 160ms ease; }
   .dashboard-action-card:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12); }
   .dashboard-section-title { display: flex; align-items: center; gap: 8px; }
@@ -112,11 +116,12 @@ export default function StudentDashboard() {
   const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation();
   const { logout: handleDashboardLogout, isPending: logoutPending } = useLogout();
   const utils = trpc.useUtils();
-  const [selectedCourseKey] = useState<string | undefined>(() => {
-    const requested = new URLSearchParams(window.location.search).get("course");
-    return requested ? resolveCourseKey(requested)?.courseKey : undefined;
-  });
+  const dashboardSearch = useSearch();
+  const requestedCourse = new URLSearchParams(dashboardSearch).get("course");
+  const selectedCourseKey = requestedCourse ? resolveCourseKey(requestedCourse)?.courseKey : undefined;
+  const dashboardDestination = `/dashboard${dashboardSearch ? `?${dashboardSearch}` : ""}`;
 
+  const [dashboardView, setDashboardView] = useState<"study" | "progress">("study");
   const [otpEmail, setOtpEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
   const [otpStep, setOtpStep] = useState<"email" | "code">("email");
@@ -286,9 +291,9 @@ export default function StudentDashboard() {
   const authResolved = !authLoading && !dashboardMe.isLoading;
   useEffect(() => {
     if (authResolved && !hasAccess) {
-      window.location.replace("/account?next=/dashboard");
+      window.location.replace(signInHref(dashboardDestination));
     }
-  }, [authResolved, hasAccess]);
+  }, [authResolved, hasAccess, dashboardDestination]);
 
   /* ── Loading state ── */
   if (authLoading || dashboardMe.isLoading) {
@@ -316,20 +321,26 @@ export default function StudentDashboard() {
     );
   }
 
+  const focusCourse = (selectedCourseKey ? resolveCourseKey(selectedCourseKey) : undefined)
+    ?? (studyFocus.data?.courseKey ? resolveCourseKey(studyFocus.data.courseKey) : undefined)
+    ?? (activation.data?.course.courseKey ? resolveCourseKey(activation.data.course.courseKey) : undefined);
+  const nextRecommendation = studyPlan.data?.recommendations?.[0];
+  const focusedWeakRecommendation = studyPlan.data?.recommendations.find(recommendation => recommendation.type === "weak_topic");
+  const setupNeeded = Boolean(focusCourse && activation.data && activation.data.status !== "completed");
   const stats = overview.data;
   const isLoading = overview.isLoading;
   return (
-    <div style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div className="study-dashboard" style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{DASHBOARD_RESPONSIVE_STYLES}</style>
       <SiteNav currentPath="/dashboard" />
-      <div style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>
+      <div className="study-dashboard-content" style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>
 
         {/* ═══════════════════════════════════════════════════
             TOP SECTION: Welcome · Readiness · Countdown · Next Step
         ═══════════════════════════════════════════════════ */}
 
         {/* Header row */}
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
+        <div className="study-welcome" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
           <div>
             <h1 style={{ color: "#0F172A", fontSize: 26, fontWeight: 900, margin: 0, letterSpacing: "-0.03em" }}>
               Welcome back{displayName ? `, ${displayName.split(" ")[0]}` : ""}
@@ -347,7 +358,7 @@ export default function StudentDashboard() {
               <BookOpen size={14} style={{ display: "inline", marginRight: 6, verticalAlign: -2 }} aria-hidden="true" />
               My Courses
             </a>
-            <a href="/training-hours" style={{
+            <a className="study-training-link" href="/training-hours" style={{
               background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 8,
               padding: "7px 14px", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer",
               textDecoration: "none", display: "inline-block",
@@ -365,99 +376,21 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        {/* Activation continuity: every paid learner should see the next useful action. */}
-        {activation.data && activation.data.status !== "completed" && (
-          <div style={{
-            background: "linear-gradient(135deg, #0F766E, #1D4ED8)", color: "#fff",
-            borderRadius: 16, padding: "18px 20px", marginBottom: 16,
-            display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16,
-            boxShadow: "0 12px 30px rgba(29, 78, 216, 0.16)",
-          }}>
-            <div>
-              <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.09em", textTransform: "uppercase", color: "#BAE6FD", marginBottom: 5 }}>Your study plan</div>
-              <div style={{ fontSize: 18, fontWeight: 900 }}>Build your starting baseline</div>
-              <div style={{ fontSize: 12, color: "#DBEAFE", marginTop: 4, maxWidth: 560, lineHeight: 1.5 }}>
-                Set your schedule and complete a short diagnostic so Echelon can focus your practice on the topics that need it most.
-              </div>
-            </div>
-            <a href={`/activate/${encodeURIComponent(activation.data.course.courseKey)}`} style={{
-              padding: "10px 17px", borderRadius: 9, background: "#fff", color: "#1D4ED8",
-              fontSize: 13, fontWeight: 800, textDecoration: "none", whiteSpace: "nowrap",
-            }}>
-              {activation.data.status === "not_started" ? "Set Up My Plan" : "Continue Setup"} →
-            </a>
-          </div>
-        )}
-
-        {activation.data?.status === "completed" && studyPlan.data?.recommendations?.[0] && (
-          <div style={{
-            background: "linear-gradient(135deg, #ECFDF5, #EFF6FF)", border: "1px solid #A7F3D0",
-            borderRadius: 16, padding: "18px 20px", marginBottom: 16,
-            display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16,
-          }}>
-            <div style={{ flex: 1, minWidth: 240 }}>
-              <div style={{ color: "#047857", fontSize: 11, fontWeight: 800, letterSpacing: "0.09em", textTransform: "uppercase", marginBottom: 5 }}>Today's plan</div>
-              <div style={{ color: "#0F172A", fontSize: 17, fontWeight: 900 }}>{studyPlan.data.recommendations[0].title}</div>
-              <div style={{ color: "#475569", fontSize: 12, marginTop: 4, lineHeight: 1.5 }}>{studyPlan.data.recommendations[0].description}</div>
-              {activation.data.profile?.weeklyQuestionGoal && (
-                <div style={{ color: "#0F766E", fontSize: 11, fontWeight: 700, marginTop: 7 }}>
-                  Weekly target: {activation.data.profile.weeklyQuestionGoal} questions
-                </div>
-              )}
-            </div>
-            <a href={studyPlan.data.recommendations[0].actionHref ?? activation.data.course.quizPath} style={{
-              padding: "10px 17px", borderRadius: 9, background: "#0F766E", color: "#fff",
-              fontSize: 13, fontWeight: 800, textDecoration: "none", whiteSpace: "nowrap",
-            }}>
-              Continue Studying →
-            </a>
-          </div>
-        )}
-
-        {/* Primary Study Focus banner */}
-        {studyFocus.data?.courseKey && (
-          <div style={{
-            background: "linear-gradient(135deg, #EFF6FF, #DBEAFE)",
-            border: "1px solid #BFDBFE",
-            borderRadius: 12,
-            padding: "12px 18px",
-            marginBottom: 16,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 10,
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <Target size={20} color="#2563EB" aria-hidden="true" />
-              <div>
-                <div style={{ color: "#1E40AF", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>
-                  Studying: {studyFocus.data.label ?? studyFocus.data.courseKey}
-                </div>
-                <div style={{ color: "#3B82F6", fontSize: 11, marginTop: 2 }}>
-                  {studyFocus.data.source === "exam_date" ? "Prioritized by upcoming exam date" :
-                   studyFocus.data.source === "recent_activity" ? "Based on recent activity" :
-                   "Your enrolled course"}
-                </div>
-              </div>
-            </div>
-            <div className="dashboard-mobile-actions" style={{ display: "flex", gap: 8 }}>
-              <a
-                href={studyFocus.data.quizPath}
-                style={{ padding: "6px 14px", borderRadius: 8, background: "#3B82F6", color: "#fff", fontSize: 12, fontWeight: 700, textDecoration: "none" }}
-              >
-                Practice
-              </a>
-              <a
-                href={studyFocus.data.mockExamPath}
-                style={{ padding: "6px 14px", borderRadius: 8, background: "#fff", border: "1px solid #BFDBFE", color: "#1E40AF", fontSize: 12, fontWeight: 700, textDecoration: "none" }}
-              >
-                Mock Exam
-              </a>
-            </div>
-          </div>
-        )}
-
+        {activation.isLoading || studyPlan.isLoading ? <div role="status" style={{ padding: 28, marginBottom: 24 }}>Finding your next study step…</div> : <StudyHomeCard
+          course={focusCourse?.displayName ?? "Your courses"}
+          title={setupNeeded ? "Build your study plan" : nextRecommendation?.title ?? (focusCourse ? "Pick up your next study session" : "Choose your course")}
+          description={setupNeeded ? "A short diagnostic can help focus your practice. If you want to get started straight away, try a Quick 10." : nextRecommendation?.description ?? "Practise, review the explanation and keep building your understanding."}
+          href={setupNeeded && focusCourse ? `/activate/${encodeURIComponent(focusCourse.courseKey)}` : nextRecommendation?.actionHref ?? focusCourse?.quizPath ?? "/account"}
+          actionLabel={setupNeeded ? (activation.data?.status === "not_started" ? "Set up my plan" : "Continue setup") : nextRecommendation?.action ?? (focusCourse ? "Continue studying" : "Choose a course")}
+          secondaryHref={focusCourse ? `${focusCourse.quizPath}?mode=quick10` : undefined}
+          weeklyGoal={activation.data?.profile?.weeklyQuestionGoal}
+        />}
+        {(studyPlan.isError || activation.isError) && <p role="alert" style={{ color: "#9a3412", fontSize: 14 }}>Your personalized plan could not load. Your course is still available. <button type="button" className="workspace-text-link" onClick={() => { void studyPlan.refetch(); void activation.refetch(); }}>Retry plan</button></p>}
+        <nav className="workspace-view-tabs" aria-label="Dashboard views">
+          <button type="button" aria-pressed={dashboardView === "study"} onClick={() => setDashboardView("study")}>Study</button>
+          <button type="button" aria-pressed={dashboardView === "progress"} onClick={() => setDashboardView("progress")}>Progress and history</button>
+        </nav>
+        {dashboardView === "progress" && <section aria-label="Your progress">
         {/* Top row: Readiness ring + Countdown + Key stats */}
         <div className="dashboard-metrics-grid">
 
@@ -586,30 +519,57 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        {/* Recommended Next Step banner */}
-        {studyPlan.data?.recommendations?.[0] && (
-          <div style={{
-            background: "linear-gradient(135deg, #3B82F615, #14B8A615)",
-            border: "1px solid #3B82F630",
-            borderRadius: 14, padding: "14px 18px", marginBottom: 20,
-            display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap",
-          }}>
-            <RecommendationIcon type={studyPlan.data.recommendations[0].type} size={22} />
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800 }}>{studyPlan.data.recommendations[0].title}</div>
-              <div style={{ color: "#64748B", fontSize: 12, marginTop: 2 }}>{studyPlan.data.recommendations[0].description}</div>
-            </div>
-            {studyPlan.data.recommendations[0].actionHref && (
-              <a href={studyPlan.data.recommendations[0].actionHref} style={{
-                padding: "8px 16px", borderRadius: 8, background: "#3B82F6", color: "#fff",
-                fontSize: 13, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0,
-              }}>
-                Start Now →
-              </a>
-            )}
-          </div>
-        )}
+        </section>}
+        {dashboardView === "study" && <details className="study-loop-details"><summary>How your study plan works</summary>
+        {studyPlan.data && (() => {
+          const hasDiagnostic = Boolean(activation.data?.diagnostic);
+          const hasBaseline = hasDiagnostic || studyPlan.data.hasData;
+          const hasMock = Boolean(studyPlan.data.latestMock);
+          const courseKey = studyPlan.data.examType ?? selectedCourseKey;
+          const activationHref = courseKey ? `/activate/${courseKey}` : focusCourse?.quizPath ?? "/account";
+          const quizHref = focusCourse?.quizPath ?? "/account";
+          const mockHref = focusCourse?.mockExamPath ?? "/account";
+          const steps = [
+            { number: "01", title: "Set a baseline", detail: hasDiagnostic ? "Diagnostic complete. Your plan now uses your real topic results." : hasBaseline ? "You already have study data. A diagnostic can sharpen your starting point." : "Take the short diagnostic before choosing what to study.", href: hasBaseline ? quizHref : activationHref, action: hasDiagnostic ? "View plan" : hasBaseline ? "Continue practice" : "Take diagnostic", state: hasBaseline ? "complete" : "current" },
+            { number: "02", title: "Run a focused block", detail: studyPlan.data.totalMissed > 0 ? `${studyPlan.data.totalMissed} missed question${studyPlan.data.totalMissed === 1 ? "" : "s"} are ready for targeted review.` : "Practice the next priority topic, then review what you miss.", href: `${quizHref}?mode=${studyPlan.data.totalMissed > 0 ? "missed" : "standard"}`, action: "Practice now", state: hasBaseline && !hasMock ? "current" : hasBaseline ? "complete" : "upcoming" },
+            { number: "03", title: "Validate with a mock", detail: hasMock ? `Latest mock: ${Math.round((studyPlan.data.latestMock!.score / studyPlan.data.latestMock!.total) * 100)}%. Use it to decide what to revisit.` : "When you have enough practice data, use a timed mock to pressure-test the plan.", href: mockHref, action: hasMock ? "Retake mock" : "Start mock", state: hasMock ? "complete" : hasBaseline ? "current" : "upcoming" },
+            { number: "04", title: "Close the loop", detail: hasMock ? "Review mock misses, repeat the focused block, then validate again." : "Your next mock will create the next focused review block.", href: `${quizHref}?mode=missed`, action: "Review misses", state: hasMock ? "current" : "upcoming" },
+          ] as const;
+          return (
+            <section aria-label="Your repeatable study loop" style={{ background: "#F8FAFC", border: "1px solid #DCE7F5", borderRadius: 14, padding: "18px", marginBottom: 20 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start", flexWrap: "wrap", marginBottom: 14 }}>
+                <div>
+                  <div style={{ color: "#0F172A", fontSize: 15, fontWeight: 850 }}>Your repeatable study loop</div>
+                  <p style={{ color: "#64748B", fontSize: 12, lineHeight: 1.5, margin: "4px 0 0" }}>Baseline → targeted practice → mock → review. Each pass gives you a clearer next block.</p>
+                </div>
+                <span style={{ color: "#0F766E", background: "#CCFBF1", borderRadius: 999, padding: "5px 9px", fontSize: 10, fontWeight: 800 }}>Course-focused</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 10 }}>
+                {steps.map((step) => {
+                  const palette = step.state === "complete"
+                    ? { bg: "#F0FDFA", line: "#99F6E4", accent: "#0F766E", label: "Complete" }
+                    : step.state === "current"
+                      ? { bg: "#EFF6FF", line: "#BFDBFE", accent: "#1D4ED8", label: "Current step" }
+                      : { bg: "#FFFFFF", line: "#E2E8F0", accent: "#64748B", label: "Up next" };
+                  return (
+                    <div key={step.number} style={{ background: palette.bg, border: `1px solid ${palette.line}`, borderRadius: 11, padding: "13px", minHeight: 150, display: "flex", flexDirection: "column" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, marginBottom: 9 }}>
+                        <span style={{ color: palette.accent, fontSize: 11, fontWeight: 900, letterSpacing: "0.08em" }}>{step.number}</span>
+                        <span style={{ color: palette.accent, fontSize: 10, fontWeight: 750 }}>{palette.label}</span>
+                      </div>
+                      <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 850, marginBottom: 5 }}>{step.title}</div>
+                      <p style={{ color: "#64748B", fontSize: 11, lineHeight: 1.45, margin: "0 0 12px" }}>{step.detail}</p>
+                      <a href={step.href} style={{ marginTop: "auto", color: palette.accent, fontSize: 11, fontWeight: 800, textDecoration: "none" }}>{step.action} →</a>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
 
+        </details>}
+        {dashboardView === "progress" && <>
         <div style={{
           background: "#fff", border: "1px solid #E2E8F0", borderRadius: 14,
           padding: "16px 18px", marginBottom: 20,
@@ -655,63 +615,46 @@ export default function StudentDashboard() {
           )}
         </div>
 
+        </>}
+        {dashboardView === "study" && <section aria-label="More study actions">
         {/* ═══════════════════════════════════════════════════
             MIDDLE SECTION: Action Cards
         ═══════════════════════════════════════════════════ */}
 
         <div className="dashboard-action-grid">
 
-          {/* Continue Practicing */}
-          <a href={studyFocus.data?.quizPath ?? "/quiz"} style={{ textDecoration: "none" }}>
-            <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #3B82F6, #2563EB)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-              <ListChecks size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
-              <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Continue Practicing</div>
-              <div style={{ color: "#BFDBFE", fontSize: 12, lineHeight: 1.4 }}>Pick up where you left off with adaptive questions.</div>
+          {/* Use this course's scoped study plan, rather than cross-course topic totals. */}
+          <a href={focusedWeakRecommendation?.actionHref ?? `${focusCourse?.quizPath ?? "/account"}?mode=standard`} style={{ textDecoration: "none" }}>
+            <div className="dashboard-action-card" style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", height: "100%", boxSizing: "border-box" }}>
+              <AlertTriangle size={27} color="currentColor" style={{ marginBottom: 12 }} aria-hidden="true" />
+              <div style={{ color: "#33465f", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>{focusedWeakRecommendation ? "Review Weak Topics" : "Focused Practice"}</div>
+              <div style={{ color: "#33465f", fontSize: 12, lineHeight: 1.4 }}>{focusedWeakRecommendation?.description ?? "Build your topic results with practice in this course."}</div>
             </div>
           </a>
 
-          {/* Review Weak Topics */}
-          {(topicAccuracy.data?.topics?.filter((t: any) => t.status === "weak")?.length ?? 0) > 0 ? (
-            <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?topic=${encodeURIComponent(topicAccuracy.data!.topics.filter((t: any) => t.status === "weak")[0].name)}`} style={{ textDecoration: "none" }}>
-              <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #EF4444, #DC2626)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-                <AlertTriangle size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
-                <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
-                <div style={{ color: "#FECACA", fontSize: 12, lineHeight: 1.4 }}>
-                  {topicAccuracy.data!.topics.filter((t: any) => t.status === "weak").length} topic{topicAccuracy.data!.topics.filter((t: any) => t.status === "weak").length !== 1 ? "s" : ""} need attention.
-                </div>
-              </div>
-            </a>
-          ) : (
-            <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=standard`} style={{ textDecoration: "none" }}>
-              <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-                <AlertTriangle size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
-                <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
-                <div style={{ color: "#FEF3C7", fontSize: 12, lineHeight: 1.4 }}>No weak topics yet — keep practicing!</div>
-              </div>
-            </a>
-          )}
-
           {/* Take Mock Exam */}
-          <a href={studyFocus.data?.mockExamPath ?? "/mock-exam"} style={{ textDecoration: "none" }}>
-            <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #14B8A6, #0D9488)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-              <ClipboardCheck size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
-              <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Take Mock Exam</div>
-              <div style={{ color: "#CCFBF1", fontSize: 12, lineHeight: 1.4 }}>Simulate real exam conditions and track your score.</div>
+          <a href={focusCourse?.mockExamPath ?? "/account"} style={{ textDecoration: "none" }}>
+            <div className="dashboard-action-card" style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <ClipboardCheck size={27} color="currentColor" style={{ marginBottom: 12 }} aria-hidden="true" />
+              <div style={{ color: "#33465f", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Take Mock Exam</div>
+              <div style={{ color: "#33465f", fontSize: 12, lineHeight: 1.4 }}>Simulate real exam conditions and track your score.</div>
             </div>
           </a>
 
           {/* Review Missed Questions */}
-          <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ textDecoration: "none" }}>
-            <div className="dashboard-action-card" style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
-              <RotateCcw size={27} color="#fff" style={{ marginBottom: 12 }} aria-hidden="true" />
-              <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Missed</div>
-              <div style={{ color: "#EDE9FE", fontSize: 12, lineHeight: 1.4 }}>
+          <a href={`${focusCourse?.quizPath ?? "/account"}?mode=missed`} style={{ textDecoration: "none" }}>
+            <div className="dashboard-action-card" style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <RotateCcw size={27} color="currentColor" style={{ marginBottom: 12 }} aria-hidden="true" />
+              <div style={{ color: "#33465f", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Missed</div>
+              <div style={{ color: "#33465f", fontSize: 12, lineHeight: 1.4 }}>
                 {studyPlan.data?.totalMissed ? `${studyPlan.data.totalMissed} questions to review.` : "Practice questions you got wrong."}
               </div>
             </div>
           </a>
         </div>
 
+        </section>}
+        {dashboardView === "progress" && <section aria-label="Study activity and history">
         {/* ═══════════════════════════════════════════════════
             BOTTOM SECTION: Performance · Topics · AI Tutor · Flashcards
         ═══════════════════════════════════════════════════ */}
@@ -777,7 +720,7 @@ export default function StudentDashboard() {
             ) : (() => {
               const weak = (topicAccuracy.data?.topics ?? []).filter((t: any) => t.status === "weak").slice(0, 4);
               return weak.length === 0 ? (
-                <EmptyState text="No weak topics yet — you're doing great! Keep practicing." />
+                <EmptyState text="No focus topics identified yet. More practice will help build a clearer picture." />
               ) : (
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 10 }}>
                   {weak.map((t: any, i: number) => {
@@ -902,13 +845,13 @@ export default function StudentDashboard() {
                 {/* Review mode quick-links */}
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
                   {(studyPlan.data.totalMissed ?? 0) > 0 && (
-                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=missed`} style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>Missed ({studyPlan.data.totalMissed})</a>
+                    <a href={`${focusCourse?.quizPath ?? "/account"}?mode=missed`} style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>Missed ({studyPlan.data.totalMissed})</a>
                   )}
                   {(studyPlan.data.totalBookmarked ?? 0) > 0 && (
-                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=bookmarked`} style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>Bookmarks ({studyPlan.data.totalBookmarked})</a>
+                    <a href={`${focusCourse?.quizPath ?? "/account"}?mode=bookmarked`} style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>Bookmarks ({studyPlan.data.totalBookmarked})</a>
                   )}
                   {(studyPlan.data.totalLowConf ?? 0) > 0 && (
-                    <a href={`${studyFocus.data?.quizPath ?? "/quiz"}?mode=low-confidence`} style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>Low Confidence ({studyPlan.data.totalLowConf})</a>
+                    <a href={`${focusCourse?.quizPath ?? "/account"}?mode=low-confidence`} style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>Low Confidence ({studyPlan.data.totalLowConf})</a>
                   )}
                 </div>
               </div>
@@ -961,6 +904,8 @@ export default function StudentDashboard() {
             </div>
           )}
         </Section>
+
+        </section>}
 
       </div>
     </div>

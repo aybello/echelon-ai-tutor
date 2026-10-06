@@ -1,3 +1,5 @@
+import { z } from "zod";
+import type { AttemptAttribution } from "./teams/attemptAttribution";
 import { createHash } from "node:crypto";
 import { SignJWT, jwtVerify } from "jose";
 import { ENV } from "./_core/env";
@@ -23,8 +25,8 @@ function secret() {
   return new TextEncoder().encode(ENV.cookieSecret);
 }
 
-export async function issuePracticeReceipt(bankKey: string, ids: number[], owner: string, preview: boolean) {
-  return new SignJWT({ bankKey, ids, owner, preview })
+export async function issuePracticeReceipt(bankKey: string, ids: number[], owner: string, preview: boolean, attribution?: AttemptAttribution) {
+  return new SignJWT({ bankKey, ids, owner, preview, attribution })
     .setProtectedHeader({ alg: "HS256" }).setAudience("echelon-practice")
     .setIssuedAt().setExpirationTime("2h").sign(secret());
 }
@@ -47,4 +49,11 @@ export async function permitsPracticeAttempt(token: string | undefined, bankKey:
       Array.isArray(payload.ids) && payload.ids.includes(questionId) &&
       typeof payload.preview === "boolean" && (payload.preview || hasAccess);
   } catch { return false; }
+}
+
+/** Read only server-signed context; old valid receipts intentionally have none. */
+export async function practiceReceiptAttribution(token: string): Promise<AttemptAttribution | null> {
+  const { payload } = await jwtVerify(token, secret(), { algorithms: ["HS256"], audience: "echelon-practice" });
+  const parsed = z.object({ orgId: z.number().int().positive().nullable(), organizationMemberId: z.number().int().positive().nullable(), flexLicenceId: z.number().int().positive().nullable() }).safeParse(payload.attribution);
+  return parsed.success ? parsed.data : null;
 }

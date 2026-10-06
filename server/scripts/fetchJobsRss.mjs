@@ -12,6 +12,7 @@
  * Job Bank Atom feed is the most reliable public source for Canadian operator jobs.
  */
 
+import { sourceDate, parseJobDates } from "./jobVerification.mjs";
 import { XMLParser } from "fast-xml-parser";
 import { decodeHtmlEntities, detectProvince } from "./jobUtils.mjs";
 
@@ -151,6 +152,7 @@ async function fetchFeed(feed, parser) {
 
 export async function ingestRss(upsertJob) {
   const errors = [];
+  const sourceOutcomes = [];
   let totalFetched = 0;
   let successfulSources = 0;
   let failedSources = 0;
@@ -193,6 +195,7 @@ export async function ingestRss(upsertJob) {
 
     if (blocked) {
       failedSources++;
+      sourceOutcomes.push({ source: OWWA_FEED.name, status: "failed", count: 0 });
       errors.push("RSS fetch skipped (OWWA): Cloudflare challenge detected");
       console.log(
         "  · OWWA: Cloudflare challenge detected — continuing with Job Bank feeds"
@@ -236,7 +239,7 @@ export async function ingestRss(upsertJob) {
           );
           const province =
             detectedProvince === "other" ? "ON" : detectedProvince;
-          const postedAt = item.pubDate ? new Date(item.pubDate) : new Date();
+          const postedAt = sourceDate(item.pubDate);
 
           await upsertJob({
             title,
@@ -247,8 +250,10 @@ export async function ingestRss(upsertJob) {
             jobType: "full-time",
             sourceUrl,
             sourceName: "OWWA",
+            outcomeSource: OWWA_FEED.name,
             sourceType: "rss",
             description,
+            ...parseJobDates(descRaw),
             postedAt,
           });
           owwaCount++;
@@ -258,10 +263,12 @@ export async function ingestRss(upsertJob) {
         }
       }
       successfulSources++;
+      sourceOutcomes.push({ source: OWWA_FEED.name, status: "success", count: owwaCount });
       console.log(`  ✓ ${OWWA_FEED.name}: ${owwaCount} jobs`);
     }
   } catch (err) {
     failedSources++;
+    sourceOutcomes.push({ source: OWWA_FEED.name, status: "failed", count: 0 });
     errors.push(`RSS fetch failed (OWWA): ${err.message}`);
   }
 
@@ -315,9 +322,7 @@ export async function ingestRss(upsertJob) {
               continue;
             }
 
-            const postedAt = entry.updated
-              ? new Date(entry.updated)
-              : new Date();
+            const postedAt = sourceDate(entry.published);
 
             await upsertJob({
               title,
@@ -328,8 +333,10 @@ export async function ingestRss(upsertJob) {
               jobType: "full-time",
               sourceUrl,
               sourceName: "Job Bank Canada",
+              outcomeSource: feed.name,
               sourceType: "rss",
               description,
+              ...parseJobDates(summary),
               postedAt,
             });
 
@@ -346,8 +353,10 @@ export async function ingestRss(upsertJob) {
           `  ✓ ${feed.name}: ${feedCount} relevant jobs${skipped > 0 ? ` (${skipped} filtered out)` : ""}`
         );
         successfulSources++;
+        sourceOutcomes.push({ source: feed.name, status: "success", count: feedCount });
       } catch (err) {
         failedSources++;
+        sourceOutcomes.push({ source: feed.name, status: "failed", count: 0 });
         errors.push(
           `RSS fetch failed (${feed.name} — ${feed.url}): ${err.message}`
         );
@@ -356,5 +365,5 @@ export async function ingestRss(upsertJob) {
   );
 
   console.log(`  Total fetched from all feeds: ${totalFetched}`);
-  return { errors, totalFetched, successfulSources, failedSources };
+  return { errors, totalFetched, successfulSources, failedSources, sourceOutcomes };
 }

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { attachPracticeReceipts, issuePracticeReceipt, permitsPracticeAttempt, practiceIdentity } from "./practiceQuestionReceipt";
+import { attachPracticeReceipts, issuePracticeReceipt, permitsPracticeAttempt, practiceIdentity, practiceReceiptAttribution } from "./practiceQuestionReceipt";
 import { issueSubscriptionToken } from "./_core/subscriptionToken";
 import type { TrpcContext } from "./_core/context";
 
@@ -19,11 +19,19 @@ describe("practice receipt trust boundary", () => {
     expect(await permitsPracticeAttempt(token, "oit", 4, "guest", false)).toBe(true);
     expect(await permitsPracticeAttempt(token, "oit", 10, "guest", false)).toBe(false);
   });
+  it("reads attribution only from a valid server-signed receipt and keeps old receipts unattributed", async () => {
+    const attribution = { orgId: 3, organizationMemberId: null, flexLicenceId: 12 };
+    const token = await issuePracticeReceipt("class1-water", [1], "owner", false, attribution);
+    expect(await practiceReceiptAttribution(token)).toEqual(attribution);
+    expect(await practiceReceiptAttribution(await issuePracticeReceipt("class1-water", [1], "owner", false))).toBeNull();
+    await expect(practiceReceiptAttribution(`${token}x`)).rejects.toThrow();
+  });
   it("expires receipts instead of accepting a stale study set forever", async () => {
     vi.useFakeTimers();
     const token = await issuePracticeReceipt("oit", [1], "owner", true);
     vi.setSystemTime(Date.now() + 121 * 60_000);
     expect(await permitsPracticeAttempt(token, "oit", 1, "owner", true)).toBe(false);
+    await expect(practiceReceiptAttribution(token)).rejects.toThrow();
   });
   it("bounds each signed receipt to 50 delivered questions", async () => {
     const rows = await attachPracticeReceipts(Array.from({ length: 125 }, (_, id) => ({ id })), "oit", "owner", false);

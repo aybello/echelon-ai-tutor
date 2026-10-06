@@ -1,0 +1,10 @@
+import type {fetchPostingResponse} from './jobPostingTransport.mjs';
+export type JobVerification = { status: "verified" | "expired" | "missing" | "unverified" | "unavailable"; postedAt: Date | null; closingAt: Date | null };
+export type JobDocument = { missing: boolean; text: string; raw?: string; isPdf?: boolean; finalUrl?: string; contentType?: string };
+export type JobDocumentDependencies = Omit<NonNullable<Parameters<typeof fetchPostingResponse>[1]>, 'signal'> & { pdfToText?: typeof pdfToText };
+export function plainJobText(value?: string): string;
+export function sourceDate(value: unknown): Date | null;
+export function parseJobDates(text: string): { postedAt: Date | null; closingAt: Date | null };
+export function pdfToText(bytes: Uint8Array): Promise<string>;
+export function fetchJobDocument(url: string, deps?: JobDocumentDependencies): Promise<JobDocument>;
+export function verifyJob(job: { title?: string; company?: string; employer?: string; sourceUrl: string; description?: string | null; postedAt?: Date | string | null; closingAt?: Date | string | null }, options?: { now?: Date; fetchDocument?: (url: string) => Promise<JobDocument> }): Promise<JobVerification>;

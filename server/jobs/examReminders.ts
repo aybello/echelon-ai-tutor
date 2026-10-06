@@ -11,7 +11,7 @@ import { deliverOnce, workKey } from "./durableWork";
 import { getDb } from "../db";
 import { examDates } from "../../drizzle/schema";
 import { ENV } from "../_core/env";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 
 const REMINDER_INTERVALS = EXAM_REMINDER_INTERVALS; // days before exam
 
@@ -23,7 +23,7 @@ function getDaysUntil(examDate: Date): number {
   return Math.ceil((exam.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-function createTransporter(): nodemailer.Transporter {
+function createTransporter(): Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
       host: ENV.smtpHost,
@@ -168,7 +168,7 @@ export async function runExamReminders(assertOwned: () => Promise<void> = async 
   let sent = 0;
   const errors: string[] = [];
 
-  let transporter: nodemailer.Transporter | null = null;
+  let transporter: Transporter | null = null;
   try {
     transporter = createTransporter();
   } catch (err) {

@@ -1,8 +1,13 @@
+import { resolveAttemptAttribution, validateIssuedAttribution } from "./teams/attemptAttribution";
+import { persistedPartnershipInquiry } from "./partnershipInquiry";
+import { partnershipInquirySchema } from "../shared/partnershipInquiry";
 import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExamDate } from "./examDateRecords";
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
-import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, selectMappedMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
+import { resolveWastewaterMockArea } from "./wastewaterMockAreaResolver";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { clearIdentityCookies } from "./_core/logout";
 import { invokeLLM } from "./_core/llm";
@@ -42,6 +47,7 @@ import { changelogRouter } from "./routers/changelogRouter";
 import { activationRouter } from "./routers/activationRouter";
 import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
+import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
@@ -140,6 +146,7 @@ export const appRouter = router({
   funnelAnalytics: funnelAnalyticsRouter,
   electricianReview: electricianReviewRouter,
   training: trainingRouter,
+  ceu: ceuRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
@@ -302,7 +309,7 @@ export const appRouter = router({
         let targets: Record<string, number> = {};
         let preview = false;
         let blueprintVersion = 1;
-        let pool: { id: number; module: string; isCalc?: boolean; cognitiveLevel?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
+        let pool: { id: number; module: string; blueprintObjective?: string | null; reviewStatus?: string | null; isCalc?: boolean; cognitiveLevel?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
         if (spec.courseKey === "electrician-309a") {
           const result = await electricianReviewRouter.createCaller(ctx).get309ABetaPractice();
           pool = result.questions;
@@ -319,8 +326,20 @@ export const appRouter = router({
           } else {
             const db = await getDb();
             if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-            pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
-              .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
+            if (ontarioWastewaterMockProfile(spec.bankKey)) {
+              // Existing governance columns are read only for this mock path.
+              // They are never returned in active questions or practice payloads.
+              const rows = await db.select({ ...learnerQuestionColumns, blueprintObjective: questions.blueprintObjective, reviewStatus: questions.reviewStatus }).from(questions)
+                .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter()));
+              const byNumber = new Map(rows.map(row => [row.questionNum, row]));
+              pool = parseLearnerQuestions(rows).map(question => ({ ...question,
+                blueprintObjective: byNumber.get(question.id)?.blueprintObjective,
+                reviewStatus: byNumber.get(question.id)?.reviewStatus,
+              }));
+            } else {
+              pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
+                .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
+            }
           }
           const metadata = await caller.getBankMeta({ bankKey: spec.bankKey });
           targets = metadata?.moduleTargets ?? {};
@@ -329,7 +348,15 @@ export const appRouter = router({
         const count = preview ? 30 : spec.scoredCount;
         let selected: typeof pool;
         const blueprint = preview ? null : mockBlueprintForBank(spec.bankKey, blueprintVersion);
-        if (blueprint) {
+        const wastewaterProfile = preview ? null : ontarioWastewaterMockProfile(spec.bankKey);
+        if (wastewaterProfile) {
+          try {
+            selected = selectMappedMockQuestions(pool, wastewaterProfile.targets, count,
+              question => resolveWastewaterMockArea(spec.bankKey, question));
+          } catch {
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable because some exam areas need reviewed question coverage. Practice remains available. Please use practice or contact support for help with mock access." });
+          }
+        } else if (blueprint) {
           try { selected = selectBlueprintQuestions(pool, blueprint, count); }
           catch (error) {
             console.error("[startMock] Class IV blueprint unavailable", error);
@@ -347,7 +374,8 @@ export const appRouter = router({
           throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable." });
         }
         selected = selectMockQuestions([...selected, ...pretest], {}, selected.length + pretest.length);
-        const issued = issueMockSession({ ...spec, unscoredQuestionNums: pretest.map(q => q.id), owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
+        const attribution = preview ? undefined : await resolveAttemptAttribution(identity, spec.courseKey);
+        const issued = issueMockSession({ ...spec, attribution, unscoredQuestionNums: pretest.map(q => q.id), owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
         return {
           sessionId: issued.manifest.sessionId, token: issued.token,
           deadline: issued.manifest.deadline, duration: spec.duration,
@@ -492,6 +520,7 @@ export const appRouter = router({
         if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
         }
+        const attribution = await validateIssuedAttribution(identity, manifest.courseKey, manifest.attribution);
         const unavailableCount = [...scoredIds].filter(id => !questionMap.has(id)).length;
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
@@ -508,9 +537,10 @@ export const appRouter = router({
             userId: identity.userId, studentEmail: identity.studentEmail,
             examType: input.examType, topic: q?.topic?.trim() || mod, questionId: answer.questionNum,
             correct: isCorrect ? "yes" as const : "no" as const,
+            flexLicenceId: attribution.flexLicenceId,
             difficulty: q?.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
             selectedIndex: answer.selectedIndex, bankKey: input.bankKey, courseKey: input.bankKey,
-            orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+            orgId: attribution.orgId, organizationMemberId: attribution.organizationMemberId,
           };
         });
         const total = scoredAnswers.length;
@@ -527,7 +557,7 @@ export const appRouter = router({
                 passed: passed ? "yes" : "no", timeTakenSeconds: Math.floor((Math.min(Date.now(), manifest.deadline) - manifest.startedAt) / 1000),
                 moduleBreakdown: JSON.stringify(moduleBreakdown), calcOnly: input.calcOnly ? "yes" : "no",
                 bankKey: input.bankKey, courseKey: input.bankKey,
-                orgId: identity.orgId, organizationMemberId: identity.organizationMemberId,
+                orgId: attribution.orgId, organizationMemberId: attribution.organizationMemberId,
               });
               await tx.insert(questionAttempts).values(attempts);
             });
@@ -539,7 +569,7 @@ export const appRouter = router({
           if (!input.calcOnly) {
             await trackEvent("mock_exam_completed", {
               userId: identity.userId?.toString() ?? null, email: identity.studentEmail,
-              examType: input.examType, orgId: identity.orgId, extra: { passed, totalQuestions: total },
+              examType: input.examType, orgId: attribution.orgId, extra: { passed, totalQuestions: total },
             }).catch(error => console.error("[submitMock] Analytics failed after save", error));
           }
         }
@@ -550,19 +580,42 @@ export const appRouter = router({
 
   // Contact form — sends email to abello@echeloninstitute.ca
   contact: router({
+    partnership: publicProcedure
+      .input(partnershipInquirySchema)
+      .mutation(({ input }) => persistedPartnershipInquiry(input)),
+    // Owner-only searchable receipts, including pending/failed secondary notifications.
+    partnershipInbox: protectedProcedure
+      .input(z.object({ search: z.string().max(128).optional(), followUpStatus: z.enum(["new", "contacted", "closed"]).optional() }).optional())
+      .query(async ({ input, ctx }) => {
+        if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Inquiry inbox unavailable." });
+        const search = input?.search?.trim();
+        return db.select().from(contactSubmissions).where(and(
+          sql`${contactSubmissions.requestKey} IS NOT NULL`,
+          input?.followUpStatus ? eq(contactSubmissions.followUpStatus, input.followUpStatus) : undefined,
+          search ? or(
+            sql`${contactSubmissions.organization} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.email} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.partnershipType} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.message} LIKE ${`%${search}%`}`,
+          ) : undefined,
+        )).orderBy(desc(contactSubmissions.createdAt)).limit(100);
+      }),
     send: publicProcedure
       .input(
         z.object({
           name: z.string().min(1, "Name is required").max(100),
-          email: z.string().email("Please enter a valid email address"),
-          subject: z.string().min(1, "Subject is required").max(200),
+          email: z.string().email("Please enter a valid email address").max(320),
+          subject: z.string().min(1, "Subject is required").max(128),
           message: z.string().min(10, "Message must be at least 10 characters").max(2000),
         })
       )
       .mutation(async ({ input }) => {
         const db = await getDb();
         // 1. Save to database first (always, even if email fails)
-        if (db) await db.insert(contactSubmissions).values({
+        if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Your message could not be saved. Please retry." });
+        await db.insert(contactSubmissions).values({
           name: input.name,
           email: input.email,
           subject: input.subject,
@@ -572,14 +625,14 @@ export const appRouter = router({
         try {
           await sendContactEmail(input);
         } catch (err) {
-          console.error("[Contact] Email send failed (submission still saved):", err);
+          console.error("[Contact] Email notification failed; saved message retained.");
           // Don't throw — submission is already saved, user gets success
         }
         // 3. Notify owner via Manus notification system as backup
         notifyOwner({
           title: `Contact form: ${input.subject}`,
           content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
-        }).catch((err) => { console.error("[contact] notifyOwner failed:", err); }); // non-blocking
+        }).catch((err) => { console.error("[Contact] Owner notification failed; saved message retained."); }); // non-blocking
         return { success: true };
       }),
   }),
@@ -618,7 +671,7 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
         parseExamCalendarDate(input.examDate);
-        const identity = await resolveLearningIdentity(ctx);
+        const identity = await resolveLearningIdentity(ctx, key.productKey);
         await upsertExamDate(db, { ...key, date: input.examDate,
           orgId: identity.orgId, organizationMemberId: identity.organizationMemberId });
         return { success: true };
@@ -890,8 +943,10 @@ export const appRouter = router({
             messages: [{ role: "system", content: systemPrompt }, ...input.messages],
             maxTokens: 1536,
           });
-          const reply = response?.choices?.[0]?.message?.content ??
-            "I'm having trouble connecting right now — please try again.";
+          const reply = response?.choices?.[0]?.message?.content;
+          if (typeof reply !== "string" || !reply.trim()) {
+            throw new Error("Tutor provider returned no usable explanation");
+          }
           await trackEvent("ai_tutor_message", {
             userId: resolvedUserId,
             email: resolvedEmail,
@@ -901,9 +956,12 @@ export const appRouter = router({
             extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
           });
           return { reply };
-        } catch (err) {
-          console.error("[AI Tutor] LLM error:", err);
-          return { reply: "Connection issue — please try again in a moment." };
+        } catch {
+          console.error("[AI Tutor] Response unavailable");
+          throw new TRPCError({
+            code: "SERVICE_UNAVAILABLE",
+            message: "The AI Tutor could not finish the explanation. Please retry. Your question is still here.",
+          });
         }
       }),
 

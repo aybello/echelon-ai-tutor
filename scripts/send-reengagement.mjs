@@ -39,7 +39,7 @@ const transporter = nodemailer.createTransport({
 const db = await mysql.createConnection(process.env.DATABASE_URL);
 
 // ─── Fetch all real customers with their products ───────────────────────────
-const OWNER_EMAILS = ["belllo.ayoola@gmail.com"];
+const OWNER_EMAILS = process.env.OWNER_EMAIL ? [process.env.OWNER_EMAIL.trim().toLowerCase()] : [];
 
 const [rows] = await db.execute(
   `SELECT email,

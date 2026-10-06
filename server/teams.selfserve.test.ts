@@ -156,9 +156,9 @@ describe("Manager licence consumption", () => {
     // The seat cap check in consumeOrReuseAnnualLicence only counts 'operator' role members
     // This test verifies the role distinction is enforced
     const members = [
-      { role: "manager", status: "assigned", email: "manager@org.ca" },
-      { role: "operator", status: "assigned", email: "op1@org.ca" },
-      { role: "operator", status: "assigned", email: "op2@org.ca" },
+      { role: "manager", status: "assigned", email: "fixture-61@example.com" },
+      { role: "operator", status: "assigned", email: "fixture-76@example.com" },
+      { role: "operator", status: "assigned", email: "fixture-79@example.com" },
     ];
     const operatorCount = members.filter(m => m.role === "operator" && m.status === "assigned").length;
     const seatsTotal = 2;
@@ -185,8 +185,8 @@ describe("Annual licence consumption — distinct employees", () => {
       return true;
     }
 
-    expect(assignNewEmployee("alice@city.ca")).toBe(true);
-    expect(assignNewEmployee("bob@city.ca")).toBe(true);
+    expect(assignNewEmployee("fixture-17@example.com")).toBe(true);
+    expect(assignNewEmployee("fixture-27@example.com")).toBe(true);
     expect(licencesUsed).toBe(2);
   });
 
@@ -203,13 +203,13 @@ describe("Annual licence consumption — distinct employees", () => {
       return true;
     }
 
-    assignEmployee("alice@city.ca"); // licence 1
+    assignEmployee("fixture-17@example.com"); // licence 1
     // Revoke alice (does NOT restore licence)
     // Assign bob — consumes licence 2
-    assignEmployee("bob@city.ca");
+    assignEmployee("fixture-27@example.com");
     expect(licencesUsed).toBe(2);
     // Now at capacity — charlie cannot be assigned
-    expect(() => assignEmployee("charlie@city.ca")).toThrow("Licence limit reached");
+    expect(() => assignEmployee("fixture-38@example.com")).toThrow("Licence limit reached");
   });
 });
 
@@ -227,10 +227,10 @@ describe("Same-employee reactivation", () => {
       return "new";
     }
 
-    expect(assignEmployee("alice@city.ca")).toBe("new");
+    expect(assignEmployee("fixture-17@example.com")).toBe("new");
     expect(licencesUsed).toBe(1);
     // Revoke and re-assign same employee
-    expect(assignEmployee("alice@city.ca")).toBe("reactivated");
+    expect(assignEmployee("fixture-17@example.com")).toBe("reactivated");
     expect(licencesUsed).toBe(1); // unchanged
   });
 });
@@ -240,10 +240,10 @@ describe("Same-employee reactivation", () => {
 describe("Revocation preserves progress", () => {
   it("revoking a member sets status=revoked but does not delete the member row", () => {
     const members = [
-      { email: "op1@city.ca", role: "operator", status: "assigned" },
+      { email: "fixture-74@example.com", role: "operator", status: "assigned" },
     ];
     // Simulate revokeSeat: update status, do not delete
-    const idx = members.findIndex(m => m.email === "op1@city.ca");
+    const idx = members.findIndex(m => m.email === "fixture-74@example.com");
     members[idx].status = "revoked";
     expect(members).toHaveLength(1); // row preserved
     expect(members[0].status).toBe("revoked");
@@ -251,7 +251,7 @@ describe("Revocation preserves progress", () => {
 
   it("revoking a member expires their subscription row but does not delete it", () => {
     const subs = [
-      { email: "op1@city.ca", status: "active", orgId: 1 },
+      { email: "fixture-74@example.com", status: "active", orgId: 1 },
     ];
     subs[0].status = "expired";
     expect(subs).toHaveLength(1);
@@ -359,7 +359,7 @@ describe("Safe OTP next-redirect — malicious values rejected", () => {
 describe("invoice.payment_succeeded — org branch", () => {
   it("org branch is taken when stripeSubscriptionId matches an org row", () => {
     const organizations = [
-      { id: 1, stripeSubscriptionId: "sub_org_001", name: "City of Winnipeg", managerEmail: "brian@winnipeg.ca", tier: "stream-wastewater-coll", seatsTotal: 25 },
+      { id: 1, stripeSubscriptionId: "sub_org_001", name: "City of Winnipeg", managerEmail: "fixture-29@example.com", tier: "stream-wastewater-coll", seatsTotal: 25 },
     ];
     const invoice = { subscription: "sub_org_001", amount_paid: 742500, hosted_invoice_url: "https://invoice.stripe.com/i/test" };
 
@@ -400,7 +400,7 @@ describe("Webhook idempotency", () => {
   it("replaying subscription.created does not create a second manager", () => {
     const members: any[] = [];
     const orgId = 1;
-    const managerEmail = "manager@edmonton.ca";
+    const managerEmail = "fixture-60@example.com";
 
     function grantManagerIfAbsent(orgId: number, email: string) {
       const existing = members.filter(m => m.orgId === orgId && m.email === email && m.role === "manager");

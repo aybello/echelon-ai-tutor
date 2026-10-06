@@ -50,7 +50,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "CT = 0.4 × 8",
           answer: "3.2 mg·min/L",
         },
-        tip: "Ozone is ~10× more effective than chlorine at equivalent CT. Required CT for Giardia 3-log inactivation at 15°C is ~1.43 mg·min/L.",
+        tip: "Ozone CT is selected from the governing table for the organism, target log credit, temperature, pH and residual. Do not use one comparison ratio or CT value as a universal requirement.",
       },
       {
         name: "Ozone Transfer Efficiency",
@@ -82,7 +82,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "UV Dose = 15 × 3",
           answer: "45 mJ/cm²",
         },
-        tip: "Health Canada requires ≥40 mJ/cm² for 3-log Cryptosporidium inactivation. UV dose is validated using biodosimetry (challenge testing).",
+        tip: "UV treatment credit depends on a validated reactor, target organism and operating envelope. Biodosimetry and the governing approval establish credit; a single dose number does not apply to every system.",
       },
       {
         name: "UV Transmittance",
@@ -485,8 +485,8 @@ const CATEGORIES: FormulaCategory[] = [
 
 // ── QUICK REFERENCE TABLE ────────────────────────────────────────────────────
 const QUICK_REF = [
-  { param: "Ozone CT (Giardia 3-log, 15°C)", value: "≥ 1.43 mg·min/L" },
-  { param: "UV Dose (Cryptosporidium 3-log)", value: "≥ 40 mJ/cm²" },
+  { param: "Ozone CT", value: "Use governing condition-specific table" },
+  { param: "UV treatment credit", value: "Use validated reactor performance" },
   { param: "MF/UF Typical Flux", value: "20–80 LMH" },
   { param: "RO Recovery (typical)", value: "70–85%" },
   { param: "MF/UF Recovery (typical)", value: "90–98%" },

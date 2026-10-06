@@ -45,6 +45,19 @@ export const TEAM_STREAM_TIER_DESCRIPTIONS: Record<TeamStreamTier, string> = {
   "all-access": "All four streams, every released level",
 };
 
+/** Display labels only; stream keys, prices and entitlements are unchanged. */
+export function getTeamStreamLabel(region: string, tier: TeamStreamTier): string {
+  return region === "ontario" && tier === "stream-water-dist"
+    ? "Water Distribution and Supply"
+    : TEAM_STREAM_TIER_LABELS[tier];
+}
+
+export function getTeamStreamDescription(region: string, tier: TeamStreamTier): string {
+  return region === "ontario" && tier === "stream-water-dist"
+    ? "Water distribution and supply, entry level through Class 4"
+    : TEAM_STREAM_TIER_DESCRIPTIONS[tier];
+}
+
 const NATIONAL_TEAM_BASE_PRICE: Record<TeamStreamTier, number> = {
   "stream-water": 44900,
   "stream-wastewater": 44900,

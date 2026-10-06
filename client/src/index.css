@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/StudyDesign.css";
+@source "./";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -8,7 +10,7 @@
  * ECHELON AI TUTOR — Design System
  * Philosophy: Professional SaaS — Clean Dark-Accent
  * Palette: Slate-100 bg, white cards, blue-700 primary, teal-700 secondary
- * Typography: Sora (display/body) + Nunito (score numbers)
+ * Typography: Sora (display/body and score numbers)
  */
 
 @theme inline {
@@ -303,7 +305,7 @@
 .echelon-mobile-actions a { min-height: 40px; display: flex; align-items: center; justify-content: center; gap: 7px; border-radius: 9px; color: var(--echelon-blue); background: #eff6ff; font-size: 11px; font-weight: 750; text-decoration: none; }
 .echelon-mobile-actions a:last-child { color: #fff; background: var(--echelon-navy); }
 
-@media (max-width: 1040px) {
+@media (max-width: 1160px) {
   .echelon-desktop-links { display: none; }
   .echelon-menu-button { display: flex; }
 }
@@ -549,5 +551,15 @@ img {
 @media (max-width: 768px) {
   .dashboard-two-col {
     grid-template-columns: 1fr;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  [data-echelon-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
   }
 }

@@ -44,37 +44,46 @@
     <meta name="twitter:description" content="Canadian water and wastewater operator exam preparation with course-specific practice and a free 15-question preview." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/og-image-new-NPyJfV6kq45KpTXHZ5UW8N.png" />
 
-    <!-- Page-specific SSR text remains available in the HTML for metadata/crawling,
-         but React owns the visual interface after the application starts. -->
+    <!-- Public server-rendered pages keep their content; app boot uses a quiet indicator. -->
     <style>
-      [data-ssr-fallback="true"] {
-        /* The server shell exists for crawlers and no-JavaScript users. Hide it
-           before first paint for JavaScript users so React replacing the root
-           cannot flash raw crawl content on screen. */
-        display: none;
-        max-width: 72rem;
-        margin: 0 auto;
-        padding: 3rem 1.5rem;
-        color: #0f172a;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
+      .app-loading { min-height:100vh; min-height:100dvh; display:grid; place-items:center; background:#f8fafc; }
+      .app-loading-spinner { width:24px; height:24px; border:2px solid #e2e8f0; border-top-color:#2563eb; border-radius:50%; }
+      @media (prefers-reduced-motion:no-preference) { .app-loading-spinner { animation:app-loading-spin .8s linear infinite; } }
+      @keyframes app-loading-spin { to { transform:rotate(360deg); } }
+      [data-ssr-fallback="true"] { display:block; max-width:72rem; margin:0 auto; padding:1.5rem; color:#0f172a; font-family:'Sora',system-ui,sans-serif; line-height:1.7; }
+      .ssr-brand { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0; }
+      .ssr-brand>a { color:#0c4a6e; font-size:1.4rem; font-weight:800; text-decoration:none; }
+      .ssr-brand span { color:#64748b; font-size:.8rem; }
+      .ssr-content { background:linear-gradient(135deg,#eff6ff,#f0fdfa); border:1px solid #dbeafe; border-radius:1.25rem; padding:clamp(1.25rem,4vw,3rem); }
+      .ssr-content h1 { font-size:clamp(1.5rem,4vw,2.5rem); line-height:1.25; color:#0c4a6e; }
+      [data-ssr-fallback] a { color:#0369a1; }
+      .ssr-nav { display:flex; flex-wrap:wrap; gap:1rem; padding:1.5rem 0; font-size:.9rem; }
+      [data-ssr-fallback] table { width:100%; text-align:left; border-collapse:collapse; }
+      [data-ssr-fallback] td,[data-ssr-fallback] th { padding:.5rem; border-bottom:1px solid #cbd5e1; }
     </style>
 
     <!-- Structured Data: injected dynamically by useStructuredData hook on each page -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://manus-analytics.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" />
+    <link id="echelon-font-style" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" />
     <noscript>
-      <style>[data-ssr-fallback="true"] { display: block !important; }</style>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" />
     </noscript>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div class="app-loading" role="status" aria-label="Loading page"><span class="app-loading-spinner" aria-hidden="true"></span></div><noscript><p>JavaScript is needed to open the study tools. <a href="/">Return home</a>.</p></noscript></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Block all sends until the allowlisted privacy boundary is installed. -->
+    <script>window.echelonAnalyticsBeforeSend = function () { return false; };</script>
     <script
+      id="echelon-analytics"
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-auto-track="false"
+      data-exclude-search="true"
+      data-exclude-hash="true"
+      data-do-not-track="true"
+      data-before-send="echelonAnalyticsBeforeSend"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>

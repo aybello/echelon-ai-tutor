@@ -29,7 +29,10 @@ export default function Class3WaterQuiz() {
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water", "lazy");
   const allQuestions = dbQuestions;
 
-  const MODULES = MODULE_CONFIG;
+  // Bank categories determine filters; the local catalogue supplies styling only.
+  const MODULES: ModuleConfig[] = dbModules.map(name =>
+    MODULE_CONFIG.find(module => module.name === name) ?? { name },
+  );
 
   const session = useQuizSession({ examType: "class3-water", allQuestions });
 

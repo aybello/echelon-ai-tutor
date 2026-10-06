@@ -13,18 +13,18 @@ import {
 
 test("database URLs fail closed for missing or invalid TLS", () => {
   assert.throws(
-    () => parseMySqlUrl("mysql://user:pass@example.com:25060/echelon?ssl-mode=DISABLED"),
+    () => parseMySqlUrl("mysql://user:pass@fixture-db-1.test:25060/echelon?ssl-mode=DISABLED"),
     /unsupported ssl-mode/
   );
   assert.throws(
-    () => parseMySqlUrl("mysql://user:pass@example.com:25060/echelon", { requireTls: true }),
+    () => parseMySqlUrl("mysql://user:pass@fixture-db-1.test:25060/echelon", { requireTls: true }),
     /require TLS/
   );
   const config = parseMySqlUrl(
-    "mysql://user:pass@example.com:25060/echelon?ssl-mode=VERIFY_IDENTITY",
+    "mysql://user:pass@fixture-db-1.test:25060/echelon?ssl-mode=VERIFY_IDENTITY",
     { caCertificate: "-----BEGIN CERTIFICATE-----\nvalid\n-----END CERTIFICATE-----", requireTls: true }
   );
-  assert.equal(config.host, "example.com");
+  assert.equal(config.host, "fixture-db-1.test");
   assert.equal(config.port, 25060);
   assert.equal(config.database, "echelon");
   assert.equal(config.ssl.rejectUnauthorized, true);
@@ -35,7 +35,7 @@ test("database URLs fail closed for missing or invalid TLS", () => {
 
 test("source URLs encoded with strict ssl JSON are certificate verified", () => {
   const config = parseMySqlUrl(
-    "mysql://user:pass@source.example.com:4000/echelon?ssl=%7B%22rejectUnauthorized%22%3Atrue%7D",
+    "mysql://user:fixture-91@fixture-db-1.test:4000/echelon?ssl=%7B%22rejectUnauthorized%22%3Atrue%7D",
     { requireTls: true }
   );
   assert.equal(config.ssl.rejectUnauthorized, true);
@@ -43,7 +43,7 @@ test("source URLs encoded with strict ssl JSON are certificate verified", () => 
 
 test("mixed-case ssl=true URLs remain certificate verified", () => {
   const config = parseMySqlUrl(
-    "mysql://user:pass@source.example.com:4000/echelon?ssl=TrUe",
+    "mysql://user:fixture-91@fixture-db-1.test:4000/echelon?ssl=TrUe",
     { requireTls: true }
   );
   assert.equal(config.ssl.rejectUnauthorized, true);
@@ -51,7 +51,7 @@ test("mixed-case ssl=true URLs remain certificate verified", () => {
 
 test("external MySQL client defaults pin certificate verification", () => {
   const defaults = mysqlClientDefaults(
-    "mysql://user:pass@example.com:25060/echelon?ssl-mode=VERIFY_IDENTITY",
+    "mysql://user:pass@fixture-db-1.test:25060/echelon?ssl-mode=VERIFY_IDENTITY",
     { caPath: "/private/ca.crt", requireTls: true }
   );
   assert.match(defaults, /^ssl-mode=VERIFY_CA$/m);

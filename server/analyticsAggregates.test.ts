@@ -2,10 +2,23 @@ import { describe, expect, it, vi } from "vitest";
 import {
   getAllProductKpiJourneyEvents,
   getExactAnalyticsEventCounts,
+  PRODUCT_KPI_JOURNEY_EVENT_NAMES,
   TRAINING_METRIC_EVENT_NAMES,
 } from "./analyticsAggregates";
 
 describe("exact analytics event aggregation", () => {
+  it("includes every buyer-funnel step in owner KPI retrieval", () => {
+    expect(PRODUCT_KPI_JOURNEY_EVENT_NAMES).toEqual(expect.arrayContaining([
+      "marketing_page_viewed",
+      "pricing_viewed",
+      "buyer_path_selected",
+      "product_selected",
+      "checkout_started",
+      "checkout_completed",
+      "access_activated",
+    ]));
+  });
+
   it("returns complete totals without applying a row limit", async () => {
     const limit = vi.fn(() => {
       throw new Error("exact event totals must never be capped");

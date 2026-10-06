@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fetchAndIngest } from "./scripts/fetchJobs.mjs";
+import { fetchAndIngest as realFetchAndIngest, type JobIngestionOptions } from "./scripts/fetchJobs.mjs";
+const fetchAndIngest = (options: JobIngestionOptions) => realFetchAndIngest({ ...options, verifyJob: async job => ({ status: "verified", postedAt: job.postedAt ? new Date(job.postedAt) : null, closingAt: null }) });
 import {
   parseAwwOA,
   parseCwra,
@@ -19,6 +20,7 @@ const FIXED_NOW = new Date("2026-08-24T12:00:00.000Z");
 function makeConnection(existingUrls: string[] = []) {
   const existing = new Set(existingUrls);
   const execute = vi.fn(async (query: string, params: unknown[] = []) => {
+    if (query.startsWith("SELECT lastError")) return [[]];
     if (query.startsWith("SELECT id")) {
       return [existing.has(String(params[0])) ? [{ id: 42 }] : []];
     }
@@ -33,9 +35,31 @@ function makeConnection(existingUrls: string[] = []) {
 
 afterEach(() => {
   vi.restoreAllMocks();
+  vi.unstubAllEnvs();
 });
 
 describe("job board ingestion", () => {
+  it("uses the active verified target when the scheduled worker has no test override", async () => {
+    vi.stubEnv("DATABASE_CUTOVER_USE_EXTERNAL_TARGET", "true");
+    vi.stubEnv("DATABASE_CUTOVER_TARGET_DATABASE", "active_app");
+    vi.stubEnv("DATABASE_CUTOVER_MODE", "normal");
+    vi.stubEnv("EXTERNAL_DATABASE_URL", "mysql://test:test@db.example/staging?ssl-mode=REQUIRED");
+    vi.stubEnv("EXTERNAL_DATABASE_CA", "-----BEGIN CERTIFICATE-----\ntest\n-----END CERTIFICATE-----");
+    const createConnection = vi.fn().mockResolvedValue(makeConnection());
+    const emptyTier = async () => ({ errors: [], totalFetched: 0 });
+    await fetchAndIngest({ createConnection, ingestRss: emptyTier, ingestAssociations: emptyTier, ingestMunicipal: emptyTier });
+    expect(createConnection).toHaveBeenCalledWith(expect.objectContaining({
+      host: "db.example", database: "active_app", ssl: expect.objectContaining({ rejectUnauthorized: true }),
+    }));
+  });
+
+  it("does not connect when maintenance blocks the default scheduled target", async () => {
+    vi.stubEnv("DATABASE_CUTOVER_MODE", "freeze");
+    const createConnection = vi.fn();
+    await expect(fetchAndIngest({ createConnection })).rejects.toThrow("maintenance");
+    expect(createConnection).not.toHaveBeenCalled();
+  });
+
   it("opens a connection per run, upserts jobs, expires stale rows, and closes", async () => {
     const connection = makeConnection(["https://jobs.test/existing"]);
     const createConnection = vi.fn().mockResolvedValue(connection);
@@ -109,12 +133,12 @@ describe("job board ingestion", () => {
     expect(
       connection.execute.mock.calls.some(
         ([query, params]) =>
-          String(query).includes("company = COALESCE") && params?.at(-1) === 42
+          String(query).includes("company = COALESCE") && params?.at(-3) === 42
       )
     ).toBe(true);
     expect(connection.execute).toHaveBeenCalledWith(
       expect.stringContaining("lastSeenAt <"),
-      [new Date("2026-08-10T12:00:00.000Z")]
+      [new Date("2026-08-10T12:00:00.000Z"), "job-board:refresh-lock", expect.any(String)]
     );
     expect(connection.end).toHaveBeenCalledOnce();
   });
@@ -243,6 +267,50 @@ describe("job board ingestion", () => {
     ).toBe(false);
   });
 
+  it("waits for every tier before closing even when one tier rejects", async () => {
+    const connection = makeConnection();
+    let finishMunicipal!: () => void;
+    const municipalDone = new Promise<void>(resolve => { finishMunicipal = resolve; });
+    const run = fetchAndIngest({
+      databaseUrl: "mysql://test",
+      createConnection: vi.fn().mockResolvedValue(connection),
+      ingestRss: async () => { throw new Error("RSS parser failure"); },
+      ingestAssociations: async () => ({ errors: [], totalFetched: 0 }),
+      ingestMunicipal: async () => {
+        await municipalDone;
+        expect(connection.end).not.toHaveBeenCalled();
+        return { errors: [], totalFetched: 0 };
+      },
+    });
+    const assertion = expect(run).rejects.toThrow("RSS parser failure");
+    await new Promise(resolve => setTimeout(resolve, 0));
+    expect(connection.end).not.toHaveBeenCalled();
+    finishMunicipal();
+    await assertion;
+    expect(connection.end).toHaveBeenCalledOnce();
+  });
+
+  it.each([false, true])("keeps expiry optional and reports expiry-write failures (skipExpiry=%s)", async skipExpiry => {
+    const connection = makeConnection();
+    connection.execute.mockImplementation(async (query: string) => {
+      if (query.startsWith("SELECT id")) return [[]] as never;
+      if (query.includes("lastSeenAt <")) throw new Error("expiry unavailable");
+      return [{ affectedRows: 1 }] as never;
+    });
+    const tier = (province: string) => async (upsert: (job: unknown) => Promise<void>) => {
+      await upsert({ title: "Operator", location: province, province, sourceUrl: `https://jobs.test/${province}`, sourceName: province });
+      return { errors: [], totalFetched: 1, successfulSources: 1, failedSources: 0 };
+    };
+    const result = await fetchAndIngest({
+      databaseUrl: "mysql://test", createConnection: vi.fn().mockResolvedValue(connection),
+      skipExpiry, ingestRss: tier("ON"), ingestAssociations: tier("AB"),
+      ingestMunicipal: async () => ({ errors: [], totalFetched: 0 }),
+    });
+    expect(result.ok).toBe(skipExpiry);
+    expect(result.expiredCount).toBe(0);
+    expect(connection.execute.mock.calls.some(([query]) => query.includes("lastSeenAt <"))).toBe(!skipExpiry);
+  });
+
   it("fails the refresh when a source fetched jobs that the database could not store", async () => {
     const execute = vi.fn(async (query: string, params: unknown[] = []) => {
       if (query.startsWith("SELECT id")) return [[]];
@@ -315,6 +383,7 @@ describe("job board ingestion", () => {
     expect(result.errors).toContain(
       "Upsert failed (https://jobs.test/alberta): invalid sourceType enum"
     );
+    expect(execute.mock.calls.some(([query]) => String(query).includes("lastSeenAt <"))).toBe(false);
   });
 
   it("closes the database connection when an ingestion tier throws", async () => {
@@ -516,7 +585,7 @@ describe("stable job identity", () => {
     });
     expect(execute).toHaveBeenCalledWith(
       expect.stringContaining("WHERE id IN (?)"),
-      [FIXED_NOW, 34]
+      [FIXED_NOW, 34, "job-board:refresh-lock", expect.any(String)]
     );
   });
 });

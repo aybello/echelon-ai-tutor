@@ -5,7 +5,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { formatQuestionBankCount } from "@shared/questionBankDisplay";
 
 const CLASS3_WATER_DISTRIBUTION_MOCK_DURATION_HOURS = 3;
-const CLASS3_WATER_DISTRIBUTION_MOCK_DESCRIPTION = `100-question timed mock exam for the Ontario Class 3 Water Distribution certification. ${CLASS3_WATER_DISTRIBUTION_MOCK_DURATION_HOURS}-hour timer, 70% pass threshold.`;
+const CLASS3_WATER_DISTRIBUTION_MOCK_DESCRIPTION = `100-question timed mock exam for the Ontario Class 3 Water Distribution and Supply certification. ${CLASS3_WATER_DISTRIBUTION_MOCK_DURATION_HOURS}-hour timer, 70% pass threshold.`;
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Distribution System Components":                { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -16,7 +16,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 
 export default function Class3WaterDistMockExam() {
   usePageMeta({
-    title: "Ontario Class 3 Water Distribution Mock Exam",
+    title: "Ontario Class 3 Water Distribution and Supply Mock Exam",
     description: CLASS3_WATER_DISTRIBUTION_MOCK_DESCRIPTION,
     noindex: true
   });
@@ -32,10 +32,10 @@ export default function Class3WaterDistMockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
   return (
     <MockExamShell
-      title="Ontario Class 3 Water Distribution Mock Exam"
-      badge="ONTARIO CLASS 3 · WATER DISTRIBUTION"
+      title="Ontario Class 3 Water Distribution and Supply Mock Exam"
+      badge="ONTARIO CLASS 3 · WATER DISTRIBUTION AND SUPPLY"
       metaDescription={CLASS3_WATER_DISTRIBUTION_MOCK_DESCRIPTION}
-      metaKeywords="Ontario Class 3 Water Distribution mock exam, Ontario operator certification"
+      metaKeywords="Ontario Class 3 Water Distribution and Supply mock exam, Ontario operator certification"
       examQuestions={100}
       examDuration={CLASS3_WATER_DISTRIBUTION_MOCK_DURATION_HOURS * 60 * 60}
       passThreshold={0.7}
@@ -45,10 +45,10 @@ export default function Class3WaterDistMockExam() {
       productKey="class3-water-dist"
       backPath="/class3-water"
       practicePath="/class3-water-dist"
-      practiceLabel="Class 3 Water Distribution Practice"
+      practiceLabel="Class 3 Water Distribution and Supply Practice"
       showProvinceSelector={false}
       currentPath="/class3-water-dist-mock"
-      infoLine={`${formatQuestionBankCount(totalQuestions)} · ${CLASS3_WATER_DISTRIBUTION_MOCK_DURATION_HOURS}-hour timer · Ontario Class 3 Water Distribution`}
+      infoLine={`${formatQuestionBankCount(totalQuestions)} · ${CLASS3_WATER_DISTRIBUTION_MOCK_DURATION_HOURS}-hour timer · Ontario Class 3 Water Distribution and Supply`}
       stream="water"
       accentColor="#0369A1"
     />

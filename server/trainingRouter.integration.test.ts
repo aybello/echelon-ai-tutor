@@ -259,7 +259,7 @@ describe("training records database integrity", () => {
       to: periodEnd,
       providerName: "Echelon Institute",
       instructorName: "Echelon Institute",
-      instructorContact: "support@echeloninstitute.ca",
+      instructorContact: "fixture-105@example.com",
       learningObjectives: "Build job-related Class 1 operator knowledge through structured online study.",
       signedByName: "Training Manager",
       signedRole: "Operations Manager",

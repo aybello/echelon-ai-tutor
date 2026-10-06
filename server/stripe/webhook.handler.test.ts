@@ -2,6 +2,12 @@ const mockProvisionIndividual = vi.hoisted(() => vi.fn());
 vi.mock("./provisionIndividualSubscription", () => ({ provisionIndividualSubscription: mockProvisionIndividual }));
 const mockRecordPurchase = vi.hoisted(() => vi.fn());
 vi.mock("../purchaseEmailOutbox", () => ({ recordPurchaseWithConfirmation: mockRecordPurchase }));
+// Handler unit fixtures do not emulate database locking. The dedicated payment
+// integration suite invokes this boundary against an isolated loopback database.
+vi.mock("./paymentState", () => ({
+  withPaymentState: (_db: unknown, _pi: string, work: (tx: unknown, state: string) => unknown) => work(_db, "clear"),
+  revokePaymentState: vi.fn(), revokeIndividualPurchases: vi.fn(), processIndividualDispute: vi.fn(),
+}));
 const mockNotifyOwner = vi.hoisted(() => vi.fn());
 const mockTrackEvent = vi.hoisted(() => vi.fn());
 /**
@@ -168,7 +174,7 @@ function dbWithNoOrganization() {
     select: vi.fn(() => ({
       from: vi.fn(() => ({
         where: vi.fn(() => ({
-          limit: vi.fn().mockResolvedValue([]),
+          limit: vi.fn(() => ({ for: vi.fn().mockResolvedValue([]) })),
         })),
       })),
     })),
@@ -176,8 +182,9 @@ function dbWithNoOrganization() {
 }
 
 function dbWithPurchaseLookupSequence(...rows: Array<Array<{ id: number }>>) {
-  const limit = vi.fn();
-  for (const result of rows) limit.mockResolvedValueOnce(result);
+  const lock = vi.fn();
+  for (const result of rows) lock.mockResolvedValueOnce(result);
+  const limit = vi.fn(() => ({ for: lock }));
   return {
     select: vi.fn(() => ({
       from: vi.fn(() => ({
@@ -189,6 +196,7 @@ function dbWithPurchaseLookupSequence(...rows: Array<Array<{ id: number }>>) {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mockRecordPurchase.mockReset().mockResolvedValue(undefined);
   process.env.STRIPE_WEBHOOK_SECRET = "whsec_test";
   mockFlexFullRefund.mockResolvedValue(false);
   mockFlexPartialRefund.mockResolvedValue(false);
@@ -316,8 +324,8 @@ describe("Stripe webhook handler — org provisioning delegation", () => {
       items: { data: [{ quantity: 25 }] },
       metadata: {
         type: "org",
-        manager_email: "brian.hull@winnipeg.ca",
-        org_name: "City of Winnipeg",
+        manager_email: "manager@example.test",
+        org_name: "Synthetic Organization",
         subscription_province: "western",
         subscription_tier: "stream-wastewater-coll",
       },
@@ -337,8 +345,8 @@ describe("Stripe webhook handler — org provisioning delegation", () => {
       expect.objectContaining({
         stripeEventId: "evt_team_created",
         stripeSubscriptionId: "sub_team_123",
-        managerEmail: "brian.hull@winnipeg.ca",
-        orgName: "City of Winnipeg",
+        managerEmail: "manager@example.test",
+        orgName: "Synthetic Organization",
         seats: 25,
       }),
     );
@@ -384,15 +392,15 @@ describe("Stripe webhook handler — invoice-before-org", () => {
 
 describe("individual subscription acknowledgements", () => {
   it.each([["completed", 200], ["busy", 409], ["retryable_failure", 503]])("maps %s to HTTP %s", async (state, code) => {
-    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.created", data: { object: { id: "sub_individual" } } });
-    mockRetrieveSubscription.mockResolvedValue({ id: "sub_individual", metadata: {} });
+    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.created", data: { object: { id: "sub_fixture_1" } } });
+    mockRetrieveSubscription.mockResolvedValue({ id: "sub_fixture_1", metadata: {} });
     mockGetDb.mockResolvedValue({}); mockProvisionIndividual.mockResolvedValue({ state });
     const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
     expect(res.statusCode).toBe(code);
   });
   it("returns a retryable response on storage exceptions", async () => {
-    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.updated", data: { object: { id: "sub_individual" } } });
-    mockRetrieveSubscription.mockResolvedValue({ id: "sub_individual", metadata: {} });
+    mockConstructEvent.mockReturnValue({ id: "evt_individual", type: "customer.subscription.updated", data: { object: { id: "sub_fixture_1" } } });
+    mockRetrieveSubscription.mockResolvedValue({ id: "sub_fixture_1", metadata: {} });
     mockGetDb.mockResolvedValue({}); mockProvisionIndividual.mockRejectedValue(new Error("DB unavailable"));
     const res = makeResponse(); await captureWebhookHandler()(makeRequest(), res);
     expect(res.statusCode).toBe(503);
@@ -437,7 +445,7 @@ describe("Individual Exam Pass fulfillment", () => {
             entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
             individual_access_policy: INDIVIDUAL_EXAM_PASS_POLICY_VERSION,
           },
-          customer_details: { email: "learner@example.com", phone: null, name: null },
+          customer_details: { email: "learner@example.com", phone: "+16135550109", name: null },
         },
       },
     });
@@ -448,11 +456,55 @@ describe("Individual Exam Pass fulfillment", () => {
     expect(mockRecordPurchase).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
       email: "learner@example.com",
       productKey: "oit",
+      phone: "+16135550109",
       stripeSessionId: "cs_paid",
       accessExpiresAt: new Date("2027-09-17T22:36:40.000Z"),
     }));
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ received: true });
+  });
+
+  it("preserves USD in the receipt payload and owner notification for a valid historical checkout", async () => {
+    const handler = captureWebhookHandler();
+    const response = makeResponse();
+    mockGetDb.mockResolvedValue(dbWithNoOrganization());
+    mockRecordPurchase.mockResolvedValue(undefined);
+    mockConstructEvent.mockReturnValue({
+      id: "evt_historical_usd",
+      type: "checkout.session.completed",
+      data: {
+        object: {
+          id: "cs_historical_usd",
+          mode: "payment",
+          payment_status: "paid",
+          currency: "usd",
+          amount_total: 17_900,
+          payment_intent: "pi_historical_usd",
+          metadata: {
+            product_key: "class3-water-dist",
+            product_name: "Class 3 Water Distribution Practice Pass",
+            entitlement_type: INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
+            individual_access_policy: INDIVIDUAL_EXAM_PASS_POLICY_VERSION,
+          },
+          customer_details: { email: "legacy@example.com", phone: null, name: null },
+        },
+      },
+    });
+
+    await handler(makeRequest(), response);
+
+    expect(mockRecordPurchase).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
+      amountCAD: 17_900,
+      paymentCurrency: "usd",
+      accessExpiresAt: new Date("2027-09-17T22:36:40.000Z"),
+    }));
+    expect(mockNotifyOwner).toHaveBeenCalledWith(expect.objectContaining({
+      content: expect.stringContaining("US$179.00"),
+    }));
+    expect(mockTrackEvent).toHaveBeenCalledWith("checkout_completed", expect.objectContaining({
+      extra: expect.objectContaining({ amountCAD: 17_900, currency: "usd" }),
+    }));
+    expect(response.statusCode).toBe(200);
   });
 
   it("keeps a fulfilled pass terminal when analytics and owner notification fail", async () => {
@@ -488,12 +540,8 @@ describe("Individual Exam Pass fulfillment", () => {
     expect(response.body).toEqual({ received: true });
   });
 
-  it("treats a concurrent unique-key collision as a verified duplicate", async () => {
-    mockGetDb.mockResolvedValue(dbWithPurchaseLookupSequence([], [{ id: 19 }]));
-    mockRecordPurchase.mockRejectedValue(Object.assign(new Error("Duplicate Stripe session"), {
-      code: "ER_DUP_ENTRY",
-      errno: 1062,
-    }));
+  it("acknowledges a recorded session without inserting or notifying again", async () => {
+    mockGetDb.mockResolvedValue(dbWithPurchaseLookupSequence([{ id: 19 }]));
     mockConstructEvent.mockReturnValue({
       id: "evt_concurrent_duplicate",
       type: "checkout.session.completed",
@@ -517,7 +565,7 @@ describe("Individual Exam Pass fulfillment", () => {
     const response = makeResponse();
     await captureWebhookHandler()(makeRequest(), response);
 
-    expect(mockRecordPurchase).toHaveBeenCalledTimes(1);
+    expect(mockRecordPurchase).not.toHaveBeenCalled();
     expect(mockNotifyOwner).not.toHaveBeenCalled();
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ received: true });
@@ -587,7 +635,7 @@ describe("Individual Exam Pass fulfillment", () => {
       select: vi.fn(() => ({
         from: vi.fn(() => ({
           where: vi.fn(() => ({
-            limit: vi.fn().mockImplementation(async () => recorded.size ? [{ id: 1 }] : []),
+            limit: vi.fn(() => ({ for: vi.fn().mockImplementation(async () => recorded.size ? [{ id: 1 }] : []) })),
           })),
         })),
       })),
@@ -621,7 +669,7 @@ describe("Individual Exam Pass fulfillment", () => {
     await captureWebhookHandler()(makeRequest(), retryResponse);
 
     expect(mockRecordPurchase).toHaveBeenCalledTimes(1);
-    expect(mockRetrievePaymentIntent).toHaveBeenCalledTimes(1);
+    expect(mockRetrievePaymentIntent).toHaveBeenCalledTimes(2);
     expect(mockTrackEvent).toHaveBeenCalledTimes(2);
     expect(retryResponse.statusCode).toBe(200);
     expect(retryResponse.body).toEqual({ received: true });

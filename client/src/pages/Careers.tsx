@@ -42,7 +42,7 @@ type Job = {
   sourceUrl: string;
   sourceName: string | null;
   description: string | null;
-  postedAt: Date | null;
+  postedAt: Date | string | null;
   isFeatured: number | null;
 };
 
@@ -277,7 +277,7 @@ function JobCard({ job, onClick }: { job: Job; onClick: () => void }) {
 
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
           <span className="text-xs text-slate-400">
-            {job.sourceName ?? "Job Bank Canada"} · {timeAgo(job.postedAt)}
+            {job.sourceName ?? "Job Bank Canada"}{job.postedAt ? ` · Posted ${timeAgo(job.postedAt)}` : " · Source date unavailable"}
           </span>
           <span className="text-xs font-semibold text-blue-600 group-hover:text-blue-700">
             View details →
@@ -303,11 +303,11 @@ export default function Careers() {
   const [page, setPage] = useState(1);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
-  const { data, isLoading } = trpc.jobs.listJobs.useQuery(
+  const { data, isLoading, isError, isFetching, refetch } = trpc.jobs.listJobs.useQuery(
     { page, province },
-    { placeholderData: prev => prev }
+    { retry: 1 }
   );
-  const { data: stats } = trpc.jobs.stats.useQuery();
+  const { data: stats, isError: statsError, refetch: refetchStats } = trpc.jobs.stats.useQuery(undefined, { retry: 1 });
 
   const jobs = data?.jobs ?? [];
   const totalPages = data?.totalPages ?? 1;
@@ -342,7 +342,7 @@ export default function Careers() {
             across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Refreshed
             automatically from Job Bank Canada, OWWA, and municipal employers.
           </p>
-          {stats && !stats.isStale && stats.total > 0 && (
+          {stats && !statsError && !stats.isStale && stats.total > 0 && (
             <div className="mt-4 inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-sm text-blue-700 font-medium">
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
               {stats.total} active posting{stats.total !== 1 ? "s" : ""} right
@@ -354,12 +354,14 @@ export default function Careers() {
               )}
             </div>
           )}
-          {stats?.isStale && (
+          {(statsError || stats?.isStale) && (
             <div className="mt-4 inline-flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5 text-sm text-amber-800">
               <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
               <span>
-                Job updates are temporarily delayed. Older unverified listings
-                have been hidden while the next refresh completes.
+                {statsError ? "Refresh status is temporarily unavailable." : "The latest refresh did not verify complete source coverage or is overdue."}
+                {stats && !statsError && <> Verified sources in the latest run: {stats.refreshedSourceCount} of {stats.expectedSourceCount}.</>}
+                {" "}Retained listings are not proof of a successful refresh. Please verify availability on the employer's site.
+                {statsError && <button type="button" onClick={() => void refetchStats()} className="ml-2 font-semibold underline">Retry status</button>}
               </span>
             </div>
           )}
@@ -411,8 +413,16 @@ export default function Careers() {
           </div>
         )}
 
+        {isError && (
+          <div role="alert" className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-900">
+            <p className="font-semibold">Jobs are temporarily unavailable</p>
+            <p className="mt-1 text-sm">{jobs.length ? "Showing previously loaded postings. Availability has not been rechecked." : "We could not load postings. This is not an empty search result."}</p>
+            <button type="button" disabled={isFetching} onClick={() => void refetch()} className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">{isFetching ? "Retrying..." : "Retry"}</button>
+          </div>
+        )}
+
         {/* Empty state */}
-        {!isLoading && jobs.length === 0 && (
+        {!isLoading && !isError && data && jobs.length === 0 && (
           <div className="text-center py-20 text-slate-500">
             <div className="text-5xl mb-4">🔍</div>
             <p className="text-lg font-medium text-slate-700">
@@ -420,7 +430,7 @@ export default function Careers() {
             </p>
             <p className="text-sm mt-1 max-w-sm mx-auto">
               {stats?.isStale
-                ? "The automatic job feeds are refreshing. Please check back shortly."
+                ? "Job updates are delayed. Please check back later or visit the source job boards linked below."
                 : province
                   ? `No active postings in ${PROVINCES.find(p => p.value === province)?.label} right now. Try "All Provinces" or check back soon.`
                   : "No active postings right now. New verified listings will appear automatically."}

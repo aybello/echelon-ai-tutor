@@ -92,17 +92,17 @@ A running record of every production bug, its root cause, customer impact, fix a
 **Date:** June 3, 2026  
 **Severity:** Critical — paying subscribers received no access  
 **Reported by:** Owner (noticed subscription in Stripe with no DB record)  
-**Affected Customer:** Matthew Cooper (matt.cooop@gmail.com) — $99 CAD, Class 1 All-Access Ontario
+**Affected Customer:** Synthetic Customer (fixture-65@example.com) — $99 CAD, Class 1 All-Access Ontario
 
 **Symptom:** A customer subscribed and paid $99 CAD. Their subscription showed as active in Stripe but they had no access on the site.
 
 **Root Cause:** The `createSubscriptionCheckout` procedure set `tier` and `province` in the checkout session's `metadata` field. However, Stripe's `customer.subscription.created` webhook fires with the **subscription object**, not the checkout session. The subscription object only inherits metadata from `subscription_data.metadata` — a separate field that was never set. The webhook handler checked for `tier`/`province` on the subscription object, found nothing, logged a warning, and returned without writing to the DB.
 
-**Customer Impact:** Matthew Cooper paid $99 CAD and had no access. Manually recovered by direct DB insert.
+**Customer Impact:** Synthetic Customer paid $99 CAD and had no access. Manually recovered by direct DB insert.
 
 **Fix Applied:** Added `subscription_data: { metadata: { subscription_tier, subscription_province } }` to the `stripe.checkout.sessions.create()` call. Future subscribers will have their metadata correctly attached to the subscription object.
 
-**Manual Recovery:** Subscription row manually inserted for Matthew Cooper with `tier: all-access`, `province: ontario`, expires June 3, 2027.
+**Manual Recovery:** Subscription row manually inserted for Synthetic Customer with `tier: all-access`, `province: ontario`, expires June 3, 2027.
 
 **What Should Have Caught It:**
 - Reading Stripe docs specifically for `subscription_data.metadata` vs session `metadata`

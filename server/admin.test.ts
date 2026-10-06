@@ -73,7 +73,7 @@ describe("admin stats schema", () => {
 describe("admin trial email schema", () => {
   it("validates a correct trial email row", () => {
     const result = trialEmailSchema.safeParse({
-      id: 1, email: "operator@ontario.ca", source: "quiz_gate", createdAt: new Date(),
+      id: 1, email: "fixture-85@example.com", source: "quiz_gate", createdAt: new Date(),
     });
     expect(result.success).toBe(true);
   });
@@ -89,7 +89,7 @@ describe("admin trial email schema", () => {
 describe("admin waitlist schema", () => {
   it("validates a correct waitlist row", () => {
     const result = waitlistSchema.safeParse({
-      id: 1, email: "user@test.com", courseCode: "CL1-W", courseTitle: "Water Class 1", createdAt: new Date(),
+      id: 1, email: "fixture-115@example.com", courseCode: "CL1-W", courseTitle: "Water Class 1", createdAt: new Date(),
     });
     expect(result.success).toBe(true);
   });
@@ -138,7 +138,7 @@ describe("admin mutation input schemas", () => {
 describe("admin purchase schema", () => {
   it("validates a correct purchase row", () => {
     const result = purchaseSchema.safeParse({
-      id: 1, email: "buyer@ontario.ca", productKey: "oit",
+      id: 1, email: "fixture-30@example.com", productKey: "oit",
       productName: "OIT Practice Pass", amountCAD: 4900,
       stripeSessionId: "cs_test_abc123", createdAt: new Date(),
     });

@@ -16,7 +16,11 @@ export type TrainingMetricEventName = typeof TRAINING_METRIC_EVENT_NAMES[number]
 
 export const PRODUCT_KPI_JOURNEY_EVENT_NAMES = [
   "signup",
+  "marketing_page_viewed",
   "pricing_viewed",
+  "buyer_path_selected",
+  "product_selected",
+  "checkout_started",
   "checkout_completed",
   "access_activated",
   "diagnostic_started",

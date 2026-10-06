@@ -130,6 +130,10 @@ suite("learner reliability with a real database", () => {
     expect(plan?.recommendations.some(row => row.title === "Practice: Selected course weakness")).toBe(true);
     expect(plan?.recommendations.some(row => row.title.includes("Other course weakness"))).toBe(false);
   });
+  it("rejects an unknown selected course instead of aggregating every course", async () => {
+    const account = appRouter.createCaller({ ...ctx, user: { id: 1900991, email } as TrpcContext["user"] });
+    await expect(account.dashboard.studyPlan({ examType: "not-a-course" })).rejects.toThrow("Unknown study course");
+  });
   it("does not let another learner overwrite an existing session", async () => {
     const issued = await caller.exam.startMock({ courseKey: bank });
     const input = { sessionId: issued.sessionId, sessionToken: issued.token, examType: issued.examType, bankKey: bank,

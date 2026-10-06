@@ -20,14 +20,16 @@ import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { trpcRateLimitDispatcher } from "../trpcRateLimit";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
+import { ensureJobBoardHeartbeat } from "../jobBoardSchedule";
 import { publicReleaseHealth, RELEASE_CAPABILITIES, RELEASE_ID } from "../release";
-import {
-  ensureWeeklyBlogHeartbeat,
-  generateWeeklyBlogPost,
-} from "../blogAutomation";
+import { ensureDurableBlogHeartbeat } from "../blogSchedule";
+import { registerBlogAutomationRoutes } from "../blogScheduler";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
 import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
+import { frameAncestorsForEnvironment } from "../previewSecurity";
+import { analyticsCspOrigin, GOOGLE_ADS_SCRIPT_ORIGINS, GOOGLE_ADS_CONNECT_ORIGINS, GOOGLE_ADS_FRAME_ORIGINS } from "../analyticsCsp";
+import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -51,6 +53,7 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  const analyticsOrigins = analyticsCspOrigin(process.env.VITE_ANALYTICS_ENDPOINT);
 
   // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
   app.set("trust proxy", 1);
@@ -60,7 +63,7 @@ async function startServer() {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com", ...analyticsOrigins, ...GOOGLE_ADS_SCRIPT_ORIGINS],
           styleSrc: [
             "'self'",
             "'unsafe-inline'",
@@ -72,12 +75,14 @@ async function startServer() {
             "'self'",
             "https://api.stripe.com",
             "https://*.oaiusercontent.com",
+            ...analyticsOrigins,
+            ...GOOGLE_ADS_CONNECT_ORIGINS,
           ],
-          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
+          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com", ...GOOGLE_ADS_FRAME_ORIGINS],
           objectSrc: ["'none'"],
           baseUri: ["'self'"],
           formAction: ["'self'", "https://checkout.stripe.com"],
-          frameAncestors: ["'none'"],
+          frameAncestors: frameAncestorsForEnvironment(process.env.NODE_ENV),
           upgradeInsecureRequests:
             process.env.NODE_ENV === "production" ? [] : null,
         },
@@ -142,8 +147,22 @@ async function startServer() {
       const db = await getDb();
       checks.db = !!db;
       if (!db) overallOk = false;
+      if (db) {
+        try {
+          await assertIndividualPaymentSchemaReady(db);
+          checks.individualPaymentSchema = true;
+        } catch {
+          // Keep schema details private. A protected health caller can see the
+          // failed check; checkout itself will also refuse before Stripe.
+          checks.individualPaymentSchema = false;
+          overallOk = false;
+        }
+      } else {
+        checks.individualPaymentSchema = false;
+      }
     } catch {
       checks.db = false;
+      checks.individualPaymentSchema = false;
       overallOk = false;
     }
 
@@ -342,34 +361,7 @@ async function startServer() {
     }
   });
 
-  // ── Weekly researched blog article (Heartbeat cron) ─────────────────────
-  app.post("/api/scheduled/generate-blog", async (req, res) => {
-    try {
-      const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
-      const taskUid =
-        cronUser?.taskUid ??
-        (req.headers["x-manus-cron-task-uid"] as string | undefined);
-      const result = await generateWeeklyBlogPost();
-      console.log(
-        `[blog-automation] ${result.action} slug=${result.slug ?? "none"} | ` +
-          `taskUid=${taskUid ?? "manual"}`
-      );
-      return res
-        .status(result.action === "article_published" ? 201 : 200)
-        .json({
-          ...result,
-          published: result.action === "article_published",
-          ts: new Date().toISOString(),
-        });
-    } catch (error) {
-      console.error("[blog-automation] scheduled article failed", error);
-      return res.status(503).json({
-        ok: false,
-        error: error instanceof Error ? error.message : String(error),
-        ts: new Date().toISOString(),
-      });
-    }
-  });
+  registerBlogAutomationRoutes(app);
 
   // ── Purchase confirmation delivery (Heartbeat cron, every minute) ────────
   app.post("/api/scheduled/purchase-email-delivery", async (req, res) => {
@@ -463,7 +455,10 @@ async function startServer() {
       startDbKeepAlive();
     }
     if (!databaseWritesFrozen() && ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
-      void ensureWeeklyBlogHeartbeat()
+      void ensureJobBoardHeartbeat()
+        .then(action => console.log(`[fetch-jobs] six-hour Heartbeat ${action}`))
+        .catch(error => console.error("[fetch-jobs] could not register Heartbeat", error));
+      void ensureDurableBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)
         )

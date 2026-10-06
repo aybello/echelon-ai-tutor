@@ -20,6 +20,8 @@ interface FormulaSection {
   cards: FormulaCard[];
 }
 
+const FORMULA_USE_NOTICE = "Study examples only. For operating decisions, use the facility's validated procedure, approval or permit, sampling plan, and the current rules that apply to the system.";
+
 const SECTIONS: FormulaSection[] = [
   {
     category: "Secondary Treatment — Activated Sludge",
@@ -83,7 +85,7 @@ const SECTIONS: FormulaSection[] = [
         variables: [
           "TN = Total Nitrogen (ammonia + nitrate + organic N)",
           "Typical municipal wastewater TN: 30–50 mg/L",
-          "Effluent TN target (nutrient-sensitive): <3 mg/L",
+          "The required effluent TN value is set by the facility approval or permit and receiving-water requirements",
         ],
         example: "TN = 40 mg/L; Flow = 10,000 m³/d",
         result: "TN Load = 40 × 10,000 ÷ 1,000 = 400 kg/d",
@@ -195,23 +197,23 @@ const SECTIONS: FormulaSection[] = [
         title: "UV Disinfection Dose",
         formula: "UV Dose (mJ/cm²) = UV Intensity (mW/cm²) × Contact Time (s)",
         variables: [
-          "Typical wastewater UV dose: 40–100 mJ/cm²",
-          "Class A reuse: ≥100 mJ/cm²",
-          "Dose depends on UV transmittance (UVT) of effluent",
+          "Dose is validated against the target organism, UV transmittance, reactor validation and approved requirement",
+          "Use the facility's approved UV operating target and alarm response procedure",
+          "UV intensity and contact time are calculation inputs, not universal compliance values",
         ],
         example: "UV Intensity = 10 mW/cm²; Contact time = 8 s",
         result: "UV Dose = 10 × 8 = 80 mJ/cm²",
       },
       {
         title: "Ozone Dose",
-        formula: "O₃ Dose (mg/L) = O₃ Applied (g/h) ÷ Flow (m³/h) × 1,000",
+        formula: "O₃ Dose (mg/L) = O₃ Applied (g/h) ÷ Flow (m³/h)",
         variables: [
-          "Typical wastewater ozone dose: 5–15 mg/L",
-          "Ozone transfer efficiency: 80–95% (fine bubble diffusers)",
-          "CT for disinfection: varies by target organism",
+          "Dose is a calculation input, not a universal operating target",
+          "Use the approved process design, transfer verification and safety procedure",
+          "Disinfection performance depends on the target organism and the validated treatment train",
         ],
         example: "O₃ Applied = 5,000 g/h; Flow = 500 m³/h",
-        result: "O₃ Dose = 5,000 ÷ 500 × 1,000 = 10 mg/L",
+        result: "O₃ Dose = 5,000 ÷ 500 = 10 g/m³ = 10 mg/L",
       },
       {
         title: "Chlorination — Chlorine Demand",
@@ -284,48 +286,49 @@ const SECTIONS: FormulaSection[] = [
     color: "#dc2626",
     cards: [
       {
-        title: "Effluent Compliance — BOD Removal Efficiency",
-        formula: "Removal (%) = (Influent BOD − Effluent BOD) ÷ Influent BOD × 100",
+        title: "Effluent Loading and Removal Efficiency",
+        formula: "Removal (%) = (Influent concentration − Effluent concentration) ÷ Influent concentration × 100",
         variables: [
-          "Typical secondary treatment target: ≥85% BOD removal",
-          "Effluent BOD limit (Ontario ECA): 25 mg/L (30-day avg)",
-          "Effluent TSS limit: 25 mg/L (30-day avg)",
+          "Use paired samples and the required analyte, such as BOD or CBOD, from the facility sampling plan",
+          "Compliance depends on the facility approval or permit, the applicable regulation and its stated averaging period",
+          "A calculated removal percentage is a process indicator, not a compliance finding",
         ],
-        example: "Influent BOD = 200 mg/L; Effluent BOD = 12 mg/L",
-        result: "Removal = (200 − 12) ÷ 200 × 100 = 94%",
+        example: "Influent concentration = 200 mg/L; Effluent concentration = 12 mg/L",
+        result: "Removal = (200 − 12) ÷ 200 × 100 = 94% for this example",
+        notes: "For Ontario context, requirements are receiving-water based and the approved site conditions govern.",
       },
       {
-        title: "Chlorine Contact Time (CT) for Disinfection",
-        formula: "CT (mg·min/L) = Residual Cl₂ (mg/L) × Contact Time (min)",
+        title: "Disinfection Contact-Time Calculation",
+        formula: "CT (mg·min/L) = verified residual (mg/L) × validated contact time (min)",
         variables: [
-          "Wastewater effluent CT for 2-log E. coli reduction: ~30–50 mg·min/L",
-          "Contact time typically 15–30 minutes",
-          "Effective CT = T₁₀ (time for 10% of water to pass through)",
+          "The required target depends on the organism, process, effluent quality, approved method and governing requirement",
+          "Use the facility's validated hydraulic factor and residual measurement method",
+          "Do not substitute a generic CT range for an approved disinfection target",
         ],
-        example: "Residual = 2 mg/L; Contact time = 20 min",
-        result: "CT = 2 × 20 = 40 mg·min/L",
+        example: "Residual = 2 mg/L; validated contact time = 20 min",
+        result: "CT = 2 × 20 = 40 mg·min/L; compare only with the facility-specific verified target",
       },
       {
-        title: "Biosolids Land Application Rate",
-        formula: "Application Rate (t/ha) = Crop N Requirement (kg/ha) ÷ Available N in Biosolids (kg/t)",
+        title: "Biosolids Agronomic Planning Calculation",
+        formula: "Application Rate (t/ha) = Crop nutrient requirement (kg/ha) ÷ Available nutrient in biosolids (kg/t)",
         variables: [
-          "Available N = (Ammonia-N × 0.5) + (Organic N × mineralization rate)",
-          "Typical Class B biosolids available N: 10–20 kg/t dry weight",
-          "Application rate limited by N, P, or metals — use most restrictive",
+          "Determine available nutrient from the approved laboratory result and jurisdiction-approved availability method",
+          "Application criteria, setbacks, metals, phosphorus and pathogen controls are site- and jurisdiction-specific",
+          "Use the most restrictive approved constraint in the nutrient management or land-application plan",
         ],
-        example: "Crop N need = 150 kg/ha; Available N = 15 kg/t dry biosolids",
-        result: "Application Rate = 150 ÷ 15 = 10 t/ha dry biosolids",
+        example: "Crop N need = 150 kg/ha; available N from the approved plan = 15 kg/t dry biosolids",
+        result: "Planning calculation = 150 ÷ 15 = 10 t/ha dry biosolids; confirm the approved site limit before application",
       },
       {
-        title: "Dilution Factor for Effluent Toxicity",
-        formula: "Dilution Factor = Receiving Water Flow ÷ (Receiving Water Flow + Effluent Flow)",
+        title: "Receiving-Water Mixing Ratio",
+        formula: "Mixing ratio = (Receiving-water flow + Effluent flow) ÷ Effluent flow",
         variables: [
-          "Higher dilution = lower toxicity risk to receiving water",
-          "Whole effluent toxicity (WET) testing uses serial dilutions",
-          "LC50 = concentration lethal to 50% of test organisms",
+          "Use consistent flow units and a receiving-water flow approved for the assessment",
+          "A mixing calculation does not authorize a discharge or replace toxicity and permit requirements",
+          "Laboratory testing and regulatory assessment use the governing method for the system",
         ],
         example: "River flow = 10 m³/s; Effluent = 0.1 m³/s",
-        result: "Dilution Factor = 10 ÷ (10 + 0.1) ≈ 99:1 dilution",
+        result: "Mixing ratio = (10 + 0.1) ÷ 0.1 = 101:1; effluent fraction = 0.1 ÷ 10.1 ≈ 0.0099",
       },
     ],
   },
@@ -344,9 +347,9 @@ const QUICK_REF = [
   { param: "VS destruction (anaerobic digestion)", value: "40–60%" },
   { param: "Biogas methane content", value: "60–70%" },
   { param: "Belt filter press cake solids", value: "15–25%" },
-  { param: "Effluent BOD limit (Ontario)", value: "25 mg/L (30-day avg)" },
-  { param: "Effluent TSS limit (Ontario)", value: "25 mg/L (30-day avg)" },
-  { param: "UV dose (wastewater)", value: "40–100 mJ/cm²" },
+  { param: "Effluent compliance", value: "Facility approval, permit and sampling plan" },
+  { param: "Disinfection target", value: "Validated facility procedure" },
+  { param: "UV dose (wastewater)", value: "Approved process-specific target" },
 ];
 
 export default function FormulasWpiClass2Ww() {
@@ -409,6 +412,9 @@ export default function FormulasWpiClass2Ww() {
       </div>
 
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 24px" }}>
+        <aside aria-label="Formula sheet use notice" style={{ marginBottom: 24, padding: "14px 16px", borderRadius: 10, background: "#10213c", border: "1px solid #1d4ed8", color: "#cbd5e1", fontSize: 13, lineHeight: 1.6 }}>
+          <strong style={{ color: "#93c5fd" }}>Use this sheet safely.</strong> {FORMULA_USE_NOTICE} Ontario sewage requirements are receiving-water based; consult the <a href="https://www.ontario.ca/document/design-guidelines-sewage-works/design-considerations-sewage-treatment-plants" target="_blank" rel="noreferrer" style={{ color: "#6ee7b7" }}>Ontario Design Guidelines for Sewage Works</a> and your facility documents.
+        </aside>
 
         {/* Section navigation */}
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 32 }}>

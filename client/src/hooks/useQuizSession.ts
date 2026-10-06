@@ -31,6 +31,27 @@ import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 // ─── Constants ───────────────────────────────────────────────────────────────
 // Default/fallback session size; actual size comes from quizSettings.sessionSize
 const DEFAULT_SESSION_SIZE = 15;
+export const PRACTICE_QUESTION_REQUEST_TIMEOUT_MS = 15_000;
+
+/**
+ * A network request must never strand a learner on a permanent loading state.
+ * The underlying tRPC request may complete later, but the active queue treats a
+ * timed-out request as failed and offers the learner a deliberate retry.
+ */
+export function withPracticeQuestionTimeout<T>(
+  request: Promise<T>,
+  timeoutMs = PRACTICE_QUESTION_REQUEST_TIMEOUT_MS,
+): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error("Question delivery is taking too long. Please retry."));
+    }, timeoutMs);
+    request.then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 export interface HistoryEntry {
@@ -145,6 +166,52 @@ export function summarizeHistory(history: HistoryEntry[]): {
 } {
   const correctCount = history.filter((entry) => entry.correct === true).length;
   return { correctCount, wrongCount: history.length - correctCount };
+}
+
+/**
+ * A locked preview is a fixed, small sample. Applying module or calculation
+ * filters to that sample can leave a learner with no question even though the
+ * paid course bank has questions in that category. Keep those filters for
+ * active passes and deliberately free courses only.
+ */
+export function canUsePracticeFilters(
+  freeCourse: boolean,
+  trialUnlocked: boolean,
+): boolean {
+  return freeCourse || trialUnlocked;
+}
+
+/**
+ * Preserve a deep-linked paid filter until the server has finished deciding
+ * whether the learner has a pass. Clearing it before that decision can make a
+ * paid learner lose a valid bookmarked, topic, or calculation selection.
+ */
+export function shouldClearLockedPreviewFilters(input: {
+  pageLocked: boolean;
+  pageQuestionCount: number;
+  selectedModule: string | null;
+  calcOnly: boolean;
+}): boolean {
+  if (!input.pageLocked || input.pageQuestionCount > 0) {
+    return false;
+  }
+  return input.selectedModule !== null || input.calcOnly;
+}
+
+/** Only the request made for the currently rendered practice queue may update UI state. */
+export function shouldApplyPracticePageResult(
+  requestGeneration: number,
+  activeGeneration: number,
+): boolean {
+  return requestGeneration === activeGeneration;
+}
+
+/** Only the currently rendered queue may update the learner-facing state. */
+export function shouldApplyPracticeQueueResult(
+  requestQueue: unknown,
+  activeQueue: unknown,
+): boolean {
+  return requestQueue === activeQueue;
 }
 
 // ─── Adaptive next-question selection ────────────────────────────────────────
@@ -335,6 +402,9 @@ export function useQuizSession({
       : !trialUnlocked
       ? DEFAULT_SESSION_SIZE
       : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
+
+  const practiceFiltersEnabled = canUsePracticeFilters(freeCourse, trialUnlocked);
+
   useLearningActivitySession({
     courseKey: examType,
     activityType: "quiz",
@@ -416,12 +486,45 @@ export function useQuizSession({
   const visited = useRef(new Set<number>());
   const fetchRef = useRef(utils.client.quiz.getRandomQuestions.query);
   fetchRef.current = utils.client.quiz.getRandomQuestions.query;
-  const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(excludeIds =>
-    fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
+  const practiceQueueScope = useMemo(() => JSON.stringify({
+    examType,
+    selectedModule,
+    calcOnly,
+    difficulty: quizSettings.difficulty,
+    quizMode,
+    revision,
+    accessToken: storedAccessTokenForAccess ?? null,
+  }), [examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+  const practiceQueueGenerationRef = useRef(0);
+  const practiceQueueGeneration = useMemo(() => {
+    practiceQueueGenerationRef.current += 1;
+    return practiceQueueGenerationRef.current;
+  }, [practiceQueueScope]);
+  const activePracticeQueueGeneration = useRef(practiceQueueGeneration);
+  activePracticeQueueGeneration.current = practiceQueueGeneration;
+  const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(async excludeIds => {
+    const page = await withPracticeQuestionTimeout(fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
       difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
-      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }),
+      excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }));
+    if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
+      return page;
+    }
+    if (page.locked === false) {
+      setTrialUnlockedState(true);
+      setTrialUnlocked();
+    } else if (shouldClearLockedPreviewFilters({
+      pageLocked: page.locked === true,
+      pageQuestionCount: page.questions.length,
+      selectedModule,
+      calcOnly,
+    })) {
+      setSelectedModule(null);
+      setCalcOnly(false);
+    }
+    return page;
+  },
     ["standard", "quick10"].includes(quizMode) ? visited.current : new Set<number>()),
-    [freeCourse, examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+    [freeCourse, examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
   const activeQueue = useRef(queue);
   activeQueue.current = queue;
   const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
@@ -432,14 +535,14 @@ export function useQuizSession({
     setQuestionError("");
     try {
       const next = await queue.take(pool => getAdaptiveNext(history, pool, trialUnlocked));
-      if (activeQueue.current !== queue) return;
+      if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setAvailableQuestionCount(queue.total);
       setCurrent(next);
       clearUI();
       setQuestionStatus(next ? undefined : "empty");
       if (!next && history.length) trackQuizCompleted(history, "pool_exhausted");
     } catch (error) {
-      if (activeQueue.current !== queue) return;
+      if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setQuestionError(error instanceof Error ? error.message : "Questions could not be loaded.");
       setQuestionStatus("error");
     } finally { if (fetching.current === queue) fetching.current = null; }
@@ -450,7 +553,6 @@ export function useQuizSession({
     if (!queue) return;
     activeQueue.current = queue;
     setInitialized(true);
-    setCurrent(null);
     void requestNextRef.current();
     return () => { if (activeQueue.current === queue) activeQueue.current = null; };
   }, [queue]);
@@ -475,7 +577,7 @@ export function useQuizSession({
 
   // ── Confirm answer (step 1: lock answer, show explanation) ─────────────────
   const handleConfirm = useCallback(() => {
-    if (selected === null || confidence === null || !current) return;
+    if (selected === null || !current || confirmed) return;
     const correctIdx = current.correctIndex ?? 0;
     const isCorrect = selected === correctIdx;
 
@@ -526,6 +628,7 @@ export function useQuizSession({
   }, [
     selected,
     confidence,
+    confirmed,
     current,
     history,
     trialUnlocked,
@@ -714,6 +817,12 @@ export function useQuizSession({
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
+    if (!practiceFiltersEnabled && !calcOnly) {
+      toast("Calculation-only practice is included with an active course pass", {
+        description: "The free preview uses a balanced fixed sample of this course.",
+      });
+      return;
+    }
     const next = !calcOnly;
     const newPool = allQuestions.filter((q) => !next || q.isCalc);
     const filtered = selectedModule
@@ -732,11 +841,17 @@ export function useQuizSession({
     clearUI();
     if (queue) return;
     setCurrent(pickRandom(filtered));
-  }, [calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue]);
+  }, [practiceFiltersEnabled, calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback(
     (mod: string | null) => {
+      if (mod !== null && !practiceFiltersEnabled) {
+        toast("Module practice is included with an active course pass", {
+          description: "The free preview uses a balanced fixed sample of this course.",
+        });
+        return;
+      }
       setSelectedModule(mod);
       if (queue) { clearUI(); return; }
       let newPool = allQuestions.filter((q) => !usedIds.has(q.id));
@@ -747,7 +862,7 @@ export function useQuizSession({
         clearUI();
       }
     },
-    [allQuestions, usedIds, calcOnly, clearUI, queue],
+    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue],
   );
 
   // Keep the latest-value refs in sync after every render (handleNext is defined

@@ -1,0 +1,1353 @@
+{
+  "ceu-activated-sludge-troubleshooting": {
+    "primary": [
+      {
+        "id": "activated-sludge-troubleshooting-f1",
+        "objective": "inventory-boundary",
+        "prompt": "Inventory 10,000 kg and total loss 800 kg/day give SRT:",
+        "choices": [
+          "12.5 days",
+          "8 days",
+          "0.08 day",
+          "18 days"
+        ],
+        "correctIndex": 0,
+        "explanation": "10,000/800=12.5 days."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f2",
+        "objective": "inventory-boundary",
+        "prompt": "RAS within the chosen system boundary is:",
+        "choices": [
+          "An additional external solids loss",
+          "Always the same as waste sludge",
+          "A substitute for effluent TSS",
+          "Internal solids transfer"
+        ],
+        "correctIndex": 3,
+        "explanation": "Internal recycling is not a system loss."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f3",
+        "objective": "settling-diagnosis",
+        "prompt": "Settled volume 420 mL/L and MLSS 2.8 g/L give SVI:",
+        "choices": [
+          "117.6 mL/g",
+          "150 mL/g",
+          "15 mL/g",
+          "1,176 mL/g"
+        ],
+        "correctIndex": 1,
+        "explanation": "Using the stated units and calculation: 420/2.8=150."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f4",
+        "objective": "settling-diagnosis",
+        "prompt": "A specific filamentous cause requires more than:",
+        "choices": [
+          "A qualified investigation",
+          "Consistent method records",
+          "A process evidence review",
+          "One elevated SVI value"
+        ],
+        "correctIndex": 3,
+        "explanation": "SVI alone does not identify an organism or mechanism."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f5",
+        "objective": "nitrogen-diagnosis",
+        "prompt": "At 7.14 mg/mg,15 mg/L ammonia-N oxidation has theoretical demand:",
+        "choices": [
+          "7.14 mg/L",
+          "10.71 mg/L",
+          "107.1 mg/L",
+          "2.10 mg/L"
+        ],
+        "correctIndex": 2,
+        "explanation": "15×7.14=107.1 mg/L asCaCO3."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f6",
+        "objective": "nitrogen-diagnosis",
+        "prompt": "A calculated remaining alkalinity is not directly:",
+        "choices": [
+          "A measured finalpH",
+          "A result dependent on assumptions",
+          "A value with concentration units",
+          "A screening balance result"
+        ],
+        "correctIndex": 0,
+        "explanation": "Alkalinity andpH are related but not interchangeable."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f7",
+        "objective": "recovery-trial",
+        "prompt": "Verified air delivery restoration should be followed by:",
+        "choices": [
+          "Immediate blanket closure of all issues",
+          "Deletion of the original fault record",
+          "Matched process-outcome monitoring",
+          "An unrecorded change to every control"
+        ],
+        "correctIndex": 2,
+        "explanation": "Equipment restoration and process recovery are separate verification steps."
+      },
+      {
+        "id": "activated-sludge-troubleshooting-f8",
+        "objective": "recovery-trial",
+        "prompt": "A wasting decision should use:",
+        "choices": [
+          "The highest DO result obtained after maintenance",
+          "Consistent solids evidence and authorized review",
+          "A desired SRT without a consistent inventory boundary",
+          "The current waste-pump command without a flow check"
+        ],
+        "correctIndex": 1,
+        "explanation": "The decision needs a supported process basis and proper authority."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-coagulation-filtration": {
+    "primary": [
+      {
+        "id": "coagulation-filtration-f1",
+        "objective": "jar-design",
+        "prompt": "A candidate meets turbidity but fails the supplied pH band. It:",
+        "choices": [
+          "Must be used at full scale",
+          "Passes because turbidity matters alone",
+          "Proves the band is unnecessary",
+          "Fails the combined screen"
+        ],
+        "correctIndex": 3,
+        "explanation": "Every specified constraint applies."
+      },
+      {
+        "id": "coagulation-filtration-f2",
+        "objective": "jar-design",
+        "prompt": "Replicates 0.3 and 0.7 have a mean and range of:",
+        "choices": [
+          "0.4 and 0.5",
+          "1.0 and 0.4",
+          "0.5 and 1.0",
+          "0.5 and 0.4"
+        ],
+        "correctIndex": 3,
+        "explanation": "The mean is 0.50 and the range is 0.40."
+      },
+      {
+        "id": "coagulation-filtration-f3",
+        "objective": "feed-calibration",
+        "prompt": "10 L/hour×1.2 kg/L×10% active delivers:",
+        "choices": [
+          "12 kg/hour",
+          "120 kg/hour",
+          "1.2 kg/hour",
+          "0.12 kg/hour"
+        ],
+        "correctIndex": 2,
+        "explanation": "10×1.2×0.10=1.2 kg/hour."
+      },
+      {
+        "id": "coagulation-filtration-f4",
+        "objective": "feed-calibration",
+        "prompt": "1.2 kg/hour active at 100 m³/hour is:",
+        "choices": [
+          "12 mg/L",
+          "1.2 mg/L",
+          "120 mg/L",
+          "0.12 mg/L"
+        ],
+        "correctIndex": 0,
+        "explanation": "1.2/100×1,000=12 mg/L."
+      },
+      {
+        "id": "coagulation-filtration-f5",
+        "objective": "filter-record",
+        "prompt": "Headloss rises 0.6 m in 3 hours. Rate is:",
+        "choices": [
+          "1.8 m/hour",
+          "0.2 m/hour",
+          "5 m/hour",
+          "0.6 m/hour"
+        ],
+        "correctIndex": 1,
+        "explanation": "0.6/3=0.2 m/hour."
+      },
+      {
+        "id": "coagulation-filtration-f6",
+        "objective": "filter-record",
+        "prompt": "Which evidence best resolves an analyser-versus-process question?",
+        "choices": [
+          "A combined average over a longer reporting period",
+          "A qualified matched independent check",
+          "The original controller setpoint and alarm threshold",
+          "A daily minimum selected from the same analyser"
+        ],
+        "correctIndex": 1,
+        "explanation": "A qualified matched check tests measurement agreement."
+      },
+      {
+        "id": "coagulation-filtration-f7",
+        "objective": "trial-design",
+        "prompt": "Chemical 2 kg/hour at 200 m³/hour and 1 kg/hour at 100 m³/hour show:",
+        "choices": [
+          "A50% dose reduction",
+          "A doubled dose",
+          "The same 10 mg/L dose",
+          "A proven treatment improvement"
+        ],
+        "correctIndex": 2,
+        "explanation": "Both mass-to-flow ratios give 10 mg/L."
+      },
+      {
+        "id": "coagulation-filtration-f8",
+        "objective": "trial-design",
+        "prompt": "A trial’s stopping criteria should be:",
+        "choices": [
+          "Defined beforehand with a response owner",
+          "Set from chemical cost with quality reviewed later",
+          "Left unchanged despite a different source-water condition",
+          "Selected from the best result after the trial ends"
+        ],
+        "correctIndex": 0,
+        "explanation": "Predefined criteria and owners support controlled execution."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-collection-wet-weather": {
+    "primary": [
+      {
+        "id": "collection-wet-weather-f1",
+        "objective": "wet-weather",
+        "prompt": "Wet volume 4,000 and comparable dry volume 2,800 m³ give excess:",
+        "choices": [
+          "1,200 m³",
+          "6,800 m³",
+          "1.43 m³",
+          "2,800 m³"
+        ],
+        "correctIndex": 0,
+        "explanation": "Subtract the stated baseline."
+      },
+      {
+        "id": "collection-wet-weather-f2",
+        "objective": "wet-weather",
+        "prompt": "A delayed sustained rainfall response is:",
+        "choices": [
+          "Proof of direct inflow at one property",
+          "A confirmed pipe defect",
+          "Evidence excluding storage effects",
+          "A pattern requiring corroboration"
+        ],
+        "correctIndex": 3,
+        "explanation": "It suggests hypotheses but needs corroboration."
+      },
+      {
+        "id": "collection-wet-weather-f3",
+        "objective": "storage-capacity",
+        "prompt": "80 m³ buffer with net accumulation 20 m³/hour gives:",
+        "choices": [
+          "4 hours",
+          "0.25 hour",
+          "100 hours",
+          "1,600 hours"
+        ],
+        "correctIndex": 0,
+        "explanation": "80/20=4 hours if the net rate remains constant."
+      },
+      {
+        "id": "collection-wet-weather-f4",
+        "objective": "storage-capacity",
+        "prompt": "After inflow increases, a previous time-to-trigger estimate:",
+        "choices": [
+          "Becomes conservative when a pump starts",
+          "Remains valid until its original deadline",
+          "Needs current storage and flow measurements",
+          "Replaces further level measurements"
+        ],
+        "correctIndex": 2,
+        "explanation": "The estimate depends on the current conditions."
+      },
+      {
+        "id": "collection-wet-weather-f5",
+        "objective": "incident-volume",
+        "prompt": "Rates 10 and 30 m³/hour 15 minutes apart give trapezoidal volume:",
+        "choices": [
+          "40 m³",
+          "10 m³",
+          "20 m³",
+          "5 m³"
+        ],
+        "correctIndex": 3,
+        "explanation": "Using the stated units and calculation: Mean 20×.25=5 m³."
+      },
+      {
+        "id": "collection-wet-weather-f6",
+        "objective": "incident-volume",
+        "prompt": "An unobserved interval should be:",
+        "choices": [
+          "Filled from the nearest point without qualification",
+          "Set to zero",
+          "Bounded or qualified with evidence",
+          "Assigned the first alarm rate throughout"
+        ],
+        "correctIndex": 2,
+        "explanation": "Disclose uncertainty and the basis of any estimate."
+      },
+      {
+        "id": "collection-wet-weather-f7",
+        "objective": "response-plan",
+        "prompt": "A pump command changes toRUN. What remains to verify?",
+        "choices": [
+          "Controller state",
+          "Actual operation and delivered flow",
+          "The most recent nameplate rating",
+          "The original dry-weather design inflow"
+        ],
+        "correctIndex": 1,
+        "explanation": "A command is not evidence of physical delivery."
+      },
+      {
+        "id": "collection-wet-weather-f8",
+        "objective": "response-plan",
+        "prompt": "A strong recovery register distinguishes:",
+        "choices": [
+          "Shift ownership",
+          "Requests, execution and verification",
+          "Wet versus dry weather records",
+          "Urgency without execution status"
+        ],
+        "correctIndex": 1,
+        "explanation": "The distinctions prevent assumed completion."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-disinfection-ct": {
+    "primary": [
+      {
+        "id": "disinfection-ct-f1",
+        "objective": "hydraulics",
+        "prompt": "Active volume 360 m³,flow 180 m³/hour,factor 0.30: T10?",
+        "choices": [
+          "400 min",
+          "2 min",
+          "120 min",
+          "36 min"
+        ],
+        "correctIndex": 3,
+        "explanation": "Nominal time is 120 minutes; 120×0.30=36 minutes."
+      },
+      {
+        "id": "disinfection-ct-f2",
+        "objective": "hydraulics",
+        "prompt": "A factor is verified for one configuration. After reconfiguration it is:",
+        "choices": [
+          "Doubled",
+          "Reviewed for applicability to the new configuration",
+          "Retained when the flow display is unchanged",
+          "Selected to produce the desired ratio"
+        ],
+        "correctIndex": 1,
+        "explanation": "Evidence must support the factor for the actual configuration."
+      },
+      {
+        "id": "disinfection-ct-f3",
+        "objective": "ct-inputs",
+        "prompt": "C0.90 mg/L,T10 20 min,requiredCT 24: ratio?",
+        "choices": [
+          "0.75",
+          "1.33",
+          "18.0",
+          "0.0375"
+        ],
+        "correctIndex": 0,
+        "explanation": "Achieved CT is 18; 18/24=0.75."
+      },
+      {
+        "id": "disinfection-ct-f4",
+        "objective": "ct-inputs",
+        "prompt": "Temperature leaves the supplied requirement’s range. What is needed?",
+        "choices": [
+          "A requirement valid for the new condition",
+          "A rounded volume",
+          "The highest residual from the same instrument",
+          "The original requirement with a new flow substituted"
+        ],
+        "correctIndex": 0,
+        "explanation": "Required CT must match the evaluated conditions."
+      },
+      {
+        "id": "disinfection-ct-f5",
+        "objective": "segments",
+        "prompt": "Permitted segment ratios 0.70 and 0.35 total:",
+        "choices": [
+          "2.00",
+          "0.35",
+          "1.05",
+          "0.245"
+        ],
+        "correctIndex": 2,
+        "explanation": "Add the ratios only under the expressly permitted method."
+      },
+      {
+        "id": "disinfection-ct-f6",
+        "objective": "segments",
+        "prompt": "Which pairing supports a point-in-time calculation?",
+        "choices": [
+          "Daily peak residual with daily minimum flow",
+          "Any matching units",
+          "Morning residual with afternoon hydraulics",
+          "Valid inputs aligned in time"
+        ],
+        "correctIndex": 3,
+        "explanation": "The inputs need both validity and time alignment."
+      },
+      {
+        "id": "disinfection-ct-f7",
+        "objective": "ct-audit",
+        "prompt": "A corrected calculation should preserve:",
+        "choices": [
+          "Only the final passing number",
+          "Only a screenshot of the new result",
+          "Original inputs and the correction trail",
+          "A statement that assumptions do not matter"
+        ],
+        "correctIndex": 2,
+        "explanation": "Traceability lets a reviewer reconstruct the correction."
+      },
+      {
+        "id": "disinfection-ct-f8",
+        "objective": "ct-audit",
+        "prompt": "A ratio above 1 with an unsupported factor is:",
+        "choices": [
+          "A valid determination",
+          "Numerical output with unresolved validity",
+          "A passing result if the residual display is stable",
+          "An investigation awaiting only a filename change"
+        ],
+        "correctIndex": 1,
+        "explanation": "An unsupported input leaves validity unresolved despite the numerical margin."
+      }
+    ],
+    "alternate": [
+      {
+        "id": "disinfection-ct-alt1",
+        "objective": "hydraulics",
+        "prompt": "A chamber has 720 m³ active volume, flow 360 m³/h and a supported T10 factor of 0.35. What is T10?",
+        "choices": [
+          "42 min",
+          "2 min",
+          "120 min",
+          "343 min"
+        ],
+        "correctIndex": 0,
+        "explanation": "720 ÷ 360 = 2 h = 120 min; multiplying by 0.35 gives 42 min. Division by the factor would overstate contact time."
+      },
+      {
+        "id": "disinfection-ct-alt2",
+        "objective": "hydraulics",
+        "prompt": "Flow rises from 300 to 450 m³/h while active volume is 600 m³. A factor of 0.50 is supported across both conditions. How does T10 change?",
+        "choices": [
+          "From 60 to 90 min",
+          "From 60 to 40 min",
+          "From 120 to 80 min",
+          "From 40 to 60 min"
+        ],
+        "correctIndex": 1,
+        "explanation": "T10 falls from (600/300)×60×0.50 = 60 min to (600/450)×60×0.50 = 40 min. The 120 and 80 min values are nominal times."
+      },
+      {
+        "id": "disinfection-ct-alt3",
+        "objective": "ct-inputs",
+        "prompt": "For a training lookup, Table A.4 gives required CT 105 mg·min/L at 15°C, pH 8.0 and free chlorine 0.8 mg/L for 3-log Giardia. T10 is 100 min. What is the comparison ratio?",
+        "choices": [
+          "1.31",
+          "1.10",
+          "0.76",
+          "80.0"
+        ],
+        "correctIndex": 2,
+        "explanation": "Achieved CT is 0.8×100 = 80 mg·min/L. Dividing by 105 gives 0.76. The 1.10 ratio would use the pH 7.0 value of 73 instead."
+      },
+      {
+        "id": "disinfection-ct-alt4",
+        "objective": "ct-inputs",
+        "prompt": "A training calculation requires segment-end free chlorine at 10:00. Which measurement matches that input?",
+        "choices": [
+          "10:00 upstream free chlorine, 0.90 mg/L",
+          "10:00 segment-end total chlorine, 0.90 mg/L",
+          "09:00 segment-end free chlorine, 0.90 mg/L",
+          "10:00 segment-end free chlorine, 0.70 mg/L"
+        ],
+        "correctIndex": 3,
+        "explanation": "The accepted result must match location, analyte and time. Matching units alone cannot justify substituting another result."
+      },
+      {
+        "id": "disinfection-ct-alt5",
+        "objective": "segments",
+        "prompt": "An expressly permitted ratio-sum method uses A: C=0.6, T10=20, required CT=24; B: C=0.5, T10=30, required CT=30. What total ratio follows?",
+        "choices": [
+          "1.00",
+          "0.50",
+          "1.125",
+          "2.00"
+        ],
+        "correctIndex": 0,
+        "explanation": "A contributes 12/24 = 0.50 and B contributes 15/30 = 0.50. The sum is 1.00 under the supplied method. Adding achieved CT and dividing by just one requirement loses the segment conditions."
+      },
+      {
+        "id": "disinfection-ct-alt6",
+        "objective": "segments",
+        "prompt": "At 08:00, C=0.8 mg/L and T10=40 min. At 12:00, C=0.6 mg/L and T10=30 min. Required CT is 24 in both training conditions. Which pair of ratios is correct?",
+        "choices": [
+          "08:00: 0.75; 12:00: 1.33",
+          "08:00: 1.33; 12:00: 0.75",
+          "08:00: 1.00; 12:00: 1.00",
+          "08:00: 1.33; 12:00: 1.33"
+        ],
+        "correctIndex": 1,
+        "explanation": "The point-in-time ratios are 0.8×40/24 = 1.33 and 0.6×30/24 = 0.75. A daily passing maximum does not establish every interval."
+      },
+      {
+        "id": "disinfection-ct-alt7",
+        "objective": "ct-audit",
+        "prompt": "A worksheet uses a factor from an undocumented configuration and returns a ratio of 1.20. How should the calculation be recorded?",
+        "choices": [
+          "Verified primary disinfection because 1.20 exceeds 1",
+          "Acceptable if the previous shift used that factor",
+          "Numerical ratio 1.20; hydraulic validity unresolved",
+          "Failed disinfection because all undocumented factors are zero"
+        ],
+        "correctIndex": 2,
+        "explanation": "Retain the numerical result and explicitly identify the unsupported hydraulic input. A ratio alone neither proves compliance nor justifies substituting zero. Follow the authorized response process."
+      },
+      {
+        "id": "disinfection-ct-alt8",
+        "objective": "ct-audit",
+        "prompt": "An authorized response changes a chlorine setting after a low CT result. Which evidence supports closing the performance issue?",
+        "choices": [
+          "The setting-change timestamp and operator initials",
+          "The previous passing worksheet and unchanged flow",
+          "The new setting and a normal-looking trend screenshot",
+          "Matched post-response residual, hydraulics and applicable CT comparison"
+        ],
+        "correctIndex": 3,
+        "explanation": "Closure requires verified performance under the relevant conditions. Recording the action is necessary, but is separate from demonstrating that the treatment condition has been restored."
+      }
+    ]
+  },
+  "ceu-distribution-water-quality": {
+    "primary": [
+      {
+        "id": "distribution-water-quality-f1",
+        "objective": "storage-turnover",
+        "prompt": "900 m³ at 300 m³/day gives a nominal indicator of:",
+        "choices": [
+          "3 days",
+          "0.33 day",
+          "600 days",
+          "2.7 days"
+        ],
+        "correctIndex": 0,
+        "explanation": "Volume divided by throughput is 3 days."
+      },
+      {
+        "id": "distribution-water-quality-f2",
+        "objective": "storage-turnover",
+        "prompt": "A zone meter includes tank bypass flow. Using all of it as tank throughput:",
+        "choices": [
+          "Can understate the tank indicator",
+          "Gives maximum age",
+          "Overstates the tank indicator",
+          "Leaves the indicator unchanged because units match"
+        ],
+        "correctIndex": 0,
+        "explanation": "An inflated denominator reduces the calculated indicator."
+      },
+      {
+        "id": "distribution-water-quality-f3",
+        "objective": "residual-patterns",
+        "prompt": "Residual 0.75 to 0.50 mg/L falls by approximately:",
+        "choices": [
+          "25%",
+          "33.3%",
+          "50%",
+          "66.7%"
+        ],
+        "correctIndex": 1,
+        "explanation": "0.25/0.75×100=33.3%."
+      },
+      {
+        "id": "distribution-water-quality-f4",
+        "objective": "residual-patterns",
+        "prompt": "Which additional evidence best tests a turnover hypothesis?",
+        "choices": [
+          "One later grab without its operating record",
+          "Annual production totals",
+          "Different analytes with no operating context",
+          "Repeated matched samples across known operating states"
+        ],
+        "correctIndex": 3,
+        "explanation": "Repeated context-linked observations discriminate the hypothesis."
+      },
+      {
+        "id": "distribution-water-quality-f5",
+        "objective": "pressure-repair",
+        "prompt": "A logger gap should be recorded as:",
+        "choices": [
+          "An automatically acceptable interval",
+          "Proof of normal pressure",
+          "Proof of zero pressure",
+          "Unknown coverage needing assessment"
+        ],
+        "correctIndex": 3,
+        "explanation": "No value can be inferred solely from a gap."
+      },
+      {
+        "id": "distribution-water-quality-f6",
+        "objective": "pressure-repair",
+        "prompt": "Mechanical repair completion and service authorization are:",
+        "choices": [
+          "Interchangeable after pressure restoration",
+          "Equivalent events",
+          "Separate evidence-based milestones",
+          "Combined once the laboratory receives a sample"
+        ],
+        "correctIndex": 2,
+        "explanation": "The applicable verification process must be completed."
+      },
+      {
+        "id": "distribution-water-quality-f7",
+        "objective": "zone-plan",
+        "prompt": "Which statement is defensible from the supplied two-grab pattern?",
+        "choices": [
+          "Temperature effects are excluded",
+          "Age is proven",
+          "The pattern warrants investigation",
+          "Sampling-path effects have been disproved"
+        ],
+        "correctIndex": 2,
+        "explanation": "The pattern supports investigation, not a definitive causal or compliance claim."
+      },
+      {
+        "id": "distribution-water-quality-f8",
+        "objective": "zone-plan",
+        "prompt": "A storage optimization proposal should include:",
+        "choices": [
+          "Minimum possible volume",
+          "Quality, storage constraints and authorization",
+          "A residual target without capacity review",
+          "A new level based on one favourable grab"
+        ],
+        "correctIndex": 1,
+        "explanation": "The proposal must account for interacting operational requirements."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-drinking-water-compliance": {
+    "primary": [
+      {
+        "id": "cf-01",
+        "objective": "compliance-map",
+        "prompt": "A current designation names the shift OIC, but an old contact sheet names a supervisor. Which record should anchor the role assignment in the exercise?",
+        "choices": [
+          "The current designation record",
+          "The last incident email thread",
+          "The oldest signed contact sheet",
+          "The supervisor reporting chart"
+        ],
+        "correctIndex": 0,
+        "explanation": "Use the current designation; then reconcile the obsolete contact sheet rather than letting it redefine authority."
+      },
+      {
+        "id": "cf-02",
+        "objective": "compliance-map",
+        "prompt": "Which entry belongs in the evidence-of-performance column of a source register?",
+        "choices": [
+          "The title of the applicable regulation",
+          "The section describing a reporting duty",
+          "The current communication acknowledgment",
+          "The category of drinking-water system"
+        ],
+        "correctIndex": 2,
+        "explanation": "The acknowledgment is evidence that a particular communication occurred. The other entries identify context or requirements."
+      },
+      {
+        "id": "cf-03",
+        "objective": "limits",
+        "prompt": "A historian contains four good observations and two missing intervals. What should a summary retain?",
+        "choices": [
+          "Only the four valid observations",
+          "Four observations and both gaps",
+          "Six values with gaps filled as zero",
+          "Six values with the last value repeated"
+        ],
+        "correctIndex": 1,
+        "explanation": "Preserve both observations and missingness. Filling gaps without labeling assumptions changes the evidentiary meaning."
+      },
+      {
+        "id": "cf-04",
+        "objective": "limits",
+        "prompt": "Two chlorine readings disagree. Which pair of fields is essential for determining whether they measure the same kind of result?",
+        "choices": [
+          "Operator tenure and shift length",
+          "File size and display precision",
+          "Alarm color and instrument brand",
+          "Sampling location and analytical method"
+        ],
+        "correctIndex": 3,
+        "explanation": "Method and location establish comparability together with time and quality. Administrative details cannot resolve that relationship."
+      },
+      {
+        "id": "cf-05",
+        "objective": "sampling",
+        "prompt": "An authorized amendment changes a sample address but retains its analytical result. Which conclusion follows?",
+        "choices": [
+          "The sample was collected again",
+          "The first receipt time is irrelevant",
+          "The location record changed",
+          "The analytical concern disappeared"
+        ],
+        "correctIndex": 2,
+        "explanation": "An amendment must be interpreted field by field. A location correction is not a negative resample or analytical reversal."
+      },
+      {
+        "id": "cf-06",
+        "objective": "sampling",
+        "prompt": "Which evidence would best resolve a bottle-to-report identity mismatch?",
+        "choices": [
+          "Matched bottle and laboratory accession records",
+          "A lower value from a different collection day",
+          "A summary written after the incident ended",
+          "A screenshot with the location field cropped"
+        ],
+        "correctIndex": 0,
+        "explanation": "Matched collection/accession evidence addresses identity directly. An unrelated result or cropped summary does not."
+      },
+      {
+        "id": "cf-07",
+        "objective": "response",
+        "prompt": "A call log shows an unanswered call to the coordinator. Which status is accurate?",
+        "choices": [
+          "All relevant reporting confirmed",
+          "Corrective action verified complete",
+          "Coordinator direction implemented",
+          "Internal contact attempted"
+        ],
+        "correctIndex": 3,
+        "explanation": "An unanswered call records an attempt. It does not establish acknowledgment, directions or external reporting."
+      },
+      {
+        "id": "cf-08",
+        "objective": "response",
+        "prompt": "One favorable reading follows an unresolved event. Which task remains necessary before closure?",
+        "choices": [
+          "Rename the event folder as resolved",
+          "Review the applicable closure evidence",
+          "Discard superseded laboratory reports",
+          "Replace the original warning in the log"
+        ],
+        "correctIndex": 1,
+        "explanation": "Closure depends on the applicable response evidence, outstanding issues and authority; one later observation does not supply all of these."
+      },
+      {
+        "id": "cf-09",
+        "objective": "records",
+        "prompt": "An operator corrects an earlier sample identifier at 13:00. Which time belongs beside the correction signature?",
+        "choices": [
+          "The 13:00 correction time",
+          "The earlier sample collection time",
+          "The next scheduled shift-change time",
+          "The laboratory report authorization time"
+        ],
+        "correctIndex": 0,
+        "explanation": "The correction needs its actual attribution/time while retaining the separate original event time."
+      },
+      {
+        "id": "cf-10",
+        "objective": "records",
+        "prompt": "The device clock was three minutes slow. What preserves a reviewable timeline?",
+        "choices": [
+          "Deleting the device timestamps",
+          "Assigning the discovery time to all rows",
+          "Showing original time and documented offset",
+          "Rounding every timestamp to the nearest hour"
+        ],
+        "correctIndex": 2,
+        "explanation": "Retain the source timestamp and explicit adjustment so the comparison can be reconstructed."
+      },
+      {
+        "id": "cf-11",
+        "objective": "practicum",
+        "prompt": "Which handover item most directly prevents an unresolved task from being lost between shifts?",
+        "choices": [
+          "The overall page count of the incident file",
+          "A named recipient accepting the follow-up",
+          "The total number of favorable observations",
+          "A statement that attachments were uploaded"
+        ],
+        "correctIndex": 1,
+        "explanation": "Explicit task ownership and acceptance support continuity. File size and upload status do not establish who will act."
+      },
+      {
+        "id": "cf-12",
+        "objective": "practicum",
+        "prompt": "A new document resolves instrument comparability but leaves laboratory verification pending. How should the event assessment change?",
+        "choices": [
+          "Close every issue under the common event ID",
+          "Remove the original instrument observations",
+          "Classify the pending result as favorable",
+          "Update the resolved issue and retain the open one"
+        ],
+        "correctIndex": 3,
+        "explanation": "Resolve claims only as far as new evidence supports them; separate issues can have different statuses."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-instrumentation-scada": {
+    "primary": [
+      {
+        "id": "instrumentation-scada-f1",
+        "objective": "signal-scaling",
+        "prompt": "8 mA on a 0–12 m range represents:",
+        "choices": [
+          "6 m",
+          "3 m",
+          "8 m",
+          "12 m"
+        ],
+        "correctIndex": 1,
+        "explanation": "A quarter of the 12 m span is 3 m."
+      },
+      {
+        "id": "instrumentation-scada-f2",
+        "objective": "signal-scaling",
+        "prompt": "A receiver range differs from the transmitter range. First establish:",
+        "choices": [
+          "The threshold with the fewest notifications",
+          "Display precision",
+          "The value closest to the expected daily mean",
+          "Configuration records and a physical check"
+        ],
+        "correctIndex": 3,
+        "explanation": "Verify the documented measurement chain before changing it."
+      },
+      {
+        "id": "instrumentation-scada-f3",
+        "objective": "time-quality",
+        "prompt": "A clock 2 minutes ahead reports 10:12. Reference time is:",
+        "choices": [
+          "10:14",
+          "10:10",
+          "10:12",
+          "10:08"
+        ],
+        "correctIndex": 1,
+        "explanation": "Subtract the known two-minute lead."
+      },
+      {
+        "id": "instrumentation-scada-f4",
+        "objective": "time-quality",
+        "prompt": "A line joining two valid trend points proves:",
+        "choices": [
+          "Continuous movement along the plotted line",
+          "A constant process",
+          "Only the plotted points are recorded measurements",
+          "The last value held until the next point"
+        ],
+        "correctIndex": 2,
+        "explanation": "Drawing a line does not create intermediate observations."
+      },
+      {
+        "id": "instrumentation-scada-f5",
+        "objective": "alarm-evidence",
+        "prompt": "An alarm acknowledged at 11:00 is:",
+        "choices": [
+          "Necessarily a false alarm",
+          "Necessarily repaired at 11:00",
+          "Acknowledged at 11:00",
+          "Proof of restored water quality"
+        ],
+        "correctIndex": 2,
+        "explanation": "Acknowledgement has a narrower meaning than physical restoration."
+      },
+      {
+        "id": "instrumentation-scada-f6",
+        "objective": "alarm-evidence",
+        "prompt": "A one-minute normal state followed by recurrence suggests:",
+        "choices": [
+          "The condition needs continued review",
+          "Permanent restoration",
+          "Closure after acknowledgement",
+          "Removal of the original event from the log"
+        ],
+        "correctIndex": 0,
+        "explanation": "A brief normal state does not close a recurring condition."
+      },
+      {
+        "id": "instrumentation-scada-f7",
+        "objective": "data-audit",
+        "prompt": "A corrected historical series should be:",
+        "choices": [
+          "Indistinguishable from raw data",
+          "Used to delete the source records",
+          "Labelled as the original measurement",
+          "Versioned with a documented method"
+        ],
+        "correctIndex": 3,
+        "explanation": "Keep original and derived series distinguishable and traceable."
+      },
+      {
+        "id": "instrumentation-scada-f8",
+        "objective": "data-audit",
+        "prompt": "Which closeout is strongest?",
+        "choices": [
+          "Documented checks across the full affected chain",
+          "Normal screen values",
+          "A correctly commanded setting",
+          "Acknowledgement of the work request"
+        ],
+        "correctIndex": 0,
+        "explanation": "Documented checks across the affected chain support closeout."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-sampling-data-quality": {
+    "primary": [
+      {
+        "id": "sampling-data-quality-f1",
+        "objective": "sample-design",
+        "prompt": "Which design addresses an early-morning outlet complaint?",
+        "choices": [
+          "Noon source grabs",
+          "Timed outlet samples with operating records",
+          "Repeated readings from one source bottle",
+          "Weekly totals paired with an unrelated outlet grab"
+        ],
+        "correctIndex": 1,
+        "explanation": "Sample the relevant location/time and document its operating state."
+      },
+      {
+        "id": "sampling-data-quality-f2",
+        "objective": "sample-design",
+        "prompt": "A laboratory duplicate primarily adds evidence about:",
+        "choices": [
+          "Tank residence-time distribution",
+          "Spatial coverage",
+          "Analytical repeatability",
+          "Unrecorded overnight operating changes"
+        ],
+        "correctIndex": 2,
+        "explanation": "It examines the analytical portion of the chain."
+      },
+      {
+        "id": "sampling-data-quality-f3",
+        "objective": "custody",
+        "prompt": "Collection 22:50, analysis next day 06:20: elapsed time?",
+        "choices": [
+          "8 h 30 m",
+          "7 h 20 m",
+          "6 h 20 m",
+          "7 h 30 m"
+        ],
+        "correctIndex": 3,
+        "explanation": "1 h 10 m before midnight plus 6 h 20 m after."
+      },
+      {
+        "id": "sampling-data-quality-f4",
+        "objective": "custody",
+        "prompt": "A location discrepancy is unresolved. What should be retained?",
+        "choices": [
+          "A rewritten form without its original version",
+          "The preferred entry",
+          "The invoice and the preferred location",
+          "Both original entries and a documented correction trail"
+        ],
+        "correctIndex": 3,
+        "explanation": "Preserve originals while documenting resolution."
+      },
+      {
+        "id": "sampling-data-quality-f5",
+        "objective": "quality-control",
+        "prompt": "Results 0.80 and 1.00 have what RPD?",
+        "choices": [
+          "11.1%",
+          "20.0%",
+          "22.2%",
+          "25.0%"
+        ],
+        "correctIndex": 2,
+        "explanation": "0.20/0.90×100=22.22%."
+      },
+      {
+        "id": "sampling-data-quality-f6",
+        "objective": "quality-control",
+        "prompt": "A result<0.05 mg/L means:",
+        "choices": [
+          "It is reported below that limit",
+          "The concentration is exactly 0.05",
+          "The concentration is exactly zero",
+          "It is above the stated reporting limit"
+        ],
+        "correctIndex": 0,
+        "explanation": "The notation is a bound, not an exact value."
+      },
+      {
+        "id": "sampling-data-quality-f7",
+        "objective": "qualified-report",
+        "prompt": "Which statement best respects a one-location dataset?",
+        "choices": [
+          "Every site is stable",
+          "Findings apply to sampled conditions",
+          "Repeat readings prove spatial uniformity",
+          "The best result represents the full sampling period"
+        ],
+        "correctIndex": 1,
+        "explanation": "Scope conclusions to the evidence."
+      },
+      {
+        "id": "sampling-data-quality-f8",
+        "objective": "qualified-report",
+        "prompt": "Which unresolved item needs method-specific evidence?",
+        "choices": [
+          "Whether handling time meets the applicable method",
+          "Date rollover",
+          "Whether the identifier is on the form",
+          "Whether the location names match"
+        ],
+        "correctIndex": 0,
+        "explanation": "Acceptability depends on the relevant method rule."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-wastewater-treatment-process-control": {
+    "primary": [
+      {
+        "id": "ww-final-1",
+        "objective": "process-map",
+        "prompt": "A flow of 12,000 m³/day at 140 mg/L BOD carries what load?",
+        "choices": [
+          "1,680 kg/day",
+          "168 kg/day",
+          "16,800 kg/day",
+          "85.7 kg/day"
+        ],
+        "correctIndex": 0,
+        "explanation": "12,000 ×140 /1,000 =1,680."
+      },
+      {
+        "id": "ww-final-2",
+        "objective": "process-map",
+        "prompt": "A downstream meter already includes centrate. How should total flow be calculated?",
+        "choices": [
+          "Use the inclusive flow once",
+          "Subtract the full centrate load",
+          "Add centrate twice",
+          "Replace it with RAS flow"
+        ],
+        "correctIndex": 0,
+        "explanation": "Do not double-count a stream already inside the measurement."
+      },
+      {
+        "id": "ww-final-3",
+        "objective": "monitoring",
+        "prompt": "A24-hour effluent composite is compared with a single influent grab. What is the main limitation?",
+        "choices": [
+          "No unit conversion exists",
+          "The sampling periods differ",
+          "BOD cannot be expressed as a daily mass",
+          "Both daily flows must be identical"
+        ],
+        "correctIndex": 1,
+        "explanation": "The samples may not represent comparable daily conditions."
+      },
+      {
+        "id": "ww-final-4",
+        "objective": "monitoring",
+        "prompt": "An effluent result is<1 mg/L at 8,000 m³/day. Which statement follows?",
+        "choices": [
+          "The load is exactly 8 kg/day",
+          "The load is below 8 kg/day",
+          "The load is greater than 8 kg/day",
+          "The load is exactly 0 kg/day"
+        ],
+        "correctIndex": 1,
+        "explanation": "The reported concentration defines an upper bound, subject to representativeness."
+      },
+      {
+        "id": "ww-final-5",
+        "objective": "biological",
+        "prompt": "SVI rises from 90 to 150 mL/g using the same method. What is established?",
+        "choices": [
+          "The applicable effluent limit was exceeded",
+          "A filament is identified",
+          "The RAS equipment has lost capacity",
+          "Settling-test behaviour changed"
+        ],
+        "correctIndex": 3,
+        "explanation": "The test changed; the mechanism and regulatory status need separate evidence."
+      },
+      {
+        "id": "ww-final-6",
+        "objective": "biological",
+        "prompt": "Which pair most directly supports a RAS delivery problem?",
+        "choices": [
+          "Higher temperature and lower influent BOD",
+          "High pH, low alkalinity",
+          "Stable command and verified low flow",
+          "Low local DO with stable basin MLSS"
+        ],
+        "correctIndex": 2,
+        "explanation": "The verified mismatch separates requested and actual delivery."
+      },
+      {
+        "id": "ww-final-7",
+        "objective": "solids-age",
+        "prompt": "Inventory 9,000 kg; waste 600 kg/day; effluent 150 kg/day. SRT is:",
+        "choices": [
+          "15 days",
+          "60 days",
+          "12 days",
+          "0.083 days"
+        ],
+        "correctIndex": 2,
+        "explanation": "9,000 /750 =12 days."
+      },
+      {
+        "id": "ww-final-8",
+        "objective": "solids-age",
+        "prompt": "BOD load 1,500 kg/day and MLVSS inventory 5,000 kg give F/M:",
+        "choices": [
+          "3.33 per day",
+          "7.50 per day",
+          "0.03 per day",
+          "0.30 per day"
+        ],
+        "correctIndex": 3,
+        "explanation": "1,500/5,000=0.30 on the specified BOD/MLVSS basis."
+      },
+      {
+        "id": "ww-final-9",
+        "objective": "nutrients-solids",
+        "prompt": "A100 m³/day return at 400 mg/L ammonia-N contains:",
+        "choices": [
+          "4 kgN/day",
+          "400 kgN/day",
+          "40 kgN/day",
+          "4,000 kgN/day"
+        ],
+        "correctIndex": 2,
+        "explanation": "100×400/1,000=40."
+      },
+      {
+        "id": "ww-final-10",
+        "objective": "nutrients-solids",
+        "prompt": "Ammonia falls and nitrate rises by a similar nitrogen mass. What is best supported?",
+        "choices": [
+          "Nitrogen transformation",
+          "Complete phosphorus removal",
+          "Complete nitrogen removal",
+          "A lower daily influent flow"
+        ],
+        "correctIndex": 0,
+        "explanation": "Conversion to oxidized nitrogen does not itself show total nitrogen removal."
+      },
+      {
+        "id": "ww-final-11",
+        "objective": "virtual-shift",
+        "prompt": "A work request is acknowledged. How should the repair appear in the handover?",
+        "choices": [
+          "Repair verified",
+          "Pending execution/verification",
+          "Equipment permanently restored",
+          "Fault diagnosis disproved"
+        ],
+        "correctIndex": 1,
+        "explanation": "Acknowledgement is distinct from execution and performance verification."
+      },
+      {
+        "id": "ww-final-12",
+        "objective": "virtual-shift",
+        "prompt": "Which evidence best supports closing a process response?",
+        "choices": [
+          "A control restored to its previous setting",
+          "Shift end",
+          "A lower instantaneous flow",
+          "Verified outcomes against defined closure criteria"
+        ],
+        "correctIndex": 3,
+        "explanation": "Closure needs the planned verification evidence, not a proxy for it."
+      }
+    ],
+    "alternate": []
+  },
+  "ceu-water-treatment-process-control": {
+    "primary": [
+      {
+        "id": "wf1",
+        "objective": "water-balance",
+        "prompt": "A flow of 50 L/s equals which daily volume?",
+        "choices": [
+          "4,320 m³/day",
+          "432 m³/day",
+          "43,200 m³/day",
+          "50,000 m³/day"
+        ],
+        "correctIndex": 0,
+        "explanation": "50 × 86.4 = 4,320 m³/day."
+      },
+      {
+        "id": "wf2",
+        "objective": "water-balance",
+        "prompt": "At 4,000 m³/day and 20 mg/L, what is the corresponding active mass?",
+        "choices": [
+          "8 kg/day",
+          "80 kg/day",
+          "20 kg/day",
+          "800 kg/day"
+        ],
+        "correctIndex": 1,
+        "explanation": "4,000 × 20 × 0.001 = 80 kg/day."
+      },
+      {
+        "id": "wf3",
+        "objective": "raw-water",
+        "prompt": "Two samples have similar turbidity but very different alkalinity. What should the trial design include?",
+        "choices": [
+          "Turbidity alone",
+          "Matched tests of both water conditions",
+          "Averaged alkalinity used to label both jars",
+          "A comparison excluding final pH"
+        ],
+        "correctIndex": 1,
+        "explanation": "Representative testing preserves the buffering difference rather than assuming optical similarity means identical treatment response."
+      },
+      {
+        "id": "wf4",
+        "objective": "raw-water",
+        "prompt": "An intake change has not reached the downstream sampler. What does an unchanged downstream value show?",
+        "choices": [
+          "The raw-water observation is invalid",
+          "Treatment is complete",
+          "Earlier water still appears similar",
+          "The chemical dose is already optimal"
+        ],
+        "correctIndex": 2,
+        "explanation": "The observation may concern earlier water and cannot yet establish response to the new intake condition."
+      },
+      {
+        "id": "wf5",
+        "objective": "coagulation",
+        "prompt": "A solution at 10% by mass, density 1.20 kg/L and feed 5 L/h supplies what active mass?",
+        "choices": [
+          "0.50 kg/h",
+          "0.60 kg/h",
+          "5.00 kg/h",
+          "6.00 kg/h"
+        ],
+        "correctIndex": 1,
+        "explanation": "5 × 1.20 × 0.10 = 0.60 kg/h."
+      },
+      {
+        "id": "wf6",
+        "objective": "coagulation",
+        "prompt": "A jar has excellent clarity but violates a supplied pH constraint. How should it be classified?",
+        "choices": [
+          "Acceptable with a clear jar photograph",
+          "Preferred for plant use",
+          "Outside the current trial criteria",
+          "Equivalent to any jar receiving the same dose"
+        ],
+        "correctIndex": 2,
+        "explanation": "A favorable indicator does not override another applicable trial constraint."
+      },
+      {
+        "id": "wf7",
+        "objective": "filters",
+        "prompt": "A filter receives 150 m³/h over 25 m². What is its loading?",
+        "choices": [
+          "60 m/h",
+          "15 m/h",
+          "25 m/h",
+          "6 m/h"
+        ],
+        "correctIndex": 3,
+        "explanation": "Using the stated units and calculation: 150/25 = 6 m/h."
+      },
+      {
+        "id": "wf8",
+        "objective": "filters",
+        "prompt": "Which comparison best reveals uneven loading between filters?",
+        "choices": [
+          "Annual chemical use divided by daily production",
+          "Installed filter count",
+          "Combined outlet temperature",
+          "Individual flow divided by active area"
+        ],
+        "correctIndex": 3,
+        "explanation": "Unit flow and active area establish individual hydraulic loading."
+      },
+      {
+        "id": "wf9",
+        "objective": "ct",
+        "prompt": "A segment has relevant residual 0.6 mg/L and validated T10 of 30 min. What is CT?",
+        "choices": [
+          "5 mg·min/L",
+          "30.6 mg·min/L",
+          "18 mg·min/L",
+          "50 mg·min/L"
+        ],
+        "correctIndex": 2,
+        "explanation": "0.6 × 30 = 18 mg·min/L; a requirement comparison still needs the applicable target."
+      },
+      {
+        "id": "wf10",
+        "objective": "ct",
+        "prompt": "A tank volume/flow calculation yields two hours. Which conversion gives nominal minutes?",
+        "choices": [
+          "Multiply two by 60",
+          "Multiply two by 24",
+          "Divide two by 60",
+          "Divide two by 24"
+        ],
+        "correctIndex": 0,
+        "explanation": "Two hours equals 120 minutes. Effective contact time requires the appropriate hydraulic basis."
+      },
+      {
+        "id": "wf11",
+        "objective": "trial",
+        "prompt": "Mass feed and water flow both decrease by 25%. What happens to their dose ratio?",
+        "choices": [
+          "Reduced to zero",
+          "Reduced by 25 percent",
+          "Increased by 25 percent",
+          "Unchanged"
+        ],
+        "correctIndex": 3,
+        "explanation": "The numerator and denominator change by the same factor, leaving the ratio unchanged."
+      },
+      {
+        "id": "wf12",
+        "objective": "trial",
+        "prompt": "Which practice most weakens causal interpretation of a trial?",
+        "choices": [
+          "Changing several conditions together",
+          "Recording the expected delay between change and response",
+          "Defining comparison criteria before starting the trial",
+          "Preserving the original observations from every instrument"
+        ],
+        "correctIndex": 0,
+        "explanation": "Simultaneous changes can confound attribution even when an outcome improves."
+      }
+    ],
+    "alternate": []
+  }
+}

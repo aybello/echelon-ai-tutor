@@ -45,7 +45,7 @@ function otpFromSubject(subject: string): string {
 
 async function signInWithOtp(page: Page, email: string, next: string) {
   await page.goto(`/login/otp?next=${encodeURIComponent(next)}`);
-  await page.getByPlaceholder("your@email.com").fill(email);
+  await page.getByPlaceholder("fixture-117@example.com").fill(email);
   await page.getByRole("button", { name: /Send Code/i }).click();
   await expect(page.getByRole("heading", { name: "Check Your Email" })).toBeVisible();
 
@@ -85,7 +85,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   const licenceRow = page.locator("tr").filter({ hasText: COURSE_NAME });
   await expect(licenceRow).toContainText("unused");
   await licenceRow.getByRole("button", { name: "Invite" }).click();
-  const inviteInput = licenceRow.getByPlaceholder("operator@email.com");
+  const inviteInput = licenceRow.getByPlaceholder("fixture-83@example.com");
   await inviteInput.fill(OPERATOR_EMAIL);
   // Target the primary action beside the email field. The deployed manager UI
   // may insert a review step before sending, while older builds send directly.
@@ -104,7 +104,9 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
 
   const invitationMessage = await waitForMessage(OPERATOR_EMAIL, `invited you to ${COURSE_NAME}`);
   const invitationBody = await messageBody(invitationMessage.ID);
-  const claimUrl = invitationBody.match(/http:\/\/127\.0\.0\.1:3000\/course-pass\/claim\?token=[a-f0-9]{64}/i)?.[0];
+  const fixtureOrigin = (process.env.APP_BASE_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
+  const claimUrl = (invitationBody.match(/https?:\/\/[^\s"<>]+\/course-pass\/claim\?token=[a-f0-9]{64}/ig) ?? [])
+    .find(url => new URL(url).origin === fixtureOrigin);
   expect(claimUrl, "invitation email should contain the claim URL").toBeTruthy();
 
   const operatorContext = await browser.newContext({
@@ -115,7 +117,7 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await expect(operatorPage.getByText(COURSE_NAME, { exact: true })).toBeVisible();
   await operatorPage.getByRole("link", { name: /Verify Email & Continue/i }).click();
 
-  await operatorPage.getByPlaceholder("your@email.com").fill(OPERATOR_EMAIL);
+  await operatorPage.getByPlaceholder("fixture-117@example.com").fill(OPERATOR_EMAIL);
   await operatorPage.getByRole("button", { name: /Send Code/i }).click();
   await expect(operatorPage.getByRole("heading", { name: "Check Your Email" })).toBeVisible();
   const operatorOtpMessage = await waitForMessage(OPERATOR_EMAIL, "login code:");
@@ -271,13 +273,21 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   // This is still the manager's authenticated browser, while the operator used
   // a separate OTP-only session. Both screens must see the same 100 attempts.
   await page.reload();
-  const progressTable = page.locator("table").filter({
-    has: page.locator("th").filter({ hasText: /^Readiness$/ }),
-  });
+  await page.getByRole("button", { name: "Reports and outcomes", exact: true }).click();
+  const progressTable = page.getByRole("table", { name: "Course Pass study progress" });
+  await expect(progressTable).toBeVisible();
   const progressRow = progressTable.locator("tbody tr").filter({ hasText: OPERATOR_EMAIL });
-  await expect(progressRow.locator("td").nth(3)).toHaveText("100");
-  await expect(progressRow.locator("td").nth(4)).toContainText(`${expectedScore}%`);
-  await expect(progressRow.locator("td").nth(5)).not.toContainText("Not started");
+  await expect(progressRow).toHaveCount(1);
+  const progressHeaders = await progressTable.getByRole("columnheader").allTextContents();
+  const progressCell = (header: string) => {
+    const index = progressHeaders.findIndex(text => text.trim() === header);
+    expect(index, `The progress report must include ${header}`).toBeGreaterThanOrEqual(0);
+    return progressRow.getByRole("cell").nth(index);
+  };
+  await expect(progressCell("Questions")).toHaveText("100");
+  await expect(progressCell("Accuracy")).toContainText(`${expectedScore}%`);
+  await expect(progressCell("Status")).toContainText("Studying");
+  await expect(progressCell("Readiness")).not.toContainText(/Not started/i);
 
   if (prefix === "reporting") {
     await operatorPage.goto("/class1-mock");
@@ -353,7 +363,9 @@ test("paid practice continues past 50 questions and loads saved review slices", 
   });
   try {
     await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Practice browser QA', 9900, 'cs_practice_browser_qa')", [email, bankKey]);
-    await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Paging module", "Rare module"])]);
+    // Reproduce metadata left behind by an import: the advertised topic no
+    // longer exists on any visible question. Only actual modules should appear.
+    await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 85) ON DUPLICATE KEY UPDATE modules = VALUES(modules), totalQuestions = VALUES(totalQuestions)", [bankKey, JSON.stringify(["Retired module"])]);
     for (let i = 0; i < 85; i++) {
       await db.execute("INSERT INTO questions (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, reviewStatus, isCalc) VALUES (?, ?, ?, 'hard', ?, ?, 0, 'Browser practice QA.', 'approved', 'yes')", [
         bankKey, 960001 + i, i < 75 ? "Paging module" : "Rare module", `Browser practice item ${i + 1}`, '["Correct practice answer","Wrong B","Wrong C","Wrong D"]',
@@ -369,10 +381,15 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await signInWithOtp(page, email, `/${bankKey}`);
     await page.waitForURL(`**/${bankKey}`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
-    await page.getByRole("button", { name: /Paging module/ }).click();
+    await page.locator(".practice-options summary").click();
+    const moduleFilter = page.getByRole("combobox", { name: "Module", exact: true });
+    await expect(moduleFilter.getByRole("option", { name: "Retired module", exact: true })).toHaveCount(0);
+    await expect(moduleFilter.getByRole("option", { name: "Rare module", exact: true })).toHaveCount(1);
+    await moduleFilter.selectOption({ label: "Paging module" });
     await page.getByRole("button", { name: /Quiz Settings/ }).click();
     await page.getByRole("button", { name: "50 Qs", exact: true }).click();
     await page.getByRole("button", { name: "Apply Settings →" }).click();
+    await page.locator(".practice-options summary").click();
     const seen = new Set<string>();
     for (let i = 0; i < 52; i++) {
       await expect(page.getByTestId("practice-question")).toBeVisible();
@@ -381,7 +398,7 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       expect(Number(id)).toBeLessThan(960076);
       seen.add(id);
       await page.getByRole("button", { name: /^A\. Correct practice answer/ }).click();
-      await page.getByRole("button", { name: "✓ Sure", exact: true }).click();
+      // A confidence rating is optional; do not manufacture one for these answers.
       await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
       await page.getByRole("button", { name: "Next Question →", exact: true }).click();
       if (i === 49) {
@@ -395,6 +412,8 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       const [rows] = await db.execute("SELECT COUNT(*) AS total FROM question_attempts WHERE studentEmail = ? AND courseKey = ? AND examType = ? AND questionId BETWEEN 960001 AND 960075 AND correct = 'yes'", [email, bankKey, bankKey]);
       return Number((rows as Array<{ total: number }>)[0].total);
     }).toBe(52);
+    const [unratedRows] = await db.execute("SELECT COUNT(*) AS total FROM question_attempts WHERE studentEmail = ? AND courseKey = ? AND examType = ? AND questionId BETWEEN 960001 AND 960075 AND correct = 'yes' AND confidence IS NULL", [email, bankKey, bankKey]);
+    expect(Number((unratedRows as Array<{ total: number }>)[0].total)).toBe(52);
     expect(await page.evaluate(() => localStorage.getItem("echelon_qbank_class3-water-dist"))).toBeNull();
     expect(await page.evaluate(() => localStorage.getItem("practice_progress_sentinel"))).toBe("keep");
     await expect(page.getByText("Legacy private cached question", { exact: true })).toHaveCount(0);
@@ -411,8 +430,65 @@ test("paid practice continues past 50 questions and loads saved review slices", 
     await page.goto(`/${bankKey}?topic=${encodeURIComponent("Rare module")}&calcOnly=true`);
     await expect(page.getByTestId("practice-question")).toBeVisible();
     expect(Number(await page.getByTestId("practice-question").getAttribute("data-question-id"))).toBeGreaterThan(960075);
+
+    // A bookmarked obsolete topic is reconciled to All Modules once the current
+    // learner-visible bank metadata loads. A learner must not reach an empty
+    // screen or need to make a second selection to resume studying.
+    await page.goto(`/${bankKey}?topic=${encodeURIComponent("Retired module")}`);
+    await expect(page.getByTestId("practice-question")).toBeVisible();
+    await expect(page.getByRole("status").filter({ hasText: "No questions are available" })).toHaveCount(0);
+    await expect(page.getByText("Selected module: Retired module", { exact: true })).toHaveCount(0);
+    await expect(page.getByText("Your 0 answers", { exact: false })).toHaveCount(0);
   } finally { await db.end(); }
 });
+test("paid Water and OIT pages use current bank modules and keep filtering in the quiz", async ({ page }) => {
+  test.setTimeout(180_000);
+  const db = await mysql.createConnection(process.env.DATABASE_URL!);
+  const email = "water-modules-e2e@echelon.test";
+  const courses = [
+    ["class1-water", "/class1-water"], ["class2-water", "/class2-water"],
+    ["class3-water", "/class3-water"], ["class4-water", "/class4-water"], ["oit", "/quiz"],
+  ] as const;
+  const modules = ["Imported treatment process", "Imported treatment monitoring"];
+  try {
+    for (const [bankKey] of courses) {
+      await db.execute("INSERT INTO purchases (email, productKey, productName, amountCAD, stripeSessionId) VALUES (?, ?, 'Module browser QA', 9900, ?)",
+        [email, bankKey, `cs_water_modules_${bankKey}`]);
+      // Reproduce the live import mismatch, including the exact broken button.
+      await db.execute("INSERT INTO question_bank_meta (bankKey, modules, totalQuestions) VALUES (?, ?, 12) ON DUPLICATE KEY UPDATE modules = VALUES(modules)",
+        [bankKey, JSON.stringify(["Coagulation & Flocculation"])]);
+      for (let i = 0; i < 12; i++) {
+        await db.execute("INSERT INTO questions (bankKey, questionNum, module, difficulty, question, options, correctIndex, explanation, reviewStatus, isCalc) VALUES (?, ?, ?, 'medium', ?, ?, 0, 'Module filter browser QA.', 'approved', 'no')",
+          [bankKey, 970001 + i, modules[i < 6 ? 0 : 1], `Module QA ${bankKey} item ${i + 1}`, '["Correct","B","C","D"]']);
+      }
+    }
+    await page.setExtraHTTPHeaders({ "X-Forwarded-For": "192.0.2.35" });
+    await signInWithOtp(page, email, "/class1-water");
+    await page.waitForURL("**/class1-water");
+    for (const [bankKey, path] of courses) {
+      await page.goto(path);
+      await expect(page.getByTestId("practice-question")).toBeVisible();
+      await page.locator(".practice-options summary").click();
+      const filters = page.getByRole("combobox", { name: "Module", exact: true });
+      await expect(filters.getByRole("option", { name: "Coagulation & Flocculation", exact: true })).toHaveCount(0);
+      for (const [index, module] of modules.entries()) {
+        await filters.selectOption({ label: module });
+        const question = page.getByTestId("practice-question");
+        await expect(question).toContainText(`Module QA ${bankKey}`);
+        await expect.poll(async () => {
+          const id = Number(await question.getAttribute("data-question-id"));
+          return id >= 970001 + index * 6 && id < 970007 + index * 6;
+        }).toBe(true);
+        await expect(page.getByText("No questions are available for this practice selection.", { exact: true })).toHaveCount(0);
+        expect(new URL(page.url()).pathname).toBe(path);
+      }
+      await filters.selectOption("");
+      await page.locator(".practice-options summary").click();
+      await expect(page.getByTestId("practice-question")).toBeVisible();
+    }
+  } finally { await db.end(); }
+});
+
 test("checkout receipt asks a guest to verify email before opening the purchased course", async ({ page }) => {
   await page.route("**/api/trpc/stripe.verifySession*", async route => {
     const payload = { result: { data: { json: { paid: true, email: "", productKey: "oit", requiresSignIn: true,

@@ -106,11 +106,11 @@ describe("resolveVerifiedIdentity", () => {
 
 describe("identityEmail", () => {
   it("returns email for oauth identity", () => {
-    expect(identityEmail({ type: "oauth", userId: 1, email: "a@b.com" })).toBe("a@b.com");
+    expect(identityEmail({ type: "oauth", userId: 1, email: "fixture-12@example.com" })).toBe("fixture-12@example.com");
   });
 
   it("returns email for otp identity", () => {
-    expect(identityEmail({ type: "otp", email: "c@d.com" })).toBe("c@d.com");
+    expect(identityEmail({ type: "otp", email: "fixture-32@example.com" })).toBe("fixture-32@example.com");
   });
 
   it("returns null for anonymous identity", () => {
@@ -260,7 +260,7 @@ describe("P0 Security: client-supplied email cannot bypass access control", () =
     const ctx = makeAnonCtx();
     const result = await resolveAccessForRequest(ctx as any, "class1-water", {
       // @ts-expect-error
-      clientEmail: "admin@echeloninstitute.ca",
+      clientEmail: "fixture-15@example.com",
     });
     expect(result).toBe(false);
   });
@@ -269,7 +269,7 @@ describe("P0 Security: client-supplied email cannot bypass access control", () =
     const ctx = makeAnonCtx();
     const result = await resolveAccessForRequest(ctx as any, "class2-water", {
       // @ts-expect-error
-      clientEmail: "hacker@evil.com",
+      clientEmail: "fixture-46@example.com",
     });
     expect(result).toBe(false);
   });

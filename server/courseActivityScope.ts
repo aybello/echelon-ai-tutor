@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server";
-import { and, eq, inArray, or, sql, type SQL } from "drizzle-orm";
+import { and, eq, inArray, or, sql, gte, lt, type SQL } from "drizzle-orm";
 import { examResults, questionAttempts } from "../drizzle/schema";
 import { resolveCourseKey } from "../shared/courseRegistry";
 
@@ -45,4 +45,12 @@ export function attemptIdentityFilter(userId: number | null, email: string | nul
     userId ? eq(questionAttempts.userId, userId) : undefined,
     normalized ? eq(questionAttempts.studentEmail, normalized) : undefined,
   )!;
+}
+
+/** Team-only filter. A signed, persisted licence ID is required; guessing from
+ * identity/course/time alone would include ambiguous legacy or personal study. */
+export type FlexActivityScope = { orgId: number; licenceId: number; startsAt: Date; endsAt: Date };
+export function flexActivityFilter(scope: FlexActivityScope) {
+  return and(eq(questionAttempts.orgId, scope.orgId), eq(questionAttempts.flexLicenceId, scope.licenceId),
+    gte(questionAttempts.createdAt, scope.startsAt), lt(questionAttempts.createdAt, scope.endsAt))!;
 }

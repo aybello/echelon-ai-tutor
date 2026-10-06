@@ -82,6 +82,12 @@ export interface CohortConversion {
   converted: number;
 }
 
+export interface ReturnRate {
+  rate: number | null;
+  eligibleLearners: number;
+  returnedLearners: number;
+}
+
 /** Conversion among entrants to the named source cohort, never all target events. */
 export function cohortConversion(
   events: JourneyEvent[],
@@ -116,6 +122,45 @@ export function cohortConversion(
     cohortSize: firstSourceAt.size,
     converted,
   };
+}
+
+/**
+ * Repeat activity over two adjacent windows of equal length. Learners enter
+ * the cohort only when active in the earlier window, then count as returned
+ * when active again in the most recent window.
+ *
+ * This rolling-cohort definition works with the bounded owner KPI query. It
+ * must not be presented as lifetime retention from a learner's first event.
+ */
+export function learningReturnRate(
+  events: JourneyEvent[],
+  now: Date,
+  afterDays: number,
+): ReturnRate {
+  const resolveIdentity = buildJourneyIdentityResolver(events);
+  const learningEvents = new Set([
+    "diagnostic_started", "diagnostic_completed", "quiz_started", "quiz_completed",
+    "mock_exam_completed", "ai_tutor_opened", "ai_tutor_message",
+    "training_session_started", "training_session_completed",
+  ]);
+  const cohort = new Set<string>();
+  const returned = new Set<string>();
+  const periodMs = afterDays * 24 * 60 * 60 * 1000;
+  const recentStart = now.getTime() - periodMs;
+  const cohortStart = recentStart - periodMs;
+
+  for (const event of events) {
+    if (!learningEvents.has(event.eventName)) continue;
+    const identity = resolveIdentity(event);
+    if (!identity) continue;
+    const at = event.occurredAt.getTime();
+    if (at >= cohortStart && at < recentStart) cohort.add(identity);
+    if (at >= recentStart && at <= now.getTime()) returned.add(identity);
+  }
+
+  const eligibleLearners = cohort.size;
+  const returnedLearners = [...cohort].filter(identity => returned.has(identity)).length;
+  return { rate: percentage(returnedLearners, eligibleLearners), eligibleLearners, returnedLearners };
 }
 
 /** Median elapsed minutes from signup/access activation to the first quiz start. */

@@ -5,6 +5,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
+import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
+import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
 import Landing from "./pages/Landing";
@@ -119,7 +121,9 @@ const FormulasWW2 = lazy(() => import("./pages/FormulasWW2"));
 const FormulasWW3 = lazy(() => import("./pages/FormulasWW3"));
 const FormulasWW4 = lazy(() => import("./pages/FormulasWW4"));
 const FormulasWQA = lazy(() => import("./pages/FormulasWQA"));
-
+const ContinuingEducation = lazy(() => import("./pages/ContinuingEducation"));
+const ContinuingEducationCourse = lazy(() => import("./pages/ContinuingEducationCourse"));
+const CeuOperatorLessonDemo = lazy(() => import("./pages/CeuOperatorLessonDemo"));
 // WPI Class 1
 const WpiClass1WaterQuiz = lazy(() => import("./pages/WpiClass1WaterQuiz"));
 const WpiClass1WaterMockExam = lazy(() => import("./pages/WpiClass1WaterMockExam"));
@@ -227,11 +231,8 @@ const Class4WastewaterCollFlashcards = lazy(() => import("./pages/Class4Wastewat
 // ── Page loading fallback ─────────────────────────────────────────────────────
 function PageLoader() {
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-        <p className="text-sm text-slate-500 font-medium">Loading…</p>
-      </div>
+    <div className="app-loading" role="status" aria-label="Loading page">
+      <span className="app-loading-spinner" aria-hidden="true" />
     </div>
   );
 }
@@ -240,6 +241,7 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Suspense fallback={<PageLoader />}>
+      <MarketingPageViewTracker />
       <Switch>
         <Route path={"/"} component={Landing} />
         <Route path={"/quiz"} component={Home} />
@@ -404,6 +406,9 @@ function Router() {
         <Route path={"/electrician-309a-flashcards"} component={Electrician309AFlashcards} />
         <Route path={"/admin"} component={Admin} />
         <Route path={"/pricing"} component={Pricing} />
+        <Route path={"/continuing-education-demo"} component={CeuOperatorLessonDemo} />
+        <Route path={"/continuing-education/:courseKey"} component={ContinuingEducationCourse} />
+        <Route path={"/continuing-education"} component={ContinuingEducation} />
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
         <Route path={"/subscription-success"} component={SubscriptionSuccess} />
         <Route path={"/account"} component={Account} />
@@ -462,10 +467,11 @@ function PhoneGate() {
 
 function App() {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary recoverModuleErrors>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <GoogleAdsMeasurement />
           <div className="page-enter">
             {/* <main> landmark for accessibility — required by WCAG 2.1 */}
             <main>

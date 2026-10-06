@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import {
   buildExpectedSchemaContract,
+  downgradeForwardSchemaCompatibilityErrors,
   downgradeProposedMissingIndexErrors,
   diffExactSchemaContracts,
   diffSchemaContracts,
@@ -23,8 +24,10 @@ import {
   type SchemaContract,
 } from "../scripts/db/migrationSafety";
 import {
+  addedColumnsFromMigrationSql,
   assertDisposableResetTarget,
   createdTablesFromMigrationSql,
+  postBaselineColumns,
   postBaselineTables,
 } from "../scripts/db/resetForwardMigrationRehearsal";
 
@@ -101,6 +104,51 @@ describe("forward-only migration safety", () => {
       expect.objectContaining({ version: 69, tag: "0069_team_flex_extension_verified_email", proposedOnly: true, standaloneApply: { tables: ["team_flex_extensions"] } }),
       expect.objectContaining({ version: 70, tag: "0070_organization_recovery_audit", proposedOnly: true, standaloneApply: { tables: ["customer_recovery_batches", "customer_recovery_import_items"] } }),
       expect.objectContaining({ version: 71, tag: "0071_organization_recovery_importer_hardening", proposedOnly: true, standaloneApply: expect.objectContaining({ tables: ["customer_recovery_batches", "customer_recovery_import_items"], requireEmptyTables: ["customer_recovery_batches", "customer_recovery_import_items"] }) }),
+      expect.objectContaining({
+        version: 72,
+        tag: "0072_ceu_learning_records",
+        proposedOnly: true,
+        standaloneApply: { tables: ["ceu_learning_records", "ceu_learning_daily_time"] },
+        verifierAllowMissingTables: ["ceu_learning_records", "ceu_learning_daily_time"],
+      }),
+      expect.objectContaining({
+        version: 73,
+        tag: "0073_stripe_event_analytics",
+        proposedOnly: true,
+        standaloneApply: { tables: ["stripe_event_log"] },
+        verifierAllowMissingColumns: [
+          {
+            table: "stripe_event_log",
+            column: "analyticsProcessed",
+            targetType: "tinyint(1)",
+            targetNullable: false,
+            sqlType: "boolean",
+            defaultSql: "default false",
+          },
+        ],
+      }),
+      expect.objectContaining({
+        version: 74,
+        tag: "0074_blog_automation_runs",
+        proposedOnly: true,
+        standaloneApply: { tables: ["blog_automation_runs"] },
+        verifierAllowMissingTables: ["blog_automation_runs"],
+      }),
+      expect.objectContaining({
+        version: 75,
+        tag: "0075_team_flex_attempt_attribution",
+        proposedOnly: true,
+        standaloneApply: { tables: ["question_attempts"] },
+        verifierAllowMissingColumns: [{ table: "question_attempts", column: "flexLicenceId", targetType: "int", targetNullable: true, sqlType: "int" }],
+        verifierAllowMissingIndexes: [{ table: "question_attempts", index: "qa_flex_licence_created_idx", columns: ["flexLicenceId", "createdAt"] }],
+      }),
+      expect.objectContaining({
+        version: 76,
+        tag: "0076_contact_partnership_receipts",
+        proposedOnly: true,
+        standaloneApply: { tables: ["contact_submissions"] },
+        verifierAllowMissingIndexes: [{ table: "contact_submissions", index: "contact_request_key_unique", columns: ["requestKey"], unique: true }],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -214,8 +262,10 @@ describe("forward-only migration safety", () => {
     expect(resetHelper).toContain("Refusing reset outside an approved disposable rehearsal database");
     expect(resetHelper).toContain("migration.version <= manifest.baseline.version");
     expect(resetHelper).toContain("createdTablesFromMigrationSql(sql)");
+    expect(resetHelper).toContain("addedColumnsFromMigrationSql(sql)");
     expect(resetHelper).toContain("splitMigrationStatements(sql)");
     expect(resetHelper).toContain("DROP TABLE IF EXISTS ${tables.map");
+    expect(resetHelper).toContain("DROP COLUMN");
     expect(resetHelper).toContain("purchaserUserId int NOT NULL");
     expect(resetHelper).toContain("SET FOREIGN_KEY_CHECKS=0");
     expect(resetHelper).toContain("SET FOREIGN_KEY_CHECKS=1");
@@ -230,7 +280,7 @@ describe("forward-only migration safety", () => {
         assertDisposableResetTarget("mysql://user:pass@127.0.0.1:3306/echelon_upgrade_ci")
       ).not.toThrow();
       expect(() =>
-        assertDisposableResetTarget("mysql://user:pass@example.com:3306/echelon_upgrade_ci")
+        assertDisposableResetTarget("mysql://user:pass@fixture-db-1.test:3306/echelon_upgrade_ci")
       ).toThrow("loopback MySQL host");
       expect(() =>
         assertDisposableResetTarget("mysql://user:pass@127.0.0.1:3306/echelon_production")
@@ -244,6 +294,16 @@ describe("forward-only migration safety", () => {
       "customer_recovery_batches",
       "customer_recovery_import_items",
       "purchase_email_outbox",
+    ]));
+    await expect(postBaselineColumns()).resolves.toEqual(expect.arrayContaining([
+      { table: "product_analytics_events", column: "anonymousHash" },
+      { table: "stripe_event_log", column: "analyticsProcessed" },
+      { table: "question_attempts", column: "flexLicenceId" },
+      { table: "contact_submissions", column: "requestKey" },
+      { table: "contact_submissions", column: "organization" },
+      { table: "contact_submissions", column: "partnershipType" },
+      { table: "contact_submissions", column: "followUpStatus" },
+      { table: "contact_submissions", column: "notificationStatus" },
     ]));
   });
 
@@ -583,6 +643,14 @@ describe("forward-only migration safety", () => {
 
     expect(migration?.proposedOnly).toBe(true);
     expect(migration?.baselineEmbedded).toBeUndefined();
+    expect(migration?.verifierAllowPendingColumnNullability).toEqual([
+      {
+        table: "team_flex_extensions",
+        column: "purchaserUserId",
+        baselineNullable: false,
+        targetNullable: true,
+      },
+    ]);
     expect(baselineColumn).toMatchObject({ type: "int", nullable: false });
     expect(targetColumn).toMatchObject({ type: "int", nullable: true });
     const statements = splitMigrationStatements(sql);
@@ -597,7 +665,10 @@ describe("forward-only migration safety", () => {
     const diff = downgradeProposedMissingIndexErrors({
       errors: [
         "Missing index: stripe_event_log.stripe_event_log_status_idx",
+        "Missing column: stripe_event_log.analyticsProcessed",
+        "Missing table: ceu_learning_records",
         "Column type drift: job_postings.sourceType is enum('rss','scraper'), expected enum('rss','scraper','association')",
+        "Column nullability drift: team_flex_extensions.purchaserUserId nullable=false, expected true",
         "Column type drift: subscriptions.tier is varchar(32), expected enum('class1','class2','class3','class4','all-access')",
       ],
       warnings: [],
@@ -608,18 +679,21 @@ describe("forward-only migration safety", () => {
     ]);
     expect(diff.warnings).toEqual([
       expect.stringContaining("Pending proposed migration 54"),
+      expect.stringContaining("Pending proposed migration 73"),
+      expect.stringContaining("Pending proposed migration 72"),
       expect.stringContaining("Pending proposed migration 58"),
+      expect.stringContaining("Pending proposed migration 69"),
     ]);
   });
 
-  it("does not excuse an undeclared or reversed column type change", async () => {
+  it("does not excuse an undeclared or reversed column transition", async () => {
     const manifest = await loadManifest();
     const diff = downgradeProposedMissingIndexErrors(
       {
         errors: [
           "Column type drift: job_postings.sourceType is varchar(64), expected enum('rss','scraper','association')",
           "Column type drift: job_postings.sourceType is enum('rss','scraper','association'), expected enum('rss','scraper')",
-          "Column nullability drift: team_flex_extensions.purchaserUserId nullable=false, expected true",
+          "Column nullability drift: team_flex_extensions.purchaserUserId nullable=true, expected false",
         ],
         warnings: [],
       },
@@ -628,6 +702,29 @@ describe("forward-only migration safety", () => {
 
     expect(diff.errors).toHaveLength(3);
     expect(diff.warnings).toEqual([]);
+  });
+
+  it("permits only declared forward transitions when production is ahead of baseline", async () => {
+    const manifest = await loadManifest();
+    const diff = downgradeForwardSchemaCompatibilityErrors(
+      {
+        errors: [
+          "Column type drift: job_postings.sourceType is enum('rss','scraper','association'), expected enum('rss','scraper')",
+          "Column nullability drift: team_flex_extensions.purchaserUserId nullable=true, expected false",
+          "Column type drift: subscriptions.tier is varchar(32), expected enum('class1','class2')",
+        ],
+        warnings: [],
+      },
+      manifest
+    );
+
+    expect(diff.errors).toEqual([
+      "Column type drift: subscriptions.tier is varchar(32), expected enum('class1','class2')",
+    ]);
+    expect(diff.warnings).toEqual([
+      expect.stringContaining("pending proposed migration 58"),
+      expect.stringContaining("pending proposed migration 69"),
+    ]);
   });
 
   it("refuses modified checksums and failed ledger states", () => {
@@ -797,7 +894,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]);
   });
 });
 
@@ -877,6 +974,17 @@ describe("migration statement execution", () => {
         "-- CREATE TABLE comment_target (id int);\nSELECT 'CREATE TABLE literal_target (id int)';\nCREATE TABLE real_target (id int);"
       )
     ).toEqual(["real_target"]);
+  });
+
+  it("finds every ADD COLUMN clause from a forward ALTER without reading comments", () => {
+    expect(
+      addedColumnsFromMigrationSql(
+        "-- ADD COLUMN ignored text;\nALTER TABLE `orders` ADD COLUMN `first` int, ADD COLUMN `second` varchar(32);\n--> statement-breakpoint\nSELECT 'ADD COLUMN literal';"
+      )
+    ).toEqual([
+      { table: "orders", column: "first" },
+      { table: "orders", column: "second" },
+    ]);
   });
 
   it("does not split semicolons inside valid MySQL literals or comments", () => {

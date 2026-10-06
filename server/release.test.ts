@@ -3,6 +3,7 @@ import {
   publicReleaseHealth,
   RELEASE_CAPABILITIES,
   RELEASE_ID,
+  RELEASE_KIND,
 } from "./release";
 
 describe("public release health", () => {
@@ -12,6 +13,7 @@ describe("public release health", () => {
     expect(publicReleaseHealth(now)).toEqual({
       status: "ok",
       release: RELEASE_ID,
+      releaseKind: RELEASE_KIND,
       capabilities: RELEASE_CAPABILITIES,
       ts: "2026-08-27T13:30:00.000Z",
     });
@@ -44,7 +46,9 @@ describe("public release health", () => {
         "oit-exact-version-content-revision-v1",
       ])
     );
-    expect(RELEASE_ID).toBe("2026-09-09.oit-quality-revision.1");
+    // Direct source execution has no build stamp; it must not claim a release.
+    expect(RELEASE_ID).toBe("unknown");
+    expect(RELEASE_KIND).toBe("unknown");
     expect(RELEASE_CAPABILITIES).not.toContain("analytics-identity-v1");
   });
 });

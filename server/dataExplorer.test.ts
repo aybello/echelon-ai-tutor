@@ -96,9 +96,9 @@ describe("admin Data Explorer catalog", () => {
     expect(nested).toContain('"allowed":"shown"');
     expect(formatDataExplorerValue('{"authorization":"value","other":1}'))
       .toContain('"authorization":"[redacted]"');
-    expect(formatDataExplorerValue("provider returned pi_1234567890abcdef and token=secret-value"))
+    expect(formatDataExplorerValue("provider returned pi_fixture_1 and token=secret-value"))
       .toBe("provider returned [redacted] and [redacted]");
-    expect(formatDataExplorerValue('{"otherwise":"pi_1234567890abcdef"}'))
+    expect(formatDataExplorerValue('{"otherwise":"pi_fixture_1"}'))
       .toContain('"otherwise":"[redacted]"');
     expect(formatDataExplorerValue(12n)).toBe("12");
     expect(formatDataExplorerValue(undefined)).toBeNull();

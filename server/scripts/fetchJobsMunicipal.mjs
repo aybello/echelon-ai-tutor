@@ -229,8 +229,8 @@ async function scrapeOCWA() {
         sourceUrl: url,
       });
     }
-  } catch {
-    // OPS jobs may block; non-fatal
+  } catch (error) {
+    throw error; // blocked is a failed source, not successful empty inventory
   }
   return jobs;
 }
@@ -272,7 +272,7 @@ async function scrapeYorkRegion() {
 async function scrapeOttawa() {
   // Ottawa blocks server-side requests (403 Forbidden)
   // Return empty — their jobs are typically on Job Bank anyway
-  return [];
+  throw new Error("Source unavailable to server-side verification");
 }
 
 async function scrapeHamilton() {
@@ -339,7 +339,7 @@ async function scrapeMetroVancouver() {
 async function scrapeSurrey() {
   // Surrey blocks server-side requests — graceful skip
   // Their jobs typically appear on Job Bank Canada
-  return [];
+  throw new Error("Source unavailable to server-side verification");
 }
 
 // ─── AB Scrapers ──────────────────────────────────────────────────────────
@@ -433,7 +433,7 @@ async function scrapeWinnipeg() {
 async function scrapeManitobaCivilService() {
   // Manitoba Civil Service Commission — blocks bots, graceful skip
   // Their jobs appear on Job Bank Canada
-  return [];
+  throw new Error("Source unavailable to server-side verification");
 }
 
 // ─── Orchestrator ─────────────────────────────────────────────────────────
@@ -503,6 +503,7 @@ const SCRAPERS = [
 
 export async function ingestMunicipal(upsertJob) {
   const errors = [];
+  const sourceOutcomes = [];
   let totalFetched = 0;
   let successfulSources = 0;
   let failedSources = 0;
@@ -522,6 +523,7 @@ export async function ingestMunicipal(upsertJob) {
   for (const { scraper, jobs, error } of scrapeResults) {
     if (error) {
       failedSources++;
+      sourceOutcomes.push({ source: scraper.sourceName, status: "failed", count: 0 });
       errors.push(`Scrape failed (${scraper.name}): ${error.message}`);
       console.log(`  ✗ ${scraper.name}: ${error.message}`);
       continue;
@@ -543,7 +545,7 @@ export async function ingestMunicipal(upsertJob) {
             sourceName: scraper.sourceName,
             sourceType: "scraper",
             description: null,
-            postedAt: new Date(),
+            postedAt: job.postedAt ?? null,
           });
           scraperCount++;
           totalFetched++;
@@ -560,14 +562,16 @@ export async function ingestMunicipal(upsertJob) {
         console.log(`  · ${scraper.name}: 0 water/wastewater jobs found`);
       }
       successfulSources++;
+      sourceOutcomes.push({ source: scraper.sourceName, status: "success", count: scraperCount });
     } catch (err) {
       // This catches unexpected processing failures after a source was fetched.
       failedSources++;
+      sourceOutcomes.push({ source: scraper.sourceName, status: "failed", count: 0 });
       errors.push(`Scrape processing failed (${scraper.name}): ${err.message}`);
       console.log(`  ✗ ${scraper.name}: processing failed: ${err.message}`);
     }
   }
 
   console.log(`  Total fetched from municipal scrapers: ${totalFetched}`);
-  return { errors, totalFetched, successfulSources, failedSources };
+  return { errors, totalFetched, successfulSources, failedSources, sourceOutcomes };
 }

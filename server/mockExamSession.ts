@@ -10,6 +10,7 @@ const manifestSchema = z.object({
   courseKey: z.string(), bankKey: z.string(), examType: z.string(),
   questionNums: z.array(z.number().int().positive()).min(1).max(110),
   scoring: z.string().optional(),
+  attribution: z.object({ orgId: z.number().int().positive().nullable(), organizationMemberId: z.number().int().positive().nullable(), flexLicenceId: z.number().int().positive().nullable() }).optional(),
   preview: z.boolean(), startedAt: z.number(), deadline: z.number(),
 });
 export type MockManifest = z.infer<typeof manifestSchema>;
@@ -150,4 +151,34 @@ export function selectMockQuestions<T extends { id: number; module: string }>(po
   const seen = new Set(selected.map(q => q.id));
   selected.push(...shuffled.filter(q => !seen.has(q.id)));
   return selected.slice(0, count);
+}
+
+/** Exact reviewed area quotas. Ambiguous chapters never count as coverage. */
+export function selectMappedMockQuestions<T extends { id: number; module: string }>(
+  pool: readonly T[], targets: Readonly<Record<string, number>>, count: number,
+  areaForQuestion: (question: T) => string | null, random = Math.random,
+): T[] {
+  const entries = Object.entries(targets);
+  if (!Number.isInteger(count) || count < 1 || entries.length === 0
+    || entries.some(([area, quota]) => !area || !Number.isInteger(quota) || quota < 0)
+    || entries.reduce((sum, [, quota]) => sum + quota, 0) !== count) {
+    throw new Error("Invalid mapped mock blueprint");
+  }
+  const ids = new Set<number>();
+  const buckets = new Map(entries.map(([area]) => [area, [] as T[]]));
+  for (const question of pool) {
+    if (!Number.isInteger(question.id) || question.id <= 0 || ids.has(question.id)) {
+      throw new Error("Duplicate or invalid mock question identity");
+    }
+    ids.add(question.id);
+    const area = areaForQuestion(question);
+    if (area) buckets.get(area)?.push(question);
+  }
+  // Validate all coverage before random selection. Never borrow another area's
+  // questions, and never let two mappings give one question two quota credits.
+  for (const [area, quota] of entries) {
+    if (buckets.get(area)!.length < quota) throw new Error(`Insufficient reviewed coverage for ${area}`);
+  }
+  const selected = entries.flatMap(([area, quota]) => selectMockQuestions(buckets.get(area)!, {}, quota, random));
+  return selectMockQuestions(selected, {}, count, random);
 }

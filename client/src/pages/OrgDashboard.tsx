@@ -78,6 +78,8 @@ import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
 import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
 import { FlexLicencePanel } from "@/components/FlexLicencePanel";
+import "@/components/StudyWorkspace.css";
+import { filterRosterMembers, getOperatorStudyStage } from "@/lib/managerRoster";
 import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -152,12 +154,12 @@ function MetricCard({
   accent?: string;
 }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+    <div className="manager-metric-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
       <div className="flex items-center gap-2 text-slate-500 text-sm mb-3">
         <Icon className="w-4 h-4" />
         {label}
       </div>
-      <div className={`text-3xl font-bold ${accent ?? "text-slate-900"}`}>{value}</div>
+      <div className={`manager-metric-value text-3xl font-bold ${accent ?? "text-slate-900"}`}>{value}</div>
       {sub && <div className="text-xs text-slate-400 mt-1">{sub}</div>}
     </div>
   );
@@ -168,6 +170,9 @@ function MetricCard({
 export default function OrgDashboard() {
   const [, navigate] = useLocation();
   const search = useSearch();
+  const [managerView, setManagerView] = useState<"operators" | "reports">("operators");
+  const [rosterSearch, setRosterSearch] = useState("");
+  const [rosterStage, setRosterStage] = useState<"all" | "assigned" | "studying">("all");
   const [assignOpen, setAssignOpen] = useState(false);
   const [assignEmail, setAssignEmail] = useState("");
   const [assignName, setAssignName] = useState("");
@@ -193,10 +198,20 @@ export default function OrgDashboard() {
 
   const utils = trpc.useUtils();
 
+  const [selectedOrgId, setSelectedOrgId] = useState<number | undefined>();
+  const organizationQuery = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false });
+  const orgInput = { orgId: selectedOrgId };
+  const orgChooser = organizationQuery.data && organizationQuery.data.length > 1 ? (
+    <div className="space-y-2"><Label>Organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={value => setSelectedOrgId(Number(value))}>
+      <SelectTrigger className="min-w-[220px]"><SelectValue placeholder="Choose an organization" /></SelectTrigger>
+      <SelectContent>{organizationQuery.data.map(org => <SelectItem key={org.id} value={String(org.id)}>{org.name} ({org.status})</SelectItem>)}</SelectContent>
+    </Select></div>
+  ) : null;
+
   // Queries
   // P2b fix: when arriving post-purchase, retry up to 6 times (every 3s = 18s window)
   // to give the Stripe webhook time to provision the org before showing an error.
-  const overviewQuery = trpc.org.getOrgOverview.useQuery(undefined, {
+  const overviewQuery = trpc.org.getOrgOverview.useQuery(orgInput, {
     retry: (failureCount, error) => {
       if (isPostPurchase && failureCount < 6) return true;
       return false;
@@ -204,9 +219,9 @@ export default function OrgDashboard() {
     retryDelay: 3000,
   });
   const isManager = !!overviewQuery.data;
-  const membersQuery = trpc.org.listMembers.useQuery(undefined, { retry: false, enabled: isManager });
-  const attentionQuery = trpc.org.getAttention.useQuery(undefined, { retry: false, enabled: isManager });
-  const passRateQuery = trpc.org.getPassRateSummary.useQuery(undefined, { retry: false, enabled: isManager });
+  const membersQuery = trpc.org.listMembers.useQuery(orgInput, { retry: false, enabled: isManager });
+  const attentionQuery = trpc.org.getAttention.useQuery(orgInput, { retry: false, enabled: isManager });
+  const passRateQuery = trpc.org.getPassRateSummary.useQuery(orgInput, { retry: false, enabled: isManager });
 
   // Handle ?session_id= param — show welcome banner after Stripe checkout
   useEffect(() => {
@@ -294,13 +309,13 @@ export default function OrgDashboard() {
         // Open in same tab to avoid popup blockers
         window.location.href = data.url;
       } else {
-        toast.error("Billing portal is not available for your account type. Contact support@echeloninstitute.ca.");
+        toast.error("Billing portal is not available for your account type. Contact abello@echeloninstitute.ca.");
       }
     },
     onError: (err) => {
       const msg = err.message?.includes("invoice") || err.message?.includes("billing")
-        ? "Your organization uses invoice billing. Contact support@echeloninstitute.ca to manage your subscription."
-        : "Could not open billing portal. Please try again or contact support@echeloninstitute.ca.";
+        ? "Your organization uses invoice billing. Contact abello@echeloninstitute.ca to manage your subscription."
+        : "Could not open billing portal. Please try again or contact abello@echeloninstitute.ca.";
       toast.error(msg, { duration: 6000 });
     },
   });
@@ -308,11 +323,11 @@ export default function OrgDashboard() {
   const { logout, isPending: logoutPending } = useLogout();
 
   // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
-  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(undefined, { retry: false, enabled: isManager });
-  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(undefined, { retry: false, enabled: isManager });
-  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(undefined, { retry: false, enabled: isManager });
-  const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(undefined, { enabled: false });
-  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(undefined, { retry: false, enabled: isManager });
+  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(orgInput, { retry: false, enabled: isManager });
+  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(orgInput, { retry: false, enabled: isManager });
+  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(orgInput, { retry: false, enabled: isManager });
+  const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(orgInput, { enabled: false });
+  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(orgInput, { retry: false, enabled: isManager });
 
   const [intelSortKey, setIntelSortKey] = useState<"readinessScore" | "accuracy" | "totalAttempts" | "lastActive">("readinessScore");
   const [intelSortDir, setIntelSortDir] = useState<"asc" | "desc">("desc");
@@ -403,6 +418,9 @@ export default function OrgDashboard() {
             ? "Please sign in with your manager email to access the team dashboard."
             : msg}
         </p>
+        {orgChooser}
+        {!isUnauth && <Button className="bg-blue-600 text-white" onClick={() => billingPortal.mutate({ ...orgInput, scope: "team" })} disabled={billingPortal.isPending}>Manage team billing</Button>}
+        {!isUnauth && <Link href="/account?billing=personal" className="text-sm text-blue-700 underline">Individual billing &amp; passes</Link>}
         <Link href="/account">
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Sign In
@@ -459,26 +477,27 @@ export default function OrgDashboard() {
         toast.error("Select at least one course before bulk-assigning operators.");
         return;
       }
-      assignSeats.mutate({ emails, courseKeys: assignCourseKeys });
+      assignSeats.mutate({ ...orgInput, emails, courseKeys: assignCourseKeys });
     } else {
       if (!assignEmail.trim() || !assignEmail.includes("@")) {
         toast.error("Please enter a valid email address.");
         return;
       }
-      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKeys: assignCourseKeys.length > 0 ? assignCourseKeys : undefined });
+      assignSeat.mutate({ ...orgInput, email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKeys: assignCourseKeys.length > 0 ? assignCourseKeys : undefined });
     }
   };
 
   // ── Active members for roster ──────────────────────────────────────────────
 
   const activeMembers = members.filter(m => m.status === "assigned");
+  const displayedMembers = filterRosterMembers(activeMembers, rosterSearch, rosterStage);
   const revokedMembers = members.filter(m => m.status === "revoked");
   const needsFocusMembers = activeMembers.filter(m =>
     m.operatorStatus === "needs_focus" || m.operatorStatus === "behind"
   );
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="manager-workspace min-h-screen bg-slate-50">
       <style>{TEAM_REPORT_STYLES}</style>
       {/* Bug fix: welcome banner shown after Stripe checkout redirect */}
       {showWelcomeBanner && (
@@ -562,7 +581,7 @@ export default function OrgDashboard() {
       <header className="bg-white border-b border-slate-200 px-4 sm:px-6 py-4 shadow-sm">
         <div className="max-w-6xl mx-auto flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+            <div className="manager-organization-icon w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
               <Building2 className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -594,6 +613,7 @@ export default function OrgDashboard() {
             >
               {overview.status === "active" ? "Active" : overview.status === "past_due" ? "Past Due" : "Cancelled"}
             </Badge>
+            {orgChooser}
             {/* Bug fix: Manage Seats button wired to updateTeamSeats */}
             {hasStripe && (
               <Button
@@ -615,13 +635,16 @@ export default function OrgDashboard() {
                 variant="outline"
                 size="sm"
                 className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
-                onClick={() => billingPortal.mutate({})}
+                onClick={() => billingPortal.mutate({ scope: "team", orgId: overview.orgId })}
                 disabled={billingPortal.isPending}
               >
                 <CreditCard className="w-4 h-4 mr-1.5" />
                 {billingPortal.isPending ? "Opening..." : "Manage Billing"}
               </Button>
             )}
+            <Link href="/account?billing=personal" className="text-xs font-medium text-blue-700 underline px-2 py-2">
+              Individual billing &amp; passes
+            </Link>
             <Button
               variant="outline"
               size="sm"
@@ -648,7 +671,7 @@ export default function OrgDashboard() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
 
         {/* Metric cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="manager-summary-grid grid grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard
             icon={Users}
             label="Licences Used This Term"
@@ -685,6 +708,11 @@ export default function OrgDashboard() {
           />
         </div>
 
+        <nav className="workspace-view-tabs" aria-label="Manager dashboard views">
+          <button type="button" aria-pressed={managerView === "operators"} onClick={() => setManagerView("operators")}>Operators and access</button>
+          <button type="button" aria-pressed={managerView === "reports"} onClick={() => setManagerView("reports")}>Reports and outcomes</button>
+        </nav>
+        {managerView === "operators" && <section aria-label="Operator management" className="manager-operators">
         {/* Pass rate summary */}
         {passRateQuery.data && passRateQuery.data.total > 0 && (
           <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
@@ -777,7 +805,7 @@ export default function OrgDashboard() {
         {/* Roster */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-slate-900">Operator Roster</h2>
+            <div><h2 className="text-lg font-semibold text-slate-900">Your operators</h2><p className="text-sm text-slate-500 mt-1">Assigned access and recorded study activity in one place.</p></div>
             <Button
               onClick={() => setAssignOpen(true)}
               disabled={seatsAvailable === 0}
@@ -789,7 +817,13 @@ export default function OrgDashboard() {
             </Button>
           </div>
 
-          {activeMembers.length === 0 ? (
+          {activeMembers.length > 0 && <div className="manager-roster-filters">
+            <label>Find an operator<input type="search" value={rosterSearch} onChange={event => setRosterSearch(event.target.value)} placeholder="Name or email" /></label>
+            <label>Study activity<select value={rosterStage} onChange={event => setRosterStage(event.target.value as typeof rosterStage)}><option value="all">All operators</option><option value="assigned">Assigned · not started</option><option value="studying">Studying</option></select></label>
+            <span role="status">{displayedMembers.length} of {activeMembers.length} operators</span>
+          </div>}
+          <p className="text-sm text-slate-500 mb-3">Use study activity to see who has started practising.</p>
+          {membersQuery.isLoading ? <div role="status" className="p-6 text-slate-600">Loading your operators…</div> : membersQuery.isError ? <div role="alert" className="p-6 text-slate-600">Your operator list could not load. <button type="button" className="workspace-text-link" onClick={() => membersQuery.refetch()}>Retry</button></div> : activeMembers.length === 0 ? (
             <div className="bg-white border border-dashed border-slate-300 rounded-xl p-12 text-center shadow-sm">
               <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-4">
                 <Users className="w-7 h-7 text-blue-400" />
@@ -814,36 +848,37 @@ export default function OrgDashboard() {
               )}
             </div>
           ) : (
-            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
-              <table className="w-full text-sm min-w-[480px]">
+            <div className="manager-roster bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
+              <table className="w-full text-sm" aria-label="Operator access and activity">
                 <thead>
                   <tr className="border-b border-slate-100 text-slate-400 text-xs uppercase tracking-wider bg-slate-50">
                     <th className="text-left px-4 py-3">Operator</th>
-                    <th className="text-left px-4 py-3 hidden xl:table-cell">Course</th>
-                    <th className="text-left px-4 py-3 hidden md:table-cell">Assigned</th>
-                    <th className="text-left px-4 py-3 hidden md:table-cell">Last Active</th>
-                    <th className="text-left px-4 py-3 hidden lg:table-cell">Accuracy</th>
-                    <th className="text-left px-4 py-3">Status</th>
-                    <th className="px-4 py-3" />
+                    <th className="text-left px-4 py-3">Course</th>
+                    <th className="text-left px-4 py-3">Assigned on</th>
+                    <th className="text-left px-4 py-3">Last practice</th>
+                    <th className="text-left px-4 py-3">Accuracy</th>
+                    <th className="text-left px-4 py-3">Study activity</th>
+                    <th className="px-4 py-3"><span className="sr-only">Operator actions</span></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {activeMembers.map((m, i) => {
+                  {displayedMembers.map((m, i) => {
                     const cfg = STATUS_CONFIG[m.operatorStatus as OperatorStatus];
+                    const intel = operatorReadinessQuery.data?.operators.find(operator => operator.id === m.id);
                     return (
                       <tr
                         key={m.id}
                         className={`border-b border-slate-50 hover:bg-slate-50 transition-colors ${
-                          i === activeMembers.length - 1 ? "border-b-0" : ""
+                          i === displayedMembers.length - 1 ? "border-b-0" : ""
                         }`}
                       >
-                        <td className="px-4 py-3">
+                        <td className="px-4 py-3" data-label="Operator">
                           {m.name
                             ? <><div className="font-medium text-slate-800 text-sm">{m.name}</div><div className="text-xs text-slate-400">{m.email}</div></>
                             : <span className="font-medium text-slate-800">{m.email}</span>
                           }
                         </td>
-                        <td className="px-4 py-3 hidden xl:table-cell">
+                        <td className="px-4 py-3" data-label="Course">
                           {editCourseTarget === m.email ? (
                             <div className="space-y-1.5">
                               <div className="border border-slate-200 rounded-lg p-2 space-y-1 max-h-40 overflow-y-auto w-52">
@@ -872,7 +907,7 @@ export default function OrgDashboard() {
                                       toast.error("Please select at least one course.");
                                       return;
                                     }
-                                    updateSeatCourse.mutate({ email: m.email, courseKeys: editCourseKeys });
+                                    updateSeatCourse.mutate({ ...orgInput, email: m.email, courseKeys: editCourseKeys });
                                     setEditCourseTarget(null);
                                   }}
                                 >
@@ -889,13 +924,13 @@ export default function OrgDashboard() {
                               </div>
                             </div>
                           ) : (
-                            <div
-                              className="flex flex-wrap gap-1 cursor-pointer group"
+                            <button type="button"
+                              className="flex flex-wrap gap-1 cursor-pointer group text-left"
                               onClick={() => {
                                 setEditCourseTarget(m.email);
                                 setEditCourseKeys(m.courseKeys ?? (m.courseKey ? [m.courseKey] : []));
                               }}
-                              title="Click to edit courses"
+                              title="Edit assigned courses" aria-label={`Edit courses for ${m.name ?? m.email}`}
                             >
                               {(m.courseKeys && m.courseKeys.length > 0 ? m.courseKeys : m.courseKey ? [m.courseKey] : []).map(ck => (
                                 <span key={ck} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100 whitespace-nowrap">
@@ -907,16 +942,16 @@ export default function OrgDashboard() {
                                   + Add courses
                                 </span>
                               )}
-                            </div>
+                            </button>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-slate-500 hidden md:table-cell">
+                        <td className="px-4 py-3 text-slate-500" data-label="Assigned on">
                           {formatDate(m.assignedAt)}
                         </td>
-                        <td className="px-4 py-3 text-slate-500 hidden md:table-cell">
+                        <td className="px-4 py-3 text-slate-500" data-label="Last practice">
                           {m.lastActive ? formatDate(m.lastActive) : <span className="text-slate-300">Never</span>}
                         </td>
-                        <td className="px-4 py-3 hidden lg:table-cell">
+                        <td className="px-4 py-3" data-label="Accuracy">
                           {m.courseProgress && m.courseProgress.length > 1 ? (
                             // Multi-course: show per-course accuracy rows
                             <div className="space-y-1">
@@ -943,7 +978,8 @@ export default function OrgDashboard() {
                             <span className="text-slate-300">—</span>
                           )}
                         </td>
-                        <td className="px-4 py-3">
+                        <td className="px-4 py-3" data-label="Study activity">
+                          <div className="mb-2 font-medium text-slate-800">{getOperatorStudyStage(m) === "studying" ? "Studying" : "Assigned · not started"}</div>
                           {m.courseProgress && m.courseProgress.length > 1 ? (
                             // Multi-course: show per-course status pills stacked
                             <div className="space-y-1">
@@ -967,7 +1003,19 @@ export default function OrgDashboard() {
                             </span>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-right">
+                        <td className="px-4 py-3" data-label="Details and actions">
+                          <details className="manager-operator-details"><summary>Study details</summary>
+                            <div className="text-sm text-slate-600 space-y-2 py-3">
+                              {operatorReadinessQuery.isLoading ? <p role="status">Loading study details…</p> : operatorReadinessQuery.isError ? <p role="alert">Study details could not load. <button type="button" onClick={() => operatorReadinessQuery.refetch()}>Retry</button></p> : intel ? <>
+                                <p>Study estimate: <strong>{intel.readinessScore}%</strong>. This is a coaching indicator.</p>
+                                <p>{intel.totalAttempts.toLocaleString()} recorded answers{intel.courseKey ? ` · ${courseKeyToLabel(intel.courseKey, overview.province)}` : " across assigned courses"}.</p>
+                                <p>Focus topic: {intel.weakestTopic ?? "Not enough evidence yet"}</p>
+                                <p>Recent mocks: {intel.recentMockScores?.length ? intel.recentMockScores.map(score => score.total ? `${Math.round(score.score / score.total * 100)}%` : "Not scored").join(", ") : "None recorded"}</p>
+                                <p>Exam date: {intel.examDate ? formatDate(intel.examDate) : "Not set"}</p>
+                                <button type="button" className="manager-reminder" disabled={sendReminder.isPending || reminderSent.has(m.email)} onClick={() => sendReminder.mutate({ ...orgInput, email: m.email })}>{reminderSent.has(m.email) ? "Reminder sent" : "Send study reminder"}</button>
+                              </> : <p>No additional study details are available yet.</p>}
+                            </div>
+                          </details>
                           <div className="flex items-center justify-end gap-1">
                             <Button
                               variant="ghost"
@@ -980,7 +1028,7 @@ export default function OrgDashboard() {
                               }}
                             >
                               <Target className="w-3.5 h-3.5" />
-                              <span className="hidden sm:inline">Result</span>
+                              <span>Record result</span>
                             </Button>
                             <Button
                               variant="ghost"
@@ -989,7 +1037,7 @@ export default function OrgDashboard() {
                               onClick={() => setRevokeTarget(m.email)}
                             >
                               <UserMinus className="w-3.5 h-3.5" />
-                              <span className="hidden sm:inline">Remove</span>
+                              <span>Remove access</span>
                             </Button>
                           </div>
                         </td>
@@ -998,6 +1046,7 @@ export default function OrgDashboard() {
                   })}
                 </tbody>
               </table>
+              {displayedMembers.length === 0 && <p role="status" className="p-6 text-slate-600">No operators match this search. Clear the name or change the activity filter.</p>}
             </div>
           )}
 
@@ -1034,11 +1083,13 @@ export default function OrgDashboard() {
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
         {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
-        {overview.orgId && <FlexProgressDashboard orgId={overview.orgId} />}
+
+        </section>}
 
         {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
 
-        <section className="team-outcomes-report">
+        <section className="team-outcomes-report" data-view-active={managerView === "reports"}>
+        {overview.orgId && <FlexProgressDashboard orgId={overview.orgId} />}
         <div className="team-print-header">
           <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Echelon Institute</div>
           <h1 className="text-2xl font-bold text-slate-900 mt-1">{overview.orgName} — Learning Outcomes Report</h1>
@@ -1050,6 +1101,7 @@ export default function OrgDashboard() {
           </p>
         </div>
 
+        {(readinessSummaryQuery.isError || operatorReadinessQuery.isError) && <p role="alert" className="text-sm text-amber-800">Part of the report could not load. <button type="button" className="workspace-text-link" onClick={() => { void readinessSummaryQuery.refetch(); void operatorReadinessQuery.refetch(); }}>Retry report</button></p>}
         {/* Team Readiness Summary */}
         {readinessSummaryQuery.data && (
           <div className="mt-8">
@@ -1079,7 +1131,7 @@ export default function OrgDashboard() {
                 <Button
                   size="sm" variant="outline"
                   className="text-xs gap-1.5 text-amber-700 border-amber-200 hover:bg-amber-50 flex-1 sm:flex-none whitespace-nowrap"
-                  onClick={() => sendBulkReminders.mutate()}
+                  onClick={() => sendBulkReminders.mutate(orgInput)}
                   disabled={sendBulkReminders.isPending}
                 >
                   <BellRing className="w-3.5 h-3.5" />
@@ -1212,7 +1264,7 @@ export default function OrgDashboard() {
               </div>
             </div>
             <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-sm" aria-label="Operator study progress">
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50">
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Operator</th>
@@ -1329,7 +1381,7 @@ export default function OrgDashboard() {
                           <td className="px-4 py-3">
                             {op.memberStatus === "assigned" && (
                               <button
-                                onClick={() => sendReminder.mutate({ email: op.email })}
+                                onClick={() => sendReminder.mutate({ ...orgInput, email: op.email })}
                                 disabled={sendReminder.isPending || reminderSent.has(op.email)}
                                 className={`text-xs px-2.5 py-1 rounded-lg border transition-colors flex items-center gap-1 ${
                                   reminderSent.has(op.email)
@@ -1553,7 +1605,7 @@ export default function OrgDashboard() {
                   <Label className="text-slate-700">Operator name <span className="text-slate-400 font-normal">(optional)</span></Label>
                   <Input
                     type="text"
-                    placeholder="e.g. James Smith"
+                    placeholder="e.g. Sample Learner 3"
                     value={assignName}
                     onChange={e => setAssignName(e.target.value)}
                     className="border-slate-200 text-slate-900 placeholder:text-slate-400"
@@ -1563,7 +1615,7 @@ export default function OrgDashboard() {
                   <Label className="text-slate-700">Operator email</Label>
                   <Input
                     type="email"
-                    placeholder="operator@utility.ca"
+                    placeholder="fixture-7@example.com"
                     value={assignEmail}
                     onChange={e => setAssignEmail(e.target.value)}
                     className="border-slate-200 text-slate-900 placeholder:text-slate-400"
@@ -1575,7 +1627,7 @@ export default function OrgDashboard() {
               <div className="space-y-2">
                 <Label className="text-slate-700">Paste emails (one per line, or comma-separated)</Label>
                 <Textarea
-                  placeholder={"operator1@utility.ca\noperator2@utility.ca"}
+                  placeholder={"operator1@example.com\noperator2@example.com"}
                   value={bulkEmails}
                   onChange={e => setBulkEmails(e.target.value)}
                   rows={6}
@@ -1671,7 +1723,7 @@ export default function OrgDashboard() {
               Cancel
             </Button>
             <Button
-              onClick={() => updateSeats.mutate({ seats: newSeatCount})}
+              onClick={() => updateSeats.mutate({ orgId: overview.orgId, seats: newSeatCount})}
               disabled={updateSeats.isPending || newSeatCount === overview.seatsTotal || newSeatCount < licencesUsedThisTerm}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >
@@ -1702,7 +1754,7 @@ export default function OrgDashboard() {
               Cancel
             </Button>
             <Button
-              onClick={() => revokeTarget && revokeSeat.mutate({ email: revokeTarget })}
+              onClick={() => revokeTarget && revokeSeat.mutate({ ...orgInput, email: revokeTarget })}
               disabled={revokeSeat.isPending}
               className="bg-red-600 hover:bg-red-700 text-white"
             >
@@ -1757,6 +1809,7 @@ export default function OrgDashboard() {
             </Button>
             <Button
               onClick={() => outcomeTarget && recordExamOutcome.mutate({
+                  ...orgInput,
                 memberEmail: outcomeTarget.email,
                 courseKey: outcomeTarget.courseKey,
                 result: outcomeResult,

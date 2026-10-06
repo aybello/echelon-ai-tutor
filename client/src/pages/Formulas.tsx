@@ -1,3 +1,4 @@
+import FormulaSourceNotes from "@/components/FormulaSourceNotes";
 // ECHELON AI TUTOR — Formula Sheet
 // Ontario Water & Wastewater Operator Exam Reference
 // Design: Professional SaaS — Clean Dark-Accent (Sora, blue/teal brand)
@@ -138,7 +139,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "CT = 0.8 × 45 = 36 mg·min/L",
           answer: "36 mg·min/L",
         },
-        tip: "Ontario requires CT ≥ 6 mg·min/L for Giardia inactivation at 15°C. Use T10 (time for 10% of water to pass through), not theoretical HRT.",
+        tip: "CT required depends on the organism, required log inactivation, disinfectant, temperature, pH and residual range. Use the applicable Ontario procedure table and facility requirements; 6 is not a universal Giardia target. Use supported T10, not nominal detention time.",
       },
       {
         name: "Chlorine Dose",
@@ -154,23 +155,23 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Dose = 1.5 + 0.5 = 2.0 mg/L",
           answer: "2.0 mg/L",
         },
-        tip: "Ontario Drinking Water Standards require a minimum free chlorine residual of 0.05 mg/L at the point of consumption.",
+        tip: "For applicable chlorinated distribution systems, Ontario’s disinfection procedure specifies at least 0.05 mg/L free chlorine (or 0.25 mg/L combined chlorine for chloramination) throughout the distribution system. Facility operating targets can be higher. A distribution residual alone does not demonstrate primary disinfection.",
       },
       {
         name: "Chemical Feed Rate",
-        formula: "Feed Rate = Q × C ÷ P",
-        units: "kg/d  or  L/d",
+        formula: "Solution mass (kg/d) = Q × C ÷ (1000 × P)",
+        units: "kg/d of solution",
         variables: [
-          { sym: "Q", desc: "Flow rate (m³/d or ML/d)" },
+          { sym: "Q", desc: "Flow rate (m³/d)" },
           { sym: "C", desc: "Target dose (mg/L = g/m³)" },
-          { sym: "P", desc: "Chemical purity (decimal, e.g. 0.65 for 65%)" },
+          { sym: "P", desc: "Available chemical mass fraction (decimal, e.g. 0.12 for 12% w/w)" },
         ],
         example: {
-          problem: "A plant treats 15,000 m³/d and needs 2.0 mg/L chlorine. Sodium hypochlorite is 12% available chlorine. What is the feed rate?",
-          solution: "Feed Rate = (15,000 × 2.0) ÷ (0.12 × 1,000)\n= 30,000 ÷ 120 = 250 L/d",
-          answer: "250 L/d",
+          problem: "A plant treats 15,000 m³/d at a 2.0 mg/L chlorine dose. Solution contains 12% available chlorine by mass and has density 1.20 kg/L. What solution mass and volume are needed?",
+          solution: "Available chlorine = 15,000 × 2.0 ÷ 1000 = 30 kg/d\nSolution mass = 30 ÷ 0.12 = 250 kg/d\nSolution volume = 250 ÷ 1.20 = 208.3 L/d",
+          answer: "250 kg/d of solution; approximately 208 L/d",
         },
-        tip: "For liquid chemicals: multiply by density if converting to volume. For dry chemicals: Feed Rate (kg/d) = Q (m³/d) × Dose (g/m³) ÷ Purity (%) ÷ 1000.",
+        tip: "Divide solution mass (kg/d) by density (kg/L) to obtain L/d. Confirm whether the supplier concentration is w/w or w/v; these bases are not interchangeable. With Q in ML/d, Q × dose gives kg/d of active chemical directly.",
       },
       {
         name: "Log Inactivation",
@@ -185,7 +186,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Log = log₁₀(100 / 0.01) = log₁₀(10,000) = 4.0",
           answer: "4.0 log inactivation",
         },
-        tip: "Ontario requires 3-log Giardia and 4-log virus removal/inactivation. 3-log = 99.9% removal; 4-log = 99.99% removal.",
+        tip: "For surface water and GUDI supplies under Ontario’s disinfection procedure, the overall treatment minimum includes 2-log Cryptosporidium, 3-log Giardia and 4-log viruses. Removal and inactivation are separate credits; verify the applicable facility requirements and disinfection portion.",
       },
     ],
   },
@@ -315,9 +316,9 @@ const CATEGORIES: FormulaCategory[] = [
       {
         name: "Pump Power",
         formula: "P = ρ × g × Q × H ÷ η",
-        units: "Watts  or  kW",
+        units: "W (divide by 1000 for kW)",
         variables: [
-          { sym: "P", desc: "Power (W or kW)" },
+          { sym: "P", desc: "Shaft power (W); divide by 1000 for kW" },
           { sym: "ρ", desc: "Density of water (1000 kg/m³)" },
           { sym: "g", desc: "9.81 m/s²" },
           { sym: "Q", desc: "Flow rate (m³/s)" },
@@ -529,13 +530,13 @@ const CATEGORIES: FormulaCategory[] = [
     formulas: [
       {
         name: "O. Reg. 170/03 — Drinking Water Systems",
-        formula: "Key Parameters: Turbidity ≤ 1 NTU (treated), Chlorine residual ≥ 0.05 mg/L, E. coli = 0 CFU/100 mL",
-        tip: "O. Reg. 170/03 governs municipal residential drinking water systems. Requires continuous turbidity monitoring, regular bacteriological sampling, and operator certification.",
+        formula: "Apply the schedules for the system category, treatment process, sampling location and parameter.",
+        tip: "O. Reg. 170/03 sets treatment, monitoring, sampling and reporting requirements for the drinking-water systems it covers. A single turbidity number is not a universal filter-performance, alarm and reporting threshold.",
       },
       {
         name: "O. Reg. 128/04 — Certification of Drinking Water System Operators",
         formula: "Classes: OIT → Class 1 → Class 2 → Class 3 → Class 4 (based on system complexity)",
-        tip: "Operators must hold a certificate at or above the class of the system they operate. Certificates expire every 3 years and require continuing education (PDUs).",
+        tip: "Certificate and designation requirements differ for operators, operators-in-charge and overall responsible operators. Check the applicable role, subsystem class and renewal requirements in O. Reg. 128/04.",
       },
       {
         name: "O. Reg. 129/04 — Certification of Wastewater System Operators",
@@ -544,13 +545,13 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Ontario Drinking Water Standards — Key Limits",
-        formula: "Turbidity: ≤ 1 NTU | Chlorine: 0.05–4.0 mg/L | Fluoride: ≤ 1.5 mg/L | Nitrate: ≤ 10 mg/L | Lead: ≤ 0.01 mg/L",
+        formula: "Use O. Reg. 169/03 for Ontario drinking-water quality standards; use O. Reg. 170/03 and the disinfection procedure for operational and reporting requirements.",
         tip: "Maximum Allowable Concentrations (MACs) are health-based limits. Aesthetic Objectives (AOs) are for taste/odour/appearance. Know both for the exam.",
       },
       {
         name: "Adverse Water Quality Incident (AWQI) Reporting",
-        formula: "Report within 24 hours to: MOE Spills Action Centre (1-800-268-6060) + local Medical Officer of Health",
-        tip: "AWQIs include: E. coli detection, turbidity exceedance, loss of disinfection, or any result exceeding an MAC. Document everything — who, what, when, corrective action.",
+        formula: "Make the required immediate verbal report; follow with written notice within 24 hours of the verbal report.",
+        tip: "For reportable results or problems under O. Reg. 170/03 Schedule 16, immediately notify the Spills Action Centre (1-800-268-6060) and local medical officer of health; notify the system owner where required. Do not wait 24 hours to make the initial report. Follow the applicable corrective-action and issue-resolution requirements.",
       },
     ],
   },
@@ -571,6 +572,10 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
     }}>
       {/* Header */}
       <div
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setExpanded(!expanded); } }}
         onClick={() => setExpanded(!expanded)}
         style={{
           padding: "16px 20px",
@@ -758,6 +763,7 @@ export default function Formulas() {
 
       <SiteNav currentPath="/formulas" />
 
+      <FormulaSourceNotes />
       {/* ── HERO BANNER ── */}
       <div style={{
         background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #0E7490 100%)",
@@ -977,7 +983,7 @@ export default function Formulas() {
                 { label: "F:M Ratio", f: "F:M = BOD × Q ÷ (V × MLVSS)", unit: "kg/kg·d", color: "#059669" },
                 { label: "Chemical Feed", f: "Feed = Q × Dose ÷ Purity", unit: "kg/d", color: "#7C3AED" },
                 { label: "BOD Removal", f: "E = (BOD_in − BOD_out) ÷ BOD_in × 100", unit: "%", color: "#059669" },
-                { label: "Pump Power", f: "P = ρgQH ÷ η", unit: "kW", color: "#B45309" },
+                { label: "Pump Power", f: "P (kW) = ρgQH ÷ (1000η)", unit: "kW", color: "#B45309" },
                 { label: "TDH", f: "TDH = Static + Friction + Minor", unit: "m", color: "#B45309" },
               ].map((item, i) => (
                 <div key={i} style={{

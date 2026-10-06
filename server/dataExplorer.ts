@@ -50,6 +50,8 @@ export const DATA_EXPLORER_DATASETS: readonly DataExplorerDataset[] = [
   { key: "training-attestations", tableName: "training_attestations", label: "Training attestations", description: "Signed training review records", category: "Teams", orderBy: "signedAt" },
   { key: "exam-outcomes", tableName: "exam_outcomes", label: "Exam outcomes", description: "Reported certification outcomes", category: "Teams", orderBy: "recordedAt" },
 
+  { key: "ceu-learning-records", tableName: "ceu_learning_records", label: "CEU record metadata", description: "Self-paced pilot course editions, time and attempt counts; private records stay in the learner workspace", category: "Learning", orderBy: "updatedAt" },
+  { key: "ceu-daily-time", tableName: "ceu_learning_daily_time", label: "CEU daily time", description: "Daily cross-course active-time totals without learner names", category: "Learning", orderBy: "localDate" },
   { key: "learning-activity-sessions", tableName: "learning_activity_sessions", label: "Learning activity sessions", description: "Platform-recorded study activity", category: "Learning", orderBy: "createdAt" },
   { key: "question-attempts", tableName: "question_attempts", label: "Question attempts", description: "Learner answer attempts", category: "Learning", orderBy: "createdAt" },
   { key: "exam-results", tableName: "exam_results", label: "Mock exam results", description: "Completed mock exam outcomes", category: "Learning", orderBy: "createdAt" },
@@ -89,6 +91,7 @@ export const DATA_EXPLORER_DATASETS: readonly DataExplorerDataset[] = [
   { key: "product-analytics-events", tableName: "product_analytics_events", label: "Product analytics", description: "Privacy-preserving product event log", category: "Operations", orderBy: "occurredAt" },
   { key: "trigger-logs", tableName: "trigger_logs", label: "Trigger logs", description: "Proactive learner email delivery log", category: "Operations", orderBy: "sentAt" },
   { key: "scheduled-work", tableName: "scheduled_work", label: "Scheduled work", description: "Managed job and delivery ledger", category: "Operations", orderBy: "createdAt" },
+  { key: "blog-automation-runs", tableName: "blog_automation_runs", label: "Blog automation runs", description: "Weekly editorial progress status without drafts or provider identifiers", category: "Operations", orderBy: "updatedAt" },
   { key: "command-drill-queue", tableName: "command_drill_queue", label: "Command drill queue", description: "Incident command drill work queue", category: "Operations", orderBy: "queuedAt" },
   { key: "command-run-history", tableName: "command_run_history", label: "Command run history", description: "Incident command execution history", category: "Operations", orderBy: "completedAt" },
 

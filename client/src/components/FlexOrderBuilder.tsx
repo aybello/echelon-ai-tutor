@@ -25,19 +25,19 @@ const ONTARIO_COURSES: CourseOption[] = [
   { key: "oit-ww", label: "OIT Wastewater", band: "oit" },
   { key: "class1-water", label: "Class 1 Water Treatment", band: "class1" },
   { key: "class1-ww", label: "Class 1 Wastewater Treatment", band: "class1" },
-  { key: "class1-water-dist", label: "Class 1 Water Distribution", band: "class1" },
+  { key: "class1-water-dist", label: "Class 1 Water Distribution and Supply", band: "class1" },
   { key: "class1-wastewater-coll", label: "Class 1 Wastewater Collection", band: "class1" },
   { key: "class2-water", label: "Class 2 Water Treatment", band: "class2" },
   { key: "class2-ww", label: "Class 2 Wastewater Treatment", band: "class2" },
-  { key: "class2-water-dist", label: "Class 2 Water Distribution", band: "class2" },
+  { key: "class2-water-dist", label: "Class 2 Water Distribution and Supply", band: "class2" },
   { key: "class2-wastewater-coll", label: "Class 2 Wastewater Collection", band: "class2" },
   { key: "class3-water", label: "Class 3 Water Treatment", band: "class3" },
   { key: "class3-ww", label: "Class 3 Wastewater Treatment", band: "class3" },
-  { key: "class3-water-dist", label: "Class 3 Water Distribution", band: "class3" },
+  { key: "class3-water-dist", label: "Class 3 Water Distribution and Supply", band: "class3" },
   { key: "class3-wastewater-coll", label: "Class 3 Wastewater Collection", band: "class3" },
   { key: "class4-water", label: "Class 4 Water Treatment", band: "class4" },
   { key: "class4-ww", label: "Class 4 Wastewater Treatment", band: "class4" },
-  { key: "class4-water-dist", label: "Class 4 Water Distribution", band: "class4" },
+  { key: "class4-water-dist", label: "Class 4 Water Distribution and Supply", band: "class4" },
   { key: "class4-wastewater-coll", label: "Class 4 Wastewater Collection", band: "class4" },
   { key: "wqa", label: "Water Quality Analyst", band: "wqa" },
 ];
@@ -97,6 +97,10 @@ export function FlexOrderBuilder() {
   const [managerEmail, setManagerEmail] = useState("");
   const [sameEmail, setSameEmail] = useState(true);
   const [items, setItems] = useState<FlexItem[]>([{ courseKey: "", termMonths: 3, quantity: 1 }]);
+  const identity = trpc.teamFlex.checkoutIdentity.useQuery();
+  const signedInEmail = identity.data?.managerEmail?.trim().toLowerCase() ?? "";
+  const organizations = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false, enabled: !!signedInEmail });
+  const [selectedOrgId, setSelectedOrgId] = useState<number | undefined>();
   const availability = trpc.stripe.getCommercialAvailability.useQuery(undefined, { staleTime: 60_000 });
 
   const availableKeys = useMemo(
@@ -131,13 +135,15 @@ export function FlexOrderBuilder() {
   const handleSubmit = () => {
     if (!organizationName.trim()) return toast.error("Enter your organization name.");
     if (!billingEmail.trim() || !billingEmail.includes("@")) return toast.error("Enter a valid billing email.");
-    const manager = sameEmail ? billingEmail : managerEmail;
+    const manager = signedInEmail || (sameEmail ? billingEmail : managerEmail);
+    if (organizations.data && organizations.data.length > 1 && !selectedOrgId) return toast.error("Choose the organization receiving these licences.");
     if (!manager.trim() || !manager.includes("@")) return toast.error("Enter a valid manager email.");
     const validItems = items.filter((item) => item.courseKey && item.quantity > 0);
     if (validItems.length === 0) return toast.error("Add at least one released course.");
     if (validItems.length !== items.length) return toast.error("Complete or remove every course row before checkout.");
     createOrder.mutate({
       organizationName: organizationName.trim(),
+      orgId: selectedOrgId,
       managerEmail: manager.trim().toLowerCase(),
       billingEmail: billingEmail.trim().toLowerCase(),
       province,
@@ -156,7 +162,8 @@ export function FlexOrderBuilder() {
         <div className="space-y-1.5">
           <Label className="font-medium text-gray-700">Organization name</Label>
           <Input value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="City or organization" maxLength={200} />
-          <p className="text-xs text-gray-400">This name appears on the manager dashboard after payment.</p>
+          <p className="text-xs text-gray-400">For a new organization this name appears after payment. Adding licences to an existing team does not rename it.</p>
+          {!!signedInEmail && organizations.data && organizations.data.length > 1 && <div className="space-y-1.5"><Label>Existing organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={value => setSelectedOrgId(Number(value))}><SelectTrigger><SelectValue placeholder="Choose the team receiving licences" /></SelectTrigger><SelectContent>{organizations.data.map(org => <SelectItem key={org.id} value={String(org.id)}>{org.name} ({org.status})</SelectItem>)}</SelectContent></Select></div>}
         </div>
 
         <div className="space-y-1.5">
@@ -172,16 +179,17 @@ export function FlexOrderBuilder() {
 
         <div className="space-y-1.5">
           <Label className="font-medium text-gray-700">Billing email</Label>
-          <Input type="email" value={billingEmail} onChange={(event) => setBillingEmail(event.target.value)} placeholder="billing@yourorg.com" />
+          <Input type="email" value={billingEmail} onChange={(event) => setBillingEmail(event.target.value)} placeholder="fixture-25@example.com" />
           <p className="text-xs text-gray-400">Stripe sends the receipt and paid invoice to this address.</p>
         </div>
 
         <div className="space-y-1.5">
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-600">
+          {signedInEmail ? <p className="text-sm text-gray-600">Manager: {signedInEmail}. Signed-in purchases remain managed by your verified account. Billing may use another email. To name a different manager, sign out and use guest procurement for a new organization; this form cannot transfer an existing team.</p> : <><label className="flex cursor-pointer items-center gap-2 text-sm text-gray-600">
             <input type="checkbox" checked={sameEmail} onChange={(event) => setSameEmail(event.target.checked)} className="rounded border-gray-300" />
             Manager email is the same as billing email
           </label>
-          {!sameEmail && <div className="mt-2"><Label className="font-medium text-gray-700">Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="manager@yourorg.com" className="mt-1" /><p className="mt-1 text-xs text-gray-400">This person manages operator licences and the team dashboard.</p></div>}
+          {!sameEmail && <div className="mt-2"><Label className="font-medium text-gray-700">Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="fixture-64@example.com" className="mt-1" /><p className="mt-1 text-xs text-gray-400">This person manages operator licences and the team dashboard.</p></div>}
+          </>}
         </div>
 
         <div className="space-y-3">
@@ -215,7 +223,7 @@ export function FlexOrderBuilder() {
           {discount > 0 && <p className="text-right text-xs text-green-600">You save {formatCAD(discountAmount)} through volume pricing.</p>}
         </div>
 
-        <Button className="w-full bg-gradient-to-r from-blue-600 to-teal-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={availability.isLoading || createOrder.isPending || total === 0}>
+        <Button className="w-full bg-gradient-to-r from-blue-600 to-teal-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={identity.isLoading || availability.isLoading || createOrder.isPending || total === 0}>
           {createOrder.isPending ? "Creating secure checkout…" : `Proceed to secure checkout — ${formatCAD(total)}`}
         </Button>
         <p className="text-center text-xs text-gray-400">Unused licences can be reassigned. Each operator starts their own study term when they activate the assigned Course Pass.</p>

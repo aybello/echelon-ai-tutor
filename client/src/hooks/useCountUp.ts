@@ -1,35 +1,45 @@
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
 
-/**
- * Animates a number from 0 to `end` when the element comes into view.
- * Respects prefers-reduced-motion.
- */
+/** Animates a number from 0 to `end` when it becomes visible without a motion library. */
 export function useCountUp(end: number, duration: number = 1800) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const reduced = useReducedMotion();
-  const [count, setCount] = useState(reduced ? end : 0);
+  const [inView, setInView] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!inView || reduced) {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
       setCount(end);
       return;
     }
-    let startTime: number | null = null;
-    const startVal = 0;
-
-    function step(timestamp: number) {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(startVal + (end - startVal) * eased));
-      if (progress < 1) requestAnimationFrame(step);
+    const element = ref.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
     }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      setInView(true);
+      observer.disconnect();
+    }, { rootMargin: "-80px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [end]);
 
-    requestAnimationFrame(step);
-  }, [inView, end, duration, reduced]);
+  useEffect(() => {
+    if (!inView) return;
+    let frame = 0;
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(end * (1 - Math.pow(1 - progress, 3))));
+      if (progress < 1) frame = requestAnimationFrame(step);
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [duration, end, inView]);
 
   return { ref, count };
 }

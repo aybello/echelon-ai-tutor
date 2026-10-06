@@ -61,4 +61,15 @@ describe("AI Tutor server-owned policy", () => {
     expect(prompt).toContain("Do not invent Canadian Electrical Code rule or table references");
     expect(prompt).not.toContain("Teach only water, wastewater");
   });
+  it("prioritizes an explicit worked solution over hint-only mode and requires arithmetic and units", () => {
+    const prompt = buildTutorSystemPrompt({ courseName: "OIT", examFamily: "ontario", question: null, selectedIndex: null, patternMode: false, recentPerformance: [] });
+    expect(prompt).toContain("takes priority");
+    expect(prompt).toContain("Give the requested worked explanation immediately");
+    expect(prompt).toContain("Define every symbol");
+    expect(prompt).toContain("intermediate results and units");
+    expect(prompt).toContain("Round only the final result");
+    expect(prompt).toContain("Verify the arithmetic independently");
+    expect(prompt).toContain("dividing by influent compares removal to the starting amount");
+  });
+
 });

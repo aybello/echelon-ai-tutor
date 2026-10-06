@@ -57,6 +57,6 @@ describe("public trust content", () => {
       "client/src/pages/Terms.tsx",
     ].map(source).join("\n");
     expect(publicPages).not.toMatch(/up to 50 questions|more than 50 questions|haven't completed more than 50 questions/i);
-    expect(publicPages).not.toContain("support@echeloninstitute.ca");
+    expect(publicPages).not.toContain("fixture-105@example.com");
   });
 });

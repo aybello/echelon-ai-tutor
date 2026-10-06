@@ -1,5 +1,5 @@
 /**
- * Simulates a realistic team scenario for Philip's org (pemon@utilitieskingston.com):
+ * Simulates a realistic team scenario for Sample Learner 1's org (fixture-95@example.com):
  * - Assigns 3 test operators
  * - Seeds question attempt data for 2 of them (1 is "never started")
  * Then we verify the manager dashboard shows the correct data.
@@ -9,12 +9,22 @@ import { organizations, organizationMembers, subscriptions, questionAttempts } f
 import { eq, and } from 'drizzle-orm';
 import { normalizeEmail } from '../server/_core/access';
 
-const MANAGER_EMAIL = 'pemon@utilitieskingston.com';
+let DEMO_TARGET: URL;
+try { DEMO_TARGET = new URL(process.env.DATABASE_URL ?? "mysql://invalid"); }
+catch { throw new Error("Demo fixtures require a valid disposable database URL."); }
+if (process.env.DEMO_FIXTURE_APPROVED !== "ISOLATED_DEMO_FIXTURES"
+  || DEMO_TARGET.protocol !== "mysql:"
+  || !["127.0.0.1", "localhost", "[::1]"].includes(DEMO_TARGET.hostname)
+  || !/^\/echelon_(?:audit|demo)_[a-z0-9_]+$/i.test(DEMO_TARGET.pathname)) {
+  throw new Error("Demo fixtures require explicit approval and a named disposable loopback database.");
+}
+
+const MANAGER_EMAIL = 'fixture-95@example.com';
 
 const TEST_OPERATORS = [
-  { email: 'test.operator1@utilitieskingston.com', name: 'Alex Thompson', attempts: 120, correctRate: 0.82 },
-  { email: 'test.operator2@utilitieskingston.com', name: 'Jamie Lee',     attempts: 45,  correctRate: 0.55 },
-  { email: 'test.operator3@utilitieskingston.com', name: 'Sam Rivera',    attempts: 0,   correctRate: 0 },   // never started
+  { email: 'fixture-107@example.com', name: 'Sample Learner 11', attempts: 120, correctRate: 0.82 },
+  { email: 'fixture-108@example.com', name: 'Sample Learner 12',     attempts: 45,  correctRate: 0.55 },
+  { email: 'fixture-109@example.com', name: 'Sample Learner 13',    attempts: 0,   correctRate: 0 },   // never started
 ];
 
 // Sample question IDs from OIT bank
@@ -41,7 +51,7 @@ async function main() {
   const db = await getDb();
   if (!db) { console.error('DB connection failed'); process.exit(1); }
 
-  // Find Philip's org
+  // Find Sample Learner 1's org
   const managerRow = await db.select({ orgId: organizationMembers.orgId })
     .from(organizationMembers)
     .where(and(
@@ -99,9 +109,9 @@ async function main() {
         });
       }
 
-      console.log(`✅ Assigned operator: ${op.name} (${email})`);
+      console.log("Assigned synthetic operator.");
     } else {
-      console.log(`⚠️  Operator already exists: ${email}`);
+      console.log("Synthetic operator already exists.");
     }
 
     // Seed question attempts
@@ -124,7 +134,7 @@ async function main() {
       for (let i = 0; i < attemptsToInsert.length; i += 50) {
         await db.insert(questionAttempts).values(attemptsToInsert.slice(i, i + 50));
       }
-      console.log(`✅ Seeded ${op.attempts} attempts for ${op.name} (${Math.round(op.correctRate * 100)}% accuracy)`);
+      console.log(`Seeded ${op.attempts} synthetic attempts (${Math.round(op.correctRate * 100)}% accuracy).`);
     }
   }
 
@@ -132,4 +142,7 @@ async function main() {
   process.exit(0);
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch(() => {
+  console.error("Synthetic activity simulation failed; no connection or account details are logged.");
+  process.exitCode = 1;
+});

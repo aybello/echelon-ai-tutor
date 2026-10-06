@@ -1,4 +1,5 @@
 import { purchaseEmailOutbox } from "../drizzle/schema";
+import { ALL_PRODUCTS } from "./stripe/products";
 /**
  * Purchase Flow Integration Tests
  * ─────────────────────────────────────────────────────────────────────────────
@@ -19,6 +20,17 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 import { getDb } from "./db";
+
+const mockCreateCheckoutSession = vi.hoisted(() => vi.fn());
+const mockGetCommercialAvailability = vi.hoisted(() => vi.fn());
+const mockPaymentSchemaReady = vi.hoisted(() => vi.fn());
+
+vi.mock("./commercialAvailability", () => ({
+  getCommercialAvailability: mockGetCommercialAvailability,
+}));
+vi.mock("./stripe/paymentSchemaReadiness", () => ({
+  assertIndividualPaymentSchemaReady: mockPaymentSchemaReady,
+}));
 
 // ── Shared mutable Stripe session state ──────────────────────────────────────
 // Tests mutate this object to control what Stripe returns.
@@ -60,6 +72,8 @@ function setSession(overrides: Record<string, unknown>) {
     amount_subtotal: 4900,
     amount_total: 4900,
     payment_intent: "pi_test_xyz",
+    livemode: false,
+    created: 0,
     ...overrides,
   });
 }
@@ -142,6 +156,7 @@ vi.mock("stripe", () => ({
       sessions: {
         retrieve: vi.fn(async () => ({ ...currentSession })),
         list: vi.fn(async () => ({ data: [], has_more: false })),
+        create: mockCreateCheckoutSession,
       },
     },
     paymentIntents: {
@@ -175,13 +190,89 @@ beforeEach(() => {
   queuedEmails = [];
   nextId = 1;
   vi.clearAllMocks();
+  mockCreateCheckoutSession.mockResolvedValue({ url: "https://checkout.stripe.test/cad" });
+  mockGetCommercialAvailability.mockResolvedValue([{ key: "oit", questionCount: 400 }]);
+  mockPaymentSchemaReady.mockResolvedValue(undefined);
   // Reset to default paid session
   setSession({});
 });
 
 // ── Tests ─────────────────────────────────────────────────────────────────────
 
+describe("stripe.createCheckoutSession", () => {
+  it("creates new Individual Exam Pass sessions in CAD at the canonical CAD price", async () => {
+    const result = await appRouter.createCaller(makeCtx()).stripe.createCheckoutSession({
+      productKey: "oit",
+    });
+
+    expect(result).toEqual({ url: "https://checkout.stripe.test/cad" });
+    expect(mockCreateCheckoutSession).toHaveBeenCalledWith(expect.objectContaining({
+      mode: "payment",
+      line_items: [expect.objectContaining({
+        price_data: expect.objectContaining({ currency: "cad", unit_amount: 4_900 }),
+      })],
+    }));
+  });
+
+  it.each(ALL_PRODUCTS.map(product => [product.key, product.priceCAD]))("requires Stripe phone collection for %s without changing its CAD price", async (key, price) => {
+    mockGetCommercialAvailability.mockResolvedValueOnce([{ key, questionCount: 400 }]);
+    await appRouter.createCaller(makeCtx()).stripe.createCheckoutSession({ productKey: key });
+    expect(mockCreateCheckoutSession).toHaveBeenCalledWith(expect.objectContaining({
+      phone_number_collection: { enabled: true },
+      mode: "payment",
+      line_items: [expect.objectContaining({ price_data: expect.objectContaining({ currency: "cad", unit_amount: price }) })],
+    }));
+  });
+
+  it("blocks checkout before Stripe when paid access cannot be durably recorded", async () => {
+    mockPaymentSchemaReady.mockRejectedValueOnce(new Error("schema unavailable"));
+    await expect(appRouter.createCaller(makeCtx()).stripe.createCheckoutSession({ productKey: "oit" }))
+      .rejects.toMatchObject({ code: "SERVICE_UNAVAILABLE" });
+    expect(mockCreateCheckoutSession).not.toHaveBeenCalled();
+  });
+
+  it("rejects a crafted USD currency payload before Stripe session creation", async () => {
+    await expect(appRouter.createCaller(makeCtx()).stripe.createCheckoutSession({
+      productKey: "oit",
+      currency: "usd" as never,
+    })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+
+    expect(mockCreateCheckoutSession).not.toHaveBeenCalled();
+  });
+});
+
 describe("stripe.verifySession", () => {
+  it("returns only actual paid amount/currency and opaque order ID after signed fulfillment when purchase measurement is configured", async () => {
+    const originalLabel = process.env.GOOGLE_ADS_PURCHASE_LABEL;
+    const originalStart = process.env.GOOGLE_ADS_PURCHASE_START_AT;
+    process.env.GOOGLE_ADS_PURCHASE_LABEL = "SyntheticPurchase_123";
+    process.env.GOOGLE_ADS_PURCHASE_START_AT = "2026-10-05T20:00:00Z";
+    try {
+      setSession({ livemode: true, created: Date.parse("2026-10-06T12:00:00Z") / 1000, amount_total: 3920 });
+      const caller = appRouter.createCaller(makeCtx());
+      const pending = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
+      expect(pending.adsConversion).toBeNull();
+      expect(mockPurchases).toHaveLength(0);
+      mockPurchases.push({
+        id: 1, userId: null, email: "buyer@example.com", productKey: "oit", productName: "OIT",
+        amountCAD: 3920, stripeSessionId: "cs_test_abc123", stripePaymentIntentId: "pi_test_xyz",
+        phone: "+16135550100", referralSource: null, accessExpiresAt: new Date("2027-10-06"), createdAt: new Date(),
+      });
+      const ready = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
+      expect(ready.adsConversion).toEqual({ sendTo: "AW-18491909141/SyntheticPurchase_123", value: 39.2, currency: "CAD", transactionId: expect.stringMatching(/^echelon_[a-f0-9]{64}$/) });
+      expect(JSON.stringify(ready.adsConversion)).not.toMatch(/buyer|16135550100|cs_test|pi_test/);
+      expect(ready.accessToken).toBeNull(); expect(ready.email).toBe("");
+      expect(mockPurchases).toHaveLength(1); expect(queuedEmails).toHaveLength(0);
+      delete process.env.GOOGLE_ADS_PURCHASE_LABEL;
+      expect((await caller.stripe.verifySession({ sessionId: "cs_test_abc123" })).adsConversion).toBeNull();
+    } finally {
+      if (originalLabel === undefined) delete process.env.GOOGLE_ADS_PURCHASE_LABEL;
+      else process.env.GOOGLE_ADS_PURCHASE_LABEL = originalLabel;
+      if (originalStart === undefined) delete process.env.GOOGLE_ADS_PURCHASE_START_AT;
+      else process.env.GOOGLE_ADS_PURCHASE_START_AT = originalStart;
+    }
+  });
+
   it("waits for the signed webhook to record a new paid purchase", async () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.verifySession({ sessionId: "cs_test_abc123" });
@@ -221,6 +312,22 @@ describe("stripe.verifySession", () => {
     expect(mockPurchases).toHaveLength(0);
   });
 
+  it("verifies a valid historical USD session without writing duplicate access or receipt records", async () => {
+    setSession({
+      currency: "usd",
+      amount_subtotal: 3_500,
+      amount_total: 3_500,
+    });
+
+    const result = await appRouter.createCaller(makeCtx()).stripe.verifySession({
+      sessionId: "cs_test_historical_usd",
+    });
+
+    expect(result).toMatchObject({ paid: true, productKey: "oit", fulfillmentPending: true });
+    expect(mockPurchases).toHaveLength(0);
+    expect(queuedEmails).toHaveLength(0);
+  });
+
   it("does not turn a copied checkout URL into a verified email session", async () => {
     for (const email of [null, "someone-else@example.com", "buyer@example.com"]) {
       const ctx = { ...makeCtx(), studentEmail: email };
@@ -249,6 +356,25 @@ describe("stripe.verifySession", () => {
     expect(result.accessExpiresAt).toEqual(recordedExpiry);
     // Should still only have 1 row and no browser-side duplicate.
     expect(mockPurchases).toHaveLength(1);
+  });
+
+  it("restores an already-recorded historical USD pass without duplicate access or receipt records", async () => {
+    const recordedExpiry = new Date("2027-09-17T22:36:40.000Z");
+    setSession({ currency: "usd", amount_subtotal: 3_500, amount_total: 3_500 });
+    mockPurchases.push({
+      id: 1, userId: null, email: "buyer@example.com", productKey: "oit",
+      productName: "OIT Practice Pass", amountCAD: 3_500,
+      stripeSessionId: "cs_test_abc123", stripePaymentIntentId: "pi_test_xyz",
+      phone: null, referralSource: null, accessExpiresAt: recordedExpiry, createdAt: new Date(),
+    });
+
+    const result = await appRouter.createCaller(makeCtx()).stripe.verifySession({
+      sessionId: "cs_test_historical_usd_recorded",
+    });
+
+    expect(result).toMatchObject({ paid: true, fulfillmentPending: false, accessExpiresAt: recordedExpiry });
+    expect(mockPurchases).toHaveLength(1);
+    expect(queuedEmails).toHaveLength(0);
   });
 
   it("reads customer_details.email when customer_email is null", async () => {

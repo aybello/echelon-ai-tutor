@@ -2,6 +2,18 @@ import mysql from "mysql2/promise";
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error("DATABASE_URL is required");
+const fixtureTarget = new URL(databaseUrl);
+if (!['127.0.0.1', 'localhost', '[::1]'].includes(fixtureTarget.hostname)
+  || !/^echelon_(?:ci|audit_browser)$/.test(fixtureTarget.pathname.slice(1))
+  || (process.env.NODE_ENV !== 'test' && process.env.CI !== '1')) {
+  throw new Error('Browser fixtures require an explicitly isolated loopback test database');
+}
+const wastewaterFixtureAreas = [
+  ['Equipment Evaluation, Maintenance & Operation', 39],
+  ['Treatment Process Evaluation & Adjustment', 38],
+  ['Laboratory Analysis', 10],
+  ['Safety & Admin', 13],
+].flatMap(([area, count]) => Array.from({length: Number(count)}, () => area));
 
 for (const [prefix, E2E_COURSE_KEY, databaseBank, province] of [
   ["teams", "wpi-class4-wastewater", "wpi-class4-wastewater", "western"],
@@ -111,12 +123,12 @@ try {
     }
     for (const bank of ["class1", "class1-water", "class1-wastewater"]) {
       for (let number = 990001; number <= 990100; number++) {
-        const module = bank === "class1-wastewater" || (bank === "class1" && number > 990050)
-          ? "Wastewater Treatment" : "Water Treatment";
+        const module = bank === "class1-wastewater" ? wastewaterFixtureAreas[number - 990001]
+          : (bank === "class1" && number > 990050) ? "Wastewater Treatment" : "Water Treatment";
         await connection.execute(
           `INSERT INTO questions (bankKey, questionNum, module, topic, question, options, correctIndex, explanation, reviewStatus)
            VALUES (?, ?, ?, ?, ?, ?, 0, 'Synthetic browser fixture.', 'approved')
-           ON DUPLICATE KEY UPDATE question = VALUES(question)`,
+           ON DUPLICATE KEY UPDATE question = VALUES(question), module = VALUES(module), topic = VALUES(topic)`,
           [bank, number, module, module, `Class 1 QA ${number}`, JSON.stringify(['Correct', 'B', 'C', 'D'])],
         );
       }

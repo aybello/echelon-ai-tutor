@@ -5,8 +5,8 @@
 // Geo-aware: hero CTA and course section header adapt to CA vs US visitors
 
 import { Link } from "wouter";
+import { buildPricingHref, courseProvinceHref } from "@shared/funnelNavigation";
 import { useState, useRef, useEffect } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -14,6 +14,8 @@ import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundP
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -22,6 +24,8 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import React from "react";
 import LandingNav from "@/components/LandingNav";
+import CoursePathHero from "@/components/CoursePathHero";
+import CourseFinder from "@/components/CourseFinder";
 
 // Animated stat component using count-up hook
 function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
@@ -522,7 +526,7 @@ const WPI_WATER_COURSES = [
     subtitle: "WPI Water Treatment — Class I",
     duration: "4–6 weeks",
     questions: 500,
-    description: "Comprehensive WPI Class I Water Treatment prep aligned with WPI Need-to-Know Criteria. Covers coagulation, filtration, disinfection, distribution, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Comprehensive WPI Class I Water Treatment prep aligned with WPI Need-to-Know Criteria. Covers coagulation, filtration, disinfection, distribution, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Coagulation & Flocculation", "Filtration & Sedimentation", "Disinfection & CT Values", "Distribution Systems", "Regulations & Safety"],
     badge: "WPI",
     badgeColor: "#0369A1",
@@ -605,11 +609,11 @@ const WPI_WATER_COURSES = [
 const ONTARIO_WATER_DIST_COURSES = [
   {
     code: "ON-D1",
-    title: "Class 1 Water Distribution",
-    subtitle: "Ontario Class 1 — Water Distribution",
+    title: "Class 1 Water Distribution and Supply",
+    subtitle: "Ontario Class 1 — Water Distribution and Supply",
     duration: "3–4 weeks",
     questions: 500,
-    description: "Ontario Class 1 Water Distribution prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
+    description: "Ontario Class 1 Water Distribution and Supply prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
     topics: ["Pipe Materials & Fittings", "Valve & Hydrant Operation", "Pressure Management", "Chlorine Residual", "O. Reg. 170/03"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -625,11 +629,11 @@ const ONTARIO_WATER_DIST_COURSES = [
   },
   {
     code: "ON-D2",
-    title: "Class 2 Water Distribution",
-    subtitle: "Ontario Class 2 — Water Distribution",
+    title: "Class 2 Water Distribution and Supply",
+    subtitle: "Ontario Class 2 — Water Distribution and Supply",
     duration: "4–6 weeks",
     questions: 500,
-    description: "Ontario Class 2 Water Distribution prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
+    description: "Ontario Class 2 Water Distribution and Supply prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
     topics: ["System Design", "Water Main Installation", "Cross-Connection Control", "Hydraulics", "Regulatory Compliance"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -645,11 +649,11 @@ const ONTARIO_WATER_DIST_COURSES = [
   },
   {
     code: "ON-D3",
-    title: "Class 3 Water Distribution",
-    subtitle: "Ontario Class 3 — Water Distribution",
+    title: "Class 3 Water Distribution and Supply",
+    subtitle: "Ontario Class 3 — Water Distribution and Supply",
     duration: "6–8 weeks",
     questions: 500,
-    description: "Ontario Class 3 Water Distribution prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
+    description: "Ontario Class 3 Water Distribution and Supply prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
     topics: ["Advanced Hydraulics", "System Modelling", "Asset Management", "Distribution Planning", "SCADA & Automation"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -665,11 +669,11 @@ const ONTARIO_WATER_DIST_COURSES = [
   },
   {
     code: "ON-D4",
-    title: "Class 4 Water Distribution",
-    subtitle: "Ontario Class 4 — Water Distribution",
+    title: "Class 4 Water Distribution and Supply",
+    subtitle: "Ontario Class 4 — Water Distribution and Supply",
     duration: "8–10 weeks",
     questions: 500,
-    description: "Ontario Class 4 Water Distribution prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
+    description: "Ontario Class 4 Water Distribution and Supply prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
     topics: ["Strategic Asset Management", "Risk-Based Frameworks", "KPIs & Performance", "Capital Planning", "Regulatory Leadership"],
     badge: "NEW",
     badgeColor: "#B45309",
@@ -775,7 +779,7 @@ const WPI_WATER_DIST_COURSES = [
     subtitle: "WPI Water Distribution — Class I",
     duration: "3–4 weeks",
     questions: 150,
-    description: "WPI Class I Water Distribution prep aligned with WPI Need-to-Know Criteria. Covers distribution system basics, pipe materials, pressure and flow, water quality maintenance, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "WPI Class I Water Distribution prep aligned with WPI Need-to-Know Criteria. Covers distribution system basics, pipe materials, pressure and flow, water quality maintenance, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Pipe Materials & Fittings", "Pressure & Flow Basics", "Chlorine Residual Maintenance", "Valve & Hydrant Operation", "Regulations & Safety"],
     badge: "WPI",
     badgeColor: "#0369A1",
@@ -796,7 +800,7 @@ const WPI_WATER_DIST_COURSES = [
     subtitle: "WPI Water Distribution — Class II",
     duration: "4–6 weeks",
     questions: 136,
-    description: "WPI Class II Water Distribution prep. Covers hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. 500 questions. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "WPI Class II Water Distribution prep. Covers hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. 500 questions. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Hydraulic Analysis", "Pressure Zone Design", "Water Quality Management", "Cross-Connection Control", "Regulatory Compliance"],
     badge: "WPI",
     badgeColor: "#0F766E",
@@ -817,7 +821,7 @@ const WPI_WATER_DIST_COURSES = [
     subtitle: "WPI Water Distribution — Class III",
     duration: "6–8 weeks",
     questions: 150,
-    description: "Senior-level WPI Class III Water Distribution prep. Covers advanced hydraulic modeling, transmission main design, multi-zone systems, SCADA, and senior operator responsibilities. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Senior-level WPI Class III Water Distribution prep. Covers advanced hydraulic modeling, transmission main design, multi-zone systems, SCADA, and senior operator responsibilities. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Advanced Hydraulic Modeling", "Transmission Main Design", "Multi-Zone Systems", "SCADA & Automation", "Senior Operator Responsibilities"],
     badge: "WPI",
     badgeColor: "#1E40AF",
@@ -838,7 +842,7 @@ const WPI_WATER_DIST_COURSES = [
     subtitle: "WPI Water Distribution — Class IV",
     duration: "8–10 weeks",
     questions: 150,
-    description: "Chief operator-level WPI Class IV Water Distribution prep. The highest WPI distribution certification. Covers large-scale system management, asset management, advanced water quality, DWQMS, and strategic regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Chief operator-level WPI Class IV Water Distribution prep. The highest WPI distribution certification. Covers large-scale system management, asset management, advanced water quality, DWQMS, and strategic regulatory compliance. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Large-Scale System Management", "Asset Management", "Advanced Water Quality", "DWQMS Implementation", "Strategic Regulatory Compliance"],
     badge: "WPI",
     badgeColor: "#4C1D95",
@@ -862,7 +866,7 @@ const WPI_WATER_COLL_COURSES = [
     subtitle: "WPI Wastewater Collection — Class I",
     duration: "3–4 weeks",
     questions: 500,
-    description: "WPI Class I Wastewater Collection prep aligned with WPI Need-to-Know Criteria. Covers gravity sewer basics, pipe materials, lift station fundamentals, H₂S safety, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "WPI Class I Wastewater Collection prep aligned with WPI Need-to-Know Criteria. Covers gravity sewer basics, pipe materials, lift station fundamentals, H₂S safety, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Gravity Sewer Basics", "Pipe Materials & Joints", "Lift Station Fundamentals", "H₂S Safety", "Regulations & Safety"],
     badge: "WPI",
     badgeColor: "#065F46",
@@ -883,7 +887,7 @@ const WPI_WATER_COLL_COURSES = [
     subtitle: "WPI Wastewater Collection — Class II",
     duration: "4–6 weeks",
     questions: 504,
-    description: "WPI Class II Wastewater Collection prep. Covers hydraulic analysis, sewer system design, inflow & infiltration control, force mains, and regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "WPI Class II Wastewater Collection prep. Covers hydraulic analysis, sewer system design, inflow & infiltration control, force mains, and regulatory compliance. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Hydraulic Analysis", "Sewer System Design", "Inflow & Infiltration", "Force Main Operations", "Regulatory Compliance"],
     badge: "WPI",
     badgeColor: "#047857",
@@ -904,7 +908,7 @@ const WPI_WATER_COLL_COURSES = [
     subtitle: "WPI Wastewater Collection — Class III",
     duration: "6–8 weeks",
     questions: 504,
-    description: "Senior-level WPI Class III Wastewater Collection prep. Covers advanced collection system management, CSO/SSO control, trenchless rehabilitation, SCADA, and senior operator responsibilities. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Senior-level WPI Class III Wastewater Collection prep. Covers advanced collection system management, CSO/SSO control, trenchless rehabilitation, SCADA, and senior operator responsibilities. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["CSO/SSO Control", "Trenchless Rehabilitation", "Advanced System Management", "SCADA & Automation", "Senior Operator Responsibilities"],
     badge: "WPI",
     badgeColor: "#065F46",
@@ -925,7 +929,7 @@ const WPI_WATER_COLL_COURSES = [
     subtitle: "WPI Wastewater Collection — Class IV",
     duration: "8–10 weeks",
     questions: 504,
-    description: "Chief operator-level WPI Class IV Wastewater Collection prep. The highest WPI collection certification. Covers large-scale collection system management, asset management, advanced I/I control, CMMS, and strategic regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Chief operator-level WPI Class IV Wastewater Collection prep. The highest WPI collection certification. Covers large-scale collection system management, asset management, advanced I/I control, CMMS, and strategic regulatory compliance. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Large-Scale System Management", "Asset Management & CMMS", "Advanced I/I Control", "DWQMS & Regulatory Compliance", "Emergency Response"],
     badge: "WPI",
     badgeColor: "#14532D",
@@ -949,7 +953,7 @@ const WPI_WASTEWATER_COURSES = [
     subtitle: "WPI Wastewater Treatment — Class I",
     duration: "4–6 weeks",
     questions: 501,
-    description: "WPI Class I Wastewater Treatment prep aligned with WPI Need-to-Know Criteria. Covers primary and secondary treatment, activated sludge basics, effluent quality, and regulations. Recognized by EOCP, AWWOA, SAHO, and MWWA.",
+    description: "WPI Class I Wastewater Treatment prep aligned with WPI Need-to-Know Criteria. Covers primary and secondary treatment, activated sludge basics, effluent quality, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
     topics: ["Primary Clarification", "Activated Sludge Basics", "BOD & TSS Control", "Effluent Standards", "Regulations & Safety"],
     badge: "WPI",
     badgeColor: "#B45309",
@@ -1104,8 +1108,9 @@ const STATS = [
 
 type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number] | (typeof ONTARIO_WATER_DIST_COURSES)[number] | (typeof ONTARIO_WASTEWATER_COLL_COURSES)[number];
 
-function CourseCard({ course }: { course: CourseType }) {
+function CourseCard({ course, province }: { course: CourseType; province: ProvinceId | null }) {
   const [notifyOpen, setNotifyOpen] = useState(false);
+  const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
   const quizHref = (course as any).quizHref ?? (
     course.code === "OIT-WW" ? "/oit-ww" :
     course.code === "CL1-WW" ? "/class1-ww" :
@@ -1121,7 +1126,18 @@ function CourseCard({ course }: { course: CourseType }) {
   const isWpiCourse = (course as any).province === "wpi";
   const passPrice = Number((course as any).price);
   const passPriceLabel = Number.isFinite(passPrice) ? `CA$${passPrice}` : "See pricing";
-  const pricingHref = isWpiCourse ? "/pricing?tab=western" : "/pricing";
+  const pricingHref = buildPricingHref((course as any).productKey, isWpiCourse ? province : "ON");
+  const recordCourseSelection = () => {
+    const productKey = (course as any).productKey as string | undefined;
+    if (!productKey) return;
+    trackCourseSelection.mutate({
+      event: "product_selected",
+      productKey,
+      visitorId: getAnonymousAnalyticsId(),
+      ...getMarketingAttribution("/"),
+      province: isWpiCourse ? "western" : "ontario",
+    });
+  };
   return (
     <>
       <div
@@ -1239,11 +1255,11 @@ function CourseCard({ course }: { course: CourseType }) {
             </button>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <Link href={quizHref} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+              <Link onClick={recordCourseSelection} href={courseProvinceHref(quizHref, (course as any).productKey, isWpiCourse ? province : "ON")} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                 Start Studying →
               </Link>
               {(course as any).productKey && (
-                <Link href={pricingHref} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                <Link onClick={recordCourseSelection} href={pricingHref} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                   View Plans →
                 </Link>
               )}
@@ -1335,7 +1351,7 @@ export default function Landing() {
   };
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div className="marketing-workspace" style={{ minHeight: "100vh" }}>
       {nationalWaitlistOpen && (
         <NationalWaitlistModal
           defaultProvince={nationalWaitlistProvince}
@@ -1369,9 +1385,13 @@ export default function Landing() {
           .contact-form-grid { grid-template-columns: 1fr !important; }
           .landing-teams-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .landing-course-section { padding: 48px 16px !important; }
-          .landing-hero-section { padding: 28px 16px 30px !important; }
-          .landing-hero-section h1 { font-size: clamp(24px, 7vw, 40px) !important; }
-          .landing-hero-section p { font-size: 14px !important; }
+          .landing-hero-reveal { opacity: 0; transform: translate3d(0, 16px, 0); animation: landingHeroReveal 420ms cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+          .landing-hero-reveal-1 { animation-delay: 80ms; }
+          .landing-hero-reveal-2 { animation-delay: 150ms; }
+          .landing-hero-reveal-3 { animation-delay: 220ms; }
+          .landing-hero-reveal-4 { animation-delay: 300ms; }
+          @keyframes landingHeroReveal { to { opacity: 1; transform: translate3d(0, 0, 0); } }
+          @media (prefers-reduced-motion: reduce) { .landing-hero-reveal { opacity: 1; transform: none; animation: none; } }
           .landing-province-banner { padding: 10px 12px !important; }
           .landing-province-banner button { font-size: 11px !important; padding: 5px 8px !important; }
         }
@@ -1385,65 +1405,14 @@ export default function Landing() {
       )}
 
       {/* ── Hero ── */}
-      <section className="landing-hero-section" style={{
-        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
-        padding: "40px 24px 46px",
-        textAlign: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}>
-        {/* Background grid pattern */}
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-          pointerEvents: "none",
-        }} />
-
-        <div style={{ position: "relative", maxWidth: 800, margin: "0 auto" }}>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            style={{
-              fontSize: "clamp(28px, 4.4vw, 50px)",
-              fontWeight: 800,
-              color: "#FFFFFF",
-              lineHeight: 1.15,
-              letterSpacing: "-0.03em",
-              margin: "0 0 12px 0",
-            }}
-          >
-            Pass Your Operator Exam.<br />
-            <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Advance Your Career.
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut", delay: 0.2 }}
-            style={{
-              fontSize: "clamp(14px, 1.6vw, 17px)",
-              color: "rgba(255,255,255,0.75)",
-              lineHeight: 1.55,
-              maxWidth: 620,
-              margin: "0 auto 22px",
-            }}
-          >
-            Practice questions, timed mocks, study notes, and AI-powered explanations for Canadian water and wastewater certification.
-          </motion.p>
-
+      <section className="landing-hero-section">
+        <CoursePathHero>
           {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-            className="landing-hero-btns" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+          <div
+            className="landing-hero-btns landing-hero-reveal landing-hero-reveal-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
             <button
               type="button"
-              className="btn-pulse"
+              className="landing-oit-secondary"
               aria-expanded={showOitPreviewChoice}
               aria-controls="oit-preview-choice"
               onClick={() => setShowOitPreviewChoice(open => !open)}
@@ -1501,27 +1470,28 @@ export default function Landing() {
                 </div>
               </div>
             )}
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.45 }}
+          </div>
+          <p
+            className="landing-free-preview-note"
             style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
           >
             🎁 Free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and 3 AI Tutor messages
-          </motion.p>
-        </div>
+          </p>
+        </CoursePathHero>
       </section>
+      <div id="find-course" className="course-finder-container">
+        <CourseFinder initialProvince={province} />
+      </div>
 
       {/* ── Course Catalogue ── */}
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <FadeUp>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
-            Choose Your Certification Track
+            Browse all courses
           </h2>
-          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
-            Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Every course includes 400+ practice questions and full AI Tutor access.
+          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 620, margin: "0 auto 32px" }}>
+            Explore Ontario and WPI certification courses. Each course brings practice questions, mock exams and its study tools together in one workspace.
           </p>
 
           {/* Track Tree — accordion-style vertical selector */}
@@ -1565,7 +1535,7 @@ export default function Landing() {
                       color: activeTrack === "ontario-dist" ? "#fff" : "#0369A1",
                       fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                     }}
-                  >🚰 Distribution</button>
+                  >🚰 Distribution & Supply</button>
                 </div>
               )}
             </div>
@@ -1689,7 +1659,7 @@ export default function Landing() {
           gap: 24,
         }}>
           {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).map(course => (
-            <CourseCard key={course.code} course={course} />
+            <CourseCard key={course.code} course={course} province={province} />
           ))}
         </div>
       </section>

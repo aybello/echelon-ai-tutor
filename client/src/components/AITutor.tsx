@@ -2,11 +2,16 @@
 // Design: Slide-in right panel with gradient header, chat bubbles, quick prompts
 // Philosophy: Professional SaaS — Clean Dark-Accent
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useContext } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
-import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
+import { getTutorFailureMessage, isTutorDismissKey, withoutTutorErrors } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { createPortal } from "react-dom";
+import { TutorPanelPlacement } from "./TutorPanelPlacement";
+import "./AITutor.css";
+import { Streamdown } from "streamdown";
+import { AI_TUTOR_MARKDOWN_PLUGINS } from "@/components/AIChatBox";
 
 interface Props {
   question: Question | null;
@@ -17,21 +22,6 @@ interface Props {
   examType: string; // canonical course key for server-owned tutor context
 }
 
-function renderMsg(text: string) {
-  return text.split("\n").map((line, i, arr) => (
-    <span key={i}>
-      {line.split(/(\*\*[^*]+\*\*)/g).map((p, j) =>
-        p.startsWith("**") && p.endsWith("**") ? (
-          <strong key={j}>{p.slice(2, -2)}</strong>
-        ) : (
-          p
-        )
-      )}
-      {i < arr.length - 1 && <br />}
-    </span>
-  ));
-}
-
 export default function AITutor({
   question,
   userAnswer,
@@ -40,6 +30,7 @@ export default function AITutor({
   onClose,
   examType,
 }: Props) {
+  const placement = useContext(TutorPanelPlacement);
   const [sessionStartMs] = useState(() => Date.now());
   const saveSessionMutation = trpc.tutor.saveSession.useMutation();
   // Support both OAuth and verified email session users for session saving
@@ -156,11 +147,14 @@ export default function AITutor({
 
   const chatMutation = trpc.tutor.chat.useMutation();
 
-  const sendMessage = async (userMsg: string) => {
+  const sendMessage = async (
+    userMsg: string,
+    priorMessages: { role: "user" | "assistant"; content: string }[] = messages,
+  ) => {
     if (!userMsg.trim() || loading) return;
     setInput("");
     const newMessages = [
-      ...messages,
+      ...priorMessages,
       { role: "user" as const, content: userMsg },
     ];
     setMessages(newMessages);
@@ -196,8 +190,9 @@ export default function AITutor({
           content: `__ERROR__:${message}`,
         },
       ]);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const QUICK = patternMode
@@ -208,7 +203,7 @@ export default function AITutor({
         "Show me a worked example from scratch",
       ]
     : [
-        "Walk me through step by step",
+        "Show the full calculation: Given, Formula and why, Substitute, Answer and Check",
         "Why exactly was I wrong?",
         "Give me a similar question",
         "How does this apply on the job?",
@@ -218,36 +213,10 @@ export default function AITutor({
     ? "linear-gradient(135deg, #B45309, #92400E)"
     : "linear-gradient(135deg, #1D4ED8, #0F766E)";
 
-  return (
-    <>
-      {/* Mobile backdrop */}
-      <style>{`
-        @media (max-width: 640px) {
-          .ai-tutor-panel {
-            width: 100% !important;
-            left: 0 !important;
-            top: 56px !important;
-            border-left: none !important;
-            border-top: 1px solid #E5E7EB !important;
-          }
-        }
-      `}</style>
-    <div
-      className="ai-tutor-panel"
-      style={{
-        position: "fixed",
-        right: 0,
-        top: 0,
-        bottom: 0,
-        width: 420,
-        background: "#fff",
-        borderLeft: "1px solid #E5E7EB",
-        display: "flex",
-        flexDirection: "column",
-        zIndex: 100,
-        boxShadow: "-8px 0 32px rgba(0,0,0,0.12)",
-        animation: "slideIn 0.3s ease both",
-      }}
+  const panel = (
+    <aside
+      className={`ai-tutor-panel ai-tutor-panel--${placement}`}
+      aria-label="AI Tutor"
     >
       {/* Header */}
       <div
@@ -331,7 +300,7 @@ export default function AITutor({
 
       {/* Context strip */}
       {!patternMode && question && (
-        <div
+        <div className="ai-tutor-context"
           style={{
             padding: "12px 18px",
             background: "#F8FAFC",
@@ -372,11 +341,19 @@ export default function AITutor({
               {(question as any).formula}
             </div>
           )}
+          {(question as any).isCalc && (
+            <div style={{ fontSize: 10, color: "#475569", marginTop: 6, lineHeight: 1.45 }}>
+              Ask for a full solution to see the formula, units, substitution and a final check.
+            </div>
+          )}
         </div>
       )}
 
       {/* Chat messages */}
       <div
+        className="ai-tutor-messages"
+        role="log"
+        aria-label="Tutor conversation"
         ref={chatRef}
         style={{
           flex: 1,
@@ -425,7 +402,7 @@ export default function AITutor({
                   m.role === "user"
                     ? "14px 14px 4px 14px"
                     : "14px 14px 14px 4px",
-                background: m.role === "user" ? "#1D4ED8" : (m.content === "__ERROR__" ? "#FEF2F2" : "#F1F5F9"),
+                background: m.role === "user" ? "#1D4ED8" : (m.content.startsWith("__ERROR__:") ? "#FEF2F2" : "#F1F5F9"),
                 color: m.role === "user" ? "#fff" : "#1E293B",
                 fontSize: 12,
                 lineHeight: 1.65,
@@ -437,8 +414,9 @@ export default function AITutor({
                   {lastUserMsg && i === messages.length - 1 && (
                     <button
                       onClick={() => {
-                        setMessages(prev => prev.slice(0, -1));
-                        sendMessage(lastUserMsg);
+                        const retryHistory = withoutTutorErrors(messages);
+                        setMessages(retryHistory);
+                        void sendMessage(lastUserMsg, retryHistory);
                       }}
                       style={{
                         padding: "6px 12px",
@@ -457,7 +435,15 @@ export default function AITutor({
                     </button>
                   )}
                 </div>
-              ) : renderMsg(m.content)}
+              ) : m.role === "assistant" ? (
+                <div className="prose prose-sm max-w-none break-words [&_h1]:text-base [&_h2]:mt-3 [&_h2]:text-sm [&_h3]:text-xs [&_ol]:my-2 [&_ul]:my-2 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0">
+                  <Streamdown plugins={AI_TUTOR_MARKDOWN_PLUGINS}>
+                    {m.content}
+                  </Streamdown>
+                </div>
+              ) : (
+                <span style={{ whiteSpace: "pre-wrap" }}>{m.content}</span>
+              )}
             </div>
           </div>
         ))}
@@ -508,24 +494,24 @@ export default function AITutor({
       </div>
 
       {/* Quick prompts */}
-      <div
+      <details className="ai-tutor-prompts"
         style={{
           padding: "10px 16px",
           borderTop: "1px solid #F1F5F9",
           flexShrink: 0,
         }}
       >
-        <div
+        <summary
           style={{
-            fontSize: 9,
+            fontSize: 10,
             fontWeight: 700,
             color: "#CBD5E1",
             letterSpacing: "0.1em",
             marginBottom: 6,
           }}
         >
-          QUICK PROMPTS
-        </div>
+          Quick prompts
+        </summary>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
           {QUICK.map((q) => (
             <button
@@ -550,10 +536,10 @@ export default function AITutor({
             </button>
           ))}
         </div>
-      </div>
+      </details>
 
       {/* Input area */}
-      <div
+      <div className="ai-tutor-composer"
         style={{
           padding: "12px 16px",
           borderTop: "1px solid #E5E7EB",
@@ -568,6 +554,7 @@ export default function AITutor({
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) sendMessage(input);
           }}
+          aria-label="Ask the AI Tutor"
           placeholder="Ask anything..."
           disabled={loading}
           style={{
@@ -601,7 +588,8 @@ export default function AITutor({
           Send
         </button>
       </div>
-    </div>
-    </>
+    </aside>
   );
+  // A body portal avoids transformed page wrappers trapping a fixed drawer.
+  return placement === "workspace" ? panel : createPortal(panel, document.body);
 }

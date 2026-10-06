@@ -318,7 +318,7 @@ describe("resolveEntitlementsByEmail", () => {
       org("active", 42, new Date("2026-08-28T19:00:00.000Z")),
     ]);
 
-    const r = await resolveEntitlementsByEmail("stattersall@winnipeg.ca");
+    const r = await resolveEntitlementsByEmail("fixture-10@example.com");
 
     expect(r.isManager).toBe(true);
     expect(r.hasAnyAccess).toBe(true);
@@ -451,8 +451,13 @@ describe("normalizeEmail", () => {
   });
 
   it("removes only Gmail plus tags so Google sign-in and checkout resolve to the same mailbox", () => {
-    expect(normalizeEmail("Customer+oit-pass@GMAIL.com")).toBe("customer@gmail.com");
-    expect(normalizeEmail("Customer+oit-pass@googlemail.com")).toBe("customer@googlemail.com");
+    // Provider-specific behavior needs the actual domain, not a reserved-domain
+    // replacement. These constructed mailboxes are synthetic and never contacted.
+    const mailbox = (local: string, provider: "gmail.com" | "googlemail.com") => `${local}@${provider}`;
+    expect(normalizeEmail(mailbox("SYNTHETIC-AUDIT-USER+oit-pass", "gmail.com")))
+      .toBe(mailbox("synthetic-audit-user", "gmail.com"));
+    expect(normalizeEmail(mailbox("synthetic-audit-user+quiz", "googlemail.com")))
+      .toBe(mailbox("synthetic-audit-user", "googlemail.com"));
   });
 
   it("preserves plus tags for non-Gmail providers", () => {

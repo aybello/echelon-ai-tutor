@@ -1,3 +1,4 @@
+import { summarizeFlexProgress, flexRowIsStudying } from "@/lib/flexProgressMetrics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -5,7 +6,7 @@ import { Activity, Clock, Target, TrendingUp, UserCheck, Mail } from "lucide-rea
 import { trpc } from "@/lib/trpc";
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof Activity }> = {
-  active: { label: "Studying", color: "bg-emerald-100 text-emerald-800", icon: Activity },
+  active: { label: "Activated", color: "bg-emerald-100 text-emerald-800", icon: Activity },
   assigned: { label: "Awaiting Activation", color: "bg-amber-100 text-amber-800", icon: Clock },
   invited: { label: "Invited", color: "bg-blue-100 text-blue-800", icon: Mail },
 };
@@ -13,7 +14,7 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof
 function readinessLabel(score: number): string {
   if (score >= 80) return "Estimated Ready";
   if (score >= 60) return "Progressing";
-  return score > 0 ? "Needs Focus" : "Not Started";
+  return "Needs Focus";
 }
 
 function readinessColor(score: number): string {
@@ -51,18 +52,15 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
 
   const data = progressQuery.data ?? [];
 
+  if (progressQuery.isError) {
+    return <p role="alert" className="mt-6 text-sm text-amber-800">Course Pass progress could not load. <button type="button" className="workspace-text-link" onClick={() => { void progressQuery.refetch(); }}>Retry progress</button></p>;
+  }
+
   if (data.length === 0) {
     return null; // No Flex licences to show progress for
   }
 
-  const activeOperators = data.filter((d) => d.status === "active");
-  const totalAttempts = data.reduce((sum, d) => sum + d.totalAttempts, 0);
-  const avgAccuracy = activeOperators.length > 0
-    ? Math.round(activeOperators.reduce((sum, d) => sum + d.accuracy, 0) / activeOperators.length)
-    : 0;
-  const avgReadiness = activeOperators.length > 0
-    ? Math.round(activeOperators.reduce((sum, d) => sum + d.readinessScore, 0) / activeOperators.length)
-    : 0;
+  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness } = summarizeFlexProgress(data);
 
   return (
     <Card className="mt-6">
@@ -71,7 +69,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
           <TrendingUp className="h-5 w-5 text-teal-600" />
           <span>Course Pass Progress</span>
           <Badge variant="outline" className="text-xs ml-2">
-            {activeOperators.length} active / {data.length} total
+            {activatedLicences} activated / {data.length} licences
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -88,17 +86,18 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
             <p className={`text-2xl font-bold ${readinessColor(avgReadiness)}`}>{avgReadiness}</p>
-            <p className="text-xs text-slate-500">Avg Readiness</p>
+            <p className="text-xs text-slate-500">Avg Licence Readiness</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{activeOperators.length}</p>
+            <p className="text-2xl font-bold text-slate-900">{studyingLearners}</p>
             <p className="text-xs text-slate-500">Actively Studying</p>
           </div>
         </div>
 
+        <p className="mb-4 text-xs text-slate-500">{assignedLearners} unique assigned learners. Actively studying means recorded licence-attributed answers in the last 30 days. Personal study and unattributed historical attempts are excluded.</p>
         {/* Per-operator progress table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm" aria-label="Course Pass study progress">
             <thead>
               <tr className="border-b text-left text-muted-foreground">
                 <th className="pb-2 pr-4">Operator</th>
@@ -112,7 +111,9 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
             </thead>
             <tbody>
               {data.map((row) => {
-                const config = STATUS_CONFIG[row.status] ?? STATUS_CONFIG.invited;
+                const config = flexRowIsStudying(row)
+                  ? { ...STATUS_CONFIG.active, label: "Studying" }
+                  : STATUS_CONFIG[row.status] ?? STATUS_CONFIG.invited;
                 const remaining = daysRemaining(row.accessEndsAt);
                 const Icon = config.icon;
                 return (

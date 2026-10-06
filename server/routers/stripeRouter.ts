@@ -1,3 +1,4 @@
+import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { checkoutIdentityMatches } from "../stripe/checkoutIdentity";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
@@ -33,6 +34,8 @@ import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
 import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass";
+import { googleAdsPurchaseConversion } from "../stripe/googleAdsPurchase";
+import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import {
@@ -69,19 +72,35 @@ export const stripeRouter = router({
     .input(z.object({
       productKey: z.string(),
       email: z.string().email().optional(),
-      name: z.string().max(128).optional(),
-      phone: z.string().max(32).optional(),
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
-      currency: z.enum(["cad", "usd"]).default("cad"),
+      // Individual Exam Passes are priced in CAD. Keeping this input optional
+      // preserves older clients while preventing geographic currency selection.
+      currency: z.literal("cad").optional().default("cad"),
       visitorId: z.string().min(16).max(128).optional(),
+      analyticsContext: z.object({
+        source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
+        device: z.enum(["desktop", "mobile", "tablet"]),
+        province: z.enum(["ontario", "western", "unknown"]),
+        surface: z.enum(["pricing", "purchase-gate", "quiz-gate"]),
+      }).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
       if (!product) throw new Error("Product not found");
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Checkout is temporarily unavailable. Please try again shortly." });
+      try {
+        await assertIndividualPaymentSchemaReady(db);
+      } catch {
+        // This runs before the remote Stripe write. No learner can pay while the
+        // signed webhook would be unable to record the access and receipt.
+        throw new TRPCError({
+          code: "SERVICE_UNAVAILABLE",
+          message: "Checkout is temporarily unavailable. Please try again shortly.",
+        });
+      }
       const releasedProducts = await getCommercialAvailability(db, ALL_PRODUCTS);
       if (!releasedProducts.some((released) => released.key === product.key)) {
         throw new TRPCError({
@@ -92,12 +111,8 @@ export const stripeRouter = router({
       const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
 
       const userEmail = ctx.user?.email ?? input.email;
-      // Phone and name collected via pre-checkout modal; stored in metadata
-      // for the signed Stripe webhook to save with the purchase record.
-      const preCheckoutPhone = input.phone ?? "";
-      const preCheckoutName = input.name ?? "";
-      const currency = input.currency ?? "cad";
-      const unitAmount = currency === "usd" ? product.priceUSD : product.priceCAD;
+      const currency = "cad" as const;
+      const unitAmount = product.priceCAD;
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -122,33 +137,48 @@ export const stripeRouter = router({
           product_name: product.name,
           user_id: ctx.user?.id?.toString() ?? "",
           customer_email: userEmail ?? "",
-          customer_name: preCheckoutName,
-          customer_phone: preCheckoutPhone,
           utm_source: input.utmSource ?? "",
           utm_medium: input.utmMedium ?? "",
           utm_campaign: input.utmCampaign ?? "",
           currency,
           catalogue_version: CATALOGUE_VERSION,
           analytics_identity_hash: input.visitorId ? hashAnalyticsAnonymousId(input.visitorId) : "",
+          analytics_source: input.analyticsContext?.source ?? "unknown",
+          analytics_device: input.analyticsContext?.device ?? "unknown",
+          analytics_province: input.analyticsContext?.province ?? "unknown",
+          analytics_surface: input.analyticsContext?.surface ?? "unknown",
           ...individualExamPassCheckoutMetadata(),
         },
         allow_promotion_codes: true,
+        // Stripe requires the phone field when collection is enabled. Collect it
+        // here for every individual pass, including accelerated wallet checkouts.
         phone_number_collection: { enabled: true },
         success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${appBaseUrl}/pricing`,
+        cancel_url: `${appBaseUrl}${(await import("../../shared/funnelNavigation")).individualCheckoutCancelPath(product.key, ctx.req.headers.referer, appBaseUrl)}`,
       });
 
-      await trackEvent(
-        input.utmSource === "quiz-diagnostic" ? "diagnostic_checkout_started" : "checkout_started",
-        {
-          userId: ctx.user?.id?.toString() ?? null,
-          email: userEmail ?? null,
-          examType: product.examTypes[0] ?? null,
-          productKey: product.key,
-          anonymousId: input.visitorId ?? null,
-          extra: { currency, amountCents: unitAmount, source: input.utmSource ?? "pricing" },
+      const checkoutAnalytics = {
+        userId: ctx.user?.id?.toString() ?? null,
+        email: userEmail ?? null,
+        examType: product.examTypes[0] ?? null,
+        productKey: product.key,
+        anonymousId: input.visitorId ?? null,
+        extra: {
+          currency,
+          amountCents: unitAmount,
+          source: input.analyticsContext?.source ?? "unknown",
+          device: input.analyticsContext?.device ?? "unknown",
+          province: input.analyticsContext?.province ?? "unknown",
+          surface: input.analyticsContext?.surface ?? "unknown",
         },
-      );
+      };
+      // The Stripe session is already created. Do not wait for telemetry before
+      // returning its URL, because an analytics database stall must not turn a
+      // valid checkout into a client-visible failure.
+      void trackEvent("checkout_started", checkoutAnalytics);
+      if (input.utmSource === "quiz-diagnostic") {
+        void trackEvent("diagnostic_checkout_started", checkoutAnalytics);
+      }
 
       return { url: session.url };
     }),
@@ -184,14 +214,15 @@ export const stripeRouter = router({
         return { email: identityMatches ? email : "", productKey, paid: true,
           requiresSignIn: !identityMatches,
           unlockedExamTypes: identityMatches && !fulfillmentPending ? getAllUnlockedExamTypes([productKey]) : [],
-          accessToken: null, accessExpiresAt, fulfillmentPending };
+          accessToken: null, accessExpiresAt, fulfillmentPending,
+          adsConversion: googleAdsPurchaseConversion(checkout, session, !fulfillmentPending) };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
           content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: check signed Stripe webhook delivery before any manual recovery.`,
         }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
-        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false };
+        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false, adsConversion: null };
       }
     }),
 
@@ -319,9 +350,15 @@ export const stripeRouter = router({
    * needing to contact support.
    */
   createBillingPortalSession: publicProcedure
-    .input(z.object({}))
-    .mutation(async ({ ctx }) => {
-      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+    .input(z.object({
+      scope: z.enum(["personal", "team"]).optional(),
+      orgId: z.number().int().positive().optional(),
+    }).refine(input => input.scope !== "personal" || input.orgId === undefined, {
+      message: "Personal billing cannot select an organization.",
+      path: ["orgId"],
+    }).default({}))
+    .mutation(async ({ ctx, input }) => {
+      const email = managerEmailForContext(ctx);
       if (!email) {
         throw new TRPCError({
           code: "UNAUTHORIZED",
@@ -336,47 +373,24 @@ export const stripeRouter = router({
       if (!db) throw new Error("Database unavailable");
 
       const { normalizeEmail: normEmail } = await import("../_core/access");
-      const { organizationMembers: membersTable, organizations: orgsTable } = await import("../../drizzle/schema");
-      const { isNull, desc, inArray } = await import("drizzle-orm");
+      const { isNull, desc } = await import("drizzle-orm");
       const normalisedEmail = normEmail(email);
-      const now = new Date();
-
-      // Lookup order per spec:
-      // 1. Active manager membership joined to an active organization → use org.stripeCustomerId
-      // 2. Otherwise, most recent direct subscription row where orgId IS NULL
+      // Explicit personal billing must not inspect or depend on team ownership,
+      // including pending checkouts and invoice-billed organizations. Omitted
+      // scope retains the safe legacy team-first behavior for older clients.
+      const managerOrg = input.scope === "personal" ? null : await resolveManagedOrganization(ctx, {
+        orgId: input.orgId,
+        purpose: "billing",
+        allowMissing: input.scope !== "team",
+      });
       let stripeCustomerId: string | null | undefined;
-
-      const managerOrgRow = await db
-        .select({ stripeCustomerId: orgsTable.stripeCustomerId })
-        .from(membersTable)
-        .innerJoin(orgsTable, eq(membersTable.orgId, orgsTable.id))
-        .where(
-          and(
-            eq(membersTable.email, normalisedEmail),
-            eq(membersTable.role, "manager"),
-            eq(membersTable.status, "assigned"),
-            inArray(orgsTable.status, ["active", "past_due"]),
-            gt(orgsTable.termEnd, now),
-          ),
-        )
-        .limit(1)
-        .then(r => r[0]);
-
-      if (managerOrgRow?.stripeCustomerId) {
-        stripeCustomerId = managerOrgRow.stripeCustomerId;
+      if (managerOrg) {
+        stripeCustomerId = managerOrg.stripeCustomerId;
+        if (managerOrg.billingType === "invoice" || !stripeCustomerId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This organization uses invoice billing or has no billing customer. Contact support to recover team billing." });
       } else {
-        // Individual subscriber — find direct subscription
-        const rows = await db
-          .select({ stripeCustomerId: subscriptions.stripeCustomerId })
-          .from(subscriptions)
-          .where(
-            and(
-              eq(subscriptions.email, normalisedEmail),
-              isNull(subscriptions.orgId),
-            ),
-          )
-          .orderBy(desc(subscriptions.createdAt))
-          .limit(5);
+        const rows = await db.select({ stripeCustomerId: subscriptions.stripeCustomerId })
+          .from(subscriptions).where(and(eq(subscriptions.email, normalisedEmail), isNull(subscriptions.orgId)))
+          .orderBy(desc(subscriptions.createdAt)).limit(5);
         stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
       }
       if (!stripeCustomerId) {
@@ -385,7 +399,9 @@ export const stripeRouter = router({
 
       const portalSession = await stripe.billingPortal.sessions.create({
         customer: stripeCustomerId,
-        return_url: isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
+        // Preserve the explicit personal view when a manager returns from Stripe.
+        return_url: input.scope === "personal" ? `${appBaseUrl}/account?billing=personal`
+          : managerOrg || isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
       });
 
       return { url: portalSession.url };
@@ -495,6 +511,12 @@ export const stripeRouter = router({
       tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
       seats: z.number().int().min(5).max(500),
       managerEmail: z.string().email(),
+      analyticsContext: z.object({
+        source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
+        device: z.enum(["desktop", "mobile", "tablet"]),
+        province: z.enum(["ontario", "western", "unknown"]),
+        visitorId: z.string().min(16).max(128),
+      }).optional(),
     }))
     .mutation(async ({ input }) => {
       if (!ORGANIZATION_COMMERCE_ENABLED) {
@@ -533,6 +555,11 @@ export const stripeRouter = router({
           pricing_model: "graduated",
           catalogue_version: CATALOGUE_VERSION,
           expected_total_cents: String(expectedTotalCents),
+          analytics_identity_hash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : "",
+          analytics_source: input.analyticsContext?.source ?? "unknown",
+          analytics_device: input.analyticsContext?.device ?? "unknown",
+          analytics_province: input.analyticsContext?.province ?? input.province,
+          analytics_surface: "teams",
         },
         subscription_data: {
           metadata: {
@@ -544,12 +571,34 @@ export const stripeRouter = router({
             seats: String(input.seats),
             pricing_model: "graduated",
             catalogue_version: CATALOGUE_VERSION,
+            analytics_identity_hash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : "",
+            analytics_source: input.analyticsContext?.source ?? "unknown",
+            analytics_device: input.analyticsContext?.device ?? "unknown",
+            analytics_province: input.analyticsContext?.province ?? input.province,
+            analytics_surface: "teams",
           },
         },
         phone_number_collection: { enabled: true },
         allow_promotion_codes: true,
         success_url: `${appBaseUrl}/team?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${appBaseUrl}/teams`,
+      });
+
+      // The Stripe session is already created. Do not wait for telemetry before
+      // returning its URL, because an analytics database stall must not turn a
+      // valid checkout into a client-visible failure.
+      void trackEvent("checkout_started", {
+        email: input.managerEmail,
+        identityHash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : null,
+        productKey: "teams-annual",
+        extra: {
+          source: input.analyticsContext?.source ?? "unknown",
+          device: input.analyticsContext?.device ?? "unknown",
+          province: input.analyticsContext?.province ?? input.province,
+          surface: "teams",
+          seats: input.seats,
+          tier: input.tier,
+        },
       });
 
       return { url: session.url };
@@ -563,39 +612,16 @@ export const stripeRouter = router({
   updateTeamSeats: publicProcedure
     .input(z.object({
       seats: z.number().int().min(5).max(500),
+      orgId: z.number().int().positive().optional(),
     }))
     .mutation(async ({ input, ctx }) => {
-      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+      const email = managerEmailForContext(ctx);
       if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in." });
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-      const { organizations: orgsTable, organizationMembers: membersTable } = await import("../../drizzle/schema");
-      const { normalizeEmail: norm } = await import("../_core/access");
-
-      const normEmail = norm(email);
-      const managerRow = await db
-        .select({ orgId: membersTable.orgId })
-        .from(membersTable)
-        .where(
-          and(
-            eq(membersTable.email, normEmail),
-            eq(membersTable.role, "manager"),
-            eq(membersTable.status, "assigned"),
-          ),
-        )
-        .limit(1)
-        .then(r => r[0]);
-
-      if (!managerRow) throw new TRPCError({ code: "UNAUTHORIZED", message: "No manager account found." });
-
-      const org = await db
-        .select()
-        .from(orgsTable)
-        .where(eq(orgsTable.id, managerRow.orgId))
-        .limit(1)
-        .then(r => r[0]);
+      const org = await resolveManagedOrganization(ctx, { orgId: input.orgId });
 
       if (!org?.stripeSubscriptionId) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });

@@ -3,15 +3,35 @@
 // Usage: wrap the quiz content in <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={49} />
 
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { loginWithReturnPath } from "@/const";
+import { buildPricingHref, courseCatalogueHref, signInHref } from "@shared/funnelNavigation";
 import { isPreviewModeActive } from "@/lib/previewMode";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
 import { resolvePurchaseGateOffer } from "@shared/checkoutOffer";
+import { resolveCourseKey } from "@shared/courseRegistry";
+import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
+
+/** Read the email stored after a completed purchase or sign-in for access lookup. */
+function getStoredEmail(): string {
+  try {
+    return localStorage.getItem("echelon_trial_email") ?? "";
+  } catch {
+    return "";
+  }
+}
+
+/** Read the signed post-login token. The server still re-checks live access. */
+function getStoredAccessToken(): string | undefined {
+  try {
+    return localStorage.getItem("echelon_access_token") ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -29,15 +49,6 @@ interface PurchaseGateProps {
   backPath?: string;
   /** Deliberately free course surface; bypasses purchase access checks. */
   freeAccess?: boolean;
-}
-
-/** Read email from localStorage (set during QuizGate or PurchaseSuccess) */
-function getStoredEmail(): string {
-  try {
-    return localStorage.getItem("echelon_trial_email") ?? "";
-  } catch {
-    return "";
-  }
 }
 
 /** Check if a product key is in the locally stored purchased products list */
@@ -64,55 +75,46 @@ function isSubscriptionCovered(examType: string): boolean {
 
 const DEFAULT_FEATURES: Record<string, string[]> = {
   "wqa": [
-    "475-question WQA bank — unlimited attempts",
     "Timed WQA mock exam (100 questions, 2 hrs)",
     "WQA formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],
   "class4-water": [
-    "500 Class 4 Water questions — unlimited attempts",
     "Timed Class 4 Water mock exam",
     "Class 4 Water formula sheet (37 formulas)",
     "AI Tutor explanations on every question",
   ],
   "class3-water": [
-    "400+ Class 3 Water questions — unlimited attempts",
     "Timed Class 3 Water mock exam",
     "Class 3 Water formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class3-ww": [
-    "502 Class 3 WW questions — unlimited attempts",
     "Timed Class 3 WW mock exam",
     "WW3 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class4-ww": [
-    "500 Class 4 WW questions — unlimited attempts",
     "Timed Class 4 WW mock exam (100 questions, 2 hrs)",
     "Class 4 WW formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],
   "class2-water": [
-    "400+ Class 2 Water questions — unlimited attempts",
     "Timed Class 2 Water mock exam",
     "Water2 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class2-ww": [
-    "400+ Class 2 WW questions — unlimited attempts",
     "Timed Class 2 WW mock exam",
     "WW2 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class1-water": [
-    "400+ Class 1 Water questions — unlimited attempts",
     "Timed Class 1 Water mock exam",
     "Water1 formula sheet",
     "AI Tutor explanations on every question",
   ],
   "class1-ww": [
-    "400+ Class 1 WW questions — unlimited attempts",
     "Timed Class 1 WW mock exam",
     "WW1 formula sheet",
     "AI Tutor explanations on every question",
@@ -138,29 +140,37 @@ export default function PurchaseGate({
 }: PurchaseGateProps) {
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
+  const [accessToken] = useState(getStoredAccessToken);
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
-  const [showCheckout, setShowCheckout] = useState(false);
   const [, navigate] = useLocation();
+  const searchString = useSearch();
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
-  const offer = resolvePurchaseGateOffer({ productKey, productName, price, isUS });
+  const offer = resolvePurchaseGateOffer({ productKey, productName, price });
+  const course = resolveCourseKey(productKey);
+  const bankKey = course?.questionBankKey;
+  const bankMeta = trpc.quiz.getBankMeta.useQuery(
+    { bankKey: bankKey ?? "unknown-course" },
+    { enabled: Boolean(bankKey), staleTime: 60_000, retry: 1 },
+  );
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: data => {
       if (data.url) window.location.href = data.url;
     },
   });
 
-  function handleCheckout(contact: { name: string; email: string; phone: string }) {
+  function handleCheckout() {
     if (!offer.available) return;
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
     createCheckout.mutate({
       productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
-      currency: isUS ? "usd" : "cad",
+      currency: "cad",
       utmSource: "purchase-gate",
       visitorId: getAnonymousAnalyticsId(),
+      analyticsContext: {
+        ...getMarketingAttribution(window.location.pathname),
+        province: isUS ? "western" : "ontario",
+        surface: "purchase-gate",
+      },
     });
   }
 
@@ -187,7 +197,7 @@ export default function PurchaseGate({
   // Server-side access check — ALWAYS runs when user has email or is authenticated.
   // localAccess (localStorage) is only used to show content optimistically while the server responds.
   const { data: accessData, isLoading } = trpc.stripe.checkAccess.useQuery(
-    { examType, email: email || undefined },
+    { examType, email: email || undefined, accessToken },
     {
       enabled: !!isAuthenticated || !!email,
       staleTime: 5 * 60 * 1000,
@@ -209,7 +219,11 @@ export default function PurchaseGate({
     return <>{children}</>;
   }
 
-  const featureList = features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES;
+  const featureList = buildAuthoritativeOfferFeatures({
+    courseLabel: course?.displayName ?? offer.productName,
+    totalQuestions: bankMeta.data?.totalQuestions,
+    suppliedFeatures: features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES,
+  });
 
   // No access — show paywall with blurred preview of actual content behind it
   return (
@@ -382,7 +396,7 @@ export default function PurchaseGate({
           {offer.available ? (
             <>
             <button
-              onClick={() => setShowCheckout(true)}
+              onClick={handleCheckout}
               disabled={createCheckout.isPending}
               style={{
                 width: "100%",
@@ -405,7 +419,7 @@ export default function PurchaseGate({
           </p>
             </>
           ) : (
-            <Link href="/pricing">
+            <Link href={buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString)}>
               <button
                 style={{
                   width: "100%",
@@ -425,7 +439,7 @@ export default function PurchaseGate({
             </Link>
           )}
 
-          <Link href={isUS ? "/us/courses" : "/quiz"}>
+          <Link href={courseCatalogueHref(isUS)}>
             <button
               style={{
                 width: "100%",
@@ -447,7 +461,7 @@ export default function PurchaseGate({
 
         <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #E2E8F0" }}>
           <a
-            href="/account"
+            href={signInHref(`${window.location.pathname}${window.location.search}`)}
             style={{
               display: "flex",
               alignItems: "center",
@@ -467,23 +481,12 @@ export default function PurchaseGate({
             🎫 Already purchased? Restore access →
           </a>
           <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); loginWithReturnPath(window.location.pathname); }}
+            href={signInHref(`${window.location.pathname}${window.location.search}`)}
             style={{ display: "block", textAlign: "center", color: "#94A3B8", fontWeight: 500, fontSize: 11 }}
           >
             Log in to your account →
           </a>
       </div>
-      {showCheckout && offer.available && offer.priceLabel && (
-        <CheckoutContactModal
-          productName={offer.productName}
-          priceLabel={offer.priceLabel}
-          prefillEmail={email}
-          onSubmit={handleCheckout}
-          onClose={() => setShowCheckout(false)}
-          isLoading={createCheckout.isPending}
-        />
-      )}
     </div>
 
       {/* Back link at bottom */}

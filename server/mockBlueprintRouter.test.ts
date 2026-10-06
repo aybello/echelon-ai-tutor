@@ -8,6 +8,9 @@ import { WPI_CLASS4_BANK, WPI_CLASS4_BLUEPRINT, WPI_COLLECTION_BANK, WPI_COLLECT
 vi.mock("./db", async importOriginal => ({ ...await importOriginal<typeof import("./db")>(), getDb: vi.fn() }));
 vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn(async () => ({ userId: null, studentEmail: "mock@example.test" })) }));
 vi.mock("./_core/accessService", async importOriginal => ({ ...await importOriginal<typeof import("./_core/accessService")>(), resolveAccessForRequest: vi.fn(async () => true) }));
+// Blueprint fixtures contain no entitlement records. Real attribution is covered
+// by the isolated SQL/router regression suite, not these question-selection mocks.
+vi.mock("./teams/attemptAttribution", () => ({ resolveAttemptAttribution: vi.fn().mockResolvedValue({ orgId: null, organizationMemberId: null, flexLicenceId: null }), validateIssuedAttribution: vi.fn() }));
 let rows: any[], version: number;
 const caller = appRouter.createCaller({ user: null, studentEmail: "mock@example.test", req: { headers: {}, cookies: {} }, res: {} } as any);
 beforeEach(() => {

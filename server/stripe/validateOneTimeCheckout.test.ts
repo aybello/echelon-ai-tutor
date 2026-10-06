@@ -5,10 +5,11 @@
 import { describe, it, expect } from "vitest";
 import { validateOneTimeCheckout } from "./validateOneTimeCheckout";
 import { ALL_PRODUCTS } from "../../shared/products";
+import { LEGACY_INDIVIDUAL_USD_PRICES } from "./legacyUsdCheckout";
 import type Stripe from "stripe";
 
 // Use the first product from the catalogue for tests
-const PRODUCT = ALL_PRODUCTS[0]; // "oit" — priceCAD: 4900, priceUSD: 3500
+const PRODUCT = ALL_PRODUCTS[0]; // "oit" — priceCAD: 4900
 
 function makeSession(overrides: Partial<Stripe.Checkout.Session> = {}): Stripe.Checkout.Session {
   return {
@@ -39,6 +40,13 @@ function makeSession(overrides: Partial<Stripe.Checkout.Session> = {}): Stripe.C
 }
 
 describe("validateOneTimeCheckout", () => {
+  it("keeps historical USD verification coverage private and complete", () => {
+    expect(Object.keys(LEGACY_INDIVIDUAL_USD_PRICES).sort()).toEqual(
+      ALL_PRODUCTS.map((product) => product.key).sort(),
+    );
+    expect(ALL_PRODUCTS.every((product) => !("priceUSD" in product))).toBe(true);
+  });
+
   it("accepts a paid one-time session with a known canonical product and catalogue subtotal", () => {
     const result = validateOneTimeCheckout(makeSession());
     expect(result.productKey).toBe(PRODUCT.key);
@@ -74,6 +82,24 @@ describe("validateOneTimeCheckout", () => {
     expect(() => validateOneTimeCheckout(session)).toThrow("does not match the product catalogue");
   });
 
+  it("accepts a valid historical USD session without restoring USD to the catalogue", () => {
+    const result = validateOneTimeCheckout(makeSession({
+      currency: "usd",
+      amount_subtotal: 3_500,
+      amount_total: 3_500,
+    }));
+    expect(result.currency).toBe("usd");
+    expect(result.amountPaidCents).toBe(3_500);
+  });
+
+  it("rejects an unsupported historical USD subtotal", () => {
+    expect(() => validateOneTimeCheckout(makeSession({
+      currency: "usd",
+      amount_subtotal: 3_600,
+      amount_total: 3_600,
+    }))).toThrow("does not match the product catalogue");
+  });
+
   it("accepts a lower amount_total when amount_subtotal matches and a promotion was applied", () => {
     const session = makeSession({
       amount_subtotal: PRODUCT.priceCAD,
@@ -98,7 +124,7 @@ describe("validateOneTimeCheckout", () => {
       },
       metadata: {
         product_key: PRODUCT.key,
-        customer_email: "attacker@evil.com", // should be ignored
+        customer_email: "fixture-18@example.com", // should be ignored
       },
     });
     const result = validateOneTimeCheckout(session);

@@ -1,9 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
 import type { DBQuestion } from "./useQuestionBank";
 import {
+  canUsePracticeFilters,
   createHistoryEntry,
   getAdaptiveNext,
+  shouldApplyPracticePageResult,
+  shouldApplyPracticeQueueResult,
+  shouldClearLockedPreviewFilters,
   summarizeHistory,
+  withPracticeQuestionTimeout,
   type HistoryEntry,
 } from "./useQuizSession";
 
@@ -25,6 +30,9 @@ const question = (
 });
 
 describe("quiz session answer history", () => {
+  it("preserves an unrated confirmed answer without inventing confidence", () => {
+    expect(createHistoryEntry(question(1, "Disinfection"), 2, null)).toMatchObject({ correct: true, confidence: null, selectedOption: 2 });
+  });
   it("stores correctness for a confirmed answer", () => {
     expect(createHistoryEntry(question(1, "Disinfection"), 2, 75)).toMatchObject({
       questionId: 1,
@@ -56,5 +64,73 @@ describe("quiz session answer history", () => {
       true,
     );
     expect(next?.module).toBe("Pumps");
+  });
+});
+
+describe("locked preview filters", () => {
+  it("keeps a fixed preview sample from being exhausted by paid-only filters", () => {
+    expect(canUsePracticeFilters(false, false)).toBe(false);
+  });
+
+  it("preserves module and calculation filters for an active pass or a free course", () => {
+    expect(canUsePracticeFilters(false, true)).toBe(true);
+    expect(canUsePracticeFilters(true, false)).toBe(true);
+  });
+
+  it("keeps a paid deep-link when the paged endpoint confirms access", () => {
+    expect(shouldClearLockedPreviewFilters({
+      pageLocked: false,
+      pageQuestionCount: 50,
+      selectedModule: "Rare module",
+      calcOnly: true,
+    })).toBe(false);
+  });
+
+  it("keeps a locked preview filter when its fixed preview still has questions", () => {
+    expect(shouldClearLockedPreviewFilters({
+      pageLocked: true,
+      pageQuestionCount: 2,
+      selectedModule: "Disinfection",
+      calcOnly: true,
+    })).toBe(false);
+  });
+
+  it("clears only an empty locked-preview deep-link after the paged endpoint confirms it", () => {
+    const emptyLockedPreview = {
+      pageLocked: true,
+      pageQuestionCount: 0,
+      selectedModule: "Rare module",
+      calcOnly: true,
+    };
+    expect(shouldClearLockedPreviewFilters(emptyLockedPreview)).toBe(true);
+  });
+
+  it("ignores a late response from an earlier queue even after returning to the same filter", () => {
+    expect(shouldApplyPracticePageResult(3, 3)).toBe(true);
+    expect(shouldApplyPracticePageResult(1, 3)).toBe(false);
+  });
+
+  it("does not let an obsolete queue timeout overwrite the active queue state", () => {
+    const obsoleteQueue = {};
+    const activeQueue = {};
+    expect(shouldApplyPracticeQueueResult(obsoleteQueue, activeQueue)).toBe(false);
+    expect(shouldApplyPracticeQueueResult(activeQueue, activeQueue)).toBe(true);
+  });
+});
+
+describe("practice delivery resilience", () => {
+  it("converts a stalled question request into a retryable error", async () => {
+    vi.useFakeTimers();
+    try {
+      let resolveLateResponse: ((value: string) => void) | undefined;
+      const stalled = new Promise<string>((resolve) => { resolveLateResponse = resolve; });
+      const request = withPracticeQuestionTimeout(stalled, 25);
+      const expectedTimeout = expect(request).rejects.toThrow("Question delivery is taking too long. Please retry.");
+      await vi.advanceTimersByTimeAsync(25);
+      resolveLateResponse?.("late question page");
+      await expectedTimeout;
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

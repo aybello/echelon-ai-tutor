@@ -14,6 +14,7 @@
 import { class1OptionOrder, class1DisplayLetter } from "@/lib/class1OptionOrder";
 import React, { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { toast } from "sonner";
+import { TutorPanelPlacement } from "./TutorPanelPlacement";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
 import type { ModuleOverview } from "@/lib/questionTypes";
@@ -22,8 +23,17 @@ import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
+import { readUSStudyContext, withUSStudyContext } from "@shared/usStudyContext";
+import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
+import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
+import QuizSkeleton from "@/components/QuizSkeleton";
+import PracticeOptions from "@/components/PracticeOptions";
+import { getPracticeGuidePath } from "@/lib/practiceResources";
+import StudyNotesTopics from "@/components/StudyNotesTopics";
+import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
+import "./StudyWorkspace.css";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -140,6 +150,28 @@ export interface QuizShellProps {
   freeLimit?: number;
 }
 
+/**
+ * A saved topic URL can outlive a bank import or question repair. Once the
+ * current learner-visible module list is loaded, fall back to All Modules
+ * instead of issuing a filter that cannot return a question.
+ */
+export function shouldClearUnavailableSelectedModule(
+  selectedModule: string | null,
+  modules: readonly ModuleConfig[],
+): boolean {
+  return Boolean(selectedModule?.trim())
+    && modules.length > 0
+    && !modules.some((module) => module.name === selectedModule);
+}
+
+/** The recovery panel is for a real delivery failure or an empty valid slice.
+ * A normal in-flight request must keep the familiar quiz workspace visible. */
+export function shouldShowPracticeQuestionStatus(
+  questionStatus: QuizShellProps["questionStatus"],
+): questionStatus is "error" | "empty" {
+  return questionStatus === "error" || questionStatus === "empty";
+}
+
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const DIFF_COLOR: Record<string, string> = {
@@ -207,6 +239,25 @@ export default function QuizShell({
   isFreePreview = false,
   freeLimit = 15,
 }: QuizShellProps) {
+  const search = useSearch();
+  const usContext = readUSStudyContext(search);
+  const canonicalCourse = resolveCourseKey(examType ?? currentPath.slice(1));
+  const displaySubtitle = canonicalCourse?.examFamily === "western" && usContext.isUS
+    ? `${usContext.state?.name ?? "US"} · Shared WPI preparation · Confirm your local exam requirements`
+    : courseSubtitle;
+  const clearedUnavailableModuleRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!shouldClearUnavailableSelectedModule(selectedModule, modules)) {
+      clearedUnavailableModuleRef.current = null;
+      return;
+    }
+    if (clearedUnavailableModuleRef.current !== selectedModule) {
+      clearedUnavailableModuleRef.current = selectedModule;
+      onModuleChange(null);
+    }
+  }, [modules, onModuleChange, selectedModule]);
+
   // Show toast when calc-only has no questions available
   useEffect(() => {
     if (noCalcQuestions) {
@@ -217,7 +268,16 @@ export default function QuizShell({
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
+  const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+
+  const openStudyNotes = useCallback((practiceModule: string | null) => {
+    const courseKey = examType ?? currentPath.slice(1);
+    const resolution = resolveStudyNotesTopics(courseKey, practiceModule, Object.keys(moduleOverviews ?? {}));
+    setStudyNotesPracticeModule(practiceModule);
+    setStudyNotesModule(resolution.initialTopic);
+    setStudyNotesOpen(true);
+  }, [currentPath, examType, moduleOverviews]);
 
   const dismissTutor = useCallback(() => {
     onTutorClose();
@@ -238,9 +298,8 @@ export default function QuizShell({
   useEffect(() => {
     const panel = new URLSearchParams(window.location.search).get("panel");
     if (panel === "notes") {
-      if (moduleOverviews && Object.keys(moduleOverviews).length > 0) {
-        setStudyNotesModule(selectedModule);
-        setStudyNotesOpen(true);
+      if (moduleOverviews) {
+        openStudyNotes(selectedModule);
       }
     }
     if (panel === "tutor") onTutorOpen();
@@ -319,31 +378,24 @@ export default function QuizShell({
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
 
-  //  // ── Session complete screen ──────────────────────────────────────────
-  if (questionStatus) {
-    return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-2xl p-6">
+  // Delivery failures and genuinely empty selections are separate from a
+  // completed quiz session. Normal loading stays in the quiz workspace.
+  if (shouldShowPracticeQuestionStatus(questionStatus)) {
+    return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
       <h1 className="text-xl font-bold">{courseTitle}</h1>
-      <div role={questionStatus === "error" ? "alert" : "status"} className="my-6">
-        {questionStatus === "loading" ? "Loading practice questions…" : questionStatus === "error" ? questionError : "No more questions match this practice selection."}
-      </div>
-      {questionStatus === "error" && <button onClick={onRetryQuestions} className="rounded border p-3">Retry loading questions</button>}
-      {questionStatus === "empty" && <>
-        <p>Your {history.length} answers remain in this session. Change your filters or start another session.</p>
-        <button onClick={onResetSession} className="m-2 rounded border p-3">Start another session</button>
-      </>}
-      <div className="my-4 flex flex-wrap gap-2">
-        <button onClick={() => onModuleChange(null)} className="rounded border p-2">All modules</button>
-        {modules.map(m => <button key={m.name} onClick={() => onModuleChange(m.name)} className="rounded border p-2">{m.name}</button>)}
-        {hasCalcOnly && <button onClick={onCalcOnlyToggle} className="rounded border p-2">{calcOnly ? "Turn off Calc Only" : "Calc Only"}</button>}
-      </div>
-      {headerExtra}
-    </main></>;
+      <PracticeQuestionStatus status={questionStatus} error={questionError} answerCount={history.length}
+        modules={modules} selectedModule={selectedModule} calcOnly={calcOnly} hasCalcOnly={hasCalcOnly}
+        onModuleChange={onModuleChange} onCalcOnlyToggle={onCalcOnlyToggle}
+        onRetry={onRetryQuestions} onRestart={onResetSession}>
+        {headerExtra}
+      </PracticeQuestionStatus>
+    </main>{gate}</>;
   }
 
   if (!current && history.length > 0) {
     const pct = Math.round((correctCount / history.length) * 100);
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="practice-page" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
         {showSessionFeedback && examType && (
           <FeedbackModal
@@ -426,7 +478,7 @@ export default function QuizShell({
                 🔄 New Session
               </button>
               {mockExamHref && (
-                <Link href={mockExamHref} style={{ flex: 1, width: "100%", padding: "14px 20px", borderRadius: 12, background: "#fff", color: "#0369A1", fontWeight: 700, fontSize: 15, border: "1.5px solid #0369A1", cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
+                <Link href={withUSStudyContext(mockExamHref, canonicalCourse?.courseKey, search)} style={{ flex: 1, width: "100%", padding: "14px 20px", borderRadius: 12, background: "#fff", color: "#0369A1", fontWeight: 700, fontSize: 15, border: "1.5px solid #0369A1", cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
                   📝 Mock Exam
                 </Link>
               )}
@@ -437,8 +489,14 @@ export default function QuizShell({
     );
   }
 
-  if (!current) return null;
+  // The initial request has no prior question to keep on screen. Subsequent
+  // module changes retain their current question while the next slice arrives.
+  if (!current) {
+    if (questionStatus === "loading") return <QuizSkeleton />;
+    return null;
+  }
 
+  const isQuestionLoading = questionStatus === "loading";
   const correctIdx = current.correctAnswer ?? current.correct ?? (current as any).correctIndex ?? 0;
   const moduleConfig = modules.find(m => m.name === current.module);
   const moduleBg = moduleConfig?.bg ?? "#F1F5F9";
@@ -450,12 +508,13 @@ export default function QuizShell({
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
+    <div className={`practice-page practice-screen${tutorOpen && renderAITutor ? " has-tutor" : ""}`} style={{ background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
-        /* Keep study controls visible without allowing the header to consume the question viewport. */
-        .qs-module-pills-row { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 3px; }
+        /* Keep every module available. A hidden horizontal overflow made the
+           final module buttons look cut off on laptops and tablets. */
+        .qs-module-pills-row { flex-wrap: wrap !important; overflow-x: visible !important; row-gap: 5px; padding-bottom: 3px; }
         .qs-module-pills-row::-webkit-scrollbar, .qs-mode-bar-wrap::-webkit-scrollbar { display: none; }
         .qs-mode-bar-wrap { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; padding-bottom: 3px; scrollbar-width: none; }
         .qs-mode-card { min-width: 0 !important; padding: 6px 10px !important; }
@@ -490,8 +549,8 @@ export default function QuizShell({
           .qs-stats-only { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.20) !important; border-radius: 10px !important; overflow: hidden !important; margin-top: 10px !important; width: 100% !important; }
           .qs-stats-only > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; background: transparent !important; border-radius: 0 !important; }
           .qs-stats-only > div:last-child { border-right: none !important; }
-          /* Scrollable module pills row */
-          .qs-module-pills-row { display: flex !important; gap: 5px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; scrollbar-width: none !important; margin-top: 8px !important; width: 100% !important; }
+          /* Module pills wrap into readable rows instead of clipping off-screen. */
+          .qs-module-pills-row { display: flex !important; gap: 5px !important; overflow-x: visible !important; flex-wrap: wrap !important; row-gap: 5px !important; padding-bottom: 4px !important; margin-top: 8px !important; width: 100% !important; }
           .qs-module-pills-row::-webkit-scrollbar { display: none !important; }
           .qs-module-pills-row button { font-size: 10px !important; padding: 4px 9px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
           /* Compact mode cards on mobile */
@@ -516,213 +575,26 @@ export default function QuizShell({
 
       <SiteNav currentPath={currentPath} />
 
-      {/* ── Header ── */}
-      <div className="qs-course-header" style={{ background: headerGradient, color: "#fff", padding: "10px 16px 8px" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-
-          {/* Top row: title + action buttons */}
-          <div className="qs-header-title-row" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              {headerIcon && (
-                <div style={{
-                  background: "rgba(255,255,255,0.2)",
-                  borderRadius: 8,
-                  padding: "6px 8px",
-                  fontSize: 16,
-                  lineHeight: 1,
-                }}>
-                  {headerIcon}
-                </div>
-              )}
-              <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", opacity: 0.75, textTransform: "uppercase", marginBottom: 2 }}>
-                  {courseLabel}
-                </div>
-                <h1 style={{ margin: 0, fontSize: "clamp(15px, 2.5vw, 18px)", fontWeight: 900, letterSpacing: "-0.3px" }}>
-                  {courseTitle}
-                </h1>
-                {courseSubtitle && (
-                  <div className="qs-course-subtitle" style={{ fontSize: 12, opacity: 0.8, marginTop: 3 }}>
-                    {courseSubtitle}
-                    {accuracy !== null && (
-                      <span style={{ fontWeight: 700, opacity: 1 }}> · {accuracy}% accuracy</span>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Action buttons */}
-            <div className="qs-header-actions" style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-              {/* Study Notes button — shown when moduleOverviews are available */}
-              {moduleOverviews && Object.keys(moduleOverviews).length > 0 && (
-                <button
-                  onClick={() => {
-                    setStudyNotesModule(selectedModule);
-                    setStudyNotesOpen(true);
-                  }}
-                  style={{
-                    padding: "5px 10px",
-                    background: "rgba(255,255,255,0.22)",
-                    color: "#fff",
-                    border: "1.5px solid rgba(255,255,255,0.6)",
-                    borderRadius: 8,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 5,
-                  }}
-                >
-                  📖 Study Notes
-                </button>
-              )}
-              {headerActions.map(a => (
-                <Link key={a.href} href={a.href} style={{ padding: "5px 10px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-                  {a.label}
-                </Link>
-              ))}
-            </div>
+      <div className="practice-screen-main">
+      <section className="practice-header" aria-label="Practice session">
+        <div className="practice-header-inner">
+          <div className="practice-title-row"><div>
+            <span className="workspace-eyebrow">{courseLabel}</span>
+            <h1>{courseTitle}</h1>
+            {displaySubtitle && <p>{displaySubtitle}</p>}
+          </div></div>
+          <div className="practice-session-stats" aria-live="polite">
+            <span><strong>{confirmed ? history.length : history.length + 1}{sessionSize ? ` / ${sessionSize}` : ""}</strong> questions</span>
+            <span><strong>{correctCount}</strong> correct</span>
+            {accuracy !== null && <span><strong>{accuracy}%</strong> accuracy</span>}
           </div>
-
-          {/* Stats row — compact inline bar */}
-          <div className="qs-stats-only" style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap", alignItems: "center" }}>
-            {/* Session progress tracker — Q{n}/{sessionSize} */}
-            <div style={{
-              background: "rgba(255,255,255,0.22)",
-              border: "1.5px solid rgba(255,255,255,0.5)",
-              borderRadius: 8,
-              padding: "3px 10px",
-              textAlign: "center",
-              minWidth: 56,
-            }}>
-              <div style={{ fontSize: 14, fontWeight: 800 }}>Q{confirmed ? history.length : history.length + 1}<span style={{ fontSize: 11, fontWeight: 600, opacity: 0.75 }}>/{sessionSize}</span></div>
-              <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>Question</div>
-            </div>
-            {[
-              { label: "Correct", value: correctCount },
-              { label: "Accuracy", value: `${accuracy ?? 0}%` },
-            ].map(s => (
-              <div key={s.label} style={{
-                background: "rgba(255,255,255,0.15)",
-                borderRadius: 8,
-                padding: "3px 10px",
-                textAlign: "center",
-                minWidth: 48,
-              }}>
-                <div style={{ fontSize: 14, fontWeight: 800 }}>{s.value}</div>
-                <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Free preview indicator — shown when user has not unlocked */}
-          {isFreePreview && (
-            <div style={{ marginTop: 8, padding: "6px 12px", background: "rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <span>Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions</span>
-              <span style={{ opacity: 0.8 }}>
-                {Math.max(0, freeLimit - history.length)} left before unlock
-              </span>
-            </div>
-          )}
-
-          {/* Module pills + Calc Only — scrollable row on mobile via .qs-module-pills-row CSS */}
-          {(modules.length > 0 || hasCalcOnly) && (
-            <div className="qs-module-pills-row" role="group" aria-label="Filter questions by module" style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
-              {modules.length > 0 && (
-                <button
-                  onClick={() => onModuleChange(null)}
-                  style={{
-                    padding: "4px 10px",
-                    borderRadius: 20,
-                    border: "1.5px solid",
-                    borderColor: selectedModule === null ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
-                    background: selectedModule === null ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    flexShrink: 0,
-                  }}
-                >
-                  All Modules
-                </button>
-              )}
-              {modules.map((m, idx) => {
-                const isDistColl = /distrib|collect/i.test(m.name);
-                // Insert a subtle divider before the Distribution/Collection pill
-                const prevIsDistColl = idx > 0 && /distrib|collect/i.test(modules[idx-1].name);
-                const needsDivider = isDistColl && idx > 0;
-                return (
-                  <React.Fragment key={m.name}>
-                    {needsDivider && (
-                      <span style={{ display: "flex", alignItems: "center", color: "rgba(255,255,255,0.35)", fontSize: 10, flexShrink: 0, userSelect: "none" }}>|</span>
-                    )}
-                    <button
-                      onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
-                      style={{
-                        padding: isDistColl ? "4px 11px" : "4px 10px",
-                        borderRadius: 20,
-                        border: isDistColl ? "2px solid" : "1.5px solid",
-                        borderColor: selectedModule === m.name
-                          ? "rgba(255,255,255,0.95)"
-                          : isDistColl
-                          ? "rgba(255,220,100,0.75)"
-                          : "rgba(255,255,255,0.3)",
-                        background: selectedModule === m.name
-                          ? "rgba(255,255,255,0.28)"
-                          : isDistColl
-                          ? "rgba(255,200,50,0.18)"
-                          : "rgba(255,255,255,0.1)",
-                        color: "#fff",
-                        fontSize: 11,
-                        fontWeight: isDistColl ? 700 : 600,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                        flexShrink: 0,
-                      }}
-                    >
-                      {m.icon && <span style={{ marginRight: 4 }}>{m.icon}</span>}
-                      {m.name}
-                      {isDistColl && <span style={{ marginLeft: 4, fontSize: 9, opacity: 0.85, fontWeight: 800, letterSpacing: "0.03em", background: "rgba(255,200,50,0.35)", borderRadius: 4, padding: "1px 4px" }}>NEW</span>}
-                    </button>
-                  </React.Fragment>
-                );
-              })}
-              {hasCalcOnly && (
-                <button
-                  onClick={onCalcOnlyToggle}
-                  style={{
-                    padding: "4px 10px",
-                    borderRadius: 20,
-                    border: "1.5px solid",
-                    borderColor: calcOnly ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.3)",
-                    background: calcOnly ? "rgba(167,139,250,0.35)" : "rgba(255,255,255,0.1)",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    flexShrink: 0,
-                  }}
-                >
-                  🧮 Calc Only
-                </button>
-              )}
-            </div>
-          )}
-
-          {/* Optional extra header content (e.g. quiz mode selector) */}
-          {headerExtra && (
-            <div style={{ marginTop: 8 }}>
-              {headerExtra}
-            </div>
-          )}
+          {isFreePreview && <p className="practice-preview">Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions used</p>}
+          <PracticeOptions modules={modules} selectedModule={selectedModule} onModuleChange={onModuleChange}
+            hasCalcOnly={hasCalcOnly} calcOnly={calcOnly} onCalcOnlyToggle={onCalcOnlyToggle}>
+            {headerExtra}
+          </PracticeOptions>
         </div>
-      </div>
+      </section>
 
        {/* ── Progress bar ── */}
       {sessionSize && (
@@ -766,7 +638,7 @@ export default function QuizShell({
         </div>
       )}
       {/* ── Body ── */}
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "12px 16px 24px" }}>
+      <div className="practice-content" tabIndex={0} role="region" aria-label="Practice question and explanation">
 
         {/* Ticket 12: Gate skeleton — when gate is active, render a blurred placeholder instead of the full quiz content.
              This prevents locked question text and answer options from being sent to the DOM. */}
@@ -808,7 +680,27 @@ export default function QuizShell({
           boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
           marginBottom: 10,
           animation: "fadeUp 0.2s ease",
+          position: "relative",
         }}>
+          {isQuestionLoading && (
+            <div role="status" aria-live="polite" style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 14,
+              background: "rgba(248,250,252,0.86)",
+              color: "#334155",
+              fontSize: 13,
+              fontWeight: 700,
+              backdropFilter: "blur(1px)",
+            }}>
+              Loading your next question…
+            </div>
+          )}
+          <div inert={isQuestionLoading} aria-busy={isQuestionLoading || undefined}>
           {/* Badges row */}
           <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8, alignItems: "center" }}>
             {current.module && (
@@ -874,8 +766,9 @@ export default function QuizShell({
               return (
                 <button
                   key={idx}
-                  onClick={() => !confirmed && onSelect(idx)}
-                  disabled={confirmed}
+                  aria-pressed={isSelected}
+                  onClick={() => !confirmed && !isQuestionLoading && onSelect(idx)}
+                  disabled={confirmed || isQuestionLoading}
                   style={{
                     padding: "10px 14px",
                     borderRadius: 10,
@@ -907,11 +800,13 @@ export default function QuizShell({
 
           {/* Confidence meter */}
           {selected !== null && !confirmed && (
-            <ConfidenceMeter value={confidence} onChange={onConfidenceChange} />
+            <details className="practice-confidence"><summary>Optional: how sure are you?</summary>
+              <ConfidenceMeter value={confidence} onChange={onConfidenceChange} />
+            </details>
           )}
 
           {/* Action buttons */}
-          <div className="qs-action-row" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
+          <div className="qs-action-row practice-primary-actions" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
             {/* Primary row: Prev + Confirm/Next */}
             <div style={{ display: "flex", gap: 8, flexWrap: "nowrap" }}>
               {history.length > 0 && (
@@ -937,19 +832,19 @@ export default function QuizShell({
               {!confirmed ? (
                 <button
                   onClick={onConfirm}
-                  disabled={selected === null || confidence === null}
+                  disabled={isQuestionLoading || selected === null}
                   style={{
                     flex: 1,
                     padding: "9px 18px",
                     borderRadius: 10,
-                    background: selected !== null && confidence !== null
+                    background: selected !== null
                       ? headerGradient
                       : "#E2E8F0",
-                    color: selected !== null && confidence !== null ? "#fff" : "#94A3B8",
+                    color: selected !== null ? "#fff" : "#94A3B8",
                     fontWeight: 800,
                     fontSize: 14,
                     border: "none",
-                    cursor: selected !== null && confidence !== null ? "pointer" : "not-allowed",
+                    cursor: selected !== null ? "pointer" : "not-allowed",
                     fontFamily: "inherit",
                     minWidth: 0,
                   }}
@@ -958,7 +853,10 @@ export default function QuizShell({
                 </button>
               ) : (
                 <button
-                  onClick={() => { window.scrollTo({ top: 0, behavior: 'instant' }); onNext(); }}
+                  onClick={() => {
+                    document.querySelector(".practice-content")?.scrollTo({ top: 0, behavior: "instant" });
+                    onNext();
+                  }}
                   style={{
                     flex: 1,
                     padding: "9px 18px",
@@ -980,61 +878,15 @@ export default function QuizShell({
                 </button>
               )}
             </div>
-            {/* Secondary row: Show Steps + AI Tutor (only after confirming) */}
-            {confirmed && (
-              <div className="qs-action-row-secondary" style={{ display: "flex", gap: 8 }}>
-                {current.steps && current.steps.length > 0 && (
-                  <button
-                    onClick={onToggleSteps}
-                    style={{
-                      flex: 1,
-                      padding: "9px 12px",
-                      borderRadius: 10,
-                      border: "1.5px solid #E2E8F0",
-                      background: showSteps ? "#EFF6FF" : "#fff",
-                      color: showSteps ? "#0369A1" : "#64748B",
-                      fontWeight: 700,
-                      fontSize: 13,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      minWidth: 0,
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {showSteps ? "Hide Steps" : "Show Steps"}
-                  </button>
-                )}
-                <button
-                  onClick={onTutorOpen}
-                  style={{
-                    flex: 1,
-                    padding: "9px 12px",
-                    borderRadius: 10,
-                    border: "1.5px solid #E2E8F0",
-                    background: "#fff",
-                    color: "#0F172A",
-                    fontWeight: 600,
-                    fontSize: 13,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    minWidth: 0,
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  🤖 AI Tutor
-                </button>
-              </div>
-            )}
+            {confirmed && current.steps && current.steps.length > 0 && <button type="button" className="practice-steps-toggle" onClick={onToggleSteps}>{showSteps ? "Hide worked solution" : "Show worked solution"}</button>}
+          </div>
           </div>
         </div>
 
+        <div inert={isQuestionLoading}>
         {/* ── Explanation box ── */}
         {confirmed && (
-          <div style={{
+          <div className="practice-explanation" style={{
             background: selected === correctIdx ? "#F0FDF4" : "#FFF7ED",
             border: `1px solid ${selected === correctIdx ? "#BBF7D0" : "#FED7AA"}`,
             borderRadius: 12,
@@ -1054,7 +906,7 @@ export default function QuizShell({
             </div>
 
             {current.explanation ? (
-              <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.7 }}>
+              <div className="practice-explanation-content" style={{ fontSize: 15, color: "#374151", lineHeight: 1.7 }}>
                 {current.explanation.split("\n").map((line: string, i: number) => {
                   const isBold = /^\*\*Step \d+/.test(line) || /^\*\*/.test(line);
                   if (!line.trim()) return <div key={i} style={{ height: 6 }} />;
@@ -1097,6 +949,12 @@ export default function QuizShell({
               </a>
             )}
 
+            <div className="practice-resource-actions">
+              {moduleOverviews && <button type="button" onClick={() => openStudyNotes(current.module ?? null)}>Read topic notes</button>}
+              <button type="button" onClick={onTutorOpen}>Ask the Tutor about this question</button>
+              {getPracticeGuidePath(currentPath) && <a href={getPracticeGuidePath(currentPath)!}>Explore the process guide</a>}
+              {getPracticeGuidePath(currentPath) && /clarif|sediment/i.test(current.module ?? "") && <a href="/equipment-lab">Explore equipment</a>}
+            </div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
               <button
                 onClick={() => setReportModalOpen(true)}
@@ -1154,12 +1012,18 @@ export default function QuizShell({
 
         {/* ── Extra content slot ── */}
         {extraContent}
+        </div>
         {/* Close the !gate fragment */}
         </>)}
       </div>
 
-      {/* ── AI Tutor drawer ── */}
-      {tutorOpen && renderAITutor && renderAITutor(dismissTutor)}
+      </div>
+      {/* Same shared panel and context for every course, in its own screen slot. */}
+      {tutorOpen && renderAITutor && (
+        <TutorPanelPlacement.Provider value="workspace">
+          <div className="practice-tutor-slot">{renderAITutor(dismissTutor)}</div>
+        </TutorPanelPlacement.Provider>
+      )}
 
       {/* ── Report Error modal ── */}
       {reportModalOpen && current && (
@@ -1204,7 +1068,7 @@ export default function QuizShell({
             }}>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 800 }}>📖 Study Notes</div>
-                <div style={{ fontSize: 12, opacity: 0.7, marginTop: 2 }}>Select a module to read its overview</div>
+                <div style={{ fontSize: 12, opacity: 0.7, marginTop: 2 }}>Select a note topic to read its overview</div>
               </div>
               <button
                 onClick={() => setStudyNotesOpen(false)}
@@ -1212,64 +1076,15 @@ export default function QuizShell({
               >✕</button>
             </div>
 
-            {/* Module picker — shown when no module selected in modal */}
-            {!studyNotesModule && (
-              <div style={{ padding: "20px 22px" }}>
-                <div style={{ fontSize: 13, color: "#64748B", marginBottom: 14 }}>Choose a module:</div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
-                  {Object.keys(moduleOverviews).map(modName => {
-                    const mod = modules.find(m => m.name === modName);
-                    return (
-                      <button
-                        key={modName}
-                        onClick={() => setStudyNotesModule(modName)}
-                        style={{
-                          padding: "12px 14px",
-                          background: mod?.bg ?? "#DBEAFE",
-                          color: mod?.color ?? "#1D4ED8",
-                          border: `1.5px solid ${mod?.color ?? "#1D4ED8"}33`,
-                          borderRadius: 10,
-                          fontSize: 12,
-                          fontWeight: 700,
-                          cursor: "pointer",
-                          fontFamily: "inherit",
-                          textAlign: "left",
-                        }}
-                      >
-                        {mod?.icon && <span style={{ marginRight: 6 }}>{mod.icon}</span>}
-                        {modName}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Overview content — shown when a module is selected in modal */}
-            {studyNotesModule && moduleOverviews[studyNotesModule] && (
-              <div style={{ padding: "0 22px 22px" }}>
-                <button
-                  onClick={() => setStudyNotesModule(null)}
-                  style={{
-                    background: "none", border: "none", color: "#0369A1",
-                    fontSize: 12, fontWeight: 700, cursor: "pointer",
-                    padding: "14px 0 10px", fontFamily: "inherit",
-                    display: "flex", alignItems: "center", gap: 4,
-                  }}
-                >← All modules</button>
-                <ModuleOverviewPanel
-                  key={studyNotesModule + "-modal"}
-                  overview={moduleOverviews[studyNotesModule]}
-                  moduleName={studyNotesModule}
-                  moduleColor={modules.find(m => m.name === studyNotesModule)?.color}
-                  moduleBg={modules.find(m => m.name === studyNotesModule)?.bg}
-                  moduleIcon={modules.find(m => m.name === studyNotesModule)?.icon}
-                  defaultExpanded={true}
-                >
-                  {renderModuleSupplement?.(studyNotesModule)}
-                </ModuleOverviewPanel>
-              </div>
-            )}
+            <StudyNotesTopics
+              courseKey={examType ?? currentPath.slice(1)}
+              practiceModule={studyNotesPracticeModule}
+              selectedTopic={studyNotesModule}
+              overviews={moduleOverviews}
+              modules={modules}
+              onSelect={setStudyNotesModule}
+              renderSupplement={renderModuleSupplement}
+            />
           </div>
         </div>
       )}

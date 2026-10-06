@@ -1,4 +1,5 @@
-import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt } from "../practiceQuestionReceipt";
+import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
+import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt, practiceReceiptAttribution } from "../practiceQuestionReceipt";
 import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
 /**
  * Quiz Router — Handles question attempt logging and missed questions
@@ -17,6 +18,8 @@ import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope } from "../courseActivityScope";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
+import { reconcileLearnerBankModules } from "../../shared/learnerBankModules";
+import { ontarioWastewaterMockProfile } from "../../shared/ontarioWastewaterMock";
 
 export const OIT_PREVIEW_LIMITS = {
   practice: 15,
@@ -274,8 +277,10 @@ export const quizRouter = router({
         }
       });
 
-      const { owner } = await practiceIdentity(ctx, input.accessToken);
-      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), owner, !hasAccess);
+      const actor = await practiceIdentity(ctx, input.accessToken);
+      const issuedIdentity = await resolveLearningIdentity(actor.context);
+      const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
       return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
     }),
 
@@ -339,8 +344,10 @@ export const quizRouter = router({
       const rows = await db.select(learnerQuestionColumns).from(questions).where(and(...filters))
         .orderBy(...(identified ? [priority, sql`RAND()`] : [sql`RAND()`])).limit(input.limit);
       const parsed = parseLearnerQuestions(rows);
-      const { owner } = await practiceIdentity(ctx, input.accessToken);
-      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), owner, !hasAccess);
+      const actor = await practiceIdentity(ctx, input.accessToken);
+      const issuedIdentity = await resolveLearningIdentity(actor.context);
+      const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
       return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit };
     }),
 
@@ -365,6 +372,24 @@ export const quizRouter = router({
       let modules: string[] = [];
       try { modules = JSON.parse(row.modules) as string[]; }
       catch (err) { console.error(`[getBankMeta] malformed modules for ${row.bankKey}:`, err); }
+
+      // Do not advertise a module filter that cannot return a learner-visible
+      // question. This prevents stale metadata from creating a blank practice
+      // screen after a bank import or content repair.
+      const storedModuleRows = await db
+        .select({ module: questions.module })
+        .from(questions)
+        .where(and(
+          eq(questions.bankKey, row.bankKey),
+          learnerVisibleQuestionFilter(),
+        ));
+      const storedModules = storedModuleRows.map(({ module }) =>
+        row.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(module) : module,
+      );
+      // The row count is the learner-facing inventory. Bank metadata can lag
+      // behind a controlled import or remediation, which would otherwise make
+      // course pages understate the questions a learner can actually study.
+      const learnerVisibleQuestionCount = storedModuleRows.length;
 
       let moduleTargets: Record<string, number> | null = null;
       if (row.moduleTargets) {
@@ -392,12 +417,17 @@ export const quizRouter = router({
           if (Object.keys(normalized).length) modules = Object.keys(normalized);
         }
       }
+
+      modules = reconcileLearnerBankModules(modules, storedModules);
+      // Study chapters remain unchanged. The same reviewed area quotas feed the
+      // mock gate and server sampler, even if old metadata uses chapter names.
+      moduleTargets = ontarioWastewaterMockProfile(row.bankKey)?.targets ?? moduleTargets;
       return {
         bankKey: row.bankKey,
         modules,
         moduleTargets,
         formulaLinks,
-        totalQuestions: row.totalQuestions,
+        totalQuestions: learnerVisibleQuestionCount,
         /** Issue L: monotonic counter incremented on admin question edits.
          *  Clients compare against their cached value and invalidate on mismatch. */
         contentVersion: row.contentVersion ?? 1,
@@ -539,7 +569,9 @@ export const quizRouter = router({
         const difficulty = questionRow.difficulty ?? null;
 
         const identity = await resolveLearningIdentity(actor.context);
-        const { userId, studentEmail, orgId, organizationMemberId } = identity;
+        const { userId, studentEmail } = identity;
+        const { orgId, organizationMemberId, flexLicenceId } = await validateIssuedAttribution(identity, course.courseKey,
+          await practiceReceiptAttribution(input.attemptToken!));
 
         // Guest previews are scored but never become unowned history or mastery.
         if (!userId && !studentEmail) return { success: true, correct };
@@ -562,6 +594,7 @@ export const quizRouter = router({
           courseKey: course.courseKey,
           orgId,
           organizationMemberId,
+          flexLicenceId,
         });
 
         if (userId) {

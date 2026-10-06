@@ -27,6 +27,41 @@ type PaymentIntentTimestampRecord = {
   latest_charge?: unknown;
 };
 
+export class PaymentAccessBlockedError extends Error {
+  constructor(public readonly reason: "full_refund" | "partial_refund" | "disputed") {
+    super(`Payment cannot grant individual access: ${reason}`);
+    this.name = "PaymentAccessBlockedError";
+  }
+}
+
+/** A succeeded PaymentIntent alone does not prove that its charge is still eligible. */
+export function assertChargeAllowsIndividualAccess(charge: unknown): void {
+  if (!charge || typeof charge !== "object") return;
+  const record = charge as { refunded?: unknown; amount?: unknown; amount_refunded?: unknown; disputed?: unknown };
+  if (record.refunded === true || (
+    typeof record.amount === "number" && record.amount > 0 &&
+    typeof record.amount_refunded === "number" && record.amount_refunded >= record.amount
+  )) throw new PaymentAccessBlockedError("full_refund");
+  // The individual handler already revokes for partial charge.refunded events.
+  // Keep that policy distinct from Teams' licence-allocated partial refunds.
+  if (typeof record.amount_refunded === "number" && record.amount_refunded > 0) {
+    throw new PaymentAccessBlockedError("partial_refund");
+  }
+  if (record.disputed === true) throw new PaymentAccessBlockedError("disputed");
+}
+
+export function normalizePaymentIntentId(paymentIntentId: unknown): string {
+  const normalizedId = typeof paymentIntentId === "string"
+    ? paymentIntentId
+    : typeof paymentIntentId === "object" && paymentIntentId !== null
+      ? (paymentIntentId as { id?: unknown }).id
+      : undefined;
+  if (typeof normalizedId !== "string" || normalizedId.length === 0) {
+    throw new Error("Paid Checkout Session is missing a PaymentIntent ID");
+  }
+  return normalizedId;
+}
+
 /**
  * Resolves the authoritative successful-payment timestamp for a Checkout
  * Session. A versioned term must not be written from browser, session, or
@@ -36,15 +71,7 @@ export async function paymentTimestampFromSuccessfulPaymentIntent(
   paymentIntentId: unknown,
   retrievePaymentIntent: (id: string) => Promise<PaymentIntentTimestampRecord>,
 ): Promise<Date> {
-  const normalizedId = typeof paymentIntentId === "string"
-    ? paymentIntentId
-    : typeof paymentIntentId === "object" && paymentIntentId !== null
-      ? (paymentIntentId as { id?: unknown }).id
-      : undefined;
-  if (typeof normalizedId !== "string" || normalizedId.length === 0) {
-    throw new Error("Paid Checkout Session is missing a PaymentIntent ID");
-  }
-
+  const normalizedId = normalizePaymentIntentId(paymentIntentId);
   const paymentIntent = await retrievePaymentIntent(normalizedId);
   if (paymentIntent.status !== "succeeded") {
     throw new Error("PaymentIntent has not succeeded");
@@ -62,5 +89,6 @@ export async function paymentTimestampFromSuccessfulPaymentIntent(
   if (chargePaid !== true && chargeStatus !== "succeeded") {
     throw new Error("PaymentIntent has no successful charge");
   }
+  assertChargeAllowsIndividualAccess(charge);
   return paymentTimestampFromSuccessfulCharge(chargeCreated);
 }

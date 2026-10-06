@@ -50,6 +50,9 @@ pids
 coverage/
 *.lcov
 
+# Playwright execution artifacts
+test-results/
+
 # nyc test coverage
 .nyc_output
 
@@ -115,3 +118,6 @@ client/public/__manus__/version.json
 .project-config.json
 deliverables/*.docx
 deliverables/*.pptx
+
+# Isolated, fictional UI preview output
+.ui-preview-build/

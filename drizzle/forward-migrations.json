@@ -198,7 +198,15 @@
         "tables": [
           "team_flex_extensions"
         ]
-      }
+      },
+      "verifierAllowPendingColumnNullability": [
+        {
+          "table": "team_flex_extensions",
+          "column": "purchaserUserId",
+          "baselineNullable": false,
+          "targetNullable": true
+        }
+      ]
     },
     {
       "version": 70,
@@ -229,6 +237,152 @@
           "customer_recovery_import_items"
         ]
       }
+    },
+    {
+      "version": 72,
+      "tag": "0072_ceu_learning_records",
+      "file": "drizzle/0072_ceu_learning_records.sql",
+      "sha256": "e3ec1ef8f488cb0536a231adfb824bdd58844cc8ebaa3596119e693af315f119",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "ceu_learning_records",
+          "ceu_learning_daily_time"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "ceu_learning_records",
+        "ceu_learning_daily_time"
+      ]
+    },
+    {
+      "version": 73,
+      "tag": "0073_stripe_event_analytics",
+      "file": "drizzle/0073_stripe_event_analytics.sql",
+      "sha256": "63ead4de91a9a2c7f5664bb1b773211d47737d1ce601594bca9eef6f4345543c",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "stripe_event_log"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "stripe_event_log",
+          "column": "analyticsProcessed",
+          "targetType": "tinyint(1)",
+          "targetNullable": false,
+          "sqlType": "boolean",
+          "defaultSql": "default false"
+        }
+      ]
+    },
+    {
+      "version": 74,
+      "tag": "0074_blog_automation_runs",
+      "file": "drizzle/0074_blog_automation_runs.sql",
+      "sha256": "8d208524c805c406aedbafa5372e1c2d50775f0da2a05b4171eebd230cd7530f",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "blog_automation_runs"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "blog_automation_runs"
+      ]
+    },
+    {
+      "version": 75,
+      "tag": "0075_team_flex_attempt_attribution",
+      "file": "drizzle/0075_team_flex_attempt_attribution.sql",
+      "sha256": "f5d5dc22046679e9933910741b5a0fed4dac6e1778e3825c8cd1ab99ecd898ec",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "question_attempts"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "question_attempts",
+          "column": "flexLicenceId",
+          "targetType": "int",
+          "targetNullable": true,
+          "sqlType": "int"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "question_attempts",
+          "index": "qa_flex_licence_created_idx",
+          "columns": [
+            "flexLicenceId",
+            "createdAt"
+          ]
+        }
+      ]
+    },
+    {
+      "version": 76,
+      "tag": "0076_contact_partnership_receipts",
+      "file": "drizzle/0076_contact_partnership_receipts.sql",
+      "sha256": "86165265ef10519f5eb69ef27469d77d95f2f0b37b1ad019d6e71680050db436",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "contact_submissions"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "contact_submissions",
+          "column": "requestKey",
+          "targetType": "varchar(36)",
+          "targetNullable": true,
+          "sqlType": "varchar(36)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "organization",
+          "targetType": "varchar(128)",
+          "targetNullable": true,
+          "sqlType": "varchar(128)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "partnershipType",
+          "targetType": "varchar(64)",
+          "targetNullable": true,
+          "sqlType": "varchar(64)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "followUpStatus",
+          "targetType": "varchar(16)",
+          "targetNullable": false,
+          "sqlType": "varchar(16)",
+          "defaultSql": "default 'new'"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "notificationStatus",
+          "targetType": "varchar(16)",
+          "targetNullable": false,
+          "sqlType": "varchar(16)",
+          "defaultSql": "default 'pending'"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "contact_submissions",
+          "index": "contact_request_key_unique",
+          "unique": true,
+          "columns": [
+            "requestKey"
+          ]
+        }
+      ]
     }
   ]
 }

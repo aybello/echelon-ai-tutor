@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import { PRIMARY_SLUDGE_FORMULA } from "@/lib/primarySludge";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -63,7 +64,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "SS Removal = [(240 − 18) ÷ 240] × 100 = (222 ÷ 240) × 100",
           answer: "92.5%",
         },
-        tip: "Ontario effluent limits under O. Reg. 347 typically require ≤ 25 mg/L TSS and ≤ 25 mg/L CBOD₅.",
+        tip: "Effluent TSS and CBOD limits are set by the facility’s Environmental Compliance Approval or permit. Use the plant’s approved limits rather than a generic provincial value.",
       },
       {
         name: "Per Capita BOD Loading",
@@ -154,23 +155,7 @@ const CATEGORIES: FormulaCategory[] = [
         },
         tip: "Typical WOR limit: < 125 m³/m·d for primary, < 186 m³/m·d for secondary.",
       },
-      {
-        name: "Sludge Volume (Primary)",
-        formula: "Sludge Volume (m³/d) = [Q × SS_removed (mg/L)] ÷ [ρ_sludge × %solids × 10⁶]",
-        units: "m³/d",
-        variables: [
-          { sym: "Q", desc: "Flow rate (m³/d)" },
-          { sym: "SS_removed", desc: "Suspended solids removed (mg/L)" },
-          { sym: "ρ_sludge", desc: "Sludge density (≈ 1,000 kg/m³ for dilute sludge)" },
-          { sym: "%solids", desc: "Sludge solids content (decimal, e.g. 0.04 for 4%)" },
-        ],
-        example: {
-          problem: "Q = 5,000 m³/d, SS removed = 150 mg/L, sludge is 4% solids. What volume of sludge is produced?",
-          solution: "Sludge = (5,000 × 150) ÷ (1,000 × 0.04 × 10⁶) = 750,000 ÷ 40,000,000",
-          answer: "18.75 m³/d",
-        },
-        tip: "Primary sludge is typically 3–8% solids. Raw primary sludge has high putrescibility — pump frequently.",
-      },
+      PRIMARY_SLUDGE_FORMULA,
     ],
   },
   {
@@ -279,7 +264,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "Dose = 3.5 + 0.5",
           answer: "4.0 mg/L",
         },
-        tip: "Ontario O. Reg. 170/03 requires minimum 0.2 mg/L free chlorine residual in distribution. Wastewater effluent residual requirements vary by MOECP permit.",
+        tip: "Wastewater disinfection targets and effluent residual limits are set by the facility’s Environmental Compliance Approval or permit. Do not apply drinking-water distribution residuals to wastewater effluent.",
       },
       {
         name: "CT Value",
@@ -294,7 +279,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "CT = 1.0 × 30",
           answer: "30 mg·min/L",
         },
-        tip: "CT values are used to verify inactivation of Giardia and Cryptosporidium. Higher CT = more effective disinfection.",
+        tip: "CT expresses disinfectant exposure. For wastewater, evaluate it against the pathogen target, process validation and the facility’s permit or approval rather than drinking-water Giardia or Cryptosporidium tables.",
       },
       {
         name: "Chlorine Feed Rate",
@@ -349,7 +334,7 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "VS Reduction = [(500 − 200) ÷ 500] × 100 = (300 ÷ 500) × 100",
           answer: "60%",
         },
-        tip: "Ontario Reg. 267/03 (Biosolids) requires ≥ 38% VS reduction for Class B biosolids, ≥ 38% for Class A (with pathogen reduction).",
+        tip: "Biosolids stabilization and pathogen-reduction requirements depend on the applicable regulation, approved treatment process and end-use pathway. Use the facility’s approved biosolids management requirements.",
       },
       {
         name: "Sludge Thickening — Solids Loading Rate",
@@ -466,8 +451,8 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Effluent Limits (O. Reg. 347 — Municipal)",
-        formula: "CBOD₅ ≤ 25 mg/L | TSS ≤ 25 mg/L | pH 6.0–9.5",
-        tip: "These are minimum secondary treatment standards. Individual Environmental Compliance Approvals (ECAs) may be more stringent. Phosphorus limits (e.g. 1.0 mg/L TP) apply to many Ontario plants.",
+        formula: "Apply the facility’s approved CBOD, TSS and pH limits",
+        tip: "Environmental Compliance Approvals set the enforceable effluent limits. Requirements vary by receiving water, plant design and approval conditions.",
       },
       {
         name: "Biosolids Classification (O. Reg. 267/03)",

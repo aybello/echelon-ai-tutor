@@ -10,15 +10,15 @@ describe("Analytics backfill safety", () => {
   it("backfill only targets rows where orgId is NULL or 0", () => {
     // Simulate the backfill logic: only rows with null/0 orgId should be updated
     const attempts = [
-      { id: 1, studentEmail: "a@kingston.com", orgId: null },
-      { id: 2, studentEmail: "b@kingston.com", orgId: 0 },
-      { id: 3, studentEmail: "c@kingston.com", orgId: 90001 }, // already attributed
-      { id: 4, studentEmail: "d@other.com", orgId: null }, // not a member
+      { id: 1, studentEmail: "fixture-13@example.com", orgId: null },
+      { id: 2, studentEmail: "fixture-20@example.com", orgId: 0 },
+      { id: 3, studentEmail: "fixture-33@example.com", orgId: 90001 }, // already attributed
+      { id: 4, studentEmail: "fixture-43@example.com", orgId: null }, // not a member
     ];
     const members = [
-      { email: "a@kingston.com", orgId: 90001 },
-      { email: "b@kingston.com", orgId: 90002 },
-      { email: "c@kingston.com", orgId: 90001 },
+      { email: "fixture-13@example.com", orgId: 90001 },
+      { email: "fixture-20@example.com", orgId: 90002 },
+      { email: "fixture-33@example.com", orgId: 90001 },
     ];
 
     const memberMap = new Map(members.map(m => [m.email, m.orgId]));
@@ -35,8 +35,8 @@ describe("Analytics backfill safety", () => {
 
   it("backfill does not update rows already attributed to an org", () => {
     const attempts = [
-      { id: 1, studentEmail: "c@kingston.com", orgId: 90001 },
-      { id: 2, studentEmail: "c@kingston.com", orgId: 90002 },
+      { id: 1, studentEmail: "fixture-33@example.com", orgId: 90001 },
+      { id: 2, studentEmail: "fixture-33@example.com", orgId: 90002 },
     ];
     const toUpdate = attempts.filter(a => a.orgId === null || a.orgId === 0);
     expect(toUpdate).toHaveLength(0);
@@ -61,13 +61,13 @@ describe("Analytics backfill safety", () => {
 
   it("backfill assigns correct orgId from member lookup", () => {
     const members = [
-      { email: "op1@kingston.com", orgId: 90001 },
-      { email: "op2@kingston.com", orgId: 90002 },
+      { email: "fixture-75@example.com", orgId: 90001 },
+      { email: "fixture-78@example.com", orgId: 90002 },
     ];
     const memberMap = new Map(members.map(m => [m.email, m.orgId]));
 
-    const attempt1 = { studentEmail: "op1@kingston.com", orgId: null as number | null };
-    const attempt2 = { studentEmail: "op2@kingston.com", orgId: null as number | null };
+    const attempt1 = { studentEmail: "fixture-75@example.com", orgId: null as number | null };
+    const attempt2 = { studentEmail: "fixture-78@example.com", orgId: null as number | null };
 
     attempt1.orgId = memberMap.get(attempt1.studentEmail) ?? null;
     attempt2.orgId = memberMap.get(attempt2.studentEmail) ?? null;
