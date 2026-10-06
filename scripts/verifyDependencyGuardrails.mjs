@@ -12,6 +12,7 @@ const expectedOverrides = {
   "lodash-es": "4.18.0",
   "mdast-util-to-hast": "13.2.1",
   "path-to-regexp": "0.1.13",
+  "proxy-addr": "2.0.8",
   qs: "6.16.0",
 };
 const expectedPatch = {

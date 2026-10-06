@@ -7,12 +7,17 @@ export type AdsChoice = "allowed" | "denied" | null;
 export type AdsConversion = { sendTo: string; value: number; currency: "CAD" | "USD"; transactionId: string };
 type AdsWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
 
+// Google applies these geographic defaults. A browser preference never grants
+// regional cookie consent; other regions remain in denied, cookieless mode.
+export const ADS_COOKIE_REGIONS = ["CA", "US"];
+export const ADS_COOKIE_EXCLUDED_REGIONS = ["CA-QC"];
+
 export function readAdsChoice(browser: Window): AdsChoice {
   if (browser.navigator.globalPrivacyControl || browser.navigator.doNotTrack === "1") return "denied";
   try {
     const value = browser.localStorage.getItem(ADS_CHOICE_KEY);
-    return value === "allowed" || value === "denied" ? value : null;
-  } catch { return null; }
+    return value === null ? null : value === "allowed" ? "allowed" : "denied";
+  } catch { return "denied"; }
 }
 
 /** Only bounded ad-click identifiers are retained, never general query parameters. */
@@ -46,7 +51,7 @@ export function createGoogleAdsMeasurement(browser: AdsWindow, doc: Document) {
   const safeContext = (url = "https://echeloninstitute.ca/") => ({
     page_location: url, page_referrer: "", page_title: "Echelon Institute",
   });
-  const canSend = () => allowedHost() && readAdsChoice(browser) === "allowed";
+  const canSend = () => allowedHost() && readAdsChoice(browser) !== "denied";
 
   function initialize(url: string) {
     if (initialized) return;
@@ -56,12 +61,17 @@ export function createGoogleAdsMeasurement(browser: AdsWindow, doc: Document) {
     browser.gtag("consent", "default", {
       ad_storage: "denied", analytics_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
     });
+    browser.gtag("consent", "default", {
+      region: [...ADS_COOKIE_REGIONS], ad_storage: "granted", ad_user_data: "granted",
+      analytics_storage: "denied", ad_personalization: "denied",
+    });
+    browser.gtag("consent", "default", {
+      region: [...ADS_COOKIE_EXCLUDED_REGIONS], ad_storage: "denied", ad_user_data: "denied",
+      analytics_storage: "denied", ad_personalization: "denied",
+    });
     browser.gtag("set", {
       ...safeContext(url), allow_ad_personalization_signals: false, allow_google_signals: false,
       allow_enhanced_conversions: false, url_passthrough: false, ads_data_redaction: true,
-    });
-    browser.gtag("consent", "update", {
-      ad_storage: "granted", analytics_storage: "denied", ad_user_data: "granted", ad_personalization: "denied",
     });
     browser.gtag("js", new Date());
     browser.gtag("config", GOOGLE_ADS_ID, {
@@ -115,7 +125,7 @@ export function createGoogleAdsMeasurement(browser: AdsWindow, doc: Document) {
 
   function recordPurchase(value: unknown) {
     if (!validAdsConversion(value) || browser.location.pathname !== "/purchase-success") return;
-    // Keep only four validated fields in memory until consent. No customer or session ID.
+    // Keep only four validated fields in memory. No customer or session ID.
     pending = { sendTo: value.sendTo, value: value.value, currency: value.currency, transactionId: value.transactionId };
     flushPurchase();
   }
@@ -132,7 +142,7 @@ export function adsMeasurement() {
 export function setAdsChoice(choice: Exclude<AdsChoice, null>) {
   const previous = readAdsChoice(window);
   try { window.localStorage.setItem(ADS_CHOICE_KEY, choice); } catch { return false; }
-  if (choice === "denied" && previous === "allowed") {
+  if (choice === "denied" && previous !== "denied") {
     // A loaded vendor cannot be unloaded reliably. Clear only its first-party
     // attribution cookies and reload to guarantee no further Google script runs.
     for (const cookie of document.cookie.split(";")) {

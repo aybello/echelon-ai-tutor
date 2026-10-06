@@ -17,9 +17,14 @@ function harness(path = "/pricing", choice: string | null = null, host = "echelo
 
 const privatePaths = ["/login/otp", "/auth/magic", "/invite/token", "/activate/oit", "/account", "/admin", "/quiz", "/dashboard", "/team", "/subscription-success", "/unknown/token"];
 describe("optional Google Ads boundary", () => {
-  it.each([null, "denied", "broken"])("does not load or queue any vendor event for choice %s", choice => {
+  it.each(["denied", "broken"])("does not load or queue any vendor event for choice %s", choice => {
     const h = harness("/pricing", choice); h.measurement.update();
     expect(h.scripts).toHaveLength(0); expect(h.calls()).toEqual([]);
+  });
+  it("starts without an Allow choice and never writes a fabricated visitor preference", () => {
+    const h = harness("/pricing"); h.measurement.update();
+    expect(h.scripts).toHaveLength(1); expect(h.saved.has(ADS_CHOICE_KEY)).toBe(false);
+    expect(h.calls().some(x => x[0] === "consent" && x[1] === "update")).toBe(false);
   });
   it.each(["localhost", "127.0.0.1", "preview.example.test"])("never loads the live tag on non-production host %s", host => {
     const h = harness("/", "allowed", host); h.measurement.update(); expect(h.scripts).toHaveLength(0);
@@ -35,6 +40,9 @@ describe("optional Google Ads boundary", () => {
     expect(h.scripts).toHaveLength(1);
     expect(h.scripts[0]).toMatchObject({ id: "echelon-google-ads", async: true, referrerPolicy: "no-referrer", src: `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}` });
     expect(h.calls()[0]).toEqual(["consent", "default", { ad_storage: "denied", analytics_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" }]);
+    expect(h.calls()[1]).toEqual(["consent", "default", { region: ["CA", "US"], ad_storage: "granted", ad_user_data: "granted", analytics_storage: "denied", ad_personalization: "denied" }]);
+    expect(h.calls()[2]).toEqual(["consent", "default", { region: ["CA-QC"], ad_storage: "denied", ad_user_data: "denied", analytics_storage: "denied", ad_personalization: "denied" }]);
+    expect(h.calls().filter(x => x[0] === "consent" && x[1] === "update")).toHaveLength(0);
     expect(h.calls().find(x => x[0] === "config")?.[2]).toMatchObject({ send_page_view: false, allow_ad_personalization_signals: false, allow_enhanced_conversions: false });
     expect(h.calls().filter(x => x[0] === "event")).toHaveLength(1);
   });
@@ -57,8 +65,8 @@ describe("optional Google Ads boundary", () => {
     const events = h.calls().filter(x => x[0] === "event"); expect(events).toHaveLength(2);
     expect(JSON.stringify(h.calls())).not.toContain("secret"); expect(h.scripts).toHaveLength(1);
   });
-  it("queues only a validated paid payload until consent, then sends the exact actual amount once", () => {
-    const h = harness("/purchase-success?session_id=cs_test_secret&email=buyer%40example.test");
+  it("preserves a refusal, then sends only a validated actual paid payload once after the visitor changes it", () => {
+    const h = harness("/purchase-success?session_id=cs_test_secret&email=buyer%40example.test", "denied");
     h.measurement.recordPurchase({ ...conversion, email: "buyer@example.test", sessionId: "cs_test_secret" });
     expect(h.calls()).toEqual([]); h.saved.set(ADS_CHOICE_KEY, "allowed"); h.measurement.update();
     h.measurement.recordPurchase(conversion); h.measurement.update();
@@ -75,8 +83,8 @@ describe("optional Google Ads boundary", () => {
     h.browser.location = new URL("https://echeloninstitute.ca/pricing"); h.measurement.recordPurchase(conversion);
     expect(h.calls()).toEqual([]);
   });
-  it("discards a held verified purchase when navigation leaves confirmation before consent", () => {
-    const h = harness("/purchase-success"); h.measurement.recordPurchase(conversion);
+  it("discards a held verified purchase when navigation leaves confirmation while measurement is off", () => {
+    const h = harness("/purchase-success", "denied"); h.measurement.recordPurchase(conversion);
     h.browser.location = new URL("https://echeloninstitute.ca/pricing"); h.measurement.update();
     h.browser.location = new URL("https://echeloninstitute.ca/purchase-success");
     h.saved.set(ADS_CHOICE_KEY, "allowed"); h.measurement.update();
@@ -87,7 +95,14 @@ describe("optional Google Ads boundary", () => {
     const second = createGoogleAdsMeasurement(h.browser as unknown as Window, { createElement: () => ({}), head: { appendChild: () => {} } } as unknown as Document);
     second.recordPurchase(conversion); expect(h.calls().filter(x => x[0] === "event")).toHaveLength(1);
     const denied = harness("/", "allowed"); denied.browser.localStorage.getItem = () => { throw new Error("no storage"); };
-    expect(readAdsChoice(denied.browser as unknown as Window)).toBeNull(); denied.measurement.update(); expect(denied.calls()).toEqual([]);
+    expect(readAdsChoice(denied.browser as unknown as Window)).toBe("denied"); denied.measurement.update(); expect(denied.calls()).toEqual([]);
+  });
+  it("automatically sends a server-verified purchase with no saved choice, never a consent grant update", () => {
+    const h = harness("/purchase-success"); h.measurement.recordPurchase(conversion);
+    expect(h.scripts).toHaveLength(1);
+    expect(h.calls().filter(x => x[0] === "event" && x[1] === "conversion")).toHaveLength(1);
+    expect(h.calls().some(x => x[0] === "consent" && x[1] === "update")).toBe(false);
+    expect(h.saved.has(ADS_CHOICE_KEY)).toBe(false);
   });
   it.each([null, {}, { ...conversion, sendTo: "AW-other/wrong" }, { ...conversion, transactionId: "cs_live_private" }, { ...conversion, currency: "EUR" }, { ...conversion, value: NaN }, { ...conversion, value: -1 }, { ...conversion, value: Infinity }])("rejects malformed or identifying conversion payload %j", value => {
     expect(validAdsConversion(value)).toBe(false);
