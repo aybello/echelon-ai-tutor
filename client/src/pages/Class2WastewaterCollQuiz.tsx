@@ -7,6 +7,7 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { formatQuestionBankCount } from "@shared/questionBankDisplay";
 import type { ModuleConfig } from "@/components/QuizShell";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
@@ -29,10 +30,10 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class2WastewaterCollQuiz() {
   usePageMeta({
     title: "Ontario Class 2 Wastewater Collection Practice Questions",
-    description: "Practice questions for the Ontario Class 2 Wastewater Collection operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 2 Wastewater Collection operator certification exam, with detailed explanations and calculation practice.",
     noindex: true
   });
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-wastewater-coll", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-wastewater-coll", "lazy");
   const allQuestions = dbQuestions;
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
     name: m,
@@ -52,7 +53,7 @@ export default function Class2WastewaterCollQuiz() {
       currentPath="/class2-wastewater-coll"
       courseLabel="Ontario Class 2 · Wastewater Collection"
       courseTitle="Ontario Class 2 Wastewater Collection Quiz"
-      courseSubtitle="500 questions · Ontario Class 2 Wastewater Collection"
+      courseSubtitle={`${formatQuestionBankCount(totalQuestions)} · Ontario Class 2 Wastewater Collection`}
       headerGradient="linear-gradient(135deg, #065F46 0%, #0F766E 100%)"
       headerIcon="🔩"
       headerActions={[
@@ -133,7 +134,7 @@ export default function Class2WastewaterCollQuiz() {
           productName="Ontario Class 2 Wastewater Collection Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "300 Ontario Class 2 Wastewater Collection questions — unlimited attempts",
+            `${formatQuestionBankCount(totalQuestions)} · unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

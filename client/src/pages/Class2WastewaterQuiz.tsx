@@ -8,6 +8,7 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { formatQuestionBankCount } from "@shared/questionBankDisplay";
 
 export default function Class2WastewaterQuiz() {
   usePageMeta({
@@ -16,7 +17,7 @@ export default function Class2WastewaterQuiz() {
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-wastewater", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-wastewater", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -42,7 +43,7 @@ export default function Class2WastewaterQuiz() {
       currentPath="/class2-ww"
       courseLabel="Ontario Class 2 · Wastewater Treatment"
       courseTitle="Class 2 Wastewater Practice Quiz"
-      courseSubtitle="500 questions · Ontario Class 2 Wastewater Treatment"
+      courseSubtitle={`${formatQuestionBankCount(totalQuestions)} · Ontario Class 2 Wastewater Treatment`}
       headerGradient="linear-gradient(135deg, #0F766E 0%, #065F46 100%)"
       headerIcon="♻️"
       headerActions={[
@@ -123,7 +124,7 @@ export default function Class2WastewaterQuiz() {
           productName="Class 2 Wastewater Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 Class 2 Wastewater questions — unlimited attempts",
+            `${formatQuestionBankCount(totalQuestions)} · unlimited attempts`,
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

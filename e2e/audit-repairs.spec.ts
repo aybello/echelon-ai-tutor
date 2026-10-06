@@ -76,6 +76,41 @@ test('actual vendor script emits only rebuilt public events and no sensitive URL
   expect(sends.at(-1)).toContain('/blog/:slug');expect(sends.at(-1)).not.toContain('private-slug');expect(sends.at(-1)).not.toContain('synthetic-private');
 });
 
+const class2LiveCountFixtures = [
+  { path: '/class2-water', bankKey: 'class2-water', total: 753, module: 'Treatment Process' },
+  { path: '/class2-water-dist', bankKey: 'class2-water-dist', total: 785, module: 'General' },
+  { path: '/class2-ww', bankKey: 'class2-wastewater', total: 796, module: 'Treatment Process Evaluation & Adjustment' },
+  { path: '/class2-wastewater-coll', bankKey: 'class2-wastewater-coll', total: 810, module: 'Collection System Components' },
+];
+
+test('Class II quiz headers use current bank metadata rather than static inventory claims', async ({ page }) => {
+  let active = class2LiveCountFixtures[0];
+  await page.route(/https:\/\/.*(?:google|doubleclick|googlesyndication).*\//, route => route.abort());
+  await page.route('**/api/trpc/**', async route => {
+    const names = decodeURIComponent(new URL(route.request().url()).pathname.split('/api/trpc/')[1]).split(',');
+    const question = { id: 3001, module: active.module, difficulty: 'medium', question: 'Synthetic Class II header-count question.', options: ['A', 'B', 'C', 'D'], correctIndex: 0, explanation: 'Synthetic test only.', isCalc: false };
+    const results = names.map(name => {
+      const data = name === 'auth.me' || name === 'dashboardAuth.me' ? null
+        : name === 'stripe.checkAccess' ? { hasAccess: true, unlockedExamTypes: [active.bankKey] }
+        : name === 'quiz.getBankMeta' ? { bankKey: active.bankKey, modules: [active.module], totalQuestions: active.total, contentVersion: 99 }
+        : name === 'quiz.getModuleOverviews' ? {}
+        : name === 'quiz.getMissedQuestions' ? { questionIds: [], total: 0 }
+        : name === 'quiz.getAttemptStats' ? { seenIds: [], missedIds: [] }
+        : name === 'quiz.getRandomQuestions' || name === 'quiz.getQuestions' ? { questions: [question], total: 1, hasMore: false, locked: false }
+        : { success: true };
+      return { result: { data: { json: data } } };
+    });
+    await route.fulfill({ contentType: 'application/json', body: JSON.stringify(new URL(route.request().url()).searchParams.has('batch') ? results : results[0]) });
+  });
+  for (const fixture of class2LiveCountFixtures) {
+    active = fixture;
+    await page.goto(fixture.path);
+    await expect(page.getByTestId('practice-question')).toBeVisible();
+    await expect(page.getByText(`${fixture.total} questions`, { exact: false })).toBeVisible();
+    await expect(page.getByText('500 questions', { exact: false })).toHaveCount(0);
+  }
+});
+
 const scoreFixtures = [
   { id: 1, learnerName: "Example Learner With A Long Name", learnerEmail: "long.learner.address@example.test", sessionId: "synthetic-score-1", examType: "oit", stream: "water", score: 72, total: 100, passed: "yes", timeTakenSeconds: 1800, createdAt: "2026-10-06T07:00:09.000Z", moduleBreakdown: null },
   { id: 2, learnerName: null, learnerEmail: "email.only@example.test", sessionId: "synthetic-score-2", examType: "class1-water", stream: "water", score: 6, total: 10, passed: "no", timeTakenSeconds: 0, createdAt: "2026-10-06T06:00:00.000Z", moduleBreakdown: null },
