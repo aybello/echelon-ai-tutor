@@ -6,7 +6,7 @@ import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sql, count, ne, and, gte, gt, asc } from "drizzle-orm";
+import { desc, eq, sql, count, ne, and, gte, gt, asc, getTableColumns } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, customerRecoveryEvidence } from "../../drizzle/schema";
@@ -681,16 +681,24 @@ export const adminRouter = router({
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
       const results = await db
-        .select()
+        .select({
+          ...getTableColumns(examResults),
+          learnerName: users.name,
+          accountEmail: users.email,
+        })
         .from(examResults)
-        .orderBy(desc(examResults.createdAt))
+        // Join only the recorded account ID. Email-only and deleted accounts
+        // keep their score row; never guess a person from a shared email.
+        .leftJoin(users, eq(examResults.userId, users.id))
+        .where(input.examType === "all" ? undefined : eq(examResults.examType, input.examType))
+        .orderBy(desc(examResults.createdAt), desc(examResults.id))
         .limit(input.limit);
-      return results
-        .filter(r => input.examType === "all" || r.examType === input.examType)
-        .map(r => ({
-          ...r,
-          moduleBreakdown: r.moduleBreakdown ? JSON.parse(r.moduleBreakdown) : null,
-        }));
+      return results.map(({ accountEmail, ...r }) => ({
+        ...r,
+        learnerName: r.learnerName?.trim() || null,
+        learnerEmail: r.studentEmail?.trim() || accountEmail?.trim() || null,
+        moduleBreakdown: r.moduleBreakdown ? JSON.parse(r.moduleBreakdown) : null,
+      }));
     }),
 
   /** Delete a waitlist entry */

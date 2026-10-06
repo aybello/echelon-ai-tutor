@@ -13,6 +13,7 @@ import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
 import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
 import { formatAdminCurrency, formatAdminPercent, rateFromCounts } from "@/lib/adminDashboard";
+import { formatScoreSavedAt, scoreHistoryCsvRow, scoreLearnerIdentity } from "@/lib/adminScoreHistory";
 import {
   Activity,
   Building2,
@@ -963,17 +964,7 @@ export default function Admin() {
                 <button
                   className="admin-btn"
                   onClick={() => downloadCSV(
-                    scoresQ.data!.map(r => ({
-                      session_id: r.sessionId,
-                      exam_type: r.examType,
-                      stream: r.stream ?? "",
-                      score: r.score,
-                      total: r.total,
-                      percent: Math.round(r.score / r.total * 100),
-                      passed: r.passed,
-                      time_taken_seconds: r.timeTakenSeconds ?? "",
-                      date: new Date(r.createdAt).toISOString(),
-                    })),
+                    scoresQ.data!.map(scoreHistoryCsvRow),
                     `echelon-score-history-${new Date().toISOString().slice(0,10)}.csv`
                   )}
                   style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
@@ -982,16 +973,19 @@ export default function Admin() {
                 </button>
               )}
             </div>
+            <p style={{ padding: "12px 20px", margin: 0, fontSize: 11, color: "#475569" }}>Saved at shows when the result was recorded, in your browser's local time zone. Duration is the time spent on the exam.</p>
             {scoresQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {scoresQ.error && <div role="alert" className="admin-panel-error">Score history could not be loaded. Use Refresh to try again.</div>}
             {scoresQ.data && scoresQ.data.length === 0 && (
               <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No exam results yet.</div>
             )}
             {scoresQ.data && scoresQ.data.length > 0 && (
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <div className="admin-score-table-wrap" role="region" aria-label="Exam score history" tabIndex={0}>
+              <table className="admin-score-table" style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                    {["#", "Exam", "Score", "Result", "Time", "Date"].map(h => (
-                      <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                    {["#", "Learner", "Exam", "Score", "Result", "Duration", "Saved at"].map(h => (
+                      <th scope="col" key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -1000,10 +994,16 @@ export default function Admin() {
                     const pct = Math.round(row.score / row.total * 100);
                     const passed = row.passed === "yes";
                     const typeStyle = EXAM_TYPE_COLORS[row.examType] ?? { bg: "rgba(0,0,0,0.07)", color: "#64748B" };
-                    const timeTaken = row.timeTakenSeconds ? `${Math.floor(row.timeTakenSeconds / 60)}m ${row.timeTakenSeconds % 60}s` : "—";
+                    const timeTaken = row.timeTakenSeconds !== null ? `${Math.floor(row.timeTakenSeconds / 60)}m ${row.timeTakenSeconds % 60}s` : "Not recorded";
+                    const learner = scoreLearnerIdentity(row);
+                    const savedAt = formatScoreSavedAt(row.createdAt);
                     return (
                       <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
                         <td style={{ padding: "12px 16px", fontSize: 11, color: "#475569" }}>{i + 1}</td>
+                        <td className="admin-score-learner" style={{ padding: "12px 16px" }}>
+                          <strong>{learner.name}</strong>
+                          <span>{learner.email}</span>
+                        </td>
                         <td style={{ padding: "12px 16px" }}>
                           <span style={{ padding: "3px 10px", borderRadius: 100, background: typeStyle.bg + "30", color: typeStyle.color, fontSize: 10, fontWeight: 700 }}>
                             {EXAM_TYPE_LABELS[row.examType] ?? row.examType.toUpperCase()}
@@ -1020,12 +1020,15 @@ export default function Admin() {
                           </span>
                         </td>
                         <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{timeTaken}</td>
-                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
+                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#475569" }}>
+                          <time dateTime={savedAt.iso} className="admin-score-saved-at"><strong>{savedAt.date}</strong><span>{savedAt.time}</span></time>
+                        </td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
+              </div>
             )}
           </div>
         )}

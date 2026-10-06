@@ -75,3 +75,80 @@ test('actual vendor script emits only rebuilt public events and no sensitive URL
   await expect.poll(()=>sends.length).toBeGreaterThan(prior);
   expect(sends.at(-1)).toContain('/blog/:slug');expect(sends.at(-1)).not.toContain('private-slug');expect(sends.at(-1)).not.toContain('synthetic-private');
 });
+
+const scoreFixtures = [
+  { id: 1, learnerName: "Example Learner With A Long Name", learnerEmail: "long.learner.address@example.test", sessionId: "synthetic-score-1", examType: "oit", stream: "water", score: 72, total: 100, passed: "yes", timeTakenSeconds: 1800, createdAt: "2026-10-06T07:00:09.000Z", moduleBreakdown: null },
+  { id: 2, learnerName: null, learnerEmail: "email.only@example.test", sessionId: "synthetic-score-2", examType: "class1-water", stream: "water", score: 6, total: 10, passed: "no", timeTakenSeconds: 0, createdAt: "2026-10-06T06:00:00.000Z", moduleBreakdown: null },
+  { id: 3, learnerName: null, learnerEmail: null, sessionId: "synthetic-score-3", examType: "oit", stream: "water", score: 8, total: 10, passed: "yes", timeTakenSeconds: null, createdAt: "2026-10-05T06:00:00.000Z", moduleBreakdown: null },
+];
+async function mockAdminHistory(page: import('@playwright/test').Page, role = 'admin', historyError = false) {
+  const calls: string[] = [];
+  await page.route(/https:\/\/.*(?:google|doubleclick|googlesyndication).*\//, route => route.abort());
+  await page.route('**/api/trpc/**', async route => {
+    const names = new URL(route.request().url()).pathname.split('/api/trpc/')[1].split(',');
+    calls.push(...names);
+    const results = names.map(name => {
+      if (name === 'admin.getScoreHistory' && historyError) return { error: { json: { message: 'Synthetic unavailable history', code: -32603, data: { code: 'INTERNAL_SERVER_ERROR', httpStatus: 500, path: name } } } };
+      const data = name === 'auth.me' ? { id: 99, role, name: 'Synthetic Admin', email: 'admin@example.test' }
+        : name === 'admin.getScoreHistory' ? scoreFixtures
+        : name === 'admin.stats' ? { trialCount: 0, waitlistCount: 0, errorCount: 0, scoreCount: 3, purchaseCount: 0, subscriptionCount: 0, totalRevenueCAD: 0, feedbackCount: 0, avgRating: 0, triggerCount: 0 }
+        : null;
+      return { result: { data: { json: data } } };
+    });
+    await route.fulfill({ json: results });
+  });
+  return calls;
+}
+for (const width of [1280, 390]) {
+  test(`admin history shows who and when, retaining CSV and internal scrolling at ${width}px`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width, height: 844 });
+    await mockAdminHistory(page);
+    await page.goto('/admin');
+    if (width < 1024) await page.getByRole('button', { name: 'Open navigation', exact: true }).click();
+    await page.getByRole('button', { name: 'Score history', exact: true }).click();
+    const history = page.getByRole('region', { name: 'Exam score history', exact: true });
+    await expect(history).toBeVisible();
+    await expect(history.getByRole('columnheader', { name: 'Learner', exact: true })).toBeVisible();
+    await expect(history.getByText('Example Learner With A Long Name', { exact: true })).toBeVisible();
+    await expect(history.getByText('long.learner.address@example.test', { exact: true })).toBeVisible();
+    await expect(history).toContainText('Email-only learner');
+    await expect(history).toContainText('Unidentified learner');
+    await expect(history).toContainText('No email recorded');
+    await expect(history).toContainText('0m 0s');
+    const timestamp = history.locator('time').first();
+    await expect(timestamp).toHaveAttribute('datetime', scoreFixtures[0].createdAt);
+    await expect(timestamp).toContainText('2026');
+    await expect(timestamp).toContainText(/\d+:\d+:\d+/);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    if (width === 390) {
+      expect(await history.evaluate(el => el.scrollWidth > el.clientWidth)).toBe(true);
+      await history.evaluate(el => { el.scrollLeft = el.scrollWidth; });
+    }
+    await expect(history.getByRole('columnheader', { name: 'Saved at', exact: true })).toBeVisible();
+    await page.screenshot({ path: testInfo.outputPath(`admin-score-history-${width}.png`), fullPage: true });
+    const downloadPromise = page.waitForEvent('download');
+    await page.getByRole('button', { name: /Download CSV/ }).click();
+    const download = await downloadPromise;
+    const stream = await download.createReadStream();
+    const chunks: Buffer[] = []; for await (const chunk of stream!) chunks.push(Buffer.from(chunk));
+    const csv = Buffer.concat(chunks).toString('utf8');
+    expect(csv).toContain('learner_name,learner_email');
+    expect(csv).toContain('saved_at_utc');
+    expect(csv).toContain('long.learner.address@example.test');
+    expect(csv).toContain(scoreFixtures[0].createdAt);
+  });
+}
+test('admin history reports a load error instead of an empty result', async ({ page }) => {
+  await mockAdminHistory(page, 'admin', true);
+  await page.goto('/admin');
+  await page.getByRole('button', { name: 'Score history', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('Score history could not be loaded');
+  await expect(page.getByText('No exam results yet.', { exact: true })).toHaveCount(0);
+});
+test('admin history stays inaccessible to a normal learner and never requests its identity rows', async ({ page }) => {
+  const calls = await mockAdminHistory(page, 'user');
+  await page.goto('/admin');
+  await expect(page.getByText('Admin access only', { exact: true })).toBeVisible();
+  expect(calls).not.toContain('admin.getScoreHistory');
+  await expect(page.getByText('long.learner.address@example.test', { exact: true })).toHaveCount(0);
+});
