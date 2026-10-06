@@ -39,7 +39,7 @@ export const wastewaterCollection = [
     ["The upper manhole wall deteriorates rapidly while the submerged invert remains comparatively sound.",0,"Sewer-gas exposure can attack concrete above the flow line."],
     ["Odour rises after a long low-flow weekend in a warm forcemain.",1,"Low oxygen and detention favour sulfide generation."],
     ["Odour and corrosion are greatest at the first manhole after a pressured line discharges.",2,"Turbulence can release dissolved sulfide gas."],
-    ["A patched manhole crown fails repeatedly despite ongoing sulfide exposure.",3,"Persistent exposure should influence material choice."],
+    ["A patched manhole crown fails repeatedly despite ongoing sulfide exposure.",3,"Persistent exposure should influence material choice.","Which repair consideration best fits the ongoing exposure?"],
     ["Concrete loss is concentrated near the manhole roof rather than below the waterline.",0,"The spatial pattern supports gas-phase attack."],
   ]),
   F(S,"Sewer joint leakage","WC_SEWERS","Gravity sewers: joints, infiltration, exfiltration, and groundwater.","Which observation best diagnoses the joint condition?",
@@ -59,8 +59,8 @@ export const wastewaterCollection = [
     ["A surveyed dip aligns with the reach where solids deposit each week.",0,"The grade defect is the likely hydraulic cause."],
   ]),
   F(S,"Rehabilitation selection","WC_SEWERS","Collection-system rehabilitation: structural condition, infiltration, and service restoration.","Which evidence should govern selection of a repair method?",
-    ["CCTV identifies whether the pipe can be lined or requires excavation.","Flow monitoring shows whether infiltration is concentrated in the reach.","Service-lateral mapping identifies reconnection requirements.","Access and bypass feasibility determine how the reach can be isolated."],[
-    ["The proposed liner would cross a fully collapsed section that cannot be cleaned or traversed.",0,"Structural condition may rule out the proposed liner."],
+    ["Structural condition assessment confirms whether lining is feasible or excavation is required.","Flow monitoring shows whether infiltration is concentrated in the reach.","Service-lateral mapping identifies reconnection requirements.","Access and bypass feasibility determine how the reach can be isolated."],[
+    ["The proposed liner would cross a reach already confirmed to be fully collapsed and not traversable.",0,"The confirmed structural condition may rule out lining and require excavation or another suitable method."],
     ["One short reach contributes most of a district's groundwater-driven excess flow.",1,"Flow evidence supports focused infiltration rehabilitation."],
     ["An unmapped active lateral would be covered by the proposed lining route.",2,"Service locations must be mapped and reopened."],
     ["A repair method needs the sewer out of service, but no temporary bypass route has been planned.",3,"Maintaining service is part of method selection."],
@@ -124,10 +124,10 @@ export const wastewaterCollection = [
     ["A fogged lens makes roots and deposits look indistinguishable.",0,"Repeat with a clear image."],
   ]),
   F(E,"Temporary bypass pumps","WC_PUMPS","Collection maintenance: bypass capacity, suction, backup and discharge protection.","Which bypass check should be prioritized?",
-    ["Measure incoming peak flow against available pump duty.","Check suction submergence and air entry.","Test backup power and a standby pump under load.","Inspect discharge routing for secure containment."],[
+    ["Measure incoming peak flow against available pump duty.","Check suction submergence and air entry.","Before isolation, provide and test redundant bypass pumping and backup power under representative load.","Inspect discharge routing for secure containment."],[
     ["A maintenance bypass is sized from average dry-weather flow even though storms are forecast.",0,"Peak flow governs bypass capacity."],
     ["A bypass pump loses prime as the wet-well level falls below its suction intake.",1,"Adequate suction submergence is needed."],
-    ["One portable pump is the only bypass and the standby generator has never been load tested.",2,"Redundancy should be tested before isolation."],
+    ["One portable pump is the only bypass and the standby generator has never been load tested.",2,"The bypass needs redundant pumping and proven backup power before isolation."],
     ["A temporary discharge hose crosses a roadway without restraint or leak containment.",3,"The discharge path must be secured."],
     ["Upstream manholes rise while both bypass pumps run at their measured maximum.",0,"Capacity should be checked against actual incoming flow."],
   ]),
@@ -137,7 +137,7 @@ export const wastewaterCollection = [
     ["A pressure tube blocks with grease and its indicated level stops changing.",1,"A fouled measurement path can freeze readings."],
     ["The local panel shows a rising level but SCADA is fixed at yesterday's value.",2,"Telemetry is the likely discrepancy."],
     ["Both instruments agree on level but the lead pump starts far above its intended elevation.",3,"Control setpoints should be verified."],
-    ["A sensor reads low during high-level alarm and an independent indicator agrees with the alarm.",0,"The suspect measurement needs verification."],
+    ["A sensor reads low during high-level alarm and an independent indicator agrees with the alarm.",1,"The independent indication confirms the sensor is suspect, so its sensing face or impulse tube should be checked for fouling."],
   ]),
   C(E,"Sewer mean velocity","WC_SEWERS","Flow velocity from flow rate and full circular cross-sectional area.",([q,d])=>{const v=(q/1000)/(Math.PI*(d/1000)**2/4);return N(`A full ${d} mm sewer conveys ${q} L/s. What is its approximate mean velocity?`,v,"m/s","Velocity = flow in m³/s ÷ full-pipe area in m².",`(${q}/1000) ÷ [π × (${d}/1000)² ÷ 4] ≈ ${v.toFixed(2)} m/s.`,[v*.5,v*1.25,v*2],2);},[[45,250],[55,300],[85,350],[105,400],[140,450]]),
   F(P,"Wet-well cycling","WC_PUMPS","Lift stations: start and stop levels, cycling and pump wear.","Which operating adjustment should be examined?",
@@ -196,7 +196,7 @@ export const wastewaterCollection = [
     ["A cleanup crew has arrived but nobody has logged the first observation time.",3,"Contemporaneous details support response and reporting."],
     ["An upstream surcharge reaches a street and continues to increase.",0,"The source and route of release require control."],
   ]),
-  C(P,"Wet-well pump rate","WC_PUMPS","Pump-out rate corrected for constant incoming flow.",([a,drop,t,inflow])=>{const net=a*drop/t*60;const rate=net+inflow;return N(`A wet well has ${a} m² plan area. Level drops ${drop} m in ${t} minutes while inflow is ${inflow} m³/h. Estimate actual pump delivery.`,rate,"m³/h","Pump delivery = net wet-well drawdown rate + incoming rate.",`(${a} × ${drop} ÷ ${t} × 60) + ${inflow} = ${rate} m³/h.`,[net,rate*.8,rate*1.25],1);},[[12,1.5,6,20],[15,1.2,6,30],[10,1.8,9,25],[20,1.5,10,35],[18,1.2,8,28]]),
+  C(P,"Wet-well pump rate","WC_PUMPS","Pump-out rate corrected for constant incoming flow.",([a,drop,t,inflow])=>{const net=a*drop/t*60;const rate=net+inflow;return N(`A wet well has ${a} m² plan area. Level drops ${drop} m in ${t} minutes while inflow is ${inflow} m³/h. Estimate actual pump delivery.`,rate,"m³/h","Pump delivery = net wet-well drawdown rate + incoming rate.",`(${a} × ${drop} ÷ ${t} × 60) + ${inflow} = ${rate.toFixed(1)} m³/h.`,[net,rate*.8,rate*1.25],1);},[[12,1.5,6,20],[15,1.2,6,30],[10,1.8,9,25],[20,1.5,10,35],[18,1.2,8,28]]),
   C(P,"Pump run fraction","WC_PUMPS","Duty cycle from measured run time over observation interval.",([run,total])=>N(`A station's lead pump runs ${run} minutes in a ${total}-minute observation period. What fraction of the period was it running?`,run/total*100,"%","Run fraction = run time ÷ total observation time × 100.",`${run} ÷ ${total} × 100 = ${run/total*100}%.`,[run/total*50,run/total*125,run/total*200],1),[[18,60],[24,75],[30,75],[35,70],[42,70]]),
   F(M,"CCTV defect prioritization","WC_SEWERS","Sewer inspection: defect severity, location, consequence and progression.","Which comparison most informs the inspection priority?",
     ["Compare structural defect grade and likelihood of collapse.","Compare service consequence at the affected location.","Compare recent and prior footage for defect progression.","Compare visible infiltration with wet-weather flow measurements."],[
@@ -261,7 +261,7 @@ export const wastewaterCollection = [
     ["An operator plans entry using only the absence of detectable odour as evidence of safe air.",1,"Atmosphere requires proper testing."],
     ["An upstream valve can unexpectedly admit sewage into the space during repair.",2,"Flow hazard should be controlled."],
     ["An entrant is ready but no attendant or workable retrieval arrangement has been assigned.",3,"Rescue and attendant provisions are necessary."],
-    ["The crew assumes a deep access chamber is safe because the cover has been open for an hour.",0,"The site's assessment and plan govern entry."],
+    ["The crew assumes a deep access chamber is safe because the cover has been open for an hour.",1,"An open cover does not prove a safe atmosphere; test the atmosphere with suitable calibrated instruments under the entry plan."],
   ]),
   F(A,"Atmospheric monitoring","WC_SAFETY","Confined space atmosphere: oxygen, flammable gas and toxic exposure.","Which monitoring action addresses the risk?",
     ["Test at relevant elevations before entry where stratification is possible.","Verify the meter's calibration and bump-test state under procedure.","Continue monitoring when changing conditions can alter the atmosphere.","Leave the area and follow the plan when a hazardous reading occurs."],[
@@ -288,19 +288,19 @@ export const wastewaterCollection = [
     ["A connector is loose after the previous use but the crew plans to pressurize immediately.",0,"Inspect before operating."],
   ]),
   F(A,"Pump isolation","OHS_LOCKOUT","Ontario lockout: prevent unexpected startup during maintenance.","Which isolation check matters before maintenance?",
-    ["Identify electrical and stored hydraulic energy sources.","Apply the site's lockout procedure to the pump and automatic controls.","Verify zero-energy state with an appropriate test.","Control backflow before opening the pump casing."],[
-    ["A technician will remove the pump guard while SCADA can start the motor remotely.",0,"Remote-start energy sources must be identified."],
-    ["A motor is turned off at its selector but the breaker and automatic control remain available.",1,"A selector alone does not provide controlled isolation."],
-    ["A crew applies locks and starts work without verifying the equipment cannot run.",2,"Isolation should be tested."],
-    ["A discharge line could drain backward when the pump casing is opened.",3,"Stored liquid energy requires control."],
-    ["The pump is stopped yet the flywheel can rotate and energized circuits remain in its panel.",0,"Residual and electrical energy should be identified."],
+    ["Identify all applicable electrical, mechanical, hydraulic, pneumatic and liquid energy sources, including remote and automatic starts.","Apply the site's lockout procedure to isolate and lock out the pump, its electrical supply and automatic controls.","Verify the zero-energy state with an appropriate test after isolation and lockout.","Control backflow before opening the pump casing."],[
+    ["A technician will remove the pump guard while SCADA can start the motor remotely.",1,"The pump and automatic controls must be isolated and locked out before the guard is removed.","Which action most directly addresses the stated immediate lockout gap?"],
+    ["A motor is turned off at its selector but the breaker and automatic control remain available.",1,"A selector alone does not provide controlled isolation; use the site lockout procedure for the electrical supply and automatic controls.","Which action most directly addresses the stated immediate lockout gap?"],
+    ["A crew applies locks and starts work without verifying the equipment cannot run.",2,"Isolation must be verified with the appropriate test after lockout.","Which action most directly addresses the stated immediate lockout gap?"],
+    ["A discharge line could drain backward when the pump casing is opened.",3,"Stored liquid energy requires control before the casing is opened.","Which action most directly addresses the stated immediate lockout gap?"],
+    ["The pump is stopped yet the flywheel can rotate and energized circuits remain in its panel.",0,"The rotating flywheel and energized circuits show that applicable mechanical and electrical energy sources must be identified before lockout and verification.","Which action most directly addresses the stated immediate lockout gap?"],
   ]),
   F(A,"Sewage exposure controls","WC_FIELD_SAFETY","Collection safety: contact with wastewater and hygiene after exposure.","Which control is most relevant?",
-    ["Select splash and hand protection suitable for the task.","Prevent contaminated gloves from contacting clean surfaces.","Use the site's exposure response after a splash to eyes or skin.","Keep eating and drinking out of contaminated work zones."],[
+    ["Select splash and hand protection suitable for the task.","Prevent contaminated gloves from contacting clean surfaces.","Use the site's exposure response after a splash to eyes or skin.","Wash hands with soap and water and remove or clean contaminated PPE before eating or drinking."],[
     ["A hose disconnect can spray wastewater toward a worker's face.",0,"Appropriate splash protection is needed."],
     ["A worker handles a clean tablet with gloves used to collect sewage samples.",1,"Cross-contamination should be avoided."],
     ["Sewage splashes into a worker's eye while clearing a blockage.",2,"Prompt response should follow site procedures."],
-    ["A worker leaves a contaminated trench to eat without cleaning hands.",3,"Hygiene reduces exposure."],
+    ["A worker leaves a contaminated trench to eat without cleaning hands.",3,"Hands and contaminated PPE must be cleaned or removed before eating or drinking."],
     ["A pressurized hose is being opened and its splash route reaches unprotected arms.",0,"Protection should match the exposure."],
   ]),
   F(A,"Public spill protection","WC_FIELD_SAFETY","Collection incidents: safe access, public exposure, notification.","Which response addresses the observed hazard?",
@@ -318,5 +318,17 @@ for (const item of waterTreatment) if (sharedEquipment.has(item.topic)) {
   const replace = value => value.replaceAll("finished-water","pumped-sewage").replaceAll("filtered-water","pumped-sewage").replaceAll("clearwell","wet well").replaceAll("reservoir","wet well").replaceAll("distribution", "collection")
     .replaceAll("tank-level", "wet-well-level").replaceAll("tank level", "wet-well level").replaceAll("tank drawdown", "wet-well drawdown").replaceAll("source level", "wet-well level")
     .replaceAll("treatment pumps", "lift-station pumps").replaceAll("disinfection system", "lift-station control system");
-  wastewaterCollection.push({...item,module:E,sourceKey:"WC_PUMPS",sourceReference:`${item.topic}: sewage pump and station equipment checks; confirm applicability with the station procedure.`,ask:replace(item.ask),options:item.options.map(replace),cases:item.cases.map(([s,a,r])=>[`At a collection lift station: ${replace(s)}`,a,replace(r)])});
+  const options = item.options.map(replace);
+  const cases = item.cases.map(([s,a,r,caseAsk])=>[`At a collection lift station: ${replace(s)}`,a,replace(r),caseAsk ? replace(caseAsk) : undefined]);
+  if (item.topic === "Pump suction diagnosis") {
+    options[0] = "Verify wet-well level, suction submergence, air entry and vortex conditions at the pump inlet.";
+    cases[0][2] = "A falling wet-well level can reduce submergence and allow vortexing or air entrainment at the pump inlet.";
+    cases[4][2] = "The low wet-well level points to submergence, vortexing or air-entrainment conditions at the pump inlet.";
+  }
+  if (item.topic === "Flowmeter discrepancy") {
+    const drawdownCase = cases.find(([situation]) => situation.includes("Two meters in series disagree"));
+    drawdownCase[0] = "At a collection lift station: Two meters in series disagree during steady operation, and influent is isolated so a timed wet-well drawdown is available.";
+    drawdownCase[2] = "With influent isolated, a timed wet-well drawdown is an independent volumetric check that helps identify which reading is suspect.";
+  }
+  wastewaterCollection.push({...item,module:E,sourceKey:"WC_PUMPS",sourceReference:`${item.topic}: sewage pump and station equipment checks; confirm applicability with the station procedure.`,ask:replace(item.ask),options,cases});
 }

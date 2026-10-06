@@ -87,7 +87,7 @@ export const waterTreatment = [
     ["Dissolved iron rises ahead of filtration after the oxidant pump is taken out of service.",0,"Oxidation conditions upstream of the filter need verification."],
     ["Particulate iron rises only in filter effluent while the inlet after oxidation remains unchanged.",1,"A filter-specific carryover should be investigated."],
     ["Manganese removal weakens as blended source water changes pH and organic demand.",2,"The source shift may change oxidation effectiveness and chemical demand."],
-    ["Total iron increases but dissolved iron is unchanged in paired, correctly collected samples.",3,"Separating dissolved and particulate fractions clarifies the likely process step."],
+    ["Total iron increases, but no dissolved or filtered fraction has yet been tested.",3,"Separating dissolved and particulate fractions clarifies the likely process step."],
     ["Feed records show correct oxidant flow, but the contact tank level is much lower than normal.",0,"Reduced contact can impair oxidation before filtration."],
   ]),
   F(P,"pH and stability","WT_PROCESS","Finished-water pH adjustment, corrosion control, and chemical feed monitoring.","Which check should come first?",
@@ -133,20 +133,20 @@ export const waterTreatment = [
     ["A warm sample is left uncapped through a shift change before the analyst runs a residual test.",0,"Fresh prompt testing is needed for a representative result."],
   ]),
   F(L,"pH measurement QA","WT_PROCESS","Coagulation and pH control: calibrated representative measurement.","What is the best first quality-control check?",
-    ["Verify the pH meter with appropriate fresh buffers.","Compare the sampling point with the process mixing location.","Rinse the probe and assess fouling or sluggish response.","Use a second instrument to resolve conflicting measurements."],[
+    ["Verify the pH meter with appropriate fresh buffers.","Compare the sampling point with the process mixing location.","Rinse the probe and assess fouling or sluggish response.","Use a third independent instrument or verify both meters against fresh buffers."],[
     ["The bench meter was not checked with buffers today and reads far from its historical values.",0,"A calibration check distinguishes instrument drift from a water-quality change."],
     ["A pH tap immediately after an alkali injector differs from a well-mixed downstream location.",1,"The sampling location may be within an incompletely mixed zone."],
     ["A probe with visible scale takes several minutes to settle after transfer to fresh sample.",2,"Fouling can slow and bias probe response."],
-    ["Two freshly calibrated meters give conflicting pH on the same mixed sample.",3,"An independent instrument or buffer check is needed to resolve the conflict."],
+    ["Two freshly calibrated meters give conflicting pH on the same mixed sample.",3,"A third independent instrument or fresh-buffer verification provides a tie-breaker."],
     ["A single meter shifts 0.5 pH units after electrode replacement, before any process change.",0,"Verify calibration before changing chemical feed."],
   ]),
   F(L,"Sample representativeness","WT_PROCESS","Treatment process monitoring: time, location, and sample handling.","Which improvement most directly corrects the sampling problem?",
-    ["Match samples to the same process location and operating period.","Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.","Collect a discrete grab for a rapidly changing operational condition.","Preserve and transport samples as required by the selected analytical method."],[
-    ["One operator compares a morning raw-water sample with the prior day's finished-water sample as if paired.",0,"Samples taken at different times cannot directly establish current process removal."],
+    ["Match representative influent and effluent samples to the same water parcel using hydraulic travel time.","Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.","Collect a discrete grab for a rapidly changing operational condition.","Preserve and transport samples as required by the selected analytical method."],[
+    ["One operator compares a morning raw-water sample with the prior day's finished-water sample as if paired.",0,"Representative samples must be linked to the same water parcel by the process hydraulic travel time."],
     ["The team needs the day's average solids concentration, but only a single low-flow grab is being used.",1,"A properly collected composite better represents a variable period average."],
     ["A sudden filter upset must be characterized now, but the planned composite will not finish until tomorrow.",2,"A timely grab captures a transient operational condition."],
     ["Laboratory results drift higher when warm transport time increases well beyond the method limit.",3,"Sample handling must meet the analytical method to preserve validity."],
-    ["Influent and effluent removal calculations use samples from unrelated shifts with different source water.",0,"Use comparable locations and times to interpret removal."],
+    ["Influent and effluent removal calculations use samples from unrelated shifts with different source water.",0,"Link representative influent and effluent samples by hydraulic travel time before interpreting removal."],
   ]),
   F(L,"Online analyzer trend","WT_CONTROLS","Instrumentation and control: validation of trends, alarms, and independent measurements.","Which comparison best tests the apparent process change?",
     ["Compare a redundant measurement and confirm sensor calibration.","Check the physical sample line for blockage or air.","Compare controller output with chemical inventory or measured feed.","Check upstream and downstream measurements under matched flow conditions."],[
@@ -289,8 +289,8 @@ export const waterTreatment = [
   ]),
   F(S,"Intake stratification","WT_SOURCE","Source development: intake location, reservoir stratification, and changing raw-water quality.","Which finding should be compared to explain the difference?",
     ["Temperature and dissolved oxygen at both intake depths.","Iron and manganese at the withdrawal depths.","Turbidity and suspended solids across the water column.","Flow through each active intake and its operating schedule."],[
-    ["A deeper intake produces cooler, low-oxygen water during summer turnover.",0,"Vertical temperature and oxygen profiles characterize stratification."],
-    ["Raw iron rises after the plant switches to a deep low-oxygen withdrawal.",1,"Reduced deep water can mobilize dissolved metals."],
+    ["A deeper intake produces cooler, low-oxygen water during summer stratification.",0,"Vertical temperature and oxygen profiles characterize stratification."],
+    ["Raw iron rises after the plant switches to a deep low-oxygen withdrawal.",1,"Low-oxygen, reducing conditions in deep water can mobilize dissolved metals such as iron and manganese."],
     ["A shallow intake becomes cloudy only during a wind-driven shoreline event.",2,"Depth-specific particle profiles test the source of solids."],
     ["Two raw-water lines show different quality but their recorded intake flows have changed sharply.",3,"The actual blend and scheduling must be known to interpret quality."],
     ["The reservoir's deep and shallow temperatures diverge markedly before a source switch.",0,"Thermal profiling helps anticipate a different source layer."],
@@ -312,20 +312,20 @@ export const waterTreatment = [
     ["A sharp cooling of source water is followed by poorer bench-scale floc formation.",0,"Jar tests at the actual temperature can distinguish dose and mixing needs."],
   ]),
   F(A,"Energy isolation","WT_STORAGE","Pumping and treatment equipment: lockout, stored energy, and verification before maintenance.","Which control is essential before the work proceeds?",
-    ["Isolate and verify zero electrical energy at the equipment.","Relieve trapped hydraulic or pneumatic pressure.","Identify every energy source, including automatic and remote starts.","Secure the affected process with an approved alternate operating arrangement."],[
-    ["An electrician will open a pump motor cabinet after the disconnect was switched off.",0,"The isolation must be secured and absence of energy verified."],
-    ["A mechanic will open a chemical feed line after switching off its metering pump.",1,"Liquid pressure may remain after the motor stops."],
-    ["A remotely controlled backwash valve could receive an automatic command during actuator repair.",2,"Remote and automatic energy sources must be included in the isolation."],
-    ["A single treatment train will be isolated for repair while another train must meet demand.",3,"An approved operating configuration protects service while the work is isolated."],
-    ["A pump has stopped, but its drive cabinet is still energized for remote reset.",0,"Stopped operation is not verified electrical isolation."],
+    ["Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.","Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.","Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.","Secure the affected process with an approved alternate operating arrangement."],[
+    ["An electrician will open a pump motor cabinet after the disconnect was switched off.",0,"The electrical supply must be disconnected, locked out, tagged and verified before the cabinet is opened.","Which action most directly addresses the stated immediate electrical-isolation gap?"],
+    ["A mechanic will open a chemical feed line after switching off its metering pump.",1,"Stopping the motor does not isolate the chemical path or its trapped pressure.","Which action most directly addresses the stated immediate isolation gap?"],
+    ["A remotely controlled backwash valve could receive an automatic command during actuator repair.",2,"Automatic and remote sources must be isolated, locked out and verified before repair.","Which action most directly addresses the stated immediate isolation gap?"],
+    ["A single treatment train will be isolated for repair while another train must meet demand.",3,"An approved operating configuration protects service while the work is isolated.","Which action most directly preserves treatment continuity while the approved isolation is carried out?"],
+    ["A pump has stopped, but its drive cabinet is still energized for remote reset.",0,"Stopped operation is not verified electrical isolation.","Which action most directly addresses the stated immediate electrical-isolation gap?"],
   ]),
   F(A,"Chemical spill response","WT_PROCESS","Chemical feed and storage: spill isolation, compatible controls, and protection of personnel.","What is the safest immediate direction?",
-    ["Isolate the area and use the substance-specific emergency procedure.","Confirm the chemical identity and safety data before selecting cleanup materials.","Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.","Arrange trained response with suitable respiratory and chemical protection if needed."],[
-    ["An unknown chemical is pooling near two unlabelled transfer lines and workers report strong fumes.",0,"Uncertain chemical identity and fumes require area isolation and the emergency plan."],
+    ["Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.","Confirm the chemical identity and safety data before selecting cleanup materials.","Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.","Arrange trained response with suitable respiratory and chemical protection if needed."],[
+    ["An unknown chemical is pooling near two unlabelled transfer lines and workers report strong fumes.",0,"Unknown chemical and fumes require isolation, keeping people out and the site unknown-chemical procedure before cleanup materials are selected."],
     ["A worker proposes adding an available neutralizer to a labelled spill without checking compatibility.",1,"Chemical identity and compatibility must guide cleanup."],
     ["A small leak remains within secondary containment but approaches an open process drain.",2,"Preventing uncontrolled entry into the process is an immediate control."],
     ["A chlorine-gas detector alarms and an operator suggests entering the room alone to close a valve.",3,"The response needs trained personnel and suitable protection under the site plan."],
-    ["An unidentified vapour spreads from the chemical room into an occupied corridor.",0,"Isolate and activate the site-specific response rather than improvising entry."],
+    ["An unidentified vapour spreads from the chemical room into an occupied corridor.",0,"Isolate and evacuate the affected area, then activate the site unknown-chemical response rather than improvising entry."],
   ]),
   F(A,"Confined space pre-entry","WT_STORAGE","Reservoir and treatment structures: hazard assessment and controlled entry.","Which precaution addresses the immediate gap?",
     ["Complete an entry assessment and permit as required by the site procedure.","Test the atmosphere with a calibrated monitor before and during entry as required.","Isolate mechanical and hydraulic connections to the space.","Provide the specified attendant and rescue arrangements before entry."],[
