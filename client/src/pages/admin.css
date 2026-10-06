@@ -362,3 +362,14 @@
 .admin-ledger-table thead th,
 .admin-priority-copy small,
 .admin-priority-note p { color: #4e626a; }
+
+/* Score-history extension: preserve the founder shell and its visual tokens. */
+.admin-score-table-wrap { max-width: 100%; overflow-x: auto; }
+.admin-score-table-wrap:focus-visible { outline: 3px solid var(--admin-focus); outline-offset: -3px; }
+.admin-score-table { min-width: 890px; }
+.admin-score-table td { vertical-align: top; }
+.admin-score-learner { min-width: 180px; max-width: 280px; overflow-wrap: anywhere; }
+.admin-score-learner strong { color: var(--admin-ink); display: block; font-size: 12px; line-height: 1.5; }
+.admin-score-learner span { color: var(--admin-muted); display: block; font-size: 11px; line-height: 1.6; margin-top: 3px; }
+.admin-score-saved-at { display: grid; gap: 4px; white-space: nowrap; }
+.admin-score-saved-at strong { font-weight: 600; }
