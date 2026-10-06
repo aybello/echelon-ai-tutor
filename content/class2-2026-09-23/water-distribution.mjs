@@ -74,7 +74,7 @@ export const waterDistribution = [
     ["A key boundary valve has not been exercised in years and may not seat fully.",0,"Field function matters before relying on the drawing."],
   ]),
   F(G,"Safety hazard assessment","WD_MAIN","Distribution work: site-specific hazards, excavation, pressure, and traffic.","Which hazard control best addresses the observed gap?",
-    ["Assess excavation stability and required protective measures before entry.","Relieve and verify pressure before opening a buried appurtenance.","Implement a traffic-control plan for the work zone.","Identify buried services before excavation."],[
+    ["Stop work, have workers leave and keep clear of the excavation, then have a competent person reassess stability and required protection before re-entry.","Relieve and verify pressure before opening a buried appurtenance.","Implement a traffic-control plan for the work zone.","Identify buried services before excavation."],[
     ["A worker intends to climb into a deep unprotected trench after wet soil begins to slump.",0,"Excavation stability must be addressed before entry."],
     ["A repair crew starts removing a flange while the main still shows gauge pressure.",1,"The line must be isolated and pressure verified."],
     ["A maintenance vehicle parks in a live traffic lane without warning devices.",2,"Traffic controls protect workers and road users."],
@@ -125,12 +125,12 @@ export const waterDistribution = [
     ["An actuator limit switch changes state but the stem has barely moved.",0,"Physical position should be checked."],
   ]),
   F(U,"Standby power","WD_STORAGE","Distribution pumping and storage: standby generation and control reliability.","Which readiness gap should be addressed?",
-    ["The automatic transfer switch did not connect the pumps to standby power.","Fuel and maintenance records do not support the required outage duration.","The generator cannot sustain the actual pump starting load.","Remote tank telemetry does not operate on the standby circuit."],[
+    ["The automatic transfer switch and pump load transfer must be verified under an actual load test.","Fuel and maintenance records do not support the required outage duration.","The generator cannot sustain the actual pump starting load.","Remote tank telemetry does not operate on the standby circuit."],[
     ["A backup generator starts but the booster pumps remain without power in a simulated utility failure.",0,"The transfer path has failed the functional test."],
     ["A forecast outage is longer than the generator's available fuel supply.",1,"Sustained readiness depends on adequate fuel."],
     ["Generator voltage sags whenever the lead booster starts during the load test.",2,"Actual starting duty is the limiting condition."],
     ["The pumps can run on backup power but their remote tank-level signal goes dark.",3,"Loss of necessary controls or telemetry can impair safe operation."],
-    ["A generator runs unloaded each month but has never transferred the station's actual electrical load.",0,"An unloaded run does not verify the transfer function."],
+    ["A generator runs unloaded each month but has never transferred the station's actual electrical load.",0,"An unloaded run does not prove automatic transfer or pump load delivery."],
   ]),
   F(P,"Unidirectional flushing boundary","WD_MAIN","Distribution-system flushing: isolation, flow direction, and monitoring.","Which planning step is most important for a controlled flush?",
     ["Confirm valve boundaries that force flow from a clean source toward the outlet.","Verify the discharge point can accept the planned flow without erosion or flooding.","Measure residual and turbidity before returning the segment to normal service.","Check the pressure effect on critical customers during the flush."],[
@@ -149,19 +149,19 @@ export const waterDistribution = [
     ["After several main volumes, solids still appear only when a side branch valve is opened.",0,"The flush route may need to be extended to cover the branch."],
   ]),
   F(P,"Main break initial response","WD_MAIN","Watermain repair: isolating damaged pipe, maintaining pressure, and reducing contamination risk.","Which immediate step is most appropriate?",
-    ["Identify the leak and isolate with the smallest reliable valve boundary.","Assess whether pressure loss or entry of surrounding water occurred.","Notify critical affected services through the approved response chain.","Confirm the repair plan includes approved disinfection and sampling before release."],[
+    ["Identify the leak and isolate with the smallest reliable valve boundary.","Assess whether pressure loss or entry of surrounding water occurred.","Notify critical affected services through the approved response chain.","Confirm the repair classification and follow the applicable disinfection, flushing and sampling steps before release."],[
     ["A main fails at a known joint and a local two-valve boundary is available.",0,"A reliable limited isolation reduces the affected area."],
     ["A broken pipe is submerged in excavation water after system pressure falls to zero.",1,"The exposure and depressurization affect contamination risk."],
     ["An isolation will interrupt a dialysis facility unexpectedly within the next hour.",2,"Critical users need coordinated notification and contingency planning."],
-    ["A repair crew proposes restoring customer service immediately after installing a new pipe section.",3,"Return-to-service steps should follow the approved disinfection and sampling procedure."],
+    ["A repair crew proposes restoring customer service immediately after installing a new pipe section.",3,"Return-to-service steps depend on the classified repair and the applicable disinfection, flushing and sampling procedure."],
     ["The leak location is uncertain and closing the first valve would cut off half the zone.",0,"Confirming the damaged segment and boundary avoids unnecessary interruption."],
   ]),
   F(P,"Repair contamination control","WD_DISINFECT","Watermain disinfection procedure: repair classification, ingress, and return-to-service checks.","Which fact changes the repair's contamination assessment most?",
-    ["Whether external water entered the open main during depressurization.","Whether the repaired section can remain isolated for the required procedure.","Whether the contact and flushing sequence reached all affected parts.","Whether representative microbiological and residual checks meet the approved release criteria."],[
+    ["Whether external water entered the open main during depressurization.","Whether the repaired section can remain isolated for the required procedure.","Whether the contact and flushing sequence reached all affected parts.","For a Category 2 repair, whether a representative post-flush microbiological sample was collected and acceptable disinfectant concentration restored."],[
     ["A pipe is opened below groundwater and loses positive pressure for several minutes.",0,"Ingress risk increases when external water can enter a depressurized main."],
     ["A repair must keep one branch served while the rest of the segment is under disinfection.",1,"The isolation arrangement governs how the procedure can be applied."],
     ["A disinfectant is applied at one end but a bypass leaves a side branch outside the contact path.",2,"The entire affected section must receive the intended treatment."],
-    ["Pressure has been restored but no representative post-repair quality result is available.",3,"Pressure restoration does not prove return-to-service water quality."],
+    ["Pressure has been restored after a Category 2 repair, but no representative post-flush microbiological sample has been collected.",3,"A Category 2 repair requires its post-flush sampling and disinfectant-residual steps; normal service may resume before microbiological results are available when the procedure permits."],
     ["Trench water floods into the cut pipe during an emergency repair.",0,"Direct ingress is a decisive contamination fact."],
   ]),
   F(P,"New main commissioning","WD_DISINFECT","Watermain disinfection procedure: isolation, flushing, disinfection, and verification.","What is the most appropriate next control?",
@@ -205,9 +205,9 @@ export const waterDistribution = [
     ["A valve that moved freely last year now requires unusually high force.",0,"The new mechanical resistance warrants investigation."],
   ]),
   F(P,"Leak localization","WD_MAIN","Distribution losses: pressure, minimum-night flow, acoustic evidence, and isolation.","Which next check best narrows the suspected leak?",
-    ["Compare minimum-night flows for adjacent metered areas.","Use pressure and acoustic observations along the suspect main.","Check known operational uses and authorized overnight flow.","Confirm boundary valves are holding before a step test."],[
-    ["One district's minimum-night flow rises while neighbouring districts remain stable.",0,"The district comparison localizes the change."],
-    ["A small corridor has persistent wet ground and coincident acoustic noise under normal pressure.",1,"Local measurements can narrow the break site."],
+    ["Use pressure and acoustic observations along the suspect main after excluding known operational uses.","Inspect the suspect main and nearby appurtenances for visible wet ground or flow.","Check known operational uses and authorized overnight flow.","Confirm boundary valves are holding before a step test."],[
+    ["One district's minimum-night flow rises while neighbouring districts remain stable.",0,"The district comparison already narrows the area, so local pressure and acoustic observations are the next check after known uses are excluded."],
+    ["A small corridor has persistent wet ground and coincident acoustic noise under normal pressure.",1,"Visible conditions at the suspect main and nearby appurtenances can further narrow the break site."],
     ["Night-flow alarms coincide with scheduled reservoir filling and main flushing.",2,"Known uses should be excluded before declaring a leak."],
     ["A step test shows flow persisting after a boundary valve is supposedly closed.",3,"Leaking boundary valves confound the isolation test."],
     ["Repeated inlet-meter totals show a new unexplained nighttime step in just one zone.",0,"Comparative district flow data are the first localization clue."],
@@ -333,10 +333,10 @@ export const waterDistribution = [
     ["A damaged main is drained beside a pedestrian walkway.",0,"Flow should be directed away from public access."],
   ]),
   F(P,"Main return to service","WD_DISINFECT","Watermain disinfection procedure: controlled refill, flushing, sampling, and records.","Which step is missing from the proposed release?",
-    ["Verify the affected section is fully flushed in the intended direction.","Confirm the disinfection process matched the classified repair and site procedure.","Confirm representative release sample and residual results.","Record valve positions, times, and customer notifications."],[
+    ["Verify the affected section is fully flushed in the intended direction.","Confirm the disinfection process matched the classified repair and site procedure.","For a Category 2 repair, collect a representative post-flush microbiological sample and restore acceptable disinfectant concentration.","Record valve positions, times, and customer notifications."],[
     ["A repair is disinfected but a blind side branch still contains construction water.",0,"All affected sections should be included in the flushing plan."],
     ["A crew used an emergency repair method but has not documented the exposure and procedure selection.",1,"The selected disinfection route must match the actual contamination conditions."],
-    ["Pressure is restored after repair but no representative quality check has been completed.",2,"Pressure does not establish acceptable water quality."],
+    ["Pressure is restored after a Category 2 repair but no representative post-flush microbiological sample has been collected.",2,"A Category 2 repair requires the post-flush sampling and disinfectant-residual steps; the procedure may permit normal service before microbiological results are available."],
     ["The main is back online, but valve positions and notified customers were not logged.",3,"Traceable operation and communication records remain necessary."],
     ["A closed branch does not receive the planned final flushing flow.",0,"The branch needs an effective flush before release."],
   ]),

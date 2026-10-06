@@ -672,7 +672,7 @@
     "questionNum": null,
     "module": "Collection System Components",
     "difficulty": "medium",
-    "question": "A patched manhole crown fails repeatedly despite ongoing sulfide exposure. Which finding most supports the suspected mechanism?",
+    "question": "A patched manhole crown fails repeatedly despite ongoing sulfide exposure. Which repair consideration best fits the ongoing exposure?",
     "options": [
       "A forcemain discharges turbulent sewage into a receiving manhole.",
       "A corrosion-resistant repair material is needed where exposure persists.",
@@ -1020,15 +1020,15 @@
     "questionNum": null,
     "module": "Collection System Components",
     "difficulty": "medium",
-    "question": "The proposed liner would cross a fully collapsed section that cannot be cleaned or traversed. Which evidence should govern selection of a repair method?",
+    "question": "The proposed liner would cross a reach already confirmed to be fully collapsed and not traversable. Which evidence should govern selection of a repair method?",
     "options": [
       "Access and bypass feasibility determine how the reach can be isolated.",
-      "CCTV identifies whether the pipe can be lined or requires excavation.",
+      "Structural condition assessment confirms whether lining is feasible or excavation is required.",
       "Flow monitoring shows whether infiltration is concentrated in the reach.",
       "Service-lateral mapping identifies reconnection requirements."
     ],
     "correctIndex": 1,
-    "explanation": "Structural condition may rule out the proposed liner.",
+    "explanation": "The confirmed structural condition may rule out lining and require excavation or another suitable method.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -1051,7 +1051,7 @@
     "difficulty": "medium",
     "question": "One short reach contributes most of a district's groundwater-driven excess flow. Which evidence should govern selection of a repair method?",
     "options": [
-      "CCTV identifies whether the pipe can be lined or requires excavation.",
+      "Structural condition assessment confirms whether lining is feasible or excavation is required.",
       "Flow monitoring shows whether infiltration is concentrated in the reach.",
       "Service-lateral mapping identifies reconnection requirements.",
       "Access and bypass feasibility determine how the reach can be isolated."
@@ -1080,7 +1080,7 @@
     "difficulty": "medium",
     "question": "An unmapped active lateral would be covered by the proposed lining route. Which evidence should govern selection of a repair method?",
     "options": [
-      "CCTV identifies whether the pipe can be lined or requires excavation.",
+      "Structural condition assessment confirms whether lining is feasible or excavation is required.",
       "Flow monitoring shows whether infiltration is concentrated in the reach.",
       "Service-lateral mapping identifies reconnection requirements.",
       "Access and bypass feasibility determine how the reach can be isolated."
@@ -1112,7 +1112,7 @@
       "Flow monitoring shows whether infiltration is concentrated in the reach.",
       "Service-lateral mapping identifies reconnection requirements.",
       "Access and bypass feasibility determine how the reach can be isolated.",
-      "CCTV identifies whether the pipe can be lined or requires excavation."
+      "Structural condition assessment confirms whether lining is feasible or excavation is required."
     ],
     "correctIndex": 2,
     "explanation": "Maintaining service is part of method selection.",
@@ -1139,7 +1139,7 @@
     "question": "Camera images show the pipe is deformed well beyond the lining system's approved range. Which evidence should govern selection of a repair method?",
     "options": [
       "Access and bypass feasibility determine how the reach can be isolated.",
-      "CCTV identifies whether the pipe can be lined or requires excavation.",
+      "Structural condition assessment confirms whether lining is feasible or excavation is required.",
       "Flow monitoring shows whether infiltration is concentrated in the reach.",
       "Service-lateral mapping identifies reconnection requirements."
     ],
@@ -2394,7 +2394,7 @@
     "options": [
       "Measure incoming peak flow against available pump duty.",
       "Check suction submergence and air entry.",
-      "Test backup power and a standby pump under load.",
+      "Before isolation, provide and test redundant bypass pumping and backup power under representative load.",
       "Inspect discharge routing for secure containment."
     ],
     "correctIndex": 0,
@@ -2421,7 +2421,7 @@
     "difficulty": "medium",
     "question": "A bypass pump loses prime as the wet-well level falls below its suction intake. Which bypass check should be prioritized?",
     "options": [
-      "Test backup power and a standby pump under load.",
+      "Before isolation, provide and test redundant bypass pumping and backup power under representative load.",
       "Inspect discharge routing for secure containment.",
       "Measure incoming peak flow against available pump duty.",
       "Check suction submergence and air entry."
@@ -2451,12 +2451,12 @@
     "question": "One portable pump is the only bypass and the standby generator has never been load tested. Which bypass check should be prioritized?",
     "options": [
       "Check suction submergence and air entry.",
-      "Test backup power and a standby pump under load.",
+      "Before isolation, provide and test redundant bypass pumping and backup power under representative load.",
       "Inspect discharge routing for secure containment.",
       "Measure incoming peak flow against available pump duty."
     ],
     "correctIndex": 1,
-    "explanation": "Redundancy should be tested before isolation.",
+    "explanation": "The bypass needs redundant pumping and proven backup power before isolation.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -2481,7 +2481,7 @@
     "options": [
       "Measure incoming peak flow against available pump duty.",
       "Check suction submergence and air entry.",
-      "Test backup power and a standby pump under load.",
+      "Before isolation, provide and test redundant bypass pumping and backup power under representative load.",
       "Inspect discharge routing for secure containment."
     ],
     "correctIndex": 3,
@@ -2510,7 +2510,7 @@
     "options": [
       "Measure incoming peak flow against available pump duty.",
       "Check suction submergence and air entry.",
-      "Test backup power and a standby pump under load.",
+      "Before isolation, provide and test redundant bypass pumping and backup power under representative load.",
       "Inspect discharge routing for secure containment."
     ],
     "correctIndex": 0,
@@ -2653,13 +2653,13 @@
     "difficulty": "medium",
     "question": "A sensor reads low during high-level alarm and an independent indicator agrees with the alarm. Which check isolates the sensor issue?",
     "options": [
-      "Check whether the start/stop setpoints match the approved operating range.",
       "Compare the instrument level with a safe independent wet-well measurement.",
       "Inspect the sensing face or impulse tube for fouling.",
-      "Compare local controller and remote telemetry readings."
+      "Compare local controller and remote telemetry readings.",
+      "Check whether the start/stop setpoints match the approved operating range."
     ],
     "correctIndex": 1,
-    "explanation": "The suspect measurement needs verification.",
+    "explanation": "The independent indication confirms the sensor is suspect, so its sensing face or impulse tube should be checked for fouling.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -3913,7 +3913,7 @@
       "160 m³/h"
     ],
     "correctIndex": 1,
-    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (12 × 1.5 ÷ 6 × 60) + 20 = 200 m³/h. The result is 200 m³/h.",
+    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (12 × 1.5 ÷ 6 × 60) + 20 = 200.0 m³/h. The result is 200 m³/h.",
     "steps": [
       {
         "l": "Formula",
@@ -3921,7 +3921,7 @@
       },
       {
         "l": "Substitution",
-        "c": "(12 × 1.5 ÷ 6 × 60) + 20 = 200 m³/h."
+        "c": "(12 × 1.5 ÷ 6 × 60) + 20 = 200.0 m³/h."
       },
       {
         "l": "Result",
@@ -3955,7 +3955,7 @@
       "262.5 m³/h"
     ],
     "correctIndex": 0,
-    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (15 × 1.2 ÷ 6 × 60) + 30 = 210 m³/h. The result is 210 m³/h.",
+    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (15 × 1.2 ÷ 6 × 60) + 30 = 210.0 m³/h. The result is 210 m³/h.",
     "steps": [
       {
         "l": "Formula",
@@ -3963,7 +3963,7 @@
       },
       {
         "l": "Substitution",
-        "c": "(15 × 1.2 ÷ 6 × 60) + 30 = 210 m³/h."
+        "c": "(15 × 1.2 ÷ 6 × 60) + 30 = 210.0 m³/h."
       },
       {
         "l": "Result",
@@ -3997,7 +3997,7 @@
       "116 m³/h"
     ],
     "correctIndex": 1,
-    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (10 × 1.8 ÷ 9 × 60) + 25 = 145 m³/h. The result is 145 m³/h.",
+    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (10 × 1.8 ÷ 9 × 60) + 25 = 145.0 m³/h. The result is 145 m³/h.",
     "steps": [
       {
         "l": "Formula",
@@ -4005,7 +4005,7 @@
       },
       {
         "l": "Substitution",
-        "c": "(10 × 1.8 ÷ 9 × 60) + 25 = 145 m³/h."
+        "c": "(10 × 1.8 ÷ 9 × 60) + 25 = 145.0 m³/h."
       },
       {
         "l": "Result",
@@ -4039,7 +4039,7 @@
       "180 m³/h"
     ],
     "correctIndex": 2,
-    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (20 × 1.5 ÷ 10 × 60) + 35 = 215 m³/h. The result is 215 m³/h.",
+    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (20 × 1.5 ÷ 10 × 60) + 35 = 215.0 m³/h. The result is 215 m³/h.",
     "steps": [
       {
         "l": "Formula",
@@ -4047,7 +4047,7 @@
       },
       {
         "l": "Substitution",
-        "c": "(20 × 1.5 ÷ 10 × 60) + 35 = 215 m³/h."
+        "c": "(20 × 1.5 ÷ 10 × 60) + 35 = 215.0 m³/h."
       },
       {
         "l": "Result",
@@ -4081,7 +4081,7 @@
       "190 m³/h"
     ],
     "correctIndex": 3,
-    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (18 × 1.2 ÷ 8 × 60) + 28 = 189.99999999999997 m³/h. The result is 190 m³/h.",
+    "explanation": "Pump delivery = net wet-well drawdown rate + incoming rate. (18 × 1.2 ÷ 8 × 60) + 28 = 190.0 m³/h. The result is 190 m³/h.",
     "steps": [
       {
         "l": "Formula",
@@ -4089,7 +4089,7 @@
       },
       {
         "l": "Substitution",
-        "c": "(18 × 1.2 ÷ 8 × 60) + 28 = 189.99999999999997 m³/h."
+        "c": "(18 × 1.2 ÷ 8 × 60) + 28 = 190.0 m³/h."
       },
       {
         "l": "Result",
@@ -5668,13 +5668,13 @@
     "difficulty": "medium",
     "question": "The crew assumes a deep access chamber is safe because the cover has been open for an hour. Which control should be confirmed before entry?",
     "options": [
-      "Confirm rescue arrangements and assigned attendant before entry.",
       "Confirm whether the manhole meets the confined-space definition and entry plan.",
       "Confirm atmosphere is tested with suitable calibrated instruments.",
-      "Confirm isolation of incoming flow and energy where required by the plan."
+      "Confirm isolation of incoming flow and energy where required by the plan.",
+      "Confirm rescue arrangements and assigned attendant before entry."
     ],
     "correctIndex": 1,
-    "explanation": "The site's assessment and plan govern entry.",
+    "explanation": "An open cover does not prove a safe atmosphere; test the atmosphere with suitable calibrated instruments under the entry plan.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6130,15 +6130,15 @@
     "questionNum": null,
     "module": "Safety & Regulations",
     "difficulty": "medium",
-    "question": "A technician will remove the pump guard while SCADA can start the motor remotely. Which isolation check matters before maintenance?",
+    "question": "A technician will remove the pump guard while SCADA can start the motor remotely. Which action most directly addresses the stated immediate lockout gap?",
     "options": [
-      "Apply the site's lockout procedure to the pump and automatic controls.",
-      "Verify zero-energy state with an appropriate test.",
+      "Verify the zero-energy state with an appropriate test after isolation and lockout.",
       "Control backflow before opening the pump casing.",
-      "Identify electrical and stored hydraulic energy sources."
+      "Identify all applicable electrical, mechanical, hydraulic, pneumatic and liquid energy sources, including remote and automatic starts.",
+      "Apply the site's lockout procedure to isolate and lock out the pump, its electrical supply and automatic controls."
     ],
     "correctIndex": 3,
-    "explanation": "Remote-start energy sources must be identified.",
+    "explanation": "The pump and automatic controls must be isolated and locked out before the guard is removed.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6159,15 +6159,15 @@
     "questionNum": null,
     "module": "Safety & Regulations",
     "difficulty": "medium",
-    "question": "A motor is turned off at its selector but the breaker and automatic control remain available. Which isolation check matters before maintenance?",
+    "question": "A motor is turned off at its selector but the breaker and automatic control remain available. Which action most directly addresses the stated immediate lockout gap?",
     "options": [
-      "Verify zero-energy state with an appropriate test.",
+      "Verify the zero-energy state with an appropriate test after isolation and lockout.",
       "Control backflow before opening the pump casing.",
-      "Identify electrical and stored hydraulic energy sources.",
-      "Apply the site's lockout procedure to the pump and automatic controls."
+      "Identify all applicable electrical, mechanical, hydraulic, pneumatic and liquid energy sources, including remote and automatic starts.",
+      "Apply the site's lockout procedure to isolate and lock out the pump, its electrical supply and automatic controls."
     ],
     "correctIndex": 3,
-    "explanation": "A selector alone does not provide controlled isolation.",
+    "explanation": "A selector alone does not provide controlled isolation; use the site lockout procedure for the electrical supply and automatic controls.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6188,15 +6188,15 @@
     "questionNum": null,
     "module": "Safety & Regulations",
     "difficulty": "medium",
-    "question": "A crew applies locks and starts work without verifying the equipment cannot run. Which isolation check matters before maintenance?",
+    "question": "A crew applies locks and starts work without verifying the equipment cannot run. Which action most directly addresses the stated immediate lockout gap?",
     "options": [
-      "Verify zero-energy state with an appropriate test.",
+      "Verify the zero-energy state with an appropriate test after isolation and lockout.",
       "Control backflow before opening the pump casing.",
-      "Identify electrical and stored hydraulic energy sources.",
-      "Apply the site's lockout procedure to the pump and automatic controls."
+      "Identify all applicable electrical, mechanical, hydraulic, pneumatic and liquid energy sources, including remote and automatic starts.",
+      "Apply the site's lockout procedure to isolate and lock out the pump, its electrical supply and automatic controls."
     ],
     "correctIndex": 0,
-    "explanation": "Isolation should be tested.",
+    "explanation": "Isolation must be verified with the appropriate test after lockout.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6217,15 +6217,15 @@
     "questionNum": null,
     "module": "Safety & Regulations",
     "difficulty": "medium",
-    "question": "A discharge line could drain backward when the pump casing is opened. Which isolation check matters before maintenance?",
+    "question": "A discharge line could drain backward when the pump casing is opened. Which action most directly addresses the stated immediate lockout gap?",
     "options": [
       "Control backflow before opening the pump casing.",
-      "Identify electrical and stored hydraulic energy sources.",
-      "Apply the site's lockout procedure to the pump and automatic controls.",
-      "Verify zero-energy state with an appropriate test."
+      "Identify all applicable electrical, mechanical, hydraulic, pneumatic and liquid energy sources, including remote and automatic starts.",
+      "Apply the site's lockout procedure to isolate and lock out the pump, its electrical supply and automatic controls.",
+      "Verify the zero-energy state with an appropriate test after isolation and lockout."
     ],
     "correctIndex": 0,
-    "explanation": "Stored liquid energy requires control.",
+    "explanation": "Stored liquid energy requires control before the casing is opened.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6246,15 +6246,15 @@
     "questionNum": null,
     "module": "Safety & Regulations",
     "difficulty": "medium",
-    "question": "The pump is stopped yet the flywheel can rotate and energized circuits remain in its panel. Which isolation check matters before maintenance?",
+    "question": "The pump is stopped yet the flywheel can rotate and energized circuits remain in its panel. Which action most directly addresses the stated immediate lockout gap?",
     "options": [
-      "Identify electrical and stored hydraulic energy sources.",
-      "Apply the site's lockout procedure to the pump and automatic controls.",
-      "Verify zero-energy state with an appropriate test.",
+      "Identify all applicable electrical, mechanical, hydraulic, pneumatic and liquid energy sources, including remote and automatic starts.",
+      "Apply the site's lockout procedure to isolate and lock out the pump, its electrical supply and automatic controls.",
+      "Verify the zero-energy state with an appropriate test after isolation and lockout.",
       "Control backflow before opening the pump casing."
     ],
     "correctIndex": 0,
-    "explanation": "Residual and electrical energy should be identified.",
+    "explanation": "The rotating flywheel and energized circuits show that applicable mechanical and electrical energy sources must be identified before lockout and verification.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6277,7 +6277,7 @@
     "difficulty": "medium",
     "question": "A hose disconnect can spray wastewater toward a worker's face. Which control is most relevant?",
     "options": [
-      "Keep eating and drinking out of contaminated work zones.",
+      "Wash hands with soap and water and remove or clean contaminated PPE before eating or drinking.",
       "Select splash and hand protection suitable for the task.",
       "Prevent contaminated gloves from contacting clean surfaces.",
       "Use the site's exposure response after a splash to eyes or skin."
@@ -6309,7 +6309,7 @@
       "Select splash and hand protection suitable for the task.",
       "Prevent contaminated gloves from contacting clean surfaces.",
       "Use the site's exposure response after a splash to eyes or skin.",
-      "Keep eating and drinking out of contaminated work zones."
+      "Wash hands with soap and water and remove or clean contaminated PPE before eating or drinking."
     ],
     "correctIndex": 1,
     "explanation": "Cross-contamination should be avoided.",
@@ -6336,7 +6336,7 @@
     "question": "Sewage splashes into a worker's eye while clearing a blockage. Which control is most relevant?",
     "options": [
       "Use the site's exposure response after a splash to eyes or skin.",
-      "Keep eating and drinking out of contaminated work zones.",
+      "Wash hands with soap and water and remove or clean contaminated PPE before eating or drinking.",
       "Select splash and hand protection suitable for the task.",
       "Prevent contaminated gloves from contacting clean surfaces."
     ],
@@ -6365,12 +6365,12 @@
     "question": "A worker leaves a contaminated trench to eat without cleaning hands. Which control is most relevant?",
     "options": [
       "Use the site's exposure response after a splash to eyes or skin.",
-      "Keep eating and drinking out of contaminated work zones.",
+      "Wash hands with soap and water and remove or clean contaminated PPE before eating or drinking.",
       "Select splash and hand protection suitable for the task.",
       "Prevent contaminated gloves from contacting clean surfaces."
     ],
     "correctIndex": 1,
-    "explanation": "Hygiene reduces exposure.",
+    "explanation": "Hands and contaminated PPE must be cleaned or removed before eating or drinking.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6395,7 +6395,7 @@
     "options": [
       "Prevent contaminated gloves from contacting clean surfaces.",
       "Use the site's exposure response after a splash to eyes or skin.",
-      "Keep eating and drinking out of contaminated work zones.",
+      "Wash hands with soap and water and remove or clean contaminated PPE before eating or drinking.",
       "Select splash and hand protection suitable for the task."
     ],
     "correctIndex": 3,
@@ -6569,11 +6569,11 @@
     "options": [
       "Check for air entry at suction fittings and seals.",
       "Verify rotation and pump curve against measured head and flow.",
-      "Check suction pressure and net positive suction head margin.",
+      "Verify wet-well level, suction submergence, air entry and vortex conditions at the pump inlet.",
       "Inspect the suction strainer and differential pressure."
     ],
     "correctIndex": 2,
-    "explanation": "Falling suction head reduces the margin against cavitation.",
+    "explanation": "A falling wet-well level can reduce submergence and allow vortexing or air entrainment at the pump inlet.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6598,7 +6598,7 @@
     "options": [
       "Check for air entry at suction fittings and seals.",
       "Verify rotation and pump curve against measured head and flow.",
-      "Check suction pressure and net positive suction head margin.",
+      "Verify wet-well level, suction submergence, air entry and vortex conditions at the pump inlet.",
       "Inspect the suction strainer and differential pressure."
     ],
     "correctIndex": 3,
@@ -6626,7 +6626,7 @@
     "question": "At a collection lift station: A pump repeatedly loses prime after a suction flange repair although water level is normal. Which check best matches the symptom?",
     "options": [
       "Verify rotation and pump curve against measured head and flow.",
-      "Check suction pressure and net positive suction head margin.",
+      "Verify wet-well level, suction submergence, air entry and vortex conditions at the pump inlet.",
       "Inspect the suction strainer and differential pressure.",
       "Check for air entry at suction fittings and seals."
     ],
@@ -6655,7 +6655,7 @@
     "question": "At a collection lift station: A newly wired pump runs smoothly but develops much less discharge head than its matching unit. Which check best matches the symptom?",
     "options": [
       "Verify rotation and pump curve against measured head and flow.",
-      "Check suction pressure and net positive suction head margin.",
+      "Verify wet-well level, suction submergence, air entry and vortex conditions at the pump inlet.",
       "Inspect the suction strainer and differential pressure.",
       "Check for air entry at suction fittings and seals."
     ],
@@ -6684,12 +6684,12 @@
     "question": "At a collection lift station: Both noise and vibration begin only when wet-well level is near its minimum operating level. Which check best matches the symptom?",
     "options": [
       "Verify rotation and pump curve against measured head and flow.",
-      "Check suction pressure and net positive suction head margin.",
+      "Verify wet-well level, suction submergence, air entry and vortex conditions at the pump inlet.",
       "Inspect the suction strainer and differential pressure.",
       "Check for air entry at suction fittings and seals."
     ],
     "correctIndex": 1,
-    "explanation": "Low inlet head is the common condition.",
+    "explanation": "The low wet-well level points to submergence, vortexing or air-entrainment conditions at the pump inlet.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -7116,7 +7116,7 @@
     "questionNum": null,
     "module": "Equipment Operation & Maintenance",
     "difficulty": "medium",
-    "question": "At a collection lift station: Two meters in series disagree during steady operation, and a timed wet-well drawdown is available. What is the best verification step?",
+    "question": "At a collection lift station: Two meters in series disagree during steady operation, and influent is isolated so a timed wet-well drawdown is available. What is the best verification step?",
     "options": [
       "Compare with an independent meter or timed volumetric measurement.",
       "Inspect the sensing section for fouling or air entrainment.",
@@ -7124,7 +7124,7 @@
       "Confirm straight-run and full-pipe conditions at the measurement point."
     ],
     "correctIndex": 0,
-    "explanation": "An independent volumetric check helps identify which reading is suspect.",
+    "explanation": "With influent isolated, a timed wet-well drawdown is an independent volumetric check that helps identify which reading is suspect.",
     "steps": null,
     "tip": null,
     "isCalc": "no",

@@ -5080,15 +5080,15 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "At a wastewater treatment facility: An electrician will open a pump motor cabinet after the disconnect was switched off. Which control is essential before the work proceeds?",
+    "question": "At a wastewater treatment facility: An electrician will open a pump motor cabinet after the disconnect was switched off. Which action most directly addresses the stated immediate electrical-isolation gap?",
     "options": [
-      "Isolate and verify zero electrical energy at the equipment.",
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement."
     ],
     "correctIndex": 0,
-    "explanation": "The isolation must be secured and absence of energy verified.",
+    "explanation": "The electrical supply must be disconnected, locked out, tagged and verified before the cabinet is opened.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -5109,15 +5109,15 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "At a wastewater treatment facility: A mechanic will open a chemical feed line after switching off its metering pump. Which control is essential before the work proceeds?",
+    "question": "At a wastewater treatment facility: A mechanic will open a chemical feed line after switching off its metering pump. Which action most directly addresses the stated immediate isolation gap?",
     "options": [
       "Secure the affected process with an approved alternate operating arrangement.",
-      "Isolate and verify zero electrical energy at the equipment.",
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts."
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation."
     ],
     "correctIndex": 2,
-    "explanation": "Liquid pressure may remain after the motor stops.",
+    "explanation": "Stopping the motor does not isolate the chemical path or its trapped pressure.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -5138,15 +5138,15 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "At a wastewater treatment facility: A remotely controlled backwash valve could receive an automatic command during actuator repair. Which control is essential before the work proceeds?",
+    "question": "At a wastewater treatment facility: A remotely controlled backwash valve could receive an automatic command during actuator repair. Which action most directly addresses the stated immediate isolation gap?",
     "options": [
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement.",
-      "Isolate and verify zero electrical energy at the equipment."
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment."
     ],
     "correctIndex": 1,
-    "explanation": "Remote and automatic energy sources must be included in the isolation.",
+    "explanation": "Automatic and remote sources must be isolated, locked out and verified before repair.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -5167,11 +5167,11 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "At a wastewater treatment facility: A single treatment train will be isolated for repair while another train must meet demand. Which control is essential before the work proceeds?",
+    "question": "At a wastewater treatment facility: A single treatment train will be isolated for repair while another train must meet demand. Which action most directly preserves treatment continuity while the approved isolation is carried out?",
     "options": [
-      "Isolate and verify zero electrical energy at the equipment.",
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement."
     ],
     "correctIndex": 3,
@@ -5196,12 +5196,12 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "At a wastewater treatment facility: A pump has stopped, but its drive cabinet is still energized for remote reset. Which control is essential before the work proceeds?",
+    "question": "At a wastewater treatment facility: A pump has stopped, but its drive cabinet is still energized for remote reset. Which action most directly addresses the stated immediate electrical-isolation gap?",
     "options": [
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement.",
-      "Isolate and verify zero electrical energy at the equipment."
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment."
     ],
     "correctIndex": 3,
     "explanation": "Stopped operation is not verified electrical isolation.",
@@ -5228,12 +5228,12 @@
     "question": "At a wastewater treatment facility: An unknown chemical is pooling near two unlabelled transfer lines and workers report strong fumes. What is the safest immediate direction?",
     "options": [
       "Arrange trained response with suitable respiratory and chemical protection if needed.",
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled."
     ],
     "correctIndex": 1,
-    "explanation": "Uncertain chemical identity and fumes require area isolation and the emergency plan.",
+    "explanation": "Unknown chemical and fumes require isolation, keeping people out and the site unknown-chemical procedure before cleanup materials are selected.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -5256,7 +5256,7 @@
     "difficulty": "medium",
     "question": "At a wastewater treatment facility: A worker proposes adding an available neutralizer to a labelled spill without checking compatibility. What is the safest immediate direction?",
     "options": [
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed."
@@ -5285,7 +5285,7 @@
     "difficulty": "medium",
     "question": "At a wastewater treatment facility: A small leak remains within secondary containment but approaches an open process drain. What is the safest immediate direction?",
     "options": [
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed."
@@ -5317,7 +5317,7 @@
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed.",
-      "Isolate the area and use the substance-specific emergency procedure."
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials."
     ],
     "correctIndex": 2,
     "explanation": "The response needs trained personnel and suitable protection under the site plan.",
@@ -5343,13 +5343,13 @@
     "difficulty": "medium",
     "question": "At a wastewater treatment facility: An unidentified vapour spreads from the chemical room into an occupied corridor. What is the safest immediate direction?",
     "options": [
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed."
     ],
     "correctIndex": 0,
-    "explanation": "Isolate and activate the site-specific response rather than improvising entry.",
+    "explanation": "Isolate and evacuate the affected area, then activate the site unknown-chemical response rather than improvising entry.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6313,7 +6313,7 @@
       "14.4 h"
     ],
     "correctIndex": 0,
-    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 1200 ÷ 4000 × 24 = 7.199999999999999 h. The result is 7.2 h.",
+    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 1200 ÷ 4000 × 24 = 7.2 h. The result is 7.2 h.",
     "steps": [
       {
         "l": "Formula",
@@ -6321,7 +6321,7 @@
       },
       {
         "l": "Substitution",
-        "c": "1200 ÷ 4000 × 24 = 7.199999999999999 h."
+        "c": "1200 ÷ 4000 × 24 = 7.2 h."
       },
       {
         "l": "Result",
@@ -6355,7 +6355,7 @@
       "14.4 h"
     ],
     "correctIndex": 0,
-    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 1500 ÷ 5000 × 24 = 7.199999999999999 h. The result is 7.2 h.",
+    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 1500 ÷ 5000 × 24 = 7.2 h. The result is 7.2 h.",
     "steps": [
       {
         "l": "Formula",
@@ -6363,7 +6363,7 @@
       },
       {
         "l": "Substitution",
-        "c": "1500 ÷ 5000 × 24 = 7.199999999999999 h."
+        "c": "1500 ÷ 5000 × 24 = 7.2 h."
       },
       {
         "l": "Result",
@@ -6397,7 +6397,7 @@
       "16.8 h"
     ],
     "correctIndex": 0,
-    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 2100 ÷ 6000 × 24 = 8.399999999999999 h. The result is 8.4 h.",
+    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 2100 ÷ 6000 × 24 = 8.4 h. The result is 8.4 h.",
     "steps": [
       {
         "l": "Formula",
@@ -6405,7 +6405,7 @@
       },
       {
         "l": "Substitution",
-        "c": "2100 ÷ 6000 × 24 = 8.399999999999999 h."
+        "c": "2100 ÷ 6000 × 24 = 8.4 h."
       },
       {
         "l": "Result",
@@ -6439,7 +6439,7 @@
       "10 h"
     ],
     "correctIndex": 3,
-    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 2000 ÷ 4800 × 24 = 10 h. The result is 10 h.",
+    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 2000 ÷ 4800 × 24 = 10.0 h. The result is 10 h.",
     "steps": [
       {
         "l": "Formula",
@@ -6447,7 +6447,7 @@
       },
       {
         "l": "Substitution",
-        "c": "2000 ÷ 4800 × 24 = 10 h."
+        "c": "2000 ÷ 4800 × 24 = 10.0 h."
       },
       {
         "l": "Result",
@@ -6481,7 +6481,7 @@
       "9 h"
     ],
     "correctIndex": 3,
-    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 2700 ÷ 7200 × 24 = 9 h. The result is 9 h.",
+    "explanation": "Nominal time = active volume ÷ daily flow × 24 h/day. 2700 ÷ 7200 × 24 = 9.0 h. The result is 9 h.",
     "steps": [
       {
         "l": "Formula",
@@ -6489,7 +6489,7 @@
       },
       {
         "l": "Substitution",
-        "c": "2700 ÷ 7200 × 24 = 9 h."
+        "c": "2700 ÷ 7200 × 24 = 9.0 h."
       },
       {
         "l": "Result",

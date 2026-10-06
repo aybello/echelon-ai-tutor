@@ -38,8 +38,8 @@ export function makeBank(bankKey, families) {
     if (!blueprint.areas[item.module]) throw new Error(`${bankKey}: unknown module ${item.module}`);
     const source = SOURCES[item.sourceKey];
     if (!source || !item.sourceReference) throw new Error(`${bankKey}: missing specific source support`);
-    const rows = item.isCalc ? item.inputs.map(input => item.build(input)) : item.cases.map(([situation, answer, reason]) => ({
-      question: `${situation} ${item.ask}`,
+    const rows = item.isCalc ? item.inputs.map(input => item.build(input)) : item.cases.map(([situation, answer, reason, caseAsk]) => ({
+      question: `${situation} ${caseAsk || item.ask}`,
       options: item.options,
       answer,
       explanation: reason,

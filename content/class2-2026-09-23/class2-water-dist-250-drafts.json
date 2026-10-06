@@ -1312,7 +1312,7 @@
     "difficulty": "medium",
     "question": "A worker intends to climb into a deep unprotected trench after wet soil begins to slump. Which hazard control best addresses the observed gap?",
     "options": [
-      "Assess excavation stability and required protective measures before entry.",
+      "Stop work, have workers leave and keep clear of the excavation, then have a competent person reassess stability and required protection before re-entry.",
       "Relieve and verify pressure before opening a buried appurtenance.",
       "Implement a traffic-control plan for the work zone.",
       "Identify buried services before excavation."
@@ -1343,7 +1343,7 @@
     "options": [
       "Implement a traffic-control plan for the work zone.",
       "Identify buried services before excavation.",
-      "Assess excavation stability and required protective measures before entry.",
+      "Stop work, have workers leave and keep clear of the excavation, then have a competent person reassess stability and required protection before re-entry.",
       "Relieve and verify pressure before opening a buried appurtenance."
     ],
     "correctIndex": 3,
@@ -1373,7 +1373,7 @@
       "Relieve and verify pressure before opening a buried appurtenance.",
       "Implement a traffic-control plan for the work zone.",
       "Identify buried services before excavation.",
-      "Assess excavation stability and required protective measures before entry."
+      "Stop work, have workers leave and keep clear of the excavation, then have a competent person reassess stability and required protection before re-entry."
     ],
     "correctIndex": 1,
     "explanation": "Traffic controls protect workers and road users.",
@@ -1402,7 +1402,7 @@
       "Relieve and verify pressure before opening a buried appurtenance.",
       "Implement a traffic-control plan for the work zone.",
       "Identify buried services before excavation.",
-      "Assess excavation stability and required protective measures before entry."
+      "Stop work, have workers leave and keep clear of the excavation, then have a competent person reassess stability and required protection before re-entry."
     ],
     "correctIndex": 2,
     "explanation": "Buried service identification is necessary before digging.",
@@ -1431,7 +1431,7 @@
       "Relieve and verify pressure before opening a buried appurtenance.",
       "Implement a traffic-control plan for the work zone.",
       "Identify buried services before excavation.",
-      "Assess excavation stability and required protective measures before entry."
+      "Stop work, have workers leave and keep clear of the excavation, then have a competent person reassess stability and required protection before re-entry."
     ],
     "correctIndex": 3,
     "explanation": "The changing ground conditions require immediate reassessment.",
@@ -2812,7 +2812,7 @@
     "difficulty": "medium",
     "question": "A backup generator starts but the booster pumps remain without power in a simulated utility failure. Which readiness gap should be addressed?",
     "options": [
-      "The automatic transfer switch did not connect the pumps to standby power.",
+      "The automatic transfer switch and pump load transfer must be verified under an actual load test.",
       "Fuel and maintenance records do not support the required outage duration.",
       "The generator cannot sustain the actual pump starting load.",
       "Remote tank telemetry does not operate on the standby circuit."
@@ -2844,7 +2844,7 @@
       "Fuel and maintenance records do not support the required outage duration.",
       "The generator cannot sustain the actual pump starting load.",
       "Remote tank telemetry does not operate on the standby circuit.",
-      "The automatic transfer switch did not connect the pumps to standby power."
+      "The automatic transfer switch and pump load transfer must be verified under an actual load test."
     ],
     "correctIndex": 0,
     "explanation": "Sustained readiness depends on adequate fuel.",
@@ -2871,7 +2871,7 @@
     "question": "Generator voltage sags whenever the lead booster starts during the load test. Which readiness gap should be addressed?",
     "options": [
       "Remote tank telemetry does not operate on the standby circuit.",
-      "The automatic transfer switch did not connect the pumps to standby power.",
+      "The automatic transfer switch and pump load transfer must be verified under an actual load test.",
       "Fuel and maintenance records do not support the required outage duration.",
       "The generator cannot sustain the actual pump starting load."
     ],
@@ -2902,7 +2902,7 @@
       "Fuel and maintenance records do not support the required outage duration.",
       "The generator cannot sustain the actual pump starting load.",
       "Remote tank telemetry does not operate on the standby circuit.",
-      "The automatic transfer switch did not connect the pumps to standby power."
+      "The automatic transfer switch and pump load transfer must be verified under an actual load test."
     ],
     "correctIndex": 2,
     "explanation": "Loss of necessary controls or telemetry can impair safe operation.",
@@ -2930,11 +2930,11 @@
     "options": [
       "The generator cannot sustain the actual pump starting load.",
       "Remote tank telemetry does not operate on the standby circuit.",
-      "The automatic transfer switch did not connect the pumps to standby power.",
+      "The automatic transfer switch and pump load transfer must be verified under an actual load test.",
       "Fuel and maintenance records do not support the required outage duration."
     ],
     "correctIndex": 2,
-    "explanation": "An unloaded run does not verify the transfer function.",
+    "explanation": "An unloaded run does not prove automatic transfer or pump load delivery.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -3250,7 +3250,7 @@
       "Identify the leak and isolate with the smallest reliable valve boundary.",
       "Assess whether pressure loss or entry of surrounding water occurred.",
       "Notify critical affected services through the approved response chain.",
-      "Confirm the repair plan includes approved disinfection and sampling before release."
+      "Confirm the repair classification and follow the applicable disinfection, flushing and sampling steps before release."
     ],
     "correctIndex": 0,
     "explanation": "A reliable limited isolation reduces the affected area.",
@@ -3276,7 +3276,7 @@
     "difficulty": "medium",
     "question": "A broken pipe is submerged in excavation water after system pressure falls to zero. Which immediate step is most appropriate?",
     "options": [
-      "Confirm the repair plan includes approved disinfection and sampling before release.",
+      "Confirm the repair classification and follow the applicable disinfection, flushing and sampling steps before release.",
       "Identify the leak and isolate with the smallest reliable valve boundary.",
       "Assess whether pressure loss or entry of surrounding water occurred.",
       "Notify critical affected services through the approved response chain."
@@ -3306,7 +3306,7 @@
     "question": "An isolation will interrupt a dialysis facility unexpectedly within the next hour. Which immediate step is most appropriate?",
     "options": [
       "Notify critical affected services through the approved response chain.",
-      "Confirm the repair plan includes approved disinfection and sampling before release.",
+      "Confirm the repair classification and follow the applicable disinfection, flushing and sampling steps before release.",
       "Identify the leak and isolate with the smallest reliable valve boundary.",
       "Assess whether pressure loss or entry of surrounding water occurred."
     ],
@@ -3335,12 +3335,12 @@
     "question": "A repair crew proposes restoring customer service immediately after installing a new pipe section. Which immediate step is most appropriate?",
     "options": [
       "Notify critical affected services through the approved response chain.",
-      "Confirm the repair plan includes approved disinfection and sampling before release.",
+      "Confirm the repair classification and follow the applicable disinfection, flushing and sampling steps before release.",
       "Identify the leak and isolate with the smallest reliable valve boundary.",
       "Assess whether pressure loss or entry of surrounding water occurred."
     ],
     "correctIndex": 1,
-    "explanation": "Return-to-service steps should follow the approved disinfection and sampling procedure.",
+    "explanation": "Return-to-service steps depend on the classified repair and the applicable disinfection, flushing and sampling procedure.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -3366,7 +3366,7 @@
       "Identify the leak and isolate with the smallest reliable valve boundary.",
       "Assess whether pressure loss or entry of surrounding water occurred.",
       "Notify critical affected services through the approved response chain.",
-      "Confirm the repair plan includes approved disinfection and sampling before release."
+      "Confirm the repair classification and follow the applicable disinfection, flushing and sampling steps before release."
     ],
     "correctIndex": 0,
     "explanation": "Confirming the damaged segment and boundary avoids unnecessary interruption.",
@@ -3395,7 +3395,7 @@
       "Whether external water entered the open main during depressurization.",
       "Whether the repaired section can remain isolated for the required procedure.",
       "Whether the contact and flushing sequence reached all affected parts.",
-      "Whether representative microbiological and residual checks meet the approved release criteria."
+      "For a Category 2 repair, whether a representative post-flush microbiological sample was collected and acceptable disinfectant concentration restored."
     ],
     "correctIndex": 0,
     "explanation": "Ingress risk increases when external water can enter a depressurized main.",
@@ -3424,7 +3424,7 @@
       "Whether external water entered the open main during depressurization.",
       "Whether the repaired section can remain isolated for the required procedure.",
       "Whether the contact and flushing sequence reached all affected parts.",
-      "Whether representative microbiological and residual checks meet the approved release criteria."
+      "For a Category 2 repair, whether a representative post-flush microbiological sample was collected and acceptable disinfectant concentration restored."
     ],
     "correctIndex": 1,
     "explanation": "The isolation arrangement governs how the procedure can be applied.",
@@ -3450,7 +3450,7 @@
     "difficulty": "medium",
     "question": "A disinfectant is applied at one end but a bypass leaves a side branch outside the contact path. Which fact changes the repair's contamination assessment most?",
     "options": [
-      "Whether representative microbiological and residual checks meet the approved release criteria.",
+      "For a Category 2 repair, whether a representative post-flush microbiological sample was collected and acceptable disinfectant concentration restored.",
       "Whether external water entered the open main during depressurization.",
       "Whether the repaired section can remain isolated for the required procedure.",
       "Whether the contact and flushing sequence reached all affected parts."
@@ -3477,15 +3477,15 @@
     "questionNum": null,
     "module": "Processes",
     "difficulty": "medium",
-    "question": "Pressure has been restored but no representative post-repair quality result is available. Which fact changes the repair's contamination assessment most?",
+    "question": "Pressure has been restored after a Category 2 repair, but no representative post-flush microbiological sample has been collected. Which fact changes the repair's contamination assessment most?",
     "options": [
-      "Whether representative microbiological and residual checks meet the approved release criteria.",
+      "For a Category 2 repair, whether a representative post-flush microbiological sample was collected and acceptable disinfectant concentration restored.",
       "Whether external water entered the open main during depressurization.",
       "Whether the repaired section can remain isolated for the required procedure.",
       "Whether the contact and flushing sequence reached all affected parts."
     ],
     "correctIndex": 0,
-    "explanation": "Pressure restoration does not prove return-to-service water quality.",
+    "explanation": "A Category 2 repair requires its post-flush sampling and disinfectant-residual steps; normal service may resume before microbiological results are available when the procedure permits.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -3510,7 +3510,7 @@
     "options": [
       "Whether the repaired section can remain isolated for the required procedure.",
       "Whether the contact and flushing sequence reached all affected parts.",
-      "Whether representative microbiological and residual checks meet the approved release criteria.",
+      "For a Category 2 repair, whether a representative post-flush microbiological sample was collected and acceptable disinfectant concentration restored.",
       "Whether external water entered the open main during depressurization."
     ],
     "correctIndex": 3,
@@ -4262,13 +4262,13 @@
     "difficulty": "medium",
     "question": "One district's minimum-night flow rises while neighbouring districts remain stable. Which next check best narrows the suspected leak?",
     "options": [
-      "Use pressure and acoustic observations along the suspect main.",
+      "Inspect the suspect main and nearby appurtenances for visible wet ground or flow.",
       "Check known operational uses and authorized overnight flow.",
       "Confirm boundary valves are holding before a step test.",
-      "Compare minimum-night flows for adjacent metered areas."
+      "Use pressure and acoustic observations along the suspect main after excluding known operational uses."
     ],
     "correctIndex": 3,
-    "explanation": "The district comparison localizes the change.",
+    "explanation": "The district comparison already narrows the area, so local pressure and acoustic observations are the next check after known uses are excluded.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -4293,11 +4293,11 @@
     "options": [
       "Check known operational uses and authorized overnight flow.",
       "Confirm boundary valves are holding before a step test.",
-      "Compare minimum-night flows for adjacent metered areas.",
-      "Use pressure and acoustic observations along the suspect main."
+      "Use pressure and acoustic observations along the suspect main after excluding known operational uses.",
+      "Inspect the suspect main and nearby appurtenances for visible wet ground or flow."
     ],
     "correctIndex": 3,
-    "explanation": "Local measurements can narrow the break site.",
+    "explanation": "Visible conditions at the suspect main and nearby appurtenances can further narrow the break site.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -4321,8 +4321,8 @@
     "question": "Night-flow alarms coincide with scheduled reservoir filling and main flushing. Which next check best narrows the suspected leak?",
     "options": [
       "Confirm boundary valves are holding before a step test.",
-      "Compare minimum-night flows for adjacent metered areas.",
-      "Use pressure and acoustic observations along the suspect main.",
+      "Use pressure and acoustic observations along the suspect main after excluding known operational uses.",
+      "Inspect the suspect main and nearby appurtenances for visible wet ground or flow.",
       "Check known operational uses and authorized overnight flow."
     ],
     "correctIndex": 3,
@@ -4349,10 +4349,10 @@
     "difficulty": "medium",
     "question": "A step test shows flow persisting after a boundary valve is supposedly closed. Which next check best narrows the suspected leak?",
     "options": [
-      "Use pressure and acoustic observations along the suspect main.",
+      "Inspect the suspect main and nearby appurtenances for visible wet ground or flow.",
       "Check known operational uses and authorized overnight flow.",
       "Confirm boundary valves are holding before a step test.",
-      "Compare minimum-night flows for adjacent metered areas."
+      "Use pressure and acoustic observations along the suspect main after excluding known operational uses."
     ],
     "correctIndex": 2,
     "explanation": "Leaking boundary valves confound the isolation test.",
@@ -4378,10 +4378,10 @@
     "difficulty": "medium",
     "question": "Repeated inlet-meter totals show a new unexplained nighttime step in just one zone. Which next check best narrows the suspected leak?",
     "options": [
-      "Use pressure and acoustic observations along the suspect main.",
+      "Inspect the suspect main and nearby appurtenances for visible wet ground or flow.",
       "Check known operational uses and authorized overnight flow.",
       "Confirm boundary valves are holding before a step test.",
-      "Compare minimum-night flows for adjacent metered areas."
+      "Use pressure and acoustic observations along the suspect main after excluding known operational uses."
     ],
     "correctIndex": 3,
     "explanation": "Comparative district flow data are the first localization clue.",
@@ -6582,7 +6582,7 @@
     "difficulty": "medium",
     "question": "A repair is disinfected but a blind side branch still contains construction water. Which step is missing from the proposed release?",
     "options": [
-      "Confirm representative release sample and residual results.",
+      "For a Category 2 repair, collect a representative post-flush microbiological sample and restore acceptable disinfectant concentration.",
       "Record valve positions, times, and customer notifications.",
       "Verify the affected section is fully flushed in the intended direction.",
       "Confirm the disinfection process matched the classified repair and site procedure."
@@ -6614,7 +6614,7 @@
       "Record valve positions, times, and customer notifications.",
       "Verify the affected section is fully flushed in the intended direction.",
       "Confirm the disinfection process matched the classified repair and site procedure.",
-      "Confirm representative release sample and residual results."
+      "For a Category 2 repair, collect a representative post-flush microbiological sample and restore acceptable disinfectant concentration."
     ],
     "correctIndex": 2,
     "explanation": "The selected disinfection route must match the actual contamination conditions.",
@@ -6638,15 +6638,15 @@
     "questionNum": null,
     "module": "Processes",
     "difficulty": "medium",
-    "question": "Pressure is restored after repair but no representative quality check has been completed. Which step is missing from the proposed release?",
+    "question": "Pressure is restored after a Category 2 repair but no representative post-flush microbiological sample has been collected. Which step is missing from the proposed release?",
     "options": [
       "Record valve positions, times, and customer notifications.",
       "Verify the affected section is fully flushed in the intended direction.",
       "Confirm the disinfection process matched the classified repair and site procedure.",
-      "Confirm representative release sample and residual results."
+      "For a Category 2 repair, collect a representative post-flush microbiological sample and restore acceptable disinfectant concentration."
     ],
     "correctIndex": 3,
-    "explanation": "Pressure does not establish acceptable water quality.",
+    "explanation": "A Category 2 repair requires the post-flush sampling and disinfectant-residual steps; the procedure may permit normal service before microbiological results are available.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6670,7 +6670,7 @@
     "question": "The main is back online, but valve positions and notified customers were not logged. Which step is missing from the proposed release?",
     "options": [
       "Confirm the disinfection process matched the classified repair and site procedure.",
-      "Confirm representative release sample and residual results.",
+      "For a Category 2 repair, collect a representative post-flush microbiological sample and restore acceptable disinfectant concentration.",
       "Record valve positions, times, and customer notifications.",
       "Verify the affected section is fully flushed in the intended direction."
     ],
@@ -6700,7 +6700,7 @@
     "options": [
       "Verify the affected section is fully flushed in the intended direction.",
       "Confirm the disinfection process matched the classified repair and site procedure.",
-      "Confirm representative release sample and residual results.",
+      "For a Category 2 repair, collect a representative post-flush microbiological sample and restore acceptable disinfectant concentration.",
       "Record valve positions, times, and customer notifications."
     ],
     "correctIndex": 0,

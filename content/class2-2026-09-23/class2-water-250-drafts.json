@@ -1542,7 +1542,7 @@
     "questionNum": null,
     "module": "Treatment Process",
     "difficulty": "medium",
-    "question": "Total iron increases but dissolved iron is unchanged in paired, correctly collected samples. What is the most targeted first check?",
+    "question": "Total iron increases, but no dissolved or filtered fraction has yet been tested. What is the most targeted first check?",
     "options": [
       "Confirm pH and oxidant demand after a source-water shift.",
       "Verify sampling form and location to separate dissolved from particulate metal.",
@@ -2748,7 +2748,7 @@
     "question": "The bench meter was not checked with buffers today and reads far from its historical values. What is the best first quality-control check?",
     "options": [
       "Rinse the probe and assess fouling or sluggish response.",
-      "Use a second instrument to resolve conflicting measurements.",
+      "Use a third independent instrument or verify both meters against fresh buffers.",
       "Verify the pH meter with appropriate fresh buffers.",
       "Compare the sampling point with the process mixing location."
     ],
@@ -2776,7 +2776,7 @@
     "difficulty": "medium",
     "question": "A pH tap immediately after an alkali injector differs from a well-mixed downstream location. What is the best first quality-control check?",
     "options": [
-      "Use a second instrument to resolve conflicting measurements.",
+      "Use a third independent instrument or verify both meters against fresh buffers.",
       "Verify the pH meter with appropriate fresh buffers.",
       "Compare the sampling point with the process mixing location.",
       "Rinse the probe and assess fouling or sluggish response."
@@ -2808,7 +2808,7 @@
       "Verify the pH meter with appropriate fresh buffers.",
       "Compare the sampling point with the process mixing location.",
       "Rinse the probe and assess fouling or sluggish response.",
-      "Use a second instrument to resolve conflicting measurements."
+      "Use a third independent instrument or verify both meters against fresh buffers."
     ],
     "correctIndex": 2,
     "explanation": "Fouling can slow and bias probe response.",
@@ -2835,12 +2835,12 @@
     "question": "Two freshly calibrated meters give conflicting pH on the same mixed sample. What is the best first quality-control check?",
     "options": [
       "Rinse the probe and assess fouling or sluggish response.",
-      "Use a second instrument to resolve conflicting measurements.",
+      "Use a third independent instrument or verify both meters against fresh buffers.",
       "Verify the pH meter with appropriate fresh buffers.",
       "Compare the sampling point with the process mixing location."
     ],
     "correctIndex": 1,
-    "explanation": "An independent instrument or buffer check is needed to resolve the conflict.",
+    "explanation": "A third independent instrument or fresh-buffer verification provides a tie-breaker.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -2865,7 +2865,7 @@
     "options": [
       "Compare the sampling point with the process mixing location.",
       "Rinse the probe and assess fouling or sluggish response.",
-      "Use a second instrument to resolve conflicting measurements.",
+      "Use a third independent instrument or verify both meters against fresh buffers.",
       "Verify the pH meter with appropriate fresh buffers."
     ],
     "correctIndex": 3,
@@ -2893,12 +2893,12 @@
     "question": "One operator compares a morning raw-water sample with the prior day's finished-water sample as if paired. Which improvement most directly corrects the sampling problem?",
     "options": [
       "Preserve and transport samples as required by the selected analytical method.",
-      "Match samples to the same process location and operating period.",
+      "Match representative influent and effluent samples to the same water parcel using hydraulic travel time.",
       "Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.",
       "Collect a discrete grab for a rapidly changing operational condition."
     ],
     "correctIndex": 1,
-    "explanation": "Samples taken at different times cannot directly establish current process removal.",
+    "explanation": "Representative samples must be linked to the same water parcel by the process hydraulic travel time.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -2922,7 +2922,7 @@
     "question": "The team needs the day's average solids concentration, but only a single low-flow grab is being used. Which improvement most directly corrects the sampling problem?",
     "options": [
       "Preserve and transport samples as required by the selected analytical method.",
-      "Match samples to the same process location and operating period.",
+      "Match representative influent and effluent samples to the same water parcel using hydraulic travel time.",
       "Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.",
       "Collect a discrete grab for a rapidly changing operational condition."
     ],
@@ -2953,7 +2953,7 @@
       "Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.",
       "Collect a discrete grab for a rapidly changing operational condition.",
       "Preserve and transport samples as required by the selected analytical method.",
-      "Match samples to the same process location and operating period."
+      "Match representative influent and effluent samples to the same water parcel using hydraulic travel time."
     ],
     "correctIndex": 1,
     "explanation": "A timely grab captures a transient operational condition.",
@@ -2979,7 +2979,7 @@
     "difficulty": "medium",
     "question": "Laboratory results drift higher when warm transport time increases well beyond the method limit. Which improvement most directly corrects the sampling problem?",
     "options": [
-      "Match samples to the same process location and operating period.",
+      "Match representative influent and effluent samples to the same water parcel using hydraulic travel time.",
       "Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.",
       "Collect a discrete grab for a rapidly changing operational condition.",
       "Preserve and transport samples as required by the selected analytical method."
@@ -3008,13 +3008,13 @@
     "difficulty": "medium",
     "question": "Influent and effluent removal calculations use samples from unrelated shifts with different source water. Which improvement most directly corrects the sampling problem?",
     "options": [
-      "Match samples to the same process location and operating period.",
+      "Match representative influent and effluent samples to the same water parcel using hydraulic travel time.",
       "Use a flow-weighted composite for a variable continuous stream when the purpose requires an average.",
       "Collect a discrete grab for a rapidly changing operational condition.",
       "Preserve and transport samples as required by the selected analytical method."
     ],
     "correctIndex": 0,
-    "explanation": "Use comparable locations and times to interpret removal.",
+    "explanation": "Link representative influent and effluent samples by hydraulic travel time before interpreting removal.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6130,7 +6130,7 @@
     "questionNum": null,
     "module": "Source Water",
     "difficulty": "medium",
-    "question": "A deeper intake produces cooler, low-oxygen water during summer turnover. Which finding should be compared to explain the difference?",
+    "question": "A deeper intake produces cooler, low-oxygen water during summer stratification. Which finding should be compared to explain the difference?",
     "options": [
       "Flow through each active intake and its operating schedule.",
       "Temperature and dissolved oxygen at both intake depths.",
@@ -6167,7 +6167,7 @@
       "Flow through each active intake and its operating schedule."
     ],
     "correctIndex": 1,
-    "explanation": "Reduced deep water can mobilize dissolved metals.",
+    "explanation": "Low-oxygen, reducing conditions in deep water can mobilize dissolved metals such as iron and manganese.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6565,15 +6565,15 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "An electrician will open a pump motor cabinet after the disconnect was switched off. Which control is essential before the work proceeds?",
+    "question": "An electrician will open a pump motor cabinet after the disconnect was switched off. Which action most directly addresses the stated immediate electrical-isolation gap?",
     "options": [
-      "Isolate and verify zero electrical energy at the equipment.",
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement."
     ],
     "correctIndex": 0,
-    "explanation": "The isolation must be secured and absence of energy verified.",
+    "explanation": "The electrical supply must be disconnected, locked out, tagged and verified before the cabinet is opened.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6594,15 +6594,15 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "A mechanic will open a chemical feed line after switching off its metering pump. Which control is essential before the work proceeds?",
+    "question": "A mechanic will open a chemical feed line after switching off its metering pump. Which action most directly addresses the stated immediate isolation gap?",
     "options": [
       "Secure the affected process with an approved alternate operating arrangement.",
-      "Isolate and verify zero electrical energy at the equipment.",
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts."
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation."
     ],
     "correctIndex": 2,
-    "explanation": "Liquid pressure may remain after the motor stops.",
+    "explanation": "Stopping the motor does not isolate the chemical path or its trapped pressure.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6623,15 +6623,15 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "A remotely controlled backwash valve could receive an automatic command during actuator repair. Which control is essential before the work proceeds?",
+    "question": "A remotely controlled backwash valve could receive an automatic command during actuator repair. Which action most directly addresses the stated immediate isolation gap?",
     "options": [
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement.",
-      "Isolate and verify zero electrical energy at the equipment."
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment."
     ],
     "correctIndex": 1,
-    "explanation": "Remote and automatic energy sources must be included in the isolation.",
+    "explanation": "Automatic and remote sources must be isolated, locked out and verified before repair.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6652,12 +6652,12 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "A single treatment train will be isolated for repair while another train must meet demand. Which control is essential before the work proceeds?",
+    "question": "A single treatment train will be isolated for repair while another train must meet demand. Which action most directly preserves treatment continuity while the approved isolation is carried out?",
     "options": [
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement.",
-      "Isolate and verify zero electrical energy at the equipment."
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment."
     ],
     "correctIndex": 2,
     "explanation": "An approved operating configuration protects service while the work is isolated.",
@@ -6681,11 +6681,11 @@
     "questionNum": null,
     "module": "Safety & Admin",
     "difficulty": "medium",
-    "question": "A pump has stopped, but its drive cabinet is still energized for remote reset. Which control is essential before the work proceeds?",
+    "question": "A pump has stopped, but its drive cabinet is still energized for remote reset. Which action most directly addresses the stated immediate electrical-isolation gap?",
     "options": [
-      "Isolate and verify zero electrical energy at the equipment.",
-      "Relieve trapped hydraulic or pneumatic pressure.",
-      "Identify every energy source, including automatic and remote starts.",
+      "Disconnect, lock out and tag the electrical supply, then verify absence of energy at the equipment.",
+      "Isolate the chemical feed path and its energy sources, then safely relieve trapped pressure under the site procedure.",
+      "Identify, isolate and lock out every energy source, including automatic and remote starts, then verify isolation.",
       "Secure the affected process with an approved alternate operating arrangement."
     ],
     "correctIndex": 0,
@@ -6712,13 +6712,13 @@
     "difficulty": "medium",
     "question": "An unknown chemical is pooling near two unlabelled transfer lines and workers report strong fumes. What is the safest immediate direction?",
     "options": [
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed."
     ],
     "correctIndex": 0,
-    "explanation": "Uncertain chemical identity and fumes require area isolation and the emergency plan.",
+    "explanation": "Unknown chemical and fumes require isolation, keeping people out and the site unknown-chemical procedure before cleanup materials are selected.",
     "steps": null,
     "tip": null,
     "isCalc": "no",
@@ -6744,7 +6744,7 @@
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed.",
-      "Isolate the area and use the substance-specific emergency procedure."
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials."
     ],
     "correctIndex": 0,
     "explanation": "Chemical identity and compatibility must guide cleanup.",
@@ -6773,7 +6773,7 @@
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled.",
       "Arrange trained response with suitable respiratory and chemical protection if needed.",
-      "Isolate the area and use the substance-specific emergency procedure."
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials."
     ],
     "correctIndex": 1,
     "explanation": "Preventing uncontrolled entry into the process is an immediate control.",
@@ -6800,7 +6800,7 @@
     "question": "A chlorine-gas detector alarms and an operator suggests entering the room alone to close a valve. What is the safest immediate direction?",
     "options": [
       "Arrange trained response with suitable respiratory and chemical protection if needed.",
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled."
     ],
@@ -6829,12 +6829,12 @@
     "question": "An unidentified vapour spreads from the chemical room into an occupied corridor. What is the safest immediate direction?",
     "options": [
       "Arrange trained response with suitable respiratory and chemical protection if needed.",
-      "Isolate the area and use the substance-specific emergency procedure.",
+      "Isolate and evacuate the affected area, keep personnel out, activate the site procedure for an unknown chemical release, and confirm identity and safety data before selecting cleanup materials.",
       "Confirm the chemical identity and safety data before selecting cleanup materials.",
       "Protect process drains and containment so spilled chemical does not enter treatment uncontrolled."
     ],
     "correctIndex": 1,
-    "explanation": "Isolate and activate the site-specific response rather than improvising entry.",
+    "explanation": "Isolate and evacuate the affected area, then activate the site unknown-chemical response rather than improvising entry.",
     "steps": null,
     "tip": null,
     "isCalc": "no",

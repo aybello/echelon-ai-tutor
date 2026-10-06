@@ -251,7 +251,7 @@ function adapt(item, module, sourceKey) {
     ...item, module, sourceKey,
     sourceReference: `${item.topic}: apply the cited equipment/control or safety provisions in a wastewater facility; review the scenario against the site procedure.`,
     ask: replace(item.ask), options: item.options.map(replace),
-    cases: item.cases.map(([situation, answer, explanation]) => [`At a wastewater treatment facility: ${replace(situation)}`, answer, replace(explanation)]),
+    cases: item.cases.map(([situation, answer, explanation, caseAsk]) => [`At a wastewater treatment facility: ${replace(situation)}`, answer, replace(explanation), caseAsk ? replace(caseAsk) : undefined]),
   };
 }
 for (const item of waterTreatment) {
@@ -261,7 +261,7 @@ for (const item of waterTreatment) {
 
 wastewaterTreatment.push(
   C(E,"Pump run rate","WW_PUMPS","Pump delivery from measured volume and elapsed time.",([v,t])=>{const q=v/t*60;return N(`A sewage transfer pump moves ${v} m³ in ${t} minutes at steady level. What is its approximate flow?`,q,"m³/h","Rate = measured volume ÷ time in minutes × 60.",`${v} ÷ ${t} × 60 = ${q} m³/h.`,[q*.8,q*1.25,q*1.5],1);},[[42,12],[48,16],[60,15],[70,14],[90,18]]),
-  C(E,"Aeration tank hydraulic time","WW_BIO","Nominal hydraulic detention: aeration volume divided by influent flow.",([v,q])=>{const t=v/q*24;return N(`A biological reactor has ${v} m³ of active liquid volume and receives ${q} m³/d. What is its nominal hydraulic detention time?`,t,"h","Nominal time = active volume ÷ daily flow × 24 h/day.",`${v} ÷ ${q} × 24 = ${t} h.`,[t*.5,t*1.25,t*2],1);},[[1200,4000],[1500,5000],[2100,6000],[2000,4800],[2700,7200]]),
+  C(E,"Aeration tank hydraulic time","WW_BIO","Nominal hydraulic detention: aeration volume divided by influent flow.",([v,q])=>{const t=v/q*24;return N(`A biological reactor has ${v} m³ of active liquid volume and receives ${q} m³/d. What is its nominal hydraulic detention time?`,t,"h","Nominal time = active volume ÷ daily flow × 24 h/day.",`${v} ÷ ${q} × 24 = ${t.toFixed(1)} h.`,[t*.5,t*1.25,t*2],1);},[[1200,4000],[1500,5000],[2100,6000],[2000,4800],[2700,7200]]),
   C(E,"Aeration power","WW_BIO","Electrical energy from blower power and run time.",([kw,h])=>N(`A blower draws ${kw} kW on average and runs for ${h} hours. Approximately how much electrical energy does it use?`,kw*h,"kWh","Energy = average electrical power × elapsed operating hours.",`${kw} × ${h} = ${kw*h} kWh.`,[kw*h*.5,kw*h*1.25,kw*h*2],0),[[30,8],[40,6],[45,10],[55,12],[60,9]]),
   F(L,"BOD sampling validity","WW_CONTROLS","Laboratory analysis: representative samples and sample handling for process data.","Which change would make the comparison more reliable?",
     ["Collect influent and effluent samples with times matched to hydraulic travel.","Use the correct preserved and cooled method for laboratory transport.","Check whether a composite or grab is appropriate for the stated objective.","Verify that aliquots came from the designated sample ports."],[

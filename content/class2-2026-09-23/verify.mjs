@@ -42,6 +42,45 @@ const expected = {
 const norm = value => value.toLowerCase().replace(/[^a-z0-9]/g, "");
 const allStems = new Set();
 const report = {};
+const reviewedFixes = new Map([
+  ["class2-water-20260923-054", { question: /no dissolved or filtered fraction/i, answer: /separate dissolved from particulate/i }],
+  ["class2-water-20260923-094", { answer: /third independent instrument|both meters against fresh buffers/i }],
+  ["class2-water-20260923-096", { answer: /same water parcel using hydraulic travel time/i }],
+  ["class2-water-20260923-100", { answer: /same water parcel using hydraulic travel time/i }],
+  ["class2-water-20260923-201", { question: /summer stratification/i }],
+  ["class2-water-20260923-202", { explanation: /low-oxygen, reducing conditions/i }],
+  ["class2-water-20260923-216", { answer: /disconnect, lock out and tag/i }],
+  ["class2-water-20260923-217", { answer: /isolate the chemical feed path.*relieve trapped pressure/i }],
+  ["class2-water-20260923-218", { answer: /identify, isolate and lock out every energy source/i }],
+  ["class2-water-20260923-220", { answer: /disconnect, lock out and tag/i }],
+  ["class2-water-20260923-221", { answer: /evacuate.*confirm identity and safety data/i }],
+  ["class2-water-20260923-225", { answer: /isolate and evacuate/i }],
+  ["class2-water-dist-20260923-050", { answer: /stop work.*workers leave.*competent person/i }],
+  ["class2-water-dist-20260923-095", { answer: /transfer.*pump load.*actual load test/i }],
+  ["class2-water-dist-20260923-109", { answer: /repair classification.*applicable disinfection/i }],
+  ["class2-water-dist-20260923-114", { question: /Category 2 repair/i, answer: /post-flush microbiological sample.*disinfectant concentration/i, explanation: /may resume before microbiological results/i }],
+  ["class2-water-dist-20260923-141", { answer: /pressure and acoustic observations.*excluding known operational uses/i }],
+  ["class2-water-dist-20260923-223", { question: /Category 2 repair/i, answer: /post-flush microbiological sample.*disinfectant concentration/i, explanation: /may permit normal service before microbiological results/i }],
+  ["class2-wastewater-20260923-176", { answer: /disconnect, lock out and tag/i }],
+  ["class2-wastewater-20260923-177", { answer: /isolate the chemical feed path.*relieve trapped pressure/i }],
+  ["class2-wastewater-20260923-178", { answer: /identify, isolate and lock out every energy source/i }],
+  ["class2-wastewater-20260923-179", { question: /preserves treatment continuity/i }],
+  ["class2-wastewater-20260923-180", { answer: /disconnect, lock out and tag/i }],
+  ["class2-wastewater-20260923-216", { explanation: /1200 ÷ 4000 × 24 = 7\.2 h/i }],
+  ["class2-wastewater-20260923-217", { explanation: /1500 ÷ 5000 × 24 = 7\.2 h/i }],
+  ["class2-wastewater-20260923-218", { explanation: /2100 ÷ 6000 × 24 = 8\.4 h/i }],
+  ["class2-wastewater-coll-20260923-024", { question: /repair consideration/i, answer: /corrosion-resistant repair material/i }],
+  ["class2-wastewater-coll-20260923-036", { question: /already confirmed to be fully collapsed/i, answer: /structural condition assessment/i }],
+  ["class2-wastewater-coll-20260923-083", { answer: /provide and test redundant bypass pumping and backup power/i }],
+  ["class2-wastewater-coll-20260923-090", { answer: /sensing face or impulse tube for fouling/i }],
+  ["class2-wastewater-coll-20260923-135", { explanation: /= 190\.0 m³\/h/i }],
+  ["class2-wastewater-coll-20260923-185", { answer: /atmosphere is tested with suitable calibrated instruments/i }],
+  ["class2-wastewater-coll-20260923-205", { answer: /electrical, mechanical, hydraulic, pneumatic and liquid energy/i }],
+  ["class2-wastewater-coll-20260923-209", { answer: /wash hands with soap and water.*contaminated PPE/i }],
+  ["class2-wastewater-coll-20260923-216", { answer: /wet-well level, suction submergence, air entry and vortex/i }],
+  ["class2-wastewater-coll-20260923-220", { answer: /wet-well level, suction submergence, air entry and vortex/i }],
+  ["class2-wastewater-coll-20260923-235", { question: /influent is isolated so a timed wet-well drawdown is available/i, explanation: /with influent isolated/i }],
+]);
 for (const [bank, families] of Object.entries(banks)) {
   const rows = makeBank(bank, families);
   const disk = JSON.parse(await readFile(fileURLToPath(new URL(`./${bank}-250-drafts.json`, import.meta.url)), "utf8"));
@@ -64,6 +103,14 @@ for (const [bank, families] of Object.entries(banks)) {
     assert.ok(row.sourceUrl.startsWith("https://www.ontario.ca/") || row.sourceUrl.startsWith("https://www.epa.gov/"));
     assert.ok(!row.sourceTitle.includes("WPI"), `topic guide used as answer evidence: ${row.draftId}`);
     assert.ok(!/\b(?:paint|billing|account balance|street name)\b/i.test(row.options.join(" ")), `weak distractor: ${row.draftId}`);
+    const reviewedFix = reviewedFixes.get(row.draftId);
+    if (reviewedFix) {
+      for (const [field, pattern] of Object.entries(reviewedFix)) {
+        const value = field === "answer" ? row.options[row.correctIndex] : row[field];
+        assert.match(value, pattern, `reviewed correction regressed: ${row.draftId}/${field}`);
+      }
+      reviewedFixes.delete(row.draftId);
+    }
     const stem = norm(row.question);
     assert.ok(!allStems.has(stem), `duplicate across banks: ${row.draftId}`);
     allStems.add(stem);
@@ -96,4 +143,5 @@ for (const [bank, families] of Object.entries(banks)) {
   }
   report[bank] = { count: rows.length, moduleCounts: modules, calculations: calcs, answerPositions: answers };
 }
+assert.deepEqual([...reviewedFixes.keys()], [], "a reviewed correction was not found in the rebuilt draft package");
 console.log(JSON.stringify({ total: allStems.size, banks: report }, null, 2));
