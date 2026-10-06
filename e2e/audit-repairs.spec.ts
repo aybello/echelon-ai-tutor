@@ -89,7 +89,7 @@ async function mockAdminHistory(page: import('@playwright/test').Page, role = 'a
     calls.push(...names);
     const results = names.map(name => {
       if (name === 'admin.getScoreHistory' && historyError) return { error: { json: { message: 'Synthetic unavailable history', code: -32603, data: { code: 'INTERNAL_SERVER_ERROR', httpStatus: 500, path: name } } } };
-      const data = name === 'auth.me' ? { id: 99, role, name: 'Synthetic Admin', email: 'admin@example.test' }
+      const data = name === 'auth.me' ? { id: 99, role, name: 'Synthetic Admin', email: 'admin@example.test', phone: '+14165550100' }
         : name === 'admin.getScoreHistory' ? scoreFixtures
         : name === 'admin.stats' ? { trialCount: 0, waitlistCount: 0, errorCount: 0, scoreCount: 3, purchaseCount: 0, subscriptionCount: 0, totalRevenueCAD: 0, feedbackCount: 0, avgRating: 0, triggerCount: 0 }
         : null;
