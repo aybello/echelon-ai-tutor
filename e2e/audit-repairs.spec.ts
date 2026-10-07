@@ -80,7 +80,11 @@ test('actual vendor script emits unnamed public page views without sensitive URL
   });
   await page.waitForTimeout(200);expect(sends).toHaveLength(1);
   const prior=sends.length;
-  await page.evaluate(()=>{history.pushState({},'', '/account?token=synthetic-sensitive');(window as any).umami?.track('private_test',{email:'synthetic-sensitive@example.test'});});
+  await page.evaluate(()=>{
+    history.pushState({},'', '/account?token=synthetic-sensitive');
+    (window as any).umami?.track();
+    (window as any).umami?.track('private_test',{email:'synthetic-sensitive@example.test'});
+  });
   await page.waitForTimeout(200);expect(sends).toHaveLength(prior);
   await page.evaluate(()=>history.pushState({},'','/blog/private-slug?token=synthetic-private#secret'));
   await expect.poll(()=>sends.length).toBe(prior+1);

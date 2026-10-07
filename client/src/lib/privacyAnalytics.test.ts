@@ -143,6 +143,20 @@ describe("third-party analytics privacy boundary", () => {
     await Promise.resolve();
   });
 
+  it("sends exactly one unnamed page view when the deferred vendor loads on a public route", () => {
+    const h = harness("/pricing", false);
+    start(h);
+    expect(h.requests).toEqual([]);
+    h.attachVendor();
+    h.scriptEvents.get("load")?.();
+    h.scriptEvents.get("load")?.();
+    expect(h.requests).toHaveLength(1);
+    expect(h.requests[0]).toEqual({ type: "event", payload: {
+      website: "synthetic-website", hostname: "echeloninstitute.ca",
+      url: "https://echeloninstitute.ca/pricing", referrer: "", title: "Echelon Institute",
+    } });
+  });
+
   it("waits for the deferred tracker, uses the current route, and disables missing configuration", () => {
     const h = harness("/pricing", false);
     start(h);
