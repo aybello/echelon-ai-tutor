@@ -1,5 +1,4 @@
 const ANALYTICS_ORIGIN = "https://echeloninstitute.ca";
-const EVENT_NAME = "public_page_view";
 
 const PUBLIC_PAGES: Record<string, string> = {
   "/": "home",
@@ -44,8 +43,11 @@ export function publicAnalyticsPage(rawUrl: string) {
 
 export function createAnalyticsBeforeSend(websiteId: string, currentUrl: () => string) {
   return (type: string, payload: unknown) => {
-    if (type !== "event" || !websiteId || !payload || typeof payload !== "object") return false;
-    if ((payload as { name?: unknown }).name !== EVENT_NAME) return false;
+    if (type !== "event" || !websiteId || !payload || typeof payload !== "object" || Array.isArray(payload)) return false;
+    // Umami page views use type "event" with no payload name. A name turns the
+    // send into a custom event, which does not count as a standard page view.
+    // Reject named calls rather than silently turning arbitrary clicks into views.
+    if ("name" in payload) return false;
     const page = publicAnalyticsPage(currentUrl());
     if (!page) return false;
     // Rebuild instead of deleting known bad keys. Unknown event fields, titles,
@@ -56,8 +58,6 @@ export function createAnalyticsBeforeSend(websiteId: string, currentUrl: () => s
       url: `${ANALYTICS_ORIGIN}${page.path}`,
       referrer: "",
       title: "Echelon Institute",
-      name: EVENT_NAME,
-      data: { category: page.category },
     };
   };
 }
@@ -78,7 +78,7 @@ export function startPrivacyAnalytics(browser: AnalyticsWindow, doc: Document) {
   let lastPath: string | null = null;
 
   function emitPageView() {
-    const safe = beforeSend("event", { name: EVENT_NAME });
+    const safe = beforeSend("event", {});
     if (!safe) { lastPath = null; return; }
     if (!browser.umami || safe.url === lastPath) return;
     lastPath = safe.url;

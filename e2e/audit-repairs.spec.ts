@@ -58,7 +58,7 @@ test('partnership errors retain fields and retries reuse a receipt key',async({p
   expect(inputs).toHaveLength(2);expect(key(inputs[0])).toBeTruthy();expect(key(inputs[1])).toBe(key(inputs[0]));
 });
 
-test('actual vendor script emits only rebuilt public events and no sensitive URLs',async({page})=>{
+test('actual vendor script emits unnamed public page views without sensitive URLs or duplicate navigation sends',async({page})=>{
   const script=fs.readFileSync(new URL('./fixtures/analytics-vendor.js', import.meta.url),'utf8');
   const sends:string[]=[];
   await page.route('https://analytics.example.test/**',route=>{
@@ -66,14 +66,47 @@ test('actual vendor script emits only rebuilt public events and no sensitive URL
     sends.push(route.request().postData()??'');return route.fulfill({status:200,contentType:'application/json',body:'{}'});
   });
   await page.goto('/pricing?email=synthetic-secret@example.test&token=synthetic-secret#private');
-  await expect.poll(()=>sends.length).toBeGreaterThan(0);
+  await expect.poll(()=>sends.length).toBe(1);
+  const initial=JSON.parse(sends[0]);
+  expect(initial.type).toBe('event');
+  expect(initial.payload).toEqual({website:'11111111-1111-4111-8111-111111111111',hostname:'echeloninstitute.ca',url:'https://echeloninstitute.ca/pricing',referrer:'',title:'Echelon Institute'});
+  expect(initial.payload).not.toHaveProperty('name');
+  expect(initial.payload).not.toHaveProperty('data');
   for(const x of sends){expect(x).not.toContain('synthetic-secret');expect(x).not.toContain('?email');expect(x).not.toContain('#private');}
+  await page.evaluate(()=>{
+    history.replaceState({},'', '/pricing?email=synthetic-secret@example.test#another');
+    (window as any).umami?.track('public_page_view');
+    (window as any).umami?.track('click',{email:'synthetic-secret@example.test'});
+  });
+  await page.waitForTimeout(200);expect(sends).toHaveLength(1);
   const prior=sends.length;
   await page.evaluate(()=>{history.pushState({},'', '/account?token=synthetic-sensitive');(window as any).umami?.track('private_test',{email:'synthetic-sensitive@example.test'});});
   await page.waitForTimeout(200);expect(sends).toHaveLength(prior);
   await page.evaluate(()=>history.pushState({},'','/blog/private-slug?token=synthetic-private#secret'));
-  await expect.poll(()=>sends.length).toBeGreaterThan(prior);
+  await expect.poll(()=>sends.length).toBe(prior+1);
   expect(sends.at(-1)).toContain('/blog/:slug');expect(sends.at(-1)).not.toContain('private-slug');expect(sends.at(-1)).not.toContain('synthetic-private');
+  expect(JSON.parse(sends.at(-1)!).payload).not.toHaveProperty('name');
+});
+
+test('actual vendor tracker preserves saved opt-outs and browser Do Not Track for public page views',async({browser,baseURL})=>{
+  const script=fs.readFileSync(new URL('./fixtures/analytics-vendor.js', import.meta.url),'utf8');
+  for(const mode of ['saved-opt-out','do-not-track']){
+    const context=await browser.newContext();const page=await context.newPage();const sends:string[]=[];
+    await context.addInitScript((m)=>{
+      if(m==='saved-opt-out')localStorage.setItem('umami.disabled','1');
+      else Object.defineProperty(navigator,'doNotTrack',{value:'1',configurable:true});
+    },mode);
+    await context.route('https://analytics.example.test/**',route=>{
+      if(route.request().url().endsWith('/umami'))return route.fulfill({status:200,contentType:'application/javascript',body:script});
+      sends.push(route.request().postData()??'');return route.fulfill({status:200,contentType:'application/json',body:'{}'});
+    });
+    try{
+      await page.goto(`${baseURL}/pricing`);
+      await page.waitForFunction(()=>!!(window as any).umami);
+      await page.evaluate(()=>history.pushState({},'','/teams'));
+      await page.waitForTimeout(200);expect(sends,mode).toEqual([]);
+    }finally{await context.close();}
+  }
 });
 
 const class2LiveCountFixtures = [

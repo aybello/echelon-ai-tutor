@@ -52,13 +52,13 @@ describe("third-party analytics privacy boundary", () => {
     const h = harness(path + privateQuery);
     start(h);
     expect(h.requests).toEqual([]);
-    expect(h.browser.echelonAnalyticsBeforeSend?.("event", { name: "public_page_view" })).toBe(false);
+    expect(h.browser.echelonAnalyticsBeforeSend?.("event", {})).toBe(false);
   });
 
-  it("rebuilds allowed events without URL/referrer queries, identifying titles or arbitrary fields", () => {
+  it("rebuilds unnamed page views without URL/referrer queries, identifying titles or arbitrary fields", () => {
     const clean = createAnalyticsBeforeSend("synthetic-website", () => `https://site.test/pricing${privateQuery}`);
     const result = clean("event", {
-      name: "public_page_view", url: "/auth/magic?token=synthetic-only-token",
+      url: "/auth/magic?token=synthetic-only-token",
       referrer: "https://site.test/login/otp?email=learner@example.com",
       title: "Sample Learner", id: "synthetic-user", website: "overridden",
       data: { email: "learner@example.com", token: "nested-synthetic", title: "Sample Learner" },
@@ -66,11 +66,14 @@ describe("third-party analytics privacy boundary", () => {
     expect(result).toEqual({
       website: "synthetic-website", hostname: "echeloninstitute.ca",
       url: "https://echeloninstitute.ca/pricing", referrer: "", title: "Echelon Institute",
-      name: "public_page_view", data: { category: "pricing" },
     });
-    expect(clean("identify", { name: "public_page_view" })).toBe(false);
+    expect(result).not.toHaveProperty("name");
+    expect(result).not.toHaveProperty("data");
+    expect(clean("identify", {})).toBe(false);
+    expect(clean("event", { name: "public_page_view" })).toBe(false);
     expect(clean("event", { name: "arbitrary-event", data: { token: "synthetic" } })).toBe(false);
     expect(clean("event", null)).toBe(false);
+    expect(clean("event", [])).toBe(false);
   });
 
   it("templates dynamic paths without exporting the slug", () => {
@@ -79,13 +82,13 @@ describe("third-party analytics privacy boundary", () => {
     expect(publicAnalyticsPage("/courses/learner%40example.com")).toBeNull();
   });
 
-  it("intercepts only scrubbed events across push, replace and popstate navigation", async () => {
+  it("intercepts only scrubbed page views across push, replace and popstate navigation", async () => {
     const h = harness(`/pricing${privateQuery}`);
     const stop = start(h);
     expect(h.requests).toHaveLength(1);
     for (const path of sensitive) {
       h.browser.history.pushState({}, "Sample Learner", path + privateQuery);
-      await h.browser.umami?.track({ name: "public_page_view", data: { token: "synthetic" } });
+      await h.browser.umami?.track({ data: { token: "synthetic" } });
     }
     expect(h.requests).toHaveLength(1);
     h.browser.history.replaceState({}, "Private Title", `/teams${privateQuery}`);
@@ -101,7 +104,43 @@ describe("third-party analytics privacy boundary", () => {
     expect(serialized).not.toContain("?");
     expect(serialized).not.toContain("#");
     stop();
-    expect(h.browser.echelonAnalyticsBeforeSend?.("event", { name: "public_page_view" })).toBe(false);
+    expect(h.browser.echelonAnalyticsBeforeSend?.("event", {})).toBe(false);
+  });
+
+  it("sends one unnamed view on initial load and deduplicates same-route, query, hash and load callbacks", () => {
+    const h = harness("/pricing");
+    start(h);
+    h.scriptEvents.get("load")?.();
+    h.browser.history.pushState({}, "", `/pricing${privateQuery}`);
+    h.browser.history.replaceState({}, "", "/pricing#another-fragment");
+    h.browserEvents.get("popstate")?.();
+    expect(h.requests).toHaveLength(1);
+    expect(h.requests[0]).toEqual({ type: "event", payload: {
+      website: "synthetic-website", hostname: "echeloninstitute.ca",
+      url: "https://echeloninstitute.ca/pricing", referrer: "", title: "Echelon Institute",
+    } });
+    h.browser.history.pushState({}, "", "/teams");
+    h.browser.history.pushState({}, "", "/pricing");
+    expect(h.requests).toHaveLength(3);
+  });
+
+  it.each(["public_page_view", "click", "", null, undefined])("blocks any named payload instead of miscounting it as a page view (%s)", name => {
+    const clean = createAnalyticsBeforeSend("synthetic-website", () => "https://site.test/pricing");
+    expect(clean("event", { name })).toBe(false);
+  });
+
+  it("survives unavailable, throwing and rejected trackers without affecting navigation", async () => {
+    const absent = harness("/pricing", false);
+    expect(() => start(absent)).not.toThrow();
+    const throws = harness("/pricing");
+    throws.browser.umami!.track = () => { throw new Error("synthetic unavailable tracker"); };
+    const stop = start(throws);
+    expect(() => throws.browser.history.pushState({}, "", "/teams")).not.toThrow();
+    stop();
+    const rejects = harness("/pricing");
+    rejects.browser.umami!.track = () => Promise.reject(new Error("synthetic rejected tracker"));
+    expect(() => start(rejects)).not.toThrow();
+    await Promise.resolve();
   });
 
   it("waits for the deferred tracker, uses the current route, and disables missing configuration", () => {
