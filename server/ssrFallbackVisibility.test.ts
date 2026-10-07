@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
 import { describe, expect, it } from "vitest";
 import { injectSeoIntoTemplate, META_MAP } from "./pageSsr";
 import { prepareAppFallback } from "./staticHead";
@@ -53,5 +54,38 @@ describe("initial application loading display", () => {
     expect(template).not.toMatch(/\son[a-z]+\s*=/i);
     expect(template).toContain('id="echelon-font-style"');
     expect(template).toMatch(/<noscript>[\s\S]*rel="stylesheet"/);
+  });
+  it("hides only the temporary server preview before app startup, not the app or route indicator", () => {
+    expect(template).toContain('.echelon-boot-pending #root > [data-ssr-fallback="true"] { visibility:hidden; }');
+    expect(template).not.toMatch(/\.echelon-boot-pending\s+#root\s*\{/);
+    expect(template.indexOf('id="echelon-startup-handoff"')).toBeLessThan(template.indexOf('<body>'));
+    expect(app).toContain('window.dispatchEvent(new Event("echelon:app-ready"))');
+    expect(app).toContain('useLayoutEffect');
+  });
+  it("reveals the fallback on bounded startup failure and cancels that timer on actual app commit", () => {
+    const script = template.match(/<script id="echelon-startup-handoff">([\s\S]*?)<\/script>/)?.[1];
+    expect(script).toBeTruthy();
+    const classes = new Set<string>();
+    let timeout = 0;
+    let reveal: (() => void) | undefined;
+    let committed: (() => void) | undefined;
+    let cleared = false;
+    const context = {
+      document: { documentElement: { classList: { add: (value: string) => classes.add(value), remove: (value: string) => classes.delete(value) } } },
+      window: {
+        setTimeout: (callback: () => void, ms: number) => { reveal = callback; timeout = ms; return 7; },
+        clearTimeout: (id: number) => { expect(id).toBe(7); cleared = true; },
+        addEventListener: (name: string, callback: () => void, options: { once: boolean }) => { expect(name).toBe("echelon:app-ready"); expect(options.once).toBe(true); committed = callback; },
+      },
+    };
+    runInNewContext(script!, context);
+    expect(classes.has("echelon-boot-pending")).toBe(true);
+    expect(timeout).toBe(8000);
+    reveal!();
+    expect(classes.size).toBe(0);
+    runInNewContext(script!, context);
+    committed!();
+    expect(cleared).toBe(true);
+    expect(classes.size).toBe(0);
   });
 });
