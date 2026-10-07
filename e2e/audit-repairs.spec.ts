@@ -187,3 +187,66 @@ test('admin history stays inaccessible to a normal learner and never requests it
   expect(calls).not.toContain('admin.getScoreHistory');
   await expect(page.getByText('long.learner.address@example.test', { exact: true })).toHaveCount(0);
 });
+
+async function isolateStartupServices(page: import('@playwright/test').Page) {
+  await page.route('**/*', async route => {
+    const request = route.request();
+    const url = new URL(request.url());
+    if (url.origin !== new URL(test.info().project.use.baseURL!).origin) return route.abort();
+    if (url.pathname.startsWith('/api/trpc/')) {
+      const names = decodeURIComponent(url.pathname.split('/api/trpc/')[1]).split(',');
+      const results = names.map(name => ({ result: { data: { json: name === 'blog.listPosts' ? [] : null } } }));
+      return route.fulfill({ contentType: 'application/json', body: JSON.stringify(url.searchParams.has('batch') ? results : results[0]) });
+    }
+    return route.continue();
+  });
+}
+
+for (const width of [1280, 390]) {
+  test(`startup handoff skips the competing preview and preserves the homepage at ${width}px`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width, height: 844 });
+    await isolateStartupServices(page);
+    let release!: () => void;
+    const hold = new Promise<void>(resolve => { release = resolve; });
+    await page.route('**/assets/index-*.js', async route => { await hold; await route.continue(); });
+    try {
+      await page.goto('/', { waitUntil: 'commit' });
+      const shell = page.locator('#ssr-page-shell');
+      await expect(shell).toBeAttached();
+      await expect(shell).toBeHidden();
+      expect(await page.evaluate(() => document.documentElement.classList.contains('echelon-boot-pending'))).toBe(true);
+      await page.screenshot({ path: testInfo.outputPath(`startup-pending-${width}.png`) });
+    } finally { release(); }
+    await expect(page.locator('.course-finder')).toBeVisible();
+    await expect(page.locator('#ssr-page-shell')).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.classList.contains('echelon-boot-pending'))).toBe(false);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath(`startup-ready-${width}.png`) });
+  });
+}
+
+test('startup handoff retains useful homepage content when JavaScript is disabled', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  try {
+    await page.route('**/*', route => new URL(route.request().url()).origin === new URL(baseURL!).origin ? route.continue() : route.abort());
+    await page.goto(baseURL!);
+    await expect(page.locator('#ssr-page-shell')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Prepare for Your Operator Exam');
+    await expect(page.getByRole('link', { name: 'Ontario courses', exact: true })).toBeVisible();
+  } finally { await context.close(); }
+});
+
+for (const path of ['/', '/not-a-real-startup-page']) {
+  test(`startup handoff reveals usable fallback after blocked app assets on ${path}`, async ({ page }) => {
+    await isolateStartupServices(page);
+    await page.route('**/assets/*.js', route => route.abort());
+    const response = await page.goto(path);
+    expect(response!.status()).toBe(path === '/' ? 200 : 404);
+    await expect(page.locator('#ssr-page-shell')).toBeHidden();
+    await expect(page.locator('#ssr-page-shell')).toBeVisible({ timeout: 11000 });
+    expect(await page.evaluate(() => document.documentElement.classList.contains('echelon-boot-pending'))).toBe(false);
+    await expect(page.getByRole('link', { name: 'Ontario OIT', exact: true })).toBeVisible();
+    if (path !== '/') await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page Not Found');
+  });
+}

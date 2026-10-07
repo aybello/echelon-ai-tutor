@@ -44,8 +44,22 @@
     <meta name="twitter:description" content="Canadian water and wastewater operator exam preparation with course-specific practice and a free 15-question preview." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/og-image-new-NPyJfV6kq45KpTXHZ5UW8N.png" />
 
-    <!-- Public server-rendered pages keep their content; app boot uses a quiet indicator. -->
+    <!-- Keep the usable server preview for no-JS/failed startup, not a competing first paint. -->
+    <script id="echelon-startup-handoff">
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('echelon-boot-pending');
+        var reveal = function () { root.classList.remove('echelon-boot-pending'); };
+        var fallback = window.setTimeout(reveal, 8000);
+        window.addEventListener('echelon:app-ready', function () {
+          window.clearTimeout(fallback);
+          reveal();
+        }, { once: true });
+      })();
+    </script>
     <style>
+      body { margin:0; background:#f8fafc; }
+      .echelon-boot-pending #root > [data-ssr-fallback="true"] { visibility:hidden; }
       .app-loading { min-height:100vh; min-height:100dvh; display:grid; place-items:center; background:#f8fafc; }
       .app-loading-spinner { width:24px; height:24px; border:2px solid #e2e8f0; border-top-color:#2563eb; border-radius:50%; }
       @media (prefers-reduced-motion:no-preference) { .app-loading-spinner { animation:app-loading-spin .8s linear infinite; } }

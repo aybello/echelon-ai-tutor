@@ -8,7 +8,7 @@ import PhoneCollectionModal from "./components/PhoneCollectionModal";
 import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
 import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useLayoutEffect } from "react";
 import Landing from "./pages/Landing";
 
 // ── Lazy-loaded pages (code splitting) ───────────────────────────────────────
@@ -466,6 +466,10 @@ function PhoneGate() {
 }
 
 function App() {
+  useLayoutEffect(() => {
+    window.dispatchEvent(new Event("echelon:app-ready"));
+  }, []);
+
   return (
     <ErrorBoundary recoverModuleErrors>
       <ThemeProvider defaultTheme="light">
