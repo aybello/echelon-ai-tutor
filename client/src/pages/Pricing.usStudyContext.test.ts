@@ -49,9 +49,9 @@ describe("explicit US study context on existing individual pricing", () => {
   it.each(US_STATE_NAMES)("uses $name as study context, never BC certification or a state course", identity => {
     setSearch(`product=wpi-class3-water&country=US&state=${identity.code}`);
     const html = render();
-    expect(html).toContain("US shared WPI preparation");
+    expect(html).toContain("US exam preparation");
     expect(html).toContain(`Study context: ${identity.name}`);
-    expect(html).toContain("Not a dedicated state exam course");
+    expect(html).toContain("standardized exam content, not for any one state");
     expect(html).toContain("Confirm your local exam, stream, class, edition, and eligibility");
     expect(html).toContain("State context does not confirm exam fit");
     expect(html).toContain("Canadian dollars (CAD)");
@@ -121,7 +121,7 @@ describe("explicit US study context on existing individual pricing", () => {
     const html = render();
     expect(html).toContain("Select Your Province");
     expect(html).not.toContain("Study context: Washington");
-    expect(html).not.toContain("US shared WPI preparation");
+    expect(html).not.toContain("US exam preparation");
   });
 
   it("forwards current search from both gates while preserving existing CAD checkout", () => {

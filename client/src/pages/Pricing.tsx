@@ -1270,10 +1270,10 @@ export default function Pricing() {
 
       {/* ── Hero ── */}
       <div className="pricing-hero">
-        <div className="pricing-hero-badge">{isUSPreparation ? "US shared WPI preparation" : isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
-        <h1>{isUSPreparation ? <>Choose Your Shared WPI<br />Preparation.</> : <>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</>}</h1>
+        <div className="pricing-hero-badge">{isUSPreparation ? "US operator certification preparation" : isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
+        <h1>{isUSPreparation ? <>Choose Your US Exam<br />Preparation.</> : <>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</>}</h1>
         {isUSPreparation ? (
-          <p>Choose an existing shared WPI course for one stream and class. Every Individual Exam Pass includes 12 months of access from successful payment, unlimited practice, the AI Tutor, and step-by-step solutions.</p>
+          <p>Choose a US Class I course written to the WPI Class 1 Need-to-Know Criteria in US customary units, or a shared WPI course for another stream and class. Every Individual Exam Pass includes 12 months of access from successful payment, unlimited practice, the AI Tutor, and step-by-step solutions.</p>
         ) : (
           <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         )}
@@ -1283,16 +1283,16 @@ export default function Pricing() {
           borderRadius: 10, padding: "10px 18px", marginTop: 12, marginBottom: 4,
         }}>
           <span style={{ fontSize: 16 }}>🎁</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>{isUSPreparation ? "Try 15 free practice questions before choosing a shared WPI course." : "Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages."}</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>{isUSPreparation ? "Try 15 free practice questions before you choose a course." : "Every course includes 15 free practice questions. OIT also includes 50 flashcards, 30 mock questions, and 3 AI Tutor messages."}</span>
         </div>
 
         {isUSPreparation ? (
           <div className="province-selector" style={{ marginTop: 24 }}>
-            <div className="province-selector-label">US shared WPI preparation</div>
+            <div className="province-selector-label">US exam preparation</div>
             <div className="province-wpi-note" style={{ maxWidth: 640, lineHeight: 1.6, textAlign: "left" }}>
               <strong>{usStudyContext.state ? `Study context: ${usStudyContext.state.name}` : "US study context: no valid state selected"}</strong>
               {invalidUSState && <div role="alert">State not recognized. No state exam match is confirmed.</div>}
-              <div>Not a dedicated state exam course. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
+              <div>These courses prepare you for the standardized exam content, not for any one state's local rules. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
               <div style={{ marginTop: 8 }}><strong>All prices and checkout charges are in Canadian dollars (CAD).</strong></div>
             </div>
           </div>
@@ -1574,7 +1574,7 @@ export default function Pricing() {
           {showIndividual && (
             <div style={{ marginTop: 8, padding: "4px 0" }}>
               <div style={{ margin: "20px 0 24px" }}>
-                <label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>{isUSPreparation ? "Select a shared WPI stream and class" : "Select your jurisdiction, stream, and certification level"}</label>
+<label htmlFor="individual-course-picker" style={{ display: "block", fontSize: 13, fontWeight: 800, color: "#334155", marginBottom: 8 }}>{isUSPreparation ? "Select your stream and class" : "Select your jurisdiction, stream, and certification level"}</label>
                 <select
                   id="individual-course-picker"
                   value={selectedIndividualKey}
@@ -1782,7 +1782,7 @@ export default function Pricing() {
             Individual Exam Passes are one-time purchases with no renewal. Grandfathered annual subscriptions continue through their paid term if renewal is cancelled.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            {liveCourseLabel}. {isUSPreparation ? "Shared WPI preparation with AI explanations; confirm your local exam requirements." : "Canada-specific and AI-explained."}
+            {liveCourseLabel}. {isUSPreparation ? "US exam preparation with AI explanations; confirm your local exam requirements." : "Canada-specific and AI-explained."}
           </p>
           <div className="trust-grid">
             {[
@@ -1890,7 +1890,7 @@ export default function Pricing() {
             {
               q: isUSPreparation ? "Is Echelon affiliated with WPI or my state certifying authority?" : "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
               a: isUSPreparation
-                ? "No. Echelon Institute is an independent preparation provider, not affiliated with or endorsed by WPI or your certifying authority. Shared WPI preparation is not a dedicated state exam course. Confirm your local exam and requirements before purchase; checkout is in CAD."
+                ? "No. Echelon Institute is an independent preparation provider, not affiliated with or endorsed by WPI or your certifying authority. Our courses cover standardized exam content, not any one state's local rules. Confirm your local exam and requirements before purchase; checkout is in CAD."
                 : "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
             },
             {
@@ -1960,7 +1960,7 @@ function ProductCard({
   const displayFeatures = product.features?.map((feature, index) =>
     index === 0 && verifiedQuestionCount
       ? `${verifiedQuestionCount.toLocaleString("en-CA")} verified practice questions`
-      : isUSPreparation && feature === "BC / AB / SK / MB" ? "Shared WPI preparation" : feature,
+      : isUSPreparation && feature === "BC / AB / SK / MB" ? "WPI standardized content" : feature,
   );
 
   return (
