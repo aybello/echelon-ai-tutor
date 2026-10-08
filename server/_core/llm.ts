@@ -91,6 +91,15 @@ export type InvokeResult = {
   id: string;
   created: number;
   model: string;
+  /**
+   * Which provider actually served this request.
+   *
+   * The model name alone cannot answer this. The primary provider routes
+   * requests to whichever model it chooses and returns that model's name,
+   * so a request for one model can come back labelled as another. Health
+   * checks must read this field, never the model string.
+   */
+  servedBy?: "primary" | "fallback";
   choices: Array<{
     index: number;
     message: {
@@ -330,6 +339,7 @@ async function invokeFallbackLLM(
     id: result?.id ?? "fallback",
     created: Math.floor(Date.now() / 1000),
     model: result?.model ?? FALLBACK_MODEL,
+    servedBy: "fallback",
     choices: [
       {
         index: 0,
@@ -482,7 +492,10 @@ export async function invokeLLM(params: InvokeParams): Promise<InvokeResult> {
     ) {
       throw new Error("Native AI provider returned no usable completion");
     }
-    return result;
+    // Tag the serving provider explicitly. The primary provider may answer
+    // with a different model than the one requested, so the model name is
+    // not a reliable signal of which provider handled the request.
+    return { ...result, servedBy: "primary" };
   } catch (primaryError) {
     // A caller cancellation is the learner closing the panel, not an outage.
     if (params.signal?.aborted) throw primaryError;

@@ -71,6 +71,19 @@ describe("AI Tutor health probe", () => {
     expect(result.error).toBeNull();
   });
 
+  it("does not report a false outage when the primary provider substitutes a different model", async () => {
+    // The primary provider routes to whichever model it chooses and returns
+    // that model's name. An earlier model-name check wrongly read this as the
+    // fallback carrying the tutor, which would have paged the owner for a
+    // healthy system.
+    vi.stubGlobal("fetch", vi.fn(async () => forgeOk("gpt-5.6-sol")));
+    const { checkTutorHealth } = await import("./tutorHealth");
+    const result = await checkTutorHealth();
+
+    expect(result.ok).toBe(true);
+    expect(result.usedFallback).toBe(false);
+  });
+
   it("flags that the backup provider is carrying the tutor", async () => {
     vi.stubGlobal("fetch", vi.fn(async (input: unknown) =>
       urlOf(input).includes("forge") ? forgeExhausted() : anthropicOk()

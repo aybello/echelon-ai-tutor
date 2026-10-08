@@ -21,7 +21,6 @@ export type TutorHealthResult = {
 };
 
 const PROBE_PROMPT = "Reply with the single word: ready";
-const PRIMARY_MODEL_PREFIX = "claude-opus-4-7";
 
 export async function checkTutorHealth(): Promise<TutorHealthResult> {
   const started = Date.now();
@@ -51,10 +50,10 @@ export async function checkTutorHealth(): Promise<TutorHealthResult> {
       ok: true,
       model,
       latencyMs: Date.now() - started,
-      // A non-primary model means the primary provider was unavailable and the
-      // fallback carried the request. The tutor still works, but the primary
-      // provider needs attention.
-      usedFallback: Boolean(model && !model.startsWith(PRIMARY_MODEL_PREFIX)),
+      // Read the provider tag, never the model name. The primary provider
+      // routes requests to whichever model it chooses and returns that
+      // model's name, so a model-name check reports false outages.
+      usedFallback: response?.servedBy === "fallback",
       error: null,
     };
   } catch (error) {
