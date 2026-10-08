@@ -1,3 +1,5 @@
+import { US_BLUEPRINT_BANKS, usMockBlueprintForBank } from "./usMockBlueprint";
+
 /** WPI standardized 2025 Class IV wastewater outline. Confirm adoption with the certifying authority. */
 export const WPI_CLASS4_BANK = "wpi-class4-wastewater";
 export const WPI_CLASS4_BLUEPRINT_VERSION = 2025;
@@ -20,6 +22,12 @@ export const WPI_COLLECTION_BLUEPRINT = [
 ] as const;
 export const WPI_COLLECTION_SOURCE = "https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-4_final.pdf";
 export function mockBlueprintForBank(bankKey: string, version: number): readonly BlueprintArea[] | null {
+  // US banks resolve only through the US profile. Checking them first keeps a
+  // US bank key from ever matching a Canadian blueprint, and the Canadian
+  // branches below cannot match a US key because the names differ.
+  const usProfile = usMockBlueprintForBank(bankKey, version);
+  if (usProfile) return usProfile;
+  if (US_BLUEPRINT_BANKS.includes(bankKey)) return null;
   if (bankKey === WPI_CLASS4_BANK && version === WPI_CLASS4_BLUEPRINT_VERSION) return WPI_CLASS4_BLUEPRINT;
   if (bankKey === WPI_COLLECTION_BANK && version === WPI_COLLECTION_BLUEPRINT_VERSION) return WPI_COLLECTION_BLUEPRINT;
   return null;

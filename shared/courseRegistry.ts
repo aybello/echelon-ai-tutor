@@ -16,8 +16,17 @@
 // Types
 // ---------------------------------------------------------------------------
 
-export type ExamFamily = "ontario" | "western";
-export type ProvinceOrRegion = "ontario" | "western";
+/**
+ * Regulatory exam families.
+ *
+ * "us-wpi" is a SEPARATE family from "western". Both reference WPI-aligned
+ * material, but US courses carry their own course keys, question bank keys,
+ * products and mock profile. A Canadian bank is never reachable from a US
+ * course key, and a US bank is never reachable from a Canadian one.
+ * Any code branching on family must handle all three cases explicitly.
+ */
+export type ExamFamily = "ontario" | "western" | "us-wpi";
+export type ProvinceOrRegion = "ontario" | "western" | "united-states";
 export type TrackType =
   | "water-treatment"
   | "wastewater-treatment"
@@ -766,6 +775,48 @@ const REGISTRY: CourseEntry[] = [
     teamAssignable: true,
     aliases: ["wpi-class4-wastewater-coll"],
     isActive: true,
+  },
+  // ── United States Class I (held pending content approval) ─────────────────
+  // These carry their own question bank keys and products. They are inactive
+  // until father approves the reviewed US content, so they are excluded from
+  // every active-course listing, SEO page and purchasable catalogue.
+  {
+    courseKey: "us-class1-water",
+    displayName: "US Class I Water Treatment",
+    shortName: "US Class I Water",
+    provinceOrRegion: "united-states",
+    examFamily: "us-wpi",
+    track: "water-treatment",
+    classLevel: 1,
+    quizPath: "/us-class1-water",
+    mockExamPath: "/us-class1-water-mock",
+    flashcardPath: "/us-class1-water-flashcards",
+    formulaPath: "/formulas-us-class1",
+    productKey: "us-class1-water",
+    subscriptionTier: "class1",
+    questionBankKey: "us-class1-water",
+    teamAssignable: false,
+    aliases: [],
+    isActive: false,
+  },
+  {
+    courseKey: "us-class1-water-dist",
+    displayName: "US Class I Water Distribution",
+    shortName: "US Class I Distribution",
+    provinceOrRegion: "united-states",
+    examFamily: "us-wpi",
+    track: "water-distribution",
+    classLevel: 1,
+    quizPath: "/us-class1-water-dist",
+    mockExamPath: "/us-class1-water-dist-mock",
+    flashcardPath: "/us-class1-water-dist-flashcards",
+    formulaPath: "/formulas-us-class1",
+    productKey: "us-class1-water-dist",
+    subscriptionTier: "class1",
+    questionBankKey: "us-class1-water-dist",
+    teamAssignable: false,
+    aliases: [],
+    isActive: false,
   },
 ];
 

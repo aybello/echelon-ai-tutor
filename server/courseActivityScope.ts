@@ -4,9 +4,16 @@ import { examResults, questionAttempts } from "../drizzle/schema";
 import { resolveCourseKey } from "../shared/courseRegistry";
 
 /** Course identity wins over old bank/history names. Never merge regulatory families. */
-export function courseActivityScope(key: string) {
+export function courseActivityScope(key: string, options?: { requireActive?: boolean }) {
   const course = resolveCourseKey(key);
   if (!course) throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown study course." });
+  // Serving NEW study content from an inactive course must fail closed: an
+  // unreleased course is not learner-visible. Reading PAST history must not,
+  // or a learner would lose their own records if a course is ever retired.
+  // Callers that hand out questions pass requireActive; history filters do not.
+  if (options?.requireActive && !course.isActive) {
+    throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown study course." });
+  }
   const keys = [...new Set([course.courseKey, course.questionBankKey, ...course.aliases])]
     .filter(key => key !== "class1"); // Historical combined bank requires stream evidence.
   return { course, keys };
