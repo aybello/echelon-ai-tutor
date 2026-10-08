@@ -25,6 +25,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import mysql from "mysql2/promise";
+import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
 
 const PACKAGE_PATH = process.env.US_CLASS1_PACKAGE_PATH
   ?? "/home/ubuntu/outputs/echelon-us-integration-2026-10-08/us-class1-import-package.json";
@@ -150,7 +151,8 @@ if (mode === "check") {
   process.exit(0);
 }
 
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required for preflight or apply.");
+const target = activeScriptConnection();
+console.log(`Target: ${target.description}`);
 if (mode === "apply" && process.env.CONFIRM_US_CLASS1_IMPORT !== checksum) {
   throw new Error(`Apply blocked. Set CONFIRM_US_CLASS1_IMPORT=${checksum} to confirm this exact package.`);
 }
@@ -197,7 +199,7 @@ async function captureBaseline(connection) {
   return { snapshot, checksum: digest(JSON.stringify(snapshot)) };
 }
 
-const connection = await mysql.createConnection(process.env.DATABASE_URL);
+const connection = await mysql.createConnection(target.options);
 
 try {
   await connection.beginTransaction();

@@ -18,6 +18,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import mysql from "mysql2/promise";
+import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
 
 const TARGET_BANKS = ["us-class1-water", "us-class1-water-dist"];
 const EXPECTED_RELEASE_COUNT = 398;
@@ -27,10 +28,11 @@ const mode = process.argv[2] ?? "check";
 if (!new Set(["check", "apply"]).has(mode) || process.argv.length !== 3) {
   throw new Error("Usage: node scripts/release-us-class1.mjs [check|apply]");
 }
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required.");
+const target = activeScriptConnection();
+console.log(`Target: ${target.description}`);
 
 const placeholders = TARGET_BANKS.map(() => "?").join(", ");
-const connection = await mysql.createConnection(process.env.DATABASE_URL);
+const connection = await mysql.createConnection(target.options);
 
 async function statusCounts(conn) {
   const [rows] = await conn.execute(
