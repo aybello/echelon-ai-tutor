@@ -52,6 +52,10 @@ export const COMMERCIAL_RELEASE_PRODUCT_KEYS = [
   "wpi-class2-water-dist",
   "wpi-class3-water-dist",
   "wpi-class4-water-dist",
+  // US Class I, released 2026-10-08. 398 reviewed questions imported and
+  // verified live; both banks clear the minimum inventory requirement.
+  "us-class1-water",
+  "us-class1-water-dist",
 ] as const;
 const COMMERCIAL_RELEASE_PRODUCT_KEY_SET = new Set<string>(COMMERCIAL_RELEASE_PRODUCT_KEYS);
 export const MINIMUM_LIVE_QUESTION_COUNT = 100;
