@@ -31,6 +31,7 @@ import {
   verifyAccessTokenAndRecheckDb,
 } from "./_core/accessService";
 import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, buildTutorSystemPrompt, enforceAiTutorDailyQuota } from "./_core/aiTutorPolicy";
+import { resolveUSStudyContext } from "./usStudyContextServer";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { learnerQuestionColumns, parseLearnerQuestions, quizRouter } from "./routers/quizRouter";
@@ -778,6 +779,10 @@ export const appRouter = router({
             correct: z.boolean(),
             confidence: z.number().min(0).max(100).nullable(),
           })).max(6).default([]),
+          // Requested US state. Advisory only: the server re-resolves it
+          // against an allowlist and ignores anything unrecognized. It never
+          // grants entitlements, changes banks, or authorizes legal advice.
+          usState: z.string().max(32).optional(),
           accessToken: z.string().max(4096).optional(),
         }),
       )
@@ -930,6 +935,9 @@ export const appRouter = router({
         const systemPrompt = buildTutorSystemPrompt({
           courseName: course.displayName,
           examFamily: course.examFamily,
+          // Re-resolved server-side. An unrecognized or spoofed state becomes
+          // null rather than reaching the model as free text.
+          usContext: resolveUSStudyContext(course.courseKey, input.usState ?? null),
           subject: isElectrician309A ? "construction_electrician" : "water_operator",
           question: questionContext,
           selectedIndex: input.selectedIndex ?? null,
