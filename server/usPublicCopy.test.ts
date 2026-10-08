@@ -41,7 +41,9 @@ describe("US public index copy", () => {
   it.each(US_INDEX_PATHS)("states shared scope, state authority rules, independence, and preview details on %s", path => {
     const body = pageFor(path).bodyHtml!;
     expect(body).toMatch(/shared WPI/i);
-    expect(body).toMatch(/not (?:a )?(?:dedicated )?state exam courses?/i);
+    // Dedicated US Class I courses are live, so the honest limit is now scope, not absence:
+    // standardized exam content never stands in for a state's own regulations.
+    expect(body).toMatch(/standardized exam content|state-specific (?:regulations|study material)/i);
     expect(body).toContain("Class I to IV");
     expect(body).toContain("free preview");
     expect(body).toMatch(/authority controls eligibility, exam content, permitted references/i);
@@ -80,6 +82,17 @@ describe("US public index copy", () => {
     expect(body).toContain("Prices are in Canadian dollars (CAD)");
   });
 
+  it("renders the dedicated US Class I courses with their own links and prices", () => {
+    const body = pageFor("/us/courses").bodyHtml!;
+    const usCourses = COURSE_SEO_PAGES.filter(course => course.regionPath === "/us");
+    expect(usCourses).toHaveLength(2);
+    for (const course of usCourses) {
+      expect(body).toContain(`href="${SITE_URL}${course.quizPath}">${course.displayName}</a>`);
+      expect(body).toContain(formatCad(course.priceCAD));
+    }
+    expect(body).toContain("WPI Class 1 Need-to-Know Criteria in US customary units");
+  });
+
   it("directs overview readers to state matching before the shared catalogue", () => {
     const body = pageFor("/us").bodyHtml!;
     const stateLink = body.indexOf(`href="${SITE_URL}/us/states"`);
@@ -108,7 +121,8 @@ describe("US landing copy and original presentation", () => {
       expect(landing).toContain(feature);
     }
     expect(landing).toContain("Practice scores are not a guarantee of an exam result");
-    expect(landing).toContain("not a dedicated state exam course");
+    // Scope limit stays: standardized content never replaces a state's own regulations.
+    expect(landing).toContain("not any single state's own regulations");
     expect(landing).toMatch(/not affiliated with or endorsed by ABC, WPI, or any state certifying authority/i);
   });
 
@@ -120,7 +134,7 @@ describe("US landing copy and original presentation", () => {
   });
 
   it("replaces workforce totals with study scope and keeps state-first primary links", () => {
-    for (const value of ["4 Streams", "Class I-IV", "Shared Prep", "State Rules"]) {
+    for (const value of ["4 Streams", "Class I-IV", "398 Questions", "State Rules"]) {
       expect(landing).toContain(`value="${value}"`);
     }
     expect(landing).not.toMatch(/132400|10700|58,260|US Operators Employed|Annual Job Openings|Median Annual Salary/);

@@ -40,8 +40,8 @@ const FEATURES = [
 
 export default function USLanding() {
   usePageMeta({
-    title: "US Water Operator Exam Prep | Shared WPI Study | Echelon Institute",
-    description: "Find your state's operator certification requirements, then compare shared WPI preparation for four water and wastewater streams at Class I to IV.",
+    title: "US Water Operator Exam Prep | Echelon Institute",
+    description: "Dedicated US Class I water treatment and water distribution courses in US customary units, plus shared WPI preparation across four streams at Class I to IV.",
   });
 
   const [stateSearch, setStateSearch] = useState("");
@@ -65,7 +65,7 @@ export default function USLanding() {
           </div>
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-          <Link href="/us/courses"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Shared Courses</span></Link>
+          <Link href="/us/courses"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Courses</span></Link>
           <Link href="/pricing?country=US"><span style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", cursor: "pointer", fontWeight: 500 }}>Pricing</span></Link>
           <Link href="/us/states" style={{ padding: "8px 18px", borderRadius: 8, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
             Find Your State →
@@ -90,14 +90,14 @@ export default function USLanding() {
             <br />Start With Your State
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: "easeOut", delay: 0.55 }} style={{ fontSize: "clamp(14px, 2vw, 18px)", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto 36px" }}>
-            Shared WPI preparation for water treatment, wastewater treatment, distribution, and collection at Class I to IV. Check your state's exam and course scope before you choose.
+            Dedicated US Class I courses for water treatment and water distribution, plus shared WPI preparation across four streams at Class I to IV. Check your state's exam and course scope before you choose.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }} style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/us/states" className="btn-pulse" style={{ padding: "14px 32px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
               Find Your State →
             </Link>
             <Link href="/us/courses" style={{ padding: "14px 32px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-              Browse Shared Courses
+              Browse All Courses
             </Link>
           </motion.div>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.9 }} style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.5)", marginTop: 12 }}>
@@ -112,7 +112,7 @@ export default function USLanding() {
           <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
             <StaggerItem><ScopeStat value="4 Streams" label="Treatment, Distribution, Collection" /></StaggerItem>
             <StaggerItem><ScopeStat value="Class I-IV" label="WPI course levels" /></StaggerItem>
-            <StaggerItem><ScopeStat value="Shared Prep" label="Not a dedicated state exam course" /></StaggerItem>
+            <StaggerItem><ScopeStat value="398 Questions" label="Dedicated US Class I, written in US units" /></StaggerItem>
             <StaggerItem><ScopeStat value="State Rules" label="Confirm your exam and course scope" /></StaggerItem>
           </StaggerContainer>
         </div>
@@ -123,9 +123,9 @@ export default function USLanding() {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <FadeUp>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
-              <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>FOUR SHARED WPI STUDY STREAMS</div>
+              <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>FOUR WATER AND WASTEWATER STREAMS</div>
               <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>
-                Explore shared preparation by stream,<br />then check the match for your state and exam level.
+                Explore courses by stream,<br />then check the match for your state and exam level.
               </h2>
             </div>
           </FadeUp>
@@ -146,7 +146,7 @@ export default function USLanding() {
                         <span key={cls} style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 20, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.12)" }}>{cls}</span>
                       ))}
                     </div>
-                    <div style={{ fontSize: 13, color: "#38BDF8", fontWeight: 600 }}>View Shared Courses →</div>
+                    <div style={{ fontSize: 13, color: "#38BDF8", fontWeight: 600 }}>View Courses →</div>
                   </div>
                 </Link>
               </FadeUp>
@@ -164,7 +164,7 @@ export default function USLanding() {
               <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>
                 Start with your state's requirements
               </h2>
-              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: "0 auto", maxWidth: 700 }}>Exam providers, classifications, and requirements can differ by stream and level. Shared WPI preparation is not a dedicated state exam course. Your certifying authority controls eligibility, exam content, permitted references, and certification.</p>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: "0 auto", maxWidth: 700 }}>Exam providers, classifications, and requirements can differ by stream and level. Our courses teach standardized exam content, not any single state's own regulations. Your certifying authority controls eligibility, exam content, permitted references, and certification.</p>
             </div>
           </FadeUp>
           <div style={{ maxWidth: 480, margin: "0 auto 32px" }}>
@@ -244,13 +244,13 @@ export default function USLanding() {
               Choose Your{" "}
               <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Study Path</span>
             </h2>
-            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", margin: "0 0 40px", lineHeight: 1.6 }}>Check your state's requirements first, then review the shared course catalogue and each course's free preview.</p>
+            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", margin: "0 0 40px", lineHeight: 1.6 }}>Check your state's requirements first, then review the course catalogue and each course's free preview.</p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/us/states" className="btn-pulse" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
                 Find Your State →
               </Link>
               <Link href="/us/courses" style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
-                Browse Shared Courses
+                Browse All Courses
               </Link>
             </div>
             <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>Individual Exam Passes provide 12 months of access to one selected course from successful payment. Prices are in Canadian dollars (CAD). <Link href="/pricing?country=US" style={{ color: "#60A5FA" }}>Review pricing and access details</Link>.</p>

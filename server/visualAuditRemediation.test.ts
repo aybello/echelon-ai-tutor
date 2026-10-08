@@ -38,9 +38,10 @@ describe("live visual-audit remediation", () => {
     expect(about).not.toContain("Master's student");
     expect(us).toContain('value="4 Streams"');
     expect(us).toContain('value="Class I-IV"');
-    expect(us).toContain('value="Shared Prep"');
+    expect(us).toContain('value="398 Questions"');
     expect(us).toContain('value="State Rules"');
-    expect(us).toContain("Not a dedicated state exam course");
+    expect(us).toContain("Dedicated US Class I, written in US units");
+    expect(us).toContain("not any single state's own regulations");
     expect(us).not.toMatch(/132400|10700|58,260/);
     expect(us).not.toContain("const TESTIMONIALS");
   });
