@@ -12,6 +12,7 @@ import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, customerRecoveryEvidence } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
+import { SYNTHETIC_EMAIL_DOMAIN } from "../../shared/revenueReporting";
 import {
   RECOVERY_ORGANIZATION_GROUPS,
   RECOVERY_SUBJECT_TYPES,
@@ -567,10 +568,32 @@ export const adminRouter = router({
       db.select({ cnt: count() }).from(subscriptions).where(ne(subscriptions.email, OWNER_EMAIL)),
       db.select({ cnt: count() }).from(userFeedback),
       db.select({ cnt: count() }).from(triggerLogs),
-      // Revenue: sum amountCAD from purchases, excluding owner
-      db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(purchases).where(ne(purchases.email, OWNER_EMAIL)),
-      // Revenue: sum amountCAD from subscriptions, excluding owner
-      db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(subscriptions).where(ne(subscriptions.email, OWNER_EMAIL)),
+      // Revenue: money actually received. Excludes the owner, synthetic rows
+      // written by automated checks, refunds and zero-amount catalogue rows.
+      // Counting those overstated reported revenue by roughly 77 percent.
+      db
+        .select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` })
+        .from(purchases)
+        .where(
+          and(
+            ne(purchases.email, OWNER_EMAIL),
+            sql`${purchases.email} NOT LIKE ${"%" + SYNTHETIC_EMAIL_DOMAIN}`,
+            gt(purchases.amountCAD, 0),
+            sql`${purchases.refundedAt} IS NULL`
+          )
+        ),
+      // Subscriptions: only currently active ones represent live revenue.
+      db
+        .select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` })
+        .from(subscriptions)
+        .where(
+          and(
+            ne(subscriptions.email, OWNER_EMAIL),
+            sql`${subscriptions.email} NOT LIKE ${"%" + SYNTHETIC_EMAIL_DOMAIN}`,
+            gt(subscriptions.amountCAD, 0),
+            eq(subscriptions.status, "active")
+          )
+        ),
       // Rating: avg in DB
       db.select({ avg: sql<number>`COALESCE(AVG(rating), 0)`, cnt: count() }).from(userFeedback),
     ]);
