@@ -220,7 +220,7 @@ export const quizRouter = router({
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       }
-      const { course } = courseActivityScope(input.bankKey);
+      const { course } = courseActivityScope(input.bankKey, { requireActive: true });
       const examType = course.courseKey;
       const hasAccess = await resolveAccessForRequest(ctx, examType, {
         accessToken: input.accessToken,
@@ -299,7 +299,7 @@ export const quizRouter = router({
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-      const { course, keys } = courseActivityScope(input.bankKey);
+      const { course, keys } = courseActivityScope(input.bankKey, { requireActive: true });
       const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, { accessToken: input.accessToken });
       const identity = await resolveLearningIdentity(ctx);
       const identified = Boolean(identity.userId || identity.studentEmail);
@@ -469,7 +469,9 @@ export const quizRouter = router({
     .input(z.object({ courseKey: z.string().min(1).max(64) }))
     .query(async ({ input }) => {
       const course = resolveCourseKey(input.courseKey);
-      if (!course) {
+      // An unreleased course must not report an inventory count. Doing so
+      // would disclose that it exists and imply content is ready.
+      if (!course?.isActive) {
         throw new TRPCError({ code: "NOT_FOUND", message: "Course not found." });
       }
       const db = await getDb();

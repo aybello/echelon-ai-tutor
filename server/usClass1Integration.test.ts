@@ -7,10 +7,14 @@
 import { describe, expect, it } from "vitest";
 import {
   getAllActiveCourseKeys,
+  getAllCourses,
   getCourseByKey,
   getCoursesForFamily,
+  getCoursesForSubscriptionTier,
+  courseKeyToTierStrict,
   resolveCourseKey,
 } from "../shared/courseRegistry";
+import { courseActivityScope } from "./courseActivityScope";
 import { mockBlueprintForBank, selectBlueprintQuestions, type ClassifiedQuestion } from "./mockBlueprint";
 import {
   US_CLASS1_BLUEPRINT_VERSION,
@@ -36,13 +40,26 @@ describe("US courses stay separate from Canadian courses", () => {
   });
 
   it("never exposes a US bank key to a Canadian course or the reverse", () => {
-    const usBanks = new Set(US_COURSE_KEYS.map(k => getCourseByKey(k)!.questionBankKey));
-    const canadianBanks = new Set(
-      [...getCoursesForFamily("ontario"), ...getCoursesForFamily("western")].map(c => c.questionBankKey),
-    );
-    for (const bank of usBanks) expect(canadianBanks.has(bank)).toBe(false);
-    // Every US bank key is namespaced, so a typo cannot collide with Canada.
-    for (const bank of usBanks) expect(bank.startsWith("us-")).toBe(true);
+    // Compare against EVERY Canadian course, including inactive and retired
+    // ones. getCoursesForFamily filters to active, which would hide a
+    // collision with a retired bank.
+    const usCourses = US_COURSE_KEYS.map(k => getCourseByKey(k)!);
+    const canadianIdentifiers = new Set<string>();
+    for (const course of getAllCourses()) {
+      if (course.examFamily === "us-wpi") continue;
+      canadianIdentifiers.add(course.courseKey);
+      canadianIdentifiers.add(course.questionBankKey);
+      canadianIdentifiers.add(course.productKey);
+      for (const alias of course.aliases) canadianIdentifiers.add(alias);
+    }
+    for (const course of usCourses) {
+      for (const identifier of [course.courseKey, course.questionBankKey, course.productKey, ...course.aliases]) {
+        expect(canadianIdentifiers.has(identifier)).toBe(false);
+      }
+      // Namespaced, so a future typo cannot silently collide with Canada.
+      expect(course.questionBankKey.startsWith("us-")).toBe(true);
+      expect(course.courseKey.startsWith("us-")).toBe(true);
+    }
   });
 
   it("gives US courses their own product keys and routes", () => {
@@ -66,6 +83,39 @@ describe("US courses stay separate from Canadian courses", () => {
   it("still resolves unknown keys to undefined", () => {
     expect(resolveCourseKey("us-class1-nonexistent")).toBeUndefined();
     expect(resolveCourseKey("")).toBeUndefined();
+  });
+
+  it("never grants a US course through a Canadian subscription tier", () => {
+    // Both US courses reuse the "class1" tier label. That is only safe
+    // because tier resolution is family-scoped and active-scoped.
+    for (const family of ["ontario", "western"] as const) {
+      const tiered = getCoursesForSubscriptionTier("class1", family);
+      expect(tiered.every(c => c.examFamily === family)).toBe(true);
+      expect(tiered.some(c => US_COURSE_KEYS.includes(c.courseKey))).toBe(false);
+    }
+    // And a US key cannot be claimed under a Canadian family.
+    for (const key of US_COURSE_KEYS) {
+      expect(courseKeyToTierStrict(key, "ontario")).toBeNull();
+      expect(courseKeyToTierStrict(key, "western")).toBeNull();
+      // Even under its own family, an inactive course yields no tier.
+      expect(courseKeyToTierStrict(key, "us-wpi")).toBeNull();
+    }
+  });
+
+  it("refuses to serve study content for an inactive course", () => {
+    for (const key of US_COURSE_KEYS) {
+      const course = getCourseByKey(key)!;
+      // Question-serving paths must fail closed.
+      expect(() => courseActivityScope(key, { requireActive: true })).toThrow();
+      expect(() => courseActivityScope(course.questionBankKey, { requireActive: true })).toThrow();
+      // History paths must still resolve, so a learner never loses records
+      // if a course is later retired.
+      expect(courseActivityScope(key).course.courseKey).toBe(key);
+    }
+    // Active Canadian courses are unaffected by the new gate.
+    for (const course of getCoursesForFamily("ontario")) {
+      expect(() => courseActivityScope(course.courseKey, { requireActive: true })).not.toThrow();
+    }
   });
 });
 
