@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import { matchedUSCourses, sharedUSCourses, US_STATE_CONFIGS } from "../shared/usExamRouting";
+import { getAllCourses } from "../shared/courseRegistry";
 
 async function mockServices(page: Page) {
   await page.route("https://analytics.example.test/**", route => route.fulfill({body:""}));
@@ -9,7 +10,7 @@ async function mockServices(page: Page) {
     const responses = paths.map(path => {
       let data: unknown = {success:true};
       if (["auth.me","dashboardAuth.me"].includes(path)) data = null;
-      else if (path === "stripe.checkAccess") data = {hasAccess:true,unlockedExamTypes:sharedUSCourses().map(course=>course.courseKey)};
+      else if (path === "stripe.checkAccess") data = {hasAccess:true,unlockedExamTypes:getAllCourses().map(course=>course.courseKey)};
       else if (path === "quiz.getBankMeta") data = {modules:["Math & Calculations"],totalQuestions:20};
       else if (path === "quiz.getModuleOverviews") data = {};
       else if (["quiz.getRandomQuestions","quiz.getQuestions"].includes(path)) data = {questions:Array.from({length:20},(_,i)=>({id:i+1,module:"Math & Calculations",difficulty:"medium",question:"A pump delivers 120 L/min. How much water is delivered in one hour?",options:["7200 L","120 L","2 L","1200 L"],correctAnswer:0,correctIndex:0,explanation:"120 L/min multiplied by 60 min is 7200 L.",isCalc:true})),total:20,hasMore:false,locked:false};
@@ -72,16 +73,23 @@ test("state-specific and customized streams have no misleading shared-course but
   }
 });
 
-test("shared practice keeps US state through tools and does not display Western Canada", async ({page}) => {
+test("US practice keeps US state through tools, names its own edition and never shows Western Canada", async ({page}) => {
   const state=Object.values(US_STATE_CONFIGS).find(item=>matchedUSCourses(item).some(course=>course.track==="water-treatment"))!;
   const course=matchedUSCourses(state,"water-treatment")[0];
+  // A dedicated US course must name itself as a US Class I edition. A shared
+  // Canadian WPI course must stay honest that it is shared preparation.
+  // Neither may ever fall back to an Ontario or Western Canada label.
+  const isDedicatedUS=course.examFamily==="us-wpi";
+  const expectedIdentity=isDedicatedUS?`${state.name} / US Class I`:`${state.name} / Shared WPI`;
+  const expectedHeader=isDedicatedUS?"US Class I preparation":"Shared WPI preparation";
   await mockServices(page);
   await page.goto(`${course.quizPath}?country=US&state=${state.code}`);
   await expect(page.getByTestId("practice-question")).toBeVisible();
-  await expect(page.locator(".echelon-course-identity small")).toHaveText(`${state.name} / Shared WPI`);
-  await expect(page.locator(".practice-header")).toContainText("Shared WPI preparation");
+  await expect(page.locator(".echelon-course-identity small")).toHaveText(expectedIdentity);
+  await expect(page.locator(".practice-header")).toContainText(expectedHeader);
   await expect(page.locator(".practice-header")).not.toContainText("EOCP");
   await expect(page.locator(".echelon-course-identity")).not.toContainText("Western Canada");
+  await expect(page.locator(".echelon-course-identity small")).not.toHaveText("Ontario");
   const tabs=page.locator(".echelon-course-tabs-desktop a");
   for(const href of await tabs.evaluateAll(links=>links.map(link=>link.getAttribute("href")!))) {
     const url=new URL(href,"https://echelon.test");

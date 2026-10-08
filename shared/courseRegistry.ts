@@ -948,6 +948,24 @@ export function getAllActiveCourseKeysForFamily(family: ExamFamily): string[] {
 }
 
 /**
+ * True when a course may be presented to a learner studying in the United
+ * States. Two different families qualify, and they are NOT interchangeable:
+ *
+ * - "us-wpi": a dedicated US Class I course with its own US question bank,
+ *   blueprint and formula sheet.
+ * - "western": the shared WPI-aligned Canadian course that US learners can
+ *   also buy, presented honestly as shared preparation.
+ *
+ * Callers that need to distinguish the two must test `examFamily` directly.
+ * This helper exists only so US-context presentation (course bar labels,
+ * study-context links) covers both instead of silently falling back to an
+ * Ontario label.
+ */
+export function isUSPresentableFamily(family: ExamFamily | undefined): boolean {
+  return family === "us-wpi" || family === "western";
+}
+
+/**
  * Return the full registry (read-only view).
  * Prefer the typed helpers above for most use cases.
  */

@@ -111,7 +111,12 @@ export default function SiteNav({
   const accountHref = isSignedIn ? "/account" : signInHref(destination);
   const courseProvince = new URLSearchParams(search).get("province");
   const usContext = readUSStudyContext(search);
-  const isUSCourse = course?.examFamily === "western" && usContext.isUS;
+  // A dedicated US course is always a US context. A shared WPI course only
+  // counts as US when the learner actually carries US study context, so a
+  // Canadian learner never sees US framing.
+  const isDedicatedUSCourse = course?.examFamily === "us-wpi";
+  const isSharedUSCourse = course?.examFamily === "western" && usContext.isUS;
+  const isUSCourse = isDedicatedUSCourse || isSharedUSCourse;
   const dashboardHref = course ? courseProvinceHref(`/dashboard?course=${encodeURIComponent(course.courseKey)}`, course.courseKey, courseProvince, search) : "/dashboard";
   const pricingHref = course ? buildPricingHref(course.courseKey, courseProvince, search) : "/pricing";
   const workspaceTabs = course ? getCourseWorkspaceTabs(course).map(tab => ({ ...tab, href: courseProvinceHref(tab.href, course.courseKey, courseProvince, search) })) : [];
@@ -173,7 +178,11 @@ export default function SiteNav({
           <div className="echelon-course-identity">
             {course.courseKey === "electrician-309a" ? <Zap size={16} aria-hidden="true" /> : <FlaskConical size={16} aria-hidden="true" />}
             <span>{course.shortName}</span>
-            <small>{isUSCourse ? `${usContext.state?.name ?? "US"} / Shared WPI` : course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
+            <small>{isDedicatedUSCourse
+              ? `${usContext.state?.name ?? "United States"} / US Class I`
+              : isSharedUSCourse
+                ? `${usContext.state?.name ?? "US"} / Shared WPI`
+                : course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
           </div>
           <nav className="echelon-course-tabs echelon-course-tabs-desktop" aria-label={`${course.displayName} study tools`}>
             {workspaceTabs.map((tab) => {

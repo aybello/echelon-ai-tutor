@@ -242,9 +242,14 @@ export default function QuizShell({
   const search = useSearch();
   const usContext = readUSStudyContext(search);
   const canonicalCourse = resolveCourseKey(examType ?? currentPath.slice(1));
-  const displaySubtitle = canonicalCourse?.examFamily === "western" && usContext.isUS
-    ? `${usContext.state?.name ?? "US"} · Shared WPI preparation · Confirm your local exam requirements`
-    : courseSubtitle;
+  // A dedicated US course carries its own US question bank, so it is named as
+  // such. A shared WPI course is only labelled US preparation when the learner
+  // actually carries US study context, and stays honest about being shared.
+  const displaySubtitle = canonicalCourse?.examFamily === "us-wpi"
+    ? `${usContext.state?.name ?? "United States"} · US Class I preparation · Confirm your local exam requirements`
+    : canonicalCourse?.examFamily === "western" && usContext.isUS
+      ? `${usContext.state?.name ?? "US"} · Shared WPI preparation · Confirm your local exam requirements`
+      : courseSubtitle;
   const clearedUnavailableModuleRef = useRef<string | null>(null);
 
   useEffect(() => {
