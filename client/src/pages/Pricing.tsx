@@ -1580,7 +1580,10 @@ export default function Pricing() {
                   value={selectedIndividualKey}
                   onChange={e => {
                     navigate(buildPricingHref(e.target.value, selectedProvince, searchString));
-                    if (e.target.value) funnelAnalytics.mutate({ event: "product_selected", productKey: e.target.value, visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
+                    // Changing the picker is browsing, not buying. Only the buy
+                    // button reports purchase intent, so the funnel measures
+                    // people who actually tried to pay.
+                    if (e.target.value) funnelAnalytics.mutate({ event: "course_browsed", courseKey: e.target.value, surface: "course_picker", visitorId: getAnonymousAnalyticsId(), ...pricingAttribution });
                   }}
                   style={{ width: "100%", padding: "13px 14px", border: "1.5px solid #BFDBFE", borderRadius: 10, fontSize: 15, color: "#0F172A", background: "#fff", fontFamily: "inherit" }}
                 >

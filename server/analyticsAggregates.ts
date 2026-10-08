@@ -19,6 +19,7 @@ export const PRODUCT_KPI_JOURNEY_EVENT_NAMES = [
   "marketing_page_viewed",
   "pricing_viewed",
   "buyer_path_selected",
+  "course_browsed",
   "product_selected",
   "checkout_started",
   "checkout_completed",

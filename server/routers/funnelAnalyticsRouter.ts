@@ -45,6 +45,17 @@ export const funnelAnalyticsRouter = router({
       z.object({ event: z.literal("pricing_viewed"), visitorId }).merge(marketingContext.partial()),
       z.object({ event: z.literal("buyer_path_selected"), buyerType: z.enum(["individual", "team"]), visitorId }).merge(marketingContext.partial()),
       z.object({ event: z.literal("product_selected"), productKey: knownProductKey, visitorId }).merge(marketingContext.partial()),
+      // Browsing a course is not buying one. Course pickers, course cards and
+      // "Start Studying" links report here so the purchase funnel is not
+      // inflated by people exploring free content.
+      z.object({
+        event: z.literal("course_browsed"),
+        // Browsing surfaces reference quiz routes as well as catalogue keys,
+        // so this is bounded rather than restricted to purchasable products.
+        courseKey: z.string().min(1).max(64),
+        surface: z.enum(["course_picker", "course_card", "study_link"]),
+        visitorId,
+      }).merge(marketingContext.partial()),
       z.object({
         event: z.literal("quiz_started"),
         examType: z.string().min(1).max(64),
@@ -92,6 +103,12 @@ export const funnelAnalyticsRouter = router({
         await trackEvent(input.event, { ...commercialIdentity, extra: { buyerType: input.buyerType, ...context } });
       } else if (input.event === "product_selected") {
         await trackEvent(input.event, { ...commercialIdentity, productKey: input.productKey, extra: context });
+      } else if (input.event === "course_browsed") {
+        await trackEvent(input.event, {
+          ...commercialIdentity,
+          productKey: input.courseKey,
+          extra: { surface: input.surface, ...context },
+        });
       } else if (input.event === "quiz_started") {
         await trackEvent(input.event, {
           ...identity,

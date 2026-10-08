@@ -19,7 +19,23 @@ export type AnalyticsEventName =
   | "pricing_viewed"
   | "marketing_page_viewed"
   | "buyer_path_selected"
+  /**
+   * Genuine buy-button clicks only. A visitor firing this is committing to
+   * pay: checkout creation is attempted on the same click, with no price
+   * reveal or confirmation step in between.
+   *
+   * Do not emit this for browsing. Course pickers, course cards and "Start
+   * Studying" links previously shared this name, which made the purchase
+   * funnel look like it lost 88 buyers down to 11 when most of those people
+   * were exploring free content and never intended to buy on that click.
+   */
   | "product_selected"
+  /**
+   * Browsing a course: changing the course picker, clicking a course card, or
+   * following a link into free practice. Navigation interest, not purchase
+   * intent. Kept separate so the purchase funnel measures buying.
+   */
+  | "course_browsed"
   | "checkout_started"
   | "checkout_completed"
   | "diagnostic_completed"

@@ -1130,9 +1130,12 @@ function CourseCard({ course, province }: { course: CourseType; province: Provin
   const recordCourseSelection = () => {
     const productKey = (course as any).productKey as string | undefined;
     if (!productKey) return;
+    // Clicking a course card on the home page is browsing. Purchase intent is
+    // reported by the buy button on the pricing page.
     trackCourseSelection.mutate({
-      event: "product_selected",
-      productKey,
+      event: "course_browsed",
+      courseKey: productKey,
+      surface: "course_card",
       visitorId: getAnonymousAnalyticsId(),
       ...getMarketingAttribution("/"),
       province: isWpiCourse ? "western" : "ontario",

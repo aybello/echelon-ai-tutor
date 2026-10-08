@@ -322,6 +322,10 @@ export const adminRouter = router({
         marketingPageViews: eventCount("marketing_page_viewed"),
         pricingViews: eventCount("pricing_viewed"),
         buyerPathSelections: eventCount("buyer_path_selected"),
+        // Browsing interest: course pickers, course cards and study links.
+        // Reported separately so it never inflates buying intent.
+        courseBrowses: eventCount("course_browsed"),
+        // Buy-button clicks only.
         productSelections: eventCount("product_selected"),
         checkoutStarts: eventCount("checkout_started"),
         checkoutCompletions: eventCount("checkout_completed"),

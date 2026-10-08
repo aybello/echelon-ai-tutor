@@ -438,9 +438,12 @@ export default function WpiLanding() {
                   <div style={{ padding: "0 16px 16px", marginTop: "auto" }}>
                     <Link
                       href={cls.quizHref}
+                      // "Start Studying" opens free practice. It is never a
+                      // purchase, so it must not appear in the buying funnel.
                       onClick={() => trackCourseSelection.mutate({
-                        event: "product_selected",
-                        productKey: cls.quizHref.slice(1),
+                        event: "course_browsed",
+                        courseKey: cls.quizHref.slice(1),
+                        surface: "study_link",
                         visitorId: getAnonymousAnalyticsId(),
                         ...getMarketingAttribution("/wpi"),
                         province: "western",
