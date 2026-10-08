@@ -58,15 +58,48 @@ describe("rendered funnel navigation", () => {
   });
 
   it.each(ALL_PRODUCTS)("renders the canonical preview and CAD price for $key", product => {
-    const province = product.key.startsWith("wpi-") ? "BC" : "ON";
-    state.search = `product=${product.key}&province=${province}`;
+    // Each product is exercised in its own jurisdiction context. US courses are
+    // reached through country=US, never through a province code, and they are
+    // still priced in CAD like every other course.
+    const isUSCourse = product.key.startsWith("us-");
+    const province = product.key.startsWith("wpi-") || isUSCourse ? "BC" : "ON";
+    state.search = isUSCourse
+      ? `product=${product.key}&province=${province}&country=US`
+      : `product=${product.key}&province=${province}`;
     (window.location as any).search = `?${state.search}`;
     const html = selectedPricingArea();
     expect(html).toContain(`<option value="${product.key}" selected="">`);
-    expect(html).toContain(`href="${PRODUCT_STUDY_PATHS[product.key].quizPath}?province=${province}"`);
+    // A dedicated US course links with its US context, not a province code.
+    expect(html).toContain(
+      isUSCourse
+        ? `href="${PRODUCT_STUDY_PATHS[product.key].quizPath}?country=US"`
+        : `href="${PRODUCT_STUDY_PATHS[product.key].quizPath}?province=${province}"`,
+    );
     expect(html).toContain(`CA$${product.priceCAD / 100}`);
     expect(html.includes("One-time payment · 12 months access")).toBe(true);
     expect(render(Pricing).includes("12 months of access from successful payment")).toBe(true);
+  });
+
+  it("offers the dedicated US courses only under an explicit US context", () => {
+    // A Canadian WPI selection must never surface a dedicated US course.
+    state.search = "province=BC";
+    (window.location as any).search = "?province=BC";
+    const canadianWpi = selectedPricingArea();
+    expect(canadianWpi).not.toContain('value="us-class1-water"');
+    expect(canadianWpi).toContain('value="wpi-class1-water"');
+    // An Ontario selection must never surface a dedicated US course either.
+    state.search = "province=ON";
+    (window.location as any).search = "?province=ON";
+    const ontario = selectedPricingArea();
+    expect(ontario).not.toContain('value="us-class1-water"');
+    // The US context adds the dedicated courses and keeps the shared WPI ones
+    // that US learners could already buy.
+    state.search = "province=BC&country=US&state=WA";
+    (window.location as any).search = "?province=BC&country=US&state=WA";
+    const us = selectedPricingArea();
+    expect(us).toContain('value="us-class1-water"');
+    expect(us).toContain('value="us-class1-water-dist"');
+    expect(us).toContain('value="wpi-class1-water"');
   });
 
   it("keeps a requested course unselected while loading or unavailable, never choosing an unrelated offer", () => {

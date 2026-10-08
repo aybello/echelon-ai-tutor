@@ -128,6 +128,23 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     priceCAD: 14900,
     examTypes: ["wpi-class1-water"],
   },
+  // ── US Class I (dedicated US-authored banks) ─────────────────────────────
+  {
+    key: "us-class1-water",
+    shortName: "US Class I Water",
+    name: "US Class I Water Treatment Practice Pass",
+    description: "US Class I Water Treatment — 200 original questions across 5 modules, written against the WPI Class 1 Water Treatment Need-to-Know Criteria with cited public sources and worked solutions. Echelon is an independent preparation provider and is not endorsed by WPI or any state agency. Confirm your state's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 14900,
+    examTypes: ["us-class1-water"],
+  },
+  {
+    key: "us-class1-water-dist",
+    shortName: "US Class I Distribution",
+    name: "US Class I Water Distribution Practice Pass",
+    description: "US Class I Water Distribution — 198 original questions across 4 modules, written against the WPI Class 1 Water Distribution Need-to-Know Criteria with cited public sources and worked solutions. Echelon is an independent preparation provider and is not endorsed by WPI or any state agency. Confirm your state's current requirements. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 14900,
+    examTypes: ["us-class1-water-dist"],
+  },
   {
     key: "wpi-class2-water",
     shortName: "WPI Class II Water",
@@ -415,6 +432,8 @@ export const PRODUCT_STUDY_PATHS: Record<string, ProductStudyPaths> = {
   "class4-ww":              { quizPath: "/class4-ww",                 mockPath: "/class4-ww-mock" },
   "wqa":                    { quizPath: "/wqa",                       mockPath: "/wqa-mock" },
   "wpi-class1-water":       { quizPath: "/wpi-class1-water",          mockPath: "/wpi-class1-water-mock" },
+  "us-class1-water":        { quizPath: "/us-class1-water",           mockPath: "/us-class1-water-mock" },
+  "us-class1-water-dist":   { quizPath: "/us-class1-water-dist",      mockPath: "/us-class1-water-dist-mock" },
   "wpi-class2-water":       { quizPath: "/wpi-class2-water",          mockPath: "/wpi-class2-water-mock" },
   "wpi-class3-water":       { quizPath: "/wpi-class3-water",          mockPath: "/wpi-class3-water-mock" },
   "wpi-class4-water":       { quizPath: "/wpi-class4-water",          mockPath: "/wpi-class4-water-mock" },

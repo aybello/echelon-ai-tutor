@@ -43,6 +43,17 @@ export const LEGACY_INDIVIDUAL_USD_PRICES: Readonly<Record<string, number>> = {
   "wpi-class4-water-dist": 21_900,
 };
 
+/**
+ * Products added after the CAD-only cutover. They were never offered in USD, so
+ * no historical USD Checkout Session can exist for them and they must stay out
+ * of the allowlist above. Naming them keeps the coverage contract exact instead
+ * of loosening it.
+ */
+export const POST_CUTOVER_CAD_ONLY_PRODUCTS: readonly string[] = [
+  "us-class1-water",
+  "us-class1-water-dist",
+];
+
 export function legacyUsdSubtotalForProduct(productKey: string): number | undefined {
   return LEGACY_INDIVIDUAL_USD_PRICES[productKey];
 }

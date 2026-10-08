@@ -13,7 +13,12 @@ export function funnelProvince(value?: string | null): FunnelProvince | undefine
 
 function productProvince(productKey: string, province?: string | null): FunnelProvince {
   const requested = funnelProvince(province);
-  return productKey.startsWith("wpi-") ? (requested && requested !== "ON" ? requested : "BC") : "ON";
+  // Dedicated US courses are not provincial. They keep the shared non-Ontario
+  // default purely so existing links stay well formed; the US context on the
+  // link is what actually identifies them.
+  return productKey.startsWith("wpi-") || productKey.startsWith("us-")
+    ? (requested && requested !== "ON" ? requested : "BC")
+    : "ON";
 }
 
 /** Only canonical individual products are accepted. Conflicting explicit jurisdictions do not select another product. */
@@ -22,7 +27,12 @@ export function readPricingSelection(search: string) {
   const product = getActiveIndividualProductByKey(params.get("product") ?? "");
   const explicitProvince = funnelProvince(params.get("province"));
   const province = explicitProvince ?? (product ? productProvince(product.key) : params.get("tab") === "western" || readUSStudyContext(search).isUS ? "BC" : "ON");
-  const compatible = product && (product.key.startsWith("wpi-") ? province !== "ON" : province === "ON");
+  // A dedicated US course is only compatible with an explicit US context, so a
+  // Canadian selection can never resolve to one. Canadian courses keep their
+  // existing province rules unchanged.
+  const compatible = product && (product.key.startsWith("us-")
+    ? readUSStudyContext(search).isUS
+    : product.key.startsWith("wpi-") ? province !== "ON" : province === "ON");
   return { province, requestedProductKey: compatible ? product.key : "" };
 }
 

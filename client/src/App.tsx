@@ -134,7 +134,16 @@ const WpiClass1WaterDistMockExam = lazy(() => import("./pages/WpiClass1WaterDist
 const WpiClass1WaterCollQuiz = lazy(() => import("./pages/WpiClass1WaterCollQuiz"));
 const WpiClass1WaterCollMockExam = lazy(() => import("./pages/WpiClass1WaterCollMockExam"));
 const FormulasWpiClass1 = lazy(() => import("./pages/FormulasWpiClass1"));
+const FormulasUsClass1 = lazy(() => import("./pages/FormulasUsClass1"));
 const FormulasWpiClass1Ww = lazy(() => import("./pages/FormulasWpiClass1Ww"));
+
+// US Class I (dedicated US-authored banks, separate from the Canadian WPI courses)
+const UsClass1WaterQuiz = lazy(() => import("./pages/UsClass1WaterQuiz"));
+const UsClass1WaterMockExam = lazy(() => import("./pages/UsClass1WaterMockExam"));
+const UsClass1WaterFlashcards = lazy(() => import("./pages/UsClass1WaterFlashcards"));
+const UsClass1WaterDistQuiz = lazy(() => import("./pages/UsClass1WaterDistQuiz"));
+const UsClass1WaterDistMockExam = lazy(() => import("./pages/UsClass1WaterDistMockExam"));
+const UsClass1WaterDistFlashcards = lazy(() => import("./pages/UsClass1WaterDistFlashcards"));
 
 // WPI Class 2
 const WpiClass2WaterQuiz = lazy(() => import("./pages/WpiClass2WaterQuiz"));
@@ -294,7 +303,14 @@ function Router() {
         <Route path={"/formulas-ww4"} component={FormulasWW4} />
         <Route path={"/wpi-class1-water"} component={WpiClass1WaterQuiz} />
         <Route path={"/wpi-class1-water-mock"} component={WpiClass1WaterMockExam} />
+        <Route path={"/us-class1-water"} component={UsClass1WaterQuiz} />
+        <Route path={"/us-class1-water-mock"} component={UsClass1WaterMockExam} />
+        <Route path={"/us-class1-water-flashcards"} component={UsClass1WaterFlashcards} />
+        <Route path={"/us-class1-water-dist"} component={UsClass1WaterDistQuiz} />
+        <Route path={"/us-class1-water-dist-mock"} component={UsClass1WaterDistMockExam} />
+        <Route path={"/us-class1-water-dist-flashcards"} component={UsClass1WaterDistFlashcards} />
         <Route path={"/formulas-wpi-class1"} component={FormulasWpiClass1} />
+        <Route path={"/formulas-us-class1"} component={FormulasUsClass1} />
         <Route path={"/wpi-class2-water"} component={WpiClass2WaterQuiz} />
         <Route path={"/wpi-class2-water-mock"} component={WpiClass2WaterMockExam} />
         <Route path={"/wpi"} component={WpiLanding} />

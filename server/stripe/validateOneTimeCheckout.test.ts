@@ -5,7 +5,7 @@
 import { describe, it, expect } from "vitest";
 import { validateOneTimeCheckout } from "./validateOneTimeCheckout";
 import { ALL_PRODUCTS } from "../../shared/products";
-import { LEGACY_INDIVIDUAL_USD_PRICES } from "./legacyUsdCheckout";
+import { LEGACY_INDIVIDUAL_USD_PRICES, POST_CUTOVER_CAD_ONLY_PRODUCTS } from "./legacyUsdCheckout";
 import type Stripe from "stripe";
 
 // Use the first product from the catalogue for tests
@@ -41,9 +41,19 @@ function makeSession(overrides: Partial<Stripe.Checkout.Session> = {}): Stripe.C
 
 describe("validateOneTimeCheckout", () => {
   it("keeps historical USD verification coverage private and complete", () => {
+    const catalogueKeys = ALL_PRODUCTS.map((product) => product.key);
+    // Products sold before the CAD-only cutover must all remain restorable.
     expect(Object.keys(LEGACY_INDIVIDUAL_USD_PRICES).sort()).toEqual(
-      ALL_PRODUCTS.map((product) => product.key).sort(),
+      catalogueKeys
+        .filter((key) => !POST_CUTOVER_CAD_ONLY_PRODUCTS.includes(key))
+        .sort(),
     );
+    // Every post-cutover product must exist in the catalogue and must never
+    // carry a historical USD subtotal.
+    for (const key of POST_CUTOVER_CAD_ONLY_PRODUCTS) {
+      expect(catalogueKeys).toContain(key);
+      expect(LEGACY_INDIVIDUAL_USD_PRICES[key]).toBeUndefined();
+    }
     expect(ALL_PRODUCTS.every((product) => !("priceUSD" in product))).toBe(true);
   });
 

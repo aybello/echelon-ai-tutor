@@ -7,12 +7,27 @@ const live = new Set(ALL_PRODUCTS.map(product => product.key));
 
 describe("canonical individual funnel context", () => {
   it.each(ALL_PRODUCTS)("keeps $key and its CAD price without a duplicate preview mapping", product => {
-    const href = buildPricingHref(product.key, product.key.startsWith("wpi-") ? "AB" : "ON");
+    // A dedicated US course is identified by its US context, not a province.
+    const isUSCourse = product.key.startsWith("us-");
+    const href = isUSCourse
+      ? buildPricingHref(product.key, "AB", "country=US")
+      : buildPricingHref(product.key, product.key.startsWith("wpi-") ? "AB" : "ON");
     const parsed = availablePricingSelection(href.split("?")[1], live);
     expect(parsed.selectedProductKey).toBe(product.key);
     expect(ALL_PRODUCTS.find(item => item.key === parsed.selectedProductKey)?.priceCAD).toBe(product.priceCAD);
     const course = getAllCourses().find(course => course.courseKey === product.key);
     expect(PRODUCT_STUDY_PATHS[product.key]?.quizPath).toBe(course?.quizPath);
+  });
+
+  it("never resolves a dedicated US course from a Canadian selection", () => {
+    // Without explicit US context a US product key must not be selectable,
+    // in either Canadian jurisdiction.
+    for (const province of ["ON", "BC", "AB", "SK", "MB"]) {
+      expect(readPricingSelection(`product=us-class1-water&province=${province}`).requestedProductKey).toBe("");
+      expect(readPricingSelection(`product=us-class1-water-dist&province=${province}`).requestedProductKey).toBe("");
+    }
+    // With explicit US context it resolves normally.
+    expect(readPricingSelection("product=us-class1-water&province=BC&country=US").requestedProductKey).toBe("us-class1-water");
   });
 
   it("preserves Ontario Class 3 and BC WPI Class III on reload and Back", () => {

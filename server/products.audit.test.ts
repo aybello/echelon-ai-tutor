@@ -74,6 +74,9 @@ const EXPECTED_PRICES: Record<string, number> = {
   "class2-wastewater-coll": 14900,
   "class3-wastewater-coll": 24900,
   "class4-wastewater-coll": 29900,
+  // United States — Class I (WPI need-to-know aligned)
+  "us-class1-water":        14900,
+  "us-class1-water-dist":   14900,
 };
 
 describe("shared/products.ts — price-change audit", () => {

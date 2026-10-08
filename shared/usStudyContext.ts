@@ -8,7 +8,11 @@ export function readUSStudyContext(search: string) {
 }
 /** Context affects labels and links, never purchases, banks, currency or entitlements. */
 export function withUSStudyContext(path: string, productKey: string | null | undefined, search: string): string {
-  if (resolveCourseKey(productKey ?? "")?.examFamily !== "western") return path;
+  // Shared WPI courses carry US context when a US learner is studying with
+  // them. Dedicated US courses are US courses by definition, so they carry it
+  // as well. Ontario courses never do.
+  const family = resolveCourseKey(productKey ?? "")?.examFamily;
+  if (family !== "western" && family !== "us-wpi") return path;
   const context = readUSStudyContext(search);
   if (!context.isUS) return path;
   const url = new URL(path, "https://echelon.invalid");

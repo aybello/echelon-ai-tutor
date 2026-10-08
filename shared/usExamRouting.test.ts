@@ -30,8 +30,20 @@ describe("source-backed US exam routing", () => {
     }
   });
   it("routes by verified WPI class, not the local grade number", () => {
+    // Class 1 water treatment now has a dedicated active US course, so a
+    // verified Class 1 finding routes there instead of the shared fallback.
     const matches = matchedUSCourses(state([program()]));
-    expect(matches.map(item => item.courseKey)).toEqual(["wpi-class1-water"]);
+    expect(matches.map(item => item.courseKey)).toEqual(["us-class1-water"]);
+  });
+  it("keeps shared WPI identities for classes with no dedicated US course", () => {
+    // Only Class 1 is dedicated. Class 2 and above must still resolve to the
+    // existing shared WPI courses, so no state loses coverage.
+    const matches = matchedUSCourses(state([program({ verifiedSharedLevels: [1, 2, 3] })]));
+    expect(matches.map(item => item.courseKey)).toEqual([
+      "us-class1-water",
+      "wpi-class2-water",
+      "wpi-class3-water",
+    ]);
   });
   it("does not extend a water treatment finding to the other three streams", () => {
     const matches = matchedUSCourses(state([program({verifiedSharedLevels:[1,2]})]));

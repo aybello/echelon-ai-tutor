@@ -645,6 +645,36 @@ const INDIVIDUAL: Product[] = [
     available: true,
     features: ["503 Collection practice questions", "100-question timed mock", "AI Tutor", "Score history", "Flashcards", "Edition-aware study guidance"],
   },
+  {
+    key: "us-class1-water",
+    name: "US Class I Water Treatment Practice Pass",
+    shortName: "US Class I Water",
+    description: "200 original practice questions across five reviewed treatment areas, written in US customary units against the WPI Class 1 Water Treatment Need-to-Know Criteria with cited public sources. Confirm your current requirements with your state certifying authority.",
+    priceCAD: sharedPrice("us-class1-water"),
+    examTypes: ["us-class1-water"],
+    badge: "United States",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    available: true,
+    features: ["200 treatment practice questions", "100-question timed mock", "US customary formula sheet", "AI Tutor", "Score history", "Flashcards"],
+  },
+  {
+    key: "us-class1-water-dist",
+    name: "US Class I Water Distribution Practice Pass",
+    shortName: "US Class I Distribution",
+    description: "198 original practice questions across four reviewed distribution areas, written in US customary units against the WPI Class 1 Water Distribution Need-to-Know Criteria with cited public sources. Confirm your current requirements with your state certifying authority.",
+    priceCAD: sharedPrice("us-class1-water-dist"),
+    examTypes: ["us-class1-water-dist"],
+    badge: "United States",
+    badgeColor: "#1D4ED8",
+    color: "#1D4ED8",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    available: true,
+    features: ["198 distribution practice questions", "100-question timed mock", "US customary formula sheet", "AI Tutor", "Score history", "Flashcards"],
+  },
 ];
 
 
@@ -1200,8 +1230,19 @@ export default function Pricing() {
     [commercialAvailability.data?.products],
   );
   const liveProductKeys = useMemo(() => new Set(liveQuestionCounts.keys()), [liveQuestionCounts]);
+  // Three contexts, not two. A dedicated US course is only ever offered under
+  // an explicit US context, and never appears in an Ontario or Canadian WPI
+  // list. The US context keeps the shared WPI courses it already offered and
+  // adds the dedicated US courses on top, so no US learner loses an option.
+  // This is catalogue visibility only. Currency stays CAD and entitlements are
+  // unchanged.
+  const offeredInContext = (key: string) => {
+    if (usStudyContext.isUS) return key.startsWith("us-") || key.startsWith("wpi-");
+    if (isWpi) return key.startsWith("wpi-");
+    return !key.startsWith("wpi-") && !key.startsWith("us-");
+  };
   const relevantIndividualProducts = INDIVIDUAL.filter(product =>
-    liveProductKeys.has(product.key) && (isWpi ? product.key.startsWith("wpi-") : !product.key.startsWith("wpi-"))
+    liveProductKeys.has(product.key) && offeredInContext(product.key)
   );
   const liveQuestionTotal = relevantIndividualProducts.reduce(
     (total, product) => total + (liveQuestionCounts.get(product.key) ?? 0),

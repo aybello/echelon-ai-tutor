@@ -56,14 +56,21 @@ export function isSharedProgram(program: USProgramEvidence): boolean {
   return ["wpi-standardized", "mixed"].includes(program.examSystem) && program.sources.length > 0 && program.verifiedSharedLevels.some(level => Number.isInteger(level) && level >= 1 && level <= 4);
 }
 export function sharedUSCourses(stream?: string): CourseEntry[] {
-  return getCoursesForFamily("western").filter(course => !stream || course.track === stream);
+  // Dedicated US courses take precedence for the exact track and class level
+  // they cover. Every other shared western course, including higher classes of
+  // the same track, stays available, and Canadian routes are untouched.
+  const dedicated = getCoursesForFamily("us-wpi").filter(course => course.isActive);
+  const covered = new Set(dedicated.map(course => `${course.track}:${course.classLevel}`));
+  const fallback = getCoursesForFamily("western")
+    .filter(course => !covered.has(`${course.track}:${course.classLevel}`));
+  return [...dedicated, ...fallback].filter(course => !stream || course.track === stream);
 }
 export function matchedUSCourses(state: USStateConfig, stream?: string): CourseEntry[] {
   return sharedUSCourses(stream).filter(course => state.programs.some(program => program.stream === course.track && isSharedProgram(program) && program.verifiedSharedLevels.includes(course.classLevel)));
 }
 /** Display context only: existing WPI product, bank and paid access identity remain unchanged. */
 export function usCourseHref(course: CourseEntry, tool: "practice" | "mock" | "flashcards", state?: USStateCode): string | null {
-  if (course.examFamily !== "western" || !course.isActive) return null;
+  if (!["western", "us-wpi"].includes(course.examFamily) || !course.isActive) return null;
   if (state && !matchedUSCourses(US_STATE_CONFIGS[state]).some(item => item.courseKey === course.courseKey)) return null;
   const path = tool === "practice" ? course.quizPath : tool === "mock" ? course.mockExamPath : course.flashcardPath;
   if (!path) return null;

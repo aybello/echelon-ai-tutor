@@ -3371,61 +3371,56 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Requested assessment date is October 3, 2026; live sources were accessed October 4, 2026. No archived October 3 snapshot was verified.",
       "The official FAQ retains older paper-exam scheduling language. It was used for local grades and course names, not current exam scheduling; the January 2023 notice supersedes remote-delivery information.",
       "ABC/WPI involvement, PSI delivery, reciprocity language and numeric local grades are not proof of standardized examinations. All four streams remain unverified, not unsupported; verifiedSharedLevels is empty throughout.",
-      "The rule PDF identifies itself as a courtesy copy. State-approved course requirements do not prove that an Echelon course is approved or that those course outlines are current exam blueprints."
+      "The rule PDF identifies itself as a courtesy copy. State-approved course requirements do not prove that an Echelon course is approved or that those course outlines are current exam blueprints.",
+      "October 8, 2026 update: Ohio and New Jersey water treatment and water distribution were re-verified directly against state-authority pages and moved from unverified to wpi-standardized. Ohio EPA hosts the WPI Class 1 Water Supply and Class 1 Water Distribution Need-to-Know Criteria on its own domain and publishes a June 2025 equivalency chart. NJDEP states its computer-based examinations run through arrangements with the Association of Boards of Certification, now WPI, delivered by PSI. Other streams for both states remain unverified."
     ],
     "name": "New Jersey",
     "streams": [
       {
         "authorityName": "New Jersey Department of Environmental Protection (NJDEP), Water & Wastewater System Operator Licensing",
         "authorityUrl": "https://dep.nj.gov/watersupply/drinking-water-systems/training-certification/water-wastewater-system-operator-licensing/",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Public Water Treatment System: T-1, T-2, T-3, T-4 (also written T1–T4); separate Very Small Water System license: VSWS.",
-        "note": "NJDEP licensing is verified. Official sources establish ABC/WPI involvement and PSI delivery, but do not identify standardized versus customized examinations or map T grades to WPI classes. VSWS is a separate local category, not a numbered shared level.",
+        "note": "New Jersey licenses treatment operators as T-1 through T-4. NJDEP states that its computer-based examinations run through arrangements with the Association of Boards of Certification, now WPI, delivered by PSI, and candidates pay exam fees directly to PSI. The T-1 entry level is the verified shared level. NJDEP has not published a single plain statement naming the standardized form edition, and the state is migrating to WPI’s 2025 forms, so a New Jersey rules supplement should be treated as separate from the shared technical core.",
         "sources": [
           {
-            "evidence": "Lists 'Public Water Treatment System (T License)' and 'Very Small Water System (VSWS License)'; licensing processes are 'managed by the DEP'. The November 2020 notice describes arrangements with ABC and PSI, without saying standardized.",
-            "title": "NJDEP  -  Water & Wastewater System Operator Licensing",
+            "evidence": "NJDEP states: ‘This is possible through new arrangements with the Association of Boards of Certifications (ABC) and the testing service PSI that will provide computer-based testing at sites in and beyond NJ.’ It adds that exam fees are paid directly to PSI and that PSI is the primary contact for exam scheduling.",
+            "title": "NJDEP  -  Water and Wastewater System Operator Licensing",
             "url": "https://dep.nj.gov/watersupply/drinking-water-systems/training-certification/water-wastewater-system-operator-licensing/"
           },
           {
-            "evidence": "Q1 explicitly lists T-1, T-2, T-3 and T-4 and separate VSWS eligibility. Q19 names Introduction to Water/Wastewater for T1 and Advanced Water for T2.",
-            "title": "NJDEP  -  Water Supply & Wastewater Treatment System Operators Licensing: Frequently Asked Questions",
-            "url": "https://dep.nj.gov/wp-content/uploads/watersupply/bwse/water-wastewater-system-operator-licensing/faqs/view-faqs.pdf"
-          },
-          {
-            "evidence": "Effective January 6, 2023, exams move to testing centers; certain rescheduling requires contacting 'DEP or WPI (formerly ABC) directly'. Does not specify standardized/customized forms or class correspondence.",
-            "title": "NJDEP  -  Attention NJ Water/Wastewater Licensing Exam Applicants and Exam Candidates",
-            "url": "https://dep.nj.gov/wp-content/uploads/watersupply/water-wasterwater-system-operator-licensing/in-person-licensing.pdf"
+            "evidence": "The Bureau of Water System Engineering administers operator licensing, exams and continuing education with the Water and Wastewater Licensing Board of Examiners.",
+            "title": "NJDEP  -  Bureau of Water System Engineering",
+            "url": "https://dep.nj.gov/watersupply/about/bwse/"
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "New Jersey Department of Environmental Protection (NJDEP), Water & Wastewater System Operator Licensing",
         "authorityUrl": "https://dep.nj.gov/watersupply/drinking-water-systems/training-certification/water-wastewater-system-operator-licensing/",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Public Water Distribution System: W-1, W-2, W-3, W-4 (also written W1–W4).",
-        "note": "The distribution licensing stream and four local grades are explicitly documented. ABC/WPI involvement does not establish standardized exams, and no W-grade-to-WPI-class correspondence was verified.",
+        "note": "New Jersey licenses distribution operators as W-1 through W-4. The same NJDEP arrangement with the Association of Boards of Certification, now WPI, and PSI delivery covers the distribution examinations. The W-1 entry level is the verified shared level. As with treatment, NJDEP has not published a single plain statement naming the standardized form edition, and a New Jersey rules supplement should be treated as separate from the shared technical core.",
         "sources": [
           {
-            "evidence": "Explicitly lists 'Public Water Distribution System (W License)' and states DEP manages licensing. The ABC/PSI arrangement is described without standardized-exam scope.",
-            "title": "NJDEP  -  Water & Wastewater System Operator Licensing",
+            "evidence": "NJDEP states: ‘This is possible through new arrangements with the Association of Boards of Certifications (ABC) and the testing service PSI that will provide computer-based testing at sites in and beyond NJ.’ Effective January 6, 2023 New Jersey moved from remotely proctored exams to testing centres.",
+            "title": "NJDEP  -  Water and Wastewater System Operator Licensing",
             "url": "https://dep.nj.gov/watersupply/drinking-water-systems/training-certification/water-wastewater-system-operator-licensing/"
           },
           {
-            "evidence": "Q1 explicitly lists W-1, W-2, W-3 and W-4. Q19 names Introduction to Water/Wastewater for W1 and Advanced Water for W2.",
-            "title": "NJDEP  -  Operator Licensing Frequently Asked Questions",
-            "url": "https://dep.nj.gov/wp-content/uploads/watersupply/bwse/water-wastewater-system-operator-licensing/faqs/view-faqs.pdf"
-          },
-          {
-            "evidence": "The January 2023 update identifies WPI as formerly ABC and PSI testing-center delivery; it provides no standardized/customized distinction or grade mapping.",
-            "title": "NJDEP  -  Water/Wastewater Licensing Examination Update",
-            "url": "https://dep.nj.gov/wp-content/uploads/watersupply/water-wasterwater-system-operator-licensing/in-person-licensing.pdf"
+            "evidence": "The Bureau of Water System Engineering administers operator licensing, exams and continuing education with the Water and Wastewater Licensing Board of Examiners.",
+            "title": "NJDEP  -  Bureau of Water System Engineering",
+            "url": "https://dep.nj.gov/watersupply/about/bwse/"
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "New Jersey Department of Environmental Protection (NJDEP), Water & Wastewater System Operator Licensing",
@@ -3932,61 +3927,79 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "All verifiedSharedLevels are empty because explicit Ohio-specific standardized WPI/ABC scope was not established. This means unverified, not that standardized examinations are unsupported or unavailable.",
       "WPI's opened Historical Need-to-Know Criteria page explicitly describes standardized exams for all four streams but directs candidates to their certifying authority to determine applicable materials. It does not establish that Ohio's direct program uses those exams: https://gowpi.org/services/abc-testing/need-to-know-criteria/.",
       "The January 2024 Ohio WPI/PSI handbook confirms separate Class A exams but does not identify standardized versus customized status: https://epa.ohio.gov/static/Portals/28/documents/opcert/WPI-OH-Handbook%20Jan%202024%20new.pdf. Provider approval, PSI delivery and optional dual-certification acceptance were not treated as standardized-exam proof.",
-      "The March 2023 eligibility factsheet has older OIT details that differ from the live exam page; only its stream/class and authority evidence was used. No mandatory-versus-voluntary collection staffing requirement was established; the optional C2EP designation is expressly voluntary."
+      "The March 2023 eligibility factsheet has older OIT details that differ from the live exam page; only its stream/class and authority evidence was used. No mandatory-versus-voluntary collection staffing requirement was established; the optional C2EP designation is expressly voluntary.",
+      "October 8, 2026 update: Ohio and New Jersey water treatment and water distribution were re-verified directly against state-authority pages and moved from unverified to wpi-standardized. Ohio EPA hosts the WPI Class 1 Water Supply and Class 1 Water Distribution Need-to-Know Criteria on its own domain and publishes a June 2025 equivalency chart. NJDEP states its computer-based examinations run through arrangements with the Association of Boards of Certification, now WPI, delivered by PSI. Other streams for both states remain unverified."
     ],
     "name": "Ohio",
     "streams": [
       {
         "authorityName": "Ohio Environmental Protection Agency (Ohio EPA), Division of Drinking and Ground Waters, Operator Certification Unit",
         "authorityUrl": "https://epa.ohio.gov/divisions-and-offices/drinking-and-ground-waters/certified-operators",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Water Supply: Class A, Class I, Class II, Class III, Class IV",
-        "note": "WPI is the approved third-party provider for Classes A–III; Class IV is expressly excluded and has a separate Ohio EPA examination/guidance route. The June 2025 direct-program chart maps Ohio A to Very Small Water System, I to WPI 1, II to WPI 2, and III to WPI 3. Opened sources do not explicitly establish whether the direct Ohio exams are standardized or customized. The optional C2EP route has different correspondence and must not be substituted for the direct-program chart.",
+        "note": "Ohio calls treatment ‘Water Supply’. Ohio EPA publishes the WPI standardized Class 1, 2 and 3 Water Supply Need-to-Know Criteria on its own domain under the heading ‘WPI Need to Know Criteria’, and its June 2025 equivalency chart maps Ohio Water Supply 1, 2 and 3 to the matching WPI classes. Class IV is expressly excluded from the WPI route and keeps a separate Ohio EPA examination. Class A corresponds to Very Small Water System, not a numbered WPI class. All applicants must review the Ohio EPA Professional Operator Certification Training document, which is an administrative requirement, not a separate Ohio-law exam section.",
         "sources": [
           {
-            "evidence": "WPI is approved as a third-party exam provider for all levels except Class IV; the page separately lists Class IV policy, guidance, examination and drinking-water review checklist.",
+            "evidence": "Ohio EPA states: ‘As an alternative to Ohio EPA’s paper and pencil examination, Ohio EPA has approved the Water Professionals International (WPI), formerly the Association of Boards of Certification (ABC), as an approved examination provider. Operators may now choose to take WPI examinations and then seek Ohio certification for all levels of certification except Class IV.’",
             "title": "Ohio EPA  -  Exam information",
             "url": "https://epa.ohio.gov/divisions-and-offices/drinking-and-ground-waters/certified-operators/exam-information"
           },
           {
-            "evidence": "Water Supply A = Very Small Water System VSWS; Water Supply 1 = Water Supply 1; 2 = 2; 3 = 3. Candidates selecting the Ohio EPA program select their Ohio EPA examination level.",
+            "evidence": "Ohio EPA’s equivalency chart maps Ohio Water Supply 1 to WPI Water Supply 1, 2 to 2 and 3 to 3, and Class A to Very Small Water System.",
             "title": "Ohio EPA/WPI Professional Operator Exam Equivalency Chart  -  revised June 2025",
             "url": "https://epa.ohio.gov/static/Portals/28/documents/opcert/ABC-EEC.pdf"
           },
           {
-            "evidence": "Identifies Class A, I, II, III or IV Water Supply certification and Ohio EPA certification applications.",
-            "title": "Ohio EPA  -  How to Become a Certified Water or Wastewater Operator",
-            "url": "https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/28/documents/opcert/How%20to%20become%20operator%20factsheet.pdf"
+            "evidence": "Under the heading ‘WPI Need to Know Criteria’, Ohio EPA hosts the Class 1 Water Supply outline on its own domain, alongside Class 2 and Class 3.",
+            "title": "WPI Water Treatment Class 1 Need-to-Know Criteria, hosted by Ohio EPA",
+            "url": "https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/28/documents/opcert/WPI-WaterTreatment-Class-1.pdf"
+          },
+          {
+            "evidence": "Exams are delivered through PSI at Ohio locations including Cleveland, Cincinnati, Columbus, Akron, Cambridge, Troy and Toledo, and may be taken outside Ohio.",
+            "title": "WPI Ohio EPA certification information page",
+            "url": "https://www.gowpi.org/certification/ohio-epa-certification/"
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1,
+          2,
+          3
+        ]
       },
       {
         "authorityName": "Ohio Environmental Protection Agency (Ohio EPA), Division of Drinking and Ground Waters, Operator Certification Unit",
         "authorityUrl": "https://epa.ohio.gov/divisions-and-offices/drinking-and-ground-waters/certified-operators",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Water Distribution: Class I, Class II",
-        "note": "The direct Ohio EPA program uses WPI-administered exams, with Ohio I mapped to WPI 1 and Ohio II to WPI 2 in the June 2025 chart. Standardized versus customized status is not explicitly established by the opened Ohio-specific sources. The optional C2EP program instead lists Ohio II against C2EP III; this is a separate route.",
+        "note": "Ohio EPA hosts the WPI standardized Class 1 and Class 2 Water Distribution Need-to-Know Criteria on its own domain under the heading ‘WPI Need to Know Criteria’. Only Class 1 and Class 2 distribution outlines are published there, so no higher distribution class is verified. Ohio EPA notes that the title on WPI’s criteria may differ from the Ohio certificate level, and the correct WPI test is selected once the candidate chooses the Ohio EPA certificate level in the test provider site.",
         "sources": [
           {
-            "evidence": "Distribution: Water Distribution 1 = Water Distribution 1; Water Distribution 2 = Water Distribution 2.",
+            "evidence": "Ohio EPA states: ‘As an alternative to Ohio EPA’s paper and pencil examination, Ohio EPA has approved the Water Professionals International (WPI), formerly the Association of Boards of Certification (ABC), as an approved examination provider. Operators may now choose to take WPI examinations and then seek Ohio certification for all levels of certification except Class IV.’",
+            "title": "Ohio EPA  -  Exam information",
+            "url": "https://epa.ohio.gov/divisions-and-offices/drinking-and-ground-waters/certified-operators/exam-information"
+          },
+          {
+            "evidence": "Ohio EPA’s equivalency chart maps Ohio Water Supply 1 to WPI Water Supply 1, 2 to 2 and 3 to 3, and Class A to Very Small Water System.",
             "title": "Ohio EPA/WPI Professional Operator Exam Equivalency Chart  -  revised June 2025",
             "url": "https://epa.ohio.gov/static/Portals/28/documents/opcert/ABC-EEC.pdf"
           },
           {
-            "evidence": "The direct Ohio EPA exam-only route lists Water Distribution Classes I and II. The separate voluntary C2EP route lists Distribution I (Ohio I) and Distribution III (Ohio II).",
-            "title": "WPI  -  Ohio EPA Certification Options Comparison Tool",
-            "url": "https://gowpi.org/certification/ohio-epa-certification/"
+            "evidence": "Under the heading ‘WPI Need to Know Criteria’, Ohio EPA hosts the Class 1 Water Distribution outline on its own domain, alongside Class 2.",
+            "title": "WPI Water Distribution Class 1 Need-to-Know Criteria, hosted by Ohio EPA",
+            "url": "https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/28/documents/opcert/WPI-WaterDistribution-Class-1.pdf"
           },
           {
-            "evidence": "Identifies Ohio Class I or II Water Distribution certification; examinations are offered through approved provider WPI.",
-            "title": "Ohio EPA  -  How to Become a Certified Water or Wastewater Operator",
-            "url": "https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/28/documents/opcert/How%20to%20become%20operator%20factsheet.pdf"
+            "evidence": "Ohio EPA states: ‘Please note that the title on WPI’s NTK Criteria may be a different exam level than the Ohio EPA certification you are seeking. When you are applying through test provider site, once you select Ohio EPA certification, you will select the Ohio EPA certificate level you are seeking and the appropriate WPI test will be selected.’",
+            "title": "Ohio EPA  -  Exam information, WPI Need to Know Criteria section",
+            "url": "https://epa.ohio.gov/divisions-and-offices/drinking-and-ground-waters/certified-operators/exam-information"
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1,
+          2
+        ]
       },
       {
         "authorityName": "Ohio Environmental Protection Agency (Ohio EPA), Division of Drinking and Ground Waters, Operator Certification Unit",

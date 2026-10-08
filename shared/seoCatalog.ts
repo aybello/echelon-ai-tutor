@@ -144,7 +144,7 @@ export interface CourseSeoPage {
 function levelLabel(course: CourseEntry): string {
   if (course.track === "water-quality") return "Specialty certification";
   if (course.classLevel === 0) return "Entry level";
-  return course.examFamily === "western"
+  return course.examFamily === "western" || course.examFamily === "us-wpi"
     ? `Class ${["", "I", "II", "III", "IV"][course.classLevel]}`
     : `Class ${course.classLevel}`;
 }
@@ -154,9 +154,12 @@ export const COURSE_SEO_PAGES: CourseSeoPage[] = getAllCourses()
   .map(course => {
     const product = PRODUCT_BY_KEY.get(course.productKey)!;
     const isOntario = course.examFamily === "ontario";
+    const isUS = course.examFamily === "us-wpi";
     const jurisdictionLabel = isOntario
       ? "Ontario"
-      : "WPI-aligned jurisdictions";
+      : isUS
+        ? "United States"
+        : "WPI-aligned jurisdictions";
     const trackLabel = isOntario && course.track === "water-distribution"
       ? "Water Distribution and Supply"
       : TRACK_LABELS[course.track];
@@ -176,8 +179,8 @@ export const COURSE_SEO_PAGES: CourseSeoPage[] = getAllCourses()
       mockExamPath: course.mockExamPath,
       flashcardPath: course.flashcardPath,
       formulaPath: course.formulaPath,
-      regionPath: isOntario ? "/canada/ontario" : "/wpi",
-      regionLabel: isOntario ? "Ontario exam prep" : "WPI exam prep",
+      regionPath: isOntario ? "/canada/ontario" : isUS ? "/us" : "/wpi",
+      regionLabel: isOntario ? "Ontario exam prep" : isUS ? "US exam prep" : "WPI exam prep",
     };
   });
 

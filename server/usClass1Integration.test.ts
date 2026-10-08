@@ -72,12 +72,16 @@ describe("US courses stay separate from Canadian courses", () => {
     }
   });
 
-  it("keeps US courses inactive until content is approved", () => {
+  it("publishes exactly the two reviewed US courses, and no others", () => {
     for (const key of US_COURSE_KEYS) {
-      expect(getCourseByKey(key)!.isActive).toBe(false);
-      expect(getAllActiveCourseKeys()).not.toContain(key);
+      expect(getCourseByKey(key)!.isActive).toBe(true);
+      expect(getAllActiveCourseKeys()).toContain(key);
     }
-    expect(getCoursesForFamily("us-wpi")).toHaveLength(0);
+    // The US family must never grow silently. A third US course has to be
+    // added here deliberately, with its own reviewed bank.
+    const active = getCoursesForFamily("us-wpi");
+    expect(active).toHaveLength(2);
+    expect(active.map(c => c.courseKey).sort()).toEqual([...US_COURSE_KEYS].sort());
   });
 
   it("still resolves unknown keys to undefined", () => {
@@ -97,25 +101,33 @@ describe("US courses stay separate from Canadian courses", () => {
     for (const key of US_COURSE_KEYS) {
       expect(courseKeyToTierStrict(key, "ontario")).toBeNull();
       expect(courseKeyToTierStrict(key, "western")).toBeNull();
-      // Even under its own family, an inactive course yields no tier.
-      expect(courseKeyToTierStrict(key, "us-wpi")).toBeNull();
+    }
+    // A Canadian course key is equally refused under the US family, so the
+    // separation holds in both directions.
+    for (const course of getCoursesForFamily("ontario")) {
+      expect(courseKeyToTierStrict(course.courseKey, "us-wpi")).toBeNull();
     }
   });
 
-  it("refuses to serve study content for an inactive course", () => {
+  it("serves active courses and still fails closed on inactive ones", () => {
+    // The published US courses now pass the active gate.
     for (const key of US_COURSE_KEYS) {
-      const course = getCourseByKey(key)!;
-      // Question-serving paths must fail closed.
-      expect(() => courseActivityScope(key, { requireActive: true })).toThrow();
-      expect(() => courseActivityScope(course.questionBankKey, { requireActive: true })).toThrow();
-      // History paths must still resolve, so a learner never loses records
-      // if a course is later retired.
+      expect(() => courseActivityScope(key, { requireActive: true })).not.toThrow();
       expect(courseActivityScope(key).course.courseKey).toBe(key);
     }
-    // Active Canadian courses are unaffected by the new gate.
+    // Active Canadian courses are unaffected by the gate.
     for (const course of getCoursesForFamily("ontario")) {
       expect(() => courseActivityScope(course.courseKey, { requireActive: true })).not.toThrow();
     }
+    // Any inactive course in the registry must still be refused for study
+    // content while remaining resolvable for learner history.
+    const inactive = getAllCourses().filter(course => !course.isActive);
+    for (const course of inactive) {
+      expect(() => courseActivityScope(course.courseKey, { requireActive: true })).toThrow();
+      expect(courseActivityScope(course.courseKey).course.courseKey).toBe(course.courseKey);
+    }
+    // An unknown key is refused outright, never silently allowed.
+    expect(() => courseActivityScope("not-a-course", { requireActive: true })).toThrow();
   });
 });
 

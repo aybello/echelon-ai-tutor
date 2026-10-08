@@ -236,6 +236,7 @@ export type ExamProductKey =
   | "wpi-class1-wastewater" | "wpi-class2-wastewater" | "wpi-class3-wastewater" | "wpi-class4-wastewater"
   | "wpi-class1-water-dist" | "wpi-class2-water-dist" | "wpi-class3-water-dist" | "wpi-class4-water-dist"
   | "wpi-class1-water-coll" | "wpi-class2-water-coll" | "wpi-class3-water-coll" | "wpi-class4-water-coll"
+  | "us-class1-water" | "us-class1-water-dist"
   | "class1-water-dist" | "class2-water-dist" | "class3-water-dist" | "class4-water-dist"
   | "class1-wastewater-coll" | "class2-wastewater-coll" | "class3-wastewater-coll" | "class4-wastewater-coll";
 

@@ -797,7 +797,7 @@ const REGISTRY: CourseEntry[] = [
     questionBankKey: "us-class1-water",
     teamAssignable: false,
     aliases: [],
-    isActive: false,
+    isActive: true,
   },
   {
     courseKey: "us-class1-water-dist",
@@ -816,7 +816,7 @@ const REGISTRY: CourseEntry[] = [
     questionBankKey: "us-class1-water-dist",
     teamAssignable: false,
     aliases: [],
-    isActive: false,
+    isActive: true,
   },
 ];
 
