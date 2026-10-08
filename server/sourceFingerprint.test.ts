@@ -23,6 +23,26 @@ function put(root: string, path: string, content: string | Buffer) {
   mkdirSync(dirname(join(root, path)), { recursive: true });
   writeFileSync(join(root, path), content);
 }
+
+/**
+ * Delete a temporary tree without letting cleanup fail the test run.
+ *
+ * These fixtures contain a full git checkout. On CI a git child process can
+ * still be releasing file handles while rmSync walks the directory, which
+ * surfaces as ENOTEMPTY and fails a release for a reason that has nothing to
+ * do with the fingerprint contract being tested. Retry briefly, then give up
+ * quietly: the operating system reclaims the temp directory regardless.
+ */
+function removeTempTree(path: string) {
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    try {
+      rmSync(path, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 });
+      return;
+    } catch {
+      // Retry; a transient handle may still be open.
+    }
+  }
+}
 function sourceFixture(root: string) {
   for (const [path, bytes] of Object.entries({
     "package.json":
@@ -126,8 +146,12 @@ describe("functional source SHA256 contract", () => {
       expect(computeSourceFingerprint(archive)).toBe(digest);
       expect(git(["status", "--porcelain", "--untracked-files=no"])).toBe("");
     } finally {
-      rmSync(checkout, { recursive: true, force: true });
-      rmSync(archive, { recursive: true, force: true });
+      // Cleanup must never fail the run. On CI these directories hold a full
+      // git checkout, and a lingering git process can still be releasing file
+      // handles when rmSync walks the tree, producing a spurious ENOTEMPTY
+      // that fails a release for a reason unrelated to the code under test.
+      removeTempTree(checkout);
+      removeTempTree(archive);
     }
   });
 
@@ -168,7 +192,7 @@ describe("functional source SHA256 contract", () => {
       );
       expect(computeSourceFingerprint(root)).not.toBe(before);
     } finally {
-      rmSync(root, { recursive: true, force: true });
+      removeTempTree(root);
     }
   });
 
@@ -201,7 +225,7 @@ describe("functional source SHA256 contract", () => {
       );
       expect(isSourceFingerprintPath("server/../private.txt")).toBe(false);
     } finally {
-      rmSync(root, { recursive: true, force: true });
+      removeTempTree(root);
     }
   });
 
@@ -225,7 +249,7 @@ describe("functional source SHA256 contract", () => {
       symlinkSync("../outside", join(root, "shared"));
       expect(() => computeSourceFingerprint(root)).toThrow("symlink");
     } finally {
-      rmSync(root, { recursive: true, force: true });
+      removeTempTree(root);
     }
   });
 });
