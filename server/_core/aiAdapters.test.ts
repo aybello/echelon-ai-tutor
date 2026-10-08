@@ -10,6 +10,7 @@ import { invokeLLM } from "./llm";
 import { invokeGPT56 } from "./openaiResponses";
 const messages = [{ role: "user" as const, content: "Explain flow rate." }];
 let fetchMock: ReturnType<typeof vi.fn>;
+const ORIGINAL_FALLBACK_KEY = process.env.ANTHROPIC_API_KEY;
 const completion = () =>
   new Response(
     JSON.stringify({
@@ -30,12 +31,19 @@ beforeEach(() => {
   fetchMock = vi.fn().mockImplementation(async () => completion());
   vi.stubGlobal("fetch", fetchMock);
   env.forgeApiKey = "test-native-key";
+  // This suite asserts the PRIMARY provider contract in isolation. The
+  // cross-provider fallback has its own suite in
+  // server/aiTutorProviderFallback.test.ts, so the fallback credential is
+  // removed here to keep these assertions deterministic.
+  delete process.env.ANTHROPIC_API_KEY;
   vi.spyOn(console, "warn").mockImplementation(() => {});
 });
 afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
+  if (ORIGINAL_FALLBACK_KEY === undefined) delete process.env.ANTHROPIC_API_KEY;
+  else process.env.ANTHROPIC_API_KEY = ORIGINAL_FALLBACK_KEY;
 });
 describe("native AI provider request contract", () => {
   it("uses platform-native routing, its server credential, the approved model and caller output budget", async () => {
@@ -68,7 +76,7 @@ describe("native AI provider request contract", () => {
     ).rejects.toThrow("Conflicting");
     expect(fetchMock).not.toHaveBeenCalled();
   });
-  it("requires the platform-native server credential instead of external provider configuration", async () => {
+  it("requires a configured provider credential instead of failing open", async () => {
     env.forgeApiKey = "";
     await expect(invokeLLM({ messages })).rejects.toThrow(
       "BUILT_IN_FORGE_API_KEY"

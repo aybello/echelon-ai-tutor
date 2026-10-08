@@ -1,6 +1,7 @@
 /** Bounded, non-streaming service requests. Deadlines cover headers AND body consumption. */
 export type OutboundService =
   | "forge"
+  | "anthropic"
   | "openai"
   | "maps"
   | "notification"
