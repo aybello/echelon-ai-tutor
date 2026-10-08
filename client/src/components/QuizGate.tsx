@@ -89,6 +89,11 @@ export default function QuizGate({
   const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
   const diagnosticTracked = useRef(false);
+  // Second path for learners who are not ready to buy in this moment. Without
+  // it, everyone who does not buy right now is unreachable forever.
+  const [planEmail, setPlanEmail] = useState("");
+  const [planError, setPlanError] = useState("");
+  const [planSent, setPlanSent] = useState(false);
 
   // Ensure portal target is available (SSR-safe)
   useEffect(() => {
@@ -125,6 +130,29 @@ export default function QuizGate({
     },
   });
   const trackDiagnostic = trpc.feedback.trackDiagnostic.useMutation();
+  const sendStudyPlan = trpc.trial.studyPlan.useMutation({
+    onSuccess: () => setPlanSent(true),
+    onError: () => setPlanError("We could not send your plan. Please try again."),
+  });
+
+  function handleSendPlan(event: React.FormEvent) {
+    event.preventDefault();
+    setPlanError("");
+    const email = planEmail.trim();
+    if (!email || !email.includes("@")) {
+      setPlanError("Please enter a valid email address.");
+      return;
+    }
+    if (!productKey || !diagnostic || diagnostic.total === 0) return;
+    sendStudyPlan.mutate({
+      email,
+      productKey,
+      score: diagnostic.score,
+      correct: diagnostic.correct,
+      total: diagnostic.total,
+      weakTopics: diagnostic.weakTopics,
+    });
+  }
 
   useEffect(() => {
     if (
@@ -303,6 +331,45 @@ export default function QuizGate({
 
               {/* Escape options for paid path */}
               <div style={{ borderTop: "1px solid #E2E8F0", paddingTop: 12, marginTop: 4, display: "flex", flexDirection: "column", gap: 8 }}>
+                {/* Second path, deliberately placed after the offer so it never
+                    competes with the sale. A learner who is not buying today
+                    leaves us a way to reach them instead of disappearing. */}
+                {diagnostic && diagnostic.total > 0 && (
+                  planSent ? (
+                    <div role="status" style={{ background: "#F0FDF4", border: "1.5px solid #BBF7D0", borderRadius: 10, padding: "12px 14px", textAlign: "center" }}>
+                      <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: "#059669" }}>Your study plan is on its way</p>
+                      <p style={{ margin: "4px 0 0", fontSize: 11, color: "#475569" }}>Check your inbox for the topics to focus on first.</p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSendPlan} style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 10, padding: "12px 14px", textAlign: "left" }}>
+                      <label htmlFor="quiz-gate-plan-email" style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#0F172A", marginBottom: 2 }}>
+                        Not ready today? Get your free study plan
+                      </label>
+                      <p style={{ margin: "0 0 8px", fontSize: 11, color: "#64748B", lineHeight: 1.45 }}>
+                        We will email the topics to focus on first, based on the questions you just answered.
+                      </p>
+                      <div style={{ display: "flex", gap: 6 }}>
+                        <input
+                          id="quiz-gate-plan-email"
+                          type="email"
+                          value={planEmail}
+                          onChange={e => setPlanEmail(e.target.value)}
+                          placeholder="you@example.com"
+                          autoComplete="email"
+                          style={{ flex: 1, minWidth: 0, padding: "9px 11px", borderRadius: 8, border: "1.5px solid #CBD5E1", fontSize: 13, fontFamily: "inherit", color: "#0F172A" }}
+                        />
+                        <button
+                          type="submit"
+                          disabled={sendStudyPlan.isPending}
+                          style={{ padding: "9px 14px", borderRadius: 8, border: "none", background: "#0F172A", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0, opacity: sendStudyPlan.isPending ? 0.7 : 1, touchAction: "manipulation" }}
+                        >
+                          {sendStudyPlan.isPending ? "Sending…" : "Send it"}
+                        </button>
+                      </div>
+                      {planError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, margin: "7px 0 0" }}>{planError}</p>}
+                    </form>
+                  )
+                )}
                 {onDismiss && (
                   <button
                     onClick={onDismiss}

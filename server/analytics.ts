@@ -36,6 +36,13 @@ export type AnalyticsEventName =
    * intent. Kept separate so the purchase funnel measures buying.
    */
   | "course_browsed"
+  /**
+   * A learner finished the free preview and asked for their study plan. This
+   * is the second path at the paywall for people not buying in that moment,
+   * and the measure of whether the paywall now retains them instead of
+   * losing them permanently.
+   */
+  | "preview_plan_requested"
   | "checkout_started"
   | "checkout_completed"
   | "diagnostic_completed"

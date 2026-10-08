@@ -327,6 +327,8 @@ export const adminRouter = router({
         courseBrowses: eventCount("course_browsed"),
         // Buy-button clicks only.
         productSelections: eventCount("product_selected"),
+        // Learners retained at the paywall who were not ready to buy.
+        previewPlansRequested: eventCount("preview_plan_requested"),
         checkoutStarts: eventCount("checkout_started"),
         checkoutCompletions: eventCount("checkout_completed"),
         signups: eventCount("signup"),

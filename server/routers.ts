@@ -53,6 +53,8 @@ import { trainingRouter } from "./routers/trainingRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
+import { resolveQuizGateOffer } from "../shared/checkoutOffer";
+import { sendPreviewStudyPlanEmail } from "./previewStudyPlanEmail";
 import { ELECTRICIAN_309A_PROGRAM_KEY } from "../shared/certificationPrograms";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
 
@@ -289,6 +291,84 @@ export const appRouter = router({
             title: `New trial signup via quiz gate`,
             content: `${input.email} submitted their email to unlock the full question bank.`,
           });
+        }
+
+        return { success: true };
+      }),
+
+    /**
+     * Capture a learner who finished the free preview and send them a study
+     * plan built from their own answers.
+     *
+     * Previously the paywall was a single yes-or-no moment: buy now or be
+     * lost. Over a 30 day window 78 learners used the entire free preview and
+     * only 2 were ever reachable again. This keeps the relationship open with
+     * something genuinely useful, and the lead is stored before any mail is
+     * attempted so a delivery failure can never discard it.
+     */
+    studyPlan: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email("Please enter a valid email address"),
+          // Course keys are at most 22 characters today; 32 matches the column.
+          productKey: z.string().min(1).max(32),
+          score: z.number().int().min(0).max(100),
+          correct: z.number().int().min(0).max(500),
+          total: z.number().int().min(1).max(500),
+          weakTopics: z.array(z.string().min(1).max(64)).max(3),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+
+        const email = input.email.trim().toLowerCase();
+        const existing = await db
+          .select()
+          .from(trialEmails)
+          .where(eq(trialEmails.email, email))
+          .limit(1);
+
+        // Recorded server-side so the capture rate cannot be undercounted by
+        // a client that navigates away as soon as it submits.
+        await trackEvent("preview_plan_requested", {
+          email,
+          productKey: input.productKey,
+          extra: { score: input.score, weakTopicCount: input.weakTopics.length },
+        }).catch(() => undefined);
+
+        if (existing.length === 0) {
+          await db.insert(trialEmails).values({
+            email,
+            // Records which course earned the lead, so follow-up is targeted.
+            source: input.productKey.slice(0, 32),
+          });
+          await notifyOwner({
+            title: "Preview study plan requested",
+            content: `${email} finished the free preview of ${input.productKey} scoring ${input.score}% and asked for their study plan.`,
+          }).catch(() => undefined);
+        }
+
+        // Delivery must never fail the capture. The lead is already saved.
+        try {
+          const course = resolveCourseKey(input.productKey);
+          const offer = resolveQuizGateOffer(input.productKey);
+          const courseLabel = course?.displayName ?? offer.productName ?? "your course";
+          const site = "https://echeloninstitute.ca";
+          const courseUrl = `${site}/pricing?course=${encodeURIComponent(input.productKey)}`;
+          await sendPreviewStudyPlanEmail({
+            email,
+            courseLabel,
+            score: input.score,
+            correct: input.correct,
+            total: input.total,
+            weakTopics: input.weakTopics,
+            courseUrl,
+            offerUrl: courseUrl,
+            priceLabel: offer.priceLabel ?? "available on the pricing page",
+          });
+        } catch (error) {
+          console.error("[preview-plan] Delivery failed after capture:", error);
         }
 
         return { success: true };
