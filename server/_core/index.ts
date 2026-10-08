@@ -330,6 +330,66 @@ async function startServer() {
     }
   });
 
+  // ── AI Tutor health probe ─────────────────────────────────────────────────
+  // The tutor once failed silently in production and the first signal was a
+  // customer review. This runs the same provider path a learner uses and
+  // alerts the owner when the tutor cannot answer, or when it is only alive
+  // because the fallback provider is carrying it.
+  app.post("/api/scheduled/tutor-health", async (_req, res) => {
+    try {
+      const { checkTutorHealth } = await import("../jobs/tutorHealth");
+      const result = await checkTutorHealth();
+
+      if (!result.ok) {
+        console.error("[tutor-health] AI Tutor is not answering:", result.error);
+        try {
+          const { notifyOwner } = await import("./notification");
+          await notifyOwner({
+            title: "AI Tutor is down",
+            content:
+              "The AI Tutor could not answer a health probe, so learners cannot get explanations right now. " +
+              `Reason: ${result.error ?? "unknown"}. Check the AI provider account and credit balance.`,
+          });
+        } catch (notifyError) {
+          console.error("[tutor-health] owner alert failed", notifyError);
+        }
+        return res.status(503).json({
+          ok: false,
+          usedFallback: result.usedFallback,
+          latencyMs: result.latencyMs,
+          ts: new Date().toISOString(),
+        });
+      }
+
+      if (result.usedFallback) {
+        console.warn("[tutor-health] primary provider unavailable, fallback is serving learners");
+        try {
+          const { notifyOwner } = await import("./notification");
+          await notifyOwner({
+            title: "AI Tutor is running on its backup provider",
+            content:
+              "Learners can still use the AI Tutor, but the primary provider is unavailable and the backup provider is handling every request. " +
+              "Restore the primary provider so the backup stays a safety net rather than the main path.",
+          });
+        } catch (notifyError) {
+          console.error("[tutor-health] owner alert failed", notifyError);
+        }
+      }
+
+      return res.json({
+        ok: true,
+        usedFallback: result.usedFallback,
+        latencyMs: result.latencyMs,
+        ts: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error("[tutor-health] probe failed", err);
+      return res
+        .status(500)
+        .json({ ok: false, ts: new Date().toISOString() });
+    }
+  });
+
   // ── Job board refresh endpoint (Heartbeat cron, every 6 hours) ─────────────
   app.post("/api/scheduled/fetch-jobs", async (req, res) => {
     try {
