@@ -777,6 +777,18 @@ export default function Admin() {
                         note: `${kpisQ.data.funnel.previewPlansRequested} of ${kpisQ.data.funnel.previewPlansOffered} learners shown the offer gave us their email`,
                       },
                       { label: "Checkout starts", value: kpisQ.data.funnel.checkoutStarts, note: `${kpisQ.data.funnel.checkoutCompletions} paid completions` },
+                      {
+                        label: "Team orders awaiting payment",
+                        value: kpisQ.data.teamPipeline.ordersAwaitingPayment,
+                        note: `CA$${kpisQ.data.teamPipeline.valueAwaitingPaymentCAD} unpaid of ${kpisQ.data.teamPipeline.ordersStarted} started, ${kpisQ.data.teamPipeline.ordersFollowedUp} followed up`,
+                      },
+                      {
+                        label: "Team order close rate",
+                        value: kpisQ.data.teamPipeline.ordersStarted > 0
+                          ? formatAdminPercent(kpisQ.data.teamPipeline.ordersPaid / kpisQ.data.teamPipeline.ordersStarted)
+                          : "—",
+                        note: `${kpisQ.data.teamPipeline.ordersPaid} paid of ${kpisQ.data.teamPipeline.ordersStarted} manager orders configured`,
+                      },
                       { label: "30-day learner return", value: formatAdminPercent(kpisQ.data.engagement.thirtyDayReturnRate), note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} returned` },
                       { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started sessions" },
                       { label: "Training records", value: kpisQ.data.engagement.trainingRecordsAttested, note: `${kpisQ.data.engagement.trainingHoursExports} training-hour exports` },

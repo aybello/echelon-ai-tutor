@@ -17,7 +17,7 @@ import {
   organizations,
   questionAttempts,
 } from "../../drizzle/schema";
-import { eq, and, sql } from "drizzle-orm";
+import { eq, and, desc, sql } from "drizzle-orm";
 import {
   TEAM_PRICES_CAD,
   getCourseKeyPricingBand,
@@ -357,6 +357,34 @@ export const teamFlexRouter = router({
       try {
         orderId = await db.transaction(async (tx) => {
           let checkoutOrgId = orgId;
+
+          if (!checkoutOrgId) {
+            // A manager who retries checkout must not fragment their employer
+            // into a new organization each attempt. Live data showed one
+            // utility split across six rows because every abandoned attempt
+            // created another. Reuse is restricted to a provisional, unpaid
+            // organization created by this same manager email in the same
+            // province, so an unverified form still never attaches an order to
+            // a real paying employer.
+            const [reusable] = await tx
+              .select({ id: organizations.id })
+              .from(organizations)
+              .where(
+                and(
+                  eq(organizations.managerEmail, managerEmail),
+                  eq(organizations.province, input.province),
+                  eq(organizations.billingType, "course-pass"),
+                  eq(organizations.status, "pending"),
+                  eq(organizations.seatsTotal, 0),
+                ),
+              )
+              .orderBy(desc(organizations.id))
+              .limit(1);
+
+            if (reusable) {
+              checkoutOrgId = reusable.id;
+            }
+          }
 
           if (!checkoutOrgId) {
             // Guest procurement creates an access-free new organization. An

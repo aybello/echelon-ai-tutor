@@ -9,7 +9,7 @@ import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
 import { desc, eq, sql, count, ne, and, gte, gt, asc, getTableColumns } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, customerRecoveryEvidence } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import { SYNTHETIC_EMAIL_DOMAIN } from "../../shared/revenueReporting";
@@ -315,6 +315,35 @@ export const adminRouter = router({
     const totalTeamAllocated = assigned + coursePassAllocated;
     const quizImprovement = comparableQuizGain(events);
 
+    /**
+     * Team orders that reached Stripe Checkout and were never paid.
+     *
+     * A manager who configures licences and names their utility has already
+     * decided to buy, so an unpaid order here is worth multiples of a missed
+     * individual sale. This was invisible on the dashboard, which is why nine
+     * team orders produced only two payments with no follow-up.
+     */
+    const teamOrderRows = await db
+      .select({
+        status: teamFlexOrders.status,
+        subtotalCents: teamFlexOrders.subtotalCents,
+        managerEmail: teamFlexOrders.managerEmail,
+      })
+      .from(teamFlexOrders);
+
+    const unpaidTeamOrders = teamOrderRows.filter(
+      row => row.status === "pending" || row.status === "checkout_failed",
+    );
+    const teamPipeline = {
+      ordersStarted: teamOrderRows.length,
+      ordersPaid: teamOrderRows.filter(row => row.status === "paid").length,
+      ordersAwaitingPayment: unpaidTeamOrders.length,
+      ordersFollowedUp: teamOrderRows.filter(row => row.status === "recovery_sent").length,
+      valueAwaitingPaymentCAD: Math.round(
+        unpaidTeamOrders.reduce((sum, row) => sum + Number(row.subtotalCents ?? 0), 0) / 100,
+      ),
+    };
+
     return {
       periodDays: 30,
       generatedAt: now,
@@ -361,6 +390,7 @@ export const adminRouter = router({
         diagnosticCompletions: eventCount("diagnostic_completed"),
         mockExamCompletions: eventCount("mock_exam_completed"),
       },
+      teamPipeline,
       engagement: {
         weeklyActiveLearners,
         sevenDayReturnRate: sevenDayReturn.rate,

@@ -390,6 +390,40 @@ async function startServer() {
     }
   });
 
+  // ── Abandoned team order recovery (daily) ─────────────────────────────────
+  // A manager who configured licences and opened Stripe has already decided to
+  // buy. Live data showed nine team orders created and only two paid, with
+  // every unpaid one belonging to a named manager at a real water utility and
+  // nobody following up. These are the highest-value leads the business has.
+  app.post("/api/scheduled/recover-team-orders", async (_req, res) => {
+    try {
+      const { recoverAbandonedTeamOrders } = await import("../jobs/abandonedTeamOrders");
+      const result = await recoverAbandonedTeamOrders();
+
+      if (result.contacted > 0) {
+        console.log(
+          `[team-recovery] contacted ${result.contacted} of ${result.considered} abandoned team orders`,
+        );
+        try {
+          const { notifyOwner } = await import("./notification");
+          await notifyOwner({
+            title: "Abandoned team orders followed up",
+            content:
+              `${result.contacted} manager${result.contacted === 1 ? "" : "s"} who configured licences but did not pay ` +
+              "have been offered a purchase order or invoice. Replies come to your inbox directly.",
+          });
+        } catch (notifyError) {
+          console.error("[team-recovery] owner alert failed", notifyError);
+        }
+      }
+
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[team-recovery] run failed", err);
+      return res.status(500).json({ ok: false, ts: new Date().toISOString() });
+    }
+  });
+
   // ── Job board refresh endpoint (Heartbeat cron, every 6 hours) ─────────────
   app.post("/api/scheduled/fetch-jobs", async (req, res) => {
     try {
