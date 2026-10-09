@@ -364,6 +364,31 @@ async function startServer() {
 
   registerManagedJobs(app);
 
+  // ── Managed-job rejection diagnostics ───────────────────────────────────────
+  // The platform edge only admits cron-cookie requests to /api/scheduled/*, so
+  // operators cannot probe those routes directly during an incident. This
+  // read-only endpoint lives outside that path and requires the same shared
+  // secret. It reports which gate precondition rejected recent scheduled runs;
+  // it never returns secret values or task UIDs.
+  app.get("/api/ops/managed-job-rejections", async (req, res) => {
+    if (
+      !scheduledSecretMatches(ENV.cronSecret, req.headers["x-cron-secret"])
+    ) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const { getManagedJobRejections } = await import("../jobs/managedJobs");
+    return res.json({
+      ok: true,
+      envReady:
+        process.env.DEPLOYMENT_ENV === "production" &&
+        process.env.MANAGED_JOBS_ENABLED === "true" &&
+        Boolean(process.env.MANAGED_JOBS_ORIGIN) &&
+        Boolean(process.env.MANAGED_JOB_TASK_UIDS),
+      rejections: getManagedJobRejections(),
+      ts: new Date().toISOString(),
+    });
+  });
+
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
   // This endpoint is called every 5 minutes by a Manus Heartbeat cron (set up
   // via manus-heartbeat CLI). Uses forceReconnect() which bypasses the cooldown

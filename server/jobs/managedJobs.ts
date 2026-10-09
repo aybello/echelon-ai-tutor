@@ -65,14 +65,28 @@ export function requireManagedJob(
 ): boolean {
   const taskUid =
     res.locals.cronUser?.taskUid ?? req.headers["x-manus-cron-task-uid"];
+  // Behind the platform proxy (trust proxy is enabled) the Host header can be
+  // rewritten to an internal service address while x-forwarded-host carries
+  // the public origin the request entered through. Either may match the
+  // production allowlist; authentication is enforced separately above.
+  const forwardedHost = req.headers["x-forwarded-host"];
+  const candidateHosts = [
+    req.headers.host,
+    typeof forwardedHost === "string"
+      ? forwardedHost.split(",")[0]?.trim()
+      : undefined,
+  ];
   if (
     !(res.locals.scheduledAuthenticated || res.locals.cronUser?.isCron) ||
-    !managedJobAllowed(
-      req.headers.host,
-      typeof taskUid === "string" ? taskUid : undefined,
-      job
+    !candidateHosts.some(host =>
+      managedJobAllowed(
+        host,
+        typeof taskUid === "string" ? taskUid : undefined,
+        job
+      )
     )
   ) {
+    recordManagedJobRejection(req, res, job, taskUid);
     // Non-secret diagnostics: which precondition failed, never the values.
     console.error(
       `[managed-job:${job}] rejected scheduled request | host=${req.headers.host ?? "none"} | ` +
@@ -88,6 +102,53 @@ export function requireManagedJob(
     return false;
   }
   return true;
+}
+
+/**
+ * Ring buffer of recent managed-job rejections. Production logs are not
+ * directly readable during an incident, so the secret-protected diagnostics
+ * endpoint exposes which gate precondition failed. Hosts are request routing
+ * metadata, not secrets; task UID and secret values are never stored.
+ */
+const recentManagedJobRejections: Array<Record<string, unknown>> = [];
+
+function recordManagedJobRejection(
+  req: Request,
+  res: Response,
+  job: string,
+  taskUid: unknown
+) {
+  let taskUidMatchesJob = false;
+  try {
+    const tasks = JSON.parse(process.env.MANAGED_JOB_TASK_UIDS ?? "{}");
+    taskUidMatchesJob =
+      typeof taskUid === "string" && tasks[job] === taskUid;
+  } catch {
+    taskUidMatchesJob = false;
+  }
+  recentManagedJobRejections.push({
+    ts: new Date().toISOString(),
+    job,
+    host: req.headers.host ?? null,
+    forwardedHost: req.headers["x-forwarded-host"] ?? null,
+    authenticated: Boolean(
+      res.locals.scheduledAuthenticated || res.locals.cronUser?.isCron
+    ),
+    viaCronIdentity: Boolean(res.locals.cronUser?.isCron),
+    taskUidPresent: Boolean(taskUid),
+    taskUidMatchesJob,
+    hostAllowed: managedJobHostAllowed(req.headers.host),
+    envReady:
+      process.env.DEPLOYMENT_ENV === "production" &&
+      process.env.MANAGED_JOBS_ENABLED === "true" &&
+      Boolean(process.env.MANAGED_JOBS_ORIGIN),
+  });
+  if (recentManagedJobRejections.length > 20)
+    recentManagedJobRejections.shift();
+}
+
+export function getManagedJobRejections() {
+  return [...recentManagedJobRejections];
 }
 
 export async function runManagedJob(
