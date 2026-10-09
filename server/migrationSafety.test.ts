@@ -156,6 +156,18 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["trial_emails"] },
         verifierAllowMissingColumns: [{ table: "trial_emails", column: "phone", targetType: "varchar(32)", targetNullable: true, sqlType: "varchar(32)" }],
       }),
+      expect.objectContaining({
+        version: 78,
+        tag: "0078_trial_lead_follow_up",
+        proposedOnly: true,
+        standaloneApply: { tables: ["trial_emails"] },
+        verifierAllowMissingColumns: [
+          { table: "trial_emails", column: "followUpStage", targetType: "int", targetNullable: false, sqlType: "int", defaultSql: "default 0" },
+          { table: "trial_emails", column: "lastFollowUpAt", targetType: "timestamp", targetNullable: true, sqlType: "timestamp" },
+          { table: "trial_emails", column: "optOut", targetType: "tinyint(1)", targetNullable: false, sqlType: "boolean", defaultSql: "default false" },
+          { table: "trial_emails", column: "unsubscribeToken", targetType: "varchar(128)", targetNullable: true, sqlType: "varchar(128)" },
+        ],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -312,6 +324,10 @@ describe("forward-only migration safety", () => {
       { table: "contact_submissions", column: "followUpStatus" },
       { table: "contact_submissions", column: "notificationStatus" },
       { table: "trial_emails", column: "phone" },
+      { table: "trial_emails", column: "followUpStage" },
+      { table: "trial_emails", column: "lastFollowUpAt" },
+      { table: "trial_emails", column: "optOut" },
+      { table: "trial_emails", column: "unsubscribeToken" },
     ]));
   });
 
@@ -902,7 +918,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]);
   });
 });
 

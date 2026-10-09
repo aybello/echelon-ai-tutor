@@ -69,6 +69,18 @@ export const trialEmails = mysqlTable("trial_emails", {
   phone: varchar("phone", { length: 32 }),
   source: varchar("source", { length: 32 }).notNull().default("quiz_gate"), // where the gate was hit
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /**
+   * Follow-up sequence state. 0 = only the capture-time study plan email was
+   * sent. 1 and 2 record the two bounded follow-ups. There is no stage 3: the
+   * sequence is deliberately finite so a lead who does not buy stops hearing
+   * from us instead of being drip-marketed forever.
+   */
+  followUpStage: int("followUpStage").notNull().default(0),
+  lastFollowUpAt: timestamp("lastFollowUpAt"),
+  /** One-click opt-out. Honoured before any follow-up send. */
+  optOut: boolean("optOut").notNull().default(false),
+  /** Random token backing the unsubscribe link in follow-up emails. */
+  unsubscribeToken: varchar("unsubscribeToken", { length: 128 }),
 });
 
 export type TrialEmail = typeof trialEmails.$inferSelect;

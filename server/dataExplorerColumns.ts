@@ -59,7 +59,7 @@ export const DATA_EXPLORER_COLUMN_CLASSIFICATIONS: Record<string, DataExplorerCo
   "job-postings": { readable: ["id", "title", "company", "location", "province", "salary", "jobType", "sourceName", "sourceType", "postedAt", "isFeatured", "isActive", "lastSeenAt", "createdAt"], restricted: ["sourceUrl", "description"] },
   "user-feedback": { readable: ["id", "userId", "email", "examType", "rating", "feedbackType", "province", "createdAt"], restricted: ["comment"] },
   "question-error-reports": { readable: ["id", "questionId", "module", "reportType", "createdAt"], restricted: ["questionText", "details"] },
-  "trial-emails": { readable: ["id", "email", "phone", "source", "createdAt"], restricted: [] },
+  "trial-emails": { readable: ["id", "email", "phone", "source", "createdAt", "followUpStage", "lastFollowUpAt", "optOut"], restricted: ["unsubscribeToken"] },
   "waitlist": { readable: ["id", "email", "courseCode", "courseTitle", "createdAt", "province"], restricted: [] },
   "contact-submissions": { readable: ["id", "name", "email", "createdAt", "followUpStatus", "notificationStatus"], restricted: ["subject", "message", "requestKey", "organization", "partnershipType"] },
   "command-feedback": { readable: ["id", "userId", "scenarioId", "runId", "rating", "createdAt"], restricted: ["guestId", "comment"] },
