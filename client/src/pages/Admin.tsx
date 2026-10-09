@@ -761,6 +761,14 @@ export default function Admin() {
                     {[
                       { label: "Marketing page views", value: kpisQ.data.funnel.marketingPageViews, note: "Privacy-safe public buyer-page views" },
                       { label: "Course choices", value: kpisQ.data.funnel.productSelections, note: `${kpisQ.data.funnel.buyerPathSelections} individual or team path selections` },
+                      { label: "Free preview exhausted", value: kpisQ.data.funnel.previewGateHits, note: `${kpisQ.data.funnel.courseBrowses} course views while browsing` },
+                      {
+                        label: "Paywall email capture",
+                        value: kpisQ.data.funnel.previewGateHits > 0
+                          ? formatAdminPercent(kpisQ.data.funnel.previewPlansRequested / kpisQ.data.funnel.previewGateHits)
+                          : "—",
+                        note: `${kpisQ.data.funnel.previewPlansRequested} study plans requested by learners who finished the free preview`,
+                      },
                       { label: "Checkout starts", value: kpisQ.data.funnel.checkoutStarts, note: `${kpisQ.data.funnel.checkoutCompletions} paid completions` },
                       { label: "30-day learner return", value: formatAdminPercent(kpisQ.data.engagement.thirtyDayReturnRate), note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} returned` },
                       { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started sessions" },
@@ -824,7 +832,7 @@ export default function Admin() {
                   <button
                     className="admin-btn"
                     onClick={() => downloadCSV(
-                      trialsQ.data!.map(r => ({ email: r.email, source: r.source, signed_up: new Date(r.createdAt).toISOString() })),
+                      trialsQ.data!.map(r => ({ email: r.email, phone: r.phone ?? "", course: r.source, signed_up: new Date(r.createdAt).toISOString() })),
                       `echelon-trial-emails-${new Date().toISOString().slice(0,10)}.csv`
                     )}
                     style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
@@ -842,7 +850,7 @@ export default function Admin() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                    {["#", "Email", "Source", "Date"].map(h => (
+                    {["#", "Email", "Phone", "Course", "Date"].map(h => (
                       <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                     ))}
                     <th style={{ padding: "10px 16px" }} />
@@ -853,6 +861,11 @@ export default function Admin() {
                     <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
                       <td style={{ padding: "12px 16px", fontSize: 11, color: "#475569" }}>{i + 1}</td>
                       <td style={{ padding: "12px 16px", fontSize: 13, fontWeight: 600, color: "#334155" }}>{row.email}</td>
+                      <td style={{ padding: "12px 16px", fontSize: 12 }}>
+                        {row.phone
+                          ? <a href={`tel:${row.phone}`} style={{ color: "#0369A1", textDecoration: "none" }}>{row.phone}</a>
+                          : <span style={{ color: "#94A3B8" }}>—</span>}
+                      </td>
                       <td style={{ padding: "12px 16px" }}>
                         <span style={{ padding: "3px 10px", borderRadius: 100, background: "#1D4ED820", color: "#38BDF8", fontSize: 10, fontWeight: 700 }}>{row.source}</span>
                       </td>

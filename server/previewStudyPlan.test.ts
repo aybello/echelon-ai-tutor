@@ -127,4 +127,50 @@ describe("preview study plan keeps unconverted learners reachable", () => {
     const admin = read("server/routers/admin.ts");
     expect(admin).toContain('previewPlansRequested: eventCount("preview_plan_requested")');
   });
+
+  it("collects a phone number alongside the email", () => {
+    const routers = read("server/routers.ts");
+    const endpoint = routers.slice(
+      routers.indexOf("studyPlan: publicProcedure"),
+      routers.indexOf("studyPlan: publicProcedure") + 4000
+    );
+    expect(endpoint).toContain("phone: z.string()");
+    expect(endpoint).toContain("phone: input.phone?.trim() || null");
+    const gate = read("client/src/components/QuizGate.tsx");
+    expect(gate).toContain('type="tel"');
+  });
+
+  it("keeps the phone optional so it never blocks an email capture", () => {
+    const routers = read("server/routers.ts");
+    const endpoint = routers.slice(
+      routers.indexOf("studyPlan: publicProcedure"),
+      routers.indexOf("studyPlan: publicProcedure") + 4000
+    );
+    // A required phone at this moment would cost more leads than the extra
+    // channel is worth. Phone is required at checkout, where intent is proven.
+    expect(endpoint).toMatch(/phone: z\.string\(\)[^\n]*\.optional\(\)/);
+    const schema = read("drizzle/schema.ts");
+    const table = schema.slice(
+      schema.indexOf('export const trialEmails'),
+      schema.indexOf('export type TrialEmail')
+    );
+    expect(table).toContain('phone: varchar("phone", { length: 32 })');
+    expect(table).not.toMatch(/phone: varchar\("phone", \{ length: 32 \}\)\.notNull\(\)/);
+  });
+
+  it("makes captured leads visible and exportable to the owner", () => {
+    // A lead the owner cannot see or export is not a lead.
+    const admin = read("client/src/pages/Admin.tsx");
+    expect(admin).toContain('"#", "Email", "Phone", "Course", "Date"');
+    expect(admin).toContain('phone: r.phone ?? ""');
+  });
+
+  it("reports how many learners exhaust the free preview", () => {
+    // Without the denominator, the capture count means nothing.
+    const admin = read("server/routers/admin.ts");
+    expect(admin).toContain("previewGateHits");
+    expect(admin).toContain('completionReason === "preview_gate"');
+    const ui = read("client/src/pages/Admin.tsx");
+    expect(ui).toContain("Paywall email capture");
+  });
 });

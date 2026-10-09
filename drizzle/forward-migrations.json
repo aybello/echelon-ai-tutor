@@ -383,6 +383,27 @@
           ]
         }
       ]
+    },
+    {
+      "version": 77,
+      "tag": "0077_trial_lead_phone",
+      "file": "drizzle/0077_trial_lead_phone.sql",
+      "sha256": "3702b29b3cce305f6281efdebc9dbabf57d43770f63cf0d75c5341985ee711c6",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "trial_emails"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "trial_emails",
+          "column": "phone",
+          "targetType": "varchar(32)",
+          "targetNullable": true,
+          "sqlType": "varchar(32)"
+        }
+      ]
     }
   ]
 }

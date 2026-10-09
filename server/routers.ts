@@ -310,6 +310,10 @@ export const appRouter = router({
       .input(
         z.object({
           email: z.string().email("Please enter a valid email address"),
+          // Collected alongside email so a warm lead can be reached by more
+          // than one channel. Optional at the gate: demanding it before any
+          // value is delivered would cost more leads than it gains.
+          phone: z.string().trim().max(32).optional(),
           // Course keys are at most 22 characters today; 32 matches the column.
           productKey: z.string().min(1).max(32),
           score: z.number().int().min(0).max(100),
@@ -340,6 +344,7 @@ export const appRouter = router({
         if (existing.length === 0) {
           await db.insert(trialEmails).values({
             email,
+            phone: input.phone?.trim() || null,
             // Records which course earned the lead, so follow-up is targeted.
             source: input.productKey.slice(0, 32),
           });

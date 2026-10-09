@@ -61,6 +61,12 @@ export type InsertQuestionErrorReport = typeof questionErrorReports.$inferInsert
 export const trialEmails = mysqlTable("trial_emails", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull(),
+  /**
+   * Optional second contact channel for a warm lead. Nullable on purpose: the
+   * gate must never block capture on it, because an email we hold beats a
+   * phone number we never got because the form demanded too much up front.
+   */
+  phone: varchar("phone", { length: 32 }),
   source: varchar("source", { length: 32 }).notNull().default("quiz_gate"), // where the gate was hit
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });

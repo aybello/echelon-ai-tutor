@@ -92,6 +92,7 @@ export default function QuizGate({
   // Second path for learners who are not ready to buy in this moment. Without
   // it, everyone who does not buy right now is unreachable forever.
   const [planEmail, setPlanEmail] = useState("");
+  const [planPhone, setPlanPhone] = useState("");
   const [planError, setPlanError] = useState("");
   const [planSent, setPlanSent] = useState(false);
 
@@ -146,6 +147,7 @@ export default function QuizGate({
     if (!productKey || !diagnostic || diagnostic.total === 0) return;
     sendStudyPlan.mutate({
       email,
+      phone: planPhone.trim() || undefined,
       productKey,
       score: diagnostic.score,
       correct: diagnostic.correct,
@@ -366,6 +368,18 @@ export default function QuizGate({
                           {sendStudyPlan.isPending ? "Sending…" : "Send it"}
                         </button>
                       </div>
+                      {/* Optional on purpose. Requiring it here would cost more
+                          leads than the extra channel is worth; phone is
+                          required at checkout where intent is already proven. */}
+                      <input
+                        type="tel"
+                        value={planPhone}
+                        onChange={e => setPlanPhone(e.target.value)}
+                        placeholder="Phone (optional, for exam reminders)"
+                        autoComplete="tel"
+                        aria-label="Phone number, optional"
+                        style={{ width: "100%", marginTop: 6, padding: "9px 11px", borderRadius: 8, border: "1.5px solid #CBD5E1", fontSize: 13, fontFamily: "inherit", color: "#0F172A", boxSizing: "border-box" }}
+                      />
                       {planError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, margin: "7px 0 0" }}>{planError}</p>}
                     </form>
                   )

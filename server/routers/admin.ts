@@ -329,6 +329,22 @@ export const adminRouter = router({
         productSelections: eventCount("product_selected"),
         // Learners retained at the paywall who were not ready to buy.
         previewPlansRequested: eventCount("preview_plan_requested"),
+        /**
+         * Learners who used the entire free preview. These are the warmest
+         * prospects the business has, and until the study plan capture
+         * shipped, almost none of them left any way to be contacted again.
+         */
+        previewGateHits: events.filter(event => {
+          if (event.eventName !== "quiz_completed") return false;
+          // The journey events span 60 days; the funnel reports 30.
+          if (event.occurredAt < since30) return false;
+          try {
+            const meta = event.metadata ? JSON.parse(event.metadata) : null;
+            return meta?.completionReason === "preview_gate";
+          } catch {
+            return false;
+          }
+        }).length,
         checkoutStarts: eventCount("checkout_started"),
         checkoutCompletions: eventCount("checkout_completed"),
         signups: eventCount("signup"),
