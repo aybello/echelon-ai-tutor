@@ -27,12 +27,12 @@ const PARTNER_TYPES = [
   {
     icon: "🤝",
     title: "Industry Associations",
-    body: "Partner with Echelon to offer discounted access to your members. We work with OWWCO, EOCP, AWWOA, and other provincial bodies to ensure content alignment.",
+    body: "Partner with Echelon to offer discounted access to your members. Our content is independently developed and aligned to published certification outlines across Ontario, BC, Alberta, Saskatchewan, and Manitoba.",
   },
 ];
 
 const BENEFITS = [
-  { stat: "18,876+", label: "Practice questions across 36 courses" },
+  { stat: "18,000+", label: "Practice questions across the course catalogue" },
   { stat: "5", label: "Provinces supported (ON, BC, AB, SK, MB)" },
   { stat: "4", label: "WPI streams (Water, Wastewater, Distribution, Collection)" },
   { stat: "AI", label: "Tutor with confidence scoring and pattern detection" },
