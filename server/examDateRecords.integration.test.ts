@@ -73,20 +73,20 @@ suite("exam-date concurrency and reminder integrity with a real database", () =>
     const who = email("delivery"); await save(who); const [old] = await getRows(who);
     const key = workKey("exam-email", `${who}:class1-water:2030-06-01:7`); keys.push(key);
     const send = vi.fn().mockResolvedValue(undefined);
-    await Promise.allSettled([deliverCurrentExamReminder(db, old, 7, send), deliverCurrentExamReminder(db, old, 7, send)]);
+    await Promise.allSettled([deliverCurrentExamReminder(db, old, [7], send), deliverCurrentExamReminder(db, old, [7], send)]);
     expect(send).toHaveBeenCalledTimes(1);
     await save(who);
-    await deliverCurrentExamReminder(db, (await getRows(who))[0], 7, send);
+    await deliverCurrentExamReminder(db, (await getRows(who))[0], [7], send);
     expect(send).toHaveBeenCalledTimes(1);
     await save(who, "2030-07-01");
-    expect(await deliverCurrentExamReminder(db, old, 14, send)).toBe(false);
+    expect(await deliverCurrentExamReminder(db, old, [14], send)).toBe(false);
     await removeExamDate(db, who, "class1");
-    expect(await deliverCurrentExamReminder(db, old, 30, send)).toBe(false);
+    expect(await deliverCurrentExamReminder(db, old, [30], send)).toBe(false);
   });
   it("does not credit the replacement date when it changes during SMTP delivery", async () => {
     const who = email("during-send"); await save(who); const [old] = await getRows(who);
     keys.push(workKey("exam-email", `${who}:class1-water:2030-06-01:7`));
-    await deliverCurrentExamReminder(db, old, 7, async () => { await save(who, "2030-07-01"); });
+    await deliverCurrentExamReminder(db, old, [7], async () => { await save(who, "2030-07-01"); });
     expect((await getRows(who))[0].remindersSent).toBe("[]");
   });
   it("enforces authenticated ownership and uses normalized keys on set/get/remove routes", async () => {

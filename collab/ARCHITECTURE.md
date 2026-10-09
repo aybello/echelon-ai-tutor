@@ -112,10 +112,10 @@ Used by: dashboard readiness score, AI tutor context, trigger engine nudge email
 
 | Job | Schedule | File |
 |-----|----------|------|
-| Exam reminders | Daily 9 AM UTC | `server/jobs/examReminders.ts` |
-| Trigger engine (nudge emails) | Daily 9 PM UTC | `server/jobs/triggerEngine.ts` |
+| Exam reminders (catch-up aware) | Daily 8 AM UTC (Manus Heartbeat, re-registered 2026-10-09) | `server/jobs/examReminders.ts` |
+| Trigger engine (nudge emails) | Daily 9 PM UTC (Manus Heartbeat, re-registered 2026-10-09) | `server/jobs/triggerEngine.ts` |
 | Welcome email | Hourly at :05 | `server/jobs/welcomeEmail.ts` |
-| Stripe reconciliation | Daily 6 AM UTC | `server/jobs/reconcile.ts` |
+| Stripe reconciliation | Daily 3 AM UTC (Manus Heartbeat, re-registered 2026-10-09) | `server/jobs/reconcile.ts` |
 | DB keep-alive | Every 5 min (Manus Heartbeat) | `/api/scheduled/db-keepalive` |
 | AI Tutor health probe | Every 30 min | `/api/scheduled/tutor-health` |
 | Abandoned team order recovery | Daily | `/api/scheduled/recover-team-orders` |

@@ -40,7 +40,7 @@ function getReminderSubject(days: number, productLabel: string): string {
   if (days === 1) return `⏰ Your ${productLabel} exam is TOMORROW — final review time!`;
   if (days === 7) return `📅 7 days until your ${productLabel} exam — stay on track`;
   if (days === 14) return `📚 2 weeks to your ${productLabel} exam — keep the momentum`;
-  return `🎯 30 days until your ${productLabel} exam — great time to start`;
+  return `🎯 ${days} days until your ${productLabel} exam — great time to start`;
 }
 
 function getReminderHtml(
@@ -179,26 +179,34 @@ export async function runExamReminders(assertOwned: () => Promise<void> = async 
     await assertOwned();
     const days = getDaysUntil(row.examDate);
 
-    // Skip past exams (more than 1 day ago)
-    if (days < 0) continue;
+    // Skip exams that are today or already past: the last reminder is the
+    // 1-day message, and a "tomorrow" email on exam morning would be wrong.
+    if (days < 1) continue;
 
     let alreadySent: number[];
     try { alreadySent = parseReminderHistory(row.remindersSent); }
     catch { errors.push(`Invalid reminder history for exam date ${row.id}`); continue; }
 
-    for (const interval of REMINDER_INTERVALS) {
-      if (days !== interval) continue;
-      if (alreadySent.includes(interval)) continue;
+    // A reminder window is due once days-until reaches the interval. Catch-up:
+    // if a run was missed (scheduler outage, exam date added mid-window), send
+    // the most urgent pending reminder instead of silently skipping it, and
+    // retire the larger missed windows so the learner never receives two
+    // reminders for the same stretch.
+    const due = REMINDER_INTERVALS.filter(
+      (interval) => days <= interval && !alreadySent.includes(interval)
+    );
+    if (due.length > 0) {
+      const interval = Math.min(...due);
 
       const productLabel = PRODUCT_LABELS[row.productKey] ?? row.productKey;
 
       try {
         await assertOwned();
-        const delivered = await deliverCurrentExamReminder(db, row, interval, () => transporter!.sendMail({
+        const delivered = await deliverCurrentExamReminder(db, row, due, () => transporter!.sendMail({
           from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
           to: row.email,
-          subject: getReminderSubject(interval, productLabel),
-          html: getReminderHtml(row.email, productLabel, row.productKey, interval, row.examDate.toISOString()),
+          subject: getReminderSubject(days, productLabel),
+          html: getReminderHtml(row.email, productLabel, row.productKey, days, row.examDate.toISOString()),
         }));
 
         if (delivered) sent++;
@@ -214,17 +222,24 @@ export async function runExamReminders(assertOwned: () => Promise<void> = async 
   return { sent, errors };
 }
 
-/** Recheck a scanned date before SMTP and fence its acknowledgement after delivery. */
+/**
+ * Recheck a scanned date before SMTP and fence its acknowledgement after
+ * delivery. `intervals` holds every pending window for this exam date (most
+ * urgent first after sorting); exactly one email is sent, keyed to the most
+ * urgent window, and every pending window is recorded afterwards so a
+ * caught-up learner is never mailed twice for the same stretch.
+ */
 export async function deliverCurrentExamReminder(
-  db: Database, scanned: typeof examDates.$inferSelect, interval: number,
+  db: Database, scanned: typeof examDates.$inferSelect, intervals: number[],
   send: () => Promise<unknown>,
 ) {
+  const interval = Math.min(...intervals);
   const [current] = await db.select().from(examDates)
     .where(and(eq(examDates.id, scanned.id), eq(examDates.examDate, scanned.examDate))).limit(1);
   if (!current || parseReminderHistory(current.remindersSent).includes(interval)) return false;
   const key = normalizeExamDateKey(current.email, current.productKey);
   const delivered = await deliverOnce(db, workKey("exam-email",
     `${key.email}:${key.productKey}:${current.examDate.toISOString().slice(0,10)}:${interval}`), send);
-  await recordExamReminder(db, current, interval);
+  for (const pending of intervals) await recordExamReminder(db, current, pending);
   return delivered;
 }
