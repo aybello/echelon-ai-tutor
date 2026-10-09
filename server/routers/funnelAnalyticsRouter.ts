@@ -30,6 +30,18 @@ const knownProductKey = z.string().refine(
 );
 
 /**
+ * The early study plan offer appearing is its own measurable moment. Without
+ * it, capture would be measured against the paywall, which most learners never
+ * reach. Exported so the contract can be asserted directly.
+ */
+export const previewPlanOfferedEvent = z.object({
+  event: z.literal("preview_plan_offered"),
+  examType: z.string().min(1).max(64),
+  questionCount: z.number().int().min(0).max(500),
+  visitorId,
+});
+
+/**
  * Narrow public endpoint for privacy-safe buyer-journey events. Every event
  * name and field is allowlisted so clients cannot write arbitrary event names,
  * PII, raw URLs, referrers, or unbounded metadata into product analytics.
@@ -71,15 +83,7 @@ export const funnelAnalyticsRouter = router({
         completionReason: z.enum(["session_limit", "preview_gate", "pool_exhausted"]),
         visitorId,
       }),
-      // The early study plan offer appearing is its own measurable moment.
-      // Without it, capture would be measured against the paywall, which most
-      // learners never reach.
-      z.object({
-        event: z.literal("preview_plan_offered"),
-        examType: z.string().min(1).max(64),
-        questionCount: z.number().int().min(0).max(500),
-        visitorId,
-      }),
+      previewPlanOfferedEvent,
       z.object({
         event: z.literal("ai_tutor_opened"),
         examType: z.string().min(1).max(64),

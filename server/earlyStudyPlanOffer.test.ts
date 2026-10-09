@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { appRouter } from "./routers";
+import { studyPlanCaptureInput } from "./routers";
+import { previewPlanOfferedEvent } from "./routers/funnelAnalyticsRouter";
 import { shouldShowSoftGate, SOFT_GATE_AT_QUESTION } from "../client/src/components/PreviewStudyPlanPrompt";
 import { buildStudyPlanSteps } from "./previewStudyPlanEmail";
 import { PRODUCT_KPI_JOURNEY_EVENT_NAMES } from "./analyticsAggregates";
@@ -54,11 +55,7 @@ describe("early study plan offer visibility", () => {
 
 describe("study plan capture contract", () => {
   it("accepts a mid-preview capture with the honest stage", () => {
-    const schema = (appRouter._def.procedures as Record<string, { _def: { inputs: unknown[] } }>)[
-      "trial.studyPlan"
-    ]._def.inputs[0] as { parse: (value: unknown) => { stage: string } };
-
-    const parsed = schema.parse({
+    const parsed = studyPlanCaptureInput.parse({
       email: "learner@example.com",
       productKey: "class1-water",
       score: 60,
@@ -72,11 +69,7 @@ describe("study plan capture contract", () => {
   });
 
   it("still defaults to the completed-preview stage for the paywall capture", () => {
-    const schema = (appRouter._def.procedures as Record<string, { _def: { inputs: unknown[] } }>)[
-      "trial.studyPlan"
-    ]._def.inputs[0] as { parse: (value: unknown) => { stage: string } };
-
-    const parsed = schema.parse({
+    const parsed = studyPlanCaptureInput.parse({
       email: "learner@example.com",
       productKey: "class1-water",
       score: 60,
@@ -86,6 +79,20 @@ describe("study plan capture contract", () => {
     });
 
     expect(parsed.stage).toBe("preview_complete");
+  });
+
+  it("keeps phone optional so the early ask stays cheap to answer", () => {
+    const parsed = studyPlanCaptureInput.parse({
+      email: "learner@example.com",
+      productKey: "class1-water",
+      score: 60,
+      correct: 3,
+      total: 5,
+      weakTopics: [],
+      stage: "in_preview",
+    });
+
+    expect(parsed.phone).toBeUndefined();
   });
 
   it("gives a mid-preview learner a plan that is still actionable", () => {
@@ -107,17 +114,23 @@ describe("offer measurement", () => {
   });
 
   it("accepts the offer impression on the public funnel endpoint", () => {
-    const schema = (appRouter._def.procedures as Record<string, { _def: { inputs: unknown[] } }>)[
-      "funnelAnalytics.track"
-    ]._def.inputs[0] as { parse: (value: unknown) => { event: string } };
-
-    const parsed = schema.parse({
+    const parsed = previewPlanOfferedEvent.parse({
       event: "preview_plan_offered",
       examType: "class1-water",
-      questionCount: 5,
+      questionCount: SOFT_GATE_AT_QUESTION,
       visitorId: "a".repeat(32),
     });
 
     expect(parsed.event).toBe("preview_plan_offered");
+    expect(parsed.questionCount).toBe(SOFT_GATE_AT_QUESTION);
+  });
+
+  it("rejects an unbounded visitor identifier on the public endpoint", () => {
+    expect(() => previewPlanOfferedEvent.parse({
+      event: "preview_plan_offered",
+      examType: "class1-water",
+      questionCount: 5,
+      visitorId: "short",
+    })).toThrow();
   });
 });

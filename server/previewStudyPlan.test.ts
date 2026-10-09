@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildStudyPlanSteps } from "./previewStudyPlanEmail";
+import { studyPlanCaptureInput } from "./routers";
 import { buildPreviewDiagnostic } from "../shared/previewDiagnostic";
 
 /**
@@ -129,26 +130,35 @@ describe("preview study plan keeps unconverted learners reachable", () => {
   });
 
   it("collects a phone number alongside the email", () => {
-    const routers = read("server/routers.ts");
-    const endpoint = routers.slice(
-      routers.indexOf("studyPlan: publicProcedure"),
-      routers.indexOf("studyPlan: publicProcedure") + 4000
-    );
-    expect(endpoint).toContain("phone: z.string()");
-    expect(endpoint).toContain("phone: input.phone?.trim() || null");
+    // Asserted against the real contract, not its source text, so moving the
+    // schema out of the endpoint body cannot silently weaken this guarantee.
+    const parsed = studyPlanCaptureInput.parse({
+      email: "learner@example.com",
+      productKey: "class1-water",
+      score: 60,
+      correct: 9,
+      total: 15,
+      weakTopics: [],
+      phone: " 613-555-0123 ",
+    });
+    expect(parsed.phone).toBe("613-555-0123");
+    expect(read("server/routers.ts")).toContain("phone: input.phone?.trim() || null");
     const gate = read("client/src/components/QuizGate.tsx");
     expect(gate).toContain('type="tel"');
   });
 
   it("keeps the phone optional so it never blocks an email capture", () => {
-    const routers = read("server/routers.ts");
-    const endpoint = routers.slice(
-      routers.indexOf("studyPlan: publicProcedure"),
-      routers.indexOf("studyPlan: publicProcedure") + 4000
-    );
     // A required phone at this moment would cost more leads than the extra
     // channel is worth. Phone is required at checkout, where intent is proven.
-    expect(endpoint).toMatch(/phone: z\.string\(\)[^\n]*\.optional\(\)/);
+    const parsed = studyPlanCaptureInput.parse({
+      email: "learner@example.com",
+      productKey: "class1-water",
+      score: 60,
+      correct: 9,
+      total: 15,
+      weakTopics: [],
+    });
+    expect(parsed.phone).toBeUndefined();
     const schema = read("drizzle/schema.ts");
     const table = schema.slice(
       schema.indexOf('export const trialEmails'),

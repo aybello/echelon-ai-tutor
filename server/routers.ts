@@ -58,6 +58,32 @@ import { sendPreviewStudyPlanEmail } from "./previewStudyPlanEmail";
 import { ELECTRICIAN_309A_PROGRAM_KEY } from "../shared/certificationPrograms";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
 
+/**
+ * Study plan capture contract, shared by both offer placements: the early,
+ * dismissible prompt partway through the free preview and the paywall at the
+ * end of it. Exported so the contract can be asserted directly rather than
+ * reached through router internals.
+ */
+export const studyPlanCaptureInput = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  // Collected alongside email so a warm lead can be reached by more than one
+  // channel. Optional at the gate: demanding it before any value is delivered
+  // would cost more leads than it gains.
+  phone: z.string().trim().max(32).optional(),
+  // Course keys are at most 22 characters today; 32 matches the column.
+  productKey: z.string().min(1).max(32),
+  score: z.number().int().min(0).max(100),
+  correct: z.number().int().min(0).max(500),
+  total: z.number().int().min(1).max(500),
+  weakTopics: z.array(z.string().min(1).max(64)).max(3),
+  /**
+   * Where the learner asked for the plan. The offer also appears partway
+   * through the preview, so the email and the owner alert must not claim they
+   * finished something they are still inside.
+   */
+  stage: z.enum(["in_preview", "preview_complete"]).default("preview_complete"),
+});
+
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -307,27 +333,7 @@ export const appRouter = router({
      * attempted so a delivery failure can never discard it.
      */
     studyPlan: publicProcedure
-      .input(
-        z.object({
-          email: z.string().email("Please enter a valid email address"),
-          // Collected alongside email so a warm lead can be reached by more
-          // than one channel. Optional at the gate: demanding it before any
-          // value is delivered would cost more leads than it gains.
-          phone: z.string().trim().max(32).optional(),
-          // Course keys are at most 22 characters today; 32 matches the column.
-          productKey: z.string().min(1).max(32),
-          score: z.number().int().min(0).max(100),
-          correct: z.number().int().min(0).max(500),
-          total: z.number().int().min(1).max(500),
-          weakTopics: z.array(z.string().min(1).max(64)).max(3),
-          /**
-           * Where the learner asked for the plan. The offer also appears
-           * partway through the preview, so the email and the owner alert
-           * must not claim they finished something they are still inside.
-           */
-          stage: z.enum(["in_preview", "preview_complete"]).default("preview_complete"),
-        })
-      )
+      .input(studyPlanCaptureInput)
       .mutation(async ({ input }) => {
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
