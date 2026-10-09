@@ -769,6 +769,13 @@ export default function Admin() {
                           : "—",
                         note: `${kpisQ.data.funnel.previewPlansRequested} study plans requested by learners who finished the free preview`,
                       },
+                      {
+                        label: "Study plan capture",
+                        value: kpisQ.data.funnel.previewPlansOffered > 0
+                          ? formatAdminPercent(kpisQ.data.funnel.previewPlansRequested / kpisQ.data.funnel.previewPlansOffered)
+                          : "—",
+                        note: `${kpisQ.data.funnel.previewPlansRequested} of ${kpisQ.data.funnel.previewPlansOffered} learners shown the offer gave us their email`,
+                      },
                       { label: "Checkout starts", value: kpisQ.data.funnel.checkoutStarts, note: `${kpisQ.data.funnel.checkoutCompletions} paid completions` },
                       { label: "30-day learner return", value: formatAdminPercent(kpisQ.data.engagement.thirtyDayReturnRate), note: `${kpisQ.data.engagement.thirtyDayReturners} of ${kpisQ.data.engagement.thirtyDayReturnCohort} returned` },
                       { label: "Recorded study sessions", value: `${kpisQ.data.engagement.recordedStudySessionCompletions}/${kpisQ.data.engagement.recordedStudySessionStarts}`, note: "Completed / started sessions" },

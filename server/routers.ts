@@ -320,6 +320,12 @@ export const appRouter = router({
           correct: z.number().int().min(0).max(500),
           total: z.number().int().min(1).max(500),
           weakTopics: z.array(z.string().min(1).max(64)).max(3),
+          /**
+           * Where the learner asked for the plan. The offer also appears
+           * partway through the preview, so the email and the owner alert
+           * must not claim they finished something they are still inside.
+           */
+          stage: z.enum(["in_preview", "preview_complete"]).default("preview_complete"),
         })
       )
       .mutation(async ({ input }) => {
@@ -338,7 +344,7 @@ export const appRouter = router({
         await trackEvent("preview_plan_requested", {
           email,
           productKey: input.productKey,
-          extra: { score: input.score, weakTopicCount: input.weakTopics.length },
+          extra: { score: input.score, weakTopicCount: input.weakTopics.length, stage: input.stage },
         }).catch(() => undefined);
 
         if (existing.length === 0) {
@@ -350,7 +356,9 @@ export const appRouter = router({
           });
           await notifyOwner({
             title: "Preview study plan requested",
-            content: `${email} finished the free preview of ${input.productKey} scoring ${input.score}% and asked for their study plan.`,
+            content: input.stage === "in_preview"
+              ? `${email} asked for a study plan ${input.total} questions into the free preview of ${input.productKey}, scoring ${input.score}% so far.`
+              : `${email} finished the free preview of ${input.productKey} scoring ${input.score}% and asked for their study plan.`,
           }).catch(() => undefined);
         }
 
@@ -371,6 +379,7 @@ export const appRouter = router({
             courseUrl,
             offerUrl: courseUrl,
             priceLabel: offer.priceLabel ?? "available on the pricing page",
+            stage: input.stage,
           });
         } catch (error) {
           console.error("[preview-plan] Delivery failed after capture:", error);

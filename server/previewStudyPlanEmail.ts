@@ -28,6 +28,12 @@ export interface PreviewStudyPlanEmailPayload {
   /** Absolute URL to the matching Exam Pass. */
   offerUrl: string;
   priceLabel: string;
+  /**
+   * Where in the preview the learner asked for the plan. The offer now also
+   * appears partway through, so the email must not tell someone they finished
+   * a preview they are still in the middle of.
+   */
+  stage?: "in_preview" | "preview_complete";
 }
 
 function createTransporter(): Transporter {
@@ -104,6 +110,7 @@ export async function sendPreviewStudyPlanEmail(
     courseUrl,
     offerUrl,
     priceLabel,
+    stage = "preview_complete",
   } = payload;
 
   if (!ENV.smtpHost || !ENV.smtpUser || !ENV.smtpPass) {
@@ -114,14 +121,21 @@ export async function sendPreviewStudyPlanEmail(
 
   const steps = buildStudyPlanSteps({ score, weakTopics, courseLabel });
   const safeCourse = escapeHtml(courseLabel);
+  const inPreview = stage === "in_preview";
+  const resultLabel = inPreview ? "YOUR RESULT SO FAR" : "YOUR PREVIEW RESULT";
+  const subheading = inPreview
+    ? "Built from the questions you have answered so far."
+    : "Built from the questions you just answered.";
   const topicsLine = weakTopics.length
     ? weakTopics.map(escapeHtml).join(", ")
-    : "None. You answered every preview question correctly.";
+    : inPreview
+      ? "None so far. You have answered every question correctly."
+      : "None. You answered every preview question correctly.";
 
   const textBody = [
     `Here is your ${courseLabel} study plan.`,
     ``,
-    `Your preview result: ${score} percent (${correct} of ${total} correct)`,
+    `${inPreview ? "Your result so far" : "Your preview result"}: ${score} percent (${correct} of ${total} correct)`,
     `Topics to strengthen: ${weakTopics.length ? weakTopics.join(", ") : "none, you answered every question correctly"}`,
     ``,
     `Your plan:`,
@@ -146,11 +160,11 @@ export async function sendPreviewStudyPlanEmail(
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #1D4ED8, #0EA5E9); padding: 28px 24px; border-radius: 12px 12px 0 0;">
           <h2 style="color: #fff; margin: 0; font-size: 21px; font-weight: 800;">Your ${safeCourse} study plan</h2>
-          <p style="color: rgba(255,255,255,0.88); margin: 8px 0 0; font-size: 14px;">Built from the questions you just answered.</p>
+          <p style="color: rgba(255,255,255,0.88); margin: 8px 0 0; font-size: 14px;">${subheading}</p>
         </div>
         <div style="background: #F8FAFC; padding: 26px 24px; border: 1px solid #E2E8F0; border-top: none; border-radius: 0 0 12px 12px;">
           <div style="background: #fff; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px;">
-            <p style="margin: 0 0 6px; font-size: 11px; font-weight: 800; color: #64748B; letter-spacing: 0.08em;">YOUR PREVIEW RESULT</p>
+            <p style="margin: 0 0 6px; font-size: 11px; font-weight: 800; color: #64748B; letter-spacing: 0.08em;">${resultLabel}</p>
             <p style="margin: 0 0 10px; font-size: 28px; font-weight: 900; color: #1D4ED8;">${score}%<span style="font-size: 13px; font-weight: 600; color: #64748B;"> &nbsp;${correct} of ${total} correct</span></p>
             <p style="margin: 0; font-size: 13px; color: #475569;"><strong>Topics to strengthen:</strong> ${topicsLine}</p>
           </div>

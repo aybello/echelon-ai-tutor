@@ -43,6 +43,13 @@ export type AnalyticsEventName =
    * losing them permanently.
    */
   | "preview_plan_requested"
+  /**
+   * The early study plan offer was shown partway through the free preview.
+   * Recorded separately from the request so the capture rate has an honest
+   * denominator: how many learners actually saw the offer, rather than how
+   * many reached a paywall that roughly four in five never get to.
+   */
+  | "preview_plan_offered"
   | "checkout_started"
   | "checkout_completed"
   | "diagnostic_completed"

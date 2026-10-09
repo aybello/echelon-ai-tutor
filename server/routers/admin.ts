@@ -330,6 +330,13 @@ export const adminRouter = router({
         // Learners retained at the paywall who were not ready to buy.
         previewPlansRequested: eventCount("preview_plan_requested"),
         /**
+         * The early offer, shown partway through the free preview. This is the
+         * honest denominator for capture: the paywall is reached by a minority
+         * of quiz starters, so measuring capture only against it understates
+         * how many learners we actually had a chance to keep.
+         */
+        previewPlansOffered: eventCount("preview_plan_offered"),
+        /**
          * Learners who used the entire free preview. These are the warmest
          * prospects the business has, and until the study plan capture
          * shipped, almost none of them left any way to be contacted again.

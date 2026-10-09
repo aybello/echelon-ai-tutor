@@ -32,6 +32,7 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
+import PreviewStudyPlanPrompt from "@/components/PreviewStudyPlanPrompt";
 import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
 import "./StudyWorkspace.css";
 
@@ -660,6 +661,19 @@ export default function QuizShell({
             </div>
           </div>
         ) : null}
+
+        {/* Early, dismissible study plan offer. Only about 18% of quiz
+            starters ever reach the hard paywall, so the offer has to arrive
+            while the learner is still here. Rendered once centrally so every
+            course behaves identically. */}
+        {!gate && (
+          <PreviewStudyPlanPrompt
+            examType={examType}
+            history={history as Array<{ module?: string; correct?: boolean }>}
+            gateActive={Boolean(gate)}
+            isFreePreview={isFreePreview}
+          />
+        )}
 
         {/* Module Overview panel — shown when a specific module is selected */}
         {!gate && moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (

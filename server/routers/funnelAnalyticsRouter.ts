@@ -71,6 +71,15 @@ export const funnelAnalyticsRouter = router({
         completionReason: z.enum(["session_limit", "preview_gate", "pool_exhausted"]),
         visitorId,
       }),
+      // The early study plan offer appearing is its own measurable moment.
+      // Without it, capture would be measured against the paywall, which most
+      // learners never reach.
+      z.object({
+        event: z.literal("preview_plan_offered"),
+        examType: z.string().min(1).max(64),
+        questionCount: z.number().int().min(0).max(500),
+        visitorId,
+      }),
       z.object({
         event: z.literal("ai_tutor_opened"),
         examType: z.string().min(1).max(64),
@@ -125,6 +134,12 @@ export const funnelAnalyticsRouter = router({
             correctCount: input.correctCount,
             completionReason: input.completionReason,
           },
+        });
+      } else if (input.event === "preview_plan_offered") {
+        await trackEvent(input.event, {
+          ...identity,
+          examType: input.examType,
+          extra: { questionCount: input.questionCount },
         });
       } else {
         await trackEvent(input.event, { ...identity, examType: input.examType });

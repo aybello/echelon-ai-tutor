@@ -21,6 +21,10 @@ export const PRODUCT_KPI_JOURNEY_EVENT_NAMES = [
   "buyer_path_selected",
   "course_browsed",
   "product_selected",
+  // Both halves of the study plan capture. Without these the dashboard
+  // reports zero captures no matter how many learners sign up.
+  "preview_plan_offered",
+  "preview_plan_requested",
   "checkout_started",
   "checkout_completed",
   "access_activated",
