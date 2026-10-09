@@ -33,3 +33,20 @@ describe("MANAGED_JOB_TASK_UIDS configuration", () => {
     }
   });
 });
+
+describe("managed job production gate configuration", () => {
+  const gateReady =
+    process.env.DEPLOYMENT_ENV &&
+    process.env.MANAGED_JOBS_ENABLED &&
+    process.env.MANAGED_JOBS_ORIGIN;
+
+  it.skipIf(!gateReady)("opens the host gate for the canonical production origin only", async () => {
+    const { managedJobHostAllowed } = await import("./jobs/managedJobs");
+    expect(process.env.DEPLOYMENT_ENV).toBe("production");
+    expect(process.env.MANAGED_JOBS_ENABLED).toBe("true");
+    const origin = new URL(process.env.MANAGED_JOBS_ORIGIN!);
+    expect(origin.protocol).toBe("https:");
+    expect(managedJobHostAllowed(origin.host)).toBe(true);
+    expect(managedJobHostAllowed("evil.example.com")).toBe(false);
+  });
+});
