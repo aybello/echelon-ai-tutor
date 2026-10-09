@@ -24,12 +24,20 @@ export function managedJobHostAllowed(
     env.MANAGED_JOBS_ENABLED !== "true"
   )
     return false;
-  try {
-    const origin = new URL(env.MANAGED_JOBS_ORIGIN ?? "");
-    return origin.protocol === "https:" && host === origin.host;
-  } catch {
-    return false;
+  if (!host) return false;
+  // One or more explicit production origins, comma-separated. Every entry
+  // must be an https origin; preview hosts are never listed here.
+  for (const entry of (env.MANAGED_JOBS_ORIGIN ?? "").split(",")) {
+    const candidate = entry.trim();
+    if (!candidate) continue;
+    try {
+      const origin = new URL(candidate);
+      if (origin.protocol === "https:" && host === origin.host) return true;
+    } catch {
+      continue;
+    }
   }
+  return false;
 }
 export function managedJobAllowed(
   host: string | undefined,
@@ -65,6 +73,12 @@ export function requireManagedJob(
       job
     )
   ) {
+    // Non-secret diagnostics: which precondition failed, never the values.
+    console.error(
+      `[managed-job:${job}] rejected scheduled request | host=${req.headers.host ?? "none"} | ` +
+        `authenticated=${Boolean(res.locals.scheduledAuthenticated || res.locals.cronUser?.isCron)} | ` +
+        `taskUidPresent=${Boolean(taskUid)} | hostAllowed=${managedJobHostAllowed(req.headers.host)}`
+    );
     res
       .status(503)
       .json({

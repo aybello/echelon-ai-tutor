@@ -40,13 +40,20 @@ describe("managed job production gate configuration", () => {
     process.env.MANAGED_JOBS_ENABLED &&
     process.env.MANAGED_JOBS_ORIGIN;
 
-  it.skipIf(!gateReady)("opens the host gate for the canonical production origin only", async () => {
+  it.skipIf(!gateReady)("opens the host gate for every configured production origin only", async () => {
     const { managedJobHostAllowed } = await import("./jobs/managedJobs");
     expect(process.env.DEPLOYMENT_ENV).toBe("production");
     expect(process.env.MANAGED_JOBS_ENABLED).toBe("true");
-    const origin = new URL(process.env.MANAGED_JOBS_ORIGIN!);
-    expect(origin.protocol).toBe("https:");
-    expect(managedJobHostAllowed(origin.host)).toBe(true);
+    const entries = process.env.MANAGED_JOBS_ORIGIN!.split(",")
+      .map(entry => entry.trim())
+      .filter(Boolean);
+    expect(entries.length).toBeGreaterThan(0);
+    for (const entry of entries) {
+      const origin = new URL(entry);
+      expect(origin.protocol).toBe("https:");
+      expect(managedJobHostAllowed(origin.host)).toBe(true);
+    }
     expect(managedJobHostAllowed("evil.example.com")).toBe(false);
+    expect(managedJobHostAllowed(undefined)).toBe(false);
   });
 });
