@@ -8,7 +8,7 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "NODE_ENV=development tsx watch server/_core/index.ts",
+    "dev": "NODE_ENV=development DEPLOYMENT_ENV=development tsx watch server/_core/index.ts",
     "build": "vite build && node --import tsx scripts/buildServer.ts && mkdir -p dist/scripts && cp server/scripts/jobPdfText.mjs dist/scripts/jobPdfText.mjs",
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json",
