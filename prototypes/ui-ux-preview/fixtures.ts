@@ -33,10 +33,11 @@ export function previewResult(path: string, input: any): any {
     case "admin.getCeuKpis": return { enrollments:0, learningStarted:0, modulesCompleted:0, finalStarted:0, finalSubmitted:0, retries:0, completed:0, certificatesViewed:0, evaluations:0, averageRating:null };
     case "admin.getProductKpis": return {
       generatedAt:now, periodDays:30,
-      funnel:{marketingPageViews:300, productSelections:50, buyerPathSelections:60, checkoutStarts:30, checkoutCompletions:20, diagnosticCompletions:10, mockExamCompletions:8},
+      funnel:{marketingPageViews:300, productSelections:50, buyerPathSelections:60, courseBrowses:120, previewPlansRequested:14, previewPlansOffered:60, previewGateHits:25, checkoutStarts:30, checkoutCompletions:20, signups:18, accessActivations:16, quizStarts:90, quizCompletions:40, diagnosticCompletions:10, mockExamCompletions:8},
       engagement:{weeklyActiveLearners:12, sevenDayReturnRate:60, sevenDayReturnCohort:10, sevenDayReturners:6, thirtyDayReturnRate:50, thirtyDayReturnCohort:8, thirtyDayReturners:4, recordedStudySessionCompletions:30, recordedStudySessionStarts:35, trainingRecordsAttested:0, trainingHoursExports:0, medianMinutesToFirstQuiz:4, quizImprovementPercentagePoints:5, quizImprovementSampleSize:3},
       commercial:{learningActivationRate:80, learningActivated:8, accessCohortSize:10, quizCompletionRate:80, quizCompleters:8, quizStarterCohortSize:10, pricingToCheckoutRate:20, attributedCheckouts:10, pricingCohortSize:50, refundRate:0, renewals:0, cancellations:0},
       teams:{assignedSeats:2, totalSeats:5, utilizationRate:40, allAccess:{assignedSeats:2,totalSeats:5}, coursePass:{allocatedLicences:0,totalLicences:0,activatedLicences:0}},
+      teamPipeline:{ordersStarted:9, ordersPaid:2, ordersAwaitingPayment:6, ordersFollowedUp:1, valueAwaitingPaymentCAD:1074},
       outcomes:{passRate:null, passed:0, failed:0, averageReadinessPassed:null, averageReadinessFailed:null},
     };
     case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": case "admin.getCustomerRecoveryEvidence": return [];
