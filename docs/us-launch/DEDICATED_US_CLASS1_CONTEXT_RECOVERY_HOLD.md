@@ -11,9 +11,9 @@
   - `us-class1-water-dist`
 - Git history records an October 8 sequence that deliberately created the dedicated product path:
   - `dba73972` scaffolded the dedicated courses as inactive with no content import;
-  - `283a50f6` records import and activation of a **398-item** reviewed package: 200 treatment and 198 distribution questions, originally routed for Ohio and New Jersey;
+  - `283a50f6` records import and activation of a **398-item** reviewed package: 200 treatment and 198 distribution questions, initially activated in the Ohio/New Jersey release context;
   - `0cda199c` records that an initial import landed in a database the application did not read, then changed the content scripts to resolve the same external target as the application; and
-  - `24a69551` records release of both dedicated banks into individual checkout after learner-visible inventory and mock-blueprint checks.
+  - `24a69551` records release of both dedicated banks into individual checkout after learner-visible inventory and mock-blueprint checks; `62ff4a3e` subsequently describes them as dedicated U.S. Class I courses for standardized WPI Class I content, with shared WPI courses retained for the other streams and class levels.
 - A 2026-10-10 read-only check of this sandbox's selected managed database found no rows or `question_bank_meta` record for either bank key. The running local Echelon processes expose only `DATABASE_URL`, not the external-target selector or external database credentials, so this check cannot query the database target named in `0cda199c`.
 - The shared WPI Class I banks do contain question records, but they are distinct products and must not be substituted for the dedicated U.S. banks without a separate, evidence-based product decision.
 - The legacy importer points to `/home/ubuntu/outputs/echelon-us-integration-2026-10-08/us-class1-import-package.json`; that package is not present in the current workspace and was not committed to Git.
@@ -45,7 +45,7 @@ The recovery record must answer:
 - What problem were the dedicated U.S. banks created to solve?
 - Were 200 treatment and 198 distribution questions already drafted, reviewed, staged, or released elsewhere?
 - Which database/environment was expected to receive them?
-- Was a shared-WPI fallback, coexistence model, or dedicated-only model intended?
+- Was the intended model the released dedicated-U.S.-Class-I default plus shared-WPI coverage for other streams/levels, a narrower state route, or another coexistence rule?
 - What release gates, source criteria version, commercial configuration, and state-specific positioning were approved?
 
 ## Resume gate
