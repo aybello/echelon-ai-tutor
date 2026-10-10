@@ -38,6 +38,7 @@ export const DATA_EXPLORER_DATASETS: readonly DataExplorerDataset[] = [
   { key: "subscriptions", tableName: "subscriptions", label: "Subscriptions", description: "Recurring and organization-managed subscriptions", category: "Commerce", orderBy: "updatedAt" },
   { key: "purchase-email-outbox", tableName: "purchase_email_outbox", label: "Purchase email outbox", description: "Receipt delivery status without message payloads", category: "Commerce", orderBy: "createdAt" },
   { key: "stripe-event-log", tableName: "stripe_event_log", label: "Stripe event ledger", description: "Webhook processing status without payment identifiers", category: "Commerce", orderBy: "createdAt" },
+  { key: "abandoned-checkouts", tableName: "abandoned_checkouts", label: "Abandoned checkouts", description: "Buyers who reached the payment page and did not finish", category: "Commerce", orderBy: "abandonedAt" },
 
   { key: "organizations", tableName: "organizations", label: "Organizations", description: "Team account contracts and capacity", category: "Teams", orderBy: "createdAt" },
   { key: "organization-members", tableName: "organization_members", label: "Organization members", description: "Managers and operator seats", category: "Teams", orderBy: "assignedAt" },

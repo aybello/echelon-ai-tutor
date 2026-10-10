@@ -1,453 +1,468 @@
 {
- "formatVersion": 1,
- "baseline": {
-  "version": 52,
-  "tag": "0052_activation_outcomes",
-  "contract": "drizzle/baseline-0052.contract.json",
-  "sha256": "afd3d15c00d6b6af551ce10e0c18d6da851957f725915a0327c3bcea35dc06de"
- },
- "migrations": [
-  {
-   "version": 53,
-   "tag": "0053_question_governance",
-   "file": "drizzle/0053_question_governance.sql",
-   "sha256": "10b8141bbfed9fc674116561468630e73b0911d4d018caccd1911be5c40cd03a",
-   "adoptIfCurrentSchemaMatches": true,
-   "baselineEmbedded": true
+  "formatVersion": 1,
+  "baseline": {
+    "version": 52,
+    "tag": "0052_activation_outcomes",
+    "contract": "drizzle/baseline-0052.contract.json",
+    "sha256": "afd3d15c00d6b6af551ce10e0c18d6da851957f725915a0327c3bcea35dc06de"
   },
-  {
-   "version": 54,
-   "tag": "0054_add_stripe_event_log_status_idx",
-   "file": "drizzle/0054_add_stripe_event_log_status_idx.sql",
-   "sha256": "0d0c3240ae8e4eca0feb482fb97eedb38d023665b28277f34ec4449147db27e3",
-   "proposedOnly": true,
-   "verifierAllowMissingIndexes": [
+  "migrations": [
     {
-     "table": "stripe_event_log",
-     "index": "stripe_event_log_status_idx",
-     "columns": [
-      "status"
-     ]
-    }
-   ]
-  },
-  {
-   "version": 55,
-   "tag": "0055_add_team_flex_orders_org_status_idx",
-   "file": "drizzle/0055_add_team_flex_orders_org_status_idx.sql",
-   "sha256": "80af908d0cc70697e78abfd573a9e3fb8d57f3fc9cf6d4bc04eec601a8346e04",
-   "proposedOnly": true,
-   "verifierAllowMissingIndexes": [
-    {
-     "table": "team_flex_orders",
-     "index": "team_flex_orders_org_status_idx",
-     "columns": [
-      "organizationId",
-      "status"
-     ]
-    }
-   ]
-  },
-  {
-   "version": 56,
-   "tag": "0056_certification_bank_governance",
-   "file": "drizzle/0056_certification_bank_governance.sql",
-   "sha256": "43df8406a00f5678956dbc16104ac64933326ed6e7c4e7c5ff9afc2702bb43f4",
-   "proposedOnly": true
-  },
-  {
-   "version": 57,
-   "tag": "0057_add_analytics_anonymous_hash",
-   "file": "drizzle/0057_add_analytics_anonymous_hash.sql",
-   "sha256": "f23c51e94bd338ac68d361971c933c8364a16c89492f90cfa94fb53c9f1e7e7e",
-   "proposedOnly": true,
-   "verifierAllowMissingIndexes": [
-    {
-     "table": "product_analytics_events",
-     "index": "analytics_anonymous_time_idx",
-     "columns": [
-      "anonymousHash",
-      "occurredAt"
-     ]
-    }
-   ]
-  },
-  {
-   "version": 58,
-   "tag": "0058_job_source_association",
-   "file": "drizzle/0058_job_source_association.sql",
-   "sha256": "dd351211bd3fd735fe3dbbf3c9700c9a49603c3bc32df6b28bd71662af9c8b10",
-   "proposedOnly": true,
-   "verifierAllowPendingColumnTypes": [
-    {
-     "table": "job_postings",
-     "column": "sourceType",
-     "baselineType": "enum('rss','scraper')",
-     "targetType": "enum('rss','scraper','association')"
-    }
-   ]
-  },
-  {
-   "version": 59,
-   "tag": "0059_on_the_job_training_records",
-   "file": "drizzle/0059_on_the_job_training_records.sql",
-   "sha256": "5543c3cb615765940ec0f9c4de0034537c5b492d60b5d1afd266232d1f6d9851",
-   "proposedOnly": true
-  },
-  {
-   "version": 60,
-   "tag": "0060_training_hours_records",
-   "file": "drizzle/0060_training_hours_records.sql",
-   "sha256": "81ae5191a6c828ed889d244590c82574a94aee0c63624de10598cf11822e4ccf",
-   "proposedOnly": true
-  },
-  {
-   "version": 61,
-   "tag": "0061_correct_oit_guide",
-   "file": "drizzle/0061_correct_oit_guide.sql",
-   "sha256": "c0fa45c6ab4ef93077388805e2ac13393163c7ec4b8748ffd1c07ca2c9b6f164",
-   "proposedOnly": true
-  },
-  {
-   "version": 62,
-   "tag": "0062_purchase_email_outbox",
-   "file": "drizzle/0062_purchase_email_outbox.sql",
-   "sha256": "8066b3b683bea9b47040f6645a6c82e7cde20aa1e9d8fdc812e7d13d26a7d026",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "purchase_email_outbox"
-    ]
-   }
-  },
-  {
-   "version": 63,
-   "tag": "0063_question_content_snapshots",
-   "file": "drizzle/0063_question_content_snapshots.sql",
-   "sha256": "83c4bf5548fa409d1690cb9f40537bd952c3fd7ed0a0ff43d8355d3c36c62939",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "question_content_snapshots"
-    ]
-   }
-  },
-  {
-   "version": 64,
-   "tag": "0064_flashcard_progress_operations",
-   "file": "drizzle/0064_flashcard_progress_operations.sql",
-   "sha256": "cebe081ea2d8001196ea88df6d330e38ea688d68eb28cbaafdff3d969ed1d04e",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "flashcard_progress_state",
-     "flashcard_progress_operations"
-    ]
-   }
-  },
-  {
-   "version": 65,
-   "tag": "0065_scheduled_work",
-   "file": "drizzle/0065_scheduled_work.sql",
-   "sha256": "b6486933918a082e151415161e2ca98de75d6d8c170305463599f7372b063be6",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "scheduled_work"
-    ]
-   }
-  },
-  {
-   "version": 66,
-   "tag": "0066_exam_dates_unique",
-   "file": "drizzle/0066_exam_dates_unique.sql",
-   "sha256": "8e3bee6d1242a4c295722631790201499539dbe9958e708ed330154f0747d465",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "exam_dates"
-    ]
-   }
-  },
-  {
-   "version": 67,
-   "tag": "0067_customer_recovery_evidence",
-   "file": "drizzle/0067_customer_recovery_evidence.sql",
-   "sha256": "474a0f9699c46fe8b3cf24b12cc86a9099eea00a449e5ebf03649a4bd2160845",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "customer_recovery_evidence"
-    ]
-   }
-  },
-  {
-   "version": 68,
-   "tag": "0068_customer_recovery_classification",
-   "file": "drizzle/0068_customer_recovery_classification.sql",
-   "sha256": "c17ff1737cf726095b7d8f012c082755a578e991ea63c32df9c1a24e316d3f19",
-   "proposedOnly": true
-  },
-  {
-   "version": 69,
-   "tag": "0069_team_flex_extension_verified_email",
-   "file": "drizzle/0069_team_flex_extension_verified_email.sql",
-   "sha256": "03bc3a7fed853ab5f698963659f4284e02a2989b9e48435aa1cd02939ef9b10e",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "team_flex_extensions"
-    ]
-   },
-   "verifierAllowPendingColumnNullability": [
-    {
-     "table": "team_flex_extensions",
-     "column": "purchaserUserId",
-     "baselineNullable": false,
-     "targetNullable": true
-    }
-   ]
-  },
-  {
-   "version": 70,
-   "tag": "0070_organization_recovery_audit",
-   "file": "drizzle/0070_organization_recovery_audit.sql",
-   "sha256": "9fbd9dc3091f2d289621fe09dae58c78782f274c7a47600943d45c3e133139ce",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "customer_recovery_batches",
-     "customer_recovery_import_items"
-    ]
-   }
-  },
-  {
-   "version": 71,
-   "tag": "0071_organization_recovery_importer_hardening",
-   "file": "drizzle/0071_organization_recovery_importer_hardening.sql",
-   "sha256": "d4b9d2100333d2746e1d527346c8869cdea5aca38e5aa145944365bcc0fd95cf",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "customer_recovery_batches",
-     "customer_recovery_import_items"
-    ],
-    "requireEmptyTables": [
-     "customer_recovery_batches",
-     "customer_recovery_import_items"
-    ]
-   }
-  },
-  {
-   "version": 72,
-   "tag": "0072_ceu_learning_records",
-   "file": "drizzle/0072_ceu_learning_records.sql",
-   "sha256": "e3ec1ef8f488cb0536a231adfb824bdd58844cc8ebaa3596119e693af315f119",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "ceu_learning_records",
-     "ceu_learning_daily_time"
-    ]
-   },
-   "verifierAllowMissingTables": [
-    "ceu_learning_records",
-    "ceu_learning_daily_time"
-   ]
-  },
-  {
-   "version": 73,
-   "tag": "0073_stripe_event_analytics",
-   "file": "drizzle/0073_stripe_event_analytics.sql",
-   "sha256": "63ead4de91a9a2c7f5664bb1b773211d47737d1ce601594bca9eef6f4345543c",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "stripe_event_log"
-    ]
-   },
-   "verifierAllowMissingColumns": [
-    {
-     "table": "stripe_event_log",
-     "column": "analyticsProcessed",
-     "targetType": "tinyint(1)",
-     "targetNullable": false,
-     "sqlType": "boolean",
-     "defaultSql": "default false"
-    }
-   ]
-  },
-  {
-   "version": 74,
-   "tag": "0074_blog_automation_runs",
-   "file": "drizzle/0074_blog_automation_runs.sql",
-   "sha256": "8d208524c805c406aedbafa5372e1c2d50775f0da2a05b4171eebd230cd7530f",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "blog_automation_runs"
-    ]
-   },
-   "verifierAllowMissingTables": [
-    "blog_automation_runs"
-   ]
-  },
-  {
-   "version": 75,
-   "tag": "0075_team_flex_attempt_attribution",
-   "file": "drizzle/0075_team_flex_attempt_attribution.sql",
-   "sha256": "f5d5dc22046679e9933910741b5a0fed4dac6e1778e3825c8cd1ab99ecd898ec",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "question_attempts"
-    ]
-   },
-   "verifierAllowMissingColumns": [
-    {
-     "table": "question_attempts",
-     "column": "flexLicenceId",
-     "targetType": "int",
-     "targetNullable": true,
-     "sqlType": "int"
-    }
-   ],
-   "verifierAllowMissingIndexes": [
-    {
-     "table": "question_attempts",
-     "index": "qa_flex_licence_created_idx",
-     "columns": [
-      "flexLicenceId",
-      "createdAt"
-     ]
-    }
-   ]
-  },
-  {
-   "version": 76,
-   "tag": "0076_contact_partnership_receipts",
-   "file": "drizzle/0076_contact_partnership_receipts.sql",
-   "sha256": "86165265ef10519f5eb69ef27469d77d95f2f0b37b1ad019d6e71680050db436",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "contact_submissions"
-    ]
-   },
-   "verifierAllowMissingColumns": [
-    {
-     "table": "contact_submissions",
-     "column": "requestKey",
-     "targetType": "varchar(36)",
-     "targetNullable": true,
-     "sqlType": "varchar(36)"
+      "version": 53,
+      "tag": "0053_question_governance",
+      "file": "drizzle/0053_question_governance.sql",
+      "sha256": "10b8141bbfed9fc674116561468630e73b0911d4d018caccd1911be5c40cd03a",
+      "adoptIfCurrentSchemaMatches": true,
+      "baselineEmbedded": true
     },
     {
-     "table": "contact_submissions",
-     "column": "organization",
-     "targetType": "varchar(128)",
-     "targetNullable": true,
-     "sqlType": "varchar(128)"
+      "version": 54,
+      "tag": "0054_add_stripe_event_log_status_idx",
+      "file": "drizzle/0054_add_stripe_event_log_status_idx.sql",
+      "sha256": "0d0c3240ae8e4eca0feb482fb97eedb38d023665b28277f34ec4449147db27e3",
+      "proposedOnly": true,
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "stripe_event_log",
+          "index": "stripe_event_log_status_idx",
+          "columns": [
+            "status"
+          ]
+        }
+      ]
     },
     {
-     "table": "contact_submissions",
-     "column": "partnershipType",
-     "targetType": "varchar(64)",
-     "targetNullable": true,
-     "sqlType": "varchar(64)"
+      "version": 55,
+      "tag": "0055_add_team_flex_orders_org_status_idx",
+      "file": "drizzle/0055_add_team_flex_orders_org_status_idx.sql",
+      "sha256": "80af908d0cc70697e78abfd573a9e3fb8d57f3fc9cf6d4bc04eec601a8346e04",
+      "proposedOnly": true,
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "team_flex_orders",
+          "index": "team_flex_orders_org_status_idx",
+          "columns": [
+            "organizationId",
+            "status"
+          ]
+        }
+      ]
     },
     {
-     "table": "contact_submissions",
-     "column": "followUpStatus",
-     "targetType": "varchar(16)",
-     "targetNullable": false,
-     "sqlType": "varchar(16)",
-     "defaultSql": "default 'new'"
+      "version": 56,
+      "tag": "0056_certification_bank_governance",
+      "file": "drizzle/0056_certification_bank_governance.sql",
+      "sha256": "43df8406a00f5678956dbc16104ac64933326ed6e7c4e7c5ff9afc2702bb43f4",
+      "proposedOnly": true
     },
     {
-     "table": "contact_submissions",
-     "column": "notificationStatus",
-     "targetType": "varchar(16)",
-     "targetNullable": false,
-     "sqlType": "varchar(16)",
-     "defaultSql": "default 'pending'"
+      "version": 57,
+      "tag": "0057_add_analytics_anonymous_hash",
+      "file": "drizzle/0057_add_analytics_anonymous_hash.sql",
+      "sha256": "f23c51e94bd338ac68d361971c933c8364a16c89492f90cfa94fb53c9f1e7e7e",
+      "proposedOnly": true,
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "product_analytics_events",
+          "index": "analytics_anonymous_time_idx",
+          "columns": [
+            "anonymousHash",
+            "occurredAt"
+          ]
+        }
+      ]
+    },
+    {
+      "version": 58,
+      "tag": "0058_job_source_association",
+      "file": "drizzle/0058_job_source_association.sql",
+      "sha256": "dd351211bd3fd735fe3dbbf3c9700c9a49603c3bc32df6b28bd71662af9c8b10",
+      "proposedOnly": true,
+      "verifierAllowPendingColumnTypes": [
+        {
+          "table": "job_postings",
+          "column": "sourceType",
+          "baselineType": "enum('rss','scraper')",
+          "targetType": "enum('rss','scraper','association')"
+        }
+      ]
+    },
+    {
+      "version": 59,
+      "tag": "0059_on_the_job_training_records",
+      "file": "drizzle/0059_on_the_job_training_records.sql",
+      "sha256": "5543c3cb615765940ec0f9c4de0034537c5b492d60b5d1afd266232d1f6d9851",
+      "proposedOnly": true
+    },
+    {
+      "version": 60,
+      "tag": "0060_training_hours_records",
+      "file": "drizzle/0060_training_hours_records.sql",
+      "sha256": "81ae5191a6c828ed889d244590c82574a94aee0c63624de10598cf11822e4ccf",
+      "proposedOnly": true
+    },
+    {
+      "version": 61,
+      "tag": "0061_correct_oit_guide",
+      "file": "drizzle/0061_correct_oit_guide.sql",
+      "sha256": "c0fa45c6ab4ef93077388805e2ac13393163c7ec4b8748ffd1c07ca2c9b6f164",
+      "proposedOnly": true
+    },
+    {
+      "version": 62,
+      "tag": "0062_purchase_email_outbox",
+      "file": "drizzle/0062_purchase_email_outbox.sql",
+      "sha256": "8066b3b683bea9b47040f6645a6c82e7cde20aa1e9d8fdc812e7d13d26a7d026",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "purchase_email_outbox"
+        ]
+      }
+    },
+    {
+      "version": 63,
+      "tag": "0063_question_content_snapshots",
+      "file": "drizzle/0063_question_content_snapshots.sql",
+      "sha256": "83c4bf5548fa409d1690cb9f40537bd952c3fd7ed0a0ff43d8355d3c36c62939",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "question_content_snapshots"
+        ]
+      }
+    },
+    {
+      "version": 64,
+      "tag": "0064_flashcard_progress_operations",
+      "file": "drizzle/0064_flashcard_progress_operations.sql",
+      "sha256": "cebe081ea2d8001196ea88df6d330e38ea688d68eb28cbaafdff3d969ed1d04e",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "flashcard_progress_state",
+          "flashcard_progress_operations"
+        ]
+      }
+    },
+    {
+      "version": 65,
+      "tag": "0065_scheduled_work",
+      "file": "drizzle/0065_scheduled_work.sql",
+      "sha256": "b6486933918a082e151415161e2ca98de75d6d8c170305463599f7372b063be6",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "scheduled_work"
+        ]
+      }
+    },
+    {
+      "version": 66,
+      "tag": "0066_exam_dates_unique",
+      "file": "drizzle/0066_exam_dates_unique.sql",
+      "sha256": "8e3bee6d1242a4c295722631790201499539dbe9958e708ed330154f0747d465",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "exam_dates"
+        ]
+      }
+    },
+    {
+      "version": 67,
+      "tag": "0067_customer_recovery_evidence",
+      "file": "drizzle/0067_customer_recovery_evidence.sql",
+      "sha256": "474a0f9699c46fe8b3cf24b12cc86a9099eea00a449e5ebf03649a4bd2160845",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "customer_recovery_evidence"
+        ]
+      }
+    },
+    {
+      "version": 68,
+      "tag": "0068_customer_recovery_classification",
+      "file": "drizzle/0068_customer_recovery_classification.sql",
+      "sha256": "c17ff1737cf726095b7d8f012c082755a578e991ea63c32df9c1a24e316d3f19",
+      "proposedOnly": true
+    },
+    {
+      "version": 69,
+      "tag": "0069_team_flex_extension_verified_email",
+      "file": "drizzle/0069_team_flex_extension_verified_email.sql",
+      "sha256": "03bc3a7fed853ab5f698963659f4284e02a2989b9e48435aa1cd02939ef9b10e",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "team_flex_extensions"
+        ]
+      },
+      "verifierAllowPendingColumnNullability": [
+        {
+          "table": "team_flex_extensions",
+          "column": "purchaserUserId",
+          "baselineNullable": false,
+          "targetNullable": true
+        }
+      ]
+    },
+    {
+      "version": 70,
+      "tag": "0070_organization_recovery_audit",
+      "file": "drizzle/0070_organization_recovery_audit.sql",
+      "sha256": "9fbd9dc3091f2d289621fe09dae58c78782f274c7a47600943d45c3e133139ce",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "customer_recovery_batches",
+          "customer_recovery_import_items"
+        ]
+      }
+    },
+    {
+      "version": 71,
+      "tag": "0071_organization_recovery_importer_hardening",
+      "file": "drizzle/0071_organization_recovery_importer_hardening.sql",
+      "sha256": "d4b9d2100333d2746e1d527346c8869cdea5aca38e5aa145944365bcc0fd95cf",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "customer_recovery_batches",
+          "customer_recovery_import_items"
+        ],
+        "requireEmptyTables": [
+          "customer_recovery_batches",
+          "customer_recovery_import_items"
+        ]
+      }
+    },
+    {
+      "version": 72,
+      "tag": "0072_ceu_learning_records",
+      "file": "drizzle/0072_ceu_learning_records.sql",
+      "sha256": "e3ec1ef8f488cb0536a231adfb824bdd58844cc8ebaa3596119e693af315f119",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "ceu_learning_records",
+          "ceu_learning_daily_time"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "ceu_learning_records",
+        "ceu_learning_daily_time"
+      ]
+    },
+    {
+      "version": 73,
+      "tag": "0073_stripe_event_analytics",
+      "file": "drizzle/0073_stripe_event_analytics.sql",
+      "sha256": "63ead4de91a9a2c7f5664bb1b773211d47737d1ce601594bca9eef6f4345543c",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "stripe_event_log"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "stripe_event_log",
+          "column": "analyticsProcessed",
+          "targetType": "tinyint(1)",
+          "targetNullable": false,
+          "sqlType": "boolean",
+          "defaultSql": "default false"
+        }
+      ]
+    },
+    {
+      "version": 74,
+      "tag": "0074_blog_automation_runs",
+      "file": "drizzle/0074_blog_automation_runs.sql",
+      "sha256": "8d208524c805c406aedbafa5372e1c2d50775f0da2a05b4171eebd230cd7530f",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "blog_automation_runs"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "blog_automation_runs"
+      ]
+    },
+    {
+      "version": 75,
+      "tag": "0075_team_flex_attempt_attribution",
+      "file": "drizzle/0075_team_flex_attempt_attribution.sql",
+      "sha256": "f5d5dc22046679e9933910741b5a0fed4dac6e1778e3825c8cd1ab99ecd898ec",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "question_attempts"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "question_attempts",
+          "column": "flexLicenceId",
+          "targetType": "int",
+          "targetNullable": true,
+          "sqlType": "int"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "question_attempts",
+          "index": "qa_flex_licence_created_idx",
+          "columns": [
+            "flexLicenceId",
+            "createdAt"
+          ]
+        }
+      ]
+    },
+    {
+      "version": 76,
+      "tag": "0076_contact_partnership_receipts",
+      "file": "drizzle/0076_contact_partnership_receipts.sql",
+      "sha256": "86165265ef10519f5eb69ef27469d77d95f2f0b37b1ad019d6e71680050db436",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "contact_submissions"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "contact_submissions",
+          "column": "requestKey",
+          "targetType": "varchar(36)",
+          "targetNullable": true,
+          "sqlType": "varchar(36)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "organization",
+          "targetType": "varchar(128)",
+          "targetNullable": true,
+          "sqlType": "varchar(128)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "partnershipType",
+          "targetType": "varchar(64)",
+          "targetNullable": true,
+          "sqlType": "varchar(64)"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "followUpStatus",
+          "targetType": "varchar(16)",
+          "targetNullable": false,
+          "sqlType": "varchar(16)",
+          "defaultSql": "default 'new'"
+        },
+        {
+          "table": "contact_submissions",
+          "column": "notificationStatus",
+          "targetType": "varchar(16)",
+          "targetNullable": false,
+          "sqlType": "varchar(16)",
+          "defaultSql": "default 'pending'"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "contact_submissions",
+          "index": "contact_request_key_unique",
+          "unique": true,
+          "columns": [
+            "requestKey"
+          ]
+        }
+      ]
+    },
+    {
+      "version": 77,
+      "tag": "0077_trial_lead_phone",
+      "file": "drizzle/0077_trial_lead_phone.sql",
+      "sha256": "3702b29b3cce305f6281efdebc9dbabf57d43770f63cf0d75c5341985ee711c6",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "trial_emails"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "trial_emails",
+          "column": "phone",
+          "targetType": "varchar(32)",
+          "targetNullable": true,
+          "sqlType": "varchar(32)"
+        }
+      ]
+    },
+    {
+      "version": 78,
+      "tag": "0078_trial_lead_follow_up",
+      "file": "drizzle/0078_trial_lead_follow_up.sql",
+      "sha256": "f6cade2064a504118a47b628bff0ec6f0a8b39315d557bce8c2518d44139781b",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "trial_emails"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "trial_emails",
+          "column": "followUpStage",
+          "targetType": "int",
+          "targetNullable": false,
+          "sqlType": "int",
+          "defaultSql": "default 0"
+        },
+        {
+          "table": "trial_emails",
+          "column": "lastFollowUpAt",
+          "targetType": "timestamp",
+          "targetNullable": true,
+          "sqlType": "timestamp"
+        },
+        {
+          "table": "trial_emails",
+          "column": "optOut",
+          "targetType": "tinyint(1)",
+          "targetNullable": false,
+          "sqlType": "boolean",
+          "defaultSql": "default false"
+        },
+        {
+          "table": "trial_emails",
+          "column": "unsubscribeToken",
+          "targetType": "varchar(128)",
+          "targetNullable": true,
+          "sqlType": "varchar(128)"
+        }
+      ]
+    },
+    {
+      "version": 79,
+      "tag": "0079_abandoned_checkout_recovery",
+      "file": "drizzle/0079_abandoned_checkout_recovery.sql",
+      "sha256": "f1cc180b65bd7fbccc71a41b16679dbc462ebb6c3aa4550786fae0c54642589d",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "abandoned_checkouts"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "abandoned_checkouts"
+      ]
     }
-   ],
-   "verifierAllowMissingIndexes": [
-    {
-     "table": "contact_submissions",
-     "index": "contact_request_key_unique",
-     "unique": true,
-     "columns": [
-      "requestKey"
-     ]
-    }
-   ]
-  },
-  {
-   "version": 77,
-   "tag": "0077_trial_lead_phone",
-   "file": "drizzle/0077_trial_lead_phone.sql",
-   "sha256": "3702b29b3cce305f6281efdebc9dbabf57d43770f63cf0d75c5341985ee711c6",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "trial_emails"
-    ]
-   },
-   "verifierAllowMissingColumns": [
-    {
-     "table": "trial_emails",
-     "column": "phone",
-     "targetType": "varchar(32)",
-     "targetNullable": true,
-     "sqlType": "varchar(32)"
-    }
-   ]
-  },
-  {
-   "version": 78,
-   "tag": "0078_trial_lead_follow_up",
-   "file": "drizzle/0078_trial_lead_follow_up.sql",
-   "sha256": "f6cade2064a504118a47b628bff0ec6f0a8b39315d557bce8c2518d44139781b",
-   "proposedOnly": true,
-   "standaloneApply": {
-    "tables": [
-     "trial_emails"
-    ]
-   },
-   "verifierAllowMissingColumns": [
-    {
-     "table": "trial_emails",
-     "column": "followUpStage",
-     "targetType": "int",
-     "targetNullable": false,
-     "sqlType": "int",
-     "defaultSql": "default 0"
-    },
-    {
-     "table": "trial_emails",
-     "column": "lastFollowUpAt",
-     "targetType": "timestamp",
-     "targetNullable": true,
-     "sqlType": "timestamp"
-    },
-    {
-     "table": "trial_emails",
-     "column": "optOut",
-     "targetType": "tinyint(1)",
-     "targetNullable": false,
-     "sqlType": "boolean",
-     "defaultSql": "default false"
-    },
-    {
-     "table": "trial_emails",
-     "column": "unsubscribeToken",
-     "targetType": "varchar(128)",
-     "targetNullable": true,
-     "sqlType": "varchar(128)"
-    }
-   ]
-  }
- ]
+  ]
 }

@@ -86,6 +86,42 @@ export const trialEmails = mysqlTable("trial_emails", {
 export type TrialEmail = typeof trialEmails.$inferSelect;
 export type InsertTrialEmail = typeof trialEmails.$inferInsert;
 
+/**
+ * Abandoned individual checkouts.
+ *
+ * A learner who reaches the Stripe payment page has already decided to buy.
+ * When that session expires the buyer used to vanish, because the email is
+ * typed on Stripe's page rather than ours. Stripe keeps a reopenable recovery
+ * link and the consented email; this table records that so exactly one
+ * recovery email can be sent per abandoned session and the outcome measured.
+ */
+export const abandonedCheckouts = mysqlTable("abandoned_checkouts", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Expired Stripe checkout session. Unique, so a replayed webhook is idempotent. */
+  stripeSessionId: varchar("stripeSessionId", { length: 128 }).notNull().unique(),
+  email: varchar("email", { length: 320 }).notNull(),
+  productKey: varchar("productKey", { length: 64 }).notNull(),
+  productName: varchar("productName", { length: 128 }),
+  amountCents: int("amountCents").notNull().default(0),
+  currency: varchar("currency", { length: 8 }).notNull().default("cad"),
+  /** Stripe-hosted link that reopens the same cart. Null when Stripe gave none. */
+  recoveryUrl: varchar("recoveryUrl", { length: 512 }),
+  abandonedAt: timestamp("abandonedAt").defaultNow().notNull(),
+  /** Set only after a successful send, so a transient SMTP failure retries. */
+  recoveryEmailSentAt: timestamp("recoveryEmailSentAt"),
+  /** Set when a purchase by this email is later observed. */
+  recoveredAt: timestamp("recoveredAt"),
+  /** One-click opt-out. Honoured before any recovery send. */
+  optOut: boolean("optOut").notNull().default(false),
+  unsubscribeToken: varchar("unsubscribeToken", { length: 64 }),
+}, (t) => [
+  index("abandoned_checkouts_email_idx").on(t.email),
+  index("abandoned_checkouts_pending_idx").on(t.recoveryEmailSentAt, t.abandonedAt),
+]);
+
+export type AbandonedCheckout = typeof abandonedCheckouts.$inferSelect;
+export type InsertAbandonedCheckout = typeof abandonedCheckouts.$inferInsert;
+
 /** Exam results — saved when a user completes a mock exam */
 export const examResults = mysqlTable("exam_results", {
   id: int("id").autoincrement().primaryKey(),

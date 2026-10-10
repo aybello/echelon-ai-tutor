@@ -327,6 +327,58 @@ async function startServer() {
   app.get("/api/unsubscribe-lead", handleLeadUnsubscribe);
   app.post("/api/unsubscribe-lead", handleLeadUnsubscribe);
 
+  // ── Abandoned cart unsubscribe (one click) ─────────────────────────────────
+  // Every recovery email carries this link and a List-Unsubscribe header. It
+  // must work without a login and without a confirmation step.
+  const handleCartUnsubscribe: express.RequestHandler = async (req, res) => {
+    const token = String(req.query.token ?? "").trim();
+    if (!token) {
+      return res
+        .status(400)
+        .send("<html><body><h2>Missing unsubscribe token.</h2></body></html>");
+    }
+    try {
+      const db = await getDb();
+      if (!db)
+        return res
+          .status(503)
+          .send(
+            "<html><body><h2>Service temporarily unavailable. Please try again later.</h2></body></html>"
+          );
+      const { abandonedCheckouts } = await import("../../drizzle/schema");
+      const { eq } = await import("drizzle-orm");
+      const rows = await db
+        .select()
+        .from(abandonedCheckouts)
+        .where(eq(abandonedCheckouts.unsubscribeToken, token))
+        .limit(1);
+      if (rows.length === 0) {
+        return res
+          .status(404)
+          .send(
+            "<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>"
+          );
+      }
+      // Opt the person out everywhere this email appears, not just this cart.
+      await db
+        .update(abandonedCheckouts)
+        .set({ optOut: true })
+        .where(eq(abandonedCheckouts.email, rows[0].email));
+      return res.send(
+        `<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive checkout reminder emails from Echelon Institute. Your free practice access is not affected and you can still buy any course at any time.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`
+      );
+    } catch (err) {
+      console.error("[unsubscribe-cart] Error:", err);
+      return res
+        .status(500)
+        .send(
+          "<html><body><h2>An error occurred. Please try again later.</h2></body></html>"
+        );
+    }
+  };
+  app.get("/api/unsubscribe-cart", handleCartUnsubscribe);
+  app.post("/api/unsubscribe-cart", handleCartUnsubscribe);
+
   // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
   // Ticket 10: Authenticate scheduled requests via x-cron-secret header OR
   // platform Heartbeat SDK auth (cron_ session cookie). Both paths set
@@ -525,6 +577,33 @@ async function startServer() {
       return res.json({ ok: true, ...result, ts: new Date().toISOString() });
     } catch (err) {
       console.error("[lead-follow-up] run failed", err);
+      return res.status(500).json({ ok: false, ts: new Date().toISOString() });
+    }
+  });
+
+  // ── Abandoned checkout recovery (every 6 hours) ───────────────────────────
+  // A learner who reached the Stripe payment page already chose a course and
+  // saw the price. Live data showed six individual checkouts started in two
+  // weeks and only two paid, with every abandoner anonymous because the email
+  // is typed on Stripe's page. Stripe now returns that email and a link that
+  // reopens the same cart, so each abandoned cart gets exactly one reminder.
+  app.post("/api/scheduled/recover-abandoned-checkouts", async (_req, res) => {
+    try {
+      const { runAbandonedCheckoutRecovery } = await import(
+        "../jobs/abandonedCheckoutRecovery"
+      );
+      const result = await runAbandonedCheckoutRecovery();
+
+      if (result.sent > 0) {
+        console.log(
+          `[abandoned-checkout] sent ${result.sent} of ${result.considered} due reminders ` +
+            `(purchased ${result.suppressedPurchased}, synthetic ${result.suppressedSynthetic}, failed ${result.failed})`,
+        );
+      }
+
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[abandoned-checkout] run failed", err);
       return res.status(500).json({ ok: false, ts: new Date().toISOString() });
     }
   });

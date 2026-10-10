@@ -238,6 +238,11 @@ export function registerStripeWebhook(app: Express) {
               .catch(error => console.error("[Stripe Webhook] Checkout analytics failed:", error));
             await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase", ...analyticsContext } })
               .catch(error => console.error("[Stripe Webhook] Access analytics failed:", error));
+            // Close the loop on any abandoned cart this buyer left behind, so
+            // they stop being chased and the recovery rate stays truthful.
+            await import("../abandonedCheckout")
+              .then(m => m.markAbandonedCheckoutRecovered(db, email))
+              .catch(error => console.error("[Stripe Webhook] Abandoned cart close failed:", error));
           }
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing checkout.session.completed:", err);
@@ -702,6 +707,28 @@ export function registerStripeWebhook(app: Express) {
           const { handleFlexCheckoutExpired } = await import("../teams/fulfilFlexOrder");
           await handleFlexCheckoutExpired(flexOrderId);
           console.log(`[Stripe Webhook] Flex checkout expired: order #${flexOrderId}`);
+        } else {
+          // An individual learner reached the payment page and did not finish.
+          // Record it so one recovery email can go out later. Recording must
+          // never fail the webhook: Stripe would retry a payment event we have
+          // already processed.
+          try {
+            const { extractAbandonedCheckout, recordAbandonedCheckout } = await import(
+              "../abandonedCheckout"
+            );
+            const record = extractAbandonedCheckout(session);
+            if (record) {
+              const expiredDb = await getDb();
+              if (expiredDb) {
+                await recordAbandonedCheckout(expiredDb, record);
+                console.log(
+                  `[Stripe Webhook] Abandoned checkout recorded: ${record.productKey} ${record.stripeSessionId}`
+                );
+              }
+            }
+          } catch (err: any) {
+            console.error("[Stripe Webhook] abandoned checkout record failed:", err?.message ?? err);
+          }
         }
       }
 

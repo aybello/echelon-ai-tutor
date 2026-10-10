@@ -61,6 +61,7 @@ export const DATA_EXPLORER_COLUMN_CLASSIFICATIONS: Record<string, DataExplorerCo
   "question-error-reports": { readable: ["id", "questionId", "module", "reportType", "createdAt"], restricted: ["questionText", "details"] },
   "trial-emails": { readable: ["id", "email", "phone", "source", "createdAt", "followUpStage", "lastFollowUpAt", "optOut"], restricted: ["unsubscribeToken"] },
   "waitlist": { readable: ["id", "email", "courseCode", "courseTitle", "createdAt", "province"], restricted: [] },
+  "abandoned-checkouts": { readable: ["id", "email", "productKey", "productName", "amountCents", "currency", "abandonedAt", "recoveryEmailSentAt", "recoveredAt", "optOut"], restricted: ["stripeSessionId", "recoveryUrl", "unsubscribeToken"] },
   "contact-submissions": { readable: ["id", "name", "email", "createdAt", "followUpStatus", "notificationStatus"], restricted: ["subject", "message", "requestKey", "organization", "partnershipType"] },
   "command-feedback": { readable: ["id", "userId", "scenarioId", "runId", "rating", "createdAt"], restricted: ["guestId", "comment"] },
   "command-email-capture": { readable: ["id", "email", "userId", "source", "createdAt"], restricted: ["guestId"] },

@@ -153,6 +153,13 @@ export const stripeRouter = router({
         // Stripe requires the phone field when collection is enabled. Collect it
         // here for every individual pass, including accelerated wallet checkouts.
         phone_number_collection: { enabled: true },
+        // A learner who reaches the payment page has already decided to buy.
+        // Recovery keeps a reopenable link to this exact cart and gives us the
+        // email they consented to share, so an abandoned checkout becomes one
+        // polite follow-up instead of a buyer we never see again.
+        after_expiration: {
+          recovery: { enabled: true, allow_promotion_codes: true },
+        },
         success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${appBaseUrl}${(await import("../../shared/funnelNavigation")).individualCheckoutCancelPath(product.key, ctx.req.headers.referer, appBaseUrl)}`,
       });

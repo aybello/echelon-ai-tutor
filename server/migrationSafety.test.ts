@@ -168,6 +168,13 @@ describe("forward-only migration safety", () => {
           { table: "trial_emails", column: "unsubscribeToken", targetType: "varchar(128)", targetNullable: true, sqlType: "varchar(128)" },
         ],
       }),
+      expect.objectContaining({
+        version: 79,
+        tag: "0079_abandoned_checkout_recovery",
+        proposedOnly: true,
+        standaloneApply: { tables: ["abandoned_checkouts"] },
+        verifierAllowMissingTables: ["abandoned_checkouts"],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -918,7 +925,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]);
   });
 });
 
