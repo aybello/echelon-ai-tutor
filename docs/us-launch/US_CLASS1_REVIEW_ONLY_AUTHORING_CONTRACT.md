@@ -1,8 +1,10 @@
 # U.S. Class I Review-Only Authoring Contract
 
 **Applies to:** `us-class1-water` (200 candidates) and `us-class1-water-dist` (198 candidates)  
-**Drafting status:** Not started  
+**Drafting status:** Held pending recovery of the original dedicated-bank release decision; no authoring has started.
 **Database status:** No write, import, approval, activation, or publication authorized.
+
+> A zero-row observation in the currently attached database does not prove that the dedicated-bank design was abandoned or that its intended package was never created. See the [context-recovery hold](./DEDICATED_US_CLASS1_CONTEXT_RECOVERY_HOLD.md) before taking any action.
 
 ## Purpose
 

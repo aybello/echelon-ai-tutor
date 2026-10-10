@@ -1,6 +1,6 @@
 # U.S. Operator Certification Launch Plan
 
-**Status:** Planning and evidence verification complete for the initial cohort. No U.S. question package has been imported, approved, activated, published, or sold as part of this plan.
+**Status:** State-route research is complete for the initial cohort. Dedicated U.S. Class I authoring is held pending recovery of the original product and release decision. This planning program has not imported, approved, activated, published, or sold any U.S. content; Git history separately records an October 8 dedicated-bank import and release whose package and authoritative database record must now be recovered.
 
 ## Decision
 
@@ -40,12 +40,12 @@ Every state page, product page, advertisement, checkout disclosure, and support 
 
 | Product or bank | Current status | What must happen before sale |
 |---|---|---|
-| `us-class1-water` | Product, routes, mock profile, and state-context support exist. The authoritative database currently has **0 questions** and no metadata row. | Rebuild or recover the 200-item source package; validate, independently review, stage in `in_review`, confirm 100-question mock capacity, then promote through a separately approved release. |
-| `us-class1-water-dist` | Product, routes, mock profile, and state-context support exist. The authoritative database currently has **0 questions** and no metadata row. | Rebuild or recover the 198-item source package; validate, independently review, stage in `in_review`, confirm 100-question mock capacity, then promote through a separately approved release. |
+| `us-class1-water` | Product, routes, mock profile, and state-context support exist. The currently attached database has **0 rows** and no metadata row; this is not evidence that a dedicated package was abandoned or never existed. | Recover the original product/release decision and any package or prior environment record before deciding whether to validate an existing package, continue its intended authoring program, replace the design, or retire the product. |
+| `us-class1-water-dist` | Product, routes, mock profile, and state-context support exist. The currently attached database has **0 rows** and no metadata row; this is not evidence that a dedicated package was abandoned or never existed. | Recover the original product/release decision and any package or prior environment record before deciding whether to validate an existing package, continue its intended authoring program, replace the design, or retire the product. |
 | `wpi-class1-wastewater` | 594 legacy visible questions and metadata exist. | Reconcile the active pool to the 2025 WPI Class I criteria, confirm mock allocation capacity, perform a source/provenance and state-label review, then create the Phase I route disclosures. |
 | `wpi-class1-wastewater-coll` | 499 legacy visible questions and metadata exist. | Reconcile the active pool to the 2025 WPI Class I collection criteria, confirm mock allocation capacity, perform a source/provenance and state-label review, then create the Phase I route disclosures. |
 
-The current application advertises two dedicated U.S. Class I products at **CA$149** each and remains CAD-only for new checkout. Because both dedicated U.S. banks are empty, a new commercial guard is required before launch: direct checkout and course cards must not treat an empty or non-deliverable bank as available.
+The current application advertises two dedicated U.S. Class I products at **CA$149** each and remains CAD-only for new checkout. The original intent and package history must be recovered before changing their availability, routing, copy, or delivery model. Any later commercial guard must be designed from that recovered decision record, not from a zero-row observation alone. See the [dedicated-bank context-recovery hold](./DEDICATED_US_CLASS1_CONTEXT_RECOVERY_HOLD.md).
 
 ## Workstreams and release gates
 
