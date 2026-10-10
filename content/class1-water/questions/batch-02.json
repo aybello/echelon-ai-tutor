@@ -1,0 +1,763 @@
+{
+  "batch": "02",
+  "title": "Class 1 Water Treatment — batch 02 (questions 1041–1080)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1041,
+      "question": "How does a phosphate-based corrosion inhibitor protect a distribution system?",
+      "options": [
+        "It raises the pH of the water enough to stop all corrosion reactions",
+        "It removes dissolved oxygen that would otherwise attack the pipe metal",
+        "It coats accumulated scale so that existing deposits cannot break loose",
+        "It forms a protective film on the pipe wall that limits metal release"
+      ],
+      "correctIndex": 3,
+      "explanation": "Orthophosphate reacts with pipe-wall metals to build a low-solubility protective film. That barrier reduces the rate at which lead, copper, and iron dissolve into the water. It controls metal release rather than eliminating the underlying corrosion chemistry.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Corrosion control",
+      "isCalc": "no",
+      "tip": "Inhibitors build a film; they do not remove the cause of corrosion."
+    },
+    {
+      "questionNum": 1042,
+      "question": "Blending 600 m³ of water at 1.8 mg/L residual with 200 m³ at 0.6 mg/L produces what residual in the combined water?",
+      "options": [
+        "1.2 mg/L",
+        "1.7 mg/L",
+        "2.4 mg/L",
+        "1.5 mg/L"
+      ],
+      "correctIndex": 3,
+      "explanation": "Blending is a mass balance. The total mass is (600 × 1.8) + (200 × 0.6) = 1080 + 120 = 1200, and the total volume is 800 m³, giving 1200 ÷ 800 = 1.5 mg/L.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Blending",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Mass in stream 1",
+          "c": "600 × 1.8 = 1080"
+        },
+        {
+          "l": "Mass in stream 2",
+          "c": "200 × 0.6 = 120"
+        },
+        {
+          "l": "Total volume",
+          "c": "600 + 200 = 800 m³"
+        },
+        {
+          "l": "Blend",
+          "c": "(1080 + 120) ÷ 800 = 1.5 mg/L"
+        },
+        {
+          "l": "Check",
+          "c": "The answer sits between 0.6 and 1.8, closer to the larger stream."
+        }
+      ],
+      "tip": "A blended result always falls between the two inputs, weighted toward the larger volume."
+    },
+    {
+      "questionNum": 1043,
+      "question": "Why is water age in a storage reservoir an operational concern?",
+      "options": [
+        "Aged water gains hardness that shortens the service life of the tank",
+        "Aged water becomes denser and reduces the usable storage volume",
+        "Aged water increases turbidity as suspended solids come out of solution",
+        "Aged water loses disinfectant residual and can support regrowth"
+      ],
+      "correctIndex": 3,
+      "explanation": "Water held too long in storage loses disinfectant residual through decay, and the warmer, unmixed conditions in a poorly turned-over tank encourage bacterial regrowth, nitrification in chloraminated systems, and taste and odour complaints. Managing turnover and mixing controls the problem.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Storage management",
+      "isCalc": "no",
+      "tip": "Storage exists for demand and fire flow, but every extra hour of water age costs residual."
+    },
+    {
+      "questionNum": 1044,
+      "question": "Before maintenance begins on a pump, why must lockout and tagout be applied to its energy sources?",
+      "options": [
+        "To confirm that the pump has been isolated from the process piping",
+        "To record which technician is accountable for completing the work",
+        "To prevent unexpected energization or movement while work is underway",
+        "To ensure the standby pump carries the full flow during the outage"
+      ],
+      "correctIndex": 2,
+      "explanation": "Lockout and tagout physically prevents equipment from being started, and stored energy from being released, while a worker is exposed to it. A tag alone warns but does not prevent; the lock is what makes the isolation reliable, and each worker applies their own.",
+      "difficulty": "easy",
+      "module": "Safety",
+      "topic": "Lockout and tagout",
+      "isCalc": "no",
+      "tip": "A tag communicates, a lock protects. Each worker applies and removes their own lock."
+    },
+    {
+      "questionNum": 1045,
+      "question": "During backwash, the filter media bed should expand by a controlled amount. What happens if the backwash rate is set too high?",
+      "options": [
+        "The media compacts against the underdrain and restricts the wash flow",
+        "The wash water short-circuits and leaves the lower media layer dirty",
+        "The gravel support layer is disturbed and migrates upward into the sand",
+        "Media is carried into the wash troughs and is permanently lost from the bed"
+      ],
+      "correctIndex": 3,
+      "explanation": "Excessive backwash velocity fluidizes the bed beyond its intended expansion and carries the finer media over the wash troughs, where it is lost. Repeated loss changes the grading of the bed and reduces filtration performance, so expansion is verified and the rate is set deliberately.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash rate",
+      "isCalc": "no",
+      "tip": "Too little backwash leaves mudballs; too much washes media out. Both degrade the bed."
+    },
+    {
+      "questionNum": 1046,
+      "question": "A SCADA alarm reports low chlorine residual, but the operator's grab sample at the same point reads normal. What is the appropriate response?",
+      "options": [
+        "Treat the alarm as valid and immediately increase the chlorine feed rate",
+        "Silence the alarm and re-check the residual at the end of the shift",
+        "Raise the low residual alarm setpoint so the nuisance alarm stops repeating",
+        "Investigate the analyser and sample line before making any process change"
+      ],
+      "correctIndex": 3,
+      "explanation": "A conflict between an alarm and a verified manual measurement must be resolved before acting. Increasing the feed on a faulty reading risks an overfeed, while dismissing the alarm risks missing a genuine loss of residual. The analyser, sample line, and calibration are checked, and monitoring continues until the discrepancy is explained.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Alarm response",
+      "isCalc": "no",
+      "tip": "Never adjust a process, or move a setpoint, to silence an alarm you have not diagnosed."
+    },
+    {
+      "questionNum": 1047,
+      "question": "What distinguishes primary disinfection from secondary disinfection in a treatment system?",
+      "options": [
+        "Primary uses chemical oxidants while secondary relies on physical barriers",
+        "Primary occurs before filtration while secondary occurs after filtration",
+        "Primary inactivates pathogens at the plant while secondary maintains a residual",
+        "Primary treats surface sources while secondary treats groundwater sources"
+      ],
+      "correctIndex": 2,
+      "explanation": "Primary disinfection achieves the required pathogen inactivation at the plant, measured through CT or a validated UV dose. Secondary disinfection maintains a residual through the distribution system to guard against contamination and regrowth after the water leaves the plant.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Disinfection strategy",
+      "isCalc": "no",
+      "tip": "Primary is about inactivation at the plant. Secondary is about protection in the pipes."
+    },
+    {
+      "questionNum": 1048,
+      "question": "Following a watermain break and repair, why is the repaired section disinfected and sampled before it returns to service?",
+      "options": [
+        "Because the new pipe section must be conditioned to accept a residual",
+        "Because the pressure test requires a measured disinfectant concentration",
+        "Because flushing alone cannot restore the design flow through the section",
+        "Because the repair may have introduced contamination into the main"
+      ],
+      "correctIndex": 3,
+      "explanation": "An open excavation exposes the interior of the main to soil, groundwater, and handling that can introduce pathogens. Disinfecting the repaired section, flushing it, and confirming acceptable bacteriological results before returning it to service prevents that contamination from reaching consumers.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Main repair procedures",
+      "isCalc": "no",
+      "tip": "Any opened main is treated as contaminated until disinfection and sampling prove otherwise."
+    },
+    {
+      "questionNum": 1049,
+      "question": "A plant converts from free chlorine to chloramine for secondary disinfection. Which operational consequence should the operator anticipate?",
+      "options": [
+        "A stronger disinfectant that decays faster and needs booster stations",
+        "An equivalent disinfectant that eliminates the need for residual monitoring",
+        "A weaker disinfectant that increases trihalomethane formation downstream",
+        "A weaker disinfectant that persists longer through the distribution system"
+      ],
+      "correctIndex": 3,
+      "explanation": "Monochloramine is a weaker oxidant than free chlorine, so it inactivates organisms more slowly and is a poor primary disinfectant. It is far more stable, however, so it carries a residual much further into the distribution system and forms fewer regulated by-products.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Chloramination",
+      "isCalc": "no",
+      "tip": "Chloramine trades disinfecting strength for persistence. Primary inactivation must come from elsewhere."
+    },
+    {
+      "questionNum": 1050,
+      "question": "In a chloraminated distribution system, nitrite levels rise while chloramine residual falls in a low-turnover zone. What is occurring?",
+      "options": [
+        "Chloramine is reacting with pipe wall corrosion products in the dead end",
+        "Chloramine is being stripped by dissolved oxygen in the standing water",
+        "Denitrification, as bacteria reduce nitrate to nitrite in the stagnant main",
+        "Nitrification, as bacteria oxidize excess free ammonia in the aged water"
+      ],
+      "correctIndex": 3,
+      "explanation": "Excess free ammonia left after chloramine formation feeds nitrifying bacteria, which oxidize it to nitrite and nitrate. The reaction consumes chloramine residual and accelerates its decay, so nitrite rise together with residual loss in a low-turnover area is the classic signature. Control depends on managing the chlorine to ammonia ratio and improving turnover.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Nitrification",
+      "isCalc": "no",
+      "tip": "Rising nitrite plus falling chloramine in a stagnant zone means nitrification, not simple decay."
+    },
+    {
+      "questionNum": 1051,
+      "question": "Which pair correctly describes an operational trade-off of using ozone as a primary disinfectant?",
+      "options": [
+        "It is a weak oxidant, but it produces a durable residual in the system",
+        "It removes hardness effectively, but it requires a long contact chamber",
+        "It is a powerful oxidant, but it must be generated on site and leaves no residual",
+        "It is inexpensive to install, but it demands frequent chemical deliveries"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ozone is among the strongest oxidants used in water treatment and is highly effective against protozoa, taste and odour compounds, and colour. It is unstable, so it must be generated on site from air or oxygen and cannot provide a lasting residual, meaning a secondary disinfectant is always required.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Ozonation",
+      "isCalc": "no",
+      "tip": "Ozone and UV share the same limitation: excellent primary disinfection, zero residual."
+    },
+    {
+      "questionNum": 1052,
+      "question": "Why does free chlorine become a less effective disinfectant as pH rises?",
+      "options": [
+        "Rising pH accelerates the decay of chlorine into chloride and oxygen",
+        "Rising pH reduces the solubility of chlorine gas in the treated water",
+        "Rising pH increases the chlorine demand exerted by dissolved organic matter",
+        "Rising pH shifts the residual from hypochlorous acid to the weaker hypochlorite ion"
+      ],
+      "correctIndex": 3,
+      "explanation": "Free chlorine exists as an equilibrium between hypochlorous acid and hypochlorite ion. Hypochlorous acid is by far the more effective disinfecting species, and the equilibrium shifts toward hypochlorite as pH rises. A higher CT value is therefore required to achieve the same inactivation at elevated pH.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "pH and disinfection",
+      "isCalc": "no",
+      "tip": "High pH and cold water both raise the CT you need. Both work against the operator."
+    },
+    {
+      "questionNum": 1053,
+      "question": "Water temperature drops sharply in winter. What effect does this have on the CT required for a given level of inactivation?",
+      "options": [
+        "Required CT falls, because cold water holds disinfectant more effectively",
+        "Required CT is unchanged, because CT tables account only for pH",
+        "Required CT rises, because disinfection reactions slow at lower temperature",
+        "Required CT rises, because cold water carries a much higher chlorine demand"
+      ],
+      "correctIndex": 2,
+      "explanation": "Disinfection is a chemical reaction, and reaction rates fall as temperature drops. Cold water therefore needs a greater concentration, a longer contact time, or both to achieve the same log inactivation. Winter is typically the most demanding condition for meeting CT.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Temperature and disinfection",
+      "isCalc": "no",
+      "tip": "Design and verify CT compliance against the coldest expected water, not the annual average."
+    },
+    {
+      "questionNum": 1054,
+      "question": "What practical advantage does sodium hypochlorite have over chlorine gas for a small treatment plant?",
+      "options": [
+        "It delivers a higher available chlorine content for the same storage volume",
+        "It maintains its strength indefinitely regardless of storage conditions",
+        "It avoids the acute inhalation hazard associated with a pressurized gas release",
+        "It produces markedly fewer disinfection by-products in the finished water"
+      ],
+      "correctIndex": 2,
+      "explanation": "A chlorine gas release is an immediate life-safety hazard requiring scrubbers, alarms, and breathing apparatus. Hypochlorite solution removes that acute risk, which simplifies facility requirements at smaller plants. It is weaker per unit volume and degrades in storage, so the trade-off is handling safety against strength and shelf life.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Disinfectant selection",
+      "isCalc": "no",
+      "tip": "Hypochlorite is safer to handle but weaker and perishable. Gas is potent but hazardous."
+    },
+    {
+      "questionNum": 1055,
+      "question": "Sodium hypochlorite delivered in spring is still in storage in late summer and dosing has drifted upward. What explains this?",
+      "options": [
+        "The solution has absorbed carbon dioxide, which has raised its pH",
+        "The solution has become more concentrated as water evaporated from the tank",
+        "The solution has settled, leaving a weaker layer at the suction connection",
+        "The solution has decomposed with age, warmth and light, losing strength"
+      ],
+      "correctIndex": 3,
+      "explanation": "Sodium hypochlorite decomposes over time, and the rate increases with temperature, light exposure, and higher initial concentration. As available chlorine falls, the feed pump must deliver more solution for the same dose. Cool, dark storage and stock rotation limit the loss.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Hypochlorite degradation",
+      "isCalc": "no",
+      "tip": "Rising feed rate at a stable dose usually means the chemical has weakened, not that demand rose."
+    },
+    {
+      "questionNum": 1056,
+      "question": "What does the DPD reagent measure when an operator tests a treated water sample?",
+      "options": [
+        "The turbidity of the sample by comparing light scattered at an angle",
+        "The alkalinity of the sample by titrating to a fixed colour endpoint",
+        "The chlorine residual, developing colour in proportion to its concentration",
+        "The total dissolved solids by measuring the conductivity of the sample"
+      ],
+      "correctIndex": 2,
+      "explanation": "DPD reacts with chlorine to produce a pink colour whose intensity is proportional to the residual concentration. Using the reagent in stages allows free and total chlorine to be distinguished, with combined chlorine determined by difference.",
+      "difficulty": "easy",
+      "module": "Sampling & Laboratory",
+      "topic": "Residual testing",
+      "isCalc": "no",
+      "tip": "Free first, then total. Combined chlorine is the difference between the two readings."
+    },
+    {
+      "questionNum": 1057,
+      "question": "Why is a filter operated to waste for a period immediately after backwashing?",
+      "options": [
+        "To flush residual backwash chemicals from the underdrain before service",
+        "To allow the media bed to settle and restratify into its design layers",
+        "To confirm the backwash valves have fully closed before restoring flow",
+        "To divert the turbidity spike produced while the filter bed ripens"
+      ],
+      "correctIndex": 3,
+      "explanation": "A freshly washed bed has lost the accumulated deposits that assist particle capture, so effluent turbidity is elevated during the ripening period. Filtering to waste sends that poorer quality water away from the clearwell until turbidity settles to its normal operating value.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter ripening",
+      "isCalc": "no",
+      "tip": "The dirtiest filtered water of a run occurs right after backwash, not at the end."
+    },
+    {
+      "questionNum": 1058,
+      "question": "In a dual media filter using anthracite over sand, why is the coarser anthracite placed on top?",
+      "options": [
+        "It resists abrasion better than sand and protects the finer layer beneath",
+        "It is lighter than sand, so it is easier to replace when media is lost",
+        "It absorbs organic compounds that would otherwise pass through the sand",
+        "It provides depth filtration, so solids penetrate rather than sealing the surface"
+      ],
+      "correctIndex": 3,
+      "explanation": "Coarse anthracite over fine sand creates a bed that grades from large to small pores in the direction of flow. Solids are captured throughout the depth of the bed instead of forming a mat on the surface, which extends filter runs and increases solids storage before terminal headloss is reached.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Dual media design",
+      "isCalc": "no",
+      "tip": "Anthracite is coarser but less dense, so it restratifies on top of sand after every backwash."
+    },
+    {
+      "questionNum": 1059,
+      "question": "What does the effective size of a filter medium describe?",
+      "options": [
+        "The average diameter of all grains present in the media sample",
+        "The ratio between the largest and the smallest grains in the bed",
+        "The diameter at which grains begin to fluidize during backwash",
+        "The sieve size that passes ten percent of the media by weight"
+      ],
+      "correctIndex": 3,
+      "explanation": "Effective size is the sieve opening through which ten percent of the media passes by weight. It characterises the finer end of the grading, which is what largely governs headloss and particle capture. It is quoted together with the uniformity coefficient, the ratio of the sixty percent to the ten percent size.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Media specification",
+      "isCalc": "no",
+      "tip": "Effective size is a tenth-percentile measure, not an average. A lower uniformity coefficient means more even media."
+    },
+    {
+      "questionNum": 1060,
+      "question": "How does a slow sand filter achieve most of its treatment?",
+      "options": [
+        "Through a chemical coagulant dosed directly onto the sand surface",
+        "Through the very fine grading of sand that physically strains all particles",
+        "Through an extended contact time that allows particles to settle in the bed",
+        "Through a biologically active layer that develops on the media surface"
+      ],
+      "correctIndex": 3,
+      "explanation": "A slow sand filter develops a biological layer, the schmutzdecke, at the media surface. That layer removes organisms and particles through predation and biological activity as well as straining, which is why the filter is cleaned by scraping rather than backwashing and needs time to re-establish afterwards.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Slow sand filtration",
+      "isCalc": "no",
+      "tip": "Scraping a slow sand filter removes its biology, so treatment is degraded until the layer re-forms."
+    },
+    {
+      "questionNum": 1061,
+      "question": "What is the function of surface wash or air scour during a filter backwash?",
+      "options": [
+        "To lift the gravel support layer so trapped solids can be released",
+        "To fluidize the entire bed before the main upflow wash begins",
+        "To provide agitation that breaks the bond between floc and media grains",
+        "To cool the media so that biological growth in the bed is suppressed"
+      ],
+      "correctIndex": 2,
+      "explanation": "Upflow water alone expands the bed but produces little grain-to-grain scouring, so attached floc can survive the wash and accumulate into mudballs. Surface wash jets or air scour add the mechanical agitation that separates the deposits from the media so the upflow can carry them away.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash auxiliaries",
+      "isCalc": "no",
+      "tip": "Water lifts, agitation cleans. Without scour, backwashing alone leaves the grains coated."
+    },
+    {
+      "questionNum": 1062,
+      "question": "Why is turbidity monitored continuously on each individual filter rather than only on the combined filtered water?",
+      "options": [
+        "Because combined monitoring cannot be calibrated against a bench instrument",
+        "Because regulations require the highest reading rather than an average value",
+        "Because combined sampling reacts too slowly to detect any change in quality",
+        "Because a single failing filter can be masked by good performance elsewhere"
+      ],
+      "correctIndex": 3,
+      "explanation": "Blending dilutes a poor result. A filter breaking through or ripening badly can push pathogens into the clearwell while the combined reading still looks acceptable. Individual filter monitoring exposes the failing unit so it can be taken off line before its water reaches the plant effluent.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter performance monitoring",
+      "isCalc": "no",
+      "tip": "Combined effluent hides single-filter failures. Pathogen risk is per filter, not per average."
+    },
+    {
+      "questionNum": 1063,
+      "question": "How does a constant rate filtration system respond as a filter becomes progressively dirtier?",
+      "options": [
+        "Flow through the filter falls steadily while the water level stays fixed",
+        "The filter is automatically taken off line once headloss begins to rise",
+        "The wash water rate increases to compensate for the accumulating solids",
+        "A control valve opens progressively to maintain flow as headloss builds"
+      ],
+      "correctIndex": 3,
+      "explanation": "In a constant rate system, an effluent control valve is throttled when the bed is clean and opens gradually as solids accumulate and headloss increases. This keeps the flow through the filter steady across the run, unlike declining rate operation where flow falls as the filter loads.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filtration control modes",
+      "isCalc": "no",
+      "tip": "Constant rate holds flow and consumes available head. Declining rate lets flow fall instead."
+    },
+    {
+      "questionNum": 1064,
+      "question": "Which effect does adding a filter aid polymer to the filter influent have?",
+      "options": [
+        "It lowers the headloss developed across the bed during the filter run",
+        "It replaces the primary coagulant dose applied ahead of flocculation",
+        "It extends the interval between required media replacement programs",
+        "It strengthens floc attachment to media, improving capture but raising headloss"
+      ],
+      "correctIndex": 3,
+      "explanation": "A filter aid polymer makes captured particles adhere more firmly to the media, which reduces the risk of turbidity breakthrough late in the run. The stronger attachment also builds headloss more quickly and makes the bed harder to backwash, so the dose must be optimised rather than maximised.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filter aid polymer",
+      "isCalc": "no",
+      "tip": "Filter aid buys water quality at the cost of headloss and harder backwashing. Overdosing cements the bed."
+    },
+    {
+      "questionNum": 1065,
+      "question": "Compared with alum, what is a practical advantage of ferric coagulants?",
+      "options": [
+        "They consume no alkalinity, so pH adjustment is never required",
+        "They produce substantially less sludge for the same raw water turbidity",
+        "They remain fully effective at temperatures near the freezing point",
+        "They perform effectively across a wider pH range than aluminium salts"
+      ],
+      "correctIndex": 3,
+      "explanation": "Iron coagulants form insoluble hydroxides across a broader pH band than aluminium, which makes them more forgiving where raw water pH varies and often more effective for colour and natural organic matter removal. They still consume alkalinity and typically produce more sludge, and they can stain if overdosed.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Coagulant selection",
+      "isCalc": "no",
+      "tip": "Ferric tolerates a wider pH window; alum is often cheaper and cleaner to handle."
+    },
+    {
+      "questionNum": 1066,
+      "question": "A plant increases its alum dose and pH falls below the effective coagulation range. What is the appropriate corrective action?",
+      "options": [
+        "Reduce the raw water flow so the coagulant has a longer reaction period",
+        "Switch the rapid mixer to a lower speed to reduce the reaction rate",
+        "Increase the alum dose further until floc formation visibly improves",
+        "Add alkalinity, using lime or soda ash, to restore the buffering capacity"
+      ],
+      "correctIndex": 3,
+      "explanation": "Alum hydrolysis consumes alkalinity and releases acidity, so a higher dose in a poorly buffered water drives pH below the range where the coagulant is effective. Supplementing alkalinity restores buffering and returns pH to the optimum band. Adding more alum without correcting alkalinity makes the problem worse.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Alkalinity and coagulation",
+      "isCalc": "no",
+      "tip": "Low alkalinity water cannot absorb a large alum dose. Check alkalinity before chasing dose."
+    },
+    {
+      "questionNum": 1067,
+      "question": "What is the purpose of the rapid mix stage in conventional treatment?",
+      "options": [
+        "To build large settleable floc particles before water enters the clarifier",
+        "To strip dissolved gases that would interfere with particle destabilization",
+        "To provide the detention time needed for complete coagulant reaction",
+        "To disperse coagulant throughout the water before hydrolysis is complete"
+      ],
+      "correctIndex": 3,
+      "explanation": "Coagulant hydrolysis begins within a fraction of a second, so the chemical must be distributed uniformly almost immediately. Rapid mix applies high energy for a very short time to achieve that dispersion. Particle growth into settleable floc happens afterwards in flocculation, under gentle mixing.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Rapid mixing",
+      "isCalc": "no",
+      "tip": "Rapid mix disperses, flocculation builds. Neither stage can do the other's job."
+    },
+    {
+      "questionNum": 1068,
+      "question": "Which statement best describes how a cationic polymer assists coagulation?",
+      "options": [
+        "It increases water density so that formed floc settles more rapidly",
+        "It raises pH into the optimum range for aluminium hydroxide formation",
+        "It carries a positive charge that neutralizes negatively charged colloids",
+        "It adsorbs dissolved organic carbon before the coagulant is applied"
+      ],
+      "correctIndex": 2,
+      "explanation": "Most colloidal particles in raw water carry a negative surface charge that keeps them mutually repelled and stable. A cationic polymer supplies positive charge that neutralizes that repulsion, allowing particles to collide and aggregate. It may be used as a coagulant aid or, in some waters, as the primary coagulant.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Polymer chemistry",
+      "isCalc": "no",
+      "tip": "Cationic neutralizes charge; anionic and nonionic polymers mainly bridge particles together."
+    },
+    {
+      "questionNum": 1069,
+      "question": "Why does coagulation performance typically deteriorate in very cold raw water?",
+      "options": [
+        "Cold water carries a higher natural organic matter load than warm water",
+        "Cold water reduces the solubility of the coagulant before it is dispersed",
+        "Cold water holds more dissolved oxygen, which interferes with hydrolysis",
+        "Cold water slows reaction rates and its higher viscosity hinders settling"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lower temperature slows the chemical reactions that destabilize particles and form floc, and the increased viscosity of cold water resists particle settling. The result is weaker, slower-forming floc and poorer clarification, commonly requiring a higher dose, a coagulant aid, or longer flocculation.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Temperature effects",
+      "isCalc": "no",
+      "tip": "Winter usually demands more coagulant and gives worse settling. Re-run jar tests seasonally."
+    },
+    {
+      "questionNum": 1070,
+      "question": "What is the objective of enhanced coagulation?",
+      "options": [
+        "To reduce the coagulant dose required at a given raw water turbidity",
+        "To improve the settling rate of floc so clarifier loading can be increased",
+        "To raise finished water alkalinity so the distribution system is protected",
+        "To increase natural organic matter removal and limit by-product formation"
+      ],
+      "correctIndex": 3,
+      "explanation": "Enhanced coagulation adjusts dose and pH specifically to maximise removal of natural organic matter, the precursor material that reacts with chlorine to form trihalomethanes and haloacetic acids. It usually means a higher coagulant dose and a lower coagulation pH than turbidity removal alone would require.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Enhanced coagulation",
+      "isCalc": "no",
+      "tip": "Enhanced coagulation targets precursors, so it usually costs more chemical, not less."
+    },
+    {
+      "questionNum": 1071,
+      "question": "How do tube or plate settlers improve the performance of a sedimentation basin?",
+      "options": [
+        "They lengthen the flow path so detention time within the basin increases",
+        "They introduce turbulence that promotes further floc growth before settling",
+        "They filter the water mechanically as it rises toward the effluent launders",
+        "They add effective settling area, so particles travel a shorter distance to a surface"
+      ],
+      "correctIndex": 3,
+      "explanation": "Inclined tubes or plates divide the water column into many shallow settling zones. A particle only has to fall a few centimetres to reach a solid surface instead of the full basin depth, and the accumulated solids slide down into the sludge zone. The effective settling area is multiplied, allowing higher throughput in the same footprint.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Tube and plate settlers",
+      "isCalc": "no",
+      "tip": "Settling depends on area, not volume. Shallow depth settling is the principle behind tube settlers."
+    },
+    {
+      "questionNum": 1072,
+      "question": "A clarifier passes 4320 m³/d over 48 m of effluent weir. What is the weir loading rate?",
+      "options": [
+        "45 m³/(m·d)",
+        "108 m³/(m·d)",
+        "180 m³/(m·d)",
+        "90 m³/(m·d)"
+      ],
+      "correctIndex": 3,
+      "explanation": "Weir loading rate is the flow divided by the total length of the effluent weir: 4320 m³/d ÷ 48 m = 90 m³/(m·d).",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Weir loading rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Weir loading = Flow ÷ Weir length"
+        },
+        {
+          "l": "Substitute",
+          "c": "4320 m³/d ÷ 48 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 90 m³/(m·d)"
+        },
+        {
+          "l": "Why it matters",
+          "c": "Excessive weir loading draws settled floc upward into the launder."
+        }
+      ],
+      "tip": "Weir loading uses length in metres, not the basin area. High values resuspend settled solids."
+    },
+    {
+      "questionNum": 1073,
+      "question": "What is the purpose of an inlet baffle at the entry to a sedimentation basin?",
+      "options": [
+        "To trap coarse grit before it can settle in the main basin volume",
+        "To provide additional flocculation immediately before particles settle",
+        "To dissipate inlet energy and distribute flow evenly across the basin",
+        "To separate floating material before the water reaches the sludge zone"
+      ],
+      "correctIndex": 2,
+      "explanation": "Water arriving from flocculation carries momentum that would drive a jet through the basin and short-circuit the settling zone. An inlet baffle spreads that energy and distributes flow evenly across the cross-section so the full basin volume is used and the design detention time is achieved.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Basin hydraulics",
+      "isCalc": "no",
+      "tip": "Short-circuiting wastes basin volume. Inlet baffling is the first defence against it."
+    },
+    {
+      "questionNum": 1074,
+      "question": "Water flows at 60 L/s through a pipe of 300 mm internal diameter. What is the velocity?",
+      "options": [
+        "0.20 m/s",
+        "0.42 m/s",
+        "0.85 m/s",
+        "1.70 m/s"
+      ],
+      "correctIndex": 2,
+      "explanation": "The pipe radius is 0.15 m, so the cross-sectional area is π × 0.15² = 0.0707 m². Converting flow to 0.060 m³/s and dividing by area gives 0.060 ÷ 0.0707 = 0.85 m/s.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Pipe velocity",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Velocity = Flow ÷ Area"
+        },
+        {
+          "l": "Area",
+          "c": "π × 0.15² = 0.0707 m²"
+        },
+        {
+          "l": "Convert flow",
+          "c": "60 L/s ÷ 1000 = 0.060 m³/s"
+        },
+        {
+          "l": "Solve",
+          "c": "0.060 ÷ 0.0707 = 0.85 m/s"
+        }
+      ],
+      "tip": "Convert millimetres to metres and litres to cubic metres before dividing."
+    },
+    {
+      "questionNum": 1075,
+      "question": "A pressure gauge on a discharge line reads 45 m of head. What is the equivalent pressure in kilopascals?",
+      "options": [
+        "45 kPa",
+        "450 kPa",
+        "4410 kPa",
+        "441 kPa"
+      ],
+      "correctIndex": 3,
+      "explanation": "Each metre of water column exerts about 9.81 kPa, so 45 m × 9.81 = 441 kPa.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Pressure and head",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Relationship",
+          "c": "1 m of water ≈ 9.81 kPa"
+        },
+        {
+          "l": "Substitute",
+          "c": "45 m × 9.81 kPa/m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 441 kPa"
+        }
+      ],
+      "tip": "Roughly 10 kPa per metre is a fast field check for converting head to pressure."
+    },
+    {
+      "questionNum": 1076,
+      "question": "Why is unidirectional flushing generally preferred over conventional open-hydrant flushing?",
+      "options": [
+        "It uses less water because hydrants are opened for a shorter period",
+        "It allows flushing to proceed without isolating any section of main",
+        "It closes valves to force high scouring velocity through a defined section",
+        "It avoids the need to monitor chlorine residual during the flushing program"
+      ],
+      "correctIndex": 2,
+      "explanation": "Unidirectional flushing closes selected valves so that water is forced along a planned route at a velocity high enough to scour deposits from the pipe wall. Simply opening a hydrant draws water from several directions at lower velocity, which removes far less material for the volume of water used.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Flushing programs",
+      "isCalc": "no",
+      "tip": "Scouring depends on velocity, not on volume discharged. Valve control is what creates the velocity."
+    },
+    {
+      "questionNum": 1077,
+      "question": "Why are distribution system valves exercised on a regular schedule?",
+      "options": [
+        "To verify that the pressure rating of each valve still meets system demand",
+        "To release air that accumulates at high points within the pipe network",
+        "To measure the flow capacity available through each section of the network",
+        "To confirm they will operate when needed and to prevent seizing in place"
+      ],
+      "correctIndex": 3,
+      "explanation": "Valves that sit untouched for years corrode and seize, and are then discovered to be inoperable during the emergency when they are needed to isolate a break. Regular exercising keeps them free, confirms the number of turns and direction, and validates that valve records match what is in the ground.",
+      "difficulty": "easy",
+      "module": "Water Distribution",
+      "topic": "Valve maintenance",
+      "isCalc": "no",
+      "tip": "A valve you cannot close during a main break turns a small isolation into a large outage."
+    },
+    {
+      "questionNum": 1078,
+      "question": "Why do dead-end mains require particular operational attention?",
+      "options": [
+        "They carry higher velocities that accelerate erosion of the pipe wall",
+        "They experience greater pressure fluctuation than looped sections",
+        "They are more difficult to locate accurately during excavation work",
+        "They accumulate sediment and lose residual because water does not circulate"
+      ],
+      "correctIndex": 3,
+      "explanation": "Water in a dead end moves only when a customer draws it, so residence time is long. Disinfectant residual decays, sediment settles out and accumulates, and taste, odour and bacteriological problems follow. Regular flushing, or looping the main where feasible, is the standard control.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Dead ends",
+      "isCalc": "no",
+      "tip": "Looping solves the cause; flushing manages the symptom."
+    },
+    {
+      "questionNum": 1079,
+      "question": "What is the operational purpose of dividing a distribution system into pressure zones?",
+      "options": [
+        "To allow each area of the system to be billed at a separate consumption rate",
+        "To isolate each area so that contamination cannot travel between zones",
+        "To reduce the number of storage reservoirs the system needs to maintain",
+        "To keep pressure within an acceptable band despite differences in elevation"
+      ],
+      "correctIndex": 3,
+      "explanation": "In terrain with significant elevation change, a single hydraulic grade would leave low areas at damaging pressure and high areas with too little. Pressure zones, separated by valves, booster stations, and dedicated storage, keep every customer within a workable pressure range.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Pressure zones",
+      "isCalc": "no",
+      "tip": "Every 10 m of elevation change is roughly 1 bar, so hilly systems need zoning."
+    },
+    {
+      "questionNum": 1080,
+      "question": "Why is thermal stratification in a source reservoir an operational concern for a treatment plant?",
+      "options": [
+        "It raises the temperature of the entire reservoir and accelerates algal growth",
+        "It increases the hardness of the deeper water and raises softening demand",
+        "It reduces the total storage volume available for withdrawal during summer",
+        "It creates layers of differing quality, so intake depth changes raw water character"
+      ],
+      "correctIndex": 3,
+      "explanation": "A stratified reservoir separates into layers that differ in temperature, dissolved oxygen, iron and manganese, and taste and odour compounds. The depth from which water is drawn therefore determines the treatment challenge, and seasonal turnover mixes the layers and can cause abrupt changes in raw water quality.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "Reservoir stratification",
+      "isCalc": "no",
+      "tip": "Multi-level intakes exist so operators can select the best available layer."
+    }
+  ]
+}
