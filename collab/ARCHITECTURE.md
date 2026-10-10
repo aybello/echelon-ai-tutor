@@ -120,6 +120,7 @@ Used by: dashboard readiness score, AI tutor context, trigger engine nudge email
 | AI Tutor health probe | Every 30 min | `/api/scheduled/tutor-health` |
 | Abandoned team order recovery | Daily | `/api/scheduled/recover-team-orders` |
 | Captured-lead follow-ups (bounded day 3 and day 10) | Daily 15:15 UTC | `/api/scheduled/lead-follow-ups` |
+| Abandoned checkout recovery (exactly one reminder per expired cart) | Daily 16:30 UTC | `/api/scheduled/recover-abandoned-checkouts` |
 
 ---
 
