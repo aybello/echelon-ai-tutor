@@ -117,6 +117,7 @@ export const abandonedCheckouts = mysqlTable("abandoned_checkouts", {
 }, (t) => [
   index("abandoned_checkouts_email_idx").on(t.email),
   index("abandoned_checkouts_pending_idx").on(t.recoveryEmailSentAt, t.abandonedAt),
+  uniqueIndex("abandoned_checkouts_unsubscribeToken_idx").on(t.unsubscribeToken),
 ]);
 
 export type AbandonedCheckout = typeof abandonedCheckouts.$inferSelect;
