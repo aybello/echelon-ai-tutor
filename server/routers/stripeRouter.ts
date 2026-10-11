@@ -37,6 +37,7 @@ import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass
 import { googleAdsPurchaseConversion } from "../stripe/googleAdsPurchase";
 import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
+import { savePurchaseExamDate } from "../purchaseExamDate";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import {
   getCommercialAvailability,
@@ -272,6 +273,30 @@ export const stripeRouter = router({
         .set({ referralSource: input.referralSource })
         .where(eq(purchases.stripeSessionId, input.sessionId));
       return { success: true };
+    }),
+
+  /**
+   * Record the learner's exam date straight from the purchase confirmation
+   * page so the study reminder engine has someone to remind. Proof of the
+   * purchase is the checkout session id, as with the referral question above.
+   * It creates a date only when none exists; it never overwrites one.
+   */
+  saveExamDate: publicProcedure
+    .input(z.object({
+      sessionId: z.string().min(8).max(128),
+      examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { status: "unavailable" as const };
+      const result = await savePurchaseExamDate(db, input);
+      if (result.status === "saved") {
+        await trackEvent("exam_date_set", {
+          productKey: result.productKey,
+          extra: { source: "purchase_success" },
+        }).catch(() => undefined);
+      }
+      return result;
     }),
 
   /** Legacy endpoint retained to fail closed for stale clients and bookmarked pages. */

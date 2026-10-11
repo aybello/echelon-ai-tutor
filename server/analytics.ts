@@ -50,6 +50,12 @@ export type AnalyticsEventName =
    * many reached a paywall that roughly four in five never get to.
    */
   | "preview_plan_offered"
+  /**
+   * A learner gave their exam date. The reminder engine only reaches learners
+   * with a date on file, so this counts the people who can now be reminded,
+   * and its rate against purchases measures the confirmation page prompt.
+   */
+  | "exam_date_set"
   | "checkout_started"
   | "checkout_completed"
   | "diagnostic_completed"
