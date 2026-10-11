@@ -1,6 +1,14 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import {
+  TEXAS_CLASS_D_WATER_MATH_QUESTIONS_PER_MOCK,
+  TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT,
+  TEXAS_CLASS_D_WATER_MOCK_DURATION_SECONDS,
+  TEXAS_CLASS_D_WATER_MOCK_QUESTIONS,
+  TEXAS_CLASS_D_WATER_TOTAL_QUESTIONS,
+} from "../shared/texasClassD";
+import { TEXAS_CLASS_D_WATER_BLUEPRINT } from "./usMockBlueprint";
 
 const packagePath = path.resolve(import.meta.dirname, "../content/us-texas-class-d-water/texas-class-d-reviewed-package.json");
 const sourceUrl = "https://www.tceq.texas.gov/licensing/licenses/waterworksntk";
@@ -26,9 +34,9 @@ const pkg = JSON.parse(readFileSync(packagePath, "utf8")) as {
 describe("Texas Class D governed package", () => {
   it("contains only the reviewed state-specific bank and its exact approved allocation", () => {
     expect(pkg.status).toBe("frontier-reviewed-content-ready-for-governed-staging");
-    expect(pkg.bank).toMatchObject({ bankKey: "us-texas-class-d-water", totalQuestions: 120, blueprintVersion: 1, minCalcPerMock: 8 });
+    expect(pkg.bank).toMatchObject({ bankKey: "us-texas-class-d-water", totalQuestions: TEXAS_CLASS_D_WATER_TOTAL_QUESTIONS, blueprintVersion: 1, minCalcPerMock: TEXAS_CLASS_D_WATER_MATH_QUESTIONS_PER_MOCK });
     expect(pkg.bank.modules).toEqual(expectedModules);
-    expect(pkg.questions).toHaveLength(120);
+    expect(pkg.questions).toHaveLength(TEXAS_CLASS_D_WATER_TOTAL_QUESTIONS);
     for (const module of expectedModules) expect(pkg.bank.moduleTargets[module]).toBe(15);
     const actualModuleCounts = new Map<string, number>();
     for (const question of pkg.questions) {
@@ -58,7 +66,7 @@ describe("Texas Class D governed package", () => {
       if (question.isCalc === "yes") expect(question.steps?.map(step => step.l)).toEqual(calculationStepLabels);
       else expect(question.steps).toBeNull();
     }
-    expect(numbers).toEqual(new Set(Array.from({ length: 120 }, (_, index) => index + 1)));
+    expect(numbers).toEqual(new Set(Array.from({ length: TEXAS_CLASS_D_WATER_TOTAL_QUESTIONS }, (_, index) => index + 1)));
     expect(answerPositions).toEqual([30, 30, 30, 30]);
     expect(pkg.qualityGate.reviewStatus).toContain("all 120 questions passed final review");
     expect(pkg.qualityGate.answerPositionBalance).toEqual({ "0": 30, "1": 30, "2": 30, "3": 30 });
@@ -68,5 +76,26 @@ describe("Texas Class D governed package", () => {
     const calculations = pkg.questions.filter(question => question.isCalc === "yes");
     expect(calculations).toHaveLength(15);
     expect(calculations.every(question => question.module === "Water utility math")).toBe(true);
+  });
+
+  it("keeps mock claims aligned with the governed bank and never stages a price label", () => {
+    const quizPage = readFileSync(path.resolve(import.meta.dirname, "../client/src/pages/UsTexasClassDQuiz.tsx"), "utf8");
+    const mockPage = readFileSync(path.resolve(import.meta.dirname, "../client/src/pages/UsTexasClassDMockExam.tsx"), "utf8");
+    const mathBlueprint = TEXAS_CLASS_D_WATER_BLUEPRINT.find(item => item.module === "Water utility math");
+
+    expect(quizPage).toContain("TEXAS_CLASS_D_WATER_TOTAL_QUESTIONS");
+    expect(quizPage).toContain("TEXAS_CLASS_D_WATER_MOCK_QUESTIONS");
+    expect(quizPage).toContain("TEXAS_CLASS_D_WATER_MATH_QUESTIONS_PER_MOCK");
+    expect(quizPage).not.toContain("priceLabel=");
+    expect(quizPage).not.toContain("CA$");
+    expect(mockPage).toContain("TEXAS_CLASS_D_WATER_MOCK_QUESTIONS");
+    expect(mockPage).toContain("TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT");
+    expect(mockPage).toContain("TEXAS_CLASS_D_WATER_MOCK_DURATION_SECONDS");
+    expect(TEXAS_CLASS_D_WATER_TOTAL_QUESTIONS).toBe(pkg.questions.length);
+    expect(TEXAS_CLASS_D_WATER_MOCK_QUESTIONS).toBe(60);
+    expect(TEXAS_CLASS_D_WATER_MOCK_DURATION_SECONDS).toBe(7200);
+    expect(TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT.reduce((total, area) => total + area.total, 0)).toBe(TEXAS_CLASS_D_WATER_MOCK_QUESTIONS);
+    expect(TEXAS_CLASS_D_WATER_BLUEPRINT).toBe(TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT);
+    expect(TEXAS_CLASS_D_WATER_MATH_QUESTIONS_PER_MOCK).toBe(mathBlueprint?.calculations);
   });
 });

@@ -162,6 +162,29 @@ describe("US mock blueprints match the drafted allocations", () => {
     expect(usMockBlueprintForBank(TEXAS_CLASS_D_WATER_BANK, US_CLASS1_BLUEPRINT_VERSION)).toBeNull();
   });
 
+  it("has the server select the exact Texas Class D scored blueprint", () => {
+    const pool: ClassifiedQuestion[] = [];
+    let id = 1;
+    for (const area of TEXAS_CLASS_D_WATER_BLUEPRINT) {
+      for (const level of ["recall", "application"]) {
+        for (const isCalc of [true, false]) {
+          for (let i = 0; i < area.total; i++) {
+            pool.push({ id: id++, module: area.module, isCalc, cognitiveLevel: level });
+          }
+        }
+      }
+    }
+
+    const picked = selectBlueprintQuestions(pool, TEXAS_CLASS_D_WATER_BLUEPRINT, 60);
+    expect(picked).toHaveLength(60);
+    for (const area of TEXAS_CLASS_D_WATER_BLUEPRINT) {
+      const inArea = picked.filter(question => question.module === area.module);
+      expect(inArea).toHaveLength(area.total);
+      expect(inArea.filter(question => question.cognitiveLevel === "recall")).toHaveLength(area.recall);
+      expect(inArea.filter(question => question.isCalc)).toHaveLength(area.calculations);
+    }
+  });
+
   it("routes US banks to US profiles through the shared resolver", () => {
     expect(mockBlueprintForBank(US_CLASS1_WATER_BANK, US_CLASS1_BLUEPRINT_VERSION))
       .toBe(US_CLASS1_WATER_BLUEPRINT);

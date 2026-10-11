@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { getCourseByKey } from "../shared/courseRegistry";
 
 const pagesDir = resolve(process.cwd(), "client/src/pages");
 const shellSource = readFileSync(
@@ -26,18 +27,25 @@ describe("mock-exam navigation", () => {
     expect(shellSource).not.toContain("backPath={backPath}");
   });
 
-  it("gives every mock exam a registered practice return route", () => {
+  it("gives every active mock exam a registered practice return route and keeps inactive courses un-routed", () => {
     expect(mockExamFiles.length).toBeGreaterThan(30);
 
     for (const filename of mockExamFiles) {
       const source = readFileSync(resolve(pagesDir, filename), "utf8");
       const practicePath = source.match(/practicePath="([^"]+)"/)?.[1];
+      const productKey = source.match(/productKey="([^"]+)"/)?.[1];
+      const course = productKey ? getCourseByKey(productKey) : undefined;
 
       expect(practicePath, `${filename} must declare practicePath`).toBeTruthy();
+      expect(productKey, `${filename} must declare productKey`).toBeTruthy();
+      expect(course, `${filename} productKey ${productKey} must resolve to a governed course`).toBeDefined();
+      const shouldBeRegistered = course!.isActive;
       expect(
         registeredRoutes.has(practicePath!),
-        `${filename} practicePath ${practicePath} must be registered in App.tsx`,
-      ).toBe(true);
+        shouldBeRegistered
+          ? `${filename} practicePath ${practicePath} must be registered in App.tsx`
+          : `${filename} belongs to inactive course ${productKey} and must not be registered in App.tsx`,
+      ).toBe(shouldBeRegistered);
     }
   });
 

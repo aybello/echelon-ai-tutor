@@ -4,6 +4,11 @@ import { z } from "zod";
 import { ENV } from "./_core/env";
 import type { LearningIdentity } from "./_core/learningIdentity";
 import { resolveCourseKey } from "../shared/courseRegistry";
+import {
+  TEXAS_CLASS_D_WATER_COURSE_KEY,
+  TEXAS_CLASS_D_WATER_MOCK_DURATION_SECONDS,
+  TEXAS_CLASS_D_WATER_MOCK_QUESTIONS,
+} from "../shared/texasClassD";
 
 const manifestSchema = z.object({
   version: z.union([z.literal(1), z.literal(2)]), sessionId: z.string().uuid(), owner: z.string(),
@@ -18,15 +23,22 @@ export type MockManifest = z.infer<typeof manifestSchema>;
 // server. Already persisted results can be retried after this window.
 export const MOCK_SUBMISSION_GRACE_MS = 5 * 60_000;
 
+function mockRuntimeSettingsForCourseKey(courseKey: string) {
+  const isTexasClassD = courseKey === TEXAS_CLASS_D_WATER_COURSE_KEY;
+  return {
+    count: isTexasClassD ? TEXAS_CLASS_D_WATER_MOCK_QUESTIONS : courseKey === "oit-ww" ? 50 : courseKey === "wpi-class4-wastewater" ? 110 : 100,
+    scoredCount: isTexasClassD ? TEXAS_CLASS_D_WATER_MOCK_QUESTIONS : courseKey === "oit-ww" ? 50 : 100,
+    duration: isTexasClassD ? TEXAS_CLASS_D_WATER_MOCK_DURATION_SECONDS : courseKey === "oit-ww" ? 3600 : courseKey === "electrician-309a" ? 14400 : 10800,
+  };
+}
+
 export function mockSpecification(courseKey: string) {
   const course = resolveCourseKey(courseKey);
   if (!course?.isActive) throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown mock exam course." });
   return {
     courseKey: course.courseKey, bankKey: course.questionBankKey,
     examType: course.courseKey === "class1-water" ? "class1" : course.courseKey,
-    count: course.courseKey === "oit-ww" ? 50 : course.courseKey === "wpi-class4-wastewater" ? 110 : 100,
-    scoredCount: course.courseKey === "oit-ww" ? 50 : 100,
-    duration: course.courseKey === "oit-ww" ? 3600 : course.courseKey === "electrician-309a" ? 14400 : 10800,
+    ...mockRuntimeSettingsForCourseKey(course.courseKey),
   };
 }
 

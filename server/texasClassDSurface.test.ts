@@ -1,0 +1,72 @@
+import { readFileSync } from "node:fs";
+import { describe, expect, it } from "vitest";
+import {
+  getAllActiveCourseKeysForFamily,
+  getCourseByKey,
+  isValidCourseKeyForFamily,
+} from "../shared/courseRegistry";
+import { INDIVIDUAL_PRODUCTS } from "../shared/products";
+import { COMMERCIAL_RELEASE_PRODUCT_KEYS } from "./commercialAvailability";
+import { classifyAppRoute } from "../shared/appRoutes";
+
+const COURSE_KEY = "us-texas-class-d-water";
+const dormantPaths = [
+  "/us-texas-class-d-water",
+  "/us-texas-class-d-water-mock",
+  "/us-texas-class-d-water-flashcards",
+  "/formulas-us-texas-class-d-water",
+];
+
+function registeredAppRoutes(source: string) {
+  return new Set(
+    Array.from(source.matchAll(/<Route path=\{?"([^"]+)"/g), (match) => match[1]),
+  );
+}
+
+describe("Texas Class D dormant learning surfaces", () => {
+  it("has all future learning surfaces in code without registering a public route", () => {
+    const app = readFileSync("client/src/App.tsx", "utf8");
+    const registeredRoutes = registeredAppRoutes(app);
+    for (const path of dormantPaths) {
+      expect(classifyAppRoute(path).kind).toBe("not-found");
+      expect(registeredRoutes).not.toContain(path);
+    }
+    expect(readFileSync("client/src/pages/UsTexasClassDQuiz.tsx", "utf8")).toContain(COURSE_KEY);
+    expect(readFileSync("client/src/pages/UsTexasClassDMockExam.tsx", "utf8")).toContain(COURSE_KEY);
+    expect(readFileSync("client/src/pages/UsTexasClassDFlashcards.tsx", "utf8")).toContain(COURSE_KEY);
+    expect(readFileSync("client/src/pages/FormulasUsTexasClassD.tsx", "utf8")).toContain("Texas Class D Water");
+  });
+
+  it("detects either supported App.tsx route declaration syntax", () => {
+    const synthetic = `${'<Route path={"/us-texas-class-d-water"} component={Mock} />'}\n${'<Route path="/us-texas-class-d-water-mock" component={Mock} />'}`;
+    const routes = registeredAppRoutes(synthetic);
+    expect(routes).toContain("/us-texas-class-d-water");
+    expect(routes).toContain("/us-texas-class-d-water-mock");
+  });
+
+  it("keeps the course inactive and absent from new checkout", () => {
+    expect(getCourseByKey(COURSE_KEY)).toMatchObject({
+      courseKey: COURSE_KEY,
+      examFamily: "us-state",
+      isActive: false,
+    });
+    expect(isValidCourseKeyForFamily(COURSE_KEY, "us-state")).toBe(false);
+    expect(getAllActiveCourseKeysForFamily("us-state")).not.toContain(COURSE_KEY);
+    expect(INDIVIDUAL_PRODUCTS.some((product) => product.key === COURSE_KEY)).toBe(false);
+    expect(COMMERCIAL_RELEASE_PRODUCT_KEYS).not.toContain(COURSE_KEY);
+  });
+
+  it("leaves Texas mock questions to the signed server session, never the practice-bank payload", () => {
+    const mockSource = readFileSync("client/src/pages/UsTexasClassDMockExam.tsx", "utf8");
+    expect(mockSource).not.toContain("useQuestionBank");
+    expect(mockSource).not.toContain("correctIndex");
+    expect(mockSource).not.toContain("explanation:");
+    expect(mockSource).toContain("questionPool={[]}");
+  });
+
+  it("leaves dormant Texas flashcards free of answer-bearing bank requests", () => {
+    const flashcardSource = readFileSync("client/src/pages/UsTexasClassDFlashcards.tsx", "utf8");
+    expect(flashcardSource).not.toContain("useQuestionBank");
+    expect(flashcardSource).toContain("questions={[]}");
+  });
+});

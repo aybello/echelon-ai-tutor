@@ -13,6 +13,10 @@
  * throws rather than borrowing from another domain. That refusal is intended.
  */
 import type { BlueprintArea } from "./mockBlueprint";
+import {
+  TEXAS_CLASS_D_WATER_COURSE_KEY,
+  TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT,
+} from "../shared/texasClassD";
 
 export const US_CLASS1_BLUEPRINT_VERSION = 2025;
 
@@ -36,19 +40,10 @@ export const US_CLASS1_DIST_BLUEPRINT = [
 ] as const;
 
 /** Texas Class D is a combined state-specific entry course, not a WPI class. */
-export const TEXAS_CLASS_D_WATER_BANK = "us-texas-class-d-water";
+export const TEXAS_CLASS_D_WATER_BANK = TEXAS_CLASS_D_WATER_COURSE_KEY;
 export const TEXAS_CLASS_D_BLUEPRINT_VERSION = 1;
 /** 60 questions: 16 recall, 44 application, 8 calculations. */
-export const TEXAS_CLASS_D_WATER_BLUEPRINT = [
-  { module: "Rules, licensing and records", total: 8, recall: 3, calculations: 0 },
-  { module: "Safety and operator responsibilities", total: 7, recall: 1, calculations: 0 },
-  { module: "Source water and general water quality", total: 8, recall: 3, calculations: 0 },
-  { module: "Groundwater systems", total: 7, recall: 2, calculations: 0 },
-  { module: "Surface water treatment", total: 8, recall: 3, calculations: 0 },
-  { module: "Storage and distribution", total: 7, recall: 2, calculations: 0 },
-  { module: "Disinfection", total: 7, recall: 2, calculations: 0 },
-  { module: "Water utility math", total: 8, recall: 0, calculations: 8 },
-] as const;
+export const TEXAS_CLASS_D_WATER_BLUEPRINT = TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT;
 
 export const US_CLASS1_CRITERIA_SOURCE = "https://gowpi.org/services/2025-need-to-know-criteria/";
 
