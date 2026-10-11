@@ -154,7 +154,7 @@ export const COURSE_SEO_PAGES: CourseSeoPage[] = getAllCourses()
   .map(course => {
     const product = PRODUCT_BY_KEY.get(course.productKey)!;
     const isOntario = course.examFamily === "ontario";
-    const isUS = course.examFamily === "us-wpi";
+    const isUS = course.examFamily === "us-wpi" || course.examFamily === "us-state";
     const jurisdictionLabel = isOntario
       ? "Ontario"
       : isUS

@@ -4872,6 +4872,9 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Texas Commission on Environmental Quality (TCEQ), Occupational Licensing",
         "authorityUrl": "https://www.tceq.texas.gov/licensing/licenses/waterlic",
+        "directCourseKeys": [
+          "us-texas-class-d-water"
+        ],
         "examSystem": "state-specific",
         "localLevels": "Texas Class D Water is the local combined entry credential; it is not a treatment-only Class I credential.",
         "note": "Texas TCEQ Class D Water uses a combined state blueprint for groundwater treatment, surface-water treatment, distribution, storage, math, safety and Texas rules. No WPI Class I treatment mapping is established, so shared routing is off.",
@@ -4893,6 +4896,9 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Texas Commission on Environmental Quality (TCEQ), Occupational Licensing",
         "authorityUrl": "https://www.tceq.texas.gov/licensing/licenses/waterlic",
+        "directCourseKeys": [
+          "us-texas-class-d-water"
+        ],
         "examSystem": "state-specific",
         "localLevels": "Texas Class D Water is the local combined entry credential; Class C Water Distribution is a separate higher local credential.",
         "note": "Texas TCEQ Class D Water uses a combined state blueprint for groundwater treatment, surface-water treatment, distribution, storage, math, safety and Texas rules. No WPI Class I distribution mapping is established, so shared routing is off.",

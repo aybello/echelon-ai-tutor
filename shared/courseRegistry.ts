@@ -21,11 +21,12 @@
  *
  * "us-wpi" is a SEPARATE family from "western". Both reference WPI-aligned
  * material, but US courses carry their own course keys, question bank keys,
- * products and mock profile. A Canadian bank is never reachable from a US
- * course key, and a US bank is never reachable from a Canadian one.
- * Any code branching on family must handle all three cases explicitly.
+ * products and mock profile. "us-state" is a separate, state-specific US
+ * family. A Canadian bank is never reachable from a US course key, and a US
+ * bank is never reachable from a Canadian one. Any code branching on family
+ * must handle all four cases explicitly.
  */
-export type ExamFamily = "ontario" | "western" | "us-wpi";
+export type ExamFamily = "ontario" | "western" | "us-wpi" | "us-state";
 export type ProvinceOrRegion = "ontario" | "western" | "united-states";
 export type TrackType =
   | "water-treatment"
@@ -818,6 +819,30 @@ const REGISTRY: CourseEntry[] = [
     aliases: [],
     isActive: true,
   },
+  // ── Texas Class D Water (state-specific, held pending governed release) ──
+  // Texas Class D is a combined entry credential spanning treatment and
+  // distribution. This separate family prevents it from inheriting any WPI or
+  // Canadian entitlement, bank, route or source claim. It remains inactive
+  // until the staged bank, release script and commercial decision are complete.
+  {
+    courseKey: "us-texas-class-d-water",
+    displayName: "Texas Class D Water",
+    shortName: "Texas Class D Water",
+    provinceOrRegion: "united-states",
+    examFamily: "us-state",
+    track: "water-treatment",
+    classLevel: 0,
+    quizPath: "/us-texas-class-d-water",
+    mockExamPath: "/us-texas-class-d-water-mock",
+    flashcardPath: "/us-texas-class-d-water-flashcards",
+    formulaPath: "/formulas-us-texas-class-d-water",
+    productKey: "us-texas-class-d-water",
+    subscriptionTier: "all-access",
+    questionBankKey: "us-texas-class-d-water",
+    teamAssignable: false,
+    aliases: [],
+    isActive: false,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -955,6 +980,8 @@ export function getAllActiveCourseKeysForFamily(family: ExamFamily): string[] {
  *   blueprint and formula sheet.
  * - "western": the shared WPI-aligned Canadian course that US learners can
  *   also buy, presented honestly as shared preparation.
+ * - "us-state": a dedicated state-specific US course with a state-owned bank
+ *   identity and no implied WPI match.
  *
  * Callers that need to distinguish the two must test `examFamily` directly.
  * This helper exists only so US-context presentation (course bar labels,
@@ -962,7 +989,7 @@ export function getAllActiveCourseKeysForFamily(family: ExamFamily): string[] {
  * Ontario label.
  */
 export function isUSPresentableFamily(family: ExamFamily | undefined): boolean {
-  return family === "us-wpi" || family === "western";
+  return family === "us-wpi" || family === "us-state" || family === "western";
 }
 
 /**

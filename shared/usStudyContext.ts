@@ -12,7 +12,7 @@ export function withUSStudyContext(path: string, productKey: string | null | und
   // them. Dedicated US courses are US courses by definition, so they carry it
   // as well. Ontario courses never do.
   const family = resolveCourseKey(productKey ?? "")?.examFamily;
-  if (family !== "western" && family !== "us-wpi") return path;
+  if (family !== "western" && family !== "us-wpi" && family !== "us-state") return path;
   const context = readUSStudyContext(search);
   if (!context.isUS) return path;
   const url = new URL(path, "https://echelon.invalid");

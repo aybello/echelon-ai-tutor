@@ -39,7 +39,7 @@ export function resolveUSStudyContext(
 ): ResolvedUSStudyContext | null {
   const course = getCourseByKey(courseKey);
   if (!course) return null;
-  if (course.examFamily !== "us-wpi") return null;
+  if (course.examFamily !== "us-wpi" && course.examFamily !== "us-state") return null;
   if (!US_SUPPORTED_STREAMS.has(course.track)) return null;
 
   // An unrecognized state silently becomes "no state", never an error and
@@ -52,6 +52,8 @@ export function resolveUSStudyContext(
     stateCode: identity?.code ?? null,
     stateName: identity?.name ?? null,
     unitConvention: "us-customary",
-    criteriaEdition: "WPI 2025 Class I criteria",
+    criteriaEdition: course.examFamily === "us-state"
+      ? "state-specific public operator criteria"
+      : "WPI 2025 Class I criteria",
   };
 }

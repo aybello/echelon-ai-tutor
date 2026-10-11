@@ -19,6 +19,8 @@ export interface USProgramEvidence {
   verifiedSharedLevels: number[];
   note: string;
   sources: { url: string; title: string; evidence: string }[];
+  /** State-specific course keys approved for this exact local program only. */
+  directCourseKeys?: string[];
 }
 export interface USStateResearch {
   code: string;
@@ -65,12 +67,32 @@ export function sharedUSCourses(stream?: string): CourseEntry[] {
     .filter(course => !covered.has(`${course.track}:${course.classLevel}`));
   return [...dedicated, ...fallback].filter(course => !stream || course.track === stream);
 }
+/**
+ * State-specific courses are linked only when their exact course keys appear in
+ * the official-evidence record for the current state and program. This is
+ * intentionally separate from shared WPI matching: a local course never gains
+ * visibility from a WPI class number, and inactive courses never surface.
+ */
+export function directUSStateCourses(state: USStateConfig, stream?: string): CourseEntry[] {
+  const allowed = new Set(
+    state.programs
+      .filter(program => !stream || program.stream === stream)
+      .flatMap(program => program.directCourseKeys ?? []),
+  );
+  return getCoursesForFamily("us-state")
+    .filter(course => allowed.has(course.courseKey))
+    .filter(course => !stream || state.programs.some(program =>
+      program.stream === stream && (program.directCourseKeys ?? []).includes(course.courseKey),
+    ));
+}
 export function matchedUSCourses(state: USStateConfig, stream?: string): CourseEntry[] {
-  return sharedUSCourses(stream).filter(course => state.programs.some(program => program.stream === course.track && isSharedProgram(program) && program.verifiedSharedLevels.includes(course.classLevel)));
+  const direct = directUSStateCourses(state, stream);
+  const shared = sharedUSCourses(stream).filter(course => state.programs.some(program => program.stream === course.track && isSharedProgram(program) && program.verifiedSharedLevels.includes(course.classLevel)));
+  return [...new Map([...direct, ...shared].map(course => [course.courseKey, course])).values()];
 }
 /** Display context only: existing WPI product, bank and paid access identity remain unchanged. */
 export function usCourseHref(course: CourseEntry, tool: "practice" | "mock" | "flashcards", state?: USStateCode): string | null {
-  if (!["western", "us-wpi"].includes(course.examFamily) || !course.isActive) return null;
+  if (!["western", "us-wpi", "us-state"].includes(course.examFamily) || !course.isActive) return null;
   if (state && !matchedUSCourses(US_STATE_CONFIGS[state]).some(item => item.courseKey === course.courseKey)) return null;
   const path = tool === "practice" ? course.quizPath : tool === "mock" ? course.mockExamPath : course.flashcardPath;
   if (!path) return null;

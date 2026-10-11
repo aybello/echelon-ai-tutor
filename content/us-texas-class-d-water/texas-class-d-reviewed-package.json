@@ -1,0 +1,3490 @@
+{
+  "schemaVersion": 1,
+  "status": "frontier-reviewed-content-ready-for-governed-staging",
+  "course": {
+    "courseKey": "us-texas-class-d-water",
+    "displayName": "Texas Class D Water",
+    "stateCode": "TX",
+    "authority": "Texas Commission on Environmental Quality"
+  },
+  "bank": {
+    "bankKey": "us-texas-class-d-water",
+    "totalQuestions": 120,
+    "modules": [
+      "Rules, licensing and records",
+      "Safety and operator responsibilities",
+      "Source water and general water quality",
+      "Groundwater systems",
+      "Surface water treatment",
+      "Storage and distribution",
+      "Disinfection",
+      "Water utility math"
+    ],
+    "moduleTargets": {
+      "Rules, licensing and records": 15,
+      "Safety and operator responsibilities": 15,
+      "Source water and general water quality": 15,
+      "Groundwater systems": 15,
+      "Surface water treatment": 15,
+      "Storage and distribution": 15,
+      "Disinfection": 15,
+      "Water utility math": 15
+    },
+    "blueprintVersion": 1,
+    "minCalcPerMock": 8,
+    "recallTargetPct": 27
+  },
+  "sourceScope": {
+    "title": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+    "url": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+    "note": "Questions are original Echelon preparation content based on public topic scope. They are not official exam questions or TCEQ-approved training."
+  },
+  "qualityGate": {
+    "primaryWriter": "deepseek/deepseek-v4.1-flash",
+    "reviewer": "claude-fable-5-1",
+    "reviewStatus": "all 120 questions passed final review after targeted revisions",
+    "answerPositionBalance": {
+      "1": 30,
+      "2": 30,
+      "3": 30,
+      "0": 30
+    }
+  },
+  "questions": [
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 1,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "What is the primary purpose of licensing water system operators in Texas?",
+      "options": [
+        "To guarantee that every public water system will never have a compliance violation.",
+        "To protect public health by ensuring operators meet minimum competency requirements.",
+        "To set the price of water sold by public water systems.",
+        "To replace the need for public water system monitoring."
+      ],
+      "correctIndex": 1,
+      "explanation": "Licensing establishes minimum competency and accountability for operators, which supports public health protection. It does not guarantee zero violations, set water prices, or replace monitoring.",
+      "steps": null,
+      "tip": "Licensing is about competency and public health, not guarantees or pricing.",
+      "isCalc": "no",
+      "topic": "Licensing rules",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 2,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "A Class D operator is reviewing the system's compliance documents. Which topic is within the Class D scope?",
+      "options": [
+        "Designing a new water treatment plant.",
+        "Bacteriological sampling and recordkeeping.",
+        "Setting municipal water rates.",
+        "Issuing legal opinions on water rights."
+      ],
+      "correctIndex": 1,
+      "explanation": "The Class D scope includes bacteriological sampling and recordkeeping, which are operational and compliance topics. Designing treatment plants, setting rates, and issuing legal opinions are outside the operator's role.",
+      "steps": null,
+      "tip": "Class D scope focuses on sampling, records, and public health duties.",
+      "isCalc": "no",
+      "topic": "Public-water-system rules",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 3,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "What is the main reason for bacteriological sampling in a public water system?",
+      "options": [
+        "To measure the water's pH for corrosion control.",
+        "To determine the water's hardness for softening.",
+        "To detect indicators of microbial contamination that could affect public health.",
+        "To calculate the system's water loss from leaks."
+      ],
+      "correctIndex": 2,
+      "explanation": "Bacteriological sampling looks for indicators of microbial contamination, which is a public health concern. pH, hardness, and leak calculations are different water quality or operational checks.",
+      "steps": null,
+      "tip": "Bacteriological sampling is about microbes and public health.",
+      "isCalc": "no",
+      "topic": "Bacteriological sampling",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 4,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "An operator needs to document a routine check of a water system component. What should the record include?",
+      "options": [
+        "Only the operator's signature.",
+        "A general statement that the check was done.",
+        "The name of the manufacturer of the component.",
+        "Accurate information about the check, including date, time, and results."
+      ],
+      "correctIndex": 3,
+      "explanation": "Records should be accurate and complete enough to show what was checked and what was found. A signature alone or a vague statement does not provide a useful record.",
+      "steps": null,
+      "tip": "Records need date, time, and results to be useful.",
+      "isCalc": "no",
+      "topic": "Recordkeeping",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 5,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "What is the primary purpose of a customer service inspection in the Class D scope?",
+      "options": [
+        "To set the customer's water bill based on usage.",
+        "To test the customer's private well for all possible contaminants.",
+        "To repair the customer's plumbing at no cost.",
+        "To identify potential cross-connections or other conditions that could affect water quality at the customer's property."
+      ],
+      "correctIndex": 3,
+      "explanation": "Customer service inspections focus on identifying conditions at the customer's property that could affect water quality, such as cross-connections. They are not for billing, comprehensive private well testing, or free plumbing repairs.",
+      "steps": null,
+      "tip": "Customer service inspections look for cross-connections and water quality risks.",
+      "isCalc": "no",
+      "topic": "Customer service inspections",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 6,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "An operator notices a condition that could threaten the safety of the drinking water supply. According to the public-health responsibilities in the Class D scope, what should the operator do?",
+      "options": [
+        "Ignore the condition until the next scheduled sampling event.",
+        "Recognize the potential health risk and follow the system's approved procedures and reporting chain.",
+        "Try to fix the problem alone without notifying anyone.",
+        "Wait for a customer to complain before taking any action."
+      ],
+      "correctIndex": 1,
+      "explanation": "The operator's public-health responsibility is to recognize potential risks and follow the system's approved procedures and reporting chain. Ignoring the condition, acting alone without notification, or waiting for a complaint does not meet that responsibility.",
+      "steps": null,
+      "tip": "Recognize risks and follow approved procedures and reporting.",
+      "isCalc": "no",
+      "topic": "Operator public-health responsibility",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 7,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "Which of the following is a waterborne disease of concern in drinking water?",
+      "options": [
+        "Influenza",
+        "Tetanus",
+        "Measles",
+        "Giardiasis"
+      ],
+      "correctIndex": 3,
+      "explanation": "Giardiasis is an infection that can be transmitted through contaminated water. Influenza, tetanus and measles are infectious illnesses, but they are not generally classified as waterborne drinking-water diseases.",
+      "steps": null,
+      "tip": "Giardiasis is a waterborne disease; the others are not.",
+      "isCalc": "no",
+      "topic": "Waterborne diseases",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 8,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "A customer calls to complain about the taste and odor of the water. As a Class D operator, what is an appropriate customer relations response?",
+      "options": [
+        "Tell the customer that taste and odor are not regulated and end the call.",
+        "Promise that the water is safe without checking anything.",
+        "Argue with the customer about the water quality.",
+        "Listen carefully, record the complaint, and follow the system's procedures for investigating and responding."
+      ],
+      "correctIndex": 3,
+      "explanation": "Good customer relations involve listening, documenting the complaint, and following the system's procedures. Dismissing the complaint, making promises without checking, or arguing does not address the customer's concern.",
+      "steps": null,
+      "tip": "Listen, record, and follow procedures for complaints.",
+      "isCalc": "no",
+      "topic": "Customer/public relations",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 9,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "Which of the following is a physical characteristic of water that can affect its acceptability to customers?",
+      "options": [
+        "Bacterial contamination",
+        "Lead concentration",
+        "Chlorine residual",
+        "Turbidity"
+      ],
+      "correctIndex": 3,
+      "explanation": "Turbidity is a physical characteristic related to the cloudiness of water. Bacterial contamination, lead concentration, and chlorine residual are microbiological or chemical characteristics, not physical ones.",
+      "steps": null,
+      "tip": "Turbidity is physical; bacteria and chemicals are not.",
+      "isCalc": "no",
+      "topic": "Water characteristics",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 10,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "A community's water source is a river that is fed by rainfall and snowmelt. Which part of the hydrologic cycle does this represent?",
+      "options": [
+        "Condensation",
+        "Surface water runoff and precipitation",
+        "Evaporation",
+        "Transpiration"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rainfall and snowmelt feeding a river are part of precipitation and surface water runoff. Condensation, evaporation, and transpiration are other processes in the hydrologic cycle but do not describe this source.",
+      "steps": null,
+      "tip": "Rivers fed by rain and snowmelt are surface water runoff.",
+      "isCalc": "no",
+      "topic": "Hydrologic cycle",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 11,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "Which of the following is an example of a groundwater source?",
+      "options": [
+        "A river",
+        "A lake",
+        "A well drawing from an aquifer",
+        "A reservoir"
+      ],
+      "correctIndex": 2,
+      "explanation": "A well drawing from an aquifer is a groundwater source. Rivers, lakes, and reservoirs are surface water sources.",
+      "steps": null,
+      "tip": "Wells and aquifers are groundwater; rivers and lakes are surface water.",
+      "isCalc": "no",
+      "topic": "Water sources",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 12,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "Which of the following is a microbiological contaminant of concern in drinking water?",
+      "options": [
+        "Lead",
+        "Sodium",
+        "Turbidity",
+        "Bacteria"
+      ],
+      "correctIndex": 3,
+      "explanation": "Bacteria are microbiological contaminants. Lead and sodium are chemical contaminants, and turbidity is a physical characteristic.",
+      "steps": null,
+      "tip": "Microbiological contaminants include bacteria and viruses.",
+      "isCalc": "no",
+      "topic": "Contaminants",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 13,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "A person wants to work as a Class D water operator. According to the licensing rules in the Class D scope, what should the person do?",
+      "options": [
+        "Begin operating a public water system immediately without any license.",
+        "Apply for a Class A license instead because it is the same as Class D.",
+        "Ignore licensing rules because they only apply to large systems.",
+        "Meet the licensing requirements and operate within the scope of the license."
+      ],
+      "correctIndex": 3,
+      "explanation": "The licensing rules require a person to meet the requirements for the license and operate within its scope. Operating without a license, choosing a different class, or ignoring rules for small systems is not consistent with the licensing framework.",
+      "steps": null,
+      "tip": "Get the right license and stay within its scope.",
+      "isCalc": "no",
+      "topic": "Licensing rules",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 14,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "A Class D operator is asked to explain a public-water-system rule to a customer. What is the best approach?",
+      "options": [
+        "Explain the rule based on a previous employer practice.",
+        "Give a personal legal interpretation of the rule.",
+        "Refer every rule question to the billing office.",
+        "Refer to current TCEQ rules and the system procedure."
+      ],
+      "correctIndex": 3,
+      "explanation": "A Class D operator should use current regulatory sources and the system procedure, while staying within the operator role. A previous employer practice may not apply, a personal legal interpretation can be inaccurate, and a billing office is not necessarily the source for technical rule questions.",
+      "steps": null,
+      "tip": "Refer to rules and procedures; don't give legal interpretations.",
+      "isCalc": "no",
+      "topic": "Public-water-system rules",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 15,
+      "module": "Rules, licensing and records",
+      "difficulty": "medium",
+      "question": "A Class D operator is unsure how long to keep a particular record. What is the best source of guidance?",
+      "options": [
+        "A guess based on what other operators do.",
+        "The customer's preference.",
+        "The applicable TCEQ rules and the system's recordkeeping requirements.",
+        "The operator's personal calendar."
+      ],
+      "correctIndex": 2,
+      "explanation": "Record retention should follow applicable TCEQ rules and the system's recordkeeping requirements. Guesses, customer preferences, or personal calendars are not reliable sources for compliance.",
+      "steps": null,
+      "tip": "Follow TCEQ rules and system requirements for record retention.",
+      "isCalc": "no",
+      "topic": "Recordkeeping",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Apply the Class D scope: licensing rules, public-water-system rules, bacteriological sampling, recordkeeping, customer service inspections and operator public-health responsibility.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 16,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "An operator notices an unguarded floor opening near a pump area. What is the appropriate safety response within the operator's role?",
+      "options": [
+        "Cover the opening with a cardboard box and continue normal duties.",
+        "Enter the opening to inspect it without notifying anyone.",
+        "Ignore it until a supervisor assigns the repair.",
+        "Report the hazard through site procedures and warn others only if it can be done safely."
+      ],
+      "correctIndex": 3,
+      "explanation": "The operator role includes identifying and reporting hazards under site procedures; warning others is reasonable if safe. Cardboard, unapproved entry, or ignoring the hazard are not supported and could increase risk.",
+      "steps": null,
+      "tip": "Report hazards; do not improvise barriers or enter unsafe areas.",
+      "isCalc": "no",
+      "topic": "Hazard reporting",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 17,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "Which statement best describes the licensed operator's safety role at a public water system?",
+      "options": [
+        "The operator is expected to personally memorize every possible emergency action instead of using site plans.",
+        "The operator is expected to understand safety requirements, use required safety equipment, and report hazards under site procedures.",
+        "The operator is expected to make independent legal rulings about safety regulations.",
+        "The operator is expected to delegate all safety duties to contractors."
+      ],
+      "correctIndex": 1,
+      "explanation": "The role involves familiarity with safety procedures, equipment, and hazard identification. Memorizing everything, making legal rulings, or delegating all safety duties does not match the operator responsibility described in the need-to-know scope.",
+      "steps": null,
+      "tip": "Operator safety duties include awareness, equipment use, and hazard reporting.",
+      "isCalc": "no",
+      "topic": "Operator role",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 18,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "A chemical container in a treatment area has a faded label, and its contents cannot be identified. What is the safest high-level action?",
+      "options": [
+        "Smell the container to identify the chemical.",
+        "Pour the contents into a clean, unlabeled bottle for later testing.",
+        "Treat the container as an unknown hazard, keep away, and notify the appropriate site personnel.",
+        "Use the chemical if it resembles a product used on a previous shift."
+      ],
+      "correctIndex": 2,
+      "explanation": "Unknown chemicals should be treated as hazardous until identified by proper means; smelling, transferring, or guessing are unsafe. The keyed action recognizes the hazard and routes the issue through site personnel.",
+      "steps": null,
+      "tip": "An unidentified chemical is an unknown hazard, not a guesswork task.",
+      "isCalc": "no",
+      "topic": "Chemical hazards",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 19,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "Why should an operator pause and seek guidance before performing an unfamiliar task in a water system?",
+      "options": [
+        "Because an exam question can replace the site's operating procedure.",
+        "Because only tasks done alone are risky.",
+        "Because guidance is needed only when a supervisor is absent.",
+        "Because site-specific hazards and procedures may require trained personnel, authorization, or special equipment."
+      ],
+      "correctIndex": 3,
+      "explanation": "Safety boundaries depend on site-specific hazards and rules; unfamiliar tasks may need trained personnel or authorization. Exam knowledge does not override procedures, and supervision or a buddy does not remove the need to follow site requirements.",
+      "steps": null,
+      "tip": "Unfamiliar work calls for guidance, not improvisation.",
+      "isCalc": "no",
+      "topic": "Safe work boundaries",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 20,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "What is the main purpose of a Safety Data Sheet (SDS) for a chemical used at a water system?",
+      "options": [
+        "It lists the license grade required to operate the entire water system.",
+        "It replaces the site's safety procedures for chemical work.",
+        "It gives official exam answers for safety questions.",
+        "It provides hazard, handling, and emergency information for that chemical."
+      ],
+      "correctIndex": 3,
+      "explanation": "An SDS communicates chemical hazard and safe-handling information; it supports but does not replace site procedures. License grades and exam answers are not the purpose of an SDS.",
+      "steps": null,
+      "tip": "SDS information supports safe handling; it does not replace site rules.",
+      "isCalc": "no",
+      "topic": "Safety Data Sheets",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 21,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "An operator notices a strong, irritating chemical odor in a room. Which response stays within safe high-level boundaries?",
+      "options": [
+        "Enter the room alone to find the source immediately.",
+        "Leave the area if unsafe, alert others as procedures allow, and notify site emergency personnel.",
+        "Open nearby valves to dilute the odor without knowing the chemical.",
+        "Continue working in the room until the end of the shift."
+      ],
+      "correctIndex": 1,
+      "explanation": "A strong odor can indicate a hazard; protecting oneself, alerting others, and using site emergency procedures are appropriate. Searching alone, adjusting unknown valves, or ignoring the odor is not supported.",
+      "steps": null,
+      "tip": "If the area may be unsafe, do not investigate alone.",
+      "isCalc": "no",
+      "topic": "Emergency response",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 22,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "How should an operator decide which personal protective equipment (PPE) to use for a task?",
+      "options": [
+        "Choose whatever PPE is most comfortable, regardless of the task.",
+        "Use the same PPE that another operator used yesterday.",
+        "Base the choice on the task's hazard assessment and the site's safety procedures.",
+        "Use PPE only when a supervisor is directly watching."
+      ],
+      "correctIndex": 2,
+      "explanation": "PPE should match identified hazards and site requirements, not comfort or habit. Supervisor presence does not change the need for proper protection.",
+      "steps": null,
+      "tip": "PPE follows the hazard, not comfort or custom.",
+      "isCalc": "no",
+      "topic": "Safety equipment",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 23,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "What is the appropriate boundary for confined space entry at a water system?",
+      "options": [
+        "Any operator may enter if the task takes less than a few minutes.",
+        "A flashlight is enough protection for most confined spaces.",
+        "If the air smells normal, entry can proceed without other checks.",
+        "Only trained and authorized personnel should enter, using the site's permit and entry procedures."
+      ],
+      "correctIndex": 3,
+      "explanation": "Confined spaces can contain hazards that are not detected by smell or time limits; entry requires training, authorization, and site procedures. Quick entry or a flashlight does not establish safety.",
+      "steps": null,
+      "tip": "Confined space entry is a controlled task, not a quick shortcut.",
+      "isCalc": "no",
+      "topic": "Confined spaces",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 24,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "An operator sees electrical equipment near a wet floor and damaged wiring. What is the appropriate high-level response?",
+      "options": [
+        "Wipe the area with a wet mop while standing on the floor.",
+        "Reset the breaker repeatedly until the equipment runs.",
+        "Touch the equipment with the back of the hand to test it.",
+        "Treat it as an electrical shock hazard, keep away, and report it to qualified personnel."
+      ],
+      "correctIndex": 3,
+      "explanation": "Damaged electrical equipment near water is a shock hazard and should be handled by qualified persons under site rules. Testing by touch or repeated breaker resets exposes the operator to serious danger.",
+      "steps": null,
+      "tip": "Water plus damaged electrical equipment means keep away and report.",
+      "isCalc": "no",
+      "topic": "Electrical hazards",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 25,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "Which action best supports safety around walking and working surfaces at a water facility?",
+      "options": [
+        "Store tools and hoses in walkways so they are easy to find.",
+        "Keep work areas clear and report spills or obstructions according to site procedures.",
+        "Ignore small spills because they will dry eventually.",
+        "Use a hose as a temporary handrail in slippery areas."
+      ],
+      "correctIndex": 1,
+      "explanation": "Clear walking routes and prompt reporting reduce slips, trips, and falls. Leaving items in walkways, ignoring spills, or improvising a handrail creates hazards rather than controlling them.",
+      "steps": null,
+      "tip": "Clear paths and quick spill reporting prevent common injuries.",
+      "isCalc": "no",
+      "topic": "Walking-working surfaces",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 26,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "What is the proper safety boundary when equipment is locked or tagged out for maintenance?",
+      "options": [
+        "Remove the tag if no one is nearby.",
+        "Start the equipment briefly to see whether it is really de-energized.",
+        "Follow the site's energy-control procedures, and let only authorized employees remove locks or tags.",
+        "Cut the lock if the key cannot be found."
+      ],
+      "correctIndex": 2,
+      "explanation": "Lockout/tagout is a controlled safety process; only authorized employees may remove locks or tags under site procedures. Removing or bypassing the protection can expose workers to stored energy.",
+      "steps": null,
+      "tip": "Locks and tags are barriers: do not bypass them.",
+      "isCalc": "no",
+      "topic": "Lockout/tagout",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 27,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "An operator is unsure whether a condition is a workplace hazard. What should the operator do?",
+      "options": [
+        "Wait until an injury occurs before reporting it.",
+        "Assume it is not a hazard if production is normal.",
+        "Ask another new operator and act on that answer alone.",
+        "Ask a supervisor or safety professional and follow site procedures for reporting and response."
+      ],
+      "correctIndex": 3,
+      "explanation": "Uncertain hazards should be clarified through qualified personnel and site procedures. Waiting for an injury, assuming safety, or relying only on another inexperienced operator does not provide a reliable safety boundary.",
+      "steps": null,
+      "tip": "When unsure, ask qualified personnel rather than guess.",
+      "isCalc": "no",
+      "topic": "Hazard identification",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 28,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "A worker is seriously injured at a water facility. What is the appropriate operator response at a high level?",
+      "options": [
+        "Move the injured worker immediately, regardless of injury type.",
+        "Give the worker food or drink to help them recover.",
+        "Continue normal duties so the system is not interrupted.",
+        "Activate the site emergency response and obtain trained help, providing only care within the operator's training."
+      ],
+      "correctIndex": 3,
+      "explanation": "Serious injuries require emergency response and trained care. Moving an injured person, giving food or drink, or continuing normal work could worsen harm and is not within general operator safety boundaries.",
+      "steps": null,
+      "tip": "For serious injury, summon trained emergency help.",
+      "isCalc": "no",
+      "topic": "First aid and emergencies",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 29,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "Which statement about safety equipment and training is most consistent with operator responsibilities?",
+      "options": [
+        "Safety equipment training is only for management employees.",
+        "Use safety equipment only after training, inspect it as site procedures require, and report damage.",
+        "Modify PPE if it does not fit comfortably.",
+        "Share a respirator with another operator to save time."
+      ],
+      "correctIndex": 1,
+      "explanation": "Operators should use equipment properly, inspect it under site rules, and report defects. Modifying PPE or sharing a respirator can defeat protection and is not supported by safety familiarity.",
+      "steps": null,
+      "tip": "Trained use and damaged-equipment reporting keep safety gear effective.",
+      "isCalc": "no",
+      "topic": "Safety equipment",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 30,
+      "module": "Safety and operator responsibilities",
+      "difficulty": "medium",
+      "question": "How should an operator treat a practice exam question about safety at a real water system?",
+      "options": [
+        "As standing authorization to perform the described task.",
+        "As a replacement for the chemical's Safety Data Sheet.",
+        "As study support; actual work must follow site procedures, trained personnel, and applicable rules.",
+        "As permission to skip PPE when the question does not mention it."
+      ],
+      "correctIndex": 2,
+      "explanation": "Study questions help check knowledge but are not site operating authority. Using them as authorization, replacing an SDS, or skipping PPE ignores the site-specific and regulatory boundaries for real work.",
+      "steps": null,
+      "tip": "Exam study supports learning; site procedures govern real work.",
+      "isCalc": "no",
+      "topic": "Operator responsibilities",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize safe work boundaries, hazard identification and the licensed operator role without treating an exam question as site operating authority.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 31,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Which process of the hydrologic cycle returns water from the atmosphere to land as rain or snow?",
+      "options": [
+        "Infiltration",
+        "Transpiration",
+        "Condensation",
+        "Precipitation"
+      ],
+      "correctIndex": 3,
+      "explanation": "Precipitation is atmospheric water falling to the surface. Infiltration is movement into soil, transpiration is release from plants, and condensation is vapor changing to liquid.",
+      "steps": null,
+      "tip": "Precipitation falls; infiltration soaks.",
+      "isCalc": "no",
+      "topic": "Hydrologic cycle",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 32,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "A community uses water from a river that is stored in a reservoir before treatment. This source is best classified as which type?",
+      "options": [
+        "Groundwater",
+        "Surface water",
+        "Artesian spring",
+        "Reclaimed water"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rivers and reservoirs are surface water sources. Groundwater is beneath the surface, an artesian spring is a groundwater discharge, and reclaimed water is treated wastewater.",
+      "steps": null,
+      "tip": "If it is open to the atmosphere, think surface water.",
+      "isCalc": "no",
+      "topic": "Sources of drinking water",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 33,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Which item is a physical characteristic of water?",
+      "options": [
+        "Nitrate concentration",
+        "pH",
+        "Turbidity",
+        "Alkalinity"
+      ],
+      "correctIndex": 2,
+      "explanation": "Turbidity is a physical characteristic related to clarity. Nitrate concentration, pH, and alkalinity are chemical characteristics.",
+      "steps": null,
+      "tip": "Physical characteristics are often sensed as clarity, color, odor, taste, or temperature.",
+      "isCalc": "no",
+      "topic": "Physical water characteristics",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 34,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "A water sample has an earthy odor and noticeable color. These observations are primarily which type of water characteristics?",
+      "options": [
+        "Radiological",
+        "Microbial",
+        "Organic chemical",
+        "Physical"
+      ],
+      "correctIndex": 3,
+      "explanation": "Odor and color are physical or sensory characteristics. Radiological characteristics involve radiation, microbial characteristics involve organisms, and organic chemical characteristics involve carbon-based compounds.",
+      "steps": null,
+      "tip": "Sensory qualities such as odor and color are physical clues.",
+      "isCalc": "no",
+      "topic": "Physical water characteristics",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 35,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Which source is an example of groundwater?",
+      "options": [
+        "A well drawing from an aquifer",
+        "A river",
+        "A lake",
+        "A reservoir"
+      ],
+      "correctIndex": 0,
+      "explanation": "A well drawing from an aquifer uses groundwater. Rivers, lakes, and reservoirs are surface water sources.",
+      "steps": null,
+      "tip": "Aquifer water is groundwater.",
+      "isCalc": "no",
+      "topic": "Sources of drinking water",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 36,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "After heavy rain, a surface water source may become cloudy. What does turbidity indicate in this situation?",
+      "options": [
+        "Dissolved oxygen level",
+        "Suspended particles that scatter light",
+        "pH value",
+        "Water hardness"
+      ],
+      "correctIndex": 1,
+      "explanation": "Turbidity is cloudiness caused by suspended particles that scatter light. It is not a direct measure of dissolved oxygen, pH, or hardness.",
+      "steps": null,
+      "tip": "Cloudy water points to suspended particles.",
+      "isCalc": "no",
+      "topic": "Physical water characteristics",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 37,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Which general contaminant class includes bacteria, viruses, and protozoa?",
+      "options": [
+        "Inorganic",
+        "Radiological",
+        "Microbial",
+        "Disinfection byproduct"
+      ],
+      "correctIndex": 2,
+      "explanation": "Microbial contaminants are living organisms such as bacteria, viruses, and protozoa. Inorganic contaminants are minerals or metals, radiological contaminants are radioactive, and disinfection byproducts form from disinfection.",
+      "steps": null,
+      "tip": "Microbes are living contaminants.",
+      "isCalc": "no",
+      "topic": "General contaminant types",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 38,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Which waterborne disease is caused by a protozoan and can be associated with contaminated water?",
+      "options": [
+        "Scurvy",
+        "Asthma",
+        "Diabetes",
+        "Giardiasis"
+      ],
+      "correctIndex": 3,
+      "explanation": "Giardiasis is a waterborne disease caused by a protozoan. Scurvy, asthma, and diabetes are not waterborne infectious diseases.",
+      "steps": null,
+      "tip": "Giardiasis is linked to a waterborne protozoan.",
+      "isCalc": "no",
+      "topic": "Waterborne diseases",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 39,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Why are pathogens in drinking water a public health concern?",
+      "options": [
+        "They can cause gastrointestinal illness",
+        "They improve taste",
+        "They increase hardness",
+        "They raise pH"
+      ],
+      "correctIndex": 0,
+      "explanation": "Pathogens can cause illness, often gastrointestinal. Taste improvement, hardness, and pH are not infectious disease effects.",
+      "steps": null,
+      "tip": "Pathogens are a health risk because they can sicken people.",
+      "isCalc": "no",
+      "topic": "Public-health context",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 40,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "What is the hydrologic cycle?",
+      "options": [
+        "A treatment process for drinking water",
+        "The continuous movement of water among the atmosphere, land, and oceans",
+        "A pipe distribution loop",
+        "A chemical dosing schedule"
+      ],
+      "correctIndex": 1,
+      "explanation": "The hydrologic cycle is the natural continuous movement of water among the atmosphere, land, and oceans. The other choices describe treatment or distribution activities.",
+      "steps": null,
+      "tip": "The hydrologic cycle moves water through nature.",
+      "isCalc": "no",
+      "topic": "Hydrologic cycle",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 41,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Water moves from plant leaves into the atmosphere. Which hydrologic cycle process is this?",
+      "options": [
+        "Infiltration",
+        "Runoff",
+        "Transpiration",
+        "Percolation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Transpiration is the release of water vapor from plants. Infiltration and percolation involve downward movement into soil, and runoff is surface flow.",
+      "steps": null,
+      "tip": "Plants release water vapor through transpiration.",
+      "isCalc": "no",
+      "topic": "Hydrologic cycle",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 42,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "A lake receives runoff from its watershed. Which is most likely a source water concern from this runoff?",
+      "options": [
+        "Increased atmospheric nitrogen",
+        "Decreased solar radiation",
+        "Reduced pipe diameter",
+        "Sediment and microorganisms from runoff"
+      ],
+      "correctIndex": 3,
+      "explanation": "Runoff can carry sediment and microorganisms into a surface water source. Atmospheric nitrogen, solar radiation, and pipe diameter are not typical runoff-related source water quality concerns.",
+      "steps": null,
+      "tip": "Runoff can carry soil and microbes into surface water.",
+      "isCalc": "no",
+      "topic": "Sources of drinking water",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 43,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Which chemical characteristic relates to the acid or base strength of water?",
+      "options": [
+        "pH",
+        "Turbidity",
+        "Temperature",
+        "Color"
+      ],
+      "correctIndex": 0,
+      "explanation": "pH describes how acidic or basic water is. Turbidity, temperature, and color are physical characteristics.",
+      "steps": null,
+      "tip": "pH tells you about acid or base strength.",
+      "isCalc": "no",
+      "topic": "Chemical water characteristics",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 44,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "Hardness in water is mainly associated with which dissolved substances?",
+      "options": [
+        "Suspended sand",
+        "Dissolved calcium and magnesium",
+        "Bacteria",
+        "Radon gas"
+      ],
+      "correctIndex": 1,
+      "explanation": "Water hardness is mainly associated with dissolved calcium and magnesium. Sand is suspended material, bacteria are microbial, and radon is a radiological gas concern.",
+      "steps": null,
+      "tip": "Hard water is linked to calcium and magnesium.",
+      "isCalc": "no",
+      "topic": "Chemical water characteristics",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 45,
+      "module": "Source water and general water quality",
+      "difficulty": "medium",
+      "question": "A water system draws from an aquifer. Compared with a typical surface water source, groundwater is often which way?",
+      "options": [
+        "Higher in suspended sediment and algae",
+        "More exposed to direct rainfall",
+        "Lower in turbidity and more consistent in temperature",
+        "Always free of contaminants"
+      ],
+      "correctIndex": 2,
+      "explanation": "Groundwater is often filtered through soil, so it tends to have lower turbidity and more stable temperature than surface water. Surface water is more exposed to sediment, algae, and rainfall, and no source is always contaminant-free.",
+      "steps": null,
+      "tip": "Groundwater is often naturally filtered and temperature-stable.",
+      "isCalc": "no",
+      "topic": "Sources of drinking water",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain water sources, hydrologic cycle, physical and chemical characteristics, contaminants and public-health context at Class D level.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 46,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "After a heavy rain, water ponds at a wellhead and runs down the outside of the casing. Which contamination pathway does this situation most directly suggest?",
+      "options": [
+        "Surface water entering through a defective sanitary seal or annular space",
+        "Groundwater moving naturally through the well screen",
+        "Pump motor heat transferring into the aquifer",
+        "Pressure tank bladder collapsing into the well"
+      ],
+      "correctIndex": 0,
+      "explanation": "Ponded water at the wellhead can enter the well if the sanitary seal or annular space is not properly sealed. Natural screen flow and pressure tank or motor issues do not describe a surface-to-well entry pathway.",
+      "steps": null,
+      "tip": "Think of the wellhead seal as a barrier against surface water, not as a pump part.",
+      "isCalc": "no",
+      "topic": "Well contamination pathways",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 47,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "Which well component forms the physical barrier along the borehole and helps keep shallow contaminants from entering the well?",
+      "options": [
+        "Well screen",
+        "Well casing",
+        "Drop pipe",
+        "Pressure tank"
+      ],
+      "correctIndex": 1,
+      "explanation": "Casing lines the borehole and provides a barrier against shallow contamination. The screen admits water from the aquifer but is not the main borehole barrier, and the drop pipe and pressure tank are internal system components.",
+      "steps": null,
+      "tip": "The casing is the well's outer protective wall.",
+      "isCalc": "no",
+      "topic": "Well components",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 48,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "Which well component provides the structural pathway from the water-bearing zone to the surface where pumping equipment is installed?",
+      "options": [
+        "Well casing",
+        "Well screen",
+        "Gravel pack",
+        "Sanitary seal"
+      ],
+      "correctIndex": 0,
+      "explanation": "Well casing supports the borehole and provides a protected pathway from the water-bearing zone to the surface for well equipment. A well screen admits water while limiting sediment, a gravel pack supports the screened interval, and a sanitary seal closes the top of the casing around well appurtenances.",
+      "steps": null,
+      "tip": "Casing supports the borehole and carries the well pathway to the surface.",
+      "isCalc": "no",
+      "topic": "Well components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 49,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "An operator finds that a well cap is loose and not seated. Why is this a contamination concern?",
+      "options": [
+        "It reduces pressure tank drawdown",
+        "It increases pump motor efficiency",
+        "It can cause the well screen to resize",
+        "It creates an opening for insects, small animals, and surface water to enter the well"
+      ],
+      "correctIndex": 3,
+      "explanation": "The well cap is part of the wellhead barrier, so a loose cap can allow surface contamination and vermin into the well. The other options are not contamination pathways.",
+      "steps": null,
+      "tip": "A wellhead should be closed and protected, not open to the surface.",
+      "isCalc": "no",
+      "topic": "Well contamination pathways",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 50,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "In a deep well, a submersible pump is used. Where is its motor normally located?",
+      "options": [
+        "Below the water surface, connected to the pump",
+        "On the ground beside the pressure tank",
+        "In the treatment building above the well",
+        "Inside the pressure tank"
+      ],
+      "correctIndex": 0,
+      "explanation": "A submersible pump and motor operate together downhole below water level. Surface-mounted motors belong to other pump arrangements, such as jet pumps.",
+      "steps": null,
+      "tip": "Submersible means the pump and motor are designed to operate underwater.",
+      "isCalc": "no",
+      "topic": "Well pumps and motors",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 51,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "A shallow well uses a pump located above ground that pulls water through a suction pipe. Which pump type does this describe?",
+      "options": [
+        "Submersible turbine pump",
+        "Shallow well jet pump",
+        "Line-shaft deep well turbine pump",
+        "Positive displacement chemical metering pump"
+      ],
+      "correctIndex": 1,
+      "explanation": "A shallow well jet pump is mounted above ground and uses suction to draw water. Submersible and deep turbine pumps are typically downhole, and a chemical metering pump is for treatment chemical feed.",
+      "steps": null,
+      "tip": "Aboveground suction pumps are commonly jet-type pumps for shallow wells.",
+      "isCalc": "no",
+      "topic": "Well pumps and motors",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 52,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "A pressure tank in a groundwater system helps prevent which condition?",
+      "options": [
+        "Well screen corrosion from sunlight",
+        "Surface water entering the casing",
+        "Rapid pump cycling caused by small draw-offs",
+        "Nitrate formation in the aquifer"
+      ],
+      "correctIndex": 2,
+      "explanation": "A pressure tank stores pressurized water and buffers small draws, reducing rapid pump starts and stops. It does not seal the wellhead or change aquifer chemistry.",
+      "steps": null,
+      "tip": "Pressure tanks smooth out demand so the pump does not start for every small use.",
+      "isCalc": "no",
+      "topic": "Well components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 53,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "Groundwater leaves reddish-brown stains on fixtures. Which treatment purpose addresses this common groundwater problem?",
+      "options": [
+        "Disinfection for bacteria",
+        "Softening for hardness",
+        "Corrosion control for lead and copper",
+        "Iron removal by oxidation and filtration"
+      ],
+      "correctIndex": 3,
+      "explanation": "Reddish-brown staining often signals iron, and oxidation followed by filtration is used to remove it. Disinfection targets microbes, softening targets hardness, and corrosion control targets pipe deterioration.",
+      "steps": null,
+      "tip": "Reddish-brown staining points toward iron, not bacteria or hardness.",
+      "isCalc": "no",
+      "topic": "Groundwater treatment purposes",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 54,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "An old unused well on a property has not been properly sealed. How can it threaten groundwater quality?",
+      "options": [
+        "It can provide a vertical pathway for contaminants to reach the aquifer",
+        "It can increase the natural pH of the aquifer",
+        "It can convert a confined aquifer into a surface reservoir",
+        "It can reduce the need for wellhead protection"
+      ],
+      "correctIndex": 0,
+      "explanation": "Unsealed abandoned wells can act as conduits for surface water and shallow contamination to move downward. They do not inherently improve groundwater quality or eliminate protection needs.",
+      "steps": null,
+      "tip": "Abandoned wells can become contamination shortcuts into an aquifer.",
+      "isCalc": "no",
+      "topic": "Well contamination pathways",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 55,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "During a wellhead inspection, which observation is the most immediate concern because it can provide a route for surface contaminants to enter the well?",
+      "options": [
+        "A loose well cap with a visible gap",
+        "A screened vent on the well cap",
+        "A concrete pad sloped away from the casing",
+        "A check valve on the discharge line"
+      ],
+      "correctIndex": 0,
+      "explanation": "A loose well cap with a visible gap can allow surface contaminants, insects or debris into the wellhead area. A screened vent, a concrete pad sloped away from the casing and a discharge-line check valve do not create that direct opening at the wellhead.",
+      "steps": null,
+      "tip": "Inspect the wellhead for direct openings where surface contaminants could enter.",
+      "isCalc": "no",
+      "topic": "Well protection",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 56,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "What is a general purpose of activated carbon treatment in a groundwater system?",
+      "options": [
+        "To add fluoride to drinking water",
+        "To raise water pressure at the wellhead",
+        "To adsorb taste, odor, and some organic compounds",
+        "To replace the need for disinfection"
+      ],
+      "correctIndex": 2,
+      "explanation": "Activated carbon adsorbs certain organics and taste and odor compounds. It does not pressurize a well, add fluoride, or eliminate the need for disinfection.",
+      "steps": null,
+      "tip": "Carbon treatment is associated with adsorption, not with pressure or microbial kill.",
+      "isCalc": "no",
+      "topic": "Groundwater treatment purposes",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 57,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "A well pump motor trips its overload protector several times in one day. Which response stays within the boundary for a water system operator?",
+      "options": [
+        "Bypass the overload to keep the pump running",
+        "Replace the motor with a larger unit without inspection",
+        "Continue running until the motor fails",
+        "Have qualified pump or electrical personnel troubleshoot the fault"
+      ],
+      "correctIndex": 3,
+      "explanation": "Repeated overload trips indicate a fault that requires qualified troubleshooting. Bypassing protection, guessing at a larger motor, or ignoring the trips can damage equipment or create hazards.",
+      "steps": null,
+      "tip": "Overload trips are a warning sign, not a nuisance to bypass.",
+      "isCalc": "no",
+      "topic": "Well pumps and motors",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 58,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "What is the main function of a drop pipe in a well?",
+      "options": [
+        "To carry water from the pump to the surface",
+        "To seal the annular space at the ground surface",
+        "To filter sediment from the aquifer",
+        "To store pressurized water for the system"
+      ],
+      "correctIndex": 0,
+      "explanation": "The drop pipe conveys water upward from the pump. The sanitary seal, screen or gravel pack, and pressure tank serve other functions.",
+      "steps": null,
+      "tip": "The drop pipe is the water's travel path from the pump to the wellhead.",
+      "isCalc": "no",
+      "topic": "Well components",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 59,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "Hard groundwater causes scale in heaters and soap that lathers poorly. Which treatment purpose targets this condition?",
+      "options": [
+        "Sediment filtration",
+        "Water softening by ion exchange",
+        "Activated carbon adsorption",
+        "Ultraviolet disinfection"
+      ],
+      "correctIndex": 1,
+      "explanation": "Hardness minerals, mainly calcium and magnesium, are reduced by softening such as ion exchange. Filtration targets particles, carbon targets organics and taste or odor, and UV targets microbes.",
+      "steps": null,
+      "tip": "Hardness is a mineral issue, so softening is the treatment purpose to consider.",
+      "isCalc": "no",
+      "topic": "Groundwater treatment purposes",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 60,
+      "module": "Groundwater systems",
+      "difficulty": "medium",
+      "question": "A hose connected to a well system is left submerged in a tank of liquid chemical. Which contamination pathway does this create?",
+      "options": [
+        "Well screen plugging from gravel pack",
+        "Air binding in the pressure tank",
+        "Backsiphonage of the chemical into the water system",
+        "Thermal expansion in the drop pipe"
+      ],
+      "correctIndex": 2,
+      "explanation": "A submerged hose connected to a potable water line can allow backsiphonage if pressure drops, pulling chemical into the system. Screen plugging, air binding, and thermal expansion do not describe that cross-connection pathway.",
+      "steps": null,
+      "tip": "A submerged connection to a chemical tank is a cross-connection concern.",
+      "isCalc": "no",
+      "topic": "Well contamination pathways",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify well contamination pathways, well components, pumps, motors, and general groundwater treatment purposes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 61,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "Which of these is a surface water source for a public water system?",
+      "options": [
+        "A drilled well",
+        "A river",
+        "An artesian aquifer",
+        "A spring-fed underground cavern"
+      ],
+      "correctIndex": 1,
+      "explanation": "A river is surface water because it is open to the atmosphere. Wells, aquifers, and underground caverns are groundwater sources, so they do not fit the surface-water category.",
+      "steps": null,
+      "tip": "Surface water is exposed to the atmosphere; groundwater is below ground.",
+      "isCalc": "no",
+      "topic": "Surface water sources",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 62,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "Which condition is generally a sign of good-quality surface water?",
+      "options": [
+        "High turbidity",
+        "Strong sewage odor",
+        "Low turbidity",
+        "Excessive algae blooms"
+      ],
+      "correctIndex": 2,
+      "explanation": "Low turbidity means fewer suspended particles, which is generally a good-quality sign. High turbidity, sewage odor, and excessive algae indicate poorer quality and greater treatment demand.",
+      "steps": null,
+      "tip": "Clear water usually has lower turbidity and fewer particles.",
+      "isCalc": "no",
+      "topic": "Good-quality water characteristics",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 63,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "A plant operator sees raw water with high turbidity after a storm. Which treatment process is most directly intended to remove suspended particles?",
+      "options": [
+        "Disinfection",
+        "Fluoridation",
+        "Corrosion control",
+        "Coagulation, flocculation, and sedimentation"
+      ],
+      "correctIndex": 3,
+      "explanation": "Coagulation, flocculation, and sedimentation are used to gather and settle suspended particles. Disinfection targets pathogens, while fluoridation and corrosion control address other water-quality goals.",
+      "steps": null,
+      "tip": "Particles are removed by coagulation, flocculation, and settling.",
+      "isCalc": "no",
+      "topic": "Treatment process purpose",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 64,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "Which plant component is designed to allow suspended solids to settle by gravity?",
+      "options": [
+        "Sedimentation basin",
+        "Rapid mix basin",
+        "Flocculation basin",
+        "Clear well"
+      ],
+      "correctIndex": 0,
+      "explanation": "A sedimentation basin provides quiet conditions for solids to settle. Rapid mix and flocculation prepare particles to settle, and a clear well stores treated water.",
+      "steps": null,
+      "tip": "Settling happens in a quiet sedimentation basin.",
+      "isCalc": "no",
+      "topic": "Plant components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 65,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "What is the purpose of disinfection in surface water treatment?",
+      "options": [
+        "Remove dissolved minerals",
+        "Soften hard water",
+        "Kill or inactivate pathogens",
+        "Remove color"
+      ],
+      "correctIndex": 2,
+      "explanation": "Disinfection is intended to kill or inactivate disease-causing organisms. Softening removes hardness minerals, and color removal is usually a separate treatment goal.",
+      "steps": null,
+      "tip": "Disinfection targets pathogens, not minerals or color.",
+      "isCalc": "no",
+      "topic": "Treatment process purpose",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 66,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "A surface water plant uses a rapid mix basin. What is the main purpose of rapid mixing?",
+      "options": [
+        "To settle floc",
+        "To disperse coagulant quickly",
+        "To store finished water",
+        "To filter particles"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rapid mixing quickly disperses coagulant through the water so it can act. Settling occurs later in sedimentation, and filtering occurs in filters.",
+      "steps": null,
+      "tip": "Rapid mix spreads coagulant fast.",
+      "isCalc": "no",
+      "topic": "Plant components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 67,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "After coagulation, flocculation gently stirs water. What is the purpose of flocculation?",
+      "options": [
+        "To increase particle collisions and form larger floc",
+        "To disinfect water",
+        "To remove dissolved gases",
+        "To adjust pH"
+      ],
+      "correctIndex": 0,
+      "explanation": "Flocculation encourages particles to collide and clump into larger floc that can settle. Disinfection, gas removal, and pH adjustment are different processes.",
+      "steps": null,
+      "tip": "Flocculation builds bigger floc for settling.",
+      "isCalc": "no",
+      "topic": "Treatment process purpose",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 68,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "Which is a major surface water plant component?",
+      "options": [
+        "Intake structure",
+        "Distribution hydrant",
+        "Customer service meter",
+        "Wastewater digester"
+      ],
+      "correctIndex": 0,
+      "explanation": "An intake structure is a major surface-water plant component because it brings source water into the treatment system. A distribution hydrant and customer meter belong to the distribution system, while a wastewater digester belongs to a different treatment process.",
+      "steps": null,
+      "tip": "The intake is where raw water enters a surface-water treatment plant.",
+      "isCalc": "no",
+      "topic": "Plant components",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 69,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "A plant operator observes algae in the raw water reservoir. Which treatment issue is most likely?",
+      "options": [
+        "Reduced need for filtration",
+        "Lower chlorine demand",
+        "Increased taste and odor problems",
+        "Improved settling"
+      ],
+      "correctIndex": 2,
+      "explanation": "Algae can cause taste and odor problems in treated water. They do not reduce the need for filtration or improve settling, and they can increase, not lower, treatment challenges.",
+      "steps": null,
+      "tip": "Algae often cause taste and odor complaints.",
+      "isCalc": "no",
+      "topic": "Surface water sources",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 70,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "Why is a clear well used in a surface water treatment plant?",
+      "options": [
+        "To mix coagulant",
+        "To store treated water before distribution",
+        "To settle raw solids",
+        "To aerate raw water"
+      ],
+      "correctIndex": 1,
+      "explanation": "A clear well stores finished, treated water before it is pumped to distribution. Coagulant mixing occurs in a rapid mix basin, and raw solids settle in a sedimentation basin.",
+      "steps": null,
+      "tip": "Clear wells hold finished water.",
+      "isCalc": "no",
+      "topic": "Plant components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 71,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "A surface water source has low turbidity but high color. Which treatment process is most likely needed?",
+      "options": [
+        "Only disinfection",
+        "Only fluoridation",
+        "Only storage",
+        "Coagulation and filtration"
+      ],
+      "correctIndex": 3,
+      "explanation": "Color in surface water often requires coagulation and filtration to remove dissolved and colloidal material. Disinfection alone may not remove color, and fluoridation or storage do not treat color.",
+      "steps": null,
+      "tip": "Color usually needs coagulation and filtration.",
+      "isCalc": "no",
+      "topic": "Treatment process purpose",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 72,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "What does the term raw water mean?",
+      "options": [
+        "Water before treatment",
+        "Water leaving the clear well",
+        "Filter backwash water",
+        "Water after disinfection"
+      ],
+      "correctIndex": 0,
+      "explanation": "Raw water is water before treatment. Water leaving a clear well, filter backwash water and water after disinfection are not the source water entering treatment.",
+      "steps": null,
+      "tip": "Raw water is untreated source water.",
+      "isCalc": "no",
+      "topic": "Surface water sources",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 73,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "A plant has a sedimentation basin followed by filters. What is the main purpose of the filters?",
+      "options": [
+        "To add fluoride",
+        "To soften water",
+        "To remove remaining suspended particles",
+        "To store water"
+      ],
+      "correctIndex": 2,
+      "explanation": "Filters remove particles that remain after sedimentation. Fluoridation adds fluoride, softening removes hardness, and storage is handled by tanks or clear wells.",
+      "steps": null,
+      "tip": "Filters polish water by removing leftover particles.",
+      "isCalc": "no",
+      "topic": "Treatment process purpose",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 74,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "An operator notices a musty odor in the finished water. Which source-related cause is most likely?",
+      "options": [
+        "High fluoride in groundwater",
+        "Algae or other organic matter in the raw water",
+        "Corroded pipes",
+        "Excessive chlorine"
+      ],
+      "correctIndex": 1,
+      "explanation": "Musty odors are often linked to algae or organic matter in surface water. Corroded pipes and excessive chlorine have different odor characteristics, and fluoride does not cause musty odors.",
+      "steps": null,
+      "tip": "Musty odors often trace back to algae or organics.",
+      "isCalc": "no",
+      "topic": "Surface water sources",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 75,
+      "module": "Surface water treatment",
+      "difficulty": "medium",
+      "question": "Which sequence best describes common surface water treatment process order?",
+      "options": [
+        "Intake, coagulation, flocculation, sedimentation, filtration, disinfection, storage, distribution",
+        "Intake, disinfection, filtration, coagulation, sedimentation, storage, distribution",
+        "Intake, sedimentation, disinfection, coagulation, filtration, storage, distribution",
+        "Intake, filtration, coagulation, sedimentation, disinfection, storage, distribution"
+      ],
+      "correctIndex": 0,
+      "explanation": "Coagulation and flocculation come before sedimentation, and filtration comes before final disinfection. The other sequences place disinfection or filtration too early.",
+      "steps": null,
+      "tip": "Coagulate, flocculate, settle, filter, then disinfect.",
+      "isCalc": "no",
+      "topic": "Treatment process purpose",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify surface-water sources, good-quality-water characteristics, plant components and the purposes of treatment processes.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 76,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A distribution system experiences higher water use in the morning than at night. Which purpose of a storage reservoir helps meet this changing demand?",
+      "options": [
+        "It stores water to balance supply and demand.",
+        "It treats water to remove pathogens.",
+        "It collects raw water from a river.",
+        "It disposes of treated wastewater."
+      ],
+      "correctIndex": 0,
+      "explanation": "A storage reservoir holds finished water so supply can match changing demand. Treatment, raw-water collection, and wastewater disposal are not reservoir purposes.",
+      "steps": null,
+      "tip": "Storage smooths out peaks and valleys in water use.",
+      "isCalc": "no",
+      "topic": "Reservoir purposes",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 77,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A utility wants to move treated water from the treatment plant into the area where customers are served. Which distribution component is designed mainly for that transfer?",
+      "options": [
+        "Service line",
+        "Transmission main",
+        "Customer meter",
+        "Backflow assembly"
+      ],
+      "correctIndex": 1,
+      "explanation": "A transmission main carries water from the treatment plant toward the distribution area. A service line serves an individual customer, a meter measures use, and a backflow assembly prevents reversal.",
+      "steps": null,
+      "tip": "Transmission mains are the large arteries of a distribution system.",
+      "isCalc": "no",
+      "topic": "Distribution components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 78,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A customer's water use must be measured for billing and system accounting. Which device is used at the service connection?",
+      "options": [
+        "Pressure-reducing valve",
+        "Air gap",
+        "Water meter",
+        "Check valve"
+      ],
+      "correctIndex": 2,
+      "explanation": "A water meter records the volume of water used at a service connection. A pressure-reducing valve controls pressure, an air gap prevents backflow, and a check valve allows flow in one direction.",
+      "steps": null,
+      "tip": "Meters measure volume, not pressure or quality.",
+      "isCalc": "no",
+      "topic": "Meters",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 79,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A pump must add energy to water so it can travel through distribution mains and reach elevated areas. What is the general purpose of the pump in this system?",
+      "options": [
+        "To disinfect the water",
+        "To measure customer flow",
+        "To separate solids from water",
+        "To increase water pressure and move water"
+      ],
+      "correctIndex": 3,
+      "explanation": "A pump adds energy to water, increasing pressure and causing flow. Disinfection, metering, and solids separation are different treatment or measurement functions.",
+      "steps": null,
+      "tip": "Pumps add energy; pressure and flow are the results.",
+      "isCalc": "no",
+      "topic": "Pumps",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 80,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "What is the main function of an electric motor on a water pump?",
+      "options": [
+        "It converts electrical energy into mechanical energy to turn the pump.",
+        "It stores treated water for peak demand.",
+        "It measures the volume of water pumped.",
+        "It prevents backflow into the potable supply."
+      ],
+      "correctIndex": 0,
+      "explanation": "A motor turns electrical energy into mechanical energy that drives the pump. Storage, metering, and backflow prevention are handled by other components.",
+      "steps": null,
+      "tip": "Motor equals mechanical drive for the pump.",
+      "isCalc": "no",
+      "topic": "Motors",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 81,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A section of water main must be isolated so a repair can be made without draining the entire system. Which distribution component is used for this purpose?",
+      "options": [
+        "Water meter",
+        "Isolation valve",
+        "Air gap",
+        "Service pump"
+      ],
+      "correctIndex": 1,
+      "explanation": "An isolation valve stops flow to a section of main so work can be done. A meter measures flow, an air gap prevents backflow, and a service pump moves water.",
+      "steps": null,
+      "tip": "Valves control where water can and cannot go.",
+      "isCalc": "no",
+      "topic": "Valves",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 82,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A utility is selecting pipe for a buried water main and wants a material that is commonly used, resists corrosion, and is relatively easy to install. Which material fits this general description?",
+      "options": [
+        "Lead pipe",
+        "Galvanized steel pipe",
+        "PVC pipe",
+        "Cast iron soil pipe"
+      ],
+      "correctIndex": 2,
+      "explanation": "PVC pipe is commonly used for water mains because it resists corrosion and is relatively easy to install. Lead is not used for potable water mains, galvanized steel can corrode, and cast iron soil pipe is for drainage.",
+      "steps": null,
+      "tip": "Match pipe material to its common water-system use.",
+      "isCalc": "no",
+      "topic": "Pipe",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 83,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "An operator finds a garden hose connected to a chemical sprayer and left with its end submerged in a bucket of pesticide. The hose is also connected to a potable water faucet. What is this situation called?",
+      "options": [
+        "A pressure zone",
+        "A service connection",
+        "A water main loop",
+        "A cross-connection"
+      ],
+      "correctIndex": 3,
+      "explanation": "A cross-connection is an actual or potential link between potable water and a contamination source. Pressure zones, service connections, and main loops are distribution terms, not contamination links.",
+      "steps": null,
+      "tip": "Look for any path that could connect potable water to a contaminant.",
+      "isCalc": "no",
+      "topic": "Cross-connections",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 84,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A facility has a high-hazard cross-connection where backpressure could push contaminants into the potable water. Which backflow-prevention assembly is generally recognized for this type of protection?",
+      "options": [
+        "Reduced-pressure zone assembly",
+        "Double check valve assembly",
+        "Atmospheric vacuum breaker",
+        "Pressure vacuum breaker"
+      ],
+      "correctIndex": 0,
+      "explanation": "A reduced-pressure zone assembly is generally recognized for high-hazard protection against both backsiphonage and backpressure. A double check valve assembly is for lower hazard, and vacuum breakers do not protect against backpressure.",
+      "steps": null,
+      "tip": "High hazard plus backpressure points to an RPZ assembly.",
+      "isCalc": "no",
+      "topic": "Backflow-prevention assemblies",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 85,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A sink used for filling buckets with cleaning solution has a faucet that must never touch the liquid. Which backflow-prevention method relies on a physical air space between the faucet and the liquid?",
+      "options": [
+        "Double check valve assembly",
+        "Air gap",
+        "Reduced-pressure zone assembly",
+        "Check valve"
+      ],
+      "correctIndex": 1,
+      "explanation": "An air gap is a physical separation between the potable water outlet and the possible contamination source. The other choices are mechanical assemblies or valves, not a physical air space.",
+      "steps": null,
+      "tip": "An air gap is separation by air, not by a moving part.",
+      "isCalc": "no",
+      "topic": "Backflow-prevention assemblies",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 86,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "What is the general purpose of a double check valve assembly in a water distribution system?",
+      "options": [
+        "To measure water use",
+        "To increase water pressure",
+        "To prevent backflow in lower-hazard situations",
+        "To store water for peak demand"
+      ],
+      "correctIndex": 2,
+      "explanation": "A double check valve assembly is used to prevent backflow in lower-hazard situations. It does not measure use, add pressure, or store water.",
+      "steps": null,
+      "tip": "Double check equals lower-hazard backflow protection.",
+      "isCalc": "no",
+      "topic": "Backflow-prevention assemblies",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 87,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A community on flat terrain needs storage that provides system pressure by the height of the stored water itself. Which facility is designed for that purpose?",
+      "options": [
+        "Elevated storage tank",
+        "Ground-level reservoir",
+        "Hydropneumatic pressure tank",
+        "Clear well"
+      ],
+      "correctIndex": 0,
+      "explanation": "An elevated storage tank uses the height of stored water to create pressure. A ground-level reservoir and a clear well on flat terrain require pumping to provide distribution pressure, while a hydropneumatic tank uses compressed air rather than elevation.",
+      "steps": null,
+      "tip": "Elevation creates pressure in an elevated tank.",
+      "isCalc": "no",
+      "topic": "Reservoir purposes",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 88,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A neighborhood has many dead-end water mains. Which change would generally improve water circulation and reduce stagnant water?",
+      "options": [
+        "Looping the mains",
+        "Increasing dead-end main diameter",
+        "Closing additional isolation valves",
+        "Adding a second meter at each service connection"
+      ],
+      "correctIndex": 0,
+      "explanation": "Looping mains creates more than one flow path and supports circulation. Increasing the size of a dead-end main, closing additional isolation valves, or adding a second service meter does not create a new circulation path.",
+      "steps": null,
+      "tip": "Looped mains keep water moving.",
+      "isCalc": "no",
+      "topic": "Distribution components",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 89,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "Which statement describes the general purpose of a customer water meter?",
+      "options": [
+        "It prevents contamination from entering the main.",
+        "It records the volume of water used at a service connection.",
+        "It adds pressure to the distribution system.",
+        "It isolates a main for repair."
+      ],
+      "correctIndex": 1,
+      "explanation": "A customer water meter records the volume of water used at a service connection. Backflow prevention, pressure addition, and main isolation are different functions.",
+      "steps": null,
+      "tip": "Meters account for volume used.",
+      "isCalc": "no",
+      "topic": "Meters",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 90,
+      "module": "Storage and distribution",
+      "difficulty": "medium",
+      "question": "A centrifugal pump is operating in a distribution system. What is the general way this type of pump moves water?",
+      "options": [
+        "By trapping water in a chamber and pushing it with a piston",
+        "By using a vacuum to pull water without pressure",
+        "By spinning an impeller to add velocity and pressure",
+        "By heating water to create steam pressure"
+      ],
+      "correctIndex": 2,
+      "explanation": "A centrifugal pump spins an impeller to add velocity and pressure to water. A piston pump is a positive-displacement type, and vacuum or steam pressure is not how a centrifugal pump operates.",
+      "steps": null,
+      "tip": "Centrifugal pumps use a spinning impeller.",
+      "isCalc": "no",
+      "topic": "Pumps",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain reservoir purposes, distribution components, meters, pumps, motors, valves, pipe, cross-connections and backflow-prevention assemblies.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 91,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "Which list contains common forms of chlorine used for water disinfection?",
+      "options": [
+        "Chlorine gas, sodium hypochlorite, and calcium hypochlorite",
+        "Chlorine gas, sodium chloride, and calcium carbonate",
+        "Sodium hypochlorite, potassium permanganate, and alum",
+        "Calcium hypochlorite, activated carbon, and fluoride"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Class D scope includes forms of chlorine. Chlorine gas, sodium hypochlorite and calcium hypochlorite are common forms used in water disinfection. The other choices are not common chlorine disinfectant forms for water systems.",
+      "steps": null,
+      "tip": "Remember three common chlorine forms: gas, liquid hypochlorite, solid hypochlorite.",
+      "isCalc": "no",
+      "topic": "Chlorine forms",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify common chlorine forms used in water disinfection.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 92,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "A storage area contains sodium hypochlorite containers and open acid containers. What is the main safety concern?",
+      "options": [
+        "Acid will freeze the hypochlorite",
+        "Mixing or fumes can release dangerous chlorine gas",
+        "Acid will increase hypochlorite strength",
+        "The containers will become lighter over time"
+      ],
+      "correctIndex": 1,
+      "explanation": "Chlorine products must be stored away from acids because contact or fumes can produce dangerous chlorine gas. The other choices are not supported storage concerns.",
+      "steps": null,
+      "tip": "Keep chlorine products away from acids and ammonia.",
+      "isCalc": "no",
+      "topic": "Chlorine storage",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain safe storage and separation of chlorine products.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 93,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "When chlorine is added to water, which substance is formed and acts as a disinfectant?",
+      "options": [
+        "Calcium carbonate",
+        "Sodium chloride",
+        "Hypochlorous acid",
+        "Hydrogen peroxide"
+      ],
+      "correctIndex": 2,
+      "explanation": "Chlorine in water forms hypochlorous acid, the active disinfecting form. The other substances are not the primary disinfecting product of chlorine in water.",
+      "steps": null,
+      "tip": "Chlorine plus water forms hypochlorous acid.",
+      "isCalc": "no",
+      "topic": "Basic chlorine reactions",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Describe basic chlorine reactions in water.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 94,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "A worker suspects a chlorine gas release near a chlorinator room. What is the appropriate Class D operator boundary?",
+      "options": [
+        "Enter the room to close the valve by hand",
+        "Use a dust mask and continue normal work",
+        "Neutralize the gas with ammonia",
+        "Evacuate to a safe area and notify emergency responders and trained personnel"
+      ],
+      "correctIndex": 3,
+      "explanation": "A suspected chlorine gas release requires evacuation and notification of emergency responders or trained personnel. Untrained entry, improvised masks, or neutralization attempts are outside the Class D boundary.",
+      "steps": null,
+      "tip": "Gas release: evacuate, alert, do not attempt repairs.",
+      "isCalc": "no",
+      "topic": "Chlorine gas exposure response",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize chlorine gas exposure response boundaries.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 95,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "Before starting a chlorinator after maintenance, what should a Class D operator do?",
+      "options": [
+        "Follow the site startup procedure and confirm safety checks with authorized personnel",
+        "Open all chemical lines fully and start the unit immediately",
+        "Bypass ventilation to speed the startup",
+        "Disconnect alarms so they do not sound during startup"
+      ],
+      "correctIndex": 0,
+      "explanation": "Startup must follow site procedures and safety checks with authorized personnel. Immediate startup, bypassing ventilation, or disabling alarms are unsafe and outside the operator boundary.",
+      "steps": null,
+      "tip": "Startup is procedure-based, not improvised.",
+      "isCalc": "no",
+      "topic": "Startup boundaries",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain startup boundaries for disinfection equipment.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 96,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "What is the correct boundary when shutting down disinfection equipment for service?",
+      "options": [
+        "Leave the equipment running and tag it later",
+        "Follow the site shutdown procedure and notify the responsible operator",
+        "Drain all chemicals to the floor drain",
+        "Turn off ventilation before stopping the chlorinator"
+      ],
+      "correctIndex": 1,
+      "explanation": "Shutdown should follow site procedures and notification requirements. Leaving equipment running, uncontrolled draining, or stopping ventilation first are not supported safe boundaries.",
+      "steps": null,
+      "tip": "Shutdown: follow procedure and communicate.",
+      "isCalc": "no",
+      "topic": "Shutdown boundaries",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain shutdown boundaries for disinfection equipment.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 97,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "Why should chlorine products never be mixed with ammonia or ammonia-containing cleaners?",
+      "options": [
+        "The mixture becomes a stronger disinfectant",
+        "The mixture freezes quickly",
+        "Dangerous chloramine gases can be released",
+        "The chlorine loses its color"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mixing chlorine with ammonia can release dangerous chloramine gases. The other outcomes are not the primary hazard and are not supported.",
+      "steps": null,
+      "tip": "Chlorine plus ammonia equals dangerous gas.",
+      "isCalc": "no",
+      "topic": "Chlorine safety",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify chlorine mixing hazards.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 98,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "A Class D operator is testing chlorine residual. Which action fits the testing boundary?",
+      "options": [
+        "Estimate residual by the strength of the chlorine odor",
+        "Adjust the chlorinator before recording any result",
+        "Test only after adding extra chlorine",
+        "Use a test method according to the kit manufacturer and system procedures"
+      ],
+      "correctIndex": 3,
+      "explanation": "Residual testing should use an appropriate test method and follow manufacturer and system instructions. Odor estimation, pre-adjustment, or adding chlorine first are not valid testing boundaries.",
+      "steps": null,
+      "tip": "Test residual with a proper kit, not by smell.",
+      "isCalc": "no",
+      "topic": "Chlorine residual testing",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain chlorine residual testing boundaries.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 99,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "Which property is characteristic of chlorine gas?",
+      "options": [
+        "Greenish-yellow and heavier than air",
+        "Colorless and lighter than air",
+        "Odorless and nonreactive",
+        "Blue and lighter than air"
+      ],
+      "correctIndex": 0,
+      "explanation": "Chlorine gas is greenish-yellow, has a pungent odor, and is heavier than air. The other choices misstate its color, odor, or density.",
+      "steps": null,
+      "tip": "Chlorine gas: greenish-yellow, pungent, heavier than air.",
+      "isCalc": "no",
+      "topic": "Chlorine gas characteristics",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify characteristics of chlorine gas.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 100,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "How should sodium hypochlorite be stored to reduce loss of strength?",
+      "options": [
+        "In an open tank in direct sunlight",
+        "In a closed container in a cool, dark, ventilated area",
+        "Next to acid containers for easy mixing",
+        "In a heated room to prevent freezing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sodium hypochlorite degrades with heat and sunlight, so closed, cool, dark, ventilated storage is appropriate. Open, sunny, acidic, or heated storage increases degradation or hazard.",
+      "steps": null,
+      "tip": "Hypochlorite likes cool, dark, closed storage.",
+      "isCalc": "no",
+      "topic": "Chlorine storage",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain storage requirements for sodium hypochlorite.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 101,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "What is a key storage concern for calcium hypochlorite?",
+      "options": [
+        "It must be kept wet to remain stable",
+        "It should be stored with oils and combustibles",
+        "It is a strong oxidizer and must be kept dry and away from incompatible materials",
+        "It can be stored in any open bucket"
+      ],
+      "correctIndex": 2,
+      "explanation": "Calcium hypochlorite is a strong oxidizer; keeping it dry and separated from incompatible materials reduces fire and reaction hazards. Wet storage or storage with combustibles is unsafe.",
+      "steps": null,
+      "tip": "Cal-hypo: dry, clean, separated.",
+      "isCalc": "no",
+      "topic": "Chlorine storage",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain storage requirements for calcium hypochlorite.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 102,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "What is the safest Class D boundary when working around a chlorinator?",
+      "options": [
+        "Rely on chlorine odor to warn of all leaks",
+        "Disable ventilation to keep chemicals contained",
+        "Work alone without communication",
+        "Use required PPE and ventilation, and follow site safety procedures"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chlorinator work requires required PPE, ventilation, and site safety procedures. Odor alone is not a reliable warning, and disabling ventilation or working without communication is unsafe.",
+      "steps": null,
+      "tip": "PPE, ventilation, and procedure are the safety triangle.",
+      "isCalc": "no",
+      "topic": "Chlorinator safety",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify safety practices for chlorinator work.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 103,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "Which residual measurement represents chlorine that has not combined with ammonia or other nitrogen compounds?",
+      "options": [
+        "Free chlorine residual",
+        "Combined chlorine residual",
+        "Total dissolved solids",
+        "Alkalinity"
+      ],
+      "correctIndex": 0,
+      "explanation": "Free chlorine residual is chlorine that has not combined with ammonia or other nitrogen compounds. Combined chlorine still provides disinfection but is the combined form. Total dissolved solids and alkalinity are different water-quality measures.",
+      "steps": null,
+      "tip": "Free chlorine is the uncombined, more reactive chlorine form.",
+      "isCalc": "no",
+      "topic": "Chlorine residual testing",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Identify the meaning of free chlorine residual.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 104,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "If a chlorine gas leak is suspected, what should a Class D operator do first?",
+      "options": [
+        "Try to find the leak by smell",
+        "Move to a safe area, warn others, and notify emergency responders",
+        "Spray water on the leak",
+        "Continue operations until a supervisor arrives"
+      ],
+      "correctIndex": 1,
+      "explanation": "The boundary is to get to safety, warn others, and notify emergency responders. Searching by smell, spraying water, or continuing operations is unsafe and outside Class D duties.",
+      "steps": null,
+      "tip": "Leak response: safety, warning, notification.",
+      "isCalc": "no",
+      "topic": "Chlorine gas exposure response",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Recognize chlorine gas leak response boundaries.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 105,
+      "module": "Disinfection",
+      "difficulty": "medium",
+      "question": "What is the main purpose of testing chlorine residual in a distribution system?",
+      "options": [
+        "To measure water hardness",
+        "To determine pipe diameter",
+        "To confirm that a disinfectant residual is present",
+        "To check for fluoride levels"
+      ],
+      "correctIndex": 2,
+      "explanation": "Chlorine residual testing confirms whether a disinfectant residual is present. Hardness, pipe diameter, and fluoride are different water-quality or system parameters.",
+      "steps": null,
+      "tip": "Residual test equals disinfectant still present.",
+      "isCalc": "no",
+      "topic": "Chlorine residual testing",
+      "cognitiveLevel": "recall",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Explain the purpose of chlorine residual testing.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 106,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A circular ground storage tank has an inside diameter of 40 ft. Using 0.785 as the circle constant, what is the surface area of the tank floor?",
+      "options": [
+        "1,256 sq ft",
+        "2,512 sq ft",
+        "5,024 sq ft",
+        "125.6 sq ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "Circle area = 0.785 × D². With D = 40 ft, D² = 1,600 sq ft, and 0.785 × 1,600 = 1,256 sq ft. The other options come from doubling, quadrupling, or misplacing the decimal.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the floor area of a circular tank in square feet."
+        },
+        {
+          "l": "Given",
+          "c": "Diameter D = 40 ft; circle constant = 0.785."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Area = 0.785 × D². This is the standard circle-area form (π/4 ≈ 0.785) used when the diameter is known."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "No conversions required; feet squared gives square feet directly."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Area = 0.785 × (40 ft)² = 0.785 × 1,600 sq ft = 1,256 sq ft."
+        },
+        {
+          "l": "Answer",
+          "c": "1,256 sq ft."
+        },
+        {
+          "l": "Check",
+          "c": "Using radius: 3.14 × 20 ft × 20 ft = 3.14 × 400 = 1,256 sq ft. Matches."
+        }
+      ],
+      "tip": "When the diameter is given, square the diameter first, then multiply by 0.785; do not square 0.785 or halve the diameter unless you switch to the πr² form.",
+      "isCalc": "yes",
+      "topic": "Area of a circle",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 107,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A rectangular clearwell measures 50 ft long by 20 ft wide and holds water to a depth of 10 ft. Using 7.48 gal per cubic foot, how many US gallons of water does it contain?",
+      "options": [
+        "74,800 gal",
+        "7,480 gal",
+        "10,000 gal",
+        "748,000 gal"
+      ],
+      "correctIndex": 0,
+      "explanation": "Rectangular volume = L × W × D = 50 × 20 × 10 = 10,000 cu ft. Converting with 7.48 gal/cu ft gives 74,800 US gallons. 10,000 is the cubic-foot value, not gallons; the others are decimal-place errors.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the water volume in US gallons."
+        },
+        {
+          "l": "Given",
+          "c": "Length = 50 ft; width = 20 ft; water depth = 10 ft; 1 cu ft = 7.48 US gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Volume = Length × Width × Depth gives cubic feet for a rectangular basin; multiply by 7.48 to express the result in gallons."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "cu ft × 7.48 gal/cu ft = gal."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Volume = 50 ft × 20 ft × 10 ft = 10,000 cu ft; 10,000 cu ft × 7.48 gal/cu ft = 74,800 gal."
+        },
+        {
+          "l": "Answer",
+          "c": "74,800 US gallons."
+        },
+        {
+          "l": "Check",
+          "c": "Estimate: 10,000 × 7.5 = 75,000 gal, which is close to 74,800. Reasonable."
+        }
+      ],
+      "tip": "Always finish the cubic-foot calculation before converting; a common slip is to multiply only one dimension by 7.48.",
+      "isCalc": "yes",
+      "topic": "Rectangular volume and gallon conversion",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 108,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A well pump delivers a steady 350 gallons per minute for a full 24-hour day. How many gallons are pumped in that day?",
+      "options": [
+        "504,000 gal",
+        "21,000 gal",
+        "50,400 gal",
+        "840,000 gal"
+      ],
+      "correctIndex": 0,
+      "explanation": "There are 1,440 minutes in a day (60 min × 24 hr). 350 gpm × 1,440 min/day = 504,000 gal/day. 21,000 is only one hour of pumping; the other values are decimal or factor errors.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Convert a flow in gallons per minute to total gallons per day."
+        },
+        {
+          "l": "Given",
+          "c": "Flow = 350 gpm; run time = 24 hours continuous."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Gallons per day = gpm × minutes per day, because multiplying a rate by elapsed time gives total quantity."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "60 min/hr × 24 hr/day = 1,440 min/day."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "350 gal/min × 1,440 min/day = 504,000 gal/day."
+        },
+        {
+          "l": "Answer",
+          "c": "504,000 gallons in 24 hours."
+        },
+        {
+          "l": "Check",
+          "c": "Per hour: 350 × 60 = 21,000 gal/hr; 21,000 × 24 = 504,000 gal. Matches."
+        }
+      ],
+      "tip": "Memorize 1,440 min/day; it appears in nearly every gpm-to-gpd or gpd-to-MGD conversion.",
+      "isCalc": "yes",
+      "topic": "Flow rate conversion",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 109,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A system treats 0.5 million gallons per day (MGD) and applies a chlorine dose of 2.0 mg/L. Using the pounds formula with 8.34 lb/gal, how many pounds of chlorine are fed per day?",
+      "options": [
+        "8.34 lb/day",
+        "4.17 lb/day",
+        "16.68 lb/day",
+        "83.4 lb/day"
+      ],
+      "correctIndex": 0,
+      "explanation": "Pounds per day = flow (MGD) × dose (mg/L) × 8.34. Substituting 0.5 × 2.0 × 8.34 = 8.34 lb/day. The other options result from omitting the dose, doubling, or a decimal error.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the chlorine feed in pounds per day."
+        },
+        {
+          "l": "Given",
+          "c": "Flow = 0.5 MGD; dose = 2.0 mg/L; water weighs 8.34 lb/gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "lb/day = MGD × mg/L × 8.34. One mg/L in one million gallons weighs 8.34 lb, so this relationship links concentration, flow, and mass."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "Flow is already in MGD; no conversion needed."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "0.5 × 2.0 × 8.34 = 1.0 × 8.34 = 8.34 lb/day."
+        },
+        {
+          "l": "Answer",
+          "c": "8.34 lb of chlorine per day."
+        },
+        {
+          "l": "Check",
+          "c": "At 1.0 MGD and 2.0 mg/L it would be 16.68 lb/day; half the flow gives half that, 8.34 lb/day. Consistent."
+        }
+      ],
+      "tip": "If flow is given in gpd, divide by 1,000,000 to get MGD before using the pounds formula.",
+      "isCalc": "yes",
+      "topic": "Chemical dosage (pounds formula)",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 110,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A storage tank holding 0.4 million gallons is to receive a chlorine dose of 1.5 mg/L using calcium hypochlorite that is 65% available chlorine. Approximately how many pounds of calcium hypochlorite are required?",
+      "options": [
+        "7.7 lb",
+        "5.0 lb",
+        "3.3 lb",
+        "11.8 lb"
+      ],
+      "correctIndex": 0,
+      "explanation": "Pure chlorine needed = 0.4 MG × 1.5 mg/L × 8.34 = 5.0 lb. Because the product is only 65% available chlorine, divide: 5.0 ÷ 0.65 ≈ 7.7 lb. 5.0 lb ignores the purity; 3.3 lb wrongly multiplies by 0.65.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the pounds of 65% calcium hypochlorite needed."
+        },
+        {
+          "l": "Given",
+          "c": "Volume = 0.4 MG; dose = 1.5 mg/L; product strength = 65% available chlorine; 8.34 lb/gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "lb pure chlorine = MG × mg/L × 8.34; then lb product = lb pure chlorine ÷ (percent available ÷ 100), because only part of the product is active chlorine."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "65% = 0.65 as a decimal; volume already in million gallons."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "0.4 × 1.5 × 8.34 = 5.004 lb pure chlorine; 5.004 ÷ 0.65 = 7.70 lb product."
+        },
+        {
+          "l": "Answer",
+          "c": "Approximately 7.7 lb of calcium hypochlorite."
+        },
+        {
+          "l": "Check",
+          "c": "7.7 lb × 0.65 = 5.0 lb available chlorine, which matches the pure-chlorine requirement. Reasonable."
+        }
+      ],
+      "tip": "Lower purity means more product; if your answer is smaller than the pure-chlorine figure, you divided and multiplied in the wrong order.",
+      "isCalc": "yes",
+      "topic": "Chemical dosage with product purity",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 111,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A practice problem describes a circular clearwell with an inside diameter of 40 ft. Using 0.785 as the approximation for π/4, what is the surface area of the circular floor?",
+      "options": [
+        "1,256 ft²",
+        "5,024 ft²",
+        "125.6 ft²",
+        "2,512 ft²"
+      ],
+      "correctIndex": 0,
+      "explanation": "The area of a circle can be found with Area = 0.785 × D². With D = 40 ft, D² = 1,600 ft², and 0.785 × 1,600 ft² = 1,256 ft². The distractors come from squaring the wrong value or dropping/doubling a factor.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the floor area of a circular clearwell in square feet (ft²)."
+        },
+        {
+          "l": "Given",
+          "c": "Inside diameter D = 40 ft; use 0.785 for π/4."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Area = 0.785 × D². This is the circle-area formula written with diameter instead of radius, which is the common form in water utility math."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "None needed; diameter is already in feet, so the area will be in ft²."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "D² = 40 ft × 40 ft = 1,600 ft². Area = 0.785 × 1,600 ft² = 1,256 ft²."
+        },
+        {
+          "l": "Answer",
+          "c": "Approximately 1,256 ft²."
+        },
+        {
+          "l": "Check",
+          "c": "Using radius: r = 20 ft, π × r² ≈ 3.14 × 400 ft² = 1,256 ft². Same result, so the calculation is consistent."
+        }
+      ],
+      "tip": "When a problem gives a diameter, use 0.785 × D²; only use π × r² if you first divide the diameter by 2.",
+      "isCalc": "yes",
+      "topic": "Area of a circle",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 112,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A rectangular storage basin in a practice problem measures 30 ft long, 20 ft wide, and holds water to a depth of 10 ft. Using 7.48 US gallons per cubic foot, how many US gallons of water does the basin hold at that depth?",
+      "options": [
+        "6,000 gal",
+        "44,880 gal",
+        "448,800 gal",
+        "22,440 gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "Volume of a rectangular basin = length × width × depth = 30 ft × 20 ft × 10 ft = 6,000 ft³. Converting to gallons: 6,000 ft³ × 7.48 gal/ft³ = 44,880 gal. The 6,000 option is the cubic-foot volume left unconverted.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the water volume in US gallons at the stated depth."
+        },
+        {
+          "l": "Given",
+          "c": "Length = 30 ft; width = 20 ft; water depth = 10 ft; 1 ft³ = 7.48 US gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Volume = L × W × D for a rectangular shape, then multiply by 7.48 gal/ft³ to convert cubic feet to gallons."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "ft³ to gallons: multiply by 7.48 gal/ft³."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Volume = 30 ft × 20 ft × 10 ft = 6,000 ft³. Gallons = 6,000 ft³ × 7.48 gal/ft³ = 44,880 gal."
+        },
+        {
+          "l": "Answer",
+          "c": "44,880 US gallons."
+        },
+        {
+          "l": "Check",
+          "c": "Reverse: 44,880 gal ÷ 7.48 gal/ft³ = 6,000 ft³, which matches L × W × D."
+        }
+      ],
+      "tip": "Always finish a volume problem by asking whether the answer is wanted in cubic feet or gallons; forgetting the 7.48 factor is the most common slip.",
+      "isCalc": "yes",
+      "topic": "Rectangular volume and gallon conversion",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 113,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "For a practice calculation only, assume a flow of 2.0 million gallons per day (MGD) and a hypothetical dose of 3.0 mg/L of a chemical that is treated as 100 percent available. Using 8.34 lb per US gallon, how many pounds of chemical per day does the pounds formula give?",
+      "options": [
+        "6.0 lb/day",
+        "25.0 lb/day",
+        "50.0 lb/day",
+        "500 lb/day"
+      ],
+      "correctIndex": 2,
+      "explanation": "The pounds formula gives 2.0 × 3.0 × 8.34 = 50.04 lb/day, which rounds to 50.0 lb/day. A result of 6.0 omits the 8.34 factor, 25.0 halves the result, and 500 is a tenfold decimal-place error.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the chemical feed quantity in pounds per day for the stated assumptions."
+        },
+        {
+          "l": "Given",
+          "c": "Flow = 2.0 MGD; dose = 3.0 mg/L; 8.34 lb/gal; chemical assumed 100% available."
+        },
+        {
+          "l": "Formula and why",
+          "c": "lb/day = MGD × mg/L × 8.34. The 8.34 factor converts mg/L in millions of gallons to pounds because one US gallon of water weighs about 8.34 lb and 1 mg/L equals 1 part per million by weight."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "Flow is already in MGD and dose in mg/L, so the formula applies directly."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "lb/day = 2.0 × 3.0 × 8.34 = 50.04 lb/day."
+        },
+        {
+          "l": "Answer",
+          "c": "Approximately 50.0 lb/day."
+        },
+        {
+          "l": "Check",
+          "c": "Rearranged: 50.04 lb/day ÷ (2.0 MGD × 8.34) = 3.0 mg/L, matching the given dose."
+        }
+      ],
+      "tip": "Memorize the pounds formula as a triangle: pounds on top, MGD × mg/L × 8.34 on the bottom, so you can solve for any missing piece.",
+      "isCalc": "yes",
+      "topic": "Chemical dosage (pounds formula)",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 114,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A practice problem states that a well pump delivers a steady 1,250 US gallons per minute (gpm) for a full 24-hour day. What is the equivalent flow in million gallons per day (MGD)?",
+      "options": [
+        "0.18 MGD",
+        "1.25 MGD",
+        "18.0 MGD",
+        "1.80 MGD"
+      ],
+      "correctIndex": 3,
+      "explanation": "There are 1,440 minutes in a day, so 1,250 gpm × 1,440 min/day = 1,800,000 gal/day. Dividing by 1,000,000 gives 1.80 MGD. The other options are decimal-shift errors or the unconverted gpm figure.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Convert a flow in gpm to MGD."
+        },
+        {
+          "l": "Given",
+          "c": "Flow = 1,250 gpm; pump runs 24 hours; 1 day = 1,440 minutes; 1 MGD = 1,000,000 gal/day."
+        },
+        {
+          "l": "Formula and why",
+          "c": "MGD = (gpm × 1,440 min/day) ÷ 1,000,000. Multiplying by minutes per day gives gallons per day, and dividing by one million expresses it in MGD."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "24 hr × 60 min/hr = 1,440 min/day."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "1,250 gal/min × 1,440 min/day = 1,800,000 gal/day. 1,800,000 ÷ 1,000,000 = 1.80 MGD."
+        },
+        {
+          "l": "Answer",
+          "c": "1.80 MGD."
+        },
+        {
+          "l": "Check",
+          "c": "Reverse: 1.80 MGD × 1,000,000 ÷ 1,440 min/day = 1,250 gpm, which matches the given flow."
+        }
+      ],
+      "tip": "A quick mental shortcut: 1 MGD is about 694 gpm, so roughly 700 gpm per MGD; 1,250 gpm should land a little under 2 MGD.",
+      "isCalc": "yes",
+      "topic": "Flow unit conversion (gpm to MGD)",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 115,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A cylindrical ground storage tank in a practice problem has an inside diameter of 20 ft and is filled to a depth of 12 ft. Using 0.785 for π/4 and 7.48 US gallons per cubic foot, approximately how many US gallons of water are in the tank? Round to the nearest gallon.",
+      "options": [
+        "3,768 gal",
+        "7,046 gal",
+        "28,185 gal",
+        "35,904 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "Cylinder volume = 0.785 × D² × height = 0.785 × (20 ft)² × 12 ft = 3,768 ft³. Converting: 3,768 ft³ × 7.48 gal/ft³ = 28,184.64 gal, about 28,185 gal. The distractors come from skipping the gallon conversion, using the radius in the 0.785 formula, or omitting 0.785.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the water volume in US gallons in a cylindrical tank at the stated depth."
+        },
+        {
+          "l": "Given",
+          "c": "Diameter D = 20 ft; water depth h = 12 ft; 0.785 for π/4; 7.48 gal/ft³."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Volume (ft³) = 0.785 × D² × h, because a cylinder's volume is its circular area times height; then multiply by 7.48 gal/ft³ to get gallons."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "ft³ to gallons: multiply by 7.48 gal/ft³."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Area = 0.785 × 20 ft × 20 ft = 314 ft². Volume = 314 ft² × 12 ft = 3,768 ft³. Gallons = 3,768 ft³ × 7.48 gal/ft³ = 28,184.64 gal."
+        },
+        {
+          "l": "Answer",
+          "c": "Approximately 28,185 US gallons."
+        },
+        {
+          "l": "Check",
+          "c": "Order of magnitude: 3,768 ft³ × 7.5 gal/ft³ ≈ 28,260 gal, close to 28,185, so the result is reasonable."
+        }
+      ],
+      "tip": "Work cylinder problems in two stages: first get the circular area with 0.785 × D², then multiply by depth, and only then convert to gallons.",
+      "isCalc": "yes",
+      "topic": "Cylindrical volume and gallon conversion",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 116,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A circular clearwell has an inside diameter of 40 ft. Using 0.785 as the constant for the area of a circle, what is the floor area of the clearwell in square feet?",
+      "options": [
+        "1,256 sq ft",
+        "5,024 sq ft",
+        "125.6 sq ft",
+        "2,512 sq ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "The area of a circle is 0.785 × diameter². With a 40 ft diameter, 0.785 × 40 ft × 40 ft = 1,256 sq ft. The other options come from using the diameter instead of its square, misplacing a decimal, or doubling the result.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the floor area of the circular clearwell in square feet."
+        },
+        {
+          "l": "Given",
+          "c": "Diameter D = 40 ft; circle area constant = 0.785."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Area = 0.785 × D². This is the circle area formula (π/4 × D²) using 0.785 as the common water-math approximation of π/4."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "None needed; the diameter is already in feet, so the result is in square feet."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Area = 0.785 × 40 ft × 40 ft = 0.785 × 1,600 sq ft = 1,256 sq ft."
+        },
+        {
+          "l": "Answer",
+          "c": "1,256 sq ft."
+        },
+        {
+          "l": "Check",
+          "c": "A 40 ft × 40 ft square would be 1,600 sq ft; a circle inside it should be about 78.5% of that, and 0.785 × 1,600 = 1,256 sq ft, so the result is reasonable."
+        }
+      ],
+      "tip": "Always square the diameter before multiplying by 0.785; forgetting to square is the most common error in area problems.",
+      "isCalc": "yes",
+      "topic": "Area of a circle",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 117,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A rectangular ground storage tank measures 30 ft long by 20 ft wide and holds water to a depth of 10 ft. Using 7.48 US gallons per cubic foot, how many US gallons of water does the tank contain at that depth?",
+      "options": [
+        "6,000 gal",
+        "22,440 gal",
+        "44,880 gal",
+        "448,800 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume = length × width × depth = 30 ft × 20 ft × 10 ft = 6,000 cu ft. Converting with 7.48 gal/cu ft gives 6,000 × 7.48 = 44,880 US gallons. The 6,000 option is cubic feet, not gallons; the others reflect a halved or decimal-shifted result.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the volume of water in the rectangular tank in US gallons."
+        },
+        {
+          "l": "Given",
+          "c": "Length = 30 ft; width = 20 ft; water depth = 10 ft; 1 cu ft = 7.48 US gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Volume (cu ft) = L × W × D, then gallons = cu ft × 7.48. A rectangular tank is a box, so its volume is the product of its three dimensions; the 7.48 factor converts cubic feet to US gallons."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "Cubic feet to US gallons: multiply by 7.48 gal/cu ft."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Volume = 30 ft × 20 ft × 10 ft = 6,000 cu ft; gallons = 6,000 cu ft × 7.48 gal/cu ft = 44,880 gal."
+        },
+        {
+          "l": "Answer",
+          "c": "44,880 US gallons."
+        },
+        {
+          "l": "Check",
+          "c": "6,000 cu ft × 7.5 ≈ 45,000 gal, which is close to 44,880 gal, so the magnitude is correct."
+        }
+      ],
+      "tip": "Calculate cubic feet first, then convert to gallons; keeping the two steps separate reduces errors.",
+      "isCalc": "yes",
+      "topic": "Rectangular tank volume",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 118,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A cylindrical standpipe has an inside diameter of 20 ft and is filled to a water height of 15 ft. Using 0.785 for the circle constant and 7.48 US gallons per cubic foot, approximately how many US gallons does the standpipe hold at that level?",
+      "options": [
+        "4,710 gal",
+        "17,615 gal",
+        "35,231 gal",
+        "140,924 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume = 0.785 × D² × H = 0.785 × 20 ft × 20 ft × 15 ft = 4,710 cu ft. Converting: 4,710 cu ft × 7.48 gal/cu ft = 35,230.8 gal, about 35,231 US gallons. The 4,710 option is cubic feet, and the others reflect halving or using D² × H without the 0.785 constant.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the volume of water in the cylindrical standpipe in US gallons."
+        },
+        {
+          "l": "Given",
+          "c": "Diameter D = 20 ft; water height H = 15 ft; circle constant = 0.785; 1 cu ft = 7.48 US gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "Volume (cu ft) = 0.785 × D² × H, then gallons = cu ft × 7.48. A cylinder's volume is its circular base area times its height; the 7.48 factor converts cubic feet to US gallons."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "Cubic feet to US gallons: multiply by 7.48 gal/cu ft."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "Volume = 0.785 × 20 ft × 20 ft × 15 ft = 0.785 × 400 sq ft × 15 ft = 4,710 cu ft; gallons = 4,710 cu ft × 7.48 gal/cu ft = 35,230.8 gal ≈ 35,231 gal."
+        },
+        {
+          "l": "Answer",
+          "c": "Approximately 35,231 US gallons."
+        },
+        {
+          "l": "Check",
+          "c": "Base area is 0.785 × 400 = 314 sq ft; 314 × 15 = 4,710 cu ft; 4,710 × 7.5 ≈ 35,300 gal, consistent with 35,231 gal."
+        }
+      ],
+      "tip": "For cylinders, square the diameter, multiply by 0.785, then by height, then convert to gallons as the final step.",
+      "isCalc": "yes",
+      "topic": "Cylindrical tank volume",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 119,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "For a practice exercise, assume a small system treats 0.5 million gallons per day (MGD) and that the assumed chlorine dose for the calculation is 2.0 mg/L. Using 8.34 lb per gallon as the weight of water, how many pounds of chlorine per day does the pounds formula indicate for these assumed values?",
+      "options": [
+        "4.17 lb/day",
+        "8.34 lb/day",
+        "16.68 lb/day",
+        "83.4 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "The pounds formula is lb/day = flow (MGD) × dose (mg/L) × 8.34 lb/gal. Substituting the assumed values: 0.5 MGD × 2.0 mg/L × 8.34 = 8.34 lb/day. The other options come from halving, doubling, or shifting the decimal. These are assumed exercise values, not an operating setpoint.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Find the chlorine feed in pounds per day for the assumed flow and dose."
+        },
+        {
+          "l": "Given",
+          "c": "Flow = 0.5 MGD; assumed dose = 2.0 mg/L; weight of water = 8.34 lb/gal."
+        },
+        {
+          "l": "Formula and why",
+          "c": "lb/day = MGD × mg/L × 8.34. Because 1 mg/L equals 8.34 lb per million gallons, multiplying flow in MGD by dose in mg/L by 8.34 gives pounds per day."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "Flow is already in MGD and dose in mg/L, so no additional conversion is needed."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "lb/day = 0.5 MGD × 2.0 mg/L × 8.34 lb/gal = 1.0 × 8.34 = 8.34 lb/day."
+        },
+        {
+          "l": "Answer",
+          "c": "8.34 lb/day."
+        },
+        {
+          "l": "Check",
+          "c": "1.0 MGD at 1.0 mg/L would need 8.34 lb/day; 0.5 MGD at 2.0 mg/L has the same product (0.5 × 2.0 = 1.0), so 8.34 lb/day is consistent."
+        }
+      ],
+      "tip": "Make sure flow is in MGD before using the pounds formula; if flow is given in gallons per day, divide by 1,000,000 first.",
+      "isCalc": "yes",
+      "topic": "Chemical dosage (pounds formula)",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "questionNum": 120,
+      "module": "Water utility math",
+      "difficulty": "hard",
+      "question": "A well pump delivers a steady 350 gallons per minute (gpm). If it runs continuously for a full 24-hour day, what is the flow expressed in million gallons per day (MGD)?",
+      "options": [
+        "0.21 MGD",
+        "0.504 MGD",
+        "5.04 MGD",
+        "50.4 MGD"
+      ],
+      "correctIndex": 1,
+      "explanation": "There are 1,440 minutes in a day, so 350 gpm × 1,440 min/day = 504,000 gal/day. Dividing by 1,000,000 gives 0.504 MGD. The other options reflect using 600 minutes, or misplacing the decimal when converting gallons per day to MGD.",
+      "steps": [
+        {
+          "l": "Target",
+          "c": "Convert a flow of 350 gpm to million gallons per day (MGD) for continuous 24-hour operation."
+        },
+        {
+          "l": "Given",
+          "c": "Flow = 350 gpm; run time = 24 hours per day; 1 day = 1,440 minutes; 1 MGD = 1,000,000 gal/day."
+        },
+        {
+          "l": "Formula and why",
+          "c": "gal/day = gpm × 1,440 min/day, then MGD = gal/day ÷ 1,000,000. Multiplying by minutes per day converts a per-minute rate to a per-day total, and dividing by one million expresses it in MGD."
+        },
+        {
+          "l": "Unit conversions",
+          "c": "24 hr/day × 60 min/hr = 1,440 min/day; 1,000,000 gal = 1 million gallons."
+        },
+        {
+          "l": "Substitute and calculate",
+          "c": "gal/day = 350 gal/min × 1,440 min/day = 504,000 gal/day; MGD = 504,000 ÷ 1,000,000 = 0.504 MGD."
+        },
+        {
+          "l": "Answer",
+          "c": "0.504 MGD."
+        },
+        {
+          "l": "Check",
+          "c": "A useful benchmark is that about 694 gpm equals 1 MGD; 350 gpm is roughly half of that, so about 0.5 MGD is reasonable."
+        }
+      ],
+      "tip": "Memorize 1,440 minutes per day; it is the key factor for converting gpm to gallons per day.",
+      "isCalc": "yes",
+      "topic": "Flow unit conversion",
+      "cognitiveLevel": "application",
+      "sourceTitle": "TCEQ Public Water System Operators: What Applicants for Licensing Need to Know",
+      "sourceReference": "Texas Class D Water Need-to-Know Criteria",
+      "sourceUrl": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+      "blueprintObjective": "Solve basic water utility math using area, volume, conversion and chemical dosage relationships with US customary units and clearly stated assumptions.",
+      "finalReviewStatus": "review_pass"
+    }
+  ]
+}

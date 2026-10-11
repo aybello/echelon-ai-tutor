@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getAllCourses } from "./courseRegistry";
+import { getAllCourses, getCourseByKey } from "./courseRegistry";
 import { classifyAppRoute } from "./appRoutes";
 import { US_STATE_NAMES } from "./usStateNames";
 import { getStateBySlug, isSharedProgram, matchedUSCourses, sharedUSCourses, usCourseHref, type USProgramEvidence, type USStateConfig } from "./usExamRouting";
@@ -83,6 +83,12 @@ describe("source-backed US exam routing", () => {
     const vermont = getStateBySlug("vermont")!;
     expect(matchedUSCourses(vermont, "water-treatment")).toEqual([]);
     expect(matchedUSCourses(vermont, "water-distribution")).toEqual([]);
+  });
+  it("keeps the Texas state-specific course dormant until the governed bank release", () => {
+    const texasCourse = getCourseByKey("us-texas-class-d-water")!;
+    expect(texasCourse.examFamily).toBe("us-state");
+    expect(texasCourse.isActive).toBe(false);
+    expect(matchedUSCourses(getStateBySlug("texas")!)).toEqual([]);
   });
   it("requires official evidence and a confirmed valid level", () => {
     expect(isSharedProgram(program({sources:[]}))).toBe(false);

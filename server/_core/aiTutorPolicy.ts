@@ -28,7 +28,7 @@ export interface TutorPerformanceContext {
 
 export function buildTutorSystemPrompt(input: {
   courseName: string;
-  examFamily: "ontario" | "western" | "us-wpi";
+  examFamily: "ontario" | "western" | "us-wpi" | "us-state";
   /**
    * Server-resolved US study context. Only ever populated from an allowlisted
    * course and route mapping, never from a raw query parameter, so a learner
@@ -62,13 +62,15 @@ export function buildTutorSystemPrompt(input: {
 
   const performanceContext = JSON.stringify(input.recentPerformance.slice(-6));
   const isElectrician = input.subject === "construction_electrician";
-  const isUS = input.examFamily === "us-wpi";
+  const isUS = input.examFamily === "us-wpi" || input.examFamily === "us-state";
   const regulatoryContext = isElectrician
     ? "Ontario Construction Electrician (309A) / current published exam-blueprint context"
     : input.examFamily === "ontario"
       ? "Ontario operator certification context"
       : isUS
-        ? "United States WPI-aligned operator certification study context"
+        ? input.examFamily === "us-state"
+          ? "United States state-specific operator certification study context"
+          : "United States WPI-aligned operator certification study context"
         : "ABC/WPI-aligned operator certification context";
   const subjectRule = isElectrician
     ? "Teach only construction-electrician theory, safety, installation, troubleshooting, calculations, and exam-preparation topics relevant to this course. Do not invent Canadian Electrical Code rule or table references."

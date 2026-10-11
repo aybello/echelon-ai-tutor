@@ -23,6 +23,8 @@ import {
   US_CLASS1_WATER_BANK,
   US_CLASS1_WATER_BLUEPRINT,
   usMockBlueprintForBank,
+  TEXAS_CLASS_D_WATER_BANK,
+  TEXAS_CLASS_D_WATER_BLUEPRINT,
 } from "./usMockBlueprint";
 import { resolveUSStudyContext } from "./usStudyContextServer";
 import { buildTutorSystemPrompt } from "./_core/aiTutorPolicy";
@@ -150,6 +152,14 @@ describe("US mock blueprints match the drafted allocations", () => {
     expect(usMockBlueprintForBank("us-class1-water", 2024)).toBeNull();
     expect(usMockBlueprintForBank("class1-water", US_CLASS1_BLUEPRINT_VERSION)).toBeNull();
     expect(usMockBlueprintForBank("", US_CLASS1_BLUEPRINT_VERSION)).toBeNull();
+  });
+
+  it("keeps the dormant Texas Class D profile separate from WPI Class I", () => {
+    const total = TEXAS_CLASS_D_WATER_BLUEPRINT.reduce((n, area) => n + area.total, 0);
+    const calculations = TEXAS_CLASS_D_WATER_BLUEPRINT.reduce((n, area) => n + area.calculations, 0);
+    expect([total, calculations]).toEqual([60, 8]);
+    expect(usMockBlueprintForBank(TEXAS_CLASS_D_WATER_BANK, 1)).toBe(TEXAS_CLASS_D_WATER_BLUEPRINT);
+    expect(usMockBlueprintForBank(TEXAS_CLASS_D_WATER_BANK, US_CLASS1_BLUEPRINT_VERSION)).toBeNull();
   });
 
   it("routes US banks to US profiles through the shared resolver", () => {
