@@ -424,56 +424,66 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Research performed October 4, 2026 for the requested October 3, 2026 cutoff. Live pages are not archived cutoff snapshots; the official wastewater code displayed an October 1, 2026 update.",
       "Eight source opens were used. None explicitly established standardized WPI/ABC scope plus local grade-to-WPI class correspondence; every verifiedSharedLevels array is therefore empty.",
       "Exam-system unverified means provenance remained ambiguous, not that certification is unavailable. ABC/WPI preparation links, ABC program approval, and DEQ examination administration were not treated as standardized-exam proof.",
-      "The opened AWEA page establishes its own voluntary collection program; it does not establish state designation or mandatory DEQ collection licensure. No separate mandatory collection credential was verified."
+      "The opened AWEA page establishes its own voluntary collection program; it does not establish state designation or mandatory DEQ collection licensure. No separate mandatory collection credential was verified.",
+      "October 11, 2026 update: Arkansas water treatment and water distribution Grade I activated for shared WPI Class I prep after direct review of the ADH annual operator certification report, the ADH exam preparation page and the licensing rules. Higher grades, Very Small Water System and wastewater remain unverified."
     ],
     "name": "Arkansas",
     "streams": [
       {
         "authorityName": "Arkansas Department of Health (ADH), under the Arkansas State Board of Health and Drinking Water Advisory & Operator Licensing Committee",
         "authorityUrl": "https://healthy.arkansas.gov/programs-services/licensing-military-member-licensure-permits-plan-reviews/drinking-water-operator-certification/",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Grade I Treatment License; Grade II Treatment License; Grade III Treatment License; Grade IV Treatment License",
-        "note": "Mandatory drinking-water licensing. Official sources establish separate treatment examinations and recommend ABC/WPI preparation materials, but do not explicitly identify standardized WPI exams, customized ABC exams, or state-authored exams. Local grade numbering does not establish WPI class correspondence.",
+        "note": "Arkansas licenses treatment operators as Grade I through Grade IV, with Grade IV the highest. ADH reports that since July 2014 it has used ABC validated national standardized exams delivered by PSI, and it links the WPI Need to Know and formula sheets as exam preparation. Grade I is the verified shared level. Arkansas also requires approved training before any exam (40 contact hours at Grade I, including rules, basic math and a basic treatment course) and six months of experience for a full license. The state report cites the 2017 criteria version, so the edition in current use should be confirmed with ADH.",
         "sources": [
           {
-            "evidence": "Program has been mandatory since 1957; the Drinking Water Advisory & Operator Licensing Committee oversees it.",
-            "title": "ADH Drinking Water Operator Certification",
-            "url": "https://healthy.arkansas.gov/programs-services/licensing-military-member-licensure-permits-plan-reviews/drinking-water-operator-certification/"
+            "title": "Arkansas Department of Health - Operator Certification Annual Report to EPA",
+            "url": "https://healthy.arkansas.gov/wp-content/uploads/drinking-water-OperCertificationAnnualReport.pdf",
+            "evidence": "ADH states the program changes implemented July 1, 2014 included 'utilizing the Association of Boards of Certification (2017 Version presently utilized) validated national standardized exams, previous exams were customized exams utilizing ABC valid exam items', and that ABC's standardized exams allow computer-based testing through PSI."
           },
           {
-            "evidence": "Sections V and X identify Treatment Grades I–IV. Section IX.D requires separate treatment and distribution examinations for Grades I–IV; it does not name the exam developer or standardized series.",
-            "title": "Rules Pertaining to Water Operator Licensing, effective March 25, 2024",
-            "url": "https://healthy.arkansas.gov/wp-content/uploads/WATER_OPERATOR_LICENSING.pdf"
+            "title": "Arkansas Department of Health - Operator Exam Preparation Materials",
+            "url": "https://healthy.arkansas.gov/programs-services/licensing-military-member-licensure-permits-plan-reviews/drinking-water-operator-certification/operator-exam-preparation/",
+            "evidence": "ADH links 'Treatment, Distribution, Very Small System - Need To Know (NTK) and Math Formula Sheets' to WPI, alongside the Arkansas Rules Pertaining to Public Water Systems and the Public Water System Compliance Summary."
           },
           {
-            "evidence": "Recommended references are the study manuals referenced in ABC exam-preparation Needs To Know Criteria. Arkansas PWS rules and the Arkansas PWS Compliance Summary are additional recommended materials; no standardized-exam adoption statement appears.",
-            "title": "Arkansas Water Operator Licensing Program  -  Exam Reference Materials List",
-            "url": "https://healthy.arkansas.gov/wp-content/uploads/Exam-Reference-Materials-List-3226.pdf"
+            "title": "Arkansas Rules - Water Operator Licensing",
+            "url": "https://healthy.arkansas.gov/wp-content/uploads/WATER_OPERATOR_LICENSING.pdf",
+            "evidence": "Water Treatment Facilities are classified as Grade I, Grade II, Grade III and Grade IV, with Grade IV being the largest and most complex."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Arkansas Department of Health (ADH), under the Arkansas State Board of Health and Drinking Water Advisory & Operator Licensing Committee",
         "authorityUrl": "https://healthy.arkansas.gov/programs-services/licensing-military-member-licensure-permits-plan-reviews/drinking-water-operator-certification/",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Small System Distribution License (facility classification: Very Small Water System); Grade I Distribution License; Grade II Distribution License; Grade III Distribution License; Grade IV Distribution License",
-        "note": "Mandatory licensing, distinct from treatment. Rules use both Very Small Water System and Small System Distribution terminology. Neither the separate exams nor WPI preparation links establish standardized or customized exam provenance. The small-system route must not be represented as WPI Class 1.",
+        "note": "Arkansas licenses distribution operators as Grade I through Grade IV, with a Very Small Water System tier below Grade I that uses a separate shorter exam this course does not cover. ADH reports that it uses ABC validated national standardized exams delivered by PSI. Grade I is the verified shared level. Approved training (40 contact hours at Grade I) is required before testing. The state report cites the 2017 criteria version, so the edition in current use should be confirmed with ADH.",
         "sources": [
           {
-            "evidence": "Section V.E lists Very Small Water System and Grades I–IV distribution facilities; Section X lists Small System Distribution License and Grade I–IV Distribution Licenses. Section IX requires distinct distribution examinations and a separate very-small-system examination.",
-            "title": "Rules Pertaining to Water Operator Licensing, effective March 25, 2024",
-            "url": "https://healthy.arkansas.gov/wp-content/uploads/WATER_OPERATOR_LICENSING.pdf"
+            "title": "Arkansas Department of Health - Operator Certification Annual Report to EPA",
+            "url": "https://healthy.arkansas.gov/wp-content/uploads/drinking-water-OperCertificationAnnualReport.pdf",
+            "evidence": "ADH states the program changes implemented July 1, 2014 included 'utilizing the Association of Boards of Certification (2017 Version presently utilized) validated national standardized exams, previous exams were customized exams utilizing ABC valid exam items', and that ABC's standardized exams allow computer-based testing through PSI."
           },
           {
-            "evidence": "Lists Treatment, Distribution, Very Small System  -  Need To Know and Math Formula Sheets through WPI, alongside Arkansas Public Water System rules and compliance materials. These are preparation links, not an explicit standardized-exam designation.",
-            "title": "ADH Operator Certification, Forms, and Training Documents",
-            "url": "https://healthy.arkansas.gov/programs-services/licensing-military-member-licensure-permits-plan-reviews/drinking-water-operator-certification/operator-exam-preparation/"
+            "title": "Arkansas Department of Health - Operator Exam Preparation Materials",
+            "url": "https://healthy.arkansas.gov/programs-services/licensing-military-member-licensure-permits-plan-reviews/drinking-water-operator-certification/operator-exam-preparation/",
+            "evidence": "ADH links 'Treatment, Distribution, Very Small System - Need To Know (NTK) and Math Formula Sheets' to WPI, alongside the Arkansas Rules Pertaining to Public Water Systems and the Public Water System Compliance Summary."
+          },
+          {
+            "title": "Arkansas Rules - Water Operator Licensing",
+            "url": "https://healthy.arkansas.gov/wp-content/uploads/WATER_OPERATOR_LICENSING.pdf",
+            "evidence": "Water Distribution Facilities are classified as Very Small Water System, Grade I, Grade II, Grade III and Grade IV."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Arkansas Department of Energy and Environment, Division of Environmental Quality (DEQ), Enforcement Branch; Wastewater Licensing Committee",
@@ -5645,51 +5655,56 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Exploration stopped at eight source opens, including one redirect-only water-treatment attempt. The HTTP retry exposed water-treatment details; distribution and wastewater-treatment extraction exposed headings but not accordion bodies.",
       "All four streams are offered under the DEQ program. Mandatory-versus-voluntary distinctions by facility or stream were not resolved from the acquired sources.",
       "DEQ identifies Water Quality Rules and Regulations Chapter 5 as governing operator certification: https://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/ . The rule text and exam-specific regulatory content were not opened or verified.",
-      "Unverified means ambiguous or incompletely accessible, not unsupported or state-specific. WPI/ABC provision, ABC preparation materials and PSI delivery were not treated as proof of standardized exam use; therefore every verifiedSharedLevels array is empty."
+      "Unverified means ambiguous or incompletely accessible, not unsupported or state-specific. WPI/ABC provision, ABC preparation materials and PSI delivery were not treated as proof of standardized exam use; therefore every verifiedSharedLevels array is empty.",
+      "October 11, 2026 update: Wyoming water treatment and water distribution Level 1 activated for shared WPI Class I prep after direct review of the DEQ candidate handbook and the DEQ treatment and distribution exam pages. Levels 2 and above, wastewater, collection, lagoon and well system remain unverified."
     ],
     "name": "Wyoming",
     "streams": [
       {
         "authorityName": "Wyoming Department of Environmental Quality, Water Quality Division, Operator Certification Program",
         "authorityUrl": "https://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Level 1 Water Treatment; Level 2 Water Treatment; Level 3 Water Treatment; Level 4 Water Treatment. Separate Well System exam category also exists.",
-        "note": "WPI/ABC exam provision is confirmed, but standardized versus customized status is not. DEQ links ABC Need to Know Criteria for each local level; neither those links nor its generic standardized sample-question disclaimer establishes Wyoming's standardized exam use or a local-level-to-WPI-class crosswalk.",
+        "note": "Wyoming DEQ states that its operator certification exams are provided by WPI and ABC Testing and delivered by PSI. Its water treatment exam page links the ABC Need to Know Criteria for each local level, starting with Level 1, and describes ABC sample questions as the style used on ABC's Standardized Exams. Level 1 is the verified shared level. Experience, training and high school equivalency are checked after the exam, and retakes require a 30 day wait. The DEQ pages do not name the criteria edition in use.",
         "sources": [
           {
-            "evidence": "'Water treatment facilities come in Levels 1 through 4.' Separate sections name Level 1–4 Water Treatment and link ABC Need to Know Criteria. The sample-question disclaimer says samples are 'not necessarily representative of current exam content.'",
-            "title": "Wyoming DEQ  -  Water Treatment Exams",
-            "url": "http://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/exams/study-materials/water-treatment-exams/"
+            "title": "Wyoming DEQ - Water and Wastewater Operator Certification Exam Candidate Handbook (updated March 2024)",
+            "url": "https://drive.google.com/file/d/1jD8q6tkUa3JVWvyY-aOW6PtyxEVlohmw/view",
+            "evidence": "The handbook states: 'The Wyoming Department of Environmental Quality (WY DEQ) water and wastewater operator certification exams are provided by Water Professionals International (WPI) and ABC Testing and proctored by PSI Services, Inc. (PSI).'"
           },
           {
-            "evidence": "Page 1: Wyoming water and wastewater operator certification exams 'are provided by Water Professionals International (WPI) and ABC Testing and proctored by PSI Services, Inc.' It does not identify standardized versus customized exams.",
-            "title": "Wyoming DEQ  -  Water and Wastewater Operator Certification Exam Candidate Handbook, updated March 2024",
-            "url": "https://drive.google.com/file/d/1jD8q6tkUa3JVWvyY-aOW6PtyxEVlohmw/view"
+            "title": "Wyoming DEQ - Water Treatment Exams",
+            "url": "http://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/exams/study-materials/water-treatment-exams/",
+            "evidence": "'Water treatment facilities come in Levels 1 through 4. Begin with the Level 1 Water Treatment Plant exam.' The Level 1 section links 'ABC Need to Know Criteria: Level 1 Water Treatment' and ABC sample questions in 'the style of questions covered on ABC's Standardized Exams'."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Wyoming Department of Environmental Quality, Water Quality Division, Operator Certification Program",
         "authorityUrl": "https://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/",
-        "examSystem": "unverified",
+        "examSystem": "wpi-standardized",
         "localLevels": "Level 1 Distribution Systems; Level 2 Distribution Systems. Well System is a separate exam route for well-plus-distribution facilities.",
-        "note": "The local ladder has two levels, not four. WPI/ABC provision is confirmed by the state handbook, but the opened distribution page did not expose its accordion details. No explicit standardized-use declaration or local-level-to-WPI-class correspondence was verified; matching level numbers are insufficient.",
+        "note": "Wyoming has two distribution levels. DEQ states that its exams are provided by WPI and ABC Testing and delivered by PSI, and its distribution page links the ABC Need to Know Criteria for Level 1 Distribution Systems. Level 1 is the verified shared level. Operators at well-plus-distribution facilities take a separate Well System exam that this course does not cover.",
         "sources": [
           {
-            "evidence": "'Distribution Systems come in Levels 1 and 2. Begin with the Level 1 Distribution System exam.' Section headings are 'Level 1 Distribution Systems' and 'Level 2 Distribution Systems.'",
-            "title": "Wyoming DEQ  -  Distribution System Exams",
-            "url": "https://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/exams/study-materials/distribution-system-exams/"
+            "title": "Wyoming DEQ - Water and Wastewater Operator Certification Exam Candidate Handbook (updated March 2024)",
+            "url": "https://drive.google.com/file/d/1jD8q6tkUa3JVWvyY-aOW6PtyxEVlohmw/view",
+            "evidence": "The handbook states: 'The Wyoming Department of Environmental Quality (WY DEQ) water and wastewater operator certification exams are provided by Water Professionals International (WPI) and ABC Testing and proctored by PSI Services, Inc. (PSI).'"
           },
           {
-            "evidence": "Page 1 identifies WPI and ABC Testing as providers of Wyoming water and wastewater certification exams, with PSI as proctor; it does not specify standardized or customized scope.",
-            "title": "Wyoming DEQ  -  Water and Wastewater Operator Certification Exam Candidate Handbook, updated March 2024",
-            "url": "https://drive.google.com/file/d/1jD8q6tkUa3JVWvyY-aOW6PtyxEVlohmw/view"
+            "title": "Wyoming DEQ - Distribution System Exams",
+            "url": "http://deq.wyoming.gov/water-quality/water-wastewater/operator-certification/exams/study-materials/distribution-system-exams/",
+            "evidence": "'Distribution Systems come in Levels 1 and 2. Begin with the Level 1 Distribution System exam.' The Level 1 section links 'ABC Need to Know Criteria: Level 1 Distribution Systems'."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Wyoming Department of Environmental Quality, Water Quality Division, Operator Certification Program",
