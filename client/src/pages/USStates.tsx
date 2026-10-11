@@ -17,8 +17,8 @@ export default function USStates() {
   });
   return <USPageLayout>
     <USHero title="Find your state">
-      <span className="us-badge">50 state pages, not 50-state course coverage</span>
-      <p>Exam systems can differ between water treatment, distribution, wastewater treatment and collection within the same state. Select a state to see each program's sources and course match.</p>
+      <span className="us-badge">All 50 state exam routes mapped</span>
+      <p>Exam systems can differ between water treatment, distribution, wastewater treatment and collection within the same state. Select a state to see source-backed program details and the Echelon preparation that matches your route.</p>
       <div className="us-filters">
         <label>Search states or authorities<input type="search" placeholder="State name, abbreviation or authority" value={search} onChange={event => setSearch(event.target.value)} /></label>
         <label>Show states<select value={filter} onChange={event => setFilter(event.target.value)}>
@@ -27,7 +27,7 @@ export default function USStates() {
       </div>
     </USHero>
     <main className="us-main">
-      <p role="status">{states.length} states shown. Open a state to check the exact stream and class.</p>
+      <p role="status">{states.length} state routes shown. Open a state to check the exact stream, class and available preparation.</p>
       <div className="us-card-grid">{states.map(state => <Link key={state.code} href={`/us/states/${state.slug}`} className="us-card us-state-card">
         <span className="us-code">{state.code}</span><strong>{state.name}</strong>
         <small>{state.programs.some(isSharedProgram) ? "Confirmed shared WPI route for selected programs" : "Check local exam requirements"}</small>

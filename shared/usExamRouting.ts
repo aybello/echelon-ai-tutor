@@ -35,7 +35,7 @@ export interface USStateConfig {
   dedicatedCourseNeeds: string[];
   limits: string[];
 }
-export const US_RESEARCH_CHECKED_DATE = "2026-10-04";
+export const US_RESEARCH_CHECKED_DATE = "2026-10-11";
 export const US_STATE_CONFIGS = Object.fromEntries(US_STATE_NAMES.map(identity => {
   const research = US_EXAM_RESEARCH.find(item => item.code === identity.code);
   const programs = US_STREAMS.map(({ key }): USProgramEvidence => research?.streams.find(program => program.stream === key) ?? {

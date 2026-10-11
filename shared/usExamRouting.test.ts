@@ -65,6 +65,25 @@ describe("source-backed US exam routing", () => {
     expect(matchedUSCourses(getStateBySlug("california")!)).toEqual([]);
     expect(matchedUSCourses(getStateBySlug("alaska")!)).toHaveLength(16);
   });
+  it("routes the October 2026 state-authority verified Class I markets", () => {
+    const twoStreamStates = ["hawaii", "idaho", "maine", "massachusetts", "nevada", "oregon", "rhode-island", "south-dakota", "tennessee"];
+    for (const slug of twoStreamStates) {
+      const current = getStateBySlug(slug)!;
+      expect(matchedUSCourses(current, "water-treatment").map(item => item.courseKey)).toContain("us-class1-water");
+      expect(matchedUSCourses(current, "water-distribution").map(item => item.courseKey)).toContain("us-class1-water-dist");
+    }
+    const maryland = getStateBySlug("maryland")!;
+    expect(matchedUSCourses(maryland, "water-treatment")).toEqual([]);
+    expect(matchedUSCourses(maryland, "water-distribution").map(item => item.courseKey)).toEqual(["us-class1-water-dist"]);
+  });
+  it("keeps dedicated, customized and incomplete state routes out of shared WPI claims", () => {
+    for (const slug of ["california", "florida", "texas", "utah", "iowa", "new-hampshire", "new-york", "west-virginia"]) {
+      expect(matchedUSCourses(getStateBySlug(slug)!)).toEqual([]);
+    }
+    const vermont = getStateBySlug("vermont")!;
+    expect(matchedUSCourses(vermont, "water-treatment")).toEqual([]);
+    expect(matchedUSCourses(vermont, "water-distribution")).toEqual([]);
+  });
   it("requires official evidence and a confirmed valid level", () => {
     expect(isSharedProgram(program({sources:[]}))).toBe(false);
     expect(isSharedProgram(program({verifiedSharedLevels:[]}))).toBe(false);

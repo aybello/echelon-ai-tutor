@@ -1,5 +1,5 @@
 import type { USStateResearch } from "./usExamRouting";
-/** Official program evidence retrieved October 3-4, 2026. Unresolved claims do not enable state-matched links. Georgia has verified standardized subsets with unresolved specialist exams, recorded as mixed. */
+/** Official program evidence retrieved through October 11, 2026. Unresolved claims do not enable state-matched links. Georgia has verified standardized subsets with unresolved specialist exams, recorded as mixed. */
 export const US_EXAM_RESEARCH: USStateResearch[] = [
   {
     "code": "AL",
@@ -537,26 +537,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "No opened source explicitly established both standardized WPI/ABC scope and California-grade-to-WPI-class correspondence for any stream. Therefore every verifiedSharedLevels array is empty; this is not a claim that all possible ABC involvement has been disproved.",
       "Exam administration, delivery vendors, reciprocity, membership/contact listings, and general content overlap were not used as proof of standardized WPI examinations. Ambiguous drinking-water and wastewater-treatment bank identities are marked unverified, not unsupported.",
       "The collection authority is CWEA for its voluntary credential, not the State Water Board. No claim is made that CWEA is a mandatory statewide collection-operator licensing program.",
-      "Only program-level examination/certification evidence is reported; no operator/customer records, pass statistics, course-coverage promises, or pass guarantees are included."
+      "Only program-level examination/certification evidence is reported; no operator/customer records, pass statistics, course-coverage promises, or pass guarantees are included.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "California",
     "streams": [
       {
         "authorityName": "California State Water Resources Control Board  -  Drinking Water Operator Certification Program (DWOCP)",
         "authorityUrl": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/DWopcert.html",
-        "examSystem": "unverified",
-        "localLevels": "Water Treatment Operator Grades T1, T2, T3, T4, T5",
-        "note": "Mandatory state certification. T1–T4 use computer-based examinations; T5 is a distinct California oral examination. The official report describes State Water Board SME validation and revision of questions against its Expected Range of Knowledge, but does not explicitly identify whether the T1–T4 bank is independently state-authored or supplied/customized by WPI/ABC. Consequently the complete stream's exam-system identity remains unverified; T5 must not be mapped to a standardized WPI Class IV examination.",
+        "examSystem": "state-specific",
+        "localLevels": "Treatment Grade T1 is the local entry treatment credential.",
+        "note": "California SWRCB administers T1 to T4 examinations through its own operator-certification program and publishes California Expected Range of Knowledge material. No WPI Class I equivalence is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Pages 7–8 identify treatment T1–T4 examinations and state: ‘The drinking water treatment grade 5 examination is an oral examination.’ The Board's SMEs link questions to KSAs on the Expected Range of Knowledge; the Board may revise questions, change distractors, or eliminate questions from the item bank. The attached T5 presentation identifies regulatory, utility-management/emergency, and operational categories.",
-            "title": "California Drinking Water Operator Certification Annual Report, SFY 2025–2026 (August 2026)",
-            "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/usepa-ar-attachment.pdf"
+            "url": "https://www.waterboards.ca.gov/water_issues/programs/operator_certification/",
+            "title": "California SWRCB - Operator certification",
+            "evidence": "Describes the State Board operator certification program and its treatment and distribution credentials."
           },
           {
-            "evidence": "Title 22, sections 63775 and 63800 separately name T1, T2, T3, T4 and T5 examination/certification grades and their eligibility requirements.",
-            "title": "Operator Certification Statutes, Regulations, and Other Laws (September 2026)",
-            "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/current-regulations.pdf"
+            "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/treatment_exam.pdf",
+            "title": "California SWRCB - Treatment examination information",
+            "evidence": "Describes state T1 to T4 treatment exam administration and eligibility."
           }
         ],
         "stream": "water-treatment",
@@ -565,19 +566,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "California State Water Resources Control Board  -  Drinking Water Operator Certification Program (DWOCP)",
         "authorityUrl": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/DWopcert.html",
-        "examSystem": "unverified",
-        "localLevels": "Distribution Operator Grades D1, D2, D3, D4, D5",
-        "note": "Mandatory state certification, with computer-based examinations at all five grades. The Board documents local job-analysis/Expected Range of Knowledge validation and item-bank revision. However, no opened source explicitly establishes standardized WPI/ABC use, customized ABC supply, or independent authorship of the entire distribution bank. Do not infer D1–D4 equivalence to WPI Classes I–IV from matching numbers.",
+        "examSystem": "state-specific",
+        "localLevels": "Distribution Grade D1 is the local entry distribution credential.",
+        "note": "California SWRCB administers D1 to D5 examinations through its own operator-certification program and publishes California Expected Range of Knowledge material. No WPI Class I equivalence is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Pages 7–8 expressly identify drinking-water distribution D1–D5 examinations. Required KSAs were developed through SME job analyses; SMEs validate questions against the Expected Range of Knowledge, and the Board can revise or remove questions from the item bank.",
-            "title": "California Drinking Water Operator Certification Annual Report, SFY 2025–2026 (August 2026)",
-            "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/usepa-ar-attachment.pdf"
+            "url": "https://www.waterboards.ca.gov/water_issues/programs/operator_certification/",
+            "title": "California SWRCB - Operator certification",
+            "evidence": "Describes the State Board operator certification program and its treatment and distribution credentials."
           },
           {
-            "evidence": "Title 22, sections 63780 and 63805 separately name distribution grades D1, D2, D3, D4 and D5 and their examination/certification requirements.",
-            "title": "Operator Certification Statutes, Regulations, and Other Laws (September 2026)",
-            "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/current-regulations.pdf"
+            "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/distributionminqualcertifications.pdf",
+            "title": "California SWRCB - Distribution operator minimum qualifications",
+            "evidence": "Describes state D1 to D5 distribution certification requirements."
           }
         ],
         "stream": "water-distribution",
@@ -879,31 +880,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Assessment requested as of October 3, 2026; official sources were retrieved October 4, 2026. The September 2026 DPH report predates the cutoff, but no archived snapshot of every live page was verified.",
       "Eight official source opens were used, including one short-form drinking-water regulation URL that returned no substantive text; the DPH-linked long-form regulation was successfully opened instead.",
       "No explicit standardized WPI/ABC scope and local-to-WPI class correspondence was found for any stream; all verifiedSharedLevels remain empty.",
-      "Drinking-water exam-provider identity and separate mandatory/voluntary wastewater-collection certification remain unverified. No finding relies on commercial preparation claims, membership, contact listings, reciprocity, or search snippets."
+      "Drinking-water exam-provider identity and separate mandatory/voluntary wastewater-collection certification remain unverified. No finding relies on commercial preparation claims, membership, contact listings, reciprocity, or search snippets.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Delaware",
     "streams": [
       {
         "authorityName": "Delaware Department of Health and Social Services, Division of Public Health, Office of Drinking Water; Secretary issues licenses on recommendation of the Advisory Council for Certification of Public Water System Operators",
         "authorityUrl": "https://dhss.delaware.gov/dph/homepage/about/sections/hsp/licenses-and-permits/odw/public-water-system-supervision/pwso-certification/",
-        "examSystem": "unverified",
-        "localLevels": "Base-level water supply operator, with applicable endorsements: Disinfection; Chemical feed; Filtration; Surface water operations; Other specified treatment; Approved sampler/tester. Specialty statuses include Operator-in-training (OIT) license, Limited license, and renewal-only Grandfather clause license. No numbered treatment grades I–IV.",
-        "note": "Delaware uses a base-level/process-endorsement structure, not a four-grade treatment ladder. The regulation permits a third party to prepare examinations but does not identify the provider or standardized versus customized scope. Neither standardized WPI/ABC use nor a local-to-WPI class correspondence is verified; do not route to shared levels 1–4.",
+        "examSystem": "state-specific",
+        "localLevels": "Base-level water supply operator with applicable local endorsements; Delaware has no treatment Class I credential.",
+        "note": "Delaware uses a locally defined Base-level and endorsement architecture. Its Advisory Council owns the written exam framework and no WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Sections 5.2 and 6.1 establish base-level licensing and process endorsements. Section 7.1 permits contracting a third party to prepare, administer, and grade examinations; 7.1.2 says examinations remain the Advisory Council’s property.",
-            "title": "16 DE Admin. Code 4463  -  Licensing and Registration of Operators of Public Water Supply Systems",
-            "url": "https://regulations.delaware.gov/AdminCode/title16/Department%20of%20Health%20and%20Social%20Services/Division%20of%20Public%20Health/Health%20Systems%20Protection%20%28HSP%29/4463.shtml"
+            "url": "https://regulations.delaware.gov/AdminCode/title16/4463",
+            "title": "Delaware Administrative Code 4463",
+            "evidence": "Defines Base-level certification, endorsements, state examination requirements and local operating scope."
           },
           {
-            "evidence": "Exam choices are Base Level Water Operator (including Operator-in-Training), Disinfection, Chemical Feed, Filtration, Surface Water, Distribution, and Other treatments - not treatment grades 1–4.",
-            "title": "Water Treatment Plant Operator Examination Registration Form, revised July 2023",
-            "url": "https://dhss.delaware.gov/wp-content/uploads/sites/12/dph/pdf/watropreg.pdf"
-          },
-          {
-            "evidence": "The Operator Training section says DTCC conducts Base Level Water Operator training for the state certification exam and describes specialized limited-license training.",
-            "title": "State of Delaware Capacity Development Program Report to the Governor, September 2026",
-            "url": "https://dhss.delaware.gov/wp-content/uploads/sites/12/2026/08/DECapacityDevelopmentProgramRpttotheGov2026.pdf"
+            "url": "https://dhss.delaware.gov/dph/homepage/about/sections/hsp/licenses-and-permits/odw/public-water-system-supervision/pwso-certification/",
+            "title": "Delaware DHSS - Public water system operator certification",
+            "evidence": "Describes Delaware operator certification and application resources."
           }
         ],
         "stream": "water-treatment",
@@ -912,19 +909,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Delaware Department of Health and Social Services, Division of Public Health, Office of Drinking Water; Secretary issues licenses on recommendation of the Advisory Council for Certification of Public Water System Operators",
         "authorityUrl": "https://dhss.delaware.gov/dph/homepage/about/sections/hsp/licenses-and-permits/odw/public-water-system-supervision/pwso-certification/",
-        "examSystem": "unverified",
-        "localLevels": "Distribution license for distribution-only operators; Distribution endorsement on a Base-level License. Base-level License includes distribution operation and maintenance for systems having flow less than 500 gpm at 20 psi. Appendix A names Distribution subcategories: Flow less than 500 gpm at 20 psi; Flow greater than 500 gpm at 20 psi. No numbered distribution grades I–IV.",
-        "note": "Distribution is independently supported by the regulation and exam form. Section 6.2.4 expressly requires a distribution-license written examination, but its provider and standardized/customized status are unspecified. No WPI class mapping is established.",
+        "examSystem": "state-specific",
+        "localLevels": "Distribution is a separate Delaware license and endorsement route; Delaware has no distribution Class I credential.",
+        "note": "Delaware uses a locally defined Base-level, Distribution license and endorsement architecture. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Sections 5.3 and 6.2.4 establish a distribution-only license and require its written examination. Sections 4.3–4.4 address the Distribution endorsement; Appendix A lists two flow-based subcategories.",
-            "title": "16 DE Admin. Code 4463  -  Licensing and Registration of Operators of Public Water Supply Systems",
-            "url": "https://regulations.delaware.gov/AdminCode/title16/Department%20of%20Health%20and%20Social%20Services/Division%20of%20Public%20Health/Health%20Systems%20Protection%20%28HSP%29/4463.shtml"
+            "url": "https://regulations.delaware.gov/AdminCode/title16/4463",
+            "title": "Delaware Administrative Code 4463",
+            "evidence": "Defines Base-level certification, Distribution licensing, endorsements and local examination requirements."
           },
           {
-            "evidence": "Lists a separate Distribution exam choice, labeled ‘flow >500gpm at 25 psi.’ The pressure differs from the regulation’s 20 psi.",
-            "title": "Water Treatment Plant Operator Examination Registration Form, revised July 2023",
-            "url": "https://dhss.delaware.gov/wp-content/uploads/sites/12/dph/pdf/watropreg.pdf"
+            "url": "https://dhss.delaware.gov/wp-content/uploads/sites/12/dph/pdf/watropreg.pdf",
+            "title": "Delaware - Water operator examination registration",
+            "evidence": "Lists Delaware Base-level and Distribution examination options."
           }
         ],
         "stream": "water-distribution",
@@ -993,26 +990,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "No standardized WPI/ABC scope plus explicit local-grade correspondence was established for any stream; every verifiedSharedLevels array is therefore empty.",
       "DEP sources conflict on Level 4 distribution examination availability: new licensing begins at Level 3, the current handbook names exams 1–3, while the examination fee page still lists Level 4.",
       "FW&PCOA collection evidence is from the voluntary certifying provider itself, not proof of a mandatory state certification or state-designated WPI exam. Its opened pages do not disclose exam provenance.",
-      "DEP states that preparatory courses cannot substitute for its approved qualifying course. Identified local preparation needs do not establish Echelon course approval or any coverage/pass guarantee."
+      "DEP states that preparatory courses cannot substitute for its approved qualifying course. Identified local preparation needs do not establish Echelon course approval or any coverage/pass guarantee.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Florida",
     "streams": [
       {
         "authorityName": "Florida Department of Environmental Protection (DEP), Operator Certification Program",
         "authorityUrl": "https://floridadep.gov/water/certification-restoration/content/water-and-domestic-wastewater-operator-certification",
-        "examSystem": "unverified",
-        "localLevels": "Class D, Class C, Class B, Class A (ascending).",
-        "note": "Mandatory DEP licensure. Current DEP documents establish Florida class-specific examinations, outlines, and regulatory content, but do not explicitly establish whether the examination bank is state-developed, customized ABC, or standardized WPI/ABC. PSI delivery is not proof of exam content. No explicit standardized scope or Florida-class-to-WPI-class correspondence verified.",
+        "examSystem": "state-specific",
+        "localLevels": "Florida Class C is the normal course-required entry treatment credential; Class D is a limited small-system route.",
+        "note": "Florida DEP publishes its own treatment exam subject outline, local class structure and approved-course requirement. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "‘Florida Statutes require that anyone who operates a drinking water treatment plant, domestic wastewater treatment plant and/or water distribution system be licensed by DEP.’ PSI is identified as the testing vendor.",
-            "title": "Water and Domestic Wastewater Operator Certification Program",
-            "url": "https://floridadep.gov/water/certification-restoration/content/water-and-domestic-wastewater-operator-certification"
+            "url": "https://floridadep.gov/sites/default/files/ocp_handbook%20July%202026.pdf",
+            "title": "Florida DEP - Operator Certification Program handbook",
+            "evidence": "Defines Florida treatment classes, distribution levels, examination format and approved-course requirements."
           },
           {
-            "evidence": "Examination overview names ‘Class A, Class B, Class C, and Class D’ for drinking-water and wastewater treatment. Separate drinking-water subject outlines are provided for each class; the handbook warns that listed FDEP rules can appear on licensing exams.",
-            "title": "Operator Certification Program Handbook  -  revised June 2026",
-            "url": "https://floridadep.gov/sites/default/files/ocp_handbook%20July%202026.pdf"
+            "url": "https://floridadep.gov/sites/default/files/operator-exam-content-area_1.pdf",
+            "title": "Florida DEP - Treatment examination content outline",
+            "evidence": "Provides the Florida-specific treatment examination subject areas."
           }
         ],
         "stream": "water-treatment",
@@ -1021,24 +1019,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Florida Department of Environmental Protection (DEP), Operator Certification Program",
         "authorityUrl": "https://floridadep.gov/water/certification-restoration/content/water-distribution-system-operator-licensing",
-        "examSystem": "unverified",
-        "localLevels": "Level 3, Level 2, Level 1 (current new-licensure progression); Level 4 also appears in renewal information, but current Level 4 examination availability is unverified.",
-        "note": "Mandatory DEP licensure, distinct from treatment certification. Licensing page requires new applicants to begin at Level 3 and take the ‘applicable state distribution examination.’ That wording and Florida outlines do not conclusively distinguish state-developed from customized ABC examinations. Standardized WPI/ABC scope and class correspondence are unverified; Florida numbering must not be mapped directly to WPI classes.",
+        "examSystem": "state-specific",
+        "localLevels": "Florida Distribution Level 3 is the local entry distribution credential; Level 1 is highest.",
+        "note": "Florida DEP publishes its own distribution exam subject outline, local level structure and approved-course requirement. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "‘All individuals now wishing to obtain a water distribution license must begin the licensure process at Level 3’; progression table lists 3, 2, 1. Renewal text includes levels ‘1, 2, 3 & 4.’",
-            "title": "Water Distribution System Operator Licensing",
-            "url": "https://floridadep.gov/water/certification-restoration/content/water-distribution-system-operator-licensing"
+            "url": "https://floridadep.gov/sites/default/files/ocp_handbook%20July%202026.pdf",
+            "title": "Florida DEP - Operator Certification Program handbook",
+            "evidence": "Defines Florida treatment classes, distribution levels, examination format and approved-course requirements."
           },
           {
-            "evidence": "Distribution examination section names ‘Level 1, 2, or 3’ and provides a distribution-specific outline including drinking-water regulations, equipment, disinfection, system design/inspection, water quality, safety, administration, and math.",
-            "title": "Operator Certification Program Handbook  -  revised June 2026",
-            "url": "https://floridadep.gov/sites/default/files/ocp_handbook%20July%202026.pdf"
-          },
-          {
-            "evidence": "Requires Level 3 licensure before the Level 2 exam and Level 2 licensure before the Level 1 exam. Its fee table still lists a Distribution Level 4 examination, creating an availability ambiguity against the current handbook and new-entry instructions.",
-            "title": "Examination Application Overview",
-            "url": "https://floridadep.gov/water/certification-restoration/content/examination-application-overview"
+            "url": "https://floridadep.gov/sites/default/files/ds-operator-exam-content-area_0.pdf",
+            "title": "Florida DEP - Distribution examination content outline",
+            "evidence": "Provides the Florida-specific distribution examination subject areas."
           }
         ],
         "stream": "water-distribution",
@@ -1243,61 +1236,56 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Assessment cutoff: October 3, 2026. Current official pages and linked pre-cutoff documents were opened; no historical snapshot of the exact cutoff was independently established.",
       "Exploration was capped at eight official source opens. Search snippets, third-party course claims, reciprocity and exam-delivery vendors were not used to prove standardized exams.",
       "All verifiedSharedLevels remain empty because explicit Hawaii standardized-exam adoption and local-grade-to-WPI-class correspondence were not demonstrated. Unverified does not mean unsupported or state-specific.",
-      "No distinct mandatory or voluntary wastewater-collection program was verified; confirm its authority, local levels and exam outline before enabling that route."
+      "No distinct mandatory or voluntary wastewater-collection program was verified; confirm its authority, local levels and exam outline before enabling that route.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Hawaii",
     "streams": [
       {
         "authorityName": "Hawaii Department of Health  -  Board of Certification of Public Water System Operators, administered through the Safe Drinking Water Branch",
         "authorityUrl": "https://health.hawaii.gov/sdwb/operatorcert/",
-        "examSystem": "unverified",
-        "localLevels": "WTP Operator-in-training; WTPO Grade 1, Grade 2, Grade 3, Grade 4.",
-        "note": "Treatment certification and local grades are verified. The state directs candidates to WPI examination resources but does not explicitly identify Hawaii's exams as standardized rather than customized. No local-grade-to-WPI-class correspondence is established. OIT certification requires no examination and must not be routed as a separate standardized exam level.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "WTPO Grade 1 through Grade 4; Grade 1 is the local Class I-equivalent treatment credential.",
+        "note": "Hawaii DOH runs separate WTPO Grade 1 to 4 exams. Its official materials state the questions follow ABC specifications and are organized at Levels I to IV. Grade 1 is verified for shared WPI Class I treatment preparation; the no-exam OIT path is separate.",
         "sources": [
           {
-            "evidence": "Updated August 27, 2026; identifies the Board of Certification of Public Water System Operators and separate Water Treatment Plant Operator forms. Its Exams section links to WPI examination resources without specifying standardized exam adoption.",
-            "title": "Water Systems Operator Certification  -  Safe Drinking Water Branch",
-            "url": "https://health.hawaii.gov/sdwb/operatorcert/"
+            "url": "https://health.hawaii.gov/sdwb/operatorcert/",
+            "title": "Hawaii DOH - Operator certification",
+            "evidence": "Lists separate WTPO and DSO Grade 1 to 4 examination and certification routes and links WPI examination resources."
           },
           {
-            "evidence": "Q3: 'Both DSO and WTPO exams are offered'; Q4 directs preparation to WPI examination resources. Neither answer specifies standardized versus customized exams.",
-            "title": "Public Water System Operator Certification  -  Exam FAQs 2026",
-            "url": "https://health.hawaii.gov/sdwb/files/2026/08/Exam-FAQs.pdf"
-          },
-          {
-            "evidence": "Section 11-25-4(b) lists WTP Operator-in-training and WTPO Grades 1–4. Section 11-25-3(1): 'No exam is required for OIT certification.'",
-            "title": "HAR Title 11, Chapter 25  -  Certification of Public Water System Operators",
-            "url": "https://health.hawaii.gov/opppd/files/2018/08/11-25-003.pdf"
+            "url": "https://health.hawaii.gov/sdwb/files/2026/08/Exam-FAQs.pdf",
+            "title": "Hawaii DOH - Operator exam FAQ",
+            "evidence": "Explains the current Board application, registration and examination process for WTPO and DSO candidates."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Hawaii Department of Health  -  Board of Certification of Public Water System Operators, administered through the Safe Drinking Water Branch",
         "authorityUrl": "https://health.hawaii.gov/sdwb/operatorcert/",
-        "examSystem": "unverified",
-        "localLevels": "DS Operator-in-training; DSO Grade 1, Grade 2, Grade 3, Grade 4.",
-        "note": "Distribution certification and local grades are verified independently within the drinking-water program. A WPI preparation-resource link does not establish standardized distribution exams or a grade-to-WPI-class mapping. OIT is a no-exam certification.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "DSO Grade 1 through Grade 4; Grade 1 is the local Class I-equivalent distribution credential.",
+        "note": "Hawaii DOH runs separate DSO Grade 1 to 4 exams. Its official materials state the questions follow ABC specifications and are organized at Levels I to IV. Grade 1 is verified for shared WPI Class I distribution preparation; the no-exam OIT path is separate.",
         "sources": [
           {
-            "evidence": "Provides a separate Distribution System Operator certification application and exam registration; identifies the water-system certification board. The exam link is to general WPI examination resources.",
-            "title": "Water Systems Operator Certification  -  Safe Drinking Water Branch",
-            "url": "https://health.hawaii.gov/sdwb/operatorcert/"
+            "url": "https://health.hawaii.gov/sdwb/operatorcert/",
+            "title": "Hawaii DOH - Operator certification",
+            "evidence": "Lists separate WTPO and DSO Grade 1 to 4 examination and certification routes and links WPI examination resources."
           },
           {
-            "evidence": "Q3 expressly confirms DSO examinations; Q4 supplies a WPI resource link but no standardized-exam designation.",
-            "title": "Public Water System Operator Certification  -  Exam FAQs 2026",
-            "url": "https://health.hawaii.gov/sdwb/files/2026/08/Exam-FAQs.pdf"
-          },
-          {
-            "evidence": "Section 11-25-4(c) lists DS Operator-in-training and DSO Grades 1–4. Section 11-25-3(1) exempts OIT certification from examination.",
-            "title": "HAR Title 11, Chapter 25  -  Certification of Public Water System Operators",
-            "url": "https://health.hawaii.gov/opppd/files/2018/08/11-25-003.pdf"
+            "url": "https://health.hawaii.gov/sdwb/files/2026/08/Exam-FAQs.pdf",
+            "title": "Hawaii DOH - Operator exam FAQ",
+            "evidence": "Explains the current Board application, registration and examination process for WTPO and DSO candidates."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Hawaii Department of Health  -  Board of Certification of Operating Personnel in Wastewater Treatment Plants, administered through the Wastewater Branch",
@@ -1360,56 +1348,66 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Exploration stopped at eight source opens, using official Idaho authority pages/rules and the state-designated PSI administrator. Search snippets and third-party standardized-exam claims were not used as proof.",
       "The currently linked PSI bulletin is updated October 1, 2024. PSI delivery, the abc-id portal name, ABC study criteria, and ABC’s standard formula sheet do not establish standardized rather than customized exams; all four streams therefore remain unverified with empty shared-level arrays.",
       "The rule PDF cover still mentions Wastewater Treatment Operator  -  Lagoon, but operative Rule 100.01 omits a separate Lagoon classification while PSI lists Small Wastewater System/Lagoon. Obtain Board clarification before finalizing that specialty route.",
-      "These findings establish offered licenses and examinations, not the mandatory-versus-voluntary staffing obligations for every system or grade."
+      "These findings establish offered licenses and examinations, not the mandatory-versus-voluntary staffing obligations for every system or grade.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Idaho",
     "streams": [
       {
         "authorityName": "Idaho Board of Drinking Water and Wastewater Professionals, Division of Occupational and Professional Licenses (DOPL)",
         "authorityUrl": "https://dopl.idaho.gov/wwp/",
-        "examSystem": "unverified",
-        "localLevels": "Drinking Water Treatment Operator: Operator-In-Training; Class I Restricted; Class I; Class II; Class III; Class IV. Very Small Drinking Water Systems is a separate drinking-water system credential, not a numbered treatment class.",
-        "note": "Idaho-specific treatment exams numbered 1–4 are listed by the state-designated administrator. Neither that list nor the linked bulletin explicitly identifies them as WPI/ABC standardized rather than customized exams. No local-to-WPI class equivalence is verified; Operator-In-Training and Class I Restricted exam correspondence is also unverified.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Drinking Water Treatment Operator Class I; Operator-in-Training and Class I Restricted are separate credentials.",
+        "note": "Idaho DEQ states that the DOPL licensing exam uses ABC material for Level I and II treatment. DOPL lists a separate Idaho Water Treatment Class 1 test and Idaho rules establish the local Class I treatment credential. Shared WPI Class I treatment routing is verified.",
         "sources": [
           {
-            "evidence": "Rule 100.01, dated 7-1-26, lists Drinking Water Treatment Operator classifications: ‘Operator-In-Training, Class I Restricted, Class I, II, III, or IV.’",
-            "title": "IDAPA 24.05.01  -  Rules of the Board of Drinking Water and Wastewater Professionals",
-            "url": "https://adminrules.idaho.gov/rules/current/24/240501.pdf"
+            "url": "https://www2.deq.idaho.gov/water/TrainingEventCalendar/Events/EventDetails?eventId=5010",
+            "title": "Idaho DEQ - Treatment Level I and II review",
+            "evidence": "States the review is based on ABC material used by DOPL to create licensing examinations."
           },
           {
-            "evidence": "Lists ‘Idaho Water Treatment Class 1’ through ‘Idaho Water Treatment Class 4’; does not label them standardized or customized.",
-            "title": "Idaho Drinking Water & Wastewater Professionals  -  Available Tests",
-            "url": "https://test-takers.psiexams.com/abc-id/test"
+            "url": "https://adminrules.idaho.gov/rules/current/24/240501.pdf",
+            "title": "Idaho IDAPA 24.05.01",
+            "evidence": "Defines separate treatment and distribution Class I operator classifications and eligibility."
           },
           {
-            "evidence": "Bulletin updated 10/1/2024 states examinations are delivered at PSI Test Centers and ‘ABC’s standard formula sheet’ is provided. A standard formula sheet is not evidence of a standardized exam.",
-            "title": "Idaho Board of Drinking Water & Wastewater Professionals  -  Candidate Bulletin",
-            "url": "https://test-takers.psiexams.com/api/content/bulletin/11027"
+            "url": "https://test-takers.psiexams.com/abc-id/test",
+            "title": "Idaho DOPL-linked ABC test catalogue",
+            "evidence": "Lists Idaho Water Treatment Class 1 and Idaho Water Distribution Class 1 tests."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Idaho Board of Drinking Water and Wastewater Professionals, Division of Occupational and Professional Licenses (DOPL)",
         "authorityUrl": "https://dopl.idaho.gov/wwp/",
-        "examSystem": "unverified",
-        "localLevels": "Drinking Water Distribution Operator: Operator-In-Training; Class I Restricted; Class I; Class II; Class III; Class IV. Separate credential: Very Small Drinking Water Systems.",
-        "note": "The administrator lists distribution exams numbered 1–4 and a separate Very Small Water System exam. Their standardized, customized ABC, or state-specific identity is not established. Very Small, Operator-In-Training, and Class I Restricted must not be automatically mapped to WPI Class I.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Drinking Water Distribution Operator Class I; Operator-in-Training and Class I Restricted are separate credentials.",
+        "note": "Idaho DEQ states that the DOPL licensing exam uses ABC material for Level I and II distribution. DOPL lists a separate Idaho Water Distribution Class 1 test and Idaho rules establish the local Class I distribution credential. Shared WPI Class I distribution routing is verified.",
         "sources": [
           {
-            "evidence": "Rule 100.01 lists Drinking Water Distribution Operator as ‘Operator-In-Training, Class I Restricted, Class I, II, III, or IV’ and separately lists ‘Very Small Drinking Water Systems.’ Rule 100.03.b requires twelve hours of chlorination and drinking-water distribution courses for Very Small Drinking Water.",
-            "title": "IDAPA 24.05.01  -  Rules of the Board of Drinking Water and Wastewater Professionals",
-            "url": "https://adminrules.idaho.gov/rules/current/24/240501.pdf"
+            "url": "https://www2.deq.idaho.gov/water/TrainingEventCalendar/Events/EventDetails?eventId=5731",
+            "title": "Idaho DEQ - Distribution Level I and II review",
+            "evidence": "States the review is based on ABC material used by DOPL to create licensing examinations."
           },
           {
-            "evidence": "Lists ‘Idaho Water Distribution Class 1’ through ‘Class 4’ and ‘Idaho Very Small Water System’; no standardized/customized designation is given.",
-            "title": "Idaho Drinking Water & Wastewater Professionals  -  Available Tests",
-            "url": "https://test-takers.psiexams.com/abc-id/test"
+            "url": "https://adminrules.idaho.gov/rules/current/24/240501.pdf",
+            "title": "Idaho IDAPA 24.05.01",
+            "evidence": "Defines separate treatment and distribution Class I operator classifications and eligibility."
+          },
+          {
+            "url": "https://test-takers.psiexams.com/abc-id/test",
+            "title": "Idaho DOPL-linked ABC test catalogue",
+            "evidence": "Lists Idaho Water Treatment Class 1 and Idaho Water Distribution Class 1 tests."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Idaho Board of Drinking Water and Wastewater Professionals, Division of Occupational and Professional Licenses (DOPL)",
@@ -1678,7 +1676,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Target date: October 3, 2026. Live sources were retrieved October 4, 2026, not from an archived October 3 snapshot. The opened current Chapter 81 carries a June 18, 2025 effective revision; intervening changes were not independently excluded.",
       "Eight source opens, including an unsuccessful legacy ABC preparation-page fetch. No opened official source explicitly proved standardized versus customized exam adoption and Iowa-grade-to-WPI-class mapping; all shared-level arrays therefore remain empty.",
       "The older DNR eligibility handout and April 2024 exam application are not complete statements of current special grades; current local classifications were taken from Chapter 81.",
-      "ABC/WPI resource links, exam delivery arrangements and similar grade numbering were not treated as standardized-exam proof. IAWEA's state designation and current exam edition were not established; it is identified only as the administrator of its published voluntary credential."
+      "ABC/WPI resource links, exam delivery arrangements and similar grade numbering were not treated as standardized-exam proof. IAWEA's state designation and current exam edition were not established; it is identified only as the administrator of its published voluntary credential.",
+      "October 11, 2026 update: State sources verify the local credential but do not meet Echelon's evidence bar for a standardized WPI/ABC Class I match. Shared routing remains off."
     ],
     "name": "Iowa",
     "streams": [
@@ -1686,23 +1685,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "Iowa Department of Natural Resources, Water Supply Operations Section",
         "authorityUrl": "https://www.iowadnr.gov/environmental-protection/water-quality/certification-licensing-programs/drinking-water-wastewater-operator-certification",
         "examSystem": "unverified",
-        "localLevels": "Grade I, Grade II, Grade III, Grade IV (application uses 1–4). Grade A PWS is cross-referenced to the small-system distribution classification, not established as a separate treatment exam.",
-        "note": "Mandatory DNR certification. DNR links ABC preparation and WPI need-to-know resources, but the opened sources do not explicitly identify Iowa's exams as standardized rather than customized or establish local-grade-to-WPI-class correspondence.",
+        "localLevels": "Water Treatment Grade I through Grade IV; Grade I is the local entry treatment credential.",
+        "note": "Iowa DNR links WPI Need-to-Know material and ABC study resources, but no reviewed official source identifies the Iowa Grade I treatment exam as the standardized WPI Class I form rather than a customized or program-specific exam. Shared routing remains off.",
         "sources": [
           {
-            "evidence": "WSO is responsible for certifying public water supply treatment and distribution operators; Exam Preparation links Water Treatment, Water Distribution, Wastewater to ABC.",
-            "title": "Drinking Water & Wastewater Operator Certification",
-            "url": "https://www.iowadnr.gov/environmental-protection/water-quality/certification-licensing-programs/drinking-water-wastewater-operator-certification"
+            "url": "https://programs.iowadnr.gov/opcertweb/",
+            "title": "Iowa DNR - Operator certification portal",
+            "evidence": "State operator-certification portal linking program information and preparation resources."
           },
           {
-            "evidence": "81.4 lists water treatment Grades I–IV; its Grade A PWS footnote refers to 81.5(3). Revision effective June 18, 2025.",
-            "title": "Iowa Administrative Code 567, Chapter 81",
-            "url": "https://www.legis.iowa.gov/DOCS/ACO/IAC/LINC/Chapter.567.81.pdf"
-          },
-          {
-            "evidence": "Resources includes a link labeled 'WPI Exam Need -to-Know Documents'; it does not state standardized-exam adoption or grade correspondence.",
-            "title": "Iowa DNR Operator Certification",
-            "url": "https://programs.iowadnr.gov/opcertweb/"
+            "url": "https://www.legis.iowa.gov/docs/iac/chapter/09-30-2026.567.81.pdf",
+            "title": "Iowa Administrative Code chapter 81",
+            "evidence": "Defines local treatment and distribution operator certification requirements and Grade I eligibility."
           }
         ],
         "stream": "water-treatment",
@@ -1712,18 +1706,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "Iowa Department of Natural Resources, Water Supply Operations Section",
         "authorityUrl": "https://www.iowadnr.gov/environmental-protection/water-quality/certification-licensing-programs/drinking-water-wastewater-operator-certification",
         "examSystem": "unverified",
-        "localLevels": "Grade A; Grade I, Grade II, Grade III, Grade IV (ordinary exam application uses 1–4).",
-        "note": "Mandatory DNR certification. Grade A is a distinct small-system pathway requiring department-approved training. ABC/WPI preparation links do not establish standardized exams, the Grade A exam source, or Grades I–IV equivalence to WPI classes.",
+        "localLevels": "Water Distribution Grade I through Grade IV; Grade I is the local entry distribution credential.",
+        "note": "Iowa DNR links WPI Need-to-Know material and ABC study resources, but no reviewed official source identifies the Iowa Grade I distribution exam as the standardized WPI Class I form rather than a customized or program-specific exam. Shared routing remains off.",
         "sources": [
           {
-            "evidence": "81.5 lists distribution Grades I–IV and separately defines Grade A for qualifying small systems with no treatment beyond hypochlorination or specified nonadjustable treatment; 81.6 requires an approved course for Grade A.",
-            "title": "Iowa Administrative Code 567, Chapter 81",
-            "url": "https://www.legis.iowa.gov/DOCS/ACO/IAC/LINC/Chapter.567.81.pdf"
+            "url": "https://programs.iowadnr.gov/opcertweb/",
+            "title": "Iowa DNR - Operator certification portal",
+            "evidence": "State operator-certification portal linking program information and preparation resources."
           },
           {
-            "evidence": "Explicitly names distribution within WSO certification responsibilities and ABC exam-preparation resources, without identifying standardized versus customized examinations.",
-            "title": "Drinking Water & Wastewater Operator Certification",
-            "url": "https://www.iowadnr.gov/environmental-protection/water-quality/certification-licensing-programs/drinking-water-wastewater-operator-certification"
+            "url": "https://www.legis.iowa.gov/docs/iac/chapter/09-30-2026.567.81.pdf",
+            "title": "Iowa Administrative Code chapter 81",
+            "evidence": "Defines local treatment and distribution operator certification requirements and Grade I eligibility."
           }
         ],
         "stream": "water-distribution",
@@ -1914,31 +1908,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Opened 401 KAR 11:050 (https://apps.legislature.ky.gov/Law/KAR/401/011/050.pdf) establishes an examination administered by the cabinet, but does not identify its content supplier or standardized/customized status. State administration alone does not prove a state-specific exam.",
       "The official preparation page was opened, but the linked full manuals and their detailed outlines were not opened within the source cap. Listed revision dates are the page's labels, not independently verified manual currency.",
       "All four exam systems are unverified, not unsupported or not offered. No standardized WPI/ABC scope or local-grade correspondence was established; verifiedSharedLevels therefore remains empty for every stream.",
-      "Kentucky's program notes that LRC online regulation text is not the official Kentucky Administrative Regulations Service version."
+      "Kentucky's program notes that LRC online regulation text is not the official Kentucky Administrative Regulations Service version.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Kentucky",
     "streams": [
       {
         "authorityName": "Kentucky Energy and Environment Cabinet  -  Certification and Licensing Branch, Operator Certification Program",
         "authorityUrl": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/how-do-i-become-a-certified-operator.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Limited certification; Class IA-D treatment certification; Class IB-D treatment certification; Class IIA treatment certification; Class IIB-D treatment certification; Class IIIA treatment certification; Class IIIB treatment certification; Class IVA treatment certification; Class IVB treatment certification. Operator in Training designations also exist. Bottled water certification is listed separately in the regulation.",
-        "note": "Kentucky publishes separate Surface Water and Groundwater exam-preparation materials. Opened sources do not establish standardized WPI/ABC, customized ABC, or state-authored examination scope. Local Roman numerals and A/B/D suffixes are not a verified WPI class correspondence.",
+        "examSystem": "state-specific",
+        "localLevels": "Kentucky first-tier treatment credentials are IA-D and IB-D, split by source and treatment type.",
+        "note": "Kentucky Cabinet-administered treatment exams use local source-specific credential paths and Board-developed core content. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Only operators certified by the Kentucky Certification and Licensing Branch can be in responsible charge of a drinking water or wastewater system.",
-            "title": "Drinking Water and Wastewater Training and Exam Information",
-            "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/how-do-i-become-a-certified-operator.aspx"
+            "url": "https://apps.legislature.ky.gov/law/kar/titles/401/011/050/",
+            "title": "Kentucky 401 KAR 11:050",
+            "evidence": "Requires Cabinet-administered certification examinations and establishes local eligibility."
           },
           {
-            "evidence": "Section 1(1) expressly lists Limited, IA-D, IB-D, IIA, IIB-D, IIIA, IIIB, IVA and IVB treatment certifications; Section 1(3) separately lists bottled water certification.",
-            "title": "401 KAR 11:040  -  Water treatment and distribution system operators; classification and qualifications",
-            "url": "https://apps.legislature.ky.gov/Law/KAR/401/011/040.pdf"
-          },
-          {
-            "evidence": "Lists Groundwater Treatment Operator Certification Manual, revised 12/03/2014, and Surface Water Treatment Operator Certification Manual, revised 4/04/2018, with separate math guides and formula sheets.",
-            "title": "Test Preparation Materials",
-            "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/test-preparation-materials.aspx"
+            "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/test-preparation-materials.aspx",
+            "title": "Kentucky - Operator certification test preparation",
+            "evidence": "Publishes Kentucky-specific treatment and distribution preparation materials."
           }
         ],
         "stream": "water-treatment",
@@ -1947,24 +1937,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Kentucky Energy and Environment Cabinet  -  Certification and Licensing Branch, Operator Certification Program",
         "authorityUrl": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/how-do-i-become-a-certified-operator.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Class ID distribution certification; Class IID distribution certification; Class IIID distribution certification; Class IVD distribution certification. Operator in Training designations also exist.",
-        "note": "Distribution certification and Kentucky preparation materials are explicitly documented. Neither exam-content supplier nor standardized/customized status is established; ID–IVD cannot be mapped to WPI Classes 1–4 merely by their numbering.",
+        "examSystem": "state-specific",
+        "localLevels": "Kentucky Class ID is the local entry distribution credential.",
+        "note": "Kentucky Cabinet-administered distribution exams use local Board-developed content and credential paths. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Identifies the Kentucky Certification and Licensing Branch as the certifying program and directs applicants to 401 KAR Chapter 11.",
-            "title": "Drinking Water and Wastewater Training and Exam Information",
-            "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/how-do-i-become-a-certified-operator.aspx"
+            "url": "https://apps.legislature.ky.gov/law/kar/titles/401/011/050/",
+            "title": "Kentucky 401 KAR 11:050",
+            "evidence": "Requires Cabinet-administered certification examinations and establishes local eligibility."
           },
           {
-            "evidence": "Section 1(2) lists Class ID, IID, IIID and IVD distribution certifications; Section 1(4) provides Operator in Training designations.",
-            "title": "401 KAR 11:040  -  Water treatment and distribution system operators; classification and qualifications",
-            "url": "https://apps.legislature.ky.gov/Law/KAR/401/011/040.pdf"
-          },
-          {
-            "evidence": "Distribution section lists Distribution System Operator Certification Manual, revised 2/12/2013, and distribution-specific math guide, formula sheet and online class instructions.",
-            "title": "Test Preparation Materials",
-            "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/test-preparation-materials.aspx"
+            "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/test-preparation-materials.aspx",
+            "title": "Kentucky - Operator certification test preparation",
+            "evidence": "Publishes Kentucky-specific treatment and distribution preparation materials."
           }
         ],
         "stream": "water-distribution",
@@ -2039,36 +2024,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "The certification-rule PDF currently linked by LDH is an April 2002 republication using the former Department of Health and Hospitals name. Current LDH category-specific outlines corroborate Classes 1–4, but a complete later-amendment history was not checked.",
       "State exam preparation/validation responsibility and Louisiana-specific outlines do not conclusively prove exclusive state authorship or rule out customized ABC questions. All technical exam systems are therefore unverified, not unsupported or not offered.",
       "No explicit standardized ABC/WPI adoption scope and local-grade-to-WPI-class correspondence were found in the opened materials. All verifiedSharedLevels arrays are empty; no automatic shared-WPI routing is justified.",
-      "Technical outline alignment needs are supported; exclusive unique-exam course requirements remain conditional on exam-family confirmation. No coverage or pass guarantees are made. No operator/customer records were accessed."
+      "Technical outline alignment needs are supported; exclusive unique-exam course requirements remain conditional on exam-family confirmation. No coverage or pass guarantees are made. No operator/customer records were accessed.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Louisiana",
     "streams": [
       {
         "authorityName": "Louisiana Department of Health, Office of Public Health, Bureau of Engineering Services, Operator Certification Program; Louisiana Committee of Certification",
         "authorityUrl": "https://ldh.la.gov/bureau-of-engineering-services/louisiana-operator-certification-program",
-        "examSystem": "unverified",
-        "localLevels": "Water Treatment Class 1, Class 2, Class 3, Class 4. Operator-in-Training and Provisional are certificate statuses, not additional numbered exam classes.",
-        "note": "Mandatory for surface-water facilities and qualifying groundwater treatment; simple-disinfection-only groundwater has a treatment-certification exception. State-controlled preparation and local outlines are documented, but the sources do not explicitly establish whether the technical exams are state-authored, customized ABC/WPI, or standardized ABC/WPI. No standardized scope or local-to-WPI class correspondence verified. The separate Louisiana Law and Rules Examination is confirmed.",
+        "examSystem": "state-specific",
+        "localLevels": "Louisiana Class 1 Water Treatment is the local entry treatment credential.",
+        "note": "Louisiana rules require Committee-validated exam questions and only exams prepared under the Administrator and Committee framework. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "§7305.D specifies water-treatment certification and the groundwater exception; §7323.D requires exams in sequence from Class 1 to Class 4 in each category. §7331.K recognizes exams 'prepared under the auspices of the administrator and the committee of certification,' without identifying their question-bank provider.",
-            "title": "LDH Operator Certification Rule",
-            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/OperatorCertificationRule.pdf"
+            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/OperatorCertificationRule.pdf",
+            "title": "Louisiana - Operator certification rule",
+            "evidence": "Defines Committee-controlled operator examination and local treatment and distribution certification."
           },
           {
-            "evidence": "Separate WATER TREATMENT CLASS 1, 2, 3 and 4 outlines. Class 1 includes fluoridation, pH adjustment and applicable state/federal regulations; Class 4 includes reverse osmosis, electrodialysis and expert regulatory knowledge. No standardized ABC/WPI designation.",
-            "title": "Operator Need-to-Know: Water Treatment",
-            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterTreatment.pdf"
-          },
-          {
-            "evidence": "The statewide water and wastewater program's duties include 'Conducting and directing the preparation, validation, administration, grading, and periodic updating of Operator Certification exams.' This establishes state responsibility, not an explicit standardized/customized/state-authored exam designation.",
-            "title": "State of Louisiana: Operator Certification Training Officer, 2025",
-            "url": "https://www.governmentjobs.com/careers/louisiana/jobs/newprint/4988609"
-          },
-          {
-            "evidence": "'Must be completed and returned to the Operator Certification Office before Certificate(s) will be issued.' Questions address Louisiana facility classes, certification responsibilities, renewals and operator-in-training restrictions.",
-            "title": "Certification Law and Rules Examination",
-            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/ExamLawRule.pdf"
+            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterTreatment.pdf",
+            "title": "Louisiana - Water Treatment Need to Know",
+            "evidence": "Provides Louisiana-specific water treatment examination preparation topics."
           }
         ],
         "stream": "water-treatment",
@@ -2077,24 +2053,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Louisiana Department of Health, Office of Public Health, Bureau of Engineering Services, Operator Certification Program; Louisiana Committee of Certification",
         "authorityUrl": "https://ldh.la.gov/bureau-of-engineering-services/louisiana-operator-certification-program",
-        "examSystem": "unverified",
-        "localLevels": "Water Distribution Class 1, Class 2, Class 3, Class 4. Operator-in-Training and Provisional are certificate statuses, not additional numbered exam classes.",
-        "note": "Mandatory for water conveyance from the treatment plant or other supply point to consumers. Distribution-specific local outlines and state exam control are documented, but neither technical exam provenance nor standardized ABC/WPI class correspondence is explicit; standardized versus customized versus state-authored remains unverified. Louisiana's separate Law and Rules Examination also applies.",
+        "examSystem": "state-specific",
+        "localLevels": "Louisiana Class 1 Water Distribution is the local entry distribution credential.",
+        "note": "Louisiana rules require Committee-validated exam questions and only exams prepared under the Administrator and Committee framework. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "§7305.C requires water-distribution certification; §7323.D requires Class 1–4 exam sequence in each category. §7321.A assigns question validation to the committee or its appointees; §7331.K requires exams prepared under state program auspices. §7325.B requires the Certification Law and Rules Examination.",
-            "title": "LDH Operator Certification Rule",
-            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/OperatorCertificationRule.pdf"
+            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/OperatorCertificationRule.pdf",
+            "title": "Louisiana - Operator certification rule",
+            "evidence": "Defines Committee-controlled operator examination and local treatment and distribution certification."
           },
           {
-            "evidence": "Separate WATER DISTRIBUTION CLASS 1, 2, 3 and 4 outlines. Topics progress from disinfection, sampling and cross-connections to emergency continuity, pump curves, water loss, utility legal responsibilities and complex friction-loss calculations; no standardized ABC/WPI designation.",
-            "title": "Operator Need-to-Know: Water Distribution",
-            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterDistribution.pdf"
-          },
-          {
-            "evidence": "Current LDH program page names the Louisiana Committee of Certification and links Water Distribution under 'Exam Need to Know,' plus the certification rule and Law and Rule Exam.",
-            "title": "Louisiana Operator Certification Program",
-            "url": "https://ldh.la.gov/bureau-of-engineering-services/louisiana-operator-certification-program"
+            "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterDistribution.pdf",
+            "title": "Louisiana - Water Distribution Need to Know",
+            "evidence": "Provides Louisiana-specific water distribution examination preparation topics."
           }
         ],
         "stream": "water-distribution",
@@ -2165,7 +2136,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Requested cutoff: October 3, 2026. Sources were opened October 4, 2026; undated live pages were not independently archived at the cutoff, so intervening edits cannot be excluded.",
       "Eight source opens, including one failed acquisition. The NEIWPCC-linked September 2024 wastewater exam FAQ returned 404, preventing further clarification within the cap.",
       "The water paper application remains linked by the current state page but is dated 2015; it supports exam labels, not current fees or delivery arrangements. Explicit national-class correspondence was not acquired.",
-      "Neither wastewater grade-to-WPI-class correspondence nor SITS exam provenance was established. The collection program is regional and voluntary, not a verified mandatory Maine collection license; the schema lacks a regional non-WPI exam category."
+      "Neither wastewater grade-to-WPI-class correspondence nor SITS exam provenance was established. The collection program is regional and voluntary, not a verified mandatory Maine collection license; the schema lacks a regional non-WPI exam category.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Maine",
     "streams": [
@@ -2173,43 +2145,47 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "Maine Board of Licensure of Water System Operators; Maine DHHS/Maine CDC Drinking Water Program",
         "authorityUrl": "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/drinking-water-safety/drinking-water-professionals/Become-a-WO",
         "examSystem": "wpi-standardized",
-        "localLevels": "Treatment Class I, Class II, Class III, Class IV; Very Small Water System (VSWS), a combined treatment/distribution credential. Operator-in-Training is a status, not another class.",
-        "note": "The state explicitly identifies ABC standardized water-operator examinations and treatment Classes I–IV. However, the opened sources do not expressly crosswalk Maine's classes to WPI national exam-class identifiers; under the requested strict mapping rule, shared levels remain empty. VSWS is outside numbered levels 1–4, and its particular exam form was not separately verified.",
+        "localLevels": "Treatment Class I through Class IV; Class I is the local entry treatment credential.",
+        "note": "Maine states that water-operator examinations are offered by ABC and are standardized, nationally based, validated and reviewed. It separately offers Treatment Class I, so the shared WPI Class I treatment route is verified.",
         "sources": [
           {
-            "evidence": "Systems are classified 'at levels I to IV in both treatment and distribution categories'; examinations are offered by ABC: 'These standardized exams are nationally-based.' VSWS covers both categories for systems serving fewer than 500 people.",
-            "title": "How to Become a Licensed Water Operator",
-            "url": "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/drinking-water-safety/drinking-water-professionals/Become-a-WO"
+            "url": "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/drinking-water-safety/drinking-water-professionals/Become-a-WO",
+            "title": "Maine CDC - Become a water operator",
+            "evidence": "States that ABC offers Maine operator examinations and describes them as standardized and nationally based."
           },
           {
-            "evidence": "The Board's exam selections list Treatment and Distribution, Class I, Class II, Class III, Class IV, and Very Small Water System. The linked form is dated August 24, 2015.",
-            "title": "Application for Examination (Paper Only): Water Treatment and Distribution System Operators",
-            "url": "https://www.maine.gov/dhhs/mecdc/sites/maine.gov.dhhs.mecdc/files/WO-Paper-Exam-Application.pdf"
+            "url": "https://www.maine.gov/dhhs/mecdc/sites/maine.gov.dhhs.mecdc/files/WO_License_Application.pdf",
+            "title": "Maine - Water operator license application",
+            "evidence": "Lists separate Treatment Class I and Distribution Class I examination and license tracks."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Maine Board of Licensure of Water System Operators; Maine DHHS/Maine CDC Drinking Water Program",
         "authorityUrl": "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/drinking-water-safety/drinking-water-professionals/Become-a-WO",
         "examSystem": "wpi-standardized",
-        "localLevels": "Distribution Class I, Class II, Class III, Class IV; Very Small Water System (VSWS), a combined treatment/distribution credential. Operator-in-Training is a status.",
-        "note": "Distribution is expressly included in the state's water-examination framework, not inferred from treatment alone. ABC standardized adoption is confirmed, but an explicit local-class-to-national-exam-class crosswalk was not established in the opened sources. VSWS requires separate routing outside shared levels 1–4.",
+        "localLevels": "Distribution Class I through Class IV; Class I is the local entry distribution credential.",
+        "note": "Maine states that water-operator examinations are offered by ABC and are standardized, nationally based, validated and reviewed. It separately offers Distribution Class I, so the shared WPI Class I distribution route is verified.",
         "sources": [
           {
-            "evidence": "The page names both treatment and distribution levels I–IV and states that water-operator examinations are ABC 'standardized exams.' Licenses may cover either or both disciplines.",
-            "title": "How to Become a Licensed Water Operator",
-            "url": "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/drinking-water-safety/drinking-water-professionals/Become-a-WO"
+            "url": "https://www.maine.gov/dhhs/mecdc/healthy-living/health-and-safety/drinking-water-safety/drinking-water-professionals/Become-a-WO",
+            "title": "Maine CDC - Become a water operator",
+            "evidence": "States that ABC offers Maine operator examinations and describes them as standardized and nationally based."
           },
           {
-            "evidence": "Exam selections explicitly include Distribution Classes I–IV and a separate Very Small Water System selection; the issuing authority is the Board of Licensure of Water System Operators.",
-            "title": "Application for Examination (Paper Only): Water Treatment and Distribution System Operators",
-            "url": "https://www.maine.gov/dhhs/mecdc/sites/maine.gov.dhhs.mecdc/files/WO-Paper-Exam-Application.pdf"
+            "url": "https://www.maine.gov/dhhs/mecdc/sites/maine.gov.dhhs.mecdc/files/WO_License_Application.pdf",
+            "title": "Maine - Water operator license application",
+            "evidence": "Lists separate Treatment Class I and Distribution Class I examination and license tracks."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Maine Department of Environmental Protection, Division of Water Quality Management; NEIWPCC administers the program",
@@ -2270,31 +2246,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Eight source opens completed. Official sources do not explicitly verify current standardized WPI/ABC scope plus local-to-WPI class correspondence, so all verifiedSharedLevels remain empty.",
       "Supplementary public-college MCET handbooks state 'ABC uses the Board’s Exam Prescriptions to put together certification exams' and 'Each certification classification has its own exam created by ABC based on the Board’s instructions': https://www.mcet.org/_assets/preparing-for-the-exam.pdf and https://www.mcet.org/_assets/whomustbecertified.pdf. MDE recommends MCET training, but MCET was not verified as a state-designated exam administrator; these are customized-exam leads, not authoritative current routing verification.",
       "The Board-linked exam application is revised January 2017 and contains obsolete delivery references; the official training page links a 2022 schedule. These were used for classification/content evidence, not current delivery arrangements. The 2025 5A guide supplements the older application.",
-      "Unverified means insufficient authoritative current exam-system evidence, not that certification is unavailable or that standardized exams are unsupported. ABC involvement, delivery vendors, reciprocity and matching class numerals were not treated as standardized-exam proof."
+      "Unverified means insufficient authoritative current exam-system evidence, not that certification is unavailable or that standardized exams are unsupported. ABC involvement, delivery vendors, reciprocity and matching class numerals were not treated as standardized-exam proof.",
+      "October 11, 2026 update: Maryland D1 distribution alone is verified for standardized ABC/WPI Class I routing. Maryland T1 treatment remains customized and is not routed to the shared course."
     ],
     "name": "Maryland",
     "streams": [
       {
         "authorityName": "Maryland Board of Waterworks and Waste Systems Operators, Maryland Department of the Environment (MDE)",
         "authorityUrl": "https://mde.maryland.gov/programs/permits/environmentalboards/pages/bww.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Class G - No chemical treatment; Class 1 - Disinfection; Class 2 - Chemical Treatment; Class 3 - Simple Iron Removal; Class 4 - Complete Treatment; Class 5 - Site Specific. The exam application specifies Water 5 options RO, DE, Arsenic, or GWUDI.",
-        "note": "Official sources establish Maryland's process-specific classes and ABC involvement, but not the current standardized versus customized product for every class. Supplementary MCET guidance describes ABC assembling exams to Board prescriptions, indicating customized rather than standardized exams; its administrator designation and current class-by-class scope were not verified. Maryland Classes 1–4 must not be equated with WPI standardized Classes I–IV.",
+        "examSystem": "wpi-customized",
+        "localLevels": "Maryland T1 is the local treatment credential for disinfection and chlorination systems.",
+        "note": "Maryland records distinguish its customized water treatment examinations from the ABC standardized route. The narrow T1 scope is not a standardized WPI Class I treatment match, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Table 3 lists water-treatment classes 1, 2, 3, 4, 5 and G; .10B says examinations are based on need-to-know criteria for each specific classification determined by the Board.",
-            "title": "COMAR 26.06.01 - Board of Waterworks and Waste Systems Operators",
-            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/COMAR%2026.06.01_WWSO_Board_Regulations.pdf"
+            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/BWW-Meetings/WWSO-2019-06-20-Minutes.pdf",
+            "title": "Maryland Board - June 2019 minutes",
+            "evidence": "States that ABC standardized exams were used only for Maryland Class 1 Distribution and Class 2 Collection while Maryland used customized examinations."
           },
           {
-            "evidence": "Water Treatment Plant Operator (T): 1 2 3 4 5 G; 'For Water 5, write RO, DE, Arsenic, or GWUDI.'",
-            "title": "Application for Operator Examination",
-            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/WWSO-Operator-Exam-Application.pdf"
-          },
-          {
-            "evidence": "Computer-based examinations are described as available for all categories through a project coordinated with ABC. This establishes ABC involvement, not standardized-exam adoption.",
-            "title": "Training and Examinations",
-            "url": "https://mde.maryland.gov/programs/water/water_supply/pages/operatortrainingandexaminations.aspx"
+            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/BWW-Classification_ofWaterTreatementPlants.pdf",
+            "title": "Maryland - Water treatment plant classifications",
+            "evidence": "Defines local T1 treatment scope as disinfection and chlorination."
           }
         ],
         "stream": "water-treatment",
@@ -2303,23 +2275,25 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Maryland Board of Waterworks and Waste Systems Operators, Maryland Department of the Environment (MDE)",
         "authorityUrl": "https://mde.maryland.gov/programs/permits/environmentalboards/pages/bww.aspx",
-        "examSystem": "unverified",
-        "localLevels": "One class: Water Distribution (WD in COMAR; D in Board/application terminology). The examination application labels it Water Distribution Systems Operator (D), class 1.",
-        "note": "A single local distribution classification is established independently of treatment. No authoritative current standardized WPI scope or correspondence to WPI Class I was verified. Supplementary MCET guidance describes a Maryland-specific Water Distribution exam prescription assembled by ABC, but is not confirmed designated-administrator evidence. COMAR does not classify distribution separately when operated and supervised by certified water-treatment personnel.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Maryland D1, also called Water Distribution Systems Operator Class 1, is the local distribution credential.",
+        "note": "Maryland Board minutes state that ABC standardized exams are used for Maryland Class 1 Distribution. D1 is the current local Distribution Systems credential, so shared WPI Class I distribution routing is verified.",
         "sources": [
           {
-            "evidence": ".03E: 'Water distribution systems are classified as one class, Water Distribution (WD)'; separate classification is unnecessary under certified water-treatment plant personnel. Table 7 labels the operator class D.",
-            "title": "COMAR 26.06.01 - Board of Waterworks and Waste Systems Operators",
-            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/COMAR%2026.06.01_WWSO_Board_Regulations.pdf"
+            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/BWW-Meetings/WWSO-2019-06-20-Minutes.pdf",
+            "title": "Maryland Board - June 2019 minutes",
+            "evidence": "States that ABC standardized exams are used for Maryland Class 1 Distribution."
           },
           {
-            "evidence": "Category/class choices include 'Water Distribution Systems Operator (D) 1'. This local label does not establish WPI Class I equivalence.",
-            "title": "Application for Operator Examination",
-            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/WWSO-Operator-Exam-Application.pdf"
+            "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/WWSO-Operator-Exam-Application.pdf",
+            "title": "Maryland - Operator examination application",
+            "evidence": "Lists Water Distribution Systems Operator D1 examination and candidate requirements."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Maryland Board of Waterworks and Waste Systems Operators, Maryland Department of the Environment (MDE)",
@@ -2383,7 +2357,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Eight source opens were used; all cited evidence comes from opened pages/documents, not search snippets.",
       "Assessment targets October 3, 2026; live sources were accessed October 4, 2026, without an archived October 3 snapshot.",
       "No explicit Massachusetts Grade-to-WPI Class crosswalk was established, so verifiedSharedLevels remains empty even where standardized drinking-water adoption is supported.",
-      "Wastewater exam origin and collection legal status/grade names remain unverified, not unsupported or not-offered. NEWEA is primary evidence for its regional program, not verified evidence of Massachusetts state designation."
+      "Wastewater exam origin and collection legal status/grade names remain unverified, not unsupported or not-offered. NEWEA is primary evidence for its regional program, not verified evidence of Massachusetts state designation.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Massachusetts",
     "streams": [
@@ -2391,53 +2366,47 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "Massachusetts Board of Certification of Operators of Drinking Water Supply Facilities, Division of Occupational Licensure",
         "authorityUrl": "https://www.mass.gov/orgs/board-of-certification-of-operators-of-drinking-water-supply-facilities",
         "examSystem": "wpi-standardized",
-        "localLevels": "Massachusetts Water Treatment Grade 1, Grade 2, Grade 3, Grade 4. Very Small Water System is separately listed, not a numbered treatment grade.",
-        "note": "For examinations after December 31, 2025, the Board expressly directs candidates to the applicable 2025 Standardized Water Treatment Operator Need-to-Know document. Standardized adoption is supported for the numbered treatment exams, but the opened sources do not explicitly crosswalk each Massachusetts Grade to its WPI Class; shared-level routing therefore remains unverified. The separate Very Small Water System exam is outside this verified standardized scope.",
+        "localLevels": "Grade 1 Treatment (T1); T1 is the local entry treatment credential.",
+        "note": "Massachusetts implemented WPI standardized drinking-water exams on January 1, 2026. The official exam FAQ directs T1 candidates to WPI Standardized Water Treatment Operator criteria, so the shared Class I treatment route is verified.",
         "sources": [
           {
-            "evidence": "For exams after December 31, 2025: review the applicable 'Standardized Water Treatment Operator and Standardized Water Distribution Operator Need-to-Know document for the exam grade you will be taking.'",
-            "title": "Drinking Water Board: Operator exam information",
-            "url": "https://www.mass.gov/info-details/frequently-asked-questions-about-board-of-certification-of-operators-of-drinking-water-operator-exam-information"
+            "url": "https://www.mass.gov/doc/certified-operator-annual-report-2025/download",
+            "title": "Massachusetts - Certified Operator Program annual report",
+            "evidence": "Records Board adoption of WPI standardized drinking-water exams beginning January 1, 2026."
           },
           {
-            "evidence": "Lists Massachusetts Water Treatment Grades 1, 2, 3 and 4 and a separate Massachusetts Very Small Water System exam.",
-            "title": "PSI: Massachusetts Drinking Water Operators  -  Available Tests",
-            "url": "https://test-takers.psiexams.com/abc-ma/test"
-          },
-          {
-            "evidence": "Lists 'WPI Standardized Water Treatment Operator Class I' through Class IV; no Massachusetts grade crosswalk is shown.",
-            "title": "WPI: 2025 Need-to-Know Criteria",
-            "url": "https://gowpi.org/services/2025-need-to-know-criteria/"
+            "url": "https://www.mass.gov/info-details/frequently-asked-questions-about-board-of-certification-of-operators-of-drinking-water-operator-exam-information",
+            "title": "Massachusetts - Drinking water operator exam FAQ",
+            "evidence": "Directs candidates to the applicable WPI standardized treatment criteria by grade."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Massachusetts Board of Certification of Operators of Drinking Water Supply Facilities, Division of Occupational Licensure",
         "authorityUrl": "https://www.mass.gov/orgs/board-of-certification-of-operators-of-drinking-water-supply-facilities",
         "examSystem": "wpi-standardized",
-        "localLevels": "Massachusetts Water Distribution Grade 1, Grade 2, Grade 3, Grade 4.",
-        "note": "The Board explicitly points post-December 31, 2025 distribution examinees to standardized 2025 WPI criteria. An explicit Massachusetts Grade-to-WPI Class crosswalk was not found in the opened sources, so no numeric shared levels are asserted. PSI delivery alone is not the standardized-exam evidence.",
+        "localLevels": "Grade 1 Distribution (D1); D1 is the local entry distribution credential.",
+        "note": "Massachusetts implemented WPI standardized drinking-water exams on January 1, 2026. The official exam FAQ directs D1 candidates to WPI Standardized Water Distribution Operator criteria, so the shared Class I distribution route is verified.",
         "sources": [
           {
-            "evidence": "Post-December 31, 2025 exam guidance expressly names the 'Standardized Water Distribution Operator' Need-to-Know document. Distribution Grades 2–4 require one Board-approved Distribution training course.",
-            "title": "Drinking Water Board: Operator exam information",
-            "url": "https://www.mass.gov/info-details/frequently-asked-questions-about-board-of-certification-of-operators-of-drinking-water-operator-exam-information"
+            "url": "https://www.mass.gov/doc/certified-operator-annual-report-2025/download",
+            "title": "Massachusetts - Certified Operator Program annual report",
+            "evidence": "Records Board adoption of WPI standardized drinking-water exams beginning January 1, 2026."
           },
           {
-            "evidence": "Lists Massachusetts Water Distribution Grade 1, Grade 2, Grade 3 and Grade 4.",
-            "title": "PSI: Massachusetts Drinking Water Operators  -  Available Tests",
-            "url": "https://test-takers.psiexams.com/abc-ma/test"
-          },
-          {
-            "evidence": "Lists Standardized Water Distribution Operator Classes I–IV; the page does not expressly map Massachusetts grades.",
-            "title": "WPI: 2025 Need-to-Know Criteria",
-            "url": "https://gowpi.org/services/2025-need-to-know-criteria/"
+            "url": "https://www.mass.gov/info-details/frequently-asked-questions-about-board-of-certification-of-operators-of-drinking-water-operator-exam-information",
+            "title": "Massachusetts - Drinking water operator exam FAQ",
+            "evidence": "Directs candidates to the applicable WPI standardized distribution criteria by grade."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Massachusetts Board of Certification of Operators of Wastewater Treatment Facilities / Massachusetts Department of Environmental Protection; program administered by NEIWPCC",
@@ -2610,26 +2579,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Requested reference date: October 3, 2026. Live official sources were retrieved October 4, 2026; an exact October 3 historical snapshot was not independently established. MDH pages display January 11, 2026 updates.",
       "Eight official source opens completed. No explicit standardized WPI/ABC adoption statement and local-to-WPI class correspondence were found; all verifiedSharedLevels are therefore empty.",
       "Rule 9400.1000 establishes state preparation responsibility, but does not expressly identify an exam supplier or exclude customized ABC question-bank use. ExamSystem is conservatively unverified rather than claiming standardized, customized, or wholly state-authored exams.",
-      "MPCA's currently linked need-to-know document is dated August 5, 2005, and the opened Class D description February 1, 2008. Their continued official linkage supports local study needs, not independently verified 2026 exam revisions."
+      "MPCA's currently linked need-to-know document is dated August 5, 2005, and the opened Class D description February 1, 2008. Their continued official linkage supports local study needs, not independently verified 2026 exam revisions.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Minnesota",
     "streams": [
       {
         "authorityName": "Minnesota Department of Health (MDH), Drinking Water Protection Section",
         "authorityUrl": "https://www.health.state.mn.us/communities/environment/water/wateroperator/index.htm",
-        "examSystem": "unverified",
-        "localLevels": "Water Supply System Operator: Class A, Class B, Class C, Class D, Class E; A is highest.",
-        "note": "Mandatory water-supply-system certification, rather than a separately documented treatment-only ladder. Rules require state-prepared, class-specific examinations, but the opened sources do not conclusively distinguish wholly state-authored exams from customized ABC exams. MDH's ABC reference-list link does not establish standardized ABC/WPI adoption or class correspondence.",
+        "examSystem": "state-specific",
+        "localLevels": "Minnesota uses a combined Water Supply System Operator Class A through E ladder, not a separate treatment Class I stream.",
+        "note": "Minnesota administers a local combined water-supply-system exam and classifies systems using both treatment and distribution factors. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "'The Water Supply System Operator Examinations are comprised of five levels, Class A-E, with A being the highest level.' MDH offers classification-specific subjects-to-know lists and Minnesota Class D/E study guides; ABC is described only as having 'a useful list of exam references.'",
-            "title": "Drinking Water Operator Certification  -  Exam Study Materials",
-            "url": "https://www.health.state.mn.us/communities/environment/water/wateroperator/referencelist.htm"
+            "url": "https://www.revisor.mn.gov/rules/9400.0400/",
+            "title": "Minnesota Rule 9400.0400",
+            "evidence": "Defines local combined water-supply-system classification factors."
           },
           {
-            "evidence": "9400.0350(A): water certificates are issued by the commissioner of health. 9400.1000: 'The respective commissioner shall prepare the examinations'; separate exams are required for each designated class, with state law and rules among the listed knowledge areas.",
-            "title": "Minnesota Rules Chapter 9400  -  Water Treatment Certification",
-            "url": "https://www.revisor.mn.gov/rules/9400/full"
+            "url": "https://www.health.state.mn.us/communities/environment/water/wateroperator/dwopfaqs.html",
+            "title": "Minnesota Department of Health - Operator FAQ",
+            "evidence": "Describes Minnesota water supply system operator certification and examination requirements."
           }
         ],
         "stream": "water-treatment",
@@ -2638,19 +2608,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Minnesota Department of Health (MDH), Drinking Water Protection Section",
         "authorityUrl": "https://www.health.state.mn.us/communities/environment/water/wateroperator/index.htm",
-        "examSystem": "unverified",
-        "localLevels": "Water Supply System Operator: Class A, Class B, Class C, Class D, Class E; no separate distribution certificate ladder identified in the opened sources.",
-        "note": "Distribution falls within Minnesota's water-supply-system classification and examination framework. Do not invent a separate Distribution 1-4 route or map A-D to WPI 4-1. The current exam supplier and standardized-versus-customized distinction remain unverified.",
+        "examSystem": "state-specific",
+        "localLevels": "Minnesota uses a combined Water Supply System Operator Class A through E ladder, not a separate distribution Class I stream.",
+        "note": "Minnesota administers a local combined water-supply-system exam and classifies systems using both treatment and distribution factors. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "9400.0400 classifies water systems using both treatment processes and distribution storage capacity. 9400.1000 explicitly includes 'water distribution systems' in class-specific examination scope and requires the respective commissioner to prepare examinations.",
-            "title": "Minnesota Rules Chapter 9400  -  Water Treatment Certification",
-            "url": "https://www.revisor.mn.gov/rules/9400/full"
+            "url": "https://www.revisor.mn.gov/rules/9400.0400/",
+            "title": "Minnesota Rule 9400.0400",
+            "evidence": "Defines local combined water-supply-system classification factors."
           },
           {
-            "evidence": "MDH identifies one Water Supply System Operator examination series, Class A-E, with A highest; its ABC link is an exam-reference resource, not an explicit standardized-exam adoption statement.",
-            "title": "Drinking Water Operator Certification  -  Exam Study Materials",
-            "url": "https://www.health.state.mn.us/communities/environment/water/wateroperator/referencelist.htm"
+            "url": "https://www.health.state.mn.us/communities/environment/water/wateroperator/dwopfaqs.html",
+            "title": "Minnesota Department of Health - Operator FAQ",
+            "evidence": "Describes Minnesota water supply system operator certification and examination requirements."
           }
         ],
         "stream": "water-distribution",
@@ -2721,31 +2691,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Requested cutoff: October 3, 2026. Live official sources were retrieved October 4, 2026; no archived October 3 snapshot was acquired. MDEQ's notice says the transition occurred in 2026 but gives no exact commencement date.",
       "Eight source opens total. Findings use opened official state documents/pages and the state-linked exam developer, not search snippets, membership listings, reciprocity, or delivery-provider identity.",
       "The MDEQ resources page labels September 2026 regulatory changes as proposed. They were not treated as enacted; the published 2017 regulation supplies local grades and voluntary/mandatory distinctions.",
-      "The current MSDH page still links a March 2021 examination handbook and May 2019 operations manual. These do not establish current standardized versus customized ABC/WPI exam provenance. All shared-level arrays are intentionally empty where an explicit Mississippi-to-WPI class correspondence was not verified."
+      "The current MSDH page still links a March 2021 examination handbook and May 2019 operations manual. These do not establish current standardized versus customized ABC/WPI exam provenance. All shared-level arrays are intentionally empty where an explicit Mississippi-to-WPI class correspondence was not verified.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Mississippi",
     "streams": [
       {
         "authorityName": "Mississippi State Department of Health (MSDH), Bureau of Public Water Supply",
         "authorityUrl": "https://msdh.ms.gov/msdhsite/index.cfm/30,23247,76,138,html",
-        "examSystem": "unverified",
-        "localLevels": "Class A, Class B, Class C, Class D; Class E is the distribution-only/purchased-water classification.",
-        "note": "Mandatory waterworks certification uses treatment-based letter classes, not a verified WPI I–IV ladder. The official rules require Bureau examinations; the currently linked handbook establishes PSI delivery and use of an ABC formula table, but neither establishes standardized versus customized ABC/WPI exams or current state-specific exam authorship.",
+        "examSystem": "state-specific",
+        "localLevels": "Class D is the local entry treatment credential for chlorination, fluoridation or direct chemical-feed systems.",
+        "note": "Mississippi rules state that the Bureau prepares written examinations. Class D treatment is locally defined and requires a Bureau exam; no WPI Class I equivalence is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Rules 2.2.1 and 2.3.1–2.3.5 identify Classes A–E: A covers surface water/GWUDI, lime softening or specified coagulation/filtration; B covers multiple Class C processes and other advanced treatment; C covers aeration, pH adjustment, corrosion control and closed pressure filtration; D covers chlorination/fluoridation/direct chemical feed. Rule 2.6.1 says the Bureau shall prepare written examinations.",
-            "title": "Bureau of Public Water Supply regulations, Chapter 2",
-            "url": "https://msdh.ms.gov/page//resources/3275.pdf"
+            "url": "https://msdh.ms.gov/page/resources/3275.pdf",
+            "title": "Mississippi - Waterworks operator certification regulations",
+            "evidence": "States that the Bureau prepares written examinations and defines local Class D and Class E credentials."
           },
           {
-            "evidence": "Describes MSDH drinking-water examinations delivered through PSI. Examination Restrictions says the 'ABC Formula & Conversion Table' is provided; it does not identify the examinations as standardized ABC/WPI exams.",
-            "title": "MSDH Bureau of Public Water Supply  -  PSI Computer-Based Testing Information Bulletin, March 2021",
-            "url": "https://msdh.ms.gov/msdhsite/index.cfm/30,14417,76,pdf/Water_Operator_Exam_Handbook.pdf"
-          },
-          {
-            "evidence": "Official certification page links the exam handbook and Public Water System Operations Manual; last reviewed March 13, 2025.",
-            "title": "Water Supply Operator Training and Certification",
-            "url": "https://msdh.ms.gov/msdhsite/index.cfm/30,23247,76,138,html"
+            "url": "https://msdh.ms.gov/page/resources/20537.pdf",
+            "title": "Mississippi - Drinking water certification handbook",
+            "evidence": "Describes Bureau-controlled drinking-water certification examinations and candidate requirements."
           }
         ],
         "stream": "water-treatment",
@@ -2754,24 +2720,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Mississippi State Department of Health (MSDH), Bureau of Public Water Supply",
         "authorityUrl": "https://msdh.ms.gov/msdhsite/index.cfm/30,23247,76,138,html",
-        "examSystem": "unverified",
-        "localLevels": "Class E for distribution-only operators; Class A–D waterworks responsible-charge certificates also encompass their systems' distribution operations. No separate numbered distribution ladder verified.",
-        "note": "Distribution certification is offered through the waterworks program, specifically Class E for distribution-only duties. No evidence establishes Class E as any WPI standardized distribution class, or proves standardized/customized/state-specific exam provenance.",
+        "examSystem": "state-specific",
+        "localLevels": "Class E is the local distribution-only and purchased-water system credential.",
+        "note": "Mississippi rules state that the Bureau prepares written examinations. Class E covers distribution-only operators, but no WPI Class I equivalence is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Rule 2.2.1(1): Class E covers systems that purchase water without additional treatment and 'waterworks operators whose only job responsibility is the operation and maintenance of the distribution system(s).' Rule 2.3.5 requires the Bureau's written examination. The responsible-charge definition includes treatment plants, wells and distribution systems.",
-            "title": "Bureau of Public Water Supply regulations, Chapter 2",
-            "url": "https://msdh.ms.gov/page//resources/3275.pdf"
+            "url": "https://msdh.ms.gov/page/resources/3275.pdf",
+            "title": "Mississippi - Waterworks operator certification regulations",
+            "evidence": "States that the Bureau prepares written examinations and defines local Class D and Class E credentials."
           },
           {
-            "evidence": "All-classifications introduction assigns the certified operator responsibility for treatment facilities and distribution systems. Class E duties include residual checks past the master meter and within distribution.",
-            "title": "Public Water System Operations Manual, May 2019",
-            "url": "https://msdh.ms.gov/msdhsite/index.cfm/30,8153,76,pdf/Water_System_Operations_Manual.pdf"
-          },
-          {
-            "evidence": "PSI administration and an ABC formula table are documented, but standardized distribution exam adoption and Class E correspondence are not.",
-            "title": "MSDH PSI Computer-Based Testing Information Bulletin",
-            "url": "https://msdh.ms.gov/msdhsite/index.cfm/30,14417,76,pdf/Water_Operator_Exam_Handbook.pdf"
+            "url": "https://msdh.ms.gov/page/resources/20537.pdf",
+            "title": "Mississippi - Drinking water certification handbook",
+            "evidence": "Describes Bureau-controlled drinking-water certification examinations and candidate requirements."
           }
         ],
         "stream": "water-distribution",
@@ -2849,21 +2810,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "The January 1, 2027 WPI standardized rollout and crosswalk are explicit, but future adoption is not evidence of standardized exams at the requested cutoff. All current verifiedSharedLevels therefore remain empty.",
       "PSI delivery and MoDNR's WPI contract do not establish the construction of the existing exams; legacy customized-WPI versus state-specific status remains unverified.",
       "The current MWEA resources page's DOCX exam application was not readable through extraction and direct downloads returned HTTP 403. A separate MWEA application PDF establishes voluntary A-D grades, but its agreement with the latest revision remains unverified.",
-      "No Missouri-regulation-specific exam content was verified, so no regulations module is asserted as an established exam requirement."
+      "No Missouri-regulation-specific exam content was verified, so no regulations module is asserted as an established exam requirement.",
+      "October 11, 2026 update: Missouri treatment is intentionally held until the announced January 1, 2027 WPI transition. Missouri distribution System 1 maps to WPI Class II, not the existing Class I course."
     ],
     "name": "Missouri",
     "streams": [
       {
         "authorityName": "Missouri Department of Natural Resources (MoDNR), Operator Certification Unit",
         "authorityUrl": "https://dnr.mo.gov/water/business-industry-other-entities/professional-certifications-training/drinking-wastewater-operator",
-        "examSystem": "unverified",
-        "localLevels": "Drinking Water D; Drinking Water C; Drinking Water B; Drinking Water A",
-        "note": "At the requested cutoff, existing Missouri exams precede the explicitly announced January 1, 2027 WPI standardized transition. The sources do not establish whether those existing exams are WPI-customized or independently state-developed. The announced future crosswalk D→1, C→2, B→3, A→4 must not be applied to October 2026 shared routing.",
+        "examSystem": "mixed",
+        "localLevels": "Drinking Water D is the local entry treatment credential. It maps to WPI Water Treatment Class I only after Missouri's January 1, 2027 transition.",
+        "note": "Missouri DNR has announced WPI standardized computer-based exams starting January 1, 2027. Its official crosswalk maps Drinking Water D to WPI Water Treatment Class I. The current state exam remains in force until that transition, so shared routing is intentionally inactive today.",
         "sources": [
           {
-            "evidence": "Lists Drinking Water A, B, C and D. Under New 2027 Exams: the department will transition to standardized exams through WPI; 'The new exams will go live Jan. 1, 2027,' with existing exams available until the switch.",
-            "title": "Operator Certification Exams  -  MoDNR",
-            "url": "https://dnr.mo.gov/water/business-industry-other-entities/professional-certifications-training/drinking-wastewater-operator/exams"
+            "url": "https://dnr.mo.gov/water/business-industry-other-entities/professional-certifications-training/drinking-wastewater-operator/exams",
+            "title": "Missouri DNR - Operator exams",
+            "evidence": "Announces the January 1, 2027 WPI standardized exam transition and current exam availability."
+          },
+          {
+            "url": "https://dnr.mo.gov/document-search/drinking-water-treatment-operator-certification-pub2185/pub2185",
+            "title": "Missouri DNR - Drinking Water treatment certification",
+            "evidence": "Provides the local Drinking Water D credential and the state crosswalk context."
           }
         ],
         "stream": "water-treatment",
@@ -2872,14 +2839,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Missouri Department of Natural Resources (MoDNR), Operator Certification Unit",
         "authorityUrl": "https://dnr.mo.gov/water/business-industry-other-entities/professional-certifications-training/drinking-wastewater-operator",
-        "examSystem": "unverified",
-        "localLevels": "Distribution System 1; Distribution System 2; Distribution System 3",
-        "note": "The current legacy exam construction is unresolved: WPI-customized versus state-developed is not explicitly identified. The standardized transition is January 1, 2027, not October 2026. Its future crosswalk is Distribution System 1→WPI Class 2, 2→Class 3, 3→Class 4; no local equivalent to WPI Class 1 is listed.",
+        "examSystem": "mixed",
+        "localLevels": "Distribution System 1 is the local entry distribution credential. Missouri maps it to WPI Water Distribution Class II, not Class I.",
+        "note": "Missouri DNR has announced WPI standardized computer-based exams starting January 1, 2027. The local Distribution System 1 credential maps to WPI Class II, so the existing Class I distribution course is not a Missouri match.",
         "sources": [
           {
-            "evidence": "Separately lists Distribution System 3, 2 and 1 exam descriptions. The New 2027 Exams table maps these to Water Distribution Classes 4, 3 and 2, respectively, and specifies January 1, 2027 implementation.",
-            "title": "Operator Certification Exams  -  MoDNR",
-            "url": "https://dnr.mo.gov/water/business-industry-other-entities/professional-certifications-training/drinking-wastewater-operator/exams"
+            "url": "https://dnr.mo.gov/water/business-industry-other-entities/professional-certifications-training/drinking-wastewater-operator/exams",
+            "title": "Missouri DNR - Operator exams",
+            "evidence": "Announces the January 1, 2027 WPI standardized exam transition."
+          },
+          {
+            "url": "https://dnr.mo.gov/print/document-search/pub2184",
+            "title": "Missouri DNR - Distribution certification",
+            "evidence": "Provides the local Distribution System 1 credential and state correspondence context."
           }
         ],
         "stream": "water-distribution",
@@ -3068,26 +3040,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Assessment target: October 3, 2026. Eight official source URLs were opened; live access occurred October 4, 2026. This is not an archived snapshot of every page on the target date.",
       "Water authority roles are not fully reconciled: the current DWEE program page describes coordination with its department’s licensure unit, while its published March 2025 Title 179 explicitly names DHHS Division of Public Health as licensor. Both roles are reported rather than asserting an unsupported legal transfer.",
       "The water licensing brochure opened is dated December 17, 2019 and was not treated as controlling evidence for current authority. Current posted Title 179 and the live DWEE program page were used instead.",
-      "No explicit standardized WPI examination scope and local-grade-to-WPI-class correspondence were established in any stream; all verifiedSharedLevels are empty. Customized ABC wastewater exams are positively verified; water examination origin and any separate collection program remain unverified."
+      "No explicit standardized WPI examination scope and local-grade-to-WPI-class correspondence were established in any stream; all verifiedSharedLevels are empty. Customized ABC wastewater exams are positively verified; water examination origin and any separate collection program remain unverified.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Nebraska",
     "streams": [
       {
         "authorityName": "Nebraska DWEE Drinking Water Field Services & Training / Operator Certification Program; published Title 179 identifies DHHS Division of Public Health as licensor",
         "authorityUrl": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and",
-        "examSystem": "unverified",
-        "localLevels": "Grade I, Grade II, Grade III, Grade IV, Grade V (combined public-water-system licenses, not separate treatment grades). Grade VI is a separate backflow-preventer testing/repair license; provisional licenses are available for Grades I–IV.",
-        "note": "Title 179 establishes a combined treatment/distribution credential: Grade I is the highest system level, Grade IV the basic community/non-transient level, and Grade V the transient-system level. Grades III→II→I have sequential examination prerequisites. Opened official sources establish state-approved validated examinations and DWEE-developed training, but do not explicitly establish who develops the examinations or standardized/customized WPI status. Training authorship is not examination authorship; no WPI class correspondence verified.",
+        "examSystem": "state-specific",
+        "localLevels": "Nebraska uses one combined public-water-system Grade I to V ladder; Grade IV is entry and Grade I is the highest license.",
+        "note": "Nebraska does not publish separate treatment or distribution Class I pathways. Its combined public-water-system Grade I exam is state-defined and not established as a WPI Class I treatment exam. Shared routing is off.",
         "sources": [
           {
-            "evidence": "10-002 defines Department as DHHS Division of Public Health and operator in responsible charge as covering a public water system, water treatment facility and/or distribution system. 10-005.01 lists Grade I–VI; Grades I–III require validated examinations recommended by the Council and approved by the Director.",
-            "title": "Title 179 Public Water Systems, effective March 18, 2025  -  Chapter 10",
-            "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20179%20Effective%2003-18-2025.pdf"
+            "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20179%20Effective%2003-18-2025.pdf",
+            "title": "Nebraska Title 179 - Water operator licensure",
+            "evidence": "Defines Nebraska combined public-water-system operator grades and examination requirements."
           },
           {
-            "evidence": "The program coordinates with the department’s licensure unit on issuance, reinstatement and renewal; FS&T staff develop training courses and administer and score examinations. The page does not identify an examination developer or WPI standardized exam.",
-            "title": "Drinking Water Field Services & Training Operator Certification and Training",
-            "url": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and"
+            "url": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and",
+            "title": "Nebraska DWEE - Operator certification",
+            "evidence": "Describes the drinking-water operator licensing program and local grade structure."
           }
         ],
         "stream": "water-treatment",
@@ -3096,19 +3069,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Nebraska DWEE Drinking Water Field Services & Training / Operator Certification Program; published Title 179 identifies DHHS Division of Public Health as licensor",
         "authorityUrl": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and",
-        "examSystem": "unverified",
-        "localLevels": "Grade I, Grade II, Grade III, Grade IV, Grade V under the combined public-water-system license; no separate distribution-grade series identified. Related Grade VI is backflow-preventer testing/repair, not a distribution Class VI.",
-        "note": "Distribution coverage is explicitly supported by Chapter 10, not inferred from a treatment webpage. System classifications incorporate distribution populations and purchased-water systems. Exam provenance and standardized WPI class mapping remain unverified for this combined credential.",
+        "examSystem": "state-specific",
+        "localLevels": "Nebraska uses one combined public-water-system Grade I to V ladder; Grade IV is entry and Grade I is the highest license.",
+        "note": "Nebraska does not publish separate treatment or distribution Class I pathways. Its combined public-water-system Grade I exam is state-defined and not established as a WPI Class I distribution exam. Shared routing is off.",
         "sources": [
           {
-            "evidence": "Operator in responsible charge explicitly includes a distribution system; public water system includes treatment, storage and distribution facilities. 10-004 classifies distribution and purchased-water systems within Classes I–V; 10-005 establishes corresponding Grade I–V operator licenses and separate Grade VI backflow certification.",
-            "title": "Title 179 Public Water Systems  -  Chapter 10, §§10-002 through 10-005",
-            "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20179%20Effective%2003-18-2025.pdf"
+            "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20179%20Effective%2003-18-2025.pdf",
+            "title": "Nebraska Title 179 - Water operator licensure",
+            "evidence": "Defines Nebraska combined public-water-system operator grades and examination requirements."
           },
           {
-            "evidence": "DWEE’s program ensures public water systems have licensed operators; staff administer and score water-operator examinations and coordinate licensing. No separate distribution examination developer or standardized WPI scope is stated.",
-            "title": "Drinking Water Field Services & Training Operator Certification and Training",
-            "url": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and"
+            "url": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and",
+            "title": "Nebraska DWEE - Operator certification",
+            "evidence": "Describes the drinking-water operator licensing program and local grade structure."
           }
         ],
         "stream": "water-distribution",
@@ -3171,51 +3144,56 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "No unique Nevada or customized ABC exam syllabus was verified, so no dedicated unique-exam course is asserted. Drinking-water exam identity and grade-to-class mappings require authoritative confirmation before shared-course routing.",
       "NDEP identifies drinking-water program rules as NRS 445A.875–445A.880 and NAC 445A.617–445A.652, and wastewater-treatment rules as NAC 445A.287–445A.292; this does not prove a separately tested Nevada-regulations module.",
       "NWEA's policy page says its full policy/procedures manual is unavailable while being updated for new regulations. The opened written-exam policy adds logistics, not class correspondence.",
-      "Generic WPI links, delivery arrangements, reciprocity provisions and search snippets were not used as proof of standardized exam use. No operator records were accessed."
+      "Generic WPI links, delivery arrangements, reciprocity provisions and search snippets were not used as proof of standardized exam use. No operator records were accessed.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Nevada",
     "streams": [
       {
         "authorityName": "Nevada Division of Environmental Protection (NDEP), Bureau of Safe Drinking Water",
         "authorityUrl": "https://ndep.nv.gov/water/operator-certification/drinking-water",
-        "examSystem": "unverified",
-        "localLevels": "Water Treatment Grade 1, Grade 2, Grade 3, Grade 4; Full and Operator-in-Training (OIT) certification statuses.",
-        "note": "NDEP certifies treatment operators separately from distribution operators. Its current page links WPI study resources and identifies PSI delivery, but neither establishes that Nevada uses standardized rather than customized ABC/WPI exams. The linked computerized-exam instructions identify Nevada-branded exams without specifying exam construction. Standardized scope and grade-to-WPI-class correspondence remain unverified.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Treatment Grade 1 through Grade 4; Grade 1 is the local Class I-equivalent treatment credential.",
+        "note": "An NDEP official examination report directly pairs Treatment Grade 1 with the ABC Water Treatment Class I Exam. Shared WPI Class I treatment routing is verified.",
         "sources": [
           {
-            "evidence": "Certificates are issued by NDEP; implementation is under its Bureau of Safe Drinking Water. The requirements table lists Grades 1–4 and the page distinguishes treatment and distribution certificates. Exam resources include a WPI study-resource link and PSI computerized testing.",
-            "title": "NDEP  -  Drinking Water Operator Certification",
-            "url": "https://ndep.nv.gov/water/operator-certification/drinking-water"
+            "url": "https://ndep.nv.gov/water/operator-certification/drinking-water",
+            "title": "Nevada NDEP - Drinking water operator certification",
+            "evidence": "Lists separate treatment and distribution Grade 1 to 4 certification pathways and official WPI study resources."
           },
           {
-            "evidence": "Applicants select their approved examination from eight ‘Nevada Drinking Water Operator Distribution/Treatment’ exams. The document does not identify standardized or customized ABC/WPI examinations.",
-            "title": "NDEP  -  Drinking Water Operator Certification: Computerized Examination Information",
-            "url": "https://ndep.nv.gov/uploads/water-opcert-dw-program-docs/Instructions_for_computerized_exams_20211221_draft.docx"
+            "url": "https://ndep.nv.gov/uploads/water-opcert-dw-program-docs/2019_June_Exam_Summary.pdf",
+            "title": "Nevada NDEP - Examination report",
+            "evidence": "Pairs Nevada Treatment Grade 1 with the ABC Water Treatment Class I examination."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Nevada Division of Environmental Protection (NDEP), Bureau of Safe Drinking Water",
         "authorityUrl": "https://ndep.nv.gov/water/operator-certification/drinking-water",
-        "examSystem": "unverified",
-        "localLevels": "Water Distribution Grade 1, Grade 2, Grade 3, Grade 4; Full and Operator-in-Training (OIT) certification statuses.",
-        "note": "Separate distribution certification is confirmed. PSI delivery and the WPI study-resource link do not prove standardized ABC/WPI exam use. No explicit current standardized scope or Nevada-grade-to-WPI-class correspondence was established.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Distribution Grade 1 through Grade 4; Grade 1 is the local Class I-equivalent distribution credential.",
+        "note": "An NDEP official examination report directly pairs Distribution Grade 1 with the ABC Water Distribution Class I Exam. Shared WPI Class I distribution routing is verified.",
         "sources": [
           {
-            "evidence": "The program covers drinking-water treatment plants and distribution systems; the requirements table lists Grades 1–4. The page gives distribution examples ‘D2 Full’ and ‘D3 OIT’ and requires separate continuing education for treatment and distribution certificates.",
-            "title": "NDEP  -  Drinking Water Operator Certification",
-            "url": "https://ndep.nv.gov/water/operator-certification/drinking-water"
+            "url": "https://ndep.nv.gov/water/operator-certification/drinking-water",
+            "title": "Nevada NDEP - Drinking water operator certification",
+            "evidence": "Lists separate treatment and distribution Grade 1 to 4 certification pathways and official WPI study resources."
           },
           {
-            "evidence": "Instructions identify eight Nevada Distribution/Treatment exams delivered through PSI, but do not describe them as standardized ABC/WPI exams.",
-            "title": "NDEP  -  Drinking Water Operator Certification: Computerized Examination Information",
-            "url": "https://ndep.nv.gov/uploads/water-opcert-dw-program-docs/Instructions_for_computerized_exams_20211221_draft.docx"
+            "url": "https://ndep.nv.gov/uploads/water-opcert-dw-program-docs/2019_June_Exam_Summary.pdf",
+            "title": "Nevada NDEP - Examination report",
+            "evidence": "Pairs Nevada Distribution Grade 1 with the ABC Water Distribution Class I examination."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Nevada Division of Environmental Protection (NDEP), Bureau of Water Pollution Control; Nevada Water Environment Association (NWEA) administers the program under contract",
@@ -3278,7 +3256,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Eight distinct source URLs were opened. The official NHDES water-certification overview PDF could not be extracted and its direct download returned HTTP 403; it supplies no evidence here.",
       "No stream has sufficient evidence for verified shared WPI Classes 1–4. Computer-based delivery and reciprocity provisions were not treated as standardized-exam proof.",
       "NEWEA directly documents its voluntary collection program and NH applicability, but the opened NHDES sources do not independently document a state designation of NEWEA or a separate mandatory NH collection certificate.",
-      "Water Grades I–IV need an authoritative current examination outline or explicit examination-system confirmation before choosing standardized, customized or dedicated-exam course routing."
+      "Water Grades I–IV need an authoritative current examination outline or explicit examination-system confirmation before choosing standardized, customized or dedicated-exam course routing.",
+      "October 11, 2026 update: State sources verify the local credential but do not meet Echelon's evidence bar for a standardized WPI/ABC Class I match. Shared routing remains off."
     ],
     "name": "New Hampshire",
     "streams": [
@@ -3286,18 +3265,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "New Hampshire Department of Environmental Services (NHDES), Water Works Operator Certification Program",
         "authorityUrl": "https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification",
         "examSystem": "unverified",
-        "localLevels": "Grade IA: combined treatment and distribution certification; treatment Grades I, II, III and IV. Operator-in-Training provisions for Grades I, II and III.",
-        "note": "Mandatory water-works certification. Official sources establish the grades and availability of treatment Grades I–IV computer-based exams, but do not identify standardized WPI/ABC versus customized ABC or state-developed examinations. No local-grade-to-standardized-WPI-class mapping verified; Grade IA must not be mapped to Class I.",
+        "localLevels": "Treatment Grade I through Grade IV; Grade 1A is a separate combined small-system credential.",
+        "note": "New Hampshire offers local Treatment Grade I examinations, but current qualifying state sources do not name the exam publisher or establish WPI standardized Class I use. Shared routing remains off.",
         "sources": [
           {
-            "evidence": "Lists five grades from 1A through 4 and explicitly offers computer-based Treatment and Distribution grades I–IV exams.",
-            "title": "Water Works Operator Certification  -  NHDES",
-            "url": "https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification"
+            "url": "https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification",
+            "title": "New Hampshire DES - Operator certification",
+            "evidence": "Describes local treatment and distribution operator certification grades and requirements."
           },
           {
-            "evidence": "Applications distinguish 'grade IA combined distribution and treatment certification' from Grade I–IV treatment or distribution certifications. The department administers written examinations; no standardized WPI/ABC scope is specified.",
-            "title": "Env-Dw 500, especially 502.05(c)(2) and 502.07  -  NH Administrative Rules",
-            "url": "https://gc.nh.gov/rules/state_agencies/env-dw500.html"
+            "url": "https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/2020-01/dwgb-10-1.pdf",
+            "title": "New Hampshire - Operator certification information",
+            "evidence": "Describes Grade I to IV and combined Grade 1A local certification pathways."
           }
         ],
         "stream": "water-treatment",
@@ -3307,18 +3286,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "New Hampshire Department of Environmental Services (NHDES), Water Works Operator Certification Program",
         "authorityUrl": "https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification",
         "examSystem": "unverified",
-        "localLevels": "Grade IA: combined distribution and treatment certification; distribution Grades I, II, III and IV. Operator-in-Training provisions for Grades I, II and III.",
-        "note": "Distribution is separately identified in official rules and exam availability, not inferred from treatment certification. Standardized WPI/ABC adoption, customized ABC use and class correspondence remain unverified.",
+        "localLevels": "Distribution Grade I through Grade IV; Grade 1A is a separate combined small-system credential.",
+        "note": "New Hampshire offers local Distribution Grade I examinations, but current qualifying state sources do not name the exam publisher or establish WPI standardized Class I use. Shared routing remains off.",
         "sources": [
           {
-            "evidence": "Expressly provides Grade I, II, III or IV 'treatment certification, distribution certification, or both certifications,' with Grade IA combined.",
-            "title": "Env-Dw 500, especially 502.05(c)(2) and 502.07  -  NH Administrative Rules",
-            "url": "https://gc.nh.gov/rules/state_agencies/env-dw500.html"
+            "url": "https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification",
+            "title": "New Hampshire DES - Operator certification",
+            "evidence": "Describes local treatment and distribution operator certification grades and requirements."
           },
           {
-            "evidence": "Computer-based certification exams are available for 'Treatment and Distribution grades I-IV'; the page does not establish the examination developer or standardized scope.",
-            "title": "Water Works Operator Certification  -  NHDES",
-            "url": "https://www.des.nh.gov/water/drinking-water/public-water-systems/operator-certification"
+            "url": "https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/2020-01/dwgb-10-1.pdf",
+            "title": "New Hampshire - Operator certification information",
+            "evidence": "Describes Grade I to IV and combined Grade 1A local certification pathways."
           }
         ],
         "stream": "water-distribution",
@@ -3599,7 +3578,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
     "limits": [
       "Public sources were accessed October 4, 2026 for the requested October 3, 2026 cutoff. No archived cutoff-day snapshot was verified; referenced dated exam changes precede that cutoff.",
       "Exploration capped at eight source opens, all official NYSDOH/NYSDEC or state-designated NYWEA sources. Linked WPI need-to-know PDFs were not opened; their grade-to-class link labels were observed on NYWEA pages.",
-      "Unverified means exam provenance or standardized/customized status was not established, not that certification is unsupported or unavailable. ABC branding, study-resource links, PSI delivery and reciprocity were not treated as standardized-exam proof."
+      "Unverified means exam provenance or standardized/customized status was not established, not that certification is unsupported or unavailable. ABC branding, study-resource links, PSI delivery and reciprocity were not treated as standardized-exam proof.",
+      "October 11, 2026 update: State sources verify the local credential but do not meet Echelon's evidence bar for a standardized WPI/ABC Class I match. Shared routing remains off."
     ],
     "name": "New York",
     "streams": [
@@ -3607,18 +3587,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "New York State Department of Health (NYSDOH), Bureau of Water Supply Protection",
         "authorityUrl": "https://www.health.ny.gov/environmental/water/drinking/operate/operate.htm",
         "examSystem": "unverified",
-        "localLevels": "Grade IA; Grade IIA; Grade IB; Grade IIB; Grade C",
-        "note": "NYSDOH requires validated examinations, but the opened sources do not identify their developer or establish standardized WPI, customized ABC, or independently state-developed exams. Do not map these local grades to WPI Classes I–IV. IA/IIA concern filtration plants; IB/IIB concern plants without clarification; C includes basic treatment serving 1,000 people or fewer.",
+        "localLevels": "New York Grade C is the practical entry treatment credential; grades IA, IIA, IB and IIB are separate local treatment paths.",
+        "note": "New York requires grade-specific validated examinations and state-specific courses, experience and local credential grades. Current NYSDOH sources do not identify a WPI standardized Class I treatment form or a WPI crosswalk, so shared routing remains off.",
         "sources": [
           {
-            "evidence": "Table 5-4.2 identifies treatment classifications IA, IIA, IB, IIB and C. Upon approval, 'the Department will issue a certificate that specifies the operator grade.'",
-            "title": "Section 5-4.2  -  Certification required",
-            "url": "https://regs.health.ny.gov/content/section-5-42-certification-required"
+            "url": "https://www.health.ny.gov/environmental/water/drinking/operate/operate.htm",
+            "title": "New York DOH - Water system operator certification",
+            "evidence": "Describes New York drinking-water operator certification and local training pathways."
           },
           {
-            "evidence": "'Anyone applying for certification must pass a written, oral and/or practical skills validated examination.' This establishes an examination requirement, not its standardized WPI status.",
-            "title": "Operator Certification Program  -  Information Sheet",
-            "url": "https://www.health.ny.gov/environmental/water/drinking/operate/opcertfs.htm"
+            "url": "https://regs.health.ny.gov/content/section-5-45-validated-examinations",
+            "title": "New York regulation - Validated examinations",
+            "evidence": "Defines the state grade-specific validated examination requirement."
           }
         ],
         "stream": "water-treatment",
@@ -3628,18 +3608,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "New York State Department of Health (NYSDOH), Bureau of Water Supply Protection",
         "authorityUrl": "https://www.health.ny.gov/environmental/water/drinking/operate/operate.htm",
         "examSystem": "unverified",
-        "localLevels": "Grade C; Grade D",
-        "note": "Grade C applies to distribution serving 1,000 people or fewer; Grade D applies above 1,000 people and/or purchasing-water systems with distribution-only responsibility. C also covers some treatment systems. Validated exams are required, but exam provenance and standardized WPI equivalence remain unverified; treatment certificates must not automatically be treated as distribution credentials.",
+        "localLevels": "New York Grade C and Grade D are local distribution credentials depending on system scope.",
+        "note": "New York requires grade-specific validated examinations and state-specific courses, experience and local credential grades. Current NYSDOH sources do not identify a WPI standardized Class I distribution form or a WPI crosswalk, so shared routing remains off.",
         "sources": [
           {
-            "evidence": "Section (a)(5): 'The only grades certified to operate distribution systems are Grade C' for systems serving 1,000 people or less, and 'Grade D' for larger and/or distribution-only purchasing-water systems.",
-            "title": "Section 5-4.2  -  Certification required",
-            "url": "https://regs.health.ny.gov/content/section-5-42-certification-required"
+            "url": "https://www.health.ny.gov/environmental/water/drinking/operate/operate.htm",
+            "title": "New York DOH - Water system operator certification",
+            "evidence": "Describes New York drinking-water operator certification and local training pathways."
           },
           {
-            "evidence": "The program requires a 'written, oral and/or practical skills validated examination'; it does not expressly name standardized WPI/ABC distribution exams.",
-            "title": "Operator Certification Program  -  Information Sheet",
-            "url": "https://www.health.ny.gov/environmental/water/drinking/operate/opcertfs.htm"
+            "url": "https://regs.health.ny.gov/content/section-5-45-validated-examinations",
+            "title": "New York regulation - Validated examinations",
+            "evidence": "Defines the state grade-specific validated examination requirement."
           }
         ],
         "stream": "water-distribution",
@@ -3703,31 +3683,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Exploration stopped at eight source opens, including one failed OAH water-rule extraction. No search snippets were used as proof.",
       "The current OAH 18D HTML endpoint returned no extractable content. Water grade names and detailed rule provisions rely on the 2018 compilation still linked by DEQ's FAQ; subsequent amendments were not independently verified.",
       "All four exam systems remain unverified, not unsupported or not offered. State administration, local regulatory content and grade-specific NTKs do not by themselves establish state authorship or distinguish standardized from customized ABC examinations.",
-      "No explicit standardized WPI/ABC scope plus local-grade/WPI-class correspondence was established for any stream; all verifiedSharedLevels arrays are therefore empty. Reciprocity references were not treated as exam-system proof."
+      "No explicit standardized WPI/ABC scope plus local-grade/WPI-class correspondence was established for any stream; all verifiedSharedLevels arrays are therefore empty. Reciprocity references were not treated as exam-system proof.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "North Carolina",
     "streams": [
       {
         "authorityName": "Water Treatment Facility Operators Board of Certification (WTFOCB), North Carolina Department of Environmental Quality",
         "authorityUrl": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_90A.html",
-        "examSystem": "unverified",
-        "localLevels": "Grade C-Surface, Grade B-Surface, Grade A-Surface; Grade D-Well, Grade C-Well, Grade B-Well, Grade A-Well.",
-        "note": "Separate surface-water and well-water ladders, not a single four-class ladder. Official evidence establishes state administration, NC drinking-water-rule content and an examination designed for the applicant's local class, but does not explicitly identify standardized WPI/ABC, customized ABC, or independently state-developed examinations. No WPI class correspondence verified. Grade names come from the DEQ-linked 2018 rule compilation; current codification could not be extracted.",
+        "examSystem": "state-specific",
+        "localLevels": "North Carolina local entry treatment credentials are C-Surface and D-Well, with distinct source-specific exam tracks.",
+        "note": "North Carolina DEQ administers state treatment exams with North Carolina Needs To Know material and Board-approved school requirements. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Sections 90A-20.1 and 90A-21 identify the Water Treatment Facility Operators Board of Certification within DEQ; section 90A-24 assigns it certification requirements and examination procedures.",
-            "title": "North Carolina General Statutes, Chapter 90A, Article 2",
-            "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_90A.html"
+            "url": "https://www.deq.nc.gov/about/divisions/water-resources/operator-certification/drinking-water-operator-certification/dw-operator-certification-exams",
+            "title": "North Carolina DEQ - Drinking water operator exams",
+            "evidence": "Describes the North Carolina state examination program and local treatment and distribution tracks."
           },
           {
-            "evidence": "'The examinations are administered by the State'; exam subjects include 'North Carolina public drinking water rules.' These statements establish administration/content, not examination authorship or WPI standardization.",
-            "title": "DW Operator Certification: FAQs",
-            "url": "https://www.deq.nc.gov/about/divisions/water-resources/operator-certification/drinking-water-operator-certification/dw-operator-certification-faqs"
-          },
-          {
-            "evidence": "Rule .0201 lists C/B/A-Surface and D/C/B/A-Well with corresponding Board-approved schools; .0202 requires 'an examination designed for the class of certification for which the applicant is applying.'",
-            "title": "Rules Governing Water Treatment Facility Operators  -  15A NCAC 18D (2018 compilation)",
-            "url": "https://files.nc.gov/ncdeq/Water+Quality/Operator_Certification_Files/DW_Files/18D_2018.pdf"
+            "url": "https://www.deq.nc.gov/water-quality/operator-certification-files/dw-files/needs-knows-2021-well-and-surfacepdf/download?attachment",
+            "title": "North Carolina - Well and Surface Needs To Know",
+            "evidence": "Provides local treatment topics including North Carolina rules and source-specific content."
           }
         ],
         "stream": "water-treatment",
@@ -3736,24 +3712,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Water Treatment Facility Operators Board of Certification (WTFOCB), North Carolina Department of Environmental Quality",
         "authorityUrl": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_90A.html",
-        "examSystem": "unverified",
-        "localLevels": "Grade D-Distribution, Grade C-Distribution, Grade B-Distribution, Grade A-Distribution. Separate related certification: Grade Cross-Connection Control (CC), not a fifth distribution grade.",
-        "note": "Distribution is explicitly addressed in the water-operator statute and rules; it is not inferred solely from treatment evidence. Rule .0206(c) requires certified distribution operators in responsible charge for community/non-transient non-community systems, subject to specified small-system exemptions and D-system alternatives. Standardized versus customized ABC versus state-developed exam remains unverified; D/C/B/A must not be translated into WPI I/II/III/IV without explicit correspondence.",
+        "examSystem": "state-specific",
+        "localLevels": "North Carolina D-Distribution is the local entry distribution credential.",
+        "note": "North Carolina DEQ administers state distribution exams with North Carolina Needs To Know material and Board-approved school requirements. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Section 90A-32 gives the Board authority over certification of personnel operating the distribution portion of a water treatment facility; the statute permits voluntary or mandatory programs, while the implementing rule specifies actual obligations.",
-            "title": "North Carolina General Statutes, Chapter 90A, Article 2",
-            "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_90A.html"
+            "url": "https://www.deq.nc.gov/about/divisions/water-resources/operator-certification/drinking-water-operator-certification/dw-operator-certification-exams",
+            "title": "North Carolina DEQ - Drinking water operator exams",
+            "evidence": "Describes the North Carolina state examination program and local treatment and distribution tracks."
           },
           {
-            "evidence": "Rule .0201(8)-(12) lists D/C/B/A-Distribution and separate Cross-Connection Control; .0206(c) specifies distribution ORC certification requirements and exceptions. C-Distribution and specified B-Distribution pathways require Board-approved trench-shoring training.",
-            "title": "Rules Governing Water Treatment Facility Operators  -  15A NCAC 18D",
-            "url": "https://files.nc.gov/ncdeq/Water+Quality/Operator_Certification_Files/DW_Files/18D_2018.pdf"
-          },
-          {
-            "evidence": "The state-administered exam subject list explicitly includes 'distribution system operation,' backflow prevention, hydraulics, pumping and storage; it does not identify a standardized WPI distribution exam.",
-            "title": "DW Operator Certification: FAQs",
-            "url": "https://www.deq.nc.gov/about/divisions/water-resources/operator-certification/drinking-water-operator-certification/dw-operator-certification-faqs"
+            "url": "http://files.nc.gov/ncdeq/Water%20Quality/Operator_Certification_Files/DW_Files/DW_Downloads/Distribution-NTK-52119.pdf",
+            "title": "North Carolina - Distribution Needs To Know",
+            "evidence": "Provides local distribution topics including North Carolina rules and operator-certification requirements."
           }
         ],
         "stream": "water-distribution",
@@ -3822,26 +3793,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "No opened source explicitly establishes current standardized WPI/ABC scope plus North Dakota grade-to-WPI-class correspondence. All verifiedSharedLevels therefore remain empty; unverified does not mean the exams are not offered or conclusively non-WPI.",
       "The 2026 annual report's exam narrative concerns drinking water. Wastewater conclusions rely independently on four-stream rules and stream-specific study guides; its legislative appendix supports statewide authority and exemptions, not wastewater exam-bank identity.",
       "Third-party authorization and a discussed migration do not establish provider, standardized versus customized product, grade scope, or implementation date. The report describes January 2027 operational changes, which are not treated as completed by this cutoff.",
-      "Undated live pages cannot establish every historical change date. Linked study guides are dated December 2020; the requirements bulletin contains legacy administrative details. Current amended rules were prioritized for grade names, and no pass/coverage claims are made."
+      "Undated live pages cannot establish every historical change date. Linked study guides are dated December 2020; the requirements bulletin contains legacy administrative details. Current amended rules were prioritized for grade names, and no pass/coverage claims are made.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "North Dakota",
     "streams": [
       {
         "authorityName": "North Dakota Department of Environmental Quality, Division of Municipal Facilities  -  Operator Certification and Training",
         "authorityUrl": "https://deq.nd.gov/MF/OperatorCertification/",
-        "examSystem": "unverified",
-        "localLevels": "Grade IA, Grade I, Grade II, Grade III, Grade IV; corresponding facility Classes IA, I, II, III, IV.",
-        "note": "Certification and local grades are verified. The July 2026 report documents North Dakota's exam-review process and state-administered examinations, but does not explicitly identify the current exam bank as state-specific, standardized WPI/ABC, or customized ABC. Its appended September 2025 minutes describe ABC testing exploration as ongoing; third-party examination authority/planning is not proof of adoption. No local-grade-to-WPI-class correspondence established.",
+        "examSystem": "state-specific",
+        "localLevels": "North Dakota Grade I water-treatment facility is a local state certification grade.",
+        "note": "North Dakota rules require the Department to develop and administer the relevant treatment exam. The 2026 program report says ABC testing exploration is ongoing, so shared WPI routing is intentionally off.",
         "sources": [
           {
-            "evidence": "Pages 6–7: a North Dakota group evaluates exam changes and validates questions; NDDEQ staff conducted examinations. Page 40: 'Exploration of ABC testing – Ongoing.' Page 42 discusses a move to third-party examination services without identifying an adopted exam product.",
-            "title": "North Dakota Operator Certification Program  -  2026 Annual Report to EPA",
-            "url": "https://deq.nd.gov/Publications/mf/North%20Dakota%20Operator%20Certification%20Program%202026.pdf"
+            "url": "https://ndlegis.gov/prod/acdata/pdf.bak/pdf/33.1-19-01.pdf",
+            "title": "North Dakota operator certification rules",
+            "evidence": "Requires Department-developed and administered examinations for local facility grades."
           },
           {
-            "evidence": "Section 11 establishes five operator grades for each of the four streams; section 12 names Grade IA, I, II, III and IV. Section 05 requires separate examinations for each facility/system classification, but names no exam bank.",
-            "title": "NDAC Chapter 33.1-19-01, amended effective April 1, 2026",
-            "url": "https://www.legis.nd.gov/information/acdata/pdf/33.1-19-01.pdf"
+            "url": "https://deq.nd.gov/Publications/mf/North%20Dakota%20Operator%20Certification%20Program%202026.pdf",
+            "title": "North Dakota DEQ - 2026 operator certification report",
+            "evidence": "States that ABC testing exploration is ongoing and describes state-administered examinations."
           }
         ],
         "stream": "water-treatment",
@@ -3850,19 +3822,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "North Dakota Department of Environmental Quality, Division of Municipal Facilities  -  Operator Certification and Training",
         "authorityUrl": "https://deq.nd.gov/MF/OperatorCertification/",
-        "examSystem": "unverified",
-        "localLevels": "Grade IA, Grade I, Grade II, Grade III, Grade IV; corresponding distribution-and-storage Classes IA, I, II, III, IV. A restricted water distribution 1A certificate is an alternative IA pathway, not a sixth regular grade.",
-        "note": "The alternative IA open-book booklet is explicitly a North Dakota, system-specific pathway. The ordinary IA–IV exam-bank identity remains unverified, so the whole stream cannot safely be labeled standardized, customized, or wholly state-specific. No WPI class mapping verified.",
+        "examSystem": "state-specific",
+        "localLevels": "North Dakota Grade I water distribution and storage system is a local state certification grade.",
+        "note": "North Dakota rules require the Department to develop and administer the relevant distribution exam. The 2026 program report says ABC testing exploration is ongoing, so shared WPI routing is intentionally off.",
         "sources": [
           {
-            "evidence": "Page 8 describes an EPA-approved open-book exam booklet for distribution systems under 500: returned to the Department for grading, yielding a six-month restricted distribution 1A certificate limited to the operator's system; after satisfying experience, a standard 1A certificate is issued. Pages 7 and 40 document local exam review and ongoing ABC exploration, not standardized adoption.",
-            "title": "North Dakota Operator Certification Program  -  2026 Annual Report to EPA",
-            "url": "https://deq.nd.gov/Publications/mf/North%20Dakota%20Operator%20Certification%20Program%202026.pdf"
+            "url": "https://ndlegis.gov/prod/acdata/pdf.bak/pdf/33.1-19-01.pdf",
+            "title": "North Dakota operator certification rules",
+            "evidence": "Requires Department-developed and administered examinations for local system grades."
           },
           {
-            "evidence": "Section 08.1 names distribution-and-storage Classes IA, I, II, III and IV; sections 11–12 establish and name the five operator grades. Section 05 permits department-designated third-party grading but identifies no provider or standardized exam.",
-            "title": "NDAC Chapter 33.1-19-01, amended effective April 1, 2026",
-            "url": "https://www.legis.nd.gov/information/acdata/pdf/33.1-19-01.pdf"
+            "url": "https://deq.nd.gov/Publications/mf/North%20Dakota%20Operator%20Certification%20Program%202026.pdf",
+            "title": "North Dakota DEQ - 2026 operator certification report",
+            "evidence": "States that ABC testing exploration is ongoing and describes state-administered examinations."
           }
         ],
         "stream": "water-distribution",
@@ -4078,26 +4050,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Water guide is dated 2008, wastewater guide 2017, and distribution/collection guide retains older terminology. Their outlines support local preparation needs, not proof of an unchanged 2026 examination blueprint or provider.",
       "No explicit standardized WPI/ABC scope plus local-grade-to-WPI-class correspondence was established; all verifiedSharedLevels are therefore empty. DEQ administration, 'validated examination,' and 'state certification exam' wording alone do not resolve state-authored versus customized or standardized vendor exams.",
       "Certification is required for covered operational decision-makers, with specified system/person exemptions. Chapter 710 also offers a special non-operational A–C certification for qualified environmental professionals that does not authorize system operation; it is not a separate verified standardized-exam route.",
-      "DedicatedCourseNeeds identifies supported Oklahoma-specific alignment needs, not a confirmed unique-exam authorship finding or any coverage/pass guarantee."
+      "DedicatedCourseNeeds identifies supported Oklahoma-specific alignment needs, not a confirmed unique-exam authorship finding or any coverage/pass guarantee.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Oklahoma",
     "streams": [
       {
         "authorityName": "Oklahoma Department of Environmental Quality (DEQ), Water Quality Division, Operator Certification Unit",
         "authorityUrl": "https://oklahoma.gov/deq/divisions/water-quality/operator-certification.html",
-        "examSystem": "unverified",
-        "localLevels": "Waterworks Operator: Class D, Class C, Class B, Class A (D entry; A highest).",
-        "note": "DEQ-approved validated examinations and Oklahoma-specific study outlines are documented. The opened official sources do not explicitly identify the current exams as WPI standardized, customized ABC/WPI, or state-authored; provider classification remains unverified. No supported local-letter-to-WPI-class correspondence.",
+        "examSystem": "state-specific",
+        "localLevels": "Waterworks Class D is the local entry treatment credential; Class A is highest.",
+        "note": "Oklahoma DEQ requires a classification-appropriate validated examination and publishes an Oklahoma Water System Operations study guide. It does not establish a WPI Class I treatment mapping, so shared routing is off.",
         "sources": [
           {
-            "evidence": "252:710-3-32(a): Waterworks/Wastewater Works Operator, 'Class A, B, C, and D available.' 252:710-1-6(b): validated examinations administered by 'DEQ or its designee.' 252:710-5-51 expressly includes water treatment plants.",
-            "title": "Chapter 710  -  Waterworks and Wastewater Works Operator Certification",
-            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/rules/710.pdf"
+            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/rules/710.pdf",
+            "title": "Oklahoma DEQ - Chapter 710",
+            "evidence": "Defines local waterworks credential classes and DEQ validated examination requirements."
           },
           {
-            "evidence": "Introduction pp. ii–iii: Class D is entry level, Class A most advanced; suggested references are used to prepare state certification exams. Pp. v–vi describe 12 competency areas corresponding to guide chapters, with separate D/C/B/A study emphasis.",
-            "title": "Water System Operations  -  State of Oklahoma Certification Study Guide",
-            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/water-division/completewatersystemsstudyguide7_08-1.pdf"
+            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/water-division/completewatersystemsstudyguide7_08-1.pdf",
+            "title": "Oklahoma DEQ - Water System Operations study guide",
+            "evidence": "Provides Oklahoma-specific certification study coverage and local class structure."
           }
         ],
         "stream": "water-treatment",
@@ -4106,19 +4079,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Oklahoma Department of Environmental Quality (DEQ), Water Quality Division, Operator Certification Unit",
         "authorityUrl": "https://oklahoma.gov/deq/divisions/water-quality/operator-certification.html",
-        "examSystem": "unverified",
-        "localLevels": "Combined Distribution and Collection Operator: Class C; combined Distribution and Collection Technician: Class T. Waterworks Operator Classes D, C, B, A also authorize distribution duties subject to system/responsibility requirements.",
-        "note": "Distribution is not a verified separate four-class WPI ladder. Oklahoma expressly provides combined distribution/collection C and T credentials. The older guide calls the technician Class D, but current rules specify Class T. Exam authorship and standardized-versus-customized WPI/ABC status remain unverified.",
+        "examSystem": "state-specific",
+        "localLevels": "Distribution and Collection Technician Class T and Operator Class C are local combined credentials.",
+        "note": "Oklahoma DEQ requires a classification-appropriate validated examination and publishes an Oklahoma Distribution and Collection study guide. The local combined ladder is not a WPI Class I distribution mapping, so shared routing is off.",
         "sources": [
           {
-            "evidence": "252:710-3-32(c)–(d): Distribution and Collection Operator 'Class C available'; Technician 'Class T available.' 252:710-5-51 and 5-58 expressly authorize distribution-system duties; 1-6 requires DEQ/designee-administered validated exams.",
-            "title": "Chapter 710  -  Waterworks and Wastewater Works Operator Certification",
-            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/rules/710.pdf"
+            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/rules/710.pdf",
+            "title": "Oklahoma DEQ - Chapter 710",
+            "evidence": "Defines local distribution and collection credential classes and DEQ validated examination requirements."
           },
           {
-            "evidence": "Introduction: preparation for technician/operator exams uses chapters one through six; exam categories 'correspond directly to the chapters and/or sections in this study guide.' Separate technician and operator guidelines cover distribution systems and local regulations.",
-            "title": "Distribution/Collection Certification Study Guide",
-            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/water-division/distribution-collection_study_guide.pdf"
+            "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/water-division/distribution-collection_study_guide.pdf",
+            "title": "Oklahoma DEQ - Distribution and Collection study guide",
+            "evidence": "Provides Oklahoma-specific certification study coverage and local credential structure."
           }
         ],
         "stream": "water-distribution",
@@ -4178,51 +4151,56 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Requested reference date is October 3, 2026. Sources were opened live on October 4, 2026; no archived October 3 snapshot comparison was obtained. DEQ's examination adoption notice has an explicit May 1, 2025 effective date.",
       "Eight source opens were used. OHA's Operator Exam FAQs and the Secretary of State's wastewater rules division returned no substantive rule/FAQ text. DEQ's PSI handbook contained delivery policies, not a grade-to-class crosswalk.",
       "The complete local wastewater grade ladder and explicit per-stream local Grade-to-WPI Class correspondence were not independently established in the acquired text. Empty verifiedSharedLevels arrays deliberately prevent unsupported grade routing.",
-      "ABC study criteria, formula sheets, PSI delivery, and reciprocity language were not treated as proof of standardized exams. Mandatory versus voluntary status of ancillary credentials was not fully verified."
+      "ABC study criteria, formula sheets, PSI delivery, and reciprocity language were not treated as proof of standardized exams. Mandatory versus voluntary status of ancillary credentials was not fully verified.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Oregon",
     "streams": [
       {
         "authorityName": "Oregon Health Authority  -  Drinking Water Services (DWS)",
         "authorityUrl": "https://www.oregon.gov/oha/ph/healthyenvironments/drinkingwater/operatorcertification/pages/index.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Treatment Level 1, Treatment Level 2, Treatment Level 3, Treatment Level 4; Filtration Endorsement (FE); Operator in Training (OIT) takes the Level 1 exam.",
-        "note": "OHA publishes ABC Class 1–4 treatment study criteria, but the opened authority material does not explicitly establish whether Oregon administers standardized or customized ABC exams. Do not enable standardized shared-level routing from these study links or PSI scheduling alone. Filtration Endorsement is a separate local qualification associated with Treatment Level 2.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Water Treatment Level 1 through Level 4; Level 1 is the local Class I-equivalent treatment credential.",
+        "note": "Oregon Health Authority identifies ABC as its exam provider and directly links the ABC Standardized Water Treatment Operator Class I Need-to-Know Criteria for its Level 1 to 4 examination route. Level 1 is verified for shared WPI Class I treatment preparation.",
         "sources": [
           {
-            "evidence": "Lists ABC Water Treatment Operator Need-to-Know Criteria for Classes 1–4; says OIT applicants take the treatment Level 1 exam; FE applicants must currently hold Treatment Level 2 certification.",
-            "title": "New Operator Certification  -  Drinking Water",
-            "url": "https://www.oregon.gov/oha/ph/healthyenvironments/drinkingwater/operatorcertification/levels1-4/pages/exams.aspx"
+            "url": "https://www.oregon.gov/oha/ph/healthyenvironments/drinkingwater/operatorcertification/levels1-4/pages/exams.aspx",
+            "title": "Oregon Health Authority - Levels 1 to 4 exams",
+            "evidence": "Identifies ABC as certification exam provider and provides official Level 1 to 4 study resources."
           },
           {
-            "evidence": "Lists Water Treatment 1–4. Filtration Endorsement applies to qualifying Water Treatment 2 plants using conventional or direct filtration; operators already certified at Water Treatment Level 3 or higher are excepted from that endorsement requirement.",
-            "title": "OAR 333-061-0210 and 333-061-0220  -  Scope and System Classification",
-            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/DRINKINGWATER/RULES/Documents/61-0210.pdf"
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/DRINKINGWATER/OPERATORCERTIFICATION/LEVELS1-4/Documents/ABCNeedToKnow-WT1.pdf",
+            "title": "Oregon Health Authority - ABC Water Treatment Class I criteria",
+            "evidence": "State-hosted ABC document identifies the Standardized Water Treatment Operator Class I exam."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Oregon Health Authority  -  Drinking Water Services (DWS)",
         "authorityUrl": "https://www.oregon.gov/oha/ph/healthyenvironments/drinkingwater/operatorcertification/pages/index.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Distribution Level 1, Distribution Level 2, Distribution Level 3, Distribution Level 4; Operator in Training (OIT) takes the Level 1 exam. Small water systems have a separate system classification.",
-        "note": "Four distribution certification levels and ABC Class 1–4 study documents are supported. Explicit standardized-exam adoption, rather than customized ABC examinations, is not established by the opened OHA sources. Small-system classification does not establish the small-system credential's examination type.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Water Distribution Level 1 through Level 4; Level 1 is the local Class I-equivalent distribution credential.",
+        "note": "Oregon Health Authority identifies ABC as its exam provider and directly links the ABC Standardized Water Distribution Operator Class I Need-to-Know Criteria for its Level 1 to 4 examination route. Level 1 is verified for shared WPI Class I distribution preparation.",
         "sources": [
           {
-            "evidence": "States: 'There are four levels of distribution certification.' Lists ABC Distribution Operator Class 1–4 study criteria and states OIT applicants take the distribution Level 1 exam.",
-            "title": "New Operator Certification  -  Drinking Water",
-            "url": "https://www.oregon.gov/oha/ph/healthyenvironments/drinkingwater/operatorcertification/levels1-4/pages/exams.aspx"
+            "url": "https://www.oregon.gov/oha/ph/healthyenvironments/drinkingwater/operatorcertification/levels1-4/pages/exams.aspx",
+            "title": "Oregon Health Authority - Levels 1 to 4 exams",
+            "evidence": "Identifies ABC as certification exam provider and provides official Level 1 to 4 study resources."
           },
           {
-            "evidence": "Lists Water Distribution 1–4. Separately classifies systems serving 150 service connections or fewer that use groundwater or purchase finished water as small water systems.",
-            "title": "OAR 333-061-0210 and 333-061-0220  -  Scope and System Classification",
-            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/DRINKINGWATER/RULES/Documents/61-0210.pdf"
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/DRINKINGWATER/OPERATORCERTIFICATION/LEVELS1-4/Documents/ABCNeedToKnow-WD1.pdf",
+            "title": "Oregon Health Authority - ABC Water Distribution Class I criteria",
+            "evidence": "State-hosted ABC document identifies the Standardized Water Distribution Operator Class I exam."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Oregon Department of Environmental Quality (DEQ)  -  Wastewater Operator Certification Program",
@@ -4411,7 +4389,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Target date is October 3, 2026; sources were accessed October 4, 2026. Current official/administrator pages and documents dated before the target support these findings, but no archived October 3 snapshot was acquired.",
       "Eight source opens were used, including one obsolete NEWEA voluntary-certification URL that returned page-not-found. No further sources were opened; the current NEWEA brochure and WPI class specifications were not inspected.",
       "Drinking-water standardized status is directly verified, but explicit local-to-WPI class crosswalks remain unverified under the requested strict routing rule. Wastewater exam provenance remains unverified, not proven unsupported or state-specific.",
-      "The older NEWEA Rhode Island resource page conflicts with RIDEM/RIDOH on some renewal and OIT details; it is used only for the collection-program distinction, corroborated by the current NEWEA program page. No private records or exam-result rosters were used."
+      "The older NEWEA Rhode Island resource page conflicts with RIDEM/RIDOH on some renewal and OIT details; it is used only for the collection-program distinction, corroborated by the current NEWEA program page. No private records or exam-result rosters were used.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Rhode Island",
     "streams": [
@@ -4419,43 +4398,47 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "Rhode Island Department of Health, Center for Drinking Water Quality; Rhode Island Board of Certification of Operators of Drinking Water Supply Facilities",
         "authorityUrl": "https://health.ri.gov/licensing/drinking-water-operator",
         "examSystem": "wpi-standardized",
-        "localLevels": "VSS – Very Small System (Treatment); 1T, 2T, 3T, 4T. RIDOH also describes numerical levels as Classes 1–4. Full and Operator-in-Training certification are available for VSS and Classes 1–3; no Class 4 OIT.",
-        "note": "RIDOH explicitly confirms 2017 WPI-ABC standardized treatment examinations, not merely ABC affiliation or PSI delivery. However, the opened sources do not explicitly crosswalk RI 1T–4T to WPI Classes I–IV, so shared numerical levels are withheld under the requested evidence rule. VSS must remain separate from levels 1–4.",
+        "localLevels": "Grade 1 Treatment (1T); 1T is the local entry treatment credential.",
+        "note": "Rhode Island DOH states that it uses WPI-ABC 2017 standardized exams. Its active rule requires Board administration of ABC-prepared examinations and the official application offers 1T. Shared WPI Class I treatment routing is verified.",
         "sources": [
           {
-            "evidence": "‘Rhode Island uses ... (WPI-ABC) 2017 standardized exams’; immediately links approved resources separately for treatment and distribution. Licenses are issued by DWQ following Board approval.",
-            "title": "Drinking Water Operator  -  RIDOH",
-            "url": "https://health.ri.gov/licensing/drinking-water-operator"
+            "url": "https://health.ri.gov/licensing/drinking-water-operator",
+            "title": "Rhode Island DOH - Drinking water operator licensing",
+            "evidence": "States that Rhode Island uses WPI-ABC standardized exams and links the official examination route."
           },
           {
-            "evidence": "‘Grade of Examination’: ‘Treatment: 1T 2T 3T 4T’; separate ‘VSS – Very Small System’ Treatment option. OIT is restricted to ‘class VSS, 1, 2, & 3 only’.",
-            "title": "Application for Operator Certification Exam  -  updated June 2026",
-            "url": "https://health.ri.gov/sites/g/files/xkgbur1006/files/applications/DrinkingWaterOperatorExam.pdf"
+            "url": "https://health.ri.gov/sites/g/files/xkgbur1006/files/applications/DrinkingWaterOperatorExam.pdf",
+            "title": "Rhode Island - Drinking water operator examination application",
+            "evidence": "Lists Grade 1 Treatment and Grade 1 Distribution examination options."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Rhode Island Department of Health, Center for Drinking Water Quality; Rhode Island Board of Certification of Operators of Drinking Water Supply Facilities",
         "authorityUrl": "https://health.ri.gov/licensing/drinking-water-operator",
         "examSystem": "wpi-standardized",
-        "localLevels": "VSS – Very Small System (Distribution); 1D, 2D, 3D, 4D. RIDOH also describes numerical levels as Classes 1–4. Full and Operator-in-Training certification are available for VSS and Classes 1–3; no Class 4 OIT.",
-        "note": "RIDOH explicitly confirms 2017 WPI-ABC standardized distribution examinations. The opened sources establish local examination labels but do not explicitly crosswalk 1D–4D to WPI Classes I–IV; shared numerical levels are therefore withheld. VSS is a separate examination selection.",
+        "localLevels": "Grade 1 Distribution (1D); 1D is the local entry distribution credential.",
+        "note": "Rhode Island DOH states that it uses WPI-ABC 2017 standardized exams. Its active rule requires Board administration of ABC-prepared examinations and the official application offers 1D. Shared WPI Class I distribution routing is verified.",
         "sources": [
           {
-            "evidence": "Identifies two license types, treatment and distribution, and states use of ‘2017 standardized exams’, with a separate standardized distribution study-resource link.",
-            "title": "Drinking Water Operator  -  RIDOH",
-            "url": "https://health.ri.gov/licensing/drinking-water-operator"
+            "url": "https://health.ri.gov/licensing/drinking-water-operator",
+            "title": "Rhode Island DOH - Drinking water operator licensing",
+            "evidence": "States that Rhode Island uses WPI-ABC standardized exams and links the official examination route."
           },
           {
-            "evidence": "‘Distribution: 1D 2D 3D 4D’; separate VSS Distribution option. Applicants select Full Certification or eligible OIT certification.",
-            "title": "Application for Operator Certification Exam  -  updated June 2026",
-            "url": "https://health.ri.gov/sites/g/files/xkgbur1006/files/applications/DrinkingWaterOperatorExam.pdf"
+            "url": "https://health.ri.gov/sites/g/files/xkgbur1006/files/applications/DrinkingWaterOperatorExam.pdf",
+            "title": "Rhode Island - Drinking water operator examination application",
+            "evidence": "Lists Grade 1 Treatment and Grade 1 Distribution examination options."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Rhode Island Department of Environmental Management, Office of Water Resources; Board of Certification of Operators of Wastewater Treatment Facilities",
@@ -4649,56 +4632,56 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "The currently linked FAQ is revised June 2, 2022 and the exam application is dated March 2, 2022. Their continued publication does not independently verify a later exam-version change.",
       "No opened source explicitly establishes South Dakota's standardized WPI/ABC exam scope and local-grade correspondence. All verifiedSharedLevels therefore remain empty; unverified does not mean unsupported or that standardized exams are not used.",
       "ABC exam provision and links to standardized-exam study references are insufficient to distinguish standardized, customized ABC or other exam arrangements. No stream is classified as state-specific merely because special local certificates exist.",
-      "Six official source URLs were opened, including an older-path duplicate FAQ. No commercial claims, membership/contact listings, reciprocity, delivery vendor or search snippets were used as proof."
+      "Six official source URLs were opened, including an older-path duplicate FAQ. No commercial claims, membership/contact listings, reciprocity, delivery vendor or search snippets were used as proof.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "South Dakota",
     "streams": [
       {
         "authorityName": "South Dakota Board of Operator Certification; administered by the Department of Agriculture and Natural Resources (DANR), Operator Certification Program",
         "authorityUrl": "https://danr.sd.gov/OfficeOfWater/OperatorCert/default.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Class I, Class II, Class III, Class IV Water Treatment; special Class I Small Water Treatment System (SWTS).",
-        "note": "ABC provision is established, but the opened sources do not explicitly establish standardized versus customized ABC exams or local-class-to-WPI-class correspondence. DANR links standardized-exam reference materials, which alone does not establish exam adoption. SWTS is a separate exam route for qualifying Class I groundwater systems serving fewer than 500 people; do not equate it with general Class I Water Treatment.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Class I Water Treatment Operator; Class I is the local entry treatment credential.",
+        "note": "South Dakota DANR states that ABC provides its certification exams, offers a separate Class I treatment examination, and links ABC standardized exam resources. Class I is verified for shared WPI treatment preparation.",
         "sources": [
           {
-            "evidence": "Questions 5–6 name all four operational categories, each with Class I–IV, and state: ‘Separate exams are given for each plant category and classification level’ and ‘The exams are provided by the Association of Boards of Certification (ABC).’ Question 19 identifies the Class I SWTS exam and its chlorination, regulations, aeration and groundwater scope.",
-            "title": "DANR Water & Wastewater Operator Certification FAQ  -  revised June 2, 2022",
-            "url": "https://danr.sd.gov/OfficeOfWater/OperatorCert/PDF/OpCert%20Summary.pdf"
+            "url": "https://danr.sd.gov/OfficeOfWater/OperatorCert/default.aspx",
+            "title": "South Dakota DANR - Operator certification",
+            "evidence": "States ABC provides certification exams and publishes the state program resources."
           },
           {
-            "evidence": "74:21:02:36 authorizes certification by operational category and classification; :38–39 identify four categories and Class I–IV. :71 recognizes Class I Small Water Treatment System or Class I-or-higher Water Treatment certification for qualifying small groundwater systems.",
-            "title": "Administrative Rules of South Dakota, Article 74:21  -  Water System Operators",
-            "url": "https://www.sdlegislature.gov/Rules/Administrative/27258"
+            "url": "https://danr.sd.gov/OfficeOfWater/DrinkingWater/docs/OperatorCert/OpCert%20Summary.pdf",
+            "title": "South Dakota - Operator certification summary",
+            "evidence": "Describes Class I treatment certification requirements and the state examination route."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "South Dakota Board of Operator Certification; administered by the Department of Agriculture and Natural Resources (DANR), Operator Certification Program",
         "authorityUrl": "https://danr.sd.gov/OfficeOfWater/OperatorCert/default.aspx",
-        "examSystem": "unverified",
-        "localLevels": "Class I, Class II, Class III, Class IV Water Distribution; rules additionally recognize Class I Very Small Water System Operator.",
-        "note": "ABC provision is documented for this category, but standardized/customized identity and WPI class correspondence remain unverified. The rules recognize a Very Small Water System certificate for qualifying untreated groundwater systems below 500 people; the current FAQ instead directs these operators to Water Distribution, and the exam application has no separate Very Small Water System category. A currently offered separate exam is therefore unverified. All community and non-transient non-community water systems require distribution certification under the FAQ.",
+        "examSystem": "wpi-standardized",
+        "localLevels": "Class I Water Distribution Operator; Class I is the local entry distribution credential.",
+        "note": "South Dakota DANR states that ABC provides its certification exams, offers a separate Class I distribution examination, and links ABC standardized exam resources. Class I is verified for shared WPI distribution preparation.",
         "sources": [
           {
-            "evidence": "Questions 1, 5–6 explicitly cover Water Distribution, Class I–IV and ABC-provided separate category/level exams. Question 24 says a system serving fewer than 500 people without treatment is a ‘Very Small Water System’ and its operator ‘must have a Water Distribution certificate.’",
-            "title": "DANR Water & Wastewater Operator Certification FAQ  -  revised June 2, 2022",
-            "url": "https://danr.sd.gov/OfficeOfWater/OperatorCert/PDF/OpCert%20Summary.pdf"
+            "url": "https://danr.sd.gov/OfficeOfWater/OperatorCert/default.aspx",
+            "title": "South Dakota DANR - Operator certification",
+            "evidence": "States ABC provides certification exams and publishes the state program resources."
           },
           {
-            "evidence": "74:21:02:71 permits ‘Class I Very Small Water System Operator or a Class I (or higher) Water Distribution Operator’ for qualifying untreated small groundwater systems; treated small systems separately require Class I-or-higher distribution supervision.",
-            "title": "Administrative Rules of South Dakota, Article 74:21  -  Water System Operators",
-            "url": "https://www.sdlegislature.gov/Rules/Administrative/27258"
-          },
-          {
-            "evidence": "Lists Water Distribution with exam levels I, II, III and IV. Separate categories include Small Water Treatment and Small WW System/Stabilization Pond, but not Very Small Water System.",
-            "title": "DANR Application for Operator Certification Exam  -  March 2, 2022",
-            "url": "https://danr.sd.gov/OfficeOfWater/OperatorCert/PDF/OpCertExamApp.pdf"
+            "url": "https://danr.sd.gov/OfficeOfWater/OperatorCert/PDF/OpCertExamApp.pdf",
+            "title": "South Dakota - Operator exam application",
+            "evidence": "Lists separate Water Treatment and Water Distribution Level I examination applications."
           }
         ],
         "stream": "water-distribution",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "South Dakota Board of Operator Certification; administered by the Department of Agriculture and Natural Resources (DANR), Operator Certification Program",
@@ -4760,7 +4743,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Eight official/state-designated source URLs opened; no search snippets, membership listings, reciprocity, or PSI delivery were used as standardized-exam proof.",
       "Evidence retrieved October 4, 2026 for the October 3, 2026 cutoff. The state page lists the Fall 2026 exam window; live pages are not archived October 3 snapshots, so exact day-level changes cannot be excluded.",
       "Only distribution Grade II and collection Grade II local-to-WPI Class correspondence was directly confirmed in opened PDFs. Other numbered mappings remain unverified, not unsupported.",
-      "Biological/Natural System exam provenance is unresolved. No confirmed customized ABC exam was found; a separate local outline alone does not establish exam authorship."
+      "Biological/Natural System exam provenance is unresolved. No confirmed customized ABC exam was found; a separate local outline alone does not establish exam authorship.",
+      "October 11, 2026 update: Both water-treatment and water-distribution Class I routes were re-verified against state-authority sources and enabled only for the standard WPI/ABC Class I courses. Specialist, OIT and small-system routes remain separate."
     ],
     "name": "Tennessee",
     "streams": [
@@ -4768,49 +4752,46 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "Tennessee Department of Environment and Conservation, Division of Water Resources  -  Board of Water and Wastewater Operator Certification; administered through Fleming Training Center",
         "authorityUrl": "https://www.tn.gov/environment/program-areas/wr-water-resources/fleming-training-center/op-cert.html",
         "examSystem": "wpi-standardized",
-        "localLevels": "Grade I, Grade II, Grade III, and Grade IV Water Treatment Plant Operator; Small Water System Operator",
-        "note": "The state explicitly identifies standardized WPI water-treatment examinations and lists Grade I–IV standardized outlines. Small Water System is a separate credential, with a Very Small Water System outline listed under standardized criteria. Numerical shared routing remains unverified because the underlying treatment PDFs were not opened to confirm local Grade-to-WPI Class correspondence; this is not evidence of customized exams.",
+        "localLevels": "Water Treatment 1, also called Grade I Water Treatment Plant Operator.",
+        "note": "Tennessee TDEC explicitly labels its Grade I treatment need-to-know material as WPI Standardized Need-to-Know Criteria. The state-linked PDF identifies the Standardized Water Treatment Operator Class I exam. Shared routing is verified.",
         "sources": [
           {
-            "evidence": "Says references are approved for ‘WPI’s standardized water treatment operator examinations’; under ‘WPI Standardized Need-to-Know Criteria’ lists Very Small Water System and Water Treatment Operator Grades I–IV.",
-            "title": "TDEC  -  Study Guides & References: Water Treatment",
-            "url": "https://www.tn.gov/environment/program-areas/wr-water-resources/fleming-training-center/references.html"
+            "url": "https://www.tn.gov/environment/program-areas/wr-water-resources/fleming-training-center/references.html",
+            "title": "Tennessee TDEC - Operator exam references",
+            "evidence": "Lists WPI standardized operator examination references for treatment and distribution."
           },
           {
-            "evidence": "Rule .07(1)(a)–(e) names Grade IV, III, II, and I Water Treatment Plant Operator and Small Water System Operator. Rule .04 requires certification for persons in direct charge.",
-            "title": "Rules Governing Water and Wastewater Operator Certification, Chapter 0400-49-01",
-            "url": "https://publications.tnsosfiles.com/rules/0400/0400-49/0400-49-01.20210711.pdf"
+            "url": "https://www.tn.gov/content/dam/tn/environment/water/ftc/references/ntk/tdec_ftc_wpi-ntk-wt1.pdf",
+            "title": "Tennessee TDEC - WPI Water Treatment Class I criteria",
+            "evidence": "State-linked WPI document identifies the Standardized Water Treatment Operator Class I exam."
           }
         ],
         "stream": "water-treatment",
-        "verifiedSharedLevels": []
+        "verifiedSharedLevels": [
+          1
+        ]
       },
       {
         "authorityName": "Tennessee Department of Environment and Conservation, Division of Water Resources  -  Board of Water and Wastewater Operator Certification; administered through Fleming Training Center",
         "authorityUrl": "https://www.tn.gov/environment/program-areas/wr-water-resources/fleming-training-center/op-cert.html",
         "examSystem": "wpi-standardized",
-        "localLevels": "Grade I and Grade II Water Distribution System Operator; Small Water System Operator also serves qualifying small distribution systems",
-        "note": "The authority explicitly identifies standardized WPI distribution exams. Its local Grade II link opens the Standardized Water Distribution Operator Class II outline, verifying Grade II → Class II. Grade I is listed, but its PDF correspondence was not checked within the source cap. No local distribution Grades III–IV are offered in the governing classifications. Small Water System is separate, not a numbered shared level.",
+        "localLevels": "Distribution Systems 1, also called Grade I Water Distribution System Operator.",
+        "note": "Tennessee TDEC explicitly labels its Grade I distribution need-to-know material as WPI Standardized Need-to-Know Criteria. The state-linked PDF identifies the Standardized Water Distribution Operator Class I exam. Shared routing is verified.",
         "sources": [
           {
-            "evidence": "Identifies ‘WPI’s standardized water distribution operator examinations’ and links Water Distribution Operator Grade I and Grade II under standardized criteria.",
-            "title": "TDEC  -  Study Guides & References: Distribution Systems",
-            "url": "https://www.tn.gov/environment/program-areas/wr-water-resources/fleming-training-center/references.html"
+            "url": "https://www.tn.gov/environment/program-areas/wr-water-resources/fleming-training-center/references.html",
+            "title": "Tennessee TDEC - Operator exam references",
+            "evidence": "Lists WPI standardized operator examination references for treatment and distribution."
           },
           {
-            "evidence": "The state’s Grade II link opens ‘Water Distribution Operator Class II Certification Exam’; the document says it reflects only the Standardized Class II exam and distinguishes customized services.",
-            "title": "WPI Water Distribution Operator Class II Need-to-Know Criteria, hosted by TDEC",
-            "url": "https://www.tn.gov/content/dam/tn/environment/water/ftc/references/ntk/tdec_ftc_wpi-ntk-ds2.pdf"
-          },
-          {
-            "evidence": "Rule .07(1)(f) names Grades I & II Water Distribution System Operator; .06(3)(d) states Small Water Systems classification also serves as distribution certification for qualifying systems.",
-            "title": "Chapter 0400-49-01  -  Distribution classifications",
-            "url": "https://publications.tnsosfiles.com/rules/0400/0400-49/0400-49-01.20210711.pdf"
+            "url": "https://www.tn.gov/content/dam/tn/environment/water/ftc/references/ntk/tdec_ftc_wpi-ntk-ds1.pdf",
+            "title": "Tennessee TDEC - WPI Water Distribution Class I criteria",
+            "evidence": "State-linked WPI document identifies the Standardized Water Distribution Operator Class I exam."
           }
         ],
         "stream": "water-distribution",
         "verifiedSharedLevels": [
-          2
+          1
         ]
       },
       {
@@ -4883,31 +4864,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Eight official source URLs were opened, meeting the exploration cap; evidence comes from opened pages, not search snippets.",
       "No opened official source explicitly confirmed standardized WPI/ABC use or local-grade-to-WPI-class correspondence for any stream. All verifiedSharedLevels are therefore empty. Unverified does not mean unsupported or not offered.",
       "Texas-specific need-to-know outlines and TCEQ exam revision support local preparation needs, but do not conclusively distinguish a state-authored bank from customized ABC exams. CBT administration alone is not evidence of standardized exam adoption.",
-      "Official pages contain delivery-list inconsistencies: the water/wastewater licensing pages describe Class A CBT exams, while the general CBT list omits Class A; collection II/III licensing sections retain regional-office links although the current exam page says all TCEQ occupational exams use approved CBT centers. These do not establish exam provenance."
+      "Official pages contain delivery-list inconsistencies: the water/wastewater licensing pages describe Class A CBT exams, while the general CBT list omits Class A; collection II/III licensing sections retain regional-office links although the current exam page says all TCEQ occupational exams use approved CBT centers. These do not establish exam provenance.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Texas",
     "streams": [
       {
         "authorityName": "Texas Commission on Environmental Quality (TCEQ), Occupational Licensing",
         "authorityUrl": "https://www.tceq.texas.gov/licensing/licenses/waterlic",
-        "examSystem": "unverified",
-        "localLevels": "Class D Water; Class C Groundwater Operator; Class C Surface Water Operator; Class B Groundwater Operator; Class B Surface Water Operator; Class A Water Operator. Also Provisional Water Class D.",
-        "note": "Mandatory licensing for public-water-system process-control duties, unless exempt. Classes C and B have separate groundwater and surface-water tracks; Class A is comprehensive. Official sources establish TCEQ licensing, local exam criteria and agency exam revision, but do not explicitly identify standardized WPI/ABC adoption, customized ABC provenance, or a local-to-WPI class correspondence. Exam-bank identity therefore remains unverified, not evidence of nonparticipation.",
+        "examSystem": "state-specific",
+        "localLevels": "Texas Class D Water is the local combined entry credential; it is not a treatment-only Class I credential.",
+        "note": "Texas TCEQ Class D Water uses a combined state blueprint for groundwater treatment, surface-water treatment, distribution, storage, math, safety and Texas rules. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Operators performing process-control duties in production or distribution must be licensed with TCEQ unless exempt. Lists Classes A–D, B/C Surface, Groundwater and Distribution, and Provisional Water Class D.",
-            "title": "Occupational Licenses: Water System Operators",
-            "url": "https://www.tceq.texas.gov/licensing/licenses/waterlic"
+            "url": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+            "title": "Texas TCEQ - Water operator need-to-know material",
+            "evidence": "Publishes the Texas Class D Water examination blueprint and local rules coverage."
           },
           {
-            "evidence": "Publishes separate B/C Groundwater and Surface Water criteria. Class A requires knowledge of the Class B Groundwater, Water Distribution and Surface Water criteria. Criteria expressly include Texas licensing and drinking-water rules.",
-            "title": "Public Water System Operators: What Applicants for Licensing Need to Know",
-            "url": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk"
-          },
-          {
-            "evidence": "July 2022 statement: TCEQ's Occupational Licensing section 'has been revising and converting licensing exams' to CBT. This establishes agency involvement, not standardized versus customized exam provenance.",
-            "title": "TCEQ Occupational Licensing Exams are Going Paperless!",
-            "url": "https://www.tceq.texas.gov/assistance/resources/the-advocate-1/tceq-occupational-licensing-exams-are-going-paperless"
+            "url": "https://www.tceq.texas.gov/downloads/licensing/occupational/requirements/requirements-for-water-license.pdf/@@download/file/requirements-for-water-license.pdf",
+            "title": "Texas TCEQ - Water license requirements",
+            "evidence": "Defines Class D Water licensing, training and eligibility requirements."
           }
         ],
         "stream": "water-treatment",
@@ -4916,19 +4893,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Texas Commission on Environmental Quality (TCEQ), Occupational Licensing",
         "authorityUrl": "https://www.tceq.texas.gov/licensing/licenses/waterlic",
-        "examSystem": "unverified",
-        "localLevels": "Class C Water Distribution; Class B Water Distribution. Common water-system licenses: Class D Water and Class A Water Operator; also Provisional Water Class D. No separately named Distribution Class A or D in the opened criteria.",
-        "note": "Distribution is within mandatory public-water-system licensing, unless exempt; the B/C distribution exams are distinct local specialties. Class D is foundational across water operations and Class A combines all three B specialties. No explicit standardized WPI/ABC scope or class mapping was established; local lettering must not be converted automatically to WPI Classes 1–4.",
+        "examSystem": "state-specific",
+        "localLevels": "Texas Class D Water is the local combined entry credential; Class C Water Distribution is a separate higher local credential.",
+        "note": "Texas TCEQ Class D Water uses a combined state blueprint for groundwater treatment, surface-water treatment, distribution, storage, math, safety and Texas rules. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "Names Class B Distribution and Class C Distribution requirements separately from surface water and groundwater. Class A training includes Water Distribution; Class D is a general water license.",
-            "title": "Occupational Licenses: Water System Operators",
-            "url": "https://www.tceq.texas.gov/licensing/licenses/waterlic"
+            "url": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk",
+            "title": "Texas TCEQ - Water operator need-to-know material",
+            "evidence": "Publishes the Texas Class D Water examination blueprint and local rules coverage."
           },
           {
-            "evidence": "Class C Water Distribution criteria build on Class D; Class B Water Distribution builds on Class C Distribution. The outline includes Texas rules, storage/distribution maintenance, cross-connections, disinfection and math.",
-            "title": "Public Water System Operators: What Applicants for Licensing Need to Know",
-            "url": "https://www.tceq.texas.gov/licensing/licenses/waterworksntk"
+            "url": "https://www.tceq.texas.gov/downloads/licensing/occupational/requirements/requirements-for-water-license.pdf/@@download/file/requirements-for-water-license.pdf",
+            "title": "Texas TCEQ - Water license requirements",
+            "evidence": "Defines Class D Water licensing, training and eligibility requirements."
           }
         ],
         "stream": "water-distribution",
@@ -4988,26 +4965,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
     "limits": [
       "Eight official/state-designated source opens were used; exploration stopped at the requested cap. Wastewater local grade names and grade-to-WPI-class mapping remain unverified.",
       "Standardized WPI use is verified for the regular wastewater program, but the Small Lagoon exception's exam authorship and standardized/customized status were not explicitly established. Drinking-water exam authorship also remains ambiguous.",
-      "Live sources were accessed October 4, 2026 for the requested October 3, 2026 cutoff; an archived snapshot proving that exact day's wording was not established."
+      "Live sources were accessed October 4, 2026 for the requested October 3, 2026 cutoff; an archived snapshot proving that exact day's wording was not established.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Utah",
     "streams": [
       {
         "authorityName": "Utah Department of Environmental Quality, Division of Drinking Water",
         "authorityUrl": "https://deq.utah.gov/ddw/operator-certification",
-        "examSystem": "unverified",
-        "localLevels": "Treatment Grade I (T1), Treatment Grade II (T2), Treatment Grade III (T3), Treatment Grade IV (T4)",
-        "note": "Official DDW materials establish Utah-specific grade outlines and examination governance, but the opened sources do not explicitly establish whether the exams are state-developed, customized ABC/WPI, or standardized WPI. Do not route T1–T4 as verified shared WPI classes.",
+        "examSystem": "state-specific",
+        "localLevels": "Utah Treatment Grade I (T1) is a local state certification grade.",
+        "note": "Utah DDW administers and develops its own treatment examinations and publishes a Utah-specific blueprint with rules content. No WPI Class I treatment mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "The grade table explicitly lists Treatment Grade I (T1) through Treatment Grade IV (T4). Exam categories are Math, Operation and Maintenance, Pumps, Chemical Feed, Rules, and Safety and Security; separate basic and advanced treatment study guides are provided.",
-            "title": "Study Help: Division of Drinking Water",
-            "url": "https://deq.utah.gov/ddw/study-help"
+            "url": "https://adminrules.utah.gov/public/rule/R309-300/Current%20Rules",
+            "title": "Utah Administrative Rule R309-300",
+            "evidence": "Assigns local operator certification examination responsibilities and grade requirements."
           },
           {
-            "evidence": "The Utah commission includes treatment and distribution representatives and makes decisions about 'what topics ... will be tested on' and program operation. This establishes local oversight, not explicit exam authorship or standardized WPI use.",
-            "title": "Operator Certification Commission and Rules",
-            "url": "https://deq.utah.gov/ddw/operator-certification-commission-rules"
+            "url": "https://deq.utah.gov/ddw/study-help",
+            "title": "Utah DEQ - Operator exam study help",
+            "evidence": "Publishes Utah treatment and distribution exam study material and local topic categories."
           }
         ],
         "stream": "water-treatment",
@@ -5016,19 +4994,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Utah Department of Environmental Quality, Division of Drinking Water",
         "authorityUrl": "https://deq.utah.gov/ddw/operator-certification",
-        "examSystem": "unverified",
-        "localLevels": "Small System (SS); Distribution Grade I (D1), Distribution Grade II (D2), Distribution Grade III (D3), Distribution Grade IV (D4)",
-        "note": "DDW explicitly lists SS and D1–D4 and supplies local examination outlines. The opened sources do not distinguish state-developed exams from customized ABC/WPI exams or confirm standardized WPI examinations. SS has a distinct outline and must not be treated as WPI Class I.",
+        "examSystem": "state-specific",
+        "localLevels": "Utah Distribution Grade I (D1) is a local state certification grade; Small System is a separate credential.",
+        "note": "Utah DDW administers and develops its own distribution examinations and publishes a Utah-specific blueprint with rules content. No WPI Class I distribution mapping is established, so shared routing is off.",
         "sources": [
           {
-            "evidence": "The distribution table explicitly lists Small System (SS) and Distribution Grade I (D1) through Grade IV (D4). Basic Distribution applies to SS and D1–D4; Advanced Distribution applies to D3–D4.",
-            "title": "Study Help: Division of Drinking Water",
-            "url": "https://deq.utah.gov/ddw/study-help"
+            "url": "https://adminrules.utah.gov/public/rule/R309-300/Current%20Rules",
+            "title": "Utah Administrative Rule R309-300",
+            "evidence": "Assigns local operator certification examination responsibilities and grade requirements."
           },
           {
-            "evidence": "Utah's commission determines examination topics and program operation; the page links R309-300 certification rules and operator certification policies but does not identify a standardized WPI exam.",
-            "title": "Operator Certification Commission and Rules",
-            "url": "https://deq.utah.gov/ddw/operator-certification-commission-rules"
+            "url": "https://deq.utah.gov/ddw/study-help",
+            "title": "Utah DEQ - Operator exam study help",
+            "evidence": "Publishes Utah treatment and distribution exam study material and local topic categories."
           }
         ],
         "stream": "water-distribution",
@@ -5090,26 +5068,27 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       "Eight source URLs were opened, respecting the exploration cap. Findings use opened text, not search snippets.",
       "Research targeted October 3, 2026; live pages were retrieved October 4, 2026. No archived October 3 snapshot was obtained. The drinking-water exam page explicitly contains the 2026 schedule.",
       "No opened source explicitly establishes standardized WPI/ABC scope together with local-grade correspondence; all verifiedSharedLevels therefore remain empty. ‘Unverified’ denotes an evidence gap, not proof that shared or customized exams are absent.",
-      "The undefined ‘4A1’ entry and exact current voluntary collection grade labels remain unresolved. NEWEA’s Vermont resource is used only for its collection-program statement, not its superseded state treatment authority or requirements."
+      "The undefined ‘4A1’ entry and exact current voluntary collection grade labels remain unresolved. NEWEA’s Vermont resource is used only for its collection-program statement, not its superseded state treatment authority or requirements.",
+      "October 11, 2026 update: This state has a local, customized or state-defined drinking-water exam route that is not a verified match for Echelon's standardized WPI Class I course. Shared routing remains off."
     ],
     "name": "Vermont",
     "streams": [
       {
         "authorityName": "Vermont Department of Environmental Conservation, Drinking Water & Groundwater Protection Division (DWGPD)",
         "authorityUrl": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification",
-        "examSystem": "unverified",
-        "localLevels": "Class 1A, Class 1B, Class 2, Class 3, Class 4A, Class 4B, Class 4C. The initial-certification table additionally lists ‘4A1’ without defining it.",
-        "note": "Classes 1A and 1B explicitly require no examination. Exams are offered as Class 2, Class 3 and Class 4; Class 4A/B/C certification distinctions depend on population served. DEC identifies ABC/PSI computer-based delivery but does not establish standardized versus customized ABC construction or local-class-to-WPI-class correspondence. Do not route Vermont Class 2/3/4 automatically to similarly numbered WPI classes.",
+        "examSystem": "not-offered",
+        "localLevels": "Vermont 1A and 1B treatment credentials are registration-only local classes with no examination.",
+        "note": "Vermont Class 1A and 1B treatment credentials are registration-only, not WPI Class I examinations. The shared WPI treatment course is not a Vermont Class 1 exam-prep match.",
         "sources": [
           {
-            "evidence": "‘Public drinking water systems are required to have an Operator certified by the DWGPD.’ Table 1 lists 1A, 1B, 2, 3 and 4A/4B/4C; 4A serves 25–500, 4B 501–3,300, and 4C more than 3,300 people. Table 2 marks examination ‘No’ for 1A/1B and ‘Yes’ for 2/3/4 certifications.",
-            "title": "Public Water System Operator Certification",
-            "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification"
+            "url": "https://dec.vermont.gov/sites/dec/files/documents/Final%20Water%20Supply%20Rule%20Effective%201.1.2026.pdf",
+            "title": "Vermont Water Supply Rule effective January 1, 2026",
+            "evidence": "States that local Class 1 operators require registration only and defines the Vermont class structure."
           },
           {
-            "evidence": "The 2026 exam page lists Class 2, 3, 4 and D appointments and states that ‘The Association of Boards of Certification (ABC) and PSI Online provides certified computer-based exams.’ It does not call these standardized exams or identify WPI class equivalencies.",
-            "title": "Public Water System Operator Exams",
-            "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification/public-water-system-operator-exams"
+            "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification/public-water-system-operator-exams",
+            "title": "Vermont DEC - Public water system operator exams",
+            "evidence": "Lists Vermont exam routes and the separate registration-only Class 1 pathways."
           }
         ],
         "stream": "water-treatment",
@@ -5118,19 +5097,19 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
       {
         "authorityName": "Vermont Department of Environmental Conservation, Drinking Water & Groundwater Protection Division (DWGPD)",
         "authorityUrl": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification",
-        "examSystem": "unverified",
-        "localLevels": "Class D; an additional restricted legacy D certification pathway is described, not a numbered grade ladder.",
-        "note": "Class D is separate from treatment. The page describes expanded D-operator requirements effective February 24, 2024, with compliance required by July 1, 2029 for specified systems. Eligible experienced treatment operators may use state-provided training instead of the D examination for restricted legacy status. ABC/PSI delivery does not verify standardized exam scope, and no correspondence between Class D and WPI Classes I–IV was established.",
+        "examSystem": "wpi-customized",
+        "localLevels": "Vermont Distribution Class D is the local distribution credential; there is no local distribution Class I exam.",
+        "note": "Vermont uses customized WPI examinations for Distribution Class D because WPI standardized exams do not match Vermont requirements. The shared standardized Class I distribution course is not a Vermont Class D match.",
         "sources": [
           {
-            "evidence": "Table 1 lists D separately and states ‘Systems are required to have a D operator no later than July 1, 2029’ when specified criteria apply. ‘Operators who have passed a treatment exam (2, 3, 4)’ with qualifying experience ‘May attend a State-provided training class instead of the exam’ for system-restricted legacy status.",
-            "title": "Public Water System Operator Certification",
-            "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification"
+            "url": "https://dec.vermont.gov/sites/dec/files/dwgwp/capacitydev/pdf/VT%202025%20Annual%20Capacity%20Report.pdf",
+            "title": "Vermont - 2025 annual capacity report",
+            "evidence": "States that Vermont uses customized WPI examinations when standardized exams do not align with its program."
           },
           {
-            "evidence": "The official exam page separately offers ‘VT Class D’ alongside treatment examinations, but its ABC/PSI statement does not specify standardized/customized construction or a WPI distribution class.",
-            "title": "Public Water System Operator Exams",
-            "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification/public-water-system-operator-exams"
+            "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification/public-water-system-operator-exams",
+            "title": "Vermont DEC - Public water system operator exams",
+            "evidence": "Lists local Distribution Class D and state exam administration details."
           }
         ],
         "stream": "water-distribution",
@@ -5431,7 +5410,8 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
     "limits": [
       "Assessment requested as of October 3, 2026. Live official sources were accessed October 4, 2026; no archived October 3 snapshot was obtained. Both Secretary of State rule-detail pages marked the March 27, 2024 rules active.",
       "Seven official source URLs were opened, within the eight-open cap. No commercial claims or search snippets were used as proof; no operator lists or personal records were opened.",
-      "State administration, local class labels and required courses do not prove exam authorship. None of the opened sources explicitly establishes standardized WPI/ABC scope and local-to-WPI class correspondence; all verifiedSharedLevels therefore remain empty. Unverified does not mean the exam is unavailable or that WPI use is disproved."
+      "State administration, local class labels and required courses do not prove exam authorship. None of the opened sources explicitly establishes standardized WPI/ABC scope and local-to-WPI class correspondence; all verifiedSharedLevels therefore remain empty. Unverified does not mean the exam is unavailable or that WPI use is disproved.",
+      "October 11, 2026 update: State sources verify the local credential but do not meet Echelon's evidence bar for a standardized WPI/ABC Class I match. Shared routing remains off."
     ],
     "name": "West Virginia",
     "streams": [
@@ -5439,18 +5419,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "West Virginia Department of Health, Bureau for Public Health (BPH), Office of Environmental Health Services, Environmental Engineering Division, Certification & Training Program",
         "authorityUrl": "https://oehs.wvdhhr.org/eed/certification-training/",
         "examSystem": "unverified",
-        "localLevels": "1D; Class R; Class I; Class II; Class III; Class IV. Operator-in-Training (OIT) is a training certification, not an examination grade.",
-        "note": "Mandatory PWS certification. Classes I–IV are sequential; 1D and Class R are separate, nonsequential credentials. 1D covers restricted transient groundwater systems, NOT WPI Distribution Class I. Class R covers specified retreatment of purchased finished water; an approved manufacturer certification may substitute for its course/exam requirement. State administration is documented, but neither standardized WPI/ABC use nor customized ABC or state-authored exam origin is established.",
+        "localLevels": "Class I public-water-system operator is a local credential after Operator-in-Training status.",
+        "note": "West Virginia confirms a local Class I examination but current official sources reviewed do not identify whether it is WPI standardized, WPI customized or state-authored. Shared routing remains off.",
         "sources": [
           {
-            "evidence": "§2.2: enforced by the BPH Commissioner. §§4.1.1–4.1.7 define 1D, Class R, WDS and Classes I–IV; §§6.3–6.5 distinguish nonsequential credentials from sequential I–IV. Table 64-4A names the local exams; §7.4 permits the Class R manufacturer-certification substitution.",
-            "title": "64CSR4  -  Public Water Systems Operators, effective March 27, 2024",
-            "url": "https://apps.sos.wv.gov/adlaw/csr/readfile.aspx?DocId=57051&Format=PDF"
+            "url": "https://apps.sos.wv.gov/adlaw/csr/rule.aspx?rule=64-04",
+            "title": "West Virginia 64CSR04 - Certification and Training Program",
+            "evidence": "Defines local Class I and Operator-in-Training certification requirements."
           },
           {
-            "evidence": "C&T will administer 'all exams (except 1D)'; the 1D course and exams are handled through district offices. Required course exams are administered through training providers on the last day. No exam developer or standardized/customized designation is stated.",
-            "title": "Testing  -  C&T Exam Procedures 2026",
-            "url": "https://oehs.wvdhhr.org/eed/certification-training/testing/"
+            "url": "https://oehs.wvdhhr.org/eed/certification-training/testing/",
+            "title": "West Virginia - Certification and Training testing",
+            "evidence": "Describes state examination registration and administration."
           }
         ],
         "stream": "water-treatment",
@@ -5460,18 +5440,18 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
         "authorityName": "West Virginia Department of Health, Bureau for Public Health, Office of Environmental Health Services, Environmental Engineering Division, Certification & Training Program",
         "authorityUrl": "https://oehs.wvdhhr.org/eed/certification-training/",
         "examSystem": "unverified",
-        "localLevels": "Water Distribution System (WDS); Operator-in-Training (OIT) pathway. No separate distribution I–IV ladder is identified in the rule.",
-        "note": "Mandatory WDS certification route. Class I or higher PWS operators may also operate WDS systems, but those are not four distribution-specific examination grades. WDS is not sequential toward Class I. No explicit standardized WPI/ABC scope or WDS-to-WPI class correspondence was found; exam origin remains unverified.",
+        "localLevels": "Water Distribution System (WDS) is the local entry distribution credential after Operator-in-Training status; it is not sequential to Class I.",
+        "note": "West Virginia confirms a separate WDS examination, but current official sources reviewed do not identify whether it is WPI standardized, WPI customized or state-authored. The entry WDS credential is not a WPI Class I mapping. Shared routing remains off.",
         "sources": [
           {
-            "evidence": "§3.32 limits WDS-certified operators to distribution functions; §4.1.3 defines purchased-water WDS systems. §5.3.3 allows WDS, Class I or higher operators. §6.4 says WDS is not sequential toward Class I; Table 64-4A specifies the WDS course and WDS exam.",
-            "title": "64CSR4  -  Public Water Systems Operators, effective March 27, 2024",
-            "url": "https://apps.sos.wv.gov/adlaw/csr/readfile.aspx?DocId=57051&Format=PDF"
+            "url": "https://apps.sos.wv.gov/adlaw/csr/rule.aspx?rule=64-04",
+            "title": "West Virginia 64CSR04 - Certification and Training Program",
+            "evidence": "Defines local WDS and Class I certification requirements and non-sequential routes."
           },
           {
-            "evidence": "C&T administers all exams except 1D and arranges required course exams through training providers; the page does not identify a standardized WPI distribution examination.",
-            "title": "Testing  -  C&T Exam Procedures 2026",
-            "url": "https://oehs.wvdhhr.org/eed/certification-training/testing/"
+            "url": "https://oehs.wvdhhr.org/eed/certification-training/testing/",
+            "title": "West Virginia - Certification and Training testing",
+            "evidence": "Describes state examination registration and administration."
           }
         ],
         "stream": "water-distribution",
