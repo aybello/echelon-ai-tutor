@@ -463,6 +463,19 @@
       "verifierAllowMissingTables": [
         "abandoned_checkouts"
       ]
+    },
+    {
+      "version": 80,
+      "tag": "0080_checkout_recovery_consent",
+      "file": "drizzle/0080_checkout_recovery_consent.sql",
+      "sha256": "07fd38159d2777535910dd2d01c6959cbddce09b59560dc38c9c9752880ebadf",
+      "proposedOnly": true,
+      "standaloneApply": { "tables": ["abandoned_checkouts"] },
+      "verifierAllowMissingColumns": [
+        { "table": "abandoned_checkouts", "column": "recoveryConsentAt", "targetType": "timestamp", "targetNullable": true, "sqlType": "timestamp" },
+        { "table": "abandoned_checkouts", "column": "recoveryConsentSource", "targetType": "varchar(64)", "targetNullable": true, "sqlType": "varchar(64)" },
+        { "table": "abandoned_checkouts", "column": "recoveryConsentNoticeVersion", "targetType": "varchar(64)", "targetNullable": true, "sqlType": "varchar(64)" }
+      ]
     }
   ]
 }

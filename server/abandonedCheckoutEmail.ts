@@ -63,23 +63,31 @@ export function buildAbandonedCheckoutCopy(payload: {
     subject: `Your ${productName} is still waiting`,
     paragraphs: [
       `You started checking out for the ${productName} and did not finish. Your cart is still open, so you can pick it up in one click.`,
-      `What you get for ${priceLabel}: the full verified question bank with worked solutions, a timed mock exam built to the real exam blueprint, and the AI Tutor available on every question to explain the reasoning and the math.`,
-      `Access runs for 12 months from payment, so it covers your study period and a retake if you need one. Payment is handled securely by Stripe and billed in Canadian dollars.`,
+      `The ${productName} is ${priceLabel}. Review the course page for its current question bank, practice tools, mock exams and AI Tutor features before buying. Echelon is an independent study platform, not a certifying authority or a guarantee of passing.`,
+      `Access runs for 12 months from payment, so it covers your study period and a retake if you need one. Payment is handled securely by Stripe; review the amount and currency at checkout before paying.`,
     ],
     cta: "Complete your purchase",
   };
+}
+
+export function assertCheckoutRecoveryEmailConfigured(
+  config: Pick<typeof ENV, "smtpHost" | "smtpUser" | "smtpPass" | "businessMailingAddress"> = ENV,
+): void {
+  if (!config.smtpHost || !config.smtpUser || !config.smtpPass) {
+    // The job treats a send failure as retryable; missing SMTP config must
+    // surface as an error rather than silently marking the cart as contacted.
+    throw new Error("SMTP not configured for abandoned checkout recovery");
+  }
+  if (!config.businessMailingAddress.trim()) {
+    throw new Error("BUSINESS_MAILING_ADDRESS is required for checkout reminder email");
+  }
 }
 
 export async function sendAbandonedCheckoutEmail(
   payload: AbandonedCheckoutEmailPayload
 ): Promise<void> {
   const { email, productName, priceLabel, checkoutUrl, unsubscribeUrl } = payload;
-
-  if (!ENV.smtpHost || !ENV.smtpUser || !ENV.smtpPass) {
-    // The job treats a send failure as retryable; missing SMTP config must
-    // surface as an error rather than silently marking the cart as contacted.
-    throw new Error("SMTP not configured for abandoned checkout recovery");
-  }
+  assertCheckoutRecoveryEmailConfigured();
 
   const copy = buildAbandonedCheckoutCopy({ productName, priceLabel });
   const safeProduct = escapeHtml(productName);
@@ -90,6 +98,8 @@ export async function sendAbandonedCheckoutEmail(
     `${copy.cta}: ${checkoutUrl}`,
     ``,
     `Echelon Institute`,
+    ENV.businessMailingAddress.trim(),
+    `Contact: abello@echeloninstitute.ca`,
     `https://echeloninstitute.ca`,
     ``,
     `No longer want these emails? Unsubscribe: ${unsubscribeUrl}`,
@@ -118,18 +128,18 @@ export async function sendAbandonedCheckoutEmail(
             )
             .join("")}
           <div style="text-align: center; margin: 22px 0 18px;">
-            <a href="${checkoutUrl}" style="display: inline-block; background: linear-gradient(135deg, #1D4ED8, #0EA5E9); color: #fff; text-decoration: none; padding: 13px 26px; border-radius: 10px; font-size: 15px; font-weight: 800;">${escapeHtml(copy.cta)}</a>
+            <a href="${escapeHtml(checkoutUrl)}" style="display: inline-block; background: linear-gradient(135deg, #1D4ED8, #0EA5E9); color: #fff; text-decoration: none; padding: 13px 26px; border-radius: 10px; font-size: 15px; font-weight: 800;">${escapeHtml(copy.cta)}</a>
           </div>
           <p style="margin: 0; font-size: 11px; color: #94A3B8; text-align: center; line-height: 1.6;">
             ${safeProduct} at Echelon Institute &middot; <a href="https://echeloninstitute.ca" style="color: #94A3B8;">echeloninstitute.ca</a><br />
-            <a href="${unsubscribeUrl}" style="color: #94A3B8; text-decoration: underline;">Unsubscribe from these emails</a>
+            ${escapeHtml(ENV.businessMailingAddress.trim())}<br />
+            <a href="mailto:abello@echeloninstitute.ca">Contact Echelon</a><br />
+            <a href="${escapeHtml(unsubscribeUrl)}" style="color: #94A3B8; text-decoration: underline;">Unsubscribe from these emails</a>
           </p>
         </div>
       </div>
     `,
   });
 
-  console.log(
-    `[abandoned-checkout] Sent recovery to ${email.replace(/(^.{3}).+@/, "$1***@")}`
-  );
+  console.log("[abandoned-checkout] Recovery email accepted by SMTP");
 }

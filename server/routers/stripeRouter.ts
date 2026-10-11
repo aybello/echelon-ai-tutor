@@ -38,6 +38,8 @@ import { googleAdsPurchaseConversion } from "../stripe/googleAdsPurchase";
 import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { savePurchaseExamDate } from "../purchaseExamDate";
+import { checkoutRecoveryConsentMetadata } from "../../shared/checkoutRecoveryConsent";
+import { INDIVIDUAL_CHECKOUT_INTEGRATION, TEAMS_CHECKOUT_INTEGRATION } from "../stripe/checkoutIntegration";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import {
   getCommercialAvailability,
@@ -73,6 +75,7 @@ export const stripeRouter = router({
     .input(z.object({
       productKey: z.string(),
       email: z.string().email().optional(),
+      recoveryEmailOptIn: z.boolean().optional().default(false),
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
@@ -116,8 +119,8 @@ export const stripeRouter = router({
       const unitAmount = product.priceCAD;
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
         mode: "payment",
+        integration_identifier: INDIVIDUAL_CHECKOUT_INTEGRATION,
         line_items: [
           {
             price_data: {
@@ -149,15 +152,14 @@ export const stripeRouter = router({
           analytics_province: input.analyticsContext?.province ?? "unknown",
           analytics_surface: input.analyticsContext?.surface ?? "unknown",
           ...individualExamPassCheckoutMetadata(),
+          ...checkoutRecoveryConsentMetadata(input.recoveryEmailOptIn),
         },
         allow_promotion_codes: true,
         // Stripe requires the phone field when collection is enabled. Collect it
         // here for every individual pass, including accelerated wallet checkouts.
         phone_number_collection: { enabled: true },
-        // A learner who reaches the payment page has already decided to buy.
-        // Recovery keeps a reopenable link to this exact cart and gives us the
-        // email they consented to share, so an abandoned checkout becomes one
-        // polite follow-up instead of a buyer we never see again.
+        // A recovery URL is not marketing consent. The separate unchecked
+        // reminder checkbox is recorded in signed session metadata above.
         after_expiration: {
           recovery: { enabled: true, allow_promotion_codes: true },
         },
@@ -572,8 +574,8 @@ export const stripeRouter = router({
       );
 
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
         mode: "subscription",
+        integration_identifier: TEAMS_CHECKOUT_INTEGRATION,
         line_items: [{ price: priceId, quantity: input.seats }],
         customer_email: input.managerEmail,
         ...buildTeamSubscriptionBillingDocumentOptions(),

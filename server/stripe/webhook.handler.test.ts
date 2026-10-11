@@ -21,6 +21,7 @@ const mockTrackEvent = vi.hoisted(() => vi.fn());
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { Request, Response } from "express";
+import { checkoutRecoveryConsentMetadata } from "../../shared/checkoutRecoveryConsent";
 
 const {
   mockConstructEvent,
@@ -193,6 +194,42 @@ function dbWithPurchaseLookupSequence(...rows: Array<Array<{ id: number }>>) {
     })),
   };
 }
+
+describe("expired checkout reminder recording", () => {
+  function expiry(consented = true) {
+    return { id: "evt_fixture_cart_expired", type: "checkout.session.expired", data: { object: {
+      id: "cs_test_fixture_expired", mode: "payment", customer_details: { email: "learner@example.org" },
+      metadata: { product_key: "oit", ...(consented ? checkoutRecoveryConsentMetadata(true, new Date("2020-01-01")) : {}) },
+    } } };
+  }
+
+  it("returns 503 when recording a consented cart cannot reach the database", async () => {
+    mockConstructEvent.mockReturnValue(expiry());
+    mockGetDb.mockResolvedValue(null);
+    const response = makeResponse();
+    await captureWebhookHandler()(makeRequest(), response);
+    expect(response.statusCode).toBe(503);
+  });
+
+  it("returns 503 when the idempotent insert fails, allowing Stripe to retry", async () => {
+    mockConstructEvent.mockReturnValue(expiry());
+    mockGetDb.mockResolvedValue({
+      select: () => ({ from: () => ({ where: () => ({ limit: async () => [] }) }) }),
+      insert: () => { throw new Error("Synthetic database unavailable"); },
+    });
+    const response = makeResponse();
+    await captureWebhookHandler()(makeRequest(), response);
+    expect(response.statusCode).toBe(503);
+  });
+
+  it("acknowledges an unconsented cart without storing or sending it", async () => {
+    mockConstructEvent.mockReturnValue(expiry(false));
+    const response = makeResponse();
+    await captureWebhookHandler()(makeRequest(), response);
+    expect(mockGetDb).not.toHaveBeenCalled();
+    expect(response.statusCode).toBe(200);
+  });
+});
 
 beforeEach(() => {
   vi.clearAllMocks();

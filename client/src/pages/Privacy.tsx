@@ -25,7 +25,7 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 6, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 11, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -37,6 +37,8 @@ export default function Privacy() {
           <p>We collect the following information when you use Echelon:</p>
           <ul>
             <li><strong>Email address</strong> — used to identify your account, restore access, and send purchase receipts and study reminders.</li>
+            <li><strong>Phone number</strong> — required at Stripe checkout and used for purchase-related support and resolving account or service problems. Providing a phone number does not subscribe you to promotional calls or texts.</li>
+            <li><strong>Incomplete checkout and reminder preferences</strong> — when you separately opt in to a checkout reminder, we record the course, price, email, Stripe recovery link, acceptance time and notice version. Entering contact details alone is not consent to a promotional reminder.</li>
             <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
             <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
             <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
@@ -99,6 +101,7 @@ export default function Privacy() {
 
         <LegalSection title="10. Marketing Communications">
           <p>Transactional messages such as receipts, access links, security notices, and service communications are necessary to provide the platform. Promotional messages are sent only where permitted by law and include an unsubscribe method. You can opt out of promotional or study-reminder emails without losing course access.</p>
+          <p>The optional checkout-reminder checkbox is unchecked by default and is not required to buy. If selected, it permits one reminder for that checkout, no sooner than six hours after it expires and no later than 14 days afterward. A checkout-reminder opt-out also applies to future carts; suppression records are retained to honour that choice. It does not affect purchase receipts or course access.</p>
         </LegalSection>
 
         <LegalSection title="11. Changes to This Policy">

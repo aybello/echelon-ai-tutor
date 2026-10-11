@@ -709,9 +709,8 @@ export function registerStripeWebhook(app: Express) {
           console.log(`[Stripe Webhook] Flex checkout expired: order #${flexOrderId}`);
         } else {
           // An individual learner reached the payment page and did not finish.
-          // Record it so one recovery email can go out later. Recording must
-          // never fail the webhook: Stripe would retry a payment event we have
-          // already processed.
+          // Record only independently consented reminders. This expired-session
+          // event is safe to retry: insertion is idempotent by Stripe session.
           try {
             const { extractAbandonedCheckout, recordAbandonedCheckout } = await import(
               "../abandonedCheckout"
@@ -719,15 +718,13 @@ export function registerStripeWebhook(app: Express) {
             const record = extractAbandonedCheckout(session);
             if (record) {
               const expiredDb = await getDb();
-              if (expiredDb) {
-                await recordAbandonedCheckout(expiredDb, record);
-                console.log(
-                  `[Stripe Webhook] Abandoned checkout recorded: ${record.productKey} ${record.stripeSessionId}`
-                );
-              }
+              if (!expiredDb) throw new Error("Database unavailable for checkout recovery");
+              await recordAbandonedCheckout(expiredDb, record);
+              console.log(`[Stripe Webhook] Consented abandoned checkout recorded: ${record.productKey}`);
             }
-          } catch (err: any) {
-            console.error("[Stripe Webhook] abandoned checkout record failed:", err?.message ?? err);
+          } catch {
+            console.error("[Stripe Webhook] abandoned checkout record failed");
+            return res.status(503).json({ error: "Checkout recovery recording failed; retry required" });
           }
         }
       }

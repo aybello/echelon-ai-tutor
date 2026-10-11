@@ -4,6 +4,7 @@ import { claimWork, WorkBusyError } from "./durableWork";
 import { runReconciliation } from "./reconcile";
 import { runExamReminders } from "./examReminders";
 import { runTriggerEngine } from "./triggerEngine";
+import { runAbandonedCheckoutRecovery } from "./abandonedCheckoutRecovery";
 
 export const MANAGED_JOBS = {
   "reconcile-purchases": {
@@ -12,6 +13,13 @@ export const MANAGED_JOBS = {
   },
   "exam-reminders": { cron: "0 0 8 * * *", run: runExamReminders },
   "study-triggers": { cron: "0 0 21 * * *", run: runTriggerEngine },
+  "recover-abandoned-checkouts": {
+    cron: "0 30 16 * * *",
+    run: async (guard: () => Promise<void>) => {
+      const result = await runAbandonedCheckoutRecovery(undefined, guard);
+      return { ...result, errors: result.failed ? ["Checkout reminder delivery requires reconciliation"] : [] };
+    },
+  },
 };
 
 /** Authenticated scheduling is also bound to a designated production host and project task. */

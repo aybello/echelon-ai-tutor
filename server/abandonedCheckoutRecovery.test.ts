@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { CHECKOUT_RECOVERY_CONSENT_SOURCE, CHECKOUT_RECOVERY_NOTICE_VERSION, checkoutRecoveryConsentMetadata } from "../shared/checkoutRecoveryConsent";
 import { extractAbandonedCheckout } from "./abandonedCheckout";
 import {
   buildAbandonedCheckoutCopy,
+  assertCheckoutRecoveryEmailConfigured,
   formatCheckoutPrice,
 } from "./abandonedCheckoutEmail";
 import {
@@ -9,6 +11,7 @@ import {
   RECOVERY_DELAY_MS,
   isDueForRecovery,
   resolveRecoveryTarget,
+  runAbandonedCheckoutRecovery,
 } from "./jobs/abandonedCheckoutRecovery";
 
 const HOUR = 60 * 60 * 1000;
@@ -21,18 +24,32 @@ function expiredSession(overrides: Record<string, any> = {}) {
     currency: "cad",
     amount_total: 29900,
     customer_details: { email: "Operator@Example.com" },
-    metadata: {
-      product_key: "class4-water",
-      product_name: "Class 4 Water Treatment Exam Pass",
-    },
     after_expiration: {
       recovery: { url: "https://checkout.stripe.com/c/pay/recover_abc" },
     },
     ...overrides,
+    metadata: {
+      ...checkoutRecoveryConsentMetadata(true, new Date("2020-01-01T00:00:00Z")),
+      ...(overrides.metadata ?? { product_key: "class4-water", product_name: "Class 4 Water Treatment Exam Pass" }),
+    },
   };
 }
 
 describe("abandoned checkout extraction", () => {
+  it("does not infer reminder consent from contact details or an existing purchase", () => {
+    expect(extractAbandonedCheckout({ ...expiredSession(), metadata: { product_key: "class4-water" } })).toBeNull();
+    expect(extractAbandonedCheckout(expiredSession({ metadata: { product_key: "class4-water", checkout_reminder_opt_in: "no" } }))).toBeNull();
+    expect(extractAbandonedCheckout(expiredSession({ metadata: { product_key: "class4-water", checkout_reminder_accepted_at: "invalid" } }))).toBeNull();
+    expect(checkoutRecoveryConsentMetadata(false)).toEqual({});
+  });
+
+  it("preserves independently recorded consent evidence", () => {
+    expect(extractAbandonedCheckout(expiredSession())).toMatchObject({
+      recoveryConsentAt: new Date("2020-01-01T00:00:00Z"),
+      recoveryConsentSource: CHECKOUT_RECOVERY_CONSENT_SOURCE,
+      recoveryConsentNoticeVersion: CHECKOUT_RECOVERY_NOTICE_VERSION,
+    });
+  });
   it("captures the buyer, the course and the link back to the same cart", () => {
     const record = extractAbandonedCheckout(expiredSession());
     expect(record).not.toBeNull();
@@ -80,18 +97,18 @@ describe("abandoned checkout extraction", () => {
 
   it("falls back through the email sources Stripe may populate", () => {
     const viaCustomerEmail = extractAbandonedCheckout(
-      expiredSession({ customer_details: {}, customer_email: "a@b.com" })
+      expiredSession({ customer_details: {}, customer_email: "learner-a@example.org" })
     );
-    expect(viaCustomerEmail!.email).toBe("a@b.com");
+    expect(viaCustomerEmail!.email).toBe("learner-a@example.org");
 
     const viaMetadata = extractAbandonedCheckout(
       expiredSession({
         customer_details: {},
         customer_email: null,
-        metadata: { product_key: "class4-water", customer_email: "c@d.com" },
+        metadata: { product_key: "class4-water", customer_email: "learner-b@example.org" },
       })
     );
-    expect(viaMetadata!.email).toBe("c@d.com");
+    expect(viaMetadata!.email).toBe("learner-b@example.org");
   });
 
   it("refuses a recovery link that is not an https Stripe URL", () => {
@@ -99,15 +116,32 @@ describe("abandoned checkout extraction", () => {
       expiredSession({ after_expiration: { recovery: { url: "javascript:alert(1)" } } })
     );
     expect(record!.recoveryUrl).toBeNull();
+    const credentialUrl = new URL("https://checkout.stripe.com/recover");
+    credentialUrl.username = "fixture";
+    credentialUrl.password = "invalid";
+    for (const url of ["https://attacker.example/recover", "https://checkout.stripe.com.attacker.example/recover", credentialUrl.toString(), "https://checkout.stripe.com:8443/recover"]) {
+      expect(extractAbandonedCheckout(expiredSession({ after_expiration: { recovery: { url } } }))!.recoveryUrl).toBeNull();
+    }
   });
 });
 
 describe("recovery timing", () => {
   const base = {
+    recoveryConsentAt: new Date("2020-01-01T00:00:00Z"),
+    recoveryConsentSource: CHECKOUT_RECOVERY_CONSENT_SOURCE,
+    recoveryConsentNoticeVersion: CHECKOUT_RECOVERY_NOTICE_VERSION,
     optOut: false,
     recoveryEmailSentAt: null,
     recoveredAt: null,
   };
+
+  it("never sends historical carts without consent or with an unknown notice", () => {
+    const now = new Date("2026-10-10T12:00:00Z");
+    const cart = { ...base, now, abandonedAt: new Date(now.getTime() - DAY) };
+    expect(isDueForRecovery({ ...cart, recoveryConsentAt: null })).toBe(false);
+    expect(isDueForRecovery({ ...cart, recoveryConsentNoticeVersion: "unknown" })).toBe(false);
+    expect(isDueForRecovery({ ...cart, recoveryConsentAt: new Date(now.getTime() + DAY) })).toBe(false);
+  });
 
   it("waits before sending so a learner who simply reopened the tab is not interrupted", () => {
     const now = new Date("2026-10-10T12:00:00Z");
@@ -188,6 +222,16 @@ describe("recovery target", () => {
 });
 
 describe("recovery email copy", () => {
+  it("fails closed before sending when SMTP or the real mailing address is missing", () => {
+    const config = { smtpHost: "smtp.example", smtpUser: "mailer@example.org", smtpPass: "fixture-only", businessMailingAddress: "" };
+    expect(() => assertCheckoutRecoveryEmailConfigured(config)).toThrow("BUSINESS_MAILING_ADDRESS");
+    expect(() => assertCheckoutRecoveryEmailConfigured({ ...config, smtpHost: "" })).toThrow("SMTP");
+    expect(() => assertCheckoutRecoveryEmailConfigured({ ...config, businessMailingAddress: "123 Example Street, Example City" })).not.toThrow();
+  });
+
+  it("does not report a successful empty run when the database is unavailable", async () => {
+    await expect(runAbandonedCheckoutRecovery(async () => {}, async () => {}, async () => null)).rejects.toThrow("Database unavailable");
+  });
   it("states the price and what the learner gets, without false urgency", () => {
     const copy = buildAbandonedCheckoutCopy({
       productName: "Class 4 Water Treatment Exam Pass",
@@ -201,6 +245,9 @@ describe("recovery email copy", () => {
     expect(body.toLowerCase()).not.toContain("expires in");
     expect(body.toLowerCase()).not.toContain("last chance");
     expect(body.toLowerCase()).not.toContain("hurry");
+    expect(body.toLowerCase()).not.toContain("verified question bank");
+    expect(body.toLowerCase()).not.toContain("real exam blueprint");
+    expect(body).toContain("not a certifying authority");
   });
 
   it("keeps prose free of em dashes", () => {

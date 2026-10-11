@@ -7,6 +7,16 @@ const purchaseGate = readFileSync(new URL("./PurchaseGate.tsx", import.meta.url)
 const stripeRouter = readFileSync(new URL("../../../server/routers/stripeRouter.ts", import.meta.url), "utf8");
 
 describe("individual checkout flow", () => {
+  it("offers an unchecked, optional reminder at every individual purchase surface", () => {
+    for (const source of [pricing, quizGate, purchaseGate]) {
+      expect(source).toContain("[recoveryEmailOptIn, setRecoveryEmailOptIn] = useState(false)");
+      expect(source).toContain("<CheckoutRecoveryConsent checked={recoveryEmailOptIn}");
+      expect(source).toContain("recoveryEmailOptIn,");
+    }
+    expect(stripeRouter).toContain("recoveryEmailOptIn: z.boolean().optional().default(false)");
+    expect(stripeRouter).toContain("checkoutRecoveryConsentMetadata(input.recoveryEmailOptIn)");
+    expect(stripeRouter).not.toContain("payment_method_types:");
+  });
   it("opens Stripe directly from every individual purchase surface", () => {
     const pricingIndividualCheckout = pricing.slice(
       pricing.indexOf("function CheckoutButton"),

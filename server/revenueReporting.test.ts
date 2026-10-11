@@ -28,11 +28,11 @@ describe("revenue reporting rules", () => {
     });
 
     it("treats real customer addresses as real", () => {
-      expect(isSyntheticCustomerEmail("brandonbsn95@gmail.com")).toBe(false);
-      expect(isSyntheticCustomerEmail("shane.stephen@peelregion.ca")).toBe(
+      expect(isSyntheticCustomerEmail("buyer-a@example.org")).toBe(false);
+      expect(isSyntheticCustomerEmail("manager@municipality.example")).toBe(
         false
       );
-      expect(isSyntheticCustomerEmail("cbachner@peterborough.ca")).toBe(false);
+      expect(isSyntheticCustomerEmail("buyer-b@utility.example")).toBe(false);
     });
 
     it("does not depend on address casing", () => {
@@ -47,7 +47,7 @@ describe("revenue reporting rules", () => {
 
     it("does not misread a real address that merely mentions test", () => {
       // A customer at a company called "testing" is still a paying customer.
-      expect(isSyntheticCustomerEmail("john@testingsolutions.ca")).toBe(false);
+      expect(isSyntheticCustomerEmail("john@testing.example")).toBe(false);
     });
   });
 
@@ -55,7 +55,7 @@ describe("revenue reporting rules", () => {
     it("counts a paid order from a real customer", () => {
       expect(
         isRealRevenueRow({
-          email: "brandonbsn95@gmail.com",
+          email: "buyer-a@example.org",
           amountCAD: 4900,
           refundedAt: null,
         })
@@ -103,8 +103,8 @@ describe("revenue reporting rules", () => {
   describe("regression: the overstatement that triggered this", () => {
     it("reports only real money across a mixed set of rows", () => {
       const rows = [
-        { email: "brandonbsn95@gmail.com", amountCAD: 4900, refundedAt: null },
-        { email: "cbachner@peterborough.ca", amountCAD: 6900, refundedAt: null },
+        { email: "buyer-a@example.org", amountCAD: 4900, refundedAt: null },
+        { email: "buyer-b@utility.example", amountCAD: 6900, refundedAt: null },
         // Synthetic rows that inflated the dashboard.
         { email: `paging-1${SYNTHETIC_EMAIL_DOMAIN}`, amountCAD: 29900, refundedAt: null },
         { email: `reliability-2${SYNTHETIC_EMAIL_DOMAIN}`, amountCAD: 29900, refundedAt: null },
