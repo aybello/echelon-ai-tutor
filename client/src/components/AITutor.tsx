@@ -12,6 +12,7 @@ import { TutorPanelPlacement } from "./TutorPanelPlacement";
 import "./AITutor.css";
 import { Streamdown } from "streamdown";
 import { AI_TUTOR_MARKDOWN_PLUGINS } from "@/components/AIChatBox";
+import { normalizeTutorMath } from "@/lib/tutorMath";
 
 interface Props {
   question: Question | null;
@@ -438,7 +439,7 @@ export default function AITutor({
               ) : m.role === "assistant" ? (
                 <div className="prose prose-sm max-w-none break-words [&_h1]:text-base [&_h2]:mt-3 [&_h2]:text-sm [&_h3]:text-xs [&_ol]:my-2 [&_ul]:my-2 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0">
                   <Streamdown plugins={AI_TUTOR_MARKDOWN_PLUGINS}>
-                    {m.content}
+                    {normalizeTutorMath(m.content)}
                   </Streamdown>
                 </div>
               ) : (
