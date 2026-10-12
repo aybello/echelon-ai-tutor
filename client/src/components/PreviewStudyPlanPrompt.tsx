@@ -22,8 +22,12 @@ import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 import { resolveCourseKey } from "@shared/courseRegistry";
 
-/** The question at which the offer appears. See EMAIL_GATE_PLACEMENT analysis. */
-export const SOFT_GATE_AT_QUESTION = 5;
+/**
+ * The question at which the offer appears. The earlier placement protects
+ * capture volume because most anonymous visitors leave before the paywall.
+ * It remains a soft, one-time offer and never blocks practice.
+ */
+export const SOFT_GATE_AT_QUESTION = 3;
 
 /** One ask per course per browser. Being asked repeatedly is an annoyance. */
 const DISMISSED_KEY_PREFIX = "echelon_plan_prompt_";
