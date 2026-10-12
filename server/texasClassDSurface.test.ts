@@ -24,12 +24,12 @@ function registeredAppRoutes(source: string) {
 }
 
 describe("Texas Class D dormant learning surfaces", () => {
-  it("has all future learning surfaces in code without registering a public route", () => {
+  it("has all released learning surfaces in code and routes", () => {
     const app = readFileSync("client/src/App.tsx", "utf8");
     const registeredRoutes = registeredAppRoutes(app);
     for (const path of dormantPaths) {
-      expect(classifyAppRoute(path).kind).toBe("not-found");
-      expect(registeredRoutes).not.toContain(path);
+      expect(classifyAppRoute(path).kind).toBe("public");
+      expect(registeredRoutes).toContain(path);
     }
     expect(readFileSync("client/src/pages/UsTexasClassDQuiz.tsx", "utf8")).toContain(COURSE_KEY);
     expect(readFileSync("client/src/pages/UsTexasClassDMockExam.tsx", "utf8")).toContain(COURSE_KEY);
@@ -48,12 +48,12 @@ describe("Texas Class D dormant learning surfaces", () => {
     expect(getCourseByKey(COURSE_KEY)).toMatchObject({
       courseKey: COURSE_KEY,
       examFamily: "us-state",
-      isActive: false,
+      isActive: true,
     });
-    expect(isValidCourseKeyForFamily(COURSE_KEY, "us-state")).toBe(false);
-    expect(getAllActiveCourseKeysForFamily("us-state")).not.toContain(COURSE_KEY);
-    expect(INDIVIDUAL_PRODUCTS.some((product) => product.key === COURSE_KEY)).toBe(false);
-    expect(COMMERCIAL_RELEASE_PRODUCT_KEYS).not.toContain(COURSE_KEY);
+    expect(isValidCourseKeyForFamily(COURSE_KEY, "us-state")).toBe(true);
+    expect(getAllActiveCourseKeysForFamily("us-state")).toContain(COURSE_KEY);
+    expect(INDIVIDUAL_PRODUCTS.some((product) => product.key === COURSE_KEY)).toBe(true);
+    expect(COMMERCIAL_RELEASE_PRODUCT_KEYS).toContain(COURSE_KEY);
   });
 
   it("leaves Texas mock questions to the signed server session, never the practice-bank payload", () => {

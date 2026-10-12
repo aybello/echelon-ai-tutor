@@ -144,6 +144,10 @@ const UsClass1WaterFlashcards = lazy(() => import("./pages/UsClass1WaterFlashcar
 const UsClass1WaterDistQuiz = lazy(() => import("./pages/UsClass1WaterDistQuiz"));
 const UsClass1WaterDistMockExam = lazy(() => import("./pages/UsClass1WaterDistMockExam"));
 const UsClass1WaterDistFlashcards = lazy(() => import("./pages/UsClass1WaterDistFlashcards"));
+const UsTexasClassDQuiz = lazy(() => import("./pages/UsTexasClassDQuiz"));
+const UsTexasClassDMockExam = lazy(() => import("./pages/UsTexasClassDMockExam"));
+const UsTexasClassDFlashcards = lazy(() => import("./pages/UsTexasClassDFlashcards"));
+const FormulasUsTexasClassD = lazy(() => import("./pages/FormulasUsTexasClassD"));
 
 // WPI Class 2
 const WpiClass2WaterQuiz = lazy(() => import("./pages/WpiClass2WaterQuiz"));
@@ -309,6 +313,10 @@ function Router() {
         <Route path={"/us-class1-water-dist"} component={UsClass1WaterDistQuiz} />
         <Route path={"/us-class1-water-dist-mock"} component={UsClass1WaterDistMockExam} />
         <Route path={"/us-class1-water-dist-flashcards"} component={UsClass1WaterDistFlashcards} />
+        <Route path={"/us-texas-class-d-water"} component={UsTexasClassDQuiz} />
+        <Route path={"/us-texas-class-d-water-mock"} component={UsTexasClassDMockExam} />
+        <Route path={"/us-texas-class-d-water-flashcards"} component={UsTexasClassDFlashcards} />
+        <Route path={"/formulas-us-texas-class-d-water"} component={FormulasUsTexasClassD} />
         <Route path={"/formulas-wpi-class1"} component={FormulasWpiClass1} />
         <Route path={"/formulas-us-class1"} component={FormulasUsClass1} />
         <Route path={"/wpi-class2-water"} component={WpiClass2WaterQuiz} />

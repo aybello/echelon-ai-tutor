@@ -77,18 +77,19 @@ describe("source-backed US exam routing", () => {
     expect(matchedUSCourses(maryland, "water-distribution").map(item => item.courseKey)).toEqual(["us-class1-water-dist"]);
   });
   it("keeps dedicated, customized and incomplete state routes out of shared WPI claims", () => {
-    for (const slug of ["california", "florida", "texas", "utah", "iowa", "new-hampshire", "new-york", "west-virginia"]) {
+    for (const slug of ["california", "florida", "utah", "iowa", "new-hampshire", "new-york", "west-virginia"]) {
       expect(matchedUSCourses(getStateBySlug(slug)!)).toEqual([]);
     }
     const vermont = getStateBySlug("vermont")!;
     expect(matchedUSCourses(vermont, "water-treatment")).toEqual([]);
     expect(matchedUSCourses(vermont, "water-distribution")).toEqual([]);
   });
-  it("keeps the Texas state-specific course dormant until the governed bank release", () => {
+  it("routes the launched Texas state-specific course without changing shared WPI claims", () => {
     const texasCourse = getCourseByKey("us-texas-class-d-water")!;
     expect(texasCourse.examFamily).toBe("us-state");
-    expect(texasCourse.isActive).toBe(false);
-    expect(matchedUSCourses(getStateBySlug("texas")!)).toEqual([]);
+    expect(texasCourse.isActive).toBe(true);
+    expect(matchedUSCourses(getStateBySlug("texas")!).map(item => item.courseKey)).toEqual(["us-texas-class-d-water"]);
+    expect(matchedUSCourses(getStateBySlug("texas")!, "water-treatment").map(item => item.courseKey)).toEqual(["us-texas-class-d-water"]);
   });
   it("requires official evidence and a confirmed valid level", () => {
     expect(isSharedProgram(program({sources:[]}))).toBe(false);

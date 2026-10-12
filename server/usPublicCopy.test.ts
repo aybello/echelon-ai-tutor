@@ -85,7 +85,7 @@ describe("US public index copy", () => {
   it("renders the dedicated US Class I courses with their own links and prices", () => {
     const body = pageFor("/us/courses").bodyHtml!;
     const usCourses = COURSE_SEO_PAGES.filter(course => course.regionPath === "/us");
-    expect(usCourses).toHaveLength(2);
+    expect(usCourses).toHaveLength(3);
     for (const course of usCourses) {
       expect(body).toContain(`href="${SITE_URL}${course.quizPath}">${course.displayName}</a>`);
       expect(body).toContain(formatCad(course.priceCAD));

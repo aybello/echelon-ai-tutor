@@ -56,6 +56,8 @@ export const COMMERCIAL_RELEASE_PRODUCT_KEYS = [
   // verified live; both banks clear the minimum inventory requirement.
   "us-class1-water",
   "us-class1-water-dist",
+  // Texas Class D, released after governed content review and activation.
+  "us-texas-class-d-water",
 ] as const;
 const COMMERCIAL_RELEASE_PRODUCT_KEY_SET = new Set<string>(COMMERCIAL_RELEASE_PRODUCT_KEYS);
 export const MINIMUM_LIVE_QUESTION_COUNT = 100;

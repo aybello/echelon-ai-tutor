@@ -37,6 +37,18 @@ export default function USCourses() {
       {state ? <div className="us-notice"><h2>{state.name}: confirmed shared routes</h2><p>Only confirmed standardized WPI programs and class matches are shown below. State-specific rules and any other streams need separate preparation.</p><Link href={`/us/states/${state.slug}`} className="us-action us-action-secondary">View {state.name} exam details</Link></div>
         : <div className="us-notice"><h2>Check your state before buying</h2><p>The catalogue below covers standardized exam content. It does not mean every state, grade or certification program uses these exams.</p><Link href="/us/states" className="us-action">Find your state</Link></div>}
       {courses.length === 0 && <div className="us-empty" role="status">{invalidState ? "That state is not recognized. Choose a state from the list." : "No confirmed shared course match for this selection. Check the state page for official sources and dedicated-course needs."}</div>}
+      {state?.code === "TX" && <section className="us-course-section">
+        <h2>Texas Class D Water</h2>
+        <div className="us-card-grid"><article className="us-card" data-course-key="us-texas-class-d-water">
+          <span className="us-badge">Texas-specific preparation</span><h3>Texas Class D Water</h3>
+          <p>120 original questions based on the public TCEQ Class D topic scope, with worked calculation steps, AI Tutor support and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ.</p>
+          <div className="us-actions">
+            <Link href="/us-texas-class-d-water" className="us-action">Practice Quiz</Link>
+            <Link href="/us-texas-class-d-water-mock" className="us-action us-action-secondary">Mock Exam</Link>
+            <Link href="/us-texas-class-d-water-flashcards" className="us-action us-action-secondary">Flashcards</Link>
+          </div>
+        </article></div>
+      </section>}
       {US_STREAMS.filter(item => courses.some(course => course.track === item.key)).map(item => <section key={item.key} className="us-course-section">
         <h2>{item.label}</h2>
         <div className="us-card-grid">{courses.filter(course => course.track === item.key).map(course => <article key={course.courseKey} className="us-card" data-course-key={course.courseKey}>
@@ -51,7 +63,7 @@ export default function USCourses() {
           </div>
         </article>)}</div>
       </section>)}
-      <section className="us-notice"><h2>Need a state-specific course?</h2><p>Our dedicated US Class I courses cover standardized exam content in US customary units. They do not cover any single state's own regulations, and states with unique exams are listed separately.</p><Link href="/us/states" className="us-action us-action-secondary">Check state-specific needs</Link></section>
+      <section className="us-notice"><h2>Need a state-specific course?</h2><p>Our dedicated US Class I courses cover standardized exam content in US customary units. Texas Class D Water preparation is listed separately for Texas learners. These courses do not replace state eligibility or licensing requirements.</p><Link href="/us/states" className="us-action us-action-secondary">Check state-specific needs</Link></section>
     </main>
   </USPageLayout>;
 }

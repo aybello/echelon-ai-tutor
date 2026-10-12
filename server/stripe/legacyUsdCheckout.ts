@@ -52,6 +52,7 @@ export const LEGACY_INDIVIDUAL_USD_PRICES: Readonly<Record<string, number>> = {
 export const POST_CUTOVER_CAD_ONLY_PRODUCTS: readonly string[] = [
   "us-class1-water",
   "us-class1-water-dist",
+  "us-texas-class-d-water",
 ];
 
 export function legacyUsdSubtotalForProduct(productKey: string): number | undefined {

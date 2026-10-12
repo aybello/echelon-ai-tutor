@@ -146,6 +146,14 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     examTypes: ["us-class1-water-dist"],
   },
   {
+    key: "us-texas-class-d-water",
+    shortName: "Texas Class D Water",
+    name: "Texas Class D Water Practice Pass",
+    description: "Texas Class D Water — 120 original questions across 8 modules, based on the public TCEQ Class D topic scope, with worked calculation steps, AI Tutor explanations and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ. Confirm your eligibility and current requirements with TCEQ.",
+    priceCAD: 14900,
+    examTypes: ["us-texas-class-d-water"],
+  },
+  {
     key: "wpi-class2-water",
     shortName: "WPI Class II Water",
     name: "WPI Class II Water Treatment Practice Pass",
@@ -434,6 +442,7 @@ export const PRODUCT_STUDY_PATHS: Record<string, ProductStudyPaths> = {
   "wpi-class1-water":       { quizPath: "/wpi-class1-water",          mockPath: "/wpi-class1-water-mock" },
   "us-class1-water":        { quizPath: "/us-class1-water",           mockPath: "/us-class1-water-mock" },
   "us-class1-water-dist":   { quizPath: "/us-class1-water-dist",      mockPath: "/us-class1-water-dist-mock" },
+  "us-texas-class-d-water": { quizPath: "/us-texas-class-d-water",    mockPath: "/us-texas-class-d-water-mock" },
   "wpi-class2-water":       { quizPath: "/wpi-class2-water",          mockPath: "/wpi-class2-water-mock" },
   "wpi-class3-water":       { quizPath: "/wpi-class3-water",          mockPath: "/wpi-class3-water-mock" },
   "wpi-class4-water":       { quizPath: "/wpi-class4-water",          mockPath: "/wpi-class4-water-mock" },

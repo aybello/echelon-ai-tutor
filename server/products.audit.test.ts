@@ -77,6 +77,8 @@ const EXPECTED_PRICES: Record<string, number> = {
   // United States — Class I (WPI need-to-know aligned)
   "us-class1-water":        14900,
   "us-class1-water-dist":   14900,
+  // United States — Texas Class D
+  "us-texas-class-d-water": 14900,
 };
 
 describe("shared/products.ts — price-change audit", () => {

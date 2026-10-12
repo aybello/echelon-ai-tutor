@@ -35,6 +35,15 @@ export default function USStatePage() {
           {program.sources.length > 0 && <details><summary>Sources and exam scope</summary><ul>{program.sources.map((source, index) => <li key={`${source.url}-${index}`}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a><p>{source.evidence}</p></li>)}</ul></details>}
         </section>;
       })}
+      {state.code === "TX" && <section className="us-card us-program" data-course-key="us-texas-class-d-water">
+        <span className="us-badge">Texas-specific preparation</span><h2>Texas Class D Water</h2>
+        <p>120 original questions based on the public TCEQ Class D topic scope, with worked calculation steps, AI Tutor support and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ.</p>
+        <div className="us-actions">
+          <Link href="/us-texas-class-d-water" className="us-action">Practice</Link>
+          <Link href="/us-texas-class-d-water-mock" className="us-action us-action-secondary">Mock Exam</Link>
+          <Link href="/us-texas-class-d-water-flashcards" className="us-action us-action-secondary">Flashcards</Link>
+        </div>
+      </section>}
       {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet.</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
       {state.limits.length > 0 && <section className="us-card us-program"><h2>What still needs confirmation</h2><ul>{state.limits.map(item => <li key={item}>{item}</li>)}</ul></section>}
       <Link href="/us/states" className="us-action us-action-secondary">Back to all states</Link>
