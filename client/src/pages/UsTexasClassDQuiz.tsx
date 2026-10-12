@@ -37,16 +37,14 @@ const MODULE_ICONS: Record<string, string> = {
 };
 
 /**
- * Texas Class D learning surface. This component is deliberately not registered
- * in App.tsx until the separately staged bank is released and the commercial
- * decision is approved. Its question bank is also in_review, which means it
- * cannot return learner questions before that governed release.
+ * Texas Class D learning surface. The bank is learner-visible only after the
+ * governed release promotes the reviewed rows to approved.
  */
 export default function UsTexasClassDQuiz() {
   usePageMeta({
     title: "Texas Class D Water Practice Questions | Echelon Institute",
     description: "Original Texas Class D Water practice questions based on the public TCEQ operator topic scope. Echelon is an independent preparation provider.",
-    noindex: true,
+    noindex: false,
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("us-texas-class-d-water", "lazy");

@@ -819,11 +819,10 @@ const REGISTRY: CourseEntry[] = [
     aliases: [],
     isActive: true,
   },
-  // ── Texas Class D Water (state-specific, held pending governed release) ──
+  // ── Texas Class D Water (state-specific, governed commercial release) ──
   // Texas Class D is a combined entry credential spanning treatment and
   // distribution. This separate family prevents it from inheriting any WPI or
-  // Canadian entitlement, bank, route or source claim. It remains inactive
-  // until the staged bank, release script and commercial decision are complete.
+  // Canadian entitlement, bank, route or source claim.
   {
     courseKey: "us-texas-class-d-water",
     displayName: "Texas Class D Water",
@@ -841,7 +840,7 @@ const REGISTRY: CourseEntry[] = [
     questionBankKey: "us-texas-class-d-water",
     teamAssignable: false,
     aliases: [],
-    isActive: false,
+    isActive: true,
   },
 ];
 
