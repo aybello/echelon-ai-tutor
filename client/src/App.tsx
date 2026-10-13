@@ -483,8 +483,15 @@ function NovaScotiaCourseGuard() {
     const routeProvince = funnelProvince(new URLSearchParams(search).get("province"));
     const activeProvince = routeProvince ?? savedProvince?.toUpperCase();
     if (activeProvince !== "NS") return;
-    if (isNovaScotiaPathSupported(location)) return;
-    navigate("/?province=NS#find-course");
+    if (!isNovaScotiaPathSupported(location)) {
+      navigate("/?province=NS#find-course");
+      return;
+    }
+    if (!routeProvince) {
+      const nextSearch = new URLSearchParams(search);
+      nextSearch.set("province", "NS");
+      navigate(`${location}?${nextSearch.toString()}`);
+    }
   }, [location, navigate, savedProvince, search]);
 
   return <Router />;
