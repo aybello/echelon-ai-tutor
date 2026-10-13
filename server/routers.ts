@@ -199,7 +199,7 @@ export const appRouter = router({
     updateProvince: protectedProcedure
       .input(
         z.object({
-          province: z.enum(["on", "bc", "ab", "sk", "mb"]),
+          province: z.enum(["on", "bc", "ab", "sk", "mb", "ns"]),
         })
       )
       .mutation(async ({ ctx, input }) => {

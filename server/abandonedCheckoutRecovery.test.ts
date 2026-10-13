@@ -80,18 +80,18 @@ describe("abandoned checkout extraction", () => {
 
   it("falls back through the email sources Stripe may populate", () => {
     const viaCustomerEmail = extractAbandonedCheckout(
-      expiredSession({ customer_details: {}, customer_email: "a@b.com" })
+      expiredSession({ customer_details: {}, customer_email: "buyer@example.com" })
     );
-    expect(viaCustomerEmail!.email).toBe("a@b.com");
+    expect(viaCustomerEmail!.email).toBe("buyer@example.com");
 
     const viaMetadata = extractAbandonedCheckout(
       expiredSession({
         customer_details: {},
         customer_email: null,
-        metadata: { product_key: "class4-water", customer_email: "c@d.com" },
+        metadata: { product_key: "class4-water", customer_email: "metadata-buyer@example.org" },
       })
     );
-    expect(viaMetadata!.email).toBe("c@d.com");
+    expect(viaMetadata!.email).toBe("metadata-buyer@example.org");
   });
 
   it("refuses a recovery link that is not an https Stripe URL", () => {

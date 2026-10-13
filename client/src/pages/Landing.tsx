@@ -4,8 +4,9 @@
 // Includes: Ontario Distribution & Collection sub-tabs (class1-4-water-dist, class1-4-wastewater-coll)
 // Geo-aware: hero CTA and course section header adapt to CA vs US visitors
 
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { buildPricingHref, courseProvinceHref } from "@shared/funnelNavigation";
+import { isNovaScotiaCourseSupported } from "@shared/novaScotiaPreparation";
 import { useState, useRef, useEffect } from "react";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
@@ -1293,7 +1294,12 @@ export default function Landing() {
     path: "/",
   });
   useStructuredData(landingPageSchemas);
-  const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+  const { province: storedProvince, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+  const search = useSearch();
+  const routeProvince = new URLSearchParams(search).get("province")?.toLowerCase();
+  const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns"
+    ? routeProvince
+    : storedProvince;
   const { isAuthenticated } = useAuth();
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const utils = trpc.useUtils();
@@ -1309,7 +1315,7 @@ export default function Landing() {
   type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
   type OntarioSubTab = "water" | "ontario-dist" | "wastewater" | "ontario-coll";
   type Track = typeof validTracks[number];
-  const [activeTrack, setActiveTrackRaw] = useState<Track>("water");
+  const [activeTrack, setActiveTrackRaw] = useState<Track>(() => province === "ns" ? "wpi-water" : "water");
   const setActiveTrack = (track: Track) => {
     setActiveTrackRaw(track);
     // Do NOT write the track to the URL hash — doing so causes the wrong
@@ -1322,7 +1328,14 @@ export default function Landing() {
   const activeTopTab: TopTab = isWpiTrack(activeTrack) ? "wpi" : (activeTrack === "ontario-dist" ? "water" : activeTrack === "ontario-coll" ? "wastewater" : (activeTrack as TopTab));
   // WPI sub-tab: default to wpi-water when entering WPI parent tab
   const activeWpiSub: WpiSubTab = isWpiTrack(activeTrack) ? activeTrack : "wpi-water";
+  useEffect(() => {
+    if (province === "ns" && !isWpiTrack(activeTrack)) setActiveTrack("wpi-water");
+  }, [activeTrack, province]);
   const handleTopTab = (tab: TopTab) => {
+    if (province === "ns" && tab !== "wpi") {
+      setActiveTrack("wpi-water");
+      return;
+    }
     if (tab === "wpi") {
       setActiveTrack(activeWpiSub);
     } else if (tab === "water") {
@@ -1346,7 +1359,7 @@ export default function Landing() {
       updateProvinceMutation.mutate({ province: id });
     }
     // Switch track to match province
-    if (id === "bc" || id === "ab" || id === "sk" || id === "mb") {
+    if (id === "bc" || id === "ab" || id === "sk" || id === "mb" || id === "ns") {
       setActiveTrack("wpi-water");
     } else {
       setActiveTrack("water");
@@ -1491,10 +1504,10 @@ export default function Landing() {
         <FadeUp>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
-            Browse all courses
+            {province === "ns" ? "Nova Scotia exam preparation" : "Browse all courses"}
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 620, margin: "0 auto 32px" }}>
-            Explore Ontario and WPI certification courses. Each course brings practice questions, mock exams and its study tools together in one workspace.
+            {province === "ns" ? "Choose a shared WPI course that fits Nova Scotia's published standardized exam streams. Confirm your current exam version and requirements with the province." : "Explore Ontario and WPI certification courses. Each course brings practice questions, mock exams and its study tools together in one workspace."}
           </p>
 
           {/* Track Tree — accordion-style vertical selector */}
@@ -1620,7 +1633,7 @@ export default function Landing() {
                   transition: "all 0.18s",
                 }}
               >
-                <span>🌐 WPI (BC, AB, SK, MB)</span>
+                <span>{province === "ns" ? "🌊 Nova Scotia shared WPI preparation" : "🌐 WPI (BC, AB, SK, MB)"}</span>
                 <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wpi" ? "▲" : "▼"}</span>
               </button>
               {activeTopTab === "wpi" && (
@@ -1661,7 +1674,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).filter(course => province !== "ns" || isNovaScotiaCourseSupported(course.productKey)).map(course => (
             <CourseCard key={course.code} course={course} province={province} />
           ))}
         </div>

@@ -1,3 +1,4 @@
+import { NOVA_SCOTIA_EXAM_GUIDANCE_URL, NOVA_SCOTIA_PREPARATION_NOTE } from "@shared/novaScotiaPreparation";
 import { useId } from "react";
 import { useLocation, useSearch } from "wouter";
 import { ArrowRight, BookOpen, MapPin } from "lucide-react";
@@ -43,6 +44,7 @@ export default function CourseFinder({ initialProvince }: { initialProvince?: st
         <option value="">Select your level</option>{courses.map(item => <option key={item.courseKey} value={item.courseKey}>{getFinderLevelLabel(item)}</option>)}
       </select></label>
     </div>
+    {province === "ns" && <p role="note">{NOVA_SCOTIA_PREPARATION_NOTE} <a href={NOVA_SCOTIA_EXAM_GUIDANCE_URL}>Official exam guidance</a></p>}
     <div className="course-finder-result" aria-live="polite">
       {course ? <><div><strong><BookOpen size={17} /> {course.displayName}</strong><p>{province === "on" ? "Ontario exam preparation" : "WPI exam preparation"} · Practice, mock exams and study tools</p></div>
         <a className="workspace-primary" href={courseProvinceHref(course.quizPath, course.courseKey, province)}>Try this course <ArrowRight size={17} /></a><a className="workspace-text-link" href={buildPricingHref(course.courseKey, province)}>View access plans</a></>

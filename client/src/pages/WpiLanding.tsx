@@ -199,6 +199,8 @@ export default function WpiLanding() {
     if (id === "on") {
       navigate("/canada/ontario");
     }
+    // Nova Scotia uses the scoped finder and its exam-version guidance.
+    if (id === "ns") navigate("/?province=NS#find-course");
     // Other listed jurisdictions remain on this catalogue.
   };
 

@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch, Redirect, useLocation, useSearch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
@@ -9,6 +9,9 @@ import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
 import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense, useLayoutEffect } from "react";
+import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
+import { funnelProvince } from "@shared/funnelNavigation";
+import { useProvince } from "@/hooks/useProvince";
 import Landing from "./pages/Landing";
 
 // ── Lazy-loaded pages (code splitting) ───────────────────────────────────────
@@ -470,6 +473,31 @@ function Router() {
   );
 }
 
+/** Keeps a Nova Scotia course context inside the published 2017 ABC exam scope. */
+function NovaScotiaCourseGuard() {
+  const [location, navigate] = useLocation();
+  const search = useSearch();
+  const { province: savedProvince } = useProvince();
+
+  useLayoutEffect(() => {
+    const routeProvince = funnelProvince(new URLSearchParams(search).get("province"));
+    const activeProvince = routeProvince ?? savedProvince?.toUpperCase();
+    if (activeProvince !== "NS") return;
+    if (!isNovaScotiaCourseSurface(location)) return;
+    if (!isNovaScotiaPathSupported(location)) {
+      navigate("/?province=NS#find-course", { replace: true });
+      return;
+    }
+    if (!routeProvince) {
+      const nextSearch = new URLSearchParams(search);
+      nextSearch.set("province", "NS");
+      navigate(`${location}?${nextSearch.toString()}`, { replace: true });
+    }
+  }, [location, navigate, savedProvince, search]);
+
+  return <Router />;
+}
+
 /**
  * PhoneGate — renders a mandatory phone collection modal for any authenticated
  * user who hasn't yet provided a phone number. Cannot be dismissed.
@@ -503,7 +531,7 @@ function App() {
           <div className="page-enter">
             {/* <main> landmark for accessibility — required by WCAG 2.1 */}
             <main>
-              <Router />
+              <NovaScotiaCourseGuard />
             </main>
           </div>
           <PhoneGate />

@@ -16,8 +16,11 @@ import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/products";
 import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
+import { isNovaScotiaCourseSupported, NOVA_SCOTIA_EXAM_GUIDANCE_URL, NOVA_SCOTIA_PREPARATION_NOTE } from "@shared/novaScotiaPreparation";
 import { readUSStudyContext } from "@shared/usStudyContext";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
+import { useProvince } from "@/hooks/useProvince";
 import {
   getTeamTotalPriceCents,
   getTeamEffectiveSeatPriceCents,
@@ -700,12 +703,14 @@ function CheckoutButton({
   disabled,
   style,
   province,
+  jurisdiction,
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
-  province?: "ontario" | "western" | "unknown";
+  province?: "ontario" | "western" | "nova-scotia" | "unknown";
+  jurisdiction?: "ON" | "BC" | "AB" | "SK" | "MB" | "NS";
 }) {
   const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -735,6 +740,7 @@ function CheckoutButton({
     createSession.mutate({
       productKey,
       currency: "cad",
+      province: jurisdiction,
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...attribution,
@@ -867,9 +873,10 @@ const PROVINCES = [
   { code: "AB", name: "Alberta", flag: "🛢️", certBody: "AWWOA", framework: "wpi" },
   { code: "SK", name: "Saskatchewan", flag: "🌾", certBody: "SAHO", framework: "wpi" },
   { code: "MB", name: "Manitoba", flag: "🦬", certBody: "MWWA", framework: "wpi" },
+  { code: "NS", name: "Nova Scotia", flag: "🌊", certBody: "NSECC", framework: "wpi" },
 ] as const;
 
-type ProvinceCode = "ON" | "BC" | "AB" | "SK" | "MB";
+type ProvinceCode = typeof PROVINCES[number]["code"];
 
 // Province-specific label overrides for WPI provinces
 const WPI_WATER_LABELS: Record<string, { shortName: string; description: string; badge?: string }> = {
@@ -1171,8 +1178,11 @@ export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
   // The validated URL is authoritative, including reload and browser Back.
   const searchString = useSearch();
+  const { province: savedProvince } = useProvince();
   const [, navigate] = useLocation();
-  const pricingSelection = readPricingSelection(searchString);
+  const pricingSearch = new URLSearchParams(searchString);
+  if (!pricingSearch.has("province") && savedProvince === "ns") pricingSearch.set("province", "NS");
+  const pricingSelection = readPricingSelection(pricingSearch.toString());
   const selectedProvince = pricingSelection.province;
   const isWpi = selectedProvince !== "ON";
   const usStudyContext = readUSStudyContext(searchString);
@@ -1181,9 +1191,10 @@ export default function Pricing() {
   // BC is a legacy WPI routing default, not a US learner's certifying authority.
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
   const funnelAnalytics = trpc.funnelAnalytics.track.useMutation();
+  const basePricingAttribution = getMarketingAttribution("/pricing");
   const pricingAttribution = {
-    ...getMarketingAttribution("/pricing"),
-    province: isUS ? ("unknown" as const) : ("ontario" as const),
+    ...basePricingAttribution,
+    province: isUS ? ("unknown" as const) : basePricingAttribution.province,
   };
   usePageMeta({
     title: "Pricing — Echelon Institute",
@@ -1253,6 +1264,7 @@ export default function Pricing() {
   // unchanged.
   const offeredInContext = (key: string) => {
     if (usStudyContext.isUS) return key.startsWith("us-") || key.startsWith("wpi-");
+    if (selectedProvince === "NS") return isNovaScotiaCourseSupported(key);
     if (isWpi) return key.startsWith("wpi-");
     return !key.startsWith("wpi-") && !key.startsWith("us-");
   };
@@ -1342,7 +1354,7 @@ export default function Pricing() {
           </div>
           {isWpi && (
             <div className="province-wpi-note">
-              <strong>{provinceInfo.certBody}</strong> — WPI standardized exams apply. All question banks are aligned with WPI Need-to-Know Criteria.
+              {selectedProvince === "NS" ? <>{NOVA_SCOTIA_PREPARATION_NOTE} <a href={NOVA_SCOTIA_EXAM_GUIDANCE_URL}>Official exam guidance</a></> : <><strong>{provinceInfo.certBody}</strong> — WPI standardized exams apply. All question banks are aligned with WPI Need-to-Know Criteria.</>}
             </div>
           )}
         </div>
@@ -1964,6 +1976,7 @@ function ProductCard({
   verifiedQuestionCount?: number;
 }) {
   const searchString = useSearch();
+  const jurisdiction = readCheckoutJurisdiction(searchString);
   const isUSPreparation = readUSStudyContext(searchString).isUS && product.key.startsWith("wpi-");
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
   const displayDesc = isUSPreparation
@@ -2092,7 +2105,8 @@ function ProductCard({
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
-          province={isUS ? "unknown" : "ontario"}
+          province={isUS ? "unknown" : jurisdiction === "NS" ? "nova-scotia" : "ontario"}
+          jurisdiction={jurisdiction}
         />
         {product.available && PRODUCT_STUDY_PATHS[product.key]?.quizPath && (
           <Link href={courseProvinceHref(PRODUCT_STUDY_PATHS[product.key].quizPath, product.key, new URLSearchParams(searchString).get("province"), searchString)} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
