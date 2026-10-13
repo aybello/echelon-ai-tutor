@@ -13,6 +13,24 @@ const NOVA_SCOTIA_LEGACY_FORMULA_COURSES: Record<string, string> = {
   "/formulas-wpi-class4-coll": "wpi-class4-water-coll",
 };
 
+function normalizePathname(pathname: string): string {
+  const path = pathname.split("?")[0].split("#")[0].toLowerCase();
+  return path.length > 1 ? path.replace(/\/+$/, "") : path;
+}
+
+function courseForNovaScotiaPath(pathname: string) {
+  const normalized = normalizePathname(pathname);
+  const legacyCourse = NOVA_SCOTIA_LEGACY_FORMULA_COURSES[normalized];
+  return legacyCourse
+    ? resolveCourseKey(legacyCourse)
+    : getAllCourses().find(candidate => [
+      candidate.quizPath,
+      candidate.mockExamPath,
+      candidate.flashcardPath,
+      candidate.formulaPath,
+    ].filter((path): path is string => Boolean(path)).some(path => normalizePathname(path) === normalized));
+}
+
 export function isNovaScotiaCourseSupported(courseKey: string): boolean {
   const course = resolveCourseKey(courseKey);
   if (!course?.isActive || course.examFamily !== "western" || course.classLevel < 1) return false;
@@ -23,16 +41,13 @@ export function isNovaScotiaCourseSupported(courseKey: string): boolean {
 
 /** Unknown pages remain available. This guard applies only to named course surfaces. */
 export function isNovaScotiaPathSupported(pathname: string): boolean {
-  const legacyCourse = NOVA_SCOTIA_LEGACY_FORMULA_COURSES[pathname];
-  const course = legacyCourse
-    ? resolveCourseKey(legacyCourse)
-    : getAllCourses().find(candidate => [
-      candidate.quizPath,
-      candidate.mockExamPath,
-      candidate.flashcardPath,
-      candidate.formulaPath,
-    ].includes(pathname));
+  const course = courseForNovaScotiaPath(pathname);
   return !course || isNovaScotiaCourseSupported(course.courseKey);
+}
+
+/** Distinguishes registered course routes from shared site, authentication and payment pages. */
+export function isNovaScotiaCourseSurface(pathname: string): boolean {
+  return Boolean(courseForNovaScotiaPath(pathname));
 }
 
 export function isNovaScotiaCheckoutAllowed(courseKey: string, province?: string | null): boolean {

@@ -102,9 +102,7 @@ export const stripeRouter = router({
         }
       } catch { /* Untrusted or malformed referrers cannot influence eligibility. */ }
       const signedInProvince = ctx.user?.province?.toUpperCase();
-      const requestedProvince = referrerProvince === "NS" || signedInProvince === "NS"
-        ? "NS"
-        : input.province ?? referrerProvince ?? signedInProvince;
+      const requestedProvince = referrerProvince ?? input.province ?? signedInProvince;
       if (!isNovaScotiaCheckoutAllowed(product.key, requestedProvince)) {
         throw new TRPCError({
           code: "PRECONDITION_FAILED",

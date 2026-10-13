@@ -77,4 +77,10 @@ describe("individual checkout funnel cancellation", () => {
       .rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
     expect(mocks.create).not.toHaveBeenCalled();
   });
+
+  it("uses explicit checkout context before a stale signed-in province preference", async () => {
+    await expect(caller(undefined, "ns").createCheckoutSession({ productKey: "wpi-class4-water-coll", province: "BC" }))
+      .resolves.toEqual({ url: "https://checkout.example.test/synthetic-session" });
+    expect(mocks.create).toHaveBeenCalledOnce();
+  });
 });

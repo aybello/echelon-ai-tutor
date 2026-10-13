@@ -1,3 +1,5 @@
+import { PROVINCE_STORAGE_KEY } from "@/hooks/useProvince";
+
 export const CANADIAN_JURISDICTIONS = ["ON", "BC", "AB", "SK", "MB", "NS"] as const;
 export type CanadianJurisdiction = typeof CANADIAN_JURISDICTIONS[number];
 
@@ -12,7 +14,7 @@ export function readCheckoutJurisdiction(search: string, storedProvince?: string
   if (fromRoute) return fromRoute;
   if (storedProvince !== undefined) return parseJurisdiction(storedProvince);
   try {
-    return parseJurisdiction(window.localStorage.getItem("echelon_province"));
+    return parseJurisdiction(window.localStorage.getItem(PROVINCE_STORAGE_KEY));
   } catch {
     return undefined;
   }

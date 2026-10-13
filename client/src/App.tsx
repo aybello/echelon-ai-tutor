@@ -9,7 +9,7 @@ import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
 import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense, useLayoutEffect } from "react";
-import { isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
+import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
 import { funnelProvince } from "@shared/funnelNavigation";
 import { useProvince } from "@/hooks/useProvince";
 import Landing from "./pages/Landing";
@@ -483,14 +483,15 @@ function NovaScotiaCourseGuard() {
     const routeProvince = funnelProvince(new URLSearchParams(search).get("province"));
     const activeProvince = routeProvince ?? savedProvince?.toUpperCase();
     if (activeProvince !== "NS") return;
+    if (!isNovaScotiaCourseSurface(location)) return;
     if (!isNovaScotiaPathSupported(location)) {
-      navigate("/?province=NS#find-course");
+      navigate("/?province=NS#find-course", { replace: true });
       return;
     }
     if (!routeProvince) {
       const nextSearch = new URLSearchParams(search);
       nextSearch.set("province", "NS");
-      navigate(`${location}?${nextSearch.toString()}`);
+      navigate(`${location}?${nextSearch.toString()}`, { replace: true });
     }
   }, [location, navigate, savedProvince, search]);
 
