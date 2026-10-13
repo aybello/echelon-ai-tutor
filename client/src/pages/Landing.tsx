@@ -4,7 +4,7 @@
 // Includes: Ontario Distribution & Collection sub-tabs (class1-4-water-dist, class1-4-wastewater-coll)
 // Geo-aware: hero CTA and course section header adapt to CA vs US visitors
 
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { buildPricingHref, courseProvinceHref } from "@shared/funnelNavigation";
 import { isNovaScotiaCourseSupported } from "@shared/novaScotiaPreparation";
 import { useState, useRef, useEffect } from "react";
@@ -1294,7 +1294,12 @@ export default function Landing() {
     path: "/",
   });
   useStructuredData(landingPageSchemas);
-  const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+  const { province: storedProvince, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+  const search = useSearch();
+  const routeProvince = new URLSearchParams(search).get("province")?.toLowerCase();
+  const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns"
+    ? routeProvince
+    : storedProvince;
   const { isAuthenticated } = useAuth();
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const utils = trpc.useUtils();
