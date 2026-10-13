@@ -10,6 +10,8 @@ import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense, useLayoutEffect } from "react";
 import { isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
+import { funnelProvince } from "@shared/funnelNavigation";
+import { useProvince } from "@/hooks/useProvince";
 import Landing from "./pages/Landing";
 
 // ── Lazy-loaded pages (code splitting) ───────────────────────────────────────
@@ -475,12 +477,15 @@ function Router() {
 function NovaScotiaCourseGuard() {
   const [location, navigate] = useLocation();
   const search = useSearch();
+  const { province: savedProvince } = useProvince();
 
   useLayoutEffect(() => {
-    if (new URLSearchParams(search).get("province") !== "NS") return;
+    const routeProvince = funnelProvince(new URLSearchParams(search).get("province"));
+    const activeProvince = routeProvince ?? savedProvince?.toUpperCase();
+    if (activeProvince !== "NS") return;
     if (isNovaScotiaPathSupported(location)) return;
     navigate("/?province=NS#find-course");
-  }, [location, navigate, search]);
+  }, [location, navigate, savedProvince, search]);
 
   return <Router />;
 }

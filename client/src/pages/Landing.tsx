@@ -1674,7 +1674,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).filter(course => province !== "ns" || isNovaScotiaCourseSupported((course as any).productKey)).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).filter(course => province !== "ns" || isNovaScotiaCourseSupported(course.productKey)).map(course => (
             <CourseCard key={course.code} course={course} province={province} />
           ))}
         </div>

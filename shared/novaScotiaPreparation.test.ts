@@ -20,6 +20,17 @@ describe("Nova Scotia individual-course context", () => {
       expect(individualCheckoutCancelPath(course.courseKey, "https://echelon.example/pricing?province=NS", "https://echelon.example")).toBe(href);
     }
   });
+
+  it("admits only the published Nova Scotia class-and-stream matrix across the registry", () => {
+    for (const course of getAllCourses()) {
+      const expected = course.isActive
+        && course.examFamily === "western"
+        && course.classLevel >= 1
+        && (course.track === "water-treatment" || course.track === "wastewater-treatment"
+          || ((course.track === "water-distribution" || course.track === "wastewater-collection") && course.classLevel <= 3));
+      expect(isNovaScotiaCourseSupported(course.courseKey)).toBe(expected);
+    }
+  });
   it.each(["oit", "oit-ww", "wqa", "class1-water", "electrician-309a", "wpi-class4-water-dist", "wpi-class4-water-coll", "us-class1-water"])("does not silently route unsupported %s to Ontario or BC", key => {
     expect(isNovaScotiaCourseSupported(key)).toBe(false);
     expect(readPricingSelection(`product=${key}&province=NS`)).toEqual({ province: "NS", requestedProductKey: "" });

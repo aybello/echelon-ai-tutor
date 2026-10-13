@@ -10,6 +10,7 @@ import { resolveCourseKey } from "@shared/courseRegistry";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
 import { buildPricingHref } from "@shared/funnelNavigation";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -85,10 +86,7 @@ export default function QuizGate({
   const [, navigate] = useLocation();
   const searchString = useSearch();
   const pricingHref = buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString);
-  const selectedProvince = new URLSearchParams(searchString).get("province")?.toUpperCase();
-  const jurisdiction = ["ON", "BC", "AB", "SK", "MB", "NS"].includes(selectedProvince ?? "")
-    ? selectedProvince as "ON" | "BC" | "AB" | "SK" | "MB" | "NS"
-    : undefined;
+  const jurisdiction = readCheckoutJurisdiction(searchString);
   const { isUS } = useGeoRegion();
   const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -186,7 +184,7 @@ export default function QuizGate({
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...getMarketingAttribution(window.location.pathname),
-        province: isUS || jurisdiction === "NS" ? "western" : "ontario",
+        province: isUS ? "western" : jurisdiction === "NS" ? "nova-scotia" : "ontario",
         surface: "quiz-gate",
       },
     });

@@ -29,6 +29,7 @@ describe("marketing attribution", () => {
     expect(marketingDeviceForWidth(768)).toBe("tablet");
     expect(marketingDeviceForWidth(1100)).toBe("desktop");
     expect(marketingProvinceForPath("/wpi-class2-water")).toBe("western");
+    expect(marketingProvinceForPath("/wpi-class2-water", "province=NS")).toBe("nova-scotia");
     expect(marketingProvinceForPath("/canada/ontario")).toBe("ontario");
     expect(marketingProvinceForPath("/account")).toBe("unknown");
   });

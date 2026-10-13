@@ -86,7 +86,7 @@ export const stripeRouter = router({
       analyticsContext: z.object({
         source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
         device: z.enum(["desktop", "mobile", "tablet"]),
-        province: z.enum(["ontario", "western", "unknown"]),
+        province: z.enum(["ontario", "western", "nova-scotia", "unknown"]),
         surface: z.enum(["pricing", "purchase-gate", "quiz-gate"]),
       }).optional(),
     }))

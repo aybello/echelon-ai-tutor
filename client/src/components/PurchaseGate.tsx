@@ -14,6 +14,7 @@ import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { resolvePurchaseGateOffer } from "@shared/checkoutOffer";
 import { resolveCourseKey } from "@shared/courseRegistry";
 import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 
 /** Read the email stored after a completed purchase or sign-in for access lookup. */
 function getStoredEmail(): string {
@@ -144,10 +145,7 @@ export default function PurchaseGate({
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
   const searchString = useSearch();
-  const selectedProvince = new URLSearchParams(searchString).get("province")?.toUpperCase();
-  const jurisdiction = ["ON", "BC", "AB", "SK", "MB", "NS"].includes(selectedProvince ?? "")
-    ? selectedProvince as "ON" | "BC" | "AB" | "SK" | "MB" | "NS"
-    : undefined;
+  const jurisdiction = readCheckoutJurisdiction(searchString);
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
   const offer = resolvePurchaseGateOffer({ productKey, productName, price });
@@ -173,7 +171,7 @@ export default function PurchaseGate({
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...getMarketingAttribution(window.location.pathname),
-        province: isUS || jurisdiction === "NS" ? "western" : "ontario",
+        province: isUS ? "western" : jurisdiction === "NS" ? "nova-scotia" : "ontario",
         surface: "purchase-gate",
       },
     });

@@ -8,7 +8,7 @@ export const MARKETING_SOURCES = [
 
 export type MarketingSource = typeof MARKETING_SOURCES[number];
 export type MarketingDevice = "desktop" | "mobile" | "tablet";
-export type MarketingProvince = "ontario" | "western" | "unknown";
+export type MarketingProvince = "ontario" | "western" | "nova-scotia" | "unknown";
 
 export interface MarketingAttribution {
   source: MarketingSource;
@@ -40,7 +40,8 @@ function isKnownHost(hostname: string, knownHosts: readonly string[]) {
   return knownHosts.some((host) => normalizedHost === host || normalizedHost.endsWith(`.${host}`));
 }
 
-export function marketingProvinceForPath(path: string): MarketingProvince {
+export function marketingProvinceForPath(path: string, search = ""): MarketingProvince {
+  if (new URLSearchParams(search).get("province")?.toUpperCase() === "NS") return "nova-scotia";
   if (path.startsWith("/wpi") || path.startsWith("/us") || path.includes("western")) return "western";
   if (path.startsWith("/canada/") || path === "/" || path === "/pricing" || path === "/teams") return "ontario";
   return "unknown";
@@ -87,7 +88,7 @@ export function deriveMarketingAttribution({
   return {
     source,
     device: marketingDeviceForWidth(viewportWidth),
-    province: marketingProvinceForPath(path),
+    province: marketingProvinceForPath(path, search),
   };
 }
 

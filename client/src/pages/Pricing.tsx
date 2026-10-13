@@ -18,7 +18,9 @@ import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/pr
 import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
 import { isNovaScotiaCourseSupported, NOVA_SCOTIA_EXAM_GUIDANCE_URL, NOVA_SCOTIA_PREPARATION_NOTE } from "@shared/novaScotiaPreparation";
 import { readUSStudyContext } from "@shared/usStudyContext";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
+import { useProvince } from "@/hooks/useProvince";
 import {
   getTeamTotalPriceCents,
   getTeamEffectiveSeatPriceCents,
@@ -707,7 +709,7 @@ function CheckoutButton({
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
-  province?: "ontario" | "western" | "unknown";
+  province?: "ontario" | "western" | "nova-scotia" | "unknown";
   jurisdiction?: "ON" | "BC" | "AB" | "SK" | "MB" | "NS";
 }) {
   const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
@@ -1176,8 +1178,11 @@ export default function Pricing() {
   const { region: geoRegion, isUS } = useGeoRegion();
   // The validated URL is authoritative, including reload and browser Back.
   const searchString = useSearch();
+  const { province: savedProvince } = useProvince();
   const [, navigate] = useLocation();
-  const pricingSelection = readPricingSelection(searchString);
+  const pricingSearch = new URLSearchParams(searchString);
+  if (!pricingSearch.has("province") && savedProvince === "ns") pricingSearch.set("province", "NS");
+  const pricingSelection = readPricingSelection(pricingSearch.toString());
   const selectedProvince = pricingSelection.province;
   const isWpi = selectedProvince !== "ON";
   const usStudyContext = readUSStudyContext(searchString);
@@ -1186,9 +1191,10 @@ export default function Pricing() {
   // BC is a legacy WPI routing default, not a US learner's certifying authority.
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
   const funnelAnalytics = trpc.funnelAnalytics.track.useMutation();
+  const basePricingAttribution = getMarketingAttribution("/pricing");
   const pricingAttribution = {
-    ...getMarketingAttribution("/pricing"),
-    province: isUS ? ("unknown" as const) : ("ontario" as const),
+    ...basePricingAttribution,
+    province: isUS ? ("unknown" as const) : basePricingAttribution.province,
   };
   usePageMeta({
     title: "Pricing — Echelon Institute",
@@ -1970,10 +1976,7 @@ function ProductCard({
   verifiedQuestionCount?: number;
 }) {
   const searchString = useSearch();
-  const requestedProvince = new URLSearchParams(searchString).get("province")?.toUpperCase();
-  const jurisdiction = ["ON", "BC", "AB", "SK", "MB", "NS"].includes(requestedProvince ?? "")
-    ? requestedProvince as "ON" | "BC" | "AB" | "SK" | "MB" | "NS"
-    : undefined;
+  const jurisdiction = readCheckoutJurisdiction(searchString);
   const isUSPreparation = readUSStudyContext(searchString).isUS && product.key.startsWith("wpi-");
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
   const displayDesc = isUSPreparation
@@ -2102,7 +2105,7 @@ function ProductCard({
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
-          province={isUS ? "unknown" : jurisdiction === "NS" ? "western" : "ontario"}
+          province={isUS ? "unknown" : jurisdiction === "NS" ? "nova-scotia" : "ontario"}
           jurisdiction={jurisdiction}
         />
         {product.available && PRODUCT_STUDY_PATHS[product.key]?.quizPath && (

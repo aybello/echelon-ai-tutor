@@ -21,7 +21,7 @@ const marketingPage = z.enum([
 const marketingContext = z.object({
   source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
   device: z.enum(["desktop", "mobile", "tablet"]),
-  province: z.enum(["ontario", "western", "unknown"]),
+  province: z.enum(["ontario", "western", "nova-scotia", "unknown"]),
 });
 
 const knownProductKey = z.string().refine(
