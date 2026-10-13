@@ -92,8 +92,7 @@ export type InsertTrialEmail = typeof trialEmails.$inferInsert;
  * A learner who reaches the Stripe payment page has already decided to buy.
  * When that session expires the buyer used to vanish, because the email is
  * typed on Stripe's page rather than ours. Stripe keeps a reopenable recovery
- * link and the consented email; this table records that so exactly one
- * recovery email can be sent per abandoned session and the outcome measured.
+ * link. Email disclosure is not reminder consent; evidence is stored separately.
  */
 export const abandonedCheckouts = mysqlTable("abandoned_checkouts", {
   id: int("id").autoincrement().primaryKey(),
@@ -106,8 +105,11 @@ export const abandonedCheckouts = mysqlTable("abandoned_checkouts", {
   currency: varchar("currency", { length: 8 }).notNull().default("cad"),
   /** Stripe-hosted link that reopens the same cart. Null when Stripe gave none. */
   recoveryUrl: varchar("recoveryUrl", { length: 512 }),
+  recoveryConsentAt: timestamp("recoveryConsentAt"),
+  recoveryConsentSource: varchar("recoveryConsentSource", { length: 64 }),
+  recoveryConsentNoticeVersion: varchar("recoveryConsentNoticeVersion", { length: 64 }),
   abandonedAt: timestamp("abandonedAt").defaultNow().notNull(),
-  /** Set only after a successful send, so a transient SMTP failure retries. */
+  /** Set after success; ambiguous SMTP attempts require manual reconciliation. */
   recoveryEmailSentAt: timestamp("recoveryEmailSentAt"),
   /** Set when a purchase by this email is later observed. */
   recoveredAt: timestamp("recoveredAt"),

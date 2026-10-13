@@ -3,6 +3,7 @@
 // Usage: wrap the quiz content in <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={49} />
 
 import { useState } from "react";
+import CheckoutRecoveryConsent from "./CheckoutRecoveryConsent";
 import { Link, useLocation, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
@@ -140,6 +141,7 @@ export default function PurchaseGate({
 }: PurchaseGateProps) {
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
+  const [recoveryEmailOptIn, setRecoveryEmailOptIn] = useState(false);
   const [accessToken] = useState(getStoredAccessToken);
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
@@ -163,6 +165,7 @@ export default function PurchaseGate({
     if (!offer.available) return;
     createCheckout.mutate({
       productKey,
+      recoveryEmailOptIn,
       currency: "cad",
       utmSource: "purchase-gate",
       visitorId: getAnonymousAnalyticsId(),
@@ -395,6 +398,7 @@ export default function PurchaseGate({
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {offer.available ? (
             <>
+            <CheckoutRecoveryConsent checked={recoveryEmailOptIn} onChange={setRecoveryEmailOptIn} disabled={createCheckout.isPending} />
             <button
               onClick={handleCheckout}
               disabled={createCheckout.isPending}

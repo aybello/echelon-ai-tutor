@@ -581,32 +581,8 @@ async function startServer() {
     }
   });
 
-  // ── Abandoned checkout recovery (every 6 hours) ───────────────────────────
-  // A learner who reached the Stripe payment page already chose a course and
-  // saw the price. Live data showed six individual checkouts started in two
-  // weeks and only two paid, with every abandoner anonymous because the email
-  // is typed on Stripe's page. Stripe now returns that email and a link that
-  // reopens the same cart, so each abandoned cart gets exactly one reminder.
-  app.post("/api/scheduled/recover-abandoned-checkouts", async (_req, res) => {
-    try {
-      const { runAbandonedCheckoutRecovery } = await import(
-        "../jobs/abandonedCheckoutRecovery"
-      );
-      const result = await runAbandonedCheckoutRecovery();
-
-      if (result.sent > 0) {
-        console.log(
-          `[abandoned-checkout] sent ${result.sent} of ${result.considered} due reminders ` +
-            `(purchased ${result.suppressedPurchased}, synthetic ${result.suppressedSynthetic}, failed ${result.failed})`,
-        );
-      }
-
-      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
-    } catch (err) {
-      console.error("[abandoned-checkout] run failed", err);
-      return res.status(500).json({ ok: false, ts: new Date().toISOString() });
-    }
-  });
+  // Checkout recovery is registered through managedJobs: daily at 16:30 UTC,
+  // with production host/task binding and durable run and delivery claims.
 
   // ── Job board refresh endpoint (Heartbeat cron, every 6 hours) ─────────────
   app.post("/api/scheduled/fetch-jobs", async (req, res) => {

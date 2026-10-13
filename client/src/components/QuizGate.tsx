@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import CheckoutRecoveryConsent from "./CheckoutRecoveryConsent";
 import { createPortal } from "react-dom";
 import { Link, useLocation, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -87,6 +88,7 @@ export default function QuizGate({
   const pricingHref = buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString);
   const { isUS } = useGeoRegion();
   const [checkoutError, setCheckoutError] = useState("");
+  const [recoveryEmailOptIn, setRecoveryEmailOptIn] = useState(false);
   const [mounted, setMounted] = useState(false);
   const diagnosticTracked = useRef(false);
   // Second path for learners who are not ready to buy in this moment. Without
@@ -175,6 +177,7 @@ export default function QuizGate({
   function handleCheckout() {
     if (!productKey || !offer.available) return;
     createCheckout.mutate({
+      recoveryEmailOptIn,
       productKey,
       currency: "cad",
       utmSource: "quiz-diagnostic",
@@ -304,6 +307,7 @@ export default function QuizGate({
                     </li>
                   ))}
                 </ul>
+                <CheckoutRecoveryConsent checked={recoveryEmailOptIn} onChange={setRecoveryEmailOptIn} disabled={createCheckout.isPending} />
                 <button
                     onClick={handleCheckout}
                     disabled={createCheckout.isPending}

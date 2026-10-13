@@ -14,6 +14,7 @@ export const ENV = {
   smtpPort: process.env.SMTP_PORT ?? "587",
   smtpUser: process.env.SMTP_USER ?? "",
   smtpPass: process.env.SMTP_PASS ?? "",
+  businessMailingAddress: process.env.BUSINESS_MAILING_ADDRESS ?? "",
   /**
    * Server-approved base URL for generating sensitive links (magic links, etc.).
    * Do NOT use client-provided origin for these — use this value instead.

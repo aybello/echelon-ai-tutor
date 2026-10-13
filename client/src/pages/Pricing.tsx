@@ -3,6 +3,7 @@
 // Stripe Checkout integration via tRPC
 
 import { useState, useEffect, useMemo } from "react";
+import CheckoutRecoveryConsent from "@/components/CheckoutRecoveryConsent";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import { Link, useSearch, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -707,6 +708,7 @@ function CheckoutButton({
   style?: React.CSSProperties;
   province?: "ontario" | "western" | "unknown";
 }) {
+  const [recoveryEmailOptIn, setRecoveryEmailOptIn] = useState(false);
   const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: (data) => {
@@ -734,6 +736,7 @@ function CheckoutButton({
     });
     createSession.mutate({
       productKey,
+      recoveryEmailOptIn,
       currency: "cad",
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
@@ -744,6 +747,8 @@ function CheckoutButton({
   }
 
   return (
+    <>
+    {!disabled && <CheckoutRecoveryConsent checked={recoveryEmailOptIn} onChange={setRecoveryEmailOptIn} disabled={createSession.isPending} />}
     <button
       onClick={handleClick}
       disabled={disabled || createSession.isPending}
@@ -770,6 +775,7 @@ function CheckoutButton({
     >
       {createSession.isPending ? "Opening secure checkout…" : disabled ? "Coming Soon" : label}
     </button>
+    </>
   );
 }
 

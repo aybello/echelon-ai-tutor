@@ -9,7 +9,13 @@ Four draft banks contain 250 original multiple-choice items each:
 | `class2-wastewater` | Wastewater Treatment II | 250 | 25 |
 | `class2-wastewater-coll` | Wastewater Collection II | 250 | 25 |
 
-Every draft has a stem, four options, keyed answer, explanation, topic, module, a family-level primary-source link and reference note. Calculation items also include formula, substitution, and result. All 1,000 have `reviewStatus: "in_review"` and `questionNum: null`. They are **not** learner-visible and have not been imported into the production database.
+Every draft has a stem, four options, keyed answer, explanation, topic, module, a family-level primary-source link and reference note. Calculation items also include formula, substitution, and result. These source artifacts retain `reviewStatus: "in_review"` and `questionNum: null`; that is their drafting provenance, **not the current production release state**.
+
+## Production status checked October 11, 2026
+
+[PR 144](https://github.com/aybello/echelon-ai-tutor/pull/144), merged October 6, records a separately committed 999-question database addition. Read-only checks of `/api/trpc/quiz.getBankMeta` on the public production site returned 753 Water Treatment, 785 Water Distribution, 796 Wastewater Treatment and 810 Wastewater Collection learner-visible questions. That endpoint counts rows after the learner visibility filter, not hidden inventory. All four Class II courses are in the commercial release list.
+
+Do not re-import these 1,000 source drafts just because this directory still says `in_review`: that can duplicate an already released addition. The 999/1,000 difference needs item-level reconciliation before any further import. The public count and PR record do not establish that every individual source item was imported or expert-reviewed. Keep draft provenance distinct from production approval evidence.
 
 ## Editorial and technical status
 
@@ -19,7 +25,7 @@ The Water Distribution bank follows the separate Ontario Water Distribution Clas
 
 The module counts were scaled into five-question drafting families; they are editorial targets, not an assertion about exact current examination weighting. The generator uses 50 topics per bank with five distinct operating cases per topic. This format makes batch review easier, though an SME should also assess whether any five-case group is too repetitive or too easy.
 
-No current production-bank duplicate check was possible because this runtime has no authorized database connection. `draftId` is unique and `questionNum` stays null until a controlled import allocates production numbers. Before import, check stems and near matches against the live bank, review answer validity and distractor plausibility, resolve the source for each item, and approve batches with an Ontario qualified operator.
+At initial drafting, no production-bank duplicate check was possible because that runtime had no authorized database connection. `draftId` is unique and source `questionNum` stays null. Before any additional import, reconcile the already released rows, check stems and near matches against the live bank, review answer validity and distractor plausibility, resolve the source for each item, and retain actual approval evidence.
 
 ## Files and checks
 

@@ -1,4 +1,4 @@
-import { and, eq, gt, inArray, isNull, lt } from "drizzle-orm";
+import { and, eq, gt, inArray, isNotNull, isNull, lt } from "drizzle-orm";
 import { randomBytes } from "node:crypto";
 import { getDb } from "../db";
 import { abandonedCheckouts, purchases } from "../../drizzle/schema";
@@ -7,7 +7,14 @@ import { resolveQuizGateOffer } from "../../shared/checkoutOffer";
 import {
   formatCheckoutPrice,
   sendAbandonedCheckoutEmail,
+  assertCheckoutRecoveryEmailConfigured,
 } from "../abandonedCheckoutEmail";
+import { hasCheckoutRecoveryOptOut } from "../abandonedCheckout";
+import { deliverOnce, workKey } from "./durableWork";
+import {
+  CHECKOUT_RECOVERY_CONSENT_SOURCE,
+  CHECKOUT_RECOVERY_NOTICE_VERSION,
+} from "../../shared/checkoutRecoveryConsent";
 
 /**
  * Recovery for abandoned individual checkouts.
@@ -26,8 +33,8 @@ import {
  * - the cart was already recovered
  * - the person has an active purchase (never market an owned course)
  *
- * The sent marker is written only after the send succeeds, so a transient SMTP
- * failure retries on the next run instead of silently dropping the cart.
+ * A durable per-session claim prevents concurrent sends. Ambiguous SMTP
+ * attempts require reconciliation; they are never automatically resent.
  */
 
 /** Wait before the single recovery send. Long enough to avoid interrupting a
@@ -44,12 +51,16 @@ export interface AbandonedCheckoutRecoveryResult {
   suppressedPurchased: number;
   suppressedOptOut: number;
   suppressedSynthetic: number;
+  suppressedConsent: number;
   failed: number;
 }
 
 /** Decide whether a recorded cart is due for its single recovery email.
  * Pure and exported for tests. */
 export function isDueForRecovery(cart: {
+  recoveryConsentAt?: Date | null;
+  recoveryConsentSource?: string | null;
+  recoveryConsentNoticeVersion?: string | null;
   optOut: boolean;
   recoveryEmailSentAt: Date | null;
   recoveredAt: Date | null;
@@ -57,6 +68,7 @@ export function isDueForRecovery(cart: {
   now?: Date;
 }): boolean {
   const now = cart.now ?? new Date();
+  if (!hasRecoveryConsent(cart, now)) return false;
   if (cart.optOut) return false;
   if (cart.recoveryEmailSentAt) return false;
   if (cart.recoveredAt) return false;
@@ -64,6 +76,23 @@ export function isDueForRecovery(cart: {
   if (age < RECOVERY_DELAY_MS) return false;
   if (age > MAX_CART_AGE_MS) return false;
   return true;
+}
+
+export function hasRecoveryConsent(
+  cart: {
+    recoveryConsentAt?: Date | null;
+    recoveryConsentSource?: string | null;
+    recoveryConsentNoticeVersion?: string | null;
+  },
+  now = new Date()
+): boolean {
+  return (
+    cart.recoveryConsentAt instanceof Date &&
+    Number.isFinite(cart.recoveryConsentAt.getTime()) &&
+    cart.recoveryConsentAt.getTime() <= now.getTime() &&
+    cart.recoveryConsentSource === CHECKOUT_RECOVERY_CONSENT_SOURCE &&
+    cart.recoveryConsentNoticeVersion === CHECKOUT_RECOVERY_NOTICE_VERSION
+  );
 }
 
 /**
@@ -95,7 +124,9 @@ export function resolveRecoveryTarget(cart: {
 }
 
 export async function runAbandonedCheckoutRecovery(
-  send: typeof sendAbandonedCheckoutEmail = sendAbandonedCheckoutEmail
+  send: typeof sendAbandonedCheckoutEmail = sendAbandonedCheckoutEmail,
+  assertOwned: () => Promise<void> = async () => {},
+  getDatabase: typeof getDb = getDb
 ): Promise<AbandonedCheckoutRecoveryResult> {
   const result: AbandonedCheckoutRecoveryResult = {
     considered: 0,
@@ -103,11 +134,12 @@ export async function runAbandonedCheckoutRecovery(
     suppressedPurchased: 0,
     suppressedOptOut: 0,
     suppressedSynthetic: 0,
+    suppressedConsent: 0,
     failed: 0,
   };
 
-  const db = await getDb();
-  if (!db) return result;
+  const db = await getDatabase();
+  if (!db) throw new Error("Database unavailable for checkout recovery");
 
   const now = new Date();
   const dueBefore = new Date(now.getTime() - RECOVERY_DELAY_MS);
@@ -119,6 +151,15 @@ export async function runAbandonedCheckoutRecovery(
     .where(
       and(
         eq(abandonedCheckouts.optOut, false),
+        isNotNull(abandonedCheckouts.recoveryConsentAt),
+        eq(
+          abandonedCheckouts.recoveryConsentSource,
+          CHECKOUT_RECOVERY_CONSENT_SOURCE
+        ),
+        eq(
+          abandonedCheckouts.recoveryConsentNoticeVersion,
+          CHECKOUT_RECOVERY_NOTICE_VERSION
+        ),
         isNull(abandonedCheckouts.recoveryEmailSentAt),
         isNull(abandonedCheckouts.recoveredAt),
         lt(abandonedCheckouts.abandonedAt, dueBefore),
@@ -148,8 +189,14 @@ export async function runAbandonedCheckoutRecovery(
 
   for (const cart of candidates) {
     if (result.sent >= MAX_SENDS_PER_RUN) break;
+    await assertOwned();
+    if (!hasRecoveryConsent(cart, now)) {
+      result.suppressedConsent += 1;
+      continue;
+    }
     if (
       !isDueForRecovery({
+        ...cart,
         optOut: cart.optOut,
         recoveryEmailSentAt: cart.recoveryEmailSentAt,
         recoveredAt: cart.recoveredAt,
@@ -162,6 +209,14 @@ export async function runAbandonedCheckoutRecovery(
     result.considered += 1;
 
     const email = cart.email.trim().toLowerCase();
+    if (await hasCheckoutRecoveryOptOut(db, email)) {
+      result.suppressedOptOut += 1;
+      await db
+        .update(abandonedCheckouts)
+        .set({ optOut: true })
+        .where(eq(abandonedCheckouts.id, cart.id));
+      continue;
+    }
 
     if (isSyntheticCustomerEmail(email)) {
       result.suppressedSynthetic += 1;
@@ -194,7 +249,15 @@ export async function runAbandonedCheckoutRecovery(
             isNull(abandonedCheckouts.unsubscribeToken)
           )
         );
+      // A concurrent token creator may have won the conditional update.
+      const [stored] = await db
+        .select({ token: abandonedCheckouts.unsubscribeToken })
+        .from(abandonedCheckouts)
+        .where(eq(abandonedCheckouts.id, cart.id))
+        .limit(1);
+      token = stored?.token ?? null;
     }
+    if (!token) throw new Error("Checkout unsubscribe token unavailable");
 
     const target = resolveRecoveryTarget({
       productKey: cart.productKey,
@@ -205,24 +268,67 @@ export async function runAbandonedCheckoutRecovery(
     });
 
     try {
-      await send({
-        email,
-        productName: target.productName,
-        priceLabel: target.priceLabel,
-        checkoutUrl: target.checkoutUrl,
-        unsubscribeUrl: `https://echeloninstitute.ca/api/unsubscribe-cart?token=${token}`,
-      });
-      // Mark sent ONLY after success, so failures retry on the next run.
-      await db
-        .update(abandonedCheckouts)
-        .set({ recoveryEmailSentAt: now })
-        .where(eq(abandonedCheckouts.id, cart.id));
-      result.sent += 1;
+      // Missing configuration is retryable, not an ambiguous delivery attempt.
+      if (send === sendAbandonedCheckoutEmail)
+        assertCheckoutRecoveryEmailConfigured();
+      let didSend = false;
+      const delivered = await deliverOnce(
+        db,
+        workKey("checkout-reminder", cart.stripeSessionId),
+        async () => {
+          await assertOwned();
+          const [latest] = await db
+            .select()
+            .from(abandonedCheckouts)
+            .where(eq(abandonedCheckouts.id, cart.id))
+            .limit(1);
+          if (!latest || !isDueForRecovery({ ...latest, now: new Date() }))
+            return;
+          if (await hasCheckoutRecoveryOptOut(db, email)) {
+            result.suppressedOptOut += 1;
+            await db
+              .update(abandonedCheckouts)
+              .set({ optOut: true })
+              .where(eq(abandonedCheckouts.id, cart.id));
+            return;
+          }
+          const [purchase] = await db
+            .select({ id: purchases.id })
+            .from(purchases)
+            .where(
+              and(eq(purchases.email, email), eq(purchases.status, "active"))
+            )
+            .limit(1);
+          if (purchase) {
+            result.suppressedPurchased += 1;
+            await db
+              .update(abandonedCheckouts)
+              .set({ recoveredAt: new Date() })
+              .where(eq(abandonedCheckouts.id, cart.id));
+            return;
+          }
+          await send({
+            email,
+            productName: target.productName,
+            priceLabel: target.priceLabel,
+            checkoutUrl: target.checkoutUrl,
+            unsubscribeUrl: `https://echeloninstitute.ca/api/unsubscribe-cart?token=${token}`,
+          });
+          didSend = true;
+        }
+      );
+      // Completed durable claims also repair a missed marker after a restart.
+      // Suppressed claims are parked separately without inventing a sent email.
+      if (!delivered || didSend)
+        await db
+          .update(abandonedCheckouts)
+          .set({ recoveryEmailSentAt: now })
+          .where(eq(abandonedCheckouts.id, cart.id));
+      if (delivered && didSend) result.sent += 1;
     } catch (error) {
       result.failed += 1;
       console.error(
-        `[abandoned-checkout] send failed for cart ${cart.id}:`,
-        error instanceof Error ? error.message : error
+        `[abandoned-checkout] delivery unresolved for cart ${cart.id}; inspect scheduled_work`
       );
     }
   }
