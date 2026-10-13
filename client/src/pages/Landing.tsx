@@ -17,6 +17,7 @@ import { landingPageSchemas } from "@/lib/structuredData";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
+import { WPI_COVERAGE, WPI_PROVINCE_COUNT } from "@/lib/wpiCoverage";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -1797,10 +1798,10 @@ export default function Landing() {
               border: "1px solid rgba(52,211,153,0.3)",
               borderRadius: 20, padding: "5px 16px", marginBottom: 20,
             }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#34D399", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>✓ Now Live Nationally</span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#34D399", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>✓ Nova Scotia Now Available</span>
             </div>
             <h2 style={{ fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 16px 0", lineHeight: 1.2 }}>
-              WPI Exam Prep<br />Now Available
+              WPI Exam Prep<br />Now Available in {WPI_PROVINCE_COUNT} Provinces
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: "0 0 28px 0" }}>
               Over 8,000 questions across 16 WPI courses — Class I–IV Water and Class I–IV Wastewater — aligned with the WPI Need-to-Know Criteria.
@@ -1817,7 +1818,7 @@ export default function Landing() {
               </div>
               <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
               <div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>4</div>
+                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>{WPI_PROVINCE_COUNT}</div>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Provinces covered</div>
               </div>
             </div>
@@ -1826,51 +1827,15 @@ export default function Landing() {
             </a>
           </div>
 
-          {/* Right — 2×2 province grid */}
+          {/* Right — province coverage grid */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-            {[
-              {
-                flag: "🏔️",
-                province: "British Columbia",
-                certBody: "EOCP",
-                operators: "~4,200 operators",
-                color: "#0891B2",
-                colorBg: "rgba(8,145,178,0.1)",
-                colorBorder: "rgba(8,145,178,0.25)",
-              },
-              {
-                flag: "🛢️",
-                province: "Alberta",
-                certBody: "AWWOA",
-                operators: "~2,071 operators",
-                color: "#7C3AED",
-                colorBg: "rgba(124,58,237,0.1)",
-                colorBorder: "rgba(124,58,237,0.25)",
-              },
-              {
-                flag: "🌾",
-                province: "Saskatchewan",
-                certBody: "SAHO",
-                operators: "~800 operators",
-                color: "#D97706",
-                colorBg: "rgba(217,119,6,0.1)",
-                colorBorder: "rgba(217,119,6,0.25)",
-              },
-              {
-                flag: "🦬",
-                province: "Manitoba",
-                certBody: "MWWA",
-                operators: "~600 operators",
-                color: "#059669",
-                colorBg: "rgba(5,150,105,0.1)",
-                colorBorder: "rgba(5,150,105,0.25)",
-              },
-            ].map(p => (
+            {WPI_COVERAGE.map((p, index) => (
               <div key={p.province} style={{
                 background: p.colorBg,
                 border: `1px solid ${p.colorBorder}`,
                 borderRadius: 14, padding: "20px 18px",
                 position: "relative" as const,
+                gridColumn: WPI_COVERAGE.length % 2 === 1 && index === WPI_COVERAGE.length - 1 ? "1 / -1" : undefined,
               }}>
                 <div style={{
                   position: "absolute" as const, top: 12, right: 12,
@@ -1881,8 +1846,8 @@ export default function Landing() {
                 }}>✓ Live</div>
                 <div style={{ fontSize: 24, marginBottom: 8 }}>{p.flag}</div>
                 <h3 style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF", margin: "0 0 3px 0" }}>{p.province}</h3>
-                <div style={{ fontSize: 11, fontWeight: 600, color: p.color, marginBottom: 8 }}>{p.certBody} — WPI Exams</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{p.operators}</div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: p.color, marginBottom: 8 }}>{p.detail}</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{p.supportingText}</div>
               </div>
             ))}
           </div>
