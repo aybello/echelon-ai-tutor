@@ -16,6 +16,7 @@ import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/products";
 import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
+import { isNovaScotiaCourseSupported, NOVA_SCOTIA_EXAM_GUIDANCE_URL, NOVA_SCOTIA_PREPARATION_NOTE } from "@shared/novaScotiaPreparation";
 import { readUSStudyContext } from "@shared/usStudyContext";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 import {
@@ -867,9 +868,10 @@ const PROVINCES = [
   { code: "AB", name: "Alberta", flag: "🛢️", certBody: "AWWOA", framework: "wpi" },
   { code: "SK", name: "Saskatchewan", flag: "🌾", certBody: "SAHO", framework: "wpi" },
   { code: "MB", name: "Manitoba", flag: "🦬", certBody: "MWWA", framework: "wpi" },
+  { code: "NS", name: "Nova Scotia", flag: "🌊", certBody: "NSECC", framework: "wpi" },
 ] as const;
 
-type ProvinceCode = "ON" | "BC" | "AB" | "SK" | "MB";
+type ProvinceCode = typeof PROVINCES[number]["code"];
 
 // Province-specific label overrides for WPI provinces
 const WPI_WATER_LABELS: Record<string, { shortName: string; description: string; badge?: string }> = {
@@ -1253,6 +1255,7 @@ export default function Pricing() {
   // unchanged.
   const offeredInContext = (key: string) => {
     if (usStudyContext.isUS) return key.startsWith("us-") || key.startsWith("wpi-");
+    if (selectedProvince === "NS") return isNovaScotiaCourseSupported(key);
     if (isWpi) return key.startsWith("wpi-");
     return !key.startsWith("wpi-") && !key.startsWith("us-");
   };
@@ -1342,7 +1345,7 @@ export default function Pricing() {
           </div>
           {isWpi && (
             <div className="province-wpi-note">
-              <strong>{provinceInfo.certBody}</strong> — WPI standardized exams apply. All question banks are aligned with WPI Need-to-Know Criteria.
+              {selectedProvince === "NS" ? <>{NOVA_SCOTIA_PREPARATION_NOTE} <a href={NOVA_SCOTIA_EXAM_GUIDANCE_URL}>Official exam guidance</a></> : <><strong>{provinceInfo.certBody}</strong> — WPI standardized exams apply. All question banks are aligned with WPI Need-to-Know Criteria.</>}
             </div>
           )}
         </div>

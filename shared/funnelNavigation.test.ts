@@ -22,7 +22,7 @@ describe("canonical individual funnel context", () => {
   it("never resolves a dedicated US course from a Canadian selection", () => {
     // Without explicit US context a US product key must not be selectable,
     // in either Canadian jurisdiction.
-    for (const province of ["ON", "BC", "AB", "SK", "MB"]) {
+    for (const province of ["ON", "BC", "AB", "SK", "MB", "NS"]) {
       expect(readPricingSelection(`product=us-class1-water&province=${province}`).requestedProductKey).toBe("");
       expect(readPricingSelection(`product=us-class1-water-dist&province=${province}`).requestedProductKey).toBe("");
     }

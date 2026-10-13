@@ -1346,7 +1346,7 @@ export default function Landing() {
       updateProvinceMutation.mutate({ province: id });
     }
     // Switch track to match province
-    if (id === "bc" || id === "ab" || id === "sk" || id === "mb") {
+    if (id === "bc" || id === "ab" || id === "sk" || id === "mb" || id === "ns") {
       setActiveTrack("wpi-water");
     } else {
       setActiveTrack("water");

@@ -48,7 +48,7 @@ function selectedPricingArea() {
 }
 
 describe("rendered funnel navigation", () => {
-  it.each(["ON", "BC", "AB", "SK", "MB"])("restores finder province %s and its exact course link from the URL", province => {
+  it.each(["ON", "BC", "AB", "SK", "MB", "NS"])("restores finder province %s and its exact course link from the URL", province => {
     const product = province === "ON" ? "class3-water" : "wpi-class3-water";
     state.path = "/"; state.search = `province=${province}&track=water-treatment&product=${product}`;
     const html = render(CourseFinder);

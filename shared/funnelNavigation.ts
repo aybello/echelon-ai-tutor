@@ -1,9 +1,10 @@
+import { isNovaScotiaCourseSupported } from "./novaScotiaPreparation";
 import { resolveCourseKey } from "./courseRegistry";
 import { getActiveIndividualProductByKey } from "./products";
 import { usStateIdentity } from "./usStateNames";
 import { readUSStudyContext, withUSStudyContext } from "./usStudyContext";
 
-export const FUNNEL_PROVINCES = ["ON", "BC", "AB", "SK", "MB"] as const;
+export const FUNNEL_PROVINCES = ["ON", "BC", "AB", "SK", "MB", "NS"] as const;
 export type FunnelProvince = typeof FUNNEL_PROVINCES[number];
 
 export function funnelProvince(value?: string | null): FunnelProvince | undefined {
@@ -13,6 +14,7 @@ export function funnelProvince(value?: string | null): FunnelProvince | undefine
 
 function productProvince(productKey: string, province?: string | null): FunnelProvince {
   const requested = funnelProvince(province);
+  if (requested === "NS") return requested;
   // Dedicated US courses are not provincial. They keep the shared non-Ontario
   // default purely so existing links stay well formed; the US context on the
   // link is what actually identifies them.
@@ -30,7 +32,7 @@ export function readPricingSelection(search: string) {
   // A dedicated US course is only compatible with an explicit US context, so a
   // Canadian selection can never resolve to one. Canadian courses keep their
   // existing province rules unchanged.
-  const compatible = product && (product.key.startsWith("us-")
+  const compatible = product && (province !== "NS" || isNovaScotiaCourseSupported(product.key)) && (product.key.startsWith("us-")
     ? readUSStudyContext(search).isUS
     : product.key.startsWith("wpi-") ? province !== "ON" : province === "ON");
   return { province, requestedProductKey: compatible ? product.key : "" };
@@ -45,12 +47,13 @@ export function availablePricingSelection(search: string, liveKeys?: ReadonlySet
 export function buildPricingHref(productKey?: string | null, province?: string | null, search = ""): string {
   const product = getActiveIndividualProductByKey(productKey ?? "");
   const params = new URLSearchParams();
-  if (product) params.set("product", product.key);
+  if (product && (funnelProvince(province) !== "NS" || isNovaScotiaCourseSupported(product.key))) params.set("product", product.key);
   params.set("province", product ? productProvince(product.key, province) : funnelProvince(province) ?? "ON");
   return withUSStudyContext(`/pricing?${params}`, product?.key, search);
 }
 
 export function courseProvinceHref(path: string, productKey: string, province?: string | null, search = ""): string {
+  if (funnelProvince(province) === "NS" && !isNovaScotiaCourseSupported(productKey)) return buildPricingHref(undefined, "NS");
   if (!getActiveIndividualProductByKey(productKey)) return path;
   const url = new URL(path, "https://echelon.invalid");
   url.searchParams.set("province", productProvince(productKey, province));

@@ -1,9 +1,10 @@
+import { isNovaScotiaCourseSupported } from "@shared/novaScotiaPreparation";
 import { getAllCourses, type CourseEntry } from "@shared/courseRegistry";
 
 export const FINDER_PROVINCES = [
   { id: "on", label: "Ontario" }, { id: "bc", label: "British Columbia" },
   { id: "ab", label: "Alberta" }, { id: "sk", label: "Saskatchewan" },
-  { id: "mb", label: "Manitoba" },
+  { id: "mb", label: "Manitoba" }, { id: "ns", label: "Nova Scotia" },
 ] as const;
 
 export const FINDER_TRACKS = [
@@ -26,6 +27,7 @@ export function getFinderCourses(province: string, track: string): CourseEntry[]
   const family = province === "on" ? "ontario" : "western";
   return getAllCourses().filter(course => {
     if (!course.isActive || course.examFamily !== family) return false;
+    if (province === "ns" && !isNovaScotiaCourseSupported(course.courseKey)) return false;
     if (course.track === track) return true;
     if (family !== "ontario" || course.track !== "oit") return false;
     return (track === "water-treatment" && course.courseKey === "oit")

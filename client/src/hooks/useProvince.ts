@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 
-export type ProvinceId = "on" | "bc" | "ab" | "sk" | "mb";
+export type ProvinceId = "on" | "bc" | "ab" | "sk" | "mb" | "ns";
 
 export interface ProvinceInfo {
   id: ProvinceId;
@@ -19,6 +19,7 @@ export const PROVINCE_LIST: ProvinceInfo[] = [
   { id: "ab", name: "Alberta",         abbr: "AB", flag: "🌾", track: "wpi"     },
   { id: "sk", name: "Saskatchewan",    abbr: "SK", flag: "🌻", track: "wpi"     },
   { id: "mb", name: "Manitoba",        abbr: "MB", flag: "🦌", track: "wpi"     },
+  { id: "ns", name: "Nova Scotia",     abbr: "NS", flag: "🌊", track: "wpi"     },
 ];
 
 const STORAGE_KEY = "echelon_province";
