@@ -22,12 +22,12 @@ describe("abandoned team order recovery", () => {
     expect(isContactableManager("test@example.com")).toBe(false);
     expect(isContactableManager("probe@echelon.test")).toBe(false);
     expect(isContactableManager("abello@echeloninstitute.ca")).toBe(false);
-    expect(isContactableManager("test@winnipeg.ca")).toBe(false);
+    expect(isContactableManager("test@municipality.example")).toBe(false);
   });
 
-  it("contacts a real municipal manager", () => {
-    expect(isContactableManager("bhull@winnipeg.ca")).toBe(true);
-    expect(isContactableManager("wwd-education-training@winnipeg.ca")).toBe(true);
+  it("contacts a non-excluded manager address", () => {
+    expect(isContactableManager("manager@municipality.example")).toBe(true);
+    expect(isContactableManager("training@utility.example")).toBe(true);
   });
 
   it("rejects anything that is not an address", () => {
@@ -40,7 +40,7 @@ describe("abandoned team order recovery", () => {
     // The leftover pending rows are retry artefacts, not lost sales.
     expect(
       shouldRecover({
-        managerEmail: "bhull@winnipeg.ca",
+        managerEmail: "manager@municipality.example",
         paidOrderCourseKeys: ["wpi-class4-water-coll"],
         orderCourseKeys: ["wpi-class4-water-coll"],
       }),
@@ -50,7 +50,7 @@ describe("abandoned team order recovery", () => {
   it("still chases a different course from the same manager", () => {
     expect(
       shouldRecover({
-        managerEmail: "bhull@winnipeg.ca",
+        managerEmail: "manager@municipality.example",
         paidOrderCourseKeys: ["wpi-class4-water-coll"],
         orderCourseKeys: ["wpi-class4-wastewater"],
       }),
@@ -60,7 +60,7 @@ describe("abandoned team order recovery", () => {
   it("chases a manager who never paid for anything", () => {
     expect(
       shouldRecover({
-        managerEmail: "wwd-education-training@winnipeg.ca",
+        managerEmail: "training@utility.example",
         paidOrderCourseKeys: [],
         orderCourseKeys: ["wpi-class4-water-coll"],
       }),
