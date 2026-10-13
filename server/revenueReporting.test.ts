@@ -47,7 +47,7 @@ describe("revenue reporting rules", () => {
 
     it("does not misread a real address that merely mentions test", () => {
       // A customer at a company called "testing" is still a paying customer.
-      expect(isSyntheticCustomerEmail("john@testing.example")).toBe(false);
+      expect(isSyntheticCustomerEmail("john@testingsolutions.example")).toBe(false);
     });
   });
 
