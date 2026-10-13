@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getAllCourses } from "./courseRegistry";
 import { ALL_PRODUCTS } from "./products";
-import { isNovaScotiaCourseSupported, NOVA_SCOTIA_PREPARATION_NOTE } from "./novaScotiaPreparation";
+import { isNovaScotiaCheckoutAllowed, isNovaScotiaCourseSupported, isNovaScotiaPathSupported, NOVA_SCOTIA_PREPARATION_NOTE } from "./novaScotiaPreparation";
 import { availablePricingSelection, buildPricingHref, courseProvinceHref, funnelProvince, individualCheckoutCancelPath, readPricingSelection, safeCurrentDestination } from "./funnelNavigation";
 
 describe("Nova Scotia individual-course context", () => {
@@ -31,5 +31,15 @@ describe("Nova Scotia individual-course context", () => {
     expect(availablePricingSelection("product=wpi-class1-water&province=NS", new Set()).selectedProductKey).toBe("");
     expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("2017 ABC exams");
     expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("CEU credit are not claimed");
+  });
+
+  it("guards named unsupported course surfaces and checkout without blocking shared site pages", () => {
+    expect(isNovaScotiaPathSupported("/wpi-class3-water-dist")).toBe(true);
+    expect(isNovaScotiaPathSupported("/wpi-class4-water-dist")).toBe(false);
+    expect(isNovaScotiaPathSupported("/formulas-wpi-class4-coll")).toBe(false);
+    expect(isNovaScotiaPathSupported("/math-practice")).toBe(true);
+    expect(isNovaScotiaCheckoutAllowed("wpi-class3-water-coll", "NS")).toBe(true);
+    expect(isNovaScotiaCheckoutAllowed("wpi-class4-water-coll", "NS")).toBe(false);
+    expect(isNovaScotiaCheckoutAllowed("wpi-class4-water-coll", "BC")).toBe(true);
   });
 });

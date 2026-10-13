@@ -701,12 +701,14 @@ function CheckoutButton({
   disabled,
   style,
   province,
+  jurisdiction,
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
   province?: "ontario" | "western" | "unknown";
+  jurisdiction?: "ON" | "BC" | "AB" | "SK" | "MB" | "NS";
 }) {
   const trackProductSelection = trpc.funnelAnalytics.track.useMutation();
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -736,6 +738,7 @@ function CheckoutButton({
     createSession.mutate({
       productKey,
       currency: "cad",
+      province: jurisdiction,
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...attribution,
@@ -1967,6 +1970,10 @@ function ProductCard({
   verifiedQuestionCount?: number;
 }) {
   const searchString = useSearch();
+  const requestedProvince = new URLSearchParams(searchString).get("province")?.toUpperCase();
+  const jurisdiction = ["ON", "BC", "AB", "SK", "MB", "NS"].includes(requestedProvince ?? "")
+    ? requestedProvince as "ON" | "BC" | "AB" | "SK" | "MB" | "NS"
+    : undefined;
   const isUSPreparation = readUSStudyContext(searchString).isUS && product.key.startsWith("wpi-");
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
   const displayDesc = isUSPreparation
@@ -2095,7 +2102,8 @@ function ProductCard({
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
-          province={isUS ? "unknown" : "ontario"}
+          province={isUS ? "unknown" : jurisdiction === "NS" ? "western" : "ontario"}
+          jurisdiction={jurisdiction}
         />
         {product.available && PRODUCT_STUDY_PATHS[product.key]?.quizPath && (
           <Link href={courseProvinceHref(PRODUCT_STUDY_PATHS[product.key].quizPath, product.key, new URLSearchParams(searchString).get("province"), searchString)} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>

@@ -85,6 +85,10 @@ export default function QuizGate({
   const [, navigate] = useLocation();
   const searchString = useSearch();
   const pricingHref = buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString);
+  const selectedProvince = new URLSearchParams(searchString).get("province")?.toUpperCase();
+  const jurisdiction = ["ON", "BC", "AB", "SK", "MB", "NS"].includes(selectedProvince ?? "")
+    ? selectedProvince as "ON" | "BC" | "AB" | "SK" | "MB" | "NS"
+    : undefined;
   const { isUS } = useGeoRegion();
   const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -177,11 +181,12 @@ export default function QuizGate({
     createCheckout.mutate({
       productKey,
       currency: "cad",
+      province: jurisdiction,
       utmSource: "quiz-diagnostic",
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...getMarketingAttribution(window.location.pathname),
-        province: isUS ? "western" : "ontario",
+        province: isUS || jurisdiction === "NS" ? "western" : "ontario",
         surface: "quiz-gate",
       },
     });

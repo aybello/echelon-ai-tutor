@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch, Redirect, useLocation, useSearch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
@@ -9,6 +9,7 @@ import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
 import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense, useLayoutEffect } from "react";
+import { isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
 import Landing from "./pages/Landing";
 
 // ── Lazy-loaded pages (code splitting) ───────────────────────────────────────
@@ -470,6 +471,20 @@ function Router() {
   );
 }
 
+/** Keeps a Nova Scotia course context inside the published 2017 ABC exam scope. */
+function NovaScotiaCourseGuard() {
+  const [location, navigate] = useLocation();
+  const search = useSearch();
+
+  useLayoutEffect(() => {
+    if (new URLSearchParams(search).get("province") !== "NS") return;
+    if (isNovaScotiaPathSupported(location)) return;
+    navigate("/?province=NS#find-course");
+  }, [location, navigate, search]);
+
+  return <Router />;
+}
+
 /**
  * PhoneGate — renders a mandatory phone collection modal for any authenticated
  * user who hasn't yet provided a phone number. Cannot be dismissed.
@@ -503,7 +518,7 @@ function App() {
           <div className="page-enter">
             {/* <main> landmark for accessibility — required by WCAG 2.1 */}
             <main>
-              <Router />
+              <NovaScotiaCourseGuard />
             </main>
           </div>
           <PhoneGate />

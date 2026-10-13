@@ -39,6 +39,8 @@ import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadi
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { savePurchaseExamDate } from "../purchaseExamDate";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import { funnelProvince } from "../../shared/funnelNavigation";
+import { isNovaScotiaCheckoutAllowed } from "../../shared/novaScotiaPreparation";
 import {
   getCommercialAvailability,
   ORGANIZATION_COMMERCE_ENABLED,
@@ -79,6 +81,7 @@ export const stripeRouter = router({
       // Individual Exam Passes are priced in CAD. Keeping this input optional
       // preserves older clients while preventing geographic currency selection.
       currency: z.literal("cad").optional().default("cad"),
+      province: z.enum(["ON", "BC", "AB", "SK", "MB", "NS"]).optional(),
       visitorId: z.string().min(16).max(128).optional(),
       analyticsContext: z.object({
         source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
@@ -90,6 +93,24 @@ export const stripeRouter = router({
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
       if (!product) throw new Error("Product not found");
+      let referrerProvince: string | undefined;
+      try {
+        const referrer = ctx.req.headers.referer;
+        const appOrigin = new URL(ENV.appBaseUrl).origin;
+        if (referrer && new URL(referrer).origin === appOrigin) {
+          referrerProvince = funnelProvince(new URL(referrer).searchParams.get("province"));
+        }
+      } catch { /* Untrusted or malformed referrers cannot influence eligibility. */ }
+      const signedInProvince = ctx.user?.province?.toUpperCase();
+      const requestedProvince = referrerProvince === "NS" || signedInProvince === "NS"
+        ? "NS"
+        : input.province ?? referrerProvince ?? signedInProvince;
+      if (!isNovaScotiaCheckoutAllowed(product.key, requestedProvince)) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This course is not available in Nova Scotia. Nova Scotia currently supports treatment Classes I–IV and distribution or collection Classes I–III through shared WPI preparation.",
+        });
+      }
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Checkout is temporarily unavailable. Please try again shortly." });
       try {
@@ -148,6 +169,7 @@ export const stripeRouter = router({
           analytics_device: input.analyticsContext?.device ?? "unknown",
           analytics_province: input.analyticsContext?.province ?? "unknown",
           analytics_surface: input.analyticsContext?.surface ?? "unknown",
+          checkout_province: requestedProvince ?? "",
           ...individualExamPassCheckoutMetadata(),
         },
         allow_promotion_codes: true,

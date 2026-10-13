@@ -14,9 +14,9 @@ vi.mock("./_core/env", () => ({ ENV: {
   appBaseUrl: "https://funnel.example.test", isProduction: false, cookieSecret: "synthetic-funnel-secret",
 } }));
 
-function caller(referrer?: string) {
+function caller(referrer?: string, province: string | null = null) {
   return stripeRouter.createCaller({
-    user: null, studentEmail: null,
+    user: province ? { province } as TrpcContext["user"] : null, studentEmail: null,
     req: { headers: { referer: referrer, origin: "https://untrusted-origin.example.test" }, protocol: "https" },
     res: {},
   } as TrpcContext);
@@ -53,6 +53,28 @@ describe("individual checkout funnel cancellation", () => {
   it("fails closed for an unavailable requested product before creating any checkout", async () => {
     mocks.availability.mockResolvedValue([{ key: "oit", questionCount: 400 }]);
     await expect(caller().createCheckoutSession({ productKey: "wpi-class3-water" })).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it("blocks unsupported Nova Scotia products before creating a Stripe session", async () => {
+    await expect(caller("https://funnel.example.test/pricing?province=NS").createCheckoutSession({ productKey: "wpi-class4-water-dist", province: "NS" }))
+      .rejects.toMatchObject({ code: "PRECONDITION_FAILED", message: expect.stringMatching(/Nova Scotia/) });
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it("does not allow a caller to replace Nova Scotia page context with another province", async () => {
+    await expect(caller("https://funnel.example.test/pricing?province=NS").createCheckoutSession({ productKey: "wpi-class4-water-dist", province: "BC" }))
+      .rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
+    expect(mocks.create).not.toHaveBeenCalled();
+  });
+
+  it("allows published Nova Scotia streams and enforces a signed-in Nova Scotia preference", async () => {
+    await expect(caller("https://funnel.example.test/pricing?province=NS").createCheckoutSession({ productKey: "wpi-class3-water-dist", province: "NS" }))
+      .resolves.toEqual({ url: "https://checkout.example.test/synthetic-session" });
+    expect(mocks.create).toHaveBeenCalledOnce();
+    mocks.create.mockClear();
+    await expect(caller(undefined, "ns").createCheckoutSession({ productKey: "wpi-class4-water-coll" }))
+      .rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
     expect(mocks.create).not.toHaveBeenCalled();
   });
 });

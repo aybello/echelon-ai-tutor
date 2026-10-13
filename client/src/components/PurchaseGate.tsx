@@ -144,6 +144,10 @@ export default function PurchaseGate({
   const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
   const searchString = useSearch();
+  const selectedProvince = new URLSearchParams(searchString).get("province")?.toUpperCase();
+  const jurisdiction = ["ON", "BC", "AB", "SK", "MB", "NS"].includes(selectedProvince ?? "")
+    ? selectedProvince as "ON" | "BC" | "AB" | "SK" | "MB" | "NS"
+    : undefined;
   const { isAuthenticated } = useAuth();
   const { isUS } = useGeoRegion();
   const offer = resolvePurchaseGateOffer({ productKey, productName, price });
@@ -164,11 +168,12 @@ export default function PurchaseGate({
     createCheckout.mutate({
       productKey,
       currency: "cad",
+      province: jurisdiction,
       utmSource: "purchase-gate",
       visitorId: getAnonymousAnalyticsId(),
       analyticsContext: {
         ...getMarketingAttribution(window.location.pathname),
-        province: isUS ? "western" : "ontario",
+        province: isUS || jurisdiction === "NS" ? "western" : "ontario",
         surface: "purchase-gate",
       },
     });

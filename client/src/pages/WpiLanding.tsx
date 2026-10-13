@@ -1,9 +1,9 @@
 // WPI Landing Page - BC / AB / SK / MB water & wastewater operator exam prep
 // Rebuilt: Hero → Province table → Tabbed track selector → FAQ → Footer CTA
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WPI_PAGE_COPY, WPI_OFFICIAL_SOURCES } from "@shared/wpiContent";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
 import ProvinceBanner from "@/components/ProvinceBanner";
@@ -190,8 +190,13 @@ export default function WpiLanding() {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [, navigate] = useLocation();
+  const search = useSearch();
   const { showPrompt, setProvince, dismiss } = useProvince();
   const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
+
+  useEffect(() => {
+    if (new URLSearchParams(search).get("province") === "NS") navigate("/?province=NS#find-course");
+  }, [navigate, search]);
 
   const handleProvinceSelect = (id: ProvinceId) => {
     setProvince(id);
