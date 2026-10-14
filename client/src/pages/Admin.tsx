@@ -1090,12 +1090,12 @@ export default function Admin() {
                           <td style={{ padding: "10px 16px" }}>
                             <button
                               className="admin-btn"
-                              onClick={() => { if (!person.optedOut) copyEmail(person.email); }}
-                              disabled={person.optedOut}
-                              title={person.optedOut ? "Marketing opt-out recorded" : "Copy email for permitted follow-up"}
+                              onClick={() => { if (!person.optedOut && person.contactFollowUpStatus !== "closed") copyEmail(person.email); }}
+                              disabled={person.optedOut || person.contactFollowUpStatus === "closed"}
+                              title={person.optedOut ? "Marketing opt-out recorded" : person.contactFollowUpStatus === "closed" ? "Contact enquiry is closed" : "Copy email for permitted follow-up"}
                               style={{ padding: "4px 10px", borderRadius: 16, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" }}
                             >
-                              {person.optedOut ? "Opted out" : copiedEmail === person.email ? "✓" : "Copy"}
+                              {person.optedOut ? "Opted out" : person.contactFollowUpStatus === "closed" ? "Closed" : copiedEmail === person.email ? "✓" : "Copy"}
                             </button>
                           </td>
                         </tr>
