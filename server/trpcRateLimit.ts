@@ -53,7 +53,7 @@ export function getTrpcRateLimitPolicy(rawUrl: string): TrpcRateLimitPolicy {
     isProcedure(procedure, "tutor") || isProcedure(procedure, "incidentCommand")
   )) return "ai";
 
-  if (procedures.some(procedure => isProcedure(procedure, "contact"))) return "contact";
+  if (procedures.some(procedure => isProcedure(procedure, "contact") || isProcedure(procedure, "municipal"))) return "contact";
 
   if (procedures.some(procedure =>
     procedure === "auth.login" ||

@@ -171,7 +171,7 @@ describe("preview study plan keeps unconverted learners reachable", () => {
   it("makes captured leads visible and exportable to the owner", () => {
     // A lead the owner cannot see or export is not a lead.
     const admin = read("client/src/pages/Admin.tsx");
-    expect(admin).toContain('"#", "Email", "Phone", "Course", "Date"');
+    expect(admin).toContain('"#", "Email", "Phone", "Course", "Follow-up", "Date"');
     expect(admin).toContain('phone: r.phone ?? ""');
   });
 

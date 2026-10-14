@@ -15,6 +15,12 @@ describe("platform changelog", () => {
     expect(nextChangelogSortOrder(-7)).toBe(-8);
   });
 
+  it("places new database releases before bundled platform releases", () => {
+    const minBundled = Math.min(...PLATFORM_RELEASES.map(release => release.sortOrder));
+    const nextOrder = nextChangelogSortOrder(Math.min(0, minBundled));
+    expect(nextOrder).toBeLessThan(minBundled);
+  });
+
   it("derives the public last-updated label from live entries", () => {
     const latest = latestChangelogTimestamp([
       { updatedAt: "2026-08-12T12:00:00.000Z" },
@@ -47,9 +53,13 @@ describe("platform changelog", () => {
     expect(admin).toContain('id: "changelog"');
     expect(admin).toContain("<ChangelogManager />");
     expect(manager).toContain("utils.changelog.list.invalidate()");
-    expect(router).toContain("nextChangelogSortOrder(orderRow?.minimum)");
+    expect(router).toContain("Math.min(orderRow?.minimum ?? 0");
+    expect(router).toContain('origin: "bundled" as const');
+    expect(router).toContain('origin: "database" as const');
+    expect(manager).toContain('entry.origin === "database"');
     expect(router).toContain("desc(changelog.createdAt)");
     expect(router).toContain("PLATFORM_RELEASES");
-    expect(PLATFORM_RELEASES[0].title).toBe("A complete free OIT preview");
+    expect(PLATFORM_RELEASES.some(release => release.title === "A complete free OIT preview")).toBe(true);
+    expect(PLATFORM_RELEASES[0].date).toBe("October 14, 2026");
   });
 });

@@ -11,6 +11,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
+import { consentedTrialEmails, isActionableLead, matchesLeadTriageFilter, type LeadTriageFilter } from "@shared/adminLeadTriage";
 import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
 import { formatAdminCurrency, formatAdminPercent, rateFromCounts } from "@/lib/adminDashboard";
 import { formatScoreSavedAt, scoreHistoryCsvRow, scoreLearnerIdentity } from "@/lib/adminScoreHistory";
@@ -49,7 +50,7 @@ const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
   {
     label: "Customers & sales",
     tabs: [
-      { id: "revenue", label: "Purchases", icon: CreditCard },
+      { id: "revenue", label: "Sales & purchases", icon: CreditCard },
       { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
       { id: "orgs", label: "Organizations", icon: Building2 },
       { id: "leads", label: "Captured leads", icon: Mail },
@@ -203,6 +204,7 @@ export default function Admin() {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [isMobileNavigation, setIsMobileNavigation] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches);
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+  const [leadFilter, setLeadFilter] = useState<LeadTriageFilter>("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
   const [reviewPage, setReviewPage] = useState(1);
@@ -216,7 +218,7 @@ export default function Admin() {
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
-  const businessQ = trpc.admin.getBusinessRevenue.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
+  const businessQ = trpc.admin.getBusinessRevenue.useQuery(undefined, { enabled: user?.role === "admin" && (activeTab === "insights" || activeTab === "revenue") });
   const ceuKpisQ = trpc.admin.getCeuKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const leadsQ = trpc.admin.getLeadCapture.useQuery({ limit: 300 }, { enabled: user?.role === "admin" && (activeTab === "leads" || activeTab === "insights") });
@@ -276,6 +278,10 @@ export default function Admin() {
   });
 
   const utils = trpc.useUtils();
+  const markContactFollowUp = trpc.admin.setContactFollowUpStatus.useMutation({
+    onSuccess: () => { void utils.admin.getLeadCapture.invalidate(); },
+    onError: (error) => alert("Contact follow-up status was not saved: " + error.message),
+  });
 
   const reviewQuestion = trpc.admin.reviewQuestion.useMutation({
     onSuccess: () => {
@@ -385,7 +391,7 @@ export default function Admin() {
     if (activeTab === "waitlist") waitlistQ.refetch();
     if (activeTab === "errors") errorsQ.refetch();
     if (activeTab === "scores") scoresQ.refetch();
-    if (activeTab === "revenue") purchasesQ.refetch();
+    if (activeTab === "revenue") { purchasesQ.refetch(); businessQ.refetch(); }
     if (activeTab === "subscriptions") subscriptionsQ.refetch();
     if (activeTab === "health") healthQ.refetch();
     if (activeTab === "feedback") feedbackQ.refetch();
@@ -940,6 +946,7 @@ export default function Admin() {
               {[
                 { label: "People captured", value: leadsQ.data?.uniquePeople ?? "—", note: "Unique email addresses across every capture point" },
                 { label: "Open leads", value: leadsQ.data?.openLeads ?? "—", note: "Captured and not yet a paying customer" },
+                { label: "Enquiries to reply to", value: leadsQ.data?.actionableOpenLeads ?? "—", note: "Open inbound enquiries; not marketing consent" },
                 { label: "Already bought", value: leadsQ.data?.convertedLeads ?? "—", note: "Captured people who later paid" },
                 { label: "New in 7 days", value: leadsQ.data?.newLast7Days ?? "—", note: "Fresh leads worth contacting first" },
                 { label: "New in 30 days", value: leadsQ.data?.newLast30Days ?? "—", note: "Recent capture volume" },
@@ -960,9 +967,10 @@ export default function Admin() {
                     Every captured email
                     {leadsQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{leadsQ.data.uniquePeople} people</span>}
                   </div>
+                  <p style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>Capture is not marketing consent. Copy enquiry addresses only to reply about that request; exports are operational records, not a promotional mailing list. Honour recorded opt-outs.</p>
                   {leadsQ.data && (
                     <div style={{ fontSize: 11, color: "#64748B", marginTop: 4 }}>
-                      Course trial {leadsQ.data.bySource.courseTrial} · Contact form {leadsQ.data.bySource.contactForm} · Exam date booked {leadsQ.data.bySource.examDateBooked} · Waitlist {leadsQ.data.bySource.waitlist}
+                      Course trial {leadsQ.data.bySource.courseTrial} · Abandoned checkout {leadsQ.data.bySource.abandonedCheckout} · Contact form {leadsQ.data.bySource.contactForm} · Exam date booked {leadsQ.data.bySource.examDateBooked} · Waitlist {leadsQ.data.bySource.waitlist}
                     </div>
                   )}
                 </div>
@@ -970,10 +978,10 @@ export default function Admin() {
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     <button
                       className="admin-btn"
-                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(p => !p.converted).map(p => p.email))}
+                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(isActionableLead).map(p => p.email))}
                       style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                     >
-                      {copiedEmail === "__all__" ? "✓ Copied" : "Copy open lead emails"}
+                      {copiedEmail === "__all__" ? "✓ Copied" : "Copy open enquiry replies"}
                     </button>
                     <button
                       className="admin-btn"
@@ -983,10 +991,17 @@ export default function Admin() {
                           name: p.name ?? "",
                           phone: p.phone ?? "",
                           source: p.source,
+                          all_sources: p.sources.join("; "),
                           detail: p.detail ?? "",
-                          note: p.note ?? "",
+                          inquiry_subject: p.inquirySubject ?? "",
+                          inquiry_organization: p.inquiryOrganization ?? "",
+                          inquiry_message: p.inquiryMessage ?? "",
+                          follow_up_status: p.contactFollowUpStatus ?? "",
+                          trial_follow_up_stage: p.followUpStage ?? "",
+                          opted_out: p.optedOut,
+                          recovery_email_sent: p.recoveryEmailSentAt ? new Date(p.recoveryEmailSentAt).toISOString() : "",
                           touchpoints: p.touchpoints,
-                          status: p.converted ? "bought" : "open",
+                          status: p.converted ? "bought" : "not_bought",
                           captured: new Date(p.createdAt).toISOString(),
                         })),
                         `echelon-captured-leads-${new Date().toISOString().slice(0, 10)}.csv`
@@ -998,6 +1013,18 @@ export default function Admin() {
                   </div>
                 )}
               </div>
+              {leadsQ.data && (
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", padding: "12px 20px", borderBottom: "1px solid #E2E8F0" }}>
+                  <label htmlFor="admin-lead-filter" style={{ fontSize: 12, fontWeight: 700 }}>Show</label>
+                  <select id="admin-lead-filter" value={leadFilter} onChange={event => setLeadFilter(event.target.value as typeof leadFilter)} style={{ padding: "6px 10px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#fff", fontSize: 12 }}>
+                    <option value="actionable">Open inbound enquiries to reply to</option>
+                    <option value="all">All captured people</option>
+                    <option value="bought">Already bought</option>
+                    <option value="opted_out">Opted out</option>
+                  </select>
+                  <span style={{ fontSize: 11, color: "#64748B" }}>{leadFilter === "actionable" ? leadsQ.data.actionableOpenLeads : leadFilter === "all" ? leadsQ.data.uniquePeople : leadFilter === "bought" ? leadsQ.data.convertedLeads : leadsQ.data.optedOutPeople} matching people</span>
+                </div>
+              )}
               {leadsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
               {leadsQ.error && (
                 <div style={{ padding: 32, textAlign: "center", color: "#B91C1C", fontSize: 13 }}>
@@ -1012,34 +1039,64 @@ export default function Admin() {
                   <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}>
                     <thead>
                       <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                        {["#", "Email", "Name", "Phone", "Where from", "What they wanted", "Status", "Captured", ""].map(h => (
+                        {["#", "Email", "Name", "Phone", "Source", "Inquiry & product", "Sales status", "Follow-up", "Captured", ""].map(h => (
                           <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>{h}</th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {leadsQ.data.people.map((person, index) => (
+                      {leadsQ.data.people.filter(person => matchesLeadTriageFilter(person, leadFilter)).map((person, index) => (
                         <tr key={person.email.toLowerCase()} style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B" }}>{index + 1}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12, fontWeight: 600 }}>{person.email}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.name ?? "—"}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.phone ?? "—"}</td>
-                          <td style={{ padding: "10px 16px", fontSize: 12, whiteSpace: "nowrap" }}>{person.source}{person.touchpoints > 1 ? ` +${person.touchpoints - 1}` : ""}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12, whiteSpace: "nowrap" }}>{person.sources.join(", ")}{person.touchpoints > 1 ? ` · ${person.touchpoints} entries` : ""}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#475569", maxWidth: 320 }}>
-                            {person.detail ?? "—"}
-                            {person.note && <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div>}
+                            {person.inquirySubject ?? person.detail ?? "—"}
+                            {person.inquiryOrganization && <div style={{ fontSize: 11, color: "#334155", marginTop: 2 }}>Organization: {person.inquiryOrganization}</div>}
+                            {person.inquiryMessage ? (
+                              <details style={{ marginTop: 4 }}>
+                                <summary style={{ cursor: "pointer", color: "#0369A1", fontSize: 11 }}>Read contact message</summary>
+                                <div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 11, marginTop: 4 }}>{person.inquiryMessage}</div>
+                              </details>
+                            ) : person.note ? <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div> : null}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: person.converted ? "#15803D" : "#B45309", whiteSpace: "nowrap" }}>
-                            {person.converted ? "Bought" : "Open"}
+                            {person.converted ? "Bought" : "Not bought"}
+                            {person.optedOut && <div style={{ color: "#B91C1C" }}>Opted out — no marketing</div>}
+                          </td>
+                          <td style={{ padding: "10px 16px", fontSize: 11, minWidth: 160 }}>
+                            {person.contactRequestId ? (
+                              <label style={{ display: "grid", gap: 4, color: "#475569" }}>
+                                Inquiry follow-up
+                                <select
+                                  aria-label={"Follow-up status for " + person.email}
+                                  value={person.contactFollowUpStatus ?? "new"}
+                                  disabled={markContactFollowUp.isPending}
+                                  onChange={event => markContactFollowUp.mutate({ id: person.contactRequestId!, status: event.target.value as "new" | "contacted" | "closed" })}
+                                  style={{ fontSize: 11, background: "#fff", border: "1px solid #CBD5E1", padding: "4px 6px", borderRadius: 6 }}
+                                >
+                                  <option value="new">New</option>
+                                  <option value="contacted">Contacted</option>
+                                  <option value="closed">Closed</option>
+                                </select>
+                              </label>
+                            ) : person.followUpStage !== null ? <span>Trial sequence: {person.followUpStage}/2</span>
+                              : person.recoveryEmailSentAt ? <span>Checkout recovery email sent</span>
+                              : <span style={{ color: "#64748B" }}>No follow-up recorded</span>}
+                            {person.recoveredAt && <div style={{ color: "#15803D", marginTop: 4 }}>Checkout recovered</div>}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B", whiteSpace: "nowrap" }}>{formatDate(person.createdAt)}</td>
                           <td style={{ padding: "10px 16px" }}>
                             <button
                               className="admin-btn"
-                              onClick={() => copyEmail(person.email)}
+                              onClick={() => { if (isActionableLead(person)) copyEmail(person.email); }}
+                              disabled={!isActionableLead(person)}
+                              title={isActionableLead(person) ? "Reply only about the submitted enquiry; not marketing permission" : "No open inbound enquiry eligible for reply"}
                               style={{ padding: "4px 10px", borderRadius: 16, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" }}
                             >
-                              {copiedEmail === person.email ? "✓" : "Copy"}
+                              {copiedEmail === person.email ? "✓" : "Copy for reply"}
                             </button>
                           </td>
                         </tr>
@@ -1064,15 +1121,17 @@ export default function Admin() {
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <button
                     className="admin-btn"
-                    onClick={() => copyAllEmails(trialsQ.data!.map(r => r.email))}
+                      onClick={() => copyAllEmails(consentedTrialEmails(trialsQ.data!))}
+                      disabled={consentedTrialEmails(trialsQ.data).length === 0}
+                      title="Trial capture alone is not marketing consent. No consent evidence is available for bulk copying."
                     style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                   >
-                    {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
+                    {copiedEmail === "__all__" ? "✓ Copied!" : "No marketing consent verified"}
                   </button>
                   <button
                     className="admin-btn"
                     onClick={() => downloadCSV(
-                      trialsQ.data!.map(r => ({ email: r.email, phone: r.phone ?? "", course: r.source, signed_up: new Date(r.createdAt).toISOString() })),
+                      trialsQ.data!.map(r => ({ email: r.email, phone: r.phone ?? "", course: r.source, follow_up_stage: r.followUpStage, last_follow_up_at: r.lastFollowUpAt ? new Date(r.lastFollowUpAt).toISOString() : "", opted_out: r.optOut, signed_up: new Date(r.createdAt).toISOString() })),
                       `echelon-trial-emails-${new Date().toISOString().slice(0,10)}.csv`
                     )}
                     style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
@@ -1090,7 +1149,7 @@ export default function Admin() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                    {["#", "Email", "Phone", "Course", "Date"].map(h => (
+                    {["#", "Email", "Phone", "Course", "Follow-up", "Date"].map(h => (
                       <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                     ))}
                     <th style={{ padding: "10px 16px" }} />
@@ -1109,14 +1168,20 @@ export default function Admin() {
                       <td style={{ padding: "12px 16px" }}>
                         <span style={{ padding: "3px 10px", borderRadius: 100, background: "#1D4ED820", color: "#38BDF8", fontSize: 10, fontWeight: 700 }}>{row.source}</span>
                       </td>
+                      <td style={{ padding: "12px 16px", fontSize: 11, color: row.optOut ? "#B91C1C" : "#475569" }}>
+                        {row.optOut ? "Opted out" : "Stage " + row.followUpStage + "/2"}
+                        {row.lastFollowUpAt && <div>{formatDate(row.lastFollowUpAt)}</div>}
+                      </td>
                       <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
                       <td style={{ padding: "12px 16px" }}>
                         <button
                           className="admin-btn"
-                          onClick={() => copyEmail(row.email)}
+                          onClick={() => { if (!row.optOut) copyEmail(row.email); }}
+                          disabled={row.optOut}
+                          title={row.optOut ? "Marketing opt-out" : "Copy address for operational use only; no marketing consent verified"}
                           style={{ padding: "4px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.06)", background: "transparent", color: "#64748B", fontSize: 10, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}
                         >
-                          {copiedEmail === row.email ? "✓" : "Copy"}
+                          {row.optOut ? "Opted out" : copiedEmail === row.email ? "✓" : "Copy"}
                         </button>
                       </td>
                     </tr>
@@ -1290,15 +1355,85 @@ export default function Admin() {
         {activeTab === "revenue" && (
           <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
             <PurchaseEmailDelivery />
+            <section aria-label="Reconciled revenue breakdown" style={{ padding: "20px", background: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                <div>
+                  <h2 style={{ fontSize: 16, fontWeight: 800, margin: 0, color: "#0F172A" }}>Reconciled recorded revenue</h2>
+                  <p style={{ fontSize: 12, color: "#64748B", marginTop: 5 }}>Includes qualifying individual purchases, active paid subscriptions and team payments — with known recovery backfill duplicates removed.</p>
+                </div>
+                <strong style={{ color: "#0F766E", fontSize: 24 }}>{stats.isLoading ? "…" : stats.data ? formatAdminCurrency(stats.data.totalRevenueCAD) : "Unavailable"}</strong>
+              </div>
+              {stats.error && <p role="alert" className="admin-panel-error">Revenue reconciliation could not be loaded. Refresh the page to retry.</p>}
+              {stats.data && (
+                <div className="admin-operating-grid" style={{ marginTop: 12 }}>
+                  {[
+                    { label: "Individual purchase payments", amount: stats.data.revenueBreakdown.purchasesCAD },
+                    { label: "Active subscription records", amount: stats.data.revenueBreakdown.subscriptionsCAD },
+                    { label: "Team Flex revenue added", amount: stats.data.revenueBreakdown.teamFlexAddedCAD },
+                    { label: "Team payments already counted", amount: stats.data.revenueBreakdown.teamFlexAlreadyCountedCAD },
+                  ].map(entry => (
+                    <div key={entry.label} className="admin-operating-metric" style={{ cursor: "default" }}>
+                      <span>{entry.label}</span><strong style={{ fontSize: 20 }}>{formatAdminCurrency(entry.amount)}</strong>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p style={{ color: "#64748B", fontSize: 11, marginTop: 12 }}>The last figure is a duplicate-detection cross-check and is not added again. Do not sum the individual purchase rows or gross team orders below to reproduce total revenue.</p>
+            </section>
+            <section aria-label="Team Flex order ledger" style={{ padding: "18px 20px", background: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                <div><h2 style={{ margin: 0, fontWeight: 800, fontSize: 15, color: "#0F172A" }}>Team Flex orders</h2>
+                  <p style={{ margin: "5px 0 0", color: "#64748B", fontSize: 11 }}>Latest 50 team orders, paid and pending. Pending orders are not revenue.</p></div>
+                {businessQ.data && businessQ.data.orders.length > 0 && (
+                  <button type="button" className="admin-btn" style={{ border: "1px solid #CBD5E1", borderRadius: 8, padding: "7px 12px", background: "#F8FAFC", cursor: "pointer" }}
+                    onClick={() => downloadCSV(businessQ.data!.orders.map(order => ({
+                      id: order.id,
+                      manager: order.managerEmail,
+                      organization_id: order.organizationId,
+                      licences: order.licences,
+                      status: order.status,
+                      paid_cad: order.status === "paid" ? Number(order.paidCents ?? 0) / 100 : "",
+                      quoted_pre_tax_cad: order.status === "pending" ? Number(order.beforeTaxCents ?? 0) / 100 : "",
+                      created_at: new Date(order.createdAt).toISOString(),
+                    })), "echelon-team-order-ledger.csv")}>Export team orders</button>
+                )}
+              </div>
+              {businessQ.error && <p role="alert" className="admin-panel-error">Team orders could not be loaded. Select Refresh to retry.</p>}
+              {businessQ.isLoading && <p style={{ fontSize: 12, color: "#64748B" }}>Loading team orders…</p>}
+              {businessQ.data && (
+                <>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 16, margin: "12px 0", fontSize: 12, color: "#334155" }}>
+                    <span><strong>{businessQ.data.paidOrders}</strong> paid orders · {formatAdminCurrency(businessQ.data.paidRevenueCAD)} gross team payments</span>
+                    <span><strong>{businessQ.data.abandonedOrders}</strong> pending orders · {formatAdminCurrency(businessQ.data.abandonedValueCAD)} quoted pre-tax</span>
+                  </div>
+                  {businessQ.data.orders.length === 0 ? <p style={{ fontSize: 12, color: "#64748B" }}>No team orders recorded.</p> : (
+                    <div role="region" aria-label="Team order history" tabIndex={0} style={{ overflowX: "auto" }}>
+                      <table className="admin-ledger-table">
+                        <thead><tr><th>Manager</th><th>Seats</th><th>Amount</th><th>Status</th><th>Created</th></tr></thead>
+                        <tbody>{businessQ.data.orders.map(order => (
+                          <tr key={order.id}>
+                            <td style={{ overflowWrap: "anywhere" }}>{order.managerEmail}</td>
+                            <td>{order.licences}</td>
+                            <td>{order.status === "paid" ? formatAdminCurrency(Number(order.paidCents ?? 0) / 100) : formatAdminCurrency(Number(order.beforeTaxCents ?? 0) / 100)} <small>{order.status === "paid" ? "received" : "quoted pre-tax"}</small></td>
+                            <td>{order.status}</td>
+                            <td>{formatDate(order.createdAt)}</td>
+                          </tr>
+                        ))}</tbody>
+                      </table>
+                    </div>
+                  )}
+                </>
+              )}
+            </section>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
-                💰 Purchase History
-                {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} orders</span>}
+                Individual purchase records
+                {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} latest rows (up to 500)</span>}
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 {purchasesQ.data && purchasesQ.data.length > 0 && (
                   <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
-                    Listed order value: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
+                    Listed row amounts only; not a reconciled revenue total
                   </div>
                 )}
                 <button

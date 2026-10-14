@@ -25,7 +25,7 @@ describe("municipal procurement receipts", () => {
     // not return the original receipt number beside a new price. That would
     // let someone print an official looking estimate whose reference number
     // does not match what Echelon actually recorded.
-    const key = source.slice(source.indexOf("const idempotencyKey"), source.indexOf("const requestText"));
+    const key = source.slice(source.indexOf("const payloadHash"), source.indexOf("const requestText"));
     expect(key).toContain("createHash");
     for (const field of ["input.requestKey", "input.kind", "input.email", "input.organization", "input.region", "tier", "totalCents"]) {
       expect(key, `idempotency key must cover ${field}`).toContain(field);

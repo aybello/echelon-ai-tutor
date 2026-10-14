@@ -1300,7 +1300,7 @@ export default function Pricing() {
         <div className="pricing-hero-badge">{isUSPreparation ? "US operator certification preparation" : isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>{isUSPreparation ? <>Choose Your US Exam<br />Preparation.</> : <>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</>}</h1>
         {isUSPreparation ? (
-          <p>Choose a US Class I course written to the WPI Class 1 Need-to-Know Criteria in US customary units, or a shared WPI course for another stream and class. Every Individual Exam Pass includes 12 months of access from successful payment, unlimited practice, the AI Tutor, and step-by-step solutions.</p>
+          <p>Choose dedicated Texas Class D Water preparation, a US Class I WPI-aligned course, or shared WPI preparation where it matches your exam. Every Individual Exam Pass includes 12 months of access from successful payment, unlimited practice, the AI Tutor, and step-by-step solutions. Prices and checkout are in CAD.</p>
         ) : (
           <p>Choose a 12-month Individual Exam Pass for one certification course. Every paid pass includes unlimited practice, the AI Tutor, and step-by-step solutions.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your preparation costs less than one day's pay.</p>
         )}
@@ -1319,7 +1319,7 @@ export default function Pricing() {
             <div className="province-wpi-note" style={{ maxWidth: 640, lineHeight: 1.6, textAlign: "left" }}>
               <strong>{usStudyContext.state ? `Study context: ${usStudyContext.state.name}` : "US study context: no valid state selected"}</strong>
               {invalidUSState && <div role="alert">State not recognized. No state exam match is confirmed.</div>}
-              <div>These courses prepare you for the standardized exam content, not for any one state's local rules. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
+              <div>Texas Class D Water is a separate state-specific course based on the public TCEQ topic scope. US Class I and shared WPI courses prepare you for standardized exam content, not for any one state's local rules. Confirm your local exam, stream, class, edition, and eligibility with your certifying authority before purchase. State context does not confirm exam fit.</div>
               <div style={{ marginTop: 8 }}><strong>All prices and checkout charges are in Canadian dollars (CAD).</strong></div>
             </div>
           </div>
@@ -1359,6 +1359,10 @@ export default function Pricing() {
           )}
         </div>
         )}
+        <div style={{ marginTop: 16, fontSize: 13 }}>
+          {isUSPreparation ? <Link href="/pricing?province=ON" style={{ color: "#BAE6FD" }}>Looking for Canadian preparation?</Link> : <Link href="/pricing?country=US&state=TX&product=us-texas-class-d-water" style={{ color: "#BAE6FD" }}>US preparation, including Texas Class D Water →</Link>}
+          {isUSPreparation && <p>Texas is currently an individual Exam Pass only; it cannot be assigned through Teams. <Link href="/us/states" style={{ color: "#BAE6FD" }}>Check your state’s exam route</Link>.</p>}
+        </div>
       </div>
 
       {/* ── Content ── */}

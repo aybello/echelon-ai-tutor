@@ -31,7 +31,8 @@ describe("live visual-audit remediation", () => {
     const about = source("client/src/pages/About.tsx");
     const us = source("client/src/pages/USLanding.tsx");
 
-    expect(landing).toContain('certBody: "EOCP"');
+    expect(landing).toContain("British Columbia (EOCP / WPI)");
+    expect(landing).toContain("Not affiliated with MOECP, OWWCO, EOCP, WPI");
     expect(landing).toContain("{passPriceLabel}");
     expect(about).toContain("15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(about).not.toContain("FDEP exam in Florida");

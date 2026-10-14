@@ -46,6 +46,18 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("explicit US study context on existing individual pricing", () => {
+  it("offers an explicit US/Texas route from ordinary Canadian pricing", () => {
+    setSearch("province=ON");
+    expect(render()).toContain('href="/pricing?country=US&amp;state=TX&amp;product=us-texas-class-d-water"');
+  });
+  it("selects the Texas product, CAD price and honest individual-only Teams scope", () => {
+    setSearch("country=US&state=TX&product=us-texas-class-d-water");
+    const html = render();
+    expect(html).toContain('<option value="us-texas-class-d-water" selected="">');
+    expect(html).toContain("CA$149");
+    expect(html).toContain("it cannot be assigned through Teams");
+    expect(html).toContain("separate state-specific course");
+  });
   it.each(US_STATE_NAMES)("uses $name as study context, never BC certification or a state course", identity => {
     setSearch(`product=wpi-class3-water&country=US&state=${identity.code}`);
     const html = render();

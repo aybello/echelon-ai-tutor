@@ -2,6 +2,8 @@ import { z } from "zod";
 import { createHash } from "node:crypto";
 import { router, publicProcedure } from "./_core/trpc";
 import { persistedPartnershipInquiry } from "./partnershipInquiry";
+import { municipalCallbackHeader } from "../shared/municipalCallback";
+import { checkMunicipalRequestThrottle } from "./municipalRequestThrottle";
 import {
   getTeamTotalPriceCents,
   getTeamStreamLabel,
@@ -21,6 +23,9 @@ const base = z.object({
   region: z.enum(["ontario", "western", "nova-scotia"]),
   notes: z.string().trim().max(500).optional().default(""),
   website: z.string().max(200).optional().default(""),
+  phone: z.string().trim().max(32).regex(/^[+()\d .-]*$/).optional().default(""),
+  callbackRequested: z.boolean().optional().default(false),
+  preferredCallbackTime: z.string().trim().max(120).optional().default(""),
 });
 
 export const municipalRequestInput = z.discriminatedUnion("kind", [
@@ -30,10 +35,18 @@ export const municipalRequestInput = z.discriminatedUnion("kind", [
     seats: z.number().int().min(5).max(500),
   }),
   base.extend({ kind: z.literal("pilot") }),
-]);
+]).superRefine((input, ctx) => {
+  if (input.callbackRequested !== Boolean(input.phone.replace(/\D/g, "").length >= 7)) {
+    ctx.addIssue({ code: "custom", path: ["phone"], message: "To request a call, provide a valid phone number and select the callback permission. Otherwise leave the phone blank." });
+  }
+  if (!input.callbackRequested && (input.phone || input.preferredCallbackTime)) {
+    ctx.addIssue({ code: "custom", path: ["callbackRequested"], message: "Callback details require your permission to call about this request." });
+  }
+});
 
 export const municipalProcurementRouter = router({
-  request: publicProcedure.input(municipalRequestInput).mutation(async ({ input }) => {
+  request: publicProcedure.input(municipalRequestInput).mutation(async ({ input, ctx }) => {
+    checkMunicipalRequestThrottle(ctx.req.ip ?? "unknown", input.email);
     // Existing partnership persistence is idempotent by requestKey, searchable
     // by admins, and durable even when email notifications fail.
     const isQuote = input.kind === "quote";
@@ -46,7 +59,7 @@ export const municipalProcurementRouter = router({
     // number does not match what Echelon actually holds on file. Keying on the
     // payload means a changed request becomes a new receipt, and a genuine
     // retry of the same request still returns the same one.
-    const idempotencyKey = createHash("sha256")
+    const payloadHash = createHash("sha256")
       .update(
         JSON.stringify([
           input.requestKey,
@@ -57,9 +70,17 @@ export const municipalProcurementRouter = router({
           tier,
           isQuote ? input.seats : null,
           totalCents,
+          input.name,
+          input.notes,
+          input.phone,
+          input.callbackRequested,
+          input.preferredCallbackTime,
         ])
       )
       .digest("hex");
+    // The durable partnership adapter validates UUIDs; a raw 64-byte hash
+    // rejects every request. Keep 122 hash bits with UUID version/variant bits.
+    const idempotencyKey = `${payloadHash.slice(0, 8)}-${payloadHash.slice(8, 12)}-5${payloadHash.slice(13, 16)}-${((parseInt(payloadHash[16], 16) & 3) | 8).toString(16)}${payloadHash.slice(17, 20)}-${payloadHash.slice(20, 32)}`;
     const requestText = isQuote
       ? [
           "Request: municipal Teams price quotation and purchasing details",
@@ -74,6 +95,7 @@ export const municipalProcurementRouter = router({
           "No access is granted until the request is reviewed and explicitly provisioned.",
         ].join("\n");
     const message = [
+      ...(input.callbackRequested ? [municipalCallbackHeader(input.phone, input.preferredCallbackTime)] : []),
       requestText,
       "Region: " + input.region,
       "Notes: " + input.notes,
