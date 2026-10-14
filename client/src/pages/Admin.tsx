@@ -1066,16 +1066,40 @@ export default function Admin() {
                             ) : person.note ? <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div> : null}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: person.converted ? "#15803D" : "#B45309", whiteSpace: "nowrap" }}>
-                            {person.converted ? "Bought" : "Open"}
+                            {person.converted ? "Bought" : "Not bought"}
+                            {person.optedOut && <div style={{ color: "#B91C1C" }}>Opted out — no marketing</div>}
+                          </td>
+                          <td style={{ padding: "10px 16px", fontSize: 11, minWidth: 160 }}>
+                            {person.contactRequestId ? (
+                              <label style={{ display: "grid", gap: 4, color: "#475569" }}>
+                                Inquiry follow-up
+                                <select
+                                  aria-label={"Follow-up status for " + person.email}
+                                  value={person.contactFollowUpStatus ?? "new"}
+                                  disabled={markContactFollowUp.isPending}
+                                  onChange={event => markContactFollowUp.mutate({ id: person.contactRequestId!, status: event.target.value as "new" | "contacted" | "closed" })}
+                                  style={{ fontSize: 11, background: "#fff", border: "1px solid #CBD5E1", padding: "4px 6px", borderRadius: 6 }}
+                                >
+                                  <option value="new">New</option>
+                                  <option value="contacted">Contacted</option>
+                                  <option value="closed">Closed</option>
+                                </select>
+                              </label>
+                            ) : person.followUpStage !== null ? <span>Trial sequence: {person.followUpStage}/2</span>
+                              : person.recoveryEmailSentAt ? <span>Checkout recovery email sent</span>
+                              : <span style={{ color: "#64748B" }}>No follow-up recorded</span>}
+                            {person.recoveredAt && <div style={{ color: "#15803D", marginTop: 4 }}>Checkout recovered</div>}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B", whiteSpace: "nowrap" }}>{formatDate(person.createdAt)}</td>
                           <td style={{ padding: "10px 16px" }}>
                             <button
                               className="admin-btn"
-                              onClick={() => copyEmail(person.email)}
+                              onClick={() => { if (!person.optedOut) copyEmail(person.email); }}
+                              disabled={person.optedOut}
+                              title={person.optedOut ? "Marketing opt-out recorded" : "Copy email for permitted follow-up"}
                               style={{ padding: "4px 10px", borderRadius: 16, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" }}
                             >
-                              {copiedEmail === person.email ? "✓" : "Copy"}
+                              {person.optedOut ? "Opted out" : copiedEmail === person.email ? "✓" : "Copy"}
                             </button>
                           </td>
                         </tr>
