@@ -1146,7 +1146,7 @@ export default function Admin() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                    {["#", "Email", "Phone", "Course", "Date"].map(h => (
+                    {["#", "Email", "Phone", "Course", "Follow-up", "Date"].map(h => (
                       <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                     ))}
                     <th style={{ padding: "10px 16px" }} />
@@ -1165,14 +1165,20 @@ export default function Admin() {
                       <td style={{ padding: "12px 16px" }}>
                         <span style={{ padding: "3px 10px", borderRadius: 100, background: "#1D4ED820", color: "#38BDF8", fontSize: 10, fontWeight: 700 }}>{row.source}</span>
                       </td>
+                      <td style={{ padding: "12px 16px", fontSize: 11, color: row.optOut ? "#B91C1C" : "#475569" }}>
+                        {row.optOut ? "Opted out" : "Stage " + row.followUpStage + "/2"}
+                        {row.lastFollowUpAt && <div>{formatDate(row.lastFollowUpAt)}</div>}
+                      </td>
                       <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
                       <td style={{ padding: "12px 16px" }}>
                         <button
                           className="admin-btn"
-                          onClick={() => copyEmail(row.email)}
+                          onClick={() => { if (!row.optOut) copyEmail(row.email); }}
+                          disabled={row.optOut}
+                          title={row.optOut ? "Marketing opt-out" : "Copy permitted contact"}
                           style={{ padding: "4px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.06)", background: "transparent", color: "#64748B", fontSize: 10, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}
                         >
-                          {copiedEmail === row.email ? "✓" : "Copy"}
+                          {row.optOut ? "Opted out" : copiedEmail === row.email ? "✓" : "Copy"}
                         </button>
                       </td>
                     </tr>
