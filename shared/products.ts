@@ -545,7 +545,12 @@ export const TEAM_COURSES_WESTERN: TeamCourseOption[] = [
 
 /** Get course options for a given province */
 export function getTeamCourseOptions(province: string): TeamCourseOption[] {
-  return province === "western" ? TEAM_COURSES_WESTERN : TEAM_COURSES_ONTARIO;
+  if (province === "western") return TEAM_COURSES_WESTERN;
+  if (province === "nova-scotia") {
+    // Nova Scotia uses WPI exams but does not certify Class IV distribution/collection.
+    return TEAM_COURSES_WESTERN.filter(course => course.key !== "wpi-class4-water-dist" && course.key !== "wpi-class4-water-coll");
+  }
+  return TEAM_COURSES_ONTARIO;
 }
 
 /** Check whether a courseKey is valid for the given province */
