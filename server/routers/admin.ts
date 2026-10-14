@@ -836,6 +836,19 @@ export const adminRouter = router({
    * at all, so those leads were collected and never shown to anyone. This
    * merges them into one ranked list so no captured person is lost.
    */
+  updateContactFollowUp: adminProcedure
+    .input(z.object({ contactId: z.number().int().positive(), status: z.enum(["new", "contacted", "closed"]) }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Database unavailable" });
+      const [existing] = await db.select({ id: contactSubmissions.id }).from(contactSubmissions)
+        .where(eq(contactSubmissions.id, input.contactId)).limit(1);
+      if (!existing) throw new TRPCError({ code: "NOT_FOUND", message: "Contact inquiry not found" });
+      await db.update(contactSubmissions).set({ followUpStatus: input.status })
+        .where(eq(contactSubmissions.id, input.contactId));
+      return { id: input.contactId, status: input.status };
+    }),
+
   getLeadCapture: adminProcedure
     .input(z.object({ limit: z.number().int().min(1).max(500).default(300) }).default({ limit: 300 }))
     .query(async ({ input }) => {
@@ -866,6 +879,7 @@ export const adminRouter = router({
           .limit(input.limit),
         db
           .select({
+            id: contactSubmissions.id,
             email: contactSubmissions.email,
             name: contactSubmissions.name,
             detail: contactSubmissions.subject,
@@ -893,6 +907,8 @@ export const adminRouter = router({
 
       type Lead = {
         source: "Course trial" | "Contact form" | "Exam date booked" | "Waitlist";
+        contactId: number | null;
+        followUpStatus: "new" | "contacted" | "closed" | null;
         email: string;
         name: string | null;
         phone: string | null;
@@ -904,6 +920,8 @@ export const adminRouter = router({
       const leads: Lead[] = [
         ...trials.map(row => ({
           source: "Course trial" as const,
+          contactId: null,
+          followUpStatus: null,
           email: row.email,
           name: null,
           phone: row.phone ?? null,
@@ -913,6 +931,8 @@ export const adminRouter = router({
         })),
         ...contacts.map(row => ({
           source: "Contact form" as const,
+          contactId: row.id,
+          followUpStatus: row.followUpStatus as "new" | "contacted" | "closed",
           email: row.email,
           name: row.name ?? null,
           phone: null,
@@ -924,6 +944,8 @@ export const adminRouter = router({
         })),
         ...examDateRows.map(row => ({
           source: "Exam date booked" as const,
+          contactId: null,
+          followUpStatus: null,
           email: row.email,
           name: null,
           phone: null,
@@ -935,6 +957,8 @@ export const adminRouter = router({
         })),
         ...waitlistRows.map(row => ({
           source: "Waitlist" as const,
+          contactId: null,
+          followUpStatus: null,
           email: row.email,
           name: null,
           phone: null,
@@ -980,6 +1004,10 @@ export const adminRouter = router({
           // Keep the richest contact details across a person's touchpoints.
           existing.phone = existing.phone ?? lead.phone;
           existing.name = existing.name ?? lead.name;
+          if (lead.contactId !== null && existing.contactId === null) {
+            existing.contactId = lead.contactId;
+            existing.followUpStatus = lead.followUpStatus;
+          }
           continue;
         }
         byEmail.set(key, {
