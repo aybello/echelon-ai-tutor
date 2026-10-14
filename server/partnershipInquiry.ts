@@ -5,6 +5,7 @@ import { partnershipInquirySchema, type PartnershipInquiryInput } from "../share
 import { getDb } from "./db";
 import { sendContactEmail } from "./email";
 import { notifyOwner } from "./_core/notification";
+import { comparableMunicipalMessage } from "../shared/municipalCallback";
 
 export interface PartnershipLead {
   id: number;
@@ -36,7 +37,9 @@ export async function receivePartnershipInquiry(raw: PartnershipInquiryInput, de
   } catch {
     throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Your inquiry could not be saved. Please retry. Your form has been kept." });
   }
-  if (Object.entries(fields).some(([key, value]) => saved.lead[key as keyof PartnershipLead] !== value)) {
+  if (Object.entries(fields).some(([key, value]) => key === "message"
+    ? comparableMunicipalMessage(saved.lead.message) !== comparableMunicipalMessage(String(value))
+    : saved.lead[key as keyof PartnershipLead] !== value)) {
     throw new TRPCError({ code: "CONFLICT", message: "This receipt belongs to an earlier inquiry. Please start a new inquiry." });
   }
   if (saved.created) {

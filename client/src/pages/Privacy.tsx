@@ -25,7 +25,7 @@ export default function Privacy() {
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 6, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 14, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -37,6 +37,7 @@ export default function Privacy() {
           <p>We collect the following information when you use Echelon:</p>
           <ul>
             <li><strong>Email address</strong> — used to identify your account, restore access, and send purchase receipts and study reminders.</li>
+            <li><strong>Phone number and callback requests</strong> — collected for purchase-related support, or optionally when you ask us to call about a municipal quote or pilot request. For a requested callback, we retain the number, preferred time, permission notice version and server acceptance time with the inquiry. A phone number does not subscribe you to promotional calls or texts.</li>
             <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
             <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
             <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
@@ -49,6 +50,7 @@ export default function Privacy() {
             <li>To provide access to the courses you purchased.</li>
             <li>To personalize your study plan, readiness score, and AI tutor responses.</li>
             <li>To send purchase receipts, access restoration links, and study reminders.</li>
+            <li>To respond to your inquiry and, only if requested, call about that inquiry.</li>
             <li>To help team managers track operator progress (Teams plan only).</li>
             <li>To detect and prevent fraud and abuse.</li>
           </ul>

@@ -20,7 +20,7 @@ export default function USStatePage() {
         const program = state.programs.find(item => item.stream === stream.key)!;
         const courses = matchedUSCourses(state, stream.key);
         return <section key={stream.key} className="us-card us-program" data-program={stream.key}>
-          <span className="us-badge">{usProgramLabel(program)}</span><h2>{stream.label}</h2>
+          <span className="us-badge">{courses.some(course => course.examFamily === "us-state") ? "Dedicated Class D preparation available" : usProgramLabel(program)}</span><h2>{stream.label}</h2>
           {program.authorityName && <p><strong>Program authority:</strong> {program.authorityName}</p>}
           <p><strong>Local levels:</strong> {program.localLevels || "Not confirmed"}</p>
           <p>{program.note}</p>
@@ -44,7 +44,7 @@ export default function USStatePage() {
           <Link href="/us-texas-class-d-water-flashcards" className="us-action us-action-secondary">Flashcards</Link>
         </div>
       </section>}
-      {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet.</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
+      {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>{state.code === "TX" ? "Texas Class D Water preparation is available above. Other Texas credentials below remain research needs and are not offered as dedicated courses." : "These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet."}</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
       {state.limits.length > 0 && <section className="us-card us-program"><h2>What still needs confirmation</h2><ul>{state.limits.map(item => <li key={item}>{item}</li>)}</ul></section>}
       <Link href="/us/states" className="us-action us-action-secondary">Back to all states</Link>
     </main>

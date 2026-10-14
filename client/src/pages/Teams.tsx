@@ -30,6 +30,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import { FlexOrderBuilder } from "@/components/FlexOrderBuilder";
+import { MUNICIPAL_CALLBACK_NOTICE } from "@shared/municipalCallback";
 
 const ANNUAL_TIERS: TeamStreamTier[] = [
   "stream-water",
@@ -72,6 +73,9 @@ export default function Teams() {
   const [inquiryOpen, setInquiryOpen] = useState<"quote" | "pilot" | null>(null);
   const [contactName, setContactName] = useState("");
   const [inquiryNotes, setInquiryNotes] = useState("");
+  const [callbackPhone, setCallbackPhone] = useState("");
+  const [callbackRequested, setCallbackRequested] = useState(false);
+  const [preferredCallbackTime, setPreferredCallbackTime] = useState("");
   const [inquirySaved, setInquirySaved] = useState(false);
   const [requestKey, setRequestKey] = useState(() => crypto.randomUUID());
   const [honeypot, setHoneypot] = useState("");
@@ -98,6 +102,9 @@ export default function Teams() {
       region,
       notes: inquiryNotes.trim(),
       website: honeypot,
+      phone: callbackPhone.trim(),
+      callbackRequested,
+      preferredCallbackTime: preferredCallbackTime.trim(),
     };
     if (inquiryOpen === "quote") {
       sendInquiry.mutate({ ...common, kind: "quote", tier, seats });
@@ -243,6 +250,9 @@ export default function Teams() {
               <div><Label>Organization</Label><Input required maxLength={200} value={organizationName} onChange={e=>setOrganizationName(e.target.value)} /></div>
               <div><Label>Contact name</Label><Input required maxLength={100} value={contactName} onChange={e=>setContactName(e.target.value)} /></div>
               <div><Label>Work email</Label><Input required type="email" maxLength={320} value={managerEmail} onChange={e=>setManagerEmail(e.target.value)} /></div>
+              <div><Label htmlFor="callback-phone">Phone for a callback (optional)</Label><Input id="callback-phone" type="tel" autoComplete="tel" maxLength={32} value={callbackPhone} onChange={e=>setCallbackPhone(e.target.value)} /></div>
+              <label className="flex items-start gap-2 text-sm text-slate-600"><input type="checkbox" checked={callbackRequested} onChange={e=>setCallbackRequested(e.target.checked)} className="mt-1" />{MUNICIPAL_CALLBACK_NOTICE}</label>
+              {callbackRequested && <div><Label htmlFor="callback-time">Preferred callback time and time zone (optional)</Label><Input id="callback-time" maxLength={120} value={preferredCallbackTime} onChange={e=>setPreferredCallbackTime(e.target.value)} placeholder="e.g. weekdays 9–11 a.m. Eastern" /></div>}
               {inquiryOpen === "quote" && <p className="rounded-lg bg-slate-50 p-3 text-sm">{seats} annual {getTeamStreamLabel(region,tier)} seats: {formatTeamPriceCAD(annualTotal)} before tax (indicative, not a formal quote).</p>}
               <div><Label>Requirements (optional)</Label><textarea maxLength={500} rows={3} className="w-full rounded-lg border p-2" value={inquiryNotes} onChange={e=>setInquiryNotes(e.target.value)} /></div>
               <div className="hidden" aria-hidden="true"><label htmlFor="request-website">Website (leave blank)</label><input id="request-website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={e=>setHoneypot(e.target.value)} /></div>
