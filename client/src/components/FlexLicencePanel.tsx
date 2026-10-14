@@ -17,6 +17,7 @@ import {
 import { prepareSingleInvitePreview, type SingleInvitePreview } from "@/lib/singleInvitePreview";
 import { courseKeyToLabel, resolveCourseKey } from "@shared/courseRegistry";
 import { toast } from "sonner";
+import { safeSupervisorCsvCell } from "@shared/supervisorActionPlan";
 
 interface FlexLicencePanelProps {
   orgId: number;
@@ -90,8 +91,7 @@ function parseBulkRows(text: string, defaultCourseKey: string): BulkRow[] {
 }
 
 function csvCell(value: unknown): string {
-  const text = value == null ? "" : String(value);
-  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  return safeSupervisorCsvCell(value == null ? "" : String(value));
 }
 
 export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
@@ -142,6 +142,20 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
   });
 
   const licences = licencesQuery.data ?? [];
+  const unusedCount = licences.filter(licence => licence.status === "unused").length;
+  const pendingCount = licences.filter(licence => licence.status === "invited").length;
+  const now = Date.now();
+  const withinDays = (value: Date | string | null, days: number) => {
+    if (!value) return false;
+    const remaining = new Date(value).getTime() - now;
+    return Number.isFinite(remaining) && remaining >= 0 && remaining <= days * 86_400_000;
+  };
+  const expiringAccessCount = licences.filter(licence =>
+    licence.status === "active" && withinDays(licence.accessEndsAt, 30)
+  ).length;
+  const invitedNearDeadline = licences.filter(licence =>
+    licence.status === "invited" && withinDays(licence.activationDeadline, 14)
+  ).length;
   const courseOptions = useMemo(() => {
     const options = new Map<string, string>();
     for (const licence of licences) {
@@ -232,6 +246,14 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
           </div>
         </CardHeader>
         <CardContent>
+          {(unusedCount > 0 || pendingCount > 0 || invitedNearDeadline > 0 || expiringAccessCount > 0) && (
+            <div className="mb-4 grid gap-2 sm:grid-cols-2" role="status" aria-label="Course Pass attention items">
+              {unusedCount > 0 && <p className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs text-blue-900"><strong>{unusedCount} unused pass{unusedCount === 1 ? "" : "es"}</strong> ready for eligible operator invitations.</p>}
+              {pendingCount > 0 && <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900"><strong>{pendingCount} pending invitation{pendingCount === 1 ? "" : "s"}</strong>. Follow up before activation deadlines.</p>}
+              {invitedNearDeadline > 0 && <p className="rounded-lg border border-orange-200 bg-orange-50 p-3 text-xs text-orange-900"><strong>{invitedNearDeadline} invitation{invitedNearDeadline === 1 ? "" : "s"}</strong> with activation deadlines within 14 days.</p>}
+              {expiringAccessCount > 0 && <p className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-xs text-rose-900"><strong>{expiringAccessCount} active pass{expiringAccessCount === 1 ? "" : "es"}</strong> reaching access end within 30 days. Review renewal or retake options.</p>}
+            </div>
+          )}
           <div className="overflow-x-auto">
             <table className="w-full min-w-[820px] text-sm">
               <thead><tr className="border-b text-left text-muted-foreground">
