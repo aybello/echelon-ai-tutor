@@ -74,25 +74,34 @@ export default function Teams() {
   const [inquirySaved, setInquirySaved] = useState(false);
   const [requestKey, setRequestKey] = useState(() => crypto.randomUUID());
   const [honeypot, setHoneypot] = useState("");
-  const sendInquiry = trpc.contact.partnership.useMutation({
-    onSuccess: () => { setInquirySaved(true); toast.success("Request received."); },
+  const [requestReceipt, setRequestReceipt] = useState<number | null>(null);
+  const sendInquiry = trpc.municipal.request.useMutation({
+    onSuccess: data => {
+      setRequestReceipt(data.receiptId);
+      setInquirySaved(true);
+      toast.success("Request #" + data.receiptId + " received for staff review.");
+    },
     onError: error => toast.error(error.message),
   });
   const requestInquiry = () => {
-    if (!inquiryOpen || !organizationName.trim() || !contactName.trim() || !managerEmail.includes("@")) return toast.error("Enter an organization, contact name and email.");
-    const subject = inquiryOpen === "quote" ? "Municipal Teams quotation request" : "Municipal three-operator pilot request";
-    const description = inquiryOpen === "quote" ? ("Annual " + getTeamStreamLabel(region,tier) + " / " + seats + " seats / " + formatTeamPriceCAD(annualTotal) + " CAD before tax") : "Request a 14-day three-operator pilot. No automatic activation.";
-    sendInquiry.mutate({
+    if (!inquiryOpen || !organizationName.trim() || !contactName.trim() || !managerEmail.includes("@")) {
+      return toast.error("Enter your organization, contact name and valid email.");
+    }
+    const common = {
       requestKey,
       name: contactName.trim(),
       email: managerEmail.trim(),
       organization: organizationName.trim().slice(0,128),
-      partnershipType: "Municipal Utility",
-      message: ("Request type: " + subject + "\nRegion: " + TEAM_REGION_LABELS[region] + "\n" + description + "\nNotes: " + inquiryNotes.trim()).slice(0,2000),
+      region,
+      notes: inquiryNotes.trim(),
       website: honeypot,
-    });
+    };
+    if (inquiryOpen === "quote") {
+      sendInquiry.mutate({ ...common, kind: "quote", tier, seats });
+    } else {
+      sendInquiry.mutate({ ...common, kind: "pilot" });
+    }
   };
-
 
   const createTeamCheckout = trpc.stripe.createTeamCheckout.useMutation({
     onSuccess: (result) => { if (result.url) window.location.href = result.url; },
@@ -179,7 +188,7 @@ export default function Teams() {
               <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-5"><div className="flex justify-between gap-5"><span className="text-sm text-slate-600">Average per operator / year</span><span className="text-xl font-bold text-teal-700">{formatTeamPriceCAD(averageSeatPrice)}</span></div><div className="mt-3 flex justify-between gap-5 border-t border-blue-100 pt-3"><span className="text-sm font-medium text-slate-700">Total before tax ({seats} licences)</span><span className="text-xl font-bold text-slate-900">{formatTeamPriceCAD(annualTotal)}</span></div>{savings > 0 && <p className="mt-3 text-xs font-semibold text-teal-700">Blended discount: {effectiveDiscount}% · you save {formatTeamPriceCAD(savings)} against list price.</p>}</div>
 
               <div className="flex flex-wrap gap-2">
-                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
                 <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestKey(crypto.randomUUID());setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
               </div>
               <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
@@ -196,7 +205,7 @@ export default function Teams() {
       {inquiryOpen && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4">
         <section role="dialog" aria-modal="true" aria-label="Municipal inquiry" className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
           <h2 className="text-xl font-bold">{inquiryOpen === "quote" ? "Municipal quotation request" : "14-day three-operator evaluation request"}</h2>
-          {inquirySaved ? <p className="mt-4 text-sm">Request saved for follow-up. No access or invoice has been issued.</p> :
+          {inquirySaved ? <p className="mt-4 text-sm">Request #{requestReceipt ?? "—"} saved for staff review. No access or invoice has been issued.</p> :
             <form className="mt-4 space-y-3" onSubmit={event => {event.preventDefault();requestInquiry();}}>
               <div><Label>Organization</Label><Input required maxLength={200} value={organizationName} onChange={e=>setOrganizationName(e.target.value)} /></div>
               <div><Label>Contact name</Label><Input required maxLength={100} value={contactName} onChange={e=>setContactName(e.target.value)} /></div>
