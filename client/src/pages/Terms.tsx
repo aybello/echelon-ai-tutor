@@ -9,7 +9,7 @@ const LOGO_URL =
 
 export default function Terms() {
   usePageMeta({
-    title: "Terms of Use — Echelon Institute",
+    title: "Terms of Use | Echelon Institute",
     description: "Terms and conditions for using the Echelon Institute exam preparation platform.",
     keywords: "terms of use, terms and conditions, Echelon Institute",
   });
@@ -58,7 +58,7 @@ export default function Terms() {
         </LegalSection>
 
         <LegalSection title="5. Intellectual Property">
-          <p>All content on Echelon — including questions, explanations, flashcards, study notes, and AI-generated responses — is the property of Echelon Institute or its licensors. You may use the content solely for personal exam preparation. No content may be reproduced or distributed without written permission.</p>
+          <p>All content on Echelon, including questions, explanations, flashcards, study notes, and AI-generated responses, is the property of Echelon Institute or its licensors. You may use the content solely for personal exam preparation. No content may be reproduced or distributed without written permission.</p>
         </LegalSection>
 
         <LegalSection title="6. Payments and Refunds">

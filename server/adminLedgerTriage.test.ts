@@ -46,13 +46,23 @@ describe("admin ledger and captured lead completeness", () => {
     expect(leadSection).toContain("abandonedCheckout: abandonedRows.length");
     expect(page).toContain("Abandoned checkout");
   });
-  it("requires active positive-amount subscription rows for conversion", () => {
+  it("treats conversion as historical payment evidence, not current access", () => {
     expect(leadSection).toContain("gt(subscriptions.amountCAD, 0)");
-    expect(leadSection).toContain('eq(subscriptions.status, "active")');
+    // A lapsed subscriber already paid us. Restricting conversion to currently
+    // active rows pushes a former customer back into the open queue, where they
+    // get worked as a cold lead who never bought.
+    expect(leadSection).not.toContain('eq(subscriptions.status, "active")');
     expect(leadSection).toContain('eq(teamFlexOrders.status, "paid")');
     expect(leadSection).toContain('eq(organizations.billingType, "stripe")');
     expect(leadSection).toContain("organizations.stripeSubscriptionId} IS NOT NULL");
     expect(leadSection).toContain("refundedAt} IS NULL");
+  });
+  it("never lets a closed inquiry hide an unresolved one from the same person", () => {
+    // Leads arrive newest first. Without this rule a newer closed inquiry wins
+    // the merge and silently drops a person with a still-open request out of
+    // the actionable queue, which is money left on the table.
+    expect(leadSection).toContain('existing.contactFollowUpStatus === "closed"');
+    expect(leadSection).toContain("openInquiries");
   });
   it("retains contact enquiry text and outreach/opt-out information across touchpoints", () => {
     expect(leadSection).toContain("inquiryMessage");

@@ -9,7 +9,7 @@ const LOGO_URL =
 
 export default function Privacy() {
   usePageMeta({
-    title: "Privacy & Security — Echelon Institute",
+    title: "Privacy & Security | Echelon Institute",
     description: "How Echelon Institute collects, uses, and protects your personal information.",
     keywords: "privacy policy, data security, Echelon Institute",
   });
@@ -36,12 +36,12 @@ export default function Privacy() {
         <LegalSection title="2. Information We Collect">
           <p>We collect the following information when you use Echelon:</p>
           <ul>
-            <li><strong>Email address</strong> — used to identify your account, restore access, and send purchase receipts and study reminders.</li>
-            <li><strong>Phone number and callback requests</strong> — collected for purchase-related support, or optionally when you ask us to call about a municipal quote or pilot request. For a requested callback, we retain the number, preferred time, permission notice version and server acceptance time with the inquiry. A phone number does not subscribe you to promotional calls or texts.</li>
-            <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
-            <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
-            <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
-            <li><strong>Device, browser, IP, and security-event information</strong> — used to secure accounts, prevent abuse, and diagnose service problems.</li>
+            <li><strong>Email address:</strong> used to identify your account, restore access, and send purchase receipts and study reminders.</li>
+            <li><strong>Phone number and callback requests:</strong> collected for purchase-related support, or optionally when you ask us to call about a municipal quote or pilot request. For a requested callback, we retain the number, preferred time, permission notice version and server acceptance time with the inquiry. A phone number does not subscribe you to promotional calls or texts.</li>
+            <li><strong>Payment information:</strong> processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
+            <li><strong>Practice and training activity:</strong> questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
+            <li><strong>Exam date:</strong> if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
+            <li><strong>Device, browser, IP, and security-event information:</strong> used to secure accounts, prevent abuse, and diagnose service problems.</li>
           </ul>
         </LegalSection>
 
@@ -60,7 +60,7 @@ export default function Privacy() {
         <LegalSection title="4. Data Storage and Security">
           <ul>
             <li>Information may be processed or stored in Canada, the United States, or another country where a service provider operates. It may therefore be subject to the laws of that jurisdiction.</li>
-            <li>Passwords are never stored — we use magic links and OTP codes for authentication.</li>
+            <li>Passwords are never stored. We use magic links and OTP codes for authentication.</li>
             <li>All connections are encrypted via HTTPS/TLS.</li>
             <li>Payment processing is handled by Stripe, which is PCI DSS Level 1 certified.</li>
             <li>Access tokens are short-lived and signed with a server-side secret.</li>

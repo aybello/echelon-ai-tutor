@@ -256,18 +256,25 @@ test("formula and account screens retain their original functions and shared typ
   await expect(page.locator(".account-page")).toHaveCSS("font-family", /Sora/);
 });
 
-test("admin keeps all fourteen sections and a keyboard-accessible mobile drawer", async ({page}) => {
+test("admin keeps all fifteen sections and a keyboard-accessible mobile drawer", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/admin");
   await expect(page.locator("#admin-founder-title")).toBeVisible();
   await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Sora/);
   await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(244, 247, 251)");
-  await expect(page.locator(".admin-ledger-table")).toContainText("CA$1980.00");
+  // The business pipeline panel reuses this table class, so scope the money
+  // assertion to the founder decision ledger specifically.
+  const ledger = page.getByRole("region", {name:"Founder decision ledger"}).locator(".admin-ledger-table");
+  await expect(ledger).toContainText("CA$1980.00");
+  // Team money must stay visible; a dashboard built on purchases alone reported it as zero.
+  await expect(ledger).toContainText("CA$400.00");
   const trigger=page.getByRole("button", {name:"Open navigation",exact:true});
   await trigger.click();
   const drawer=page.getByRole("dialog", {name:"Echelon administration navigation"});
   await expect(drawer).toBeVisible();
-  await expect(drawer.locator(".admin-sidebar-button")).toHaveCount(14);
+  await expect(drawer.locator(".admin-sidebar-button")).toHaveCount(15);
+  // Captured leads must stay reachable; emails were being collected with no table to read them.
+  await expect(drawer.getByText("Captured leads", {exact:true})).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(drawer).toHaveCount(0);
   await expect(trigger).toBeFocused();

@@ -998,13 +998,19 @@ export const adminRouter = router({
       // and hide them from follow-up. Team flex orders are also real money, so
       // a manager who enquired and then bought seats must not sit in the open
       // queue forever.
+      //
+      // Conversion is historical payment evidence, NOT current entitlement.
+      // Filtering subscriptions to status "active" would make a lapsed former
+      // subscriber reappear as "Not bought" and actionable, so a paying customer
+      // would be marketed to as a cold lead. Amount greater than zero is the
+      // money test; expiry belongs to access checks, not to the lead queue.
       const [payingRows, subscriberRows, teamBuyerRows, payingOrganizations] = await Promise.all([
         db
           .select({ email: purchases.email })
           .from(purchases)
           .where(and(gt(purchases.amountCAD, 0), sql`${purchases.refundedAt} IS NULL`)),
         db.select({ email: subscriptions.email }).from(subscriptions)
-          .where(and(gt(subscriptions.amountCAD, 0), eq(subscriptions.status, "active"))),
+          .where(gt(subscriptions.amountCAD, 0)),
         db
           .select({ email: teamFlexOrders.managerEmail })
           .from(teamFlexOrders)
@@ -1030,6 +1036,8 @@ export const adminRouter = router({
         inquiryOrganization: string | null;
         contactRequestId: number | null;
         contactFollowUpStatus: string | null;
+        /** How many of this person's inquiries are still unresolved. */
+        openInquiries: number;
         optedOut: boolean;
         followUpStage: number | null;
         lastFollowUpAt: Date | null;
@@ -1060,12 +1068,27 @@ export const adminRouter = router({
           existing.name = existing.name ?? lead.name;
           existing.optedOut = existing.optedOut || Boolean(lead.optedOut);
           existing.converted = existing.converted || Boolean(lead.recoveredAt);
-          if (lead.source === "Contact form" && existing.contactRequestId === null) {
+          // One person can send several inquiries. Leads arrive newest first, so
+          // naively keeping the first one lets a newer CLOSED inquiry mask an
+          // older OPEN one, silently dropping that person out of the actionable
+          // queue. Real money is lost that way, so an unresolved inquiry always
+          // wins over a resolved one.
+          if (
+            lead.source === "Contact form" &&
+            (existing.contactRequestId === null ||
+              (existing.contactFollowUpStatus === "closed" &&
+                (lead.contactFollowUpStatus ?? null) !== "closed"))
+          ) {
             existing.contactRequestId = lead.contactRequestId ?? null;
             existing.contactFollowUpStatus = lead.contactFollowUpStatus ?? null;
             existing.inquirySubject = lead.detail;
             existing.inquiryMessage = lead.note;
             existing.inquiryOrganization = lead.organization ?? null;
+          }
+          if (lead.source === "Contact form") {
+            existing.openInquiries =
+              (existing.openInquiries ?? 0) +
+              ((lead.contactFollowUpStatus ?? null) === "closed" ? 0 : 1);
           }
           if (lead.followUpStage !== undefined && lead.followUpStage !== null) {
             existing.followUpStage = Math.max(existing.followUpStage ?? 0, lead.followUpStage);
@@ -1087,6 +1110,10 @@ export const adminRouter = router({
           inquiryOrganization: lead.source === "Contact form" ? lead.organization ?? null : null,
           contactRequestId: lead.source === "Contact form" ? lead.contactRequestId ?? null : null,
           contactFollowUpStatus: lead.source === "Contact form" ? lead.contactFollowUpStatus ?? null : null,
+          openInquiries:
+            lead.source === "Contact form" && (lead.contactFollowUpStatus ?? null) !== "closed"
+              ? 1
+              : 0,
           optedOut: Boolean(lead.optedOut),
           followUpStage: lead.followUpStage ?? null,
           lastFollowUpAt: lead.lastFollowUpAt ?? null,
