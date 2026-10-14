@@ -81,6 +81,7 @@ import { FlexLicencePanel } from "@/components/FlexLicencePanel";
 import "@/components/StudyWorkspace.css";
 import { filterRosterMembers, getOperatorStudyStage } from "@/lib/managerRoster";
 import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
+import { safeSupervisorCsvCell, supervisorNextAction } from "@shared/supervisorActionPlan";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -361,6 +362,26 @@ export default function OrgDashboard() {
       a.click();
       URL.revokeObjectURL(url);
     });
+  }
+
+  function handleSupervisorActionExport() {
+    const operators = operatorReadinessQuery.data?.operators;
+    if (!operators) return toast.error("Supervisor action plan is not ready. Please retry.");
+    const header = ["Operator", "Email", "Course", "Status", "Study estimate", "Attempted questions", "Focus topic", "Exam date", "Last active", "Suggested next action"];
+    const rows = operators.map(op => [
+      op.name ?? "", op.email, op.courseKey ?? "", op.memberStatus,
+      op.readinessScore, op.totalAttempts, op.weakestTopic ?? "",
+      op.examDate ? new Date(op.examDate).toISOString().slice(0,10) : "",
+      op.lastActive ? new Date(op.lastActive).toISOString().slice(0,10) : "",
+      supervisorNextAction(op),
+    ]);
+    const csv = [header, ...rows].map(row => row.map(safeSupervisorCsvCell).join(",")).join("\r\n") + "\r\n";
+    const url = URL.createObjectURL(new Blob(["\ufeff", csv], { type: "text/csv;charset=utf-8" }));
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = (overview?.orgName ?? "echelon-team").replace(/[^a-z0-9_-]/gi,"-").slice(0,60) + "-supervisor-action-plan.csv";
+    anchor.click();
+    URL.revokeObjectURL(url);
   }
 
   function handlePrintReport() {
@@ -1128,6 +1149,12 @@ export default function OrgDashboard() {
                   <Download className="w-3.5 h-3.5" />
                   {exportCSVQuery.isFetching ? "Exporting…" : "Export CSV"}
                 </Button>
+                <Button size="sm" variant="outline" className="text-xs gap-1.5 flex-1 sm:flex-none whitespace-nowrap" onClick={handleSupervisorActionExport} disabled={!operatorReadinessQuery.data}>
+                  <ClipboardList className="w-3.5 h-3.5" /> Action Plan CSV
+                </Button>
+                <Link href="/team/training-hours" className="inline-flex items-center justify-center rounded-md border border-slate-200 px-3 py-2 text-xs font-semibold text-blue-800 hover:bg-blue-50">
+                  Training hours &amp; signed records
+                </Link>
                 <Button
                   size="sm" variant="outline"
                   className="text-xs gap-1.5 text-amber-700 border-amber-200 hover:bg-amber-50 flex-1 sm:flex-none whitespace-nowrap"
@@ -1400,6 +1427,33 @@ export default function OrgDashboard() {
               </table>
             </div>
           </div>
+        )}
+
+        {operatorReadinessQuery.data && operatorReadinessQuery.data.operators.length > 0 && (
+          <details className="mt-6 rounded-xl border border-slate-200 bg-white p-4 team-print-hidden">
+            <summary className="cursor-pointer text-sm font-semibold text-slate-800">Supervisor action plan — next training interventions</summary>
+            <p className="mt-2 text-xs text-slate-500">Evidence-based suggestions for managers; not regulatory compliance decisions or exam-pass predictions. Export the complete roster using Action Plan CSV above.</p>
+            <div className="mt-4 overflow-x-auto"><table className="w-full text-sm">
+              <thead className="bg-slate-50 text-left text-xs text-slate-500"><tr>
+                <th className="p-2">Operator</th><th className="p-2">Study estimate</th><th className="p-2">Exam risk</th><th className="p-2">Suggested intervention</th>
+              </tr></thead>
+              <tbody>{operatorReadinessQuery.data.operators
+                .filter(op => op.memberStatus === "assigned")
+                .slice()
+                .sort((a,b) => {
+                  const severity: Record<string,number> = {critical:5,high:4,medium:3,low:2,none:1};
+                  return (severity[b.examRisk] ?? 0) - (severity[a.examRisk] ?? 0) || a.readinessScore - b.readinessScore;
+                })
+                .slice(0,15)
+                .map(op => <tr className="border-t border-slate-100" key={op.id}>
+                  <td className="p-2 text-slate-800">{op.name ?? op.email}</td>
+                  <td className="p-2 text-slate-600">{op.readinessScore}%</td>
+                  <td className="p-2 text-slate-600">{op.examRisk === "none" ? "No exam date risk" : op.examRisk}</td>
+                  <td className="p-2 text-slate-700">{supervisorNextAction(op)}</td>
+                </tr>)}
+              </tbody>
+            </table></div>
+          </details>
         )}
 
         {/* Team Weak Topics Report */}
