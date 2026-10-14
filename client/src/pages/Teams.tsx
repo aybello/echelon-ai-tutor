@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Building2, CheckCircle2, ShieldCheck, Users } from "lucide-react";
+import { Building2, CheckCircle2, ShieldCheck, Users, FileText, FlaskConical } from "lucide-react";
 import {
   type TeamStreamTier,
   type TeamRegion,
@@ -68,6 +68,21 @@ export default function Teams() {
   const [seatInput, setSeatInput] = useState("5");
   const [organizationName, setOrganizationName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
+  const [inquiryOpen, setInquiryOpen] = useState<"quote" | "pilot" | null>(null);
+  const [contactName, setContactName] = useState("");
+  const [inquiryNotes, setInquiryNotes] = useState("");
+  const [inquirySaved, setInquirySaved] = useState(false);
+  const sendInquiry = trpc.contact.send.useMutation({
+    onSuccess: () => { setInquirySaved(true); toast.success("Request received."); },
+    onError: error => toast.error(error.message),
+  });
+  const requestInquiry = () => {
+    if (!inquiryOpen || !organizationName.trim() || !contactName.trim() || !managerEmail.includes("@")) return toast.error("Enter an organization, contact name and email.");
+    const subject = inquiryOpen === "quote" ? "Municipal Teams quotation request" : "Municipal three-operator pilot request";
+    const description = inquiryOpen === "quote" ? ("Annual " + getTeamStreamLabel(region,tier) + " / " + seats + " seats / " + formatTeamPriceCAD(annualTotal) + " CAD before tax") : "Request a 14-day three-operator pilot. No automatic activation.";
+    sendInquiry.mutate({name: contactName.trim(), email: managerEmail.trim(), subject, message: ("Organization: " + organizationName.trim() + "\nRegion: " + TEAM_REGION_LABELS[region] + "\n" + description + "\nNotes: " + inquiryNotes.trim()).slice(0,2000)});
+  };
+
 
   const createTeamCheckout = trpc.stripe.createTeamCheckout.useMutation({
     onSuccess: (result) => { if (result.url) window.location.href = result.url; },
@@ -152,6 +167,12 @@ export default function Teams() {
               <div><Label>Annual access scope</Label><div className="mt-2 grid gap-2 sm:grid-cols-2">{ANNUAL_TIERS.map((annualTier) => <button key={annualTier} type="button" onClick={() => setTier(annualTier)} className={`rounded-xl border p-3 text-left transition ${tier === annualTier ? "border-blue-700 bg-blue-50 ring-1 ring-blue-700" : "border-slate-200 hover:border-slate-300"}`}><div className="flex items-center justify-between gap-2"><span className="text-sm font-bold text-slate-900">{getTeamStreamLabel(region, annualTier)}</span><span className="text-sm font-bold text-teal-700">{formatTeamPriceCAD(getTeamBasePriceCents(region, annualTier))}</span></div><p className="mt-1 text-xs leading-relaxed text-slate-500">{getTeamStreamDescription(region, annualTier)}</p></button>)}</div></div>
               <div><Label>Annual operator licences</Label><p className="mt-1 text-xs text-slate-500">Graduated discounts apply only to licences in each volume band.</p><div className="mt-2 flex items-center gap-3"><Input type="number" min={5} max={500} value={seatInput} onChange={(event) => setSeatInput(event.target.value)} onBlur={commitSeats} onKeyDown={(event) => { if (event.key === "Enter") commitSeats(); }} className="w-28" /><span className="text-sm text-slate-500">named operators</span></div><div className="mt-3 flex flex-wrap gap-2">{[5, 10, 25, 50, 100].map((count) => <button key={count} type="button" onClick={() => { setSeats(count); setSeatInput(String(count)); }} className={`rounded-full border px-3 py-1 text-xs font-semibold ${seats === count ? "border-blue-900 bg-blue-900 text-white" : "border-slate-200 text-slate-600 hover:border-blue-300"}`}>{count}</button>)}</div></div>
               <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-5"><div className="flex justify-between gap-5"><span className="text-sm text-slate-600">Average per operator / year</span><span className="text-xl font-bold text-teal-700">{formatTeamPriceCAD(averageSeatPrice)}</span></div><div className="mt-3 flex justify-between gap-5 border-t border-blue-100 pt-3"><span className="text-sm font-medium text-slate-700">Total before tax ({seats} licences)</span><span className="text-xl font-bold text-slate-900">{formatTeamPriceCAD(annualTotal)}</span></div>{savings > 0 && <p className="mt-3 text-xs font-semibold text-teal-700">Blended discount: {effectiveDiscount}% · you save {formatTeamPriceCAD(savings)} against list price.</p>}</div>
+
+              <div className="flex flex-wrap gap-2">
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
+              </div>
+              <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
               <div className="space-y-1"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume pricing</p>{TEAM_VOLUME_TIERS.map((band) => <div key={band.label} className={`flex justify-between rounded-lg px-3 py-2 text-sm ${band === volumeTier ? "bg-blue-50 font-semibold text-blue-950" : "text-slate-600"}`}><span>{band.label}{band.discountPct ? ` · ${band.discountPct}% off those licences` : " · list price"}</span><span>{formatTeamPriceCAD(Math.round(basePrice * (1 - band.discountPct / 100)))}/yr</span></div>)}</div>
               <div className="grid gap-4 sm:grid-cols-2"><div><Label>Organization name</Label><Input value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="e.g. Utility name" className="mt-2" /></div><div><Label>Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="fixture-62@example.com" className="mt-2" /></div></div>
               <Button onClick={startAnnualCheckout} disabled={createTeamCheckout.isPending} className="h-12 w-full bg-gradient-to-r from-blue-900 to-teal-700 text-base font-bold text-white hover:opacity-95">{createTeamCheckout.isPending ? "Opening secure checkout…" : `Start ${seats}-seat ${getTeamStreamLabel(region, tier)} plan — ${formatTeamPriceCAD(annualTotal)}/year`}</Button>
@@ -160,7 +181,23 @@ export default function Teams() {
           <aside className="space-y-5"><div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="text-lg font-bold text-slate-900">Annual plan includes</h3><ul className="mt-4 space-y-3">{FEATURES.map((feature) => <li key={feature} className="flex gap-3 text-sm leading-relaxed text-slate-600"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{feature}</li>)}</ul></div><div className="rounded-2xl border border-cyan-100 bg-cyan-50 p-6"><h3 className="text-base font-bold text-slate-900">Need a specific exam only?</h3><p className="mt-2 text-sm leading-relaxed text-slate-600">Use Teams Flex to buy 3- or 6-month Course Passes for the exact operators and courses in your cohort. Retake Extensions are available once per activated Course Pass.</p><Button variant="outline" onClick={() => setPlanType("flex")} className="mt-4 border-teal-600 text-teal-800 hover:bg-teal-100">Build a Flex order</Button></div><p className="px-1 text-xs leading-relaxed text-slate-500">Historical customer recovery is handled separately and is not changed by any new Team or Flex order.</p></aside>
         </section>}
         <div className="mt-10 text-center text-sm text-slate-600">Buying for one learner? <Link href="/pricing" className="font-semibold text-teal-700">View 12-month Individual Exam Passes</Link>.</div>
+
       </main>
+      {inquiryOpen && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4">
+        <section role="dialog" aria-modal="true" aria-label="Municipal inquiry" className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
+          <h2 className="text-xl font-bold">{inquiryOpen === "quote" ? "Municipal quotation request" : "14-day three-operator evaluation request"}</h2>
+          {inquirySaved ? <p className="mt-4 text-sm">Request saved for follow-up. No access or invoice has been issued.</p> :
+            <form className="mt-4 space-y-3" onSubmit={event => {event.preventDefault();requestInquiry();}}>
+              <div><Label>Organization</Label><Input required maxLength={200} value={organizationName} onChange={e=>setOrganizationName(e.target.value)} /></div>
+              <div><Label>Contact name</Label><Input required maxLength={100} value={contactName} onChange={e=>setContactName(e.target.value)} /></div>
+              <div><Label>Work email</Label><Input required type="email" maxLength={320} value={managerEmail} onChange={e=>setManagerEmail(e.target.value)} /></div>
+              {inquiryOpen === "quote" && <p className="rounded-lg bg-slate-50 p-3 text-sm">{seats} annual {getTeamStreamLabel(region,tier)} seats: {formatTeamPriceCAD(annualTotal)} before tax (indicative, not a formal quote).</p>}
+              <div><Label>Requirements (optional)</Label><textarea maxLength={500} rows={3} className="w-full rounded-lg border p-2" value={inquiryNotes} onChange={e=>setInquiryNotes(e.target.value)} /></div>
+              <Button type="submit" disabled={sendInquiry.isPending}>{sendInquiry.isPending ? "Submitting…" : "Submit request"}</Button>
+            </form>}
+          <Button className="mt-3" type="button" variant="ghost" onClick={()=>setInquiryOpen(null)}>Close</Button>
+        </section>
+      </div>}
     </div>
   );
 }
