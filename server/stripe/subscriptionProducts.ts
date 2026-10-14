@@ -192,6 +192,18 @@ export function isSubscriptionProvince(value: unknown): value is SubscriptionPro
   return typeof value === "string" && (SUBSCRIPTION_PROVINCE_VALUES as readonly string[]).includes(value);
 }
 
+/**
+ * A Nova Scotia utility retains its own organization region and its Class III
+ * distribution/collection ceiling, while individual subscription rows use
+ * the shared western WPI exam family accepted by the subscriptions enum.
+ * Do not widen SUBSCRIPTION_PROVINCE_VALUES without a database migration.
+ */
+export function subscriptionProvinceForOrg(region: string): SubscriptionProvince {
+  if (region === "nova-scotia") return "western";
+  if (isSubscriptionProvince(region)) return region;
+  throw new Error("Organization province is not supported for subscription access.");
+}
+
 export interface SubscriptionProduct {
   tier: SubscriptionTier;
   province: SubscriptionProvince;
