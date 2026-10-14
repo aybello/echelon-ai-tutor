@@ -9,7 +9,7 @@ import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
 import { desc, eq, sql, count, ne, and, gte, gt, asc, getTableColumns } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence, contactSubmissions, examDates } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence, contactSubmissions, examDates, abandonedCheckouts } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
 import {
@@ -841,13 +841,16 @@ export const adminRouter = router({
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
-      const [trials, waitlistRows, contacts, examDateRows] = await Promise.all([
+      const [trials, waitlistRows, contacts, examDateRows, abandonedRows] = await Promise.all([
         db
           .select({
             email: trialEmails.email,
             phone: trialEmails.phone,
             detail: trialEmails.source,
             createdAt: trialEmails.createdAt,
+            followUpStage: trialEmails.followUpStage,
+            lastFollowUpAt: trialEmails.lastFollowUpAt,
+            optOut: trialEmails.optOut,
           })
           .from(trialEmails)
           .where(ne(trialEmails.email, OWNER_EMAIL))
@@ -866,6 +869,7 @@ export const adminRouter = router({
           .limit(input.limit),
         db
           .select({
+            id: contactSubmissions.id,
             email: contactSubmissions.email,
             name: contactSubmissions.name,
             detail: contactSubmissions.subject,
@@ -889,16 +893,37 @@ export const adminRouter = router({
           .where(ne(examDates.email, OWNER_EMAIL))
           .orderBy(desc(examDates.createdAt))
           .limit(input.limit),
+        db.select({
+          email: abandonedCheckouts.email,
+          productKey: abandonedCheckouts.productKey,
+          productName: abandonedCheckouts.productName,
+          abandonedAt: abandonedCheckouts.abandonedAt,
+          recoveryEmailSentAt: abandonedCheckouts.recoveryEmailSentAt,
+          recoveredAt: abandonedCheckouts.recoveredAt,
+          optOut: abandonedCheckouts.optOut,
+        })
+          .from(abandonedCheckouts)
+          .where(ne(abandonedCheckouts.email, OWNER_EMAIL))
+          .orderBy(desc(abandonedCheckouts.abandonedAt))
+          .limit(input.limit),
       ]);
 
       type Lead = {
-        source: "Course trial" | "Contact form" | "Exam date booked" | "Waitlist";
+        source: "Course trial" | "Contact form" | "Exam date booked" | "Waitlist" | "Abandoned checkout";
         email: string;
         name: string | null;
         phone: string | null;
         detail: string | null;
         note: string | null;
         createdAt: Date;
+        organization?: string | null;
+        contactRequestId?: number | null;
+        contactFollowUpStatus?: string | null;
+        optedOut?: boolean;
+        followUpStage?: number | null;
+        lastFollowUpAt?: Date | null;
+        recoveryEmailSentAt?: Date | null;
+        recoveredAt?: Date | null;
       };
 
       const leads: Lead[] = [
@@ -910,6 +935,9 @@ export const adminRouter = router({
           detail: row.detail ?? null,
           note: null,
           createdAt: row.createdAt,
+          optedOut: row.optOut,
+          followUpStage: row.followUpStage,
+          lastFollowUpAt: row.lastFollowUpAt,
         })),
         ...contacts.map(row => ({
           source: "Contact form" as const,
@@ -917,10 +945,12 @@ export const adminRouter = router({
           name: row.name ?? null,
           phone: null,
           detail: row.detail ?? null,
-          // The message is the whole reason a contact lead is worth money, so
-          // carry enough of it to triage without opening another screen.
-          note: row.message ? row.message.slice(0, 300) : null,
+          // Keep the full submitted message for the admin inbox (capped by form input).
+          note: row.message ? row.message.slice(0, 1000) : null,
           createdAt: row.createdAt,
+          organization: row.organization,
+          contactRequestId: row.id,
+          contactFollowUpStatus: row.followUpStatus,
         })),
         ...examDateRows.map(row => ({
           source: "Exam date booked" as const,
@@ -932,6 +962,18 @@ export const adminRouter = router({
             ? `Exam on ${new Date(row.examDate).toISOString().slice(0, 10)}`
             : null,
           createdAt: row.createdAt,
+        })),
+        ...abandonedRows.map(row => ({
+          source: "Abandoned checkout" as const,
+          email: row.email,
+          name: null,
+          phone: null,
+          detail: row.productName ?? row.productKey,
+          note: row.recoveredAt ? "Recovered after checkout" : row.recoveryEmailSentAt ? "Recovery email already sent" : "Expired checkout — recovery review",
+          createdAt: row.abandonedAt,
+          optedOut: row.optOut,
+          recoveryEmailSentAt: row.recoveryEmailSentAt,
+          recoveredAt: row.recoveredAt,
         })),
         ...waitlistRows.map(row => ({
           source: "Waitlist" as const,
@@ -954,38 +996,86 @@ export const adminRouter = router({
       // and hide them from follow-up. Team flex orders are also real money, so
       // a manager who enquired and then bought seats must not sit in the open
       // queue forever.
-      const [payingRows, subscriberRows, teamBuyerRows] = await Promise.all([
+      const [payingRows, subscriberRows, teamBuyerRows, payingOrganizations] = await Promise.all([
         db
           .select({ email: purchases.email })
           .from(purchases)
           .where(and(gt(purchases.amountCAD, 0), sql`${purchases.refundedAt} IS NULL`)),
-        db.select({ email: subscriptions.email }).from(subscriptions),
+        db.select({ email: subscriptions.email }).from(subscriptions)
+          .where(and(gt(subscriptions.amountCAD, 0), eq(subscriptions.status, "active"))),
         db
           .select({ email: teamFlexOrders.managerEmail })
           .from(teamFlexOrders)
           .where(eq(teamFlexOrders.status, "paid")),
+        db.select({ email: organizations.managerEmail }).from(organizations)
+          .where(and(eq(organizations.status, "active"), eq(organizations.billingType, "stripe"))),
       ]);
       const paying = new Set(
-        [...payingRows, ...subscriberRows, ...teamBuyerRows].map(row =>
+        [...payingRows, ...subscriberRows, ...teamBuyerRows, ...payingOrganizations].map(row =>
           normalizeEmail(row.email)
         )
       );
 
-      const byEmail = new Map<string, Lead & { converted: boolean; touchpoints: number }>();
+      // Most recent touchpoint is the primary source; preserve the latest
+      // substantive contact enquiry even when a later exam date or trial arrives.
+      // Never imply "opted out" leads consent to follow-up.
+      type LeadPerson = Lead & {
+        converted: boolean;
+        touchpoints: number;
+        sources: Lead["source"][];
+        inquirySubject: string | null;
+        inquiryMessage: string | null;
+        inquiryOrganization: string | null;
+        contactRequestId: number | null;
+        contactFollowUpStatus: string | null;
+        optedOut: boolean;
+        followUpStage: number | null;
+        lastFollowUpAt: Date | null;
+        recoveryEmailSentAt: Date | null;
+        recoveredAt: Date | null;
+      };
+      const byEmail = new Map<string, LeadPerson>();
       for (const lead of leads) {
         const key = normalizeEmail(lead.email);
         const existing = byEmail.get(key);
         if (existing) {
           existing.touchpoints += 1;
-          // Keep the richest contact details across a person's touchpoints.
+          if (!existing.sources.includes(lead.source)) existing.sources.push(lead.source);
           existing.phone = existing.phone ?? lead.phone;
           existing.name = existing.name ?? lead.name;
+          existing.optedOut = existing.optedOut || Boolean(lead.optedOut);
+          if (lead.source === "Contact form" && existing.contactRequestId === null) {
+            existing.contactRequestId = lead.contactRequestId ?? null;
+            existing.contactFollowUpStatus = lead.contactFollowUpStatus ?? null;
+            existing.inquirySubject = lead.detail;
+            existing.inquiryMessage = lead.note;
+            existing.inquiryOrganization = lead.organization ?? null;
+          }
+          if (lead.followUpStage !== undefined && lead.followUpStage !== null) {
+            existing.followUpStage = Math.max(existing.followUpStage ?? 0, lead.followUpStage);
+          }
+          if (lead.lastFollowUpAt && (!existing.lastFollowUpAt || lead.lastFollowUpAt > existing.lastFollowUpAt)) {
+            existing.lastFollowUpAt = lead.lastFollowUpAt;
+          }
+          existing.recoveryEmailSentAt = existing.recoveryEmailSentAt ?? lead.recoveryEmailSentAt ?? null;
+          existing.recoveredAt = existing.recoveredAt ?? lead.recoveredAt ?? null;
           continue;
         }
         byEmail.set(key, {
           ...lead,
           converted: paying.has(key),
           touchpoints: 1,
+          sources: [lead.source],
+          inquirySubject: lead.source === "Contact form" ? lead.detail : null,
+          inquiryMessage: lead.source === "Contact form" ? lead.note : null,
+          inquiryOrganization: lead.source === "Contact form" ? lead.organization ?? null : null,
+          contactRequestId: lead.source === "Contact form" ? lead.contactRequestId ?? null : null,
+          contactFollowUpStatus: lead.source === "Contact form" ? lead.contactFollowUpStatus ?? null : null,
+          optedOut: Boolean(lead.optedOut),
+          followUpStage: lead.followUpStage ?? null,
+          lastFollowUpAt: lead.lastFollowUpAt ?? null,
+          recoveryEmailSentAt: lead.recoveryEmailSentAt ?? null,
+          recoveredAt: lead.recoveredAt ?? null,
         });
       }
       const people = [...byEmail.values()];
@@ -998,6 +1088,8 @@ export const adminRouter = router({
         uniquePeople: people.length,
         openLeads: open.length,
         convertedLeads: people.length - open.length,
+        actionableOpenLeads: open.filter(person => !person.optedOut && person.contactFollowUpStatus !== "closed").length,
+        optedOutPeople: people.filter(person => person.optedOut).length,
         newLast7Days: people.filter(
           person => now - person.createdAt.getTime() <= 7 * DAY_MS
         ).length,
@@ -1007,12 +1099,31 @@ export const adminRouter = router({
         withPhone: people.filter(person => Boolean(person.phone)).length,
         bySource: {
           courseTrial: trials.length,
+          abandonedCheckout: abandonedRows.length,
           contactForm: contacts.length,
           examDateBooked: examDateRows.length,
           waitlist: waitlistRows.length,
         },
         people: people.slice(0, input.limit),
       };
+    }),
+
+  /** Update the latest recorded inbound contact inquiry only. No emails are sent. */
+  setContactFollowUpStatus: adminProcedure
+    .input(z.object({
+      id: z.number().int().positive(),
+      status: z.enum(["new", "contacted", "closed"]),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Contact status cannot be saved." });
+      const [result] = await db.update(contactSubmissions)
+        .set({ followUpStatus: input.status })
+        .where(eq(contactSubmissions.id, input.id));
+      if (!result || result.affectedRows === 0) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Contact inquiry was not found." });
+      }
+      return { id: input.id, status: input.status };
     }),
 
   /** Paginated list of purchases, newest first — excludes owner test email */
