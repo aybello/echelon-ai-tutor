@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 /**
  * Revenue reporting rules.
  *
@@ -75,22 +74,22 @@ export const LEGACY_RECOVERY_SESSION_PREFIX = "legacy-recovery-purchase-";
  * Their orders are genuine in Stripe but are not customer demand, so they are
  * excluded from pipeline counts. They are not excluded from revenue, because
  * if money truly moved it belongs in the bank figure.
+ *
+ * The addresses themselves are configuration, not code, so they are supplied
+ * through INTERNAL_BUYER_EMAILS as a comma separated list and never committed
+ * to this public tree.
+ *
+ * OWNER_EMAIL is always treated as internal as well. Without that fallback, an
+ * unset INTERNAL_BUYER_EMAILS would quietly reclassify our own orders as
+ * customer demand and overstate the B2B pipeline.
  */
-/**
- * Keep real internal team addresses out of the tracked source tree and tests.
- * These namespaced digests preserve the established buyer exclusions without
- * storing identifiable email literals. The synthetic test address is public.
- */
-export const INTERNAL_BUYER_EMAILS = ["test@example.com"] as const;
-const INTERNAL_BUYER_FINGERPRINTS = new Set([
-  "6f2bed128fe4081eaa0602277593ed9942c5458b3b34880730eeddd42fe92b10",
-  "b0bef68a8d529046d1414ca21abccce4a1e3c046810d8b480b9753275044d66b",
-]);
-
-function internalBuyerFingerprint(email: string): string {
-  return createHash("sha256")
-    .update("echelon-internal-buyer-v1:" + email, "utf8")
-    .digest("hex");
+export function getInternalBuyerEmails(): string[] {
+  const env = typeof process !== "undefined" ? process.env : undefined;
+  return [env?.INTERNAL_BUYER_EMAILS ?? "", env?.OWNER_EMAIL ?? ""]
+    .join(",")
+    .split(",")
+    .map(entry => entry.trim().toLowerCase())
+    .filter(entry => entry.includes("@"));
 }
 
 /** True when an order was placed by our own team rather than a customer. */
@@ -98,17 +97,15 @@ export function isInternalBuyerEmail(email: string | null | undefined): boolean 
   if (!email) return false;
   const normalised = email.trim().toLowerCase();
   if (isSyntheticCustomerEmail(normalised)) return true;
-  return INTERNAL_BUYER_EMAILS.some(internal => internal === normalised)
-    || INTERNAL_BUYER_FINGERPRINTS.has(internalBuyerFingerprint(normalised));
+  return getInternalBuyerEmails().some(internal => internal === normalised);
 }
 
 /**
- * Stripe charge and payment-intent identifiers can have a shared
- * 16-character payment core. A synthetic example is:
- * charge ch_test_AABBCCDDEEFF1122ZZZZZZZZ and
- * intent pi_test_AABBCCDDEEFF1122YYYYYYYY.
- * We compare only the payment object family; checkout session identifiers
- * cannot be assumed to share a payment core.
+ * Stripe derives charge, payment intent and related object ids for one payment
+ * from a shared core. A charge id and a payment intent id for the same payment
+ * carry the same 16 character core after their prefix. Returning that core lets
+ * two different tables recognise that they hold one payment, not two, which is
+ * what stops a legacy recovery row from double counting real money.
  *
  * Returns null when no core can be read, so unknown ids never collide.
  */
@@ -118,7 +115,8 @@ export function stripePaymentCore(
   if (!stripeId) return null;
   const trimmed = stripeId.trim();
   if (!trimmed) return null;
-  // Only payment objects share a core; never group an unrelated checkout session.
+  // Only payment objects share a core. A charge is a child of a payment intent,
+  // so a ch_ id and a pi_ id with one core are provably the same money.
   // A checkout session id does not share its core with the payment it created,
   // so matching cs_ ids would let an unrelated session collide with a real
   // payment and silently erase a genuine team order from reported revenue.
