@@ -1120,7 +1120,7 @@ export default function Admin() {
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <button
                     className="admin-btn"
-                    onClick={() => copyAllEmails(trialsQ.data!.map(r => r.email))}
+                    onClick={() => copyAllEmails([...new Set(trialsQ.data!.filter(r => !r.optOut).map(r => r.email.toLowerCase()))])}
                     style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                   >
                     {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
@@ -1128,7 +1128,7 @@ export default function Admin() {
                   <button
                     className="admin-btn"
                     onClick={() => downloadCSV(
-                      trialsQ.data!.map(r => ({ email: r.email, phone: r.phone ?? "", course: r.source, signed_up: new Date(r.createdAt).toISOString() })),
+                      trialsQ.data!.map(r => ({ email: r.email, phone: r.phone ?? "", course: r.source, follow_up_stage: r.followUpStage, last_follow_up_at: r.lastFollowUpAt ? new Date(r.lastFollowUpAt).toISOString() : "", opted_out: r.optOut, signed_up: new Date(r.createdAt).toISOString() })),
                       `echelon-trial-emails-${new Date().toISOString().slice(0,10)}.csv`
                     )}
                     style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
