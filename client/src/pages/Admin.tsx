@@ -36,7 +36,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import "./admin.css";
 
-type Tab = "insights" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
+type Tab = "insights" | "leads" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 type AdminNavigationGroup = {
@@ -52,6 +52,7 @@ const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
       { id: "revenue", label: "Purchases", icon: CreditCard },
       { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
       { id: "orgs", label: "Organizations", icon: Building2 },
+      { id: "leads", label: "Captured leads", icon: Mail },
       { id: "trials", label: "Trial signups", icon: Mail },
       { id: "waitlist", label: "Waitlist", icon: ClipboardList },
     ],
@@ -215,8 +216,10 @@ export default function Admin() {
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
+  const businessQ = trpc.admin.getBusinessRevenue.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const ceuKpisQ = trpc.admin.getCeuKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
+  const leadsQ = trpc.admin.getLeadCapture.useQuery({ limit: 300 }, { enabled: user?.role === "admin" && (activeTab === "leads" || activeTab === "insights") });
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
@@ -374,7 +377,10 @@ export default function Admin() {
     if (activeTab === "insights") {
       kpisQ.refetch();
       ceuKpisQ.refetch();
+      businessQ.refetch();
+      leadsQ.refetch();
     }
+    if (activeTab === "leads") leadsQ.refetch();
     if (activeTab === "trials") trialsQ.refetch();
     if (activeTab === "waitlist") waitlistQ.refetch();
     if (activeTab === "errors") errorsQ.refetch();
@@ -517,9 +523,29 @@ export default function Admin() {
     {
       label: "Recorded order value",
       value: formatAdminCurrency(stats.data?.totalRevenueCAD),
-      definition: "Stored purchase and subscription amounts. It is not net revenue after refunds, disputes, or fees.",
+      definition: stats.data?.revenueBreakdown
+        ? `${formatAdminCurrency(stats.data.revenueBreakdown.purchasesCAD)} individual purchases, ${formatAdminCurrency(stats.data.revenueBreakdown.subscriptionsCAD)} active subscriptions, ${formatAdminCurrency(stats.data.revenueBreakdown.teamFlexAddedCAD)} team orders. Team money is paid in Stripe but stored separately, so it is added here and deduplicated against purchases. Not net of refunds, disputes or fees.`
+        : "Individual purchases, active subscriptions and team orders, deduplicated by Stripe payment. Not net of refunds, disputes or fees.",
       action: "Review purchases",
       tab: "revenue" as Tab,
+    },
+    {
+      label: "Team revenue",
+      value: formatAdminCurrency(stats.data?.revenueBreakdown?.teamFlexGrossCAD),
+      definition: stats.data?.revenueBreakdown
+        ? `${stats.data.revenueBreakdown.paidFlexOrders} paid team orders covering ${stats.data.revenueBreakdown.flexLicencesSold} licences. This money never reaches the purchases table, so any view built on purchases alone reports it as zero.`
+        : "Paid team orders. This money is stored outside the purchases table.",
+      action: "Open teams",
+      tab: "orgs" as Tab,
+    },
+    {
+      label: "Team orders left unpaid",
+      value: businessQ.data
+        ? `${businessQ.data.abandonedOrders} · ${formatAdminCurrency(businessQ.data.abandonedValueCAD)}`
+        : "—",
+      definition: "Managers who built a team order and did not complete payment. Our own internal accounts are excluded, so this is real recoverable demand. Quoted at the pre-tax amount, since no payment was captured.",
+      action: "Open teams",
+      tab: "orgs" as Tab,
     },
     {
       label: "Checkout event ratio",
@@ -546,8 +572,11 @@ export default function Admin() {
     { number: "03", title: "Review question release queue", detail: "Validate sources and rationales before any question becomes learner-visible.", status: "Content", action: "Review", tab: "questions" as Tab },
   ];
   const operatingMetrics = [
+    { label: "Team vs individual", value: stats.data?.revenueBreakdown ? `${Math.round(stats.data.revenueBreakdown.teamFlexGrossCAD / Math.max(stats.data.totalRevenueCAD, 1) * 100)}% team` : "—", note: stats.data?.revenueBreakdown ? `${formatAdminCurrency(stats.data.revenueBreakdown.teamFlexGrossCAD)} team, ${formatAdminCurrency(stats.data.revenueBreakdown.purchasesCAD + stats.data.revenueBreakdown.subscriptionsCAD)} individual` : "Share of money from team orders", tab: "orgs" as Tab },
+    { label: "Buyer organizations", value: businessQ.data?.buyerOrganizations ?? "—", note: businessQ.data ? `${businessQ.data.activeTeamPlans} active plans, ${businessQ.data.activeTeamSeats} seats` : "Distinct employers that have ordered", tab: "orgs" as Tab },
     { label: "Purchase records", value: stats.data?.purchaseCount ?? "—", note: "All stored purchase records", tab: "revenue" as Tab },
     { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", note: "Current stored subscription records", tab: "subscriptions" as Tab },
+    { label: "Captured leads", value: leadsQ.data?.uniquePeople ?? "—", note: leadsQ.data ? `${leadsQ.data.openLeads} open, ${leadsQ.data.newLast7Days} new in 7 days` : "Every email captured across the product", tab: "leads" as Tab },
     { label: "Trial signups", value: stats.data?.trialCount ?? "—", note: "All stored trial-signup records", tab: "trials" as Tab },
     { label: "Weekly active learners", value: kpisQ.data?.engagement?.weeklyActiveLearners ?? "—", note: "Recorded learning activity in 7 days", tab: "scores" as Tab },
     { label: "Learning activation", value: formatAdminPercent(kpisQ.data?.commercial?.learningActivationRate), note: kpisQ.data?.commercial ? `${kpisQ.data.commercial.learningActivated} of ${kpisQ.data.commercial.accessCohortSize} new activations in 30 days` : "Newly activated learners who started learning in 30 days", tab: "scores" as Tab },
@@ -560,6 +589,7 @@ export default function Admin() {
     revenue: "Review stored purchase records and check Stripe for missing records.",
     subscriptions: "Review subscription records and their current lifecycle state.",
     trials: "Review people who requested trial access or product updates.",
+    leads: "Every email captured across the product in one list, newest first.",
     waitlist: "Review people waiting for future course availability.",
     questions: "Review learner-visible questions against their source material.",
     scores: "Review learner performance and study outcomes across courses.",
@@ -727,6 +757,65 @@ export default function Admin() {
                 </div>
                 <span className="admin-priority-count">{founderActions.length} FOCUS AREAS</span>
               </div>
+            </section>
+
+            <section className="admin-ledger-card" aria-labelledby="business-pipeline-title">
+              <div className="admin-panel-heading">
+                <div>
+                  <p className="admin-section-label">Business revenue</p>
+                  <h2 id="business-pipeline-title">Which employers are buying, and who stopped short.</h2>
+                  <p>Team money is paid through Stripe but stored outside the purchases table. Internal accounts are excluded so the pipeline reflects real demand.</p>
+                </div>
+                <span className="admin-live-marker">{businessQ.isFetching ? "UPDATING" : businessQ.error ? "REFRESH NEEDED" : "STORED RECORDS"}</span>
+              </div>
+              <div className="admin-operating-grid" style={{ marginBottom: 18 }}>
+                <div className="admin-operating-metric" style={{ cursor: "default" }}>
+                  <span>Paid team orders</span>
+                  <strong>{businessQ.isLoading ? "…" : businessQ.data?.paidOrders ?? "—"}</strong>
+                  <small>{businessQ.data ? `${formatAdminCurrency(businessQ.data.paidRevenueCAD)} across ${businessQ.data.licencesSold} licences` : "Completed team payments"}</small>
+                </div>
+                <div className="admin-operating-metric" style={{ cursor: "default" }}>
+                  <span>Unpaid team orders</span>
+                  <strong>{businessQ.isLoading ? "…" : businessQ.data?.abandonedOrders ?? "—"}</strong>
+                  <small>{businessQ.data ? `${formatAdminCurrency(businessQ.data.abandonedValueCAD)} quoted and not captured` : "Built but never paid"}</small>
+                </div>
+                <div className="admin-operating-metric" style={{ cursor: "default" }}>
+                  <span>Active team plans</span>
+                  <strong>{businessQ.isLoading ? "…" : businessQ.data?.activeTeamPlans ?? "—"}</strong>
+                  <small>{businessQ.data ? `${businessQ.data.activeTeamSeats} seats under contract` : "Current organization plans"}</small>
+                </div>
+              </div>
+              <div className="admin-ledger-table-wrap" role="region" aria-label="Team orders" tabIndex={0}>
+                <table className="admin-ledger-table">
+                  <thead>
+                    <tr><th scope="col">Manager</th><th scope="col">Licences</th><th scope="col">Value</th><th scope="col">Status</th><th scope="col">Date</th></tr>
+                  </thead>
+                  <tbody>
+                    {businessQ.isLoading && (
+                      <tr><td colSpan={5}>Loading team orders…</td></tr>
+                    )}
+                    {!businessQ.isLoading && (businessQ.data?.orders.length ?? 0) === 0 && (
+                      <tr><td colSpan={5}>No team orders recorded yet.</td></tr>
+                    )}
+                    {businessQ.data?.orders.map((order) => {
+                      const paid = order.status === "paid";
+                      const cents = paid ? order.paidCents : order.beforeTaxCents;
+                      return (
+                        <tr key={order.id}>
+                          <th scope="row">{order.managerEmail}</th>
+                          <td className="admin-ledger-value">{order.licences}</td>
+                          <td className="admin-ledger-value">{formatAdminCurrency(Number(cents ?? 0) / 100)}</td>
+                          <td>{paid ? "Paid" : "Not completed"}</td>
+                          <td>{formatDate((paid ? order.paidAt : order.createdAt) ?? order.createdAt)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section className="admin-priority-card" aria-label="Founder priorities">
               <div className="admin-priority-list">
                 {founderActions.map((item) => (
                   <button key={item.number} type="button" className="admin-priority-item" onClick={() => selectSection(item.tab)}>
@@ -829,6 +918,120 @@ export default function Admin() {
               </tr></tbody></table><p className="admin-ceu-disclosure">Certificate views are measured from this release onward. Public views and failed network saves are not included in these record-based counts.</p></div>}
             </section>
           </>
+        )}
+
+        {/* ── CAPTURED LEADS TAB ── */}
+        {activeTab === "leads" && (
+          <div style={{ display: "grid", gap: 16 }}>
+            <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))" }}>
+              {[
+                { label: "People captured", value: leadsQ.data?.uniquePeople ?? "—", note: "Unique email addresses across every capture point" },
+                { label: "Open leads", value: leadsQ.data?.openLeads ?? "—", note: "Captured and not yet a paying customer" },
+                { label: "Already bought", value: leadsQ.data?.convertedLeads ?? "—", note: "Captured people who later paid" },
+                { label: "New in 7 days", value: leadsQ.data?.newLast7Days ?? "—", note: "Fresh leads worth contacting first" },
+                { label: "New in 30 days", value: leadsQ.data?.newLast30Days ?? "—", note: "Recent capture volume" },
+                { label: "Gave a phone", value: leadsQ.data?.withPhone ?? "—", note: "Reachable by call or text, not only email" },
+              ].map(card => (
+                <div key={card.label} style={{ background: "#FFFFFF", borderRadius: 14, border: "1px solid rgba(0,0,0,0.07)", padding: "14px 16px" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{card.label}</div>
+                  <div style={{ fontSize: 26, fontWeight: 700, marginTop: 6 }}>{card.value}</div>
+                  <div style={{ fontSize: 11, color: "#64748B", marginTop: 4, lineHeight: 1.4 }}>{card.note}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+              <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 700 }}>
+                    Every captured email
+                    {leadsQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{leadsQ.data.uniquePeople} people</span>}
+                  </div>
+                  {leadsQ.data && (
+                    <div style={{ fontSize: 11, color: "#64748B", marginTop: 4 }}>
+                      Course trial {leadsQ.data.bySource.courseTrial} · Contact form {leadsQ.data.bySource.contactForm} · Exam date booked {leadsQ.data.bySource.examDateBooked} · Waitlist {leadsQ.data.bySource.waitlist}
+                    </div>
+                  )}
+                </div>
+                {leadsQ.data && leadsQ.data.people.length > 0 && (
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    <button
+                      className="admin-btn"
+                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(p => !p.converted).map(p => p.email))}
+                      style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                    >
+                      {copiedEmail === "__all__" ? "✓ Copied" : "Copy open lead emails"}
+                    </button>
+                    <button
+                      className="admin-btn"
+                      onClick={() => downloadCSV(
+                        leadsQ.data!.people.map(p => ({
+                          email: p.email,
+                          name: p.name ?? "",
+                          phone: p.phone ?? "",
+                          source: p.source,
+                          detail: p.detail ?? "",
+                          note: p.note ?? "",
+                          touchpoints: p.touchpoints,
+                          status: p.converted ? "bought" : "open",
+                          captured: new Date(p.createdAt).toISOString(),
+                        })),
+                        `echelon-captured-leads-${new Date().toISOString().slice(0, 10)}.csv`
+                      )}
+                      style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#6D28D9", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                    >
+                      Download CSV
+                    </button>
+                  </div>
+                )}
+              </div>
+              {leadsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+              {leadsQ.data && leadsQ.data.people.length === 0 && (
+                <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No captured leads yet.</div>
+              )}
+              {leadsQ.data && leadsQ.data.people.length > 0 && (
+                <div style={{ overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}>
+                    <thead>
+                      <tr style={{ background: "rgba(0,0,0,0.03)" }}>
+                        {["#", "Email", "Name", "Phone", "Where from", "What they wanted", "Status", "Captured", ""].map(h => (
+                          <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {leadsQ.data.people.map((person, index) => (
+                        <tr key={`${person.email}-${index}`} style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+                          <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B" }}>{index + 1}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12, fontWeight: 600 }}>{person.email}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.name ?? "—"}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.phone ?? "—"}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12, whiteSpace: "nowrap" }}>{person.source}{person.touchpoints > 1 ? ` +${person.touchpoints - 1}` : ""}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12, color: "#475569", maxWidth: 320 }}>
+                            {person.detail ?? "—"}
+                            {person.note && <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div>}
+                          </td>
+                          <td style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: person.converted ? "#15803D" : "#B45309", whiteSpace: "nowrap" }}>
+                            {person.converted ? "Bought" : "Open"}
+                          </td>
+                          <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B", whiteSpace: "nowrap" }}>{formatDate(person.createdAt)}</td>
+                          <td style={{ padding: "10px 16px" }}>
+                            <button
+                              className="admin-btn"
+                              onClick={() => copyEmail(person.email)}
+                              style={{ padding: "4px 10px", borderRadius: 16, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap" }}
+                            >
+                              {copiedEmail === person.email ? "✓" : "Copy"}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </div>
         )}
 
         {/* ── TRIAL EMAILS TAB ── */}

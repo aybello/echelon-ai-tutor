@@ -9,10 +9,15 @@ import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
 import { desc, eq, sql, count, ne, and, gte, gt, asc, getTableColumns } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence, contactSubmissions, examDates } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
-import { SYNTHETIC_EMAIL_DOMAIN } from "../../shared/revenueReporting";
+import {
+  SYNTHETIC_EMAIL_DOMAIN,
+  isInternalBuyerEmail,
+  isSyntheticCustomerEmail,
+  stripePaymentCore,
+} from "../../shared/revenueReporting";
 import {
   RECOVERY_ORGANIZATION_GROUPS,
   RECOVERY_SUBJECT_TYPES,
@@ -656,7 +661,58 @@ export const adminRouter = router({
       // Rating: avg in DB
       db.select({ avg: sql<number>`COALESCE(AVG(rating), 0)`, cnt: count() }).from(userFeedback),
     ]);
-    const totalRevenueCents = Number(purchaseRevenueRows[0]?.total ?? 0) + Number(subscriptionRevenueRows[0]?.total ?? 0);
+    // Team flex orders are paid through Stripe but recorded only in
+    // team_flex_orders. Nothing in the flex checkout path writes a purchases
+    // row, so summing purchases plus subscriptions reported B2B revenue as
+    // zero and understated the true total. Two flex payments were separately
+    // mirrored into purchases by a historic recovery backfill, so the two
+    // sources must be deduplicated by Stripe payment id before being added.
+    const [paidFlexRows, countedPurchaseStripeRows] = await Promise.all([
+      db
+        .select({
+          amountCents: teamFlexOrders.totalPaidCents,
+          stripeId: teamFlexOrders.stripePaymentIntentId,
+          managerEmail: teamFlexOrders.managerEmail,
+          licences: teamFlexOrders.totalLicences,
+        })
+        .from(teamFlexOrders)
+        .where(eq(teamFlexOrders.status, "paid")),
+      db
+        .select({
+          sessionId: purchases.stripeSessionId,
+          paymentIntentId: purchases.stripePaymentIntentId,
+        })
+        .from(purchases)
+        .where(
+          and(
+            ne(purchases.email, OWNER_EMAIL),
+            sql`${purchases.email} NOT LIKE ${"%" + SYNTHETIC_EMAIL_DOMAIN}`,
+            gt(purchases.amountCAD, 0),
+            sql`${purchases.refundedAt} IS NULL`
+          )
+        ),
+    ]);
+    // Payment cores already represented inside the counted purchases total.
+    const countedPurchaseCores = new Set(
+      countedPurchaseStripeRows
+        .flatMap(row => [row.paymentIntentId, row.sessionId])
+        .map(value => stripePaymentCore(value))
+        .filter((core): core is string => core !== null)
+    );
+    const realFlexRows = paidFlexRows.filter(
+      row => !isSyntheticCustomerEmail(row.managerEmail)
+    );
+    const unmirroredFlexRows = realFlexRows.filter(row => {
+      const core = stripePaymentCore(row.stripeId);
+      return core === null || !countedPurchaseCores.has(core);
+    });
+    const sumCents = (rows: typeof realFlexRows) =>
+      rows.reduce((total, row) => total + Number(row.amountCents ?? 0), 0);
+    const flexGrossCents = sumCents(realFlexRows);
+    const flexAddedCents = sumCents(unmirroredFlexRows);
+    const purchaseCents = Number(purchaseRevenueRows[0]?.total ?? 0);
+    const subscriptionCents = Number(subscriptionRevenueRows[0]?.total ?? 0);
+    const totalRevenueCents = purchaseCents + subscriptionCents + flexAddedCents;
     const avgRating = Number(ratingRows[0]?.avg ?? 0);
     return {
       trialCount: Number(trialCount),
@@ -666,11 +722,283 @@ export const adminRouter = router({
       purchaseCount: Number(purchaseCount),
       subscriptionCount: Number(subscriptionCount),
       totalRevenueCAD: totalRevenueCents / 100,
+      // Breakdown so the headline figure can be explained, not just trusted.
+      revenueBreakdown: {
+        purchasesCAD: purchaseCents / 100,
+        subscriptionsCAD: subscriptionCents / 100,
+        teamFlexGrossCAD: flexGrossCents / 100,
+        teamFlexAddedCAD: flexAddedCents / 100,
+        teamFlexAlreadyCountedCAD: (flexGrossCents - flexAddedCents) / 100,
+        paidFlexOrders: realFlexRows.length,
+        flexLicencesSold: realFlexRows.reduce(
+          (total, row) => total + Number(row.licences ?? 0),
+          0
+        ),
+      },
       feedbackCount: Number(feedbackCount),
       avgRating: Math.round(avgRating * 10) / 10,
       triggerCount: Number(triggerCount),
     };
   }),
+
+  /**
+   * Business revenue view. Team money is paid through Stripe but recorded in
+   * team_flex_orders and organizations, never in purchases, so it was
+   * invisible to every surface that read purchases alone. This procedure makes
+   * the split explicit and surfaces abandoned team orders as recoverable
+   * pipeline, excluding our own internal accounts.
+   */
+  getBusinessRevenue: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+    const [flexOrders, activeOrgs] = await Promise.all([
+      db
+        .select({
+          id: teamFlexOrders.id,
+          organizationId: teamFlexOrders.organizationId,
+          managerEmail: teamFlexOrders.managerEmail,
+          licences: teamFlexOrders.totalLicences,
+          paidCents: teamFlexOrders.totalPaidCents,
+          beforeTaxCents: teamFlexOrders.totalBeforeTaxCents,
+          status: teamFlexOrders.status,
+          paidAt: teamFlexOrders.paidAt,
+          createdAt: teamFlexOrders.createdAt,
+        })
+        .from(teamFlexOrders)
+        .orderBy(desc(teamFlexOrders.createdAt)),
+      db
+        .select({
+          id: organizations.id,
+          name: organizations.name,
+          province: organizations.province,
+          seatsTotal: organizations.seatsTotal,
+          managerEmail: organizations.managerEmail,
+          billingType: organizations.billingType,
+          status: organizations.status,
+          termEnd: organizations.termEnd,
+        })
+        .from(organizations)
+        .where(eq(organizations.status, "active"))
+        .orderBy(desc(organizations.termEnd)),
+    ]);
+    // Internal accounts place real Stripe orders during setup and testing.
+    // They are genuine payments but are not customer demand, so they are
+    // excluded from pipeline counts to keep the recoverable figure honest.
+    const customerOrders = flexOrders.filter(
+      order => !isInternalBuyerEmail(order.managerEmail)
+    );
+    const paid = customerOrders.filter(order => order.status === "paid");
+    const abandoned = customerOrders.filter(order => order.status === "pending");
+    const centsOf = (value: number | null) => Number(value ?? 0);
+    const paidCents = paid.reduce(
+      (total, order) => total + centsOf(order.paidCents),
+      0
+    );
+    // Abandoned orders never captured payment, so value the opportunity at the
+    // quoted pre-tax amount rather than a paid amount that does not exist.
+    const abandonedCents = abandoned.reduce(
+      (total, order) => total + centsOf(order.beforeTaxCents),
+      0
+    );
+    // One buyer organisation may appear under several manager addresses.
+    const buyerDomains = new Set(
+      customerOrders.flatMap(order => {
+        const domain = order.managerEmail.split("@")[1]?.toLowerCase();
+        return domain ? [domain] : [];
+      })
+    );
+    return {
+      paidOrders: paid.length,
+      paidRevenueCAD: paidCents / 100,
+      licencesSold: paid.reduce(
+        (total, order) => total + Number(order.licences ?? 0),
+        0
+      ),
+      abandonedOrders: abandoned.length,
+      abandonedValueCAD: abandonedCents / 100,
+      buyerOrganizations: buyerDomains.size,
+      activeTeamPlans: activeOrgs.length,
+      activeTeamSeats: activeOrgs.reduce(
+        (total, org) => total + Number(org.seatsTotal ?? 0),
+        0
+      ),
+      orders: customerOrders.slice(0, 50),
+      organizations: activeOrgs.slice(0, 50),
+    };
+  }),
+
+  /**
+   * Every captured lead in one place. Leads arrive through several doors and
+   * each door used to write to its own table with its own screen, or with no
+   * screen at all. Course trial gates write to trial_emails, contact and
+   * partnership enquiries write to contact_submissions, and booked exam dates
+   * write to exam_dates. Contact enquiries and exam dates had no admin surface
+   * at all, so those leads were collected and never shown to anyone. This
+   * merges them into one ranked list so no captured person is lost.
+   */
+  getLeadCapture: adminProcedure
+    .input(z.object({ limit: z.number().int().min(1).max(500).default(300) }).default({ limit: 300 }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      const [trials, waitlistRows, contacts, examDateRows] = await Promise.all([
+        db
+          .select({
+            email: trialEmails.email,
+            phone: trialEmails.phone,
+            detail: trialEmails.source,
+            createdAt: trialEmails.createdAt,
+          })
+          .from(trialEmails)
+          .where(ne(trialEmails.email, OWNER_EMAIL))
+          .orderBy(desc(trialEmails.createdAt))
+          .limit(input.limit),
+        db
+          .select({
+            email: waitlist.email,
+            detail: waitlist.courseTitle,
+            province: waitlist.province,
+            createdAt: waitlist.createdAt,
+          })
+          .from(waitlist)
+          .where(ne(waitlist.email, OWNER_EMAIL))
+          .orderBy(desc(waitlist.createdAt))
+          .limit(input.limit),
+        db
+          .select({
+            email: contactSubmissions.email,
+            name: contactSubmissions.name,
+            detail: contactSubmissions.subject,
+            message: contactSubmissions.message,
+            organization: contactSubmissions.organization,
+            followUpStatus: contactSubmissions.followUpStatus,
+            createdAt: contactSubmissions.createdAt,
+          })
+          .from(contactSubmissions)
+          .where(ne(contactSubmissions.email, OWNER_EMAIL))
+          .orderBy(desc(contactSubmissions.createdAt))
+          .limit(input.limit),
+        db
+          .select({
+            email: examDates.email,
+            detail: examDates.courseKey,
+            examDate: examDates.examDate,
+            createdAt: examDates.createdAt,
+          })
+          .from(examDates)
+          .where(ne(examDates.email, OWNER_EMAIL))
+          .orderBy(desc(examDates.createdAt))
+          .limit(input.limit),
+      ]);
+
+      type Lead = {
+        source: "Course trial" | "Contact form" | "Exam date booked" | "Waitlist";
+        email: string;
+        name: string | null;
+        phone: string | null;
+        detail: string | null;
+        note: string | null;
+        createdAt: Date;
+      };
+
+      const leads: Lead[] = [
+        ...trials.map(row => ({
+          source: "Course trial" as const,
+          email: row.email,
+          name: null,
+          phone: row.phone ?? null,
+          detail: row.detail ?? null,
+          note: null,
+          createdAt: row.createdAt,
+        })),
+        ...contacts.map(row => ({
+          source: "Contact form" as const,
+          email: row.email,
+          name: row.name ?? null,
+          phone: null,
+          detail: row.detail ?? null,
+          // The message is the whole reason a contact lead is worth money, so
+          // carry enough of it to triage without opening another screen.
+          note: row.message ? row.message.slice(0, 300) : null,
+          createdAt: row.createdAt,
+        })),
+        ...examDateRows.map(row => ({
+          source: "Exam date booked" as const,
+          email: row.email,
+          name: null,
+          phone: null,
+          detail: row.detail ?? null,
+          note: row.examDate
+            ? `Exam on ${new Date(row.examDate).toISOString().slice(0, 10)}`
+            : null,
+          createdAt: row.createdAt,
+        })),
+        ...waitlistRows.map(row => ({
+          source: "Waitlist" as const,
+          email: row.email,
+          name: null,
+          phone: null,
+          detail: row.detail ?? null,
+          note: row.province ?? null,
+          createdAt: row.createdAt,
+        })),
+      ]
+        .filter(lead => !isSyntheticCustomerEmail(lead.email))
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+
+      // A lead who already paid is a customer, not an open lead. Separating
+      // them is what turns this list into a work queue instead of a log.
+      const [payingRows, subscriberRows] = await Promise.all([
+        db.select({ email: purchases.email }).from(purchases),
+        db.select({ email: subscriptions.email }).from(subscriptions),
+      ]);
+      const paying = new Set(
+        [...payingRows, ...subscriberRows].map(row => normalizeEmail(row.email))
+      );
+
+      const byEmail = new Map<string, Lead & { converted: boolean; touchpoints: number }>();
+      for (const lead of leads) {
+        const key = normalizeEmail(lead.email);
+        const existing = byEmail.get(key);
+        if (existing) {
+          existing.touchpoints += 1;
+          // Keep the richest contact details across a person's touchpoints.
+          existing.phone = existing.phone ?? lead.phone;
+          existing.name = existing.name ?? lead.name;
+          continue;
+        }
+        byEmail.set(key, {
+          ...lead,
+          converted: paying.has(key),
+          touchpoints: 1,
+        });
+      }
+      const people = [...byEmail.values()];
+      const open = people.filter(person => !person.converted);
+      const now = Date.now();
+      const DAY_MS = 86_400_000;
+
+      return {
+        totalLeads: leads.length,
+        uniquePeople: people.length,
+        openLeads: open.length,
+        convertedLeads: people.length - open.length,
+        newLast7Days: people.filter(
+          person => now - person.createdAt.getTime() <= 7 * DAY_MS
+        ).length,
+        newLast30Days: people.filter(
+          person => now - person.createdAt.getTime() <= 30 * DAY_MS
+        ).length,
+        withPhone: people.filter(person => Boolean(person.phone)).length,
+        bySource: {
+          courseTrial: trials.length,
+          contactForm: contacts.length,
+          examDateBooked: examDateRows.length,
+          waitlist: waitlistRows.length,
+        },
+        people: people.slice(0, input.limit),
+      };
+    }),
 
   /** Paginated list of purchases, newest first — excludes owner test email */
   getPurchases: adminProcedure
