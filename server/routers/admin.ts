@@ -947,7 +947,7 @@ export const adminRouter = router({
           phone: null,
           detail: row.detail ?? null,
           // Keep the full submitted message for the admin inbox (capped by form input).
-          note: row.message ? row.message.slice(0, 1000) : null,
+          note: row.message ? row.message.slice(0, 2000) : null,
           createdAt: row.createdAt,
           organization: row.organization,
           contactRequestId: row.id,
@@ -1009,7 +1009,7 @@ export const adminRouter = router({
           .from(teamFlexOrders)
           .where(eq(teamFlexOrders.status, "paid")),
         db.select({ email: organizations.managerEmail }).from(organizations)
-          .where(and(eq(organizations.status, "active"), eq(organizations.billingType, "stripe"))),
+          .where(and(eq(organizations.status, "active"), eq(organizations.billingType, "stripe"), sql`${organizations.stripeSubscriptionId} IS NOT NULL`)),
       ]);
       const paying = new Set(
         [...payingRows, ...subscriberRows, ...teamBuyerRows, ...payingOrganizations].map(row =>
