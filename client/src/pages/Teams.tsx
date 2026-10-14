@@ -75,9 +75,11 @@ export default function Teams() {
   const [requestKey, setRequestKey] = useState(() => crypto.randomUUID());
   const [honeypot, setHoneypot] = useState("");
   const [requestReceipt, setRequestReceipt] = useState<number | null>(null);
+  const [confirmedBeforeTaxCents, setConfirmedBeforeTaxCents] = useState<number | null>(null);
   const sendInquiry = trpc.municipal.request.useMutation({
     onSuccess: data => {
       setRequestReceipt(data.receiptId);
+      setConfirmedBeforeTaxCents(data.annualTotalBeforeTaxCents);
       setInquirySaved(true);
       toast.success("Request #" + data.receiptId + " received for staff review.");
     },
@@ -188,7 +190,7 @@ export default function Teams() {
               <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-5"><div className="flex justify-between gap-5"><span className="text-sm text-slate-600">Average per operator / year</span><span className="text-xl font-bold text-teal-700">{formatTeamPriceCAD(averageSeatPrice)}</span></div><div className="mt-3 flex justify-between gap-5 border-t border-blue-100 pt-3"><span className="text-sm font-medium text-slate-700">Total before tax ({seats} licences)</span><span className="text-xl font-bold text-slate-900">{formatTeamPriceCAD(annualTotal)}</span></div>{savings > 0 && <p className="mt-3 text-xs font-semibold text-teal-700">Blended discount: {effectiveDiscount}% · you save {formatTeamPriceCAD(savings)} against list price.</p>}</div>
 
               <div className="flex flex-wrap gap-2">
-                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setConfirmedBeforeTaxCents(null);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
                 <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestKey(crypto.randomUUID());setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
               </div>
               <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
@@ -203,9 +205,36 @@ export default function Teams() {
 
       </main>
       {inquiryOpen && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4">
+        <style>{`@media print {
+          @page { size: A4; margin: 16mm; }
+          body * { visibility: hidden !important; }
+          .municipal-pricing-summary, .municipal-pricing-summary * { visibility: visible !important; }
+          .municipal-pricing-summary { position: fixed !important; inset: 0; width: 100%; padding: 24px; background: white !important; border: 0 !important; }
+          .municipal-print-hidden { display: none !important; }
+        }`}</style>
         <section role="dialog" aria-modal="true" aria-label="Municipal inquiry" className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
           <h2 className="text-xl font-bold">{inquiryOpen === "quote" ? "Municipal quotation request" : "14-day three-operator evaluation request"}</h2>
-          {inquirySaved ? <p className="mt-4 text-sm">Request #{requestReceipt ?? "—"} saved for staff review. No access or invoice has been issued.</p> :
+          {inquirySaved ? <div className="mt-4 space-y-4">
+              <p className="text-sm">Request #{requestReceipt ?? "—"} received for staff review. No access or invoice has been issued.</p>
+              {inquiryOpen === "quote" && confirmedBeforeTaxCents !== null && (
+                <div className="municipal-pricing-summary rounded-lg border border-slate-200 bg-white p-5 text-sm">
+                  <div className="text-base font-bold text-slate-900">Echelon Institute — Municipal Pricing Estimate</div>
+                  <p className="mt-1 text-slate-600">Request reference: #{requestReceipt} · Status: Pending review</p>
+                  <div className="mt-4 space-y-1">
+                    <p>Organization: {organizationName}</p>
+                    <p>Region: {TEAM_REGION_LABELS[region]}</p>
+                    <p>Requested product: {getTeamStreamLabel(region, tier)}</p>
+                    <p>Named annual operator licences: {seats}</p>
+                    <p className="pt-2 font-semibold">Annual amount before applicable taxes: {formatTeamPriceCAD(confirmedBeforeTaxCents)}</p>
+                  </div>
+                  <p className="mt-4 border-t pt-3 text-xs text-slate-600">
+                    For budgeting only. This is NOT a signed or binding quotation, purchase order, invoice, proof of payment, or promise of entitlement.
+                    Taxes, procurement terms, and payment method require confirmation from Echelon Institute.
+                  </p>
+                  <Button type="button" className="municipal-print-hidden mt-3" variant="outline" onClick={() => window.print()}>Print / Save PDF summary</Button>
+                </div>
+              )}
+            </div> :
             <form className="mt-4 space-y-3" onSubmit={event => {event.preventDefault();requestInquiry();}}>
               <div><Label>Organization</Label><Input required maxLength={200} value={organizationName} onChange={e=>setOrganizationName(e.target.value)} /></div>
               <div><Label>Contact name</Label><Input required maxLength={100} value={contactName} onChange={e=>setContactName(e.target.value)} /></div>
