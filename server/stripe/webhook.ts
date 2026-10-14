@@ -1,3 +1,4 @@
+import { isTeamRegion } from "../../shared/teamPricing";
 import { provisionIndividualSubscription } from "./provisionIndividualSubscription";
 import { fulfilIndividualPurchase } from "./fulfilIndividualPurchase";
 import { processIndividualDispute } from "./paymentState";
@@ -280,7 +281,11 @@ export function registerStripeWebhook(app: Express) {
         if (liveSubscription.metadata?.type === "org") {
           const managerEmail = normalizeEmail(liveSubscription.metadata?.manager_email ?? "");
           const orgName = liveSubscription.metadata?.org_name?.trim() ?? "";
-          const province = liveSubscription.metadata?.subscription_province as SubscriptionProvince;
+          const province = liveSubscription.metadata?.subscription_province;
+          if (!isTeamRegion(province)) {
+            console.error("[Stripe Webhook] Invalid team region in subscription metadata.");
+            return res.status(503).json({ error: "Invalid organization region in live Stripe metadata" });
+          }
           const tier = liveSubscription.metadata?.subscription_tier as OrganizationSubscriptionTier;
           const seats = liveSubscription.items.data[0]?.quantity ?? 0;
           const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(liveSubscription);
