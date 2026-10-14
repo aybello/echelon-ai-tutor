@@ -945,6 +945,7 @@ export default function Admin() {
               {[
                 { label: "People captured", value: leadsQ.data?.uniquePeople ?? "—", note: "Unique email addresses across every capture point" },
                 { label: "Open leads", value: leadsQ.data?.openLeads ?? "—", note: "Captured and not yet a paying customer" },
+                { label: "Actionable", value: leadsQ.data?.actionableOpenLeads ?? "—", note: "Not bought and eligible for follow-up" },
                 { label: "Already bought", value: leadsQ.data?.convertedLeads ?? "—", note: "Captured people who later paid" },
                 { label: "New in 7 days", value: leadsQ.data?.newLast7Days ?? "—", note: "Fresh leads worth contacting first" },
                 { label: "New in 30 days", value: leadsQ.data?.newLast30Days ?? "—", note: "Recent capture volume" },
@@ -967,7 +968,7 @@ export default function Admin() {
                   </div>
                   {leadsQ.data && (
                     <div style={{ fontSize: 11, color: "#64748B", marginTop: 4 }}>
-                      Course trial {leadsQ.data.bySource.courseTrial} · Contact form {leadsQ.data.bySource.contactForm} · Exam date booked {leadsQ.data.bySource.examDateBooked} · Waitlist {leadsQ.data.bySource.waitlist}
+                      Course trial {leadsQ.data.bySource.courseTrial} · Abandoned checkout {leadsQ.data.bySource.abandonedCheckout} · Contact form {leadsQ.data.bySource.contactForm} · Exam date booked {leadsQ.data.bySource.examDateBooked} · Waitlist {leadsQ.data.bySource.waitlist}
                     </div>
                   )}
                 </div>
@@ -975,10 +976,10 @@ export default function Admin() {
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     <button
                       className="admin-btn"
-                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(p => !p.converted).map(p => p.email))}
+                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(p => !p.converted && !p.optedOut && p.contactFollowUpStatus !== "closed").map(p => p.email))}
                       style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                     >
-                      {copiedEmail === "__all__" ? "✓ Copied" : "Copy open lead emails"}
+                      {copiedEmail === "__all__" ? "✓ Copied" : "Copy contactable open leads"}
                     </button>
                     <button
                       className="admin-btn"
@@ -988,10 +989,17 @@ export default function Admin() {
                           name: p.name ?? "",
                           phone: p.phone ?? "",
                           source: p.source,
+                          all_sources: p.sources.join("; "),
                           detail: p.detail ?? "",
-                          note: p.note ?? "",
+                          inquiry_subject: p.inquirySubject ?? "",
+                          inquiry_organization: p.inquiryOrganization ?? "",
+                          inquiry_message: p.inquiryMessage ?? "",
+                          follow_up_status: p.contactFollowUpStatus ?? "",
+                          trial_follow_up_stage: p.followUpStage ?? "",
+                          opted_out: p.optedOut,
+                          recovery_email_sent: p.recoveryEmailSentAt ? new Date(p.recoveryEmailSentAt).toISOString() : "",
                           touchpoints: p.touchpoints,
-                          status: p.converted ? "bought" : "open",
+                          status: p.converted ? "bought" : "not_bought",
                           captured: new Date(p.createdAt).toISOString(),
                         })),
                         `echelon-captured-leads-${new Date().toISOString().slice(0, 10)}.csv`
@@ -1003,6 +1011,18 @@ export default function Admin() {
                   </div>
                 )}
               </div>
+              {leadsQ.data && (
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap", padding: "12px 20px", borderBottom: "1px solid #E2E8F0" }}>
+                  <label htmlFor="admin-lead-filter" style={{ fontSize: 12, fontWeight: 700 }}>Show</label>
+                  <select id="admin-lead-filter" value={leadFilter} onChange={event => setLeadFilter(event.target.value as typeof leadFilter)} style={{ padding: "6px 10px", borderRadius: 8, border: "1px solid #CBD5E1", background: "#fff", fontSize: 12 }}>
+                    <option value="actionable">Needs follow-up (not bought or opted out)</option>
+                    <option value="all">All captured people</option>
+                    <option value="bought">Already bought</option>
+                    <option value="opted_out">Opted out</option>
+                  </select>
+                  <span style={{ fontSize: 11, color: "#64748B" }}>{leadFilter === "actionable" ? leadsQ.data.actionableOpenLeads : leadFilter === "all" ? leadsQ.data.uniquePeople : leadFilter === "bought" ? leadsQ.data.convertedLeads : leadsQ.data.optedOutPeople} matching people</span>
+                </div>
+              )}
               {leadsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
               {leadsQ.error && (
                 <div style={{ padding: 32, textAlign: "center", color: "#B91C1C", fontSize: 13 }}>
