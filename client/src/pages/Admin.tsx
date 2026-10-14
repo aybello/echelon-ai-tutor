@@ -11,6 +11,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
+import { isActionableLead, matchesLeadTriageFilter, type LeadTriageFilter } from "@shared/adminLeadTriage";
 import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
 import { formatAdminCurrency, formatAdminPercent, rateFromCounts } from "@/lib/adminDashboard";
 import { formatScoreSavedAt, scoreHistoryCsvRow, scoreLearnerIdentity } from "@/lib/adminScoreHistory";
@@ -203,7 +204,7 @@ export default function Admin() {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [isMobileNavigation, setIsMobileNavigation] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches);
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
-  const [leadFilter, setLeadFilter] = useState<"actionable" | "all" | "bought" | "opted_out">("actionable");
+  const [leadFilter, setLeadFilter] = useState<LeadTriageFilter>("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
   const [reviewPage, setReviewPage] = useState(1);
@@ -976,7 +977,7 @@ export default function Admin() {
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     <button
                       className="admin-btn"
-                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(p => !p.converted && !p.optedOut && p.contactFollowUpStatus !== "closed").map(p => p.email))}
+                      onClick={() => copyAllEmails(leadsQ.data!.people.filter(isActionableLead).map(p => p.email))}
                       style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(0,0,0,0.1)", background: "transparent", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                     >
                       {copiedEmail === "__all__" ? "✓ Copied" : "Copy contactable open leads"}
@@ -1043,12 +1044,7 @@ export default function Admin() {
                       </tr>
                     </thead>
                     <tbody>
-                      {leadsQ.data.people.filter(person =>
-                        leadFilter === "all" ||
-                        (leadFilter === "actionable" && !person.converted && !person.optedOut && person.contactFollowUpStatus !== "closed") ||
-                        (leadFilter === "bought" && person.converted) ||
-                        (leadFilter === "opted_out" && person.optedOut)
-                      ).map((person, index) => (
+                      {leadsQ.data.people.filter(person => matchesLeadTriageFilter(person, leadFilter)).map((person, index) => (
                         <tr key={person.email.toLowerCase()} style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B" }}>{index + 1}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12, fontWeight: 600 }}>{person.email}</td>
