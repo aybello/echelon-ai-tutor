@@ -1037,22 +1037,33 @@ export default function Admin() {
                   <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 760 }}>
                     <thead>
                       <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                        {["#", "Email", "Name", "Phone", "Where from", "What they wanted", "Status", "Captured", ""].map(h => (
+                        {["#", "Email", "Name", "Phone", "Source", "Inquiry & product", "Sales status", "Follow-up", "Captured", ""].map(h => (
                           <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>{h}</th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {leadsQ.data.people.map((person, index) => (
+                      {leadsQ.data.people.filter(person =>
+                        leadFilter === "all" ||
+                        (leadFilter === "actionable" && !person.converted && !person.optedOut && person.contactFollowUpStatus !== "closed") ||
+                        (leadFilter === "bought" && person.converted) ||
+                        (leadFilter === "opted_out" && person.optedOut)
+                      ).map((person, index) => (
                         <tr key={person.email.toLowerCase()} style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B" }}>{index + 1}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12, fontWeight: 600 }}>{person.email}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.name ?? "—"}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.phone ?? "—"}</td>
-                          <td style={{ padding: "10px 16px", fontSize: 12, whiteSpace: "nowrap" }}>{person.source}{person.touchpoints > 1 ? ` +${person.touchpoints - 1}` : ""}</td>
+                          <td style={{ padding: "10px 16px", fontSize: 12, whiteSpace: "nowrap" }}>{person.sources.join(", ")}{person.touchpoints > 1 ? ` · ${person.touchpoints} entries` : ""}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#475569", maxWidth: 320 }}>
-                            {person.detail ?? "—"}
-                            {person.note && <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div>}
+                            {person.inquirySubject ?? person.detail ?? "—"}
+                            {person.inquiryOrganization && <div style={{ fontSize: 11, color: "#334155", marginTop: 2 }}>Organization: {person.inquiryOrganization}</div>}
+                            {person.inquiryMessage ? (
+                              <details style={{ marginTop: 4 }}>
+                                <summary style={{ cursor: "pointer", color: "#0369A1", fontSize: 11 }}>Read contact message</summary>
+                                <div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 11, marginTop: 4 }}>{person.inquiryMessage}</div>
+                              </details>
+                            ) : person.note ? <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div> : null}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: person.converted ? "#15803D" : "#B45309", whiteSpace: "nowrap" }}>
                             {person.converted ? "Bought" : "Open"}
