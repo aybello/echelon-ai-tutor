@@ -47,6 +47,7 @@ describe("admin ledger and captured lead completeness", () => {
     expect(leadSection).toContain('eq(subscriptions.status, "active")');
     expect(leadSection).toContain('eq(teamFlexOrders.status, "paid")');
     expect(leadSection).toContain('eq(organizations.billingType, "stripe")');
+    expect(leadSection).toContain("organizations.stripeSubscriptionId} IS NOT NULL");
     expect(leadSection).toContain("refundedAt} IS NULL");
   });
   it("retains contact enquiry text and outreach/opt-out information across touchpoints", () => {
