@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Building2, CheckCircle2, ShieldCheck, Users, FileText, FlaskConical } from "lucide-react";
 import {
   type TeamStreamTier,
@@ -196,13 +196,13 @@ export default function Teams() {
               </div>
               <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
               <div className="space-y-1"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume pricing</p>{TEAM_VOLUME_TIERS.map((band) => <div key={band.label} className={`flex justify-between rounded-lg px-3 py-2 text-sm ${band === volumeTier ? "bg-blue-50 font-semibold text-blue-950" : "text-slate-600"}`}><span>{band.label}{band.discountPct ? ` · ${band.discountPct}% off those licences` : " · list price"}</span><span>{formatTeamPriceCAD(Math.round(basePrice * (1 - band.discountPct / 100)))}/yr</span></div>)}</div>
-              <div className="grid gap-4 sm:grid-cols-2"><div><Label>Organization name</Label><Input value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="e.g. Utility name" className="mt-2" /></div><div><Label>Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="fixture-62@example.com" className="mt-2" /></div></div>
+              <div className="grid gap-4 sm:grid-cols-2"><div><Label>Organization name</Label><Input value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="e.g. Utility name" className="mt-2" /></div><div><Label>Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="e.g. operations manager email" className="mt-2" /></div></div>
               <Button onClick={startAnnualCheckout} disabled={createTeamCheckout.isPending} className="h-12 w-full bg-gradient-to-r from-blue-900 to-teal-700 text-base font-bold text-white hover:opacity-95">{createTeamCheckout.isPending ? "Opening secure checkout…" : `Start ${seats}-seat ${getTeamStreamLabel(region, tier)} plan — ${formatTeamPriceCAD(annualTotal)}/year`}</Button>
             </div>
           </div>
           <aside className="space-y-5"><div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="text-lg font-bold text-slate-900">Annual plan includes</h3><ul className="mt-4 space-y-3">{FEATURES.map((feature) => <li key={feature} className="flex gap-3 text-sm leading-relaxed text-slate-600"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{feature}</li>)}</ul></div><div className="rounded-2xl border border-cyan-100 bg-cyan-50 p-6"><h3 className="text-base font-bold text-slate-900">Need a specific exam only?</h3><p className="mt-2 text-sm leading-relaxed text-slate-600">Use Teams Flex to buy 3- or 6-month Course Passes for the exact operators and courses in your cohort. Retake Extensions are available once per activated Course Pass.</p><Button variant="outline" onClick={() => setPlanType("flex")} className="mt-4 border-teal-600 text-teal-800 hover:bg-teal-100">Build a Flex order</Button></div><p className="px-1 text-xs leading-relaxed text-slate-500">Historical customer recovery is handled separately and is not changed by any new Team or Flex order.</p></aside>
         </section>}
-        <div className="mt-10 text-center text-sm text-slate-600">Buying for one learner? <Link href="/pricing" className="font-semibold text-teal-700">View 12-month Individual Exam Passes</Link>.</div>
+        <div className="mt-10 text-center text-sm text-slate-600">Training one operator? A single named licence is the smallest team plan, and you keep the same supervisor dashboard and progress reporting.</div>
 
       </main>
       {inquiryOpen && <Dialog open onOpenChange={open => { if (!open) setInquiryOpen(null); }}>
