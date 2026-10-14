@@ -1,5 +1,6 @@
 import { resolveAttemptAttribution, validateIssuedAttribution } from "./teams/attemptAttribution";
 import { persistedPartnershipInquiry } from "./partnershipInquiry";
+import { municipalProcurementRouter } from "./municipalProcurement";
 import { partnershipInquirySchema } from "../shared/partnershipInquiry";
 import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExamDate } from "./examDateRecords";
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
@@ -85,6 +86,7 @@ export const studyPlanCaptureInput = z.object({
 });
 
 export const appRouter = router({
+  municipal: municipalProcurementRouter,
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   changelog: router(changelogRouter),
