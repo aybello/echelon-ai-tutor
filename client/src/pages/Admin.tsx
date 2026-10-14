@@ -11,7 +11,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import ChangelogManager from "@/components/ChangelogManager";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { buildDataExplorerCsv } from "@/lib/dataExplorerCsv";
-import { isActionableLead, matchesLeadTriageFilter, type LeadTriageFilter } from "@shared/adminLeadTriage";
+import { consentedTrialEmails, isActionableLead, matchesLeadTriageFilter, type LeadTriageFilter } from "@shared/adminLeadTriage";
 import { describePurchaseCheck, formatReviewSteps, parseReviewOptions } from "@/lib/adminReview";
 import { formatAdminCurrency, formatAdminPercent, rateFromCounts } from "@/lib/adminDashboard";
 import { formatScoreSavedAt, scoreHistoryCsvRow, scoreLearnerIdentity } from "@/lib/adminScoreHistory";
@@ -1120,10 +1120,10 @@ export default function Admin() {
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <button
                     className="admin-btn"
-                    onClick={() => copyAllEmails([...new Set(trialsQ.data!.filter(r => !r.optOut).map(r => r.email.toLowerCase()))])}
+                    onClick={() => copyAllEmails(consentedTrialEmails(trialsQ.data!))}
                     style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                   >
-                    {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
+                    {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy contactable emails"}
                   </button>
                   <button
                     className="admin-btn"
