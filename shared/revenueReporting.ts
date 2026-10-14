@@ -74,26 +74,38 @@ export const LEGACY_RECOVERY_SESSION_PREFIX = "legacy-recovery-purchase-";
  * Their orders are genuine in Stripe but are not customer demand, so they are
  * excluded from pipeline counts. They are not excluded from revenue, because
  * if money truly moved it belongs in the bank figure.
+ *
+ * The addresses themselves are configuration, not code, so they are supplied
+ * through INTERNAL_BUYER_EMAILS as a comma separated list and never committed
+ * to this public tree.
+ *
+ * OWNER_EMAIL is always treated as internal as well. Without that fallback, an
+ * unset INTERNAL_BUYER_EMAILS would quietly reclassify our own orders as
+ * customer demand and overstate the B2B pipeline.
  */
-export const INTERNAL_BUYER_EMAILS = [
-  "test@example.com",
-  "abello@unwiredwebsolutions.com",
-  "belllo.ayoola@gmail.com",
-] as const;
+export function getInternalBuyerEmails(): string[] {
+  const env = typeof process !== "undefined" ? process.env : undefined;
+  return [env?.INTERNAL_BUYER_EMAILS ?? "", env?.OWNER_EMAIL ?? ""]
+    .join(",")
+    .split(",")
+    .map(entry => entry.trim().toLowerCase())
+    .filter(entry => entry.includes("@"));
+}
 
 /** True when an order was placed by our own team rather than a customer. */
 export function isInternalBuyerEmail(email: string | null | undefined): boolean {
   if (!email) return false;
   const normalised = email.trim().toLowerCase();
   if (isSyntheticCustomerEmail(normalised)) return true;
-  return INTERNAL_BUYER_EMAILS.some(internal => internal === normalised);
+  return getInternalBuyerEmails().some(internal => internal === normalised);
 }
 
 /**
  * Stripe derives charge, payment intent and related object ids for one payment
- * from a shared core. `ch_3UFzTKIZU5R5gvMs1h45mp5u` and
- * `pi_3UFzTKIZU5R5gvMs1ZANIxBA` are the same payment: both carry the core
- * `3UFzTKIZU5R5gvMs`. Returning that core lets two tables recognise one payment.
+ * from a shared core. A charge id and a payment intent id for the same payment
+ * carry the same 16 character core after their prefix. Returning that core lets
+ * two different tables recognise that they hold one payment, not two, which is
+ * what stops a legacy recovery row from double counting real money.
  *
  * Returns null when no core can be read, so unknown ids never collide.
  */
@@ -104,7 +116,7 @@ export function stripePaymentCore(
   const trimmed = stripeId.trim();
   if (!trimmed) return null;
   // Only payment objects share a core. A charge is a child of a payment intent,
-  // so ch_3UFzTKIZU5R5gvMs and pi_3UFzTKIZU5R5gvMs are provably the same money.
+  // so a ch_ id and a pi_ id with one core are provably the same money.
   // A checkout session id does not share its core with the payment it created,
   // so matching cs_ ids would let an unrelated session collide with a real
   // payment and silently erase a genuine team order from reported revenue.
