@@ -42,6 +42,10 @@ describe("Nova Scotia individual-course context", () => {
     expect(availablePricingSelection("product=wpi-class1-water&province=NS", new Set()).selectedProductKey).toBe("");
     expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("2017 ABC exams");
     expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("CEU credit are not claimed");
+    expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("Classes I to IV");
+    expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("Classes I to III");
+    expect(NOVA_SCOTIA_PREPARATION_NOTE).toContain("does not certify Class IV distribution or Class IV collection");
+    expect(NOVA_SCOTIA_PREPARATION_NOTE).not.toContain("confirm Class IV distribution/collection requirements");
   });
 
   it("guards named unsupported course surfaces and checkout without blocking shared site pages", () => {

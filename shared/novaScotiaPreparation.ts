@@ -2,11 +2,15 @@ import { getAllCourses, resolveCourseKey } from "./courseRegistry";
 
 // Nova Scotia's published 2021 adoption notice covers the 2017 ABC exams.
 // https://novascotia.ca/nse/water.operator.certification/docs/Standardized_exam_info.pdf
+// That notice lists the certifications the province issues: Water Treatment and
+// Wastewater Treatment Classes I to IV, Water Distribution and Wastewater
+// Collection Classes I to III. Nova Scotia does not certify Class IV
+// distribution or Class IV collection, so those courses are out of scope here.
 // Shared WPI content is preparation, not evidence of provincial approval or
 // confirmation that Nova Scotia has adopted a later exam blueprint.
 export const NOVA_SCOTIA_EXAM_GUIDANCE_URL = "https://novascotia.ca/nse/water.operator.certification/examinations.asp";
 
-export const NOVA_SCOTIA_PREPARATION_NOTE = "Nova Scotia: shared WPI exam preparation. The province's published 2021 notice adopted the 2017 ABC exams. Confirm your current exam version and requirements with Nova Scotia Environment and Climate Change before buying. Provincial approval, full exam alignment and CEU credit are not claimed. Treatment Classes I–IV and distribution/collection Classes I–III are shown; confirm Class IV distribution/collection requirements with the province.";
+export const NOVA_SCOTIA_PREPARATION_NOTE = "Nova Scotia: shared WPI exam preparation. The province's published 2021 notice adopted the 2017 ABC exams. Confirm your current exam version and requirements with Nova Scotia Environment and Climate Change before buying. Provincial approval, full exam alignment and CEU credit are not claimed. Nova Scotia certifies Water Treatment and Wastewater Treatment Classes I to IV, and Water Distribution and Wastewater Collection Classes I to III. The province does not certify Class IV distribution or Class IV collection, so those courses are not offered here.";
 
 const NOVA_SCOTIA_LEGACY_FORMULA_COURSES: Record<string, string> = {
   "/formulas-wpi-class4-dist": "wpi-class4-water-dist",
