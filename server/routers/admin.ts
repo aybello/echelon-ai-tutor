@@ -1045,6 +1045,7 @@ export const adminRouter = router({
           existing.phone = existing.phone ?? lead.phone;
           existing.name = existing.name ?? lead.name;
           existing.optedOut = existing.optedOut || Boolean(lead.optedOut);
+          existing.converted = existing.converted || Boolean(lead.recoveredAt);
           if (lead.source === "Contact form" && existing.contactRequestId === null) {
             existing.contactRequestId = lead.contactRequestId ?? null;
             existing.contactFollowUpStatus = lead.contactFollowUpStatus ?? null;
@@ -1064,7 +1065,7 @@ export const adminRouter = router({
         }
         byEmail.set(key, {
           ...lead,
-          converted: paying.has(key),
+          converted: paying.has(key) || Boolean(lead.recoveredAt),
           touchpoints: 1,
           sources: [lead.source],
           inquirySubject: lead.source === "Contact form" ? lead.detail : null,
