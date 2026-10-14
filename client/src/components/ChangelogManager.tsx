@@ -174,18 +174,19 @@ export default function ChangelogManager() {
                 <span style={{ fontSize: 10, fontWeight: 800, color: "#64748B", textTransform: "uppercase" }}>{entry.date}</span>
                 {entry.badge && <span style={{ padding: "2px 7px", borderRadius: 20, background: entry.badgeColor, color: "#FFFFFF", fontSize: 9, fontWeight: 800, textTransform: "uppercase" }}>{entry.badge}</span>}
                 <span style={{ padding: "2px 7px", borderRadius: 20, background: entry.visible ? "#DCFCE7" : "#E2E8F0", color: entry.visible ? "#166534" : "#475569", fontSize: 9, fontWeight: 800 }}>{entry.visible ? "VISIBLE" : "HIDDEN"}</span>
+                {entry.origin === "bundled" && <span style={{ fontSize: 10, color: "#1E40AF", background: "#DBEAFE", padding: "3px 8px", borderRadius: 12 }}>SHIPPED WITH CODE · READ-ONLY</span>}
               </div>
               <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>{entry.title}</div>
               <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.6 }}>{entry.body}</div>
             </div>
-            <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
+            {entry.origin === "database" ? <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
               <button type="button" onClick={() => moveToTop(entry.id)} disabled={updateEntry.isPending} style={{ border: "1px solid #CBD5E1", background: "#FFFFFF", borderRadius: 20, padding: "6px 10px", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Move to top</button>
               <button type="button" onClick={() => updateEntry.mutate({ id: entry.id, visible: !entry.visible })} disabled={updateEntry.isPending} style={{ border: "1px solid #CBD5E1", background: "#FFFFFF", borderRadius: 20, padding: "6px 10px", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{entry.visible ? "Hide" : "Publish"}</button>
               <button type="button" onClick={() => edit(entry)} style={{ border: "1px solid #BFDBFE", background: "#EFF6FF", borderRadius: 20, padding: "6px 10px", color: "#1D4ED8", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Edit</button>
               <button type="button" onClick={() => {
                 if (window.confirm(`Delete “${entry.title}”? This cannot be undone.`)) deleteEntry.mutate({ id: entry.id });
               }} disabled={deleteEntry.isPending} style={{ border: "1px solid #FECACA", background: "#FEF2F2", borderRadius: 20, padding: "6px 10px", color: "#B91C1C", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Delete</button>
-            </div>
+            </div> : <div style={{ fontSize: 11, color: "#64748B" }}>To edit this bundled update, change the repository release notes.</div>}
           </div>
         ))}
       </div>
