@@ -65,6 +65,6 @@ describe("captured lead visibility", () => {
       adminPage.indexOf("── TRIAL EMAILS TAB ──")
     );
     expect(panel).toContain("echelon-captured-leads-");
-    expect(panel).toContain("Copy open lead emails");
+    expect(panel).toContain("Copy contactable open leads");
   });
 });
