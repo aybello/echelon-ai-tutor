@@ -1350,15 +1350,85 @@ export default function Admin() {
         {activeTab === "revenue" && (
           <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
             <PurchaseEmailDelivery />
+            <section aria-label="Reconciled revenue breakdown" style={{ padding: "20px", background: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                <div>
+                  <h2 style={{ fontSize: 16, fontWeight: 800, margin: 0, color: "#0F172A" }}>Reconciled recorded revenue</h2>
+                  <p style={{ fontSize: 12, color: "#64748B", marginTop: 5 }}>Includes qualifying individual purchases, active paid subscriptions and team payments — with known recovery backfill duplicates removed.</p>
+                </div>
+                <strong style={{ color: "#0F766E", fontSize: 24 }}>{stats.isLoading ? "…" : stats.data ? formatAdminCurrency(stats.data.totalRevenueCAD) : "Unavailable"}</strong>
+              </div>
+              {stats.error && <p role="alert" className="admin-panel-error">Revenue reconciliation could not be loaded. Refresh the page to retry.</p>}
+              {stats.data && (
+                <div className="admin-operating-grid" style={{ marginTop: 12 }}>
+                  {[
+                    { label: "Individual purchase payments", amount: stats.data.revenueBreakdown.purchasesCAD },
+                    { label: "Active subscription records", amount: stats.data.revenueBreakdown.subscriptionsCAD },
+                    { label: "Team Flex revenue added", amount: stats.data.revenueBreakdown.teamFlexAddedCAD },
+                    { label: "Team payments already counted", amount: stats.data.revenueBreakdown.teamFlexAlreadyCountedCAD },
+                  ].map(entry => (
+                    <div key={entry.label} className="admin-operating-metric" style={{ cursor: "default" }}>
+                      <span>{entry.label}</span><strong style={{ fontSize: 20 }}>{formatAdminCurrency(entry.amount)}</strong>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p style={{ color: "#64748B", fontSize: 11, marginTop: 12 }}>The last figure is a duplicate-detection cross-check and is not added again. Do not sum the individual purchase rows or gross team orders below to reproduce total revenue.</p>
+            </section>
+            <section aria-label="Team Flex order ledger" style={{ padding: "18px 20px", background: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                <div><h2 style={{ margin: 0, fontWeight: 800, fontSize: 15, color: "#0F172A" }}>Team Flex orders</h2>
+                  <p style={{ margin: "5px 0 0", color: "#64748B", fontSize: 11 }}>Latest 50 team orders, paid and pending. Pending orders are not revenue.</p></div>
+                {businessQ.data && businessQ.data.orders.length > 0 && (
+                  <button type="button" className="admin-btn" style={{ border: "1px solid #CBD5E1", borderRadius: 8, padding: "7px 12px", background: "#F8FAFC", cursor: "pointer" }}
+                    onClick={() => downloadCSV(businessQ.data!.orders.map(order => ({
+                      id: order.id,
+                      manager: order.managerEmail,
+                      organization_id: order.organizationId,
+                      licences: order.licences,
+                      status: order.status,
+                      paid_cad: order.status === "paid" ? Number(order.paidCents ?? 0) / 100 : "",
+                      quoted_pre_tax_cad: order.status === "pending" ? Number(order.beforeTaxCents ?? 0) / 100 : "",
+                      created_at: new Date(order.createdAt).toISOString(),
+                    })), "echelon-team-order-ledger.csv")}>Export team orders</button>
+                )}
+              </div>
+              {businessQ.error && <p role="alert" className="admin-panel-error">Team orders could not be loaded. Select Refresh to retry.</p>}
+              {businessQ.isLoading && <p style={{ fontSize: 12, color: "#64748B" }}>Loading team orders…</p>}
+              {businessQ.data && (
+                <>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 16, margin: "12px 0", fontSize: 12, color: "#334155" }}>
+                    <span><strong>{businessQ.data.paidOrders}</strong> paid orders · {formatAdminCurrency(businessQ.data.paidRevenueCAD)} gross team payments</span>
+                    <span><strong>{businessQ.data.abandonedOrders}</strong> pending orders · {formatAdminCurrency(businessQ.data.abandonedValueCAD)} quoted pre-tax</span>
+                  </div>
+                  {businessQ.data.orders.length === 0 ? <p style={{ fontSize: 12, color: "#64748B" }}>No team orders recorded.</p> : (
+                    <div role="region" aria-label="Team order history" tabIndex={0} style={{ overflowX: "auto" }}>
+                      <table className="admin-ledger-table">
+                        <thead><tr><th>Manager</th><th>Seats</th><th>Amount</th><th>Status</th><th>Created</th></tr></thead>
+                        <tbody>{businessQ.data.orders.map(order => (
+                          <tr key={order.id}>
+                            <td style={{ overflowWrap: "anywhere" }}>{order.managerEmail}</td>
+                            <td>{order.licences}</td>
+                            <td>{order.status === "paid" ? formatAdminCurrency(Number(order.paidCents ?? 0) / 100) : formatAdminCurrency(Number(order.beforeTaxCents ?? 0) / 100)} <small>{order.status === "paid" ? "received" : "quoted pre-tax"}</small></td>
+                            <td>{order.status}</td>
+                            <td>{formatDate(order.createdAt)}</td>
+                          </tr>
+                        ))}</tbody>
+                      </table>
+                    </div>
+                  )}
+                </>
+              )}
+            </section>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
-                💰 Purchase History
-                {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} orders</span>}
+                Individual purchase records
+                {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} latest rows (up to 500)</span>}
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 {purchasesQ.data && purchasesQ.data.length > 0 && (
                   <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
-                    Listed order value: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
+                    Listed row amounts only; not a reconciled revenue total
                   </div>
                 )}
                 <button
