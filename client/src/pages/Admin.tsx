@@ -220,6 +220,10 @@ export default function Admin() {
   const ceuKpisQ = trpc.admin.getCeuKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const leadsQ = trpc.admin.getLeadCapture.useQuery({ limit: 300 }, { enabled: user?.role === "admin" && (activeTab === "leads" || activeTab === "insights") });
+  const followUpMutation = trpc.admin.updateContactFollowUp.useMutation({
+    onSuccess: () => { void leadsQ.refetch(); },
+  });
+
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
@@ -986,7 +990,7 @@ export default function Admin() {
                           detail: p.detail ?? "",
                           note: p.note ?? "",
                           touchpoints: p.touchpoints,
-                          status: p.converted ? "bought" : "open",
+                          status: p.converted ? "bought" : p.followUpStatus ?? "open",
                           captured: new Date(p.createdAt).toISOString(),
                         })),
                         `echelon-captured-leads-${new Date().toISOString().slice(0, 10)}.csv`
@@ -1030,10 +1034,23 @@ export default function Admin() {
                             {person.note && <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>{person.note}</div>}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: person.converted ? "#15803D" : "#B45309", whiteSpace: "nowrap" }}>
-                            {person.converted ? "Bought" : "Open"}
+                            {person.converted ? "Bought" : person.followUpStatus === "contacted" ? "Contacted" : person.followUpStatus === "closed" ? "Closed" : "Open"}
                           </td>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B", whiteSpace: "nowrap" }}>{formatDate(person.createdAt)}</td>
                           <td style={{ padding: "10px 16px" }}>
+                            {person.contactId && !person.converted && (
+                              <select
+                                aria-label={"Follow-up status for " + person.email}
+                                value={person.followUpStatus ?? "new"}
+                                disabled={followUpMutation.isPending}
+                                onChange={event => followUpMutation.mutate({ contactId: person.contactId!, status: event.target.value as "new" | "contacted" | "closed" })}
+                                style={{ marginRight: 8, border: "1px solid #CBD5E1", borderRadius: 6, fontSize: 11, padding: 5, background: "#FFFFFF" }}
+                              >
+                                <option value="new">New</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="closed">Closed</option>
+                              </select>
+                            )}
                             <button
                               className="admin-btn"
                               onClick={() => copyEmail(person.email)}
