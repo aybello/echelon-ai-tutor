@@ -9,7 +9,8 @@ import { getDb } from "../db";
 import { purchases, subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
-import { isSubscriptionProvince, isSubscriptionTier, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
+import { isSubscriptionProvince, isSubscriptionTier, subscriptionProvinceForOrg, type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
+import { isTeamRegion } from "../../shared/teamPricing";
 import {
   usesTwelveMonthIndividualExamPassPolicy,
 } from "../stripe/individualExamPass";
@@ -165,7 +166,16 @@ export async function runSubscriptionReconciliation(): Promise<SubscriptionRecon
         const tierMetadata = sub.metadata?.subscription_tier;
         const provinceMetadata = sub.metadata?.subscription_province;
         const tier = isSubscriptionTier(tierMetadata) ? tierMetadata : undefined;
-        const province = isSubscriptionProvince(provinceMetadata) ? provinceMetadata : undefined;
+        // Team checkout writes the buying region straight into this metadata and
+        // accepts nova-scotia, while the subscriptions enum stores only
+        // ontario and western. Validating with isSubscriptionProvince alone
+        // would silently skip every Nova Scotia team subscription, so a paid
+        // organization could never be recovered by this safety net.
+        const province = isTeamRegion(provinceMetadata)
+          ? subscriptionProvinceForOrg(provinceMetadata)
+          : isSubscriptionProvince(provinceMetadata)
+            ? provinceMetadata
+            : undefined;
         if (!tier || !province) {
           skipped.push(`${sub.id}: missing tier/province metadata`);
           continue;

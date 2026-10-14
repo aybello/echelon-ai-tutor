@@ -12,6 +12,7 @@ import { ENV } from "./env";
 import { resolveTeamAccess } from "../teams/resolveTeamAccess";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
+import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -267,6 +268,13 @@ export async function resolveEntitlementsByEmail(
   // 3. Org seat entitlements — operator is a member of an active org
   // -------------------------------------------------------------------------
   let orgSeatExamTypes: string[] = [];
+  // A Nova Scotia organization keeps region "nova-scotia", but its seat rows are
+  // written into the subscriptions table as "western" because the subscriptions
+  // enum has no nova-scotia value. The western Class IV tier unlocks four exam
+  // banks, two of which are Class IV water distribution and wastewater
+  // collection. Nova Scotia certifies distribution and collection to Class III
+  // only, so those two banks must never be served to a Nova Scotia operator.
+  let belongsToNovaScotiaOrg = false;
   try {
     const seatRows = await db
       .select({
@@ -288,6 +296,7 @@ export async function resolveEntitlementsByEmail(
       );
     for (const seat of seatRows) {
       if (!ORG_ACCESS_STATUSES.has(seat.orgStatus ?? "active")) continue;
+      if (seat.orgProvince === "nova-scotia") belongsToNovaScotiaOrg = true;
       // Multi-course seat: courseKeys JSON array takes precedence
       if (seat.courseKeys) {
         try {
@@ -372,10 +381,18 @@ export async function resolveEntitlementsByEmail(
     new Set([...purchaseExamTypes, ...subscriptionExamTypes, ...orgSeatExamTypes, ...flexExamTypes]),
   );
 
+  // Apply the provincial certification ceiling after every source is combined,
+  // so no current or future entitlement source can route around it.
+  const entitledExamTypes = belongsToNovaScotiaOrg
+    ? allExamTypes.filter(
+        examType => !examType.startsWith("wpi-") || isNovaScotiaCourseSupported(examType),
+      )
+    : allExamTypes;
+
   return {
     email: normalised,
-    hasAnyAccess: allExamTypes.length > 0 || isManager || hasFlexIdentity,
-    unlockedExamTypes: allExamTypes,
+    hasAnyAccess: entitledExamTypes.length > 0 || isManager || hasFlexIdentity,
+    unlockedExamTypes: entitledExamTypes,
     purchasedProductKeys: activePurchaseKeys,
     activeSubscriptionRows,
     isManager,

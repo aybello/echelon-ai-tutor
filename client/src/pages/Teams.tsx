@@ -192,7 +192,7 @@ export default function Teams() {
 
               <div className="flex flex-wrap gap-2">
                 <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setConfirmedBeforeTaxCents(null);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
-                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestKey(crypto.randomUUID());setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setConfirmedBeforeTaxCents(null);setRequestKey(crypto.randomUUID());setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
               </div>
               <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
               <div className="space-y-1"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume pricing</p>{TEAM_VOLUME_TIERS.map((band) => <div key={band.label} className={`flex justify-between rounded-lg px-3 py-2 text-sm ${band === volumeTier ? "bg-blue-50 font-semibold text-blue-950" : "text-slate-600"}`}><span>{band.label}{band.discountPct ? ` · ${band.discountPct}% off those licences` : " · list price"}</span><span>{formatTeamPriceCAD(Math.round(basePrice * (1 - band.discountPct / 100)))}/yr</span></div>)}</div>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { safeSupervisorCsvCell, supervisorNextAction, type SupervisorEvidence } from "../shared/supervisorActionPlan";
+import { safeSupervisorCsvCell, supervisorNextAction, type SupervisorEvidence } from "./supervisorActionPlan";
 const base: SupervisorEvidence = {
   memberStatus: "assigned", totalAttempts: 70, readinessScore: 65, weakestTopic: "Disinfection",
   examRisk: "none", daysUntilExam: 40, lastActive: "2026-10-13T12:00:00.000Z",

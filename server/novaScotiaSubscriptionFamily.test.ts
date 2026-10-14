@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { allowedCourseKeysForOrg, subscriptionProvinceForOrg } from "../server/stripe/subscriptionProducts";
+import { allowedCourseKeysForOrg, subscriptionProvinceForOrg } from "./stripe/subscriptionProducts";
 import { courseKeyToTierStrict, isValidCourseKey, getTeamCourseOptions } from "../shared/products";
 
 describe("Nova Scotia subscription seat storage", () => {

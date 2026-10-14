@@ -12,6 +12,8 @@
  * sessions are validated in a private server-side compatibility allowlist.
  */
 
+import { isNovaScotiaCourseSupported } from "./novaScotiaPreparation";
+
 export interface EchelonProduct {
   key: string;
   name: string;
@@ -547,8 +549,10 @@ export const TEAM_COURSES_WESTERN: TeamCourseOption[] = [
 export function getTeamCourseOptions(province: string): TeamCourseOption[] {
   if (province === "western") return TEAM_COURSES_WESTERN;
   if (province === "nova-scotia") {
-    // Nova Scotia uses WPI exams but does not certify Class IV distribution/collection.
-    return TEAM_COURSES_WESTERN.filter(course => course.key !== "wpi-class4-water-dist" && course.key !== "wpi-class4-water-coll");
+    // Nova Scotia uses WPI exams but does not certify every WPI level. Defer to
+    // the canonical rule instead of naming course keys here, so the team
+    // selector can never drift away from what checkout actually allows.
+    return TEAM_COURSES_WESTERN.filter(course => isNovaScotiaCourseSupported(course.key));
   }
   return TEAM_COURSES_ONTARIO;
 }

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { createHash } from "node:crypto";
 import { router, publicProcedure } from "./_core/trpc";
 import { persistedPartnershipInquiry } from "./partnershipInquiry";
 import {
@@ -38,6 +39,27 @@ export const municipalProcurementRouter = router({
     const isQuote = input.kind === "quote";
     const tier: TeamStreamTier | null = isQuote ? input.tier : null;
     const totalCents = isQuote ? getTeamTotalPriceCents(input.region, input.tier, input.seats) : null;
+    // Idempotency must cover the whole priced payload, not just the client
+    // supplied key. Replaying one key with different seats or a different tier
+    // would otherwise return the ORIGINAL receipt number while echoing the NEW
+    // price, letting someone print an official looking estimate whose reference
+    // number does not match what Echelon actually holds on file. Keying on the
+    // payload means a changed request becomes a new receipt, and a genuine
+    // retry of the same request still returns the same one.
+    const idempotencyKey = createHash("sha256")
+      .update(
+        JSON.stringify([
+          input.requestKey,
+          input.kind,
+          input.email.trim().toLowerCase(),
+          input.organization.trim().toLowerCase(),
+          input.region,
+          tier,
+          isQuote ? input.seats : null,
+          totalCents,
+        ])
+      )
+      .digest("hex");
     const requestText = isQuote
       ? [
           "Request: municipal Teams price quotation and purchasing details",
@@ -58,7 +80,7 @@ export const municipalProcurementRouter = router({
       "Status: pending staff review; not an invoice, a binding quote, or pilot activation",
     ].join("\n");
     const result = await persistedPartnershipInquiry({
-      requestKey: input.requestKey,
+      requestKey: idempotencyKey,
       name: input.name,
       email: input.email,
       organization: input.organization,

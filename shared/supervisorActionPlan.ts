@@ -39,6 +39,9 @@ export function supervisorNextAction(record: SupervisorEvidence, now = new Date(
 /** Protect against spreadsheet formula injection as well as commas and newlines. */
 export function safeSupervisorCsvCell(value: string | number | null | undefined): string {
   if (value === null || value === undefined) return "";
+  // A real number is never a formula. Prefixing it would turn -5 into the text
+  // '-5, which a supervisor then cannot sort or total in a spreadsheet.
+  if (typeof value === "number" && Number.isFinite(value)) return '"' + String(value) + '"';
   let cell = String(value);
   if (/^[\s\t\r\n]*[=+@-]/.test(cell)) cell = "'" + cell;
   return '"' + cell.replace(/"/g, '""') + '"';
