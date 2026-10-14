@@ -99,8 +99,8 @@ function formatCAD(cents: number): string {
   return new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD" }).format(cents / 100);
 }
 
-export function FlexOrderBuilder() {
-  const [province, setProvince] = useState<TeamRegion>("ontario");
+export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?: TeamRegion } = {}) {
+  const [province, setProvince] = useState<TeamRegion>(initialRegion);
   const [organizationName, setOrganizationName] = useState("");
   const [billingEmail, setBillingEmail] = useState("");
   const [managerEmail, setManagerEmail] = useState("");

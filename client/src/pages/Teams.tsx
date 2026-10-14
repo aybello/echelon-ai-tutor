@@ -143,7 +143,7 @@ export default function Teams() {
           </div>
         </section>
 
-        {planType === "flex" ? <section className="mx-auto max-w-2xl"><FlexOrderBuilder /></section> : <section className="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        {planType === "flex" ? <section className="mx-auto max-w-2xl"><FlexOrderBuilder initialRegion={region} /></section> : <section className="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/50">
             <h2 className="text-xl font-bold text-slate-900">Configure an annual plan</h2>
             <p className="mt-1 text-sm text-slate-600">One annual licence is assigned to one named operator. Licences have a five-seat minimum and renew yearly until cancelled.</p>
