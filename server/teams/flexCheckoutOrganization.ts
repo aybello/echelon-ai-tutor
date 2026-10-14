@@ -3,7 +3,13 @@ const PROVISIONAL_TERM_MONTHS = 12;
 export interface ProvisionalCoursePassOrganizationInput {
   organizationName: string;
   managerEmail: string;
-  province: "ontario" | "western";
+  /**
+   * Stored verbatim so later entitlement checks keep the region's real scope.
+   * Nova Scotia shares WPI exam content but certifies a narrower set of
+   * distribution and collection classes, so it must not be folded into
+   * "western" here.
+   */
+  province: "ontario" | "western" | "nova-scotia";
   now?: Date;
 }
 

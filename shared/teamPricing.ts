@@ -20,7 +20,28 @@ import {
   getMarginalUnitPrice,
 } from "./pricingCatalogue";
 
-export type TeamRegion = "ontario" | "western";
+export type TeamRegion = "ontario" | "western" | "nova-scotia";
+
+export const TEAM_REGION_VALUES = ["ontario", "western", "nova-scotia"] as const;
+
+export const TEAM_REGION_LABELS: Record<TeamRegion, string> = {
+  ontario: "Ontario (MOECP / OWWCO)",
+  western: "Western Canada (WPI)",
+  "nova-scotia": "Nova Scotia (NSECC)",
+};
+
+export function isTeamRegion(value: unknown): value is TeamRegion {
+  return typeof value === "string" && (TEAM_REGION_VALUES as readonly string[]).includes(value);
+}
+
+/**
+ * Nova Scotia prepares operators with the shared WPI exam family, so its team
+ * orders resolve against western course keys while keeping its own region
+ * identity for pricing display, analytics and certified-class scope.
+ */
+export function teamRegionExamFamily(region: TeamRegion): "ontario" | "western" {
+  return region === "ontario" ? "ontario" : "western";
+}
 
 export type TeamStreamTier =
   | "stream-water"
@@ -53,9 +74,17 @@ export function getTeamStreamLabel(region: string, tier: TeamStreamTier): string
 }
 
 export function getTeamStreamDescription(region: string, tier: TeamStreamTier): string {
-  return region === "ontario" && tier === "stream-water-dist"
-    ? "Water distribution and supply, entry level through Class 4"
-    : TEAM_STREAM_TIER_DESCRIPTIONS[tier];
+  if (region === "ontario" && tier === "stream-water-dist") {
+    return "Water distribution and supply, entry level through Class 4";
+  }
+  // Nova Scotia certifies distribution and collection to Class III only, so the
+  // team selector states the real ceiling instead of the national default.
+  if (region === "nova-scotia") {
+    if (tier === "stream-water-dist") return "Water distribution, Class I through Class III";
+    if (tier === "stream-wastewater-coll") return "Wastewater collection, Class I through Class III";
+    if (tier === "all-access") return "All four streams, every Nova Scotia certified level";
+  }
+  return TEAM_STREAM_TIER_DESCRIPTIONS[tier];
 }
 
 const NATIONAL_TEAM_BASE_PRICE: Record<TeamStreamTier, number> = {
@@ -69,6 +98,7 @@ const NATIONAL_TEAM_BASE_PRICE: Record<TeamStreamTier, number> = {
 export const TEAM_BASE_PRICE: Record<TeamRegion, Record<TeamStreamTier, number>> = {
   ontario: { ...NATIONAL_TEAM_BASE_PRICE },
   western: { ...NATIONAL_TEAM_BASE_PRICE },
+  "nova-scotia": { ...NATIONAL_TEAM_BASE_PRICE },
 };
 
 export const TEAM_VOLUME_TIERS = VOLUME_BANDS.map((band) => ({

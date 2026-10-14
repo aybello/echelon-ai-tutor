@@ -7,6 +7,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { calculateBlendedDiscount } from "@shared/pricingCatalogue";
+import {
+  type TeamRegion,
+  TEAM_REGION_LABELS,
+  TEAM_REGION_VALUES,
+  isTeamRegion,
+  teamRegionExamFamily,
+} from "@shared/teamPricing";
+import { isNovaScotiaCourseSupported } from "@shared/novaScotiaPreparation";
 
 interface FlexItem {
   courseKey: string;
@@ -81,8 +89,9 @@ const PRICES: Record<string, Record<CourseOption["band"], { three: number; six: 
   },
 };
 
-function getItemPrice(province: "ontario" | "western", band: CourseOption["band"], termMonths: 3 | 6): number {
-  const price = PRICES[province][band];
+function getItemPrice(province: TeamRegion, band: CourseOption["band"], termMonths: 3 | 6): number {
+  // Nova Scotia prepares with the shared WPI exam family, so it reads western prices.
+  const price = PRICES[teamRegionExamFamily(province)][band];
   return termMonths === 3 ? price.three : price.six;
 }
 
@@ -91,7 +100,7 @@ function formatCAD(cents: number): string {
 }
 
 export function FlexOrderBuilder() {
-  const [province, setProvince] = useState<"ontario" | "western">("ontario");
+  const [province, setProvince] = useState<TeamRegion>("ontario");
   const [organizationName, setOrganizationName] = useState("");
   const [billingEmail, setBillingEmail] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
@@ -108,6 +117,9 @@ export function FlexOrderBuilder() {
     [availability.data?.products],
   );
   const courses = (province === "ontario" ? ONTARIO_COURSES : WESTERN_COURSES)
+    // Nova Scotia does not certify Class IV distribution or Class IV collection,
+    // so those courses never reach a Nova Scotia order.
+    .filter((course) => province !== "nova-scotia" || isNovaScotiaCourseSupported(course.key))
     .filter((course) => availability.isLoading || availableKeys.has(course.key));
   const totalLicences = items.reduce((sum, item) => sum + item.quantity, 0);
   const discount = calculateBlendedDiscount(totalLicences);
@@ -168,13 +180,13 @@ export function FlexOrderBuilder() {
 
         <div className="space-y-1.5">
           <Label className="font-medium text-gray-700">Province or region</Label>
-          <Select value={province} onValueChange={(value) => { setProvince(value as "ontario" | "western"); setItems([{ courseKey: "", termMonths: 3, quantity: 1 }]); }}>
+          <Select value={province} onValueChange={(value) => { if (!isTeamRegion(value)) return; setProvince(value); setItems([{ courseKey: "", termMonths: 3, quantity: 1 }]); }}>
             <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
             <SelectContent>
-              <SelectItem value="ontario">Ontario (MOECP / OWWCO)</SelectItem>
-              <SelectItem value="western">Western Canada (WPI)</SelectItem>
+              {TEAM_REGION_VALUES.map((teamRegion) => <SelectItem key={teamRegion} value={teamRegion}>{TEAM_REGION_LABELS[teamRegion]}</SelectItem>)}
             </SelectContent>
           </Select>
+          {province === "nova-scotia" && <p className="text-xs leading-relaxed text-gray-500">Nova Scotia operators prepare with the shared WPI exam content. Distribution and collection are certified to Class III.</p>}
         </div>
 
         <div className="space-y-1.5">

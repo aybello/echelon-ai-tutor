@@ -28,7 +28,7 @@ const ANALYTICS_SOURCES = new Set([
   "social",
 ]);
 const ANALYTICS_DEVICES = new Set(["desktop", "mobile", "tablet"]);
-const ANALYTICS_PROVINCES = new Set(["ontario", "western", "unknown"]);
+const ANALYTICS_PROVINCES = new Set(["ontario", "western", "nova-scotia", "unknown"]);
 
 function allowedValue(value: string, allowed: Set<string>, fallback: string): string {
   return allowed.has(value) ? value : fallback;

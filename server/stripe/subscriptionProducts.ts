@@ -75,6 +75,26 @@ export const STREAM_COURSE_KEYS: Record<string, Record<TeamStreamTier, string[]>
       "wpi-class4-water","wpi-class4-wastewater","wpi-class4-water-dist","wpi-class4-water-coll",
     ],
   },
+  /**
+   * Nova Scotia prepares operators with the shared WPI exam family, so its
+   * course keys are western keys. The province certifies Water Treatment and
+   * Wastewater Treatment Classes I to IV, but Water Distribution and Wastewater
+   * Collection only to Class III. Class IV distribution and Class IV collection
+   * are therefore excluded from every Nova Scotia team entitlement.
+   * https://novascotia.ca/nse/water.operator.certification/docs/Standardized_exam_info.pdf
+   */
+  "nova-scotia": {
+    "stream-water":           ["wpi-class1-water","wpi-class2-water","wpi-class3-water","wpi-class4-water"],
+    "stream-wastewater":      ["wpi-class1-wastewater","wpi-class2-wastewater","wpi-class3-wastewater","wpi-class4-wastewater"],
+    "stream-water-dist":      ["wpi-class1-water-dist","wpi-class2-water-dist","wpi-class3-water-dist"],
+    "stream-wastewater-coll": ["wpi-class1-water-coll","wpi-class2-water-coll","wpi-class3-water-coll"],
+    "all-access":             [
+      "wpi-class1-water","wpi-class1-wastewater","wpi-class1-water-dist","wpi-class1-water-coll",
+      "wpi-class2-water","wpi-class2-wastewater","wpi-class2-water-dist","wpi-class2-water-coll",
+      "wpi-class3-water","wpi-class3-wastewater","wpi-class3-water-dist","wpi-class3-water-coll",
+      "wpi-class4-water","wpi-class4-wastewater",
+    ],
+  },
 };
 
 /**
@@ -135,8 +155,14 @@ export function validateOrgCourseKeys(
     const normalized = ck.trim().toLowerCase();
     // Rule 2: must be a valid key for this province
     if (!allRegionalKeys.includes(normalized)) {
+      const regionName =
+        province === "western"
+          ? "Western Canada (WPI)"
+          : province === "nova-scotia"
+            ? "Nova Scotia"
+            : "Ontario";
       throw new Error(
-        `'${ck}' is not a valid course for ${province === "western" ? "Western Canada (WPI)" : "Ontario"}. ` +
+        `'${ck}' is not a valid course for ${regionName}. ` +
         `Check the course key and try again.`,
       );
     }

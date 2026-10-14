@@ -3,6 +3,10 @@ import { Link, useLocation } from "wouter";
 import { Building2, CheckCircle2, ShieldCheck, Users } from "lucide-react";
 import {
   type TeamStreamTier,
+  type TeamRegion,
+  TEAM_REGION_LABELS,
+  TEAM_REGION_VALUES,
+  isTeamRegion,
   getTeamStreamDescription,
   getTeamStreamLabel,
   TEAM_VOLUME_TIERS,
@@ -17,6 +21,7 @@ import {
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { getMarketingAttribution } from "@/lib/marketingAnalytics";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -40,10 +45,24 @@ const FEATURES = [
   "Graduated volume pricing calculated before checkout",
 ];
 
+/**
+ * A manager who already chose a province should not have to find it again on
+ * the team page. Nova Scotia and the western provinces share the WPI exam
+ * family but stay distinct regions, because Nova Scotia certifies a narrower
+ * set of distribution and collection classes.
+ */
+function readSavedTeamRegion(): TeamRegion {
+  if (typeof window === "undefined") return "ontario";
+  const jurisdiction = readCheckoutJurisdiction(window.location.search);
+  if (jurisdiction === "NS") return "nova-scotia";
+  if (jurisdiction && jurisdiction !== "ON") return "western";
+  return "ontario";
+}
+
 export default function Teams() {
   const [location] = useLocation();
   const [planType, setPlanType] = useState<"annual" | "flex">("annual");
-  const [region, setRegion] = useState<"ontario" | "western">("ontario");
+  const [region, setRegion] = useState<TeamRegion>(() => readSavedTeamRegion());
   const [tier, setTier] = useState<TeamStreamTier>("all-access");
   const [seats, setSeats] = useState(5);
   const [seatInput, setSeatInput] = useState("5");
@@ -84,7 +103,7 @@ export default function Teams() {
       managerEmail: managerEmail.trim().toLowerCase(),
       analyticsContext: {
         ...getMarketingAttribution("/teams"),
-        province: region === "ontario" ? "ontario" : "western",
+        province: region,
         visitorId: getAnonymousAnalyticsId(),
       },
     });
@@ -129,7 +148,7 @@ export default function Teams() {
             <h2 className="text-xl font-bold text-slate-900">Configure an annual plan</h2>
             <p className="mt-1 text-sm text-slate-600">One annual licence is assigned to one named operator. Licences have a five-seat minimum and renew yearly until cancelled.</p>
             <div className="mt-6 space-y-5">
-              <div><Label>Province or region</Label><Select value={region} onValueChange={(value) => setRegion(value as "ontario" | "western")}><SelectTrigger className="mt-2"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="ontario">Ontario (MOECP / OWWCO)</SelectItem><SelectItem value="western">Western Canada (WPI)</SelectItem></SelectContent></Select></div>
+              <div><Label>Province or region</Label><Select value={region} onValueChange={(value) => { if (isTeamRegion(value)) setRegion(value); }}><SelectTrigger className="mt-2"><SelectValue /></SelectTrigger><SelectContent>{TEAM_REGION_VALUES.map((teamRegion) => <SelectItem key={teamRegion} value={teamRegion}>{TEAM_REGION_LABELS[teamRegion]}</SelectItem>)}</SelectContent></Select>{region === "nova-scotia" && <p className="mt-2 text-xs leading-relaxed text-slate-500">Nova Scotia operators prepare with the shared WPI exam content. The province certifies Water Treatment and Wastewater Treatment Classes I to IV, and Water Distribution and Wastewater Collection Classes I to III.</p>}</div>
               <div><Label>Annual access scope</Label><div className="mt-2 grid gap-2 sm:grid-cols-2">{ANNUAL_TIERS.map((annualTier) => <button key={annualTier} type="button" onClick={() => setTier(annualTier)} className={`rounded-xl border p-3 text-left transition ${tier === annualTier ? "border-blue-700 bg-blue-50 ring-1 ring-blue-700" : "border-slate-200 hover:border-slate-300"}`}><div className="flex items-center justify-between gap-2"><span className="text-sm font-bold text-slate-900">{getTeamStreamLabel(region, annualTier)}</span><span className="text-sm font-bold text-teal-700">{formatTeamPriceCAD(getTeamBasePriceCents(region, annualTier))}</span></div><p className="mt-1 text-xs leading-relaxed text-slate-500">{getTeamStreamDescription(region, annualTier)}</p></button>)}</div></div>
               <div><Label>Annual operator licences</Label><p className="mt-1 text-xs text-slate-500">Graduated discounts apply only to licences in each volume band.</p><div className="mt-2 flex items-center gap-3"><Input type="number" min={5} max={500} value={seatInput} onChange={(event) => setSeatInput(event.target.value)} onBlur={commitSeats} onKeyDown={(event) => { if (event.key === "Enter") commitSeats(); }} className="w-28" /><span className="text-sm text-slate-500">named operators</span></div><div className="mt-3 flex flex-wrap gap-2">{[5, 10, 25, 50, 100].map((count) => <button key={count} type="button" onClick={() => { setSeats(count); setSeatInput(String(count)); }} className={`rounded-full border px-3 py-1 text-xs font-semibold ${seats === count ? "border-blue-900 bg-blue-900 text-white" : "border-slate-200 text-slate-600 hover:border-blue-300"}`}>{count}</button>)}</div></div>
               <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-5"><div className="flex justify-between gap-5"><span className="text-sm text-slate-600">Average per operator / year</span><span className="text-xl font-bold text-teal-700">{formatTeamPriceCAD(averageSeatPrice)}</span></div><div className="mt-3 flex justify-between gap-5 border-t border-blue-100 pt-3"><span className="text-sm font-medium text-slate-700">Total before tax ({seats} licences)</span><span className="text-xl font-bold text-slate-900">{formatTeamPriceCAD(annualTotal)}</span></div>{savings > 0 && <p className="mt-3 text-xs font-semibold text-teal-700">Blended discount: {effectiveDiscount}% · you save {formatTeamPriceCAD(savings)} against list price.</p>}</div>

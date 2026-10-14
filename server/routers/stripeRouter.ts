@@ -559,14 +559,14 @@ export const stripeRouter = router({
   createTeamCheckout: publicProcedure
     .input(z.object({
       orgName: z.string().min(2).max(200),
-      province: z.enum(["ontario", "western"]),
+      province: z.enum(["ontario", "western", "nova-scotia"]),
       tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
       seats: z.number().int().min(5).max(500),
       managerEmail: z.string().email(),
       analyticsContext: z.object({
         source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
         device: z.enum(["desktop", "mobile", "tablet"]),
-        province: z.enum(["ontario", "western", "unknown"]),
+        province: z.enum(["ontario", "western", "nova-scotia", "unknown"]),
         visitorId: z.string().min(16).max(128),
       }).optional(),
     }))

@@ -27,6 +27,8 @@ import {
   type TeamFlexTermMonths,
 } from "../teams/teamFlexPricing";
 import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
+import { teamRegionExamFamily } from "../../shared/teamPricing";
+import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
 import {
   inviteOperatorToLicence,
   resendFlexInvitation,
@@ -102,9 +104,10 @@ export const teamFlexRouter = router({
   checkoutIdentity: publicProcedure.query(({ ctx }) => ({ managerEmail: managerEmailForContext(ctx) || null })),
   // ─── Pricing info (public, no auth needed) ─────────────────────────────────
   getFlexPricing: publicProcedure
-    .input(z.object({ province: z.enum(["ontario", "western"]) }))
+    .input(z.object({ province: z.enum(["ontario", "western", "nova-scotia"]) }))
     .query(({ input }) => {
-      const prices = TEAM_PRICES_CAD[input.province];
+      // Nova Scotia uses the shared WPI exam family, so it reads western prices.
+      const prices = TEAM_PRICES_CAD[teamRegionExamFamily(input.province)];
       return {
         prices,
         volumeTiers: [
@@ -234,7 +237,7 @@ export const teamFlexRouter = router({
       orgId: z.number().int().positive().optional(),
       managerEmail: z.string().email().optional(),
       billingEmail: z.string().email().optional(),
-      province: z.enum(["ontario", "western"]),
+      province: z.enum(["ontario", "western", "nova-scotia"]),
       items: z.array(z.object({
         courseKey: z.string().min(1),
         termMonths: z.union([z.literal(3), z.literal(6)]),
@@ -321,6 +324,14 @@ export const teamFlexRouter = router({
         }
         if (input.province === "western" && examFamily !== "western") {
           throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Western Canada.` });
+        }
+        // Nova Scotia prepares operators with the shared WPI family, but the
+        // province certifies distribution and collection to Class III only, so
+        // uncertified courses are refused before any money is taken.
+        if (input.province === "nova-scotia") {
+          if (examFamily !== "western" || !isNovaScotiaCourseSupported(item.courseKey)) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Nova Scotia.` });
+          }
         }
 
         const listUnitPriceCents = getFlexListPrice(examFamily, pricingBand, item.termMonths);
