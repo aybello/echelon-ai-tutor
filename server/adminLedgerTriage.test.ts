@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { isActionableLead, matchesLeadTriageFilter } from "../shared/adminLeadTriage";
+import { consentedTrialEmails, isActionableLead, matchesLeadTriageFilter } from "../shared/adminLeadTriage";
 
 describe("administrator lead triage and consent", () => {
   const newLead = { converted: false, optedOut: false, contactFollowUpStatus: "new" };
@@ -17,6 +17,14 @@ describe("administrator lead triage and consent", () => {
     const closed = { ...newLead, contactFollowUpStatus: "closed" };
     expect(isActionableLead(closed)).toBe(false);
     expect(matchesLeadTriageFilter(closed, "all")).toBe(true);
+  });
+  it("a trial opt-out blocks even duplicate capture rows with consent still set", () => {
+    expect(consentedTrialEmails([
+      { email: "LEARNER@example.com", optOut: false },
+      { email: "learner@example.com", optOut: true },
+      { email: "operator@example.com", optOut: false },
+      { email: "operator@example.com", optOut: false },
+    ])).toEqual(["operator@example.com"]);
   });
   it("still allows contacted but unconverted leads to be reviewed", () => {
     expect(isActionableLead({ ...newLead, contactFollowUpStatus: "contacted" })).toBe(true);
@@ -46,6 +54,7 @@ describe("admin ledger and captured lead completeness", () => {
     expect(leadSection).toContain("inquiryOrganization");
     expect(leadSection).toContain("contactRequestId");
     expect(leadSection).toContain("existing.optedOut = existing.optedOut");
+    expect(leadSection).toContain("existing.converted = existing.converted || Boolean(lead.recoveredAt)");
     expect(leadSection).toContain("followUpStage");
     expect(page).toContain("isActionableLead");
     expect(page).toContain("Read contact message");
