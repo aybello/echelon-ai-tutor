@@ -41,6 +41,7 @@ import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
+import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
 import { listManagedOrganizations, managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -1583,7 +1584,7 @@ export const orgIntelRouter = router({
       const acc = Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0;
       topicsByMemberId.get(Number(r.memberId))!.push({ topic: r.topic, accuracy: acc, total: Number(r.total) });
     }
-    const escapeCSV = (v: string | null | undefined) => { if (v == null) return ""; const s = String(v); return s.includes(",") || s.includes("\"") || s.includes("\n") ? `"${s.replace(/"/g, '""')}"` : s; };
+    const escapeCSV = (value: string | null | undefined) => safeSupervisorCsvCell(value);
     const rows = members.map(m => {
       const stats = accuracyByMemberId.get(m.id);
       const total = stats?.total ?? 0;
