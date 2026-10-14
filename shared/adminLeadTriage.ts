@@ -15,3 +15,9 @@ export function matchesLeadTriageFilter(lead: LeadTriageState, filter: LeadTriag
   if (filter === "bought") return lead.converted;
   return lead.optedOut;
 }
+
+/** An unsubscribe from any capture suppresses that address in bulk exports. */
+export function consentedTrialEmails(rows: ReadonlyArray<{ email: string; optOut: boolean }>): string[] {
+  const blocked = new Set(rows.filter(row => row.optOut).map(row => row.email.trim().toLowerCase()));
+  return [...new Set(rows.map(row => row.email.trim().toLowerCase()).filter(email => email && !blocked.has(email)))];
+}
