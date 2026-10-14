@@ -12,6 +12,7 @@ import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence, contactSubmissions, examDates, abandonedCheckouts } from "../../drizzle/schema";
 
 import { normalizeEmail } from "../_core/access";
+import { isActionableLead } from "../../shared/adminLeadTriage";
 import {
   SYNTHETIC_EMAIL_DOMAIN,
   isInternalBuyerEmail,
@@ -1088,7 +1089,7 @@ export const adminRouter = router({
         uniquePeople: people.length,
         openLeads: open.length,
         convertedLeads: people.length - open.length,
-        actionableOpenLeads: open.filter(person => !person.optedOut && person.contactFollowUpStatus !== "closed").length,
+        actionableOpenLeads: people.filter(isActionableLead).length,
         optedOutPeople: people.filter(person => person.optedOut).length,
         newLast7Days: people.filter(
           person => now - person.createdAt.getTime() <= 7 * DAY_MS
