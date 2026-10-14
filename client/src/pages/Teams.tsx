@@ -72,7 +72,9 @@ export default function Teams() {
   const [contactName, setContactName] = useState("");
   const [inquiryNotes, setInquiryNotes] = useState("");
   const [inquirySaved, setInquirySaved] = useState(false);
-  const sendInquiry = trpc.contact.send.useMutation({
+  const [requestKey, setRequestKey] = useState(() => crypto.randomUUID());
+  const [honeypot, setHoneypot] = useState("");
+  const sendInquiry = trpc.contact.partnership.useMutation({
     onSuccess: () => { setInquirySaved(true); toast.success("Request received."); },
     onError: error => toast.error(error.message),
   });
@@ -80,7 +82,15 @@ export default function Teams() {
     if (!inquiryOpen || !organizationName.trim() || !contactName.trim() || !managerEmail.includes("@")) return toast.error("Enter an organization, contact name and email.");
     const subject = inquiryOpen === "quote" ? "Municipal Teams quotation request" : "Municipal three-operator pilot request";
     const description = inquiryOpen === "quote" ? ("Annual " + getTeamStreamLabel(region,tier) + " / " + seats + " seats / " + formatTeamPriceCAD(annualTotal) + " CAD before tax") : "Request a 14-day three-operator pilot. No automatic activation.";
-    sendInquiry.mutate({name: contactName.trim(), email: managerEmail.trim(), subject, message: ("Organization: " + organizationName.trim() + "\nRegion: " + TEAM_REGION_LABELS[region] + "\n" + description + "\nNotes: " + inquiryNotes.trim()).slice(0,2000)});
+    sendInquiry.mutate({
+      requestKey,
+      name: contactName.trim(),
+      email: managerEmail.trim(),
+      organization: organizationName.trim().slice(0,128),
+      partnershipType: "Municipal Utility",
+      message: ("Request type: " + subject + "\nRegion: " + TEAM_REGION_LABELS[region] + "\n" + description + "\nNotes: " + inquiryNotes.trim()).slice(0,2000),
+      website: honeypot,
+    });
   };
 
 
@@ -169,8 +179,8 @@ export default function Teams() {
               <div className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-5"><div className="flex justify-between gap-5"><span className="text-sm text-slate-600">Average per operator / year</span><span className="text-xl font-bold text-teal-700">{formatTeamPriceCAD(averageSeatPrice)}</span></div><div className="mt-3 flex justify-between gap-5 border-t border-blue-100 pt-3"><span className="text-sm font-medium text-slate-700">Total before tax ({seats} licences)</span><span className="text-xl font-bold text-slate-900">{formatTeamPriceCAD(annualTotal)}</span></div>{savings > 0 && <p className="mt-3 text-xs font-semibold text-teal-700">Blended discount: {effectiveDiscount}% · you save {formatTeamPriceCAD(savings)} against list price.</p>}</div>
 
               <div className="flex flex-wrap gap-2">
-                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
-                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestKey(crypto.randomUUID());setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
               </div>
               <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
               <div className="space-y-1"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume pricing</p>{TEAM_VOLUME_TIERS.map((band) => <div key={band.label} className={`flex justify-between rounded-lg px-3 py-2 text-sm ${band === volumeTier ? "bg-blue-50 font-semibold text-blue-950" : "text-slate-600"}`}><span>{band.label}{band.discountPct ? ` · ${band.discountPct}% off those licences` : " · list price"}</span><span>{formatTeamPriceCAD(Math.round(basePrice * (1 - band.discountPct / 100)))}/yr</span></div>)}</div>
@@ -193,6 +203,7 @@ export default function Teams() {
               <div><Label>Work email</Label><Input required type="email" maxLength={320} value={managerEmail} onChange={e=>setManagerEmail(e.target.value)} /></div>
               {inquiryOpen === "quote" && <p className="rounded-lg bg-slate-50 p-3 text-sm">{seats} annual {getTeamStreamLabel(region,tier)} seats: {formatTeamPriceCAD(annualTotal)} before tax (indicative, not a formal quote).</p>}
               <div><Label>Requirements (optional)</Label><textarea maxLength={500} rows={3} className="w-full rounded-lg border p-2" value={inquiryNotes} onChange={e=>setInquiryNotes(e.target.value)} /></div>
+              <div className="hidden" aria-hidden="true"><label htmlFor="request-website">Website (leave blank)</label><input id="request-website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={e=>setHoneypot(e.target.value)} /></div>
               <Button type="submit" disabled={sendInquiry.isPending}>{sendInquiry.isPending ? "Submitting…" : "Submit request"}</Button>
             </form>}
           <Button className="mt-3" type="button" variant="ghost" onClick={()=>setInquiryOpen(null)}>Close</Button>
