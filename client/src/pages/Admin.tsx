@@ -571,8 +571,21 @@ export default function Admin() {
     { number: "02", title: "Check team-seat health", detail: "Confirm available seats and active organization access without changing member assignments from this overview.", status: "Teams", action: "Open", tab: "orgs" as Tab },
     { number: "03", title: "Review question release queue", detail: "Validate sources and rationales before any question becomes learner-visible.", status: "Content", action: "Review", tab: "questions" as Tab },
   ];
+  const revenueBreakdown = stats.data?.revenueBreakdown;
+  const teamIndividualSplit = revenueBreakdown
+    ? {
+        teamCAD: revenueBreakdown.teamFlexGrossCAD,
+        individualCAD:
+          revenueBreakdown.purchasesCAD +
+          revenueBreakdown.subscriptionsCAD -
+          revenueBreakdown.teamFlexAlreadyCountedCAD,
+      }
+    : null;
   const operatingMetrics = [
-    { label: "Team vs individual", value: stats.data?.revenueBreakdown ? `${Math.round(stats.data.revenueBreakdown.teamFlexGrossCAD / Math.max(stats.data.totalRevenueCAD, 1) * 100)}% team` : "—", note: stats.data?.revenueBreakdown ? `${formatAdminCurrency(stats.data.revenueBreakdown.teamFlexGrossCAD)} team, ${formatAdminCurrency(stats.data.revenueBreakdown.purchasesCAD + stats.data.revenueBreakdown.subscriptionsCAD)} individual` : "Share of money from team orders", tab: "orgs" as Tab },
+    // Part of the team money sits inside purchases because of the legacy
+    // backfill. Removing it from the individual side is what makes team plus
+    // individual equal the headline total instead of overstating by $358.
+    { label: "Team vs individual", value: teamIndividualSplit ? `${Math.round(teamIndividualSplit.teamCAD / Math.max(teamIndividualSplit.teamCAD + teamIndividualSplit.individualCAD, 1) * 100)}% team` : "—", note: teamIndividualSplit ? `${formatAdminCurrency(teamIndividualSplit.teamCAD)} team, ${formatAdminCurrency(teamIndividualSplit.individualCAD)} individual` : "Share of money from team orders", tab: "orgs" as Tab },
     { label: "Buyer organizations", value: businessQ.data?.buyerOrganizations ?? "—", note: businessQ.data ? `${businessQ.data.activeTeamPlans} active plans, ${businessQ.data.activeTeamSeats} seats` : "Distinct employers that have ordered", tab: "orgs" as Tab },
     { label: "Purchase records", value: stats.data?.purchaseCount ?? "—", note: "All stored purchase records", tab: "revenue" as Tab },
     { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", note: "Current stored subscription records", tab: "subscriptions" as Tab },
@@ -986,6 +999,11 @@ export default function Admin() {
                 )}
               </div>
               {leadsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+              {leadsQ.error && (
+                <div style={{ padding: 32, textAlign: "center", color: "#B91C1C", fontSize: 13 }}>
+                  Captured leads could not be loaded. Use Refresh to try again.
+                </div>
+              )}
               {leadsQ.data && leadsQ.data.people.length === 0 && (
                 <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No captured leads yet.</div>
               )}
@@ -1001,7 +1019,7 @@ export default function Admin() {
                     </thead>
                     <tbody>
                       {leadsQ.data.people.map((person, index) => (
-                        <tr key={`${person.email}-${index}`} style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+                        <tr key={person.email.toLowerCase()} style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
                           <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B" }}>{index + 1}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12, fontWeight: 600 }}>{person.email}</td>
                           <td style={{ padding: "10px 16px", fontSize: 12 }}>{person.name ?? "—"}</td>

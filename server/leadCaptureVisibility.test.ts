@@ -30,6 +30,21 @@ describe("captured lead visibility", () => {
     expect(adminRouter).toContain("convertedLeads");
   });
 
+  it("only treats kept money as a conversion, and counts team buyers", () => {
+    const procedure = adminRouter.slice(
+      adminRouter.indexOf("getLeadCapture: adminProcedure"),
+      adminRouter.indexOf("getPurchases: adminProcedure")
+    );
+    // A refunded or zero-amount purchase must not mark a live lead as a
+    // customer, or that lead disappears from follow-up and the money is lost.
+    expect(procedure).toContain("gt(purchases.amountCAD, 0)");
+    expect(procedure).toContain("refundedAt} IS NULL");
+    // Team flex orders are real money. A manager who enquired then bought
+    // seats must not sit in the open queue forever.
+    expect(procedure).toContain("teamFlexOrders.managerEmail");
+    expect(procedure).toContain('eq(teamFlexOrders.status, "paid")');
+  });
+
   it("exposes the lead view as its own dashboard tab", () => {
     expect(adminPage).toContain('id: "leads"');
     expect(adminPage).toContain('activeTab === "leads"');

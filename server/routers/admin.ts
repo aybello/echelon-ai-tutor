@@ -948,12 +948,27 @@ export const adminRouter = router({
 
       // A lead who already paid is a customer, not an open lead. Separating
       // them is what turns this list into a work queue instead of a log.
-      const [payingRows, subscriberRows] = await Promise.all([
-        db.select({ email: purchases.email }).from(purchases),
+      //
+      // "Paid" must mean money actually received and kept. A refunded or
+      // zero-amount purchase row would otherwise mark a live lead as a customer
+      // and hide them from follow-up. Team flex orders are also real money, so
+      // a manager who enquired and then bought seats must not sit in the open
+      // queue forever.
+      const [payingRows, subscriberRows, teamBuyerRows] = await Promise.all([
+        db
+          .select({ email: purchases.email })
+          .from(purchases)
+          .where(and(gt(purchases.amountCAD, 0), sql`${purchases.refundedAt} IS NULL`)),
         db.select({ email: subscriptions.email }).from(subscriptions),
+        db
+          .select({ email: teamFlexOrders.managerEmail })
+          .from(teamFlexOrders)
+          .where(eq(teamFlexOrders.status, "paid")),
       ]);
       const paying = new Set(
-        [...payingRows, ...subscriberRows].map(row => normalizeEmail(row.email))
+        [...payingRows, ...subscriberRows, ...teamBuyerRows].map(row =>
+          normalizeEmail(row.email)
+        )
       );
 
       const byEmail = new Map<string, Lead & { converted: boolean; touchpoints: number }>();

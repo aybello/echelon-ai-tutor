@@ -29,13 +29,26 @@ describe("stripePaymentCore", () => {
     );
   });
 
-  it("handles live and test session prefixes", () => {
+  it("reads live and test payment prefixes", () => {
+    expect(stripePaymentCore("pi_test_a1i2ul2OoVAooWQvOGLYed")).toBe(
+      "a1i2ul2OoVAooWQv"
+    );
+    expect(stripePaymentCore("py_live_b1yo69f9p6jvV4hEsNLzgY")).toBe(
+      "b1yo69f9p6jvV4hE"
+    );
+  });
+
+  it("never matches a checkout session id", () => {
+    // A session id does not share a core with the payment it created. Treating
+    // one as a payment core would let an unrelated session collide with a real
+    // team order and silently erase that money from reported revenue.
     expect(
       stripePaymentCore("cs_live_a1i2ul2OoVAooWQvOGLYed3UEx9ttd6nagZDxqV9aP")
-    ).toBe("a1i2ul2OoVAooWQv");
+    ).toBeNull();
     expect(
       stripePaymentCore("cs_test_b1yo69f9p6jvV4hEsNLzgYGETvTyD02v7Qcbb3geXq")
-    ).toBe("b1yo69f9p6jvV4hE");
+    ).toBeNull();
+    expect(stripePaymentCore("in_1UFzTKIZU5R5gvMs1h45mp5u")).toBeNull();
   });
 
   it("returns null for recovery placeholders and empty values", () => {

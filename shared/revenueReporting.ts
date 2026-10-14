@@ -103,8 +103,12 @@ export function stripePaymentCore(
   if (!stripeId) return null;
   const trimmed = stripeId.trim();
   if (!trimmed) return null;
-  // Prefixed Stripe object ids: ch_, pi_, py_, in_, cs_ and similar.
-  const match = /^[a-z]{2,4}_(?:test_|live_)?([A-Za-z0-9]{16})/.exec(trimmed);
+  // Only payment objects share a core. A charge is a child of a payment intent,
+  // so ch_3UFzTKIZU5R5gvMs and pi_3UFzTKIZU5R5gvMs are provably the same money.
+  // A checkout session id does not share its core with the payment it created,
+  // so matching cs_ ids would let an unrelated session collide with a real
+  // payment and silently erase a genuine team order from reported revenue.
+  const match = /^(?:pi|ch|py)_(?:test_|live_)?([A-Za-z0-9]{16})/.exec(trimmed);
   if (!match) return null;
   return match[1];
 }
