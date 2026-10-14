@@ -39,7 +39,7 @@ import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
-import { allowedCourseKeysForOrg, isSubscriptionProvince, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
+import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
 import { listManagedOrganizations, managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 
@@ -180,10 +180,7 @@ async function grantSeat(
   if (coursesToUpsert.length === 0 && role === "operator") {
     throw new Error("Select at least one course included in your team plan.");
   }
-  if (!isSubscriptionProvince(org.province)) {
-    throw new Error("Organization province is not supported for subscription access.");
-  }
-  const subscriptionProvince = org.province;
+  const subscriptionProvince = subscriptionProvinceForOrg(org.province);
 
   for (const ck of coursesToUpsert) {
     const tier = courseKeyToTierStrict(ck, org.province);
@@ -896,10 +893,7 @@ export const orgRouter = router({
 
       const primaryCourseKey = validatedKeys[0] ?? null;
       const courseKeysJson = validatedKeys.length > 0 ? JSON.stringify(validatedKeys) : null;
-      if (!isSubscriptionProvince(org.province)) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Organization province is not supported for subscription access." });
-      }
-      const subscriptionProvince = org.province;
+      const subscriptionProvince = subscriptionProvinceForOrg(org.province);
 
       // Build tier map for subscription upserts (all keys validated above)
       const coursesToUpsert = validatedKeys;
