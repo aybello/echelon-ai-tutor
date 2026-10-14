@@ -49,7 +49,7 @@ const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
   {
     label: "Customers & sales",
     tabs: [
-      { id: "revenue", label: "Purchases", icon: CreditCard },
+      { id: "revenue", label: "Sales & purchases", icon: CreditCard },
       { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
       { id: "orgs", label: "Organizations", icon: Building2 },
       { id: "leads", label: "Captured leads", icon: Mail },
@@ -203,6 +203,7 @@ export default function Admin() {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [isMobileNavigation, setIsMobileNavigation] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches);
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
+  const [leadFilter, setLeadFilter] = useState<"actionable" | "all" | "bought" | "opted_out">("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
   const [reviewPage, setReviewPage] = useState(1);
@@ -216,7 +217,7 @@ export default function Admin() {
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const kpisQ = trpc.admin.getProductKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
-  const businessQ = trpc.admin.getBusinessRevenue.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
+  const businessQ = trpc.admin.getBusinessRevenue.useQuery(undefined, { enabled: user?.role === "admin" && (activeTab === "insights" || activeTab === "revenue") });
   const ceuKpisQ = trpc.admin.getCeuKpis.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "insights" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const leadsQ = trpc.admin.getLeadCapture.useQuery({ limit: 300 }, { enabled: user?.role === "admin" && (activeTab === "leads" || activeTab === "insights") });
@@ -276,6 +277,10 @@ export default function Admin() {
   });
 
   const utils = trpc.useUtils();
+  const markContactFollowUp = trpc.admin.setContactFollowUpStatus.useMutation({
+    onSuccess: () => { void utils.admin.getLeadCapture.invalidate(); },
+    onError: (error) => alert("Contact follow-up status was not saved: " + error.message),
+  });
 
   const reviewQuestion = trpc.admin.reviewQuestion.useMutation({
     onSuccess: () => {
@@ -385,7 +390,7 @@ export default function Admin() {
     if (activeTab === "waitlist") waitlistQ.refetch();
     if (activeTab === "errors") errorsQ.refetch();
     if (activeTab === "scores") scoresQ.refetch();
-    if (activeTab === "revenue") purchasesQ.refetch();
+    if (activeTab === "revenue") { purchasesQ.refetch(); businessQ.refetch(); }
     if (activeTab === "subscriptions") subscriptionsQ.refetch();
     if (activeTab === "health") healthQ.refetch();
     if (activeTab === "feedback") feedbackQ.refetch();
